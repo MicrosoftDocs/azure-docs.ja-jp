@@ -1,6 +1,6 @@
 ---
-title: Apache Spark アプリケーションを監視する
-description: Azure Synapse Studio を使用して Apache Spark アプリケーションを監視します。
+title: Synapse Studio を使用して Apache Spark アプリケーションを監視する
+description: Synapse Studio を使用して Apache Spark アプリケーションを監視します。
 services: synapse-analytics
 author: matt1883
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 20c4216e7af0cb4100204ebae1b484a53e3c50a6
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 4d6c50436ddf68e2610aeb10ddfaaab0a5d060f3
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971232"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387355"
 ---
-# <a name="use-the-azure-synapse-studio-to-monitor-your-apache-spark-applications"></a>Azure Synapse Studio を使用して Apache Spark アプリケーションを監視します
+# <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio を使用して Apache Spark アプリケーションを監視する
 
 Azure Synapse Analytics では、Apache Spark を使用して、ワークスペース内の Apache Spark プールでノートブック、ジョブ、およびその他の種類のアプリケーションを実行できます。
 
@@ -33,7 +33,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 このチュートリアルを開始する前に、次の要件を満たしてください。
 
-- Azure Synapse Studio ワークスペース。 手順については、[Azure Synapse Studio ワークスペースの作成](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)に関するページを参照してください。
+- Synapse Studio ワークスペース。 手順については、[Synapse Studio ワークスペースの作成](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace)に関する記事を参照してください。
 
 - Apache Spark プール。
 
@@ -147,4 +147,4 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 ## <a name="next-steps"></a>次のステップ
 
-パイプラインの実行を監視する方法の詳細については、[Azure Synapse Studio を使用してパイプラインの実行を監視する方法](how-to-monitor-pipeline-runs.md)に関する記事をご覧ください。  
+パイプラインの実行の監視に関する詳細については、[Synapse Studio を使用したパイプラインの実行の監視](how-to-monitor-pipeline-runs.md)に関する記事を参照してください。  

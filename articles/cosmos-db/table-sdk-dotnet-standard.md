@@ -8,12 +8,13 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 097868c0f6c64ad8b58dce365a2232bb02b786e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: bf8563274d7aa677249335612d0156d6a5ecbd95
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84168201"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018452"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -41,6 +42,14 @@ ms.locfileid: "84168201"
 
 ## <a name="release-notes-for-100-series"></a>1\.0.0 シリーズのリリース ノート
 1.0.0 シリーズは [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) に依存します。
+
+### <a name="108"></a><a name="1.0.8"></a>1.0.8
+* Cosmosdb エンドポイントの場合は、TTL プロパティを設定するためのサポートが追加されています 
+* タイムアウト時およびタスクが取り消される例外時に再試行ポリシーが優先されます
+* ASP.NET アプリケーションで断続的にタスクが取り消される例外が修正されています
+* セカンダリ エンドポイントのみのロケーション モードから取得される Azure Table Storage が修正されています
+* 断続的な null 参照の例外を修正する2.11.2 に `Microsoft.Azure.DocumentDB.Core` の依存関係バージョンが更新されています
+* Azure シェルとの互換性の競合を修正する 7.6.4 に `Odata.Core` の依存関係バージョンが更新されています
 
 ### <a name="107"></a><a name="1.0.7"></a>1.0.7
 * Table SDK の既定のトレース レベルを SourceLevels.Off に設定することによるパフォーマンスの向上 (これは app.config を使用してオプトインできます)

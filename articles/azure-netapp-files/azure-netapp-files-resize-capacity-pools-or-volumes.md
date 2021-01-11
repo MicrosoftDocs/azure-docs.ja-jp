@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files の容量プールまたはボリュームをサイズ変更する | Microsoft Docs
-description: 容量プールまたはボリュームをサイズ変更する方法について説明します。
+description: 容量プールまたはボリュームのサイズを変更する方法について説明します。 容量プールをサイズ変更すると、購入した Azure NetApp Files の容量が変更されます。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/14/2019
 ms.author: b-juche
-ms.openlocfilehash: 7da604e8e49b0732680e5f641d1ff6e899ad474d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d1c54d05430600e9fffa2659dbaaf6db0b086b5
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483484"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512875"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>容量プールまたはボリュームをサイズ変更する
 容量プールまたはボリュームは、必要に応じてサイズ変更できます。 

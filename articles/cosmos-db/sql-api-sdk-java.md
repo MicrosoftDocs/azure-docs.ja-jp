@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 06/03/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 70a4d6f01271c5026463ac0dc946fb1b2991de09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323827"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586130"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -26,11 +26,14 @@ ms.locfileid: "87323827"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 これは、同期操作がサポートされる最初の Azure Cosmos DB Sync Java SDK v2 for SQL API です。
@@ -256,23 +259,14 @@ ms.locfileid: "87323827"
 * GA SDK
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
 
-新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
-
-提供終了の SDK を使用した Cosmos DB への要求は、サービスによって拒否されます。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
 > [!WARNING]
-> **1.x** のすべてのバージョンの SQL SDK for Java は、**2020 年 5 月 30 日**で提供が終了します。
-> 
+> 2020 年 5 月 30 日以降、Azure Cosmos DB では、Azure Cosmos DB Java SDK for SQL API バージョン 1.x に対するバグ修正、新機能の追加、サポートの提供は行われません。 アップグレードしない場合でも、SDK バージョン 1.x から送信される要求は、引き続き Azure Cosmos DB サービスによって処理されます。
 >
+> 2016 年 2 月 29 日以降、Azure Cosmos DB では、Azure Cosmos DB Java SDK for SQL API バージョン 0.x に対するバグ修正、新機能の追加、サポートの提供は行われません。 アップグレードしない場合でも、SDK バージョン 0.x から送信される要求は、引き続き Azure Cosmos DB サービスによって処理されます。
 
-> [!WARNING]
-> バージョン **1.0.0** 以前のすべてのバージョンの SQL SDK for Java は、**2016 年 2 月 29 日**で提供が終了します。
-> 
-> 
-
-<br/>
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |

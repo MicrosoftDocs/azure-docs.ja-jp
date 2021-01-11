@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498459"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661420"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -161,7 +161,7 @@ SQL Server インスタンスを移行するには、「[Azure SQL Managed Insta
 
 **Managed Instance のパフォーマンスを SQL Server のパフォーマンスと比較するにはどうすればよいですか?**
 
-マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL マネージド インスタンスと SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。
+マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL Managed Instance と SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。
 
 **Managed Instance と SQL Server の間でパフォーマンスの差が生じる原因は何ですか?**
 
@@ -214,7 +214,7 @@ SQL Managed Instance のストレージ サイズは選択したサービス レ
 
 **General Purpose サービス レベルでストレージのパフォーマンスを最適化するにはどうすればよいですか?**
 
-ストレージのパフォーマンスを最適化するには、「[General Purpose でのストレージのベスト プラクティス](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)」を参照してください。
+ストレージのパフォーマンスを最適化するには、「[General Purpose でのストレージのベスト プラクティス](https://techcommunity.microsoft.com)」を参照してください。
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 
@@ -223,12 +223,15 @@ SQL Managed Instance のストレージ サイズは選択したサービス レ
 いいえ。バックアップ ストレージがマネージド インスタンス ストレージ領域から差し引かれることはありません。 バックアップ ストレージはインスタンス ストレージ領域から独立しており、サイズは制限されていません。 バックアップ ストレージは、インスタンス データベースのバックアップを保持する期間に制限があり、35 日まで構成可能です。 詳細については、「[自動バックアップ](../database/automated-backups-overview.md)」を参照してください。
 
 **マネージド インスタンスで自動バックアップが行われたタイミングを確認するにはどうすればよいですか?**
+
 Managed Instance で自動バックアップが実行された時間を追跡するには、「[Azure SQL Managed Instance の自動バックアップの追跡方法](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)」を参照してください。
 
 **オンデマンド バックアップはサポートされていますか?**
+
 はい。Azure Blob Storage にコピーのみの完全バックアップを作成できます。ただし、これは Managed Instance でのみ復元できます。 詳細については、「[コピーのみのバックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)」を参照してください。 ただし、暗号化に使用される証明書にアクセスできないため、データベースがサービス マネージド TDE によって暗号化されている場合、コピーのみのバックアップは不可能です。 このような場合、ポイントインタイム リストア機能を使用して、データベースを別の SQL Managed Instance に移動するか、カスタマー マネージド キーに切り替えてください。
 
 **Managed Instance への (.bak ファイルからの) ネイティブ復元はサポートされていますか?**
+
 はい。SQL Server 2005 以降のバージョンでサポートされており、使用可能です。  ネイティブ復元を使用するには、.bak ファイルを Azure Blob Storage にアップロードし、T-SQL コマンドを実行します。 詳細については、「[URL からのネイティブ復元](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)」を参照してください。
 
 ## <a name="business-continuity"></a>ビジネス継続性
@@ -503,6 +506,14 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 (' test ' を目的のログイン名に置き換え、ポリシーと有効期限の値を調整してください)
+
+
+## <a name="service-updates"></a>サービスの更新情報
+
+**SQL Managed Instance の計画メンテナンス イベントとは何ですか。**
+
+[SQL Managed Instance での Azure メンテナンス イベントの計画](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance)に関するページを参照してください。 
+
 
 ## <a name="azure-feedback-and-support"></a>Azure のフィードバックとサポート
 

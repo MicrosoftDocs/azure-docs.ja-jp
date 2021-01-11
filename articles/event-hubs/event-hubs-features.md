@@ -3,12 +3,12 @@ title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 034983074ddc6faf324d70a18a9a49b8df659649
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9e004b3a8a9dd454eae5a20564a1ab74a26b66d5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537311"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936233"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -37,7 +37,7 @@ AMQP 1.0、Kafka 1.0 (以降)、または HTTPS 経由でイベントを発行�
 
 AMQP または HTTPS のどちらを使用するかは、使用シナリオによって決まります。 AMQP では、トランスポート レベルのセキュリティ (TLS) または SSL/TLS に加えて、永続的な双方向ソケットを確立する必要があります。 AMQP ではセッション初期化時のネットワーク コストが高くなりますが、HTTPS では要求ごとに追加の TLS オーバーヘッドが必要になります。 発行の頻度が高い場合は、AMQP の方が高パフォーマンスになります。
 
-![Event Hubs](./media/event-hubs-features/partition_keys.png)
+![パーティション キー](./media/event-hubs-features/partition_keys.png)
 
 Event Hubs によって、1 つのパーティション キー値を共有するすべてのイベントが、正しい順序で同じパーティションに確実に配信されます。 パーティション キーと発行元ポリシーを併用する場合は、発行元の ID とパーティション キーの値が一致する必要があります。 そうでない場合、エラーが発生します。
 
@@ -86,13 +86,13 @@ Azure SDK によって提供される一部のクライアントはインテリ�
 
 次の図は、Event Hubs ストリーム処理のアーキテクチャを示しています。
 
-![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
+![Event Hubs のアーキテクチャ](./media/event-hubs-features/event_hubs_architecture.png)
 
 ### <a name="stream-offsets"></a>ストリームのオフセット
 
 "*オフセット*" は、パーティション内のイベントの位置です。 オフセットは、クライアント側のカーソルと考えることができます。 オフセットはイベントのバイト位置です。 このオフセットにより、イベント コンシューマー (リーダー) は、イベント ストリーム内でのイベント読み取りの開始点を指定することができます。 オフセットは、タイムスタンプとして、またはオフセット値として指定することができます。 Event Hubs サービスの外部で独自のオフセット値を格納する場合は、コンシューマーの責任で行います。 パーティション内では、各イベントにオフセットが含まれます。
 
-![Event Hubs](./media/event-hubs-features/partition_offset.png)
+![パーティションのオフセット](./media/event-hubs-features/partition_offset.png)
 
 ### <a name="checkpointing"></a>チェックポイント機能
 
@@ -118,7 +118,7 @@ Azure SDK によって提供される一部のクライアントはインテリ�
 - .NET 用 [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
 - Java 用 [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)
 - Python 用 [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
-- JavaScript/TypeScript 用 [EventHubSoncumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
+- JavaScript/TypeScript 用 [EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
 
 #### <a name="read-events"></a>イベントを読み取る
 
@@ -138,10 +138,10 @@ Azure SDK によって提供される一部のクライアントはインテリ�
 Event Hubs の詳細については、次のリンクを参照してください。
 
 - Event Hubs の使用
-    - [.NET](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-java-get-started-send.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

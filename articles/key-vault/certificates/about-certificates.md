@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 74007f5d10d58cf9680d4531304098cabe9b6d8b
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115664"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923689"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault の証明書について
 
@@ -44,7 +44,8 @@ Key Vault 証明書が作成されるとき、秘密キーと共にアドレス�
 
 アドレス指定可能なキーは、エクスポート不可能な KV 証明書との関連性が高くなります。 アドレス指定可能な KV キーの操作は、KV 証明書の作成に使用された KV 証明書ポリシーの *keyusage* フィールドからマップされます。  
 
-証明書では、*RSA* または *RSA HSM* の 2 種類のキーがサポートされています。 エクスポート可能は RSA でのみ許可され、RSA HSM ではサポートされていません。  
+ - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype))。エクスポート可能にできるのは、RSA、EC のみです。 HSM キーはエクスポートできません。
+
 
 ## <a name="certificate-attributes-and-tags"></a>証明書の属性とタグ
 
@@ -84,7 +85,8 @@ Key Vault 証明書を最初から作成するときは、ポリシーを提供�
 大まかに言えば、証明書ポリシーには次の情報が含まれています (それらの定義は[こちら](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)から見つけることができます)。  
 
 -   X509 証明書のプロパティ:サブジェクト名、サブジェクト代替名、および x509 証明書要求の作成に使用される他のプロパティが含まれます。  
--   キーのプロパティ: キーの種類、キーの長さ、エクスポート可能、ReuseKeyOnRenewal フィールドが含まれています。 これらのフィールドは、キー コンテナーにキーの生成方法を示します。  
+-   キーのプロパティ: キーの種類、キーの長さ、エクスポート可能、ReuseKeyOnRenewal フィールドが含まれています。 これらのフィールドは、キー コンテナーにキーの生成方法を示します。 
+     - サポートされているキーの種類: RSA、RSA-HSM、EC、EC-HSM、oct (一覧は[こちら](https://docs.microsoft.com/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)にあります) 
 -   シークレットのプロパティ: 証明書をシークレットとして取得するための、シークレット値を生成するアドレス指定可能なシークレットのコンテンツの種類などの、シークレットのプロパティが含まれます。  
 -   有効期間アクション: KV 証明書の有効期間アクションが含まれます。 各有効期間アクションには次のものが含まれています。  
 

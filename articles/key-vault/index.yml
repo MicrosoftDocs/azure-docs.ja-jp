@@ -13,19 +13,19 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: daccc4195877ad18441640f562556d97a04b10f0
-  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+  ms.openlocfilehash: 549309a01602206b85a54b47df297735dfc5e709
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/29/2020
-  ms.locfileid: "87386488"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88262604"
 highlightedContent:
   items:
   - title: Azure Key Vault の概要
     itemType: overview
     url: ./general/overview.md
   - title: 論理的な削除の重要な変更
-    itemType: overview
+    itemType: whats-new
     url: ./general/soft-delete-change.md
   - title: 認証
     itemType: overview
@@ -89,6 +89,23 @@ conceptualContent:
     footerLink:
       url: ./secrets/index.yml
       text: 詳細情報
+  - title: クライアント ライブラリ
+    links:
+    - url: ./general/client-libraries.md
+      itemType: reference
+      text: Azure Key Vault 用クライアント ライブラリ
+    - url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      itemType: reference
+      text: .NET クライアント ライブラリ
+    - url: /python/api/overview/azure/key-vault-index?view=azure-python
+      itemType: reference
+      text: Python クライアント ライブラリ
+    - url: https://azure.github.io/azure-sdk-for-java/keyvault.html
+      itemType: reference
+      text: Java クライアント ライブラリ
+    - url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
+      itemType: reference
+      text: Node.js クライアント ライブラリ
   - title: Storage を使用した Key Vault
     links:
     - url: ./secrets/overview-storage-keys.md

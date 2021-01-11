@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b7d3945adaf75949ef36b50a5e56a02fde1548
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ccd1192c7597b5a088b1c50b5367030a616b9d77
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680920"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919592"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル
 
@@ -29,7 +29,11 @@ ms.locfileid: "83680920"
 ユーザー ポータルは、ご利用の環境に応じて、Azure Multi-Factor Authentication Server と同じサーバーにデプロイするか、またはインターネットに接続された別のサーバーにデプロイしてもかまいません。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+>
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+>
+> 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ![MFA Server ユーザー ポータルのログイン ページ](./media/howto-mfaserver-deploy-userportal/portal.png)
 
@@ -45,7 +49,7 @@ ms.locfileid: "83680920"
 3. インストールは既定の設定で行ってください (何らかの理由で変更しなければならない場合を除く)。
 4. IIS 内のサイトに TLS/SSL 証明書をバインドします。
 
-IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
+IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
 
 Web サービス SDK は、TLS/SSL 証明書で保護されている必要があります。 このために自己署名証明書を使用できます。 TLS 接続を開始するときにその証明書が信頼されるように、ユーザー ポータル Web サーバー上のローカル コンピューター アカウントの "信頼されたルート証明機関" ストアに証明書をインポートします。
 
@@ -73,7 +77,7 @@ Azure Multi-Factor Authentication Server と**同じサーバー**にユーザ�
 
 ![MFA Server ユーザー ポータルのインストール](./media/howto-mfaserver-deploy-userportal/install.png)
 
-IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
+IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>ユーザー ポータルを別のサーバーにデプロイする
 
@@ -110,7 +114,7 @@ Azure Multi-Factor Authentication Server 以外のサーバーにユーザー �
 
 6. 任意のコンピューターで Web ブラウザーを開き、ユーザー ポータルがインストールされた URL に移動します (`https://mfa.contoso.com/MultiFactorAuth` など)。 証明書の警告およびエラーが表示されないことを確認してください。
 
-IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
+IIS サーバーに TLS/SSL 証明書を構成する方法についてご不明な点があれば、[IIS における SSL のセットアップ方法](/iis/manage/configuring-security/how-to-set-up-ssl-on-iis)に関する記事を参照してください。
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のユーザー ポータル設定を構成する
 

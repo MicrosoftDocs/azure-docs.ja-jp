@@ -1,18 +1,18 @@
 ---
-title: パートナー センターでの商業マーケットプレース ポータルの概要
-description: パートナー センターの商業マーケットプレース ポータルの詳細と Azure Marketplace、AppSource 上、およびクラウド ソリューション プロバイダー (CSP) プログラムを通じてオファーを一覧表示および販売する方法について説明します。
+title: パートナー センターでのコマーシャル マーケットプレース ポータルの概要
+description: パートナー センターの Microsoft 商業マーケットプレース ポータルの詳細と Azure Marketplace、AppSource 上、およびクラウド ソリューション プロバイダー (CSP) プログラムを通じてオファーを一覧表示および販売する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 676a0471ad4321f37cf6dd854d6d98083723f5de
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4c91e6396171511fa3b11b0295504f0ca0d75d15
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116694"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030863"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>パートナー センターでのコマーシャル マーケットプレース ポータルの概要
 
@@ -28,9 +28,9 @@ ms.locfileid: "86116694"
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>Cloud パートナー ポータルからの移行
 
-パートナー センターは、Microsoft のリレーションシップのすべての側面をソフトウェア パブリッシャーとうまく統合するために進化しています。 この進化の一環として、すべてのコマーシャル マーケットプレース プランを、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)からパートナー センターに移行しました。
+パートナー センターは、Microsoft のリレーションシップのすべての側面をソフトウェア パブリッシャーとうまく統合するために進化しています。 この進化の一環として、すべてのコマーシャル マーケットプレース オファーを、Cloud パートナー ポータル (CPP) からパートナー センターに移行しました。
 
-これまで Cloud パートナー ポータルを使用していた既存のパブリッシャーは、パートナー センターで、なじみはあるが強化された直感的ユーザー エクスペリエンスを実感することができます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナー エクスペリエンスのアップグレードによって、カスタマーが影響を受けることはありません。
+これまで CPP を使用していた既存のパブリッシャーは、パートナー センターで、なじみはあるが強化された直感的ユーザー エクスペリエンスを実感することができます。 ユーザーはシームレスに適切な場所に転送されます。 このパートナー エクスペリエンスのアップグレードによって、カスタマーが影響を受けることはありません。
 
 ### <a name="improvements-on-publishing-and-offer-management-user-experience"></a>発行とオファー管理のユーザー エクスペリエンスの改善
 

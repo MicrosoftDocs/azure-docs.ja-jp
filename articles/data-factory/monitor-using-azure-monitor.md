@@ -10,13 +10,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.openlocfilehash: 2c9bb4bbf52c968afe267bfa3e2b8d6dae980833
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801623"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563553"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリの監視とアラート送信を行う
 
@@ -35,7 +35,7 @@ Azure Monitor では、ほとんどの Azure サービスに対して、基礎�
 Data Factory では、パイプライン実行データを 45 日間だけ格納します。 データをより長期間保持する場合は、Azure Monitor を使用してください。 Monitor を使用すると、診断ログを複数の異なるターゲットにルーティングして分析できます。
 
 * **[ストレージ アカウント]** : 監査や手動での検査のために、診断ログをストレージ アカウントに保存します。 診断設定を使用して、リテンション期間 (日数) を指定できます。
-* **イベント ハブ**: ログを Azure Event Hubs にストリーミングします。 ログは、パートナー サービス、または Power BI などのカスタム分析ソリューションへの入力となります。
+* **イベント ハブ**: ログを Azure Event Hubs にストリーミングします。 ログは、パートナー サービス/カスタム分析ソリューション (Power BI など) への入力となります。
 * **Log Analytics**:ログを Log Analytics で分析します。 Data Factory を Azure Monitor と統合することは、次のシナリオで役立ちます。
   * Data Factory から Monitor に発行された充実したメトリックのセットに対して、複雑なクエリを記述する必要がある場合。 Monitor を使用して、これらのクエリにカスタム アラートを作成できます。
   * データ ファクトリ全体を監視する必要があります。 複数のデータ ファクトリから 1 つの Monitor ワークスペースにデータをルーティングできます。
@@ -62,11 +62,20 @@ Data Factory では、パイプライン実行データを 45 日間だけ格納
 
     * _Azure Diagnostics_ モードでは、診断ログは _AzureDiagnostics_ テーブルに送られます。
 
-    * "_リソース固有_" モードでは、Azure Data Factory からの診断ログは、_ADFActivityRun_、_ADFPipelineRun_、_ADFTriggerRun_、_ADFSSISIntegrationRuntimeLogs_、_ADFSSISPackageEventMessageContext_、_ADFSSISPackageEventMessages_、_ADFSSISPackageExecutableStatistics_、_ADFSSISPackageExecutionComponentPhases_、_ADFSSISPackageExecutionDataStatistics_ の各テーブルに送られます。
+    * _Resource-Specific_ モードでは、Azure Data Factory からの診断ログは以下のテーブルに送られます。
+      - _ADFActivityRun_
+      - _ADFPipelineRun_
+      - _ADFTriggerRun_
+      - _ADFSSISIntegrationRuntimeLogs_
+      - _ADFSSISPackageEventMessageContext_
+      - _ADFSSISPackageEventMessages_
+      - _ADFSSISPackageExecutableStatistics_
+      - _ADFSSISPackageExecutionComponentPhases_
+      - _ADFSSISPackageExecutionDataStatistics_
 
-      お客様のワークロードに関連するさまざまなログを選択して、Log Analytics テーブルに送信できます。 たとえば、SQL Server Integration Services (SSIS) をまったく使用しない場合は、SSIS ログを選択する必要はありません。 SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス操作をログに記録する場合は、SSIS IR ログを選択できます。 SSIS パッケージの実行を T-SQL 経由でのみ呼び出す場合は、SSIS パッケージ ログのみを選択できます。 SSIS パッケージの実行を ADF パイプラインの SSIS パッケージ実行アクティビティ経由で呼び出す場合は、すべてのログを選択できます。
+      お客様のワークロードに関連するさまざまなログを選択して、Log Analytics テーブルに送信できます。 たとえば、SQL Server Integration Services (SSIS) をまったく使用しない場合は、SSIS ログを選択する必要はありません。 SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス操作をログに記録する場合は、SSIS IR ログを選択できます。 SQL Server Management Studio (SSMS)、SQL Server エージェント、またはその他の指定されたツールで T-SQL を使用して SSIS パッケージ実行を呼び出す場合は、SSIS パッケージ ログを選択できます。 SSIS パッケージの実行を ADF パイプラインの SSIS パッケージ実行アクティビティ経由で呼び出す場合は、すべてのログを選択できます。
 
-    * _AllMetrics_ を選択する場合、ADF エンティティの数またはサイズ、アクティビティ、パイプライン、またはトリガーの実行、Integration Runtime (IR) CPU の使用率、メモリ、ノード数、またはキューに加えて、SSIS パッケージ実行および SSIS IR の開始または停止操作のメトリックを監視とアラートの生成に利用できるようになります。
+    * _AllMetrics_ を選択すると、監視したりアラートを生成したりするために、ADF アクティビティ、パイプライン、およびトリガーの実行のメトリックに加え、SSIS IR 操作と SSIS パッケージ実行のメトリックを含むさまざまな ADF メトリックを使用できるようになります。
 
    ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -99,7 +108,7 @@ Data Factory では、パイプライン実行データを 45 日間だけ格納
 
 ### <a name="monitor-data-factory-metrics"></a>Data Factory メトリックを監視する
 
-Azure Data Factory Analytics をインストールすると、選択した Log Analytics ワークスペースの [ブック] セクションに既定のセットのビューが作成されます。 この結果、次のメトリックが有効になります。
+このソリューションをインストールすると、選択した Log Analytics ワークスペースの [ブック] セクションに既定のセットのビューが作成されます。 その結果、次のメトリックが有効になります。
 
 * ADF の実行 - 1) Data Factory によるパイプラインの実行
 * ADF の実行 - 2) Data Factory によるアクティビティの実行
@@ -128,28 +137,28 @@ Azure Data Factory バージョン 2 で出力されるメトリックの一部�
 
 | **メトリック**                           | **メトリックの表示名**                  | **単位** | **集計の種類** | **説明**                |
 |--------------------------------------|------------------------------------------|----------|----------------------|--------------------------------|
-| ActivityCanceledRuns                 | キャンセルされたアクティビティの実行回数のメトリック           | Count    | 合計                | 1 分の枠内でキャンセルされたアクティビティの実行の合計数。 |
+| ActivityCancelledRuns                 | キャンセルしたアクティビティの実行回数のメトリック           | Count    | 合計                | 1 分の枠内でキャンセルされたアクティビティの実行の合計数。 |
 | ActivityFailedRuns                   | 失敗したアクティビティ実行回数のメトリック             | Count    | 合計                | 1 分の枠内で失敗したアクティビティの実行の合計数。 |
 | ActivitySucceededRuns                | 成功したアクティビティ実行回数のメトリック          | Count    | 合計                | 1 分の枠内で成功したアクティビティの実行の合計数。 |
-| PipelineCanceledRuns                 | キャンセルされたパイプライン実行回数のメトリック           | Count    | 合計                | 1 分の枠内でキャンセルされたパイプライン実行の合計数。 |
+| PipelineCancelledRuns                 | キャンセルしたパイプライン実行回数のメトリック           | Count    | 合計                | 1 分の枠内でキャンセルされたパイプライン実行の合計数。 |
 | PipelineFailedRuns                   | 失敗したパイプライン実行回数のメトリック             | Count    | 合計                | 1 分の枠内で失敗したパイプライン実行の合計数。 |
 | PipelineSucceededRuns                | 成功したパイプライン実行回数のメトリック          | Count    | 合計                | 1 分の枠内で成功したパイプライン実行の合計数。 |
-| TriggerCanceledRuns                  | キャンセルされたトリガー実行回数のメトリック            | Count    | 合計                | 1 分の枠内でキャンセルされたトリガー実行の合計数。 |
+| TriggerCancelledRuns                  | キャンセルしたトリガー実行の回数メトリック            | Count    | 合計                | 1 分の枠内でキャンセルされたトリガー実行の合計数。 |
 | TriggerFailedRuns                    | 失敗したトリガー実行の回数メトリック              | Count    | 合計                | 1 分の枠内で失敗したトリガー実行の合計数。 |
 | TriggerSucceededRuns                 | 成功したトリガー実行の回数メトリック           | Count    | 合計                | 1 分の枠内で成功したトリガー実行の合計数。 |
-| SSISIntegrationRuntimeStartCanceled  | キャンセルされた SSIS IR 開始回数のメトリック           | Count    | 合計                | 1 分の枠内でキャンセルされた SSIS IR 開始の合計数。 |
-| SSISIntegrationRuntimeStartFailed    | 失敗した SSIS IR 開始回数のメトリック             | Count    | 合計                | 1 分の枠内で失敗した SSIS IR 開始の合計数。 |
-| SSISIntegrationRuntimeStartSucceeded | 成功した SSIS IR 開始回数のメトリック          | Count    | 合計                | 1 分の枠内で成功した SSIS IR 開始の合計数。 |
-| SSISIntegrationRuntimeStopStuck      | スタックした SSIS IR 停止回数のメトリック               | Count    | 合計                | 1 分の枠内でスタックした SSIS IR 停止の合計数。 |
-| SSISIntegrationRuntimeStopSucceeded  | 成功した SSIS IR 停止回数のメトリック           | Count    | 合計                | 1 分の枠内で成功した SSIS IR 停止の合計数。 |
-| SSISPackageExecutionCanceled         | キャンセルされた SSIS パッケージ実行回数のメトリック  | Count    | 合計                | 1 分の枠内でキャンセルされた SSIS パッケージ実行の合計数。 |
+| SSISIntegrationRuntimeStartCancelled  | キャンセルされた SSIS 統合ランタイム開始メトリック           | Count    | 合計                | 1 分の枠内でキャンセルされた SSIS 統合ランタイム開始の合計数。 |
+| SSISIntegrationRuntimeStartFailed    | 失敗した SSIS 統合ランタイム開始メトリック             | Count    | 合計                | 1 分の枠内で失敗した SSIS 統合ランタイム開始の合計数。 |
+| SSISIntegrationRuntimeStartSucceeded | 成功した SSIS 統合ランタイム開始メトリック          | Count    | 合計                | 1 分の枠内で成功した SSIS 統合ランタイム開始の合計数。 |
+| SSISIntegrationRuntimeStopStuck      | 停止した SSIS 統合ランタイム停止メトリック               | Count    | 合計                | 1 分の枠内で停止した SSIS 統合ランタイム停止の合計数。 |
+| SSISIntegrationRuntimeStopSucceeded  | 成功した SSIS 統合ランタイム停止メトリック           | Count    | 合計                | 1 分の枠内で成功した SSIS 統合ランタイム停止の合計数。 |
+| SSISPackageExecutionCancelled         | キャンセルされた SSIS パッケージ実行回数のメトリック  | Count    | 合計                | 1 分の枠内でキャンセルされた SSIS パッケージ実行の合計数。 |
 | SSISPackageExecutionFailed           | 失敗した SSIS パッケージ実行回数のメトリック    | Count    | 合計                | 1 分の枠内で失敗した SSIS パッケージ実行の合計数。 |
 | SSISPackageExecutionSucceeded        | 成功した SSIS パッケージ実行回数のメトリック | Count    | 合計                | 1 分の枠内で成功した SSIS パッケージ実行の合計数。 |
 
 メトリックにアクセスするには、「[Azure Monitor データ プラットフォーム](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)」に記載された手順に従います。
 
 > [!NOTE]
-> 完了済みでトリガーされたアクティビティとパイプライン実行イベントのみが出力されます。 進行中およびサンドボックス/デバッグの実行は出力**されません**。 一方、SSIS パッケージ実行のイベントはすべてが出力されます。これには、完了したもの、進行中のもの、SSMS、SQL Server エージェント、または指定された他のツール上の T-SQL 経由で呼び出されたもの、ADF パイプラインの SSIS パッケージ実行アクティビティのトリガー、サンドボックス、またはデバッグ実行として呼び出されたものが含まれます。
+> 完了済みのトリガーされたアクティビティとパイプラインの実行からのイベントのみが出力されます。 進行中およびデバッグの実行は出力**されません**。 その一方で、呼び出しメソッドに関係なく、**すべての** SSIS パッケージ実行からのイベントが出力されます。これには、呼び出し方法に関係なく、完了済みのものと進行中のものが含まれます。 たとえば、SSMS、SQL Server エージェント、またはその他の指定されたツールで T-SQL を使用して、ADF パイプラインでの Execute SSIS Package アクティビティのトリガーされたまたはデバッグの実行として、Azure 対応 SQL Server Data Tools (SSDT) のパッケージ実行を呼び出すことができます。
 
 ## <a name="data-factory-alerts"></a>Data Factory のアラート
 
@@ -260,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | --- | --- | --- |
 | **storageAccountId** |String | 診断ログを送信するストレージ アカウントのリソース ID。 |
 | **serviceBusRuleId** |String | 診断ログのストリーミングのために Event Hubs を作成するサービス バス名前空間のサービス バス ルール ID。 ルール ID の形式は、`{service bus resource ID}/authorizationrules/{key name}` です。|
@@ -433,7 +442,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | Type | 説明 | 例 |
+| プロパティ | 種類 | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -479,7 +488,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | Type | 説明 | 例 |
+| プロパティ | 種類 | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -522,7 +531,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| プロパティ | Type | 説明 | 例 |
+| プロパティ | 種類 | 説明 | 例 |
 | --- | --- | --- | --- |
 | **Level** |String | 診断ログのレベル。 アクティビティ実行ログの場合は、プロパティ値を 4 に設定します。 | `4` |
 | **correlationId** |String | 特定の要求を追跡するための一意の ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -540,7 +549,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 #### <a name="ssis-integration-runtime-log-attributes"></a>SSIS 統合ランタイム ログの属性
 
-SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス操作に関するログの属性またはプロパティを次に示します。
+SSIS IR の開始/停止/メンテナンス操作のログの属性を次に示します。
 
 ```json
 {
@@ -559,7 +568,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 }
 ```
 
-| プロパティ                   | Type   | 説明                                                   | 例                        |
+| プロパティ                   | 種類   | 説明                                                   | 例                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | SSIS IR 操作の名前                            | `Start/Stop/Maintenance` |
@@ -574,7 +583,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 
 #### <a name="ssis-event-message-context-log-attributes"></a>SSIS イベント メッセージ コンテキスト ログの属性
 
-これらは、SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージに関連する条件のログの属性またはプロパティです。 これらは、多くの SSIS パッケージのプロパティの実行時の値を示す [SSIS カタログ (SSISDB) イベント メッセージ コンテキスト テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Basic/Verbose` ログ レベルを選択するときに生成されるもので、デバッグやコンプライアンス チェックに役立ちます。
+SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージに関連する条件のログの属性を次に示します。 これらは、多くの SSIS パッケージのプロパティの実行時の値を示す [SSIS カタログ (SSISDB) イベント メッセージ コンテキスト テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Basic/Verbose` ログ レベルを選択するときに生成されるもので、デバッグやコンプライアンス チェックに役立ちます。
 
 ```json
 {
@@ -599,7 +608,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 }
 ```
 
-| プロパティ                   | Type   | 説明                                                          | 例                        |
+| プロパティ                   | 種類   | 説明                                                          | 例                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | これは `YourSSISIRName-SSISPackageEventMessageContext` に設定されています       | `mysqlmissisir-SSISPackageEventMessageContext` |
@@ -608,7 +617,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 | **dataFactoryName**        | String | ADF の名前                                                 | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                             | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                         | `Informational` |
-| **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID          | `1` (1 は、SSISDB に格納されていないパッケージに関連する操作を示します) |
+| **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID          | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する操作を示します) |
 | **contextDepth**           | String | イベント メッセージ コンテキストの深さ                              | `0` (0 はパッケージの実行が開始される前のコンテキストを示し、1 はエラーが発生したときのコンテキストを示します。これは、コンテキストがエラーから離れていくにつれて増加します) |
 | **packagePath**            | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトのパス      | `\Package` |
 | **contextType**            | String | イベント メッセージ コンテキストのソースとしてのパッケージ オブジェクトの種類      | `60`([その他のコンテキストの種類](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)を参照) |
@@ -620,7 +629,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 
 #### <a name="ssis-event-messages-log-attributes"></a>SSIS イベント メッセージ ログの属性
 
-これらは、SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージのログの属性またはプロパティです。 これらは、イベント メッセージの詳細なテキストまたはメタデータを示す [SSISDB イベント メッセージ テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成されます。
+SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージのログの属性を次に示します。 これらは、イベント メッセージの詳細なテキスト/メタデータを示す [SSISDB イベント メッセージ テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成されます。
 
 ```json
 {
@@ -649,7 +658,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 }
 ```
 
-| プロパティ                   | Type   | 説明                                                        | 例                        |
+| プロパティ                   | 種類   | 説明                                                        | 例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | これは `YourSSISIRName-SSISPackageEventMessages` に設定されています           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -658,7 +667,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 | **dataFactoryName**        | String | ADF の名前                                               | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                           | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                       | `Informational` |
-| **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID        | `1` (1 は、SSISDB に格納されていないパッケージに関連する操作を示します) |
+| **operationId**            | String | SSISDB での特定の操作を追跡するための一意の ID        | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する操作を示します) |
 | **messageTime**            | String | イベントメッセージが作成された時刻 (UTC 形式)          | `2017-06-28T21:00:27.3534352Z` |
 | **messageType**            | String | イベント メッセージの種類                                     | `70`([その他のメッセージ型](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)を参照) |
 | **messageSourceType**      | String | イベント メッセージ ソースの種類                              | `20`([その他のメッセージ ソースの種類](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)を参照) |
@@ -674,7 +683,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 実行可能ファイル統計ログの属性
 
-これらは、SSIS IR での SSIS パッケージ実行により生成される実行可能ファイルの統計のログの属性またはプロパティです。この場合の実行可能ファイルは、パッケージ制御フローのコンテナーまたはタスクです。 これらは、実行中の各実行可能ファイルとその繰り返しを 1 行で表示する [SSISDB 実行可能ファイル統計テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成され、タスク レベルのボトルネックや障害を特定するのに役立ちます。
+SSIS IR での SSIS パッケージ実行により生成される実行可能ファイル統計ログの属性を次に示します。この場合の実行可能ファイルは、パッケージ制御フローのコンテナーまたはタスクです。 これらは、実行中の各実行可能ファイルとその繰り返しを 1 行で表示する [SSISDB 実行可能ファイル統計テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成され、タスク レベルのボトルネックや障害を特定するのに役立ちます。
 
 ```json
 {
@@ -698,7 +707,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 }
 ```
 
-| プロパティ                   | Type   | 説明                                                      | 例                        |
+| プロパティ                   | 種類   | 説明                                                      | 例                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | これは `YourSSISIRName-SSISPackageExecutableStatistics` に設定されています  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -707,7 +716,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 | **dataFactoryName**        | String | ADF の名前                                             | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                         | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                     | `Informational` |
-| **executionId**            | String | SSISDB での特定の実行を追跡するための一意の ID      | `1` (1 は、SSISDB に格納されていないパッケージに関連する実行を示します) |
+| **executionId**            | String | SSISDB での特定の実行を追跡するための一意の ID      | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する実行を示します) |
 | **executionPath**          | String | 親パッケージから、実行されたコンポーネントまでの完全なパス          | `\Transformation\Data Flow Task` (このパスではコンポーネントの繰り返しもキャプチャされます) |
 | **startTime**              | String | 実行可能ファイルが実行前フェーズに入ったときの時刻 (UTC 形式)  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | String | 実行可能ファイルが実行後フェーズに入ったときの時刻 (UTC 形式) | `2017-06-28T21:00:27.3534352Z` |
@@ -718,7 +727,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS 実行コンポーネントのフェーズに関するログの属性
 
-これらは、SSIS IR での SSIS パッケージ実行により生成されるデータ フロー コンポーネントの実行時の統計情報に関するログの属性またはプロパティです。 これらは、すべての実行フェーズでデータ フロー コンポーネントによって費やされた時間を示す [SSISDB 実行コンポーネントのフェーズ テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Performance/Verbose` ログ レベルを選択するときに生成されるもので、データ フロー実行の統計情報をキャプチャするのに役立ちます。
+SSIS IR での SSIS パッケージ実行により生成されるデータ フロー コンポーネントの実行時の統計情報に関するログの属性を次に示します。 これらは、すべての実行フェーズでデータ フロー コンポーネントによって費やされた時間を示す [SSISDB 実行コンポーネントのフェーズ テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Performance/Verbose` ログ レベルを選択するときに生成されるもので、データ フロー実行の統計情報をキャプチャするのに役立ちます。
 
 ```json
 {
@@ -743,7 +752,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 }
 ```
 
-| プロパティ                   | Type   | 説明                                                         | 例                        |
+| プロパティ                   | 種類   | 説明                                                         | 例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | これは `YourSSISIRName-SSISPackageExecutionComponentPhases` に設定されています | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -752,7 +761,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 | **dataFactoryName**        | String | ADF の名前                                                | `MyADFv2` |
 | **integrationRuntimeName** | String | SSIS IR の名前                                            | `MySSISIR` |
 | **level**                  | String | 診断ログのレベル                                        | `Informational` |
-| **executionId**            | String | SSISDB での特定の実行を追跡するための一意の ID         | `1` (1 は、SSISDB に格納されていないパッケージに関連する実行を示します) |
+| **executionId**            | String | SSISDB での特定の実行を追跡するための一意の ID         | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する実行を示します) |
 | **packageName**            | String | 実行されたパッケージ ファイルの名前                              | `MyPackage.dtsx` |
 | **taskName**               | String | 実行されたデータ フロー タスクの名前                                 | `Data Flow Task` |
 | **subcomponentName**       | String | データ フロー コンポーネントの名前                                     | `Derived Column` |
@@ -764,7 +773,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS 実行データの統計情報に関するログの属性
 
-これらは、データ フロー パイプラインの各区間を経由して上流から下流のコンポーネントに移動する、SSIS IR での SSIS パッケージ実行により生成されるデータ移動に関するログの属性またはプロパティです。 これらは、データ フロー タスクで移動されたデータの行数を示す [SSISDB 実行データの統計情報テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Verbose` ログ レベルを選択するときに生成されるもので、データ フロー スループットを計算するのに役立ちます。
+データ フロー パイプラインの各区間を経由して上流から下流のコンポーネントに移動する、SSIS IR での SSIS パッケージ実行により生成されるデータ移動に関するログの属性を次に示します。 これらは、データ フロー タスクで移動されたデータの行数を示す [SSISDB 実行データの統計情報テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Verbose` ログ レベルを選択するときに生成されるもので、データ フロー スループットを計算するのに役立ちます。
 
 ```json
 {
@@ -791,7 +800,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 }
 ```
 
-| プロパティ                     | Type   | 説明                                                        | 例                        |
+| プロパティ                     | 種類   | 説明                                                        | 例                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | イベントの時刻 (UTC 形式): `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | これは `YourSSISIRName-SSISPackageExecutionDataStatistics` に設定されています | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
@@ -800,7 +809,7 @@ SSIS Integration Runtime (IR) の開始、停止、またはメンテナンス�
 | **dataFactoryName**          | String | ADF の名前                                               | `MyADFv2` |
 | **integrationRuntimeName**   | String | SSIS IR の名前                                           | `MySSISIR` |
 | **level**                    | String | 診断ログのレベル                                       | `Informational` |
-| **executionId**              | String | SSISDB での特定の実行を追跡するための一意の ID        | `1` (1 は、SSISDB に格納されていないパッケージに関連する実行を示します) |
+| **executionId**              | String | SSISDB での特定の実行を追跡するための一意の ID        | `1` (1 は、SSISDB への格納/T-SQL による呼び出しが行われて**いない**パッケージに関連する実行を示します) |
 | **packageName**              | String | 実行されたパッケージ ファイルの名前                             | `MyPackage.dtsx` |
 | **taskName**                 | String | 実行されたデータ フロー タスクの名前                                | `Data Flow Task` |
 | **dataflowPathIdString**     | String | データ フロー パスを追跡するための一意の ID                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
@@ -836,24 +845,24 @@ Log Analytics は、Monitor からスキーマを継承します。ただし、�
 
 ## <a name="monitor-ssis-operations-with-azure-monitor"></a>Azure Monitor による SSIS 操作の監視
 
-SQL Server Integration Services (SSIS) ワークロードをリフト アンド シフトするには、[Azure Data Factory (ADF) で SSIS Integration Runtime (IR) をプロビジョニング](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)します。これは、次のことをサポートします。
+SSIS ワークロードをリフト アンド シフトするには、次をサポートする [ADF で SSIS IR をプロビジョニング](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)できます。
 
 - Azure SQL Database サーバーまたは Managed Instance をホストとする SSIS カタログ (SSISDB) にデプロイされたパッケージを実行する (プロジェクト デプロイ モデル)
 - Azure SQL Managed Instance をホストとするファイル システム、Azure Files、SQL Server データベース (MSDB) のいずれかにデプロイされたパッケージを実行する (パッケージ デプロイ モデル)
 
-プロビジョニングが完了すると、[Azure PowerShell を使うか、ADF ポータルの **[監視]** ハブで、SSIS IR の動作状態をチェック](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)できるようになります。 プロジェクト デプロイ モデルでは、SSIS パッケージ実行ログは SSISDB 内部テーブルまたはビューに格納されるため、SQL Server Management Studio (SSMS) などの指定されたツールを使用したクエリ、分析、視覚的な表示ができます。 パッケージ デプロイ モデルでは、SSIS パッケージ実行ログをファイル システムまたは Azure Files に CSV ファイルとして保存できます。これに対してクエリ、分析、視覚的な表示をする前に、指定された他のツールを使用してさらに解析および処理する必要があります。
+プロビジョニングが完了すると、[Azure PowerShell を使うか、ADF ポータルの **[監視]** ハブで、SSIS IR の動作状態をチェック](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)できるようになります。 プロジェクト デプロイ モデルでは、SSIS パッケージ実行ログは SSISDB 内部テーブルまたはビューに格納されるため、SSMS などの指定されたツールを使用して、クエリ、分析、および視覚的な表示を実行できます。 パッケージ デプロイ モデルでは、SSIS パッケージ実行ログをファイル システムまたは Azure Files に CSV ファイルとして保存できますが、クエリ、分析、および視覚的な表示を実行する前に、指定された他のツールを使用して解析と処理を行う必要があります。
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) 統合により、SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメトリックとログを、Azure portal でクエリ、分析、視覚的に表示できるようになり、アラートもそれらで生成できます。
+[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform) の統合により、SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメトリックとログを、Azure portal でクエリ、分析、および視覚的に表示できるようになりました。 さらに、それらに関するアラートを生成することもできます。
 
 ### <a name="configure-diagnostic-settings-and-workspace-for-ssis-operations"></a>SSIS 操作の診断設定とワークスペースを構成する
 
-SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメトリックとログを Azure Monitor に送信するには、[ADF の診断設定とワークスペースの構成](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace)のための詳細な手順に従います。
+SSIS IR 操作と SSIS パッケージ実行で生成されるすべてのメトリックとログを Azure Monitor に送信するには、[ADF の診断設定とワークスペースの構成](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#configure-diagnostic-settings-and-workspace)を実行する必要があります。
 
 ### <a name="ssis-operational-metrics"></a>SSIS 操作のメトリック
 
-SSIS 操作の[メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)は、SSIS IR の開始または停止操作および特定の時点での SSIS パッケージ実行の状態を示すパフォーマンス カウンターまたは数値です。 これらは、[Azure Monitor の ADF メトリック](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)の一部で、ADF のエンティティ数またはサイズや、アクティビティ、パイプライン、またはトリガーの実行、および IR CPU 使用率、メモリ、ノード数、またはキューなどが含まれます。
+SSIS 操作の[メトリック](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)は、SSIS IR の開始および停止操作の状態と特定の時点での SSIS パッケージ実行の状態を示すパフォーマンス カウンターまたは数値です。 それらは、[Azure Monitor の ADF メトリック](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#data-factory-metrics)の一部です。
 
-Azure Monitor で ADF の診断設定やワークスペースを構成する場合、 _[AllMetrics]_ チェック ボックスをオンにすると、[Azure メトリックス エクスプローラーを使用した対話型分析](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)、[Azure ダッシュボードでの表示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)、[準リアルタイムのアラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)に SSIS 操作のメトリックを使用できるようになります。
+Azure Monitor で ADF の診断設定とワークスペースを構成するときに、 _[AllMetrics]_ チェック ボックスをオンにすると、[Azure メトリックス エクスプローラーを使用した対話型分析](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)、[Azure ダッシュボードでの表示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)、および[準リアルタイムのアラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric)のために SSIS 操作のメトリックを使用できるようになります。
 
 ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
@@ -869,13 +878,13 @@ Azure portal から SSIS 操作のメトリックに関するアラートを生�
 
 ### <a name="ssis-operational-logs"></a>SSIS 操作のログ
 
-SSIS 操作の[ログ](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)は、SSIS IR 操作と SSIS パッケージ実行で生成されるイベントであり、特定された任意の問題に関する十分なコンテキストと情報を提供するため、根本原因の分析に役立ちます。 
+SSIS 操作の[ログ](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs)は、SSIS IR 操作と SSIS パッケージ実行によって生成されるイベントであり、特定された任意の問題に関する十分なコンテキストを提供するため、根本原因の分析に役立ちます。 
 
-Azure Monitor で ADF の診断設定やワークスペースを構成する場合、関連する SSIS 操作ログを選択して、Azure Data Explorer に基づく Log Analytics にそれらを送信できます。こうして、[豊富なクエリ言語を使用した分析](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)、[Azure ダッシュボードでの表示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)、[準リアルタイムのアラート生成](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)にそれを使用できるようになります。
+Azure Monitor で ADF の診断設定やワークスペースを構成するとき、関連する SSIS 操作ログを選択して、Azure Data Explorer に基づく Log Analytics にそれらを送信できます。 そこで、[豊富なクエリ言語を使用した分析](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)、[Azure ダッシュボードでの表示](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards)、および[準リアルタイムのアラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)のためにそれらを使用できます。
 
 ![設定に名前を付けてログ分析ワークスペースを選択する](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-Azure Monitor と Log Analytics の SSIS パッケージ実行ログと、SSISDB 内部テーブルまたはビューは、スキーマと内容が似ています。
+Azure Monitor と Log Analytics の SSIS パッケージ実行ログのスキーマと内容は、SSISDB 内部テーブルまたはビューのスキーマに似ています。
 
 | Azure Monitor のログのカテゴリ          | Log Analytics のテーブル                     | SSISDB 内部テーブルまたはビュー              |
 | ------------------------------------- | ---------------------------------------- | ----------------------------------------- |
@@ -888,11 +897,15 @@ Azure Monitor と Log Analytics の SSIS パッケージ実行ログと、SSISDB
 
 SSIS 操作のログの属性とプロパティの詳細については、[ADF のための Azure Monitor と Log Analytics のスキーマ](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events)に関するページを参照してください。
 
-選択した SSIS パッケージ実行ログは、呼び出し方法に関係なく、常に Log Analytics に送信されます。たとえば、Azure 対応 SQL Server Data Tools (SSDT) 上でのもの、SSMS、SQL Server エージェント、または他の指定されたツール上の T-SQL 経由でのもの、ADF パイプラインの SSIS パッケージ実行アクティビティのトリガー、サンドボックス、デバッグ実行としてのものが含まれます。
+選択された SSIS パッケージ実行ログは、呼び出しメソッドに関係なく、常に Log Analytics に送信されます。 たとえば、SSMS、SQL Server エージェント、またはその他の指定されたツールで T-SQL を使用して、ADF パイプラインでの Execute SSIS Package アクティビティのトリガーされたまたはデバッグの実行として、Azure 対応 SSDT のパッケージ実行を呼び出すことができます。
 
-SSIS パッケージ実行ログに対して Logs Analytics でクエリを実行する場合、OperationId、ExecutionId、または CorrelationId プロパティを使用してそれらを結合できます。 OperationId または ExecutionId は、SSISDB に格納されて**いない**パッケージに関連するすべての操作や実行の場合、常に 1 に設定されています。
+Logs Analytics で SSIS IR 操作ログのクエリを実行するとき、それぞれが `Start/Stop/Maintenance` と `Started/InProgress/Succeeded/Failed` に設定された **OperationName** プロパティと **ResultType** プロパティを使用できます。 
 
-![SSIS パッケージ実行ログに対する Log Analytics でのクエリの実行](media/data-factory-monitor-oms/log-analytics-query.png)
+![Log Analytics での SSIS IR パッケージ操作ログのクエリの実行](media/data-factory-monitor-oms/log-analytics-query.png)
+
+Logs Analytics で SSIS パッケージ実行ログのクエリを実行する場合、**OperationId**/**ExecutionId**/**CorrelationId** プロパティを使用してそれらを結合できます。 SSISDB への格納/T-SQL を使用した呼び出しが行われて**いない**パッケージに関連するすべての操作/実行の場合、**OperationId**/**ExecutionId** には常に `1` が設定されます。
+
+![SSIS パッケージ実行ログに対する Log Analytics でのクエリの実行](media/data-factory-monitor-oms/log-analytics-query2.png)
 
 ## <a name="next-steps"></a>次のステップ
 [プログラムでのパイプラインの監視と管理](monitor-programmatically.md)

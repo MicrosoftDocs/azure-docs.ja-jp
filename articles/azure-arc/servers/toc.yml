@@ -1,0 +1,58 @@
+- name: Azure Arc 対応サーバーのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Arc 対応サーバーについて
+      href: overview.md
+    - name: Connected Machine エージェントの新機能
+      href: agent-release-notes.md
+- name: クイックスタート
+  items:
+    - name: Arc 対応サーバー エージェントを有効にする
+      href: ./learn/quick-enable-hybrid-vm.md
+- name: チュートリアル
+  items:
+    - name: ポリシーを割り当ててコンプライアンスを評価する
+      href: ./learn/tutorial-assign-policy-portal.md
+    - name: マシンの監視
+      href: ./learn/tutorial-enable-vm-insights.md
+- name: 概念
+  items:
+    - name: セキュリティ
+      items:
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+        - name: セキュリティの概要
+          href: security-overview.md
+- name: 操作方法ガイド
+  items:
+    - name: Azure Arc への接続
+      items:
+        - name: Connected Machine エージェントの概要
+          href: agent-overview.md
+        - name: Azure portal から Azure Arc へのマシンの接続
+          href: onboard-portal.md
+        - name: サービス プリンシパルを使用したマシンの大規模な接続
+          href: onboard-service-principal.md
+        - name: PowerShell DSC を使用してマシンを Azure Arc に接続する
+          href: onboard-dsc.md
+    - name: 管理する
+      items:
+        - name: Azure VM 拡張機能の管理と使用
+          href: manage-vm-extensions.md
+        - name: エージェントの管理
+          href: manage-agent.md
+    - name: トラブルシューティング
+      items:
+        - name: エージェントの接続に関する問題
+          href: troubleshoot-agent-onboard.md
+    - name: 関連項目
+      items:
+        - name: 利用可能なリージョンとデータの保存場所
+          href: data-residency.md
+        - name: REST
+          href: /rest/api/hybridcompute
+        - name: Azure Policy の組み込み
+          displayName: 'samples, policies, definitions'
+          href: policy-reference.md

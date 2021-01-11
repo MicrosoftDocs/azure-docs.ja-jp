@@ -6,14 +6,14 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a459d1fba4353b4b3e092e83a759314cc455ead
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82779044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087290"
 ---
-# <a name="localization"></a>ローカリゼーション #
+# <a name="azure-media-player-localization"></a>Azure Media Player のローカライズ #
 
 複数言語のサポートにより、英語以外のロケールのユーザーがプレーヤーをネイティブに操作できるようになります。 Azure Media Player では、言語のグローバル辞書を使用してインスタンス化が行われます。これにより、ページの言語に基づいてエラー メッセージがローカライズされます。 開発者は、強制的に設定した言語でプレーヤー インスタンスを作成することもできます。 既定の言語は英語 (en) です。
 

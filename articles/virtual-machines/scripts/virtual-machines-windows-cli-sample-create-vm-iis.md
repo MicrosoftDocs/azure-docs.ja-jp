@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
 ms.author: cynthn
-ms.openlocfilehash: 140804bf8436357ccd5c645279a3821a96b247e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 27235c131f6d87856ab0c21b01c578056f941503
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082496"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499213"
 ---
 # <a name="create-a-virtual-machine-with-the-azure-cli-with-a-custom-script-to-install-iis"></a>Azure CLI で仮想マシンを作成し、カスタム スクリプトで IIS をインストールする
 

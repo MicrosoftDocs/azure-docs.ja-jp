@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用して Government とパブリック リージョンの間で Azure VM を移動する
 description: Azure Site Recovery を使用して、Azure Government とパブリック リージョンの間で Azure VM を移動します。
-author: rajani-janaki-ram
+author: sideeksh
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
-ms.author: rajanaki
+ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: d99a5feb344f970b10925b596726520b9dba9464
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a76ebf95b92b6e1251a04daa9ffb48a9abe15b50
+ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134023"
+ms.lasthandoff: 09/03/2020
+ms.locfileid: "89425349"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Government とパブリック リージョンの間で Azure VM を移動する 
 
@@ -53,7 +53,7 @@ ms.locfileid: "86134023"
 VM を Azure にレプリケートするアクセス許可がお使いの Azure アカウントに与えられていることを確認します。
 
 - Azure にマシンをレプリケートするために必要な[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)を確認します。
-- [ロールベースのアクセス許可](../role-based-access-control/role-assignments-portal.md)を確認し、変更します。 
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) のアクセス許可を確認して変更を加えます。 
 
 ### <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
 

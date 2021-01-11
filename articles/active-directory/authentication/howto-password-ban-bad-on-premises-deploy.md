@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 759a5fa2be5a3df50160d2fd0ac4231c9f49329b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143220"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718953"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -101,7 +101,7 @@ Azure AD パスワード保護 DC エージェントには、次の要件が適�
     * Active Directory ドメインまたはフォレストは、Windows Server 2012 のドメインの機能レベル (DFL) またはフォレストの機能レベル (FFL) である必要はありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアの実行に必要な最低限の DFL や FFL はありません。
 * Azure AD パスワード保護 DC エージェントを実行するすべてのマシンに .NET 4.5 がインストールされている必要があります。
 * Azure AD パスワード保護 DC エージェント サービスを実行しているすべての Active Directory ドメインは、sysvol レプリケーションに分散ファイル システム レプリケーション (DFSR) を使用する必要があります。
-   * ご利用のドメインでまだ DFSR を使用していない場合、Azure AD パスワード保護をインストールする前に移行する必要があります。 詳細については、次を参照してください。[SYSVOL レプリケーション移行ガイド:FRS レプリケーションから DFS レプリケーションに移行する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+   * ご利用のドメインでまだ DFSR を使用していない場合、Azure AD パスワード保護をインストールする前に移行する必要があります。 詳細については、次を参照してください。[SYSVOL レプリケーション移行ガイド:FRS レプリケーションから DFS レプリケーションに移行する](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
     > [!WARNING]
     > Azure AD パスワード保護 DC エージェント ソフトウェアは現在のところ、sysvol レプリケーションのために依然として FRS (DFSR の前身テクノロジ) を使用しているドメインにあるドメイン コントローラーにインストールされますが、この環境ではソフトウェアは正しく機能しません。
@@ -124,14 +124,14 @@ Azure AD パスワード保護 プロキシ サービスには、次の要件が
 * Azure AD パスワード保護プロキシ サービスがホストされているすべてのマシンを、このプロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 この機能は、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
 * Azure AD パスワード保護プロキシ サービスがホストされているすべてのマシンを、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
 * Azure AD に Azure AD パスワード保護プロキシ サービスとフォレストを登録する "*グローバル管理者*" アカウント。
-* [アプリケーション プロキシ環境の設定手順](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)で指定されている一連のポートと URL に対して、ネットワーク アクセスを有効にする必要があります。
+* [アプリケーション プロキシ環境の設定手順](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)で指定されている一連のポートと URL に対して、ネットワーク アクセスを有効にする必要があります。
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Microsoft Azure AD Connect エージェント アップデーターの前提条件
 
 Microsoft Azure AD Connect エージェント アップデーター サービスは、Azure AD パスワード保護プロキシ サービスとサイド バイ サイドでインストールされます。 Microsoft Azure AD Connect エージェント アップデーター サービスを機能させるには、追加の構成が必要です。
 
-* お使いの環境で HTTP プロキシ サーバーを使用している場合は、「[既存のオンプレミス プロキシ サーバーと連携する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)」に明記されているガイドラインに従ってください。
-* Microsoft Azure AD Connect Agent Updater サービスでは、[TLS 要件](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#tls-requirements)で指定されている TLS 1.2 の手順も必要です。
+* お使いの環境で HTTP プロキシ サーバーを使用している場合は、「[既存のオンプレミス プロキシ サーバーと連携する](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)」に明記されているガイドラインに従ってください。
+* Microsoft Azure AD Connect Agent Updater サービスでは、[TLS 要件](../manage-apps/application-proxy-add-on-premises-application.md#tls-requirements)で指定されている TLS 1.2 の手順も必要です。
 
 > [!WARNING]
 > Azure AD パスワード保護プロキシと Azure AD アプリケーション プロキシでは、異なるバージョンの Microsoft Azure AD Connect エージェント アップデーター サービスがインストールされます。そのため、説明ではアプリケーション プロキシの内容を示しています。 これらの異なるバージョンは、サイドバイサイドでインストールされた場合に互換性がないため、これを実行するとエージェント アップデーター サービスがソフトウェアの更新のために Azure に接続できなくなります。そのため、Azure AD パスワード保護プロキシとアプリケーション プロキシを同じコンピューター上にインストールしないでください。

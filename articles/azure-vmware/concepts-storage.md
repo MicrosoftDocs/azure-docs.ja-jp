@@ -1,18 +1,18 @@
 ---
 title: 概念 - ストレージ
-description: Azure VMware Solution (AVS) プレビューのプライベート クラウドの主なストレージ機能について説明します。
+description: Azure VMware Solution プレビューのプライベート クラウドの主なストレージ機能について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91484c1baae9801684bc49b931fa2080db676a00
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84604118"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752220"
 ---
-# <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Azure VMware Solution (AVS) プレビューのストレージの概念
+# <a name="azure-vmware-solution-preview-storage-concepts"></a>Azure VMware Solution プレビューのストレージの概念
 
-AVS プライベート クラウドは、ネイティブのクラスター全体のストレージに VMware vSAN を提供します。 クラスター内の各ホストのローカル ストレージはすべて、vSAN データストアで使用されます。また、保存データの暗号化は既定で使用可能で、有効になっています。 Azure Storage のリソースを使用すると、プライベート クラウドのストレージ機能を拡張できます。
+Azure VMware Solution のプライベート クラウドは、ネイティブのクラスター全体のストレージに VMware vSAN を提供します。 クラスター内の各ホストのローカル ストレージはすべて、vSAN データストアで使用されます。また、保存データの暗号化は既定で使用可能で、有効になっています。 Azure Storage のリソースを使用すると、プライベート クラウドのストレージ機能を拡張できます。
 
 ## <a name="vsan-clusters"></a>vSAN クラスター
 

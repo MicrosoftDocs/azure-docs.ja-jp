@@ -1,6 +1,6 @@
 ---
-title: Azure portal を使用してリソースをデプロイする
-description: Azure portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
+title: Azure Portal を使用してリソースをデプロイする
+description: Azure Portal と Azure Resource Manager を使用して、サブスクリプション内のリソース グループにリソースをデプロイします。
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: 31f80eb617820def871633dac1541c7dc3bed691
@@ -10,11 +10,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85255264"
 ---
-# <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure portal でリソースをデプロイする
+# <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>ARM テンプレートと Azure Portal でリソースをデプロイする
 
-[Azure portal](https://portal.azure.com) と [Azure Resource Manager (ARM) のテンプレート](overview.md) を使用して、Azure にリソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../management/manage-resources-portal.md)」を参照してください。
+[Azure Portal](https://portal.azure.com) と [Azure Resource Manager (ARM) のテンプレート](overview.md) を使用して、Azure にリソースをデプロイする方法について説明します。 リソース管理の詳細については、「[Manage Azure resources by using the Azure Portal (Azure Portal を使用した Azure リソースの管理)](../management/manage-resources-portal.md)」を参照してください。
 
-Azure portal を使用して Azure リソースをデプロイするには、通常、次の 2 つの手順が必要です。
+Azure Portal を使用して Azure リソースをデプロイするには、通常、次の 2 つの手順が必要です。
 
 - リソース グループを作成します。
 - リソースをリソース グループにデプロイします。
@@ -25,7 +25,7 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-1. 新しいリソース グループを作成するには、[Azure portal](https://portal.azure.com) から **[リソース グループ]** を選択します。
+1. 新しいリソース グループを作成するには、[Azure Portal](https://portal.azure.com) から **[リソース グループ]** を選択します。
 
    ![リソース グループの選択](./media/deploy-portal/select-resource-groups.png)
 
@@ -49,7 +49,7 @@ Azure portal を使用して Azure リソースをデプロイするには、通
 
 リソース グループを作成したら、そのグループに Marketplace からリソースをデプロイできます。 Marketplace には、一般的なシナリオに対応する事前定義されたソリューションが用意されています。
 
-1. デプロイを開始するには、[Azure portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
+1. デプロイを開始するには、[Azure Portal](https://portal.azure.com) から **[リソースの作成]** を選択します。
 
    ![新しいリソース](./media/deploy-portal/new-resources.png)
 

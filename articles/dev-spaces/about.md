@@ -6,12 +6,12 @@ ms.topic: overview
 description: Azure Kubernetes Service クラスターにおける反復型の迅速な Kubernetes 開発エクスペリエンスをチームに提供する Azure Dev Spaces について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 691845cd888e4d24c1144f2805402a3baf14a86e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ad884d5e054f23269b238b791e250c732d70a9b8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006966"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210642"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Azure Dev Spaces とは
 
@@ -42,8 +42,10 @@ Azure Dev Spaces は、[一部のリージョン][supported-regions]の AKS ク�
 
 ## <a name="next-steps"></a>次のステップ
 
-[チーム開発のクイック スタート][team-development-quickstart]を参照して、Azure Dev Spaces を使った迅速で反復的なチーム開発の詳細を確認してください。
+Azure Dev Spaces のしくみの詳細について確認します。
+
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces のしくみ](how-dev-spaces-works.md)
 
 [how-dev-spaces-works]: how-dev-spaces-works.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[team-development-quickstart]: quickstart-team-development.md

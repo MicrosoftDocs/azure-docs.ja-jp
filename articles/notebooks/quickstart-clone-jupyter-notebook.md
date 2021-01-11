@@ -3,12 +3,12 @@ title: Azure Notebooks プレビューを使用して GitHub から Jupyter ノ�
 description: 短時間で GitHub リポジトリから Jupyter ノートブックを複製し、ご自分の Azure Notebooks アカウントで実行します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 35352e74a8db071a2f85bd71857d47f3af1953e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 267e79e7d4bf108ac3b2c72d64cee5a07ba638be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85833088"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424479"
 ---
 # <a name="quickstart-clone-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを複製する
 
@@ -49,11 +49,11 @@ Azure Notebooks のクローンはクラウドに存在するため、コラボ�
 
 1. 複製が完了すると、Azure Notebooks によって新しいプロジェクトが表示され、すべてのファイルのコピーがあることを確認できます。
 
-    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
+    :::image type="content" source="media/quickstarts/completed-clone.png" alt-text="完了した複製の表示。" lightbox="media/quickstarts/completed-clone.png":::
 
 ## <a name="share-a-notebook"></a>ノートブックを共有する
 
-1. 複製したプロジェクトのコピーを共有するには、 **[共有]** コントロールを使用する、リンクを取得する、リンクを含む HTML または Markdown のコードを取得する、またはリンクを含む電子メール メッセージを作成します。
+1. 複製したプロジェクトのコピーを共有するには、**[共有]** コントロールを使用する、リンクを取得する、リンクを含む HTML または Markdown のコードを取得する、またはリンクを含む電子メール メッセージを作成します。
 
     ![プロジェクト共有コマンド](media/quickstarts/share-project-command.png)
 

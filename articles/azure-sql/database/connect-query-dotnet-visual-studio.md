@@ -5,19 +5,19 @@ titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: sqldbrb=2 
+ms.custom: devx-track-csharp, sqldbrb=2
 ms.devlang: dotnet
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 497de36d63a909d2c53374482dfe09d1f19dfded
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/10/2020
+ms.openlocfilehash: 8fe541432366d3c2ac1dc1470fea66d328f79780
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033116"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213042"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:Visual Studio で .NET および C# を使用して、Azure SQL Database または Azure SQL Managed Instance のデータベースに接続してクエリを実行します
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,16 +53,16 @@ ms.locfileid: "87033116"
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+2. **[SQL Database]** または **[SQL Managed Instance]** ページに移動します。
 
-3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL マネージド インスタンスまたは Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
+3. **[概要]** ページで、Azure SQL Database のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、Azure SQL Managed Instance または Azure VM 上の SQL Server の場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
 > [!NOTE]
 > Azure VM 上の SQL Server の接続情報については、[SQL Server インスタンスへの接続](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)に関するページをご覧ください。
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Azure SQL Database のデータベースに対してクエリを実行するコードを作成する
 
-1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。 
+1. Visual Studio で、新しいプロジェクトを作成します。 
    
 1. **[新しいプロジェクト]** ダイアログで、 **[Visual C#]** 、 **[コンソール アプリ (.NET Framework)]** の順に選択します。
    
@@ -70,9 +70,9 @@ ms.locfileid: "87033116"
    
 1. **[プロジェクト]**  >  **[NuGet パッケージの管理]** の順に選択します。 
    
-1. **[NuGet パッケージ マネージャー]** で **[参照]** タブを選択し、**System.Data.SqlClient** を検索して選択します。
+1. **[NuGet パッケージ マネージャー]** で **[参照]** タブを選択し、**Microsoft.Data.SqlClient** を検索して選択します。
    
-1. **[System.Data.SqlClient]** ページで **[インストール]** を選択します。 
+1. **[Microsoft.Data.SqlClient]** ページで **[インストール]** を選択します。 
    - プロンプトが表示されたら、 **[OK]** を選択してインストールを続行します。 
    - **[ライセンスへの同意]** ウィンドウが表示された場合は **[同意する]** を選択します。
    
@@ -85,7 +85,7 @@ ms.locfileid: "87033116"
    
    ```csharp
    using System;
-   using System.Data.SqlClient;
+   using Microsoft.Data.SqlClient;
    using System.Text;
    
    namespace sqltest

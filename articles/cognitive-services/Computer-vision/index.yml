@@ -11,19 +11,19 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: c2f0e0ce24b6835a3c4da7dd73581b76836334bc
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+  ms.openlocfilehash: 6b72b632cb1cea104d7db2afbb870725496326b8
+  ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87281125"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89321805"
 landingContent:
 - title: Computer Vision について
   linkLists:
   - linkListType: overview
     links:
     - text: Computer Vision とは
-      url: Home.md
+      url: overview.md
   - linkListType: whats-new
     links:
     - text: 新機能
@@ -124,7 +124,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Computer Vision API v3.1 preview.1
+    - text: Computer Vision API v3.1 プレビュー
       url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005
     - text: Computer Vision API v3.0
       url: https://aka.ms/computer-vision-v3-ref

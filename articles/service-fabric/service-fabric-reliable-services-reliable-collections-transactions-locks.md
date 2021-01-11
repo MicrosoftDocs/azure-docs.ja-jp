@@ -4,12 +4,12 @@ description: Azure Service Fabric Reliable State Manager と Reliable Collection
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.custom: sfrev
-ms.openlocfilehash: c7d0970918b0fc60f1208b5997d696a57e5bc698
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d1094462ebabcea1fbead3d5b30fdfb8dda6463a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245111"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500284"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Azure Service Fabric Reliable Collection のトランザクションとロック モード
 
@@ -77,7 +77,7 @@ FIFO の保持のため、`TryPeekAsync` または `TryDequeueAsync` により R
 デッドロック検出のために、Reliable Collection API のタイムアウト引数が使用されます。
 たとえば、2 つのトランザクション (T1 と T2) が K1 を読み取って更新しようとしているとします。
 いずれも共有ロックを取得することになるため、両方にデッドロックが発生する可能性があります。
-この場合、一方または両方の操作がタイムアウトになります。このシナリオでは、更新ロックによってこのようなデッドロックが発生する可能性があります。
+この場合、一方または両方の操作がタイムアウトになります。このシナリオでは、更新ロックによってこのようなデッドロックが回避される可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

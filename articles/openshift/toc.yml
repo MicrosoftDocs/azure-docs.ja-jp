@@ -28,6 +28,12 @@
           href: configure-azure-ad-cli.md
         - name: Azure Active Directory 認証を構成する (ポータル)
           href: configure-azure-ad-ui.md
+    - name: Velero を使用してアプリケーションのバックアップと復元を作成する
+      items:
+        - name: Velero を使用してクラスター アプリケーションのバックアップを作成する
+          href: howto-create-a-backup.md
+        - name: Velero を使用してクラスター アプリケーションの復元を作成する
+          href: howto-create-a-restore.md
     - name: Azure Red Hat OpenShift 4 の監視とログ記録
       items:
         - name: Azure Red Hat OpenShift 4 における Azure Monitor for containers (プレビュー)
@@ -59,7 +65,7 @@
                   href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
                   maintainContext: true
                 - name: Azure Red Hat OpenShift 3.11 で Azure Monitor for containers を無効にする
-                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  href: ../azure-monitor/insights/container-insights-optout-openshift-v3.md
                   maintainContext: true
         - name: Azure Red Hat OpenShift 3.11 で特権コンテナーを実行する
           href: howto-run-privileged-containers.md
@@ -73,6 +79,8 @@
   items:
     - name: Azure Red Hat OpenShift 4 クラスターのネットワーク
       href: concepts-networking.md
+    - name: Azure Red Hat OpenShift 3.11 から Azure Red Hat OpenShift 4 への移行
+      href: migration.md
 - name: リファレンス
   items:
     - name: Azure Red Hat OpenShift CLI
@@ -89,6 +97,8 @@
       href: supported-resources.md
     - name: Azure Red Hat OpenShift 4.3 でサポートされているリソース
       href: support-policies-v4.md
+    - name: Azure Red Hat OpenShift 4 のサポート ライフサイクル
+      href: support-lifecycle.md
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Azure Red Hat OpenShift 4.3 のドキュメント

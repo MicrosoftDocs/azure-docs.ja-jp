@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83cc75c1d69ee7232edf0c21643d25027b97f088
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14612247d241aed420a76ff40e19d04164cbe150
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339724"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049929"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>条件付きアクセスのデプロイを計画する
 
@@ -242,7 +242,7 @@ CA ポリシー条件によってアクセス制御がトリガーされない�
 
 [レポート専用モード](concept-conditional-access-report-only.md)を使用すると、管理者は、環境で CA ポリシーを有効にする前に、その影響を評価できます。
 
-[CA ポリシーでレポート専用モードを構成する](howto-conditional-access-report-only.md)方法について確認してください。
+[CA ポリシーでレポート専用モードを構成する](howto-conditional-access-insights-reporting.md)方法について確認してください。
 
 ### <a name="plan-for-disruption"></a>中断に対する計画を立てる
 
@@ -313,7 +313,7 @@ MFA アクセスを必須とする一般的なユース ケース:
 
 * [管理者による](howto-conditional-access-policy-admin-mfa.md)
 
-* [特定のアプリに対する](app-based-mfa.md)
+* [特定のアプリに対する](../authentication/tutorial-enable-azure-mfa.md)
 
 * [すべてのユーザーに対して](howto-conditional-access-policy-all-users-mfa.md)
 
@@ -384,18 +384,18 @@ CA ポリシーを使用すると、侵害された可能性がある ID から�
 | - | - | - |
 | [社外ネットワークからの利用は MFA を要求する](untrusted-networks.md)| 承認済みユーザーが信頼できる場所または社内にいるときにアプリにサインインする| ユーザーに MFA は求められません |
 | [社外ネットワークからの利用は MFA を要求する](untrusted-networks.md)| 承認済みユーザーが信頼できる場所または社内にいないときにアプリにサインインする| ユーザーには MFA が求められ、正常にサインインできます |
-| [(管理者に) MFA を要求する](howto-baseline-protect-administrators.md)| 全体管理者がアプリにサインインする| 管理者に MFA が求められます |
-| [リスクの高いサインイン](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)| ユーザーが未承認のブラウザーを使用してアプリにサインインする| 管理者に MFA が求められます |
+| [(管理者に) MFA を要求する](../fundamentals/concept-fundamentals-security-defaults.md)| 全体管理者がアプリにサインインする| 管理者に MFA が求められます |
+| [リスクの高いサインイン](../identity-protection/howto-identity-protection-configure-risk-policies.md)| ユーザーが未承認のブラウザーを使用してアプリにサインインする| 管理者に MFA が求められます |
 | [デバイス管理](require-managed-devices.md)| 承認済みユーザーが承認済みデバイスからサインインしようとする| アクセスが許可されます |
 | [デバイス管理](require-managed-devices.md)| 承認済みユーザーが承認されていないデバイスからサインインしようとする| アクセスはブロックされます |
-| [危険なユーザーのパスワード変更](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)| 承認済みユーザーが侵害された資格情報を使用してサインインしようとする (高リスクのサインイン)| ユーザーはパスワードを変更するよう求められるか、ポリシーに基づいてアクセスがブロックされます |
+| [危険なユーザーのパスワード変更](../identity-protection/howto-identity-protection-configure-risk-policies.md)| 承認済みユーザーが侵害された資格情報を使用してサインインしようとする (高リスクのサインイン)| ユーザーはパスワードを変更するよう求められるか、ポリシーに基づいてアクセスがブロックされます |
 
 
 ### <a name="configure-the-test-policy"></a>テスト ポリシーを構成する
 
 [Azure portal](https://portal.azure.com/) の [Azure Active Directory] > [セキュリティ] > [条件付きアクセス] で CA ポリシーを構成します。
 
-CA ポリシーを作成する方法について詳しくは、次の例を参照してください。[ユーザーが Azure portal にサインインしたときに MFA を要求する CA ポリシー](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。 このクイック スタートは、次のために役立ちます。
+CA ポリシーを作成する方法について詳しくは、次の例を参照してください。[ユーザーが Azure portal にサインインしたときに MFA を要求する CA ポリシー](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。 このクイック スタートは、次のために役立ちます。
 
 * ユーザー インターフェイスに慣れる。
 
@@ -442,7 +442,7 @@ CA ポリシーを作成する方法について詳しくは、次の例を参�
 > [!NOTE]
 >  このオプションは、ユーザーを信頼できる状態でのみ、控えめに使用してください。 ユーザーはできるだけ早くポリシーまたはグループに追加し直す必要があります。
 
-* **ポリシーを削除する。** ポリシーが不要になった場合は、それを[削除します](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-azure-mfa?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json)。
+* **ポリシーを削除する。** ポリシーが不要になった場合は、それを[削除します](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)。
 
 ## <a name="manage-access-to-cloud-apps"></a>クラウド アプリへのアクセスを管理する
 
@@ -501,4 +501,4 @@ CA ポリシーの場所の条件によって、アクセス制御設定をユ�
 
 [ID 保護の詳細を確認する](../identity-protection/overview-identity-protection.md)
 
-[Microsoft Graph API を使用して CA ポリシーを管理する](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Microsoft Graph API を使用して CA ポリシーを管理する](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)

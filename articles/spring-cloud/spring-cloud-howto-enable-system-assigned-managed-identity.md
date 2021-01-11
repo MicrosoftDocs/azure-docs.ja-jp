@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1b9d7326ec13176fbe65ba430a8a33bb93a48f74
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c092052e05f355838f3853fa7376b46ef743de7
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091455"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299647"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法
 Azure リソースのマネージド ID では、Azure Active Directory で自動的に管理される ID が、Azure Spring Cloud アプリケーションなどの Azure リソースに提供されます。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。
@@ -21,7 +21,7 @@ Azure リソースのマネージド ID では、Azure Active Directory で自�
 
 ## <a name="prerequisites"></a>前提条件
 Azure リソースのマネージド ID に習熟してない場合は、[概要に関するセクション](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)を参照してください。
-デプロイ済みの Azure Spring Cloud インスタンスが必要です。 [Azure CLI を使用してデプロイするためのクイックスタート](spring-cloud-quickstart-launch-app-cli.md)に従ってください。
+デプロイ済みの Azure Spring Cloud インスタンスが必要です。 [Azure CLI を使用してデプロイするためのクイックスタート](spring-cloud-quickstart.md)に従ってください。
 
 ## <a name="add-a-system-assigned-identity"></a>システム割り当て ID を追加する
 システム割り当て ID を持つアプリを作成するには、アプリケーションに追加のプロパティを設定する必要があります。
@@ -72,7 +72,7 @@ Azure Spring Cloud では、トークンの取得に Azure Virtual Machine と�
 1. 目的の仮想マシンに移動して **[ID]** を選択します。
 1. **[システム割り当て済み]** / **[状態]** で **[オフ]** を選択し、 **[保存]** をクリックします。
 
- ![ポータルでのマネージド ID](./media/spring-cloud-managed-identity/remove-identity.png)
+ ![マネージド ID](./media/spring-cloud-managed-identity/remove-identity.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 不要になったシステム割り当てマネージド ID をアプリから削除するには、次のコマンドを使用します。

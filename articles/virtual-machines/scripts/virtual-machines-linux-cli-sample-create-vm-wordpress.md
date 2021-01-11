@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: ff02c46422d4cb64365213e3b80aca532df9cecf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 17bb5a3cc7f612c1d702925ae0551c99386bbd69
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509734"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501425"
 ---
 # <a name="create-a-vm-with-wordpress"></a>WordPress がインストールされた VM の作成
 

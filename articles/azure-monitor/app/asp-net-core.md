@@ -2,13 +2,14 @@
 title: ASP.NET Core アプリケーション用の Azure Application Insights | Microsoft Docs
 description: ASP.NET Core Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 1d5ce4fe2a3ceb3235b77916aa408c681f81b0de
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 719bf997254c98c5790d6d6733982fea08541967
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517231"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936522"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -36,6 +37,8 @@ ms.locfileid: "86517231"
 - 有効な Application Insights インストルメンテーション キー。 Application Insights にテレメトリを送信するには、このキーが必要です。 インストルメンテーション キーを取得するために新しい Application Insights リソースを作成する必要がある場合は、「[Application Insights リソースの作成](./create-new-resource.md)」をご覧ください。
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Application Insights のサーバー側テレメトリを有効にする (Visual Studio)
+
+Visual Studio for Mac の場合は、[手動のガイダンス](#enable-application-insights-server-side-telemetry-no-visual-studio)を使用します。 この手順は、Visual Studio の Windows バージョンでのみサポートされています。
 
 1. Visual Studio でプロジェクトを開きます。
 
@@ -115,6 +118,10 @@ ms.locfileid: "86517231"
 
     > [!NOTE]
     > コードで指定されたインストルメンテーション キーは、他のオプションより優先される環境変数 `APPINSIGHTS_INSTRUMENTATIONKEY` より優先されます。
+
+### <a name="user-secrets-and-other-configuration-providers"></a>ユーザー シークレットとその他の構成プロバイダー
+
+インストルメンテーション キーを ASP.NET Core ユーザー シークレットに格納するか、別の構成プロバイダーから取得する場合は、`Microsoft.Extensions.Configuration.IConfiguration` パラメーターでオーバーロードを使用できます。 たとえば、「 `services.AddApplicationInsightsTelemetry(Configuration);` 」のように入力します。
 
 ## <a name="run-your-application"></a>アプリケーションを実行する
 
@@ -221,7 +228,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Application Insights SDK for ASP.NET Core では、固定レートとアダプティブ サンプリングの両方がサポートされています。 アダプティブ サンプリングは、既定で有効になっています。 
 
-詳しくは、「[ASP.NET Core アプリケーションのためのアダプティブ サンプリングの構成](../../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)」をご覧ください。
+詳しくは、「[ASP.NET Core アプリケーションのためのアダプティブ サンプリングの構成](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications)」をご覧ください。
 
 ### <a name="adding-telemetryinitializers"></a>TelemetryInitializers の追加
 
@@ -455,12 +462,15 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
-[コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
+* [コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
+
+最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./release-notes.md)。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ユーザー フローの探索](../../azure-monitor/app/usage-flows.md): ユーザーがアプリ内をどのように移動しているかを把握します。
+* [ユーザー フローの探索](./usage-flows.md): ユーザーがアプリ内をどのように移動しているかを把握します。
 * [スナップショット コレクションを構成](./snapshot-debugger.md)して、例外がスローされたときのソース コードと変数の状態を確認します。
-* [API を使用](../../azure-monitor/app/api-custom-events-metrics.md)して、アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
-* [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)の使用: 世界中からアプリを常にチェックします。
+* [API を使用](./api-custom-events-metrics.md)して、アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
+* [可用性テスト](./monitor-web-app-availability.md)の使用: 世界中からアプリを常にチェックします。
 * [ASP.NET Core での依存関係の挿入](/aspnet/core/fundamentals/dependency-injection)
+

@@ -7,17 +7,17 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 1/8/2019
-ms.openlocfilehash: 85366b8b3e3ba7d612373e6b754aa9805d00f8f5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8a1b38b9f673669adb0b5fcf67d9d560c24d5c2a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116966"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825958"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する
 
 > [!NOTE]
-> "ユーザー" という用語は、Hyperscale (Citus) サーバー グループ内のユーザーを指します。 Azure サブスクリプションのユーザーとその特権について確認する場合は、[Azure ロール ベース アクセス制御 (RBAC) に関する記事](../role-based-access-control/built-in-roles.md)を参照するか、または[ロールのカスタマイズ方法](../role-based-access-control/custom-roles.md)について確認してください。
+> "ユーザー" という用語は、Hyperscale (Citus) サーバー グループ内のユーザーを指します。 代わりに Azure サブスクリプションのユーザーとその特権について学習するには、[Azure ロールベースのアクセス制御 (Azure RBAC) に関する記事](../role-based-access-control/built-in-roles.md)にアクセスするか、または[ロールのカスタマイズ方法](../role-based-access-control/custom-roles.md)を確認してください。
 
 ## <a name="the-server-admin-account"></a>サーバー管理者アカウント
 

@@ -11,13 +11,13 @@ ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 03/04/2020
 ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: 430558049aecd6dbf6ccb504a93e8a20f9038bf2
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: fa6b9ceece6cc3cc625b06ff12cef25b62ea7bd4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84606719"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922312"
 ---
 # <a name="quickstart-use-the-bing-image-search-client-library"></a>クイック スタート:Bing Image Search クライアント ライブラリを使用する
 

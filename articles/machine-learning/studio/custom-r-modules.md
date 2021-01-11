@@ -1,6 +1,5 @@
 ---
-title: カスタム R モジュールを作成し、デプロイする
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):カスタム R モジュールの作成とデプロイ - Azure
 description: ML Studio (クラシック) でカスタム R モジュールを作成してデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 389290b01848d598ada9ca49bee932a764854088
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b050e8c70de4edc39c8ddad71d2169d5308607b
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957326"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429383"
 ---
-# <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) 用のカスタム R モジュールを定義する
+# <a name="define-custom-r-modules-for-machine-learning-studio-classic"></a>Machine Learning Studio (classic) 用のカスタム R モジュールを定義する
+
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
 
 このトピックでは、カスタム R Studio (クラシック) を作成してデプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
 
@@ -90,7 +91,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE)
 </Module>
 ```
 
-XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名と "完全に" 一致する必要があります (この例では *CustomAddRows*)。 
+XML ファイル内の **Input** 要素と **Arg** 要素の **id** 属性の値が、CustomAddRows.R ファイルの R コードの関数パラメーター名 (この例では、*dataset1*、*dataset2*、および *swap*) と正確に一致する必要があることに注意します。 同様に、**Language** 要素の **entryPoint** 属性の値が、R スクリプトの関数名 (この例では *CustomAddRows*) と正確に一致する必要があります。 
 
 これに対して、**Output** 要素の **id** 属性は、R スクリプトのどの変数にも対応していません。 複数の出力が必要な場合は、XML ファイルで *Outputs* 要素が宣言されている順序と " **同じ順序** " で結果が配置されたリストを R 関数から返します。
 
@@ -177,7 +178,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
 * **Input** 要素の **IsOptional** 属性の値は省略可能です (指定されていない場合、既定で *false* に設定されます)。ただし、この値を指定する場合は、*true* または *false* を指定する必要があります。
 
 ### <a name="output-elements"></a>Output 要素
-**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです  (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
+**標準出力ポート:** 出力ポートは R 関数の戻り値にマップされ、後続のモジュールで使用できます。 現在サポートされている標準出力ポートの型は *DataTable* だけです (*Learners* と *Transforms* がサポートされる予定です)。*DataTable* 出力は、次のように定義します。
 
 ```xml
 <Output id="dataset" name="Dataset" type="DataTable">
@@ -220,7 +221,7 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
 } 
 ```
 
-**視覚化出力:** R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization* 型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
+**視覚化出力** : R グラフィックス デバイスからの出力とコンソール出力を表示する *Visualization*型の出力ポートを指定することもできます。 このポートは R 関数の出力には含まれず、他の出力ポートの型の順序に干渉しません。 カスタム モジュールに視覚化ポートを追加するには、**type** 属性の値として *Visualization* を指定した **Output** 要素を追加します。
 
 ```xml
 <Output id="deviceOutput" name="View Port" type="Visualization">
@@ -302,11 +303,11 @@ CustomAddRows <- function(dataset1, dataset2, swap=FALSE) {
   * **allowedTypes** - 選択できる列の型をフィルター処理します。 有効な値は、次のとおりです。 
     
     * 数値
-    * Boolean
+    * ブール値
     * Categorical
     * String
     * Label
-    * 機能
+    * 特徴量
     * Score
     * All
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 

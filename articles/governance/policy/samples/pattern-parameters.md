@@ -1,14 +1,14 @@
 ---
 title: パターン:ポリシー定義内のパラメーター
 description: この Azure Policy パターンでは、ポリシー定義内でパラメーターを使用する方法の例を示します。
-ms.date: 05/20/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: e163a243a0dc23f04d564287b630634eb4662cda
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6d938cdf2f31d30932d3631e99254b7d833f2941
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83696731"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545575"
 ---
 # <a name="azure-policy-pattern-parameters"></a>Azure Policy パターン: パラメーター
 

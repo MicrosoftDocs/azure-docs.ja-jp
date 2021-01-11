@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 8f9513c3ac28b8f65d9023fc529927b208323ca1
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 7eca9b4a8cf09f2f35d56dc22fc25169be192f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834460"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066240"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
 
@@ -50,7 +50,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
    | **リソース グループ** | <*Azure リソース グループ名*> | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/management/overview.md)を作成するか選択し、このアプリに関連するすべてのリソースを整理します。 | 
    | **場所** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
-   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を通じてロジック アプリの[診断ログ](../logic-apps/monitor-logic-apps-log-analytics.md)を設定します。 Log Analytics ワークスペースが既にあることが要件です。 | 
+   | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)を通じてロジック アプリの[診断ログ](../logic-apps/monitor-logic-apps-log-analytics.md)を設定します。 Log Analytics ワークスペースが既にあることが要件です。 | 
    |||| 
 
 4. 準備ができたら、 **[ダッシュボードにピン留めする]** を選択します。 そうすることで、ロジック アプリがデプロイ後に Azure ダッシュボードに自動的に表示され、開かれます。 **[作成]** を選択します。
@@ -146,7 +146,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
 ## <a name="get-support"></a>サポートを受ける
 
-* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-logic-apps.html)を参照してください。
+* ご質問がある場合は、[Azure Logic Apps に関する Microsoft Q&A 質問ページ](/answers/topics/azure-logic-apps.html)を参照してください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次のステップ

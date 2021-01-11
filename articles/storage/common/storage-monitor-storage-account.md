@@ -1,6 +1,6 @@
 ---
 title: Azure portal での Azure Storage アカウントの監視方法 | Microsoft Docs
-description: Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。
+description: Azure Portal と Azure Storage Analytics を使用して、Azure でストレージ アカウントを監視する方法について説明します。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,14 +9,14 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684681"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034670"
 ---
-# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
+# <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure Portal でのストレージ アカウントの監視
 
 [Azure Storage Analytics](storage-analytics.md) では、すべてのストレージ サービスのメトリックと、BLOB、キュー、およびテーブルのログを利用できます。 [Azure Portal](https://portal.azure.com) を使用すると、アカウントに対してどのメトリックとログを記録するか、また、そのメトリック データを視覚的に表現するグラフを構成できます。 
 
@@ -29,7 +29,7 @@ ms.locfileid: "83684681"
 >
 > Premium パフォーマンス ブロック BLOB のストレージ アカウントでは、ストレージ分析メトリックをサポートしていませんが、ログ記録をサポートしています。 REST API またはクライアント ライブラリを使用してプログラムでログ記録を有効にすることができます。 Premium パフォーマンス ブロック BLOB のストレージ アカウントでメトリックを表示する場合は、[Azure Monitor の Azure Storage メトリック](storage-metrics-in-azure-monitor.md)を使用することを検討してください。
 >
-> Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
+> Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 >
 
 ## <a name="configure-monitoring-for-a-storage-account"></a>ストレージ アカウントの監視の設定
@@ -141,7 +141,7 @@ BLOB、テーブル、およびキューごとに、読み取り要求、書き�
     ![Azure Portal でログを構成する。](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. **[保存]** をクリックします。
 
-診断ログは、ストレージ アカウントの *$logs* という名前の BLOB コンテナーに保存されます。 ログ データを表示するには、[Microsoft Storage Explorer](https://storageexplorer.com) などのストレージ エクスプローラーを使用するか、プログラムによってストレージ クライアント ライブラリまたは PowerShell を使用します。
+診断ログは、ストレージ アカウントの *$logs* という名前の BLOB コンテナーに保存されます。 ログ データを表示するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com) などのストレージ エクスプローラーを使用するか、プログラムによってストレージ クライアント ライブラリまたは PowerShell を使用します。
 
 $Logs コンテナーへのアクセスについては、[ストレージ分析ログ](storage-analytics-logging.md)に関するページを参照してください。
 

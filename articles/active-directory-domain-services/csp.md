@@ -10,18 +10,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 2760f0d91f7ed1066b0020c4aedc7572af095cfb
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 524e3682e39b6d9153beeef781deeb20e6ea8750
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220322"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749647"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>Azure クラウド ソリューション プロバイダー向けの Azure Active Directory Domain Services のデプロイと管理
 
 Azure クラウド ソリューション プロバイダー (CSP) は Microsoft パートナー向けのプログラムであり、さまざまな Microsoft クラウド サービスのライセンス チャネルを提供します。 Azure CSP により、パートナーは販売の管理、課金関係の所有、技術および課金のサポートの提供が可能になり、顧客の単一窓口になることができます。 さらに、Azure CSP では、セルフサービス ポータルや付随する API など、ツールの完全なセットも提供しています。 これらのツールにより、CSP パートナーは Azure リソースを簡単にプロビジョニングおよび管理し、顧客とそのサブスクリプションに対して課金を行うことができます。
 
-[パートナー センター ポータル](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)は、すべての Azure CSP パートナー向けのエントリ ポイントであり、豊富な顧客管理機能や自動処理などを提供します。 Azure CSP パートナーは、Web ベースの UI を使用するか、PowerShell と各種 API 呼び出しを使用して、パートナー センターの機能を使用できます。
+[パートナー センター ポータル](/partner-center/azure-plan-lp)は、すべての Azure CSP パートナー向けのエントリ ポイントであり、豊富な顧客管理機能や自動処理などを提供します。 Azure CSP パートナーは、Web ベースの UI を使用するか、PowerShell と各種 API 呼び出しを使用して、パートナー センターの機能を使用できます。
 
 次の図は、CSP モデルのしくみを大まかに示しています。 ここで、Contoso には Azure Active Directory (Azure AD) テナントが存在します。 Contoso は、Azure CSP サブスクリプションにリソースをデプロイして管理する CSP と提携しています。 また、Contoso に直接課金される通常の Azure (Direct) サブスクリプションを持つこともできます。
 
@@ -33,7 +33,7 @@ CSP パートナーのテナントには、*管理*エージェント、*ヘル�
 
 CSP パートナーが Contoso の Azure CSP サブスクリプションをプロビジョニングすると、管理エージェント グループがそのサブスクリプションの所有者ロールに割り当てられます。 これにより、CSP パートナーの管理エージェントは、仮想マシン、仮想ネットワーク、Azure AD Domain Services などの Azure リソースを Contoso に代わってプロビジョニングするために必要な特権を持ちます。
 
-詳細については、「[Azure CSP overview (Azure CSP の概要)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)」をご覧ください。
+詳細については、「[Azure CSP overview (Azure CSP の概要)](/partner-center/azure-plan-lp)」をご覧ください。
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>Azure CSP サブスクリプションで Azure AD DS を使用する利点
 

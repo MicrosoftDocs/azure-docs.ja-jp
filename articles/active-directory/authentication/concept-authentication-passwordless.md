@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0295a73d325d8de7673b9a66c7047a80d82b09
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 70f7082de204cedd25b3b87b7157376505598712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981857"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718086"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
-多要素認証 (MFA) は、組織をセキュリティで保護する優れた方法ですが、多くの場合、ユーザーはパスワードを覚えておく必要があるのに加え、セキュリティ層が増えることに不満を感じます。 パスワードが削除され、ユーザーが持っているものとユーザー自身または知っているものに置き換えられるため、パスワードレスの認証はより便利な方法です。
+多要素認証 (MFA) のような機能は、組織をセキュリティで保護する優れた方法ですが、多くの場合、ユーザーはパスワードを覚えておく必要があるのに加え、セキュリティ層が増えることに不満を感じます。 パスワードが削除され、ユーザーが持っているものとユーザー自身または知っているものに置き換えられるため、パスワードレスの認証はより便利な方法です。
 
 | 認証  | ユーザーが持っているもの | ユーザー自身またはユーザーが知っているもの |
 | --- | --- | --- |
@@ -36,11 +36,11 @@ ms.locfileid: "85981857"
 
 ## <a name="windows-hello-for-business"></a>Windows Hello for Business
 
-Windows Hello for Business は、指定した Windows PC を所有しているインフォメーション ワーカーに最適です。 生体認証と PIN はユーザーの PC に直接関連付けられるため、所有者以外のユーザーからのアクセスは防止されます。 公開キー基盤 (PKI) 統合およびシングル サインオン (SSO) の組み込みサポートにより、Windows Hello for Business では、オンプレミスおよびクラウドの会社のリソースにシームレスにアクセスできる便利な方法を提供します。
+Windows Hello for Business は、指定された自分用の Windows PC を持っているインフォメーション ワーカーに最適です。 生体認証や PIN 資格情報はユーザーの PC に直接関連付けられるため、所有者以外のユーザーからのアクセスが防止されます。 公開キー基盤 (PKI) 統合およびシングル サインオン (SSO) の組み込みサポートにより、Windows Hello for Business では、オンプレミスおよびクラウドの会社のリソースにシームレスにアクセスできる便利な方法を提供します。
 
 ![Windows Hello for Business を使用したユーザー サインインの例](./media/concept-authentication-passwordless/windows-hellow-sign-in.jpeg)
 
-次の手順では、Azure Active Directory でのサインイン プロセスのしくみについて示します。
+以下の手順で、Azure AD を使用したサインイン プロセスがどのように機能するかを示します。
 
 ![Windows Hello for Business を使用したユーザー サインインに関連する手順の概要を示す図](./media/concept-authentication-passwordless/windows-hello-flow.png)
 
@@ -52,15 +52,15 @@ Windows Hello for Business は、指定した Windows PC を所有している�
 1. クラウド AP プロバイダーは、セッション キーと共に暗号化された PRT を受け取ります。 クラウド AP プロバイダーでは、デバイスのプライベート トランスポート キーを使用してセッション キーが復号化され、デバイスのトラステッド プラットフォーム モジュール (TPM) を使用してセッション キーが保護されます。
 1. クラウド AP プロバイダーから Windows に成功した認証応答が返されます。 その後、ユーザーは再度認証を行う必要なく (SSO)、Windows とクラウドおよびオンプレミスのアプリケーションにアクセスできるようになります。
 
-Windows Hello for Business の[計画ガイド](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide)を使用すると、Windows Hello for Business の展開の種類と、検討する必要がある選択肢を決定することができます。
+Windows Hello for Business の[計画ガイド](/windows/security/identity-protection/hello-for-business/hello-planning-guide)を使用すると、Windows Hello for Business の展開の種類と、検討する必要がある選択肢を決定することができます。
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator アプリ
 
-従業員の電話をパスワードレスの認証方法として使用できるようにします。 パスワードに加え、便利な多要素認証オプションとして Microsoft Authenticator アプリを既に使用されているかもしれません。 Authenticator アプリをパスワードレスのオプションとして使用することもできます。
+従業員の電話を、パスワードレスの認証手段とすることも可能です。 パスワードに加え、便利な多要素認証オプションとして Microsoft Authenticator アプリを既に使用されているかもしれません。 Authenticator アプリをパスワードレスのオプションとして使用することもできます。
 
 ![Microsoft Authenticator アプリを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)」を参照してください。
+Authenticator アプリは、あらゆる iOS や Android フォンを、強力なパスワードレスの資格情報に変えます。 ユーザーは、自分の電話で通知を受け取り、画面に表示される番号と電話の番号を照合してから、生体認証 (指紋または顔) あるいは PIN を使用して確認できます。 インストールの詳細については、「[Microsoft Authenticator アプリのダウンロードとインストール](../user-help/user-help-auth-app-download-install.md)」を参照してください。
 
 Authenticator アプリを使用したパスワードレス認証では、Windows Hello for Business と同じ基本的なパターンに従います。 これは、Azure AD によって使用されている Microsoft Authenticator アプリのバージョンを見つけられるように、ユーザーを識別する必要があるため、少し複雑になります。
 
@@ -75,11 +75,18 @@ Authenticator アプリを使用したパスワードレス認証では、Window
 1. nonce は秘密キーで署名され、Azure AD に返送されます。
 1. Azure AD では公開キーと秘密キーの検証が実行され、トークンが返されます。
 
+パスワードなしのサインインの使用を開始するには、方法に関する次の手順を完了してください。
+
+> [!div class="nextstepaction"]
+> [Authenticator アプリを使用してパスワードなしの署名を有効にする](howto-authentication-passwordless-phone.md)
+
 ## <a name="fido2-security-keys"></a>FIDO2 セキュリティ キー
 
 FIDO2 セキュリティ キーは、フォーム ファクターとして提供される可能性のある、フィッシングできない標準ベースのパスワードレス認証方法です。 Fast Identity Online (FIDO) は、パスワードレス認証のオープン標準です。 FIDO は、ユーザーおよび組織が標準を利用し、外部のセキュリティ キーまたはデバイスに組み込まれているプラットフォーム キーを使用して、ユーザー名やパスワードレスでリソースにサインインできるようにします。
 
-パブリック プレビューでは、従業員はセキュリティ キーを使用して、Azure AD またはハイブリッド Azure AD に参加済みの Windows 10 デバイスにサインインし、クラウドおよびオンプレミス リソースへのシングル サインオンを行うことができます。 ユーザーは、サポートされているブラウザーにサインインすることもできます。 FIDO2 セキュリティ キーは、セキュリティに非常に敏感であるか、2 番目のファクターとしての電話の使用を望まない、あるいは使用できないシナリオまたは従業員が存在する企業向けの優れたオプションです。
+従業員はセキュリティ キーを使用して、Azure AD またはハイブリッド Azure AD に参加済みの Windows 10 デバイスにサインインし、クラウドおよびオンプレミス リソースへのシングル サインオンを実現できます。 ユーザーは、サポートされているブラウザーにサインインすることもできます。 FIDO2 セキュリティ キーは、セキュリティに非常に敏感であるか、2 番目のファクターとしての電話の使用を望まない、あるいは使用できないシナリオまたは従業員が存在する企業向けの優れたオプションです。
+
+FIDO2 セキュリティ キーを使用した Azure AD へのサインインは、現在、プレビュー段階にあります。
 
 ![セキュリティ キーを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -113,7 +120,7 @@ FIDO Alliance によって FIDO2 認定されたキーが多数存在する場�
 | プロバイダー | Contact |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
-| Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |
+| Feitian | [https://shop.ftsafe.us/pages/microsoft](https://shop.ftsafe.us/pages/microsoft) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |
 | TrustKey Solutions | [https://www.trustkeysolutions.com/security-keys/](https://www.trustkeysolutions.com/security-keys/) |
@@ -127,7 +134,15 @@ FIDO Alliance によって FIDO2 認定されたキーが多数存在する場�
 
 ベンダーとして、サポートされているデバイスのリストにデバイスを載せたい場合は、[Fido2Request@Microsoft.com](mailto:Fido2Request@Microsoft.com) にご連絡ください。
 
+FIDO2 セキュリティ キーの使用を開始するには、方法に関する次の手順を完了してください。
+
+> [!div class="nextstepaction"]
+> [FIDO2 セキュリティ キーを使用してパスワードなしの署名を有効にする](howto-authentication-passwordless-security-key.md)
+
+
 ## <a name="what-scenarios-work-with-the-preview"></a>プレビューで動作するシナリオ
+
+Azure AD のパスワードなしのサインイン機能は、現在プレビュー段階にあります。 次の考慮事項が適用されます。
 
 - 管理者は、テナントに対してパスワードレスの認証方法を有効にすることができます
 - 管理者は、すべてのユーザーをターゲットにすることも、方法ごとにテナント内のユーザー/グループを選ぶこともできます
@@ -162,12 +177,12 @@ Microsoft のパスワードレス テクノロジを選択する際には、考
 
 ## <a name="next-steps"></a>次のステップ
 
-[組織内で FIDO2 セキュリティ キーのパスワードレスオプションを有効にする](howto-authentication-passwordless-security-key.md)
+Azure AD でパスワードなしの利用を開始するには、方法に関する以下の手順を完了してください。
 
-[組織内で電話ベースのパスワードレスオプションを有効にする](howto-authentication-passwordless-phone.md)
+* [FIDO2 セキュリティ キーによるパスワードなしのサインインを有効にする](howto-authentication-passwordless-security-key.md)
+* [Authenticator アプリを使用して、電話ベースのパスワードなしのサインインを有効にする](howto-authentication-passwordless-phone.md)
 
 ### <a name="external-links"></a>外部リンク
 
-[FIDO Alliance](https://fidoalliance.org/)
-
-[FIDO2 CTAP の仕様](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)
+* [FIDO Alliance](https://fidoalliance.org/)
+* [FIDO2 CTAP の仕様](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-client-to-authenticator-protocol-v2.0-id-20180227.html)

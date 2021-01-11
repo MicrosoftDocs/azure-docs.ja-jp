@@ -12,14 +12,14 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 981d3134e957e1f19b9cd88ee13a72fc45d79277
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 53442f0727544221f28bfdb58d8069163eb374e5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252897"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87024862"
 ---
-# <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
+# <a name="configure-a-custom-domain-name-for-your-azure-api-management-instance"></a>Azure API Management インスタンスのカスタム ドメイン名を構成する
 
 Azure API Management サービス インスタンスを作成すると、Azure によって `azure-api.net` サブドメイン (例: `apim-service-name.azure-api.net`) に割り当てられます。 ただし、独自のカスタム ドメイン名 (**contoso.com** など) を使用する API Management エンドポイントを公開できます。 このチュートリアルでは、既存のカスタム DNS 名を、API Management インスタンスによって公開されるエンドポイントにマップする方法を説明します。
 

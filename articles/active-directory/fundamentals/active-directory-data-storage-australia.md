@@ -2,7 +2,7 @@
 title: オーストラリアとニュージーランドのお客様の識別データの保存 - Azure AD
 description: Azure Active Directory によってオーストラリア国内のお客様の識別関連データがどこに保存されるかについて説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 850298719d5636e964b0c338d7a2a4cc9bb8aece
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 529c0ffa6b629dee124236e334c862c049f472ad
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370291"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318541"
 ---
 # <a name="identity-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Azure Active Directory でのオーストラリアとニュージーランドのお客様の識別データの保存
 
@@ -34,8 +34,8 @@ Office 365 や Azure などの Microsoft Online サービスをサブスクラ�
 
 ## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多要素認証 (MFA)
 
-MFA では、顧客識別データは、グローバル データセンターに格納されます。 クラウドベースの Azure MFA と Azure MFA Server によって収集されて保存されるユーザー情報の詳細については、[Azure Multi-Factor Authentication でのユーザー データの収集](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-data-residency)に関する記事を参照してください。
+MFA では、顧客識別データは、グローバル データセンターに格納されます。 クラウドベースの Azure MFA と Azure MFA Server によって収集されて保存されるユーザー情報の詳細については、[Azure Multi-Factor Authentication でのユーザー データの収集](../authentication/concept-mfa-data-residency.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 上記の機能の詳細については、以下の記事を参照してください。
-- [Multi-Factor Authentication とは](https://docs.microsoft.com/azure/active-directory/authentication/multi-factor-authentication)
+- [Multi-Factor Authentication とは](../authentication/concept-mfa-howitworks.md)

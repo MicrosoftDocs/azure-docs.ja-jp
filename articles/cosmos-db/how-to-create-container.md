@@ -1,21 +1,22 @@
 ---
 title: Azure Cosmos DB にコンテナーを作成する
-description: Azure portal、.Net、Java、Python、Node.js およびその他の SDK を使用して、Azure Cosmos DB で コンテナーを作成する方法について説明します。
+description: Azure portal、.NET、Java、Python、Node.js、およびその他の SDK を使用して、Azure Cosmos DB で コンテナーを作成する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 22c51497a9c9a331f1337134fbaf7c781b9c8ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 2362326bccd90af997aa9237ec5f14e39ae62c85
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390892"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019999"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを作成する
 
-この記事では、Azure Cosmos コンテナー (コレクション、テーブル、またはグラフ) を作成するいくつかの方法について説明します。 これには、Azure portal、Azure CLI、またはサポートされている SDK を使用します。 この記事では、コンテナーを作成してパーティション キーを指定し、スループットをプロビジョニングする方法を紹介します。
+この記事では、Azure portal、Azure CLI、PowerShell、またはサポートされている SDK を使用して Azure Cosmos コンテナー (コレクション、テーブル、またはグラフ) を作成するいくつかの方法について説明します。 この記事では、コンテナーを作成してパーティション キーを指定し、スループットをプロビジョニングする方法を紹介します。
 
 > [!NOTE]
 > コンテナーを作成するときは、同じ名前で大文字と小文字が異なる 2 つのコンテナーを作成しないようにしてください。 これは、Azure プラットフォームの一部で大文字と小文字が区別されないため、このような名前のコンテナーでテレメトリとアクションの混同や衝突が発生する可能性があるためです。
@@ -111,7 +112,7 @@ ms.locfileid: "85390892"
 
 以下のリンクは、Azure CLI を使用して Azure Cosmos DB のコンテナー リソースを作成する方法を示すものです。
 
-すべての Azure Cosmos DB API にわたる Azure CLI の全サンプルの一覧については、[SQL API](cli-samples.md)、[Cassandra API](cli-samples-cassandra.md)、[MongoDB API](cli-samples-mongodb.md)、[Gremlin API](cli-samples-gremlin.md)、[Table API](cli-samples-table.md) に関する記事を参照してください。
+すべての Azure Cosmos DB API にわたる Azure CLI の全サンプルの一覧については、「[Azure Cosmos DB の Azure CLI サンプル](cli-samples.md)」を参照してください。
 
 * [Azure CLI を使用してコンテナーを作成する](manage-with-cli.md#create-a-container)
 * [Azure CLI を使用して MongoDB 用 Azure Cosmos DB API のコレクションを作成する](./scripts/cli/mongodb/create.md)
@@ -119,17 +120,17 @@ ms.locfileid: "85390892"
 * [Azure CLI を使用して Gremlin グラフを作成する](./scripts/cli/gremlin/create.md)
 * [Azure CLI を使用して Table API テーブルを作成する](./scripts/cli/table/create.md)
 
-## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>PowerShell を使用してコンテナーを作成する<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershell"></a>PowerShell を使用してコンテナーを作成する
 
 以下のリンクは、PowerShell を使用して Azure Cosmos DB のコンテナー リソースを作成する方法を示すものです。
 
-すべての Azure Cosmos DB API にわたる Azure CLI の全サンプルの一覧については、[SQL API](powershell-samples-sql.md)、[Cassandra API](powershell-samples-cassandra.md)、[MongoDB API](powershell-samples-mongodb.md)、[Gremlin API](powershell-samples-gremlin.md)、[Table API](powershell-samples-table.md) に関する記事を参照してください。
+すべての Azure Cosmos DB API にわたる PowerShell の全サンプルの一覧については、「[Azure Cosmos DB 用 Azure PowerShell サンプル](powershell-samples.md)」を参照してください
 
 * [PowerShell を使用してコンテナーを作成する](manage-with-powershell.md#create-container)
-* [Powershell を使用して MongoDB 用 Azure Cosmos DB API のコレクションを作成する](./scripts/powershell/mongodb/ps-mongodb-create.md)
-* [Powershell を使用して Cassandra テーブルを作成する](./scripts/powershell/cassandra/ps-cassandra-create.md)
-* [Powershell を使用して Gremlin グラフを作成する](./scripts/powershell/gremlin/ps-gremlin-create.md)
-* [Powershell を使用して Table API テーブルを作成する](./scripts/powershell/table/ps-table-create.md)
+* [Powershell を使用して MongoDB 用 Azure Cosmos DB API のコレクションを作成する](./scripts/powershell/mongodb/create.md)
+* [Powershell を使用して Cassandra テーブルを作成する](./scripts/powershell/cassandra/create.md)
+* [Powershell を使用して Gremlin グラフを作成する](./scripts/powershell/gremlin/create.md)
+* [Powershell を使用して Table API テーブルを作成する](./scripts/powershell/table/create.md)
 
 ## <a name="create-a-container-using-net-sdk"></a>.NET SDK を使用してコンテナーを作成する
 

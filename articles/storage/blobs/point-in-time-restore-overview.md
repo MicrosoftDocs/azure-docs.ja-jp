@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.custom: references_regions
-ms.openlocfilehash: 60f83fae6e7e685a1065d1c01327a004d9bb2864
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: b9514bea1f9c34f0ed36bf530a7129b6fea46c4f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675654"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501969"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>ブロック BLOB のポイントインタイム リストア (プレビュー)
 

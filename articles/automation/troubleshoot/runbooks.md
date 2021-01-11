@@ -2,19 +2,16 @@
 title: Azure Automation Runbook に関する問題のトラブルシューティング
 description: この記事では、Azure Automation Runbook に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/24/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: automation
-manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: e0665a6aa55b998d54d076013a25e2efadaa2b06
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187185"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904804"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -416,13 +413,13 @@ $job = Start-AzAutomationRunbook -AutomationAccountName $automationAccountName -
 $pollingSeconds = 5
 $maxTimeout = 10800
 $waitTime = 0
-while((IsJobTerminalState $job.Status) -eq $false -and $waitTime -lt $maxTimeout) {
+while($false -eq (IsJobTerminalState $job.Status) -and $waitTime -lt $maxTimeout) {
    Start-Sleep -Seconds $pollingSeconds
    $waitTime += $pollingSeconds
-   $jobResults = $job | Get-AzAutomationJob
+   $job = $job | Get-AzAutomationJob
 }
 
-$jobResults | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
+$job | Get-AzAutomationJobOutput | Get-AzAutomationJobOutputRecord | Select-Object -ExpandProperty Value
 ```
 
 ## <a name="scenario-runbook-fails-because-of-deserialized-object"></a><a name="fails-deserialized-object"></a>シナリオ:逆シリアル化されたオブジェクトであるため、Runbook が失敗する
@@ -511,6 +508,24 @@ The quota for the monthly total job run time has been reached for this subscript
 1. **[設定]** を選択し、 **[価格]** を選択します。
 1. ページの下部にある **[有効]** を選択して、アカウントを Basic レベルにアップグレードします。
 
+## <a name="scenario-runbook-output-stream-greater-than-1-mb"></a><a name="output-stream-greater-1mb"></a>シナリオ:1 MB を超える Runbook の出力ストリーム
+
+### <a name="issue"></a>問題
+
+Azure サンドボックス内で実行されている Runbook が次のエラーで失敗します。
+
+```error
+The runbook job failed due to a job stream being larger than 1MB, this is the limit supported by an Azure Automation sandbox.
+```
+
+### <a name="cause"></a>原因
+
+このエラーは、Runbook による例外データの出力ストリームへの書き込みが過剰に試行されると発生します。
+
+### <a name="resolution"></a>解決方法
+
+ジョブ出力ストリームでは 1 MB の制限があります。 Runbook で、`try` および `catch` ブロックを使用して、実行可能ファイルまたはサブプロセスへの呼び出しを確実に囲むようにします。 操作で例外がスローされる場合は、コードによってその例外から Automation 変数にメッセージを書き込みます。 この手法により、メッセージがジョブ出力ストリームに書き込まれなくなります。 Hybrid Runbook Worker ジョブを実行すると、出力ストリームが 1 MB に切り捨てられ、エラー メッセージは表示されません。
+
 ## <a name="scenario-runbook-job-start-attempted-three-times-but-fails-to-start-each-time"></a><a name="job-attempted-3-times"></a>シナリオ:Runbook ジョブの開始を 3 回試行したが、開始できない
 
 ### <a name="issue"></a>問題
@@ -526,20 +541,22 @@ The job was tried three times but it failed
 このエラーは、次のいずれかの問題が原因で発生します。
 
 * **メモリの制限。** 400 MB を超えるメモリを使用すると、ジョブが失敗する可能性があります。 サンドボックスに割り当てられるメモリの制限については、[Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)に関するセクションを参照してください。 
-* **ネットワーク ソケット。** Azure サンドボックスの同時ネットワーク ソケット数は 1,000 に制限されています。 詳細については、 [Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)に関するページを参照してください。
-* **モジュールに互換性がない。** モジュールの依存関係が正しくない可能性があります。 この場合、Runbook では通常、`Command not found` または `Cannot bind parameter` メッセージが返されます。
-* **サンドボックスで Active Directory による認証が行われない。** Runbook で、Azure サンドボックス内で実行されている実行可能ファイルまたはサブプロセスを呼び出そうとしました。 Azure Active Directory 認証ライブラリ (ADAL) を使用して Azure AD で認証するように Runbook を構成することはサポートされていません。
-* **例外データが多すぎる。** Runbook により、例外データの出力ストリームへの書き込みが過剰に試行されました。
 
-### <a name="resolution"></a>解像度
+* **ネットワーク ソケット。** Azure サンドボックスの同時ネットワーク ソケット数は 1,000 に制限されています。 詳細については、 [Automation サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)に関するページを参照してください。
+
+* **モジュールに互換性がない。** モジュールの依存関係が正しくない可能性があります。 この場合、Runbook では通常、`Command not found` または `Cannot bind parameter` メッセージが返されます。
+
+* **サンドボックスで Active Directory による認証が行われない。** Runbook で、Azure サンドボックス内で実行されている実行可能ファイルまたはサブプロセスを呼び出そうとしました。 Azure Active Directory 認証ライブラリ (ADAL) を使用して Azure AD で認証するように Runbook を構成することはサポートされていません。
+
+### <a name="resolution"></a>解決方法
 
 * **メモリの制限、ネットワーク ソケット。** メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータの処理量を減らす、Runbook からの不要な出力を書き込まない、PowerShell Workflow Runbook に書き込むチェックポイントの数を検討する、などがあります。 `$myVar.clear` などの clear メソッドを使用して変数をクリアし、`[GC]::Collect` を使用してガベージ コレクションをすぐに実行します。 これにより、実行時の Runbook のメモリ専有領域が小さくなります。
+
 * **モジュールに互換性がない。** 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新します。
+
 * **サンドボックスで Active Directory による認証が行われない。** Runbook で Azure AD に対する認証を行う場合は、お使いの Automation アカウントで Azure AD モジュールが確実に使用できるようにします。 Runbook によって自動化されるタスクを実行するために必要なアクセス許可を、必ず実行アカウントに付与してください。
 
   Azure サンドボックスで実行されている実行可能ファイルまたはサブプロセスを Runbook で呼び出すことができない場合は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を使用します。 ハイブリッド worker には、Azure サンドボックスに存在するようなメモリとネットワークの制限はありません。
-
-* **例外データが多すぎる。** ジョブ出力ストリームでは 1 MB の制限があります。 Runbook で、`try` および `catch` ブロックを使用して、実行可能ファイルまたはサブプロセスへの呼び出しを確実に囲むようにします。 操作で例外がスローされる場合は、コードによってその例外から Automation 変数にメッセージを書き込みます。 この手法により、メッセージがジョブ出力ストリームに書き込まれなくなります。
 
 ## <a name="scenario-powershell-job-fails-with-cannot-invoke-method-error-message"></a><a name="cannot-invoke-method"></a>シナリオ:PowerShell ジョブが "Cannot invoke method" (メソッドを呼び出せません) というエラー メッセージで失敗する
 
@@ -555,7 +572,7 @@ Exception was thrown - Cannot invoke method. Method invocation is supported only
 
 このエラーは、Azure サンドボックスで実行されている Runbook を、[完全言語モード](/powershell/module/microsoft.powershell.core/about/about_language_modes)で実行できないことを示している可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 このエラーを解決するには、次の 2 つの方法があります。
 
@@ -580,7 +597,7 @@ The job was evicted and subsequently reached a Stopped state. The job cannot con
 
 Runbook が、Azure サンドボックスのフェア シェアによって許可されている 3 時間の制限を超えて実行されました。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 推奨される解決策の 1 つは、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker には、Azure サンドボックスに存在するフェア シェアによる 3 時間の Runbook 制限は適用されません。 予期しないローカル インフラストラクチャの問題が発生した場合の再起動動作をサポートするには、Hybrid Runbook Worker 上で実行される Runbook を開発する必要があります。
 
@@ -613,7 +630,7 @@ At line:16 char:1
 
 このエラーは、Runbook 内で AzureRM モジュールから Az モジュールへの不完全な移行を使用した場合に発生する可能性があります。 この状況が原因で、Azure Automation で Runbook ジョブが AzureRM モジュールのみを使用して開始された後、Az モジュールのみを使用して別のジョブが開始され、サンドボックスのクラッシュにつながる可能性があります。
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 Az と AzureRM のコマンドレットを同じ Runbook で使用することはお勧めできません。 これらのモジュールの正しい使用方法について詳しくは、「[Az モジュールへの移行](../shared-resources/modules.md#migrate-to-az-modules)」をご覧ください。
 
@@ -627,7 +644,7 @@ Runbook またはアプリケーションを Azure サンドボックスで実�
 
 この問題は、Azure サンドボックスですべてのアウトプロセス COM サーバーへのアクセスが阻止されることが原因で発生することがあります。 たとえば、サンドボックス アプリケーションまたは Runbook では、Windows Management Instrumentation (WMI) や Windows インストーラー サービス (msiserver.exe) を呼び出すことはできません。 
 
-### <a name="resolution"></a>解像度
+### <a name="resolution"></a>解決方法
 
 Azure サンドボックスの使用について詳しくは、「[Runbook の実行環境](../automation-runbook-execution.md#runbook-execution-environment)」をご覧ください。
 

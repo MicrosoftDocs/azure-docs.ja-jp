@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 18a58815ccd7bd229b6c1a27c92e903f22c8fd55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: 8706ae12d45b9c6667ae99078d479f0e907840fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322570"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007557"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Azure Logic Apps で繰り返しトリガーを使用して繰り返しタスクおよびワークフローを作成、スケジュール設定、および実行する
 
@@ -78,7 +78,7 @@ ms.locfileid: "85322570"
    | **[開始時刻]** | `startTime` | いいえ | String | 開始日時を次の形式で指定します。 <p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2020 年 9 月 18 日午後 2:00 にする場合は、"2020-09-18T14:00:00" と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2020-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)" |
    | **設定曜日** | `weekDays` | いいえ | 文字列または文字列配列 | [週] を選択した場合は、ワークフローを実行するときに **[月曜日]** 、 **[火曜日]** 、 **[水曜日]** 、 **[木曜日]** 、 **[金曜日]** 、 **[土曜日]** 、および **[日曜日]** のうちの 1 日以上を選択できます。 |
    | **設定時刻 (時間)** | `hours` | いいえ | 整数または整数配列 | [日] または [週] を選択した場合は、ワークフローを実行する時刻として 0 ～ 23 の 1 つ以上の整数を選択できます。 <p><p>たとえば、[10]、[12]、[14] を指定した場合は、時刻として午前 10 時、午後 12 時、および午後 2 時が指定されますが、時刻の分は繰り返しの開始時刻に基づいて計算されます。 特定の時刻 (たとえば、午前 10:00、午後 12:00、午後 2:00) を設定するには、 **[設定時刻 (分)]** プロパティを使用してこれらの値を指定します。 |
-   | **設定時刻 (分)** | `minutes` | いいえ | 整数または整数配列 | [日] または [週] を選択した場合、ワークフローを実行する時刻 (分) として 0 ～ 59 の整数を選択できます (複数選択可)。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 |
+   | **設定時刻 (分)** | `minutes` | いいえ | 整数または整数配列 | [日] または [週] を選択した場合、ワークフローを実行する時刻 (分) として 0 ～ 59 の整数を選択できます (複数選択可)。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 <p>**注**:トリガーされた実行のタイムスタンプが、スケジュールされた時刻から最大 1 分ずれることがあります。 後続のアクションに対し、タイムスタンプをスケジュールどおりに正確に渡す必要がある場合は、テンプレート式を使用してタイムスタンプを適宜変更してください。 詳細については、[式の日付と時刻の関数](../logic-apps/workflow-definition-language-functions-reference.md#date-time-functions)に関するページを参照してください。 |
    |||||
 
    たとえば、今日が 2020 年 9 月 4 日の金曜日だとします。 次の繰り返しトリガーは、開始日時である 2020 年 9 月 18 日 (金曜日) 午前 8:00 PST *より前*に起動されることはありません。 ただし、繰り返しのスケジュールは月曜日の 10:30 AM、12:30 PM、2:30 PM にのみ設定されています。 したがって、最初にトリガーが作動してロジック アプリのワークフロー インスタンスが作成される時刻は月曜日の 10:30 AM となります。 開始時刻の動作について詳しくは、[開始時刻の例](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time)を参照してください。

@@ -1,14 +1,14 @@
 ---
 title: デプロイ シーケンス順序について
 description: ブループリントの割り当て中にブループリント アーティファクトがデプロイされる既定の順序と、デプロイ順序をカスタマイズする方法について説明します。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4a3b07e158aa7e4514ea9543bf44ad57e379d24
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 8305e5d44caef0f35e5b4beb4b70be9736272fa7
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970622"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051476"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
@@ -141,8 +141,8 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ブループリントのライフサイクル](lifecycle.md)を参照する。
-- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [ブループリントのライフサイクル](./lifecycle.md)を参照する。
+- [静的および動的パラメーター](./parameters.md)の使用方法を理解する。
+- [ブループリントのリソース ロック](./resource-locking.md)の使用方法を調べる。
 - [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
 - ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

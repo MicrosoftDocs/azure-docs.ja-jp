@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6e2a3e6c7fd5ecd305d00278668ad0bfb9a66001
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142435"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587635"
 ---
 # <a name="understand-event-data"></a>イベント データについて
 
@@ -30,7 +30,7 @@ Azure Digital Twins のさまざまなイベントでは**通知**が生成さ�
 
 通知メッセージ ヘッダーは、キーと値のペアで表されます。 メッセージ ヘッダーは、使用されるプロトコル (MQTT、AMQP、または HTTP) に応じて異なる方法でシリアル化されます。 このセクションでは、選択した特定のプロトコルとシリアル化に関係しない、通知メッセージの一般的なヘッダー情報について説明します。
 
-一部の通知は、CloudEvents 標準に準拠しています。 CloudEvents 準拠は次のとおりです。
+一部の通知は [CloudEvents](https://cloudevents.io/) 標準に準拠しています。 CloudEvents 準拠は次のとおりです。
 * デバイスから生成された通知が、引き続き通知の既存の仕様に従っている
 * IoT Hub によって処理および出力された通知が、引き続き通知の既存の仕様に従っている。ただし、IoT Hub で Event Grid などの CloudEvents をサポートすることを選択した場合を除く
 * [モデル](concepts-models.md)がある [Digital Twins](concepts-twins-graph.md) から生成された通知は、CloudEvents に準拠している
@@ -107,7 +107,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は、個別のイベントごとに一意です。 |
 | `source` | IoT ハブや Azure Digital Twins インスタンスの名前 (*myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)* |
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | デジタル ツインの ID |
@@ -193,7 +193,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は個別のイベントごとに一意です |
 | `source` | Azure Digital Twins インスタンスの名前 (*mydigitaltwins.westus2.azuredigitaltwins.net など)* |
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | リレーションシップの ID (`<twinID>/relationships/<relationshipID>` など) |
@@ -249,7 +249,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 | --- | --- |
 | `id` | サービスによって管理される UUID やカウンターなどの、通知の識別子。 `source` + `id` は個別のイベントごとに一意です |
 | `source` | IoT ハブや Azure Digital Twins インスタンスの名前 (*myhub.azure-devices.net* や *mydigitaltwins.westus2.azuredigitaltwins.net など)*
-| `specversion` | 1.0 |
+| `specversion` | *1.0*<br>メッセージは、[CloudEvents 標準](https://github.com/cloudevents/spec)のこのバージョンに準拠しています。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | デジタル ツインの ID |
@@ -300,7 +300,7 @@ Azure Digital Twins から Event Grid に出力される通知は、Event Grid �
 ## <a name="next-steps"></a>次のステップ
 
 イベントを配信するためのエンドポイントとルートを作成する方法を参照してください。
-* [エンドポイントとルートを管理する](how-to-manage-routes.md)
+* [*方法: エンドポイントとルートを管理する*](how-to-manage-routes-apis-cli.md)
 
 または、Azure Digital Twins の API と SDK オプションの詳細を確認してください。
-* [Azure Digital Twins の API および SDK を使用する](how-to-use-apis-sdks.md)
+* [*方法: Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md)

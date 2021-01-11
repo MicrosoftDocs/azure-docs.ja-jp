@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: ed311e9c8031f8586762d2adc4c104545e323bc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 73036ba1a72d657fd07a826bbee8651781f70e9b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84711512"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931966"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
@@ -38,7 +38,7 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 ほとんどの組織では、複数のプランを作成する必要はありません。 プランをサブスクリプション間で移行することはできません。 プランが関連付けられているサブスクリプションを変更する必要がある場合は、[既存のプランを削除](#work-with-ddos-protection-plans)し、新しいプランを作成する必要があります。
 
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
-2. *DDoS* を検索します。 検索結果に **[DDoS protection plan]\(DDoS Protection プラン\)** が表示されたら、それを選択します。
+2. *DDoS* を検索します。 **[DDoS protection plan]\(DDoS Protection プラン\)** が検索結果に表示されたら、それを選択します。
 3. **［作成］** を選択します
 4. 独自の値を入力または選択するか次の例の値を入力または選択し、 **[作成]** を選択します。
 
@@ -61,7 +61,7 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
     | サブスクリプション    | サブスクリプションを選択します。                                    |
     | Resource group  | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します |
     | 場所        | 米国東部                                                      |
-    | DDos Protection | **[DDos Protection]** で **[Standard]** を選択し、 **[myDdosProtectionPlan]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。|
+    | DDoS Protection Standard | **[有効化]** を選択します。 選択したプランは仮想ネットワークと同じサブスクリプションまたは異なるサブスクリプションのどちらにあっても構いませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。|
 
 仮想ネットワークに対して DDoS Standard が有効になっている場合、仮想ネットワークを別のリソース グループまたはサブスクリプションに移動することはできません。 DDoS Standard が有効になっている仮想ネットワークを移動する必要がある場合は、まず DDoS Standard を無効にし、仮想ネットワークを移動してから、DDoS Standard を有効にします。 移動後に、仮想ネットワーク内のすべての保護されたパブリック IP アドレスの自動調整されたポリシーしきい値がリセットされます。
 
@@ -81,8 +81,7 @@ DDoS Protection プランでは、サブスクリプションの境界を越え�
 ## <a name="disable-ddos-for-a-virtual-network"></a>新しい仮想ネットワークに対して DDoS を無効にする
 
 1. ポータルの上部にある **[Search resources, services, and docs]\(リソース、サービス、ドキュメントの検索\) ボックス**に、DDoS Protection Standard を無効にする仮想ネットワークの名前を入力します。 仮想ネットワークの名前が検索結果に表示されたら、それを選びます。
-2. **[設定]** で、 **[DDoS Protection]** を選択します。
-3. **[DDoS protection plan]\(DDoS Protection プラン\)** で **[Basic]** を選択し、 **[保存]** を選択します。
+2. **[Under DDoS Protection Standard]\(DDoS Protection Standard の下\)** で **[無効にする]** を選択します。
 
 **コマンド** 
 - Azure CLI: [az network ddos-protection delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)

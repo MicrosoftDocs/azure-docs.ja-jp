@@ -12,12 +12,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231677"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119557"
 ---
 # <a name="microsoft-identity-platform-overview"></a>Microsoft ID プラットフォームの概要
 
@@ -59,7 +59,7 @@ Microsoft IDプラットフォーム を使用してアプリに認証と承認�
 
 以下の一連の推奨される記事で、認証および Azure AD の主要な概念が Microsoft ID プラットフォームにどのように適用されるかについて学習します。
 
-- [認証の基本](authentication-scenarios.md)
+- [認証の基本](./authentication-vs-authorization.md)
 - [アプリケーションとサービス プリンシパル](app-objects-and-service-principals.md)
 - [対象ユーザー](v2-supported-account-types.md)
 - [アクセス許可と同意](v2-permissions-and-consent.md)
@@ -71,7 +71,7 @@ Microsoft IDプラットフォーム を使用してアプリに認証と承認�
 
 [Azure AD B2C](../../active-directory-b2c/overview.md) - ユーザーが自分のソーシャル アカウント (Facebook や Google など) を使用するかまたは電子メール アドレスとパスワードを使用してサインインできる、顧客向けアプリケーションをビルドします。
 
-[Azure AD B2B](../b2b/what-is-b2b.md) - 外部ユーザーを自分の Azure AD テナントに "ゲスト" ユーザーとして招待し、認可のためにアクセス許可を割り当てますが、認証にはユーザー自身の既存の資格情報を使用します。
+[Azure AD B2B](../external-identities/what-is-b2b.md) - 外部ユーザーを自分の Azure AD テナントに "ゲスト" ユーザーとして招待し、認可のためにアクセス許可を割り当てますが、認証にはユーザー自身の既存の資格情報を使用します。
 
 > [!TIP]
 > *Azure Active Directory 開発者プラットフォーム (v1.0)* のドキュメントをお探しの場合は、 「[開発者向け Azure Active Directory (v1.0) の概要](../azuread-dev/v1-overview.md)」を参照してください。

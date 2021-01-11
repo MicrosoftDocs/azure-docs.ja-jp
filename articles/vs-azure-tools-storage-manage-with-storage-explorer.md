@@ -1,6 +1,6 @@
 ---
 title: Storage Explorer の概要 | Microsoft Docs
-description: Storage Explorer を使用して Azure Storage リソースを管理する
+description: Storage Explorer を使用して Azure Storage リソースの管理を始めます。 Azure Storage Explorer のダウンロードとインストール、ストレージ アカウントまたはサービスへの接続などについて説明します。
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975267"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235247"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -87,7 +87,7 @@ Storage Explorer には、ストレージ アカウントに対する接続方�
 
 1. **[アカウント管理]** に、ユーザーがサインインしているすべての Azure アカウントが表示されます。 別のアカウントに接続するには、 **[アカウントの追加]** を選択します。
 
-1. **[Azure Storage に接続]** で、 **[Azure 環境]** から Azure クラウドを選択して、国内のクラウドまたは Azure Stack にサインインします。 環境を選択したら、 **[次へ]** を選択します。
+1. **[Azure Storage へ接続する]** で、 **[Azure 環境]** から Azure クラウドを選択して、国内のクラウドまたは Azure Stack にサインインします。 環境を選択したら、 **[次へ]** を選択します。
 
     ![サインインのオプション][2]
 
@@ -115,11 +115,11 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 #### <a name="add-a-resource-via-azure-ad"></a>Azure AD 経由でリソースを追加する
 
-1. **[接続]** シンボルを選択して **[Azure Storage に接続]** を開きます。
+1. **[コネクタ]** シンボルを選択して **[Azure Storage へ接続する]** を開きます。
 
     ![Connect to Azure storage option][9]
 
-1. リソースへのアクセス権を持つ Azure アカウントにまだサインインしていない場合は、 **[Add an Azure Account]\(Azure アカウントを追加する\)** オプションを使用してサインインします。 サインイン後、 **[Azure Storage に接続]** に戻ります。
+1. リソースへのアクセス権を持つ Azure アカウントにまだサインインしていない場合は、 **[Add an Azure Account]\(Azure アカウントを追加する\)** オプションを使用してサインインします。 サインイン後、 **[Azure Storage へ接続する]** に戻ります。
 
 1. **[Add a resource via Azure Active Directory (Azure AD)]\(Azure Active Directory (Azure AD) を使用してリソースを追加する\)** を選択し、 **[次へ]** を選択します。
 
@@ -135,7 +135,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 #### <a name="use-a-connection-string"></a>接続文字列を使用する
 
-1. **[接続]** シンボルを選択して **[Azure Storage に接続]** を開きます。
+1. **[コネクタ]** シンボルを選択して **[Azure Storage へ接続する]** を開きます。
 
     ![Connect to Azure storage option][9]
 
@@ -149,7 +149,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 #### <a name="use-a-shared-access-signature-uri"></a>Shared Access Signature URI を使用する
 
-1. **[接続]** シンボルを選択して **[Azure Storage に接続]** を開きます。
+1. **[コネクタ]** シンボルを選択して **[Azure Storage へ接続する]** を開きます。
 
     ![Connect to Azure storage option][9]
 
@@ -163,7 +163,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
 
 #### <a name="use-a-name-and-key"></a>名前とキーを使用する
 
-1. **[接続]** シンボルを選択して **[Azure Storage に接続]** を開きます。
+1. **[コネクタ]** シンボルを選択して **[Azure Storage へ接続する]** を開きます。
 
     ![Connect to Azure storage option][9]
 
@@ -195,7 +195,7 @@ Storage Explorer でリソースにアタッチする方法は複数あります
    > [!IMPORTANT]
    > Storage Explorer はエミュレーターを自動的に起動しません。 手動で起動する必要があります。
 
-1. **[接続]** シンボルを選択して **[Azure Storage に接続]** を開きます。
+1. **[コネクタ]** シンボルを選択して **[Azure Storage へ接続する]** を開きます。
 
     ![Connect to Azure storage option][9]
 

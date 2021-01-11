@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 716951616a82dfd13d6bdcf127c4c4382576e792
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd35f297e88c37aec39938b0bfd60288e591a62c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080859"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936080"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>エンティティ認識の認知スキル
 
-**エンティティ認識**スキルによってテキストからさまざまな種類のエンティティが抽出されます。 このスキルでは、Cognitive Services の [Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) によって提供される機械学習モデルが使用されます。
+**エンティティ認識**スキルによってテキストからさまざまな種類のエンティティが抽出されます。 このスキルでは、Cognitive Services の [Text Analytics](../cognitive-services/text-analytics/overview.md) によって提供される機械学習モデルが使用されます。
 
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure Cognitive Search のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
@@ -29,7 +29,7 @@ ms.locfileid: "85080859"
 Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>データ制限
-レコードのサイズは、[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをキー フレーズ エクストラクターに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)の使用を検討してください。
+レコードのサイズは、[`String.Length`](/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをキー フレーズ エクストラクターに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)の使用を検討してください。
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -53,7 +53,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 ## <a name="skill-outputs"></a>スキルの出力
 
 > [!NOTE]
-> 言語によっては、一部のエンティティ カテゴリがサポートされていません。 `"Person"`、`"Location"`、および `"Organization"` エンティティ カテゴリの種類は、上記の言語のすべてでサポートされています。 `"Quantity"`、`"Datetime"`、`"URL"`、および `"Email"` の種類の抽出をサポートするのは、_de_、_en_、_es_、_fr_、および _zh-hans_ のみです。 詳細については、「[Text Analytics API の言語と地域のサポート](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support)」を参照してください。  
+> 言語によっては、一部のエンティティ カテゴリがサポートされていません。 `"Person"`、`"Location"`、および `"Organization"` エンティティ カテゴリの種類は、上記の言語のすべてでサポートされています。 `"Quantity"`、`"Datetime"`、`"URL"`、および `"Email"` の種類の抽出をサポートするのは、_de_、_en_、_es_、_fr_、および _zh-hans_ のみです。 詳細については、「[Text Analytics API の言語と地域のサポート](../cognitive-services/text-analytics/language-support.md)」を参照してください。  
 
 | 出力名      | 説明                   |
 |---------------|-------------------------------|
@@ -187,7 +187,7 @@ Microsoft.Skills.Text.EntityRecognitionSkill
 }
 ```
 
-このスキルの出力のエンティティに対して返されるオフセットは、[Text Analytics API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) から直接返されることに注意してください。つまり、これらを使用して元の文字列にインデックスを作成する場合は、正しい内容を抽出するために .NET の [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) クラスを使用する必要があります。  [詳細については、こちらで確認できます。](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
+このスキルの出力のエンティティに対して返されるオフセットは、[Text Analytics API](../cognitive-services/text-analytics/overview.md) から直接返されることに注意してください。つまり、これらを使用して元の文字列にインデックスを作成する場合は、正しい内容を抽出するために .NET の [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8) クラスを使用する必要があります。  [詳細については、こちらで確認できます。](../cognitive-services/text-analytics/concepts/text-offsets.md)
 
 ## <a name="error-cases"></a>エラーになる場合
 ドキュメントの言語コードがサポートされていない場合、エラーが返され、エンティティは抽出されません。

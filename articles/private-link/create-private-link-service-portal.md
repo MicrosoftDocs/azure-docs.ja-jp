@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: f21b440ee0e2c53d9824300e85b683629c1575da
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0d873401d377a03581a319769604f3d976f365be
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78252544"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927240"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Private Link サービスを作成する
 
@@ -40,9 +40,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 | **\<resource-group-name>**  | myResourceGroupLB |
 | **\<virtual-network-name>** | myVNet          |
 | **\<region-name>**          | 米国東部 2      |
-| **\<IPv4-address-space>**   | 10.3.0.0\16          |
+| **\<IPv4-address-space>**   | 10.3.0.0/16          |
 | **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.3.0.0\24          |
+| **\<subnet-address-range>** | 10.3.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -54,11 +54,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | **サブスクリプション**               | サブスクリプションを選択します。    |
     | **リソース グループ**         | ボックスから **[myResourceGroupLB]** を選択します。|
-    | **名前**                   | 「**myLoadBalancer**」と入力します。                                   |
+    | **Name**                   | 「**myLoadBalancer**」と入力します。                                   |
     | **リージョン**         | **[米国東部 2]** を選択します。                                        |
     | **Type**          | **[内部]** を選択します。                                        |
     | **SKU**           | **[Standard]** を選択します。                          |
@@ -81,7 +81,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. 左端のメニューから **[すべてのサービス]** を選択します。
 1. **[すべてのリソース]** を選択し、リソースの一覧から **[myLoadBalancer]** を選択します。
 1. **[設定]** で、 **[バックエンド プール]** 、 **[追加]** の順に選択します。
-1. **[バックエンド プールの追加]** ページ上で、バックエンド プールの名前として「**myBackendPool**」と入力し、 **[追加]** を選択します。
+1. **[バックエンド プールの追加]** ページ上で、バックエンド プールの名前として「**myBackendPool**」と入力し、**[追加]** を選択します。
 
 #### <a name="create-a-health-probe"></a>正常性プローブの作成
 
@@ -117,7 +117,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. 左端のメニューで **[すべてのリソース]** を選択し、リソースの一覧から **[myLoadBalancer]** を選択します。
 
-1. **[設定]** で、 **[負荷分散規則]** 、 **[追加]** の順に選択します。
+1. **[設定]** で、**[負荷分散規則]**、**[追加]** の順に選択します。
 
 1. **[負荷分散規則の追加]** ページで、次の値を入力または選択します (まだ指定されていない場合)。
 
@@ -141,35 +141,35 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[Create a private link service - Basics]\(Private Link サービスの作成 - 基本\)** で、この情報を入力または選択します。
 
-    | 設定           | Value                                                                        |
+    | 設定           | 値                                                                        |
     |-------------------|------------------------------------------------------------------------------|
     | プロジェクトの詳細:  |                                                                              |
     | **サブスクリプション**      | サブスクリプションを選択します。                                                     |
     | **リソース グループ**    | **[myResourceGroupLB]** を選択します。                                                    |
     | インスタンスの詳細: |                                                                              |
-    | **名前**              | 「**myPrivateLinkService**」と入力します。 |
+    | **Name**              | 「**myPrivateLinkService**」と入力します。 |
     | **リージョン**            | **[米国東部 2]** を選択します。                                                        |
 
-1. **[次へ: 送信設定]** を選択します。
+1. **Next:次へ: 送信設定** を選択します。
 
 1. **[Create a private link service - Outbound settings]\(Private Link サービスの作成 - 送信設定\)** で、この情報を入力または選択します。
 
-    | 設定                           | Value                                                                           |
+    | 設定                           | 値                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
     | **Load Balancer**                     | **[myLoadBalancer]** を選択します。                                                           |
     | **ロード バランサー フロントエンド IP アドレス** | **myLoadBalancer** のフロントエンド IP アドレスを選択します。                                |
     | **ソース NAT 仮想ネットワーク**        | **[myVNet]** を選択します。                                                                   |
     | **ソース NAT サブネット**                 | **[myBackendSubnet]** を選択します。                                                          |
-    | **TCP プロキシ v2 を有効にする**               | アプリケーションで TCP プロキシ v2 ヘッダーが必要かどうかに応じて、 **[はい]** または **[いいえ]** を選択します。 |
+    | **TCP プロキシ v2 を有効にする**               | アプリケーションで TCP プロキシ v2 ヘッダーが必要かどうかに応じて、**[はい]** または **[いいえ]** を選択します。 |
     | **プライベート IP アドレスの設定**       | 各 NAT IP の割り当て方法と IP アドレスを構成します。                  |
 
-1. **[次へ: アクセス セキュリティ]** を選択します。
+1. **Next:次へ: アクセス セキュリティ** を選択します。
 
-1. **[Create a private link service - Access security]\(Private Link サービスの作成 - アクセス セキュリティ\)** で **[表示]** を選択し、 **[ロールベースのアクセス制御のみ]** を選択します。
+1. **[Create a private link service - Access security]\(Private Link サービスの作成 - アクセス セキュリティ\)** で **[表示]** を選択し、**[ロールベースのアクセス制御のみ]** を選択します。
   
 1. **[Next: Tags]\(次へ: タグ\)**  >  **[確認と作成]** の順に選択するか、ページ上部にある **[確認と作成]** タブを選択します。
 
-1. 情報を確認し、 **[作成]** を選択します。
+1. 情報を確認し、**[作成]** を選択します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

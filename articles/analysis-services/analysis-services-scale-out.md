@@ -4,15 +4,15 @@ description: Azure Analysis Services サーバーをスケールアウトによ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 08/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3ea304d038618fc428f20e7ad72b398f593d09a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceed2a287fb210a421972e9c9f9e6c77c6cb1879
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78247988"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716930"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -50,7 +50,7 @@ ms.locfileid: "78247988"
 
 ### <a name="synchronization-mode"></a>同期化モード
 
-既定では、クエリ レプリカは増分ではなく、完全にリハイドレートされます。 リハイドレートは段階的に行われます。 一度に 1 つ以上のレプリカが同時にオンラインになっていることを確認するために (少なくとも 3 つのレプリカがある場合)、一度に 2 つづつデタッチおよびアタッチされます。 場合によっては、このプロセスの実行中に、クライアントがオンライン レプリカの 1 つに再接続する必要になる場合があります。 **ReplicaSyncMode** (プレビュー) 設定を使用して、クエリ レプリカの同期を並列で実行するように指定できるようになりました。 並列同期には、次のような利点があります。 
+既定では、クエリ レプリカは増分ではなく、完全にリハイドレートされます。 リハイドレートは段階的に行われます。 一度に 1 つ以上のレプリカが同時にオンラインになっていることを確認するために (少なくとも 3 つのレプリカがある場合)、一度に 2 つづつデタッチおよびアタッチされます。 場合によっては、このプロセスの実行中に、クライアントがオンライン レプリカの 1 つに再接続する必要になる場合があります。 **ReplicaSyncMode** 設定を使用して、クエリ レプリカの同期を並列で実行するように指定できるようになりました。 並列同期には、次のような利点があります。 
 
 - 同期時間が大幅に短縮されます。 
 - 同期プロセス中のレプリカ間のデータに一貫性が保たれる可能性が高くなります。 

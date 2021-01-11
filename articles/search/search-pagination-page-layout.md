@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: fd102706d1fa6c33d8962a5d1caf5aa3e41b231d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 08641814e2a4fdf6f174f94b1e38e4124cf531d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146183"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934924"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Cognitive Search での検索結果の操作方法
 
 この記事では、一致するドキュメントの合計数、ページ分割された結果、並べ替えられた結果、検索結果が強調表示された用語と共に返されるクエリ応答を取得する方法について説明します。
 
-応答の構造は、クエリ内のパラメーター、つまり REST API での[検索ドキュメント](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)または .NET SDK での [DocumentSearchResult クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)によって決定されます。
+応答の構造は、クエリ内のパラメーター、つまり REST API での[検索ドキュメント](/rest/api/searchservice/Search-Documents)または .NET SDK での [DocumentSearchResult クラス](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)によって決定されます。
 
 ## <a name="result-composition"></a>結果の構成
 
@@ -98,7 +98,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 ## <a name="hit-highlighting"></a>検索結果の強調表示
 
-検索結果の強調表示とは、結果内の一致する用語に適用され、一致が容易に見つかるようにするテキストの書式設定 (太字や黄色の強調表示など) を指します。 検索結果の強調表示の手順については、[クエリ要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関する記事で説明しています。 
+検索結果の強調表示とは、結果内の一致する用語に適用され、一致が容易に見つかるようにするテキストの書式設定 (太字や黄色の強調表示など) を指します。 検索結果の強調表示の手順については、[クエリ要求](/rest/api/searchservice/search-documents)に関する記事で説明しています。 
 
 ヒットの強調表示を有効にするには、`highlight=[comma-delimited list of string fields]` を追加して、強調表示を使用するフィールドを指定します。 強調表示は、説明フィールドなど、一致が一目ではわかりにくい、長いコンテンツ フィールドに対して便利です。 **検索可能**として属性付けされたフィールド定義だけが、ヒットの強調表示に使用できます。
 

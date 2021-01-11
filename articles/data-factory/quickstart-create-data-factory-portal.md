@@ -40,8 +40,8 @@ ms.locfileid: "84655836"
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
-1. Azure portal メニューから **[リソースの作成]** を選択します。
+1. [Azure Portal](https://portal.azure.com)にアクセスします。 
+1. Azure Portal メニューから **[リソースの作成]** を選択します。
 1. **[分析]** を選択してから、 **[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)

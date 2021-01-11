@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057574"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653309"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -20,7 +20,7 @@ Azure Traffic Manager プロファイルで[有効期限 (TTL) 設定](../traffi
 
 Azure Advisor によって、長い TTL が構成されている Traffic Manager プロファイルが特定されます。 プロファイルが [Fast Failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/) 用に構成されているかどうかに応じて、TTL を 20 秒または 60 秒のいずれかに構成することをお勧めします。
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>SQL Database Advisor を使用してデータベースのパフォーマンスを向上させる
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>SQL Database Advisor を使用してデータベースのパフォーマンスを向上させる (一時的に無効)
 
 Azure Advisor では、すべての Azure リソースに関して一貫性のある推奨事項が一元的にまとめて示されます。 SQL Database Advisor と統合して、データベースのパフォーマンスを向上させるための推奨事項を生成します。 SQL Database Advisor は、データベースの使用履歴を分析することで、パフォーマンスを評価します。 その後、データベースの一般的なワークロードを実行する上で最適な推奨事項が提示されます。
 
@@ -51,32 +51,32 @@ Advisor によって、ストレージ アカウントに大量のトランザ�
 
 Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage アカウントを使用する仮想マシンのディスクでは、ソリッド ステート ドライブ (SSD) にデータを格納します。 アプリケーションで最適なパフォーマンスを実現するには、高い IOPS を必要とする仮想マシン ディスクは Premium Storage に移行することをお勧めします。
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>SQL Data Warehouse テーブルのデータ スキューを除去してクエリのパフォーマンスを向上させる
+## <a name="remove-data-skew-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Azure Synapse Analytics テーブルのデータ スキューを除去してクエリのパフォーマンスを向上させる
 
 データ スキューは、ワークロードの実行時に不要なデータ移動やリソースのボトルネックを引き起こす可能性があります。 Advisor によって、15% を超える分散データ スキューが検出されます。 データを再配分して、テーブルの分散キーの選択を見直すことをお勧めします。 スキューの識別と除去の詳細については、[スキューのトラブルシューティング](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)に関する記事を参照してください。
 
-## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>SQL Data Warehouse テーブルの古いテーブル統計情報を作成するか更新してクエリのパフォーマンスを向上させる
+## <a name="create-or-update-outdated-table-statistics-in-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>Azure Synapse Analytics テーブルの古いテーブル統計を作成するか更新してクエリのパフォーマンスを向上させる
 
-Advisor によって最新の[テーブル統計](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md)状態がないテーブルが特定され、統計の作成または更新が推奨されます。 Azure SQL Data Warehouse のクエリ オプティマイザーでは、最新の統計が使用され、クエリ結果のカーディナリティまたは行数が推定されます。 このような推定値を使用すると、クエリ オプティマイザーでクエリ プランを作成し、最速のパフォーマンスを実現することができます。
+Advisor によって最新の[テーブル統計](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md)状態がないテーブルが特定され、統計の作成または更新が推奨されます。 Azure Synapse Analytics のクエリ オプティマイザーでは、最新の統計が使用され、クエリ結果のカーディナリティまたは行数が推定されます。 このような推定値を使用すると、クエリ オプティマイザーでクエリ プランを作成し、最速のパフォーマンスを実現することができます。
 
 ## <a name="improve-mysql-connection-management"></a>MySQL 接続管理を向上させる
 
 Advisor の分析には、MySQL サーバーに接続するアプリケーションで接続が効率的に管理されていない可能性が示されることがあります。 このような状態は、不必要なリソース消費とアプリケーション待機時間の全体的な増加につながる可能性があります。 接続管理を向上させるには、有効期間の短い接続の数を減らし、不要なアイドル状態の接続を排除することをお勧めします。 こうした機能強化は、ProxySQL のようなサーバー側の接続プーラーを構成することで実現できます。
 
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>スケールアップして SQL Data Warehouse テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
+## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>スケールアップして Azure Synapse Analytics テーブルでのキャッシュ使用率を最適化し、クエリのパフォーマンスを向上させる
 
-Azure Advisor を使用すると、SQL Data Warehouse テーブルのキャッシュ使用率が高く、ヒット率が低いかどうかを検出できます。 この状態は、SQL Data Warehouse インスタンスのパフォーマンスに影響を与える可能性がある高いキャッシュ削除を示しています。 Advisor によって、SQL Data Warehouse インスタンスをスケールアップし、ワークロードに十分なキャッシュ容量を割り当てることが推奨されます。
+Azure Advisor を使用すると、Azure Synapse Analytics テーブルのキャッシュ使用率が高く、ヒット率が低いかどうかを検出できます。 この状態はキャッシュ削除が多いことを示し、Azure Synapse Analytics インスタンスのパフォーマンスに影響を及ぼす可能性があります。 Advisor によって、ワークロードに十分なキャッシュ容量を割り当てられるように、Azure Synapse Analytics インスタンスをスケールアップすることが推奨されます。
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>SQL Data Warehouse のテーブルをレプリケートされたテーブルに変換し、クエリのパフォーマンスを向上させる
+## <a name="convert-azure-synapse-analytics-tables-to-replicated-tables-to-increase-query-performance"></a>Azure Synapse Analytics のテーブルをレプリケートされたテーブルに変換し、クエリのパフォーマンスを向上させる
 
 Advisor によって、レプリケートされておらず、変換によってメリットが得られるテーブルが特定されます。 このようなテーブルを変換することをお勧めします。 推奨事項は以下に基づいています。
 - レプリケートされるテーブルのサイズ。 
 - 列数です。 
 - テーブルの分散の種類。 
-- SQL Data Warehouse テーブルのパーティション数。 
+- Azure Synapse Analytics テーブルのパーティション数。 
 
-コンテキストに対する推奨では、追加のヒューリスティックが提供される場合があります。 この推奨事項が決定される方法の詳細については、[SQL Data Warehouse の推奨事項](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)に関する記事を参照してください。 
+コンテキストに対する推奨では、追加のヒューリスティックが提供される場合があります。 この推奨事項が決定される方法の詳細については、[Azure Synapse Analytics の推奨事項](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)に関する記事を参照してください。 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>ストレージ アカウントを Azure Resource Manager に移行して最新の Azure 機能を手に入れる
 
@@ -151,6 +151,22 @@ Advisor によって、既定のインデックス作成ポリシーが使用さ
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB クエリ ページ サイズ (MaxItemCount) を -1 に設定する 
 
 Azure Advisor によって、100 のクエリ ページ サイズを使用している Azure Cosmos DB コンテナーが特定されます。 高速なスキャンのために、-1 のページ サイズの使用が推奨されます。 [MaxItemCount の詳細を確認してください。](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>お使いの HBase クラスターで、クラスターのパフォーマンスの向上に高速書き込み機能を使用することを検討する
+Azure Advisor は過去 7 日間のシステム ログを分析し、お使いのクラスターで次のシナリオが発生したかどうかを識別します。
+1. WAL の同期時に長い待機時間が発生 
+2. 大量の書き込み要求 (1 時間に 1000 を超える avg_write_requests/second/node)
+
+これらの条件は、クラスターで書き込み時に長い待機時間が発生していることを示しています。 これは、お使いのクラスターで大量のワークロードが実行されたことが原因である可能性があります。お使いのクラスターのパフォーマンスを向上させるには、Azure HDInsight HBase の高速書き込み機能の利用を検討することをお勧めします。 HDInsight の Apache HBase クラスター用高速書き込み機能では、クラウド ストレージを使用する代わりに、Premium SSD マネージド ディスクをすべての RegionServer (ワーカー ノード) にアタッチします。 その結果、書き込み待機時間が短縮され、アプリケーションの回復性が向上します。 この機能の詳細については、[こちら](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)を参照してください。
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>パフォーマンスの向上に、Azure Data Explorer のテーブルのキャッシュ期間 (ポリシー) を確認する (プレビュー)
+この推奨事項では、構成されているキャッシュ期間 (ポリシー) より過去のクエリが多い Azure Data Explorer のテーブルが表示されます (キャッシュ範囲外のデータにアクセスするクエリの割合で、上位 10 個のテーブルが示されます)。 クラスターのパフォーマンスを向上させるために推奨されるアクション:このテーブルのクエリを、(定義されたポリシー内で) 必要最小限の時間範囲に制限します。 または、時間範囲全体のデータが必要な場合は、キャッシュ期間を推奨される値に増やします。
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>MySQL の一時テーブルのサイズを最適化してパフォーマンスを向上させる
+Advisor で、一時テーブルのパラメーター設定が低いため、お使いの MySQL サーバーで不要な I/O オーバーヘッドが発生している可能性があることが解析されました。 これにより、ディスク ベースの不要なトランザクションが発生し、パフォーマンスが低下する可能性があります。 "tmp_table_size" パラメーターと "max_heap_table_size" パラメーターの値を大きくして、ディスク ベースのトランザクションの数を減らすことをお勧めします。 [詳細情報](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>ノード間にワークロードを分散させるためにサーバー グループ内でデータを分散させる
+コーディネーター上には残っているが、データは分散されないサーバー グループが Advisor により識別されました。 これに基づき、Hyperscale (Citus) のメリットをすべて得るために、お使いのサーバー グループ内のワーカー ノードにデータを分散させることが Advisor によって推奨されています。 これによって、サーバー グループ内の各ノードのリソースが活用され、クエリのパフォーマンスが向上します。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 

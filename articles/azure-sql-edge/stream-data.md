@@ -48,7 +48,7 @@ T-SQL ストリーミングは、[Azure Stream Analytics](https://docs.microsoft
 
 - **ストリーム出力**:データ ストリームを書き込むデータ ソースへの接続が定義されます。 現在、Azure SQL Edge では次の種類のストリーム出力がサポートされています。
     - Edge ハブ
-    - SQL (SQL 出力には、Azure SQL Edge のインスタンス内のローカル データベースか、リモートの SQL サーバーまたは Azure SQL データベースを指定できます)。 
+    - SQL (SQL 出力には、Azure SQL Edge のインスタンス内のローカル データベースか、リモートの SQL サーバーまたは Azure SQL Database を指定できます)。 
     - Azure BLOB ストレージ
 
 - **ストリーム クエリ**:入力ストリームがストリーム出力に書き込まれる前に適用される変換、集計、フィルター、並べ替え、結合が定義されます。 ストリーム クエリは、Stream Analytics で使用されているものと同じクエリ言語に基づいています。 詳細については、[Stream Analytics クエリ言語](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?)に関するページを参照してください。

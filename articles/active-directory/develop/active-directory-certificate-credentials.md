@@ -9,25 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690281"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853376"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
-Microsoft ID プラットフォームでは、[OAuth 2.0 クライアント資格情報付与フロー v2.0](v2-oauth2-client-creds-grant-flow.md)や [On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md)などで、アプリケーションが認証用の独自の資格情報を使用することが許可されています。
+Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資格情報付与](v2-oauth2-client-creds-grant-flow.md)フローや [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) (OBO) フローなどで、アプリケーションが認証用の独自の資格情報を使用することが許可されています。
 
-アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有している証明書で署名された JSON Web トークン(JWT) アサーションです。
+アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有する証明書を使用して署名された [JSON Web トークン](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) アサーションです。
 
 ## <a name="assertion-format"></a>アサーションの形式
-Microsoft ID プラットフォームでは、アサーションを計算するために、多数の [JSON Web トークン](https://jwt.ms/) ライブラリの中から好きな言語を選択して使用できます。 トークンによって伝達される情報は次のとおりです。
+
+アサーションを計算するには、自分が選択した言語の多数の JWT ライブラリの中からいずれかを使用できます。 この情報は、トークンによって[ヘッダー](#header)、[要求](#claims-payload)、および[署名](#signature)で伝達されます。
 
 ### <a name="header"></a>ヘッダー
 
@@ -35,22 +36,22 @@ Microsoft ID プラットフォームでは、アサーションを計算する�
 | --- | --- |
 | `alg` | **RS256** です |
 | `typ` | **JWT** です |
-| `x5t` | X.509 証明書 SHA-1 サムプリントです |
+| `x5t` | Base64 文字列値としてエンコードされた X.509 証明書ハッシュ (証明書の SHA-1 "*サムプリント*" とも呼ばれる) の 16 進数表現。 たとえば、X.509 証明書ハッシュ `84E05C1D98BCE3A5421D225B140B36E86A3D5534` (Hex) を指定した場合、`x5t` 要求は `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64) になります。 |
 
 ### <a name="claims-payload"></a>要求 (ペイロード)
 
 | パラメーター |  解説 |
 | --- | --- |
-| `aud` | Audience: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** でなければなりません |
-| `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。|
-| `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
+| `aud` | Audience:`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` である必要があります。 |
+| `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。 短い有効期限 (10 分から 1 時間) を使用することをお勧めします。|
+| `iss` | 発行者:client_id (クライアント サービスの "*アプリケーション (クライアント) ID*") である必要があります。 |
 | `jti` | GUID: JWT ID |
-| `nbf` | 期間の開始時刻: トークンの使用開始日。 日時は UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) から、トークンが発行された日時までの秒数で表されます。 |
-| `sub` | 件名:`iss` の場合は、client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
+| `nbf` | 期間の開始日時: トークンの使用開始日。 時刻は UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) から、アサーションが作成された時刻までの秒数で表されます。 |
+| `sub` | 件名:`iss` の場合、client_id (クライアント サービスの "*アプリケーション (クライアント) ID*") である必要があります。 |
 
 ### <a name="signature"></a>署名
 
-署名は、[JSON Web トークン RFC7519 仕様](https://tools.ietf.org/html/rfc7519)の説明に従って、証明書を適用することで計算されます
+署名は、[JSON Web トークン RFC7519 仕様](https://tools.ietf.org/html/rfc7519)の説明に従って証明書を適用することによって計算されます。
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>デコードされた JWT アサーションの例
 
@@ -75,10 +76,11 @@ Microsoft ID プラットフォームでは、アサーションを計算する�
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>エンコードされた JWT アサーションの例
 
-次の文字列は、エンコードされたアサーションの例です。 よく見ると、ピリオド (.) で区切られた 3 つのセクションがあることがわかります。
-* 最初のセクションは、ヘッダーをエンコードします。
-* 2 番目のセクションは、ペイロードをエンコードします。
-* 最後のセクションは、先の 2 つのセクションのコンテンツの証明書によって計算された署名です。
+次の文字列は、エンコードされたアサーションの例です。 よく見ると、ドット (`.`) で区切られた 3 つのセクションがあることがわかります。
+
+* 最初のセクションは、"*ヘッダー*" をエンコードしています。
+* 2 番目のセクションは、"*要求*" (ペイロード) をエンコードしています。
+* 最後のセクションは、最初の 2 つのセクションのコンテンツからの証明書を使用して計算された "*署名*" です。
 
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
@@ -101,8 +103,8 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 証明書を入手したら、次を計算する必要があります。
 
-- `$base64Thumbprint`。証明書ハッシュの base64 エンコード
-- `$base64Value`。証明書生データの base64 エンコード
+- `$base64Thumbprint` - Base64 でエンコードされた証明書ハッシュの値
+- `$base64Value` - Base64 でエンコードされた証明書生データの値
 
 また、GUID を指定して、アプリケーション マニフェストでキーを特定する必要もあります (`$keyId`)。
 
@@ -125,9 +127,6 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
    `keyCredentials` プロパティは複数値であるため、複数の証明書をアップロードして、高度なキー管理を行うこともできます。
 
-## <a name="code-sample"></a>コード サンプル
+## <a name="next-steps"></a>次の手順
 
-> [!NOTE]
-> X5T ヘッダーを計算するには、証明書のハッシュを使用してベース 64 文字列に変換する必要があります。 これを C# で実行する場合のコードは、`System.Convert.ToBase64String(cert.GetCertHash());` です。
-
-「[Microsoft ID プラットフォームを使用した .NET Core デーモン コンソール アプリケーション](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)」のコード サンプルには、独自の資格情報がアプリケーションによって認証に使用される方法が示されています。 それは、`New-SelfSignedCertificate` Powershell コマンドを使用した[自己証明書の作成](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)方法も示しています。 [アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)を利用して、証明書の作成やサムプリントの計算などを実行することもできます。
+GitHub の [Microsoft ID プラットフォームを使用した .NET Core デーモン コンソール アプリケーション](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)のコード サンプルは、アプリケーションで独自の資格情報が認証に使用される方法を示しています。 また、`New-SelfSignedCertificate` PowerShell コマンドレットを使用した[自己署名証明書の作成](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)方法も示しています。 さらに、サンプル リポジトリ内の[アプリ作成スクリプト](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)を使用して、証明書の作成やサムプリントの計算などを実行することもできます。

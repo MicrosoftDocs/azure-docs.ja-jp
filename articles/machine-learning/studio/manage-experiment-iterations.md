@@ -1,6 +1,5 @@
 ---
-title: 実験の表示と再実行
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):実験の表示と再実行 - Azure
 description: Azure Machine Learning Studio (classic) で実験の実行を管理します。 これまでの前提条件を厳密に調べ、再検討し、最終的に確定または改善するために、いつでも以前に実行した実験を見直すことができます。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 0e6d4312850dc16b76e248c9bbceacd8b5311d5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8935be1261b693cfb4033a9d16c868e11b1fa68
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687397"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432393"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で実験の実行を管理する
+
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
 
@@ -56,14 +58,14 @@ ms.locfileid: "84687397"
 > 
 > 
 
-Machine Learning Studio (クラシック) の **[実験]** タブにある実験の一覧には、常に最新バージョンの実験が表示されます。 以前に実行した実験を開く場合 ( **[前回の実行]** または **[実行履歴を表示]** を使用して)、 **[実行履歴を表示]** をクリックし、**状態**が**編集可能**なイテレーションを選ぶと、ドラフト バージョンに戻ることができます。
+Machine Learning Studio (クラシック) の **[実験]** タブにある実験の一覧には、常に最新バージョンの実験が表示されます。 以前に実行した実験を開く場合 (**[前回の実行]** または **[実行履歴を表示]** を使用して)、**[実行履歴を表示]** をクリックし、**状態**が**編集可能**なイテレーションを選ぶと、ドラフト バージョンに戻ることができます。
 
 ## <a name="run-a-previous-experiment"></a>前の実験を実行する
 **[前回の実行]** または **[実行履歴を表示]** をクリックして前回の実行を開くと、完了した実験を読み取り専用モードで表示できます。
 
-実験のイテレーションを前回の実行に対して構成した方法で開始する場合は、実行を開き、 **[名前を付けて保存]** をクリックします。 これにより、空の実行履歴と、前回の実行のコンポーネントやパラメーター値をすべて持った新しい実験が新しいタイトルで作成されます。 この新しい実験は Machine Learning Studio (クラシック) ホーム ページの **[実験]** タブに表示されるため、それを変更して実行することにより、実験のこのイテレーションの新しい実行履歴を開始できます。 
+実験のイテレーションを前回の実行に対して構成した方法で開始する場合は、実行を開き、**[名前を付けて保存]** をクリックします。 これにより、空の実行履歴と、前回の実行のコンポーネントやパラメーター値をすべて持った新しい実験が新しいタイトルで作成されます。 この新しい実験は Machine Learning Studio (クラシック) ホーム ページの **[実験]** タブに表示されるため、それを変更して実行することにより、実験のこのイテレーションの新しい実行履歴を開始できます。 
 
-たとえば、前のセクションで示した実験の実行履歴があると仮定します。 **[学習速度]** パラメーターを 0.4 に設定した場合の結果を観察し、 **[Number of training epochs]** パラメーターでさまざまな値を試します。
+たとえば、前のセクションで示した実験の実行履歴があると仮定します。 **[学習速度]** パラメーターを 0.4 に設定した場合の結果を観察し、**[Number of training epochs]** パラメーターでさまざまな値を試します。
 
 1. **[実行履歴を表示]** をクリックし、午後 4時 28 分 36 秒に実行した実験のイテレーションを開きます (パラメーター値は 0.4 に設定されています)。
 2. **[名前を付けて保存]** をクリックします。

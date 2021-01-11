@@ -9,44 +9,44 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.custom: seodec18
-ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 08/12/2020
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 2d14d45a6cf7147514cf4fdfc2a3ede470c12835
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416975"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017636"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する
+# <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>C# を使用して Azure Time Series Insights Gen 1 環境の参照データを管理する
 
-この記事では、C#、[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)、Azure Active Directory を組み合わせ、Azure Time Series Insights GA [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) にプログラミングによる API 要求を行う方法について説明します。
+この記事では、C#、[MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)、Azure Active Directory を組み合わせ、Azure Time Series Insights Gen 1 [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) にプログラミングによる API 要求を行う方法について説明します。
 
 > [!TIP]
-> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) で GA C# コード サンプルを確認します。
+> [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) で GA C# コード サンプルを確認します。
 
 ## <a name="summary"></a>まとめ
 
 次のサンプル コードでは、以下の機能が示されます。
 
 * [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication** を使用し、アクセス トークンを取得する。
-* GA [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) に対する一連の CREATE、READ、UPDATE、DELETE 操作。
-* [一般的なエラー コード](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)など、一般的な応答コード。
-    
+* Gen 1 [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) に対する一連の CREATE、READ、UPDATE、DELETE 操作。
+* [一般的なエラー コード](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api#validation-and-error-handling)など、一般的な応答コード。
+
     参照データ管理 API では、各項目が個別に処理されます。ある項目にエラーが発生したために別の項目も正常に完了できなくなることはありません。 たとえば、要求に 100 個の項目が含まれるとき、1 個の項目にエラーがあった場合、99 個の項目は書き込まれ、1 個の項目が却下されます。
 
 ## <a name="prerequisites-and-setup"></a>前提条件と設定
 
 サンプル コードをコンパイルして実行する前に、次の手順を実行します。
 
-1. [GA Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+1. [Gen 1 Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
 ) 環境をプロビジョニングします。
 
 1. 自分の環境内で[参照データ セットを作成します](time-series-insights-add-reference-data-set.md)。 次の参照データ スキームを使用します。
 
    | キー名 | Type |
    | --- | --- |
-   | uuid | String | 
+   | uuid | String |
 
 1. [認証と承認](time-series-insights-authentication-and-authorization.md)に関するページにある説明に基づき、Azure Active Directory で Azure Time Series Insights 環境を設定します。 **リダイレクト URI** として `http://localhost:8080/` を使用します。
 
@@ -54,7 +54,7 @@ ms.locfileid: "81416975"
 
 1. 各 **#PLACEHOLDER#** を該当する環境識別子に置換し、下のサンプル コードを編集します。
 
-1. プロジェクトのルート ディレクトリ内で `dotnet run` を実行します。 サインインを求められたら、ご自分のユーザー プロファイルを使用して Azure にサインインします。 
+1. プロジェクトのルート ディレクトリ内で `dotnet run` を実行します。 サインインを求められたら、ご自分のユーザー プロファイルを使用して Azure にサインインします。
 
 ## <a name="project-dependencies"></a>プロジェクト依存関係
 
@@ -92,6 +92,7 @@ ms.locfileid: "81416975"
       </ItemGroup>
     </Project>
     ```
+
 1. 次に、`dotnet restore` を実行します。
 
 ## <a name="c-sample-code"></a>C# サンプル コード
@@ -114,7 +115,7 @@ namespace CsharpTsiMsalGaSample
     {
         /**
          * Review the product documentation for detailed configuration steps or skip ahead and configure your environment settings.
-         * 
+         *
          * https://docs.microsoft.com/azure/time-series-insights/time-series-insights-authentication-and-authorization
          */
 
@@ -138,7 +139,7 @@ namespace CsharpTsiMsalGaSample
 
             /**
              * MSAL.NET configuration. Review the product documentation for more information about MSAL.NET authentication options.
-             * 
+             *
              * https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/
              */
 
@@ -174,7 +175,7 @@ namespace CsharpTsiMsalGaSample
                 Path = $"referencedatasets/{EnvironmentReferenceDataSetName}/$batch",
                 Query = "api-version=2016-12-12"
              }.Uri;
-                
+
              Console.WriteLine("Making HTTP POST to URI: {0}", uri);
              Console.WriteLine("");
 
@@ -202,7 +203,7 @@ namespace CsharpTsiMsalGaSample
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
 
-            {   
+            {
                 // CREATE reference data
                 Console.WriteLine("CREATE reference data example...");
                 Console.WriteLine("");
@@ -309,4 +310,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>次のステップ
 
-- GA [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) の参照ドキュメントをお読みください。
+* Gen 1 [参照データ管理 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) の参照ドキュメントをお読みください。

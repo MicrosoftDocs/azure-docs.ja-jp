@@ -1,30 +1,31 @@
 ---
-title: ワークスペースで Jupyter ノートブックを実行する方法
+title: ワークスペースで Jupyter Notebooks を実行する方法
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning Studio のワークスペースから離れずに Jupyter ノートブックを実行する方法について説明します。
+description: Azure Machine Learning Studio のワークスペースから離れずに Jupyter Notebooks を実行する方法について説明します。
 services: machine-learning
 author: abeomor
 ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: 476f3925886a6de68b49e1861d22e6cfaf594202
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601457"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386454"
 ---
-# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter ノートブックを実行する方法
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebooks を実行する方法
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning Studio のワークスペースで Jupyter ノートブックを直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
+Azure Machine Learning Studio のワークスペースで Jupyter Notebooks を直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
 
 次のことを実行できます。
 
-* ワークスペースで Jupyter ノートブックを作成する
+* ワークスペースで Jupyter Notebooks を作成する
 * ノートブックから実験を実行する
 * ノートブック環境を変更する
 * ノートブックの実行に使用されるコンピューティング インスタンスの詳細を検索する
@@ -36,7 +37,7 @@ Azure Machine Learning Studio のワークスペースで Jupyter ノートブ�
 
 ## <a name="create-notebooks"></a><a name="create"></a> ノートブックを作成する
 
-Azure Machine Learning ワークスペースで、新しい Jupyter ノートブックを作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
+Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks を作成して作業を開始します。 新しく作成されたノートブックは、既定のワークスペース ストレージに格納されます。 このノートブックは、ワークスペースにアクセスできるすべてのユーザーと共有できます。 
 
 新しいノートブックを作成するには: 
 
@@ -184,11 +185,20 @@ Notebook ツールバーを使用すると、ノートブックを実行する�
 Notebook によって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。  コンピューティング インスタンスにカーネルを追加するには:
 
 1. Notebook ツールバーの [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択します。
-1. ターミナル ウィンドウを使用して、新しい環境を作成します。
+1. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
+    ```shell
+    conda create --name newenv
+    ```
 1. 環境をアクティブにします。  `newenv` を作成した後の例を次に示します。
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. pip と ipykernel パッケージを新しい環境にインストールし、その conda 環境用のカーネルを作成します
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

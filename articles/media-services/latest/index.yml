@@ -9,15 +9,15 @@ metadata:
   ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: Juliako
-  ms.author: juliako
+  author: IngridAtMicrosoft
+  ms.author: inhenkel
   ms.date: 21/16/2020
-  ms.openlocfilehash: 16d0d86b18eb37f9435aa5818e4fd95e1e703f68
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 8168dccb5a6eba0836b273cf7fbd9800c64925ec
+  ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87023094"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89269167"
 landingContent:
 - title: Media Services について
   linkLists:
@@ -46,9 +46,9 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: アカウントを作成する
-      url: create-account-cli-how-to.md
+      url: ./create-account-howto.md
     - text: API へのアクセス
-      url: access-api-cli-how-to.md
+      url: ./access-api-howto.md
   - linkListType: download
     links:
     - text: .NET SDK のサンプル

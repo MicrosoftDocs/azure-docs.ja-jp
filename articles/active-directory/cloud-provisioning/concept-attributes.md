@@ -15,12 +15,12 @@ ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac09fb3faf55be6c07a1e0a88b6e2032c9ab8ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fff90777c63820b54a1cb37156021c894de19c8
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299331"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226932"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Azure AD スキーマについて
 ディレクトリなどの Azure Active Directory (Azure AD) のオブジェクトは、ユーザー、グループ、連絡先などを表す、プログラムによる高レベルのデータ構造です。 Azure AD で新しいユーザーまたは連絡先を作成すると、そのオブジェクトの新しいインスタンスが作成されます。 これらのインスタンスは、プロパティに基づいて区別できます。
@@ -51,7 +51,7 @@ Azure AD には、次の 2 種類のプロパティがあります。
 * **入力** (mail): "john.smith@contoso.com"
 * **出力**: "john. smith"
 
-カスタム式および構文の記述方法の詳細については、「[Azure Active Directory での属性マッピングのための式の作成](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)」を参照してください。
+カスタム式および構文の記述方法の詳細については、「[Azure Active Directory での属性マッピングのための式の作成](../app-provisioning/functions-for-customizing-application-data.md)」を参照してください。
 
 次の表では、一般的な属性の一部と、これらが Azure AD に同期される方法を示します。
 

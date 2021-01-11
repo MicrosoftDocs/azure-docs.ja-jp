@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60c61ff4753413d2241820400dcbc899e925eecc
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204628"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120951"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>MSAL の例外とエラーを処理する
 
@@ -236,7 +236,7 @@ MSAL for Python では、ほとんどのエラーは API 呼び出しからの�
 * 成功時の応答には `"access_token"` が含まれています。 応答の形式は OAuth2 プロトコルで定義されています。 詳細については、「[5.1 Successful Response](https://tools.ietf.org/html/rfc6749#section-5.1)」(5.1 成功応答) を参照してください。
 * エラー応答には `"error"` が含まれ、通常は `"error_description"` も含まれています。 応答の形式は OAuth2 プロトコルで定義されています。 詳細については、「[5.2 Error Response](https://tools.ietf.org/html/rfc6749#section-5.2)」(5.2 エラー応答) を参照してください。
 
-エラーが返されると、`"error_description"` キーには人間が読めるメッセージが含まれています。このメッセージには通常、Microsoft ID プラットフォーム エラー コードが含まれています。 さまざまなエラー コードの詳細については、「[認証と承認エラー コード](https://docs.microsoft.com/azure/active-directory/develop/reference-aadsts-error-codes)」をご覧ください。
+エラーが返されると、`"error_description"` キーには人間が読めるメッセージが含まれています。このメッセージには通常、Microsoft ID プラットフォーム エラー コードが含まれています。 さまざまなエラー コードの詳細については、「[認証と承認エラー コード](./reference-aadsts-error-codes.md)」をご覧ください。
 
 MSAL for Python では、ほとんどのエラーはエラー値を返すことで処理されるため、例外はまれです。 `ValueError` 例外は、API パラメーターの形式が正しくない場合など、ライブラリの使用方法に問題がある場合にのみスローされます。
 

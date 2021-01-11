@@ -1,19 +1,19 @@
 ---
 title: ExpressRoute:VNet を回線にリンクする:Azure portal
-description: Azure ExpressRoute 回線に VNet を接続する 手順を説明します。
+description: Azure Portal を使って Azure ExpressRoute 回線に仮想ネットワークをリンクするための接続を作成する方法を説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 09/17/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: a4ed99d69d1c2389e73c215bccfd6112895e791d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56508503c199b1f822ce8f181689a236f3a0af18
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737072"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395827"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -94,7 +94,7 @@ ms.locfileid: "84737072"
 > 接続ごとに別個の認可が必要です。
 >
 
-1. [ExpressRoute] ページで **[承認]** をクリックし、承認の**名前**を入力して、 **[保存]** をクリックします。
+1. [ExpressRoute] ページで **[承認]** をクリックし、承認の**名前**を入力して、**[保存]** をクリックします。
 
    ![[Authorizations]](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 2. 構成が保存されたら、**リソース ID** と**承認キー**をコピーします。
@@ -118,14 +118,14 @@ ms.locfileid: "84737072"
 
    ![接続の検索](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
 3. **[接続の種類]** を [ExpressRoute] に設定します。
-4. [基本] ページで詳細を入力し、 **[OK]** をクリックします。
+4. [基本] ページで詳細を入力し、**[OK]** をクリックします。
 
    ![基本ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
-5. **[設定]** ページで **[仮想ネットワーク ゲートウェイ]** を選び、 **[承認の利用]** チェック ボックスをオンにします。
+5. **[設定]** ページで **[仮想ネットワーク ゲートウェイ]** を選び、**[承認の利用]** チェック ボックスをオンにします。
 6. **承認キー**と**ピア回線 URI** を入力し、接続に名前を付けます。 **[OK]** をクリックします。 **[ピア回線の URI]** は、ExpressRoute 回線のリソース ID です (ExpressRoute 回線の [Properties Setting]\(プロパティ設定\) ウィンドウで確認できます)。
 
-   ![[設定] ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
-7. **[概要]** ページの内容を確認し、 **[OK]** をクリックします。
+   ![設定ページ](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+7. **[概要]** ページの内容を確認し、**[OK]** をクリックします。
 
 **接続の承認を解除するには**
 

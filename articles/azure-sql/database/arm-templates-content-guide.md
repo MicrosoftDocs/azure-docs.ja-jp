@@ -40,7 +40,7 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 | [Azure Web アプリおよび Redis Cache と SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | このテンプレートでは、同じリソース グループ内に Web アプリ、Redis Cache、データベースを作成し、Web アプリ内にデータベースと Redis Cache 用の 2 つの接続文字列を作成します。|
 | [ADF V2 を使用した Blob Storage からのデータのインポート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | この Azure Resource Manager テンプレートでは、Azure Blob Storage から SQL Database にデータをコピーする Azure Data Factory V2 のインスタンスを作成します。|
 | [HDInsight クラスターとデータベース](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | このテンプレートを使用すると、HDInsight クラスターと論理 SQL サーバー、データベース、2 つのテーブルを作成できます。 このテンプレートは、[HDInsight の Hadoop での Sqoop の使用](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)に関する記事で使用されています。 |
-| [スケジュールに従って SQL ストアド プロシージャを実行する Azure ロジック アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | このテンプレートを使用すると、スケジュールに従って SQL ストアド プロシージャを実行するロジック アプリを作成できます。 プロシージャの引数は、テンプレートの body セクションに配置できます。|
+| [スケジュールに従って SQL ストアド プロシージャを実行する Azure Logic Apps](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | このテンプレートを使用すると、スケジュールに従って SQL ストアド プロシージャを実行する Logic Apps を作成できます。 プロシージャの引数は、テンプレートの body セクションに配置できます。|
 
 ## <a name="azure-sql-managed-instance"></a>[Azure SQL Managed Instance](#tab/managed-instance)
 

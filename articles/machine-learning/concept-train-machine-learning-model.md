@@ -9,13 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.custom: tracking-python
-ms.openlocfilehash: da437f830a452a57ea1290b3d85a3faa92895bcd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-python
+ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147057"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651762"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -90,7 +90,29 @@ Estimator を使用すると、広く使われている ML フレームワーク
 * [チュートリアル:バッチ スコアリングに Azure Machine Learning パイプラインを使用する](tutorial-pipeline-batch-scoring-classification.md)
 * [例:機械学習パイプラインの場合の Jupyter Notebook の例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [例:自動機械学習を使用したパイプライン](https://aka.ms/pl-automl)
-* [例:Estimator を使用したパイプライン](https://aka.ms/pl-estimator)
+* [例:Estimator を使用したパイプライン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)
+
+### <a name="understand-what-happens-when-you-submit-a-training-job"></a>トレーニング ジョブを送信したときの動作を理解する
+
+Azure トレーニング ライフサイクルは次の要素で構成されています。
+
+1. プロジェクト フォルダー内のファイルの解凍。 _.amlignore_ または _.gitignore_ で指定されたファイルは無視されます
+1. コンピューティング クラスターのスケール アップ 
+1. Dockerfile のビルドまたは計算ノードへのダウンロード 
+    1. システムにより、次のハッシュが計算されます。 
+        - 基本イメージ 
+        - カスタム Docker の手順 (「[カスタム Docker ベース イメージを使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)」を参照してください)
+        - Conda 定義 YAML ([Azure Machine Learning でのソフトウェア環境の作成と使用](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)に関するページを参照してください)
+    1. システムでは、ワークスペース Azure Container Registry (ACR) の検索で、このハッシュがキーとして使用されます
+    1. 見つからない場合、グローバル ACR で一致するものが検索されます
+    1. 見つからない場合、システムでは新しいイメージがビルドされます (これはキャッシュされ、ワークスペース ACR に登録されます)
+1. 計算ノード上の一時記憶域への圧縮されたプロジェクト ファイルのダウンロード
+1. プロジェクト ファイルの解凍
+1. `python <entry script> <arguments>` を実行する計算ノード
+1. ログ、モデル ファイル、`./outputs` に書き込まれたその他のファイルの、ワークスペースに関連付けられているストレージ アカウントへの保存
+1. 一時記憶域の削除など、コンピューティングのスケールダウン 
+
+ローカル コンピューターでのトレーニングを選択した場合 ("ローカル実行として構成")、Docker を使用する必要はありません。 必要に応じて、Docker をローカルで使用できます (例については、[ML パイプラインの構成](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )に関するセクションを参照)。
 
 ## <a name="r-sdk"></a>R SDK
 
@@ -117,7 +139,7 @@ R SDK を使用すると、Azure Machine Learning で R 言語を使用できま
 
 [多数モデル ソリューション アクセラレータ](https://aka.ms/many-models) (プレビュー) は Azure Machine Learning 上に構築されており、数百または数千もの機械学習モデルをトレーニング、操作、管理できます。
 
-たとえば次のシナリオで、__それぞれの事例または個々の対象の__モデルを構築すると、結果が改善される可能性があります。
+たとえば次のシナリオで、__それぞれの事例または個々の対象の__ モデルを構築すると、結果が改善される可能性があります。
 
 * 個々の店舗の売上予測
 * 数百基の油井の予測メンテナンス

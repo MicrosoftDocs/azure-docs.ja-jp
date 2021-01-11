@@ -3,195 +3,126 @@ title: Azure Key Vault に対する認証
 description: Azure Key Vault に対して認証を行う方法について説明します
 author: ShaneBala-keyvault
 ms.author: sudbalas
-ms.date: 06/08/2020
+ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
-ms.openlocfilehash: aaaeec3a20088cad447ab0e8034d12ef3268fae3
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.topic: how-to
+ms.openlocfilehash: 1ef5b2229aadc4be46361a7319351a1f27b28b63
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84793231"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378978"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証
 
-## <a name="overview"></a>概要
+Azure Key Vault を使用すると、セキュリティで保護された一元的なクラウド リポジトリにシークレットを格納して、その配布を制御できます。これにより、アプリケーションで資格情報を保存する必要がなくなります。 アプリケーションでそれらのシークレットにアクセスするためには、実行時に Key Vault で認証を行うことだけが必要です。
 
-Azure Key Vault はシークレット管理ソリューションであり、アプリケーション シークレットのストレージを一元化し、その配布を制御できます。 Azure Key Vault を使用すると、アプリケーションに資格情報を保存する必要がなくなります。 アプリケーションは、キー コンテナーに対して認証を行うことで必要な資格情報を取得できます。 このドキュメントでは、キー コンテナーに対する認証の基本について説明します。
+## <a name="app-identity-and-service-principals"></a>アプリの ID とサービス プリンシパル
 
-このドキュメントは、キー コンテナーの認証のしくみを理解するのに役立ちます。 このドキュメントでは、認証フローについて説明し、キー コンテナーへのアクセス権を付与する方法を紹介します。また、キー コンテナーに格納されているシークレットをサンプルの Python アプリケーションから取得するためのチュートリアルも含まれています。
+Key Vault による認証は、特定の**セキュリティ プリンシパル**の ID の認証を行う [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) と連携して機能します。
 
-このドキュメントでは、以下について説明します。
+セキュリティ プリンシパルは、Azure リソースへのアクセスを要求するユーザー、グループ、サービス、またはアプリケーションを表すオブジェクトです。 すべてのセキュリティ プリンシパルには、Azure によって一意の**オブジェクト ID** が割り当てられます。
 
-* 主要概念
-* セキュリティ プリンシパルの登録
-* Key Vault 認証フローを理解する
-* サービス プリンシパルに Key Vault へのアクセス権を付与する
-* チュートリアル (Python)
+* **ユーザー** セキュリティ プリンシパルでは、Azure Active Directory 内にプロファイルを持つ個人が示されます。
 
-## <a name="key-concepts"></a>主要概念
+* **グループ** セキュリティ プリンシパルでは、Azure Active Directory 内に作成されたユーザーのセットが示されます。 グループに割り当てられたすべてのロールまたはアクセス許可は、グループ内のすべてのユーザーに付与されます。
 
-### <a name="azure-active-directory-concepts"></a>Azure Active Directory の概念
+* **サービス プリンシパル**は、アプリケーションまたはサービス、つまりユーザーまたはグループではなくコードを示すセキュリティ プリンシパルの一種です。 サービス プリンシパルのオブジェクト ID は**クライアント ID** と呼ばれ、ユーザー名のように機能します。 サービス プリンシパルの**クライアント シークレット**は、パスワードのように機能します。
 
-* Azure Active Directory (AAD) - Azure Active Directory (Azure AD) は、Microsoft のクラウドベースの ID およびアクセスの管理サービスであり、従業員によるリソースへのサインインとアクセスを支援します。
+アプリケーションの場合、サービス プリンシパルを取得するには次の 2 つの方法があります。
 
-* ロールの定義 - ロールの定義は、アクセス許可のコレクションです。  AAD には、Azure リソースに対する読み取り、書き込み、削除などの操作を実行するためのアクセス許可のレベルを含む標準ロール (所有者、共同作成者、または閲覧者) が用意されています。 また、ロールには、ユーザーが作成した、特定の詳細なアクセス許可が割り当てられたカスタム定義を指定することもできます。
+* 推奨: アプリケーションに対してシステム割り当ての**マネージド ID** を有効にします。
 
-* アプリケーションの登録 - Azure AD アプリケーションを登録すると、Azure AD テナントには、アプリケーション オブジェクトとサービス プリンシパル オブジェクトという 2 つのオブジェクトが作成されます。 アプリケーション オブジェクトはすべてのテナントにわたって使用するためにアプリケーションをグローバルに表現したもの、サービス プリンシパル オブジェクトは特定のテナントで使用するためにアプリケーションをローカルで表現したものと考えることができます。
+    Azure では、マネージ ID を使用することにより、アプリケーションのサービス プリンシパルが内部的に管理され、他の Azure サービスでのアプリケーションの認証が自動的に行われます。 マネージド ID は、さまざまなサービスにデプロイされたアプリケーションで使用できます。
 
-### <a name="security-principal-concepts"></a>セキュリティ プリンシパルの概念
+    詳細については、[マネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)に関する記事を参照してください。 また、[マネージド ID がサポートされている Azure サービス](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)に関する記事も参照してください。それには、特定のサービス (App Service、Azure Functions、Virtual Machines など) でマネージド ID を有効にする方法について説明されている記事へのリンクが含まれます。
 
-* セキュリティ プリンシパル - セキュリティ プリンシパルとは、Azure リソースへのアクセスを要求しているユーザー、グループ、サービス プリンシパル、またはマネージド ID を表すオブジェクトです。
+* マネージド ID を使用できない場合は、Azure AD テナントにアプリケーションを**登録**します。詳細については、[クイックスタート: Azure ID プラットフォームでのアプリケーションの登録](/azure/active-directory/develop/quickstart-register-app)に関する記事を参照してください。 また、登録によって、すべてのテナントでそのアプリを示す 2 つ目のアプリケーション オブジェクトも作成されます。
 
-* ユーザー - Azure Active Directory 内にプロファイルを持つ個人です。
+## <a name="authorize-a-service-principal-to-access-key-vault"></a>サービス プリンシパルが Key Vault にアクセスすることを承認する
 
-* グループ - Azure Active Directory 内に作成されたユーザーのセットです。 グループにロールを割り当てると、そのグループ内のすべてのユーザーがそのロールを持つようになります。
+Key Vault は、2 つの異なる承認レベルで動作します。
 
-* サービス プリンシパル - 特定の Azure リソースにアクセスするためにアプリケーションまたはサービスによって使用されるセキュリティ ID です。 アプリケーションに対するユーザー ID (ユーザー名とパスワード、または証明書) と考えることができます。
+- **アクセス ポリシー**では、ユーザー、グループ、またはサービス プリンシパルに対して既存の Key Vault リソースの "*内部にある*" シークレット、キー、証明書へのアクセスが承認されるかどうかが制御されます("データ プレーン" 操作とも呼ばれます)。 通常、アクセス ポリシーは、ユーザー、グループ、アプリケーションに対して付与されます。
 
-* マネージド ID - Azure によって自動的に管理される、Azure Active Directory 内の ID。
+    アクセス ポリシーを割り当てる方法については、次の記事を参照してください。
 
-* オブジェクト ID (クライアント ID) - Azure AD によって生成される一意識別子で、初回プロビジョニング時にサービス プリンシパルに関連付けられます。
+    - [Azure Portal](assign-access-policy-portal.md)
+    - [Azure CLI](assign-access-policy-cli.md)
+    - [Azure PowerShell](assign-access-policy-portal.md)
 
-## <a name="security-principal-registration"></a>セキュリティ プリンシパルの登録
+- **ロールのアクセス許可**では、ユーザー、グループ、またはサービス プリンシパルに対して Key Vault リソースの作成、削除、その他の管理が承認されるかどうかが制御されます("管理プレーン" 操作とも呼ばれます)。 このようなロールは、ほとんどの場合、管理者にのみ付与されます。
+ 
+    ロールの割り当てと管理については、次の記事を参照してください。
 
-1. 管理者がユーザーまたはアプリケーション (サービス プリンシパル) を Azure Active Directory に登録します。
+    - [Azure Portal](/azure/role-based-access-control/role-assignments-portal)
+    - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
+    - [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 
-2. 管理者が Azure キー コンテナーを作成し、アクセス ポリシー (ACL) を構成します。
+    現在、Key Vault では、Key Vault リソースに対する管理操作を許可する[共同作成者](/azure/role-based-access-control/built-in-roles#key-vault-contributor)ロールがサポートされています。 他の多くのロールは、現在プレビューの段階にあります。 「[Azure カスタム ロール](/azure/role-based-access-control/custom-roles)」で説明されているように、カスタム ロールを作成することもできます。
 
-3. (オプション) 管理者が Azure Key Vault ファイアウォールを構成します。
-
-![イメージ](../media/authentication-1.png)
-
-## <a name="understand-the-key-vault-authentication-flow"></a>Key Vault 認証フローを理解する
-
-1. サービス プリンシパルは、AAD に対する認証を行うための呼び出しを行います。これは、いくつかの方法で行うことができます。
-    * ユーザーは、ユーザー名とパスワードを使用して Azure portal にログインできます。
-    * アプリケーションは、クライアント ID を使用し、AAD に対してクライアント シークレットまたはクライアント証明書を提示します。
-    * 仮想マシンなどの Azure リソースは、MSI が割り当てられているため、IMDS REST エンドポイントにアクセスしてアクセス トークンを取得します。
-
-2. AAD に対する認証が成功すると、サービス プリンシパルに OAuth トークンが付与されます。
-3. サービス プリンシパルが Key Vault を呼び出します。
-4. Azure Key Vault ファイアウォールで、呼び出しを許可するかどうかが判定されます。
-    * シナリオ 1:Key Vault ファイアウォールが無効で、キー コンテナーのパブリック エンドポイント (URI) にパブリック インターネットから到達可能です。 呼び出しは許可されます。
-    * シナリオ 2: 呼び出し元は、Azure Key Vault の信頼できるサービスです。 このオプションが選択されている場合、特定の Azure サービスはキー コンテナー ファイアウォールをバイパスできます。 [Key Vault の信頼できるサービスの一覧](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-    * シナリオ 3: 呼び出し元は、IP アドレス、仮想ネットワーク、またはサービス エンドポイントで Azure Key Vault ファイアウォールに一覧表示されています。
-    * シナリオ 4: 呼び出し元は、構成されたプライベート リンク接続を介して Azure Key Vault に到達できます。
-    * シナリオ 5: 呼び出し元は承認されず、禁止応答が返されます。
-5. Key Vault は、サービス プリンシパルのアクセス トークンを確認するための呼び出しを AAD に対して行います。
-6. 要求された操作を実行するための十分なアクセス ポリシー アクセス許可がサービス プリンシパルにあるかどうかが Key Vault によって確認されます。この例では、操作はシークレットの取得です。
-7. Key Vault によって、サービス プリンシパルにシークレットが提供されます。
-
-![イメージ](../media/authentication-2.png)
-
-## <a name="grant-a-service-principal-access-to-key-vault"></a>サービス プリンシパルに Key Vault へのアクセス権を付与する
-
-1. サービス プリンシパルがない場合は作成します。 [サービス プリンシパルを作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)
-2. Azure Key Vault の IAM 設定で、サービス プリンシパルにロールの割り当てを追加します。 事前に割り当てられたロールである所有者、共同作成者、または閲覧者を追加できます。 また、対象のサービス プリンシパル用にカスタム ロールを作成することもできます。 最小限の特権の原則に従い、対象のサービス プリンシパルに最低限必要なアクセス権のみを提供する必要があります。 
-3.  Key Vault ファイアウォールを構成します。 Key Vault ファイアウォールを無効のままにし、パブリック インターネットからのアクセスを許可することができます (安全性は低くなりますが、構成が簡単になります)。 また、特定の IP 範囲、サービス エンドポイント、仮想ネットワーク、またはプライベート エンドポイントにアクセスを制限することもできます (安全性が高まります)。
-4.  対象のサービス プリンシパルのアクセス ポリシーを追加します。これは、対象のサービス プリンシパルがキー コンテナーに対して実行できる操作の一覧です。 最小限の特権の原則を使用して、サービス プリンシパルが実行できる操作を制限する必要があります。 ただし、アクセス許可が不十分な場合、対象のサービス プリンシパルはアクセスを拒否されます。
-
-## <a name="tutorial"></a>チュートリアル
-
-このチュートリアルでは、Key Vault に対する認証を行ってシークレットを取得するようにサービス プリンシパルを構成する方法について学習します。 
-
-### <a name="part-1--create-a-service-principal-in-the-azure-portal"></a>パート 1: Azure portal でサービス プリンシパルを作成する
-
-1. Azure Portal にログインする
-1. Azure Active Directory を検索する
-1. [アプリの登録] タブをクリックする
-1. [+ 新規登録] をクリックする
-1. サービス プリンシパルの名前を作成する
-1. [登録] を選択します
-
-この時点で、サービス プリンシパルは登録されています。 これを表示するには、[アプリの登録] を選択します。 対象のサービス プリンシパルにはクライアント ID の GUID が割り当てられます。これは、サービス プリンシパルの "ユーザー名" と考えてください。 次に、対象のサービス プリンシパルの "パスワード" を作成する必要があります。クライアント シークレットまたはクライアント証明書を使用できます。 認証にクライアント シークレットを使用することは安全ではないため、テスト目的でのみ使用するよう注意してください。 このチュートリアルでは、クライアント証明書の使用方法について説明します。
-
-### <a name="part-2-create-a-client-certificate-for-your-service-principal"></a>パート 2: サービス プリンシパルのクライアント証明書を作成する
-
-1. 証明書を作成する
-
-    * オプション 1: [OpenSSL](https://www.openssl.org/) を使用して証明書を作成します (テスト専用。運用環境では自己署名証明書を使用しないでください)
-
-    ```console
-    openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365
-    ```
-
-    * オプション 2:キー コンテナーを使用して証明書を作成します。 [Azure Key Vault で証明書を作成する](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#creating-your-first-key-vault-certificate)
-
-1. 証明書を PEM 形式でダウンロードします
-1. Azure portal にログインし、Azure Active Directory に移動します
-1. [アプリの登録] をクリックします
-1. パート 1 で作成したサービス プリンシパルを選択します。
-1. 対象のサービス プリンシパルの [Certificates and Secrets]\(証明書とシークレット\) タブをクリックします
-1. [証明書のアップロード] ボタンを使用して証明書をアップロードします
-
-### <a name="part-3-configure-an-azure-key-vault"></a>パート 3: Azure キー コンテナーを構成する
-
-1. Azure キー コンテナーを作成します。[リンク](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault)
-
-2. キー コンテナーの IAM アクセス許可を構成します
-    1. お使いのキー コンテナーに移動する
-    1. [アクセス制御 (IAM)] タブを選択します
-    1. [Add Role Assignment]\(ロールの割り当ての追加\) をクリックします
-    1. ドロップダウンから [共同作成者] ロールを選択します
-    1. 作成したサービス プリンシパルの名前またはクライアント ID を入力します
-    1. [ロールの割り当ての表示] をクリックして、対象のサービス プリンシパルが表示されていることを確認します
-
-3. Key Vault アクセス ポリシーのアクセス許可を構成します
-    1. お使いのキー コンテナーに移動する
-    1. [設定] で [アクセス ポリシー] タブを選択します
-    1. [+ アクセス ポリシーの追加] リンクを選択します
-    1. [シークレットのアクセス許可] ドロップダウンで、[取得] と [リスト] アクセス許可のチェック ボックスをオンにします。
-    1. 名前またはクライアント ID で対象のサービス プリンシパルを選択します。
-    1. [追加] を選択します
-    1. [保存] を選択します
-
-4. 対象のキー コンテナーにシークレットを作成します。
-    1. お使いのキー コンテナーに移動する
-    1. [設定] で [シークレット] タブをクリックします
-    1. [+ Generate/Import]\(+ 生成/インポート\) をクリックします
-    1. シークレットの名前を作成します。この例では、シークレットに "test" という名前を付けます
-    1. シークレットの値を作成します。この例では、値 "password123" を設定します
-
-これで、ローカル コンピューターからコードを実行すると、クライアント ID と証明書へのパスを提示してアクセス トークンを取得することで、キー コンテナーに対する認証を行うことができます。
-
-### <a name="part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python"></a>パート 4:アプリケーションで Azure キー コンテナーからシークレットを取得する (Python)
-
-次のコード サンプルを使用して、対象のアプリケーションで、構成したサービス プリンシパルを使用してキー コンテナーからシークレットを取得できるかどうかをテストします。 
-
-```python
-from azure.keyvault.secrets import SecretClient
-from azure.identity import CertificateCredential
+    ロールに関する一般的な情報については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](/azure/role-based-access-control/overview)」を参照してください。
 
 
-tenant_id = ""                                             ##ENTER AZURE TENANT ID
-vault_url = "https://{VAULT NAME}.vault.azure.net/"        ##ENTER THE URL OF YOUR KEY VAULT
-client_id = ""                                             ##ENTER CLIENT ID OF SERVICE PRINCIPAL
-cert_path = r"C:\Users\{USERNAME}\{PATH}\{CERT_NAME}.pem"  ##ENTER PATH TO CERTIFICATE
+> [!IMPORTANT]
+> セキュリティを最強にするには、常に最小特権の原則に従い、必要なアクセス ポリシーとロールのうち最も限定的なものだけを付与します。 
+    
+## <a name="configure-the-key-vault-firewall"></a>Key Vault ファイアウォールを構成する
 
-def main():
+Key Vault では、パブリック IP アドレスを使用してリソースにアクセスすることが既定で許可されます。 セキュリティを強化するため、特定の IP 範囲、サービス エンドポイント、仮想ネットワーク、またはプライベート エンドポイントにアクセスを制限することもできます。
 
-    #AUTHENTICATION TO AAD USING CLIENT ID AND CLIENT CERTIFICATE
-    token = CertificateCredential(tenant_id= tenant_id, client_id=client_id, certificate_path=cert_path)
+詳細については、「[ファイアウォールの向こう側にある Azure Key Vault へのアクセス](/azure/key-vault/general/access-behind-firewall)」を参照してください。
 
-    #AUTHENTICATION TO KEY VAULT PRESENTING AAD TOKEN
-    client = SecretClient(vault_url=vault_url, credential=token)
 
-    #CALL TO KEY VAULT TO GET SECRET
-    secret = client.get_secret('{SECRET_NAME}')            ##ENTER NAME OF SECRET IN KEY VAULT
+## <a name="the-key-vault-authentication-flow"></a>Key Vault の認証フロー
 
-    #GET PLAINTEXT OF SECRET
-    print(secret.value)
+1. サービス プリンシパルによって Azure AD での認証が要求されます。次はその例です。
+    * ユーザーが、ユーザー名とパスワードを使用して Azure portal にログインします。
+    * アプリケーションが、Azure REST API を呼び出して、クライアント ID、シークレット、またはクライアント証明書を提示します。
+    * マネージド ID を持つ仮想マシンなどの Azure リソースが、[Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) の REST エンドポイントに接続してアクセス トークンを取得します。
 
-#CALL MAIN()
-if __name__ == "__main__":
-    main()
-```
+1. Azure AD に対する認証が成功すると、サービス プリンシパルに OAuth トークンが付与されます。
 
-![イメージ](../media/authentication-3.png)
+1. サービス プリンシパルは、Key Vault のエンドポイント (URI) を通して Key Vault REST API を呼び出します。
 
+1. Key Vault ファイアウォールにより、次の条件がチェックされます。 いずれかの条件が満たされた場合、呼び出しは許可されます。 それ以外の場合、呼び出しはブロックされ、不許可の応答が返されます。
+
+    * ファイアウォールは無効になっており、Key Vault のパブリック エンドポイントにパブリック インターネットから到達できます。
+    * 呼び出し元は [Key Vault の信頼できるサービス](/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)であり、ファイアウォールをバイパスすることができます。
+    * 呼び出し元は、IP アドレス、仮想ネットワーク、またはサービス エンドポイントによってファイアウォールのリストに登録されています。
+    * 呼び出し元は、構成されたプライベート リンク接続を通して Key Vault に到達できます。    
+
+1. ファイアウォールで呼び出しが許可された場合、Key Vault によって Azure AD が呼び出されて、サービス プリンシパルのアクセス トークンの検証が行われます。
+
+1. Key Vault により、要求された操作に必要なアクセス ポリシーをサービス プリンシパルが持っているかどうかが確認されます。 そうでない場合、Key Vault からは禁止応答が返されます。
+
+1. Key Vault により、要求された操作が実行されて、結果が返されます。
+
+次の図は、アプリケーションが Key Vault の "シークレットの取得" API を呼び出すプロセスを示したものです。
+
+![Azure Key Vault の認証フロー](../media/authentication/authentication-flow.png)
+
+## <a name="code-examples"></a>コード例
+
+次の表では、アプリケーションのコードで特定の言語の Azure SDK ライブラリを使用して Key Vault を操作する方法が示されているさまざまな記事へのリンクを示します。 Azure CLI や Azure portal などの他のインターフェイスも、便利なように示されています。
+
+| Key Vault シークレット | Key Vault キー | Key Vault 証明書 |
+|  --- | --- | --- |
+| [Python](/azure/key-vault/secrets/quick-create-python) | [Python](/azure/key-vault/keys/quick-create-python) | [Python](/azure/key-vault/certificates/quick-create-python) | 
+| [.NET (SDK v4)](/azure/key-vault/secrets/quick-create-net) | -- | -- |
+| [.NET (SDK v3)](/azure/key-vault/secrets/quick-create-net-v3) | -- | -- |
+| [Java](/azure/key-vault/secrets/quick-create-java) | -- | -- |
+| [JavaScript](/azure/key-vault/secrets/quick-create-node) | -- | -- | 
+| | | |
+| [Azure Portal](/azure/key-vault/secrets/quick-create-portal) | [Azure Portal](/azure/key-vault/keys/quick-create-portal) | [Azure Portal](/azure/key-vault/certificates/quick-create-portal) |
+| [Azure CLI](/azure/key-vault/secrets/quick-create-cli) | [Azure CLI](/azure/key-vault/keys/quick-create-cli) | [Azure CLI](/azure/key-vault/certificates/quick-create-cli) |
+| [Azure PowerShell](/azure/key-vault/secrets/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/keys/quick-create-powershell) | [Azure PowerShell](/azure/key-vault/certificates/quick-create-powershell) |
+| [ARM テンプレート](/azure/key-vault/secrets/quick-create-net) | -- | -- |
 
 ## <a name="next-steps"></a>次の手順
 
-1. キー コンテナー認証エラーのトラブルシューティング方法について学習します。 [Key Vault トラブルシューティング ガイド](https://docs.microsoft.com/azure/key-vault/general/rest-error-codes)
+- [Key Vault のアクセス ポリシーのトラブルシューティング](troubleshooting-access-issues.md)
+- [Key Vault REST API のエラー コード](rest-error-codes.md)
+- [Key Vault 開発者ガイド](developers-guide.md)
+- [Azure のロールベースのアクセス制御 (RBAC) とは](/azure/role-based-access-control/overview)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/28/2020
 ms.author: banders
-ms.openlocfilehash: c3c4c4ea25a8f8057a5830ad2207bb674d9cc011
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 919ff7474dd64cfe3005975beb4cab6f77c177ce
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501553"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825261"
 ---
 # <a name="save-costs-with-azure-dedicated-host-reservations"></a>Azure Dedicated Host 予約によるコスト削減
 
@@ -24,7 +24,7 @@ Azure Dedicated Host の予約インスタンスにコミットすると、コ�
 
 予約を購入する前に、必要な専用ホストを決定する必要があります。 SKU は専用ホストに対して定義されており、VM シリーズと種類を表します。 
 
-まず、[Windows 仮想マシン](./windows/sizes.md)または [Linux](./linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のサポートされているサイズを調べて、VM シリーズを特定します。
+まず、[Windows 仮想マシン](./sizes.md)または [Linux](./sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のサポートされているサイズを調べて、VM シリーズを特定します。
 
 次に、Azure Dedicated Host でそれがサポートされているかどうかを確認します。 [Azure Dedicated Host の価格](https://aka.ms/ADHPricing)ページには、専用ホスト SKU の完全な一覧、CPU 情報、およびさまざまな価格オプション (予約インスタンスを含む) があります。
 

@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5abb6852e267fa7d7277e0e0674a4099343e14ca
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80576718"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114916"
 ---
 # <a name="shared-device-mode-for-ios-devices"></a>iOS デバイスの共有デバイス モード
 
@@ -67,7 +67,7 @@ ms.locfileid: "80576718"
       - 型: Boolean
       - 値:True
 
-    Intune による構成の詳細については、[Intune の構成に関するドキュメント](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)を参照してください。
+    Intune による構成の詳細については、[Intune の構成に関するドキュメント](/intune/configuration/ios-device-features-settings)を参照してください。
 
 1. 次に、MDM プロファイルによってデバイスに Microsoft Authenticator アプリをプッシュするように MDM を構成します。
 

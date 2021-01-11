@@ -2,7 +2,7 @@
 title: Azure AD ロールをユーザーに割り当てる - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使って、ユーザーに管理者と管理者以外のロールを割り当てる方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5dc42d8308b8e20a647f5f64867fd78a1a09c96
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 77ba802d5e337851b3b5141695e5b2f0c6456719
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224021"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902356"
 ---
 # <a name="assign-administrator-and-non-administrator-roles-to-users-with-azure-active-directory"></a>Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる
 
@@ -28,7 +28,7 @@ Azure Active Directory (Azure AD) で、Azure AD リソースを管理するた�
 
 ## <a name="assign-roles"></a>ロールを割り当てる
 
-ユーザーに Azure AD ロールを割り当てる一般的な方法は、ユーザーの **[Assigned roles]\(割り当てられているロール\)** ページです。 Privileged Identity Management (PIM) を使用して、資格をジャストインタイムでロールに昇格させることもできます。 PIM の使用方法については、「[Privileged Identity Management のドキュメント](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)」をご覧ください。
+ユーザーに Azure AD ロールを割り当てる一般的な方法は、ユーザーの **[Assigned roles]\(割り当てられているロール\)** ページです。 Privileged Identity Management (PIM) を使用して、ユーザーの資格を構成し、ジャストインタイムでロールに設定することもできます。 PIM の使用方法については、「[Privileged Identity Management のドキュメント](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)」をご覧ください。
 
 > [!Note]
 > Azure AD Premium P2 ライセンス プランを所有しており、既に PIM を使用している場合、すべてのロール管理タスクは [Privileged Identity Management エクスペリエンス](../users-groups-roles/directory-manage-roles-portal.md)で実行されます。

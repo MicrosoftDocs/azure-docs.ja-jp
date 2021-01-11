@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: f37109cc2677ad5ef18c5677bda9308a78cebccf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 7d6c0928196c9e8e1abf6aa7f724a58753ce3d2a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851303"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289047"
 ---
 # <a name="add-interaction-rules"></a>相互作用ルールを追加する
 
-この記事では、*相互作用ルール*について説明します。 これらの追加ルールでは、より固有または複雑な状況を処理します。 独自のカスタム相互作用ルールを作成できますが、この記事では、次の対象となるシナリオの相互作用ルールを使用します。
+この記事では、**相互作用ルール**について説明します。 これらは、より具体的または複雑な状況に対処するための追加ルールです。 独自のカスタム相互作用ルールを自由に作成できますが、この記事では、次の対象となるシナリオの相互作用ルールを使用します。
 
 * コマンドの確認
 * コマンドへの 1 ステップの修正の追加
@@ -30,8 +30,8 @@ ms.locfileid: "85851303"
 
 次の記事の手順を完了している必要があります。
 > [!div class="checklist"]
-> * [単純なコマンドを使用してアプリケーションを作成する](./how-to-custom-commands-create-application-with-simple-commands.md)
-> * [コマンドにパラメーターを追加する](./how-to-custom-commands-add-parameters-to-commands.md)
+> * [方法: 単純なコマンドを使用してアプリケーションを作成する](./how-to-custom-commands-create-application-with-simple-commands.md)
+> * [方法: コマンドにパラメーターを追加する](./how-to-custom-commands-add-parameters-to-commands.md)
 
 ## <a name="add-confirmations-to-a-command"></a>コマンドに確認を追加する
 
@@ -40,7 +40,7 @@ ms.locfileid: "85851303"
 1. 左側のペインで **SetTemperature** コマンドを選択します。
 1. 中央のペインで **[追加]** を選択して、相互作用ルールを追加ます。 次に、 **[Interaction rules]\(相互作用ルール\)**  >  **[Confirm command]\(確認コマンド\)** を選択します。
 
-    これにより、3 つの相互作用ルールが追加されます。 このルールは、ユーザーにアラームの日付と時刻の確認を要求し、次のターンでの確認 (yes または no) を想定しています。
+    この操作により、3 つの相互作用ルールが追加されます。このルールは、ユーザーにアラームの日付と時刻の確認を要求し、次のターンで確認 (yes/no) を期待します。
 
     1. 次の構成に従って、**確認コマンド**相互作用ルールを変更します。
         1. **[Name]\(名前\)** を「**Confirm temperature**」 (温度確認) に変更します。
@@ -75,14 +75,14 @@ ms.locfileid: "85851303"
 
 **[トレーニング]** を選択し、トレーニングが完了するのを待って、 **[テスト]** を選択します。
 
-- **入力**:Set temperature to 80 degrees. (温度を 80 度に設定する)
-- **出力**:OK 80? (80 でよろしいですか)
-- **入力**:いいえ。
+- **入力**:Set temperature to 80 degrees (温度を 80 度に設定する)
+- **出力**: are you sure you want to set the temperature as 80 degrees? (温度を 80 度に設定しますか?)
+- **入力**:いいえ
 - **出力**:ご安心ください。 What temperature then? (それでは何度にしますか)
-- **入力**:83 degrees. (83 度)
-- **出力**:OK 83? (83 でよろしいですか)
-- **入力**:はい。
-- **出力**:OK, setting temperature to 83 degrees (はい、温度を 83 度に設定します)
+- **入力**:72 degrees (72 度)
+- **出力**: are you sure you want to set the temperature as 72 degrees? (温度を 72 度に設定しますか?)
+- **入力**:はい
+- **出力**:OK, setting temperature to 83 degrees (OK、温度を 83 度に設定します)
 
 
 ## <a name="implement-corrections-in-a-command"></a>コマンドで修正を実装する

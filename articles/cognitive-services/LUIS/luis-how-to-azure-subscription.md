@@ -4,12 +4,13 @@ description: Language Understanding (LUIS) を初めて使用するときは、�
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144643"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496901"
 ---
 # <a name="create-luis-resources"></a>LUIS リソースの作成
 
@@ -245,9 +246,9 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
     |Type|設定|値|
     |--|--|--|
-    |Header|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
-    |Header|`Ocp-Apim-Subscription-Key`|実際のオーサリング キー。|
-    |Header|`Content-type`|`application/json`|
+    |ヘッダー|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
+    |ヘッダー|`Ocp-Apim-Subscription-Key`|実際のオーサリング キー。|
+    |ヘッダー|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS アプリ ID。
     |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 

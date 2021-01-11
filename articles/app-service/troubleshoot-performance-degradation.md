@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9d3de5d4a88c782ad541ceb4916ec90a3bdd7b5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84170768"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958254"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -43,7 +43,7 @@ ms.locfileid: "84170768"
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.アプリケーションの動作を観察、監視する
 #### <a name="track-service-health"></a>サービス正常性を追跡する
-Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。 サービスの正常性は、[Azure Portal](https://portal.azure.com/) で追跡できます。 詳細については、[サービスの正常性の追跡](../monitoring-and-diagnostics/insights-service-health.md)に関するページを参照してください。
+Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。 サービスの正常性は、[Azure Portal](https://portal.azure.com/) で追跡できます。 詳細については、[サービスの正常性の追跡](../service-health/service-notifications.md)に関するページを参照してください。
 
 #### <a name="monitor-your-app"></a>アプリを監視する
 Web アプリに問題が発生しているかどうかは、アプリを監視することによって確認することができます。 アプリのブレードで **[要求とエラー]** タイルをクリックします。 **[メトリック]** ブレードには、追加できるすべてのメトリックが表示されます。
@@ -61,7 +61,7 @@ Web アプリに問題が発生しているかどうかは、アプリを監視�
 詳細については、次を参照してください。
 
 * [Azure App Service のアプリの監視](web-sites-monitor.md)
-* [アラート通知を受け取る](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+* [アラート通知を受け取る](../azure-monitor/platform/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Web エンドポイントの状態を監視する
 アプリを **Standard** 価格レベルで実行している場合、App Service で 3 つの地域から 2 つのエンドポイントを監視することができます。
@@ -161,4 +161,4 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
 
  ![パフォーマンスの問題を解決するためにアプリを再起動する](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-アプリの管理には、Azure PowerShell を使用することもできます。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
+アプリの管理には、Azure PowerShell を使用することもできます。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)をご覧ください。

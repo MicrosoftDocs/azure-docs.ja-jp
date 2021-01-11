@@ -10,16 +10,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0f5bc9827919c18e327dc263384f0d4b6a01c5bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86530176"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004177"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する
 
@@ -50,7 +50,7 @@ ms.locfileid: "86530176"
 1. 「[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)」で作成した、単一ページの表示アプリを開きます。
 
    > [!NOTE]
-   > このセクションでは、プロジェクトは空の組織名で構成されていると想定しています。 そうでない場合は、すべてのクラス名の前に組織名を付けてください。
+   > このセクションでは、プロジェクトは空の組織名で構成されていると想定しています。 そうでない場合は、すべてのクラス名の先頭に組織名を追加します。
 
 2. `Main.storyboard` ファイルで、オブジェクト ライブラリから、スクリーンショットに表示されているコンポーネントを追加します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "86530176"
 
      「[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](ios-sdk-get-started.md)」チュートリアルで、いくつかのコンポーネントが追加されました。
 
-3. ビューに表示されているコンポーネントを **Ctrl** キーを押しながら `ViewController.h` までドラッグし、新しいアウトレットを追加します。
+3. ビューに表示されているコンポーネントを **Ctrl** キーを押しながら `ViewController.h` までドラッグし、次の新しいアウトレットを追加します。
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -86,10 +86,10 @@ ms.locfileid: "86530176"
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. `ViewController.h` で、インポート ステートメントの後ろに次の `#define` を追加します。 `<Enter Your Backend Endpoint>` のプレースホルダーは、前のセクションでアプリのバックエンドのデプロイに使用した宛先 URL に置き換えます。 たとえば、「 `http://your_backend.azurewebsites.net` 」のように入力します。
+4. `ViewController.h` で、インポート ステートメントの後ろに次の `#define` を追加します。 `<Your backend endpoint>` のプレースホルダーは、前のセクションでアプリのバックエンドのデプロイに使用した宛先 URL に置き換えます。 `http://your_backend.azurewebsites.net` の例を次に示します。
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
 5. プロジェクトで、作成済みの ASP.NET バックエンドとのインターフェイスになる、`RegisterClient` という名前の新しい Cocoa Touch クラスを作成します。 `NSObject` から継承するクラスを作成したら、 `RegisterClient.h` の中に次のコードを追加します。
@@ -494,7 +494,7 @@ ms.locfileid: "86530176"
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。 
+このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 >[場所に基づいたプッシュ通知を送信する](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

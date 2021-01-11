@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/10/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1ea11008155899e09bf461e56a8bb4981d37238d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8802d612f2497cc58c90856e9a5a5572a142f1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385418"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482840"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -60,7 +60,7 @@ Azure API Management において Azure AD B2C を使用して API のセキュ�
 次に、ご利用の Azure AD B2C ユーザー フローのいずれかについて、既知の構成 URL を取得します。 また、Azure API Management でサポートするトークン発行者エンドポイント URI も必要です。
 
 1. [Azure portal](https://portal.azure.com) で Azure AD B2C テナントを参照します。
-1. **[ポリシー]** で **[ユーザー フロー (ポリシー)]** を選択します。
+1. **[ポリシー]** で **[ユーザー フロー]** を選択します。
 1. 既存のポリシー ("*B2C_1_signupsignin1*" など) を選択して、 **[ユーザー フローを実行します]** を選択します。
 1. ページの上部付近にある **[ユーザー フローを実行します]** 見出しの下に表示されるハイパーリンクの URL を記録します。 この URL は、ユーザー フロー用の OpenID Connect の既知の検出エンドポイントであり、次のセクションにおいて Azure API Management で受信ポリシーを構成するときに使用します。
 
@@ -126,7 +126,7 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 まず、Postman で、`Authorization` ヘッダーで使用するため、Azure AD B2C によって発行されるトークンが必要です。 これを取得するには、前提条件の 1 つとして作成したサインアップ/サインイン ユーザー フローの **[今すぐ実行]** 機能を使用します。
 
 1. [Azure portal](https://portal.azure.com) で Azure AD B2C テナントを参照します。
-1. **[ポリシー]** で **[ユーザー フロー (ポリシー)]** を選択します。
+1. **[ポリシー]** で **[ユーザー フロー]** を選択します。
 1. 既存のサインアップ/サインイン ユーザーフロー (たとえば、"*B2C_1_signupsignin1*") を選択します。
 1. **[アプリケーション]** で、 *[webapp1]* を選択します。
 1. **[応答 URL]** で、`https://jwt.ms` を選択します。

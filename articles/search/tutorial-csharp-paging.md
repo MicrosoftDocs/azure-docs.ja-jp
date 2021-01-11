@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: ad57fe01313957c4f3d23ef44d0e02ad11ab3fa8
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 3223bf3e2b413940fd99404453b7f958655e6fff
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262176"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998477"
 ---
 # <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して検索結果にページングを追加する
 

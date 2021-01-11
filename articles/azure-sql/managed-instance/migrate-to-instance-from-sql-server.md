@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 3ef109dc5fad73a19eabefb8eb872c02d62698ba
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b7623a3c89f9ae4b20385caaac676b972f55f85e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087573"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209487"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Azure SQL Managed Instance への SQL Server インスタンスの移行
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -162,7 +162,7 @@ SAS 資格情報を使用してデータベース バックアップをマネー
 前提条件として、次のアクティビティを完了したことを確認します。
 
 - さまざまなインスタンス、データベース、tempdb の設定、および構成を調べて、マネージド インスタンスでの設定を、ソース SQL Server インスタンスの設定と一致させます。 最初のパフォーマンス比較を実行する前に互換性レベルや暗号化などの設定が変更されていないことを確認するか、または有効にした新機能によってクエリが影響を受けるリスクを受け入れるます。 移行に伴うリスクを軽減するには、パフォーマンスの監視後にのみ、データベース互換性レベルを変更します。
-- 優れたパフォーマンスを実現するためのファイルのサイズの事前割り当てなど、[General Purpose に対するストレージのベスト プラクティスのガイドライン](https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525)を実装します。
+- 優れたパフォーマンスを実現するためのファイルのサイズの事前割り当てなど、[General Purpose に対するストレージのベスト プラクティスのガイドライン](https://techcommunity.microsoft.com)を実装します。
 - [マネージド インスタンスと SQL Server でのパフォーマンスの違いを引き起こす可能性のある重要な環境の違い](https://azure.microsoft.com/blog/key-causes-of-performance-differences-between-sql-managed-instance-and-sql-server/)について学習し、パフォーマンスに影響する可能性のあるリスクを明らかにします。
 - マネージド インスタンスでクエリ ストアと自動チューニングが有効になっていることを確認します。 これらの機能を使用すると、ワークロードのパフォーマンスを測定し、可能性があるパフォーマンスの問題を自動的に修正できます。 「[新しい SQL Server にアップグレードするときにパフォーマンスの安定性を維持する](https://docs.microsoft.com/sql/relational-databases/performance/query-store-usage-scenarios#CEUpgrade)」の説明に従って、データベースの互換性レベルの変更前と変更後のワークロードのパフォーマンスに関する情報を取得するための最適なツールとしてクエリ ストアを使用する方法を学習します。
 オンプレミスの環境と可能な限り一致するように環境を準備した後は、ワークロードの実行を開始してパフォーマンスを測定できます。 測定プロセスには、[ソース SQL Server インスタンスでワークロード測定のベースライン パフォーマンスを作成する](#create-a-performance-baseline)ときに測定したものと同じパラメーターを含める必要があります。
@@ -196,7 +196,7 @@ SQL Managed Instance には、監視とトラブルシューティングのた�
 
 移行の間にマネージド インスタンスで何も変更しない場合でも、インスタンスを運用するときに新しい機能を有効にして、最新のデータベース エンジンの機能強化を利用する機会があります。 一部の変更は[データベースの互換性レベルを変更した](https://docs.microsoft.com/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database)後でのみ有効になります。
 
-たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 SQL マネージド インスタンスでは、[特定の時点への復旧 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](../database/high-availability-sla.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
+たとえば、マネージド インスタンスでバックアップを作成する必要はありません。サービスによってバックアップが自動的に実行されます。 バックアップのスケジュール設定、取得、管理について心配する必要はなくなります。 SQL Managed Instance では、[特定の時点への復旧 (PITR)](../database/recovery-using-backups.md#point-in-time-restore) を使用して、この保有期間内の任意の時点に復元する機能が提供されます。 さらに、[高可用性](../database/high-availability-sla.md)が組み込まれているため、高可用性の設定について心配する必要はありません。
 
 セキュリティを強化するには、[Azure Active Directory 認証](../database/security-overview.md)、[監査](auditing-configure.md)、[脅威の検出](../database/advanced-data-security.md)、[行レベル セキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security)、[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)の使用を検討します。
 

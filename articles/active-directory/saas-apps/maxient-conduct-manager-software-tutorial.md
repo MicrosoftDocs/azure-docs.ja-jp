@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Maxient Conduct Manager Software の統合 | Microsoft Docs
 description: Azure Active Directory と Maxient Conduct Manager Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85e71b76-cac3-4ce6-a35f-796d2cb7bdb5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09399f59e61ded49fef5a2388900b7b478111119
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: dd6872fd8dca3f29b61c6f1dffb5f219abac5cb8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847193"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518893"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maxient-conduct-manager-software"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Maxient Conduct Manager Software の統合
 
@@ -113,7 +108,7 @@ Maxient Conduct Manager Software を使用して Azure AD の SSO を構成し�
 
 ## <a name="test-with-maxient"></a>Maxient でテストする 
 
-Maxient の実装およびサポート担当者がまだサポート チケットを開いていない場合は、"キャンパス ベースの認証および Azure セットアップ - \<\<学校名\>\>" という件名の電子メールを [support@maxient.com](mailto:support@maxient.com) に送信してください。 電子メールの本文に、**アプリのフェデレーション メタデータ URL** を記載してください。 Maxient のスタッフから、適切な属性がリリースされていることを確認できるテスト リンクを記載した応答を受け取ります。  
+Maxient の実装およびサポート担当者がまだサポート チケットを開いていない場合は、"キャンパス ベースの認証および Azure セットアップ - \<\<School Name\>\>" という件名の電子メールを [support@maxient.com](mailto:support@maxient.com) に送信してください。 電子メールの本文に、**アプリのフェデレーション メタデータ URL** を記載してください。 Maxient のスタッフから、適切な属性がリリースされていることを確認できるテスト リンクを記載した応答を受け取ります。  
     
 ## <a name="additional-resources"></a>その他のリソース
 

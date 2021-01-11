@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 469138da19248bc7872028508f3080de5fae4a52
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1811590dcf9077a503f89a900f661c52aa442c96
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838794"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425183"
 ---
 | リソース | Free | 共有 | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -28,8 +28,9 @@ ms.locfileid: "85838794"
 | アプリケーションごとの同時 [デバッガー接続](../articles/app-service/troubleshoot-dotnet-visual-studio.md) |1 |1 |1 |5 |5 |5 |
 | サブスクリプションあたりの App Service 証明書数<sup>9</sup>| サポートされていません | サポートされていません |10 |10 |10 |10 |
 | アプリケーションごとのカスタム ドメイン数</a> |0 (azurewebsites.net サブドメインのみ)|500 |500 |500 |500 |500 |
-| カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-certificate.md) |サポートされない、デフォルトで使用可能な *.azurewebsites.net のワイルドカード証明書|サポートされない、デフォルトで使用可能な *.azurewebsites.net のワイルドカード証明書|SNI SSL 接続は無制限 |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる|
-| プランあたりのハイブリッド接続数 | | | 5 | 25 | 200 | 200 |
+| カスタム ドメインの [SSL サポート](../articles/app-service/configure-ssl-certificate.md) |サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|サポートされない、デフォルトで使用可能な \*.azurewebsites.net のワイルドカード証明書|SNI SSL 接続は無制限 |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる |無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる | 無制限の SNI SSL 接続と 1 件の IP SSL 接続が含まれる|
+| Hybrid Connections (ハイブリッド接続) | | | プランあたり 5 | プランあたり 25 | アプリあたり 200 | アプリあたり 200 |
+| [Virtual Network 統合](../articles/app-service/web-sites-integrate-with-vnet.md) | | |   |  X |  X  |  X  |
 | 統合 Load Balancer | |X |X |X |X |X<sup>10</sup> |
 | [Always On](../articles/app-service/configure-common.md) | | |X |X |X |X |
 | [スケジュールされたバックアップ](../articles/app-service/manage-backup.md) | | | | 2 時間ごとにスケジュールされたバックアップ。1 日あたり最大 12 回のバックアップ (手動 + スケジュール済み) | 1 時間ごとにスケジュールされたバックアップ。1 日あたり最大 50 回のバックアップ (手動 + スケジュール済み) | 1 時間ごとにスケジュールされたバックアップ。1 日あたり最大 50 回のバックアップ (手動 + スケジュール済み) |
@@ -37,6 +38,11 @@ ms.locfileid: "85838794"
 | [WebJobs](../articles/app-service/webjobs-create.md)<sup>11</sup> |X |X |X |X |X |X |
 | [エンドポイントの監視](../articles/app-service/web-sites-monitor.md) | | |X |X |X |X |
 | アプリごとの[ステージング スロット](../articles/app-service/deploy-staging-slots.md)| | | |5 |20 |20 |
+| [運用環境でのテスト](../articles/app-service/deploy-staging-slots.md#route-traffic)| | | |X |X |X |
+| [診断ログ](../articles/app-service/troubleshoot-diagnostic-logs.md) | X | X | X | X | X | X |
+| Kudu | X | X | X | X | X | X |
+| [認証と承認](../articles/app-service/overview-authentication-authorization.md) | X | X | X | X | X | X |
+| [App Service マネージド証明書 (パブリック プレビュー)](https://azure.microsoft.com/updates/secure-your-custom-domains-at-no-cost-with-app-service-managed-certificates-preview/) <sup>12</sup> | |  | X | X | X | X |
 | SLA | |  |99.95%|99.95%|99.95%|99.95%|  
 
 <sup>1</sup>アプリとストレージのクォータは、特に記述のない限り、App Service プラン単位の数字です。  
@@ -49,4 +55,6 @@ ms.locfileid: "85838794"
 <sup>8</sup>最大 IP 接続数はインスタンス単位の数であり、インスタンスのサイズによって異なります。B1/S1/P1V2 インスタンスあたり 1,920、B2/S2/P2V2 インスタンスあたり 3,968、B3/S3/P3V2 インスタンスあたり 8,064。  
 <sup>9</sup> サブスクリプションあたりの App Service 証明書のクォータ制限は、サポート要求によって最大上限 200 まで増やすことができます。  
 <sup>10</sup>App Service Isolated SKU では、Azure Load Balancer を使用した内部負荷分散 (ILB) が可能です。そのため、インターネットからパブリック接続が発生しません。 そのため、ILB 分離 App Service の一部の機能は、ILB ネットワーク エンドポイントに直接アクセスできるマシンから使用する必要があります。  
-<sup>11</sup> カスタムの実行可能ファイルやスクリプトを、オンデマンドやスケジュールで、または App Service インスタンス内のバックグラウンド タスクとして継続的に実行します。 WebJobs を継続的に実行するには、常時接続が必要です。 App Service インスタンスで実行できる WebJobs の数に定義済みの制限はありません。 実際にはアプリケーション コードの処理に依存する限界があります。  
+<sup>11</sup> カスタムの実行可能ファイルやスクリプトを、オンデマンドやスケジュールで、または App Service インスタンス内のバックグラウンド タスクとして継続的に実行します。 Web ジョブを継続的に実行するには、常時接続が必要です。 App Service インスタンスで実行できる Web ジョブの数に定義済みの制限はありません。 実際にはアプリケーション コードの処理に依存する限界があります。
+
+<sup>12</sup> ネイキッド ドメインはサポートされていません。 標準の証明書のみを発行します (ワイルドカード証明書は使用できません)。 カスタム ドメインあたり 1 つの無料証明書に制限されます。

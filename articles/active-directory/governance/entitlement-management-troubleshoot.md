@@ -16,12 +16,12 @@ ms.date: 06/17/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bf19123888dd26073016131c93047b0cd0afaf4
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 216cff03ac6ce64dee9aae1e9daa4a86385eeb0e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145762"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783333"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理のトラブルシューティング
 
@@ -45,9 +45,9 @@ ms.locfileid: "86145762"
 
 * アクセス パッケージで管理するリソースにユーザーが既に割り当てられている場合は、適切なポリシーを使用してユーザーがアクセス パッケージに割り当てられていることを確認します。 たとえば、既にユーザーがいるグループをアクセス パッケージに含めるとよいでしょう。 グループ内のこれらのユーザーが引き続きアクセスを必要とする場合、これらのユーザーは、アクセス パッケージに対する適切なポリシーを持ち、グループへのアクセスが不可能にならないようにする必要があります。 アクセス パッケージを割り当てるには、そのリソースを含むアクセス パッケージを要求するようにユーザーに依頼するか、またはアクセス パッケージにユーザーを直接割り当てます。 詳細については、[アクセス パッケージの要求と承認の設定の変更](entitlement-management-access-package-request-policy.md)に関する記事を参照してください。
 
-* チームのメンバーを削除すると、Microsoft 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)」を参照してください。
+* チームのメンバーを削除すると、Microsoft 365 グループからも削除されます。 チームのチャット機能から削除されるタイミングは遅れる場合があります。 詳細については、「[グループ メンバーシップ](/microsoftteams/office-365-groups#group-membership)」を参照してください。
 
-* ディレクトリが複数地域用に構成されていないことを確認してください。 エンタイトルメント管理では現在、SharePoint Online の複数地域の場所はサポートされません。 SharePoint Online サイトをエンタイトルメント管理で統制するためには、既定の地域の場所にサイトが存在する必要があります。 詳細については、「[OneDrive および SharePoint Online の複数地域機能](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)」を参照してください。
+* ディレクトリが複数地域用に構成されていないことを確認してください。 エンタイトルメント管理では現在、SharePoint Online の複数地域の場所はサポートされません。 SharePoint Online サイトをエンタイトルメント管理で統制するためには、既定の地域の場所にサイトが存在する必要があります。 詳細については、「[OneDrive および SharePoint Online の複数地域機能](/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365)」を参照してください。
 
 ## <a name="access-packages"></a>アクセス パッケージ
 
@@ -69,7 +69,7 @@ ms.locfileid: "86145762"
 
 * ディレクトリにまだ存在しないユーザーが、アクセス パッケージを要求するためにマイ アクセス ポータルにサインインする場合は、ユーザーが組織の自分のアカウントを使用して認証するようにします。 組織のアカウントとして使用できるのは、リソース ディレクトリ内のアカウント、またはアクセス パッケージのいずれかのポリシーに含まれるディレクトリ内のアカウントです。 ユーザーのアカウントが組織のアカウントでない場合、または認証するディレクトリがポリシーに含まれていない場合は、ユーザーにアクセス パッケージが表示されません。 詳細については、[アクセス パッケージへのアクセスの要求に関するページ](entitlement-management-request-access.md)を参照してください。
 
-* リソース ディレクトリへのサインインがブロックされた場合、ユーザーは、マイ アクセス ポータルでアクセスを要求できなくなります。 ユーザーがアクセスを要求できるようにするには、ユーザーのプロファイルからサインインのブロックを削除する必要があります。 サインインのブロックを削除するには、Azure portal 内で **[Azure Active Directory]** 、 **[ユーザー]** をクリックし、ユーザーをクリックしてから **[プロファイル]** をクリックします。 **[設定]** セクションを編集し、 **[サインインのブロック]** を **[いいえ]** に変更します。 詳細については、「[Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する](../fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。  [ID 保護ポリシー](../identity-protection/howto-unblock-user.md)が原因でユーザーがブロックされたかどうかも確認できます。
+* リソース ディレクトリへのサインインがブロックされた場合、ユーザーは、マイ アクセス ポータルでアクセスを要求できなくなります。 ユーザーがアクセスを要求できるようにするには、ユーザーのプロファイルからサインインのブロックを削除する必要があります。 サインインのブロックを削除するには、Azure portal 内で **[Azure Active Directory]** 、 **[ユーザー]** をクリックし、ユーザーをクリックしてから **[プロファイル]** をクリックします。 **[設定]** セクションを編集し、 **[サインインのブロック]** を **[いいえ]** に変更します。 詳細については、「[Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する](../fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。  [ID 保護ポリシー](../identity-protection/howto-identity-protection-remediate-unblock.md)が原因でユーザーがブロックされたかどうかも確認できます。
 
 * マイ アクセス ポータルの場合、ユーザーが要求者と承認者を兼ねているときは、 **[承認]** ページにアクセス パッケージの要求が表示されません。 これは、ユーザーが自分の要求を承認できないようにするための動作です。 ユーザーが要求しているアクセス パッケージで、別の承認者がポリシーに基づいて構成されていることを確認します。 詳細については、[アクセス パッケージの要求と承認の設定の変更](entitlement-management-access-package-request-policy.md)に関する記事を参照してください。
 

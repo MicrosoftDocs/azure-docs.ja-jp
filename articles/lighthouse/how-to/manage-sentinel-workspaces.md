@@ -1,14 +1,14 @@
 ---
 title: Azure Sentinel ワークスペースの大規模な管理を行う
 description: 委任された顧客リソースで Azure Sentinel を効果的に管理する方法を学習します。
-ms.date: 06/17/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 70810ca54c62e73d5dec76495eb5179b84db60fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86105270"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511254"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>Azure Sentinel ワークスペースの大規模な管理を行う
 
@@ -17,6 +17,9 @@ ms.locfileid: "86105270"
 Azure Sentinel によって、セキュリティ分析と脅威インテリジェンスが実現され、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションが提供されます。 Azure Lighthouse を使用すると、テナントをまたがる複数の Azure Sentinel ワークスペースの大規模な管理を行うことができます。 これにより、複数のワークスペースでクエリを実行、あるいはブックを作成し、接続されたデータ ソースからのデータを視覚化および監視して洞察を得るなどのシナリオが実現します。 クエリやプレイブックなどの IP は管理テナントに残りますが、顧客テナントでセキュリティ管理を実行するために使用できます。
 
 このトピックでは、テナント間の可視性およびマネージド セキュリティ サービスのためのスケーラブルな方法で、[Azure Sentinel](../../sentinel/overview.md) を使用する方法の概要について説明します。
+
+> [!TIP]
+> このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
 
 ## <a name="architectural-considerations"></a>アーキテクチャに関する考慮事項
 
@@ -66,9 +69,9 @@ MSSP によって管理される各顧客サブスクリプションは、[Azure
 
 また、ブックは、その顧客に固有のシナリオ用に管理する個々のテナントに直接配置することもできます。
 
-## <a name="run-queries-across-azure-sentinel-workspaces"></a>Azure Sentinel ワークスペースにわたってクエリを実行する
+## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>Azure Sentinel ワークスペースにまたがって Log Analytics とハンティング クエリを実行する
 
-脅威検出のために Log Analytics クエリを作成し、管理テナントで一元的に保存することができます。 その後、これらのクエリは、Union 演算子とワークスペースの () 式を使用して、顧客のすべての Azure Sentinel ワークスペースで実行できます。 詳細については、「[ワークスペース間のクエリ](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)」を参照してください。
+脅威検出のために Log Analytics クエリを作成し、管理テナントで一元的に保存することができます ([ハンティング クエリ](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting) を含む)。 その後、これらのクエリは、Union 演算子とワークスペースの () 式を使用して、顧客のすべての Azure Sentinel ワークスペースで実行できます。 詳細については、「[ワークスペース間のクエリ](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)」を参照してください。
 
 ## <a name="use-automation-for-cross-workspace-management"></a>ワークスペース間の管理にオートメーションを使用する
 

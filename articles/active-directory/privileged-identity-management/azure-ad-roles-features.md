@@ -14,12 +14,12 @@ ms.date: 07/10/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54a286ed63d842dba08ad545b17498cb4000a5cf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c039842a04923bc02aa288576570d51c39156c40
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256630"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784013"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロールの管理機能
 
@@ -56,7 +56,7 @@ Azure AD ロール向けの新しい設定も追加されました。
 
 ## <a name="api-changes"></a>API の変更
 
-顧客が更新されたバージョンを自分の Azure AD 組織にロール アウトした場合、既存の Graph API は使用できなくなります。 [Azure リソース ロール向け Graph API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta) の使用に移行する必要があります。 その API を使用して Azure AD ロールを管理するには、署名内の `/azureResources` を `/aadroles` と置き換え、`resourceId` にディレクトリ ID を使用します。
+顧客が更新されたバージョンを自分の Azure AD 組織にロール アウトした場合、既存の Graph API は使用できなくなります。 [Azure リソース ロール向け Graph API](/graph/api/resources/privilegedidentitymanagement-resources?view=graph-rest-beta) の使用に移行する必要があります。 その API を使用して Azure AD ロールを管理するには、署名内の `/azureResources` を `/aadroles` と置き換え、`resourceId` にディレクトリ ID を使用します。
 
 Microsoft は、以前の API を使用しているすべての顧客に連絡し、この変更について事前に伝えるためにできる限りのことをしてきました。 自分の Azure AD 組織が新しいバージョンに移行したのに、まだ古い API を使用している場合は、pim_preview@microsoft.com から Microsoft のチームに連絡してください。
 

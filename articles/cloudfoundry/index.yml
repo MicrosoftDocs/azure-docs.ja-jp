@@ -3,7 +3,7 @@ title: Cloud Foundry on Azure のドキュメント
 summary: Cloud Foundry は、さまざまな言語やフレームワークで開発された 12 ファクター アプリケーションをビルド、デプロイ、運用するためのオープンソースのサービスとしてのプラットフォーム (PaaS) です。
 metadata:
   title: Cloud Foundry on Azure のドキュメント
-  description: Cloud Foundry は、さまざまな言語やフレームワークで開発された 12 ファクター アプリケーションをビルド、デプロイ、運用するためのオープンソースのサービスとしてのプラットフォーム (PaaS) です。
+  description: Cloud Foundry は、さまざまな言語やフレームワークで開発された 12 ファクター アプリケーションをビルド、デプロイ、運用するためのオープンソースの PaaS です。
   services: multiple
   ms.service: multiple
   ms.devlang: devops
@@ -11,12 +11,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 92fc1fb74316e2a80d0cf4fde912f05db2b3613b
-  ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+  ms.openlocfilehash: 8191a179474db5e9d60e0cd10fb1efff189a3a73
+  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/12/2020
-  ms.locfileid: "84750340"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88224970"
 landingContent:
 - title: Cloud Foundry on Azure について
   linkLists:

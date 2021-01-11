@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a015f7dd58bae328a8c18e3de3202c0ca615c9cf
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: d5423a61c8febee72f32935f3dee4e9f9e868630
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86034732"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049079"
 ---
 # <a name="conditional-access-user-risk-based-conditional-access"></a>条件付きアクセス:ユーザー リスクベースの条件付きアクセス
 
@@ -29,7 +29,7 @@ Microsoft では、研究者、法執行機関、Microsoft のさまざまなセ
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
 1. **[新しいポリシー]** を選択します。
-1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
+1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。 詳細については、「[ポリシーの名前付け基準を設定する](./plan-conditional-access.md#set-naming-standards-for-your-policies)」を参照してください。
 1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
    1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
    1. **[除外]** で、 **[ユーザーとグループ]** を選択し、組織の緊急アクセス用または非常用アカウントを選択します。 
@@ -62,8 +62,8 @@ Microsoft では、研究者、法執行機関、Microsoft のさまざまなセ
 
 [サインイン リスクベースの条件付きアクセス](howto-conditional-access-policy-risk.md)
 
-[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-report-only.md)
+[条件付きアクセスのレポート専用モードを使用した影響を判断する](howto-conditional-access-insights-reporting.md)
 
 [Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
 
-[Azure Active Directory Identity Protection とは](../identity-protection/overview.md)
+[Azure Active Directory Identity Protection とは](../identity-protection/overview-identity-protection.md)

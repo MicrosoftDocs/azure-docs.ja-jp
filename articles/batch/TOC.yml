@@ -44,9 +44,6 @@
           href: 'https://github.com/Azure/azure-batch-samples'
     - name: Azure CLI
       href: cli-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: セキュリティ
@@ -112,8 +109,6 @@
           href: credential-access-key-vault.md
         - name: Batch での証明書の使用
           href: batch-certificates.md
-    - name: アプリケーション パッケージの使用
-      href: batch-application-packages.md
     - name: ファイルとアプリケーションをプール ノードにコピーする
       items:
         - name: プール ノードへのアプリケーションとデータのコピー
@@ -134,6 +129,8 @@
           href: batch-sig-images.md
         - name: マネージド イメージ リソースを使用してプールを作成する
           href: batch-custom-images.md
+        - name: ディスク暗号化が有効になっているプールを作成する
+          href: disk-encryption.md
         - name: 仮想ネットワーク内にプールを作成する
           href: batch-virtual-network.md
         - name: パブリック IP アドレスのプールを作成する
@@ -266,6 +263,9 @@
           href: batch-task-complete-event.md
         - name: タスク失敗イベント
           href: batch-task-fail-event.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure の更新情報

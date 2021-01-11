@@ -1,5 +1,5 @@
 ---
-title: プライベート リンクを使用して Azure Synapse ワークスペースに接続する
+title: プライベート リンクを使用して Synapse ワークスペースに接続する
 description: この記事では、プライベート リンクを使用して Azure Synapse ワークスペースに接続する方法について説明します。
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0f2e01390a1ddd179e50523a8b5748994524a52e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17636bf993df5105093ca690e36db22493a2472e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193874"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005975"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>プライベート リンクを使用して Azure Synapse ワークスペースに接続する (プレビュー)
 
@@ -47,7 +47,7 @@ ms.locfileid: "85193874"
 
 **[構成]** タブで、プライベート エンドポイントを作成する **[仮想ネットワーク]** と **[サブネット]** を選択します。 また、プライベート エンドポイントにマップされる DNS レコードも作成する必要があります。
 
-**[プライベート DNS ゾーンとの統合]** では **[はい]** を選択して、プライベート エンドポイントをプライベート DNS ゾーンと統合します。 VNet に関連付けられたプライベート DNS ゾーンがない場合は、新しいプライベート DNS ゾーンが作成されます。 完了したら、 **[確認と作成]** を選択します。
+**[プライベート DNS ゾーンとの統合]** では **[はい]** を選択して、プライベート エンドポイントをプライベート DNS ゾーンと統合します。 Microsoft Azure Virtual Network に関連付けられたプライベート DNS ゾーンがない場合は、新しいプライベート DNS ゾーンが作成されます。 完了したら、 **[確認と作成]** を選択します。
 
 ![サブスクリプションとリージョンの詳細を選択する](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
@@ -57,7 +57,7 @@ ms.locfileid: "85193874"
 
 ## <a name="next-steps"></a>次のステップ
 
-[マネージド ワークスペース VNet](./synapse-workspace-managed-vnet.md) の詳細を学習する
+[マネージド ワークスペースの Virtual Network](./synapse-workspace-managed-vnet.md) の詳細を学習する
 
 [マネージド プライベート エンドポイント](./synapse-workspace-managed-private-endpoints.md)の詳細を学習する
 

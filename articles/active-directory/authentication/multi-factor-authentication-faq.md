@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4e09637a7d990e1555b5443b9931cf8ff8c271b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84483779"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718868"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -56,6 +56,8 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
 
 認証データと共に、認証結果 (成功または拒否) と、拒否された場合はその理由が保存されます。 このデータは、認証と使用状況のレポートで確認できます。
 
+詳細については、「[Azure Multi-Factor Authentication のデータの保存場所と顧客データ](concept-mfa-data-residency.md)」を参照してください。
+
 ### <a name="what-sms-short-codes-are-used-for-sending-sms-messages-to-my-users"></a>ユーザーに SMS メッセージを送る際には、どの SMS ショート コードが使用されますか。
 
 米国では、Microsoft は次の SMS ショート コードを使用します。
@@ -70,7 +72,9 @@ Multi-Factor Authentication Server では、ユーザーのデータはオンプ
 * *759731*
 * *673801*
 
-SMS または音声ベース Multi-Factor Authentication のプロンプトが常に同一番号で配信されるという保証はありません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国または地域ではショート コードをサポートしていません。
+SMS または音声ベース Multi-Factor Authentication のプロンプトが常に同一番号で配信されるという保証はありません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。
+
+Microsoft は、米国とカナダ以外の国または地域ではショート コードをサポートしていません。
 
 ## <a name="billing"></a>課金
 
@@ -255,6 +259,6 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 ここで質問に対する回答が見つからない場合は、次のサポート オプションをご利用いただけます。
 
 * [Microsoft サポート技術情報](https://support.microsoft.com)を検索して、一般的な技術上の問題の解決方法を探します。
-* このコミュニティで技術的な質問と回答を検索して参照したり、[Azure Active Directory の Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html) で独自の質問を投稿したりできます。
+* このコミュニティで技術的な質問と回答を検索して参照したり、[Azure Active Directory の Q&A](/answers/topics/azure-active-directory.html) で独自の質問を投稿したりできます。
 * さらにサポートが必要な場合は、[Azure Multi-Factor Authentication Server サポート](https://support.microsoft.com/oas/default.aspx?prid=14947)を通して、サポートのプロに問い合わせてください。 お問い合わせの際は、問題に関する情報をできるだけお知らせいただくと役に立ちます。 エラーが表示されたページ、具体的なエラー コード、具体的な ID、エラーが表示されたユーザーの ID などの情報をご提供ください。
 * 従来の PhoneFactor をご利用中で、パスワードのリセットについてご質問がある場合やサポートを必要とされている場合は、[phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) のメール アドレスを使用してサポート ケースを開いてください。

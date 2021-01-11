@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: acc61cefbc9d89f11eae5b6549add57871035ddb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 0b28fa788e7b35e94482104d807c228db21f49b4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078971"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003918"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance での一時的な接続エラーのトラブルシューティング
 
@@ -148,8 +148,8 @@ ADO.NET を使用するクライアントのブロック期間については、
 
 **ConnectRetryCount** パラメーターと **ConnectRetryInterval** パラメーターを使用すると、プログラムに制御を返すなど、プログラムへの通知や介入なしに、**SqlConnection** オブジェクトで接続操作を再試行できます。 再試行は次の状況で発生することがあります。
 
-- mySqlConnection.Open メソッドの呼び出し
-- mySqlConnection.Execute メソッドの呼び出し
+- SqlConnection.Open メソッド呼び出し
+- SqlConnection.Execute メソッド呼び出し
 
 これには注意が必要です。 "*クエリ*" の実行中に一時エラーが発生した場合、**SqlConnection** オブジェクトで接続操作が再試行されません。 間違いなくクエリは再試行されません。 ただし、実行するクエリを送信する前に、 **SqlConnection** ですばやく接続が確認されます。 簡単なチェックで接続の問題が検出された場合、 **SqlConnection** で接続操作が再試行されます。 再試行に成功すると、実行するクエリが送信されます。
 

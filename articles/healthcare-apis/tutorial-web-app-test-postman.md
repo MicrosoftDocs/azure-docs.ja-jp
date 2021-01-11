@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: a6805fc686d0bc5bd0e2357828d59d40ba05f248
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "84870389"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852924"
 ---
 # <a name="testing-the-fhir-api"></a>FHIR API をテストする
 前の 2 つの手順では、Azure API for FHIR をデプロイし、クライアント アプリケーションを登録しました。 これで、Azure API for FHIR がクライアント アプリケーションでセットアップされていることをテストする準備ができました。 
@@ -41,11 +41,11 @@ ms.locfileid: "84870389"
 |Token Name (トークン名)           |トークンの名前                                               |
 |付与タイプ           |認証コード                                                  |
 |コールバック URL         |https://www.getpostman.com/oauth2/callback                          |
-|認証 URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
-|Access Token URL (アクセス トークン URL)     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
+|認証 URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
+|Access Token URL (アクセス トークン URL)     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/token|
 |クライアント ID            |前の手順でコピーしたクライアント ID             |
-|クライアント シークレット        |\<空白>                                                            |
-|Scope                |\<空白>                                                            |
+|クライアント シークレット        |\<BLANK>                                                            |
+|Scope                |\<BLANK>                                                            |
 |State                |1234                                                                |
 |クライアント認証|Send client credentials in body (本文でクライアントの資格情報を送信する)                                     |
 

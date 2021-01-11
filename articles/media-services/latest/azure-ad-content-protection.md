@@ -10,16 +10,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/1/2020
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 006e312e67f5f4014248c44a799c2dde826801c2
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001402"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89258845"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>チュートリアル:Azure AD を使用したエンド ツー エンドのコンテンツ保護
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このチュートリアルおよび提供されているプレーヤー サンプルを使用すると、DRM と AES-128、ストリーミング プロトコル、コーデック、コンテナーなど、AMS でサポートされるあらゆる形式のメディア コンテンツをストリーム配信するためのエンド ツー エンドのメディア コンテンツ保護サブシステムを Azure Media Services (AMS) と Azure Active Directory (AAD) 上にセットアップすることができます。 OAuth 2 で保護されたあらゆる REST API に、認可コード フローと PKCE (Proof Key for Code Exchange) を通じて安全にアクセスできるよう、サンプルは汎用的に作成されています。 (Azure Media Services ライセンス配信サービスはその 1 つに過ぎません。)その他、Microsoft Graph API のほか、OAuth 2 認可コード フローでセキュリティ保護されたすべての独自開発 REST API で使用できます。 これは、[サンプル コード](https://github.com/Azure-Samples/media-services-content-protection-azure-ad)の手引きとなるドキュメントです。
 

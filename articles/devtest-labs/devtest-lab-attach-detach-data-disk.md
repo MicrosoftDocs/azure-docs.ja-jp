@@ -3,22 +3,22 @@ title: Azure DevTest Labs でデータ ディスクを仮想マシンにアタ�
 description: Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする方法について説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 164c2335f0aadc08a447dd61e259786d5bfb104d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 222bf06dc07cc2538bc0512b4a41b7bd91bc1ebf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482974"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653921"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
-[Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
+[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
 
 この機能は、個々の仮想マシンの外部でストレージまたはソフトウェアを管理する場合に便利です。 ストレージまたはソフトウェアがデータ ディスク内に既に存在する場合、そのデータ ディスクを所有するユーザーが所有する任意の VM に対して、アタッチ、デタッチ、再アタッチを簡単に行えます。
 
 ## <a name="attach-a-data-disk"></a>データ ディスクの接続
 データ ディスクを VM にアタッチする前に、以下のヒントを確認してください。
 
-- VM のサイズによって、アタッチできるデータ ディスクの数が変わります。 詳細については、「 [仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)」を参照してください。
+- VM のサイズによって、アタッチできるデータ ディスクの数が変わります。 詳細については、「 [仮想マシンのサイズ](../virtual-machines/sizes.md)」を参照してください。
 - データ ディスクをアタッチできるのは、実行中の VM だけです。 データ ディスクのアタッチを試みる前に、VM が実行されていることを確認してください。
 
 ### <a name="attach-a-new-disk"></a>新しいディスクの接続
@@ -90,4 +90,3 @@ VM にアタッチされたデータ ディスクは、不要になった場合�
 
 ## <a name="next-steps"></a>次のステップ
 [要求可能な仮想マシン](devtest-lab-add-claimable-vm.md#unclaim-a-vm)のためにデータ ディスクを管理する方法について学習します。
-

@@ -4,14 +4,14 @@ description: チュートリアル:オープン ソースの Azure Cosmos DB デ
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 08/31/2020
 ms.author: dech
-ms.openlocfilehash: 5c9eb2409b67d71882406c21728fbf2429eb16a9
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 9992d6f1f9f1d0aad6f451d6a974f4df9f655881
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118765"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255989"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>チュートリアル:データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 
@@ -40,6 +40,9 @@ Azure Cosmos DB で使用する API を確認してください。
 * **スループットを向上させる:** データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行を行うときは、必ずスループットを上げておいてください。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure portal でスループットを上げることの詳細については、Azure Cosmos DB の[パフォーマンス レベル](performance-levels.md)と[価格レベル](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページを参照してください。
 
 * **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal のすべてのコレクションを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行する場合は、Azure Cosmos コンテナーの作成時にパーティション キーを指定してください。
+
+> [!IMPORTANT]
+> Azure Cosmos アカウントに接続するときに、データ移行ツールでトランスポート層セキュリティ (TLS) 1.2 が使用されるようにするには、.NET Framework バージョン 4.7 を使用するか、[この記事](https://docs.microsoft.com/dotnet/framework/network-programming/tls)の指示に従ってください。
 
 ## <a name="overview"></a><a id="Overviewl"></a>概要
 

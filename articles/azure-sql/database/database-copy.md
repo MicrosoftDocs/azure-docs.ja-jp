@@ -10,26 +10,23 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 02/24/2020
-ms.openlocfilehash: d92882014f66234be8a8b1d7063dae866ec6f230
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 07/29/2020
+ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031473"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225735"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、トランザクション上一貫性のある、既存の[データベース](single-database-overview.md)のコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、または T-SQL を使って、データベースをコピーできます。
+Azure SQL Database では、同じサーバーまたは別のサーバーのいずれかに、既存の[データベース](single-database-overview.md)のコピーを作成するための複数の方法が用意されています。 Azure Portal、PowerShell、Azure CLI、または T-SQL を使って、データベースをコピーできます。
 
 ## <a name="overview"></a>概要
 
-データベースのコピーとは、コピーが要求された時点でのソース データベースのスナップショットのことです。 同じサーバーまたは別のサーバーを選択できます。 また、そのサービス レベルとコンピューティング サイズを維持するか、同じサービス レベル (エディション) 内の別のコンピューティング サイズを使用することもできます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 この時点では、任意のエディションにアップグレードまたはダウン グレードできます。 ログイン、ユーザー、アクセス許可は非依存で管理できます。 コピーは geo レプリケーション テクノロジを使用して作成され、シード処理が完了すると、geo レプリケーション リンクは自動的に終了します。 geo レプリケーションを使用するためのすべての要件が、データベースのコピー操作に適用されます。 詳細については、「[アクティブ geo レプリケーションの作成と使用](active-geo-replication-overview.md)」を参照してください。
-
-> [!NOTE]
-> データベースのコピーを作成するときは、[自動データベース バックアップ](automated-backups-overview.md)が使用されます。
+データベースのコピーは、コピー要求が開始された時点でのソース データベースのトランザクション上一貫性のあるスナップショットになります。 コピーには、同じサーバーまたは別のサーバーを選択できます。 また、ソース データベースのサービス レベルとコンピューティング サイズを維持するか、同じまたは異なるサービス レベル内の別のコンピューティング サイズを使用することもできます。 コピーの完了後、コピーは完全に機能する独立したデータベースになります。 コピーしたデータベースのログイン、ユーザー、およびアクセス許可は、ソース データベースとは別に管理されます。 コピーは geo レプリケーション テクノロジを使用して作成されます。 レプリカのシード処理が完了すると、geo レプリケーション リンクは自動的に終了します。 geo レプリケーションを使用するためのすべての要件が、データベースのコピー操作に適用されます。 詳細については、「[アクティブ geo レプリケーションの作成と使用](active-geo-replication-overview.md)」を参照してください。
 
 ## <a name="logins-in-the-database-copy"></a>データベースのコピーへのログイン
 
@@ -120,6 +117,9 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 > [!NOTE]
 > [Azure portal](https://portal.azure.com)、PowerShell、および Azure CLI は、別のサブスクリプションへのデータベースのコピーをサポートしていません。
 
+> [!TIP]
+> T-SQL を使用するデータベースのコピーでは、異なる Azure テナント内のサブスクリプションからのデータベースのコピーがサポートされています。 これは、SQL 認証ログインを使用して対象サーバーにログインする場合にのみサポートされます。
+
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>コピー操作の進行状況を監視する
 
 [の](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) に対してクエリを実行してコピー処理を監視し、[ sys. dm_database_copies](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)、[dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) を表示します。 コピー操作の進行中は、新しいデータベースの sys.databases ビューの **state_desc** 列が **COPYING** に設定されます。
@@ -133,7 +133,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 > [!IMPORTANT]
 > ソースよりも非常に小さいサービス目標を使用してコピーを作成する必要がある場合、ターゲット データベースには、シード処理を完了するための十分なリソースがない可能性があります。これにより、コピー操作が失敗する可能性があります。 このシナリオでは、geo リストア要求を使用して、別のサーバーや別のリージョンにコピーを作成します。 詳細については、[データベースのバックアップを使用した Azure SQL Database の復旧](recovery-using-backups.md#geo-restore)に関するページを参照してください。
 
-## <a name="rbac-roles-to-manage-database-copy"></a>データベースのコピーを管理する RBAC ロール
+## <a name="azure-roles-to-manage-database-copy"></a>データベースのコピーを管理する Azure ロール
 
 データベースのコピーを作成するには、次のロールが必要です
 
@@ -155,7 +155,7 @@ Azure portal を使用してデータベースのコピーを管理するには�
 
    Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-ポータルでリソース グループのデプロイの下の操作と、SQL 操作を含む、複数のリソースプロバイダーにまたがる操作を表示するには、以下の追加の RBAC ロールが必要です。
+ポータルでリソース グループのデプロイの下の操作と、SQL 操作を含む、複数のリソースプロバイダーにまたがる操作を表示するには、以下の追加の Azure ロールが必要です。
 
    Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 

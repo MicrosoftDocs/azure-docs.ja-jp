@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: tamram
-ms.openlocfilehash: c222869df561a9a36ebd69eb9ae09fa688ba0086
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 96d8100f2cffcfb001a693575128ce19e742225d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518684"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534136"
 ---
-セキュリティ プリンシパルに RBAC ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。
+セキュリティ プリンシパルに Azure ロールを割り当てる前に、セキュリティ プリンシパルに必要なアクセスのスコープを決定します。 ベスト プラクティスとしては、常にできるだけ狭いスコープのみを付与するのが最善の方法です。
 
 次の一覧で、Azure の BLOB とキューのリソースへのアクセスのスコープとして指定できるレベルを、最も狭いスコープから順に示します。
 
@@ -24,4 +24,4 @@ ms.locfileid: "86518684"
 - **サブスクリプション。** このスコープでは、ロールの割り当ては、サブスクリプション内のすべてのリソース グループ内の、すべてのストレージ アカウントのすべてのコンテナーまたはキューに適用されます。
 - **管理グループ。** このスコープでは、ロールの割り当ては、管理グループ内のすべてのサブスクリプション内のすべてのリソース グループ内のすべてのストレージ アカウントのすべてのコンテナーまたはキューに適用されます。
 
-RBAC ロールの割り当ての詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../articles/role-based-access-control/overview.md)」を参照してください。
+Azure ロールの割り当ての詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../articles/role-based-access-control/overview.md)」を参照してください。

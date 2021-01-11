@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 9398b40763e8226cedf788f9cefbf5ed28cd649d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739534"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066124"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -87,7 +87,7 @@ Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタ
 
 ![受信メッセージのスキーマ](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-このセクションについては、各トランザクションの種類 (ST01) と送信側アプリケーション (GS02) に対して[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)から[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を選択します。 EDI 受信パイプラインは、このセクションで設定された値とスキーマを、受信メッセージの ST01 と GS02 の値および受信メッセージのスキーマと照合することにより、受信メッセージを逆アセンブルします。 行を 1 つ完了するたびに、新しい空の行が自動的に表示されます。
+このセクションについては、各トランザクションの種類 (ST01) と送信側アプリケーション (GS02) に対して[統合アカウント](./logic-apps-enterprise-integration-create-integration-account.md)から[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を選択します。 EDI 受信パイプラインは、このセクションで設定された値とスキーマを、受信メッセージの ST01 と GS02 の値および受信メッセージのスキーマと照合することにより、受信メッセージを逆アセンブルします。 行を 1 つ完了するたびに、新しい空の行が自動的に表示されます。
 
 | プロパティ | 説明 |
 |----------|-------------|
@@ -210,7 +210,7 @@ Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタ
 
 ![送信メッセージのスキーマ](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
 
-このセクションについては、各トランザクションの種類 (ST01) に対して[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)から[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を選択します。 行を 1 つ完了するたびに、新しい空の行が自動的に表示されます。
+このセクションについては、各トランザクションの種類 (ST01) に対して[統合アカウント](./logic-apps-enterprise-integration-create-integration-account.md)から[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を選択します。 行を 1 つ完了するたびに、新しい空の行が自動的に表示されます。
 
 | プロパティ | 説明 |
 |----------|-------------|
@@ -236,7 +236,7 @@ Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタ
 
 ![送信メッセージの制御バージョン番号](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
 
-このセクションについては、各インターチェンジに対して[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)から[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を選択します。 行を 1 つ完了するたびに、新しい空の行が自動的に表示されます。
+このセクションについては、各インターチェンジに対して[統合アカウント](./logic-apps-enterprise-integration-create-integration-account.md)から[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を選択します。 行を 1 つ完了するたびに、新しい空の行が自動的に表示されます。
 
 | プロパティ | 説明 |
 |----------|-------------|
@@ -278,7 +278,7 @@ Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタ
 
 | プロパティ | 説明 |
 |----------|-------------|
-| **Character Set to be used (使用する文字セット)** | X12 文字セット。 **[Basic]\(基本)** 、 **[Extended]\(拡張\)** 、または **[UTF8]** のいずれか。 |
+| **Character Set to be used (使用する文字セット)** | X12 文字セット。 **[Basic]\(基本)\** 、 **[Extended]\(拡張\)** 、または **[UTF8]** のいずれか。 |
 | **[スキーマ]** | 使用するスキーマ。 スキーマを選択した後、次の区切り記号の説明に基づいて、使用する文字セットを選択します。 |
 | **[Input Type]\(入力の種類\)** | 文字セットの入力の種類 |
 | **Component Separator (コンポーネントの区切り記号)** | 複合データ要素を区切る 1 文字 |
@@ -381,7 +381,7 @@ HIPAA スキーマと 277 または 837 のメッセージ型を操作する場�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記載されているアクションや制限など、このコネクタに関する追加の技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/x12/)をご覧ください。
+コネクタの Swagger ファイルに記載されているアクションや制限など、このコネクタに関する追加の技術的詳細については、[コネクタの参照ページ](/connectors/x12/)をご覧ください。
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、ISE のラベルが付いたこのバージョンのコネクタでは、代わりに [ISE の B2B メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)が使用されます。

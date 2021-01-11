@@ -9,21 +9,23 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 07/16/2020
-ms.custom: Build2020, tracking-python
-ms.openlocfilehash: 475c5b3073b25c79b57a2ab507af642a8af3547f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/14/2020
+ms.custom: Build2020, devx-track-python
+ms.openlocfilehash: 04d1e531f3041ef0a6231607cc795c67168ebf2e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288882"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651201"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning を使用して、大量のデータに対して非同期的および並列的にバッチ推論を実行する方法について説明します。 ParallelRunStep は、すぐに使用できる並列処理機能を備えています。
+この記事では、Azure Machine Learning モデルを並列で実行し、大量のデータを迅速に評価する方法について説明します。 
 
-ParallelRunStep では、テラバイト規模の構造化または非構造化データに対して、大規模なマシン クラスターに簡単にオフライン推論をスケーリングできるため、生産性が向上し、コストが最適化されます。
+大規模なデータセットの推論や複雑なモデルを使用した推論には、時間がかかることがあります。 `ParallelRunStep` クラスを使用すると、処理を並列で実行できるため、全体的な結果が得られるまでの時間を短縮できる可能性があります。 単一の評価を非常に高速に実行できるとしても、多くのシナリオ (オブジェクト検出、ビデオ処理、自然言語処理など) では多数の評価が実行されます。 
+
+`ParallelRunStep` を使用すると、大量のマシン クラスターにバッチ推論を簡単にスケーリングできます。 このようなクラスターではテラバイト単位の構造化または非構造化データを処理できるため、生産性の向上とコストの最適化を実現できます。
 
 この記事では、次のタスクについて説明します。
 
@@ -200,7 +202,7 @@ model = Model.register(model_path="models/",
 ## <a name="write-your-inference-script"></a>お使いの推論スクリプトを記述する
 
 >[!Warning]
->次のコードは、[サンプル ノートブック](https://aka.ms/batch-inference-notebooks)で使用されるサンプルに過ぎません。 ご自身のシナリオに合わせて、独自のスクリプトを作成する必要があります。
+>次のコードは、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)で使用されるサンプルに過ぎません。 ご自身のシナリオに合わせて、独自のスクリプトを作成する必要があります。
 
 スクリプトには 2 つの関数が "*必ず必要*" です。
 - `init()`:この関数は、後で推論するためのコストのかかる準備、または一般的な準備を行うときに使用します。 たとえば、これを使って、モデルをグローバル オブジェクトに読み込みます。 この関数は、プロセスの開始時に 1 回だけ呼び出されます。
@@ -212,7 +214,7 @@ model = Model.register(model_path="models/",
 %%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
-# (https://aka.ms/batch-inference-notebooks)
+# (https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)
 # for the implementation script.
 
 import os
@@ -419,7 +421,7 @@ df.head(10)
 
 ## <a name="next-steps"></a>次のステップ
 
-エンド ツー エンドで動作するこのプロセスを確認するには、[バッチ推論のノートブック](https://aka.ms/batch-inference-notebooks)をお試しください。 
+エンド ツー エンドで動作するこのプロセスを確認するには、[バッチ推論のノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines/parallel-run)をお試しください。 
 
 ParallelRunStep のデバッグとトラブルシューティングのガイダンスについては、[攻略ガイド](how-to-debug-parallel-run-step.md)を参照してください。
 

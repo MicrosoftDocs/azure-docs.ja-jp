@@ -38,9 +38,6 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB とサーバー
@@ -75,6 +72,9 @@
           href: concepts-data-access-security-private-link.md
         - name: 高度な脅威保護
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: ビジネス継続性
@@ -145,7 +145,11 @@
         - name: ユーザーの作成
           href: howto-create-users.md
         - name: Connection strings
-          href: howto-connection-string.md
+          items:
+            - name: アプリケーションの接続
+              href: howto-connection-string.md
+            - name: Azure PowerShell
+              href: howto-connection-string-powershell.md
         - name: SSL の構成
           href: howto-configure-ssl.md
         - name: TLS の構成
@@ -240,6 +244,9 @@
       href: /azure/templates/microsoft.dbformariadb/allversions
     - name: 管理ストアド プロシージャ
       href: reference-stored-procedures.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: デプロイ テンプレート

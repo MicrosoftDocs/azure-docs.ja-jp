@@ -2,17 +2,20 @@
 title: SAS トークンを使用してテンプレートを安全にデプロイする
 description: Azure Resource Manager テンプレートを使用して、SAS トークンで保護されているリソースを Azure にデプロイします。 Azure PowerShell と Azure CLI を表示します。
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 08/25/2020
+ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156397"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855656"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>SAS トークンを使用してプライベート ARM テンプレートをデプロイする
 
-Azure Resource Manager (ARM) テンプレートがストレージ アカウントに配置されている場合、それが公開されないようにテンプレートへのアクセスを制限できます。 セキュリティで保護されたテンプレートにアクセスするには、そのテンプレート用に SAS (Shared Access Signature) トークンを作成し、デプロイ時にそのトークンを提供します。 この記事では、Azure PowerShell または Azure CLI を使用して SAS トークンでテンプレートをデプロイする方法について説明します。
+Azure Resource Manager テンプレート (ARM テンプレート) がストレージ アカウントに配置されている場合、それが公開されないようにテンプレートへのアクセスを制限できます。 セキュリティで保護されたテンプレートにアクセスするには、そのテンプレート用に SAS (Shared Access Signature) トークンを作成し、デプロイ時にそのトークンを提供します。 この記事では、Azure PowerShell または Azure CLI を使用して SAS トークンでテンプレートをデプロイする方法について説明します。
+
+> [!IMPORTANT]
+> SAS トークンを使用してテンプレートをセキュリティで保護する代わりに、[テンプレート スペック](template-specs.md)を使用することを検討してください。 テンプレート スペックを使用すると、組織内の他のユーザーとテンプレートを共有し、Azure RBAC 経由でテンプレートへのアクセスを管理できます。
 
 ## <a name="create-storage-account-with-secured-container"></a>セキュリティで保護されたコンテナーでのストレージ アカウントの作成
 
@@ -110,6 +113,8 @@ New-AzResourceGroupDeployment `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+次の例は、Cloud Shell の Bash 環境で動作します。 その他の環境では、SAS トークンの有効期限を作成するために異なる構文が必要になる場合があります。
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)

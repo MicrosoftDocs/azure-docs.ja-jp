@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4e2a1fc08851e4e625bfc59419fc274ebbce1c8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251198"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653998"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -57,9 +57,9 @@ Traffic Manager は DNS 参照を実行して、ユーザーの最も適切な�
 
 エンドポイントとルーティングを設定する方法については、[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)に関する記事をご覧ください。
 
-### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したレイヤー 7 のアプリケーション ルーティング
+### <a name="application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したアプリケーション ルーティング
 
-Traffic Manager は、DNS (レイヤー 3) を使ってトラフィックのシェーピングを行います。 [Azure Front Door Service](../frontdoor/front-door-overview.md) には、HTTP/HTTPS (レイヤー 7) のルーティング オプションが用意されています。 Azure Front Door Service の追加機能としては、TLS 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
+[Azure Front Door Service](../frontdoor/front-door-overview.md) は、スプリット TCP ベースのエニーキャスト プロトコルを使用して、エンド ユーザーが最も近い Front Door POP (point of presence) にすぐに接続されるようにします。 Azure Front Door Service の追加機能としては、TLS 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>グローバル仮想ネットワーク ピアリングを使用してリージョンを相互接続する
 
@@ -93,7 +93,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 状態は、外部化することも、状態を操作するコードと同じ場所に配置することもできます。 通常、状態の外部化は、ネットワーク上のさまざまなコンピューターで実行されている、または同一コンピューター上でアウト オブ プロセスを実行しているデータベースやその他のデータ ストアを使用して行います。
 
-コンテナーとマイクロサービスは、それらの内部で実行されているプロセスが状態を保持していないときに、回復性が最も高くなります。 アプリケーションにはほぼ常に何らかの状態が含まれるので、Azure Database for MySQL、Azure Database for PostgreSQL、または Azure SQL Database などの PaaS ソリューションを使用してください。
+コンテナーとマイクロサービスは、それらの内部で実行されているプロセスが状態を保持していないときに、回復性が最も高くなります。 アプリケーションにはほぼ常に何らかの状態が含まれるので、Azure Cosmos DB、Azure Database for PostgreSQL、Azure Database for MySQL、Azure SQL Database などの PaaS ソリューションを使用してください。
 
 ポータブル アプリケーションをビルドするには、次のガイドラインを参照してください。
 
@@ -122,7 +122,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 Azure Managed Disks を使用している場合は、次のようなレプリケーションと DR ソリューションを選択することができます。
 
 * [Azure での Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
+* [Azure Backup](../backup/backup-overview.md)
 
 ### <a name="application-based-asynchronous-replication"></a>アプリケーションベースの非同期レプリケーション
 

@@ -4,12 +4,12 @@ description: この記事では、データをバックアップおよび復元�
 ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 29af774c857f20b0ed4d5392f4933e8056f0d246
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 592cb2016cd86a1a7075fca6dc04ea7ccc673ffc
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170685"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756029"
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell のサンプル
 

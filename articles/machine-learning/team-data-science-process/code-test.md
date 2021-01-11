@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc837405e03ffac41d216a5ba18384208b07aaf1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090299"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Process と Azure DevOps Services を使用した Azure でのデータ サイエンス コードのテスト
 この記事では、データ サイエンス ワークフローでコードをテストするうえでの予備的ガイドラインについて取り上げます。 このようなテストにより、データ サイエンティストは、秩序立った効率的な方法で、自分のコードの品質と期待される成果をチェックすることができます。 ここでは、[UCI 成人収入データセットを使用した Team Data Science Process (TDSP) プロジェクト](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome)を用います。以前、コード テストの実行方法を紹介する際に発行したものです。 
@@ -142,7 +142,7 @@ ms.locfileid: "76722012"
 
     ![[保存してキューに登録] ボタン](./media/code-test/save_and_queue_build_definition.PNG)
 
-今後、新たにコミットをコード リポジトリにプッシュするたびに、ビルド プロセスが自動的に開始されます。 (ここではリポジトリとして master を使用していますが、任意のブランチを定義することができます。)エージェント マシンで **test1.py** ファイルが実行され、コードのあらゆる定義が正しく実行されることが確認されます。 
+今後、新たにコミットをコード リポジトリにプッシュするたびに、ビルド プロセスが自動的に開始されます。 任意のブランチを定義できます。 エージェント マシンで **test1.py** ファイルが実行され、コードのあらゆる定義が正しく実行されることが確認されます。 
 
 アラートが正しく設定されていれば、ビルドが完了したときにメールで通知されます。 ビルドの状態を Azure DevOps で確認することもできます。 ビルドに失敗した場合は、その詳細をチェックして問題箇所を突き止めることができます。
 

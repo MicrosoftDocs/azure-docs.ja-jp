@@ -16,14 +16,14 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 563e5e811eec907ba286bdfb264fc51d32137e96
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764844"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282927"
 ---
-# <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
+# <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
 Azure AD アプリケーション プロキシを使うと、リモートのユーザーまたは自分のデバイスを使っているユーザーがオンプレミスのアプリを使用できるようになります。 ただし、一部のアプリは、HTML に埋め込まれたローカル リンクと共に開発されました。 現時点では、アプリをリモートで使用しているときには、それらのリンクは正常に機能しません。 お互いをポイントするオンプレミス アプリケーションが複数ある場合、お客様のユーザーは、オフィスにいないときにそのリンクが機能し続けることを期待します。 
 
@@ -35,11 +35,11 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 > [!NOTE]
 > JavaScript によって生成されたハードコーディングされている内部 URL では、リンク変換はサポートされません。
 
-**オプション 1: Managed Browser または Microsoft Edge を使用する** – このソリューションは、Intune Managed Browser または Microsoft Edge ブラウザーを使用してアプリケーションにアクセスすることをユーザーに推奨または要求することを計画している場合にのみ適用されます。 すべての公開されている URL を処理します。 
+**オプション 1: Microsoft Edge を使用する** – このソリューションは、Microsoft Edge ブラウザーを使用してアプリケーションにアクセスすることをユーザーに推奨または要求することを計画している場合にのみ適用されます。 すべての公開されている URL を処理します。 
 
 **オプション 2: MyApps 拡張機能を使用する** – このソリューションは、クライアント側のブラウザー拡張機能をインストールすることをユーザーに要求しますが、すべての公開されている URL を処理し、ほとんどの一般的なブラウザーと連携します。 
 
-**オプション 3:リンク変換設定を使用する** – これは、ユーザーからは見えない管理者側の設定です。 ただし、HTML および CSS 内の URL のみを処理します。   
+**オプション 3:リンク変換設定を使用する** – これは、ユーザーからは見えない管理者側の設定です。 ただし、HTML および CSS 内のみの URL が処理されます。   
 
 これら 3 つの機能は、ユーザーの居場所にかかわらず、リンクを機能させ続けます。 内部エンドポイントまたはポートを直接ポイントするアプリがある場合は、公開されている外部アプリケーション プロキシ URL にこれらの内部 URL をマップできます。 
 
@@ -50,11 +50,11 @@ Azure AD アプリケーション プロキシを使うと、リモートのユ�
 > または、リンク変換を構成したいアプリケーションが SharePoint の場合は、「[SharePoint 2013 の代替アクセス マッピングを構成する](https://technet.microsoft.com/library/cc263208.aspx)」で、リンクをマッピングするための別の方法をご覧ください。 
 
  
-### <a name="option-1-intune-managed-browser-and-microsoft-edge-integration"></a>オプション 1: Intune Managed Browser と Microsoft Edge の統合 
+### <a name="option-1-microsoft-edge-integration"></a>オプション 1: Microsoft Edge 統合 
 
-Intune Managed Browser または Microsoft Edge を使用して、アプリケーションとコンテンツの保護を強化することができます。 このソリューションを使用するには、Intune Managed Browser を使用してアプリケーションにアクセスすることをユーザーに要求または推奨する必要があります。 アプリケーション プロキシで公開されているすべての内部 URL は Managed Browser によって認識され、対応する外部 URL にリダイレクトされます。 これにより、すべてのハードコードされた内部 URL が機能すること、またユーザーがブラウザーに移動して内部 URL を直接入力した場合に、ユーザーがリモートであってもその URL が機能することが保証されます。  
+Microsoft Edge を使用して、アプリケーションとコンテンツの保護を強化することができます。 このソリューションを使用するには、Microsoft Edge を使用してアプリケーションにアクセスすることをユーザーに要求または推奨する必要があります。 アプリケーション プロキシで公開されているすべての内部 URL は Edge によって認識され、対応する外部 URL にリダイレクトされます。 これにより、すべてのハードコードされた内部 URL が機能すること、またユーザーがブラウザーに移動して内部 URL を直接入力した場合に、ユーザーがリモートであってもその URL が機能することが保証されます。  
 
-このオプションの構成方法などの詳細については、[Managed Browser](https://docs.microsoft.com/intune/app-configuration-managed-browser) のドキュメントをご覧ください。  
+このオプションの構成方法などの詳細については、「[iOS および Android 用の Edge と Microsoft Intune を使用して Web アクセスを管理する](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge)」ドキュメントをご覧ください。  
 
 ### <a name="option-2-myapps-browser-extension"></a>オプション 2:MyApps ブラウザー拡張機能 
 
@@ -73,9 +73,9 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 ## <a name="how-link-translation-works"></a>リンク変換の仕組み
 
-認証後に、プロキシ サーバーがユーザーにアプリケーション データを渡すと、アプリケーション プロキシがハードコードされたリンクをアプリケーションでスキャンし、それぞれ公開されている外部 URL で置換します。
+認証後に、プロキシ サーバーからユーザーにアプリケーション データが渡されると、アプリケーション プロキシによってハードコードされたリンクについてアプリケーションがスキャンされ、それぞれ公開されている外部 URL で置き換えられます。
 
-アプリケーション プロキシでは、アプリケーションが UTF-8 でエンコードされていることを前提としています。 そうなっていない場合は、http 応答ヘッダーでエンコードの種類を `Content-Type:text/html;charset=utf-8` のように指定してください。
+アプリケーション プロキシでは、アプリケーションが UTF-8 でエンコードされていることを前提としています。 そうなっていない場合は、HTTP 応答ヘッダーでエンコードの種類を `Content-Type:text/html;charset=utf-8` のように指定してください。
 
 ### <a name="which-links-are-affected"></a>影響を受けるリンク
 

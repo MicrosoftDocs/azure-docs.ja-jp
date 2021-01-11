@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合 | Microsoft Docs
 description: Azure Active Directory と Google Cloud (G Suite) Connector の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 38a6ca75-7fd0-4cdc-9b9f-fae080c5a016
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 091129d1fbca4141e9841af6a9991d44a6663801
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: d20d527c35eac422efdc3719f153b6d7e8f4ef07
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799192"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017535"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Google Cloud (G Suite) Connector の統合
 
@@ -229,15 +225,18 @@ Google Cloud (G Suite) Connector で Azure AD の SSO を構成してテスト�
 
     b. Google Cloud (G Suite) Connector の **[Sign-in page URL]\(サインイン ページの URL\)** フィールドに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    c. Google Cloud (G Suite) Connector の **[Sign-out page URL]\(サインアウト ページの URL\)** フィールドに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
+    c. Google Cloud (G Suite) Connector の **[Sign-out page URL]\(サインアウト ページの URL\)** フィールドに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    d. Google Cloud (G Suite) Connector の **[Change password URL]\(パスワードの URL の変更\)** フィールドに、Azure portal からコピーした **[パスワードの URL の変更]** の値を貼り付けます。
+    > [!NOTE]
+    > Google Cloud (G Suite) は、SAML ログアウト プロトコルに基づいています。 そのため、 **[Sign-out page URL]\(サインアウト ページの URL\)** フィールドでは、その値として SAML ログアウト URL (つまり、ログイン URL) を使用する必要があります。
 
-    e. Google Cloud (G Suite) Connector の **[Verification certificate]\(検証証明書\)** に、Azure portal からダウンロードした証明書をアップロードします。
+    d. Google Cloud (G Suite) Connector の **[Verification certificate]\(検証証明書\)** に、Azure portal からダウンロードした証明書をアップロードします。   
 
-    f. 上記の Azure AD の **[基本的な SAML 構成]** セクションに記載されている注意事項に従って、 **[Use a domain specific issuer]\(ドメイン固有の発行者を使用する\)** オプションをオンまたはオフにします。
+    e. 上記の Azure AD の **[基本的な SAML 構成]** セクションに記載されている注意事項に従って、 **[Use a domain specific issuer]\(ドメイン固有の発行者を使用する\)** オプションをオンまたはオフにします。
 
-    g. **[変更を保存]** をクリックします。
+    f. Google Cloud (G Suite) Connector の **[Change password URL]\(パスワードの URL の変更\)** フィールドに、Azure portal からコピーした **[パスワードの URL の変更]** の値を貼り付けます。
+
+    g. **[保存]** をクリックします。
 
 ### <a name="create-google-cloud-g-suite-connector-test-user"></a>Google Cloud (G Suite) Connector のテスト ユーザーの作成
 

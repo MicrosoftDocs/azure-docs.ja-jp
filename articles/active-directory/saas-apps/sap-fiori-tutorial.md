@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Fiori の統合 | Microsoft Docs
 description: Azure Active Directory と SAP Fiori の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 77ad13bf-e56b-4063-97d0-c82a19da9d56
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 917ba9274276fec5d01a40bdf7219e8d4fee1395
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4d2f6766fa32beb9cebaa8f77c04f6865e15e14d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897760"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543395"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Fiori の統合
 
@@ -126,7 +121,7 @@ SAP Fiori で Azure AD SSO を構成してテストするには、次の構成�
 1. **[Provider Name]\(プロバイダー名\)** ボックスで **T01122** を **http:\//T01122** に置き換え、 **[Save]\(保存\)** を選択します。
 
     > [!NOTE]
-    > 既定では、プロバイダー名は \<sid>\<クライアント>という形式です。 Azure AD で想定されている名前の形式は、\<プロトコル>://\<名前> です。 Azure AD で複数の SAP Fiori ABAP エンジンを構成できるように、プロバイダー名を https\://\<sid>\<クライアント> という形式で保持することをお勧めします。
+    > 既定では、プロバイダー名は \<sid>\<client> という形式です。 Azure AD で想定されている名前の形式は、\<protocol>://\<name> です。 Azure AD で複数の SAP Fiori ABAP エンジンを構成できるように、プロバイダー名を https\://\<sid>\<client> という形式で保持することをお勧めします。
 
     ![SAP の [SAML 2.0 Configuration of ABAP System T01/122]\(ABAP システム T01/122 の SAML 2.0 構成\) ページでの更新されたプロバイダー名](./media/sapfiori-tutorial/tutorial-sapnetweaver-providername.png)
 

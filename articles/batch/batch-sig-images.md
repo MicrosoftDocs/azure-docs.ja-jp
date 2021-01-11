@@ -3,13 +3,13 @@ title: Shared Image Gallery を使用してカスタム イメージ プール�
 description: カスタム イメージ プールは、Batch ワークロードを実行する計算ノードを構成するための効率的な方法です。
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 38233bc5d279c1c0ae7789dd06acff78ea26fb89
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-python
+ms.openlocfilehash: aad8b279ce821496d4c947bc7f9c707243468f07
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147295"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852414"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Shared Image Gallery を使用してカスタム イメージ プールを作成する
 

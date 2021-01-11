@@ -6,35 +6,35 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: 7be1c350af6c9bb84669b45a9bc8a1d9dd808133
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165636"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828457"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
 この記事では、Azure Monitor 内のログ アラートに関する一般的な問題の解決方法について説明します。 また、ログ アラートの機能や構成でよく発生する問題の解決策も紹介しています。
 
-"*ログ アラート*" という用語は、[Azure Log Analytics ワークスペース](../learn/tutorial-viewdata.md)または [Azure Application Insights](../../azure-monitor/app/analytics.md) のログ クエリで作動するルールを指します。 機能、用語、種類については、「[Azure Monitor でのログ アラート](../platform/alerts-unified-log.md)」を参照してください。
+"*ログ アラート*" という用語は、[Azure Log Analytics ワークスペース](../log-query/get-started-portal.md)または [Azure Application Insights](../log-query/log-query-overview.md) のログ クエリで作動するルールを指します。 機能、用語、種類については、「[Azure Monitor でのログ アラート](./alerts-unified-log.md)」を参照してください。
 
 > [!NOTE]
-> この記事では、トリガーされ Azure portal に表示されたアラート ルールの通知が、関連付けられているアクション グループで対処されなかった場合については考慮していません。 このようなケースについては、「[Azure portal でのアクション グループの作成および管理](../platform/action-groups.md)」を参照してください。
+> この記事では、トリガーされ Azure portal に表示されたアラート ルールの通知が、関連付けられているアクション グループで対処されなかった場合については考慮していません。 このようなケースについては、「[Azure portal でのアクション グループの作成および管理](./action-groups.md)」を参照してください。
 
 ## <a name="log-alert-didnt-fire"></a>ログ アラートが作動しない
 
-ここでは、構成された [Azure Monitor のログ アラート ルール](../platform/alerts-log.md)の状態が、[期待どおりに*起動済み*](../platform/alerts-managing-alert-states.md)とならない一般的な理由をいくつか示します。
+ここでは、構成された [Azure Monitor のログ アラート ルール](./alerts-log.md)の状態が、[期待どおりに*起動済み*](./alerts-managing-alert-states.md)とならない一般的な理由をいくつか示します。
 
 ### <a name="data-ingestion-time-for-logs"></a>ログのデータ インジェストの時間
 
-ログ アラートは、[Log Analytics](../learn/tutorial-viewdata.md) または [Application Insights](../../azure-monitor/app/analytics.md) に基づいてクエリを定期的に実行します。 Azure Monitor は、世界中の多様なソースの顧客が送信する何テラバイトものデータを処理するため、さまざまな時間遅延の影響を受けやすくなっています。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../platform/data-ingestion-time.md)」を参照してください。
+ログ アラートは、[Log Analytics](../log-query/get-started-portal.md) または [Application Insights](../log-query/log-query-overview.md) に基づいてクエリを定期的に実行します。 Azure Monitor は、世界中の多様なソースの顧客が送信する何テラバイトものデータを処理するため、さまざまな時間遅延の影響を受けやすくなっています。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](./data-ingestion-time.md)」を参照してください。
 
 システムで、必要なデータが取り込まれていないことが認識されると、待機してアラート クエリを何度も再試行され、遅延が緩和されます。 システムによって、指数関数的に増加する待機時間が設定されます。 ログ アラートはデータを入手しないとトリガーされないので、ログ データの取り込みが遅いことが遅延の原因である場合があります。
 
 ### <a name="incorrect-time-period-configured"></a>構成されている期間が正しくない
 
-[ログ アラートの用語](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)の記事の説明のとおり、構成に記述されている期間がクエリの時間範囲になります。 クエリは、この時間範囲に作成されたレコードのみを返します。
+[ログ アラートの用語](./alerts-unified-log.md#log-search-alert-rule---definition-and-types)の記事の説明のとおり、構成に記述されている期間がクエリの時間範囲になります。 クエリは、この時間範囲に作成されたレコードのみを返します。
 
 この期間は、ログ クエリ用にフェッチされるデータを制限して不正使用を防いだり、ログ クエリで使用されている (**ago** などの) すべての時間コマンドを回避したりします。 たとえば、期間が 60 分に設定されていて、クエリが午後 1 時 15 分に実行された場合は、午後 12 時 15 分から午後 1 時 15 分までの間に作成されたレコードだけが、ログ クエリで使用されます。 ログ クエリが **ago (1d)** のような時間コマンドを使用する場合でも、クエリでは期間がその間隔に設定されているため、午後 12 時 15 分から午後 1 時 15 分までのデータしか使用しません。
 
@@ -44,7 +44,7 @@ ms.locfileid: "86165636"
 
 ### <a name="suppress-alerts-option-is-set"></a>[アラートを表示しない] オプションが設定されている
 
-[Azure portal でのログ アラート ルールの作成](../platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)に関する記事の手順 8 で説明しているとおり、ログ アラートには、構成された期間、トリガーや通知アクションを抑止する **[アラートを表示しない]** オプションがあります。 この結果、警告が作動しなかったと思うことがあります。 実際には起動されたのですが、抑止されたのです。  
+[Azure portal でのログ アラート ルールの作成](./alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)に関する記事の手順 8 で説明しているとおり、ログ アラートには、構成された期間、トリガーや通知アクションを抑止する **[アラートを表示しない]** オプションがあります。 この結果、警告が作動しなかったと思うことがあります。 実際には起動されたのですが、抑止されたのです。  
 
 ![Suppress alerts (アラートの抑制)](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
@@ -83,11 +83,11 @@ ms.locfileid: "86165636"
 
 ## <a name="log-alert-fired-unnecessarily"></a>ログ アラートが不必要に作動する
 
-[Azure アラート](../platform/alerts-managing-alert-states.md)で表示したとき、構成した [Azure Monitor のログ アラート ルール](../platform/alerts-log.md)が予期せずトリガーされる場合があります。 以下のセクションでは、よくある原因をいくつか説明します。
+[Azure アラート](./alerts-managing-alert-states.md)で表示したとき、構成した [Azure Monitor のログ アラート ルール](./alerts-log.md)が予期せずトリガーされる場合があります。 以下のセクションでは、よくある原因をいくつか説明します。
 
 ### <a name="alert-triggered-by-partial-data"></a>一部のデータによってアラートがトリガーされる
 
-Log Analytics と Application Insights では、インジェストや処理が遅くなる場合があります。 ログ アラート クエリを実行すると、データが全くないか、一部しかないことがわかる場合があります。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](../platform/data-ingestion-time.md)」を参照してください
+Log Analytics と Application Insights では、インジェストや処理が遅くなる場合があります。 ログ アラート クエリを実行すると、データが全くないか、一部しかないことがわかる場合があります。 詳細については、「[Azure Monitor でのログ データ インジェスト時間](./data-ingestion-time.md)」を参照してください
 
 アラート ルールの構成方法によっては、アラートの実行時点でログにデータが存在しない場合や一部のデータしかない場合に、誤作動が生じる可能性があります。 このようなときは、アラート クエリまたは構成を変更することをお勧めします。
 
@@ -99,11 +99,11 @@ Log Analytics と Application Insights では、インジェストや処理が�
 
 ![実行するクエリ](media/alert-log-troubleshoot/LogAlertPreview.png)
 
-**[実行するクエリ]** ボックスには、ログ アラート サービスによって実行される内容があります。 アラートを作成する前にアラート クエリの出力がどのようになるかを把握したい場合、[Analytics ポータル](../log-query/portals.md)または [Analytics API](https://docs.microsoft.com/rest/api/loganalytics/) を使用し、ここに表示されているクエリと期間を実行できます。
+**[実行するクエリ]** ボックスには、ログ アラート サービスによって実行される内容があります。 アラートを作成する前にアラート クエリの出力がどのようになるかを把握したい場合、[Analytics ポータル](../log-query/log-query-overview.md)または [Analytics API](/rest/api/loganalytics/) を使用し、ここに表示されているクエリと期間を実行できます。
 
 ## <a name="log-alert-was-disabled"></a>ログ アラートが無効になった
 
-次のセクションでは、Azure Monitor によって[ログ アラート ルール](../platform/alerts-log.md)が無効にされた可能性がある理由を挙げます。
+次のセクションでは、Azure Monitor によって[ログ アラート ルール](./alerts-log.md)が無効にされた可能性がある理由を挙げます。
 
 ### <a name="resource-where-the-alert-was-created-no-longer-exists"></a>アラートを作成したリソースがもうない
 
@@ -179,17 +179,50 @@ Azure アクティビティ ログの次のサンプル イベントは、連続
 構成の一部として Azure Monitor に作成された各ログ アラート ルールでは、アラート サービスが定期的に実行する分析クエリが指定される必要があります。 分析クエリの構文は、ルールの作成時または更新時には正しく指定されているはずです。 しかし、しばらく時間が経過すると、ログ アラート ルールで指定したクエリで構文の問題が発生し、ルールの実行が失敗することがあります。 ログ アラート ルールで指定した分析クエリでエラーが発生する可能性がある一般的な理由をいくつか以下に示します。
 
 - クエリが[複数のリソースにわたって実行される](../log-query/cross-workspace-query.md)よう記述されています。 そして指定した 1 つ以上のリソースが存在しなくなりました。
-- アラート クエリを持つように構成された[メトリック測定タイプのログ アラート](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules)が構文規範に準拠していません
+- アラート クエリを持つように構成された[メトリック測定タイプのログ アラート](./alerts-unified-log.md#metric-measurement-alert-rules)が構文規範に準拠していません
 - 分析プラットフォームへのデータ フローがありません。 指定したクエリに対するデータがないので[クエリを実行するとエラーが発生します](https://dev.loganalytics.io/documentation/Using-the-API/Errors)。
-- [クエリ言語](https://docs.microsoft.com/azure/kusto/query/)が変更され、コマンドと関数の形式が変更されています。 したがって、アラート ルールで以前指定したクエリが無効になっています。
+- [クエリ言語](/azure/kusto/query/)が変更され、コマンドと関数の形式が変更されています。 したがって、アラート ルールで以前指定したクエリが無効になっています。
 
 この動作は、[Azure Advisor](../../advisor/advisor-overview.md) で警告されています。 Azure Advisor の高可用性の影響が中程度のカテゴリに、"確実に監視するためログ アラート ルールを修復します" という説明で、特定のログ アラート ルールでの推奨事項が追加されています。
 
 > [!NOTE]
 > Azure Advisor により推奨事項が 7 日間表示された後も、ログ アラート ルールのアラート クエリが修正されない場合、Azure Monitor では、ルールが相当な期間 (7 日間) 継続して実行できない場合に、ログ アラートが無効にされ、お客様が不必要に課金されないようにします。 Azure Monitor がログ アラート ルールを無効にした正確な時間は、[Azure アクティビティ ログ](../../azure-resource-manager/management/view-activity-logs.md)でイベントを検索すると見つけることができます。
 
+## <a name="alert-rule-quota-was-reached"></a>アラート ルール クォータへの到達
+
+サブスクリプションおよびリソースあたりのログ検索アラート ルールの数には、[こちら](../service-limits.md)に記載されているクォータ制限が適用されます。
+
+### <a name="recommended-steps"></a>推奨される手順
+    
+クォータ制限に達した場合は、次の手順が問題の解決に役立つ場合があります。
+
+1. 今後使用しないログ検索アラート ルールを削除または無効にします。
+2. クォータ制限を引き上げる必要がある場合は、サポート リクエストを開き、次の情報を提供してください。
+
+    - クォータ制限を引き上げる必要があるサブスクリプション ID
+    - クォータの引き上げの理由
+    - クォータを引き上げるリソースの種類:**Log Analytics**、**Application Insights** など
+    - 要求されるクォータ制限
+
+
+### <a name="to-check-the-current-usage-of-new-log-alert-rules"></a>新しいログ アラート ルールの現在の使用状況を確認するには
+    
+#### <a name="from-the-azure-portal"></a>Azure portal から
+
+1. *[アラート]* 画面を開き、 *[アラート ルールの管理]* をクリックします
+2. *[サブスクリプション]* ドロップダウン コントロールを使用して、関連するサブスクリプションをフィルター処理します
+3. 特定のリソース グループ、リソースの種類、またはリソースをフィルター処理しないようにしてください
+4. *[シグナルの種類]* ドロップダウン コントロールで、[ログ検索] を選択します。
+5. *[状態]* ドロップダウン コントロールが [有効] に設定されていることを確認します
+6. ログ検索アラート ルールの合計数がルールの一覧の上に表示されます
+
+#### <a name="from-api"></a>API から
+
+- PowerShell - [Get-AzScheduledQueryRule](/powershell/module/az.monitor/get-azscheduledqueryrule?view=azps-3.7.0)
+- REST API - [サブスクリプションごとの一覧](/rest/api/monitor/scheduledqueryrules/listbysubscription)
+
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure でのログ アラート](../platform/alerts-unified-log.md)について学習します。
-- [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
+- [Azure でのログ アラート](./alerts-unified-log.md)について学習します。
+- [Application Insights](../log-query/log-query-overview.md) についてさらに学習します。
 - [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します

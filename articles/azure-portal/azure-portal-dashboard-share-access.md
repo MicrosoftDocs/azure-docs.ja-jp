@@ -13,16 +13,16 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 60f1f2d20ec2989f73098a18392b936593b85656
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b478272ff790121d914a51f8ee4c5cf250134f4d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764028"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923885"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロールベースのアクセス制御を使用して Azure ダッシュボードを共有する
 
-構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)(RBAC)を使用します。 ロールにユーザーまたはユーザーのグループを割り当てます。 このロールは、ユーザーが公開されたダッシュボードを表示または変更できるかどうかを定義します。
+構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 自分のダッシュボードを他のユーザーが表示できるようにするには、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) を使用します。 ロールにユーザーまたはユーザーのグループを割り当てます。 このロールは、ユーザーが公開されたダッシュボードを表示または変更できるかどうかを定義します。
 
 公開されたすべてのダッシュボードは Azure リソースとして実装されます。 これらはサブスクリプション内に管理可能な項目として存在し、リソース グループに含まれています。 アクセス制御の見地からは、ダッシュボードはその他のリソース (仮想マシン、ストレージ アカウントなど) と変わりありません。
 
@@ -87,6 +87,5 @@ Azure サブスクリプションがあり、チームのさまざまなメン�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 役割のリストについては、[Azure リソースの組み込みの役割](../role-based-access-control/built-in-roles.md)を参照してください。
+* ロールの一覧については、[Azure の組み込みロール](../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 * リソースの管理については、[Azure portal を使用したAzureリソースの管理](resource-group-portal.md)を参照してください。
-

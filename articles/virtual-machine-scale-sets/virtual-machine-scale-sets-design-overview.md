@@ -10,12 +10,12 @@ ms.subservice: management
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 5aad73db2f01cec8c1c8b0144d29c105b6e8ae0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99dc7a2350631f662e1c993908f7ef56e4f9a194
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080507"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648566"
 ---
 # <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 この記事では、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](./overview.md)」を参照してください。
@@ -42,7 +42,7 @@ ms.locfileid: "87080507"
 ## <a name="storage"></a>ストレージ
 
 ### <a name="scale-sets-with-azure-managed-disks"></a>Azure Managed Disksでのスケール セット
-スケール セットは、従来の Azure ストレージ アカウントではなく、[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) で作成できます。 Managed Disks には次のような利点があります。
+スケール セットは、従来の Azure ストレージ アカウントではなく、[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) で作成できます。 Managed Disks には次のような利点があります。
 - スケール セットの VM の一連の Azure ストレージ アカウントの事前作成が必要ありません。
 - スケール セット内の VM に対して[接続されたデータ ディスク](virtual-machine-scale-sets-attached-disks.md)を定義できます。
 - [セット内で最大 1,000 個の VM をサポート](virtual-machine-scale-sets-placement-groups.md)するようにスケール セットを構成できます。 

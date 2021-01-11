@@ -3,12 +3,12 @@ title: Azure Migrate Server Assessment でエージェントベースの依存�
 description: この記事では、Azure Migrate Server Assessment でエージェントベースの依存関係の分析を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 6/09/2020
-ms.openlocfilehash: 50061bead9b00ade0defba45691ea8a7c84625dd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321209"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022379"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -82,9 +82,9 @@ Windows マシンにエージェントをインストールするには、次の
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
 エージェントは、コマンド ラインからインストールするか、Configuration Manager または [Intigua](https://www.intigua.com/intigua-for-azure-migration) などの自動化された方法を使用してインストールすることができます。
-- このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)のページを参照してください。
+- このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/platform/log-analytics-agent.md#installation-options)のページを参照してください。
 - この[スクリプト](https://go.microsoft.com/fwlink/?linkid=2104394)を使用して、MMA エージェントをインストールすることもできます。
-- MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems)をご覧ください。
+- MMA でサポートされる Windows オペレーティング システムの詳細については、[こちら](../azure-monitor/platform/agents-overview.md#supported-operating-systems)をご覧ください。
 
 ### <a name="install-mma-on-a-linux-machine"></a>Linux マシンに MMA をインストールする
 
@@ -95,7 +95,7 @@ Linux マシンに MMA をインストールするには、以下を実行しま
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)をご覧ください。 
+MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/platform/agents-overview.md#supported-operating-systems)をご覧ください。 
 
 ## <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 
@@ -104,7 +104,7 @@ MMA でサポートされる Linux オペレーティング システムの一�
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)をご覧ください。
+- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
 - 依存関係エージェントでサポートされるオペレーティング システムの詳細については、[こちら](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)をご覧ください。
 
 
@@ -208,5 +208,3 @@ VMConnection
 ## <a name="next-steps"></a>次のステップ
 
 グループの[評価を作成](how-to-create-assessment.md)します。
-
-

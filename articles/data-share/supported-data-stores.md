@@ -2,16 +2,16 @@
 title: Azure Data Share でサポートされているデータ ストア
 description: Azure Data Share での使用がサポートされているデータ ストアについて説明します。
 ms.service: data-share
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: 8263e2b2d3d8d029cd28f6c8ea6c556fb9fe23be
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/14/2020
+ms.openlocfilehash: 0e81d04edff667b0526f1d286701b2e8701528dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108296"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258599"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Data Share でサポートされているデータ ストア
 
@@ -30,7 +30,7 @@ Azure Data Share は、さまざまなデータ ストアとの間で共有す�
 | Azure Data Lake Storage Gen2 |✓ ||
 | Azure SQL データベース |パブリック プレビュー | |
 | Azure Synapse Analytics (以前の Azure SQL DW) |パブリック プレビュー | |
-| Azure Data Explorer | |パブリック プレビュー |
+| Azure Data Explorer | |✓ |
 
 ## <a name="data-store-support-matrix"></a>データ ストアのサポート マトリックス
 
@@ -62,9 +62,7 @@ SQL ベースのソースからの共有には、ファイアウォール規則�
 ## <a name="share-from-azure-data-explorer"></a>Azure Data Explorer からの共有
 Azure Data Share では、Azure Data Explorer クラスターからデータベースをインプレース共有する機能がサポートされています。 データ プロバイダーは、データベース レベルまたはクラスター レベルで共有することができます。 データベース レベルで共有された場合、データ コンシューマーは、データ プロバイダーが共有した特定のデータベースにのみアクセスできます。 クラスター レベルで共有された場合、データ コンシューマーは、データ プロバイダーが今後作成するデータベースも含めて、プロバイダーのクラスターからすべてのデータベースにアクセスできます。
 
-共有データベースにアクセスするには、データ コンシューマーが独自の Azure Data Explorer クラスターを持っている必要があります。 データ コンシューマーの Azure Data Explorer クラスターは、データ プロバイダーの Azure Data Explorer クラスターと同じ Azure データ センターに配置されている必要があります。 共有関係が確立されると、Azure Data Share によって、プロバイダーとコンシューマーの Azure Data Explorer クラスターの間にシンボリック リンクが作成されます。
-
-Azure Data Explorer では、2 つのデータ インジェスト モードがサポートされています。バッチとストリーミングです。 共有データベースのバッチから受信したデータは、数秒から数分の間にデータ コンシューマー側に表示されます。 ストリーミングから受信したデータがデータ コンシューマー側に表示されるまでには、最大 24 時間かかることがあります。 
+共有データベースにアクセスするには、データ コンシューマーが独自の Azure Data Explorer クラスターを持っている必要があります。 データ コンシューマーの Azure Data Explorer クラスターは、データ プロバイダーの Azure Data Explorer クラスターと同じ Azure データ センターに配置されている必要があります。 共有関係が確立されると、Azure Data Share によって、プロバイダーとコンシューマーの Azure Data Explorer クラスターの間にシンボリック リンクが作成されます。 ソースの Azure Data Explorer クラスターにバッチ モードを使用して取り込まれたデータは、数秒から数分以内にターゲット クラスターに表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

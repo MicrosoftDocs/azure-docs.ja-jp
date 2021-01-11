@@ -16,16 +16,16 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1c5a003eb113289bcb798423ff649b944dcf186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ff3ca98c0fa5929a5e1c0ad5678222253130b6
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84761070"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641791"
 ---
 # <a name="how-to-use-self-service-application-access"></a>アプリケーションのセルフサービス アクセスの使用方法
 
-ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可する任意のアプリケーションに対する、**アプリケーションへのセルフ サービス アクセス権**を有効にする必要があります。
+ユーザーが [マイ アプリ] からアプリケーションを自己検出できるようにするには、ユーザーが自己検出してアクセス権を要求できるようにするアプリケーションへの**セルフサービス アプリケーション アクセス**を有効にする必要があります。
 
 この機能は、IT グループとして時間とコストを節約するための優れた方法であり、Azure Active Directory を使用した最新のアプリケーション デプロイの一部として強くお勧めします。
 

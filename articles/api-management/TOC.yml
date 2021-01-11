@@ -41,8 +41,6 @@
       href: ./policies/index.md
     - name: Azure PowerShell
       href: powershell-samples.md
-    - name: Azure Policy の組み込み
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 用語
@@ -91,7 +89,7 @@
           href: import-api-app-as-api.md
         - name: 関数アプリのインポート
           href: import-function-app-as-api.md
-        - name: Logic Apps のインポート
+        - name: ロジック アプリのインポート
           href: import-logic-app-as-api.md
         - name: Service Fabric アプリのインポート
           href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
@@ -263,6 +261,9 @@
       href: /rest/api/apimanagement/ApiManagementREST/api-management-REST
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.apimanagement/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: よく寄せられる質問

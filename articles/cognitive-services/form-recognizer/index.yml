@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 51613a2233eaa643e8c846cccce7ca27effd6f7f
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: c653a8afa3d15278a03655f71dccade6171db837
+  ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87090826"
+  ms.lasthandoff: 08/21/2020
+  ms.locfileid: "88723896"
 landingContent:
 - title: Form Recognizer について
   linkLists:
@@ -80,6 +80,20 @@ landingContent:
       url: quickstarts/curl-train-extract.md
     - text: REST API の使用する (cURL)
       url: quickstarts/curl-receipts.md
+  - linkListType: concept
+    links:
+    - text: レシートの概念
+      url: concept-receipts.md?
+- title: 名刺からデータを抽出する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: REST API の使用
+      url: quickstarts/python-business-cards.md?
+  - linkListType: concept
+    links:
+    - text: 名刺の概念
+      url: concept-business-cards.md?
 - title: テキスト レイアウト情報を取得する
   linkLists:
   - linkListType: quickstart

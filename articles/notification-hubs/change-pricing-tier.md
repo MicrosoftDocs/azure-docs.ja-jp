@@ -9,16 +9,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/03/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2019
-ms.openlocfilehash: 855a050afa14144f8963f24398c6b7b3939ef562
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 1455259bc42aea9d506a9a2a19d725cac3d643f8
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656470"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562771"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Azure Notification Hubs 名前空間の価格レベルを変更する
 
@@ -26,11 +26,11 @@ Notification Hubs は、**Free**、**Basic**、**Standard** の 3 つのレベ�
 
 ## <a name="overview"></a>概要
 
-Azure Notification Hubs では、ハブが最小のリソース/エンティティです。 これは一般に 1 つのアプリケーションにマップされ、アプリのために Microsoft がサポートしているプラットフォーム通知システム (PNS) ごとに 1 つの証明書を保持できます。 アプリケーションは、ハイブリッドまたはネイティブのクロスプラットフォーム アプリケーションが可能です。
+Azure Notification Hubs では、"*通知ハブ*" が最小のリソースでありエンティティです。 これは一般に 1 つのアプリケーションにマップされ、アプリのために Microsoft がサポートしているプラットフォーム通知システム (PNS) ごとに 1 つの証明書を保持できます。 アプリケーションは、ハイブリッドまたはネイティブのクロスプラットフォーム アプリケーションが可能です。
 
-**名前空間**は通知ハブのコレクションです。 それぞれの名前空間は、通常、関連していて特定の目的に使用されるハブで構成されます。 たとえば、それぞれが開発、テスト、および運用を目的とする 3 つの異なる名前空間を用意できます。
+*名前空間*は通知ハブのコレクションです。 それぞれの名前空間は、通常、関連していて特定の目的に使用されるハブで構成されます。 たとえば、それぞれが開発、テスト、および運用を目的とする 3 つの異なる名前空間を用意できます。
 
-名前空間は**無料**、**Basic**、または **Standard** 価格レベルに関連付けることができます。 お客様の要件に合う名前空間のレベルを使用できます。 以降のセクションでは、Notification Hubs 名前空間の価格レベルを変更する方法を示します。
+名前空間は**無料**、**Basic**、または **Standard** 価格レベルに関連付けることができます。 任意の名前空間で、要件に合うレベルを使用できます。 以降のセクションでは、Notification Hubs 名前空間の価格レベルを変更する方法を示します。
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 
@@ -42,7 +42,7 @@ Azure portal 使用時には、名前空間のページまたはハブのペー�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューから、 **[すべてのサービス]** を選択します。
-3. **[Internet of Things] (モノのインターネット)** セクションで、 **[Notification Hub Namespaces] (Notification Hub の名前空間)** を選択します。 テキストの横にあるアスタリスク (`*`) を選択すると、その項目が左側のナビゲーション バーの **[お気に入り]** の下に追加されます。 これにより、後で名前空間のページにアクセスしやすくなります。 [お気に入り] に追加したら、 **[Notification Hub の名前空間]** を選択します。
+3. **[Internet of Things] (モノのインターネット)** セクションで、 **[Notification Hub Namespaces] (Notification Hub の名前空間)** を選択します。 テキストの横にあるアスタリスク (`*`) を選択すると、その項目が左側のナビゲーション バーの **[お気に入り]** の下に追加されます。 これは、名前空間のページに次にアクセスするときに役に立ちます。 **[お気に入り]** に追加したら、 **[Notification Hub の名前空間]** を選択します。
 
     ![[すべてのサービス] -> [Notification Hub Namespaces] (Notification Hub の名前空間)](./media/change-pricing-tier/all-services-nhub.png)
 
@@ -51,7 +51,7 @@ Azure portal 使用時には、名前空間のページまたはハブのペー�
 
     ![名前空間のページでの現在の価格レベル](./media/change-pricing-tier/pricing-tier-before.png)
 
-6. 目的の名前空間の **[Notification Hub Namespaces] (Notification Hub の名前空間)** で、 **[管理]** セクションの **[価格レベル]** を選択します。
+6. 名前空間の **[通知ハブの名前空間]** ページで、 **[管理]** セクションの **[価格レベル]** を選択します。
 
     ![名前空間のページで価格レベルを選択する](./media/change-pricing-tier/namespace-select-pricing-menu.png)
 
@@ -62,7 +62,7 @@ Azure portal 使用時には、名前空間のページまたはハブのペー�
 
 ### <a name="change-tier-on-the-hub-page"></a>ハブのページでレベルを変更する
 
-次の手順は、ハブのページで名前空間の価格レベルを変更する方法を示しています。 これらの手順はハブのページから開始しているにもかかわらず、実際には名前空間と、その名前空間内のすべてのハブの価格レベルを変更します。
+ハブ ページで名前空間の価格レベルを変更するには、次の手順のようにします。 この手順はハブ ページから開始しますが、実際には名前空間と、その名前空間内のすべてのハブの価格レベルが変更されます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューから、 **[すべてのサービス]** を選択します。

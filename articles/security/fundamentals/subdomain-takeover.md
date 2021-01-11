@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: a7ff8a0cf23bf0701a7cc35cb137ec0965f295ec
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e378ffe00be9215c692a832e232fac7e866ab3c9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223977"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890826"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>未解決の DNS エントリを防ぎ、サブドメインの乗っ取りを回避する
 
@@ -120,20 +120,99 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
         - 存在しているかどうか - DNS ゾーンに対して、*.azurewebsites.net や *.cloudapp.azure.com などの Azure サブドメインを指すリソースのクエリを実行します (詳しくは[このリファレンス リスト](azure-domains.md)を参照してください)。
         - 所有者が自分であるかどうか - DNS サブドメインが対象としているすべてのリソースを所有していることを確認します。
 
-    - Azure の完全修飾ドメイン名 (FQDN) エンドポイントとアプリケーション所有者のサービス カタログを維持します。 サービス カタログを作成するには、次の表のパラメーターを使用して、次の Azure Resource Graph (ARG) クエリを実行します。
-    
+    - Azure の完全修飾ドメイン名 (FQDN) エンドポイントとアプリケーション所有者のサービス カタログを維持します。 サービス カタログをビルドするには、次の Azure Resource Graph クエリ スクリプトを実行します。 このスクリプトからは、アクセスできるリソースの FQDN エンドポイント情報が表示され、それらが CSV ファイルに出力されます。 テナントのあらゆるサブスクリプションにアクセスできる場合、このスクリプトでは、次のサンプル スクリプトで確認できるように、それらすべてのサブスクリプションが考慮されます。 特定のサブスクリプション セットに結果を制限するには、画像のようにスクリプトを編集します。
+
         >[!IMPORTANT]
-        > **アクセス許可** - すべての Azure サブスクリプションへのアクセス権を持つユーザーとしてクエリを実行します。 
+        > **アクセス許可** - すべての Azure サブスクリプションにアクセスできるユーザーとしてクエリを実行します。 
         >
-        > **制限** - Azure Resource Graph には、大規模な Azure 環境を使用している場合に考慮する必要がある調整およびページングの制限があります。 大規模な Azure リソース データセットを処理する方法について[参照してください](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)。  
+        > **制限** - Azure Resource Graph には、大規模な Azure 環境を使用している場合に考慮する必要がある調整およびページングの制限があります。 大規模な Azure リソース データセットを処理する方法について[参照してください](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)。 次のサンプル スクリプトでは、サブスクリプションのバッチ処理を使用してこれらの制限を回避しています。
 
         ```powershell
-        Search-AzGraph -Query "resources | where type == '<ResourceType>' | 
-        project tenantId, subscriptionId, type, resourceGroup, name, 
-        endpoint = <FQDNproperty>"
-        ``` 
+        
+            # Fetch the full array of subscription IDs.
+            $subscriptions = Get-AzSubscription
 
-        ARG クエリのサービスごとのパラメーター:
+            $subscriptionIds = $subscriptions.Id
+                    # Output file path and names
+                    $date = get-date
+                    $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
+                    $fdate #log to console
+                    $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
+                    $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
+                    $fpath = $rpath + $rname
+                    $fpath #This is the output file of FQDN report.
+
+            # queries
+            $allTypesFqdnsQuery = "where type in ('microsoft.network/frontdoors',
+                                    'microsoft.storage/storageaccounts',
+                                    'microsoft.cdn/profiles/endpoints',
+                                    'microsoft.network/publicipaddresses',
+                                    'microsoft.network/trafficmanagerprofiles',
+                                    'microsoft.containerinstance/containergroups',
+                                    'microsoft.web/sites',
+                                    'microsoft.web/sites/slots')
+                        | extend FQDN = case(
+                            type =~ 'microsoft.network/frontdoors', properties['cName'],
+                            type =~ 'microsoft.storage/storageaccounts', parse_url(tostring(properties['primaryEndpoints']['blob'])).Host,
+                            type =~ 'microsoft.cdn/profiles/endpoints', properties['hostName'],
+                            type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
+                            type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
+                            type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
+                            type =~ 'microsoft.web/sites', properties['defaultHostName'],
+                            type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
+                            '')
+                        | project id, type, name, FQDN
+                        | where isnotempty(FQDN)";
+
+            $apiManagementFqdnsQuery = "where type =~ 'microsoft.apimanagement/service'
+                        | project id, type, name,
+                            gatewayUrl=parse_url(tostring(properties['gatewayUrl'])).Host,
+                            portalUrl =parse_url(tostring(properties['portalUrl'])).Host,
+                            developerPortalUrl = parse_url(tostring(properties['developerPortalUrl'])).Host,
+                            managementApiUrl = parse_url(tostring(properties['managementApiUrl'])).Host,
+                            gatewayRegionalUrl = parse_url(tostring(properties['gatewayRegionalUrl'])).Host,
+                            scmUrl = parse_url(tostring(properties['scmUrl'])).Host,
+                            additionaLocs = properties['additionalLocations']
+                        | mvexpand additionaLocs
+                        | extend additionalPropRegionalUrl = tostring(parse_url(tostring(additionaLocs['gatewayRegionalUrl'])).Host)
+                        | project id, type, name, FQDN = pack_array(gatewayUrl, portalUrl, developerPortalUrl, managementApiUrl, gatewayRegionalUrl, scmUrl,             
+                            additionalPropRegionalUrl)
+                        | mvexpand FQDN
+                        | where isnotempty(FQDN)";
+
+            $queries = @($allTypesFqdnsQuery, $apiManagementFqdnsQuery);
+
+            # Paging helper cursor
+            $Skip = 0;
+            $First = 1000;
+
+            # If you have large number of subscriptions, process them in batches of 2,000.
+            $counter = [PSCustomObject] @{ Value = 0 }
+            $batchSize = 2000
+            $response = @()
+
+            # Group the subscriptions into batches.
+            $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
+
+            foreach($query in $queries)
+            {
+                # Run the query for each subscription batch with paging.
+                foreach ($batch in $subscriptionsBatch)
+                { 
+                    $Skip = 0; #Reset after each batch.
+
+                    $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
+                    else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
+                    $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
+                }
+            }
+
+            # View the completed results of the query on all subscriptions
+            $response | Export-Csv -Path $fpath -Append  
+
+        ```
+
+        前の Resource Graph クエリに指定されている型とその `FQDNProperty` 値の一覧:
 
         |リソース名  | `<ResourceType>`  | `<FQDNproperty>`  |
         |---------|---------|---------|
@@ -146,23 +225,6 @@ Azure App Service の DNS エントリを作成する場合は、Domain Verifica
         |Azure API Management|microsoft.apimanagement/service|properties.hostnameConfigurations.hostName|
         |Azure App Service|microsoft.web/sites|properties.defaultHostName|
         |Azure App Service - Slots|microsoft.web/sites/slots|properties.defaultHostName|
-
-        
-        **例 1** - このクエリでは Azure App Service からリソースが返されます。 
-
-        ```powershell
-        Search-AzGraph -Query "resources | where type == 'microsoft.web/sites' | 
-        project tenantId, subscriptionId, type, resourceGroup, name, 
-        endpoint = properties.defaultHostName"
-        ```
-        
-        **例 2** - このクエリでは、Azure App Service **および** Azure App Service - Slot からリソースを返すために、複数のリソースの種類が結合されます。
-
-        ```powershell
-        Search-AzGraph -Query "resources | where type in ('microsoft.web/sites', 
-        'microsoft.web/sites/slots') | project tenantId, subscriptionId, type, 
-        resourceGroup, name, endpoint = properties.defaultHostName"
-        ```
 
 
 - **修復手順を作成する:**

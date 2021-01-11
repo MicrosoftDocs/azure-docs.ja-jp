@@ -5,12 +5,13 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d41a71ff5f97449968d82812119cfdfd4bc2ef44
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e6b6cebfd146ffe23bdc21751f86c71d14ea875e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261170"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002251"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 
@@ -19,7 +20,7 @@ Azure Service Fabric クラスターの作成前、またはクラスターを�
 ノードの種類とクラスターの特性を考慮することに加えて、運用環境でのスケーリング操作が完了するまでに 1 時間以上かかることを考慮する必要があります。 この考慮事項は、追加する VM の数に関係なく当てはまります。
 
 ## <a name="autoscaling"></a>自動スケール
-スケーリング操作は、Azure Resource Manager テンプレートを介して実行する必要があります。これは、[リソース構成をコードとして]( https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)扱うことがベスト プラクティスであるためです。 
+スケーリング操作は、Azure Resource Manager テンプレートを介して実行する必要があります。これは、[リソース構成をコードとして](./service-fabric-best-practices-infrastructure-as-code.md)扱うことがベスト プラクティスであるためです。 
 
 仮想マシン スケール セットを介した自動スケーリングを使用すると、バージョン管理される Resource Manager テンプレートで、仮想マシン スケール セットのインスタンス数の定義が不正確になります。 不正確な定義により、今後のデプロイで意図しないスケーリング操作が発生するリスクが高まります。 一般的に、自動スケーリングは次の場合に使用してください。
 

@@ -8,7 +8,7 @@
       href: lab-services-overview.md
 - name: クイック スタート
   items:
-    - name: ラボを作成する - Resource Manager テンプレート
+    - name: ラボの作成 - Resource Manager テンプレート
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
 - name: チュートリアル
@@ -75,6 +75,8 @@
       items:
         - name: ラボを作成する
           href: devtest-lab-create-lab.md
+        - name: ネットワークが分離されたラボを作成する
+          href: network-isolation.md
         - name: Resource Manager テンプレートを使ってラボを作成または変更する
           href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
         - name: ラボ仮想マシンのリソース グループを指定する
@@ -83,6 +85,8 @@
           href: devtest-lab-internal-support-message.md
         - name: ポリシーとスケジュールの設定
           href: devtest-lab-set-lab-policy.md
+        - name: "ラボ ID の構成\_"
+          href: configure-lab-identity.md
         - name: リモート デスクトップ ゲートウェイを使用するためにラボを構成する
           href: configure-lab-remote-desktop-gateway.md
         - name: ラボでのお知らせの投稿
@@ -95,8 +99,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: ラボのスケーリング
           href: devtest-lab-scale-lab.md
-        - name: ラボ VM のマネージド ID の有効化
-          href: enable-managed-identities-lab-vms.md
         - name: 仮想マシンのベースの管理
           items:
             - name: Azure Marketplace イメージの構成
@@ -167,6 +169,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: 別のラボから仮想マシンをインポートする
           href: import-virtual-machines-from-another-lab.md
+        - name: ラボ VM のマネージド ID の有効化
+          href: enable-managed-identities-lab-vms.md
     - name: ラボでの環境の使用
       items:
         - name: 環境の作成

@@ -1,21 +1,21 @@
 ---
 title: Azure CLI を使用して Linux VM にデータ ディスクを追加する
 description: Azure CLI を使用して Linux VM に永続データ ディスクを追加する方法について説明します
-author: roygara
-manager: twooley
+author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 06/13/2018
-ms.author: rogarana
+ms.date: 08/20/2020
+ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 1791d33627f04f69d10916c8ff0a154f7d8b967b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7098744fe012c994e311696a376cd7ed0dc9ac53
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502828"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076618"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
+
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。
 
 
@@ -42,129 +42,72 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --name $diskId
 ```
 
-## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Linux VM を接続して新しいディスクをマウントする
+## <a name="format-and-mount-the-disk"></a>ディスクのフォーマットとマウント
 
-Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で VM に接続します。 詳細については、[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md)に関するページをご覧ください。 次の例では、パブリック DNS エントリ *mypublicdns.westus.cloudapp.azure.com* を持つ VM に、ユーザー名 *azureuser* で接続します。
+Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で VM に接続します。 詳細については、[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md)に関するページをご覧ください。 次の例では、パブリック IP アドレス *10.123.123.25* と、ユーザー名 *azureuser* を指定して、VM に接続します。
 
 ```bash
-ssh azureuser@mypublicdns.westus.cloudapp.azure.com
+ssh azureuser@10.123.123.25
 ```
 
-VM に接続された時点で、ディスクを接続する準備ができました。 まず、`dmesg` を使用してディスクを探します (新しいディスクの検出に使用する方法は異なる場合があります)。 次の例では、*SCSI* ディスクでのフィルター処理に dmesg を使用します。
+### <a name="find-the-disk"></a>ディスクの特定
+
+ご利用の VM に接続したら、ディスクを特定する必要があります。 この例では、`lsblk` を使用してディスクを一覧表示します。 
 
 ```bash
-dmesg | grep SCSI
+lsblk -o NAME,HCTL,SIZE,MOUNTPOINT | grep -i "sd"
 ```
 
 出力は次の例のようになります。
 
 ```bash
-[    0.294784] SCSI subsystem initialized
-[    0.573458] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
-[    7.110271] sd 2:0:0:0: [sda] Attached SCSI disk
-[    8.079653] sd 3:0:1:0: [sdb] Attached SCSI disk
-[ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
+sda     0:0:0:0      30G
+├─sda1             29.9G /
+├─sda14               4M
+└─sda15             106M /boot/efi
+sdb     1:0:1:0      14G
+└─sdb1               14G /mnt
+sdc     3:0:0:0      50G
 ```
+
+ここでは、`sdc` は 50 G であるため、これが目的のディスクです。 サイズだけではどのディスクかわからない場合は、ポータルの [VM] ページにアクセスし、 **[ディスク]** を選択して、 **[データ ディスク]** でディスクの LUN 番号を確認します。 
+
+
+### <a name="format-the-disk"></a>ディスクのフォーマット
+
+`parted` を使用してディスクをフォーマットします。ディスクのサイズが 2 テビバイト (TiB) 以上の場合は、GPT パーティション分割を使用する必要があります。2 TiB 未満の場合は、MBR または GPT のパーティション分割を使用することができます。 
 
 > [!NOTE]
-> ご使用のディストリビューションで利用できる最新バージョンの fdisk または parted を使用することをお勧めします。
+> ご利用のディストリビューションで入手可能な最新バージョンの `parted` を使用することをお勧めします。
+> ディスク サイズが 2 テビバイト (TiB) 以上の場合は、GPT パーティション分割を使用する必要があります。 ディスク サイズが 2 TiB 未満の場合は、MBR または GPT のどちらのパーティション分割でも使用できます。  
 
-ここでは、*sdc* が対象のディスクです。 `parted` を使用してディスクをパーティション分割します。ディスクのサイズが 2 テビバイト (TiB) 以上の場合は、GPT パーティション分割を使用する必要があります。2 TiB 未満の場合は、MBR または GPT のパーティション分割を使用することができます。 MBR パーティション分割を使用している場合、`fdisk` を使用できます。 それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
 
-```bash
-sudo fdisk /dev/sdc
-```
-
-`n` コマンドを使用して新しいパーティションを追加します。 この例では、プライマリ パーティションのために `p` も選択し、残りの既定値はそのまま使用します。 出力は次の例のようになります。
+次の例では、`/dev/sdc` 上で `parted` を使用します。これは、通常、ほとんどの VM 上で最初のデータ ディスクが置かれる場所です。 `sdc` を、ご利用のディスクに適したオプションに置き換えます。 また、[XFS](https://xfs.wiki.kernel.org/) ファイル システムを使用してフォーマットしています。
 
 ```bash
-Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
-Building a new DOS disklabel with disk identifier 0x2a59b123.
-Changes will remain in memory only, until you decide to write them.
-After that, of course, the previous content won't be recoverable.
-
-Warning: invalid flag 0x0000 of partition table 4 will be corrected by w(rite)
-
-Command (m for help): n
-Partition type:
-   p   primary (0 primary, 0 extended, 4 free)
-   e   extended
-Select (default p): p
-Partition number (1-4, default 1): 1
-First sector (2048-10485759, default 2048):
-Using default value 2048
-Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
-Using default value 10485759
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
-`p` を入力してパーティション テーブルを出力し、次に `w` を使用してテーブルをディスクに書き込んで終了します。 出力は次の例のようになります。
+[`partprobe`](https://linux.die.net/man/8/partprobe) ユーティリティを使用して、カーネルが新しいパーティションとファイル システムを認識できるようにしています。 `partprobe` を使用しないと、blkid または lslbk コマンドで、新しいファイル システムの UUID がすぐに返されない可能性があります。
 
-```bash
-Command (m for help): p
 
-Disk /dev/sdc: 5368 MB, 5368709120 bytes
-255 heads, 63 sectors/track, 652 cylinders, total 10485760 sectors
-Units = sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disk identifier: 0x2a59b123
+### <a name="mount-the-disk"></a>ディスクのマウント
 
-   Device Boot      Start         End      Blocks   Id  System
-/dev/sdc1            2048    10485759     5241856   83  Linux
-
-Command (m for help): w
-The partition table has been altered!
-
-Calling ioctl() to re-read partition table.
-Syncing disks.
-```
-次のコマンドを使用してカーネルを更新します。
-```
-partprobe 
-```
-
-次に、`mkfs` コマンドを使用してパーティションにファイル システムを書き込みます。 ファイル システムの種類とデバイス名を指定します。 次の例では、上記の手順で作成された */dev/sdc1* パーティション上に *ext4* ファイル システムを作成します。
-
-```bash
-sudo mkfs -t ext4 /dev/sdc1
-```
-
-出力は次の例のようになります。
-
-```bash
-mke2fs 1.42.9 (4-Feb-2014)
-Discarding device blocks: done
-Filesystem label=
-OS type: Linux
-Block size=4096 (log=2)
-Fragment size=4096 (log=2)
-Stride=0 blocks, Stripe width=0 blocks
-327680 inodes, 1310464 blocks
-65523 blocks (5.00%) reserved for the super user
-First data block=0
-Maximum filesystem blocks=1342177280
-40 block groups
-32768 blocks per group, 32768 fragments per group
-8192 inodes per group
-Superblock backups stored on blocks:
-    32768, 98304, 163840, 229376, 294912, 819200, 884736
-Allocating group tables: done
-Writing inode tables: done
-Creating journal (32768 blocks): done
-Writing superblocks and filesystem accounting information: done
-```
-
-次に、`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、 */datadrive* にディレクトリを作成します。
+次に、`mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、 `/datadrive` にディレクトリを作成します。
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-`mount` を使用して、ファイル システムをマウントします。 次の例では、 */dev/sdc1* パーティションを */datadrive* マウント ポイントにマウントします。
+`mount` を使用して、ファイル システムをマウントします。 次の例では、 `/dev/sdc1` パーティションを `/datadrive` マウント ポイントにマウントします。
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
 ```
+
+### <a name="persist-the-mount"></a>マウントの永続化
 
 再起動後にドライブを自動的に再マウントするために、そのドライブを */etc/fstab* ファイルに追加する必要があります。 ドライブを参照する際に、デバイス名 ( */dev/sdc1* など) だけでなく、UUID (汎用一意識別子) を */etc/fstab* で使用することもお勧めします。 UUID を使用すると、OS が起動中にディスク エラーを検出した場合に、間違ったディスクが特定の場所にマウントされるのを防ぐことができます。 その後、残りのデータ ディスクは、その同じデバイス ID に割り当てられます。 新しいドライブの UUID を確認するには、`blkid` ユーティリティを使用します。
 
@@ -175,9 +118,11 @@ sudo blkid
 出力は次の例のようになります。
 
 ```bash
-/dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
-/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4"
-/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+/dev/sda1: LABEL="cloudimg-rootfs" UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4" PARTUUID="1a1b1c1d-11aa-1234-1a1a1a1a1a1a"
+/dev/sda15: LABEL="UEFI" UUID="BCD7-96A6" TYPE="vfat" PARTUUID="1e1g1cg1h-11aa-1234-1u1u1a1a1u1u"
+/dev/sdb1: UUID="22222222-2b2b-2c2c-2d2d-2e2e2e2e2e2e" TYPE="ext4" TYPE="ext4" PARTUUID="1a2b3c4d-01"
+/dev/sda14: PARTUUID="2e2g2cg2h-11aa-1234-1u1u1a1a1u1u"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs" PARTLABEL="xfspart" PARTUUID="c1c2c3c4-1234-cdef-asdf3456ghjk"
 ```
 
 > [!NOTE]
@@ -186,14 +131,16 @@ sudo blkid
 次に、テキスト エディターで次のように */etc/fstab* ファイルを開きます。
 
 ```bash
-sudo vi /etc/fstab
+sudo nano /etc/fstab
 ```
 
-この例では、前の手順で作成した */dev/sdc1* デバイスに対して UUID 値を使用し、マウント ポイントとして */datadrive* を使用します。 次の行を */etc/fstab* ファイルの末尾に追加します。
+この例では、前の手順で作成した `/dev/sdc1` デバイスに対して UUID 値を使用し、マウント ポイントとして `/datadrive` を使用します。 次の行を `/etc/fstab` ファイルの末尾に追加します。
 
 ```bash
-UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,nofail   1   2
 ```
+
+この例では nano エディターを使用しているので、ファイルの編集が完了したら、`Ctrl+O` を使用してファイルを書き込み、`Ctrl+X` を使用してエディターを終了してください。
 
 > [!NOTE]
 > この後、fstab を編集せずにデータ ディスクを削除すると VM は起動できません。 ほとんどのディストリビューションでは、*nofail* または *nobootwait* fstab オプションが提供されています。 これにより起動時にディスクのマウントが失敗しても、システムを起動できます。 これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
@@ -210,7 +157,7 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 * 次のように、 */etc/fstab* で `discard` マウント オプションを使用します。
 
     ```bash
-    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
+    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,discard   1   2
     ```
 * 場合によっては、`discard` オプションがパフォーマンスに影響する可能性があります。 または、 `fstrim` コマンドを手動でコマンド ラインから実行するか、crontab に追加して定期的に実行することができます。
 

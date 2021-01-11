@@ -3,14 +3,14 @@ title: Durable Functions の HTTP 機能 - Azure Functions
 description: Azure Functions 用の Durable Functions 拡張機能の統合 HTTP 機能について説明します。
 author: cgillum
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 07/14/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 1ffa116f6877b58d54c22f918b4e83574b85860c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16a133205b13a3d0a4aa76f75c8ce316f6c09199
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82800721"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014900"
 ---
 # <a name="http-features"></a>HTTP 機能
 
@@ -54,6 +54,57 @@ Durable Functions 拡張機能で公開されているすべての組み込み�
 **function.json**
 
 [!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+**__init__.py**
+
+```python
+import logging
+import azure.functions as func
+import azure.durable_functions as df
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    function_name = req.route_params['functionName']
+    event_data = req.get_body()
+
+    instance_id = await client.start_new(function_name, instance_id, event_data)
+    
+    logging.info(f"Started orchestration with ID = '{instance_id}'.")
+    return client.create_check_status_response(req, instance_id)
+```
+
+**function.json**
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "req",
+      "type": "httpTrigger",
+      "direction": "in",
+      "route": "orchestrators/{functionName}",
+      "methods": [
+        "post",
+        "get"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    },
+    {
+      "name": "starter",
+      "type": "orchestrationClient",
+      "direction": "in"
+    }
+  ]
+}
+```
 
 ---
 
@@ -148,6 +199,22 @@ module.exports = df.orchestrator(function*(context){
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+from datetime import datetime, timedelta
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    url = context.get_input()
+    response = yield context.call_http('GET', url)
+    
+    if response["statusCode"] >= 400:
+        # handling of error codes goes here
+
+main = df.Orchestrator.create(orchestrator_function)
+```
 
 ---
 
@@ -170,7 +237,7 @@ module.exports = df.orchestrator(function*(context){
 
 Durable Functions では、承認のために Azure Active Directory (Azure AD) トークンを受け入れる API の呼び出しがネイティブでサポートされています。 このサポートでは、[Azure マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用してこれらのトークンを取得します。
 
-次のコードは、.NET オーケストレーター関数の例です。 この関数では、Azure Resource Manager の [Virtual Machines REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines) を使用して、仮想マシンを再起動する認証済み呼び出しを行います。
+次のコードは、.NET オーケストレーター関数の例です。 この関数では、Azure Resource Manager の [Virtual Machines REST API](/rest/api/compute/virtualmachines) を使用して、仮想マシンを再起動する認証済み呼び出しを行います。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -222,6 +289,30 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    subscription_id = "mySubId"
+    resource_group = "myRg"
+    vm_name = "myVM"
+    api_version = "2019-03-01"
+    token_source = df.ManagedIdentityTokenSource("https://management.core.windows.net")
+
+    # get a list of the Azure subscriptions that I have access to
+    restart_response = yield context.call_http("POST", 
+        f"https://management.azure.com/subscriptions/${subscription_id}/resourceGroups/${resource_group}/providers/Microsoft.Compute/virtualMachines/${vm_name}/restart?api-version=${api_version}",
+        None,
+        None,
+        token_source)
+    return restart_response
+
+main = df.Orchestrator.create(orchestrator_function)
+```
+
 ---
 
 前の例で、`tokenSource` パラメーターは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の Azure AD トークンを取得するように構成されています。 このトークンは、リソース URI `https://management.core.windows.net`によって識別されます。 この例では、現在の関数アプリがローカルで実行されているか、マネージド ID を使用する関数アプリとしてデプロイ済みであることを前提としています。 ローカル ID またはマネージド ID は、指定されたリソース グループ `myRG` 内の VM を管理できるアクセス許可を持っていると見なされます。
@@ -256,7 +347,7 @@ HTTP API を呼び出す組み込みのサポートは便利な機能です。 �
 
 ### <a name="extensibility-net-only"></a>拡張機能 (.NET のみ)
 
-オーケストレーションの内部 HTTP クライアントの動作をカスタマイズするには、[Azure Functions の .NET 依存関係の挿入](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection)を使用できます。 この機能は、小規模な動作変更を行う場合に役立ちます。 これは、モック オブジェクトを挿入することによる、HTTP クライアントの単体テストにも役立ちます。
+オーケストレーションの内部 HTTP クライアントの動作をカスタマイズするには、[Azure Functions の .NET 依存関係の挿入](../functions-dotnet-dependency-injection.md)を使用できます。 この機能は、小規模な動作変更を行う場合に役立ちます。 これは、モック オブジェクトを挿入することによる、HTTP クライアントの単体テストにも役立ちます。
 
 次の例では、外部 HTTP エンドポイントを呼び出すオーケストレーター関数に対する TLS/SSL 証明書の検証を無効にするために、依存関係の挿入を使用する方法を示します。
 

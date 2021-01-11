@@ -1,20 +1,21 @@
 ---
 title: Microsoft Azure の請求書の支払い | Microsoft Docs
-description: Azure portal での請求書の支払い方法について説明します。
+description: Azure portal での請求書の支払い方法について説明します。 ポータルで支払いを行うには、課金プロファイルの所有者、共同作成者、または請求書管理者である必要があります。
 keywords: 請求, 支払い期限を過ぎている, 残高, 今支払う,
 author: banders
 ms.reviewer: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 8db50a25d98f5e4dc2ae96c708a5da49709f9ed5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6cfebc9cfbd856567fde3d6736c6ddc5f1a94b4d
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200148"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688710"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Microsoft Azure の請求書の支払い方法
 

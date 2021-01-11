@@ -3,13 +3,13 @@ title: 'チュートリアル: Logic Apps を使用してメールを送信す�
 description: App Service アプリからビジネス プロセスを呼び出す方法について説明します。 メール、ツイート、Facebook の投稿を送信したり、メーリング リストに追加したりできます。
 ms.topic: tutorial
 ms.date: 04/08/2020
-ms.custom: mvc
-ms.openlocfilehash: 2b478ae75c8be978ea93a493b65dafdc7756c4b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: ddd57bfe653766d133824f42098d9ad9adb1e56b
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083244"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962198"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>チュートリアル:App Service からメールを送信したり他のビジネス プロセスを呼び出したりする
 
@@ -32,23 +32,23 @@ ms.locfileid: "87083244"
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-[チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](app-service-web-tutorial-dotnetcore-sqldb.md)
+[チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](tutorial-dotnetcore-sqldb-app.md)
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
-[チュートリアル:Azure で Node.js と MongoDB のアプリを構築する](app-service-web-tutorial-nodejs-mongodb-app.md)
+[チュートリアル:Azure で Node.js と MongoDB のアプリを構築する](tutorial-nodejs-mongodb-app.md)
 
 ### <a name="php"></a>[PHP](#tab/php)
 
-[チュートリアル:Azure で PHP と MySQL アプリを構築する](app-service-web-tutorial-php-mysql.md)
+[チュートリアル:Azure で PHP と MySQL アプリを構築する](tutorial-php-mysql-app.md)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-[チュートリアル:Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する](containers/tutorial-python-postgresql-app.md)
+[チュートリアル:Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する](tutorial-python-postgresql-app.md)
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
-[Azure App Service on Linux で Ruby および Postgres のアプリを構築する](containers/tutorial-ruby-postgres-app.md)
+[Azure App Service on Linux で Ruby および Postgres のアプリを構築する](tutorial-ruby-postgres-app.md)
 
 ---
 
@@ -84,7 +84,7 @@ ms.locfileid: "87083244"
 1. デザイナーの下部にある **[新しいステップ]** をクリックし、アクション検索ボックスに「**Gmail**」と入力して、 **[メールの送信 (V2)]** を見つけて選択します。
     
     > [!TIP]
-    > SendGrid、MailChimp、Office 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](https://docs.microsoft.com/azure/logic-apps/)を参照してください。
+    > SendGrid、MailChimp、Office 365、SalesForce など、他の種類の統合を検索することができます。 詳細については、[Logic Apps のドキュメント](../logic-apps/index.yml)を参照してください。
 1. **[Gmail]** ダイアログで、 **[サインイン]** を選択し、メールの送信に使用する Gmail アカウントにサインインします。
 
     ![電子メールの送信元にする Gmail アカウントにサインインするための [Gmail] ダイアログ ボックスのスクリーンショット。](./media/tutorial-send-email/gmail-sign-in.png)
@@ -152,7 +152,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 ### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-ASP.NET では、[System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
+ASP.NET では、[System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
 
 ```csharp
 // requires using System.Net.Http;
@@ -177,7 +177,7 @@ var statusCode = result.StatusCode.ToString();
 
 ### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-ASP.NET Core では、[System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
+ASP.NET Core では、[System.Net.Http.HttpClient](/dotnet/api/system.net.http.httpclient) クラスを使用して HTTP Post を送信できます。 次に例を示します。
 
 ```csharp
 // requires using System.Net.Http;
@@ -191,7 +191,7 @@ var jsonData = JsonSerializer.Serialize(new
 });
 
 HttpResponseMessage result = await client.PostAsync(
-    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/containers/configure-language-dotnetcore#access-environment-variables
+    // Requires DI configuration to access app settings. See https://docs.microsoft.com/azure/app-service/configure-language-dotnetcore#access-environment-variables
     _configuration["LOGIC_APP_URL"],
     new StringContent(jsonData, Encoding.UTF8, "application/json"));
     
@@ -199,9 +199,9 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> このコードは、デモの簡略化を意図して記述されています。 実際には、要求ごとに `HttpClient` オブジェクトをインスタンス化しないでください。 「[IHttpClientFactory を使用して回復力の高い HTTP 要求を実装する](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)」のガイダンスに従ってください。
+> このコードは、デモの簡略化を意図して記述されています。 実際には、要求ごとに `HttpClient` オブジェクトをインスタンス化しないでください。 「[IHttpClientFactory を使用して回復力の高い HTTP 要求を実装する](/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)」のガイダンスに従ってください。
 
-このコードを「[チュートリアル: Azure App Service での ASP.NET Core および SQL Database アプリの作成](app-service-web-tutorial-dotnetcore-sqldb.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Create アクション](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)で、`Todo` 項目の追加後に確認メールを送信できます。
+このコードを「[チュートリアル: Azure App Service での ASP.NET Core および SQL Database アプリの作成](tutorial-dotnetcore-sqldb-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Create アクション](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)で、`Todo` 項目の追加後に確認メールを送信できます。
 
 ### <a name="nodejs"></a>[Node.js](#tab/node)
 
@@ -228,7 +228,7 @@ var jsonData = {
 
 ```
 
-このコードを「[チュートリアル: Azure で Node.js と MongoDB のアプリを構築する](app-service-web-tutorial-nodejs-mongodb-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[create 関数](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)で、[記事が正常に保存された](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)後に確認メールを送信できます。
+このコードを「[チュートリアル: Azure で Node.js と MongoDB のアプリを構築する](tutorial-nodejs-mongodb-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[create 関数](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)で、[記事が正常に保存された](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)後に確認メールを送信できます。
 
 ### <a name="php"></a>[PHP](#tab/php)
 
@@ -260,7 +260,7 @@ $response = $promise->wait();
 Log::info(print_r($response, TRUE));
 ```
 
-このコードを「[チュートリアル: Azure で PHP と MySQL アプリを構築する](app-service-web-tutorial-php-mysql.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Route::post 関数](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)の return ステートメントの直前で確認メールを送信できます。
+このコードを「[チュートリアル: Azure で PHP と MySQL アプリを構築する](tutorial-php-mysql-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Route::post 関数](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)の return ステートメントの直前で確認メールを送信できます。
 
 ### <a name="python"></a>[Python](#tab/python)
 
@@ -291,7 +291,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
     print(await resp.status())
 ``` -->
 
-このコードを「[チュートリアル: Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する](containers/tutorial-python-postgresql-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Route::post 関数](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)の return ステートメントの直前で確認メールを送信できます。
+このコードを「[チュートリアル: Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する](tutorial-python-postgresql-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[Route::post 関数](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)の return ステートメントの直前で確認メールを送信できます。
 
 ### <a name="ruby"></a>[Ruby](#tab/ruby)
 
@@ -308,7 +308,7 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-このコードを「[Azure App Service on Linux で Ruby および Postgres のアプリを構築する](containers/tutorial-ruby-postgres-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[create](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) アクションで、[@task.save が成功した場合](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30)に確認メールを送信できます。
+このコードを「[Azure App Service on Linux で Ruby および Postgres のアプリを構築する](tutorial-ruby-postgres-app.md)」のサンプル アプリでテストしている場合は、そのアプリを使用して、[create](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) アクションで、[@task.save が成功した場合](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30)に確認メールを送信できます。
 
 ---
 

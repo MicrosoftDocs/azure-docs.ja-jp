@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: b975ee8cebdac3855c3fca88b20c01145d11baeb
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080195"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072785"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -163,9 +163,9 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 
 ### <a name="azure-requirements-questionnaire"></a>Azure の要件のアンケート
 
-|**トピック**:**インフラストラクチャ** |||
-|---|---|---|
 |**質問**|**例**|**回答**|
+|---|---|---|
+|**トピック**:**インフラストラクチャ** |||
 | 優先リージョン|米国東部||
 |VNet を推奨しますか?|はい||
 |HA / DR が必要?|はい||

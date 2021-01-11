@@ -1,27 +1,22 @@
 ---
 title: Windows Virtual Desktop の環境 - Azure
-description: Windows Virtual Desktop 環境の基本的な要素。
-services: virtual-desktop
+description: Windows Virtual Desktop 環境のホスト プールやアプリ グループなどの基本的な要素について説明します。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d189d5febe54a83cde4fe6cd6aa51e728aa882e6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259898"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002619"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop の環境
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/environment-setup-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトを使用しない Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/environment-setup-2019.md)を参照してください。
 
 Windows Virtual Desktop は、仮想デスクトップと RemoteApp への簡単で安全なアクセスをユーザーに提供するサービスです。 このトピックでは、Windows Virtual Desktop 環境の一般構造について少し詳しく説明します。
 
@@ -52,7 +47,7 @@ Windows Virtual Desktop は、仮想デスクトップと RemoteApp への簡単
 
 ## <a name="workspaces"></a>Workspaces
 
-ワークスペースは、Windows Virtual Desktop 内のアプリケーション グループを論理的にグループ化したものです。 ユーザーに公開されたリモート アプリとデスクトップがそのユーザーに表示されるようにするには、各 Windows Virtual Desktop アプリケーション グループがワークスペースに関連付けられている必要があります。  
+ワークスペースは、Windows Virtual Desktop 内のアプリケーション グループを論理的にグループ化したものです。 ユーザーに公開されたリモート アプリとデスクトップがそのユーザーに表示されるようにするには、各 Windows Virtual Desktop アプリケーション グループがワークスペースに関連付けられている必要があります。
 
 ## <a name="end-users"></a>エンド ユーザー
 

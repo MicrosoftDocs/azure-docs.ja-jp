@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/24/2020
 ms.author: allensu
-ms.openlocfilehash: b22ce64e7058f093a102aebec8b00842c8a41cb5
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 738b54d9fcd86313c2581c5d0f055a7cca8230b8
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849404"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706066"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の Outbound connections
 
@@ -127,7 +127,7 @@ NSG が AZURE_LOADBALANCER 既定タグからのヘルス プローブ要求を�
 | II | SNAT ポートの割り当てを変更する| アウトバウンド規則を使用して、[バックエンド プール サイズに基づく SNAT ポートの自動割り当て](load-balancer-outbound-connections.md#preallocatedports)を調整できます。 たとえば、アウトバウンド NAT の 1 つのパブリック IP アドレスを共有する 2 つの仮想マシンがあり、SNAT ポートが枯渇している場合は、割り当てられた SNAT ポートの数を既定の 1024 個から増やすことができます。 パブリック IP アドレスごとに、最大 64,000 個のエフェメラル ポートを提供できます。  単一のパブリック IP アドレス フロントエンドでアウトバウンド規則を構成した場合、合計 64,000 個の SNAT ポートをバックエンド プール内の VM に配布できます。  2 つの VM の場合、アウトバウンド規則を使用して最大 32,000 個 (2 x 32,000 = 64,000) の SNAT ポートを割り当てることができます。 アウトバウンド規則を使用すると、既定で割り当てられる SNAT ポートを調整できます。 既定の SNAT ポート割り当てよりも割り当てを増減させます。1 つのアウトバウンド規則を構成するすべてのフロントエンドのパブリック IP アドレスごとに、SNAT ポートとして使用する最大 64,000 個のエフェメラル ポートが提供されます。  Load Balancer は、SNAT ポートを 8 の倍数で割り当てます。 8 で割り切れない値を指定すると、その構成操作は拒否されます。  パブリック IP アドレスの数に基づく使用可能な SNAT ポートの数よりも多くのポートを割り当てようとすると、その構成操作は拒否されます。  たとえば、VM ごとに 10,000 個のポートを割り当て、バックエンド プール内の 7 つの VM が 1 つのパブリック IP アドレスを共有している場合、この構成は拒否されます (7 x 10,000 SNAT ポート > 64,000 SNAT ポート)。  このシナリオに対応するには、アウトバウンド規則のフロントエンドにパブリック IP アドレスを追加します。 ポート数に 0 を指定することで、[バックエンド プール サイズに基づく既定の SNAT ポートの割り当て](load-balancer-outbound-connections.md#preallocatedports)に戻すことができます。 その場合、[表](#snatporttable)に従って、最初の 50 VM インスタンスは 1024 ポートを取得し、51 から 100 の VM インスタンスは、512 ポートを取得するというようになります。|
 | III| アウトバウンドのみを有効にする | パブリック Standard Load Balancer を使用して、VM のグループにアウトバウンド NAT を提供できます。 このシナリオでは、追加の規則を必要とせずに、アウトバウンド規則を単独で使用できます。|
 | IV | VM のアウトバウンド NAT のみ (インバウンドなし) | パブリック Standard Load Balancer を定義し、VM をバックエンド プールに配置します。アウトバウンド NAT をプログラムするようにし、特定のパブリック IP アドレスが発信元になるようにアウトバウンド接続を調整するアウトバウンド規則を構成します。 パブリック IP プレフィックスを使用して、アウトバウンド接続の発信元のホワイトリスト登録を簡素化することもできます。 1. パブリック Standard Load Balancer を作成します。 2. バックエンド プールを作成し、VM をパブリック Load Balancer のバックエンド プールに配置します。 3. これらの VM のアウトバウンド NAT をプログラムするように、パブリック Load Balancer のアウトバウンド規則を構成します。
-| V| 内部 Standard Load Balancer のアウトバウンド NAT のシナリオ| 内部 Standard Load Balancer を使用する場合、送信接続が明示的に宣言されるまで送信 NAT は使用できません。 以下の手順で、アウトバウンド規則を使用して内部 Standard Load Balancer の背後にある VM の送信接続を作成し、送信接続を定義します。1. パブリック Standard Load Balancer を作成します。 2. 内部 Load Balancer に加えて、バックエンド プールを作成し、VM をパブリック Load Balancer のバックエンド プールに配置します。 3. これらの VM のアウトバウンド NAT をプログラムするように、パブリック Load Balancer のアウトバウンド規則を構成します。|
+| V| 内部 Standard Load Balancer のアウトバウンド NAT のシナリオ| 内部 Standard Load Balancer を使用する場合、送信接続が明示的に宣言されるまで送信 NAT は使用できません。 以下の手順で、アウトバウンド規則を使用して内部 Standard Load Balancer の背後にある VM の送信接続を作成し、送信接続を定義します。1. パブリック Standard Load Balancer を作成します。 2. 内部 Load Balancer に加えて、バックエンド プールを作成し、VM をパブリック Load Balancer のバックエンド プールに配置します。 3. これらの VM のアウトバウンド NAT をプログラムするように、パブリック Load Balancer のアウトバウンド規則を構成します。 このシナリオの詳細については、[こちらの例](https://docs.microsoft.com/azure/load-balancer/egress-only)を参照してください。 |
 | VI | パブリック Standard Load Balancer でアウトバウンド NAT の TCP プロトコルと UDP プロトコルの両方を有効にする | パブリック Standard Load Balancer を使用する場合、提供されるアウトバウンド NAT の自動プログラミングは負荷分散規則のトランスポート プロトコルに対応します。 1. 負荷分散規則でアウトバウンド SNAT を無効にします。 2. 同じ Load Balancer のアウトバウンド規則を構成します。 3. VM によって既に使用されているバックエンド プールを再利用します。 4. アウトバウンド規則の一部として "protocol": "All" を指定します。 インバウンド NAT 規則のみを使用している場合、アウトバウンド NAT は提供されません。 1. VM をバックエンド プールに配置します。 2. パブリック IP アドレスまたはパブリック IP プレフィックスを使用して、1 つまたは複数のフロントエンド IP 構成を定義します。3. 同じ Load Balancer のアウトバウンド規則を構成します。 4. アウトバウンド規則の一部として "protocol": "All" を指定します |
 
 
@@ -136,7 +136,7 @@ NSG が AZURE_LOADBALANCER 既定タグからのヘルス プローブ要求を�
 - フロントエンド IP アドレスごとに使用可能なエフェメラル ポートの最大数は 64,000 個です。
 - 構成可能なアウトバウンド アイドル タイムアウトの範囲は、4 から 120 分 (240 から 7200 秒) です。
 - Load Balancer では、アウトバウンド NAT の ICMP はサポートされていません。
-- アウトバウンド規則は、NIC のプライマリ IP 構成にのみ適用できます。  複数 NIC がサポートされています。
+- アウトバウンド規則は、NIC のプライマリ IP 構成にのみ適用できます。  VM または NVA のセカンダリ IP のアウトバウンド規則を作成することはできません。 複数 NIC がサポートされています。
 - VNet およびその他の Microsoft プラットフォーム サービスなしの Web Worker ロールにアクセスできるのは、事前 VNet サービスおよびその他のプラットフォーム サービスの動作の副作用により、内部の Standard Load Balancer が使用される場合のみです。 それぞれのサービス自体、または基になるプラットフォームは予告なく変更されることがあるため、この副作用に依存しないでください。 内部の Standard Load Balancer のみを使用する場合は、必要に応じて、明示的に送信接続を作成する必要があることを常に想定する必要があります。 この記事で説明されているシナリオ 3 を使用することはできません。
 
 ## <a name="next-steps"></a>次のステップ

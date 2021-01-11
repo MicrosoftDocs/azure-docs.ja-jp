@@ -1,7 +1,7 @@
 ---
 title: チュートリアル - プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
 titleSuffix: Azure Storage
-description: 読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) がストレージ アカウントで構成されているときにプライマリ リージョンからのデータの読み取りで発生するエラーをシミュレートします。 エラーの発生後、セカンダリ リージョンからデータを読み取ります。
+description: 読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) がストレージ アカウントで構成されているときにプライマリ リージョンからのデータの読み取りで発生するエラーをシミュレートします。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,13 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: f7a792eea28c6a6d05c4f295241291fdf2449467
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 59eb826d8d17ed2adb3027f0aab11a6933b47ae5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858900"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905739"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>チュートリアル:プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
 

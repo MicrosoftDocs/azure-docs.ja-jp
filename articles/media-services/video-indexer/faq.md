@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: bb57af37308badcd3123af3348178aaac061f376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83652186"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046962"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問
 
@@ -59,13 +59,13 @@ Video Indexer の Web ベースのインターフェイスを使用して、ア�
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Video Indexer はどのメディア形式をサポートしますか?
 
-Video Indexer は、ほとんどすべての一般的なメディア形式をサポートします。 詳細については、[Azure Media Encoder Standard の形式](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats)の一覧を参照してください。
+Video Indexer は、ほとんどすべての一般的なメディア形式をサポートします。 詳細については、[Azure Media Encoder Standard の形式](../latest/media-encoder-standard-formats.md)の一覧を参照してください。
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>メディア ファイルを Video Indexer にアップロードするには、どうすればよいですか。また、どのような制限がありますか。
 
 Video Indexer の Web ベース ポータルでは、ファイルのアップロード ダイアログを使用するか、ソース ファイルを直接ホストする URL を指定して、メディア ファイルをアップロードできます ([例](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)を参照)。 iFrame や埋め込みコードを使用しているメディア コンテンツをホストする URL は、動作しません ([例](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)を参照)。 
 
-詳細については、この[攻略ガイド](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)を参照してください。
+詳細については、この[攻略ガイド](./upload-index-videos.md)を参照してください。
 
 #### <a name="limitations"></a>制限事項
 
@@ -76,7 +76,7 @@ Video Indexer の Web ベース ポータルでは、ファイルのアップロ
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Video Indexer がメディアから分析情報を抽出するには、どの程度の時間がかかりますか?
 
-ビデオまたはオーディオ ファイルにインデックスを付けるために要する時間は、Video Indexer API または Video Indexer の Web ベース インターフェイスのどちらを使用する場合も、複数のパラメーターによって決まります。パラメーターには、ファイルの長さと品質、ファイルから見つかる分析情報の数、使用可能な[予約ユニット](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview)の数、[ストリーミング エンドポイント](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview)が有効かどうかなどがあります。 予想を確かなものにするには、独自のコンテンツを含むいくつかのテスト ファイルを実行して平均を取ることをお勧めします。
+ビデオまたはオーディオ ファイルにインデックスを付けるために要する時間は、Video Indexer API または Video Indexer の Web ベース インターフェイスのどちらを使用する場合も、複数のパラメーターによって決まります。パラメーターには、ファイルの長さと品質、ファイルから見つかる分析情報の数、使用可能な[予約ユニット](../previous/media-services-scale-media-processing-overview.md)の数、[ストリーミング エンドポイント](../previous/media-services-streaming-endpoints-overview.md)が有効かどうかなどがあります。 予想を確かなものにするには、独自のコンテンツを含むいくつかのテスト ファイルを実行して平均を取ることをお勧めします。
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Video Indexer でプロセスを自動化するカスタマイズされたワークフローを作成できますか?
 

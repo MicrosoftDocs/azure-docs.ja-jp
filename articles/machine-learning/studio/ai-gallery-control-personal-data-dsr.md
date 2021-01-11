@@ -1,6 +1,5 @@
 ---
-title: Azure AI Gallery データを管理する
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): Azure AI Gallery データを管理する - Azure'
 description: インターフェイスまたは AI Gallery Catalog API を使用して、Azure AI Gallery から製品内ユーザー データをエクスポートおよび削除することができます。 この記事では、その方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +10,16 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 6bf0d889d70272988c9d2b243ae255f9654656bd
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 6276d5c8d333f29c55720f2255f2cdf27e1e36cc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955592"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690750"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure AI Gallery からの製品内ユーザー データの表示と削除
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 インターフェイスまたは AI Gallery Catalog API を使用して、Azure AI Gallery から製品内ユーザー データを表示および削除することができます。 この記事では、その方法について説明します。
 

@@ -5,12 +5,12 @@ description: テイントと容認、ノード セレクターとアフィニテ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077849"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530063"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -71,8 +71,6 @@ spec:
 
 テイントを適用するときは、アプリケーションの開発者や所有者と協力して、デプロイで必要な容認を定義できるようにします。
 
-テイントと容認について詳しくは、[テイントと容認の適用][k8s-taints-tolerations]に関する記事をご覧ください。
-
 AKS での複数のノード プールの使用方法の詳細については、[AKS でのクラスターの複数のノード プールの作成と管理][use-multiple-node-pools]に関する記事をご覧ください。
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS でのテイントと容認の動作
@@ -80,6 +78,7 @@ AKS での複数のノード プールの使用方法の詳細については、
 AKS でノード プールをアップグレードすると、テイントと容認は新しいノードに適用されるときに、次のように設定されたパターンに従います。
 
 - **仮想マシン スケール セットを使用する既定のクラスター**
+  - AKS API から[ノード プールのテイントを設定][taint-node-pool]して、新たにスケールアウトされたノードが API で指定されたノードのテイントを受け取るようにすることができます。
   - 2 つのノード クラスター *node1* と *node2* があると仮定します。 ノード プールをアップグレードします。
   - 2 つの追加ノード *node3* と *node4* が作成されて、それぞれにテイントが渡されます。
   - 元の *node1* と *node2* は削除されます。
@@ -198,3 +197,4 @@ Kubernetes スケジューラでワークロードを論理的に分離する最
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

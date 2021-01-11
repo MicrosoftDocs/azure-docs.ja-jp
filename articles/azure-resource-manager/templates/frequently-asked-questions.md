@@ -2,15 +2,15 @@
 title: ARM テンプレートに関してよく寄せられる質問
 description: Azure Resource Manager テンプレートに関してよく寄せられる質問 (FAQ)。
 ms.topic: conceptual
-ms.date: 05/30/2020
+ms.date: 07/27/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: fb4bac00c4d971e7b056c18fe609d77b077dbcbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e23334daf0f4f6d5a6917af49c786d47c4557375
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296867"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327261"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM テンプレートに関してよく寄せられる質問
 
@@ -48,7 +48,7 @@ ms.locfileid: "85296867"
 
   新しいテンプレート言語について学習するには、[サインアップして通知を受け取る](https://aka.ms/armLangUpdates)ようにしてください。
 
-  テンプレート スペックのプレビューについては、[待機リストに参加](https://aka.ms/templateSpecsWaitlist)してください。
+  テンプレート スペックの詳細については、「[Azure Resource Manager のテンプレート スペック (プレビュー)](template-specs.md)」を参照してください。
 
 ## <a name="creating-and-testing-templates"></a>テンプレートの作成とテスト
 
@@ -64,7 +64,7 @@ ms.locfileid: "85296867"
 
 * **ARM テンプレートにリソース グループを作成し、そこにリソースをデプロイすることはできますか。**
 
-  はい。Azure サブスクリプションのレベルでテンプレートをデプロイするときに、テンプレートにリソース グループを作成できます。 リソース グループを作成してリソースをデプロイする例については、「[リソース グループとリソース](deploy-to-subscription.md#resource-group-and-resources)」を参照してください。
+  はい。Azure サブスクリプションのレベルでテンプレートをデプロイするときに、テンプレートにリソース グループを作成できます。 リソース グループを作成してリソースをデプロイする例については、「[リソース グループとリソース](deploy-to-subscription.md#resource-groups)」を参照してください。
 
 * **ARM テンプレートにサブスクリプションを作成できますか。**
 

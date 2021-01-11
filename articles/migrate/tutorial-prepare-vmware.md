@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて VMware VM 
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 8b812924c0922d460c631baec8b0e13a9f45cd76
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8d4d6ac1149c397442a8ca7dd01f46f04ffc89b4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109577"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927308"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
@@ -36,8 +36,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 --- | --- | ---
 **Azure Migrate プロジェクトの作成** | Azure Migrate プロジェクトは、Azure Migrate ツール、Microsoft ツール、およびサードパーティのオファリングを使用して、評価と移行を調整および管理するための一元的な場所を提供します。 | お使いの Azure アカウントには、プロジェクトが存在するリソース グループの共同作成者または所有者のアクセス許可が必要です。
 **アプライアンスの登録** | Azure Migrate は、軽量の Azure Migrate アプライアンスを使用して VM を検出し、Server Assessment ツールでそれらを評価し、Server Migration ツールでエージェントレス移行を使用してそれらを移行します。 登録について詳しくは[こちら](migrate-appliance-architecture.md#appliance-registration)をご覧ください。 | アプライアンスを登録するには、お使いの Azure アカウントに Azure サブスクリプションに対する共同作成者または所有者のアクセス許可が必要です。
-**Azure AD アプリの作成** | アプライアンスの登録時に、Azure Migrate では Azure Active Directory (Azure AD) アプリが作成されます。 <br/><br/> - 最初のアプリは、アプライアンスで実行されているエージェントと Azure Migrate との間の通信に使用されます。 <br/><br/> - 2 番目のアプリは、VMware VM のエージェントレス移行の目的でユーザーのサブスクリプション内に作成されたキー コンテナーにアクセスするためにのみ使用されます。   | Azure アカウントには、Azure AD アプリを作成するためのアクセス許可が必要です。
-**キー コンテナーの作成** | エージェントレス移行を使用して VMware VM を移行するために、ご利用のサブスクリプションのレプリケーション アカウントへのアクセス キーを管理するためのキー コンテナーが Azure Migrate によって作成されます。 | Azure Migrate がキー コンテナーを作成できるようにするには、Azure Migrate プロジェクトが存在するリソース グループに、アクセス許可 (所有者、または共同作成者、およびユーザー アクセス管理者) を設定する必要があります。
+**Azure AD アプリの作成** | アプライアンスの登録時に、Azure Migrate では Azure Active Directory (Azure AD) アプリが 2 つ作成されます。 <br/><br/> - 最初のアプリは、アプライアンスで実行されているエージェントと Azure Migrate との間の通信に使用されます。 <br/><br/> - 2 番目のアプリは、VMware VM のエージェントレス移行の目的でユーザーのサブスクリプション内に作成されたキー コンテナーにアクセスするためにのみ使用されます。   | Azure アカウントには、Azure AD アプリを作成するためにこれらの[アクセス許可](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware#assign-permissions-to-create-azure-ad-apps)が必要です。
+**キー コンテナーの作成** | - 最初のキー コンテナーはアプライアンスの登録の一部として作成され、その構成中にアプライアンスでダウンロードされた証明書の管理に使用されます。 <br/><br/> \- エージェントレス移行を使用して VMware VM を移行するために、ご利用のサブスクリプションのレプリケーション アカウントへのアクセス キーを管理するための別のキー コンテナーが Azure Migrate によって作成されます。| Azure Migrate がキー コンテナーを作成できるようにするには、Azure Migrate プロジェクトが存在するリソース グループに、アクセス許可 (所有者、または共同作成者、およびユーザー アクセス管理者) を設定する必要があります。
 
 
 ### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる

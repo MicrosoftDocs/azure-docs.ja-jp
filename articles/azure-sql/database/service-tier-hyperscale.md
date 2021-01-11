@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 3c4252f926163b00d3b4f4bf4a26373988017ac1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 655486d8273719e89187ebac0992cf83904d9b98
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255008"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120645"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -105,7 +105,9 @@ Azure Storage には、データベース内のすべてのデータ ファイ�
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 
-バックアップはファイル スナップショット ベースなので、ほぼ瞬時に実行されます。 ストレージとコンピューティングの分離により、バックアップ/復元操作をストレージ層に移すことができるので、プライマリ コンピューティング レプリカの処理の負荷が軽減されます。 その結果、データベースのバックアップによりプライマリ コンピューティング ノードのパフォーマンスが影響を受けることはありません。 同様に、復元はファイル スナップショットに戻すことによって行われるため、データ サイズに左右される操作ではありません。 復元は一定時間の操作であり、数テラバイトのデータベースであっても数時間や数日ではなく数分で復元できます。 既存のバックアップを復元することによって新しいデータベースを作成する場合もこの機能を利用します。開発またはテスト目的でのデータベース コピーの作成は、テラバイト サイズのデータベースであっても数分で実行できます。
+バックアップはファイル スナップショット ベースなので、ほぼ瞬時に実行されます。 ストレージとコンピューティングの分離により、バックアップ/復元操作をストレージ層に移すことができるので、プライマリ コンピューティング レプリカの処理の負荷が軽減されます。 その結果、データベースのバックアップによりプライマリ コンピューティング ノードのパフォーマンスが影響を受けることはありません。 同様に、ポイント イン タイム リカバリ (PITR) はファイル スナップショットに戻すことによって行われるため、データ サイズに左右される操作ではありません。 同じ Azure リージョンでの Hyperscale データベースの復元は一定時間の操作であり、数テラバイトのデータベースであっても数時間や数日ではなく数分で復元できます。 既存のバックアップを復元することによって新しいデータベースを作成する場合もこの機能を利用します。開発またはテスト目的でのデータベース コピーの作成は、テラバイト サイズのデータベースであっても数分で実行できます。
+
+Hyperscale データベースの geo リストアについては、「[Hyperscale データベースを別のリージョンに復元する](#restoring-a-hyperscale-database-to-a-different-region)」を参照してください。
 
 ## <a name="scale-and-performance-advantages"></a>スケールとパフォーマンスの利点
 
@@ -156,7 +158,7 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 
 ## <a name="disaster-recovery-for-hyperscale-databases"></a>Hyperscale データベースのディザスター リカバリー
 
-### <a name="restoring-a-hyperscale-database-to-a-different-geography"></a>Hyperscale データベースを別の地理的な場所に復元する
+### <a name="restoring-a-hyperscale-database-to-a-different-region"></a>Hyperscale データベースを別のリージョンに復元する
 
 ディザスター リカバリー操作の一環として、またはドリル、再配置などの他の理由で、Azure SQL Database の Hyperscale データベースを、現在ホストされているリージョン以外のリージョンに復元する必要がある場合、主な方法として、データベースの geo リストアを実行します。 これには、SQL Database の他のデータベースを別のリージョンに復元するときとまったく同じ手順が含まれます。
 
@@ -218,13 +220,13 @@ Azure SQL Database の Hyperscale レベルはすべてのリージョンで利�
 
 | 問題 | 説明 |
 | :---- | :--------- |
-| サーバーの [バックアップの管理] ペインに、Hyperscale データベースが表示されない。 ビューからフィルターで除外される。  | Hyperscale では別の方法でバックアップが管理されています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されません。 したがって、Hyperscale データベースは、[バックアップの管理] ペインに表示されません。|
+| サーバーの [バックアップの管理] ペインに、Hyperscale データベースが表示されない。 ビューからフィルターで除外される。  | Hyperscale では別の方法でバックアップが管理されています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されません。 したがって、Hyperscale データベースは、[バックアップの管理] ペインに表示されません。<br><br>他の Azure SQL Database サービス レベルから Hyperscale に移行されたデータベースについては、移行前のバックアップは、ソース データベースの[バックアップ保有](automated-backups-overview.md#backup-retention)期間の間保持されます。 これらのバックアップを使用して、ソース データベースを移行前のある時点まで[復元](recovery-using-backups.md#programmatic-recovery-using-automated-backups)することができます。|
 | ポイントインタイム リストア | Hyperscale 以外のデータベースを Hyperscale データベースとして復元することも、Hyperscale データベースを Hyperscale 以外のデータベースとして復元することもできません。 サービス レベルを変更することで Hyperscale に移行された Hyperscale 以外のデータベースの場合は、[プログラムによって](recovery-using-backups.md#programmatic-recovery-using-automated-backups)、データベースのバックアップ保有期間内における移行前の特定の時点に復元することができます。 復元されたデータベースは Hyperscale 以外となります。 |
 | 1 TB を超えるデータ ファイルがデータベースに 1 つ以上ある場合、移行に失敗します。 | 場合によっては、サイズの大きいファイルを 1 TB 未満に圧縮することで、この問題を回避できることがあります。 移行プロセス中に使用されているデータベースを移行する場合は、1 TB を超えるファイルがないことを確認してください。 データベース ファイルのサイズを確認するには、以下のクエリを使用してください。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL Managed Instance | 現在、Azure SQL Managed Instance は Hyperscale データベースではサポートされていません。 |
 | エラスティック プール |  エラスティック プールは、現在、Hyperscale ではサポートされていません。|
 | ハイパースケールへの移行は現在一方向 | データベースが Hyperscale にいったん移行されると、Hyperscale 以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行する唯一の方法は、BACPAC ファイルまたはその他のデータ移動テクノロジ (一括コピー、Azure Data Factory、Azure Databricks、SSIS など) を使用してエクスポートおよびインポートすることです。Azure portal、PowerShell ([New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) と [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport))、Azure CLI ([az sql db export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) と [az sql db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import))、[REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) から BACPAC のエクスポートとインポートを行うことはサポートされていません。 比較的小さい Hyperscale データベース (最大 200 GB) の BACPAC インポートと BACPAC エクスポートは、SSMS と [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) バージョン 18.4 以降を使用することでサポートされます。 大きなデータベースでは、BACPAC エクスポートと BACPAC インポートに時間がかかり、さまざまな理由で失敗する可能性があります。|
-| 永続メモリ内 OLTP オブジェクトを含むデータベースの移行 | Hyperscale では、非永続メモリ内 OLTP オブジェクト (テーブル型、ネイティブ SP、関数) のみがサポートされます。  データベースが Hyperscale サービス レベルに移行される前に、永続メモリ内 OLTP テーブルとその他のオブジェクトは削除され、ディスク ベースのオブジェクトとして再作成されます。|
+| インメモリ OLTP オブジェクトを使用したデータベースの移行 | Hyperscale では、メモリ最適化テーブルの型、テーブル変数、ネイティブ コンパイルされたモジュールなど、インメモリ OLTP オブジェクトのサブセットがサポートされています。 ただし、どのような種類のインメモリ OLTP オブジェクトでも移行されているデータベースに存在すると、Premium および Business Critical サービス レベルから Hyperscale に移行できません。 このようなデータベースを Hyperscale に移行するには、すべてのインメモリ OLTP オブジェクトとその依存関係を削除する必要があります。 データベースを移行した後は、これらのオブジェクトを再作成できます。 永続的と非永続的なメモリ最適化テーブルは Hyperscale で同時にサポートされず、ディスク テーブルとして再作成する必要があります。|
 | geo レプリケーション  | Azure SQL Database Hyperscale の geo レプリケーションは、まだ構成できません。 |
 | データベース コピー | 現時点では、データベース コピーを使用して、Azure SQL Hyperscale に新しいデータベースを作成することはできません。 |
 | TDE/AKV の統合 | Azure Key Vault を使用した Transparent Database Encryption (一般には、通常は Bring-Your-Own-Key (BYOK) と呼ばれる) は、現在プレビュー段階です。 |

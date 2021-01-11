@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: ae41cc620960bd49603e6712759585796e76fe67
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c32e1bc6e219ff645223cc34cf78991e229b86f0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029945"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935927"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する
 
@@ -64,7 +64,7 @@ ms.locfileid: "87029945"
 GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2020-06-30 
 ```  
 
- このクエリは、語句 'inn' を検索し、現在の場所を渡します。 このクエリには、`scoringParameter` などの他のパラメーターが含まれていることがわかります。 クエリ パラメーターについては、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。  
+ このクエリは、語句 'inn' を検索し、現在の場所を渡します。 このクエリには、`scoringParameter` などの他のパラメーターが含まれていることがわかります。 クエリ パラメーターについては、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)」を参照してください。  
 
  スコアリング プロファイルの詳細な例を確認するには、「 [例](#bkmk_ex) 」をクリックします。  
 
@@ -157,16 +157,16 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  このトピックで提供される [テンプレート](#bkmk_template) を使用して開始します。  
 
- 名前を指定します。 スコアリング プロファイルは省略できますが、追加する場合は、名前が必要です フィールドの名前付け規則に従ってください (文字で始め、特殊文字や予約語の使用は避ける)。 完全な一覧については、[名前付け規則 &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules) に関する記事を参照してください。  
+ 名前を指定します。 スコアリング プロファイルは省略できますが、追加する場合は、名前が必要です フィールドの名前付け規則に従ってください (文字で始め、特殊文字や予約語の使用は避ける)。 完全な一覧については、[名前付け規則 &#40;Azure Cognitive Search&#41;](/rest/api/searchservice/naming-rules) に関する記事を参照してください。  
 
  スコアリング プロファイルの本文は、重み付けされたフィールドと関数によって構成されます。  
 
 |||  
 |-|-|  
 |**Weights**|相対的な重みをフィールドに割り当てる名前と値のペアを指定します。 [例](#bkmk_ex)では、albumTitle、genre、および artistName のフィールドはそれぞれ 1.5、5、および 2 でブーストされます。 なぜ genre は他のものよりも大幅に高くブーストされるのでしょうか? ある程度同じようなデータに対して検索を実行する場合 (`musicstoreindex` での "genre" の場合のように)、相対的な重みをより分散することが必要になる可能性があります。 たとえば、 `musicstoreindex`では、「ロック」はジャンルとして表示されると共に、言葉で表現されるジャンルの説明の中にも表示されます。 ジャンルがジャンルの説明を上回るようにする場合は、genre フィールドの相対的な重みをより高くする必要があります。|  
-|**関数**|特定のコンテキストに対して追加の計算が必要な場合に使用されます。 有効な値は `freshness`、`magnitude`、`distance`、および `tag` です。 各関数には、固有のパラメーターがあります。<br /><br /> -   `freshness` を使用してください。 この関数は、`datetime` フィールドでのみ使用できます (edm.DataTimeOffset)。 `boostingDuration` 属性は `freshness` 関数のみで使用されることに注意してください。<br />-   `magnitude` を使用してください。 この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。 この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。<br />     `magnitude` 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。 たとえば、価格の範囲が 100 ～ 1 ドルである場合、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、より低い価格の項目をブーストします。<br />-   `distance` を使用してください。 この関数は、 `Edm.GeographyPoint` フィールドでのみ使用できます。<br />-   `tag` を使用してください。 この関数は、`Edm.String` フィールドと `Collection(Edm.String)` フィールドでのみ使用できます。<br /><br /> **関数の使用に関する規則**<br /><br /> 関数の型 (`freshness`、`magnitude`、`distance`、`tag`) は、小文字にする必要があります。<br /><br /> 関数に null または空の値を含めることはできません。 具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。<br /><br /> 関数はフィルターの適用が可能なフィールドにのみ適用できます。 フィルター可能フィールドについて詳しくは、[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) をご覧ください。<br /><br /> 関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。|  
+|**関数**|特定のコンテキストに対して追加の計算が必要な場合に使用されます。 有効な値は `freshness`、`magnitude`、`distance`、および `tag` です。 各関数には、固有のパラメーターがあります。<br /><br /> -   `freshness` を使用してください。 この関数は、`datetime` フィールドでのみ使用できます (edm.DataTimeOffset)。 `boostingDuration` 属性は `freshness` 関数のみで使用されることに注意してください。<br />-   `magnitude` を使用してください。 この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。 この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。<br />     `magnitude` 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。 たとえば、価格の範囲が 100 ～ 1 ドルである場合、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、より低い価格の項目をブーストします。<br />-   `distance` を使用してください。 この関数は、 `Edm.GeographyPoint` フィールドでのみ使用できます。<br />-   `tag` を使用してください。 この関数は、`Edm.String` フィールドと `Collection(Edm.String)` フィールドでのみ使用できます。<br /><br /> **関数の使用に関する規則**<br /><br /> 関数の型 (`freshness`、`magnitude`、`distance`、`tag`) は、小文字にする必要があります。<br /><br /> 関数に null または空の値を含めることはできません。 具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。<br /><br /> 関数はフィルターの適用が可能なフィールドにのみ適用できます。 フィルター可能フィールドについて詳しくは、[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](/rest/api/searchservice/create-index) をご覧ください。<br /><br /> 関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。|  
 
- インデックスが定義されたら、インデックス スキーマをアップロードし、ドキュメントをアップロードして、インデックスを構築します。 これらの操作の手順については、「[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)」と[ドキュメントの追加、更新、削除 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) に関する記事をご覧ください。 インデックスが構築されると、検索データと連携する機能的なスコアリング プロファイルが使用できるようになります。  
+ インデックスが定義されたら、インデックス スキーマをアップロードし、ドキュメントをアップロードして、インデックスを構築します。 これらの操作の手順については、「[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](/rest/api/searchservice/create-index)」と[ドキュメントの追加、更新、削除 &#40;Azure Search Service REST API&#41;](/rest/api/searchservice/addupdate-or-delete-documents) に関する記事をご覧ください。 インデックスが構築されると、検索データと連携する機能的なスコアリング プロファイルが使用できるようになります。  
 
 ##  <a name="template"></a><a name="bkmk_template"></a> テンプレート  
  このセクションでは、スコアリング プロファイルの構文とテンプレートを示します。 属性の説明については、次のセクションの「[インデックスの属性のリファレンス](#bkmk_indexref)」をご覧ください。  
@@ -244,10 +244,10 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 |`freshness`|`DateTimeOffset` フィールドの値に基づいて項目の順位付けのスコアを変更するには、freshness スコアリング関数を使用します。 たとえば、最近の日付を持つ項目に、より古い日付を持つ項目よりも高い順位を付けることができます。<br /><br /> 将来の日付を使用して、カレンダー イベントなどの項目に順位を付けることもできます。たとえば、現在に近い日付の項目を遠い日付の項目よりも高い順位にすることができます。<br /><br /> 現在のサービス リリースでは、範囲の一端が現在の時刻に固定されます。 もう一端は、 `boostingDuration`に基づく過去の時刻です。 将来の時刻の範囲をブーストするには、負の値の `boostingDuration` を使用します。<br /><br /> 最大および最小の範囲からのブースティングの変化率は、スコアリング プロファイルに適用した補間によって決定されます (下図参照)。 適用されるブースティング係数を反転するには、ブースト係数として 1 未満を選択します。|  
 |`freshness` &#124; `boostingDuration`|特定のドキュメントに対して有効期限を設定します。この期限を過ぎるとブースティングは停止します。 構文と例については、以下のセクション「[boostingDuration の設定](#bkmk_boostdur)」を参照してください。|  
 |`distance`|地理的な参照場所との間の距離に基づいてドキュメントのスコアに影響を与えるには、distance スコアリング関数を使用します。 参照場所は、クエリの一部としてパラメーター (`scoringParameterquery` 文字列オプションを使用) 内に lon,lat 引数で指定します。|  
-|`distance` &#124; `referencePointParameter`|参照場所として使用するためにクエリに渡されるパラメーター。 `scoringParameter` はクエリ パラメーターです。 クエリ パラメーターの説明については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。|  
+|`distance` &#124; `referencePointParameter`|参照場所として使用するためにクエリに渡されるパラメーター。 `scoringParameter` はクエリ パラメーターです。 クエリ パラメーターの説明については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)」を参照してください。|  
 |`distance` &#124; `boostingDistance`|ブースティング範囲が終了する、参照場所からの距離をキロメートルで示す数値。|  
 |`tag`|ドキュメントと検索クエリのタグに基づいてドキュメントのスコアに影響を与えるには、tag スコアリング関数を使用します。 検索クエリと共通のタグを持つドキュメントがブーストされます。 検索クエリのタグは、(`scoringParameterquery` 文字列オプションを使用して) 各検索要求でスコアリング パラメーターとして提供されます。|  
-|`tag` &#124; `tagsParameter`|特定の要求のタグを指定するためにクエリに渡されるパラメーター。 `scoringParameter` はクエリ パラメーターです。 クエリ パラメーターの説明については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。|  
+|`tag` &#124; `tagsParameter`|特定の要求のタグを指定するためにクエリに渡されるパラメーター。 `scoringParameter` はクエリ パラメーターです。 クエリ パラメーターの説明については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)」を参照してください。|  
 |`functionAggregation`|省略可能。 関数を指定した場合にのみ適用されます。 有効な値は、sum (既定値)、average、minimum、maximum、firstMatching です。 検索スコアは、複数の変数 (複数の関数など) から計算される単一の値です。 この属性では、すべての関数のブーストを、基本ドキュメント スコアに適用される 1 つの集計ブーストに集約する方法が示されます。 基本スコアは、ドキュメントと検索クエリから算出される [tf-idf](http://www.tfidf.com/) 値に基づいています。|  
 |`defaultScoringProfile`|検索要求の実行時に、スコアリング プロファイルが指定されていない場合は、既定のスコアリングが使用されます ([tf-idf](http://www.tfidf.com/) のみ)。<br /><br /> ここでは既定のスコアリング プロファイル名を設定できます。Azure Cognitive Search は検索要求に特定のプロファイルが指定されていない場合、そのプロファイルを使用します。|  
 
@@ -281,6 +281,6 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
 ## <a name="see-also"></a>関連項目  
 
-+ [REST API リファレンス](https://docs.microsoft.com/rest/api/searchservice/)   
-+ [インデックスの作成 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-+ [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [REST API リファレンス](/rest/api/searchservice/)   
++ [インデックスの作成 API](/rest/api/searchservice/create-index)   
++ [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)

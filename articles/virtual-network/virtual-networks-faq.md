@@ -1,7 +1,7 @@
 ---
 title: Azure Virtual Network に関する FAQ
 titlesuffix: Azure Virtual Network
-description: Microsoft Azure 仮想ネットワークについてよく寄せられる質問に回答します。
+description: Microsoft Azure Virtual Network についてよく寄せられる質問に回答します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 0f277661ab61e7292fbb81d96c26c7d48c6d03ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087052"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205467"
 ---
-# <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
+# <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network についてよく寄せられる質問 (FAQ)
 
 ## <a name="virtual-network-basics"></a>仮想ネットワークの基礎
 
-### <a name="what-is-an-azure-virtual-network-vnet"></a>Azure 仮想ネットワーク (VNet) とは何ですか。
-Azure 仮想ネットワーク (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。 サブスクリプション専用に Azure クラウドが論理的に分離されています。 VNet を使用してプロビジョニングして Azure で仮想プライベート ネットワーク (VPN) を管理および、必要に応じて、VNet を Azure で他の VNet とリンクさせたり、オンプレミス IT インフラストラクチャで、ハイブリッドまたはクロスプレミス ソリューションを作成します。 作成したそれぞれの VNet には独自の CIDR ブロックがあり、CIDR ブロックが競合しない限り、他の VNet やオンプレミス ネットワークにリンクすることができます。 VNet の DNS サーバー設定と、サブネットへの VNet の分割も制御できます。
+### <a name="what-is-an-azure-virtual-network-vnet"></a>Azure Virtual Network (VNet) とは何ですか。
+Azure Virtual Network (VNet) は、クラウド内のユーザー独自のネットワークを表すものです。 サブスクリプション専用に Azure クラウドが論理的に分離されています。 VNet を使用してプロビジョニングして Azure で仮想プライベート ネットワーク (VPN) を管理および、必要に応じて、VNet を Azure で他の VNet とリンクさせたり、オンプレミス IT インフラストラクチャで、ハイブリッドまたはクロスプレミス ソリューションを作成します。 作成したそれぞれの VNet には独自の CIDR ブロックがあり、CIDR ブロックが競合しない限り、他の VNet やオンプレミス ネットワークにリンクすることができます。 VNet の DNS サーバー設定と、サブネットへの VNet の分割も制御できます。
 
 VNet を使用して次のことが行えます。
 
@@ -109,14 +109,14 @@ VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用する�
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>作成した後、サブネットのサイズを変更できますか。
 はい。 VM またはサービスがサブネット内にデプロイされていない場合は、サブネットを追加、削除、拡張、または縮小できます。
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>サブネットを作成後に変更できますか。
+### <a name="can-i-modify-vnet-after-i-created-them"></a>Vnet を作成した後に変更することはできますか。
 はい。 VNet で使用された CIDR ブロックを追加、削除、変更することができます。
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>VNet でサービスを実行している場合、インターネットに接続できますか。
 はい。 VNet 内にデプロイされているすべてのサービスは、インターネットに送信接続できます。 Azure での送信インターネット接続について詳しくは、[送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 Resource Manager を使用してデプロイされたリソースに受信接続するには、リソースにパブリック IP アドレスが割り当てられている必要があります。 パブリック IP アドレスについて詳しくは、[パブリック IP アドレス](virtual-network-public-ip-address.md)に関する記事をご覧ください。 Azure にデプロイされたすべての Azure クラウド サービスには、パブリックにアドレス指定可能な VIP が割り当てられています。 PaaS ロールの入力エンドポイントと仮想マシンのエンドポイントを定義して、これらのサービスがインターネットからの接続を承諾できるようにします。
 
 ### <a name="do-vnets-support-ipv6"></a>VNet は IPv6 をサポートするでしょうか。
-はい。VNet は IPv4 専用かデュアル スタック (IPv4 + IPv6) になります。  詳細については、「[Azure 仮想ネットワークの IPv6 の概要](./ipv6-overview.md)」をご覧ください。
+はい。VNet は IPv4 専用かデュアル スタック (IPv4 + IPv6) になります。  詳細については、「[Azure Virtual Network の IPv6 の概要](./ipv6-overview.md)」をご覧ください。
 
 ### <a name="can-a-vnet-span-regions"></a>VNet は複数のリージョンで広がるでしょうか。
 いいえ。 VNet は、1 つのリージョンに制限されます。 ただし、仮想ネットワークは複数の可用性ゾーンにまたがります。 可用性ゾーンの詳細については、「[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 仮想ネットワーク ピアリングを使用して、別々のリージョンにある仮想ネットワークを接続できます。 詳細については、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)に関する記事をご覧ください。
@@ -195,7 +195,7 @@ Nothing。 IP アドレス (パブリック VIP、パブリック、プライベ
 
 * [App Service のネットワーク機能](../app-service/networking-features.md)
 * [App Service 環境で Web Apps を作成する](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [アプリを Azure 仮想ネットワークに統合する](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [アプリを Azure Virtual Network に統合する](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [App Service のアクセス制限](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Web ロールと worker ロール (PaaS) を持つ Cloud Services を VNet にデプロイすることはできますか。
@@ -356,7 +356,7 @@ VNet サービス エンドポイントは、Azure サービス リソースを�
 はい、できます。 仮想ネットワークと Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 唯一の要件は、仮想ネットワークと Azure サービス リソースの両方が、同じ Active Directory (AD) テナントの下に存在する必要があることです。
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>仮想ネットワークと Azure サービス リソースが異なる AD テナントに属している場合、VNet サービス エンドポイントを有効にして、VNet ACL を設定できますか。
-いいえ、VNet サービス エンドポイントと VNet ACL は、AD テナントをまたがってはサポートされません。
+はい。Azure Storage と Azure Key Vault にサービス エンドポイントを使用する場合は可能です。 残りのサービスでは、VNet サービス エンドポイントと VNet ACL は、AD テナントをまたがってはサポートされません。
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Azure Virtual Network ゲートウェイ (VPN) または ExpressRoute ゲートウェイを介して接続されているオンプレミス デバイスの IP アドレスでは、VNet サービス エンドポイント経由で Azure PaaS サービスにアクセスできますか。
 既定では、仮想ネットワークからのアクセスに限定された Azure サービス リソースは、オンプレミスのネットワークからはアクセスできません。 オンプレミスからのトラフィックを許可する場合は、オンプレミスまたは ExpressRoute からのパブリック IP アドレス (通常は NAT) を許可する必要もあります。 これらの IP アドレスは、Azure サービス リソースの IP ファイアウォール構成を通じて追加できます。

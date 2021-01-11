@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74d07076fb322214348d52fe65dbc98bdff3cd44
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302510"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798263"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
  指定された数値式の自然対数を返します。  
@@ -41,7 +41,9 @@ LOG (<numeric_expr> [, <base>])
   
   自然対数は **e** を底とする対数です。ここで、**e** は 2.718281828 にほぼ等しい無理定数です。  
   
-  数値の指数の自然対数は数自体です: LOG( EXP( n ) ) = n。 数値の自然対数の指数は数自体です: EXP( LOG( n ) ) = n。  
+  数値の指数の自然対数は数自体です: LOG( EXP( n ) ) = n。 数値の自然対数の指数は数自体です: EXP( LOG( n ) ) = n。
+
+  このシステム関数では、インデックスは使用されません。
   
 ## <a name="examples"></a>例
   
@@ -68,10 +70,6 @@ SELECT EXP(LOG(10)) AS expLog
 ```json
 [{expLog: 10.000000000000002}]  
 ```  
-
-## <a name="remarks"></a>解説
-
-このシステム関数では、インデックスは使用されません。
 
 ## <a name="next-steps"></a>次のステップ
 

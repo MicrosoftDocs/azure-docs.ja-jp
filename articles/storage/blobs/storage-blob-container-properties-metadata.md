@@ -8,12 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 07/01/2020
 ms.author: tamram
-ms.openlocfilehash: 455595a2e41ecc05f7064044e09df8efcd9d4548
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 115ab9767c23afd5876eb23821bd1283777cdb5e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833402"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018928"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>.NET を使用してコンテナーのプロパティとメタデータを管理する
 
@@ -29,7 +30,7 @@ BLOB コンテナーは、そこに含まれているデータに加えて、シ
 
 ## <a name="retrieve-container-properties"></a>コンテナーのプロパティを取得する
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 コンテナーのプロパティを取得するには、次のメソッドのいずれかを呼び出します。
 
@@ -40,7 +41,7 @@ BLOB コンテナーは、そこに含まれているデータに加えて、シ
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerProperties":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 BLOB ストレージ リソースのプロパティおよびメタデータ値の取得は、2 つの手順から成るプロセスです。 これらの値を読み取るには、**FetchAttributes** または **FetchAttributesAsync** メソッドを呼び出して値を明示的に取得しておく必要があります。 この規則の例外は、**Exists** および **ExistsAsync** メソッドが、内部で適切な **FetchAttributes** メソッドを呼び出すことです。 これらのメソッドのいずれかを呼び出す場合、**FetchAttributes** は呼び出す必要がありません。
 
@@ -80,7 +81,7 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 ## <a name="set-and-retrieve-metadata"></a>メタデータを設定および取得する
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 メタデータは、BLOB またはコンテナーのリソースで 1 つ以上の名前と値のペアとして指定できます。 メタデータを設定するには、名前と値のペアを [IDictionary](/dotnet/api/system.collections.idictionary) オブジェクトに追加してから、次のいずれかのメソッドを呼び出して値を書き込みます。
 
@@ -102,7 +103,7 @@ private static async Task ReadContainerPropertiesAsync(CloudBlobContainer contai
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Metadata.cs" id="Snippet_ReadContainerMetadata":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 メタデータは、BLOB またはコンテナーのリソースで 1 つ以上の名前と値のペアとして指定できます。 メタデータを設定するには、リソース上の **Metadata** コレクションに名前と値のペアを追加した後、次のメソッドのいずれかを呼び出して値を書き込みます。
 

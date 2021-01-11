@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Cloudmore のシングル サインオン (SSO) 統合 | Microsoft Docs
 description: Azure Active Directory と Cloudmore の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e62bc757-a29d-4c03-be0c-e48521c4e37d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 609e2af4862cdb3f9f95fa180881313707660ecb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a22d001d9b188fd77f341de80617eb3ccd8bb298
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969754"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551645"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudmore"></a>チュートリアル:Azure Active Directory と Cloudmore のシングル サインオン (SSO) 統合
 

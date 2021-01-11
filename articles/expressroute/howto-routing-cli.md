@@ -2,18 +2,18 @@
 title: 'Azure ExpressRoute: ピアリングの構成:CLI'
 description: この記事では、ExpressRoute 回線のプライベート、パブリック、および Microsoft ピアリングを作成し、プロビジョニングします。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 04/24/2019
-ms.author: cherylmc
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: cbde41bd79409255e1ebf5145548ea260ac8581d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c20b0741f12ee2cab40d8f5b53c51ad537801bf2
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727043"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393175"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線のピアリングの作成と変更
 

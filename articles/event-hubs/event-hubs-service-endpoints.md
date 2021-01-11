@@ -2,15 +2,15 @@
 title: 仮想ネットワーク サービス エンドポイント - Azure Event Hubs | Microsoft Docs
 description: この記事では、Microsoft.EventHub サービス エンドポイントを仮想ネットワークに追加する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: cf8b956a38f0b22581da3608cd64219aba484988
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/29/2020
+ms.openlocfilehash: cb0d9a9c4d5e2503e68620ec4e6386d8e05d471c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85315422"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185071"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Event Hubs で仮想ネットワーク サービス エンドポイントを使用する
+# <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>特定の仮想ネットワークから Azure Event Hubs 名前空間へのアクセスを許可する 
 
 Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイント][vnet-sep]の統合により、仮想ネットワークにバインドされた仮想マシンなどのワークロードからメッセージング機能へのセキュリティで保護されたアクセスが可能になり、ネットワーク トラフィック パスは両端でセキュリティ保護されます。
 
@@ -18,25 +18,20 @@ Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイン�
 
 その結果、メッセージング サービス エンドポイントの監視可能なネットワーク アドレスがパブリック IP 範囲内にあるにもかかわらず、サブネットにバインドされたワークロードとそれぞれの Event Hubs 名前空間の間にプライベートな分離された関係が確立されます。 この動作には例外があります。 サービス エンドポイントを有効にすると、既定では、仮想ネットワークに関連付けられた [IP ファイアウォール](event-hubs-ip-filtering.md)で `denyall` 規則が有効になります。 イベント ハブ パブリック エンドポイントへのアクセスを有効にするために、IP ファイアウォールで特定の IP アドレスを追加できます。 
 
->[!WARNING]
-> 仮想ネットワーク統合を実装すると、他の Azure サービスが Event Hubs と対話するのを防ぐことができます。
+>[!IMPORTANT]
+> 仮想ネットワークは、**Standard** レベルと **Dedicated** レベルの Event Hubs でサポートされます。 **Basic** レベルではサポートされません。
 >
-> 仮想ネットワークが実装されているときは、信頼できる Microsoft サービスはサポートされません。
+> 許可されている仮想ネットワークで稼働中のサービスから要求が送信される場合を除き、Event Hubs 名前空間に対してファイアウォール規則を有効にすると、着信要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 
 >
-> 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
-> - Azure Monitor (診断設定)
+> 以下に、仮想ネットワークが有効になっていると Event Hubs リソースにアクセスできないサービスの一部を示します。 この一覧はすべてを網羅しているわけでは**ない**ことにご注意ください。
+>
 > - Azure Stream Analytics
-> - Azure Event Grid との統合
 > - Azure IoT Hub ルート
 > - Azure IoT Device Explorer
+> - Azure Event Grid
+> - Azure Monitor (診断設定)
 >
-> 次の Microsoft サービスが仮想ネットワーク上に存在する必要があります
-> - Azure Web Apps
-> - Azure Functions
-
-
-> [!IMPORTANT]
-> 仮想ネットワークは、**Standard** レベルと **Dedicated** レベルの Event Hubs でサポートされます。 **Basic** レベルではサポートされません。
+> 例外として、仮想ネットワークが有効になっている場合でも、特定の信頼できるサービスからの Event Hubs リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet の統合によって有効になる高度なセキュリティのシナリオ 
 
@@ -58,10 +53,17 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 このセクションでは、Azure portal を使用して仮想ネットワーク サービス エンドポイントを追加する方法を示します。 アクセスを制限するには、この Event Hubs 名前空間に対して仮想ネットワーク サービス エンドポイントを統合する必要があります。
 
 1. [Azure portal](https://portal.azure.com) で **Event Hubs 名前空間**に移動します。
-2. 左側のメニューで、 **[ネットワーク]** オプションを選択します。 **[すべてのネットワーク]** オプションを選択した場合、イベント ハブはあらゆる IP アドレスからの接続を受け入れます。 この設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
+4. 左側のメニューの **[設定]** で **[ネットワーク]** を選択します。 **Standard** または **Dedicated** 名前空間のみの **[ネットワーク]** タブが表示されます。 
+
+    > [!NOTE]
+    > 既定では、次の図に示すように、 **[選択されたネットワーク]** オプションが選択されています。 このページで IP ファイアウォール規則を指定しない、または仮想ネットワークを追加しない場合は、**パブリック インターネット**から (アクセス キーを使用して) 名前空間にアクセスできます。 
+
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="[ネットワーク] タブ - [選択されたネットワーク] オプション" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+
+    **[すべてのネットワーク]** オプションを選択した場合、イベント ハブはあらゆる IP アドレスからの (アクセス キーを使用した) 接続を受け入れます。 この設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
 
     ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. 特定のネットワークへのアクセスを制限するには、ページの上部にある **[選択されたネットワーク]** オプションを選択します。
+1. 特定のネットワークにアクセスを制限するには、ページの先頭にある **[選択されたネットワーク]** オプションを選択します (まだ選択されていない場合)。
 2. ページの **[仮想ネットワーク]** セクションで、**[+ 既存の仮想ネットワークを追加]*** を選択します。 新しい VNet を作成する場合は、 **[+ 新しい仮想ネットワークの作成]** を選択します。 
 
     ![既存の仮想ネットワークを追加する](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -75,10 +77,15 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
     > [!NOTE]
     > サービス エンドポイントを有効にできない場合は、Resource Manager テンプレートを使用して、不足している仮想ネットワーク サービス エンドポイントを無視してもかまいません。 この機能はポータルでは使用できません。
-6. ツールバーの **[保存]** を選択して設定を保存します。 ポータルの通知に確認が表示されるまで、数分間お待ちください。
+5. **信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する**かどうかを指定します。 詳細については、「[信頼できる Microsoft サービス](#trusted-microsoft-services)」を参照してください。 
+6. ツール バーの **[保存]** を選択して設定を保存します。 ポータルの通知に確認が表示されるまで、数分間お待ちください。
 
     ![ネットワークを保存する](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
+    > [!NOTE]
+    > 特定の IP アドレスまたは範囲にアクセスを制限する方法については、[特定の IP アドレスまたは範囲からのアクセスの許可](event-hubs-ip-filtering.md)に関するページを参照してください。
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 
@@ -86,9 +93,9 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
 テンプレート パラメーター:
 
-* **namespaceName**:Event Hubs 名前空間。
-* **vnetRuleName**:作成する仮想ネットワーク規則の名前。
-* **virtualNetworkingSubnetId**:仮想ネットワーク サブネットの Resource Manager の完全修飾パス。たとえば、仮想ネットワークの既定のサブネットの場合は `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` です。
+* `namespaceName`:Event Hubs 名前空間。
+* `vnetRuleName`:作成する仮想ネットワーク規則の名前。
+* `virtualNetworkingSubnetId`:仮想ネットワーク サブネットの Resource Manager の完全修飾パス。たとえば、仮想ネットワークの既定のサブネットの場合は `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` です。
 
 > [!NOTE]
 > 可能な拒否ルールはありませんが、Azure Resource Manager テンプレートには、接続を制限しない **"Allow"** に設定された既定のアクション セットがあります。

@@ -2,17 +2,17 @@
 title: アプリケーション ゲートウェイのコンポーネント
 description: この記事では、アプリケーション ゲートウェイのさまざまなコンポーネントに関する情報を提供します
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: absha
-ms.openlocfilehash: 798137a74f22824dbfec9653bff327d3a0a1f3b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 08/21/2020
+ms.author: surmb
+ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186760"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723318"
 ---
 # <a name="application-gateway-components"></a>アプリケーション ゲートウェイのコンポーネント
 
@@ -69,13 +69,13 @@ HTTPS リスナーは TLS 終端に使用します。 HTTPS リスナーは暗�
 
 - **Basic**。 このタイプのリスナーでは、1 つのドメイン サイトがリッスンされます。この構成では、アプリケーション ゲートウェイの IP アドレスに対して 1 つの DNS マッピングが適用されます。 アプリケーション ゲートウェイの背後に 1 つのサイトをホストする場合は、このリスナー構成が必要になります。
 
-- **マルチサイト**。 このリスナー構成は、同じアプリケーション ゲートウェイ インスタンスで複数の Web アプリケーションを構成する場合に必要になります。 最大で 100 個の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 たとえば、abc.contoso.com、xyz.contoso.com、pqr.contoso.com という 3 つのサブドメインがアプリケーション ゲートウェイの IP アドレスを指しています。 マルチサイト リスナーを 3 つ作成し、リスナーごとにポートとプロトコル設定を構成します。
+- **マルチサイト**。 このリスナー構成は、同じアプリケーション ゲートウェイ上の複数の Web アプリケーションに対して、ホスト名またはドメイン名に基づいてルーティングを構成する場合に必要です。 最大で 100 個以上の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 たとえば、contoso.com、fabrikam.com、adatum.com という 3 つのドメインで、アプリケーション ゲートウェイの IP アドレスが示されています。 [マルチサイト リスナー](multiple-site-overview.md)を 3 つ作成し、リスナーごとにポートとプロトコル設定を構成します。 
 
-    詳しくは、[マルチサイト ホスティング](application-gateway-web-app-overview.md)に関するページをご覧ください。
+    マルチサイト リスナーでワイルドカードのホスト名を定義し、リスナー 1 つにつき最大 5 つのホスト名を定義することもできます。 詳細については、[リスナーでのワイルドカードのホスト名 (プレビュー)](multiple-site-overview.md#wildcard-host-names-in-listener-preview) に関する記事を参照してください。
 
-リスナーを作成したら、要求ルーティング規則に関連付ける必要があります。 この規則により、リスナー上で受信された要求がバック エンドにルーティングされる方法が決まります。
+    マルチサイト リスナーの構成方法の詳細については、[Azure portal を使用した Application Gateway での複数サイトのホスティング](create-multiple-sites-portal.md)に関する記事をご覧ください。
 
-Application Gateway は[示されている順序](configuration-overview.md#order-of-processing-listeners)でリスナーを処理します。
+リスナーを作成したら、要求ルーティング規則に関連付ける必要があります。 この規則により、リスナー上で受信された要求がバック エンドにルーティングされる方法が決まります。 要求ルーティング規則には、ルーティング先のバックエンド プールと、バックエンド ポートやプロトコルなどを指定する HTTP 設定も含まれています。
 
 ## <a name="request-routing-rules"></a>要求ルーティング規則
 
@@ -99,13 +99,13 @@ Application Gateway は[示されている順序](configuration-overview.md#orde
 
 詳しくは、[アプリケーション ゲートウェイでのトラフィックのリダイレクト](redirect-overview.md)に関する記事をご覧ください。
 
-### <a name="rewrite-http-headers"></a>HTTP ヘッダーを書き換える
+### <a name="rewrite-http-headers-and-url"></a>HTTP ヘッダーと URL を書き換える
 
-要求ルーティング規則を使用すると、要求および応答パケットがクライアントとバックエンド プールの間を移動する間に、アプリケーション ゲートウェイを通じて、HTTP(S) 要求および応答ヘッダーを追加、削除、更新できます。
+書き換え規則を使用すると、要求および応答パケットがアプリケーション ゲートウェイを通じてクライアントとバックエンド プールの間を移動する際に、HTTP(S) 要求と応答ヘッダーや URL パスとクエリ文字列パラメーターを追加、削除、または更新できます。
 
-ヘッダーは静的な値に設定するか、その他のヘッダーやサーバー変数に設定できます。 クライアント IP アドレスを抽出する、バックエンドに関する機密情報を削除する、セキュリティを追加するなど、重要なユース ケースで役立ちます。
+ヘッダーおよび URL パラメーターは、静的な値に設定するか、その他のヘッダーやサーバー変数に設定できます。 クライアント IP アドレスを抽出する、バックエンドに関する機密情報を削除する、セキュリティを追加するなど、重要なユース ケースで役立ちます。
 
-詳しくは、[アプリケーション ゲートウェイでの HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関する記事をご覧ください。
+詳しくは、「[Application Gateway で HTTP ヘッダーと URL を書き換える](rewrite-http-headers-url.md)」を参照してください。
 
 ## <a name="http-settings"></a>HTTP 設定
 
@@ -132,7 +132,7 @@ Application Gateway は[示されている順序](configuration-overview.md#orde
 - FQDN
 - マルチテナント バックエンド (App Service など)
 
-Application Gateway バックエンド プールのメンバーは、可用性セットには関連付けられません。 アプリケーション ゲートウェイは、それが属している仮想ネットワークの外部にあるインスタンスとの通信が可能です。 そのため、IP 接続がある限り、バックエンド プールのメンバーを、クラスターやデータ センターをまたいで、または Azure の外部に配置したりすることができます。
+Application Gateway バックエンド プールのメンバーは、可用性セットとの関連はありません。 アプリケーション ゲートウェイは、それが属している仮想ネットワークの外部にあるインスタンスとの通信が可能です。 そのため、IP 接続がある限り、バックエンド プールのメンバーを、クラスターやデータ センターをまたいで、または Azure の外部に配置したりすることができます。
 
 バックエンド プール メンバーとして内部 IP を使用する場合、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を使用する必要があります。 仮想ネットワーク ピアリングはサポート対象であり、他の仮想ネットワークにおけるトラフィックの負荷分散に適しています。
 

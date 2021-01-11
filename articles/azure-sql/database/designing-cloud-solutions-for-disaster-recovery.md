@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 12/04/2018
-ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: a23330bb00fb06a3ed9d3dfe28666e8f27dae4fa
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344647"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405043"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Azure SQL Database を使用して世界規模の可用性を備えたサービスを設計する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,13 @@ Azure SQL Database を使用してクラウド サービスを構築してデプ
 > ディザスター リカバリーのため、アプリケーションのデプロイ先を 2 つのリージョンに限定する構成にすることをお勧めします。 これは、Azure で地理的に割り当てられるリージョンがほとんどの場合 2 つだけであるからです。 この構成では、両方のリージョンで同時発生した致命的な障害からアプリケーションは保護されません。 万一そのような障害が発生した場合は、[geo リストア操作](disaster-recovery-guidance.md#recover-using-geo-restore)を使って、第 3 のリージョンのデータベースを復元することができます。
 >
 
- 停止していた機能が復旧すると、セカンダリ データベースがプライマリ データベースと自動的に再同期されます。 同期の間に、プライマリ データベースのパフォーマンスが低下することがあります。 具体的な影響は、フェールオーバー以降に新しいプライマリが取得したデータの量に依存します。 次の図は、セカンダリ リージョンの機能が停止した場合の例です。
+ 停止していた機能が復旧すると、セカンダリ データベースがプライマリ データベースと自動的に再同期されます。 同期の間に、プライマリ データベースのパフォーマンスが低下することがあります。 具体的な影響は、フェールオーバー以降に新しいプライマリが取得したデータの量に依存します。 
+
+> [!NOTE]
+> 機能停止が対処されると、Traffic Manager は、優先度が高いエンドポイントとしての、リージョン A にあるアプリケーションへの接続のルーティングを開始します。 プライマリをしばらくの間リージョン B に保持するつもりであれば、Trafic マネージャーのプロファイルで、それに応じて優先順位のテーブルを変更する必要があります。 
+>
+ 
+ 次の図は、セカンダリ リージョンの機能が停止した場合の例です。
 
 ![シナリオ 1. セカンダリ リージョンでの機能停止の後の構成。](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-c.png)
 

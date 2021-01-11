@@ -87,4 +87,4 @@ ms.locfileid: "85114811"
 
 監査ログの詳細については、[Azure Cosmos DB の診断ログ](logging.md)に関するページを参照してください。
 
-Microsoft の認定の詳細については、[Azure Security Center](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+Microsoft の認定の詳細については、[Azure Trust Center](https://azure.microsoft.com/support/trust-center/) に関するページを参照してください。

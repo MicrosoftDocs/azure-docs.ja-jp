@@ -3,17 +3,18 @@ title: Azure Maps の Indoor Maps モジュールを使用する
 description: Microsoft Azure Maps の Indoor Maps モジュールを使用し、モジュールの JavaScript ライブラリを埋め込むことによってマップをレンダリングする方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6e7b6c7ddb33d42cca66698c87c82477f3e55621
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 4bfb017bb085d22c187e8074ba4f2b026d17f442
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517469"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815948"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps の Indoor Maps モジュールを使用する
 
@@ -34,28 +35,23 @@ Azure Maps Web SDK には、*Azure Maps Indoor* モジュールが含まれて�
 グローバルにホストされている Azure Content Delivery Network バージョンの *Azure Maps Indoor* モジュールを使用する場合は、次の HTML ファイルの `<head>` 要素に含まれている JavaScript とスタイル シートの参照を参照してください。
 
 ```html
-<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
 <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
 ```
 
  または、*Azure Maps Indoor* モジュールをダウンロードすることもできます。 *Azure Maps Indoor* モジュールには、Azure Maps サービスにアクセスするためのクライアント ライブラリが含まれています。 次の手順に従って *Indoor* モジュールをインストールし、ご自分の Web アプリケーションに読み込んでください。  
   
-  1. [azure-maps-indoor パッケージ](https://www.npmjs.com/package/azure-maps-indoor)をダウンロードします。
+  1. [azure-maps-indoor パッケージ](https://www.npmjs.com/package/azure-maps-indoor)をインストールします。
   
-  2. NPM パッケージをインストールします。 コンソールで管理者特権を使用していることを確認してください。
-
       ```powershell
-      >npm install azure-maps-control
       >npm install azure-maps-indoor
       ```
 
-  3. HTML ファイルの `<head>` 要素で、*Azure Maps Indoor* モジュールの JavaScript とスタイル シートを参照します。
+  2. HTML ファイルの `<head>` 要素で、*Azure Maps Indoor* モジュールの JavaScript とスタイル シートを参照します。
 
       ```html
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-indoor.min.js"></script>
       ```
 
 ## <a name="instantiate-the-map-object"></a>Map オブジェクトをインスタンス化する
@@ -71,7 +67,7 @@ const map = new atlas.Map("map-id", {
   //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
   style: "blank",
   view: 'Auto',
-  authOptions: { 
+  authOptions: {
       authType: 'subscriptionKey',
       subscriptionKey: subscriptionKey
   },

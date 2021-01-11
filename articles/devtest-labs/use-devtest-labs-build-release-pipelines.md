@@ -3,12 +3,12 @@ title: Azure Pipelines のビルドとリリースのパイプライン内で De
 description: Azure Pipelines のビルドとリリースのパイプライン内で Azure DevTest Labs を使用する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 71af1e0dfe205fe1028f7b82b41f3ed38ebefd3c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483076"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080336"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する
 この記事では、Azure Pipelines のビルドとリリースのパイプライン内で DevTest Labs を使用する方法について説明します。 
@@ -26,7 +26,7 @@ ms.locfileid: "85483076"
 
 必要な前提の 1 つは、テスト済みのエコシステムを再作成するために必要なすべての情報が、ビルド成果物 (Azure リソースの構成を含む) 内で利用できることです。 Azure リソースを使用するとコストが発生するため、企業はこれらのリソースの使用を制御または追跡したいと考えています。 場合によっては、リソースの作成と構成に使用される Azure Resource Manager テンプレートは、IT のような別の部門によって管理されることがあります。 また、これらのテンプレートが別のリポジトリに格納されている場合があります。 これは、ビルドを作成してテストし、運用環境でシステムを適切に再作成するには、コードと構成の両方をビルド成果物内に保存する必要があるという興味深い状況につながります。 
 
-ビルド/テスト フェーズ中に DevTest Labs を使用すると、Azure Resource Manager テンプレートとサポート ファイルをビルド ソースに追加できます。これにより、リリース フェーズ中に、テストに使用される正確な構成が運用環境にデプロイされます。 適切な構成を使用した **Azure DevTest Labs 環境の作成**タスクでは、ビルド成果物内に Resource Manager テンプレートが保存されます。 この例では、「[チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)」のコードを使用して、Azure で Web アプリをデプロイしてテストします。
+ビルド/テスト フェーズ中に DevTest Labs を使用すると、Azure Resource Manager テンプレートとサポート ファイルをビルド ソースに追加できます。これにより、リリース フェーズ中に、テストに使用される正確な構成が運用環境にデプロイされます。 適切な構成を使用した **Azure DevTest Labs 環境の作成**タスクでは、ビルド成果物内に Resource Manager テンプレートが保存されます。 この例では、「[チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](../app-service/tutorial-dotnetcore-sqldb-app.md)」のコードを使用して、Azure で Web アプリをデプロイしてテストします。
 
 ![全体的なフロー](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "85483076"
 ビルド パイプラインにより、DevTest Labs 環境が作成され、テスト用のコードがデプロイされます。
 
 ## <a name="set-up-a-build-pipeline"></a>ビルド パイプラインの設定
-Azure Pipelines で、「[チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)」のコードを使用してビルド パイプラインを作成します。 **ASP.NET Core** テンプレートを使用します。これにより、コードをビルド、テスト、発行するために必要なタスクが設定されます。
+Azure Pipelines で、「[チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](../app-service/tutorial-dotnetcore-sqldb-app.md)」のコードを使用してビルド パイプラインを作成します。 **ASP.NET Core** テンプレートを使用します。これにより、コードをビルド、テスト、発行するために必要なタスクが設定されます。
 
 ![ASP.NET テンプレートの選択](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 

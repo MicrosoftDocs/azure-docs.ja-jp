@@ -3,12 +3,12 @@ title: 監視とログ記録 - Azure
 description: この記事では、Live Video Analytics on IoT Edge の監視とログ記録の概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 82e4a5879e4c88e462edcddb02866ec9b671d7fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1f31c6bb3ea344286ad9af89417ca9f8fd59527
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060455"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934295"
 ---
 # <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -99,6 +99,25 @@ Live Video Analytics on IoT Edge では、次の分類に従ってイベント�
    }
    ```
 モジュールによって出力されたイベントは [IoT Edge ハブ](../../iot-edge/iot-edge-runtime.md#iot-edge-hub)に送信され、そこから他の送信先にルーティングできます。 
+
+### <a name="timestamps-in-analytic-events"></a>分析イベントのタイムスタンプ
+上記のとおり、ビデオ分析の一部として生成されたイベントには、タイムスタンプが関連付けられています。 グラフ トポロジの一部として[ライブ ビデオを記録した](video-recording-concept.md)場合は、このタイムスタンプを使用すると、記録したビデオ内のどこで特定のイベントが発生したかを見つけることができます。 次に示すのは、[Azure Media Service 資産](terminology.md#asset)に記録されたビデオのタイムラインに分析イベントのタイムスタンプをマップする方法に関するガイドラインです。
+
+まず、`eventTime` 値を抽出します。 [時間範囲フィルター](playback-recordings-how-to.md#time-range-filters)でこの値を使用して、記録から適切な部分を取得します。 たとえば、`eventTime` の 30 秒前に開始し、30 秒後に終了するビデオを取り込むことができます。 上記の例では、`eventTime` が 2020-05-12T23:33:09.381Z の場合、+/- 30 秒間の時間枠に対する HLS マニフェストの要求は次のようになります。
+```
+https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2020-05-12T23:32:39Z,endTime=2020-05-12T23:33:39Z).m3u8
+```
+上記の URL は、メディアのプレイリストが含まれる、いわゆる[マスター プレイリスト](https://developer.apple.com/documentation/http_live_streaming/example_playlists_for_http_live_streaming)を返します。 メディアのプレイリストには、次のようなエントリが含まれます。
+
+```
+...
+#EXTINF:3.103011,no-desc
+Fragments(video=143039375031270,format=m3u8-aapl)
+...
+```
+上記のエントリは、タイムスタンプ値 `143039375031270` で開始するビデオ フラグメントが使用可能であることを報告しています。 分析イベントの `timestamp` 値には、メディアのプレイリストと同じタイムスケールが使用されます。また、この値を使用して、関連するビデオ フラグメントの識別、および適切なフレームのシークを行うことができます。
+
+詳細については、HLS でのフレームに正確なシークに関して数多くある[記事](https://www.bing.com/search?q=frame+accurate+seeking+in+HLS)のいずれかを参照してください。
 
 ## <a name="controlling-events"></a>イベントの制御
 

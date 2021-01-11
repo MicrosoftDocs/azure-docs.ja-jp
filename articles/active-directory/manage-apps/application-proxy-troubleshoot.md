@@ -2,26 +2,21 @@
 title: アプリケーション プロキシのトラブルシューティング | Microsoft Docs
 description: Azure AD アプリケーション プロキシのエラーのトラブルシューティングを行う方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57a77b486239f1fd49a4979d7acbbfc8f0254311
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 413cfe4f3aed446ad26a210b4faa452c4f624685
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848454"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640856"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 
@@ -84,6 +79,7 @@ Get-EventLog application –source "Microsoft AAD Application Proxy Connector" �
 | この企業アプリには、現在、アクセスできません。 後でもう一度やり直してください。コネクタがタイムアウトになりました。 | オンプレミス側でこのアプリケーション向けに適切に定義されていないユーザーが、発行済みのアプリにアクセスしようとしたときに、このエラーが表示されることがあります。 ユーザーが、オンプレミス コンピューターでこのバックエンド アプリケーションに対して定義されているような適切なアクセス許可を持っていることを確認します。 |
 | この企業のアプリにはアクセスできません。 このアプリケーションにアクセスする権限がありません。 承認に失敗しました。 ユーザーが Azure Active Directory Premium のライセンスを持っていることを確認します。 | サブスクライバーの管理者によってユーザーに対して Premium ライセンスが明示的に割り当てられていない場合、発行されたアプリにそのユーザーがアクセスしようとすると、このエラーが発生することがあります。 サブスクライバーの Active Directory **[ライセンス]** タブに移動し、このユーザーまたはユーザー グループに Premium ライセンスが割り当てられていることを確認します。 |
 | 指定されたホスト名を持つサーバーが見つかりませんでした。 | アプリケーションのカスタム ドメインが正しく構成されていない場合、発行したアプリにユーザーがアクセスしようとすると、このエラーが表示されることがあります。 「[Azure AD アプリケーション プロキシでのカスタム ドメインの使用](application-proxy-configure-custom-domain.md)」の手順に従って、ドメインの証明書がアップロードされ、DNS レコードが正しく構成されていることを確認してください。 |
+|禁止:この社内アプリにアクセスできないか、ユーザーを承認できませんでした。 ユーザーがオンプレミスの AD で定義されていること、およびユーザーがオンプレミスの AD でアプリにアクセスできることを確認してください。 | これは、承認情報へのアクセスに問題がある可能性があります。「[一部のアプリケーションや API でアカウント オブジェクトの承認情報に対するアクセス許可が必要になる]( https://support.microsoft.com/help/331951/some-applications-and-apis-require-access-to-authorization-information)」を参照してください。 簡単に言うと、アプリケーション プロキシ コネクタのコンピューター アカウントを "Windows Authorization Access Group" 組み込みドメイン グループに追加して解決します。 |
 
 ## <a name="my-error-wasnt-listed-here"></a>上記に記載のないエラー
 

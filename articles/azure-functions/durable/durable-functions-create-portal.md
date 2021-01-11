@@ -4,12 +4,12 @@ description: ポータル開発用に Azure Functions の Durable Functions 拡�
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 7eee3c36620d0cc9f5906e355b76e7418c61b477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b029fa246977dfe4210f6e8df242415f7e4103f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807963"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081918"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 
@@ -58,8 +58,6 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 
    ![Kudu の実行 (npm install)](./media/durable-functions-create-portal/kudu-npm-install.png)
    
-5. 最後に、アプリ設定 `FUNCTIONS_V2_COMPATIBILITY_MODE` に値 `true` を追加することで、[互換モードを有効にします](https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode#enable-compatibility-mode-1)。
-
 ## <a name="create-an-orchestrator-function"></a>オーケストレーター関数を作成する
 
 1. 関数アプリで、左側のウィンドウから **[関数]** を選択し、上部のメニューから **[追加]** を選択します。 

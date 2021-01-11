@@ -16,15 +16,15 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3afec7c31488529af9ba15100c914899a0d1d808
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b013c4edcaceeea585494bd8924ccea08aa1d37
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357462"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277053"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
-ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](https://docs.microsoft.com/graph/extensibility-overview
+ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[拡張機能](/graph/extensibility-overview
 )から使用できます。 使用可能な属性を確認するには、[Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用します。 この機能を使用して、Azure AD に動的グループを作成することもできます。
 
 現在のところ、これらの属性を使用する Office 365 ワークロードはありません。
@@ -33,8 +33,8 @@ ms.locfileid: "85357462"
 
 インストール ウィザードのカスタム設定パスで、どの追加属性を同期するかを構成します。
 
->[!NOTE]
->[使用可能な属性] ボックスでは、大文字と小文字は区別されます。
+> [!NOTE]
+> バージョン 1.2.65.0 以前の Azure AD Connect では、 **[使用可能な属性]** の検索ボックスで大文字と小文字が区別されます。
 
 ![スキーマ拡張機能のウィザード](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 
@@ -69,7 +69,7 @@ Azure AD のオブジェクトでは、ディレクトリ拡張機能に対し�
 >[!NOTE]
 > Microsoft Graph API で、属性が返されるように要求する必要があります。 次のような属性を明示的に選択します: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`。
 >
-> 詳細については、[Microsoft Graph: クエリ パラメーターの使用](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter)に関するトピックをご覧ください。
+> 詳細については、[Microsoft Graph: クエリ パラメーターの使用](/graph/query-parameters#select-parameter)に関するトピックをご覧ください。
 
 ## <a name="use-the-attributes-in-dynamic-groups"></a>動的グループで属性を使用する
 

@@ -90,7 +90,7 @@
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報

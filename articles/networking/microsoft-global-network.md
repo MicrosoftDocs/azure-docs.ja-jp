@@ -1,6 +1,6 @@
 ---
 title: マイクロソフトのグローバル ネットワーク - Azure
-description: マイクロソフトが高速で信頼性の高いグローバル ネットワークを構築する方法について説明します
+description: Microsoft が世界有数のバックボーン ネットワークの 1 つをどのように構築して運用しているか、また優れたクラウド エクスペリエンスを実現する中心的な役割をどのように果たしているかについて説明します。
 services: networking
 documentationcenter: ''
 author: KumudD
@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 5028417758bb8be38505d27d3dfb5e2fc055c3ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9420d52cf7d88ff84fd23928f92cdc62e9627619
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125823"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280904"
 ---
 # <a name="microsoft-global-network"></a>マイクロソフトのグローバル ネットワーク
 

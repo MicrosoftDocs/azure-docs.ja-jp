@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む SWIFT CSP-CSCF v2020 ブループリント サンプルのデプロイ手順です。
-ms.date: 05/13/2020
+ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 84d219f47df99e5bb87bab13b9ff43b79484117f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b65dc9cdd601f9fd2d7972b74435702a00244e8e
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044262"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612726"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのデプロイ
 
@@ -93,18 +93,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
+|\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。|
 |\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|接続されているワークスペース ID|Log Analytics エージェントの接続先となるワークスペース ID のセミコロン区切りの一覧|
 |\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|Windows VM Administrators グループに含める必要があるユーザーの一覧|ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |\[プレビュー\]:SWIFT CSP-CSCF v2020 コントロールを監査し、監査要件をサポートする特定の VM 拡張機能をデプロイする|ポリシー割り当て|ドメイン名 (FQDN)|Windows VM の参加先の完全修飾ドメイン名 (FQDN)|
-|\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
-|\[プレビュー\]:Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
-|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
-|\[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
-|\[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Windows VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
-|\[プレビュー\]:Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
-|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|Windows VM 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
-|\[プレビュー\]:Windows VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
+|Linux VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
+|Linux VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Linux OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
+|Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Windows VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
+|Windows VM Scale Sets (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
+|Windows VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|Windows VM 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|
+|Windows VM への Log Analytics エージェントのデプロイ|ポリシー割り当て|省略可能:スコープに追加するため、サポートされている Windows OS を持つ VM イメージの一覧|空の配列 (\[\]) を使用して、オプションのパラメーターがないことを示すことができます。|
 |ストレージ アカウントに対する Advanced Threat Protection のデプロイ|ポリシー割り当て|結果|ポリシーの効果の詳細については、「[Azure Policy の効果について](../../../policy/concepts/effects.md)」を参照してください。|
 |SQL サーバーでの監査のデプロイ|ポリシー割り当て|保存期間の日数を示す値 (0 は無制限の保存期間を示します)|保存日数 (省略可能: 指定しない場合には 180 日間)|
 |SQL サーバーでの監査のデプロイ|ポリシー割り当て|SQL サーバー監査のためのストレージ アカウントのリソース グループ名|監査によって、Azure Storage アカウントの監査ログにデータベース イベントが書き込まれます (ストレージ アカウントは、SQL Server が作成された各リージョンに作成され、そのリージョン内のすべてのサーバーによって共有されます)。 重要 - 監査を適切に実施するために、リソース グループまたはストレージ アカウントを削除したり、名前を変更したりしないでください。|

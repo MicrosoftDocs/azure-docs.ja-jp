@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 19a7cf2ec3a8a7a95952fcebfcf3a127c4dfd013
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d416c6fdef85b83d91ca0e341659f87618d268e0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792185"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504519"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Azure Key Vault のファイアウォールと仮想ネットワークを構成する
 

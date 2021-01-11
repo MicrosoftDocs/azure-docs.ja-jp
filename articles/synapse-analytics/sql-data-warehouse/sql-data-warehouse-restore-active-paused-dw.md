@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fab00848f6541f6f6eb386168c5bae76e822856a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8dc7be63506e586b90d1e389d26ac591dce9c3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85205205"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075874"
 ---
 # <a name="restore-an-existing-sql-pool"></a>既存の SQL プールを復元する
 
@@ -28,7 +28,7 @@ ms.locfileid: "85205205"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-1. 必ず [Azure PowerShell をインストール](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
+1. 必ず [Azure PowerShell をインストール](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)してください。
 2. 復元する既存の復元ポイントがあること。 新しい復元を作成する場合は、「[the tutorial to create a new user-defined restore point](sql-data-warehouse-restore-points.md)」 (新しいユーザー定義の復元ポイントを作成するチュートリアル) を参照してください。
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>PowerShell を使用して既存の SQL プールを復元する

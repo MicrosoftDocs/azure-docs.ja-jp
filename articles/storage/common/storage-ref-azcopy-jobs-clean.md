@@ -4,16 +4,16 @@ description: この記事では、azcopy jobs clean コマンドに関する参�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a06e428908777c526602166f127a28304b595ba0
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f3e9d70ced0d2974a66717436c28c5b6914f6745
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220083"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287141"
 ---
 # <a name="azcopy-jobs-clean"></a>azcopy jobs clean
 
@@ -38,13 +38,13 @@ azcopy jobs clean [flags]
 
 ## <a name="options"></a>Options
 
-**-h, --help**                clean のヘルプを表示します。
+**--help**                clean のヘルプ。
 
-**--with-status** string   この状態のジョブのみが削除されます。使用できる値は次のとおりです。Canceled、Completed、Failed、InProgress、All (既定値は "All")
+**--with-status** string   この状態のジョブのみが削除されます。使用できる値は `Canceled`、`Completed`、`Failed`、`InProgress`、`All` (規定値 `All`) です。
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 
-**--cap-mbps uint32**      転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
+**--cap-mbps float**      転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
 
 **--output-type** string   コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値は "text")
 

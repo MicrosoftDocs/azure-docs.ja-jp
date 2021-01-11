@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 2dd59d7ebde87ead1d91bb0ac8d28f5d53964bd1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: cf92f8d54f4eb5f627e34a093835465215bcc5d3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010446"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499230"
 ---
 # <a name="create-a-fully-configured-virtual-machine"></a>完全に構成された仮想マシンの作成
 

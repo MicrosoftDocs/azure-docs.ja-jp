@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: c31c52d278c1e40b18b3308ca154b934d060d403
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 856bace0c67c5afedd6305158326af46037e7f21
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071176"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299229"
 ---
 # <a name="tutorial-how-to-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する方法
 
@@ -24,7 +24,7 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順では、Azure Spring の要件に加え、デプロイされた Azure Spring Cloud インスタンスが必要となります。  [クイックスタート](spring-cloud-quickstart-launch-app-cli.md)に従って始めてください。
+このチュートリアルの手順では、Azure Spring の要件に加え、デプロイされた Azure Spring Cloud インスタンスが必要となります。  [クイックスタート](spring-cloud-quickstart.md)に従って始めてください。
 
 以降の手順では、Spring Cloud インスタンスの左側のナビゲーション ペインにある **[アラート]** オプションから **[アクション グループ]** と **[アラート]** の両方を初期化します (この手順は、Azure portal の **[Monitor Overview]\(監視の概要\)** ページから開始することもできます)。 
 
@@ -76,11 +76,11 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 1. 条件を選択します。 この例では、**システムの CPU 使用率**を使用します。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-3-1.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 2](media/alerts-action-groups/alerts-3-1.png)
 
 1. **[シグナル ロジックの構成]** ペインを下にスクロールして、監視する**しきい値**を設定します。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-3-2.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 3](media/alerts-action-groups/alerts-3-2.png)
 
 1. **[Done]** をクリックします。
 
@@ -88,7 +88,7 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
  **[アクション]** で、 **[アクション グループの選択]** をクリックします。 **[アクション]** ペインで、先ほど定義した**アクション グループ**を選択します。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-3-3.png) 
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 4](media/alerts-action-groups/alerts-3-3.png) 
 
 1. 下にスクロールし、 **[アラートの詳細]** で、アラート ルールに名前を付けます。
 
@@ -96,15 +96,15 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 1. **[アラート ルールの作成]** をクリックします。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-3-4.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 5](media/alerts-action-groups/alerts-3-4.png)
 
 新しいアラート ルールが有効になっていることを確認します。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-4.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 6](media/alerts-action-groups/alerts-4.png)
 
 **[Metrics]\(メトリック\)** ページを使用してルールを作成することもできます。
 
-   ![ポータルの [新しいアラート ルール] のスクリーンショット](media/alerts-action-groups/alerts-5.png)
+   ![ポータルの [新しいアラート ルール] のスクリーンショット 7](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>次のステップ
 

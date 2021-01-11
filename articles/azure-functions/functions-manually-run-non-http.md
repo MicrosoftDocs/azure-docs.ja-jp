@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 37f79d717b7ea0e26717e7b51f9e66b908b96521
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121773"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640967"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>HTTP によってトリガーされない関数を手動で実行する
 
@@ -37,7 +37,7 @@ HTTP によってトリガーされない関数を実行するには、関数を
 
 ## <a name="get-the-functions-master-key"></a>関数のマスター キーを取得する
 
-1. Azure portal で関数に移動して、**関数キー**を選択します。 次に、コピーする関数キーを選択します。 
+1. [Azure portal](https://portal.azure.com) で関数アプリに移動し、 **[アプリ キー]** 、`_master` キーの順に選択します。 
 
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="コピーするマスター キーを見つけます。" border="true":::
 
@@ -50,7 +50,7 @@ HTTP によってトリガーされない関数を実行するには、関数を
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="ログを表示して、マスター キーのテスト結果を確認します。" border="true":::
 
 > [!CAUTION]  
-> マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、アプリケーションに配布したりしないでください。
+> マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、アプリケーションに配布したりしないでください。 HTTPS エンドポイントにのみキーを送信する必要があります。
 
 ## <a name="call-the-function"></a>関数を呼び出す
 

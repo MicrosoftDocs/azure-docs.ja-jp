@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764929"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077511"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -115,7 +115,7 @@ ms.locfileid: "84764929"
 | --- | --- |
 | \*.msappproxy.net<br>\*.servicebus.windows.net | コネクタとアプリケーション プロキシ クラウド サービスの間の通信 |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | コネクタでは、これらの URL を使用して証明書が検証されます。 |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*.microsoftonline.com<br>* .microsoftonline-p.com<br>*.msauth.net<br>* .msauthimages.net<br>*.msecnd.net<br>* .msftauth.net<br>*.msftauthimages.net<br>* .phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com:80 | コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 
 ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、\*.msappproxy.net と \*.servicebus.windows.net への接続を許可できます。 そうでない場合は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
 
@@ -153,6 +153,9 @@ FQDN による接続を許可することはできず、代わりに IP 範囲�
 4.  必要なプロキシ設定を構成します。 
 
 これらの設定によって、コネクタは Azure との通信とバックエンド アプリケーションとの通信に同じ転送プロキシを使用するようになります。 Azure 通信へのコネクタが転送プロキシを必要としない場合、または別の転送プロキシを必要とする場合は、「送信プロキシをバイパス」または「送信プロキシ サーバーの使用」セクションで説明されているように、ApplicationProxyConnectorService.exe.config ファイルを変更してこれを設定できます。
+
+> [!NOTE]
+> オペレーティング システムでは、さまざまな方法でインターネット プロキシを構成できます。 NETSH WINHTTP によって構成されたプロキシ設定 (確認するには `NETSH WINHTTP SHOW PROXY` を実行します) は、手順 2 で構成したプロキシ設定をオーバーライドします。 
 
 コネクタ アップデーター サービスでもコンピューター プロキシが使用されます。 この動作は、ApplicationProxyConnectorUpdaterService.exe.config ファイルを変更することで変更できます。
 

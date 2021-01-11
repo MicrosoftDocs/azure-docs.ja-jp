@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 1dd20d94737df3e799876323d2aeb555dcb9a381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 662d34d3ed89a7d440a604de4338de334ea0bd11
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146811"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300019"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>クイック スタート:Azure CLI コマンドの az postgres up (プレビュー) を使用して Azure Database for PostgreSQL - 単一サーバーを作成する
 
@@ -74,7 +75,7 @@ admin-password | システム生成 | 管理者ユーザーのパスワード。
 
 サーバーが作成されると、設定は次のようになります。
 
-- "devbox" というファイアウォール規則が作成されます。 Azure CLI では、`az postgres up` コマンドの実行元となるマシンの IP アドレスの検出が試行され、その IP アドレスがホワイトリストに登録されます。
+- "devbox" というファイアウォール規則が作成されます。 Azure CLI では、`az postgres up` コマンドの実行元となるマシンの IP アドレスの検出が試行され、その IP アドレスが許可されます。
 - [Azure サービスへのアクセスを許可] が [オン] に設定されます。 この設定により、サブスクリプションにはないリソースを含む、すべての Azure リソースからの接続を受け入れるようにサーバーのファイアウォールが構成されます。
 - "sampledb" という名前の空のデータベースが作成されます
 - "sampledb" に対する特権を持つ "root" という名前の新しいユーザーが作成されます

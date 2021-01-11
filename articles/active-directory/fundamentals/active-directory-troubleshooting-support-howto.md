@@ -3,7 +3,7 @@ title: ヘルプを検索してサポート チケットを開く - Azure Active
 description: Azure Active Directory のヘルプを取得してサポート チケットを開く方法について説明します。
 services: active-directory
 documentationcenter: na
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9be6efeba101dc922a1045042b64ac64bc6cd093
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799371"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322536"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Azure Active Directory のヘルプを検索してサポート チケットを開く
 Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前、課金、サブスクリプションの各サポートを幅広く提供しています。 サポートは、Microsoft Azure の有料版および試用版サブスクリプションについて、オンラインと電話の両方で利用できます。 また、電話サポートとオンライン課金サポートは追加の言語で利用できます。 
@@ -29,7 +29,7 @@ Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前
 
 サポート チケットを作成する前に、以下のリソースで回答や情報をご確認ください。 
 
-* 操作方法に関する情報や、IT プロフェッショナルおよび開発者向けのサンプル コードなどのコンテンツについては、[docs.microsoft.com の技術ドキュメント](https://docs.microsoft.com/azure/active-directory/)を参照してください。
+* 操作方法に関する情報や、IT プロフェッショナルおよび開発者向けのサンプル コードなどのコンテンツについては、[docs.microsoft.com の技術ドキュメント](../index.yml)を参照してください。
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/) は、IT プロフェッショナル パートナーとお客様が共同作業、共有、学習を行うための場所です。 [Microsoft Tech Community Info Center](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center) は、お知らせ、ブログの投稿、専門家との質疑応答 (AMA: ask-me-anything) などのために使用されます。 [コミュニティに参加して、自分のアイデアを提出する](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)こともできます。
 
@@ -100,4 +100,4 @@ Microsoft は、Azure Active Directory (Azure AD) に関する技術、購入前
 
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/)
 
-* [docs.microsoft.com の技術ドキュメント](https://docs.microsoft.com/azure/active-directory/)
+* [docs.microsoft.com の技術ドキュメント](../index.yml)

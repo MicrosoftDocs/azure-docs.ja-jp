@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075336"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874233"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>チュートリアル:Log Analytics クエリの使用方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "87075336"
 ## <a name="open-log-analytics"></a>Log Analytics を開く
 Log Analytics を使用するには、Azure アカウントにサインインする必要があります。 Azure アカウントがない場合は、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-このチュートリアルの大部分の手順は、サンプル データが豊富に含まれる[こちらのデモ環境](https://portal.loganalytics.io/demo)を使用して完了できます。 デモ環境では、クエリの保存およびダッシュボードへの結果のピン留めは実行できません。
+このチュートリアルの大部分の手順は、サンプル データが豊富に含まれる[こちらのデモ環境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)を使用して完了できます。 デモ環境では、クエリの保存およびダッシュボードへの結果のピン留めは実行できません。
 
 Azure Monitor を使用して 1 つ以上の Azure リソースに関するログ データを収集している場合は、ご自分の環境を使用してもかまいません。 Log Analytics ワークスペースを開くには、Azure Monitor の左側のナビゲーションで **[ログ]** を選択します。 
 

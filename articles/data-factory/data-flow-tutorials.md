@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 05/25/2020
-ms.openlocfilehash: 87bfd505edcb394bafd70a975b5b3d6bde341cb9
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 08/11/2020
+ms.openlocfilehash: c1527161948a6312fc0877748b2818b3ccc2143e
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848891"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322621"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>マッピング データ フローのビデオ チュートリアル
 
@@ -36,6 +36,8 @@ ms.locfileid: "83848891"
 [Monitor and manage mapping data flow performance (マッピング データ フローのパフォーマンスの監視と管理)](https://www.youtube.com/watch?v=fktIWdJiqTk)
 
 [Benchmark timings (ベンチマークのタイミング)](http://youtu.be/6CSbWm4lRhw?hd=1)
+
+[データ フローのワークフローのデバッグ](https://youtu.be/y3suL7UsWVw)
 
 ## <a name="transformation-overviews"></a>変換の概要
 
@@ -105,8 +107,6 @@ ms.locfileid: "83848891"
 
 [Data lineage (データ系列)](https://www.youtube.com/watch?v=5KvqYF-y93s)
 
-[Optimization tips (最適化のヒント)](https://www.youtube.com/watch?v=a2KtwUJngHo)
-
 [Iterate files with parameters (パラメーターを使用したファイルの反復処理)](http://youtu.be/uEgz0ptYRDM?hd=1)
 
 [Decrease start-up times (起動時間の短縮)](https://youtu.be/FFCbU4ujCiY?t=528)
@@ -119,6 +119,8 @@ ms.locfileid: "83848891"
 
 [データ フローの起動時間の最適化](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
 
+[データ フロー用の Azure Integration Runtime](https://www.youtube.com/watch?v=VT_2ZV3a7Fc)
+
 ## <a name="mapping-data-flow-scenarios"></a>マッピング データ フローのシナリオ
 
 [Fuzzy lookups (あいまい参照)](http://youtu.be/7gdwExjHBbw)
@@ -127,7 +129,7 @@ ms.locfileid: "83848891"
 
 [Clean addresses pattern (アドレスのクリーニングのパターン)](https://youtu.be/axEYbuU3lmw)
 
-[Deduplication (重複除去)](https://www.youtube.com/watch?v=OLenvYwg__I)
+[Deduplication (重複除去)](https://youtu.be/QOi26ETtPTw)
 
 [Merge files (ファイルのマージ)](http://youtu.be/WbDTBAyYte8)
 

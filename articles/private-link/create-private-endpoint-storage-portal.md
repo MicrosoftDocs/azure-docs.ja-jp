@@ -177,7 +177,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     Address:  10.0.0.5
     Aliases:  mystorageaccount.blob.core.windows.net
     ```
-3. [Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)をインストールします。
+3. [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows) をインストールします。
 4. 右クリックで **[ストレージ アカウント]** を選択します。
 5. **[Connect to an azure storage]\(Azure ストレージに接続する\)** を選択します。
 6. **[Use a connection string]\(接続文字列を使用する\)** を選択します。

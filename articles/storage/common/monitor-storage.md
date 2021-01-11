@@ -1,6 +1,6 @@
 ---
 title: Azure Storage を監視する | Microsoft Docs
-description: Azure Storage のパフォーマンスと可用性を監視する方法について説明します。
+description: Azure Storage のパフォーマンスと可用性を監視する方法について説明します。 Azure Storage のデータを監視します。構成、およびメトリックとログ データの分析について説明します。
 author: normesta
 services: storage
 ms.service: storage
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring
-ms.openlocfilehash: 2f6320bf4606dc9357ac676b3bc5d7421b24a36c
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: monitoring, devx-track-csharp
+ms.openlocfilehash: 2cc275028b64c3df06e2c0275bc0f4ac21fa0f6e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86182714"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020152"
 ---
 # <a name="monitor-azure-storage"></a>Azure Storage を監視する
 
@@ -86,9 +86,9 @@ Azure portal で診断設定を作成する場合は、一覧からリソース�
 
 | カテゴリ | 説明 |
 |:---|:---|
-| StorageRead | BLOB に対する読み取り操作。 |
-| StorageWrite | BLOB に対する書き込み操作。 |
-| StorageDelete | BLOB に対する削除操作。 |
+| StorageRead | オブジェクトに対する読み取り操作。 |
+| StorageWrite | オブジェクトに対する書き込み操作。 |
+| StorageDelete | オブジェクトに対する削除操作。 |
 
 ## <a name="analyze-metric-data"></a>メトリック データを分析する
 

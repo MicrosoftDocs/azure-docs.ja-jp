@@ -3,12 +3,12 @@ title: SQL Server を Azure に DPM ワークロードとしてバックアッ�
 description: Azure Backup サービスを使用した SQL Server データベースのバックアップの概要
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: f6a612bc56d1fa6b70ac89ed48f28d1ae48da2e6
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: ef8ffcb2445a7be27f7fd3da2115f76fe961fd74
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195791"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876310"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server を Azure に DPM ワークロードとしてバックアップする
 
@@ -21,6 +21,37 @@ SQL Server データベースを Azure にバックアップし、Azure から�
 1. Azure で SQL Server データベースを保護するためのバックアップ ポリシーを作成します。
 1. オンデマンドでのバックアップ コピーを Azure に作成します。
 1. Azure からデータベースを回復します。
+
+>[!NOTE]
+>DPM 2019 UR2 では、クラスター共有ボリューム (CSV) を使用して SQL Server フェールオーバー クラスター インスタンス (FCI) がサポートされます。
+
+## <a name="prerequisites-and-limitations"></a>前提条件と制限事項
+
+* データベースのファイルがリモート ファイル共有にある場合、保護はエラー ID 104 で失敗します。 DPM では、リモート ファイル共有上の SQL Server データの保護はサポートされていません。
+* リモート SMB 共有に保存されているデータベースを DPM で保護することはできません。
+* [可用性グループのレプリカが読み取り専用として構成されている](/sql/database-engine/availability-groups/windows/configure-read-only-access-on-an-availability-replica-sql-server?view=sql-server-ver15)ことを確認します。
+* システム アカウント **NTAuthority\System** を SQL Server の Sysadmin グループに明示的に追加する必要があります。
+* 部分的な包含データベースに対して別の場所への回復を実行する場合は、ターゲット SQL インスタンスで[包含データベース](/sql/relational-databases/databases/migrate-to-a-partially-contained-database?view=sql-server-ver15#enable)機能が有効になっていることを確認する必要があります。
+* ファイル ストリーム データベースに対して別の場所への回復を実行する場合、ターゲット SQL インスタンスで[ファイル ストリーム データベース](/sql/relational-databases/blob/enable-and-configure-filestream?view=sql-server-ver15)機能が有効になっていることを確認する必要があります。
+* SQL Server AlwaysOn の保護:
+  * 保護グループの作成で照会を実行中に、DPM は可用性グループを検出します。
+  * DPM はフェールオーバーを検出し、データベース保護を続行します。
+  * DPM は SQL Server のインスタンスに対して、マルチサイト クラスター構成をサポートします。
+* AlwaysOn 機能を使用するデータベースを DPM で保護するときは、次の制限があります。
+  * DPM は、SQL Server で設定されている可用性グループのバックアップ ポリシーに従って、次のようなバックアップを行います。
+    * セカンダリ優先 - オンラインになっているのがプライマリ レプリカのみの場合を除き、バックアップは常にセカンダリ レプリカ上で発生します。 セカンダリ レプリカが複数ある場合は、バックアップの優先度が最も高いノードがバックアップ用に選択されます。 プライマリ レプリカのみを使用できる場合、バックアップはプライマリ レプリカ上で発生します。
+    * セカンダリのみ - プライマリ レプリカでのバックアップは行いません。 オンラインになっているのがプライマリ レプリカのみの場合、バックアップは発生しません。
+    * プライマリ - バックアップは常にプライマリ レプリカ上で発生します。
+    * 任意のレプリカ - バックアップは、可用性グループ内の使用可能な任意のレプリカで発生できます。 バックアップ元となるノードは、各ノードのバックアップの優先度によって決まります。
+  * 次のことを考慮してください。
+    * 読み取り可能なレプリカ (プライマリ、同期セカンダリ、非同期セカンダリ) であれば、どれでもバックアップを発生させることができます。
+    * レプリカがバックアップから除外されている場合 (たとえば **[レプリカの除外]** が有効であったり、レプリカが読み取り不可としてマークされていたりする場合) は、どのオプションでも、そのレプリカがバックアップ用に選択されることはありません。
+    * 読み取り可能なレプリカが複数ある場合は、バックアップの優先度が最も高いノードがバックアップ用に選択されます。
+    * 選択されたノード上でバックアップに失敗した場合、バックアップ操作は失敗します。
+    * 元の場所への回復はサポートされていません。
+* SQL Server 2014 以降のバックアップに関する問題:
+  * [Windows Azure Blob Storage にオンプレミスの SQL Server 用のデータベース](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-ver15)を作成するための新機能が SQL Server 2014 に追加されました。 この構成を保護するために DPM を使用することはできません。
+  * SQL AlwaysOn オプションの [セカンダリを優先] バックアップ設定には、いくつかの既知の問題があります。 DPM では、常にセカンダリからバックアップが作成されます。 セカンダリが見つからない場合、バックアップは失敗します。
 
 ## <a name="before-you-start"></a>開始する前に
 

@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86e7f1fc18738eef39f8ec29da8763b862cdcc2b
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: c709fca3fbddb6fc16699052c5f01d1255c79dd8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849958"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542095"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -34,7 +34,7 @@ ms.locfileid: "85849958"
 | 要件 | 説明 |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health は Azure AD Premium の機能です。使用するためには Azure AD Premium が必要となります。 <br /><br />詳細については、「[Azure AD Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 <br />30 日間無料試用版をすぐにご利用の場合は、[こちら](https://azure.microsoft.com/trial/get-started-active-directory/)のページにアクセスしてください。 |
-| Azure AD Connect Health の使用を開始するには、Azure AD のグローバル管理者であること |既定では、Azure AD Connect Health の使用を開始してポータルにアクセスし、操作を実行するために Health エージェントのインストールと構成を行うことができるのは、グローバル管理者のみです。 詳細については、[Azure AD ディレクトリの管理](../fundamentals/active-directory-administer.md)に関するページを参照してください。 <br /><br /> ロールベースのアクセス制御を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。 詳細については、[Azure AD Connect Health のロールベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)に関するセクションを参照してください。 <br /><br />**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。 Microsoft アカウントを使用することはできません。 詳細については、「[Azure への組織としてのサインアップ](../fundamentals/sign-up-organization.md)」を参照してください。 |
+| Azure AD Connect Health の使用を開始するには、Azure AD のグローバル管理者であること |既定では、Azure AD Connect Health の使用を開始してポータルにアクセスし、操作を実行するために Health エージェントのインストールと構成を行うことができるのは、グローバル管理者のみです。 詳細については、[Azure AD ディレクトリの管理](../fundamentals/active-directory-administer.md)に関するページを参照してください。 <br /><br /> Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。 詳細については、[Azure AD Connect Health の Azure ロールベースのアクセス制御 (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) に関するセクションを参照してください。 <br /><br />**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。 Microsoft アカウントを使用することはできません。 詳細については、「[Azure への組織としてのサインアップ](../fundamentals/sign-up-organization.md)」を参照してください。 |
 | Azure AD Connect Health エージェントが対象となる個々のサーバーにインストールされていること | Azure AD Connect Health がデータを受信し、監視機能および分析機能を提供するためには、対象となるサーバーに Health エージェントがインストールおよび構成されている必要があります。 <br /><br />たとえば、AD FS インフラストラクチャからデータを入手するためには、AD FS サーバーと Web アプリケーション プロキシ サーバーにエージェントがインストールされている必要があります。 同様に、オンプレミス AD DS インフラストラクチャに関するデータを入手するためには、ドメイン コントローラーにエージェントがインストールされている必要があります。 <br /><br /> |
 | Azure サービスのエンドポイントに対する送信接続 | エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、確実に以下のエンドポイントを許可リストに追加してください。 [送信接続エンドポイント](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)に関するセクションをご覧ください。 |
 |IP アドレスに基づく送信接続 | ファイアウォールでの IP アドレスに基づくフィルタリングについては、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。|
@@ -154,12 +154,13 @@ Windows Server 2008 R2 サーバーでの手順:
 7. **操作**ウィンドウで、 **[フェデレーション サービス プロパティの編集]** をクリックします。
 8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
 9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、 **[OK]** をクリックします。
+10. 詳細ログは、コマンド ```Set-AdfsProperties -LOGLevel Verbose``` を使用して powershell で有効にすることができます。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Windows Server 2016 で AD FS の監査を有効にするには
 
-1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、 **[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
+1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、 **[セキュリティ監査の生成]** をダブルクリックします。
-3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、 **[ユーザーまたはグループの追加]** をクリックして AD FS サービス アカウントをリストに追加し、 **[OK]** をクリックします。
+3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックして AD FS サービス アカウントをリストに追加し、**[OK]** をクリックします。
 4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:{0CCE9222-69AE-11D9-BED3-505054503030} /failure:enable /success:enable</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
@@ -294,7 +295,7 @@ Register-AzureADConnectHealthADDSAgent -Credential $myCreds
 これらのコマンドは "Credential" をパラメーターとして受け入れて、非対話型の方法またはサーバー コア マシンで登録を実行します。
 * Credential は、パラメーターとして渡される PowerShell 変数内でキャプチャできます。
 * エージェントを登録するためのアクセス許可を持ち、MFA が有効になっていない任意の Azure AD ID を指定できます。
-* 既定では、グローバル管理者がエージェントの登録を実行するためのアクセス許可を持ちます。 より低い権限を持つ ID に対してこの手順の実行を許可することもできます。 詳細については、[ロール ベースのアクセス制御](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)に関するセクションをご覧ください。
+* 既定では、グローバル管理者がエージェントの登録を実行するためのアクセス許可を持ちます。 より低い権限を持つ ID に対してこの手順の実行を許可することもできます。 詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](how-to-connect-health-operations.md#manage-access-with-role-based-access-control) に関するページを参照してください。
 
 ```powershell
     $cred = Get-Credential
@@ -374,7 +375,7 @@ Get-AzureAdConnectHealthProxySettings
 
 Azure AD Connect Health エージェントが Azure AD Connect Health サービスとの接続を失うことになるような問題が発生することがあります。 ネットワークの問題、アクセス許可の問題や、その他のさまざまな理由があります。
 
-エージェントが Azure AD Connect Health サービスに 2 時間以上データを送信できない場合は、ポータルに "Health Service data is not up to date (Health サービス データが最新ではありません)" というアラートが表示されます。 影響を受ける Azure AD Connect Health エージェントがデータを Azure AD Connect Health サービスにアップロードできるかどうかを確認するには、次の PowerShell コマンドを実行します。
+エージェントが Azure AD Connect Health サービスに 2 時間以上データを送信できない場合は、ポータルに "ヘルス サービス データが最新ではありません" というアラートが表示されます。 影響を受ける Azure AD Connect Health エージェントがデータを Azure AD Connect Health サービスにアップロードできるかどうかを確認するには、次の PowerShell コマンドを実行します。
 
 ```powershell
 Test-AzureADConnectHealthConnectivity -Role ADFS

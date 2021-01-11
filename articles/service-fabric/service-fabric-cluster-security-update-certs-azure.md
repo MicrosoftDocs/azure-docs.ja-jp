@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターで証明書を管理する
 description: Service Fabric クラスターに対して新しい証明書を追加、証明書をロールオーバー、および証明書を削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1ccf83e666f9106a31809ff41d55062826be78c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658389"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869747"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
@@ -260,7 +260,7 @@ Get-ServiceFabricClusterHealth
 
 管理と読み取り専用の 2 つの種類のクライアント証明書を追加できます。 追加した証明書は、クラスターの管理操作およびクエリ操作のアクセスを制御するために使用できます。 既定では、クラスター証明書は許可されている管理証明書の一覧に追加されます。
 
-任意の数のクライアント証明書を指定できます。 各追加や削除により Service Fabric クラスターの構成が更新されます。
+任意の数のクライアント証明書を指定できます。 追加や削除を実行するたびに、Service Fabric クラスターの構成が更新されます。
 
 
 ### <a name="adding-client-certificates---admin-or-read-only-via-portal"></a>ポータルを使用して管理または読み取り専用のクライアント証明書を追加する

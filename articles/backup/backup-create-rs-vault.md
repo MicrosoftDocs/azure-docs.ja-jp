@@ -4,12 +4,12 @@ description: この記事では、バックアップと復旧ポイントを格�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 244562efdc4c274a79ea27cdfa00dd51ae671fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c0b7b25eeecad8e8c519d37139551590a51a29e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032954"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892356"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Recovery Services コンテナーを作成して構成する
 
@@ -25,10 +25,10 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 >- まだバックアップを構成していない場合は、[こちらの手順に従って](#set-storage-redundancy)設定を確認および変更してください。
 >- 既にバックアップを構成しており、GRS から LRS に移行する必要がある場合は、[こちらの回避策を確認](#how-to-change-from-grs-to-lrs-after-configuring-backup)してください。
 
-1. **[Recovery Services コンテナー]** ブレードで、新しいコンテナーをクリックします。 **[設定]** セクションの **[プロパティ]** をクリックします。
-1. **[プロパティ]** で、 **[バックアップ構成]** の **[更新]** をクリックします。
+1. **[Recovery Services コンテナー]** ウィンドウで、新しいコンテナーを選択します。 **[設定]** セクションの **[プロパティ]** を選択します。
+1. **[プロパティ]** で、 **[バックアップ構成]** の **[更新]** を選択します。
 
-1. ストレージのレプリケーションの種類を選択し、 **[保存]** をクリックします。
+1. ストレージのレプリケーションの種類を選択し、 **[保存]** を選択します。
 
      ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
@@ -46,7 +46,7 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 - 監査またはコンプライアンスの必要がある場合にドリルを行う
 - プライマリ リージョンで障害が発生した場合に、VM またはそのディスクを復元する。
 
-この機能を選択するには、 **[バックアップ構成]** ブレードから **[Enable Cross Region Restore]\(リージョンをまたがる復元を有効にする\)** を選択します。
+この機能を選択するには、 **[バックアップ構成]** ウィンドウから **[Enable Cross Region Restore]\(リージョンをまたがる復元を有効にする\)** を選択します。
 
 このプロセスは、ストレージ レベルでの料金に影響します。
 
@@ -58,26 +58,44 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 >- CRR は、任意の GRS コンテナーのためのコンテナー レベルのオプトイン機能です (既定ではオフになっています)。
 >- オプトイン後にセカンダリ リージョンでバックアップ項目が利用可能になるまでに、最大 48 時間かかることがあります。
 >- 現在 CRR は、バックアップ管理の種類「ARM Azure VM」でのみサポートされています (クラシック Azure VM はサポートされません)。  追加の管理の種類が CRR をサポートすると、それらは自動的に**登録**されます。
->- 初めて保護を開始した後は、現在、リージョンをまたぐ復元を GRS または LRS に戻すことはできません。
+>- 初めて保護を開始した後は、現在、リージョンをまたがる復元を GRS または LRS に戻すことはできません。
 
 ### <a name="configure-cross-region-restore"></a>リージョンをまたがる復元の構成
 
-GRS 冗長性を使用して作成されたコンテナーには、リージョンをまたがる復元機能を構成するためのオプションが含まれています。 すべての GRS コンテナーにはバナーがあり、それはドキュメントにリンクされます。 コンテナーの CRR を構成するには、[バックアップ構成] ブレードにアクセスします。ここには、この機能を有効にするオプションが含まれています。
+GRS 冗長性を使用して作成されたコンテナーには、リージョンをまたがる復元機能を構成するためのオプションが含まれています。 すべての GRS コンテナーにはバナーがあり、それはドキュメントにリンクされます。 コンテナーの CRR を構成するには、[バックアップ構成] ウィンドウにアクセスします。ここには、この機能を有効にするオプションが含まれています。
 
  ![バックアップ構成のバナー](./media/backup-azure-arm-restore-vms/banner.png)
 
 1. ポータルから [Recovery Services コンテナー] > [設定] > [プロパティ] にアクセスします。
-2. **[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\)** をクリックして、機能を有効にします。
+2. **[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\)** を選択して、機能を有効にします。
 
-   ![[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\) をクリックする前](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\) を選択する前](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\) をクリックした後](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![[Enable Cross Region Restore in this vault]\(このコンテナーでリージョンをまたがる復元を有効にする\) を選択した後](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
 [セカンダリ リージョンのバックアップ項目を表示する](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region)方法について学習します。
 
 [セカンダリ リージョンで復元する](backup-azure-arm-restore-vms.md#restore-in-secondary-region)方法について学習します。
 
 [セカンダリ リージョンの復元ジョブを監視する](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)方法について説明します。
+
+## <a name="set-encryption-settings"></a>暗号化設定の設定
+
+既定では、Recovery Services コンテナー内のデータは、プラットフォーム マネージド キーを使用して暗号化されます。 この暗号化を有効にするために必要なユーザー側からの明示的なアクションはなく、これは Recovery Services コンテナーにバックアップ中のすべてのワークロードに適用されます。  独自のキーを使用して、このコンテナー内のバックアップ データを暗号化することもできます。 これは、カスタマー マネージド キーと呼ばれます。 独自のキーを使用してバックアップ データを暗号化する場合は、このコンテナーに対して項目を保護する前に、その暗号化キーを指定する必要があります。 独自のキーで暗号化を有効にした後は、元に戻すことはできません。
+
+### <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>カスタマー マネージド キーを使用して暗号化するためのコンテナーの構成
+
+カスタマー マネージド キーを使用して暗号化を行うようコンテナーを構成するには、次の手順を順番通りに従う必要があります。
+
+1. Recovery Services コンテナーのマネージド ID を有効にする
+
+1. Azure キー コンテナー内の暗号化キーにアクセスするためのアクセス許可をコンテナーに割り当てる
+
+1. Azure キー コンテナーで論理的な削除と消去保護を有効にする
+
+1. Recovery Services コンテナーに暗号化キーを割り当てる
+
+これらの各手順の詳細については、[こちらの記事](encryption-at-rest-with-cmk.md#configuring-a-vault-to-encrypt-using-customer-managed-keys)を参照してください。
 
 ## <a name="modifying-default-settings"></a>既定の設定を変更する
 
@@ -101,7 +119,7 @@ GRS からローカル冗長ストレージ (LRS) への移行を決定する前
 新しい LRS コンテナーでワークロードを保護するには、現在の保護とデータを GRS コンテナーから削除し、バックアップを再び構成する必要があります。
 
 >[!WARNING]
->次の操作は破壊的であり、元に戻すことはできません。 保護されたサーバーに関連付けられているすべてのバックアップ データとバックアップ項目が完全に削除されます。 慎重に進めてください。
+>次の操作は破壊的であり、元に戻すことはできません。 保護されたサーバーに関連付けられているすべてのバックアップ データとバックアップ項目が、完全に削除されます。 慎重に進めてください。
 
 GRS コンテナーで現在の保護を停止して削除します。
 
@@ -132,7 +150,6 @@ GRS コンテナー内にある現在保護されているデータを保持し�
   - GRS コンテナーの復旧ポイントを保持するには、料金を支払う必要があります (詳細については、[Azure Backup の料金](azure-backup-pricing.md)に関するページを参照してください)。
   - 必要な場合は、GRS コンテナーから VM を復元することができます。
   - 新しいリソース内の VM に対する LRS コンテナー上の最初のバックアップは、初期レプリカになります。
-
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 69c921ba67159d28a913173cee5e90fb04dcbf0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85561035"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448344"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>不変ストレージを使用してビジネスに不可欠な BLOB データを保存する
 
@@ -30,7 +30,7 @@ Azure portal、PowerShell、または Azure CLI を使用して、訴訟ホー�
 
 一般的な用途は次のとおりです。
 
-- **法令遵守**:Azure Blob Storage の不変ストレージは、組織が SEC 17a-4(f)、CFTC 1.31(d)、FINRA などの規制に準拠するのに役立ちます。 不変ストレージがこれらの規制要件にどのように対応しているかについて詳細に示した、Cohasset Associates によるテクニカル ホワイトペーパーをご用意しています。[Microsoft Service Trust Portal](https://aka.ms/AzureWormStorage) からダウンロードしてご利用ください。 [Azure セキュリティ センター](https://www.microsoft.com/trustcenter/compliance/compliance-overview)では、コンプライアンス関連の Microsoft の認定資格に関する詳しい情報を確認できます。
+- **法令遵守**:Azure Blob Storage の不変ストレージは、組織が SEC 17a-4(f)、CFTC 1.31(d)、FINRA などの規制に準拠するのに役立ちます。 不変ストレージがこれらの規制要件にどのように対応しているかについて詳細に示した、Cohasset Associates によるテクニカル ホワイトペーパーをご用意しています。[Microsoft Service Trust Portal](https://aka.ms/AzureWormStorage) からダウンロードしてご利用ください。 [Azure トラスト センター](https://www.microsoft.com/trustcenter/compliance/compliance-overview)では、コンプライアンス関連の Microsoft の認定資格に関する詳しい情報を確認できます。
 
 - **セキュリティ保護されたドキュメント リテンション**:Azure Blob Storage の不変ストレージにより、アカウント管理特権を持つユーザーを含め、どのユーザーもデータを変更したり、削除したりできなくなります。
 
@@ -78,7 +78,7 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 追加 BLOB はデータ ブロックで構成され、監査とログ記録のシナリオで必要なデータ追加操作用に最適化されています。 設計上、追加 BLOB では、BLOB の末尾に新しいブロックを追加することのみが許可されます。 不変性に関係なく、追加 BLOB の既存のブロックの変更や削除は、基本的には許可されていません。 追加 BLOB の詳細については、「[追加 BLOB について](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)」を参照してください。
 
-時間ベースの保持ポリシーのみが持っている `allowProtectedAppendWrites` 設定では、不変性の保護とコンプライアンスを維持しながら、追加 BLOB への新しいブロックの書き込みが許可されます。 有効にすると、ポリシーで保護されたコンテナー内に追加 BLOB を直接作成し、*AppendBlock* API を使用して、既存の追加 BLOB の末尾に新しいデータ ブロックを追加することができます。 新しいブロックを追加することだけができ、既存のブロックを変更したり削除したりすることはできません。 持続的不変性保護は引き続き適用され、有効な保持期間が経過するまで、追加 BLOB は削除に対して保護されます。 この設定を有効にしても、ブロック BLOB またはページ BLOB の不変性動作には影響しません。
+時間ベースの保持ポリシーのみが持っている `allowProtectedAppendWrites` 設定では、不変性の保護とコンプライアンスを維持しながら、追加 BLOB への新しいブロックの書き込みが許可されます。 この設定を有効にすると、ポリシーで保護されたコンテナー内に追加 BLOB を直接作成し、*AppendBlock* API を使用して、既存の追加 BLOB の末尾に新しいデータ ブロックを追加することができます。 新しいブロックを追加することだけができ、既存のブロックを変更したり削除したりすることはできません。 持続的不変性保護は引き続き適用され、有効な保持期間が経過するまで、追加 BLOB は削除に対して保護されます。 この設定を有効にしても、ブロック BLOB またはページ BLOB の不変性動作には影響しません。
 
 この設定は時間ベースの保持ポリシーの一部なので、"*有効な*" 保持期間中、追加 BLOB は不変状態のままになります。 追加 BLOB の初期作成後に新しいデータを追加できるため、保持期間の決定方法には若干の違いがあります。 有効な保持期間は、追加 BLOB の**最終変更時刻**とユーザーが指定した保持間隔の差になります。 同様に、保持期間が延長されるときは、不変ストレージでは、ユーザー指定の保持間隔の最新の値が有効な保持期間の計算に使用されます。
 

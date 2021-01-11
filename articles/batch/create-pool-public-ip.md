@@ -3,12 +3,12 @@ title: 特定のパブリック IP アドレスのプールを作成する
 description: 独自のパブリック IP アドレスを使用する Batch プールを作成する方法について説明します。
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.openlocfilehash: 630da3ff9c1f2318c7ed4da0e8f4b5ee8212f389
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 158facaf1fd5052c3626f065a69bfbd134ca4c3e
+ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023757"
+ms.lasthandoff: 08/30/2020
+ms.locfileid: "89146489"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>特定のパブリック IP アドレスの Azure Batch プールを作成する
 
@@ -24,7 +24,7 @@ Azure Batch プールを作成すると、指定した [Azure 仮想ネットワ
 
 - **Azure VNet**。 プールと IP アドレスを作成するのと同じ Azure サブスクリプションからの[仮想ネットワーク](batch-virtual-network.md)を使用する必要があります。 Azure Resource Manager ベースの VNet のみが使用できます。 VNet が[一般的な要件](batch-virtual-network.md#vnet-requirements)をすべて満たしていることを確認してください。
 
-- **少なくとも 1 つの Azure パブリック IP アドレス**。 1 つ以上のパブリック IP アドレスを作成するには、[Azure portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)、[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)、[Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress) のいずれかを使用することができます。 以下に示す要件に従ってください。
+- **少なくとも 1 つの Azure パブリック IP アドレス**。 1 つ以上のパブリック IP アドレスを作成するには、[Azure portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)、[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/network/public-ip#az-network-public-ip-create)、[Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress) のいずれかを使用することができます。 以下に示す要件に従ってください。
 
 > [!NOTE]
 > パブリック IP アドレスを含んでいるリソース グループには、Batch によって自動的に追加のネットワーク リソースが割り当てられます。 通常、専用のノード 100 台ごとに、1 つのネットワーク セキュリティ グループ (NSG) と 1 つのロード バランサーが Batch によって割り当てられます。 これらのリソースは、サブスクリプションのリソース クォータによって制限されます。 大規模なプールを使用する場合、これらの 1 つ以上のリソースについて、[クォータの引き上げの要求](batch-quota-limit.md#increase-a-quota)が必要になる場合があります。

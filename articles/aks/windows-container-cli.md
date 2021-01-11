@@ -1,15 +1,15 @@
 ---
-title: Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
+title: Azure CLI を使用して AKS クラスター上に Windows Server コンテナーを作成する
 description: 迅速に Kubernetes クラスターを作成し、Azure CLI を使用して Azure Kubernetes Service (AKS) で Windows Server コンテナーにアプリケーションをデプロイする方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 05/06/2020
-ms.openlocfilehash: 29ee22cb4b28726b25ead6ff78d90de99847666b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/16/2020
+ms.openlocfilehash: ff7fc00c8de5b4d577770c140d356d7f9da1b7e7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886954"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421231"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -70,7 +70,7 @@ az group create --name myResourceGroup --location eastus
 Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] の (高度な) ネットワーク プラグインを使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります。 必要なサブネット範囲とネットワークに関する考慮事項を計画するのに役立つ詳細情報については、[Azure CNI ネットワークの構成][use-advanced-networking]に関するページを参照してください。 *myAKSCluster* という名前の AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 このコマンドでは、必要なネットワーク リソースが存在しない場合、それらが作成されます。
 
 * クラスターは 2 つのノードで構成されています
-* クラスター上に作成された Windows Server コンテナーの管理者資格情報が、*windows-admin-password* パラメーターと *windows-admin-username* パラメーターによって設定されます。
+* クラスター上に作成されるすべての Windows Server コンテナーの管理者資格情報は、*windows-admin-password* パラメーターと *windows-admin-username* パラメーターによって設定されます。前者は [Windows Server のパスワード要件][windows-server-password]を満たしている必要があります。
 * ノードプールは `VirtualMachineScaleSets` を使用します
 
 > [!NOTE]
@@ -94,8 +94,7 @@ az aks create \
 ```
 
 > [!NOTE]
-> パスワード検証エラーが発生した場合は、別のリージョンでリソース グループを作成してください。
-> その後、新しいリソース グループを使用してクラスターを作成してください。
+> パスワード検証エラーが表示された場合は、*windows-admin-password* パラメーターが [Windows Server のパスワード要件][windows-server-password]を満たしていることを確認します。 パスワードが要件を満たしている場合は、別のリージョンでリソース グループの作成を試みます。 その後、新しいリソース グループを使用してクラスターを作成してください。
 
 数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。 場合によっては、クラスターのプロビジョニングに数分以上かかることがあります。 このような場合は、最大 10 分と考えてください。
 
@@ -294,3 +293,4 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [aks-faq]: faq.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

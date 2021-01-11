@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b45a0608d78330eafd6afc3656f8a4addbdffd3b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80876294"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321720"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -48,8 +48,8 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 #### <a name="owner-recommended-reading"></a>所有者に関する推奨資料
 
-- [Azure Active Directory での管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Azure でのガバナンス](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure でのガバナンス](../../governance/index.yml)
 
 ## <a name="credentials-management"></a>資格情報の管理
 
@@ -61,13 +61,13 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 | 問題 | 推奨 |
 | :- | :- |
-| 脆弱なパスワードから保護するためのメカニズムがない | Azure AD の[セルフサービス パスワード リセット (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) と[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises)を有効にします |
-| 漏洩したパスワードを検出するためのメカニズムがない | [パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) を有効にして分析情報を取得します |
-| AD FS を使用し、管理された認証に移行できない | [AD FS エクストラネットのスマート ロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)や [Azure AD スマート ](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)を有効にします |
-| パスワード ポリシーで、長さ、複数の文字セット、有効期限などの複雑なものに基づくルールを使用している | [Microsoft の推奨プラクティス](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf)を優先して再度検討し、アプローチをパスワード管理に切り替えて、[Azure AD のパスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)をデプロイしてください。 |
-| ユーザーが多要素認証 (MFA) を使用するように登録されていない | [すべてのユーザーのセキュリティ情報を登録](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy)して、ユーザーのパスワードと共にユーザーの ID を検証するためのメカニズムとして使用できるようにします |
-| パスワードの失効がユーザーのリスクに基づいていない | Azure AD [Identity Protection ユーザー リスク ポリシー](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)をデプロイして、SSPR を使用して漏洩した資格情報のパスワード変更を強制します |
-| 識別された IP アドレスから行われる悪意のあるユーザーからの悪意のある認証から保護するための、スマート ロックアウト メカニズムがない | パスワード ハッシュ同期または[パススルー認証](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) のいずれかを含む、クラウドで管理される認証をデプロイします |
+| 脆弱なパスワードから保護するためのメカニズムがない | Azure AD の[セルフサービス パスワード リセット (SSPR)](../authentication/concept-sspr-howitworks.md) と[パスワード保護](../authentication/concept-password-ban-bad-on-premises.md)を有効にします |
+| 漏洩したパスワードを検出するためのメカニズムがない | [パスワード ハッシュ同期](../hybrid/how-to-connect-password-hash-synchronization.md) (PHS) を有効にして分析情報を取得します |
+| AD FS を使用し、管理された認証に移行できない | [AD FS エクストラネットのスマート ロックアウト](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection)や [Azure AD スマート ](../authentication/howto-password-smart-lockout.md)を有効にします |
+| パスワード ポリシーで、長さ、複数の文字セット、有効期限などの複雑なものに基づくルールを使用している | [Microsoft の推奨プラクティス](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf)を優先して再度検討し、アプローチをパスワード管理に切り替えて、[Azure AD のパスワード保護](../authentication/concept-password-ban-bad.md)をデプロイしてください。 |
+| ユーザーが多要素認証 (MFA) を使用するように登録されていない | [すべてのユーザーのセキュリティ情報を登録](../identity-protection/howto-identity-protection-configure-mfa-policy.md)して、ユーザーのパスワードと共にユーザーの ID を検証するためのメカニズムとして使用できるようにします |
+| パスワードの失効がユーザーのリスクに基づいていない | Azure AD [Identity Protection ユーザー リスク ポリシー](../identity-protection/howto-identity-protection-configure-risk-policies.md)をデプロイして、SSPR を使用して漏洩した資格情報のパスワード変更を強制します |
+| 識別された IP アドレスから行われる悪意のあるユーザーからの悪意のある認証から保護するための、スマート ロックアウト メカニズムがない | パスワード ハッシュ同期または[パススルー認証](../hybrid/how-to-connect-pta-quick-start.md) (PTA) のいずれかを含む、クラウドで管理される認証をデプロイします |
 
 #### <a name="password-policies-recommended-reading"></a>パスワード ポリシーに関する推奨資料
 
@@ -77,19 +77,19 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 パスワードを変更またはリセットする必要があるユーザーは、ヘルプ デスクへの問い合わせの量とコストの最大の発生源の 1 つです。 コストに加え、ユーザーのリスクを軽減するためのツールとしてパスワードを変更することは、組織のセキュリティ体制を改善するための基本的な手順です。
 
-少なくとも、Azure AD の[セルフサービス パスワード リセット ](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) (SSPR) とオンプレミスの[パスワード保護](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) をデプロイして、次のことを行うことをお勧めします。
+少なくとも、Azure AD の[セルフサービス パスワード リセット ](../authentication/concept-sspr-howitworks.md) (SSPR) とオンプレミスの[パスワード保護](../authentication/howto-password-ban-bad-on-premises-deploy.md) をデプロイして、次のことを行うことをお勧めします。
 
 - ヘルプ デスクへの問い合わせをうまくそらす。
 - 一時パスワードの使用を置き替える。
 - オンプレミスのソリューションに依存している既存のセルフサービスのパスワード管理ソリューションを置き換える。
-- 組織内の[脆弱なパスワードを排除する](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)。
+- 組織内の[脆弱なパスワードを排除する](../authentication/concept-password-ban-bad.md)。
 
 > [!NOTE]
-> Azure AD Premium P2 サブスクリプションを使用している組織では、SSPR をデプロイして、[Identity Protection ユーザー リスク ポリシー](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)の一部として使用することをお勧めします。
+> Azure AD Premium P2 サブスクリプションを使用している組織では、SSPR をデプロイして、[Identity Protection ユーザー リスク ポリシー](../identity-protection/howto-identity-protection-configure-risk-policies.md)の一部として使用することをお勧めします。
 
 ### <a name="strong-credential-management"></a>強力な資格情報の管理
 
-パスワード自体は、悪意のあるユーザーによる環境へのアクセスを阻止できるほど安全ではありません。 少なくとも、特権アカウントを持つすべてのユーザーが、多要素認証 (MFA) を有効にする必要があります。 理想的には、[統合された登録](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)を有効にし、すべてのユーザーに対して、[統合された登録エクスペリエンス](https://docs.microsoft.com/azure/active-directory/user-help/user-help-security-info-overview)を使用して MFA と SSPR に登録するように要求する必要があります。 最終的には、予期しない状況によるロックアウトのリスクを軽減するために、[回復性を提供する](https://docs.microsoft.com/azure/active-directory/authentication/concept-resilient-controls)戦略を採用することをお勧めします。
+パスワード自体は、悪意のあるユーザーによる環境へのアクセスを阻止できるほど安全ではありません。 少なくとも、特権アカウントを持つすべてのユーザーが、多要素認証 (MFA) を有効にする必要があります。 理想的には、[統合された登録](../authentication/concept-registration-mfa-sspr-combined.md)を有効にし、すべてのユーザーに対して、[統合された登録エクスペリエンス](../user-help/security-info-setup-signin.md)を使用して MFA と SSPR に登録するように要求する必要があります。 最終的には、予期しない状況によるロックアウトのリスクを軽減するために、[回復性を提供する](../authentication/concept-resilient-controls.md)戦略を採用することをお勧めします。
 
 ![統合されたユーザー エクスペリエンスのフロー](./media/active-directory-ops-guide/active-directory-ops-img4.png)
 
@@ -127,7 +127,7 @@ PowerShell を使用する Azure AD スクリプトや Microsoft Graph API を�
 
 この目標は、次のいずれかの方法を使用してデバイス ID を取り込んで Azure AD で管理することで実行できます。
 
-- 組織は、[Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) を使用してデバイスを管理し、コンプライアンス ポリシーを適用し、デバイスの正常性を証明し、デバイスが準拠しているかどうかに基づいて条件付きアクセス ポリシーを設定することができます。 Microsoft Intune では、iOS デバイス、Mac デスクトップ (JAMF 統合経由)、Windows デスクトップ (Windows 10 のモバイル デバイス管理のネイティブな使用、および Microsoft Endpoint Configuration Manager との共同管理)、および Android モバイル デバイスを管理できます。
+- 組織は、[Microsoft Intune](/intune/what-is-intune) を使用してデバイスを管理し、コンプライアンス ポリシーを適用し、デバイスの正常性を証明し、デバイスが準拠しているかどうかに基づいて条件付きアクセス ポリシーを設定することができます。 Microsoft Intune では、iOS デバイス、Mac デスクトップ (JAMF 統合経由)、Windows デスクトップ (Windows 10 のモバイル デバイス管理のネイティブな使用、および Microsoft Endpoint Configuration Manager との共同管理)、および Android モバイル デバイスを管理できます。
 - [Hybrid Azure AD Join](../devices/hybrid-azuread-join-managed-domains.md) では、Active Directory ドメイン参加済みコンピューター デバイスがある環境で、グループ ポリシーまたは Microsoft Endpoint Configuration Manager を使用した管理を提供します。 組織は、シームレス SSO を使用した PHS または PTA のいずれかを使用して、マネージド環境をデプロイできます。 Azure AD に自分のデバイスを取り込むと、クラウドとオンプレミスのリソースでの SSO を使用したユーザーの生産性を最大化でき、同時に [条件付きアクセス](../conditional-access/overview.md) を使用したクラウドとオンプレミスのリソースへのアクセスをセキュリティで保護することができます。
 
 クラウドに登録されていないドメイン参加済み Windows デバイス、またはクラウドに登録されていても条件付きアクセス ポリシーがないドメイン参加済み Windows デバイスがある場合は、登録されていないデバイスを登録する必要があり、いずれにしても条件付きアクセス ポリシーで[制御として Hybrid Azure AD Join を使用](../conditional-access/require-managed-devices.md)する必要があります。
@@ -141,11 +141,11 @@ MDM または Microsoft Intune を使用してデバイスを管理していて�
 #### <a name="device-trust-access-policies-recommended-reading"></a>デバイスの信頼のアクセス ポリシーに関する推奨資料
 
 - [方法: ハイブリッド Azure Active Directory 参加の実装の計画](../devices/hybrid-azuread-join-plan.md)
-- [ID とデバイスのアクセスの構成](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [ID とデバイスのアクセスの構成](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello for Business
 
-Windows 10 では、[Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) によって PC 上のパスワードが強力な 2 要素認証に置き換えられます。 Windows Hello for Business を使用すると、ユーザーにとってより効率的な MFA エクスペリエンスを実現し、パスワードへの依存を減らすことができます。 Windows 10 デバイスのロールアウトを開始していない場合、または部分的にデプロイしただけの場合は、Windows 10 にアップグレードして、すべてのデバイスで [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) を有効することをお勧めします。
+Windows 10 では、[Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) によって PC 上のパスワードが強力な 2 要素認証に置き換えられます。 Windows Hello for Business を使用すると、ユーザーにとってより効率的な MFA エクスペリエンスを実現し、パスワードへの依存を減らすことができます。 Windows 10 デバイスのロールアウトを開始していない場合、または部分的にデプロイしただけの場合は、Windows 10 にアップグレードして、すべてのデバイスで [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) を有効することをお勧めします。
 
 パスワードレス認証の詳細については、「[Azure Active Directory でのパスワードレスの環境](../authentication/concept-authentication-passwordless.md)」を参照してください。
 
@@ -184,22 +184,22 @@ Windows 10 では、[Windows Hello for Business](https://docs.microsoft.com/wind
 - ユーザー属性が一貫してアプリケーションへのアクセスを決定できる場合は、動的グループを定義します。
 - [Azure AD アクセス レビュー](../governance/access-reviews-overview.md)を使用して、アプリケーションへのアクセスに使用されるグループに構成証明を実装します。
 
-一方、個々のユーザーに割り当てられているアプリケーションが見つかった場合は、それらのアプリケーションに[ガバナンス](https://docs.microsoft.com/azure/active-directory/governance/index)を実装してください。
+一方、個々のユーザーに割り当てられているアプリケーションが見つかった場合は、それらのアプリケーションに[ガバナンス](../governance/index.yml)を実装してください。
 
 #### <a name="assign-users-to-applications-recommended-reading"></a>アプリケーションへのユーザーの割り当てに関する推奨資料
 
-- [Azure Active Directory でアプリケーションにユーザーとグループを割り当てる](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups)
-- [Azure Active Directory でアプリ登録のアクセス許可を委任する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-delegate-app-roles)
-- [Azure Active Directory の動的グループ メンバーシップ ルール](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)
+- [Azure Active Directory でアプリケーションにユーザーとグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
+- [Azure Active Directory でアプリ登録のアクセス許可を委任する](../users-groups-roles/roles-delegate-app-roles.md)
+- [Azure Active Directory の動的グループ メンバーシップ ルール](../users-groups-roles/groups-dynamic-membership.md)
 
 ## <a name="access-policies"></a>アクセス ポリシー
 
 ### <a name="named-locations"></a>ネームド ロケーション
 
-Azure AD で[ネームド ロケーション](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
+Azure AD で[ネームド ロケーション](../reports-monitoring/quickstart-configure-named-locations.md)を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure AD では、次のためにネームド ロケーションを使用します。
 
 - リスク イベントの誤判定を防ぎます。 信頼できるネットワークの場所からサインインすることで、ユーザーのサインイン リスクが低下します。
-- [場所ベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)を構成する。
+- [場所ベースの条件付きアクセス](../reports-monitoring/quickstart-configure-named-locations.md)を構成する。
 
 ![ネームド ロケーション](./media/active-directory-ops-guide/active-directory-ops-img10.png)
 
@@ -255,10 +255,10 @@ Microsoft Intune アプリケーション管理 (MAM) を使用すると、ス�
 
 #### <a name="conditional-access-recommended-reading"></a>条件付きアクセスに関する推奨資料
 
-- [Azure Active Directory の条件付きアクセスのベスト プラクティス](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [ID とデバイスのアクセスの構成](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [Azure Active Directory の条件付きアクセス設定に関するリファレンス](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
-- [一般的な条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
+- [Azure Active Directory の条件付きアクセスのベスト プラクティス](../conditional-access/best-practices.md)
+- [ID とデバイスのアクセスの構成](/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Azure Active Directory の条件付きアクセス設定に関するリファレンス](../conditional-access/concept-conditional-access-conditions.md)
+- [一般的な条件付きアクセス ポリシー](../conditional-access/concept-conditional-access-policy-common.md)
 
 ## <a name="access-surface-area"></a>外部からのアクセス
 
@@ -273,9 +273,9 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 攻撃者はこれらのプロトコルを使用することを非常に好みます。実際に、ほぼ [100% のパスワードのスプレー攻撃](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)がレガシ認証プロトコルを使用しています。 ハッカーは多要素認証やデバイス認証などの追加のセキュリティの問題に必要な対話型サインインをサポートしていないため、レガシ認証プロトコルを使用します。
 
-環境でレガシ認証が広く使用されている場合は、レガシ クライアントをできるだけ早く[先進認証](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)をサポートするクライアントに移行するように計画する必要があります。 同じトークンで、一部のユーザーが既に先進認証を使用していても、他のユーザーがまだレガシ認証を使用している場合は、次の手順を実行してレガシ認証クライアントをロックダウンする必要があります。
+環境でレガシ認証が広く使用されている場合は、レガシ クライアントをできるだけ早く[先進認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)をサポートするクライアントに移行するように計画する必要があります。 同じトークンで、一部のユーザーが既に先進認証を使用していても、他のユーザーがまだレガシ認証を使用している場合は、次の手順を実行してレガシ認証クライアントをロックダウンする必要があります。
 
-1. [サインイン アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) を使用して、レガシ認証をまだ使用しているユーザーを特定し、修復を計画します。
+1. [サインイン アクティビティ レポート](../reports-monitoring/concept-sign-ins.md) を使用して、レガシ認証をまだ使用しているユーザーを特定し、修復を計画します。
 
    a. 影響を受けるユーザーに対して先進認証対応のクライアントにアップグレードします。
    
@@ -288,7 +288,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 #### <a name="legacy-authentication-recommended-reading"></a>レガシ認証に関する推奨資料
 
-- [Exchange Server のメールボックスへの POP3 または IMAP4 アクセスを有効または無効にする](https://docs.microsoft.com/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
+- [Exchange Server のメールボックスへの POP3 または IMAP4 アクセスを有効または無効にする](/exchange/clients/pop3-and-imap4/configure-mailbox-access?view=exchserver-2019)
 
 ### <a name="consent-grants"></a>同意の付与
 
@@ -316,11 +316,11 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 | Microsoft Graph API| Directory.AccessAsUser.All |
 | Azure REST API | user_impersonation |
 
-このシナリオを回避するには、[Office 365 での不正な同意の付与の検出と修復](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) に関するページを参照して、不正な許可があるアプリケーションや必要以上に許可がされているアプリケーションを特定して修正する必要があります。 次に、[セルフサービスを完全に削除し](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent)、[ガバナンスプロシージャを確立](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) します。 最後に、アプリのアクセス許可の定期的なレビューをスケジュールし、不要な場合には削除します。
+このシナリオを回避するには、[Office 365 での不正な同意の付与の検出と修復](/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) に関するページを参照して、不正な許可があるアプリケーションや必要以上に許可がされているアプリケーションを特定して修正する必要があります。 次に、[セルフサービスを完全に削除し](../manage-apps/configure-user-consent.md)、[ガバナンスプロシージャを確立](../manage-apps/configure-admin-consent-workflow.md) します。 最後に、アプリのアクセス許可の定期的なレビューをスケジュールし、不要な場合には削除します。
 
 #### <a name="consent-grants-recommended-reading"></a>同意の付与に関する推奨資料
 
-- [Microsoft Graph API のアクセス許可](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph API のアクセス許可](/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>ユーザーとグループの設定
 
@@ -328,7 +328,7 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 #### <a name="user-settings"></a>ユーザー設定
 
-- **外部ユーザー** - 外部コラボレーションは、Teams、Power BI、Sharepoint Online、Azure Information Protection などのサービスを使用して、企業内で有機的に発生する場合があります。 ユーザーが開始した外部コラボレーションを制御するための明示的な制約がある場合は、[Azure AD エンタイトルメント管理](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)やヘルプ デスクの利用などの制御された運用を使用して、外部ユーザーを有効にすることをお勧めします。 サービスに対して有機的な外部コラボレーションを許可しない場合は、[外部ユーザーの招待からメンバーを完全にブロックする](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations)ことができます。 また、外部ユーザーの招待で[特定のドメインを許可またはブロック](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list)することもできます。
+- **外部ユーザー** - 外部コラボレーションは、Teams、Power BI、Sharepoint Online、Azure Information Protection などのサービスを使用して、企業内で有機的に発生する場合があります。 ユーザーが開始した外部コラボレーションを制御するための明示的な制約がある場合は、[Azure AD エンタイトルメント管理](../governance/entitlement-management-overview.md)やヘルプ デスクの利用などの制御された運用を使用して、外部ユーザーを有効にすることをお勧めします。 サービスに対して有機的な外部コラボレーションを許可しない場合は、[外部ユーザーの招待からメンバーを完全にブロックする](../external-identities/delegate-invitations.md)ことができます。 また、外部ユーザーの招待で[特定のドメインを許可またはブロック](../external-identities/allow-deny-list.md)することもできます。
 - **アプリの登録** - アプリの登録が有効になっている場合、エンド ユーザーはアプリケーション自体をオンボードし、データへのアクセスを許可することができます。 アプリの登録の典型的な例としては、Outlook プラグインを有効にするユーザー、またはメールやカレンダーを読んだりメールを送信したりするための音声アシスタント (Alexa や Siri など) があります。 顧客がアプリの登録を無効にすると決めた場合は、アプリケーションを管理者アカウントに登録する必要があり、多くの場合はプロセスを運用化するプロセスを設計する必要があるため、InfoSec チームと IAM チームは例外 (ビジネス要件に基づいて必要なアプリの登録) の管理に関与する必要があります。
 - **管理ポータル** - 組織は Azure portal の Azure AD ブレードをロックダウンして、管理者以外が Azure portal 内の Azure AD 管理にアクセスして混乱を招くことができないようにします。 Azure AD 管理ポータルのユーザー設定にアクセスして、アクセスを制限します。
 
@@ -343,33 +343,33 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 #### <a name="groups-recommended-reading"></a>グループに関する推奨資料
 
-- [Azure Active Directory B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)
-- [Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)
-- [Azure Active Directory のアプリ、アクセス許可、および同意](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)
-- [Azure Active Directory でのグループを使用したリソースへのアクセス管理](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
-- [アプリケーション アクセス管理のセルフ サービス化に必要な Azure Active Directory の設定](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)
+- [Azure Active Directory B2B コラボレーションとは](../external-identities/what-is-b2b.md)
+- [Azure Active Directory とアプリケーションの統合](../develop/quickstart-register-app.md)
+- [Azure Active Directory のアプリ、アクセス許可、および同意](../develop/quickstart-register-app.md)
+- [Azure Active Directory でのグループを使用したリソースへのアクセス管理](./active-directory-manage-groups.md)
+- [アプリケーション アクセス管理のセルフ サービス化に必要な Azure Active Directory の設定](../users-groups-roles/groups-self-service-management.md)
 
 ### <a name="traffic-from-unexpected-locations"></a>予期しない場所からのトラフィック
 
-攻撃者は世界中のさまざまな場所からやって来ます。 このリスクは、場所が条件である条件付きアクセス ポリシーを使用して管理します。 条件付きアクセス ポリシーの[場所の条件](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition)によって、サインインするビジネス上の理由がない場所からのアクセスをブロックすることができます。
+攻撃者は世界中のさまざまな場所からやって来ます。 このリスクは、場所が条件である条件付きアクセス ポリシーを使用して管理します。 条件付きアクセス ポリシーの[場所の条件](../conditional-access/location-condition.md)によって、サインインするビジネス上の理由がない場所からのアクセスをブロックすることができます。
 
 ![新しいネームド ロケーションを作成する](./media/active-directory-ops-guide/active-directory-ops-img14.png)
 
-使用可能な場合は、セキュリティ情報およびイベント管理 (SIEM) ソリューションを使用して、リージョン間のアクセスのパターンを分析および検索します。 SIEM 製品を使用していない場合、または Azure AD からの認証情報の取り込みではない場合は、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を使用してリージョン間のアクセスのパターンを特定することをお勧めします。
+使用可能な場合は、セキュリティ情報およびイベント管理 (SIEM) ソリューションを使用して、リージョン間のアクセスのパターンを分析および検索します。 SIEM 製品を使用していない場合、または Azure AD からの認証情報の取り込みではない場合は、[Azure Monitor](../../azure-monitor/overview.md) を使用してリージョン間のアクセスのパターンを特定することをお勧めします。
 
 ## <a name="access-usage"></a>アクセスの使用状況
 
 ### <a name="azure-ad-logs-archived-and-integrated-with-incident-response-plans"></a>アーカイブされ、インシデント対応計画と統合された Azure AD ログ
 
-Azure AD のサインイン アクティビティ、監査とリスク イベントへのアクセス権を持つことは、トラブルシューティング、使用状況の分析、およびフォレンジクスの調査を行うために不可欠です。 Azure AD は、保有期間が制限されている REST API を介して、これらのソースへのアクセスを提供します。 セキュリティ情報とイベント管理 (SIEM) システム、またはそれと同等のアーカイブ テクノロジは、監査とサポートの長期ストレージの鍵となります。 Azure AD ログの長期ストレージを有効にするには、既存の SIEM ソリューションに追加するか、[Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-activity-logs-azure-monitor) を使用する必要があります。 インシデント対応計画および調査の一環として使用できるログをアーカイブしてください。
+Azure AD のサインイン アクティビティ、監査とリスク イベントへのアクセス権を持つことは、トラブルシューティング、使用状況の分析、およびフォレンジクスの調査を行うために不可欠です。 Azure AD は、保有期間が制限されている REST API を介して、これらのソースへのアクセスを提供します。 セキュリティ情報とイベント管理 (SIEM) システム、またはそれと同等のアーカイブ テクノロジは、監査とサポートの長期ストレージの鍵となります。 Azure AD ログの長期ストレージを有効にするには、既存の SIEM ソリューションに追加するか、[Azure Monitor](../reports-monitoring/concept-activity-logs-azure-monitor.md) を使用する必要があります。 インシデント対応計画および調査の一環として使用できるログをアーカイブしてください。
 
 #### <a name="logs-recommended-reading"></a>ログに関する推奨資料
 
-- [Azure Active Directory 監査 API リファレンス](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-audit-reference)
-- [Azure Active Directory サインイン アクティビティ レポート API リファレンス](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-sign-in-activity-reference)
-- [Azure AD Reporting API と証明書を使ってデータを取得する](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
-- [Azure Active Directory Identity Protection 用の Microsoft Graph](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
-- [Office 365 管理アクティビティ API リファレンス](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
+- [Azure Active Directory 監査 API リファレンス](/graph/api/resources/directoryaudit?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Azure Active Directory サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin?view=graph-rest-beta%3fview%3dgraph-rest-beta)
+- [Azure AD Reporting API と証明書を使ってデータを取得する](../reports-monitoring/tutorial-access-api-with-certificates.md)
+- [Azure Active Directory Identity Protection 用の Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md)
+- [Office 365 管理アクティビティ API リファレンス](/office/office-365-management-api/office-365-management-activity-api-reference)
 - [Azure Active Directory Power BI コンテンツ パックの使用方法](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>まとめ

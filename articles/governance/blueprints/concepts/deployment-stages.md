@@ -1,14 +1,14 @@
 ---
 title: ブループリント デプロイのステージ
 description: ブループリント割り当ての作成時に Azure Blueprints サービスで行われるセキュリティとアーティファクト関連の手順について説明します。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: d3ccba6645e1b14fffc543af2a6ad40e3634e2ed
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 73d5d67cf77d4ccc48517c895630b8299081e2e0
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970656"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049776"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>ブループリント デプロイのステージ
 
@@ -56,8 +56,8 @@ Azure Blueprints サービスによって、直接リソースがデプロイさ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [静的および動的パラメーター](./parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](./sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](./resource-locking.md)の使用方法を調べる。
 - [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
 - ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

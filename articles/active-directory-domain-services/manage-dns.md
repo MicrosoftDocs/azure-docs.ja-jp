@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b48fb62532402338fdf53cd6f9b15bac812c3c2c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: af321f4e9ef9e340026852a759bb70b9f03c77f6
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040216"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722944"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインで DNS を管理し、条件付きフォワーダーを作成する
 
@@ -107,7 +107,7 @@ Azure AD DS DNS ゾーンには、マネージド ドメイン自体のゾーン
 
 ## <a name="next-steps"></a>次のステップ
 
-DNS の管理の詳細については、 [Technet の DNS ツールの記事](https://technet.microsoft.com/library/cc753579.aspx)を参照してください。
+DNS の管理の詳細については、 [Technet の DNS ツールの記事](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753579(v=ws.11))を参照してください。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

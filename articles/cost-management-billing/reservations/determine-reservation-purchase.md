@@ -4,15 +4,16 @@ description: この記事は、購入すべき予約を判断するのに役立�
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 9e5657211e640c741dbf1bf2b5473a3ea5e10487
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d89f890d3e2bb8238a00b4a529b8804a8c38fa6f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287296"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684747"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>購入する予約を判断する
 
@@ -38,7 +39,7 @@ Promo シリーズの VM は予約割引が適用されないので、分析対�
 
 1 日の使用量が 24 時間未満のリソースは無視してください。
 
-インスタンス サイズ ファミリー レベルで分析したい場合は、インスタンス サイズの柔軟性の値を [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) から取得できます。 その値とご自身のデータとを結合して分析を行ってください。 インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+インスタンス サイズ ファミリー レベルで分析したい場合は、インスタンス サイズの柔軟性の値を [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) から取得できます。 その値とご自身のデータとを結合して分析を行ってください。 インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/reserved-vm-instance-size-flexibility.md)」を参照してください。
 
 ### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Azure Synapse Analytics 予約インスタンスを購入するにあたって使用量を分析する
 
@@ -91,6 +92,8 @@ Azure portal の [予約] に移動し、100 DWU の倍数単位で Azure Synaps
 レコメンデーション エンジンによって計算される予約購入は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/docs) の **[Recommended]\(推奨\)** タブに表示されます。 以下に例の画像を示します。
 
 ![推奨量を示す画像](./media/determine-reservation-purchase/select-product-ri.png)
+
+[推奨事項](reserved-instance-purchase-recommendations.md#recommendations-in-the-azure-portal)の詳細をご確認ください。
 
 ## <a name="recommendations-in-the-cost-management-power-bi-app"></a>Cost Management Power BI アプリにおける推奨情報
 

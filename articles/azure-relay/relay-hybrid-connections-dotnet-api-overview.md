@@ -2,13 +2,14 @@
 title: Azure Relay .NET Standard API の概要 | Microsoft Docs
 description: この記事は、Azure Relay ハイブリッド接続 .NET Standard API の主な概要についてまとめてあります。
 ms.topic: article
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 578d0fd2bbf8b9bb897a79e88399dee3711f5990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 44d5800c08b49118e99a678e31d02e5b7a1f550c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316843"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935672"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay ハイブリッド接続 .NET Standard API の概要
 
@@ -82,7 +83,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>データの受信
 
-[HybridConnectionStream][HCStream] クラスでは、双方向の通信が可能です。 ほとんどの場合、継続的にストリームから受信します。 ストリームからテキストを読み取る場合は、[StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) オブジェクトも使用できます。これを使用すると、データを容易に解析できます。 たとえば、`byte[]` としてではなく、テキストとしてデータを読み取ることができます。
+[HybridConnectionStream][HCStream] クラスでは、双方向の通信が可能です。 ほとんどの場合、継続的にストリームから受信します。 ストリームからテキストを読み取る場合は、[StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1) オブジェクトも使用できます。これを使用すると、データを容易に解析できます。 たとえば、`byte[]` としてではなく、テキストとしてデータを読み取ることができます。
 
 次のコードは、取り消しが要求されるまで、ストリームから個々のテキスト行を読み取ります。
 
@@ -109,14 +110,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>データの送信
 
-接続が確立されたら、リレー エンドポイントにメッセージを送信することができます。 接続オブジェクトは [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) を継承するため、データを `byte[]` として送信します。 以下の例は、その方法を示しています。
+接続が確立されたら、リレー エンドポイントにメッセージを送信することができます。 接続オブジェクトは [Stream](/dotnet/api/system.io.stream?view=netcore-3.1) を継承するため、データを `byte[]` として送信します。 以下の例は、その方法を示しています。
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-ただし、毎回文字列をエンコードすることなく、テキストを直接送信する場合は、[StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) オブジェクトを使用して `hybridConnectionStream` オブジェクトをラップすることができます。
+ただし、毎回文字列をエンコードすることなく、テキストを直接送信する場合は、[StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1) オブジェクトを使用して `hybridConnectionStream` オブジェクトをラップすることができます。
 
 ```csharp
 // The StreamWriter object only needs to be created once

@@ -1,16 +1,16 @@
 ---
-title: チュートリアル:Azure VMware Solution (AVS) で VM をデプロイするためのコンテンツ ライブラリを作成する
-description: この Azure VMware Solution (AVS) のチュートリアルでは、コンテンツ ライブラリを作成して、AVS プライベート クラウドに VM をデプロイします。
+title: チュートリアル:Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成する
+description: この Azure VMware Solution のチュートリアルでは、コンテンツ ライブラリを作成して、Azure VMware Solution プライベート クラウドに VM をデプロイします。
 ms.topic: tutorial
 ms.date: 07/16/2020
-ms.openlocfilehash: d5f0f26293af9eb146cfb4b2f3adf47fe8cce94f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3abaafac0dbd6f3537d2ca30a093627230780eb5
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079385"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750546"
 ---
-# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution-avs"></a>チュートリアル:Azure VMware Solution (AVS) で VM をデプロイするためのコンテンツ ライブラリを作成する
+# <a name="tutorial-create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>チュートリアル:Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成する
 
 コンテンツ ライブラリは、ライブラリ項目の形式でコンテンツを格納および管理します。 1 つのライブラリ項目は、仮想マシン (VM) をデプロイするために使用する 1 つ以上のファイルで構成されます。 
  
@@ -22,7 +22,7 @@ ms.locfileid: "87079385"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、NSX-T 論理スイッチ セグメントと管理された DHCP サービスが必要です。  詳細については、「[Azure VMWare Solution (AVS) プレビューで DHCP を管理する方法](manage-dhcp.md)」を参照してください。
+このチュートリアルを完了するには、NSX-T 論理スイッチ セグメントと管理された DHCP サービスが必要です。  詳細については、[Azure VMware Solution プレビューで DHCP を管理する方法](manage-dhcp.md)に関する記事を参照してください。
 
 ## <a name="create-a-content-library"></a>コンテンツ ライブラリを作成する
 

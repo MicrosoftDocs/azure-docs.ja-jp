@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Imagineer WebVision の統合 | Microsoft Docs'
 description: Azure Active Directory と Imagineer WebVision の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b936a3f4-74c1-4437-b0f7-6d1b1de38bb1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd301abc9beea05df998a7e0e62ed7479c972135
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8270bf305fcf749a81f06801b46867e614d85127
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100417"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>チュートリアル: Azure Active Directory と Imagineer WebVision の統合
 

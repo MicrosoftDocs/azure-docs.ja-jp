@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3f17f6fd881243d91428c6025fd63469a38afa0f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165772"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268810"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Azure Active Directory デバイスのデプロイを計画する
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) を使用すると、組織では、デバイ�
 
 * ユーザー エクスペリエンスの向上 – Azure AD のデバイス ID を使用すると、ユーザーが個人のデバイスと会社のデバイスの両方から組織のクラウドベースのリソースに簡単にアクセスできます。 管理者は、すべての Windows デバイスで統一されたエクスペリエンスを実現するために [Enterprise State Roaming](enterprise-state-roaming-overview.md) を有効にすることができます。
 
-* デプロイと管理の簡素化 – デバイス ID 管理により、[Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)、[一括プロビジョニング](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)、および[セルフサービス: Out-of-box experience (OOBE)](../user-help/user-help-join-device-on-network.md) を使用して、デバイスを Azure AD に取り込むプロセスを簡素化できます。 これらのデバイスは、[Microsoft Intune](https://docs.microsoft.com/mem/intune/fundamentals/what-is-intune) などのモバイル デバイス管理 (MDM) ツールとそれらの ID を使用して、[Azure portal](https://portal.azure.com/) で管理できます。
+* デプロイと管理の簡素化 – デバイス ID 管理により、[Windows Autopilot](/windows/deployment/windows-autopilot/windows-10-autopilot)、[一括プロビジョニング](/mem/intune/enrollment/windows-bulk-enroll)、および[セルフサービス: Out-of-box experience (OOBE)](../user-help/user-help-join-device-on-network.md) を使用して、デバイスを Azure AD に取り込むプロセスを簡素化できます。 これらのデバイスは、[Microsoft Intune](/mem/intune/fundamentals/what-is-intune) などのモバイル デバイス管理 (MDM) ツールとそれらの ID を使用して、[Azure portal](https://portal.azure.com/) で管理できます。
 
 ### <a name="training-resources"></a>トレーニング リソース
 
@@ -127,21 +127,21 @@ iOS および Android デバイスは Azure AD 登録のみが可能です。 �
 
 ## <a name="azure-ad-registration"></a>Azure AD の登録 
 
-登録されたデバイスは、多くの場合 [Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment) で管理されます。 デバイスは、オペレーティング システムに応じて、さまざまな方法で Intune に登録されます。 
+登録されたデバイスは、多くの場合 [Microsoft Intune](/mem/intune/enrollment/device-enrollment) で管理されます。 デバイスは、オペレーティング システムに応じて、さまざまな方法で Intune に登録されます。 
 
 Azure AD 登録済みデバイスでは、持ち込みのデバイス (BYOD) と会社所有のデバイスによるクラウド リソースへの SSO がサポートされています。 リソースへのアクセスは、デバイスとユーザーに適用された Azure AD の [CA ポリシー](../conditional-access/require-managed-devices.md)に基づいています。
 
 ### <a name="registering-devices"></a>デバイスの登録
 
-登録されたデバイスは、多くの場合 [Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment) で管理されます。 デバイスは、オペレーティング システムに応じて、さまざまな方法で Intune に登録されます。 
+登録されたデバイスは、多くの場合 [Microsoft Intune](/mem/intune/enrollment/device-enrollment) で管理されます。 デバイスは、オペレーティング システムに応じて、さまざまな方法で Intune に登録されます。 
 
 BYOD と企業所有のモバイル デバイスは、ポータル サイト アプリをインストールするユーザーによって登録されます。
 
-* [iOS](https://docs.microsoft.com/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
+* [iOS](/mem/intune/user-help/install-and-sign-in-to-the-intune-company-portal-app-ios)
 
-* [Android](https://docs.microsoft.com/mem/intune/user-help/enroll-device-android-company-portal)
+* [Android](/mem/intune/user-help/enroll-device-android-company-portal)
 
-* [Windows 10](https://docs.microsoft.com/mem/intune/user-help/enroll-windows-10-device)
+* [Windows 10](/mem/intune/user-help/enroll-windows-10-device)
 
 組織に最適なオプションがデバイスの登録である場合は、次のリソースを参照してください。
 
@@ -171,9 +171,9 @@ Windows 10 Professional または Windows 10 Enterprise のいずれかがデバ
 
 * [Windows の Out of Box Experience (OOBE) または Windows の設定から](../user-help/user-help-join-device-on-network.md)
 
-* [Windows Auto pilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)
+* [Windows Auto pilot](/windows/deployment/windows-autopilot/windows-autopilot)
 
-* [一括登録](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)
+* [一括登録](/mem/intune/enrollment/windows-bulk-enroll)
 
 慎重に[これらのアプローチを比較](azureadjoin-plan.md)した後に、デプロイ手順を選択してください。
 
@@ -216,7 +216,7 @@ Hybrid Azure AD Join がデバイスにとって最適なソリューション�
 | 現在のデバイスの状態| 目的のデバイスの状態| 操作方法 |
 | - | - | - |
 | オンプレミスのドメイン参加| Hybrid Azure AD Join| Azure AD 接続または AD FS を使用して Azure に参加する |
-| オンプレミスのワークグループ参加済みまたは新規| Hybrid Azure AD Join| [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) でサポートされています。 それ以外の場合、デバイスは Hybrid Azure AD Join の前にオンプレミスのドメイン参加済みである必要があります |
+| オンプレミスのワークグループ参加済みまたは新規| Hybrid Azure AD Join| [Windows Autopilot](/windows/deployment/windows-autopilot/windows-autopilot) でサポートされています。 それ以外の場合、デバイスは Hybrid Azure AD Join の前にオンプレミスのドメイン参加済みである必要があります |
 | Azure AD 参加済み| Hybrid Azure AD Join| Azure AD から切断します。これにより、オンプレミスのワークグループまたは新しい状態になります。 |
 | Azure AD に登録済み| Hybrid Azure AD Join| Windows のバージョンによって異なります。 [これらの考慮事項を参照してください](hybrid-azuread-join-plan.md)。 |
 
@@ -226,10 +226,6 @@ Hybrid Azure AD Join がデバイスにとって最適なソリューション�
 
 * [デバイス設定を構成する](device-management-azure-portal.md#configure-device-settings)
 * Windows デバイスを管理するには、ローカル管理者である必要があります。 [Azure AD は、Azure AD 参加済みデバイスのこのメンバーシップを更新](assign-local-admin.md)して、デバイス マネージャーの役割を持つデバイスを、参加済みのすべてのデバイスに管理者として自動的に追加します。
-
-* [デバイスを検索する](device-management-azure-portal.md#locate-devices)
-
-* [デバイス ID 管理タスクを実行する](device-management-azure-portal.md#device-identity-management-tasks)
 
 [古いデバイスを管理する](manage-stale-devices.md)ことで環境をクリーンな状態に保って、現在のデバイスの管理に関するリソースに集中するようにしてください。
 
@@ -243,13 +239,13 @@ Hybrid Azure AD Join がデバイスにとって最適なソリューション�
 
 | デバイス管理ツール| Azure AD 登録済み| Azure AD 参加| ハイブリッド Azure AD 参加|
 | - | - | - | - |
-| [モバイル デバイス管理 (MDM)](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>例:Microsoft Intune| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)|  |
-| [Microsoft Intune および Microsoft Endpoint Configuration Manager との共同管理](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>(Windows 10 以降)| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)|  |
-| [グループ ポリシー](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Windows のみ)| | | ![チェック](./media/plan-device-deployment/check.png)|  |
+| [モバイル デバイス管理 (MDM)](/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>例:Microsoft Intune| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)|  |
+| [Microsoft Intune および Microsoft Endpoint Configuration Manager との共同管理](/mem/configmgr/comanage/overview) <br>(Windows 10 以降)| | ![チェック](./media/plan-device-deployment/check.png)| ![チェック](./media/plan-device-deployment/check.png)|  |
+| [グループ ポリシー](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>(Windows のみ)| | | ![チェック](./media/plan-device-deployment/check.png)|  |
 
 
 
- 登録済みの iOS または Android デバイスのデバイス管理の有無にかかわらず、[Microsoft Intune のモバイル アプリケーション管理 (MAM)](https://docs.microsoft.com/mem/intune/apps/app-management) を検討することをお勧めします。
+ 登録済みの iOS または Android デバイスのデバイス管理の有無にかかわらず、[Microsoft Intune のモバイル アプリケーション管理 (MAM)](/mem/intune/apps/app-management) を検討することをお勧めします。
 
  また、管理者は、組織内の Windows オペレーティング システムをホストする[仮想デスクトップ インフラストラクチャ (VDI) プラットフォームをデプロイ](howto-device-identity-virtual-desktop-infrastructure.md)して、管理を効率化し、リソースの統合と一元化によってコストを削減することもできます。 
 

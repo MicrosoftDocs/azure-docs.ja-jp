@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と XaitPorter の統合 | Microsoft Docs'
 description: Azure Active Directory と XaitPorter の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 8652073eb3d7d154958566b68fb6e27c35d8da30
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086531"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>チュートリアル: Azure Active Directory と XaitPorter の統合
 
@@ -116,7 +112,7 @@ XaitPorter で Azure AD シングル サインオンを構成するには、次�
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-6. **IP アドレス**または**アプリのフェデレーション メタデータ URL** を [SmartRecruiters サポート チーム](https://www.smartrecruiters.com/about-us/contact-us/)に提供し、XaitPorter がホワイトリストを構成して、IP アドレスがお使いの XaitPorter インスタンスから到達可能にできるようにします。 
+6. **IP アドレス**または**アプリのフェデレーション メタデータ URL** を [SmartRecruiters サポート チーム](https://www.smartrecruiters.com/about-us/contact-us/)に提供します。これにより、XaitPorter では、承認済みリストを構成して、XaitPorter インスタンスから IP アドレスに確実に到達できるようにすることができます。 
 
 ### <a name="configure-xaitporter-single-sign-on"></a>XaitPorter シングル サインオンの構成
 
@@ -217,4 +213,3 @@ XaitPorter で Azure AD シングル サインオンを構成するには、次�
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

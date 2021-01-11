@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub から取得したデータのリアルタイム データ視覚化 – Power BI
-description: Power BI を使用して、センサーから収集されて Azure IoT ハブに送信された気温と湿度のデータを視覚化します。
+description: Power BI を使用して、センサーから収集されて Azure IoT Hub に送信された気温と湿度のデータを視覚化します。
 author: robinsh
 keywords: リアルタイム データの視覚化, ライブ データの視覚化, センサー データの視覚化
 ms.service: iot-hub
@@ -24,13 +24,13 @@ ms.locfileid: "84634517"
 
 ## <a name="what-you-learn"></a>学習内容
 
-Azure IoT ハブが受信したリアルタイム センサー データを Power BI を使用して視覚化する方法について説明します。 Web アプリを使用して IoT ハブ内のデータを視覚化しようとする場合は、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
+Azure IoT Hub が受信したリアルタイム センサー データを Power BI を使用して視覚化する方法について説明します。 Web アプリを使用して IoT Hub 内のデータを視覚化しようとする場合は、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
 
 ## <a name="what-you-do"></a>作業内容
 
-* コンシューマー グループを追加して、データにアクセスできるよう IoT ハブを準備する。
+* コンシューマー グループを追加して、データにアクセスできるよう IoT Hub を準備する。
 
-* IoT ハブから Power BI アカウントにデータを転送できるよう Stream Analytics ジョブを作成、構成、実行する。
+* IoT Hub から Power BI アカウントにデータを転送できるよう Stream Analytics ジョブを作成、構成、実行する。
 
 * Power BI レポートの作成と公開を行い、データを視覚化する。
 
@@ -58,7 +58,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
    **ジョブ名**:ジョブの名前。 名前はグローバルに一意である必要があります。
 
-   **[リソース グループ]** :IoT ハブと同じリソース グループを使用します。
+   **[リソース グループ]** :IoT Hub と同じリソース グループを使用します。
 
    **[場所]** :リソース グループと同じ場所を使用します。
 
@@ -84,7 +84,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
    **エンドポイント**: **[メッセージング]** を選びます。
 
-   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT ハブに使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT ハブ上で既定で作成され、IoT ハブによって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
+   **共有アクセス ポリシー名**:Stream Analytics ジョブで IoT Hub に使用する共有アクセス ポリシーの名前を選択します。 このチュートリアルでは、*service* を選択できます。 *service* ポリシーは、新しい IoT Hub 上で既定で作成され、IoT Hub によって公開されるクライアント側エンドポイント上で送受信するためのアクセス許可を付与します。 詳細については、「[アクセス制御とアクセス許可](iot-hub-devguide-security.md#access-control-and-permissions)」を参照してください。
 
    **[共有アクセス ポリシー キー]** :このフィールドは、共有アクセス ポリシー名の選択内容に基づいて自動的に入力されます。
 
@@ -197,7 +197,7 @@ Microsoft は [Power BI のモバイル アプリ](https://powerbi.microsoft.com
 
 ## <a name="next-steps"></a>次のステップ
 
-Power BI を使用して、Azure IoT ハブからのリアルタイム センサー データを視覚化することができました。
+Power BI を使用して、Azure IoT Hub からのリアルタイム センサー データを視覚化することができました。
 
 Azure IoT Hub からのデータを視覚化するための別の方法については、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
 

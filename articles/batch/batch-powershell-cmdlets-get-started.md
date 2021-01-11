@@ -3,13 +3,13 @@ title: PowerShell の使用を開始する
 description: Batch リソースの管理に使用できる Azure PowerShell コマンドレットの簡単な紹介。
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.custom: seodec18
-ms.openlocfilehash: 6108ac9c9f5f10de69369d7aed31cd0ce317044e
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 3c152733ee3a75732d119db16f7db7c266740fdb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779622"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079848"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>PowerShell コマンドレットで Batch リソースを管理する
 
@@ -21,7 +21,7 @@ Batch API、Azure portal、Azure コマンド ライン インターフェイス
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Azure PowerShell モジュールをインストールして構成します](/powershell/azure/overview)。 特定の Azure Batch モジュール (プレリリース モジュールなど) をインストールする方法については、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)を参照してください。
+* [Azure PowerShell モジュールをインストールして構成します](/powershell/azure/)。 特定の Azure Batch モジュール (プレリリース モジュールなど) をインストールする方法については、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/Az.Batch/1.0.0)を参照してください。
 
 * **Connect-AzAccount** コマンドレットを実行してサブスクリプションに接続します (Azure Batch コマンドレットは、Azure Resource Manager モジュールに付属しています)。
 

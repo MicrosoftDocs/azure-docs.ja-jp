@@ -16,12 +16,12 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1983b5090604516265ea8e041ac68200ca2dc7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 451b50e70b98849dfc4654566d09a5a961abe451
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359587"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279909"
 ---
 # <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの TLS/SSL 証明書の更新
 
@@ -34,7 +34,7 @@ ms.locfileid: "85359587"
 
 
 >[!NOTE]
->AD FS によって使われる証明書の詳細については、「[AD FS で使用される証明書とは](https://technet.microsoft.com/library/cc730660.aspx)」をご覧ください。
+>AD FS によって使われる証明書の詳細については、「[AD FS で使用される証明書とは](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc730660(v=ws.11))」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -109,4 +109,3 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 - [Azure AD Connect とフェデレーション](how-to-connect-fed-whatis.md)
 - [Azure AD Connect による Active Directory フェデレーション サービスの管理とカスタマイズ](how-to-connect-fed-management.md)
-

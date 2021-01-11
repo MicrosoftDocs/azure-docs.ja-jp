@@ -169,7 +169,7 @@ module.exports = df.entity(function(context) {
 
 ### <a name="example-client-signals-an-entity"></a>例:クライアントがエンティティにシグナル通知を出す
 
-通常の Azure 関数 (クライアント関数とも呼ばれます) からエンティティにアクセスするには、[エンティティ クライアントのバインド](durable-functions-bindings.md#entity-client)を使用します。 次の例では、このバインドを使用してエンティティにシグナル通知する、キューによってトリガーされた関数を示します。
+通常の Azure Functions (クライアント関数とも呼ばれます) からエンティティにアクセスするには、[エンティティ クライアントのバインド](durable-functions-bindings.md#entity-client)を使用します。 次の例では、このバインドを使用してエンティティにシグナル通知する、キューによってトリガーされた関数を示します。
 
 # <a name="c"></a>[C#](#tab/csharp)
 

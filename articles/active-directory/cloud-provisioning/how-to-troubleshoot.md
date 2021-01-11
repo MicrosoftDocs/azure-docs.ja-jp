@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 77ea5a354dde7adb006c95e9548d8fcc37e2dc12
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 34796a435536a48100b7434ed5267802cd2d549f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256868"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226949"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>クラウド プロビジョニングのトラブルシューティング
 
@@ -120,7 +120,7 @@ Azure がポート 443 でリッスンしていて、お使いのエージェン
 
 この問題は、通常、ローカルの PowerShell 実行ポリシーのせいで、エージェントで PowerShell 登録スクリプトを実行できないことが原因で発生します。
 
-この問題を解決するには、サーバー上の PowerShell 実行ポリシーを変更します。 マシンとユーザーのポリシーを *Undefined* または *RemoteSigned* に設定する必要があります。 *Unrestricted* として設定されている場合、このエラーが表示されます。 詳細については、[PowerShell 実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)に関する記事を参照してください。 
+この問題を解決するには、サーバー上の PowerShell 実行ポリシーを変更します。 マシンとユーザーのポリシーを *Undefined* または *RemoteSigned* に設定する必要があります。 *Unrestricted* として設定されている場合、このエラーが表示されます。 詳細については、[PowerShell 実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)に関する記事を参照してください。 
 
 ### <a name="log-files"></a>ログ ファイル
 
@@ -195,7 +195,7 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 
   ![プロビジョニングを再開する](media/how-to-troubleshoot/quarantine3.png)
 
-- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 再起動する対象は完全に制御できます。 次のものをクリアすることを選択できます。
+- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 再起動する対象は完全に制御できます。 次のものをクリアすることを選択できます。
   - エスクロー。検疫状態を発生させるエスクロー カウンターを再起動します。
   - 検疫。アプリケーションを検疫から削除します。
   - ウォーターマーク。 
@@ -208,6 +208,3 @@ Azure portal では、プロビジョニング ログを使用して、オブジ
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)
-
-
-

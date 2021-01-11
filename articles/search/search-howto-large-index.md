@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80307c97464e61d7b7d338703de90d1199adc819
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84484574"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927019"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Azure Cognitive Search で大容量のデータ セットのインデックスを作成する方法
 
@@ -50,7 +50,7 @@ Azure Cognitive Search は、検索インデックスにデータをインポー
 
 ### <a name="batch-size"></a>バッチ サイズ
 
-大容量のデータ セットにインデックスを付けるための最も簡単なメカニズムの 1 つは、複数のドキュメントまたはレコードを 1 つの要求で送信するというものです。 ペイロード全体が 16 MB を超えない限り、1 つの要求によって、一括アップロード操作で最大 1000 のドキュメントを処理できます。 .NET SDK で [Add Documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) と [Index メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)のどちらを使用しているかによって、これらの制限が適用されます。 どちらの API でも、各要求の本文に 1,000 個のドキュメントをパッケージ化します。
+大容量のデータ セットにインデックスを付けるための最も簡単なメカニズムの 1 つは、複数のドキュメントまたはレコードを 1 つの要求で送信するというものです。 ペイロード全体が 16 MB を超えない限り、1 つの要求によって、一括アップロード操作で最大 1000 のドキュメントを処理できます。 .NET SDK で [Add Documents REST API](/rest/api/searchservice/addupdate-or-delete-documents) と [Index メソッド](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet)のどちらを使用しているかによって、これらの制限が適用されます。 どちらの API でも、各要求の本文に 1,000 個のドキュメントをパッケージ化します。
 
 バッチを使用してドキュメントにインデックスを付けると、インデックス作成のパフォーマンスが大幅に向上します。 実際のデータに最適なバッチ サイズを見極めることが、インデックスの作成速度を最適化するうえで重要な要素となります。 最適なバッチ サイズは主に、次の 2 つの要因によって左右されます。
 + インデックスのスキーマ
@@ -74,14 +74,14 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 > [!NOTE]
 > 検索サービスのレベルを上げたり、パーティションを増やしたりする場合は、同時実行スレッドの数も増やす必要があります。
 
-検索サービスに対する要求を増やしていくと、要求が完全には成功しなかったことを示す [HTTP 状態コード](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)が返されることがあります。 インデックスの作成時によく発生する HTTP 状態コードは次の 2 つです。
+検索サービスに対する要求を増やしていくと、要求が完全には成功しなかったことを示す [HTTP 状態コード](/rest/api/searchservice/http-status-codes)が返されることがあります。 インデックスの作成時によく発生する HTTP 状態コードは次の 2 つです。
 
 + **503 Service Unavailable** - このエラーは、システムが過負荷の状態にあり、この時点では要求を処理できないことを示します。
 + **207 Multi-Status** - このエラーは、ドキュメントの一部は成功しましたが、少なくとも 1 つが失敗したことを示します。
 
 ### <a name="retry-strategy"></a>再試行戦略 
 
-失敗した要求は、[エクスポネンシャル バックオフの再試行戦略](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)を使用して再試行する必要があります。
+失敗した要求は、[エクスポネンシャル バックオフの再試行戦略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)を使用して再試行する必要があります。
 
 503 などで失敗した要求は、Azure Cognitive Search の .NET SDK によって自動的に再試行されますが、207 には、独自の再試行ロジックを実装する必要があります。 [Polly](https://github.com/App-vNext/Polly) などのオープンソース ツールを使用して、再試行戦略を実装することもできます。
 
@@ -95,14 +95,14 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 
 + スケジューラを使用すると、インデックス作成を一定の間隔で配分して行い、時間をかけて徐々に行うことができます。
 + スケジュール済みのインデックス作成は、最後の既知の停止ポイントから再開することができます。 24 時間の範囲内でデータ ソースが完全にクロールされていない場合、中断されたところから 2 日目にインデクサーによってインデックス作成が再開されます。
-+ データをより小さな個々のデータ ソースにパーティション分割することにより、並列処理が実現されます。 ソース データは、Azure BLOB ストレージ内の複数のコンテナーなど、より小さなコンポーネントに分割してから、対応する複数の[データ ソース オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成して、並列でインデックスを作成することができます。
++ データをより小さな個々のデータ ソースにパーティション分割することにより、並列処理が実現されます。 ソース データは、Azure BLOB ストレージ内の複数のコンテナーなど、より小さなコンポーネントに分割してから、対応する複数の[データ ソース オブジェクト](/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成して、並列でインデックスを作成することができます。
 
 > [!NOTE]
 > インデクサーはデータ ソース固有のものです。そのため、インデクサー アプローチの使用は、Azure 上で選択される次のデータ ソースに対してのみ有効です。[SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Blob Storage](search-howto-indexing-azure-blob-storage.md)、[Table Storage](search-howto-indexing-azure-tables.md)、[Cosmos DB](search-howto-index-cosmosdb.md)。
 
 ### <a name="batch-size"></a>バッチ サイズ
 
-Push API と同様に、インデクサーを使用すると、バッチごとに項目の数を構成できます。 [インデクサーの作成 (REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) に基づいたインデクサーの場合は、引数 `batchSize` を設定することで、ご利用のデータの特性に合わせてこの設定をカスタマイズすることができます。 
+Push API と同様に、インデクサーを使用すると、バッチごとに項目の数を構成できます。 [インデクサーの作成 (REST API)](/rest/api/searchservice/Create-Indexer) に基づいたインデクサーの場合は、引数 `batchSize` を設定することで、ご利用のデータの特性に合わせてこの設定をカスタマイズすることができます。 
 
 既定のバッチ サイズは、データ ソースによって異なります。 Azure SQL Database と Azure Cosmos DB の既定のバッチ サイズは 1000 です。 それに対して、Azure Blob インデックス作成では、より大きな平均ドキュメント サイズを認識して、バッチ サイズが 10 のドキュメントに設定されます。 
 
@@ -112,7 +112,7 @@ Push API と同様に、インデクサーを使用すると、バッチごと�
 
 スケジュール機能付きインデックスは、特定の間隔で始動する設計になっており、通常は、ジョブが完了し、次回のスケジュール間隔で再開されます。 ただし、間隔内で処理が完了しない場合、インデクサーは (時間不足のため) 停止します。 処理がどこで停止したかがシステムに記録されており、次の間隔では、前回停止した個所から処理が再開されます。 
 
-実際には、インデックスの読み込みに数日かかる場合、24 時間スケジュールでインデクサーを配置できます。 次の 24 時間サイクルでインデックス作成が再開すると、前回正常だったと認識されたドキュメントから再開されます。 このようにして、インデクサーは、すべての未処理ドキュメントが処理されるまで、ドキュメントのバックログに従って数日にわたり処理を続けます。 この方法の詳細については、[Azure Blob Storage での大容量のデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)に関するページを参照してください。 一般的なスケジュール設定の詳細については、[インデクサーの作成 (REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) に関するページ、または [Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
+実際には、インデックスの読み込みに数日かかる場合、24 時間スケジュールでインデクサーを配置できます。 次の 24 時間サイクルでインデックス作成が再開すると、前回正常だったと認識されたドキュメントから再開されます。 このようにして、インデクサーは、すべての未処理ドキュメントが処理されるまで、ドキュメントのバックログに従って数日にわたり処理を続けます。 この方法の詳細については、[Azure Blob Storage での大容量のデータセットのインデックス作成](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)に関するページを参照してください。 一般的なスケジュール設定の詳細については、[インデクサーの作成 (REST API)](/rest/api/searchservice/Create-Indexer) に関するページ、または [Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
 <a name="parallel-indexing"></a>
 
@@ -125,8 +125,8 @@ Push API と同様に、インデクサーを使用すると、バッチごと�
 並列処理は次の要素で構成されます。
 
 + 複数のコンテナーまたは同じコンテナー内の複数の仮想フォルダーにソース データを分割します。 
-+ 各ミニ データ セットを、独自の[インデクサー](https://docs.microsoft.com/rest/api/searchservice/create-indexer)と対になった、独自の[日付ソース](https://docs.microsoft.com/rest/api/searchservice/create-data-source)にマッピングします。
-+ コグニティブ検索の場合、各インデクサー定義で同じ[スキルセット](https://docs.microsoft.com/rest/api/searchservice/create-skillset)を参照します。
++ 各ミニ データ セットを、独自の[インデクサー](/rest/api/searchservice/create-indexer)と対になった、独自の[日付ソース](/rest/api/searchservice/create-data-source)にマッピングします。
++ コグニティブ検索の場合、各インデクサー定義で同じ[スキルセット](/rest/api/searchservice/create-skillset)を参照します。
 + 同じターゲット検索インデックスに書き込みます。 
 + すべてのインデクサーが同時に実行されるよう、スケジュールを設定します。
 

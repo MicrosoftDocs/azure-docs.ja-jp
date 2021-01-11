@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: rolyon
-ms.openlocfilehash: db1b030aed34498ade91a195d5ca68725b579ba3
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 664687d096a3a9c6ce9a6c7de0025604e046b0a1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230844"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87029979"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory-preview"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する (プレビュー)
 
@@ -145,7 +145,7 @@ ms.locfileid: "86230844"
 
 ### <a name="save-custom-roles"></a>カスタムロールを保存する
 
-1. カスタム ロールの一覧を表示するには、[az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) を使用します。 詳細については、「[Azure CLIを使用してAzureリソースのカスタムロールを作成または更新する](custom-roles-cli.md)」を参照してください。
+1. カスタム ロールの一覧を表示するには、[az role definition list](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-list) を使用します。 詳細については、「[Azure CLIを使用して Azure カスタム ロールを作成または更新する](custom-roles-cli.md)」を参照してください。
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
@@ -215,7 +215,7 @@ ms.locfileid: "86230844"
 
 ### <a name="list-key-vaults"></a>Key Vault のリスト
 
-キー コンテナーを作成すると、そのキー コンテナーは、それが作成されたサブスクリプションの既定の Azure Active Directory テナント ID に自動的に関連付けられます。 また、すべてのアクセス ポリシー エントリがこのテナント ID に関連付けられます。 詳細については、「[Azure Key Vault を別のサブスクリプションに移動する](../key-vault/general/keyvault-move-subscription.md)」を参照してください。
+キー コンテナーを作成すると、そのキー コンテナーは、それが作成されたサブスクリプションの既定の Azure Active Directory テナント ID に自動的に関連付けられます。 また、すべてのアクセス ポリシー エントリがこのテナント ID に関連付けられます。 詳細については、「[Azure Key Vault を別のサブスクリプションに移動する](../key-vault/general/move-subscription.md)」を参照してください。
 
 > [!WARNING]
 > ストレージ アカウントや SQL データベースなどのリソースに対して保存時の暗号化を使用していて、移転されるのと同じサブスクリプションに含まれていないキー コンテナーへの依存関係がある場合、復旧不可能なシナリオが発生する可能性があります。 このような状況が発生した場合は、別のキー コンテナーを使用するか、ユーザーが管理するキーを一時的に無効にして、この復旧不可能なシナリオを回避する必要があります。
@@ -291,7 +291,7 @@ ms.locfileid: "86230844"
 
 ### <a name="create-custom-roles"></a>カスタム ロールを作成する
         
-- [az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) を使用して、前に作成したファイルから各カスタム ロールを作成します。 詳細については、「[Azure CLIを使用してAzureリソースのカスタムロールを作成または更新する](custom-roles-cli.md)」を参照してください。
+- [az role definition create](https://docs.microsoft.com/cli/azure/role/definition#az-role-definition-create) を使用して、前に作成したファイルから各カスタム ロールを作成します。 詳細については、「[Azure CLIを使用して Azure カスタム ロールを作成または更新する](custom-roles-cli.md)」を参照してください。
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -339,7 +339,7 @@ ms.locfileid: "86230844"
 
 ### <a name="update-key-vaults"></a>キー コンテナーを更新する
 
-ここでは、キー コンテナーを更新する基本的な手順について説明します。 詳細については、「[Azure Key Vault を別のサブスクリプションに移動する](../key-vault/general/keyvault-move-subscription.md)」を参照してください。
+ここでは、キー コンテナーを更新する基本的な手順について説明します。 詳細については、「[Azure Key Vault を別のサブスクリプションに移動する](../key-vault/general/move-subscription.md)」を参照してください。
 
 1. サブスクリプションで既存のすべてのキー コンテナーに関連付けられているテナント ID を、ターゲット ディレクトリに更新します。
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 881005c2597eadc3b3b0be9a01fbf9d82d35d050
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7fb1f88ab5eaf22047f5a696ec9cb021981cdd5e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070783"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297180"
 ---
 # <a name="bind-an-azure-cosmos-db-database-to-your-azure-spring-cloud-application"></a>Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする
 
@@ -20,7 +20,7 @@ Spring Boot アプリケーションを手動で構成するのではなく、Az
 
 前提条件:
 
-* デプロイされた Azure Spring Cloud インスタンス。 [Azure CLI を使用したデプロイに関するクイックスタート](spring-cloud-quickstart-launch-app-cli.md)に従って作業を開始してください。
+* デプロイされた Azure Spring Cloud インスタンス。 [Azure CLI を使用したデプロイに関するクイックスタート](spring-cloud-quickstart.md)に従って作業を開始してください。
 * 共同作成者の最小アクセス許可レベルを持つ Azure Cosmos DB アカウント。
 
 ## <a name="bind-azure-cosmos-db"></a>Azure Cosmos DB をバインドする

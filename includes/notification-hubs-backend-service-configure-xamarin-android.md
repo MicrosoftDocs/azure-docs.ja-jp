@@ -28,7 +28,7 @@ ms.locfileid: "85448758"
 
 ### <a name="add-the-xamarin-google-play-services-base-and-xamarinfirebasemessaging-packages"></a>Xamarin Google Play 開発者サービス ベース パッケージと Xamarin.Messaging パッケージを追加する
 
-1. **PushDemo.Android** で、**Control** キーを押しながら **Packages** フォルダーを**クリック**し、 **[NuGet パッケージの管理...]** を選択します。
+1. **PushDemo.Android** で、**Packages** フォルダーを **Control** + **クリック**し、 **[NuGet パッケージの管理...]** を選択します。
 
 1. **Xamarin.GooglePlayServices.Base** (**Basement** ではありません) を探し、チェック ボックスがオンになっていることを確認します。
 
@@ -38,19 +38,19 @@ ms.locfileid: "85448758"
 
 ### <a name="add-the-google-services-json-file"></a>Google Services JSON ファイルを追加する
 
-1. **Control** キーを押しながら `PushDemo.Android` プロジェクトを**クリック**し、 **[追加]** メニューから **[既存のファイル...]** を選択します。
+1. `PushDemo.Android` プロジェクトを **Control** + **クリック**し、 **[追加]** メニューから **[既存のファイル...]** を選択します。
 
 1. [Firebase Console](https://console.firebase.google.com) で以前 **PushDemo** プロジェクトを設定したときにダウンロードした *google-services.json* ファイルを選択し、 **[開く]** をクリックします。
 
 1. メッセージが表示されたら、**ファイルをディレクトリにコピーする**ように選択します。
 
-1. **Control**キーを押しながら `PushDemo.Android` プロジェクト内からの *google-services.json* を**クリック**して、**GoogleServicesJson** が**ビルド アクション**として設定されていることを確認します。
+1. `PushDemo.Android` プロジェクト内からの *google-services.json* を **Control** + **クリック**して、**GoogleServicesJson** が**ビルド アクション**として設定されていることを確認します。
 
 ### <a name="handle-push-notifications-for-android"></a>Android 用のプッシュ通知を処理する
 
-1. **Control** キーを押しながら `PushDemo.Android` プロジェクトを**クリック**し、 **[追加]** メニューから **[新しいフォルダー]** を選択します。次に、 **[フォルダー名]** として「*Services*」を使用して **[追加]** をクリックします。
+1. `PushDemo.Android` プロジェクトを **Control** + **クリック**し、 **[追加]** メニューから **[新しいフォルダー]** を選択します。次に、 **[フォルダー名]** として「*Services*」を使用して **[追加]** をクリックします。
 
-1. **Control** +  キーを押しながら **Services** フォルダーを**クリック**し、 **[追加]** メニューから **[新しいファイル...]** を選択します。
+1. **Services** フォルダーを **Control** + **クリック**し、 **[追加]** メニューから **[新しいファイル...]** を選択します。
 
 1. **[全般]**  >  **[空のクラス]** と選択し、 **[名前]** には「*DeviceInstallationService.cs*」と入力します。次に **[新規]** をクリックして以下の実装を追加します。
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 9cb516b6d13b4b57a89bb276683857c62a758618
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021876"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533905"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 
@@ -64,9 +64,9 @@ Azure Active Directory は、保護された専用コンテナーで各コンテ
 
 複数の Azure Active Directory テナントのメタデータが同じ物理ディスクに格納されている場合でも、コンテナー間に関係はありません (ディレクトリ サービスによる定義を除きます。これは後でテナント管理者によって指示されます)。
 
-### <a name="azure-role-based-access-control-rbac"></a>Azure ロールベースのアクセス制御 (RBAC)
+### <a name="azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC)
 
-[Azure ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) では、Azure のきめ細かいアクセス管理が提供され、Azure サブスクリプションで使用可能なさまざまなコンポーネントの共有に役立ちます。 Azure RBAC を使用すると、組織内での仕事を切り分けて、ユーザーが業務を遂行するために必要な操作に基づいてアクセス権を付与できます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) では、Azure のきめ細かいアクセス管理が提供され、Azure サブスクリプションで使用可能なさまざまなコンポーネントの共有に役立ちます。 Azure RBAC を使用すると、組織内での仕事を切り分けて、ユーザーが業務を遂行するために必要な操作に基づいてアクセス権を付与できます。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。
 
 Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロールがあります。
 
@@ -76,9 +76,9 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 - **閲覧者** は、既存の Azure リソースを表示できます。
 
-![Azure ロールベースのアクセス制御](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure ロールベースのアクセス制御 (Azure RBAC)](./media/isolation-choices/azure-isolation-fig3.png)
 
-残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
+Azure の残りの Azure ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
 
 「[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](../../role-based-access-control/custom-roles.md)を作成する方法を参照してください。
 
@@ -145,7 +145,7 @@ Azure ファブリック コントローラーは、テナントのワークロ�
 
 Azure ハイパーバイザーは、仮想マシン間のメモリおよびプロセスの分離を強制し、ネットワーク トラフィックをゲスト OS テナントに安全にルーティングします。 これにより、VM レベルでのサイド チャネル攻撃の可能性がなくなります。
 
-Azure ではルート VM は特別です。ルート OS と呼ばれる強化されたオペレーティング システムを実行し、ファブリック エージェント (FA) をホストします。 FA は、顧客 VM 上のゲスト OS 内のゲスト エージェント (GA) の管理に使用されます。 FA は記憶域ノードも管理します。
+Azure ではルート VM は特別です。ルート OS と呼ばれる強化されたオペレーティング システムを実行し、ファブリック エージェント (FA) をホストします。 FA は、顧客 VM 上のゲスト オペレーティング システム内のゲスト エージェント (GA) の管理に使用されます。 FA は記憶域ノードも管理します。
 
 Azure ハイパーバイザー、ルート OS/FA、顧客 VM/GA のコレクションが、コンピューティング ノードを構成します。 FA はファブリック コントローラー (FC) によって管理されます。FC はコンピューティング ノードと記憶域ノードの外部に存在します (コンピューティング クラスターと記憶域クラスターは別の FC によって管理されます)。 顧客がアプリケーションの実行中に構成ファイルを更新すると、FC が FA と通信して、FA が GA に連絡します。その後、GA が構成の変更をアプリケーションに通知します。 ハードウェア障害の場合は、FC が使用可能なハードウェアを自動的に探して、そこで VM を再起動します。
 
@@ -319,4 +319,4 @@ Azure デプロイでは、複数の層でネットワークの分離を行う�
 
 - [Windows Azure Virtual Network 内のマシンのためのネットワーク分離のオプション](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)について確認します。 これには、従来のフロントエンドとバックエンドのシナリオが含まれます。特定のバックエンド ネットワークまたはサブネットワーク内のマシンでは、IP アドレスの許可リストに基づいて、特定のクライアントまたは他のコンピューターに、特定のエンドポイントへの接続だけを許可できます。
 
-- [Azure における仮想マシンの分離性](../../virtual-machines/windows/isolation.md)について確認します。 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。
+- [Azure における仮想マシンの分離性](../../virtual-machines/isolation.md)について確認します。 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。

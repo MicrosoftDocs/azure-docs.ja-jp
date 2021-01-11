@@ -3,16 +3,16 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ded1551dad1be34c116e61b9bf59f372169bca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db30de655bfc0b98baa81a4ef20532e697fc1f8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84488700"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824731"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
-この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、[Microsoft Q&A の質問ページ](https://docs.microsoft.com/answers/topics/azure-backup.html)に Azure Backup サービスに関する質問を投稿してディスカッションすることもできます。
+この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、[Microsoft Q&A の質問ページ](/answers/topics/azure-backup.html)に Azure Backup サービスに関する質問を投稿してディスカッションすることもできます。
 
 この記事の各セクションの内容をひととおり確認するには、右側の「**この記事の内容**」にあるリンクをご利用ください。
 
@@ -34,13 +34,13 @@ ms.locfileid: "84488700"
 
 バックアップを試みる際、ストレージ アカウントを選択して、その中からファイル共有を検出すると、これを行ったストレージ アカウントがコンテナーに登録されます。 別のコンテナーでファイル共有を保護する場合は、このコンテナーから選択したストレージ アカウントを[登録解除](manage-afs-backup.md#unregister-a-storage-account)してください。
 
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>ファイル共有のバックアップを構成するためにコンテナーを変更できないのはなぜですか?
+
+ストレージ アカウントが既にコンテナーに登録されているか、またはストレージ アカウント内の他のファイル共有がコンテナーを使用して保護されている場合、それを変更するオプションが与えられません。 1 つのストレージ アカウントに存在するすべてのファイル共有は、必ず同じコンテナーで保護する必要があります。 コンテナーを変更する必要がある場合は、接続されているコンテナーから[ストレージ アカウント内のすべてのファイル共有の保護を停止](manage-afs-backup.md#stop-protection-on-a-file-share)し、ストレージ アカウントの[登録を解除](manage-afs-backup.md#unregister-a-storage-account)してから、保護する別のコンテナーを選択する必要があります。
+
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>自分のファイル共有のバックアップ先コンテナーを変更することはできますか?
 
 はい。 しかし、接続されているコンテナーからの[ファイル共有の保護を停止](manage-afs-backup.md#stop-protection-on-a-file-share)し、このストレージ アカウントを[登録解除](manage-afs-backup.md#unregister-a-storage-account)したうえで、別のコンテナーから保護する必要があります。
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>コンテナーで保護できる Azure ファイル共有はいくつですか。
-
-コンテナーにつき最大 50 個のストレージ アカウントから Azure ファイル共有を保護できます。 また、1 つのコンテナーで保護できる Azure ファイル共有は最大 200 個です。
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>同じストレージ アカウントにある 2 つの異なるファイル共有を別々のコンテナーで保護することはできますか?
 
@@ -56,7 +56,7 @@ ms.locfileid: "84488700"
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>削除した Azure ファイル共有から復旧できますか。
 
-ファイル共有が論理的に削除された状態にある場合、復元操作を実行するには、ファイル共有の削除を先に取り消しておく必要があります。 削除の取り消し操作によって、ファイル共有がアクティブ状態になり、任意の時点への復元を実行できるようになります。 ファイル共有の削除を取り消す方法については、[こちらのリンク](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal#restore-soft-deleted-file-share)をクリックするか、または[ファイル共有の削除を取り消すためのスクリプト](./scripts/backup-powershell-script-undelete-file-share.md)を参照してください。 ファイル共有が完全に削除されると、コンテンツとスナップショットを復元することはできなくなります。
+ファイル共有が論理的に削除された状態にある場合、復元操作を実行するには、ファイル共有の削除を先に取り消しておく必要があります。 削除の取り消し操作によって、ファイル共有がアクティブ状態になり、任意の時点への復元を実行できるようになります。 ファイル共有の削除を取り消す方法については、[こちらのリンク](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share)をクリックするか、または[ファイル共有の削除を取り消すためのスクリプト](./scripts/backup-powershell-script-undelete-file-share.md)を参照してください。 ファイル共有が完全に削除されると、コンテンツとスナップショットを復元することはできなくなります。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Azure ファイル共有の保護を停止した場合、バックアップから復元することはできますか。
 

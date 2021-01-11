@@ -12,16 +12,16 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 55adff17445639ee5685613b418054075c704449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85477245"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115035"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能
 
->このページの更新に関する通知を受け取るには、 [この URL](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us) を RSS フィード リーダーに追加してください。
+> このページの更新に関する通知を受け取るには、この URL を RSS フィード リーダーに貼り付けてください。<br/>`https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20for%20authentication%22&locale=en-us`
 
 認証システムは、セキュリティの向上と規格への準拠を確保するために、継続的に機能の変更と追加を行います。 常に最新の開発情報を把握していただけるよう、この記事では以下の事項に関する情報を提供します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "85477245"
 
 2018 年 6 月 1 日、Azure Government に対する Azure Active Directory (AAD) の公式な機関が、`https://login-us.microsoftonline.com` から `https://login.microsoftonline.us` に変更されました。 この変更は、Azure Government AAD でもサービスが提供される Microsoft 365 GCC High および DoD にも適用されます。 米国政府テナント内でアプリケーションを所有している場合は、`.us` エンドポイントでユーザーをサインインさせるようにアプリケーションを更新する必要があります。  
 
-5 月 5 日以降、Azure AD でエンドポイントの変更の適用が開始され、政府ユーザーはパブリック エンドポイント (`microsoftonline.com`) を使用して米国政府テナントでホストされているアプリにサインインできなくなります。  影響を受けるアプリでは、`AADSTS900439` - `USGClientNotSupportedOnPublicEndpoint` エラーが表示されるようになります。 このエラーは、アプリがパブリック クラウド エンドポイントで米国政府ユーザーのサインインを試みていることを示します。 アプリがパブリック クラウド テナント内にあり、米国政府ユーザーのサポートを意図している場合は、[それらのユーザーを明示的にサポートするようにアプリを更新する](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)必要があります。 これには、米国政府機関向けクラウドで新しいアプリの登録を作成することが必要になる場合があります。 
+5 月 5 日以降、Azure AD でエンドポイントの変更の適用が開始され、政府ユーザーはパブリック エンドポイント (`microsoftonline.com`) を使用して米国政府テナントでホストされているアプリにサインインできなくなります。  影響を受けるアプリでは、`AADSTS900439` - `USGClientNotSupportedOnPublicEndpoint` エラーが表示されるようになります。 このエラーは、アプリがパブリック クラウド エンドポイントで米国政府ユーザーのサインインを試みていることを示します。 アプリがパブリック クラウド テナント内にあり、米国政府ユーザーのサポートを意図している場合は、[それらのユーザーを明示的にサポートするようにアプリを更新する](./authentication-national-cloud.md)必要があります。 これには、米国政府機関向けクラウドで新しいアプリの登録を作成することが必要になる場合があります。 
 
 この変更の適用は、米国政府のクラウドからアプリケーションにサインインするユーザーの頻度に基づいて、段階的なロールアウトを使用して行われます。米国政府ユーザーがサインインする頻度の少ないアプリは最初に適用され、米国政府ユーザーが頻繁に使用するアプリは最後に適用されます。 2020 年 6 月には、すべてのアプリで適用が完了するものと思われます。 
 
@@ -98,7 +98,7 @@ login.microsoftonline.com から HTTP リダイレクト経由で認証応答が
 
 **影響を受けるエンドポイント**:v1.0 と v2.0 の両方
 
-**影響を受けるプロトコル**:POST が使用されるすべての場所 ([クライアント資格情報](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[承認コードの利用](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、[ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、[OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)、および[更新トークンの利用](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+**影響を受けるプロトコル**:POST が使用されるすべての場所 ([クライアント資格情報](./v2-oauth2-client-creds-grant-flow.md)、[承認コードの利用](./v2-oauth2-auth-code-flow.md)、[ROPC](./v2-oauth-ropc.md)、[OBO](./v2-oauth2-on-behalf-of-flow.md)、および[更新トークンの利用](./v2-oauth2-auth-code-flow.md#refresh-the-access-token))
 
 9/2 の週から、POST メソッドを使用する認証要求は、より厳格な HTTP 標準を使用して検証されます。  具体的には、スペースと二重引用符 (") が要求フォームの値から削除されなくなります。 これらの変更によって、既存のクライアントが中断されることはなく、Azure AD に送信された要求は毎回確実に処理されます。 今後 (上記参照)、重複するパラメーターを拒否し、要求内の BOM を無視することをさらに計画しています。
 
@@ -113,9 +113,9 @@ login.microsoftonline.com から HTTP リダイレクト経由で認証応答が
 
 **発効日**:2019 年 7 月 26 日
 
-**影響を受けるエンドポイント**:[v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) と [v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow) の両方
+**影響を受けるエンドポイント**:[v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) と [v2.0](./v2-oauth2-client-creds-grant-flow.md) の両方
 
-**影響を受けるプロトコル**:[クライアント資格情報 (アプリ専用トークン)](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**影響を受けるプロトコル**:[クライアント資格情報 (アプリ専用トークン)](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
 (クライアント資格情報の付与による) アプリ専用トークンの発行方法を変更するセキュリティの変更が、7 月 26 日に行われました。 以前は、テナント内の存在またはそのアプリケーションに対して同意されているロールに関係なく、アプリケーションではトークンを取得して他のアプリを呼び出すことができました。  この動作が更新され、シングルテナント (既定) に設定されているリソース (Web API と呼ばれることもあります) の場合、クライアント アプリケーションはリソース テナント内に存在する必要があります。  クライアントと API の間の既存の同意は依然として必須ではなく、アプリでは、`roles` 要求が存在し、API に必要な値が含まれていることを確認するために、独自の承認チェックを実行する必要があることに注意してください。
 

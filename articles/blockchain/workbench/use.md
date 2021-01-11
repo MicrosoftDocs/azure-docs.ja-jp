@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "74324052"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でのアプリケーションの使用
@@ -40,7 +40,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
 1. Blockchain Workbench のアプリケーション セクションで、作成するコントラクトを含んだアプリケーション タイルを選択します。 アクティブなコントラクトの一覧が表示されます。
 
-2. 新しい契約を作成するには、 **[新しいコントラクト]** を選択します。
+2. 新しい契約を作成するには、**[新しいコントラクト]** を選択します。
 
     ![[新しいコントラクト] ボタン](./media/use/contract-list.png)
 
@@ -64,11 +64,11 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
     | Section  | 説明  |
     |---------|---------|
     | Status | コントラクト ステージ内での現在の進捗状況が一覧表示されます |
-    | 詳細 | コントラクトの現在の値です |
+    | 説明 | コントラクトの現在の値です |
     | アクション | 直近のアクションに関する詳細です |
     | アクティビティ | コントラクトのトランザクション履歴です |
     
-3. **[アクション]** セクションで、 **[アクションの実行]** を選択します。
+3. **[アクション]** セクションで、**[アクションの実行]** を選択します。
 
 4. コントラクトの現在の状態に関する詳細がウィンに表示されます。 ドロップダウン リストから、実行するアクションを選択します。 
 

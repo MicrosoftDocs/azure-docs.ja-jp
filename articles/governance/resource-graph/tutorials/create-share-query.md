@@ -3,16 +3,16 @@ title: チュートリアル:Azure portal でのクエリの管理
 description: このチュートリアルでは、Azure portal で Resource Graph クエリを作成し、新しいクエリを他のユーザーと共有します。
 ms.date: 06/29/2020
 ms.topic: tutorial
-ms.openlocfilehash: c3da623e8bea44cc49e4ef46517ce461459405a9
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970588"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005173"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する
 
-Azure Resource Graph エクスプローラーを使うと、Azure portal で直接 Resource Graph クエリを保存できます。 クエリには次の 2 種類があります: "_プライベート_" と "_共有_"。 プライベート クエリは、自分の Azure portal の設定に保存されます。 一方、共有クエリは、ロールベースのアクセス制御 (RBAC) による管理とリソース ロックによる保護が可能な Azure Resource Manager リソースです。 どちらの種類のクエリも、保存時に暗号化されます。
+Azure Resource Graph エクスプローラーを使うと、Azure portal で直接 Resource Graph クエリを保存できます。 クエリには次の 2 種類があります: "_プライベート_" と "_共有_"。 プライベート クエリは、自分の Azure portal の設定に保存されます。 一方、共有クエリは、Azure ロールベースのアクセス制御 (Azure RBAC) による管理とリソース ロックによる保護が可能な Azure Resource Manager リソースです。 どちらの種類のクエリも、保存時に暗号化されます。
 
 お気に入りのクエリやよく使用するクエリを Azure portal に保存しておくと、探す時間を節約できます。 クエリを共有すると、一貫性と効率性というチームの目標を、繰り返しによって実現することができます。
 
@@ -60,7 +60,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 
 ## <a name="create-a-shared-query"></a>共有クエリを作成する
 
-プライベート クエリとは異なり、共有クエリは Resource Manager リソースです。 つまり、クエリをリソース グループに保存し、RBAC で管理および制御し、リソース ロックを使用して保護さえできることを意味します。 適切なアクセス許可を持つすべてのユーザーが、リソースとしてそれを参照し、使用することができます。
+プライベート クエリとは異なり、共有クエリは Resource Manager リソースです。 つまり、クエリをリソース グループに保存し、Azure RBAC で管理および制御し、リソース ロックを使用して保護さえできることを意味します。 適切なアクセス許可を持つすべてのユーザーが、リソースとしてそれを参照し、使用することができます。
 新しい共有クエリを作成するには、次の手順のようにします。
 
 1. ポータルのメニューから **[すべてのサービス]** を選択するか、すべてのページの上部にある Azure 検索ボックスを使用し、 **[Resource Graph エクスプローラー]** を探して選択します。

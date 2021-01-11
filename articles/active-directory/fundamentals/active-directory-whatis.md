@@ -2,7 +2,7 @@
 title: Azure Active Directory とは - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory の概要と概念情報 (用語、利用可能なライセンス、関連機能の一覧と詳細情報へのリンクなど)。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6b7d40512fe3537610efa42ccc33c9f8e80212
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: db14e4e47cce1822404561d33bd8e0d3f224e037
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484380"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321108"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) は Microsoft が提供するクラウドベ�
 
 - 企業ネットワークとイントラネット上のアプリや、自分の組織で開発したクラウド アプリなどの内部リソース。 組織のテナント作成の詳細については、「[クイック スタート:Azure Active Directory で新しいテナントを作成する](active-directory-access-create-new-tenant.md)」を参照してください。
 
-Azure AD と Active Directory Domain Services の違いについては、「[Active Directory と Azure Active Directory の比較](active-directory-compare-azure-ad-to-ad.md)」を参照してください。 また、[エンタープライズ アーキテクトのための Microsoft Cloud シリーズ](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity)の各種ポスターを使用すると、Azure、Azure AD、および Office 365 の中核を成す ID サービスについて、より深く理解することができます。
+Azure AD と Active Directory Domain Services の違いについては、「[Active Directory と Azure Active Directory の比較](active-directory-compare-azure-ad-to-ad.md)」を参照してください。 また、[エンタープライズ アーキテクトのための Microsoft Cloud シリーズ](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide)の各種ポスターを使用すると、Azure、Azure AD、および Office 365 の中核を成す ID サービスについて、より深く理解することができます。
 
 ## <a name="who-uses-azure-ad"></a>Azure AD の利用者
 
@@ -68,7 +68,7 @@ Azure AD ライセンスを選択すると、組織向けの次の機能の一�
 |アプリケーション管理|アプリケーション プロキシ、シングル サインオン、マイ アプリ ポータル (別称: アクセス パネル)、サービスとしてのソフトウェア (SaaS) アプリを使用して、クラウドおよびオンプレミスのアプリを管理します。 詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](../manage-apps/application-proxy.md)」および「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」を参照してください。|
 |認証|Azure Active Directory のセルフサービス パスワード リセット、Multi-Factor Authentication、カスタムの禁止パスワード リスト、スマート ロックアウトを管理します。 詳細については、「[Azure AD Authentication のドキュメント](../authentication/index.yml)」を参照してください。|
 |開発者のための Azure Active Directory|すべての Microsoft ID にサインインし、Microsoft Graph、その他の Microsoft API、またはカスタム API を呼び出すトークンを取得するアプリを構築します。 詳細については、「[Microsoft ID プラットフォーム (開発者向け Azure Active Directory)](../develop/index.yml)」を参照してください。|
-|企業間 (B2B)|自社データの管理を続けながら、ゲスト ユーザーと外部パートナーを管理します。 詳細については、「[Azure Active Directory B2B のドキュメント](../b2b/index.yml)」を参照してください。|
+|企業間 (B2B)|自社データの管理を続けながら、ゲスト ユーザーと外部パートナーを管理します。 詳細については、「[Azure Active Directory B2B のドキュメント](../external-identities/index.yml)」を参照してください。|
 |企業-消費者間 (B2C)|アプリの使用時にユーザーがサインアップおよびサインインする方法や自分のプロファイルを管理する方法をカスタマイズして制御します。 詳細については、「[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)」を参照してください。|
 |条件付きアクセス|クラウド アプリへのアクセスを管理します。 詳細については、「[Azure AD の条件付きアクセスのドキュメント](../conditional-access/index.yml)」を参照してください。|
 |デバイスの管理|クラウドまたはオンプレミスのデバイスが会社のデータにアクセスする方法を管理します。 詳細については、「[Azure AD デバイス管理のドキュメント](../devices/index.yml)」を参照してください。|
@@ -90,9 +90,9 @@ Azure AD とそのドキュメントをより深く理解するために、次�
 |ID| 認証を受けることができるもの。 ID は、ユーザー名とパスワードを持つユーザーの可能性があります。 ID には、秘密キーまたは証明書による認証を必要とする可能性があるアプリケーションまたはその他のサーバーも含まれます。|
 |Account| データが関連付けられている ID。 ID なしではアカウントを持つことができません。|
 |Azure AD アカウント| Azure AD またはそれ以外の Microsoft クラウド サービス (Office 365 など) を通じて作成される ID です。 ID は Azure AD に保存され、組織のクラウド サービスのサブスクリプションで利用できます。 このアカウントは、職場または学校アカウントと呼ばれることもあります。|
-|アカウント管理者|この従来のサブスクリプション管理者ロールは、概念的にはサブスクリプションの課金の所有者です。 このロールは、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスでき、アカウント内の全サブスクリプションの管理を可能にします。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|
-|サービス管理者|この従来のサブスクリプション管理者ロールでは、アクセスを含め、すべての Azure リソースを管理することができます。 このロールは、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|
-|所有者|このロールは、アクセスを含め、すべての Azure リソースを管理するのに役立ちます。 このロールは、Azure リソースへのきめ細かなアクセス管理を提供するロールベース アクセス制御 (RBAC) と呼ばれる新しい認可システムをベースに構築されています。 詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。|
+|アカウント管理者|この従来のサブスクリプション管理者ロールは、概念的にはサブスクリプションの課金の所有者です。 このロールは、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスでき、アカウント内の全サブスクリプションの管理を可能にします。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。|
+|サービス管理者|この従来のサブスクリプション管理者ロールでは、アクセスを含め、すべての Azure リソースを管理することができます。 このロールは、サブスクリプション スコープで所有者ロールを割り当てられているユーザーと同等のアクセス権を持ちます。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。|
+|所有者|このロールは、アクセスを含め、すべての Azure リソースを管理するのに役立ちます。 このロールは、Azure リソースへのきめ細かなアクセス管理を提供する Azure ロールベース アクセス制御 (Azure RBAC) と呼ばれる新しい承認システムをベースに構築されています。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。|
 |Azure AD 全体管理者|この管理者ロールは、Azure AD テナントを作成したユーザーに自動的に割り当てられます。 全体管理者は、Azure AD と Azure AD にフェデレーションされたすべてのサービス (Exchange Online、SharePoint Online、Skype for Business Online など) に対して、すべての管理機能を実行できます。 全体管理者は複数人配置することができますが、管理者ロールをユーザーに割り当てることができるのは全体管理者に限られます (これには他の全体管理者を割り当てることも含まれます)。 この管理者ロールは、Azure portal ではグローバル管理者と呼ばれていますが、Microsoft Graph API と Azure AD PowerShell では**社内管理者**と呼ばれています。さまざまな管理者ロールの詳細については、[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)に関する記事をご覧ください。|
 |Azure サブスクリプション| Azure クラウド サービスの支払いに使用されます。 多数のサブスクリプションをご利用いただけます。サブスクリプションはクレジット カードにリンクされます。|
 |Azure テナント| Azure AD の信頼された専用インスタンスであり、組織が Microsoft Azure、Microsoft Intune、Office 365 などの Microsoft クラウド サービスのサブスクリプションにサインアップしたときに自動的に作成されます。 1 つの Azure テナントは単一の組織を表します。|

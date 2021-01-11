@@ -3,14 +3,14 @@ title: Azure Migrate Server Assessment での Azure VM の評価
 description: Azure Migrate Server Assessment での評価について説明します
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 52cdd6bb9cb062b5c36e10c67524fa4d266ca6e0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108003"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261856"
 ---
-# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate での Azure VM の評価:Server Assessment
+# <a name="server-assessment-overview-migrate-to-azure-vms"></a>サーバー評価の概要 (Azure VM への移行)
 
 この記事では、[Azure Migrate Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) ツールによる評価の概要について説明します。 このツールでは、Azure への移行について、オンプレミスの VMware 仮想マシン、Hyper-V VM、物理サーバーを評価できます。
 
@@ -122,7 +122,7 @@ Server Assessment での Azure VM の評価に含まれる内容は次のとお�
 **パフォーマンス履歴** | パフォーマンスベースのサイズ設定で使用されます。 パフォーマンス履歴では、パフォーマンス データを評価するときに使用する期間を指定します。
 **百分位数の使用率** | パフォーマンスベースのサイズ設定で使用されます。 百分位の使用率では、サイズ設定に使用されるパフォーマンス サンプルのパーセンタイル値を指定します。
 **VM シリーズ** | サイズ設定を検討する Azure VM シリーズ。 たとえば、Azure 内に A シリーズの VM を必要とする運用環境がない場合、シリーズの一覧から A シリーズを除外することができます。
-**快適性係数** | 評価中に使用されるバッファー。 VM の CPU、RAM、ディスク、ネットワークの使用率データに適用されます。 季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 快適性係数を 2.0 とした場合、結果は 4 コア VM になります。
+**快適性係数** | 評価中に使用されるバッファー。 これは、VM の CPU、RAM、ディスク、ネットワーク データに適用されます。 季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 快適性係数を 2.0 とした場合、結果は 4 コア VM になります。
 **プラン** | 自分が登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 Server Assessment はそのプランのコストを見積もります。
 **通貨** | アカウントの請求通貨。
 **割引率 (%)** | Azure プランに適用される任意のサブスクリプション固有の割引。 既定の設定は 0% です。
@@ -151,8 +151,8 @@ Azure VM の評価では、Server Assessment によりオンプレミスの VM �
 プロパティ | 詳細 | Azure 対応性の状態
 --- | --- | ---
 **ブートの種類** | Azure は、ブートの種類が UEFI ではなく BIOS として VM をサポートします。 | ブートの種類が UEFI の場合は条件付きで対応
-**コア** | 各マシンのコア数は、Azure VM でサポートされる最大コア数の 128 コア以下である必要があります。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が比較で考慮されます。 評価設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合、Azure Migrate は快適性係数を適用せずに、割り当てられているコアの数を使用します。 | コア数が制限内であれば対応
-**RAM** | 各マシンの RAM のサイズは、Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> VM でサポートされる最大サイズの 3892 GB 以下である必要があります。 [詳細については、こちらを参照してください](../virtual-machines/windows/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されている RAM が比較で考慮されます。 快適性係数が指定されている場合、使用されている RAM に快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられている RAM が使用されます。<br/><br/> | RAM の容量が制限内であれば対応
+**コア** | 各マシンのコア数は、Azure VM でサポートされる最大コア数の 128 コア以下である必要があります。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が比較で考慮されます。 評価設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合、Azure Migrate によって割り当てられているコアの数を使用して快適性係数が適用されます。 | コア数が制限内であれば対応
+**RAM** | 各マシンの RAM のサイズは、Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> VM でサポートされる最大サイズの 3892 GB 以下である必要があります。 [詳細については、こちらを参照してください](../virtual-machines/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されている RAM が比較で考慮されます。 快適性係数が指定されている場合、使用されている RAM に快適性係数が乗算されます。<br/><br/> 履歴がない場合、割り当てられている RAM を使用して快適性係数が適用されます。<br/><br/> | RAM の容量が制限内であれば対応
 **ストレージ ディスク** | ディスクの割り当てサイズは、32 TB 以下である必要があります。 Azure では、Azure Ultra SSD ディスクにより 64 TB のディスクがサポートされますが、Azure Migrate: Server Assessment では、Ultra SSD がまだサポートされていないため、現時点では、ディスク サイズの上限である 32 TB のチェックが行われます。 <br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | ディスクのサイズと数が制限内であれば対応
 **ネットワーク** | マシンに接続されているネットワーク インターフェイス (NIC) の数は 32 個以下である必要があります。 | NIC 数が制限内であれば対応
 

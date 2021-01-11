@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
-ms.openlocfilehash: 288a697339fc6f8b001b445840e3fa98ab92f9a4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d667ff3949fcf58affc72b5d75a40abd8ca0dcb6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292262"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830310"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する
 
@@ -72,7 +72,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-目標のストレージ アカウントは、仮想ディスクのアップロード先と同じである必要があります。 また、**az vm create** コマンドで求められるその他のパラメーターすべて (仮想ネットワーク、パブリック IP アドレス、ユーザー名、SSH キー) を指定するか、プロンプトで回答する必要もあります。 詳細については、[Resource Manager の CLI から利用できるクラシック パラメーター](../azure-cli-arm-commands.md#virtual-machines)に関するページをご覧ください。
+目標のストレージ アカウントは、仮想ディスクのアップロード先と同じである必要があります。 また、**az vm create** コマンドで求められるその他のパラメーターすべて (仮想ネットワーク、パブリック IP アドレス、ユーザー名、SSH キー) を指定するか、プロンプトで回答する必要もあります。 詳細については、[Resource Manager の CLI から利用できるクラシック パラメーター](/previous-versions/azure/virtual-machines/azure-cli-arm-commands#virtual-machines)に関するページをご覧ください。
 
 ## <a name="requirements"></a>必要条件
 次の手順を完了するには、以下が必要です。

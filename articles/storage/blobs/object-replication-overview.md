@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2d8d4c369cef8bf996628e8c89a424f04dcdbe71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 434fe938261c1576a5f0c3c8f08ffa8ed3243a27
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888063"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89230723"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>ブロック BLOB のオブジェクト レプリケーション (プレビュー)
 
@@ -30,6 +31,8 @@ ms.locfileid: "84888063"
 :::image type="content" source="media/object-replication-overview/object-replication-diagram.svg" alt-text="オブジェクト レプリケーションのしくみを示す図":::
 
 オブジェクト レプリケーションを構成する方法については、[オブジェクト レプリケーションの構成 (プレビュー)](object-replication-configure.md) に関するページを参照してください。
+
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="object-replication-policies-and-rules"></a>オブジェクト レプリケーションのポリシーとルール
 
@@ -63,6 +66,8 @@ ms.locfileid: "84888063"
 - フランス中部
 - カナダ東部
 - カナダ中部
+- 米国東部 2
+- 米国中部
 
 オブジェクト レプリケーションを使用するには、ソースと宛先の両方のアカウントがこれらのリージョンのいずれかに存在している必要があります。 アカウントが 2 つの異なるリージョンに存在していてもかまいません。
 
@@ -101,7 +106,7 @@ Register-AzProviderFeature -FeatureName AllowObjectReplication -ProviderNamespac
 # Register for change feed (preview)
 Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
 
-# Register for blob versioning (preview)
+# Register for Blob versioning
 Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.Storage
 
 # Refresh the Azure Storage provider namespace

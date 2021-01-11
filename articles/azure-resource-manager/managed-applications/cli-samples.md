@@ -5,12 +5,13 @@ author: tfitzmac
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 1f2ffa7515fb15f323e469daf9f3c94779e48eca
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e4145484029539b3f800b2f431edefe56b908bca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515361"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498635"
 ---
 # <a name="azure-cli-samples-for-azure-managed-applications"></a>Azure Managed Applications の Azure CLI サンプル
 

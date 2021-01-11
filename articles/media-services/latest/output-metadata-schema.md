@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services 出力メタデータのスキーマ | Microsoft Docs
 description: この記事では、Azure Media Services 出力メタデータのスキーマの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,19 +10,21 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/03/2020
-ms.author: juliako
-ms.openlocfilehash: 692fe12d12538bc35e3a22d4af1bd185839f69d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: reference
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 66f4e426ee6d77b9faa1efab3deb3d7ee4baf47d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418522"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289373"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 
-エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。 たとえば、MP4 ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードし、サムネイルを作成し、オーバーレイを作成します。 タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイル、およびその他のファイルが含まれます。 出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ JSON ファイルの名前は、`<source_file_name>_manifest.json` (`BigBuckBunny_manifest.json` など) になります。  
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
+エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。 たとえば、MP4 ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードし、サムネイルを作成し、オーバーレイを作成します。 タスクが完了すると、出力資産が生成されます。  出力資産には、ビデオ、オーディオ、サムネイル、およびその他のファイルが含まれます。 出力資産には、出力資産に関するメタデータが格納されたファイルも含まれます。 メタデータ JSON ファイルの名前は、`<source_file_name>_manifest.json` (`BigBuckBunny_manifest.json` など) になります。 ソース ファイル名 (切り詰めなし) を見つけるには、すべての *_metadata.json をスキャンして、その中のファイルパス文字列のクエリを実行する必要があります。
 
 Media Services では、メタデータを生成するために入力資産は事前にスキャンされません。 入力メタデータは、入力資産がジョブで処理されるときに、成果物としてのみ生成されます。 そのため、この成果物は、出力資産に書き込まれます。 入力資産と出力資産のメタデータの生成には、異なるツールが使用されます。 したがって、入力メタデータには、出力メタデータとは若干異なるスキーマがあります。
 
@@ -39,8 +41,8 @@ Media Services では、メタデータを生成するために入力資産は�
 | **Sources** |この AssetFile を生成するために処理された入力/ソース メディア ファイルのコレクション。<br />例: `"Sources": [{"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"}]`|
 | **VideoTracks**|各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 <br />「[VideoTracks](#videotracks)」を参照してください。 |
 | **AudioTracks**|各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のオーディオ トラックを含めることができます。 これは、そのオーディオ トラックすべてのコレクションです。<br /> 詳細については、「[AudioTracks](#audiotracks)」を参照してください。 |
-| **名前**<br />必須 |メディア資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
-| **[サイズ]**<br />必須 |資産ファイルのサイズ (バイト単位)。 <br /><br />例: `"Size": 32414631`|
+| **Name**<br />必須 |メディア資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short_1280x720_AACAudio_3551.mp4"`|
+| **Size**<br />必須 |資産ファイルのサイズ (バイト単位)。 <br /><br />例: `"Size": 32414631`|
 | **Duration**<br />必須 |コンテンツの再生時間。 詳細については、[ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html) 形式を参照してください。 <br /><br />例: `"Duration": "PT1M10.315S"`|
 
 ## <a name="videotracks"></a>VideoTracks 
@@ -51,7 +53,7 @@ Media Services では、メタデータを生成するために入力資産は�
 | --- | --- |
 | **Id**<br /> 必須 |このビデオ トラックの 0 から始まるインデックス。**注:** この **Id** は、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 <br /><br />例: `"Id": 1`|
 | **FourCC**<br />必須 | ffmpeg によって報告されるビデオ コーデックの FourCC コード。  <br /><br />例: `"FourCC": "avc1"`|
-| **プロファイル** |H264 プロファイル (H264 コーデックのみに適用されます)。  <br /><br />例: `"Profile": "High"` |
+| **Profile** |H264 プロファイル (H264 コーデックのみに適用されます)。  <br /><br />例: `"Profile": "High"` |
 | **Level** |H264 レベル (H264 コーデックのみに適用されます)。  <br /><br />例: `"Level": "3.2"`|
 | **Width**<br />必須 |エンコードされたビデオの幅 (ピクセル単位)。  <br /><br />例: `"Width": "1280"`|
 | **Height**<br />必須 |エンコードされたビデオの高さ (ピクセル単位)。  <br /><br />例: `"Height": "720"`|

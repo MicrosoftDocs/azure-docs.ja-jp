@@ -69,7 +69,7 @@ url は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blob/ma
 ```
 #### <a name="v2-response"></a>[V2 の応答](#tab/V2)
 
-次の例では、人工知能の優れたコグニティブ サービスの例である https://www.luis.ai の解決策を示します。
+次の例では、人工知能の優れた Cognitive Services の例である https://www.luis.ai の解決策を示します。
 
 ```json
 "entities": [

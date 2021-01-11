@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery サービスを使用して AWS VM を Azure に移行する | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して、アマゾン ウェブ サービス (AWS) で実行中の Windows VM を Azure に移行する方法を説明します。
+title: Azure Migrate を使用して AWS VM を Azure に移行する
+description: この記事では、AWS インスタンスを Azure に移行するためのオプションについて説明したうえで、Azure Migrate をお勧めします。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/27/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dd91e99b45405cca10b9ddc2982674e72ad6bf86
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83d8106b9f206da9095c37b6179bdda8001b439c
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281295"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852771"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -22,7 +22,7 @@ ms.locfileid: "87281295"
 
 ## <a name="migrate-with-azure-migrate"></a>Azure Migrate を使用した移行
 
-AWS インスタンスは、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用して、Azure に移行することをお勧めします。 Azure Migrate は、Azure Migrate、その他の Azure サービス、サードパーティ製のツールを使用する、オンプレミス マシンを Azure に移行する場合の評価を実行する一元的なハブです。
+[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用して AWS EC2 インスタンスを Azure に移行することをお勧めします。 Azure Migrate は、サーバーの移行専用に設計されています。 Azure Migrate は、オンプレミスのマシンの検出、評価、および Azure への移行を行うための中心的なハブを提供します。
 
 Azure Migrate を使用して AWS インスタンスを移行する方法については、[こちら](../migrate/tutorial-migrate-aws-virtual-machines.md)を参照してください。 
 

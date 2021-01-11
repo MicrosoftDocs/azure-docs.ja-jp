@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - APIM サービスの作成 | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - APIM サービスの作成
+description: API Management (APIM) サービスを作成する方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: d0d375f3f60c4a6e544489fc333492586f8d921b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6cfa643d8949f80e8dcf99c2c8e64cf20588b928
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008969"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851003"
 ---
 # <a name="create-an-api-management-service"></a>API Management サービスの作成
 

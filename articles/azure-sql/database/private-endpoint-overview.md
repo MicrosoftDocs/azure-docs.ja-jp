@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 730109a096b352b6d179693293128b465e0be83f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5fcc50670973c361d830e4e6bbf2ce26101b8582
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063258"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213374"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics に対する Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -175,9 +175,9 @@ where session_id=@@SPID
 - [ExpressRoute 回線](../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Polybase を使用した Azure Synapse Analytics から Azure Storage への接続
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>Polybase と COPY ステートメントを使用した Azure Synapse Analytics から Azure Storage への接続
 
-PolyBase は、Azure Storage アカウントから Azure Synapse Analytics にデータを読み込むときによく使用されます。 データの読み込み元の Azure ストレージ アカウントで、アクセスがプライベート エンドポイント、サービス エンドポイント、または IP ベースのファイアウォールを介した一連の仮想ネットワーク サブネットだけに制限されている場合、PolyBase からそのアカウントへの接続は切断されます。 仮想ネットワークに結び付けられた Azure Storage に接続する Azure Synapse Analytics で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、[こちら](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)で示されている手順のようにします。 
+PolyBase と COPY ステートメントは、Azure Storage アカウントから Azure Synapse Analytics にデータを読み込むときによく使用されます。 データの読み込み元の Azure ストレージ アカウントで、アクセスがプライベート エンドポイント、サービス エンドポイント、または IP ベースのファイアウォールを介した一連の仮想ネットワーク サブネットだけに制限されている場合、PolyBase と COPY ステートメントからそのアカウントへの接続は切断されます。 仮想ネットワークに結び付けられた Azure Storage に接続する Azure Synapse Analytics でインポートとエクスポート両方のシナリオを有効にするには、[こちら](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)で示されている手順のようにします。 
 
 ## <a name="next-steps"></a>次のステップ
 

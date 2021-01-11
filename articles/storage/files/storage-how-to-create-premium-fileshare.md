@@ -1,39 +1,43 @@
 ---
 title: Premium Azure ファイル共有を作成する
-description: この記事では、Premium Azure ファイル共有を作成する方法について説明します。
+description: Azure portal、Azure PowerShell モジュール、または Azure CLI を使用して Azure Premium ファイル共有を作成する方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/05/2019
+ms.date: 08/26/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ae40f94ca6c8c0b92c85a49e634aa02c81a98eff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 7c178f0bb54cb815b25259c819d15d10b3671c79
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509984"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89070940"
 ---
-# <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure ファイル共有を作成する方法
+# <a name="how-to-create-an-azure-premium-file-share"></a>Azure Premium ファイル共有を作成する方法
+
 Premium ファイル共有は、ソリッド ステート ディスク (SSD) ストレージ メディアで提供され、データベースのホスティングやハイパフォーマンス コンピューティング (HPC) など、IO 集中型のワークロードに役立ちます。 Premium ファイル共有は、FileStorage アカウントと呼ばれる、特殊用途のストレージ アカウントの種類でホストされます。 Premium ファイル共有は、ハイ パフォーマンスおよびエンタープライズ規模のアプリケーション向けに設計され、一貫性のある待機時間の短縮、高 IOPS、高スループット共有を提供します。
 
-この記事では、[Azure portal](https://portal.azure.com/)、Azure PowerShell、および Azure CLI を使用して、この新しいアカウントの種類を作成する方法を示します。
+この記事では、[Azure portal](https://portal.azure.com/)、Azure PowerShell モジュール、および Azure CLI を使用して、この新しいアカウントの種類を作成する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Premium Azure ファイル共有などの Azure リソースにアクセスするには、Azure サブスクリプションが必要です。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+- Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+- Azure PowerShell モジュールを使用する場合は、[最新バージョンをインストール](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-4.6.0)してください。
 
-## <a name="create-a-premium-file-share-using-the-azure-portal"></a>Azure portal を使用して Premium ファイル共有を作成する
+## <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
+
+すべてのストレージ アカウントは、Azure リソース グループに属している必要があります。 リソース グループは、Azure サービスをグループ化するための論理コンテナーです。 ストレージ アカウントを作成するときに、新しいリソース グループを作成するか、既存のリソース グループを使用するかを選択できます。 Premium ファイル共有には FileStorage アカウントが必要です。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 [Azure portal](https://portal.azure.com/) にサインインします。
 
-### <a name="create-a-filestorage-storage-account"></a>FileStorage ストレージ アカウントを作成する
-
 ここまでで、ストレージ アカウントを作成する準備ができました。
-
-すべてのストレージ アカウントは、Azure リソース グループに属している必要があります。 リソース グループは、Azure サービスをグループ化するための論理コンテナーです。 ストレージ アカウントを作成するときに、新しいリソース グループを作成するか、既存のリソース グループを使用するかを選択できます。 この記事では、新しいリソース グループを作成する方法を示します。
 
 1. Azure portal の左側のメニューで **[ストレージ アカウント]** を選択します。
 
@@ -59,42 +63,9 @@ Premium Azure ファイル共有などの Azure リソースにアクセスす�
 
 ストレージ アカウント リソースが作成されたら、そこに移動します。
 
-### <a name="create-a-premium-file-share"></a>Premium ファイル共有を作成する
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. ストレージ アカウントの左側のメニューで、 **[File サービス]** セクションまでスクロールし、 **[Files]** を選択します。
-1. **[ファイル共有]** を選択して、Premium ファイル共有を作成します。
-1. ファイル共有の名前と必要なクォータを入力し、 **[作成]** を選択します。
-
-> [!NOTE]
-> プロビジョニングされる共有サイズは共有クォータによって指定され、ファイル共有はプロビジョニングされたサイズで課金されます。詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。
-
-   ![Premium ファイル共有を作成する](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
-
-### <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-この記事で作成したリソースをクリーンアップしたい場合は、リソース グループを削除するだけです。 リソース グループを削除すると、関連付けられているストレージ アカウント、およびリソース グループに関連付けられているその他のリソースも削除されます。
-
-## <a name="create-a-premium-file-share-using-powershell"></a>PowerShell を使用して Premium ファイル共有を作成する
-
-### <a name="create-an-account-using-powershell"></a>PowerShell を使用してアカウントを作成する
-
-最初に、[PowerShellGet](/powershell/scripting/gallery/installing-psget) モジュールの最新バージョンをインストールします。
-
-次に、PowerShell モジュールをアップグレードし、お使いの Azure サブスクリプションにサインインし、リソース グループを作成してから、ストレージ アカウントを作成します。
-
-### <a name="upgrade-your-powershell-module"></a>PowerShell モジュールのアップグレード
-
-PowerShell で Premium ファイル共有を操作するには、Az.Storage モジュール バージョン 1.4.0 (最新の Az.Storage モジュール) をインストールする必要があります。
-
-最初に、引き上げられたアクセス許可を使って PowerShell セッションを開きます。
-
-Az.Storage モジュールをインストールします。
-
-```powershell
-Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
-```
-
-### <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインする
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 `Connect-AzAccount` コマンドを使用して、画面上の指示に従って認証を行います。
 
@@ -122,32 +93,11 @@ PowerShell を使用して FileStorage ストレージ アカウントを作成�
 $storageAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name "fileshowto" -SkuName "Premium_LRS" -Location "westus2" -Kind "FileStorage"
 ```
 
-### <a name="create-a-premium-file-share"></a>Premium ファイル共有を作成する
-
-FileStorage アカウントができたので、Premium ファイル共有を作成できます。 作成するには、[New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) コマンドレットを使います。
-
-> [!NOTE]
-> プロビジョニングされる共有サイズは共有クォータによって指定され、ファイル共有はプロビジョニングされたサイズで課金されます。詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。
-
-```powershell
-New-AzStorageShare `
-   -Name myshare `
-   -Context $storageAcct.Context
-```
-
-### <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-リソース グループとそれに関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用します。 
-
-```powershell
-Remove-AzResourceGroup -Name $resourceGroup
-```
-
-## <a name="create-a-premium-file-share-using-azure-cli"></a>Azure CLI を使用して Premium ファイル共有を作成する
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure Cloud Shell を開始するには、[Azure portal](https://portal.azure.com) にサインインします。
 
-CLI のローカル インストールにログインする場合は、まず最新バージョンを使用していることを確認してから、ログイン コマンドを実行します。
+CLI のローカル インストールにログインする場合は、最新バージョンを使用していることを確認してから、サインインします。
 
 ```azurecli
 az login
@@ -186,13 +136,42 @@ STORAGEKEY=$(az storage account keys list \
     --account-name $STORAGEACCT \
     --query "[0].value" | tr -d '"')
 ```
+---
 
-### <a name="create-a-premium-file-share"></a>Premium ファイル共有を作成する
+## <a name="create-a-premium-file-share"></a>Premium ファイル共有を作成する
 
-FileStorage アカウントができたので、Premium ファイル共有を作成できます。 作成するには、[az storage share create](/cli/azure/storage/share) コマンドを使います。
+FileStorage アカウントが作成されたので、そのストレージ アカウント内に Premium ファイル共有を作成できます。
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+1. ストレージ アカウントの左側のメニューで、 **[File サービス]** セクションまでスクロールし、 **[Files]** を選択します。
+1. **[ファイル共有]** を選択して、Premium ファイル共有を作成します。
+1. ファイル共有の名前と必要なクォータを入力し、 **[作成]** を選択します。
 
 > [!NOTE]
-> プロビジョニングされる共有サイズは共有クォータによって指定され、ファイル共有はプロビジョニングされたサイズで課金されます。詳しくは、[価格のページ](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。
+> プロビジョニングされる共有サイズは共有クォータによって指定され、ファイル共有はプロビジョニングされたサイズで課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
+
+   ![Premium ファイル共有を作成する](media/storage-how-to-create-premium-fileshare/create-premium-file-share.png)
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Azure PowerShell モジュールで Premium ファイル共有を作成するには、[New-AzStorageShare](/powershell/module/az.storage/New-AzStorageShare) コマンドレットを使用します。
+
+> [!NOTE]
+> プロビジョニングされる共有サイズは共有クォータによって指定され、ファイル共有はプロビジョニングされたサイズで課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
+
+```powershell
+New-AzStorageShare `
+   -Name myshare `
+   -Context $storageAcct.Context
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI で Premium ファイル共有を作成するには、[az storage share create](/cli/azure/storage/share) コマンドを使用します。
+
+> [!NOTE]
+> プロビジョニングされる共有サイズは共有クォータによって指定され、ファイル共有はプロビジョニングされたサイズで課金されます。 詳細については、 [価格に関するページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
 
 ```azurecli-interactive
 az storage share create \
@@ -200,14 +179,34 @@ az storage share create \
     --account-key $STORAGEKEY \
     --name "myshare" 
 ```
+---
 
-### <a name="clean-up-resources"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+この記事で作成したリソースをクリーンアップしたい場合は、リソース グループを削除します。 リソース グループを削除すると、関連付けられているストレージ アカウント、およびリソース グループに関連付けられているその他のリソースも削除されます。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+この記事で作成したリソースをクリーンアップしたい場合は、リソース グループを削除します。 リソース グループを削除すると、関連付けられているストレージ アカウント、およびリソース グループに関連付けられているその他のリソースも削除されます。
+
+リソース グループとそれに関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用します。 
+
+```powershell
+Remove-AzResourceGroup -Name $resourceGroup
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+この記事で作成したリソースをクリーンアップしたい場合は、リソース グループを削除します。 リソース グループを削除すると、関連付けられているストレージ アカウント、およびリソース グループに関連付けられているその他のリソースも削除されます。
 
 リソース グループと関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[az group delete](/cli/azure/group) コマンドを使用します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
 ```
+---
 
 ## <a name="next-steps"></a>次のステップ
 

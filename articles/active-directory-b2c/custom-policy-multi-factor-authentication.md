@@ -8,14 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 11/30/2018
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a683e34b1021754f5680092346d896ab7059aa1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69096e5f650a131c5af7ec4da60b7cbca225a56f
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389039"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116600"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C の多要素認証 | Microsoft Docs
 

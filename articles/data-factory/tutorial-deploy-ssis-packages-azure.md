@@ -9,17 +9,17 @@ ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 07/06/2020
+ms.date: 08/11/2020
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 76c936cb0c1a95ca1bf5919cbf2753fb6f050687
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 840ccb00fdc91cc44fee46500bbc7237fe55ff2a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971013"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185521"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする
 
@@ -127,93 +127,99 @@ Azure portal でデータ ファクトリを作成するには、[UI を使用�
 
 ### <a name="deployment-settings-page"></a>[デプロイ設定] ページ
 
-**[Integration Runtime Setup]\(統合ランタイムの設定\)** の **[デプロイ設定]** ペインで、次の手順を行います。
+**[Integration runtime setup]\(統合ランタイムのセットアップ\)** ペインの **[デプロイ設定]** ページには、SSISDB や Azure-SSIS IR パッケージ ストアを作成するオプションがあります。
 
-   1. パッケージを SSISDB にデプロイ (プロジェクト デプロイ モデル) するかどうかを、 **[Create SSIS catalog (SSISDB) hosted by Azure SQL Database server/Managed Instance to store your projects/packages/environments/execution logs]\(Azure SQL Database サーバーまたは Managed Instance をホストとする SSIS カタログ (SSISDB) を作成してプロジェクト、パッケージ、環境、実行ログを格納する\)** チェック ボックスで選択します。 Azure SQL Managed Instance にホストされた SQL Server データベース (MSDB)、Azure Files、ファイル システムのいずれかにパッケージをデプロイする場合 (パッケージ デプロイ モデル) は、SSISDB を作成する必要はありません。
+#### <a name="creating-ssisdb"></a>SSISDB を作成する
+
+**[Integration runtime setup]\(統合ランタイムのセットアップ\)** ペインの **[デプロイ設定]** ページで、パッケージを SSISDB (プロジェクト デプロイ モデル) にデプロイしたい場合は、 **[Create SSIS catalog (SSISDB) hosted by Azure SQL Database server/Managed Instance to store your projects/packages/environments/execution logs]\(Azure SQL Database サーバーおよびマネージド インスタンスによってホストされた SSIS カタログ (SSISDB) を作成してプロジェクト、パッケージ、環境、実行ログを格納する\)** チェック ボックスをオンにします。 Azure SQL Managed Instance にホストされた SQL Server データベース (MSDB)、Azure Files、ファイル システムのいずれかにパッケージをデプロイする場合 (パッケージ デプロイ モデル) は、SSISDB を作成する必要はなく、チェック ボックスをオンにする必要もありません。
+
+デプロイ モデルに関係なく、Azure SQL Managed Instance にホストされた SQL Server エージェントを使用してパッケージの実行を調整 (スケジュール) したい場合は、SSISDB によって有効になっているため、このチェック ボックスをオンにしてください。 詳細については、[Azure SQL Managed Instance エージェントを使用して SSIS パッケージの実行をスケジュールする](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent)方法に関するページを参照してください。
    
-      デプロイ モデルに関係なく、Azure SQL Managed Instance にホストされた SQL Server エージェントを使用してパッケージの実行を調整 (スケジュール) したい場合は、SSISDB によって有効になっているため、このチェック ボックスをオンにしてください。 詳細については、[Azure SQL Managed Instance エージェントを使用して SSIS パッケージの実行をスケジュールする](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-managed-instance-agent)方法に関するページを参照してください。
+このチェック ボックスをオンにした場合は、自動的に作成および管理される SSISDB のホストとなる独自のデータベース サーバーを次の手順に従って用意してください。
+
+   ![SSISDB のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
    
-      このチェック ボックスをオンにした場合は、お客様に代わって Microsoft が作成および管理する SSISDB をホストするための独自のデータベース サーバーを用意していただく必要があります。
+   1. **[サブスクリプション]** で、SSISDB をホストするデータベース サーバーを保有する Azure サブスクリプションを選択します。 
 
-      ![SSISDB のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings.png)
+   1. **[場所]** で、SSISDB をホストするデータベース サーバーの場所を選択します。 統合ランタイムと同じ場所を選択することをお勧めします。
+
+   1. **[Catalog Database Server Endpoint]\(カタログ データベース サーバー エンドポイント\)** で、SSISDB をホストするデータベース サーバーのエンドポイントを選択します。 
    
-      1. **[サブスクリプション]** で、SSISDB をホストするデータベース サーバーを保有する Azure サブスクリプションを選択します。 
+      SSISDB インスタンスは、選択したデータベース サーバーに基づいて、単一データベースやエラスティック プールの一部として、またはマネージド インスタンス上に自動的に作成できます。 パブリック ネットワークからアクセスできるほか、仮想ネットワークに参加させてアクセスすることもできます。 SSISDB をホストするデータベース サーバーの種類を選択する際のガイダンスについては、[SQL Database と SQL Managed Instance の比較](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)に関するセクションを参照してください。   
 
-      1. **[場所]** で、SSISDB をホストするデータベース サーバーの場所を選択します。 統合ランタイムと同じ場所を選択することをお勧めします。
+      IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスを選択して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミスのデータへのアクセスを必要としている場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 詳細については、[仮想ネットワークへの Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
 
-      1. **[Catalog Database Server Endpoint]\(カタログ データベース サーバー エンドポイント\)** で、SSISDB をホストするデータベース サーバーのエンドポイントを選択します。 
+   1. **[Use Azure AD authentication with the managed identity for your ADF]\(ADF のマネージド ID で Azure AD 認証を使用する\)** チェック ボックスをオンにして、SSISDB をホストするためのデータベース サーバーの認証方法を選択します。 SQL 認証を選択するか、またはデータ ファクトリのマネージド ID を使用した Azure AD 認証を選択することになります。
+
+      このチェック ボックスをオンにした場合は、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
    
-         SSISDB インスタンスは、選択したデータベース サーバーに基づいて、単一データベースやエラスティック プールの一部として、またはマネージド インスタンス上に自動的に作成できます。 パブリック ネットワークからアクセスできるほか、仮想ネットワークに参加させてアクセスすることもできます。 SSISDB をホストするデータベース サーバーの種類を選択する際のガイダンスについては、[SQL Database と SQL Managed Instance の比較](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)に関するセクションを参照してください。   
+   1. **[管理者ユーザー名]** に、SSISDB をホストするデータベース サーバーの SQL 認証ユーザー名を入力します。 
 
-         IP ファイアウォール規則/仮想ネットワーク サービス エンドポイントを備えた Azure SQL Database サーバーまたはプライベート エンドポイントを備えたマネージド インスタンスを選択して SSISDB をホストする場合、またはセルフホステッド IR を構成せずにオンプレミスのデータへのアクセスを必要としている場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 詳細については、[仮想ネットワークへの Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
+   1. **[管理者パスワード]** に、SSISDB をホストするデータベース サーバーの SQL 認証パスワードを入力します。 
 
-      1. **[Use AAD authentication with the managed identity for your ADF]\(ADF のマネージド ID で AAD 認証を使用する\)** チェック ボックスをオンにして、SSISDB をホストするためのデータベース サーバーの認証方法を選択します。 SQL 認証を選択するか、またはデータ ファクトリのマネージド ID を使用した Azure AD 認証を選択することになります。
+   1. **[Catalog Database Service Tier]\(カタログ データベースのサービス レベル)** で、SSISDB をホストするデータベース サーバーのサービス レベルを選択します。 Basic、Standard、Premium のいずれかのレベルを選択するか、エラスティック プール名を選択してください。
 
-         このチェック ボックスをオンにした場合は、データベース サーバーへのアクセス許可が割り当てられている Azure AD グループにデータ ファクトリのマネージド ID を追加する必要があります。 詳細については、[Azure AD 認証を使用した Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。
+**[テスト接続]** を選択し (該当する場合)、成功したら **[次へ]** を選択します。
+
+#### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR パッケージ ストアを作成する
+
+**[Integration runtime setup]\(統合ランタイムのセットアップ\)** ペインの **[デプロイ設定]** ページで、MSDB、ファイル システム、または Azure Files (パッケージ デプロイ モデル) にデプロイされたパッケージを Azure-SSIS IR パッケージ ストアで管理したい場合は、 **[Create package stores to manage your packages that are deployed into file system/Azure Files/SQL Server database (MSDB) hosted by Azure SQL Managed Instance]\(パッケージ ストアを作成して、Azure SQL Managed Instance をホストとする SQL Server データベース (MSDB)、Azure Files、ファイル システムにデプロイされたパッケージを管理する\)** チェック ボックスをオンにします。
    
-      1. **[管理者ユーザー名]** に、SSISDB をホストするデータベース サーバーの SQL 認証ユーザー名を入力します。 
-
-      1. **[管理者パスワード]** に、SSISDB をホストするデータベース サーバーの SQL 認証パスワードを入力します。 
-
-      1. **[Catalog Database Service Tier]\(カタログ データベースのサービス レベル)** で、SSISDB をホストするデータベース サーバーのサービス レベルを選択します。 Basic、Standard、Premium のいずれかのレベルを選択するか、エラスティック プール名を選択してください。
-
-   1. MSDB、ファイル システム、または Azure Files にデプロイされたパッケージを Azure-SSIS IR パッケージ ストアで管理する (パッケージ デプロイ モデル) かどうかを、 **[Create package stores to manage your packages that are deployed into file system/Azure Files/SQL Server database (MSDB) hosted by Azure SQL Managed Instance]\(パッケージ ストアを作成して、Azure SQL Managed Instance をホストとする SQL Server データベース (MSDB)、Azure Files、ファイル システムにデプロイされたパッケージを管理する\)** チェック ボックスで選択します。
+Azure-SSIS IR パッケージ ストアを使用すると、パッケージのインポート、エクスポート、削除、実行のほか、実行中のパッケージの監視と停止を、[従来の SSIS パッケージ ストア](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)と同様、SSMS を介して行うことができます。 詳細については、[Azure-SSIS IR パッケージ ストアを使用した SSIS パッケージの管理](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store)に関するページを参照してください。
    
-      Azure-SSIS IR パッケージ ストアを使用すると、パッケージのインポート、エクスポート、削除、実行のほか、実行中のパッケージの監視と停止を、[従来の SSIS パッケージ ストア](https://docs.microsoft.com/sql/integration-services/service/package-management-ssis-service?view=sql-server-2017)と同様、SSMS を介して行うことができます。 詳細については、[Azure-SSIS IR パッケージ ストアを使用した SSIS パッケージの管理](https://docs.microsoft.com/azure/data-factory/azure-ssis-integration-runtime-package-store)に関するページを参照してください。
+このチェック ボックスをオンにした場合、 **[新規]** を選択することで Azure-SSIS IR に複数のパッケージ ストアを追加できます。 逆に、1 つのパッケージ ストアを複数の Azure-SSIS IR で共有することもできます。
+
+![MSDB、ファイル システム、Azure Files のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+
+**[Add package store]\(パッケージ ストアの追加\)** ペインで、次の手順を実行します。
    
-      このチェック ボックスをオンにした場合、 **[新規]** を選択することで Azure-SSIS IR に複数のパッケージ ストアを追加できます。 逆に、1 つのパッケージ ストアを複数の Azure-SSIS IR で共有することもできます。
+   1. **[Package store name]\(パッケージ ストア名\)** に、パッケージ ストアの名前を入力します。 
 
-      ![MSDB、ファイル システム、Azure Files のデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings2.png)
+   1. **[Package store linked service]\(パッケージ ストアのリンクされたサービス\)** で、パッケージのデプロイ先のファイル システム、Azure Files、Azure SQL Managed Instance へのアクセス情報を格納する既存のリンクされたサービスを選択するか、 **[New]\(新規\)** を選択して新たに作成します。 **[New Linked Service]\(新しいリンクされたサービス\)** ペインで、次の手順を実行します。 
 
-      **[Add package store]\(パッケージ ストアの追加\)** ペインで、次の手順を実行します。
-   
-      1. **[Package store name]\(パッケージ ストア名\)** に、パッケージ ストアの名前を入力します。 
+      ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
 
-      1. **[Package store linked service]\(パッケージ ストアのリンクされたサービス\)** で、パッケージのデプロイ先のファイル システム、Azure Files、Azure SQL Managed Instance へのアクセス情報を格納する既存のリンクされたサービスを選択するか、 **[New]\(新規\)** を選択して新たに作成します。 **[New Linked Service]\(新しいリンクされたサービス\)** ペインで、次の手順を実行します。 
-
-         ![リンクされたサービスのデプロイ設定](./media/tutorial-create-azure-ssis-runtime-portal/deployment-settings-linked-service.png)
-
-         1. **[名前]** に、リンクされたサービスの名前を入力します。 
+      1. **[名前]** に、リンクされたサービスの名前を入力します。 
          
-         1. **[説明]** に、リンクされたサービスの説明を入力します。 
+      1. **[説明]** に、リンクされたサービスの説明を入力します。 
          
-         1. **[Type]\(種類\)** で、 **[Azure File Storage]** 、 **[Azure SQL Managed Instance]** 、 **[ファイル システム]** のいずれかを選択します。
+      1. **[Type]\(種類\)** で、 **[Azure File Storage]** 、 **[Azure SQL Managed Instance]** 、 **[ファイル システム]** のいずれかを選択します。
 
-         1. **[統合ランタイム経由で接続]** は無視してかまいません。パッケージ ストアのアクセス情報は、常に Microsoft がお客様の Azure-SSIS IR を使用してフェッチするからです。
+      1. **[統合ランタイム経由で接続]** は無視してかまいません。パッケージ ストアのアクセス情報は、常に Microsoft がお客様の Azure-SSIS IR を使用してフェッチするからです。
 
-         1. **[Azure File Storage]** を選択した場合は、次の手順を実行します。 
+      1. **[Azure File Storage]** を選択した場合は、次の手順を実行します。 
 
-            1. **[Account selection method]\(アカウントの選択方法\)** で、 **[From Azure subscription]\(Azure サブスクリプションから\)** または **[Enter manually]\(手動で入力\)** を選択します。
+         1. **[Account selection method]\(アカウントの選択方法\)** で、 **[From Azure subscription]\(Azure サブスクリプションから\)** または **[Enter manually]\(手動で入力\)** を選択します。
          
-            1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択した場合は、適切な **Azure サブスクリプション**、**ストレージ アカウント名**、**ファイル共有**を選択します。
+         1. **[From Azure subscription]\(Azure サブスクリプションから\)** を選択した場合は、適切な **Azure サブスクリプション**、**ストレージ アカウント名**、**ファイル共有**を選択します。
             
-            1. **[Enter manually]\(手動で入力\)** を選択した場合は、 **[ホスト]** に「`\\<storage account name>.file.core.windows.net\<file share name>`」を、 **[ユーザー名]** に「`Azure\<storage account name>`」を、 **[パスワード]** に「`<storage account key>`」を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+         1. **[Enter manually]\(手動で入力\)** を選択した場合は、 **[ホスト]** に「`\\<storage account name>.file.core.windows.net\<file share name>`」を、 **[ユーザー名]** に「`Azure\<storage account name>`」を、 **[パスワード]** に「`<storage account key>`」を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-         1. **[Azure SQL Managed Instance]** を選択した場合は、次の手順を実行します。 
+      1. **[Azure SQL Managed Instance]** を選択した場合は、次の手順を実行します。 
 
-            1. **[接続文字列]** を選択して手動で入力するか、それがシークレットとして保存されている **[Azure Key Vault]** を選択します。
+         1. **[接続文字列]** を選択して手動で入力するか、それがシークレットとして保存されている **[Azure Key Vault]** を選択します。
          
-            1. **[接続文字列]** を選択した場合は、次の手順を実行します。 
+         1. **[接続文字列]** を選択した場合は、次の手順を実行します。 
 
-               1. Azure SQL Managed Instance のプライベート エンドポイントまたはパブリック エンドポイントとして、それぞれ「`<server name>.<dns prefix>.database.windows.net`」または「`<server name>.public.<dns prefix>.database.windows.net,3342`」を **[完全修飾ドメイン名]** に入力します。 プライベート エンドポイントを入力した場合、ADF UI からは到達できないため、 **[テスト接続]** は利用できません。
+            1. Azure SQL Managed Instance のプライベート エンドポイントまたはパブリック エンドポイントとして、それぞれ「`<server name>.<dns prefix>.database.windows.net`」または「`<server name>.public.<dns prefix>.database.windows.net,3342`」を **[完全修飾ドメイン名]** に入力します。 プライベート エンドポイントを入力した場合、ADF UI からは到達できないため、 **[テスト接続]** は利用できません。
 
-               1. **[データベース名]** に「`msdb`」と入力します。
+            1. **[データベース名]** に「`msdb`」と入力します。
                
-               1. **[認証の種類]** で、 **[SQL 認証]** 、 **[マネージド ID]** 、 **[サービス プリンシパル]** のいずれかを選択します。
+            1. **[認証の種類]** で、 **[SQL 認証]** 、 **[マネージド ID]** 、 **[サービス プリンシパル]** のいずれかを選択します。
 
-               1. **[SQL 認証]** を選択した場合は、適切な**ユーザー名**と**パスワード**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+            1. **[SQL 認証]** を選択した場合は、適切な**ユーザー名**と**パスワード**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-               1. **[マネージド ID]** を選択した場合は、ご利用の ADF マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
+            1. **[マネージド ID]** を選択した場合は、ご利用の ADF マネージド ID に Azure SQL Managed Instance へのアクセス権を付与します。
 
-               1. **[サービス プリンシパル]** を選択した場合は、適切な**サービス プリンシパル ID** と**サービス プリンシパル キー**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+            1. **[サービス プリンシパル]** を選択した場合は、適切な**サービス プリンシパル ID** と**サービス プリンシパル キー**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-         1. **[ファイル システム]** を選択した場合は、パッケージのデプロイ先フォルダーの UNC パスを **[ホスト]** に入力すると共に、適切な**ユーザー名**と**パスワード**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
+      1. **[ファイル システム]** を選択した場合は、パッケージのデプロイ先フォルダーの UNC パスを **[ホスト]** に入力すると共に、適切な**ユーザー名**と**パスワード**を入力するか、それがシークレットとして保存されている **Azure Key Vault** を選択します。
 
-         1. **[テスト接続]** を選択し (該当する場合)、成功したら **[作成]** を選択します。
+      1. **[テスト接続]** を選択し (該当する場合)、成功したら **[作成]** を選択します。
 
-      追加したパッケージ ストアが **[Deployment settings]\(デプロイ設定\)** ページに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
+   1. 追加したパッケージ ストアが **[Deployment settings]\(デプロイ設定\)** ページに表示されます。 これらを削除する場合は、対応するチェック ボックスをオンにしてから **[削除]** を選択します。
 
-   1. **[テスト接続]** を選択し (該当する場合)、成功したら **[次へ]** を選択します。
+**[テスト接続]** を選択し (該当する場合)、成功したら **[次へ]** を選択します。
 
 ### <a name="advanced-settings-page"></a>[詳細設定] ページ
 

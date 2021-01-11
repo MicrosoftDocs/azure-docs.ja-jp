@@ -3,19 +3,18 @@ title: メタデータと GenerateAnswer API - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker では、キーと値のペアの形式で、メタデータを質問と回答のペアに追加することができます。 ユーザー クエリの結果をフィルター処理し、フォローアップ会話で使用できる追加情報を格納できます。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.author: diberry
-ms.openlocfilehash: 171efd0e5750555130588f783c4a858def11afec
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: d1258786ec6f611bea5f73f3cb1c176738733acd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993509"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919065"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -184,13 +183,40 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 {
     "question": "When does this hotel close?",
     "top": 1,
-    "strictFilters": [
-      {
-        "name": "restaurant",
-        "value": "paradise"
-      }]
+    "strictFilters": [ { "name": "restaurant", "value": "paradise"}]
 }
 ```
+
+### <a name="logical-and-by-default"></a>既定での論理 AND
+
+クエリで複数のメタデータ フィルターを組み合わせるには、`strictFilters` プロパティの配列に追加のメタデータ フィルターを付け加えます。 既定で、値が論理的に組み合わせられます (AND)。 論理的に組み合わせられる場合に、回答内で該当のペアが返されるためには、すべてのフィルターが QnA のペアと一致する必要があります。
+
+これは、`AND` の値を指定して `strictFiltersCompoundOperationType` プロパティを使用することと同じです。
+
+### <a name="logical-or-using-strictfilterscompoundoperationtype-property"></a>strictFiltersCompoundOperationType プロパティを使用する論理 OR
+
+複数のメタデータ フィルターを組み合わせるときに、1 つまたは一部のフィルター一致のみに関心がある場合は、`OR` の値を指定して `strictFiltersCompoundOperationType` プロパティを使用します。
+
+これにより、いずれかのフィルターが一致した場合にナレッジ ベースによって回答が返されるようになりますが、メタデータが含まれていない回答は返されません。
+
+```json
+{
+    "question": "When do facilities in this hotel close?",
+    "top": 1,
+    "strictFilters": [
+      { "name": "type","value": "restaurant"},
+      { "name": "type", "value": "bar"},
+      { "name": "type", "value": "poolbar"}
+    ],
+    "strictFiltersCompoundOperationType": "OR"
+}
+```
+
+### <a name="metadata-examples-in-quickstarts"></a>クイックスタートのメタデータの例
+
+メタデータに関する以下の QnA Maker ポータルのクイックスタートで、メタデータの詳細について確認します。
+* [作成 - QnA ペアにメタデータを追加する](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [クエリ予測 - メタデータによる回答のフィルター処理を行う](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 <a name="keep-context"></a>
 

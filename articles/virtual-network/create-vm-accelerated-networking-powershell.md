@@ -1,6 +1,6 @@
 ---
 title: 高速ネットワークを有効にして Windows VM を作成する - Azure PowerShell
-description: 高速ネットワークを有効にして Windows 仮想マシンを作成する方法について説明します。
+description: 高速ネットワークを使用する Windows 仮想マシン (VM) を作成して、ネットワークのパフォーマンスを大幅に向上させます。
 services: virtual-network
 documentationcenter: ''
 author: gsilva5
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 2dc7b0447a97cdafc88d2cee4612aba22c1e0eea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975794"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289618"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell を使用して高速ネットワークが有効な Windows VM を作成する
 
@@ -63,7 +63,7 @@ Azure ギャラリーでは次のディストリビューションが直接サ�
 
 高速ネットワークは、2 つ以上の仮想 CPU (vCPU) を備えた、汎用およびコンピューティング最適化のほとんどのインスタンス サイズでサポートされています。  サポートされているシリーズは、Dv2/DSv2 と F/Fs です。
 
-ハイパースレッディングをサポートするインスタンスでは、高速ネットワークは 4 つ以上の vCPU を持つ VM インスタンスでサポートされています。 サポートされている系列は、D/Dsv3、D/Dsv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms、Ms/Mmsv2 です。
+ハイパースレッディングをサポートするインスタンスでは、高速ネットワークは 4 つ以上の vCPU を持つ VM インスタンスでサポートされています。 サポートされている系列は、D/Dsv3、D/Dsv4、Da/Dasv4、E/Esv3、Ea/Easv4、Fsv2、Lsv2、Ms/Mms、および Ms/Mmsv2 です。
 
 VM インスタンスの詳細については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 

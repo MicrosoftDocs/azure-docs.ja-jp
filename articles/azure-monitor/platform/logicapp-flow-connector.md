@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081561"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475738"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Logic Apps および Flow 用の Azure Monitor Logs コネクタ
-[Azure Logic Apps](../../logic-apps/index.yml) と [Power Automate](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 Azure Monitor Logs コネクタを使用すると、Azure Monitor 内の Log Analytics ワークスペースまたは Application Insights アプリケーションからデータを取得するワークフローを作成できます。 この記事では、コネクタに含まれるアクションについて説明し、このデータを使用してワークフローを作成するためのチュートリアルを提供します。
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>Logic Apps および Power Automate の Azure Monitor Logs コネクタ
+[Azure Logic Apps](../../logic-apps/index.yml) と [Power Automate](https://flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 Azure Monitor Logs コネクタを使用すると、Azure Monitor 内の Log Analytics ワークスペースまたは Application Insights アプリケーションからデータを取得するワークフローを作成できます。 この記事では、コネクタに含まれるアクションについて説明し、このデータを使用してワークフローを作成するためのチュートリアルを提供します。
 
 たとえば、ロジック アプリを作成して、Office 365 からの電子メール通知の Azure Monitor ログ データを使用したり、Azure DevOps でバグを作成したり、Slack メッセージを投稿したりできます。  簡単なスケジュールまたは接続されたサービスのアクション (メールやツイートを受信したときなど) からワークフローをトリガーできます。 
 
@@ -126,4 +126,4 @@ Event
 
 - [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)についての詳細を見る。
 - [Logic Apps](../../logic-apps/index.yml) についての詳細を見る
-- [Microsoft Flow](https://ms.flow.microsoft.com)についての詳細を見る
+- [Power Automate](https://flow.microsoft.com) についての詳細を見る。

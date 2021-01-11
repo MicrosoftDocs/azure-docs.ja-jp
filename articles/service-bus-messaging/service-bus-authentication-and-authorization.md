@@ -3,12 +3,12 @@ title: Azure Service Bus の認証と承認 | Microsoft Docs
 description: Shared Access Signature (SAS) 認証を使用して、アプリケーションを Service Bus に対して認証します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 56461c13cf6589b5f66f05837e1bcaa6a49a58c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d5d0ed03c869bd574e4cfaa52ac7b62e8cb7fb98
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337721"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066863"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 Azure Service Bus リソースへのアクセスを認証して承認する方法は 2 つあります。Azure Activity Directory (Azure AD) と Shared Access Signature (SAS) です。 この記事では、この 2 種類のセキュリティ メカニズムの使用について詳しく説明します。 
@@ -30,7 +30,7 @@ Azure AD を使用した認証の詳細については、次の記事を参照�
 ## <a name="shared-access-signature"></a>共有アクセス署名
 [SAS 認証](service-bus-sas.md)により、特定の権限で Service Bus リソースにアクセスできるようになります。 Service Bus の SAS 認証には、Service Bus リソースに対する関連した権限を使用した暗号化キーの構成が伴います。 これにより、クライアントは SAS トークンを提示してリソースへのアクセス権を取得できます。このトークンは、アクセスされるリソース URI と、構成されたキーで署名された有効期限から成ります。
 
-SAS のキーは Service Bus 名前空間で構成できます。 このキーは、その名前空間内のすべてのメッセージング エンティティに適用されます。 Service Bus のキューとトピックでキーを構成することもできます。 SAS は [Azure リレー](../service-bus-relay/relay-authentication-and-authorization.md)でもサポートされます。
+SAS のキーは Service Bus 名前空間で構成できます。 このキーは、その名前空間内のすべてのメッセージング エンティティに適用されます。 Service Bus のキューとトピックでキーを構成することもできます。 SAS は [Azure リレー](../azure-relay/relay-authentication-and-authorization.md)でもサポートされます。
 
 SAS を使用するには、名前空間、キュー、トピックで [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを構成します。 この規則は次の要素で構成されます。
 
@@ -46,7 +46,7 @@ SAS を使用するには、名前空間、キュー、トピックで [SharedAc
 Service Bus の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。 SAS には、 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)のサポートが含まれています。 接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
 
 > [!IMPORTANT]
-> Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) を Service Bus と一緒に使おうとしている場合は、この方法のサポートは今では限定されていて、[SAS を使用するようにアプリケーションを移行する](service-bus-migrate-acs-sas.md)か、Azure AD で OAuth 2.0 認証を使用する (推奨) 必要があることに注意してください。非推奨になった ACS の詳細については、[このブログ記事](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)を参照してください。
+> Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) を Service Bus と一緒に使おうとしている場合は、この方法のサポートは今では限定されていて、[SAS を使用するようにアプリケーションを移行する](service-bus-migrate-acs-sas.md)か、Azure AD で OAuth 2.0 認証を使用する (推奨) 必要があることに注意してください。非推奨になった ACS の詳細については、[このブログ記事](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure AD を使用した認証の詳細については、次の記事を参照してください。

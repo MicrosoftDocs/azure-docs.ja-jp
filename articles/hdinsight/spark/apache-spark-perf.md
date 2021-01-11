@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/21/2020
-ms.openlocfilehash: 0b152f7882c7d7a3bab762253da0febc0257ceae
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 08/21/2020
+ms.custom: contperfq1
+ms.openlocfilehash: fbd0da43e79ee2c27f654f9bd07614e08c12fd30
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117960"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756930"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight で Apache Spark ジョブを最適化する
 

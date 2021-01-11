@@ -2,19 +2,19 @@
 title: Azure Monitor での Azure Service Bus メトリック | Microsoft Docs
 description: この記事では、Azure Monitor を使用して Service Bus エンティティ (キュー、トピック、およびサブスクリプション) を監視する方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 57b791e67157908447956a14fae99545843f3bc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340293"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065014"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor での Azure Service Bus メトリック
 
 Service Bus メトリックによって、Azure サブスクリプション内のリソースの状態が提供されます。 豊富な一連のメトリック データにより、名前空間レベルだけでなくエンティティ レベルでも、Service Bus リソースの全体的な正常性を評価できます。 これらの統計は Service Bus の状態の監視に役立つため、重要になる場合があります。 メトリックはまた、Azure サポートに問い合わせることなく、根本的な問題をトラブルシューティングするのにも役立ちます。
 
-Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、「[Microsoft Azure での監視](../monitoring-and-diagnostics/monitoring-overview.md)」および GitHub 上の「[Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)」(.NET を使用した Azure Monitor メトリックの取得) のサンプルを参照してください。
+Azure Monitor には、さまざまな Azure サービスにわたって監視するための統合ユーザー インターフェイスが用意されています。 詳細については、「[Microsoft Azure での監視](../azure-monitor/overview.md)」および GitHub 上の「[Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)」(.NET を使用した Azure Monitor メトリックの取得) のサンプルを参照してください。
 
 > [!IMPORTANT]
 > エンティティとの間で相互作用が 2 時間ない場合、エンティティがアイドル状態でなくなるまで、メトリックは値として "0" を示すようになります。
@@ -29,11 +29,11 @@ Azure Monitor では、複数の方法でメトリックにアクセスできま
 
 [Azure Portal](https://portal.azure.com) では、メトリックを時間経過に沿って監視できます。 次の例は、アカウント レベルでの成功した要求と受信要求を表示する方法を示しています。
 
-![][1]
+![Azure portal の [モニター - メトリック (プレビュー)] ページのスクリーンショット。][1]
 
 また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、 **[Metrics]\(メトリック\)** をクリックします。 エンティティのスコープにフィルター処理されたメトリックを表示するには、エンティティを選択し、 **[メトリック]** をクリックします。
 
-![][2]
+![エンティティのスコープにフィルター処理された [モニター - メトリック (プレビュー)] ページのスクリーンショット。][2]
 
 ディメンションをサポートするメトリックについては、目的のディメンション値でフィルター処理する必要があります。
 
@@ -56,11 +56,11 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-| 受信要求| 指定された期間にわたって Service Bus サービスに対して実行された要求の数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|成功した要求|指定された期間にわたって Service Bus サービスに対して実行された成功した要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|サーバー エラー|指定された期間にわたって Service Bus サービスでエラーのために処理されなかった要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|ユーザー エラー (次のサブセクションを参照)|指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|調整された要求数|使用量を超えたため調整された要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+| 受信要求| 指定された期間にわたって Service Bus サービスに対して実行された要求の数。 <br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|成功した要求|指定された期間にわたって Service Bus サービスに対して実行された成功した要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|サーバー エラー|指定された期間にわたって Service Bus サービスでエラーのために処理されなかった要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|ユーザー エラー (次のサブセクションを参照)|指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|調整された要求数|使用量を超えたため調整された要求の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 
 ### <a name="user-errors"></a>ユーザー エラー
 
@@ -74,12 +74,13 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|受信メッセージ|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|送信メッセージ|指定された期間にわたって Service Bus から受信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-| メッセージ| キュー/トピック内のメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> ディメンション:EntityName |
-| ActiveMessages| キュー/トピック内のアクティブなメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> ディメンション:EntityName |
-| 配信不能メッセージ| キュー/トピック内の配信不能メッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/>ディメンション:EntityName |
-| スケジュール設定されたメッセージ| キュー/トピック内のスケジュール済みメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average  <br/> ディメンション:EntityName |
+|受信メッセージ|指定された期間にわたって Service Bus に送信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|送信メッセージ|指定された期間にわたって Service Bus から受信されたイベントまたはメッセージの数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+| メッセージ| キュー/トピック内のメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> ディメンション:エンティティ名 |
+| アクティブなメッセージ| キュー/トピック内のアクティブなメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/> ディメンション:エンティティ名 |
+| 配信不能メッセージ| キュー/トピック内の配信不能メッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average <br/>ディメンション:エンティティ名 |
+| スケジュール設定されたメッセージ| キュー/トピック内のスケジュール済みメッセージの数。 <br/><br/> 単位:Count <br/> 集計の種類:Average  <br/> ディメンション:エンティティ名 |
+| サイズ | エンティティ (キューまたはトピック) のサイズ (バイト単位)。 <br/><br/>単位:Count <br/>集計の種類:Average <br/>ディメンション:エンティティ名 | 
 
 > [!NOTE]
 > 次のメトリックの値は特定の時点の値です。 その時点の直後に使用された受信メッセージは、これらのメトリックに反映されない場合があります。 
@@ -92,9 +93,9 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|ActiveConnections|名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|開かれている接続数 |開かれている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
-|切断された接続数 |閉じられている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:EntityName|
+|アクティブな接続|名前空間およびエンティティ上のアクティブな接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|開かれている接続数 |開かれている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
+|切断された接続数 |閉じられている接続の数。<br/><br/> 単位:Count <br/> 集計の種類:合計 <br/> ディメンション:エンティティ名|
 
 ## <a name="resource-usage-metrics"></a>リソース使用状況のメトリック
 
@@ -107,8 +108,8 @@ Azure Monitor のメトリックとアラートは、アラート単位で課金
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
-|名前空間あたりの CPU 使用率|名前空間の CPU 使用率 (%)。<br/><br/> 単位:Percent <br/> 集計の種類:最大値 <br/> ディメンション:EntityName|
-|名前空間あたりのメモリ サイズの使用量|名前空間のメモリ使用率 (%)。<br/><br/> 単位:Percent <br/> 集計の種類:最大値 <br/> ディメンション:EntityName|
+|名前空間あたりの CPU 使用率|名前空間の CPU 使用率 (%)。<br/><br/> 単位:Percent <br/> 集計の種類:最大値 <br/> ディメンション:エンティティ名|
+|名前空間あたりのメモリ サイズの使用量|名前空間のメモリ使用率 (%)。<br/><br/> 単位:Percent <br/> 集計の種類:最大値 <br/> ディメンション:エンティティ名|
 
 ## <a name="metrics-dimensions"></a>メトリックのディメンション
 
@@ -116,7 +117,7 @@ Azure Service Bus は、Azure Monitor でのメトリックの次のディメン
 
 |ディメンション名|説明|
 | ------------------- | ----------------- |
-|EntityName| Service Bus は、名前空間の下のメッセージング エンティティをサポートします。|
+|エンティティ名| Service Bus は、名前空間の下のメッセージング エンティティをサポートします。|
 
 ## <a name="set-up-alerts-on-metrics"></a>メトリックに対するアラートの設定
 
@@ -168,9 +169,7 @@ Azure Service Bus は、Azure Monitor でのメトリックの次のディメン
 
 ## <a name="next-steps"></a>次のステップ
 
-「[Azure Monitor の概要](../monitoring-and-diagnostics/monitoring-overview.md)」を参照してください。
+「[Azure Monitor の概要](../azure-monitor/overview.md)」を参照してください。
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
-
-

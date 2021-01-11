@@ -3,12 +3,12 @@ title: Azure Migrate での VMware 移行のサポート
 description: Azure Migrate での VMware VM 移行のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: d8a2488e16031a4d960d039d646d9da5de1c1c2e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 19252a058fd26da6bddf64ad7af132a12cd1e140
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223705"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869101"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 移行のサポートマトリックス
 
@@ -41,7 +41,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 --- | ---
 **VMware vCenter サーバー** | バージョン 5.5、6.0、6.5、または 6.7。
 **VMware vSphere ESXI ホスト** | バージョン 5.5、6.0、6.5、または 6.7。
-**vCenter Server のアクセス許可** | エージェントレスの移行では、[Migrate Appliance](migrate-appliance.md) を使用します。 アプライアンスには、vCenter Server で次のアクセス許可が必要です。<br/><br/> - **Datastore.Browse**:VM のログ ファイルの閲覧を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **Datastore.LowLevelFileOperations**: データストア ブラウザーでの読み取り、書き込み、削除、名前変更の各操作を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking**:VM ディスクに対する変更のトラッキングの有効化/無効化を許可し、スナップショット間における変更済みのデータ ブロックをプルします。<br/><br/> - **VirtualMachine.Configuration.DiskLease**:VM のディスクのリース操作を許可し、VMware vSphere Virtual Disk Development Kit (VDDK) を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.AllowDiskAccess**: (特に vSphere 6.0 以降) VDDK を使用したディスクのランダム読み取りアクセス用に VM 上のディスクを開くことを許可します。<br/><br/> - **VirtualMachine.Provisioning.AllowReadOnlyDiskAccess**:VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.AllowDiskRandomAccess**:VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.AllowVirtualMachineDownload**:VM に関連付けられたファイルの読み取り操作を許可し、エラーが発生した場合にログをダウンロードして、トラブルシューティングを行います。<br/><br/> - **VirtualMachine.SnapshotManagement*.**:レプリケーション用に VM スナップショットの作成と管理を許可します。<br/><br/> - **Virtual Machine.Interaction.Power Off**:Azure への移行中に VM の電源をオフにすることを許可します。
+**vCenter Server のアクセス許可** | エージェントレスの移行では、[Migrate Appliance](migrate-appliance.md) を使用します。 アプライアンスには、vCenter Server で次のアクセス許可が必要です。<br/><br/> - **Datastore.Browse**:VM のログ ファイルの閲覧を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **Datastore.LowLevelFileOperations**: データストア ブラウザーでの読み取り、書き込み、削除、名前変更の各操作を許可して、スナップショットの作成と削除のトラブルシューティングを行います。<br/><br/> - **VirtualMachine.Configuration.DiskChangeTracking**:VM ディスクに対する変更のトラッキングの有効化/無効化を許可し、スナップショット間における変更済みのデータ ブロックをプルします。<br/><br/> - **VirtualMachine.Configuration.DiskLease**:VM のディスクのリース操作を許可し、VMware vSphere Virtual Disk Development Kit (VDDK) を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskAccess**: (特に vSphere 6.0 以降) VDDK を使用したディスクのランダム読み取りアクセス用に VM 上のディスクを開くことを許可します。<br/><br/> - **VirtualMachine.Provisioning.ReadOnlyDiskAccess**: VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.DiskRandomAccess**: VM 上のディスクを開くことを許可し、VDDK を使用してディスクを読み取ります。<br/><br/> - **VirtualMachine.Provisioning.VirtualMachineDownload**: VM に関連付けられたファイルの読み取り操作を許可し、エラーが発生した場合にログをダウンロードして、トラブルシューティングを行います。<br/><br/> - **VirtualMachine.SnapshotManagement\*** : レプリケーション用に VM スナップショットの作成と管理を許可します。<br/><br/> - **Virtual Machine.Interaction.Power Off**:Azure への移行中に VM の電源をオフにすることを許可します。
 
 
 
@@ -74,7 +74,7 @@ VMware VM は、次のいくつかの方法で移行できます。
 
 ### <a name="appliance-requirements-agentless"></a>アプライアンスの要件 (エージェントレス)
 
-エージェントレスの移行では、[Azure Migrate アプライアンス](migrate-appliance.md)を使用します。 アプライアンスを VMWare VM としてデプロイするには、OVA テンプレートを使用するか、vCenter Server にインポートするか、[PowerShell スクリプト](deploy-appliance-script.md)を使用します。
+エージェントレスの移行では、[Azure Migrate アプライアンス](migrate-appliance.md)を使用します。 アプライアンスを VMware VM としてデプロイするには、OVA テンプレートを使用するか、vCenter Server にインポートするか、[PowerShell スクリプト](deploy-appliance-script.md)を使用します。
 
 - VMware の[アプライアンスの要件](migrate-appliance.md#appliance---vmware)を確認してください。
 - アプライアンスが[パブリック](migrate-appliance.md#public-cloud-urls)および [Government](migrate-appliance.md#government-cloud-urls) クラウドでアクセスする必要がある URL について確認します。
@@ -116,7 +116,7 @@ vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナ�
 **ネットワークとストレージ** | 最新情報については、Site Recovery の[ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#network)と[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#storage)の前提条件を確認してください。 Azure Migrate の場合も、ネットワークとストレージの要件は同じです。
 **Azure の要件** | 最新情報については、Site Recovery に使用する [Azure ネットワーク](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute)の要件を確認してください。 VMware の移行に関する要件は、Azure Migrate の場合も同じです。
 **モビリティ サービス** | 移行対象となる各 VM に、Mobility Service エージェントがインストールされている必要があります。
-**UEFI ブート** | Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。<br/><br/> OS ディスクには最大 4 つのパーティションが必要で、ボリュームは NTFS でフォーマットされている必要があります。
+**UEFI ブート** | サポートされています。
 **ターゲット ディスク** | VM は、Azure 内のマネージド ディスク (Standard HDD、Premium SSD) にのみ移行できます。
 **ディスク サイズ** | 2 TB の OS ディスク。データ ディスク用に 8 TB。
 **ディスクの制限** |  VM あたり最大 63 台のディスク。
@@ -125,7 +125,7 @@ vSphere/ESXI ホスト | TCP ポート 902 で、アプライアンスがスナ�
 **独立ディスク** | サポートされています。
 **パススルー ディスク** | サポートされています。
 **NFS** | VM 上のボリュームとしてマウントされた NFS ボリュームはレプリケートされません。
-**iSCSI ターゲット** | iSCSI ターゲットを含む VM は、エージェントレス移行ではサポートされていません。
+**iSCSI ターゲット** | サポートされています。
 **マルチパス IO** | サポートされていません。
 **ストレージ vMotion** | サポートされています
 **チーミングされた NIC** | サポートされていません。

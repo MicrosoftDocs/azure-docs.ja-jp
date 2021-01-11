@@ -3,12 +3,12 @@ title: PowerShell を使用して Azure ファイル共有をバックアップ�
 description: この記事では、Azure Backup サービスと PowerShell を使用して Azure Files のファイル共有をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 18c03eda9d9daca3a0fa536843e32f7fc3158287
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 948931764769bc967b88e7942b7e8384b0f93dff
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971030"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077002"
 ---
 # <a name="back-up-an-azure-file-share-by-using-powershell"></a>PowerShell を使用して Azure ファイル共有をバックアップする
 
@@ -89,13 +89,13 @@ Recovery Services コンテナーは Resource Manager のリソースである�
 
 Recovery Services コンテナーを作成するには、次の手順に従います。
 
-1. 既存のリソース グループがない場合は、[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) コマンドレットを使用して新しいものを作成します。 この例では、リソース グループを米国西部リージョンに作成します。
+1. 既存のリソース グループがない場合は、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して新しいものを作成します。 この例では、リソース グループを米国西部リージョンに作成します。
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-1. [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
+1. [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) コマンドレットを使用して、コンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定します。
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
@@ -103,7 +103,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
 ### <a name="view-the-vaults-in-a-subscription"></a>サブスクリプション内のコンテナーの表示
 
-サブスクリプション内のコンテナーをすべて表示するには、[Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0) を使用します。
+サブスクリプション内のコンテナーをすべて表示するには、[Get-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/get-azrecoveryservicesvault) を使用します。
 
 ```powershell
 Get-AzRecoveryServicesVault
@@ -127,7 +127,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 Azure Backup コマンドレットの多くは、入力として Recovery Services コンテナー オブジェクトを必要とするので、コンテナー オブジェクトを変数に格納すると便利です。
 
-コンテナーのコンテキストとは、コンテナーで保護されるデータの種類です。 これは、[Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0) を使用して設定します。 コンテキストが設定されると、それが後続のすべてのコマンドレットに適用されます。
+コンテナーのコンテキストとは、コンテナーで保護されるデータの種類です。 これは、[Set-AzRecoveryServicesVaultContext](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext) を使用して設定します。 コンテキストが設定されると、それが後続のすべてのコマンドレットに適用されます。
 
 次の例では、**testvault** のコンテナーのコンテキストを設定します。
 
@@ -152,9 +152,9 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType 
 
 バックアップ ポリシー用のコマンドレットをいくつか次に示します。
 
-* [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0) を使用して、既定のバックアップ ポリシー保持期間を表示します。
-* [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0) を使用して、既定のバックアップ ポリシー スケジュールを表示します。
-* [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) を使用して、新しいバックアップ ポリシーを作成します。 入力としてスケジュールとアイテム保持ポリシー オブジェクトを入力します。
+* [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) を使用して、既定のバックアップ ポリシー保持期間を表示します。
+* [Get-AzRecoveryServicesBackupSchedulePolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) を使用して、既定のバックアップ ポリシー スケジュールを表示します。
+* [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) を使用して、新しいバックアップ ポリシーを作成します。 入力としてスケジュールとアイテム保持ポリシー オブジェクトを入力します。
 
 既定では、開始時刻はスケジュール ポリシー オブジェクトで定義されます。 開始時刻を希望の時刻に変更するには、次の例を使用します。 希望する開始時刻は、協定世界時 (UTC) とする必要があります。 次の例では、毎日のバックアップの希望の開始時刻が午前 01:00 UTC であるものとします。
 
@@ -190,7 +190,7 @@ NewAFSPolicy           AzureFiles            AzureStorage              10/24/201
 
 ### <a name="retrieve-a-backup-policy"></a>バックアップ ポリシーを取得する
 
-[Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) を使用して、関連するポリシー オブジェクトをフェッチします。 このコマンドレットを使用して、ワークロードの種類に関連付けられているポリシーを表示したり、特定のポリシーを取得したりできます。
+[Get-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) を使用して、関連するポリシー オブジェクトをフェッチします。 このコマンドレットを使用して、ワークロードの種類に関連付けられているポリシーを表示したり、特定のポリシーを取得したりできます。
 
 #### <a name="retrieve-a-policy-for-a-workload-type"></a>ワークロードの種類のポリシーを取得する
 
@@ -221,7 +221,7 @@ $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 
 ### <a name="enable-protection-and-apply-the-policy"></a>保護を有効にし、ポリシーを適用する
 
-[Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0) を使用して、保護を有効にします。 ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールに従ってバックアップがトリガーされます。
+[Enable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) を使用して、保護を有効にします。 ポリシーがコンテナーに関連付けられると、ポリシーのスケジュールに従ってバックアップがトリガーされます。
 
 次の例では、ポリシー **dailyafs** を使用して、ストレージ アカウント **testStorageAcct** の Azure ファイル共有 **testAzureFileShare** の保護を有効にしています。
 
@@ -237,7 +237,7 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-ストレージ アカウントのファイル共有の一覧を取得する方法の詳細については、[こちらの記事](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageshare?view=azps-4.3.0)をご覧ください。
+ストレージ アカウントのファイル共有の一覧を取得する方法の詳細については、[こちらの記事](/powershell/module/az.storage/get-azstorageshare)をご覧ください。
 
 ## <a name="important-notice-backup-item-identification"></a>重要な注意: バックアップ項目の識別
 
@@ -262,7 +262,7 @@ Azure ファイル共有のバックアップを有効にするときに、ユ�
 
 ## <a name="trigger-an-on-demand-backup"></a>オンデマンド バックアップをトリガーする
 
-[Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) を使用して、保護されている Azure ファイル共有のオンデマンド バックアップを実行します。
+[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem) を使用して、保護されている Azure ファイル共有のオンデマンド バックアップを実行します。
 
 1. [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) を使用して、バックアップ データを保持するコンテナー内のコンテナーからストレージ アカウントを取得します。
 2. バックアップ ジョブを開始するには、[Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) を使用して、Azure ファイル共有に関する情報を取得します。

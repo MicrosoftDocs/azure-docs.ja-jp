@@ -1,6 +1,6 @@
 ---
-title: IoT ハブのイベント ソースを追加する方法 ‐ Azure Time Series Insights | Microsoft Docs
-description: Azure Time Series Insights 環境に IoT ハブ イベント ソースを追加する方法について説明します。
+title: IoT Hub のイベント ソースを追加する方法 ‐ Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights 環境に IoT Hub イベント ソースを追加する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/20/2020
 ms.locfileid: "86528060"
 ---
-# <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Azure Time Series Insights 環境に IoT ハブ イベント ソースを追加する
+# <a name="add-an-iot-hub-event-source-to-your-azure-time-series-insight-environment"></a>Azure Time Series Insights 環境に IoT Hub イベント ソースを追加する
 
 この記事では、Microsoft Azure portal を使用して、Azure IoT Hub からデータを読み取るイベント ソースを Azure Time Series Insights 環境に追加する方法を説明します。
 
@@ -30,15 +30,15 @@ ms.locfileid: "86528060"
 * [Azure Time Series Insights 環境](time-series-insights-update-create-environment.md)を作成する。
 * [Microsoft Azure portal を使用して IoT Hub](../iot-hub/iot-hub-create-through-portal.md) を作成する。
 * IoT Hub には、アクティブなメッセージ イベントが送信される必要があります。
-* IoT ハブに Azure Time Series Insights 環境で使用する専用コンシューマー グループを作成します。 各 Azure Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 詳細については、[「Azure IoT Hub 開発者ガイド」](../iot-hub/iot-hub-devguide.md)をご覧ください。
+* IoT Hub に Azure Time Series Insights 環境で使用する専用コンシューマー グループを作成します。 各 Azure Time Series Insights イベント ソースには、他のコンシューマーと共有されない専用のコンシューマー グループが設定されている必要があります。 複数のリーダーが同じコンシューマー グループのイベントを消費すると、すべてのリーダーにエラーが発生する可能性があります。 詳細については、[「Azure IoT Hub 開発者ガイド」](../iot-hub/iot-hub-devguide.md)をご覧ください。
 
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT ハブへのコンシューマー グループの追加
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT Hub へのコンシューマー グループの追加
 
-アプリケーションは、コンシューマー グループを使用して、Azure IoT Hub からデータをプルします。 IoT ハブからデータを確実に読み取るには、この Azure Time Series Insights 環境でのみ使用される専用のコンシューマー グループを指定します。
+アプリケーションは、コンシューマー グループを使用して、Azure IoT Hub からデータをプルします。 IoT Hub からデータを確実に読み取るには、この Azure Time Series Insights 環境でのみ使用される専用のコンシューマー グループを指定します。
 
-新しいコンシューマー グループを IoT ハブに追加するには:
+新しいコンシューマー グループを IoT Hub に追加するには:
 
-1. [Azure portal](https://portal.azure.com) で、ご利用の IoT ハブを探して開きます。
+1. [Azure portal](https://portal.azure.com) で、ご利用の IoT Hub を探して開きます。
 
 1. **[設定]** で **[組み込みのエンドポイント]** を選択し、 **[イベント]** エンドポイントを選択します。
 
@@ -74,18 +74,18 @@ ms.locfileid: "86528060"
 
        | プロパティ | 説明 |
        | --- | --- |
-       | サブスクリプション | 目的の IoT ハブが属しているサブスクリプション。 |
-       | IoT Hub 名 | 選択した IoT ハブの名前。 |
+       | サブスクリプション | 目的の IoT Hub が属しているサブスクリプション。 |
+       | IoT Hub 名 | 選択した IoT Hub の名前。 |
        | IoT Hub ポリシー名 | 共有アクセス ポリシーを選択します。 共有アクセス ポリシーは [IoT Hub の設定] タブで見つかります。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。 |
        | IoT Hub ポリシー キー | キーが事前設定されています。 |
 
-    * IoT Hub がサブスクリプションの外部であるか、または高度なオプションを選択する場合は、 **[IoT ハブ設定を手動で行う]** を選択します。
+    * IoT Hub がサブスクリプションの外部であるか、または高度なオプションを選択する場合は、 **[IoT Hub 設定を手動で行う]** を選択します。
 
       次の表に、**IoT Hub 設定を手動で行う**ために必要なプロパティを示します。
 
        | プロパティ | 説明 |
        | --- | --- |
-       | サブスクリプション ID | 目的の IoT ハブが属しているサブスクリプション。 |
+       | サブスクリプション ID | 目的の IoT Hub が属しているサブスクリプション。 |
        | Resource group | この IoT Hub が作成されたリソース グループ名です。 |
        | IoT Hub 名 | IoT Hub の名前です。 IoT Hub を作成したときに、IoT Hub の名前を入力しました。 |
        | IoT Hub ポリシー名 | 共有アクセス ポリシー。 共有アクセス ポリシーは [IoT Hub の設定] タブで作成できます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 イベント ソースの共有アクセス ポリシーには、**サービス接続**アクセス許可が "*必要*" です。 |
@@ -100,7 +100,7 @@ ms.locfileid: "86528060"
        | タイムスタンプ プロパティ名 | この値を決定するには、IoT Hub に送信されるメッセージ データのメッセージ形式を理解する必要があります。 この値は、イベント タイムスタンプとして使用するメッセージ データ内の特定のイベント プロパティの**名前**です。 値は、大文字小文字が区別されます。 空白のままにすると、イベント ソース内の**イベント エンキュー時間**がイベント タイムスタンプとして使用されます。 |
 
 
-1. IoT ハブに追加した、専用の Azure Time Series Insights コンシューマー グループ名を追加します。
+1. IoT Hub に追加した、専用の Azure Time Series Insights コンシューマー グループ名を追加します。
 
 1. **［作成］** を選択します
 

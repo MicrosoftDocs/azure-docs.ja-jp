@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: f676c4129b79499eb9ed524821a336b3859dbb3c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311636"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004853"
 ---
-# <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center for IoT のセキュリティ アラート
+# <a name="azure-security-center-for-iot-customizable-security-alerts"></a>Azure Security Center for IoT のカスタマイズ可能なセキュリティ アラート
 
 Azure Security Center for IoT では、高度な分析および脅威インテリジェンスを使用して IoT ソリューションを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。
 

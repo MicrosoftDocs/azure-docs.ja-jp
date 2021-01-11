@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
-ms.date: 06/25/2020
-ms.openlocfilehash: 4eb1afdd7a6e48d8701dafc6dff44ce6e6db4902
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 07/22/2020
+ms.openlocfilehash: 30107c99f16b1b2f7c91ce8a662f44a041410d01
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231626"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119370"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -97,7 +97,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 | [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | いいえ | はい、ただし、インスタンス内でのみとなります。 リモート Service Broker ルートを使用している場合は、移行時に複数の分散 SQL Server インスタンスから 1 つの SQL Managed Instance にデータベースを統合し、ローカル ルートのみを使用してみてください。 [Service Broker の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker)に関する記述を参照してください |
 | [サーバーの構成設定](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | いいえ | はい - [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関する記事を参照してください |
 | [SET ステートメント](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください | はい - [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関する記事を参照してください|
-| [SQL Server エージェント](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | いいえ - [エラスティック ジョブ](elastic-jobs-overview.md)に関する記事を参照してください | はい - [SQL Server エージェントの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent)に関する記事を参照してください |
+| [SQL Server エージェント](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | いいえ - [エラスティック ジョブ (プレビュー)](elastic-jobs-overview.md) に関する記事を参照してください | はい - [SQL Server エージェントの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent)に関する記事を参照してください |
 | [SQL Server 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | いいえ - [SQL Database の監査](auditing-overview.md)に関する記事を参照してください | はい - [監査の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#auditing)に関するページを参照してください |
 | [システム ストアド関数](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers)に関するページを参照してください |
 | [システム ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | 一部 - 個々のストアド プロシージャに関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers)に関するページを参照してください |
@@ -142,7 +142,7 @@ Azure プラットフォームには、標準のデータベース機能に追�
 | [SQL データ同期](sql-data-sync-sql-server-configure.md) | はい | いいえ |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | いいえ、[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) は別の Azure クラウド サービスです。 | いいえ、[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) は別の Azure クラウド サービスです。 |
 | [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | はい。Azure Data Factory (ADF) 環境で管理された SSIS を使用します。このパッケージは、Azure SQL Database でホストされている SSISDB に格納され、Azure SSIS Integration Runtime (IR) で実行されます。[ADF での Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページをご覧ください。 <br/><br/>SQL Database と SQL Managed Instance の SSIS 機能を比較するには、[SQL Database と SQL Managed Instance の比較](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)に関するセクションを参照してください。 | はい。Azure Data Factory (ADF) 環境で管理された SSIS を使用します。このパッケージは、SQL Managed Instance によってホストされている SSISDB に格納され、Azure SSIS Integration Runtime (IR) で実行されます。[ADF での Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページをご覧ください。 <br/><br/>SQL Database と SQL Managed Instance の SSIS 機能を比較するには、[SQL Database と SQL Managed Instance の比較](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance)に関するセクションを参照してください。 |
-| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | いいえ - [Power BI](https://docs.microsoft.com/power-bi/) に関する記事を参照してください | いいえ - [Power BI](https://docs.microsoft.com/power-bi/) に関する記事を参照してください |
+| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | いいえ - [Power BI](https://docs.microsoft.com/power-bi/) に関する記事を参照してください | いいえ - 代わりに [Power BI のページ分割されたレポート](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi)を使用するか、Azure VM で SSRS をホストしてください。 SQL Managed Instance では SSRS をサービスとして実行できませんが、SQL Server 認証を使用して、Azure 仮想マシンにインストールされているレポート サーバーに対して [SSRS カタログ データベース](https://docs.microsoft.com/sql/reporting-services/install-windows/ssrs-report-server-create-a-report-server-database#database-server-version-requirements)をホストできます。 |
 | [Query Performance Insights (QPI)](query-performance-insight-use.md) | はい | いいえ。 SQL Server Management Studio と Azure Data Studio で組み込みのレポートを使用します。 |
 | [VNet](../../virtual-network/virtual-networks-overview.md) | 部分的、[VNet エンドポイント](vnet-service-endpoint-rule-overview.md)を使用して制限付きアクセスを有効にします | はい、SQL Managed Instance は顧客の VNet に組み込まれます。 [サブネット](../managed-instance/transact-sql-tsql-differences-sql-server.md#subnet)と [VNet](../managed-instance/transact-sql-tsql-differences-sql-server.md#vnet) を参照してください |
 | VNet サービス エンドポイント | [はい](vnet-service-endpoint-rule-overview.md) | いいえ |
@@ -184,7 +184,7 @@ Azure SQL Database と Azure SQL Managed Instance では、データの管理に
 マイクロソフトは、Azure SQL Database に継続的に機能を追加します。 最新の更新プログラムについては、以下のフィルターを使用して、Azure のサービスの更新情報 Web ページを参照してください。
 
 - [Azure SQL Database](https://azure.microsoft.com/updates/?service=sql-database) にフィルターが適用されています。
-- SQL Database の機能について、[General Availability] [(GA) のアナウンス](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) でフィルター処理します。
+- SQL Database の機能について、[General Availability \(GA\) のアナウンス](https://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) でフィルター処理します。
 
 Azure SQL Database と Azure SQL Managed Instance の詳細については、以下を参照してください。
 

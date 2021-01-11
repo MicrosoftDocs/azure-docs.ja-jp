@@ -1,26 +1,24 @@
 ---
-title: macOS から Windows Virtual Desktop に接続する - Azure
-description: macOS クライアントを使用して Windows Virtual Desktop に接続する方法。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+title: macOS から Windows Virtual Desktop (classic) に接続する - Azure
+description: macOS クライアントを使用して Windows Virtual Desktop (classic) に接続する方法。
+author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 024a1ab1a7fef58bd5fd8f9e7e0fc743a4ecee71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0d2bd6a07cfc9e5ebe205322550c9e898022846
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85213161"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008442"
 ---
-# <a name="connect-with-the-macos-client"></a>macOS クライアントに接続する
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-macos-client"></a>macOS クライアントを使用して Windows Virtual Desktop (classic) に接続する
 
 > 適用対象: macOS 10.12 以降
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-macos.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (classic) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-macos.md)を参照してください。
 
 ダウンロード可能なクライアントを使用して、ご使用の macOS デバイスから Windows Virtual Desktop リソースにアクセスできます。 このガイドでは、クライアントを設定する方法について説明します。
 

@@ -12,16 +12,18 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 992ad40d343fcc85b6c7c8fe0ed8b083a5b08238
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b2324c480ef81ef241f4d639c22c2ed4dd1545b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84344511"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808849"
 ---
 # <a name="long-term-retention---azure-sql-database-and-azure-sql-managed-instance"></a>長期リテンション - Azure SQL Database と Azure SQL Managed Instance
 
-多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database と Azure SQL Managed Instance の[自動バックアップ](automated-backups-overview.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期保有 (LTR) 機能を使用すると、指定された SQL Database と SQL Managed Instance の完全バックアップを、最大で 10 年間、Azure Blob Storage で読み取りアクセス geo 冗長ストレージを使って格納することができます。 その後、任意のバックアップを新しいデータベースとして復元できます。 Azure Storage の冗長性の詳細については、「[Azure Storage の冗長性](../../storage/common/storage-redundancy.md)」を参照してください。 
+多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database と Azure SQL Managed Instance の[自動バックアップ](automated-backups-overview.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期保有 (LTR) 機能を使用すると、指定された SQL Database と SQL Managed Instance の完全バックアップを、最大で 10 年間、Azure Blob Storage で読み取りアクセス geo 冗長ストレージを使って格納することができます。 その後、任意のバックアップを新しいデータベースとして復元できます。
+
+さらに、SQL Managed Instance によって[構成可能なバックアップ ストレージの冗長性](automated-backups-overview.md#backup-storage-redundancy)が導入されます。これにより、ローカル冗長 (LRS)、ゾーン冗長 (ZRS)、geo 冗長 (RA-GRS) のいずれかの[ストレージ BLOB](../../storage/common/storage-redundancy.md) を柔軟に選択することができます。 このオプションは現在、マネージド インスタンスの作成プロセス中にのみ使用でき、リソースがプロビジョニングされた後に変更することはできません。
 
 長期リテンションは Azure SQL Database に対して有効にすることができ、Azure SQL Managed Instance に対しては限定パブリック プレビュー段階にあります。 この記事では、長期リテンションの概念の概要を説明します。 長期リテンションを構成するには、[Azure SQL Database LTR の構成](long-term-backup-retention-configure.md)と [Azure SQL Managed Instance LTR の構成](../managed-instance/long-term-backup-retention-configure.md)に関するページを参照してください。 
 

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 01d41b20c543262280e215cf4e31fd0cccce877f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f7f6de717f0ed9a2e27e15199b6f0ea566e0fdcd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528066"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021632"
 ---
 # <a name="connect-your-pulse-connect-secure-to-azure-sentinel"></a>Pulse Connect Secure を Azure Sentinel に接続する
+
+> [!IMPORTANT]
+> Azure Sentinel の Pulse Connect Secure データ コネクタは、現在パブリック プレビュー段階にあります。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、[Pulse Connect Secure](https://www.pulsesecure.net/products/pulse-connect-secure/) アプライアンスを Azure Sentinel に接続する方法について説明します。 Pulse Connect Secure データ コネクタを使用すると、Azure Sentinel に Pulse Connect Secure のログを簡単に接続して、ダッシュ ボードの表示、カスタム アラートの作成、および調査の改善を行うことができます。 Pulse Connect Secure と Azure Sentinel 間の統合には、Syslog を使用します。
 

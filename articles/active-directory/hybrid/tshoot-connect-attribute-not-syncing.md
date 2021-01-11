@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a16e989a6da8daa4a290c7eaa4363eef09c9749
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1111b56a08343f1e12c3b2d582e350907ab37b46
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356340"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276033"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Azure AD Connect で同期していない属性のトラブルシューティング
 
@@ -80,13 +80,13 @@ ms.locfileid: "85356340"
 * 同様に、**Azure Active Directory コネクタ スペース** オブジェクトを表示し、**プレビュー**を生成して**メタバース**から**コネクタ スペース**への、またその逆の属性フローを表示できます。このようにして、属性が同期していない理由を調査できます。
 
 ## <a name="recommended-documents"></a>**推奨されるドキュメント**
-* [Azure AD Connect 同期:技術的概念](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-technical-concepts)
-* [Azure AD Connect 同期:アーキテクチャの概要](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)
-* [Azure AD Connect 同期:宣言型のプロビジョニングについて](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning)
-* [Azure AD Connect 同期:宣言型のプロビジョニングの式について](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions)
-* [Azure AD Connect 同期:既定の構成について](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-default-configuration)
-* [Azure AD Connect 同期:ユーザー、グループ、および連絡先について](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-user-and-contacts)
-* [Azure AD Connect 同期:シャドウ属性](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-syncservice-shadow-attributes)
+* [Azure AD Connect 同期:技術的概念](./how-to-connect-sync-technical-concepts.md)
+* [Azure AD Connect 同期:アーキテクチャの概要](./concept-azure-ad-connect-sync-architecture.md)
+* [Azure AD Connect 同期:宣言型のプロビジョニングについて](./concept-azure-ad-connect-sync-declarative-provisioning.md)
+* [Azure AD Connect 同期:宣言型のプロビジョニングの式について](./concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Azure AD Connect 同期:既定の構成について](./concept-azure-ad-connect-sync-default-configuration.md)
+* [Azure AD Connect 同期:ユーザー、グループ、および連絡先について](./concept-azure-ad-connect-sync-user-and-contacts.md)
+* [Azure AD Connect 同期:シャドウ属性](./how-to-connect-syncservice-shadow-attributes.md)
 
 ## <a name="next-steps"></a>次の手順
 

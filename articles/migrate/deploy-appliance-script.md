@@ -3,12 +3,12 @@ title: スクリプトを使用して Azure Migrate アプライアンスを設�
 description: スクリプトを使用して Azure Migrate アプライアンスを設定する方法について
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: 47b6b35e62d484b4d7a33f6a53796c59e01817fe
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 43e47c6b4121a2f389dfec27873b90b7031c4f2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102448"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929977"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>スクリプトを使用してアプライアンスを設定する
 
@@ -36,7 +36,7 @@ Hyper-V | メモリが 16 GB、vCPU が 8 個、ディスク ストレージが�
 
 ## <a name="set-up-the-appliance-for-vmware"></a>VMware 用のアプライアンスを設定する
 
-VMware 用のアプライアンスを設定するには、[こちら](https://go.microsoft.com/fwlink/?linkid=2105112)から AzureMigrateInstaller.zip という名前の zip ファイルをダウンロードし、中身を解凍します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、Azure Migrate プロジェクトにアプライアンスを登録します。
+VMware 用のアプライアンスを設定するには、ポータルまたは[こちら](https://go.microsoft.com/fwlink/?linkid=2140334)から AzureMigrateInstaller-Server-Public.zip という名前の zip ファイルをダウンロードし、中身を解凍します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、Azure Migrate プロジェクトにアプライアンスを登録します。
 
 
 ### <a name="verify-file-security"></a>ファイルのセキュリティを確認する
@@ -46,12 +46,12 @@ VMware 用のアプライアンスを設定するには、[こちら](https://go
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
 3. Azure パブリック クラウド向けの最新のアプライアンス バージョンとスクリプトを確認します。
 
     **アルゴリズム** | **ダウンロード** | **SHA256**
     --- | --- | ---
-    VMware (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
+    VMware (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) | 5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
 
 
 
@@ -74,7 +74,7 @@ VMware 用のアプライアンスを設定するには、[こちら](https://go
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
 4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。
 
-    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario VMware ```
    
 5. スクリプトが正常に実行されると、アプライアンス Web アプリケーションが起動し、アプライアンスをセットアップできるようになります。 問題が発生した場合は、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log で、スクリプトログを確認してください。
 
@@ -84,7 +84,7 @@ VMware 用のアプライアンスを設定するには、[こちら](https://go
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Hyper-V のアプライアンスを設定する
 
-Hyper-V 用のアプライアンスを設定するには、[こちら](https://go.microsoft.com/fwlink/?linkid=2105112)から AzureMigrateInstaller.zip という名前の zip ファイルをダウンロードし、中身を解凍します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、Azure Migrate プロジェクトにアプライアンスを登録します。
+Hyper-V 用のアプライアンスを設定するには、ポータルまたは[こちら](https://go.microsoft.com/fwlink/?linkid=2105112)から AzureMigrateInstaller-Server-Public.zip という名前の zip ファイルをダウンロードし、中身を解凍します。 PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。 最初に、アプライアンスを設定して構成します。 次に、Azure Migrate プロジェクトにアプライアンスを登録します。
 
 
 ### <a name="verify-file-security"></a>ファイルのセキュリティを確認する
@@ -94,13 +94,13 @@ Hyper-V 用のアプライアンスを設定するには、[こちら](https://g
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - 例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256```
 
 3. Azure パブリック クラウド向けの最新のアプライアンス バージョンとスクリプトを確認します。
 
     **シナリオ** | **ダウンロード** | **SHA256**
     --- | --- | ---
-    Hyper-V (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2105112) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
+    Hyper-V (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140334) |  5d0a3dbce4b5010980d59d49859f809acfeb17f5a36f57af4dac44a0a62dde1f
 
 ### <a name="run-the-script"></a>スクリプトを実行する
 
@@ -119,7 +119,9 @@ Hyper-V 用のアプライアンスを設定するには、[こちら](https://g
 1. アプライアンスをホストするマシン上のフォルダーに ZIP ファイルを展開します。 既存の Azure Migrate アプライアンス マシンでスクリプトを実行しないようご注意ください。
 2. （昇格した）管理者権限を使用し、マシンで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルから抽出したコンテンツが格納されたフォルダーに変更します。
-4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
+4. 次のように、スクリプト **AzureMigrateInstaller.ps1** を実行します。 
+
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario Hyperv ```
    
 5. スクリプトが正常に実行されると、アプライアンス Web アプリケーションが起動し、アプライアンスをセットアップできるようになります。 問題が発生した場合は、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log で、スクリプトログを確認してください。
 

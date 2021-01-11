@@ -12,6 +12,8 @@
       href: quick-create-powershell.md
     - name: 仮想ネットワークの作成 - Azure CLI
       href: quick-create-cli.md
+    - name: 仮想ネットワークの作成 - ARM テンプレート
+      href: quick-create-template.md
   expanded: true
 - name: チュートリアル
   items:
@@ -35,9 +37,6 @@
       href: powershell-samples.md
     - name: Resource Manager テンプレート
       href: template-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: ビジネス継続性
@@ -95,7 +94,11 @@
     - name: Security
       items:
         - name: ネットワーク セキュリティ グループ
-          href: security-overview.md
+          items:
+            - name: 概要
+              href: security-overview.md
+            - name: しくみ
+              href: network-security-group-how-it-works.md
         - name: アプリケーション セキュリティ グループ
           href: application-security-groups.md
         - name: サービス タグ
@@ -108,6 +111,9 @@
           href: ddos-protection-overview.md
         - name: 仮想ネットワーク TAP
           href: virtual-network-tap-overview.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: サブネット
       items:
         - name: サブネットの拡張
@@ -220,6 +226,12 @@
               href: ipv6-reserve-public-ip-address-prefix.md
         - name: IP アドレス指定
           items:
+            - name: パブリック IP アドレスの作成 - ポータル
+              href: create-public-ip-portal.md
+            - name: パブリック IP アドレスの作成 - PowerShell
+              href: create-public-ip-powershell.md
+            - name: パブリック IP アドレスの作成 - Azure CLI
+              href: create-public-ip-cli.md
             - name: パブリック IP アドレスの管理
               href: virtual-network-public-ip-address.md
             - name: パブリック IP プレフィックスの管理
@@ -426,6 +438,9 @@
       href: /azure/templates/microsoft.network/allversions
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=virtual-network'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

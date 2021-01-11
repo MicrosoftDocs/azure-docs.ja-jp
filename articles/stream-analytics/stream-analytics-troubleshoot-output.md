@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc35e6a723afab3f230aa91e4b6895aead35e141
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1fa9a8aa24cf6a8c8c2223836ae80b8b47807c81
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037071"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903189"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -24,7 +24,7 @@ ms.locfileid: "86037071"
 1. 各出力の **[テスト接続]** ボタンを使用して、出力への接続性を確認します。
 1. **[監視]** タブの[監視メトリック](stream-analytics-monitoring.md)を確認します。値が集計される関係上、メトリックは数分間遅延します。
 
-   * **[入力イベント]** の値が 0 より大きい場合、ジョブでは入力データを読み取ることができます。 **[入力イベント]** の値が 0 より大きくない場合は、ジョブの入力に問題があります。 詳しくは、「[入力接続のトラブルシューティング](stream-analytics-troubleshoot-input.md)」をご覧ください。
+   * **[入力イベント]** の値が 0 より大きい場合、ジョブでは入力データを読み取ることができます。 **[入力イベント]** の値が 0 より大きくない場合は、ジョブの入力に問題があります。 詳しくは、「[入力接続のトラブルシューティング](stream-analytics-troubleshoot-input.md)」をご覧ください。 ジョブに参照データ入力が含まれている場合は、**入力イベント** メトリックを参照するときに、論理名で分割を適用します。 参照データのみからの入力イベントがない場合は、この入力ソースが適切な参照データセットをフェッチするように適切に構成されていない可能性があります。
    * **[データ変換エラー]** の値が 0 より大きく、上昇している場合は、「[Azure Stream Analytics データ エラー](data-errors.md)」でデータ変換エラーの詳細について確認してください。
    * **[ランタイム エラー]** の値が 0 より大きい場合は、ジョブはデータを受け取っていますが、クエリの処理中にエラーが発生しています。 エラーを確認するには、[監査ログ](../azure-resource-manager/management/view-activity-logs.md)に移動し、 **[失敗]** ステータスでフィルター処理します。
    * **[入力イベント]** の値が 0 より大きく、 **[出力イベント]** の値が 0 の場合は、次のいずれかの状態になっています。

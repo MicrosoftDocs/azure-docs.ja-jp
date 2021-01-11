@@ -4,12 +4,12 @@ description: Azure Migrate を使用した評価と移行に向けて Hyper-V VM
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 5f669de6bd8d767ca7b947fca883187dad9fe29d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8ecb886b5d5cd9d6811788043b924880b4c366c4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109622"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928923"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
@@ -38,6 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **Azure Migrate プロジェクトの作成** | Azure Migrate プロジェクトは、Azure Migrate ツール、Microsoft ツール、およびサードパーティのオファリングを使用して、評価と移行を調整および管理するための一元的な場所を提供します。 | Azure アカウントには、プロジェクトが存在するリソース グループの共同作成者または所有者のアクセス許可が必要です。
 **アプライアンスの登録** | Azure Migrate は、軽量な Azure Migrate アプライアンスを使用して、Hyper-V VM を検出しおよび評価します。 [詳細については、こちらを参照してください](migrate-appliance-architecture.md#appliance-registration)。 | アプライアンスを登録するには、Azure アカウントに Azure サブスクリプションに対する共同作成者または所有者のアクセス許可が必要です。
 **Azure AD アプリの作成** | アプライアンスを登録するとき、Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure Migrate との間の通信に使用される Azure Active Directory (Azure AD) アプリが作成されます。 | Azure アカウントには、Azure AD アプリを作成するためのアクセス許可が必要です。
+**キー コンテナーの作成** | キー コンテナーはアプライアンスの登録の一部として作成され、その構成中にアプライアンスでダウンロードされた証明書の管理に使用されます。| Azure Migrate がキー コンテナーを作成できるようにするには、Azure Migrate プロジェクトが存在するリソース グループに対する共同作成者のアクセス許可が Azure アカウントに必要です。
 **VM を作成します** | リソース グループと仮想ネットワーク内に VM を作成し、Azure マネージド ディスクに書き込むためのアクセス許可が必要です。 | 使用する Azure アカウントには、仮想マシン共同作成者ロールが必要です。
 
 
@@ -81,6 +82,7 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 #### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
 テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)。
+
 
 ### <a name="assign-azure-account-permissions"></a>Azure アカウントのアクセス許可を割り当てる
 

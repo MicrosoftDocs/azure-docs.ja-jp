@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 0337abedbc5b592a0ae48fabd5bc7ecbb484def9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 73044f35b90fd3e5996899fd7c3b0a925056f8ed
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132791"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836877"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
@@ -35,7 +35,7 @@ QnA Maker の新機能について説明します。
 
 ### <a name="may-2020"></a>2020 年 5 月
 
-* [ロールベースのアクセス制御 (RBAC)](concepts/role-based-access-control.md)
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](concepts/role-based-access-control.md)
 * 回答の[リッチテキスト編集](how-to/edit-knowledge-base.md#rich-text-editing-for-answer)
 
 ### <a name="march-2020"></a>2020 年 3 月

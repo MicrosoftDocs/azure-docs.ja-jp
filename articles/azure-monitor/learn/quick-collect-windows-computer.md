@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 12d87d6d458d6cda21ca581337012e800a3d4bce
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 726caa0c4a7bbd6b8d0c17ffdfade5f9cc3c2a34
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324320"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020373"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Monitor を使用してハイブリッド環境の Windows コンピューターからデータを収集する
 
 [Azure Monitor](../overview.md) は、詳細な分析と相関のために、環境内の物理的または仮想的な Windows コンピューターから直接データを Log Analytics ワークスペースに収集することができます。 [Log Analytics エージェント](../platform/log-analytics-agent.md)をインストールすることにより、Azure Monitor でデータセンターまたは他のクラウド環境からデータを収集できるようになります。 このクイック スタートでは、いくつかの簡単な手順で、Windows コンピューターを構成し、データを収集する方法を示します。 Azure Windows VM の詳細については、「[Azure Virtual Machines に関するデータの収集](./quick-collect-azurevm.md)」を参照してください。  
 
-サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](../platform/log-analytics-agent.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](../platform/log-analytics-agent.md#network-requirements)」を参照してください。
+サポートされている構成を確認するには、「[サポートされているオペレーティング システム](../platform/agents-overview.md#supported-operating-systems)」と[ネットワーク ファイアウォールの構成](../platform/log-analytics-agent.md#network-requirements)に関するセクションを参照してください。
  
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

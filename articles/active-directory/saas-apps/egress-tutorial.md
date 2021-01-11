@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Egress の統合 | Microsoft Docs
 description: Azure Active Directory と Egress の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d1a3c6b6-af9a-440a-8451-c77f83ceacd4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce816b74c12333477203cce690c955d5aaf1cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: adbadc14caad6594dc30f0f9fd9cb1cb49b47888
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093697"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544266"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Egress の統合
 
@@ -45,7 +41,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Egress では、**SP と IDP** によって開始される SSO がサポートされます
 * Egress では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Egress を構成したら、ご自分の組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* Egress を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-egress-from-the-gallery"></a>ギャラリーからの Egress の追加
 
@@ -130,7 +126,7 @@ Egress で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 次のページで、以下の手順を実行します。
 
-    ![Egress の構成](./media/egress-tutorial/configure1.PNG)
+    ![Egress の構成](./media/egress-tutorial/configure-1.PNG)
 
     a. 左側のメニューで、 **[SSO 構成]** をクリックします。
 
@@ -150,11 +146,11 @@ Egress で Azure AD SSO を構成してテストするには、次の構成要�
 
 1. 左側のメニューで **[Invite Users]\(ユーザーの招待\)** をクリックし、 **[Invite Single User]\(単一ユーザーの招待\)** をクリックしてユーザーを追加します。
 
-    ![Egress でテスト ユーザーが作成されます](./media/egress-tutorial/createuser1.PNG)
+    ![Egress でテスト ユーザーが作成されます](./media/egress-tutorial/create-user-1.PNG)
 
 1. 必須フィールドに入力し、 **[Invite]\(招待\)** をクリックします。
 
-    ![Egress でテスト ユーザーが作成されます](./media/egress-tutorial/createuser2.PNG)
+    ![Egress でテスト ユーザーが作成されます](./media/egress-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>SSO のテスト 
 

@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 51a5c5de7bce07aa6a54b9ff81e957c38cfffdd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fe49481357b542ce52de5fc9dab3059cb584c229
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528091"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083907"
 ---
 # <a name="connect-your-symantec-proxysg-to-azure-sentinel"></a>Azure Sentinel に Symantec ProxySG を接続する
+
+> [!IMPORTANT]
+> Azure Sentinel の Symantec ProxySG データ コネクタは、現在パブリック プレビュー段階にあります。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、Azure Sentinel に [Symantec ProxySG](https://www.broadcom.com/products/cyber-security/network/gateway/proxy-sg-and-advanced-secure-gateway) アプライアンスを接続する方法について説明します。 Symantec ProxySG データ コネクタを使用すると、Azure Sentinel に Symantec ProxySG のログを簡単に接続でき、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 Symantec ProxySG と Azure Sentinel との統合には、Syslog を使用します。
 

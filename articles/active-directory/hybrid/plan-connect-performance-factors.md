@@ -13,12 +13,12 @@ ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0b641cb05b25486bd1b11c2d313898d694f8c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e2c09bcd43b08778324a32cc052fad5b85714c4
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253496"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279586"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Azure AD Connect のパフォーマンスに影響を及ぼす因子
 
@@ -43,7 +43,7 @@ Azure AD Connect は、Active Directory を Azure AD に同期します。 こ�
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-プロビジョニング エンジンは、各 Active Directory フォレストと Azure AD に接続しています。 各ディレクトリから情報を読み取るプロセスを、インポートと言います。 エクスポートは、プロビジョニング エンジンからディレクトリを更新することを指します。 同期は、プロビジョニング エンジン内のオブジェクトのフロー方法の規則を評価します。 詳細については、「[Azure AD Connect 同期: アーキテクチャの概要](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)」を参照してください。
+プロビジョニング エンジンは、各 Active Directory フォレストと Azure AD に接続しています。 各ディレクトリから情報を読み取るプロセスを、インポートと言います。 エクスポートは、プロビジョニング エンジンからディレクトリを更新することを指します。 同期は、プロビジョニング エンジン内のオブジェクトのフロー方法の規則を評価します。 詳細については、「[Azure AD Connect 同期: アーキテクチャの概要](./concept-azure-ad-connect-sync-architecture.md)」を参照してください。
 
 Azure AD Connect では、次のステージング領域、規則、およびプロセスを使用して、Active Directory から Azure AD への同期を許可します。
 
@@ -52,7 +52,7 @@ Azure AD Connect では、次のステージング領域、規則、およびプ
 * **同期規則** - MV 内のオブジェクトに対して作成 (投影) または接続 (結合) されるオブジェクトを決定します。 また、同期規則は、ディレクトリとの間でコピーまたは変換される属性値も決定します。
 * **実行プロファイル** - ステージング領域と接続されたディレクトリの間の同期規則に従って、オブジェクトとその属性値のコピー プロセスの手順を 1 つにまとめます。
 
-プロビジョニング エンジンのパフォーマンスを最適化する、別の実行プロファイルが存在しています。 ほとんどの組織では、通常の操作に既定のスケジュールと実行プロファイルを使用しますが、組織によっては、異常な状況に対応するために[スケジュールの変更](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler)や他の実行プロファイルのトリガーが必要になることもあります。 使用できる実行プロファイルは次のとおりです。
+プロビジョニング エンジンのパフォーマンスを最適化する、別の実行プロファイルが存在しています。 ほとんどの組織では、通常の操作に既定のスケジュールと実行プロファイルを使用しますが、組織によっては、異常な状況に対応するために[スケジュールの変更](./how-to-connect-sync-feature-scheduler.md)や他の実行プロファイルのトリガーが必要になることもあります。 使用できる実行プロファイルは次のとおりです。
 
 ### <a name="initial-sync-profile"></a>初期同期プロファイル
 
@@ -109,7 +109,7 @@ Azure AD Connect では、次のステージング領域、規則、およびプ
 
 インポートする Active Directory トポロジのサイズは、プロビジョニング エンジンの内部コンポーネントが要するパフォーマンスと全体的な時間に影響を及ぼす第 1 の因子です。
 
-[フィルター処理](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering)は、同期するオブジェクトを減らすために使用してください。 これにより、不要なオブジェクトの処理や Azure AD へのエクスポートが妨げられます。 フィルター処理に使用できる手法を、最も望ましいものから順に次に示します。
+[フィルター処理](./how-to-connect-sync-configure-filtering.md)は、同期するオブジェクトを減らすために使用してください。 これにより、不要なオブジェクトの処理や Azure AD へのエクスポートが妨げられます。 フィルター処理に使用できる手法を、最も望ましいものから順に次に示します。
 
 
 
@@ -130,7 +130,7 @@ Azure AD Connect では、次のステージング領域、規則、およびプ
 
 ### <a name="attribute-flows"></a>属性フロー
 
-属性フローとは、接続されたディレクトリ間でオブジェクトの属性値をコピーまたは変換するプロセスのことです。 これは同期規則の一部として定義します。 たとえば、Active Directory でユーザーの電話番号が変更されると、Azure AD の電話番号が更新されます。 組織では、さまざまな要件に合わせて[属性フローを変更](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration)することができます。 変更する前に、既存の属性フローをコピーすることをお勧めします。
+属性フローとは、接続されたディレクトリ間でオブジェクトの属性値をコピーまたは変換するプロセスのことです。 これは同期規則の一部として定義します。 たとえば、Active Directory でユーザーの電話番号が変更されると、Azure AD の電話番号が更新されます。 組織では、さまざまな要件に合わせて[属性フローを変更](./how-to-connect-sync-change-the-configuration.md)することができます。 変更する前に、既存の属性フローをコピーすることをお勧めします。
 
 属性値を別の属性にフローするといった単純なリダイレクトでは、パフォーマンスへの重要な影響はありません。 リダイレクトの一例として、Active Directory の携帯電話番号を Azure AD の会社の電話番号にフローするという例があります。
 
@@ -181,7 +181,7 @@ Azure AD Connect の実装のパフォーマンスを最適化するためには
 
 
 - Azure AD Connect サーバーの実装サイズに応じた、[推奨されるハードウェア構成](how-to-connect-install-prerequisites.md)を使用してください。
-- 大規模なデプロイで Azure AD Connect をアップグレードする場合は、最小限のダウンタイムと最高の信頼性を確保するために、[スウィング移行方法](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)の使用を検討してください。 
+- 大規模なデプロイで Azure AD Connect をアップグレードする場合は、最小限のダウンタイムと最高の信頼性を確保するために、[スウィング移行方法](./how-to-upgrade-previous-version.md#swing-migration)の使用を検討してください。 
 - 最適な書き込みパフォーマンスを得るためには、SQL データベース用に SSD を使用してください。
 - ドメイン、OU、または属性のフィルター処理を使用して、Azure AD にプロビジョニングする必要があるオブジェクトだけが含まれるように、Active Directory のスコープをフィルター処理してください。
 - 既定の属性フロー規則を変更する必要がある場合は、最初に規則をコピーしてから、そのコピーを変更し、元の規則を無効にしてください。 忘れずに完全同期を再度実行してください。

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 8f170d541ec314020702ab53606eed4d660cea9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018c3fb08c7fa0ad35fa567bffbeae48b6fbbce9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130808"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928838"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのクエリの種類と構成
 
 Azure Cognitive Search では、クエリにラウンドトリップ処理すべてが指定されます。 要求には、エンジンの実行命令を提供するパラメーターと、応答を整形するパラメーターがあります。 一致基準なしでヌルか既定のパラメーターを使用して、明示的に指定しなかった場合 (`search=*` とした場合) は、フルテキスト検索操作としてすべての検索可能フィールドを対象にクエリが実行され、スコア付けされていない結果セットが任意の順序で返されます。
 
-次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) で構成された代表的なクエリです。 この例では、[ホテルのデモ インデックス](search-get-started-portal.md)をターゲットにして、クエリの内容を把握できるように一般的なパラメーターを含めています。
+次の例は、[REST API](/rest/api/searchservice/search-documents) で構成された代表的なクエリです。 この例では、[ホテルのデモ インデックス](search-get-started-portal.md)をターゲットにして、クエリの内容を把握できるように一般的なパラメーターを含めています。
 
 ```
 {
@@ -65,7 +65,7 @@ Azure Cognitive Search では、インデックスの設計とクエリの設計
 
 ![ホテル サンプルのインデックス定義](./media/search-query-overview/hotel-sample-index-definition.png "ホテル サンプルのインデックス定義")
 
-上記のスクリーンショットは、ホテル サンプルのインデックス属性の一覧の一部です。 ポータルで、インデックススキーマ全体を確認できます。 インデックス属性について詳しくは、[インデックス作成 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。
+上記のスクリーンショットは、ホテル サンプルのインデックス属性の一覧の一部です。 ポータルで、インデックススキーマ全体を確認できます。 インデックス属性について詳しくは、[インデックス作成 REST API](/rest/api/searchservice/create-index) に関するページをご覧ください。
 
 > [!Note]
 > クエリの一部の機能は、インデックスの各フィールドではなくインデックス全体に基づいて有効化されます。 このような機能には、[シノニム マップ](search-synonyms.md)、[カスタム アナライザー](index-add-custom-analyzers.md)、[提案機能による作成 (オートコンプリートおよび提案クエリ)](index-add-suggesters.md)、[結果を順位付けするためのスコアリング ロジック](index-add-scoring-profiles.md)が含まれます。
@@ -82,7 +82,7 @@ Azure Cognitive Search では、インデックスの設計とクエリの設計
 + **`queryType`** (simple または full)。組み込まれている既定の単純構文を使用する場合は省略できます。
 + **`search`** または **`filter`** には一致条件を指定します。空の検索を実行する場合は、未指定にすることができます。 クエリの 2 つの種類については単純なパーサーに関して説明していますが、高度なクエリでも複雑なクエリ式を渡すために search パラメーターが必要です。
 
-その他の検索パラメーターはすべて省略可能です。 属性の完全な一覧は、[インデックス作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。 処理中にパラメーターがどのように使用されるかについて詳しくは、[Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関するページをご覧ください。
+その他の検索パラメーターはすべて省略可能です。 属性の完全な一覧は、[インデックス作成 (REST)](/rest/api/searchservice/create-index) に関するページをご覧ください。 処理中にパラメーターがどのように使用されるかについて詳しくは、[Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関するページをご覧ください。
 
 ## <a name="choose-apis-and-tools"></a>API とツールの選択
 
@@ -92,8 +92,8 @@ Azure Cognitive Search では、インデックスの設計とクエリの設計
 |-------------|-------------|
 | [Search エクスプローラー (ポータル)](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 探索、テスト、検証用に推奨されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
 | [Postman またはその他の REST ツール](search-get-started-postman.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Cognitive Search で利用可能なすべての操作をサポートします。 この記事では、Azure Cognitive Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について学習します。  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Cognitive Search のインデックスに対してクエリを実行するために使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
+| [SearchIndexClient (.NET)](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Cognitive Search のインデックスに対してクエリを実行するために使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Search Documents (REST API)](/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
 
 ## <a name="choose-a-parser-simple--full"></a>パーサーの選択: simple | full
 
@@ -123,7 +123,7 @@ Azure Cognitive Search では、幅広いクエリの種類がサポートされ
 |------------|--------|-------------------------------|
 | 自由形式のテキスト検索 | search パラメーターといずれかのパーサー| フルテキスト検索は、インデックスのすべての "*検索可能*" フィールドで 1 つ以上の語句をスキャンし、Google や Bing などの検索エンジンに期待するのと同様に機能します。 最初の例はフルテキスト検索です。<br/><br/>フルテキスト検索では、標準の Lucene アナライザーを使用した語彙分析が行われ (既定)、すべての語句を小文字に変換し、"the" のようなストップワードを除去します。 語彙分析を変更する[英語以外のアナライザー](index-add-language-analyzers.md#language-analyzer-list)や[言語に関係なく使える特別なアナライザー](index-add-custom-analyzers.md#AnalyzerTable)を使用して、既定値をオーバーライドできます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 | 
 | フィルター検索 | [OData フィルター式](query-odata-filter-orderby-syntax.md)といずれかのパーサー | フィルター クエリは、インデックスのすべての "*フィルター処理可能*" フィールドでブール式を評価します。 検索クエリと異なり、フィルター クエリはフィールドの内容を厳密に照合します。たとえば、文字列フィールドでは大文字と小文字が区別されます。 もう 1 つの違いは、フィルター クエリは OData 構文で表されることです。 <br/>[フィルター式の例](search-query-simple-examples.md#example-3-filter-queries) |
-| 地理空間検索 | フィールドの [Edm.GeographyPoint 型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)、フィルター式、いずれかのパーサー | Edm.GeographyPoint 型のフィールドに格納された座標が、"近くを探す" つまりマップに基づいた検索コントロールで使用されます。 <br/>[地理空間検索の例](search-query-simple-examples.md#example-5-geo-search)|
+| 地理空間検索 | フィールドの [Edm.GeographyPoint 型](/rest/api/searchservice/supported-data-types)、フィルター式、いずれかのパーサー | Edm.GeographyPoint 型のフィールドに格納された座標が、"近くを探す" つまりマップに基づいた検索コントロールで使用されます。 <br/>[地理空間検索の例](search-query-simple-examples.md#example-5-geo-search)|
 | 範囲検索 | フィルター式と単純なパーサー | Azure Cognitive Search では、範囲クエリは filter パラメーターを使用して作成されます。 <br/>[範囲フィルターの例](search-query-simple-examples.md#example-4-range-filters) | 
 | [フィールド検索](query-lucene-syntax.md#bkmk_fields) | search パラメーターと完全なパーサー | 1 つのフィールドを対象とする複合クエリ式を作成します。 <br/>[フィールド検索の例](search-query-lucene-examples.md#example-2-fielded-search) |
 | [あいまい検索](query-lucene-syntax.md#bkmk_fuzzy) | search パラメーターと完全なパーサー | 構造やスペリングが似ている語句を照合します。 <br/>[あいまい検索の例](search-query-lucene-examples.md#example-3-fuzzy-search) |
@@ -169,5 +169,5 @@ Azure Cognitive Search では、検索クエリに一致する検索結果の特
 
 + [Azure Cognitive Search のフルテキスト検索のしくみ (クエリ解析アーキテクチャ)](search-lucene-query-architecture.md)
 + [Search エクスプローラー](search-explorer.md)
-+ [.NET におけるクエリの実行方法](search-query-dotnet.md)
-+ [REST におけるクエリの実行方法](search-create-index-rest-api.md)
++ [.NET におけるクエリの実行方法](./search-get-started-dotnet.md)
++ [REST におけるクエリの実行方法](./search-get-started-powershell.md)

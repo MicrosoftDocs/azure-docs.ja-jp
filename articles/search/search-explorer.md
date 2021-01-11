@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 8f004ff8118829ebf2d245a136cf22cdde23accc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488207"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929790"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>クイック スタート:Search エクスプローラーを使用してポータルでクエリを実行する
 
 **Search エクスプローラー**は、Azure Cognitive Search の検索インデックスに対してクエリを実行するために使用される組み込みのクエリ ツールです。 このツールを使用すると、クエリ構文の学習、クエリまたはフィルター式のテスト、あるいはインデックス内の新しいコンテンツの有無を確認することによるデータ更新の確認が簡単になります。
 
-このクイックスタートでは、既存のインデックスを使用して Search エクスプローラーをデモンストレーションします。 要求は [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して作成され、応答は JSON ドキュメントとして返されます。
+このクイックスタートでは、既存のインデックスを使用して Search エクスプローラーをデモンストレーションします。 要求は [Search REST API](/rest/api/searchservice/) を使用して作成され、応答は JSON ドキュメントとして返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -133,7 +133,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
 
    ![Orderby 式](./media/search-explorer/search-explorer-example-ordery.png "並べ替え順の変更")
 
-**$filter** 式と **$orderby** 式はどちらも OData 構文です。 詳細については、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
+**$filter** 式と **$orderby** 式はどちらも OData 構文です。 詳細については、[フィルターの OData 構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
 
 <a name="start-search-explorer"></a>
 
@@ -147,7 +147,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
 
 + 商用 Web ブラウザーで入力することがあるような自由形式のクエリは、エンドユーザーのエクスペリエンスをテストするのに便利です。 たとえば、組み込みの不動産サンプル インデックスがあるとしたら、「Seattle apartments lake washington」と入力できます。そして、CTRL + F キーを使用して検索結果内で語句を見つけることができます。 
 
-+ クエリ式とフィルター式は、Azure Cognitive Search でサポートされている構文で表されます。 既定値は[単純な構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)です。しかし、必要に応じて[完全な Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用し、より強力なクエリを実行できます。 [フィルター式](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)は OData 構文です。
++ クエリ式とフィルター式は、Azure Cognitive Search でサポートされている構文で表されます。 既定値は[単純な構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)です。しかし、必要に応じて[完全な Lucene](/rest/api/searchservice/lucene-query-syntax-in-azure-search) を使用し、より強力なクエリを実行できます。 [フィルター式](/rest/api/searchservice/odata-expression-syntax-for-azure-search)は OData 構文です。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -159,7 +159,7 @@ Azure Cognitive Search は、検索順位に基づいた上位 50 の一致を�
 
 ## <a name="next-steps"></a>次のステップ
 
-クエリ構造やクエリ構文について学習するには、Postman または同等のツールを使用して、API のさらに多くの部分を利用するクエリ式を作成してください。 [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) は、学習や調査に特に役立ちます。
+クエリ構造やクエリ構文について学習するには、Postman または同等のツールを使用して、API のさらに多くの部分を利用するクエリ式を作成してください。 [Search REST API](/rest/api/searchservice/) は、学習や調査に特に役立ちます。
 
 > [!div class="nextstepaction"]
 > [Postman で基本的なクエリを作成する](search-query-simple-examples.md)

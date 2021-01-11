@@ -12,12 +12,12 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb629b80958ed2897f76eb099f738c33b48c3696
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81868664"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119608"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームの管理者の同意
 
@@ -88,5 +88,5 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 ## <a name="next-steps"></a>次のステップ
 - [アプリをマルチテナント アプリに変換する方法](howto-convert-app-to-be-multi-tenant.md)に関する記事をご覧ください。
 - 認証コードの付与フロー中、OAuth 2.0 プロトコル層で同意がどのようにサポートされるかについては[こちら](v2-oauth2-auth-code-flow.md#request-an-authorization-code)を参照してください。
-- マルチテナント アプリケーションで同意フレームワークを利用し、"user" と "admin" の同意を実装し、より高度な多層アプリケーション パターンをサポートする方法については[こちら](active-directory-devhowto-multi-tenant-overview.md)を参照してください。
+- マルチテナント アプリケーションで同意フレームワークを利用し、"user" と "admin" の同意を実装し、より高度な多層アプリケーション パターンをサポートする方法については[こちら](./howto-convert-app-to-be-multi-tenant.md)を参照してください。
 - [Azure AD アプリケーションの同意エクスペリエンス](application-consent-experience.md)について

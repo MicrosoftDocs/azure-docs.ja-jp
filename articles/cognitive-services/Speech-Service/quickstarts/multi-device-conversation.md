@@ -11,12 +11,13 @@ ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: ralphe
 zone_pivot_groups: programming-languages-set-nine
-ms.openlocfilehash: 1b3995c60d8518be0bdc66f7758d1993a92606fc
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e71c6959ca62fb19ed74ba4fa679f4edfb710725
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391589"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925898"
 ---
 # <a name="quickstart-multi-device-conversation"></a>クイック スタート:マルチデバイスの会話
 

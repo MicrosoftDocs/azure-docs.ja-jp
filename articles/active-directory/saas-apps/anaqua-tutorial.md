@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と ANAQUA の統合 | Microsoft Docs
 description: Azure Active Directory と ANAQUA の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: ab13b73e-ca4f-460c-8f79-fabf81b778c0
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147ce4c898d29f08593019073d69bba78edb75b7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e51c1b7320f6dab34507b372e8e4fafa05fdd291
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67106869"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521962"
 ---
 # <a name="tutorial-integrate-anaqua-with-azure-active-directory"></a>チュートリアル:ANAQUA と Azure Active Directory の統合
 

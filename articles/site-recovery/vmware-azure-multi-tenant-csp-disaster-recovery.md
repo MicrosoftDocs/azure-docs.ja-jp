@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 1b77eb136b8415e5a6e4596dc0b192ea426f378f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7cf0d35ae610c3f9fe477267e28e5449459148b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292843"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924582"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>クラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での VMware ディザスター リカバリーを設定する
 
@@ -98,7 +98,7 @@ VMware のレプリケーションをセットアップするには、次のこ�
 この記事で説明したようにテナント サブスクリプションを設定することにより、任意の関連するマルチテナント モデルで顧客の有効化をすばやく開始できます。 さまざまなマルチテナント モデルおよびオンプレミスのアクセス制御の有効化について詳しくは、[こちら](vmware-azure-multi-tenant-overview.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-- Azure Site Recovery デプロイを管理するための[ロールベースのアクセス制御](site-recovery-role-based-linked-access-control.md)に関する詳細を学習する。
+- Azure Site Recovery のデプロイを管理するための [Azure ロールベースのアクセス制御 (Azure RBAC)](site-recovery-role-based-linked-access-control.md) について学習する。
 - VMware から Azure への[レプリケーション アーキテクチャ](vmware-azure-architecture.md)について学習する。
 - VMware VM を Azure にレプリケートするための[チュートリアルを確認する](vmware-azure-tutorial.md)。
 VMware VM を Azure にレプリケートするための[マルチテナント環境](vmware-azure-multi-tenant-overview.md)について詳しく学習する。

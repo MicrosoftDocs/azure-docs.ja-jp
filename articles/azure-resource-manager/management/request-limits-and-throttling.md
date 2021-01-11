@@ -47,7 +47,7 @@ ms.locfileid: "80239358"
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 
-### <a name="network-throttling"></a>Network throttling
+### <a name="network-throttling"></a>ネットワークのスロットル
 
 Microsoft.Network リソース プロバイダーでは、次の調整制限が適用されます。
 

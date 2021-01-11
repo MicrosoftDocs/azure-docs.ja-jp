@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066347"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495609"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87066347"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
@@ -32,11 +32,11 @@ ms.locfileid: "87066347"
 
 ## <a name="foreach-loop"></a>"Foreach" ループ
 
-"Foreach" ループは、配列項目ごとに 1 つ以上のアクションを繰り返し、配列でのみ動作します。 "Foreach" ループのイテレーションは並列で実行します。 ただし、[シーケンシャル "Foreach" ループ](#sequential-foreach-loop)を設定することにより、一度に 1 つのイテレーションを実行できます。 
+"Foreach" ループは、配列項目ごとに 1 つ以上のアクションを繰り返し、配列でのみ動作します。 "Foreach" ループを使用する場合の考慮事項のいくつかを次に示します。
 
-"Foreach" ループを使用する場合の考慮事項のいくつかを次に示します。
+* 既定では、"Foreach" ループ内のイテレーションは同時または並列に実行されます。 この動作は、[Power Automate の **Apply to each** ループ](/power-automate/apply-to-each)とは異なっています。このループ内では、イテレーションは一度に 1 つずつ、つまり順番に実行されます。 ただし、[シーケンシャル "Foreach" ループ イテレーションを設定する](#sequential-foreach-loop)こともできます。 たとえば、"Foreach" ループ内の次のイテレーションを[遅延アクション](../connectors/connectors-native-delay.md)を使用して一時停止するには、そのループが順番に実行されるように設定する必要があります。
 
-* 入れ子になったループでは、イテレーションは常に、並列ではなく順番に実行します。 入れ子になったループ内の項目に対して並列で操作を実行するには、[子ロジック アプリ](../logic-apps/logic-apps-http-endpoint.md)を作成して呼び出します。
+  この既定の動作の例外は、入れ子になったループです。このループでは、イテレーションは常に、並列ではなく順番に実行されます。 入れ子になったループ内の項目に対して並列で操作を実行するには、[子ロジック アプリ](../logic-apps/logic-apps-http-endpoint.md)を作成して呼び出します。
 
 * 各ループ イテレーション中での変数に対する操作の予測可能な結果を取得するには、これらのループを順番に実行します。 たとえば、同時実行ループが終了すると、変数操作に対する増分、減分、追加で予測可能な結果が返されます。 ただし、同時実行ループでの各イテレーション中に、これらの操作で予期しない結果が返される可能性があります。 
 

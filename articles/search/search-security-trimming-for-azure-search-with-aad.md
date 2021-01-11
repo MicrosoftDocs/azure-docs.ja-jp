@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ee742eae38ae95756cf31d60b877f18629c569d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080503"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019778"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -40,7 +41,7 @@ Azure Cognitive Search のインデックスには、ドキュメントに対す
 
 ### <a name="register-your-application-with-aad"></a>AAD にアプリケーションを登録する
 
-このステップでは、ユーザー アカウントとグループ アカウントのサインインを受け付けるために、アプリケーションを AAD と統合します。 組織の AAD 管理者ではない場合は、以下の手順を実行するために[新しいテナントを作成する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant)ことが必要な場合があります。
+このステップでは、ユーザー アカウントとグループ アカウントのサインインを受け付けるために、アプリケーションを AAD と統合します。 組織の AAD 管理者ではない場合は、以下の手順を実行するために[新しいテナントを作成する](../active-directory/develop/quickstart-create-new-tenant.md)ことが必要な場合があります。
 
 1. [ **[アプリケーション登録ポータル]** ](https://apps.dev.microsoft.com) >   **[Converged app]\(集中型アプリ\)**  >  **[Add an app]\(アプリの追加\)** に移動します。
 2. アプリケーションの名前を入力して、 **[作成]** をクリックします。 
@@ -63,7 +64,7 @@ Microsoft Graph に用意されている API では、REST API を使ってプ�
 
 特に大規模な組織では、ユーザーとグループ メンバーシップが頻繁に変更される場合があります。 ユーザーとグループの ID を作成するコードは、組織のメンバーシップの変更を反映するのに十分な頻度で実行する必要があります。 また、Azure Cognitive Search インデックスについても、許可されたユーザーとリソースの現在の状態を反映するために同様の更新スケジュールが必要です。
 
-### <a name="step-1-create-aad-group"></a>手順 1:[AAD グループ](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0)を作成する 
+### <a name="step-1-create-aad-group"></a>手順 1:[AAD グループ](/graph/api/group-post-groups?view=graph-rest-1.0)を作成する 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +78,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-user"></a>手順 2:[AAD ユーザー](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)を作成する
+### <a name="step-2-create-aad-user"></a>手順 2:[AAD ユーザー](/graph/api/user-post-users?view=graph-rest-1.0)を作成する
 ```csharp
 User user = new User()
 {
@@ -98,9 +99,9 @@ await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
 ### <a name="step-4-cache-the-groups-identifiers"></a>手順 4:グループ識別子をキャッシュする
-ネットワークの待機時間を減らす必要がある場合は、ユーザーとグループの関連付けをキャッシュして、発行された検索要求に対し、AAD にラウンドトリップするのではなく、キャッシュからグループを返すことができます。 [AAD Batch API](https://developer.microsoft.com/graph/docs/concepts/json_batching) を使用して、複数のユーザーを含む単一の HTTP 要求を送信し、キャッシュを作成することができます。
+ネットワークの待機時間を減らす必要がある場合は、ユーザーとグループの関連付けをキャッシュして、発行された検索要求に対し、AAD にラウンドトリップするのではなく、キャッシュからグループを返すことができます。 [AAD Batch API](/graph/json-batching) を使用して、複数のユーザーを含む単一の HTTP 要求を送信し、キャッシュを作成することができます。
 
-Microsoft Graph は、大量の要求を処理できるように設計されています。 ただし、処理できないほど多数の要求が発生すると、Microsoft Graph は HTTP 状態コード 429 で要求を失敗させます。 詳しくは、「[Microsoft Graph 調整ガイド](https://developer.microsoft.com/graph/docs/concepts/throttling)」をご覧ください。
+Microsoft Graph は、大量の要求を処理できるように設計されています。 ただし、処理できないほど多数の要求が発生すると、Microsoft Graph は HTTP 状態コード 429 で要求を失敗させます。 詳しくは、「[Microsoft Graph 調整ガイド](/graph/throttling)」をご覧ください。
 
 ## <a name="index-document-with-their-permitted-groups"></a>許可されているグループでドキュメントにインデックスを付ける
 
@@ -138,7 +139,7 @@ _indexClient.Documents.Index(batch);
 
 ### <a name="step-1-retrieve-users-group-identifiers"></a>手順 1:ユーザーのグループ識別子を取得する
 
-ユーザーのグループがまだキャッシュされていない場合、またはキャッシュの有効期限を過ぎている場合は、[groups](https://docs.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) 要求を発行します。
+ユーザーのグループがまだキャッシュされていない場合、またはキャッシュの有効期限を過ぎている場合は、[groups](/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0) 要求を発行します。
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {

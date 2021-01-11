@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d75f13f6a0621158bdb9a2f1682d0c85eaacb59d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688283"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836107"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure Virtual Network NAT 接続のトラブルシューティング
 
@@ -35,7 +35,7 @@ ms.locfileid: "84688283"
 
 これらの問題を解決するには、次のセクションの手順に従ってください。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 ### <a name="snat-exhaustion"></a>SNAT の枯渇
 
@@ -195,6 +195,14 @@ _**解決方法:**_
 NAT ゲートウェイ リソースのサブネットを構成する仮想マシンを再起動する必要はありません。  しかし、仮想マシンが再起動されると、接続状態がフラッシュされます。  接続状態がフラッシュされると、すべての接続で NAT ゲートウェイ リソースの IP アドレスの使用が開始されます。  しかし、これは再起動される仮想マシンの副作用であり、再起動が必要なインジケーターではありません。
 
 それでも問題が解決しない場合は、さらにトラブルシューティングを行うためにサポート ケースを開いてください。
+
+### <a name="connection-setup-time"></a>接続のセットアップ時間
+
+ロード バランサーのアウトバウンド規則では SNAT ポートのプールが特定の仮想マシンに静的に割り当てられるため、Virtual Network NAT を使用するよりも新しいアウトバウンド フローを作成する方が高速です。 このため、ロード バランサーのアウトバウンド規則から切り替えると、新しいアウトバウンド接続を作成するときの待機時間が長くなることがあります。 前に説明したように、アプリケーションのパフォーマンスを最大化するには、有効期間が長いフロー (TCP 接続を再利用するなど) を使用する必要があります。
+
+_**解決方法:**_
+
+接続セットアップの待ち時間を最小限にすることが重要な場合は、ロード バランサーのアウトバウンド規則を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

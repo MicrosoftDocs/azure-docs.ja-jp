@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768488"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962453"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)を使用するためのベスト プラクティスを概説します。 
@@ -67,7 +67,7 @@ Node.js アプリ向けの Azure App Service の既定の構成は、最も一�
 
 
 ## <a name="next-steps"></a>次の手順
-ベスト プラクティスの詳細については、[App Service 診断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)に関するページにアクセスして、お使いのリソースに固有の実行可能なベスト プラクティスを確認してください。
+ベスト プラクティスの詳細については、[App Service 診断](./overview-diagnostics.md)に関するページにアクセスして、お使いのリソースに固有の実行可能なベスト プラクティスを確認してください。
 
 - [Azure portal](https://portal.azure.com) で Web App に移動します。
 - 左側のナビゲーションで **[問題の診断と解決]** をクリックすると、App Service 診断が開きます。

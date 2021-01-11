@@ -3,17 +3,17 @@ title: BLOB インデックスを使用して Azure Blob Storage でデータを
 description: BLOB インデックス タグを使用して、BLOB オブジェクトの分類、管理、および検出のためのクエリを実行する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/24/2020
+ms.date: 08/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ed70a05e0a6213ce00a6e0514f0741e8abbaeef9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355660"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690376"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>BLOB インデックスを使用して Azure Blob Storage でデータを管理および検索する (プレビュー)
 
@@ -63,7 +63,7 @@ BLOB に複数のタグを適用して、データをよりわかりやすくす
 > "Priority" = '01' 
 >
 
-既存のインデックス タグ属性を変更するには、最初に既存のタグ属性を取得し、そのタグ属性を変更して、SetBlobTags 操作を使用して置き換えます。 BLOB からすべてのインデックス タグを削除するには、タグ属性を指定せずに SetBlobTags 操作を呼び出します。 BLOB インデックス タグは BLOB データ コンテンツのサブリソースであるため、SetBlobTags は基になるコンテンツを変更せず、BLOB の last-modified-time も ETag (エンティティ タグ) も変更しません。 現在のすべてのベース BLOB と以前のバージョンのインデックス タグは作成または変更できますが、スナップショットまたは論理的に削除された BLOB のタグは変更できません。 
+既存のインデックス タグ属性を変更するには、最初に既存のタグ属性を取得し、そのタグ属性を変更して、SetBlobTags 操作を使用して置き換えます。 BLOB からすべてのインデックス タグを削除するには、タグ属性を指定せずに SetBlobTags 操作を呼び出します。 BLOB インデックス タグは BLOB データ コンテンツのサブリソースであるため、SetBlobTags によって基になるコンテンツが変更されることはなく、BLOB の last-modified-time や eTag (エンティティ タグ) も変更されません。 現在のすべてのベース BLOB と以前のバージョンのインデックス タグは作成または変更できますが、スナップショットまたは論理的に削除された BLOB のタグは変更できません。 
 
 BLOB インデックス タグには次の制限が適用されます。
 - 各 BLOB には、最大 10 個の BLOB インデックス タグを設定できます
@@ -293,6 +293,7 @@ az provider register --namespace 'Microsoft.Storage'
 -   アカウント フェールオーバーは現在サポートされていません。 フェールオーバー後に BLOB インデックスが正しく更新されない可能性があります。
 -   ライフサイクル管理では、BLOB インデックス一致による等値チェックのみが現在サポートされています。
 -   CopyBlob では、BLOB インデックス タグはコピー元 BLOB から新しいコピー先 BLOB にコピーされません。 コピー操作中にコピー先 BLOB に適用するタグを指定できます。 
+- コピー先 BLOB にタグが適用されている別のストレージ アカウントから CopyBlob (非同期コピー) を使用すると、現在、これは BLOB インデックス エンジンからフィルター セット内の BLOB とそのタグが返されなくなる原因となっています。 一時的に、URL (Sync copy) から CopyBlob を使用することをお勧めします。
 -   タグはスナップショット作成時に保持されます。ただし、スナップショットの昇格は現在サポートされておらず、空のタグ セットが生成される可能性があります。
 
 ## <a name="faq"></a>よく寄せられる質問
@@ -308,5 +309,7 @@ BLOB インデックス タグでは文字列データ型のみがサポート�
 
 ## <a name="next-steps"></a>次のステップ
 
-BLOB インデックスの使用方法の例を参照してください。 [BLOB インデックスを使用したデータの管理および検索 ](storage-blob-index-how-to.md)に関する記事を参照してください。
+BLOB インデックスを使用する方法の例については、[BLOB インデックスを使用してデータを管理して検索する](storage-blob-index-how-to.md)方法に関する記事を参照してください。
+
+[ライフサイクル管理](storage-lifecycle-management-concepts.md)について確認し、BLOB インデックスの一致でルールを設定します。
 

@@ -1,210 +1,195 @@
 ---
 title: Azure CLI を使用して Azure Blockchain Service を管理する
 description: Azure CLI を使用して Azure Blockchain Service を管理する方法
-ms.date: 11/22/2019
+ms.date: 07/23/2020
 ms.topic: how-to
-ms.reviewer: janders
-ms.openlocfilehash: fc00bedee5ff55033a1d65c6d5d6bfa766f0f01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: ravastra
+ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85208163"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170859"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLI を使用して Azure Blockchain Service を管理する
 
 Azure portal だけでなく、Azure CLI を使用しても、Azure Blockchain Service 用のブロックチェーン メンバーとトランザクション ノードを管理することができます。
 
-最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) がインストールされていること、および `az login` で Azure アカウントにログインしていることを確認します。
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
-次の例では、`<parameter names>` を独自の値に置き換えます。
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。
+
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/bash](https://shell.azure.com/bash) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
+
+CLI をインストールしてローカルで使用する場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+
+## <a name="prepare-your-environment"></a>環境を準備する
+
+1. サインインします。
+
+    CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
+
+    ```azurecli
+    az login
+    ```
+
+    ターミナルに表示される手順に従って、認証プロセスを完了します。
+
+1. Azure CLI 拡張機能をインストールします。
+
+    Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。  Azure CLI 拡張機能を使用すると、コア CLI の一部としてまだ出荷されていない実験用コマンドおよびプレリリース コマンドにアクセスできます。  更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
+
+    次のコマンドを実行して、[Azure Blockchain Service の拡張機能](/cli/azure/ext/blockchain/blockchain)をインストールします。
+
+    ```azurecli-interactive
+    az extension add --name blockchain
+    ```
 
 ## <a name="create-blockchain-member"></a>ブロックチェーン メンバーを作成する
 
-例では、新しいコンソーシアムで Quorum 台帳プロトコルを実行するブロックチェーン メンバーを Azure Blockchain Service で作成します。
+例では、新しいコンソーシアムで Quorum 台帳プロトコルを実行する[ブロックチェーン メンバーを Azure Blockchain Service で作成](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create)します。
 
 ```azurecli
-az resource create \
-                     --resource-group <myResourceGroup> \
-                     --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --is-full-object \
-                     --properties '{ "location":"<myBlockchainLocation>", "properties": {"password":"<myStrongPassword>", "protocol":"Quorum","consortium":"<myConsortiumName>", "consortiumManagementAccountPassword":"<myConsortiumManagementAccountPassword>", "firewallRules":[{"ruleName":"<myRuleName>","startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]}, "sku":{"name":"<skuName>"}}'
+az blockchain member create \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName> \
+                            --location <myBlockchainLocation> \
+                            --password <strongMemberAccountPassword> \
+                            --protocol "Quorum" \
+                            --consortium <myConsortiumName> \
+                            --consortium-management-account-password <strongConsortiumManagementPassword> \
+                            --sku <skuName>
 ```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが作成されるリソース グループ名。 |
 | **name** | Azure Blockchain Service のブロックチェーン メンバーを識別する一意の名前。 名前はパブリック エンドポイント アドレスに使用されます。 たとえば、「 `myblockchainmember.blockchain.azure.com` 」のように入力します。 |
-| **location** | ブロックチェーン メンバーが作成される Azure リージョン。 たとえば、「 `eastus` 」のように入力します。 ユーザーや他の Azure アプリケーションに最も近い場所を選択します。 |
-| **password** | メンバー アカウントのパスワード。 メンバー アカウントのパスワードは、基本認証を使用してブロックチェーン メンバーのパブリック エンドポイントへの認証を行うために使用されます。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。|
-| **protocol** | パブリック プレビューでは Quorum がサポートされます。 |
-| **consortium** | 参加または作成するコンソーシアムの名前。 |
-| **consortiumManagementAccountPassword** | コンソーシアム管理パスワード。 パスワードは、コンソーシアムに参加するために使用されます。 |
-| **ruleName** | IP アドレス範囲をホワイトリストに登録するためのルールの名前。 ファイアウォール規則に関する省略可能なパラメーター。|
-| **startIpAddress** | ホワイトリストの IP アドレス範囲の開始。 ファイアウォール規則に関する省略可能なパラメーター。 |
-| **endIpAddress** | ホワイトリストの IP アドレス範囲の終了。 ファイアウォール規則に関する省略可能なパラメーター。 |
-| **skuName** | レベルの種類。 Standard には S0 を使用し、Basic には B0 を使用します。 |
+| **location** | ブロックチェーン メンバーが作成される Azure リージョン。 たとえば、「 `eastus` 」のように入力します。 ユーザーや他の Azure アプリケーションに最も近い場所を選択します。 一部のリージョンでは、機能が利用できない場合があります。 |
+| **password** | メンバーの既定のトランザクション ノードのパスワード。 このパスワードは、ブロックチェーン メンバーの既定のトランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。|
+| **protocol** | ブロックチェーンのプロトコル。 現時点では、*Quorum* プロトコルがサポートされています。 |
+| **consortium** | 参加または作成するコンソーシアムの名前。 コンソーシアムの詳細については、「[Azure Blockchain Service のコンソーシアム](consortium.md)」を参照してください。 |
+| **consortium-management-account-password** | コンソーシアム アカウントのパスワードは、メンバー アカウントのパスワードとも呼ばれます。 メンバー アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 メンバー アカウントとメンバー アカウントのパスワードをコンソーシアムの管理に使用します。 |
+| **sku** | レベルの種類。 *Standard* または *Basic*。 開発、テスト、概念実証には、*Basic* レベルを使用します。 運用グレードのデプロイには、*Standard* レベルを使用します。 また、Blockchain Data Manager を使用している場合や大量のプライベート トランザクションを送信する場合にも、*Standard* レベルを使用する必要があります。 メンバーの作成後に価格レベルを Basic と Standard の間で変更することはできません。 |
 
-## <a name="change-blockchain-member-password"></a>ブロックチェーン メンバーのパスワードを変更する
+## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>ブロックチェーン メンバーのパスワードまたはファイアウォール規則を変更する
 
-例ではブロックチェーン メンバーのパスワードを変更します。
+例では、[ブロックチェーン メンバー](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update)のパスワード、コンソーシアム管理パスワード、およびファイアウォール規則を更新します。
 
 ```azurecli
-az resource update \
+az blockchain member update \
                      --resource-group <myResourceGroup> \
                      --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --set properties.password='<myStrongPassword>' \
-                     --remove properties.consortiumManagementAccountAddress
+                     --password <strongMemberAccountPassword> \
+                     --consortium-management-account-password <strongConsortiumManagementPassword> \
+                     --firewall-rules <firewallRules>
 ```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが作成されるリソース グループ名。 |
 | **name** | Azure Blockchain Service のメンバーを示す名前。 |
-| **password** | メンバー アカウントのパスワード。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。 |
+| **password** | メンバーの既定のトランザクション ノードのパスワード。 このパスワードは、ブロックチェーン メンバーの既定のトランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。|
+| **consortium-management-account-password** | コンソーシアム アカウントのパスワードは、メンバー アカウントのパスワードとも呼ばれます。 メンバー アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 メンバー アカウントとメンバー アカウントのパスワードをコンソーシアムの管理に使用します。 |
+| **firewall-rules** | IP 許可リストの開始 IP アドレスと終了 IP アドレス。 |
 
 ## <a name="create-transaction-node"></a>トランザクション ノードを作成する
 
-既存のブロックチェーン メンバーの内部にトランザクション ノードを作成します。 トランザクション ノードを追加することにより、セキュリティの分離と負荷の分散を向上させることができます。 たとえば、異なるクライアント アプリケーションごとにトランザクション ノード エンドポイントを作成できます。
+既存のブロックチェーン メンバーの内部に[トランザクション ノードを作成](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create)します。 トランザクション ノードを追加することにより、セキュリティの分離と負荷の分散を向上させることができます。 たとえば、異なるクライアント アプリケーションごとにトランザクション ノード エンドポイントを作成できます。
 
 ```azurecli
-az resource create \
+az blockchain transaction-node create \
                      --resource-group <myResourceGroup> \
-                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --is-full-object \
-                     --properties '{"location":"<myRegion>", "properties":{"password":"<myStrongPassword>", "firewallRules":[{"ruleName":"<myRuleName>", "startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]}}'
+                     --member-name <myMemberName> \
+                     --password <strongTransactionNodePassword> \
+                     --name <myTransactionNodeName>
 ```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが作成されるリソース グループ名。 |
-| **name** | 新しいトランザクション ノード名も含む Azure Blockchain Service のブロックチェーン メンバーの名前。 |
-| **location** | ブロックチェーン メンバーが作成される Azure リージョン。 たとえば、「 `eastus` 」のように入力します。 ユーザーや他の Azure アプリケーションに最も近い場所を選択します。 |
-| **password** | トランザクション ノードのパスワード。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。 |
-| **ruleName** | IP アドレス範囲をホワイトリストに登録するためのルールの名前。 ファイアウォール規則に関する省略可能なパラメーター。 |
-| **startIpAddress** | ホワイトリストの IP アドレス範囲の開始。 ファイアウォール規則に関する省略可能なパラメーター。 |
-| **endIpAddress** | ホワイトリストの IP アドレス範囲の終了。 ファイアウォール規則に関する省略可能なパラメーター。|
+| **location** | ブロックチェーン メンバーの Azure リージョン。 |
+| **member-name** | Azure Blockchain Service のメンバーを示す名前。 |
+| **password** | トランザクション ノードのパスワード。 このパスワードは、トランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。|
+| **name** | トランザクション ノードの名前。 |
 
 ## <a name="change-transaction-node-password"></a>トランザクション ノードのパスワードを変更する
 
-例ではトランザクション ノードのパスワードを変更します。
+例では[トランザクション ノードのパスワードを更新](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update)します。
 
 ```azurecli
-az resource update \
+az blockchain transaction-node update \
                      --resource-group <myResourceGroup> \
-                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --set properties.password='<myStrongPassword>'
+                     --member-name <myMemberName> \
+                     --password <strongTransactionNodePassword> \
+                     --name <myTransactionNodeName>
 ```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが存在するリソース グループ名。 |
-| **name** | 新しいトランザクション ノード名も含む Azure Blockchain Service のブロックチェーン メンバーの名前。 |
-| **password** | トランザクション ノードのパスワード。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。 |
+| **member-name** | Azure Blockchain Service のメンバーを示す名前。 |
+| **password** | トランザクション ノードのパスワード。 このパスワードは、トランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。|
+| **name** | トランザクション ノードの名前。 |
 
-## <a name="change-consortium-management-account-password"></a>コンソーシアム管理アカウントのパスワードを変更する
+## <a name="list-api-keys"></a>API キーのリスト
 
-コンソーシアム管理アカウントは、コンソーシアムのメンバーシップの管理に使用されます。 各メンバーはコンソーシアム管理アカウントによって一意に識別され、このアカウントのパスワードを次のコマンドで変更することができます。
-
-```azurecli
-az resource update \
-                     --resource-group <myResourceGroup> \
-                     --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --set properties.consortiumManagementAccountPassword='<myConsortiumManagementAccountPassword>' \
-                     --remove properties.consortiumManagementAccountAddress
-```
-
-| パラメーター | 説明 |
-|---------|-------------|
-| **resource-group** | Azure Blockchain Service リソースが作成されるリソース グループ名。 |
-| **name** | Azure Blockchain Service のメンバーを示す名前。 |
-| **consortiumManagementAccountPassword** | コンソーシアム管理アカウントのパスワード。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。 |
-  
-## <a name="update-firewall-rules"></a>ファイアウォール規則を更新する
+API キーは、ユーザー名とパスワードのようにノード アクセスに使用できます。 キー ローテーションをサポートするために 2 つの API キーがあります。 [API キーの一覧を表示](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key)するには、次のコマンドを使用します。
 
 ```azurecli
-az resource update \
-                     --resource-group <myResourceGroup> \
-                     --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers \
-                     --set properties.firewallRules='[{"ruleName":"<myRuleName>", "startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]' \
-                     --remove properties.consortiumManagementAccountAddress
+az blockchain member list-api-key \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName>
 ```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが存在するリソース グループ名。 |
 | **name** | Azure Blockchain Service のブロックチェーン メンバーの名前。 |
-| **ruleName** | IP アドレス範囲をホワイトリストに登録するためのルールの名前。 ファイアウォール規則に関する省略可能なパラメーター。|
-| **startIpAddress** | ホワイトリストの IP アドレス範囲の開始。 ファイアウォール規則に関する省略可能なパラメーター。|
-| **endIpAddress** | ホワイトリストの IP アドレス範囲の終了。 ファイアウォール規則に関する省略可能なパラメーター。|
-
-## <a name="list-api-keys"></a>API キーのリスト
-
-API キーは、ユーザー名とパスワードのようにノード アクセスに使用できます。 キー ローテーションをサポートするために 2 つの API キーがあります。 API キーの一覧を表示するには、次のコマンドを使用します。
-
-```azurecli
-az resource invoke-action \
-                            --resource-group <myResourceGroup> \
-                            --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                            --action "listApiKeys" \
-                            --resource-type Microsoft.Blockchain/blockchainMembers
-```
-
-| パラメーター | 説明 |
-|---------|-------------|
-| **resource-group** | Azure Blockchain Service リソースが存在するリソース グループ名。 |
-| **name** | 新しいトランザクション ノード名も含む Azure Blockchain Service のブロックチェーン メンバーの名前。 |
 
 ## <a name="regenerate-api-keys"></a>API キーを再生成する
 
-API キーを再生成するには、次のコマンドを使用します。
+[API キーを再生成する](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key)には、次のコマンドを使用します。
 
 ```azurecli
-az resource invoke-action \
+az blockchain member regenerate-api-key \
                             --resource-group <myResourceGroup> \
-                            --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                            --action "regenerateApiKeys" \
-                            --resource-type Microsoft.Blockchain/blockchainMembers \
-                            --request-body '{"keyName":"<keyValue>"}'
+                            --name <myMemberName> \
+                            [--key-name {<keyValue1>, <keyValue2>}]
 ```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが存在するリソース グループ名。 |
-| **name** | 新しいトランザクション ノード名も含む Azure Blockchain Service のブロックチェーン メンバーの名前。 |
-| **keyName** | \<keyValue\> を key1 または key2 のいずれかに置き換えます。 |
+| **name** | Azure Blockchain Service のブロックチェーン メンバーの名前。 |
+| **keyName** | \<keyValue\> を key1 または key2、あるいはその両方に置き換えます。 |
 
 ## <a name="delete-a-transaction-node"></a>トランザクション ノードを削除する
 
-例では、ブロックチェーン メンバーのトランザクション ノードを削除します。
+例では、[ブロックチェーン メンバーのトランザクション ノードを削除](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete)します。
 
 ```azurecli
-az resource delete \
+az blockchain transaction-node delete \
                      --resource-group <myResourceGroup> \
-                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers
+                     --member-name <myMemberName> \
+                     --name <myTransactionNode>
 ```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが存在するリソース グループ名。 |
-| **name** | 削除するトランザクション ノード名も含む Azure Blockchain Service のブロックチェーン メンバーの名前。 |
+| **member-name** | 削除するトランザクション ノード名も含む Azure Blockchain Service のブロックチェーン メンバーの名前。 |
+| **name** | 削除するトランザクション ノードの名前。 |
 
 ## <a name="delete-a-blockchain-member"></a>ブロックチェーン メンバーを削除する
 
-例ではブロックチェーン メンバーを削除します。
+例では[ブロックチェーン メンバーを削除](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete)します。
 
 ```azurecli
-az resource delete \
+az blockchain member delete \
                      --resource-group <myResourceGroup> \
-                     --name <myMemberName> \
-                     --resource-type Microsoft.Blockchain/blockchainMembers
+                     --name <myMemberName>
+
 ```
 
 | パラメーター | 説明 |

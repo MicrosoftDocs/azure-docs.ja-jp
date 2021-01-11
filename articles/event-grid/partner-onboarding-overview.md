@@ -3,12 +3,12 @@ title: Azure Event Grid パートナーとしてオンボードする
 description: Azure Event Grid のパートナー トピックの種類としてオンボードします。 パートナー トピックのリソース モデルと発行フローについて説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8003e3e6a28b0e6a05d553be01c171029e244d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86116116"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826791"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Azure Event Grid パートナーとしてオンボードする
 
@@ -153,10 +153,10 @@ partnerNamespace エンドポイントに投稿すると、応答を受け取り
 ## <a name="references"></a>References
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
-  * [ARM テンプレート](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
+  * [ARM テンプレート](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM テンプレート スキーマ](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
-  * [REST API](https://docs.microsoft.com/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
-  * [CLI 拡張機能](https://docs.microsoft.com/cli/azure/ext/eventgrid/?view=azure-cli-latest)
+  * [REST API](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
+  * [CLI 拡張機能](/cli/azure/ext/eventgrid/?view=azure-cli-latest)
 
 ### <a name="sdks"></a>SDK
   * [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.EventGrid/5.3.1-preview)

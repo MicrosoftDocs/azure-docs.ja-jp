@@ -8,12 +8,13 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 2128fee29e64c58a8066a681776fb509b3e31b6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: cb27b4fec0d266bb9931b3942746b034ee3a645f
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445697"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009952"
 ---
 # <a name="configure-opc-publisher"></a>OPC Publisher の構成
 

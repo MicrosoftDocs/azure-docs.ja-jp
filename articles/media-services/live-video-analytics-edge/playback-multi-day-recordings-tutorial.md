@@ -3,12 +3,12 @@ title: 数日間の記録の再生 - Azure
 description: このチュートリアルでは、Azure Media Services API を使用して数日間の継続的なビデオ記録を再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 19a42c61ef250fecce4503d3aed70b36d71ee3cf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433663"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649093"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>チュートリアル:数日間の記録の再生  
 
@@ -40,7 +40,7 @@ ms.locfileid: "84433663"
 
 ## <a name="run-the-sample"></a>サンプルを実行する 
 
-[CVR チュートリアル](continuous-video-recording-tutorial.md)の一部として、メディア サービス アカウントを作成しました。 このチュートリアルでは、そのアカウントに対する完全な API アクセス権を持っている必要があります。 「[Media Services API にアクセスするための資格情報を取得する](../latest/access-api-howto.md#use-the-azure-portal)」にある手順を使用して、サービス プリンシパルを作成できます。 Azure portal から次のような JSON ブロックを取得できます。
+[CVR チュートリアル](continuous-video-recording-tutorial.md)の一部として、メディア サービス アカウントを作成しました。 このチュートリアルでは、そのアカウントに対する完全な API アクセス権を持っている必要があります。 「[Media Services API にアクセスするための資格情報を取得する](../latest/access-api-howto.md?tabs=portal)」にある手順を使用して、サービス プリンシパルを作成できます。 Azure portal から次のような JSON ブロックを取得できます。
 
 ```
 {

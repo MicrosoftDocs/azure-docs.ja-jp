@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用した VMware VM ディザスター リカバリーでのフェールバックのトラブルシューティング
 description: この記事では、Azure Site Recovery を使用して VMware VM を Azure にディザスター リカバリーするときのフェールバックと再保護の問題をトラブルシューティングする方法について説明します。
-author: rajani-janaki-ram
-manager: gauravd
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: a5b8ac3d46f21f299f3e56dab24a1b5f342fb4b6
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.author: sharrai
+ms.openlocfilehash: ed4e52470264441a99c5ccf0a736bb00233510c1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309953"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423118"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>Azure からオンプレミスへのフェールバックのトラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "84309953"
 - プロセス サーバーから構成サーバーにアクセスできない場合は、Telnet を使用して、構成サーバーのポート 443 への接続を確認します。 プロセス サーバーから構成サーバーに対して ping を試すこともできます。 プロセス サーバーも、構成サーバーに接続されている場合、ハートビートを送信します。
 - 物理オンプレミス サーバーとして保護されている Windows Server 2008 R2 SP1 サーバーは、Azure からオンプレミス サイトにフェールバックすることができません。
 - 次のような状況ではフェールバックできません。
-    - マシンを Azure に移行した。 [詳細については、こちらを参照してください](migrate-overview.md#what-do-we-mean-by-migration)。
+    - マシンを Azure に移行した。 
     - 別のリソース グループに VM を移動した。
     - Azure VM を削除した。
     - VM の保護を無効にした。
@@ -64,7 +64,7 @@ ms.locfileid: "84309953"
 この問題を解決するには、次の手順を実行します。
 
 * 別のホスト上にある別のマスター ターゲット サーバーを選択して、再保護によって別のホストにマシンが作成され、名前が競合しないようにします。
-* また、vMotion を使用して、名前の競合が発生しない別のホストにマスター ターゲットを移動することもできます。 既存の VM がはぐれたマシンである場合は、同じ ESXi ホストで新しい VM を作成できるように、はぐれたマシンの名前を変更します。
+* また、VMotion を使用して、名前の競合が発生しない別のホストにマスター ターゲットを移動することもできます。 既存の VM がはぐれたマシンである場合は、同じ ESXi ホストで新しい VM を作成できるように、はぐれたマシンの名前を変更します。
 
 
 ### <a name="error-code-78093"></a>エラー コード 78093
@@ -98,4 +98,4 @@ ms.locfileid: "84309953"
 この問題を解決するには、次の手順を実行します。
 
 * ESXi ホストに、より多くのメモリをプロビジョニングします。
-* また、vMotion を使用して、VM を起動するための充分なメモリがある別の ESXi ホストに VM を移動します。
+* また、VMotion を使用して、VM を起動するための充分なメモリがある別の ESXi ホストに VM を移動します。

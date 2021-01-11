@@ -4,16 +4,16 @@ description: クラスターの管理者とクラスターのユーザーを対�
 services: container-service
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 4d25babd13bb8ecdcd8c9eb60a976a05702fb9b6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c73c4a0ae46c3d2ac3a64543473bd6639d03b434
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255270"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009292"
 ---
-# <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure のロールベースのアクセス制御を使用して Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルに対するアクセス権を定義する
+# <a name="use-azure-role-based-access-control-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Azure ロールベースのアクセス制御を使用して、Azure Kubernetes Service (AKS) 内の Kubernetes 構成ファイルへのアクセス権を定義する
 
-`kubectl` ツールを使用すると、Kubernetes クラスターを操作できます。 Azure CLI には、`kubectl` を使って AKS クラスターに接続するためのアクセス資格情報と構成情報を簡単に取得できる手段が用意されています。 Kubernetes の構成 (*kubeconfig*) 情報を取得できる人物を限定したり、その時点で各人に与えられているアクセス許可を制限したりするには、Azure のロールベースのアクセス制御 (RBAC) を使用します。
+`kubectl` ツールを使用すると、Kubernetes クラスターを操作できます。 Azure CLI には、`kubectl` を使って AKS クラスターに接続するためのアクセス資格情報と構成情報を簡単に取得できる手段が用意されています。 その Kubernetes の構成 (*kubeconfig*) 情報を取得できるユーザーを制限したり、付与されるアクセス許可を制限したりするには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用できます。
 
 この記事では、AKS クラスターの構成情報を取得できる人物を限定する RBAC ロールを割り当てる方法を説明します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "86255270"
 
 `kubectl` ツールを使って AKS クラスターを操作するときは、クラスターの接続情報が定義された構成ファイルを使用します。 この構成ファイルは通常、 *~/.kube/config* にあります。この *kubeconfig* ファイルでは、複数のクラスターを定義できます。 クラスターを切り替えるときは、[kubectl config use-context][kubectl-config-use-context] コマンドを使用します。
 
-[az aks get-credentials][az-aks-get-credentials] コマンドを実行すると、任意の AKS クラスターのアクセス資格情報を取得し、*kubeconfig* ファイルにマージすることができます。 このような資格情報に対するアクセスは、Azure のロールベースのアクセス制御 (RBAC) により制御できます。 Azure の RBAC ロールを使えば、*kubeconfig* ファイルを取得できる人物と、その人物がその時点にクラスター内で保有するアクセス許可を定義できます。
+[az aks get-credentials][az-aks-get-credentials] コマンドを実行すると、任意の AKS クラスターのアクセス資格情報を取得し、*kubeconfig* ファイルにマージすることができます。 これらの資格情報へのアクセスを制御するには、Azure ロールベースのアクセス制御 (Azure RBAC) を使用できます。 Azure ロールを使えば、*kubeconfig* ファイルを取得できる人物と、その人物がその時点にクラスター内で保有するアクセス許可を定義できます。
 
 あらかじめ用意されているロールは 2 つあります。
 

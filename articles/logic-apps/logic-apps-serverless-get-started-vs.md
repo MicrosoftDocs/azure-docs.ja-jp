@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981160"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090248"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Visual Studio で Azure Logic Apps と Azure Functions を使用して初めてのサーバーレス アプリを構築する
 
@@ -32,7 +32,7 @@ Visual Studio でサーバーレス アプリを構築するには、以下が�
     > Visual Studio 2019 または 2017 をインストールする場合は、 **[Azure の開発]** ワークロードを選択してください。
 
   * [Microsoft Azure SDK for .NET (バージョン 2.9.1 以降)](https://azure.microsoft.com/downloads/)。 
-  [Azure SDK for .NET](https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet) の詳細を参照してください。
+  [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet) の詳細を参照してください。
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)。
 
@@ -44,7 +44,7 @@ Visual Studio でサーバーレス アプリを構築するには、以下が�
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
   
-    Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 
+    Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 
     インストールが完了したら、必ず Visual Studio を再起動してください。
 
   * ローカルで関数をデバッグするための [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools)。
@@ -136,7 +136,7 @@ Visual Studio でロジック アプリ デザイナーを使用してロジッ�
 
 ## <a name="create-your-azure-functions-project"></a>Azure Functions プロジェクトを作成する
 
-JavaScript、Python、F#、PowerShell、Batch、または Bash を使用して Functions プロジェクトと関数を作成するには、「[Azure Functions Core Tools の操作](../azure-functions/functions-run-local.md)」の手順に従ってください。 ソリューション内で C# を使用して Azure 関数を開発するには、「[Publish a .NET class library as a Function App](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/16/publishing-a-net-class-library-as-a-function-app/)」(関数アプリとして .NET クラス ライブラリを発行する) の手順に従って C# クラス ライブラリを使用します。
+JavaScript、Python、F#、PowerShell、Batch、または Bash を使用して Functions プロジェクトと関数を作成するには、「[Azure Functions Core Tools の操作](../azure-functions/functions-run-local.md)」の手順に従ってください。 ソリューション内で C# を使用して Azure 関数を開発するには、「[Publish a .NET class library as a Function App](https://azure.microsoft.com/blog/)」(関数アプリとして .NET クラス ライブラリを発行する) の手順に従って C# クラス ライブラリを使用します。
 
 ## <a name="deploy-functions-from-visual-studio"></a>Visual Studio から関数を展開する
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 04/30/2020
-ms.openlocfilehash: 2d6ebcd720a5cea8d41bf3c05f753f2e9d4775d1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 78c0526ac750977115a88e96bb5f7d5cb4e9803f
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085907"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873094"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
@@ -38,10 +38,10 @@ HDInsight クラスター用の metastore をセットアップできる方法�
 
 * 既定の metastore は、他のクラスターと共有できません。
 
-* 既定の metastore では、5 DTU (データベース トランザクション ユニット) の制限がある基本的な Azure SQL Database が使用されます。
-この既定のメタストアは、通常、比較的単純なワークロードに使用されます。 複数のクラスターを必要とせず、クラスターのライフサイクルを超えてメタデータを保持する必要がないワークロード。
+* 既定のメタストアは、単純なワークロード用にのみ推奨されます。 複数のクラスターを必要とせず、クラスターのライフサイクルを超えてメタデータを保持する必要がないワークロード。
 
-* 運用環境のワークロードの場合は、外部のメタストアに移行することをお勧めします。 詳細については、以下のセクションを参照してください。
+> [!IMPORTANT]
+> 既定のメタストアでは、**DTU 上限が Basic レベルの 5 (アップグレード不可能)** である Azure SQL Database が提供されます。 基本的なテスト目的に適しています。 より大きなワークロードや運用環境のワークロードの場合は、外部のメタストアに移行することをお勧めします。
 
 ## <a name="custom-metastore"></a>カスタム metastore
 
@@ -81,9 +81,8 @@ SQL ストアのプライベート エンドポイントはサポートされて
 
 ## <a name="hive-metastore-guidelines"></a>Hive メタストアのガイドライン
 
-* 可能な限り、カスタム metastore を使用します。これにより、コンピューティング リソース (実行中のクラスター) とメタデータ (metastore に格納されます) を分離できます。
-
-* 50 DTU と 250 GB のストレージを提供する S2 レベルから開始します。 ボトルネックを確認した場合は、データベースをスケール アップできます。
+> [!NOTE]
+> 可能な限り、カスタム metastore を使用します。これにより、コンピューティング リソース (実行中のクラスター) とメタデータ (metastore に格納されます) を分離できます。 50 DTU と 250 GB のストレージが提供される S2 レベルから開始します。 ボトルネックを確認した場合は、データベースをスケール アップできます。
 
 * 複数の HDInsight クラスターで異なるデータにアクセスする場合は、クラスターごとに metastore に対して別のデータベースを使用します。 複数の HDInsight クラスターで metastore を共有する場合は、クラスターが同じメタデータおよび基になるユーザー データ ファイルを使用することを意味します。
 

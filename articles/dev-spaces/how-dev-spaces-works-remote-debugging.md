@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces による Azure Kubernetes Service でのリモート デバッグのプロセスについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: a9f303ea6f954285a319be137a594f7ce127f740
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd984ff6a8ebe336f76643406c0957769dbfd3da
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241245"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213393"
 ---
 # <a name="how-remote-debugging-your-code-with-azure-dev-spaces-works"></a>Azure Dev Spaces でのコードのリモート デバッグのしくみ
 
@@ -30,15 +30,7 @@ Visual Studio Code または Visual Studio を使用してデバッグ用にア�
 
 ## <a name="next-steps"></a>次のステップ
 
-プロジェクトのリモート デバッグ用に Azure Dev Spaces の使用を開始するには、以下のクイック スタートを参照してください。
+Azure Dev Spaces のしくみの詳細について確認します。
 
-* [Visual Studio Code と Java を使用した迅速な反復処理とデバッグ][quickstart-java]
-* [Visual Studio Code と .NET を使用した迅速な反復処理とデバッグ][quickstart-netcore]
-* [Visual Studio Code と Node.js を使用した迅速な反復処理とデバッグ][quickstart-node]
-* [Visual Studio と .NET Core を使用した迅速な反復処理とデバッグ][quickstart-vs]
-
-
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces のしくみ](how-dev-spaces-works.md)

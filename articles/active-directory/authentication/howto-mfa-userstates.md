@@ -5,86 +5,89 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/13/2020
+ms.date: 08/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8ef25df8fdb11715ebba954e31a97939d6ac0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 1b1ff8a54037392ac01402056ada0f3040dbd123
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476837"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068934"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>ユーザーごとの Azure Multi-Factor Authentication を有効にしてサインイン イベントのセキュリティを確保する
 
-Azure AD で多要素認証を要求することによってユーザーのサインイン イベントのセキュリティを確保するには、2 つの方法があります。 推奨される最初のオプションは、特定の条件下で多要素認証を要求する条件付きアクセス ポリシーを設定することです。 2 つ目のオプションは、個々のユーザーに Azure Multi-Factor Authentication を有効にする方法です。 ユーザーを個別に有効にした場合は、サインインするたびに多要素認証が実行されます (信頼できる IP アドレスからサインインするときや、_記憶されたデバイス_の機能が有効なときなど、一部例外があります)。
+Azure AD でユーザーのサインイン イベントをセキュリティで保護するには、多要素認証 (MFA) を要求することができます。 ユーザーを保護するには、条件付きアクセス ポリシーを使って Azure Multi-Factor Authentication を有効にするのが推奨されるアプローチです。 条件付きアクセスは Azure AD Premium P1 または P2 の機能であり、特定のシナリオで必要に応じて MFA を要求するルールを適用できます。 条件付きアクセスの使用を開始するには、「[チュートリアル:Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
 
-> [!NOTE]
-> 条件付きアクセス ポリシーを使って Azure Multi-Factor Authentication を有効にするのが推奨されるアプローチです。 ライセンスに条件付きアクセスが含まれていない場合 (この場合、ユーザーはサインインするたびに MFA を実行する必要があります) を除き、ユーザーの状態を変更することは推奨されなくなりました。 条件付きアクセスの使用を開始するには、「[チュートリアル:Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+条件付きアクセスを使用しない Azure AD 無料テナントについては、[セキュリティの既定値を使用してユーザーを保護](../fundamentals/concept-fundamentals-security-defaults.md)できます。 ユーザーは必要に応じて MFA の入力を求められますが、独自のルールを定義して動作を制御することはできません。
+
+代わりに、ユーザーごとの Azure Multi-Factor Authentication を必要に応じて各アカウントで有効にすることができます。 ユーザーを個別に有効にした場合は、サインインするたびに多要素認証が実行されます (信頼できる IP アドレスからサインインするときや、_信頼されたデバイスで MFA を記憶する_機能が有効なときなど、一部例外があります)。
+
+Azure AD ライセンスに条件付きアクセスが含まれておらず、セキュリティの既定値を使用しない場合を除き、ユーザーの状態を変更することは推奨されません。 MFA を有効にする他の方法の詳細については、「[Azure Multi-Factor Authentication の機能とライセンス](concept-mfa-licensing.md)」を参照してください。
+
+> [!IMPORTANT]
 >
-> 条件付きアクセスを使用しない Azure AD 無料テナントについては、[セキュリティの既定値を使用してユーザーを保護](../fundamentals/concept-fundamentals-security-defaults.md)できます。
+> この記事では、ユーザーごとの Azure Multi-Factor Authentication の状態を表示および変更する方法について詳しく説明します。 条件付きアクセスまたはセキュリティの既定値を使用する場合、これらの手順を使用してユーザー アカウントを確認したり、有効にしたりしません。
+>
+> 条件付きアクセス ポリシーを使用して Azure Multi-Factor Authentication を有効にしても、ユーザーの状態は変更されません。 ユーザーが無効に見えても問題ありません。 条件付きアクセスでは、状態は変更されません。
+>
+> **条件付きアクセス ポリシーを使用する場合は、ユーザーごとの Azure Multi-Factor Authentication を有効にしたり、適用したりしないでください。**
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Azure Multi-Factor Authentication におけるユーザーの状態
 
-Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
+ユーザーの状態には、管理者がユーザーをユーザーごとの Azure Multi-Factor Authentication に登録したかどうかが反映されます。 Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
 
-> [!IMPORTANT]
-> 条件付きアクセス ポリシーを使用して Azure Multi-Factor Authentication を有効にしても、ユーザーの状態は変更されません。 ユーザーが無効に見えても問題ありません。 条件付きアクセスでは、状態は変更されません。
->
-> **条件付きアクセス ポリシーを使用している場合は、ユーザーを有効または強制の状態にしないでください。**
-
-| Status | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
+| State | 説明 | 影響を受けるレガシ認証 | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
 |:---:| --- |:---:|:--:|:--:|
-| 無効 | Azure Multi-Factor Authentication に登録されていない、新しいユーザーの既定の状態です。 | いいえ | いいえ | いいえ |
-| Enabled | ユーザーは Azure Multi-Factor Authentication に登録されていますが、認証方法を登録していません。 次回のサインイン時に登録することを求められます。 | いいえ。  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure Multi-Factor Authentication の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure Multi-Factor Authentication の登録が必要になります。 |
-| 強制 | ユーザーは登録されており、Azure Multi-Factor Authentication の登録プロセスが完了しています。 | はい。 アプリはアプリ パスワードを必要とします。 | はい。 ログイン時に Azure Multi-Factor Authentication が必要です。 | はい。 ログイン時に Azure Multi-Factor Authentication が必要です。 |
+| 無効 | ユーザーごとの Azure Multi-Factor Authentication に登録されていないユーザーの既定の状態です。 | いいえ | いいえ | いいえ |
+| Enabled | ユーザーはユーザーごとの Azure Multi-Factor Authentication に登録されていますが、レガシ認証では引き続きパスワードを使用できます。 ユーザーが MFA 認証方法にまだ登録されていない場合は、先進認証 (Web ブラウザーなど) を使用して次回サインインするときに登録するように求められます。 | いいえ。 レガシ認証は、登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure Multi-Factor Authentication の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure Multi-Factor Authentication の登録が必要になります。 |
+| 強制 | ユーザーは、ユーザーごとに Azure Multi-Factor Authentication に登録されています。 ユーザーが認証方法にまだ登録されていない場合は、先進認証 (Web ブラウザーなど) を使用して次回サインインするときに登録するように求められます。 *[有効]* 状態で登録が完了したユーザーは、 *[強制]* 状態に自動的に移動されます。 | はい。 アプリはアプリ パスワードを必要とします。 | はい。 サインイン時に Azure Multi-Factor Authentication が必要です。 | はい。 サインイン時に Azure Multi-Factor Authentication が必要です。 |
 
-ユーザーの状態には、管理者がユーザーを Azure Multi-Factor Authentication に登録したかどうか、およびユーザーが登録プロセスを完了したかどうかが反映されます。
-
-すべてのユーザーの状態は、 *[無効]* から始まります。 管理者がユーザーを Azure Multi-Factor Authentication に登録すると、ユーザーの状態は *[有効]* に変わります。 [有効] 状態のときにユーザーがサインインして登録プロセスを完了すると、ユーザーの状態は *[適用]* に変わります。
+すべてのユーザーの状態は、 *[無効]* から始まります。 管理者がユーザーをユーザーごとの Azure Multi-Factor Authentication に登録すると、ユーザーの状態は *[有効]* に変わります。 [有効] 状態のときにユーザーがサインインして登録プロセスを完了すると、ユーザーの状態は *[適用]* に変わります。 管理者は、ユーザーを状態間 ( *[強制]* から *[有効]* または *[無効]* を含む) で移動させることができます。
 
 > [!NOTE]
-> 電話や電子メールなどの登録の詳細が既にあるユーザー オブジェクトで MFA を再度有効にする場合には、管理者は Azure portal または PowerShell を使用して MFA を再登録する必要があります。 ユーザーが再登録していない場合、MFA の状態は *有効* から MFA 管理 UI で *強制* に移行されません。
+> ユーザーごとの MFA がユーザーに対して再度有効にされ、ユーザーが再登録されていない場合、MFA 管理 UI で MFA の状態は *[有効]* から *[強制]* に移行されません。 管理者は、そのユーザーを *[強制]* に直接移動する必要があります。
 
 ## <a name="view-the-status-for-a-user"></a>ユーザーの状態を表示する
 
-ユーザーの状態を表示および管理できる Azure portal ページにアクセスするには、次の手順に従います。
+ユーザーの状態を表示および管理するには、次の手順を実行して Azure portal ページにアクセスします。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 1. *[Azure Active Directory]* を探して選択してから、 **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
-1. **[Multi-Factor Authentication]** を選択します。 このメニュー オプションを表示するには、必要に応じて右にスクロールします。 次のスクリーンショット例を選択すると、完全な Azure portal ウィンドウとメニューの場所が表示されます。[![](media/howto-mfa-userstates/selectmfa-cropped.png "Azure AD の [ユーザー] ウィンドウから [Multi-Factor Authentication] を選択します")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. **[Multi-Factor Authentication]** を選択します。 このメニュー オプションを表示するには、必要に応じて右にスクロールします。 次のスクリーンショット例を選択すると、完全な Azure portal ウィンドウとメニューの場所が表示されます。[![Azure AD の [ユーザー] ウィンドウから [Multi-Factor Authentication] を選択します。](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. 次の例に示すように、ユーザーの状態を表示する新しいページが開きます。
    ![Azure Multi-Factor Authentication のユーザーの状態情報の例を示すスクリーンショット](./media/howto-mfa-userstates/userstate1.png)
 
 ## <a name="change-the-status-for-a-user"></a>ユーザーの状態を変更する
 
-ユーザーの Azure Multi-Factor Authentication の状態を変更するには、次の手順を実行します。
+ユーザーのユーザーごとの Azure Multi-Factor Authentication の状態を変更するには、次の手順を実行します。
 
-1. 前述の手順を使用して、Azure Multi-Factor Authentication の**ユーザー** ページを取得します。
-1. Azure Multi-Factor Authentication を有効にするユーザーを検索します。 上部でビューを **[ユーザー]** に変更することが必要になる場合があります。
+1. 前の手順を使用して、[ユーザーの状態を表示し](#view-the-status-for-a-user)、Azure Multi-Factor Authentication の**ユーザー** ページに移動します。
+1. ユーザーごとの Azure Multi-Factor Authentication を有効にするユーザーを検索します。 上部でビューを **[ユーザー]** に変更することが必要になる場合があります。
    ![ユーザー タブで状態を変更するユーザーを選択する](./media/howto-mfa-userstates/enable1.png)
 1. 状態を変更するユーザーの名前の横にあるチェックボックスをオンにします。
 1. 右側にある **[クイック操作]** で **[有効にする]** または **[無効にする]** を選択します。 次の例では、ユーザー *John Smith* の名前の横にチェックマークが付いており、使用が有効になっています。![[クイック操作] メニューの [有効にする] をクリックして、選択したユーザーを有効にする](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *[有効]* なユーザーは、Azure Multi-Factor Authentication に登録すると自動的に *[Enforced]\(強制\)* に切り替えられます。 ユーザーの状態を手動で *[Enforced]\(強制\)* に変更しないでください。
+   > *[有効]* なユーザーは、Azure Multi-Factor Authentication に登録すると自動的に *[Enforced]\(強制\)* に切り替えられます。 ユーザーが既に登録されている場合や、レガシ認証プロトコルへの接続が中断されてもユーザーがそれを容認できる場合を除き、ユーザーの状態を *[強制]* に手動で変更しないでください。
 
 1. 開いたポップアップ ウィンドウで選択内容を確認します。
 
-ユーザーを有効にした後は、ユーザーにメールで通知します。 次回のサインイン時に登録を要求するプロンプトが表示されることをユーザーに伝えます。 また、最新の認証をサポートしていない非ブラウザー アプリを組織で使用している場合は、アプリ パスワードを作成する必要があります。 詳細については、開始をサポートするための [Azure Multi-Factor Authentication エンドユーザー ガイド](../user-help/multi-factor-authentication-end-user.md)を参照してください。
+ユーザーを有効にした後は、ユーザーにメールで通知します。 次回のサインイン時に登録を要求するプロンプトが表示されることをユーザーに伝えます。 また、最新の認証をサポートしていない非ブラウザー アプリを組織で使用している場合は、アプリ パスワードを作成する必要があります。 詳細については、開始をサポートするための [Azure Multi-Factor Authentication エンドユーザー ガイド](../user-help/multi-factor-authentication-end-user-first-time.md)を参照してください。
 
 ## <a name="change-state-using-powershell"></a>PowerShell を使用して状態を変更する
 
-[Azure AD PowerShell](/powershell/azure/overview) を使用してユーザーの状態を変更するには、ユーザー アカウントの `$st.State` パラメーターを変更します。 ユーザー アカウントの状態は 3 つあります。
+[Azure AD PowerShell](/powershell/azure/) を使用してユーザーの状態を変更するには、ユーザー アカウントの `$st.State` パラメーターを変更します。 ユーザー アカウントの状態は 3 つあります。
 
 * *有効*
 * *Enforced (強制)*
 * *Disabled*  
 
-ユーザーを直接 "*適用*" の状態に移さないでください。 そのようにしても、ユーザーは Azure Multi-Factor Authentication の登録を終えておらず、[アプリのパスワード](howto-mfa-app-passwords.md)を取得していないため、ブラウザーベースでないアプリは動作を停止します。
+一般に、ユーザーが既に MFA に登録されている場合を除き、ユーザーを *[強制]* 状態に直接移動しないでください。 そのようにしても、ユーザーは Azure Multi-Factor Authentication の登録を終えておらず、[アプリのパスワード](howto-mfa-app-passwords.md)を取得していないため、レガシ認証アプリは動作を停止します。 場合によっては、この動作が望ましいこともありますが、ユーザーが登録されるまでユーザー エクスペリエンスに影響します。
 
 使用を開始するには、以下のように [Install-Module](/powershell/module/powershellget/install-module) を使用して *MSOnline* モジュールをインストールします。
 
@@ -138,7 +141,7 @@ Get-MsolUser -UserPrincipalName bsimon@contoso.com | Set-MsolUser -StrongAuthent
 Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements @()
 ```
 
-## <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>ユーザーをユーザーごとの MFA から条件付きアクセス ベースの MFA に変換する
+## <a name="convert-users-from-per-user-mfa-to-conditional-access"></a>ユーザーをユーザーごとの MFA から条件付きアクセスに変換する
 
 次の PowerShell が、条件付きアクセス ベースの Azure Multi-Factor Authentication への変換に役立ちます。
 
@@ -177,12 +180,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> 最近、この動作とこの PowerShell スクリプトを変更しました。 以前は、このスクリプトにより、MFA メソッドが保存され、MFA が無効化され、メソッドが復元されました。 無効化の既定の動作でメソッドが消去されないため、これは不要になりました。
->
-> 電話や電子メールなどの登録の詳細が既にあるユーザー オブジェクトで MFA を再度有効にする場合には、管理者は Azure portal または PowerShell を使用して MFA を再登録する必要があります。 ユーザーが再登録していない場合、MFA の状態は *有効* から MFA 管理 UI で *強制* に移行されません。
+> MFA がユーザーに対して再度有効にされ、ユーザーが再登録されていない場合、MFA 管理 UI で MFA の状態は *[有効]* から *[強制]* に移行されません。 この場合、管理者はそのユーザーを *[強制]* に直接移動する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
-信頼できる IP、カスタム音声メッセージ、不正アクセスのアラートなどの Azure Multi-Factor Authentication 設定を構成するには、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。 Azure Multi-Factor Authentication のユーザー設定を管理するには、「[Azure Multi-Factor Authentication によるユーザー設定の管理](howto-mfa-userdevicesettings.md)」を参照してください。
+Azure Multi-Factor Authentication 設定を構成するには、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
+
+Azure Multi-Factor Authentication のユーザー設定を管理するには、「[Azure Multi-Factor Authentication によるユーザー設定の管理](howto-mfa-userdevicesettings.md)」を参照してください。
 
 MFA の実行を求めるメッセージがユーザーに表示された理由、または表示されない理由について理解するには、[Azure Multi-Factor Authentication レポート](howto-mfa-reporting.md)に関する記事を参照してください。

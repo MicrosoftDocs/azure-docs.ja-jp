@@ -7,13 +7,14 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/05/2020
-ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 08/21/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bfb2598fb3a207bbdfaade9086efd07827b077dd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079218"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998426"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>チュートリアル:プッシュ API を使用してインデックス作成を最適化する
 
@@ -21,7 +22,7 @@ Azure Cognitive Search は、検索インデックスにデータをインポー
 
 このチュートリアルでは、[プッシュ モデル](search-what-is-data-import.md#pushing-data-to-an-index)を使用して効率的にデータのインデックスを作成する方法について説明します。その際、要求はバッチで処理し、エクスポネンシャル バックオフの再試行戦略を使用しています。 [アプリケーションをダウンロードして実行](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/optimize-data-indexing)することができます。 この記事では、アプリケーションの主な特徴と、データのインデックスを作成する際に考慮すべき事柄について説明します。
 
-このチュートリアルでは、C# と [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用して次のタスクを実行します。
+このチュートリアルでは、C# と [.NET SDK](/dotnet/api/overview/azure/search) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * インデックスを作成する
@@ -111,7 +112,7 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
 
 ### <a name="creating-the-index"></a>インデックスを作成する
 
-このサンプル プログラムでは、.NET SDK を使用して、Azure Cognitive Search のインデックスを定義および作成します。 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) クラスを利用して、C# データ モデル クラスからインデックス構造を生成します。
+このサンプル プログラムでは、.NET SDK を使用して、Azure Cognitive Search のインデックスを定義および作成します。 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) クラスを利用して、C# データ モデル クラスからインデックス構造を生成します。
 
 データ モデルは、Hotel クラスによって定義されています。Hotel クラスには、Address クラスへの参照も含まれています。 FieldBuilder は、複数のクラス定義をドリルダウンして、このインデックスの複雑なデータ構造を生成します。 メタデータ タグは、検索や並べ替えが可能かどうかなど、各フィールドの属性を定義するために使用されます。
 
@@ -162,8 +163,8 @@ List<Hotel> hotels = dg.GetHotels(100000, "large");
 
 Azure Cognitive Search は、1 つまたは複数のドキュメントをインデックスに読み込む次の API をサポートしています。
 
-+ [ドキュメントの追加、更新、削除 (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)または [indexBatch クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
++ [ドキュメントの追加、更新、削除 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction クラス](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)または [indexBatch クラス](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet)
 
 ドキュメントのインデックスをバッチ単位で作成することによって、インデックス作成のパフォーマンスが大幅に向上します。 バッチの最大サイズは、1,000 ドキュメントまたは約 16 MB です。
 
@@ -258,14 +259,14 @@ Azure Cognitive Search のインデックス作成速度を最大限に引き出
 
 最適なスレッド数は、前述した主な考慮事項のいくつかによって左右されます。 さまざまなスレッド数でこのサンプルを変更、テストすることによって、実際のシナリオに最適なスレッド数を見極めてください。 ただし、複数のスレッドを同時に実行すれば、効率向上の利点はおおよそ活かすことができるはずです。
 
-検索サービスに対する要求を増やしていくと、要求が完全には成功しなかったことを示す [HTTP 状態コード](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)が返されることがあります。 インデックスの作成時によく発生する HTTP 状態コードは次の 2 つです。
+検索サービスに対する要求を増やしていくと、要求が完全には成功しなかったことを示す [HTTP 状態コード](/rest/api/searchservice/http-status-codes)が返されることがあります。 インデックスの作成時によく発生する HTTP 状態コードは次の 2 つです。
 
 + **503 Service Unavailable** - このエラーは、システムが過負荷の状態にあり、この時点では要求を処理できないことを示します。
 + **207 Multi-Status** - このエラーは、ドキュメントの一部は成功しましたが、少なくとも 1 つが失敗したことを示します。
 
 ### <a name="implement-an-exponential-backoff-retry-strategy"></a>エクスポネンシャル バックオフの再試行戦略を実装する
 
-失敗した要求は、[エクスポネンシャル バックオフの再試行戦略](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)を使用して再試行する必要があります。
+失敗した要求は、[エクスポネンシャル バックオフの再試行戦略](/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff)を使用して再試行する必要があります。
 
 503 などで失敗した要求は、Azure Cognitive Search の .NET SDK によって自動的に再試行されますが、207 には、独自の再試行ロジックを実装する必要があります。 [Polly](https://github.com/App-vNext/Polly) などのオープンソース ツールを使用して、再試行戦略を実装することもできます。 
 
@@ -281,7 +282,7 @@ TimeSpan delay = delay = TimeSpan.FromSeconds(2);
 int maxRetryAttempts = 5;
 ```
 
-[IndexBatchException](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) をキャッチすることが重要となります。この例外は、インデックスの作成処理が部分的にのみ成功 (207) していることを示します。 失敗した項目は `FindFailedActionsToRetry` メソッドを使用して再試行します。このメソッドを使用することで、失敗した項目だけを含んだ新しいバッチを簡単に作成することができます。
+[IndexBatchException](/dotnet/api/microsoft.azure.search.indexbatchexception?view=azure-dotnet) をキャッチすることが重要となります。この例外は、インデックスの作成処理が部分的にのみ成功 (207) していることを示します。 失敗した項目は `FindFailedActionsToRetry` メソッドを使用して再試行します。このメソッドを使用することで、失敗した項目だけを含んだ新しいバッチを簡単に作成することができます。
 
 `IndexBatchException` 以外の例外もキャッチする必要があります。それらは、要求が完全に失敗したことを意味します。 これらの例外の発生頻度はさほど高くありません。特に .NET SDK では、503 が自動的に再試行されます。
 
@@ -346,7 +347,7 @@ ExponentialBackoff.IndexData(indexClient, hotels, 1000, 8).Wait();
 
 ### <a name="programatically"></a>プログラム
 
-インデックス内のドキュメント数は、主に 2 つの方法で確認できます。[Count Documents API](https://docs.microsoft.com/rest/api/searchservice/count-documents) を使用する方法と [Get Index Statistics API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) を使用する方法です。 どちらの方法も、ある程度の更新時間が別途かかることがあります。返されたドキュメント数が、最初に予想していた数よりも少なくても心配しないでください。
+インデックス内のドキュメント数は、主に 2 つの方法で確認できます。[Count Documents API](/rest/api/searchservice/count-documents) を使用する方法と [Get Index Statistics API](/rest/api/searchservice/get-index-statistics) を使用する方法です。 どちらの方法も、ある程度の更新時間が別途かかることがあります。返されたドキュメント数が、最初に予想していた数よりも少なくても心配しないでください。
 
 #### <a name="count-documents"></a>ドキュメントのカウント
 
@@ -370,7 +371,7 @@ Azure portal で、検索サービスの **[概要]** ページを開き、 **[�
 
   ![Azure Cognitive Search インデックスの一覧](media/tutorial-optimize-data-indexing/portal-output.png "Azure Cognitive Search インデックスの一覧")
 
-*[ドキュメント数]* と *[ストレージ サイズ]* は、[Get Index Statistics API](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) から得られるため、更新に数分かかる場合があります。
+*[ドキュメント数]* と *[ストレージ サイズ]* は、[Get Index Statistics API](/rest/api/searchservice/get-index-statistics) から得られるため、更新に数分かかる場合があります。
 
 ## <a name="reset-and-rerun"></a>リセットして再実行する
 

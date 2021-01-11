@@ -4,8 +4,6 @@
   items:
     - name: アプリケーション ゲートウェイについて
       href: overview.md
-    - name: 新機能
-      href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -92,6 +90,8 @@
       href: application-gateway-web-app-overview.md
     - name: WebSocket のサポート
       href: application-gateway-websocket.md
+    - name: 価格について
+      href: understanding-pricing.md
     - name: よく寄せられる質問
       href: application-gateway-faq.md
 - name: 操作方法ガイド

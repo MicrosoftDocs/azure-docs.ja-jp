@@ -4,22 +4,19 @@ description: Azure Kubernetes Service (AKS) で Azure Policy を使用してポ�
 services: container-service
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 8a5107b9ba3c05c92a06753b2cb30bcfc2896d91
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+author: jluk
+ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86090829"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987360"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
 
 AKS クラスターのセキュリティを強化するために、ポッドに付与される機能と、会社のポリシーに対して違反となる内容を制御できます。 このアクセスは、AKS の [Azure Policy アドオン][kubernetes-policy-reference]によって提供される組み込みのポリシーを使用して定義されます。 ルート特権など、ポッドの仕様のセキュリティ面をさらに制御することにより、より厳密なセキュリティを確保し、クラスターにデプロイされている内容を確認することができます。 ポッドがポリシーで指定された条件を満たしていない場合、Azure Policy ではポッドの開始を禁止したり、違反を示すフラグを設定したりすることができます。 この記事では、Azure Policy を使用して AKS でのポッドのデプロイを制限する方法について説明します。
 
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー][aks-support-policies]
-> * [Azure サポートに関する FAQ][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -46,7 +43,7 @@ Azure Policy を使用して AKS ポッドをセキュリティ保護するに�
 
 AKS クラスターでは、リソースが作成され更新されるときに、API サーバーへの要求をインターセプトするためにアドミッション コントローラーが使用されます。 次にアドミッション コントローラーは、一連のルールに対してリソース要求を*検証*して、それを作成する必要があるかどうかを判断します。
 
-以前は、Kubernetes プロジェクトによって[ポッドのセキュリティ ポリシー (プレビュー)](use-pod-security-policies.md) 機能が有効にされ、デプロイ可能なポッドが制限されていました。 この機能は、Kubernetes プロジェクトからアクティブに開発されたことにより、使用されなくなりました。
+以前は、Kubernetes プロジェクトによって[ポッドのセキュリティ ポリシー (プレビュー)](use-pod-security-policies.md) 機能が有効にされ、デプロイ可能なポッドが制限されていました。
 
 Azure Policy アドオンを使用することにより、AKS クラスターで組み込みの Azure Policy を使用できるようになります。このポリシーでは、以前のポッドのセキュリティ ポリシーと同様に、ポッドとその他の Kubernetes リソースをセキュリティ保護することができます。 AKS 用の Azure Policy アドオンでは、[Gatekeeper](https://github.com/open-policy-agent/gatekeeper) のマネージド インスタンスがインストールされます。これは、検証を行うアドミッション コントローラーです。 Kubernetes 用 の Azure Policy は、[Rego ポリシー言語](../governance/policy/concepts/policy-for-kubernetes.md#policy-language)に依存するオープンソースの Open Policy Agent に基づいて構築されています。
 
@@ -63,7 +60,7 @@ Azure Policy アドオンを使用することにより、AKS クラスターで
 
 Azure Policy アドオンをインストールした後、既定ではポリシーは適用されません。
 
-14 個の組み込みの個別 Azure Policy と、特に AKS クラスター内のポッドをセキュリティ保護する 2 つの組み込みのイニシアチブがあります。
+11 個の組み込みの個別 Azure ポリシーと、特に AKS クラスター内のポッドをセキュリティ保護する 2 つの組み込みのイニシアチブがあります。
 各ポリシーをカスタマイズして、効果を追加することができます。 AKS ポリシーとサポートされている効果のリストについては、[こちら][policy-samples]を参照してください。 Azure Policy の効果の詳細については、[こちら](../governance/policy/concepts/effects.md)をご覧ください。
 
 Azure Policy は、管理グループ、サブスクリプション、またはリソース グループ レベルで適用できます。 リソース グループ レベルでポリシーを割り当てるときには、ポリシーの対象にターゲット AKS クラスターのリソース グループが選択されていることを確認してください。 Azure Policy アドオンがインストールされている、割り当てられたスコープ内のすべてのクラスターが、ポリシーの対象となります。
@@ -78,24 +75,41 @@ Kubernetes 用の Azure Policy には、ポッド、[ベースライン](https:/
 
 これらの組み込みイニシアチブは両方とも、[Kubernetes のポッドのセキュリティ ポリシー](https://github.com/kubernetes/website/blob/master/content/en/examples/policy/baseline-psp.yaml)で使用される定義で構築されています。
 
-|[ポッドのセキュリティ ポリシーの制御](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure Policy の定義リンク| ベースライン イニシアチブ | 制限付きイニシアチブ |
+|[ポッドのセキュリティ ポリシーの制御](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure Policy の定義リンク| [ベースライン イニシアチブ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) | [制限付きイニシアチブ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) |
 |---|---|---|---|
 |特権コンテナーの実行の禁止|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4)| はい | はい
 |ホスト名前空間の共有使用の禁止|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F47a1ee2f-2a2a-4576-bf2a-e0e36709c2b8)| はい | はい
-|既知のリストへのホスト ネットワークとポートの使用を制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| はい | はい
-|ホスト ファイルシステムの使用を制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| はい | はい
-|[既定のセット](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)を超えた Linux 機能の追加|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | はい | はい
-|定義されたボリュームの種類の使用を制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | はい
+|ホスト ネットワークとポートの使用を制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe)| はい | はい
+|ホスト ファイルシステムのあらゆる使用を制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F098fc59e-46c7-4d99-9b16-64990e543d75)| はい | はい
+|Linux 機能を[既定のセット](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities)に制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26596ff-4d70-4e6a-9a30-c2506bd2f80c) | はい | はい
+|定義されたボリュームの種類の使用を制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec)| - | はい - 許可されているボリュームの種類は `configMap`、`emptyDir`、`projected`、`downwardAPI`、`persistentVolumeClaim`|
 |ルートへの特権エスカレーション|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) | - | はい |
-|コンテナーのユーザー ID とグループ ID を制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | はい |
-|ポッドのボリュームを所有する FSGroup の割り当てを制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | はい |
-|Seccomp プロファイルの使用を求める|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | - |
-|コンテナーで使用される sysctl プロファイルを制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F56d0a13f-712f-466b-8416-56fb354fb823) | - | - |
-|既定 Proc のマウントの種類を定義して攻撃対象領域を減らす|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff85eb0dd-92ee-40e9-8a76-db25a507d6d3) | - | - |
-|特定の FlexVolume ドライバーに制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | - | - |
-|読み取り専用ではないマウントを許可する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | - | - |
-|コンテナーのカスタム SELinux コンテキストを定義する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) | - | - |
-|コンテナーで使用される AppArmor プロファイルを定義する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | - | - |
+|コンテナーのユーザー ID とグループ ID を制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | はい|
+|ポッドのボリュームを所有する FSGroup の割り当てを制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff06ddb64-5fa3-4b77-b166-acb36f7f6042) | - | はい - 許可されている規則は `runAsUser: mustRunAsNonRoot`、`supplementalGroup: mustRunAs 1:65536`、`fsGroup: mustRunAs 1:65535`、`runAsGroup: mustRunAs 1:65535`。  |
+|seccomp プロファイルを要求する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F975ce327-682c-4f2e-aa46-b9598289b86c) | - | はい、allowedProfiles は *`docker/default` または `runtime/default` |
+
+\* docker/default は、Kubernetes では v1.11 以降非推奨
+
+### <a name="additional-optional-policies"></a>追加のオプションのポリシー
+
+イニシアチブの適用の外部で単独で適用できる、追加の Azure ポリシーがあります。 組み込みのイニシアチブで要件が満たされない場合は、イニシアチブに加えてこれらのポリシーを追加することを検討してください。
+
+|[ポッドのセキュリティ ポリシーの制御](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)| Azure Policy の定義リンク| ベースライン イニシアチブに加えて適用 | 制限付きイニシアチブに加えて適用 |
+|---|---|---|---|
+|コンテナーで使用される AppArmor プロファイルを定義する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F511f5417-5d12-434d-ab2e-816901e72a5e) | 省略可能 | 省略可能 |
+|読み取り専用ではないマウントを許可する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdf49d893-a74c-421d-bc95-c663042e5b80) | 省略可能 | 省略可能 |
+|特定の FlexVolume ドライバーに制限する|[パブリック クラウド](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff4a8fce0-2dd5-4c21-9a36-8f0ec809d663) | 省略可能 - FlexVolume ドライバーを制限するだけで、"定義されたボリュームの種類の使用を制限する" で設定されているものは対象外の場合に、使用します | 適用外 - 制限付きのイニシアチブには、すべての FlexVolume ドライバーを禁止する "定義されたボリュームタイプの使用を制限する" が含まれます。 |
+
+### <a name="unsupported-built-in-policies-for-managed-aks-clusters"></a>マネージド AKS クラスターに対してサポートされていない組み込みポリシー
+
+> [!NOTE]
+> 次の 3 つのポリシーは、AKS によって管理サービスとして管理およびセキュリティ保護されているアスペクトのカスタマイズのため、**AKS ではサポートされていません**。 これらのポリシーは、管理されていないコントロール プレーンがある Azure Arc の接続されたクラスター専用に構築されています。
+
+|[ポッドのセキュリティ ポリシーの制御](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#what-is-a-pod-security-policy)|
+|---|
+|コンテナーのカスタム SELinux コンテキストを定義する|
+|コンテナーで使用される sysctl プロファイルを制限する|
+|既定 Proc のマウントの種類を定義して攻撃対象領域を減らす|
 
 <!---
 # Removing until custom initiatives are supported the week after preview

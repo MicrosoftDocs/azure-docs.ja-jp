@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub へのデバイス接続を確認する
-description: IoT Hub ツールを使用して、開発時に IoT ハブへのデバイスの接続に関する問題を解決します。
+description: IoT Hub ツールを使用して、開発時に IoT Hub へのデバイスの接続に関する問題を解決します。
 services: iot-hub
 author: wesmc7777
 manager: philmea
@@ -11,17 +11,19 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
+- devx-track-javascript
+- devx-track-azurecli
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: e26c3fc9ec420596a4ec152f7f176e44acc7b4c3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f6ac83a0fc32b426a914b76d27c2920ff8ce6731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321668"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500250"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT Hub との接続をテストする
 
 このチュートリアルでは、Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイスの接続をテストします。 このチュートリアルでは、デスクトップ マシンで実行する単純なデバイス シミュレーターも使用します。
 
@@ -62,7 +64,7 @@ node --version
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-以前のクイックスタートまたはチュートリアルで無料または標準の IoT ハブを作成した場合は、この手順をスキップできます。
+以前のクイックスタートまたはチュートリアルで無料または標準の IoT Hub を作成した場合は、この手順をスキップできます。
 
 [!INCLUDE [iot-hub-tutorials-create-free-hub](../../includes/iot-hub-tutorials-create-free-hub.md)]
 
@@ -70,7 +72,7 @@ node --version
 
 ハブとの間でデータを交換するには、デバイスがハブの認証を受ける必要があります。 ポータルの **[デバイスの管理]** セクションにある **[IoT デバイス]** ツールを使用して、デバイスを管理し、使用している認証キーを確認できます。 チュートリアルのこのセクションでは、新しいテスト デバイスを追加し、そのキーを取得し、テスト デバイスがハブに接続できることを確認します。 後で、認証キーをリセットして、デバイスが古いキーを使用しようとしたときの動作を観察します。 チュートリアルのこのセクションでは、Azure Portal を使用してデバイスの作成、管理、および監視し、サンプル Node.js デバイス シミュレーターを作成します。
 
-ポータルにサインインし、IoT ハブに移動します。 次に、**IoT デバイス** ツールに移動します。
+ポータルにサインインし、IoT Hub に移動します。 次に、**IoT デバイス** ツールに移動します。
 
 ![IoT デバイス ツール](media/tutorial-connectivity/iot-devices-tool.png)
 
@@ -82,7 +84,7 @@ node --version
 
 ![デバイス接続文字列を取得する](media/tutorial-connectivity/copy-connection-string.png)
 
-IoT ハブにテレメトリを送信する **MyTestDevice** をシミュレートするには、前にダウンロードした Node.js のシミュレートされたデバイス アプリケーションを実行します。
+IoT Hub にテレメトリを送信する **MyTestDevice** をシミュレートするには、前にダウンロードした Node.js のシミュレートされたデバイス アプリケーションを実行します。
 
 開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
 
@@ -97,7 +99,7 @@ node SimulatedDevice-1.js "{your device connection string}"
 
 ![シミュレートされたデバイスの接続](media/tutorial-connectivity/sim-1-connected.png)
 
-これで、IoT ハブによって生成されたデバイス キーを使用して、デバイスから正常に認証されました。
+これで、IoT Hub によって生成されたデバイス キーを使用して、デバイスから正常に認証されました。
 
 ### <a name="reset-keys"></a>キーをリセットする
 
@@ -161,7 +163,7 @@ SAS トークンを使用してハブに接続しようとすると、ターミ�
 
 ### <a name="protocols"></a>プロトコル
 
-デバイスは、次のいずれかのプロトコルを使用して IoT ハブに接続できます。
+デバイスは、次のいずれかのプロトコルを使用して IoT Hub に接続できます。
 
 | Protocol | 送信ポート |
 | --- | --- |
@@ -177,7 +179,7 @@ SAS トークンを使用してハブに接続しようとすると、ターミ�
 
 ## <a name="check-device-to-cloud-connectivity"></a>デバイスからクラウドへの接続を確認する
 
-デバイスが接続されると、通常、IoT ハブにテレメトリを送信しようとします。 このセクションでは、デバイスから送信されたテレメトリがハブに到達したことを確認する方法について説明します。
+デバイスが接続されると、通常、IoT Hub にテレメトリを送信しようとします。 このセクションでは、デバイスから送信されたテレメトリがハブに到達したことを確認する方法について説明します。
 
 まず、次のコマンドを使用して、シミュレートされたデバイスの現在の接続文字列を取得します。
 
@@ -198,7 +200,7 @@ node SimulatedDevice-3.js "{your device connection string}"
 
 ![メッセージを送信するシミュレートされたデバイス](media/tutorial-connectivity/sim-3-sending.png)
 
-ポータルの **[メトリック]** を使用して、テレメトリ メッセージが IoT ハブに到達していることを確認できます。 **[リソース]** ドロップダウンで IoT ハブを選択し、メトリックとして **[Telemetry messages sent]\(送信されたテレメトリ メッセージ\)** を選択し、時間範囲を **[過去 1 時間]** に設定します。 グラフには、シミュレートしたデバイスから送信されたメッセージの総数が表示されます。
+ポータルの **[メトリック]** を使用して、テレメトリ メッセージが IoT Hub に到達していることを確認できます。 **[リソース]** ドロップダウンで IoT Hub を選択し、メトリックとして **[Telemetry messages sent]\(送信されたテレメトリ メッセージ\)** を選択し、時間範囲を **[過去 1 時間]** に設定します。 グラフには、シミュレートしたデバイスから送信されたメッセージの総数が表示されます。
 
 ![IoT Hub メトリックを表示する](media/tutorial-connectivity/metrics-portal.png)
 
@@ -264,11 +266,11 @@ az iot hub device-twin update --set properties.desired='{"mydesiredproperty":"pr
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-IoT ハブが必要でなくなった場合は、ポータルを使用して IoT ハブとリソース グループを削除します。 これを行うには、IoT ハブを含む **tutorials-iot-hub-rg** リソース グループを選択し、 **[削除]** をクリックします。
+IoT Hub が必要でなくなった場合は、ポータルを使用して IoT Hub とリソース グループを削除します。 これを行うには、IoT Hub を含む **tutorials-iot-hub-rg** リソース グループを選択し、 **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、デバイス キーを確認し、デバイスからクラウドへの接続を確認し、クラウドからデバイスへの接続を確認し、デバイスのツイン同期を確認する方法を確認しました。 IoT ハブを監視する方法の詳細については、IoT Hub の監視方法に関する記事を参照してください。
+このチュートリアルでは、デバイス キーを確認し、デバイスからクラウドへの接続を確認し、クラウドからデバイスへの接続を確認し、デバイスのツイン同期を確認する方法を確認しました。 IoT Hub を監視する方法の詳細については、IoT Hub の監視方法に関する記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [診断を使用した監視](iot-hub-monitor-resource-health.md)

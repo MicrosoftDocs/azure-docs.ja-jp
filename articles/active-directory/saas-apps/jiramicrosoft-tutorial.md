@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合 | Microsoft Docs
 description: Azure Active Directory と JIRA SAML SSO by Microsoft の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4b663047-7f88-443b-97bd-54224b232815
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0c44953a33e6ccd0bbe406159e9636411695ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017097"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891608"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合
 
@@ -42,7 +37,7 @@ Microsoft Azure Active Directory アカウントと Atlassian JIRA サーバー�
 JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-- JIRA Core と Software 6.4 から 8.8.0 または JIRA Service Desk 3.0 から 4.8.0 が Windows 64 ビット版にインストールおよび構成されている必要があります
+- JIRA Core と Software 6.4 から 8.11.0、または JIRA Service Desk 3.0 から 4.11.1 が、Windows 64 ビット版にインストールおよび構成されている必要があります
 - JIRA サーバーの HTTPS が有効になっていること
 - JIRA プラグインがサポートされているバージョンであること (下記のセクションをご覧ください)
 - JIRA サーバーが認証のためにインターネット、特に Azure AD ログイン ページにアクセスでき、Azure AD からトークンを受け取れること
@@ -63,8 +58,8 @@ JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次の�
 
 ## <a name="supported-versions-of-jira"></a>サポートされている JIRA のバージョン
 
-* JIRA Core と Software:6.4 から 8.8.0
-* JIRA Service Desk 3.0.0 から 4.8.0
+* JIRA Core と Software:6.4 から 8.11.0
+* JIRA Service Desk 3.0.0 から 4.11.1
 * JIRA は 5.2 もサポートします。 詳細については、[Microsoft Azure Active Directory single sign-on for JIRA 5.2](jira52microsoft-tutorial.md) に関する記事を参照してください。
 
 > [!NOTE]
@@ -195,7 +190,7 @@ JIRA SAML SSO by Microsoft で Azure AD SSO を構成してテストするには
 
     1. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** 値を貼り付け、 **[解決]** ボタンをクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
 
-    1. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure Portal の **[JIRA SAML SSO by Microsoft Domain and URLs]/(JIRA SAML SSO by Microsoft のドメインと URL\)** セクションにある**識別子、応答 URL、サインオン URL** ボックスにそれぞれ貼り付けます。
+    1. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure Portal の **[JIRA SAML SSO by Microsoft Domain and URLs]\(JIRA SAML SSO by Microsoft のドメインと URL\)** セクションにある**識別子、応答 URL、サインオン URL** ボックスにそれぞれ貼り付けます。
 
     1. ユーザーのログイン画面に表示するボタン名を **[Login Button Name]\(ログイン ボタン名\)** に入力します。
     

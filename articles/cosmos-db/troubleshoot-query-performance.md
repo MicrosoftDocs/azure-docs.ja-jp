@@ -271,7 +271,7 @@ WHERE c.foodGroup = "Sausages and Luncheon Meats"
 GROUP BY c.description
 ```
 
-同じ集計クエリを頻繁に実行する予定がある場合は、個々のクエリを実行するのではなく、[Azure Cosmos DB の変更フィード](change-feed.md)を使用して、リアルタイムの具体化されたビューを作成する方が効率的です。
+同じ集計クエリを頻繁に実行する予定がある場合は、個々のクエリを実行するのではなく、[Azure Cosmos DB の変更フィード](change-feed.md)を使用して、リアルタイムのマテリアライズドビューを作成する方が効率的です。
 
 ### <a name="optimize-queries-that-have-both-a-filter-and-an-order-by-clause"></a>フィルターと ORDER BY 句の両方を使用するクエリを最適化する
 

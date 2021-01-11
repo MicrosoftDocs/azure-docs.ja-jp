@@ -10,9 +10,6 @@
     - name: インデックス
       displayName: 'template, sample'
       href: ./samples/index.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./samples/policy-samples.md
 - name: 概念
   items:
     - name: Azure の委任されたリソース管理
@@ -50,6 +47,9 @@
     - name: 顧客を表示し、管理する
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: パートナー ID をリンクする
+      displayName: 'partner earned credit, pec, mpn'
+      href: ./how-to/partner-earned-credit.md
     - name: 委任へのアクセスを削除する
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
@@ -82,11 +82,11 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/managedservices?view=azure-cli-latest
+      href: /cli/azure/managedservices
     - name: Azure PowerShell
-      href: /powershell/module/az.managedservices/?view=azps-2.4.0#managed_services
+      href: /powershell/module/az.managedservices#managed_services
     - name: Azure SDK for .NET
-      href: /dotnet/api/Microsoft.Azure.Management.ManagedServices?view=azure-dotnet
+      href: /dotnet/api/Microsoft.Azure.Management.ManagedServices
     - name: Azure SDK for .NET (NuGet)
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ManagedServices/'
     - name: Azure SDK for Python
@@ -95,6 +95,9 @@
       href: /rest/api/managedservices/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managedservices/resource-manager/Microsoft.ManagedServices/preview/2018-06-01-preview'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-reference.md
 - name: リソース
   items:
     - name: Azure Lighthouse 用の Microsoft Q&A
@@ -103,5 +106,5 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
+    - name: 製品フィードバック
       href: 'https://feedback.azure.com/forums/922753'

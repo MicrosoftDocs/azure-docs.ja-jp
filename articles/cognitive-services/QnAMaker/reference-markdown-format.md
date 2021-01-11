@@ -14,7 +14,7 @@ ms.locfileid: "83652757"
 
 QnA Maker では、回答テキストがマークダウンとして格納されます。 マークダウンには、さまざまな決まりごとがあります。 回答テキストを確実に取得して正しく表示するために、このリファレンスをご利用ください。
 
-Markdown の検証については、 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** のチュートリアルをご覧ください。 チュートリアルには、コピー/貼り付けで簡単に検証するための **[Try it]\(試してみる\)** 機能があります。
+Markdown の検証については、 **[CommonMark](https://commonmark.org/help/tutorial/index.html)** のチュートリアルをご覧ください。 チュートリアルには、コピー/貼り付けで簡単に検証するための **[Try it]\(使ってみる\)** 機能があります。
 
 ## <a name="when-to-use-rich-text-editing-versus-markdown"></a>リッチテキスト編集を使用する場合と Markdown を使用する場合の比較
 

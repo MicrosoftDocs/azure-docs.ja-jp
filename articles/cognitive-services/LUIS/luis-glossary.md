@@ -3,12 +3,12 @@ title: 用語集 - LUIS
 description: 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: 93e3df755596f7f77d2cd11edfa616c44d1f6c16
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 44749648559994d986e4d84b06f38369850de6ca
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056380"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836413"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS サービスの使用中に目にする可能性のある用語について説明します。
@@ -94,11 +94,11 @@ LUIS の[作成リソース](luis-how-to-azure-subscription.md#azure-resources-f
 
 ## <a name="collaborator"></a>コラボレーター
 
-コラボレーターは、概念的には[共同作成者](#contributor)と同じです。 所有者がロールベースのアクセス (RBAC) で制御されていないアプリにコラボレーターのメール アドレスを追加すると、コラボレーターにアクセスが許可されます。 引き続きコラボレーターを使用している場合は、LUIS アカウントを移行し、LUIS 作成リソースを使用して RBAC で共同作成者を管理する必要があります。
+コラボレーターは、概念的には[共同作成者](#contributor)と同じです。 所有者が Azure ロールベースのアクセス制御 (Azure RBAC) で制御されていないアプリにコラボレーターのメール アドレスを追加すると、コラボレーターにアクセスが許可されます。 引き続きコラボレーターを使用している場合は、LUIS アカウントを移行し、LUIS 作成リソースを使用して RBAC で共同作成者を管理する必要があります。
 
 ## <a name="contributor"></a>Contributor
 
-共同作成者はアプリの[所有者](#owner)ではありませんが、意図を追加、編集、および削除するための同様のアクセス許可を持っています。 共同作成者は、LUIS アプリへのロールベースのアクセス (RBAC) を提供します。
+共同作成者はアプリの[所有者](#owner)ではありませんが、意図を追加、編集、および削除するための同様のアクセス許可を持っています。 共同作成者は、LUIS アプリへの Azure ロールベースのアクセス制御 (Azure RBAC) を提供します。
 
 関連項目:
 * 共同作成者の追加[方法](luis-how-to-collaborate.md#add-contributor-to-azure-authoring-resource)

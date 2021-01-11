@@ -59,8 +59,18 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks のセキュリティ ベースライン
       href: ../../azure-databricks/security-baseline.md
+    - name: Azure DNS のセキュリティ ベースライン
+      href: ../../dns/security-baseline.md
+    - name: Azure Firewall のセキュリティ ベースライン
+      href: ../../firewall/security-baseline.md
     - name: Azure Functions のセキュリティ ベースライン
       href: ../../azure-functions/security-baseline.md
+    - name: Azure IoT Hub のセキュリティ ベースライン
+      href: ../../iot-hub/security-baseline.md
+    - name: Azure Monitor のセキュリティ ベースライン
+      href: ../../azure-monitor/security-baseline.md
+    - name: Azure Machine Learning のセキュリティ ベースライン
+      href: ../../machine-learning/security-baseline.md
     - name: Azure Policy のセキュリティ ベースライン
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure Resource Graph のセキュリティ ベースライン
@@ -83,6 +93,10 @@
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Data Lake Analytics のセキュリティ ベースライン
       href: ../../data-lake-analytics/security-baseline.md
+    - name: DDOS Protection のセキュリティ ベースライン
+      href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: Event Grid のセキュリティ ベースライン
+      href: ../../event-grid/security-baseline.md
     - name: Event Hubs のセキュリティ ベースライン
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute のセキュリティ ベースライン
@@ -95,6 +109,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: Network Watcher のセキュリティベースライン
       href: ../../network-watcher/security-baseline.md
+    - name: Security Center のベースライン
+      href: ../../security-center/security-baseline.md
     - name: Service Fabric のベースライン
       href: ../../service-fabric/security-baseline.md
     - name: Stream Analytics のベースライン

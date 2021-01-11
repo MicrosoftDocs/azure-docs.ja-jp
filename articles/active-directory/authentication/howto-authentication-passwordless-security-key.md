@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 300bb317d521ac9202fdd1a02328f844110a48e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f17a634a9bc3b410eec8ed6e868d454dc9ecee6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550416"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116599"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>パスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "85550416"
 ## <a name="requirements"></a>必要条件
 
 - [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
-- [統合されたセキュリティ情報の登録 (プレビュー)](concept-registration-mfa-sspr-combined.md)
+- [統合されたセキュリティ情報の登録](concept-registration-mfa-sspr-combined.md)の有効化 (プレビュー)
 - 互換性のある [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN には、Windows 10 バージョン 1809 以降が必要です**
 

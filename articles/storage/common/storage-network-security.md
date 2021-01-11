@@ -1,31 +1,31 @@
 ---
 title: Azure Storage ファイアウォールおよび仮想ネットワークの構成 | Microsoft Docs
-description: ストレージ アカウントの多層型ネットワーク セキュリティを構成します。
+description: Azure Storage ファイアウォールと Azure Virtual Network を使用して、ストレージ アカウントの多層型ネットワーク セキュリティを構成します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2020
+ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: e8857da1410ca68a695a9d7995aeb375fb154cd2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 3ec4e6ee49052657210fffa8976b661c1a9e5948
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080025"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827462"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
-Azure Storage では、多層型セキュリティ モデルが提供されています。 このモデルでは、使用されるネットワークの種類とサブネットに基づいて、アプリケーションやエンタープライズ環境で求められるストレージ アカウントへのアクセス レベルを確保して制御できます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。 ストレージ アカウントへのアクセスを、Azure 仮想ネットワーク (VNet) 内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限できます。
+Azure Storage では、多層型セキュリティ モデルが提供されています。 このモデルでは、使用されるネットワークの種類とサブネットに基づいて、アプリケーションやエンタープライズ環境で求められるストレージ アカウントへのアクセス レベルを確保して制御できます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。 ストレージ アカウントへのアクセスを、Azure Virtual Network (VNet) 内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限できます。
 
 ストレージ アカウントには、インターネットを介してアクセスできるパブリック エンドポイントがあります。 また、[自分のストレージ アカウント用にプライベート エンドポイント](storage-private-endpoints.md)を作成することもできます。自分の VNet からストレージ アカウントにプライベート IP アドレスを割り当てて、プライベート リンクを介して VNet とストレージ アカウントの間のトラフィックをすべて保護できます。 Azure ストレージ ファイアウォールを使用すると、自分のストレージ アカウントのパブリック エンドポイントへのアクセスを制御できます。 プライベート エンドポイントの使用時には、パブリック エンドポイント経由のすべてのアクセスをブロックするためにファイアウォールを使用することもできます。 また、ストレージ ファイアウォールは、信頼された一部の Azure プラットフォーム サービスがストレージ アカウントに安全にアクセスできるよう構成することもできます。
 
 ネットワーク規則が有効なときにストレージ アカウントにアクセスするアプリケーションでも、要求に対する適切な承認が必要です。 認可は、BLOB とキューに対する Azure Active Directory (Azure AD) の資格情報、有効なアカウント アクセス キー、または SAS トークンでサポートされています。
 
 > [!IMPORTANT]
-> ストレージ アカウントのファイアウォール規則を有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。
+> ストレージ アカウントのファイアウォール規則を有効にすると、Azure Virtual Network (VNet) 内で動作しているサービス、または許可されたパブリック IP アドレスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。
 >
 > サービス インスタンスがホストされているサブネットからのトラフィックを許可することで、VNet 内で動作する Azure サービスにアクセス権を付与できます。 また、以下で説明する[例外](#exceptions)メカニズムによって、限られた数のシナリオを有効にすることもできます。 Azure portal を通してストレージ アカウントからデータにアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューター上にいる必要があります。
 
@@ -120,7 +120,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
 
 VNet 内の Azure Storage に対する[サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)を有効にします。 サービス エンドポイントでは、VNet からのトラフィックが、最適なパスを経由して、Azure Storage サービスにルーティングされます。 サブネットと仮想ネットワークの ID も、各要求と一緒に転送されます。 管理者は、その後、VNet 内の特定のサブネットからの要求の受信を許可するネットワーク ルールを、ストレージ アカウントに対して構成できます。 これらのネットワーク ルールによってアクセスを許可されたクライアントがデータにアクセスするには、ストレージ アカウントの認可要件を引き続き満たす必要があります。
 
-各ストレージ アカウントでは最大 100 個の仮想ネットワーク規則がサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
+各ストレージ アカウントでは最大 200 個の仮想ネットワーク規則がサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
 
 ### <a name="available-virtual-network-regions"></a>使用可能な仮想ネットワークのリージョン
 
@@ -365,7 +365,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 一部の Microsoft サービスは、お客様のネットワーク規則の対象にできないネットワークで稼働しています。 他のアプリに対するネットワーク規則を維持しながら、このような信頼された Microsoft サービスの一部にストレージ アカウントへのアクセスを許可できます。 これらの信頼されるサービスでは、強力な認証を使用して、お客様のストレージ アカウントに安全に接続します。 Microsoft サービスには、2 種類の信頼されるアクセスが用意されています。
 
 - 一部のサービスのリソースは、**お客様のサブスクリプションで登録されている場合に**、特定の操作 (ログの書き込みやバックアップなど) のために**同じサブスクリプション内の**ストレージ アカウントにアクセスできます。
-- 一部のサービスのリソースでは、そのシステム割り当てマネージド ID に **RBAC ロールを割り当てる**ことで、ストレージ アカウントへのアクセスを明示的に許可できます。
+- 一部のサービスのリソースでは、そのシステム割り当てマネージド ID に **Azure ロールを割り当てる**ことで、ストレージ アカウントへのアクセスを明示的に許可できます。
 
 
 **[信頼された Microsoft サービスを許可]** 設定を有効にすると、ストレージ アカウントと同じサブスクリプションに登録された次のサービスのリソースに対し、記載された一部の操作へのアクセスが許可されます。
@@ -384,10 +384,11 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure のネットワーク         | Microsoft.Network          | Network Watcher および Traffic Analytics サービスを含め、ネットワーク トラフィック ログを格納し、分析します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
-また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロールを割り当てている](storage-auth-aad.md#assign-rbac-roles-for-access-rights)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
+また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [Azure ロールを割り当てている](storage-auth-aad.md#assign-azure-roles-for-access-rights)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
 
 | サービス                        | リソース プロバイダー名                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |
+| Azure API Management           | Microsoft.ApiManagement/service        | ポリシーを使用して、API Management サービスが、ファイアウォールの背後にあるストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](/azure/api-management/api-management-authentication-policies#use-managed-identity-in-send-request-policy)。 |
 | Azure Cognitive Search         | Microsoft.Search/searchServices        | インデックス作成、処理、およびクエリのために、Cognitive Search サービスがストレージ アカウントにアクセスできるようになります。 |
 | Azure Container Registry タスク | Microsoft.ContainerRegistry/registries | ACR タスクは、コンテナー イメージを作成するときにストレージアカウントにアクセスできます。 |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | ADF ランタイムを使用してストレージ アカウントへのアクセスを許可します。 |
@@ -395,7 +396,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure IoT Hub                  | Microsoft.Devices/IotHubs              | IoT ハブからのデータを BLOB ストレージに書き込むことができます。 [詳細情報](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning サービス | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースでは、BLOB ストレージに実験の出力、モデル、およびログを書き込み、データを読み取ります。 [詳細については、こちらを参照してください](/azure/machine-learning/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
-| Azure SQL Data Warehouse       | Microsoft.Sql                          | PolyBase を使用した特定の SQL データベース インスタンスからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
+| Azure Synapse Analytics (旧称 SQL Data Warehouse)       | Microsoft.Sql                          | COPY ステートメントまたは PolyBase を使用して、特定の SQL データベースからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
 | Azure SQL データベース       | Microsoft.Sql                          | ストレージ アカウントからデータの[インポート](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql?view=sql-server-ver15#f-importing-data-from-a-file-in-azure-blob-storage)したり、ファイアウォールの背後にあるストレージ アカウントに監査データを[書き込んだり](https://docs.microsoft.com/azure/azure-sql/database/audit-write-storage-account-behind-vnet-firewall)することができます。 |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 [詳細については、こちらを参照してください](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse ワークスペース          | Synapse Analytics から Azure Storage のデータにアクセスできるようにします。 |

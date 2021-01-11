@@ -8,19 +8,17 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/17/2020
+ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682479"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816220"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
+# <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure での Ubuntu Data Science Virtual Machine を使用したデータ サイエンス
 
-このチュートリアルでは、Linux Data Science Virtual Machine (DSVM) を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法について説明します。 Linux DSVM は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているツールのコレクションがプレインストールされています。 主なソフトウェア コンポーネントは、 [Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関する記事にまとめられています。 この DSVM イメージを使用すると、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 DSVM は、必要に応じて を簡単にスケールアップでき、使用しないときには停止できます。 DSVM リソースは柔軟性があるうえに、コスト効率が優れています。
-
-このチュートリアルで説明するデータ サイエンス タスクは、「[Team Data Science Process とは](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)」で説明されている手順に従います。 この Team Data Science Process は、データ サイエンティストのチームがインテリジェント アプリケーションの構築ライフサイクルにわたって効果的に共同作業できるようにする、データ サイエンスに対する体系的なアプローチです。 また、個人が従うことができるデータ サイエンスの反復的なフレームワークも提供します。
+このチュートリアルでは、Ubuntu Data Science Virtual Machine (DSVM) を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法について説明します。 Ubuntu DSVM は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているツールのコレクションがプレインストールされています。 主なソフトウェア コンポーネントは、[Ubuntu Data Science Virtual Machine のプロビジョニング](./dsvm-ubuntu-intro.md)に関する記事にまとめられています。 この DSVM イメージを使用すると、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 DSVM は、必要に応じて を簡単にスケールアップでき、使用しないときには停止できます。 DSVM リソースは柔軟性があるうえに、コスト効率が優れています。
 
 このチュートリアルでは、[spambase](https://archive.ics.uci.edu/ml/datasets/spambase) データセットを分析します。 spambase は、スパムまたはハム (スパムではない) のいずれかのマークが付けられているメールのセットです。 また、spambase には、メールの内容に関する統計情報も含まれています。 統計については、このチュートリアルで後ほど説明します。
 
@@ -29,10 +27,10 @@ ms.locfileid: "83682479"
 Linux DSVM を使用する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。 Azure サブスクリプションを取得するには、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
-* [**Linux Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 仮想マシンのプロビジョニングについては、[Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
+
+* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) 仮想マシンのプロビジョニングについては、[Ubuntu Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
 * お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#x2go)」をご覧ください。
 * スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細については、こちらを参照してください](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細については、こちらを参照してください](https://support.mozilla.org/questions/981140)。
-* **Azure Machine Learning アカウント**。 まだお持ちでない場合は、 [Azure Machine Learning のホームページ](https://azure.microsoft.com/free/services/machine-learning//)で新しいアカウントにサインアップしてください。
 
 ## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする
 
@@ -228,7 +226,7 @@ accuracy
 * JupyterHub
 * Rattle
 * PostgreSQL と SQuirreL SQL
-* SQL Server Data Warehouse
+* Azure Synapse Analytics (旧称 SQL DW)
 
 ### <a name="xgboost"></a>XGBoost
 
@@ -286,31 +284,6 @@ clf = svm.SVC()
 clf.fit(X, y)
 ```
 
-Azure Machine Learning にそのモデルを発行するには、次を実行します。
-
-```Python
-# Publish the model.
-workspace_id = "<workspace-id>"
-workspace_token = "<workspace-token>"
-from azureml import services
-@services.publish(workspace_id, workspace_token)
-@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-@services.returns(int) # 0 or 1
-def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-    return clf.predict(inputArray)
-
-# Get some info about the resulting model.
-predictSpam.service.url
-predictSpam.service.api_key
-
-# Call the model
-predictSpam.service(1, 1, 1)
-```
-
-> [!NOTE]
-> このオプションは、Python 2.7 に対してのみ使用できます。 Python 3.5 ではまだサポートされていません。 実行するには、 **/anaconda/bin/python2.7** を使用してください。
-
 ### <a name="jupyterhub"></a>JupyterHub
 
 DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Python、R、または Julia のコードと分析を共有するためのクロスプラットフォーム環境) が付属しています。 Jupyter Notebook には JupyterHub からアクセスします。 https://\<DSVM DNS name or IP address\>:8000/ で、ローカルの Linux ユーザー名とパスワードを使用してサインインします。 JupyterHub のすべての構成ファイルは、 /etc/jupyterhub にあります。
@@ -334,7 +307,6 @@ DSVM の Anaconda ディストリビューションには、Jupyter Notebook (Py
 
 * サンプルの Python ノートブック:
   * [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
-  * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
 * サンプルの R ノートブック:
   * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
@@ -532,9 +504,9 @@ SELECT * from data order by word_freq_3d desc;
 
 PostgreSQL データベースに格納されたデータを使用して機械学習を実行する場合は、[MADlib](https://madlib.incubator.apache.org/) の使用を検討してください。
 
-### <a name="sql-data-warehouse"></a>SQL Data Warehouse
+### <a name="azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (旧称 SQL DW)
 
-Azure SQL Data Warehouse は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。 詳しくは、「 [Azure SQL Data Warehouse の概要](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure Synapse Analytics は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。 詳細については、[Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に関する記事をご覧ください。
 
 データ ウェアハウスに接続し、テーブルを作成するには、コマンド プロンプトから次のコマンドを実行します。
 
@@ -567,8 +539,4 @@ GO
 
 SQuirreL SQL を使用してクエリを実行することもできます。 SQL Server JDBC ドライバーを使用して PostgreSQL の場合と同様の手順を実行します。 JDBC ドライバーは /usr/share/java/jdbcdrivers/sqljdbc42.jar フォルダーにあります。
 
-## <a name="next-steps"></a>次のステップ
 
-Azure でのデータ サイエンス プロセスを構成するタスクについて説明した記事の概要については、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) に関するページをご覧ください。
-
-特定のシナリオの Team Data Science Process の手順を示したエンド ツー エンドのチュートリアルの詳細については、[Team Data Science Process のチュートリアル](../team-data-science-process/walkthroughs.md)に関するページをご覧ください。 これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。

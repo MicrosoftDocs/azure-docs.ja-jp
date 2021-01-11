@@ -5,13 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref, tracking-python
-ms.openlocfilehash: 9c587ad9b791d953dce66df2337cf0e7dca52324
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: has-adal-ref, devx-track-python
+ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185366"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847926"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>チュートリアル:Python Runbook を作成する
 

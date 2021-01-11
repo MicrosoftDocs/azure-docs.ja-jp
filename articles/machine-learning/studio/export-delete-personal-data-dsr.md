@@ -1,6 +1,5 @@
 ---
-title: ご自分のデータのエクスポートと削除
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): データのエクスポートと削除 - Azure'
 description: Azure Machine Learning Studio (クラシック) によって格納された製品内データは、Azure portal 経由のほか、認証済み REST API 経由でもエクスポートおよび削除できます。 テレメトリ データには、Azure Privacy Portal を介してアクセスすることができます。 この記事では、その方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,16 +9,19 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 9f623357dfbc8fab8a2967df65cc53abc4bc9d57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80a9fe1afdee820904b07254d317e4d00c7fac71
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696135"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691379"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) から製品内ユーザー データをエクスポートおよび削除する
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
+
+
 
 Azure Machine Learning Studio (クラシック) によって格納された製品内データは、Azure portal、Studio (クラシック) インターフェイス、PowerShell、および認証済み REST API を使用して削除またはエクスポートできます。 この記事では、その方法について説明します。 
 
@@ -66,7 +68,7 @@ Machine Learning Studio (クラシック) には 3 種類のアカウントが�
 ### <a name="delete-an-entire-workspace"></a>ワークスペース全体を削除する
 
 ユーザーはまた、ワークスペース全体を削除することもできます。
-- 有料ワークスペース: Azure Portal を介して削除します。
+- 有料のワークスペース:Azure portal を使用して削除します。
 - 無料のワークスペース: **[設定]** ウィンドウの [削除] ボタンを使用します。
 
 ![Machine Learning Studio (クラシック) で無料のワークスペースを削除する](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)

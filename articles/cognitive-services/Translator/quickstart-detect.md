@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: tracking-python
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 2ab484f1662d365bc23aefe1bc3d9eb4aed98185
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 91603dbe0410b17b4061161b6baef7a9fafd0b6e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146986"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921530"
 ---
 # <a name="quickstart-use-the-translator-to-detect-text-language"></a>クイック スタート:Translator を使用してテキストの言語を検出する
 

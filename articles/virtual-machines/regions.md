@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284729"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650555"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure の仮想マシンのリージョン
 
@@ -79,7 +79,7 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 | 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ |いいえ |いいえ |はい |
 | 個別のノードで保持されるデータ コピーの数 |3 |3 |6 |6 |
 
-詳細については、 [Azure ストレージのレプリケーション オプションのページ](../storage/common/storage-redundancy.md)を参照してください。 マネージド ディスクの詳細については、「[Azure Managed Disks の概要](./windows/managed-disks-overview.md)」をご覧ください。
+詳細については、 [Azure ストレージのレプリケーション オプションのページ](../storage/common/storage-redundancy.md)を参照してください。 マネージド ディスクの詳細については、「[Azure Managed Disks の概要](./managed-disks-overview.md)」をご覧ください。
 
 ### <a name="storage-costs"></a>ストレージ コスト
 価格は、ストレージの種類と選択した可用性によって異なります。

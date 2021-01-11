@@ -8,15 +8,15 @@
 - name: チュートリアル
   items:
     - name: G Suite
-      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      href: ../saas-apps/google-apps-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: ServiceNow
-      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      href: ../saas-apps/servicenow-provisioning-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: アマゾン ウェブ サービス (AWS) - ロール プロビジョニング
-      href: /azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      href: ../saas-apps/amazon-web-service-tutorial.md?context=azure/active-directory/app-provisioning/context/app-provisioning-context#configure-azure-ad-sso
     - name: Workday
-      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      href: ../saas-apps/workday-inbound-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: SAP SuccessFactors
-      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+      href: ../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: すべての統合ギャラリー アプリ
       href: /azure/active-directory/saas-apps
 - name: 概念
@@ -55,9 +55,13 @@
           href: check-status-user-account-provisioning.md
         - name: 構成のエクスポートとインポート
           href: export-import-provisioning-configuration.md
+        - name: レポートのプロビジョニング
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: アプリケーションのプロビジョニングのトラブルシューティング
       items:
-        - name: アプリ プロビジョニングのトラブルシューティング
+        - name: 既知の問題
+          href: known-issues.md
+        - name: 構成の問題のトラブルシューティング
           href: application-provisioning-config-problem.md
         - name: 検疫の状態
           href: application-provisioning-quarantine-status.md
@@ -70,7 +74,7 @@
         - name: ソース属性が存在しない
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: プロビジョニング ログ
-          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: SCIM エンドポイントの構築とプロビジョニングの構成
       href: use-scim-to-provision-users-and-groups.md
     - name: MS Graph を使用した構成の自動化
@@ -96,11 +100,11 @@
 - name: リソース
   items:
     - name: 開発者向けのサポート オプションとヘルプ オプション
-      href: /azure/active-directory/develop/developer-support-help-options
+      href: ../develop/developer-support-help-options.md
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory'
     - name: サービスの更新情報

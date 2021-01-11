@@ -1,18 +1,21 @@
 ---
 title: 顧客と委任されたリソースを表示し、管理する
-description: Azure Lighthouse を使用するサービス プロバイダーは、Azure portal の [マイ カスタマー] にアクセスすることで、自社に委任された顧客のリソースとサブスクリプションをすべて表示できます。
-ms.date: 07/06/2020
+description: Azure Lighthouse を使用するサービス プロバイダーまたはエンタープライズとして、Azure portal の [マイ カスタマー] にアクセスすることで、自社に委任されたリソースとサブスクリプションをすべて表示できます。
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: f509a91d71caa3ab1ec8282f4151556f7c10d52c
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 165110556282e90bbacf4ce3b3c59e34b203a528
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133268"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167200"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>顧客と委任されたリソースを表示し、管理する
 
-[Azure Lighthouse](../overview.md) を使用するサービス プロバイダーは、[Azure portal](https://portal.azure.com) の **[マイ カスタマー]** ページを使用して、委任された顧客のリソースとサブスクリプションを表示できます。 ここではサービス プロバイダーと顧客に言及しますが、複数のテナントを管理している企業では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
+[Azure Lighthouse](../overview.md) を使用するサービス プロバイダーは、[Azure portal](https://portal.azure.com) の **[マイ カスタマー]** ページを使用して、委任された顧客のリソースとサブスクリプションを表示できます。 
+
+> [!TIP]
+> ここではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
 
 Azure portal の **[マイ カスタマー]** ページにアクセスするには、 **[すべてのサービス]** を選択し、 **[マイ カスタマー]** を探して選択します。 Azure portal の上部付近にある検索ボックスに「マイ カスタマー」と入力して見つけることもできます。
 

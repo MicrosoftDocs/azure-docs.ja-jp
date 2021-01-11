@@ -3,18 +3,18 @@ title: 概念 - プライベート クラウドとクラスター
 description: VMware 提供の VMware solution on Azure の Azure VMware ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 09e1fd45b1dd873509f942ef8b524783acfed4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 06161d2ce95415ae3309d58ad18ad0d40b3782fb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84906991"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752278"
 ---
-# <a name="azure-vmware-solution-avs-preview-private-cloud-and-cluster-concepts"></a>Azure VMware Solution (AVS) プレビューのプライベート クラウドとクラスターの概念
+# <a name="azure-vmware-solution-preview-private-cloud-and-cluster-concepts"></a>Azure VMware Solution プレビューのプライベート クラウドとクラスターの概念
 
-Azure VMware Solution (AVS) は、Azure で VMware ベースのプライベート クラウドを提供します。 プライベート クラウドは、専用のベアメタル ホストのクラスターで構築され、Azure portal でデプロイおよび管理されます。 プライベート クラウド内のクラスターは、VMware vSphere、vCenter、vSAN、NSX ソフトウェアを使用してプロビジョニングされます。 AVS プライベート クラウドのハードウェアとソフトウェアのデプロイは、Azure に完全に統合され、自動化されています。
+Azure VMware Solution は、Azure で VMware ベースのプライベート クラウドを提供します。 プライベート クラウドは、専用のベアメタル ホストのクラスターで構築され、Azure portal でデプロイおよび管理されます。 プライベート クラウド内のクラスターは、VMware vSphere、vCenter、vSAN、NSX ソフトウェアを使用してプロビジョニングされます。 Azure VMware Solution のプライベート クラウドのハードウェアとソフトウェアのデプロイは、Azure に完全に統合され、自動化されています。
 
-Azure サブスクリプション、AVS プライベート クラウド、vSAN クラスター、ホストの間には論理的な関係があります。 この図では、1 つの Azure サブスクリプション内の 2 つのプライベート クラウドが示されています。 プライベート クラウドは開発環境と運用環境を表しており、それぞれに独自のプライベート クラウドがあります。 これらのプライベート クラウドそれぞれには、2 つのクラスターがあります。 開発環境の潜在的なニーズの方が低いことを示すために、容量が少ないホストで構成される小さいクラスターが使用されています。 これらの概念はすべて、以降のセクションで説明します。
+Azure サブスクリプション、Azure VMware Solution のプライベート クラウド、vSAN クラスター、ホストの間には論理的な関係があります。 この図では、1 つの Azure サブスクリプション内の 2 つのプライベート クラウドが示されています。 プライベート クラウドは開発環境と運用環境を表しており、それぞれに独自のプライベート クラウドがあります。 これらのプライベート クラウドそれぞれには、2 つのクラスターがあります。 開発環境の潜在的なニーズの方が低いことを示すために、容量が少ないホストで構成される小さいクラスターが使用されています。 これらの概念はすべて、以降のセクションで説明します。
 
 ![顧客サブスクリプションに含まれる 2 つのプライベート クラウドの画像](./media/hosts-clusters-private-clouds-final.png)
 
@@ -34,7 +34,7 @@ Azure サブスクリプション、AVS プライベート クラウド、vSAN �
 
 ## <a name="hosts"></a>Hosts
 
-ハイパーコンバージド ベアメタル インフラストラクチャ ノードは、AVS プライベート クラウド クラスターで使用されます。 ホストの RAM、CPU、ディスク容量は下の表に示します。 
+ハイパーコンバージド ベアメタル インフラストラクチャ ノードは、Azure VMware Solution プライベート クラウドのクラスターで使用されます。 ホストの RAM、CPU、ディスク容量は下の表に示します。 
 
 | ホストの種類              |             CPU             |   RAM (GB)   |  vSAN NVMe キャッシュ階層 (TB、生)  |  vSAN SSD 容量階層 (TB、生)  |
 | :---                   |            :---:            |    :---:     |               :---:              |                :---:               |
@@ -44,7 +44,7 @@ Azure サブスクリプション、AVS プライベート クラウド、vSAN �
 
 ## <a name="vmware-software-versions"></a>VMware ソフトウェアのバージョン
 
-AVS プライベート クラウド クラスターで使用されている VMware ソフトウェアの最新のソフトウェア バージョンは次のとおりです。
+Azure VMware Solution プライベート クラウドのクラスターで使用されている VMware ソフトウェアの最新のソフトウェア バージョンは次のとおりです。
 
 | ソフトウェア              |    Version   |
 | :---                  |     :---:    |
@@ -55,16 +55,16 @@ AVS プライベート クラウド クラスターで使用されている VMwa
 
 プライベート クラウド内の新しいクラスターの場合、ソフトウェアのバージョンがプライベート クラウドで現在実行されているものと一致します。 顧客サブスクリプション内の新しいプライベート クラウドの場合、ソフトウェア スタックの最新バージョンがインストールされます。
 
-AVS プラットフォーム ソフトウェアの一般的なアップグレード ポリシーおよびプロセスについては、アップグレードの概念に関するドキュメントを参照してください。
+Azure VMware Solution プラットフォーム ソフトウェアの一般的なアップグレード ポリシーおよびプロセスについては、アップグレードの概念に関するドキュメントを参照してください。
 
 ## <a name="host-maintenance-and-lifecycle-management"></a>ホストのメンテナンスとライフサイクル管理
 
 ホストのメンテナンスとライフサイクル管理を実行しても、プライベート クラウド クラスターの容量またはパフォーマンスには影響しません。 ホストの自動メンテナンスの例には、ファームウェアのアップグレード、ハードウェアの修理や交換があります。
 
-Microsoft は、NSX-T Manager や NSX-T Edge などの NSX-T アプライアンスのライフサイクル管理に対して責任があります。 また、Microsoft は、Tier-0 ゲートウェイの作成や North-South ルーティングの有効化など、ネットワーク構成のブートストラップにも責任があります。 AVS プライベート クラウドの管理者は、ネットワーク セグメント、分散ファイアウォール規則、Tier-1 ゲートウェイ、ロード バランサーなど、NSX-T SDN の構成を行う必要があります。
+Microsoft は、NSX-T Manager や NSX-T Edge などの NSX-T アプライアンスのライフサイクル管理に対して責任があります。 また、Microsoft は、Tier-0 ゲートウェイの作成や North-South ルーティングの有効化など、ネットワーク構成のブートストラップにも責任があります。 Azure VMware Solution のプライベート クラウドの管理者は、ネットワーク セグメント、分散ファイアウォール規則、Tier-1 ゲートウェイ、ロード バランサーなど、NSX-T SDN の構成を行う必要があります。
 
 > [!IMPORTANT]
-> AVS の管理者は、NSX-T Edge または Tier-0 ゲートウェイの構成を変更しないでください。 これにより、サービスが失われる可能性があります。
+> Azure VMware Solution の管理者は、NSX-T Edge または Tier-0 ゲートウェイの構成を変更しないでください。 これにより、サービスが失われる可能性があります。
 
 ## <a name="backup-and-restoration"></a>バックアップと復元
 

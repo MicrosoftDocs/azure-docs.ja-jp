@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 4a45239836779fc83aa2e3927c6e3ff752c87182
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: Microsoft-BradleyWright
+ms.author: brwrigh
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103757"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814724"
 ---
 # <a name="consulting-service-offers"></a>コンサルティング サービス オファー
 
@@ -20,7 +22,7 @@ ms.locfileid: "86103757"
 
 ## <a name="compare-consulting-services"></a>コンサルティング サービスの比較
 
-コマーシャル マーケットプレースのネットショップ (Microsoft AppSource および Azure Marketplace) は、対象ユーザーやクラウド製品に合わせられており、顧客が必要なものを見つけるのに役立ちます。 各ネットショップには、公開への投資を最大限に活かすための特別な公開オプションが用意されています。 2 つのネットショップの違いの詳細については、「[Microsoft AppSource と Azure Marketplace の比較](comparing-appsource-azure-marketplace.md)」を参照してください。
+コマーシャル マーケットプレースのオンライン ストア (Microsoft AppSource および Azure Marketplace) は、対象ユーザーやクラウド製品に合わせたものであり、顧客が必要なものを見つけるのに役立ちます。 各オンライン ストアには、公開による投資を最大限に活かすための特別な公開オプションが用意されています。 2 つのオンライン ストアの違いの詳細については、「[Microsoft AppSource と Azure Marketplace の比較](comparing-appsource-azure-marketplace.md)」を参照してください。
 
 Dynamics 365、Power Apps、Power BI に基づくコンサルティング サービス オファーは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) PDF ファイルをダウンロードしてください。
 
@@ -32,7 +34,7 @@ Microsoft Azure に基づくコンサルティング サービスおよび管理
 > AppSource のコンサルティング サービスは、Dynamics 365、Power BI、または Power Apps 用の高品質なソリューションの提供に関する専門知識を持つユーザーを対象とするオファーに焦点を当てる必要があります。
  
 > [!TIP]
-> Azure Marketplace のネットショップに公開するには、パートナー センターの **[主要な製品]** ドロップダウン リストから **[Azure]** を選択します。
+> Azure Marketplace に公開するには、パートナー センターの **[主要な製品]** ドロップダウン リストから **[Azure]** を選択します。
 >
 > AppSource に公開するには、パートナー センターの **[主要な製品]** ドロップダウン リストから **[Dynamics 365]** 、 **[Power BI]** 、または **[Power Apps]** を選択します。
 
@@ -70,40 +72,40 @@ Microsoft Azure に基づくコンサルティング サービスおよび管理
 
 システム インテグレーター パートナーは、次の 20 の国/地域でコンサルティング サービス オファーを提供できます。
 
-| 国  | (続き)   | (続き)  | (続き)  |
+| 国 | (続き) |  (続き) |  (続き) |
 |---------|----------|----------|----------|
 | オーストラリア | ベルギー | Canada | デンマーク |
 | フィンランド  | フランス | ドイツ  | インド   |
 | イタリア    | 日本  |  メキシコ  |  オランダ  |
 |  ニュージーランド  |  ノルウェー  |  ポーランド  | 南アフリカ |
 |  スウェーデン  | スイス  |  United States  | イギリス  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースでコンサルティング サービスに登録する
 
-最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。 登録要件の完全なチェックリストについては、[マーケットプレースで公開元になる](become-publisher.md)ことに関する記事を参照してください。 
+最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)します。 登録要件の完全なチェックリストについては、[マーケットプレースで公開元になる](become-publisher.md)ことに関する記事を参照してください。
 
 ## <a name="prepare-your-publishing-artifacts"></a>成果物の公開を準備する
 登録前に、対象の顧客に対してご自身のサービスやソリューションの価値を明確に示すのに役立つコンテンツの収集や準備を開始できます。 
 
 |新しい公開元の設定  |
-|---------|
-|MPN ID     |
-|会社のロゴ (48 x 48、216 x 216 ピクセル)     |
-|リードの宛先     |
-||
+| - |
+| MPN ID |
+| 会社のロゴ (48 x 48、216 x 216 ピクセル) |
+| リードの宛先 |
+|
 
 |新しいオファーの設定  |
-|---------|
-|オファーの名前 (200 文字) と説明 (2,000 文字)    |
-|コンピテンシー     |
-|国/リージョンの可用性     |
-|契約の期間     |
-|該当する業界、カテゴリ、検索キーワード     |
-|製品の概要ビデオ    |
-|スクリーンショット (最大 5 個、1280 x 720 ピクセル)     |
-|マーケティング ドキュメント (最大 3 個)     |
-||
+| - |
+| オファーの名前 (200 文字) と説明 (2,000 文字) |
+| コンピテンシー  |
+| 国/リージョンの可用性 |
+| 契約の期間  |
+| 該当する業界、カテゴリ、検索キーワード |
+| 製品の概要ビデオ |
+| スクリーンショット (最大 5 個、1280 x 720 ピクセル) |
+| マーケティング ドキュメント (最大 3 個) |
+|
 
 ## <a name="the-publishing-process"></a>公開のプロセス
 

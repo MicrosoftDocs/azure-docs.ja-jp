@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 6118763bf76795e30e862826f8f5b847f3382a5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 135504ad4956836614bfc0f2cb107e610de17c0c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687975"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543488"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -30,7 +30,7 @@ ms.locfileid: "84687975"
 
 ## <a name="create-a-vm-with-multiple-ip-addresses"></a><a name = "create"></a>複数の IP アドレスを持つ VM を作成する
 
-複数の IP アドレスまたは静的プライベート IP アドレスを持つ VM を作成する場合は、PowerShell または Azure CLI を使用して VM を作成する必要があります。 その方法については、この記事の上部にある PowerShell または CLI オプションをクリックしてください。 単一の動的プライベート IP アドレスと (必要に応じて) 単一のパブリック IP アドレスを持つ VM を作成できます。 [Windows VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)または [Linux VM の作成](../virtual-machines/linux/quick-create-portal.md)に関する記事の手順に従ってポータルを使用してください。 VM を作成したら、この記事の「[VM に IP アドレスを追加する](#add)」セクションの手順に従ってポータルを使用することにより、IP アドレス タイプを動的から静的に変更して、別の IP アドレスを追加できます。
+複数の IP アドレスまたは静的プライベート IP アドレスを持つ VM を作成する場合は、PowerShell または Azure CLI を使用して VM を作成する必要があります。 その方法については、この記事の上部にある PowerShell または CLI オプションをクリックしてください。 単一の動的プライベート IP アドレスと (必要に応じて) 単一のパブリック IP アドレスを持つ VM を作成できます。 [Windows VM の作成](../virtual-machines/windows/quick-create-portal.md)または [Linux VM の作成](../virtual-machines/linux/quick-create-portal.md)に関する記事の手順に従ってポータルを使用してください。 VM を作成したら、この記事の「[VM に IP アドレスを追加する](#add)」セクションの手順に従ってポータルを使用することにより、IP アドレス タイプを動的から静的に変更して、別の IP アドレスを追加できます。
 
 ## <a name="add-ip-addresses-to-a-vm"></a><a name="add"></a>VM に IP アドレスを追加する
 
@@ -48,7 +48,7 @@ ms.locfileid: "84687975"
 
 5. 選択した NIC について表示されるウィンドウで、 **[IP 構成]** をクリックします。 **[追加]** をクリックし、追加する IP アドレスのタイプに基づいて、以下のセクションのいずれかの手順を完了してから、 **[OK]** をクリックします。 
 
-### <a name="add-a-private-ip-address"></a>**プライベート IP アドレスを追加する**
+### <a name="add-a-private-ip-address"></a>プライベート IP アドレスを追加する
 
 新しいプライベート IP アドレスを追加するには、次の手順を完了します。
 

@@ -1,6 +1,6 @@
 ---
 title: 機密データ - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool での機密データの軽減策について説明します。 軽減策に関する情報とコード例をご覧ください。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ab22e9843ca133274361838eeb49abbe326588dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 1de363e66a4d5780258b75d777a95318f36333fd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502235"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000500"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム:機密データ | 軽減策 
 | 製品/サービス | [アーティクル] |
@@ -339,7 +340,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と暗号化の解除](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[Azure 暗号化拡張機能で Azure Blob Storage にデータを安全に保存する](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
+| **参照**              | [Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](https://azure.microsoft.com/documentation/articles/storage-client-side-encryption/)、[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](https://azure.microsoft.com/documentation/articles/storage-encrypt-decrypt-blobs-key-vault/)、[Azure 暗号化拡張機能で Azure Blob Storage にデータを安全に保存する](https://blogs.msdn.microsoft.com/partnercatalystteam/2015/06/17/storing-data-securely-in-azure-blob-storage-with-azure-encryption-extensions/) |
 | **手順** | <p>.NET Nuget パッケージ用 Azure Storage クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。 また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。 ここでは、クライアント側暗号化のしくみを簡単に説明します。</p><ul><li>Azure ストレージ クライアント SDK は、1 回使用の対称キーであるコンテンツ暗号化キー (CEK) を生成します</li><li>ユーザー データは、この CEK を使用して暗号化されます</li><li>CEK は、キー暗号化キー (KEK) を使用してラップ (暗号化) されます。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルに管理することも、Azure Key Vault に保存することもできます。 Storage クライアント自体が KEK にアクセスすることはありません。 クライアントは、Key Vault によって提供されるキー ラップ アルゴリズムを呼び出すだけです。 ユーザーは、必要に応じてキー ラップ/ラップ解除にカスタム プロバイダーを使うことができます</li><li>暗号化されたデータは、Azure Storage サービスにアップロードされます。 細かなレベルの実装の詳細については、「参照」セクションのリンクを参照してください。</li></ul>|
 
 ## <a name="encrypt-sensitive-or-pii-data-written-to-phones-local-storage"></a><a id="pii-phones"></a>携帯電話のローカル ストレージに書き込まれた機密データまたは PII データを暗号化する

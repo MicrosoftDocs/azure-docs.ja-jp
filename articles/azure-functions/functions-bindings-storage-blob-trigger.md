@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: c88ace8693d15a58c78c70ba46001c98e92fc0a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559977"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213957"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -301,7 +301,7 @@ public void run(
 
 # <a name="python"></a>[Python](#tab/python)
 
-[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[トリガー - 例](#example)」を参照してください。
+[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[トリガー - 例](#example)」を参照してください。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -331,7 +331,7 @@ BLOB の名前が *original-Blob1.txt* の場合、関数コード内の `blobna
 "path": "input/original-{name}",
 ```
 
-BLOB 名が *original-Blob1.txt* の場合、関数コード内の `name` 変数の値は `Blob1` です。
+BLOB 名が *original-Blob1.txt* の場合、関数コード内の `name` 変数の値は `Blob1.txt` です。
 
 ### <a name="filter-on-file-type"></a>ファイルの種類のフィルター
 
@@ -412,7 +412,7 @@ BLOB トリガーはキューを内部的に使用するため、関数の同時
 
 [従量課金プラン](functions-scale.md#how-the-consumption-and-premium-plans-work)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大コンカレンシー数 3*24 = 72 関数呼び出しとなります。
 
-JavaScript 関数と Java 関数は BLOB 全体をメモリに読み込みますが、C# 関数は `string`、`Byte[]`、または POCO にバインドした場合に BLOB 全体をメモリに読み込みます。
+JavaScript と Java の関数では BLOB 全体がメモリに読み込まれますが、C# 関数では `string`、または `Byte[]` にバインドした場合にこれが行われます。
 
 ## <a name="polling"></a>ポーリング
 

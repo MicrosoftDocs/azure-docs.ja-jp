@@ -20,6 +20,6 @@ ms.locfileid: "86108936"
 | `http://localhost:5000/` | コンテナーには、ホーム ページが用意されています。 |
 | `http://localhost:5000/ready` | GET で要求することで、コンテナーがモデルに対するクエリを受け取る準備ができていることを確認できます。  この要求は Kubernetes の [liveness probe と readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) に対して使用できます。 |
 | `http://localhost:5000/status` | これも GET で要求することで、コンテナーを起動するために使用された API キーが有効であるかどうかを、エンドポイント クエリを発生させずに確認できます。 この要求は Kubernetes の [liveness probe と readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/) に対して使用できます。 |
-| `http://localhost:5000/swagger` | コンテナーには、エンドポイントの完全なドキュメント一式と、 **[Try it out]\(試してみる\)** の機能が用意されています。 この機能を使用すると、コードを一切記述することなく、お客様の設定を Web ベースの HTML フォームに入力したりクエリを実行したりできます。 クエリから戻った後、HTTP ヘッダーと HTTP 本文の必要な形式を示すサンプル CURL コマンドが得られます。 |
+| `http://localhost:5000/swagger` | コンテナーには、エンドポイントの完全なドキュメント一式と、 **[Try it out]\(使ってみる\)** の機能が用意されています。 この機能を使用すると、コードを一切記述することなく、お客様の設定を Web ベースの HTML フォームに入力したりクエリを実行したりできます。 クエリから戻った後、HTTP ヘッダーと HTTP 本文の必要な形式を示すサンプル CURL コマンドが得られます。 |
 
 ![コンテナーのホーム ページ](./media/cognitive-services-containers-api-documentation/container-webpage.png)

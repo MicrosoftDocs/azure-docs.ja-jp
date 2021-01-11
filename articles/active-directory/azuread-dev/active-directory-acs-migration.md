@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551720"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117789"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法:Azure Access Control Service からの移行
 
@@ -59,7 +59,7 @@ STS および管理操作とのすべての通信は、この URL で行われ�
 
 これに対する例外は、`https://accounts.accesscontrol.windows.net` へのすべてのトラフィックです。 この URL へのトラフィックは既に他のサービスによって対処されており、Access Control の廃止の影響を**受けません**。 
 
-Access Control の詳細については、「[Access Control Service 2.0](https://msdn.microsoft.com/library/hh147631.aspx)」(アーカイブ) を参照してください。
+Access Control の詳細については、「[Access Control Service 2.0](/previous-versions/azure/azure-services/hh147631(v=azure.100))」(アーカイブ) を参照してください。
 
 ## <a name="find-out-which-of-your-apps-will-be-impacted"></a>影響を受けるアプリケーションを確認する
 
@@ -129,13 +129,13 @@ Access Control によって発行されたトークンを受け入れる各 Micr
 
 | サービス | ガイダンス |
 | ------- | -------- |
-| Azure Service Bus | [Shared Access Signatures への移行](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure Service Bus Relay | [Shared Access Signatures への移行](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure Managed Cache | [Azure Cache for Redis への移行](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [Cognitive Services APIs への移行](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk Services | [Azure App Service の Logic Apps 機能への移行](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure Service Bus | [Shared Access Signatures への移行](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure Service Bus Relay | [Shared Access Signatures への移行](../../azure-relay/relay-migrate-acs-sas.md) |
+| Azure Managed Cache | [Azure Cache for Redis への移行](../../azure-cache-for-redis/cache-faq.md) |
+| Azure DataMarket | [Cognitive Services APIs への移行](https://azure.microsoft.com/services/cognitive-services/) |
+| BizTalk Services | [Azure App Service の Logic Apps 機能への移行](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure Media Services | [Azure AD 認証への移行](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure Backup | [Azure Backup エージェントのアップグレード](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure Backup | [Azure Backup エージェントのアップグレード](../../backup/backup-azure-file-folder-backup-faq.md) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -150,10 +150,10 @@ SharePoint 2013、2016、SharePoint Online のユーザーは、クラウド、�
 
 | 特徴量 | ガイダンス |
 | ------- | -------- |
-| Azure AD からのユーザーの認証 | これまで、Azure AD は SharePoint での認証に必要な SAML 1.1 トークンをサポートしておらず、SharePoint を Azure AD トークン形式と互換性があるようにする手段として ACS が使われていました。 現在は、[Azure AD アプリ ギャラリーの SharePoint オンプレミス アプリを使って SharePoint を Azure AD に直接接続する](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)ことができます。 |
-| [オンプレミスの SharePoint でのアプリ認証とサーバー間認証](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | ACS の提供終了の影響を受けません。変更は必要ありません。 | 
-| [SharePoint アドインに対する低信頼度の承認 (プロバイダーおよび SharePoint によるホスト)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | ACS の提供終了の影響を受けません。変更は必要ありません。 |
-| [SharePoint クラウド ハイブリッド検索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | ACS の提供終了の影響を受けません。変更は必要ありません。 |
+| Azure AD からのユーザーの認証 | これまで、Azure AD は SharePoint での認証に必要な SAML 1.1 トークンをサポートしておらず、SharePoint を Azure AD トークン形式と互換性があるようにする手段として ACS が使われていました。 現在は、[Azure AD アプリ ギャラリーの SharePoint オンプレミス アプリを使って SharePoint を Azure AD に直接接続する](../saas-apps/sharepoint-on-premises-tutorial.md)ことができます。 |
+| [オンプレミスの SharePoint でのアプリ認証とサーバー間認証](/SharePoint/security-for-sharepoint-server/authentication-overview) | ACS の提供終了の影響を受けません。変更は必要ありません。 | 
+| [SharePoint アドインに対する低信頼度の承認 (プロバイダーおよび SharePoint によるホスト)](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | ACS の提供終了の影響を受けません。変更は必要ありません。 |
+| [SharePoint クラウド ハイブリッド検索](/archive/blogs/spses/cloud-hybrid-search-service-application) | ACS の提供終了の影響を受けません。変更は必要ありません。 |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>パッシブ認証を使用する Web アプリケーション
 
@@ -214,7 +214,7 @@ Azure AD テナントは、AD FS を通じて、1 つ以上のオンプレミス
 
 Azure AD がアプリケーションとサービスの最善の移行経路であると判断した場合は、アプリを Azure AD と統合する 2 つの方法を認識する必要があります。
 
-WS-Federation または WIF を使用して Azure AD と統合する場合は、「[ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)」で説明されているアプローチに従うことをお勧めします。 この記事は、Azure AD を SAML ベースのシングル サインオン用に構成する方法を説明したものですが、WS-Federation の構成にも使用できます。 このアプローチを使用するには、Azure AD Premium ライセンスが必要です。 このアプローチには 2 つの利点があります。
+WS-Federation または WIF を使用して Azure AD と統合する場合は、「[ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)」で説明されているアプローチに従うことをお勧めします。 この記事は、Azure AD を SAML ベースのシングル サインオン用に構成する方法を説明したものですが、WS-Federation の構成にも使用できます。 このアプローチを使用するには、Azure AD Premium ライセンスが必要です。 このアプローチには 2 つの利点があります。
 
 - Azure AD トークン カスタマイズの柔軟性をフルに活用できます。 Azure AD によって発行された要求を、Access Control によって発行された要求と一致するようにカスタマイズすることができます。 これは、ユーザー ID や名前識別子要求に特に便利です。 テクノロジが変更された後もユーザー ID の一貫性が維持されるようにするには、Azure AD によって発行されたユーザー ID を、Access Control によって発行されたユーザー ID と一致させる必要があります。
 - アプリケーション固有のトークン署名証明書を構成し、その有効期間を制御できます。
@@ -224,7 +224,7 @@ WS-Federation または WIF を使用して Azure AD と統合する場合は、
 
 もう 1 つのアプローチは、[こちらのコード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)に従う方法です。この方法では、WS-Federation の設定方法の手順が若干異なります。 このコード サンプルでは、WIF を使用せず、代わりに ASP.NET 4.5 OWIN ミドルウェアを使用します。 ただし、アプリ登録の手順は、WIF を使用するアプリに対しても有効であり、Azure AD Premium ライセンスは必要ありません。 
 
-このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。 詳細については、「[Important information about signing key rollover in Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx)」 (Azure AD の署名キーのロールオーバーに関する重要な情報) を参照してください。
+このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](../develop/active-directory-signing-key-rollover.md)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。 詳細については、「[Important information about signing key rollover in Azure AD](/previous-versions/azure/dn641920(v=azure.100))」 (Azure AD の署名キーのロールオーバーに関する重要な情報) を参照してください。
 
 OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](https://aka.ms/aaddev)にさまざまなドキュメントとガイダンスが記載されています。
 
@@ -265,8 +265,8 @@ Azure AD B2C の最も魅力的な機能の 1 つは、Access Control と同様�
 
 Azure AD B2C がアプリケーションとサービスの最善の移行経路であると判断した場合は、次のリソースで開始してください。
 
-- [Azure AD B2C ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Azure AD B2C カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Azure AD B2C ドキュメント](../../active-directory-b2c/overview.md)
+- [Azure AD B2C カスタム ポリシー](../../active-directory-b2c/custom-policy-overview.md)
 - [Azure AD B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Ping Identity または Auth0 への移行

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure IoT Hub Device Provisioning Service (DPS) のドキュメント
-summary: IoT Hub Device Provisioning Service (DPS) は、適切な IoT ハブへのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに実現する、IoT Hub のヘルパー サービスです。これにより、安全かつスケーラブルな方法で多数のデバイスをプロビジョニングできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、デバイスを IoT ハブにプロビジョニングする方法を確認してください。
+summary: IoT Hub Device Provisioning Service (DPS) は、適切な IoT Hub へのゼロタッチの Just-In-Time プロビジョニングを人間の介入を必要とせずに実現する、IoT Hub のヘルパー サービスです。これにより、安全かつスケーラブルな方法で多数のデバイスをプロビジョニングできます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、デバイスを IoT Hub にプロビジョニングする方法を確認してください。
 metadata:
   title: Azure IoT Hub Device Provisioning Service (DPS) のドキュメント
   description: Azure IoT Hub Device Provisioning Service (DPS) - チュートリアル、クイックスタート、ハウツー、API リファレンス
@@ -35,7 +35,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure portal を使用して DPS を設定する
+    - text: Azure Portal を使用して DPS を設定する
       url: quick-setup-auto-provision.md
   - linkListType: sample
     links:

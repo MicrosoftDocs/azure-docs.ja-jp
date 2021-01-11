@@ -22,6 +22,9 @@
     - name: 持続的な関数の作成 - Python
       displayName: 'get started, chaining'
       href: quickstart-python-vscode.md
+    - name: 持続的な関数の作成 - PowerShell
+      displayName: 'get started, chaining'
+      href: quickstart-powershell-vscode.md
 - name: チュートリアル
   items:
     - name: 関数チェーン

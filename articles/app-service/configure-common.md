@@ -5,13 +5,13 @@ keywords: Azure App Service、Web アプリ、アプリ設定、環境変数
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
-ms.custom: seodec18
-ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 4990862bacbf2afe2d4b5f39c2b9d31a7c48b78e
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389779"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962895"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 
@@ -33,18 +33,18 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service でのアプリ�
 
 同様に、他の言語スタックも実行時に環境変数としてアプリ設定を取得します。 言語スタック固有の手順については、次を参照してください。
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [カスタム コンテナー](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [カスタム コンテナー](configure-custom-container.md#configure-environment-variables)
 
 アプリの設定は、格納されるときに常に暗号化されます (保存時の暗号化)。
 
 > [!NOTE]
-> アプリ設定は、[Key Vault 参照](app-service-key-vault-references.md)を使用して [Key Vault](/azure/key-vault/) から解決することもできます。
+> アプリ設定は、[Key Vault 参照](app-service-key-vault-references.md)を使用して [Key Vault](../key-vault/index.yml) から解決することもできます。
 
 ### <a name="show-hidden-values"></a>非表示の値を表示する
 
@@ -104,18 +104,18 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 
 たとえば、*connectionstring1* という名前の MySql 接続文字列には環境変数 `MYSQLCONNSTR_connectionString1` としてアクセスできます。 言語スタック固有の手順については、次を参照してください。
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [カスタム コンテナー](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [カスタム コンテナー](configure-custom-container.md#configure-environment-variables)
 
 接続文字列は、格納されるときに常に暗号化されます (保存時の暗号化)。
 
 > [!NOTE]
-> 接続文字列は、[Key Vault 参照](app-service-key-vault-references.md)を使用して [Key Vault](/azure/key-vault/) から解決することもできます。
+> 接続文字列は、[Key Vault 参照](app-service-key-vault-references.md)を使用して [Key Vault](../key-vault/index.yml) から解決することもできます。
 
 ### <a name="show-hidden-values"></a>非表示の値を表示する
 
@@ -168,7 +168,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
 - **[プラットフォームの設定]** : ホスティング プラットフォームの設定を構成できます。次のものが含まれます。
     - **[ビット]** : 32 ビットまたは 64 ビット。
     - **[WebSocket プロトコル]** : [ASP.NET SignalR] や [socket.io](https://socket.io/) など。
-    - **[常時接続]** : トラフィックがない場合も、アプリを読み込まれたままにします。 継続的な WebJobs や、CRON 式を使用してトリガーされる WebJobs に対して有効にする必要があります。
+    - **[常時接続]** : トラフィックがない場合も、アプリを読み込まれたままにします。 継続的な Web ジョブや、CRON 式を使用してトリガーされる Web ジョブに対して有効にする必要があります。
       > [!NOTE]
       > [常時接続] 機能を使用すると、フロントエンド ロード バランサーはアプリケーション ルートに要求を送信します。 この App Service のアプリケーション エンドポイントを構成することはできません。
     - **[Managed pipeline version] (マネージド パイプライン バージョン)** : IIS の[パイプライン モード]。 以前のバージョンの IIS を必要とするレガシ アプリがある場合は、これを **[Classic] (クラシック)** に設定します。
@@ -176,7 +176,7 @@ ASP.NET および ASP.NET Core 開発者の場合、App Service での接続文�
     > [!NOTE]
     > 最新のブラウザーのほとんどは、TLS 上でのみ HTTP/2 プロトコルをサポートし、暗号化されていないトラフィックには引き続き HTTP/1.1 を使用しています。 クライアント ブラウザーが HTTP/2 でご利用のアプリに確実に接続されるようにするには、カスタム DNS 名をセキュリティで保護します。 詳細については、「[Azure App Service で TLS/SSL バインディングを使用してカスタム DNS 名をセキュリティで保護する](configure-ssl-bindings.md)」を参照してください。
     - **[ARR affinity] (ARR アフィニティ)** :マルチインスタンス デプロイでは、クライアントがセッションの有効期間を通して同じインスタンスにルーティングされることを確認してください。 ステートレス アプリケーションの場合は、このオプションを **[オフ]** に設定できます。
-- **[デバッグ]** : [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、[ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)、または [Node.js](containers/configure-language-nodejs.md#debug-remotely) アプリに対するリモート デバッグを有効にします。 このオプションは、48 時間後に自動的に無効になります。
+- **[デバッグ]** : [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、[ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)、または [Node.js](configure-language-nodejs.md#debug-remotely) アプリに対するリモート デバッグを有効にします。 このオプションは、48 時間後に自動的に無効になります。
 - **[Incoming client certificates] (受信クライアント証明書)** : [相互認証](app-service-web-configure-tls-mutual-auth.md)でクライアント証明書を必要とします。
 
 ## <a name="configure-default-documents"></a>既定のドキュメントを構成する
@@ -215,7 +215,7 @@ Windows アプリの場合は、IIS ハンドラー マッピングや仮想ア�
 
 ### <a name="containerized-apps"></a>コンテナー化されたアプリ
 
-[コンテナー化されたアプリのカスタム ストレージを追加](containers/how-to-serve-content-from-azure-storage.md)できます。 コンテナー化されたアプリには、すべての Linux アプリのほか、App Service 上で実行されている Windows および Linux カスタム コンテナーも含まれます。 **[New Azure Storage Mount] (新しい Azure Storage のマウント)** をクリックし、次のようにカスタム ストレージを構成します。
+[コンテナー化されたアプリのカスタム ストレージを追加](configure-connect-to-azure-storage.md)できます。 コンテナー化されたアプリには、すべての Linux アプリのほか、App Service 上で実行されている Windows および Linux カスタム コンテナーも含まれます。 **[New Azure Storage Mount] (新しい Azure Storage のマウント)** をクリックし、次のようにカスタム ストレージを構成します。
 
 - **Name**:表示名です。
 - **[構成オプション]** : **[基本]** または **[詳細]** 。
@@ -228,22 +228,22 @@ Windows アプリの場合は、IIS ハンドラー マッピングや仮想ア�
 - **[アクセス キー]** : 詳細な構成のときのアクセス キー。
 - **[Mount path] (マウント パス)** : カスタム ストレージをマウントするためのコンテナー内の絶対パス。
 
-詳細については、「[Linux 上の App Service 内の Azure Storage からコンテンツを提供する](containers/how-to-serve-content-from-azure-storage.md)」を参照してください。
+詳細については、「[App Service 内のコンテナーからネットワーク共有としての Azure Storage にアクセスする](configure-connect-to-azure-storage.md)」を参照してください。
 
 ## <a name="configure-language-stack-settings"></a>言語スタックの設定を構成する
 
 Linux アプリについては、次を参照してください。
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
-- [PHP](containers/configure-language-php.md)
-- [Python](containers/how-to-configure-python.md)
-- [Java](containers/configure-language-java.md)
-- [Ruby](containers/configure-language-ruby.md)
+- [ASP.NET Core](configure-language-dotnetcore.md)
+- [Node.js](configure-language-nodejs.md)
+- [PHP](configure-language-php.md)
+- [Python](configure-language-python.md)
+- [Java](configure-language-java.md)
+- [Ruby](configure-language-ruby.md)
 
 ## <a name="configure-custom-containers"></a>カスタム コンテナーを構成する
 
-「[Azure App Service のカスタム Linux コンテナーを構成する](containers/configure-custom-container.md)」を参照してください。
+「[Azure App Service のカスタム Linux コンテナーを構成する](configure-custom-container.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

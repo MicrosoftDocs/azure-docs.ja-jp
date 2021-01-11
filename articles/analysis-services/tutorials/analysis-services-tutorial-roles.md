@@ -1,18 +1,18 @@
 ---
 title: チュートリアル - Azure Analysis Services ロールを構成する | Microsoft Docs
-description: Azure portal または SQL Server Management Studio を使用して Azure Analysis Services 管理者ロールとユーザー ロールを構成する方法について説明します。
+description: このチュートリアルでは、Azure portal または SQL Server Management Studio を使用して Azure Analysis Services 管理者とユーザー ロールを構成する方法について説明します。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016391"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229363"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する
 
@@ -63,7 +63,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 3. **オブジェクト エクスプローラー**で、サーバー オブジェクトを展開して表示します。 右クリックして、サーバーのプロパティを表示します。
    
-    ![SSMS で接続する](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
+    ![SSMS でのオブジェクト エクスプローラー](./media/analysis-services-tutorial-roles/aas-connect-ssms-objexp.png)
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>サーバー管理者ロールにユーザー アカウントを追加する
 

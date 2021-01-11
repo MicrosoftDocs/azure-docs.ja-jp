@@ -5,18 +5,18 @@ description: Azure Machine Learning を使用して Azure Functions アプリに
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3afe5d0993f7e647cbae1281cb9e7387df6e2f50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, racking-python
+ms.openlocfilehash: 8d1ea9b0989a71268b98f0b2fd1d95d5671f996b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84560409"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87325799"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Functions に機械学習モデルをデプロイする (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,10 +56,11 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
     >
     > 既定では、関数のパッケージ化の際、入力はテキストとして扱われます。 入力の生バイトの使用に関心がある場合 (たとえば、BLOB トリガーの場合)、[生データを受け入れる AMLRequest](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#binary-data) を使用する必要があります。
 
+エントリ スクリプトの詳細については、[スコアリング コードの定義](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where#script)に関する記事を参照してください。
 
 * **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
 
-これらのエンティティは、__推論構成__にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
+これらのエンティティは、__推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
 
 > [!IMPORTANT]
 > Azure Functions で使用するための推論構成を作成する際は、[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
@@ -83,7 +84,7 @@ Azure Machine Learning を使用すると、トレーニング済みの機械学
 推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 > [!IMPORTANT]
-> Functions にデプロイするときに__デプロイ構成__を作成する必要はありません。
+> Functions にデプロイするときに __デプロイ構成__ を作成する必要はありません。
 
 ## <a name="install-the-sdk-preview-package-for-functions-support"></a>関数のサポート用に SDK プレビュー パッケージをインストールする
 

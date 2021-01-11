@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure Policy を使用してクラスター構成を大規模に適用する
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: 26b291e2a957047361d4f52eeff58cbe8aa8c633
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111271"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050034"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>Azure Policy を使用してクラスター構成を大規模に適用する (プレビュー)
 
@@ -22,6 +22,10 @@ ms.locfileid: "86111271"
 Azure Policy を使用して、各 `Microsoft.Kubernetes/connectedclusters` リソース、または GitOps 対応の `Microsoft.ContainerService/managedClusters` リソースに特定の `Microsoft.KubernetesConfiguration/sourceControlConfigurations` が適用されるように強制します。 Azure Policy を使用するには、既存のポリシー定義を選択して、ポリシーの割り当てを作成します。 ポリシーの割り当てを作成する場合、割り当てのスコープを設定します。これは、Azure リソース グループまたはサブスクリプションになります。 また、作成する `sourceControlConfiguration` のパラメーターも設定します。 割り当てを作成すると、スコープ内のすべての `connectedCluster` または `managedCluster` リソースをポリシー エンジンが識別し、それぞれに対して `sourceControlConfiguration` を適用します。
 
 各クラスターの信頼できるソースとして複数の Git リポジトリを使用している場合 (たとえば、1 つのリポジトリは中央 IT/クラスター オペレーター用、別のリポジトリはアプリケーション チーム用として使用している場合)、異なる Git リポジトリを使用するように各ポリシー割り当てを構成して、複数のポリシー割り当てを使用することにより、これを有効にすることができます。
+
+## <a name="prerequisite"></a>前提条件
+
+このポリシー割り当てを作成するスコープ (サブスクリプションまたはリソース グループ) に対する `Microsoft.Authorization/policyAssignments/write` アクセス許可があることを確認します。
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
@@ -42,7 +46,7 @@ Azure Policy を使用して、各 `Microsoft.Kubernetes/connectedclusters` リ�
 
 ## <a name="verify-a-policy-assignment"></a>ポリシーの割り当てを確認する
 
-1. Azure portal で、`connectedCluster` リソースのいずれかに移動し、サイドバーの **[設定]** セクションで、 **[ポリシー]** を選択します (AKS マネージド クラスターの UX はまだ実装されていませんが、実装される予定です)。
+1. Azure portal で、`connectedCluster` リソースのいずれかに移動し、サイドバーの **[設定]** セクションで、 **[ポリシー]** を選択します (AKS クラスターの UX はまだ実装されていませんが、実装される予定です)。
 2. 一覧に、上記で作成したポリシーの割り当てが表示され、 **[コンプライアンスの状態]** は "*準拠している*" になっています。
 3. サイドバーの **[設定]** セクションで、 **[構成]** を選択します。
 4. 一覧に、ポリシーの割り当てで作成された `sourceControlConfiguration` が表示されます。

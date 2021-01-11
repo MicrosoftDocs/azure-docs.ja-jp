@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: db5363c5d8adaf29e2c460d9ce36afa2d29ae8e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: 5a67ebbf0f83f2dc3a340f52cab7437bbfaa350e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791658"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299169"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
@@ -137,7 +138,7 @@ Azure portal または Resource Manager テンプレートを使用して、JAR 
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-ただし、1 つの Azure Spring Cloud サービス インスタンスから一度にトリガーできるビルド ジョブは、ソース パッケージ 1 つにつき 1 件のみであることに注意してください。 詳しくは、「[アプリケーションをデプロイする](spring-cloud-quickstart-launch-app-portal.md)」および「[Azure Spring Cloud でステージング環境を設定する](spring-cloud-howto-staging-environment.md)」をご覧ください。
+ただし、1 つの Azure Spring Cloud サービス インスタンスから一度にトリガーできるビルド ジョブは、ソース パッケージ 1 つにつき 1 件のみであることに注意してください。 詳しくは、「[アプリケーションをデプロイする](spring-cloud-quickstart.md)」および「[Azure Spring Cloud でステージング環境を設定する](spring-cloud-howto-staging-environment.md)」をご覧ください。
 
 ### <a name="my-application-cant-be-registered"></a>アプリケーションを登録できない
 

@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92f6f32298dcccca4eba08fd25de0504416e5560
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b48a84bb69a356815cccd1e33c555eeb667699f
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608145"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89244723"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>方法:Azure AD で非アクティブなユーザー アカウントを管理する
 
@@ -58,7 +58,7 @@ ms.locfileid: "85608145"
 
 ### <a name="how-can-i-access-this-property"></a>このプロパティにアクセスするにはどうすればよいですか?
 
-[Microsoft Graph](https://docs.microsoft.com/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) API のリソースの種類 [signInActivity](https://docs.microsoft.com/graph/api/resources/signinactivity?view=graph-rest-beta) によって **lastSignInDateTime** プロパティが表示されます。   
+[Microsoft Graph](/graph/overview?view=graph-rest-beta#whats-in-microsoft-graph) API のリソースの種類 [signInActivity](/graph/api/resources/signinactivity?view=graph-rest-beta) によって **lastSignInDateTime** プロパティが表示されます。   
 
 ### <a name="is-the-lastsignindatetime-property-available-through-the-get-azureaduser-cmdlet"></a>Get-AzureAdUser コマンドレットで LastSignInDateTime プロパティを使用できますか?
 
@@ -91,5 +91,5 @@ LastSignInDateTime タイムスタンプを生成するには、サインイン�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory レポート API と証明書を使用してデータを取得します](tutorial-access-api-with-certificates.md)
-* [監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [サインイン アクティビティ レポート API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [監査 API リファレンス](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin?view=graph-rest-beta)

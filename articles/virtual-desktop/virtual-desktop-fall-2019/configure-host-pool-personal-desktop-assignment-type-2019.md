@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop の個人用デスクトップの割り当ての種類 - Azure
-description: Windows Virtual Desktop の個人用デスクトップ ホスト プールの割り当ての種類を構成する方法。
-services: virtual-desktop
-author: HeidiLohr
-ms.service: virtual-desktop
+title: Windows Virtual Desktop (クラシック) の個人用デスクトップの割り当ての種類 - Azure
+description: Windows Virtual Desktop (クラシック) の個人用デスクトップ ホスト プールの割り当ての種類を構成する方法。
+author: Heidilohr
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f4ee0a6ba028a6359a83f5130aca7c6f05ba08b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259804"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008510"
 ---
-# <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>個人用デスクトップ ホスト プールの割り当ての種類を構成する
+# <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) の個人用デスクトップ ホスト プールの割り当ての種類を構成する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../configure-host-pool-personal-desktop-assignment-type.md)をご覧ください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../configure-host-pool-personal-desktop-assignment-type.md)を参照してください。
 
 ニーズに合わせて、個人用デスクトップ ホスト プールの割り当ての種類を構成して Windows Virtual Desktop 環境を調整することができます。 このトピックでは、ユーザーの自動割り当てまたは直接割り当てを構成する方法について説明します。
 

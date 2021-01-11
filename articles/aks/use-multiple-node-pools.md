@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: c35b3cdbde79a771eccc42c7c3a60b0ab4e08e8a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250857"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563179"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -489,6 +489,8 @@ Events:
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>テイント、ラベル、またはタグをノード プールに指定する
 
+### <a name="setting-nodepool-taints"></a>ノード プールのテイントの設定
+
 ノード プールを作成するときに、テイント、ラベル、タグをそのノード プールに追加できます。 テイント、ラベル、タグを追加すると、そのノード プール内のすべてのノードもそのテイント、ラベル、タグを取得します。
 
 テイントが指定されたノード プールを作成するには、[az aks nodepool add][az-aks-nodepool-add] を使用します。 名前 *taintnp* を指定し、`--node-taints` パラメーターを使用してテイントに *sku=gpu:NoSchedule* を指定します。
@@ -502,6 +504,9 @@ az aks nodepool add \
     --node-taints sku=gpu:NoSchedule \
     --no-wait
 ```
+
+> [!NOTE]
+> テイントは、ノード プールを作成するときにノード プールに対してのみ設定できます。
 
 [az aks nodepool list][az-aks-nodepool-list] コマンドからの次の出力例では、*taintnp* によって、指定した *nodeTaints* でノードが "*作成されている*" ことが示されています。
 
@@ -528,6 +533,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ```
 
 テイントの情報は、ノードのスケジューリング規則を処理するために Kubernetes に表示されます。
+
+### <a name="setting-nodepool-labels"></a>ノード プールのラベルの設定
 
 ノード プールを作成するときに、ラベルをノード プールに追加することもできます。 ノード プールに設定されたラベルは、ノード プールの各ノードに追加されます。 ノードのスケジューリング規則を処理するため、これらの[ラベルは Kubernetes に表示][kubernetes-labels]されます。
 
@@ -571,7 +578,13 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+### <a name="setting-nodepool-azure-tags"></a>ノード プールの Azure タグの設定
+
 AKS クラスター内のノード プールに Azure タグを適用できます。 ノード プールに適用されるタグは、ノード プール内の各ノードに適用され、アップグレードによって保持されます。 また、スケールアウト操作中にノード プールに追加される新しいノードにもタグが適用されます。 タグを追加すると、ポリシーの追跡やコスト見積もりなどのタスクに役立ちます。
+
+Azure タグには、キーを検索してタグを取得する場合などに操作の大文字と小文字を区別しないキーがあります。 この場合、指定されたキーを持つタグは、大文字/小文字の違いに関係なく更新または取得されます。 タグの値は大文字と小文字が区別されます。
+
+AKS では、複数のタグが同じキーで設定され、大文字/小文字が異なる場合、使用されるタグはアルファベット順で最初のものになります。 たとえば、`{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` の場合は `Key1` と `val1` が設定されます。
 
 [az aks nodepool add][az-aks-nodepool-add] を使用してノード プールを作成します。 名前 *tagnodepool* を指定し、`--tag` パラメーターを使用して、*dept = IT* と *costcenter=9999* をタグに指定します。
 
@@ -846,7 +859,7 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [supported-versions]: supported-kubernetes-versions.md
 [tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [use-system-pool]: use-system-pools.md
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces に使用する Azure Kubernetes Service クラスターのセットアップの実際について説明します。
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995889"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207948"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>Azure Dev Spaces に使用するクラスターのセットアップの実際
 
@@ -19,8 +19,6 @@ Azure Dev Spaces には、Kubernetes アプリケーションを迅速に反復�
 ## <a name="prepare-your-aks-cluster"></a>AKS クラスターを準備する
 
 Dev Spaces に使用する AKS クラスターを準備するには、AKS クラスターが [Azure Dev Spaces でサポート][supported-regions]されるリージョンに存在すること、また Kubernetes 1.10.3 以降が実行されていることを確認します。 Azure CLI から `az aks use-dev-spaces` を実行して、Azure Dev Spaces を有効にできます。
-
-Dev Spaces に使用する AKS クラスターをセットアップする例については、[チーム開発のクイックスタート][quickstart-team]を参照してください。
 
 AKS クラスターで Azure Dev Spaces を有効にすると、クラスター用のコントローラーがインストールされます。 コントローラーは、AKS クラスターの外部に存在します。 これは、クライアント側ツールと AKS クラスター間の動作と通信を管理します。 有効にした後は、クライアント側ツールを使用して、コントローラーを操作できます。
 
@@ -92,10 +90,8 @@ AKS クラスターの準備が完了したら、クライアント側ツール�
 
 クライアント側ツールを使用してコードを準備し、開発スペースで実行する方法について詳しくは、「[Azure Dev Spaces のためにプロジェクトを準備する方法][how-it-works-prep]」を参照してください。
 
-チーム開発のために Azure Dev Spaces の使用を開始するには、[Azure Dev Spaces でのチーム開発][quickstart-team]に関するクイックスタートを参照してください。
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[quickstart-team]: quickstart-team-development.md

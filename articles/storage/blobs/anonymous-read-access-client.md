@@ -6,21 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/29/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: f4263d372b82779fe68a6a15cc7db61a31359e14
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1ba36c7128f72f5181f3fed53f5615ab464e3325
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86209137"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013539"
 ---
 # <a name="access-public-containers-and-blobs-anonymously-with-net"></a>.NET を使用してパブリックのコンテナーと BLOB に匿名でアクセスする
 
-Azure Storage では、コンテナーと BLOB への匿名パブリック読み取りアクセスがサポートされています。 クライアントは、Azure Storage クライアント ライブラリを使用することに加え、Azure Storage へのデータ アクセスをサポートする他のツールやユーティリティを使用して、匿名でパブリックのコンテナーと BLOB にアクセスできます。
+Azure Storage では、コンテナーと BLOB へのオプションのパブリック読み取りアクセスがサポートされています。 クライアントは、Azure Storage クライアント ライブラリを使用することに加え、Azure Storage へのデータ アクセスをサポートする他のツールやユーティリティを使用して、匿名でパブリックのコンテナーと BLOB にアクセスできます。
 
-この記事では、.NET からパブリックのコンテナーまたは BLOB にアクセスする方法について説明します。 コンテナーへの匿名読み取りアクセスの構成の詳細については、「」を参照してください。 ストレージ アカウントへのすべての匿名アクセスの禁止に関する詳細については、「」を参照してください。
+この記事では、.NET からパブリックのコンテナーまたは BLOB にアクセスする方法について説明します。 コンテナーに対する匿名読み取りアクセスの構成については、「[コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する](anonymous-read-access-configure.md)」を参照してください。 ストレージ アカウントへのすべての匿名アクセスを禁止することについては、「[コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ」](anonymous-read-access-prevent.md)を参照してください。
 
 コンテナーと BLOB に匿名でアクセスするクライアントは、資格情報を必要としないコンストラクターを使用できます。 次の例では、コンテナーと BLOB を匿名で参照するいくつかの方法を示します。
 

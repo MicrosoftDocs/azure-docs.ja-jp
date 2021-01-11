@@ -5,17 +5,20 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 913f1f2a7a03c1abb83d8daa6d4b0c3f6e77e309
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133749"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184620"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure VM 拡張機能に関する問題のトラブルシューティング
 
 この記事では、VM エージェントと拡張機能に関連する Azure Site Recovery のエラーの解決に役立つ可能性のあるトラブルシューティング手順について説明します。
 
+## <a name="low-system-resources"></a>システム リソースが少ない
+
+この問題は、システムで使用できるメモリが少なく、モビリティ サービスのインストールでメモリを割り当てることができないときに発生します。 インストールが進行し、正常に完了できるよう、確実に十分なメモリが解放されているようにします。
 
 ## <a name="azure-site-recovery-extension-time-out"></a>Azure Site Recovery 拡張機能がタイムアウトになる  
 

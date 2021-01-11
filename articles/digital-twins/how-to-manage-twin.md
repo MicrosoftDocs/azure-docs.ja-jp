@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e37c680f6bf9e296230232c0d4e0fab5f50ad3cd
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: b88d017110f4d7b9859f2d801c5405ecee1589c5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142381"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297469"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
 環境内のエンティティは、[デジタル ツイン](concepts-twins-graph.md)で表されます。 デジタル ツインの管理には、作成、変更、削除などが伴います。 これらの操作を実行するには、[**DigitalTwins API**](how-to-use-apis-sdks.md)、[NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用します。
 
-この記事では、デジタル ツインの管理に重点を置いて説明します。リレーションシップと[ツイン グラフ](concepts-twins-graph.md)の全体的な操作については、[リレーションシップを使用してツイン グラフを管理する方法](how-to-manage-graph.md)に関する記事をご覧ください。
+この記事では、デジタル ツインの管理に重点を置いて説明します。リレーションシップと[ツイン グラフ](concepts-twins-graph.md)の全体的な操作については、「[*方法: リレーションシップを使用してツイン グラフを管理する*](how-to-manage-graph.md)」を参照してください。
 
 > [!TIP]
 > すべての SDK 関数に同期バージョンと非同期バージョンがあります。
@@ -37,18 +37,22 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 必要に応じて、デジタル ツインのすべてのプロパティの初期値を指定できます。 
 
+モデルと初期プロパティ値は、`initData` パラメーターによって提供されます。これは、関連データを含む JSON 文字列です。 このオブジェクトを構造化する方法の詳細については、次のセクションに進んでください。
+
 > [!TIP]
-> GetDigitalTwin を使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。  
+> ツインを作成または更新した後、変更が[クエリ](how-to-query-graph.md)に反映されるまでに最大 10 秒の待機時間が発生する可能性があります。 `GetDigitalTwin` API ([この記事で後ほど](#get-data-for-a-digital-twin)説明します) ではこの遅延が発生しないため、迅速な応答が必要な場合は、クエリの代わりに API 呼び出しを使用して、新しく作成されたツインを確認してください。 
 
-モデルと初期プロパティ値は、`initData` パラメーターによって提供されます。これは、関連データを含む JSON 文字列です。
+### <a name="initialize-model-and-properties"></a>モデルとプロパティを初期化する
 
-### <a name="initialize-properties"></a>プロパティを初期化する
+ツイン作成 API は、ツイン プロパティの有効な JSON 記述にシリアル化されるオブジェクトを受け入れます。 "[*デジタル ツインとツイン グラフの概念*](concepts-twins-graph.md)" に関する記事をご覧ください。 
 
-ツイン作成 API は、ツイン プロパティの有効な JSON 記述にシリアル化できるオブジェクトを受け入れます。 ツインの JSON 形式については、[デジタル ツインとツイン グラフの概念](concepts-twins-graph.md)に関する記事をご覧ください。
+したがって、まず、ツインとそのプロパティ データを表すデータ オブジェクトを作成します。 次に、`JsonSerializer` を使用して、このシリアル化されたバージョンを `initdata` パラメーターの API 呼び出しに渡すことができます。
 
 パラメーター オブジェクトは手動で作成することも、用意されているヘルパー クラスを使用して作成することもできます。 それぞれの例を以下に示します。
 
 #### <a name="create-twins-using-manually-created-data"></a>手動で作成したデータを使用してツインを作成する
+
+カスタム ヘルパー クラスを使用しない場合は、`Dictionary<string, object>` でツインのプロパティを表すことができます。ここで、`string` はプロパティの名前であり、`object` はプロパティとその値を表すオブジェクトです。
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>ヘルパー クラスを使用してツインを作成する
 
+`BasicDigitalTwin` のヘルパー クラスを使用すると、"ツイン" オブジェクトにプロパティ フィールドをより直接的に格納できます。 `Dictionary<string, object>` を使用してプロパティのリストを作成することもできます。それは、`CustomProperties` としてツイン オブジェクトに直接追加できます。
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -81,6 +87,13 @@ twin.CustomProperties = props;
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
 
+>[!NOTE]
+> `BasicDigitalTwin` オブジェクトには、`Id` フィールドが付属しています。 このフィールドは空のままとすることができますが、ID 値を追加する場合は、それが、`CreateDigitalTwin` 呼び出しに渡される ID パラメーターと一致する必要があります。 上記の例の場合、以下のようになります。
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
+
 ## <a name="get-data-for-a-digital-twin"></a>デジタル ツインのデータを取得する
 
 次の呼び出しにより、任意のデジタル ツインの全データにアクセスできます。
@@ -91,7 +104,12 @@ object result = await client.GetDigitalTwin(id);
 
 この呼び出しでは、ツイン データが JSON 文字列として返されます。 
 
-1 つの API 呼び出しを使用して複数のツインを取得するには、[ツイン グラフに対してクエリを実行する方法](how-to-query-graph.md)に関する記事にあるクエリ API の例を参照してください。
+`GetDigitalTwin` を使用してツインを取得すると、少なくとも 1 回は設定されたプロパティだけが返されます。
+
+>[!TIP]
+>ツインの `displayName` はモデル メタデータの一部であるため、ツイン インスタンスのデータを取得するときには表示されません。 この値を表示するには、[モデルから取得する](how-to-manage-model.md#retrieve-models)ことができます。
+
+1 つの API 呼び出しを使用して複数のツインを取得するには、クエリ API の例を、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
 
 *Moon* を定義する次のモデル ([Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL) で記述) について考えてみましょう。
 
@@ -168,13 +186,20 @@ foreach (string prop in twin.CustomProperties.Keys)
 }
 ```
 
-シリアル化ヘルパー クラスの詳細については、[Azure Digital Twins の API および SDK を使用する方法](how-to-use-apis-sdks.md)に関する記事をご覧ください。
+シリアル化ヘルパー クラスの詳細については、"[*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。
 
 ## <a name="update-a-digital-twin"></a>デジタル ツインを更新する
 
 デジタル ツインのプロパティを更新するには、置き換える情報を [JSON Patch](http://jsonpatch.com/) 形式で記述します。 これにより、一度に複数のプロパティを置き換えることができます。 次に、その JSON Patch ドキュメントを `Update` メソッドに渡します。
 
-`await client.UpdateDigitalTwin(id, patch);`.
+```csharp
+await client.UpdateDigitalTwin(id, patch);
+```
+
+パッチの呼び出しでは、1 つのツインのプロパティを必要な数だけ (それらをすべてであっても) 更新することができます。 複数のツイン間でプロパティを更新する必要がある場合は、ツインごとに個別の更新呼び出しが必要になります。
+
+> [!TIP]
+> ツインを作成または更新した後、変更が[クエリ](how-to-query-graph.md)に反映されるまでに最大 10 秒の待機時間が発生する可能性があります。 `GetDigitalTwin` API ([この記事の前の方で](#get-data-for-a-digital-twin)説明しました) ではこの遅延が発生しないため、迅速な応答が必要な場合は、クエリの代わりに API 呼び出しを使用して、新しく更新されたツインを確認してください。 
 
 JSON Patch コードの例を次に示します。 このドキュメントでは、適用先のデジタル ツインの *mass* および *radius* プロパティ値を置き換えます。
 
@@ -196,6 +221,7 @@ JSON Patch コードの例を次に示します。 このドキュメントで�
 パッチは手動で作成することも、[SDK](how-to-use-apis-sdks.md) のシリアル化ヘルパー クラスを使用して作成することもできます。 それぞれの例を以下に示します。
 
 #### <a name="create-patches-manually"></a>パッチを手動で作成する
+
 ```csharp
 List<object> twinData = new List<object>();
 twinData.Add(new Dictionary<string, object>() {
@@ -271,6 +297,19 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
 ]
 ```
 
+### <a name="handle-conflicting-update-calls"></a>競合する更新呼び出しを処理する
+
+Azure Digital Twins では、すべての受信要求が確実に 1 つずつ処理されます。 つまり、複数の関数が同時にツイン上の同じプロパティを更新しようとする場合でも、競合を処理するための明示的なロック コードを記述する**必要はありません**。
+
+この動作はツインごとに行われます。 
+
+例として、これら 3 つの呼び出しが同時に到着するシナリオを考えてみましょう。 
+*   *Twin1* でのプロパティ A の書き込み
+*   *Twin1* でのプロパティ B の書き込み
+*   *Twin2* でのプロパティ A の書き込み
+
+*Twin1* を変更する 2 つの呼び出しが 1 つずつ実行され、変更のたびに変更メッセージが生成されます。 *Twin2* を変更する呼び出しは、到着したらすぐに、競合なしで同時に実行できます。
+
 ## <a name="delete-a-digital-twin"></a>デジタル ツインを削除する
 
 `DeleteDigitalTwin(ID)` を使用してツインを削除できます。 ただし、ツインを削除できるのは、ツインにリレーションシップがない場合だけです。 最初にすべてのリレーションシップを削除する必要があります。 
@@ -337,13 +376,15 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 ### <a name="delete-all-digital-twins"></a>すべてのデジタル ツインを削除する
 
-一度にすべてのツインを削除する方法の例については、[サンプル クライアント アプリを使用して基本事項を確認するチュートリアル](tutorial-command-line-app.md)で再利用できます。 *CommandLoop.cs* ファイルでは、`CommandDeleteAllTwins` 関数でこれを実行します。
+一度にすべてのツインを削除する方法の例については、"[*サンプル クライアント アプリを使用した基本事項の確認に関するチュートリアル*](tutorial-command-line-app.md)" で再利用できます。 *CommandLoop.cs* ファイルでは、`CommandDeleteAllTwins` 関数でこれを実行します。
 
 ## <a name="manage-twins-with-cli"></a>CLI を使用してツインを管理する
 
-ツインは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、[Azure Digital Twins CLI の使用方法](how-to-use-cli.md)に関する記事をご覧ください。
+ツインは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、"[*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
+
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
 デジタル ツイン間のリレーションシップを作成および管理する方法を確認します。
-* [リレーションシップを使用してツイン グラフを管理する](how-to-manage-graph.md)
+* [*方法: リレーションシップを使用してツイン グラフを管理する*](how-to-manage-graph.md)

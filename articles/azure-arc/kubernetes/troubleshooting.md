@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Arc 対応 Kubernetes クラスターに関する一般的な問題のトラブルシューティング。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 1527f8d4ca06c2deaf4ce18b73bfdb515dcadc63
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 404516778255409d56dd5c3a7d1fd96711cc981f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725586"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723675"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting-preview"></a>Azure Arc 対応 Kubernetes のトラブルシューティング (プレビュー)
 
@@ -69,9 +69,9 @@ pod/metrics-agent-58b765c8db-n5l7k              2/2     Running  0       16h
 pod/resource-sync-agent-5cf85976c7-522p5        3/3     Running  0       16h
 ```
 
-すべてのポッドの `STATUS` が `Running` である必要があり、`READY` は `3/3` または `2/2` である必要があります。 ログを取得し、`Error` または `CrashLoopBackOff` を返しているポッドを書き留めます。
+すべてのポッドの `STATUS` が `Running` である必要があり、`READY` は `3/3` または `2/2` である必要があります。 ログを取得し、`Error` または `CrashLoopBackOff` を返しているポッドを書き留めます。 これらのポッドのいずれかが `Pending` 状態で止まっている場合、原因として、クラスター ノードにリソースが十分にないことが考えられます。 [クラスターをスケールアップする](https://kubernetes.io/docs/tasks/administer-cluster/cluster-management/#resizing-a-cluster)と、ポッドが `Running` 状態に移行します。
 
-## <a name="unable-to-connect-my-kubernetes-cluster-to-azure"></a>Kubernetes クラスターを Azure に接続できない
+## <a name="connecting-kubernetes-clusters-to-azure-arc"></a>Azure Arc に Kubernetes クラスターを Azure に接続する
 
 クラスターを Azure に接続するには、Azure サブスクリプションへのアクセスと、ターゲット クラスターへの `cluster-admin` アクセスの両方が必要です。 クラスターに到達できない場合や、クラスターに十分なアクセス許可がない場合、オンボードは失敗します。
 
@@ -99,8 +99,6 @@ $ az connectedk8s connect --resource-group AzureArc --name AzureArcCluster
 Command group 'connectedk8s' is in preview. It may be changed/removed in a future release.
 Ensure that you have the latest helm version installed before proceeding to avoid unexpected errors.
 This operation might take a while...
-
-There was a problem with connect-agent deployment. Please run 'kubectl -n azure-arc logs -l app.kubernetes.io/component=connect-agent -c connect-agent' to debug the error.
 ```
 
 ## <a name="configuration-management"></a>構成管理
@@ -158,4 +156,11 @@ kind: List
 metadata:
   resourceVersion: ""
   selfLink: ""
+```
+## <a name="monitoring"></a>監視
+
+コンテナー用の Azure Monitor では、その DaemonSet を特権モードで実行する必要があります。 監視のために Canonical Charmed Kubernetes クラスターを正常に設定するには、次のコマンドを実行します。
+
+```console
+juju config kubernetes-worker allow-privileged=true
 ```

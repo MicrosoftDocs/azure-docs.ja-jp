@@ -3,12 +3,13 @@ title: Azure Active Directory を使用したマネージド ID の認証
 description: この記事では、Azure Active Directory を使用して Azure Event Hubs リソースにアクセスするためのマネージド ID を認証する方法について説明します
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 4e3460fa4fc3807cda23d6e3835a9f0b843eb36d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537277"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89010020"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する
 Azure Event Hubs では、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID では、Azure Virtual Machines (VMs)、Function Apps、Virtual Machine Scale Sets などのサービスで実行されているアプリケーションから Event Hubs リソースへのアクセスを、Azure AD 資格情報を使用して承認することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。
@@ -25,14 +26,14 @@ Azure リソースのマネージド ID を使用してご利用の VM から Ev
 - [Azure Resource Manager クライアント ライブラリ](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Azure AD のマネージド ID にアクセス許可を付与する
-ご利用のアプリケーション内のマネージド ID から Event Hubs サービスへの要求を承認するには、最初にそのマネージド ID に対してロールベースのアクセス制御 (RBAC) の設定を構成します。 Azure Event Hubs で、Event Hubs との間で送受信を行うためのアクセス許可を含む RBAC ロールを定義します。 RBAC ロールがマネージド ID に割り当てられると、適切なスコープで Event Hubs データへのアクセス権がそのマネージド ID に付与されます。
+ご利用のアプリケーション内のマネージド ID から Event Hubs サービスへの要求を承認するには、最初にそのマネージド ID に対してロールベースのアクセス制御 (RBAC) の設定を構成します。 Azure Event Hubs で、Event Hubs との間で送受信を行うためのアクセス許可を含む Azure ロールを定義します。 Azure ロールがマネージド ID に割り当てられると、適切なスコープでの Event Hubs データへのアクセスが、そのマネージド ID に付与されます。
 
-RBAC ロールの割り当ての詳細については、「[Authenticate with Azure Active Directory for access to Event Hubs resources](authorize-access-azure-active-directory.md)」 (Event Hubs リソースへのアクセスに Azure Active Directory を使用して認証する) を参照してください。
+Azure ロールの割り当ての詳細については、[Azure Active Directory を使用して認証し、Event Hubs リソースにアクセスする](authorize-access-azure-active-directory.md)ことに関するページを参照してください。
 
 ## <a name="use-event-hubs-with-managed-identities"></a>マネージド ID で Event Hubs を使用する
 マネージド ID で Event Hubs を使用するには、ロールと適切なスコープを ID に割り当てる必要があります。 このセクションの手順では、マネージド ID で実行され Event Hubs リソースにアクセスするシンプルなアプリケーションを使用します。
 
-ここでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) でホストされているサンプル Web アプリケーションを使用します。 Web アプリケーションを作成するための詳細な手順については、[Azure に ASP.NET Core Web アプリを作成する](../app-service/app-service-web-get-started-dotnet.md)に関する記事を参照してください
+ここでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) でホストされているサンプル Web アプリケーションを使用します。 Web アプリケーションを作成するための詳細な手順については、[Azure に ASP.NET Core Web アプリを作成する](../app-service/quickstart-dotnetcore.md)に関する記事を参照してください
 
 アプリケーションが作成されたら、次の手順を行います。 
 
@@ -46,7 +47,7 @@ RBAC ロールの割り当ての詳細については、「[Authenticate with Az
 
 次に、このサービス ID をご利用の Event Hubs リソースの必要なスコープ内のロールに割り当てます。
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>Azure portal を使用して RBAC ロールを割り当てるには
+### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てるには
 Event Hubs リソースにロールを割り当てるには、Azure portal でそのリソースに移動します。 リソースの [アクセス制御 (IAM)] 設定を表示し、次の手順に従ってロールの割り当てを管理します。
 
 > [!NOTE]

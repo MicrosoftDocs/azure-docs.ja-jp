@@ -31,7 +31,7 @@
         - name: Azure AD Connect と Connect Health とは
           href: whatis-azure-ad-connect.md
         - name: 適切な認証の選択
-          href: 'https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn'
+          href: ./choose-ad-authn.md
         - name: ID 同期と重複属性の回復性
           href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
     - name: パスワード ハッシュの同期
@@ -262,6 +262,8 @@
           href: how-to-connect-health-diagnose-sync-errors.md
         - name: Azure AD Connect Health のアラート カタログ
           href: how-to-connect-health-alert-catalog.md
+        - name: Azure AD Connect Health のデータ取得
+          href: how-to-connect-health-data-retrieval.md
     - name: Azure AD Connect 同期を管理する
       items:
         - name: ステージング サーバーとディザスター リカバリー
@@ -339,7 +341,7 @@
     - name: Azure AD パススルー認証エージェントのバージョン履歴
       href: reference-connect-pta-version-history.md
     - name: コネクタのバージョンの
-      href: reference-connect-sync-connector-version-history.md
+      href: /microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history
     - name: アカウントとアクセス許可
       href: reference-connect-accounts-permissions.md
     - name: Azure AD Connect の FAQ
@@ -374,3 +376,5 @@
       href: reference-connect-msexchuserholdpolicies.md
     - name: Azure AD Connect 1.4.xx.x デバイスの消失について
       href: reference-connect-device-disappearance.md
+    - name: Azure AD Connect のバージョン履歴アーカイブ
+      href: reference-connect-version-history-archive.md

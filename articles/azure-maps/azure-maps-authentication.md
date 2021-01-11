@@ -1,37 +1,37 @@
 ---
-title: 認証方法
+title: Microsoft Azure Maps による認証
 titleSuffix: Azure Maps
-description: この記事では、Azure Active Directory および共有キー認証について説明します。 どちらも Microsoft Azure Maps サービスに使用されます。 Azure Maps のサブスクリプション キーを取得する方法について説明します。
-author: philmea
-ms.author: philmea
-ms.date: 06/12/2020
+description: Azure Maps で要求を認証する 2 つの方法、共有キー認証と Azure Active Directory (Azure AD) 認証について説明します。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: fe79b630291959ce4dc8b4743127986088a876ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987538"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036846"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
-Azure Maps には、要求の認証方法が 2 つあります。共有キー認証と [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 認証です。 この記事では、Azure Maps サービスの実装の参考になるように、これらの認証方法について説明します。
+Azure Maps には、要求の認証方法が 2 つあります。共有キー認証と [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) 認証です。 この記事では、Azure Maps サービスの実装の参考になるように、これらの認証方法の両方について説明します。
 
 > [!NOTE]
-> Azure Maps とのセキュリティで保護された通信を強化するために、TLS (トランスポート層セキュリティ) 1.2 がサポートされるようになりました。TLS 1.0 と 1.1 のサポートは廃止されます。 サービスの中断を回避するために、**2020 年 4 月 2 日より前に、TLS 1.2 を使用するようにサーバーとアプリケーションを更新してください**。  現在 TLS 1.x を使用している場合は、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem)に関する記事で説明されているテストを使用して、TLS 1.2 の準備を評価し、移行計画を作成します。
+> Azure Maps とのセキュリティで保護された通信を強化するために、TLS (トランスポート層セキュリティ) 1.2 がサポートされるようになりました。TLS 1.0 と 1.1 のサポートは廃止されます。 現在 TLS 1.x を使用している場合は、[TLS 1.0 の問題の解決](https://docs.microsoft.com/security/solving-tls1-problem)に関する記事で説明されているテストを使用して、TLS 1.2 の準備を評価し、移行計画を作成します。
 
 ## <a name="shared-key-authentication"></a>共有キー認証
 
- Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 共有キー認証を使用して Azure Maps を呼び出す場合は、プライマリ キーをサブスクリプション キーとして使用することをお勧めします。 共有キー認証では、Azure Maps アカウントによって生成されたキーを Azure Maps サービスに渡します。 Azure Maps サービスへの要求ごとに、*サブスクリプション キー*をパラメーターとして URL に追加します。 2 次キーは、キーのローリング変更などのシナリオで使用できます。  
+ Azure Maps アカウントの作成後、主キーと 2 次キーが生成されます。 共有キー認証を使用して Azure Maps を呼び出す場合は、主キーをサブスクリプション キーとして使用することをお勧めします。 共有キー認証では、Azure Maps アカウントによって生成されたキーを Azure Maps サービスに渡します。 Azure Maps サービスへの要求ごとに、*サブスクリプション キー*をパラメーターとして URL に追加します。 2 次キーは、キーのローリング変更などのシナリオで使用できます。  
 
 Azure portal でキーを表示する方法について詳しくは、[認証の管理](https://aka.ms/amauthdetails)に関する記事をご覧ください。
 
-> [!Tip]
-> キーを定期的に再生成することをお勧めします。 キーは 2 つ提供されるため、1 つのキーを使用して接続を保持したまま、もう 1 つのキーを再生成することが可能です。 キーを再生成したら、アカウントにアクセスするすべてのアプリケーションを新しいキーで更新する必要があります。
+> [!TIP]
+> セキュリティ上の理由から、主キーとセカンダリ キーをローテーションすることをお勧めします。 キーをローテーションするには、セカンダリ キーを使用するようにアプリを更新してデプロイします。次に、主キーの横にある [cycle/refresh]\(サイクル/更新\) ボタンを押して、新しい主キーを生成します。 古い主キーは無効になります。 キー ローテーションの詳細については、「[キー ローテーションと監査で Azure Key Vault を設定する](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring)」を参照してください。
 
 ## <a name="azure-ad-authentication"></a>Azure AD 認証
 
@@ -64,7 +64,7 @@ Azure AD による認証に関する一般的な情報については、[認証�
 | x-ms-client-id | 30d7cc….9f55        |
 | 承認  | Bearer eyJ0e….HNIVN |
 
-> [!Note]
+> [!NOTE]
 > `x-ms-client-id` は、Azure Maps 認証ページに表示される Azure Maps アカウント ベースの GUID です。
 
 Azure AD OAuth Bearer トークンを使用する Azure Maps ルート要求の例を次に示します。
@@ -80,7 +80,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="authorization-with-role-based-access-control"></a>ロールベースのアクセス制御による認証
 
-Azure Maps では、Azure AD ユーザー、グループ、アプリケーション、Azure リソース、Azure マネージド ID など、Azure [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)のすべてのプリンシパルの種類へのアクセスがサポートされます。 プリンシパルの種類には、ロールの定義とも呼ばれるアクセス許可のセットが付与されます。 ロールの定義は、REST API アクションに対するアクセス許可を提供します。 1 つ以上の Azure Maps アカウントにアクセスを適用することをスコープと呼びます。 プリンシパル、ロールの定義、スコープを適用すると、ロールの割り当てが作成されます。 
+Azure Maps では、Azure AD ユーザー、グループ、アプリケーション、Azure リソース、Azure マネージド ID など、Azure [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview) (Azure RBAC) のすべてのプリンシパルの種類へのアクセスがサポートされます。 プリンシパルの種類には、ロールの定義とも呼ばれるアクセス許可のセットが付与されます。 ロールの定義は、REST API アクションに対するアクセス許可を提供します。 1 つ以上の Azure Maps アカウントにアクセスを適用することをスコープと呼びます。 プリンシパル、ロールの定義、スコープを適用すると、ロールの割り当てが作成されます。 
 
 以降のセクションでは、Azure Maps と Azure AD ロールベースのアクセス制御との統合の概念と構成要素について説明します。 Azure Maps アカウントを設定するプロセスの一環として、Azure AD ディレクトリが、Azure Maps アカウントがある Azure サブスクリプションに関連付けられます。 
 
@@ -108,7 +108,7 @@ RBAC 設定を確認する方法については、[Azure Maps RBAC を構成す�
 
 #### <a name="custom-role-definitions"></a>カスタム ロールの定義
 
-アプリケーションのセキュリティの 1 つの側面は、最小限の特権のプリンシパルを適用することです。 この原則は、セキュリティ プリンシパルには、必須のアクセスのみを許可し、追加のアクセスを許可しないようにする必要があることを意味します。 カスタム ロールの定義を作成すると、さらにきめ細かなアクセス制御を必要とするユース ケースをサポートできます。 カスタム ロールの定義を作成するには、その定義に含まれる、またはその定義から除外される特定のデータ アクションを選択できます。 
+アプリケーションのセキュリティの 1 つの側面は、最小限の特権のプリンシパルを適用することです。 この原則は、セキュリティ プリンシパルには、必須のアクセスのみを許可し、追加のアクセスは持たないようにする必要があることを意味します。 カスタム ロールの定義を作成すると、さらにきめ細かなアクセス制御を必要とするユース ケースをサポートできます。 カスタム ロールの定義を作成するには、その定義に含まれる、またはその定義から除外される特定のデータ アクションを選択できます。
 
 カスタム ロールの定義は、セキュリティ プリンシパルのロールの割り当てで使用できます。 Azure カスタム ロールの定義の詳細については、「[Azure カスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。
 
@@ -119,20 +119,26 @@ RBAC 設定を確認する方法については、[Azure Maps RBAC を構成す�
 | ベース マップ タイルがあり、他の REST API がない一般公開用またはインタラクティブなサインイン Web ページ。                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | リバース ジオコーディングのみを必要として、他の REST API を必要としないアプリケーション。                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |
 | Azure Maps ベースのマップ データの読み取りと基本マップ タイル REST API を要求するセキュリティ プリンシパルのロール。                                                                                                 | `Microsoft.Maps/accounts/services/data/read`, `Microsoft.Maps/accounts/services/render/read`                                                |
-| 作成者ベースのマップ データの読み取り、書き込み、削除を要求するセキュリティ プリンシパルのロール。 これをマップ データ編集者として定義することはできますが、基本マップ タイルなどの他の REST API へのアクセスは許可されません。 | `Microsoft.Maps/accounts/services/data/read`、`Microsoft.Maps/accounts/services/data/write`、`Microsoft.Maps/accounts/services/data/delete` |
+| 作成者ベースのマップ データの読み取り、書き込み、削除を要求するセキュリティ プリンシパルのロール。 これをマップ データ編集者として定義することはできますが、基本マップ タイルなどの他の REST API へのアクセスは許可されません。 | `Microsoft.Maps/accounts/services/data/read`, `Microsoft.Maps/accounts/services/data/write`, `Microsoft.Maps/accounts/services/data/delete` |
 
 ### <a name="understanding-scope"></a>スコープについて
 
 ロールの割り当てを作成する場合、Azure リソースの階層内で定義されます。 この階層の最上位は[管理グループ](https://docs.microsoft.com/azure/governance/management-groups/overview)で、最下位は、Azure Maps アカウントなどの Azure リソースです。
 ロールの割り当てをリソース グループに割り当てると、グループ内の複数の Azure Maps アカウントまたはリソースにアクセスできるようになります。
 
-> [!Tip]
+> [!TIP]
 > Microsoft の一般的な推奨事項は、Azure Maps アカウント スコープへのアクセスを割り当てることです。これにより、同じ Azure サブスクリプション内にある**他の Azure Maps アカウントへの意図しないアクセス**を防止するためです。
 
 ## <a name="next-steps"></a>次のステップ
 
-* RBAC の詳細については、[ロールベースのアクセス制御の概要](https://docs.microsoft.com/azure/role-based-access-control/overview)に関するページを参照してください。
+RBAC の詳細については、次の記事を参照してください。
+> [!div class="nextstepaction"]
+> [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-* Azure AD と Azure Maps を使用してアプリケーションを認証する方法について詳しく確認するには、「[Azure Maps での認証の管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)」をご覧ください。
+Azure AD と Azure Maps を使用してアプリケーションを認証する方法の詳細については、次の記事を参照してください。
+> [!div class="nextstepaction"]
+> [Azure Maps での認証の管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication)
 
-* Azure Maps マップ コントロールおよび Azure AD の認証について詳しく確認するには、「[Azure Maps のマップ コントロールを使用する](https://aka.ms/amaadmc)」をご覧ください。
+Azure AD を使用した Azure Maps のマップ コントロールの認証の詳細については、次の記事を参照してください。
+> [!div class="nextstepaction"]
+> [Azure Maps のマップ コントロールを使用する](https://aka.ms/amaadmc)

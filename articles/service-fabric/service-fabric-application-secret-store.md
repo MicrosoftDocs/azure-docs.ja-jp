@@ -3,16 +3,19 @@ title: Azure Service Fabric セントラル シークレット ストア
 description: この記事では、Azure Service Fabric のセントラル シークレット ストアを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: c48be8945326f0f11ded7c5700cd70043830e4db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9fd435803ad5354b0eb2d4f5de50009a8cbbfe2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83197767"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869757"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Service Fabric のセントラル シークレット ストア 
 この記事では、Azure Service Fabric のセントラル シークレットストア (CSS) を使用して Service Fabric アプリケーションでシークレットを作成する方法について説明します。 CSS は、パスワード、トークン、キーなどの機密データを暗号化してメモリに保持するローカル シークレット ストア キャッシュです。
 
+  > [!NOTE] 
+  > SF version 7.1.CU3 の前に初めて CSS をアクティブ化するときに、 アクティブ化が失敗し、CSS が永続的に異常な状態のままになる可能性があります。これは、CSS が Windows 認証クラスターでアクティブ化される場合、CSS が任意のクラスターでアクティブ化されるものの `EncryptionCertificateThumbprint` が正しく宣言されていない場合、または対応する証明書がインストールされていないかノードで ACL が指定されていない場合に発生します。 Windows 認証クラスターについては、先に進む前に 7\.1.CU3 にアクセスしてください。 その他のクラスターについては、これらのインバリアントを再確認するか、7.1. CU3 にアクセスしてください。
+  
 ## <a name="enable-central-secrets-store"></a>セントラル シークレット ストアを有効にする
 `fabricSettings` の下でクラスター構成に次のスクリプトを追加して、CSS を有効にします。 CSS には、クラスター証明書以外の証明書を使用することをお勧めします。 すべてのノードに暗号化証明書がインストールされていること、および `NetworkService` が証明書の秘密キーの読み取りアクセス許可を持っていることを確認してください。
   ```json

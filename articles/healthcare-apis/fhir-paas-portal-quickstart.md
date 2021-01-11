@@ -2,18 +2,18 @@
 title: クイック スタート:Azure portal を使用して Azure API for FHIR をデプロイする
 description: このクイックスタートでは、Azure portal を使用して Azure API for FHIR をデプロイし、設定を構成する方法について説明します。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: e729597e9d83c4e6096fe52b577b052d94ca4799
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 03/15/2020
+ms.author: matjazl
+ms.openlocfilehash: 8c0448d31cd89e2ca969b81361b30bac3f9610e9
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "84820021"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851938"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure API for FHIR をデプロイする
 
@@ -31,34 +31,31 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure API for FHIR は、検索ボックスに「FHIR」と入力すると見つかります。
 
-![医療 API を検索する](media/quickstart-paas-portal/portal-search-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-search-healthcare-apis.png" alt-text="医療 API を検索する":::
 
 ## <a name="create-azure-api-for-fhir-account"></a>Azure API for FHIR アカウントを作成する
 
 新しい Azure API for FHIR アカウントを作成するには、 **[作成]** を選択します。
 
-![Azure API for FHIR アカウントを作成する](media/quickstart-paas-portal/portal-create-healthcare-apis.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Azure API for FHIR アカウントを作成する":::
 
 ## <a name="enter-account-details"></a>アカウントの詳細を入力する
 
 既存のリソース グループを選択するか、リソース グループを新たに作成し、アカウントの名前を選択して、最後に **[確認と作成]** をクリックします。
 
-![新しい医療 API の詳細](media/quickstart-paas-portal/portal-new-healthcareapi-details.png)
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="新しい医療 API の詳細":::
 
 作成の確認を行い、FHIR API のデプロイを待ちます。
 
-## <a name="additional-settings"></a>追加設定
+## <a name="additional-settings-optional"></a>追加の設定 (オプション)
 
-**[次へ: 追加設定]** をクリックして、機関と対象ユーザー、さらに、この Azure API for FHIR へのアクセスを許可する ID オブジェクト ID を構成し、必要に応じて SMART on FHIR を有効にして、データベース スループットを構成します。
+**[次へ: 追加設定]** をクリックして認証設定を表示することもできます。 Azure API for FHIR の既定の構成では、[データ プレーン ロールの割り当てに Azure RBAC が使用されます](configure-azure-rbac.md)。 このモードに構成されている場合、FHIR サービスの "オーソリティ" は、サブスクリプションの Azure Active Directory テナントに設定されます。
 
-- **機関:** サービスの認証機関としてログインしているテナントとは別の Azure AD テナントを指定できます。
-- **Audience:** 対象ユーザーは、FHIR サーバーの URL に設定することをお勧めします (これが既定の設定となります)。 設定はここで変更できます。 トークンの対象となる受信者は、対象ユーザーによって識別されます。 このコンテキストでは、FHIR API 自体を表す値に設定する必要があります。
-- **許可されたオブジェクト ID:** この Azure API for FHIR へのアクセスを許可する ID オブジェクト ID を指定できます。 ユーザーとサービス プリンシパルのオブジェクト ID を見つける方法について詳しくは、攻略ガイド「[ID オブジェクト ID を見つける](find-identity-object-ids.md)」を参照してください。  
-- **SMART on FHIR プロキシ:** SMART on FHIR プロキシを有効にすることができます。 SMART on FHIR プロキシを構成する方法の詳細については、[Azure API for FHIR の SMART on FHIR プロキシ](https://docs.microsoft.com/azure/healthcare-apis/use-smart-on-fhir-proxy)に関するチュートリアルを参照してください。  
-- **プロビジョニング スループット (RU/秒):** ここには、Azure API for FHIR の基になるデータベースのスループット設定を指定できます。 この設定は、後から [データベース] ブレードで変更できます。 詳細については、[データベース設定の構成](configure-database.md)に関するページを参照してください。
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="既定の認証設定":::
 
+この場合、ロール割り当ての構成に Azure RBAC を使用するため、許可されたオブジェクト ID を入力するためのボックスが淡色表示されていることに注意してください。
 
-![許可されたオブジェクト ID を構成する](media/quickstart-paas-portal/configure-audience.png)
+外部またはセカンダリの Azure Active Directory テナントを使用するように FHIR サービスを構成する場合は、オーソリティを変更し、サーバーへのアクセスを許可するユーザーおよびグループのオブジェクト ID を入力します。 詳細については、[ローカル RBAC の構成](configure-local-rbac.md)に関するガイドを参照てください。
 
 ## <a name="fetch-fhir-api-capability-statement"></a>FHIR API の機能ステートメントをフェッチする
 

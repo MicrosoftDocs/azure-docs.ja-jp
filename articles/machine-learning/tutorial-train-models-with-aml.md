@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
-ms.custom: seodec18, tracking-python
-ms.openlocfilehash: 3cdd39ea9581384e7dd37ed67c641849f2696e1c
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.custom: seodec18, devx-track-python
+ms.openlocfilehash: f56b289f65bf12c1ad89d046d6bc26acd76249ce
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558334"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849781"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

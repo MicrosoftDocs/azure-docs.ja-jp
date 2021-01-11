@@ -11,25 +11,26 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 07/30/2020
-  ms.openlocfilehash: 40a8fc105dd297ec4bc70ecc0a27b9fa295d3fe1
-  ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+  ms.date: 08/17/2020
+  ms.custom: contperfq1
+  ms.openlocfilehash: 63e1e9216a5150b957a34e15def9726167694978
+  ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87474514"
+  ms.lasthandoff: 08/16/2020
+  ms.locfileid: "88258710"
 landingContent:
 - title: 機械学習の概要
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Python ノートブック
+    - text: Python ノートブックの使用
       url: tutorial-1st-experiment-sdk-setup.md
     - text: AutoML (コードなし/少量のコード)
       url: tutorial-first-experiment-automated-ml.md
-    - text: デザイナー (ドラッグ アンド ドロップ)
+    - text: デザイナーで (ドラッグ アンド ドロップ)
       url: tutorial-designer-automobile-price-train-score.md
-    - text: RStudio
+    - text: RStudio の使用
       url: tutorial-1st-r-experiment.md
 - title: Azure への ML モデルの持ち込み
   linkLists:

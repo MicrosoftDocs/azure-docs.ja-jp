@@ -3,7 +3,7 @@ title: SQL Server Always On 可用性グループの概要
 description: この記事では、Azure Virtual Machines での SQL Server Always On 可用性グループについて説明します。
 services: virtual-machines
 documentationCenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
-ms.author: mikeray
-ms.custom: seo-lt-2019
-ms.openlocfilehash: f3c7009e5ecb43a809b9a3f703fc5ba289a2fd00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: mathoma
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: bc0d5b0cdf616904ee7ed61fdc681ba60bff8f75
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669275"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480290"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Always On 可用性グループの概要。
 
@@ -41,10 +41,9 @@ Azure Virtual Machines での可用性グループの重要な違いは、仮想
 
 |  | Windows Server のバージョン | SQL Server のバージョン | SQL Server のエディション | WSFC クォーラムの構成 | マルチリージョンの DR | マルチサブネットのサポート | 既存の AD のサポート | マルチゾーン同一リージョンの DR | Dist-AG サポート (AD ドメインなし) | Dist-AG サポート (クラスターなし) |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
-| [SQL VM CLI](availability-group-az-cli-configure.md) | 2016 | 2017 </br>2016   | Ent | クラウド監視 | いいえ | はい | はい | はい | いいえ | いいえ |
-| [クイック スタート テンプレート](availability-group-quickstart-template-configure.md) | 2016 | 2017</br>2016  | Ent | クラウド監視 | いいえ | はい | はい | はい | いいえ | いいえ |
-| [手動](availability-group-manually-configure-prerequisites-tutorial.md) | All | All | All | All | はい | はい | はい | はい | はい | はい |
-| &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+| **[SQL VM CLI](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | Ent | クラウド監視 | いいえ | はい | はい | はい | いいえ | いいえ |
+| **[クイックスタート テンプレート](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | Ent | クラウド監視 | いいえ | はい | はい | はい | いいえ | いいえ |
+| **[マニュアル](availability-group-manually-configure-prerequisites-tutorial.md)** | All | All | All | All | はい | はい | はい | はい | はい | はい |
 
 **SQL Server AlwaysOn クラスター (プレビュー)** テンプレートが Azure Marketplace から削除され、入手できなくなりました。 
 

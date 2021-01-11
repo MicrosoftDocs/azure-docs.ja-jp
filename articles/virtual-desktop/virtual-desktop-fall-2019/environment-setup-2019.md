@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop の環境 - Azure
-description: Windows Virtual Desktop 環境の基本的な要素。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) の環境 - Azure
+description: Windows Virtual Desktop (クラシック) 環境の基本的な要素。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 153532b3c33158ee1a43db7883eb7a9ec621ade7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4fa281f6435013e9feb6808aab04ffa69c5f96c4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241677"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008612"
 ---
-# <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop の環境
+# <a name="windows-virtual-desktop-classic-environment"></a>Windows Virtual Desktop (クラシック) 環境
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../environment-setup.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../environment-setup.md)を参照してください。
 
 Windows Virtual Desktop は、仮想デスクトップと RemoteApp への簡単で安全なアクセスをユーザーに提供するサービスです。 このトピックでは、Windows Virtual Desktop 環境の一般構造について少し詳しく説明します。
 

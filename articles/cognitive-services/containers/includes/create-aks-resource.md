@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: d01245a76c5210a1843307b543f98d4f1d59d2cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877836"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87298813"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes Service クラスター リソースの作成
 
@@ -33,7 +33,7 @@ ms.locfileid: "80877836"
     |ノード サイズ|Standard DS2 v2:<br>`2 vCPUs`, `7 GB`|
     |ノード数|スライダーを既定値のままにします。|
 
-1. **[スケール]** タブで、 **[仮想ノード]** および **[VM Scale Sets]** は既定値のままにします。
+1. **[ノード プール]** タブで、 **[仮想ノード]** および **[VM Scale Sets]** は既定値のままにします。
 1. **[認証]** タブで、 **[サービス プリンシパル]** と **[RBAC を有効にします]** は既定値のままに設定します。
 1. **[ネットワーク]** タブで、次の選択を入力します。
 
@@ -42,7 +42,7 @@ ms.locfileid: "80877836"
     |HTTP アプリケーション ルーティング|いいえ|
     |ネットワーク構成|Basic|
 
-1. **[Monitoring]\(監視\)** タブで、 **[Enable container monitoring]\(コンテナーの監視を有効にする\)** が **[はい]** に設定されていることを確認し、 **[Log Analytics workspace]\(Log Analytics ワークスペース\)** は既定値のままにします。
+1. **[統合]** タブで、 **[コンテナー監視]** が **[有効]** に設定されていることを確認し、 **[Log Analytics ワークスペース]** は既定値のままにします。
 1. **[タグ]** タブで、名前と値のペアは今は空のままにしておきます。
 1. **[確認と作成]** を選択します。
 1. 検証に合格した後、 **[作成]** を選択します。

@@ -8,16 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 7e5c1c74a3659be855b3f846c16672d0d73b9de4
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: b4acd431656eb008702f62dc1ecf12bda62dae17
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309698"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051085"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Ink Recognizer API の言語と地域のサポート
+
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 この記事では、Ink Recognizer API でサポートされる言語について説明します。 次の言語で記述されたデジタル インク コンテンツは、API で解釈して処理できます。
 

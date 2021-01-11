@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/28/2020
+ms.date: 08/04/2020
 tags: azure-synpase
-ms.openlocfilehash: 4a6de0b2067cdc847b830fba7607be8cb8f265ab
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 14ae9103571d72b0a48ee8e1a9c9dc6bb008373b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981392"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552133"
 ---
 # <a name="dynamic-data-masking"></a>動的データ マスク 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -76,7 +76,7 @@ REST API を使用して、データ マスク ポリシーおよびルールを
 
 ### <a name="data-masking-policies"></a>データ マスキングのポリシー
 
-- [作成または更新](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate):指定された列の機密ラベルを作成または更新します。
+- [作成または更新](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate):データベース データ マスク ポリシーを作成または更新します。
 - [取得](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get):データベース データ マスク ポリシーを取得します。 
 
 ### <a name="data-masking-rules"></a>データ マスキングのルール

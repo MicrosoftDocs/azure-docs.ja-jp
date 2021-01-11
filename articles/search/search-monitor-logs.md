@@ -8,26 +8,26 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: c940d0dd4c92aca92291bfe1dbd6c15f1091f0b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611613"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935060"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Azure Cognitive Search 用のログ データを収集して分析する
 
 診断ログまたは操作ログでは、Azure Cognitive Search の詳細な操作に関する分析情報が提供され、サービスとワークロードのプロセスの監視に役立ちます。 内部的には、一部のシステム情報がバックエンドに存在しているのは、ユーザーがサポート チケットを提出した場合に調査と分析が行われるのに十分な短い時間です。 ただし、操作データを自分で管理したい場合は、診断設定を構成して、ログ情報が収集される場所を指定する必要があります。
 
-診断ログは、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) との統合を通じて有効になります。 
+診断ログは、[Azure Monitor](../azure-monitor/index.yml) との統合を通じて有効になります。 
 
 診断ログを設定するときに、ストレージ メカニズムを指定するように求められます。 次の表では、データを収集して保持するためのオプションの一覧を示します。
 
 | リソース | 使用目的 |
 |----------|----------|
-| [Log Analytics ワークスペースに送信する](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | イベントとメトリックは Log Analytics ワークスペースに送信され、ポータルでそのクエリを実行して、詳細な情報を取得できます。 概要については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata)に関するページを参照してください |
-| [Blob Storage でアーカイブする](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | イベントとメトリックは BLOB コンテナーにアーカイブされて、JSON ファイルに格納されます。 ログは非常に細かい単位 (時間/分ごと) で収集でき、特定のインシデントの調査には便利ですが、自由な調査には役立ちません。 未加工のログ ファイルを表示するには JSON エディターを使用し、ログ データを集計および視覚化するには Power BI を使用します。|
-| [イベント ハブへのストリーム](https://docs.microsoft.com/azure/event-hubs/) | イベントとメトリックは、Azure Event Hubs サービスにストリーム配信されます。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
+| [Log Analytics ワークスペースに送信する](../azure-monitor/learn/tutorial-resource-logs.md) | イベントとメトリックは Log Analytics ワークスペースに送信され、ポータルでそのクエリを実行して、詳細な情報を取得できます。 概要については、[Azure Monitor ログの使用](../azure-monitor/log-query/get-started-portal.md)に関するページを参照してください |
+| [Blob Storage でアーカイブする](../storage/blobs/storage-blobs-overview.md) | イベントとメトリックは BLOB コンテナーにアーカイブされて、JSON ファイルに格納されます。 ログは非常に細かい単位 (時間/分ごと) で収集でき、特定のインシデントの調査には便利ですが、自由な調査には役立ちません。 未加工のログ ファイルを表示するには JSON エディターを使用し、ログ データを集計および視覚化するには Power BI を使用します。|
+| [イベント ハブへのストリーム](../event-hubs/index.yml) | イベントとメトリックは、Azure Event Hubs サービスにストリーム配信されます。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "85611613"
 
 + [Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)
 
-+ [ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)
++ [ストレージ アカウントの作成](../storage/common/storage-account-create.md)
 
 + [Event Hub を作成する](../event-hubs/event-hubs-create.md)
 
@@ -122,9 +122,9 @@ Azure Monitor によってキャプチャされたログに記録されるイベ
 
 | OperationName | 説明 |
 |---------------|-------------|
-| ServiceStats | この操作は、[サービス統計情報の取得](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)に対するルーチン呼び出しです。直接呼び出されるか、またはポータル概要ページの内容を設定するために、その読み込み時または更新時に暗黙的に呼び出されます。 |
+| ServiceStats | この操作は、[サービス統計情報の取得](/rest/api/searchservice/get-service-statistics)に対するルーチン呼び出しです。直接呼び出されるか、またはポータル概要ページの内容を設定するために、その読み込み時または更新時に暗黙的に呼び出されます。 |
 | Query.Search |  インデックスに対するクエリ要求。ログに記録されるクエリについては、[クエリの監視](search-monitor-queries.md)に関するページを参照してください。|
-| Indexing.Index  | この操作は、[ドキュメントの追加、更新、削除](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)を行うための呼び出しです。 |
+| Indexing.Index  | この操作は、[ドキュメントの追加、更新、削除](/rest/api/searchservice/addupdate-or-delete-documents)を行うための呼び出しです。 |
 | indexes.Prototype | これは、データ インポート ウィザードによって作成されるインデックスです。 |
 | Indexers.Create | データ インポート ウィザードを通じて暗黙的にまたは明示的にインデクサーを作成します。 |
 | Indexers.Get | インデクサーが実行されるたびにそのインデクサーの名前を返します。 |

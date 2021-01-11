@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67180908"
 ---
- Azure Cloud Shell を使用している場合は、[試してみる] をクリックすると、Azure アカウントに自動的にサインインします。 ローカルにサインインするには、昇格された特権で PowerShell コンソールを開き、コマンドレットを実行して接続します。
+ Azure Cloud Shell を使用している場合は、[使ってみる] をクリックすると、Azure アカウントに自動的にサインインします。 ローカルにサインインするには、昇格された特権で PowerShell コンソールを開き、コマンドレットを実行して接続します。
 
 ```azurepowershell
 Connect-AzAccount

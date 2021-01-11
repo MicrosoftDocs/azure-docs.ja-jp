@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery を使用して Windows Server 2008 サーバーを Azure に移行する
-description: この記事では、Azure Site Recovery を使用して、オンプレミスの Windows Server 2008 マシンを Azure に移行する方法について説明します。
+title: Azure Migrate または Site Recovery を使用して Windows Server 2008 サーバーを Azure に移行する
+description: この記事では、オンプレミスの Windows Server 2008 マシンを Azure に移行する方法について説明したうえで、Azure Migrate をお勧めします。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281278"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845563"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
@@ -31,9 +31,11 @@ ms.locfileid: "87281278"
 
 ## <a name="migrate-with-azure-migrate"></a>Azure Migrate を使用した移行
 
-マシンを Azure に移行する際は、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用することをお勧めします。 Azure Migrate は、Azure Migrate、その他の Azure サービス、サードパーティ製のツールを使用して、オンプレミス マシンを評価して Azure に移行するための一元的なハブを提供します。 Azure Site Recovery は、移行でなくディザスター リカバリーのみに使用してください。
+マシンを Azure に移行する際は、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用することをお勧めします。 
 
-Azure Migrate は、Windows Server 2008 を実行しているサーバーの移行をサポートしています。
+- Azure Migrate は、サーバーの移行専用に設計されています。
+- Azure Migrate は、オンプレミスのマシンの検出、評価、および Azure への移行を行うための中心的なハブを提供します。 Azure Site Recovery は、移行でなくディザスター リカバリーのみに使用してください。
+- Azure Migrate は、Windows Server 2008 を実行しているサーバーの移行をサポートしています。
 
 
 ## <a name="migrate-with-site-recovery"></a>Site Recovery を使用した移行
@@ -104,7 +106,7 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 5. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。
 6. ダッシュボードからコンテナーにすばやくアクセスするには、 **[ダッシュボードにピン留めする]** 、 **[作成]** の順にクリックします。
 
-   ![新しいコンテナー](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
+   ![新しいコンテナーの作成オプションを示すスクリーンショット。](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
 新しいコンテナーは、 **[ダッシュボード]** の **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに追加されます。
 
@@ -136,15 +138,15 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 > [!WARNING]
 > レプリケーション ポリシーのアプリ整合性スナップショットの頻度の設定で、 **[オフ]** を指定していることを確認してください。 Windows Server 2008 を実行しているサーバーのレプリケート時は、クラッシュ整合性復旧ポイントだけがサポートされます。 アプリ整合性スナップショットの頻度にその他の値を指定すると、アプリケーション整合性復旧ポイントの不足が原因で、サーバーのレプリケーションの正常性が致命的な状態に変わり、エラーのアラートが発生します。
 
-   ![レプリケーション ポリシーの作成](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![レプリケーション ポリシー作成のオプションを示すスクリーンショット。](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ### <a name="enable-replication"></a>レプリケーションを有効にする
 
 Windows Server 2008 SP2 / Windows Server 2008 R2 SP1 サーバーが移行されるように、[レプリケーションを有効にします](physical-azure-disaster-recovery.md#enable-replication)。
    
-   ![物理サーバーを追加する](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
+   ![物理コンピューターを追加するためのオプションを示すスクリーンショット。](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
 
-   ![レプリケーションを有効にする](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
+   ![レプリケーションを有効にするためのオプションを示すスクリーンショット。](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
 ### <a name="run-a-test-migration"></a>テスト移行を実行する
 
@@ -152,7 +154,7 @@ Windows Server 2008 SP2 / Windows Server 2008 R2 SP1 サーバーが移行され
 
 Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を実行して、すべて想定どおりに動作していることを確認します。
 
-   ![[テスト フェールオーバー]](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![テスト フェールオーバー コマンドを示すスクリーンショット。](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ### <a name="migrate-to-azure"></a>Azure への移行
@@ -168,7 +170,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
     - 移行プロセスが終了し、サーバーのレプリケーションが停止して、そのサーバーでの Site Recovery の課金が停止します。
     - この手順でレプリケーション データがクリーンアップされます。 移行した VM は削除されません。
 
-   ![移行の完了](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![[移行の完了] コマンドを示すスクリーンショット。](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]

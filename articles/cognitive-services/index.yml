@@ -10,13 +10,14 @@ metadata:
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 03/24/2020
-  ms.openlocfilehash: 18c854389122c7e05a84ea0fd42b0cd2fd0c4c1c
-  ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+  ms.custom: custom-portals-hub
+  ms.date: 08/28/2020
+  ms.openlocfilehash: fac52ac6cc7018d2ddcaedd663abf26275f4929e
+  ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/10/2020
-  ms.locfileid: "86224368"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89074697"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -28,19 +29,19 @@ highlightedContent:
   - title: Cognitive Services と機械学習
     itemType: concept
     url: ./cognitive-services-and-machine-learning.md
-  - title: Cognitive Services の言語サポート
+  - title: 言語のサポート
     itemType: reference
     url: ./language-support.md
-  - title: Cognitive Services リソースの作成
+  - title: リソースの作成
     itemType: how-to-guide
     url: ./cognitive-services-apis-create-account.md
-  - title: コンテナーでの Cognitive Services の使用
+  - title: コンテナーでの使用
     itemType: concept
     url: ./cognitive-services-container-support.md
-  - title: Cognitive Services の仮想ネットワーク
+  - title: 仮想ネットワーク
     itemType: architecture
     url: cognitive-services-virtual-networks.md
-  - title: Cognitive Services のセキュリティ
+  - title: セキュリティ
     itemType: concept
     url: cognitive-services-security.md
 conceptualContent:
@@ -62,7 +63,7 @@ conceptualContent:
       text: Form Recognizer
     - url: ./ink-recognizer/index.yml
       itemType: overview
-      text: Ink Recognizer (プレビュー)
+      text: Ink Recognizer (廃止)
     - url: ../media-services/video-indexer/index.yml
       itemType: overview
       text: Video Indexer
@@ -71,7 +72,7 @@ conceptualContent:
     links:
     - url: ./immersive-reader/index.yml
       itemType: overview
-      text: Immersive Reader (プレビュー)
+      text: イマーシブ リーダー
     - url: ./luis/index.yml
       itemType: overview
       text: Language Understanding (LUIS)
@@ -90,6 +91,9 @@ conceptualContent:
     - url: ./speech-service/index.yml
       itemType: overview
       text: Speech サービス
+    - url: https://speech.microsoft.com/
+      itemType: overview
+      text: " - Speech Studio を使用してカスタマイズする"
   - title: 決定
     summary: 情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。
     links:
@@ -129,38 +133,41 @@ conceptualContent:
     - url: ./containers/container-faq.md
       itemType: reference
       text: Cognitive Services コンテナーに関する FAQ
-tools:
-  title: ソフトウェア開発キット (SDK)
-  summary: Cognitive Services SDK をお好きなプログラミング言語で使い始めましょう。
-  items:
-  - title: C#
-    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
-    url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
-  - title: Go
-    imageSrc: https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg
-    url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
-  - title: Java
-    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
-    url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
-  - title: JavaScript
-    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
-    url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
-  - title: Python
-    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
-    url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python
-  - title: R
-    imageSrc: https://docs.microsoft.com/media/logos/logo_R.svg
-    url: https://github.com/Azure/AzureCognitive
 additionalContent:
   sections:
-  - items:
-    - title: その他のリソース
+  - title: その他のリソース
+    items:
+    - title: カスタマイズ用のポータル
+      links:
+      - text: Custom Translator
+        url: https://portal.customtranslator.azure.ai/
+      - text: Custom Vision
+        url: https://www.customvision.ai/
+      - text: Language Understanding (LUIS)
+        url: https://luis.ai
+      - text: QnA Maker
+        url: https://www.qnamaker.ai/
+      - text: Speech Studio
+        url: https://speech.microsoft.com/
+    - title: SDK と REST API
+      links:
+      - text: C#
+        url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet
+      - text: Go
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices
+      - text: Java
+        url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client?view=azure-java-stable
+      - text: JavaScript
+        url: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest
+      - text: Python
+        url: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python
+      - text: R
+        url: https://github.com/Azure/AzureCognitive
+      - text: Cognitive Services Management REST API
+        url: https://docs.microsoft.com/rest/api/cognitiveservices/
+    - title: ツール
       links:
       - text: Azure CLI
         url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
         url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
-    - title: REST API
-      links:
-      - text: Cognitive Services Management
-        url: https://docs.microsoft.com/rest/api/cognitiveservices/

@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9a1f86a78eaac96f2a6202b4ec29e99a0a978ff1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554380"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116803"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -25,7 +25,7 @@ ms.locfileid: "85554380"
 
 まだ使い始めたばかりの場合は、[Microsoft ID プラットフォームのドキュメント](index.yml)を確認して、Microsoft ID プラットフォームでの認証の基本、アプリケーション シナリオなどについて学習してください。
 
-次のチェックリストは、アプリケーションが [Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/)と効果的に統合されていることを確認するために使用します。
+次のチェックリストは、アプリケーションが [Microsoft ID プラットフォーム](./index.yml)と効果的に統合されていることを確認するために使用します。
 
 > [!TIP]
 > Azure portal の"*統合アシスタント*" は、これらのベスト プラクティスと推奨事項の多くを適用するのに役立ちます。 アシスタントの使用を開始するには、Azure portal で [[アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) を選択し、 **[Integration assistant (preview)]\(統合アシスタント (プレビュー)\)** メニュー項目を選択します。
@@ -58,9 +58,9 @@ ms.locfileid: "85554380"
 
 ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) ユーザー名/パスワードにうまく対処します。 ユーザーのパスワードを直接処理する[リソース所有者パスワード資格情報フロー (ROPC)](v2-oauth-ropc.md) を使用しないでください。 このフローには高度な信頼とユーザーの公開が必要であり、他のより安全なフローを使用できない場合にのみ使用します。 このフローは、一部のシナリオ (DevOps など) ではまだ必要ですが、それを使用するとアプリケーションに制約が課せされることに注意してください。  最新の手法については、「[認証フローとアプリケーションのシナリオ](authentication-flows-app-scenarios.md)」を参照してください。
 
-![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) Web アプリ、Web API、およびデーモン アプリに対応した機密アプリの資格情報を保護および管理します。 パスワードの資格情報 (クライアント シークレット) ではなく、[証明書の資格情報](active-directory-certificate-credentials.md)を使用します。 パスワードの資格情報を使用する必要がある場合は、手動で設定しないでください。 資格情報は、コードまたは構成に格納しないでください。また、資格情報の人間による処理を許可しないでください。 可能であれば、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) または [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) を使用して資格情報を格納し、定期的にローテーションします。
+![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) Web アプリ、Web API、およびデーモン アプリに対応した機密アプリの資格情報を保護および管理します。 パスワードの資格情報 (クライアント シークレット) ではなく、[証明書の資格情報](active-directory-certificate-credentials.md)を使用します。 パスワードの資格情報を使用する必要がある場合は、手動で設定しないでください。 資格情報は、コードまたは構成に格納しないでください。また、資格情報の人間による処理を許可しないでください。 可能であれば、[Azure リソースのマネージド ID](../managed-identities-azure-resources/overview.md) または [Azure Key Vault](../../key-vault/general/basic-concepts.md) を使用して資格情報を格納し、定期的にローテーションします。
 
-![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) アプリケーションで最低限の特権のアクセス許可が要求されていることを確認します。 アプリケーションに絶対に必要なアクセス許可のみを必要なときにのみ必須とします。 [各種アクセス許可](v2-permissions-and-consent.md#permission-types)を理解します。 必要に応じて、アプリケーションのアクセス許可のみを使用します。可能であれば、委任されたアクセス許可を使用してください。 Microsoft Graph のアクセス許可の一覧については、こちらの[アクセス許可リファレンス](https://docs.microsoft.com/graph/permissions-reference)を参照してください。
+![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) アプリケーションで最低限の特権のアクセス許可が要求されていることを確認します。 アプリケーションに絶対に必要なアクセス許可のみを必要なときにのみ必須とします。 [各種アクセス許可](v2-permissions-and-consent.md#permission-types)を理解します。 必要に応じて、アプリケーションのアクセス許可のみを使用します。可能であれば、委任されたアクセス許可を使用してください。 Microsoft Graph のアクセス許可の一覧については、こちらの[アクセス許可リファレンス](/graph/permissions-reference)を参照してください。
 
 ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) Microsoft ID プラットフォームを使用して API をセキュリティで保護している場合は、公開する必要があるアクセス許可について慎重に検討します。 ソリューションに適した細分性と、管理者の同意が必要なアクセス許可を考慮します。 どのような承認でも、決定する前に受信トークンで予想されるアクセス許可を確認します。
 
@@ -68,7 +68,7 @@ ms.locfileid: "85554380"
 
 ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) 最新の認証ソリューション (OAuth 2.0、[OpenID Connect](v2-protocols-oidc.md)) を使用して安全にユーザーのサインインを行います。
 
-![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) OAuth 2.0 や Open ID などのプロトコルに対する直接的なプログラミングは行いません。 代わりに、[Microsoft Authentication Library (MSAL)](msal-overview.md) を活用してください。 MSAL ライブラリでは、使いやすいライブラリ内に安全にセキュリティ プロトコルがラップされており、[条件付きアクセス](/azure/active-directory/conditional-access/overview)のシナリオに対する組み込みのサポート、デバイス全体の[シングル サインオン (SSO)](/azure/active-directory/manage-apps/what-is-single-sign-on)、および組み込みのトークン キャッシュ サポートを利用できます。 詳細については、Microsoft がサポートする[クライアント ライブラリ](reference-v2-libraries.md#microsoft-supported-client-libraries)および[ミドルウェア ライブラリ](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)の一覧と、[互換性のあるサードパーティのクライアント ライブラリ](reference-v2-libraries.md#compatible-client-libraries)の一覧を参照してください。<br/><br/>認証プロトコル用に手作業でコーディングする必要がある場合は、[Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) などの手法に従う必要があります。 各プロトコルの標準仕様におけるセキュリティの考慮事項に十分注意してください。
+![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) OAuth 2.0 や Open ID などのプロトコルに対する直接的なプログラミングは行いません。 代わりに、[Microsoft Authentication Library (MSAL)](msal-overview.md) を活用してください。 MSAL ライブラリでは、使いやすいライブラリ内に安全にセキュリティ プロトコルがラップされており、[条件付きアクセス](../conditional-access/overview.md)のシナリオに対する組み込みのサポート、デバイス全体の[シングル サインオン (SSO)](../manage-apps/what-is-single-sign-on.md)、および組み込みのトークン キャッシュ サポートを利用できます。 詳細については、Microsoft がサポートする[クライアント ライブラリ](reference-v2-libraries.md#microsoft-supported-client-libraries)および[ミドルウェア ライブラリ](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)の一覧と、[互換性のあるサードパーティのクライアント ライブラリ](reference-v2-libraries.md#compatible-client-libraries)の一覧を参照してください。<br/><br/>認証プロトコル用に手作業でコーディングする必要がある場合は、[Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) などの手法に従う必要があります。 各プロトコルの標準仕様におけるセキュリティの考慮事項に十分注意してください。
 
 ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) から [Microsoft Authentication Library](msal-overview.md) へ既存のアプリを移行します。 MSAL は、Microsoft の最新の ID プラットフォーム ソリューションであり、ADAL に適しています。 .NET、JavaScript、Android、iOS、macOS で利用可能であり、Python と Java についてはパブリック プレビュー段階です。 [ADAL.NET](msal-net-migration.md)、[ADAL.js](msal-compare-msal-js-and-adal-js.md)、および [ADAL.NET と iOS ブローカー](msal-net-migration-ios-broker.md)アプリの移行に関する詳細を確認してください。
 

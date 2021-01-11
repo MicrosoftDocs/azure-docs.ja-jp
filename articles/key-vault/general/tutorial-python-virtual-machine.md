@@ -8,29 +8,27 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: 453307b304c4cb1899b1de31117c944ac66fcddb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: c0f98f8c77e4a9cd4271511e0169f07da1c52baa
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093937"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875951"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>チュートリアル:Python で仮想マシンを使用して Azure Key Vault を使用する
 
-Azure Key Vault は、API キーや、アプリケーション、サービス、IT リソースへのアクセスに必要なデータベース接続文字列などのシークレットを保護するのに役立ちます。
+Azure Key Vault は、API キーやデータベース接続文字列などのキー、シークレット、証明書を保護するのに役立ちます。
 
-このチュートリアルでは、コンソール アプリケーションで Azure Key Vault から情報を読み取る方法について学習します。 そのためには、Azure リソースのマネージド ID を使用します。 
-
-このチュートリアルでは、次の操作方法について説明します。
+このチュートリアルでは、Azure リソース用マネージド ID を使用して Azure Key Vault から情報を読み取るよう Python アプリケーションを設定します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Key Vault を作成します。
-> * キー コンテナーにシークレットを追加します。
-> * キー コンテナーからシークレットを取得する。
-> * Azure 仮想マシンを作成します。
-> * マネージド ID を有効化します。
-> * VM ID にアクセス許可を割り当てます。
+> * Key Vault を作成します
+> * Key Vault にシークレットを格納する
+> * Azure Linux 仮想マシンを作成する
+> * 仮想マシンに対して[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を有効にする
+> * コンソール アプリケーションが Key Vault のデータを読み取るために必要なアクセス許可を付与する
+> * Key Vault からシークレットを取得する
 
 始める前に、[Key Vault の基本的な概念](basic-concepts.md)を確認してください。 
 
@@ -50,34 +48,43 @@ Azure CLI を使用して Azure にログインするには、次のように入
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
+## <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-## <a name="add-a-secret-to-the-key-vault"></a>キー コンテナーにシークレットを追加する
+## <a name="populate-your-key-vault-with-a-secret"></a>キー コンテナーにシークレットを格納する
 
-シークレットのしくみをよく理解できるように、シークレットを追加します。 シークレットとしては、SQL 接続文字列など、安全性と、アプリケーションから利用できる状態の両方を維持するために必要な情報が考えられます。
-
-**AppSecret** というキー コンテナーにシークレットを作成するには、次のコマンドを入力します。
-
-```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
-```
-
-このシークレットには、**MySecret** という値が格納されます。
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
-次のいずれかの方法を使用して、仮想マシンを作成できます。
 
-* [Azure CLI](../../virtual-machines/windows/quick-create-cli.md)
-* [PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
-* [Azure ポータル](../../virtual-machines/windows/quick-create-portal.md)
+次のいずれかの方法を使用して、**myVM** という名前の VM を作成します。
+
+| Linux | Windows |
+|--|--|
+| [Azure CLI](../../virtual-machines/linux/quick-create-cli.md) | [Azure CLI](../../virtual-machines/windows/quick-create-cli.md) |
+| [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
+| [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure ポータル](../../virtual-machines/windows/quick-create-portal.md) |
+
+Azure CLI を使用して Linux VM を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。  次の例では、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh*) に配置されます。 
+
+```azurecli-interactive
+az vm create \
+  --resource-group myResourceGroup \
+  --name myVM \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --generate-ssh-keys
+```
+
+出力の `publicIpAddress` の値を記録しておきます。
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
-この手順では、Azure CLI で次のコマンドを実行して、仮想マシンに対するシステム割り当て ID を作成します。
+
+Azure CLI の [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) コマンドを使用して、仮想マシンに対するシステム割り当ての ID を作成します。
 
 ```azurecli
-az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
+az vm identity assign --name "myVM" --resource-group "myResourceGroup"
 ```
 
 システムによって割り当てられた ID が次のコードに表示されていることにご注意ください。 上記のコマンドの出力は次のようになります。 
@@ -90,65 +97,73 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
+
 ここで、次のコマンドを実行して、以前に作成した ID アクセス許可をキー コンテナーに割り当てることができます。
 
 ```azurecli
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
+az keyvault set-policy --name "<your-unique-keyvault-name>" --object-id "<systemAssignedIdentity>" --secret-permissions get list
 ```
 
-## <a name="log-on-to-the-virtual-machine"></a>仮想マシンへのログオン
+## <a name="log-in-to-the-vm"></a>VM にログインする
 
-仮想マシンにログオンするには、[Windows が実行されている Azure 仮想マシンへの接続とサインオン](../../virtual-machines/windows/connect-logon.md)に関する記事の手順に従ってください。
+仮想マシンにサインインするには、[Linux が実行されている Azure 仮想マシンへの接続とサインイン](../../virtual-machines/linux/login-using-aad.md)に関するページまたは [Windows が実行されている Azure 仮想マシンへの接続とサインイン](../../virtual-machines/windows/connect-logon.md)に関するページの手順のようにします。
 
-## <a name="create-and-run-a-sample-python-app"></a>サンプルの Python アプリを作成して実行する
 
-次のセクションに、*Sample.py* という名前のファイルの例があります。 ここでは、HTTP GET 呼び出しを行うために[要求](https://2.python-requests.org/en/master/)ライブラリが使用されます。
+Linux VM にログインするには、「[仮想マシンの作成](#create-a-virtual-machine)」ステップで得られた "<publicIpAddress>" を指定して ssh コマンドを使用します。
 
-## <a name="edit-samplepy"></a>Sample.py を編集する
+```terminal
+ssh azureuser@<PublicIpAddress>
+```
 
-*Sample.py* の作成後、ファイルを開いてこのセクションのコードをコピーします。 
+## <a name="install-python-libraries-on-the-vm"></a>VM に Python ライブラリをインストールする
 
-このコードは、2 段階のプロセスを表します。
-1. VM 上のローカル MSI エンドポイントからトークンをフェッチします。  
-  それにより、Azure AD からもトークンがフェッチされます。
-1. トークンをキー コンテナーに渡し、シークレットをフェッチします。 
+仮想マシンで、Python スクリプトで使用する 2 つの Python ライブラリ `azure-keyvault-secrets` と `azure.identity` をインストールします。  
+
+たとえば、Linux VM では、`pip3` を使用してこれらをインストールできます。
+
+```bash
+pip3 install azure-keyvault-secrets
+
+pip3 install azure.identity
+```
+
+## <a name="create-and-edit-the-sample-python-script"></a>サンプルの Python スクリプトを作成して編集する
+
+仮想マシンで、**sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。"<your-unique-keyvault-name>" はお使いのキー コンテナーの名前に置き換えます。
 
 ```python
-    # importing the requests library 
-    import requests 
+from azure.keyvault.secrets import SecretClient
+from azure.identity import DefaultAzureCredential
 
-    # Step 1: Fetch an access token from a Managed Identity enabled azure resource.
-    # Resources with an MSI configured recieve an AAD access token by using the Azure Instance Metadata Service (IMDS)
-    # IMDS provides an endpoint accessible to all IaaS VMs using a non-routable well-known IP Address
-    # To learn more about IMDS and MSI Authentication see the following link: https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service
-    # Note that the resource here is https://vault.azure.net for public cloud and api-version is 2018-02-01
-    MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
-    r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"}) 
-      
-    # extracting data in json format 
-    # This request gets an access_token from Azure AD by using the local MSI endpoint.
-    data = r.json() 
-    
-    # Step 2: Pass the access_token received from previous HTTP GET call to your key vault.
-    KeyVaultURL = "https://{YOUR KEY VAULT NAME}.vault.azure.net/secrets/{YOUR SECRET NAME}?api-version=2016-10-01"
-    kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
-    
-    print(kvSecret.json()["value"])
+keyVaultName = "<your-unique-keyvault-name>"
+KVUri = f"https://{keyVaultName}.vault.azure.net"
+secretName = "mySecret"
+
+credential = DefaultAzureCredential()
+client = SecretClient(vault_url=KVUri, credential=credential)
+retrieved_secret = client.get_secret(secretName)
+
+print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_secret.value}'")
 ```
 
-次のコードを実行して、シークレット値を表示できます。 
+## <a name="run-the-sample-python-app"></a>サンプルの Python アプリを実行する
 
-```console
-python Sample.py
+最後に、**sample.py** を実行します。 すべてがうまくいった場合、シークレットの値が返されます。
+
+```bash
+python3 sample.py
+
+The value of secret 'mySecret' in '<your-unique-keyvault-name>' is: 'Success!'
 ```
-
-前出のコードは、Windows 仮想マシンで Azure Key Vault を操作する方法を示しています。 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、仮想マシンとキー コンテナーを削除します。
+必要がなくなったら、仮想マシンとキー コンテナーを削除します。  それらが属しているリソース グループを削除するだけで、簡単にこれを行うことができます。
+
+```azurecli
+az group delete -g myResourceGroup
+```
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+[Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

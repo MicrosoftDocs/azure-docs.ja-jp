@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 02/27/2020
-  ms.openlocfilehash: c32ca826eb7ebbc773d86a8cfae65cdd4984bcd0
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: fdda3f72c9ed70130a5f5d3877e677ee625a024d
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78192729"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89393532"
 landingContent:
 - title: HDInsight について
   linkLists:
@@ -24,209 +24,143 @@ landingContent:
     links:
     - text: Azure HDInsight とは
       url: ./hdinsight-overview.md
-  - linkListType: learn
+    - text: HDInsight の OSS コンポーネントとバージョン
+      url: ./hdinsight-component-versioning.md
+  - linkListType: get-started
     links:
     - text: Azure HDInsight を使用した分析ソリューションの構築
       url: https://docs.microsoft.com/learn/paths/build-oss-analytical-solutions-az-hdinsight/
+    - text: HDInsight クラスターの作成
+      url: ./hdinsight-hadoop-provision-linux-clusters.md
+    - text: HDInsight での監視
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: クラスターのスケーリングによるコストの節約
+      url: ./hdinsight-scaling-best-practices.md
+    - text: HDInsight のセキュリティの概要
+      url: ./domain-joined/hdinsight-security-overview.md
+- title: Apache Spark
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Apache Spark とは
+      url: ./spark/apache-spark-overview.md
+    - text: Jupyter で Spark クラスターを作成して Spark を実行する
+      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+    - text: データを読み込んで Spark クエリを実行する
+      url: ./spark/apache-spark-load-data-run-query.md
+  - linkListType: how-to-guide
+    links:
+    - text: Spark の依存関係の管理
+      url: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
+    - text: Spark ジョブの最適化
+      url: ./spark/apache-spark-perf.md
+- title: Apache Hadoop
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Apache Hadoop とは
+      url: ./hadoop/apache-hadoop-introduction.md
+    - text: Hadoop クラスターを作成して Hive クエリを実行する
+      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+    - text: Hadoop サンプルを実行する
+      url: ./hadoop/apache-hadoop-run-samples-linux.md
+  - linkListType: how-to-guide
+    links:
+    - text: Hadoop クラスターの監視と管理
+      url: ./hdinsight-hadoop-manage-ambari.md
+    - text: JDBC/ODBC ドライバーの使用
+      url: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+- title: 統合
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Spark/Hive - Hive Warehouse Connector を使用して Spark と Hive を関連付ける
+      url: ./interactive-query/apache-hive-warehouse-connector.md
+    - text: Spark/Kafka - Apache Kafka による Apache Spark 構造化ストリーミング
+      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
+    - text: Spark/HBase - Apache Spark で Apache HBase にクエリを実行する
+      url: ./hdinsight-using-spark-query-hbase.md
+    - text: ADF を使用してオンデマンド クラスターを作成する
+      url: ./hdinsight-hadoop-create-linux-clusters-adf.md
   - linkListType: concept
     links:
-    - text: HDInsight のコンポーネントとバージョン
-      url: ./hdinsight-component-versioning.md
     - text: 適切な VM サイズの選択
       url: ./hdinsight-selecting-vm-size.md
     - text: HDInsight でサポートされている VM の種類
       url: ./hdinsight-supported-node-configuration.md
     - text: ストレージ オプションの比較
       url: ./hdinsight-hadoop-compare-storage-options.md
-  - linkListType: tutorial
-    links:
-    - text: HDInsight クラスターを設定する
-      url: ./hdinsight-hadoop-provision-linux-clusters.md
-    - text: Data Lake Store Gen2 でクラスターを作成する
-      url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
-  - linkListType: whats-new
-    links:
-    - text: カスタム Ambari DB
-      url: ./hdinsight-custom-ambari-db.md
-    - text: '自動スケーリング: Hadoop クラスターを自動的にスケーリングする'
-      url: ./hdinsight-autoscale-clusters.md
-    - text: HDInsight での監視
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: Apache Hive テーブルを HDInsight 4.0 に移行する
-      url: ./interactive-query/apache-hive-migrate-workloads.md
-- title: Apache Spark
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Apache Spark とは
-      url: ./spark/apache-spark-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Azure portal で Apache Spark クラスターを作成する
-      url: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
-  - linkListType: concept
-    links:
-    - text: Spark ジョブの最適化
-      url: ./spark/apache-spark-perf.md
-  - linkListType: tutorial
-    links:
-    - text: Spark 用の Scala Maven アプリケーションを作成する
-      url: ./spark/apache-spark-create-standalone-application.md
-    - text: データを読み込んで Apache Spark クエリを実行する
-      url: ./spark/apache-spark-load-data-run-query.md
-    - text: Apache Spark で Apache HBase にクエリを実行する
-      url: ./hdinsight-using-spark-query-hbase.md
-    - text: Power BI を使用して Spark のデータを分析する
-      url: ./spark/apache-spark-use-bi-tools.md
-- title: Apache Hadoop
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Apache Hadoop とは
-      url: ./hadoop/apache-hadoop-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: Azure portal で Apache Hadoop クラスターを作成する
-      url: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
-  - linkListType: concept
-    links:
-    - text: Hadoop の大規模な ETL
-      url: ./hadoop/apache-hadoop-etl-at-scale.md
-    - text: Hadoop をクラウドに移行する
-      url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-    - text: Hadoop クラスターの容量計画
-      url: ./hdinsight-capacity-planning.md
-  - linkListType: tutorial
-    links:
-    - text: Excel を Apache Hadoop に接続する
-      url: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-    - text: Azure Monitor ログを使用して Hadoop を監視する
-      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
-    - text: Ambari UI を使用して Hadoop クラスターを監視および管理する
-      url: ./hdinsight-hadoop-manage-ambari.md
 - title: Apache Kafka
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Apache Kafka とは
       url: ./kafka/apache-kafka-introduction.md
-  - linkListType: quickstart
-    links:
-    - text: Azure portal で Apache Kafka クラスターを作成する
+    - text: Kafka クラスターの作成と Kafka トピックの管理
       url: ./kafka/apache-kafka-get-started.md
-  - linkListType: concept
-    links:
-    - text: Kafka REST プロキシ
-      url: ./kafka/rest-proxy.md
-    - text: 3.6 から 4.0 に移行する
-      url: ./kafka/migrate-versions.md
-    - text: Kafka のパフォーマンスを最適化する
-      url: ./kafka/apache-kafka-performance-tuning.md
-    - text: Kafka のスケーラビリティ
-      url: ./kafka/apache-kafka-scalability.md
-    - text: Kafka の高可用性
-      url: ./kafka/apache-kafka-high-availability.md
-  - linkListType: tutorial
-    links:
-    - text: Kafka Producer API と Consumer API を使用する
+    - text: Producer および Consumer API の使用
       url: ./kafka/apache-kafka-producer-consumer-api.md
-    - text: Apache Kafka による Apache Spark 構造化ストリーミング
-      url: ./hdinsight-apache-kafka-spark-structured-streaming.md
-    - text: ディザスター リカバリーのための Kafka のミラーリング
-      url: ./kafka/apache-kafka-mirroring.md
-    - text: 認証用の Kafka SSL の設定
+  - linkListType: how-to-guide
+    links:
+    - text: Kafka REST プロキシを使用する
+      url: ./kafka/rest-proxy.md
+    - text: Kafka TLS 暗号化および認証
       url: ./kafka/apache-kafka-ssl-encryption-authentication.md
-- title: Apache HBase
-  linkLists:
-  - linkListType: overview
-    links:
-    - text: Apache HBase とは
-      url: ./hbase/apache-hbase-overview.md
-  - linkListType: quickstart
-    links:
-    - text: Apache Phoenix を使用して HBase を照会する
-      url: ./hbase/apache-hbase-query-with-phoenix.md
-  - linkListType: concept
-    links:
-    - text: Apache HBase 用書き込みアクセラレータ
-      url: ./hbase/apache-hbase-accelerated-writes.md
-    - text: Apache Phoenix のベスト プラクティス
-      url: ./hbase/apache-hbase-phoenix-performance.md
-  - linkListType: tutorial
-    links:
-    - text: Azure HDInsight で Apache HBase を使用する
-      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - text: HBase を新しいバージョンに移行する
-      url: ./hbase/apache-hbase-migrate-new-version.md
 - title: Interactive query
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: 対話型クエリとは
       url: ./interactive-query/apache-interactive-query-get-started.md
-  - linkListType: quickstart
-    links:
-    - text: Apache Zeppelin を使用して Apache Hive クエリを実行する
-      url: ./interactive-query/hdinsight-connect-hive-zeppelin.md
-  - linkListType: concept
-    links:
-    - text: Hive クエリを最適化する
-      url: ./hdinsight-hadoop-optimize-hive-query.md
-    - text: ETL ツールとして Hive を使用する
-      url: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-  - linkListType: tutorial
-    links:
     - text: Apache Hive を使用してフライト データを分析する
       url: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
-    - text: Hive Warehouse Connector を使用して Spark と Hive を関連付ける
-      url: ./interactive-query/apache-hive-warehouse-connector.md
-    - text: DirectQuery を使用して Hive を Power BI に接続する
+  - linkListType: how-to-guide
+    links:
+    - text: クラスターのサイズ設定ガイド
+      url: ./interactive-query/hive-llap-sizing-guide.md
+    - text: Hive を Power BI に関連付ける
       url: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
 - title: エンタープライズ対応
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: HDInsight のセキュリティの概要
       url: ./domain-joined/hdinsight-security-overview.md
-  - linkListType: concept
-    links:
     - text: 仮想ネットワークを計画する
       url: ./hdinsight-plan-virtual-network-deployment.md
     - text: 'Active Directory 上の Hadoop: Enterprise セキュリティ パッケージ'
       url: ./domain-joined/apache-domain-joined-architecture.md
-    - text: Hadoop クラスターを自動的にスケーリングする
-      url: ./hdinsight-autoscale-clusters.md
     - text: オンプレミスのクラスターをクラウドに移行する
       url: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
-  - linkListType: tutorial
+- title: Apache HBase
+  linkLists:
+  - linkListType: get-started
     links:
-    - text: Azure ADDS を使用したエンタープライズ セキュリティ設定
-      url: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
+    - text: Apache HBase とは
+      url: ./hbase/apache-hbase-overview.md
+    - text: Azure HDInsight で HBase を使用する
+      url: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - text: Apache Phoenix を使用して HBase を照会する
+      url: ./hbase/apache-hbase-query-with-phoenix.md
+  - linkListType: how-to-guide
+    links:
+    - text: HBase 用書き込みアクセラレータを有効にする
+      url: ./hbase/apache-hbase-accelerated-writes.md
+    - text: Apache Phoenix のベスト プラクティス
+      url: ./hbase/apache-hbase-phoenix-performance.md
 - title: ML サービス
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: HDInsight での ML Services とは
       url: ./r-server/r-server-overview.md
-  - linkListType: quickstart
-    links:
     - text: ML Services クラスターで R スクリプトを実行する
       url: ./r-server/machine-learning-services-quickstart-job-rstudio.md
-  - linkListType: tutorial
-    links:
-    - text: Spark コンピューティング コンテキストで R を使用する
-      url: ./r-server/ml-services-tutorial-spark-compute.md
 - title: Apache Storm
   linkLists:
-  - linkListType: overview
+  - linkListType: get-started
     links:
     - text: Apache Storm とは
       url: ./storm/apache-storm-overview.md
-  - linkListType: quickstart
-    links:
     - text: Apache Storm トポロジを作成する
       url: ./storm/apache-storm-quickstart.md
-  - linkListType: tutorial
-    links:
-    - text: Apache Storm を使用して HDFS に書き込む
-      url: ./storm/apache-storm-write-data-lake-store.md

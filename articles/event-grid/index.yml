@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/06/2019
-  ms.openlocfilehash: 095d94b09ad7cfd6e47e7322401db0bbf6ff8a03
-  ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+  ms.openlocfilehash: 5edd80414035591ede06ae1595ec562be0cd92be
+  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/15/2020
-  ms.locfileid: "81393201"
+  ms.lasthandoff: 08/06/2020
+  ms.locfileid: "87831959"
 landingContent:
 - title: Event Grid について
   linkLists:
@@ -84,7 +84,7 @@ landingContent:
   - linkListType: architecture
     links:
     - text: キューとイベント向けの参照アーキテクチャ
-      url: https://docs.microsoft.com/azure/architecture/reference-architectures/enterprise-integration/queues-events
+      url: /azure/architecture/reference-architectures/enterprise-integration/queues-events
 - title: カスタマイズ
   linkLists:
   - linkListType: quickstart

@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: e12d5d7e9cfc6cfa80de1032e3d4d5659c44c0a7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6b07b6c3e54f4aebcda6c2e84047ecd1a27b3d5b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86075890"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809478"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>自動データベース バックアップを使用して復旧する - Azure SQL Database および SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-既定では、Azure SQL Database と Azure SQL Managed Instance のバックアップは geo レプリケートされた BLOB ストレージ (RA-GRS ストレージの種類) に格納されます。 [自動データベース バックアップ](automated-backups-overview.md)を使用したデータベースの復旧には、次のオプションを使用できます。 次のようにすることができます。
+[自動データベース バックアップ](automated-backups-overview.md)を使用したデータベースの復旧には、次のオプションを使用できます。 次のようにすることができます。
 
 - 同じサーバー上に、保有期間内の特定の時点に復旧された新しいデータベースを作成する。
 - 同じサーバー上に、削除済みデータベースの削除時に復旧されたデータベースを作成する。
@@ -33,6 +33,11 @@ ms.locfileid: "86075890"
 
 > [!IMPORTANT]
 > 復元中に既存のデータベースを上書きすることはできません。
+
+既定では、Azure SQL Database と Azure SQL Managed Instance のバックアップは geo レプリケートされた BLOB ストレージ (RA-GRS ストレージの種類) に格納されます。 加えて、SQL Managed Instance では、ローカル冗長 (LRS) とゾーン冗長 (ZRS) バックアップ ストレージもサポートされます。 冗長性によって、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止または停電、大規模な自然災害など) から確実にデータが保護されます。 ゾーン冗長ストレージ (ZRS) は[特定のリージョン](../../storage/common/storage-redundancy.md#zone-redundant-storage)でのみ利用できます。
+
+> [!IMPORTANT]
+> バックアップに使用するストレージの冗長性は、マネージド インスタンスに対してのみ構成できます。またその構成は、作成プロセス中に行うことができます。 リソースがプロビジョニングされた後に、バックアップ ストレージ冗長性オプションを変更することはできません。
 
 Standard または Premium のサービス レベルを使用している場合、データベースの復元によって追加のストレージ コストが発生する可能性があります。 復元されたデータベースの最大サイズが、ターゲット データベースのサービス レベルとパフォーマンス レベルに含まれるストレージの量を超えると、追加のコストが発生します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 実際に使用される容量が、含まれるストレージの量より少ない場合、データベースの最大サイズを含まれる量に設定することで、この追加コストを回避できます。
 
@@ -51,7 +56,7 @@ Standard または Premium のサービス レベルを使用している場合�
 
 単一サブスクリプションには、同時リストア要求の数に制限があります。 これらの制限は、ポイントインタイム リストア、geo リストア、および長期保有バックアップからの復元の任意の組み合わせに適用されます。
 
-|| **処理される同時要求の最大数** | **送信される同時要求の最大数** |
+| **デプロイ オプション** | **処理される同時要求の最大数** | **送信される同時要求の最大数** |
 | :--- | --: | --: |
 |**単一データベース (サブスクリプションごと)**|10|60|
 |**エラスティック プール (プールごと)**|4|200|
@@ -136,6 +141,9 @@ Azure SQL Database の削除されたデータベースの復元方法を示す�
 > 削除されたデータベースをプログラムで復元するには、「[自動バックアップを使用したプログラム実行の復旧](recovery-using-backups.md)」を参照してください。
 
 ## <a name="geo-restore"></a>geo リストア
+
+> [!IMPORTANT]
+> geo リストアは、geo 冗長 (RA-GRS) バックアップ ストレージ タイプを使用して構成されたマネージド インスタンスでのみ利用できます。 ローカル冗長またはゾーン冗長バックアップ ストレージ タイプを使用して構成されたマネージド インスタンスでは、geo リストアはサポートされません。
 
 最新の geo レプリケートされたバックアップから、任意の Azure リージョンの任意の SQL Database サーバーにデータベースを復元するか、任意のマネージド インスタンスにインスタンス データベースを復元できます。 geo リストアでは、geo レプリケートされたバックアップをソースとして使用します。 データベースまたはデータセンターが停止してアクセスできない場合でも、geo リストアを要求できます。
 

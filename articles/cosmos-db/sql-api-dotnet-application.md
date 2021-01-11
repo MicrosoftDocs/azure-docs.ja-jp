@@ -8,12 +8,13 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
-ms.openlocfilehash: 69a0fec0dd5036b021926045ff3a63a011966654
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118884"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051298"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
 
@@ -116,36 +117,19 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 ### <a name="add-views"></a><a name="add-views"></a>ビューを追加する
 
-次は、次の 3 つのビューを作成しましょう。
+次に、次のビューを追加します。
 
-* 項目を一覧表示するためのビューを追加する
-* 新しい項目を作成するためのビューを追加する
-* 項目を編集するためのビューを追加する
+* 項目の作成ビュー
+* 項目の削除ビュー
+* 項目の詳細を取得するビュー
+* 項目の編集ビュー
+* すべての項目を一覧表示するビュー
 
-#### <a name="add-a-list-item-view"></a><a name="AddItemIndexView"></a>リスト項目ビューを追加する
+#### <a name="create-item-view"></a><a name="AddNewIndexView"></a>項目の作成ビュー
 
 1. **ソリューション エクスプローラー**で、**Views** フォルダーを右クリックし、 **[追加]**  >  **[新しいフォルダー]** を選択します。 フォルダーに *Item* という名前を付けます。
 
 1. 空の **Item** フォルダーを右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
-
-1. **[Add MVC View]\(MVC ビューの追加\)** で、次の値を指定します。
-
-   * **[ビュー名]** で、「*Index*」と入力します。
-   * **[テンプレート]** で、 **[List]** を選択します。
-   * **[モデル クラス]** で、 **[Item (todo.Models)]** を選択します。
-   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
-
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="[Add MVC View]\(MVC ビューの追加\) ダイアログ ボックスのスクリーンショット":::
-
-1. これらの値を追加して **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。
-
-完了すると、Visual Studio によって作成された *cshtml* ファイルが開きます。 Visual Studio でそのファイルを閉じることができます。 これは後で使用します。
-
-#### <a name="add-a-new-item-view"></a><a name="AddNewIndexView"></a>新しい項目を作成するためのビューを追加する
-
-項目を一覧表示するビューの作成方法と同様に、次の手順を使用して項目を作成する新しいビューを作成します。
-
-1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
 1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
 
@@ -155,9 +139,44 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
    * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
    * **[追加]** を選択します。
 
-#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>項目を編集するためのビューを追加する
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="[Add MVC View]\(MVC ビューの追加\) ダイアログ ボックスのスクリーンショット":::
 
-最後に、次の手順で項目を編集するビューを追加します。
+1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Create.cshtml":::
+
+#### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>項目の削除ビュー
+
+1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+
+1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
+
+   * **[ビュー名]** ボックスに「*Delete*」と入力します。
+   * **[テンプレート]** ボックスで、 **[Delete]** を選択します。
+   * **[モデル クラス]** ボックスで、 **[Item (todo.Models)]** を選択します。
+   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
+   * **[追加]** を選択します。
+
+1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Delete.cshtml":::
+
+#### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>項目の詳細を取得するビューを追加する
+
+1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+
+1. **[Add MVC View]\(MVC ビューの追加\)** で、次の値を指定します。
+
+   * **[ビュー名]** に、「*Details*」と入力します。
+   * **[テンプレート]** で、 **[Details]** を選択します。
+   * **[モデル クラス]** で、 **[Item (todo.Models)]** を選択します。
+   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
+
+1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Details.cshtml":::
+
+#### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>項目を編集するためのビューを追加する
 
 1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
 
@@ -169,7 +188,29 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
    * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
    * **[追加]** を選択します。
 
-これらの手順が完了したら、Visual Studio に表示されている *cshtml* ドキュメントをすべて閉じてください。これらのビューは後で使用します。
+1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Edit.cshtml":::
+
+#### <a name="add-a-view-to-list-all-the-items"></a><a name="AddEditIndexView"></a>すべての項目を一覧表示するビューを追加する
+
+最後に、次の手順ですべての項目を取得するビューを追加します。
+
+1. **ソリューション エクスプローラー**で、**Item** フォルダーをもう一度右クリックし、 **[追加]**  >  **[ビュー]** を選択します。
+
+1. **[Add MVC View]\(MVC ビューの追加\)** で、次の変更を行います。
+
+   * **[ビュー名]** ボックスに、「*Index*」と入力します。
+   * **[テンプレート]** ボックスで、**[一覧]** を選択します。
+   * **[モデル クラス]** ボックスで、 **[Item (todo.Models)]** を選択します。
+   * **[Use a layout page]\(レイアウト ページを使用する\)** をオンにして、「 *~/Views/Shared/_Layout.cshtml*」と入力します。
+   * **[追加]** を選択します。
+
+1. 次に **[追加]** を選択すると、Visual Studio で新しいテンプレート ビューが作成されます。 生成されたファイル内のコードを次の内容に置き換えます。
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Index.cshtml":::
+
+これらの手順が完了したら、Visual Studio ですべての *cshtml* ドキュメントを閉じます。
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>サービスを宣言して初期化する
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6aa55f864319146c4d3237eb9e6725da2a68035f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d925c1387a408d38eb7974a01ebf3ce3386b7e58
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308986"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067612"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB Async Java SDK v2 のパフォーマンスに関するヒント
 
@@ -239,28 +239,6 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
     ```
     * - nofile 100000
     ```
-
-* **netty にネイティブ TLS/SSL の実装を使用する**
-
-    netty では、TLS 実装スタックに対して直接 OpenSSL を使ってパフォーマンスを向上させることができます。 この構成がない場合、netty は Java の既定の TLS の実装にフォールバックします。
-
-    Ubuntu の場合:
-    ```bash
-    sudo apt-get install openssl
-    sudo apt-get install libapr1
-    ```
-
-    そして、次の依存関係をプロジェクトの maven の依存関係に追加します。
-    ```xml
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-tcnative</artifactId>
-      <version>2.0.20.Final</version>
-      <classifier>linux-x86_64</classifier>
-    </dependency>
-    ```
-
-他のプラットフォーム (Red Hat、Windows、Mac など) の場合は、 https://netty.io/wiki/forked-tomcat-native.html の説明をご覧ください。
 
 ## <a name="indexing-policy"></a>インデックス作成ポリシー
  

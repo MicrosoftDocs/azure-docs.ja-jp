@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk ポータル管理ガイド | Microsoft Docs
-description: Azure portal を使用して Azure Data Box を管理する方法について説明します。
+description: Azure portal を使用して Data Box Disk を管理する方法について説明します。 注文の管理、ディスクの管理、および注文の進行状況の追跡を行います。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4ac56a4d588071f599f62e6de94d9ec7367a1ae
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707737"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924755"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>Azure portal を使用して Data Box Disk を管理する
 

@@ -7,32 +7,31 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 05/06/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 2b46e115b6360b161a1b2ad9b176f3afbfaf27d0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 428aa25bc40b556ffd7ca6e59948fc79c8bef1c5
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86277824"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89237800"
 ---
+> [!IMPORTANT]
+> * Form Recognizer SDK は現在、From Recognizer サービスの v2.0 を対象としています。
+> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
+
 [リファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)。
 * トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます。
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
+* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
 ## <a name="setting-up"></a>設定
-
-### <a name="create-a-form-recognizer-azure-resource"></a>Form Recognizer Azure リソースを作成する
-
-[!INCLUDE [create resource](../create-resource.md)]
-
-### <a name="create-environment-variables"></a>環境変数を作成する
-
-[!INCLUDE [environment-variables](../environment-variables.md)]
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -58,43 +57,55 @@ Build succeeded.
 ...
 ```
 
-プロジェクト ディレクトリから、好みのエディターまたは IDE で *Program.cs* ファイルを開きます。 次の `using` ディレクティブを追加します。
-
-```csharp
-using Azure.AI.FormRecognizer;
-using Azure.AI.FormRecognizer.Models;
-using Azure.AI.FormRecognizer.Training;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
-
-次に、アプリケーションの **Main** メソッドに次のコードを追加します。 この非同期タスクは後で定義します。 
-
-```csharp
-static void Main(string[] args)
-{
-    var t1 = RunFormRecognizerClient();
-
-    Task.WaitAll(t1);
-}
-```
-
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Form Recognizer クライアント ライブラリをインストールします。
 
 ```console
-dotnet add package Azure.AI.FormRecognizer --version 1.0.0-preview.3
+dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-Visual Studio IDE を使用している場合、クライアント ライブラリは、ダウンロード可能な NuGet パッケージとして入手できます。
+> [!TIP]
+> Visual Studio IDE を使用している場合、クライアント ライブラリは、ダウンロード可能な NuGet パッケージとして入手できます。
 
+プロジェクト ディレクトリから、好みのエディターまたは IDE で *Program.cs* ファイルを開きます。 次の `using` ディレクティブを追加します。
 
-<!-- Objet model TBD -->
+```csharp
+using Azure;
+using Azure.AI.FormRecognizer;
+using Azure.AI.FormRecognizer.Models;
+using Azure.AI.FormRecognizer.Training;
 
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+```
 
+## <a name="object-model"></a>オブジェクト モデル 
+
+Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`FormRecognizerClient` です。認識されたフォームのフィールドやコンテンツをサービスに照会するときに使用します。 もう 1 つは `FormTrainingClient` です。認識精度を高めるために使用できるカスタム モデルを作成したり管理したりするときに使用します。 
+
+### <a name="formrecognizerclient"></a>FormRecognizerClient
+
+`FormRecognizerClient` には、以下を目的とした操作が用意されています。
+
+ - カスタム フォームを認識するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。  これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。 [カスタム フォームを分析する](#analyze-forms-with-a-custom-model)例を参照してください。
+ - モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。  フォームのコンテンツは、`FormPage` オブジェクトのコレクションとして返されます。 [フォーム コンテンツを認識する](#recognize-form-content)例を参照してください。
+ - Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、米国の領収書から一般的なフィールドを認識する。  これらのフィールドとメタデータは、`RecognizedForm` オブジェクトのコレクションとして返されます。 [領収書を認識する](#recognize-receipts)例を参照してください。
+
+### <a name="formtrainingclient"></a>FormTrainingClient
+
+`FormTrainingClient` には、以下を目的とした操作が用意されています。
+
+- カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を認識する。  モデルによって認識されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。
+- 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を認識するように、カスタム モデルをトレーニングする。  モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。
+- アカウントに作成されたモデルを管理する。
+- Form Recognizer リソース間でカスタム モデルをコピーする。
+
+[モデルのトレーニング](#train-a-custom-model)と[カスタム モデルの管理](#manage-custom-models)に関する例を参照してください。
+
+モデルのトレーニングは、[Form Recognizer のラベル付けツール](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/label-tool)など、グラフィカル ユーザー インターフェイスを使用して行うこともできることに注意してください。
 
 ## <a name="code-examples"></a>コード例
 
@@ -110,198 +121,260 @@ Visual Studio IDE を使用している場合、クライアント ライブラ�
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-`Main` メソッドの下に、`Main` で参照されているタスクを定義します。 ここでは、上で定義したサブスクリプション変数を使用して 2 つのクライアント オブジェクトを認証します。 必要に応じて、新しいクライアント オブジェクトを作成せずに API キーを更新できるように、**AzureKeyCredential** オブジェクトを使用します。
+`Main()` の下に、`AuthenticateClient` という名前の新しいメソッドを作成します。 これは、今後のタスクで Form Recognizer サービスへの要求を認証するときに使用します。 このメソッドには `AzureKeyCredential` オブジェクトが使用されているため、新しいクライアント オブジェクトを作成しなくても必要に応じて API キーを更新することができます。
+
+> [!IMPORTANT]
+> Azure portal からキーとエンドポイントを取得します。 「**前提条件**」セクションで作成した Form Recognizer リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+>
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 たとえば、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) が考えられます。
 
 ```csharp
-static async Task RunFormRecognizerClient()
-{ 
-    string endpoint = Environment.GetEnvironmentVariable(
-        "FORM_RECOGNIZER_ENDPOINT");
-    string apiKey = Environment.GetEnvironmentVariable(
-        "FORM_RECOGNIZER_KEY");
+static private FormRecognizerClient AuthenticateClient(){
+    string endpoint = "<replace-with-your-form-recognizer-endpoint-here>";
+    string apiKey = "<replace-with-your-form-recognizer-key-here>";
     var credential = new AzureKeyCredential(apiKey);
-    
-    var trainingClient = new FormTrainingClient(new Uri(endpoint), credential);
-    var recognizerClient = new FormRecognizerClient(new Uri(endpoint), credential);
-```
-
-### <a name="call-client-specific-methods"></a>クライアント固有のメソッドを呼び出す
-
-次のコード ブロックは、クライアント オブジェクトを使用して、Form Recognizer SDK の主要タスクごとにメソッドを呼び出します。 これらのメソッドは後で定義します。
-
-また、トレーニングとテスト データの URL への参照を追加する必要もあります。 
-* カスタム モデルのトレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
-* テストするフォームの URL を取得するには、上記の手順を使用して、BLOB ストレージ内の個々のドキュメントの SAS URL を取得できます。 または、別の場所にあるドキュメントの URL を取得します。
-* 上記のメソッドを使用して、領収書の画像の URL を取得するか、指定されたサンプル画像の URL を使用します。
-
-> [!NOTE]
-> このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre)の関連するメソッドを参照してください。
-
-```csharp
-    string trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
-    string formUrl = "<SAS-URL-of-a-form-in-blob-storage>";
-    string receiptUrl = "https://docs.microsoft.com/azure/cognitive-services/form-recognizer/media"
-    + "/contoso-allinone.jpg";
-
-    // Call Form Recognizer scenarios:
-    Console.WriteLine("Get form content...");
-    await GetContent(recognizerClient, formUrl);
-
-    Console.WriteLine("Analyze receipt...");
-    await AnalyzeReceipt(recognizerClient, receiptUrl);
-
-    Console.WriteLine("Train Model with training data...");
-    Guid modelId = await TrainModel(trainingClient, trainingDataUrl);
-
-    Console.WriteLine("Analyze PDF form...");
-    await AnalyzePdfForm(recognizerClient, modelId, formUrl);
-
-    Console.WriteLine("Manage models...");
-    await ManageModels(trainingClient, trainingDataUrl) ;
+    var client = new FormRecognizerClient(new Uri(endpoint), credential);
+    return client;
 }
 ```
 
+## <a name="assets-for-testing"></a>テスト用のアセット 
+
+このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer)の関連するメソッドと[サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)を参照してください。
+
+また、トレーニング データとテスト データの URL への参照を追加する必要もあります。
+
+* カスタム モデルのトレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
+* 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。 
+
+> [!NOTE]
+> このガイドのコード スニペットでは、URL でアクセスされるリモート フォームが使用されます。 ローカル フォーム ドキュメントを代わりに処理する場合は、[リファレンス ドキュメント](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/)の関連するメソッドを参照してください。
+
 ## <a name="recognize-form-content"></a>フォーム コンテンツを認識する
 
-Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。
+Form Recognizer を使用すると、ドキュメント内の表、行、および単語を認識できます。モデルをトレーニングする必要はありません。 返される値は **FormPage** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 
 
-指定された URI にあるファイルの内容を認識するには、**StartRecognizeContentFromUri** メソッドを使用します。
+指定された URI にあるファイルの内容を認識するには、`StartRecognizeContentFromUri` メソッドを使用します。
 
 ```csharp
-private static async Task<Guid> GetContent(
-    FormRecognizerClient recognizerClient, string invoiceUri)
-{
-    Response<FormPageCollection> formPages = await recognizerClient
+static async Task RecognizeContent(){
+    var invoiceUri = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf";
+    var recognizeClient =  AuthenticateClient();
+    FormPageCollection formPages = await recognizeClient
         .StartRecognizeContentFromUri(new Uri(invoiceUri))
         .WaitForCompletionAsync();
-```
-
-返される値は **FormPage** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードでは、これらのオブジェクトを反復処理し、抽出されたキー/値のペアとテーブル データを出力します。
-
-```csharp
-    foreach (FormPage page in formPages.Value)
+    foreach (FormPage page in formPages)
     {
-        Console.WriteLine($"Form Page {page.PageNumber} has {page.Lines.Count}" + 
-            $" lines.");
-    
+        Console.WriteLine($"Form Page {page.PageNumber} has {page.Lines.Count} lines.");
+
         for (int i = 0; i < page.Lines.Count; i++)
         {
             FormLine line = page.Lines[i];
-            Console.WriteLine($"    Line {i} has {line.Words.Count}" + 
-                $" word{(line.Words.Count > 1 ? "s" : "")}," +
-                $" and text: '{line.Text}'.");
+            Console.WriteLine($"    Line {i} has {line.Words.Count} word{(line.Words.Count > 1 ? "s" : "")}, and text: '{line.Text}'.");
         }
-    
+
         for (int i = 0; i < page.Tables.Count; i++)
         {
             FormTable table = page.Tables[i];
-            Console.WriteLine($"Table {i} has {table.RowCount} rows and" +
-                $" {table.ColumnCount} columns.");
+            Console.WriteLine($"Table {i} has {table.RowCount} rows and {table.ColumnCount} columns.");
             foreach (FormTableCell cell in table.Cells)
             {
-                Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex})" +
-                    $" contains text: '{cell.Text}'.");
+                Console.WriteLine($"    Cell ({cell.RowIndex}, {cell.ColumnIndex}) contains text: '{cell.Text}'.");
             }
         }
     }
 }
+```
+
+このメソッドを実行するには、`Main` から呼び出す必要があります。 
+
+```csharp
+static void Main(string[] args)
+{
+    var analyzeForm = RecognizeContent();
+    Task.WaitAll(analyzeForm);
+}
+```
+
+### <a name="output"></a>出力
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
+    Line 7 has 1 word, and text: '99243'.
+    Line 8 has 2 words, and text: 'Invoice Number'.
+    Line 9 has 2 words, and text: 'Invoice Date'.
+    Line 10 has 3 words, and text: 'Invoice Due Date'.
+    Line 11 has 1 word, and text: 'Charges'.
+    Line 12 has 2 words, and text: 'VAT ID'.
+    Line 13 has 1 word, and text: '34278587'.
+    Line 14 has 1 word, and text: '6/18/2017'.
+    Line 15 has 1 word, and text: '6/24/2017'.
+    Line 16 has 1 word, and text: '$56,651.49'.
+    Line 17 has 1 word, and text: 'PT'.
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    Cell (0, 5) contains text: 'VAT ID'.
+    Cell (1, 0) contains text: '34278587'.
+    Cell (1, 1) contains text: '6/18/2017'.
+    Cell (1, 2) contains text: '6/24/2017'.
+    Cell (1, 3) contains text: '$56,651.49'.
+    Cell (1, 5) contains text: 'PT'.
 ```
 
 ## <a name="recognize-receipts"></a>領収書を認識する
 
 このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国の領収書から共通フィールドを認識して抽出する方法を示します。
 
-URI からの領収書を認識するには、**StartRecognizeReceiptsFromUri** メソッドを使用します。 返される値は **RecognizedReceipt** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードは、指定された URI で領収書を処理し、主要なフィールドと値をコンソールに出力します。
+URI からの領収書を認識するには、`StartRecognizeReceiptsFromUri` メソッドを使用します。 返される値は `RecognizedReceipt` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードは、指定された URI で領収書を処理し、主要なフィールドと値をコンソールに出力します。
 
 ```csharp
-private static async Task<Guid> AnalyzeReceipt(
-    FormRecognizerClient recognizerClient, string receiptUri)
-{
-    RecognizedReceiptCollection receipts = await recognizerClient.StartRecognizeReceiptsFromUri(new Uri(receiptUri))
-    .WaitForCompletionAsync();
+static async Task RecognizeReceipts(){
+    var receiptUrl = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/receipt/contoso-receipt.png";
+    var recognizeClient = AuthenticateClient();
+    RecognizedFormCollection receipts = await recognizeClient.StartRecognizeReceiptsFromUri(new Uri(receiptUrl)).WaitForCompletionAsync();
 
-    foreach (RecognizedReceipt receipt in receipts)
+    // To see the list of the supported fields returned by service and its corresponding types, consult:
+    // https://aka.ms/formrecognizer/receiptfields
+
+    foreach (RecognizedForm receipt in receipts)
     {
-    FormField merchantNameField;
-    if (receipt.RecognizedForm.Fields.TryGetValue("MerchantName", out merchantNameField))
-    {
-        if (merchantNameField.Value.Type == FieldValueType.String)
+        FormField merchantNameField;
+        if (receipt.Fields.TryGetValue("MerchantName", out merchantNameField))
         {
-            string merchantName = merchantNameField.Value.AsString();
-
-            Console.WriteLine($"Merchant Name: '{merchantName}', with confidence {merchantNameField.Confidence}");
-        }
-    }
-
-    FormField transactionDateField;
-    if (receipt.RecognizedForm.Fields.TryGetValue("TransactionDate", out transactionDateField))
-    {
-        if (transactionDateField.Value.Type == FieldValueType.Date)
-        {
-            DateTime transactionDate = transactionDateField.Value.AsDate();
-
-            Console.WriteLine($"Transaction Date: '{transactionDate}', with confidence {transactionDateField.Confidence}");
-        }
-    }
-```
-
-次のコード ブロックは、領収書で検出された個々の項目を反復処理し、その詳細をコンソールに出力します。
-
-```csharp
-    FormField itemsField;
-    if (receipt.RecognizedForm.Fields.TryGetValue("Items", out itemsField))
-    {
-        if (itemsField.Value.Type == FieldValueType.List)
-        {
-            foreach (FormField itemField in itemsField.Value.AsList())
+            if (merchantNameField.Value.ValueType == FieldValueType.String)
             {
-                Console.WriteLine("Item:");
+                string merchantName = merchantNameField.Value.AsString();
 
-                if (itemField.Value.Type == FieldValueType.Dictionary)
+                Console.WriteLine($"Merchant Name: '{merchantName}', with confidence {merchantNameField.Confidence}");
+            }
+        }
+
+        FormField transactionDateField;
+        if (receipt.Fields.TryGetValue("TransactionDate", out transactionDateField))
+        {
+            if (transactionDateField.Value.ValueType == FieldValueType.Date)
+            {
+                DateTime transactionDate = transactionDateField.Value.AsDate();
+
+                Console.WriteLine($"Transaction Date: '{transactionDate}', with confidence {transactionDateField.Confidence}");
+            }
+        }
+
+        FormField itemsField;
+        if (receipt.Fields.TryGetValue("Items", out itemsField))
+        {
+            if (itemsField.Value.ValueType == FieldValueType.List)
+            {
+                foreach (FormField itemField in itemsField.Value.AsList())
                 {
-                    IReadOnlyDictionary<string, FormField> itemFields = itemField.Value.AsDictionary();
+                    Console.WriteLine("Item:");
 
-                    FormField itemNameField;
-                    if (itemFields.TryGetValue("Name", out itemNameField))
+                    if (itemField.Value.ValueType == FieldValueType.Dictionary)
                     {
-                        if (itemNameField.Value.Type == FieldValueType.String)
-                        {
-                            string itemName = itemNameField.Value.AsString();
+                        IReadOnlyDictionary<string, FormField> itemFields = itemField.Value.AsDictionary();
 
-                            Console.WriteLine($"    Name: '{itemName}', with confidence {itemNameField.Confidence}");
+                        FormField itemNameField;
+                        if (itemFields.TryGetValue("Name", out itemNameField))
+                        {
+                            if (itemNameField.Value.ValueType == FieldValueType.String)
+                            {
+                                string itemName = itemNameField.Value.AsString();
+
+                                Console.WriteLine($"    Name: '{itemName}', with confidence {itemNameField.Confidence}");
+                            }
                         }
-                    }
 
-                    FormField itemTotalPriceField;
-                    if (itemFields.TryGetValue("TotalPrice", out itemTotalPriceField))
-                    {
-                        if (itemTotalPriceField.Value.Type == FieldValueType.Float)
+                        FormField itemTotalPriceField;
+                        if (itemFields.TryGetValue("TotalPrice", out itemTotalPriceField))
                         {
-                            float itemTotalPrice = itemTotalPriceField.Value.AsFloat();
+                            if (itemTotalPriceField.Value.ValueType == FieldValueType.Float)
+                            {
+                                float itemTotalPrice = itemTotalPriceField.Value.AsFloat();
 
-                            Console.WriteLine($"    Total Price: '{itemTotalPrice}', with confidence {itemTotalPriceField.Confidence}");
+                                Console.WriteLine($"    Total Price: '{itemTotalPrice}', with confidence {itemTotalPriceField.Confidence}");
+                            }
                         }
                     }
                 }
             }
         }
-    }
-```
 
-最終的に、最後のコード ブロックが、領収書の合計値を出力します。
-
-```csharp
-    FormField totalField;
-    if (receipt.RecognizedForm.Fields.TryGetValue("Total", out totalField))
-    {
-        if (totalField.Value.Type == FieldValueType.Float)
+        FormField totalField;
+        if (receipt.Fields.TryGetValue("Total", out totalField))
         {
-            float total = totalField.Value.AsFloat();
+            if (totalField.Value.ValueType == FieldValueType.Float)
+            {
+                float total = totalField.Value.AsFloat();
 
-            Console.WriteLine($"Total: '{total}', with confidence '{totalField.Confidence}'");
+                Console.WriteLine($"Total: '{total}', with confidence '{totalField.Confidence}'");
+            }
         }
     }
 }
+```
+
+このメソッドを実行するには、`Main` から呼び出す必要があります。 
+
+```csharp
+static void Main(string[] args)
+{
+    var analyzeReceipts = RecognizeReceipts();
+    Task.WaitAll(analyzeReceipts);
+}
+```
+
+### <a name="output"></a>出力 
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    Line 6 has 3 words, and text: 'Sunnayvale, CA 87659'.
+    Line 7 has 1 word, and text: '99243'.
+    Line 8 has 2 words, and text: 'Invoice Number'.
+    Line 9 has 2 words, and text: 'Invoice Date'.
+    Line 10 has 3 words, and text: 'Invoice Due Date'.
+    Line 11 has 1 word, and text: 'Charges'.
+    Line 12 has 2 words, and text: 'VAT ID'.
+    Line 13 has 1 word, and text: '34278587'.
+    Line 14 has 1 word, and text: '6/18/2017'.
+    Line 15 has 1 word, and text: '6/24/2017'.
+    Line 16 has 1 word, and text: '$56,651.49'.
+    Line 17 has 1 word, and text: 'PT'.
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    Cell (0, 5) contains text: 'VAT ID'.
+    Cell (1, 0) contains text: '34278587'.
+    Cell (1, 1) contains text: '6/18/2017'.
+    Cell (1, 2) contains text: '6/24/2017'.
+    Cell (1, 3) contains text: '$56,651.49'.
+    Cell (1, 5) contains text: 'PT'.
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
 ```
 
 ## <a name="train-a-custom-model"></a>カスタム モデルをトレーニングする
@@ -311,29 +384,39 @@ private static async Task<Guid> AnalyzeReceipt(
 > [!NOTE]
 > また、[Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)などのグラフィカル ユーザー インターフェイスを使用してモデルをトレーニングすることもできます。
 
-### <a name="train-a-model-without-labels"></a>ラベルなしでモデルをトレーニングする
+### <a name="authenticate-the-training-client"></a>トレーニング クライアントを認証する
 
-カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を認識できるようにします。
-
-次のメソッドは、指定された一連のドキュメントでモデルをトレーニングし、モデルの状態をコンソールに出力します。 
+`AuthenticateClient` の下に、`AuthenticateTrainingClient` という名前の新しいメソッドを作成します。 これは、今後のタスクでカスタム モデルをトレーニングするときに使用します。 このメソッドには `AzureKeyCredential` オブジェクト (`AuthenticateClient` など) が使用されているため、新しいクライアント オブジェクトを作成しなくても必要に応じて API キーを更新することができます。
 
 ```csharp
-private static async Task<Guid> TrainModel(
-    FormRecognizerClient trainingClient, string trainingDataUrl)
+static private FormTrainingClient AuthenticateTrainingClient()
 {
+    string endpoint = "https://formre-ga-sdk-testing.cognitiveservices.azure.com/";
+    string apiKey = "<replace-with-your-form-recognizer-key-here>";
+    var credential = new AzureKeyCredential(apiKey);
+    var trainingClient = new FormTrainingClient(new Uri(endpoint), credential);
+    return trainingClient;
+}
+```
+
+### <a name="train-a-model-without-labels"></a>ラベルなしでモデルをトレーニングする
+
+カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を認識できるようにします。 次のメソッドは、指定された一連のドキュメントでモデルをトレーニングし、モデルの状態をコンソールに出力します。 返される `CustomFormModel` オブジェクトには、モデルが認識できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
+
+```csharp
+static async Task TrainCustomModelNoLabels()
+{
+    var trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
+    var trainingClient = AuthenticateTrainingClient();
     CustomFormModel model = await trainingClient
-        .StartTrainingAsync(new Uri(trainingFileUrl), useTrainingLabels: false).WaitForCompletionAsync();
-    
+        .StartTrainingAsync(new Uri(trainingDataUrl), useTrainingLabels: false)
+        .WaitForCompletionAsync();
     Console.WriteLine($"Custom Model Info:");
     Console.WriteLine($"    Model Id: {model.ModelId}");
     Console.WriteLine($"    Model Status: {model.Status}");
-    Console.WriteLine($"    Requested on: {model.RequestedOn}");
-    Console.WriteLine($"    Completed on: {model.CompletedOn}");
-```
+    Console.WriteLine($"    Training model started on: {model.TrainingStartedOn}");
+    Console.WriteLine($"    Training model completed on: {model.TrainingCompletedOn}");
 
-返される **CustomFormModel** オブジェクトには、モデルが認識できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
-
-```csharp
     foreach (CustomFormSubmodel submodel in model.Submodels)
     {
         Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
@@ -347,51 +430,160 @@ private static async Task<Guid> TrainModel(
             Console.WriteLine("");
         }
     }
+}
 ```
 
-最後に、このメソッドはモデルの一意の ID を返します。
+このメソッドを実行するには、`Main` から呼び出す必要があります。 
 
 ```csharp
-    return model.ModelId;
+static void Main(string[] args)
+{
+    var trainCustomModel = TrainCustomModelNoLabels();
+    Task.WaitAll(trainCustomModel);
 }
+```
+
+### <a name="output"></a>出力
+
+この応答は、読みやすくするために一部が省略されています。
+
+```console
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    ...
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    Cell (0, 3) contains text: 'Charges'.
+    ... 
+Custom Model Info:
+    Model Id: 95035721-f19d-40eb-8820-0c806b42798b
+    Model Status: Ready
+    Training model started on: 8/24/2020 6:36:44 PM +00:00
+    Training model completed on: 8/24/2020 6:36:50 PM +00:00
+Submodel Form Type: form-95035721-f19d-40eb-8820-0c806b42798b
+    FieldName: CompanyAddress
+    FieldName: CompanyName
+    FieldName: CompanyPhoneNumber
+    ... 
+Custom Model Info:
+    Model Id: e7a1181b-1fb7-40be-bfbe-1ee154183633
+    Model Status: Ready
+    Training model started on: 8/24/2020 6:36:44 PM +00:00
+    Training model completed on: 8/24/2020 6:36:52 PM +00:00
+Submodel Form Type: form-0
+    FieldName: field-0, FieldLabel: Additional Notes:
+    FieldName: field-1, FieldLabel: Address:
+    FieldName: field-2, FieldLabel: Company Name:
+    FieldName: field-3, FieldLabel: Company Phone:
+    FieldName: field-4, FieldLabel: Dated As:
+    FieldName: field-5, FieldLabel: Details
+    FieldName: field-6, FieldLabel: Email:
+    FieldName: field-7, FieldLabel: Hero Limited
+    FieldName: field-8, FieldLabel: Name:
+    FieldName: field-9, FieldLabel: Phone:
+    ...
 ```
 
 ### <a name="train-a-model-with-labels"></a>ラベルを使用してモデルをトレーニングする
 
-トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、BLOB ストレージ コンテナーに特別なラベル情報ファイル ( *\<filename\>.pdf.labels.json*) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md) には、これらのラベル ファイルの作成を助ける UI が提供されています。 それらの用意ができたら、*uselabels* パラメーターを `true` に設定して **StartTrainingAsync** メソッドを呼び出すことができます。
+トレーニング ドキュメントに手動でラベルを付けて、カスタム モデルをトレーニングすることもできます。 ラベルを使用してトレーニングを行うと、一部のシナリオでパフォーマンスの向上につながります。 ラベルを使用してトレーニングするには、トレーニング ドキュメントと共に、自分の Blob Storage コンテナーに特別なラベル情報ファイル (`\<filename\>.pdf.labels.json`) を用意する必要があります。 [Form Recognizer のサンプル ラベル付けツール](../../quickstarts/label-tool.md)では、これらのラベル ファイルの作成を支援する UI が提供されています。 それらの用意ができたら、`uselabels` パラメーターを `true` に設定して `StartTrainingAsync` メソッドを呼び出すことができます。 返される `CustomFormModel` は、モデルが抽出できるフィールドを、各フィールドの予測精度と共に示します。 次のコード ブロックは、この情報をコンソールに出力します。
 
 ```csharp
-private static async Task<Guid> TrainModelWithLabelsAsync(
-    FormRecognizerClient trainingClient, string trainingDataUrl)
+static async Task TrainCustomModelWithLabels()
 {
+    var trainingDataUrl = "<SAS-URL-of-your-form-folder-in-blob-storage>";
+    var trainingClient = AuthenticateTrainingClient();
+
     CustomFormModel model = await trainingClient
-    .StartTrainingAsync(new Uri(trainingFileUrl), useTrainingLabels: true).WaitForCompletionAsync();
-    
+        .StartTrainingAsync(new Uri(trainingDataUrl), useTrainingLabels: true)
+        .WaitForCompletionAsync();
     Console.WriteLine($"Custom Model Info:");
     Console.WriteLine($"    Model Id: {model.ModelId}");
     Console.WriteLine($"    Model Status: {model.Status}");
-    Console.WriteLine($"    Requested on: {model.RequestedOn}");
-    Console.WriteLine($"    Completed on: {model.CompletedOn}");
-```
+    Console.WriteLine($"    Training model started on: {model.TrainingStartedOn}");
+    Console.WriteLine($"    Training model completed on: {model.TrainingCompletedOn}");
 
-返される **CustomFormModel** は、モデルが抽出できるフィールドを、各フィールドの予測精度と共に示します。 次のコード ブロックは、この情報をコンソールに出力します。
-
-```csharp
     foreach (CustomFormSubmodel submodel in model.Submodels)
     {
         Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
         foreach (CustomFormModelField field in submodel.Fields.Values)
         {
             Console.Write($"    FieldName: {field.Name}");
-            if (field.Accuracy != null)
+            if (field.Label != null)
             {
-                Console.Write($", Accuracy: {field.Accuracy}");
+                Console.Write($", FieldLabel: {field.Label}");
             }
             Console.WriteLine("");
         }
     }
-    return model.ModelId;
 }
+```
+
+このメソッドを実行するには、`Main` から呼び出す必要があります。 
+
+```csharp
+static void Main(string[] args)
+{
+    var trainCustomModel = TrainCustomModelNoLabels();
+    Task.WaitAll(trainCustomModel);
+}
+```
+
+### <a name="output"></a>出力
+
+この応答は、読みやすくするために一部が省略されています。
+
+```console
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    Line 4 has 3 words, and text: '1020 Enterprise Way'.
+    Line 5 has 3 words, and text: '6000 Redmond, WA'.
+    ...
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    ... 
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+Custom Model Info:
+    Model Id: 63c013e3-1cab-43eb-84b0-f4b20cb9214c
+    Model Status: Ready
+    Training model started on: 8/24/2020 6:42:54 PM +00:00
+    Training model completed on: 8/24/2020 6:43:01 PM +00:00
+Submodel Form Type: form-63c013e3-1cab-43eb-84b0-f4b20cb9214c
+    FieldName: CompanyAddress
+    FieldName: CompanyName
+    FieldName: CompanyPhoneNumber
+    FieldName: DatedAs
+    FieldName: Email
+    FieldName: Merchant
+    ... 
 ```
 
 ## <a name="analyze-forms-with-a-custom-model"></a>カスタム モデルを使用してフォームを分析する
@@ -399,63 +591,142 @@ private static async Task<Guid> TrainModelWithLabelsAsync(
 このセクションでは、独自のフォームでトレーニングしたモデルを使用して、カスタムのフォームの種類からキー/値の情報やその他のコンテンツを抽出する方法について説明します。
 
 > [!IMPORTANT]
-> このシナリオを実装するには、モデルのトレーニングが完了している必要があります。それにより、次のメソッドにその ID を渡すことができます。 「[モデルをトレーニングする](#train-a-model-without-labels)」セクションを参照してください。
+> このシナリオを実装するには、モデルのトレーニングが完了している必要があります。それにより、次のメソッドにその ID を渡すことができます。
 
-**StartRecognizeCustomFormsFromUri** メソッドを使用します。 返される値は **RecognizedForm** オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。
-
-```csharp
-// Analyze PDF form data
-private static async Task AnalyzePdfForm(
-    FormRecognizerClient formClient, Guid modelId, string pdfFormFile)
-{    
-    Response<IReadOnlyList<RecognizedForm>> forms = await recognizerClient
-        .StartRecognizeCustomFormsFromUri(modelId, new Uri(formUri))
-        .WaitForCompletionAsync();
-```
-
-次のコードは、分析結果をコンソールに出力します。 認識された各フィールドと対応する値が、信頼度スコアと共に出力されます。
+`StartRecognizeCustomFormsFromUri` メソッドを使用します。 返される値は `RecognizedForm` オブジェクトのコレクションで、送信されたドキュメント内のページごとに 1 つあります。 次のコードは、分析結果をコンソールに出力します。 認識された各フィールドと対応する値が、信頼度スコアと共に出力されます。
 
 ```csharp
-    foreach (RecognizedForm form in forms.Value)
+{
+    // Use the custom model ID returned in the previous example.
+    string modelId = "<modelId>";
+    var invoiceUri = "https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/tests/sample_forms/forms/Invoice_1.pdf";
+    var recognizeClient = AuthenticateClient();
+
+    RecognizedFormCollection forms = await recognizeClient
+    .StartRecognizeCustomFormsFromUri(modelId, new Uri(invoiceUri))
+    .WaitForCompletionAsync();
+    foreach (RecognizedForm form in forms)
     {
         Console.WriteLine($"Form of type: {form.FormType}");
         foreach (FormField field in form.Fields.Values)
         {
             Console.WriteLine($"Field '{field.Name}: ");
-    
-            if (field.LabelText != null)
+
+            if (field.LabelData != null)
             {
-                Console.WriteLine($"    Label: '{field.LabelText.Text}");
+                Console.WriteLine($"    Label: '{field.LabelData.Text}");
             }
-    
-            Console.WriteLine($"    Value: '{field.ValueText.Text}");
+
+            Console.WriteLine($"    Value: '{field.ValueData.Text}");
             Console.WriteLine($"    Confidence: '{field.Confidence}");
         }
     }
 }
 ```
 
-## <a name="manage-your-custom-models"></a>カスタム モデルを管理する
-
-このセクションでは、アカウントに格納されているカスタム モデルを管理する方法について説明します。 次のコードは、例として、1 つのメソッドですべてのモデル管理タスクを実行します。 まず、次のメソッド シグネチャをコピーします。
+このメソッドを実行するには、`Main` から呼び出す必要があります。 
 
 ```csharp
-private static async Task ManageModels(
-    FormRecognizerClient trainingClient, string trainingFileUrl)
+static void Main(string[] args)
 {
+    var recognizeContentCustomModel = RecognizeContentCustomModel();
+    Task.WaitAll(recognizeContentCustomModel);
+}
 ```
+
+### <a name="output"></a>出力
+
+この応答は、読みやすくするために一部が省略されています。
+
+```console
+Custom Model Info:
+    Model Id: 9b0108ee-65c8-450e-b527-bb309d054fc4
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:00:31 PM +00:00
+    Training model completed on: 8/24/2020 7:00:32 PM +00:00
+Submodel Form Type: form-9b0108ee-65c8-450e-b527-bb309d054fc4
+    FieldName: CompanyAddress
+    FieldName: CompanyName
+    FieldName: CompanyPhoneNumber
+    ...
+Form Page 1 has 18 lines.
+    Line 0 has 1 word, and text: 'Contoso'.
+    Line 1 has 1 word, and text: 'Address:'.
+    Line 2 has 3 words, and text: 'Invoice For: Microsoft'.
+    Line 3 has 4 words, and text: '1 Redmond way Suite'.
+    ...
+
+Table 0 has 2 rows and 6 columns.
+    Cell (0, 0) contains text: 'Invoice Number'.
+    Cell (0, 1) contains text: 'Invoice Date'.
+    Cell (0, 2) contains text: 'Invoice Due Date'.
+    ...
+Merchant Name: 'Contoso Contoso', with confidence 0.516
+Transaction Date: '6/10/2019 12:00:00 AM', with confidence 0.985
+Item:
+    Name: '8GB RAM (Black)', with confidence 0.916
+    Total Price: '999', with confidence 0.559
+Item:
+    Name: 'SurfacePen', with confidence 0.858
+    Total Price: '99.99', with confidence 0.386
+Total: '1203.39', with confidence '0.774'
+Custom Model Info:
+    Model Id: dc115156-ce0e-4202-bbe4-7426e7bee756
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:00:31 PM +00:00
+    Training model completed on: 8/24/2020 7:00:41 PM +00:00
+Submodel Form Type: form-0
+    FieldName: field-0, FieldLabel: Additional Notes:
+    FieldName: field-1, FieldLabel: Address:
+    FieldName: field-2, FieldLabel: Company Name:
+    FieldName: field-3, FieldLabel: Company Phone:
+    FieldName: field-4, FieldLabel: Dated As:
+    ... 
+Form of type: custom:form
+Field 'Azure.AI.FormRecognizer.Models.FieldValue:
+    Value: '$56,651.49
+    Confidence: '0.249
+Field 'Azure.AI.FormRecognizer.Models.FieldValue:
+    Value: 'PT
+    Confidence: '0.245
+Field 'Azure.AI.FormRecognizer.Models.FieldValue:
+    Value: '99243
+    Confidence: '0.114
+   ...
+```
+
+## <a name="manage-custom-models"></a>カスタム モデルを管理する
+
+このセクションでは、アカウントに格納されているカスタム モデルを管理する方法について説明します。 
 
 ### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>FormRecognizer リソース アカウント内のモデルの数を確認する
 
 次のコード ブロックは、Form Recognizer アカウントに保存したモデルの数を確認し、アカウントの制限と比較します。
 
 ```csharp
-    // Check number of models in the FormRecognizer account, 
-    // and the maximum number of models that can be stored.
+static void CheckNumberOfModels()
+{
+    var trainingClient = AuthenticateTrainingClient();
     AccountProperties accountProperties = trainingClient.GetAccountProperties();
     Console.WriteLine($"Account has {accountProperties.CustomModelCount} models.");
-    Console.WriteLine($"It can have at most {accountProperties.CustomModelLimit}" +
-        $" models.");
+    Console.WriteLine($"It can have at most {accountProperties.CustomModelLimit} models.");
+}
+```
+
+このメソッドを実行するには、`Main` から呼び出す必要があります。 
+
+```csharp
+static void Main(string[] args)
+{
+    CheckNumberOfModels();
+}
+```
+
+### <a name="output"></a>出力 
+
+```console
+Account has 20 models.
+It can have at most 5000 models.
 ```
 
 ### <a name="list-the-models-currently-stored-in-the-resource-account"></a>リソース アカウントに現在格納されているモデルを一覧表示する
@@ -463,17 +734,52 @@ private static async Task ManageModels(
 次のコード ブロックは、アカウント内の現在のモデルを一覧表示し、その詳細をコンソールに出力します。
 
 ```csharp
-    // List the first ten or fewer models currently stored in the account.
-    Pageable<CustomFormModelInfo> models = trainingClient.GetModelInfos();
-    
-    foreach (CustomFormModelInfo modelInfo in models.Take(10))
+static void ListAllModels()
+{
+    var trainingClient = AuthenticateTrainingClient();
+
+    Pageable<CustomFormModelInfo> models = trainingClient.GetCustomModels();
+
+    foreach (CustomFormModelInfo modelInfo in models)
     {
         Console.WriteLine($"Custom Model Info:");
         Console.WriteLine($"    Model Id: {modelInfo.ModelId}");
         Console.WriteLine($"    Model Status: {modelInfo.Status}");
-        Console.WriteLine($"    Created On: {modelInfo.CreatedOn}");
-        Console.WriteLine($"    Last Modified: {modelInfo.LastModified}");
-    }
+        Console.WriteLine($"    Training model started on: {modelInfo.TrainingStartedOn}");
+        Console.WriteLine($"    Training model completed on: {modelInfo.TrainingCompletedOn}");
+    }   
+}
+```
+
+このメソッドを実行するには、`Main` から呼び出す必要があります。 
+
+```csharp
+static void Main(string[] args)
+{
+    ListAllModels();
+}
+```
+
+### <a name="output"></a>出力 
+
+この応答は、読みやすくするために一部が省略されています。
+
+```console
+Custom Model Info:
+    Model Id: 05932d5a-a2f8-4030-a2ef-4e5ed7112515
+    Model Status: Creating
+    Training model started on: 8/24/2020 7:35:02 PM +00:00
+    Training model completed on: 8/24/2020 7:35:02 PM +00:00
+Custom Model Info:
+    Model Id: 150828c4-2eb2-487e-a728-60d5d504bd16
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:33:25 PM +00:00
+    Training model completed on: 8/24/2020 7:33:27 PM +00:00
+Custom Model Info:
+    Model Id: 3303e9de-6cec-4dfb-9e68-36510a6ecbb2
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:29:27 PM +00:00
+    Training model completed on: 8/24/2020 7:29:36 PM +00:00
 ```
 
 ### <a name="get-a-specific-model-using-the-models-id"></a>モデルの ID を使用して特定のモデルを取得する
@@ -481,20 +787,19 @@ private static async Task ManageModels(
 次のコード ブロックは、新しいモデルをトレーニングし (「[モデルをトレーニングする](#train-a-model-without-labels)」セクションと同様)、その後、その ID を使用して、それへの 2 番目の参照を取得します。
 
 ```csharp
-    // Create a new model to store in the account
-    CustomFormModel model = await trainingClient.StartTrainingAsync(
-        new Uri(trainingFileUrl)).WaitForCompletionAsync();
-    
-    // Get the model that was just created
-    CustomFormModel modelCopy = trainingClient.GetCustomModel(model.ModelId);
-    
-    Console.WriteLine($"Custom Model {modelCopy.ModelId} recognizes the following" +
-        " form types:");
-    
-    foreach (CustomFormSubModel subModel in modelCopy.Models)
+static void GetModelById()
+{
+    // Use the custom model ID returned in the previous example.
+    string modelId = "<modelId>";
+    var trainingClient = AuthenticateTrainingClient();
+    CustomFormModel modelCopy = trainingClient.GetCustomModel(modelId);
+
+    Console.WriteLine($"Custom Model {modelCopy.ModelId} recognizes the following form types:");
+
+    foreach (CustomFormSubmodel submodel in modelCopy.Submodels)
     {
-        Console.WriteLine($"SubModel Form Type: {subModel.FormType}");
-        foreach (CustomFormModelField field in subModel.Fields.Values)
+        Console.WriteLine($"Submodel Form Type: {submodel.FormType}");
+        foreach (CustomFormModelField field in submodel.Fields.Values)
         {
             Console.Write($"    FieldName: {field.Name}");
             if (field.Label != null)
@@ -504,6 +809,45 @@ private static async Task ManageModels(
             Console.WriteLine("");
         }
     }
+}    
+```
+
+このメソッドを実行するには、`Main` から呼び出す必要があります。 
+
+```csharp
+static void Main(string[] args)
+{
+    GetModelById();
+}
+```
+
+### <a name="output"></a>出力 
+
+この応答は、読みやすくするために一部が省略されています。
+
+```console
+Custom Model Info:
+    Model Id: 150828c4-2eb2-487e-a728-60d5d504bd16
+    Model Status: Ready
+    Training model started on: 8/24/2020 7:33:25 PM +00:00
+    Training model completed on: 8/24/2020 7:33:27 PM +00:00
+Submodel Form Type: form-150828c4-2eb2-487e-a728-60d5d504bd16
+    FieldName: CompanyAddress
+    FieldName: CompanyName
+    FieldName: CompanyPhoneNumber
+    FieldName: DatedAs
+    FieldName: Email
+    FieldName: Merchant
+    FieldName: PhoneNumber
+    FieldName: PurchaseOrderNumber
+    FieldName: Quantity
+    FieldName: Signature
+    FieldName: Subtotal
+    FieldName: Tax
+    FieldName: Total
+    FieldName: VendorName
+    FieldName: Website
+...
 ```
 
 ### <a name="delete-a-model-from-the-resource-account"></a>リソース アカウントからモデルを削除する
@@ -511,14 +855,18 @@ private static async Task ManageModels(
 ID を参照することで、アカウントからモデルを削除することもできます。
 
 ```csharp
-    // Delete the model from the account.
-    trainingClient.DeleteModel(model.ModelId);
-}
+static void DeleteModel()
+{
+    // Use the custom model ID returned in the previous example.
+    string modelId = "<modelId>";
+    var trainingClient = AuthenticateTrainingClient();
+    trainingClient.DeleteModel(modelId);
+} 
 ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
+このコマンドを使用すると、このクイックスタートで取り上げた関数をいくつでも使用して、アプリケーションをいつでも実行できます。
 
 ```dotnet
 dotnet run
@@ -537,11 +885,10 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 たとえば、無効な URI を含む領収書の画像を送信すると、"Bad Request" (無効な要求) を示す `400` エラーが返されます。
 
-```csharp Snippet:FormRecognizerBadRequest
+```csharp
 try
 {
     RecognizedReceiptCollection receipts = await client.StartRecognizeReceiptsFromUri(new Uri(receiptUri)).WaitForCompletionAsync();
-
 }
 catch (RequestFailedException e)
 {

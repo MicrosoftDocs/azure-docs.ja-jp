@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035793"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653598"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
 [Azure Availability Zones](../../../availability-zones/az-overview.md) は、Azure で提供されている高可用性機能の 1 つです。 Availability Zones により、Azure での SAP ワークロードの全体的な可用性が向上します。 この機能は、既に一部の[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用可能になっています。 今後、さらに多くのリージョンで利用できるようになります。
@@ -109,7 +109,7 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 - SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
 - SAP システムをホストするためにデプロイした Azure 仮想ネットワークは、そのサブネットと共にゾーンをまたいで拡大されます。 ゾーンごとに仮想ネットワークを分ける必要はありません。
 - デプロイするすべての仮想マシンで、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 アンマネージド ディスクは、ゾーン ベースのデプロイにはサポートされていません。
-- Azure Premium Storage と [Ultra SSD ストレージ](../../windows/disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
+- Azure Premium Storage と [Ultra SSD ストレージ](../../disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
 - 共有ディスク (Windows)、CIFS 共有 (Windows)、または NFS 共有 (Linux)である共有 sapmnt ディレクトリについても同じです。 ゾーン間でこれらの共有ディスクまたは共有をレプリケートするテクノロジを使用する必要があります。 次のテクノロジがサポートされています。
   - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
   - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)」に記載されているように構築された NFS 共有。
@@ -137,7 +137,7 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 - SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
 - SAP システムをホストするためにデプロイした Azure 仮想ネットワークは、そのサブネットと共にゾーンをまたいで拡大されます。 ゾーンごとに仮想ネットワークを分ける必要はありません。
 - デプロイするすべての仮想マシンで、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 アンマネージド ディスクは、ゾーン ベースのデプロイにはサポートされていません。
-- Azure Premium Storage と [Ultra SSD ストレージ](../../windows/disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
+- Azure Premium Storage と [Ultra SSD ストレージ](../../disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
 - 共有ディスク (Windows)、CIFS 共有 (Windows)、または NFS 共有 (Linux)である共有 sapmnt ディレクトリについても同じです。 ゾーン間でこれらの共有ディスクまたは共有をレプリケートするテクノロジを使用する必要があります。 次のテクノロジがサポートされています。
     - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
     - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)」に記載されているように構築された NFS 共有。
@@ -167,7 +167,7 @@ Microsoft は、Azure リージョン内のさまざまな Azure Availability Zo
 - SAP セントラル サービスおよび DBMS レイヤーのフェールオーバー クラスターのロード バランサーには、[Standard SKU Azure Load Balancer](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用する必要があります。 Basic Load Balancer は、ゾーンをまたいでは機能しません。
 - SAP システムをホストするためにデプロイした Azure 仮想ネットワークは、そのサブネットと共にゾーンをまたいで拡大されます。 ゾーンごとに仮想ネットワークを分ける必要はありません。
 - デプロイするすべての仮想マシンで、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 アンマネージド ディスクは、ゾーン ベースのデプロイにはサポートされていません。
-- Azure Premium Storage と [Ultra SSD ストレージ](../../windows/disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
+- Azure Premium Storage と [Ultra SSD ストレージ](../../disks-types.md#ultra-disk)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
 - 共有ディスク (Windows)、CIFS 共有 (Windows)、または NFS 共有 (Linux)である共有 sapmnt ディレクトリについても同じです。 ゾーン間でこれらの共有ディスクまたは共有をレプリケートするテクノロジを使用する必要があります。 次のテクノロジがサポートされています。
     - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](./sap-high-availability-guide-wsfc-shared-disk.md)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
     - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](./high-availability-guide-suse-nfs.md)」に記載されているように構築された NFS 共有。

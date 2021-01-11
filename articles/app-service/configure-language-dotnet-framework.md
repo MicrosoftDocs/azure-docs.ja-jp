@@ -2,14 +2,15 @@
 title: ASP.NET アプリの構成
 description: Azure App Service で ASP.NET アプリを構成する方法を説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1aeb243b3ff4a1e6bd2ae984510d2ec709776fa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30fddaec9ca5d0439beadedf7c5ca6b6c7d51d83
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84908002"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961705"
 ---
 # <a name="configure-an-aspnet-app-for-azure-app-service"></a>Azure App Service 向けの ASP.NET アプリを構成する
 
@@ -18,7 +19,7 @@ ms.locfileid: "84908002"
 
 ASP.NET アプリは、コンパイル済みバイナリとして Azure App Service にデプロイする必要があります。 Visual Studio 発行ツールではソリューションがビルドされてからコンパイル済みバイナリが直接デプロイされますが、App Service 展開エンジンではまずコード リポジトリがデプロイされ、その後にバイナリがコンパイルされます。
 
-このガイドでは、ASP.NET 開発者向けに主要な概念と手順を説明します。 Azure App Service を初めて使用する場合は、まず [ASP.NET クイックスタート](app-service-web-get-started-dotnet-framework.md)と [SQL Database を使った ASP.NET のチュートリアル](app-service-web-tutorial-dotnet-sqldatabase.md)に従ってください。
+このガイドでは、ASP.NET 開発者向けに主要な概念と手順を説明します。 Azure App Service を初めて使用する場合は、まず [ASP.NET クイックスタート](quickstart-dotnet-framework.md)と [SQL Database を使った ASP.NET のチュートリアル](app-service-web-tutorial-dotnet-sqldatabase.md)に従ってください。
 
 ## <a name="show-supported-net-framework-runtime-versions"></a>サポートされている .NET Framework ランタイム バージョンを表示する
 
@@ -94,7 +95,7 @@ Visual Studio デバッガーで ASP.NET アプリの実行中に例外が発生
 
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
 
-[System.Diagnostics.Trace](https://docs.microsoft.com/dotnet/api/system.diagnostics.trace) を使用して、アプリケーション コードに診断メッセージを追加できます。 次に例を示します。 
+[System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) を使用して、アプリケーション コードに診断メッセージを追加できます。 次に例を示します。 
 
 ```csharp
 Trace.TraceError("Record not found!"); // Error trace

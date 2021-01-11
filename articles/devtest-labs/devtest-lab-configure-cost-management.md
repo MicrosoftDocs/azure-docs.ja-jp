@@ -3,12 +3,12 @@ title: Azure DevTest Labs で、ラボの月間推定コスト傾向を表示す
 description: この記事では、Azure DevTest Labs のラボのコスト (月間推定コスト傾向グラフ) を追跡する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b8bf8b1db82983cd7e1ecc5a45bf2d47a2787cc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482770"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283828"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに関連付けられているコストを追跡する
 この記事では、ラボのコストを追跡する方法について説明します。 ラボの現在のカレンダー月の推定コスト傾向を表示する方法を紹介します。 また、ラボのリソースごとの過去 1 か月間のコストを表示する方法も紹介します。
@@ -69,7 +69,7 @@ DevTest Labs を使用して支出目標を設定することで、コストの�
      - 同様に、webhook の URL を設定した場合は、[コストのしきい値] ウィンドウで **[通知]** を **[オン]** に設定する必要があります。
      - このウィンドウで入力する前に、webhook を作成しておく必要があります。  
 
-       webhook の詳細については、「[webhook または API Azure Function を作成する](../azure-functions/functions-create-a-web-hook-or-api-function.md)」を参照してください。 
+       webhook の詳細については、「[webhook または API Azure Function を作成する](../azure-functions/functions-bindings-http-webhook.md)」を参照してください。 
 
 ## <a name="view-cost-by-resource"></a>リソースごとのコストを表示する 
 ラボの月間コスト傾向機能では、現在のカレンダー月に費やした金額を表示できます。 また、過去 7 日間の支出に基づいて、月末までの支出の予測も表示されます。 早い段階でラボでの支出がしきい値に達する理由を理解するには、**リソースごとの**過去 1 か月間のコストをテーブルに表示する、**リソースごとのコスト**機能を使用します。
@@ -93,4 +93,3 @@ DevTest Labs を使用して支出目標を設定することで、コストの�
 * [カスタム イメージを作成する](devtest-lab-create-template.md) - VM を作成する場合は、ベースとしてカスタム イメージまたは Marketplace イメージを指定します。 この記事では、VHD ファイルからカスタム イメージを作成する方法について説明します。
 * [Marketplace イメージを構成する](devtest-lab-configure-marketplace-images.md) - DevTest Labs では、Azure Marketplace イメージを基にした VM を作成することができます。 この記事では、ラボで VM を作成する際に使用できるようにする Azure Marketplace イメージ (該当するものがある場合) を指定する方法について説明します。
 * [ラボで VM を作成する](devtest-lab-add-vm.md) - 基本イメージ (カスタムまたは Marketplace) から VM を作成する方法と、VM でアーティファクトを操作する方法について説明します。
-

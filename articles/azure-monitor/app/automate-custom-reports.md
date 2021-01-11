@@ -4,12 +4,12 @@ description: Azure Application Insights データを利用して 日/週/月 1 �
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 4eb580b90c0bf9acafc4e8f805c2eef7eaae06d3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abd87af1a9cf61aba21e9231350aabc661e5091b
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540079"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320410"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
@@ -150,7 +150,8 @@ availabilityResults
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Analytics クエリ](../../azure-monitor/log-query/get-started-queries.md)の作成についての詳細を見る
+* [Analytics クエリ](../log-query/get-started-queries.md)の作成についての詳細を見る
 * [Application Insights データに対してプログラムからクエリを実行する](https://dev.applicationinsights.io/)の詳細を見る
 * [Logic Apps](../../logic-apps/logic-apps-overview.md) の詳細を見る
 * [Microsoft Flow](https://ms.flow.microsoft.com)についての詳細を見る
+

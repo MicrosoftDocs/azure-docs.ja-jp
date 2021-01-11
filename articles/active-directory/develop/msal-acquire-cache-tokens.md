@@ -13,12 +13,12 @@ ms.date: 05/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: bdf9c1ce36921076ab79b2ca501bf008eddfe375
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 47af4015fa5c6d9a73ee597146890a29b4b9ef9d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194050"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119897"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) を使用してトークンを取得し、キャッシュする
 
@@ -30,7 +30,7 @@ MSAL では、トークンは取得された後でキャッシュされます。
 
 ## <a name="scopes-when-acquiring-tokens"></a>トークンを取得するときのスコープ
 
-[スコープ](v2-permissions-and-consent.md)は、クライアント アプリケーションがアクセスを要求できる、Web API によって公開されているアクセス許可です。 クライアント アプリケーションでは、Web API にアクセスするためのトークンを取得するために認証要求を行うとき、これらのスコープに対するユーザーの同意を要求します。 MSAL では、開発者向け Azure AD (v1.0) と Microsoft ID プラットフォーム (v2.0) の API にアクセスするためのトークンを取得できます。 v2.0 プロトコルでは、リソースではなくスコープが要求で使用されます。 詳細については、[v1.0 と v2.0 の比較](active-directory-v2-compare.md)に関する記事を参照してください。 受け付けるトークンのバージョンに関する Web API の構成に基づいて、v2.0 エンドポイントから MSAL にアクセス トークンが返されます。
+[スコープ](v2-permissions-and-consent.md)は、クライアント アプリケーションがアクセスを要求できる、Web API によって公開されているアクセス許可です。 クライアント アプリケーションでは、Web API にアクセスするためのトークンを取得するために認証要求を行うとき、これらのスコープに対するユーザーの同意を要求します。 MSAL では、開発者向け Azure AD (v1.0) と Microsoft ID プラットフォーム (v2.0) の API にアクセスするためのトークンを取得できます。 v2.0 プロトコルでは、リソースではなくスコープが要求で使用されます。 詳細については、[v1.0 と v2.0 の比較](../azuread-dev/azure-ad-endpoint-comparison.md)に関する記事を参照してください。 受け付けるトークンのバージョンに関する Web API の構成に基づいて、v2.0 エンドポイントから MSAL にアクセス トークンが返されます。
 
 いくつかの MSAL のトークン取得方法には、`scopes` パラメーターが必要です。 `scopes` パラメーターは、要求された必要とするアクセス許可とリソースを宣言する文字列のリストです。 よく知られたスコープとしては、[Microsoft Graph アクセス許可](/graph/permissions-reference)があります。
 

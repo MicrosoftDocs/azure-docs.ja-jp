@@ -1,6 +1,6 @@
 ---
 title: Azure CDN におけるファイル圧縮のトラブルシューティング | Microsoft Docs
-description: Azure CDN のファイル圧縮に関する問題のトラブルシューティングを行います。
+description: Azure Content Delivery Network でのファイル圧縮に関する問題をトラブルシューティングする方法について説明します。 この記事では、考えられるさまざまな原因について説明します。
 services: cdn
 documentationcenter: ''
 author: sohamnc
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5c56564ee6f07c5d208ea5d3089a2c96fd8bbc33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 53db148eac0d56e53bb96e0597ad53d3183d86e9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888691"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192514"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN ファイルの圧縮のトラブルシューティング
 この記事では、 [CDN ファイルの圧縮](cdn-improve-performance.md)に関する問題のトラブルシューティングについて説明します。
@@ -82,7 +82,7 @@ ms.locfileid: "84888691"
 > 
 > 
 
-[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、 **[管理]** ボタンをクリックします。  補助ポータルが開きます。  **[HTTP ラージ]** タブ、 **[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。  **[圧縮]** をクリックします。 
+[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、 **[管理]** ボタンをクリックします。  補助ポータルが開きます。  **[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。  **[圧縮]** をクリックします。 
 
 * 圧縮が有効になっていることを確認します。
 * **[ファイルの種類]** 一覧に MIME の種類のコンマ区切り一覧 (スペースなし) が含まれていることを確認します。
@@ -118,5 +118,5 @@ ms.locfileid: "84888691"
 **Via** HTTP ヘッダーは、その要求がプロキシ サーバーを介して送信されていることを Web サーバーに伝えます。  既定では、要求に **Via** ヘッダーが含まれている場合、Microsoft IIS Web サーバーは応答を圧縮しません。  この動作をオーバーライドするには、次の作業を実行します。
 
 * **IIS 6**: [IIS のメタベース プロパティで HcNoCompressionForProxies="FALSE" に設定する](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 以上**: [サーバーの構成で **noCompressionForHttp10** と **noCompressionForProxies** を False に設定する](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 7 以降**: [サーバーの構成で **noCompressionForHttp10** と **noCompressionForProxies** を False に設定する](https://www.iis.net/configreference/system.webserver/httpcompression)
 

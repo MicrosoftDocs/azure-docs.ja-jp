@@ -3,12 +3,12 @@ title: パラメーター ファイルを作成する
 description: Azure Resource Manager テンプレートのデプロイ中に値を渡すためのパラメーター ファイルを作成します
 ms.topic: conceptual
 ms.date: 06/19/2020
-ms.openlocfilehash: 7c03e161c7b3a18020de6a06d356720f5e4c31fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8039b63978e52b69b0f8ffb4dd4e052769f3c5e6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117507"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082938"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 
@@ -186,8 +186,8 @@ ms.locfileid: "85117507"
 
 参照:
 
-- [ARM テンプレートと Azure CLI でリソースをデプロイする](./deploy-powershell.md#pass-parameter-values)
-- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](./deploy-cli.md#parameters)
+- [ARM テンプレートと Azure CLI でリソースをデプロイする](./deploy-cli.md#parameters)
+- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](./deploy-powershell.md#pass-parameter-values)
 
 ## <a name="file-name"></a>ファイル名
 

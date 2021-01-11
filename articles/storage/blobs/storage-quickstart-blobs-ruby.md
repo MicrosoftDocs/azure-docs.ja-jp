@@ -192,4 +192,4 @@ Blob Storage を使用する Ruby 開発については、以下の追加リソ�
 > [Blob Storage の操作方法](./storage-ruby-how-to-use-blob-storage.md)
 
 
-Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+Storage Explorer と BLOB について詳しくは、「[Storage Explorer を使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。

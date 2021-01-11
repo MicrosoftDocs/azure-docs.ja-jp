@@ -24,7 +24,7 @@ ms.locfileid: "85206701"
 
 ## <a name="tune-query-performance-with-new-product-enhancements"></a>新しい製品の機能強化でクエリのパフォーマンスを調整する
 
-- [具体化されたビューを使用したパフォーマンスのチューニング](performance-tuning-materialized-views.md)
+- [マテリアライズドビューを使用したパフォーマンスのチューニング](performance-tuning-materialized-views.md)
 - [順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](performance-tuning-ordered-cci.md)
 - [結果セットのキャッシュを使用したパフォーマンスのチューニング](performance-tuning-result-set-caching.md)
 

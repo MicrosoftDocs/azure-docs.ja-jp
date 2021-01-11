@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 69926671730e41845cd28df3108ec86b24a57075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187516"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448530"
 ---
 # <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Azure Database Migration Service を使用して Azure SQL Managed Instance を移行するためのネットワーク トポロジ
 
@@ -39,7 +39,7 @@ Azure SQL Managed Instance がオンプレミス ネットワークに接続さ�
 使用する環境において、次の 1 つ以上のシナリオが当てはまる場合は、このネットワーク トポロジを使用します。
 
 - SQL Managed Instance はオンプレミス接続から分離されているが、Azure Database Migration Service インスタンスはオンプレミス ネットワークに接続されている。
-- ロール ベースのアクセス制御 (RBAC) ポリシーが使用されていて、ユーザー アクセスは、SQL Managed Instance をホストしているのと同じサブスクリプションに制限する必要がある。
+- Azure ロール ベースのアクセス制御 (Azure RBAC) ポリシーが使用されていて、ユーザー アクセスは、SQL Managed Instance をホストしているのと同じサブスクリプションに制限する必要がある。
 - SQL Managed Instance 用と、Azure Database Migration Service 用に使用される仮想ネットワークが、それぞれ異なるサブスクリプションに属している。
 
 ![オンプレミス ネットワークから分離されたマネージド インスタンス用のネットワーク トポロジ](media/resource-network-topologies/mi-isolated-workload.png)
@@ -64,7 +64,7 @@ Azure SQL Managed Instance がオンプレミス ネットワークに接続さ�
 使用する環境において、次の 1 つ以上のシナリオが当てはまる場合は、このネットワーク トポロジを使用します。
 
 - SQL Managed Instance が、分離された仮想ネットワークでプロビジョニングされている。
-- ロール ベースのアクセス制御 (RBAC) ポリシーが使用されていて、ユーザー アクセスは、SQL Managed Instance をホストしているのと同じサブスクリプションに制限する必要がある。
+- Azure ロール ベースのアクセス制御 (Azure RBAC) ポリシーが使用されていて、ユーザー アクセスは、SQL Managed Instance をホストしているのと同じサブスクリプションに制限する必要がある。
 - SQL Managed Instance 用と、Azure Database Migration Service 用に使用される仮想ネットワークが、それぞれ異なるサブスクリプションに属している。
 
 ![分離 VNet があるクラウド間移行のためのネットワーク トポロジ](media/resource-network-topologies/cloud-to-cloud-isolated.png)

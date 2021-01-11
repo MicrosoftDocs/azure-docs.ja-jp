@@ -29,11 +29,11 @@ SQL Database の geo レプリケーションとフェールオーバーの詳�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>SQL マネージド インスタンスによる Azure-SSIS IR フェールオーバー
+## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>SQL Managed Instance による Azure-SSIS IR フェールオーバー
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure SQL マネージド インスタンスでは、"*データベース マスター キー (DMK)* " を使用して、データベースに格納されるデータ、資格情報、および接続情報がセキュリティで保護されます。 DMK の暗号化を自動的に解除できるように、*サーバー マスター キー (SMK)* を使用してキーのコピーが暗号化されます。 
+Azure SQL Managed Instance では、"*データベース マスター キー (DMK)* " を使用して、データベースに格納されるデータ、資格情報、および接続情報がセキュリティで保護されます。 DMK の暗号化を自動的に解除できるように、*サーバー マスター キー (SMK)* を使用してキーのコピーが暗号化されます。 
 
 SMK はフェールオーバー グループにレプリケートされません。 フェールオーバー後の DMK 復号化のために、プライマリ インスタンスとセカンダリ インスタンスの両方にパスワードを追加する必要があります。
 
@@ -43,7 +43,7 @@ SMK はフェールオーバー グループにレプリケートされません
     ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
     ```
 
-2. SQL マネージド インスタンスのフェールオーバー グループを構成します。
+2. SQL Managed Instance のフェールオーバー グループを構成します。
 
 3. 新しい暗号化パスワードを使用して、セカンダリ インスタンスに **sp_control_dbmasterkey_password**  を実行します。
 

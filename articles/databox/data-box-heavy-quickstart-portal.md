@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box Heavy のクイック スタート | Microsoft Docs
-description: Azure portal からすばやく Azure Data Box Heavy をデプロイする方法を学ぶ
+description: このクイックスタートでは、ケーブルの配線方法、構成方法、データのコピーと Azure へのアップロードの方法など、Azure portal を使用して Azure Data Box Heavy をデプロイする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9d007f4fa8721214a7c97595fa297ef44199119f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5a0a040d80911b086561213bd0884ed67545c618
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199125"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920791"
 ---
 ::: zone target = "docs"
 

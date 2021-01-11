@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 07/30/2020
 ms.author: apimpm
-ms.openlocfilehash: 43dc0020f64a80e10f179fd194c4878f2fec41ad
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: e7f2fb966aa323063220bc798706c8401745ba20
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243207"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461002"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -49,8 +49,6 @@ ms.locfileid: "86243207"
 1. 次の形式の要求を受け取ります。
    
    > "*http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={元のページの URL}&salt={文字列}&sig={文字列}* "
-   > 
-   > 
    
     サインイン/サインアップ処理のためのクエリ パラメーター:
    
@@ -84,6 +82,7 @@ ms.locfileid: "86243207"
 * **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
+* **SignOut**
 
 アカウントの管理操作を実行するには、次のクエリ パラメーターを渡す必要があります。
 
@@ -93,6 +92,7 @@ ms.locfileid: "86243207"
 * **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
 ## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>製品のサブスクリプション処理の委任
+
 製品のサブスクリプション処理を委任するしくみは、ユーザーのサインイン/サインアップ処理の委任と似ています。 最終的なワークフローは次のようになります。
 
 1. 開発者が API Management 開発者ポータルで製品を選択し、[サブスクライブ] ボタンをクリックします。
@@ -114,9 +114,9 @@ ms.locfileid: "86243207"
      * "Subscribe": 提供された ID (以下を参照) を持つ特定の成果物をユーザーがサブスクライブするための要求。
      * "Unsubscribe": ユーザーの成果物のサブスクリプションを解除するための要求。
      * "Renew": (たとえば、有効期限が近づいている) サブスクリプションを更新するための要求。
-   * **productId**: ユーザーから要求されたサブスクライブ対象の成果物の ID。
+   * **productId**: "*Subscribe*" 時 - ユーザーから要求されたサブスクライブ対象の成果物の ID。
    * **subscriptionId**: "*登録解除*" および "*更新*" 時 - 製品のサブスクリプション ID。
-   * **userId**: 要求の対象のユーザーの ID。
+   * **userId**: "*Subscribe*" 時 - 要求の対象のユーザーの ID。
    * **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
    * **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
@@ -129,7 +129,7 @@ ms.locfileid: "86243207"
      > 
    * 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。 2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
 3. **operation** で要求された操作の種類 (課金、追加の質問など) に基づいて、製品のサブスクリプションを処理します。
-4. お客様の側で製品へのユーザーのサブスクリプションを正常に処理できたら、API Management 製品へのユーザーのサブスクリプション処理を行います。そのためには、[サブスクリプションのための REST API の呼び出し]。
+4. お客様の側で製品へのユーザーのサブスクリプションを正常に処理できたら、API Management 製品へのユーザーのサブスクリプション処理を行います。そのためには、[サブスクリプションのための REST API を呼び出します]。
 
 ## <a name="example-code"></a><a name="delegate-example-code"> </a>コード例
 

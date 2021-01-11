@@ -6,17 +6,17 @@ ms.author: robb
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 380a1366994e970c208a6c3ad505414cb12bc0c2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7d9f55bbd3d8060670008f321a77b2a28376e47
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324099"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849021"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
+
 > [!WARNING]
-> 
-> この記事では、Resource Manager テンプレートを使用した**クラシック メトリック アラート**の作成方法について説明します。 クラシック アラートは 2019 年 8 月に廃止され、2020 年 6 月に完全に非推奨となるように設定されています。 新しいクラシック アラートをパブリック Azure で作成することはできません。 一部の Azure リージョンのバージョンでは引き続きこのオプションを使用できる場合がありますが、可能な限り、テンプレートを使用して[新しいメトリック アラート](./alerts-metric-near-real-time.md)を作成することをお勧めします。 詳細については、[この記事](alerts-metric-create-templates.md)を参照してください。
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](./alerts-overview.md)がサポートされています。 従来のアラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。
 >
 
 この記事では、 [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して Azure クラシック メトリック アラートを構成する方法について説明します。 これによりリソースの作成時にアラートを自動的に設定して、すべてのリソースを確実かつ適切に監視できます。

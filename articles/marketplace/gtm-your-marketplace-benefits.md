@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c305a2513a5ace241fe697766b851cd2851e8b78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0a98bf7d6a035dbf293bda5d8afe5d0e1130f58f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536053"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705556"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -26,13 +26,13 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 プログラムでは正のフィードバック ループが作成されます。成長の各段階でのベネフィットは、次の段階に進むように設計されており、パートナーは、Microsoft の現場と協力し、商用マーケットプレースをラットフォームとして利用することで Microsoft のチャネルを通して、Microsoft の顧客に対するビジネスを拡大できます。
 
-ベネフィットは、オファーが[リスト、試用版、トランザクション](determine-your-listing-type.md#choose-a-publishing-option)のいずれであるかによって異なります。
+ベネフィットは、オファーが[リスト、試用版、トランザクション](determine-your-listing-type.md#choose-a-listing-option)のいずれであるかによって異なります。
 
 パートナーがオファーを発行すると、資格に基づいて、報酬チームのメンバーから連絡があります。
 
 トランザクション パートナーの場合は、コマーシャル マーケットプレース プラットフォームを通じて請求売上が拡大すると、レベルごとにさらに多くのベネフィットを得られます。
 
-ネットショップで発行する最小要件は MPNID であるため、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのコマーシャル マーケットプレースを通じてビジネスを強化できます。
+オンライン ストアには最低で MPNID があれば発行することができます。したがって、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのコマーシャル マーケットプレースを通じてビジネスを強化できます。
 
 パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。
 
@@ -41,7 +41,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 簡単に使用を開始できます。
 
 1. Microsoft AppSource または Azure Marketplace でオファーを発行します。
-2. パートナー センターで [Marketplace Rewards](https://partner.microsoft.com/en-us/dashboard/mpn/program/commercialmarketplace) にアクセスし、 **[Enroll in Marketplace Rewards Program]\(Marketplace Rewards プログラムに登録する\)** を選択します。
+2. パートナー センターで [Marketplace Rewards](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) にアクセスし、 **[Enroll in Marketplace Rewards Program]\(Marketplace Rewards プログラムに登録する\)** を選択します。
 3. 営業とマーケティングのベネフィットを有効にするには、会社のマーケティングの連絡先を割り当てます。 この連絡先には、Marketplace Rewards に関するフォローアップ通信が送られます。
 4. マーケティングの連絡先情報を追加または更新するには、[Marketplace Rewards] ページの [Sales and Marketing benefits]\(営業とマーケティングのベネフィット\) タブの上部に移動し、 **[Add, update, or change]\(追加、更新、または変更\)** を選択します。  続けて次の作業を行います。
 
@@ -106,9 +106,15 @@ Microsoft AppSource または Azure Marketplace でトランザクション可�
 Microsoft は、次のような発行元に対する Marketplace 報酬ベネフィットを取り消して終了する権利を留保します。 
 
 * マーケットプレース リストを使用して違法なアクティビティに関わっている。
+* 不正であると判明しているか、またはそう確信される購入を受信している。
 * 商用マーケットプレースから除外された。 
 * オファーを使用して、著作権または商標法に違反するマーケティング コンテンツやその他のコンテンツを公開している。
 * [Azure スポンサー プラン プログラム](https://azure.microsoft.com/offers/ms-azr-0036p/)のポリシーに違反した。これには、独自の内部運用やビットコイン マイニングに Azure スポンサー プランを使用することが含まれますが、それだけではありません。
+
+Microsoft は、以下の場合に Marketplace Rewards を取り消して終了する権利を留保します。
+
+* 購入を行ったお客様が、誤ってその行為を行い、購入のキャンセルを希望している。 
+* パートナーの製品を使用する前に、お客様がキャンセルを行う。
 
 ### <a name="offer-availability"></a>オファーの利用可能性
 

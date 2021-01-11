@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop テナントのホスト プールの作成 - Azure
-description: Windows Virtual Desktop テナント環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) テナントのホスト プールの作成 - Azure
+description: Windows Virtual Desktop (クラシック) テナント環境設定時のテナントおよびホスト プールの問題をトラブルシューティングし、解決する方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aad3bffeba4395ba415fb99a3667d04d18769a47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026697"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009258"
 ---
-# <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) でのテナントとホスト プールの作成
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-issues.md)をご覧ください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-set-up-issues.md)を参照してください。
 
 この記事では、Windows Virtual Desktop テナントと、関連するセッション ホスト プール インフラストラクチャの初期セットアップ中の問題について説明します。
 
@@ -43,9 +41,9 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ```Error
 AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
-\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the
 configuration of your service subscriptions.650052 Message The app needs access to a service
-(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled.
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
@@ -124,12 +122,12 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 1. 現在の Azure Marketplace デプロイ オファリングを終了します。
 2. 上部の検索バーで、**アクティビティ ログ** を検索して選択します。
 3. **[デプロイの検証]** という名前で状態が **[失敗]** のアクティビティを見つけて、そのアクティビティを選択します。
-   
+
    > [!div class="mx-imgBorder"]
    > ![ **失敗** 状態での各々の "デプロイの検証" 操作スクリーンショット](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. [JSON] を選択し、"statusMessage" フィールドが表示されるまで、画面の一番下までスクロールします。
-   
+
    > [!div class="mx-imgBorder"]
    > ![失敗したアクティビティのスクリーンショット。JSON テキストの statusMessage メッセージプロパティを囲む赤いボックスがあります。](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
@@ -260,7 +258,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n

@@ -2,13 +2,13 @@
 title: コンテナー イメージのインポート
 description: Azure API を使用することで、Docker コマンドを実行することなく、Azure コンテナー レジストリにコンテナー イメージをインポートします。
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: a7a6566540880d027b1dc3428d394b352f34318d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 08/17/2020
+ms.openlocfilehash: 66c3a8b19e2288c1f8720dd4fe79f348a11f052e
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023518"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660497"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 
@@ -28,6 +28,8 @@ Azure コンテナー レジストリにイメージをインポートするや�
 
 * マルチ アーキテクチャ イメージ (公式の Docker イメージなど) をインポートすると、マニフェストの一覧で指定されたすべてのアーキテクチャとプラットフォームのイメージがコピーされます。
 
+* ソースとターゲットのレジストリにアクセスするとき、レジストリのパブリック エンドポイントを使用する必要はありません。
+
 コンテナー イメージをインポートするには、Azure CLI を Azure Cloud Shell またはローカルで実行する必要があります (バージョン 2.0.55 以降を推奨します)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
 > [!NOTE]
@@ -38,7 +40,7 @@ Azure コンテナー レジストリにイメージをインポートするや�
 
 まだ Azure コンテナー レジストリがない場合は、レジストリを作成します。 手順については、「[クイック スタート: Azure CLI を使用したプライベート コンテナー レジストリの作成](container-registry-get-started-azure-cli.md)」を参照してください。
 
-Azure コンテナー レジストリにイメージをインポートするには、使用する ID に、ターゲット レジストリへの書き込みアクセス許可 (少なくとも共同作成者ロール) が付与されている必要があります。 「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)」をご覧ください。 
+Azure コンテナー レジストリにイメージをインポートするには、使用する ID に、ターゲット レジストリへの書き込みアクセス許可 (少なくとも共同作成者ロールか、importImage アクションを許可するカスタム ロール) が付与されている必要があります。 「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md#custom-roles)」をご覧ください。 
 
 ## <a name="import-from-a-public-registry"></a>パブリック レジストリからインポートする
 
@@ -85,9 +87,11 @@ az acr import \
 
 統合された Azure Active Directory アクセス許可を使用して、別の Azure コンテナー レジストリからイメージをインポートできます。
 
-* 使用する ID には、ソース レジストリからの読み取り (閲覧者ロール) と、ターゲット レジストリへの書き込み (共同作成者ロール) のための Azure Active Directory アクセス許可が付与されている必要があります。
+* 使用する ID には、ソース レジストリからの読み取り (閲覧者ロール) と、ターゲット レジストリへのインポート (共同作成者ロールか、importImage アクションを許可する[カスタム ロール](container-registry-roles.md#custom-roles)) のための Azure Active Directory アクセス許可が付与されている必要があります。
 
 * レジストリの場所は、同じ Active Directory テナント内であれば、同じ Azure サブスクリプション内でも、別の Azure サブスクリプション内でも構いません。
+
+* ソース レジストリへの[パブリック アクセス](container-registry-access-selected-networks.md#disable-public-network-access)は無効になっている場合があります。 パブリック アクセスが無効になっている場合、レジストリ ログイン サーバー名ではなく、リソース ID でソース レジストリを指定します。
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>同じサブスクリプション内のレジストリからインポートする
 
@@ -98,6 +102,16 @@ az acr import \
   --name myregistry \
   --source mysourceregistry.azurecr.io/aci-helloworld:latest \
   --image aci-helloworld:latest
+```
+
+次の例では、レジストリのパブリック エンドポイントが無効になっているソース レジストリ *mysourceregistry* から *myregistry* に `aci-helloworld:latest` イメージがインポートされます。 ソース レジストリのリソース ID は、`--registry` パラメーターを使用して指定しています。 `--source` パラメーターには、レジストリ ログイン サーバー名ではなく、ソース リポジトリとタグのみを指定することに注意してください。
+
+```azurecli
+az acr import \
+  --name myregistry \
+  --source aci-helloworld:latest \
+  --image aci-helloworld:latest \
+  --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 次の例では、タグではなくマニフェスト ダイジェスト (`sha256:...` として表される SHA-256 ハッシュ) によってイメージをインポートしています。

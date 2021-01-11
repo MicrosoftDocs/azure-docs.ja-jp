@@ -2,14 +2,14 @@
 title: プールの VM サイズを選択する
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズを選択する方法
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 08/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: e56632ce66cb25bf023813f2b98be6141f651465
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 9aef1fc21120401252d188b7373c6ce4139c71c4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143531"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005143"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -35,12 +35,12 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | DC | なし |
 | Dv2、DSv2 | すべてのサイズ |
 | Dv3、Dsv3 | すべてのサイズ |
-| Dav4<sup>1</sup> | なし - まだ使用できません |
-| Dasv4<sup>1</sup> | Standard_D48as_v4、Standard_D64as_v4、Standard_D96as_v4 以外のすべてのサイズ |
+| Dav4<sup>1</sup> | すべてのサイズ |
+| Dasv4<sup>1</sup> | すべてのサイズ |
 | Ddv4、Ddsv4 |  なし - まだ使用できません |
 | Ev3、Esv3 | すべてのサイズ (E64is_v3 と E64i_v3 を除く) |
-| Eav4<sup>1</sup> | Standard_E48a_v4、Standard_E64a_v4、Standard_E96a_v4 以外のすべてのサイズ |
-| Easv4<sup>1</sup> | Standard_E48as_v4、Standard_E64as_v4、Standard_E96as_v4 以外のすべてのサイズ |
+| Eav4<sup>1</sup> | すべてのサイズ |
+| Easv4<sup>1</sup> | すべてのサイズ |
 | Edv4、Edsv4 |  なし - まだ使用できません |
 | F、Fs | すべてのサイズ |
 | Fsv2 | すべてのサイズ |

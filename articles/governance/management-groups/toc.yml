@@ -7,12 +7,25 @@
       href: ../azure-management.md
     - name: 管理グループ
       href: ./overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: 管理グループの作成 - ポータル
+      displayName: hierarchy
+      href: ./create-management-group-portal.md
+    - name: 管理グループの作成 - Azure CLI
+      displayName: hierarchy
+      href: ./create-management-group-azure-cli.md
+    - name: 管理グループの作成 - Azure PowerShell
+      displayName: hierarchy
+      href: ./create-management-group-powershell.md
+    - name: 管理グループの作成 - REST
+      displayName: hierarchy
+      href: ./create-management-group-rest-api.md
 - name: 操作方法ガイド
   expanded: true
   items:
-    - name: 管理グループの作成
-      href: ./create.md
-    - name: リソースの管理
+    - name: リソース階層の管理
       href: ./manage.md
     - name: リソース階層の保護
       href: ./how-to/protect-resource-hierarchy.md

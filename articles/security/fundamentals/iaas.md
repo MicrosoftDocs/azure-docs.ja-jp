@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03258bf204491afce4635828b3a33a06886aca2d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81450017"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448394"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -84,7 +84,7 @@ Microsoft Antimalware には、リアルタイム保護、スケジュールさ�
 Azure VM は、他の VM と同じように、ユーザーによって管理されることを意図しています。 Azure では、それらに対して Windows 更新プログラムをプッシュしません。 VM の更新は、お客様が管理する必要があります。
 
 **ベスト プラクティス**: VM を最新の状態に保つ。   
-**詳細**: Azure Automation の [Update Management](../../automation/automation-update-management.md) ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
+**詳細**: Azure Automation の [Update Management](../../automation/update-management/update-mgmt-overview.md) ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムの更新プログラムを管理できます。 すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
 Update Management で管理されるコンピューターでは、評価と更新プログラムのデプロイに次の構成を使用します。
 

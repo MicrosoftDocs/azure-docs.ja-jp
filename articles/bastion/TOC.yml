@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Bastion について
+    - name: Azure Bastion とは
       href: bastion-overview.md
 - name: クイックスタート
   items:

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565520"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509367"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>クイック スタート:Unity によるモデルのレンダリング
 
@@ -84,7 +84,7 @@ Unity Hub を開き、*ARR\azure-remote-rendering\Unity\Quickstart* フォルダ
 
 ### <a name="create-a-session-and-view-the-default-model"></a>セッションを作成し、既定のモデルを表示する
 
-Unity の **[Play]\(再生\)** ボタンを押してセッションを開始します。 *[Game]\(ゲーム\)* パネルのビューポートの下部に、状態テキストを含むオーバーレイが表示されます。 セッションでは、一連の状態遷移が行われます。 **[Starting]\(開始\)** 状態では、リモート VM が起動されます。これには数分かかります。 成功すると、 **[Ready]\(準備完了\)** 状態に移行します。 次に、セッションは **[Connecting]\(接続中\)** 状態になります。このとき、セッションは、その VM のレンダリング ランタイムへの接続を試みます。 成功すると、サンプルは **[Connected]\(接続済み\)** 状態に移行します。 この時点で、レンダリング用のモデルのダウンロードが開始されます。 モデルのサイズが大きいため、ダウンロードにさらに数分かかることがあります。 次に、リモートでレンダリングされたモデルが表示されます。
+Unity の **[Play]\(再生\)** ボタンを押してセッションを開始します。 *[Game]\(ゲーム\)* パネルのビューポートの下部に、状態テキストを含むオーバーレイが表示されます。 セッションでは、一連の状態遷移が行われます。 **[Starting]\(開始\)** 状態では、サーバーが起動されます。これには数分かかります。 成功すると、 **[Ready]\(準備完了\)** 状態に移行します。 次に、セッションは **[Connecting]\(接続中\)** 状態になります。このとき、セッションは、そのサーバーのレンダリング ランタイムへの接続を試みます。 成功すると、サンプルは **[Connected]\(接続済み\)** 状態に移行します。 この時点で、レンダリング用のモデルのダウンロードが開始されます。 モデルのサイズが大きいため、ダウンロードにさらに数分かかることがあります。 次に、リモートでレンダリングされたモデルが表示されます。
 
 ![サンプルからの出力](media/arr-sample-output.png)
 

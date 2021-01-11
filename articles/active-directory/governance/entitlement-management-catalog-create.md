@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16a9c8ddfbc2c2a45067080dc68a759de226591b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339565"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783537"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
@@ -53,7 +53,7 @@ ms.locfileid: "85339565"
 
 ### <a name="creating-a-catalog-programmatically"></a>プログラムによるカタログの作成
 
-Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログを作成することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を作成する](/graph/api/accesspackagecatalog-post?view=graph-rest-beta)ことができます。
 
 ## <a name="add-resources-to-a-catalog"></a>カタログにリソースを追加する
 
@@ -83,7 +83,7 @@ Microsoft Graph を使用して、カタログを作成することもできま�
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>プログラムによるカタログへのリソースの追加
 
-Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログにリソースを追加することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーまたはカタログおよびリソースの所有者は、API を呼び出して、[accessPackageResourceRequest を作成する](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)ことができます。
 
 ## <a name="remove-resources-from-a-catalog"></a>カタログからリソースを削除する
 
@@ -155,7 +155,7 @@ Microsoft Graph を使用して、カタログにリソースを追加するこ�
 
 ### <a name="deleting-a-catalog-programmatically"></a>プログラムによるカタログの削除
 
-Microsoft Graph を使用して、カタログを削除することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を削除する](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)ことができます。
+Microsoft Graph を使用して、カタログを削除することもできます。  委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを有する適切なロールのユーザーは、API を呼び出して、[accessPackageCatalog を削除する](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)ことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

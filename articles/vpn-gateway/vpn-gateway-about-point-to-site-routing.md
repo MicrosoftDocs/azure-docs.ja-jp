@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway:P2S ルーティングについて
-description: この記事は、ポイント対サイト VPN ルーティングの動作を理解するのに役立ちます。
+description: さまざまなオペレーティング システム、リモート アクセス プロトコル、および仮想ネットワーク構成の Azure ポイント対サイト VPN ルーティングについて説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: kumud
-ms.openlocfilehash: 536e1e57af16a87fba85323e9448bfb904d56384
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b839170d95918889d1295eb20308688fbfb2a7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027871"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032375"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>ポイント対サイト VPN ルーティングについて
 

@@ -1,6 +1,6 @@
 ---
 title: Azure ネットワーク サービスの概要
-description: Azure のネットワーク サービスとその機能 (接続サービス、アプリケーション保護サービス、アプリケーション配信サービス、ネットワーク監視) について説明します。
+description: 接続、アプリケーション保護、アプリケーション配信、およびネットワーク監視サービスなどの Azure のネットワーク サービスについて説明します。
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 097d2b4dffd1dda02d8e342a11b3a907bad4e90a
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851657"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037254"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要
 

@@ -86,9 +86,9 @@
       href: hyper-v-migration-architecture.md
     - name: エージェントベースの VMware 移行のアーキテクチャ
       href: agent-based-migration-architecture.md
-    - name: Azure VM の評価の概要
+    - name: 評価の概要 (Azure VM への移行)
       href: concepts-assessment-calculation.md
-    - name: AVS の評価の概要
+    - name: 評価の概要 (AVS への移行)
       href: concepts-azure-vmware-solution-assessment-calculation.md
     - name: 評価のベスト プラクティス
       href: best-practices-assessment.md
@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: 評価と依存関係の視覚化のトラブルシューティング
       href: troubleshoot-assessment.md
+    - name: エージェントレスの VMware 移行におけるレプリケーションの問題のトラブルシューティング
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: リソース
   items:
     - name: クラウド導入フレームワークにおける移行

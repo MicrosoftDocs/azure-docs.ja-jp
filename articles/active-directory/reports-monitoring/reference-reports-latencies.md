@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0498ee1c57cfa661884fe3209d4e089b54996fae
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007701"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231063"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
@@ -54,8 +54,8 @@ ms.locfileid: "74007701"
 
 セキュリティ レポートには次の 2 種類があります。
 
-- [リスクの高いサインイン](concept-risky-sign-ins.md) - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
-- [リスクのフラグ付きユーザー](concept-user-at-risk.md) - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 
+- [リスクの高いサインイン](../identity-protection/overview-identity-protection.md) - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
+- [リスクのフラグ付きユーザー](../identity-protection/overview-identity-protection.md) - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 
 
 次の表に、セキュリティ レポートの待機時間情報を一覧表示します。
 
@@ -84,4 +84,4 @@ Azure AD では、アダプティブ機械学習アルゴリズムとヒュー�
 
 * [Azure AD レポートの概要](overview-reports.md)
 * [Azure AD レポートへのプログラムによるアクセス](concept-reporting-api.md)
-* [Azure Active Directory リスク検出](concept-risk-events.md)
+* [Azure Active Directory リスク検出](../identity-protection/overview-identity-protection.md)

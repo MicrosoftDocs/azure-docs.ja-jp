@@ -4,17 +4,19 @@ description: Azure Files のネットワーク オプションの概要。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 3/19/2020
+ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0859b034cf0caa60039fbf9eb4dd9be54448a940
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: a38528e32061f57e3239ef4be26cdd437f4f8746
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510324"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078594"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files ネットワーク エンドポイントの構成
+
 Azure Files では、Azure ファイル共有にアクセスするための次の主な 2 種類のエンドポイントが提供されます。 
 - パブリック エンドポイント。パブリック IP アドレスを持ち、世界中のどこからでもアクセスできます。
 - プライベート エンドポイント。仮想ネットワーク内に存在し、その仮想ネットワークのアドレス空間内からのプライベート IP アドレスを持ちます。
@@ -26,12 +28,21 @@ Azure Files では、Azure ファイル共有にアクセスするための次�
 このハウツー ガイドを読む前に、「[Azure Files のネットワークに関する考慮事項](storage-files-networking-overview.md)」を読むことをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
+
 - この記事では、既に Azure サブスクリプションが作成されていることを前提としています。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 - この記事では、オンプレミスから接続するストレージ アカウントに Azure ファイル共有が既に作成されていることを前提としています。 Azure ファイル共有を作成する方法については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」をご覧ください。
 - Azure PowerShell を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 - Azure CLI を使用する場合は、[最新バージョンをインストールしてください](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-## <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
+## <a name="endpoint-configurations"></a>エンドポイント構成
+
+ストレージ アカウントへのネットワーク アクセスを制限するようにエンドポイントを構成できます。 ストレージ アカウントへのアクセスを仮想ネットワークに制限するには、次の 2 つの方法があります。
+
+- [ストレージ アカウントに 1 つ以上のプライベート エンドポイントを作成](#create-a-private-endpoint)し、パブリック エンドポイントへのアクセスをすべて制限します。 これで、そのストレージ アカウント内の Azure ファイル共有にアクセスできるのは、特定の仮想ネットワーク内から送信されたトラフィックだけになります。
+- [パブリック エンドポイントを 1 つ以上の仮想ネットワークに制限します](#restrict-public-endpoint-access)。 これは、"*サービス エンドポイント*" と呼ばれる仮想ネットワークの機能を使用して実現できます。 サービス エンドポイントを使用してストレージ アカウントへのトラフィックを制限する場合、そのストレージ アカウントには引き続きパブリック IP アドレス経由でアクセスしますが、アクセスは構成で指定されている場所からのみ可能です。
+
+### <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
+
 ストレージ アカウント用のプライベート エンドポイントを作成すると、次の Azure リソースがデプロイされます。
 
 - **プライベート エンドポイント**: ストレージ アカウントのプライベート エンドポイントを表す Azure リソース。 これは、ストレージ アカウントとネットワーク インターフェイスを接続するリソースと考えることができます。
@@ -105,7 +116,7 @@ hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/"
 nslookup $hostName
 ```
 
-すべてが正常に動作した場合は、次のような出力が表示されます。`192.168.0.5` は、仮想ネットワーク内のプライベート エンドポイントのプライベート IP アドレスです。 ご自分のファイル共有をマウントするには、`privatelink` パスではなく、storageaccount.file.core.windows.net を引き続き使用する必要があることに注意してください。
+すべてが正常に動作した場合は、次のような出力が表示されます。`192.168.0.5` は、仮想ネットワーク内のプライベート エンドポイントのプライベート IP アドレスです。 ファイル共有をマウントするには、`privatelink` パスではなく、storageaccount.file.core.windows.net を引き続き使用する必要があります。
 
 ```Output
 Server:         127.0.0.53
@@ -119,14 +130,13 @@ Address: 192.168.0.5
 
 ---
 
-## <a name="restrict-access-to-the-public-endpoint"></a>パブリック エンドポイントへのアクセスを制限する
-ストレージ アカウントのファイアウォール設定を使用して、パブリック エンドポイントへのアクセスを制限できます。 一般に、ストレージ アカウントのほとんどのファイアウォール ポリシーではネットワーク アクセスが 1 つ以上の仮想ネットワークに制限されます。 ストレージ アカウントへのアクセスを仮想ネットワークに制限するには、次の 2 つの方法があります。
+### <a name="restrict-public-endpoint-access"></a>パブリック エンドポイント アクセスを制限する
 
-- [ストレージ アカウントに 1 つ以上のプライベート エンドポイントを作成](#create-a-private-endpoint)し、パブリック エンドポイントへのアクセスをすべて制限します。 これで、そのストレージ アカウント内の Azure ファイル共有にアクセスできるのは、特定の仮想ネットワーク内から送信されたトラフィックだけになります。
-- パブリック エンドポイントを 1 つ以上の仮想ネットワークに制限します。 これは、"*サービス エンドポイント*" と呼ばれる仮想ネットワークの機能を使用して実現できます。 ストレージ アカウントへのトラフィックをサービス エンドポイントを使用して制限していても、ストレージ アカウントへのアクセスには、やはりパブリック IP アドレスを使用します。
+パブリック エンドポイント アクセスを制限するには、まず、パブリック エンドポイントへの一般的なアクセスを無効にする必要があります。 パブリック エンドポイントへのアクセスを無効にしても、プライベート エンドポイントには影響しません。 パブリック エンドポイントが無効になったら、そこに引き続きアクセスできる特定のネットワークまたは IP アドレスを選択できます。 一般に、ストレージ アカウントのほとんどのファイアウォール ポリシーではネットワーク アクセスが 1 つ以上の仮想ネットワークに制限されます。
 
-### <a name="disable-access-to-the-public-endpoint"></a>パブリック エンドポイントへのアクセスを無効にする
-パブリック エンドポイントへのアクセスが無効にされている場合でも、そのプライベート エンドポイントを介してストレージ アカウントにアクセスできます。 それ以外の場合、ストレージ アカウントのパブリック エンドポイントに対する有効な要求は拒否されます。 
+#### <a name="disable-access-to-the-public-endpoint"></a>パブリック エンドポイントへのアクセスを無効にする
+
+パブリック エンドポイントへのアクセスが無効にされている場合でも、そのプライベート エンドポイントを介してストレージ アカウントにアクセスできます。 それ以外の場合は、[特に許可されているソース](#restrict-access-to-the-public-endpoint-to-specific-virtual-networks)からのものでない限り、ストレージ アカウントのパブリック エンドポイントへの有効な要求は拒否されます。 
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-disable-portal](../../../includes/storage-files-networking-endpoints-public-disable-portal.md)]
@@ -139,7 +149,8 @@ Address: 192.168.0.5
 
 ---
 
-### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>パブリック エンドポイントへのアクセスを特定の仮想ネットワークに制限する
+#### <a name="restrict-access-to-the-public-endpoint-to-specific-virtual-networks"></a>パブリック エンドポイントへのアクセスを特定の仮想ネットワークに制限する
+
 ストレージ アカウントを特定の仮想ネットワークに制限すると、指定した仮想ネットワーク内からパブリック エンドポイントへの要求が許可されます。 これは、"*サービス エンドポイント*" と呼ばれる仮想ネットワークの機能を使用して実現できます。 これは、プライベート エンドポイントの有無に関係なく使用できます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
@@ -154,6 +165,7 @@ Address: 192.168.0.5
 ---
 
 ## <a name="see-also"></a>関連項目
+
 - [Azure Files のネットワークに関する考慮事項](storage-files-networking-overview.md)
 - [Azure Files の DNS 転送の構成](storage-files-networking-dns.md)
 - [Azure Files 用のサイト間 VPN の構成](storage-files-configure-s2s-vpn.md)

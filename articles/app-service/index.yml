@@ -6,13 +6,13 @@ metadata:
   description: Azure App Service で、Web サイト、Web アプリ、RESTful API、およびモバイル バックエンドをホストします。 App Service を成功させるために役立つクイックスタート、チュートリアル、サンプルを紹介します。
   ms.topic: landing-page
   ms.service: app-service
-  ms.date: 02/26/2020
-  ms.openlocfilehash: e8dcbe7288fb72fb5084f210bf38f7fa55f969a2
-  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+  ms.date: 08/06/2020
+  ms.openlocfilehash: 3fc31095ec0d8e1ecdbe44c0751c55164d20e088
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/18/2020
-  ms.locfileid: "84987964"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080030"
 landingContent:
 - title: App Service について
   linkLists:
@@ -20,8 +20,6 @@ landingContent:
     links:
     - text: App Service とは
       url: overview.md
-    - text: App Service on Linux
-      url: /azure/app-service/containers/
     - text: App Service Environment
       url: environment/intro.md
     - text: ホスティング オプションの比較
@@ -35,19 +33,19 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 初めての ASP.NET Core アプリ
-      url: app-service-web-get-started-dotnet.md
-    - text: 初めての ASP.NET アプリ
-      url: app-service-web-get-started-dotnet-framework.md
+      url: quickstart-dotnetcore.md
+    - text: 初めての ASP.NET アプリ (Windows のみ)
+      url: quickstart-dotnet-framework.md
     - text: 初めての Node.js アプリ
-      url: app-service-web-get-started-nodejs.md
+      url: quickstart-nodejs.md
     - text: 初めての PHP アプリ
-      url: app-service-web-get-started-php.md
+      url: quickstart-php.md
     - text: 初めての Java アプリ
-      url: app-service-web-get-started-java.md
-    - text: 初めての Python アプリ (Linux 版)
-      url: containers/quickstart-python.md
-    - text: 初めての Ruby アプリ (Linux 版)
-      url: containers/quickstart-ruby.md
+      url: quickstart-java.md
+    - text: 初めての Python Flask アプリ (Linux のみ)
+      url: quickstart-python.md
+    - text: 初めての Ruby アプリ (Linux のみ)
+      url: quickstart-ruby.md
 - title: 一般的なタスク
   linkLists:
   - linkListType: tutorial
@@ -62,6 +60,8 @@ landingContent:
     links:
     - text: Traffic Manager で診断ログを有効にする
       url: troubleshoot-diagnostic-logs.md
+    - text: SSH 経由で Linux コンテナーに接続する
+      url: configure-linux-open-ssh-session.md
     - text: アクティブなドメイン名を App Service に移行する
       url: manage-custom-dns-migrate-domain.md
 - title: データベースを使用した CRUD アプリ
@@ -71,11 +71,17 @@ landingContent:
     - text: SQL Database を使用した ASP.NET アプリ
       url: app-service-web-tutorial-dotnet-sqldatabase.md
     - text: ASP.NET Core アプリと SQL Database
-      url: app-service-web-tutorial-dotnetcore-sqldb.md
+      url: tutorial-dotnetcore-sqldb-app.md
     - text: Azure MySQL を使用する PHP (Laravel) アプリ
-      url: app-service-web-tutorial-php-mysql.md
+      url: tutorial-php-mysql-app.md
     - text: MongoDB を使用する Node.js (MEAN.js) アプリ
-      url: app-service-web-tutorial-nodejs-mongodb-app.md
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Cosmos DB を使用する Java (Spring Boot) アプリ
+      url: tutorial-java-spring-cosmosdb.md
+    - text: PostgreSQL を使用する Python (Django) アプリ
+      url: tutorial-python-postgresql-app.md
+    - text: PostgreSQL を使用する Ruby (Rails) アプリ
+      url: tutorial-ruby-postgres-app.md
 - title: コードまたはコンテンツをアップロードする
   linkLists:
   - linkListType: deploy
@@ -90,20 +96,28 @@ landingContent:
       url: deploy-content-sync.md
     - text: GitHub、BitBucket などを使用した CI/CD
       url: deploy-continuous-deployment.md
-- title: コンテナー化された Windows アプリを実行する
+    - text: パッケージから実行
+      url: deploy-run-package.md
+- title: カスタム コンテナーを実行する
   linkLists:
   - linkListType: quickstart
     links:
-    - text: カスタム Windows コンテナーを実行する
-      url: app-service-web-get-started-windows-container.md
+    - text: カスタム コンテナーの実行
+      url: quickstart-custom-container.md
   - linkListType: tutorial
     links:
-    - text: Windows コンテナーでレガシ アプリを Azure に移行する
-      url: app-service-web-tutorial-windows-containers-custom-fonts.md
+    - text: Docker Compose アプリを実行する (Linux のみ)
+      url: tutorial-multi-container-app.md
+    - text: コンテナーでカスタム ソフトウェアを Azure に移行する
+      url: tutorial-custom-container.md
   - linkListType: how-to-guide
     links:
+    - text: カスタム コンテナーへの CI/CD
+      url: deploy-ci-cd-custom-container.md
     - text: コンテナーをストレージ ファイルに接続する
       url: configure-connect-to-azure-storage.md
+    - text: GitHub Actions を使用したデプロイ
+      url: deploy-container-github-action.md
 - title: 管理と統合
   linkLists:
   - linkListType: concept
@@ -115,7 +129,7 @@ landingContent:
     - text: マネージド ID を利用してリソースへのアクセスを保護する
       url: app-service-web-tutorial-connect-msi.md
     - text: ユーザーを認証する
-      url: app-service-web-tutorial-auth-aad.md
+      url: tutorial-auth-aad.md
     - text: CORS を使用して RESTful API をホストする
       url: app-service-web-tutorial-rest-api.md
     - text: CDN をアプリケーションに追加する

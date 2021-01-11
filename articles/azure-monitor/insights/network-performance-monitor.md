@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326088"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798909"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -38,7 +38,9 @@ Network Performance Monitor では、次の 3 つの広範な機能が提供さ�
 NPM は、次のリージョンのいずれかでホストされているワークスペースから、世界の任意の部分のネットワークまたはアプリケーション間の接続を監視できます。
 * 北ヨーロッパ
 * 西ヨーロッパ
+* スイス北部
 * フランス中部
+* 南アフリカ北部
 * カナダ中部
 * 米国西部
 * 米国中西部
@@ -58,6 +60,7 @@ NPM は、次のリージョンのいずれかでホストされているワー�
 * 韓国中部
 * インド中部
 * 米国政府バージニア州
+* 米国政府アリゾナ州
 * 中国東部 2
 
 

@@ -1,32 +1,32 @@
 ---
-title: Azure AD アプリの SAML トークン要求のカスタマイズ
+title: アプリの SAML トークン要求をカスタマイズする
 titleSuffix: Microsoft identity platform
-description: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します。
+description: エンタープライズ アプリケーションの SAML トークンで Microsoft ID プラットフォームによって発行された要求をカスタマイズする方法について説明します。
 services: active-directory
-author: rwike77
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.author: ryanwi
+ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 0b0efc7e5dd4a60e33ddd61c19283a048cf4ab78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f35e5971374f54940396f602a23ffa0ae3abd015
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478299"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552834"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
-現在、Azure Active Directory (Azure AD) では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションで、シングル サインオン (SSO) がサポートされています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、"*要求*" と呼ばれる、ユーザーに関する情報が含まれています。
+現在、Microsoft ID プラットフォームによるシングル サインオン (SSO) は、Azure AD アプリ ギャラリー内の事前統合済みアプリケーションと、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでサポートされています。 ユーザーが Microsoft ID プラットフォームで SAML 2.0 プロトコルを使ってアプリケーションへのユーザー認証を行うと、Microsoft ID プラットフォームは、(HTTP POST を使用して) アプリケーションにトークンを送信します。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、"*要求*" と呼ばれる、ユーザーに関する情報が含まれています。
 
 *要求*とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](https://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
 
-既定では、Azure AD により、アプリケーションに対して、Azure AD でのユーザーのユーザー名 (別名: ユーザー プリンシパル名) を値に持つ `NameIdentifier` 要求を含む SAML トークンが発行され、ユーザーを一意に識別できます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
+既定では、Microsoft ID プラットフォームにより、ユーザーを一意に識別できる Azure AD のユーザー名 (別名: ユーザー プリンシパル名) を値として持つ `NameIdentifier` 要求を含む SAML トークンがアプリケーションに対して発行されます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
 
 アプリケーションに対して SAML トークンで発行された要求を表示または編集するには、Azure Portal でアプリケーションを開きます。 次に、 **[ユーザー属性とクレーム]** セクションを開きます。
 
@@ -48,19 +48,19 @@ NameID (名前識別子の値) を編集するには:
 
 ### <a name="nameid-format"></a>NameID の形式
 
-SAML 要求に、特定の形式を持つ NameIDPolicy 要素が含まれている場合、Azure AD では要求の形式が使用されます。
+特定の形式の NameIDPolicy 要素が SAML 要求に含まれている場合、その要求の形式が Microsoft ID プラットフォームで使用されます。
 
-SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD では指定した形式の NameID が発行されます。 形式を指定しないと、Azure AD では、選択されている要求ソースに関連付けられている既定のソース形式が使用されます。
+SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した形式の NameID がMicrosoft ID プラットフォームによって発行されます。 形式を指定しないと、選択した要求ソースに関連付けられている既定のソース形式が使用されます。
 
 **[名前識別子の形式の選択]** ドロップダウンで、次のオプションのいずれかを選択できます。
 
 | NameID の形式 | 説明 |
 |---------------|-------------|
-| **[Default]** | Azure AD では、既定のソース形式が使用されます。 |
-| **永続的** | Azure AD では、NameID の形式として "永続的" が使用されます。 |
-| **EmailAddress** | Azure AD では、NameID の形式として "EmailAddress" が使用されます。 |
-| **未指定** | Azure AD では、NameID の形式として "未指定" が使用されます。 |
-| **Windows ドメインの修飾名** | Azure AD では、NameID の形式として WindowsDomainQualifiedName が使用されます。 |
+| **[Default]** | 既定のソース形式が使用されます。 |
+| **永続的** | NameID 形式として Persistent が使用されます。 |
+| **EmailAddress** | NameID 形式として EmailAddress が使用されます。 |
+| **未指定** | NameID 形式として Unspecified が使用されます。 |
+| **Windows ドメインの修飾名** | NameID 形式として WindowsDomainQualifiedName が使用されます。 |
 
 一時的な NameID もサポートされていますが、ドロップダウンでは選択できず、また、Azure 側で構成できません。 NameIDPolicy 属性について詳しくは、「[シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)」をご覧ください。
 
@@ -164,14 +164,14 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 
 1. **[要求の管理]** で、要求条件を展開します。
 2. ユーザーの種類を選択します。
-3. ユーザーが属するグループを選択します。 任意のアプリケーションに対するすべての要求で、最大 10 個の一意のグループを選択できます。 
+3. ユーザーが属するグループを選択します。 特定のアプリケーションに対するすべての要求で、最大 50 個の一意のグループを選択できます。 
 4. クレームの値が取得される **[ソース]** を選択します。 ソース属性のドロップダウンからユーザー属性を選択するか、または要求として生成する前にユーザー属性に変換を適用することができます。
 
 条件を追加する順序は重要です。 Azure AD では、条件を上から下に評価し、要求に出力する値を決定しています。 
 
-たとえば、Britta Simon は Contoso テナントのゲスト ユーザーです。 彼女は、同様に Azure AD を使用する別の組織に属しています。 Fabrikam アプリケーションが次のように構成されている場合、Britta が Fabrikam にサインインしようとすると、Azure AD では次のように条件が評価されます。
+たとえば、Britta Simon は Contoso テナントのゲスト ユーザーです。 彼女は、同様に Azure AD を使用する別の組織に属しています。 Fabrikam アプリケーションが次のように構成されている場合、Britta が Fabrikam にサインインしようとすると、Microsoft ID プラットフォームで次のように条件が評価されます。
 
-Azure AD は、まず Britta のユーザーの種類が `All guests` であるかどうかを確認します。 これに当てはまれば、Azure AD によって要求のソースが `user.extensionattribute1` に割り当てられます。 次に Britta のユーザーの種類が `AAD guests` かどうかを確認します。これにも当てはまるため、Azure AD が要求のソースを `user.mail` に割り当てます。 最後に、Britta の値 `user.mail` を使用して要求が出力されます。
+まず、Britta のユーザーの種類が `All guests` かどうかを確認します。 これに当てはまるので、要求のソースが `user.extensionattribute1` に割り当てられます。 次に、Britta のユーザーの種類が `AAD guests` かどうかを確認します。これも当てはまるので、要求のソースが `user.mail` に割り当てられます。 最後に、Britta の値 `user.mail` を使用して要求が出力されます。
 
 ![要求の条件付き構成](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

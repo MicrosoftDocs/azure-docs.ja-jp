@@ -4,15 +4,15 @@ description: Azure Firewall Manager のポリシーについて説明します
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
-ms.topic: overview
-ms.date: 06/30/2020
+ms.topic: conceptual
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 6e532634fb40eee100e73a333ac6aa7e0a79cf3c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34134f2c790851d34db7b5327aa76350d54d137d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521651"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075465"
 ---
 # <a name="azure-firewall-manager-policy-overview"></a>Azure Firewall Manager ポリシーの概要
 

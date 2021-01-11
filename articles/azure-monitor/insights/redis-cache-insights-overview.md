@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/21/2020
-ms.openlocfilehash: 469b402c694bcfae5a826c03ea35dbef2c365148
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 70bf39011761bcf59c8270ecdcc0542e326aef42
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945411"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045861"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Azure Monitor for Azure Cache for Redis (プレビュー) について知る
 
@@ -120,7 +120,7 @@ Azure Monitor for Azure Cache for Redis (プレビュー) では、Azure Cache f
 
 ### <a name="metric-definitions"></a>メトリック定義
 
-これらのブックを形成するメトリック定義の完全な一覧については、[使用可能なメトリックとレポート間隔](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)に関するページをご覧ください。
+これらのブックを形成するメトリック定義の完全な一覧については、[使用可能なメトリックとレポート間隔](../../azure-cache-for-redis/cache-how-to-monitor.md#available-metrics-and-reporting-intervals)に関するページをご覧ください。
 
 ## <a name="view-from-an-azure-cache-for-redis-resource"></a>Azure Cache for Redis リソースから表示する
 
@@ -156,7 +156,7 @@ Azure Redis Cache の **[概要]** ブックには、複数のパフォーマン
 
 ## <a name="pin-export-and-expand"></a>ピン留め、エクスポート、展開
 
-[Azure ダッシュボード](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)にメトリック セクションをピン留めするには、セクションの右上にある画びょう記号を選択します。
+[Azure ダッシュボード](../../azure-portal/azure-portal-dashboards.md)にメトリック セクションをピン留めするには、セクションの右上にある画びょう記号を選択します。
 
 ![画びょう記号が強調表示されているメトリック セクション](./media/cosmosdb-insights-overview/pin.png)
 
@@ -186,6 +186,6 @@ Azure Redis Cache の **[概要]** ブックには、複数のパフォーマン
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
+* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
 * ブックがサポートするシナリオ、レポートの作成方法とカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。

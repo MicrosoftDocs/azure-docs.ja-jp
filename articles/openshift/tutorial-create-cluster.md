@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a581678fdd05dade336f7ca9fcbcf5ad4c92d49a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260673"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300172"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -22,7 +22,9 @@ ms.locfileid: "86260673"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.75 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+
+OpenShift クラスターを作成して実行するには、Azure Red Hat OpenShift に少なくとも 40 コアが必要です。 新しい Azure サブスクリプションの既定の Azure リソース クォータは、この要件を満たしていません。 リソースの制限の引き上げを依頼するには、[標準クォータ: VM シリーズでの制限の引き上げ](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)に関するページの説明に従って引き上げをリクエストしてください。
 
 ### <a name="verify-your-permissions"></a>アクセス許可を確認する
 
@@ -33,42 +35,12 @@ Azure Red Hat OpenShift クラスターを作成するには、次のアクセ�
 |**User Access Administrator**|X|X| |
 |**Contributor**|X|X|X|
 
-### <a name="install-the-az-aro-extension"></a>`az aro` 拡張機能をインストールする
-`az aro` 拡張機能を使用すると、Azure CLI を使用してコマンド ラインから直接 Azure Red Hat OpenShift クラスターを作成、アクセス、削除できます。
-
-次のコマンドを実行して、`az aro` 拡張機能をインストールします。
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-拡張機能が既にインストールされている場合は、次のコマンドを実行して更新できます。
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
-
 ### <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
 次に、お使いのサブスクリプションに `Microsoft.RedHatOpenShift` リソースプロバイダーを登録する必要があります。
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-拡張機能が登録されていることを確認します。
-
-```azurecli-interactive
-az -v
-```
-
-  次のような出力が表示されます。
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)
@@ -79,9 +51,9 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
 
    Red Hat アカウントにログインするか、お使いのビジネス メール アドレスを使用して新しい Red Hat アカウントを作成し、使用条件に同意する必要があります。
 
-2. **[Download pull secret]\(プル シークレットのダウンロード\) を選択します。**
+2. クラスターを初めて作成する場合は、[**OpenShift 製品ページ**](https://developers.redhat.com/products/codeready-containers)を参照してください。 登録後に、[**Red Hat OpenShift Cluster Manager ページ**](https://cloud.redhat.com/openshift/)に移動し、 **[Download pull secret]\(プル シークレットのダウンロード\)** をクリックすると、ARO クラスターで使用するプル シークレットをダウンロードできます。
 
-保存されている `pull-secret.txt` ファイルは安全な場所に保管してください。このファイルは、クラスターを作成するたびに使用します。
+保存済みの `pull-secret.txt` ファイルは安全な場所に保管してください。 Red Hat または認定パートナーのサンプルやオペレーターを含むクラスターを作成する必要がある場合は、クラスターを作成するたびにこのファイルが使用されます。
 
 `az aro create` コマンドを実行する場合は、`--pull-secret @pull-secret.txt` パラメーターを使用してプル シークレットを参照できます。 `pull-secret.txt` ファイルを格納したディレクトリから `az aro create` を実行します。 それ以外の場合は、`@pull-secret.txt` を `@<path-to-my-pull-secret-file>` で置き換えます。
 
@@ -117,12 +89,15 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
 1. **リソース グループを作成します。**
 
     Azure リソース グループは、Azure リソースが展開され管理される論理グループです。 リソース グループを作成する際は、場所を指定するよう求められます。 この場所は、リソース グループのメタデータが格納される場所です。リソースの作成時に別のリージョンを指定しない場合は、Azure でリソースが実行される場所でもあります。 [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。
+    
+> [!NOTE]
+> Azure Red Hat OpenShift は、Azure リソース グループを作成できるすべてのリージョンで使用可能なわけではありません。 Azure Red Hat OpenShift がサポートされている場所については、「[使用可能なリージョン](https://docs.openshift.com/aro/4/welcome/index.html#available-regions)」を参照してください。
 
     ```azurecli-interactive
     az group create --name $RESOURCEGROUP --location $LOCATION
     ```
 
-    次の出力例では、正常に作成されたリソース グループが示されています。
+    The following example output shows the resource group created successfully:
 
     ```json
     {

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 の URI を使用する
-description: Azure Data Lake Storage Gen2 の URI を使用する
+description: abfs スキーム識別子の URI 構文について説明します。これは、Azure Blob ファイル システム ドライバー (Azure Data Lake Storage Gen2 用 Hadoop ファイル システム ドライバー) を表します。
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 7c9c452d608bc2c5f64292d72f3eae6825bf1ce2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437130"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828253"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage Gen2 の URI を使用する
 

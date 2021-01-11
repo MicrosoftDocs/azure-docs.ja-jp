@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4834cccff11a70249140f49b498b8f7891787c72
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 13bbea166d699acead932b1ad6779720f82090e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169342"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919677"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>再認証プロンプトを最適化し、Azure Multi-Factor Authentication のセッションの有効期間を理解する
 
@@ -45,6 +45,8 @@ Azure Active Directory (Azure AD) には、ユーザーが再認証を必要と�
 ### <a name="evaluate-session-lifetime-policies"></a>セッションの有効期間ポリシーを評価する
 
 セッションの有効期間が設定されていない場合、ブラウザー セッションに永続的な Cookie はありません。 ユーザーがブラウザーを閉じて開くたびに、再認証を求めるプロンプトが表示されます。 Office クライアントでは、既定の期間は 90 日のローリング ウィンドウです。 この既定の Office 構成では、ユーザーが自分のパスワードをリセットした場合、または非アクティブな状態が 90 日を超えた場合、ユーザーは必要なすべての要素 (第 1 要素と第 2 要素) を使用して再認証を行う必要があります。
+
+Azure AD の ID がないデバイスでは、ユーザー向けに複数の MFA プロンプトが表示される場合があります。 各アプリケーションに他のクライアント アプリと共有されていない独自の OAuth 更新トークンがあると、複数のプロンプトが表示されます。 このシナリオでは、MFA を使用して OAuth 更新トークンを検証するよう各アプリケーションから要求されるため、MFA によって複数回プロンプトが表示されます。
 
 Azure AD では、セッションの有効期間に最も制限の厳しいポリシーによって、ユーザーが再認証を必要とするタイミングが決まります。 以下のシナリオについて考えてみます。
 

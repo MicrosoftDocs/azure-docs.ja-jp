@@ -8,12 +8,13 @@ ms.date: 6/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: dca903591c5d6805108d55163aaedc2435d9297e
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 78d3cbac28a85452f23e4a7c7ba3904fe3d1f488
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610082"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997882"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>チュートリアル:透過的なゲートウェイを介してデータを送信する
 
@@ -225,7 +226,7 @@ Avro ファイルを読み取って、ファイル内のメッセージの JSON 
 
 1. Dev VM、IoT Edge VM、IoT Hub、ストレージ アカウント、機械学習ワークスペース サービス (および、作成されたリソース: コンテナー レジストリ、Application Insights、キー コンテナー、ストレージ アカウント) を保持するために作成されたリソース グループを削除します。
 
-1. [Azure Notebooks](https://notebooks.azure.com) で機械学習プロジェクトを削除します。
+1. [Azure Notebooks](https://notebooks.azure.com) の機械学習プロジェクトを削除します。
 
 1. リポジトリをローカルで複製した場合は、そのローカル リポジトリを参照している PowerShell または VS Code ウィンドウをすべて閉じてから、リポジトリ ディレクトリを削除します。
 

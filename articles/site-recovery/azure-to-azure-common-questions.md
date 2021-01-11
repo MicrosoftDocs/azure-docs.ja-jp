@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 52c7a4bfeddf808e5a714c7ad4ab164d65868940
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201212"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534024"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -70,6 +70,10 @@ Azure Site Recovery で保護されるすべてのインスタンスは、保護
 ### <a name="can-i-replicate-zone-pinned-azure-vms-to-another-region"></a>ゾーンにピン留めされた Azure VM を別のリージョンにレプリケートできますか?
 
 はい、[ゾーンにピン留めされた VM](https://azure.microsoft.com/blog/disaster-recovery-of-zone-pinned-azure-virtual-machines-to-another-region) を別のリージョンにレプリケートすることができます。
+
+### <a name="can-i-replicate-vms-in-a-region-that-has-zones-from-non-zone-to-zonal-configuration"></a>複数のゾーンがあるリージョン内で、非ゾーンからゾーン構成に VM をレプリケートできますか?
+
+いいえ、これは現在サポートされていません。 回避策として、ASR を使用して、別のリージョンのゾーン構成に VM をレプリケートしてから、レプリケーションを無効にできます。 次に、そのリージョンから元のリージョンへのレプリケーションを再度有効にし、フェールオーバーのゾーン構成を選択します。
 
 ### <a name="can-i-exclude-disks"></a>ディスクを除外することはできますか?
 

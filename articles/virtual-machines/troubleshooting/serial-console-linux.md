@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: a9c2cee1478bc64c63b0d7ad09eec386b59678ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cacb517c783416994fa95bd0f6a6d15a95a52ab4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509020"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423458"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
@@ -26,11 +26,12 @@ Azure portal のシリアル コンソールでは、Linux 仮想マシン (VM) 
 
 シリアル コンソールは、VM と仮想マシン スケール セット インスタンスに対して同じ方法で動作します。 このドキュメントでは、特に記載のない限り、VM という記述にはすべて仮想マシン スケール セット インスタンスが暗黙的に含まれます。
 
+シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
+
 Windows 用シリアル コンソールのドキュメントについては、[Windows 用シリアル コンソール](./serial-console-windows.md)に関する記事を参照してください。
 
 > [!NOTE]
-> シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
-
+> シリアル コンソールは、現在マネージド ブート診断ストレージ アカウントとの完全な互換性がありません。 シリアル コンソールを使用するには、カスタム ストレージ アカウントを使用していることを確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 

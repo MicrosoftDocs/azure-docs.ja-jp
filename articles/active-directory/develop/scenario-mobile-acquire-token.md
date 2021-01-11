@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfccc274ef920c59d39c160055ab27a6900c839c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098902"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141280"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリ トークンを取得する
 
@@ -209,7 +209,7 @@ catch(MsalUiRequiredException)
 
 `AcquireTokenInteractive` の必須パラメーターは `scopes`の 1 つだけです。 `scopes` パラメーターで、トークンが必要なスコープを定義する文字列を列挙します。 Microsoft Graph 用のトークンの場合、必要なスコープは各 Microsoft Graph API の API リファレンスで見つけることができます。 リファレンスの「アクセス許可」セクションにアクセスします。
 
-たとえば、[ユーザーの連絡先を一覧表示する](https://docs.microsoft.com/graph/api/user-list-contacts)には、"User.Read"、"Contacts.Read" スコープを使用します。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)」を参照してください。
+たとえば、[ユーザーの連絡先を一覧表示する](/graph/api/user-list-contacts)には、"User.Read"、"Contacts.Read" スコープを使用します。 詳細については、「[Microsoft Graph のアクセス許可のリファレンス](/graph/permissions-reference)」を参照してください。
 
 Android では、`PublicClientApplicationBuilder` を使用してアプリの作成時に親アクティビティを指定できます。 この時点で親アクティビティを指定しない場合は、次のセクションのように、`.WithParentActivityOrWindow` を使用して後で指定できます。 親アクティビティを指定した場合は、操作後にトークンがその親アクティビティに通知されます。 指定しない場合は、`.ExecuteAsync()` を呼び出して例外をスローします。
 
@@ -221,7 +221,7 @@ Android では、`PublicClientApplicationBuilder` を使用してアプリの作
 
 `WithPrompt()` パラメーターでは、プロンプトを指定してユーザーとのインタラクティビティを制御します。
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![プロンプト構造内のフィールドを示す画像。 これらの定数値で、WithPrompt () パラメーターによって表示されるプロンプトの種類を定義して、ユーザーとのインタラクティビティを制御します。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 このクラスでは次の定数を定義します。
 
@@ -234,7 +234,7 @@ Android では、`PublicClientApplicationBuilder` を使用してアプリの作
 - `ForceLogin` を使用すると、プロンプトが必須ではない場合でも、ユーザーに資格情報の入力を求めるサービスを実現できます。
 
     このオプションは、トークンの取得に失敗し、ユーザーが再度サインインできるようにする場合に役立ちます。 この場合、MSAL から ID プロバイダーに `prompt=login` が送信されます。 このオプションは、組織のガバナンスにより、ユーザーがアプリケーションの特定の部分にアクセスするたびにサインインすることが求められるセキュリティ重視のアプリケーションで使用できます。
-- `Never` は、.NET 4.5 と Windows ランタイム (WinRT) のみに使用できます。 この定数を使用すると、ユーザーの操作を求めず、非表示の埋め込み Web ビューに格納された Cookie を使用しようとします。 詳細については、「[Web ブラウザーを使用する (MSAL.NET)](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)」を参照してください。
+- `Never` は、.NET 4.5 と Windows ランタイム (WinRT) のみに使用できます。 この定数を使用すると、ユーザーの操作を求めず、非表示の埋め込み Web ビューに格納された Cookie を使用しようとします。 詳細については、「[Web ブラウザーを使用する (MSAL.NET)](./msal-net-web-browsers.md)」を参照してください。
 
     このオプションが失敗した場合は、`AcquireTokenInteractive` によって、UI 操作が必要であることを通知する例外がスローされます。 このとき、別の `Prompt` パラメーターを使用する必要があります。
 - `NoPrompt` を使用すると、ID プロバイダーにプロンプトが送信されません。
@@ -292,7 +292,7 @@ client_id=<CLIENT_ID>
 &grant_type=authorization_code
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [Web API の呼び出し](scenario-mobile-call-api.md)

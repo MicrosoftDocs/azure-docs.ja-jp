@@ -3,12 +3,12 @@ title: メディア グラフの概念 - Azure
 description: メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 この記事では、メディア グラフの概念の詳細について説明します。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300809"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798841"
 ---
 # <a name="media-graph"></a>メディア グラフ
 
@@ -79,7 +79,11 @@ RTSP ソース ノードを使用すると、[RTSP] (https://tools.ietf.org/html
 
 #### <a name="http-extension-processor"></a>HTTP 拡張プロセッサ
 
-HTTP 拡張プロセッサ ノードを使用すると、独自の IoT Edge モジュールをメディア グラフに接続できます。 このノードは、デコードされたビデオ フレームを入力として受け取り、そのようなフレームをモジュールによって公開される HTTP REST エンドポイントにリレーします。 このノードは、必要に応じて、REST エンドポイントで認証することができます。 また、ノードには、ビデオ フレームを REST エンドポイントにリレーする前に、スケールおよびエンコードするための組み込みのイメージ フォーマッタがあります。 スケーラーには、画像の縦横比を維持、埋め込み、または拡張するオプションがあります。 イメージ エンコーダーでは、jpeg、png、bmp 形式がサポートされています。
+HTTP 拡張プロセッサ ノードを使用すると、独自の IoT Edge モジュールをメディア グラフに接続できます。 このノードは、デコードされたビデオ フレームを入力として受け取り、そのようなフレームをモジュールによって公開される HTTP REST エンドポイントにリレーします。 このノードは、必要に応じて、REST エンドポイントで認証することができます。 また、ノードには、ビデオ フレームを REST エンドポイントにリレーする前に、スケールおよびエンコードするための組み込みのイメージ フォーマッタがあります。 スケーラーには、画像の縦横比を維持、埋め込み、または拡張するオプションがあります。 イメージ エンコーダーでは、JPEG、PNG、BMP 形式がサポートされています。
+
+#### <a name="grpc-extension-processor"></a>gRPC 拡張プロセッサ
+
+gRPC 拡張プロセッサ ノードは、デコードされたビデオ フレームを入力として受け取り、そのようなフレームをモジュールによって公開される [gRPC](terminology.md#grpc) エンドポイントにリレーします。 また、ノードには、ビデオ フレームを gRPC エンドポイントにリレーする前に、スケールおよびエンコードするための組み込みのイメージ フォーマッタがあります。 スケーラーには、画像の縦横比を維持、埋め込み、または拡張するオプションがあります。 イメージ エンコーダーでは、jpeg、png、bmp 形式がサポートされています。
 
 #### <a name="signal-gate-processor"></a>シグナル ゲート プロセッサ  
 
@@ -101,7 +105,7 @@ IoT Hub メッセージ シンク ノードを使用すると IoT Edge ハブに
 
 ## <a name="rules-on-the-use-of-nodes"></a>ノードの使用に関する規則
 
-メディア グラフ内でさまざまなノードを使用する上で適用される他の規則については、[クォータ](quotas-limitations.md#limitations-on-graph-topologies-at-preview)に関する記事を参照してください。
+メディア グラフ内でさまざまなノードを使用する上で適用される他の規則については、「[グラフ トポロジに関する制限](quotas-limitations.md#limitations-on-graph-topologies-at-preview)」を参照してください。
 
 ## <a name="scenarios"></a>シナリオ
 

@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 695513bb572f5931ee1f0fa54a330cfa0574fc21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: dce10fb85ac181bb06aef0058768bef659462a5a
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261598"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019982"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>複数の Cosmos DB 用 Azure Functions トリガーの作成
 
@@ -40,7 +41,7 @@ Cosmos DB 用 Azure Functions トリガーの "*要件*" を考えると、状�
 
 共有リース コンテナーを構成するには、トリガーに対して行う必要がある唯一の追加の構成として、`LeaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) (C# を使用している場合) または `leaseCollectionPrefix`[属性](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) (JavaScript を使用している場合) を追加します。 この属性の値は、その特定のトリガーの論理的な記述子である必要があります。
 
-たとえば、メールを送信するトリガー、具体化されたビューを作成するために集計を実行するトリガー、後で分析するために変更を別のストレージに送信するトリガーという 3 つのトリガーがある場合、最初のトリガーには "emails"、2 番目のトリガーには "materialized"、3 番目のトリガーには "analytics" を `LeaseCollectionPrefix` に割り当てることができます。
+たとえば、メールを送信するトリガー、マテリアライズドビューを作成するために集計を実行するトリガー、後で分析するために変更を別のストレージに送信するトリガーという 3 つのトリガーがある場合、最初のトリガーには "emails"、2 番目のトリガーには "materialized"、3 番目のトリガーには "analytics" を `LeaseCollectionPrefix` に割り当てることができます。
 
 重要なのは、3 つのすべてのトリガーが**同じリース コンテナー構成 (アカウント、データベース、およびコンテナー名) を使用できる**ということです。
 

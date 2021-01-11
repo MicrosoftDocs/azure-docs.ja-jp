@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: セキュリティ コントロール'
-description: Azure ExpressRoute を評価するためのセキュリティ コントロールのチェックリスト
+description: セキュリティの脆弱性を防止、検出、対応するのに役立つ性質または機能である、Azure ExpressRoute のセキュリティ コントロールについて説明します。
 services: expressroute
 ms.service: expressroute
-author: msmbaldwin
+author: duongau
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.author: mbaldwin
-ms.openlocfilehash: a288b44c07bc2df8529f07264dcee648f3af379a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 24057de44f3d28df96bcb93e89af9c3afa6fa3c6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74079929"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89394909"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Azure ExpressRoute のセキュリティ コントロール
 

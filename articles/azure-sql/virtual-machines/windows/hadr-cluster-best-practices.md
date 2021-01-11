@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d20ac5964ef70618d4d7dc2d4a7fe7d7d01284ce
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: de773bb2188f09822cae59ce42924a9a49f8087e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965391"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285630"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>クラスター構成のベスト プラクティス (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,27 +42,26 @@ Azure Virtual Machines (VM) 上の SQL Server を使用して高可用性とデ�
 
 クォーラム リソースにより、これらのいずれの問題からもクラスターが保護されます。 
 
-Azure VM 上の SQL Server を使用してクォーラム リソースを構成するには、次の監視の種類を使用できます。 
+次の表に、使用できるクォーラム オプションを、Azure VM での使用が推奨される順序で示します。推奨されている選択肢はディスク監視です。 
 
 
 ||[ディスク監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |[クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)  |[ファイル共有監視](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)  |
 |---------|---------|---------|---------|
 |**サポートされる OS**| All |Windows Server 2016 以降| Windows Server 2012 以降|
-|**サポートされる SQL Server のバージョン**|SQL Server 2019|SQL Server 2016 以降|SQL Server 2016 以降|
+
 
 
 
 ### <a name="disk-witness"></a>ディスク監視
 
-ディスク監視は、クラスターの使用可能記憶域グループ内にある小規模なクラスター化されたディスクです。 このディスクは可用性が高く、ノード間でフェールオーバーできます。 クラスター データベースのコピーが含まれ、通常 1 GB 未満の既定のサイズを持ちます。 
+ディスク監視は、クラスターの使用可能記憶域グループ内にある小規模なクラスター化されたディスクです。 このディスクは可用性が高く、ノード間でフェールオーバーできます。 クラスター データベースのコピーが含まれ、通常 1 GB 未満の既定のサイズを持ちます。 ディスク監視は、クラウド監視やファイル共有監視とは異なり、時間のパーティション分割の問題を解決できるため、Azure VM の推奨されるクォーラム オプションとなっています。 
 
 Azure 共有ディスクをディスク監視として構成します。 
 
 開始するには、[ディスク監視の構成](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)に関する記事をご覧ください。
 
 
-**サポートされる OS**:All    
-**サポートされる SQL バージョン**:SQL Server 2019   
+**サポートされる OS**:All   
 
 
 ### <a name="cloud-witness"></a>クラウド監視
@@ -73,21 +72,18 @@ Azure 共有ディスクをディスク監視として構成します。
 
 
 **サポートされる OS**:Windows Server 2016 以降   
-**サポートされる SQL バージョン**:SQL Server 2016 以降     
 
 
 ### <a name="file-share-witness"></a>ファイル共有監視
 
 ファイル共有監視は、通常 Windows Server を実行しているファイル サーバー上で構成される SMB ファイル共有です。 クラスタリング情報は witness.log ファイルに保持されますが、クラスター データベースのコピーは格納されません。 Azure では、[Azure ファイル共有](../../../storage/files/storage-how-to-create-file-share.md)を構成してファイル共有監視として使用することができます。または、別の仮想マシン上のファイル共有を使用することもできます。
 
-別の Azure ファイル共有を使用する場合は、[Premium ファイル共有のマウント](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)に使用するのと同じプロセスでマウントできます。 
+Azure ファイル共有を使用する予定の場合は、[Premium ファイル共有のマウント](failover-cluster-instance-premium-file-share-manually-configure.md#mount-premium-file-share)に使用するのと同じプロセスでマウントできます。 
 
 開始するには、[ファイル共有監視の構成](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum)に関する記事をご覧ください。
 
 
 **サポートされる OS**:Windows Server 2012 以降   
-**サポートされる SQL バージョン**:SQL Server 2016 以降   
-
 
 ## <a name="connectivity"></a>接続
 

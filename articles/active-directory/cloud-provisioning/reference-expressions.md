@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 722b3fcb2bc533e396a35feb4c755de99c375b10
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201852"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226575"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 クラウド プロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 
@@ -73,7 +73,7 @@ ms.locfileid: "86201852"
 |[Split](#split)|指定された区切り記号文字を使用して、文字列を複数値の配列に分割します。|
 |[StringFromSID](#stringfromsid)|StringFromSid 関数は、セキュリティ識別子が含まれるバイト配列を文字列に変換します。| 
 |[StripSpaces](#stripspaces) |source 文字列からすべての空白文字 (" ") を削除します。| 
-|[Switch](#switch)|**source** 値が **key** と一致するときに、その **key** の **value** を返します。 | 
+|[スイッチ](#switch)|**source** 値が **key** と一致するときに、その **key** の **value** を返します。 | 
 |[ToLower](#tolower)|*source* 文字列値を受け取り、指定されたカルチャ ルールを使用して小文字に変換します。| 
 |[ToUpper](#toupper)|*source* 文字列値を受け取り、指定されたカルチャ ルールを使用して大文字に変換します。|
 |[Trim](#trim)|Trim 関数は、文字列の先頭と末尾の空白文字を削除します。|
@@ -253,7 +253,7 @@ Error 関数は、カスタム エラーを返すために使用します。
    | 名前 | 必須/繰り返し | Type | Notes |
    | --- | --- | --- | --- |
    | **source** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-   | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
+   | **inputFormat** |必須 |String |有効な形式の source 値。 サポートされている形式については、[/dotnet/standard/base-types/custom-date-and-time-format-strings](/dotnet/standard/base-types/custom-date-and-time-format-strings) を参照してください。 |
    | **outputFormat** |必須 |String |出力日付の形式。 |
 
 ---

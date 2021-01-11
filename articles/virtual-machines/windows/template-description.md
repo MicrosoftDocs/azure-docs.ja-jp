@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283233"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827454"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -274,7 +274,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 
 いくつかのプロファイル要素は、仮想マシン リソースを定義する際に使用されます。 必須のものもあれば、省略可能なものもあります。 たとえば、hardwareProfile、osProfile、storageProfile、networkProfile 要素は必須で、diagnosticsProfile 要素は省略可能です。 これらのプロファイルは、次のような設定を定義します。
    
-- [size](sizes.md)
+- [size](../sizes.md)
 - [名前](/azure/architecture/best-practices/resource-naming)と資格情報
 - ディスクと[オペレーティング システムの設定](cli-ps-findimage.md)
 - [ネットワーク インターフェイス](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -353,7 +353,7 @@ Linux オペレーティング システムを作成する場合は、次の定�
 
 ### <a name="attach-data-disks"></a>データ ディスクを接続する
 
-必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は 2 です。 次の例では、各 VM に 1 つのマネージド データ ディスクが追加されます。
+必要に応じて、VM にデータ ディスクを追加することができます。 [ディスク数](../sizes.md)は、使用するオペレーティング システム ディスクのサイズによって異なります。 VM のサイズが Standard_DS1_v2 に設定されている場合、VM に追加できるデータ ディスクの最大数は 2 です。 次の例では、各 VM に 1 つのマネージド データ ディスクが追加されます。
 
 ```json
 "dataDisks": [

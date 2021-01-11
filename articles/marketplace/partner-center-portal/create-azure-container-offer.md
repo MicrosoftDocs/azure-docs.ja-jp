@@ -4,15 +4,15 @@ description: Container オファーを作成して Azure Marketplace に公開�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: mingshen
-ms.author: mingshen
+author: keferna
+ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: cea4a43724629793123098084098299e3915be7c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 055db043f4e695001b2ee90a47a2531284466314
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109669"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815635"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "86109669"
    ![左側のナビゲーション メニューの画像。](./media/new-offer-azure-container.png)
 
 > [!TIP]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
@@ -190,19 +190,24 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
- オファーのロゴの PNG ファイルを次の 4 つのピクセル サイズで提供します。
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**および**中**サイズのロゴを作成します。 必要に応じて、これらを別の画像に置き換えることもできます。
 
-- **小** (48 x 48)
-- **中** (90 x 90)
-- **大** (216 x 216)
-- **ワイド** (255 x 115)
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **中** (90 x 90 px、省略可能)
+- **小** (48 x 48 px、省略可能)
 
-4 つすべてのロゴが必要であり、マーケットプレースのリスト登録のさまざまな場所で使用されます。
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 
@@ -248,15 +253,17 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 続行する前に、 **[下書きの保存]** を選択します。
 
-### <a name="plan-overview"></a>プランの概要
+## <a name="plan-overview"></a>プランの概要
 
-このタブでは、同じオファー内でさまざまなプラン オプションを指定できます。 これらのプランは以前、SKU、つまり、Stock Keeping Unit と呼ばれていました。 プランは、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 商業マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+このタブでは、同じオファー内でさまざまなプラン オプションを指定できます。 プラン (以前は SKU と呼ばれていました) は、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 商業マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 プランの作成後、 **[プランの概要]** タブが表示されます。
 
 - プラン名
 - 価格モデル
-- クラウドの可用性 (グローバルまたは Government)
+- Azure リージョン (グローバルまたは Government)
 - 現在の公開状態
 - 利用できるアクション
 
@@ -265,7 +272,7 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 - **ドラフトを削除する** - プランの状態がドラフトの場合。
 - **販売プランを停止する** - プランの状態が一般公開の場合。
 
-#### <a name="create-new-plan"></a>新しいプランを作成する
+### <a name="create-new-plan"></a>新しいプランを作成する
 
 **[新しいプランの作成]** を選択します。 **[新しいプラン]** ダイアログ ボックスが表示されます。
 
@@ -284,22 +291,20 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 Azure Container オファーのすべてのプランは、自動的に **[Azure グローバル]** で利用できるようになります。  コマーシャル マーケットプレースを使用する、すべてのグローバル Azure リージョンの顧客がプランを使用できます。 詳細については、「[利用可能な地域と通貨サポート](../marketplace-geo-availability-currencies.md)」を参照してください。
 
-[ **[Azure Government]** ](../../azure-government/documentation-government-welcome.md) オプションを選択すると、ソリューションがここに表示されます。 これは政府機関コミュニティ クラウドであり、米国連邦の顧客向けにアクセスが規制されています s](../marketplace-geo-availability-currencies.md)em。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。
-
-Azure Government に[公開](../../azure-government/documentation-government-manage-marketplace-partners.md)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを作成し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に対する試用版アカウントの申請を行います。
+[[Azure Government]](../../azure-government/documentation-government-welcome.md) オプションを選択すると、ソリューションがここに表示されます。 これはアメリカ合衆国の連邦政府顧客、州政府顧客、地方自治体顧客、部族政府顧客と、そのような顧客にサービスを提供する資格があるパートナーのための政府機関コミュニティ クラウドであり、アクセスが制御されています。 公開元はこのクラウド コミュニティのコンプライアンス制御、セキュリティ対策、ベスト プラクティスに責任を負います。 Azure Government では、物理的に離れた場所にあるデータ センターとネットワークが使用されます (場所は米国のみ)。 Azure Government に[公開](../../azure-government/documentation-government-manage-marketplace-partners.md)する前に、その領域内でソリューションをテストし、確認します。これは結果が異なる場合があるためです。 ソリューションを作成し、テストするには、[Microsoft Azure 政府機関向け試用版](https://azure.microsoft.com/global-infrastructure/government/request/)に対する試用版アカウントの申請を行います。
 
 > [!NOTE]
 > プランが公開され、特定のリージョンで利用できるようになった後に、そのリージョンを削除することはできません。
 
 #### <a name="azure-government-certifications"></a>Azure Government の認定資格
 
-このオプションは、 **[クラウドの使用可能性]** で **[Azure Government]** を選択した場合にのみ表示されます。
+このオプションは、 **[Azure リージョン]** で **[Azure Government]** を選択した場合にのみ表示されます。
 
 Azure Government サービスでは、特定の政府の規制および要件の対象となるデータが処理されます。 FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4、CJIS などです。
 
 これらのプログラムの認定資格を示すため、それらを説明するリンクを最大 100 個指定できます。 プログラムのリスト登録に直接リンクするか、独自の Web サイトにリンクできます。 これらのリンクは、Azure Government の顧客にのみ表示されます。
 
-## <a name="plan-listing"></a>プランのリスト登録
+### <a name="plan-listing"></a>プランのリスト登録
 
 このタブには、現在のオファー内の異なるプラン別に特定の情報が表示されます。
 
@@ -311,7 +316,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 (オファーではなく) ソフトウェア プランの簡単な概要です。 この概要は Azure Marketplace の検索結果に表示されます。最大 100 文字を入力できます。
 
-### <a name="plan-description"></a>プランの説明
+### <a name="plan-description"></a>プラン説明
 
 このソフトウェア プラン独特の要素やオファーに含まれる他のプランとの違いを説明します。 オファーについては説明しないでください。プランの説明だけです。 この説明は Azure Marketplace と Azure portal の **[オファーのリスト登録]** ページに表示されます。 プラン概要に入力したものと同じ内容にすることができます。最大 2,000 文字を入力できます。
 
@@ -329,7 +334,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portal のプラン詳細の画像。":::
 
-## <a name="plan-availability"></a>プランの可用性
+### <a name="plan-availability"></a>プランの可用性
 
 公開したオファーを非表示にし、マーケットプレースで顧客がそれを検索、閲覧、購入できないようにする場合、 **[可用性]** タブで **[プランの非表示]** チェックボックスを選択します。
 

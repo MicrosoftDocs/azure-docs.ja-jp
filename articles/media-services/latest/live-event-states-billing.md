@@ -3,24 +3,26 @@ title: Azure Media Services における LiveEvent の状態と課金 | Microsof
 description: このトピックでは、Azure Media Services における LiveEvent の状態と課金について、その概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 10/24/2019
-ms.author: juliako
-ms.openlocfilehash: dd63152776e0268b8f9e3e0ce116fea897cdf4e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 1b058eefe22238b60c3482c55b5ae340f4e597f0
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000875"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296738"
 ---
 # <a name="live-event-states-and-billing"></a>ライブ イベントの状態と課金
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure Media Services のライブ イベントでは、その状態が**実行中**に遷移するとすぐに課金が開始されます。 サービスを通過するビデオがない場合でも課金されます。 ライブ イベントの課金を停止するには、ライブ イベントを停止する必要があります。 ライブ文字起こしはライブ イベントと同じ方法で課金されます。
 

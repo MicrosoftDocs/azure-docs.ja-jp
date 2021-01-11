@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
-ms.custom: seodec18
-ms.openlocfilehash: b5e2dc56ad84504f0bf5ced09d865d7cb4e467fa
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 05a469dbeb093c41b45be278aec42cc930223c72
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027800"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002178"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Table storage のテーブル設計ガイド:スケーラビリティとパフォーマンスに優れたテーブル
 
@@ -410,7 +410,7 @@ Table storage でのリレーションシップのモデル化には何とおり
 
 :::image type="content" source="./media/storage-table-design-guide/storage-table-design-IMAGE05.png" alt-text="テーブル設計パターンの図":::
 
-パターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 もちろん、検討する価値があるパターンは他にもたくさんあります。 たとえば、Table storage 向けの主なシナリオの 1 つに、[コマンド クエリ責務分離](https://msdn.microsoft.com/library/azure/jj554200.aspx)パターンの[具体化されたビュー パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)の使用があります。  
+パターン マップには、このガイドに記載されているパターン (青) とアンチパターン (オレンジ) の関係の一部が示されています。 もちろん、検討する価値があるパターンは他にもたくさんあります。 たとえば、Table storage 向けの主なシナリオの 1 つに、[コマンド クエリ責務分離](https://msdn.microsoft.com/library/azure/jj554200.aspx)パターンの[マテリアライズドビュー パターン](https://msdn.microsoft.com/library/azure/dn589782.aspx)の使用があります。  
 
 ### <a name="intra-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
 (同じパーティション内の) 異なる `RowKey` 値を使用して、各エンティティの複数のコピーを格納します。 これにより、異なる `RowKey` 値を使用することで、高速で効率的な検索と、代替の並べ替え順序が可能になります。 コピー間の更新の一貫性は、EGT を使用して保つことができます。  

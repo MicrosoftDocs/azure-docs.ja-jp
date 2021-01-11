@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8c9f59c7bb9b3977bdff7e3fd1ab78ed6fa2e412
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338568"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717746"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -30,7 +30,7 @@ Azure Active Directory の機能である[セルフサービス パスワード 
 SSPR の主な機能は次のとおりです。
 
 * セルフサービスを使用すると、エンド ユーザーは、管理者またはヘルプデスクにサポートを求めなくても、期限切れまたは期限切れではないパスワードをリセットできます。
-* [パスワード ライトバック](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)を使用すると、クラウドを介してオンプレミスのパスワードを管理し、アカウントのロックアウトを解決することができます。
+* [パスワード ライトバック](./concept-sspr-writeback.md)を使用すると、クラウドを介してオンプレミスのパスワードを管理し、アカウントのロックアウトを解決することができます。
 * パスワード管理アクティビティ レポートでは、組織内で発生したパスワードのリセットおよび登録アクティビティの詳細が管理者に提供されます。
 
 このデプロイ ガイドでは、SSPR のロールアウトを計画してテストする方法について説明します。
@@ -42,7 +42,7 @@ SSPR の主な機能は次のとおりです。
 
 ## <a name="learn-about-sspr"></a>SSPR の詳細
 
-SSPR の詳細を参照してください。 「[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)に関する記事をご覧ください。
+SSPR の詳細を参照してください。 「[動作のしくみ:Azure AD のセルフサービス パスワード リセット のクイック スタート](./concept-sspr-howitworks.md)に関する記事をご覧ください。
 
 ### <a name="key-benefits"></a>主な利点
 
@@ -60,7 +60,7 @@ SSPR を有効にする主な利点は次のとおりです。
 
 Azure Active Directory はユーザーごとのライセンスであり、機能を利用するには、各ユーザーに適切なライセンスが必要です。 SSPR にはグループベースのライセンスが推奨されます。 
 
-エディションと機能を比較し、グループベースまたはユーザーベースのライセンスを有効にする場合は、「[Azure AD のセルフサービス パスワード リセットのライセンス要件](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-licensing)」をご覧ください。
+エディションと機能を比較し、グループベースまたはユーザーベースのライセンスを有効にする場合は、「[Azure AD のセルフサービス パスワード リセットのライセンス要件](./concept-sspr-licensing.md)」をご覧ください。
 
 価格の詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 
@@ -83,10 +83,10 @@ Azure Active Directory はユーザーごとのライセンスであり、機能
 | オンライン コース|[Microsoft Azure Active Directory での ID の管理](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) SSPR を使用して、ユーザーに最新の保護されたエクスペリエンスを提供します。 特に、「[Azure Active Directory のユーザーとグループの管理](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents)」モジュールを参照してください。 |
 |Pluralsight の有料コース |[ID およびアクセス管理の問題](https://www.pluralsight.com/courses/identity-access-management-issues) 組織内で認識しておく必要がある IAM とセキュリティの問題について説明します。 特に、「その他の認証方法」モジュールを参照してください。|
 | |[Microsoft Enterprise Mobility Suite の概要](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) 認証、承認、暗号化、およびセキュリティで保護されたモバイル エクスペリエンスを実現する方法で、オンプレミスの資産をクラウドに拡張するためのベスト プラクティスについて説明します。 特に、「Microsoft Azure Active Directory Premium の高度な機能の構成」モジュールを参照してください。
-|チュートリアル |[Azure AD のセルフサービス パスワード リセット のパイロット展開を完了する](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
-| |「[パスワード ライトバックを有効にする](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)」を使用して、パスワード ライトバックを有効にする |
-| |[Windows 10 のログイン画面からの Azure AD パスワード リセット](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| よく寄せられる質問|[パスワード管理に関するよく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+|チュートリアル |[Azure AD のセルフサービス パスワード リセット のパイロット展開を完了する](./tutorial-enable-sspr.md) |
+| |「[パスワード ライトバックを有効にする](./tutorial-enable-sspr-writeback.md)」を使用して、パスワード ライトバックを有効にする |
+| |[Windows 10 のログイン画面からの Azure AD パスワード リセット](./howto-sspr-windows.md) |
+| よく寄せられる質問|[パスワード管理に関するよく寄せられる質問 (FAQ)](./active-directory-passwords-faq.md) |
 
 
 ### <a name="solution-architecture"></a>ソリューションのアーキテクチャ
@@ -103,7 +103,7 @@ Azure Active Directory はユーザーごとのライセンスであり、機能
 
 * ハイブリッド ユーザーの場合、SSPR では、パスワードは Azure AD Connect サービスを介してオンプレミスの Active Directory にライトバックされます。 
 
-注:[パスワード ハッシュ同期 (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) が無効になっているユーザーの場合、SSPR では、パスワードはオンプレミスの Active Directory にのみ格納されます。
+注:[パスワード ハッシュ同期 (PHS)](../hybrid/whatis-phs.md) が無効になっているユーザーの場合、SSPR では、パスワードはオンプレミスの Active Directory にのみ格納されます。
 
 ### <a name="best-practices"></a>ベスト プラクティス
 
@@ -141,9 +141,9 @@ SSPR をデプロイする前に、各パスワード リセット呼び出し�
 
 ### <a name="plan-a-pilot"></a>パイロットを計画する
 
-SSPR の初期構成はテスト環境で行うことをお勧めします。 組織内のユーザーのサブセットに対して SSPR を有効にすることで、パイロット グループから始めてください。 「[パイロットのベスト プラクティス](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)」を参照してください。
+SSPR の初期構成はテスト環境で行うことをお勧めします。 組織内のユーザーのサブセットに対して SSPR を有効にすることで、パイロット グループから始めてください。 「[パイロットのベスト プラクティス](../fundamentals/active-directory-deployment-plans.md)」を参照してください。
 
-グループを作成するには、[Azure Active Directory でグループを作成し、メンバーを追加する](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal)方法を参照してください。 
+グループを作成するには、[Azure Active Directory でグループを作成し、メンバーを追加する](../fundamentals/active-directory-groups-create-azure-portal.md)方法を参照してください。 
 
 ## <a name="plan-configuration"></a>構成を計画する
 
@@ -172,7 +172,7 @@ SSPR を有効にする場合は、パイロット環境で適切なセキュリ
 
 ### <a name="authentication-methods"></a>認証方法
 
-SSPR が有効になっている場合、ユーザーが自分のパスワードをリセットできるのは、管理者が有効にしている認証方法にデータがある場合のみです。 方法には、電話、Authenticator アプリの通知、セキュリティの質問などがあります。詳細については、「[認証方法とは](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)」を参照してください。
+SSPR が有効になっている場合、ユーザーが自分のパスワードをリセットできるのは、管理者が有効にしている認証方法にデータがある場合のみです。 方法には、電話、Authenticator アプリの通知、セキュリティの質問などがあります。詳細については、「[認証方法とは](./concept-authentication-methods.md)」を参照してください。
 
 次の認証方法の設定が推奨されます。
 
@@ -180,7 +180,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 
 * **[リセットのために必要な方法の数]** を、組織に適したレベルに設定します。 1 つでは最小限の手間が必要ですが、2 つではセキュリティ ポスチャが増す可能性があります。 
 
-注:ユーザーには、「[Azure Active Directory のパスワード ポリシーと制限](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)」で構成されている認証方法が必要です。
+注:ユーザーには、「[Azure Active Directory のパスワード ポリシーと制限](./concept-sspr-policy.md)」で構成されている認証方法が必要です。
 
 ### <a name="registration-settings"></a>登録設定
 
@@ -196,11 +196,11 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 
 問題が発生したユーザーがすぐにヘルプを受けられるよう、ヘルプデスクのメールまたは URL をカスタマイズすることが重要です。 このオプションを、ユーザーがよく知っている一般的なヘルプデスクのメール アドレスまたは Web ページに設定します。 
 
-詳細については、「[セルフサービス パスワード リセットのための Azure AD 機能のカスタマイズ](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)」を参照してください。
+詳細については、「[セルフサービス パスワード リセットのための Azure AD 機能のカスタマイズ](./howto-sspr-customization.md)」を参照してください。
 
 ### <a name="password-writeback"></a>パスワード ライトバック
 
-**パスワード ライトバック**は、[Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-hybrid-identity) で有効になっていて、クラウドでのパスワード リセットを既存のオンプレミスのディレクトリにリアルタイムで書き戻します。 詳しくは、「[パスワード ライトバックとは](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)」をご覧ください
+**パスワード ライトバック**は、[Azure AD Connect](../hybrid/whatis-hybrid-identity.md) で有効になっていて、クラウドでのパスワード リセットを既存のオンプレミスのディレクトリにリアルタイムで書き戻します。 詳しくは、「[パスワード ライトバックとは](./concept-sspr-writeback.md)」をご覧ください
 
 次の設定が推奨されます。
 
@@ -220,7 +220,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>複数の ID 管理システムがある環境
 
-環境によっては、複数の ID 管理システムが存在する場合があります。 Oracle AM や SiteMinder などのオンプレミスの ID マネージャーでは、パスワードについて AD との同期が必要です。 これは、Microsoft Identity Manager (MIM) を使用したパスワード変更通知サービス (PCNS) のようなツールを使用することで実行できます。 このより複雑なシナリオについては、「[ドメイン コントローラーに MIM パスワード変更通知サービスを展開する](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)」をご覧ください。
+環境によっては、複数の ID 管理システムが存在する場合があります。 Oracle AM や SiteMinder などのオンプレミスの ID マネージャーでは、パスワードについて AD との同期が必要です。 これは、Microsoft Identity Manager (MIM) を使用したパスワード変更通知サービス (PCNS) のようなツールを使用することで実行できます。 このより複雑なシナリオについては、「[ドメイン コントローラーに MIM パスワード変更通知サービスを展開する](/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)」をご覧ください。
 
 ## <a name="plan-testing-and-support"></a>テストとサポートを計画する
 
@@ -228,7 +228,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 
 ### <a name="plan-testing"></a>テストを計画する
 
-デプロイが意図したとおりに動作することを確認するには、実装を検証にするテスト ケースのセットを計画します。 テスト ケースにアクセスするには、パスワードを持つ非管理者テスト ユーザーが必要です。 ユーザーを作成する必要がある場合は、[Azure Active Directory への新しいユーザーの追加](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory)に関するページを参照してください。
+デプロイが意図したとおりに動作することを確認するには、実装を検証にするテスト ケースのセットを計画します。 テスト ケースにアクセスするには、パスワードを持つ非管理者テスト ユーザーが必要です。 ユーザーを作成する必要がある場合は、[Azure Active Directory への新しいユーザーの追加](../fundamentals/add-users-azure-active-directory.md)に関するページを参照してください。
 
 次の表では、ポリシーに基づいて組織で予想される結果を文書化するために使用できる有用なテスト シナリオを示します。
 <br>
@@ -246,7 +246,7 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 | Windows 10 Azure AD 参加済みまたはハイブリッド Azure AD 参加済みデバイスのロック画面からユーザーのパスワードをリセットする| ユーザーはパスワードをリセットできる |
 | SSPR の登録と使用状況のデータを、管理者がほぼリアルタイムで使用できる| 監査ログを介して利用できる |
 
-[Azure AD のセルフサービス パスワード リセットのパイロット展開の完了](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)に関するページも参照してください。 このチュートリアルでは、SSPR を組織にパイロット展開できるようにし、管理者以外のアカウントを使用してテストします。
+[Azure AD のセルフサービス パスワード リセットのパイロット展開の完了](./tutorial-enable-sspr.md)に関するページも参照してください。 このチュートリアルでは、SSPR を組織にパイロット展開できるようにし、管理者以外のアカウントを使用してテストします。
 
 ### <a name="plan-support"></a>サポートを計画する
 
@@ -289,20 +289,20 @@ SSPR が有効になっている場合、ユーザーが自分のパスワード
 
 **これで、SSPR をデプロイする準備が整いました。**
 
-次の領域の構成の詳細な手順については、「[セルフサービス パスワード リセットを有効にする](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot#enable-self-service-password-reset)」を参照してください。
+次の領域の構成の詳細な手順については、「[セルフサービス パスワード リセットを有効にする](./tutorial-enable-sspr.md#enable-self-service-password-reset)」を参照してください。
 
-1. [認証方法](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+1. [認証方法](./concept-authentication-methods.md)
 
-1. [登録設定](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)
+1. [登録設定](./concept-registration-mfa-sspr-combined.md)
 
 1. [通知設定](#notifications-settings)
 
-1. [カスタマイズ設定](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+1. [カスタマイズ設定](./howto-sspr-customization.md)
 
-1. [オンプレミスの統合](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
+1. [オンプレミスの統合](./tutorial-enable-sspr-writeback.md)
 
 ### <a name="enable-sspr-in-windows"></a>Windows で SSPR を有効にする
-Windows 7、8、8.1、および 10 を実行中のコンピューターでは、[Windows のサインイン画面でユーザーが自分のパスワードをリセットできるように設定する](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)ことができます
+Windows 7、8、8.1、および 10 を実行中のコンピューターでは、[Windows のサインイン画面でユーザーが自分のパスワードをリセットできるように設定する](./howto-sspr-windows.md)ことができます
 
 ## <a name="manage-sspr"></a>SSPR を管理する
 
@@ -310,41 +310,41 @@ Azure AD では、監査とレポートによって SSPR のパフォーマン�
 
 ### <a name="password-management-activity-reports"></a>パスワード管理アクティビティ レポート 
 
-Azure portal で構築済みのレポートを使用して、SSPR のパフォーマンスを測定できます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。 詳しくは、「[Azure AD のパスワード管理に関するレポート オプション](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)」を参照してください
+Azure portal で構築済みのレポートを使用して、SSPR のパフォーマンスを測定できます。 適切にライセンスを付与されている場合は、カスタム クエリを作成することもできます。 詳しくは、「[Azure AD のパスワード管理に関するレポート オプション](./howto-sspr-reporting.md)」を参照してください
 
 > [!NOTE]
->  ユーザーは[グローバル管理者](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)であること、および組織のためにこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、Azure portal の [レポート] タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータは収集されません。
+>  ユーザーは[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md)であること、および組織のためにこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、Azure portal の [レポート] タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータは収集されません。
 
-登録とパスワード リセットに関する監査ログは、30 日間利用できます。 企業内でのセキュリティ監査をもっと長い期間保有する必要がある場合は、ログをエクスポートし、[Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-active-directory)、Splunk、ArcSight などの SIEM ツールに取り込む必要があります。
+登録とパスワード リセットに関する監査ログは、30 日間利用できます。 企業内でのセキュリティ監査をもっと長い期間保有する必要がある場合は、ログをエクスポートし、[Azure Sentinel](../../sentinel/connect-azure-active-directory.md)、Splunk、ArcSight などの SIEM ツールに取り込む必要があります。
 
 ![SSPR レポートのスクリーンショット](./media/howto-sspr-deployment/sspr-reporting.png)
 
 ### <a name="authentication-methods--usage-and-insights"></a>認証方法 - 使用状況と分析情報
 
-[使用状況と分析情報](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights)を使うと、Azure MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
+[使用状況と分析情報](./howto-authentication-methods-usage-insights.md)を使うと、Azure MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 
-* 「[セルフサービスのパスワードのリセットのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot)」を参照してください 
+* 「[セルフサービスのパスワードのリセットのトラブルシューティング](./active-directory-passwords-troubleshoot.md)」を参照してください 
 
-* 「[パスワード管理に関するよく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq)」に従ってください 
+* 「[パスワード管理に関するよく寄せられる質問 (FAQ)](./active-directory-passwords-faq.md)」に従ってください 
 
 ### <a name="helpful-documentation"></a>役に立つドキュメント
 
-* [認証方法とは](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-methods)
+* [認証方法とは](./concept-authentication-methods.md)
 
-* [動作のしくみ: Azure AD のセルフサービスによるパスワードのリセット](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks)
+* [動作のしくみ: Azure AD のセルフサービスによるパスワードのリセット](./concept-sspr-howitworks.md)
 
-* [セルフサービス パスワード リセットのための Azure AD 機能のカスタマイズ](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-customization)
+* [セルフサービス パスワード リセットのための Azure AD 機能のカスタマイズ](./howto-sspr-customization.md)
 
-* [Azure Active Directory のパスワード ポリシーと制限](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)
+* [Azure Active Directory のパスワード ポリシーと制限](./concept-sspr-policy.md)
 
-* [パスワード ライトバックとは何ですか。](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)
+* [パスワード ライトバックとは](./concept-sspr-writeback.md)
 
 ## <a name="next-steps"></a>次のステップ
 
 * SSPR のデプロイを開始するには、[Azure AD のセルフサービス パスワード リセット を有効にする](tutorial-enable-sspr.md)に関するページを参照してください
 
-* [Azure AD のパスワード保護の実装を検討する](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
+* [Azure AD のパスワード保護の実装を検討する](./concept-password-ban-bad.md)
 
-* [Azure AD スマート ロックアウトの実装を検討する](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)
+* [Azure AD スマート ロックアウトの実装を検討する](./howto-password-smart-lockout.md)

@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/22/2020
-ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132366"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008884"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
 
@@ -28,7 +28,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 Azure Government サブスクリプションをご利用の場合、追加の手順に従って [Azure Government Cloud 用に Visual Studio を設定](#azure-government)してください。
 
 * まだお持ちでない場合は、以下のツールをダウンロードしてインストールしてください。
 
@@ -51,12 +51,6 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
   
     Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 インストールが完了したら、必ず Visual Studio を再起動してください。
 
-  * Visual Studio で Azure Government サブスクリプションを使用するには、追加のセットアップに関する次のトピックを参照してください。
-
-    * Visual Studio 2019:[クイック スタート: Visual Studio を使用した Azure Government への接続](../azure-government/documentation-government-connect-vs.md)
-
-    * Visual Studio 2017:[Azure Environment Selector Visual Studio 拡張機能の紹介](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)。これは、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) からダウンロードしてインストールできます。
-
 * 組み込みのロジック アプリ デザイナーを使用する際の Web へのアクセス
 
   デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティやデータを読み取るには、インターネット接続が必要です。
@@ -64,7 +58,35 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 * Logic Apps でサポートされるメール アカウント (Office 365 Outlook、Outlook.com、Gmail など)。 その他のプロバイダーについては、[こちらのコネクタ一覧](/connectors/)を参照してください。 この例では Office 365 Outlook を使います。 別のプロバイダーを使用する場合も、全体的な手順は同じです。ただし、UI がやや異なる場合があります。
 
   > [!IMPORTANT]
-  > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)に関する記事を参照してください。
+  > Gmail コネクタを使用する場合、ロジック アプリで制限なしにこのコネクタを使用できるのは、G-Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみでこのコネクタを使用できるほか、[認証に使用する Google クライアント アプリを Gmail コネクタで作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>Azure Government 用に Visual Studio を設定する
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+[Azure Environment Selector Visual Studio 拡張機能](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)を使用できます。これは、[Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) からダウンロードしてインストールできます。
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+Azure Logic Apps で Azure Government サブスクリプションを使用するには、[Azure Government クラウドの検出エンドポイントを Visual Studio に追加](../azure-government/documentation-government-connect-vs.md)する必要があります。 ただし、"*Azure Government アカウントで Visual Studio にサインインする前に*"、検出エンドポイントの追加後に生成される JSON ファイルの名前を次の手順で変更する必要があります。
+
+1. Visual Studio を閉じます。
+
+1. 次の場所に `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` という名前で生成される JSON ファイルを見つけます。
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. JSON ファイルの名前を `AadProvider.Configuration.json` に変更します。
+
+1. Visual Studio を再起動します。
+
+1. 引き続き Azure Government アカウントでサインインする手順に進みます。
+
+この設定を元に戻すには、次の場所にある JSON ファイルを削除して、Visual Studio を再起動してください。
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 2e1f98cffd17d0a8823cc5849830667fcdad1212
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: 346a59f085e766fef09d73b9e7baa03dad510148
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515225"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321719"
 ---
 # <a name="create-an-azure-stream-analytics-job-in-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) で Azure Stream Analytics ジョブを作成する 
 
@@ -43,7 +43,6 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
 |------------------|-------|--------|------------------|
 | Azure IoT Edge ハブ | Y | Y | Azure IoT Edge ハブに対するストリーミング データの読み書きを行うためのデータ ソース。 詳細については、[IoT Edge ハブ](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)に関するページを参照してください。|
 | SQL Database | N | Y | SQL Database にストリーミング データを書き込むためのデータ ソース接続。 データベースは、Azure SQL Edge のローカル データベースでも、SQL Server または Azure SQL Database のリモート データベースでもかまいません。|
-| Azure BLOB ストレージ | N | Y | Azure ストレージ アカウントの BLOB にデータを書き込むためのデータ ソース。 |
 | Kafka | Y | N | Kafka トピックからストリーミング データを読み取るためのデータ ソース。 現在、このアダプターは、Azure SQL Edge の Intel または AMD バージョンでのみ使用できます。 ARM64 バージョンの Azure SQL Edge では使用できません。|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>例:Azure IoT Edge ハブ用の外部ストリームの入力オブジェクトと出力オブジェクトを作成する
@@ -54,7 +53,8 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
 
     ```sql
     Create External file format InputFileFormat
-    WITH (  
+    WITH 
+    (  
        format_type = JSON,
     )
     go
@@ -63,8 +63,10 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
 2. Azure IoT Edge ハブに対する外部データ ソースを作成します。 次の T-SQL スクリプトでは、Azure SQL Edge と同じ Docker ホスト上で実行される IoT Edge ハブへのデータ ソース接続が作成されます。
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE EdgeHubInput WITH (
-    LOCATION = 'edgehub://'
+    CREATE EXTERNAL DATA SOURCE EdgeHubInput 
+    WITH 
+    (
+        LOCATION = 'edgehub://'
     )
     go
     ```
@@ -72,13 +74,15 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
 3. Azure IoT Edge ハブに対する外部ストリーム オブジェクトを作成します。 次の T-SQL スクリプトでは、IoT Edge ハブに対するストリーム オブジェクトが作成されます。 IoT Edge ハブのストリーム オブジェクトの場合、LOCATION パラメーターは、読み取り元または書き込み先である IoT Edge ハブのトピックおよびチャネルの名前です。
 
     ```sql
-    CREATE EXTERNAL STREAM MyTempSensors WITH (
-    DATA_SOURCE = EdgeHubInput,
-    FILE_FORMAT = InputFileFormat,
-    LOCATION = N'TemperatureSensors',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
-    )
+    CREATE EXTERNAL STREAM MyTempSensors 
+    WITH 
+    (
+        DATA_SOURCE = EdgeHubInput,
+        FILE_FORMAT = InputFileFormat,
+        LOCATION = N'TemperatureSensors',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
     go
     ```
 
@@ -107,9 +111,11 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
     * 前に作成した資格情報を使用します。
 
     ```sql
-    CREATE EXTERNAL DATA SOURCE LocalSQLOutput WITH (
-    LOCATION = 'sqlserver://tcp:.,1433'
-    ,CREDENTIAL = SQLCredential
+    CREATE EXTERNAL DATA SOURCE LocalSQLOutput 
+    WITH 
+    (
+        LOCATION = 'sqlserver://tcp:.,1433',
+        CREDENTIAL = SQLCredential
     )
     go
     ```
@@ -117,12 +123,52 @@ T-SQL ストリーミングでは、SQL Server の外部データ ソース機�
 4. 外部ストリーム オブジェクトを作成します。 次の例では、データベース *MySQLDatabase* の *dbo.TemperatureMeasurements* テーブルを指す外部ストリーム オブジェクトを作成します。
 
     ```sql
-    CREATE EXTERNAL STREAM TemperatureMeasurements WITH (
-    DATA_SOURCE = LocalSQLOutput,
-    LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
-    INPUT_OPTIONS = N'',
-    OUTPUT_OPTIONS = N''
+    CREATE EXTERNAL STREAM TemperatureMeasurements 
+    WITH 
+    (
+        DATA_SOURCE = LocalSQLOutput,
+        LOCATION = N'MySQLDatabase.dbo.TemperatureMeasurements',
+        INPUT_OPTIONS = N'',
+        OUTPUT_OPTIONS = N''
+    );
+    ```
+
+### <a name="example-create-an-external-stream-object-for-kafka"></a>例:Kafka 用の外部ストリーム オブジェクトを作成する
+
+次の例では、Azure SQL Edge のローカル データベースに対する外部ストリーム オブジェクトを作成します。 この例では、Kafka サーバーが匿名アクセス用に構成されていることを前提としています。 
+
+1. CREATE EXTERNAL DATA SOURCE を使用して、外部データ ソースを作成します。 次に例を示します。
+
+    ```sql
+    Create EXTERNAL DATA SOURCE [KafkaInput] 
+    With
+    (
+        LOCATION = N'kafka://<kafka_bootstrap_server_name_ip>:<port_number>'
     )
+    GO
+    ```
+2. Kafka 入力用の外部ファイル形式を作成します。 次の例では、Gzip 圧縮を使用して JSON ファイル形式を作成しました。 
+
+   ```sql
+   CREATE EXTERNAL FILE FORMAT JsonGzipped  
+    WITH 
+    (  
+        FORMAT_TYPE = JSON , 
+        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
+    )
+   ```
+    
+3. 外部ストリーム オブジェクトを作成します。 次の例では、Kafka トピック `*TemperatureMeasurement*` を指す外部ストリーム オブジェクトを作成します。
+
+    ```sql
+    CREATE EXTERNAL STREAM TemperatureMeasurement 
+    WITH 
+    (  
+        DATA_SOURCE = KafkaInput, 
+        FILE_FORMAT = JsonGzipped,
+        LOCATION = 'TemperatureMeasurement',     
+        INPUT_OPTIONS = 'PARTITIONS: 10' 
+    ); 
     ```
 
 ## <a name="create-the-streaming-job-and-the-streaming-queries"></a>ストリーミング ジョブとストリーミング クエリを作成する

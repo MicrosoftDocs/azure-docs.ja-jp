@@ -3,12 +3,13 @@ title: Azure Service Fabric アプリをパッケージ化する
 description: Azure Service Fabric アプリケーションをパッケージ化し、クラスターへのデプロイを準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: c00e46915c7bf147d224911ef4988d9fedd691c7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260972"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012400"
 ---
 # <a name="package-an-application"></a>アプリケーションをパッケージ化する
 

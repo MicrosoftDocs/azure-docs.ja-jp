@@ -2,20 +2,20 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: storage
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 04/11/2019
+ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e1cc3bac56e659b9a020880a26fd3d539f987503
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 897e5b58aed9c47e0b94ee47d1883e2b7a28bacb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544461"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930803"
 ---
-## <a name="2-assign-access-permissions-to-an-identity"></a>2\. ID にアクセス許可を割り当てる
+## <a name="assign-access-permissions-to-an-identity"></a>ID にアクセス許可を割り当てる
 
 ID ベースの認証を使用して Azure Files リソースにアクセスするには、ID (ユーザー、グループ、またはサービス プリンシパル) が共有レベルで必要なアクセス許可を持っている必要があります。 このプロセスは、ファイル共有に対し特定のユーザーが持っているアクセス権の種類を指定する、Windows 共有のアクセス許可の指定に似ています。 このセクションのガイダンスでは、ID にファイル共有のための読み取り、書き込み、または削除のアクセス許可を割り当てる方法を示します。 
 
@@ -28,15 +28,17 @@ ID ベースの認証を使用して Azure Files リソースにアクセスす�
 > [!IMPORTANT]
 > ファイルの所有権を引き受ける機能を含めて、ファイル共有を完全に管理制御するには、ストレージ アカウント キーを使用する必要があります。 Azure AD 資格情報を使用した管理制御はサポートされていません。
 
-Azure portal、PowerShell、または Azure CLI を使用して、共有レベルのアクセス許可を付与するために、組み込みのロールをユーザーの Azure AD ID に割り当てることができます。 共有レベルの RBAC ロールの割り当ては、有効になるまでに時間がかかる場合があることに注意してください。 
+Azure portal、PowerShell、または Azure CLI を使用して、共有レベルのアクセス許可を付与するために、組み込みのロールをユーザーの Azure AD ID に割り当てることができます。 共有レベルの Azure ロールの割り当ては、有効になるまでに時間がかかる場合があることにご注意ください。 
 
 > [!NOTE]
 > 認証にオンプレミス AD DS を使用する予定がある場合は、必ず [AD DS の資格情報を Azure AD と同期](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md)してください。 AD DS から Azure AD へのパスワード ハッシュ同期は省略可能です。 オンプレミスの AD DS から同期される Azure AD ID に共有レベルのアクセス許可が付与されます。
 
 一般的な推奨事項は、ユーザーと ID のグループを表す AD グループに対する高レベルのアクセス管理に共有レベルのアクセス許可を使用してから、ディレクトリおよびファイル レベルでのきめ細かいアクセス制御に NTFS アクセス許可を利用することです。 
 
-#### <a name="azure-portal"></a>Azure portal
-[Azure portal](https://portal.azure.com) を使用して RBAC ロールを Azure AD ID に割り当てるには、次の手順に従います。
+### <a name="assign-an-azure-role-to-an-ad-identity"></a>Azure ロールを AD ID を割り当てる
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+[Azure portal](https://portal.azure.com) を使用して Azure ロールを Azure AD ID に割り当てるには、これらの手順に従います。
 
 1. Azure portal でファイル共有に移動するか、[ファイル共有を作成](../articles/storage/files/storage-how-to-create-file-share.md)します。
 2. **[アクセス制御 (IAM)]** を選択します。
@@ -44,9 +46,9 @@ Azure portal、PowerShell、または Azure CLI を使用して、共有レベ�
 4. **[ロールの割り当ての追加]** ブレードで、 **[ロール]** リストから適切な組み込みロール (ストレージ ファイル データ SMB 共有閲覧者、ストレージ ファイル データ SMB 共有共同作成者) を選択します。 **[アクセスの割り当て先]** は既定の設定のままにしておきます。**Azure AD のユーザー、グループ、サービス プリンシパル**。 名前またはメール アドレスで、ターゲット Azure AD ID を選択します。
 5. **[保存]** を選択して、ロールの割り当て操作を完了します。
 
-#### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-次の PowerShell サンプルは、RBAC ロールをサインイン名に基づいて Azure AD ID に割り当てる方法を示しています。 PowerShell を使用した RBAC ロールの割り当ての詳細については、「[RBAC と Azure PowerShell を使用してアクセスを管理する](../articles/role-based-access-control/role-assignments-powershell.md)」を参照してください。
+次の PowerShell サンプルは、Azure ロールをサインイン名に基づいて Azure AD ID に割り当てる方法を示しています。 PowerShell を使用した Azure ロールの割り当ての詳細については、[RBAC と Azure PowerShell を使用したアクセスの管理](../articles/role-based-access-control/role-assignments-powershell.md)に関するページを参照してください。
 
 次のサンプル スクリプトを実行する前に、プレースホルダー値 (かっこを含む) を独自の値に置き換えることを忘れないでください。
 
@@ -59,9 +61,9 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-#### <a name="cli"></a>CLI
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
   
-次の CLI 2.0 コマンドでは、RBAC ロールをサインイン名に基づいて Azure AD ID に割り当てる方法が示されています。 Azure CLI を使用した RBAC ロールの割り当ての詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](../articles/role-based-access-control/role-assignments-cli.md)」を参照してください。 
+次の CLI 2.0 コマンドによって、Azure ロールをサインイン名に基づいて Azure AD ID に割り当てる方法が示されます。 Azure CLI を使用した Azure ロールの割り当ての詳細については、[RBAC と Azure CLI を使用したアクセスの管理](../articles/role-based-access-control/role-assignments-cli.md)に関するページを参照してください。 
 
 次のサンプル スクリプトを実行する前に、プレースホルダー値 (かっこを含む) を独自の値に置き換えることを忘れないでください。
 
@@ -69,8 +71,10 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 #Assign the built-in role to the target identity: Storage File Data SMB Share Reader, Storage File Data SMB Share Contributor, Storage File Data SMB Share Elevated Contributor
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
+---
 
-## <a name="3-configure-ntfs-permissions-over-smb"></a>3\. SMB 経由の NTFS アクセス許可を構成する 
+## <a name="configure-ntfs-permissions-over-smb"></a>SMB 経由の NTFS アクセス許可を構成する
+
 RBAC に共有レベルのアクセス許可を割り当てたら、ルート、ディレクトリ、またはファイル レベルに適切な NTFS アクセス許可を割り当てる必要があります。 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高レベルのゲートキーパーと考えてください。 一方、NTFS のアクセス許可は、さらに細かなレベルで動作し、ディレクトリまたはファイル レベルでユーザーが実行できる操作を決定します。
 
 Azure Files では、NTFS の基本的なアクセス許可と詳細なアクセス許可で構成される完全なセットをサポートします。 Azure ファイル共有内のディレクトリとファイルの NTFS アクセス許可を表示および構成するには、共有をマウントしてから、Windows エクスプローラーを使用するか、Windows の [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) または [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) コマンドを実行します。 
@@ -108,6 +112,7 @@ Azure Files への接続で問題が発生した場合は、[Windows での Azur
 
 
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>Windows エクスプローラーを使用して NTFS アクセス許可を構成する
+
 Windows エクスプローラーを使用して、ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与します。
 
 1. Windows エクスプローラーを開き、ファイルまたはディレクトリを右クリックし、 **[プロパティ]** を選択します。
@@ -120,6 +125,7 @@ Windows エクスプローラーを使用して、ルート ディレクトリ�
 9.    **[適用]** を選択します。
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>icacls を使用して NTFS アクセス許可を構成する
+
 ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与するには、次の Windows コマンドを使用します。 例中のプレースホルダーをお客様独自の値に置き換えてください。
 
 ```
@@ -128,9 +134,9 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 icacls を使用して NTFS アクセス許可を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls ](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)に関する記事を参照してください。
 
-## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4\. ドメインに参加している VM からファイル共有をマウントする
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>ドメインに参加している VM からファイル共有をマウントする
 
-次のプロセスでは、ファイル共有とアクセス許可が正しく設定されていることと、ドメインに参加している VM から Azure ファイル共有にアクセスできることを確認します。 共有レベルの RBAC ロールの割り当ては、有効になるまでに時間がかかる場合があることに注意してください。 
+次のプロセスでは、ファイル共有とアクセス許可が正しく設定されていることと、ドメインに参加している VM から Azure ファイル共有にアクセスできることを確認します。 共有レベルの Azure ロールの割り当ては、有効になるまでに時間がかかる場合があることにご注意ください。 
 
 次の図のように、アクセス許可を付与した Azure AD の ID を使用して VM にサインインします。 Azure Files にオンプレミスの AD DS 認証を有効にしている場合は、AD DS 資格情報を使用します。 Azure AD DS 認証の場合、Azure AD の資格情報を使用してサインインします。
 

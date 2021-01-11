@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure Blueprints のドキュメント
-summary: Azure Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
+summary: Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
 metadata:
   title: Azure Blueprints のドキュメント
-  description: Azure Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
+  description: Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
   ms.service: blueprints
   ms.topic: landing-page
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/29/2020
-  ms.openlocfilehash: 04c99d2428bd3c92187ce9383f51d38a9729d22a
-  ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
-  ms.translationtype: 
+  ms.date: 08/27/2020
+  ms.openlocfilehash: 1ec5453abd9d33b475b732a853294933cda02117
+  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+  ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/06/2020
-  ms.locfileid: "85969381"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89051374"
 landingContent:
 - title: Azure Blueprints について
   linkLists:

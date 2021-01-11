@@ -7,12 +7,12 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: wesmc
-ms.openlocfilehash: 97168c95893ffdea99180c997265f259176ed07f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8912ef907641367bda89d7c0e98f9da811c6e577
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528212"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534602"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>仮想ネットワーク向けの Azure IoT Hub Device Provisioning Service (DPS) サポート
 
@@ -59,7 +59,7 @@ DPS が VNET で構成されているほとんどのシナリオでは、IoT Hub
 
 * DPS リソースとリンクされたハブが異なるクラウドにある場合、プライベート エンドポイントは DPS で動作しません。 たとえば、[Azure Government とグローバル Azure](../azure-government/documentation-government-welcome.md) です。
 
-* 現時点では、DPS 向けの [Azure Functions のカスタム割り当てポリシー](how-to-use-custom-allocation-policies.md)は、VNET とプライベート エンドポイントでは機能しません。 
+* 現時点では、DPS 向けの [Azure Functions のカスタム割り当てポリシー](how-to-use-custom-allocation-policies.md)は、Azure Functions が VNET とプライベート エンドポイントにロックダウンされている場合には機能しません。 
 
 * 現在の DPS VNET のサポートは、DPS へのデータ イングレスのみが対象です。 データ エグレス (DPS から IoT Hub へのトラフィック) は、専用の VNET ではなく、内部のサービス間のメカニズムを使用します。 DPS と IoT Hub 間での VNET ベースの完全なエグレス ロックダウンのサポートは、現在使用できません。
 

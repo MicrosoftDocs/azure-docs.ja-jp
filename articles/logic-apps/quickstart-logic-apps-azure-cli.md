@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.openlocfilehash: aabb42dc8d86e500875819cbfc169bcc86733219
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/30/2020
+ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87101243"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499553"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してロジック アプリを作成し、管理する
 
@@ -271,3 +271,11 @@ Expecting value: line 1 column 1 (char 0)
 | デバッグ | `--debug` | すべてのデバッグ ログを表示します。 |
 | ヘルプ メッセージ | `--help -h` | ヘルプ ダイアログを表示します。 |
 | クエリ | `--query` | JSON 形式の出力の JMESPath クエリ文字列を設定します。 |
+
+## <a name="next-steps"></a>次のステップ
+
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/?view=azure-cli-latest)のページを参照してください。
+
+CLI を使用して基本的なロジック アプリを作成する方法の例については、[サンプル スクリプトとワークフロー定義](sample-logic-apps-cli-script.md)に関するページを参照してください。
+
+その他の Logic Apps CLI スクリプトのサンプルについては、[Microsoft のコード サンプル ブラウザー](/samples/browse/?products=azure-logic-apps)を参照してください。

@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
-ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79480285"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045512"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
 この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
 
-これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Azure Monitor を使用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)を行ってください。
+これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](/azure/kusto/query/)を参照してください。 Azure Monitor を使用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)を行ってください。
 
 ## <a name="events"></a>events
 
@@ -375,7 +375,7 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>使用法
 
-`Usage` データ型を使用して、取り込まれたデータ ボリュームをソリューションまたはデータ型ごとに追跡できます。 [コンピューター](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)または[Azure サブスクリプション、リソース グループまたはリソース](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)ごとに、取り込まれたデータ ボリュームを調査するその他の手法があります。
+`Usage` データ型を使用して、取り込まれたデータ ボリュームをソリューションまたはデータ型ごとに追跡できます。 [コンピューター](../platform/manage-cost-storage.md#data-volume-by-computer)または[Azure サブスクリプション、リソース グループまたはリソース](../platform/manage-cost-storage.md#data-volume-by-azure-resource-resource-group-or-subscription)ごとに、取り込まれたデータ ボリュームを調査するその他の手法があります。
 
 #### <a name="data-volume-by-solution"></a>ソリューション別のデータ ボリューム
 

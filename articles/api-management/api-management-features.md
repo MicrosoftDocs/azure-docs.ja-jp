@@ -1,6 +1,6 @@
 ---
 title: Azure API Management レベルの機能に基づく比較 | Microsoft Docs
-description: この記事では、提供される機能に基づいて API Management レベルを比較します。
+description: 提供される機能に基づいて API Management レベルを比較します。 各価格レベルで使用できる主な機能をまとめた表を参照してください。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/01/2019
+ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: c0cabab6f867df918c4ac86d035918c483e12da9
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203170"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905144"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Management レベルの機能に基づく比較
 
@@ -26,12 +26,12 @@ ms.locfileid: "82203170"
 > [!IMPORTANT]
 > Developer レベルは、非運用環境のユースケースと評価のためのものであることに注意してください。 SLA は提供されません。
 
-| 機能                                                                                      | 従量課金 | Developer | Basic | Standard | Premium |
+| 機能                                                                                      | 従量課金 | 開発者 | Basic | Standard | Premium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Azure AD 統合<sup>1</sup>                                                             | いいえ          | はい       | いいえ    | はい      | はい     |
 | Virtual Network (VNet) のサポート                                                               | いいえ          | はい       | いいえ    | いいえ       | はい     |
 | 複数リージョンのデプロイ                                                                      | いいえ          | いいえ        | いいえ    | いいえ       | はい     |
-| 複数のカスタム ドメイン名                                                                 | いいえ          | いいえ        | いいえ    | いいえ       | はい     |
+| 複数のカスタム ドメイン名                                                                 | いいえ          | はい        | いいえ    | いいえ       | はい     |
 | 開発者ポータル<sup>2</sup>                                                                 | いいえ          | はい       | はい   | はい      | はい     |
 | ビルトイン キャッシュ                                                                               | いいえ          | はい       | はい   | はい      | はい     |
 | ビルトイン分析                                                                           | いいえ          | はい       | はい   | はい      | はい     |
@@ -42,7 +42,7 @@ ms.locfileid: "82203170"
 | [バックアップと復元](api-management-howto-disaster-recovery-backup-restore.md)               | いいえ          | はい       | はい   | はい      | はい     |
 | [Git による管理](api-management-configuration-repository-git.md)                        | いいえ          | はい       | はい   | はい      | はい     |
 | ダイレクト管理 API                                                                        | いいえ          | はい       | はい   | はい      | はい     |
-| Azure Monitor のログとメトリック                                                               | いいえ          | はい       | はい   | はい      | はい     |
+| Azure Monitor のログとメトリック                                                               | はい         | はい       | はい   | はい      | はい     |
 | 静的 IP                                                                                    | いいえ          | はい       | はい   | はい      | はい     |
 
 <sup>1</sup> ユーザーが開発者ポータルにサインインする際に、ID プロバイダーとして Azure AD (および Azure AD B2C) を使用できます。<br/>

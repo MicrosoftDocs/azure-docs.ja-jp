@@ -3,12 +3,13 @@ title: クイック スタート:自分の初めての .NET Core クエリ
 description: このクイックスタートでは、手順に従い、.NET Core 用の Resource Graph NuGet パッケージを有効にし、自分の初めてのクエリを実行します。
 ms.date: 06/29/2020
 ms.topic: quickstart
-ms.openlocfilehash: b452329148f607b6a71c366c51745906247a43a1
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802595"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005872"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>クイック スタート:.NET Core を使用して自分の初めての Resource Graph クエリを実行する
 

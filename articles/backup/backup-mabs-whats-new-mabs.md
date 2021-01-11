@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server の新機能
 description: Microsoft Azure Backup Server には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 5f8d0aa83f6d54575b76847efa892864b32c456d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb47d2f14ca686e04cd2d9e3dec27d3ca4a30f5c
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629086"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88893189"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server (MABS) の新機能
 
@@ -23,9 +23,9 @@ Microsoft Azure Backup Server (MABS) バージョン 3 UR1 は最新のアップ
 
 MABS V2 は、[Modern Backup Storage](backup-mabs-add-storage.md) (MBS) が導入され、記憶域使用率とパフォーマンスが改善されています。 MBS は、基になるファイル システムとして ReFS を使用しており、階層型記憶域などのハイブリッド ストレージを活用するように設計されています。
 
-MBS によるスケールとパフォーマンスを達成するために、MABS V3 UR1 で DPM HDD ストレージと共に階層化ボリュームとして使用するフラッシュ ストレージ (SSD) の割合を小さく (ストレージ全体の 4%) することをお勧めします。 階層型記憶域を使用した MABS V3 UR1 では、バックアップ速度が 50% から 70% 向上しています。 階層化ストレージを構成するステップについては、DPM の記事「[階層型記憶域で MBS をセットアップする](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」を参照してください。
+MBS によるスケールとパフォーマンスを達成するために、MABS V3 UR1 で DPM HDD ストレージと共に階層化ボリュームとして使用するフラッシュ ストレージ (SSD) の割合を小さく (ストレージ全体の 4%) することをお勧めします。 階層型記憶域を使用した MABS V3 UR1 では、バックアップ速度が 50% から 70% 向上しています。 階層化ストレージを構成するステップについては、DPM の記事「[階層型記憶域で MBS をセットアップする](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」を参照してください。
 
-### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>ReFS ボリュームおよび重複除去が有効な ReFS ボリュームのサポート
+### <a name="support-for-refs-volumes"></a>ReFS ボリュームのサポート
 
 MABS V3 UR1 では、ReFS ボリュームとそこにデプロイされたワークロードをバックアップすることができます。 ReFS ボリュームにデプロイされた次のワークロードをバックアップできます。
 
@@ -37,9 +37,11 @@ MABS V3 UR1 では、ReFS ボリュームとそこにデプロイされたワー
 >[!NOTE]
 > ReFS ボリュームに格納されている Hyper-V VM のバックアップは、MABS V3 でサポートされます。
 
+>[重要] 重複除去された ReFS ボリュームのバックアップに問題がいくつか見つかっています。 これらの修正に取り組んでおり、このセクションは、修正プログラムが利用可能になるとすぐに更新されます。 それまでは、重複除去された ReFS ボリュームのバックアップ サポートを MABSv3 UR1 から削除します。
+
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware Solution の保護に対応
 
-MABS v3 UR1 では、[Azure VMware Solution](https://docs.microsoft.com/azure/azure-vmware/) にデプロイされた仮想マシンを保護できるようになりました。
+MABS v3 UR1 では、[Azure VMware Solution](../azure-vmware/index.yml) にデプロイされた仮想マシンを保護できるようになりました。
 
 ### <a name="vmware-parallel-backups"></a>VMware の並列バックアップ
 
@@ -56,7 +58,7 @@ MABS V3 UR1 では、クリティカルな操作に関して新たな認証レ�
 
 ### <a name="offline-backup-improvements"></a>オフライン バックアップの改善
 
-MABS v3 UR1 では、Azure Import/Export サービスによってオフライン バックアップのエクスペリエンスが向上しています。 詳細については、[こちら](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export)で最新の手順を参照してください。
+MABS v3 UR1 では、Azure Import/Export サービスによってオフライン バックアップのエクスペリエンスが向上しています。 詳細については、[こちら](./backup-azure-backup-server-import-export.md)で最新の手順を参照してください。
 
 >[!NOTE]
 >このアップデートでは、MABS の Azure Data Box を使用したオフライン バックアップのプレビューも導入されます。 詳細については、[SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) にお問い合わせください。
@@ -70,7 +72,7 @@ MABS V3 UR1 には、 **[-CheckReplicaFragmentation]** という新しいパラ�
 MABS v3 UR1 では、32 ビット保護エージェントがサポートされなくなりました。 MABS v3 サーバーを UR1 にアップグレードした後は、32 ビット ワークロードを保護することはできません。 既存の 32 ビット保護エージェントは無効状態となり、スケジュールされたバックアップは、**エージェントが無効**であることを示すエラーで失敗します。 それらのエージェントのバックアップ データを保持したい場合、データの保持オプションで保護を停止できます。 それ以外の場合、保護エージェントは削除することができます。
 
 >[!NOTE]
->MABS UR 1 を使用した保護でサポートされるワークロードについては、[最新の保護マトリックス](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)を参照してください。
+>MABS UR 1 を使用した保護でサポートされるワークロードについては、[最新の保護マトリックス](./backup-mabs-protection-matrix.md)を参照してください。
 
 ## <a name="whats-new-in-mabs-v3-rtm"></a>MABS V3 RTM の新機能
 
@@ -84,7 +86,7 @@ MABS V2 の Modern Backup Storage (MBS) では、ワークロード対応スト�
 
 ### <a name="prevent-unexpected-data-loss"></a>予想外のデータ損失を防ぐ
 
-企業では、複数の管理者のチームが MABS を管理されます。 バックアップへの使用が推奨されるストレージのガイドラインはありますが、バックアップ ストレージとして MABS に不適切なボリュームを指定すると、重要なデータが失われる可能性があります。 MABS V3 では、[これらの PowerShell コマンドレット](https://docs.microsoft.com/azure/backup/backup-mabs-add-storage)を使用して、このようなボリュームをストレージに使用できないボリュームとして構成することで、こうしたシナリオを防ぐことができます。
+企業では、複数の管理者のチームが MABS を管理されます。 バックアップへの使用が推奨されるストレージのガイドラインはありますが、バックアップ ストレージとして MABS に不適切なボリュームを指定すると、重要なデータが失われる可能性があります。 MABS V3 では、[これらの PowerShell コマンドレット](./backup-mabs-add-storage.md)を使用して、このようなボリュームをストレージに使用できないボリュームとして構成することで、こうしたシナリオを防ぐことができます。
 
 ### <a name="custom-size-allocation"></a>カスタム サイズの割り当て
 
@@ -115,7 +117,7 @@ MABS V3 は、SQL 2017 と共に MABS データベースとしてインストー
 MABS V3 は Windows Server 2019 にインストールすることができます。 WS2019 と共に MABS V3 を使用するには、OS を WS2019 にアップグレードしてから MABS V3 をインストールまたはアップグレードするか、WS2016 上に V3 をインストールまたはアップグレードした後に OS をアップグレードする方法があります。
 
 MABS V3 は完全なリリースであり、Windows Server 2016、Windows Server 2019 に直接インストールするか、MABS V2 からアップグレードすることができます。 Backup Server V3 にアップグレードまたはインストールする前に、インストールの前提条件を確認してください。
-MABS のインストールまたはアップグレード手順の詳細については、[こちら](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#software-package)を参照してください。
+MABS のインストールまたはアップグレード手順の詳細については、[こちら](./backup-azure-microsoft-azure-backup.md#software-package)を参照してください。
 
 > [!NOTE]
 >

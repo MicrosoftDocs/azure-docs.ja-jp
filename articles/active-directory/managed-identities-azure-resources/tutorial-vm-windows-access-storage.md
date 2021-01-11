@@ -3,7 +3,7 @@ title: Windows VM システムに割り当てられたマネージド ID を使�
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: de1cc69b3cfdac307edf6dfe999a5d538c2cb811
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75971962"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263180"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
 
@@ -184,4 +184,4 @@ namespace StorageOAuthToken
 このチュートリアルでは、Windows VM のシステム割り当て ID を使用して Azure Storage にアクセスする方法を説明しました。  Azure Storage の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure ストレージ](/azure/storage/common/storage-introduction)
+> [Azure ストレージ](../../storage/common/storage-introduction.md)

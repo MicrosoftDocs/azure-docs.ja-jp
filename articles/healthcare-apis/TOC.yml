@@ -4,6 +4,8 @@
   items:
     - name: Azure API for FHIR について
       href: overview.md
+    - name: Azure IoT Connector for FHIR (プレビュー) について
+      href: overview.md#azure-iot-connector-for-fhir-preview
 - name: クイックスタート
   expanded: true
   items:
@@ -19,7 +21,7 @@
       href: fhir-oss-powershell-quickstart.md
     - name: FHIR Server for Azure をデプロイする - CLI
       href: fhir-oss-cli-quickstart.md
-    - name: IoT コネクタをデプロイする - ポータル
+    - name: Azure IoT Connector for FHIR (プレビュー) をデプロイする - ポータル
       href: iot-fhir-portal-quickstart.md
 - name: チュートリアル
   expanded: false
@@ -44,11 +46,6 @@
       items:
         - name: Azure IoT Hub を通じてデバイス データを受信する
           href: device-data-through-iot-hub.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 操作方法ガイド
   expanded: false
   items:
@@ -80,13 +77,18 @@
           href: configure-cross-origin-resource-sharing.md
         - name: エクスポートを構成する
           href: configure-export-data.md
+    - name: データのエクスポート
+      expanded: false
+      items:
+        - name: 匿名化エクスポート
+          href: export-data.md
     - name: ID オブジェクト ID を見つける
       href: find-identity-object-ids.md
     - name: Azure API for FHIR® で診断ログを有効にする
       href: enable-diagnostic-logging.md
     - name: Azure API for FHIR のトークンを取得する - CLI
       href: get-healthcare-apis-access-token-cli.md
-    - name: IoT コネクタのエラーのトラブルシューティング
+    - name: Azure IoT Connector for FHIR (プレビュー) のエラーのトラブルシューティングを行う
       href: iot-troubleshoot-guide.md
 - name: 概念
   expanded: false
@@ -97,12 +99,12 @@
       href: azure-ad-hcapi-token-validation.md
     - name: カスタム HTTP ヘッダーを使用してデータを監査ログに追加する
       href: use-custom-headers.md
-    - name: IoT コネクタの動作
+    - name: Azure IoT Connector for FHIR (プレビュー) の動作
       expanded: false
       items:
-        - name: IoT コネクタのデータ フロー
+        - name: Azure IoT Connector for FHIR (プレビュー) のデータ フロー
           href: iot-data-flow.md
-        - name: IoT コネクタのマッピング テンプレート
+        - name: Azure IoT Connector for FHIR (プレビュー) のマッピング テンプレート
           href: iot-mapping-templates.md
 - name: リソース
   items:
@@ -116,3 +118,6 @@
   items:
     - name: Azure CLI
       href: /cli/azure/ext/healthcareapis/healthcareapis
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

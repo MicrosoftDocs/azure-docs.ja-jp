@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: ecbdb6dc73082fc0fab04c8802c43219cabb6a79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2cec55b7c9450070d2e692fae50eff9ea880c54e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519764"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013743"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイック スタート:Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Log Analytics エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
@@ -74,7 +74,7 @@ Azure サブスクリプションの利用を開始した後で、Log Analytics 
 
 完了すると、**コントロール パネル**に **Log Analytics エージェント**が表示されます。 構成を検証して、エージェントが接続されていることを確認できます。
 
-エージェントのインストールと構成について詳しくは、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)に関するページをご覧ください。
+エージェントのインストールと構成について詳しくは、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-agent-using-setup-wizard)に関するページをご覧ください。
 
 これで、Azure VM と Azure 以外のコンピューターを 1 か所で監視できます。 **[計算]** に、すべての VM とコンピューターの概要が推奨事項と共に表示されます。 各列は、推奨事項の 1 つのセットを表します。 色は、その推奨事項の VM またはコンピューターの現在のセキュリティの状態を表します。 Security Center では、セキュリティの警告でのこれらのコンピューターの検出も明らかになります。
 

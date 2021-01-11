@@ -1,14 +1,14 @@
-- name: Azure VMware Solution (AVS)
+- name: Azure VMware Solution
   href: index.yml
 - name: 概要
   items:
-    - name: Azure VMware Solution (AVS) について
+    - name: Azure VMware Solution について
       href: introduction.md
 - name: チュートリアル
   items:
     - name: 1 - ネットワークの計画
       href: tutorial-network-checklist.md
-    - name: 2 - AVS プライベート クラウドの作成
+    - name: 2 - プライベート クラウドの作成
       href: tutorial-create-private-cloud.md
     - name: 3 - ネットワークの構成
       href: tutorial-configure-networking.md
@@ -38,7 +38,7 @@
       href: concepts-upgrades.md
 - name: 操作方法ガイド
   items:
-    - name: AVS 移行評価
+    - name: 移行評価
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: HCX の設定
       href: hybrid-cloud-extension-installation.md
@@ -52,17 +52,19 @@
           href: concepts-api-management.md
         - name: ハブ アンド スポーク
           href: concepts-avs-hub-and-spoke-integration.md
-        - name: AVS 向けの Azure Backup Server
+        - name: Azure Backup Server
           items:
-            - name: AVS 向けの Backup Server の設定
+            - name: Backup Server の設定
               href: set-up-mabs-for-avs.md
-            - name: Backup Server を使用した AVS VM のバックアップ
+            - name: Backup Server を使用したプライベート クラウドのバックアップ
               href: backup-avs-vms-with-mabs.md
-        - name: AVS 上の Application Gateway
+        - name: Application Gateway
           href: protect-avs-web-apps-with-app-gateway.md
+        - name: AVS を使用した Traffic Manager
+          href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: VMware ソリューション
       items:
-        - name: AVS 向けの vRealize Operations の設定
+        - name: vRealize Operations の設定
           href: vrealize-operations-for-avs.md
 - name: リファレンス
   items: null
@@ -70,7 +72,7 @@
   items:
     - name: トラブルシューティング
       items:
-        - name: AVS のデプロイまたはプロビジョニングのエラーに関するヘルプを表示する
+        - name: デプロイまたはプロビジョニングのエラーに関するヘルプの表示
           href: fix-deployment-provisioning-failures.md
     - name: よく寄せられる質問
       href: faq.md

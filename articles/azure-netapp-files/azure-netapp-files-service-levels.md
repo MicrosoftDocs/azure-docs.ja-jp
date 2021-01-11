@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 639f1e09fdb5603965209e5b5ee6c224ad238b76
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75832578"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533123"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files のサービス レベル
 サービス レベルは容量プールの属性の 1 つです。 サービス レベルは、容量プール内のボリュームに割り当てられたクォータに基づいて許可された、ボリュームの最大スループットによって定義および区別されます。
@@ -56,7 +56,8 @@ Azure NetApp Files では、次の 3 つのサービス レベルがサポート
 
 ## <a name="next-steps"></a>次のステップ
 
-- さまざまなサービス レベルの価格については、[Azure NetApp Files の価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)を参照してください
-- 容量プールでの容量消費の計算については、「[Cost model for Azure NetApp Files (Azure NetApp Files のコスト モデル)](azure-netapp-files-cost-model.md)」を参照してください 
+- [Azure NetApp Files 価格ページ](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Azure NetApp Files のコスト モデル](azure-netapp-files-cost-model.md) 
 - [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
-- 「[Azure NetApp File のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)」を参照してください
+- [Azure NetApp Files のサービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [ボリュームのサービス レベルを動的に変更する](dynamic-change-volume-service-level.md) 

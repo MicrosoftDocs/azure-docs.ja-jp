@@ -4,6 +4,10 @@
   items:
     - name: ExpressRoute とは何ですか。
       href: expressroute-introduction.md
+- name: クイック スタート
+  items:
+    - name: ExpressRoute 回線の作成 - ARM テンプレート
+      href: quickstart-create-expressroute-vnet-template.md
 - name: チュートリアル
   items:
     - name: 回線の作成と変更

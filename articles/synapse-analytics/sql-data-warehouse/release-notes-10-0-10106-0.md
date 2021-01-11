@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6af05a6c17253a2032f493a7d2cd6254dafd352c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4873c1c998f62b6180df73a04852704665a4125d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85831422"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075836"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics リリース ノート
 
@@ -28,7 +28,6 @@ ms.locfileid: "85831422"
 新機能がすべてのリージョンにロールアウトされるのに伴い、機能の可用性について、ご使用のインスタンスにデプロイされているバージョン、および最新のリリース ノートを確認してください。 バージョンを確認するには、SQL Server Management Studio (SSMS) を介してお使いの SQL プールに接続して `SELECT @@VERSION;` を実行し、現在のバージョンを返します。 このバージョンで、お使いの SQL プールに適用されているリリースを確認してください。 出力の日付によって、SQL プールに適用されるリリースの月が識別されます。 これは、サービスレベルの機能強化にのみ適用されます。 
 
 ツールの機能強化については、リリース ノートに適切なバージョンがインストールされていることを確認してください。 
-
 
 > [!NOTE]
 > SELECT @@VERSION によって返される製品名は、Microsoft Azure SQL Data Warehouse から Microsoft Azure Synapse Analytics に変更されます。 変更を行う前に、Microsoft から詳細な通知を送信します。 この変更は、使用しているアプリケーション コード内の SELECT @@VERSION の結果から製品名を解析する顧客に関連しています。 製品のブランド変更が原因でアプリケーション コードが変更されるのを回避するには、次のコマンドを使用して、データベースの製品名とバージョンを SERVERPROPERTY に照会してください。バージョン番号 XX.X.XXXXX.X (製品名なし) を返すには、次のコマンドを使用します。
@@ -42,11 +41,13 @@ ms.locfileid: "85831422"
 > ```
 
 ## <a name="july-2020"></a>2020 年 7 月
+
 | サービスの機能強化 | 詳細 |
 | --- | --- |
 |**列レベルの暗号化 (パブリック プレビュー)**|Transact-SQL を使用してデータの列に対称暗号化を適用することで、Synapse SQL データ ウェアハウス内の機密情報を保護します。 列レベルの暗号化には、証明書、パスワード、対称キー、または非対称キーでさらに保護される対称キーを使用してデータを暗号化するために使用できる、組み込み関数が用意されています。 詳細については、「[データの列の暗号化](/sql/relational-databases/security/encryption/encrypt-a-column-of-data?view=azure-sqldw-latest)」を参照してください。|
 |**互換性レベルのサポート (GA)**|ユーザーはこのリリースで、Synapse SQL エンジンの特定のバージョンの Transact-SQL 言語とクエリ処理の動作を使用できるよう、データベースの互換性レベルを設定できるようになりました。 詳細については、「[sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」と「[データベース スコープ構成の変更](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。|
 |**行レベルのセキュリティ**|このリリースには、RLS が適用された行に対する更新および削除の操作の改善が含まれています。 このリリースでは、組み込み関数で DML ターゲット テーブルの列が参照されていない場合、"is_rolemember" のような組み込み関数での更新操作と削除操作は成功します。 この改善の前は、これらの操作は、基になる DML 操作での制限のために失敗しました。|
+|**DBCC SHRINKDATABASE (GA)**|指定したデータベース内のデータ ファイルとログ ファイルのサイズを圧縮できるようになりました。 詳細については、この[ドキュメント](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql?view=sql-server-ver15)を参照してください。|
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -78,7 +79,7 @@ ms.locfileid: "85831422"
 
 | ツールの機能強化                                         | 詳細                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) - SQL Server Data Tools (SSDT)** | このリリースには、SSDT に対する次の機能強化と修正が含まれています。 </br> </br> - 具体化されたビュー (MV) によって参照されるテーブルを変更すると、MV でサポートされていない ALTER VIEW ステートメントが生成される問題を解決しました。<br/><br/> - データベースまたはプロジェクトに行レベルのセキュリティ オブジェクトが存在する場合に、Schema Compare 操作が失敗しないことを確実にするための変更を実装しました。 行レベルのセキュリティ オブジェクトは現在、SSDT ではサポートされていません。  <br/><br/> - データベース内の多数のオブジェクトを一覧表示するときにタイムアウトが発生しないように、SQL Server オブジェクト エクスプローラーのタイムアウトのしきい値を増加しました。<br/><br/> - SQL Server オブジェクト エクスプローラーでデータベース オブジェクトの一覧を取得して、オブジェクト エクスプローラーの設定時の不安定な状態を低減し、パフォーマンスを向上させる方法を最適化しました。 |
+| **[Visual Studio 16.6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) - SQL Server Data Tools (SSDT)** | このリリースには、SSDT に対する次の機能強化と修正が含まれています。 </br> </br> - マテリアライズドビュー (MV) によって参照されるテーブルを変更すると、MV でサポートされていない ALTER VIEW ステートメントが生成される問題を解決しました。<br/><br/> - データベースまたはプロジェクトに行レベルのセキュリティ オブジェクトが存在する場合に、Schema Compare 操作が失敗しないことを確実にするための変更を実装しました。 行レベルのセキュリティ オブジェクトは現在、SSDT ではサポートされていません。  <br/><br/> - データベース内の多数のオブジェクトを一覧表示するときにタイムアウトが発生しないように、SQL Server オブジェクト エクスプローラーのタイムアウトのしきい値を増加しました。<br/><br/> - SQL Server オブジェクト エクスプローラーでデータベース オブジェクトの一覧を取得して、オブジェクト エクスプローラーの設定時の不安定な状態を低減し、パフォーマンスを向上させる方法を最適化しました。 |
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -95,7 +96,7 @@ ms.locfileid: "85831422"
 |**ワークロードの分離 (プレビュー)**|データ ウェアハウスを民主化するお客様をサポートするために、インテリジェントなワークロード管理のための新機能が発表されました。 新しい[ワークロードの分離](sql-data-warehouse-workload-isolation.md)機能では、データ ウェアハウスのリソースへの柔軟性と制御を提供しながら、異種ワークロードの実行を管理できるようにします。 これにより、実行の予測可能性が向上し、定義済みの SLA を満たすための機能が強化されます。 </br>ワークロードの分離に加えて、[ワークロード分類](sql-data-warehouse-workload-classification.md)で追加のオプションを使用できるようになりました。  ログイン分類を超えて、[Create Workload Classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 構文により、クエリ ラベル、セッション コンテキスト、および時刻に基づいて要求を分類する機能が提供されます。|
 |**PREDICT (プレビュー)**|データ ウェアハウス内の機械学習モデルをスコア付けすることで、大規模で複雑なデータ移動を回避できるようになりました。 T-SQL PREDICT 関数は、オープン モデル フレームワークに基づき、データと機械学習モデルを入力として受け取り、予測を生成します。
 |**SSDT CI/CD (GA)**|SQL Analytics の[最も要望の多い機能](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247--in-preview-database-project-from-visual-studio-t)である、SQL Server Data Tools (SSDT) データベース プロジェクトが一般提供されることが発表されました。 このリリースには、Visual Studio 2019 での SSDT のサポートと、Azure DevOps とのネイティブ プラットフォーム統合が含まれており、エンタープライズ レベルのデプロイ用に組み込みの継続的インテグレーションとデプロイ (CI/CD) 機能が用意されています。 |
-|**具体化されたビュー (GA)**|具体化されたビューでは、ビュー定義クエリから返されるデータを保持し、基になるテーブルのデータが変更されると自動的に更新されます。 これによって、複雑なクエリ (一般に結合と集計を含むクエリ) のパフォーマンスが向上すると共に、メンテナンス操作が簡単になります。 詳細については、「[具体化されたビューを使用したパフォーマンス チューニング](performance-tuning-materialized-views.md)」を参照してください。  具体化されたビューのスクリプトを作成するために、[SQL Server Management Studio 18.4 以降](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)をインストールします。|
+|**マテリアライズドビュー (GA)**|マテリアライズドビューでは、ビュー定義クエリから返されるデータを保持し、基になるテーブルのデータが変更されると自動的に更新されます。 これによって、複雑なクエリ (一般に結合と集計を含むクエリ) のパフォーマンスが向上すると共に、メンテナンス操作が簡単になります。 詳細については、「[マテリアライズドビューを使用したパフォーマンス チューニング](performance-tuning-materialized-views.md)」を参照してください。  マテリアライズドビューのスクリプトを作成するために、[SQL Server Management Studio 18.4 以降](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)をインストールします。|
 |**動的データ マスク (GA)**|動的データ マスク (DDM) は、定義されたマスキング規則に基づいて、クエリ結果内で機密データを即座に難読化することにより、データ ウェアハウス内の機密データへの未承認アクセスを防止します。 詳細情報については、[SQL Database の動的データ マスク](../../azure-sql/database/dynamic-data-masking-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事をご覧ください。|
 |**Read Committed スナップショット分離 (GA)**|ALTER DATABASE を使用して、ユーザー データベースのスナップショット分離を有効または無効にすることができます。 現在のワークロードへの影響を回避するには、データベースのメンテナンス期間中にこのオプションを設定するか、データベースへの他のアクティブな接続がなくなるまで待機します。 詳細については、[ALTER DATABASE SET オプション](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)に関するページを参照してください。|
 |**順序指定クラスター化列ストア インデックス (GA)**|列ストアは、大量のデータの格納および効率的なクエリを実現する鍵となります。 順序指定クラスター化列ストア インデックスは、効率的なセグメントの除外を有効にすることにより、クエリの実行をさらに最適化します。   詳細については、「[順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](performance-tuning-ordered-cci.md)」を参照してください。|
@@ -116,7 +117,7 @@ ms.locfileid: "85831422"
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
-|**具体化されたビュー (プレビュー)**|具体化されたビューでは、ビュー定義クエリから返されるデータを保持し、基になるテーブルのデータが変更されると自動的に更新されます。 これによって、複雑なクエリ (一般に結合と集計を含むクエリ) のパフォーマンスが向上すると共に、メンテナンス操作が簡単になります。 詳細については、次を参照してください。 </br> - [CREATE MATERIALIZED VIEW AS SELECT &#40;Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br> - [Synapse SQL でサポートされる T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)|
+|**マテリアライズドビュー (プレビュー)**|マテリアライズドビューでは、ビュー定義クエリから返されるデータを保持し、基になるテーブルのデータが変更されると自動的に更新されます。 これによって、複雑なクエリ (一般に結合と集計を含むクエリ) のパフォーマンスが向上すると共に、メンテナンス操作が簡単になります。 詳細については、次を参照してください。 </br> - [CREATE MATERIALIZED VIEW AS SELECT &#40;Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br> - [Synapse SQL でサポートされる T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)|
 |**追加の T-SQL サポート**|Synapse SQL の T-SQL 言語セキュリティが拡張され、次のサポートが含まれるようになりました。 </br> - [AT TIME ZONE (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)</br> - [STRING_AGG (Transact-SQL)](/sql/t-sql/functions/string-agg-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**結果セットのキャッシュ機能 (プレビュー)**|以前発表された結果セットのキャッシュを管理するために追加された DBCC コマンド。 詳細については、次を参照してください。 </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) </br></br> 実行されたクエリが結果セットのキャッシュを使用した場合に表示される、[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) の新しい result_set_cache 列も確認してください。|
 |**順序指定クラスター化列ストア インデックス (プレビュー)**|順序付けされたクラスター化列ストア インデックス内の列の順序を識別するために、[sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) に追加された新しい column_store_order_ordinal 列。|

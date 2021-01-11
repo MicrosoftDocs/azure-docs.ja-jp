@@ -39,11 +39,11 @@
       items:
         - name: Spring Boot Initializer の使用
           href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: ランキングに基づくキャッシュを使用する
+    - name: ランキングの作成
       href: cache-web-app-cache-aside-leaderboard.md
-    - name: Azure PowerShell
+    - name: Azure PowerShell を使用して管理する
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure CLI
+    - name: Azure CLI で管理する
       href: cli-samples.md
 - name: 概念
   items:
@@ -65,7 +65,7 @@
     - name: プラン
       items:
         - name: キャッシュ レベルを選択する
-          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
+          href: cache-overview.md#choosing-the-right-tier
         - name: クラスタリングによってキャッシュを分散する
           href: cache-how-to-premium-clustering.md
         - name: Redis データ永続化でキャッシュを保持する
@@ -82,15 +82,23 @@
           href: cache-migration-guide.md
         - name: Managed Cache Service からの移行 (非推奨)
           href: cache-migrate-to-redis.md
+        - name: 計画に関する FAQ
+          href: cache-planning-faq.md
+    - name: ビルド
+      items:
+        - name: 開発に関する FAQ
+          href: cache-development-faq.md
     - name: 自動化
       items:
         - name: Azure PowerShell を使用したデプロイと管理
           href: cache-how-to-manage-redis-cache-powershell.md
         - name: Azure CLI でデプロイして管理する
           href: cli-samples.md
-        - name: Azure Cache for Redis をプロビジョニングする
+        - name: Redis キャッシュを作成する - ARM テンプレート
+          displayName: Resource Manager
           href: cache-redis-cache-arm-provision.md
-        - name: Azure Cache for Redis で Web アプリをプロビジョニングする
+        - name: Redis キャッシュで Web アプリを作成する - ARM テンプレート
+          displayName: Resource Manager
           href: cache-web-app-arm-with-redis-cache-provision.md
     - name: 管理する
       items:
@@ -106,12 +114,22 @@
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 および 1.1 の削除
           href: cache-remove-tls-10-11.md
+        - name: 管理に関する FAQ
+          href: cache-management-faq.md
     - name: モニター
       items:
         - name: Azure Portal での監視
           href: cache-how-to-monitor.md
         - name: 例外のアラートを設定する
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: 監視に関する FAQ
+          href: cache-monitor-troubleshoot-faq.md
+    - name: スケール
+      items:
+        - name: 別のサイズとレベルに更新する
+          href: cache-how-to-scale.md
+        - name: Redis クラスターを使用してスケールイン/スケールアウトする
+          href: cache-how-to-premium-clustering.md
     - name: 診断とトラブルシューティング
       items:
         - name: Redis サーバーに関するトラブルシューティング
@@ -122,12 +140,8 @@
           href: cache-troubleshoot-timeouts.md
         - name: データ損失に関するトラブルシューティング
           href: cache-troubleshoot-data-loss.md
-    - name: スケール
-      items:
-        - name: 別のサイズとレベルに更新する
-          href: cache-how-to-scale.md
-        - name: Redis クラスターを使用してスケールイン/スケールアウトする
-          href: cache-how-to-premium-clustering.md
+        - name: トラブルシューティングに関する FAQ
+          href: cache-monitor-troubleshoot-faq.md
 - name: リファレンス
   items:
     - name: Azure Cache for Redis のサンプル
@@ -147,7 +161,8 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.cache/allversions
     - name: Azure Policy の組み込み
-      href: ./policy-samples.md
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: Redis コマンド
       href: 'https://redis.io/commands#'
 - name: リソース

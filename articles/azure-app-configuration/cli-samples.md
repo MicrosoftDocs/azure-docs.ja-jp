@@ -6,12 +6,13 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 02/19/2020
-ms.openlocfilehash: c68dfdf5357d73cc3b01d19cad61525404ab955f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d6e644a73a18cdfda71ae6a4e5360b713c08f4f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050164"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504400"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 

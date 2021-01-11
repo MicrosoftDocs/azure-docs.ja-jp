@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
 ms.date: 3/18/2020
-ms.openlocfilehash: c5758fa367ac17ceb687212b4073fd2c1a5c18f6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37bc99d9f83f185a5372fd45634351987b85e20b
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206416"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763662"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは -
 
@@ -38,6 +38,9 @@ Azure CLI の各種サンプルについては、次のページを参照して�
 
 - [Azure Database for MySQL 用 Azure CLI サンプル](sample-scripts-azure-cli.md)
 
+## <a name="automated-patching"></a>自動修正
+このサービスでは、基になるハードウェア、OS、およびデータベース エンジンの自動修正が実行されます。 修正には、基になるハードウェア、OS、およびデータベース エンジンのセキュリティ更新プログラムとソフトウェア更新プログラムが含まれます。 MySQL エンジンの場合、マイナー バージョンのアップグレードは自動的に行われ、パッチ リリースの一部として含まれます。 コミュニティによってマイナー バージョンがリリースされた場合、そのマイナー バージョンは、サービスのテスト サイクルの一部として自動的に統合されます。 マイナー バージョンのテストは、MySQL の標準的なワークロードの一部で実行されます。 MySQL エンジンのマイナー バージョン リリースは、信頼性 (クラッシュしない)、可用性、セキュリティ、およびパフォーマンスについて評価されます。 すべてのマイナー バージョンがサービスの運用環境用にリリースされるわけではありませんが、バグ修正の重要度と新しい漸進的な価値に基づいて評価されます。 その目的は、新しい漸進的な価値と、システム内の変数を最小化して安定性を高めることの間で適切なバランスを取ることにあります。 パッチの適用に必要なユーザー アクションや構成設定はありません。 パッチの適用頻度は、ペイロードの重要度に基づいてサービスによって管理されます。 一般に、サービスは、継続的インテグレーションとリリースの一環として、毎月のリリース スケジュールに従います。 ユーザーは、[計画メンテナンスの通知](concepts-monitoring.md)にサブスクライブすることで、予定されているメンテナンスの通知をそのイベントの 72 時間前に受け取ることができます。
+
 ## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
 Azure Database for MySQL サービスには、次の複数のサービス レベルが用意されています。Basic、汎用、メモリ最適化。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳しくは、 [価格レベル](concepts-service-tiers.md)に関するページをご覧ください。
 
@@ -48,7 +51,7 @@ Azure Database for MySQL サービスには、次の複数のサービス レベ
 Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント (SLA) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべての Azure Database for MySQL サーバーで、組み込みのセキュリティ、フォールト トレランス、データ保護を利用できます。これらは、本来なら自身で購入または設計し、構築、管理する必要があります。 Azure Database for MySQL では、ポイントインタイム リストアを使用して、サーバーを 35 日間分さかのぼって以前の状態に戻すことができます。
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
-Azure データベース サービスは、アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えた Azure Database for MySQL によって、データ セキュリティを維持してきました。 Azure のプラットフォーム セキュリティについては、[Azure Security Center](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MySQL のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
+Azure データベース サービスは、アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えた Azure Database for MySQL によって、データ セキュリティを維持してきました。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MySQL のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for MySQL についての質問や提案は、Azure Database for MySQL チームにメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。

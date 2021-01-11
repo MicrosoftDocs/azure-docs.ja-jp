@@ -6,18 +6,18 @@ ms.topic: overview
 ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 53725e7d4c39405e7ba47f8915e7444ce6a2167a
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118451"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588157"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>Azure Cosmos DB に組み込まれている Jupyter Notebook のサポート (プレビュー)
 
-Jupyter Notebook はオープンソースの Web アプリケーションであり、ライブ コード、数式、視覚化、および説明テキストを含むドキュメントを作成して共有するために使用できます。 
+Jupyter Notebook はオープン ソースの Web アプリケーションであり、ライブ コード、数式、視覚化、および説明テキストが含まれるドキュメントを作成して共有することができます。 
 
-Azure Cosmos DB の組み込みの Jupyter Notebook は、Azure portal とご自分の Azure Cosmos DB アカウントに直接統合され、便利で使いやすいものになります。 開発者、データ サイエンティスト、エンジニア、アナリストは使い慣れた Jupyter Notebook エクスペリエンスを利用して、データ探索、データ クリーニング、データ変換、数値シミュレーション、統計モデリング、データ視覚化、機械学習を行うことができます。
+Azure Cosmos DB の組み込みの Jupyter Notebook は、Azure portal とご自分の Azure Cosmos DB アカウントに直接統合され、便利で使いやすいものになります。 開発者、データ サイエンティスト、エンジニア、およびアナリストは使い慣れた Jupyter Notebook エクスペリエンスを利用して、データ探索、データ クリーニング、データ変換、数値シミュレーション、統計モデリング、データ視覚化、および機械学習を行うことができます。
 
 :::image type="content" source="./media/cosmosdb-jupyter-notebooks/cosmos-notebooks-overview.png" alt-text="Azure Cosmos DB における Jupyter Notebook の視覚化":::
 
@@ -33,7 +33,7 @@ Jupyter Notebook は、もともと Python と R で記述されたデータ サ
 
 **コードの共有:** GitHub のようなサービスには、コードを共有する方法が用意されていますが、その大部分は対話形式ではありません。 Jupyter Notebook を使用すると、コードを表示して実行し、結果を Azure portal に直接表示できます。
 
-**ライブでのコード操作:** Jupyter Notebook のコードは動的です。編集してリアル タイムで増分更新内容を実行できます。 コード、デモ、または概念実証 (POCs) の入力ソースとして使用されるユーザー コントロール (スライダーやテキスト入力フィールドなど) を埋め込むこともできます。
+**ライブでのコード操作:** Jupyter Notebook のコードは動的です。編集してリアルタイムで増分更新内容を実行できます。 コード、デモ、または概念実証 (POCs) の入力ソースとして使用されるユーザー コントロール (スライダーやテキスト入力フィールドなど) を埋め込むこともできます。
 
 **コード サンプルとデータ探索の結果のドキュメント:** コードがあり、その動作を 1 行ずつ説明する場合、Jupyter Notebook に埋め込むことができます。 ドキュメントと対話機能を同時に追加することができます。
 
@@ -41,13 +41,13 @@ Jupyter Notebook は、もともと Python と R で記述されたデータ サ
 
 **オールインワン環境:** Jupyter Notebook では、コード、リッチ テキスト、画像、動画、アニメーション、数学式、プロット、マップ、対話型の図表、ウィジェット、およびグラフィカル ユーザー インターフェイスが単一のドキュメントに結合されます。
 
-## <a name="components-of-a-jupyter-notebook"></a>Jupyter ノートブックの構成要素
+## <a name="components-of-a-jupyter-notebook"></a>Jupyter Notebook の構成要素
 
 Jupyter Notebook には、複数の種類のコンポーネントを含めることができ、それぞれを個別のブロックまたはセルにまとめます。
 
 **テキストと HTML:** プレーン テキスト (HTML を生成するマークダウン構文に注釈を付けるテキスト) を、ドキュメントの任意の場所に挿入できます。 CSS スタイルをインラインで含めたり、ノートブックを生成するために使用されるテンプレートに追加したりすることもできます。
 
-**コードと出力:** Jupyter Notebook では、Python コードと C# がサポートされます。 実行されたコードの結果は、コード ブロックの直後に表示され、コード ブロックは任意の順序で複数回実行できます。
+**コードと出力:** Jupyter Notebook では、Python コードと C# コードがサポートされます。 実行されたコードの結果は、コード ブロックの直後に表示され、コード ブロックは任意の順序で複数回実行できます。
 
 **視覚化:** Matplotlib、Plotly、Bokeh などのモジュールを使用して、コードからグラフィックスとグラフを生成できます。 出力と同様に、これらの視覚化は、それらを生成するコードの横にインラインで表示されます。 出力と同様に、これらの視覚化は、それらを生成するコードの横にインラインで表示されます。
 

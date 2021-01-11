@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Ivanti Service Manager (ISM) の統合 | Microsoft Docs'
 description: Azure Active Directory と Ivanti Service Manager (ISM) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 14297c74-0d57-4146-97fa-7a055fb73057
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32bccdf538b637b7706824b4cf5499bed63af9dc
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: db7838224b004d50234586d14e43e77a9c2ce26b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799158"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552749"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>チュートリアル: Azure Active Directory と Ivanti Service Manager (ISM) の統合
 

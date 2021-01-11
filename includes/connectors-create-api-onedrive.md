@@ -3,33 +3,46 @@ ms.service: logic-apps
 ms.topic: include
 author: ecfan
 ms.author: estfan
-ms.date: 11/03/2016
-ms.openlocfilehash: 8b5f72f18ee5bf9c1e4dbaaa87d6705f55b09bc5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/21/2020
+ms.openlocfilehash: 27df83552b450b7657c0595d1d419001df98148c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524211"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040254"
 ---
 ## <a name="prerequisites"></a>前提条件
 
-* Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
 * [OneDrive](https://www.microsoft.com/store/apps/onedrive/9wzdncrfj1p3) アカウント 
 
-ロジック アプリで OneDrive アカウントを使用するには、OneDrive アカウントに接続するロジック アプリを承認してください。  これは、Azure ポータルのロジック アプリ内で簡単に実行できます。 
+Logic Apps で OneDrive アカウントを使用するには、OneDrive アカウントへの接続を、あらかじめ Azure portal で Logic Apps に承認する必要があります。
 
-次の手順に従って、OneDrive アカウントに接続するロジック アプリを承認します。
+Logic Apps に OneDrive アカウントへの接続を承認するには、次の手順に従います。  
 
-1. ロジック アプリを作成します。 Logic Apps デザイナーで、ドロップダウン リストから **[Microsoft が管理している API を表示]** を選択し、検索ボックスに「onedrive」と入力します。 トリガーまたはアクションの 1 つを選択します。  
-   ![[Microsoft のマネージド API を表示] というタイトルのダイアログ ボックスには、"onedrive" と表示されている検索ボックスがあります。 以下は、4 つのトリガーの一覧です。 一覧の 1 つ目は [OneDrive - ファイルが作成されたとき] です。これが選択されています。](./media/connectors-create-api-onedrive/onedrive-1.png)
-2. これまでに OneDrive への接続を作成したことがない場合は、OneDrive の資格情報を使用してサインインするよう求められます。  
-   ![[OneDrive - ファイルが作成されたとき] というタイトルのダイアログ ボックスには、[サインイン] というラベルの付いたボタンがあります。](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. **[サインイン]** を選択し、ユーザー名とパスワードを入力します。 **[サインイン]** をクリックします。  
-   ![[サインイン] というタイトルのダイアログ ボックスには、"Microsoft アカウントを使う" ようにという指示が表示されます。 [メール アドレスまたは電話番号] と [パスワード] というラベルが付いた 2 つのテキスト ボックスがあります。また、[サインインしたままにする] というラベルが付いたチェック ボックスと、[サインイン] というラベルの付いたボタンもあります。](./media/connectors-create-api-onedrive/onedrive-3.png)   
-   
-    この資格情報は、接続するロジック アプリの承認と、OneDrive アカウントのデータへのアクセスに使用されます。 
+1. Azure portal にサインインします。 
+
+1. **[Azure サービス]** で、 **[Logic Apps]** を選択します。 次に、目的のロジック アプリの名前を一覧から選択します。
+
+1. ロジック アプリのメニューで、 **[開発ツール]** の **[ロジック アプリ デザイナー]** を選択します。
+
+1. Logic Apps デザイナーで、ドロップダウン リストから **[Microsoft のマネージド API を表示]** を選択し、検索ボックスに「*OneDrive*」と入力します。 使用するトリガーまたはアクションを選択します。
+
+   ![追加する OneDrive API アクションの一覧を表示する Logic Apps デザイナーのスクリーンショット。](./media/connectors-create-api-onedrive/onedrive-1.png)
+
+2. これまでに OneDrive への接続を作成したことがない場合は、プロンプトに従い、OneDrive の資格情報を使用してサインインします。  
+
+   ![OneDrive API のサインイン プロンプトを表示する Logic Apps デザイナーのスクリーンショット。](./media/connectors-create-api-onedrive/onedrive-2.png)
+
+3. **[サインイン]** を選択し、ユーザー名とパスワードを入力します。 **[サインイン]** をクリックします。 
+
+   ![OneDrive API 承認に使用される Microsoft アカウント サインイン ページのスクリーンショット。](./media/connectors-create-api-onedrive/onedrive-3.png)   
+
+    この資格情報は、OneDrive アカウントにあるデータへのアクセスをロジック アプリに承認する目的で使用されます。 
+
 4. **[はい]** を選択して、OneDrive アカウントの使用をロジック アプリに承認します。  
-   ![[このアプリがあなたの情報にアクセスすることを許可しますか?] というタイトルのダイアログ ボックス で、次の 4 つのことを行うためのアクセス許可が要求されます。1) "自動的にサインインする"、2) "あなたのメール アドレスにアクセスする"、3) "あなたの情報にいつでもアクセスする"、および 4) "OneDrive ファイルにアクセスする"。 アクセス許可を付与するための [はい] ボタンと、拒否するための [いいえ] ボタンがあります。 これらのアプリケーションのアクセス許可を変更するためのリンクがあります。](./media/connectors-create-api-onedrive/onedrive-4.png)   
-5. 接続が作成されたことを確認します。 これで、ロジック アプリで他の手順に進むことができます。  
-   ![[ファイルが作成されたとき] というタイトルのダイアログ ボックスには、関連付けられている参照ボタンを持つ [フォルダー] というタイトルのテキスト ボックスがあります。](./media/connectors-create-api-onedrive/onedrive-5.png)
 
+   ![Logic Apps に許可されるアクションを示す Microsoft アカウントの承認のスクリーンショット。](./media/connectors-create-api-onedrive/onedrive-4.png)   
+   
+5. これで手順に接続が表示されます。 [保存] を選択し、ロジック アプリの作成に進みます。 
+
+   ![アクション エディターと OneDrive API 接続を表示する Logic Apps デザイナーのスクリーンショット。](./media/connectors-create-api-onedrive/onedrive-5.png)

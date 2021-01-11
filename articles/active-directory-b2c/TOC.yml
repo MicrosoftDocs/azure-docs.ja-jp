@@ -81,6 +81,8 @@
       href: user-profile-attributes.md
     - name: SSO セッション
       href: session-overview.md
+    - name: Identity Protection と条件付きアクセス
+      href: conditional-access-identity-protection-overview.md
 - name: 操作方法ガイド
   items:
     - name: アプリの統合
@@ -111,6 +113,8 @@
               href: configure-ropc.md
             - name: セルフサービス パスワードのリセットの設定
               href: user-flow-self-service-password-reset.md
+        - name: 条件付きアクセスの追加
+          href: conditional-access-user-flow.md
         - name: UX のカスタマイズ
           items:
             - name: UI のカスタマイズ
@@ -164,6 +168,8 @@
           href: user-flow-custom-attributes.md
         - name: 外部 IdP トークンをパススルーする
           href: idp-pass-through-user-flow.md
+    - name: Identity Protection と条件付きアクセス
+      href: conditional-access-identity-protection-setup.md
     - name: カスタム ポリシー
       items:
         - name: ポリシーの作成
@@ -333,6 +339,9 @@
                       href: aad-sspr-technical-profile.md
                     - name: 要求の変換
                       href: claims-transformation-technical-profile.md
+                    - name: 条件付きアクセス技術プロファイル
+                      href: conditional-access-technical-profile.md
+                      displayName: ca
                     - name: JWT トークン発行者
                       href: jwt-issuer-technical-profile.md
                     - name: OAuth1
@@ -371,18 +380,26 @@
           href: partner-arkose-labs.md
         - name: Experian
           href: partner-experian.md
+        - name: HYPR
+          href: partner-hypr.md
         - name: IDology
           href: partner-idology.md
         - name: itsme
           href: partner-itsme.md
         - name: LexisNexis
           href: partner-lexisnexis.md
+        - name: Jumio
+          href: partner-jumio.md
+        - name: Onfido
+          href: partner-onfido.md
         - name: Trusona
           href: partner-trusona.md
         - name: Twilio
           href: partner-twilio.md
         - name: TypingDNA
           href: partner-typingdna.md
+        - name: WhoIAM
+          href: partner-whoiam.md
     - name: b2clogin.com の使用
       items:
         - name: b2clogin.com の概要

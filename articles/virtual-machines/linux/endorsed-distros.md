@@ -3,22 +3,22 @@ title: Azure で動作保証済みの Linux ディストリビューション
 description: Azure での動作保証済み Linux ディストリビューションについて、Ubuntu、CentOS、Oracle、および SUSE に関する指針も含めて、説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: gbowerman
+author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.topic: article
-ms.date: 11/04/2019
+ms.topic: conceptual
+ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: a2edc8d0116778e292f0e44761100d3c1e9212ff
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0b3a598213545bbad833e9b8036f65b999df1c76
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527389"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607004"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 
@@ -26,11 +26,11 @@ ms.locfileid: "86527389"
 
 ## <a name="supported-distributions-and-versions"></a>サポートされているディストリビューションとバージョン
 
-次の表に、Azure でサポートされている Linux ディストリビューションとバージョンを示します。 Azure での Linux とオープンソース テクノロジーのサポートの詳細については、[Microsoft Azure での Linux イメージのサポートに関するページ](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)を参照してください。
+次の表に、Azure でサポートされている Linux ディストリビューションとバージョンを示します。 詳細については、[Microsoft Azure での Linux イメージのサポート](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)に関するページを参照してください。
 
-Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。 既定でディストリビューションのカーネルに組み込まれている LIS ドライバーもあります。 Red Hat Enterprise (RHEL)/CentOS に基づく古いディストリビューションは、[Linux Integration Services Version 4.2 for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106) で個別にダウンロードして入手できます。 LIS ドライバーの詳細については、「[Linux カーネルの要件](create-upload-generic.md#linux-kernel-requirements)」を参照してください。
+Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバーは、Microsoft からアップストリームの Linux カーネルに直接提供されるカーネル モジュールです。 既定でディストリビューションのカーネルに組み込まれている LIS ドライバーもあります。 Red Hat Enterprise (RHEL)/CentOS に基づく古いディストリビューションは、[Linux Integration Services Version 4.2 for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106) で個別にダウンロードして入手できます。 詳細については、「[Linux カーネルの要件](create-upload-generic.md#linux-kernel-requirements)」を参照してください。
 
-Azure Linux エージェントは、Azure Marketplace のイメージにあらかじめインストールされており、通常はディストリビューションのパッケージのリポジトリで入手できます。 ソース コードは [GitHub](https://github.com/azure/walinuxagent)にあります。
+Azure Linux エージェントは、Azure Marketplace イメージにプレインストールされており、通常はディストリビューションのパッケージ リポジトリから入手できます。 ソース コードは [GitHub](https://github.com/azure/walinuxagent)にあります。
 
 | Distribution | Version | ドライバー | エージェント |
 | --- | --- | --- | --- |
@@ -39,18 +39,18 @@ Azure Linux エージェントは、Azure Marketplace のイメージにあら�
 | Credativ の Debian |8.x、9.x |カーネル内 |パッケージ:リポジトリ内の "waagent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 |Kinvolk の Flatcar Container Linux| Stable、Edge| | |
 | Oracle の Oracle Linux |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat の Red Hat Enterprise Linux |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
+| [Red Hat の Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x、7.x、8.x |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE の SUSE Linux Enterprise |SLES/SLES for SAP 11.x、12.x、15.x <br/> [SUSE Public Cloud Image Lifecycle (SUSE パブリック クラウドのイメージのライフ サイクル)](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |カーネル内 |パッケージ:<p> [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の 11 の場合<br>"python-azure-agent" の下の "パブリック クラウド" モジュールに含まれる 12 の場合<br/>ソース コード:[GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | SUSE の openSUSE |openSUSE Leap 15.x |カーネル内 |パッケージ:[Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "python-azure-agent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 | Canonical の Ubuntu |Ubuntu Server および Pro 16.x、18.x、20.x<p>Ubuntu 12.04 および 14.04 の拡張サポートについては、「[Ubuntu Extended Security Maintenance (Ubuntu 拡張セキュリティのメンテナンス)](https://www.ubuntu.com/esm)」を参照してください。 |カーネル内 |パッケージ:リポジトリ内の "WALinuxAgent" <br/>ソース コード:[GitHub](https://github.com/Azure/WALinuxAgent) |
 
 ## <a name="image-update-cadence"></a>イメージの更新頻度
 
-Azure の場合、動作保証済み Linux ディストリビューションのパブリッシャーは、四半期ごとまたはそれより短い頻度で最新のパッチとセキュリティ修正プログラムを適用して、Azure Marketplace 内のイメージを定期的に更新する必要があります。 Azure Marketplace 内の更新されたイメージは、新しいバージョンのイメージ SKU として、自動的に顧客に提供されます。 Linux イメージの検索方法の詳細については、[Azure Marketplace 内の Linux VM イメージの検索に関するページ](./cli-ps-findimage.md)を参照してください。
+Azure の場合、動作保証済み Linux ディストリビューションのパブリッシャーは、四半期ごと、またはそれより短い頻度で、最新のパッチとセキュリティ修正プログラムを適用して、Azure Marketplace 内のイメージを定期的に更新する必要があります。 Marketplace 内の更新されたイメージは、新しいバージョンのイメージ SKU として、自動的に顧客に提供されます。 Linux イメージの検索方法の詳細については、[Azure Marketplace での Linux VM イメージの検索](./cli-ps-findimage.md)に関する記事を参照してください。
 
 ## <a name="azure-tuned-kernels"></a>Azure で調整されたカーネル
 
-Azure は、各種の動作保証済み Linux ディストリビューションと緊密に連携して、Azure Marketplace に公開されたイメージを最適化しています。 この共同作業の 1 つとして、Azure プラットフォーム用に最適化された "調整済み" Linux カーネルの開発があります。このカーネルは、完全にサポートされる Linux ディストリビューションのコンポーネントとして提供されます。 Azure で調整されたカーネルは、新機能を備えており、パォーマンスが向上しています。また、ディストリビューションで提供される既定のカーネルや汎用のカーネルと比べて、更新頻度が高くなっています (通常は四半期ごと)。
+Azure は、各種の動作保証済み Linux ディストリビューションと密接に連携して、Azure Marketplace に公開されたイメージを最適化しています。 この共同作業の 1 つとして、Azure プラットフォーム用に最適化された "調整済み" Linux カーネルの開発があります。このカーネルは、完全にサポートされる Linux ディストリビューションのコンポーネントとして提供されます。 Azure で調整されたカーネルは、新機能を備えており、パォーマンスが向上しています。また、ディストリビューションで提供される既定のカーネルや汎用のカーネルと比べて、更新頻度が高くなっています (通常は四半期ごと)。
 
 ほとんどの場合、これらのカーネルは、Azure Marketplace 内の既定のイメージにプレインストールされています。そのため、顧客は、これらの最適化されたカーネルの利点をすぐに享受できます。 Azure で調整されたカーネルの詳細については、次のリンクを参照してください。
 
@@ -75,6 +75,14 @@ Microsoft では、CoreOS ユーザー向けに 2 つの移行チャネルを用
 
 Credativ は、無償のソフトウェアを使用したプロフェッショナルなソリューションの開発および実装を専門とする、独立したコンサルティングおよびサービス企業です。 大手のオープン ソース スペシャリストとして、Credativ のサポートを利用している多くの IT 部門から国際的に認知されています。 Credativ は現在、マイクロソフトと協力して、Debian 8 (Jessie) および 7 より前の Debian (Wheezy) に対応する Debian イメージを準備しています。 両方のイメージは、Azure で実行するために特別に設計され、プラットフォーム経由で簡単に管理できます。 Credativ では、自社のオープン ソース サポート センターを通じて、Azure 用の Debian イメージの長期にわたる保守および更新もサポートします。
 
+### <a name="kinvolk"></a>Kinvolk
+[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+
+Kinvolk は、Flatcar Container Linux を提供する企業です。コンテナー化されたアプリケーション用の、最小限で、変更不可の、自動更新の基盤のために、元の CoreOS ビジョンを引き続き使用しています。 最小限のディストリビューションである Flatcar には、コンテナーのデプロイに必要なパッケージのみが含まれています。 そのファイル システムは変更不可であり、一貫性とセキュリティを保証します。また、最新のセキュリティ修正プログラムを使用して、自動更新機能が常に最新の状態を保ちます。 
+
+Flatcar Container Linux は、Kinvolk の Linux グローバル チームとコンテナー テクノロジの専門家によって支えられ、24 時間 365 日体制の対応、セキュリティ アラートとテクニカル アラート、専用の Azure 最適化イメージ、長期的なサポート チャネルを含め、商用サポート サブスクリプションがオプションで提供されています。
+
+
 ### <a name="oracle"></a>Oracle
 
 [https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)
@@ -85,7 +93,7 @@ Oracle は、パブリック クラウドおよびプライベート クラウ�
 
 [https://www.redhat.com/en/partners/strategic-alliance/microsoft](https://www.redhat.com/en/partners/strategic-alliance/microsoft)
 
-世界をリードするオープン ソース ソリューションのプロバイダーである Red Hat は、90% 超の Fortune 500 企業が、ビジネス上の課題を解決したり、IT およびビジネス戦略を調整したり、将来のテクノロジを準備するのを支援しています。 Red Hat は、オープン ビジネス モデルおよび手頃な価格の予測可能なサブスクリプション モデルを使用して、安全なソリューションを提供することによってこれを実現しています。
+世界をリードするオープン ソース ソリューションのプロバイダーである Red Hat は、90% 超の Fortune 500 企業が、ビジネス上の課題を解決したり、IT およびビジネス戦略を調整したり、将来のテクノロジを準備するのを支援しています。 Red Hat は、オープン ビジネス モデルおよび手頃な価格の予測可能なサブスクリプション モデルを使用して、安全なソリューションを提供することによって、これを実現しています。
 
 ### <a name="suse"></a>SUSE
 

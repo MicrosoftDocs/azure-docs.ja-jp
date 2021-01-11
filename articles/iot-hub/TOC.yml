@@ -53,6 +53,9 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
+    - name: ARM テンプレートを使用したメッセージの自動ルーティング
+      displayName: Resource Manager
+      href: horizontal-arm-route-messages.md
 - name: チュートリアル
   items:
     - name: メッセージのルーティング
@@ -81,11 +84,6 @@
       href: tutorial-firmware-update.md
     - name: デバイス接続のテスト
       href: tutorial-connectivity.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: TLS サポート
@@ -102,7 +100,7 @@
       href: iot-hub-scaling.md
     - name: 高可用性とディザスター リカバリー
       href: iot-hub-ha-dr.md
-    - name: IoT ハブを別のリージョンに複製する方法
+    - name: IoT Hub を別のリージョンに複製する方法
       href: iot-hub-how-to-clone.md
     - name: IoT Hub IP アドレスについて
       href: iot-hub-understand-ip-address.md
@@ -173,8 +171,10 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: セキュリティ
+    - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: 推奨事項
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 徹底的なセキュリティ
@@ -185,6 +185,9 @@
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
         - name: IoT デプロイのセキュリティ保護
           href: /azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: X.509 CA 証明書を使用したセキュリティ保護
       items:
         - name: X.509 CA 証明書セキュリティの概要
@@ -318,7 +321,7 @@
           href: iot-hub-monitor-resource-health.md
         - name: X.509 証明書によるハブのセキュリティ保護
           href: iot-hub-security-x509-get-started.md
-        - name: IoT ハブのアップグレード
+        - name: IoT Hub のアップグレード
           href: iot-hub-upgrade.md
         - name: メッセージのトレースを有効にする
           href: iot-hub-distributed-tracing.md
@@ -455,6 +458,9 @@
       href: 'https://docs.microsoft.com/rest/api/iothub/certificates'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.devices/iothub-allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: 機能と API の廃止
       items:
         - name: 操作の監視

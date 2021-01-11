@@ -9,12 +9,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: apimpm
 ms.date: 04/23/2020
-ms.openlocfilehash: 51ce2e0dec8b38c9285f4f4e71dd35056b292b66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: abcda4ea4b14f058325318661daa574494268780
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254284"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056378"
 ---
 # <a name="deploy-a-self-hosted-gateway-to-kubernetes"></a>Kubernetes にセルフホステッド ゲートウェイをデプロイする
 
@@ -32,10 +32,10 @@ ms.locfileid: "86254284"
 
 1. **[Deployment and infrastructure]\(デプロイとインフラストラクチャ\)** で **[ゲートウェイ]** を選択します。
 2. デプロイするセルフホステッド ゲートウェイ リソースを選択します。
-3. **[Deployment]/(デプロイ/)** を選択します。
+3. **[Deployment]\(デプロイ\)** を選択します。
 4. **[トークン]** テキスト ボックスのアクセス トークンは、既定の **[有効期限]** 値と **[秘密鍵]** 値に基づいて自動生成されました。 必要に応じて、いずれかまたは両方のコントロールで値を選択し、新しいトークンを生成します。
 5. **[デプロイ スクリプト]** の下にある **[Kubernetes]** タブを選択します。
-6. **<gateway-name>.yml** ファイル リンクを選択し、YAML ファイルをダウンロードします。
+6. **\<gateway-name\>.yml** ファイル リンクを選択し、YAML ファイルをダウンロードします。
 7. **[デプロイ]** テキスト ボックスの右下隅にある **[コピー]** アイコンを選択し、`kubectl` コマンドをクリップボードに保存します。
 8. コマンドをターミナル (またはコマンド) ウィンドウに貼り付けます。 最初のコマンドでは、手順 4 で生成されたアクセス トークンを含めた Kubernetes シークレットを作成します。 2 番目のコマンドでは、手順 6 でダウンロードした構成ファイルを Kubernetes クラスターに適用し、ファイルが現在のディレクトリにあることを求めます。
 9. コマンドを実行して[既定の名前空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)に必要な Kubernetes オブジェクトを作成し、Microsoft Container Registry からダウンロードされた[コンテナー イメージ](https://aka.ms/apim/sputnik/dhub)からセルフホステッド ゲートウェイ ポッドを起動します。
@@ -106,6 +106,12 @@ DNS 名前解決は、Azure 内の依存関係に接続してバックエンド 
 Azure portal に用意されている YAML ファイルからは、既定の [ClusterFirst](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy) ポリシーが適用されます。 このポリシーによって、クラスター DNS で解決されない名前解決要求は、ノードから継承される上流 DNS サーバーに転送されます。
 
 Kubernetes での名前解決の詳細については、[Kubernetes Web サイト](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service)を参照してください。 自分のセットアップに合わせて [DNS ポリシー](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-policy)または [DNS 構成](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config)をカスタマイズすることを検討してください。
+
+### <a name="custom-domain-names-and-ssl-certificates"></a>カスタム ドメイン名と SSL 証明書
+
+API Management エンドポイントにカスタム ドメイン名を使用する場合、とりわけ、管理エンドポイントのためにカスタム ドメイン名を使用する場合は、 **\<gateway-name\>.yaml** ファイルの `config.service.endpoint` の値を更新して、既定のドメイン名をカスタム ドメイン名に置き換える必要が生じる場合があります。 Kubernetes クラスター内のセルフホステッド ゲートウェイのポッドから管理エンドポイントにアクセスできることを確認します。
+
+このシナリオでは、管理エンドポイントによって使用される SSL 証明書が、既知の CA 証明書によって署名されていない場合は、その CA 証明書がセルフホステッド ゲートウェイのポッドによって信頼されていることを確認する必要があります。
 
 ### <a name="configuration-backup"></a>構成のバックアップ
 Azure の接続が一時的に停止した場合のセルフホステッド ゲートウェイの動作については、「[セルフホステッド ゲートウェイの概要](self-hosted-gateway-overview.md#connectivity-to-azure)」を参照してください。

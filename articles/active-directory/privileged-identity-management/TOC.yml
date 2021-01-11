@@ -8,7 +8,7 @@
   items:
     - name: ライセンスの要件
       href: subscription-requirements.md
-    - name: 管理できないロール
+    - name: PIM で管理できないロール
       href: pim-roles.md
     - name: 特権アクセスのセキュリティ保護
       href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -18,7 +18,7 @@
       href: pim-resource-roles-overview-dashboards.md
     - name: メール通知
       href: pim-email-notifications.md
-    - name: Microsoft Graph API
+    - name: Microsoft Graph API と PIM
       href: pim-apis.md
 - name: 操作方法ガイド
   expanded: true
@@ -33,7 +33,7 @@
           href: pim-security-wizard.md
         - name: Azure リソースを見つける
           href: pim-resource-roles-discover-resources.md
-        - name: PIM を管理する他のユーザーにアクセス権を付与する
+        - name: PIM へのアクセスを委任する
           href: pim-how-to-give-access-to-pim.md
         - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
           href: ../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
@@ -91,7 +91,7 @@
       items:
         - name: 特権アクセスの概要
           href: groups-features.md
-        - name: グループを検出する
+        - name: グループを管理下に置く
           href: groups-discover-groups.md
         - name: メンバーまたは所有者を割り当てる
           href: groups-assign-member-owner.md
@@ -126,10 +126,10 @@
 - name: リファレンス
   items:
     - name: Graph API
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
     - name: Azure AD CLI
-      href: 'https://docs.microsoft.com/cli/azure/ad'
+      href: /cli/azure/ad
     - name: Azure AD PowerShell for Graph
-      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+      href: /powershell/azure/active-directory/install-adv2?view=azureadps-2.0
     - name: Azure AD サービスの制約
       href: ../users-groups-roles/directory-service-limits-restrictions.md

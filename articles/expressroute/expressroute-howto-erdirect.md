@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute Direct を構成する'
-description: このページは、ExpressRoute Direct の構成に役立ちます。
+description: 世界中のピアリングの場所で Microsoft のグローバル ネットワークに直接接続するため、Azure PowerShell を使用して Azure ExpressRoute Direct を構成する方法について説明します。
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/22/2020
-ms.author: jaredro
-ms.openlocfilehash: 8d028baef8898ce8d45fa8e2e142a58a1ae3300c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: c4ce764f50f85ef9979d5a14235759c16228f6b7
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736256"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396031"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>ExpressRoute Direct を構成する方法
 

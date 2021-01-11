@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2020
 ms.author: memildin
-ms.openlocfilehash: f159d2cdc48b144d0c75c62cd8a7ba6667424243
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0085ef5213853a1577ec039d5e360114aa7c64e
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86043871"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566269"
 ---
 # <a name="advanced-data-security-for-sql-machines-preview"></a>Advanced Data Security for SQL machines (プレビュー)
 
@@ -72,7 +72,7 @@ Azure Security Center の Advanced Data Security for SQL machines の設定は�
 
     [![オプションのバンドルを含む Security Center の価格ページ](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-large.png#lightbox)
 
-    選択したワークスペースに接続されているすべての SQL サーバーで、マシン上の SQL サーバー向け Advanced Data Security が有効になります。 この保護は、SQL Server の最初の再起動後に完全にアクティブになります。 
+    選択したワークスペースに接続されているすべての SQL サーバーで、マシン上の SQL サーバー向け Advanced Data Security が有効になります。 この保護は、SQL Server インスタンスの最初の再起動後に完全にアクティブになります。
 
     >[!TIP] 
     > 新しいワークスペースを作成するには、[Log Analytics ワークスペースの作成](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)に関する記事の手順に従います。

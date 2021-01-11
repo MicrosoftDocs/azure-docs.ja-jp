@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829122"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263471"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Data Factory でのデータ フローのトラブルシューティング
 
@@ -70,6 +70,13 @@ ms.locfileid: "83829122"
 - **原因**:これはバックエンド サービス エラーです。 操作を再試行し、デバッグ セッションを再起動することもできます。
 - **推奨事項**:再試行して再起動しても問題が解決しない場合は、カスタマー サポートにお問い合わせください。
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>エラー コード:デバッグ データのプレビューに結合時の出力データがありません
+
+- **メッセージ**:サンプリングされた行数が少なすぎることが原因で発生した可能性がある、多数の null 値または不足値があります。 デバッグ行の制限を更新し、データを最新の情報に更新してみてください。
+- **原因**:結合条件がどの行にも一致しなかったか、データ プレビュー中に多数の NULL が発生する結果になりました。
+- **推奨事項**:[デバッグ設定] に移動し、ソース行の制限の行数を増やします。 より多くのデータを処理するのに十分なデータ フロー クラスターと共に Azure IR を選択したことを確認します。
+
+
 ## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス
 
 1. データセット接続の状態を確認します。 ソース/シンクの変換ごとに、使用している各データベースのリンクされたサービスにアクセスし、接続をテストします。
@@ -79,9 +86,9 @@ ms.locfileid: "83829122"
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
-*  [Data Factory ブログ](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory ブログ](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [Data Factory の機能のリクエスト](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure のビデオ](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)

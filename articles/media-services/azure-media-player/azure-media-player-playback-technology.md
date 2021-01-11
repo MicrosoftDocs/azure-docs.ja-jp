@@ -6,12 +6,13 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 85eaa04836774b838da67e073017f4af3d2fe179
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 56fd644e43b704eced4f5a97b82e4b07ab1b4db9
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727509"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424087"
 ---
 # <a name="playback-technology-tech"></a>再生テクノロジ ("テクノロジ") #
 

@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d064e940997d13e51be4fd38e9f678b778ce31f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98a1cd883867aa2f785b15f4c7ae4f2266a421ae
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900044"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012571"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上のサンプル
 
@@ -25,7 +25,7 @@ Azure Data Science Virtual Machines (DSVM) には、サンプル コードの包
 
 ## <a name="prerequisites"></a>前提条件
 
-これらのサンプルを実行するには、Data Science Virtual Machine をプロビジョニングしておく必要があります。 [Windows](./provision-vm.md) および [Ubuntu](./dsvm-ubuntu-intro.md) のクイックスタートを参照してください。
+これらのサンプルを実行するには、[Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md) をプロビジョニングしておく必要があります。
 
 ## <a name="available-samples"></a>使用可能なサンプル
 | サンプル カテゴリ | 説明 | 場所 |

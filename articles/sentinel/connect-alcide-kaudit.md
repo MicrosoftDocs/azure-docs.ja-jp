@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 121c9258353505b6147aa059d327bc711e9fede4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf8da1d88529a823ff4399fb955c8a5e0abbd20e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368395"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038241"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Alcide kAudit を Azure Sentinel に接続する
+
+> [!IMPORTANT]
+> Azure Sentinel の Alcide kAudit データ コネクタは、現在パブリック プレビュー段階にあります。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 [Alcide kAudit](https://www.alcide.io/kaudit-K8s-forensics/) を使用すると、異常な Kubernetes の動作を特定して、検出時間を削減したうえで Kubernetes の侵害とインシデントに専念できます。 この記事では、Alcide kAudit ソリューションを Azure Sentinel に接続する方法について説明します。 Alcide kAudit データ コネクタを使用すると、kAudit ログ データを Azure Sentinel に簡単に取り込むことができます。これにより、ブック内で表示し、これを利用してカスタム アラートを作成し、調査を向上させる目的で組み入れることができます。 Alcide kAudit と Azure Sentinel 間の統合には、REST API を使用します。
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d82446a915863e6aa95cc79a421f86b8c4dd3a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/25/2020
+ms.openlocfilehash: bc7410325bbcf3086c4ac2054b7bc663629a29e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252646"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373115"
 ---
 # <a name="connect-and-query-azure-sql-edge-preview"></a>Azure SQL Edge の接続とクエリ (プレビュー)
 
@@ -29,7 +29,7 @@ Azure SQL Edge では、コンテナーをデプロイした後、次のいず�
 
 次のいずれかの一般的なツールから Azure SQL Edge インスタンスに接続できます。
 
-* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd クライアント ツールは、Azure SQL Edge のコンテナー イメージに既に含まれています。 対話型の Bash シェルで実行中のコンテナーにアタッチする場合は、ツールをローカルで実行できます。
+* [sqlcmd](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools): sqlcmd クライアント ツールは、Azure SQL Edge のコンテナー イメージに既に含まれています。 対話型の Bash シェルで実行中のコンテナーにアタッチする場合は、ツールをローカルで実行できます。 SQL クライアント ツールは、ARM64 プラットフォームでは使用できません。そのため、ARM64 バージョンの SQL Edge コンテナーには含まれていません。 
 * [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms)
 * [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download-azure-data-studio)
 * [Visual Studio Code](https://docs.microsoft.com/sql/visual-studio-code/sql-server-develop-use-vscode)
@@ -55,7 +55,7 @@ Azure SQL Edge では、コンテナーをデプロイした後、次のいず�
 
 ## <a name="connect-to-the-database-engine-from-within-the-container"></a>コンテナー内からデータベース エンジンに接続する
 
-[SQL Server コマンドライン ツール](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)は、Azure SQL Edge のコンテナー イメージに含まれています。 対話型のコマンド プロンプトを使用してコンテナーにアタッチすると、ツールをローカルで実行できます。
+[SQL Server コマンドライン ツール](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools)は、Azure SQL Edge のコンテナー イメージに含まれています。 対話型のコマンド プロンプトを使用してコンテナーにアタッチすると、ツールをローカルで実行できます。 SQL クライアント ツールは、ARM64 プラットフォームでは使用できません。そのため、ARM64 バージョンの SQL Edge コンテナーには含まれていません。 
 
 1. 実行中のコンテナー内で対話型の Bash シェルを開始するには、`docker exec -it` コマンドを使用します。 次の例では、`e69e056c702d` はコンテナー ID です。
 

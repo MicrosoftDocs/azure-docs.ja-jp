@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop 上の Windows 7 仮想マシン - Azure
-description: Windows Virtual Desktop 環境で Windows 7 仮想マシン (VM) の問題を解決する方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (classic) 上の Windows 7 仮想マシン - Azure
+description: Windows Virtual Desktop (classic) 環境における Windows 7 仮想マシン (VM) の問題を解決する方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 74f2e22bcc9d75070e4f7af304f92d9c5640ca7a
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1d71b4472b16372927db56b20eca4fcbde0cc625
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614224"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005416"
 ---
-# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う
+# <a name="troubleshoot-windows-7-virtual-machines-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (classic) での Windows 7 仮想マシンのトラブルシューティング
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (classic) に適用されます。
 
 この記事は、Windows Virtual Desktop セッション ホスト仮想マシン (VM) の構成中に発生する問題を解決するときにご利用ください。
 
@@ -47,7 +45,7 @@ Windows Virtual Desktop でリモート デスクトップ ユーザー グル�
 2. エラー メッセージが表示された仮想マシンを選択します。
 3. **[コマンドの実行]** を選択します。
 4. `<username>` を、追加するユーザーの名前に置き換えて、次のコマンドを実行します。
-   
+
    ```cmd
    net localgroup "Remote Desktop Users" <username> /add
    ```

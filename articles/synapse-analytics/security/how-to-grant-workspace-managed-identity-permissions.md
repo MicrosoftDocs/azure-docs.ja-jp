@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse ワークスペースのマネージド ID にアクセス許可を付与する方法
+title: Synapse ワークスペースのマネージド ID にアクセス許可を付与する
 description: Azure Synapse ワークスペースのマネージド ID のアクセス許可を構成する方法について説明する記事。
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e33bd127fca9ddce7b15d144fd287ec4a6bf0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193466"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535044"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>ワークスペースのマネージド ID にアクセス許可を付与する (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "85193466"
 >[!NOTE]
 >このドキュメントの残りの部分では、このワークスペース マネージド ID をマネージド ID と呼びます。
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>マネージド ID に SQL プールへのアクセス許可を付与する
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>マネージド ID に SQL プールへのアクセス許可を付与する
 
 マネージド ID によって、ワークスペース内の SQL プールへのアクセス許可が付与されます。 アクセス許可が付与されていると、SQL プール関連のアクティビティを実行するパイプラインを調整できます。 Azure portal を使用して Azure Synapse ワークスペースを作成するときに、SQL プールに対する CONTROL アクセス許可をマネージド ID に付与できます。
 
@@ -84,11 +84,11 @@ Azure portal で、ADLS Gen2 ストレージ アカウントを開き、左側�
 
 ![新しいロールの割り当てを追加する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 
-#### <a name="step-5-select-the-rbac-role"></a>手順 5:RBAC ロールを選択する
+#### <a name="step-5-select-the-azure-role"></a>手順 5:Azure ロールを選択する
 
 **[ストレージ BLOB データ共同作成者]** ロールを選択します。
 
-![RBAC ロールを選択する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
+![Azure ロールを選択する](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
 
 #### <a name="step-6-select-the-azure-ad-security-principal"></a>手順 6:Azure AD セキュリティ プリンシパルを選択する
 

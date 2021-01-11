@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781635"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235705"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -157,7 +157,7 @@ Azure AD ポータルを使用して、プロビジョニングをサポート�
 
 そうなっていない場合は、次の手順に従ってください。
 
-1. 事前統合されたユーザー プロビジョニング コネクタの[要求を作成](../develop/howto-app-gallery-listing.md)します。 Microsoft チームがお客様およびアプリケーション開発者と協力し、SCIM がサポートされている場合、お客様のアプリケーションを Microsoft のプラットフォームにオンボードします。
+1. 事前統合されたユーザー プロビジョニング コネクタの[要求を作成](../azuread-dev/howto-app-gallery-listing.md)します。 Microsoft チームがお客様およびアプリケーション開発者と協力し、SCIM がサポートされている場合、お客様のアプリケーションを Microsoft のプラットフォームにオンボードします。
 
 1. アプリに対する [BYOA SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 汎用ユーザー プロビジョニング サポートを使用します。 これは、事前に統合されたプロビジョニング コネクタのないアプリにユーザーをプロビジョニングするための Azure AD の要件です。
 
@@ -256,7 +256,7 @@ Azure AD では、属性から属性への直接マッピング、定数値の�
 
 Azure AD プロビジョニング サービスを初めて実行すると、ソース システムとターゲット システムに対する初回サイクルにより、各ターゲット システムのすべてのユーザー オブジェクトのスナップショットが作成されます。
 
-アプリケーションに対して自動プロビジョニングを有効にする場合、初回サイクルには 20 分から数時間かかることがあります。 この期間は、Azure AD ディレクトリのサイズと、プロビジョニングの対象となるユーザーの数によって異なります。 「[プロビジョニングのパフォーマンスを改善する方法](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)」を参照してください。
+アプリケーションに対して自動プロビジョニングを有効にする場合、初回サイクルには 20 分から数時間かかることがあります。 この期間は、Azure AD ディレクトリのサイズと、プロビジョニングの対象となるユーザーの数によって異なります。
 
 プロビジョニング サービスは、初回サイクル後の両方のシステムの状態を保管し、後続の増分サイクルのパフォーマンスを改善します。
 
@@ -299,8 +299,6 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 * [Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題](../app-provisioning/application-provisioning-config-problem.md)
 
 * [アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
-
-* [長時間を要する Azure AD ギャラリー アプリケーションへのユーザー プロビジョニング](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
 
 * [Azure Active Directory ギャラリー アプリケーションへのユーザー プロビジョニングを構成している間の管理者の資格情報の保存に関する問題](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
 

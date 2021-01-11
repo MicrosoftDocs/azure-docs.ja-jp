@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: rogardle
-ms.openlocfilehash: 363d26391c8ee40fb95a0b8fd92c4d94f1082b8d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c22c5fa9c1a1680734a8cf5d8f4079e8c7b5c5f7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221529"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723418"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
 
@@ -107,12 +107,12 @@ Azure NetApp Files は、クラウド内のデータベースなどの高パフ�
 - 通常は、ミッション クリティカルなエンタープライズ ワークロード (SAP や Oracle など) によって要求される、大規模な高可用性、高い持続性、および管理容易性
 - 最もアグレッシブな RTO と RPO の SLA を達成するための、高速で効率的なバックアップと復旧
 
-これらの機能は、Azure NetApp Files が Azure データ センター環境内で (Azure ネイティブなサービスとして) 実行されている NetApp® ONTAP® オール フラッシュ システムに基づいているために可能になります。 その結果、他の Azure ストレージ オプションと同様にプロビジョニングしたり、消費したりできる理想的なデータベース ストレージ テクノロジが提供されます。 Azure NetApp Files の NFS ボリュームをデプロイし、それにアクセスする方法の詳細については、[Azure NetApp Files のドキュメント](https://docs.microsoft.com/azure/azure-netapp-files/)を参照してください。 Azure NetApp Files 上で Oracle データベースを動作させるためのベスト プラクティスの推奨事項については、[Azure NetApp Files を使用した Oracle on Azure デプロイのベスト プラクティス ガイド](https://www.netapp.com/us/media/tr-4780.pdf)に関するページを参照してください。
+これらの機能は、Azure NetApp Files が Azure データ センター環境内で (Azure ネイティブなサービスとして) 実行されている NetApp® ONTAP® オール フラッシュ システムに基づいているために可能になります。 その結果、他の Azure ストレージ オプションと同様にプロビジョニングしたり、消費したりできる理想的なデータベース ストレージ テクノロジが提供されます。 Azure NetApp Files の NFS ボリュームをデプロイし、それにアクセスする方法の詳細については、[Azure NetApp Files のドキュメント](../../../azure-netapp-files/index.yml)を参照してください。 Azure NetApp Files 上で Oracle データベースを動作させるためのベスト プラクティスの推奨事項については、[Azure NetApp Files を使用した Oracle on Azure デプロイのベスト プラクティス ガイド](https://www.netapp.com/us/media/tr-4780.pdf)に関するページを参照してください。
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure での Oracle Database およびソフトウェアのライセンス契約
 
 Microsoft Azure は、Oracle Database を実行するための承認されたクラウド環境です。 Oracle Core Factor テーブルは、クラウドで Oracle Database をライセンス契約する場合には適用されません。 代わりに、Enterprise Edition のデータベースでハイパースレッディング テクノロジが有効になっている VM を使用するときは、(ポリシー ドキュメントに記載されているように) ハイパースレッディングが有効になっている場合は、1 つの Oracle プロセッサ ライセンスと同等の 2 つの vCPU をカウントします。 ポリシーの詳細については、[こちら](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)をご覧ください。
-一般に、Oracle Database には、より高いメモリと IO が必要です。 このため、これらのワークロードには、[メモリ最適化済み VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) を使用することをお勧めします。 ワークロードをさらに最適化するには、Oracle Database のワークロード対応の[制約付きコア vCPU](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) を使用するよう推奨します。これは、高メモリ、ストレージ、I / O帯域幅が必要ですが、コア数を多く必要としません。
+一般に、Oracle Database には、より高いメモリと IO が必要です。 このため、これらのワークロードには、[メモリ最適化済み VM](../../sizes-memory.md) を使用することをお勧めします。 ワークロードをさらに最適化するには、Oracle Database のワークロード対応の[制約付きコア vCPU](../../constrained-vcpu.md) を使用するよう推奨します。これは、高メモリ、ストレージ、I / O帯域幅が必要ですが、コア数を多く必要としません。
 
 Oracle ソフトウェアとワークロードをオンプレミスから Microsoft Azure に移行する場合、Oracle から、「[Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)」 (Azure での Oracle に関する FAQ) に記載されているライセンス モビリティが提供されています
 

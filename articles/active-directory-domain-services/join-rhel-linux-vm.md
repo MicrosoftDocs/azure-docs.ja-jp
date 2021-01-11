@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/23/2020
+ms.date: 07/13/2020
 ms.author: iainfou
-ms.openlocfilehash: d43c12681c7230dc4959261ffd6d96f74ea095d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734726"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005091"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux 仮想マシンを Azure Active Directory Domain Services のマネージド ドメインに参加させる
 
@@ -116,7 +116,7 @@ sudo yum install adcli sssd authconfig krb5-workstation
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. 最後に、`realm join` コマンドを使用して、マシンをマネージド ドメインに参加させます。 前の `kinit` コマンドで指定した、マネージド ドメインの一部である同じユーザー アカウントを使用します (`contosoadmin@AADDSCONTOSO.COM` など)。
+1. 最後に、`realm join` コマンドを使用して、VM をマネージド ドメインに参加させます。 前の `kinit` コマンドで指定した、マネージド ドメインの一部である同じユーザー アカウントを使用します (`contosoadmin@AADDSCONTOSO.COM` など)。
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
@@ -142,7 +142,7 @@ Successfully enrolled machine in realm
     * VM が、マネージド ドメインを利用可能な仮想ネットワークと同じ、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
     * 仮想ネットワークに対する DNS サーバーの設定が、マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
 
-1. まず、`adcli join` コマンドを使用してドメインに参加します。このコマンドを実行すると、コンピューターを認証するためのキータブも作成されます。 マネージド ドメインの一部であるユーザー アカウントを使用します。
+1. まず、`adcli join` コマンドを使用してドメインに参加します。このコマンドにより、マシンを認証するためのキータブも作成されます。 マネージド ドメインの一部であるユーザー アカウントを使用します。
 
     ```console
     sudo adcli join aaddscontoso.com -U contosoadmin

@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce0c16d43e6de9bada5d747949e370eb83f85826
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463452"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446858"
 ---
 # <a name="copy-a-blob-with-net"></a>.NET を使用して BLOB をコピーする
 
@@ -23,7 +23,7 @@ ms.locfileid: "84463452"
 
 同じストレージ アカウント内で BLOB をコピーすると、同期操作になります。 アカウントをまたいでコピーする場合は、非同期操作です。 [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) および [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) メソッドは、状態を確認またはコピー操作を中止するために使用されるコピー ID の値を返します。
 
-コピー操作のコピー元 BLOB にできるのは、ブロック BLOB、アペンド BLOB、ページ BLOB、またはスナップショットです。 コピー先 BLOB が既に存在する場合、コピー元 BLOB と同じ BLOB の種類である必要があります。 既存のコピー先 BLOB はすべて上書きされます。 
+コピー操作のコピー元 BLOB にできるのは、ブロック BLOB、アペンド BLOB、ページ BLOB、またはスナップショットです。 コピー先 BLOB が既に存在する場合、コピー元 BLOB と同じ BLOB の種類である必要があります。 既存のコピー先 BLOB は上書きされます。
 
 コピー操作の進行中は、コピー先 BLOB を変更できません。 コピー先 BLOB には、未完了の BLOB コピー操作は 1 つしか存在できません。 言い換えると、1 つの BLOB を、複数の保留中のコピー操作のコピー先にすることはできません。
 
@@ -35,18 +35,18 @@ BLOB がコピーされると、そのシステム プロパティが同じ値�
 
 コピー操作は、次のいずれかの形態で実行できます。
 
-  - コピー元 BLOB は別の名前でコピー先 BLOB にコピーできます。 コピー先 BLOB は、同じ BLOB の種類 (ブロック、アペンド、またはページ) の既存の BLOB でも、コピー操作によって作成される新しい BLOB でもかまいません。
-  - コピー元 BLOB を同じ名前でコピー先 BLOB にコピーして、コピー先 BLOB を実質的に置き換えることができます。 このようなコピー操作では、コミットされていないブロックはすべて削除され、コピー先 BLOB のメタデータが上書きされます。
-  - Azure File Service 内のコピー元ファイルをコピー先 BLOB にコピーできます。 コピー先 BLOB は、既存のブロック BLOB でも、コピー操作によって作成される新しいブロック BLOB でもかまいません。 ファイルからページ BLOB またはアペンド BLOB へのコピーはサポートされていません。
-  - スナップショットをベース BLOB にコピーします。 スナップショットをベース BLOB に昇格することにより、BLOB を以前のバージョンに復元できます。
-  - スナップショットを別の名前でコピー先 BLOB にコピーします。 結果として得られるコピー先 BLOB は書き込み可能な BLOB であり、スナップショットではありません。
+- コピー元 BLOB は別の名前でコピー先 BLOB にコピーできます。 コピー先 BLOB は、同じ BLOB の種類 (ブロック、アペンド、またはページ) の既存の BLOB でも、コピー操作によって作成される新しい BLOB でもかまいません。
+- コピー元 BLOB を同じ名前でコピー先 BLOB にコピーして、コピー先 BLOB を実質的に置き換えることができます。 このようなコピー操作では、コミットされていないブロックはすべて削除され、コピー先 BLOB のメタデータが上書きされます。
+- Azure File Service 内のコピー元ファイルをコピー先 BLOB にコピーできます。 コピー先 BLOB は、既存のブロック BLOB でも、コピー操作によって作成される新しいブロック BLOB でもかまいません。 ファイルからページ BLOB またはアペンド BLOB へのコピーはサポートされていません。
+- スナップショットをベース BLOB にコピーします。 スナップショットをベース BLOB に昇格することにより、BLOB を以前のバージョンに復元できます。
+- スナップショットを別の名前でコピー先 BLOB にコピーします。 結果として得られるコピー先 BLOB は書き込み可能な BLOB であり、スナップショットではありません。
 
 ## <a name="copy-a-blob"></a>BLOB をコピーする
 
 BLOB をコピーするには、次のいずれかのメソッドを呼び出します。
 
- - [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
- - [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
+- [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet)
+- [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet)
 
 次のコード例では、前に作成した BLOB への参照を取得し、同じコンテナー内の新しい BLOB にコピーします。
 

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a0c85226b5890fe0f5f2011110c1d7d20e3c2907
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2de6c07395a559085db237eb1bc7f885998860d0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782009"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235079"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
 
-Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ライフ サイクル管理のために、SaaS アプリとその他のシステムのユーザー アカウントのプロビジョニングとプロビジョニング解除の自動化を支援する、[ユーザー アカウント プロビジョニング サービス](user-provisioning.md)が含まれています。 Azure AD では、すべてのアプリケーションとシステム用に事前統合されたユーザー プロビジョニング コネクタがサポートされています。ユーザー プロビジョニングのチュートリアルは[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)です。
+Azure Active Directory (Azure AD) には、エンド ツー エンドの ID ライフ サイクル管理のために、SaaS アプリとその他のシステムのユーザー アカウントのプロビジョニングとプロビジョニング解除の自動化を支援する、[ユーザー アカウント プロビジョニング サービス](user-provisioning.md)が含まれています。 Azure AD では、すべてのアプリケーションとシステム用に事前統合されたユーザー プロビジョニング コネクタがサポートされています。ユーザー プロビジョニングのチュートリアルは[こちら](../saas-apps/tutorial-list.md)です。
 
 この記事では、プロビジョニング ジョブのセットアップ後にそれらの状態を確認する方法と、個々のユーザーとグループのプロビジョニングのトラブルシューティングを行う方法について説明します。
 

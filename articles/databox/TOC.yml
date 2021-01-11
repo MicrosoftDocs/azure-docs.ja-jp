@@ -11,7 +11,11 @@
           expanded: true
           items:
             - name: 設定 - Azure portal
-              href: data-box-quickstart-portal.md
+              items:
+                - name: インポートの場合
+                  href: data-box-quickstart-portal.md
+                - name: エクスポートの場合
+                  href: data-box-quickstart-export.md
         - name: チュートリアル
           items:
             - name: Azure へのデータ インポート
@@ -68,7 +72,7 @@
                   href: data-box-system-requirements-rest.md
             - name: 制限を理解する
               href: data-box-limits.md
-            - name: セキュリティ
+            - name: Security
               items:
                 - name: セキュリティ ベースライン
                   href: security-baseline.md

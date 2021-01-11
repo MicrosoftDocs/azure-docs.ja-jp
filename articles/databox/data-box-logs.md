@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: b65d9579686cdf53f1cac35ba47bc5850b45c8e2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50dbbe3a6a1af1e73cdf1ee7f5bd3a63cf2f6a50
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204300"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498805"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-import-order"></a>Azure Data Box と Azure Data Box Heavy のインポート注文の追跡とイベント ログ記録
 
@@ -35,7 +35,7 @@ Data Box または Data Box Heavy のインポート注文は、注文、設定�
 
 ## <a name="set-up-access-control-on-the-order"></a>注文へのアクセス制御を設定する
 
-注文が初めて作成されたときに注文にアクセスできるユーザーを制御できます。 さまざまな範囲のロールベースのアクセス制御 (RBAC) ロールを設定して、Data Box の注文へのアクセスを制御します。 RBAC ロールは、アクセスの種類 (読み取り/書き込み、読み取り専用、操作のサブセットへの読み取り/書き込み) を決定します。
+注文が初めて作成されたときに注文にアクセスできるユーザーを制御できます。 さまざまな範囲の Azure ロールを設定して、Data Box の注文へのアクセスを制御します。 Azure ロールは、アクセスの種類 (読み取りと書き込み、読み取り専用、操作のサブセットへの読み取りと書き込み) を決定します。
 
 Azure Data Box サービスに対して定義できる 2 つのロールは次のとおりです。
 

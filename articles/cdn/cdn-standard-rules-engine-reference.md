@@ -5,14 +5,14 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 06/22/2020
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559309"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760092"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN の Standard ルール エンジン リファレンス
 
@@ -59,15 +59,7 @@ Azure Content Delivery Network (Azure CDN) の [Standard ルール エンジン]
 
 ### <a name="wildcard-values"></a>ワイルドカード値
 
-ワイルドカード値として解釈されるテキストでは、特殊文字に付加的な意味が割り当てられます。 次の表は、Standard ルール エンジンにおける特殊文字の解釈についてまとめたものです。
-
-文字 | 説明
-----------|------------
-\ | バックスラッシュは、このテーブルで指定されているすべて文字からのエスケープに使用されます。 エスケープする特殊文字の直前にバックスラッシュを指定する必要があります。 たとえば、次の構文では、アスタリスクをエスケープします。`\*`
-% | パーセント記号は、URL エンコードを示すために使用されます (例: `%20`)。
-\* | アスタリスクは、1 つまたは複数の文字を表すワイルドカードです。
-空白 | 空白文字は、指定した値とパターンのいずれかで一致条件が満たされることを示します。
-一重引用符 | 一重引用符には特別な意味はありません。 ただし、一重引用符値がセットになった場合、リテラル値として扱われることを示します。 一重引用符は次のように使用できます。<ul><li>指定した値が比較対象値の一部と一致するときに一致条件が満たされるようにします。  たとえば、`'ma'` は、次の文字列のいずれかと一致します。 <ul><li>/business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template.**ma**p</li></ul><li>特殊文字をリテラル文字として指定できるようにします。 たとえば、一組の一重引用符で空白文字を囲むことで、リテラルの空白文字を指定できます (つまり、`' '` または `'<sample value>'`)。</li><li>空の値を指定できるようにします。 一重引用符のセット ( **''** ) を指定することで、空の値を指定します。</li></ul>**重要**:<br /><ul><li>指定した値にワイルドカードが含まれていない場合、自動的にリテラル値としてみなされます。 リテラル値には、単一引用符のセットを指定する必要はありません。</li><li>バックスラッシュがこの表にある別の文字のエスケープに使用されない場合、そのバックスラッシュは、一組の一重引用符で指定されても無視されます。</li><li>特殊文字をリテラル文字として指定するもう 1 つの方法は、バックスラッシュ (`\`) を使用してエスケープすることです。</li></ul>
+現在、Standard ルール エンジンの **UrlPath 一致条件**でワイルドカード文字がサポートされています。 \* 文字は、1 つまたは複数の文字を表すワイルドカードです。 
 
 ## <a name="next-steps"></a>次のステップ
 

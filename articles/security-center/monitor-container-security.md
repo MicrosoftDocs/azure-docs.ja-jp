@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: 76bf38c9d15e977b39922fdfbc7d30f533707cda
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5f558aaa367d156a8a4fa8633f113c6480236f5b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85801378"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038616"
 ---
 # <a name="monitor-the-security-of-your-containers"></a>コンテナーのセキュリティを監視する
 
@@ -36,13 +36,11 @@ ms.locfileid: "85801378"
 
 1. イメージのスキャンをトリガーするには、イメージをレジストリにプッシュします。 
 
-    スキャンが完了すると (通常は約 10 分後)、Security Center の推奨事項に結果が得られます。
-    
+    スキャンが完了すると (通常は約 2 分後ですが、最大で 15 分かかることもあります)、結果が次のような Security Center の推奨事項で表示されます。
 
 1. 結果を表示するために、 **[推奨事項]** ページへ移動します。 問題が見つかった場合は、次の推奨事項が表示されます。
 
     ![問題を修復するための推奨事項 ](media/monitor-container-security/acr-finding.png)
-
 
 1. 推奨事項を選択します。 
     追加情報を示した推奨事項の詳細ページが開きます。 この情報には、脆弱性のあるイメージ ("影響を受けるリソース") を含むレジストリの一覧とその修復手順が含まれます。 

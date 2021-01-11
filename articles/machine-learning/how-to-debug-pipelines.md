@@ -5,17 +5,17 @@ description: Python で Azure Machine Learning パイプラインをデバッグ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 3eb0cf85dce02595f3679a96b497e286682840bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: troubleshooting, devx-track-python
+ms.openlocfilehash: ac8896bae4b3bf36ee6e943581bbf6791401c821
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84557429"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904651"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機械学習パイプラインのデバッグとトラブルシューティング
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "84557429"
 * Application Insights を使用してデバッグする
 * Visual Studio Code (VS Code) と Python Tools for Visual Studio (PTVSD) を使用して対話形式でデバッグする
 
-## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Azure Machine Learning SDK でのデバッグとトラブルシューティング
+## <a name="azure-machine-learning-sdk"></a>Azure Machine Learning SDK
 以降のセクションでは、パイプラインの構築時に陥りやすい落とし穴と、パイプラインで実行されているコードをデバッグするためのさまざまな方法の概要について説明します。 パイプラインが予期したとおりに実行されない場合は、次のヒントを参考にしてください。
 
 ### <a name="testing-scripts-locally"></a>スクリプトのローカルでのテスト
@@ -91,8 +91,8 @@ ms.locfileid: "84557429"
 
 | ライブラリ                    | Type   | 例                                                          | 宛先                                  | リソース                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | メトリック | `run.log(name, val)`                                             | Azure Machine Learning ポータル UI             | [実験を追跡する方法](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml.core.Run クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python の印刷とログ    | ログ    | `print(val)`<br>`logging.info(message)`                          | ドライバー ログ、Azure Machine Learning デザイナー | [実験を追跡する方法](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python のログ](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| Azure Machine Learning SDK | メトリック | `run.log(name, val)`                                             | Azure Machine Learning ポータル UI             | [実験を追跡する方法](how-to-track-experiments.md)<br>[azureml.core.Run クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Python の印刷とログ    | ログ    | `print(val)`<br>`logging.info(message)`                          | ドライバー ログ、Azure Machine Learning デザイナー | [実験を追跡する方法](how-to-track-experiments.md)<br><br>[Python のログ](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | ログ    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights - トレース                | [Application Insights でパイプラインをデバッグする](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor エクスポーター](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python ログのクックブック](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>ログ オプションの例
@@ -127,9 +127,13 @@ logger.warning("I am an OpenCensus warning statement, find me in Application Ins
 logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
 ``` 
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) でのデバッグとトラブルシューティング
+## <a name="azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー)
 
 このセクションでは、デザイナーでパイプラインをトラブルシューティングする方法の概要について説明します。 デザイナーで作成されたパイプラインの場合、作成ページまたはパイプラインの実行の詳細ページで、**70_driver_log** ファイルが確認できます。
+
+### <a name="enable-logging-for-real-time-endpoints"></a>リアルタイム エンドポイントのログ記録を有効にする
+
+デザイナーでリアルタイム エンドポイントのトラブルシューティングとデバッグを行うには、SDK を使用して Application Insight のログ記録を有効にする必要があります。 ログ記録を使用すると、モデル デプロイと使用に関する問題のトラブルシューティングとデバッグを行うことができます。 詳細については、[デプロイ済みモデルのログ記録](how-to-enable-logging.md#logging-for-deployed-models)に関する記事をご覧ください。 
 
 ### <a name="get-logs-from-the-authoring-page"></a>作成ページからログを取得する
 
@@ -156,241 +160,12 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 > [!IMPORTANT]
 > パイプラインの実行の詳細ページからパイプラインを更新するには、新しいパイプライン ドラフトにパイプラインの実行を**複製する**必要があります。 パイプラインの実行は、パイプラインのスナップショットです。 ログ ファイルに似ており、変更することはできません。 
 
-## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights のデバッグとトラブルシューティング
+## <a name="application-insights"></a>Application Insights
 この方法で OpenCensus Python ライブラリを使用する方法の詳細については、次のガイドを参照してください。[Application Insights での機械学習パイプラインのデバッグとトラブルシューティング](how-to-debug-pipelines-application-insights.md)
 
-## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Visual Studio Code でのデバッグとトラブルシューティング
+## <a name="visual-studio-code"></a>Visual Studio Code
 
-場合によっては、ML パイプラインで使用される Python コードを対話的にデバッグする必要が生じることがあります。 Visual Studio Code (VS Code) と Python Tools for Visual Studio (PTVSD) を使用することによって、トレーニング環境で実行されるコードにアタッチできます。
-
-### <a name="prerequisites"></a>前提条件
-
-* __Azure Virtual Network__ を使用するように構成された __Azure Machine Learning ワークスペース__。
-* パイプライン ステップの一部として Python スクリプトを使用する __Azure Machine Learning パイプライン__。 たとえば、PythonScriptStep です。
-* Azure Machine Learning コンピューティング クラスター。これは __仮想ネットワーク内__ にあり、__パイプラインによってトレーニングのために使用されます__。
-* __仮想ネットワーク内__ に存在する __開発環境__。 開発環境は、次のいずれかになります。
-
-    * 仮想ネットワーク内の Azure 仮想マシン
-    * 仮想ネットワーク内の Notebook VM のコンピューティング インスタンス
-    * 仮想プライベート ネットワーク (VPN) によって仮想ネットワークに接続されたクライアント コンピューター。
-
-Azure Machine Learning で Azure Virtual Network を使用する方法の詳細については、「[Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-enable-virtual-network.md)」を参照してください。
-
-### <a name="how-it-works"></a>しくみ
-
-ML パイプライン ステップでは、Python スクリプトが実行されます。 これらのスクリプトは、次の操作を実行するために変更されています。
-    
-1. それらが実行されるホストの IP アドレスをログに記録します。 この IP アドレスを使用して、デバッガーをスクリプトに接続します。
-
-2. PTVSD デバッグ コンポーネントを起動し、デバッガーが接続するのを待ちます。
-
-3. 開発環境から、トレーニング プロセスによって作成されたログを監視して、スクリプトが実行されている IP アドレスを確認します。
-
-4. `launch.json` ファイルを使用して、デバッガーを接続するための IP アドレスを VS Code に示します。
-
-5. デバッガーをアタッチし、スクリプトを対話的にステップ実行します。
-
-### <a name="configure-python-scripts"></a>Python スクリプトを構成する
-
-デバッグを有効にするには、ML パイプライン ステップで使用される Python スクリプトに次の変更を加えます。
-
-1. 次の import ステートメントを追加します。
-
-    ```python
-    import ptvsd
-    import socket
-    from azureml.core import Run
-    ```
-
-1. 次の引数を追加します。 これらの引数を使用すると、必要に応じてデバッガーを有効にし、デバッガーをアタッチするためのタイムアウトを設定できます。
-
-    ```python
-    parser.add_argument('--remote_debug', action='store_true')
-    parser.add_argument('--remote_debug_connection_timeout', type=int,
-                    default=300,
-                    help=f'Defines how much time the Azure ML compute target '
-                    f'will await a connection from a debugger client (VSCODE).')
-    ```
-
-1. 次のステートメントを追加します。 これらのステートメントは現在の実行コンテキストを読み込んで、コードが実行されているノードの IP アドレスをログに記録できるようにします。
-
-    ```python
-    global run
-    run = Run.get_context()
-    ```
-
-1. PTVSD を起動してデバッガーがアタッチされるまで待機する `if` ステートメントを追加します。 タイムアウト前にデバッガーがアタッチされない場合、スクリプトは通常どおり続行されます。
-
-    ```python
-    if args.remote_debug:
-        print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
-        # Log the IP and port
-        ip = socket.gethostbyname(socket.gethostname())
-        print(f'ip_address: {ip}')
-        ptvsd.enable_attach(address=('0.0.0.0', 5678),
-                            redirect_output=True)
-        # Wait for the timeout for debugger to attach
-        ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
-        print(f'Debugger attached = {ptvsd.is_attached()}')
-    ```
-
-次の Python の例は、デバッグを有効にする基本的な `train.py` ファイルを示しています。
-
-```python
-# Copyright (c) Microsoft. All rights reserved.
-# Licensed under the MIT license.
-
-import argparse
-import os
-import ptvsd
-import socket
-from azureml.core import Run
-
-print("In train.py")
-print("As a data scientist, this is where I use my training code.")
-
-parser = argparse.ArgumentParser("train")
-
-parser.add_argument("--input_data", type=str, help="input data")
-parser.add_argument("--output_train", type=str, help="output_train directory")
-
-# Argument check for remote debugging
-parser.add_argument('--remote_debug', action='store_true')
-parser.add_argument('--remote_debug_connection_timeout', type=int,
-                    default=300,
-                    help=f'Defines how much time the AML compute target '
-                    f'will await a connection from a debugger client (VSCODE).')
-# Get run object, so we can find and log the IP of the host instance
-global run
-run = Run.get_context()
-
-args = parser.parse_args()
-
-# Start debugger if remote_debug is enabled
-if args.remote_debug:
-    print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
-    # Log the IP and port
-    ip = socket.gethostbyname(socket.gethostname())
-    print(f'ip_address: {ip}')
-    ptvsd.enable_attach(address=('0.0.0.0', 5678),
-                        redirect_output=True)
-    # Wait for the timeout for debugger to attach
-    ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
-    print(f'Debugger attached = {ptvsd.is_attached()}')
-
-print("Argument 1: %s" % args.input_data)
-print("Argument 2: %s" % args.output_train)
-
-if not (args.output_train is None):
-    os.makedirs(args.output_train, exist_ok=True)
-    print("%s created" % args.output_train)
-```
-
-### <a name="configure-ml-pipeline"></a>ML パイプラインを構成する
-
-PTVSD を起動して実行コンテキストを取得するために必要な Python パッケージを提供するには、環境を作成して `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` を設定します。 使用しているものと一致するように SDK のバージョンを変更します。 次のコード スニペットでは、環境を作成する方法を示します。
-
-```python
-# Use a RunConfiguration to specify some additional requirements for this step.
-from azureml.core.runconfig import RunConfiguration
-from azureml.core.conda_dependencies import CondaDependencies
-from azureml.core.runconfig import DEFAULT_CPU_IMAGE
-
-# create a new runconfig object
-run_config = RunConfiguration()
-
-# enable Docker 
-run_config.environment.docker.enabled = True
-
-# set Docker base image to the default CPU-based image
-run_config.environment.docker.base_image = DEFAULT_CPU_IMAGE
-
-# use conda_dependencies.yml to create a conda environment in the Docker image for execution
-run_config.environment.python.user_managed_dependencies = False
-
-# specify CondaDependencies obj
-run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'],
-                                                                           pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
-```
-
-「[Python スクリプトを構成する](#configure-python-scripts)」セクションでは、ML パイプライン ステップで使用されるスクリプトに 2 つの新しい引数を追加しました。 次のコード スニペットは、これらの引数を使用して、コンポーネントのデバッグを有効にし、タイムアウトを設定する方法を示しています。 また、`runconfig=run_config` を設定して、前の手順で作成した環境を使用する方法も示しています。
-
-```python
-# Use RunConfig from a pipeline step
-step1 = PythonScriptStep(name="train_step",
-                         script_name="train.py",
-                         arguments=['--remote_debug', '--remote_debug_connection_timeout', 300],
-                         compute_target=aml_compute, 
-                         source_directory=source_directory,
-                         runconfig=run_config,
-                         allow_reuse=False)
-```
-
-パイプラインを実行すると、各ステップで子実行が作成されます。 デバッグが有効になっている場合は、変更後のスクリプトによって、子実行に対して `70_driver_log.txt` に次のテキストのような情報がログに記録されます。
-
-```text
-Timeout for debug connection: 300
-ip_address: 10.3.0.5
-```
-
-`ip_address` の値を保存します。 次のセクションで使用します。
-
-> [!TIP]
-> IP アドレスは、このパイプライン ステップの子実行に対する実行ログからも見つけることができます。 この情報を表示する方法の詳細については、「[Azure ML の実験の実行とメトリックを監視する](how-to-track-experiments.md)」を参照してください。
-
-### <a name="configure-development-environment"></a>開発環境の設定
-
-1. VS Code 開発環境に Python Tools for Visual Studio (PTVSD) をインストールするには、次のコマンドを使用します。
-
-    ```
-    python -m pip install --upgrade ptvsd
-    ```
-
-    VS Code で PTVSD を使用する方法の詳細については、「[Remote Debugging (リモート デバッグ)](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)」を参照してください。
-
-1. デバッガーを実行している Azure Machine Learning コンピューティングと通信するように VS Code を構成するには、新しいデバッグ構成を作成します。
-
-    1. VS Code から __[デバッグ]__ メニューを選択し、 __[構成を開く]__ を選択します。 __launch.json__ という名前のファイルが開きます。
-
-    1. __launch.json__ ファイルで、`"configurations": [` を含む行を見つけ、その後に次のテキストを挿入します。 `"host": "10.3.0.5"` エントリを、前のセクションのログで返された IP アドレスに変更します。 `"localRoot": "${workspaceFolder}/code/step"` エントリを、デバッグ対象のスクリプトのコピーが格納されているローカル ディレクトリに変更します。
-
-        ```json
-        {
-            "name": "Azure Machine Learning Compute: remote debug",
-            "type": "python",
-            "request": "attach",
-            "port": 5678,
-            "host": "10.3.0.5",
-            "redirectOutput": true,
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}/code/step1",
-                    "remoteRoot": "."
-                }
-            ]
-        }
-        ```
-
-        > [!IMPORTANT]
-        > 構成セクションに既に他のエントリがある場合は、挿入したコードの後にコンマ (,) を追加します。
-
-        > [!TIP]
-        > ベスト プラクティスとして、スクリプトのリソースを別のディレクトリに保持することをお勧めします。`localRoot` のサンプル値が `/code/step1` を参照しているのはこのためです。
-        >
-        > 複数のスクリプトをデバッグする場合は、別々のディレクトリで、スクリプトごとに個別の構成セクションを作成します。
-
-    1. __launch.json__ ファイルを保存します。
-
-### <a name="connect-the-debugger"></a>デバッガーを接続する
-
-1. VS Code を開き、スクリプトのローカル コピーを開きます。
-2. アタッチしたときにスクリプトを停止するブレークポイントを設定します。
-3. 子プロセスでスクリプトが実行されていて、`Timeout for debug connection` がログに表示されている間に、F5 キーを使用するか、 __[デバッグ]__ を選択します。 メッセージが表示されたら、 __[Azure Machine Learning Compute: remote debug]\(Azure Machine Learning コンピューティング: リモート デバッグ\)__ 構成を選択します。 サイドバーからデバッグ アイコンを選択し、[デバッグ] ドロップダウン メニューから __[Azure Machine Learning: remote debug]\(Azure Machine Learning: リモートデバッグ\)__ エントリを選択し、緑色の矢印を使用してデバッガーをアタッチすることもできます。
-
-    この時点で、VS Code は計算ノードの PTVSD に接続し、前に設定したブレークポイントで停止します。 これで、実行時のようにコードをステップ実行したり、変数を表示したりできます。
-
-    > [!NOTE]
-    > ログに `Debugger attached = False` を示すエントリが表示された場合、タイムアウトに達しており、スクリプトはデバッガーなしで続行されます。 `Timeout for debug connection` メッセージの後、タイムアウトに達する前に、パイプラインをもう一度送信してデバッガーを接続します。
+場合によっては、ML パイプラインで使用される Python コードを対話的にデバッグする必要が生じることがあります。 Visual Studio Code (VS Code) と debugpy を使用すると、トレーニング環境で実行されているコードにアタッチできます。 詳細については、[VS Code での対話型デバッグのガイド](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

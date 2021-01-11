@@ -4,12 +4,12 @@ description: Azure Container Instances サービスに関連するよく寄せ�
 author: dkkapur
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 21643ccfb6bb256e29114435ccb39a009d1b8dae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806603"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421282"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances についてよく寄せられる質問
 
@@ -89,7 +89,7 @@ Azure Container Instances は、サーバーレスのコンテナー オンデ�
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>カスタム VNet で実行されているインスタンスにはどのような機能を使用できますか。
 
-選択した [Azure 仮想ネットワークにコンテナー グループをデプロイ](container-instances-vnet.md)し、プライベート IP をコンテナー グループに委任して、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 仮想ネットワークへのコンテナー グループのデプロイは、現在、Azure リージョンのサブセット内にある運用環境ワークロードで使用できます。
+選択した [Azure 仮想ネットワークにコンテナー グループをデプロイ](container-instances-vnet.md)し、プライベート IP をコンテナー グループに委任して、Azure リソース全体で VNet 内のトラフィックをルーティングすることができます。 Azure Container Instances でのネットワークのシナリオと制限事項については、「[仮想ネットワークのシナリオとリソース](container-instances-virtual-network-concepts.md)」を参照してください。
 
 ## <a name="pricing"></a>価格
 

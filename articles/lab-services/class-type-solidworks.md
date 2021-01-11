@@ -1,28 +1,28 @@
 ---
-title: Azure Lab Services でエンジニアリング用に SolidWorks ラボを設定する | Microsoft Docs
-description: SolidWorks を使用して、エンジニアリング コース向けのラボを設定する方法について説明します。
+title: Azure Lab Services でエンジニアリング用に SOLIDWORKS ラボを設定する | Microsoft Docs
+description: SOLIDWORKS を使用して、エンジニアリング コース向けのラボを設定する方法について説明します。
 author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: fa1b93bd71c1319bf8705c8c84cdb3e6f9da19e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443810"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290722"
 ---
-# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>SolidWorks を使用するエンジニアリング クラス用にラボを設定する
+# <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>SOLIDWORKS を使用するエンジニアリング クラス用にラボを設定する
 
-[SolidWorks](https://www.solidworks.com/) には、ソリッド オブジェクトをモデル化するための 3D コンピューター支援設計 (CAD) 環境が用意されており、さまざまなエンジニアリング分野で使用されます。  SolidWorks を使用すると、エンジニアは設計の作成、視覚化、シミュレーション、ドキュメント化を簡単に行うことができます。
+[SOLIDWORKS](https://www.solidworks.com/) には、ソリッド オブジェクトをモデル化するための 3D コンピューター支援設計 (CAD) 環境が用意されており、さまざまなエンジニアリング分野で使用されます。  SOLIDWORKS を使用すると、エンジニアは設計の作成、視覚化、シミュレーション、ドキュメント化を簡単に行うことができます。
 
-大学で一般的に使用されるライセンス オプションは、SolidWorks のネットワーク ライセンスです。   このオプションでは、ユーザーはライセンス サーバーによって管理されるライセンスのプールを共有します。  この種類のライセンスは、"フローティング" ライセンスと呼ばれることもあります。これは、同時実行ユーザー数に対して十分なライセンスだけを用意する必要があるためです。  ユーザーが SolidWorks を使い終わると、そのライセンスは一元管理されているライセンス プールに戻され、他のユーザーが再利用できるようになります。
+大学で一般的に使用されるライセンス オプションは、SOLIDWORKS のネットワーク ライセンスです。   このオプションでは、ユーザーはライセンス サーバーによって管理されるライセンスのプールを共有します。  この種類のライセンスは、"フローティング" ライセンスと呼ばれることもあります。これは、同時実行ユーザー数に対して十分なライセンスだけを用意する必要があるためです。  ユーザーが SOLIDWORKS を使い終わると、そのライセンスは一元管理されているライセンス プールに戻され、他のユーザーが再利用できるようになります。
 
-この記事では、SolidWorks 2019 とネットワーク ライセンスを使用するクラスを設定する方法について説明します。
+この記事では、SOLIDWORKS 2019 とネットワーク ライセンスを使用するクラスを設定する方法について説明します。
 
 ## <a name="license-server"></a>ライセンス サーバー
 
-SolidWorks のネットワーク ライセンスを使用するには、ライセンス サーバーに SolidNetWork License Manager をインストールして、アクティブ化する必要があります。  このライセンス サーバーは、通常、オンプレミスのネットワークまたは Azure 内のプライベート ネットワークのいずれかに配置されます。  サーバーで SolidNetWork License Manager を設定する方法の詳細については、SolidWorks インストール ガイドの「[Installing and Activating a License Manager (License Manager のインストールとアクティベーション)](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm)」を参照してください。  これを設定するときは、後の手順で必要になるため、**ポート番号**と[**シリアル番号**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm)を記録しておいてください。
+SOLIDWORKS のネットワーク ライセンスを使用するには、ライセンス サーバーに SolidNetWork License Manager をインストールして、アクティブ化する必要があります。  このライセンス サーバーは、通常、オンプレミスのネットワークまたは Azure 内のプライベート ネットワークのいずれかに配置されます。  サーバーで SolidNetWork License Manager を設定する方法の詳細については、SOLIDWORKS インストール ガイドの「[Installing and Activating a License Manager](https://help.solidworks.com/2019/English/Installation/install_guide/t_installing_snl_lic_mgr.htm)」 (License Manager のインストールとアクティベーション) を参照してください。  これを設定するときは、後の手順で必要になるため、**ポート番号**と[**シリアル番号**](https://help.solidworks.com/2019/english/installation/install_guide/r_hid_state_serial_number.htm)を記録しておいてください。
 
 ライセンス サーバーを設定した後は、[仮想ネットワーク (VNet)](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) を[ラボ アカウント](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account)にピアリングする必要があります。  ネットワーク ピアリングは、ラボの仮想マシンがライセンス サーバーに、またその逆にアクセスできるように、ラボを作成する前に行う必要があります。
 
@@ -42,7 +42,7 @@ SolidWorks のネットワーク ライセンスを使用するには、ライ�
 |Marketplace イメージ| ラボ アカウント内で使用する Windows 10 Pro イメージを有効にします。|
 
 > [!NOTE]
-> SolidWorks では、Windows 10 だけでなく、他のバージョンの Windows もサポートされています。  詳細については、[SolidWorks のシステム要件](https://www.solidworks.com/sw/support/SystemRequirements.html)に関するページをご覧ください。
+> SOLIDWORKS では、Windows 10 だけでなく、他のバージョンの Windows もサポートされています。  詳細については、[SOLIDWORKS のシステム要件](https://www.solidworks.com/sw/support/SystemRequirements.html)に関するページをご覧ください。
 
 ### <a name="lab-settings"></a>ラボの設定
 
@@ -61,17 +61,17 @@ SolidWorks のネットワーク ライセンスを使用するには、ライ�
 
 ## <a name="template-virtual-machine-configuration"></a>テンプレート仮想マシンの構成
 
-このセクションの手順では、SolidWorks インストール ファイルをダウンロードしてクライアント ソフトウェアをインストールすることにより、テンプレート仮想マシンを設定する方法について説明します。
+このセクションの手順では、SOLIDWORKS インストール ファイルをダウンロードしてクライアント ソフトウェアをインストールすることにより、テンプレート仮想マシンを設定する方法について説明します。
 
 1. テンプレート仮想マシンを起動し、RDP を使用してマシンに接続します。
 
-1. SolidWorks クライアント ソフトウェアのインストール ファイルをダウンロードします。 ダウンロードには 2 つのオプションがあります。
-   - [SolidWorks カスタマー ポータル](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F)からダウンロードします。
+1. SOLIDWORKS クライアント ソフトウェアのインストール ファイルをダウンロードします。 ダウンロードには 2 つのオプションがあります。
+   - [SOLIDWORKS カスタマー ポータル](https://login.solidworks.com/nidp/idff/sso?id=cpenglish&sid=1&option=credential&sid=1&target=https%3A%2F%2Fcustomerportal.solidworks.com%2F)からダウンロードします。
    - サーバー上のディレクトリからダウンロードします。  このオプションを使用した場合は、テンプレート仮想マシンからサーバーにアクセスできることを確認する必要があります。  たとえば、このサーバーは、ラボ アカウントとピアリングされている同じ仮想ネットワークに配置されている場合があります。
   
-    詳細については、SolidWorks インストール ガイドの [SolidWorks での個人コンピューターへのインストール](http://help.solidworks.com/2019/english/Installation/install_guide/c_installing_on_individual_computers.htm?id=fc149e8a968a422a89e2a943265758d3#Pg0)に関するページを参照してください。
+    詳細については、SOLIDWORKS インストール ガイドの [SOLIDWORKS での個人コンピューターへのインストール](http://help.solidworks.com/2019/english/Installation/install_guide/c_installing_on_individual_computers.htm?id=fc149e8a968a422a89e2a943265758d3#Pg0)に関するページを参照してください。
 
-1. インストール ファイルをダウンロードしたら、SolidWorks Installation Manager を使用してクライアント ソフトウェアをインストールします。 詳細については、SolidWorks インストール ガイドの「[Installing a License Client (ライセンス クライアントのインストール)](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm)」を参照してください。
+1. インストール ファイルをダウンロードしたら、SOLIDWORKS Installation Manager を使用してクライアント ソフトウェアをインストールします。 詳細については、SOLIDWORKS インストール ガイドの「[Installing a License Client](http://help.solidworks.com/2019/english/installation/install_guide/t_installing_snl_license_client.htm)」 (ライセンス クライアントのインストール) を参照してください。
 
     > [!NOTE]
     > **[Add Server]\(サーバーの追加\)** ダイアログ ボックスで、ライセンス サーバーに使用する**ポート番号**と、ライセンス サーバーの名前または IP アドレスを入力するように求められます。

@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 5b585a903267386358552154228705c1921df619
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07364e20cc11abc52ad9b308eb5daed8a65c146
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255332"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923383"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での単純なクエリ構文
 
@@ -21,7 +21,7 @@ Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実�
 
 単純なパーサーは、より柔軟であり、完全に構成されていない場合でも要求の解釈が試みられます。 この柔軟性により、Azure Cognitive Search のクエリの既定値になっています。 
 
-単純な構文は、[ドキュメントの検索要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)の `search` パラメーターで渡されるクエリ式に使用されます。同じドキュメントの検索 API の [$filter 式](search-filters.md)パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 `search` および `$filter` パラメーターにはさまざまな構文があり、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
+単純な構文は、[ドキュメントの検索要求](/rest/api/searchservice/search-documents)の `search` パラメーターで渡されるクエリ式に使用されます。同じドキュメントの検索 API の [$filter 式](search-filters.md)パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 `search` および `$filter` パラメーターにはさまざまな構文があり、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
 
 単純なパーサーは [Apache Lucene Simple Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) クラスに基づいていますが、Azure Cognitive Search における実装では、あいまい検索が除外されています。 [あいまい検索](search-query-fuzzy.md)またはその他の高度なクエリ フォームを使用する必要がある場合は、代わりに代替の[完全な Lucene クエリ構文](query-lucene-syntax.md)をお勧めします。
 
@@ -66,7 +66,7 @@ Azure Cognitive Search は、2 つの Lucene ベースのクエリ言語を実�
 
 場合によっては、"❤" のような絵文字や "€" のような記号などの特殊文字を検索することが必要です。 そのような場合は、使用しているアナライザーによってそれらの文字が除外されないことを確認します。標準アナライザーでは、インデックス内のトークンにならないように、特殊文字の多くが無視されます。
 
-したがって、最初のステップとして、それらの要素トークンが考慮されるアナライザーを使用していることを確認します。 たとえば、"whitespace" アナライザーでは、空白で区切られた任意の文字シーケンスがトークンとして考慮されるため、"❤" という文字列はトークンと見なされます。 また、Microsoft English アナライザー ("en.microsoft") のようなアナライザーでは、"€" という文字列がトークンとして考慮されます。 [アナライザーをテスト](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)して、特定のクエリに対して生成されるトークンを確認できます。
+したがって、最初のステップとして、それらの要素トークンが考慮されるアナライザーを使用していることを確認します。 たとえば、"whitespace" アナライザーでは、空白で区切られた任意の文字シーケンスがトークンとして考慮されるため、"❤" という文字列はトークンと見なされます。 また、Microsoft English アナライザー ("en.microsoft") のようなアナライザーでは、"€" という文字列がトークンとして考慮されます。 [アナライザーをテスト](/rest/api/searchservice/test-analyzer)して、特定のクエリに対して生成されるトークンを確認できます。
 
 Unicode 文字を使用する場合は、クエリ URL でシンボルが適切にエスケープされていることを確認します (たとえば、"❤" の場合は、エスケープ シーケンス `%E2%9D%A4+` を使用します)。 Postman では、この変換が自動的に行われます。
 
@@ -119,6 +119,6 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
 + [単純な検索のクエリ例](search-query-simple-examples.md)
 + [完全な Lucene 検索のクエリ例](search-query-lucene-examples.md)
-+ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [Search Documents REST API](/rest/api/searchservice/Search-Documents)
 + [Lucene クエリ構文](query-lucene-syntax.md)
-+ [OData 式の構文](query-odata-filter-orderby-syntax.md) 
++ [OData 式の構文](query-odata-filter-orderby-syntax.md)

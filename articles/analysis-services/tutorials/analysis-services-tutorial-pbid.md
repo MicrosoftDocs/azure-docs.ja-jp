@@ -1,18 +1,18 @@
 ---
 title: チュートリアル - Power BI Desktop を使用して Azure Analysis Services に接続する | Microsoft Docs
 author: minewiskan
-description: Azure portal から Analysis Services サーバー名を取得し、Power BI Desktop を使用してサーバーに接続する方法について説明します。
+description: このチュートリアルでは、Azure portal から Analysis Services サーバー名を取得し、Power BI Desktop を使用してサーバーに接続する方法について説明します。
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 4d8c753f06e58fd1cce1c55eca213637cb70e436
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 950447aa146f05714b6ec5ea3d6e47c368a2140e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73572326"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89229312"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>チュートリアル: Power BI Desktop を使用して接続する
 

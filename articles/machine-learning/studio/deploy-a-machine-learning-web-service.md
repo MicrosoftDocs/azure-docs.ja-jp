@@ -1,6 +1,5 @@
 ---
-title: Web サービスのデプロイ
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): Web サービスをデプロイする - Azure'
 description: トレーニング実験を予測実験に変換し、そのデプロイを準備してから、Azure Machine Learning Studio (クラシック) Web サービスとしてデプロイする方法。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 3fcf4e180233c6ceaa552b3505462639569ed974
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8195d310de708e48b27b5a2d81023d02792be1d3
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696390"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429475"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
+
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 Azure Machine Learning Studio (クラシック) を使用すると、予測分析ソリューションを構築してテストできます。 その後、Web サービスとしてソリューションをデプロイできます。
 
@@ -34,7 +36,7 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 
 * **[トレーニング実験を作成する]** - Studio (クラシック) では、供給するトレーニング データを活用した予測分析モデルを、大規模な組み込みの機械学習アルゴリズムを使用して、トレーニングおよびテストできます。
 * **[予測実験に変換する]** - 既存のデータでモデルが学習され、それを使用して新しいデータをスコア付けする準備ができると、予測用に実験を用意し、合理化します。
-* これを **[新しい Web サービス]** または **[従来の Web サービス]** として**デプロイ**する - Azure Web サービスとして予測実験をデプロイすると、ユーザーはデータをモデルに送信して、モデルの予測を受信できるようになります。
+* これを**[新しい Web サービス]** または**[従来の Web サービス]** として**デプロイ**する - Azure Web サービスとして予測実験をデプロイすると、ユーザーはデータをモデルに送信して、モデルの予測を受信できるようになります。
 
 ## <a name="create-a-training-experiment"></a>トレーニング実験を作成する
 
@@ -65,7 +67,7 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 ![スコア付け実験に変換する](./media/publish-a-machine-learning-web-service/figure-1.png)
 
 ### <a name="set-up-web-service-button"></a>[Web サービスの設定] ボタン
-(実験キャンバスの下部にある **[実行]** をクリックして) 実験を実行したら、( **[予測 Web サービス]** オプションを選択して) **[Web サービスの設定]** ボタンをクリックします。 **[Web サービスの設定]** によって、トレーニング実験を予測実験に変換する次の 3 つの手順が実行されます。
+(実験キャンバスの下部にある **[実行]** をクリックして) 実験を実行したら、(**[予測 Web サービス]** オプションを選択して)**[Web サービスの設定]** ボタンをクリックします。 **[Web サービスの設定]** によって、トレーニング実験を予測実験に変換する次の 3 つの手順が実行されます。
 
 1. トレーニング済みのモデルを、(実験キャンバスの左側にある) モジュール パレットの **[トレーニング済みのモデル]** セクションに保存します。 次に、機械学習アルゴリズムと[モデルのトレーニング][train-model] モジュールを、保存したトレーニング済みのモデルに置き換えます。
 2. 実験が分析され、明らかにトレーニングのためにのみ使用されて不要になったモジュールが削除されます。
@@ -100,7 +102,7 @@ BES への入力は、RRS で使用されるデータ入力と似ています。
 #### <a name="adjust-input-and-output-modules"></a>入力と出力のモジュールを調整する
 トレーニング実験では、トレーニング データのセットを使用して、機械学習アルゴリズムが必要とする形式でデータを取得するいくつかの処理を実行しました。 Web サービスを通じて受信することを想定しているデータでこの処理が不要な場合は、**Web サービスの入力モジュール**の出力を実験の別のノードに接続することで、これを回避できます。 この場所のモデルにユーザーのデータが届くようになります。
 
-たとえば、既定では、上の図で示すように、 **[Web サービスの設定]** によって、**Web サービスの入力**モジュールがデータ フローの上部に配置されます。 ただし、**Web サービスの入力**をデータ処理モジュールの先に手動で配置することができます。
+たとえば、既定では、上の図で示すように、**[Web サービスの設定]** によって、**Web サービスの入力**モジュールがデータ フローの上部に配置されます。 ただし、**Web サービスの入力**をデータ処理モジュールの先に手動で配置することができます。
 
 ![Web サービス入力の移動](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
@@ -240,7 +242,7 @@ Web サービスは、Machine Learning Studio (クラシック) Web サービス
 
 要求 - 応答 Web サービスをテストするには、Web サービス ダッシュボードで **[テスト]** をクリックします。 ダイアログ ボックスが表示され、サービスへのデータの入力が促されます。 これらはスコア付け実験で想定される列になります。 データのセットを入力し、 **[OK]** をクリックします。 Web サービスによって生成された結果がダッシュボードの下部に表示されます。
 
-「新しい Web サービス」セクションで説明したように、 **[テスト]** プレビュー リンクをクリックして、サービスを Azure Machine Learning Studio (クラシック) Web サービス ポータルでテストできます。
+「新しい Web サービス」セクションで説明したように、**[テスト]** プレビュー リンクをクリックして、サービスを Azure Machine Learning Studio (クラシック) Web サービス ポータルでテストできます。
 
 バッチ実行サービスをテストするには、 **[テスト]** プレビュー リンクをクリックします。 バッチ テストのページで、入力の下の [参照] をクリックし、適切なサンプル値を含む CSV ファイルを選択します。 CSV ファイルがなく、Machine Learning Studio (クラシック) を使用して予測実験を作成した場合は、予測実験用のデータ セットをダウンロードし、それを使用できます。
 

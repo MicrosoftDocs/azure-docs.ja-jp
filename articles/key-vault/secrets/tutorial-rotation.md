@@ -10,16 +10,17 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 67fe36cf86c886f9d67d98cc8d34a090db4a71cb
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5adc2a91df5d394fbed3ff10b0ebc5cb543a3ba3
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373016"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378017"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>1 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
-Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/managed-identity.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはシークレットが使用されます。 アクセス キーやシークレットは定期的にローテーションする必要があります。
+Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/authentication.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはシークレットが使用されます。 アクセス キーやシークレットは定期的にローテーションする必要があります。
 
 このチュートリアルでは、1 セットの認証資格情報を使用するデータベースとサービスを対象に、シークレットの定期的なローテーションを自動化する方法について説明します。 具体的には、このチュートリアルでは Azure Event Grid の通知によってトリガーされる関数を使用して、Azure Key Vault に格納されている SQL Server のパスワードをローテーションします。
 
@@ -41,7 +42,8 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 
 まだ Key Vault と SQL Server をお持ちでない場合は、以下のデプロイ リンクを使用してください。
 
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+[![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+
 1. **[リソース グループ]** で、 **[新規作成]** を選択します。 このグループに **akvrotation** という名前を付けます。
 1. **[SQL の管理者ログイン]** で、SQL 管理者のログイン名を入力します。 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
@@ -76,8 +78,10 @@ akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/datab
 - Key Vault 内のシークレットにアクセスする関数アプリ ID のアクセス ポリシー
 - **SecretNearExpiry** イベントの EventGrid イベント サブスクリプション
 
-1. Azure テンプレートのデプロイのリンクを選択します。
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. Azure テンプレートのデプロイのリンクを選択します。 
+
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
+
 1. **[リソース グループ]** 一覧から **[akvrotation]** を選択します。
 1. **[SQL Server 名]** に、SQL Server の名前とローテーションするパスワードを入力します。
 1. **[Key Vault 名]** に、Key Vault の名前を入力します。
@@ -109,7 +113,7 @@ akvrotation-fnapp        akvrotation       eastus      Microsoft.Web/sites
 akvrotation-fnapp        akvrotation       eastus      Microsoft.insights/components
 ```
 
-関数アプリを作成し、マネージド ID を使用して Key Vault にアクセスする方法については、「[Azure portal から関数アプリを作成する](../../azure-functions/functions-create-function-app-portal.md)」と「[マネージド ID で Key Vault の認証を提供する](../general/managed-identity.md)」を参照してください。
+関数アプリを作成し、マネージド ID を使用して Key Vault にアクセスする方法については、「[Azure portal から関数アプリを作成する](/azure/azure-functions/functions-create-function-app-portal)」、[App Service と Azure Functions のマネージド ID を使用する方法](/azure/app-service/overview-managed-identity)、および [Azure portal を使用した Key Vault アクセス ポリシーの割り当て](../general/assign-access-policy-portal.md)に関するページを参照してください。
 
 ### <a name="rotation-function"></a>ローテーション関数
 前の手順でデプロイした関数は、イベントを使用して、Key Vault と SQL データベースを更新することにより、シークレットのローテーションをトリガーします。 
@@ -217,8 +221,10 @@ Web アプリには次のコンポーネントが必要です。
 - システム マネージド ID が付与されている Web アプリ
 - Web アプリのマネージド ID を使用して Key Vault 内のシークレットにアクセスするためのアクセス ポリシー
 
-1. Azure テンプレートのデプロイのリンクを選択します。
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png" alt="Deploy to Azure"/></a>
+1. Azure テンプレートのデプロイのリンクを選択します。 
+
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
+
 1. **akvrotation** リソース グループを選択します。
 1. **[SQL Server 名]** に、SQL Server の名前とローテーションするパスワードを入力します。
 1. **[Key Vault 名]** に、Key Vault の名前を入力します。

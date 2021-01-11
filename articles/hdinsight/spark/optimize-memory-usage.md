@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 06bb8f2005dae9e36fe55547a31c81c36d0c7068
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 056060f8b94747651c78c757150d5e5a5982c7af
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737650"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757780"
 ---
 # <a name="memory-usage-optimization-for-apache-spark"></a>Apache Spark のメモリ使用量の最適化
 

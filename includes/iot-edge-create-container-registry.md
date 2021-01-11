@@ -4,12 +4,12 @@ ms.service: iot-edge
 ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
-ms.openlocfilehash: f8cb734e8a57e3b0ee114ae20f454d0034e9cdc9
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387619"
+ms.locfileid: "87406718"
 ---
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
@@ -33,7 +33,7 @@ ms.locfileid: "87387619"
 
 3. **［作成］** を選択します
 
-4. コンテナー レジストリが作成された後、それを参照し、左側のペインの **[設定]** の下にあるメニューから **[アクセス キー]** を選択します。
+4. コンテナー レジストリが作成された後、それを参照し、左側のペインの **[設定]** の下にあるメニューから **[アクセス キー]** を選択します。 
 
 5. クリックして管理者ユーザーを有効にし、コンテナー レジストリの**ユーザー名**と**パスワード**を表示します。
 

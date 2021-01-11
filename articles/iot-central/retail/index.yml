@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 57cc81eb1177426edf9d0ddac3b5ec4999325b84
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: f37f876db15e2722907669cd1c1d8390f771034b
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337570"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080645"
 landingContent:
 - title: 小売ソリューションを構築する
   linkLists:
@@ -37,6 +37,8 @@ landingContent:
       url: tutorial-iot-central-connected-logistics.md
     - text: デジタル流通センター アプリケーションを作成する
       url: tutorial-iot-central-digital-distribution-center.md
+    - text: ビデオ分析アプリケーションを作成する
+      url: tutorial-video-analytics-create-app.md
   - linkListType: how-to-guide
     links:
     - text: Rigado Cascade 500 を接続する

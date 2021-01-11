@@ -3,22 +3,25 @@ title: 複数の変換出力を含む Azure Media Services ジョブを作成す
 description: このトピックでは、複数の変換出力がある Azure Media Services ジョブを作成する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 02/17/2020
-ms.author: juliako
-ms.openlocfilehash: 7c39b133773cbe35d78e04c4e40de9d62c4eba18
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e5fe12b02503aff625a1cc2c39a71abcdf3dab0b
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001113"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296787"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>複数の変換出力があるジョブを作成する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このトピックでは、2 つの変換出力がある変換を作成する方法について説明します。 最初の 1 つは、組み込みの [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) プリセットを使用して、アダプティブ ビットレート ストリーミング用に入力をエンコードするよう呼び出します。 2 つ目は、[AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets) で処理するよう、入力ビデオの音声信号を呼び出します。 変換が作成されたら、それに応じてビデオを処理するジョブを送信できます。 この例では 2 つの変換出力を指定しているため、2 つのジョブ出力を指定する必要があります。 次に示すように、両方のジョブの出力を同じアセットに送るか、別のアセットに結果を書き込むかを選択できます。
  

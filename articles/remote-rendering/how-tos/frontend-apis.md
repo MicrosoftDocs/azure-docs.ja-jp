@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 699344f9343c17d449fa48e05b2c3474b524d695
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552687"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891472"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>認証に Azure フロントエンド API を使用する
 
@@ -51,7 +51,6 @@ struct AzureFrontendAccountInfo
     std::string AuthenticationToken{};
     std::string AccessToken{};
 };
-
 ```
 
 ドメインの _region_ 部分には、[お近くのリージョン](../reference/regions.md)を使用します。
@@ -64,7 +63,7 @@ struct AzureFrontendAccountInfo
 
 開かれた、または作成された各 ```AzureSession``` は、それを作成したフロントエンドに対する参照を保持します。 完全にシャットダウンするには、フロントエンドが割り当て解除される前にすべてのセッションを割り当て解除する必要があります。
 
-セッションの割り当てを解除しても、Azure 上の VM は停止されません。`AzureSession.StopAsync` を明示的に呼び出す必要があります。
+セッションの割り当てを解除しても、Azure 上のサーバーは停止されないため、明示的に `AzureSession.StopAsync` を呼び出す必要があります。
 
 セッションが作成され、その状態が準備完了としてマークされると、`AzureSession.ConnectToRuntime` を使用してリモートのレンダリング ランタイムに接続できます。
 
@@ -122,7 +121,7 @@ void StartAssetConversion(ApiHandle<AzureFrontend> frontend, std::string storage
     ApiHandle<StartAssetConversionAsync> conversionAsync = *frontend->StartAssetConversionAsync(input, output);
     conversionAsync->Completed([](ApiHandle<StartAssetConversionAsync> res)
     {
-        if (res->IsRanToCompletion())
+        if (res->GetIsRanToCompletion())
         {
             //use res.Result
         }
@@ -166,7 +165,7 @@ void GetConversionStatus(ApiHandle<AzureFrontend> frontend, std::string assetId)
     ApiHandle<ConversionStatusAsync> pendingAsync = *frontend->GetAssetConversionStatusAsync(assetId);
     pendingAsync->Completed([](ApiHandle<ConversionStatusAsync> res)
     {
-        if (res->IsRanToCompletion())
+        if (res->GetIsRanToCompletion())
         {
             // use res->Result
         }
@@ -221,7 +220,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend, RenderingSessionV
 
     pendingAsync->Completed([] (ApiHandle<CreateSessionAsync> res)
     {
-        if (res->IsRanToCompletion())
+        if (res->GetIsRanToCompletion())
         {
             //use res->Result
         }
@@ -283,7 +282,7 @@ void GetCurrentRenderingSessions(ApiHandle<AzureFrontend> frontend)
     ApiHandle<SessionPropertiesArrayAsync> pendingAsync = *frontend->GetCurrentRenderingSessionsAsync();
     pendingAsync->Completed([](ApiHandle<SessionPropertiesArrayAsync> res)
     {
-        if (res->IsRanToCompletion())
+        if (res->GetIsRanToCompletion())
         {
             // use res.Result
         }
@@ -326,7 +325,7 @@ void GetRenderingSessionProperties(ApiHandle<AzureSession> session)
     ApiHandle<SessionPropertiesAsync> pendingAsync = *session->GetPropertiesAsync();
     pendingAsync->Completed([](ApiHandle<SessionPropertiesAsync> res)
     {
-        if (res->IsRanToCompletion())
+        if (res->GetIsRanToCompletion())
         {
             //use res.Result
         }
@@ -370,7 +369,7 @@ void UpdateRenderingSession(ApiHandle<AzureSession> session, const ARRTimeSpan& 
     ApiHandle<SessionAsync> pendingAsync = *session->RenewAsync(params);
     pendingAsync->Completed([](ApiHandle<SessionAsync> res)
     {
-        if (res->IsRanToCompletion())
+        if (res->GetIsRanToCompletion())
         {
             printf("Rendering session renewed succeeded!");
         }
@@ -411,7 +410,7 @@ void StopRenderingSession(ApiHandle<AzureSession> session)
     ApiHandle<SessionAsync> pendingAsync = *session->StopAsync();
     pendingAsync->Completed([](ApiHandle<SessionAsync> res)
     {
-        if (res->IsRanToCompletion())
+        if (res->GetIsRanToCompletion())
         {
             printf("Rendering session stopped successfully!");
         }
@@ -464,7 +463,7 @@ void ConnectToArrInspector(ApiHandle<AzureSession> session, std::string hostname
     ApiHandle<ArrInspectorAsync> pendingAsync = *session->ConnectToArrInspectorAsync(hostname);
     pendingAsync->Completed([](ApiHandle<ArrInspectorAsync> res)
     {
-        if (res->IsRanToCompletion())
+        if (res->GetIsRanToCompletion())
         {
             // Launch the html file with default browser
             std::string htmlPath = "file:///" + *res->Result();

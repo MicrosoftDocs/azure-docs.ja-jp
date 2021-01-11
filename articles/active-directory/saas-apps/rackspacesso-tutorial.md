@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Rackspace SSO の統合 | Microsoft Docs
 description: Azure Active Directory と Rackspace SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 36b398be-2f7e-4ce8-9031-53587299bc4a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2c2e7358c32453daf53c40a9322df4fe30642d8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81870294"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548893"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>チュートリアル:Azure Active Directory と Rackspace SSO の統合
 

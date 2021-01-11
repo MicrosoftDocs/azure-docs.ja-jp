@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 51f277827ac0865eaede141e5817962b04d2bd49
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: a9954b0ddd446c4e39d85ab6d3e37402176236d6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221445"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489641"
 ---
 # <a name="change-the-sku-for-an-existing-azure-active-directory-domain-services-managed-domain"></a>既存の Azure Active Directory Domain Services マネージド ドメインの SKU を変更する
 
-Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォーマンスと機能は、SKU の種類によって変わります。 このような機能の違いには、バックアップの頻度や、一方向の送信フォレストの信頼の最大数 (現在はプレビュー段階) などがあります。
+Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォーマンスと機能は、SKU の種類によって変わります。 このような機能の違いには、バックアップの頻度や、一方向の送信フォレストの信頼の最大数などがあります。
 
 マネージド ドメインを作成するときに SKU を選択する必要があり、マネージド ドメインのデプロイ後にビジネス ニーズが変わったときに SKU を上や下に切り替えることができます。 ビジネス要件の変更には、バックアップ頻度を増やしたり、追加のフォレストの信頼を作成したりするニーズなどがあります。 さまざまな SKU の制限と価格の詳細については、[Azure AD DS SKU の概念][concepts-sku]と [Azure AD DS の価格][pricing]に関するページを参照してください。
 
@@ -38,7 +38,7 @@ Azure Active Directory Domain Services (Azure AD DS) で使用できるパフォ
 
 ## <a name="sku-change-limitations"></a>SKU の変更の制限
 
-マネージド ドメインがデプロイされた後は、SKU を引き上げたり引き下げたりして変更できます。 ただし、リソース フォレスト (現在プレビュー段階) を使用し、Azure AD DS からオンプレミスの AD DS 環境への一方向の送信フォレストの信頼を作成する場合、SKU の変更操作にはいくつかの制限があります。 *Premium* および *Enterprise* SKU には、作成できる信頼の数に関する制限が定義されています。 現在構成されている上限よりも低い上限の SKU に変更することはできません。
+マネージド ドメインがデプロイされた後は、SKU を引き上げたり引き下げたりして変更できます。 ただし、リソース フォレストを使用し、Azure AD DS からオンプレミスの AD DS 環境への一方向の送信フォレストの信頼を作成する場合、SKU の変更操作にはいくつかの制限があります。 *Premium* および *Enterprise* SKU には、作成できる信頼の数に関する制限が定義されています。 現在構成されている上限よりも低い上限の SKU に変更することはできません。
 
 次に例を示します。
 
@@ -66,7 +66,7 @@ SKU の種類の変更には、1、2 分かかることがあります。
 
 ## <a name="next-steps"></a>次のステップ
 
-リソース フォレストがあり、SKU の変更後に追加の信頼を作成する場合は、[Azure AD DS でのオンプレミス ドメインに対する送信フォレストの作成 (プレビュー)][create-trust] に関する記事を参照してください。
+リソース フォレストがあり、SKU の変更後に追加の信頼を作成する場合は、[Azure AD DS でのオンプレミス ドメインに対する送信フォレストの作成][create-trust]に関する記事を参照してください。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

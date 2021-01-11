@@ -1,22 +1,22 @@
 ### YamlMime:Landing
 title: Face のドキュメント
-summary: クラウドベースの Face サービスを使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
+summary: 2020 年 6 月 11 日に、Microsoft は、人権に基づく厳格な法令が制定されない限り、米国内の警察に顔認識テクノロジを販売しないことを発表しました。 このため、顧客は、米国内の警察である場合、または警察による顔認識機能および Azure サービスに含まれる機能 (Face や Video Indexer など) の使用を許可する場合、これらの機能を使用できません。
 metadata:
   title: Face のドキュメント - クイックスタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
-  description: クラウドベースの Face サービスを使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。
+  description: 'クラウドベースの Face サービスを使用すると、開発者は高度な顔アルゴリズムにアクセスできます。 Microsoft Face のアルゴリズムにより、顔属性の検出と顔認識が可能になります。 クイックスタート、チュートリアル、サンプルを使用して、さまざまな方法でコンテンツを分析する方法をご確認ください。# 必須: 検索結果に表示される記事の説明。 160 文字未満。'
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: face-api
   ms.topic: landing-page
   author: PatrickFarley
   ms.author: pafarley
-  ms.date: 10/24/2019
-  ms.openlocfilehash: e4d53baf1a083e9dafa6bd43186b507c5e724db3
-  ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+  ms.date: 9/01/2020
+  ms.openlocfilehash: 67af472ea968501902255d3dbec18d3b6201f9e2
+  ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84268018"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89278226"
 landingContent:
 - title: Face サービスについて
   linkLists:

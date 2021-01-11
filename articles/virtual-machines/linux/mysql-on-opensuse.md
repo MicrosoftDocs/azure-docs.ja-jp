@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 07fde5a8e7e3d542ed3fa3bc54b761d5434ac710
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eee32dc7edd4256dd2bd120609504042d7ab78ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284865"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836886"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Azure 上で OpenSUSE Linux を実行する仮想マシンへの MySQL のインストール
 
@@ -32,7 +32,7 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-VM を作成します。 この例では、VM は "*myVM*" という名前、VM サイズは "*Standard_D2s_v3*" ですが、ユーザーが実際のワークロードに最適であると考える [VM サイズ](sizes.md)を選ぶ必要があります。
+VM を作成します。 この例では、VM は "*myVM*" という名前、VM サイズは "*Standard_D2s_v3*" ですが、ユーザーが実際のワークロードに最適であると考える [VM サイズ](../sizes.md)を選ぶ必要があります。
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \
@@ -157,7 +157,3 @@ quit
 
 ## <a name="next-steps"></a>次のステップ
 MySQL について詳しくは、[MySQL のドキュメント](https://dev.mysql.com/doc)をご覧ください。
-
-
-
-

@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure Backup のバ�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: c8dbd6fd7add58f8458c21fc65381a52ff3306d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced0e0020fe955734bf6cc767480fbadd6eaffc1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079317"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890282"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>REST API を使用してバックアップ ジョブと復元ジョブを追跡する
 
@@ -17,7 +17,7 @@ Azure Backup サービスは、バックアップのトリガー、復元操作�
 
 ## <a name="fetch-job-information-from-operations"></a>操作からジョブの情報を取得する
 
-バックアップのトリガーといった操作では常に、jobID が返されます。 次に例を示します。[バックアップのトリガー REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3)の最終的な応答は次のとおりです。
+バックアップのトリガーといった操作では常に、jobID が返されます。 次に例を示します。[バックアップのトリガー REST API 操作](backup-azure-arm-userestapi-backupazurevms.md#example-responses-for-on-demand-backup)の最終的な応答は次のとおりです。
 
 ```http
 {
@@ -41,7 +41,7 @@ Azure VM のバックアップ ジョブは "jobId" フィールドによって�
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-`{jobName}` は上で説明した "jobId" です。 応答は常に 200 OK であり、"status" フィールドでジョブの現在の状態が示されています。 "Completed" または "CompletedWithWarnings" になると、"extendedInfo" セクションでジョブに関する詳細が示されます。
+`{jobName}` は上で説明した "jobId" です。 応答は常に 200 OK であり、"status" フィールドでジョブの現在の状態が示されています。 "Completed" または "CompletedWithWarnings" になると、'extendedInfo' セクションでジョブに関する詳細が示されます。
 
 ### <a name="response"></a>Response
 

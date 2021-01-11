@@ -2,7 +2,7 @@
 title: ユーザーの追加または削除 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用して新しいユーザーを追加する方法または既存のユーザーを削除する方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30730f685945d129ababb27040f34bf8ab2f790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fbdccfa7ff16bd63dda1f7c21c07e6d20e086e1
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603861"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321091"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーを追加または削除する
 
@@ -60,7 +60,7 @@ Azure Active Directory ポータルを使用して、新しいユーザーを作
 
 ## <a name="add-a-new-guest-user"></a>新しいゲスト ユーザーの追加
 
-**[新しいユーザー]** ページから **[ユーザーの招待]** を選択して、お客様の組織とコラボレーションする新しいゲスト ユーザーを招待することもできます。 組織の外部コラボレーション設定で、ゲストを招待できるように構成されている場合、そのユーザーに招待メールが送信されます。共同作業を開始するには、ユーザーはこの招待を受け入れる必要があります。 B2B コラボレーション ユーザーの招待について詳しくは、[B2B ユーザーを Azure Active Directory に招待する](../b2b/add-users-administrator.md)ことに関する記事をご覧ください。
+**[新しいユーザー]** ページから **[ユーザーの招待]** を選択して、お客様の組織とコラボレーションする新しいゲスト ユーザーを招待することもできます。 組織の外部コラボレーション設定で、ゲストを招待できるように構成されている場合、そのユーザーに招待メールが送信されます。共同作業を開始するには、ユーザーはこの招待を受け入れる必要があります。 B2B コラボレーション ユーザーの招待について詳しくは、[B2B ユーザーを Azure Active Directory に招待する](../external-identities/add-users-administrator.md)ことに関する記事をご覧ください。
 
 ## <a name="add-a-consumer-user"></a>コンシューマー ユーザーの追加
 
@@ -105,4 +105,4 @@ Azure Active Directory ポータルを使用して、既存のユーザーを削
 
 - [動的グループとユーザーを操作する](../users-groups-roles/groups-create-rule.md)
 
-または、[別のディレクトリからのゲスト ユーザーの追加](../b2b/what-is-b2b.md)や、[削除されたユーザーの復元](active-directory-users-restore.md)など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
+または、[別のディレクトリからのゲスト ユーザーの追加](../external-identities/what-is-b2b.md)や、[削除されたユーザーの復元](active-directory-users-restore.md)など、他のユーザー管理タスクを実行することもできます。 他の実行可能なアクションの詳細については、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。

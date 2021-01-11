@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523112"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320649"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory の ID セキュリティ スコアとは
 
@@ -104,7 +104,7 @@ ID セキュリティ スコアは、次のロールが使用できます。
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>ID セキュリティ スコアは Office 365 のセキュリティ スコアにどのように関連していますか?
 
-[Microsoft のセキュリティ スコア](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)には、次の 5 つのコントロールとスコア カテゴリがあります。
+[Microsoft のセキュリティ スコア](/office365/securitycompliance/microsoft-secure-score)には、次の 5 つのコントロールとスコア カテゴリがあります。
 
 - ID
 - Data
@@ -116,4 +116,4 @@ ID セキュリティ スコアは、Microsoft のセキュリティ スコア�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Microsoft セキュリティ スコアの詳細を確認する](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)
+[Microsoft セキュリティ スコアの詳細を確認する](/office365/securitycompliance/microsoft-secure-score)

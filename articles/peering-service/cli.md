@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
 
-構成を始めるには、Azure アカウントにサインインします。 Cloud Shell の **[試してみる]** オプションを使用している場合は、自動的にサインインします。 接続するには、次の例を参照してください。
+構成を始めるには、Azure アカウントにサインインします。 Cloud Shell の **[使ってみる]** オプションを使用している場合は、自動的にサインインします。 接続するには、次の例を参照してください。
 
 ```azurecli-interactive
 az login

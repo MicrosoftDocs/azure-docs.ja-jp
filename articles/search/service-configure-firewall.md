@@ -8,19 +8,19 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 699715e1188616c2d6bda47016ec1ea7b05cef83
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3e8a94b6b9b71d2d71b634edd70ea4150652b143
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125592"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932799"
 ---
 # <a name="configure-ip-firewall-for-azure-cognitive-search"></a>Azure Cognitive Search 用に IP ファイアウォールを構成する
 
 Azure Cognitive Search では、受信ファイアウォールをサポートするための IP 規則がサポートされています。 このモデルには、Azure 仮想ネットワーク セキュリティ グループにある IP 規則と同様に、検索サービス用の追加のセキュリティ層が用意されています。 これらの IP 規則を使用して、承認された一連のマシンやクラウド サービスからのみアクセスできるように検索サービスを構成することができます。 ただし、検索サービスに格納されているデータに、これらの承認された一連のマシンやサービスからアクセスするには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。
 
 > [!Important]
-> Azure Cognitive Search サービスの IP 規則は、Azure portal または [管理 REST API バージョン 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) を使用して構成できます。
+> Azure Cognitive Search サービスの IP 規則は、Azure portal または [管理 REST API バージョン 2020-03-13](/rest/api/searchmanagement/) を使用して構成できます。
 
 ## <a name="configure-an-ip-firewall-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Azure portal を使用して IP ファイアウォールを構成する
 

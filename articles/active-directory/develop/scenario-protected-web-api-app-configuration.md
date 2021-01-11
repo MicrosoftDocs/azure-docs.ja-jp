@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50de800c94bd0a65fafcff3ef6613d6f063a3797
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80882473"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855486"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API: コード構成
 
@@ -91,11 +91,33 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 }
 ```
 
+#### <a name="case-where-you-used-a-custom-app-id-uri-for-your-web-api"></a>Web API にカスタム アプリ ID URI を使用したケース
+
+アプリ登録ポータルによって提案されたアプリ ID URI を受け入れた場合は、対象ユーザーを指定する必要はありません (「[アプリケーション ID の URI とスコープ](scenario-protected-web-api-app-registration.md#application-id-uri-and-scopes)」を参照してください)。 それ以外の場合は、Web API のアプリ ID URI を値とする `Audience` プロパティを追加する必要があります。
+
+```Json
+{
+  "AzureAd": {
+    "Instance": "https://login.microsoftonline.com/",
+    "ClientId": "[Client_id-of-web-api-eg-2ec40e65-ba09-4853-bcde-bcb60029e596]",
+    "TenantId": "common",
+    "Audience": "custom App ID URI for your web API"
+  },
+  // more lines
+}
+```
+
 ### <a name="code-initialization"></a>コードの初期化
 
 **[Authorize]** 属性を保持するコントローラー アクションでアプリが呼び出されると、ASP.NET と ASP.NET Core により、Authorization ヘッダーのベアラー トークンからアクセス トークンが抽出されます。 その後、アクセス トークンは JwtBearer ミドルウェアに転送され、Microsoft IdentityModel Extensions for .NET が呼び出されます。
 
-ASP.NET Core では、このミドルウェアは Startup.cs ファイルで初期化されます。
+#### <a name="using-microsoftidentityweb-templates"></a>Microsoft.Identity.Web テンプレートを使用する
+
+Microsoft.Identity.Web プロジェクト テンプレートを使用して、Web API を最初から作成できます。 詳細については、「[Microsoft.Identity.Web - Web API プロジェクト テンプレート](https://aka.ms/ms-id-web/webapi-project-templates)」を参照してください。
+
+#### <a name="starting-from-an-existing-aspnet-core-31-application"></a>既存の ASP.NET Core 3.1 アプリケーションから開始する
+
+現在、ASP.NET Core 3.1 では、Microsoft.AspNetCore.AzureAD.UI ライブラリが使用されています。 このミドルウェアは Startup.cs ファイルで初期化されます。
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -104,33 +126,49 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 この命令によって、ミドルウェアが Web API に追加されます。
 
 ```csharp
- services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
-         .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+          .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
+}
 ```
 
- 現在、ASP.NET Core テンプレートでは、ご自分の組織または任意の組織内のユーザーのサインインを行う、Azure Active Directory (Azure AD) Web API が作成されます。 個人アカウントを使用してユーザーをサインインさせることはありません。 ただし、次のコードを Startup.cs に追加することで、Microsoft ID プラットフォーム エンドポイントを使用するようにテンプレートを変更できます。
+ 現在、ASP.NET Core テンプレートでは、ご自分の組織または任意の組織内のユーザーのサインインを行う、Azure Active Directory (Azure AD) Web API が作成されます。 個人アカウントを使用してユーザーをサインインさせることはありません。 ただし、NuGet パッケージとして使用可能な [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) を使用して *Startup.cs* 内のコードを置き換えることで、Microsoft ID プラットフォーム エンドポイントを使用するようにテンプレートを変更できます。
 
 ```csharp
-services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
-{
-    // This is a Microsoft identity platform web API.
-    options.Authority += "/v2.0";
-
-    // The web API accepts as audiences both the Client ID (options.Audience) and api://{ClientID}.
-    options.TokenValidationParameters.ValidAudiences = new []
-    {
-     options.Audience,
-     $"api://{options.Audience}"
-    };
-
-    // Instead of using the default validation (validating against a single tenant,
-    // as we do in line-of-business apps),
-    // we inject our own multitenant validation logic (which even accepts both v1 and v2 tokens).
-    options.TokenValidationParameters.IssuerValidator = AadIssuerValidator.GetIssuerValidator(options.Authority).Validate;;
-});
+using Microsoft.Identity.Web;
 ```
 
-上記のコード スニペットは、[Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63) にある ASP.NET Core Web API の増分チュートリアルから引用されています。 Startup.cs から **AddProtectedWebApi** メソッドが呼び出されます。これはスニペットに示されている以上のことを行います。
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+ // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
+ services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAd");
+
+ services.AddControllers();
+}
+```
+
+また、次のように記述することもできます (こちらも同等です)
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+ // Adds Microsoft Identity platform (AAD v2.0) support to protect this API
+ services.AddMicrosoftIdentityWebApiAuthentication(Configuration, "AzureAd");
+
+ services.AddControllers();
+}
+```
+
+> [!NOTE]
+> Microsoft.Identity.Web を使用し、*appsettings.json*内に `Audience` を設定しない場合、次が使用されます。
+> -  `$"{ClientId}"`。[アクセス トークンで承認されたバージョン](scenario-protected-web-api-app-registration.md#accepted-token-version)を `2` に設定している場合、または Azure AD B2C Web API の場合。
+> - `$"api://{ClientId}`。その他すべての場合 (v1.0 [アクセス トークン](access-tokens.md)の場合)。
+> 詳細については、Microsoft.Identity.Web の[ソース コード](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83)を参照してください。
+
+上記のコード スニペットは、[ASP.NET Core Web API の増分チュートリアル](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28)から引用されています。 **AddMicrosoftIdentityWebApiAuthentication** に関する詳細については [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiServiceCollectionExtensions.cs#L27) を参照してください。 このメソッドにより [AddMicrosoftWebAPI](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L58) が呼び出されます。これ自体がトークンの検証方法をミドルウェアに指示します。 詳細については、その[ソース コード](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/WebApiExtensions/WebApiAuthenticationBuilderExtensions.cs#L104-L122)を参照してください。
 
 ## <a name="token-validation"></a>トークンの検証
 
@@ -159,13 +197,41 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 | **ValidateSignature** | トークンが改ざんされていないことを保証します。 |
 | **ValidateTokenReplay** | トークンが再生されていないことを保証します 一部の 1 回限りの使用のプロトコルには特殊なケースがあります。 |
 
+#### <a name="customizing-token-validation"></a>トークンの検証のカスタマイズ
+
 検証コントロールは、**TokenValidationParameters** クラスのプロパティに関連付けられています。 このプロパティは、ASP.NET と ASP.NET Core の構成から初期化されます。
 
-ほとんどの場合、パラメーターを変更する必要はありません。 シングル テナントではないアプリは例外です。 これらの Web アプリでは、任意の組織から、または個人用 Microsoft アカウントからのユーザーを受け入れます。 この場合、発行者を検証する必要があります。
+ほとんどの場合、パラメーターを変更する必要はありません。 シングル テナントではないアプリは例外です。 これらの Web アプリでは、任意の組織から、または個人用 Microsoft アカウントからのユーザーを受け入れます。 この場合、発行者を検証する必要があります。 Microsoft.Identity.Web では発行者の検証も行われます。 詳細については、Microsoft.Identity.Web の [AadIssuerValidator](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) を参照してください。
+
+ASP.NET Core で、トークン検証パラメーターをカスタマイズする場合は、*Startup.cs* で次のスニペットを使用します。
+
+```c#
+services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddMicrosoftIdentityWebApi(Configuration);
+services.Configure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
+{
+  var existingOnTokenValidatedHandler = options.Events.OnTokenValidated;
+  options.Events.OnTokenValidated = async context =>
+  {
+       await existingOnTokenValidatedHandler(context);
+      // Your code to add extra configuration that will be executed after the current event implementation.
+      options.TokenValidationParameters.ValidIssuers = new[] { /* list of valid issuers */ };
+      options.TokenValidationParameters.ValidAudiences = new[] { /* list of valid audiences */};
+  }
+});
+```
+
+ASP.NET MVC の場合、次のコード サンプルにカスタム トークンの検証を行う方法が示されています。
+
+https://github.com/azure-samples/active-directory-dotnet-webapi-manual-jwt-validation
 
 ## <a name="token-validation-in-azure-functions"></a>Azure Functions でのトークンの検証
 
-Azure Functions では、受信アクセス トークンを検証することもできます。 このような検証の例は、[Microsoft .NET](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)、[NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)、および [Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) で見つけることができます。
+Azure Functions では、受信アクセス トークンを検証することもできます。 このような検証の例については、GitHub の次のコード サンプルを参照してください。
+
+- .NET:[Azure-Samples/ms-identity-dotnet-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)
+- Node.js:[Azure-Samples/ms-identity-nodejs-webapi-azurefunctions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)
+- Python: [Azure-Samples/ms-identity-python-webapi-azurefunctions)](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)
 
 ## <a name="next-steps"></a>次のステップ
 

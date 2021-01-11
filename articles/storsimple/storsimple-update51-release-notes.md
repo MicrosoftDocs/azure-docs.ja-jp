@@ -1,18 +1,18 @@
 ---
 title: StorSimple 8000 シリーズ Update 5.1 リリース ノート
 description: StorSimple 8000 シリーズ Update 5.1 における新機能、問題、回避策について説明します。
-author: priestlg
+author: twooley
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.author: v-grpr
-ms.openlocfilehash: 27778ea232353dcaa6a38fa19abbd64b11c809e2
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.author: twooley
+ms.openlocfilehash: b706d702ad496d0526d02c4158123cc883505ddf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657867"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782347"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 シリーズ Update 5.1 リリース ノート
 

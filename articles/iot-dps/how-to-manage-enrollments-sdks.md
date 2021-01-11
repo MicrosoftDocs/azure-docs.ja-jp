@@ -6,13 +6,14 @@ ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
+ms.custom: fasttrack-edit, iot
 services: iot-dps
-ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a5e8b6f430f6af49ab79ca0f8cb2253bd0f2049
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74975076"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520658"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法
 "*デバイス登録*" では、ある時点でデバイス プロビジョニング サービスに登録できる、1 つのデバイスまたはデバイス グループのレコードが作成されます。 登録レコードには、必要な IoT ハブを含む、目的のデバイス初期構成がその登録の一部として含まれます。 この記事では、Azure IoT プロビジョニング サービス SDK を使ってプログラムでプロビジョニング サービスのデバイス登録を管理する方法を示します。  この SDK は、GitHub の Azure IoT SDK と同じリポジトリにあります。
@@ -39,7 +40,7 @@ ms.locfileid: "74975076"
     以下のワークフローに従って、SDK で登録グループを作成できます。
 
     1. 登録グループの場合、構成証明メカニズムは X.509 ルート証明書を使います。  ルート証明書を指定してサービス SDK の API ```X509Attestation.createFromRootCertificate``` を呼び出し、登録の構成証明を作成します。  X.509 ルート証明書は、PEM ファイルまたは文字列で提供されます。
-    1. 作成された ```attestation``` と一意の ```enrollmentGroupId``` を使って、新しい ```EnrollmentGroup``` 変数を作成します。  必要に応じて、```Device ID```、```IoTHubHostName```、```ProvisioningStatus``` などのパラメーターを設定できます。
+    1. 作成された ```attestation``` と一意の ```enrollmentGroupId``` を使って、新しい ```EnrollmentGroup``` 変数を作成します。  必要に応じて、```IoTHubHostName```、```ProvisioningStatus``` などのパラメーターを設定できます。
     2. バックエンド アプリケーションで ```EnrollmentGroup``` を指定してサービス SDK の API ```createOrUpdateEnrollmentGroup``` を呼び出し、登録グループを作成します。
 
 * **個別登録**は、登録する単一のデバイスのエントリです。 個別加入では、構成証明メカニズムとして X.509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 固有の初期構成を必要とするデバイスや、TPM または仮想 TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別加入を使用することをお勧めします。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。

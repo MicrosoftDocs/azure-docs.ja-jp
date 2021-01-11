@@ -1,23 +1,37 @@
 ---
-title: Azure Cost Management と Billing の概要 | Microsoft Docs
-description: Azure Cost Management と Billing の機能を使用して、請求管理タスクを実施し、コストへの請求アクセスを管理します。 また、Azure の支出を監視および管理し、Azure のリソースの使用を最適化する機能もあります。
+title: Azure Cost Management と Billing の概要
+description: Azure Cost Management と Billing の機能を使用して、請求管理タスクを実施し、コストへの請求アクセスを管理します。 また、Azure の支出を監視および管理し、Azure のリソースの使用を最適化する機能も使用します。
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
+ms.date: 08/20/2020
 ms.topic: overview
 ms.service: cost-management-billing
+ms.subservice: common
 ms.custom: ''
-ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 7f4585d7199b44c82df9a03ea3244885da72d2fa
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879090"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685172"
 ---
-# <a name="what-is-azure-cost-management-and-billing"></a>Azure Cost Management と Billing の概要
+# <a name="what-is-azure-cost-management--billing"></a>Azure Cost Management と Billing とは
 
-Azure の製品とサービスでは、使用した分に応じて料金が発生します。 Azure リソースを作成して使用すると、そのリソースに対して課金されます。 Azure Cost Management と Billing の機能を使用して、請求管理タスクを実施し、コストへの請求アクセスを管理します。 また、Azure の支出を監視および管理し、Azure のリソースの使用を最適化する機能も使用できます。
+Microsoft クラウドを使用することにより、ビジネス ワークロードの技術的なパフォーマンスを大幅に向上させることができます。 また、コストを削減し、組織の資産を管理するために必要なオーバーヘッドを軽減することもできます。 ただし、このビジネス チャンスはクラウドのデプロイに無駄や非効率性をもたらす可能性があるため、リスクが生じます。 Azure Cost Management と Billing は、ワークロードのコストの分析、管理、最適化に役立つ、Microsoft が提供するツールのスイートです。 このスイートを使用すると、組織がクラウドによってもたらされるベネフィットを確実に活用できます。
+
+Azure のワークロードは、家庭の照明のように考えることができます。 一日中家を空けるとき、あなたは電気を点けたままにしますか。 毎月のエネルギー代を削減するのに役立つ、効率の良い電球を使用しませんか。 1 つの部屋に必要以上の照明がありますか。 Azure Cost Management と Billing を使用すると、組織で使用するワークロードにも同様の思考プロセスを適用できます。
+
+Azure の製品とサービスでは、使用した分に応じて料金が発生します。 Azure リソースを作成して使用すると、そのリソースに対して課金されます。 新しいリソースのデプロイは簡単であるため、ワークロードのコストは、適切な分析や監視を行わないと急速に跳ね上がることがあります。 Azure Cost Management と Billing の機能は、次の目的で使用します。
+
+- 請求書の支払いなどの課金管理タスクを実施する
+- コストへの請求アクセスを管理する
+- 月次請求書の生成に使用されたコストと使用状況データをダウンロードする
+- コストにデータ分析を事前に適用する
+- 支出しきい値を設定する
+- 支出を最適化できるワークロードの変更の機会を特定する
+
+組織としてコスト管理にアプローチする方法の詳細については、「[Azure Cost Management のベスト プラクティス](./costs/cost-mgt-best-practices.md)」記事を参照してください。
 
 ## <a name="understand-azure-billing"></a>Azure Billing の概念
 
@@ -42,9 +56,8 @@ Azure を使用するためにサインアップすると、課金アカウン�
 
 |Scope  |定義  |
 |---------|---------|
-|請求先アカウント     | 1 つまたは複数の Azure サブスクリプションの 1 人の所有者 (アカウント管理者) を表します。 アカウント管理者には、サブスクリプションの作成、請求書の表示、サブスクリプションの課金の変更など、さまざまな課金タスクを実行する権限があります。  |
+|請求先アカウント     | 1 つまたは複数の Azure サブスクリプションの 1 人の所有者 (アカウント管理者) を表します。 アカウント管理者には、サブスクリプションの作成、請求書の表示、サブスクリプションの請求先の変更など、さまざまな課金タスクを実行する権限があります。  |
 |サブスクリプション     |  Azure リソースのグループを表します。 請求書は、サブスクリプション スコープで生成されます。 請求書の支払いに使用される独自の支払方法があります。|
-
 
 #### <a name="enterprise-agreement"></a>Enterprise Agreement
 
@@ -54,7 +67,6 @@ Azure を使用するためにサインアップすると、課金アカウン�
 |部署     |  登録アカウントの任意のグループです。      |
 |登録アカウント     |  1 人のアカウント所有者を表します。 Azure サブスクリプションは、登録アカウント スコープの下に作成されます。  |
 
-
 #### <a name="microsoft-customer-agreement"></a>Microsoft 顧客契約
 
 |Scope  |タスク  |
@@ -63,19 +75,17 @@ Azure を使用するためにサインアップすると、課金アカウン�
 |請求プロファイル     |  請求書とその支払い方法を表します。 請求書はこのスコープで生成されます。 課金プロファイルには、複数の請求書セクションを含めることができます。      |
 |請求書セクション     |   請求書内のコストのグループを表します。 サブスクリプションとその他の購入は、請求書セクション スコープに関連付けられます。    |
 
-
 ## <a name="understand-azure-cost-management"></a>Azure Cost Management の概念
-コスト管理とは、ビジネスに関連するコストを効率的に計画して制御するプロセスです。 通常、コストの管理タスクは、財務、管理、およびアプリのチームが実行します。 Azure Cost Management と Billing は、組織がコストを考慮して計画を立てるときに役立ちます。 また、コストを効果的に分析して、クラウド支出を最適化する措置を取ることもできます。 組織としてコスト管理にアプローチする方法の詳細については、「[Azure Cost Management のベスト プラクティス](./costs/cost-mgt-best-practices.md)」記事を参照してください。
-
-Azure Cost Management で Azure のコストを削減する方法の概要については、[Azure Cost Management の概要ビデオ](https://www.youtube.com/watch?v=el4yN5cHsJ0)をご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
-
->[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 課金は、コスト管理と関連してはいますが、異なるものです。 課金は、顧客に商品やサービスを請求し、取引関係を管理するプロセスです。
 
 Cost Management は、高度な分析によって組織のコストや使用パターンを示します。 Cost Management のレポートには、Azure サービスとサード パーティの Marketplace オファリングによって消費される使用量ベースのコストが表示されます。 コストは、交渉済みの価格、予約要素、Azure ハイブリッド特典割引に基づきます。 このレポートは、使用量の内部コストおよび外部コストや、Azure Marketplace の料金をすべて表示します。 予約の購入、サポート、税金など、その他の料金はまだレポートに表示されません。 レポートは、支出やリソースの使用量を把握し、異常な支出を見つける際に役立ちます。 予測分析も使用できます。 Cost Management は、Azure 管理グループ、予算、および推奨事項を使用して、支出の編成方法やコストの削減方法を明確に示します。
 
 Azure portal や自動エクスポート用のさまざまな API を使用して、コスト データを外部システムや外部プロセスに統合することもできます。 課金データの自動エクスポートや、スケジュール化されたレポートも利用できます。
+
+Azure Cost Management で Azure のコストを削減する方法の概要については、[Azure Cost Management の概要ビデオ](https://www.youtube.com/watch?v=el4yN5cHsJ0)をご覧ください。 他の動画を視聴するには、[Cost Management の YouTube チャンネル](https://www.youtube.com/c/AzureCostManagement)にアクセスしてください。
+
+>[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 ### <a name="plan-and-control-expenses"></a>支出の計画と管理
 
@@ -106,10 +116,9 @@ Azure には、Azure Cost Management と Billing の機能セットに含まれ�
 - [Azure Advisor](../advisor/advisor-overview.md) - 使用されていない VM を識別し、Azure 予約インスタンス購入に関する推奨事項を受け取ります。
 - [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/) - 現在のオンプレミスの Windows Server または SQL Server のライセンスを Azure の VM 用に使用し、コストを節約します。
 
-
 ## <a name="next-steps"></a>次のステップ
 
-Cost Management と Billing について理解したら、次の手順はサービスの使用開始です。
+Cost Management と Billing について理解したら、次のステップはサービスの使用開始です。
 
 - Azure Cost Management の使用を開始し、[コストを分析](./costs/quick-acm-cost-analysis.md)します。
 - [Azure Cost Management のベスト プラクティス](./costs/cost-mgt-best-practices.md)もお読みください。

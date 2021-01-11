@@ -3,23 +3,28 @@ title: Azure Functions 用 JavaScript 開発者向けリファレンス
 description: JavaScript を使用して関数を開発する方法について説明します。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d71301ef73cd94c13b12e17c923ec73abb8e4aae
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ff3e5431481cba0d2d806d60ba5d7a291d1b2b69
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252728"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810118"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
-このガイドには、JavaScript で Azure Functions を記述する複雑な作業についての情報が含まれます。
+このガイドでは、JavaScript を使用した Azure Functions の開発を成功させるために役立つ詳細情報について説明します。
 
-JavaScript 関数はエクスポートされた `function` であり、トリガーされると実行します ([トリガーは function.json で構成します](functions-triggers-bindings.md))。 各関数に渡される最初の引数は `context` オブジェクトで、バインディング データの送受信、ログ記録、ランタイムとの通信に使用されます。
+Express.js、Node.js、または JavaScript の開発者が、Azure Functions を初めて使用する場合は、まず次のいずれかの記事を読むことをお勧めします。
 
-この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 [Visual Studio Code](functions-create-first-function-vs-code.md) を使用するか、または [portal](functions-create-first-azure-function.md) 内で、最初の関数を作成する Functions のクイック スタートを完了しておいてください。
+| 作業の開始 | 概念| ガイド付き学習 |
+| -- | -- | -- | 
+| <ul><li>[Visual Studio Code を使用した Node.js 関数](./functions-create-first-function-vs-code.md?pivots=programming-language-javascript)</li><li>[ターミナル/コマンド プロンプトを使用した Node.js 関数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-javascript)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[TypeScript 関数](#typescript)</li><li>[パフォーマンス&nbsp;に関する考慮事項](functions-best-practices.md)</li></ul> | <ul><li>[サーバーレス アプリケーションの作成](/learn/paths/create-serverless-applications/)</li><li>[Node.js と Express API をサーバーレス API にリファクタリングする](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
-この記事は「[TypeScript アプリの開発](#typescript)」もサポートしています。
+## <a name="javascript-function-basics"></a>JavaScript 関数の基本
+
+JavaScript (Node.js) 関数はエクスポートされた `function` であり、トリガーされると実行します ([トリガーは function.json で構成します](functions-triggers-bindings.md))。 各関数に渡される最初の引数は `context` オブジェクトで、バインディング データの送受信、ログ記録、ランタイムとの通信に使用されます。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -118,7 +123,7 @@ Azure Functions では、入力は、トリガー入力と追加入力という 
    };
    ```
    
- - **JavaScript の [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) オブジェクトの入力を使用します。** これは、基本的にパラメーターとして入力を渡すのと同じですが、動的に入力を処理することができます。
+ - **JavaScript の [`arguments`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments) オブジェクトの入力を使用します。** これは、基本的にパラメーターとして入力を渡すのと同じですが、動的に入力を処理することができます。
  
    ```javascript
    module.exports = async function(context) { 
@@ -342,7 +347,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.req` (要求) オブジェクトには、次のプロパティがあります。
 
-| プロパティ      | 説明                                                    |
+| プロパティ      | [説明]                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 要求の本文を格納するオブジェクト。               |
 | _headers_     | 要求ヘッダーを格納するオブジェクト。                   |
@@ -357,7 +362,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.res` (応答) オブジェクトには、次のプロパティがあります。
 
-| プロパティ  | 説明                                               |
+| プロパティ  | [説明]                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
@@ -559,11 +564,11 @@ module.exports = myObj;
 
 Node.js プロセスは、`--inspect` パラメーターを指定して起動されると、指定されたポートでデバッグ クライアントをリッスンします。 Azure Functions 2.x では、環境変数またはアプリ設定 `languageWorkers:node:arguments = <args>` を追加することで、コードを実行する Node.js プロセスに渡す引数を指定できます。 
 
-ローカルでデバッグするには、[local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) ファイルの `Values` の下に `"languageWorkers:node:arguments": "--inspect=5858"` を追加し、デバッガーをポート 5858 に接続します。
+ローカルでデバッグするには、[local.settings.json](./functions-run-local.md#local-settings-file) ファイルの `Values` の下に `"languageWorkers:node:arguments": "--inspect=5858"` を追加し、デバッガーをポート 5858 に接続します。
 
 VS Code を使用してデバッグするときは、プロジェクトの launch.json ファイルの `port` 値を使用して、`--inspect` パラメーターが自動的に追加されます。
 
-バージョン 1.x では、設定 `languageWorkers:node:arguments` は機能しません。 デバッグ ポートは、Azure Functions Core Tools の [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) パラメーターを使用して選択できます。
+バージョン 1.x では、設定 `languageWorkers:node:arguments` は機能しません。 デバッグ ポートは、Azure Functions Core Tools の [`--nodeDebugPort`](./functions-run-local.md#start) パラメーターを使用して選択できます。
 
 ## <a name="typescript"></a>TypeScript
 
@@ -632,11 +637,11 @@ JavaScript 関数を使用するときは、以下のセクションに記載さ
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>シングル vCPU App Service プランを選択する
 
-App Service プランを使用する関数アプリを作成するときは、複数の vCPU を持つプランではなく、シングル vCPU プランを選択することをお勧めします。 今日では、関数を使用して、シングル vCPU VM で JavaScript 関数をより効率的に実行できるようになりました。そのため、大規模な VM を使用しても、期待以上にパフォーマンスが向上することはありません。 必要な場合は、シングル vCPU VM インスタンスを追加することで手動でスケールアウトするか、自動スケーリングを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。
+App Service プランを使用する関数アプリを作成するときは、複数の vCPU を持つプランではなく、シングル vCPU プランを選択することをお勧めします。 今日では、関数を使用して、シングル vCPU VM で JavaScript 関数をより効率的に実行できるようになりました。そのため、大規模な VM を使用しても、期待以上にパフォーマンスが向上することはありません。 必要な場合は、シングル vCPU VM インスタンスを追加することで手動でスケールアウトするか、自動スケーリングを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md?toc=/azure/app-service/toc.json)」を参照してください。
 
 ### <a name="cold-start"></a>コールド スタート
 
-サーバーレス ホスティング モデルで Azure Functions を開発するときは、コールド スタートが現実のものになります。 *コールド スタート*とは、非アクティブな期間の後で初めて関数アプリが起動するとき、起動に時間がかかることを意味します。 特に、大きな依存関係ツリーを持つ JavaScript 関数の場合は、コールド スタートが重要になる可能性があります。 コールド スタート プロセスをスピードアップするには、可能な場合、[パッケージ ファイルとして関数を実行](run-functions-from-deployment-package.md)します。 多くの展開方法ではパッケージからの実行モデルが既定で使用されますが、大規模なコールド スタートが発生していて、この方法で実行していない場合は、変更が大きな向上につながる可能性があります。
+サーバーレス ホスティング モデルで Azure 関数を開発するときは、コールド スタートが現実のものになります。 *コールド スタート*とは、非アクティブな期間の後で初めて関数アプリが起動するとき、起動に時間がかかることを意味します。 特に、大きな依存関係ツリーを持つ JavaScript 関数の場合は、コールド スタートが重要になる可能性があります。 コールド スタート プロセスをスピードアップするには、可能な場合、[パッケージ ファイルとして関数を実行](run-functions-from-deployment-package.md)します。 多くの展開方法ではパッケージからの実行モデルが既定で使用されますが、大規模なコールド スタートが発生していて、この方法で実行していない場合は、変更が大きな向上につながる可能性があります。
 
 ### <a name="connection-limits"></a>接続の制限
 

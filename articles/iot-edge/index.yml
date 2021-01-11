@@ -11,12 +11,12 @@ metadata:
   ms.author: kgremban
   manager: philmea
   ms.date: 08/05/2019
-  ms.openlocfilehash: 7c190dd3421d0eef9ce0aac3487644be9e758e4c
-  ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+  ms.openlocfilehash: d3a71cd919660686c77b866b9e7fab461678da96
+  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/24/2020
-  ms.locfileid: "82130816"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89300359"
 landingContent:
 - title: Linux デバイス向けの開発
   linkLists:
@@ -101,7 +101,7 @@ landingContent:
     - text: Azure CLI を使用した大規模なデプロイと監視
       url: how-to-deploy-cli-at-scale.md
     - text: Azure Pipelines を使用した CI/CD パイプラインの作成
-      url: how-to-ci-cd.md
+      url: how-to-continuous-integration-continuous-deployment.md
   - linkListType: deploy
     links:
     - text: IoT Hub 用の REST API

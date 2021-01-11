@@ -1,6 +1,6 @@
 ---
 title: Azure のデータベース セキュリティのチェックリスト | Microsoft Docs
-description: この記事では、Azure のデータベース セキュリティのチェックリスト一式を提供します。
+description: Azure のデータベース セキュリティのチェックリストを使用して、クラウド コンピューティングのセキュリティに関する重要な問題に対処するようにしてください。
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021842"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542978"
 ---
 # <a name="azure-database-security-checklist"></a>Azure のデータベース セキュリティのチェックリスト
 

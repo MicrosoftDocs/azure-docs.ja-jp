@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 72acd5c3c5fbab08b2e97421689b4f562b2ae2e8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 9b23fbe55589bbbe6d560967119206fb1ea1d85c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119720"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607270"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
@@ -22,7 +22,7 @@ ms.locfileid: "86119720"
 
 1 つのオファーの種類をさまざまな方法で構成して、異なる公開オプション、行動喚起、プロビジョニング、または価格を使用することができます。 オファーの種類の公開オプションと構成は、オファーの適格性と技術面の要件に合わせて指定されます。
 
-オファーの作成前に、ネットショップおよびオファーの種類の適格性の要件と、公開に関する技術面の要件を確認してください。
+オファーの作成前に、オンライン ストアおよびオファーの種類の適格性の要件と、公開に関する技術面の要件を確認してください。
 
 ## <a name="list-of-offer-types"></a>オファーの種類の一覧
 
@@ -45,4 +45,4 @@ ms.locfileid: "86119720"
 ## <a name="next-steps"></a>次のステップ
 
 - オファーの種類に対応する記事 (以降のセクション) に示されている適格性の要件を確認し、オファーの選択と構成を確定する。
-- ネットショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認する。
+- オンライン ショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認します。

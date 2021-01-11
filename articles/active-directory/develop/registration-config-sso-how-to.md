@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890476"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120679"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>アプリケーションのシングル サインオンを構成する方法
 
@@ -26,20 +26,20 @@ ms.locfileid: "82890476"
 
 * モバイル アプリを作成している場合、仲介型または仲介型でない SSO を有効にするために、追加の構成が必要になることがあります。
 
-Android については、[Android でクロス アプリ SSO を有効にする方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)に関するページを参照してください。<br>
+Android については、[Android でクロス アプリ SSO を有効にする方法](../azuread-dev/howto-v1-enable-sso-android.md)に関するページを参照してください。<br>
 
-iOS については、[iOS でクロス アプリ SSO を有効にする方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)に関するページを参照してください。
+iOS については、[iOS でクロス アプリ SSO を有効にする方法](../azuread-dev/howto-v1-enable-sso-ios.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Azure AD SSO](../manage-apps/what-is-single-sign-on.md)<br>
 
-[Android でクロス アプリ SSO を有効にする方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[Android でクロス アプリ SSO を有効にする方法](../azuread-dev/howto-v1-enable-sso-android.md)<br>
 
-[iOS でクロス アプリ SSO を有効にする方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[iOS でクロス アプリ SSO を有効にする方法](../azuread-dev/howto-v1-enable-sso-ios.md)<br>
 
-[アプリと Azure AD の統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[アプリと Azure AD の統合](./quickstart-register-app.md)<br>
 
-[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意](./v2-permissions-and-consent.md)<br>
 
 [Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

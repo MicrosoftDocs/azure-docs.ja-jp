@@ -5,15 +5,16 @@ author: amberbhargava
 ms.reviewer: banders
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 671189a6a328a77653b61542e3e30c848a75cb65
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: f701e41c62336bcd7638360a27a0fb4c3ce3ec7d
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85364280"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686668"
 ---
 # <a name="troubleshoot-viewing-your-billing-account-in-the-azure-portal"></a>Azure portal での課金アカウントの表示に関するトラブルシューティング
 

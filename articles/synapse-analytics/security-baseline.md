@@ -1,20 +1,20 @@
 ---
-title: Azure セキュリティ ベンチマーク用の Synapse Analytics セキュリティ ベースライン
+title: Synapse Analytics 用の Azure セキュリティ ベースライン
 description: Synapse Analytics セキュリティ ベースラインでは、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4b40bdeb6f60aafea760c6c6e3e0b0f99b419614
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7f05e4fb0443107370f9182706bd35b45771e0f2
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040658"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210898"
 ---
-# <a name="synapse-analytics-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Synapse Analytics セキュリティ ベースライン
+# <a name="azure-security-baseline-for-synapse-analytics"></a>Synapse Analytics 用の Azure セキュリティ ベースライン
 
 Synapse Analytics 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
@@ -28,9 +28,9 @@ Synapse Analytics 用の Azure セキュリティ ベースラインには、デ
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
-**ガイダンス**: Private Link を使用することで仮想ネットワークに対して Azure SQL Database をセキュリティで保護します。 Azure Private Link を使用すると、仮想ネットワーク内のプライベート エンドポイント経由で、Azure PaaS サービスにアクセスできます。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを通ります。
+**ガイダンス**: Private Link を使用することで仮想ネットワークに対して Azure SQL Server をセキュリティで保護します。 Azure Private Link を使用すると、仮想ネットワーク内のプライベート エンドポイント経由で、Azure PaaS サービスにアクセスできます。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを通ります。
 
-または、Synapse SQL プールに接続するときに、ネットワーク セキュリティ グループを使用して、SQL Database への送信接続の範囲を絞り込みます。 [Azure サービスを許可する] を [オフ] に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 ファイアウォール規則でパブリック IP アドレスが許可されていないことを確認します。
+または、Synapse SQL プールに接続するときに、ネットワーク セキュリティ グループを使用して、SQL データベースへの送信接続の範囲を絞り込みます。 [Allow Azure Services]\(Azure サービスを許可する\) を [オフ] に設定して、パブリック エンドポイント経由で SQL Database へのすべての Azure サービス トラフィックを無効にします。 ファイアウォール規則でパブリック IP アドレスが許可されていないことを確認します。
 
 * [Azure Private Link について](https://docs.microsoft.com/azure/private-link/private-link-overview)
 
@@ -44,7 +44,7 @@ Synapse Analytics 用の Azure セキュリティ ベースラインには、デ
 
 **責任**: Customer
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1.2:仮想ネットワーク、サブネット、NIC の構成とトラフィックを監視してログに記録する
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2:仮想ネットワーク、サブネット、ネットワーク インターフェイスの構成とトラフィックを監視してログに記録する
 
 **ガイダンス**: Azure Synapse SQL プールに接続するとき、ネットワーク セキュリティ グループ (NSG) フロー ログを有効にしてある場合は、トラフィックの監査のためにログを Azure ストレージ アカウントに送信します。
 
@@ -314,7 +314,7 @@ Azure Resource Management テンプレート、ロールベースのアクセス
 
 Azure SQL を初めてデプロイするときに、管理者ログインと、そのログインに関連付けられているパスワードを指定します。 この管理者アカウントは、サーバー管理者と呼ばれます。Azure portal を開き、サーバーやマネージド インスタンスの [プロパティ] タブに移動することで、データベースの管理者アカウントを確認できます。 また、完全な管理アクセス許可を持つ Azure AD 管理者アカウントを構成することもできます。これは、Azure Active Directory 認証を有効にする場合に必要です。
 
-管理操作には、明示的に割り当てる必要がある組み込みの Azure ロールベースのアクセス制御 (Azure RBAC) ロールを使用します。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
+管理操作には、明示的に割り当てる必要がある Azure の組み込みロールを使用します。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
 * [SQL Database の認証](https://docs.microsoft.com/azure/azure-sql/database/security-overview#authentication)
 
@@ -328,7 +328,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
 * [Azure SQL で既存のログインと管理者アカウントを管理する方法](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage#existing-logins-and-user-accounts-after-creating-a-new-database)
 
-* [Azure RBAC の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
+* [Azure 組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -360,7 +360,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
 **責任**: Customer
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: シングル サインオン (SSO) と Azure Active Directory を統合する
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4: Azure Active Directory シングル サインオン (SSO) を使用する
 
 **ガイダンス**: Azure アプリの登録 (サービス プリンシパル) を使用して、API 呼び出しを介してコントロール プレーン (Azure portal) のデータ ウェアハウスとやりとりするために使用できるトークンを取得します。
 
@@ -388,7 +388,7 @@ Azure SQL を初めてデプロイするときに、管理者ログインと、�
 
 **責任**: Customer
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
+### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: セキュリティで保護された Azure マネージド ワークステーションを管理タスクに使用する
 
 **ガイダンス**: Multi-Factor Authentication (MFA) が構成された特権アクセス ワークステーション (PAW) を使用してログインし、Azure リソースを構成します。
 
@@ -476,7 +476,7 @@ SQL 認証の使用時は、データベース内に包含データベース ユ
 
 **責任**: Customer
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: アカウント ログイン動作の偏差に関するアラートを生成する
+### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: アカウント サインイン動作の偏差に関するアラートを生成する
 
 **ガイダンス**:ユーザー ID に関連する検出された疑わしいアクションへの自動応答を構成するには、Azure Active Directory (Azure AD) の Identity Protection 機能とリスク検出機能を使用します。 また、さらに詳しく調査するためにデータを Azure Sentinel にオンボードして取り込むこともできます。
 
@@ -584,7 +584,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: Azure のロールベースのアクセス制御 (RBAC) を使用して、Synapse SQL プール内の Azure SQL Database に対するアクセスを管理します。
+**ガイダンス**:Azure のロールベースのアクセス制御 (Azure RBAC) を使用して、Synapse SQL プール内の Azure SQL データベースに対するアクセスを管理します。
 
 ユーザー アカウントのデータベースのロール メンバーシップとオブジェクト レベルのアクセス許可によって制御されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。
 
@@ -642,9 +642,9 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
-**ガイダンス**: Advanced Data Security を有効にし、SQL Database に対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。
+**ガイダンス**: Advanced Data Security を有効にし、Azure SQL データベースに対する脆弱性評価の実行に関する Azure Security Center の推奨事項に従います。
 
-* [Azure SQL Database で脆弱性評価を実行する方法](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
+* [Azure SQL データベースで脆弱性評価を実行する方法](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment)
 
 * [Advanced Data Security を有効にする方法](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)
 
@@ -664,7 +664,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3:サード パーティ ソフトウェア タイトル用の自動化された修正プログラム管理ソリューションをデプロイする
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -698,7 +698,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 *詳細については、「[セキュリティ コントロール: インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
 
-### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された Asset Discovery ソリューションを使用する
+### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
 **ガイダンス**:Azure Resource Graph を使用して、サブスクリプション内の Synapse SQL プールに関連するすべてのリソースをクエリして検出します。 テナント内の適切な (読み取り) アクセス許可を持っており、サブスクリプション内のリソースだけでなく、すべての Azure サブスクリプションを列挙できることを確認します。
 
@@ -738,7 +738,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **責任**: Customer
 
-### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
+### <a name="64-define-and-maintain-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
 **ガイダンス**: Synapse SQL プールに関連する承認済みの Azure リソースの一覧を定義します。
 
@@ -846,8 +846,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
-**ガイダンス**: Synapse SQL プールに関連するリソースの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Sql" 名前空間で Azure Policy エイリアスを使用します。 また、次のように、Azure データベース用の組み込みのポリシー定義を使用することもできます。
-
+**ガイダンス**: Synapse SQL プールに関連するリソースの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Sql" 名前空間で Azure Policy エイリアスを使用します。 また、次のように、Azure データベース/サーバー用の組み込みのポリシー定義を使用することもできます。
 - SQL サーバーでの脅威検出のデプロイ
 - SQL Server は仮想ネットワーク サービス エンドポイントを使用する必要がある
 
@@ -869,7 +868,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 * [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -917,7 +916,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用の構成管理ツールをデプロイする
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -979,7 +978,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 *詳細については、「[セキュリティ コントロール: マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されたマルウェア対策ソフトウェアを使用する
 
 **ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。 Microsoft は、基になるプラットフォーム用のマルウェア対策を処理します。
 
@@ -1011,11 +1010,11 @@ App Service、Data lake Storage、Blob Storage、Azure SQL Server などの非�
 
 *詳細については、「[セキュリティ コントロール: データの復旧](/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
 **ガイダンス**: Synapse SQL プールのスナップショットは 1 日を通して自動的に取得され、7 日間利用できる復元ポイントが作成されます。 この保持期間は変更できません。 SQL プールでは、8 時間の RPO (回復ポイントの目標) がサポートされています。 プライマリ リージョンのデータ ウェアハウスを、過去 7 日間に作成されたいずれかのスナップショットから復元することができます。 必要に応じて、手動でスナップショットをトリガーできることに注意してください。
 
-* [Azure Synapse SQL プールにおけるバックアップと復元](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL プールにおけるバックアップと復元](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1027,7 +1026,7 @@ App Service、Data lake Storage、Blob Storage、Azure SQL Server などの非�
 
 カスタマー マネージド キーを使用してデータベース暗号化キーを暗号化している場合は、キーがバックアップされていることを確認します。
 
-* [Azure Synapse SQL プールにおけるバックアップと復元](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL プールにおけるバックアップと復元](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [Azure Key Vault のキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -1041,7 +1040,7 @@ App Service、Data lake Storage、Blob Storage、Azure SQL Server などの非�
 
 * [Azure Key Vault のキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
-* [Azure Synapse SQL プールにおけるバックアップと復元](https://docs.microsoft.coms/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL プールにおけるバックアップと復元](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 * [既存の SQL プールを復元する方法](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-restore-active-paused-dw)
 
@@ -1111,7 +1110,7 @@ App Service、Data lake Storage、Blob Storage、Azure SQL Server などの非�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5:インシデント対応システムにセキュリティ アラートを組み込む
 
-**ガイダンス**: 連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Sentinel にストリーミングできます。
+**ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用してアラートを Sentinel にストリーミングできます。
 
 * [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
 

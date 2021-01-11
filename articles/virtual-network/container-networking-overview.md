@@ -35,7 +35,7 @@ ms.locfileid: "87283216"
 - ポッドにはパブリック IP アドレスを割り当てることができ、インターネットから直接アクセスできます。 ポッド自体もインターネットにアクセスできます。
 - サービス、イングレス コントローラー、Kube DNS など、Kubernetes リソースとシームレスに連携します。 Azure Load Balancer を使用して、Kubernetes サービスを外部または内部に公開できます。
 
-次の図では、プラグインが Azure 仮想ネットワークの機能をポッドに提供する方法を示します。
+次の図では、プラグインが Azure Virtual Network の機能をポッドに提供する方法を示します。
 
 ![コンテナー ネットワークの概要](./media/container-networking/container-networking-overview.png)
 

@@ -64,13 +64,13 @@ LG テンプレートを利用すると、アダプティブ式を使用して�
 
 | 設定            | 推奨値       | 
 | ------------------ | --------------------- | 
-| 名前               | `SubjectContext`         | 
+| Name\(名前\)               | `SubjectContext`         | 
 | Is Global          | チェック解除             | 
-| 必須           | チェック解除               | 
+| Required\(必須\)           | チェック解除               | 
 | Type               | String                |
-| 既定値      | `all` |
-| 構成      | 内部カタログから事前定義済み入力値を受け取る | 
-| 定義済み入力値 | `room`、`bathroom`、`all`|
+| Default value\(既定値\)      | `all` |
+| Configuration\(構成\)      | 内部カタログから事前定義済み入力値を受け取る | 
+| Predefined input values\(定義済み入力値\) | `room`、`bathroom`、`all`|
 
 ### <a name="modify-completion-rule"></a>完了ルールを変更する
 

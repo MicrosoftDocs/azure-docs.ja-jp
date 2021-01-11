@@ -1,7 +1,7 @@
 ---
 title: 認証を管理する
 titleSuffix: Azure Maps
-description: Azure portal を使用して、Microsoft Azure Maps での認証を管理します。
+description: Azure Maps 認証について理解を深めます。 どの方法がどのシナリオで最適に機能するかを確認します。 ポータルを使用して認証設定を表示する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 69dda537beda1d1bec4f019e1d5cadd16bdd5b39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8fc27ea4de7e81f1279f68d2e4a1a7fde1fcf41f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126858"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037339"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -56,7 +56,7 @@ Azure Maps アカウントの作成後、主キーと 2 次キーが生成され
 
 ## <a name="view-role-definitions"></a>ロール定義を表示する
 
-Azure Maps に使用できる RBAC ロールを表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
+Azure Maps に使用できる Azure ロールを表示するには、 **[アクセス制御 (IAM)]** に移動します。 **[ロール]** を選択してから、「*Azure Maps*」で始まるロールを検索します。 これらの Azure Maps ロールが、アクセス権を付与できるロールです。
 
 > [!div class="mx-imgBorder"]
 > ![使用可能なロールの表示](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

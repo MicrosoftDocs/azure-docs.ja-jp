@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6efff54d2c28659af27161ab4cd4753302210006
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e9c4489f59f72e4d0b5c7a0b911da188eb0828c
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358414"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280198"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証:現在の制限
 
@@ -43,9 +43,9 @@ ms.locfileid: "85358414"
 
 次のシナリオはサポートされて _いません_。
 
-- [資格情報が漏洩した](../reports-monitoring/concept-risk-events.md#leaked-credentials)ユーザーの検出。
+- [資格情報が漏洩した](../identity-protection/overview-identity-protection.md)ユーザーの検出。
 - Azure AD Domain Services を使用するには、パスワード ハッシュの同期をテナントで有効にする必要があります。 そのため、パススルー認証 _のみ_ を使用するテナントは、Azure AD Domain Services を必要とするシナリオに対応していません。
-- パススルー認証は [Azure AD Connect Health](whatis-hybrid-identity-health.md) にはTS統合されていません。
+- パススルー認証は [Azure AD Connect Health](./whatis-azure-ad-connect.md) にはTS統合されていません。
 
 > [!IMPORTANT]
 > サポートされていないシナリオ _のみ_ の対処法として (Azure AD Connect Health 統合を除く)、Azure AD Connect ウィザードの [[オプション機能]](how-to-connect-install-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。

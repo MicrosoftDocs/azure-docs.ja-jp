@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: dbfb50b40b4705cae55ba6e4f1ef950b586b5fb5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2cbed4d6dd2a9c5e63e73d89e5327fa3759777fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185876"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064461"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
@@ -49,7 +49,7 @@ VM の Start/Stop VMs during off-hours 機能を有効にするには、特定�
 
 ### <a name="permissions-for-pre-existing-automation-account-and-log-analytics-workspace"></a>既存の Automation アカウントと Log Analytics ワークスペースのアクセス許可
 
-既存の Automation アカウントと Log Analytics ワークスペースを使用して VM の Start/Stop VMs during off-hours 機能を有効にするには、リソース グループ スコープで次のアクセス許可が必要になります。 ロールの詳細については、「[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)」をご覧ください。
+既存の Automation アカウントと Log Analytics ワークスペースを使用して VM の Start/Stop VMs during off-hours 機能を有効にするには、リソース グループ スコープで次のアクセス許可が必要になります。 ロールの詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」をご覧ください。
 
 | 権限 | Scope|
 | --- | --- |

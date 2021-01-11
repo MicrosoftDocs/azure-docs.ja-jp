@@ -85,7 +85,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
    a. 全般セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/testaccount/dev_test``)。
 
-   b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *`https://github.com/testaccount/dev_test.git`* )。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
+   b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *`https://github.com/testaccount/dev_test.git`* )。 ここで、ビルドするブランチを指定することもできます (例: **/master**)。
 
 1. Jenkins と対話できるように (リポジトリをホストする) *GitHub* を構成します。 次の手順に従います。
 

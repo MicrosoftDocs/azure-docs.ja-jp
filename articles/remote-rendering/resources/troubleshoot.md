@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 2cb143e08e3901b1d0ab7181df68f06887069012
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2c5b6ef0792e418d873d84341a0fffc356c799e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563266"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509282"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -105,7 +105,7 @@ GPU を 2 基搭載したノート パソコンで作業している場合、既
 
 **モデルで選択されている VM の制限、具体的には、ポリゴンの最大数を超えている:**
 
-特定の [VM サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
+特定の[サーバー サイズの制限](../reference/limits.md#overall-number-of-polygons)を確認してください。
 
 **モデルがカメラの視錐台の外側にある:**
 
@@ -148,7 +148,7 @@ Azure Remote Rendering では、動画を使用してフレーム合成を行っ
 
 ## <a name="checkerboard-pattern-is-rendered-after-model-loading"></a>モデルの読み込み後にチェッカーボード パターンがレンダリングされる
 
-レンダリングされたイメージが次のように表示される場合:![チェッカーボード](../reference/media/checkerboard.png) レンダラーが[標準の VM サイズのポリゴンの制限](../reference/vm-sizes.md)に達しています。 解消するには、**Premium VM** サイズに切り替えるか、表示されるポリゴンの数を減らします。
+レンダリングされたイメージが次のように表示される場合:![チェッカーボード](../reference/media/checkerboard.png) レンダラーが[標準の構成サイズのポリゴンの制限](../reference/vm-sizes.md)に達しています。 解消するには、**Premium**  の構成サイズに切り替えるか、表示されるポリゴンの数を減らします。
 
 ## <a name="the-rendered-image-in-unity-is-upside-down"></a>Unity でレンダリングされるイメージが上下反転している
 

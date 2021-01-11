@@ -13,16 +13,16 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 0998bb04b0dfc69db4696f2e390cfe259eba6718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696523"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119880"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Android 用 MSAL と B2C を一緒に使用する
 
-Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者は、[Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/) を使用してソーシャル ID およびローカル ID でユーザーを認証できます。 Azure AD B2C は、ID 管理サービスです。 それを使用すると、貴社のアプリケーションを顧客が使用するときに、顧客がサインアップ、サインイン、およびプロファイル管理を行う方法をカスタマイズおよび制御することができます。
+Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者は、[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) を使用してソーシャル ID およびローカル ID でユーザーを認証できます。 Azure AD B2C は、ID 管理サービスです。 それを使用すると、貴社のアプリケーションを顧客が使用するときに、顧客がサインアップ、サインイン、およびプロファイル管理を行う方法をカスタマイズおよび制御することができます。
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>既知の機関とリダイレクト URI を構成する
 
@@ -54,7 +54,7 @@ Android 用 MSAL では、B2C ポリシー (ユーザー体験) は個々の機�
 }
 ```
 
-`redirect_uri` は、アプリ構成で登録する必要があります。さらに、[承認コード付与フロー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)中にリダイレクトをサポートするために、`AndroidManifest.xml` に登録する必要があります。
+`redirect_uri` は、アプリ構成で登録する必要があります。さらに、[承認コード付与フロー](../../active-directory-b2c/authorization-code-flow.md)中にリダイレクトをサポートするために、`AndroidManifest.xml` に登録する必要があります。
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication を初期化する
 
@@ -227,7 +227,7 @@ String tenantId = account.getTenantId();
 
 ### <a name="idtoken-claims"></a>IdToken 要求
 
-IdToken で返される要求は、MSAL ではなく、セキュリティ トークン サービス (STS) によって設定されます。 使用する ID プロバイダー (IdP) によっては、一部の要求が存在しない場合があります。 現在、一部の IdP では `preferred_username` 要求が提供されていません。 この要求は MSAL によってキャッシュに使用されるため、プレースホルダーの値 (`MISSING FROM THE TOKEN RESPONSE`) が代わりに使用されます。 B2C IdToken 要求の詳細については、「[Azure Active Directory B2C のトークンの概要](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#claims)」を参照してください。
+IdToken で返される要求は、MSAL ではなく、セキュリティ トークン サービス (STS) によって設定されます。 使用する ID プロバイダー (IdP) によっては、一部の要求が存在しない場合があります。 現在、一部の IdP では `preferred_username` 要求が提供されていません。 この要求は MSAL によってキャッシュに使用されるため、プレースホルダーの値 (`MISSING FROM THE TOKEN RESPONSE`) が代わりに使用されます。 B2C IdToken 要求の詳細については、「[Azure Active Directory B2C のトークンの概要](../../active-directory-b2c/tokens-overview.md#claims)」を参照してください。
 
 ## <a name="managing-accounts-and-policies"></a>アカウントとポリシーの管理
 
@@ -239,4 +239,4 @@ B2C では、各ポリシーが個別の機関として扱われます。 した
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Active Directory B2C (Azure AD B2C) の詳細については、「[Azure Active Directory B2C とは](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)」を参照してください。
+Azure Active Directory B2C (Azure AD B2C) の詳細については、「[Azure Active Directory B2C とは](../../active-directory-b2c/overview.md)」を参照してください。

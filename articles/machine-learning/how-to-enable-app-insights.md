@@ -5,23 +5,23 @@ description: Azure Machine Learning でデプロイされた Web サービスを
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 06/09/2020
-ms.custom: tracking-python
-ms.openlocfilehash: d28cd3b1d8722970505eb313bd8e80589ce9ff87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/23/2020
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: ae66447e128b07ce942b8c2fcc66347a31cfe83f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743511"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848861"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Application Insights を有効にすることで、Azure Kubernetes Service (AKS) または Azure Container Instances (ACI) で Web サービス エンドポイントにデプロイされたモデルのデータを収集および監視する方法について説明します。 
+この記事では、ログのクエリを実行し、Azure Application Insights を有効にすることで、Azure Kubernetes Service (AKS) または Azure Container Instances (ACI) で Web サービス エンドポイントにデプロイされたモデルのデータを収集および監視する方法について説明します。以下を使用します。 
 * [Azure Machine Learning Python SDK](#python)
 * [Azure Machine Learning Studio](#studio) (https://ml.azure.com )
 
@@ -42,6 +42,18 @@ ms.locfileid: "84743511"
 
 * Azure Kubernetes Service (AKS) または Azure コンテナー インスタンス (ACI) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
 
+## <a name="query-logs-for-deployed-models"></a>デプロイ済みモデルのログのクエリを実行する
+
+以前にデプロイした Web サービスからログを取得するには、サービスを読み込んで、`get_logs()` 関数を使用します。 ログには、デプロイ中に発生したエラーに関する詳細情報が含まれている場合があります。
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
 ## <a name="web-service-metadata-and-response-data"></a>Web サービスのメタデータと応答データ
 
 > [!IMPORTANT]
@@ -50,6 +62,7 @@ ms.locfileid: "84743511"
 Web サービスへの要求の情報を記録するには、`print` ステートメントを score.py ファイルに追加します。 各 `print` ステートメントによって、メッセージ `STDOUT` の Application Insights のトレース テーブルに 1 つのエントリが生成されます。 `print` ステートメントの内容は、`customDimensions` に格納されてから、トレース テーブルの `Contents` に格納されます。 JSON 文字列を出力すると、`Contents` のトレース出力に階層データ構造が生成されます。
 
 Azure Application Insights に直接クエリを実行してこのデータにアクセスしたり、長期の保持やさらなる処理のためにストレージ アカウントに対する[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を設定したりできます。 モデル データはその後、Azure Machine Learning で、ラベル付け、再トレーニング、説明、データ分析などの用途を設定するために使用できます。 
+
 
 <a name="python"></a>
 
@@ -128,6 +141,8 @@ Azure Application Insights に直接クエリを実行してこのデータに�
 
 3. イメージをビルドし、[AKS または ACI](how-to-deploy-and-where.md) にデプロイします。
 
+ログとデータ収集の詳細については、「[Azure Machine Learning でログ記録を有効にする](how-to-enable-logging.md)」および「[実稼働環境のモデルからデータを収集する](how-to-enable-data-collection.md)」を参照してください。
+
 ### <a name="disable-tracking-in-python"></a>Python で追跡を無効にする
 
 Azure Application Insights を無効にするには、次のコードを使用します。
@@ -153,15 +168,20 @@ Azure Application Insights を無効にするには、次のコードを使用�
 1. **[Application Insights の診断とデータ収集を有効にする]** を選択します。
 
     ![App Insights を有効にする](./media/how-to-enable-app-insights/enable-app-insights.png)
-## <a name="evaluate-data"></a>データを評価する
+
+## <a name="view-metrics-and-logs"></a>メトリックとログを表示する
+
 サービスのデータは、Azure Machine Learning と同じリソース グループ内の Azure Application Insights アカウントに保存されます。
 表示するには:
 
-1. [Azure portal](https://ms.portal.azure.com/) で Azure Machine Learning ワークスペースに移動し、Application Insights リンクをクリックします。
+1. [Studio](https://ml.azure.com/) の Azure Machine Learning ワークスペースに移動します。
+1. **[エンドポイント]** を選択します。
+1. デプロイ済みのサービスを選択します。
+1. 下にスクロールして **[Application Insights URL]** を見つけ、リンクを選択します。
 
-    [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![Application Insights URL を見つける](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. 左側の一覧の **[概要]** タブまたは __[監視]__ セクションで、 __[ログ]__ を選択します。
+1. Application Insights で、左側の一覧の **[概要]** タブまたは __[監視]__ セクションで、 __[ログ]__ を選択します。
 
     [![監視の [概要] タブ](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
@@ -186,7 +206,7 @@ Azure Application Insights の[連続エクスポート](https://docs.microsoft.
 
 Azure Data Factory、Azure ML パイプライン、またはその他のデータ処理ツールを使用して、必要に応じてデータを変換できます。 データを変換したら、データセットとして Azure Machine Learning ワークスペースに登録できます。 そのためには、[データセットを作成して登録する方法](how-to-create-register-datasets.md)に関するページをご覧ください。
 
-   [![連続エクスポート](./media/how-to-enable-app-insights/continuous-export-setup.png)](././media/how-to-enable-app-insights/continuous-export-setup.png)
+:::image type="content" source="media/how-to-enable-app-insights/continuous-export-setup.png" alt-text="連続エクスポート":::
 
 
 ## <a name="example-notebook"></a>ノートブックの例

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: afa8375805ebc5d52ac716126adca86850147166
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134088"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504230"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -51,14 +51,14 @@ ms.locfileid: "86134088"
 6. **[Are you using System Center VMM to manage your Hyper-V hosts?]\(System Center VMM を使用して Hyper-V ホストを管理しますか?\)** で、 **[いいえ]** を選択します。
 7. **[OK]** を選択します。
 
-    ![レプリケーションの目標](./media/hyper-v-azure-tutorial/replication-goal.png)
+    ![[インフラストラクチャの準備] の [保護の目標] のオプションのスクリーンショット。](./media/hyper-v-azure-tutorial/replication-goal.png)
 
 ## <a name="confirm-deployment-planning"></a>展開の計画を確認する
 
 1. 大規模なデプロイを計画している場合は、 **[デプロイ計画]** で、ページ上のリンクから Hyper-V 用の Deployment Planner をダウンロードします。 Hyper-V のデプロイ計画の[詳細を確認](hyper-v-deployment-planner-overview.md)してください。
 2. このチュートリアルでは、Deployment Planner は必要ありません。 **[デプロイ計画は完了していますか?]** で、 **[後で実行する]** を選択してから、 **[OK]** を選択します。
 
-    ![展開の計画](./media/hyper-v-azure-tutorial/deployment-planning.png)
+    ![[インフラストラクチャの準備] の [デプロイ計画] のオプションのスクリーンショット。](./media/hyper-v-azure-tutorial/deployment-planning.png)
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
 
@@ -68,17 +68,17 @@ ms.locfileid: "86134088"
 2. **[ソースの準備]** で、 **[+ Hyper-V サイト]** を選択します。
 3. **[Hyper-V サイトの作成]** で、サイト名を指定します。 ここでは、**ContosoHyperVSite** を使用しています。
 
-    ![Hyper-V サイト](./media/hyper-v-azure-tutorial/hyperv-site.png)
+    ![[インフラストラクチャの準備] での Hyper-V サイトの選択のスクリーンショット。](./media/hyper-v-azure-tutorial/hyperv-site.png)
 
 4. サイトが作成されたら、 **[ソースの準備]**  >  **[手順 1: Hyper-V サイトを選択する]** の順に選択し、作成したサイトを選択します。
 5. **[+ Hyper-V Server]** を選択します。
 
-    ![Hyper-V サーバー](./media/hyper-v-azure-tutorial/hyperv-server.png)
+    ![[インフラストラクチャの準備] での Hyper-V サーバーの選択のスクリーンショット。](./media/hyper-v-azure-tutorial/hyperv-server.png)
 
 6. Microsoft Azure Site Recovery Provider のインストーラーをダウンロードします。
 7. コンテナー登録キーをダウンロードします。 このキーは、プロバイダーをインストールするのに必要です。 キーは生成後 5 日間有効です。
 
-    ![プロバイダーと登録キーをダウンロードする](./media/hyper-v-azure-tutorial/download.png)
+    ![プロバイダーと登録キーをダウンロードするためのオプションのスクリーンショット。](./media/hyper-v-azure-tutorial/download.png)
     
 
 ### <a name="install-the-provider"></a>プロバイダーをインストールする

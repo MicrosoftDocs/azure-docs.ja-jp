@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop の MSIX アプリのアタッチ - Azure
 description: Windows Virtual Desktop の MSIX アプリのアタッチを設定する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 76edc88f127d7e52514ab72539f7212ac982b5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204474"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010159"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX アプリのアタッチを設定する
 
@@ -29,7 +27,7 @@ ms.locfileid: "85204474"
 開始する前に、MSIX アプリのアタッチを構成するために必要な項目を示します。
 
 - Windows Insider ポータルにアクセスして、MSIX アプリのアタッチ API をサポートする Windows 10 のバージョンを取得する。
-- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop Fall 2019 リリースのデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Windows Virtual Desktop Spring 2020 のデプロイ方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
+- 機能する Windows Virtual Desktop のデプロイ。 Windows Virtual Desktop (classic) のデプロイ方法については、「[Windows Virtual Desktop でテナントを作成する](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)」を参照してください。 Azure Resource Manager の統合を使用して Windows Virtual Desktop をデプロイする方法については、「[Azure portal を使用してホスト プールを作成する](./create-host-pools-azure-marketplace.md)」を参照してください。
 - MSIX パッケージ化ツール。
 - MSIX パッケージが格納される Windows Virtual Desktop デプロイ内のネットワーク共有。
 
@@ -202,12 +200,12 @@ Windows Virtual Desktop 環境で、ネットワーク共有を作成し、パ�
 
 1. パッケージを右クリックし、 **[プロパティ]** を選択します。
 2. 表示されるウィンドウで、 **[デジタル署名]** タブを選択します。次の図に示すように、タブの一覧には項目が 1 つだけ表示されます。 その項目を選択して強調表示した後、 **[削除]** を選択します。
-3. デジタル署名の詳細ウィンドウが表示されたら、 **[全般]** タブを選択し、 **[証明書のインストール]** を選択します。
+3. デジタル署名の詳細ウィンドウが表示されたら、 **[全般]** タブを選択し、 **[証明書の表示]** を選択して、 **[証明書のインストール]** を選択します。
 4. インストーラーが開いたら、保存場所として **[ローカル コンピューター]** を選択し、 **[次へ]** を選択します。
 5. アプリがデバイスに変更を加えることを許可するかどうかを確認するメッセージが表示されたら、 **[はい]** を選択します。
 6. **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** を選択します。
 7. 証明書ストアの選択ウィンドウで、 **[信頼されたユーザー]** を選択して、 **[OK]** をクリックします。
-8. **[完了]** を選択します。
+8. **[次へ]** 、 **[完了]** の順に選択します。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>MSIX アプリのアタッチ用の PowerShell スクリプトを準備する
 
@@ -220,7 +218,7 @@ MSIX アプリのアタッチには、次の順序で実行する必要がある
 
 各フェーズでは、PowerShell スクリプトを作成します。 各フェーズのサンプル スクリプトについては、[こちら](https://github.com/Azure/RDS-Templates/tree/master/msix-app-attach)を参照してください。
 
-### <a name="stage-the-powershell-script"></a>PowerShell スクリプトをステージングする
+### <a name="stage-powershell-script"></a>PowerShell スクリプトのステージング
 
 PowerShell スクリプトを更新する前に、VHD にボリュームのボリューム GUID があることを確認してください。 ボリューム GUID を取得するには、次の手順に従います。
 
@@ -264,88 +262,48 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
     #MSIX app attach staging sample
 
     #region variables
-
     $vhdSrc="<path to vhd>"
-
     $packageName = "<package name>"
-
     $parentFolder = "<package parent folder>"
-
     $parentFolder = "\" + $parentFolder + "\"
-
     $volumeGuid = "<vol guid>"
-
     $msixJunction = "C:\temp\AppAttach\"
-
     #endregion
 
     #region mountvhd
-
     try
-
     {
-
-    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
-
-    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
-
+          Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+          Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
     }
-
     catch
-
     {
-
-    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
-
+          Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
     }
-
     #endregion
 
     #region makelink
-
     $msixDest = "\\?\Volume{" + $volumeGuid + "}\"
-
     if (!(Test-Path $msixJunction))
-
     {
-
-    md $msixJunction
-
+         md $msixJunction
     }
 
     $msixJunction = $msixJunction + $packageName
-
     cmd.exe /c mklink /j $msixJunction $msixDest
-
     #endregion
 
     #region stage
-
-    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime]
-    | Out-Null
-
+    [Windows.Management.Deployment.PackageManager,Windows.Management.Deployment,ContentType=WindowsRuntime] | Out-Null
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
-
-    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
-
-    $asTaskAsyncOperation =
-    $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
-    [Windows.Management.Deployment.DeploymentProgress])
-
+    $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where { $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult] AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
+    $asTaskAsyncOperation = $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult], [Windows.Management.Deployment.DeploymentProgress])
     $packageManager = [Windows.Management.Deployment.PackageManager]::new()
-
     $path = $msixJunction + $parentFolder + $packageName # needed if we do the pbisigned.vhd
-
     $path = ([System.Uri]$path).AbsoluteUri
-
     $asyncOperation = $packageManager.StagePackageAsync($path, $null, "StageInPlace")
-
     $task = $asTaskAsyncOperation.Invoke($null, @($asyncOperation))
-
     $task
-
     #endregion
     ```
 
@@ -357,17 +315,12 @@ PowerShell スクリプトを更新する前に、VHD にボリュームのボ�
 #MSIX app attach registration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $path = "C:\Program Files\WindowsApps\" + $packageName + "\AppxManifest.xml"
-
 #endregion
 
 #region register
-
 Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
-
 #endregion
 ```
 
@@ -379,15 +332,11 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 #MSIX app attach deregistration sample
 
 #region variables
-
 $packageName = "<package name>"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -PreserveRoamableApplicationData $packageName
-
 #endregion
 ```
 
@@ -399,21 +348,14 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 #MSIX app attach de staging sample
 
 #region variables
-
 $packageName = "<package name>"
-
 $msixJunction = "C:\temp\AppAttach\"
-
 #endregion
 
 #region deregister
-
 Remove-AppxPackage -AllUsers -Package $packageName
-
 cd $msixJunction
-
 rmdir $packageName -Force -Verbose
-
 #endregion
 ```
 
@@ -440,7 +382,7 @@ rmdir $packageName -Force -Verbose
 2. 手順 3 のスクリプトで次の変数を更新します。
       1. `$contentID` は、エンコードされていないライセンス ファイル (.xml) の ContentID 値です。 ライセンス ファイルは任意のテキスト エディターで開くことができます。
       2. `$licenseBlob` は、エンコードされたライセンス ファイル (.bin) のライセンス BLOB の文字列全体です。 エンコードされたライセンス ファイルは、任意のテキスト エディターで開くことができます。
-3. 管理者 PowerShell プロンプトから次のスクリプトを実行します。 ライセンスのインストールを実行するのに適した場所は、[ステージング スクリプト](#stage-the-powershell-script)の最後です。これも管理者プロンプトから実行する必要があります。
+3. 管理者 PowerShell プロンプトから次のスクリプトを実行します。 ライセンスのインストールを実行するのに適した場所は、[ステージング スクリプト](#stage-powershell-script)の最後です。これも管理者プロンプトから実行する必要があります。
 
 ```powershell
 $namespaceName = "root\cimv2\mdm\dmmap"

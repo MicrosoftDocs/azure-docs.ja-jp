@@ -3,16 +3,16 @@ title: Azure ファイル共有のバックアップを管理する
 description: この記事では、Azure Backup によってバックアップされた Azure ファイル共有を管理および監視するための一般的なタスクについて説明します。
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 784b22f11b57fb025f6d9401e10d527c83751898
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84712090"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757627"
 ---
 # <a name="manage-azure-file-share-backups"></a>Azure ファイル共有のバックアップを管理する
 
-この記事では、[Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) によってバックアップされた Azure ファイル共有を管理および監視するための一般的なタスクについて説明します。 Recovery Services コンテナーで管理タスクを実行する方法について説明します。
+この記事では、[Azure Backup](./backup-overview.md) によってバックアップされた Azure ファイル共有を管理および監視するための一般的なタスクについて説明します。 Recovery Services コンテナーで管理タスクを実行する方法について説明します。
 
 ## <a name="monitor-jobs"></a>ジョブの監視
 
@@ -165,4 +165,4 @@ Azure ファイル共有のバックアップ データを削除するには:
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[Azure ファイル共有のトラブルシューティング](https://docs.microsoft.com/azure/backup/troubleshoot-azure-files)に関する記事を参照してください。
+詳細については、[Azure ファイル共有のトラブルシューティング](./troubleshoot-azure-files.md)に関する記事を参照してください。

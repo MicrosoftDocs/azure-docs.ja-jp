@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 27fb165c36c17cee83cd9f90eba3bdcb9e32d517
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206911"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935757"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Cognitive Search への安全な接続を行うためのプライベート エンドポイントを作成する
 
@@ -22,11 +22,11 @@ ms.locfileid: "86206911"
 プライベート エンドポイントは、別サービスとして、[Azure Private Link](../private-link/private-link-overview.md) によって提供されます。 コストの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/private-link/)を参照してください。
 
 > [!Important]
-> Azure Cognitive Search に対するプライベート エンドポイントのサポートは、Azure portal または [管理 REST API バージョン 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/) を使用して構成できます。 サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
+> Azure Cognitive Search に対するプライベート エンドポイントのサポートは、Azure portal または [管理 REST API バージョン 2020-03-13](/rest/api/searchmanagement/) を使用して構成できます。 サービス エンドポイントがプライベートの場合、一部のポータル フィーチャーが無効になります。 サービスレベル情報を表示して管理することはできますが、インデックスデータやサービス内のさまざまなコンポーネント (インデックス、インデクサー、スキルセットの定義など) へのポータル アクセスは、セキュリティ上の理由で制限されています。
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>安全なアクセスのためにプライベート エンドポイントを使用する理由
 
-Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 Private Link をサポートするその他の PaaS サービスの一覧については、製品マニュアルの[可用性のセクション](../private-link/private-link-overview.md#availability)を参照してください。
+Azure Cognitive Search の [プライベートエンドポイント](../private-link/private-endpoint-overview.md) は、仮想ネットワーク上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできるようにします。 プライベート エンドポイントは、検索サービスのために[仮想ネットワークのアドレス空間](../virtual-network/private-ip-addresses.md)の IP アドレスを使用します。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 Private Link をサポートするその他の PaaS サービスの一覧については、製品マニュアルの[可用性のセクション](../private-link/private-link-overview.md#availability)を参照してください。
 
 検索サービス向けのプライベート エンドポイントを使用すると、次のことが可能になります。
 

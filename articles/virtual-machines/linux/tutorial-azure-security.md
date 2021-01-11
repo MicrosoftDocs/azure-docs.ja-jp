@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6711075ba3a58e526733c3a18cab03084edc067e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24117e914afa0e443ce979ae71eb506156fa11b3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080099"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830412"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Linux 仮想マシンを監視する
 
@@ -133,4 +133,4 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 次のチュートリアルに進み、Jenkins、GitHub、Docker を使った CI/CD パイプラインの作成について理解を深めてください。
 
 > [!div class="nextstepaction"]
-> [Jenkins、GitHub、Docker を使用した CI/CD インフラストラクチャの作成](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
+> [Jenkins、GitHub、Docker を使用した CI/CD インフラストラクチャの作成](/azure/developer/jenkins/pipeline-with-github-and-docker)

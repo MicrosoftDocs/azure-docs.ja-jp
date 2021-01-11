@@ -4,15 +4,16 @@ description: コストを節約するために Azure Synapse Analytics に予約
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 33a0a0a62814579dee10ae046338ff9f78d667cb
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: f0bd57befc0ec30473065ac69026a77e21e30e5c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627077"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682605"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-synapse-analytics"></a>Azure Synapse Analytics への予約割引の適用方法
 

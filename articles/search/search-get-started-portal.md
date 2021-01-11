@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 632071c2a9597fc11ab4ffc0971493ef5b52d807
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f405219701e910159de6f4fc91e9960a76f5a0cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083561"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935315"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ ms.locfileid: "86083561"
 
 この時点で検索インデックスは、ビルトインの [**Search エクスプローラー**](search-explorer.md)のクエリ ページを使って照会する準備が整っています。 このページには、任意のクエリ文字列をテストできるよう検索ボックスが備わっています。
 
-**Search エクスプローラー**は、[REST API 要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
+**Search エクスプローラー**は、[REST API 要求](/rest/api/searchservice/search-documents)を処理するためだけに装備されていますが、[単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)と[完全な Lucene クエリ パーサー](/rest/api/searchservice/lucene-query-syntax-in-azure-search)の両方の構文を受け取ります。さらに、[Search Document REST API](/rest/api/searchservice/search-documents#bkmk_examples) 操作で使用できるすべての検索パラメーターも受け取ります。
 
 > [!TIP]
 > [Azure Cognitive Search の概要ビデオ](https://channel9.msdn.com/Events/Connect/2016/138)の 6 分 8 秒から次の手順のデモをご覧いただけます。
@@ -188,7 +188,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * **$filter** パラメーターは、指定した条件に一致する結果を返します。 この例では、評価が 4 を超えるものが返されます。
 
-* フィルター構文は、OData 構文です。 詳細については、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
+* フィルター構文は、OData 構文です。 詳細については、[フィルターの OData 構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)に関するページを参照してください。
 
 ### <a name="facet-the-query"></a><a name="facet-query"></a> クエリのファセット
 
@@ -207,7 +207,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 * ファセットできるのは、フィルター可能なフィールドのみです。 結果として返されるのは、取得可能なフィールドのみです。
 
-* *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[Azure Cognitive Search でファセット ナビゲーションを実装する方法](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)に関するページを参照してください。
+* *Rating* フィールドは倍精度浮動小数点数であり、グループ化は正確な値によります。 間隔によるグループ化 (たとえば、"三つ星評価"、"四つ星評価" など) について詳しくは、[Azure Cognitive Search でファセット ナビゲーションを実装する方法](./search-faceted-navigation.md#filter-based-on-a-range)に関するページを参照してください。
 
 
 ### <a name="highlight-search-results"></a><a name="highlight-query"></a> 検索結果の強調表示
@@ -240,11 +240,11 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 あいまい検索とワイルドカード検索は、検索の出力に影響を及ぼします。 これらのクエリ形式に対しては言語分析が実行されません。 あいまい検索とワイルドカード検索を使用する際は、あらかじめ [Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md#stage-2-lexical-analysis)に関するページで、字句解析の例外についてのセクションを参照してください。
 
-完全なクエリ パーサーによって有効になるクエリのシナリオの詳細については、[Azure Cognitive Search での Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)に関するページを参照してください。
+完全なクエリ パーサーによって有効になるクエリのシナリオの詳細については、[Azure Cognitive Search での Lucene クエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)に関するページを参照してください。
 
 ### <a name="try-geospatial-search"></a><a name="geo-search"></a> 地理空間検索を試す
 
-地理空間検索は、座標を格納しているフィールドの [edm.GeographyPoint データ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)によってサポートされます。 地理空間検索はフィルターの種類で、[フィルターの OData 構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)で指定します。
+地理空間検索は、座標を格納しているフィールドの [edm.GeographyPoint データ型](/rest/api/searchservice/supported-data-types)によってサポートされます。 地理空間検索はフィルターの種類で、[フィルターの OData 構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)で指定します。
 
 #### <a name="example-geo-coordinate-filters-searchcounttruefiltergeodistancelocationgeographypoint-12212-4767-le-5"></a>例 (地理座標フィルター): `search=*&$count=true&$filter=geo.distance(Location,geography'POINT(-122.12 47.67)') le 5`
 
@@ -256,7 +256,7 @@ Bing や Google 検索で行うように用語や語句を入力するか、完�
 
 このチュートリアルでは、Azure portal を使用した Azure Cognitive Search について簡単に紹介しました。
 
-**データのインポート** ウィザードを使って検索インデックスを作成する方法について説明しました。 [インデクサー](search-indexer-overview.md)について取り上げると共に、インデックス設計の基本的なワークフローについて説明しました。その際、[公開済みのインデックスに対して行うことができる変更](https://docs.microsoft.com/rest/api/searchservice/update-index)についても触れています。
+**データのインポート** ウィザードを使って検索インデックスを作成する方法について説明しました。 [インデクサー](search-indexer-overview.md)について取り上げると共に、インデックス設計の基本的なワークフローについて説明しました。その際、[公開済みのインデックスに対して行うことができる変更](/rest/api/searchservice/update-index)についても触れています。
 
 Azure portal の **Search エクスプローラー**を使って、フィルターや検索結果の強調表示、あいまい検索、地理空間検索など、主要な機能を紹介する実践的な例を通じて、基本的なクエリの構文を学びました。
 
@@ -280,4 +280,4 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 クラウドの支出を最適化して節約することをご希望ですか?
 
 > [!div class="nextstepaction"]
-> [Cost Management を使用してコスト分析を開始する](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Cost Management を使用してコスト分析を開始する](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

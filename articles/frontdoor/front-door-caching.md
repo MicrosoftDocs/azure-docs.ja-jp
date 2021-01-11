@@ -3,20 +3,20 @@ title: Azure Front Door - キャッシュ | Microsoft Docs
 description: この記事は、バックエンドの正常性が Azure Front Door によってどのように監視されるかを理解するのに役立ちます
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 1cb24e4a959e7d32a3c3b5b69a39938df4efddfa
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79471746"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399873"
 ---
 # <a name="caching-with-azure-front-door"></a>Azure Front Door でのキャッシュ
 次のドキュメントは、キャッシュを有効にしたルーティング規則を使用して Front Door の動作を指定します。 Front Door は最新の Content Delivery Network (CDN) であり、動的サイト アクセラレーションおよび負荷分散に加えて、他の CDN と同様にキャッシュの動作もサポートされています。
@@ -111,6 +111,12 @@ Front Door でのキャッシュの消去では、大文字と小文字が区別
 キャッシュを使用している場合、次の要求ヘッダーはバックエンドに転送されません。
 - Content-Length
 - Transfer-Encoding
+
+## <a name="cache-duration"></a>Cache duration (キャッシュ期間)
+
+キャッシュ期間は、Front Door デザイナーとルール エンジンの両方で構成できます。 Frontdoor デザイナーで設定されるキャッシュ期間は、最小キャッシュ期間です。 転送元のキャッシュ制御ヘッダーの TTL がオーバーライド値よりも大きい場合、このオーバーライドは機能しません。 
+
+ルール エンジンで設定されるキャッシュ期間が真のキャッシュ オーバーライドです。つまり、転送元の応答ヘッダーに関係なく、そのオーバーライド値が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

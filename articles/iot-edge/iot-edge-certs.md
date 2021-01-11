@@ -4,34 +4,37 @@ description: Azure IoT Edge では、証明書を使用して、デバイス、�
 author: stevebus
 manager: philmea
 ms.author: stevebus
-ms.date: 10/29/2019
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: f9c3f8e1e37a59dc0010269c6b4c19e3a682c57e
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9d7caf332239d364b5bc47b5d58a808ead70395d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247015"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210589"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Azure IoT Edge での証明書の使用方法について理解する
 
 IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デバイスで、[IoT Edge ハブ](iot-edge-runtime.md#iot-edge-hub) ランタイム モジュールの ID と正当性を検証するために使用されます。 これらの検証によって、ランタイム、モジュール、および IoT デバイス間で TLS (トランスポート層セキュリティ) によるセキュアな接続が実現します。 IoT Hub 自体と同様に、IoT Edge では、IoT ダウンストリーム (リーフ) デバイスおよび IoT Edge モジュールからの、暗号化されたセキュアな接続が必要になります。 セキュアな TLS 接続を確立するために、IoT Edge ハブ モジュールでは、接続するクライアントにサーバー証明書のチェーンを提示して、それらのクライアントで ID を検証します。
 
+>[!NOTE]
+>この記事では、IoT Edge デバイス上のさまざまなコンポーネント間、または IoT Edge デバイスとリーフ デバイスとの間の接続をセキュリティで保護するために使用される証明書について説明します。 また、証明書を使用して、IoT Hub に対して IoT Edge デバイスを認証することもできます。 これらの認証証明書は異なりますが、この記事では説明されません。 証明書を使用してデバイスを認証する方法の詳細については、「[X.509 証明書を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-x509-certs.md)」を参照してください。
+
 この記事では、IoT Edge 証明書が運用、開発、およびテストのシナリオでどのように動作可能であるかについて説明します。 スクリプトが異なる (Powershell と bash) 場合でも、Linux と Windows での概念は同じです。
 
 ## <a name="iot-edge-certificates"></a>IoT Edge 証明書
 
-通常、製造元は IoT Edge デバイスのエンド ユーザーではありません。 両者の間の関係は、エンドユーザー (つまり操作者) が、製造元によって製造された汎用のデバイスを購入するときのみである場合があります。 その他のときには、操作者に代わってカスタム デバイスを構築する契約の下で、製造業者が作業を行います。 IoT Edge 証明書の設計では、両方のシナリオの考慮を試みています。
-
-> [!NOTE]
-> 現時点では、libiothsm の制限により、2050 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。 この制限は、デバイス CA 証明書、信頼バンドル内のすべての証明書、x.509 のプロビジョニング方法に使用されるデバイス ID 証明書に適用されます。
+IoT Edge デバイスに証明書を設定するには、2 つの一般的なシナリオがあります。 デバイスのエンド ユーザー (オペレーター) が製造元によって作成された汎用デバイスを購入し、証明書を管理することがあります。 それ以外の場合は、製造元がコントラクトの下で作業を行い、オペレーターのためにカスタム デバイスを作成して、デバイスを渡す前に初期証明書の署名を行います。 IoT Edge 証明書の設計では、両方のシナリオの考慮を試みています。
 
 次の図は、IoT Edge での証明書の使用方法を示しています。 ルート CA 証明書とデバイス CA 証明書の間には、関係しているエンティティの数に応じて、0 個、1 個、または多数の中間証明書が存在する可能性があります。 ここで、1 つの場合を示します。
 
 ![典型的な証明書の関連図](./media/iot-edge-certs/edgeCerts-general.png)
+
+> [!NOTE]
+> 現時点では、libiothsm の制限により、2050 年 1 月 1 日以降に有効期限が切れる証明書は使用できません。 この制限は、デバイス CA 証明書、信頼バンドル内のすべての証明書、x.509 のプロビジョニング方法に使用されるデバイス ID 証明書に適用されます。
 
 ### <a name="certificate-authority"></a>証明機関
 
@@ -59,7 +62,7 @@ IoT Edge 証明書は、モジュールおよびダウンストリーム IoT デ
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge ワークロード CA
 
-プロセスの "操作者" 側では最初のワークロード CA 証明書は、IoT Edge が初めて起動されたときに [IoT Edge セキュリティ マネージャー](iot-edge-security-manager.md)によって生成されます。 この証明書は、"デバイス CA 証明書" から生成され、署名されます。 もう 1 つの中間署名証明書に相当するこの証明書は、IoT Edge ランタイムで使用されるその他の証明書を生成して署名するために、使用されます。 現在、それは主に、後続のセクションで説明している IoT Edge ハブ サーバー証明書ですが、将来は、IoT Edge コンポーネント認証用の他の証明書が含まれる可能性があります。
+プロセスの "操作者" 側では最初のワークロード CA 証明書は、IoT Edge が初めて起動されたときに [IoT Edge セキュリティ マネージャー](iot-edge-security-manager.md)によって生成されます。 この証明書は、デバイス CA 証明書から生成され、署名されます。 もう 1 つの中間署名証明書に相当するこの証明書は、IoT Edge ランタイムで使用されるその他の証明書を生成して署名するために、使用されます。 現在、それは主に、後続のセクションで説明している IoT Edge ハブ サーバー証明書ですが、将来は、IoT Edge コンポーネント認証用の他の証明書が含まれる可能性があります。
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge ハブ サーバー証明書
 

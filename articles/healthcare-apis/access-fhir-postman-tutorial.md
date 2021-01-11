@@ -6,15 +6,15 @@ ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
 ms.reviewer: dseven
-ms.author: mihansen
-author: hansenms
+ms.author: matjazl
+author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 684f85042fd09c14621801ec017fea0e632f2598
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84870532"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844849"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman を使用して Azure API for FHIR にアクセスする
 
@@ -23,6 +23,7 @@ ms.locfileid: "84870532"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure 内の FHIR エンドポイント。 これは、マネージド Azure API for FHIR またはオープンソースの FHIR Server for Azure を使用して設定できます。 [Azure portal](fhir-paas-portal-quickstart.md)、[PowerShell](fhir-paas-powershell-quickstart.md)、または [Azure CLI](fhir-paas-cli-quickstart.md) を使用して、マネージド Azure API for FHIR を設定します。
+- FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)
 - Postman がインストールされている。 これは [https://www.getpostman.com](https://www.getpostman.com) から入手できます
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR サーバーと認証の詳細
@@ -108,7 +109,7 @@ Azure API for FHIR のメタデータ URL は `https://MYACCOUNT.azurehealthcare
 }
 ```
 
-トラブルシューティングの状況では、まずは対象ユーザー (`aud` 要求) が正しいことを検証することをお勧めします。 実際のトークンの発行者 (`iss` 要求) が正しく、対象ユーザー (`aud` 要求) も正しいのに、FHIR API にアクセスできない場合は、ユーザーまたはサービス プリンシパル (`oid` 要求) が FHIR データ プレーンにアクセスできない可能性があります。 [Azure のロールベースのアクセス制御を使用](configure-azure-rbac.md)して、データ プレーンのロールをユーザーに割り当てることをお勧めします。 ご使用のデータ プレーンに外部のセカンダリ Azure Active Directory テナントを使用する場合は、[ローカル RBAC の割り当てを構成](configure-local-rbac.md)する必要があります。
+トラブルシューティングの状況では、まずは対象ユーザー (`aud` 要求) が正しいことを検証することをお勧めします。 実際のトークンの発行者 (`iss` 要求) が正しく、対象ユーザー (`aud` 要求) も正しいのに、FHIR API にアクセスできない場合は、ユーザーまたはサービス プリンシパル (`oid` 要求) が FHIR データ プレーンにアクセスできない可能性があります。 [Azure のロールベースのアクセス制御 (Azure RBAC) を使用](configure-azure-rbac.md)して、データ プレーンのロールをユーザーに割り当てることをお勧めします。 ご使用のデータ プレーンに外部のセカンダリ Azure Active Directory テナントを使用する場合は、[ローカル RBAC の割り当てを構成](configure-local-rbac.md)する必要があります。
 
 [Azure CLI を使用して Azure API for FHIR のトークンを取得](get-healthcare-apis-access-token-cli.md)することもできます。 Azure CLI によって取得したトークンを使用する場合は、承認の種類として "ベアラー トークン" を使用し、トークンを直接貼り付ける必要があります。
 

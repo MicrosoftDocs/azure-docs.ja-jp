@@ -2,15 +2,15 @@
 title: Azure Deployment Manager を使用してテンプレートをデプロイする
 description: Resource Manager テンプレートで Azure Deployment Manager を使用して、Azure リソースをデプロイする方法を説明します。
 author: mumian
-ms.date: 12/04/2019
+ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 43291bdaa277c06262be2d7bb5ba8d3f61ff35ea
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 49465f05b5484dfd358136866b67ce35f789799f
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056890"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892934"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (パブリック プレビュー)
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="understand-the-scenario"></a>シナリオの理解
 
-サービス トポロジ テンプレートでは、アプリケーションを構成する Azure リソースとその配備先を記述します。 サービス トポロジの定義には次の階層があります。
+サービス トポロジ テンプレートでは、サービスを構成する Azure リソースとそのデプロイ先を記述します。 サービス トポロジの定義には次の階層があります。
 
 * サービス トポロジ
   * サービス

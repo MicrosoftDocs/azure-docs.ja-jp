@@ -4,15 +4,15 @@ description: Lsv2 シリーズ VM の仕様。
 author: sasha-melamed
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9db5f391635505c18c7fe7c868431a0abc943730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78d707c0b5afd745ae805c9513243f3791d47c60
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84675980"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654754"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -37,14 +37,14 @@ Premium Storage キャッシュ:サポートされていません
 
 メモリ保持更新: サポートされていません
 
-| サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時のデータ ディスク スループット (IOPs/MBps)<sup>4</sup> | キャッシュ不使用時の最大バースト データ ディスク スループット (IOPs/MBps)<sup>5</sup>| 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
-|---|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2/3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4/6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5M/8000    | 32000/640  | 32000/1280 | 32 | 8/12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x1.92 TB  | 2.2M/14000   | 48000/960  | 48000/2000 | 32 | 8/16000+ |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9M/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000+ |
-| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8M/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000+ |
+| サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時のデータ ディスク スループット (IOPs/MBps)<sup>4</sup> | キャッシュ不使用時の最大バースト データ ディスク スループット (IOPs/MBps)<sup>5</sup>| 最大データ ディスク数 | 最大 NIC 数 | 必要なネットワーク帯域幅 (Mbps) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 | 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 | 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5M/8000    | 32000/640  | 32000/1280 | 32 | 8 | 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x1.92 TB  | 2.2M/14000   | 48000/960  | 48000/2000 | 32 | 8 | 16000+ |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9M/16000   | 64000/1280 | 64000/2000 | 32 | 8 | 16000+ |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8M/20000 | 80000/1400 | 80000/2000 | 32 | 8 | 16000+ |
 
 <sup>1</sup> Lsv2 シリーズの VM には、OS ページング/スワップ ファイル用の標準 SCSI ベースの一時リソース ディスクがあります (Windows の場合は D:、Linux の場合は /dev/sdb)。 このディスクは、8 vCPU ごとに 80 GiB のストレージ、4,000 IOPS、および 80 MBps の転送速度を提供します (たとえば、Standard_L80s_v2 は、40,000 IOPS および 800 MBPS で 800 GiB を提供します)。 これにより、NVMe ドライブを確実にアプリケーション専用にすることができます。 このディスクはエフェメラルであり、すべてのデータは停止/割り当て解除時に失われます。
 
@@ -52,7 +52,7 @@ Premium Storage キャッシュ:サポートされていません
 
 <sup>3</sup> Hyper-V NVMe Direct テクノロジにより、ゲスト VM スペースに安全にマッピングされたローカル NVMe ドライブへの無制限のアクセスが提供されます。  最大のパフォーマンスを実現するには、Azure Marketplace から最新の WS2019 ビルドまたは Ubuntu 18.04 または 16.04 のいずれかを使用する必要があります。  書き込みのパフォーマンスは、IO サイズ、ドライブの負荷、および容量使用率によって異なります。
 
-<sup>4</sup> Lsv2 ワークロードに役立たないため、Lsv2 シリーズの VM ではデータ ディスク用のホスト キャッシュを提供しません。  ただし、Lsv2 VM は、Azure のエフェメラル VM OS ディスク オプション (最大 30 GiB) に対応できます。
+<sup>4</sup> Lsv2 ワークロードに役立たないため、Lsv2 シリーズの VM ではデータ ディスク用のホスト キャッシュを提供しません。
 
 <sup>5</sup> Lsv2 シリーズの VM では、一度に最大 30 分間、ディスク パフォーマンスを[バースト](linux/disk-bursting.md)できます。 
 
@@ -74,6 +74,21 @@ Premium Storage キャッシュ:サポートされていません
 - ディスク スループットの測定単位は、1 秒あたりの入力/出力操作数 (IOPS) および MBps です (MBps = 10^6 バイト/秒)。
 - VM のパフォーマンスを最適にするには、データ ディスクの数を vCPU あたり 2 ディスクに制限する必要があります。
 - **想定ネットワーク帯域幅**は、すべての宛先について、すべての NIC で [VM の種類ごとに割り当てられた最大集約帯域幅](../virtual-network/virtual-machine-network-throughput.md)です。 上限は保証されませんが、目的のアプリケーションに適した VM の種類を選択するためのガイダンスを示しています。 実際のネットワークのパフォーマンスは、ネットワークの輻輳、アプリケーションの負荷、ネットワーク設定など、さまざまな要因に左右されます。 ネットワーク スループットの最適化については、[Windows および Linux のネットワーク スループットの最適化](../virtual-network/virtual-network-optimize-network-bandwidth.md)に関する記事を参照してください。 Linux または Windows で想定ネットワーク パフォーマンスを実現するには、特定のバージョンを選択するか、VM を最適化することが必要になることがあります。 詳細については、[仮想マシンのスループットを確実にテストする方法](../virtual-network/virtual-network-bandwidth-testing.md)に関する記事を参照してください。
+
+
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
+
+- [汎用](sizes-general.md)
+- [メモリの最適化](sizes-memory.md)
+- [ストレージの最適化](sizes-storage.md)
+- [GPU の最適化](sizes-gpu.md)
+- [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
+- [旧世代](sizes-previous-gen.md)
+
+料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
+
 
 ## <a name="next-steps"></a>次のステップ
 

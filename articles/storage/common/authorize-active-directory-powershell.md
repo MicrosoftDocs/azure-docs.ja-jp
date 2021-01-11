@@ -1,27 +1,27 @@
 ---
 title: Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする
 titleSuffix: Azure Storage
-description: PowerShell では、Azure AD 資格情報でサインインし、Azure Storage BLOB とキューのデータにコマンドを実行できます。 セッションにはアクセス トークンが与えられ、呼び出し操作の承認に使用されます。 アクセス許可は、Azure AD セキュリティ プリンシパルに割り当てられた RBAC ロールによって異なります。
+description: PowerShell では、Azure AD 資格情報でサインインし、Azure Storage BLOB とキューのデータにコマンドを実行できます。 セッションにはアクセス トークンが与えられ、呼び出し操作の承認に使用されます。 アクセス許可は、Azure AD セキュリティ プリンシパルに割り当てられた Azure ロールによって異なります。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/30/2019
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 80ca5b63a91da31a5b226a589e15fb202eabd4ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75ca39ad00966928bb7887cb14255470b17579dd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805774"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589148"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure AD 資格情報を使用して PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする
 
 Azure Storage には、PowerShell のための拡張機能があります。この機能では、Azure Active Directory (Azure AD) 資格情報でサインインし、スクリプト コマンドを実行できます。 Azure AD 資格情報で PowerShell にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが PowerShell によって自動的に使用され、BLOB または Queue storage に対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
-BLOB とキューのデータへのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の RBAC ロールの詳細については、[RBAC を使用した Azure ストレージ データへのアクセス権の管理](storage-auth-aad-rbac.md)」を参照してください。
+BLOB とキューのデータへのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[RBAC を使用した Azure Storage データへのアクセス権の管理](storage-auth-aad-rbac.md)に関する記事を参照してください。
 
 ## <a name="supported-operations"></a>サポート対象の操作
 
@@ -68,10 +68,10 @@ Azure PowerShell を使用してサインインし Azure Storage に対する後
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 RBAC ロールの割り当ての詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
+1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
 
     > [!IMPORTANT]
-    > RBAC ロールの割り当ての反映には数分かかることがあります。
+    > Azure ロールの割り当ての反映には数分かかることがあります。
 
 1. [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer) を呼び出して、コンテナーを作成します。 この呼び出しでは前の手順で作成したコンテキストが使用されるため、コンテナーは自分の Azure AD サインイン情報を使用して作成されます。
 
@@ -82,5 +82,5 @@ Azure PowerShell を使用してサインインし Azure Storage に対する後
 
 ## <a name="next-steps"></a>次のステップ
 
-- [PowerShell を使用して、BLOB およびキュー データへのアクセスのための RBAC ロールを割り当てる](storage-auth-aad-rbac-powershell.md)
+- [PowerShell を使用して、BLOB およびキュー データへのアクセスのための Azure ロールを割り当てる](storage-auth-aad-rbac-powershell.md)
 - [Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する](storage-auth-aad-msi.md)

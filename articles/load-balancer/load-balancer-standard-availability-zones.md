@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: e6f788689b4e817aae6dc84f66703f4f88b8d44a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027564"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420313"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 
@@ -51,7 +51,7 @@ Azure Standard Load Balancer は、可用性ゾーンのシナリオをサポー
 フロントエンドの IP アドレスは、複数の可用性ゾーンで複数の独立したインフラストラクチャ展開によって同時に処理されます。 再試行または再確立は、ゾーンの障害による影響を受けない他のゾーンで成功します。 
 
 <p align="center">
-  <img src="./media/az-zonal/zone-redundant-lb-1.svg" width="512" title="Virtual Network NAT">
+  <img src="./media/az-zonal/zone-redundant-lb-1.svg" alt="Figure depicts a zone-redundant standard load balancer directing traffic in three different zones to three different subnets in a zone redundant configuration." width="512" title="Virtual Network NAT">
 </p>
 
 *図:ゾーン冗長ロード バランサー*
@@ -64,7 +64,7 @@ Azure Standard Load Balancer は、可用性ゾーンのシナリオをサポー
 
 
 <p align="center">
-  <img src="./media/az-zonal/zonal-lb-1.svg" width="512" title="Virtual Network NAT">
+  <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Virtual Network NAT">
 </p>
 
 *図:ゾーン冗長ロード バランサー*

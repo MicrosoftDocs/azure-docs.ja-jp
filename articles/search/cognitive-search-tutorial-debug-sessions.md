@@ -8,12 +8,12 @@ manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: 2f25cab211d24facea7863c15b6d7671a9657ae9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b6164ef955ac92a7ef8776e560ea4d3a92abaf8d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290672"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935978"
 ---
 # <a name="tutorial-diagnose-repair-and-commit-changes-to-your-skillset"></a>チュートリアル:スキルセットに対する診断、修復、および変更のコミットを行う
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * 19 個のファイルから成る[サンプル データをダウンロード](https://github.com/Azure-Samples/azure-search-sample-data/tree/master/clinical-trials-pdf-19)してください。
 
-* [Azure Storage アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)するか、[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 
+* [Azure Storage アカウントを作成](../storage/common/storage-account-create.md?tabs=azure-portal)するか、[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 
 
    帯域幅の料金を避けるため、リージョンは、Azure Cognitive Search と同じものを選択してください。
    
@@ -258,5 +258,5 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [スキルセットの詳細を学習する](https://docs.microsoft.com/azure/search/cognitive-search-working-with-skillsets)
-> [インクリメンタル エンリッチメントとキャッシュの詳細を学習する](https://docs.microsoft.com/azure/search/cognitive-search-incremental-indexing-conceptual)
+> [スキルセットの詳細を学習する](./cognitive-search-working-with-skillsets.md)
+> [インクリメンタル エンリッチメントとキャッシュの詳細を学習する](./cognitive-search-incremental-indexing-conceptual.md)

@@ -11,18 +11,18 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6321fa484c883e196279ddf33661e78397bc3855
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: acfb2af7d482f9c0a51596818b1302584277defb
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486818"
 ---
 # <a name="best-practices-for-loading-data-for-data-warehousing"></a>データ ウェアハウスのデータ読み込みのベスト プラクティス
 
 データの読み込みに関する推奨事項とパフォーマンスの最適化
 
-## <a name="preparing-data-in-azure-storage"></a>Azure Storage のデータの準備
+## <a name="prepare-data-in-azure-storage"></a>Azure Storage でデータを準備する
 
 待ち時間を最小限に抑えるには、ストレージ層とデータ ウェアハウスを併置します。
 
@@ -34,13 +34,13 @@ PolyBase には、1,000,000 バイトを超えるデータを含む行を読み�
 
 大きな圧縮ファイルは小さな圧縮ファイルに分割します。
 
-## <a name="running-loads-with-enough-compute"></a>十分なコンピューティング リソースで読み込みを実行する
+## <a name="run-loads-with-enough-compute"></a>十分なコンピューティング リソースで読み込みを実行する
 
 読み込み速度を最速にするには、一度に 1 つの読み込みジョブのみを実行します。 それが実行できない場合は、同時に実行する読み込み数を最小限に抑えます。 大規模な読み込みジョブが予想される場合は、読み込み前に SQL プールをスケール アップすることを検討してください。
 
 適切なコンピューティング リソースで読み込みを実行するには、読み込みを実行するように指定された読み込みユーザーを作成します。 特定のリソース クラスまたはワークロード グループに各読み込みユーザーを割り当てます。 読み込みを実行するには、いずれかの読み込みユーザーとしてサインインし、読み込みを実行します。 読み込みは、ユーザーのリソース クラスで実行されます。  この方法は、現在のリソース クラスのニーズに合わせてユーザーのリソース クラスを変更しようとするより簡単です。
 
-### <a name="example-of-creating-a-loading-user"></a>読み込みユーザーの作成の例
+### <a name="create-a-loading-user"></a>読み込みユーザーを作成する
 
 この例では、staticrc20 リソース クラスの読み込みユーザーを作成します。 まず、**マスターに接続**し、ログインを作成します。
 
@@ -62,7 +62,7 @@ staticRC20 リソース クラスのリソースで読み込みを実行する�
 
 動的リソース クラスではなく、静的リソース クラスで読み込みを実行します。 静的リソース クラスを使用すると、[Data Warehouse ユニット](resource-consumption-models.md)に関係なく、必ず同じリソースが使用されます。 動的リソース クラスを使用すると、サービス レベルによってリソースが変わります。 動的クラスの場合、サービス レベルが低いと、おそらく読み込みユーザー用により大きなリソース クラスを使用する必要があります。
 
-## <a name="allowing-multiple-users-to-load"></a>複数のユーザーが読み込みを実行できるようにする
+## <a name="allow-multiple-users-to-load"></a>複数のユーザーが読み込みを実行できるようにする
 
 多くの場合、複数のユーザーがデータ ウェアハウスにデータを読み込むことができるようにするニーズがあります。 [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) を使用して読み込むには、データベースの CONTROL アクセス許可が必要です。  CONTROL アクセス許可は、すべてのスキーマに対する制御アクセス権を付与します。 読み込みを実行するすべてのユーザーに、すべてのスキーマに対する制御アクセス権を付与したくない場合があります。 アクセス許可を制限するには、DENY CONTROL ステートメントを使用します。
 
@@ -75,13 +75,13 @@ staticRC20 リソース クラスのリソースで読み込みを実行する�
 
 user_A と user_B は、他の部門のスキーマからロックアウトされるようになりました。
 
-## <a name="loading-to-a-staging-table"></a>ステージング テーブルに読み込む
+## <a name="load-to-a-staging-table"></a>ステージング テーブルへの読み込み
 
 データをデータ ウェアハウス テーブルに移行する際に最速の読み込み速度を達成するには、データを 1 つのステージング テーブルに読み込みます。  ステージング テーブルをヒープとして定義し、分散オプションにラウンドロビンを使用します。
 
 通常、読み込みは 2 段階のプロセスです。まずステージング テーブルにデータを読み込み、運用データ ウェアハウス テーブルに挿入します。 運用テーブルでハッシュ分散を使用している場合、ハッシュ分散を使用してステージング テーブルを定義すると、読み込みと挿入の合計時間が速くなる可能性があります。 ステージング テーブルへの読み込みに時間はかかりますが、運用テーブルに行を挿入する 2 つ目の手順では、分散全体でデータの移動は発生しません。
 
-## <a name="loading-to-a-columnstore-index"></a>列ストア インデックスを読み込む
+## <a name="load-to-a-columnstore-index"></a>列ストア インデックスへの読み込み
 
 列ストア インデックスは、高品質の行グループにデータを圧縮するために多くのメモリを必要とします。 最適な圧縮とインデックスの効率を得るには、列ストア インデックスで各行グループに最大 1,048,576 行を圧縮する必要があります。 メモリが不足気味である場合、列ストア インデックスは最大圧縮率を達成できないことがあります。 これが、クエリのパフォーマンスに影響します。 詳細については、[列ストア メモリの最適化](data-load-columnstore-compression.md)に関するページを参照してください。
 
@@ -92,19 +92,19 @@ user_A と user_B は、他の部門のスキーマからロックアウトさ�
 
 前述のとおり、PolyBase を使用して読み込むと、Synapse SQL プールで最高のスループットが得られます。 PolyBase を使用して読み込みを行うことができず、SQLBulkCopy API (または BCP) を使用する必要がある場合は、スループットを向上させるためにバッチ サイズを増やすことを検討してください。バッチ サイズの目安としては、10 万から 100 万行の間です。
 
-## <a name="handling-loading-failures"></a>読み込みエラーを処理する
+## <a name="manage-loading-failures"></a>読み込みエラーの管理
 
 外部テーブルを使用した読み込みが、"*クエリは中止されました。外部ソースの読み取り中に最大拒否しきい値に達しました*" というエラーで失敗する場合があります。 このメッセージは、外部データにダーティなレコードが含まれていることを示します。 データ レコードは、列のデータの種類と数値が外部テーブルの列定義と一致しない場合、またはデータが指定された外部ファイルの形式に従っていない場合に「ダーティ」であるとみなされます。
 
 ダーティなレコードを修正するには、外部テーブルと外部ファイルの形式の定義が正しいこと、および外部データがこれらの定義に従っていることを確認します。 外部データ レコードのサブセットがダーティである場合は、CREATE EXTERNAL TABLE の中で拒否オプションを使用することで、クエリでこれらのレコードを拒否することを選択できます。
 
-## <a name="inserting-data-into-a-production-table"></a>運用テーブルにデータを挿入する
+## <a name="insert-data-into-a-production-table"></a>運用テーブルへのデータの挿入
 
 [INSERT ステートメント](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)で小さなテーブルに 1 回だけ読み込む場合や、検索を定期的に再読み込みする場合は、`INSERT INTO MyLookup VALUES (1, 'Type 1')` などのステートメントで十分です。  ただし、単一挿入は、一括読み込みを実行するほど効率的ではありません。
 
 一日に何千もの単一の挿入がある場合は、一括読み込みができるように、挿入をバッチ化します。  単一の挿入をファイルに追加する処理を開発し、定期的にファイルを読み込む別の処理を作成します。
 
-## <a name="creating-statistics-after-the-load"></a>読み込み後に統計を作成する
+## <a name="create-statistics-after-the-load"></a>読み込み後に統計を作成する
 
 クエリ パフォーマンスを向上させるには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。  手動で行うことも、[統計の自動作成](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)の有効化を通じて行うこともできます。
 

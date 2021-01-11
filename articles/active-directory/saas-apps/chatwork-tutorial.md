@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Chatwork の統合 | Microsoft Docs
 description: Azure Active Directory と Chatwork の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0982ee1d-7ae2-415b-9e47-cfc72e1885ca
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 368b87a4abd5b55a807f7184c3a56876169b2517
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdf9e16e5578f794d01671d391f3568eae6555cc
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293545"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586241"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Chatwork の統合
 
@@ -87,7 +83,9 @@ Chatwork で Azure AD SSO を構成してテストするには、次の構成要
     **[サインオン URL]** ボックスに、`https://www.chatwork.com/s/<TENANT_NAME>` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Chatwork クライアント サポート チーム](mailto:info@support.chatwork.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 この値は、**Chatwork SSO の構成**後に設定するプライベート ログイン URL で更新します。
+
+1. Chatwork アプリケーションでは、 **[一意のユーザー ID]** 属性が、Chatwork に登録されているメール アドレスと一致していることを想定しています。 この属性は、既定で **user.principalname** にマップされます。 principalname がメール アドレスと異なる場合は、 **[一意のユーザー ID]** を **user.mail** にマップします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -129,11 +127,11 @@ Chatwork で Azure AD SSO を構成してテストするには、次の構成要
 
 ## <a name="configure-chatwork-sso"></a>Chatwork SSO の構成
 
-**Chatwork** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Chatwork サポート チーム](mailto:info@support.chatwork.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Chatwork** 側でシングル サインオンを構成するには、[Chatwork 管理者ガイド](https://download.chatwork.com/Chatwork_AdminGuide.pdf)を参照して、Chatwork 設定を構成してください。
 
 ### <a name="create-chatwork-test-user"></a>Chatwork テスト ユーザーの作成
 
-このセクションでは、Chatwork で B.Simon というユーザーを作成します。  [Chatwork サポート チーム](mailto:info@support.chatwork.com)と連携して、Chatwork プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Chatwork で B.Simon というユーザーを作成します。 [Chatwork 管理者ガイド](https://download.chatwork.com/Chatwork_AdminGuide.pdf)にアクセスし、Chatwork プラットフォームにユーザーを追加します。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

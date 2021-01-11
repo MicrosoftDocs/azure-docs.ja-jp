@@ -10,12 +10,14 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2f1f059f3abfd04ae78d9a2a19cff2929e84b8a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+- 'Role: IoT Device'
+- 'Role: Cloud Development'
+ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521124"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924191"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -41,7 +43,7 @@ MQTT ポート (8883) は、多くの企業や教育用のネットワーク環�
 
 ## <a name="using-the-device-sdks"></a>デバイス SDK の使用
 
-MQTT プロトコルをサポートする[デバイス SDK](https://github.com/Azure/azure-iot-sdks) は、Java、Node.js、C、C#、および Python に対応しています。 デバイス SDK では、標準的な IoT Hub 接続文字列を使用して、IoT ハブへの接続を確立します。 MQTT プロトコルを使用するには、クライアント プロトコル パラメーターを **MQTT**に設定する必要があります。 また、クライアント プロトコル パラメーターで MQTT over Web Sockets を指定することもできます。 デバイス SDK は既定では、**CleanSession** フラグを **0** に設定して IoT ハブに接続し、IoT ハブとのメッセージ交換には **QoS 1** を使用します。
+MQTT プロトコルをサポートする[デバイス SDK](https://github.com/Azure/azure-iot-sdks) は、Java、Node.js、C、C#、および Python に対応しています。 デバイス SDK では、標準的な IoT Hub 接続文字列を使用して、IoT ハブへの接続を確立します。 MQTT プロトコルを使用するには、クライアント プロトコル パラメーターを **MQTT**に設定する必要があります。 また、クライアント プロトコル パラメーターで MQTT over Web Sockets を指定することもできます。 デバイス SDK は既定では、**CleanSession** フラグを **0** に設定して IoT ハブに接続し、IoT ハブとのメッセージ交換には **QoS 1** を使用します。 メッセージ交換を高速にすために **QoS 0** を構成することはできますが、配信が保証されず、確認応答がないことに注意する必要があります。 このため、**QoS 0** は "ファイア アンド フォーゲット" と呼ばれることがよくあります。
 
 デバイスは、IoT ハブに接続されると、デバイス SDK によって、IoT ハブとのメッセージの交換を可能にするメソッドが提供されます。
 
@@ -80,7 +82,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 |Java     |    230 秒     |     いいえ    |
 |C     | 240 秒 |  [はい](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 秒 |  [はい](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python (V2)   | 60 秒 |  いいえ   |
+|Python   | 60 秒 |  いいえ   |
 
 [MQTT 仕様](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)に従って、IoT Hub のキープアライブ ping の間隔は、クライアントのキープアライブ値の 1.5 倍です。 ただし、IoT Hub では、すべての Azure サービスは Azure ロードバランサーの TCP アイドル タイムアウト (29.45 分) にバインドされているため、サーバー側のタイムアウトの最大値は 29.45 分 (1,767 秒) に制限されます。 
 
@@ -346,7 +348,7 @@ IoT Hub では、メッセージは**トピック名** `devices/{device_id}/mess
 
 使用できる状態コードは次のとおりです。
 
-|Status | Description |
+|Status | 説明 |
 | ----- | ----------- |
 | 200 | Success |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル](iot-hub-devguide-quotas-throttling.md)に関するページを参照してください。 |
@@ -435,7 +437,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 ## <a name="next-steps"></a>次のステップ
 
-MQTT プロトコルについて詳しくは、[MQTT のドキュメント](https://mqtt.org/documentation)をご覧ください。
+MQTT プロトコルについて詳しくは、[MQTT のドキュメント](https://mqtt.org/)をご覧ください。
 
 IoT Hub のデプロイの計画に関する詳細については、以下をご覧ください。
 

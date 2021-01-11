@@ -3,16 +3,16 @@ title: チュートリアル - Azure IoT Edge を使用したエッジでの Str
 description: このチュートリアルでは、Azure Stream Analytics をモジュールとして IoT Edge デバイスに展開します
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220284"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439399"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>チュートリアル:Azure Stream Analytics を IoT Edge モジュールとしてデプロイする
 
@@ -134,7 +134,7 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. **[保存]** を選択します。
+1. **[クエリの保存]** を選択します。
 
 ### <a name="configure-iot-edge-settings"></a>IoT Edge の設定を構成する
 
@@ -189,7 +189,7 @@ IoT Edge デバイスに Azure Stream Analytics ジョブをデプロイする�
 
 1. **[更新]** または **[キャンセル]** を選択します。
 
-1. 後の手順で必要になるため、Stream Analytics モジュールの名前を書き留めてから、 **[次へ:ルート]** を選択して続行します。
+1. 後の手順で必要になるため、Stream Analytics モジュールの名前を書き留めます。 次に、 **[Next:ルート]** を選択して続行します。
 
 1. **[ルート]** タブで、モジュールと IoT Hub の間でメッセージが渡される方法を定義します。 メッセージは、名前と値のペアを使用して作成されます。 既定の `route` および `upstream` の名前と値を、次の表に示すペア (次の名前と値のペア) に置き換えます。また、 _{moduleName}_ のインスタンスを実際の Azure Stream Analytics モジュールの名前に置き換えます。
 

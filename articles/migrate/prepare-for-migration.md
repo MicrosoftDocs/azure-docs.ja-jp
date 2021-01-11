@@ -4,12 +4,12 @@ description: Azure Migrate での移行に向けてオンプレミス マシン�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: b92a26732f59235dac4c03f4e648d36dadd6c4ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8acbb867d98a547787e207c410d4e1a852aa68f3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077971"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606828"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -129,6 +129,7 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 **SSH を有効にする** | SSH を有効にして、再起動時に自動的に開始するよう sshd サービスを設定してください。<br/><br/> 受信 SSH 接続要求が、OS ファイアウォールまたはスクリプト実行可能なルールによってブロックされないようにします。| 前述したバージョンを除くすべてのバージョンについては、手動で有効にしてください。
 
 次の表は、上記のオペレーティング システムに対して自動的に実行される手順をまとめたものです。
+
 
 | アクション                                      | エージェントベースの VMware 移行 | エージェントレスの VMware 移行 | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|

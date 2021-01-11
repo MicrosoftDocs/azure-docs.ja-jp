@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 47c3d1b4d603e2dde2de8d4a95fb953744d71409
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c98aeaff3ba39a28fad68454d76f6f4d33f44e5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259001"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836736"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
 Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプリケーションのための次世代クラウド アプリケーション プラットフォームです。 分散クラウド アプリケーションのパッケージ化、デプロイ、アップグレード、および管理用に、多数の新機能が導入されています。 
@@ -81,7 +81,7 @@ Service Fabric でも同じ通信モデルを使用できます。 これは、�
 ![Service Fabric の直接的な通信][8]
 
 ## <a name="parity"></a>パリティ
-[Cloud Services は、制御の程度と使いやすさの対比では Service Fabric と同等ですが、現在ではレガシ サービスであり、新しい開発には Service Fabric が推奨されます。](/azure/app-service/overview-compare)API の比較を次に示します。
+[Cloud Services は、制御の程度と使いやすさの対比では Service Fabric と同等ですが、現在ではレガシ サービスであり、新しい開発には Service Fabric が推奨されます。](/azure/architecture/guide/technology-choices/compute-decision-tree)API の比較を次に示します。
 
 
 | **Cloud Services の API** | **Service Fabric の API** | **メモ** |

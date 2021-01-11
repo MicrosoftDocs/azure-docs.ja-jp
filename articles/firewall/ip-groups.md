@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 07/30/2020
 ms.author: victorh
-ms.openlocfilehash: 7bfa1ae5bd0f2ffe92fb37494f9fe589e1b2040e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565542"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460220"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure Firewall での IP グループ
 
@@ -70,43 +70,7 @@ IP グループは、すべてのパブリック クラウド リージョンで
 
 ## <a name="ip-address-limits"></a>IP アドレスの制限
 
-50 個以下の IP グループの場合、ファイアウォール インスタンスごとにそれぞれ最大 5000 個の個別の IP アドレスを使用できます。 51 個から 100 個の IP グループの場合、ファイアウォール インスタンスごとにそれぞれ 500 個の個別の IP アドレスを使用できます。
-
-### <a name="examples"></a>例
-
-#### <a name="example-1-supported"></a>例 1: サポートされている
-
-|IP グループ  |IP アドレスの数  |表記  |ルール  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Rule1|
-|IPGroup3     |1|1.2.3.4|Rule1|
-|     |**合計 4100**|         |         |
-|     |         |         |         |
-
-#### <a name="example-2-supported"></a>例 2: サポートされている
-
-|IP グループ  |IP アドレスの数  |表記  |ルール  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule1|
-|     |**合計 8192**|         |         |
-
-#### <a name="example-3-not-supported"></a>例 3: サポートされていない
-
-|IP グループ  |IP アドレスの数  |表記  |ルール  |
-|---------|---------|---------|---------|
-|IPGroup1 |8192     |10.0.0.0/20、11.0.0.0/20  |Rule1|
-|     |**合計 8192**|||
-
-#### <a name="example-4-supported"></a>例 4: サポートされている
-
-|IP グループ  |IP アドレスの数  |表記  |ルール  |
-|---------|---------|---------|---------|
-|IPGroup1 |4096     |10.0.0.0/20  |Rule1|
-|IPGroup2     |4096|11.0.0.0/20|Rule2|
-|     |**合計 8192**|         |         |
-
+ファイアウォールあたり最大 100 個の IP グループを割り当てることができ、各 IP グループには最大 5000 個の個別の IP アドレスまたは IP プレフィックスを含めることができます。
 
 ## <a name="related-azure-powershell-cmdlets"></a>関連する Azure PowerShell コマンドレット
 

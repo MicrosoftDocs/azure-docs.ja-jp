@@ -4,14 +4,14 @@ description: ワークロードに対して、標準 (手動) のプロビジョ
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 08/19/2020
 ms.author: dech
-ms.openlocfilehash: 94022b9959b6a7f2bc30e31f918f2f5a916ccd8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbe17d75ad809c54939624b1409e281b2f62a037
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85116810"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605215"
 ---
 # <a name="how-to-choose-between-standard-manual-and-autoscale-provisioned-throughput"></a>標準 (手動) および自動スケーリングのプロビジョニング スループットから選択する方法 
 
@@ -37,7 +37,10 @@ Azure Cosmos DB では、標準 (手動) と自動スケーリングの 2 つの
 ## <a name="understand-your-traffic-patterns"></a>トラフィック パターンを理解する
 
 ### <a name="new-applications"></a>新しいアプリケーション ###
-新しいアプリケーションを構築しており、トラフィック パターンをまだ把握していない場合は、最初にプロビジョニングの過多を避けるために、エントリ ポイント RU/秒 (最小 RU/秒) から始めることができます。 また、高いスケールを必要としない小規模なアプリケーションの場合は、コストを最適化するために最低限のエントリ ポイント RU/秒だけをプロビジョニングしてもかまいません。 いずれの場合も、標準 (手動) または自動スケーリングのどちらでも適しています。 以下に、考慮すべき事項を示します。
+
+新しいアプリケーションを構築しており、トラフィック パターンをまだ把握していない場合は、最初にプロビジョニングの過多を避けるために、エントリ ポイント RU/秒 (最小 RU/秒) から始めることができます。 また、高いスケールを必要としない小規模なアプリケーションの場合は、コストを最適化するために最低限のエントリ ポイント RU/秒だけをプロビジョニングしてもかまいません。 予想されるトラフィックが少ない小規模なアプリケーションの場合は、[サーバーレス](throughput-serverless.md)容量モードを検討することもできます。
+
+標準 (手動) と自動スケーリングのどちらを使用するかにかかわらず、次の点を考慮する必要があります。
 
 400 RU/秒のエントリ ポイントで標準 (手動) RU/秒をプロビジョニングした場合、手動でスループットを変更しない限り、400 RU/秒を超えて消費することはできません。 料金は、標準 (手動) のプロビジョニング スループット レートで、1 時間あたり 400 RU/秒に対して請求されます。
 

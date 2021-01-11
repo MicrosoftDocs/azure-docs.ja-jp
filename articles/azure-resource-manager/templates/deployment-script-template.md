@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 07/24/2020
 ms.author: jgao
-ms.openlocfilehash: 8906ac7a00a349e2312eb80f5e25e32292a089ab
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4094e610bb290fc11656dc192f3d0a495f679dc5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134560"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291794"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>テンプレートでデプロイ スクリプトを使用する (プレビュー)
 
@@ -556,50 +556,37 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ## <a name="configure-development-environment"></a>開発環境の設定
 
-デプロイ スクリプト開発環境として、事前構成済みの docker コンテナー イメージを使用できます。 Docker をインストールするには、「[Docker を取得する](https://docs.docker.com/get-docker/)」を参照してください。
-また、デプロイ スクリプトが含まれているディレクトリを Docker コンテナーにマウントするように、ファイル共有を構成する必要もあります。
-
-1. デプロイ スクリプトのコンテナー イメージをローカル コンピューターにプルします。
-
-    ```command
-    docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    この例では、PowerShell バージョン 2.7.0 を使用します。
-
-    Microsoft Container Registry (MCR) から CLI イメージをプルするには、次のようにします。
-
-    ```command
-    docker pull mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-    この例では、CLI バージョン 2.0.80 を使用します。 デプロイ スクリプトでは、[こちら](https://hub.docker.com/_/microsoft-azure-cli)にある既定の CLI コンテナー イメージが使用されます。
-
-1. Docker イメージをローカルで実行します。
-
-    ```command
-    docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **&lt;host driver letter>** および **&lt;host directory name>** を、共有ドライブ上の既存のフォルダーに置き換えます。  このフォルダーは、コンテナー内の **/data** フォルダーにマップされます。 D:\docker をマップする例を次に示します。
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
-    ```
-
-    **-it** は、コンテナー イメージを維持したままにすることを意味します。
-
-    CLI の例:
-
-    ```command
-    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
-    ```
-
-1. 次のスクリーンショットは、共有ドライブに helloworld.ps1 ファイルがある場合に、PowerShell スクリプトを実行する方法を示しています。
-
-    ![Resource Manager テンプレートのデプロイ スクリプト Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
+デプロイ スクリプト開発環境として、事前構成済みのコンテナー イメージを使用できます。 詳細については、「[Configure development environment for deployment scripts in templates](./deployment-script-template-configure-dev.md)」(テンプレートでデプロイ スクリプトの開発環境を構成する) を参照してください。
 
 テストが正常に完了したスクリプトは、テンプレート内のデプロイ スクリプトとして使用できます。
+
+## <a name="deployment-script-error-codes"></a>デプロイ スクリプトのエラー コード
+
+| エラー コード | 説明 |
+|------------|-------------|
+| DeploymentScriptInvalidOperation | テンプレートのデプロイ スクリプト リソース定義に、無効なプロパティ名が含まれています。 |
+| DeploymentScriptResourceConflict | ターミナル以外の状態のデプロイ スクリプト リソースを削除することはできません。また、実行時間が 1 時間を超えていません。 または、同じリソース識別子 (同じサブスクリプション、リソース グループ名、リソース名) を使用して同じデプロイ スクリプトを再実行することはできませんが、別のスクリプト本文のコンテンツは同時に再実行できます。 |
+| DeploymentScriptOperationFailed | 内部でデプロイ スクリプトの操作が失敗しました。 Microsoft サポートにお問い合わせください。 |
+| DeploymentScriptStorageAccountAccessKeyNotSpecified | 既存のストレージ アカウントにアクセス キーが指定されていません。|
+| DeploymentScriptContainerGroupContainsInvalidContainers | デプロイ スクリプト サービスによって作成されたコンテナー グループが外部で変更され、無効なコンテナーが追加されました。 |
+| DeploymentScriptContainerGroupInNonterminalState | 2 つ以上のデプロイ スクリプト リソースが、同じリソース グループ内で同じ Azure コンテナー インスタンス名を使用しており、そのうちの 1 つがまだ実行を完了していません。 |
+| DeploymentScriptStorageAccountInvalidKind | BlobBlobStorage または BlobStorage 型の既存のストレージ アカウントはファイル共有をサポートしていないため、使用できません。 |
+| DeploymentScriptStorageAccountInvalidKindAndSku | 既存のストレージ アカウントはファイル共有をサポートしていません。 サポートされているストレージ アカウントの種類の一覧については、「[既存のストレージ アカウントを使用する](#use-existing-storage-account)」を参照してください。 |
+| DeploymentScriptStorageAccountNotFound | ストレージ アカウントが存在しないか、外部のプロセスまたはツールによって削除されています。 |
+| DeploymentScriptStorageAccountWithServiceEndpointEnabled | 指定されたストレージ アカウントには、サービス エンドポイントがあります。 サービス エンドポイントを持つストレージ アカウントはサポートされていません。 |
+| DeploymentScriptStorageAccountInvalidAccessKey | 既存のストレージ アカウントに無効なアクセス キーが指定されています。 |
+| DeploymentScriptStorageAccountInvalidAccessKeyFormat | ストレージ アカウント キーの形式が無効です。 「[ストレージ アカウント アクセス キーを管理する](../../storage/common/storage-account-keys-manage.md)」をご覧ください。 |
+| DeploymentScriptExceededMaxAllowedTime | デプロイ スクリプトの実行時間が、デプロイ スクリプトのリソース定義で指定されているタイムアウト値を超えました。 |
+| DeploymentScriptInvalidOutputs | デプロイ スクリプトの出力が有効な JSON オブジェクトではありません。 |
+| DeploymentScriptContainerInstancesServiceLoginFailure | ユーザー割り当て済みマネージド ID を使って、1 分間隔で 10 回ログインを試行しましたが、ログインできませんでした。 |
+| DeploymentScriptContainerGroupNotFound | デプロイ スクリプト サービスによって作成されたコンテナー グループは、外部ツールまたはプロセスによって削除されました。 |
+| DeploymentScriptDownloadFailure | サポート スクリプトをダウンロードできませんでした。 「[サポート スクリプトを使用する](#use-supporting-scripts)」を参照してください。|
+| DeploymentScriptError | ユーザー スクリプトがエラーをスローしました。 |
+| DeploymentScriptBootstrapScriptExecutionFailed | ブートストラップ スクリプトがエラーをスローしました。 ブートストラップ スクリプトは、デプロイ スクリプトの実行を調整するシステム スクリプトです。 |
+| DeploymentScriptExecutionFailed | デプロイ スクリプトの実行中に不明なエラーが発生しました。 |
+| DeploymentScriptContainerInstancesServiceUnavailable | Azure Container Instances (ACI) を作成するときに、ACI がサービス利用不可エラーをスローしました。 |
+| DeploymentScriptContainerGroupInNonterminalState | Azure Container Instances (ACI) を作成するときに、別のデプロイ スクリプトが同じスコープ (同じサブスクリプション、リソース グループ名、リソース名) で同じ ACI 名を使用しています。 |
+| DeploymentScriptContainerGroupNameInvalid | 指定された Azure Container Instances (ACI) 名は、ACI の要件を満たしていません。 「[Azure Container Instances における、トラブルシューティングに関する一般的問題](../../container-instances/container-instances-troubleshooting.md#issues-during-container-group-deployment)」を参照してください。|
 
 ## <a name="next-steps"></a>次のステップ
 

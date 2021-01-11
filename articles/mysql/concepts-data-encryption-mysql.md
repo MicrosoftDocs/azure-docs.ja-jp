@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e2f732a8cf51c51de1b6125717eafb672d7fff74
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8fca0195c2941e4ed1a859c3201adfc2a4a0a2ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027411"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067445"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure Database for MySQL のデータの暗号化
 
@@ -22,11 +22,11 @@ Azure Database for MySQL のカスタマーマネージド キーによるデー
 Key Vault は、クラウドベースの外部キー管理システムです。 可用性が高く、FIPS 140-2 レベル 2 で検証されたハードウェア セキュリティ モジュール (HSM) によって必要に応じてサポートされる、スケーラブルで安全な RSA 暗号化キー向けストレージが提供されます。 格納されているキーに直接アクセスすることはできませんが、承認されたエンティティに対する暗号化とその解除のサービスが提供されます。 Key Vault では、キーの生成、インポート、または[オンプレミス HSM デバイスからの転送](../key-vault/key-Vault-hsm-protected-keys.md)を行うことができます。
 
 > [!NOTE]
-> この機能は、Azure Database for MySQL で "汎用" および "メモリ最適化" の価格レベルがサポートされているすべての Azure リージョンで使用できます。
+> この機能は、Azure Database for MySQL で "汎用" および "メモリ最適化" の価格レベルがサポートされているすべての Azure リージョンで使用できます。 その他の制限事項については、「[制限事項](concepts-data-encryption-mysql.md#limitations)」セクションを参照してください。
 
 ## <a name="benefits"></a>メリット
 
-Azure Database for MySQL のデータ暗号化には、次の利点があります。
+Azure Database for MySQL のカスタマーマネージド キーによるデータ暗号化には、次の利点があります。
 
 * キーを削除してデータベースにアクセスできないようにすることで、ユーザーがデータアクセスを完全に制御できる 
 * キーライフサイクルの完全な制御 (企業ポリシーに合わせたキーの交換を含む)
@@ -49,10 +49,10 @@ KEK で暗号化された DEK は、個別に格納されます。 KEK へのア
 MySQL サーバーで DEK の暗号化のために Key Vault に格納されているカスタマーマネージド キーを使用する場合、Key Vault 管理者がサーバーに次のアクセス権を付与します。
 
 * **get**:Key Vault 内のキーの公開部分とプロパティを取得します。
-* **wrapKey**:DEK を暗号化できるようにします。
-* **unwrapKey**:DEK の暗号化を解除できるようにします。
+* **wrapKey**:DEK を暗号化できるようにします。 暗号化された DEK は Azure Database for MySQL に格納されます。
+* **unwrapKey**:DEK の暗号化を解除できるようにします。 Azure Database for MySQL でデータを暗号化または復号化するには、暗号化解除された DEK が必要となります
 
-Key Vault 管理者は、後で監査できるように、[Key Vault の監査イベントのログ記録を有効](../azure-monitor/insights/azure-key-vault.md)にすることもできます。
+Key Vault 管理者は、後で監査できるように、[Key Vault の監査イベントのログ記録を有効](../azure-monitor/insights/key-vault-insights-overview.md)にすることもできます。
 
 Key Vault に格納されているカスタマーマネージド キーを使用するようにサーバーが構成されている場合、暗号化のためにサーバーから DEK が Key Vault に送信されます。 Key Vault から暗号化された DEK が返され、ユーザー データベースに格納されます。 同様に、必要に応じて、保護された DEK が暗号化解除のためにサーバーから Key Vault に送信されます。 ログ記録が有効になっている場合、監査者は Azure Monitor を使用して Key Vault の監査イベント ログを確認できます。
 
@@ -60,16 +60,16 @@ Key Vault に格納されているカスタマーマネージド キーを使用
 
 Key Vault を構成するための要件を以下に示します。
 
-* Key Vault と Azure Database for MySQL は、同じ Azure Active Directory (Azure AD) テナントに属している必要があります。 テナント間の Key Vault とサーバーの対話はサポートされていません。 後でリソースを移動する場合は、データ暗号化を再構成する必要があります。
+* Key Vault と Azure Database for MySQL は、同じ Azure Active Directory (Azure AD) テナントに属している必要があります。 テナント間の Key Vault とサーバーの対話はサポートされていません。 後で Key Vault リソースを移動する場合は、データ暗号化を再構成する必要があります。
 * キー (または Key Vault) を誤って削除した場合のデータ損失から保護するには、Key Vault で論理的な削除機能を有効にします。 論理的に削除されたリソースは 90 日間保持されます (その間にユーザーが復旧または消去した場合を除く)。 復旧と消去のアクションには、Key Vault のアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は既定ではオフになっていますが、PowerShell または Azure CLI を介して有効にすることができます (Azure portal を介して有効にできないことに注意してください)。
-* Azure Database for MySQL に対し、その一意のマネージド ID を使用して、get、wrapKey、および unwrapKey アクセス許可による Key Vault へのアクセスを付与します。 Azure portal では、MySQL でのデータ暗号化を有効にすると、一意の ID が自動的に作成されます。 Azure portal を使用する場合の詳細な手順については、[MySQL のデータ暗号化の構成](howto-data-encryption-portal.md)に関するページを参照してください。
+* Azure Database for MySQL に対し、その一意のマネージド ID を使用して、get、wrapKey、および unwrapKey アクセス許可による Key Vault へのアクセスを付与します。 Azure portal では、MySQL でのデータ暗号化を有効にすると、一意の "サービス" ID が自動的に作成されます。 Azure portal を使用する場合の詳細な手順については、[MySQL のデータ暗号化の構成](howto-data-encryption-portal.md)に関するページを参照してください。
 
 カスタマーマネージド キーを構成するための要件を以下に示します。
 
 * DEK の暗号化に使用されるカスタマーマネージド キーは、非対称の RSA 2048 のみです。
 * キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限 (設定する場合) は、将来の日付と時刻にする必要があります。
 * キーは、"*有効*" 状態になっている必要があります。
-* Key Vault に既存のキーをインポートする場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で指定するようにしてください。
+* Key Vault に[既存のキーをインポート](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey)する場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で提供してください。
 
 ## <a name="recommendations"></a>推奨事項
 

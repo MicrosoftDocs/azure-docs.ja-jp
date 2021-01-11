@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: hasshah
-ms.openlocfilehash: 0a6df626f9567b51a8371c17004b454f9c5b4597
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8c19650a8f36181e3e003414ff15add071e9a8ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202047"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918895"
 ---
 # <a name="what-is-a-keyword"></a>キーワードとは
 
@@ -33,10 +34,30 @@ ms.locfileid: "83202047"
 
 ## <a name="get-started-with-custom-keywords"></a>カスタム キーワードの概要
 
-* チュートリアル:[Speech Studio を使用してカスタム キーワードを作成する](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)方法
-* チュートリアル:[C# と Speech SDK を使用して音声で製品を有効にする](tutorial-voice-enable-your-bot-speech-sdk.md)方法
-* クイック スタート:[ユニバーサル Windows プラットフォームで C# と Speech SDK を使用してキーワードを認識する](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
-* クイック スタート:[Android で Java と Speech SDK を使用してキーワードを認識する](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
+* 基本的な使用方法と設計パターンについては、「[カスタム キーワードの基本](custom-keyword-basics.md)」を参照してください。
+* [C# と Speech SDK を使用して音声で製品を有効にする](tutorial-voice-enable-your-bot-speech-sdk.md)方法
+
+## <a name="choose-an-effective-keyword"></a>有効なキーワードを選択する
+
+有効なキーワードを作成することは、デバイスによって一貫して正確な応答が行われることを保証するうえで不可欠です。 キーワードをカスタマイズすることは、デバイスを差別化し、ブランドを強化する上で効果的な方法です。 キーワードを選択するときには、以下のガイドラインを考慮に入れます。
+
+> [!div class="checklist"]
+> * キーワードは、英語の単語または語句にする必要があります。
+> * 2 秒以内に読み上げることができる必要があります。
+> * 4 音節から 7 音節の単語が最適です。 たとえば、"Hey, Computer" は適切なキーワードです。 "Hey" だけではよくありません。
+> * キーワードは、英語の一般的な発音規則に従っている必要があります。
+> * 英語の一般的な発音規則に従った一意の単語や造語にすると、誤検知が減る可能性があります。 たとえば "computerama" が適切なキーワードになる可能性があります。
+> * 一般的な単語は選択しないでください。 たとえば、"eat" や "go" は、普通の会話の中で頻繁に出てくる単語です。 これらは、デバイスの誤ったトリガーとなる可能性があります。
+> * 別の発音をする可能性があるキーワードは使用しないようにします。 ユーザーは、デバイスが応答するようにするために、”正しい” 発音を知っている必要があります。 たとえば "509" は、"five zero nine"、"five oh nine"、または "five hundred and nine" と発音できます。 "R.E.I."  は、"R E I" または "Ray" として発音できます。 "Live" は、"/Līv/" または "/liv/" と発音できます。
+> * 特殊な文字、記号、または数字は使用しないでください。 たとえば、"Go#" や "20 + cats" は、問題を引き起こすキーワードになる可能性があります。 ただし、"go sharp" や "twenty plus cats" は機能するでしょう。 それでもブランディングにおいて記号を使用して、正しい発音が一般に認知されるように、マーケティングやドキュメントを利用することができます。
+
+> [!NOTE]
+> 商標登録された単語をキーワードとして選択する場合は、自身でその商標を所有しているか、商標の所有者からその単語の使用を許可されている必要があります。 Microsoft は、キーワードの選択によって発生する可能性がある法律上のどんな問題に対しても一切の責任を負いません。
+
+## <a name="see-samples-on-github"></a>GitHub 上のサンプルを参照してください
+
+* [ユニバーサル Windows プラットフォームで C# と Speech SDK を使用してキーワードを認識する](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer)
+* [Android で Java と Speech SDK を使用してキーワードを認識する](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer)
 
 ## <a name="next-steps"></a>次のステップ
 

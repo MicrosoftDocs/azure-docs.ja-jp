@@ -3,24 +3,26 @@ title: Azure Media Services v3 REST API 呼び出し用に Postman を構成す�
 description: この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように Postman を構成する方法を示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/05/2019
-ms.author: juliako
-ms.openlocfilehash: 16c74e10e88d3f8eacd8f59222adbdb19be813ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053196"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297713"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API 呼び出し用に Postman を構成する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように **Postman** を構成する方法を示します。 この記事では、環境およびコレクション ファイルを **Postman** にインポートする方法を示しています。 コレクションには、Azure Media Services (AMS) REST API を呼び出す HTTP 要求のグループ化された定義が含まれます。 環境ファイルには、コレクションによって使用される変数が含まれています。
 
@@ -50,10 +52,10 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 ### <a name="configure-the-environment"></a>環境の構成 
 
 1. **Postman** アプリを開きます。
-2. 画面の右側で、 **[Manage environment]/(環境の管理/)** オプションを選択します。
+2. 画面の右側で、 **[Manage environment]\(環境の管理\)** オプションを選択します。
 
     ![環境を管理する](./media/develop-with-postman/postman-import-env.png)
-4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[インポート]** をクリックします。
+4. **[Manage environment]/(環境の管理/)** ダイアログで、 **[Import]\(インポート\)** をクリックします。
 2. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Azure Media Service v3 Environment.postman_environment.json` ファイルを参照します。
 6. **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境が追加されています。
 
@@ -68,7 +70,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
    
 ### <a name="configure-the-collection"></a>コレクションの構成
 
-1. **[インポート]** をクリックしてコレクション ファイルをインポートします。
+1. **[Import]\(インポート\)** をクリックしてコレクション ファイルをインポートします。
 1. `https://github.com/Azure-Samples/media-services-v3-rest-postman.git` を複製したときにダウンロードされた `Media Services v3.postman_collection.json` ファイルを参照します。
 3. **Media Services v3.postman_collection.json** ファイルを選択します。
 
@@ -99,7 +101,6 @@ AMS v3 リソースの操作を開始する前に、サービス プリンシパ
 
 ## <a name="see-also"></a>関連項目
 
-- [Media Services アカウントにファイルをアップロードする - REST](upload-files-rest-how-to.md)
 - [Media Services を使用してフィルターを作成する - REST](filters-dynamic-manifest-rest-howto.md)
 - [Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 

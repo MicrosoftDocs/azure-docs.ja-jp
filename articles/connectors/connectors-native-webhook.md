@@ -20,7 +20,7 @@ ms.locfileid: "80656279"
 
 イベントベースのワークフローの例を次に示します。
 
-* [Azure イベント ハブ](https://github.com/logicappsio/EventHubAPI)からアイテムが到着するのを待ってからロジック アプリの実行をトリガーする。
+* [Azure Event Hub](https://github.com/logicappsio/EventHubAPI)からアイテムが到着するのを待ってからロジック アプリの実行をトリガーする。
 * 承認を待ってからワークフローを続行する。
 
 ## <a name="how-do-webhooks-work"></a>Webhook のしくみ

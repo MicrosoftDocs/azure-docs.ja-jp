@@ -60,7 +60,7 @@
           href: how-tos/create-locate-anchors-cpp-winrt.md
     - name: 粗い再局在化を使用して近くのアンカーを検出する
       items:
-        - name: 'C#/Unity の場合'
+        - name: C#/Unity の場合
           href: how-tos/set-up-coarse-reloc-unity.md
         - name: Objective-C の場合
           href: how-tos/set-up-coarse-reloc-objc.md
@@ -72,6 +72,12 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: C++/WinRT の場合
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: プロジェクトの設定
+      items:
+        - name: C++/WinRT
+          href: how-tos/setup-cpp-winrt-project.md
+        - name: Unity
+          href: how-tos/setup-unity-project.md
 - name: サンプル
   items:
     - name: Azure Spatial Anchors のサンプル (GitHub)

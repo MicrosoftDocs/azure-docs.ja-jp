@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88a8dcb53ab2f845f52121b11c96c23ad0a3e791
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83684007"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078920"
 ---
 # <a name="sensor-partner-integration"></a>センサー パートナーの統合
 
@@ -131,7 +131,7 @@ FarmBeats Datahub の次の API を使用することで、デバイス パー�
 - /**SensorModel**:SensorModel は、センサーのメタデータ (製造元など)、センサーの種類 (アナログまたはデジタル)、センサーのメジャー (周辺温度や圧力) に対応します。
 - /**Sensor**:センサーは、値を記録する物理的なセンサーに対応するものです。 センサーは通常、デバイス ID を持つデバイスに接続されます。
 
-  **DeviceModel** |  |
+  DeviceModel | 説明 |
   --- | ---
   Type (node、gateway)  | デバイスの種類 - Node または Gateway |
   Manufacturer  | 製造元の名前 |
@@ -140,7 +140,7 @@ FarmBeats Datahub の次の API を使用することで、デバイス パー�
   名前  | リソースを識別する名前 たとえば、モデル名または製品名。 |
   説明  | そのモデルについてのわかりやすい説明を入力します。 |
   Properties  | 製造元から提供されるその他のプロパティ。 |
-  **[デバイス]** |  |
+  **[デバイス]** | **説明** |
   DeviceModelId  |関連付けられているデバイス モデルの ID |
   HardwareId   |デバイスの一意の ID (MAC アドレスなど)。  |
   ReportingInterval |レポートの間隔 (秒)。 |
@@ -149,7 +149,7 @@ FarmBeats Datahub の次の API を使用することで、デバイス パー�
   名前  | リソースを識別するための名前。 デバイス パートナーは、デバイス パートナー側のデバイス名と一致する名前を送信する必要があります。 デバイス パートナー側のデバイス名がユーザー定義である場合、同じユーザー定義名を FarmBeats に反映させる必要があります。  |
   説明  | わかりやすい説明を入力します。  |
   Properties  |製造元から提供されるその他のプロパティ。  |
-  **SensorModel** |  |
+  **SensorModel** | **説明** |
   Type (analog、digital)  |アナログ センサーまたはデジタル センサーを表します。|
   Manufacturer  | 製造元の名前。 |
   ProductCode  | 製品コード、モデル名、またはモデル番号。 例: RS-CO2-N01。  |
@@ -163,7 +163,7 @@ FarmBeats Datahub の次の API を使用することで、デバイス パー�
   名前  | リソースを識別する名前 たとえば、モデル名または製品名。
   説明  | そのモデルについてのわかりやすい説明を入力します。
   Properties  | 製造元から提供されるその他のプロパティ。
-  **センサー**  |  |
+  **センサー**  | **説明** |
   HardwareId  | 製造元によって設定された、センサーの一意の ID。
   SensorModelId  | 関連付けられているセンサー モデルの ID。
   場所  | センサーの緯度 (-90 から +90)、経度 (-180 から 180)、海抜 (メートル単位)。

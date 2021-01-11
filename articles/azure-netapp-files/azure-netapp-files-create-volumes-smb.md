@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files の SMB ボリュームを作成する | Microsoft Docs
-description: Azure NetApp Files の SMB ボリュームを作成する方法について説明します。
+description: この記事では、Azure NetApp Files の SMBv3 ボリュームを作成する方法について説明します。 Active Directory の接続と Domain Services に対する要件について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,18 +12,18 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 6bd6ddc8b75b83355f6761ef0567ea949c86b61a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3299865837bd14566cca54ec84b2dce452c633da
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483705"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080509"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
-Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポートしています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 この記事では、SMBv3 ボリュームを作成する方法について説明します。 NFS ボリュームを作成する場合は、[Azure NetApp Files の NFS ボリュームの作成](azure-netapp-files-create-volumes.md)に関するページを参照してください。 
+Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMBv3、またはデュアル プロトコル (NFSv3 and SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 この記事では、SMBv3 ボリュームを作成する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に 
 あらかじめ容量プールを設定しておく必要があります。   
@@ -163,8 +163,20 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
      * **バックアップ ポリシー ユーザー**  
         Azure NetApp Files で使用するために作成されたコンピューター アカウントに対して昇格された特権を必要とする追加のアカウントを含めることができます。 指定したアカウントは、ファイルまたはフォルダー レベルで NTFS アクセス許可を変更できます。 たとえば、Azure NetApp Files の SMB ファイル共有にデータを移行するために使用される非特権サービス アカウントを指定できます。  
 
-        > [!IMPORTANT] 
-        > バックアップ ポリシー ユーザー機能を使用するには、ホワイトリストに登録する必要があります。 この機能を要求するには、お使いのサブスクリプション ID を記載したメールを anffeedback@microsoft.com までお送りください。 
+        **バックアップ ポリシー ユーザー**機能は、現在プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が **Registered** になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
 
     * **ユーザー名**や**パスワード**などの資格情報
 
@@ -185,7 +197,7 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
 2. **[+ ボリュームの追加]** をクリックして、ボリュームを作成します。  
     [ボリュームの作成] ウィンドウが表示されます。
 
-3. [ボリュームの作成] ウィンドウの **[作成]** をクリックし、次のフィールドの情報を指定します。   
+3. [ボリュームの作成] ウィンドウで **[作成]** をクリックし、[基本] タブで次のフィールドの情報を入力します。   
     * **ボリューム名**      
         作成するボリュームの名前を指定します。   
 
@@ -215,6 +227,12 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         ![ボリュームを作成する](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![サブネットの作成](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * 既存のスナップショット ポリシーをボリュームに適用する場合は、 **[詳細セクションの表示]** をクリックして展開し、プルダウン メニューでスナップショット ポリシーを選択します。 
+
+        スナップショット ポリシーの作成については、「[スナップショット ポリシーを管理する](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)」を参照してください。
+
+        ![詳細セクションの表示](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
 4. **[プロトコル]** をクリックし、次の情報を入力します。  
     * ボリュームのプロトコルの種類として **[SMB]** を選択します。 

@@ -5,19 +5,20 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: 16dcfd23ec00a144b17244e811e91a92db9e6995
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253050"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021954"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services の通知
 通知により、クライアントは対象となるオブジェクトの変更を追跡できます。 通知は 2 種類のオブジェクトでサポートされます: *Reliable State Manager* および *Reliable Dictionary*。
 
 通知を使用する一般的な理由は次のとおりです。
 
-* セカンダリ インデックスなどの具体化されたビューや、レプリカの状態の集計フィルター ビューを構築するため。 たとえば、Reliable Dictionary のすべてのキーの並べ替えられたインデックスなどがあります。
+* セカンダリ インデックスなどのマテリアライズドビューや、レプリカの状態の集計フィルター ビューを構築するため。 たとえば、Reliable Dictionary のすべてのキーの並べ替えられたインデックスなどがあります。
 * 監視データ (過去 1 時間に追加されたユーザーの数など) を送信するため。
 
 通知は操作の適用の一環として発生します。 そのため、通知はできるだけ速やかに処理する必要があり、同期イベントには負荷の高い操作を含めないようにする必要があります。

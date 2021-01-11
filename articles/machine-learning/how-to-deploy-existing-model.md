@@ -1,54 +1,42 @@
 ---
 title: 既存のモデルを使用してデプロイする
 titleSuffix: Azure Machine Learning
-description: サービスの外部でトレーニングされたモデルと共に Azure Machine Learning を使用する方法について説明します。 Azure Machine Learning の外部で作成されたモデルを登録してから、それらを Web サービスまたは Azure IoT Edge モジュールとしてデプロイできます。
+description: Azure Machine Learning を利用し、ローカルでトレーニングした ML モデルを Azure クラウドに持ち込む方法について説明します。  Azure Machine Learning の外部で作成されたモデルを登録してから、それらを Web サービスまたは Azure IoT Edge モジュールとしてデプロイできます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/17/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7dc58540cf78356021f1fa2d33dd498381f1da7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 04442ad2c6f12960a6c27cc96b52eae20b046851
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325833"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008204"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning で既存のモデルを使用する
+# <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Azure Machine Learning を使用して既存のモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning で既存の機械学習モデルを使用する方法について説明します。
+この記事では、Azure Machine Learning の外部でトレーニングした機械学習モデルを登録してデプロイする方法について説明します。 Web サービスとしてデプロイしたり、IoT Edge デバイスにデプロイしたりできます。  デプロイ後、Azure Machine Learning でモデルを監視したり、データ ドリフトを検出したりできます。 
 
-Azure Machine Learning の外部でトレーニングされた機械学習モデルがある場合でも、そのサービスを使用してモデルを Web サービスまたは IoT Edge デバイスとしてデプロイできます。 
-
-> [!TIP]
-> この記事では、既存モデルの登録とデプロイに関する基本情報を提供します。 デプロイされると、Azure Machine Learning によってご利用のモデルを監視できます。 また、デプロイに送信された入力データを保存し、データ ドリフト分析やモデルの新しいバージョンのトレーニングに使用できます。
->
-> ここで使用されている概念と用語の詳細については、[機械学習モデルの管理、デプロイ、および監視](concept-model-management-and-deployment.md)に関するページを参照してください。
->
-> デプロイ プロセスの一般的な情報については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+この記事にある概念と用語の詳細については、[機械学習モデルの管理、デプロイ、および監視](concept-model-management-and-deployment.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)」を参照してください。
+* [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)
+  + Python の例では、`ws` 変数がご利用の Azure Machine Learning のワークスペースに設定されていることを前提としています。 ワークスペースに接続する方法の詳細については、[Azure Machine Learning SDK for Python のドキュメント](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#workspace)を参照してください。
+  
+  + CLI の例では、`myworkspace` と `myresourcegroup` のプレースホルダーが使用されますが、これはお使いのワークスペースの名前とそのワークスペースが含まれるリソース グループに置換する必要があります。
 
-    > [!TIP]
-    > この記事の Python の例では、`ws` 変数がご利用の Azure Machine Learning のワークスペースに設定されていることを前提としています。
-    >
-    > CLI の例では、`myworkspace` と `myresourcegroup` のプレースホルダーを使用しています。 これらは、ワークスペースと、それを含むリソース グループの名前に置き換えてください。
-
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
+* [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) と [Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
-* トレーニング済みのモデル。 モデルは、開発環境上の 1 つ以上のファイルに保存する必要があります。
-
-    > [!NOTE]
-    > Azure Machine Learning の外部でトレーニングされたモデルの登録例を示すために、この記事のサンプル コード スニペットでは、Paolo Ripamonti の Twitter センチメント分析プロジェクトで作成されたモデル [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) を使用します。
+* トレーニング済みのモデル。 モデルは、開発環境上の 1 つ以上のファイルに保存する必要があります。 <br><br>トレーニングされたモデルの登録例を示すため、この記事のサンプル コードでは、[Paolo Ripamonti の Twitter 感情分析プロジェクト](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)からのモデルが使用されます。
 
 ## <a name="register-the-models"></a>モデルを登録する
 
@@ -82,7 +70,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 
 推論構成には、デプロイされたモデルの実行に使用される環境を定義します。 推論構成からは、デプロイ時にモデルの実行に使用される次のエンティティが参照されます。
 
-* エントリ スクリプト。 このファイル (`score.py` という名前) では、デプロイされたサービスの開始時にモデルが読み込まれます。 また、データを受信し、それをモデルに渡してから応答を返す処理も担当します。
+* `score.py` という名前のエントリ スクリプトでは、デプロイされたサービスの開始時にモデルが読み込まれます。 このスクリプトは、データを受信し、それをモデルに渡してから応答を返す処理も担当します。
 * Azure Machine Learning [環境](how-to-use-environments.md)。 環境には、モデルとエントリ スクリプトの実行に必要なソフトウェアの依存関係を定義します。
 
 次の例で、SDK を使用して環境を作成し、推論構成でそれを使用する方法を示します。
@@ -145,7 +133,7 @@ dependencies:
 
 推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
-### <a name="entry-script"></a>エントリ スクリプト。
+### <a name="entry-script-scorepy"></a>エントリ スクリプト (score.py)
 
 エントリ スクリプトには、`init()` と `run(data)` ていう 2 つの必要な関数しかありません。 これらの関数は、起動時にサービスを初期化し、クライアントから渡された要求データを使用してモデルを実行するために使用されます。 スクリプトの残りの部分では、モデルの読み込みと実行が処理されます。
 
@@ -305,9 +293,8 @@ print(response.json())
 
 デプロイされたサービスを消費する方法については、[クライアントの作成](how-to-consume-web-service.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
-* [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
 * [デプロイ済みモデルのクライアントを作成する方法](how-to-consume-web-service.md)

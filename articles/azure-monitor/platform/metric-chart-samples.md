@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 00935762a5e19ec47074021aff59992fd3b801bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83797446"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320257"
 ---
 # <a name="metric-chart-examples"></a>メトリック グラフの例 
 
-Azure プラットフォームでは [1,000 個を超えるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)が提供されます。その多くはディメンションを備えています。 [ディメンション フィルター](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)の使用、[分割](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)の適用、グラフの種類の制御、グラフ設定の調整を通じて、お客様のインフラストラクチャとアプリケーションの正常性に関する分析情報を提供する強力な診断ビューとダッシュボードを作成できます。 この記事では、お客様が[メトリックス エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)を使用して作成できるグラフの例をいくつか紹介し、これらのそれぞれのグラフを構成するために必要な手順を説明します。
+Azure プラットフォームでは [1,000 個を超えるメトリック](./metrics-supported.md)が提供されます。その多くはディメンションを備えています。 [ディメンション フィルター](./metrics-charts.md)の使用、[分割](./metrics-charts.md)の適用、グラフの種類の制御、グラフ設定の調整を通じて、お客様のインフラストラクチャとアプリケーションの正常性に関する分析情報を提供する強力な診断ビューとダッシュボードを作成できます。 この記事では、お客様が[メトリックス エクスプローラー](./metrics-charts.md)を使用して作成できるグラフの例をいくつか紹介し、これらのそれぞれのグラフを構成するために必要な手順を説明します。
 
 お持ちの優れたグラフのサンプルを世間に公表しませんか。 GitHub のこのページに投稿して、ご自分のグラフのサンプルをそこに公表しましょう。
 
@@ -38,7 +38,7 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](http
 
 ### <a name="how-to-configure-this-chart"></a>このグラフを構成する方法
 
-最初に、お客様の Web サイトに対して [Application Insights の可用性](https://docs.microsoft.com/azure/azure-monitor/app/monitor-web-app-availability)の監視をオンにする必要があります。 その後、お客様の Application Insights リソースを選択し、可用性メトリックを選択します。 **[実行場所]** ディメンションで分割を適用します。
+最初に、お客様の Web サイトに対して [Application Insights の可用性](../app/monitor-web-app-availability.md)の監視をオンにする必要があります。 その後、お客様の Application Insights リソースを選択し、可用性メトリックを選択します。 **[実行場所]** ディメンションで分割を適用します。
 
 ## <a name="volume-of-storage-account-transactions-by-api-name"></a>API 名ごとのストレージ アカウントのトランザクション数
 
@@ -52,5 +52,6 @@ Azure プラットフォームでは [1,000 個を超えるメトリック](http
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Monitor [Workbooks](../../azure-monitor/platform/workbooks-overview.md) について学習します
+* Azure Monitor [Workbooks](./workbooks-overview.md) について学習します
 * [メトリックス エクスプローラー](metrics-charts.md)について学習します
+

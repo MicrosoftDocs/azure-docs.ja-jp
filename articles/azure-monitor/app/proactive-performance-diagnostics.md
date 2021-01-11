@@ -4,18 +4,18 @@ description: Application Insights は、アプリのテレメトリの高度な�
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016850"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321311"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) は、Web アプリケーションのパフォーマンスを自動的に分析し、潜在的な問題について警告できます。 この記事は、スマート検出による通知を受信されたユーザーを主に想定しています。
+[Application Insights](./app-insights-overview.md) は、Web アプリケーションのパフォーマンスを自動的に分析し、潜在的な問題について警告できます。 この記事は、スマート検出による通知を受信されたユーザーを主に想定しています。
 
-この機能を使用する場合、[サポートされている言語](../../azure-monitor/app/platforms.md)のための Application Insights 用のアプリの構成を除き、特別な設定は不要です。 この機能は、アプリが十分なテレメトリを生成する際にアクティブになります。
+この機能を使用する場合、[サポートされている言語](./platforms.md)のための Application Insights 用のアプリの構成を除き、特別な設定は不要です。 この機能は、アプリが十分なテレメトリを生成する際にアクティブになります。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>スマート検出による通知はいつ送信されますか
 
@@ -43,13 +43,13 @@ Application Insights は、アプリケーションのパフォーマンスの�
 2. **スコープ**: 問題が影響する範囲はすべてのトラフィックですか。または一部のページのみですか。 特定のブラウザーまたは場所に限定されますか。 この情報を通知から取得できます。
 3. **診断**: 多くの場合、通知内の診断情報は問題の性質を示します。 たとえば、要求率が高い場合に応答時間が遅くなると、サーバーまたは依存関係が過負荷状態であることを示します。 
 
-    それ以外の場合は、Application Insights の [パフォーマンス] ブレードを開きます。 このブレードには[プロファイラー](profiler.md) データが表示されます。 例外がスローされた場合は、[スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)を試すこともできます。
+    それ以外の場合は、Application Insights の [パフォーマンス] ブレードを開きます。 このブレードには[プロファイラー](profiler.md) データが表示されます。 例外がスローされた場合は、[スナップショット デバッガー](./snapshot-debugger.md)を試すこともできます。
 
 
 
 ## <a name="configure-email-notifications"></a>電子メール通知を構成する
 
-スマート検出による通知は既定で有効になっており、Application Insights リソースが存在するサブスクリプションへの[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)および[監視共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)のアクセス権を持つ人に送信されます。 これを変更するには、電子メール通知の **[構成]** をクリックするか、または Application Insights で [スマート検出の設定] を開きます。 
+スマート検出による通知は既定で有効になっており、Application Insights リソースが存在するサブスクリプションへの[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)および[監視共同作業者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)のアクセス権を持つ人に送信されます。 これを変更するには、電子メール通知の **[構成]** をクリックするか、または Application Insights で [スマート検出の設定] を開きます。 
   
   ![スマート検出の設定](media/proactive-performance-diagnostics/smart_detection_configuration.png)
   
@@ -60,22 +60,22 @@ Application Insights は、アプリケーションのパフォーマンスの�
 ## <a name="faq"></a>よく寄せられる質問
 
 * *私のデータは Microsoft のスタッフに見られますか。*
-  * いいえ。 サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](../../azure-monitor/app/data-retention-privacy.md)です。
+  * いいえ。 サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](./data-retention-privacy.md)です。
 * *Application Insights によって収集されたすべてのデータが分析されるのですか。*
   * 現時点ではすべてではありません。 現在は、要求の応答時間、依存関係の応答時間、およびページの読み込み時間が分析されます。 その他のメトリックの分析も行われる予定です。
 
 * どのような種類のアプリケーションに有効ですか。
-  * このようなパフォーマンスの低下は、適切なテレメトリを生成するどのアプリケーションでも検出されます。 Web アプリに Application Insights がインストールされていれば、要求と依存関係が自動的に追跡されます。 ただし、バックエンド サービスやその他のアプリケーションで [TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) または [TrackDependency](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) の呼び出しを挿入した場合は、スマート検出が同じ方法で動作します。
+  * このようなパフォーマンスの低下は、適切なテレメトリを生成するどのアプリケーションでも検出されます。 Web アプリに Application Insights がインストールされていれば、要求と依存関係が自動的に追跡されます。 ただし、バックエンド サービスやその他のアプリケーションで [TrackRequest()](./api-custom-events-metrics.md#trackrequest) または [TrackDependency](./api-custom-events-metrics.md#trackdependency) の呼び出しを挿入した場合は、スマート検出が同じ方法で動作します。
 
 * *独自の異常検出ルールを作成できますか。または既存のルールをカスタマイズできますか。*
 
   * 現時点ではできません。ただし、次のことができます。
-    * メトリックがしきい値を超えたときに通知する[アラートを設定](/azure/azure-monitor/platform/alerts-log)する。
-    * 自分で分析できるように、[データベース](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md)または [Power BI](../../azure-monitor/app/export-power-bi.md ) に[テレメトリをエクスポート](../../azure-monitor/app/export-telemetry.md)する。
+    * メトリックがしきい値を超えたときに通知する[アラートを設定](../platform/alerts-log.md)する。
+    * 自分で分析できるように、[データベース](./code-sample-export-sql-stream-analytics.md)または [Power BI](./export-power-bi.md) に[テレメトリをエクスポート](./export-telemetry.md)する。
 * *どのくらいの頻度で分析は実行されますか。*
 
   * 前日 (UTC タイム ゾーンにおける終日) のテレメトリの分析が毎日実行されます。
-* *これにより、[メトリック アラート](/azure/azure-monitor/platform/alerts-log)が置き換えられるのですか。*
+* *これにより、[メトリック アラート](../platform/alerts-log.md)が置き換えられるのですか。*
   * いいえ。  異常と見なされる可能性のあるすべての動作を検出することを確約しているわけではありません。
 
 
@@ -92,16 +92,16 @@ Web サイト ユーザーにとって最大の不満の 1 つは、自らの経
 
 一般的なガイドラインとして、IMPACT ステートメント (影響を受けたユーザー数またはトラフィックの割合 (%)) を使用します。ただし、それがすべてではありません。 確認すべきその他の証拠を収集します。
 
-問題のパラメーターを検討します。 地理的な場所によって状況が異なる場合は、該当するリージョンを対象とする[可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)をセットアップします。単にそのエリアのネットワークの問題かもしれません。
+問題のパラメーターを検討します。 地理的な場所によって状況が異なる場合は、該当するリージョンを対象とする[可用性テスト](./monitor-web-app-availability.md)をセットアップします。単にそのエリアのネットワークの問題かもしれません。
 
 ### <a name="diagnose-slow-page-loads"></a>遅いページ読み込みの診断
 どこに問題がありますか。 サーバーは応答するのに時間がかかりますか。ページはかなり長いですか。ページを表示するのにブラウザーは多くの処理を必要としますか。
 
 ブラウザーのメトリック ブレードを開きます。 ブラウザーのページ読み込み時間のセグメント表示で、どこで時間がかかっているかがわかります。 
 
-* **[要求送信時間]** の値が大きい場合は、サーバーの応答に時間がかかっているか、または要求が大量のデータを伴う POST 要求です。 応答時間を調べるには、 [パフォーマンス メトリック](../../azure-monitor/app/web-monitor-performance.md#metrics) を確認します。
-* [依存関係の追跡](../../azure-monitor/app/asp-net-dependencies.md) をセットアップして、パフォーマンス低下の原因が外部のサービスによるものか、内部のデータベースによるものかを確認します。
-* **[受信応答時間]** が大部分を占めている場合は、ページと、JavaScript、CSS、イメージなどのページの依存部分 (ただし、非同期で読み込まれるデータではない) が長くなっています。 [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)をセットアップし、依存部分を読み込むオプションを必ず設定します。 いくつかの結果を取得したら、結果の詳細を開き展開して、各種ファイルの読み込み時間を表示します。
+* **[要求送信時間]** の値が大きい場合は、サーバーの応答に時間がかかっているか、または要求が大量のデータを伴う POST 要求です。 応答時間を調べるには、 [パフォーマンス メトリック](./web-monitor-performance.md#metrics) を確認します。
+* [依存関係の追跡](./asp-net-dependencies.md) をセットアップして、パフォーマンス低下の原因が外部のサービスによるものか、内部のデータベースによるものかを確認します。
+* **[受信応答時間]** が大部分を占めている場合は、ページと、JavaScript、CSS、イメージなどのページの依存部分 (ただし、非同期で読み込まれるデータではない) が長くなっています。 [可用性テスト](./monitor-web-app-availability.md)をセットアップし、依存部分を読み込むオプションを必ず設定します。 いくつかの結果を取得したら、結果の詳細を開き展開して、各種ファイルの読み込み時間を表示します。
 * **[クライアントの処理時間]** の値が大きい場合は、スクリプトの実行に時間がかかっています。 理由が明らかでない場合は、何らかのタイミング コードを追加することを検討し、trackMetric 呼び出しで時間を送信してください。
 
 ### <a name="improve-slow-pages"></a>表示が遅いページの改善
@@ -174,11 +174,12 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 これらの診断ツールを使用すると、アプリからテレメトリを調査できます。
 
 * [Profiler](profiler.md) 
-* [スナップショット デバッガー](../../azure-monitor/app/snapshot-debugger.md)
-* [Analytics](../../azure-monitor/log-query/get-started-portal.md)
-* [Analytics Smart Diagnostics](../../azure-monitor/app/analytics.md)
+* [スナップショット デバッガー](./snapshot-debugger.md)
+* [Analytics](../log-query/get-started-portal.md)
+* [Analytics Smart Diagnostics](../log-query/log-query-overview.md)
 
 スマート検出は、すべて自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
-* [手動で構成するメトリックのアラート](/azure/azure-monitor/platform/alerts-log)
-* [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)
+* [手動で構成するメトリックのアラート](../platform/alerts-log.md)
+* [可用性 Web テスト](./monitor-web-app-availability.md)
+

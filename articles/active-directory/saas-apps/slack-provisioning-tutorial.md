@@ -2,25 +2,20 @@
 title: チュートリアル:Slack のユーザー プロビジョニング - Azure AD
 description: Azure Active Directory を構成して、ユーザー アカウントを Slack に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 05/06/2020
 ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8b7fa5aea835329be8f65a3bb1775ba5b0d97d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 368d75ecffda49f688a7a5ce11b60693650014c6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389864"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527827"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル:Slack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -166,10 +161,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
 1. [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+2. [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
 
-## <a name="connector-limitations"></a>コネクタの制限事項
+## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
 * Slack の **displayName**属性を構成する際、次の動作に注意してください。
 
@@ -179,11 +174,15 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
   
   * 許可されている句読点はピリオド、アンダースコア、ハイフン、アポストロフィ、かっこ (例: **( [ { } ] )** ) と区切り記号 (例: **, /;** ) です。
   
+  * displayName プロパティに '@' 文字を含めることはできません。 '@' を含めると、プロビジョニング ログに「AttributeValidationFailed」という説明とともにスキップされたイベントが記録される可能性があります。
+
   * Slack のワークプレイスまたは組織内でこれらの 2 つの設定が構成されている場合のみ、更新を行います。**プロファイル同期が有効**、**ユーザーが表示名を変更できない**。
-  
+
 * Slack の **userName** 属性は 21 文字未満で、一意の値を持つ必要があります。
 
 * Slack では、属性 **userName** と **email** との照合のみが許可されます。  
+  
+* 一般的なエラー コードについては、Slack の公式ドキュメント (https://api.slack.com/scim#errors ) を参照してください
 
 ## <a name="change-log"></a>ログの変更
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: 2a3c7245a4e6c69e87791ca3364ad588b82572c6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dce80d70af7cd711cf852a60b98ad65b6d21117f
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529609"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705250"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート リンク サービスを作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "86529609"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-privatelink-service/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
+:::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 

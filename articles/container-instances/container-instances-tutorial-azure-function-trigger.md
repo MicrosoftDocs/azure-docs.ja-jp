@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Azure 関数でコンテナー グループをトリガーする
+title: チュートリアル - Azure Functions でコンテナー グループをトリガーする
 description: HTTP によってトリガーされるサーバーレス PowerShell 関数を作成して Azure コンテナー インスタンスの作成を自動化します。
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.custom: ''
-ms.openlocfilehash: 298cf1452e514ede540e23d4e64f6dd1059cceab
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ec4b2273f6be6ea4aabed2b660e0b7553f861d0d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259748"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072045"
 ---
-# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>チュートリアル:HTTP によってトリガーされる Azure 関数を使用してコンテナー グループを作成する
+# <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>チュートリアル:HTTP によってトリガーされる Azure Functions を使用してコンテナー グループを作成する
 
 [Azure Functions](../azure-functions/functions-overview.md) は、さまざまなイベント (HTTP 要求、タイマー、Azure Storage キューのメッセージなど) に応じてスクリプトまたはコードを実行できるサーバーレスのコンピューティング サービスです。
 
-このチュートリアルでは、HTTP 要求を受け取って[コンテナー グループ](container-instances-container-groups.md)のデプロイをトリガーする Azure 関数を作成します。 この例では、Azure Functions を使用して Azure Container Instances のリソースを自動的に作成する際の基本を紹介しています。 さらに複雑なシナリオや他のイベント トリガーについては、この例に変更を加えるか拡張してください。 
+このチュートリアルでは、HTTP 要求を受け取って[コンテナー グループ](container-instances-container-groups.md)のデプロイをトリガーする Azure Functions を作成します。 この例では、Azure Functions を使用して Azure Container Instances のリソースを自動的に作成する際の基本を紹介しています。 さらに複雑なシナリオや他のイベント トリガーについては、この例に変更を加えるか拡張してください。 
 
 学習内容は次のとおりです。
 
@@ -33,7 +33,7 @@ ms.locfileid: "86259748"
 
 ## <a name="create-a-basic-powershell-function"></a>基本的な PowerShell 関数を作成する
 
-[Azure で初めての PowerShell 関数を作成する方法](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell)の手順に従い、HTTP トリガー テンプレートを使用して PowerShell 関数を作成します。 Azure 関数の既定の名前 **HttpTrigger** を使用します。 このクイックスタートに示すように、関数をローカルでテストし、Azure の関数アプリにプロジェクトを発行します。 この例は、テキスト文字列を返す、HTTP によってトリガーされた関数です。 この記事の後続の手順では、コンテナー グループを作成するよう関数を変更します。
+[Azure で初めての PowerShell 関数を作成する方法](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell)の手順に従い、HTTP トリガー テンプレートを使用して PowerShell 関数を作成します。 Azure Functions の既定の名前 **HttpTrigger** を使用します。 このクイックスタートに示すように、関数をローカルでテストし、Azure の関数アプリにプロジェクトを発行します。 この例は、テキスト文字列を返す、HTTP によってトリガーされた関数です。 この記事の後続の手順では、コンテナー グループを作成するよう関数を変更します。
 
 この記事では、*myfunctionapp* という名前を使用して Azure リソース グループにプロジェクトを発行することを想定しています。Azure リソース グループの名前は、関数アプリの名前に従って自動的に付けられています (こちらも *myfunctionapp*)。 その後の手順で、一意の関数アプリ名とリソース グループ名に置き換えます。
 
@@ -93,7 +93,7 @@ if ($name) {
 
 関数アプリ プロジェクトを Azure に再発行する前に、関数がローカルで動作することを確認します。 関数をローカルで実行しても、Azure リソースは作成されません。 ただし、クエリ文字列で name 値を渡したり渡さなかったりすることで、関数のフローをテストすることができます。 関数をデバッグするには、「[PowerShell Azure Functions をローカル環境でデバッグする](../azure-functions/functions-debug-powershell-local.md)」を参照してください。
 
-## <a name="republish-azure-function-app"></a>Azure 関数アプリを再発行する
+## <a name="republish-azure-function-app"></a>Azure Functions アプリを再発行する
 
 関数がローカルで動作することを確認したら、Azure 上の既存の関数アプリにそのプロジェクトを再発行します。
 
@@ -191,7 +191,7 @@ az group delete --name myfunctionapp
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、HTTP 要求を受け取ってコンテナー グループのデプロイをトリガーする Azure 関数を作成しました。 以下の方法を学習しました。
+このチュートリアルでは、HTTP 要求を受け取ってコンテナー グループのデプロイをトリガーする Azure Functions を作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * Visual Studio Code と Azure Functions 拡張機能を使用して、HTTP によってトリガーされる基本的な PowerShell 関数を作成する。
@@ -201,7 +201,7 @@ az group delete --name myfunctionapp
 
 コンテナー化されたジョブを起動して監視する詳細な例については、ブログ記事「[PowerShell Azure Functions と Azure Container Instances を使用したイベント駆動型のサーバーレス コンテナー](https://dev.to/azure/event-driven-serverless-containers-with-powershell-azure-functions-and-azure-container-instances-e9b)」と付随する[コード サンプル](https://github.com/anthonychu/functions-powershell-run-aci)を参照してください。
 
-Azure 関数の作成と関数プロジェクトの発行に関する詳しいガイダンスについては、[Azure Functions のドキュメント](../azure-functions/index.yml)を参照してください。 
+Azure Functions の作成と関数プロジェクトの発行に関する詳しいガイダンスについては、[Azure Functions のドキュメント](../azure-functions/index.yml)を参照してください。 
 
 <!-- IMAGES -->
 

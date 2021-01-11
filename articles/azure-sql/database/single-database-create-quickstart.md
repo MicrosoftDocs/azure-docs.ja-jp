@@ -11,18 +11,18 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 20f8a08cfe31534abe24c7af1055e0945e021643
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 6572f2e71b794f9f147278970b3f5f29fceb29d7
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86081589"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962691"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>クイック スタート:Azure SQL Database の単一データベースを作成する
 
 このクイックスタートでは、Azure portal、PowerShell スクリプト、または Azure CLI スクリプトを使用して、Azure SQL Database に単一データベースを作成します。 次に、Azure portal で**クエリ エディター**を使用して、データベースに対してクエリを実行します。
 
-[単一データベース](single-database-overview.md)は、Azure SQL Database の最も迅速かつ簡単なオプションです。 単一データベースは、[サーバー](logical-servers.md)内で管理します。このサーバーは、指定された Azure リージョンの [Azure リソース グループ](../../active-directory-b2c/overview.md)内にあります。 このクイックスタートでは、新しいデータベース用に新しいリソース グループとサーバーを作成します。
+[単一データベース](single-database-overview.md)は、Azure SQL Database の最も迅速かつ簡単なオプションです。 単一データベースは、[サーバー](logical-servers.md)内で管理します。このサーバーは、指定された Azure リージョンの [Azure リソース グループ](../../azure-resource-manager/management/manage-resource-groups-portal.md)内にあります。 このクイックスタートでは、新しいデータベース用に新しいリソース グループとサーバーを作成します。
 
 単一データベースは、"*プロビジョニング済み*" コンピューティング レベルでも "*サーバーレス*" コンピューティング レベルでも作成できます。 プロビジョニング済みデータベースには、一定量のコンピューティング リソース (CPU やメモリなど) が事前に割り当てられており、2 つの[購入モデル](purchasing-models.md)のいずれかが使用されます。 このクイックスタートでは、[仮想コアベース](service-tiers-vcore.md)の購入モデルを使用してプロビジョニング済みデータベースを作成しますが、[DTU ベース](service-tiers-dtu.md)のモデルを選択することもできます。
 

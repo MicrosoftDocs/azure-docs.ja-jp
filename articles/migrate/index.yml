@@ -3,19 +3,21 @@ title: Azure Migrate のドキュメント
 summary: Azure Migrate ハブのツールを使用したオンプレミス環境の検出、評価、移行に役立つ記事を紹介します。
 metadata:
   title: Azure Migrate のドキュメント
-  description: Azure Migrate ハブのツールを使用して、オンプレミス環境を検出、評価し、Azure に移行する方法について説明します。
+  description: Azure の移行に関するチュートリアル、リソース、移行評価ツールについてご覧ください。 Azure Migrate ハブのツールを使用して、オンプレミス環境を検出、評価し、Azure に移行する方法について説明します。
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
   ms.date: 07/08/2020
-  ms.openlocfilehash: a3c9be5e123892d5d1b8d8e4a0677eb520e34dc6
-  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.custom: seo-azure-migrate
+  keywords: azure migrate, azure migration, azure migrate assessment tool, azure migrate tool, azure migrate documentation, azure migration documentation
+  ms.openlocfilehash: b38df4b4a9c9cd0741e9bc4d69e42ebaf2feefb7
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86112665"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89228343"
 landingContent:
 - title: Azure Migrate について
   linkLists:

@@ -14,12 +14,12 @@ ms.date: 05/18/2020
 ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
-ms.openlocfilehash: f3896bf795e3b1ca258f65fa2c6f4974f2115014
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4990b81d929019b3d201f004176234fa0ea78339
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282995"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118452"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -50,7 +50,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | --- | --- | --- |
 | id | 必須 | Azure AD はこの属性を使用して、返される応答の `InResponseTo` 属性を設定します。 ID の 1 文字目に数字を使用することはできないので、一般的な方法としては、GUID の文字列表現の前に "id" のような文字列を付加します。 たとえば、 `id6c1c178c166d486687be4aaf5e482730` は有効な ID です。 |
 | Version | 必須 | このパラメーターは **2.0** に設定する必要があります。 |
-| IssueInstant | 必須 | これは、UTC 値と [ラウンドトリップ書式 ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx)の DateTime 文字列です。 Azure AD はこの型の DateTime 値を期待しますが、値を評価または使用することはありません。 |
+| IssueInstant | 必須 | これは、UTC 値と [ラウンドトリップ書式 ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)の DateTime 文字列です。 Azure AD はこの型の DateTime 値を期待しますが、値を評価または使用することはありません。 |
 | AssertionConsumerServiceUrl | 省略可能 | 指定する場合、このパラメーターは Azure AD でのクラウド サービスの `RedirectUri` と一致する必要があります。 |
 | ForceAuthn | 省略可能 | これはブール値です。 true の場合は、ユーザーが Azure AD で有効なセッションを持っている場合であっても、再認証を強制されることを意味します。 |
 | IsPassive | 省略可能 | これはブール値で、セッション cookie がある場合はそれを使って、ユーザーの介入なしに、サイレント モードで Azure AD がユーザーを認証する必要があるかどうかを指定します。 true の場合は、Azure AD はセッション cookie を使ってユーザーの認証を試みます。 |

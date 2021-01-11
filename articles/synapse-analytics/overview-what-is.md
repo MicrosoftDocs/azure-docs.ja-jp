@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: be124bdde4427113d56f44f0c1fa19c600bd768e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9277842339d7c4fa74e2e0f1febcf5916d86f4a
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496052"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180781"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure Synapse Analytics (ワークスペース プレビュー) とは
 
@@ -24,7 +24,7 @@ ms.locfileid: "86496052"
 
 このようなソリューションは、構築、構成、セキュリティ保護、および保守が難しいため、インテリジェントな分析情報を迅速に抽出するうえで妨げになります。
 
-**Azure Synapse** は、データ ウェアハウスやビッグ データ分析システム全体にわたってあらゆる規模のすべてのデータから分析情報を取得する時間を早める統合分析サービスです。 これは、エンタープライズ データ ウェアハウジングで使用される **SQL** テクノロジー、ビッグ データ分析で使用される **Spark** テクノロジー、およびアクティビティとデータ移動を調整する**パイプライン**の長所を組み合わせたものです。
+**Azure Synapse** は、データ ウェアハウスやビッグ データ分析システム全体にわたってあらゆる規模のすべてのデータから分析情報を取得する時間を早める統合分析サービスです。 これは、エンタープライズ データ ウェアハウジングで使用される **SQL** テクノロジー、ビッグ データ分析で使用される **Spark** テクノロジー、そしてデータ統合と ETL/ELT のための**パイプライン**の長所を組み合わせたものです。
 
 Azure Synapse には、管理、監視、コーディング、およびセキュリティのための単一のエクスペリエンスとモデルを提供する、Web ネイティブの **Studio** ユーザー エクスペリエンスが用意されています。
 
@@ -59,13 +59,13 @@ Azure Synapse は、SQL と Spark を組み合わせて使用する場合の従�
 * SQL と Spark を使用して、データ レイクに保存されている Parquet、CSV、TSV、JSON ファイルを直接探索して分析できます。
 * SQL データベースと Spark データベース間でやり取りされるデータの高速かつスケーラブルな読み込みとアンロード
 
-### <a name="built-in-orchestration-via-pipelines"></a>パイプラインを介した組み込みのオーケストレーション
+### <a name="built-in-data-integration-via-pipelines"></a>パイプラインを介した組み込みのデータ統合
 
-Azure Synapse には Azure Data Factory と同じデータ統合エンジンとエクスペリエンスが組み込まれているため、別個のオーケストレーション エンジンを使用せずに多機能なデータ パイプラインを作成できます。
+Azure Synapse には Azure Data Factory と同じデータ統合エンジンとエクスペリエンスが組み込まれているため、Synapse Analytics から離れることなく、多機能で大規模な ETL パイプラインを作成できます。
 
-* Azure Synapse と 90 以上のオンプレミス データ ソース間でデータを移動する
-* ノートブック、パイプライン、Spark ジョブ、SQL スクリプト、ストアド プロシージャを調整する
+* 90 以上のデータ ソースからデータを取り込む
 * データ フロー アクティビティを使用したコードフリーの ETL
+* Notebooks、Spark ジョブ、ストアド プロシージャ、SQL スクリプトなどを調整する
 
 ### <a name="unified-management-monitoring-and-security"></a>統合された管理、監視、およびセキュリティ
 

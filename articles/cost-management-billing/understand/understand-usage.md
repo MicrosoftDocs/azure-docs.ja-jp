@@ -1,19 +1,20 @@
 ---
-title: 詳細な利用状況と請求金額について | Microsoft Docs
-description: 詳細な利用状況と請求金額について、どのように読んで理解すればよいかを説明します
+title: 詳細な利用状況と請求金額について
+description: 詳細な利用状況と請求金額ファイルについて、どのように読んで理解すればよいかを説明します。 ファイルで使用されている用語と説明の一覧を表示します。
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d113ad7d3de3478fbbdcce32363e048b7a8a75ce
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065642"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681738"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Azure の利用状況と請求金額ファイル内の用語について
 
@@ -23,8 +24,8 @@ ms.locfileid: "80065642"
 
 アカウントの種類 | Azure の利用状況 | Marketplace の利用状況 | 購入 | 返金
 --- | --- | --- | --- | ---
-Enterprise Agreement (EA) | はい | はい | はい | いいえ
-Microsoft 顧客契約 (MCA) | はい | はい | はい | はい
+Enterprise Agreement (EA) | はい | はい | [はい] | いいえ
+Microsoft 顧客契約 (MCA) | はい | はい | はい | [はい]
 従量課金制 (PAYG) | はい | はい | いいえ | いいえ
 
 Marketplace 注文 (外部サービスとしても知られています) について詳しくは、「[外部サービスの課金に対する Azure での請求について](understand-azure-marketplace-charges.md)」をご覧ください。

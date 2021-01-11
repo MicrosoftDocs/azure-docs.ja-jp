@@ -11,12 +11,12 @@ author: ajetasin
 ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 90d3507a8867ad3556891f6001f0e15ebda8c4f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 945e9019d75f9597d89a63c9322cbd4a8d502f15
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345361"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869866"
 ---
 # <a name="stream-data-into-azure-sql-database-using-azure-stream-analytics-integration-preview"></a>Azure Stream Analytics 統合を使用して Azure SQL Database にデータをストリーム配信する (プレビュー)
 
@@ -31,7 +31,7 @@ ms.locfileid: "84345361"
 - プレビュー データによる使いやすさの向上:イベント ソース (イベント ハブ/IoT ハブ) から受信したデータを選択したテーブルのコンテキストでプレビューできます
 
 > [!IMPORTANT]
-> Azure Stream Analytics ジョブは、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics (以前の Azure SQL Data Warehouse) に出力できます。 詳細については、「[出力](../../stream-analytics/stream-analytics-define-outputs.md#sql-database)」を参照してください。
+> Azure Stream Analytics ジョブは、Azure SQL Database、Azure SQL Managed Instance、または Azure Synapse Analytics (以前の Azure SQL Data Warehouse) に出力できます。 詳細については、「[出力](../../stream-analytics/sql-database-output.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,7 +50,7 @@ ms.locfileid: "84345361"
 
 3. このデータベースへのストリーミング データの取り込み開始するには、 **[作成]** を選択し、ストリーミング ジョブに名前を付けて、 **[Next: Input]\(次へ: 入力\)** を選択します。
 
-    ![Stream Analytics ジョブを作成する](./media/stream-data-stream-analytics-integration/create-job.png)
+    ![Stream Analytics ジョブの基本を構成します](./media/stream-data-stream-analytics-integration/create-job.png)
 
 4. イベント ソースの詳細を入力し、 **[Next:Output]\(次へ: 出力\)** を選択します。
 
@@ -64,7 +64,7 @@ ms.locfileid: "84345361"
 
       ここで作成する新しい各 Azure Stream Analytics ジョブに対してコンシューマー グループとポリシーを作成することをお勧めします。 コンシューマー グループでは、同時実行の閲覧者は 5 人しか許可されないので、ジョブごとに専用のコンシューマー グループを指定することで、その上限を超過した場合に発生するエラーを回避します。 専用ポリシーを利用すると、他のリソースに影響を及ぼさずに、キーを交代で利用したりアクセス許可を取り消したりできます。
 
-     ![Stream Analytics ジョブを作成する](./media/stream-data-stream-analytics-integration/create-job-output.png)
+     ![Stream Analytics ジョブ出力を構成します](./media/stream-data-stream-analytics-integration/create-job-output.png)
 
 5. ストリーミング データを取り込むテーブルを選択します。 完了したら、 **[作成]** を選択します。
 

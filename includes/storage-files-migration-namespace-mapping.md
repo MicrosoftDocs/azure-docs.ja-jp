@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e0d963d6491574bf630061749ba4d3538549fa34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16b9342f0374377349f338db7ce5c8389c77ea18
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85570208"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425107"
 ---
 この手順では、必要な Azure ファイル共有の数を評価します。 1 つの Windows Server インスタンス (またはクラスター) では、最大 30 個の Azure ファイル共有を同期できます。
 
@@ -68,7 +68,7 @@ Azure File Sync では、1つの Azure ファイル共有に対して最大 1 �
 
 :::row:::
     :::column:::
-        [![](media/storage-files-migration-namespace-mapping/namespace-mapping.png "An example of a mapping table. Download the file below to experience and use the content of this image.")](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
+        [![マッピング テーブルの例です。以下のファイルをダウンロードして、このイメージのコンテンツを実際に使用してみます。](media/storage-files-migration-namespace-mapping/namespace-mapping.png)](media/storage-files-migration-namespace-mapping/namespace-mapping-expanded.png#lightbox)
     :::column-end:::
     :::column:::
         上記のコンセプトを組み合わせて使用すると、必要とする Azure ファイル共有の数を決定し、既存のデータのどの部分がどの Azure ファイル共有に格納されるかを判断する際の役に立ちます。

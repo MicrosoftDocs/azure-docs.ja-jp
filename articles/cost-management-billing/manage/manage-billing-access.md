@@ -1,22 +1,23 @@
 ---
 title: Azure 課金情報へのアクセスの管理
-description: チームのメンバーが Azure 課金情報にアクセスできるようにする方法について説明します。
+description: Azure 課金情報へのアクセス権をチームのメンバーに付与する方法について説明します。
 author: vikramdesai01
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 74c00678ca901d163d951e02167c89896c43e7b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f42c185046e6ce78edd234923da1a3390ed08608
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281771"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690852"
 ---
-# <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
+# <a name="manage-access-to-billing-information-for-azure"></a>Azure の課金情報へのアクセスの管理
 
 Azure portal では自分のアカウントの課金情報へのアクセス権を他のユーザーに付与できます。 課金ロールの種類と課金情報へのアクセス権を付与するための手順は、請求先アカウントの種類によって異なります。 請求先アカウントの種類を確認するには、「[請求先アカウントの種類を確認する](#check-the-type-of-your-billing-account)」を参照してください。
 

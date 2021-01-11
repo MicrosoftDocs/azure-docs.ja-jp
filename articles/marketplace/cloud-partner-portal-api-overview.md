@@ -3,19 +3,21 @@ title: Cloud パートナー ポータルの API リファレンス - Microsoft 
 description: マーケットプレース API 操作の説明、使用のための前提条件、一覧。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 04/08/2020
-ms.openlocfilehash: 56594b41bd0b771d0cb9a2f49611d9b6c6d393db
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: reference
+author: mingshen-ms
+ms.author: mingshen
+ms.date: 07/14/2020
+ms.openlocfilehash: bfb6e9cb510f5fe887f108dfdea5932406aafe0d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113583"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292920"
 ---
 # <a name="cloud-partner-portal-api-reference"></a>Cloud パートナー ポータルの API リファレンス
 
 > [!NOTE]
-> Cloud パートナー ポータル API はパートナー センターと統合されており、プランがパートナー センターに移行された後も引き続き機能します。 この統合では、小さな変更がなされています。 このドキュメントに記載されている [CPP API の変更点](#changes-to-cpp-apis-after-the-migration-to-partner-center)を確認して、パートナー センターへの移行後もコードが引き続き動作することを確認してください。
+> Cloud パートナー ポータル API はパートナー センターと統合されており、引き続き機能します。 切り替えにより、小さな変更が加えられました。 このドキュメントに記載されている [CPP API の変更点](#changes-to-cpp-apis-after-the-migration-to-partner-center)を調べて、パートナー センターへの切り替え後にコードが機能し続けることを確認してください。 CPP API は、パートナー センターへの切り替え前に既に統合されている既存の製品に対してのみ使用してください。新しい製品では、パートナー センター申請 API を使用する必要があります。
 
 Cloud パートナー ポータルの REST API を使用すると、ワークロード、プラン、発行元プロファイルのプログラムによる取得と操作が可能になります。 API は、処理の際に正しいアクセス許可を実施するために、ロールベースのアクセス制御 (RBAC) を使用します。
 

@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 262431cfcc906b6df1054aaa7dc2b9573c3b8833
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965248"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079243"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch レンダリングを使用する
 
@@ -19,7 +19,7 @@ Azure Batch のレンダリングを使用する方法はいくつかありま�
 * API:
   * Batch の API のいずれかを使用してコードを記述します。  開発者は、クラウドかオンプレミス ベースかにかかわらず、既存のアプリケーションまたはワークフローに Azure Batch 機能を統合できます。
 * コマンド ライン ツール:
-  * [Azure コマンド ライン](/cli/azure/)または [PowerShell](/powershell/azure/overview) を使用すると、Batch の使用のスクリプトを作成できます。
+  * [Azure コマンド ライン](/cli/azure/)または [PowerShell](/powershell/azure/) を使用すると、Batch の使用のスクリプトを作成できます。
   * 特に、[Batch CLI テンプレートのサポート](./batch-cli-templates.md)により、プールの作成とジョブの送信がかなり容易になっています。
 * Batch Explorer UI:
   * [Batch Explorer](https://github.com/Azure/BatchLabs) は Batch のアカウントも管理および監視できるクロス プラットフォームのクライアント ツールです。

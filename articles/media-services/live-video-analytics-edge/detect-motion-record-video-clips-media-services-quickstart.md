@@ -3,12 +3,12 @@ title: モーションの検出、Azure Media Services へのビデオの記録
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 972b85c00aa29cc39dafd03b9945e489680dd9a5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074399"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067668"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
 
@@ -29,13 +29,13 @@ ms.locfileid: "87074399"
 
 Azure リソースを設定する上記の手順の一部として、駐車場の (短い) ビデオが、IoT Edge デバイスとして使用されている Azure の Linux VM にコピーされます。 このビデオ ファイルは、このチュートリアルのライブ ストリームをシミュレートするために使用されます。
 
-[VLC プレーヤー](https://www.videolan.org/vlc/)のようなアプリケーションを使用してそれを起動し、Ctrl を押しながら N キーを押し、[この](https://lvamedia.blob.core.windows.net/public/lots_015.mkv)リンクを駐機場ビデオに貼り付けると再生を開始できます。 だいたい 5 秒の地点で、白の車が駐車場を通って移動します。
+[VLC プレーヤー](https://www.videolan.org/vlc/)などのアプリケーションを使用してこれを起動し、`Ctrl+N` を押して[駐車場のビデオ サンプル](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) リンクを貼り付けると再生を開始できます。 だいたい 5 秒の地点で、白の車が駐車場を通って移動します。
 
 次の手順を完了すると、Live Video Analytics on IoT Edge を使用してその車の動きを検出し、その 5 秒の地点前後で始まるビデオ クリップが録画されます。 次の図は、フロー全体を視覚的に表したものです。
 
 ![モーション イベントに基づいた資産へのイベントベースのビデオ記録](./media/quickstarts/topology.png)
 
-## <a name="use-direct-methods"></a>ダイレクト メソッドの使用
+## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
 ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 モジュールに用意されているすべてのダイレクト メソッドについては、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関するページをご覧ください。 
 
@@ -46,35 +46,35 @@ Azure リソースを設定する上記の手順の一部として、駐車場�
 1. Visual Studio Code ウィンドウの上部中央にエディット ボックスがポップアップ表示されます。 エディット ボックスに「GraphTopologyList」と入力して、Enter キーを押します。
 1. さらに、次の JSON ペイロードをコピーしてエディット ボックスに貼り付け、Enter キーを押します。
     
-    ```
-    {
-        "@apiVersion" : "1.0"
-    }
-    ```
+```
+{
+    "@apiVersion" : "1.0"
+}
+```
 
-    数秒すると、次の応答と共に Visual Studio Code の出力ウィンドウがポップアップ表示されます。
+数秒すると、次の応答と共に Visual Studio Code の出力ウィンドウがポップアップ表示されます。
     
-    ```
-    [DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
-    [DirectMethod] Response from [lva-sample-device/lvaEdge]:
-    {
-      "status": 200,
-      "payload": {
-        "value": []
-      }
-    }
-    ```
+```
+[DirectMethod] Invoking Direct Method [GraphTopologyList] to [lva-sample-device/lvaEdge] ...
+[DirectMethod] Response from [lva-sample-device/lvaEdge]:
+{
+  "status": 200,
+  "payload": {
+    "value": []
+  }
+}
+```
     
-    上記は想定内の応答です。まだグラフ トポロジが作成されていないためです。
+上記は想定内の応答です。まだグラフ トポロジが作成されていないためです。
 
 ### <a name="invoke-graphtopologyset"></a>GraphTopologySet を呼び出す
 
-GraphTopologyList を呼び出したときと同じ手順で、次の JSON をペイロードに使用して GraphTopologySet を呼び出せば、[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を設定できます。 "EVRtoAssetsOnMotionDetecion" という名前のグラフ トポロジを作成します。
+GraphTopologyList を呼び出したときと同じ手順で、次の JSON をペイロードに使用して GraphTopologySet を呼び出せば、[グラフ トポロジ](media-graph-concept.md#media-graph-topologies-and-instances)を設定できます。 "EVRtoAssetsOnMotionDetection" という名前のグラフ トポロジを作成します。
 
 ```
 {
     "@apiVersion": "1.0",
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -195,7 +195,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to assets based on motion events",
       "parameters": [
@@ -312,7 +312,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 * 再度 GraphTopologySet を呼び出します。返される状態コードが 200 であることを確認してください。 状態コード 200 は、既存のグラフ トポロジが正常に更新されたことを意味します。
 * 説明文字列を変えて再度 GraphTopologySet を呼び出します。 応答の状態コードは 200 で、説明が新しい値に更新されたことを確認してください。
-* 前セクションで取り上げた GraphTopologyList を呼び出します。今度は、返されたペイロードに "EVRtoAssetsOnMotionDetecion" グラフ トポロジが表示されていることを確認します。
+* 前のセクションで取り上げた GraphTopologyList を呼び出します。今度は、返されたペイロードに "EVRtoAssetsOnMotionDetection" グラフ トポロジが表示されていることを確認します。
 
 ### <a name="invoke-graphtopologyget"></a>GraphTopologyGet を呼び出す
 
@@ -321,7 +321,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 
@@ -337,7 +337,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
       "createdAt": "2020-05-12T22:05:31.603Z",
       "lastModifiedAt": "2020-05-12T22:05:31.603Z"
     },
-    "name": "EVRtoAssetsOnMotionDetecion",
+    "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
       "parameters": [
@@ -466,7 +466,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
     "@apiVersion" : "1.0",
     "name" : "Sample-Graph-2",
     "properties" : {
-        "topologyName" : "EVRtoAssetsOnMotionDetecion",
+        "topologyName" : "EVRtoAssetsOnMotionDetection",
         "description" : "Sample graph description",
         "parameters" : [
             { "name" : "rtspUrl", "value" : "rtsp://rtspsim:554/media/lots_015.mkv" }
@@ -477,7 +477,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 次のことを考慮してください。
 
-* 上記のペイロードには、作成するグラフ インスタンスのグラフ トポロジ名 (EVRtoAssetsOnMotionDetecion) が指定されています。
+* 上記のペイロードには、作成する必要があるグラフ インスタンスのグラフ トポロジ名 (EVRtoAssetsOnMotionDetection) が指定されています。
 * このペイロードには、"rtspUrl" パラメーターの値が含まれています。このパラメーターには、トポロジのペイロードで既定値が設定されていませんでした。
 
 数秒すると、次の応答が出力ウィンドウに表示されます。
@@ -496,7 +496,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
     "properties": {
       "state": "Inactive",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -531,13 +531,13 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
     
     数秒すると、出力ウィンドウに次のメッセージが表示されます。
 
-    ```
-    [IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
-    [IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
-    [IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
-    ```
+```
+[IoTHubMonitor] Start monitoring message arrived in built-in endpoint for all devices ...
+[IoTHubMonitor] Created partition receiver [0] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [1] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [2] for consumerGroup [$Default]
+[IoTHubMonitor] Created partition receiver [3] for consumerGroup [$Default]
+```
 
 ### <a name="invoke-graphinstanceactivate"></a>GraphInstanceActivate を呼び出す
 
@@ -590,7 +590,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
     "properties": {
       "state": "Active",
       "description": "Sample graph description",
-      "topologyName": "EVRtoAssetsOnMotionDetecion",
+      "topologyName": "EVRtoAssetsOnMotionDetection",
       "parameters": [
         {
           "name": "rtspUrl",
@@ -738,7 +738,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 
 グラフ インスタンスの実行を継続すると、RTSP シミュレーターがビデオ ファイルの最後に到達し、停止または切断されます。 その後、RTSP ソース ノードがシミュレーターに再接続され、プロセスが繰り返されます。
     
-## <a name="invoke-additional-direct-methods-to-clean-up"></a>その他のダイレクト メソッドを呼び出してクリーンアップする
+## <a name="invoke-additional-direct-method-calls-to-clean-up"></a>その他のダイレクト メソッド呼び出しを呼び出してクリーンアップする
 
 ダイレクト メソッドを呼び出して、グラフ インスタンスをまず非アクティブ化し、その後削除します。
 
@@ -801,7 +801,7 @@ GraphTopologyList を呼び出したときと同じ手順で、次の JSON を�
 ```
 {
     "@apiVersion" : "1.0",
-    "name" : "EVRtoAssetsOnMotionDetecion"
+    "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
 

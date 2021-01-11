@@ -2,24 +2,21 @@
 title: チュートリアル:Azure Active Directory と SharePoint オンプレミスの統合 | Microsoft Docs
 description: Azure Active Directory と SharePoint オンプレミスの間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 85b8d4d0-3f6a-4913-b9d3-8cc327d8280d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: miguego
-ms.openlocfilehash: c623ed8cfcdb61081c74a0f7326106c42781cefa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 996668751ee93d14b18e399035fd345f32c58fbe
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648492"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552175"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>チュートリアル:Azure Active Directory シングル サインオンと SharePoint オンプレミスの統合
 

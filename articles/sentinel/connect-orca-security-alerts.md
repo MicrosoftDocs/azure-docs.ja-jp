@@ -1,6 +1,6 @@
 ---
-title: Orca アラートを Azure Sentinel に接続する | Microsoft Docs
-description: Orca セキュリティ アラート データを Azure Sentinel に接続して、ダッシュボードの表示、カスタム アラートの作成、および調査の改善を行う方法を説明します。
+title: Orca Security アラートを Azure Sentinel に接続する | Microsoft Docs
+description: Orca Security アラート データを Azure Sentinel に接続して、ダッシュボードの表示、カスタム アラートの作成、および調査の改善を行う方法を説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 1f2f67281079142f0c4fe4985738dc48332a107d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 735f4b447d7258a9b444f3b75a6537dec20b1307
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076265"
 ---
-# <a name="connect-your-orca-alerts-to-azure-sentinel"></a>Orca アラートを Azure Sentinel に接続する 
+# <a name="connect-your-orca-security-alerts-to-azure-sentinel"></a>Orca Security アラートを Azure Sentinel に接続する 
+
+> [!IMPORTANT]
+> Azure Sentinel の Orca Security アラート コネクタは、現在パブリック プレビュー段階にあります。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Orca セキュリティ アラート コネクタを使用すると、[Orca アラート](https://orca.security/)のセキュリティ ソリューション アラートを Azure Sentinel に簡単に取り込むことができます。これにより、アラートをブック内で表示し、これを利用してカスタム アラートを作成し、調査を向上させる目的で組み入れることができます。 Orca セキュリティ アラートと Azure Sentinel 間の統合には、REST API を使用します。
 

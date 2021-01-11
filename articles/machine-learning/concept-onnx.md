@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 06/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 09b1fa31ff8f93ea86a80092b43d071df6cd74e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acaab8aaa12a107f4d0f8a8aac0baf7d5ebb8e4c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211784"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012760"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-accelerate-ml-models"></a>ONNX と Azure Machine Learning:ML モデルの作成と能率化
 
@@ -28,7 +28,7 @@ ONNX は、機械学習モデルを表現するためのオープン スタン�
 
 [ONNX Runtime](https://onnxruntime.ai) は、ONNX モデルを運用環境にデプロイするためのハイパフォーマンスの推論エンジンです。 クラウドとエッジの両方に最適化され、Linux、Windows、Mac で動作します。 C++ で記述されていますが、さまざまな環境で使用するために、C、Python、C#、Java、Javascript (Node.js) API も用意されています。 ONNX ランタイムは、DNN と従来の ML モデルの両方をサポートし、NVidia GPU 上の TensorRT、Intel プロセッサ上の OpenVINO、Windows 上の DirectML などのさまざまなハードウェアのアクセラレータと統合されます。 ONNX Runtime を使用することにより、広範囲にわたる運用グレードの最適化、テスト、継続的改善の恩恵が得られます。
 
-ONNX Runtime は、Bing、Office、Azure Cognitive Services といった高スケールの Microsoft サービスで使用されています。 パフォーマンス向上はさまざまな要素に左右されますが、これらの Microsoft サービスは、__CPU のパフォーマンスが平均 2 倍に向上__しています。 ONNX ランタイムは、Azure Machine Learning サービスに加えて、Machine Learning のワークロードをサポートする次のような他の製品でも実行できます。
+ONNX Runtime は、Bing、Office、Azure Cognitive Services といった高スケールの Microsoft サービスで使用されています。 パフォーマンス向上はさまざまな要素に左右されますが、これらの Microsoft サービスは、__CPU のパフォーマンスが平均 2 倍に向上__ しています。 ONNX ランタイムは、Azure Machine Learning サービスに加えて、Machine Learning のワークロードをサポートする次のような他の製品でも実行できます。
 + Windows: ランタイムは [Windows Machine Learning](https://docs.microsoft.com/windows/ai/windows-ml/) の一部として Windows に組み込まれており、数億台のデバイスで実行されています。 
 + Azure SQL 製品ファミリ:[Azure SQL Edge](https://docs.microsoft.com/azure/azure-sql-edge/onnx-overview) および [Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/managed-instance/machine-learning-services-overview) のデータに対して、ネイティブなスコアリングを実行します。
 + ML.NET:[ML.NET で ONNX モデルを実行します](https://docs.microsoft.com/dotnet/machine-learning/tutorials/object-detection-onnx)。
@@ -87,7 +87,7 @@ ONNX モデルを作成してデプロイする Python ノートブックの例�
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
 
-他の言語で使用するためのサンプルについては、「[ONNX ランタイム Github](https://github.com/microsoft/onnxruntime/tree/master/samples)」を参照してください。
+他の言語で使用するためのサンプルについては、[ONNX ランタイム の GitHub](https://github.com/microsoft/onnxruntime/tree/master/samples) を参照してください。
 
 ## <a name="more-info"></a>詳細情報
 

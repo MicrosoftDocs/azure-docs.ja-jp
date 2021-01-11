@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 27fcbcec07012dc34c846f316fccf788a0d25329
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 72f0d361f69232894df3a9131d173411614a2055
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84025813"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921216"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Azure portal を使って、Azure SQL Database でご利用のデータベース
 
 ## <a name="viewing-recommendations"></a>推奨事項の表示
 
-パフォーマンスの推奨事項を表示して適用するには、Azure の適切な[ロールベースのアクセス制御](../../role-based-access-control/overview.md)アクセス許可が必要です。 推奨事項を表示するには、**リーダー**権限と **SQL DB の共同作成者**権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、**所有者**権限と **SQL DB の共同作成者**権限が必要です。
+パフォーマンスの推奨事項を表示して適用するには、Azure の適切な [Azureロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) アクセス許可が必要です。 推奨事項を表示するには、**リーダー**権限と **SQL DB の共同作成者**権限が必要です。また、インデックスの作成または削除、およびインデックス作成のキャンセルなどのアクションを実行するには、**所有者**権限と **SQL DB の共同作成者**権限が必要です。
 
 Azure portal でパフォーマンスに関する推奨事項を調べるには、次の手順に従います。
 
@@ -172,4 +172,4 @@ Azure SQL Database では、データベースのパフォーマンス向上の�
 
 * [クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx)
 * [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
-* [ロールベースのアクセス制御](../../role-based-access-control/overview.md)
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md)

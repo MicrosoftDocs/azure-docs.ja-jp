@@ -35,7 +35,7 @@ Azure Key Vault では、ソフトウェアで保護するキーと HSM で保�
 - **ソフトウェアで保護するキー**:Key Vault によってソフトウェアで処理されるが、HSM 内のシステム キーを使って保存時に暗号化されるキー。 クライアントは、既存の RSA または EC (Elliptic Curve) キーをインポートするか、または Key Vault による生成を要求できます。
 - **HSM で保護するキー**:HSM (ハードウェア セキュリティ モジュール) で処理されるキー。 これらのキーは、Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとに 1 つのセキュリティ ワールドがあります)。 クライアントは、RSA または EC キーをインポートできます (ソフトウェア保護形式で、または互換性のある HSM デバイスからエクスポートすることにより)。 クライアントは、Key Vault にキーの生成を要求することもできます。 このキーの種類では、HSM キー マテリアルを取得するために、key_hsm 属性が JWK に追加されます。
 
-地理的境界について詳しくは、[Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/privacy/) をご覧ください。  
+地理的境界について詳しくは、[Microsoft Azure トラスト センター](https://azure.microsoft.com/support/trust-center/privacy/) をご覧ください。  
 
 ## <a name="cryptographic-protection"></a>暗号化による保護
 

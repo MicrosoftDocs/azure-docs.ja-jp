@@ -135,7 +135,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 ![[ようこそ] 画面](media/how-to-install/install5.png)</br>
 8. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。
 
-## <a name="verify-agent-installation"></a>エエージェントのインストールを確認する
+## <a name="verify-agent-installation"></a>エージェントのインストールを確認する
 エージェントの確認は、Azure portal のほか、エージェントが実行されているローカル サーバーで行います。
 
 ### <a name="azure-portal-agent-verification"></a>Azure portal でのエージェントの確認

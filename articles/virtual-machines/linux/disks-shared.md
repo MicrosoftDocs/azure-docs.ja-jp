@@ -8,12 +8,12 @@ ms.date: 07/16/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 3ca8a93357b51ed1817bed63ee624abd9b2daa6c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b0d2784c602b15ffb08637e39e43056fa0b5a31f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502514"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690767"
 ---
 # <a name="share-an-azure-managed-disk"></a>Azure マネージド ディスクの共有
 
@@ -21,4 +21,4 @@ ms.locfileid: "86502514"
 
 ## <a name="next-steps"></a>次のステップ
 
-ご使用のマネージド ディスクに対して共有ディスクの有効化と使用に関心がある場合は、「[共有ディスクを有効にする](disks-shared-enable.md)」の記事に進んでください。
+ご使用のマネージド ディスクに対して共有ディスクの有効化と使用に関心がある場合は、「[共有ディスクを有効にする](../disks-shared-enable.md)」の記事に進んでください。

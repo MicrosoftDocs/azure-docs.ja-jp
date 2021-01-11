@@ -9,13 +9,13 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.custom: tracking-python
-ms.openlocfilehash: e0b0525035732a54965f7c391ac6041b114d7304
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-python
+ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045690"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849100"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio (プレビュー) ノートブックを作成、開発、管理する
 
@@ -191,6 +191,10 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
    ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
 
+### <a name="cancel-all-running-cells"></a>実行中のすべてのセルを取り消す
+実行中のセルまたはキューで待機しているセルを取り消すには、 **[すべて取り消し]** ボタンをクリックします。 
+   ![cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+
 ### <a name="cell-status-indicator"></a>セルの状態インジケーター
 
 セルの下に詳細なセルの実行の状態が表示されます。これは、現在の進行状況を確認するのに役立ちます。 セルの実行が完了すると、合計期間と終了時間を含む実行の概要が表示され、今後の参照用に保持されます。
@@ -200,6 +204,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 ### <a name="spark-progress-indicator"></a>Spark 進行状況インジケーター
 
 Azure Synapse Studio ノートブックは、純粋に Spark ベースです。 コード セルは、Spark プールに対してリモートで実行されます。 Spark ジョブの進行状況インジケーターは、リアルタイムの進行状況バーで示されます。これは、ジョブの実行状態を把握するのに役立ちます。
+ジョブごとまたはステージごとのタスク数は、Spark ジョブの並列レベルを識別するのに役立ちます。 また、ジョブ (またはステージ) の名前のリンクをクリックすることで、特定のジョブ (またはステージ) の Spark UI をさらに掘り下げて調べることもできます。
 
 
 ![spark-progress-indicator](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -208,7 +213,11 @@ Azure Synapse Studio ノートブックは、純粋に Spark ベースです。 
 
 **[Configure session]\(セッションの構成\)** では、現在の Spark セッションに設定するタイムアウト期間、Executor の数とサイズを指定できます。 Spark セッションを再起動すると、構成の変更が有効になります。 キャッシュされたノートブック変数はすべて消去されます。
 
-![session-mgmt](./media/apache-spark-development-using-notebooks/synapse-spark-session-mgmt.png)
+[![session-management](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-spark-session-management.png#lightbox)
+
+Spark セッションの構成パネルで Spark セッション レコメンダーを使用できるようになりました。 セッション構成パネルから Spark プールを直接選択して、使用しているノードの数と、使用可能な残りの Executor の数を確認できます。 これらの情報は、セッションのサイズを何度も変更する代わりに、適切に設定するのに役立ちます。
+
+![session-recommend](./media/apache-spark-development-using-notebooks/synapse-spark-session-recommender.png)
 
 
 ## <a name="bring-data-to-a-notebook"></a>データをノートブックに取り込む
@@ -264,15 +273,25 @@ df = spark.read.option("header", "true") \
 
 ## <a name="visualize-data-in-a-notebook"></a>ノートブックでデータを視覚化する
 
-### <a name="display"></a>Display()
+### <a name="produce-rendered-table-view"></a>レンダリングされたテーブル ビューを生成する
 
 表形式の結果ビューには、横棒グラフ、折れ線グラフ、円グラフ、散布図、および面グラフを作成するためのオプションが表示されます。 コードを記述しなくても、データを視覚化できます。 グラフは **[グラフのオプション]** でカスタマイズできます。 
 
-既定では、 **%%sql** マジック コマンドの出力が、レンダリングされたテーブル ビューに表示されます。 Spark DataFrame または Resilient Distributed Dataset (RDD) 関数で **display(`<DataFrame name>`)** を呼び出して、レンダリングされたテーブル ビューを生成することができます。
+既定では、 **%%sql** マジック コマンドの出力が、レンダリングされたテーブル ビューに表示されます。 Spark DataFrame または Resilient Distributed Dataset (RDD) 関数で <code>display(df)</code> を呼び出して、レンダリングされたテーブル ビューを生成することができます。
 
-   ![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
+   [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
-### <a name="displayhtml"></a>DisplayHTML()
+### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>大規模なデータセットから組み込みグラフを視覚化する 
+
+既定では、<code>display(df)</code> 関数は、グラフを表示するためにデータの最初の 1000 行のみを取得します。 **[Aggregation over all results]\(すべての結果の集計\)** をオンにして **[適用]** ボタンをクリックすると、データセット全体からグラフが生成されます。 グラフの設定が変更されると Spark ジョブがトリガーされます。計算を完了してグラフを表示するのにしばらく時間がかかります。 
+    [![builtin-charts-aggregation-all](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
+
+
+### <a name="visualize-data-statistic-information"></a>データの統計情報を視覚化する
+<code>display(df, summary = true)</code> を使用すると、各列の列名、列の種類、一意の値、欠損値など、特定の Spark DataFrame の統計の概要を確認できます。 また、特定の列を選択して、最小値、最大値、平均値、標準偏差を表示することもできます。
+    [ ![builtin-charts-summary](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png) ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
+
+### <a name="render-html-or-interactive-libraries"></a>HTML または対話型のライブラリをレンダリングする
 
 **displayHTML()** を使用して、HTML または対話型のライブラリ (**ボケ**など) をレンダリングすることができます。
 
@@ -332,9 +351,36 @@ displayHTML(html)
 ## <a name="magic-commands"></a>マジック コマンド
 Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジック コマンドを使用できます。 以下の一覧で、現在使用可能なマジック コマンドを確認してください。 ご自分のニーズに合わせて、引き続きマジック コマンドをさらに作成できるように、GitHub でユース ケースをお知らせください。
 
-使用可能なライン マジック: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
+使用可能なライン マジック: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%time it](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
 
 使用可能なセル マジック: [%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)
+
+
+## <a name="orchestrate-notebook"></a>ノートブックを調整する
+
+### <a name="add-a-notebook-to-a-pipeline"></a>ノートブックをパイプラインに追加する
+
+右上隅にある **[パイプラインへの追加]** ボタンをクリックして、ノートブックを既存のパイプラインに追加するか、新しいパイプラインを作成します。
+
+![add-to-pipeline](./media/apache-spark-development-using-notebooks/add-to-pipeline.png)
+
+### <a name="designate-a-parameters-cell"></a>パラメーター セルを指定する
+
+ノートブックをパラメーター化するには、右端にある省略記号 (...) を選択して、追加のセル アクション メニューにアクセスします。 次に、 **[パラメーター セルを切り替えます]** を選択して、セルをパラメーター セルとして指定します。
+
+![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
+
+パラメーター セルが検索され、このセルは実行時に渡されるパラメーターの既定値として扱われます。 実行エンジンは、既定値を上書きするために、パラメーター セルの下に入力パラメーターを持つ新しいセルを追加します。 パラメーター セルが指定されていない場合、挿入されたセルがノートブックの上部に挿入されます。
+
+### <a name="assign-parameters-values-from-a-pipeline"></a>パイプラインからパラメーター値を割り当てる
+
+パラメーターを使ってノートブックを作成すると、Azure Synapse Notebook アクティビティを使用して、パイプラインからそれを実行できます。 アクティビティをパイプライン キャンバスに追加した後、 **[設定]** タブの **[基本パラメーター]** セクションで、パラメーターの値を設定できます。 
+
+![assign-parameter](./media/apache-spark-development-using-notebooks/assign-parameter.png)
+
+パラメーター値を割り当てるときは、[パイプライン式言語](../../data-factory/control-flow-expression-language-functions.md) または [システム変数](../../data-factory/control-flow-system-variables.md)を使用できます。
+
+
 
 ## <a name="shortcut-keys"></a>ショートカット キー
 
@@ -390,7 +436,7 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 |コマンド モードに切り替える| Esc |
 
 ## <a name="next-steps"></a>次のステップ
-
+- [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
 - [クイック スタート: Web ツールを使用して Azure Synapse Analytics で Apache Spark プール (プレビュー) を作成する](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics の Apache Spark とは](apache-spark-overview.md)
 - [Azure Synapse Analytics で .NET for Apache Spark を使用する](spark-dotnet.md)

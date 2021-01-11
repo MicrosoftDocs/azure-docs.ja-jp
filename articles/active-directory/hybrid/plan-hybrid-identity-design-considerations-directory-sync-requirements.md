@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21558c4eccf0cd1f4e9e1d630f0e89dbb6f01c51
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 500d226fcb60646becc49144f206dcb0dee49bd8
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60381163"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89278396"
 ---
 # <a name="determine-directory-synchronization-requirements"></a>ディレクトリ同期要件の決定
 同期とは、ユーザーのオンプレミス ID に基づいてクラウドに ID を提供することです。 認証またはフェデレーション認証のために同期されたアカウントを使用するかどうかにかかわらず、ユーザーはクラウドに ID を持つ必要があります。  この ID は保守し、定期的に更新する必要があります。  更新プログラムには、タイトルの変更からパスワードの変更まで、さまざまな形式があります。  
@@ -64,7 +64,7 @@ ms.locfileid: "60381163"
   * 同期をサポートする必要なファイアウォール ポートを開くことはできますか。
 * 同期サーバーのディザスター リカバリー計画はありますか。
 * 同期するフォレストについて、正しいアクセス許可を持つアカウントはありますか。
-  * このチェック項目に対する答えがよくわからない場合は、記事「 [Azure Active Directory 同期サービスのインストール](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) 」のセクション「パスワード同期のためのアクセス許可」を参照し、それらのアクセス許可にアカウントが既にあるか、またはアカウントを作成する必要があるかを判断してください。
+  * このチェック項目に対する答えがよくわからない場合は、記事「 [Azure Active Directory 同期サービスのインストール](/previous-versions/azure/azure-services/dn757602(v=azure.100)#BKMK_CreateAnADAccountForTheSyncService) 」のセクション「パスワード同期のためのアクセス許可」を参照し、それらのアクセス許可にアカウントが既にあるか、またはアカウントを作成する必要があるかを判断してください。
 * 複数フォレストの同期がある場合、同期サーバーから各フォレストにアクセスできますか。
 
 > [!NOTE]
@@ -77,4 +77,3 @@ ms.locfileid: "60381163"
 
 ## <a name="see-also"></a>参照
 [設計上の考慮事項の概要](plan-hybrid-identity-design-considerations-overview.md)
-

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:NAT ゲートウェイの作成 - Azure PowerShell
+title: NAT ゲートウェイの作成 - Azure PowerShell
 titlesuffix: Azure Virtual Network NAT
 description: このクイックスタートでは、Azure PowerShell を使用して NAT ゲートウェイを作成する方法について説明します。
 services: virtual-network
@@ -10,17 +10,17 @@ Customer intent: I want to create a NAT gateway for outbound connectivity for my
 ms.service: virtual-network
 ms.subservice: nat
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 1c6a9fff7b3bafc927b0d032dc7345c262f6037c
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: de4e32d79cf4dfb3a5f54544c65544297a2c0232
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707482"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054155"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した NAT ゲートウェイの作成
 

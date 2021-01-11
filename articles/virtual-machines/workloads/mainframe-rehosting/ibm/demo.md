@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 83f7f16d8406744a10451e8d488b7719845c525d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b2509539551b3991690e6d0313e069ae015eb892
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135952"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87052405"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
 
@@ -72,7 +72,7 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 
 2. **[SSH]** タブを選択し、ssh コマンドをクリップボードにコピーします。
 
-3. 資格情報と任意の [SSH クライアント](/azure/virtual-machines/linux/use-remote-desktop)を使用して VM にログオンします。 このデモでは、Windows コマンド プロンプトに bash シェルを追加する Windows 10 用の Linux 拡張機能を使用します。 PuTTY はうまく機能します。
+3. 資格情報と任意の [SSH クライアント](../../../linux/use-remote-desktop.md)を使用して VM にログオンします。 このデモでは、Windows コマンド プロンプトに bash シェルを追加する Windows 10 用の Linux 拡張機能を使用します。 PuTTY はうまく機能します。
 
 4. ログオンしたら、IBM パッケージをアップロードするディレクトリを作成します。 Linux では大文字と小文字が区別されることに注意してください。 たとえば、このデモでは、パッケージは次の場所にアップロードされることを前提としています。
 
@@ -188,9 +188,9 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 
 ## <a name="learn-more"></a>詳細情報
 
-- [メインフレームの移行: 通説と事実](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
-- [Azure 上の IBM DB2 pureScale](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
-- [トラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
+- [メインフレームの移行: 通説と事実](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Azure 上の IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [トラブルシューティング](../../../troubleshooting/index.yml)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

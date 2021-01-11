@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Azure AD SAML Toolkit の統合 | Microsoft Docs
 description: Azure Active Directory と Azure AD SAML Toolkit の間でシングル サインオンを構成する方法について学習します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3f4348e7-c34e-43c7-926e-f1b26ffacf6d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: aa37cef84bb1d2cb92f2bb0e4a227c5be60fa345
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82166312"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543416"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Azure AD SAML Toolkit の統合
 
@@ -161,7 +157,7 @@ Azure AD SAML Toolkit に対する Azure AD SSO を構成してテストする�
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Azure AD SAML Toolkit のテスト ユーザーの作成
 
-このセクションでは、B.Simon というユーザーを Azure AD SAML Toolkit に作成します。 Azure AD SAML Toolkit では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Azure AD SAML Toolkit にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、B.Simon というユーザーを Azure AD SAML Toolkit に作成します。 新しいユーザーを登録してツールでテスト ユーザーを作成し、すべてのユーザーの詳細を入力してください。 
 
 ## <a name="test-sso"></a>SSO のテスト 
 

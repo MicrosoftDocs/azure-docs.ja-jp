@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 7e78a8dfdf902c4c2548e0521a79d67716987791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832085"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077120"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Azure アプリケーションでの Node.js モジュールの使用
 このドキュメントは、Azure でホストされているアプリケーションでの Node.js モジュールの使用に関するガイダンスを示します。 また、Azure でアプリケーションによって特定のバージョンのモジュールとネイティブ モジュールが確実に使用されるようにするためのガイダンスも紹介します。
@@ -85,7 +85,7 @@ Azure App Service では、すべてのネイティブ モジュールがサポ�
 >
 
 ## <a name="next-steps"></a>次のステップ
-ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する](https://github.com/squillace/nodejs-microservice)方法、[Node.js Web アプリを構築およびデプロイする](app-service/app-service-web-get-started-nodejs.md)方法、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)について、それぞれのトピックをご覧ください。
+ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する](https://github.com/squillace/nodejs-microservice)方法、[Node.js Web アプリを構築およびデプロイする](app-service/quickstart-nodejs.md)方法、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)について、それぞれのトピックをご覧ください。
 
 詳細については、 [Node.js デベロッパー センター](/azure/developer/javascript/)を参照してください。
 

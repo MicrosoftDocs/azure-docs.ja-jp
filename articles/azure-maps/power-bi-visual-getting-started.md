@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: e840517934e77c96f1c19c3243ad2884d7ccce66
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9f7f44e053cfb26cbf7d897b8a1df1ad2861fd07
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261456"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552001"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI ビジュアルの概要
 
@@ -35,6 +35,9 @@ Azure Maps ビジュアルは、Azure でホストされているクラウド �
 
 -   地図がフォーカスされている領域の詳細が Azure に送信され、地図キャンバス (地図タイルとも呼ばれます) の描画に必要な画像が取得されます。 
 -   [Location] (場所)、[緯度]、[経度] の各バケット内のデータを Azure に送信して地図座標を取得できます (ジオコーディングと呼ばれるプロセス)。 
+-   Power BI のテレメトリ オプションが有効になっている場合は、ビジュアルの正常性 (クラッシュ レポートなど) に関するテレメトリ データを収集できます。
+
+上記のシナリオ以外では、マップにオーバーレイされた他のデータが Azure Maps サーバーに送信されることはありません。 データのすべてのレンダリングは、クライアント内でローカルに行われます。
 
 次の URL を使用する Azure Maps プラットフォームへのアクセスを許可するために、開発者または管理者がファイアウォールを更新することが必要な場合があります。
 
@@ -159,10 +162,10 @@ Azure Maps は現在、以下を除くすべての国と地域で利用できま
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Maps Power BI ビジュアルの詳細:
+Azure Maps Power BI ビジュアルについて詳しく確認します。
 
 > [!div class="nextstepaction"]
-> [Azure Maps Power BI ビジュアルのレイヤー](power-bi-visual-understanding-layers.md)に関する記事
+> [Azure Maps Power BI ビジュアルのレイヤーの概要](power-bi-visual-understanding-layers.md)
 
 > [!div class="nextstepaction"]
 > [組織内で Azure Maps ビジュアルを管理する](power-bi-visual-manage-access.md)

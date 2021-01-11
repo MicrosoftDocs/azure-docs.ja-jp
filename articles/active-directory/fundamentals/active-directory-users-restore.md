@@ -2,7 +2,7 @@
 title: 最近削除されたユーザーの復元または完全な削除 - Azure AD
 description: Azure Active Directory を使用して、復元可能なユーザーを表示する方法、削除されたユーザーを復元する方法、およびユーザーを完全に削除する方法。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ad71d75eb80f15c09e0a4dff4edc4a0eaae9e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 718a01abacf6f2c3cbc9523cc644aca02dc5ff49
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603929"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321193"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory を使用して最近削除されたユーザーを復元または削除する
 ユーザーを削除した後、アカウントは 30 日間、中断状態のままになります。 その 30 日の期間中は、ユーザー アカウントをそのすべてのプロパティと共に復元することができます。 30 日の期間が経過すると、ユーザーは自動的に完全に削除されます。
@@ -88,6 +88,6 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 
 - [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
 
-- [別の組織からゲスト ユーザーを追加する](../b2b/what-is-b2b.md)
+- [別の組織からゲスト ユーザーを追加する](../external-identities/what-is-b2b.md)
 
 他の使用可能なユーザー管理タスクの詳細については、[Azure AD のユーザー管理のドキュメント](../users-groups-roles/index.yml)を参照してください。

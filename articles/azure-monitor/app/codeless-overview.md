@@ -6,12 +6,12 @@ author: MS-jgol
 ms.author: jgol
 ms.date: 05/31/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87342dcd316b0364522baa01e632b704665c998e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 234f772b4a77b780f0b0c1faf307c93847e5caf2
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85363733"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87310720"
 ---
 # <a name="what-is-auto-instrumentation-or-codeless-attach---azure-monitor-application-insights"></a>Azure Monitor Application Insights の自動インストルメンテーションまたはコードなしアタッチとは
 
@@ -41,7 +41,7 @@ Application Insights は、さまざまなリソース プロバイダーと統�
 
 ### <a name="windows"></a>Windows
 
-[Azure App Service でのアプリケーションの監視](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net)は、.NET アプリケーションで使用でき、既定で有効になっています。.NET Core は 1 回のクリックで有効にできます。Java と Node.js はプライベート プレビュー段階にあります。
+[Azure App Service でのアプリケーションの監視](./azure-web-apps.md?tabs=net)は、.NET アプリケーションで使用でき、既定で有効になっています。.NET Core は 1 回のクリックで有効にできます。Java と Node.js はプライベート プレビュー段階にあります。
 
 ### <a name="linux"></a>Linux 
 
@@ -49,24 +49,25 @@ App Service での Java および Node.js アプリケーションの監視は�
 
 ## <a name="azure-functions"></a>Azure Functions
 
-Azure Functions の基本的な監視は、ログ、パフォーマンス、エラー データ、HTTP 要求を収集するために、既定で有効になっています。 Java アプリケーションでは、分散トレースを使用した高度な監視を有効にし、エンドツーエンドのトランザクションの詳細を取得することができます。 Java 用のこの機能はパブリック プレビュー段階であり、[Azure portal で有効にする](https://docs.microsoft.com/azure/azure-monitor/app/monitor-functions)ことができます。
+Azure Functions の基本的な監視は、ログ、パフォーマンス、エラー データ、HTTP 要求を収集するために、既定で有効になっています。 Java アプリケーションでは、分散トレースを使用した高度な監視を有効にし、エンドツーエンドのトランザクションの詳細を取得することができます。 Java 用のこの機能はパブリック プレビュー段階であり、[Azure portal で有効にする](./monitor-functions.md)ことができます。
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Azure Kubernetes Service のコード不要のインストルメンテーションは、現在、[スタンドアロン エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)を介して Java アプリケーションで利用できます。 
+Azure Kubernetes Service のコード不要のインストルメンテーションは、現在、[スタンドアロン エージェント](./java-in-process-agent.md)を介して Java アプリケーションで利用できます。 
 
 ## <a name="azure-windows-vms-and-virtual-machine-scale-set"></a>Azure Windows VM と仮想マシン スケール セット
 
-[Azure VM と仮想マシン スケール セットの自動インストルメンテーション](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)は、.NET アプリケーション用に使用できます。 
+[Azure VM と仮想マシン スケール セットの自動インストルメンテーション](./azure-vm-vmss-apps.md)は、.NET アプリケーション用に使用できます。 
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
-[.NET アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)用および [Java アプリ](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)用のオンプレミスの Windows サーバーの監視を、簡単に有効にすることができます。
+[.NET アプリケーション](./status-monitor-v2-overview.md)用および [Java アプリ](./java-in-process-agent.md)用のオンプレミスの Windows サーバーの監視を、簡単に有効にすることができます。
 
 ## <a name="other-environments"></a>その他の環境
-多用途の Java スタンドアロン エージェントはあらゆる環境で動作しますが、コードをインストルメント化する必要はありません。 [ガイド](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)に従って Application Insights を有効にし、Java エージェントのすばらしい機能について確認してください。 エージェントはパブリック プレビュー段階にあり、すべてのリージョンで利用できます。 
+多用途の Java スタンドアロン エージェントはあらゆる環境で動作しますが、コードをインストルメント化する必要はありません。 [ガイド](./java-in-process-agent.md)に従って Application Insights を有効にし、Java エージェントのすばらしい機能について確認してください。 エージェントはパブリック プレビュー段階にあり、すべてのリージョンで利用できます。 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Application Insights の概要](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)
-* [アプリケーション マップ](./../../azure-monitor/app/app-map.md)
-* [エンドツーエンドのパフォーマンスの監視](./../../azure-monitor/learn/tutorial-performance.md)
+* [Application Insights の概要](./app-insights-overview.md)
+* [アプリケーション マップ](./app-map.md)
+* [エンドツーエンドのパフォーマンスの監視](../learn/tutorial-performance.md)
+

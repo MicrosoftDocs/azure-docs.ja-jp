@@ -3,20 +3,20 @@ title: 既知の問題とトラブルシューティング
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のエラーを見つけて修正するための支援を得ます。 既知の問題、トラブルシューティング、および対処方法について説明します。
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: troubleshooting
-ms.custom: contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 56acddda2cf5ae2ef2a94353ec11c3ddf6990e1c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: troubleshooting, contperfq4
+ms.date: 08/13/2020
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536115"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757287"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -121,6 +121,18 @@ ms.locfileid: "86536115"
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Azure Machine Learning SDK のインストールが次の例外で失敗する:ModuleNotFoundError:'ruamel' という名前のモジュールはありません、または 'ImportError:ruamel.yaml という名前のモジュールはありません'**
+   
+   この問題は、Python 用 Azure Machine Learning SDK のすべてのリリース バージョンの conda ベース環境で、最新の pip (>20.1.1) に Python 用 Azure Machine Learning SDK をインストールしたときに発生します。 次の回避策を参照してください。
+
+    * conda ベース環境に Python SDK をインストールしないでください。代わりに conda 環境を作成し、新しく作成されたユーザー環境に SDK をインストールします。 最新の pip は、その新しい conda 環境で動作します。
+
+    * Docker でイメージを作成するときに、conda ベース環境から切り替えることができない場合は、pip<=20.1.1 を Docker ファイルにピン留めしてください。
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * **パッケージをインストールする際の Databricks のエラー**
 
     追加のパッケージがインストールされていると、Azure Databricks で Azure Machine Learning SDK のインストールが失敗します。 `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、ライブラリ バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連したもので、Azure Machine Learning SDK には関連はありません。 他のライブラリでもこの問題が発生する場合があります。 例:
@@ -131,7 +143,7 @@ ms.locfileid: "86536115"
 
     別の方法として、Python ライブラリでインストールの問題が発生し続けている場合は、初期化スクリプトを使用することができます。 この方法は、公式にはサポートされていません。 詳細については、「[Cluster-scoped init scripts](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)」を参照してください。
 
-* **Databricks インポート エラー: 'pandas._libs.tslibs' から名前 'Timedelta' をインポートできません**:自動機械学習を使用するときにこのエラーが表示される場合は、notebook で次の 2 行を実行します。
+* **Databricks インポート エラー: `pandas._libs.tslibs`** から名前 `Timedelta` をインポートできません:自動機械学習を使用するときにこのエラーが表示される場合は、notebook で次の 2 行を実行します。
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -219,7 +231,7 @@ ms.locfileid: "86536115"
     | Categorical | string、bool、int、float | 特徴内の一意の値の数は、100 個未満であり、かつ行数の 5% 未満であること。 | null 値は独自のカテゴリとして扱われます。 | 
     | 数値 | int、float | 特徴内の値は数値データ型で、カテゴリの特徴の条件を満たしていません。 | 値の数の 15% を超える null が含まれる場合、その特徴は削除されます。 | 
 
-* [データ ドリフト モニターを作成](how-to-monitor-datasets.md)したが、Azure Machine Learning Studio の **[データセット モニター]** ページにデータが表示されない場合、次を試してください。
+* [データ ドリフト モニターを作成](how-to-monitor-datasets.md)したが、Azure Machine Learning Studio の **[データセット モニター]** ページにデータが表示されない場合は、次を試してください。
 
     1. ページの一番上で正しい日付範囲が選択されているかどうかを確認します。  
     1. **[データセット モニター]** タブで、実験リンクを選択し、実行状態を確認します。  このリンクはテーブルの右端にあります。
@@ -248,6 +260,27 @@ ms.locfileid: "86536115"
 ```python
 import time
 time.sleep(600)
+```
+
+* **リアルタイム エンドポイントのためのログ記録:**
+
+リアルタイム エンドポイントのログは、お客様のデータです。 リアルタイム エンドポイントのトラブルシューティングでは、次のコードを使用してログを有効にできます。 
+
+Web サービス エンドポイントの監視の詳細については、[この記事](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models)を参照してください。
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+複数のテナントがある場合は、`ws = Workspace.from_config()` の前に次の認証コードを追加する必要が生じることがあります
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ## <a name="train-models"></a>モデルをトレーニングする
@@ -302,6 +335,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **automl_setup が失敗する**: 
+    * Windows の場合は、Anaconda プロンプトから automl_setup を実行します。 Miniconda をインストールするには、[ここ](https://docs.conda.io/en/latest/miniconda.html)をクリックします。
+    * `conda info` コマンドを実行して、Conda 64 ビット (32 ビットではなく) がインストールされていることを確認します。 `platform` は、Windows の場合は `win-64`、Mac の場合は `osx-64` にする必要があります。
+    * Conda 4.4.10 以降がインストールされていることを確認します。 バージョンは、コマンド `conda -V` を使用して確認できます。 以前のバージョンがインストールされている場合は、`conda update conda` コマンドを使用して更新できます。
+    * Linux - `gcc: error trying to exec 'cc1plus'`
+      *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` エラーが発生した場合は、コマンド `sudo apt-get install build-essential` を使用して build essential をインストールします。
+      * 新しい名前を最初のパラメーターとして automl_setup に渡して、新しい Conda 環境を作成します。 `conda env list` を使用して既存の Conda 環境を表示し、`conda env remove -n <environmentname>` を使用してそれらを削除します。
+      
+* **automl_setup_linux が失敗する**:Ubuntu Linux で automl_setup_linus.sh がエラーで失敗する場合: `unable to execute 'gcc': No such file or directory`-
+  1. 送信ポート 53 および 80 が有効になっていることを確認します。 Azure VM でこれを行うには、Azure portal で VM を選択し、[ネットワーク] をクリックします。
+  2. `sudo apt-get update` コマンドを実行します
+  3. `sudo apt-get install build-essential --fix-missing` コマンドを実行します
+  4. `automl_setup_linux.sh` をもう一度実行します
+
+* **configuration.ipynb が失敗する**:
+  * ローカル Conda の場合は、最初に automl_setup が正常に実行されていることを確認します。
+  * subscription_id が正しいことを確認します。 Azure portal で [すべてのサービス]、[サブスクリプション] の順に選択して、subscription_id を見つけます。 subscription_id 値に文字 "<" と ">" を含めることはできません。 たとえば、`subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` は有効な形式です。
+  * 共同作成者または所有者がサブスクリプションにアクセスできることを確認します。
+  * リージョンがサポートされているリージョン (`eastus2`、`eastus`、`westcentralus`、`southeastasia`、`westeurope`、`australiaeast`、`westus2`、`southcentralus`) のいずれかであることを確認します。
+  * Azure portal を使用してリージョンにアクセスできることを確認します。
+  
+* **AutoMLConfig のインポートが失敗する**:自動機械学習バージョン 1.0.76 にはパッケージの変更があり、新しいバージョンに更新する前に、以前のバージョンをアンインストールする必要があります。 v1.0.76 より前の SDK バージョンから v1.0.76 以降にアップグレードした後で `ImportError: cannot import name AutoMLConfig` が発生した場合は、`pip uninstall azureml-train automl` を実行してから `pip install azureml-train-auotml` を実行してエラーを解決します。 これは、automl_setup.cmd スクリプトによって自動的に行われます。 
+
+* **workspace.from_config が失敗する**:呼び出し ws = Workspace.from_config()' が失敗する場合 -
+  1. configuration.ipynb ノートブックが正常に実行されていることを確認します。
+  2. ノートブックが、`configuration.ipynb` が実行されたフォルダーの配下ではないフォルダーから実行されている場合は、フォルダー aml_config と、それに含まれているファイル config.json を新しいフォルダーにコピーします。 Workspace.from_config により、ノートブック フォルダーまたはその親フォルダーの config.json が読み取られます。
+  3. 新しいサブスクリプション、リソース グループ、ワークスペース、またはリージョンが使用されている場合は、もう一度 `configuration.ipynb` ノートブックを実行してください。 指定されたサブスクリプションの指定されたリソース グループにワークスペースが既に存在する場合にのみ、config.json を直接変更することができます。
+  4. リージョンを変更する場合は、ワークスペース、リソース グループ、またはサブスクリプションを変更してください。 指定されたリージョンが異なる場合でも、ワークスペースが既に存在する場合は、`Workspace.create` によりワークスペースが作成または更新されることはありません。
+  
+* **サンプル ノートブックが失敗する**:プロパティ、メソッド、またはライブラリが存在しないというエラーでサンプル ノートブックが失敗する場合:
+  * Jupyter Notebook で正しいカーネルが選択されていることを確認します。 カーネルがノートブック ページの右上に表示されます。 既定値は azure_automl です。 カーネルがノートブックの一部として保存されていることに注意してください。 そのため、新しい Conda 環境に切り替える場合は、ノートブックで新しいカーネルを選択する必要があります。
+      * Azure Notebooks の場合は、Python 3.6 にする必要があります。 
+      * ローカルの Conda 環境の場合は、automl_setup で指定した Conda 環境名にする必要があります。
+  * ノートブックが、使用している SDK のバージョンに対応していることを確認します。 Jupyter Notebook セルで `azureml.core.VERSION` を実行することで、SDK のバージョンを確認できます。 GitHub から以前のバージョンのサンプル ノートブックをダウンロードするには、[`Branch`] ボタンをクリックし、[`Tags`] タブを選択して、バージョンを選択します。
+
+* **NumPy のインポートが Windows で失敗する**:一部の Windows 環境で、Python の最新バージョン 3.6.8 を使用した NumPy の読み込みでエラーが発生することがあります。 この問題が発生した場合は、Python バージョン 3.6.7 を試してください。
+
+* **NumPy のインポートが失敗する**:自動 ML Conda 環境で TensorFlow のバージョンを確認します。 サポートされているバージョンは、1.13 未満です。 バージョンが 1.13 以降の場合は、環境から TensorFlow をアンインストールします。TensorFlow のバージョンを確認して、次のようにアンインストールできます。
+  1. コマンド シェルを起動し、自動 ML パッケージがインストールされている Conda 環境をアクティブにします。
+  2. `pip freeze` を入力して `tensorflow`を探します。見つかった場合は、表示されるバージョンは 1.13 未満になるはずです。
+  3. 表示されているバージョンがサポートされているバージョンでない場合は、コマンド シェルで `pip uninstall tensorflow` を入力し、確認のために「y」を入力します。
 
 ## <a name="deploy--serve-models"></a>モデルをデプロイおよび提供する
 
@@ -369,6 +443,12 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 たとえば、リモート実行のために送信される ML パイプラインからコンピューティング ターゲットを作成またはアタッチしようとすると、エラーが発生します。
 
+## <a name="missing-user-interface-items-in-studio"></a>スタジオにユーザー インターフェイス項目が見つからない
+
+Azure のロールベースのアクセス制御を使用すると、Azure Machine Learning で実行できるアクションを制限できます。 これらの制限によって、Azure Machine Learning Studio にユーザー インターフェイス項目を表示しないようにすることができます。 たとえば、コンピューティング インスタンスを作成できないロールがユーザーに割り当てられている場合、コンピューティング インスタンスを作成するオプションは、スタジオには表示されません。
+
+詳細については、「[ユーザーとロールを管理する](how-to-assign-roles.md)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning のその他のトラブルシューティング記事を参照します。
@@ -376,5 +456,5 @@ Azure Machine Learning のその他のトラブルシューティング記事を
 * [Azure Machine Learning での Docker デプロイ トラブルシューティング](how-to-troubleshoot-deployment.md)
 * [機械学習パイプラインのデバッグ](how-to-debug-pipelines.md)
 * [Azure Machine Learning SDK からの ParallelRunStep クラスのデバッグ](how-to-debug-parallel-run-step.md)
-* [VS Code を使用した機械学習コンピューティング インスタンスの対話型デバッグ](how-to-set-up-vs-code-remote.md)
+* [VS Code を使用した機械学習コンピューティング インスタンスの対話型デバッグ](how-to-debug-visual-studio-code.md)
 * [Application Insights を使用した機械学習パイプラインのデバッグ](how-to-debug-pipelines-application-insights.md)

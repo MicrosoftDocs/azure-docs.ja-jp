@@ -1,14 +1,14 @@
 ---
-title: DevOps のテスト - LUIS
+title: LUIS アプリの継続的ワークフロー
 description: Language Understanding (LUIS) 用に DevOps の CI/CD ワークフローを実装する方法。
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 87b922d176f3ef11f25e46c8e076c88d5f3854c3
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: 4cedf0cbe3f9ab675c191f8e4639688bb7916ee0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84783634"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87072986"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUIS DevOps の継続的インテグレーションと継続的デリバリーのワークフロー
 
@@ -20,7 +20,7 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 
 ソース コード管理 (SCM) システムで、次のイベント時に実行されるように自動ビルド パイプラインを構成します。
 
-1. [プル要求](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) が発生したときにトリガーされる **PR ワークフロー**。 このワークフローでは、更新がマスター ブランチにマージされる*前に* PR の内容を検証します。
+1. [Pull request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) が発生したときにトリガーされる **PR ワークフロー**。 このワークフローでは、更新がマスター ブランチにマージされる*前に* PR の内容を検証します。
 1. マスター ブランチに更新がプッシュされたとき (たとえば、PR からの変更をマージしたとき) にトリガーされる **CI/CD ワークフロー**。 このワークフローでは、マスター ブランチに対するすべての更新の品質を保証します。
 
 **CI/CD ワークフロー**では、2 つの補完的な開発プロセスを組み合わせます。

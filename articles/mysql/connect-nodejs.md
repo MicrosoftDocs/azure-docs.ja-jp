@@ -1,19 +1,19 @@
 ---
-title: Node.js を使用して接続する - Azure Database for MySQL
+title: クイック スタート:Node.js を使用して接続する - Azure Database for MySQL
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Node.js コード サンプルをいくつか紹介します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-javascript
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 38ac57ca49608a528b8f810dac7967562f83d7d0
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1f8f4dee2ed1e6dc5cdf6985c1149db0dcaed7c2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870152"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185929"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Node.js を使用して Azure Database for MySQL に接続してデータを照会する
 
@@ -33,7 +33,7 @@ ms.locfileid: "83870152"
 
 プラットフォームに応じて、該当するセクションの手順に従って [Node.js](https://nodejs.org) をインストールしてください。 npm を使用して [mysql](https://www.npmjs.com/package/mysql) パッケージとその依存関係をプロジェクト フォルダーにインストールしてください。
 
-### <a name="windows"></a>**Windows**
+### <a name="windows"></a>Windows
 
 1. [Node.js ダウンロード ページ](https://nodejs.org/en/download/)にアクセスし、必要な Windows インストーラー オプションを選択します。
 2. ローカル プロジェクト フォルダーを作成します (例: `nodejsmysql`)。 
@@ -48,7 +48,7 @@ ms.locfileid: "83870152"
 
 5. `npm list` の出力テキストを確認してインストール結果を検証します。 バージョン番号は、新しいパッチのリリースに伴って変わる場合があります。
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
 1. 次のコマンドを実行して、**Node.js** と、Node.js 用のパッケージ マネージャー **npm** をインストールします。
 
@@ -66,7 +66,7 @@ ms.locfileid: "83870152"
    ```
 3. npm list の出力テキストを確認してインストール結果を検証します。 バージョン番号は、新しいパッチのリリースに伴って変わる場合があります。
 
-### <a name="mac-os"></a>**Mac OS**
+### <a name="mac-os"></a>Mac OS
 
 1. 次のコマンドを入力して **brew** をインストールします。これは、Mac OS X と **Node.js** に対応する使いやすいパッケージ マネージャーです。
 

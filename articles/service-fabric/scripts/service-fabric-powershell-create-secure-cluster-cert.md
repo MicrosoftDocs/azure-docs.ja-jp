@@ -13,13 +13,13 @@ ms.workload: multiple
 ms.topic: sample
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: f6b900bba178d4180d48ed3b89ec1e4d6cb49d7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: bae42c9ec8643da1563fb6b566d8db4af6039225
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076117"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078952"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Service Fabric クラスターの作成
 

@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 365f0b07370937a73d3925373be0be544a182865
-  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+  ms.openlocfilehash: 5a716ad70a31342467eb0944b3e6d1f5d80d5166
+  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/29/2020
-  ms.locfileid: "87386777"
+  ms.lasthandoff: 08/27/2020
+  ms.locfileid: "89000908"
 landingContent:
 - title: 証明書
   linkLists:
@@ -46,6 +46,18 @@ landingContent:
       url: quick-create-python.md
     - text: Key Vault に証明書をインポートする
       url: tutorial-import-certificate.md
+- title: Key Vault 証明書用クライアント ライブラリ
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET クライアント ライブラリ
+      url: /dotnet/api/azure.security.keyvault.certificates?view=azure-dotnet
+    - text: Python クライアント ライブラリ
+      url: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
+    - text: Java クライアント ライブラリ
+      url: https://apidocs.chargebee.com/docs/api?lang=java#client_library
+    - text: Node.js クライアント ライブラリ
+      url: /javascript/api/@azure/keyvault-certificates/?view=azure-node-latest
 - title: Key Vault の詳細
   linkLists:
   - linkListType: overview

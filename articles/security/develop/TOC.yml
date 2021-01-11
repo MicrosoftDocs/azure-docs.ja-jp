@@ -58,6 +58,10 @@
               href: threat-modeling-tool-releases-73002061.md
             - name: Threat Modeling Tool 更新プログラム リリース 7.3.00316.1 - 2020 年 3 月 22 日
               href: threat-modeling-tool-releases-73003161.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.3.00714.2 - 2020 年 7 月 14 日
+              href: threat-modeling-tool-releases-73007142.md
+            - name: Threat Modeling Tool 更新プログラム リリース 7.3.00729.1 - 2020 年 7 月 29 日
+              href: threat-modeling-tool-releases-73007291.md
         - name: 軽減策
           href: threat-modeling-tool-mitigations.md
           items:

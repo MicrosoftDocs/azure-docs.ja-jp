@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: d63e437090b2875c7e6a8273fdf22d49597d408f
-ms.sourcegitcommit: 635114a0f07a2de310b34720856dd074aaf4f9cd
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85262210"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88998460"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して複数のデータ ソースのデータにインデックスを付ける
 
@@ -21,7 +22,7 @@ Azure Cognitive Search では、複数のデータ ソースから 1 つの統�
 
 このチュートリアルでは、Azure Cosmos DB データ ソースのホテルのデータにインデックスを付け、それを Azure Blob Storage ドキュメントから取得したホテルの部屋の詳細とマージする方法について説明します。 その結果、結合されたホテル検索インデックスには複雑なデータ型が含まれます。
 
-このチュートリアルでは、C# と [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用します。 このチュートリアルでは、以下のタスクを実行します。
+このチュートリアルでは、C# と [.NET SDK](/dotnet/api/overview/azure/search) を使用します。 このチュートリアルでは、以下のタスクを実行します。
 
 > [!div class="checklist"]
 > * サンプル データをアップロードしてデータ ソースを作成する
@@ -34,8 +35,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal)
-+ [Azure ストレージ](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Azure Cosmos DB](../cosmos-db/create-cosmosdb-resources-portal.md)
++ [Azure ストレージ](../storage/common/storage-account-create.md)
 + [Visual Studio 2019](https://visualstudio.microsoft.com/)
 + [作成](search-create-service-portal.md)または[既存の検索サービスの用意](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
@@ -80,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure portal](https://portal.azure.com) にサインインし、Azure ストレージ アカウントに移動して **[BLOB]** をクリックし、 **[+ コンテナー]** をクリックします。
 
-1. サンプルのホテルの部屋の JSON ファイルを格納するために、**hotel-rooms** という名前の [BLOB コンテナーを作成](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
+1. サンプルのホテルの部屋の JSON ファイルを格納するために、**hotel-rooms** という名前の [BLOB コンテナーを作成](../storage/blobs/storage-quickstart-blobs-portal.md)します。 パブリック アクセス レベルは、有効な任意の値に設定できます。
 
    ![BLOB コンテナーを作成する](media/tutorial-multiple-data-sources/blob-add-container.png "BLOB コンテナーを作成する")
 
@@ -171,7 +172,7 @@ Azure Cognitive Search インデクサーでは、フィールド マッピン�
 
 ### <a name="create-an-index"></a>インデックスを作成する
 
-このサンプル プログラムでは、.NET SDK を使用して、Azure Cognitive Search のインデックスを定義および作成します。 [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) クラスを利用して、C# データ モデル クラスからインデックス構造を生成します。
+このサンプル プログラムでは、.NET SDK を使用して、Azure Cognitive Search のインデックスを定義および作成します。 [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder) クラスを利用して、C# データ モデル クラスからインデックス構造を生成します。
 
 このデータ モデルは、Address クラスと Room クラスへの参照も含む Hotel クラスで定義されています。 FieldBuilder は、複数のクラス定義をドリルダウンして、このインデックスの複雑なデータ構造を生成します。 メタデータ タグは、検索や並べ替えが可能かどうかなど、各フィールドの属性を定義するために使用されます。
 
@@ -319,7 +320,7 @@ JSON BLOB には、 **`HotelId`** ではなく、 **`Id`** という名前のキ
 
 Blob Storage インデクサーでは、使用する解析モードを指定するパラメーターを使用できます。 この解析モードは、1 つのドキュメントを表す BLOB、または同じ BLOB 内の複数のドキュメントで異なります。 この例では、各 BLOB が単一のインデックス ドキュメントを表します。そのため、このコードでは `IndexingParameters.ParseJson()` パラメーターを使用しています。
 
-JSON BLOB 用のインデクサー解析パラメーターの詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関するページを参照してください。 .NET SDK を使用したこれらのパラメーターの指定の詳細については、[IndexerParametersExtension](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) クラスに関するページを参照してください。
+JSON BLOB 用のインデクサー解析パラメーターの詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関するページを参照してください。 .NET SDK を使用したこれらのパラメーターの指定の詳細については、[IndexerParametersExtension](/dotnet/api/microsoft.azure.search.models.indexingparametersextensions) クラスに関するページを参照してください。
 
 このプログラムは、この例を複数回実行する場合に備えて、新しいインデクサーを作成する前に同じ名前の既存のインデクサーを削除します。
 

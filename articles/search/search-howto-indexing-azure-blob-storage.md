@@ -1,7 +1,7 @@
 ---
 title: Azure Blob Storage のコンテンツを検索する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search で Azure Blob Storage のインデックスを作成し、ドキュメントからテキストを抽出する方法について学習します。
+description: Azure Cognitive Search で Azure Blob Storage のインデックス ドキュメントを作成し、ドキュメントからテキストを抽出する方法について学習します。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 29e123666b35e4659e68a1a925047267f8519940
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9caa377ebcdff5b0ae379f1b0b8269dac5b8f499
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496453"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924097"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Cognitive Search で作成する方法
 
@@ -32,8 +32,8 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 Azure Blob Storage インデクサーを設定するには、以下を使用します。
 
 * [Azure Portal](https://ms.portal.azure.com)
-* Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* Azure Cognitive Search [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search)
+* Azure Cognitive Search [REST API](/rest/api/searchservice/Indexer-operations)
+* Azure Cognitive Search [.NET SDK](/dotnet/api/overview/azure/search)
 
 > [!NOTE]
 > フィールド マッピングなど、機能によってはまだポータルで使用できないものがあります。こうした機能についてはプログラムで使用する必要があります。
@@ -66,7 +66,7 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
     }   
 ```
 
-データ ソース作成 API の詳細については、「 [データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source)」をご覧ください。
+データ ソース作成 API の詳細については、「 [データ ソースの作成](/rest/api/searchservice/create-data-source)」をご覧ください。
 
 <a name="Credentials"></a>
 #### <a name="how-to-specify-credentials"></a>資格情報を指定する方法 ####
@@ -77,7 +77,7 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
 - **ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列:`BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS にはコンテナー上およびオブジェクト (この場合は BLOB) にリストおよび読み取りアクセス許可が必要です。
 -  **コンテナーの Shared Access Signature**:`ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS にはコンテナー上にリストおよび読み取りアクセス許可が必要です。
 
-Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/common/storage-sas-overview.md)」をご覧ください。
 
 > [!NOTE]
 > SAS の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 SAS の資格情報の有効期限が切れると、インデクサーは「`Credentials provided in the connection string are invalid or have expired.`」のようなエラー メッセージで失敗します。  
@@ -101,7 +101,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
     }
 ```
 
-インデックスの作成の詳細については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
+インデックスの作成の詳細については、[インデックスの作成](/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
 ### <a name="step-3-create-an-indexer"></a>手順 3:インデクサーの作成
 インデクサーはデータ ソースをターゲットの検索インデックスに接続し、データ更新を自動化するスケジュールを提供します。
@@ -123,7 +123,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 
 このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
+インデクサー作成 API の詳細については、「 [インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
@@ -169,8 +169,8 @@ Azure Cognitive Search では、ドキュメントがそのキーによって一
 
 抽出されたフィールドとインデックスのキー フィールドとのマッピングは、慎重に検討する必要があります。 その例を次に示します。
 
-* **metadata\_storage\_name** - 名前をキーにできればそれに越したことはありませんが、1) 同じ名前の BLOB が別のフォルダーに存在し、名前が重複する可能性があること、2) ドキュメント キーに無効な文字 (ダッシュなど) が名前に含まれている可能性があることに注意する必要があります。 無効な文字は、`base64Encode`[フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用して処理できます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すときに必ずエンコードしてください。 (たとえば、.NET であれば [UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) メソッドを利用できます)。
-* **metadata\_storage\_path** - 完全パスであれば一意性は保証されます。ただし、パスに使われる `/` 文字は、[ドキュメント キーでは無効](https://docs.microsoft.com/rest/api/searchservice/naming-rules)です。  この場合も、`base64Encode`[関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用してキーをエンコードできます。
+* **metadata\_storage\_name** - 名前をキーにできればそれに越したことはありませんが、1) 同じ名前の BLOB が別のフォルダーに存在し、名前が重複する可能性があること、2) ドキュメント キーに無効な文字 (ダッシュなど) が名前に含まれている可能性があることに注意する必要があります。 無効な文字は、`base64Encode`[フィールド マッピング関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用して処理できます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すときに必ずエンコードしてください。 (たとえば、.NET であれば [UrlTokenEncode](/dotnet/api/system.web.httpserverutility.urltokenencode?view=netframework-4.8) メソッドを利用できます)。
+* **metadata\_storage\_path** - 完全パスであれば一意性は保証されます。ただし、パスに使われる `/` 文字は、[ドキュメント キーでは無効](/rest/api/searchservice/naming-rules)です。  この場合も、`base64Encode`[関数](search-indexer-field-mappings.md#base64EncodeFunction)を使用してキーをエンコードできます。
 * いずれの選択肢も利用できない場合は、独自のメタデータ プロパティを BLOB に追加できます。 ただし、この方法を選んだ場合、BLOB のアップロード プロセスで、該当するメタデータのプロパティをすべての BLOB に追加する必要があります。 キーは必須のプロパティであるため、そのプロパティを持たない BLOB については、インデックスが一切作成されません。
 
 > [!IMPORTANT]
@@ -268,7 +268,7 @@ metadata_storage_path のようなフィールドのエンコードされたバ�
 
 BLOB のどの部分にインデックスを作成するかは、`dataToExtract` 構成パラメーターを使用して制御できます。 次の値を使用できます。
 
-* `storageMetadata` - [標準的な BLOB のプロパティおよびユーザー指定のメタデータ](../storage/blobs/storage-properties-metadata.md)のみにインデックスを作成するように指定します。
+* `storageMetadata` - [標準的な BLOB のプロパティおよびユーザー指定のメタデータ](../storage/blobs/storage-blob-container-properties-metadata.md)のみにインデックスを作成するように指定します。
 * `allMetadata` - ストレージ メタデータと、BLOB コンテンツから抽出された[コンテンツの種類固有のメタデータ](#ContentSpecificMetadata)にインデックスを作成するように指定します。
 * `contentAndMetadata` - すべてのメタデータと、BLOB から抽出されたテキスト コンテンツにインデックスを作成するように指定します。 これが既定値です。
 
@@ -316,7 +316,7 @@ BLOB のどの部分にインデックスを作成するかは、`dataToExtract`
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
 ```
 
-Azure Cognitive Search では、インデックスを付ける BLOB のサイズが制限されます。 これらの制限は、[Azure Cognitive Search サービスの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に関する記事で文書化されています。 サイズが大きい BLOB は、既定ではエラーとして扱われます。 ただし、`indexStorageMetadataOnlyForOversizedDocuments` 構成パラメーターを true に設定した場合、サイズが大きい BLOB のストレージ メタデータには引き続きインデックスを付けることができます。 
+Azure Cognitive Search では、インデックスを付ける BLOB のサイズが制限されます。 これらの制限は、[Azure Cognitive Search サービスの制限](./search-limits-quotas-capacity.md)に関する記事で文書化されています。 サイズが大きい BLOB は、既定ではエラーとして扱われます。 ただし、`indexStorageMetadataOnlyForOversizedDocuments` 構成パラメーターを true に設定した場合、サイズが大きい BLOB のストレージ メタデータには引き続きインデックスを付けることができます。 
 
 ```http
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
@@ -345,15 +345,15 @@ BLOB の解析中またはインデックスへのドキュメントの追加中
 ### <a name="native-blob-soft-delete-preview"></a>ネイティブ BLOB の論理的な削除 (プレビュー)
 
 > [!IMPORTANT]
-> ネイティブ BLOB の論理的な削除のサポートはプレビュー段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2020-06-30-Preview](https://docs.microsoft.com/azure/search/search-api-preview) で、この機能を提供しています。 現時点では、ポータルと .NET SDK によるサポートはありません。
+> ネイティブ BLOB の論理的な削除のサポートはプレビュー段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 [REST API バージョン 2020-06-30-Preview](./search-api-preview.md) で、この機能を提供しています。 現時点では、ポータルと .NET SDK によるサポートはありません。
 
 > [!NOTE]
 > ネイティブ BLOB の論理的な削除ポリシーを使用する場合、インデックス内のドキュメントのドキュメント キーは BLOB プロパティまたは BLOB メタデータである必要があります。
 
-この方法では、Azure Blob Storage によって提供される[ネイティブ BLOB の論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)機能を使用します。 ストレージ アカウントでネイティブ BLOB の論理的な削除が有効になっていて、データソースにネイティブの論理的な削除ポリシーが設定されており、論理的に削除された状態に遷移した BLOB がインデクサーによって検出された場合、そのドキュメントはインデクサーによってインデックスから削除されます。 Azure Data Lake Storage Gen2 から BLOB のインデックスを作成する場合、ネイティブ BLOB の論理的な削除ポリシーはサポートされていません。
+この方法では、Azure Blob Storage によって提供される[ネイティブ BLOB の論理的な削除](../storage/blobs/soft-delete-blob-overview.md)機能を使用します。 ストレージ アカウントでネイティブ BLOB の論理的な削除が有効になっていて、データソースにネイティブの論理的な削除ポリシーが設定されており、論理的に削除された状態に遷移した BLOB がインデクサーによって検出された場合、そのドキュメントはインデクサーによってインデックスから削除されます。 Azure Data Lake Storage Gen2 から BLOB のインデックスを作成する場合、ネイティブ BLOB の論理的な削除ポリシーはサポートされていません。
 
 次の手順に従います。
-1. [Azure Blob Storage に対してネイティブの論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)を有効にします。 保持ポリシーは、インデクサー間隔スケジュールよりも大幅に高い値に設定することをお勧めします。 このようにすると、インデクサーの実行で問題が発生した場合、またはインデックスを作成するドキュメントの数が多い場合に、インデクサーが論理的に削除された BLOB を最終的に処理するのに十分な時間があります。 Azure Cognitive Search インデクサーでは、論理的に削除された状態の BLOB を処理する場合にのみ、インデックスからドキュメントが削除されます。
+1. [Azure Blob Storage に対してネイティブの論理的な削除](../storage/blobs/soft-delete-blob-overview.md)を有効にします。 保持ポリシーは、インデクサー間隔スケジュールよりも大幅に高い値に設定することをお勧めします。 このようにすると、インデクサーの実行で問題が発生した場合、またはインデックスを作成するドキュメントの数が多い場合に、インデクサーが論理的に削除された BLOB を最終的に処理するのに十分な時間があります。 Azure Cognitive Search インデクサーでは、論理的に削除された状態の BLOB を処理する場合にのみ、インデックスからドキュメントが削除されます。
 1. データ ソースでネイティブ BLOB の論理的な削除の検出ポリシーを構成します。 次に例を示します。 この機能はプレビュー段階であるため、プレビュー REST API を使用する必要があります。
 1. インデクサーを実行するか、またはスケジュールに基づいて実行するようにインデクサーを設定します。 インデクサーが実行されて BLOB が処理されると、ドキュメントはインデックスから削除されます。
 
@@ -434,7 +434,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 インデックスの複数のソースからドキュメントを「アセンブル」できます。 たとえば、Cosmos DB に格納された他のメタデータを使用して BLOB からテキストをマージすることもできます。 プッシュ インデックス作成 API を各種インデクサーとともに使用して、複数のパーツから検索ドキュメントを構築することもできます。 
 
-これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このトピックの詳細については、[複数の Azure データ ソースのインデックスを作成する](https://docs.microsoft.com/azure/search/tutorial-multiple-data-sources)方法に関するページを参照してください。 このソリューションのチュートリアルについて詳しくは、外部資料の[ドキュメントを Azure Cognitive Search の他のデータと組み合わせる](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)に関するページをご覧ください。
+これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このトピックの詳細については、[複数の Azure データ ソースのインデックスを作成する](./tutorial-multiple-data-sources.md)方法に関するページを参照してください。 このソリューションのチュートリアルについて詳しくは、外部資料の[ドキュメントを Azure Cognitive Search の他のデータと組み合わせる](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)に関するページをご覧ください。
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>プレーンテキストのインデックス作成 

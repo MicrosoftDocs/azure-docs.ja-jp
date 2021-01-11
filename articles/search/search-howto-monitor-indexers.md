@@ -9,12 +9,13 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 2e62296e95a7b412a24c9d0c151c2bc9175ab4b7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 649611b2e378cd43286b193c6d40b03b743905cd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529745"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000075"
 ---
 # <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>Azure Cognitive Search インデクサーの状態と結果を監視する方法
 
@@ -80,7 +81,7 @@ Azure Cognitive Search では、各インデクサーの現在と過去の実行
 
 ## <a name="monitor-using-rest-apis"></a>REST API を使用した監視
 
-インデクサーの現在の状態と実行の履歴は、[インデクサー状態の取得](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)コマンドを使用して取得できます。
+インデクサーの現在の状態と実行の履歴は、[インデクサー状態の取得](/rest/api/searchservice/get-indexer-status)コマンドを使用して取得できます。
 
 ```http
 GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
@@ -125,7 +126,7 @@ api-key: [Search service admin key]
 
 インデクサーがリセットされ、その変更追跡状態が更新されると、別個の実行履歴エントリが **[リセット]** という状態で追加されます。
 
-状態コードとインデクサー監視データに関する詳細は、「[GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)」を参照してください。
+状態コードとインデクサー監視データに関する詳細は、「[GetIndexerStatus](/rest/api/searchservice/get-indexer-status)」を参照してください。
 
 <a name="dotnetsdk"></a>
 
@@ -184,8 +185,8 @@ Latest run
 
 インデクサーがリセットされ、その変更追跡状態が更新されると、別個の履歴エントリが **[リセット]** という状態で追加されます。
 
-状態コードとインデクサー監視情報に関する詳細は、REST API の「[GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)」を参照してください。
+状態コードとインデクサー監視情報に関する詳細は、REST API の「[GetIndexerStatus](/rest/api/searchservice/get-indexer-status)」を参照してください。
 
 ドキュメント固有のエラーまたは警告に関する詳細は、`IndexerExecutionResult.Errors` 一覧と `IndexerExecutionResult.Warnings` 一覧を列挙することで取得できます。
 
-インデクサーの監視に使用する .NET SDK クラスの詳細については、「[IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet)」と「[IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)」を参照してください。
+インデクサーの監視に使用する .NET SDK クラスの詳細については、「[IndexerExecutionInfo](/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet)」と「[IndexerExecutionResult](/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)」を参照してください。

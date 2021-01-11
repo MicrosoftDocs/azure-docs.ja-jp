@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と eKincare の統合 | Microsoft Docs'
 description: Azure Active Directory と eKincare の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57f56d14-83cf-4cbb-b342-fac4fc60078f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5e9b9c852d1c5a8e2300986b3a13b5603332768
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: abd6382a9bf07f198e0344b8730c585cff0f96ca
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158342"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544284"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>チュートリアル: Azure Active Directory と eKincare の統合
 

@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
-ms.openlocfilehash: 2c4654ce175e64c375c96164aed274bf8078d196
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b570efa54d99380f2beff5441dc40a3a10b902a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060116"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269116"
 ---
 # <a name="dynamic-packaging"></a>動的パッケージ
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/dynamic-packaging-overview.md)

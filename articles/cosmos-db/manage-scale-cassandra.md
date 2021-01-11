@@ -4,14 +4,14 @@ description: Azure Cosmos DB Cassandra API アカウントのスケールに使�
 author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 07/29/2020
 ms.author: thvankra
-ms.openlocfilehash: c9517b6d48f21a2ac2c4b92e68c788a33897511b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26f635525afea289e2e791b802478040a7851eee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119156"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486512"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントをエラスティックにスケーリングする
 
@@ -46,7 +46,7 @@ Azure portal を使用して Azure Cosmos DB Cassandra API アカウントのリ
 
 ## <a name="use-the-control-plane"></a><a id="use-control-plane"></a>コントロール プレーンを使用する
 
-Azure Cosmos DB の Cassandra 用 API には、さまざまなコントロール プレーン機能を使用して、プログラムでスループットを調整する機能が用意されています。 ガイダンスとサンプルについては、[Azure Resource Manager](manage-cassandra-with-resource-manager.md)、[Powershell](powershell-samples-cassandra.md)、および [Azure CLI](cli-samples-cassandra.md) に関する記事を参照してください。
+Azure Cosmos DB の Cassandra 用 API には、さまざまなコントロール プレーン機能を使用して、プログラムでスループットを調整する機能が用意されています。 ガイダンスとサンプルについては、[Azure Resource Manager](manage-cassandra-with-resource-manager.md)、[Powershell](powershell-samples.md)、および [Azure CLI](cli-samples.md) に関する記事を参照してください。
 
 この方法の利点は、ピーク時のアクティビティ、またはアクティビティの少ない時間帯を考慮して、タイマーに基づいてリソースのスケールアップまたはスケールダウンを自動化できることです。 Azure Functions と PowerShell を使用してこれを実現する方法については、[こちら](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)のサンプルをご覧ください。
 

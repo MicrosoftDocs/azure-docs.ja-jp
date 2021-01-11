@@ -4,10 +4,10 @@ description: この Azure Policy パターンでは、ポリシー定義内で f
 ms.date: 06/29/2020
 ms.topic: sample
 ms.openlocfilehash: 87c550e5fb3ef0efbf219efc738a69071d2e89ba
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85565716"
 ---
 # <a name="azure-policy-pattern-field-properties"></a>Azure Policy パターン: field プロパティ

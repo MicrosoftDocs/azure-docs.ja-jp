@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した Hyper-V のディザスター リカ�
 description: この記事では、Azure Site Recovery サイトを使用したオンプレミス Hyper-V VM の Azure へのディザスター リカバリーを設定する場合によくある質問をまとめます。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132666"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799890"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
@@ -156,6 +156,10 @@ Azure にレプリケートする場合、レプリケーション トラフィ�
 ### <a name="what-are-the-replicated-vm-requirements"></a>レプリケートされる VM にはどのような要件がありますか?
 
 レプリケーションの場合、Hyper-V VM はサポートされているオペレーティング システムを実行している必要があります。 さらに、VM は Azure VM に対する要件を満たす必要があります。 サポート マトリックスについて詳しくは、[こちら](hyper-v-azure-support-matrix.md#replicated-vms)をご覧ください。
+
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>仮想マシンのディスクを Premium Storage にレプリケートする場合、追加の Standard Storage アカウントが必要になるのはなぜですか?
+
+オンプレミスの仮想マシン/物理サーバーを Premium Storage にレプリケートすると、保護されたマシンのディスク上にあるすべてのデータが Premium Storage アカウントにレプリケートされます。 追加の Standard Storage アカウントは、レプリケーション ログを格納するために必要になります。 ディスク データのレプリケートの初期フェーズが完了すると、オンプレミスのディスク データへのすべての変更が継続的に追跡され、この追加の Standard Storage アカウントにレプリケーション ログとして格納されます。
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
 

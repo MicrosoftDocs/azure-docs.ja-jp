@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box のセットアップ方法のチュートリアル | Microsoft Docs
-description: ケーブルを配線して Azure Data Box を接続する方法を学習する
+description: このチュートリアルでは、Azure Data Box のケーブルを配線して Azure Data Box を接続し、その電源をオンにする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: c74b5ba5101dae9165898aeb4f265d449988ecab
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 53309023a838f4b256327a37866408f556c81d29
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205238"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924158"
 ---
 ::: zone target="docs"
 

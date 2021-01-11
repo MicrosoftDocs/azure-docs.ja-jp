@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5fe1bf294c34afc2f7e0e0aa911dc05597ab9df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 841bc3ae4fbddb376ea4da8141bf4df3f895c4dc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252782"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89269558"
 ---
 # <a name="deploy-a-secure-azure-managed-workstation"></a>セキュリティで保護された Azure マネージド ワークステーションのデプロイ
 
@@ -449,9 +449,9 @@ Intune PowerShell スクリプトを使用して MMA エージェントをデプ
 
 ## <a name="monitoring"></a>監視
 
-* [Azure Sentinel を使用して脅威を検出する](/azure/sentinel/tutorial-detect-threats)方法を確認します
-* [Azure Sentinel でインシデントを調査します](/azure/sentinel/tutorial-investigate-cases)
-* [Azure Sentinel で脅威への自動対応を設定します](/azure/sentinel/tutorial-respond-threats-playbook)
+* [Azure Sentinel を使用して脅威を検出する](../../sentinel/tutorial-detect-threats-built-in.md)方法を確認します
+* [Azure Sentinel でインシデントを調査します](../../sentinel/tutorial-investigate-cases.md)
+* [Azure Sentinel で脅威への自動対応を設定します](../../sentinel/tutorial-respond-threats-playbook.md)
 * [露出スコア](/windows/security/threat-protection/microsoft-defender-atp/tvm-exposure-score)を確認する方法を理解します
 * [セキュリティの推奨事項](/windows/security/threat-protection/microsoft-defender-atp/tvm-security-recommendation)を確認します
 * セキュリティの[推奨事項](/windows/security/threat-protection/microsoft-defender-atp/tvm-remediation)を管理します
@@ -463,4 +463,4 @@ Intune PowerShell スクリプトを使用して MMA エージェントをデプ
 * [Microsoft Intune](/intune/index) の詳細を確認します。
 * [Azure AD](../index.yml) について理解します。
 * [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) を操作します
-* [Azure Sentinel](/azure/sentinel/) について知ります
+* [Azure Sentinel](../../sentinel/index.yml) について知ります

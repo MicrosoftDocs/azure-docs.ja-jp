@@ -4,12 +4,12 @@ description: この記事では、Azure Automation 内で Azure AD を Azure へ
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c81e3389f2cc96f2581b8edee5f528237cb9eca
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c17c9cdc02c87037a39b8d6029bc4506afa8ad28
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185672"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87064389"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Azure AD を使用して Azure に対する認証を行う
 
@@ -92,11 +92,11 @@ Azure portal を使用して、資格情報資産を作成することができ�
 
 ### <a name="create-the-credential-asset-with-windows-powershell"></a>Windows PowerShell を使用して資格情報資産を作成する
 
-Windows PowerShell で新しい資格情報資産を準備するために、スクリプトでは、まず割り当てられたユーザー名とパスワードを使用して `PSCredential` オブジェクトを作成します。 次に、このスクリプトでは、このオブジェクトを使用し、[New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) コマンドレットを呼び出して資産を作成します。 または、スクリプトで [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) コマンドレットを呼び出し、ユーザーに名前とパスワードの入力を求めることができます。 「[Azure Automation での資格情報資産](shared-resources/credentials.md)」を参照してください。 
+Windows PowerShell で新しい資格情報資産を準備するために、スクリプトでは、まず割り当てられたユーザー名とパスワードを使用して `PSCredential` オブジェクトを作成します。 次に、このスクリプトでは、このオブジェクトを使用し、[New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) コマンドレットを呼び出して資産を作成します。 または、スクリプトで [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) コマンドレットを呼び出し、ユーザーに名前とパスワードの入力を求めることができます。 「[Azure Automation での資格情報資産](shared-resources/credentials.md)」を参照してください。 
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>Azure Automation Runbook からの Azure リソースの管理
 
-Azure Automation Runbook から資格情報資産を使用して Azure リソースを管理できます。 Azure サブスクリプションで仮想マシンを停止および開始するために使用する資格情報資産を収集する PowerShell Runbook の例を次に示します。 この Runbook では、まず `Get-AutomationPSCredential` を使用して、Azure への認証に使用する資格情報を取得します。 次に、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) コマンドレットを呼び出し、資格情報を使用して Azure に接続します。 このスクリプトでは、[Select-AzureSubscription](/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0) コマンドレットを使用して、使用するサブスクリプションを選択します。 
+Azure Automation Runbook から資格情報資産を使用して Azure リソースを管理できます。 Azure サブスクリプションで仮想マシンを停止および開始するために使用する資格情報資産を収集する PowerShell Runbook の例を次に示します。 この Runbook では、まず `Get-AutomationPSCredential` を使用して、Azure への認証に使用する資格情報を取得します。 次に、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) コマンドレットを呼び出し、資格情報を使用して Azure に接続します。 このスクリプトでは、[Select-AzureSubscription](/powershell/module/servicemanagement/azure.service/select-azuresubscription?view=azuresmps-4.0.0) コマンドレットを使用して、使用するサブスクリプションを選択します。 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 45b535db9fccb41542ee74cb28845d49211e16ec
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281057"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89003849"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
-**Azure Digital Twins** は、環境全体の包括的なデジタル モデルの作成を可能にする、サービスとしてのプラットフォーム (PaaS) オファリングです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
+**Azure Digital Twins** は、環境全体のデジタル モデルに基づいたナレッジ グラフの作成を可能にする、サービスとしてのプラットフォーム (PaaS) オファリングです。 これらの環境には、ビル、工場、農場、エネルギー ネットワーク、鉄道、スタジアムなどがあり、さらには都市全体が含まれます。 これらのデジタル モデルを使用して、より優れた製品、最適化された操作、コストの削減、および画期的なカスタマー エクスペリエンスを実現する分析情報を得ることができます。
 
 Azure Digital Twins に加えて、ご自分の分野の専門知識を活用して、次のようなカスタマイズされた接続済みソリューションを構築します。
 * あらゆる環境をモデル化し、デジタル ツインをスケーラブルで安全な方法で実現する
@@ -105,5 +105,4 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 
 または、最初のチュートリアルに進み、Azure Digital Twins の使用について詳しく確認してください。
 
-> [!div class="nextstepaction"]
-> [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)
+[*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)

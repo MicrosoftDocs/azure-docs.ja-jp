@@ -3,13 +3,13 @@ title: Service Bus の配信不能キュー | Microsoft Docs
 description: Service Bus の配信不能キューについて説明します。 Service Bus キューおよびトピック サブスクリプションでは、配信不能キューと呼ばれるセカンダリ サブキューが提供されます。
 ms.topic: article
 ms.date: 06/23/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 7078a7889947c4121713e9374d1487f408fed871
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: fasttrack-edit, devx-track-csharp
+ms.openlocfilehash: 5f7fb65a2a1a6d6529177cd20a85a6d845c119d4
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511213"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021682"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 

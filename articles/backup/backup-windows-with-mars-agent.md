@@ -3,18 +3,18 @@ title: MARS エージェントを使用して Windows マシンをバックア�
 description: Microsoft Azure Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップします。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 34fa0906ec63eb51d37c192f9dadddc57dbf1cdf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 55eb8bdf069fd1b5793468ae52f764eb4288f261
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538634"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89182090"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server ファイルおよびフォルダーを Azure にバックアップする
 
 この記事では、[Azure Backup](backup-overview.md) サービスと Microsoft Azure Recovery Services (MARS) エージェントを使用して、Windows マシンをバックアップする方法について説明します。 MARS は Azure Backup エージェントとも呼ばれます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について学習します。
 
 > [!div class="checklist"]
 >

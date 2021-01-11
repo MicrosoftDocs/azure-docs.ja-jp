@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 32650d44b452b90ffd2935eb31f7c7b958c0f7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.openlocfilehash: a03a141a4140ca4ac000a8e2afb8dd8f45d40662
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737763"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816619"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする
 
@@ -112,7 +112,7 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
 | userName | SFTP サーバーにアクセスできるユーザー。 |はい |
 | privateKeyPath | 統合ランタイムがアクセスできる秘密キー ファイルへの絶対パスを指定します。 これは、"connectVia" でセルフホステッド型の統合ランタイムが指定されている場合にのみ適用されます。 | `privateKeyPath` または `privateKeyContent` を指定します。  |
 | privateKeyContent | Base64 にエンコードされた SSH 秘密キーのコンテンツ。 SSH 秘密キーは、OpenSSH 形式にする必要があります。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に格納するか、[Azure キー コンテナーに格納されているシークレットを参照します](store-credentials-in-key-vault.md)。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
-| passPhrase | キー ファイルがパス フレーズで保護されている場合は、パス フレーズやパスワードを指定して、秘密キーを復号化します。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に格納するか、[Azure キー コンテナーに格納されているシークレットを参照します](store-credentials-in-key-vault.md)。 | はい (秘密キー ファイルがパス フレーズで保護されている場合)。 |
+| passPhrase | キー ファイルまたはキー コンテンツがパス フレーズで保護されている場合は、パス フレーズやパスワードを指定して、秘密キーの暗号化を解除します。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に格納するか、[Azure キー コンテナーに格納されているシークレットを参照します](store-credentials-in-key-vault.md)。 | はい (秘密キー ファイルまたはキー コンテンツがパス フレーズで保護されている場合)。 |
 
 > [!NOTE]
 > SFTP コネクタでは、RSA/DSA OpenSSH キーがサポートされます。 キー ファイルの内容が、"-----BEGIN [RSA/DSA] PRIVATE KEY-----" で始まることを確認します。 秘密キー ファイルが PPK 形式のファイルである場合は、PuTTY ツールを使用して PPK から OpenSSH 形式に変換します。 
@@ -284,7 +284,7 @@ SFTP では、形式ベースのコピー ソースの `storeSettings` 設定で
 
 ### <a name="sftp-as-a-sink"></a>シンクとしての SFTP
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
 
 SFTP では、形式ベースのコピー シンクの `storeSettings` 設定で、以下のプロパティがサポートされています。
 

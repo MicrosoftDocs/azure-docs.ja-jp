@@ -13,7 +13,7 @@ ms.locfileid: "80656488"
 ---
 | プログラミング言語 | プラットフォーム                                                                           | SDK リファレンス              |
 |----------------------|------------------------------------------------------------------------------------|----------------------------|
-| C# <sup>1</sup>      | Windows, Linux, macOS, Mono, Xamarin.iOS, Xamarin.Mac, Xamarin.Android, UWP, Unity | [.NET SDK][net-sdk]        |
+| C# <sup>1</sup>      | Windows、Linux、macOS、Mono、Xamarin.iOS、Xamarin.Mac、Xamarin.Android、UWP、Unity | [.NET SDK][net-sdk]        |
 | C++                  | Windows、Linux、macOS                                                              | [C++ SDK][cpp-sdk]         |
 | Java <sup>2</sup>    | Android、Windows、Linux、macOS                                                     | [Java SDK][javasdk]        |
 | JavaScript           | ブラウザー、Node.js                                                                   | [JavaScript SDK][ecmasdk]  |

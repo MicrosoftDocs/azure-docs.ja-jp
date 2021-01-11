@@ -3,12 +3,12 @@ title: Azure Application Insights から SQL へのエクスポート | Microsof
 description: Stream Analytics を使用して Application Insights データを SQL へ継続的にエクスポートします。
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 4975d91cc20b81de302a1dd0cb7b3326878a96a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c559a61794b36ea1bc33abc14271151fbea9d4c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540096"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311230"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、テレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法について説明します。 
@@ -24,9 +24,9 @@ ms.locfileid: "86540096"
 ## <a name="add-application-insights-to-your-application"></a>Application Insights をアプリケーションに追加する
 作業を開始するには:
 
-1. [Web ページに Application Insights を設定する](../../azure-monitor/app/javascript.md) 
+1. [Web ページに Application Insights を設定する](./javascript.md) 
    
-    (この例では、クライアント ブラウザーからのページ ビュー データの処理を取り上げますが、サーバー側の [Java](../../azure-monitor/app/java-get-started.md) または [ASP.NET](../../azure-monitor/app/asp-net.md) アプリに Application Insights を設定し、要求、依存関係、その他のサーバー テレメトリを処理することもできます。)
+    (この例では、クライアント ブラウザーからのページ ビュー データの処理を取り上げますが、サーバー側の [Java](./java-get-started.md) または [ASP.NET](./asp-net.md) アプリに Application Insights を設定し、要求、依存関係、その他のサーバー テレメトリを処理することもできます。)
 2. アプリを発行して Application Insights のリソースに表示されるテレメトリ データを確認します。
 
 ## <a name="create-storage-in-azure"></a>Azure でのストレージの作成
@@ -61,7 +61,7 @@ ms.locfileid: "86540096"
     ![イベントの種類の選択](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](../../azure-monitor/app/diagnostic-search.md)に表示されます。 
+1. データを蓄積します。 しばらく待機し、ユーザーにアプリケーションを使用してもらいます。 テレメトリが開始し、統計グラフが[メトリックス エクスプローラー](../platform/metrics-charts.md)に表示され、個々のイベントが[診断検索](./diagnostic-search.md)に表示されます。 
    
     また、データはストレージにもエクスポートされます。 
 2. エクスポートされたデータを、ポータルまたは Visual Studio で調べます。ポータルの場合は、 **[参照]** 、ストレージ アカウント、 **[コンテナー]** の順に選択します。 Visual Studio で、 **[表示]、[Cloud Explorer]** の順に選びます。[Azure]、[Storage] の順に開きます (このメニュー オプションがない場合は、Azure SDK をインストールする必要があります:[新しいプロジェクト] ダイアログを開き、[Visual C#]、[クラウド]、[Microsoft Azure SDK for .NET の取得] の順に開きます)。
@@ -128,7 +128,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![PageViewsTable の作成](./media/code-sample-export-sql-stream-analytics/34-create-table.png)
 
-このサンプルでは、ページ ビューからデータを使用します。 使用可能なその他のデータを確認するには、JSON 出力を検査し、「 [Application Insights エクスポート データ モデル](../../azure-monitor/app/export-data-model.md)」を参照してください。
+このサンプルでは、ページ ビューからデータを使用します。 使用可能なその他のデータを確認するには、JSON 出力を検査し、「 [Application Insights エクスポート データ モデル](./export-data-model.md)」を参照してください。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
 [Azure Portal](https://portal.azure.com/) で、Azure Stream Analytics サービスを選び、新しい Stream Analytics ジョブを作成します。
@@ -165,7 +165,7 @@ webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 * `webapplication27` は Application Insights リソースの名前です。**すべて小文字で指定します**。 
 * `1234...` は Application Insights リソースのインストルメンテーション キーです。**ダッシュは削除します**。 
-* `PageViews` は分析するデータの種類です。 使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。 エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](../../azure-monitor/app/export-data-model.md)」をご覧ください。
+* `PageViews` は分析するデータの種類です。 使用可能な種類は、連続エクスポートで設定するフィルターによって異なります。 エクスポートされたデータを調べて、その他の使用可能な種類を確認します。「[Application Insights エクスポート データ モデル](./export-data-model.md)」をご覧ください。
 * `/{date}/{time}` はそのまま書き込まれるパターンです。
 
 Application Insights リソースの名前と iKey を取得するには、概要ページの [Essentials] を開くか、[設定] を開きます。
@@ -215,7 +215,7 @@ Application Insights リソースの名前と iKey を取得するには、概�
 
 ```
 
-最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。 他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。 [プロパティの種類と値についての詳細なデータ モデル リファレンス](../../azure-monitor/app/export-data-model.md)
+最初のいくつかのプロパティはページ ビュー データに固有のプロパティです。 他のテレメトリの種類のエクスポートにはそれぞれ異なるプロパティがあります。 [プロパティの種類と値についての詳細なデータ モデル リファレンス](./export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>データベースへの出力のセットアップ
 SQL を出力として選択します。
@@ -243,15 +243,16 @@ FROM [dbo].[PageViewsTable]
 ```
 
 ## <a name="related-articles"></a>関連記事
-* [Stream Analytics を使用して Power BI にエクスポートする](../../azure-monitor/app/export-power-bi.md )
-* [データ モデルについては、プロパティの型と値のリファレンスで詳しく説明されています。](../../azure-monitor/app/export-data-model.md)
-* [Application Insights での連続エクスポート](../../azure-monitor/app/export-telemetry.md)
+* [Stream Analytics を使用して Power BI にエクスポートする](./export-power-bi.md)
+* [プロパティの種類と値についての詳細なデータ モデル リファレンス](./export-data-model.md)
+* [Application Insights での連続エクスポート](./export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 
 <!--Link references-->
 
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/platform/metrics-charts.md
+[diagnostic]: ./diagnostic-search.md
+[export]: ./export-telemetry.md
+[metrics]: ../platform/metrics-charts.md
 [portal]: https://portal.azure.com/
-[start]: ../../azure-monitor/app/app-insights-overview.md
+[start]: ./app-insights-overview.md
+

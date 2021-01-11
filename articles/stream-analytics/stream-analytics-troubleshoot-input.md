@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045078"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448887"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -160,6 +160,10 @@ UNION
 SELECT foo FROM DataTwo
 
 ```
+
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>パーティションあたりのリーダー数が IoT Hub の上限を上回る
+
+Stream Analytics ジョブでは、IoT Hub に組み込まれた[イベント ハブ互換エンドポイント](../iot-hub/iot-hub-devguide-messages-read-builtin.md)を使用して IoT ハブに接続し、イベントが読み取られます。 パーティションあたりのリーダー数が IoT Hub の上限を上回る場合は、[イベントハブでの解決策](#readers-per-partition-exceeds-event-hubs-limit)を使用して問題を解決できます。 組み込みエンドポイントのコンシューマー グループは、IoT Hub ポータルのエンドポイント セッションまたは [IoT Hub SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup) を使用して作成できます。
 
 ## <a name="get-help"></a>ヘルプの参照
 

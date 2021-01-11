@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4f02d92e6264a05ed2cb4021adb5ae6312f58a85
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146642"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424002"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows 用 Azure シリアル コンソール
 
@@ -26,10 +26,12 @@ Azure portal のシリアル コンソールでは、Windows 仮想マシン (VM
 
 シリアル コンソールは、VM と仮想マシン スケール セット インスタンスに対して同じ方法で動作します。 このドキュメントでは、特に記載のない限り、VM という記述にはすべて仮想マシン スケール セット インスタンスが暗黙的に含まれます。
 
+シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
+
 Linux のシリアル コンソールのドキュメントについては、「[Linux 用 Azure シリアル コンソール](serial-console-linux.md)」をご覧ください。
 
 > [!NOTE]
-> シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
+> シリアル コンソールは、現在マネージド ブート診断ストレージ アカウントとの完全な互換性がありません。 シリアル コンソールを使用するには、カスタム ストレージ アカウントを使用していることを確認してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -38,7 +40,7 @@ Linux のシリアル コンソールのドキュメントについては、「[
 
 - シリアル コンソールを使用するアカウントには、VM の[仮想マシン共同作成者ロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)および[ブート診断](boot-diagnostics.md)ストレージ アカウントが必要です
 
-- VM または仮想マシン スケール セット インスタンスには、パスワード ベースのユーザーが必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
+- VM または仮想マシン スケール セット インスタンスには、パスワード ベースのユーザーが必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](../extensions/vmaccess.md#reset-password)機能を使用して作成することができます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
 
 * 仮想マシン スケール セット インスタンス用 VM では、[ブート診断](boot-diagnostics.md)が有効になっている必要があります。
 
@@ -50,7 +52,7 @@ Linux のシリアル コンソールのドキュメントについては、「[
 > シリアル コンソールに何も表示されていない場合は、VM または仮想マシン スケール セットでブート診断が有効になっていることを確認してください。
 
 ### <a name="enable-the-serial-console-in-custom-or-older-images"></a>カスタム イメージまたは古いイメージでシリアル コンソールを有効にする
-Azure の新しい Windows Server イメージでは、既定で [Special Administration Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効です。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。
+Azure の新しい Windows Server イメージでは、既定で [Special Administration Console](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10)) (SAC) が有効です。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。
 
 以前の Windows Server イメージ (2018 年 2 月より前に作成されたもの) では、Azure portal の実行コマンド機能を使用してシリアル コンソールを自動的に有効にすることができます。 Azure Portal で、 **[実行コマンド]** を選択し、一覧から **EnableEMS** という名前のコマンドを選択します。
 
@@ -76,11 +78,11 @@ Azure の新しい Windows Server イメージでは、既定で [Special Admini
 
 #### <a name="how-do-i-know-if-sac-is-enabled"></a>SAC が有効になっているかどうかを知る方法
 
-[SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) が有効になっていない場合、シリアル コンソールに SAC プロンプトは表示されません。 VM の正常性情報が表示される場合もありますが、それ以外は空白になります。 2018 年 2 月より前に作成された Windows Server イメージを使用している場合、SAC が有効になっていない可能性があります。
+[SAC](/previous-versions/windows/it-pro/windows-server-2003/cc787940(v=ws.10)) が有効になっていない場合、シリアル コンソールに SAC プロンプトは表示されません。 VM の正常性情報が表示される場合もありますが、それ以外は空白になります。 2018 年 2 月より前に作成された Windows Server イメージを使用している場合、SAC が有効になっていない可能性があります。
 
 ### <a name="enable-the-windows-boot-menu-in-the-serial-console"></a>シリアル コンソールの Windows ブート メニューの有効化
 
-Windows ブート ローダーのプロンプトを有効にしてシリアル コンソールに表示する必要がある場合は、ブート構成データに次のオプションを追加します。 詳細については、[bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) に関するページをご覧ください。
+Windows ブート ローダーのプロンプトを有効にしてシリアル コンソールに表示する必要がある場合は、ブート構成データに次のオプションを追加します。 詳細については、[bcdedit](/windows-hardware/drivers/devtest/bcdedit--set) に関するページをご覧ください。
 
 1. リモート デスクトップを使用して、Windows VM または仮想マシン スケール セット インスタンスに接続します。
 
@@ -126,7 +128,7 @@ NMI を受信したときにクラッシュ ダンプ ファイルを作成す�
 Windows VM のシリアル コンソールでファンクション キーを有効にして使用することができます。 シリアル コンソールのドロップダウンで F8 キーを押すと、詳細ブート設定メニューを簡単に表示することができますが、シリアル コンソールは他のすべてのファンクション キーと互換性があります。 シリアル コンソールを使用しているコンピューターによっては、キーボードの **Fn** + **F1** (または F2、F3 など) を押すことが必要になる場合があります。
 
 ### <a name="use-wsl-in-serial-console"></a>シリアル コンソールで WSL を使用する
-Windows Subsystem for Linux (WSL) は Windows Server 2019 以降で有効なので、Windows Server 2019 以降を実行している場合は、シリアル コンソール内で WSL を有効にして使用することもできます。 この点は、Linux コマンドも熟知しているユーザーに役立つ可能性があります。 WSL for Windows Server を有効にする手順については、[インストール ガイド](https://docs.microsoft.com/windows/wsl/install-on-server)に関するページを参照してください。
+Windows Subsystem for Linux (WSL) は Windows Server 2019 以降で有効なので、Windows Server 2019 以降を実行している場合は、シリアル コンソール内で WSL を有効にして使用することもできます。 この点は、Linux コマンドも熟知しているユーザーに役立つ可能性があります。 WSL for Windows Server を有効にする手順については、[インストール ガイド](/windows/wsl/install-on-server)に関するページを参照してください。
 
 ### <a name="restart-your-windows-vmvirtual-machine-scale-set-instance-within-serial-console"></a>シリアル コンソール内で Windows VM/仮想マシン スケール セット インスタンスを再起動します
 電源ボタンに移動し、[Restart VM] (VM の再起動) をクリックすることによって、シリアル コンソール内で再起動を開始できます。 これにより VM の再起動が始まり、Azure portal 内に再起動に関する通知が表示されます。
@@ -147,7 +149,7 @@ Windows Subsystem for Linux (WSL) は Windows Server 2019 以降で有効なの�
 やり取りされるすべてのデータがネットワーク上で暗号化されます。
 
 ### <a name="audit-logs"></a>監査ログ
-現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。
+現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](./boot-diagnostics.md)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。
 
 > [!CAUTION]
 > コンソールのアクセス パスワードはログに記録されません。 ただし、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は VM のブート診断ログに書き込まれます。 それらは、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。 ただし、シークレットや PII が含まれている可能性のあるものにはリモート デスクトップを使用するというベスト プラクティスに従うことをお勧めします。
@@ -173,7 +175,7 @@ Azure portal からシリアル コンソール インターフェイスでナ�
 :------------------|:-----------------------------------------
 不適切なファイアウォール規則 | シリアル コンソールにアクセスし、Windows ファイアウォール規則を修正します。
 ファイル システムの破損/チェック | シリアル コンソールにアクセスし、ファイルシステムを復旧します。
-RDP 構成の問題 | シリアル コンソールにアクセスし、設定を変更します。 詳しくは、[RDP のドキュメント](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)をご覧ください。
+RDP 構成の問題 | シリアル コンソールにアクセスし、設定を変更します。 詳しくは、[RDP のドキュメント](/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)をご覧ください。
 システムのネットワーク ロックダウン | Azure portal からシリアル コンソールにアクセスして、システムを管理します。 一部のネットワーク コマンドについては、「[Windows コマンド - CMD と PowerShell](serial-console-cmd-ps-commands.md)」を参照してください。
 ブートローダーの操作 | シリアル コンソールを使用して BCD にアクセスします。 詳細については、「[シリアル コンソールの Windows ブート メニューの有効化](#enable-the-windows-boot-menu-in-the-serial-console)」を参照してください。
 

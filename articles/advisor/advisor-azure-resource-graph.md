@@ -4,12 +4,12 @@ description: Azure Resource Graph で Advisor データを照会します
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
-ms.openlocfilehash: c0786d1d09ff61ddd9c375c68b7199521e319a4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 66bb500d419d1f5537afafd7a2df543ded8cc7ce
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117836"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057779"
 ---
 # <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>Resource Graph エクスプローラーで Advisor データを照会する (Azure Resource Graph)
 
@@ -24,7 +24,7 @@ ms.locfileid: "85117836"
 
 ## <a name="advisor-resource-types-in-azure-graph"></a>Azure Graph における Advisor リソースの種類
 
-[Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) で利用できる Advisor リソースの種類は次のとおりです。Advisor リソースには、照会可能なリソースが 3 種類あります。 Resource Graph で照会できるようになった一連のリソースを次に示します。
+[Resource Graph](../governance/resource-graph/index.yml) で利用できる Advisor リソースの種類は次のとおりです。Advisor リソースには、照会可能なリソースが 3 種類あります。 Resource Graph で照会できるようになった一連のリソースを次に示します。
 * Microsoft.Advisor/configurations
 * Microsoft.Advisor/recommendations
 * Microsoft.Advisor/suppressions
@@ -42,4 +42,4 @@ Advisor の推奨事項について詳しくは、以下を参照してくださ
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 * [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

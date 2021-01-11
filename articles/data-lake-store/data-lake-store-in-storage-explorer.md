@@ -58,7 +58,7 @@ Data Lake Storage Gen1 から Azure サブスクリプションに正常に接�
 
 ご利用のサブスクリプションに存在しないリソースであっても、そのリソースの URI を支給してもらえば、アクセスすることができます。 サインイン後、その URI を使って Data Lake Storage Gen1 に接続することができます。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで **[Local and Attached]\(ローカルで接続済み\)** を展開します。
 3. **[Data Lake Store]** を右クリックし、 **[Connect to Data Lake Store]\(Data Lake Store に接続する\)** を選択します。
 
@@ -76,7 +76,7 @@ Data Lake Storage Gen1 アカウントのリソースには、フォルダーと
 
 次の手順では、Storage Explorer 内で Data Lake Storage Gen1 アカウントの内容を表示する方法を説明します。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、表示する Data Lake Storage Gen1 アカウントが含まれているサブスクリプションを展開します。
 3. **[Data Lake Store]** を展開します。
 4. 表示する Data Lake Storage Gen1 アカウントのノードを右クリックし、 **[開く]** を選択します。 Data Lake Storage Gen1 アカウントをダブルクリックして開くこともできます。

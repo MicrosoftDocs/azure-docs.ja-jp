@@ -5,15 +5,15 @@ description: Azure PowerShell を使用して、アプリケーション ゲー�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: conceptual
-ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.openlocfilehash: 1e2fb98d83d1246c54ccb37d68d9b4282701677e
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74046288"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225188"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールを有効にする
 
@@ -21,11 +21,10 @@ ms.locfileid: "74046288"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * WAF 対応のアプリケーション ゲートウェイの作成
-> * 仮想マシン スケール セットを作成する
-> * ストレージ アカウントの作成と診断の構成
+* ネットワークのセットアップ
+* WAF 対応のアプリケーション ゲートウェイの作成
+* 仮想マシン スケール セットを作成する
+* ストレージ アカウントの作成と診断の構成
 
 ![Web アプリケーション ファイアウォールの例](../media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
 

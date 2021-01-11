@@ -8,18 +8,16 @@ ms.topic: how-to
 ms.date: 07/28/2020
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: d6a28922aca7105d90e6c8662986b68c90804481
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3747be15f7a15d3d47af2d3495eea2315d40a044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387593"
+ms.locfileid: "87419905"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する
 
-この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、アクティブ/アクティブのクロスプレミス接続と VNet 間接続を作成にする手順について説明します。
-
-
+この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、アクティブ/アクティブのクロスプレミス接続と VNet 間接続を作成にする手順について説明します。 Azure portal でアクティブ/アクティブ ゲートウェイを構成することもできます。
 
 ## <a name="about-highly-available-cross-premises-connections"></a>高可用性のクロスプレミス接続について
 クロスプレミスと VNet 間接続で高可用性を実現するには、複数の VPN ゲートウェイをデプロイし、ネットワークと Azure 間に複数の並列接続を確立する必要があります。 接続オプションとトロポジの概要については、「[高可用性のクロスプレミス接続および VNet 間接続](vpn-gateway-highlyavailable.md)」をご覧ください。
@@ -49,11 +47,19 @@ ms.locfileid: "87387593"
 
 ### <a name="before-you-begin"></a>開始する前に
 * Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
-* Azure リソース マネージャー PowerShell コマンドレットをインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell の概要](/powershell/azure/)」を参照してください。
+* ブラウザーで Cloud Shell を使用しない場合、Azure Resource Manager PowerShell コマンドレットをインストールする必要があります。 PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell の概要](/powershell/azure/)」を参照してください。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>手順 1 - VNet1 を作成して構成する
 #### <a name="1-declare-your-variables"></a>1.変数を宣言する
-この練習では、最初に変数を宣言します。 次の例では、この演習の値を利用し、変数を宣言します。 運用環境の場合、実際の値を使用します。 この手順を通して実行し、この種の構成になれたら、これらの変数を利用できます。 変数を変更し、コピーし、PowerShell コンソールに貼り付けます。
+
+この練習では、最初に変数を宣言します。 "使ってみる" Cloud Shell を使用する場合、アカウントに自動的に接続されます。 PowerShell をローカルで使用する場合は、以下の例を使用して接続してください。
+
+```powershell
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName $Sub1
+```
+
+次の例では、この演習の値を利用し、変数を宣言します。 運用環境の場合、実際の値を使用します。 この手順を通して実行し、この種の構成になれたら、これらの変数を利用できます。 変数を変更し、コピーし、PowerShell コンソールに貼り付けます。
 
 ```azurepowershell-interactive
 $Sub1 = "Ross"
@@ -80,14 +86,11 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2.サブスクリプションに接続して新しいリソース グループを作成する
-リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。 詳細については、「 [リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+#### <a name="2-create-a-new-resource-group"></a>2.新しいリソース グループを作成する
 
-PowerShell コンソールを開き、アカウントに接続します。 接続するには、次のサンプルを参照してください。
+以下の例を使用して、新しいリソース グループを作成します。
 
 ```azurepowershell-interactive
-Connect-AzAccount
-Select-AzSubscription -SubscriptionName $Sub1
 New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
 
@@ -368,11 +371,11 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 ## <a name="update-an-existing-vpn-gateway"></a><a name ="aaupdate"></a>既存の VPN Gateway を更新する
 
-このセクションでは、既存の Azure VPN Gateway をアクティブ/スタンバイ モードからアクティブ/アクティブ モード (またはその逆) に変更する方法を説明します。
+アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブに変更するときは、新たにパブリック IP アドレスを作成して、第 2 のゲートウェイ IP 構成を追加します。 このセクションでは、PowerShell を使用して、既存の Azure VPN Gateway をアクティブ/スタンバイ モードからアクティブ/アクティブ モード (またはその逆) に変更する方法を説明します。 また、仮想ネットワーク ゲートウェイの **[構成]** ページで、Azure portal のゲートウェイを変更することもできます。
 
 ### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブ ゲートウェイに変更する
 
-次の例では、アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブ ゲートウェイに変換します。 アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブに変更するときは、新たにパブリック IP アドレスを作成して、第 2 のゲートウェイ IP 構成を追加します。
+次の例では、アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブ ゲートウェイに変換します。 
 
 #### <a name="1-declare-your-variables"></a>1.変数を宣言する
 

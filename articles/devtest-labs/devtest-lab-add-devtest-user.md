@@ -3,19 +3,19 @@ title: Azure DevTest Labs での所有者とユーザーの追加 | Microsoft Do
 description: Azure Portal または PowerShell を使用した Azure DevTest Labs での所有者とユーザーの追加
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d5e7a166f9b79e2ff46f5874d53a40ed16750100
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 40173589c4798a8b00d940bca2a71f4d61f2c199
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855692"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533327"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md)で制御します。 RBAC を使用して、チーム内で職務を *ロール* に分離し、職務に必要なアクセス許可のみをユーザーに付与します。 RBAC ロールは、"*所有者*"、"*DevTest Labs ユーザー*"、および "*共同作成者*" の 3 つです。 この記事では、これら 3 つの主な RBAC ロールそれぞれで実行できるアクションについて説明します。 ポータルを経由して、および PowerShell スクリプトを使用してラボにユーザーを追加する方法、およびサブスクリプション レベルでユーザーを追加する方法について説明します。
+Azure DevTest Labs でのアクセスは、[Azure のロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) で制御します。 RBAC を使用して、チーム内で職務を *ロール* に分離し、職務に必要なアクセス許可のみをユーザーに付与します。 これらの Azure ロールのうちの 3 つは、"*所有者*"、"*DevTest Labs ユーザー*"、"*共同作成者*" です。 この記事では、これら 3 つの主な Azure ロールそれぞれで実行できるアクションについて説明します。 ポータルを経由して、および PowerShell スクリプトを使用してラボにユーザーを追加する方法、およびサブスクリプション レベルでユーザーを追加する方法について説明します。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>各ロールで実行できるアクション
 次の 3 つの主なロールをユーザーを割り当てることができます。
@@ -127,4 +127,3 @@ Azure サブスクリプションに所有者を追加するには、次の手�
 11. **[ユーザー]** ブレードに戻ると、このユーザーが所有者として追加されています。 これで、このユーザーはこのサブスクリプションで作成されたすべてのラボの所有者となり、所有者タスクを実行できるようになります。 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
-

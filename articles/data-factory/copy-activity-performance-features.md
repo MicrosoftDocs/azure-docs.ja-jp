@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/15/2020
-ms.openlocfilehash: dfd439affe488805b4645211477c6d32bbbe7489
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/05/2020
+ms.openlocfilehash: 45cecccd88b0b84b478bc6fc7346cb9ef9c2f454
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84770936"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846345"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>コピー アクティビティ パフォーマンス最適化機能
 
@@ -35,8 +35,8 @@ ms.locfileid: "84770936"
 |:--- |:--- |---- |
 | ファイル ストア間 |- **単一ファイルとの間でコピーする**:2-4 <br>- **複数のファイルとの間でコピーする**:ファイルの数とサイズに応じて 2 〜 256。 <br><br>たとえば、4 つの大きなファイルを含むフォルダーからデータをコピーし、階層を保持することを選択した場合、最大の有効な DIU は 16 です。ファイルのマージを選択すると、最大の有効な DIU は 4 になります。 |ファイルの数とサイズに応じて 4 〜 32。 |
 | ファイル ストアから非ファイル ストアへ |- **単一ファイルからコピーする**:2-4 <br/>- **複数のファイルからコピーする**:ファイルの数とサイズに応じて 2 〜 256。 <br/><br/>例えば、4 つの大きなファイルを含むフォルダーからデータをコピーする場合、最大の有効な DIU は 16 です。 |- **Azure SQL Database または Azure Cosmos DB**: シンク層 (Dtu/Ru) とソース ファイルのパターンに応じて 4 ～ 16 の範囲にコピーします。<br>PolyBase または COPY ステートメントを使用して、- **Azure Synapse Analytics にコピーします**。2<br>- その他のシナリオ:4 |
-| 非ファイル ストアからファイル ストアへ |- **パーティション オプションが有効なデータ ストアからコピーします** ([Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)を含む）。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br/>UNLOAD を使用して - **Amazon Redshift からコピーする**:2<br>- **その他のシナリオ**:4 |
-| 非ファイル ストア間 |- **パーティション オプションが有効なデータ ストアからコピーします** ([Oracle](connector-oracle.md#oracle-as-source)/[Netezza](connector-netezza.md#netezza-as-source)/[Teradata](connector-teradata.md#teradata-as-source)を含む）。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br/>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br>- **その他のシナリオ**:4 |
+| 非ファイル ストアからファイル ストアへ |- **パーティション オプションが有効なデータ ストア** ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source)) からコピーします。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br/>UNLOAD を使用して - **Amazon Redshift からコピーする**:2<br>- **その他のシナリオ**:4 |
+| 非ファイル ストア間 |- **パーティション オプションが有効なデータ ストア** ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source)) からコピーします。フォルダーに書き込む場合は 2-256 で、単一のファイルに書き込む場合は 2-4 です。 ソース データ パーティションごとに最大 4 つの DIU を使用できることに注意してください。<br/>- **その他のシナリオ**:2-4 |- **REST または HTTP からコピーする**:1<br>- **その他のシナリオ**:4 |
 
 コピー アクティビティの監視ビューまたはアクティビティの出力で、各コピー実行に使用される DIU を確認できます。 詳細については、[コピー アクティビティ監視](copy-activity-monitoring.md)に関するページを参照してください。 この既定の動作をオーバーライドするには、`dataIntegrationUnits` プロパティに次のように値を指定します。 コピー操作が実行時に使用する *DIU の実際の数*は、データ パターンに応じて、構成されている値以下になります。
 
@@ -74,7 +74,7 @@ ms.locfileid: "84770936"
 注次のシナリオでは、単一のコピーアクティビティの実行で、複数の自己ホスト型 IR ノードを利用できることに注意してください。
 
 - ファイルの数とサイズに応じて、ファイルベースのストアからデータをコピーします。
-- データ パーティションの数に応じて、パーティションオプションが有効なデータ ストア ([Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) からデータをコピーします。
+- パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーします。
 
 ## <a name="parallel-copy"></a>並列コピー
 
@@ -93,8 +93,8 @@ ms.locfileid: "84770936"
 | --- | --- |
 | ファイル ストア間 | `parallelCopies` は、**ファイルレベル**での並列処理を決定します。 それぞれのファイル内でのチャンク化は裏で自動的かつ透過的に行われます。 指定されたソース データ ストアの種類に最適なチャンク サイズを使用し、並行してデータを読み込むよう設計されています。 <br/><br/>実行時にコピー アクティビティが使用する並列コピーの実際の数は、存在するファイルの数以下となります。 コピー動作が **mergeFile** をファイルシンクにマージする場合、コピー アクティビティはファイル レベルでの並列処理を活用できません。 |
 | ファイル ストアから非ファイル ストアへ | - Azure SQL Database または Azure Cosmos DB にデータをコピーする場合、既定の並列コピーはシンク層 (Dtu/Ru の数) にも依存します。<br>- Azure テーブルにデータをコピーする場合、既定の並列コピーは 4 です。 |
-| 非ファイル ストアからファイル ストアへ | - パーティションオプションが有効なデータ ストア ([Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) からデータをコピーする場合、既定の並列コピーは 4 です。 実行時のコピーアクティビティで使用される並列コピーの実際の数は、所有しているデータ パーティションの数以下になります。 セルフホステッド統合ランタイムを使用して Azure Blob/ADLS Gen2 にコピーする場合は、IR ノードあたりの最大の有効な並列コピー数が 4 または 5 であることに注意してください。<br>- その他のシナリオでは、並列コピーは有効になりません。 並列処理が指定されても、この場合は適用されません。 |
-| 非ファイル ストア間 | - Azure SQL Database または Azure Cosmos DB にデータをコピーする場合、既定の並列コピーはシンク層 (Dtu/Ru の数) にも依存します。<br/>- パーティションオプションが有効なデータ ストア ([Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[Teradata](connector-teradata.md#teradata-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Table](connector-sap-table.md#sap-table-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) からデータをコピーする場合、既定の並列コピーは 4 です。<br>- Azure テーブルにデータをコピーする場合、既定の並列コピーは 4 です。 |
+| 非ファイル ストアからファイル ストアへ | - パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーする場合、既定の並列コピーは 4 となります。 実行時のコピーアクティビティで使用される並列コピーの実際の数は、所有しているデータ パーティションの数以下になります。 セルフホステッド統合ランタイムを使用して Azure Blob/ADLS Gen2 にコピーする場合は、IR ノードあたりの最大の有効な並列コピー数が 4 または 5 であることに注意してください。<br>- その他のシナリオでは、並列コピーは有効になりません。 並列処理が指定されても、この場合は適用されません。 |
+| 非ファイル ストア間 | - Azure SQL Database または Azure Cosmos DB にデータをコピーする場合、既定の並列コピーはシンク層 (Dtu/Ru の数) にも依存します。<br/>- パーティション オプションが有効なデータ ストア ([Azure SQL Database](connector-azure-sql-database.md#azure-sql-database-as-the-source)、[Azure SQL Managed Instance](connector-azure-sql-managed-instance.md#sql-managed-instance-as-a-source)、[Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#azure-synapse-analytics-as-the-source)、[Oracle](connector-oracle.md#oracle-as-source)、[Netezza](connector-netezza.md#netezza-as-source)、[SAP HANA](connector-sap-hana.md#sap-hana-as-source)、[SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)、[SAP テーブル](connector-sap-table.md#sap-table-as-source)、[SQL Server](connector-sql-server.md#sql-server-as-a-source)、[Teradata](connector-teradata.md#teradata-as-source) など) からデータをコピーする場合、既定の並列コピーは 4 となります。<br>- Azure テーブルにデータをコピーする場合、既定の並列コピーは 4 です。 |
 
 お使いのデータ ストアをホストしているマシンの負荷を制御したり、コピーのパフォーマンスをチューニングしたりするには、規定値をオーバーライドし、`parallelCopies` プロパティの値を指定することができます。 値は 1 以上の整数でなければなりません。 実行時にコピー アクティビティは、設定された値以下でパフォーマンスが最大になる値を使用します。
 

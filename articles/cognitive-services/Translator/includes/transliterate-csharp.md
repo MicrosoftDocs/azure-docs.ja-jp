@@ -4,12 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4573224a77b080e0ba6cefe5069164466e7df5b9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 058450a4f28fb03da317debc9557a9beb45b2e90
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83586531"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921421"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 

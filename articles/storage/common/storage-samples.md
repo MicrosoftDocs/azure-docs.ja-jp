@@ -7,12 +7,13 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 900fb5120b1674397c248fd7d090660c7a813705
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: edf30d628a73c879ce81f68bda7cd2d7daa6cde3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594187"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503652"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage のサンプル
 

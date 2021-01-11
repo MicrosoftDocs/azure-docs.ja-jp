@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
-ms.openlocfilehash: b9a4cf8b9bbf88ae792f345d330503cb4698c430
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509224"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87005958"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM のネットワーク インターフェイスをリセットする方法 
 
@@ -47,7 +47,7 @@ ms.locfileid: "86509224"
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
-1. [最新の Azure PowerShell](/powershell/azure/overview) がインストールされていることを確認します。
+1. [最新の Azure PowerShell](/powershell/azure/) がインストールされていることを確認します。
 2. 管理者特権の Azure PowerShell セッション (管理者として実行) を開きます。 次のコマンドを実行します。
 
     ```powershell
@@ -90,7 +90,7 @@ ms.locfileid: "86509224"
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
-1. [最新の Azure PowerShell](/powershell/azure/overview) がインストールされていることを確認します。
+1. [最新の Azure PowerShell](/powershell/azure/) がインストールされていることを確認します。
 2. 管理者特権の Azure PowerShell セッション (管理者として実行) を開きます。 次のコマンドを実行します。
 
     ```powershell

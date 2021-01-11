@@ -8,12 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.openlocfilehash: 4ade2c2e60373298eecf4e85df7fffeae4f45207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e5ea94fea00771b64634d6c28a7879fabb195f09
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176628"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069661"
 ---
 # <a name="manage-storage-account-access-keys"></a>ストレージ アカウント アクセス キーを管理する
 
@@ -65,7 +66,7 @@ az storage account keys list \
 
 2 つのキーのいずれかを使用して Azure Storage にアクセスすることもできますが、一般的には、最初のキーを使用し、キーのローテーション時に 2 番目のキーの使用を予約することをお勧めします。
 
-アカウントのアクセス キーを表示または読み込むには、ユーザーがサービス管理者であるか、**Microsoft. Storage/storageAccounts/listkeys/action** を含む RBAC ロールが割り当てられている必要があります。 このアクションが含まれる組み込み RBAC ロールには、**所有者**、**共同作成者**、および**ストレージ アカウント キー オペレーターのサービス ロール**があります。 サービス管理者ロールの詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。 Azure Storage 用の組み込み RBAC ロールの詳細については、「[Azure RBAC の Azure 組み込みロール](../../role-based-access-control/built-in-roles.md#storage)」の「**ストレージ**」セクションを参照してください。
+アカウントのアクセス キーを表示または読み込むには、ユーザーがサービス管理者であるか、**Microsoft.Storage/storageAccounts/listkeys/action** を含む Azure ロールが割り当てられている必要があります。 このアクションが含まれる Azure 組み込みロールには、**所有者**、**共同作成者**、および**ストレージ アカウント キー オペレーターのサービス ロール**があります。 サービス管理者ロールの詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。 Azure Storage 用の組み込み RBAC ロールの詳細については、「[Azure RBAC の Azure 組み込みロール](../../role-based-access-control/built-in-roles.md#storage)」の「**ストレージ**」セクションを参照してください。
 
 ## <a name="use-azure-key-vault-to-manage-your-access-keys"></a>Azure Key Vault を使用してアクセスキーを管理する
 
@@ -132,7 +133,7 @@ Azure CLI を使用してストレージ アカウントのアクセス キー�
 > [!NOTE]
 > Microsoft では、すべてのアプリケーションで、同時にいずれかのキーのみを使用することをお勧めします。 キー 1 を使用する場所とキー 2 を使用する場所がある場合、キーを循環させるときに、一部のアプリケーションがアクセス権を失います。
 
-アカウントのアクセス キーをローテーションさせるには、ユーザーがサービス管理者であるか、**Microsoft.Storage/storageAccounts/regeneratekey/action** を含む RBAC ロールが割り当てられている必要があります。 このアクションが含まれる組み込み RBAC ロールには、**所有者**、**共同作成者**、および**ストレージ アカウント キー オペレーターのサービス ロール**があります。 サービス管理者ロールの詳細については、[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。 Azure Storage 用の組み込み RBAC ロールの詳細については、[Azure RBAC の Azure 組み込みロール](../../role-based-access-control/built-in-roles.md#storage)に関する記事の「**ストレージ**」セクションを参照してください。
+アカウントのアクセス キーをローテーションさせるには、ユーザーがサービス管理者であるか、**Microsoft.Storage/storageAccounts/regeneratekey/action** を含む Azure ロールが割り当てられている必要があります。 このアクションが含まれる Azure 組み込みロールには、**所有者**、**共同作成者**、および**ストレージ アカウント キー オペレーターのサービス ロール**があります。 サービス管理者ロールの詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)に関する記事を参照してください。 Azure Storage 用の Azure 組み込みロールの詳細については、[Azure RBAC の Azure 組み込みロール](../../role-based-access-control/built-in-roles.md#storage)に関するページの「**ストレージ**」セクションを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

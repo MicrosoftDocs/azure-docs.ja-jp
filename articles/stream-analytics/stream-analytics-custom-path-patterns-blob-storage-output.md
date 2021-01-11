@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dc37cb985ae561ddbd06c2236ab77d6d20d9242c
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b6d6838779d4f219a8ce10b2cf3ae6cd620762a3
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747630"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869815"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -113,7 +113,7 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ### <a name="example"></a>例
 
-[Azure Stream Analytics Portal](stream-analytics-quick-create-portal.md) クイック スタート ガイドに従って、ストレージ アカウント、リソース グループ、Stream Analytics ジョブ、および入力ソースを作成します。 クイック スタート ガイドで使用されているサンプル データを使用します。[GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) から入手することもできます。
+[Azure Stream Analytics Azure portal](stream-analytics-quick-create-portal.md) クイック スタート ガイドに従って、ストレージ アカウント、リソース グループ、Stream Analytics ジョブ、および入力ソースを作成します。 クイック スタート ガイドで使用されているサンプル データを使用します。[GitHub](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Samples/GettingStarted/HelloWorldASA-InputStream.json) から入手することもできます。
 
 次の構成の BLOB 出力シンクを作成します。
 

@@ -13,5 +13,5 @@ ms.locfileid: "84888262"
 ---
 > [!div class="op_single_selector"]
 > * [AzCopy](../articles/devtest-labs/devtest-lab-upload-vhd-using-azcopy.md)
-> * [Microsoft Azure ストレージ エクスプローラー](../articles/devtest-labs/devtest-lab-upload-vhd-using-storage-explorer.md)
+> * [Microsoft Azure Storage Explorer](../articles/devtest-labs/devtest-lab-upload-vhd-using-storage-explorer.md)
 > * [PowerShell](../articles/devtest-labs/devtest-lab-upload-vhd-using-powershell.md)

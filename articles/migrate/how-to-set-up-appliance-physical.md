@@ -4,12 +4,12 @@ description: 物理サーバー評価用 Azure Migrate アプライアンスの�
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: 6d9cc071ad5d81a09a14b12fe2acdf564c2ea6c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b4e875a81c92f74cd7d2db96cf1c313157297eb
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84331782"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923563"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
@@ -26,21 +26,29 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 ## <a name="appliance-deployment-steps"></a>アプライアンスのデプロイ手順
 
 アプライアンスを設定するには、次のようにします。
+- アプライアンス名を指定し、ポータルで Azure Migrate プロジェクト キーを生成します。
 - Azure portal から、Azure Migrate インストーラー スクリプトが含まれた ZIP ファイルをダウンロードします。
 - ZIP ファイルの内容を抽出します。 管理特権で PowerShell コンソールを起動します。
 - PowerShell スクリプトを実行して、アプライアンス Web アプリケーションを起動します。
-- アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
+- アプライアンスを初めて構成し、Azure Migrate プロジェクト キーを使用して Azure Migrate プロジェクトに登録します。
 
-## <a name="download-the-installer-script"></a>インストーラー スクリプトをダウンロードする
+### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate プロジェクト キーを生成する
 
-アプライアンスの ZIP ファイルをダウンロードします。
+1. **移行の目標** > **サーバー** > **Azure Migrate: Server Assessment** で、**検出** を選択します。
+2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[物理またはその他 (AWS、GCP、Xen など)]** を選択します。
+3. **[1:Azure Migrate プロジェクト キーを生成します]** で、物理サーバーまたは仮想サーバーの検出用に設定する Azure Migrate アプライアンスの名前を指定します。名前は 14 文字以内の英数字にする必要があります。
+1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [マシンの検出] ページを閉じないでください。
+1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー**が生成されます。
+1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
-1. **[移行の目標]**  >  **[サーバー]**  >  **[Azure Migrate: Server Assessment]** で、 **[検出]** をクリックします。
-2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** をクリックします。
-3. **[ダウンロード]** をクリックして、ZIP ファイルをダウンロードします。
+### <a name="download-the-installer-script"></a>インストーラー スクリプトをダウンロードする
 
-    ![VM をダウンロードする](./media/tutorial-assess-physical/download-appliance.png)
+**[2:Azure Migrate アプライアンスをダウンロードします]** で、 **[ダウンロード]** をクリックします。
 
+   ![[マシンの検出] の選択](./media/tutorial-assess-physical/servers-discover.png)
+
+
+   ![[キーの生成] の選択](./media/tutorial-assess-physical/generate-key-physical.png)
 
 ### <a name="verify-security"></a>セキュリティを確認する
 
@@ -49,22 +57,10 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - 使用例 (パブリック クラウドの場合): ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public.zip SHA256 ```
     - 使用例 (政府機関向けクラウドの場合): ```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  アプライアンスの最新バージョンとハッシュ値を確認します。
+3.  アプライアンスの最新バージョンとハッシュ値の[設定](./tutorial-assess-physical.md#verify-security)を確認します。
  
-    - パブリック クラウドの場合:
-
-        **シナリオ** | **ダウンロード*** | **ハッシュ値**
-        --- | --- | ---
-        物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-    - Azure Government の場合:
-
-        **シナリオ** | **ダウンロード*** | **ハッシュ値**
-        --- | --- | ---
-        物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
 インストーラー スクリプトでは以下が実行されます。
@@ -84,8 +80,12 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
 4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
 
-    - パブリック クラウドの場合: ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
-    - Azure Government の場合: ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
+    - パブリック クラウドの場合: 
+    
+        ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 ```
+    - Azure Government の場合: 
+    
+        ``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>.\AzureMigrateInstaller.ps1 ```
 
     スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。
 
@@ -97,48 +97,58 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 [パブリック](migrate-appliance.md#public-cloud-urls) クラウドと[政府機関向け](migrate-appliance.md#government-cloud-urls)クラウドの Azure URL にアプライアンス VM から接続できることを確認します。
 
-## <a name="configure-the-appliance"></a>アプライアンスを構成する
+### <a name="configure-the-appliance"></a>アプライアンスを構成する
 
 アプライアンスを初めて設定します。
 
-1. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
+1. アプライアンスに接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
 
    または、アプリのショートカットをクリックして、デスクトップからアプリを開くこともできます。
-2. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
-    - **ライセンス**:ライセンス条項に同意し、サード パーティの情報を確認します。
-    - **接続**:VM でインターネットにアクセスできることが、アプリによって確認されます。 VM でプロキシを使用する場合:
-        - **[プロキシの設定]** をクリックし、 http://ProxyIPAddress または http://ProxyFQDN の形式で、プロキシ アドレスとリスニング ポートを指定します。
+2. **ライセンス条項**に同意し、サード パーティの情報を確認します。
+1. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
+    - **接続**:サーバーがインターネットにアクセスできることが、アプリによって確認されます。 サーバーでプロキシを使用する場合は、次の操作を行います。
+        - **[プロキシの設定]** をクリックし、プロキシ アドレス (http://ProxyIPAddress または http://ProxyFQDN) の形式) とリッスン ポートを指定します。
         - プロキシで認証が必要な場合は、資格情報を指定します。
         - サポートされるのは HTTP プロキシのみです。
-    - **時刻同期**:時刻が確認されます。 VM の検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-    - **更新プログラムのインストール**:Azure Migrate Server Assessment によって、アプライアンスに最新の更新プログラムがインストールされていることが確認されます。
+        - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
+    - **時刻同期**:時刻が確認されます。 サーバーの検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
+    - **更新プログラムのインストール**:Azure Migrate Server Assessment では、アプライアンスに最新の更新プログラムがインストールされているかどうかの確認が行われます。チェックが完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. **[ログイン]** をクリックします。 表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。
-    - 自分のユーザー名とパスワードを使用してサインインします。
-    - PIN を使用したサインインはサポートされていません。
-3. 正常にサインインした後、Web アプリに戻ります。
-4. Azure Migrate プロジェクトが作成されたサブスクリプションを選択します。 その後、プロジェクトを選択します。
-5. アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
-6. **[登録]** をクリックします。
+1. ポータルからコピーした **Azure Migrate プロジェクト キー**を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [既存のアプライアンスの管理]** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. **[ログイン]** をクリックします。 新しいブラウザー タブで Azure ログイン プロンプトが開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
+1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
+   
+   PIN を使用したサインインはサポートされていません。
+3. 正常にログインしたら、Web アプリに戻ります。 
+4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](tutorial-prepare-physical.md)が付与されている場合、アプライアンスの登録が開始されます。
+1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
 
 
 ## <a name="start-continuous-discovery"></a>継続的な検出を開始する
 
-アプライアンスから物理サーバーに接続し、検出を開始します。
+次に、アプライアンスから検出対象の物理サーバーに接続し、検出を開始します。
 
-1. **[資格情報の追加]** をクリックして、アプライアンスがサーバーの検出に使用するアカウント資格情報を指定します。  
-2. **オペレーティング システム**、資格情報のフレンドリ名、ユーザー名、パスワードを指定します。 **[追加]** をクリックします。
-Windows および Linux サーバーごとに 1 セットの資格情報を追加できます。
-4. **[サーバーの追加]** をクリックし、サーバーの詳細 (FQDN/IP アドレスと資格情報のフレンドリ名 (行ごとに 1 つのエントリ)) を指定してサーバーに接続します。
-3. **[検証]** をクリックします。 検証後、検出可能なサーバーの一覧が表示されます。
-    - サーバーの検証が失敗した場合は、 **[状態]** 列のアイコンをポイントしてエラーを確認します。 問題を修正し、もう一度検証します。
-    - サーバーを削除するには、 **[削除]** を選択します。
-4. 検証後、 **[保存して検出を開始]** をクリックして、検出プロセスを開始します。
+1. **ステップ 1:Windows および Linux の物理サーバーまたは仮想サーバーを検出するための資格情報を指定**し、**資格情報の追加** をクリックして資格情報のフレンドリ名を指定します。Windows または Linux サーバーの **ユーザー名**と**パスワード**を追加します。 **[Save]** をクリックします。
+1. 複数の資格情報を一度に追加するには、 **[さらに追加]** をクリックして資格情報を保存して追加します。 物理サーバーの検出では、複数の資格情報がサポートされています。
+1. **[Step 2:Provide physical or virtual server details]\(ステップ 2:物理サーバーまたは仮想サーバーの詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** をクリックして、サーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** と、サーバーに接続するための資格情報のフレンドリ名を指定します。
+1. 一度に **1 つの項目を追加**するか、一括で**複数の項目を追加**することができます。 また、 **[Import CSV]\(CSV のインポート\)** を使用して、サーバーの詳細を指定することもできます。
 
-これで検出が開始されます。 検出された VM のメタデータが Azure portal に表示されるまでに、約 15 分かかります。
+    ![検出ソースを追加するための選択](./media/tutorial-assess-physical/add-discovery-source-physical.png)
+
+    - **[Add single item]\(1 つの項目を追加\)** を選択した場合は、OS のタイプ、資格情報のフレンドリ名を指定し、サーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を追加して、 **[保存]** をクリックします。
+    - **[Add multiple items]\(複数の項目を追加\)** を選択した場合は、テキスト ボックスでサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** を資格情報のフレンドリ名と共に指定することで、一度に複数のレコードを追加できます。追加したレコードを **[Verify]\(検証\)** し、 **[保存]** をクリックします。
+    - **[Import CSV]\(CSV のインポート\)** _(既定で選択)_ を選択した場合は、CSV テンプレート ファイルをダウンロードし、そのファイルにサーバーの **[IP address/FQDN]\(IP アドレスまたは FQDN\)** および資格情報のフレンドリ名を入力します。 その後、ファイルをアプライアンスにインポートし、ファイル内のレコードを **[Verify]\(検証\)** して、 **[保存]** をクリックします。
+
+1. [保存] をクリックすると、アプライアンスによって追加されたサーバーへの接続が検証され、各サーバーの **[Validation status]\(検証状態\)** が表に表示されます。
+    - サーバーの検証に失敗した場合は、表の [状態] 列にある **[Validation failed]\(検証に失敗しました\)** をクリックしてエラーを確認します。 問題を修正し、もう一度検証してください。
+    - サーバーを削除するには、 **[削除]** をクリックします。
+1. 検出を開始する前に、サーバーへの接続はいつでも**再検証**できます。
+1. 正常に検証されたサーバーの検出を開始するには **[Start discovery]\(検出の開始\)** をクリックします。 検出が正常に開始されたら、各サーバーに対する検出の状態を表で確認できます。
+
+
+これで検出が開始されます。 検出されたサーバーのメタデータが Azure portal に表示されるまでにサーバーあたり約 2 分かかります。
 
 ## <a name="verify-servers-in-the-portal"></a>ポータルでサーバーを確認する
 

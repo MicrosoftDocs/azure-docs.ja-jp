@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: bc926c385aeee40601c00b3b4ab68065a4260f2f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611315"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268776"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -28,8 +28,8 @@ ms.locfileid: "82611315"
 この記事は、[ハイブリッド Azure Active Directory 参加済みデバイスの構成](hybrid-azuread-join-plan.md)が済んでいて、次のシナリオに対応していることが前提となります。
 
 - デバイスベースの条件付きアクセス
-- [設定のエンタープライズ ローミング](../active-directory-windows-enterprise-state-roaming-overview.md)
-- [Windows Hello for Business](../active-directory-azureadjoin-passport-deployment.md)
+- [設定のエンタープライズ ローミング](./enterprise-state-roaming-overview.md)
+- [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)
 
 このドキュメントでは、潜在的な問題を解決するためのトラブルシューティング ガイダンスを示します。
 
@@ -373,13 +373,13 @@ WamDefaultAuthority: organizations
 
 ##### <a name="federated-join-server-errors"></a>サーバーのフェデレーション参加エラー
 
-| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解決策 |
+| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解像度 |
 | --- | --- | --- | --- |
 | DirectoryError | Your request is throttled temporarily.\(要求は一時的に調整されました。\) Please try after 300 seconds.\(300 秒後にもう一度お試しください。\) | 予期されるエラーです。 複数の登録要求が立て続けに行われたことが原因と考えられます。 | クールダウン時間が終わったら参加を再試行してください。 |
 
 ##### <a name="sync-join-server-errors"></a>サーバーの同期参加エラー
 
-| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解決策 |
+| サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解像度 |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002:Tenant <UUID> not found.\(テナントが見つかりません\)。 This error may happen if there are no active subscriptions for the tenant.\(このエラーは、テナントにアクティブなサブスクリプションがない場合に発生することがあります。\) Check with your subscription administrator.\(サブスクリプション管理者にご確認ください。\) | SCP オブジェクト内のテナント ID が正しくありません。 | SCP オブジェクトが正しい Azure AD テナント ID で構成されていることと、アクティブなサブスクリプションがテナントに存在することを確認します。 |
 | DirectoryError | The device object by the given ID is not found.\(指定された ID のデバイス オブジェクトが見つかりませんでした。\) | 同期参加で予期されるエラーです。 デバイス オブジェクトが AD から Azure AD に同期されていません。 | Azure AD Connect の同期が完了するのを待ち、同期完了後に次の参加を試みると問題が解決します。 |

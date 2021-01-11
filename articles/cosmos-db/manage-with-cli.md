@@ -4,14 +4,14 @@ description: Azure CLI を使用し、Azure Cosmos DB のアカウント、デ�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/03/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: fe348c2bbd901934c6365be6efefafb44ef8d875
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262397"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432832"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure CLI を使用した Azure Cosmos リソースの管理
 
@@ -19,7 +19,7 @@ ms.locfileid: "85262397"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI のバージョン 2.6.0 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+CLI をローカルにインストールして使用することを選択した場合、このトピックでは、Azure CLI のバージョン 2.9.1 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos アカウント
 
@@ -274,7 +274,7 @@ az cosmosdb sql database throughput update \
 
 ### <a name="manage-lock-on-a-database"></a>データベースのロックを管理する
 
-データベースに削除ロックを設定します。 これを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](role-based-access-control.md#preventing-changes-from-cosmos-sdk)」を参照してください。
+データベースに削除ロックを設定します。 これを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)」を参照してください。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -308,6 +308,7 @@ az lock delete --ids $lockid
 以下のセクションでは、Azure Cosmos DB コンテナーの管理方法について説明します。
 
 * [コンテナーの作成](#create-a-container)
+* [自動スケーリングを使用してコンテナーを作成する](#create-a-container-with-autoscale)
 * [TTL が有効なコンテナーを作成する](#create-a-container-with-ttl)
 * [カスタム インデックス ポリシーを持つコンテナーの作成](#create-a-container-with-a-custom-index-policy)
 * [コンテナーのスループットを変更する](#change-container-throughput)
@@ -330,6 +331,25 @@ az cosmosdb sql container create \
     -a $accountName -g $resourceGroupName \
     -d $databaseName -n $containerName \
     -p $partitionKey --throughput $throughput
+```
+
+### <a name="create-a-container-with-autoscale"></a>自動スケーリングを使用してコンテナーを作成する
+
+既定のインデックス ポリシー、パーティション キー、および 4000 自動スケーリング RU/秒を使用して Cosmos コンテナーを作成します。
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+maxThroughput=4000
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --max-throughput $maxThroughput
 ```
 
 ### <a name="create-a-container-with-ttl"></a>TTL を使用したコンテナーを作成する
@@ -433,7 +453,7 @@ az cosmosdb sql container throughput update \
 
 ### <a name="manage-lock-on-a-container"></a>コンテナーのロックを管理する
 
-コンテナーに削除ロックを設定します。 これを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](role-based-access-control.md#preventing-changes-from-cosmos-sdk)」を参照してください。
+コンテナーに削除ロックを設定します。 これを有効にする方法の詳細については、「[Cosmos SDK からの変更の防止](role-based-access-control.md#prevent-sdk-changes)」を参照してください。
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'

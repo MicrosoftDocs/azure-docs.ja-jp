@@ -5,18 +5,19 @@ description: Azure Active Directory B2C で JavaScript を使用する方法に�
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
+ms.custom: devx-track-javascript
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a92810841ee5d656b23105d6f40c763847971c4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 947111edf7741f78a40b7d3e77a1dfae22383500
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387798"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87169558"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 

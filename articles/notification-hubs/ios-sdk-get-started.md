@@ -3,17 +3,17 @@ title: Azure Notification Hubs と iOS SDK を使用して iOS アプリにプ�
 description: このチュートリアルでは、Azure Notification Hubs と Apple Push Notification Service を使用して iOS デバイスにプッシュ通知を送信する方法について学習します。
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022431"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042447"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する
 
@@ -102,6 +102,9 @@ Apple Push Notification Service (APNS) では、証明書を使用してプッ�
 4.  **[Certificates, Identifiers & Profiles] (証明書、識別子、およびプロファイル)**  ページの **[Identifiers] (識別子)** で、先ほど作成したアプリ ID の行項目を見つけてその行を選択すると、 **[Edit your App ID Configuration] (アプリ ID 構成の編集)**  画面が表示されます。
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>Notification Hubs の証明書を作成する
+
+> [!NOTE]
+> iOS 13 のリリースでは、トークン ベースの認証を使用したサイレント通知のみを受信できます。 APNS 資格情報に証明書ベースの認証を使用している場合は、トークンベースの認証を使用するように切り替える必要があります。
 
 通知ハブで **APNS**との連携を有効にするには、証明書が必要です。 これには、次の 2 とおりの方法があります。
 

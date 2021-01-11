@@ -6,17 +6,17 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: 7aa0889ab95cdac37f9fe0735c7ad58569621059
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205407"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589709"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 
@@ -75,7 +75,7 @@ Basic Load Balancer では、HTTPS プローブはサポートされていませ
 たとえば、フロントエンド IP からバックエンド インスタンスのポート 80 にトラフィックを送信する負荷分散規則をポート 80 に使用します。
 
 <p align="center">
-  <img src="./media/load-balancer-components/lbrules.svg" width="512" title="負荷分散規則">
+  <img src="./media/load-balancer-components/lbrules.svg" alt= "Figure depicts how Azure Load Balancer directs frontend port 80 to three instances of backend port 80." width="512" title="負荷分散規則">
 </p>
 
 *図:負荷分散規則*
@@ -97,7 +97,7 @@ Basic Load Balancer では、HTTPS プローブはサポートされていませ
 HA ポート負荷分散規則は、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) の高可用性と拡張性のような、重要なシナリオで役に立ちます。 この機能は、数多くのポートを負荷分散する必要がある場合に役立ちます。
 
 <p align="center">
-  <img src="./media/load-balancer-components/harules.svg" width="512" title="HA ポートの規則">
+  <img src="./media/load-balancer-components/harules.svg" alt="Figure depicts how Azure Load Balancer directs all frontend ports to three instances of all backend ports" width="512" title="HA ポートの規則">
 </p>
 
 *図:HA ポートの規則*
@@ -111,7 +111,7 @@ HA ポートの詳細については[こちら](load-balancer-ha-ports-overview.
 たとえば、バックエンド プール内の個々の VM インスタンスにリモート デスクトップ プロトコル (RDP) セッションや SSH (Secure Shell) セッションを使用する場合です。 複数の内部エンドポイントを、同じフロントエンド IP アドレスのポートにマッピングできます。 フロントエンド IP アドレスを使用すると、ジャンプ ボックスを追加しなくても VM をリモート管理できます。
 
 <p align="center">
-  <img src="./media/load-balancer-components/inboundnatrules.svg" width="512" title="受信 NAT のルール">
+  <img src="./media/load-balancer-components/inboundnatrules.svg" alt="Figure depicts how Azure Load Balancer directs frontend ports 3389, 443, and 80 to backend ports with the same values on separate servers." width="512" title="受信 NAT のルール">
 </p>
 
 *図:インバウンド NAT 規則*

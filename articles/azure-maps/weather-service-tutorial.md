@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc, tracking-python
-ms.openlocfilehash: 5a262c95328fef772c9158082f554de9f7ac5f81
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: mvc, devx-track-python
+ms.openlocfilehash: 4ec51bc84041008c0b843a8549e299747c3134a3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133233"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851647"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
@@ -41,7 +41,7 @@ ms.locfileid: "87133233"
 
 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
-Azure Notebooks の概要と基本的な使用方法については、「[Azure ノートブックを作成する](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)」の手順に従ってください。
+Azure Notebooks の概要と基本的な使用方法については、「[Azure Notebook を作成する](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)」の手順に従ってください。
 
 > [!Note]
 > このプロジェクトの Jupyter Notebook ファイルは、[Weather Maps Jupyter Notebook リポジトリ](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data)からダウンロードできます。

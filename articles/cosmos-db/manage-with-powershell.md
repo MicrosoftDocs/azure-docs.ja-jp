@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 05/13/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 1e43cc48a6c4684326a152adedabcd00a44657a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d17d7e03c1a0fff642edbac912e596ecb030706d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390841"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486478"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する
 
 以下のガイドでは、PowerShell を使用して、アカウント、データベース、コンテナー、スループットなど、Azure Cosmos DB リソースの管理をスクリプト処理および自動化する方法について説明します。
 
 > [!NOTE]
-> この記事のサンプルでは、[Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 最新の変更については、[Az.CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API リファレンス ページを参照してください。
+> この記事のサンプルでは、[Az.CosmosDB](/powershell/module/az.cosmosdb) 管理コマンドレットを使用します。 最新の変更については、[Az.CosmosDB](/powershell/module/az.cosmosdb) API リファレンス ページを参照してください。
 
 クロスプラットフォームの Azure Cosmos DB の管理には、[クロスプラットフォームの PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell) での `Az` コマンドレットと `Az.CosmosDB` コマンドレットのほか、[Azure CLI](manage-with-cli.md)、[REST API][rp-rest-api]、[Azure portal](create-sql-api-dotnet.md#create-account) を使用できます。
 
@@ -475,6 +475,7 @@ Remove-AzResourceLock `
 以下のセクションでは、Azure Cosmos DB コンテナーの管理方法について説明します。
 
 * [Azure Cosmos DB コンテナーを作成する](#create-container)
+* [自動スケーリングを使用して Azure Cosmos DB コンテナーを作成する](#create-container-autoscale)
 * [大きいパーティション キーで Azure Cosmos DB コンテナーを作成する](#create-container-big-pk)
 * [Azure Cosmos DB コンテナーのスループットを取得する](#get-container-ru)
 * [カスタム インデックス作成を使用して Azure Cosmos DB コンテナーを作成する](#create-container-custom-index)
@@ -496,6 +497,7 @@ $accountName = "mycosmosaccount"
 $databaseName = "myDatabase"
 $containerName = "myContainer"
 $partitionKeyPath = "/myPartitionKey"
+$throughput = 400 #minimum = 400
 
 New-AzCosmosDBSqlContainer `
     -ResourceGroupName $resourceGroupName `
@@ -503,7 +505,29 @@ New-AzCosmosDBSqlContainer `
     -DatabaseName $databaseName `
     -Name $containerName `
     -PartitionKeyKind Hash `
-    -PartitionKeyPath $partitionKeyPath
+    -PartitionKeyPath $partitionKeyPath `
+    -Throughput $throughput
+```
+
+### <a name="create-an-azure-cosmos-db-container-with-autoscale"></a><a id="create-container-autoscale"></a>自動スケーリングを使用して Azure Cosmos DB コンテナーを作成する
+
+```azurepowershell-interactive
+# Create an Azure Cosmos DB container with default indexes and autoscale throughput at 4000 RU
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$autoscaleMaxThroughput = 4000 #minimum = 4000
+
+New-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -AutoscaleMaxThroughput $autoscaleMaxThroughput
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-a-large-partition-key-size"></a><a id="create-container-big-pk"></a>大きいパーティション キー サイズで Azure Cosmos DB コンテナーを作成する

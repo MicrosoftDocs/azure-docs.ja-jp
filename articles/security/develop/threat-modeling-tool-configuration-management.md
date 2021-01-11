@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool の構成管理
 titleSuffix: Azure
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool の構成管理について説明します。 軽減策に関する情報を参照し、コード例を表示します。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 391851927d03a557483afa2656e315b28c613956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f34a98ccbe069a5cb9e2c26a88e486b27f016fe1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322628"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540021"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム:構成管理 | 対応策 
 | 製品/サービス | [アーティクル] |

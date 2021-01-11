@@ -3,12 +3,12 @@ title: Azure portal を使用してリソースの正常性アラートを作成
 description: Azure リソースが利用不可になったときに通知するアラートを Azure portal を使用して作成します。
 ms.topic: conceptual
 ms.date: 6/23/2020
-ms.openlocfilehash: b44df4f63fa2ae2bde9be431e2df268144a036fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a0f4704880d040106a2e4112d621b6d8ffbede6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529218"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091574"
 ---
 # <a name="configure-resource-health-alerts-using-azure-portal"></a>Azure portal を使用してリソースの正常性アラートを構成する
 
@@ -45,7 +45,7 @@ Azure portal を使用したリソースの正常性アラート
 1. Azure [ポータル](https://portal.azure.com/)で、 **[サービス正常性]** を選択します。
 
     ![サービス正常性の選択](./media/resource-health-alert-monitor-guide/service-health-selection.png)
-2. **[リソース正常性]** セクションで、 **[リソース正常性]** を選択します。
+2. **[リソース正常性]** セクションで、 **[サービス正常性]** を選択します。
 3. **[リソース正常性アラートの追加]** を選択し、フィールドに入力します。
 4. [アラートの対象] で、警告を表示する **[サブスクリプション]** 、 **[リソースの種類]** 、 **[リソース グループ]** および **[リソース]** を選択します。
 

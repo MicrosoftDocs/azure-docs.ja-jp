@@ -7,6 +7,8 @@
     - name: メッセージング サービスの比較
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
+    - name: Service Bus と Java Message Service (JMS) 2.0 を使用する (プレビュー)
+      href: how-to-use-java-message-service-20.md
 - name: クイックスタート
   items:
     - name: Service Bus キュー
@@ -42,6 +44,8 @@
           items:
             - name: Azure portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure CLI
+              href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM テンプレート
               href: service-bus-resource-manager-namespace-topic.md
         - name: メッセージの発行とサブスクライブ
@@ -60,21 +64,14 @@
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: チュートリアル
   items:
-    - name: インベントリを更新する - PowerShell
-      href: service-bus-tutorial-topics-subscriptions-powershell.md
-    - name: インベントリを更新する - ポータル
+    - name: インベントリを更新する
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: インベントリを更新する - CLI
-      href: service-bus-tutorial-topics-subscriptions-cli.md
     - name: Event Grid を使用したイベントへの応答
       href: service-bus-to-event-grid-integration-example.md
 - name: サンプル
   items:
     - name: Service Bus サンプル
       href: service-bus-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: Premium メッセージング
@@ -117,6 +114,8 @@
           href: network-security.md
 - name: 操作方法ガイド
   items:
+    - name: リージョン間で移動する
+      href: move-across-regions.md
     - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
       href: deprecate-service-bus-management.md
     - name: 名前空間の作成
@@ -127,6 +126,8 @@
           items:
             - name: キュー、トピック、サブスクリプション
               href: service-bus-queues-topics-subscriptions.md
+            - name: Java Message Service (JMS) 2.0 のエンティティ (プレビュー)
+              href: java-message-service-20-entities.md
             - name: メッセージ、ペイロード、およびシリアル化
               href: service-bus-messages-payloads.md
             - name: メッセージの転送、ロック、および解決
@@ -268,6 +269,9 @@
       href: service-bus-messaging-sql-filter.md
     - name: SQLRuleAction 構文
       href: service-bus-messaging-sql-rule-action.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: よく寄せられる質問
@@ -277,9 +281,9 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: ブログ
-      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+      href: /archive/blogs/servicebus/
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-service-bus.html'
+      href: /answers/topics/azure-service-bus.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 料金計算ツール

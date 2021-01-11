@@ -3,19 +3,19 @@ title: Windows デスクトップ アプリでの使用状況とパフォーマ�
 description: Application Insights を使用して、Windows デスクトップ アプリの使用状況とパフォーマンスを分析します。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: ddb602536e1b8bbc987c4ba366e2007163c814ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499190"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323419"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 
-Application Insights は、オンプレミスや Azure、その他各種クラウドでホストされているすべてのアプリケーションが活用ができます。 唯一の制約は、Application Insights サービスとの[通信を許可](../../azure-monitor/app/ip-addresses.md)する必要があることです。 ユニバーサル Windows プラットフォーム (UWP) アプリケーションの監視には、[Visual Studio App Center](../../azure-monitor/learn/mobile-center-quickstart.md) をお勧めします。
+Application Insights は、オンプレミスや Azure、その他各種クラウドでホストされているすべてのアプリケーションが活用ができます。 唯一の制約は、Application Insights サービスとの[通信を許可](./ip-addresses.md)する必要があることです。 ユニバーサル Windows プラットフォーム (UWP) アプリケーションの監視には、[Visual Studio App Center](../learn/mobile-center-quickstart.md) をお勧めします。
 
 ## <a name="to-send-telemetry-to-application-insights-from-a-classic-windows-application"></a>従来の Windows アプリケーションから Application Insights にテレメトリを送信するには
-1. [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](../../azure-monitor/app/create-new-resource.md )。 
+1. [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](./create-new-resource.md)。 
 2. インストルメンテーション キーをコピーします。
 3. Visual Studio でアプリ プロジェクトの NuGet パッケージを編集し、Microsoft.ApplicationInsights.WindowsServer を追加します (または、標準テレメトリ コレクション モジュールを含まないベース API だけが必要な場合は、Microsoft.ApplicationInsights を選択します)。
 4. インストルメンテーション キーの設定はコードまたは ApplicationInsights.config で行います。コードの場合:
@@ -27,7 +27,7 @@ Application Insights は、オンプレミスや Azure、その他各種クラ�
     `<InstrumentationKey>`*自分のキー*`</InstrumentationKey>` 
    
     ApplicationInsights.config を使用する場合は、ソリューション エクスプローラーでプロパティが **Build Action = Content、Copy to Output Directory = Copy**に設定されていることを確認します。
-5. [API を使用して](../../azure-monitor/app/api-custom-events-metrics.md) テレメトリを送信します。
+5. [API を使用して](./api-custom-events-metrics.md) テレメトリを送信します。
 6. アプリケーションを実行し、Azure portal で作成したリソースのテレメトリを表示します。
 
 ## <a name="example-code"></a><a name="telemetry"></a>コード例
@@ -175,7 +175,8 @@ namespace WindowsFormsApp2
 > [従来の Enterprise (Per Node) 価格レベル](./pricing.md#legacy-enterprise-per-node-pricing-tier)を使用している場合でも、技術的には前述のテレメトリ プロセッサを使用できますが、ノードのノードあたりの料金を適切に区別できないため、課金が過剰になる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
-* [ダッシュボードを作成する](../../azure-monitor/app/overview-dashboard.md)
-* [診断検索](../../azure-monitor/app/diagnostic-search.md)
-* [メトリックを探索する](../../azure-monitor/platform/metrics-charts.md)
+* [ダッシュボードを作成する](./overview-dashboard.md)
+* [診断検索](./diagnostic-search.md)
+* [メトリックを探索する](../platform/metrics-charts.md)
 * [Analytics クエリを作成する](../log-query/log-query-overview.md)
+

@@ -1,6 +1,6 @@
 ---
 title: Azure Event Grid メトリックの表示とアラートの設定
-description: この記事では、Azure portal を使用して Azure Event Grid のトピックとサブスクリプションのメトリックを表示し、それらのアラートを作成する方法について説明します。
+description: この記事では、Azure Portal を使用して Azure Event Grid のトピックとサブスクリプションのメトリックを表示し、それらのアラートを作成する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
@@ -37,7 +37,7 @@ ms.locfileid: "86114885"
 
 カスタム トピックを発行済みの場合は、そのトピックのメトリックを表示できます。 
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/)にサインインします。
 2. トピックの検索バーに「**Event Grid トピック**」と入力し、ドロップ ダウン リストから **[Event Grid トピック]** を選択します。 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid トピック を検索して選択する":::
@@ -65,7 +65,7 @@ ms.locfileid: "86114885"
 
     :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="[イベント サブスクリプション] を選択する":::    
 
-    また、Azure portal の検索バーで「**Event Grid サブスクリプション**」を検索し、 **[トピックの種類]** 、 **[サブスクリプション]** 、 **[場所]** を選択してイベント サブスクリプションを確認することもできます。 
+    また、Azure Portal の検索バーで「**Event Grid サブスクリプション**」を検索し、 **[トピックの種類]** 、 **[サブスクリプション]** 、 **[場所]** を選択してイベント サブスクリプションを確認することもできます。 
 
     :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="[Event Grid サブスクリプション] ページからイベント サブスクリプションを選択する":::        
 
@@ -76,7 +76,7 @@ ms.locfileid: "86114885"
 
 ## <a name="view-system-topic-metrics"></a>システム トピックのメトリックを表示する
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/)にサインインします。
 2. トピックの検索バーに「**Event Grid システム トピック**」と入力し、ドロップ ダウン リストから **[Event Grid システム トピック]** を選択します。 
 
     :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid システム トピックを検索して選択する":::

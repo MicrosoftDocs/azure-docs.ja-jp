@@ -3,18 +3,18 @@ title: Microsoft ID プラットフォームのドキュメント
 summary: Microsoft ID プラットフォームは、認証サービス、オープンソース ライブラリ、およびアプリケーション管理ツールです。 Microsoft が提供するクイックスタート、チュートリアル、コード サンプルを使用して、標準ベースの最新の認証ソリューションを作成する方法について説明します。 ユーザーと顧客が自分の Microsoft ID またはソーシャル アカウントを使用してサインインし、API または Microsoft Graph などの Microsoft API へのアクセスを承認するアプリケーションを構築します。
 metadata:
   ms.topic: landing-page
-  ms.date: 07/13/2020
-  author: CelesteDG
-  ms.author: celested
+  ms.date: 08/11/2020
+  author: mmacy
+  ms.author: marsma
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: e17e6195d629238c9c719d8e34780593129ae244
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 115c2b7058941512bf75f2b45b17d4a0a806c1af
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87027072"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88690291"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -83,7 +83,7 @@ landingContent:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: ASP.NET Core
-      url: https://docs.microsoft.com/samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+      url: /samples/azure-samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/calling-a-web-api-in-an-aspnet-core-web-application-using-azure-ad/
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started
@@ -91,7 +91,7 @@ landingContent:
     - text: Microsoft Graph API を使用する
       url: microsoft-graph-intro.md
     - text: Microsoft Graph 認証の概要
-      url: https://docs.microsoft.com/graph/auth/
+      url: /graph/auth/
 - title: プロトコル
   linkLists:
   - linkListType: overview
@@ -116,3 +116,13 @@ landingContent:
       url: ../managed-identities-azure-resources/overview.md
     - text: マネージド ID と Azure VM
       url: ../managed-identities-azure-resources/how-managed-identities-work-vm.md
+- title: ドキュメントの最新情報
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: エラーと例外を処理する - Android
+      url: msal-android-handling-exceptions.md
+    - text: 要求のディレクトリ スキーマ拡張属性
+      url: active-directory-schema-extensions.md
+    - text: MSAL.js 2.0 認証コード + PKCE および CORS
+      url: quickstart-v2-javascript-auth-code.md

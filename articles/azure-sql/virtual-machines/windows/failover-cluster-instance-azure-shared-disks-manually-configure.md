@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 4e704a25e0c9700afbe4fa85031d7ff4d6a8d0c1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e1a4a366b3e4fa045df69683d6e72b157ccf0a1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965373"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87003629"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure 共有ディスクを使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -157,7 +157,7 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
 1. **[サーバーまたはクラスターの選択]** で、両方の仮想マシンの名前を入力します。
 1. **[テスト オプション]** で、 **[選択するテストのみを実行する]** を選択します。 
 1. **[次へ]** を選択します。
-1. **[テストの選択]** の下で、 **[記憶域スペース ダイレクト]** を "*除く*" すべてのテストを選択します。
+1. **[テストの選択]** の下で、 **[記憶域]** を*除く*すべてのテストを選択します
 
 ## <a name="test-cluster-failover"></a>クラスターのフェールオーバーをテストする
 
@@ -181,9 +181,7 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
 
 1. **[SQL Server フェールオーバー クラスターの新規インストール]** を選択します。 ウィザードの指示に従って、SQL Server FCI をインストールします。
 
-   FCI のデータ ディレクトリは、クラスター化されたストレージ上にある必要があります。 記憶域スペース ダイレクトでは、これは共有ディスクではなく、各サーバー上のボリュームのマウント ポイントです。 記憶域スペース ダイレクトは、両方のノード間でボリュームを同期します。 ボリュームは、クラスターの共有ボリューム (CSV) としてクラスターに表示されます。 データ ディレクトリとして CSV のマウント ポイントを使用します。
-
-   ![データ ディレクトリ](./media/failover-cluster-instance-storage-spaces-direct-manually-configure/20-data-dicrectories.png)
+FCI データ ディレクトリは、Azure 共有ディスク上に存在する必要があります。 
 
 1. ウィザードの手順を完了すると、セットアップにより、SQL Server FCI が最初のノードにインストールされます。
 

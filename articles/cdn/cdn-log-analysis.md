@@ -1,29 +1,38 @@
 ---
-title: Azure CDN の使用パターンを分析する | Microsoft Docs
+title: Azure CDN の使用パターンを分析する
 description: この記事では、Azure CDN 製品で使用可能なさまざまな種類の分析レポートについて説明します。
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: 95e18b3c-b987-46c2-baa8-a27a029e3076
+manager: KumudD
 ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 7/22/2020
 ms.author: allensu
-ms.openlocfilehash: c78dff9f5258023d90100c70bd244e8e0d016d6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81253613"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073048"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
 
 アプリケーションの CDN を有効にした後、CDN の使用状況の監視、配信の正常性の確認、潜在的な問題のトラブルシューティングを行うことができます。 Azure CDN では、これらの機能が次の方法で利用できます。 
+
+## <a name="raw-logs-for-azure-cdn-from-microsoft"></a>Microsoft の Azure CDN の生ログ
+標準の Microsoft プロファイルでは、生ログを有効にし、以下へのログのストリーミングを選択できます。
+
+* Azure Storage
+* Event Hubs
+* Azure Log Analytics
+
+Azure Log Analytics を使用すると、監視メトリックの表示やアラートの設定を行うことができます。 
+
+詳細については、「[Azure CDN HTTP 生ログ](enable-raw-logs.md)」を参照してください。
+
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Azure 診断ログによるコア分析
 
@@ -31,16 +40,27 @@ ms.locfileid: "81253613"
 
 ## <a name="verizon-core-reports"></a>Verizon コア レポート
 
-**Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon** プロファイルを所有する Azure CDN ユーザーは、Verizon 補助ポータルで Verizon コア レポートを表示できます。 Verizon コア レポートには、Azure Portal の **[管理]** オプションからアクセスできます。このレポートには、さまざまなグラフとビューが用意されています。 詳細については、「[Verizon からのコア レポート](cdn-analyze-usage-patterns.md)」を参照してください。
+**Azure CDN Standard from Verizon** プロファイルまたは **Azure CDN Premium from Verizon** プロファイルは、コア レポートを提供します。 コア レポートは、Verizon 補助ポータルで表示できます。 Verizon コア レポートには、Azure portal の **[管理]** オプションからアクセスできます。このレポートには、さまざまなグラフとビューが用意されています。 詳細については、「[Verizon からのコア レポート](cdn-analyze-usage-patterns.md)」を参照してください。
 
 ## <a name="verizon-custom-reports"></a>Verizon カスタム レポート
 
-**Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon** プロファイルを所有する Azure CDN ユーザーは、Verizon 補助ポータルで Verizon カスタム レポートを表示できます。 Verizon カスタム レポートには、Azure Portal の **[管理]** オプションからアクセスできます。 Verizon カスタム レポート ページには、Azure CDN プロファイルに属する各エッジ CName のヒット数や転送されたデータが表示されます。 データは、HTTP 応答コードまたは一定期間にわたるキャッシュの状態でグループ化できます。 詳細については、「[Custom Reports from Verizon (Verizon のカスタム レポート)](cdn-verizon-custom-reports.md)」をご覧ください。
+**Azure CDN Standard from Verizon** プロファイルまたは **Azure CDN Premium from Verizon** プロファイルは、カスタム レポートを提供します。 カスタム レポートは、Verizon 補助ポータルで表示できます。 Verizon カスタム レポートには、Azure portal の **[管理]** オプションからアクセスできます。 
+
+カスタム レポートには、各エッジ CNAME のヒット数または転送されたデータが表示されます。 データは、HTTP 応答コードまたは一定期間のキャッシュの状態でグループ化されます。 詳細については、「[Custom Reports from Verizon (Verizon のカスタム レポート)](cdn-verizon-custom-reports.md)」をご覧ください。
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>Azure CDN Premium from Verizon レポート
 
 **Azure CDN Premium from Verizon** で、次のレポートにアクセスすることもできます。
    * [詳細な HTTP レポート](cdn-advanced-http-reports.md)
    * [リアルタイム統計](cdn-real-time-stats.md)
-   * [エッジ ノードのパフォーマンス](cdn-edge-performance.md)
+   * [Azure CDN エッジ ノードのパフォーマンス](cdn-edge-performance.md)
+
+## <a name="next-steps"></a>次のステップ
+この記事では、Azure CDN の分析レポートのさまざまなオプションについて学習しました。
+
+Azure CDN とこの記事で言及しているその他の Azure サービスの詳細については、次をご覧ください。
+
+* [Azure CDN とは](cdn-overview.md)
+* [Azure CDN HTTP 生ログ](enable-raw-logs.md)
+
 

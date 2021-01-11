@@ -3,14 +3,14 @@ title: Azure Automation データ セキュリティ
 description: この記事では、Azure Automation でお客様のプライバシーとデータを保護するしくみについて説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/03/2020
+ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: cc96f2dd81b618b4170acd4b415a09248adbb7d5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 610c2050150a533e246bc74ed7750ce87f7cf617
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186165"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004649"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation データの管理
 
@@ -50,7 +50,7 @@ Azure Automation でリソースを削除すると、完全に削除される前
 | Data | ポリシー |
 |:--- |:--- |
 | アカウント |アカウントは、ユーザーによって削除された日から 30 日後に完全に消去されます。 |
-| アセット |アセットは、ユーザーによって削除された日から 30 日後、またはアセットを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 |
+| アセット |アセットは、ユーザーによって削除された日から 30 日後、またはアセットを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 アセットには、変数、スケジュール、資格情報、証明書、Python 2 パッケージ、および接続が含まれます。 |
 | DSC ノード |DSC ノード は、Azure portal または Windows PowerShell の [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0) コマンドレットを使用して、Automation アカウントから登録解除された日から 30 日後に、完全に消去されます。 また、ノードは、ノードを保持するアカウントがユーザーによって削除されてから 30 日後に、完全に消去されます。 |
 | ジョブ |ジョブは、変更 (ジョブの完了など) が停止または中断された日から 30 日後に、削除されて完全に消去されます。 |
 | モジュール |モジュールは、ユーザーによって削除された日から 30 日後、またはモジュールを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 |
@@ -66,7 +66,7 @@ Azure で Automation アカウントを削除すると、そのアカウント�
 
 ### <a name="runbooks"></a>Runbooks
 
-Azure Portal または Windows PowerShell の [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) コマンドレットを使用して、Runbook をスクリプト ファイルにエクスポートできます。 「[Azure Automation で Runbook を管理する](manage-runbooks.md)」で説明されているようにして、これらのスクリプト ファイルを別の Automation アカウントにインポートすることができます。
+Azure Portal または Windows PowerShell の [Get-AzureAutomationRunbookDefinition](/powershell/module/servicemanagement/azure.service/get-azureautomationrunbookdefinition) コマンドレットを使用して、Runbook をスクリプト ファイルにエクスポートできます。 「[Azure Automation で Runbook を管理する](manage-runbooks.md)」で説明されているようにして、これらのスクリプト ファイルを別の Automation アカウントにインポートすることができます。
 
 ### <a name="integration-modules"></a>統合モジュール
 

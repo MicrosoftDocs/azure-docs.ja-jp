@@ -2,25 +2,21 @@
 title: チュートリアル:4me を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを 4me に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 423ba8c7aea9659a4c91f68a01392954c2ba6db2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: beb580a02e1db80cf2d74f8167a98c9ead170810
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77059168"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538759"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>チュートリアル:4me を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -128,7 +124,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     ![4me のユーザー マッピング](media/4me-provisioning-tutorial/4me-user-mapping.png)
     
-11. **[属性マッピング]** セクションで、Azure AD から 4me に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 4me のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+11. **[属性マッピング]** セクションで、Azure AD から 4me に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で 4me のユーザー アカウントとの照合に使用されます。 選択した一致する属性に対する[フィルター処理を 4me がサポートしている](https://developer.4me.com/v1/scim/users/)ことを確認してください。 **[保存]** ボタンをクリックして変更をコミットします。
 
     ![4me のユーザー マッピング](media/4me-provisioning-tutorial/4me-user-attributes.png)
     

@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: powershell
 ms.date: 05/29/2018
 ms.reviewer: jushiman
-ms.custom: mimckitt
-ms.openlocfilehash: b3f806c6c42a0cff962b284f16f82e031eab61fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mimckitt, devx-track-azurepowershell
+ms.openlocfilehash: d37f5f624459db6bc336884987a16c60503492a8
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087120"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078505"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して完全な仮想マシン スケール セットを作成する
 

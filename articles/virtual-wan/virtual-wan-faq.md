@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual WAN に関する FAQ | Microsoft Docs
-description: Virtual WAN に関する FAQ
+description: Azure Virtual WAN のネットワーク、クライアント、ゲートウェイ、デバイス、パートナー、接続に関してよく寄せられる質問とその回答を参照できます。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 10/17/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to read more details about Virtual WAN in a FAQ format.
-ms.openlocfilehash: ecec5daddd2e7a885b9c8d390fd98fdba3b038d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 007cf7c7bbc512b5441bcfd08d7e2dd0861d707a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84753242"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208262"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN の FAQ
 

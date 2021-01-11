@@ -3,18 +3,18 @@ title: Application Insights のデプロイを設計する方法 - 1 つまた�
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 159a1c5554c0ac017bc9eeb2e9df65fddba334ba
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326547"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258724"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>デプロイする必要がある Application Insights リソースの数
 
-Web アプリケーションの次のバージョンを開発する際に、新しいバージョンの [Application Insights](./app-insights-overview.md) テレメトリとリリース済みのバージョンのテレメトリが混在することがないように設定できます。 混乱を避けるには、分離インストルメンテーション キー (ikeys) を使用して、異なる開発段階のテレメトリを別の Application Insights リソースに送信します。 バージョンが別の段階に進むときにインストルメンテーション キーを簡単に変更できるように、構成ファイルではなくコード内に ikey を設定できます。
+Web アプリケーションの次のバージョンを開発する際に、新しいバージョンの [Application Insights](../../azure-monitor/app/app-insights-overview.md) テレメトリとリリース済みのバージョンのテレメトリが混在することがないように設定できます。 混乱を避けるには、分離インストルメンテーション キー (ikeys) を使用して、異なる開発段階のテレメトリを別の Application Insights リソースに送信します。 バージョンが別の段階に進むときにインストルメンテーション キーを簡単に変更できるように、構成ファイルではなくコード内に ikey を設定できます。
 
-(システムが Azure クラウド サービスである場合は、[個別の iKey を設定する別の方法](./cloudservices.md)もあります。)
+(システムが Azure クラウド サービスである場合は、[個別の iKey を設定する別の方法](../../azure-monitor/app/cloudservices.md)もあります。)
 
 ## <a name="about-resources-and-instrumentation-keys"></a>リソースとインストルメンテーション キーについて
 
@@ -35,13 +35,13 @@ Web アプリに対する Application Insights の監視を設定するときは
 
 ### <a name="other-things-to-keep-in-mind"></a>その他の注意点
 
--   [Cloud_RoleName](./app-map.md?tabs=net#set-cloud-role-name) 属性に意味のある値が設定されるようにするには、カスタム コードを追加することが必要になる場合があります。 この属性に対して意味のある値が設定されていないと、どのポータル エクスペリエンスも機能 "*しません*"。
+-   [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) 属性に意味のある値が設定されるようにするには、カスタム コードを追加することが必要になる場合があります。 この属性に対して意味のある値が設定されていないと、どのポータル エクスペリエンスも機能 "*しません*"。
 - Service Fabric アプリケーションと従来のクラウド サービスについては、SDK によって Azure ロール環境から自動的に読み取られ、これらが設定されます。 他のすべての種類のアプリでは、これを明示的に設定する必要があります。
 -   Live Metrics エクスペリエンスでは、ロール名による分割はサポートされていません。
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-運用の次の段階のコードを開発するときに変更しやすくするために、ikey を構成ファイルではなくコード内に設定します。
+運用の段階が変わるときのコードの ikey の変更を容易にするには、値をハードコードしたり静的な値は使用したりせずに、コードでそのキーが動的に参照されるようにしてください。
 
 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -58,7 +58,7 @@ protected void Application_Start()
 この例では、さまざまなリソースの ikeys が Web 構成ファイルのさまざまなバージョンに配置されます。 リリース スクリプトの一部として行うことができる Web 構成ファイルのスワップは、ターゲット リソースをスワップします。
 
 ### <a name="web-pages"></a>Web ページ
-iKey は、アプリの Web ページや、[クイックスタート ペインから取得したスクリプト](./javascript.md)内でも使用されます。 スクリプトにそのままコーディングするのではなく、サーバーの状態からこれを生成します。 たとえば、ASP.NET アプリで以下の操作を行います。
+iKey は、アプリの Web ページや、[クイックスタート ペインから取得したスクリプト](../../azure-monitor/app/javascript.md)内でも使用されます。 スクリプトにそのままコーディングするのではなく、サーバーの状態からこれを生成します。 たとえば、ASP.NET アプリで以下の操作を行います。
 
 ```javascript
 <script type="text/javascript">
@@ -86,14 +86,14 @@ Application Insights リソースを作成するには、[リソース作成ガ�
 ## <a name="filter-on-build-number"></a>ビルド番号でのフィルター処理
 新しいバージョンのアプリを発行するときは、異なるビルドのテレメトリを区別する必要があります。
 
-アプリケーション バージョン プロパティを設定することで、[検索](./diagnostic-search.md)と[メトリックス エクスプローラー](../platform/metrics-charts.md)の結果をフィルター処理できます。
+アプリケーション バージョン プロパティを設定することで、[検索](../../azure-monitor/app/diagnostic-search.md)と[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)の結果をフィルター処理できます。
 
 アプリケーション バージョン プロパティを設定するには複数の方法があります。
 
 * 直接設定します。
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* その行を [テレメトリ初期化子](./api-custom-events-metrics.md#defaults) にラップして、すべての TelemetryClient インスタンスが一貫して設定されるようにします。
+* その行を [テレメトリ初期化子](../../azure-monitor/app/api-custom-events-metrics.md#defaults) にラップして、すべての TelemetryClient インスタンスが一貫して設定されるようにします。
 * [ASP.NET] `BuildInfo.config`でバージョンを設定します。 Web モジュールは BuildLabel ノードからバージョンを取得します。 このファイルをプロジェクトに追加し、ソリューション エクスプローラーで [常にコピーする] プロパティを設定します。
 
     ```XML
@@ -132,15 +132,14 @@ Application Insights リソースを作成するには、[リソース作成ガ�
 </PropertyGroup>
 ```
 
-ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](./diagnostic-search.md)を実行するとき、または[メトリックを調べる](../platform/metrics-charts.md)ときに、バージョンによってフィルター処理できます。
+ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](../../azure-monitor/app/diagnostic-search.md)を実行するとき、または[メトリックを調べる](../../azure-monitor/platform/metrics-charts.md)ときに、バージョンによってフィルター処理できます。
 
 ただし、Visual Studio の開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
 
 ### <a name="release-annotations"></a>リリース注釈
-Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](./annotations.md)できます。 
+Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](../../azure-monitor/app/annotations.md)できます。 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [複数のロール用の共有リソース](./app-map.md)
-* [A |B のバリアントを区別するためのテレメトリ初期化子を作成する](./api-filtering-sampling.md#add-properties)
-
+* [複数のロール用の共有リソース](../../azure-monitor/app/app-map.md)
+* [A |B のバリアントを区別するためのテレメトリ初期化子を作成する](../../azure-monitor/app/api-filtering-sampling.md#add-properties)

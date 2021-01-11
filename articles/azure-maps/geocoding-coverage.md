@@ -1,26 +1,29 @@
 ---
-title: ジオコーディングの対象範囲 | Microsoft Azure Maps
-description: ロケーションアドレスを緯度と経度の座標に変換するプロセスを、ジオコーディングと呼びます。 この記事では、Microsoft Azure Maps のジオコーディングが対象範囲とするリージョンについて説明します。
-author: philmea
-ms.author: philmea
-ms.date: 12/31/2019
+title: Microsoft Azure Maps Search Service のジオコーディングの対象範囲
+description: Azure Maps の検索範囲に含まれるリージョンを確認します。 ジオコーディングのカテゴリには、アドレス ポイント、家番号、街路レベル、市区町村レベル、注目ポイントが含まれます。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/28/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: 9836bd35b16c4c308b7c9d096b104c0cec68a34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+manager: philmea
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335649"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037441"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 
-Azure Maps である場所を検索すると、検索サービス（たとえば [Get Search Address](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)）は検索語句をもとに、緯度と経度の座標を返してきます。 このプロセスはジオコーディングと呼ばれます。 しかし Azure Maps は、すべてのリージョンや国に対して、同じレベルの情報と精度を有しているわけではありません。 この記事を利用して、各地域ではどの種類の位置情報を確実に検索できるかを判断してください。 
+Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) では、ジオコーディングをサポートしています。つまり、API 要求で、アドレスや場所の名前などの検索語句を指定でき、その結果を緯度と経度の座標として返すことができます。 たとえば、Azure Maps [Get Search Address API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) は、位置情報を含むクエリを受け取り、結果を緯度と経度の座標として返します。
+
+ただし Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) では、すべてのリージョンや国に対して、同じレベルの情報と精度を有しているわけではありません。 この記事を利用して、各地域ではどの種類の位置情報を確実に検索できるかを判断してください。
 
 ある国/リージョンでジオコーディングする機能は、ジオコーディング サービスによる道路データの網羅率とジオコーディングの精度に左右されます。 各国/リージョンのジオコーディング サポート レベルを指定する際、次の分類が利用されます。
-* **アドレス ポイント** - アドレス データは、アドレス パーセル (プロパティ境界) 内の緯度/経度座標に解決できます。 この精度は 'Rooftop' と呼ばれることもあります。 これは住所に利用できる最高レベルの精度です。 
+
+* **アドレス ポイント** - アドレス データは、アドレス パーセル (プロパティ境界) 内の緯度/経度座標に解決できます。 アドレス ポイントは、アドレスに使用できる最高レベルの精度である "ルーフトップ" 精度とよく呼ばれます。
 * **家番号** - 番地の緯度/経度座標に住所が補間されます。
 * **街路レベル** - 住所を含む通りの緯度/経度座標に住所が解決されます。 家番号は処理されない場合があります。
 * **市区町村レベル** - 市区町村の場所名がサポートされています。
@@ -41,7 +44,7 @@ Azure Maps である場所を検索すると、検索サービス（たとえば
 | ボリビア                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | ボネール島、セント・ユースタティウス島、サバ島                   |                 |                |              |      ✓     |          ✓         |
 | ブラジル                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| カナダ                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Canada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | ケイマン諸島                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | チリ                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
 | コロンビア                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -214,7 +217,6 @@ Azure Maps である場所を検索すると、検索サービス（たとえば
 | ウズベキスタン                                          |                 |                |              |      ✓     |          ✓         |
 | バチカン                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
-
 ## <a name="middle-east-and-africa"></a>中東およびアフリカ
 
 | 国/リージョン                                      | 住所ポイント |家番号 | 街路レベル | 市区町村レベル | 注目ポイント |
@@ -295,11 +297,8 @@ Azure Maps である場所を検索すると、検索サービス（たとえば
 | ザンビア                                              |                 |                |       ✓      |      ✓     |          ✓         |
 | ジンバブエ                                            |                 |                |       ✓      |      ✓     |          ✓         |
 
-
-
 ## <a name="next-steps"></a>次のステップ
 
-Azure Maps でのジオコーディングの詳細については、[検索](https://docs.microsoft.com/rest/api/maps/search)のリファレンス ページを参照してください。
-
-[Maps トラフィック サービスの対象範囲となる領域](traffic-coverage.md)を確認してください。 
-
+Azure Maps ジオコーディングの詳細:
+> [!div class="nextstepaction"]
+> [Azure Maps Search Service](https://docs.microsoft.com/rest/api/maps/search)

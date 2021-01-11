@@ -6,22 +6,23 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: ec9e53ecaa95f6407a00c149abb6ed7e4a671d74
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 1b9603e43541ec1a364e4653caeeafc751f7e4f0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102295"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012094"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-postgresql"></a>マネージド ID を使用して Azure Database for PostgreSQL に接続する
 
-この記事では、Azure Virtual Machine (VM) のユーザー割り当て ID を使用して、Azure Database for PostgreSQL サーバーにアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。 学習内容は次のとおりです。
+この記事では、Azure Virtual Machine (VM) のユーザー割り当て ID を使用して、Azure Database for PostgreSQL サーバーにアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。 
 
-> [!div class="checklist"]
-> * VM に Azure Database for PostgreSQL サーバーへのアクセスを許可する
-> * VM のユーザー割り当て ID を表すユーザーをデータベースに作成する
-> * VM ID を使用してアクセス トークンを取得し、それを使用して Azure Database for PostgreSQL サーバーにクエリを実行する
-> * C# サンプル アプリケーションにトークン取得を実装する
+学習内容は次のとおりです。
+- VM に Azure Database for PostgreSQL サーバーへのアクセスを許可する
+- VM のユーザー割り当て ID を表すユーザーをデータベースに作成する
+- VM ID を使用してアクセス トークンを取得し、それを使用して Azure Database for PostgreSQL サーバーにクエリを実行する
+- C# サンプル アプリケーションにトークン取得を実装する
 
 ## <a name="prerequisites"></a>前提条件
 

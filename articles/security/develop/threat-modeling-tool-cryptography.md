@@ -1,6 +1,6 @@
 ---
 title: 暗号化 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool で公開されている脅威に対する暗号化の軽減策について説明します。 軽減策に関する情報とコード例をご覧ください。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: c9116472af5b400ded0fea24f98b07bad9d9039b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728188"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539953"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム:暗号化 | 軽減策 
 
@@ -109,7 +109,7 @@ ms.locfileid: "68728188"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS に準拠している)</li><li>SHA384Cng (FIPS に準拠している)</li><li>SHA256Cng (FIPS に準拠している)</li><li>SHA512Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA512 を使用する)</li><li>SHA384Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA384 を使用する)</li><li>SHA256Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA256 を使用する)</li><li>SHA512CryptoServiceProvider (FIPS に準拠している)</li><li>SHA256CryptoServiceProvider (FIPS に準拠している)</li><li>SHA384CryptoServiceProvider (FIPS に準拠している)</li></ul>| 
+| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS に準拠している)</li><li>SHA384Cng (FIPS に準拠している)</li><li>SHA256Cng (FIPS に準拠している)</li><li>SHA512Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA512 を使用する)</li><li>SHA384Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA384 を使用する)</li><li>SHA256Managed (FIPS に準拠していない) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しで、アルゴリズム名として SHA256 を使用する)</li><li>SHA512CryptoServiceProvider (FIPS に準拠している)</li><li>SHA256CryptoServiceProvider (FIPS に準拠している)</li><li>SHA384CryptoServiceProvider (FIPS に準拠している)</li></ul>| 
 
 ## <a name="use-strong-encryption-algorithms-to-encrypt-data-in-the-database"></a><a id="strong-db"></a>強力な暗号化アルゴリズムを使用してデータベース内のデータを暗号化する
 
@@ -142,7 +142,7 @@ ms.locfileid: "68728188"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ADD SIGNATURE (Transact-SQL)](https://msdn.microsoft.com/library/ms181700) |
-| **手順** | 重要なセキュリティ保護可能なデータベース リソースの整合性を検証する必要がある場合、デジタル署名を使用する必要があります。 ストアド プロシージャ、関数、アセンブリ、トリガーなど、セキュリティ保護可能なデータベース リソースにデジタル署名することができます。 これが役立つ状況の例を以下に説明します。ISV (独立系ソフトウェア ベンダー) が、その顧客のいずれかに提供されるソフトウェアに対してサポートを提供しているとします。 ISV はサポートを提供する前に、そのソフトウェアのセキュリティ保護可能なデータベース リソースが誤って改ざんされたり、悪意のある試みによって改ざんされたりしていないことを確認する必要があります。 セキュリティ保護可能なリソースがデジタル署名されていれば、ISV はデジタル署名を確認し、そのリソースの整合性を検証できます。| 
+| **手順** | 重要なセキュリティ保護可能なデータベース リソースの整合性を検証する必要がある場合、デジタル署名を使用する必要があります。 ストアド プロシージャ、関数、アセンブリ、トリガーなど、セキュリティ保護可能なデータベース リソースにデジタル署名することができます。 これが役立つ状況の例を紹介します。ISV (独立系ソフトウェア ベンダー) が、顧客に提供されたソフトウェアのサポートを提供するとします。 ISV はサポートを提供する前に、そのソフトウェアのセキュリティ保護可能なデータベース リソースが誤って改ざんされたり、悪意のある試みによって改ざんされたりしていないことを確認する必要があります。 セキュリティ保護可能なリソースがデジタル署名されていれば、ISV はデジタル署名を確認し、そのリソースの整合性を検証できます。| 
 
 ## <a name="use-sql-server-ekm-to-protect-encryption-keys"></a><a id="ekm-keys"></a>SQL Server EKM を使用して暗号化キーを保護する
 

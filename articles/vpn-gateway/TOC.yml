@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: VPN Gateway について
+    - name: VPN ゲートウェイとは
       href: vpn-gateway-about-vpngateways.md
 - name: チュートリアル
   items:

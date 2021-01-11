@@ -5,21 +5,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 7/10/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b7551ec01e3401c0636b47a25d83173b6322d06e
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86219880"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386709"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
-
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、オンプレミス Hyper-V VM の Azure へのディザスター リカバリーを行う場合にサポートされるコンポーネントと設定の概要について説明します。
 
-
+>[!NOTE]
+> Site Recovery では、ソース マシンのディザスター リカバリーがセットアップされているターゲット リージョンから顧客データを移動または格納することはありません。 お客様は、必要に応じて、別のリージョンから Recovery Services コンテナーを選択することもできます。 Recovery Services コンテナーにはメタデータが含まれますが、実際の顧客データは含まれません。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
@@ -32,13 +32,11 @@ Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって�
 
 **サーバー** | **必要条件** | **詳細**
 --- | --- | ---
-Hyper-V (Virtual Machine Manager なしで実行) |  最新の更新プログラムが適用された Windows Server 2019、Windows Server 2016、Windows Server 2012 R2 (Windows Server 2019 を除くこれらのオペレーティング システムのサーバー コア インストールを含む) | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。
-Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 (Virtual Machine Manager 2019 を除くこれらのオペレーティング システムのサーバー コア インストールを含む) | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。
+Hyper-V (Virtual Machine Manager なしで実行) |  Windows Server 2019、Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2 <br/><br/> **注:** これらのオペレーティング システムの Server コア インストールもサポートされています。 | 既に Windows Server 2012 R2 と Azure Site Recovery または SCVMM 2012 R2 と Azure Site Recovery を構成済みで、OS のアップグレードを予定している場合は、ガイダンス [ドキュメント](upgrade-2012R2-to-2016.md)に従ってください。
+Hyper-V (Virtual Machine Manager ありで実行) | Virtual Machine Manager 2019、Virtual Machine Manager 2016、Virtual Machine Manager 2012 R2 <br/><br/> **注:** これらのオペレーティング システムの Server コア インストールもサポートされています。  | Virtual Machine Manager を使用する場合は、Windows Server 2019 ホストは、Virtual Machine Manager 2019 で管理する必要があります。 同様に、Windows Server 2016 ホストは、Virtual Machine Manager 2016 によって管理されている必要があります。
 
 > [!NOTE]
->
-> - オンプレミス サーバーに .NET Framework 4.6.2 以降が存在することを確認してください。
-> - Virtual Machine Manager の有無にかかわらず、別の場所または元の場所へのフェールオーバーとフェールバックを実行することは、Windows Server 2019 サーバー コア バージョンではサポートされていません。
+> オンプレミス サーバーに .NET Framework 4.6.2 以降が存在することを確認してください。
 
 ## <a name="replicated-vms"></a>レプリケートされた VM
 
@@ -63,16 +61,17 @@ VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
 ホスト ネットワーク: NIC チーミング | はい | はい
-ホスト ネットワーク: VLAN | はい | はい
-ホスト ネットワーク: IPv4 | はい | はい
-ホスト ネットワーク: IPv6 | いいえ | いいえ
+ホスト ネットワーク: VLAN | はい | ○
+ホスト ネットワーク: IPv4 | はい | ○
+ホスト ネットワーク: IPv6 | いいえ | ×
 ゲスト VM ネットワーク: NIC チーミング | いいえ | いいえ
-ゲスト VM ネットワーク: IPv4 | はい | はい
-ゲスト VM ネットワーク: IPv6 | いいえ | はい
-ゲスト VM ネットワーク: 静的 IP (Windows) | はい | はい
-ゲスト VM ネットワーク: 静的 IP (Linux) | いいえ | いいえ
+ゲスト VM ネットワーク: IPv4 | はい | ○
+ゲスト VM ネットワーク: IPv6 | いいえ | [はい]
+ゲスト VM ネットワーク: 静的 IP (Windows) | ○ | ○
+ゲスト VM ネットワーク: 静的 IP (Linux) | × | いいえ
 ゲスト VM ネットワーク: マルチ NIC | はい | はい
-HTTPS プロキシ | いいえ | いいえ
+HTTPS プロキシ | いいえ | ×
+Site Recovery サービスへの Private Link アクセス | はい。 [詳細については、こちらを参照してください](hybrid-how-to-enable-replication-private-endpoints.md)。 | はい。 [詳細については、こちらを参照してください](hybrid-how-to-enable-replication-private-endpoints.md)。
 
 
 
@@ -86,61 +85,61 @@ ILB | はい | はい
 ELB | はい | はい
 Azure の Traffic Manager | はい | はい
 マルチ NIC | はい | はい
-予約済み IP | はい | はい
-IPv4 | はい | はい
-送信元 IP アドレスを保持する | はい | はい
-Azure 仮想ネットワーク サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | はい | はい
-高速ネットワーク | いいえ | いいえ
+予約済み IP | ○ | はい
+IPv4 | ○ | ○
+送信元 IP アドレスを保持する | ○ | ○
+Azure 仮想ネットワーク サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | ○ | ○
+高速ネットワーク | いいえ | ×
 
 
 ## <a name="hyper-v-host-storage"></a>Hyper-V ホスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | --- 
-NFS | NA | NA
-SMB 3.0 | はい | はい
-SAN (ISCSI) | はい | はい
-マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | はい | はい
+NFS | N/A | N/A
+SMB 3.0 | はい | ○
+SAN (ISCSI) | ○ | ○
+マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | ○ | はい
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM ゲスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-VMDK | NA | NA
+VMDK | N/A | N/A
 VHD/VHDX | はい | はい
-Generation 2 VM | はい | はい
-EFI/UEFI<br></br>Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。| はい | はい
+Generation 2 VM | ○ | ○
+EFI/UEFI<br></br>Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。| ○ | ○
 共有クラスター ディスク | いいえ | いいえ
-暗号化されたディスク | いいえ | いいえ
-NFS | NA | NA
-SMB 3.0 | いいえ | いいえ
+暗号化されたディスク | × | いいえ
+NFS | N/A | N/A
+SMB 3.0 | × | ×
 RDM | NA | NA
 1 TB より大きいディスク | はい、最大 4,095 GB | はい、最大 4,095 GB
 ディスク:4K 論理および物理セクター | サポートされない: Gen 1/Gen 2 | サポートされない: Gen 1/Gen 2
-ディスク:4K 論理および 512 バイトの物理セクター | はい |  はい
+ディスク:4K 論理および 512 バイトの物理セクター | はい |  ○
 論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | はい | はい
 ストライピングされたディスクのボリューム > 1 TB | はい | はい
-記憶域スペース | いいえ | いいえ
-ディスクのホット アド/削除 | いいえ | いいえ
-ディスクの除外 | はい | はい
-マルチパス (MPIO) | はい | はい
+記憶域スペース | × | ×
+ディスクのホット アド/削除 | × | ×
+ディスクの除外 | ○ | はい
+マルチパス (MPIO) | ○ | はい
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-ローカル冗長ストレージ | はい | はい
-geo 冗長ストレージ | はい | はい
+ローカル冗長ストレージ | ○ | ○
+geo 冗長ストレージ | ○ | ○
 読み取りアクセス geo 冗長ストレージ | はい | はい
-クール ストレージ | いいえ | いいえ
-ホット ストレージ| いいえ | いいえ
-ブロック blob | いいえ | いいえ
-保存時の暗号化 (SSE)| はい | はい
+クール ストレージ | × | ×
+ホット ストレージ| × | いいえ
+ブロック blob | いいえ | ×
+保存時の暗号化 (SSE)| ○ | ○
 保存時の暗号化 (CMK) <br></br> (マネージド ディスクへのフェールオーバーの場合のみ)| はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
 保存時の二重暗号化 <br></br> (マネージド ディスクへのフェールオーバーの場合のみ) <br></br> [Windows](../virtual-machines/windows/disk-encryption.md) および [Linux](../virtual-machines/linux/disk-encryption.md) でサポートされているリージョンの詳細について参照してください | はい (PowerShell Az 3.3.0 モジュール以降を使用) | はい (PowerShell Az 3.3.0 モジュール以降を使用)
-Premium Storage | はい | はい
-Standard Storage | はい | はい
-Import/Export サービス | いいえ | いいえ
+Premium Storage | ○ | はい
+Standard Storage | はい | ○
+Import/Export サービス | × | いいえ
 ファイアウォールが有効になっている Azure Storage アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
 ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure Storage アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
 転送オプションのセキュリティ保護 | はい
@@ -150,7 +149,7 @@ Import/Export サービス | いいえ | いいえ
 
 **機能** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-可用性セット | はい | はい
+可用性セット | ○ | ○
 ハブ | はい | はい  
 マネージド ディスク | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。 | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。
 
@@ -178,7 +177,7 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 
 **操作** |  **Hyper-V (VMM あり)** | **Hyper-V (VMM なし)**
 --- | --- | ---
-リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ | いいえ
+リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ | ×
 リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ | いいえ
 
 > [!NOTE]

@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datasite の統合 | Microsoft Docs
 description: Azure Active Directory と Datasite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a17bc3e3-f565-4a7b-b90f-f6f385ddf0fb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 08/27/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da42ef51646f7775234ed870e59c442d54933c1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 36a90dee086a0ada705a0c067f3ad9d717542d52
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170549"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077536"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datasite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datasite の統合
 
@@ -46,6 +42,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Datasite では、**SP** Initiated SSO がサポートされます
 
 * Datasite を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-datasite-from-the-gallery"></a>ギャラリーからの Datasite の追加
 
@@ -84,20 +83,7 @@ Datasite に対する Azure AD SSO を構成してテストするには、次の
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    **[サインオン URL]** ボックスに、`https://auth.<ENVIRONMENT>.com/sp/ACS.saml2` という形式で URL を入力します。
-
-    > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Datasite クライアント サポート チーム](mailto:applicationsupport@datasite.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
-
-1. Datasite アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
-
-    ![image](common/default-attributes.png)
-
-1. その他に、Datasite アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
-    
-    | 名前 | ソース属性 |
-    | -------------| --------- |
-    | organizationId | < organizationId > |
+    **[サインオン URL]** テキスト ボックスに、URL として「`https://auth.datasite.com/sp/ACS.saml2`」と入力します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -139,11 +125,11 @@ Datasite に対する Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-datasite-sso"></a>Datasite SSO の構成
 
-**Datasite** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Datasite サポート チーム](mailto:applicationsupport@datasite.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Datasite** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Datasite サポート チーム](mailto:service@datasite.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-datasite-test-user"></a>Datasite テスト ユーザーの作成
 
-このセクションでは、Datasite で B.Simon というユーザーを作成します。  [Datasite サポート チーム](mailto:applicationsupport@datasite.com)と連携して、Datasite プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Datasite で B.Simon というユーザーを作成します。  [Datasite サポート チーム](mailto:service@datasite.com)と連携して、Datasite プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

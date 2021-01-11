@@ -1,19 +1,17 @@
 ---
 title: ドメイン コントローラーを使用して Azure Files のファイル共有を作成する - Azure
 description: Active Directory ドメインが設定された既存の Windows Virtual Desktop ホスト プールにある Azure ファイル共有上に、FSLogix プロファイル コンテナーを設定します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: ced763ca4abd32f3b824f05f2f5786a5d9cfd4c4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027394"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825445"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Azure Files および AD DS を使用してプロファイル コンテナーを作成する
 
@@ -153,15 +151,15 @@ NTFS のアクセス許可を構成するには:
 
 1. ドメイン参加済みの VM 上で、コマンド プロンプトを開きます。
 
-2. Azure ファイル共有をマウントし、ドライブ文字を割り当てるために、次のコマンドレットを実行します。
+2. Azure ファイル共有をマウントし、ドライブ文字を割り当てるために、次のコマンドを実行します。
 
-     ```powershell
+     ```cmd
      net use <desired-drive-letter>: <UNC-pat> <SA-key> /user:Azure\<SA-name>
      ```
 
-3. 次のコマンドレットを実行し、Azure ファイル共有へのアクセス許可を確認します。
+3. 次のコマンドを実行し、Azure ファイル共有へのアクセス許可を確認します。
 
-    ```powershell
+    ```cmd
     icacls <mounted-drive-letter>:
     ```
 
@@ -169,9 +167,9 @@ NTFS のアクセス許可を構成するには:
 
     *NT Authority\Authenticated Users* と *BUILTIN\Users* はどちらも、既定で一定のアクセス許可が割り当てられています。 これらのユーザーはその既定のアクセス許可により、他のユーザーのプロファイル コンテナーを読み取ることができます。 これに対して、「[プロファイル コンテナーと Office コンテナーで使用するストレージ アクセス許可を構成する](/fslogix/fslogix-storage-config-ht)」に記載されているアクセス許可では、ユーザーが他のユーザーのプロファイル コンテナーの中を見ることができません。
 
-4. Windows Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドレットを実行します。
+4. Windows Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドを実行します。
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant <user-email>:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
@@ -183,14 +181,12 @@ NTFS のアクセス許可を構成するには:
 
      次に例を示します。
 
-     ```powershell
+     ```cmd
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
      icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
      icacls <mounted-drive-letter>: /remove "Authenticated Users"
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
-
-5. **[適用]** を選択します。
 
 ## <a name="configure-fslogix-on-session-host-vms"></a>セッション ホスト VM に FSLogix を構成する
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75e7a43d545bea63d553ad01836ed5c6ebc2dcc9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339724"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079797"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Azure Stack Edge のアクセス、電源、接続モードを管理する
 
@@ -95,7 +95,7 @@ Azure Stack Edge デバイスの場合、`Microsoft.DataBoxEdge` を登録する
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-リソース プロバイダーの登録方法の詳細については、[リソース プロバイダー登録エラーの解決](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)に関する記事を参照してください。
+リソース プロバイダーの登録方法の詳細については、[リソース プロバイダー登録エラーの解決](../azure-resource-manager/templates/error-register-resource-provider.md)に関する記事を参照してください。
 
 ## <a name="manage-connectivity-mode"></a>接続モードを管理する
 

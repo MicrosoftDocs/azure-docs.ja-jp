@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: d6e4b77c6eba976de052295e4a0001924ad90644
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 05107d0246be2273c09e91573bd30a4108ac7795
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374203"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290329"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>既存のカスタム ドメインを Azure Spring Cloud にマップする
 ドメイン ネーム サービス (DNS) は、ネットワーク全体のネットワーク ノード名を格納するための手法です。 このチュートリアルでは、CNAME レコードを使用して、 www.contoso.com などのドメインをマップします。 証明書を使用してカスタム ドメインをセキュリティで保護し、トランスポート層セキュリティ (TLS。Secure Sockets Layer (SSL) とも呼ばれます) を強制する方法を示します。 
@@ -20,7 +20,7 @@ ms.locfileid: "87374203"
 証明書は、Web トラフィックを暗号化します。 これらの TLS/SSL 証明書は、Azure Key Vault に格納できます。 
 
 ## <a name="prerequisites"></a>前提条件
-* Azure Spring Cloud にデプロイされたアプリケーション (「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart-launch-app-portal.md)」を参照するか、既存のアプリを使用してください)。
+* Azure Spring Cloud にデプロイされたアプリケーション (「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」を参照するか、既存のアプリを使用してください)。
 * GoDaddy などのドメイン プロバイダーの DNS レジストリへのアクセス権を持つドメイン名。
 * サードパーティ プロバイダーからのプライベート証明書 (つまり自己署名証明書)。 証明書はドメインと一致している必要があります。
 * [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) のデプロイ済みインスタンス
@@ -145,7 +145,7 @@ az spring-cloud app custom-domain list --app <app name>
 1. **[証明書]** で選択するか、証明書をインポートします。
 1. **[保存]** をクリックします。
 
-    ![SSL バインドの追加](./media/custom-dns-tutorial/add-ssl-binding.png)
+    ![SSL バインディングの追加 1](./media/custom-dns-tutorial/add-ssl-binding.png)
 
 または、Azure CLI を次のように使用して、**SSL バインディングを追加する**こともできます。
 ```
@@ -154,14 +154,14 @@ az spring-cloud app custom-domain update --domain-name <domain name> --certifica
 
 SSL バインディングが正常に追加されると、ドメインの状態は安全になり、 **[正常]** と表示されます。 
 
-![SSL バインドの追加](./media/custom-dns-tutorial/secured-domain-state.png)
+![SSL バインディングの追加 2](./media/custom-dns-tutorial/secured-domain-state.png)
 
 ## <a name="enforce-https"></a>HTTPS の適用
 既定では、ユーザーは引き続き HTTP を使用してアプリにアクセスできますが、管理者はすべての HTTP 要求を HTTPS ポートにリダイレクトすることができます。
 
 アプリ ページで、左側のナビゲーションにある **[カスタム ドメイン]** を選択します。 次に、 **[HTTPS のみ]** を *True* に設定します。
 
-![SSL バインドの追加](./media/custom-dns-tutorial/enforce-http.png)
+![SSL バインディングの追加 3](./media/custom-dns-tutorial/enforce-http.png)
 
 または、Azure CLI を次のように使用して、HTTPS を適用することもできます。
 ```

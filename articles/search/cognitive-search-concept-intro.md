@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: cb9214dcd79e45b4c587c7ab47e425f2fdd8714c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c041d594b29c6e93b73eb1b0c623b3e566ceef5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564420"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935502"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメント
 
@@ -29,7 +29,7 @@ AI エンリッチメントは、画像、BLOB、その他の構造化されて�
 
 ![エンリッチメント パイプラインの図](./media/cognitive-search-intro/cogsearch-architecture.png "エンリッチメント パイプラインの概要")
 
-Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs の事前トレーニング済み機械学習モデル ([Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) と[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)) に基づいています。 コンテンツの処理中にこれらのリソースを活用する場合は、Cognitive Services リソースをアタッチできます。
+Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs の事前トレーニング済み機械学習モデル ([Computer Vision](../cognitive-services/computer-vision/index.yml) と[テキスト分析](../cognitive-services/text-analytics/overview.md)) に基づいています。 コンテンツの処理中にこれらのリソースを活用する場合は、Cognitive Services リソースをアタッチできます。
 
 自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Cognitive Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。  
 
@@ -57,9 +57,9 @@ Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs 
 
 ### <a name="more-about-custom-skills"></a>カスタム スキルの詳細
 
-カスタム スキルは、フォームの認識や、[カスタム スキル Web インターフェイス](cognitive-search-custom-skill-interface.md)で指定してラップするモデルを使用するカスタム エンティティ検出などの、より複雑なシナリオに対応できます。 カスタム スキルの例としては、[Forms Recognizer](/azure/cognitive-services/form-recognizer/overview)、[Bing Entity Search API](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example) の統合、[カスタム エンティティ認識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)などがあります。
+カスタム スキルは、フォームの認識や、[カスタム スキル Web インターフェイス](cognitive-search-custom-skill-interface.md)で指定してラップするモデルを使用するカスタム エンティティ検出などの、より複雑なシナリオに対応できます。 カスタム スキルの例としては、[Forms Recognizer](../cognitive-services/form-recognizer/overview.md)、[Bing Entity Search API](./cognitive-search-create-custom-skill-example.md) の統合、[カスタム エンティティ認識](https://github.com/Microsoft/SkillsExtractorCognitiveSearch)などがあります。
 
-<a name="enrichment-steps"> エンリッチメント パイプラインの手順 </a>
+## <a name="steps-in-an-enrichment-pipeline"></a>エンリッチメント パイプラインの手順<a name="enrichment-steps"></a>
 
 エンリッチメント パイプラインは "[*インデクサー*](search-indexer-overview.md)" に基づきます。 インデクサーは、ドキュメント解析のために、インデックスとデータ ソース間のフィールド対フィールドのマッピングに基づいてインデックスを設定します。 インデクサーにアタッチされたスキルにより、ユーザーが定義した 1 つ以上のスキルセットに従ってドキュメントがインターセプトされ、エンリッチメントされます。 インデックスが作成されると、[Azure Cognitive Search でサポートされているすべての種類のクエリ](search-query-overview.md)から検索を要求してコンテンツにアクセスできます。  インデクサーを使い慣れていない場合は、このセクションで手順を示します。
 
@@ -83,7 +83,7 @@ Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs 
 
 #### <a name="add-a-knowledgestore-element-to-save-enrichments"></a>knowledgeStore 要素を追加してエンリッチメントを保存する
 
-[Search REST api-version=2020-06-30](https://docs.microsoft.com/rest/api/searchservice/) では、Azure ストレージ接続を提供する `knowledgeStore` 定義とエンリッチメントの格納方法について説明するプロジェクションによってスキルセットが拡張されます。 これは、インデックスに追加されます。 標準的な AI パイプラインでは、エンリッチメントされたドキュメントは一時的なものであり、インデックス作成時にのみ使用され、その後破棄されます。 エンリッチメントされたドキュメントは、ナレッジ ストアを使用して保存されます。 詳細については、[ナレッジ ストア](knowledge-store-concept-intro.md)に関するページを参照してください。
+[Search REST api-version=2020-06-30](/rest/api/searchservice/) では、Azure ストレージ接続を提供する `knowledgeStore` 定義とエンリッチメントの格納方法について説明するプロジェクションによってスキルセットが拡張されます。 これは、インデックスに追加されます。 標準的な AI パイプラインでは、エンリッチメントされたドキュメントは一時的なものであり、インデックス作成時にのみ使用され、その後破棄されます。 エンリッチメントされたドキュメントは、ナレッジ ストアを使用して保存されます。 詳細については、[ナレッジ ストア](knowledge-store-concept-intro.md)に関するページを参照してください。
 
 ### <a name="step-3-search-index-and-query-based-access"></a>手順 3:検索インデックスとクエリ ベースのアクセス
 
@@ -99,13 +99,13 @@ Azure Cognitive Search の組み込みのスキルは、Cognitive Services APIs 
 
 1. 代表的なサンプルに Azure ソース データをサブセット化します。 インデックスの作成には時間がかかるため、代表的な少量のデータ セットから始め、ソリューションの成熟度に応じて段階的に構築します。
 
-1. データ取得のための接続文字列を指定する[データ ソース オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成します。
+1. データ取得のための接続文字列を指定する[データ ソース オブジェクト](/rest/api/searchservice/create-data-source)を Azure Cognitive Search で作成します。
 
-1. エンリッチメント手順に従って[スキルセット](https://docs.microsoft.com/rest/api/searchservice/create-skillset)を作成します。
+1. エンリッチメント手順に従って[スキルセット](/rest/api/searchservice/create-skillset)を作成します。
 
-1. [インデックス スキーマ](https://docs.microsoft.com/rest/api/searchservice/create-index)を定義します。 *フィールド* コレクションには、ソース データからのフィールドが含まれます。 エンリッチメント中に作成された、コンテンツのために生成された値を保管するための追加フィールドも削除する必要があります。
+1. [インデックス スキーマ](/rest/api/searchservice/create-index)を定義します。 *フィールド* コレクションには、ソース データからのフィールドが含まれます。 エンリッチメント中に作成された、コンテンツのために生成された値を保管するための追加フィールドも削除する必要があります。
 
-1. データ ソース、スキルセット、およびインデックスを参照する[インデクサー](https://docs.microsoft.com/rest/api/searchservice/create-indexer)を定義します。
+1. データ ソース、スキルセット、およびインデックスを参照する[インデクサー](/rest/api/searchservice/create-indexer)を定義します。
 
 1. インデクサー内に *outputFieldMappings* を追加します。 このセクションでは、(手順 4 の) インデックス スキーマ内の入力フィールドに、(手順 3 の) スキルセットからの出力をマッピングします。
 

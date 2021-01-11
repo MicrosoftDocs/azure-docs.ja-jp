@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 06/17/2020
+ms.date: 07/20/2020
 tags: connectors
-ms.openlocfilehash: c2f3af4b0e2fafdd95798b412f37ed20204cd42f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84807740"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286616"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -23,6 +23,7 @@ ms.locfileid: "84807740"
 > SFTP-SSH コネクタでは現在、次の SFTP サーバーはサポートされていません。
 > 
 > * IBM DataPower
+> * MessageWay
 > * OpenText Secure MFT
 > * OpenText GXS
 
@@ -51,7 +52,7 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 
   | アクション | チャンクのサポート | チャンク サイズのオーバーライドのサポート |
   |--------|------------------|-----------------------------|
-  | **ファイルのコピー** | いいえ | 適用なし |
+  | **ファイルのコピー** | いいえ | 利用不可 |
   | **ファイルを作成する** | はい | はい |
   | **フォルダーの作成** | 適用なし | 適用なし |
   | **ファイルの削除** | 適用なし | 適用なし |
@@ -254,7 +255,7 @@ SFTP サーバーにファイルを作成するには、SFTP-SSH の **[ファ�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/sftpwithssh/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/sftpwithssh/)を参照してください。
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)を使用するためにチャンクが必要です。
@@ -262,3 +263,4 @@ SFTP サーバーにファイルを作成するには、SFTP-SSH の **[ファ�
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
+

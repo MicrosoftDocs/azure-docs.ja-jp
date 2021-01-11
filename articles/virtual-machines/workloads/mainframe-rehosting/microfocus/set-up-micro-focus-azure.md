@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: cc61d842550f82dc8b408ed5cd421af65d0e2be6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 59566fc051b1e84d8e271b3c9d061f2481dcc58f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507898"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245317"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure で Micro Focus Enterprise Server 5.0 および Enterprise Developer 5.0 をインストールする
 
@@ -67,9 +67,9 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 8.  RDP セッションから、次の 2 つのファイルを読み込みます。 Windows を使用しているため、これらのファイルを RDP セッションにドラッグ アンド ドロップできます。
 
-    -   **es\_50.exe**、Enterprise Server のインストール ファイル。
+    -   `es\_50.exe`、Enterprise Server のインストール ファイル。
 
-    -   **mflic**、対応するライセンス ファイル (これがないと Enterprise Server が読み込まれません)。
+    -   `mflic`、対応するライセンス ファイル (これがないと Enterprise Server が読み込まれません)。
 
 9.  ファイルをダブルクリックしてインストールを開始します。 最初のウィンドウで、インストールの場所を選択し、使用許諾契約書に同意します。
 
@@ -87,11 +87,11 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 1.  Micro Focus のライセンス管理を起動します。
 
-2.  **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** の順に選択し、 **[インストール]** タブをクリックします。アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた **mflic** ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
+2.  **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** の順に選択し、 **[インストール]** タブをクリックします。アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた `mflic` ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
 
     ![Micro Focus の [License Administration]\(ライセンス管理\) ダイアログ ボックス](media/install-image-3.png)
 
-3.  Enterprise Server が読み込まれることを確認します。 URL: <http://localhost:86/> を使用して、ブラウザーから [Enterprise Server Administration]\(Enterprise Server の管理\) サイトを起動してみてください。 [Enterprise Server Administration]\(Enterprise Server の管理\) ページが次のように表示されます。
+3.  Enterprise Server が読み込まれることを確認します。 URL: `http://localhost:86/` を使用して、ブラウザーから [Enterprise Server Administration]\(Enterprise Server の管理\) サイトを起動してみてください。 [Enterprise Server Administration]\(Enterprise Server の管理\) ページが次のように表示されます。
 
     ![[Enterprise Server Administration]\(Enterprise Server の管理\) ページ](media/install-image-4.png)
 
@@ -103,9 +103,9 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 3.  RDP セッションから、次の 2 つのファイルを読み込みます (必要に応じて、ドラッグ アンド ドロップします)。
 
-    -   **edvs2017.exe**、Enterprise Server のインストール ファイル。
+    -   `edvs2017.exe`、Enterprise Server のインストール ファイル。
 
-    -   **mflic**、対応するライセンス ファイル (これがないと Enterprise Developer が読み込まれません)。
+    -   `mflic`、対応するライセンス ファイル (これがないと Enterprise Developer が読み込まれません)。
 
 4.  **edvs2017.exe** ファイルをダブルクリックしてインストールを開始します。 最初のウィンドウで、インストールの場所を選択し、使用許諾契約書に同意します。 必要な場合は、 **[Install Rumba 9.5]\(Rumba 9.5 のインストール\)** を選択して、このターミナル エミュレーターをインストールします (これは、おそらく必要ありません)。
 
@@ -117,7 +117,7 @@ Enterprise Server に対応する開発環境は、Microsoft Visual Studio 2017 
 
 6.  Enterprise Server の場合と同様に Micro Focus ライセンス マネージャーを起動します。 **[スタート]** \> **[Micro Focus License Manager]\(Micro Focus ライセンス マネージャー\)** \> **[License Administration]\(ライセンス管理\)** を選択し、 **[インストール]** タブをクリックします。
 
-7.  アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた **mflic** ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
+7.  アップロードするライセンス形式の種類 (ライセンス ファイルまたは 16 文字のライセンス コード) を選択します。 たとえば、ファイルの場合は、 **[License file]\(ライセンス ファイル\)** で、前に VM にアップロードされた `mflic` ファイルを参照し、 **[Install Licenses]\(ライセンスのインストール\)** を選択します。
 
     ![Micro Focus の [License Administration]\(ライセンス管理\) ダイアログ ボックス](media/install-image-7.png)
 

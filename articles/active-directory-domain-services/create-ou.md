@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e0188a35289c22da784ca856c80212638052a609
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 1e3546239dfcfd4c6ef23ad16f3340f34f958901
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040284"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723216"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインに組織単位 (OU) を作成する
 
@@ -89,8 +89,8 @@ Azure AD DS を使用するワークロードを作成して実行するとき�
 
 管理ツールの使用またはサービス アカウントの作成と使用の詳細については、次の記事を参照してください。
 
-* [Active Directory 管理センター: はじめに](https://technet.microsoft.com/library/dd560651.aspx)
-* [サービス アカウントのステップ バイ ステップ ガイド](https://technet.microsoft.com/library/dd548356.aspx)
+* [Active Directory 管理センター: はじめに](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd560651(v=ws.10))
+* [サービス アカウントのステップ バイ ステップ ガイド](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

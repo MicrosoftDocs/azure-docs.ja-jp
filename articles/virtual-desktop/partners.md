@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop のパートナー統合 - Azure
 description: Windows Virtual Desktop のパートナーについて説明します。また、それらのパートナーとの統合方法に関するドキュメントにアクセスできます。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a0853266e4fda4393ba49fb740755e6b8bd03cf5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038057"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612369"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -38,7 +36,7 @@ VMware Horizon Cloud on Microsoft Azure はネイティブ クラウド サー�
 VMware は Windows Virtual Desktop 認定プロバイダーであり、Windows Virtual Desktop を使用しながら VMware Horizon に付属する追加機能 (統合された使いやすい電源管理、クラウドベースの監視、Blast Extreme プロトコルなど) も利用したいお客様を支援しています。 これらの機能はすぐに変化するネットワーク条件に適応し、一貫して優れたユーザー エクスペリエンスが提供されます。 VMware Horizon Cloud には VMware App Volumes と Dynamic Environment Manager も付属しています。これらによって、MSIX アプリのアタッチと FSLogix を使用して機能する高度なアプリケーションとユーザー環境管理機能が追加されます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
-- [VMWare Horizon Cloud の技術ドキュメントを参照してください](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
+- [VMware Horizon Cloud の技術ドキュメントを参照してください](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
 
 ## <a name="10zig"></a>10ZiG
 
@@ -48,15 +46,30 @@ VMware は Windows Virtual Desktop 認定プロバイダーであり、Windows V
 
 シン クライアントおよびゼロ クライアントのエンドポイント デバイス、および仮想デスクトップ用の管理ソフトウェアにおける 10ZiG の世界市場のリーダーシップは、これらのデバイスとソフトウェアがお客様のお役に立てていることから実証されています。 このシン クライアントハードウェアには慎重に考案された特典が付属しており、顧客のニーズに基づいてお客様が適切なクライアント デバイスを確実に入手できるように設計されています。 10ZiG は、Windows ベースおよび Linux ベースのクライアントを使用して、お客様環境に合わせてデバイスをカスタマイズします。これにより、クラウドの内外の両方で仮想デスクトップで最高のパフォーマンスが得られます。
 
-- [パートナーの Web サイトにアクセスする。](https://www.10zig.com/)
+- [パートナーの Web サイトにアクセスする。](https://www.10zig.com/about/microsoft-wvd)
+
+## <a name="automai"></a>Automai
+
+![Automai ロゴ](./media/partners/automai.png)
+
+Automai のロボット オートメーション プラットフォームを使用すると、デプロイを運用する前に、Windows Virtual Desktop 環境で主要なビジネス プロセスをテストできます。
+
+Automai の ScenarioBuilder ツールと GUI ベースのワークフロー エンジンを使用すると、IT チームは実際のエンド ユーザー ワークフローを記録し、それらを自動的にスクリプトに変換できます。 Automai では、個々のデスクトップからプロセスを実行するボットを使用し、シミュレーションでエンドユーザーのアクティビティをエミュレートし、結果を報告します。 これにより、テスト プロセスが大幅に簡略化されるため、IT 管理者は非常に複雑なシナリオでもストレステストを行うことができます。
+
+起動の準備ができたら、ロード テスト用に作成したすべてのワークフロー スクリプトを使用して、運用環境のパフォーマンスを継続的に監視できます。 Automai のボットの機能は、可用性の監視だけではありません。 ボットを使用すると、主要な場所からエンドユーザーのワークフローをテストし、スクリーンショットを取得し、エラー レポートをリアルタイムで収集することもできます。 これにより、Windows Virtual Desktop アプリケーションに対して、バグ修正の事後対応よりも積極的なアプローチが可能になります。
+
+Automai を利用すると、パフォーマンス テスト、機能テスト、パフォーマンス監視、さらにはロボット プロセスの自動化を、すべて 1 つのプラットフォーム上で、同じスクリプトを使用して実行できます。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B76N)
+- [パートナーの Web サイトにアクセスする。](https://www.automai.com/wvd-testing-monitoring?hs_preview=EyZXkOWu-30742040580)
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
 ![Cloudhouse ロゴ](./media/partners/cloudhouse.png)
 
-Cloudhouse は、最新の Windows オペレーティング システムと互換性のないアプリケーションを含むすべてのアプリケーションを Windows Virtual Desktop 環境に移行できる、ターンキー アプリケーション移行サービスを顧客に提供する、Windows Virtual Desktop に付加価値を付けるサービス プロバイダーです。これにより顧客は、Windows 10 を真にマルチセッションで利用できるようになります。 
+Cloudhouse は、最新の Windows オペレーティング システムと互換性のないアプリケーションを含むすべてのアプリケーションを Windows Virtual Desktop 環境に移行できる、ターンキー アプリケーション移行サービスを顧客に提供する、Windows Virtual Desktop に付加価値を付けるサービス プロバイダーです。これにより顧客は、Windows 10 を真にマルチセッションで利用できるようになります。
 
-この Cloudhouse のサービスでは、実証済みの Cloudhouse コンテナー化テクノロジを活用して、Windows XP、Windows 7、または Windows 8 向けに設計されたすべてのアプリケーションを、コードを変更したり、ユーザー エクスペリエンスに影響を与えずに、最新の Windows Virtual Desktop に展開できます。 Cloudhouse では、基になるオペレーティング システムからアプリケーションを分離することにより、コンテナー化されたアプリケーションに影響を与えずに Windows のサービス更新プログラムをロールアウトできることでも、Windows Virtual Desktop にさらに付加価値を付けます。 
+この Cloudhouse のサービスでは、実証済みの Cloudhouse コンテナー化テクノロジを活用して、Windows XP、Windows 7、または Windows 8 向けに設計されたすべてのアプリケーションを、コードを変更したり、ユーザー エクスペリエンスに影響を与えずに、最新の Windows Virtual Desktop に展開できます。 Cloudhouse では、基になるオペレーティング システムからアプリケーションを分離することにより、コンテナー化されたアプリケーションに影響を与えずに Windows のサービス更新プログラムをロールアウトできることでも、Windows Virtual Desktop にさらに付加価値を付けます。
 
 - [パートナーの Web サイトにアクセスする。](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua)
 
@@ -96,9 +109,9 @@ Wyse シン クライアントはセキュリティを念頭に置いて設計�
 
 ![deviceTRUST ロゴ](./media/partners/devicetrust.png)
 
-deviceTRUST は、企業をコンテキスト化する Windows Virtual Desktop 付加価値サービス プロバイダーです。 これにより、ガバナンス要件を満たすために必要な情報と制御を IT 部門に提供しながら、ユーザーが任意の場所、任意のデバイス、任意のネットワークから Windows Virtual Desktop に自由にアクセスすることができます。 
+deviceTRUST は、企業をコンテキスト化する Windows Virtual Desktop 付加価値サービス プロバイダーです。 これにより、ガバナンス要件を満たすために必要な情報と制御を IT 部門に提供しながら、ユーザーが任意の場所、任意のデバイス、任意のネットワークから Windows Virtual Desktop に自由にアクセスすることができます。
 
-この deviceTRUST は、コンテキスト セキュリティ テクノロジによって Windows Virtual Desktop の価値を拡張します。 deviceTRUST により、セキュリティで保護された Windows Virtual Desktop アクセスのための条件付きアクセス、つまり Windows Virtual Desktop 内での条件付きアプリケーション アクセスが可能になり、追加のインフラストラクチャなしで、条件付き Windows Virtual Desktop ポリシーが適用できるようになります。 deviceTRUST を使用すると、セキュリティ、コンプライアンス、および規制に関するすべての要件を満たす柔軟なモバイル ワークスペースが実現します。 
+この deviceTRUST は、コンテキスト セキュリティ テクノロジによって Windows Virtual Desktop の価値を拡張します。 deviceTRUST により、セキュリティで保護された Windows Virtual Desktop アクセスのための条件付きアクセス、つまり Windows Virtual Desktop 内での条件付きアプリケーション アクセスが可能になり、追加のインフラストラクチャなしで、条件付き Windows Virtual Desktop ポリシーが適用できるようになります。 deviceTRUST を使用すると、セキュリティ、コンプライアンス、および規制に関するすべての要件を満たす柔軟なモバイル ワークスペースが実現します。
 
 - [パートナーの Web サイトにアクセスする。](https://devicetrust.com/wvd)
 
@@ -106,19 +119,30 @@ deviceTRUST は、企業をコンテキスト化する Windows Virtual Desktop �
 
 ![Ekran System のロゴ](./media/partners/ekran.png)
 
-Ekran System は Windows Virtual Desktop の付加価値パートナーであり、IT チームはこれを利用して Microsoft Azure 仮想マシン上のすべてのリモート ユーザー アクティビティを監視することができます。 Ekran System を使用すると、発行されたアプリケーションまたは仮想デスクトップのすべてのユーザー セッションの画面上のアクティビティを記録し、さらにアプリケーション名、アクティブなウィンドウのタイトル、アクセスされた URL、キー入力など、さまざまな状況に応じたメタデータを収集できます。 高度な機能を使用して詳細な可視性と迅速なインシデント対応時間を実現できるので、Ekran System は効率的なインサイダー脅威管理およびコンプライアンス ソリューションになります。  
+Ekran System は Windows Virtual Desktop の付加価値パートナーであり、IT チームはこれを利用して Microsoft Azure 仮想マシン上のすべてのリモート ユーザー アクティビティを監視することができます。 Ekran System を使用すると、発行されたアプリケーションまたは仮想デスクトップのすべてのユーザー セッションの画面上のアクティビティを記録し、さらにアプリケーション名、アクティブなウィンドウのタイトル、アクセスされた URL、キー入力など、さまざまな状況に応じたメタデータを収集できます。 高度な機能を使用して詳細な可視性と迅速なインシデント対応時間を実現できるので、Ekran System は効率的なインサイダー脅威管理およびコンプライアンス ソリューションになります。
 
 Ekran System クライアントの独自の浮動エンドポイント ライセンスは、動的に変化する仮想デスクトップをサポートするように自動化されています。 Ekran System を使用すると、削除された非永続的な仮想デスクトップからライセンスの割り当てを自動的に解除し、データベースから削除することができます。 Ekran System は、Azure Active Directory および Azure Sentinel とシームレスに統合されています。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yqY8)
 - [パートナー ページに移動する](https://www.ekransystem.com/product/supported-platforms/windows-virtual-desktop-monitoring)。
 
+## <a name="fabulatech"></a>FabulaTech
+
+![FabulaTech ロゴ](./media/partners/fabulatech.png)
+
+FabulaTech は、Windows Virtual Desktop クライアントとシームレスに統合されています。 インストールし、リモート デスクトップとの接続を確立すると、FabulaTech ソフトウェアは自動的に動作を開始します。
+
+ユーザーが仮想デスクトップにサインインすると、FabulaTech ソフトウェアによって仮想デバイスが作成されます。 たとえば、仮想 Web カメラ、スキャナー、または指紋リーダーを作成できます。 リモート セッションで実行されているすべてのアプリから、物理デバイスであるかのように仮想デバイスにアクセスすることができます。 システム トレイ アイコン メニューを使用して、Windows Virtual Desktop で仮想デバイスを構成することができます。つまり、このソリューションをシン クライアント上でも使用できます。 さらに、すべての通信は既存のリモート デスクトップ接続を介して行われます。つまり、ファイアウォールは設定されています。 すべての機能はすぐに使用できます。
+
+- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4B4zO)
+- [パートナーの Web サイトにアクセスする。](https://www.fabulatech.com/partners/microsoft-windows-virtual-desktop/)
+
 ## <a name="flexxible-it"></a>Flexxible IT
 
 ![Flexxible IT のロゴ](./media/partners/flexxible.png)
 
 Flexxible IT は Windows Virtual Desktop の付加価値パートナーであり、Windows Virtual Desktop と Citrix Workspace のインフラストラクチャの迅速なスケール、監視、および効率的な管理を行う機能を組織に提供します。 IT 管理者は、Flexxible | SUITE を使用すると、オンプレミス内と Azure でホストされている Windows Virtual Desktop ワークロードをインテリジェントにプロビジョニングおよび管理することができます。
- 
+
 Flexxible IT のテクノロジを使用すると、共通のプロセスを自動化してインフラストラクチャの構成、デスクトップのプロビジョニング、日常の管理を簡素化することにより、ネイティブ Windows Virtual Desktop と Citrix ワークスペースの両方の価値を広げることができます。 SUITE は複雑な PowerShell スクリプトや時間のかかる手動プロセスを必要とせず、スケーラブルなデスクトップ展開、広範な監視とレポート、セキュリティで保護された委任管理を備えています。 これらの機能を使用すると、拡張されたサービス レベルと、品質の高い Windows Virtual Desktop エクスペリエンスをユーザーに提供することに専念できます。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj7A)
@@ -139,7 +163,7 @@ HP は、業界の動向、お客様の課題、および開発プロセス中�
 ![IGEL ロゴ](./media/partners/igel.png)
 
 IGEL は、Microsoft Azure および Windows Virtual Desktop サービスの承認および検証済みパートナーです。 IGEL は、軽量でシンプルで安全な Linux ベースのエンドポイントを使用して 1 つ以上のユーザー デバイスから仮想アプリ、デスクトップ、クラウド ワークスペースにアクセスするように設計された、クラウド ワークスペース向けの次世代エッジ OS である IGEL OS を提供します。 プラットフォームに依存しないソフトウェア ソリューションである IGEL OS と、そのサーバー ベースの管理と制御のソフトウェアである Azure Management Suite (UMS) は、エンドポイントの管理および制御ソリューションを構成します。このソリューションは、企業が Azure ベースのクラウド インスタンスと経済的なマルチセッションの Windows Virtual Desktop を含む Windows Virtual Desktop デスクトップを最大限に活用しながら、エンドポイントのハードウェアおよびエンドポイントのデバイス管理と操作のコストを削減できるようにします。
- 
+
 IGEL OS は、Citrix、Microsoft、VMware のすべての一般的な仮想アプリ、デスクトップ、およびクラウド ワークスペース クライアントのプロトコルをサポートしています。 これには、周辺機器、インターフェイス、およびプロトコルの 85 件のパートナーからの統合テクノロジが含まれており、組織が Windows Virtual Desktop サービスを独自の独自のユーザー環境にすばやく導入するのに役立ちます。 IGEL OS は、読み取り専用のモジュール型エンドポイント OS であり、改ざんからの保護に役立ちます。 また、エンドポイント ハードウェア (一部の選択されたモデル) または UEFI プロセスから Azure クラウドおよび Windows Virtual Desktop サービスに至るまで、エンドポイントで実行されるすべての重要な主要プロセスの整合性を検証する完全な "信頼チェーン" も含まれるようになりました。 IGEL OS を使用すると、企業は、ユーザーのエンドポイント デバイスの整合性、セキュリティ、および管理性を完全に信頼して、Azure クラウドから Windows Virtual Desktop にサブスクライブすることができます。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO)
@@ -149,9 +173,9 @@ IGEL OS は、Citrix、Microsoft、VMware のすべての一般的な仮想ア�
 
 ![Ivanti ロゴ](./media/partners/ivanti.png)
 
-Ivanti User Workspace Manager は、デスクトップからユーザー データを分離してシームレスな移植性を実現することでデスクトップのデプロイと管理を容易にする、Windows Virtual Desktop の付加価値サービスです。 Ivanti を使用すると、ユーザーは、Windows 10 への移行、Microsoft 365 の導入、クラウドへのサービスの迅速な移動などの複雑なプロジェクトを実現できます。 
+Ivanti User Workspace Manager は、デスクトップからユーザー データを分離してシームレスな移植性を実現することでデスクトップのデプロイと管理を容易にする、Windows Virtual Desktop の付加価値サービスです。 Ivanti を使用すると、ユーザーは、Windows 10 への移行、Microsoft 365 の導入、クラウドへのサービスの迅速な移動などの複雑なプロジェクトを実現できます。
 
-Windows Virtual Desktop で Ivanti User Workspace Manager を使用すると、ユーザーはデスクトップ エクスペリエンスのコンテキストを簡単に管理できるため、サインインに時間がかかることがなくなり、グループ ポリシーに関する悩みの種がなくなります。 Ivanti User Workspace Manager のすぐに使えるテンプレートを使用すると、エージェントや既存のコンソールを使用してユーザーが簡単にインストールを行えます。 Ivanti User Workspace Manager は、ユーザーの期待にかなう応答性とセキュリティで保護されたデスクトップを提供するため、サーバーのコストを節約し、ユーザーをより効果的に管理し、エンドポイントのセキュリティ リスクを軽減できます。 
+Windows Virtual Desktop で Ivanti User Workspace Manager を使用すると、ユーザーはデスクトップ エクスペリエンスのコンテキストを簡単に管理できるため、サインインに時間がかかることがなくなり、グループ ポリシーに関する悩みの種がなくなります。 Ivanti User Workspace Manager のすぐに使えるテンプレートを使用すると、エージェントや既存のコンソールを使用してユーザーが簡単にインストールを行えます。 Ivanti User Workspace Manager は、ユーザーの期待にかなう応答性とセキュリティで保護されたデスクトップを提供するため、サーバーのコストを節約し、ユーザーをより効果的に管理し、エンドポイントのセキュリティ リスクを軽減できます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.ivanti.com/products/user-workspace-manager)
 
@@ -211,9 +235,9 @@ Nerdio により、Azure リソースのプロビジョニングが簡素化さ�
 
 ![Numecent ロゴ](./media/partners/numecent.png)
 
-Numecent は Windows Virtual Desktop の付加価値サービス プロバイダーであり、Windows Virtual Desktop 環境における複雑な Windows アプリや互換性のない Windows アプリの迅速なオンボードと移行によって、総運用コストを大幅に削減します。 また、Numecent は、ユーザーが行う必要がある構成の量を最小限に抑え、アプリケーションの更新を減らし、複雑なプロセスを簡略化します。 Numecent Cloudpaging は他のアプリケーション配信ツールよりも多くのアプリケーションをシームレスにサポートしているため、さまざまなアプリケーションのセットを使用する環境で時間と IT ワークロードを削減できます。 
+Numecent は Windows Virtual Desktop の付加価値サービス プロバイダーであり、Windows Virtual Desktop 環境における複雑な Windows アプリや互換性のない Windows アプリの迅速なオンボードと移行によって、総運用コストを大幅に削減します。 また、Numecent は、ユーザーが行う必要がある構成の量を最小限に抑え、アプリケーションの更新を減らし、複雑なプロセスを簡略化します。 Numecent Cloudpaging は他のアプリケーション配信ツールよりも多くのアプリケーションをシームレスにサポートしているため、さまざまなアプリケーションのセットを使用する環境で時間と IT ワークロードを削減できます。
 
-Windows Virtual Desktop で Cloudpaging を使用すると、デプロイからアプリケーションのアップグレード、測定、および削除までのソフトウェア資産のライフサイクルを完了することで、さらにコストが削減されます。 Cloudpaging は、必要に応じてリアルタイムで Windows Virtual Desktop のデプロイにアプリを動的にプロビジョニングすることで、イメージの管理を簡略化します。 Cloudpaging を使用すると、Windows 10 の定期的な更新プログラムによる管理や操作を行わなくてもアプリケーションを実行できます。 また、Cloudpaging により、これらのアプリケーションのより効率的なデプロイと使用を可能にすることで、コストの高いアプリケーションのライセンス コストが削減されます。 
+Windows Virtual Desktop で Cloudpaging を使用すると、デプロイからアプリケーションのアップグレード、測定、および削除までのソフトウェア資産のライフサイクルを完了することで、さらにコストが削減されます。 Cloudpaging は、必要に応じてリアルタイムで Windows Virtual Desktop のデプロイにアプリを動的にプロビジョニングすることで、イメージの管理を簡略化します。 Cloudpaging を使用すると、Windows 10 の定期的な更新プログラムによる管理や操作を行わなくてもアプリケーションを実行できます。 また、Cloudpaging により、これらのアプリケーションのより効率的なデプロイと使用を可能にすることで、コストの高いアプリケーションのライセンス コストが削減されます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/)
 
@@ -221,9 +245,9 @@ Windows Virtual Desktop で Cloudpaging を使用すると、デプロイから�
 
 ![PolicyPak ロゴ](./media/partners/policypak.png)
 
-PolicyPak Software は、アプリケーション、デスクトップ、ブラウザー、Java、およびセキュリティ設定の全体的な設定管理を行う Windows Virtual Desktop パートナーです。 PolicyPak により、デスクトップ、システム、およびセキュリティ設定のコンプライアンスが確保されます。 また、一連のコンポーネントを追加することで Windows の組み込み管理が強化され、Windows Virtual Desktop の価値が高まります。 既存の Active Directory グループ ポリシーや Windows Intune を使って、PolicyPak の設定を提供し、Windows 10 マシンの管理者の能力を強化することもできます。 
+PolicyPak Software は、アプリケーション、デスクトップ、ブラウザー、Java、およびセキュリティ設定の全体的な設定管理を行う Windows Virtual Desktop パートナーです。 PolicyPak により、デスクトップ、システム、およびセキュリティ設定のコンプライアンスが確保されます。 また、一連のコンポーネントを追加することで Windows の組み込み管理が強化され、Windows Virtual Desktop の価値が高まります。 既存の Active Directory グループ ポリシーや Windows Intune を使って、PolicyPak の設定を提供し、Windows 10 マシンの管理者の能力を強化することもできます。
 
-PolicyPak の主なユース ケースは、ローカル管理者権限の削除と UAC プロンプトの対処、ランサムウェアのブロック、複数のブラウザーの管理、Internet Explorer のエンタープライズ モードと互換性モードの管理、GPO 数の削減、Windows 10 ファイルの関連付けの管理、Windows 10 スタート メニューとタスク バーの管理、および Windows 10 機能とオプション機能の管理です。  
+PolicyPak の主なユース ケースは、ローカル管理者権限の削除と UAC プロンプトの対処、ランサムウェアのブロック、複数のブラウザーの管理、Internet Explorer のエンタープライズ モードと互換性モードの管理、GPO 数の削減、Windows 10 ファイルの関連付けの管理、Windows 10 スタート メニューとタスク バーの管理、および Windows 10 機能とオプション機能の管理です。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN)
 - [パートナーの Web サイトにアクセスする。](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html)
@@ -232,9 +256,9 @@ PolicyPak の主なユース ケースは、ローカル管理者権限の削除
 
 ![PrinterLogic ロゴ](./media/partners/printerlogic.png)
 
-Windows Virtual Desktop の付加価値サービス プロバイダー プラットフォームである PrinterLogic は、IT プロフェッショナルが、すべてのプリント サーバーを排除し、可用性の高いサーバーレス印刷インフラストラクチャを提供できるようにします。 PrinterLogic は、プリンター オブジェクトの一元管理と、任意のプリンターまたはエンドポイント OS へのデプロイを容易に行えるようにすることで、Windows Virtual Desktop と Azure の価値を高めます。 
+Windows Virtual Desktop の付加価値サービス プロバイダー プラットフォームである PrinterLogic は、IT プロフェッショナルが、すべてのプリント サーバーを排除し、可用性の高いサーバーレス印刷インフラストラクチャを提供できるようにします。 PrinterLogic は、プリンター オブジェクトの一元管理と、任意のプリンターまたはエンドポイント OS へのデプロイを容易に行えるようにすることで、Windows Virtual Desktop と Azure の価値を高めます。
 
-SaaS として、または独自のプライベート クラウドで Web スタックとして利用できる PrinterLogic プラットフォームにより、仮想セッションで必要とする適切なプリンターが、ユーザー ID、デバイス名、または場所に基づいて確実に確保されます。 この機能は、印刷の追跡とレポート作成、モバイル印刷、安全なバッジ リリース印刷など、一連のエンタープライズ印刷管理機能によって補完されます。 
+SaaS として、または独自のプライベート クラウドで Web スタックとして利用できる PrinterLogic プラットフォームにより、仮想セッションで必要とする適切なプリンターが、ユーザー ID、デバイス名、または場所に基づいて確実に確保されます。 この機能は、印刷の追跡とレポート作成、モバイル印刷、安全なバッジ リリース印刷など、一連のエンタープライズ印刷管理機能によって補完されます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.printerlogic.com)
 
@@ -253,8 +277,8 @@ Printix は、オフィスの印刷リソースへのユーザー接続を自動
 
 ![RDPSoft ロゴ](./media/partners/rdpsoft.png)
 
-RDPSoft は、強力で安価な監視、管理、およびレポートのソリューションを提供する Windows Virtual Desktop パートナーです。 その Remote Desktop Commander オファリングにより、IT プロフェッショナルは、Windows Virtual Desktop のデプロイの正常性、パフォーマンス、ユーザー アクティビティ、ライセンス、およびセキュリティに関する分析情報を得ることができます。 
- 
+RDPSoft は、強力で安価な監視、管理、およびレポートのソリューションを提供する Windows Virtual Desktop パートナーです。 その Remote Desktop Commander オファリングにより、IT プロフェッショナルは、Windows Virtual Desktop のデプロイの正常性、パフォーマンス、ユーザー アクティビティ、ライセンス、およびセキュリティに関する分析情報を得ることができます。
+
 RDPSoft の Remote Desktop Commander ソリューションにより、Windows Virtual Desktop の管理機能が強化されます。 Premium Management 機能を利用すると、リモート アシスタンス、ユーザー セッション、プロセス管理を実現することで、デスク スタッフをサポートするための Windows Virtual Desktop 管理タスクの委任が簡略化されます。 同時に、Remote Desktop Commander Suite は、ユーザーごとのパフォーマンスと負荷、ユーザーのアクティビティと監査、Windows Virtual Desktop の接続品質 (待機時間と帯域幅)、ライセンス、およびセキュリティに関する豊富なメトリックを、確認用の中央の Azure SQL Database インスタンス内に収集します。 RDPSoft を使用すれば、豊富な履歴レポートと包括的なダッシュボードをクリックするだけで済みます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
@@ -274,7 +298,7 @@ Rimo3 には、使いやすくスケーラブルな自動アプリケーショ�
 
 ![sepago ロゴ](./media/partners/sepago.png)
 
-sepago は、ケルン在住の 4 人の仲間によって 2002 年に設立されました。 現在、sepago は sepagist の数を着実に伸ばしている IT 管理コンサルタントで、ケルン、ミュンヘン、およびハンブルクのドイツ各地で営業しています。 sepago は、アプリケーションの自動プロビジョニング、仮想化、クラウド ソリューション、および IT セキュリティの専門家集団です。 sepago は、デジタル変革が進行中の中規模および大規模企業をサポートするとともに、ユーザーが安全かつ効率的に作業できるようにします。
+sepago は、ケルン在住の 4 人の仲間によって 2002 年に設立されました。 現在、sepago は sepagist の数を着実に伸ばしている IT 管理コンサルタントで、ケルン、ミュンヘン、およびハンブルクのドイツ各地で営業しています。 sepago は、アプリケーションの自動プロビジョニング、仮想化、クラウド ソリューション、および IT セキュリティの専門家集団です。 sepago は、デジタル変革が進行中の中規模および大規模企業をサポートしています。また、ユーザーが安全かつ効率的に作業できるように取り組んでいます。
 
 sepago のイノベーションおよび開発ラボでは、ビッグ データと AI テクノロジを使用してスマート ソリューションを構築しています。 これらのソリューションは、Windows Virtual Desktop などのパートナー製品のビジネス、ユーザー エクスペリエンス、および管理の向上に焦点を当てています。
 
@@ -296,7 +320,7 @@ ThinPrint の ezeep ソリューションにより、企業の既存の印刷イ
 
 ![Tricerat ロゴ](./media/partners/tricerat.png)
 
-Tricerat は、Windows Virtual Desktop などのデスクトップ プラットフォーム向けの優れた印刷管理ソリューションを提供します。 Tricerat ソフトウェアには、ユーザーと管理者の両方にとって優れたエクスペリエンスを提供する堅牢な機能があります。 管理者は、完全なドライバー管理、印刷キューのデプロイの簡略化、およびハイブリッド プラットフォーム間での一貫した管理により、効率を向上させることができます。 ユーザー エクスペリエンスは、サインイン時間の短縮、ユーザー、デバイス、およびネットワークの場所に基づいたインテリジェントな印刷キュー、プリンターをすばやく選択できるセルフサービス オプションにより向上します。 
+Tricerat は、Windows Virtual Desktop などのデスクトップ プラットフォーム向けの優れた印刷管理ソリューションを提供します。 Tricerat ソフトウェアには、ユーザーと管理者の両方にとって優れたエクスペリエンスを提供する堅牢な機能があります。 管理者は、完全なドライバー管理、印刷キューのデプロイの簡略化、およびハイブリッド プラットフォーム間での一貫した管理により、効率を向上させることができます。 ユーザー エクスペリエンスは、サインイン時間の短縮、ユーザー、デバイス、およびネットワークの場所に基づいたインテリジェントな印刷キュー、プリンターをすばやく選択できるセルフサービス オプションにより向上します。
 
 Tricerat を使用すると、Windows Virtual Desktop よりもさらに印刷がシームレスになります。 Tricerat ソフトウェアを使用すると、管理者は、オンプレミスのプリンターをクラウドに簡単に接続できるため、従来の環境から新しい最新のワークスペースにエンタープライズの印刷管理を拡張することができます。
 
@@ -318,7 +342,7 @@ uberAgent は、エンド ユーザー コンピューティング向けに設�
 
 Workspace 365 はすべての情報 (ビジネス データ、文書、通信、マイクロ アプリ) を統合し、任意のローカル、Web、またはホストされるアプリケーションへのアクセスを 1 つのワークスペースで提供します。 ユーザーのロール、場所、デバイス、ブラウザーなどに自動的に適応し、パーソナライズされたワークスペースを提供します。 基盤としてどのようなテクノロジを使用していても、ユーザーは簡素化された一貫性のあるエクスペリエンスを得られます。 RDP、Citrix、レガシ アプリケーションなどの現在のソリューションを統合し、同じユーザー エクスペリエンスを維持しながら Windows Virtual Desktop にそれらを移動できます。 さらに、SharePoint、OneDrive、Teams、ファイル サーバーなど、すべてのファイルの場所を 1 つのドキュメント管理アプリに統合できます。
 
-Workspace 365 により、IT 管理者は、アクセス許可に基づいて Windows Virtual Desktop 対応アプリケーションをユーザーが使用できるようにします。 その後、管理者は、それらのアプリケーションを共有アプリケーション グループに追加できます。 Windows Virtual Desktop アプリケーションが Workspace 365 に表示されると、ユーザーは再度サインインせずに、ワークスペースからそれを開くことができます。 
+Workspace 365 により、IT 管理者は、アクセス許可に基づいて Windows Virtual Desktop 対応アプリケーションをユーザーが使用できるようにします。 その後、管理者は、それらのアプリケーションを共有アプリケーション グループに追加できます。 Windows Virtual Desktop アプリケーションが Workspace 365 に表示されると、ユーザーは再度サインインせずに、ワークスペースからそれを開くことができます。
 
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh)
 - [パートナーの Web サイトにアクセスする。](https://workspace365.net/product-tour/hybrid-workspace-365/)

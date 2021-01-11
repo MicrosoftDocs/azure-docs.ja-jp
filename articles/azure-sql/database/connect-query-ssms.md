@@ -1,7 +1,7 @@
 ---
 title: 'SSMS: データに接続してクエリを実行する'
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: SQL Server Management Studio (SSMS) を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
+description: SQL Server Management Studio (SSMS) を使用して Azure SQL Database または Azure SQL Managed Instance に接続してクエリを実行する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
 keywords: SQL データベースへの接続、SQL Server Management Studio
 services: sql-database
 ms.service: sql-database
@@ -20,10 +20,10 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/23/2020
 ms.locfileid: "87004157"
 ---
-# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:SSMS を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する
+# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:SSMS を使用して Azure SQL Database または Azure SQL Managed Instance に接続してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-このクイックスタートでは、SQL Server Management Studio (SSMS) を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続し、いくつかのクエリを実行する方法について説明します。
+このクイックスタートでは、SQL Server Management Studio (SSMS) を使用して Azure SQL Database または Azure SQL Managed Instance に接続し、いくつかのクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: bdd540ad6c7ef1954936e4fb74bade2458e50927
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: ddec23f695396b8322d51da62158a97456096ae8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120791"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320002"
 ---
 # <a name="marketplace-metered-billing-apis---faq"></a>マーケットプレースの従量制課金 API - FAQ
 

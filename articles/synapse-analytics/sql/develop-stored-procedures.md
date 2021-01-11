@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 0f88b994104ed8a2d80fb3b16f125f8a087cbe3c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 2b106a28514179d9be43b3c56ea8030eaf7ba13f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958380"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494997"
 ---
 # <a name="use-stored-procedures-in-sql-pool"></a>SQL プールでのストアド プロシージャの使用
 
@@ -27,7 +27,7 @@ SQL プールでは、SQL Server で使用される多数の T-SQL 機能がサ�
 
 ただし、SQL プールのスケールとパフォーマンスを維持するために、動作が異なる機能もあれば、サポートされていない機能もあります。
 
-## <a name="introducing-stored-procedures"></a>ストアド プロシージャの概要
+## <a name="stored-procedures-in-sql-pool"></a>SQL プールでのストアド プロシージャ
 
 ストアド プロシージャは、SQL コードをカプセル化し、データ ウェアハウスのデータの近くに格納するための優れた方法です。 ストアド プロシージャは、開発者がコードを管理しやすい単位にカプセル化して、ソリューションをモジュール化することに役立ち、コードの再利用性が大幅に促進されます。 ストアド プロシージャの柔軟性をさらに高めるために、各ストアド プロシージャはパラメーターを受け入れることもできます。
 

@@ -1,31 +1,29 @@
 ---
-title: Windows 10 または 7 で Windows Virtual Desktop Fall 2019 に接続する - Azure
-description: Windows デスクトップ クライアントを使用して Windows Virtual Desktop に接続する方法。
-services: virtual-desktop
+title: Windows 10 または 7 で Windows Virtual Desktop (クラシック) に接続する - Azure
+description: Windows デスクトップ クライアントを使用して Windows Virtual Desktop (クラシック) に接続する方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 07/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 78c400ffc6a84696a82c219294f133b729754259
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 420c507361e3e2437366e6ccf2d46a8b78684e59
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261562"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008361"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用して接続する
+# <a name="connect-with-the-windows-desktop-classic-client"></a>Windows デスクトップ (クラシック) クライアントを使用して接続する
 
 > 適用対象:Windows 7、Windows 10、および Windows 10 IoT Enterprise
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-windows-7-10.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-windows-7-10.md)を参照してください。
 
-Windows デスクトップ クライアントを使用して、Windows 7 または Windows 10、および Windows 10 IoT Enterprise を使用しているデバイス上の Windows Virtual Desktop リソースにアクセスできます。
+Windows デスクトップ クライアントを使用して、Windows 7 または Windows 10、および Windows 10 IoT Enterprise を使用しているデバイス上の Windows Virtual Desktop リソースにアクセスできます。 このクライアントでは、Windows 8 または Windows 8.1 がサポートされていません。
 
 >[!NOTE]
->Windows クライアントは自動的に既定の Windows Virtual Desktop Fall 2019 リリースになります。 ただしクライアントは、ユーザーが Azure Resource Manager リソースも所有していることを検出した場合、そのリソースを自動的に追加するか、リソースが利用可能であることをユーザーに通知します。
+>Windows クライアントは自動的に既定の Windows Virtual Desktop (クラシック) になります。 ただしクライアントは、ユーザーが Azure Resource Manager リソースも所有していることを検出した場合、そのリソースを自動的に追加するか、リソースが利用可能であることをユーザーに通知します。
 
 > [!IMPORTANT]
 > Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
@@ -63,8 +61,8 @@ Windows デスクトップ クライアントを使用して、Windows 7 また�
 1. クライアントのメイン ページから、 **[Subscribe with URL]** \(URL を使用してサブスクライブする\) を選択します。
 2. ワークスペース URL または電子メール アドレスを入力します。
    - **ワークスペース URL** を使用する場合、管理者から付与されたものを使用します。 Windows 仮想デスクトップからリソースにアクセスする場合、次の URL のいずれかを使用できます。
-     - Windows Virtual Desktop Fall 2019: `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
-     - Windows Virtual Desktop Spring 2020: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
+     - Windows Virtual Desktop (クラシック): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
+     - Windows Virtual Desktop: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
    - 代わりに **[メール アドレス]** フィールドを使用する場合、メール アドレスを入力します。 これにより、メール アドレスに関連付けられている URL を検索するようにクライアントに指示されます (管理者が[メール検出](/windows-server/remote/remote-desktop-services/rds-email-discovery)を設定している場合)。
 3. **[次へ]** を選択します。
 4. メッセージが表示されたら、自分のユーザー アカウントでサインインします。

@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL Python API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Python SDK の各バージョン間の変更など、SQL Python API と SDK に関するあらゆる詳細を提供します。
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.custom: tracking-python
-ms.openlocfilehash: 6bd880806a4b067139c1f22a0e4d4e6df5c88451
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247066"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585986"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Python SDK:リリース ノートとリソース
 
@@ -27,6 +27,9 @@ ms.locfileid: "86247066"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
@@ -43,6 +46,20 @@ ms.locfileid: "86247066"
 |**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/) と [Python 3.5.3+](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>リリース履歴
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+
+- "遅延" インデックス作成モードの非推奨の警告を追加しました。 バックエンドでは、このモードでコンテナーを作成できなくなり、代わりに一貫性に設定されます。
+
+**新機能**
+- 新しいコンテナーを作成するときに、分析ストレージの TTL を設定する機能が追加されました。
+
+**バグの修正**
+- Get_client API の入力としての dicts のサポートが修正されました。
+- クエリ反復子での Python 2/3 の互換性の問題が修正されました。
+- 型のヒント エラーが修正されました (問題 #12570)。
+- オプション ヘッダーが upsert_item 関数に追加されなかったバグが修正されました。 問題 #11791 - @aalapatirvbd さん、ご協力ありがとうございました。
+- 文字列以外の ID が項目で使用されている場合に発生するエラーが修正されました。 AttributeError ではなく TypeError (問題 #11793) が発生するようになりました。
 
 ### <a name="400"></a>4.0.0
 
@@ -301,10 +318,8 @@ ms.locfileid: "86247066"
 
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
-提供終了になった SDK を使用した Azure Cosmos DB への要求は、サービスによって拒否されます。
-
 > [!WARNING]
-> バージョン **1.0.0** 以前のすべてのバージョンの Python SDK for SQL API は、**2016 年 2 月 29 日**に廃止されました。 また、Python SDK for SQL API の 1.x と 2.x のバージョンはすべて、**2020 年 8 月 30 日**に廃止されます。
+> 2022 年 8 月 31 日以降、Azure Cosmos DB では、Azure Cosmos DB Python SDK for SQL API バージョン 1.x または 2.x に対するバグ修正、新機能の追加、サポートの提供は行われません。 アップグレードしない場合でも、SDK バージョン 1.x および 2.x から送信される要求は、引き続き Azure Cosmos DB サービスによって処理されます。
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |

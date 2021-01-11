@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3aad90a3894d3abc1a850ae21946e8895619a188
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 0aefe95f3e78afc4b449539fd683ffc1fe525a15
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849881"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280181"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory パススルー認証:クイック スタート
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 >AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行する場合は、[こちら](https://aka.ms/adfstoPTADPDownload)に公開されている詳細なデプロイ ガイドに従うよう強くお勧めします。
 
 >[!NOTE]
->Azure Government クラウドでパススルー認証をデプロイする場合は、「[Azure Government のハイブリッド ID に関する考慮事項](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)」を参照してください。
+>Azure Government クラウドでパススルー認証をデプロイする場合は、「[Azure Government のハイブリッド ID に関する考慮事項](./reference-connect-government-cloud.md)」を参照してください。
 
 テナントでパススルー認証をデプロイするには、次の手順を実行します。
 
@@ -42,12 +42,12 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 次の前提条件が満たされていることを確認します。
 
 >[!IMPORTANT]
->セキュリティの観点から、管理者は PTA エージェントを実行しているサーバーをドメイン コントローラーとして扱う必要があります。  PTA エージェント サーバーは、「[攻撃に対してドメイン コントローラーをセキュリティで保護する](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)」で説明されている内容に沿って強化する必要があります。
+>セキュリティの観点から、管理者は PTA エージェントを実行しているサーバーをドメイン コントローラーとして扱う必要があります。  PTA エージェント サーバーは、「[攻撃に対してドメイン コントローラーをセキュリティで保護する](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)」で説明されている内容に沿って強化する必要があります。
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センター
 
-1. Azure AD テナントで、クラウド専用のグローバル管理者アカウントを作成します。 その方法を採用すると、オンプレミス サービスが利用できなくなったとき、テナントの構成を管理できます。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 テナントからロックアウトされないようにするには、この手順を必ず完了する必要があります。
-2. 1 つ以上の[カスタム ドメイン名](../active-directory-domains-add-azure-portal.md)を Azure AD テナントに追加します。 ユーザーは、このドメイン名のいずれかを使用してサインインできます。
+1. Azure AD テナントで、クラウド専用のグローバル管理者アカウントを作成します。 その方法を採用すると、オンプレミス サービスが利用できなくなったとき、テナントの構成を管理できます。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../fundamentals/add-users-azure-active-directory.md)をご覧ください。 テナントからロックアウトされないようにするには、この手順を必ず完了する必要があります。
+2. 1 つ以上の[カスタム ドメイン名](../fundamentals/add-custom-domain.md)を Azure AD テナントに追加します。 ユーザーは、このドメイン名のいずれかを使用してサインインできます。
 
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
@@ -55,12 +55,12 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 2. [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) を、前の手順で特定したサーバーにインストールします。 Azure AD Connect が既に実行されている場合は、バージョンが 1.1.750.0 以降であることを確認します。
 
     >[!NOTE]
-    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470)をご覧ください。
+    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合については、[Azure AD Connect のリリース ノート](./reference-connect-version-history.md)をご覧ください。
 
 3. Windows Server 2012 R2 以降が実行されていて TLS 1.2 が有効になっている 1 つまたは複数の追加のサーバーを特定します。このサーバーでは、スタンドアロンの認証エージェントを実行できます。 これらの追加のサーバーは、サインイン要求の高可用性を確保するために必要です。 これらのサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。
 
     >[!IMPORTANT]
-    >運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 40 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
+    >運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 40 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
 
 4. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
    - 認証エージェントが次のポートを使用して Azure AD に*送信*リクエストを送れるようにします。
@@ -120,7 +120,7 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 運用環境にパススルー認証をデプロイする場合は、追加のスタンドアロン認証エージェントをインストールする必要があります。 これらの認証エージェントは、Azure AD Connect を実行しているサーバー "_以外_" のサーバーにインストールします。 この設定により、ユーザー サインイン要求の高可用性が確保されます。
 
 >[!IMPORTANT]
->運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 40 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
+>運用環境では、テナントで少なくとも 3 つの認証エージェントを実行することをお勧めします。 認証エージェントの数は、テナントあたり 40 個に制限されています。 また、ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
 
 複数のパススルー認証エージェントをインストールすると高可用性が確保されますが、認証エージェント間の確定的な負荷分散は提供されません。 テナントに必要な認証エージェントの数を決定するには、テナントで発生することが予想されるサインイン要求のピーク時と平均の負荷を検討します。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300 - 400 の認証を処理できます。
 

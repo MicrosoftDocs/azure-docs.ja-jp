@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: メール通知の設定
       href: security-center-provide-security-contact-details.md
+    - name: ARM テンプレートを使用してアラートへの自動応答を作成する
+      href: quickstart-automation-alert.md
 - name: チュートリアル
   items:
     - name: 計画と運用のガイド
@@ -59,10 +61,10 @@
           href: security-center-recommendations.md
         - name: セキュリティ ポリシーの概要
           href: tutorial-security-policy.md
-        - name: 組み込みのセキュリティ ポリシー
-          href: security-center-policy-definitions.md
         - name: 推奨事項を使用してセキュリティを強化する
           href: security-center-using-recommendations.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: 脅威の防止とセキュリティ アラート
       items:
         - name: Security Center での脅威の防止の概要
@@ -103,12 +105,12 @@
           href: update-regulatory-compliance-packages.md
     - name: VM の脆弱性をスキャンする
       items:
-        - name: 脆弱性スキャンの概要
-          href: security-center-vulnerability-assessment-recommendations.md
-        - name: VM 用の統合された脆弱性スキャナー
-          href: built-in-vulnerability-assessment.md
-        - name: 外部スキャナーの使用
-          href: partner-vulnerability-assessment.md
+        - name: 統合された脆弱性スキャナーを VM にデプロイする
+          href: deploy-vulnerability-assessment-vm.md
+        - name: BYOL 脆弱性ソリューションを VM にデプロイする
+          href: deploy-vulnerability-assessment-byol-vm.md
+        - name: VM 上の脆弱性を確認して修復する
+          href: remediate-vulnerability-findings-vm.md
     - name: 脅威の防止の構成とアラートの処理
       items:
         - name: セキュリティ アラートの管理
@@ -128,6 +130,7 @@
         - name: アラートへの応答を自動化する
           href: workflow-automation.md
         - name: アラートのエクスポート
+          displayName: continuous
           href: continuous-export.md
     - name: セキュリティのレコメンデーションを使用してセキュリティを強化する
       items:
@@ -148,10 +151,13 @@
         - name: レコメンデーションへの応答を自動化する
           href: workflow-automation.md
         - name: レコメンデーションのエクスポート
+          displayName: continuous
           href: continuous-export.md
+    - name: Asset Inventory によるリソースの管理
+      href: asset-inventory.md
     - name: 他のツールおよびサービスとの統合
       items:
-        - name: Windows Admin Center との統合
+        - name: Windows Admin Center サーバーの保護
           href: windows-admin-center-integration.md
         - name: Azure App Service Web アプリと API を保護する
           href: security-center-app-services.md
@@ -205,6 +211,9 @@
       href: security-center-features-retirement-july2019.md
     - name: エンドポイント保護の評価および推奨事項
       href: security-center-endpoint-protection.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -220,7 +229,7 @@
     - name: 準備のロードマップ
       href: security-center-readiness-roadmap.md
     - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: Stack Overflow の Azure Security Center
       href: 'https://stackoverflow.com/search?q=azure-security-center'
     - name: ビデオ

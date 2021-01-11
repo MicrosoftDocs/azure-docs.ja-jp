@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: fdcea318fcd0796a790818794f6dd7cd949c17cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367786"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642420"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -271,7 +271,7 @@ Azure AD アプリケーション プロキシをサポートするために次�
 
 * リスクベースの条件付きアクセス:[リスクベースの条件付きアクセス ポリシー](https://www.microsoft.com/cloud-platform/conditional-access)を使用し、悪意のあるハッカーからデータを保護しましょう。これらのポリシーは、オンプレミスかクラウドかにかかわらず、すべてのアプリとすべてのユーザーに適用できます。
 
-* Azure AD アクセス パネル: アプリケーション プロキシ サービスがデプロイされ、アプリケーションが安全に発行されると、すべてのアプリケーションを検出してアクセスするための単純なハブがユーザーに提供されます。 [アクセス パネル](https://aka.ms/AccessPanelDPDownload)を使用すると、ユーザーが、新しいアプリやグループへのアクセスを要求したり、他のユーザーに代わってこれらのリソースへのアクセスを管理したりする機能などのセルフサービス機能を使用して生産性が向上します。
+* Azure AD マイ アプリ:アプリケーション プロキシ サービスがデプロイされ、アプリケーションが安全に発行されると、すべてのアプリケーションを検出してアクセスするための単純なハブがユーザーに提供されます。 [マイ アプリ](https://aka.ms/AccessPanelDPDownload)を使用すると、ユーザーが新しいアプリやグループへのアクセスを要求したり、他のユーザーに代わってこれらのリソースへのアクセスを管理したりする機能などのセルフサービス機能を使用して生産性が向上します。
 
 ## <a name="manage-your-implementation"></a>実装を管理する
 

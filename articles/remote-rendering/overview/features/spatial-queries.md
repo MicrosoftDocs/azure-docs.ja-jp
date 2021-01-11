@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9b378fe3f01e6ef1d54a89341bbac3a26b9d6b33
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021298"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013148"
 ---
 # <a name="spatial-queries"></a>空間クエリ
 
@@ -69,19 +70,19 @@ void CastRay(ApiHandle<AzureSession> session)
     ApiHandle<RaycastQueryAsync> castQuery = *session->Actions()->RayCastQueryAsync(rayCast);
 
     castQuery->Completed([](const ApiHandle<RaycastQueryAsync>& async)
-    {
-        std::vector<RayCastHit> hits = *async->Result();
-
-        if (hits.size() > 0)
         {
-            auto hitObject = hits[0].HitObject;
-            auto hitPosition = hits[0].HitPosition;
-            auto hitNormal = hits[0].HitNormal;
+            std::vector<RayCastHit> hits;
+            async->GetResult(hits);
 
-            // do something with the hit information
-        }
-    });
+            if (hits.size() > 0)
+            {
+                auto hitObject = hits[0].HitObject;
+                auto hitPosition = hits[0].HitPosition;
+                auto hitNormal = hits[0].HitNormal;
 
+                // do something with the hit information
+            }
+        });
 }
 ```
 

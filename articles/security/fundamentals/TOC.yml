@@ -58,6 +58,8 @@
       href: network-best-practices.md
     - name: DDoS Protection
       href: ddos-best-practices.md
+    - name: DDoS Protection のセキュリティ ベースライン
+      href: ddos-protection-security-baseline.md
     - name: 未解決の DNS とサブドメインの引き継ぎ
       href: subdomain-takeover.md
     - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
@@ -76,12 +78,16 @@
   items:
     - name: データ セキュリティと暗号化
       href: encryption-overview.md
+    - name: 二重暗号化
+      href: double-encryption.md
     - name: ディスクの暗号化
       items:
         - name: ベスト プラクティス
           href: data-encryption-best-practices.md
-        - name: 保存時のデータ暗号化
+        - name: 保存データの暗号化
           href: encryption-atrest.md
+        - name: データ暗号化モデル
+          href: encryption-models.md
         - name: 仮想マシン用の Azure Disk Encryption
           href: azure-disk-encryption-vms-vmss.md
     - name: データベースのセキュリティ

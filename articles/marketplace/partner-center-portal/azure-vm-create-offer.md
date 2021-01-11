@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace で Azure 仮想マシン オファーを作成する
-description: 必要な SKU を使用して、Azure Marketplace で仮想マシン オファーを作成する方法について説明します。
+description: Azure Marketplace に仮想マシン オファーを発行する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 06/17/2020
-ms.openlocfilehash: fe53de2c81f9e9df5fd9270951f943b0b3505f1e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/07/2020
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110982"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816526"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で Azure 仮想マシン オファーを作成する
 
@@ -242,19 +242,24 @@ Azure Marketplace の検索結果で表示される、お客様のオファー�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 画像がぼやけていると、送信が拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターによって使用される https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="azure-marketplace-logos"></a>Azure Marketplace のロゴ
 
-オファーのロゴの PNG ファイルを次の 4 つの画像サイズで指定します。
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**および**中**サイズのロゴを作成します。 必要に応じて、これらを別の画像に置き換えることもできます。
 
-- **小** (48 &times; 48 ピクセル)
-- **中** (90 &times; 90 ピクセル)
-- **大** (216 &times; 216 ピクセル)
-- **ワイド** (255 &times; 115 ピクセル)
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **中** (90 x 90 px、省略可能)
+- **小** (48 x 48 px、省略可能)
 
-4 つのロゴはすべて必須で、これらは Azure Marketplace のさまざまな登録情報に表示されます。
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 
@@ -286,7 +291,9 @@ Azure Marketplace の検索結果で表示される、お客様のオファー�
 
 ## <a name="plan-overview"></a>プランの概要
 
-パートナー センターの同じオファー内で、さまざまなプラン オプションを提供できます。 このようなプランは、以前は SKU と呼ばれていました。 オファーには少なくとも 1 つのプランが必要です。これは、収益化対象ユーザー、Azure リージョン、機能、または VM イメージごとに変えることができます。
+パートナー センターの同じオファー内で、さまざまなプラン オプションを提供できます。 オファーには少なくとも 1 つのプラン (以前は SKU と呼ばれていました) が必要です。これは、収益化対象ユーザー、Azure リージョン、機能、または VM イメージごとに変えることができます。
+
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 プランの作成後、 **[プランの概要]** タブを選択して以下を表示します。
 
@@ -368,7 +375,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 このペインでは、以下を構成します。
 
-- このプランが提供される市場。
+- このプランが提供される市場。 すべてのプランは、少なくとも 1 つの[市場](../marketplace-geo-availability-currencies.md)で利用できる必要があります。
 - 1 時間あたりの価格。
 - プランをすべてのユーザーに表示するか、それとも特定の顧客 (プライベート対象ユーザー) だけに表示するか。
 
@@ -412,7 +419,6 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 >[!Note]
 >プライベートオファーは、クラウド ソリューション プロバイダー プログラム (CSP) のリセラーを通じて確立された Azure サブスクリプションではサポートされていません。
-
 
 #### <a name="hide-a-plan"></a>プランを非表示にする
 
@@ -516,10 +522,10 @@ Azure Marketplace で表示する、最大 6 個の推奨される仮想マシ�
 
 また、このページには、オファーの作業に役立つリンクがその状態に応じて記載されています。
 
-- オファーがドラフトの場合: [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer))
-- オファーが公開されている場合: [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan))
-- オファーがプレビューの場合: [一般公開する](publishing-status.md#publisher-approval))
-- 発行元のサインアウトを完了していない場合: [発行をキャンセルする](update-existing-offer.md#cancel-publishing))
+- オファーがドラフトの場合: [ドラフトのオファーを削除する](update-existing-offer.md#delete-a-draft-offer)
+- オファーが公開されている場合: [オファーの販売を停止する](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- オファーがプレビューの場合: [一般公開する](publishing-status.md#publisher-approval)
+- 発行元のサインアウトを完了していない場合: [発行をキャンセルする](update-existing-offer.md#cancel-publishing)
 
 ## <a name="marketplace-examples"></a>Marketplace の例
 

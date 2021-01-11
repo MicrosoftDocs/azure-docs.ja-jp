@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 30f852f1bf4994f525ccb65c3827af8f8ae02f96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e64e6b6abc921b1db6614ed36ba2e9c04fc86b1f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838702"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451143"
 ---
 この記事には、Azure Virtual Machines のセキュリティに関する推奨事項が含まれています。 次の推奨事項に従うことで、このモデルで説明されている共有責任のセキュリティ義務を果たすことができます。 これらの推奨事項は、Web アプリ ソリューションの全体的なセキュリティの向上にも役立ちます。 サービス プロバイダーとしての責任を果たすための Microsoft の取り組みの詳細については、「[クラウド コンピューティングについての共有責任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)」を参照してください。
 
@@ -26,7 +26,7 @@ Azure Security Center の一般的な情報については、「[Azure Security 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
 | カスタム VM イメージを作成する場合、最新の更新プログラムを適用する。 | イメージを作成する前に、オペレーティング システムと、イメージの一部となるすべてのアプリケーションの最新の更新プログラムをインストールしてください。  | - |
-| VM を最新の状態に保つ。 | Azure Automation の [Update Management](../articles/automation/automation-update-management.md) ソリューションを使用すると、Azure 内の Windows コンピューターと Linux コンピューターに対するオペレーティング システムの更新プログラムを管理できます。 | [はい](../articles/security-center/security-center-apply-system-updates.md) |
+| VM を最新の状態に保つ。 | Azure Automation の [Update Management](../articles/automation/update-management/update-mgmt-overview.md) ソリューションを使用すると、Azure 内の Windows コンピューターと Linux コンピューターに対するオペレーティング システムの更新プログラムを管理できます。 | [はい](../articles/security-center/security-center-apply-system-updates.md) |
 | VM をバックアップする。 | [Azure Backup](../articles/backup/backup-overview.md) を使用すると、アプリケーション データを保護し、運用コストを最小限にすることができます。 アプリケーション エラーが発生するとデータが破損するおそれがあり、ヒューマン エラーが生じればアプリケーションにバグが生まれる危険があります。 Azure Backup は、Windows と Linux を実行する VM を保護します。 | - |
 | 復元性と可用性を高めるために複数の VM を使用する。 | 高可用性を必要とするアプリケーションが VM で実行されている場合は、複数の VM または[可用性セット](../articles/virtual-machines/windows/manage-availability.md)を使用します。 | - |
 | 事業継続とディザスター リカバリー (BCDR) 戦略を採用する。 | Azure Site Recovery では、事業継続性をサポートするように設計されたさまざまなオプションから選択することができます。 さまざまなレプリケーションおよびフェールオーバーのシナリオがサポートされています。 詳しくは、「[Site Recovery について](../articles/site-recovery/site-recovery-overview.md)」をご覧ください。 | - |

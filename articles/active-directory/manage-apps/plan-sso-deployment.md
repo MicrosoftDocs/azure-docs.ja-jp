@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374443"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642386"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -55,7 +55,7 @@ Azure Marketplace には、SSO 接続を事前に統合したアプリケーシ�
 ### <a name="considerations-for-federation-based-sso"></a>フェデレーション ベースの SSO に関する考慮事項
 
 - **OpenID Connect と OAuth の使用** - 接続対象のアプリケーションがこれをサポートしている場合は OIDC/OAuth 2.0 の方法を使用して、そのアプリケーションに対する SSO を有効にします。 この方法では、必要な構成は少なくて済み、ユーザー エクスペリエンスはより豊かなものになります。 詳細については、[OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md) に関する記事、[OpenID Connect 1.0](../develop/v2-protocols-oidc.md) に関する記事、[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)を参照してください。
-- **SAML ベースの SSO のエンドポイント構成** -SAML を使用する場合、開発者は、アプリケーションを構成する前に特定の情報が必要になります。 詳細については、[基本的な SAML 構成の編集](configure-single-sign-on-non-gallery-applications.md)に関する項目を参照してください。
+- **SAML ベースの SSO のエンドポイント構成** -SAML を使用する場合、開発者は、アプリケーションを構成する前に特定の情報が必要になります。 詳細については、「[SAML ベースのシングル サインオンの構成](configure-saml-single-sign-on.md)」を参照してください。
 - **SAML ベースの SSO の証明書の管理** - お使いのアプリケーションのフェデレーション SSO を有効にする場合、既定では 3 年間有効な証明書が Azure AD で作成されます。 必要に応じて、その証明書の有効期限をカスタマイズできます。 有効期限前に証明書を更新するための適切なプロセスがあることを確認します。 詳細については、[Azure AD での証明書管理](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)に関する記事を参照してください。
 
 ### <a name="considerations-for-password-based-sso"></a>パスワード ベースの SSO に関する考慮事項
@@ -285,7 +285,7 @@ SaaS アプリのセキュリティのさまざまな側面を確認する定期
 
 - [カスタム ポータルからのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [アクセス パネルからのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [マイ アプリからのサインインに関する問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [アプリケーションのサインイン ページでのエラー](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 
@@ -324,3 +324,5 @@ SaaS アプリのセキュリティのさまざまな側面を確認する定期
 [SSO アクセス](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 [アプリケーション SSO チュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
+[ホワイトペーパーのダウンロード - シングル サインオンのデプロイ計画](https://aka.ms/SSODeploymentPlan)

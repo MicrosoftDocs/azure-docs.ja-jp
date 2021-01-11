@@ -2,13 +2,13 @@
 title: Azure Kubernetes Service (AKS) についてよく寄せられる質問
 description: Azure Kubernetes Service (AKS) についてよく寄せられる質問にお答えします。
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: ba4ceaf0d7f9e3b344b2a6efbb84f2145c4a2f65
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 08/06/2020
+ms.openlocfilehash: 7a56756855319ee72bd5b3dc60ad1ae440afd7fe
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275718"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927149"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -79,7 +79,7 @@ AKS は、仮想マシン スケール セット、仮想ネットワーク、�
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-node-resource-group"></a>ノード リソース グループ内の AKS リソースのタグや他のプロパティを変更できますか?
 
-ノード リソース グループ内の Azure で作成されたタグや他のリソース プロパティを変更または削除する場合、スケーリングやアップグレードのエラーなど、予期しない結果になる可能性があります。 AKS では、エンドユーザーによって作成されるカスタム タグを作成および変更できます。 たとえばビジネス単位やコスト センターを割り当てるために、カスタム タグを作成または変更することがあります。 これは、マネージド リソース グループ上にスコープがある Azure ポリシーを作成することで、実現できます。
+ノード リソース グループ内の Azure で作成されたタグや他のリソース プロパティを変更または削除する場合、スケーリングやアップグレードのエラーなど、予期しない結果になる可能性があります。 AKS を使用すると、エンドユーザーが作成したカスタム タグを作成および変更できます。また、[ノード プールを作成](use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool)するときにそれらのタグを追加できます。 たとえばビジネス単位やコスト センターを割り当てるために、カスタム タグを作成または変更することがあります。 これは、マネージド リソース グループにスコープを指定して Azure ポリシーを作成することによっても実現できます。
 
 ただし、AKS クラスター内のノード リソース グループにあるリソース上で **Azure によって作成されたタグ**を変更することは、サポートされていないアクションであり、サービス レベル目標 (SLO) が損なわれます。 詳細については、「[AKS でサービス レベル アグリーメントは提供されますか?](#does-aks-offer-a-service-level-agreement)」を参照してください。
 
@@ -137,7 +137,7 @@ AKS エージェント ノードは、標準の Azure 仮想マシンとして�
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Azure テナント間でクラスターを移動/移行することはできますか?
 
-`az aks update-credentials` コマンドを使用して、Azure テナント間で AKS クラスターを移動できます。 「[サービス プリンシパルの更新または作成の選択](./update-credentials.md)」の指示に従って、[AKS クラスターを新しい資格情報で更新します](./update-credentials.md#update-aks-cluster-with-new-service-principal-credentials)。
+テナント間での AKS クラスターの移動は現在サポートされていません。
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>サブスクリプション間でクラスターを移動/移行することはできますか?
 
@@ -190,6 +190,10 @@ AKS には、このような構成に耐え、そこから復旧するための�
 ## <a name="can-i-use-custom-vm-extensions"></a>カスタム VM 拡張機能を使用できますか?
 
 マネージド サービスである AKS はなく、IaaS リソースの操作はサポートされていません。 カスタム コンポーネントなどをインストールするには、 Kubernetes の API およびメカニズムを活用してください。 たとえば、必要なコンポーネントをインストールするには、DaemonSet を活用します。
+
+## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS によって、クラスターのリージョン外に格納される顧客データはありますか?
+
+顧客データを 1 つのリージョンに格納できるようにする機能は、現在のところ、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。
 
 <!-- LINKS - internal -->
 

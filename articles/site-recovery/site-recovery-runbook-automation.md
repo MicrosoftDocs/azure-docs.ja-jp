@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: 25290a66da3d5c8325513b2bea6d27d12ca7da70
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1df17ccb41c974c8939710850b5bb71ee3a5ef1b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134807"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021581"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
 
@@ -199,7 +199,7 @@ $vmMap = $RecoveryPlanContext.VmMap
 - たとえば、SharePoint の復旧には 2 つのフロントエンドがあります。 基本的な基幹業務 (LOB) アプリケーションには 1 つのフロントエンドしかありません。
 - このシナリオでは、復旧計画ごとに個別の変数を作成することはできません。
 
-次の例では、Azure Automation アカウント内に[複合変数](/powershell/module/servicemanagement/azure/set-azureautomationvariable)を作成します。
+次の例では、Azure Automation アカウント内に[複合変数](/powershell/module/servicemanagement/azure.service/set-azureautomationvariable)を作成します。
 
 これは、Azure PowerShell を使用して複数の値を指定することによって行います。
 

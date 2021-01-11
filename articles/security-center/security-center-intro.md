@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: bb75405a1cd1e282023936673aa73be25556e0af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c42009f5e02180dc5e4c5e3e4b43f00277d7bf58
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529354"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89177876"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -63,39 +63,36 @@ Azure Security Center を使用すると、セキュリティ体制を強化で�
 
 これは、ワークロードがセキュリティで保護されていることを把握し、確実にするための基本的なセキュリティです。まず、セキュリティ ポリシーを適切に調整して配置することから始めます。 Security Center のすべてのポリシーは Azure Policy 制御を基礎にして構築されているため、**世界レベルのポリシー ソリューション**のすべての範囲と柔軟性を利用できます。 Security Center では、管理グループ、サブスクリプション全体、さらにはテナント全体に対して実行するようにポリシーを設定できます。
 
-![Security Center ダッシュボード](media/security-center-intro/sc-dashboard.png)
+:::image type="content" source="./media/security-center-intro/sc-dashboard.png" alt-text="ポリシー管理ページ":::
 
 Security Center を使用すると、**シャドウ IT のサブスクリプションを特定する**ことができます。 ダッシュボードで**未カバー**のラベルが付いたサブスクリプションを見ると、新しくサブスクリプションが作成されたときにすぐに把握できます。また、ポリシーによって保護され、Azure Security Center によって保護されていることを確認できます。
 
-![Security Center のポリシー ダッシュボード](media/security-center-intro/sc-policy-dashboard.png)
-
-Security Center の高度な監視機能を使用すると、**コンプライアンスとガバナンスを長期にわたって追跡および管理**することもできます。 **全体的なコンプライアンス**には、ワークロードに関連付けられているポリシーにサブスクリプションがどのくらい準拠しているかが表示されます。 
-
-![長期にわたる Security Center ポリシー](media/security-center-intro/sc-policy-time.png)
+:::image type="content" source="./media/security-center-intro/sc-policy-dashboard.png" alt-text="Security Center のポリシー ダッシュボード":::
 
 ### <a name="continuous-assessments"></a>継続的な評価
 
 Security Center では、ワークロード全体に展開されている新しいリソースが継続的に検出され、セキュリティのベスト プラクティスに従って構成されているかどうかが評価され、そうでない場合はフラグが立てられます。また、マシンを保護するために必要な修正点について、優先順位が付けられた推奨事項一覧が表示されます。
 
+Security Center では、全体的なセキュリティ体制に対する各推奨事項の重要度が理解しやすいよう、推奨事項がセキュリティ コントロールにグループ化され、各コントロールには**セキュア スコア**値が追加されます。 これは、**セキュリティ作業の優先度付け**を可能にするうえで重要です。
+
+:::image type="content" source="./media/security-center-intro/sc-secure-score.png" alt-text="Security Center のセキュア スコア":::
+
+### <a name="network-map"></a>ネットワーク マップ
+
 ネットワークのセキュリティ状態を継続的に監視するために Security Center に用意されている最も強力なツールの 1 つとして、**ネットワーク マップ**があります。 このマップを使用すると、ワークロードのトポロジを確認できるため、各ノードが正しく構成されているかどうかを確認できます。 ノードがどのように接続されているかを確認できます。これにより、攻撃者がネットワークに侵入しやすくなる可能性がある望ましくない接続をブロックすることができます。
 
-![Security Center のネットワーク マップ](media/security-center-intro/sc-net-map.png)
+:::image type="content" source="./media/security-center-intro/sc-net-map.png" alt-text="Security Center のネットワーク マップ":::
 
-Security Center では、**セキュリティ スコア**を追加することで、もう一段階簡単にセキュリティ アラートを緩和できます。 セキュリティ スコアは、全体的なセキュリティ体制に対する各推奨事項の重要度を理解できるように、受信した各推奨事項と関連付けられるようになりました。 これは、**セキュリティ作業の優先度付け**を可能にするうえで重要です。
-
-![Security Center のセキュリティ スコア](media/security-center-intro/sc-secure-score.png)
 
 ### <a name="optimize-and-improve-security-by-configuring-recommended-controls"></a>推奨されるコントロールを構成してセキュリティを最適化し、強化する
 
 Azure Security Center が持つ価値の中心は、その推奨事項にあります。 推奨事項は、ワークロード上で見つかった特定のセキュリティ上の懸案事項に合わせて調整されています。Security Center では、脆弱性を検出するだけでなく、その排除のための具体的な手順を提供することで、セキュリティ管理者の作業が自動実行されます。
 
-![Security Center の推奨事項](media/security-center-intro/sc-recommendations.png)
-
 このように、Security Center では、セキュリティ ポリシーを設定するだけでなく、セキュリティで保護された構成基準をリソース全体に適用することができます。
 
 推奨事項を利用すると、各リソースの攻撃対象領域を減らすことができます。 これには、Azure 仮想マシン、Azure 以外のサーバー、SQL や Storage アカウントなどの Azure PaaS サービスなどが含まれます。リソースの種類によって評価方法は異なり、固有の基準があります。
 
-![Security Center の推奨事項例](media/security-center-intro/sc-recommendation-example.png)
+:::image type="content" source="./media/security-center-intro/sc-recommendation-example.png" alt-text="Security Center の推奨事項例":::
 
 ## <a name="protect-against-threats"></a>脅威からの保護
 
@@ -103,9 +100,7 @@ Security Center の脅威の防止機能により、Azure 内のサービスと�
 
 Security Center の脅威の防止機能には、サイバー キルチェーン分析に基づいて環境内のアラートを自動的に相関させるフュージョン キルチェーン分析が含まれており、攻撃キャンペーンの詳細 (開始点、リソースに対する影響の種類) を詳細に把握することができます。
 
-
-
-![Security Center の攻撃に対する推奨事項](media/security-center-intro/sc-attack-recommendation.png)
+:::image type="content" source="./media/security-center-intro/sc-alerts.png" alt-text="セキュリティのアラート":::
 
 ### <a name="integration-with-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Advanced Threat Protection との統合
 
@@ -120,8 +115,6 @@ Security Center は、Azure PaaS サービス全体の脅威を検出するた�
 ### <a name="block-brute-force-attacks"></a>ブルート フォース攻撃のブロック
 
 Security Center は、ブルートフォース攻撃への露出を制限するために役立ちます。 Just-In-Time VM アクセスを使用して仮想マシン ポートへのアクセスを減らすことにより、不要なアクセスを防止してネットワークを強化することができます。 許可されたユーザー、許可されたソース IP アドレスの範囲または IP アドレス、および制限された期間にのみ、選択したポートに対するセキュリティで保護されたアクセス ポリシーを設定することができます。
-
-![Security Center のブルート フォース](media/security-center-intro/sc-brute-force.png)
 
 ### <a name="protect-data-services"></a>データ サービスの保護
 

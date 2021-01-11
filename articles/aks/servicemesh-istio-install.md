@@ -302,7 +302,7 @@ kiali-59b7fd7f68-92zrh                        1/1     Running   0          95s
 prometheus-7c7cf9dbd6-rjxcv                   1/1     Running   0          94s
 ```
 
-すべてのポッドの状態が `Running` と表示される必要があります。 ポッドのステータスが実行中ではない場合、実行中にナルまで数分待ってください。 ポッドから問題が報告された場合、[kubectl describe pod][kubectl-describe] コマンドを使用し、出力と状態を確認してください。
+すべてのポッドの状態が `Running` と表示される必要があります。 ポッドのステータスが実行中ではない場合、実行中になるまで数分待ってください。 ポッドから問題が報告された場合、[kubectl describe pod][kubectl-describe] コマンドを使用し、出力と状態を確認してください。
 
 ## <a name="accessing-the-add-ons"></a>アドオンにアクセスする
 

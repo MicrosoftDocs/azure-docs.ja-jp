@@ -6,37 +6,15 @@
     - name: Azure Machine Learning とは
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
-    - name: Azure Machine Learning と Studio (クラシック)
-      displayName: 'AML, Studio, designer'
-      href: compare-azure-ml-to-studio-classic.md
+    - name: Azure Machine Learning スタジオとは
+      displayName: 'AML, studio, designer'
+      href: overview-what-is-machine-learning-studio.md
     - name: アーキテクチャと用語
       displayName: 'architecture, concepts, definitions, glossary'
       href: concept-azure-machine-learning-architecture.md
 - name: チュートリアル
   expanded: true
   items:
-    - name: スタジオ
-      expanded: true
-      items:
-        - name: デザイナー (ドラッグアンドドロップ)
-          items:
-            - name: 1. 回帰モデルをトレーニングする
-              displayName: studio
-              href: tutorial-designer-automobile-price-train-score.md
-            - name: 2. そのモデルをデプロイする
-              displayName: studio
-              href: tutorial-designer-automobile-price-deploy.md
-        - name: 自動化された ML (UI)
-          items:
-            - name: 自動 ML の実験を作成する
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-first-experiment-automated-ml.md
-            - name: 需要予測 (自転車シェア データ)
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-automated-ml-forecast.md
-        - name: 画像データへのラベル付け
-          displayName: 'tag, tagging, images'
-          href: tutorial-labeling.md
     - name: Python SDK
       expanded: true
       items:
@@ -64,17 +42,36 @@
         - name: 実稼働用にコードを準備する
           displayName: 'mlops, mlopspython, production'
           href: tutorial-convert-ml-experiment-to-production.md
+    - name: スタジオ
+      expanded: true
+      items:
+        - name: 自動化された ML (UI)
+          items:
+            - name: 自動 ML の実験を作成する
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: 需要予測 (自転車シェア データ)
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
+        - name: デザイナー (ドラッグアンドドロップ)
+          items:
+            - name: 1. 回帰モデルをトレーニングする
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 2. そのモデルをデプロイする
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: 画像データへのラベル付け
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: R SDK
       items:
         - name: 初めての ML 実験を作成する (R)
           href: tutorial-1st-r-experiment.md
-    - name: Machine Learning CLI
+    - name: CLI
       items:
         - name: CLI を使用したトレーニングとデプロイ
           href: tutorial-train-deploy-model-cli.md
-        - name: Resource Manager テンプレートを使用してワークスペースを作成する
-          displayName: Resource Manager
-          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Azure Machine Learning 拡張機能の設定
@@ -153,39 +150,45 @@
       href: concept-ml-pipelines.md
     - name: エンタープライズ対応とセキュリティ
       items:
-        - name: エンタープライズ セキュリティとガバナンス
+        - name: エンタープライズ セキュリティの概要
+          displayName: authorization authentication encryption aad azure active directory
+          href: concept-enterprise-security.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: ID およびアクセス管理
           items:
-            - name: エンタープライズ セキュリティの概要
-              displayName: authorization authentication encryption aad azure active directory
-              href: concept-enterprise-security.md
+            - name: 認証の設定
+              displayName: 'authentication, auth, oauth'
+              href: how-to-setup-authentication.md
             - name: ユーザーとロールを管理する
               href: how-to-assign-roles.md
+            - name: AKS デプロイで Azure AD ID を使用する
+              href: how-to-use-azure-ad-identity.md
+        - name: ネットワークのセキュリティ
+          items:
             - name: 仮想ネットワークの使用
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: Private Link を使用する
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: TLS を使用して Web サービスをセキュリティで保護する
-              displayName: ssl
+            - name: セキュリティで保護された Web サービスを構成する
+              displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
+            - name: ファイアウォールを構成する
+              href: how-to-access-azureml-behind-firewall.md
+        - name: データ保護
+          items:
             - name: 回復性を高める
               displayName: 'high availability, disaster recovery'
               href: how-to-high-availability-machine-learning.md
-            - name: AKS デプロイで Azure AD ID を使用する
-              href: how-to-use-azure-ad-identity.md
             - name: ストレージ アクセス キーの再生成
               href: how-to-change-storage-access-key.md
-            - name: Azure Firewall の使用
-              href: how-to-access-azureml-behind-firewall.md
-            - name: 安全なコーディング
-              href: concept-secure-code-best-practice.md
-              displayName: security threat
-        - name: 認証の設定
-          displayName: 'authentication, auth, oauth'
-          href: how-to-setup-authentication.md
         - name: Azure Machine Learning の監視
           href: monitor-azure-machine-learning.md
+        - name: 安全なコーディング
+          href: concept-secure-code-best-practice.md
+          displayName: security threat
     - name: 信頼できる ML
       items:
         - name: 信頼できる ML の概要
@@ -213,6 +216,14 @@
         - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
+    - name: コンピューティング リソースの作成
+      items:
+        - name: Studio の使用
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
+          href: how-to-create-attach-compute-studio.md
+        - name: Python SDK の使用
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
+          href: how-to-create-attach-compute-sdk.md
     - name: 環境の設定方法
       items:
         - name: 開発環境をセットアップする
@@ -226,13 +237,10 @@
         - name: 非公開の Python パッケージを使用する
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-private-python-packages.md
-        - name: ログの有効化
-          displayName: 'troubleshoot, log, files, tracing'
-          href: how-to-enable-logging.md
         - name: 入力および出力ディレクトリを設定する
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: 対話型デバッグ
+        - name: Visual Studio Code
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
         - name: Git 統合
@@ -265,7 +273,7 @@
         - name: データにアクセスする
           items:
             - name: Azure Storage への接続
-              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
             - name: データストアからデータを取得する
               displayName: 'data, data set, register, access data'
@@ -286,7 +294,7 @@
               href: how-to-differential-privacy.md
     - name: モデルをトレーニングする
       items:
-        - name: トレーニング環境をセットアップする
+        - name: トレーニングの実行の送信
           displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
         - name: ML に Estimator を使用する
@@ -304,13 +312,19 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: カスタム Docker イメージを使用したトレーニング
+          href: how-to-train-with-custom-image.md
         - name: トレーニングの追跡と監視
           items:
             - name: 実行の開始、監視、または取り消し
               displayName: 'cancel, fail, status, child run'
               href: how-to-manage-runs.md
-            - name: トレーニング実行のメトリックを記録する
+            - name: ログの有効化
+              displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
+            - name: ログを表示する
+              displayName: 'troubleshoot, log, files, tracing'
+              href: how-to-monitor-view-training-logs.md
             - name: MLflow を使用して実験を追跡する
               displayName: 'log, monitor, metrics, Databricks'
               href: how-to-use-mlflow.md
@@ -363,7 +377,7 @@
         - name: デプロイする場所と方法
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: デプロイメント シナリオ
+        - name: 展開ターゲット
           items:
             - name: 既存のモデルを使用する
               displayName: publish existing model
@@ -394,19 +408,37 @@
               href: how-to-deploy-fpga-web-service.md
         - name: トラブルシューティングとデバッグ
           href: how-to-troubleshoot-deployment.md
-        - name: クライアントの作成
+        - name: Web サービスを使用する
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: モデルを監視する
+        - name: Web サービスを更新する
+          displayName: update hot reload model mounting
+          href: how-to-deploy-update-web-service.md
+        - name: 高度なエントリ スクリプトの作成
+          displayName: swagger inference schema binary cors
+          href: how-to-deploy-advanced-entry-script.md
+        - name: Web サービスを監視する
           items:
             - name: モデルのデータを収集して評価する
               displayName: track production
               href: how-to-enable-data-collection.md
             - name: Application Insights での監視
               href: how-to-enable-app-insights.md
+        - name: モデルを継続的にデプロイする
+          displayName: ci cd azure devops models
+          href: how-to-deploy-continuously-deploy.md
         - name: 暗号化された推論サービスをデプロイする
           displayName: 'homomorhic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md
+        - name: モデルのプロファイル
+          displayName: profile resource requirement
+          href: how-to-deploy-profile-model.md
+        - name: (プレビュー) コードなしのデプロイ
+          displayName: no code
+          href: how-to-deploy-no-code-deployment.md
+        - name: モデルのパッケージ化
+          displayName: docker file download
+          href: how-to-deploy-package-models.md
     - name: ML パイプラインの作成と使用
       displayName: pipelines
       items:
@@ -414,36 +446,40 @@
           href: how-to-create-your-first-pipeline.md
         - name: ML パイプラインのステップ間でのデータの移動 (Python)
           href: how-to-move-data-in-out-of-pipelines.md
+        - name: ML パイプラインをデプロイする (Python)
+          href: how-to-deploy-pipelines.md
         - name: パイプラインのスケジュールを設定する (Python)
           href: how-to-schedule-pipelines.md
         - name: パイプラインをトリガーする
           href: how-to-trigger-published-pipeline.md
+        - name: デザイナー (ドラッグアンドドロップ)
+          items:
+            - name: メトリックのログ記録
+              displayName: 'designer, logging'
+              href: how-to-track-designer-experiments.md
+            - name: データを変換する
+              displayName: pipeline
+              href: how-to-designer-transform-data.md
+            - name: 公開済みパイプラインを使用して再トレーニングする
+              displayName: 'retrain, designer, published pipeline'
+              href: how-to-retrain-designer.md
+            - name: バッチ予測
+              displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+              href: how-to-run-batch-predictions-designer.md
+            - name: Python コードを実行する
+              displayName: 'feature extraction, feature engineering'
+              href: how-to-designer-python.md
         - name: パイプラインのデバッグとトラブルシューティングを行う
           displayName: designer
           href: how-to-debug-pipelines.md
-        - name: Application Insights でパイプラインをデバッグする
-          href: how-to-debug-pipelines-application-insights.md
-        - name: デザイナーによるデータの変換
-          displayName: pipeline
-          href: how-to-designer-transform-data.md
-        - name: デザイナーによる発行されたパイプラインを使用した再トレーニング
-          displayName: 'retrain, designer, published pipeline'
-          href: how-to-retrain-designer.md
-        - name: デザイナーによるバッチ予測
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-        - name: デザイナーによる Python コードの実行
-          displayName: 'feature extraction, feature engineering'
-          href: how-to-designer-python.md
+        - name: パイプライン データを Application Insights にログする
+          href: how-to-log-pipelines-application-insights.md
         - name: 並列実行ステップの使用
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
         - name: 並列実行ステップのデバッグとトラブルシューティング
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
-        - name: 機械学習パイプラインの反復処理と進化
-          displayName: modularizing testing
-          href: concept-pipeline-practices-tips.md
     - name: CI/CD 用の Azure Pipelines
       displayName: 'continuous, integration, delivery'
       href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
@@ -453,6 +489,9 @@
     - name: リソースの管理 (VS Code)
       displayName: 'vscode,resources'
       href: how-to-manage-resources-vscode.md
+    - name: VS Code の対話型デバッグ
+      displayName: 'vscode,remote,debug,pipelines,deployments,ssh'
+      href: how-to-debug-visual-studio-code.md
     - name: データをエクスポートおよび削除する
       displayName: GDPR
       href: how-to-export-delete-data.md
@@ -479,6 +518,8 @@
       href: monitor-resource-reference.md
     - name: 機械学習パイプライン YAML のリファレンス
       href: reference-pipeline-yaml.md
+    - name: ソブリン クラウドのパリティ
+      href: reference-machine-learning-cloud-parity.md
 - name: リソース
   items:
     - name: リリース ノート

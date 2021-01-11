@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129187"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115239"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する
 
@@ -47,7 +47,7 @@ ms.locfileid: "87129187"
 >
 > 1. [Azure portal](https://portal.azure.com) にサインインします。
 > 1. そのアカウントで複数のテナントにアクセスできる場合は、右上でアカウントを選択してから、ポータルのセッションを、使用したい Azure AD テナントに設定します。
-> 1. 手順に従って、Azure portal に[シングルページ アプリケーションを登録](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)します。
+> 1. 手順に従って、Azure portal に[シングルページ アプリケーションを登録](./scenario-spa-app-registration.md)します。
 > 1. アプリの登録の **[認証]** ペインで新しいプラットフォームを追加し、リダイレクト URI (`http://localhost:4200/`) を登録します。
 > 1. このクイックスタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を使用します。 **[ID トークン]** と **[アクセス トークン]** で **[暗黙的な許可]** 設定を選択します。 このアプリはユーザーのサインインを実行して API を呼び出すため、ID トークンとアクセス トークンが必要です。
 
@@ -99,7 +99,7 @@ ms.locfileid: "87129187"
 >|値の名前|説明|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|これは、アプリケーションの登録の **[概要]** ページの **[アプリケーション (クライアント) ID]** の値です。 |
->|Enter_the_Cloud_Instance_Id_Here|これは、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「 **https://login.microsoftonline.com** 」と入力します。 各国のクラウド (中国など) の場合は、「[各国のクラウド](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)」を参照してください。|
+>|Enter_the_Cloud_Instance_Id_Here|これは、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「 **https://login.microsoftonline.com** 」と入力します。 各国のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。|
 >|Enter_the_Tenant_Info_Here| 次のいずれかのオプションに設定します。1) お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値をディレクトリ (テナント) ID またはテナント名 (例: "**contoso.microsoft.com**") に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。 アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。 |
 >|Enter_the_Redirect_Uri_Here|**http://localhost:4200** に置き換えます。|
 >|cacheLocation  | (省略可能) 認証状態のブラウザー ストレージを設定します。 既定では **sessionStorage** です。   |
@@ -142,5 +142,4 @@ Node.js を使用している場合:
 引き続き、ユーザーをサインインさせてトークンを取得する方法を Angular のチュートリアルでご覧ください。
 
 > [!div class="nextstepaction"]
-> [Angular チュートリアル](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
-
+> [Angular チュートリアル](./tutorial-v2-angular.md)

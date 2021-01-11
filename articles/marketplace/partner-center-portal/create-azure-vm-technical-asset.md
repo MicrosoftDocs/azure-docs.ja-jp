@@ -4,15 +4,15 @@ description: Azure Marketplace 向けの仮想マシン (VM) オファーの技�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: dannyevers
-ms.author: mingshen
+author: iqshahmicrosoft
+ms.author: iqshah
 ms.date: 04/13/2020
-ms.openlocfilehash: aee2016b422dcf447dbae047c8a77ae93bf79ab7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: afc012329d0d9e337dfca93a88615ba7c28f1754
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107157"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460373"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure 仮想マシンの技術資産を作成する
 
@@ -43,14 +43,14 @@ VM イメージには、1 個のオペレーティング システム ディス�
 
 VM と VHD の管理に役立つ次のスクリプト環境のいずれかを利用することを検討してください。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://code.visualstudio.com/)
 
 また、開発環境に次のツールを追加することを検討してください。
 
-* [Azure 記憶域エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/)
-  * 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  * 拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   * 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
   * 拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
@@ -77,6 +77,7 @@ VM と VHD の管理に役立つ次のスクリプト環境のいずれかを利
 Windows ベースの VM イメージのオペレーティング システム VHD は、Windows Server またはSQL Server を含む Azure 承認済みベース イメージに基づいている必要があります。 始めに、Azure portal で次のイメージのいずれかから VM を作成します。
 
 * Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016)、[2012 R2 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2012 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)、[2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+* [Windows 10 IoT Enterprise](/windows/iot-core/windows-iot-enterprise)
 * [SQL Server 2014](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enterprise、Standard、Web)
 * [SQL Server 2012 SP2](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md) (Enterprise、Standard、Web)
 
@@ -282,4 +283,4 @@ Azure ベースの新しい VHD の作成で問題が発生した場合は、「
 
 それ以外の場合:
 
-* 「[VM イメージを認定する](get-sas-uri.md)」では、*Certification Test Tool for Azure Certified* ツールを入手する場所や、VM イメージを認定するためにそれを使用する方法など、Azure Marketplace 認定のために VM イメージをテストして送信する方法について説明しています。
+* [VHD からデプロイされた仮想マシン (VM) のテスト](azure-vm-image-certification.md)に関するページでは、*Certification Test Tool for Azure Certified* ツールを入手する場所や、VM イメージを認定するためにそれを使用する方法など、Azure Marketplace 認定のために VM イメージをテストして送信する方法について説明しています。

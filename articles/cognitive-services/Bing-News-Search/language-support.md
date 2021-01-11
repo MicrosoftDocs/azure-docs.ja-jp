@@ -64,8 +64,8 @@ Bing News Search API では多数の国/地域がサポートされ、その多�
 |スイス|フランス語|fr-CH|
 |フランス|フランス語|fr-FR|  
 |イタリア|イタリア語|it-IT|
-|香港特別行政区|Traditional Chinese|zh-HK|  
-|台湾|Traditional Chinese|zh-TW|
+|香港特別行政区|繁体字中国語|zh-HK|  
+|台湾|繁体字中国語|zh-TW|
 |日本|日本語|ja-JP|  
 |韓国|韓国語|ko-KR|  
 |オランダ|オランダ語|nl-NL|  

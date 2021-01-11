@@ -2,13 +2,13 @@
 title: パブリック レジストリ アクセスの構成
 description: 選択したパブリック IP アドレスまたはアドレス範囲から Azure Container Registry へのアクセスを有効にする IP ルールを構成します。
 ms.topic: article
-ms.date: 05/19/2020
-ms.openlocfilehash: 967f27c05301ff339765706d0b3088ffcbaed1f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 0fbca1ec2734bf8275e12249f63ab134837fea12
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86523827"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660927"
 ---
 # <a name="configure-public-ip-network-rules"></a>パブリック IP ネットワーク ルールを構成する
 
@@ -61,12 +61,12 @@ az acr network-rule add \
 
 必要に応じて、レジストリのパブリック エンドポイントを無効にします。 パブリック エンドポイントを無効にすると、すべてのファイアウォール構成がオーバーライドされます。 たとえば、[Private Link](container-registry-private-link.md) を使用して、仮想ネットワークでセキュリティ保護されたレジストリへのパブリック アクセスを無効にする場合などです。
 
+> [!NOTE]
+> [サービス エンドポイント](container-registry-vnet.md)のある仮想ネットワークでレジストリが設定される場合、レジストリのパブリック エンドポイントへのアクセスを無効にすると、仮想ネットワーク内のレジストリへのアクセスも無効になります。
+
 ### <a name="disable-public-access---cli"></a>パブリック アクセスを無効にする - CLI
 
-Azure CLI を使用してパブリック アクセスを無効にするには、[az acr update][az-acr-update] を実行し、`--public-network-enabled` を `false` に設定します。 
-
-> [!NOTE]
-> `public-network-enabled` 引数には、Azure CLI 2.6.0 以降が必要です。 
+Azure CLI を使用してパブリック アクセスを無効にするには、[az acr update][az-acr-update] を実行し、`--public-network-enabled` を `false` に設定します。 `public-network-enabled` 引数には、Azure CLI 2.6.0 以降が必要です。 
 
 ```azurecli
 az acr update --name myContainerRegistry --public-network-enabled false

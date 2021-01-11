@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 6759b2c0f679a865d0bdcf8ea8cd39f258a9cf25
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: dfbdff01064b483085233ece47d1d3b635b68743
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021462"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM から Azure へのディザスター リカバリーの概要
 
@@ -23,6 +23,9 @@ ms.locfileid: "86132114"
 
 - [Azure Backup](../backup/backup-overview.md): オンプレミスと Azure VM のデータをバックアップします。 ファイルとフォルダー、特定のワークロード、または VM 全体をバックアップできます。 
 - [Azure Site Recovery](site-recovery-overview.md): オンプレミス マシンまたは Azure IaaS VM 上で実行されているアプリとワークロードに復元機能とディザスター リカバリー機能を提供します。 Site Recovery は、障害の発生時にレプリケーションを調整して Azure へのフェールオーバーを処理します。 また、Azure からプライマリ サイトへの復旧も処理します。 
+
+> [!NOTE]
+> Site Recovery では、ソース マシンのディザスター リカバリーがセットアップされているターゲット リージョンから顧客データを移動または格納することはありません。 お客様は、必要に応じて、別のリージョンから Recovery Services コンテナーを選択することもできます。 Recovery Services コンテナーにはメタデータが含まれますが、実際の顧客データは含まれません。
 
 ## <a name="how-does-site-recovery-do-disaster-recovery"></a>Site Recovery によるディザスター リカバリーのしくみ
 

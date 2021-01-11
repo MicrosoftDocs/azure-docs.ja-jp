@@ -8,18 +8,18 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: ba30584ca40e7d093ecd9090b82b977d71fc1e0e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 99d477bb9e8291721022e276c5933ec0ef7f1e37
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503304"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936012"
 ---
 # <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:REST と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
 Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 パイプラインでは画像を処理できますが、この REST チュートリアルではテキストに焦点を当て、言語検出と自然言語処理を適用して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
 
-このチュートリアルでは、Postman と [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して次のタスクを実行します。
+このチュートリアルでは、Postman と [Search REST API](/rest/api/searchservice/) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * まずは、Azure Blob Storage で、PDF、HTML、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。
@@ -135,7 +135,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 
 ### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
-[データ ソース オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-data-source)は、ファイルが格納されている BLOB コンテナーへの接続文字列を提供します。
+[データ ソース オブジェクト](/rest/api/searchservice/create-data-source)は、ファイルが格納されている BLOB コンテナーへの接続文字列を提供します。
 
 1. **POST** と次の URL を使用します。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
@@ -165,7 +165,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 
 ### <a name="step-2-create-a-skillset"></a>手順 2:スキルセットを作成する
 
-[スキルセット オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-skillset)は、コンテンツに適用される一連のエンリッチメント手順です。 
+[スキルセット オブジェクト](/rest/api/searchservice/create-skillset)は、コンテンツに適用される一連のエンリッチメント手順です。 
 
 1. **PUT** と次の URL を使用します。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
@@ -250,7 +250,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 
 ### <a name="step-3-create-an-index"></a>手順 3:インデックスを作成する
 
-[インデックス](https://docs.microsoft.com/rest/api/searchservice/create-index)は、Azure Cognitive Search の逆インデックスおよびその他の構成要素でコンテンツの物理的な表現を作成するために使用されるスキーマを提供します。 インデックスの最大コンポーネントはフィールド コレクションであり、そこではデータ型と属性によって Azure Cognitive Search でのコンテンツと動作が決まります。
+[インデックス](/rest/api/searchservice/create-index)は、Azure Cognitive Search の逆インデックスおよびその他の構成要素でコンテンツの物理的な表現を作成するために使用されるスキーマを提供します。 インデックスの最大コンポーネントはフィールド コレクションであり、そこではデータ型と属性によって Azure Cognitive Search でのコンテンツと動作が決まります。
 
 1. **PUT** と次の URL を使用して、インデックスに名前を付けます。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
@@ -334,7 +334,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 
 ### <a name="step-4-create-and-run-an-indexer"></a>手順 4:インデクサーの作成と実行
 
-[インデクサー](https://docs.microsoft.com/rest/api/searchservice/create-indexer)は、パイプラインを駆動するものです。 これまでに作成した 3 つのコンポーネント (データ ソース、スキルセット、インデックス) は、インデクサーへの入力です。 Azure Cognitive Search でのインデクサーの作成は、パイプライン全体の動作を引き起こすイベントです。 
+[インデクサー](/rest/api/searchservice/create-indexer)は、パイプラインを駆動するものです。 これまでに作成した 3 つのコンポーネント (データ ソース、スキルセット、インデックス) は、インデクサーへの入力です。 Azure Cognitive Search でのインデクサーの作成は、パイプライン全体の動作を引き起こすイベントです。 
 
 1. **PUT** と次の URL を使用して、インデクサーに名前を付けます。YOUR-SERVICE-NAME は、実際のサービス名に置き換えてください。
 
@@ -486,7 +486,7 @@ Free レベルを使用している場合は、次のメッセージが表示さ
    https://[YOUR-SERVICE-NAME].search.windows.net/indexes/cog-search-demo-idx/docs?search=*&$filter=organizations/any(organizations: organizations eq 'NASDAQ')&$select=metadata_storage_name,organizations&$count=true&api-version=2020-06-30
    ```
 
-これらのクエリは、Cognitive Search によって作成された新しいフィールドでクエリ構文やフィルターを操作するいくつかの方法を示しています。 その他のクエリの例については、[Search Documents REST API の例](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples)、[単純構文クエリの例](search-query-simple-examples.md)、および[完全な Lucene クエリの例](search-query-lucene-examples.md)に関するページを参照してください。
+これらのクエリは、Cognitive Search によって作成された新しいフィールドでクエリ構文やフィルターを操作するいくつかの方法を示しています。 その他のクエリの例については、[Search Documents REST API の例](/rest/api/searchservice/search-documents#bkmk_examples)、[単純構文クエリの例](search-query-simple-examples.md)、および[完全な Lucene クエリの例](search-query-lucene-examples.md)に関するページを参照してください。
 
 <a name="reset"></a>
 

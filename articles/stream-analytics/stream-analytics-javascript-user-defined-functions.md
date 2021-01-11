@@ -6,14 +6,14 @@ ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.date: 06/16/2020
-ms.openlocfilehash: c9767942c893017e98e3013f92022f058524e13c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: 6540b35925a92ebd6a8bcced427b5457785603db
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85078999"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056909"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics での JavaScript ユーザー定義関数
  
@@ -130,6 +130,60 @@ INTO
     output
 FROM
     input PARTITION BY PARTITIONID
+```
+
+### <a name="cast-string-to-json-object-to-process"></a>文字列を処理できるように JSON オブジェクトにキャストする
+
+JSON の文字列フィールドがあり、それを JSON オブジェクトに変換して JavaScript UDF で処理する場合は、**JSON.parse()** 関数を使って JSON オブジェクトを作成し、これを使用することができます。
+
+**JavaScript ユーザー定義関数の定義:**
+
+```javascript
+function main(x) {
+var person = JSON.parse(x);  
+return person.name;
+}
+```
+
+**サンプル クエリ:**
+```SQL
+SELECT
+    UDF.getName(input) AS Name
+INTO
+    output
+FROM
+    input
+```
+
+### <a name="use-trycatch-for-error-handling"></a>エラー処理に try/catch を使用する
+
+try/catch ブロックは、JavaScript UDF に渡される、形式が正しくない入力データに関する問題を特定するのに役立ちます。
+
+**JavaScript ユーザー定義関数の定義:**
+
+```javascript
+function main(input, x) {
+    var obj = null;
+
+    try{
+        obj = JSON.parse(x);
+    }catch(error){
+        throw input;
+    }
+    
+    return obj.Value;
+}
+```
+
+**サンプル クエリ: レコード全体を最初のパラメーターとして渡して、エラーが発生した場合にそれを返すことができるようにします。**
+```SQL
+SELECT
+    A.context.company AS Company,
+    udf.getValue(A, A.context.value) as Value
+INTO
+    output
+FROM
+    input A
 ```
 
 ## <a name="next-steps"></a>次のステップ

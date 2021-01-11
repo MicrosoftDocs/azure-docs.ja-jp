@@ -19,19 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 3bf9dc0e69707eaed8c2a844f6ed3169e65a5342
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564092"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923451"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での Lucence クエリ構文
 
 特殊なクエリ形式 (ワイルドカード、あいまい検索、近接検索、正規表現などその他多数) に対し、高度な [Lucene Query Parser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) 構文に基づいて Azure Cognitive Search に対するクエリを作成できます。 Lucene Query Parser 構文の多くは、[Azure Cognitive Search でそのまま実装](search-lucene-query-architecture.md)されています。ただし、*範囲検索*は例外で、これは Azure Cognitive Search では `$filter` 式を介して構築されます。 
 
 > [!NOTE]
-> 完全な Lucene 構文は、[Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents) API の **search** パラメーターで渡されるクエリ式に使用されます。その API の [$filter](search-filters.md) パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 これらのさまざまな構文には、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
+> 完全な Lucene 構文は、[Search Documents](/rest/api/searchservice/search-documents) API の **search** パラメーターで渡されるクエリ式に使用されます。その API の [$filter](search-filters.md) パラメーターで使用される [OData 構文](query-odata-filter-orderby-syntax.md)と混同しないでください。 これらのさまざまな構文には、クエリの作成や文字列のエスケープなどを行うための独自の規則があります。
 
 ## <a name="invoke-full-parsing"></a>完全な解析の呼び出し
 
@@ -60,7 +60,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 }
 ```
 
-その他の例については、[Azure Cognitive Search でクエリを作成するための Lucene クエリ構文例](search-query-lucene-examples.md)に関する記事を参照してください。 すべての可能なクエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)」を参照してください。
+その他の例については、[Azure Cognitive Search でクエリを作成するための Lucene クエリ構文例](search-query-lucene-examples.md)に関する記事を参照してください。 すべての可能なクエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/Search-Documents)」を参照してください。
 
 > [!NOTE]  
 >  Azure Cognitive Search では、簡潔なキーワード検索に使用できる単純で堅牢なクエリ言語である、[単純なクエリ構文](query-simple-syntax.md)もサポートされます。  
@@ -139,7 +139,7 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
 
 複数の文字列を 1 つのエンティティとして評価する場合は、必ず両方の文字列を引用符で囲んでください。この場合は、`artists` フィールドで 2 人の異なるアーティストを検索します。  
 
-`fieldName:searchExpression` に指定されるフィールドは、`searchable` フィールドでなければなりません。  フィールド定義におけるインデックス属性の利用方法の詳細については、「[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)」を参照してください。  
+`fieldName:searchExpression` に指定されるフィールドは、`searchable` フィールドでなければなりません。  フィールド定義におけるインデックス属性の利用方法の詳細については、「[インデックスの作成](/rest/api/searchservice/create-index)」を参照してください。  
 
 > [!NOTE]
 > 各フィールド検索式にはフィールド名が明示的に指定されるため、フィールド検索式を使用する際は `searchFields` パラメーターを使用する必要はありません。 ただし、いくつかの部分で特定のフィールドをスコープにし、他の部分は複数のフィールドに適用できるクエリを実行する場合は、`searchFields` パラメーターを引き続き使用できます。 たとえば、クエリ `search=genre:jazz NOT history&searchFields=description` は、`genre` フィールドの `jazz` のみと一致し、`description` フィールドの `NOT history` と一致します。 `fieldName:searchExpression` に指定されたフィールド名は常に `searchFields` パラメーターに優先するため、この例では `searchFields` パラメーターに `genre` を含める必要はありません。
@@ -183,7 +183,16 @@ NOT 演算子はマイナス記号です。 たとえば、`wifi –luxury` を�
 > [!NOTE]  
 > 原則として、パターン マッチングは低速であるため、用語内の文字シーケンスのトークンを作成するエッジ n-gram トークン化など、別の方法を検討することもできます。 インデックスのサイズは大きくなりますが、パターンの構成やインデックスを作成する文字列の長さによっては、クエリの実行速度が速くなる場合があります。
 >
-> クエリの解析中には、プレフィックス、サフィックス、ワイルドカードとして定式化されたクエリ、または正規の式は、[語彙分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)をバイパスして、クエリ ツリーにそのまま渡されます。 クエリで指定した形式の文字列がインデックスに含まれている場合に限って、一致が検出されます。 部分一致やパターンをうまく検出するためには、ほとんどの場合、文字列の整合性を維持するインデックスの作成時に代替アナライザーが必要になります。 詳細については、「[Azure Cognitive Search クエリでの部分一致検索](search-query-partial-matching.md)」を参照してください。
+
+### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>ワイルドカード クエリに対するアナライザーの影響
+
+クエリの解析中には、プレフィックス、サフィックス、ワイルドカードとして定式化されたクエリ、または正規の式は、[語彙分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)をバイパスして、クエリ ツリーにそのまま渡されます。 クエリで指定した形式の文字列がインデックスに含まれている場合に限って、一致が検出されます。 部分一致やパターンをうまく検出するためには、ほとんどの場合、文字列の整合性を維持するインデックスの作成時にアナライザーが必要になります。 詳細については、「[Azure Cognitive Search クエリでの部分一致検索](search-query-partial-matching.md)」を参照してください。
+
+"terminat*" という検索クエリで "terminate"、"termination"、"terminates" などの用語を含む結果を返す状況を考えてください。
+
+en.lucene (English Lucene) アナライザーを使用する場合、各用語の語幹処理が積極的に適用されます。 たとえば、"terminate"、"termination"、"terminates" はすべて、インデックスではトークン "termi" にトークン化されます。 一方、ワイルドカードやあいまい検索を使用するクエリの用語はまったく分析されません。そのため、"terminat*" クエリに一致する結果はありません。
+
+一方、Microsoft analyzers (この場合、en.microsoft アナライザー) はもう少し高度であり、語幹処理の代わりに見出し語選定が使用されます。 つまり、生成されたトークンはすべて正しい英単語になります。 たとえば、"terminate"、"terminates"、"termination" はほとんどの場合、インデックスに全体として残り、ワイルドカードやあいまい検索に多く依存するシナリオに最適です。
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> ワイルドカード クエリと正規表現クエリのスコアリング
 
@@ -193,6 +202,6 @@ Azure Cognitive Search は、テキスト クエリで、頻度に基づいた�
 
 + [単純な検索のクエリ例](search-query-simple-examples.md)
 + [完全な Lucene 検索のクエリ例](search-query-lucene-examples.md)
-+ [ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
++ [ドキュメントの検索](/rest/api/searchservice/Search-Documents)
 + [フィルターと並べ替えの OData 式の構文](query-odata-filter-orderby-syntax.md)   
-+ [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)   
++ [Azure Cognitive Search でのシンプルなクエリ構文](query-simple-syntax.md)

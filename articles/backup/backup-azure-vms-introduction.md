@@ -3,16 +3,16 @@ title: Azure VM バックアップについて
 description: この記事では、Azure Backup サービスを使用して Azure 仮想マシンをバックアップする方法と、ベスト プラクティスに従う方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84322911"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587499"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
-この記事では、[Azure Backup サービス](backup-introduction-to-azure-backup.md)によって Azure 仮想マシン (VM) がどのようにバックアップされるかについて説明します。
+この記事では、[Azure Backup サービス](./backup-overview.md)によって Azure 仮想マシン (VM) がどのようにバックアップされるかについて説明します。
 
 Azure Backup では、VM 上のデータが誤って破壊されることを防ぐために、独立して分離されたバックアップを提供しています。 バックアップは、復旧ポイントの管理機能をビルトインで備えた Recovery Services コンテナーに格納されます。 構成とスケーリングは単純で、バックアップは最適化され、必要に応じて簡単に復元することができます。
 
@@ -26,8 +26,8 @@ Azure Backup によって Azure VM のバックアップが行われる方法を
 
 1. バックアップの対象として選択されている Azure VM に対して、Azure Backup はユーザーが指定したバックアップ スケジュールに従ってバックアップ ジョブを開始します。
 1. 最初のバックアップ時に、バックアップ拡張機能が VM にインストールされます (VM が実行されている場合)。
-    - Windows VM の場合、[VMSnapshot 拡張機能](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)がインストールされます。
-    - Linux VM の場合、[VMSnapshotLinux](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux) 拡張機能がインストールされます。
+    - Windows VM の場合、[VMSnapshot 拡張機能](../virtual-machines/extensions/vmsnapshot-windows.md)がインストールされます。
+    - Linux VM の場合、[VMSnapshotLinux](../virtual-machines/extensions/vmsnapshot-linux.md) 拡張機能がインストールされます。
 1. 実行されている Windows VM については、Backup は Windows ボリューム シャドウ コピー サービス (VSS) と連携して VM のアプリ整合性スナップショットを取得します。
     - 既定では、Backup によって完全 VSS バックアップが取得されます。
     - Backup はアプリ整合性スナップショットを取得できない場合、基になるストレージのファイル整合性スナップショットを取得します (VM の停止中はアプリケーションの書き込みは行われないため)。
@@ -51,8 +51,8 @@ Azure Backup を使用して Azure VM をバックアップするとき、保存
 
 **暗号化** | **詳細** | **サポート**
 --- | --- | ---
+**SSE** | SSE では、Azure Storage により、データを格納する前に自動的に暗号化することで、保存中の暗号化が提供されます。 Azure Storage では、取得前にデータの暗号化解除も行われます。 Azure Backup では、次の 2 種類の Storage Service Encryption を使用した VM のバックアップがサポートされています。<li> **プラットフォーム マネージド キーを使用した SSE**:この暗号化は、お使いの VM の全ディスクの既定です。 詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)を参照してください。<li> **カスタマー マネージド キーを使用した SSE**. CMK では、ユーザーがディスクの暗号化に使用するキーを管理します。 詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)を参照してください。 | Azure Backup では、Azure VM の保存中の暗号化のために SSE が使用されます。
 **Azure Disk Encryption** | Azure Disk Encryption では Azure VM の OS とデータ ディスクの両方が暗号化されます。<br/><br/> Azure Disk Encryption は、シークレットとしてキー コンテナーで保護されている BitLocker 暗号化キー (BEK) と統合されます。 Azure Disk Encryption は、Azure Key Vault キー暗号化キー (KEK) とも統合されます。 | Azure Backup では、BEK のみで、または BEK と KEK を併用して、暗号化されたマネージドおよびアンマネージド Azure VM のバックアップがサポートされます。<br/><br/> BEK と KEK の両方がバックアップされて暗号化されます。<br/><br/> KEK と BEK がバックアップされるため、必要に応じて、必要なアクセス許可を持つユーザーは、キーとシークレットをキー コンテナーに復元できます。 ユーザーは、暗号化された VM を復旧することもできます。<br/><br/> 暗号化されたキーとシークレットは、承認されていないユーザーによって、または Azure によって読み取ることはできません。
-**SSE** | SSE では、Azure Storage により、データを格納する前に自動的に暗号化することで、保存中の暗号化が提供されます。 Azure Storage では、取得前にデータの暗号化解除も行われます。 | Azure Backup では、Azure VM の保存中の暗号化のために SSE が使用されます。
 
 マネージドおよびアンマネージド Azure VM の場合、Backup では、BEK のみで暗号化された VM と、BEK と KEK を併用して暗号化された VM の両方がサポートされます。
 
@@ -64,7 +64,7 @@ BEK もバックアップされます。 そのため、BEK が失われた場�
 
 Azure Backup では、バックアップ スケジュールに従ってスナップショットが取得されます。
 
-- **Windows VM:** Windows VM の場合、Backup サービスは VSS と連携して、VM ディスクのアプリ整合性スナップショットを取得します。  既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。  Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するため) VSS コピー バックアップを作成するように設定を変更できます。 詳細については、 [こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues)を参照してください。
+- **Windows VM:** Windows VM の場合、Backup サービスは VSS と連携して、VM ディスクのアプリ整合性スナップショットを取得します。  既定の Azure Backup では、VSS の完全バックアップが作成されます (アプリケーション レベルで整合性のあるバックアップを取得するため、バックアップ時に、SQL Server などのアプリケーションのログは切り捨てられます)。  Azure VM バックアップで SQL Server データベースを使用している場合は、(ログを保持するため) VSS コピー バックアップを作成するように設定を変更できます。 詳細については、 [こちらの記事](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues)を参照してください。
 
 - **Linux VM:** Linux VM のアプリ整合性スナップショットを取得するには、Linux の事前スクリプトおよび事後スクリプトのフレームワークを使用して、整合性を保証するための独自のカスタム スクリプトを記述します。
 
@@ -81,6 +81,9 @@ Azure Backup では、バックアップ スケジュールに従ってスナッ
 **アプリケーションの整合性** | アプリ整合性バックアップでは、メモリの内容と保留中の I/O 操作がキャプチャされます。 アプリ整合性スナップショットでは、バックアップが発生する前にアプリ データの整合性を保証するために、VSS ライター (または Linux の事前/事後スクリプト) が使用されます。 | アプリ整合性スナップショットで VM を復旧すると、VM が起動されます。 データの損失や破損はありません。 アプリは整合性が確保された状態で開始します。 | Windows: すべての VSS ライターが成功した<br/><br/> Linux: 事前/事後スクリプトが構成されて成功した
 **ファイル システム整合性** | ファイル システム整合性バックアップでは、同時にすべてのファイルのスナップショットを作成することで整合性が提供されます。<br/><br/> | ファイル システム整合性スナップショットで VM を復旧すると、VM が起動されます。 データの損失や破損はありません。 復元されたデータに一貫性が保たれるようにするために、アプリは独自の "修正" メカニズムを実装する必要があります。 | Windows: 一部の VSS ライターが失敗した <br/><br/> Linux: 既定 (事前/事後スクリプトが構成されていないか失敗した)
 **クラッシュ整合性** | クラッシュ整合性スナップショットは、通常、バックアップ時に Azure VM がシャットダウンした場合に発生します。 バックアップ時にディスクに既に存在していたデータのみが、キャプチャされバックアップされます。 | VM のブート プロセスから開始し、その後ディスク チェックを行って破損エラーを修正します。 クラッシュ前にディスクに転送されなかったメモリ内のデータや書き込み操作は、すべて失われます。 アプリは独自のデータ検証を実装しています。 たとえば、データベース アプリでは検証のためトランザクション ログを使用できます。 トランザクション ログにデータベース内に存在しないエントリが含まれている場合、データベース ソフトウェアはデータの整合性が得られるまでトランザクションをロールバックします。 | VM はシャットダウン (停止/割り当て解除) 状態です。
+
+>[!NOTE]
+> プロビジョニングの状態が**成功**の場合、Azure Backup ではファイル システム整合性バックアップが実行されます。 プロビジョニングの状態が**使用不可**または**失敗**の場合は、クラッシュ整合性バックアップが実行されます。 プロビジョニングの状態が**作成中**または**削除中**の場合は、Azure Backup が操作を再試行していることを意味します。
 
 ## <a name="backup-and-restore-considerations"></a>バックアップと復元の考慮事項
 
@@ -108,8 +111,8 @@ Azure Backup では、バックアップ スケジュールに従ってスナッ
 VM バックアップを構成するときは、次のプラクティスに従うことをお勧めします。
 
 - ポリシーで設定されている既定のスケジュール時間を変更します。 たとえば、ポリシーで既定の時間が午前 0 時の場合、リソースが最適に使用されるよう、数分時間を進めることを検討してください。
-- 1 つのコンテナーから複数の VM を復元する場合は、ターゲットのストレージ アカウントがスロットルされないようにするために、それぞれ異なる[汎用 v2 ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用することを強くお勧めします。 たとえば、VM ごとに異なるストレージ アカウントが必要です。 たとえば、10 個の VM を復元する場合は、10 個の異なるストレージ アカウントを使用します。
-- インスタント リストアで Premium Storage を使用している VM のバックアップについては、割り当てられた合計ストレージ領域の *50%* の空き領域 (最初のバックアップに**のみ**必要) を割り当てることをお勧めします。 最初のバックアップが完了すると、バックアップに 50% の空き領域は不要になります。
+- 1 つのコンテナーから複数の VM を復元する場合は、ターゲットのストレージ アカウントがスロットルされないようにするために、それぞれ異なる[汎用 v2 ストレージ アカウント](../storage/common/storage-account-upgrade.md)を使用することを強くお勧めします。 たとえば、VM ごとに異なるストレージ アカウントが必要です。 たとえば、10 個の VM を復元する場合は、10 個の異なるストレージ アカウントを使用します。
+- インスタント リストアでの Premium Storage を使用している VM のバックアップについては、割り当てられた合計記憶域スペースの *50%* の空き領域を割り当てることが推奨されます。これは最初のバックアップに**のみ**必要です。 最初のバックアップが完了すると、バックアップに 50% の空き領域は不要になります。
 - ストレージ アカウントあたりのディスク数の制限は、サービスとしてのインフラストラクチャ (IaaS) VM で実行されているアプリケーションがディスクにどれくらいアクセスするかによって決まります。 通常、1 つのストレージ アカウント上に 5 ～ 10 個以上のディスクが存在する場合は、一部のディスクを別のストレージ アカウントに移動して負荷を分散します。
 
 ## <a name="backup-costs"></a>バックアップのコスト
@@ -137,4 +140,4 @@ OS ディスク | 32 TB | 17 GB
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure VM バックアップの準備](backup-azure-arm-vms-prepare.md)に進みます。
+- [Azure VM のバックアップを準備する](backup-azure-arm-vms-prepare.md)。

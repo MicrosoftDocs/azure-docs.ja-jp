@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: yelevin
-ms.openlocfilehash: f06f8d3450f8907aa1be34b738565ac55e5e3d2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 160912ef53b5c079d026c5d16230f49eadf66366
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559130"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794436"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection からデータを接続する
 
@@ -57,15 +57,17 @@ Azure Information Protection データ コネクタを構成することによ�
 
 Azure Information Protection 用に Log Analytics ワークスペースを構成していない場合、または Azure Information Protection のログ情報を格納するワークスペースを変更する必要がある場合は、次の手順のようにします。
 
-1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Azure Information Protection (Preview)]\(Azure Information Protection (プレビュー)\)** を選択します。
+1. Azure Sentinel で **[データ コネクタ]**  >  **[Azure Information Protection (プレビュー)]** を選択します。
 
 2. **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
-3. **[分析の構成 (プレビュー)]** ブレードで、現在 Azure Sentinel 用に使用しているワークスペースを選択します。 別のワークスペースを選択した場合、Azure Information Protection からのレポート データを Azure Sentinel で使用できなくなります。
+3. **[構成]** で、 **[Azure Information Protection ログを接続する]** を選択します。
 
-4. ワークスペースを選択して、 **[OK]** を選択すると、コネクタの **[状態]** が **[接続済み]** に変わります。
+4. **[分析の構成 (プレビュー)]** ブレードで、現在 Azure Sentinel 用に使用しているワークスペースを選択します。 別のワークスペースを選択した場合、Azure Sentinel では、Azure Information Protection からのレポート データを使用できません。
 
-5. Azure Information Protection からのレポート データは、選択したワークスペースの **InformationProtectionLogs_CL** テーブルに格納されます。 
+5. ワークスペースを選択したら、 **[OK]** を選択します。 コネクタの **[状態]** が、 **[接続済み]** に変わります。
+
+6. Azure Information Protection からのレポート データは、選択したワークスペースの **InformationProtectionLogs_CL** テーブルに格納されます。 
     
     このレポート データに関連するスキーマを Azure Monitor で使用するには、**InformationProtectionEvents** を検索します。 これらのイベント関数については、Azure Information Protection のドキュメントの「[イベント関数のフレンドリ スキーマ リファレンス](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions)」セクションを参照してください。
 

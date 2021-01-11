@@ -1,19 +1,17 @@
 ---
 title: Azure Files Active Directory Domain Services を使用した FSLogix プロファイル コンテナーの作成 - Azure
 description: この記事では、Azure Files と Azure Active Directory Domain Services を使用して FSLogix プロファイル コンテナーを作成する方法について説明します。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362443"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825615"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure Files および Azure AD DS を使用してプロファイル コンテナーを作成する
 
@@ -115,19 +113,25 @@ ms.locfileid: "85362443"
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. 次のコマンドを実行して、Azure Files 共有への完全なアクセスをユーザーに許可します。
+8. Windows Virtual Desktop ユーザーが自分のプロファイル コンテナーを作成できるようにしつつ、作成者以外はそのプロファイル コンテナーにアクセスできないようにするために、次のコマンドを実行します。
 
      ```cmd
-     icacls <mounted-drive-letter>: /grant <user-email>:(f)
+     icacls <mounted-drive-letter>: /grant <user-email>:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-    - `<mounted-drive-letter>` を、ユーザーに使用してもらいたいドライブの文字に置き換えます。
-    - `<user-email>` を、このプロファイルを使用してセッション ホスト VM にアクセスするユーザーの UPN に置き換えます。
+    - `<mounted-drive-letter>` の部分は、ドライブのマップに使用したドライブ文字に置き換えます。
+    - `<user-email>` の部分は、共有にアクセスする必要があるユーザーか、そのユーザーが含まれる Active Directory グループの UPN に置き換えます。
 
     次に例を示します。
 
      ```cmd
-     icacls y: /grant john.doe@contoso.com:(f)
+     icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
 ## <a name="create-a-profile-container"></a>プロファイル コンテナーを作成する
@@ -243,4 +247,4 @@ FSLogix プロファイル コンテナーを作成する別の方法を探し�
 - [ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成](create-host-pools-user-profile.md)します。
 - [Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する](create-fslogix-profile-container.md)
 
-Azure ファイルの FSlogix コンテナーに関連のある概念の詳細な情報については、「[FSLogix プロファイル コンテナーと Azure ファイル](fslogix-containers-azure-files.md)」をご覧ください。
+Azure Files の FSlogix コンテナーに関連のある概念の詳細な情報については、「[FSLogix プロファイル コンテナーと Azure Files](fslogix-containers-azure-files.md)」をご覧ください。

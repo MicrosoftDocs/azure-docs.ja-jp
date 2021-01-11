@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: e2241a452bdcf974282814eb118da68517b02369
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: da34c2aa8a178a99f325bef8beb4a7e7685b3cbc
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85323187"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88931473"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 

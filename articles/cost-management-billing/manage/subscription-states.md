@@ -6,15 +6,16 @@ author: anuragdalmia
 ms.reviewer: banders
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 08/20/2020
 ms.author: andalmia
-ms.openlocfilehash: 0d301087578c8a944920bca932bcae3127ae50ef
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 70d03b4aeeaecee522552b381ce1309485719dc6
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282638"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686685"
 ---
 # <a name="azure-subscription-states"></a>Azure サブスクリプションの状態
 

@@ -39,14 +39,11 @@
   items:
     - name: Key Vault のコード サンプル
       href: 'https://docs.microsoft.com/samples/browse/?expanded=azure&products=azure-key-vault'
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ../policy-samples.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: 概念
   items:
     - name: 基本的な概念
       href: basic-concepts.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Azure Key Vault セキュリティ
           href: overview-security.md
@@ -62,6 +59,9 @@
           href: security-baseline.md
         - name: Azure Key Vault のセキュリティに関する推奨事項
           href: security-recommendations.md
+        - name: Azure Policy によるセキュリティ制御
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
     - name: 通知 (プレビュー)
       items:
         - name: Azure Event Grid での監視 (プレビュー)
@@ -86,10 +86,18 @@
       items:
         - name: Key Vault に対する認証
           href: authentication.md
-        - name: App Service のマネージド ID を使用する
-          href: managed-identity.md
-        - name: アクセス制御ポリシーを使用する
-          href: group-permissions-for-apps.md
+        - name: アクセス ポリシーの割り当て
+          items:
+            - name: CLI
+              href: assign-access-policy-cli.md
+            - name: PowerShell
+              href: assign-access-policy-powershell.md
+            - name: ポータル
+              href: assign-access-policy-portal.md
+        - name: キー、シークレット、証明書へのアクセスを管理するための Azure RBAC の使用 (プレビュー)
+          href: rbac-guide.md
+        - name: アクセスに関する問題のトラブルシューティング
+          href: troubleshooting-access-issues.md
     - name: 開発
       items:
         - name: Azure Key Vault 開発者ガイド
@@ -136,6 +144,8 @@
           href: move-region.md
 - name: リファレンス
   items:
+    - name: クライアント ライブラリ
+      href: client-libraries.md
     - name: REST API のエラー コード - Azure Key Vault
       href: rest-error-codes.md
     - name: 一般的なパラメーターとヘッダー
@@ -159,6 +169,9 @@
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

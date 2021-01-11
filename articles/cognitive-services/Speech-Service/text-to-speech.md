@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 42d5ca12e91de5e0e906fb017183ea684b63b49c
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399495"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167710"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
@@ -41,13 +41,7 @@ ms.locfileid: "81399495"
 
 ## <a name="get-started"></a>はじめに
 
-テキスト読み上げサービスは、[Speech SDK](speech-sdk.md) を介して利用できます。 さまざまな言語とプラットフォームで、いくつかの一般的なシナリオがクイックスタートとして用意されています。
-
-* [オーディオ ファイルに音声を合成する](quickstarts/text-to-speech-audio-file.md)
-* [スピーカーに音声を合成する](quickstarts/text-to-speech.md)
-* [長い形式の音声を非同期に合成する](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
-
-必要であれば、[REST](rest-text-to-speech.md) を介してテキスト読み上げサービスにアクセスすることもできます。
+テキスト読み上げの使用を開始するには、[クイックスタート](get-started-text-to-speech.md)を参照してください。 テキスト読み上げサービスは、[Speech SDK](speech-sdk.md)、[REST API](rest-text-to-speech.md)、および [Speech CLI](spx-overview.md) を介して利用できます。
 
 ## <a name="sample-code"></a>サンプル コード
 

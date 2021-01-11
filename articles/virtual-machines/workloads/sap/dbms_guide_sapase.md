@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525264"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654601"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
 
@@ -59,7 +59,7 @@ Linux VM では、プロファイル SAP-ASE Linux Huge Pages を使用した `s
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>SAP ASE デプロイのための VM とディスク構造に関する推奨事項
 
-SAP NetWeaver Applications 用の SAP ASE は、[SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されているすべての VM の種類でサポートされています。中規模の SAP ASE データベース サーバーに使用される一般的な VM の種類には、Esv3 が含まれています。  数テラバイトの大規模なデータベースでは、M シリーズの VM の種類を利用できます。 M シリーズの書き込みアクセラレータを有効にすると、SAP ASE のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 SAP ASE がログ書き込みを実行する方法により、SAP ASE で書き込みアクセラレータを慎重にテストする必要があります。  [SAP サポート ノート #2816580](../../windows/how-to-enable-write-accelerator.md) を確認し、パフォーマンス テストを実行することを検討してください。  
+SAP NetWeaver Applications 用の SAP ASE は、[SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されているすべての VM の種類でサポートされています。中規模の SAP ASE データベース サーバーに使用される一般的な VM の種類には、Esv3 が含まれています。  数テラバイトの大規模なデータベースでは、M シリーズの VM の種類を利用できます。 M シリーズの書き込みアクセラレータを有効にすると、SAP ASE のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 SAP ASE がログ書き込みを実行する方法により、SAP ASE で書き込みアクセラレータを慎重にテストする必要があります。  [SAP サポート ノート #2816580](../../how-to-enable-write-accelerator.md) を確認し、パフォーマンス テストを実行することを検討してください。  
 書き込みアクセラレータは、トランザクション ログのディスク専用に設計されています。 ディスク レベルのキャッシュは "NONE" に設定する必要があります。 Azure 書き込みアクセラレータで他の DBMS と同様の機能強化が示されなくても、驚くことはありません。 SAP ASE がトランザクション ログに書き込む方法によっては、Azure 書き込みアクセラレータによる高速化がほとんどない場合があります。
 データ デバイス用とログ デバイス用に個別のディスクを使用することをお勧めします。  システム データベース sybsecurity と `saptools` には、専用のディスクは必要ありません。SAP データベースのデータとログ デバイスを含むディスクに配置できます。 
 
@@ -71,7 +71,7 @@ SAP ASE では、特に構成されていない限り、ディスク ストレ�
 「[Configuring Automatic Database Space Expansion in SAP Adaptive Server Enterprise](https://blogs.sap.com/2014/07/09/configuring-automatic-database-space-expansion-in-sap-adaptive-server-enterprise/)」 (SAP Adaptive Server Enterprise で Automatic Database Space Expansion を構成する) の記事および [SAP サポート ノート #1815695](https://launchpad.support.sap.com/#/notes/1815695) で説明されているように、Automatic Database Expansion を構成することをお勧めします。 
 
 ### <a name="sample-sap-ase-on-azure-virtual-machine-disk-and-file-system-configurations"></a>Azure 仮想マシン、ディスクおよびファイル システムでの SAP ASE のサンプル構成 
-以下のテンプレートは、Linux と Windows の両方のサンプル構成を示しています。 仮想マシンとディスクの構成を確認する前に、個々の VM のネットワークとストレージの帯域幅クォータがビジネス要件を満たすのに十分であることを確認してください。 また、Azure VM の種類によって、VM に接続できるディスクの最大数が異なることにも留意してください。 たとえば、E4s_v3 の VM には、48 MB/秒のストレージ IO スループットの制限があります。 データベース バックアップ アクティビティで 48 MB/秒を超えるストレージ スループットが必要な場合は、より多くのストレージ帯域幅スループットを持つより大きい VM の種類を使用することは避けられません。 Azure ストレージを構成する場合は、特に [Azure Premium ストレージ](../../windows/premium-storage-performance.md)では、容量の GB あたりのスループットと IOPS が変化することにも留意する必要があります。 このトピックについて詳しくは、「[Azure で利用できるディスクの種類](../../windows/disks-types.md)」の記事を参照してください。 Azure VM の特定の種類のクォータについては、「[メモリ最適化済み仮想マシンのサイズ](../../sizes-memory.md)」の記事と、それにリンクされている記事に記載されています。 
+以下のテンプレートは、Linux と Windows の両方のサンプル構成を示しています。 仮想マシンとディスクの構成を確認する前に、個々の VM のネットワークとストレージの帯域幅クォータがビジネス要件を満たすのに十分であることを確認してください。 また、Azure VM の種類によって、VM に接続できるディスクの最大数が異なることにも留意してください。 たとえば、E4s_v3 の VM には、48 MB/秒のストレージ IO スループットの制限があります。 データベース バックアップ アクティビティで 48 MB/秒を超えるストレージ スループットが必要な場合は、より多くのストレージ帯域幅スループットを持つより大きい VM の種類を使用することは避けられません。 Azure ストレージを構成する場合は、特に [Azure Premium ストレージ](../../windows/premium-storage-performance.md)では、容量の GB あたりのスループットと IOPS が変化することにも留意する必要があります。 このトピックについて詳しくは、「[Azure で利用できるディスクの種類](../../disks-types.md)」の記事を参照してください。 Azure VM の特定の種類のクォータについては、「[メモリ最適化済み仮想マシンのサイズ](../../sizes-memory.md)」の記事と、それにリンクされている記事に記載されています。 
 
 > [!NOTE]
 >  DBMS システムがオンプレミスから Azure に移行されている場合は、VM での監視を実行し、CPU、メモリ、IOPS、およびストレージのスループットを評価することをお勧めします。 観察されたピーク時の値を、前述の記事に記載されている VM クォータの制限と比較します。

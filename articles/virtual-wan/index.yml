@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 05/08/2020
-  ms.openlocfilehash: 14336a28630e7a62a19e2b3a51934950cf12e2f8
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.date: 08/19/2020
+  ms.openlocfilehash: 772fa134eabc45dcbaa9e9b05c573aec493dd57b
+  ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85564031"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89438160"
 landingContent:
 - title: Virtual WAN について
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
       url: virtual-wan-about.md
   - linkListType: concept
     links:
+    - text: Virtual WAN に移行する
+      url: migrate-from-hub-spoke-topology.md
     - text: 場所とパートナーの操作
       url: virtual-wan-locations-partners.md
     - text: よく寄せられる質問
@@ -39,24 +41,60 @@ landingContent:
       url: virtual-wan-expressroute-portal.md
     - text: ユーザー VPN (ポイント対サイト) 接続を作成する
       url: virtual-wan-point-to-site-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: Virtual WAN パートナーの自動化の構成
-      url: virtual-wan-configure-automation-providers.md
   - linkListType: concept
     links:
     - text: IPsec 接続の既定のポリシー
       url: virtual-wan-ipsec.md
-- title: アーキテクチャ
+    - text: Virtual WAN パートナー向けの自動化のガイドライン
+      url: virtual-wan-configure-automation-providers.md
+  - linkListType: how-to-guide
+    links:
+    - text: ハブに NVA を作成する
+      url: how-to-nva-hub.md
+    - text: Virtual WAN 向けの ExpressRoute 経由の IPsec を構成する
+      url: vpn-over-expressroute.md
+    - text: VPN Gateway を Virtual WAN に接続する
+      url: connect-virtual-network-gateway-vwan.md
+- title: Architecture
   linkLists:
   - linkListType: concept
     links:
     - text: Virtual WAN に移行する
       url: migrate-from-hub-spoke-topology.md
+  - linkListType: architecture
+    links:
     - text: グローバル転送ネットワーク アーキテクチャ
       url: virtual-wan-global-transit-network-architecture.md
     - text: SD-WAN 接続のアーキテクチャ
       url: sd-wan-connectivity-architecture.md
+- title: ルーティング
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 仮想ハブのルーティングについて
+      url: about-virtual-hub-routing.md
+    - text: シナリオ - NVA を経由するトラフィックのルーティング
+      url: scenario-route-through-nva.md
+    - text: シナリオ - 任意の環境間
+      url: scenario-any-to-any.md
+    - text: シナリオ - VNet の分離
+      url: scenario-isolate-vnets.md
+    - text: シナリオ - 共有サービスの VNet
+      url: scenario-shared-services-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: 仮想ハブのルーティングを構成する
+      url: how-to-virtual-hub-routing.md
+- title: 監視
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Monitor の分析情報を使用して監視する
+      url: azure-monitor-insights.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Monitor のログとメトリックを構成する
+      url: azure-monitor-insights.md
 - title: リファレンス
   linkLists:
   - linkListType: reference

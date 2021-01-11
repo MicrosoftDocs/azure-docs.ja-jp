@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 4a9081b3d3c1c925efb4cc80201e6154752dc628
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a18dbf5c00c3f3aba2b2d58f060856aba9fb080
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84734777"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722899"
 ---
-# <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
+# <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)
 
 このページには、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。
 
@@ -61,7 +61,7 @@ ms.locfileid: "84734777"
 ただし、パスワード ハッシュの同期に Azure AD Connect を使用している場合は、パスワード ハッシュ値が Azure AD に格納されているため、Azure AD Domain Services を使用できます。
 
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>Azure AD Domain Services をサブスクリプション内の複数の仮想ネットワークで利用できますか。
-サービス自体は、このシナリオを直接サポートしていません。 マネージド ドメインは一度に 1 つの仮想ネットワークでのみ利用できます。 ただし、複数の仮想ネットワーク間で接続を構成して、Azure AD Domain Services を他の仮想ネットワークに公開することができます。 詳細については、[VPN ゲートウェイを使用して Azure の仮想ネットワークを接続する方法](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)または[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)に関する記事を参照してください。
+サービス自体は、このシナリオを直接サポートしていません。 マネージド ドメインは一度に 1 つの仮想ネットワークでのみ利用できます。 ただし、複数の仮想ネットワーク間で接続を構成して、Azure AD Domain Services を他の仮想ネットワークに公開することができます。 詳細については、[VPN ゲートウェイを使用して Azure の仮想ネットワークを接続する方法](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md)または[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)に関する記事を参照してください。
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>PowerShell を使用して Azure AD ドメイン サービスを有効にできますか。
 はい。 詳細については、「[PowerShell を使用した Azure Active Directory Domain Services の有効化](powershell-create-instance.md)」を参照してください。
@@ -73,14 +73,14 @@ ms.locfileid: "84734777"
 いいえ。 マネージド ドメインは Azure AD Domain Services によって提供されるドメインです。 このドメインに対してドメイン コントローラーをプロビジョニング、構成、管理する必要はありません。 これらの管理アクティビティは、Microsoft からサービスとして提供されています。 そのため、マネージド ドメインにドメイン コントローラー (読み取り/書き込みや読み取り専用) をさらに追加することはできません。
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。
-いいえ。 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待されたゲスト ユーザーは、Azure AD Domain Services の管理対象ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに格納されません。 そのため、Azure AD Domain Services では、これらのユーザーの NTLM と Kerberos のハッシュをマネージド ドメインに同期することはできません。 このようなユーザーは、サインインすることも、マネージド ドメインにコンピューターを参加させることもできません。
+いいえ。 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 招待プロセスを使用して Azure AD ディレクトリに招待されたゲスト ユーザーは、Azure AD Domain Services の管理対象ドメインに同期されます。 ただし、これらのユーザーのパスワードは Azure AD ディレクトリに格納されません。 そのため、Azure AD Domain Services では、これらのユーザーの NTLM と Kerberos のハッシュをマネージド ドメインに同期することはできません。 このようなユーザーは、サインインすることも、マネージド ドメインにコンピューターを参加させることもできません。
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。
 いいえ。 Azure AD Domain Services マネージド ドメインを作成した後は、そのマネージド ドメインを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。マネージド ドメインをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、仮想ネットワークを慎重に選択してください。
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Azure AD Domain Services には高可用性オプションが含まれていますか。
 
-はい。 各 Azure AD Domain Services のマネージド ドメインには、2 つのドメイン コントローラーが含まれています。 これらのドメイン コントローラーについては、お客様が管理または接続することはありません。これらはマネージド サービスの一部です。 Azure AD Domain Services を Availability Zones をサポートするリージョンにデプロイすると、ドメイン コントローラーはゾーン間に分散されます。 Availability Zones をサポートしていないリージョンの場合、ドメイン コントローラーは可用性セット間に分散されます。 この分散に対する構成オプションや管理制御はありません。 詳細については、「[Azure の仮想マシンの可用性オプション](../virtual-machines/windows/availability.md)」を参照してください。
+はい。 各 Azure AD Domain Services のマネージド ドメインには、2 つのドメイン コントローラーが含まれています。 これらのドメイン コントローラーについては、お客様が管理または接続することはありません。これらはマネージド サービスの一部です。 Azure AD Domain Services を Availability Zones をサポートするリージョンにデプロイすると、ドメイン コントローラーはゾーン間に分散されます。 Availability Zones をサポートしていないリージョンの場合、ドメイン コントローラーは可用性セット間に分散されます。 この分散に対する構成オプションや管理制御はありません。 詳細については、「[Azure の仮想マシンの可用性オプション](../virtual-machines/availability.md)」を参照してください。
 
 ## <a name="administration-and-operations"></a>管理と操作
 
@@ -117,7 +117,11 @@ Azure AD UI または PowerShell を使用して Azure AD ディレクトリに�
 はい。 "*AAD DC 管理者*" グループのメンバーには、マネージド ドメインの DNS レコードを変更できる "*DNS 管理者*" 特権が付与されています。 これらのユーザーは、マネージド ドメインに参加している Windows Server を実行しているマシン上で DNS マネージャー コンソールを使用して、DNS を管理できます。 DNS マネージャー コンソールを使用するには、"*リモート サーバー管理ツール*" オプション機能の一部である "*DNS サーバー ツール*" をサーバーにインストールします。 詳細については、「[Azure AD Domain Services マネージド ドメインで DNS を管理する](manage-dns.md)」を参照してください。
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>マネージド ドメインのパスワード有効期間ポリシーとはどのようなものですか。
-Azure AD Domain Services のマネージド ドメインの既定のパスワード有効期間は 90 日間です。 このパスワード有効期間は、Azure AD で構成されているパスワード有効期間と同期されません。 そのため、ユーザーのパスワードが、マネージド ドメインでは期限切れだが、Azure AD ではまだ有効なことがあります。 このような場合、ユーザーは Azure AD のパスワードを変更する必要があり、この新しいパスワードがマネージド ドメインに同期されます。 また、ユーザー アカウントの "*password-does-not-expire*" 属性と "*user-must-change-password-at-next-logon*" 属性は、マネージド ドメインに同期されません。
+Azure AD Domain Services のマネージド ドメインの既定のパスワード有効期間は 90 日間です。 このパスワード有効期間は、Azure AD で構成されているパスワード有効期間と同期されません。 そのため、ユーザーのパスワードが、マネージド ドメインでは期限切れだが、Azure AD ではまだ有効なことがあります。 このような場合、ユーザーは Azure AD のパスワードを変更する必要があり、この新しいパスワードがマネージド ドメインに同期されます。 マネージド ドメインの既定のパスワードの有効期間を変更する場合、[カスタム パスワード ポリシーを作成して構成](password-policy.md)することができます。
+
+さらに、*DisablePasswordExpiration* の Azure AD パスワード ポリシーはマネージド ドメインに同期されます。 *DisablePasswordExpiration* が Azure AD のユーザーに適用されると、マネージド ドメインの同期されたユーザーの *UserAccountControl* 値に *DONT_EXPIRE_PASSWORD* が適用されます。
+
+ユーザーが Azure AD でパスワードをリセットすると、*forceChangePasswordNextSignIn=True* 属性が適用されます。 マネージド ドメインでは、この属性が Azure AD から同期されます。 マネージド ドメインで、Azure AD から同期されたユーザーに *forceChangePasswordNextSignIn* が設定されていることが検出されると、マネージド ドメインの *pwdLastSet* 属性は *0* に設定され、これによって、現在設定されているパスワードが無効になります。
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services は、AD アカウントに、 ロックアウトから保護する機能を提供しますか?
 はい。 管理対象ドメインに、2 分以内に無効なパスワードの試行が5回行われると、ユーザーのアカウントは、30 分ロックアウトされます。 30 分後、ユーザー アカウントは、自動的にロック解除されます。 マネージド ドメインでの無効なパスワードの試行によっては、Azure AD のユーザー アカウントはロックアウトされません。 ユーザー アカウントは、Azure AD Domain Services の管理対象ドメイン内でだけ、ロックアウトされます。 詳細については、「[マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー](password-policy.md)」を参照してください。
@@ -144,7 +148,7 @@ Azure AD Domain Services は Azure の無料試用版に含まれています。
 いいえ。 Azure AD Domain Services のマネージド ドメインを有効にすると、マネージド ドメインを削除するまで、選択した仮想ネットワーク内でサービスを使用できます。 サービスを一時停止する方法はありません。 課金は、マネージド ドメインを削除するまで、1 時間ごとに続行されます。
 
 ### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>DR イベント時に Azure AD Domain Services を別のリージョンにフェールオーバーできますか。
-いいえ。 Azure AD Domain Services では現在、geo 冗長デプロイ モデルは提供されていません。 Azure リージョン内の 1 つの仮想ネットワークに限定されます。 複数の Azure リージョンを利用する場合、Azure IaaS VM 上で Active Directory ドメイン コントローラーを実行する必要があります。 アーキテクチャのガイダンスについては、「[オンプレミスにある Active Directory ドメインを Azure に拡張する](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)」を参照してください。
+いいえ。 Azure AD Domain Services では現在、geo 冗長デプロイ モデルは提供されていません。 Azure リージョン内の 1 つの仮想ネットワークに限定されます。 複数の Azure リージョンを利用する場合、Azure IaaS VM 上で Active Directory ドメイン コントローラーを実行する必要があります。 アーキテクチャのガイダンスについては、「[オンプレミスにある Active Directory ドメインを Azure に拡張する](/azure/architecture/reference-architectures/identity/adds-extend-domain)」を参照してください。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。 Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。
 いいえ。 Azure AD Domain Services は従量課金制の Azure サービスであり、EMS の一部ではありません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free および Premium) で使用できます。 使用量に応じて、時間単位で課金されます。

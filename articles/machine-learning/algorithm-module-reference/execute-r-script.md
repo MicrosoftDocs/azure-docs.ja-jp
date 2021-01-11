@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 04/27/2020
-ms.openlocfilehash: 71e1a43728cf923207d209848b26627aeb7bd680
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 873f0d7d2aa4493e77a10f62b0646f4f8233f6b9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751760"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337842"
 ---
 # <a name="execute-r-script-module"></a>R スクリプトの実行モジュール
 
@@ -119,6 +119,22 @@ azureml_main <- function(dataframe1, dataframe2){
 > [!div class="mx-imgBorder"]
 > ![アップロードされたイメージのプレビュー](media/module/upload-image-in-r-script.png)
 
+## <a name="access-to-registered-dataset"></a>登録済みデータセットへのアクセス
+
+ワークスペースに[登録されているデータセットにアクセス](https://docs.microsoft.com/azure/machine-learning/how-to-create-register-datasets#access-datasets-in-your-script)するには、次のサンプル コードを参照してください。
+
+```R
+        azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="how-to-configure-execute-r-script"></a>R スクリプトの実行を構成する方法
 
 R スクリプトの実行モジュールには、出発点として利用できるサンプル コードが含まれています。 R スクリプトの実行モジュールを構成するには、一連の入力と、実行するコードを指定します。
@@ -177,6 +193,25 @@ R スクリプトの実行モジュールには、出発点として利用でき
  
     > [!NOTE]
     > 既存の R コードは、デザイナー パイプラインで実行するために、多少の変更が必要な場合があります。 たとえば、CSV 形式で指定した入力データは、コードで使用する前に、データセットに明示的に変換する必要があります。 また、R 言語で使用されるデータ型および列型は、デザイナーで使用されるデータ型および列型とはいくつかの点で異なります。
+
+    スクリプトが 16 KB を超える場合は、**スクリプト バンドル** ポートを使用すると、 *[CommandLine exceeds the limit of 16597 characters]\(コマンド ラインの文字数が上限の 16597 字を超えています\)* のようなエラーを回避できます。 
+    
+    スクリプトとその他のカスタム リソースを zip ファイルにバンドルし、その zip ファイルを**ファイル データセット**として Studio にアップロードします。 次に、デザイナー作成ページの左側のモジュール ペインにある *[My datasets]\(マイ データセット\)* リストから、データセット モジュールをドラッグします。 データセット モジュールを **R スクリプトの実行**モジュールの**スクリプト バンドル** ポートに接続します。
+    
+    スクリプト バンドルでスクリプトを使用するサンプル コードを次に示します。
+
+    ```R
+    azureml_main <- function(dataframe1, dataframe2){
+    # Source the custom R script: my_script.R
+    source("./Script Bundle/my_script.R")
+
+    # Use the function that defined in my_script.R
+    dataframe1 <- my_func(dataframe1)
+
+    sample <- readLines("./Script Bundle/my_sample.txt")
+    return (list(dataset1=dataframe1, dataset2=data.frame("Sample"=sample)))
+    }
+    ```
 
 1.  **[Random Seed]\(ランダム シード\)** には、ランダム シード値として R 環境内で使用する値を入力します。 このパラメーターは、R コードで `set.seed(value)` を呼び出すのと同じです。  
 
@@ -320,9 +355,8 @@ azureml_main <- function(dataframe1, dataframe2){
 
 現在、次のプレインストールされた R パッケージを使用できます。
 
-|              |            | 
-|--------------|------------| 
 | Package      | Version    | 
+|--------------|------------| 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 

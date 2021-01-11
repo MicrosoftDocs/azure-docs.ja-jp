@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 352b4d46e1693580c386f11f7f4d949740f90cc6
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199387"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231046"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
@@ -31,13 +31,13 @@ ms.locfileid: "83199387"
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによってレポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
 
-**A:** [API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査と**と**サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
+**A:** [API リファレンス](https://developer.microsoft.com/graph/)を参照して、[API を使用してアクティビティ レポートにアクセスできる](concept-reporting-api.md)方法をご確認ください。 このエンドポイントには 2 つのレポート (**監査**と**サインイン**) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
 
 ---
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
 
-**A:**  [Identity Protection リスク検出 API](../identity-protection/graph-get-started.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。
+**A:**  [Identity Protection リスク検出 API](../identity-protection/howto-identity-protection-graph-api.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta) を使用します。 そのため、作業が必要になれば、現在の Microsoft Graph への投資を拡大するか、または、この新しい標準プラットフォームへの移行開始を促すことができます。
 
 ---
 
@@ -89,7 +89,7 @@ ms.locfileid: "83199387"
 
 **Q:Office 365 のアクティビティ ログの情報を取得するには、どの API を使えばよいですか。**
 
-**A:** API を通じて Office 365 アクティビティ ログにアクセスするには、[Office 365 Management API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) を使用します。
+**A:** API を通じて Office 365 アクティビティ ログにアクセスするには、[Office 365 Management API](/office/office-365-management-api/office-365-management-apis-overview) を使用します。
 
 ---
 
@@ -145,7 +145,7 @@ ms.locfileid: "83199387"
 
 * **適用されていません**:スコープ内にユーザーとアプリがある CA ポリシーがなかったことを意味します。 
 * **成功**:スコープ内にユーザーとアプリがある CA ポリシーがあり、CA ポリシーが正常に満たされたことを意味します。 
-* **失敗**:スコープ内にユーザーとアプリがある CA ポリシーがあり、CA ポリシーが満たされなかったことを意味します。 
+* **失敗**:サインインによって少なくとも 1 つの条件付きアクセス ポリシーのユーザーとアプリケーションの条件が満たされたうえで、制御の許可が満たされていないか、またはアクセスをブロックするように設定されています。
     
 **Q:条件付きアクセス ポリシーの結果として表示されるすべての値を教えてください。**
 
@@ -162,4 +162,4 @@ ms.locfileid: "83199387"
 
 **Q:条件付きアクセス ポリシーのためにサインインがブロックされましたが、サインイン アクティビティ レポートにはサインインは成功したと表示されます。なぜですか?**
 
-**A:** 現在、条件付きアクセスが適用されている場合、サインイン レポートに Exchange ActiveSync シナリオの正確な結果が表示されないことがあります。 レポートのサインイン結果にサインインの成功と表示されても、条件付きアクセス ポリシーのために実際にはサインインが失敗している場合があります。 
+**A:** 現在、条件付きアクセスが適用されている場合、サインイン レポートに Exchange ActiveSync シナリオの正確な結果が表示されないことがあります。 レポートのサインイン結果にサインインの成功と表示されても、条件付きアクセス ポリシーのために実際にはサインインが失敗している場合があります。

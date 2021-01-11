@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c3d4a2120f86a03508b91d4b2dea52e629dc0f79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130181"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927285"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -59,7 +59,7 @@ Microsoft [Azure アカウント](https://azure.microsoft.com/)を取得しま�
 VM を Azure にレプリケートするアクセス許可がお使いの Azure アカウントに与えられていることを確認します。
 
 - Azure にマシンをレプリケートするために必要な[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)を確認します。
-- [ロールベースのアクセス許可](../role-based-access-control/role-assignments-portal.md)を確認し、変更します。 
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) のアクセス許可を確認して変更します。 
 
 
 
@@ -111,7 +111,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
 5. コンテナー登録キーをダウンロードします。 このキーは、統合セットアップを実行するときに必要になります。 キーは生成後 5 日間有効です。
 
-   ![Set up source](./media/physical-azure-disaster-recovery/source-environment.png)
+   ![インストール ファイルと登録キーをダウンロードするためのオプションを示すスクリーンショット。](./media/physical-azure-disaster-recovery/source-environment.png)
 
 
 ### <a name="register-the-configuration-server-in-the-vault"></a>構成サーバーのコンテナーへの登録
@@ -136,7 +136,6 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
-登録が完了すると、コンテナーの **[設定]** の  >  **[サーバー]** ページに構成サーバーが表示されます。
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 
@@ -146,7 +145,7 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 2. ターゲットのデプロイ モデルを指定します。
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
-   ![移行先](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![ターゲット環境を設定するためのオプションのスクリーンショット。](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
@@ -157,7 +156,7 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 4. **[復旧ポイントの保持期間]** で、各復旧ポイントのリテンション期間の長さ (時間単位) を指定します。 レプリケートされた VM は、期間内の任意の時点に復旧できます。 Premium Storage にレプリケートされたマシンでは最大 24 時間のリテンション期間がサポートされ、Standard Storage の場合は 72 時間です。
 5. **[アプリ整合性スナップショットの頻度]** で、アプリケーション整合性スナップショットを含む復旧ポイントの作成頻度 (分単位) を指定します。 **[OK]** をクリックしてポリシーを作成します。
 
-    ![Replication policy](./media/physical-azure-disaster-recovery/replication-policy.png)
+    ![レプリケーション ポリシーを作成するためのオプションのスクリーンショット。](./media/physical-azure-disaster-recovery/replication-policy.png)
 
 
 このポリシーは自動的に構成サーバーに関連付けられます。 既定でフェールバックの照合ポリシーが自動的に作成されます。 たとえば、レプリケーション ポリシーが **rep-policy** の場合、フェールバック ポリシー **rep-policy-failback** が作成されます。 このポリシーは、Azure からフェールバックを開始するまで使用されません。
@@ -180,11 +179,11 @@ IP アドレス ベースのファイアウォール規則では、HTTPS (443) �
 9. **[物理マシン]** で **[+物理マシン]** をクリックします。 名前と IP アドレスを指定します。 レプリケートするマシンのオペレーティング システムを選択します。 サーバーを検出し、一覧表示するのに数分かかります。 
 10. **[プロパティ]**  >  **[プロパティの構成]** で、プロセス サーバーがモビリティ サービスのマシンへの自動インストールで使用するアカウントを選択します。
 11. **[レプリケーション設定]**  >  **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが選択されていることを確認します。 
-12. **[レプリケーションを有効にする]** をクリックします。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
+12. **[レプリケーションを有効にする]** をクリックします。 **[設定]**  >  **[ジョブ]**  >  **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理** ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 
-追加したサーバーを監視する目的で、サーバーの最終検出時刻を **[構成サーバー]** の  >  **[前回のアクセス]** で確認できます。 定期検出を待たずにマシンを追加するには、構成サーバーを強調表示し (クリックしないでください)、 **[更新]** をクリックします。
+追加したサーバーを監視する目的で、サーバーの最終検出時刻を **[構成サーバー]** の  >  **[前回のアクセス]** で確認できます。 定期検出を待たずにマシンを追加するには、構成サーバーを強調表示し (クリックしないでください)、**[更新]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)。

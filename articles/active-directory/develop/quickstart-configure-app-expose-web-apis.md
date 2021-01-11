@@ -1,6 +1,7 @@
 ---
-title: Web API を公開するようにアプリを構成する - Microsoft ID プラットフォーム | Azure
-description: アプリケーションをクライアント アプリケーションが使用できるようにするために、新しいアクセス許可/スコープとロールを公開するようにアプリケーションを構成する方法について説明します。
+title: クイック スタート:Web API を公開するようにアプリを構成する | Azure
+titleSuffix: Microsoft identity platform
+description: このクイックスタートでは、アプリケーションをクライアント アプリケーションが使用できるようにするために、新しいアクセス許可およびスコープとロールを公開するようにアプリケーションを構成する方法について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,30 +9,27 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 08/14/2019
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93b0c3392a32a6ff18a285d34fdaede6ceea6528
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76704223"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830293"
 ---
-# <a name="quickstart-configure-an-application-to-expose-web-apis"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
+# <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
 
 自ら Web API を開発し、クライアント アプリケーションで利用できるようにすることもできます。そのためには、[アクセス許可/スコープ](developer-glossary.md#scopes)と[ロール](developer-glossary.md#roles)を公開する必要があります。 Web API を適切に構成すれば、Graph API や Office 365 API など、他の Microsoft Web API と同じように利用できるようになります。
 
-このクイック スタートでは、クライアント アプリケーションが使用できるようにするために、新しいスコープを公開するようにアプリケーションを構成する方法について説明します。
+このクイックスタートでは、クライアント アプリケーションが使用できるようにするために、新しいスコープを公開するようにアプリケーションを構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-最初に、以下の前提条件を完了していることを確認します。
-
-* サポートされている[アクセス許可と同意](v2-permissions-and-consent.md)について学習する。他のユーザーまたはアプリケーションによって使用されるアプリケーションを構築する場合は、これを理解しておくことが重要です。
-* アプリケーションが登録されているテナントを持つ。
-  * アプリを登録していない場合は、[Microsoft ID プラットフォームを使用してアプリケーションを登録する方法について学習](quickstart-register-app.md)します。
+* アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 次の項目の完了: 「[クイックスタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)」を参照してください。
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portal にサインインしてアプリを選択する
 
@@ -75,17 +73,28 @@ UI を通じて新しいスコープを公開するには:
 
 1. 完了したら、 **[状態]** を設定し、 **[スコープの追加]** を選択します。
 
+1. (省略可能) 定義されているスコープに対してアプリのユーザーによる同意を求めるメッセージを表示しないようにするには、クライアント アプリケーションによる Web API へのアクセスを "事前承認" することができます。 ユーザーには同意を拒否する機会がないため、信頼できるクライアント アプリケーション "*だけ*" を事前承認する必要があります。
+    1. **[承認済みのクライアント アプリケーション]** で、 **[クライアント アプリケーションの追加]** を選択します
+    1. 事前承認するクライアント アプリケーションの **[アプリケーション (クライアント) ID]** を入力します。 たとえば、以前に登録した Web アプリケーションのそれです。
+    1. **[承認済みのスコープ]** で、同意を求めるメッセージを表示しないスコープを選択し、 **[アプリケーションの追加]** を選択します。
+
+    クライアント アプリが事前承認されたクライアント アプリ (PCA) になり、ユーザーにはサインインするときの同意を求めるメッセージが表示されなくなります。
+
 1. [他のアプリケーションに Web API が公開されていることを確認する](#verify-the-web-api-is-exposed-to-other-applications)ための手順を実行します。
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>アプリケーション マニフェストを通じて新しいスコープまたはロールを公開する
 
+アプリケーション マニフェストは、Azure AD アプリ登録の属性を定義するアプリケーション エンティティを更新するためのメカニズムとしての役割を果たします。
+
 [![マニフェストで oauth2Permissions コレクションを使用して新しいスコープを公開する](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png)](./media/quickstart-update-azure-ad-app-preview/expose-new-scope-through-app-manifest-expanded.png#lightbox)
 
-アプリケーション マニフェストを通じて新しいスコープを公開するには:
+アプリケーション マニフェストを編集して新しいスコープを公開するには、次のようにします。
 
 1. アプリの **[概要]** ページで、 **[マニフェスト]** セクションを選択します。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを**編集**できます。 必要があれば、 **[ダウンロード]** を選択してローカルでマニフェストを編集します。その後、 **[アップロード]** を使用して、アプリケーションにマニフェストを再適用します。
-    
+
     次の例では、`oauth2Permissions` コレクションに以下の JSON 要素を追加して、リソース/API の `Employees.Read.All` という新しいスコープを公開する方法を示しています。
+
+    プログラムによって、または [guidgen](https://www.microsoft.com/download/details.aspx?id=55984) のような GUID 生成ツールを使用して、`id` 値を生成します。
 
       ```json
       {
@@ -100,39 +109,41 @@ UI を通じて新しいスコープを公開するには:
       }
       ```
 
-   > [!NOTE]
-   > `id` の値は、プログラムによって、または [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) などの GUID 生成ツールを使って作成する必要があります。 `id` は、Web API によって公開されるスコープの一意の識別子となります。 クライアントに対して Web API にアクセスするためのアクセス許可が適切に構成されていると、そのクライアントには、Azure AD によって OAuth 2.0 アクセス トークンが発行されます。 クライアントが Web API を呼び出すときには、このアクセス トークンを提示することになります。そして、このアクセス トークンでは、スコープ (scp) 要求がアプリケーションの登録時に要求されたアクセス許可のとおりに設定されています。
-   >
-   > 公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
-
 1. 完了したら、 **[保存]** をクリックします。 これで Web API の構成が終わり、ディレクトリ内の他のアプリケーションが利用できるようになりました。
 1. [他のアプリケーションに Web API が公開されていることを確認する](#verify-the-web-api-is-exposed-to-other-applications)ための手順を実行します。
 
+アプリケーション エンティティおよびそのスキーマの詳細については、Microsoft Graph の [Application][ms-graph-application] リソース タイプのリファレンス ドキュメントを参照してください。
+
+アプリケーション マニフェストの詳細とそのスキーマ リファレンスについては、[Azure AD アプリ マニフェストの概要](reference-app-manifest.md)に関するページを参照してください。
+
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>他のアプリケーションに Web API が公開されているかどうかを確認する
 
-1. Azure AD テナントに戻って、 **[アプリの登録]** を選択し、構成するクライアント アプリケーションを見つけて選択します。
+1. Azure AD テナントに戻り、 **[アプリの登録]** を選択してから、構成するクライアント アプリケーションを見つけて選択します。
 1. [Web API にアクセスするためのクライアント アプリケーションの構成](quickstart-configure-app-access-web-apis.md)に関するページで説明されている手順をもう一度実行します。
-1. [API の選択](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-)の手順で、リソースを選択します。 新しいスコープが表示されていれば、クライアントのアクセス許可の要求で利用できる状態です。
+1. [API を選択する](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)ステップになったら、リソース (Web API アプリの登録) を選択します。
+    * Azure portal を使用して Web API アプリの登録を作成した場合、その API リソースは **[自分の API]** タブの一覧に表示されます。
+    * プロジェクトの作成時に Visual Studio による Web API アプリの登録の作成を許可した場合は、 **[所属する組織で使用している API]** タブの一覧に API リソースが表示されます。
 
-## <a name="more-on-the-application-manifest"></a>アプリケーション マニフェストの詳細
+Web API リソースを選択すると、クライアントのアクセス許可の要求で利用できる新しいスコープが表示されます。
 
-アプリケーション マニフェストは、アプリケーション エンティティを更新するためのメカニズムとしての役割を果たすものです。Azure AD アプリケーションの ID 構成の属性はすべて、このアプリケーション エンティティで定義されています。 アプリケーション エンティティとそのスキーマの詳細については、[Graph API のアプリケーション エンティティに関するドキュメント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)を参照してください。 このドキュメントでは、API のアクセス許可を指定するために使用するアプリケーション エンティティのメンバーについて、詳細な参照情報を確認できます。たとえば、次のような情報です。  
+## <a name="using-the-exposed-scopes"></a>公開されたスコープを使用する
 
-* appRoles メンバー: Web API の[アプリケーションのアクセス許可](developer-glossary.md#permissions)を定義するときに使用する [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) エンティティのコレクションです。
-* oauth2Permissions メンバー: Web API の[委任されたアクセス許可](developer-glossary.md#permissions)を定義するときに使用する [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) エンティティのコレクションです。
+クライアントに対して Web API にアクセスするためのアクセス許可が適切に構成されていると、そのクライアントには Azure AD によって OAuth 2.0 アクセス トークンが発行できます。 クライアントが Web API を呼び出すときには、このアクセス トークンを提示することになります。そして、このアクセス トークンでは、スコープ (`scp`) 要求がアプリケーションの登録時に要求されたアクセス許可のとおりに設定されています。
 
-アプリケーション マニフェストの概念一般の詳細については、[Azure Active Directory のアプリケーション マニフェスト](reference-app-manifest.md)に関するページを参照してください。
+公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
+
+アプリケーションでは、完全なスコープ値は Web API の**アプリケーション ID URI** (リソース) と**スコープ名**を連結したものです。
+
+たとえば、Web API のアプリケーション ID URI が `https://contoso.com/api` で、スコープ名が `Employees.Read.All` である場合、完全なスコープは次のようになります。
+
+`https://contoso.com/api/Employees.Read.All`
 
 ## <a name="next-steps"></a>次のステップ
 
-以下のその他のアプリ管理関連のクイック スタートを学習します。
+スコープを構成して Web API を公開したので、これらのスコープにアクセスするためのアクセス許可でクライアント アプリの登録を構成します。
 
-* [Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
-* [Web API にアクセスするようにクライアント アプリケーションを構成する](quickstart-configure-app-access-web-apis.md)
-* [アプリケーションによってサポートされるアカウントを変更する](quickstart-modify-supported-accounts.md)
-* [Microsoft ID プラットフォームに登録されたアプリケーションを削除する](quickstart-remove-app.md)
+> [!div class="nextstepaction"]
+> [Web API アクセスのためにアプリ登録を構成する](quickstart-configure-app-access-web-apis.md)
 
-登録されたアプリケーションを表す 2 つの Azure AD オブジェクトと、両者間の関係については、[Application objects and service principal objects](app-objects-and-service-principals.md)\(アプリケーション オブジェクトとサービス プリンシパル オブジェクト\) を参照してください。
-
-Azure Active Directory でアプリケーションを開発するときに使用するブランド化ガイドラインについては、[アプリケーションのブランド化ガイドライン](howto-add-branding-in-azure-ad-apps.md)を参照してください。
+<!-- REF LINKS -->
+[ms-graph-application]: /graph/api/resources/application

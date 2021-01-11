@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:ポータルでブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints を使用して、Azure portal から成果物を作成、定義、デプロイします。
-ms.date: 03/25/2020
+ms.date: 08/27/2020
 ms.topic: quickstart
-ms.openlocfilehash: dfd0aeb22801776fc9effdf8d0418a9c9b6ab802
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a37c621e0a90a0748d3ddc3fda34612c54712ed9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045214"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051524"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>クイック スタート:ポータル内でブループリントを定義して割り当てる
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. **[種類]** を **[組み込み]** に変更します。 **[検索]** に「**タグ**」と入力します。
 
-   1. **[検索]** をクリックしてフィルター処理を実行します。 **[タグとその既定値のリソース グループへの追加]** を選択します。
+   1. **[検索]** からフォーカスを移動して、フィルター処理を実行します。 **[タグとその既定値のリソース グループへの追加]** を選択します。
 
    1. **[追加]** を選択して、この成果物をブループリントに追加します。
 

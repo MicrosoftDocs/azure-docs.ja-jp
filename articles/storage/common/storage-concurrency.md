@@ -1,7 +1,7 @@
 ---
 title: コンカレンシーを管理する
 titleSuffix: Azure Storage
-description: BLOB、キュー、テーブル、およびファイル サービスのコンカレンシーを管理する方法について説明します。
+description: BLOB、キュー、テーブル、ファイル サービスで Azure Storage のコンカレンシーを管理する方法について説明します。 主に利用されている 3 つのデータ コンカレンシーについて説明します。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 099711bf09fc29a1168ca8ce73ea6ae93f810a08
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2732781d32e92c8ec03116988e33ec4fbe0b2330
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504289"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021563"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Storage でのコンカレンシー制御の管理
 
@@ -95,7 +96,7 @@ Azure Storage では、**If-Modified-Since**、**If-Unmodified-Since**、**If-No
 | Get Container Metadata |はい |いいえ |
 | Set Container Metadata |はい |はい |
 | コンテナー ACL の取得 |はい |いいえ |
-| Set Container ACL |はい |あり (*) |
+| Set Container ACL |Yes |あり (*) |
 | Delete Container |いいえ |はい |
 | Lease Container |はい |はい |
 | BLOBs の一覧 |いいえ |いいえ |
@@ -114,7 +115,7 @@ Azure Storage では、**If-Modified-Since**、**If-Unmodified-Since**、**If-No
 | Set Blob Metadata |はい |はい |
 | Lease Blob (*) |はい |はい |
 | Snapshot Blob |はい |はい |
-| BLOB のコピー |はい |Yes (コピー元とコピー先 BLOB に対して) |
+| BLOB のコピー |Yes |Yes (コピー元とコピー先 BLOB に対して) |
 | Abort Copy Blob |いいえ |いいえ |
 | Delete Blob |いいえ |はい |
 | Put Block |いいえ |いいえ |
@@ -268,8 +269,8 @@ customer.ETag = "*";
 
 詳細については、次を参照してください。  
 
-* [キュー サービスの REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
-* [Get Messages](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
+* [Queue サービス REST API](https://msdn.microsoft.com/library/azure/dd179363.aspx)
+* [メッセージの取得](https://msdn.microsoft.com/library/azure/dd179474.aspx)  
 
 ## <a name="managing-concurrency-in-azure-files"></a>Azure Files 内でのコンカレンシーの管理
 
@@ -281,7 +282,7 @@ SMB クライアントがファイルを開いて削除する場合、そのフ�
 
 * [ファイルのロックの管理](https://msdn.microsoft.com/library/azure/dn194265.aspx)  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このブログで参照したサンプル アプリケーションの完全版は、次のページからダウンロードできます。  
 

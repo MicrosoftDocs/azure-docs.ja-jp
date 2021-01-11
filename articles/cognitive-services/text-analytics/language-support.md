@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/25/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: 367e214a3945ec9d6ed0ffc5b11e6af25dc41503
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: e2c6fc739fa81e6eb7c98073e3575e4143d317b2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413333"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932969"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
@@ -39,13 +39,13 @@ ms.locfileid: "85413333"
 | イタリア語               |     `it`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | 日本語              |     `ja`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | 韓国語                |     `ko`      |            |     ✓      |         2019-10-01         |                    |
-| ノルウェー語 (ブークモール)   |     `no`      |     ✓      |            |                            |                    |
+| ノルウェー語 (ブークモール)   |     `no`      |     ✓      |     ✓       |        2020-07-01         |                    |
 | ポーランド語                |     `pl`      |     ✓      |            |                            |                    |
 | ポルトガル語 (ポルトガル) |    `pt-PT`    |     ✓      |     ✓      |         2019-10-01         | `pt` も可能 |
 | ロシア語               |     `ru`      |     ✓      |            |                            |                    |
 | スペイン語               |     `es`      |     ✓      |     ✓      |         2019-10-01         |                    |
 | スウェーデン語               |     `sv`      |     ✓      |            |                            |                    |
-| トルコ語               |     `tr`      |     ✓      |            |                            |                    |
+| トルコ語               |     `tr`      |     ✓      |     ✓       |         2020-07-01        |                    |
 
 ### <a name="opinion-mining-v31-preview-only"></a>意見マイニング (v3.1-preview のみ)
 

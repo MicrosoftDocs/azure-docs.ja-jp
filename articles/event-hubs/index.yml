@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 06/23/2020
-  ms.openlocfilehash: 8b559591255a9856f644de5482ccec6b7d34a7f8
-  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.openlocfilehash: 06cce3f999b329d41c7ef7e5f381f55fdaee8054
+  ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85314917"
+  ms.lasthandoff: 08/26/2020
+  ms.locfileid: "88933751"
 landingContent:
 - title: Event Hubs について
   linkLists:
@@ -84,13 +84,13 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: .NET Core
-      url: get-started-dotnet-standard-send-v2.md
+      url: event-hubs-dotnet-standard-getstarted-send.md
     - text: Java
       url: event-hubs-java-get-started-send.md
     - text: Python
-      url: get-started-python-send-v2.md
+      url: event-hubs-python-get-started-send.md
     - text: JavaScript
-      url: get-started-node-send-v2.md
+      url: event-hubs-node-get-started-send.md
     - text: Apache Kafka
       url: event-hubs-quickstart-kafka-enabled-event-hubs.md#send-and-receive-messages-with-kafka-in-event-hubs
     - text: Apache Storm (受信のみ)
@@ -132,7 +132,7 @@ landingContent:
     - text: Resource Manager テンプレートの使用
       url: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
     - text: Python アプリケーションからのキャプチャを有効にする
-      url: get-started-capture-python-v2.md
+      url: event-hubs-capture-python.md
 - title: イベントの処理
   linkLists:
   - linkListType: tutorial
@@ -142,7 +142,7 @@ landingContent:
     - text: Stream Analytics を使用して Apache Kafka 用 Event Hubs イベントを処理する
       url: event-hubs-kafka-stream-analytics.md
     - text: Event Hubs を使用してデータを Azure Databricks にストリーム配信する
-      url: ../azure-databricks/databricks-stream-from-eventhubs.md
+      url: /azure/databricks/scenarios/databricks-stream-from-eventhubs
 - title: 監視と管理
   linkLists:
   - linkListType: how-to-guide

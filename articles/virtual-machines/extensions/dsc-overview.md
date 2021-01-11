@@ -3,8 +3,8 @@ title: Azure の Desired State Configuration の概要
 description: PowerShell Desired State Configuration (DSC) の Microsoft Azure 拡張機能ハンドラーの使用方法について学習します。 この記事には、前提条件、アーキテクチャ、およびコマンドレットが含まれています。
 services: virtual-machines-windows
 documentationcenter: ''
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
+manager: evansma
 editor: ''
 tags: azure-resource-manager
 keywords: dsc
@@ -13,14 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: robreed
-ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 07/13/2020
+ms.author: magoedte
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 900273ec48c71e6f88d28bccff6f1e2abd412c1d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188537"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079576"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
@@ -59,7 +60,7 @@ Azure DSC 拡張機能は、Azure VM エージェント フレームワークを
 - **wmfVersion** プロパティを指定した場合は、そのバージョンに VM の OS と互換性がない場合を除いて、そのバージョンの WMF がインストールされます。
 - **wmfVersion** プロパティを指定しなかった場合は、WMF の適用可能な最新バージョンがインストールされます。
 
-WMF をインストールするには、再起動が必要です。 再起動後、**modulesUrl** プロパティで指定された .zip ファイルが拡張機能によってダウンロードされます (指定した場合)。 その場所が Azure Blob ストレージ内の場合は、 **sasToken** プロパティに SAS トークンを指定して、ファイルにアクセスできます。 .zip がダウンロードされて展開された後、**configurationFunction** で定義されている構成関数が実行され、.mof ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) ファイルが生成されます。 その後、拡張機能によって、生成された .mof ファイルを使用して `Start-DscConfiguration -Force` が実行されます。 拡張機能は、この出力を取得して Azure の状態チャネルに書き込みます。
+WMF をインストールするには、再起動が必要です。 再起動後、**modulesUrl** プロパティで指定された .zip ファイルが拡張機能によってダウンロードされます (指定した場合)。 その場所が Azure Blob ストレージ内の場合は、 **sasToken** プロパティに SAS トークンを指定して、ファイルにアクセスできます。 .zip がダウンロードされて展開された後、**configurationFunction** で定義されている構成関数が実行され、.mof ([Managed Object Format](/windows/win32/wmisdk/managed-object-format--mof-)) ファイルが生成されます。 その後、拡張機能によって、生成された .mof ファイルを使用して `Start-DscConfiguration -Force` が実行されます。 拡張機能は、この出力を取得して Azure の状態チャネルに書き込みます。
 
 ### <a name="default-configuration-script"></a>既定の構成スクリプト
 
@@ -81,7 +82,7 @@ DSC 拡張機能を使用してノードを State Configuration サービスに�
 ```
 
 [ノード構成名] から、Azure State Configuration にノード構成が存在することを確認します。  存在しない場合、拡張機能のデプロイはエラーを返します。  また、構成ではなく、必ず "*ノード構成*" の名前を使用していることを確認してください。
-構成は、[ノード構成 (MOF ファイル) をコンパイルする](https://docs.microsoft.com/azure/automation/automation-dsc-compile) ために使用されるスクリプトに定義されています。
+構成は、[ノード構成 (MOF ファイル) をコンパイルする](../../automation/automation-dsc-compile.md) ために使用されるスクリプトに定義されています。
 名前は常に、Configuration の後にピリオド `.` と `localhost` または特定のコンピューター名が続いたものになります。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>Resource Manager テンプレートの DSC 拡張機能
@@ -188,11 +189,11 @@ az vm extension set \
 
 - **[Configuration Arguments]\(構成の引数\)** :構成関数が引数を受け取る場合は、**argumentName1=value1,argumentName2=value2** という形式でここに入力します。 この形式は、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
 
-- **[Configuration Data PSD1 File]\(構成データの PSD1 ファイル\)** :構成には .psd1 の構成データ ファイルが必要です。このフィールドを使用してデータ ファイルを選択し、ユーザーの BLOB ストレージにアップロードします。 構成データ ファイルは、Blob Storage 内の SAS トークンによってセキュリティで保護されます。
+- **[Configuration Data PSD1 File]\(構成データの PSD1 ファイル\)** :構成に `.psd1` の構成データ ファイルが必要な場合、このフィールドを使用してデータ ファイルを選択し、ユーザーの BLOB ストレージにアップロードします。 構成データ ファイルは、Blob Storage 内の SAS トークンによってセキュリティで保護されます。
 
 - **[WMF Version]\(WMF のバージョン\)** :VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを latest に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0、5.0、5.1、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。
 
-- **[Data Collection]\(データ収集\)** :拡張機能でテレメトリを収集するかどうかを決定します。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。
+- **[Data Collection]\(データ収集\)** :拡張機能でテレメトリを収集するかどうかを決定します。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/)」をご覧ください。
 
 - **バージョン**:インストールする DSC 拡張機能のバージョンを指定します。 バージョンの詳細については、[DSC 拡張機能のバージョン履歴](/powershell/scripting/dsc/getting-started/azuredscexthistory)に関するページを参照してください。
 

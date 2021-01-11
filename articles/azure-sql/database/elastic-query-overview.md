@@ -25,7 +25,7 @@ ms.locfileid: "85557870"
 
 ## <a name="why-use-elastic-queries"></a>エラスティック クエリを使用する理由
 
-### <a name="azure-sql-database"></a>Azure SQL データベース
+### <a name="azure-sql-database"></a>Azure SQL Database
 
 T-SQL で Azure SQL Database 内のデータベースにわたって完全なクエリを実行します。 これにより、リモート データベースの読み取り専用クエリが可能になり、現在の SQL Server のお客様が 3 部および 4 部構成名または SQL Database へのリンク サーバーを使用してアプリケーションを移行できるようになります。
 

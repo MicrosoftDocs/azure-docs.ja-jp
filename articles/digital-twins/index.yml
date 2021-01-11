@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: e5c05e41ba209607649fbcffb8ee12d0dc66029e
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: eabae1050b4892de8c30f460834d1ae4da934198
+  ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87079128"
+  ms.lasthandoff: 08/26/2020
+  ms.locfileid: "88890938"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -23,7 +23,13 @@ landingContent:
     links:
     - text: Azure Digital Twins とは
       url: overview.md
-- title: チュートリアルを開始する
+- title: クイックスタートの概要
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: サンプル シナリオの探索
+      url: quickstart-adt-explorer.md
+- title: チュートリアルによる掘り下げ
   linkLists:
   - linkListType: tutorial
     links:

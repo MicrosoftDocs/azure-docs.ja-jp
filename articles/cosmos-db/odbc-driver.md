@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 57db2253cbffa8e16313c7613de6d2ddb2f2b0a2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027241"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084825"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
@@ -236,9 +236,9 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. Power BI Desktop でデータを視覚化するには、テーブル名の前のボックスをオンにし、 **[読み込む]** をクリックします。
 
-1. Power BI Desktop の左端の [データ] タブを選択して ![Power BI Desktop の [データ] タブ](./media/odbc-driver/odbc-driver-data-tab.png) データがインポートされたことを確認します。
+1. Power BI Desktop の左端の [データ] タブ :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: を選択し、データがインポートされたことを確認します。 
 
-1. [レポート] タブ ![Power BI Desktop の [レポート] タブ](./media/odbc-driver/odbc-driver-report-tab.png)をクリックし、 **[新しいビジュアル]** をクリックしてタイルをカスタマイズすることにより、Power BI を使用してビジュアルを作成できます。 Power BI Desktop での視覚化の詳細については、「[Power BI での視覚化の種類](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)」を参照してください。
+1. [レポート] タブ :::image type="icon" source="./media/odbc-driver/odbc-driver-report-tab.png"::: をクリックし、 **[新しいビジュアル]** をクリックしてタイルをカスタマイズすることにより、Power BI を使用してビジュアルを作成できます。 Power BI Desktop での視覚化の詳細については、「[Power BI での視覚化の種類](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/)」を参照してください。 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

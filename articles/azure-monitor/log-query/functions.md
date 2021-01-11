@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2018
-ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/31/2020
+ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83649385"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511940"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 
@@ -33,6 +33,9 @@ Azure portal の Log Analytics で **[保存]** をクリックした後、次�
 
 ## <a name="use-a-function"></a>関数を使用する
 関数は、そのエイリアスを別のクエリに含めることによって使用します。 それは他のテーブルと同じように使用できます。
+
+## <a name="function-parameters"></a>関数のパラメーター 
+関数にパラメーターを追加すると、呼び出し時に特定の変数の値を指定できできます。 現在、パラメーターを含む関数を作成する唯一の方法は、Resource Manager テンプレートを使用することです。 例については、「[Azure Monitor のログ クエリ用の Resource Manager テンプレート サンプル](../samples/resource-manager-log-queries.md#parameterized-function)」を参照してください。
 
 ## <a name="example"></a>例
 次のサンプル クエリでは、最終日に報告された、更新されていないセキュリティ更新プログラムが返されます。 このクエリを、_security_updates_last_day_ というエイリアスを持つ関数として保存します。 

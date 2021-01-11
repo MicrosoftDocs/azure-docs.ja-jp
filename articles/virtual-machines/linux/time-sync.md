@@ -7,17 +7,17 @@ author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 25e8be28903d490a7a8c17e16d2beddc44c95c41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a122a36b14bd3c5f4912387dc98585cb89ab53b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782774"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705642"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -64,7 +64,7 @@ Azure でホストされている Linux VM 用の時刻同期を構成する方�
 - NTP (プライマリとして)。NTP サーバーから時刻を取得します。 たとえば、Ubuntu 16.04 LTS の Marketplace イメージでは、**ntp.ubuntu.com** が使用されます。
 - VMICTimeSync サービス (セカンダリとして)。VM にホスト時刻を知らせ、VM がメンテナンスのために一時停止した後、修正を行うために使用されます。 Azure ホストでは、Microsoft 所有の Stratum 1 デバイスを使用して、正確な時刻を保持します。
 
-新しい Linux ディストリビューションでは、VMICTimeSync サービスで PTP (Precision Time Protocol) が使用されますが、以前のディストリビューションでは PTP はサポートされない可能性があり、ホストから時刻を取得するために NTP にフォールバックします。
+新しい Linux ディストリビューションでは、VMICTimeSync サービスで PTP (Precision Time Protocol) ハードウェア クロック ソースが提供されますが、以前のディストリビューションでは、このクロック ソースが提供されない可能性があり、ホストから時刻を取得するために NTP にフォールバックします。
 
 NTP が正しく同期していることを確認するには、`ntpq -p` コマンドを実行します。
 
@@ -112,9 +112,9 @@ root        391      2  0 17:52 ?        00:00:00 [hv_balloon]
 ```
 
 
-### <a name="check-for-ptp"></a>PTP を確認する
+### <a name="check-for-ptp-clock-source"></a>PTP クロック ソースを確認する
 
-新しいバージョンの Linux では、PTP (Precision Time Protocol) クロック ソースを VMICTimeSync プロバイダーの一部として利用できます。 以前のバージョンの Red Hat Enterprise Linux や CentOS 7.x では、[Linux Integration Services](https://github.com/LIS/lis-next) をダウンロードし、それを使用して更新されたドライバーをインポートできます。 PTP を使用する場合、Linux デバイスの形式は /dev/ptp*x* となります。 
+新しいバージョンの Linux では、PTP (Precision Time Protocol) クロック ソースを VMICTimeSync プロバイダーの一部として利用できます。 以前のバージョンの Red Hat Enterprise Linux や CentOS 7.x では、[Linux Integration Services](https://github.com/LIS/lis-next) をダウンロードし、それを使用して更新されたドライバーをインポートできます。 PTP クロック ソースを使用できる場合、Linux デバイスの形式は /dev/ptp*x* になります。 
 
 どの PTP クロック ソースを使用できるかを確認します。
 
@@ -128,11 +128,11 @@ ls /sys/class/ptp
 cat /sys/class/ptp/ptp0/clock_name
 ```
 
-**hyperv** が返されるはずです。
+この場合は、`hyperv` が返されるはずです。
 
 ### <a name="chrony"></a>chrony
 
-Ubuntu 19.10 以降のバージョン、Red Hat Enterprise Linux、および CentOS 7.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 以前の Linux リリースでは、chrony ではなく、PTP ソースがサポートされない ntpd (Network Time Protocol Daemon) が使用されています。 これらのリリースで PTP を有効にするには、chrony.conf で次のコードを使用して chrony を手動でインストールして構成する必要があります。
+Ubuntu 19.10 以降のバージョン、Red Hat Enterprise Linux、および CentOS 8.x では、PTP ソース クロックを使用するように [chrony](https://chrony.tuxfamily.org/) が構成されています。 以前の Linux リリースでは、chrony ではなく、PTP ソースがサポートされない ntpd (Network Time Protocol Daemon) が使用されています。 これらのリリースで PTP を有効にするには、chrony.conf で次のコードを使用して chrony を手動でインストールして構成する必要があります。
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
@@ -144,9 +144,9 @@ Red Hat および NTP の詳細については、[NTP の構成](https://access.
 
 chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite#sect-Using_chrony)に関するページを参照してください。
 
-chrony および TimeSync ソースの両方が同時に有効になっている場合は、一方を**優先**としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
+chrony および VMICTimeSync ソースの両方が同時に有効になっている場合は、一方を**優先**としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
 
-既定では、chronyd は、時間の誤差を修正するために、システム クロックを加速または減速します。 誤差が大きすぎる場合、chrony は誤差の修正に失敗します。 これを解決するために、 **/etc/chrony.conf** の `makestep` パラメーターを変更して、誤差が指定されたしきい値を超えた場合に timesync を強制的に適用することができます。
+既定では、chronyd は、時間の誤差を修正するために、システム クロックを加速または減速します。 誤差が大きすぎる場合、chrony は誤差の修正に失敗します。 これを解決するために、 **/etc/chrony.conf** の `makestep` パラメーターを変更して、誤差が、指定されたしきい値を超えた場合に時刻同期を強制的に適用することができます。
 
  ```bash
 makestep 1.0 -1

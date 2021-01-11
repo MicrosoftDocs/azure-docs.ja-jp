@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204193"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049385"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>条件付きアクセスのレポート専用モードとは
 
@@ -51,4 +51,4 @@ ms.locfileid: "84204193"
  
 ## <a name="next-steps"></a>次のステップ
 
-[条件付きアクセス ポリシーに対するレポート専用モードの構成](howto-conditional-access-report-only.md)
+[条件付きアクセス ポリシーに対するレポート専用モードの構成](howto-conditional-access-insights-reporting.md)

@@ -4,13 +4,13 @@ description: Azure 関数を Azure Functions で実行する前に、ローカ�
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 611cb5b94ee2ad458fa00a61af673696d7e7a212
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp, 80e4ff38-5174-43
+ms.openlocfilehash: 8dfc1471955a6d10199a078922151ff3aeda4294
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085148"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929493"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -33,18 +33,19 @@ Core Tools を使用して、ローカル コンピューターで関数を開�
 
 Azure Functions Core Tools には、3 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、[選択した言語](supported-languages.md)、および必要なサポートのレベルによって異なります。
 
-+ **バージョン 1.x**: Azure Functions ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://www.npmjs.com/package/azure-functions-core-tools)からインストールされます。
-
 + [**バージョン 3.x および 2.x**](#v2):[Azure Functions ランタイムのバージョン 3.x または 2.x](functions-versions.md) をサポートします。 これらのバージョンでは [Windows](?tabs=windows#v2)、[macOS](?tabs=macos#v2)、および [Linux](?tabs=linux#v2) がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
-特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
++ **バージョン 1.x**: Azure Functions ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://www.npmjs.com/package/azure-functions-core-tools)からインストールされます。
+
+特定のコンピューターには、1 つのバージョンの Core Tools のみをインストールできます。 特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
+
+## <a name="prerequisites"></a>前提条件
+
+現在、Azure Functions Core Tools では、Azure CLI に依存して Azure アカウントでの認証を行っています。 つまり、Azure Functions Core Tools から [Azure に発行](#publish)できるようにするには、[Azure CLI をローカルにインストール](/cli/azure/install-azure-cli)する必要があります。 
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
 [Azure Functions Core Tools] には、Azure Functions ランタイムを実行するのと同じランタイムのバージョンが含まれており、ローカルの開発コンピューターで実行できます。 また、関数の作成、Azure への接続、関数プロジェクトのデプロイを行うコマンドも用意されています。
-
->[!IMPORTANT]
->Azure Functions Core Tools から Azure に発行できるようにするには、[Azure CLI](/cli/azure/install-azure-cli) がローカルにインストールされている必要があります。  
 
 ### <a name="version-3x-and-2x"></a><a name="v2"></a>バージョン 3.x および 2.x
 
@@ -55,27 +56,12 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-次の手順では、npm を使用して Windows 上に Core Tools をインストールします。 また、[Chocolatey](https://chocolatey.org/) を使用することもできます。 詳細については、[Core Tools の readme ](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)に関するページを参照してください。
+次の手順では、Windows インストーラー (MSI) を使用して Core Tools v3.x をインストールします。 Core Tools v2.x のインストールに必要な、その他のパッケージベースのインストーラーの詳細については、[Core Tools の Readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows) をご覧ください。
 
-1. [Node.js]をインストールします。これには、npm が同梱されています。
-    - 3\.x バージョンのツールの場合、Node.js 10 以降のバージョンのみがサポートされています。
-    - 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。
+1. Windows のバージョンに応じて、 以下の Core Tools インストーラーをダウンロードして実行します。
 
-1. 次のコマンドを使って、Core Tools のパッケージをインストールします。
-
-    ##### <a name="v3x-recommended"></a>v3.x (推奨)
-
-    ```cmd
-    npm install -g azure-functions-core-tools@3
-    ```
-
-    ##### <a name="v2x"></a>v2.x
-
-    ```cmd
-    npm install -g azure-functions-core-tools@2
-    ```
-
-   npm をダウンロードして Core Tools パッケージをインストールするには、数分かかる場合があります。
+    - [v3.x - Windows 64 ビット](https://go.microsoft.com/fwlink/?linkid=2135274) (推奨。 [Visual Studio Code のデバッグ](functions-develop-vs-code.md#debugging-functions-locally) には 64 ビットが必要です)
+    - [v3.x - Windows 32 ビット](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. [拡張バンドル](functions-bindings-register.md#extension-bundles)を使用しない場合、[.NET Core 3.x SDK for Windows](https://dotnet.microsoft.com/download) をインストールします。
 
@@ -179,6 +165,9 @@ Azure Functions Core Tools には、3 つのバージョンがあります。 �
 func init MyFunctionProj
 ```
 
+>[!IMPORTANT]
+> Java では、HTTP でトリガーされる最初の関数と共に、Maven アーキタイプを使用してローカル関数プロジェクトを作成します。 次のコマンドを使用して、Java プロジェクト `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype` を作成します。 Maven アーキタイプの使用例については、[コマンド ラインのクイックスタート](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)に関する記事を参照してください。  
+
 プロジェクト名を指定すると、その名前の新しいフォルダーの作成と初期化が実行されます。 それ以外の場合は、現在のフォルダーが初期化されます。  
 バージョン 3.x/2.x では、コマンドを実行するときにプロジェクトのランタイムを選択する必要があります。 
 
@@ -219,7 +208,23 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 > [!IMPORTANT]
 > 既定では、Core Tools のバージョン 2.x 以降のバージョンでは、.NET ランタイムの関数アプリ プロジェクトは [C# クラス プロジェクト](functions-dotnet-class-library.md) (.csproj) として作成されます。 Visual Studio または Visual Studio Code で使用できるこれらの C# プロジェクトは、テスト中および Azure への発行時にコンパイルされます。 バージョン 1.x およびポータルで作成される同じ C# スクリプト (.csx) ファイルを代わりに作成および使用したい場合は、関数を作成して展開するときに、`--csx` パラメーターを指定する必要があります。
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+## <a name="register-extensions"></a>拡張機能を登録する
+
+HTTP およびタイマートリガーを除き、ランタイム バージョン 2.x およびそれ以降の関数バインディングは、拡張パッケージとして実装されます。 HTTP バインドとタイマー トリガーには、拡張機能は必要ありません。 
+
+さまざまな拡張機能パッケージ間の非互換性を減らすために、Functions では、host.json プロジェクト ファイル内で拡張機能バンドルを参照することが許可されます。 拡張機能バンドルを使用しないことを選択する場合でも、.NET Core 2.x SDK をローカルにインストールし、Functions プロジェクトと共に extensions.csproj を維持する必要があります。  
+
+Azure Functions ランタイム バージョン 2.x では、関数で使用するバインディングの型に対応した拡張機能を明示的に登録する必要があります。 バインド拡張機能を個別にインストールするか、host.json プロジェクト ファイルに拡張機能のバンドルの参照を追加することができます。 拡張機能のバンドルは、複数のバインディングの種類を使用するときに、パッケージの互換性の問題を発生する可能性をなくします。 これはバインド拡張機能を登録するための推奨される方法です。 また、拡張機能のバンドルにより、.NET Core 2.x SDK をインストールする必要もなくなります。 
+
+### <a name="use-extension-bundles"></a>拡張機能バンドルを使用する
+
+[!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
+
+詳細については、「[Azure Functions バインド拡張機能を登録する](functions-bindings-register.md#extension-bundles)」を参照してください。 function.json ファイルへのバインドを追加する前に、host.json に拡張機能のバンドルを追加する必要があります。
+
+### <a name="explicitly-install-extensions"></a>拡張機能を明示的にインストールする
+
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
@@ -252,20 +257,21 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
   ![Storage Explorer から接続文字列をコピーする](./media/functions-run-local/storage-explorer.png)
 
-+ Core Tools を使用して、次のいずれかのコマンドで Azure から接続文字列をダウンロードします。
++ プロジェクトのルートから Core Tools を使用して、次のいずれかのコマンドで Azure から接続文字列をダウンロードします。
 
   + 既存の関数アプリからすべての設定をダウンロードします。
 
     ```
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
+
   + 特定のストレージ アカウントの接続文字列を取得します。
 
     ```
     func azure storage fetch-connection-string <StorageAccountName>
     ```
 
-    Azure にまだサインインしていない場合は、それを求めるメッセージが表示されます。
+    Azure にまだサインインしていない場合は、それを求めるメッセージが表示されます。 これらのコマンドは、local.settings.json ファイル内のすべての既存の設定を上書きします。 
 
 ## <a name="create-a-function"></a><a name="create-func"></a>関数を作成する
 
@@ -306,9 +312,9 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 | 引数     | 説明                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (バージョン 2.x 以降のバージョン。)バージョン 1.x およびポータルで使用されるものと同じ C# スクリプト (.csx) テンプレートを生成します。 |
-| **`--language`** 、 **`-l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 2.x 以降のバージョンでは、このオプションを使用しないか、または worker ランタイムと一致する言語を選択してください。 |
-| **`--name`** 、 **`-n`** | 関数名。 |
-| **`--template`** 、 **`-t`** | サポートされている各言語で使用可能なテンプレートの完全な一覧を表示するには、`func templates list` コマンドを使います。   |
+| **`--language`**, **`-l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 2.x 以降のバージョンでは、このオプションを使用しないか、または worker ランタイムと一致する言語を選択してください。 |
+| **`--name`**, **`-n`** | 関数名。 |
+| **`--template`**, **`-t`** | サポートされている各言語で使用可能なテンプレートの完全な一覧を表示するには、`func templates list` コマンドを使います。   |
 
 
 たとえば、JavaScript HTTP トリガーを 1 つのコマンドで作成するには、次を実行します。
@@ -332,6 +338,14 @@ Functions プロジェクトを実行するには、Functions ホストを実行
 ```
 func start --build
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```
+mvn clean package 
+mvn azure-functions:run
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/node)
 
 ```
@@ -371,10 +385,10 @@ npm start
 | **`--language-worker`** | 言語ワーカーを構成するための引数。 たとえば、[デバッグ ポートとその他の必要な引数](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)を指定して、言語ワーカーのデバッグを有効にすることができます。 バージョン 1.x はサポートされません。 |
 | **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 バージョン 1.x はサポートされません。 |
 | **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 バージョン 1.x はサポートされません。 |
-| **`--port`** 、 **`-p`** | ローカル ポート。このポートでリッスンします。 既定値:7071。 |
+| **`--port`**, **`-p`** | ローカル ポート。このポートでリッスンします。 既定値:7071。 |
 | **`--pause-on-error`** | プロセスを終了する前に、追加入力を一時停止します。 統合開発環境 (IDE) から Core Tools を起動した場合にのみ使用されます。|
-| **`--script-root`** 、 **`--prefix`** | 実行または展開される関数アプリのルートへのパスを指定するために使用されます。 これは、サブフォルダーにプロジェクト ファイルを生成するコンパイル済みプロジェクトに使用されます。 たとえば、C# クラス ライブラリ プロジェクトをビルドすると、host.json、local.settings.json、および function.json ファイルが、`MyProject/bin/Debug/netstandard2.0` のようなパスの "*ルート*" サブフォルダーに生成されます。 この場合は、プレフィックスを `--script-root MyProject/bin/Debug/netstandard2.0` と設定します。 これは、Azure で実行する場合の関数アプリのルートです。 |
-| **`--timeout`** 、 **`-t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値は20 秒。|
+| **`--script-root`**, **`--prefix`** | 実行または展開される関数アプリのルートへのパスを指定するために使用されます。 これは、サブフォルダーにプロジェクト ファイルを生成するコンパイル済みプロジェクトに使用されます。 たとえば、C# クラス ライブラリ プロジェクトをビルドすると、host.json、local.settings.json、および function.json ファイルが、`MyProject/bin/Debug/netstandard2.0` のようなパスの "*ルート*" サブフォルダーに生成されます。 この場合は、プレフィックスを `--script-root MyProject/bin/Debug/netstandard2.0` と設定します。 これは、Azure で実行する場合の関数アプリのルートです。 |
+| **`--timeout`**, **`-t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値は20 秒。|
 | **`--useHttps`** | `http://localhost:{port}` ではなく `https://localhost:{port}` にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
 
 Functions ホストの起動時、HTTP によってトリガーされる関数の URL が出力されます。
@@ -474,10 +488,10 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-| **`--content`** 、 **`-c`** | インライン コンテンツ。 |
-| **`--debug`** 、 **`-d`** | 関数を実行する前に、デバッガーを、ホスト プロセスにアタッチします。|
-| **`--timeout`** 、 **`-t`** | Functions ホストの準備が完了するまでの待機時間 (秒単位)。|
-| **`--file`** 、 **`-f`** | コンテンツとして使用するファイル名。|
+| **`--content`**, **`-c`** | インライン コンテンツ。 |
+| **`--debug`**, **`-d`** | 関数を実行する前に、デバッガーを、ホスト プロセスにアタッチします。|
+| **`--timeout`**, **`-t`** | Functions ホストの準備が完了するまでの待機時間 (秒単位)。|
+| **`--file`**, **`-f`** | コンテンツとして使用するファイル名。|
 | **`--no-interactive`** | 入力を促しません。 自動シナリオで便利です。|
 
 たとえば、HTTP によってトリガーされる関数を呼び出して、コンテンツ本文を渡すには、次のコマンドを実行します。
@@ -503,6 +517,9 @@ Azure で ローカル コードを関数アプリに発行するには、`publi
 func azure functionapp publish <FunctionAppName>
 ```
 
+>[!IMPORTANT]
+> Java では、Maven を使用して、ローカル プロジェクトが Azure に発行されます。 コマンド `mvn azure-functions:deploy` を実行して、Azure に発行します。 Azure リソースは、初期デプロイ中に作成されます。
+
 このコマンドにより、Azure の既存の関数アプリに公開されます。 サブスクリプションに存在しない `<FunctionAppName>` に発行しようとすると、エラーが表示されます。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。 既定では、このコマンドでは[リモート ビルド](functions-deployment-technologies.md#remote-build)が使用され、アプリがデプロイされて、[デプロイ パッケージから実行](run-functions-from-deployment-package.md)されます。 この推奨されるデプロイ モードを無効にするには、`--nozip` オプションを使用します。
 
 >[!IMPORTANT]
@@ -520,12 +537,12 @@ func azure functionapp publish <FunctionAppName>
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only`** 、 **`-o`** |  設定のみを発行し、コンテンツをスキップします。 既定値は prompt です。 |
+| **`--publish-settings-only`**, **`-o`** |  設定のみを発行し、コンテンツをスキップします。 既定値は prompt です。 |
 |**`--list-ignored-files`** | 発行時に無視されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
 | **`--list-included-files`** | 発行されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
 | **`--nozip`** | 既定の `Run-From-Package` モードをオフにします。 |
 | **`--build-native-deps`** | Python 関数アプリを発行するときに、.wheels フォルダーの生成をスキップします。 |
-| **`--build`** 、 **`-b`** | Linux 関数アプリにデプロイするときにビルド アクションを実行します。 `remote` および `local` を受け入れます。 |
+| **`--build`**, **`-b`** | Linux 関数アプリにデプロイするときにビルド アクションを実行します。 `remote` および `local` を受け入れます。 |
 | **`--additional-packages`** | ネイティブの依存関係を構築するときにインストールするパッケージの一覧 (例: `python3-dev libevent-dev`)。 |
 | **`--force`** | 特定のシナリオで発行前の検証を無視します。 |
 | **`--csx`** | C# スクリプト (.csx) プロジェクトを発行します。 |
@@ -551,7 +568,7 @@ func deploy
 | **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |
 | **`--config`** | オプションのデプロイ構成ファイルを設定します。 |
 
-## <a name="monitoring-functions"></a>関数の監視
+## <a name="monitoring-functions"></a>Functions の監視
 
 関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 また、ローカル コンピューターに実行ログをストリーミングすることもできます。 詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 

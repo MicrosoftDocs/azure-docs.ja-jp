@@ -1,24 +1,22 @@
 ---
 title: Azure Resource Manager テンプレートを使用して管理ツールをデプロイする - Azure
-description: Azure Resource Manager テンプレートを使用して Windows Virtual Desktop のリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
-services: virtual-desktop
+description: Azure Resource Manager テンプレートを使用して Windows Virtual Desktop (クラシック) のリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3c3e93cf711d4dadfdc2354a297b0588fb637c80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514229"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691396"
 ---
-# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して管理ツールをデプロイする
+# <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Windows Virtual Desktop (クラシック) 管理ツールをデプロイする
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。
 
 この記事の手順では、Azure Resource Manager テンプレートを使用して UI をデプロイする方法を説明します。
 
@@ -85,7 +83,7 @@ GitHub の Azure Resource Manager テンプレートが完成すると、Azure p
 
 同意を与えるために使用するユーザーを決めたら、これらの手順に従って、このツールに同意を与えます。
 
-1. ご使用の Azure リソースに移動し、テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、<https://rdmimgmtweb-210520190304.azurewebsites.net>) に移動します。
+1. ご使用の Azure リソースに移動し、テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、`https://rdmimgmtweb-210520190304.azurewebsites.net`) に移動します。
 2. 適切な Azure Active Directory ユーザー アカウントを使用してサインインします。
 3. グローバル管理者を使用して認証した場合、ここで **[組織の代理として同意する]** チェック ボックスをオンにできます。 **[同意する]** を選択して同意を与えます。
 

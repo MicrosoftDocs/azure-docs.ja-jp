@@ -4,15 +4,16 @@ description: Azure CLI を使用して、アプリケーション ゲートウ�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 05/21/2020
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: a429d1a0f426002595f347794bc1cb97a649d6f6
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.topic: how-to
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: faa46b3ad96e9555a08a662f205a0a130c28bac2
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770246"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89225171"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Azure CLI を使用して Web アプリケーション ファイアウォールを有効にする
 
@@ -20,11 +21,10 @@ ms.locfileid: "83770246"
 
 この記事では、次の方法について説明します。
 
-> [!div class="checklist"]
-> * ネットワークのセットアップ
-> * WAF 対応のアプリケーション ゲートウェイの作成
-> * 仮想マシン スケール セットを作成する
-> * ストレージ アカウントの作成と診断の構成
+ * ネットワークのセットアップ
+ * WAF 対応のアプリケーション ゲートウェイの作成
+ * 仮想マシン スケール セットを作成する
+ * ストレージ アカウントの作成と診断の構成
 
 ![Web アプリケーション ファイアウォールの例](../media/tutorial-restrict-web-traffic-cli/scenario-waf.png)
 

@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: 41f0c44ad65af5fdf2560da3f977a28f135af878
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3220b9d56ff7107245a0a00aac44bb58f87099f9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84976712"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075972"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps-preview"></a>Azure Static Web Apps Preview を使用してフロントエンド フレームワークとライブラリを構成する
 
@@ -55,7 +55,7 @@ Azure Static Web Apps を使用するには、フロントエンド フレーム
 | [Svelte](https://svelte.dev/) | `public` | 該当なし |
 | [Three.js](https://threejs.org/) | `/` | 該当なし |
 | [TypeScript](https://www.typescriptlang.org/) | `dist` | 該当なし |
-| [Vue](http://vuejs.com/) | `dist` | 該当なし |
+| [Vue.js](https://vuejs.org/) | `dist` | 該当なし |
 
 <sup>1</sup> 上記の表は、Azure Static Web Apps で動作するフレームワークとライブラリを完全に網羅する一覧ではありません。
 

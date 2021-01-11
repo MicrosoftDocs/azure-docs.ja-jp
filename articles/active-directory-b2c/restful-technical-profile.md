@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e8486241d4de0025603b22b591f4a8f62901bd7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203658"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041529"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
@@ -115,9 +115,9 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 | 属性 | Required | 説明 |
 | --------- | -------- | ----------- |
 | ServiceUrl | はい | REST API エンドポイントの URL。 |
-| AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 `Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 |
+| AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 指定できる値: `None`、`Basic`、`Bearer`、または `ClientCertificate`。 `None` の値は、REST API が匿名であることを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書を持つサービスのみが、ご利用の API にアクセスできます。 `Bearer` 値は、REST API ではクライアント OAuth2 ベアラー トークンを使用してアクセスが制限されることを示します。 |
 | AllowInsecureAuthInProduction| いいえ| 運用環境で `AuthenticationType` を `none` に設定できるかどうかを示します ([TrustFrameworkPolicy](trustframeworkpolicy.md) の `DeploymentMode` を `Production` に設定するか、指定しません)。 有効な値: true または false (既定値)。 |
-| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 それぞれによって呼び出される HTTP 動詞は次のとおりです。<br /><ul><li>`Body`:POST</li><li>`Form`:POST</li><li>`Header`:GET</li><li>`QueryString`:GET</li></ul> |
+| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 指定できる値: `Body` (既定)、`Form`、`Header`、`Url`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `Url` 値は、URL で送信される入力要求です。例: https://{claim1}.example.com/{claim2}/{claim3}?{claim4}={claim5}。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 それぞれによって呼び出される HTTP 動詞は次のとおりです。<br /><ul><li>`Body`:POST</li><li>`Form`:POST</li><li>`Header`:GET</li><li>`Url`:GET</li><li>`QueryString`:GET</li></ul> |
 | ClaimsFormat | いいえ | 現在使用されていません。無視してもかまいません。 |
 | ClaimUsedForRequestPayload| いいえ | REST API に送信されるペイロードを含む文字列要求の名前。 |
 | DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 指定できる値: `true` または `false` (既定値)。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 [返却エラー メッセージ](#returning-validation-error-message)のセクションを参照してください。 |
@@ -129,7 +129,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 次のメタデータを使用して、REST API の失敗時に表示されるエラー メッセージを構成できます。 エラー メッセージは、[ローカライズ](localization-string-ids.md#restful-service-error-messages)できます。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | DefaultUserMessageIfRequestFailed | いいえ | すべての REST API 例外に関する既定のカスタマイズされたエラーメッセージ。|
 | UserMessageIfCircuitOpen | いいえ | REST API に到達できない場合のエラーメッセージ。 指定しない場合、DefaultUserMessageIfRequestFailed が返されます。 |
@@ -154,7 +154,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `Basic` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | はい | 認証に使用されるユーザー名。 |
 | BasicAuthenticationPassword | はい | 認証に使用されるパスワード。 |
@@ -179,7 +179,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `ClientCertificate` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ClientCertificate | はい | 認証に使用する X509 証明書 (RSA キー セット)。 |
 
@@ -200,7 +200,7 @@ REST API 技術プロファイルを使用すると、複雑な JSON ペイロ�
 
 認証の種類が `Bearer` に設定されている場合、**CryptographicKeys** には次の属性が存在します。
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | いいえ | OAuth 2.0 ベアラー トークン。 |
 
@@ -235,7 +235,7 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
 }
 ```
 
-| 属性 | Required | 説明 |
+| 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | version | はい | ご利用の REST API バージョン。 次に例を示します。1.0.1 |
 | status | はい | 409 である必要があります。 |

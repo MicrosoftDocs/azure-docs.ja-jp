@@ -1,20 +1,20 @@
 ---
 title: Azure Data Box Disk の返送に関するチュートリアル | Microsoft Docs
-description: このチュートリアルでは、Azure Data Box Disk を Microsoft に返送する方法について説明します。
+description: このチュートリアルでは、Azure Data Box Disk を返送する方法について説明します。 集荷の手順は、デバイスを返送する場所によって決まります。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 62ab110a24bbf6b93f7f019c829222ca666ecfaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039465"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257442"
 ---
 ::: zone target="docs"
 
@@ -85,7 +85,7 @@ ms.locfileid: "87039465"
 
 1. 提供された返送ラベルを使用して、それに TAU コード (参照番号) が記載されていることを確認します。 提供された配送先住所ラベルが見つからない場合やその他の問題が発生している場合は、[Data Box アジア オペレーション](mailto:adbo@microsoft.com)までメールでお問い合わせください。 件名ヘッダーの注文名と直面している問題の詳細を記入します。
 2. 箱にラベルを貼り付けます。
-3. リンク先 (https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ) からオンラインで集荷を予約します。 
+3. リンク先 (https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ) からオンラインで集荷を予約します。
 
 ### <a name="japan"></a>[日本](#tab/in-japan)
 
@@ -138,7 +138,7 @@ ms.locfileid: "87039465"
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - XZ00001234567
+    Subject: Microsoft Azure Pickup - XZ00001234567
     Body:
      a.    Requestor name
      b.    Requestor contact number
@@ -155,6 +155,32 @@ ms.locfileid: "87039465"
    問題が発生した場合は、Data Box Operations Asia (adbo@microsoft.com) にご連絡ください。 ジョブ名を件名ヘッダーに指定し、発生している問題についてお知らせください。
 
 3. 配送業者に渡します。
+
+### <a name="south-africa"></a>[南アフリカ](#tab/in-sa)
+
+南アフリカでデバイスを返送するには、次の手順を行います。
+
+1. 提供された配送先住所ラベルをボックスに貼り付けます。 このラベルには、追跡番号が含まれています。 出荷ラベルがない場合、 **[概要] の [出荷ラベルをダウンロード]** から新しい出荷ラベルをダウンロードできます。
+
+2. 梱包箱を封印し、返送ラベルが見えることを確認します。
+
+3. DHL で集荷を予約するには:
+
+    * カスタマー サービスのコンタクト センター (+27(0) 11 9213600) に電話し、オプション 1 を選択して、貨物運送状番号を指定します。
+    * 集荷をスケジュールするには、南アフリカ標準時 (ZA) で午後 2:00 前に電話する必要があります。  
+    * 以下の電子メール テンプレートを使用して集荷を手配するには、[Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に電子メールを送信します。
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject:Pickup request for Microsoft Azure
+    Body:  Need pick up for the below shipment
+    *  DHL tracking number (reference number/waybill number)
+    *  Requested pickup date：yyyy/mm/dd; time: HH MM
+    ```
+
+    * または、最寄りの DHL サービス ポイントにパッケージを持ち込むこともできます。
+
+4. 問題が発生した場合は、[Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に電子メールを送り、発生した問題の詳細を説明し、件名に貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
 
 ### <a name="china"></a>[中国](#tab/in-china)
 
@@ -198,7 +224,7 @@ ms.locfileid: "87039465"
 
 ### <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
 
-日本、シンガポール、韓国、西ヨーロッパ、またはインドで Data Box Disk を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
+米国政府、日本、シンガポール、韓国、西ヨーロッパ、南アフリカ、またはインドで Data Box Disk を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
 
 1. Azure portal 上で対象の注文の **[概要]** ブレードにアクセスします。 **[集配のスケジュール]** を選択したときに表示される手順に目を通します。 注文の配送時に使用される認証コードが表示されていると思います。
 
@@ -231,7 +257,3 @@ ms.locfileid: "87039465"
 > [Azure Data Box Disk からのデータのアップロードを確認する](./data-box-disk-deploy-upload-verify.md)
 
 ::: zone-end
-
-
-
-

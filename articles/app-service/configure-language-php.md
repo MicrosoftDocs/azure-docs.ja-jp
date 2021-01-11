@@ -1,23 +1,26 @@
 ---
-title: Windows PHP アプリを構成する
-description: App Service のネイティブ Windows インスタンスで PHP アプリを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
+title: PHP アプリの構成
+description: Azure App Service のネイティブ Windows インスタンス、または事前に作成した PHP コンテナーで PHP アプリを構成する方法について学習します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 1eb4e9d349fdd0097cbde4e4cef3d5c61a167193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: app-service-platform-windows-linux
+ms.openlocfilehash: c510d6f1cc2aa4a7e71f64e0c296e14a9896614e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907987"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717984"
 ---
-# <a name="configure-a-windows-php-app-for-azure-app-service"></a>Azure App Service 向けの Windows PHP アプリを構成する
+# <a name="configure-a-php-app-for-azure-app-service"></a>Azure App Service 向けの PHP アプリを構成する
 
-このガイドでは、Azure App Service の PHP Web アプリ、モバイル バックエンド、API アプリを構成する方法を示します。 このガイドは、Windows プラットフォームでホストされているアプリに適用されます。 Linux アプリに関する詳細については、「[Azure App Service 向けの Linux PHP アプリを構成する](containers/configure-language-php.md)」を参照してください。
+このガイドでは、Azure App Service の PHP Web アプリ、モバイル バックエンド、API アプリを構成する方法を示します。
 
-このガイドでは、App Service にアプリをデプロイする PHP 開発者向けに主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、最初に [PHP クイック スタート](app-service-web-get-started-php.md)と [PHP と MySQL のチュートリアル](app-service-web-tutorial-php-mysql.md)に従ってください。
+このガイドでは、App Service にアプリをデプロイする PHP 開発者向けに主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、最初に [PHP クイック スタート](quickstart-php.md)と [PHP と MySQL のチュートリアル](tutorial-php-mysql-app.md)に従ってください。
 
 ## <a name="show-php-version"></a>PHP バージョンを表示する
+
+::: zone pivot="platform-windows"  
 
 現在の PHP バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
@@ -31,13 +34,47 @@ az webapp config show --resource-group <resource-group-name> --name <app-name> -
 az webapp list-runtimes | grep php
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+現在の PHP バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+サポートされているすべての PHP バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep PHP
+```
+
+::: zone-end
+
 ## <a name="set-php-version"></a>PHP バージョンを設定する
+
+::: zone pivot="platform-windows"  
 
 PHP バージョンを 7.4 に設定するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --php-version 7.4
 ```
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+PHP バージョンを 7.2 に設定するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
+```
+
+::: zone-end
+
+::: zone pivot="platform-windows"  
 
 ## <a name="run-composer"></a>Composer を実行する
 
@@ -157,6 +194,41 @@ if [ -e "$DEPLOYMENT_TARGET/Gruntfile.js" ]; then
 fi
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="customize-build-automation"></a>ビルドの自動化のカスタマイズ
+
+ビルドの自動化を有効にして Git または zip パッケージを使用してアプリをデプロイする場合、App Service のビルドの自動化によって、次の手順が実行されます。
+
+1. `PRE_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+1. `php composer.phar install` を実行します。
+1. `POST_BUILD_SCRIPT_PATH` によって指定された場合、カスタム スクリプトを実行します。
+
+`PRE_BUILD_COMMAND` および `POST_BUILD_COMMAND` は、既定では空の環境変数です。 ビルド前のコマンドを実行するには、`PRE_BUILD_COMMAND` を定義します。 ビルド後のコマンドを実行するには、`POST_BUILD_COMMAND` を定義します。
+
+次の例では、一連のコマンドに対して 2 つの変数をコンマ区切りで指定しています。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+ビルドの自動化をカスタマイズするためのその他の環境変数については、「[Oryx の構成](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)」を参照してください。
+
+Linux 上で App Service によって PHP アプリが実行されビルドされる方法に関する詳細については、[Oryx ドキュメントの PHP アプリが検出されビルドされる方法](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md)に関するページを参照してください。
+
+## <a name="customize-start-up"></a>スタートアップのカスタマイズ
+
+既定では、組み込みの PHP コンテナーによって Apache サーバーが実行されます。 起動時に `apache2ctl -D FOREGROUND"` を実行します。 必要に応じて、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行することにより、起動時に別のコマンドを実行できます。
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
+```
+
+::: zone-end
+
 ## <a name="access-environment-variables"></a>環境変数へのアクセス
 
 App Service では、アプリ コードの外部で[アプリ設定を指定](configure-common.md#configure-app-settings)できます。 その後、標準の [getenv()](https://secure.php.net/manual/function.getenv.php) パターンを使用して、それらにアクセスできます。 たとえば、`DB_HOST` というアプリ設定にアクセスするには、次のコードを使用します。
@@ -166,6 +238,8 @@ getenv("DB_HOST")
 ```
 
 ## <a name="change-site-root"></a>サイト ルートを変更する
+
+::: zone pivot="platform-windows"  
 
 選択した Web フレームワークでは、サイト ルートとしてサブディレクトリを使用できます。 たとえば、[Laravel](https://laravel.com/) では、サイト ルートとして *public/* サブディレクトリが使用されます。
 
@@ -177,13 +251,33 @@ az resource update --name web --resource-group <group-name> --namespace Microsof
 
 既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ (_sites\wwwroot_) に対して仮想アプリケーションのルート パス ( _/_ ) をポイントします。
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+選択した Web フレームワークでは、サイト ルートとしてサブディレクトリを使用できます。 たとえば、[Laravel](https://laravel.com/) は、サイト ルートとして `public/` サブディレクトリを使用します。
+
+App Service の既定の PHP イメージでは Apache が使用されていて、アプリ用にサイト ルートをカスタマイズすることはできません。 この制限を回避するには、次の内容で *.htaccess* ファイルをリポジトリ ルートに追加します。
+
+```
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
+</IfModule>
+```
+
+*.htaccess* の書き換えを行わない場合は、代わりに [カスタム Docker イメージ](quickstart-custom-container.md)を使用して Laravel アプリケーションをデプロイできます。
+
+::: zone-end
+
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
 App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy)がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
 
 ```php
-if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
-  // Do something when HTTPS is used
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+// Do something when HTTPS is used
 }
 ```
 
@@ -198,6 +292,8 @@ PHP のインストールを変更する必要がある場合は、以下の手�
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a> 非 PHP_INI_SYSTEM ディレクティブをカスタマイズする
+
+::: zone pivot="platform-windows"  
 
 PHP_INI_USER、PHP_INI_PERDIR、PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、`.user.ini` ファイルをアプリのルート ディレクトリに追加します。
 
@@ -216,7 +312,33 @@ PHP_INI_USER、PHP_INI_PERDIR、PHP_INI_ALL ディレクティブ ([php.ini デ�
 
 `.user.ini` ファイルを使用する代わりに、アプリで [ini_set()](https://www.php.net/manual/function.ini-set.php) を使用し、これらの非 PHP_INI_SYSTEM ディレクティブをカスタマイズできます。
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+PHP_INI_USER、PHP_INI_PERDIR、および PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、 *.htaccess* ファイルをアプリのルート ディレクトリに追加します。
+
+*.htaccess* ファイルで、`php_value <directive-name> <value>` 構文を使用してディレクティブを追加します。 次に例を示します。
+
+```
+php_value upload_max_filesize 1000M
+php_value post_max_size 2000M
+php_value memory_limit 3000M
+php_value max_execution_time 180
+php_value max_input_time 180
+php_value display_errors On
+php_value upload_max_filesize 10M
+```
+
+変更内容でアプリを再デプロイし、再起動します。 Kudu でデプロイする場合 (たとえば [Git](deploy-local-git.md) を使用)、デプロイ後に自動的に再起動します。
+
+*.htaccess* を使用する代わりに、アプリで [ini_set()](https://www.php.net/manual/function.ini-set.php) を使用して、これらの非 PHP_INI_SYSTEM ディレクティブをカスタマイズできます。
+
+::: zone-end
+
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>PHP_INI_SYSTEM ディレクティブをカスタマイズする
+
+::: zone pivot="platform-windows"  
 
 PHP_INI_SYSTEM ディレクティブをカスタマイズするには ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照)、 *.htaccess* アプローチは使用できません。 App Service は、`PHP_INI_SCAN_DIR` アプリ設定を使用して、別のメカニズムを提供します。
 
@@ -240,7 +362,68 @@ echo "expose_php = Off" >> ini/setting.ini
 
 変更内容を有効にするには、アプリを再起動します。
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+PHP_INI_SYSTEM ディレクティブをカスタマイズするには ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照)、 *.htaccess* アプローチは使用できません。 App Service は、`PHP_INI_SCAN_DIR` アプリ設定を使用して、別のメカニズムを提供します。
+
+最初に、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行して、`PHP_INI_SCAN_DIR` というアプリ設定を追加します。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
+```
+
+`/usr/local/etc/php/conf.d` は、*php.ini* が存在している既定のディレクトリです。 `/home/site/ini` は、カスタム *.ini* ファイルを追加するカスタム ディレクトリです。 `:` で値を区切ります。
+
+Linux コンテナーを含む Web SSH セッションに移動します (`https://<app-name>.scm.azurewebsites.net/webssh/host`)。
+
+`/home/site` に `ini` というディレクトリを作成し、続いてカスタマイズするディレクティブを使用した *.ini* ファイル (たとえば、*settings.ini*) を `/home/site/ini` ディレクトリに作成します。 *php.ini* ファイルで使用するものと同じ構文を使用します。 
+
+> [!TIP]
+> App Service でのビルトイン Linux コンテナーで、 */home* は永続化された共有ストレージとして使用されます。 
+>
+
+たとえば、[expose_php](https://php.net/manual/ini.core.php#ini.expose-php) の値を変更するには、次のコマンドを実行します。
+
+```bash
+cd /home/site
+mkdir ini
+echo "expose_php = Off" >> ini/setting.ini
+```
+
+変更内容を有効にするには、アプリを再起動します。
+
+::: zone-end
+
 ## <a name="enable-php-extensions"></a>PHP 拡張機能を有効にする
+
+::: zone pivot="platform-windows"  
+
+ビルトイン PHP のインストールには、最もよく使用される拡張機能が含まれています。 [php.ini ディレクティブのカスタマイズ](#customize-php_ini_system-directives)と同じ方法で、追加の拡張機能を有効にすることができます。
+
+> [!NOTE]
+> PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://php.net/manual/function.phpinfo.php) を呼び出すことです。
+>
+
+追加の拡張機能を有効にするには、次の手順に従います。
+
+アプリのルート ディレクトリに `bin` ディレクトリを追加して、その中に `.dll` 拡張ファイル (たとえば、*mongodb.dll*) を配置します。 拡張機能が Azure の PHP バージョンと互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
+
+変更をデプロイします。
+
+[PHP_INI_SYSTEM ディレクティブのカスタマイズ](#customize-php_ini_system-directives)の手順に従って、[extension](https://www.php.net/manual/ini.core.php#ini.extension) または [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) ディレクティブを使用したカスタム *.ini* ファイルに拡張機能を追加します。
+
+```
+extension=d:\home\site\wwwroot\bin\mongodb.dll
+zend_extension=d:\home\site\wwwroot\bin\xdebug.dll
+```
+
+変更内容を有効にするには、アプリを再起動します。
+
+::: zone-end
+
+::: zone pivot="platform-linux"
 
 ビルトイン PHP のインストールには、最もよく使用される拡張機能が含まれています。 [php.ini ディレクティブのカスタマイズ](#customize-php_ini_system-directives)と同じ方法で、追加の拡張機能を有効にすることができます。
 
@@ -256,18 +439,30 @@ echo "expose_php = Off" >> ini/setting.ini
 
 [PHP_INI_SYSTEM ディレクティブのカスタマイズ](#customize-php_ini_system-directives)の手順に従って、[extension](https://www.php.net/manual/ini.core.php#ini.extension) または [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) ディレクティブを使用したカスタム *.ini* ファイルに拡張機能を追加します。
 
-```
-extension=d:\home\site\wwwroot\bin\mongodb.so
-zend_extension=d:\home\site\wwwroot\bin\xdebug.so
+```ini
+extension=/home/site/wwwroot/bin/mongodb.so
+zend_extension=/home/site/wwwroot/bin/xdebug.so
 ```
 
 変更内容を有効にするには、アプリを再起動します。
 
+::: zone-end
+
 ## <a name="access-diagnostic-logs"></a>診断ログにアクセスする
+
+::: zone pivot="platform-windows"  
 
 標準の [error_log()](https://php.net/manual/function.error-log.php) ユーティリティを使用し、Azure App Service に診断ログを表示させます。
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+[!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+::: zone-end
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -275,11 +470,26 @@ zend_extension=d:\home\site\wwwroot\bin\xdebug.so
 
 - [ログ ストリームにアクセス](#access-diagnostic-logs)します。
 - 実稼働モードでローカルにアプリをテストします。 App Service では、アプリが実稼働モードで実行されるので、プロジェクトがローカルで実稼働モードで予想どおりに動作することを確認する必要があります。 次に例を示します。
+    - *composer.json* に応じて、実稼働モードに別々のパッケージ (`require` と `require-dev`) がインストールされる場合があります。
     - 特定の Web フレームワークでは、実稼働モードで静的ファイルを別にデプロイすることがあります。
     - 特定の Web フレームワークでは、実稼働モードで実行しているときにカスタム スタートアップ スクリプトを使用することがあります。
 - デバッグ モードで Azure App Service でアプリを実行します。 たとえば、[Laravel](https://meanjs.org/) で、[`APP_DEBUG` アプリ設定を `true` に指定](configure-common.md#configure-app-settings)することにより、実稼働環境でのデバッグ メッセージを出力するようにアプリを構成できます。
 
+::: zone pivot="platform-linux"
+
+[!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
+
+::: zone-end
+
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:PHP アプリと MySQL](app-service-web-tutorial-php-mysql.md)
+> [チュートリアル:PHP アプリと MySQL](tutorial-php-mysql-app.md)
+
+::: zone pivot="platform-linux"
+
+> [!div class="nextstepaction"]
+> [App Service Linux の FAQ](faq-app-service-linux.md)
+
+::: zone-end
+

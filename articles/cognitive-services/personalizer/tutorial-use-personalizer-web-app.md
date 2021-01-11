@@ -3,12 +3,13 @@ title: Web アプリの使用 - Personalizer
 description: Personalizer ループを使用して C# .NET Web アプリをカスタマイズし、アクション (特徴を伴う) およびコンテキストの特徴に基づいてユーザーに適切なコンテンツを提供します。
 ms.topic: tutorial
 ms.date: 06/10/2020
-ms.openlocfilehash: b8b5c005f7003f9b0d9ac228c5a5961c80c85599
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e9ce4c433a038008b1ffd75dc6c4b2f9d0b57fde
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133131"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935621"
 ---
 # <a name="tutorial-add-personalizer-to-a-net-web-app"></a>チュートリアル:.NET Web アプリに Personalizer を追加する
 
@@ -27,7 +28,7 @@ Personalizer ループを使用して C# .NET Web アプリをカスタマイズ
 
 ## <a name="select-the-best-content-for-a-web-app"></a>Web アプリに最適なコンテンツの選択
 
-表示する 1 つの最上位項目 (rewardActionId) にパーソナライズする必要がある Web ページ上に_アクション_ (特定の種類のコンテンツ) のリストがある場合、Web アプリで Personalizer を使用する必要があります。 アクション リストの例としては、ニュース記事、ボタンの配置位置、製品名用の単語の選択肢などがあります。
+表示する 1 つの最上位項目 (rewardActionId) にパーソナライズする必要がある Web ページ上に "_アクション_" (特定の種類のコンテンツ) のリストがある場合、Web アプリで Personalizer を使用する必要があります。 アクション リストの例としては、ニュース記事、ボタンの配置位置、製品名用の単語の選択肢などがあります。
 
 アクションのリストを、コンテキストの特徴と一緒に Personalizer ループに送信します。 Personalizer によって最適なアクションが 1 つ選択され、そのアクションが Web アプリに表示されます。
 
@@ -39,11 +40,11 @@ Personalizer ループを使用して C# .NET Web アプリをカスタマイズ
 * サラダ
 * ポップコーン
 * コーヒー
-* soup
+* スープ
 
-Personalizer がアクションについて学習できるようにするには、各 Rank API 要求で_アクションと特徴_および_コンテキストの特徴_の両方を送信します。
+Personalizer によるアクションについての学習を補助するには、各 Rank API 要求で "_アクションと特徴_" および "_コンテキストの特徴_" の両方を送信します。
 
-モデルの**特徴**は、Web アプリのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも_ありません_。
+モデルの**特徴**は、Web アプリのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも "_ありません_"。
 
 ### <a name="actions-with-features"></a>アクションと特徴
 
@@ -120,7 +121,7 @@ Personalizer がアクションについて学習できるようにするには�
 コンテキストの特徴は、Personalizer がアクションのコンテキストを理解するのに役立ちます。 このサンプル アプリケーションのコンテキストには次のものが含まれます。
 
 * 時間帯 - 朝、午後、夕方、夜
-* ユーザーの味の好み - 塩味、甘味、苦味、酸味、または風味
+* ユーザーの味の好み - 塩味、甘味、苦味、酸味、またはうま味
 * ブラウザーのコンテキスト - ユーザー エージェント、地理的な場所、参照元
 
 ```csharp
@@ -280,7 +281,7 @@ Web ブラウザーで Rank 要求と Reward 要求を送信し、その応答�
 
 ## <a name="rank-api-client-application-sends-context-to-server"></a>Rank API:クライアント アプリケーションがコンテキストをサーバーに送信する
 
-クライアント アプリケーションは、ユーザーのブラウザー _ユーザー エージェント_を収集します。
+クライアント アプリケーションは、ユーザーのブラウザー "_ユーザー エージェント_" を収集します。
 
 > [!div class="mx-imgBorder"]
 > ![HTTPRequestFeaturesExample プロジェクトをビルドして実行します。 ブラウザー ウィンドウが開き、シングル ページ アプリケーションが表示されます。](./media/tutorial-web-app/user-agent.png)
@@ -561,7 +562,7 @@ Rank API で、選択された最適なアクションの **rewardActionId** を
 
 ## <a name="reward-api-collect-information-for-reward"></a>Reward API: 報酬に関する情報を収集する
 
-特徴を計画するのと同様に、[報酬スコア](concept-rewards.md)は慎重に計画しなければなりません。 通常、報酬スコアは 0 から 1 の値にする必要があります。 値は、ユーザーの行動に基づいてクライアント アプリケーションで部分的に計算したり、ビジネス ロジックと目標に基づいてサーバー上で部分的に計算したり_できます_。
+特徴を計画するのと同様に、[報酬スコア](concept-rewards.md)は慎重に計画しなければなりません。 通常、報酬スコアは 0 から 1 の値にする必要があります。 値は、ユーザーの行動に基づいてクライアント アプリケーションで部分的に計算したり、ビジネス ロジックと目標に基づいてサーバー上で部分的に計算したり "_できます_"。
 
 Azure portal で Personalizer リソース用に構成された**報酬の待機時間**内に、サーバーが Reward API を呼び出さない場合、そのイベントには**既定の報酬** (これも Azure portal で構成されます) が使用されます。
 

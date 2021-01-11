@@ -7,12 +7,13 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: dfce18674f382cb683fa74a1bed964e9f86d72c2
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 25ec74f3638ce857e4472d73a51e45f24c4df5ec
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206112"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88997729"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
 
@@ -75,12 +76,13 @@ ms.locfileid: "86206112"
 
 ### <a name="assign-the-role-using-azure-cli"></a>Azure CLI を使用してロールを割り当てる
 
-Azure CLI を使用してロールを割り当てるには、次のコマンドを使用します。
+Azure CLI を使用してロールを割り当てるには、Azure Cloud Shell を開き、次のコマンドを実行します。
 
 ```azurecli-interactive
-$scope = az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id
 
-$principalId = az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId
+scope=$(az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id)
+
+principalId=$(az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId)
 
 az role assignment create --assignee $principalId --role "DocumentDB Account Contributor" --scope $scope
 ```
@@ -89,10 +91,10 @@ az role assignment create --assignee $principalId --role "DocumentDB Account Con
 
 これで、Azure Cosmos DB のアクセス許可で **DocumentDB アカウント共同作成者**ロールが割り当てられた、システム割り当てマネージド ID を持つ関数アプリが作成されました。 次の関数アプリ コードでは、Azure Cosmos DB キーが取得され、CosmosClient オブジェクトが作成され、水族館の気温が取得されて Azure Cosmos DB に保存されます。
 
-このサンプルでは、[List Keys API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) を使用して、Azure Cosmos DB アカウント キーにアクセスします。
+このサンプルでは、[List Keys API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listkeys) を使用して、Azure Cosmos DB アカウント キーにアクセスします。
 
 > [!IMPORTANT] 
-> [Cosmos DB アカウントの閲覧者](#grant-access-to-your-azure-cosmos-account)ロールを割り当てるには、[List Read Only Keys API](/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys) を使用する必要があります。 これにより、読み取り専用キーのみが設定されます。
+> [Cosmos DB アカウントの閲覧者](#grant-access-to-your-azure-cosmos-account)ロールを割り当てるには、[List Read Only Keys API](/rest/api/cosmos-db-resource-provider/2020-04-01/databaseaccounts/listreadonlykeys) を使用する必要があります。 これにより、読み取り専用キーのみが設定されます。
 
 List Keys API は `DatabaseAccountListKeysResult` オブジェクトを返します。 この型は C# ライブラリで定義されていません。 次のコードは、このクラスを実装する方法を示しています。  
 

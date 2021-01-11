@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: ee897a22ceda4378ea9dba4579d5108a2ddf0b0d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c0129ff25f1df492ab6eba9f49add18d5321a3e8
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156700"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246566"
 ---
-Go 用 Bing Autosuggest クライアント ライブラリの使用を開始します。 以下の手順に従って、ライブラリをインストールし、基本タスクの例を試してみましょう。 
+Go 用 Bing Autosuggest クライアント ライブラリの使用を開始します。 以下の手順に従って、ライブラリをインストールし、基本タスクの例を試してみましょう。
 
 Go 用 Bing Autosuggest クライアント ライブラリを使用して、部分クエリ文字列に基づいて検索候補を取得します。
 
@@ -23,7 +23,7 @@ Go 用 Bing Autosuggest クライアント ライブラリを使用して、部�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[無料で作成](https://azure.microsoft.com/free/)できます。
+* Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[無料で作成](https://azure.microsoft.com/free/cognitive-services)できます。
 * 最新バージョンの [Go](https://golang.org/dl/)。
 
 Azure リソースを作成して、Bing Autosuggest クライアント ライブラリの使用を開始します。 適切なリソースの種類を次の中から選択します。
@@ -33,12 +33,12 @@ Azure リソースを作成して、Bing Autosuggest クライアント ライ�
 ## <a name="create-environment-variables"></a>環境変数を作成する
 
 >[!NOTE]
-> 2019 年 7 月 1 日より後に作成されたリソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。 
+> 2019 年 7 月 1 日より後に作成されたリソースのエンドポイントでは、次に示すカスタム サブドメイン形式を使用します。 リージョンのエンドポイントの詳細および全一覧については、「[Cognitive Services のカスタム サブドメイン名](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains)」を参照してください。
 
 作成したリソースのキーとエンドポイントを使用して、認証用に 2 つの環境変数を作成します。
 <!-- replace the below variable names with the names expected in the code sample.-->
 * `AUTOSUGGEST_SUBSCRIPTION_KEY`:要求を認証するためのリソース キー。
-* `AUTOSUGGEST_ENDPOINT`:API 要求を送信するためのリソース エンドポイント。 `https://<your-custom-subdomain>.api.cognitive.microsoft.com` のようになります。 
+* `AUTOSUGGEST_ENDPOINT`:API 要求を送信するためのリソース エンドポイント。 `https://<your-custom-subdomain>.api.cognitive.microsoft.com` のようになります。
 
 ご利用のオペレーティング システムの手順に従ってください。
 <!-- replace the below endpoint and key examples -->
@@ -74,7 +74,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 ## <a name="create-a-new-go-project"></a>新しい Go プロジェクトを作成する
 
-コンソール ウィンドウ (cmd、PowerShell、ターミナル、Bash) で、Go プロジェクト用に新しいワークスペースを作成し、そこに移動します。 ワークスペースには次の 3 つのフォルダーが格納されます。 
+コンソール ウィンドウ (cmd、PowerShell、ターミナル、Bash) で、Go プロジェクト用に新しいワークスペースを作成し、そこに移動します。 ワークスペースには次の 3 つのフォルダーが格納されます。
 
 * **src**:このディレクトリには、ソース コードとパッケージが格納されます。 `go get` コマンドを使用してインストールされるパッケージはすべてここに存在します。
 * **pkg**: このディレクトリには、コンパイル済みの Go パッケージ オブジェクトが格納されます。 これらのファイルにはいずれも `.a` という拡張子が付きます。
@@ -92,7 +92,7 @@ $ cd my-app
 
 ## <a name="install-the-client-library-for-go"></a>Go 用クライアント ライブラリをインストールする
 
-ここで、Go 用クライアント ライブラリをインストールします。 
+ここで、Go 用クライアント ライブラリをインストールします。
 
 ```bash
 $ go get -u <library-location-or-url>
@@ -154,10 +154,10 @@ func main() {
 
 ### <a name="authenticate-the-client"></a>クライアントを認証する
 
-> [!NOTE] 
+> [!NOTE]
 > このクイックスタートでは、`BING_AUTOSUGGEST_SUBSCRIPTION_KEY` という名前の Bing Autosuggest キー用と `BING_AUTOSUGGEST_ENDPOINT` という名前のエンドポイント用の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)してあることを前提としています。
 
-`main()` 関数で、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。 
+`main()` 関数で、実際のエンドポイントとキーを使用してクライアントをインスタンス化します。
 
 ```go
 // Get the context, which is required by the SDK methods.

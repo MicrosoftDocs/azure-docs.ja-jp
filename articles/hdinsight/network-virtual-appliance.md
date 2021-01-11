@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 805be8d5c9ab4f6316251adbb9bce3e99f4fa01d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b9e33ba8d9610067cb9e844477ec273391fbdb0b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086672"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751729"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Azure HDInsight でネットワーク仮想アプライアンスを構成する
 
@@ -47,7 +47,7 @@ Azure Firewall は自動的に、多くの一般的な重要なシナリオの�
 ### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS の依存関係
 
 > [!Important]
-> 以下の一覧には、いくつかの最も重要な FQDN のみを示しています。 NVA を構成するための FQDN の完全な一覧 (ほとんどは Azure Storage と Azure Service Bus) は[このファイルで](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)取得できます。 これらの依存関係は、クラスターを正常に作成するために HDInsight コントロール プレーン操作によって使用されます。
+> 以下の一覧には、クラスターの作成後およびクラスター操作の有効期間中に、OS とセキュリティの修正プログラムの適用または証明書の検証に必要となる可能性のあるいくつかの FQDN のみが示されています。 NVA を構成するための FQDN の依存関係の一覧 (ほとんどは Azure Storage と Azure Service Bus) は[このファイルで](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)取得できます。 これらの依存関係は、クラスターを正常に作成および監視/管理するために HDInsight リソース プロバイダー (RP) によって使用されます。 具体的には、テレメトリ/診断ログ、プロビジョニング メタデータ、クラスター関連の構成、スクリプト、ARM テンプレートなどがあります。FQDN の依存関係の一覧は、HDIngisht の今後の更新プログラムのリリースによって変更される可能性があります。
 
 | **エンドポイント**                                                          |
 |---|

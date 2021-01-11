@@ -3,12 +3,12 @@ title: Azure VMware Solution 向けに Azure Backup Server を設定する
 description: Azure Backup Server を使用して仮想マシンをバックアップするように Azure VMware Solution 環境を設定します。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: c45d2030e282057c487d142669ab634cd81f6929
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0dd2b16254e697a08d0ff542a5ddcb3fc7e4103d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079538"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750622"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Azure VMware Solution 向けに Azure Backup Server を設定する
 
@@ -56,7 +56,7 @@ Azure VMware Solution 用に Azure Backup Server を設定するには、次の�
 
 Azure Backup Server は、Azure VMware Solution の VM を保護するために、Azure のサービスとしてのインフラストラクチャ (IaaS) VM としてデプロイされます。
 
-:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="AVS デプロイ アーキテクチャ" border="false":::
+:::image type="content" source="media/avs-backup/deploy-mabs-avs-diagram.png" alt-text="Azure Backup Server は、Azure VMware Solution の VM を保護するために、Azure のサービスとしてのインフラストラクチャ (IaaS) VM としてデプロイされます。" border="false":::
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Azure Backup Server 環境の前提条件
 
@@ -140,23 +140,23 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
 1. 左側のメニューから、 **[すべてのサービス]** を選択します。
 
-   ![[すべてのサービス] を選択する](../backup/media/backup-create-rs-vault/click-all-services.png)
+   ![左側のメニューから、 [すべてのサービス] を選択します。](../backup/media/backup-create-rs-vault/click-all-services.png)
 
 1. **[すべてのサービス]** ダイアログ ボックスで「**Recovery Services**」と入力し、一覧から **Recovery Services コンテナー**を選択します。
 
-   ![[Recovery Services コンテナー] と入力して選択する](../backup/media/backup-create-rs-vault/all-services.png)
+   ![[Recovery Services コンテナー] と入力して選択します。](../backup/media/backup-create-rs-vault/all-services.png)
 
    サブスクリプションに Recovery Services コンテナーの一覧が表示されます。
 
 1. **[Recovery Services コンテナー]** ダッシュボードで **[追加]** を選択します。
 
-   ![[Recovery Services コンテナー] を追加する](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
+   ![Recovery Services コンテナーを追加します。](../backup/media/backup-create-rs-vault/add-button-create-vault.png)
 
    **[Recovery Services コンテナー]** ダイアログ ボックスが開きます。
 
 1. **[名前]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、および **[場所]** の値を入力します。
 
-   ![[Recovery Services コンテナー] を構成する](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
+   ![Recovery Services コンテナーを構成します。](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
    - **Name**:コンテナーを識別するフレンドリ名を入力します。 名前は Azure サブスクリプションに対して一意である必要があります。 2 文字以上で、50 文字以下の名前を指定します。 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
    - **サブスクリプション**:使用するサブスクリプションを選択します。 1 つのサブスクリプションのみのメンバーの場合は、その名前が表示されます。 どのサブスクリプションを使用すればよいかがわからない場合は、既定 (推奨) のサブスクリプションを使用してください。 職場または学校アカウントが複数の Azure サブスクリプションに関連付けられている場合に限り、複数の選択肢が存在します。
@@ -165,11 +165,11 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
 1. Recovery Services コンテナーを作成する準備ができたら、 **[作成]** を選択します。
 
-   ![[Recovery Services コンテナー] を作成する](../backup/media/backup-create-rs-vault/click-create-button.png)
+   ![Recovery Services コンテナーを作成します。](../backup/media/backup-create-rs-vault/click-create-button.png)
 
    Recovery Services コンテナーの作成に時間がかかることがあります。 ポータルの右上隅の **[通知]** 領域で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 コンテナーが表示されない場合は、 **[最新の情報に更新]** を選択します。
 
-   ![バックアップ コンテナーの一覧を更新する](../backup/media/backup-create-rs-vault/refresh-button.png)
+   ![バックアップ コンテナーの一覧を最新の情報に更新します。](../backup/media/backup-create-rs-vault/refresh-button.png)
 
 ## <a name="set-storage-replication"></a>ストレージ レプリケーションの設定
 
@@ -184,7 +184,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
 1. ストレージのレプリケーションの種類を選択し、 **[保存]** を選択します。
 
-   ![新しいコンテナーのストレージ構成を設定する](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
+   ![新しいコンテナーのストレージ構成を設定します。](../backup/media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
 ## <a name="download-and-install-the-software-package"></a>ソフトウェア パッケージをダウンロードしてインストールする
 
@@ -206,15 +206,15 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
    選択したコンテナーのダッシュボードが開きます。
 
-   ![コンテナー ダッシュボードを開く](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
+   ![選択したコンテナーのダッシュボードが開きます。](../backup/media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
 
    **[設定]** オプションが既定で開きます。 閉じている場合は、 **[設定]** を選択して開きます。
 
-   ![コンテナーの [設定] オプションを開く](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
+   ![[設定] オプションが既定で開きます。 閉じている場合は、 [設定] を選択して開きます。](../backup/media/backup-azure-microsoft-azure-backup/vault-setting.png)
 
 1. **[バックアップ]** を選択して、**作業の開始**ウィザードを開きます。
 
-   ![Backup の作業の開始ウィザードが開く](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
+   ![[バックアップ] を選択して、作業の開始ウィザードを開きます。](../backup/media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
 1. 開いたウィンドウで、次のようにします。
 
@@ -241,7 +241,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
    > [!NOTE]
    > すべてのファイルを同じフォルダーにダウンロードする必要があります。 ファイルをまとめてダウンロードするとサイズが 3 GB を超えるため、ダウンロードが完了するまでに最大で 60 分かかることがあります。 
 
-   ![ダウンロード センターでファイルを選択する](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
+   ![ダウンロード ページで、すべてのファイルを選択して [次へ] を選択します。](../backup/media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
 ### <a name="extract-the-software-package"></a>ソフトウェア パッケージを抽出する
 
@@ -256,7 +256,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
 1. **[抽出]** を選択して、抽出処理を開始します。
 
-   ![Microsoft Azure Backup セットアップ ウィザード](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
+   ![[抽出] を選択して、抽出処理を開始します。](../backup/media/backup-azure-microsoft-azure-backup/extract/03.png)
 
 1. 抽出したら、 **[Execute setup.exe]\(setup.exe の実行\)** オプションを選択し、 **[完了]** を選択します。
 
@@ -267,17 +267,17 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
 1. セットアップ ウィンドウの **[インストール]** で、**Microsoft Azure Backup** を選択してセットアップ ウィザードを開きます。
 
-   ![Microsoft Azure Backup セットアップ ウィザードの [インストール] ボタン](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
+   ![セットアップ ウィンドウの [インストール] で、Microsoft Azure Backup を選択してセットアップ ウィザードを開きます。](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
 1. **[ようこそ]** 画面で **[次へ]** を選択して、 **[前提条件の確認]** ページに進みます。
 
 1. **[再確認]** を選択して、Azure Backup Server のハードウェアとソフトウェアの前提条件が満たされているかどうかを確認します。 正しく満たされている場合は、 **[次へ]** を選択します。
 
-   ![Azure Backup Server の前提条件の確認](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
+   ![ [再確認] を選択して、Azure Backup Server のハードウェアとソフトウェアの前提条件が満たされているかどうかを確認します。 正しく満たされている場合は、 [次へ] を選択します。](../backup/media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
 
 1. Azure Backup Server のインストール パッケージには、必要となる適切な SQL Server バイナリがバンドルされています。 新しい Azure Backup Server のインストールを始めるときは、 **[このセットアップを使用して、SQL Server の新しいインスタンスをインストールします]** オプションを選択し ます。 次に、 **[確認してインストール]** を選択します。
 
-   ![Azure Backup Server での SQL Server のチェック](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
+   ![Azure Backup Server のインストール パッケージには、必要となる適切な SQL Server バイナリがバンドルされています。](../backup/media/backup-azure-microsoft-azure-backup/sql/01.png)
 
    > [!NOTE]
    > 独自の SQL Server インスタンスを使用する場合、サポートされる SQL Server のバージョンは、SQL Server 2014 SP1 以降、2016、2017 です。 すべての SQL Server のバージョンが、Standard または Enterprise 64 ビットである必要があります。 Azure Backup Server は、リモートの SQL Server インスタンスでは動作しません。 Azure Backup Server で使用されるインスタンスはローカルである必要があります。 Azure Backup Server で既存の SQL Server インスタンスを使用する場合は、セットアップでは、SQL Server の "*名前付きインスタンス*" の使用のみがサポートされます。
@@ -321,18 +321,18 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
    > [!NOTE]
    > Azure にバックアップするにはスクラッチ場所が必要です。 スクラッチ場所が、クラウドにバックアップする予定のデータの 5% 以上であることを確認します。 ディスクを保護するため、インストールが完了した後で別のディスクを構成する必要があります。 記憶域プールの詳細については、「 [記憶域プールおよびディスク記憶域の構成](/previous-versions/system-center/system-center-2012-r2/hh758075(v=sc.12))」を参照してください。
 
-   ![Microsoft Azure Backup セットアップのインストールの設定](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
+   ![Microsoft Azure Backup Server のファイルをインストールする場所を指定し、[次へ] を選択します。](../backup/media/backup-azure-microsoft-azure-backup/space-screen.png)
 
 1. 制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、 **[次へ]** を選択します。
 
-   ![Microsoft Azure Backup セットアップのセキュリティの設定](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
+   ![制限付きのローカル ユーザー アカウント用に強力なパスワードを指定し、[次へ] を選択します。](../backup/media/backup-azure-microsoft-azure-backup/security-screen.png)
 
 1. 更新プログラムを確認するために Microsoft Update を使用するかどうかを選択して、 **[次へ]** を選択します。
 
    > [!NOTE]
    > Windows Update を Microsoft Update にリダイレクトすることをお勧めします。そうすれば、Windows と Azure Backup Server などの他の製品に対するセキュリティ更新プログラムと重要な更新プログラムが提供されます。
 
-   ![Microsoft Azure Backup セットアップの Microsoft Update オプトイン](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+   ![更新プログラムを確認するために Microsoft Update を使用するかどうかを選択して、[次へ] を選択します。](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
 1. **[設定の概要]** を確認して、 **[インストール]** を選択します。
 
@@ -352,7 +352,7 @@ Recovery Services コンテナーは、経時的に作成された復旧ポイ�
 
    Microsoft Azure Recovery Services エージェントのセットアップが完了すると、インストール手順は SQL Server と Azure Backup Server コンポーネントのインストールと構成に進みます。
 
-   ![Microsoft Azure Backup セットアップのインストール](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+   ![Microsoft Azure Recovery Services エージェントのセットアップが完了すると、インストール手順は SQL Server と Azure Backup Server コンポーネントのインストールと構成に進みます。](../backup/media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 1. インストール ステップが完了したら、 **[閉じる]** を選択します。
 

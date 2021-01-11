@@ -11,12 +11,13 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 252c033c1a9d4d45c3d48256e65ae9ad10a93c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85360063"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279297"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -38,12 +39,12 @@ Azure AD Connect の高速インストールでは、自動的に生成された
 | パスワード ハッシュの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
 | Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への読み取りと書き込みのアクセス許可。 |
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
-| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/howto-sspr-writeback.md)」に記載された属性への読み取りと書き込みのアクセス許可。 |
+| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../authentication/tutorial-enable-sspr-writeback.md)」に記載された属性への読み取りと書き込みのアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](how-to-connect-device-writeback.md)」に記載されているデバイスのオブジェクトとコンテナーに対する読み取りと書き込みのアクセス許可。 |
 | グループの書き戻し |同期された **Office 365 グループ**のグループ オブジェクトの読み取り、作成、更新、削除。|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>ADSyncConfig PowerShell モジュールの使用 
-ADSyncConfig モジュールは AD DS PowerShell モジュールとツールに依存するため、[AD DS 用のリモート サーバー管理ツール (RSAT)](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) が必要です。 AD DS 用の RSAT をインストールするには、「管理者として実行」して Windows PowerShell ウィンドウを開いて、次のように実行します。 
+ADSyncConfig モジュールは AD DS PowerShell モジュールとツールに依存するため、[AD DS 用のリモート サーバー管理ツール (RSAT)](/windows-server/remote/remote-server-administration-tools) が必要です。 AD DS 用の RSAT をインストールするには、「管理者として実行」して Windows PowerShell ウィンドウを開いて、次のように実行します。 
 
 ``` powershell
 Install-WindowsFeature RSAT-AD-Tools 
@@ -310,4 +311,3 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 - [高速インストール](how-to-connect-install-express.md)
 - [カスタム インストール](how-to-connect-install-custom.md)
 - [ADSyncConfig リファレンス](reference-connect-adsyncconfig.md)
-

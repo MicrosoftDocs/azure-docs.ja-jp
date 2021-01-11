@@ -13,12 +13,12 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: 関数の作成
+    - name: Functions の作成
       expanded: true
       items:
         - name: Visual Studio Code
           href: ./functions-create-first-function-vs-code.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: functions-create-your-first-function-visual-studio.md
         - name: コマンド ライン
           href: functions-create-first-azure-function-azure-cli.md
@@ -29,7 +29,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
@@ -37,7 +37,7 @@
   items:
     - name: Functions と Logic Apps
       href: functions-twitter-email.md
-    - name: VS Code での Python 関数の開発
+    - name: VS Code にて Python で Functions の開発
       href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: サーバーレス API のための OpenAPI 定義
       href: functions-openapi-definition.md
@@ -103,6 +103,7 @@
           href: functions-bindings-example.md
         - name: バインディング拡張機能を登録する
           href: functions-bindings-register.md
+          displayName: 'bundles, extension bundles'
         - name: バインディングの式のパターン
           href: functions-bindings-expressions-patterns.md
         - name: バインディングの戻り値の利用
@@ -150,7 +151,7 @@
     - name: ストレージに関する考慮事項
       href: storage-considerations.md
       displayName: 'encryption, keys, mount, files'
-    - name: 関数プロキシ
+    - name: Functions プロキシ
       href: functions-proxies.md
     - name: ネットワーク オプション
       href: functions-networking-options.md
@@ -174,7 +175,8 @@
               href: functions-develop-vs.md
             - name: コア ツールの開発
               href: functions-run-local.md
-        - name: 関数の作成
+              displayName: 'local, runtime'
+        - name: Functions の作成
           items:
             - name: HTTP トリガー
               items:
@@ -228,7 +230,7 @@
           items:
             - name: テスト Functions
               href: functions-test-a-function.md
-            - name: ローカルの PowerShell 関数をデバッグする
+            - name: ローカルの PowerShell Functionsをデバッグする
               href: functions-debug-powershell-local.md
             - name: イベント グリッド トリガーをローカルにデバッグ
               href: functions-debug-event-grid-trigger-local.md
@@ -239,7 +241,7 @@
           displayName: best practice
         - name: エラー処理
           href: functions-bindings-error-pages.md
-        - name: HTTP によってトリガーされない関数を手動で実行する
+        - name: HTTP によってトリガーされない Functions を手動で実行する
           href: functions-manually-run-non-http.md
     - name: 配置
       items:
@@ -260,21 +262,19 @@
           displayName: 'keda, container, docker'
         - name: リソースのデプロイの自動化
           href: functions-infrastructure-as-code.md
-        - name: オンプレミスの関数
+        - name: オンプレミスの Functions
           href: functions-runtime-install.md
         - name: Jenkins プラグインを使用したデプロイ
-          href: /azure/jenkins/jenkins-azure-functions-deploy
+          href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
     - name: 構成
       items:
-        - name: 関数アプリの管理
+        - name: Functions アプリの管理
           href: functions-how-to-use-azure-function-app-settings.md
           displayName: 'app setting, application setting'
         - name: ランタイム バージョンの設定
           href: set-runtime-version.md
-        - name: 手動による拡張機能の登録
-          href: install-update-binding-extensions-manual.md
-        - name: 関数の無効化
+        - name: Functions の無効化
           href: disable-function.md
         - name: geo ディザスター リカバリー
           href: functions-geo-disaster-recovery.md
@@ -337,7 +337,7 @@
           href: app-service-export-api-to-powerapps-and-flow.md
         - name: マネージド ID の使用
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
-        - name: HTTP 関数エンドポイントのカスタマイズ
+        - name: HTTP Functions エンドポイントのカスタマイズ
           href: functions-create-serverless-api.md
         - name: オンプレミスのリソースの管理
           href: functions-hybrid-powershell.md
@@ -345,8 +345,8 @@
       items:
         - name: ストレージのトラブルシューティング
           href: functions-recover-storage-account.md
-        - name: Python 依存関係のトラブルシューティング
-          href: recover-module-not-found.md
+        - name: Python Functions のトラブルシューティング
+          href: recover-python-functions.md
 - name: リファレンス
   items:
     - name: API リファレンス
@@ -376,7 +376,7 @@
             - name: 入力
               displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
-            - name: Output
+            - name: 出力
               displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
@@ -396,9 +396,11 @@
                 - name: 入力
                   href: functions-bindings-cosmosdb-v2-input.md
                   displayName: Azure Cosmos DB
-                - name: Output
+                - name: 出力
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
+        - name: Dapr
+          href: 'https://github.com/dapr/azure-functions-extension'
         - name: Event Grid
           items:
             - name: 概要
@@ -432,6 +434,8 @@
             - name: 出力
               href: functions-bindings-event-iot-output.md
               displayName: Azure IoT Hubs
+        - name: Kafka
+          href: 'https://github.com/azure/azure-functions-kafka-extension'
         - name: HTTP と webhook
           items:
             - name: 概要
@@ -443,8 +447,6 @@
             - name: 出力
               href: functions-bindings-http-webhook-output.md
               displayName: HTTP
-        - name: Microsoft Graph
-          href: functions-bindings-microsoft-graph.md
         - name: Mobile Apps
           href: functions-bindings-mobile-apps.md
         - name: Notification Hubs
@@ -460,6 +462,8 @@
             - name: 出力
               href: functions-bindings-storage-queue-output.md
               displayName: Queue storage
+        - name: RabbitMQ
+          href: 'https://github.com/azure/azure-functions-rabbitmq-extension'
         - name: SendGrid
           href: functions-bindings-sendgrid.md
         - name: Service Bus

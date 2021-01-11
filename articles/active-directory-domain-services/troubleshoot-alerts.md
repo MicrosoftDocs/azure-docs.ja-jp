@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 91a060e8a5fe1bdaf3e6ea08811814297c355108
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 29bd7490ea9a03118f134ba11923ede2075e6fd5
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86222974"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722587"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services での一般的なアラートと解決策
 
@@ -106,7 +106,7 @@ Azure AD DS にはアクティブなサブスクリプションが必要です�
 
 Azure AD DS には、アクティブなサブスクリプションが必要です。 マネージド ドメインが関連付けられていた Azure サブスクリプションがアクティブでない場合は、それを更新して、サブスクリプションを再度アクティブにする必要があります。
 
-1. [Azure サブスクリプションを更新してください](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)。
+1. [Azure サブスクリプションを更新してください](../cost-management-billing/manage/subscription-disabled.md)。
 2. サブスクリプションが更新されたら、Azure AD DS 通知を使用して、マネージド ドメインを再び有効にすることができます。
 
 マネージド ドメインが再度有効にされると、マネージド ドメインの正常性が 2 時間以内に自動的に更新され、アラートが削除されます。
@@ -162,7 +162,7 @@ Azure AD DS の仮想ネットワーク サブネットには、自動的に作�
 
 自動的に生成されるサービス プリンシパルの中には、マネージド ドメインのリソースの管理と作成に使用されるものがあります。 これらのいずれかのサービス プリンシパルのアクセス許可が変更されると、ドメインではリソースを正しく管理できません。 次の手順では、サービス プリンシパルに対するアクセス許可を理解し、付与する方法について説明します。
 
-1. [ロールベースのアクセス制御と Azure portal を使ったアプリケーションへのアクセス権の付与方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)に関する記事を参照してください。
+1. [ロールベースのアクセス制御と Azure portal を使ったアプリケーションへのアクセス権の付与方法](../role-based-access-control/role-assignments-portal.md)に関する記事を参照してください。
 2. ID *abba844e-bc0e-44b0-947a-dc74e5d09022* のサービス プリンシパルが持っているアクセス権を確認し、以前に拒否されたアクセス権を付与します。
 
 ## <a name="aadds112-not-enough-ip-address-in-the-managed-domain"></a>AADDS112:マネージド ドメインに十分な数の IP アドレスがない
@@ -276,7 +276,7 @@ Azure AD DS コンポーネントに適用されているポリシーを確認�
 
 Azure AD DS には、アクティブなサブスクリプションが必要です。 マネージド ドメインが関連付けられていた Azure サブスクリプションがアクティブでない場合は、それを更新して、サブスクリプションを再度アクティブにする必要があります。
 
-1. [Azure サブスクリプションを更新してください](https://docs.microsoft.com/azure/billing/billing-subscription-become-disable)。
+1. [Azure サブスクリプションを更新してください](../cost-management-billing/manage/subscription-disabled.md)。
 2. サブスクリプションが更新されたら、Azure AD DS 通知を使用して、マネージド ドメインを再び有効にすることができます。
 
 マネージド ドメインが再度有効にされると、マネージド ドメインの正常性が 2 時間以内に自動的に更新され、アラートが削除されます。

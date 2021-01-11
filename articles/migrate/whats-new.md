@@ -4,41 +4,32 @@ description: Azure Migrate サービスの最新の情報や最近行われた�
 ms.topic: overview
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 58c77dccd1e43ed497cd56b2831eb2ab914d8d5d
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: e32c7433649cc6716a57a6aa2384c1e2d266e102
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85556920"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927173"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
+## <a name="update-august-2020"></a>更新 (2020 年 8 月)
+
+- Azure Migrate プロジェクト キーがポータルから生成され、アプライアンスの登録を完了するために使用される、オンボード エクスペリエンスが向上しました。
+- VMware アプライアンスまたは Hyper-V アプライアンスを設定するために、ポータルからそれぞれ OVA か VHD ファイルまたはインストーラー スクリプトをダウンロードするオプション。
+- ユーザー エクスペリエンスが向上した、更新されたアプライアンス構成マネージャー。
+- Hyper-V VM の検出での、複数の資格情報のサポート。
+- 追加された資格情報および検出ソースに対する、向上した検索、並べ替え、およびフィルター機能。
+- Hyper-V ホストまたはクラスター、および物理サーバー用の検出ソースを追加するために使用する、単一項目の入力、複数の項目の入力、および CSV のインポートのオプション。
+- テーブルに追加された各ソースに対する検証および検出操作の状態の更新により、強化されたエラー エクスペリエンス。 
 
 ## <a name="update-june-2020"></a>更新 (2020 年 6 月)
 
 - オンプレミス VMware VM を [Azure VMware Solution (AVS)](https://go.microsoft.com/fwlink/?linkid=2132637) に移行するための評価がサポートされるようになりました。 [詳細情報](how-to-create-azure-vmware-solution-assessment.md)
 - 物理サーバーを検出するための、アプライアンスでの複数の資格情報のサポート。
 - テナント制限が構成されているテナントのアプライアンスからの Azure ログインを許可するためのサポート。
-- 以下に示す Azure Migrate アプライアンスの新しいバージョン。
-
-### <a name="azure-public-cloud"></a>Azure パブリック クラウド
-
-**シナリオ** | **ダウンロード** | **SHA256**
---- | --- | ---
-Hyper-V (8.93 GB) | [最新バージョン](https://aka.ms/migrate/appliance/hyperv) |  572be425ea0aca69a9aa8658c950bc319b2bdbeb93b440577264500091c846a1
-VMware (10.9 GB) | [最新バージョン](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
-物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
-
-
-### <a name="azure-government"></a>Azure Government
-
-**シナリオ** | **ダウンロード** | **SHA256**
---- | --- | ---
-Hyper-V (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
-VMware (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
-物理 (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
-
 
 
 ## <a name="update-april-2020"></a>更新 (2020 年 4 月)

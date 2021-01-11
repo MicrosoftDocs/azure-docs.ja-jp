@@ -2,17 +2,17 @@
 title: StorSimple 8000 シリーズ デバイスからのデータ移行オプション
 description: StorSimple 8000 シリーズからデータを移行するためのオプションの概要を示します。
 services: storsimple
-author: priestlg
+author: twooley
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: v-grpr
-ms.openlocfilehash: 39c78e1dc579f74207ba828f2f6a49ad44dd4a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 92ab570b3e06d67d7986a8103e9622e95eb57e7e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514703"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783911"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>StorSimple 8000 シリーズからデータを移行するためのオプション
 

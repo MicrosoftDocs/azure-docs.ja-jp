@@ -5,13 +5,14 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
+ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 142a78dbb994a28d267294ce3b3d86e32f52bb45
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 70dc07fcbfc740ce0ec6b7a841221e3b0af5f7d6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87298764"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88925975"
 ---
 ## <a name="prerequisites"></a>前提条件
 

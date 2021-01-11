@@ -4,15 +4,16 @@ description: Azure 無料アカウントに対する課金の理由を理解し�
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 557e099b4250d5514920aa6c22399ce225f35d92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f81c33f3b49352933801c8b89a2c3a1787c2356a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200950"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682928"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Azure 無料アカウントでの課金を避ける
 
@@ -23,7 +24,6 @@ Azure 無料アカウントに対して課金が課せられる理由のいく�
 ## <a name="your-credit-runs-out-or-is-expired"></a>クレジットを使い果たした、または期限切れ
 
 クレジットの残高がなくなるか、30 日が経過して有効期限が切れると、ご利用のサブスクリプションとサービスは無効になります。 Azure サービスを引き続き使用するには、アカウントをアップグレードする必要があります。 詳細については、[Azure 無料アカウントのアップグレード](upgrade-azure-subscription.md)に関するページを参照してください。 12 か月間は、アップグレード後も無料サービスをご利用いただけます。また課金の対象となるのは、無料のサービスと数量を超えた使用分だけです。
-
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>使用量が無料サービスの制限を超えている
 

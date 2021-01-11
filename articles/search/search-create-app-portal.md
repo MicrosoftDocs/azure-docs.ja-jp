@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/01/2020
-ms.openlocfilehash: c6ab5c2cae2bb966c2b040b40dbf36e56a54411b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6adbd83ddfbdb82d1054d4e74dd9492d08583ede
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496754"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89292539"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルでデモ アプリを作成する (Azure Cognitive Search)
 
@@ -61,7 +61,7 @@ ms.locfileid: "86496754"
 
 1. [説明] では、クリックしてその特定のドキュメントにアクセスするかどうかの判断に役立つような詳しい情報が格納されているフィールドを選択します。
 
-   ![サンプル データのデータ ソース ページ](media/search-create-app-portal/configure-results.png)
+   ![サンプル データの結果を構成する](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>サイド バーを追加する
 
@@ -111,4 +111,4 @@ Azure Cognitive Search のファセット ナビゲーションは、累積的�
 既定のアプリは最初の探索や小規模なタスクに役立ちますが、API を早い段階で確認することは、概念とワークフローをより深いレベルで理解するのに役立ちます。
 
 > [!div class="nextstepaction"]
-> [.NET SDK を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [.NET SDK を使用してインデックスを作成する](./search-get-started-dotnet.md)

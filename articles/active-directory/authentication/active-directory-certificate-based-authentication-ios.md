@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ede7ddb81bae69d92983e787e779ee9d410bd87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 584fb5c370fa0be629d057eb94dc4c2a8b9edc15
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144063"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716437"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS での Azure Active Directory の証明書ベースの認証
 
@@ -69,7 +69,7 @@ Azure AD でクライアント証明書を失効させるには、ADFS トーク
 * iOS に Microsoft Authenticator をインストールするための要件
 * ユーザー証明書を取得する手順
 
-詳細については、[AD FS サインイン ページのカスタマイズ](https://technet.microsoft.com/library/dn280950.aspx)に関するページを参照してください。
+詳細については、[AD FS サインイン ページのカスタマイズ](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11))に関するページを参照してください。
 
 ## <a name="use-modern-authentication-with-office-apps"></a>Office アプリで先進認証を使用する
 

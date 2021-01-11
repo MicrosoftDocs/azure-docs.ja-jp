@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 06c10cffcfa5c68b1da8ba366ca270f1c2fa6ea4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060966"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565929"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
@@ -28,12 +28,12 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 
 * [マネージド ID がサポートされているトリガーとアクション](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 * [送信呼び出しでサポートされている認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [ロジック アプリのマネージド ID の制限](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
+* [ロジック アプリのマネージド ID に関する制限](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [マネージド ID を使用した Azure AD 認証がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 マネージド ID とアクセスする必要があるターゲット Azure リソースの両方で、同じ Azure サブスクリプションを使用する必要があります。
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 マネージド ID とアクセスする必要があるターゲット Azure リソースの両方で、同じ Azure サブスクリプションを使用する必要があります。
 
 * マネージド ID に Azure リソースへのアクセス権を付与するには、その ID のターゲット リソースにロールを追加する必要があります。 ロールを追加するには、対応する Azure AD テナント内の ID にロールを割り当てることができる、[Azure AD 管理者のアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)が必要です。
 
@@ -197,7 +197,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 * `type` プロパティが `UserAssigned` に設定されている `identity` オブジェクト
 
-* ID のリソース ID を指定する子 `userAssignedIdentities` オブジェクト。これは、`principalId` と `clientId` プロパティを持つ別の子オブジェクトです
+* ユーザー割り当てリソースと名前が指定されている子 `userAssignedIdentities` オブジェクト
 
 この例では、HTTP PUT 要求のロジック アプリのリソース定義を示しています。パラメーター化されていない `identity` オブジェクトが含まれています。 PUT 要求への応答と後続の GET 操作にも、この `identity` オブジェクトが含まれています。
 
@@ -215,10 +215,7 @@ Azure によってロジック アプリのリソース定義が作成される�
          "identity": {
             "type": "UserAssigned",
             "userAssignedIdentities": {
-               "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>": {
-                  "principalId": "<principal-ID>",
-                  "clientId": "<client-ID>"
-               }
+               "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>": {}
             }
          },
          "properties": {
@@ -231,12 +228,6 @@ Azure によってロジック アプリのリソース定義が作成される�
    "outputs": {}
 }
 ```
-
-| プロパティ (JSON) | 値 | 説明 |
-|-----------------|-------|-------------|
-| `principalId` | <*principal-ID*> | Azure AD テナント内のユーザー割り当てマネージド ID のグローバル一意識別子 (GUID) |
-| `clientId` | <*client-ID*> | 実行時の呼び出しに使用されるロジック アプリの新しい ID のグローバル一意識別子 (GUID) |
-||||
 
 テンプレートにマネージド ID のリソース定義も含まれている場合は、`identity` オブジェクトをパラメーター化できます。 この例では、子 `userAssignedIdentities` オブジェクトが、テンプレートの `variables` セクションで定義した `userAssignedIdentity` 変数を参照する方法を示しています。 この変数は、ユーザー割り当て ID のリソース ID を参照しています。
 
@@ -281,22 +272,11 @@ Azure によってロジック アプリのリソース定義が作成される�
          "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
          "name": "[parameters('Template_UserAssignedIdentityName')]",
          "location": "[resourceGroup().location]",
-         "properties": {
-            "tenantId": "<tenant-ID>",
-            "principalId": "<principal-ID>",
-            "clientId": "<client-ID>"
-         }
+         "properties": {}
       }
   ]
 }
 ```
-
-| プロパティ (JSON) | 値 | 説明 |
-|-----------------|-------|-------------|
-| `tenantId` | <*Azure-AD-tenant-ID*> | ユーザー割り当て ID が新しくメンバーとなった Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ユーザー割り当て ID 名と同じ名前を持ちます。 |
-| `principalId` | <*principal-ID*> | Azure AD テナント内のユーザー割り当てマネージド ID のグローバル一意識別子 (GUID) |
-| `clientId` | <*client-ID*> | 実行時の呼び出しに使用されるロジック アプリの新しい ID のグローバル一意識別子 (GUID) |
-||||
 
 <a name="access-other-resources"></a>
 
@@ -325,7 +305,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 
 1. **[ロールの割り当ての追加]** で、ID にターゲット リソースへのアクセスに必要なアクセス権を与える**ロール**を選択します。
 
-   このトピックの例では、ID に [Azure Storage コンテナー内の BLOB にアクセスできるロール](../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)が必要です。
+   このトピックの例では、ID に [Azure Storage コンテナー内の BLOB にアクセスできるロール](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)が必要です。
 
    ![[ストレージ BLOB データ共同作成者] ロールを選択する](./media/create-managed-service-identity/select-role-for-identity.png)
 
@@ -508,7 +488,7 @@ Azure portal で、まず、[ターゲット リソース](#disable-identity-tar
 
 ### <a name="disable-managed-identity-in-azure-resource-manager-template"></a>Resource Manager テンプレートでマネージド ID を無効にする
 
-Azure Resource Manager テンプレートを使用してロジック アプリのマネージド ID を作成した場合は、`identity` オブジェクトの `type` 子プロパティを `None` に設定します。 システムマネージド ID の場合、この操作により、プリンシパル ID も Azure AD から削除されます。
+Azure Resource Manager テンプレートを使用してロジック アプリのマネージド ID を作成した場合は、`identity` オブジェクトの `type` 子プロパティを `None` に設定します。
 
 ```json
 "identity": {

@@ -94,8 +94,14 @@
       href: configure-automatic-updates.md
     - name: 言語パックをインストールする
       href: language-packs.md
+    - name: Azure Advisor を使用する
+      href: azure-advisor.md
+    - name: 推奨事項を解決する
+      href: azure-advisor-recommendations.md
 - name: 概念
   items:
+    - name: 認証
+      href: authentication.md
     - name: 安全な URL リスト
       href: safe-url-list.md
     - name: Windows Virtual Desktop の環境
@@ -116,6 +122,14 @@
       href: faq.md
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
       href: windows-10-multisession-faq.md
+    - name: MSIX アプリのアタッチ
+      items:
+        - name: MSIX アプリのアタッチとは
+          href: what-is-app-attach.md
+        - name: 用語集
+          href: app-attach-glossary.md
+        - name: よく寄せられる質問
+          href: app-attach-faq.md
     - name: データの場所
       href: data-locations.md
 - name: トラブルシューティング
@@ -143,11 +157,17 @@
     - name: Linux Support
       href: linux-overview.md
     - name: サポートされる RDP ファイルの設定
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context
     - name: ネットワーク ガイダンス
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context
     - name: 仮想マシンのサイズ指定ガイダンス
-      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
+      href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
+    - name: Azure コマンド ライン インターフェイス (CLI)
+      href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure シナリオ例
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
+    - name: メール検出
+      href: /windows-server/remote/remote-desktop-services/rds-email-discovery
 - name: リソース
   items:
     - name: PowerShell
@@ -159,7 +179,7 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: ラーニング パス
-      href: 'https://docs.microsoft.com/learn/paths/m365-wvd/'
+      href: /learn/paths/m365-wvd/
     - name: 操作方法に関するビデオ
       href: 'https://support.microsoft.com/help/4563049/how-to-videos-about-windows-virtual-desktop'
     - name: 技術コミュニティ サポート グループ

@@ -3,16 +3,16 @@ title: モジュール ツインの JSON スキーマ - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge のモジュール ツイン JSON スキーマについて説明します。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a342c59b35c7ebb4b6021163da76bdd3e0d449c3
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 8bd86bdc2c8de9ee586e785db2074fa772100420
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266816"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053068"
 ---
 # <a name="module-twin-json-schema"></a>モジュール ツインの JSON スキーマ
 
-デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 Azure IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 詳細については、「[IoT Hub のモジュール ツインの理解と使用](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)」を参照してください
+デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 Azure IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 詳細については、「[IoT Hub のモジュール ツインの理解と使用](../../iot-hub/iot-hub-devguide-module-twins.md)」を参照してください
 
 このトピックでは、Live Video Analytics on IoT Edge のモジュール ツイン JSON スキーマについて説明します。
 
@@ -43,7 +43,7 @@ Live Video Analytics on IoT Edge では、次のモジュール ツイン プロ
 
 <sup>*</sup>サービス プリンシパル証明書またはパスワードを指定する必要があります。 
 
-動的プロパティは、モジュールを再起動しなくても更新できます。 これらのプロパティのいくつかの値は、[Media Services API へのアクセスの取得](../latest/access-api-cli-how-to.md)に関する記事の手順に従って取得できます。 
+動的プロパティは、モジュールを再起動しなくても更新できます。 これらのプロパティのいくつかの値は、[Media Services API へのアクセスの取得](../latest/access-api-howto.md)に関する記事の手順に従って取得できます。 
 
 オプションの診断設定の役割の詳細については、「[監視とログ](monitoring-logging.md)」を参照してください。
 

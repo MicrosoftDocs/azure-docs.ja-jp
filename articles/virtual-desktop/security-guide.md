@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop のセキュリティに関するベスト プラクティス - Azure
 description: Windows Virtual Desktop 環境のセキュリティを確保するためのベスト プラクティス。
-services: virtual-desktop
 author: heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 95f1027f4f5ace6963a38edf0dc028ddca351b7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736674"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002290"
 ---
 # <a name="security-best-practices"></a>セキュリティの運用方法
 
@@ -103,7 +101,7 @@ Windows Virtual Desktop のすべてのユーザーと管理者に多要素認�
 
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection を有効にする
 
-既知の悪意のあるソフトウェアからデプロイを保護するには、すべてのセッション ホストで Endpoint Protection を有効にすることをお勧めします。 Windows Defender ウイルス対策、またはサードパーティ製のプログラムを使用できます。 詳細については、[VDI 環境への Windows Defender ウイルス対策の展開ガイド](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)に関するページを参照してください。 
+既知の悪意のあるソフトウェアからデプロイを保護するには、すべてのセッション ホストで Endpoint Protection を有効にすることをお勧めします。 Windows Defender ウイルス対策、またはサードパーティ製のプログラムを使用できます。 詳細については、[VDI 環境への Windows Defender ウイルス対策の展開ガイド](/windows/security/threat-protection/windows-defender-antivirus/deployment-vdi-windows-defender-antivirus)に関するページを参照してください。
 
 FSLogix などのプロファイル ソリューションや、VHD ファイルをマウントするその他のソリューションでは、VHD ファイルの拡張子を除外することをお勧めします。
 

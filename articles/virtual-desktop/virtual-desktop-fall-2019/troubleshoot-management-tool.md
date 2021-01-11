@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop 管理ツール - Azure
-description: Windows Virtual Desktop 管理ツールに関する問題のトラブルシューティング方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) 管理ツール - Azure
+description: Windows Virtual Desktop (クラシック) 管理ツールに関する問題のトラブルシューティング方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bb9206d2c2c15c036b0cf1184b79ed126966eb3b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6f03284103b4a2aa6900bf1ba5c50a4688c50b0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614076"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005484"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-management-tool"></a>Windows Virtual Desktop 管理ツールのトラブルシューティング
+# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Windows Virtual Desktop (クラシック) 管理ツールのトラブルシューティング
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。
 
 この記事では、Windows Virtual Desktop 管理ツールのデプロイ中に発生する可能性のある問題とその解決方法について説明します。
 

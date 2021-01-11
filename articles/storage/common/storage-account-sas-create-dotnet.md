@@ -10,12 +10,13 @@ ms.date: 08/06/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 75f4a3c835a843e824c2ac0b437843cd91824bfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 102248882e1ec123ee74eedd74730c12a991fb86
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512726"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021189"
 ---
 # <a name="create-an-account-sas-with-net"></a>.NET を使用してアカウント SAS を作成する
 

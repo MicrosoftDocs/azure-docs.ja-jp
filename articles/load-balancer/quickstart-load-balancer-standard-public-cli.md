@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 08/23/2020
 ms.author: allensu
-ms.custom: mvc
-ms.openlocfilehash: aa0d29c5c2a4cf8eebbf530b42a25d8924e031bc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: mvc, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: b437bfa205833594c9e76c6f0d8ff1923f51f117
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290278"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762710"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>クイック スタート:Azure CLI を使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -52,118 +52,10 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 ```
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[オプション 1 (既定): ロード バランサー (Standard SKU) を作成する](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
-
-
-## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-
-インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 
-
-[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
-
-* **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
-* **myResourceGroupLB** 内に作成します。
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Standard
-```
-
-ゾーン 1 にゾーン冗長パブリック IP アドレスを作成するには、次のようにします。
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Standard \
-    --zone 1
-```
-
-## <a name="create-standard-load-balancer"></a>Standard ロード バランサーを作成する
-
-このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
-
-  * ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
-  * フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。
-  * バックエンド VM インスタンスの正常性を判断する正常性プローブ。
-  * VM に対するトラフィックの分散方法を定義するロード バランサー規則。
-
-### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
-
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
-
-* 名前は **myLoadBalancer** にします。
-* フロントエンド プールの名前は **myFrontEnd** にします。
-* バックエンド プールの名前は **myBackEndPool** にします。
-* 前の手順で作成したパブリック IP アドレス **myPublicIP** に関連付けます。 
-
-```azurecli-interactive
-  az network lb create \
-    --resource-group myResourceGroupLB \
-    --name myLoadBalancer \
-    --sku Standard \
-    --public-ip-address myPublicIP \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool       
-```
-
-### <a name="create-the-health-probe"></a>正常性プローブを作成する
-
-正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 
-
-プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
-
-[az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
-
-* 仮想マシンの正常性を監視します。
-* 名前は **myHealthProbe** にします。
-* プロトコルは **TCP** にします。
-* **ポート 80** を監視します。
-
-```azurecli-interactive
-  az network lb probe create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHealthProbe \
-    --protocol tcp \
-    --port 80   
-```
-
-### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
-
-ロード バランサー規則は、以下のものを定義します。
-
-* 着信トラフィック用のフロントエンド IP 構成。
-* トラフィックを受信するためのバックエンド IP プール。
-* 必要な発信元ポートと宛先ポート。 
-
-[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
-
-* 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
-* **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
-* 正常性プローブ **myHealthProbe** を使用します。
-* プロトコルは **TCP** にします。
-* フロントエンド IP アドレスを使用して、アウトバウンドの送信元ネットワーク アドレス変換 (SNAT) を有効にします。
-
-```azurecli-interactive
-  az network lb rule create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHTTPRule \
-    --protocol tcp \
-    --frontend-port 80 \
-    --backend-port 80 \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe \
-    --disable-outbound-snat true 
-```
 
 ## <a name="configure-virtual-network"></a>仮想ネットワークを構成する
 
@@ -174,7 +66,9 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) を使用して、次のように仮想ネットワークを作成します。
 
 * 名前は **myVNet** にします。
+* アドレス プレフィックスは **10.1.0.0/16** にします。
 * サブネットの名前は **myBackendSubnet** にします。
+* サブネット プレフィックスは **10.1.0.0/24** にします。
 * リソース グループは **myResourceGroupLB** にします。
 * 場所は **eastus** にします。
 
@@ -183,7 +77,9 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
     --resource-group myResourceGroupLB \
     --location eastus \
     --name myVNet \
-    --subnet-name myBackendSubnet
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.1.0.0/24
 ```
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
@@ -208,7 +104,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 * 名前は **myNSGRuleHTTP** にします。
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします。
 * リソース グループは **myResourceGroupLB** にします。
-* プロトコルは **TCP** にします。
+* プロトコルは **(*)** にします。
 * 方向は **Inbound** にします。
 * 送信元は **(*)** にします。
 * 送信先は **(*)** にします。
@@ -221,7 +117,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
     --resource-group myResourceGroupLB \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
-    --protocol tcp \
+    --protocol '*' \
     --direction inbound \
     --source-address-prefix '*' \
     --source-port-range '*' \
@@ -242,7 +138,6 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
 
 ```azurecli-interactive
 
@@ -251,9 +146,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm2"></a>VM2
 
@@ -261,8 +154,6 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 * リソース グループは **myResourceGroupLB** にします。
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
-* ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
 
 ```azurecli-interactive
   az network nic create \
@@ -270,9 +161,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
     --name myNicVM2 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm3"></a>VM3
 
@@ -281,7 +170,6 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
 
 ```azurecli-interactive
   az network nic create \
@@ -289,9 +177,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
     --name myNicVM3 \
     --vnet-name myVnet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
@@ -412,6 +298,161 @@ runcmd:
     --no-wait
 ```
 VM がデプロイされるまでに、数分かかる場合があります。
+
+## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
+
+インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 
+
+[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
+
+* **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
+* **myResourceGroupLB** 内に作成します。
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Standard
+```
+
+ゾーン 1 にゾーン冗長パブリック IP アドレスを作成するには、次のようにします。
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Standard \
+    --zone 1
+```
+
+## <a name="create-standard-load-balancer"></a>Standard ロード バランサーを作成する
+
+このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
+
+  * ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
+  * フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。
+  * バックエンド VM インスタンスの正常性を判断する正常性プローブ。
+  * VM に対するトラフィックの分散方法を定義するロード バランサー規則。
+
+### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
+
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
+
+* 名前は **myLoadBalancer** にします。
+* フロントエンド プールの名前は **myFrontEnd** にします。
+* バックエンド プールの名前は **myBackEndPool** にします。
+* 前の手順で作成したパブリック IP アドレス **myPublicIP** に関連付けます。 
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --sku Standard \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool       
+```
+
+### <a name="create-the-health-probe"></a>正常性プローブを作成する
+
+正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 
+
+プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
+
+[az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
+
+* 仮想マシンの正常性を監視します。
+* 名前は **myHealthProbe** にします。
+* プロトコルは **TCP** にします。
+* **ポート 80** を監視します。
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
+```
+
+### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
+
+ロード バランサー規則は、以下のものを定義します。
+
+* 着信トラフィック用のフロントエンド IP 構成。
+* トラフィックを受信するためのバックエンド IP プール。
+* 必要な発信元ポートと宛先ポート。 
+
+[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
+
+* 名前は **myHTTPRule** にします
+* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
+* **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
+* 正常性プローブ **myHealthProbe** を使用します。
+* プロトコルは **TCP** にします。
+* フロントエンド IP アドレスを使用して、アウトバウンドの送信元ネットワーク アドレス変換 (SNAT) を有効にします。
+
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe \
+    --disable-outbound-snat true 
+```
+### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>仮想マシンをロード バランサー バックエンド プールに追加する
+
+[az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) を使用して、次のように仮想マシンをバックエンド プールに追加します。
+
+#### <a name="vm1"></a>VM1
+* バックエンド アドレス プールは **myBackEndPool** にします。
+* リソース グループは **myResourceGroupLB** にします。
+* ネットワーク インターフェイス **myNicVM1** および **ipconfig1** に関連付けます。
+* ロード バランサー **myLoadBalancer** に関連付けます。
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM1 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm2"></a>VM2
+* バックエンド アドレス プールは **myBackEndPool** にします。
+* リソース グループは **myResourceGroupLB** にします。
+* ネットワーク インターフェイス **myNicVM2** および **ipconfig1** に関連付けます。
+* ロード バランサー **myLoadBalancer** に関連付けます。
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM2 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm3"></a>VM3
+* バックエンド アドレス プールは **myBackEndPool** にします。
+* リソース グループは **myResourceGroupLB** にします。
+* ネットワーク インターフェイス **myNicVM3** および **ipconfig1** に関連付けます。
+* ロード バランサー **myLoadBalancer** に関連付けます。
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM3 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
 
 ## <a name="create-outbound-rule-configuration"></a>アウトバウンド規則構成の作成
 ロードバランサーのアウトバウンド規則では、バックエンド プール内の VM 用に送信 SNAT を構成します。 
@@ -593,106 +634,10 @@ VM がデプロイされるまでに、数分かかる場合があります。
    --lb-name myLoadBalancer
 ```
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[オプション 2: ロード バランサー (Basic SKU) を作成する](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Basic SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
-
-
-## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
-
-インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 
-
-[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
-
-* **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
-* **myResourceGroupLB** 内に作成します。
-
-```azurecli-interactive
-  az network public-ip create \
-    --resource-group myResourceGroupLB \
-    --name myPublicIP \
-    --sku Basic
-```
-
-## <a name="create-basic-load-balancer"></a>Basic ロード バランサーを作成する
-
-このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
-
-  * ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
-  * フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。
-  * バックエンド VM インスタンスの正常性を判断する正常性プローブ。
-  * VM に対するトラフィックの分散方法を定義するロード バランサー規則。
-
-### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
-
-[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
-
-* 名前は **myLoadBalancer** にします。
-* フロントエンド プールの名前は **myFrontEnd** にします。
-* バックエンド プールの名前は **myBackEndPool** にします。
-* 前の手順で作成したパブリック IP アドレス **myPublicIP** に関連付けます。 
-
-```azurecli-interactive
-  az network lb create \
-    --resource-group myResourceGroupLB \
-    --name myLoadBalancer \
-    --sku Basic \
-    --public-ip-address myPublicIP \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool       
-```
-
-### <a name="create-the-health-probe"></a>正常性プローブを作成する
-
-正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 
-
-プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
-
-[az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
-
-* 仮想マシンの正常性を監視します。
-* 名前は **myHealthProbe** にします。
-* プロトコルは **TCP** にします。
-* **ポート 80** を監視します。
-
-```azurecli-interactive
-  az network lb probe create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHealthProbe \
-    --protocol tcp \
-    --port 80   
-```
-
-### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
-
-ロード バランサー規則は、以下のものを定義します。
-
-* 着信トラフィック用のフロントエンド IP 構成。
-* トラフィックを受信するためのバックエンド IP プール。
-* 必要な発信元ポートと宛先ポート。 
-
-[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
-
-* 名前は **myHTTPRule** にします
-* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
-* **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
-* 正常性プローブ **myHealthProbe** を使用します。
-* プロトコルは **TCP** にします。
-
-```azurecli-interactive
-  az network lb rule create \
-    --resource-group myResourceGroupLB \
-    --lb-name myLoadBalancer \
-    --name myHTTPRule \
-    --protocol tcp \
-    --frontend-port 80 \
-    --backend-port 80 \
-    --frontend-ip-name myFrontEnd \
-    --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe
-```
 
 ## <a name="configure-virtual-network"></a>仮想ネットワークを構成する
 
@@ -703,7 +648,9 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
 [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-createt) を使用して、次のように仮想ネットワークを作成します。
 
 * 名前は **myVNet** にします。
+* アドレス プレフィックスは **10.1.0.0/16** にします。
 * サブネットの名前は **myBackendSubnet** にします。
+* サブネット プレフィックスは **10.1.0.0/24** にします。
 * リソース グループは **myResourceGroupLB** にします。
 * 場所は **eastus** にします。
 
@@ -712,7 +659,9 @@ VM をデプロイしてロード バランサーをテストする前に、サ�
     --resource-group myResourceGroupLB \
     --location eastus \
     --name myVNet \
-    --subnet-name myBackendSubnet
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name myBackendSubnet \
+    --subnet-prefixes 10.1.0.0/24
 ```
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
@@ -737,7 +686,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 * 名前は **myNSGRuleHTTP** にします。
 * ネットワーク セキュリティ グループは、前の手順で作成した **myNSG** にします。
 * リソース グループは **myResourceGroupLB** にします。
-* プロトコルは **TCP** にします。
+* プロトコルは **(*)** にします。
 * 方向は **Inbound** にします。
 * 送信元は **(*)** にします。
 * 送信先は **(*)** にします。
@@ -750,7 +699,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
     --resource-group myResourceGroupLB \
     --nsg-name myNSG \
     --name myNSGRuleHTTP \
-    --protocol tcp \
+    --protocol '*' \
     --direction inbound \
     --source-address-prefix '*' \
     --source-port-range '*' \
@@ -771,7 +720,6 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
 
 ```azurecli-interactive
 
@@ -780,9 +728,7 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
     --name myNicVM1 \
     --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm2"></a>VM2
 
@@ -791,17 +737,14 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
 
 ```azurecli-interactive
   az network nic create \
     --resource-group myResourceGroupLB \
     --name myNicVM2 \
-    --vnet-name myVnet \
+    --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 #### <a name="vm3"></a>VM3
 
@@ -810,17 +753,14 @@ Standard ロード バランサーの場合、バックエンドが扱う VM に
 * 仮想ネットワークは **myVNet** にします。
 * サブネットは **myBackendSubnet** にします。
 * ネットワーク セキュリティ グループは **myNSG** にします。
-* **myBackEndPool** のロード バランサー **myLoadBalancer** に接続します。
 
 ```azurecli-interactive
   az network nic create \
     --resource-group myResourceGroupLB \
     --name myNicVM3 \
-    --vnet-name myVnet \
+    --vnet-name myVNet \
     --subnet myBackEndSubnet \
-    --network-security-group myNSG \
-    --lb-name myLoadBalancer \
-    --lb-address-pools myBackEndPool
+    --network-security-group myNSG
 ```
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
@@ -918,8 +858,7 @@ runcmd:
     --generate-ssh-keys \
     --custom-data cloud-init.txt \
     --availability-set myAvSet \
-    --no-wait
-    
+    --no-wait 
 ```
 #### <a name="vm2"></a>VM2
 * 名前は **myVM2** にします。
@@ -962,6 +901,151 @@ runcmd:
 ```
 VM がデプロイされるまでに、数分かかる場合があります。
 
+
+## <a name="create-a-public-ip-address"></a>パブリック IP アドレスの作成
+
+インターネット上の Web アプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 
+
+[az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、以下のことを行います。
+
+* **myPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
+* **myResourceGroupLB** 内に作成します。
+
+```azurecli-interactive
+  az network public-ip create \
+    --resource-group myResourceGroupLB \
+    --name myPublicIP \
+    --sku Basic
+```
+
+## <a name="create-basic-load-balancer"></a>Basic ロード バランサーを作成する
+
+このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
+
+  * ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
+  * フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。
+  * バックエンド VM インスタンスの正常性を判断する正常性プローブ。
+  * VM に対するトラフィックの分散方法を定義するロード バランサー規則。
+
+### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
+
+[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
+
+* 名前は **myLoadBalancer** にします。
+* フロントエンド プールの名前は **myFrontEnd** にします。
+* バックエンド プールの名前は **myBackEndPool** にします。
+* 前の手順で作成したパブリック IP アドレス **myPublicIP** に関連付けます。 
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group myResourceGroupLB \
+    --name myLoadBalancer \
+    --sku Basic \
+    --public-ip-address myPublicIP \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool       
+```
+
+### <a name="create-the-health-probe"></a>正常性プローブを作成する
+
+正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 
+
+プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
+
+[az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
+
+* 仮想マシンの正常性を監視します。
+* 名前は **myHealthProbe** にします。
+* プロトコルは **TCP** にします。
+* **ポート 80** を監視します。
+
+```azurecli-interactive
+  az network lb probe create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHealthProbe \
+    --protocol tcp \
+    --port 80   
+```
+
+### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
+
+ロード バランサー規則は、以下のものを定義します。
+
+* 着信トラフィック用のフロントエンド IP 構成。
+* トラフィックを受信するためのバックエンド IP プール。
+* 必要な発信元ポートと宛先ポート。 
+
+[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
+
+* 名前は **myHTTPRule** にします
+* フロントエンド プール **myFrontEnd** で**ポート 80** をリッスンします。
+* **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
+* 正常性プローブ **myHealthProbe** を使用します。
+* プロトコルは **TCP** にします。
+
+```azurecli-interactive
+  az network lb rule create \
+    --resource-group myResourceGroupLB \
+    --lb-name myLoadBalancer \
+    --name myHTTPRule \
+    --protocol tcp \
+    --frontend-port 80 \
+    --backend-port 80 \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool \
+    --probe-name myHealthProbe
+```
+
+### <a name="add-virtual-machines-to-load-balancer-backend-pool"></a>仮想マシンをロード バランサー バックエンド プールに追加する
+
+[az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/nic/ip-config/address-pool?view=azure-cli-latest#az-network-nic-ip-config-address-pool-add) を使用して、次のように仮想マシンをバックエンド プールに追加します。
+
+
+#### <a name="vm1"></a>VM1
+* バックエンド アドレス プールは **myBackEndPool** にします。
+* リソース グループは **myResourceGroupLB** にします。
+* ネットワーク インターフェイス **myNicVM1** および **ipconfig1** に関連付けます。
+* ロード バランサー **myLoadBalancer** に関連付けます。
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM1 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm2"></a>VM2
+* バックエンド アドレス プールは **myBackEndPool** にします。
+* リソース グループは **myResourceGroupLB** にします。
+* ネットワーク インターフェイス **myNicVM2** および **ipconfig1** に関連付けます。
+* ロード バランサー **myLoadBalancer** に関連付けます。
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM2 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
+
+#### <a name="vm3"></a>VM3
+* バックエンド アドレス プールは **myBackEndPool** にします。
+* リソース グループは **myResourceGroupLB** にします。
+* ネットワーク インターフェイス **myNicVM3** および **ipconfig1** に関連付けます。
+* ロード バランサー **myLoadBalancer** に関連付けます。
+
+```azurecli-interactive
+  az network nic ip-config address-pool add \
+   --address-pool myBackendPool \
+   --ip-config-name ipconfig1 \
+   --nic-name myNicVM3 \
+   --resource-group myResourceGroupLB \
+   --lb-name myLoadBalancer
+```
 ---
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする

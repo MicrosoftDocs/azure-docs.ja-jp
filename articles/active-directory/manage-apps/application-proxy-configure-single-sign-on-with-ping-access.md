@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077893"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431078"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -121,6 +121,11 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 1. アプリケーションを選択します。
 1. Web およびパブリック クライアントに対して設定されたリダイレクト URI の数を表示した、 **[リダイレクト URI]** の横にあるリンクを選択します。 **[\<application name> - 認証]** ページが表示されます。
 1. 以前にアプリケーションに割り当てた外部 URL が **[リダイレクト URI]** の一覧にあるかどうかを確認します。 ない場合は、**Web** のリダイレクト URI の種類を使用して外部 URL を追加し、 **[保存]** を選択します。
+
+外部 URL に加えて、外部 URL 上の Azure Active Directory の承認エンドポイントを [リダイレクト URI] の一覧に追加する必要があります。
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
 
 最後に、ユーザーに読み取りアクセス権を、他のアプリケーションに読み取り/書き込みアクセス権を与えるように、オンプレミス アプリケーションを設定します。
 

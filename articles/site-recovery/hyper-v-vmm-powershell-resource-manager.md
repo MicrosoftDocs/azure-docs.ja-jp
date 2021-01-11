@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: d7a2d21dcd8c9474bdf068d7940e497333f35115
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: a4f7d330db9a4a0d9b435ebe7527e55e37c254e2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086219"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 
@@ -47,8 +47,8 @@ ms.locfileid: "86130216"
 
 Azure PowerShell を使用する準備が整っていることを確認します。
 
-- PowerShell を既に使用している場合は、バージョン 0.8.10 以降にアップグレードします。 PowerShell の設定方法については、[こちら](/powershell/azureps-cmdlets-docs)を参照してください。
-- PowerShell の設定と構成を完了したら、[サービス コマンドレット](/powershell/azure/overview)を確認します。
+- PowerShell を既に使用している場合は、バージョン 0.8.10 以降にアップグレードします。 PowerShell の設定方法については、[こちら](/powershell/azure/)を参照してください。
+- PowerShell の設定と構成を完了したら、[サービス コマンドレット](/powershell/azure/)を確認します。
 - PowerShell のパラメーター値、入力、出力の使用方法の詳細については、[概要](/powershell/azure/get-started-azureps)に関するガイドを参照してください。
 
 ## <a name="set-up-a-subscription"></a>サブスクリプションを設定する

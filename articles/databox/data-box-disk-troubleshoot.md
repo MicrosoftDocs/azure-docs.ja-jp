@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk のトラブルシューティング | Microsoft Docs
-description: Azure Data Box Disk で見られる問題のトラブルシューティングを行う方法について説明します。
+description: Azure Data Box Disk のデプロイ時に発生する可能性がある検証の問題を、ログを使用してトラブルシューティングする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 35b4b206de9c16d66387135b0ca75b6aaeb7c744
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565005"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925544"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>ログを使用して Azure Data Box Disk の検証の問題をトラブルシューティングする
 

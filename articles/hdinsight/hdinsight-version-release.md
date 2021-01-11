@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: b2e77049d121a11a45a096017f18f1345f6c6884
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.openlocfilehash: 37f0a8d1f70fa96db505973d097febabe99ab7a8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374850"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749169"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
@@ -32,9 +32,9 @@ Hive LLAP の利点は次のとおりです。
 
 * クエリ結果をキャッシュすることで、以前に計算されたクエリ結果を再利用できます。 このキャッシュにより、クエリに必要なクラスター タスクの実行に費やされる時間とリソースが節約されます。
 
-### <a name="hive-dynamic-materialized-views"></a>Hive の動的な具体化されたビュー
+### <a name="hive-dynamic-materialized-views"></a>Hive の動的なマテリアライズドビュー
 
-Hive では、動的な具体化されたビュー、つまり関連するサマリーの事前計算がサポートされるようになっています。 ビューによって、データ ウェアハウスでのクエリ処理が高速化されます。 具体化されたビューは Hive にネイティブに格納でき、LLAP アクセラレーションをシームレスに使用できます。
+Hive では、動的なマテリアライズドビュー、つまり関連するサマリーの事前計算がサポートされるようになっています。 ビューによって、データ ウェアハウスでのクエリ処理が高速化されます。 マテリアライズドビューは Hive にネイティブに格納でき、LLAP アクセラレーションをシームレスに使用できます。
 
 ### <a name="hive-transactional-tables"></a>Hive トランザクション テーブル
 
@@ -92,7 +92,7 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 * HDInsight 4.0 では、Apache Hive 用 MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
 * HDInsight 4.0 では Apache Storm がサポートされていません。
 * HDInsight 4.0 では、ML Services クラスターの種類がサポートされていません。
-* HDInsight 4.0 では、Hive ビューは使用できなくなります。
+* Hive View は、バージョン番号が 4.1 以上の HDInsight 4.0 クラスターでのみ利用できます。 この番号は、[Ambari Admin]、[バージョン] の順に選択すると見つかります。
 * Apache Zeppelin のシェル インタープリターは、Spark および対話型クエリ クラスターではサポートされていません。
 * Spark-LLAP クラスターでは LLAP を "*無効にする*" ことはできません。 LLAP をオフにすることだけができます。
 * Azure Data Lake Storage Gen2 では、Jupyter Notebook を Spark クラスターに保存できません。

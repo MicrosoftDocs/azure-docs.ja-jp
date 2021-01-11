@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 35b91aab8c228fc7dced5dfe06e33f939f4634f5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616476"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080796"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Azure App Service Web アプリと API を保護する
 
@@ -23,7 +23,7 @@ Azure App Service は、インフラストラクチャを管理せず、Web ア�
 
 Azure App Service プランの Advanced Threat Protection を有効にするには、次の作業を行う必要があります。
 
-* Azure Security Center の Standard 価格レベルをサブスクライブします。
+* Azure Security Center の Standard 価格レベルをサブスクライブします
 * App Service プランを下の画像のように有効にします。 Security Center は App Service とネイティブで統合されており、デプロイやオンボーディングの必要がありません。統合は透過的となっています。
 * App Service プランを専用のコンピューターに関連付けます。 サポートされているプラン:Basic、Standard、Premium、Isolated、または Linux です。 Security Center では、Free プラン、Shared プラン、Consumption プランがサポートされていません。 詳細については、[Azure App Service プラン](https://azure.microsoft.com/pricing/details/app-service/plans/)に関するページを参照してください。
 

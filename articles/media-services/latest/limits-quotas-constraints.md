@@ -3,23 +3,25 @@ title: Azure Media Services のクォータと制限
 description: このトピックでは Microsoft Azure Media Services のクォータと制限について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2020
-ms.author: juliako
-ms.openlocfilehash: e358742635d9ed939bbc62bb0d54e8169382e7de
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: b1836b1d0dc69a2a0b186a54974895eb0d8cd91a
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043502"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89265492"
 ---
 <!-- If you update limits in this topic, make sure to also update https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#media-services-limits -->
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Media Services のクォータと制限
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、最も一般的な Microsoft Azure Media Services の制限を一覧表示しています。これはクォータと呼ばれることもあります。
 
@@ -28,14 +30,14 @@ ms.locfileid: "87043502"
 
 ## <a name="account-limits"></a>アカウントの制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | 1 つのサブスクリプション内の [Media Services アカウント](media-services-account-concept.md) | 25 (固定) |
 
 ## <a name="asset-limits"></a>アセットの制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | Media Services アカウントあたりの[アセット数](assets-concept.md) | 1,000,000|
 
 ## <a name="storage-limits"></a>ストレージの制限
@@ -86,9 +88,10 @@ ms.locfileid: "87043502"
 
 ## <a name="packaging--delivery-limits"></a>パッケージおよび配信の制限
 
-| リソース | 既定の制限 | 
-| --- | --- | 
+| リソース | 既定の制限 |
+| --- | --- |
 | Media Services アカウントあたりの[ストリーミング エンドポイント](streaming-endpoint-concept.md) (停止済みまたは実行中)|2 |
+| Premium ストリーミング ユニット | 10 |
 | [動的マニフェスト フィルター](filters-dynamic-manifest-overview.md)|100|
 | [ストリーミング ポリシー](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | 1 つの資産に同時に関連付けられる一意の[ストリーミング ロケーター数](streaming-locators-concept.md) | 100<sup>(7)</sup> (固定) |

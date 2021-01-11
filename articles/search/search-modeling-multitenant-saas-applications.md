@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 69fec93c2426f4274e0c890d76bdcbbb4678fa7d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: ea0dac74d4f995e41513b3451dd28d177040e672
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230759"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935026"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>マルチテナント SaaS アプリケーションと Azure Cognitive Search の設計パターン
 
@@ -119,7 +119,7 @@ Azure Cognitive Search でマルチテナント シナリオをモデル化す�
 
 テナントごとのサービス モデルとテナントごとのインデックス モデルが十分に小さなスコープではない場合は、さらに細かい粒度を実現するインデックスをモデル化することができます。
 
-1 つのインデックスの動作をクライアント エンドポイントごとに異なるものにするには、考えられるクライアントごとに特定の値を指定したフィールドをインデックスに追加します。 クライアントが Azure Cognitive Search を呼び出してインデックスを照会したり、変更したりするたびに、クライアント アプリケーションのコードでクエリ時に Azure Cognitive Search の[フィルター](https://msdn.microsoft.com/library/azure/dn798921.aspx)機能を使用して、そのフィールドに適切な値を指定します。
+1 つのインデックスの動作をクライアント エンドポイントごとに異なるものにするには、考えられるクライアントごとに特定の値を指定したフィールドをインデックスに追加します。 クライアントが Azure Cognitive Search を呼び出してインデックスを照会したり、変更したりするたびに、クライアント アプリケーションのコードでクエリ時に Azure Cognitive Search の[フィルター](./query-odata-filter-orderby-syntax.md)機能を使用して、そのフィールドに適切な値を指定します。
 
 この方法を使用すると、個別のユーザー アカウント、個別のアクセス許可レベル、完全に別個のアプリケーションの機能を実現できます。
 
@@ -132,4 +132,3 @@ Azure Cognitive Search でマルチテナント シナリオをモデル化す�
 Azure Cognitive Search は、多くのアプリケーションにとって魅力的な選択肢です。 マルチテナント アプリケーションの各種設計パターンを評価するときは、[さまざまな価格レベル](https://azure.microsoft.com/pricing/details/search/)とそれぞれの[サービスの制限](search-limits-quotas-capacity.md)を検討して、あらゆる規模のアプリケーション ワークロードやアーキテクチャに合わせて Azure Cognitive Search を最適に調整してください。
 
 Azure Cognitive Search とマルチテナント シナリオに関するご質問があれば、azuresearch_contact@microsoft.com までお問い合わせください。
-

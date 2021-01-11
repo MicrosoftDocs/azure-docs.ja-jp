@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 08/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de905c61642c36a07c7f87e0be910b0f035bffc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 629173612f091319f6dec57b1cdfcfea41033bfc
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555269"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89047107"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -56,6 +56,7 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | ユーザーに対するセキュリティ侵害を管理者が確認しました | オフライン | この検出は、管理者が "危険なユーザー" UI で、または riskyUsers API を使用して、[ユーザーに対するセキュリティ侵害を確認しますか?] を選択したことを示します。 このユーザーに対するセキュリティが侵害されたことを確認した管理者を調べるには、ユーザーのリスク履歴を (UI または API 経由で) 確認します。 |
 | 悪意のある IP アドレス | オフライン | この検出は、悪意のある IP アドレスからのサインインを示します。 IP アドレスは、その IPアドレスまたはその他の IP 評価ソースから受信した無効な資格情報によるエラー率の高さに基づいて、悪意があるとみなされます。 |
 | 受信トレイに対する疑わしい操作ルール | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules) によって検出されます。 ユーザーの受信トレイでメッセージまたはフォルダーを削除または移動する疑わしいルールが設定されている場合、この検出によって環境がプロファイルされ、アラートがトリガーされます。 この検出は、ユーザー アカウントが侵害されていること、メッセージが意図的に非表示にされていること、組織内でスパムまたはマルウェアを配信するためにメールボックスが使用されていることを示唆している可能性があります。 |
+| パスワード スプレー | オフライン | パスワード スプレー攻撃とは、複数のユーザー名に対し、よく使われるパスワードを片っ端から試して不正アクセスしようとする攻撃です。 このリスク検出は、パスワード スプレー攻撃が実行されたときにトリガーされます。 |
 | あり得ない移動 | オフライン | この検出は、[Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel) によって検出されます。 この検出は、(1 つまたは複数のセッションにおける) 2 つのユーザー アクティビティが地理的に離れている場所で、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間より短い時間内に発生したことを示します。これは、別のユーザーが同じ資格情報を使用していることを示唆します。 |
 
 ### <a name="other-risk-detections"></a>その他のリスク検出
@@ -65,6 +66,12 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | 検出された追加のリスク | リアルタイムまたはオフライン | この検出は、上記の Premium 検出のいずれかが検出されたことを示します。 Premium 検出は Azure AD Premium P2 のお客様にのみ表示されるため、P2 ライセンスをお持ちでないお客様には [検出された追加のリスク] というタイトルが付けられます。 |
 
 ## <a name="common-questions"></a>一般的な質問
+
+### <a name="risk-levels"></a>リスク レベル
+
+Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 
+
+Microsoft ではリスクの計算方法に関する具体的な詳細を公開していませんが、各レベルごとに、ユーザーまたはサインインが侵害されたという信頼度は高くなります。 たとえば、見慣れないサインイン プロパティのインスタンスが 1 つあるといったことは、資格情報の漏洩ほど脅威的ではない可能性があります。
 
 ### <a name="leaked-credentials"></a>漏洩した資格情報
 

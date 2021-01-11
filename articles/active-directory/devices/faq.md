@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84689046"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266784"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -62,7 +62,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 - ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
 - 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
 - Hybrid Azure AD 参加済みのみ:管理者が同期スコープからデバイス OU を削除し、その結果デバイスが Azure AD から削除される
-- Azure AD Connect のバージョン 1.4.xx.x へのアップグレード。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](/azure/active-directory/hybrid/reference-connect-device-disappearance)」を参照してください。
+- Azure AD Connect のバージョン 1.4.xx.x へのアップグレード。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](../hybrid/reference-connect-device-disappearance.md)」を参照してください。
 
 
 これらのアクションを修正する方法については、以下を参照してください。
@@ -312,7 +312,7 @@ Windows 10 2004 更新プログラムでは、UPN の変更がサポートされ
 **A:** 次の手順を実行します。
 
 1.    [コンプライアンス ポリシーを作成する](/intune/compliance-policy-create-mac-os)
-1.    [macOS デバイスの条件付きアクセス ポリシーを定義する](../active-directory-conditional-access-azure-portal.md) 
+1.    [macOS デバイスの条件付きアクセス ポリシーを定義する](../conditional-access/overview.md) 
 
 **備考:**
 

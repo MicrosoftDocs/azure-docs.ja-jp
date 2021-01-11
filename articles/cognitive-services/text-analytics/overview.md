@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/04/2020
+ms.date: 08/27/2020
 ms.author: aahi
-ms.openlocfilehash: 1e9928359f314ed57004df0264ac843871083eba
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a3c538f3a9e7a2d8d71fff38fb927dbcdf725732
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141859"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000959"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
@@ -82,26 +82,7 @@ ID をベースに出力は 1 つの JSON ドキュメントとして返され�
 
 ## <a name="data-limits"></a>データ制限
 
-Text Analytics API のエンドポイントはすべて、未加工のテキスト データを受け取ります。 現在の上限はドキュメントあたり 5,120 文字です。それより大きなドキュメントを分析する必要がある場合は小さなまとまりに分割できます。
-
-| 制限 | 値 |
-|------------------------|---------------|
-| 1 つのドキュメントの最大サイズ | [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) で測定される 5,120 文字。 |
-| 要求全体の最大サイズ | 1 MB |
-| 1 件の要求での最大ドキュメント数 | 最大 1,000 ドキュメント ([機能ごとに異なります](concepts/data-limits.md)) |
-
-レート制限は価格レベルによって異なります。
-
-| レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
-|---------------|---------------------|---------------------|
-| S/マルチサービス | 1000                | 1000                |
-| S0/F0         | 100                 | 該当なし                 |
-| S1            | 200                 | 該当なし                 |
-| S2            | 該当なし                 | 該当なし                 |
-| S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
-
-要求数は、Text Analytics の機能ごとに個別に測定されます。 たとえば、各機能に対して、利用中の価格レベルで最大数の要求を同時に送信できます。      
+Text Analytics API のエンドポイントはすべて、未加工のテキスト データを受け取ります。 詳細については、[データの制限](concepts/data-limits.md)に関する記事を参照してください。
 
 ## <a name="unicode-encoding"></a>Unicode エンコーディング
 

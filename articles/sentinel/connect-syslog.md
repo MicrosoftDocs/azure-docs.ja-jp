@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Syslog データを接続する | Microsoft Docs
-description: アプライアンスと Sentinel の間で Linux コンピューター上のエージェントを使用して、Syslog をサポートするオンプレミスのアプライアンスを Azure Sentinel に接続します。 
+description: アプライアンスと Sentinel の間で Linux マシン上のエージェントを使用して、Syslog をサポートするマシンまたはアプライアンスを Azure Sentinel に接続します。 
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,66 +12,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/30/2019
+ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 65c4e5d9e0752379541063c8a80a4316196ad7c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565374"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566150"
 ---
-# <a name="connect-your-external-solution-using-syslog"></a>Syslog を使用して、ご利用の外部ソリューションを接続する
+# <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog を使用して Linux ベースのソースからデータを収集する
 
-Syslog をサポートする任意のオンプレミスのアプライアンスを Azure Sentinel に接続することができます。 これを行うには、アプライアンスと Azure Sentinel 間に Linux マシンに基づくエージェントを使用します。 ご利用の Linux マシンが Azure 内にある場合は、ご自分のアプライアンスまたはアプリケーションから、Azure 内で作成した専用のワークスペースへと、ログをストリーミングし、それを接続することができます。 ご利用の Linux マシンが Azure 内にない場合は、ご自分のアプライアンスから、Linux 用エージェントのインストール先である専用のオンプレミスの VM またはマシンへと、ログをストリーミングすることができます。 
+Linux 用 Log Analytics エージェント (旧称 OMS エージェント) を使用して、Linux ベースの Syslog 対応マシンまたはアプライアンスから Azure Sentinel にイベントをストリーミングできます。 この操作は、Log Analytics エージェントをマシンに直接インストールできる任意のマシンに対して行うことができます。 マシンのネイティブ Syslog デーモンは、指定された種類のローカル イベントを収集し、それらをローカルでエージェントに転送します。これで、ローカル イベントが Log Analytics ワークスペースにストリーミングされます。
 
 > [!NOTE]
-> ご利用のアプライアンスで Syslog CEF がサポートされている場合、接続はより詳細になるので、このオプションを選択し、[CEF からのデータの接続](connect-common-event-format.md)に関するページに記載の手順に従う必要があります。
+> - アプライアンスが **Syslog を介して Common Event Format (CEF)** をサポートしている場合は、より完全なデータセットが収集され、データは収集時に解析されます。 このオプションを選択し、「[共通イベント形式を使用して外部ソリューションを接続する](connect-common-event-format.md)」の手順に従ってください。
+>
+> - Log Analytics では、**rsyslog** または **syslog-ng** の各デーモンによって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux (RHEL)、CentOS、Oracle Linux 版の既定の syslog デーモン (**sysklog**) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。
 
 ## <a name="how-it-works"></a>しくみ
 
-Syslog は、Linux に共通のイベント ログ プロトコルです。 アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。 Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。
+**Syslog** は、Linux に共通のイベント ログ プロトコルです。 仮想マシンまたはアプライアンスに **Linux 用 Log Analytics エージェント**がインストールされている場合は、インストール ルーチンによって、TCP ポート 25224 でエージェントにメッセージを転送するローカル Syslog デーモンが構成されます。 次に、エージェントは、HTTPS 経由で Log Analytics ワークスペースにメッセージを送信します。ここで、メッセージは、 **[Azure Sentinel] > [ログ]** の Syslog テーブルのイベント ログ エントリに解析されます。
 
 詳細については、「[Azure Monitor の Syslog データ ソース](../azure-monitor/platform/data-sources-syslog.md)」を参照してください。
 
-> [!NOTE]
-> - エージェントは、複数のソースからログを収集できますが、専用のプロキシ コンピューターにインストールする必要があります。
-> - 同じ VM 上の CEF 用と Syslog 用の両方のコネクタをサポートする場合は、次の手順を実行してデータの重複を回避します。
->    1. 手順に従って、[CEF を接続](connect-common-event-format.md)します。
->    2. Syslog データを接続するには、 **[設定]**  >  **[ワークスペースの設定]**  >  **[詳細設定]**  >  **[データ]**  >  **[Syslog]** にアクセスして、ファシリティおよびその優先順位を設定し、CEF 構成で使用したファシリティやプロパティと同じにならないようにします。 <br></br>**[下の構成をコンピューターに適用する]** を選択する場合、このワークスペースに接続されるすべての VM にこれらの設定が適用されます。
+## <a name="configure-syslog-collection"></a>Syslog 収集の構成
 
-
-## <a name="connect-your-syslog-appliance"></a>Syslog アプライアンスを接続する
+### <a name="configure-your-linux-machine-or-appliance"></a>Linux マシンまたはアプライアンスを構成する
 
 1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Syslog]** コネクタを選択します。
 
-2. **[Syslog]** ブレードで、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。
+1. **[Syslog]** ブレードで、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。
 
-3. Linux エージェントをインストールします。
+1. Linux エージェントをインストールします。 **[Choose where to install the agent:]\(エージェントのインストール先を選択してください:\)** で、以下の操作を実行します。
     
-    - Linux 仮想マシンが Azure 内にある場合、 **[Download and install agent on Azure Linux virtual machine]\(Azure Linux 仮想マシン上でエージェントをダウンロードしてインストールする\)** を選択します。 **[仮想マシン]** ブレードでエージェントをインストールする仮想マシンを選択し、 **[接続]** をクリックします。
-    - Linux マシンが Azure 内にない場合、 **[Download and install agent on Linux non-Azure machine]\(Azure 以外の Linux マシン上でエージェントをダウンロードしてインストールする\)** を選択します。 **[Direct agent]\(直接エージェント\)** ブレードで、 **[DOWNLOAD AND ONBOARD AGENT FOR LINUX]\(Linux 用エージェントのダウンロードとオンボーディング\)** の下にあるコマンドをコピーし、対象のコンピューター上で実行します。 
+    **Azure Linux VM の場合:**
+      
+    1. **[Install agent on Azure Linux virtual machine]\(Azure Linux 仮想マシンにエージェントをインストールする\)** を選択します。
+    
+    1. **[Download & install agent for Azure Linux Virtual machines]\(Azure Linux 仮想マシン用のエージェントをダウンロードしてインストールする\) >** リンクをクリックします。 
+    
+    1. **[仮想マシン]** ブレードで、エージェントをインストールする仮想マシンをクリックし、 **[接続]** をクリックします。 接続する各 VM に対してこの手順を繰り返します。
+    
+    **その他の Linux マシンの場合:**
+
+    1. **[Install agent on a non-Azure Linux Machine]\(Azure 以外の Linux マシンにエージェントをインストールする\)** を選択します。
+
+    1. **[Download & install agent for non-Azure Linux machines]\(Azure 以外の Linux マシン用のエージェントをダウンロードしてインストールする\) >** リンクをクリックします。 
+
+    1. **[エージェント管理]** ブレードで、 **[Linux サーバー]** タブをクリックし、 **[Linux 用エージェントのダウンロードとオンボード]** のコマンドをコピーして、Linux マシンで実行します。 
     
    > [!NOTE]
    > 組織のセキュリティ ポリシーに従って、これらのコンピューターのセキュリティ設定を構成してください。 たとえば、組織のネットワーク セキュリティ ポリシーに合わせてネットワーク設定を構成し、デーモンのポートとプロトコルをセキュリティ要件に合わせて変更できます。
 
-4. **[Open your workspace advanced settings configuration]\(ワークスペースの詳細設定の構成を開く\)** を選択します。
+### <a name="configure-the-log-analytics-agent"></a>Log Analytics エージェントの構成
 
-5. **[詳細設定]** ブレードで、 **[データ]**  >  **[Syslog]** の順に選択します。 次に、収集するコネクタのファシリティを追加します。
+1. [Syslog コネクタ] ブレードの下部で、 **[ワークスペースの詳細設定の構成を開く] >** リンクをクリックします。
+
+1. **[詳細設定]** ブレードで、 **[データ]**  >  **[Syslog]** の順に選択します。 次に、収集するコネクタのファシリティを追加します。
     
-    Syslog アプライアンスがそのログ ヘッダーに含めるファシリティを追加します。 この構成は、Syslog アプライアンスの `/etc/rsyslog.d/security-config-omsagent.conf`フォルダーにある **Syslog-d**と、 `/etc/syslog-ng/security-config-omsagent.conf`にある **r-Syslog** で確認できます。
+    - Syslog アプライアンスがそのログ ヘッダーに含めるファシリティを追加します。 
     
-    収集するデータで異常な SSH ログイン検出を使用する場合は、 **[auth]** と **[authpriv]** を追加します。 追加情報については、[次のセクション](#configure-the-syslog-connector-for-anomalous-ssh-login-detection)を参照してください。
+    - 収集するデータで異常な SSH ログイン検出を使用する場合は、 **[auth]** と **[authpriv]** を追加します。 追加情報については、[次のセクション](#configure-the-syslog-connector-for-anomalous-ssh-login-detection)を参照してください。
 
-6. 監視するファシリティをすべて追加し、それぞれの重大度オプションを調整したら、 **[Apply below configuration to my machines]\(下の構成をコンピューターに適用する\)** チェックボックスを選択します。
+1. 監視するファシリティをすべて追加し、それぞれの重大度オプションを調整したら、 **[Apply below configuration to my machines]\(下の構成をコンピューターに適用する\)** チェックボックスを選択します。
 
-7. **[保存]** を選択します。 
+1. **[保存]** を選択します。 
 
-8. Syslog アプライアンスで、指定したファシリティが送信されていることを確認します。
+1. 仮想マシンまたはアプライアンスで、指定したファシリティが送信されていることを確認します。
 
-9. Azure Monitor で Syslog ログに関連するスキーマを使用するために、**Syslog** を検索します。
+1. **[ログ]** で syslog ログ データを照会するには、クエリ ウィンドウで「`Syslog`」と入力します。
 
-10. 「[Azure Monitor ログ クエリでの関数の使用](../azure-monitor/log-query/functions.md)」で説明されている Kusto 関数を使用して、Syslog メッセージを解析できます。 その後、新しい Log Analytics 関数としてそれらを保存し、新しいデータ型として使用できます。
+1. 「[Azure Monitor ログ クエリでの関数の使用](../azure-monitor/log-query/functions.md)」で説明されているクエリ パラメーターを使用して、Syslog メッセージを解析できます。 その後、新しい Log Analytics 関数としてクエリを保存し、新しいデータ型として使用できます。
+
+> [!NOTE]
+> **同じマシンを使用してプレーンな Syslog *と* CEF メッセージの両方を転送する**
+>
+>
+> 既存の [CEF ログ フォワーダー マシン](connect-cef-agent.md)を使用して、プレーンな Syslog ソースからもログを収集して転送できます。 ただし、両方の形式のイベントを Azure Sentinel に送信しないようにするには、次の手順を実行する必要があります。この結果、イベントが重複することになります。
+>
+>    [CEF ソースからのデータ収集](connect-common-event-format.md)を既に設定していて、Log Analytics エージェントを前述のように構成している場合:
+>
+> 1. CEF 形式でログを送信する各マシンで Syslog 構成ファイルを編集して、CEF メッセージの送信に使用されているファシリティを削除する必要があります。 これで、CEF で送信されるファシリティは、Syslog で送信されません。 この方法の詳細については、「[Linux エージェントでの Syslog の構成](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent)」を参照してください。
+>
+> 1. これらのマシンで次のコマンドを実行して、エージェントと Azure Sentinel の Syslog 構成との同期を無効にする必要があります。 これで、前の手順で構成に加えた変更が上書きされなくなります。<br>
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+
 
 ### <a name="configure-the-syslog-connector-for-anomalous-ssh-login-detection"></a>異常な SSH ログイン検出用に Syslog コネクタを構成する
 
@@ -94,7 +120,9 @@ Azure Sentinel は Syslog データに機械学習 (ML) を適用して、異常
 
 2. Syslog 情報が収集されるまで、十分な時間をかけます。 その後、 **[Azure Sentinel - Logs]\(Azure Sentinel - ログ\)** に移動して、次のクエリをコピーして貼り付けます。
     
-        Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```console
+    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```
     
     必要に応じて **[Time range]\(時間の範囲\)** を変更し、 **[実行]** を選択します。
     

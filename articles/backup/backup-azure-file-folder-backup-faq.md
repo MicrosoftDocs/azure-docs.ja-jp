@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェント – FAQ
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514069"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874624"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>よく寄せられる質問 - Microsoft Azure Recovery Services (MARS) エージェント
 
@@ -20,9 +20,19 @@ ms.locfileid: "86514069"
 
 Windows Server マシン、System Center DPM、および Microsoft Azure Backup サーバーをバックアップするときに使用される最新の MARS エージェントは、[ダウンロード](https://aka.ms/azurebackup_agent)のページから入手できます。
 
+### <a name="where-can-i-download-the-vault-credentials-file"></a>コンテナー資格情報ファイルはどこでダウンロードできますか。
+
+Azure portal で、お使いのコンテナーの **[プロパティ]** に移動します。 **[Backup の資格情報]** で、 **[既に最新の Recovery Services エージェントを使用しています]** チェック ボックスをオンにします。 **[ダウンロード]** を選択します。
+
+![資格情報のダウンロード](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
+
 ### <a name="how-long-are-vault-credentials-valid"></a>コンテナー資格情報の有効期間はどのくらいですか。
 
 コンテナー資格情報は 10 日後に有効期限が切れます。 資格情報ファイルが期限切れになったら、Azure portal から再度ファイルをダウンロードしてください。
+
+### <a name="what-characters-are-allowed-for-the-passphrase"></a>パスフレーズに許可されるのは、どのような文字ですか。
+
+パスフレーズでは、ASCII 文字セットで [ASCII 値が 127 以下](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)の文字を使用する必要があります。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>どのようなドライブからファイルとフォルダーをバックアップできますか。
 

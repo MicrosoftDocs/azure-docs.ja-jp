@@ -1,5 +1,5 @@
 ---
-title: 新しい Elastic Database ジョブへの移行
+title: 新しい Elastic Database ジョブへの移行 (プレビュー)
 description: 新しい Elastic Database ジョブに移行します。
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: bb5f7c441ae25e24857d0709b32e17931c3c63a6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a1f9e392ddb7b5a79b01459925fe711707db97b5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84038373"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121189"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs"></a>新しい Elastic Database ジョブへの移行
+# <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>新しい Elastic Database ジョブへの移行 (プレビュー)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [Elastic Database ジョブ](elastic-jobs-overview.md)のバージョンがアップグレードされました。

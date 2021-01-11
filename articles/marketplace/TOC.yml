@@ -8,7 +8,7 @@
     - name: コマーシャル マーケットプレースの概要とメリット
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 1 つのマーケットプレース、2 つのネットショップ
+        - name: 1 つのマーケットプレース、2 つのオンライン ストア
           href: ./comparing-appsource-azure-marketplace.md
         - name: 発行オプションと考慮事項
           href: ./determine-your-listing-type.md
@@ -17,12 +17,16 @@
               href: ./lead-management-for-cloud-marketplace.md
             - name: コマーシャル マーケットプレースでの取引
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
+            - name: プランと価格
+              href: plans-pricing.md
             - name: プライベート オファー
               href: ./private-offers.md
             - name: 標準契約
               href: ./standard-contract.md
             - name: Azure パートナーの顧客の使用状況の属性
               href: ./azure-partner-customer-usage-attribution.md
+            - name: サポートされている国とリージョン
+              href: ./sell-from-countries.md
         - name: オファー別の公開ガイド
           href: ./publisher-guide-by-offer-type.md
           items:
@@ -32,15 +36,13 @@
               href: ./marketplace-solution-templates.md
             - name: Azure アプリのマネージド アプリケーション
               href: ./marketplace-managed-apps.md
-            - name: SaaS アプリ
-              href: ./marketplace-saas-applications-technical-publishing-guide.md
             - name: Containers
               href: ./marketplace-containers.md
             - name: IoT Edge のモジュール
               href: ./iot-edge-module.md
             - name: コンサルティング サービス
               href: ./consulting-services.md
-            - name: Office 365、Dynamics 365、Power BI
+            - name: Microsoft 365、Dynamics 365、Power BI
               href: ./appsource-offer-publishing-guide.md
             - name: Azure AD によるオファー認証を有効にする
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -57,6 +59,8 @@
               href: ./marketplace-criteria-content-validation.md
             - name: クラウド ソリューション プロバイダー
               href: ./cloud-solution-providers.md
+            - name: コネクト プログラムのオンボード ガイド
+              href: ./business-applications-isv-program.md
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:
@@ -109,11 +113,11 @@
               href: ./partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure Container オファーを作成する
               href: ./partner-center-portal/create-azure-container-offer.md
-        - name: 仮想マシンのオファー
+        - name: 仮想マシン オファー
           items:
             - name: Azure 仮想マシン オファーを作成する
               href: ./partner-center-portal/azure-vm-create-offer.md
-            - name: Azure VM の技術資産を作成する
+            - name: Azure VM 技術資産を作成する
               items:
                 - name: 仮想マシンの認定 - 問題と解決策
                   href: ./partner-center-portal/vm-certification-issues-solutions.md
@@ -165,10 +169,8 @@
               href: ./partner-center-portal/create-power-bi-app-offer.md
         - name: SaaS オファー
           items:
-            - name: SaaS オファー作成のチェックリスト
-              href: ./partner-center-portal/offer-creation-checklist.md
-            - name: SaaS オファーを作成する
-              href: ./partner-center-portal/create-new-saas-offer.md
+            - name: SaaS オファーの計画
+              href: plan-saas-offer.md
             - name: SaaS 用 Azure AD 認証
               items:
                 - name: Azure AD と SaaS の概要
@@ -177,6 +179,26 @@
                   href: ./azure-ad-transactable-saas-landing-page.md
                 - name: 試用版オファーのランディング ページ
                   href: ./azure-ad-free-or-trial-landing-page.md
+            - name: SaaS の従量制課金
+              href: ./partner-center-portal/saas-metered-billing.md
+            - name: SaaS オファーの作成と発行
+              items:
+                - name: SaaS オファーを作成する
+                  href: create-new-saas-offer.md
+                - name: SaaS オファーのプロパティの構成
+                  href: create-new-saas-offer-properties.md
+                - name: SaaS オファーの登録情報の構成
+                  href: create-new-saas-offer-listing.md
+                - name: プレビュー対象ユーザーの追加
+                  href: create-new-saas-offer-preview.md
+                - name: 技術的な詳細の追加
+                  href: create-new-saas-offer-technical.md
+                - name: プランを作成する
+                  href: create-new-saas-offer-plans.md
+                - name: SaaS オファーのテストと発行
+                  href: test-publish-saas-offer.md
+            - name: SaaS オファーを市場に投入する
+              href: create-new-saas-offer-marketing.md
             - name: SaaS Fulfillment API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -188,8 +210,6 @@
                   href: ./partner-center-portal/pc-saas-fulfillment-api-v1.md
                 - name: SaaS Fulfillment API - FAQ
                   href: ./partner-center-portal/saas-fulfillment-apis-faq.md
-            - name: SaaS の従量制課金
-              href: ./partner-center-portal/saas-metered-billing.md
         - name: リード管理の概要
           href: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
           items:
@@ -207,8 +227,6 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: Marketplace の測定サービス
           items:
-            - name: 異常検出サービス
-              href: ./partner-center-portal/anomaly-detection-service-for-metered-billing.md
             - name: 認証の戦略
               href: ./partner-center-portal/marketplace-metering-service-authentication.md
             - name: Marketplace の測定サービス API
@@ -234,7 +252,7 @@
       href: review-publish-offer.md
     - name: 既存のオファーを更新する
       href: ./partner-center-portal/update-existing-offer.md
-    - name: ベネフィットのアクティブ化
+    - name: マーケットプレースの報酬のアクティブ化
       href: ./partner-center-portal/marketplace-rewards.md
     - name: パートナー センターの分析
       items:
@@ -304,3 +322,7 @@
           href: ./cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: サポート オプション
       href: ./partner-center-portal/support.md
+    - name: リソース
+      items:
+        - name: サポートされる HTML タグ
+          href: supported-html-tags.md

@@ -8,12 +8,12 @@ ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb10c8e0e1f62e72d48d80014d75dd656490889
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2d5b4758f80d07516500c663762d7c8607e2a30
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565926"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88917960"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure Cognitive Search でのフルテキスト検索
 
@@ -49,7 +49,7 @@ ms.locfileid: "85565926"
 
 検索要求は、結果セットで返すべき内容を詳細に規定した仕様です。 最も単純な形式では、どのような種類の条件も含まれていない空のクエリです。 しかしより現実的な例では、パラメーターや複数の検索語を伴うのが一般的です。場合によっては、検索範囲を特定のフィールドに限定したり、フィルター式や並べ替え規則が使われたりすることもあります。  
 
-次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して Azure Cognitive Search に送信できる検索要求です。  
+次の例は、[REST API](/rest/api/searchservice/search-documents) を使用して Azure Cognitive Search に送信できる検索要求です。  
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2020-06-30
@@ -69,7 +69,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 2. クエリを実行します。 この例では、検索クエリが `"Spacious, air-condition* +\"Ocean view\""` という語句で構成されています (通常はユーザーが句読点を入力することはありませんが、この例では、アナライザーによる処理を説明するためにあえて含めています)。 このクエリの場合、検索エンジンは、`searchFields` に指定された description フィールドと title フィールドをスキャンし、"Ocean view" を "spacious" という語か、"air-condition" で始まる語に接する形で含んでいる文書を探します。 明示的に必須指定 (`+`) されていない語句に関して、マッチング対象を任意 (既定) とするか、すべてとするかが、`searchMode` パラメーターで指定されています。
 3. 検索結果として得られた一連のホテルは、特定の地理的位置に近い順に並べ替えられて、呼び出し元のアプリケーションに返されます。 
 
-この記事では主に、"*検索クエリ*" (`"Spacious, air-condition* +\"Ocean view\""`) の処理について取り上げています。 フィルター処理と並べ替えについては取り上げません。 詳細については、[Search API のリファレンス ドキュメント](https://docs.microsoft.com/rest/api/searchservice/search-documents)を参照してください。
+この記事では主に、"*検索クエリ*" (`"Spacious, air-condition* +\"Ocean view\""`) の処理について取り上げています。 フィルター処理と並べ替えについては取り上げません。 詳細については、[Search API のリファレンス ドキュメント](/rest/api/searchservice/search-documents)を参照してください。
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>ステージ 1:クエリ解析 
@@ -86,7 +86,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 + "*フレーズ検索*": 引用符で囲まれた語句を検索 (ocean view など)
 + "*プレフィックス検索*": 語句 + プレフィックス演算子 `*`を検索 (air-condition など)
 
-サポートされているクエリの種類すべての一覧については、[Lucene のクエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)に関するページを参照してください。
+サポートされているクエリの種類すべての一覧については、[Lucene のクエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search)に関するページを参照してください。
 
 文書が一致していると見なされるために検索条件との一致が "必須 (must)" であるのか "勧告 (should be)" であるのかは、サブクエリに関連付けられている演算子によって決まります。 たとえば、`+"Ocean view"` は `+` 演算子が指定されているので検索条件との一致が "必須" となります。 
 
@@ -96,7 +96,7 @@ POST /indexes/hotels/docs/search?api-version=2020-06-30
 
 ### <a name="supported-parsers-simple-and-full-lucene"></a>サポートされるパーサー:シンプルかつ完全な Lucene 
 
- Azure Cognitive Search では、`simple` (既定) と `full` の 2 種類のクエリ言語が使用されます。 どちらのクエリ言語を使うかは、検索要求で `queryType` パラメーターの設定で指定します。その指定に基づいて、クエリ パーサーが演算子と構文を解釈します。 [Simple クエリ言語](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)は直感的で安定しており、多くの場合、クライアント側の処理を行わなくてもユーザー入力をそのまま解釈するのに適しています。 Web 検索エンジンで多く使われているクエリ演算子がサポートされます。 [Full Lucene クエリ言語](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)は、`queryType=full` を設定することによって利用できます。より多くの演算子やクエリの種類 (ワイルドカード、あいまい一致、正規表現、フィールド指定検索など) がサポートされることで、既定の Simple クエリ言語が拡張されます。 たとえば、Simple クエリ構文で送信された正規表現は、式としてではなくクエリ文字列と解釈されます。 この記事で紹介している要求の例では、Full Lucene クエリ言語を使用しています。
+ Azure Cognitive Search では、`simple` (既定) と `full` の 2 種類のクエリ言語が使用されます。 どちらのクエリ言語を使うかは、検索要求で `queryType` パラメーターの設定で指定します。その指定に基づいて、クエリ パーサーが演算子と構文を解釈します。 [Simple クエリ言語](/rest/api/searchservice/simple-query-syntax-in-azure-search)は直感的で安定しており、多くの場合、クライアント側の処理を行わなくてもユーザー入力をそのまま解釈するのに適しています。 Web 検索エンジンで多く使われているクエリ演算子がサポートされます。 [Full Lucene クエリ言語](/rest/api/searchservice/lucene-query-syntax-in-azure-search)は、`queryType=full` を設定することによって利用できます。より多くの演算子やクエリの種類 (ワイルドカード、あいまい一致、正規表現、フィールド指定検索など) がサポートされることで、既定の Simple クエリ言語が拡張されます。 たとえば、Simple クエリ構文で送信された正規表現は、式としてではなくクエリ文字列と解釈されます。 この記事で紹介している要求の例では、Full Lucene クエリ言語を使用しています。
 
 ### <a name="impact-of-searchmode-on-the-parser"></a>searchMode がパーサーに及ぼす影響 
 
@@ -123,7 +123,7 @@ Spacious,||air-condition*+"Ocean view"
  ![ブール クエリ searchMode は all][3]
 
 > [!Note] 
-> `searchMode=all` より `searchMode=any` を選ぶ場合は、代表的なクエリを実行したうえで判断することをお勧めします。 普段から演算子を指定するユーザー (ドキュメント ストアを検索するときなど) は、`searchMode=all` で得られるブール クエリの構造の方が直感的にわかりやすいかもしれません。 `searchMode` と演算子の相互作用について詳しくは、[Simple クエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)に関するページをご覧ください。
+> `searchMode=all` より `searchMode=any` を選ぶ場合は、代表的なクエリを実行したうえで判断することをお勧めします。 普段から演算子を指定するユーザー (ドキュメント ストアを検索するときなど) は、`searchMode=all` で得られるブール クエリの構造の方が直感的にわかりやすいかもしれません。 `searchMode` と演算子の相互作用について詳しくは、[Simple クエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)に関するページをご覧ください。
 
 <a name="stage2"></a>
 ## <a name="stage-2-lexical-analysis"></a>ステージ 2:字句解析 
@@ -137,10 +137,10 @@ Spacious,||air-condition*+"Ocean view"
 * 複合語をその構成要素に分解します。 
 * 単語の大文字を小文字に変換します。 
 
-通常はこれらの操作をひととおり適用することで、ユーザーによって入力されたテキストと、インデックスに格納されている語句との相違点が取り除かれます。 こうした操作はテキスト処理の範囲を超えており、言語そのものに対する深い知識が必要となります。 この言語知識のレイヤーを追加するために、Azure Cognitive Search は、Lucene と Microsoft から提供されているさまざまな[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)に対応しています。
+通常はこれらの操作をひととおり適用することで、ユーザーによって入力されたテキストと、インデックスに格納されている語句との相違点が取り除かれます。 こうした操作はテキスト処理の範囲を超えており、言語そのものに対する深い知識が必要となります。 この言語知識のレイヤーを追加するために、Azure Cognitive Search は、Lucene と Microsoft から提供されているさまざまな[言語アナライザー](/rest/api/searchservice/language-support)に対応しています。
 
 > [!Note]
-> 解析要件は、実際のシナリオによって大きく異なります。ごく最低限で済む場合もあれば、膨大な作業が必要となる場合もあります。 字句解析の難易度は、あらかじめ定義されているいずれかのアナライザーを選択するか、[カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search)を独自に作成するかによって決まります。 アナライザーは、検索可能なフィールドにその適用対象が限定されており、フィールド定義の一環として指定されます。 これにより、フィールドごとに多様な字句解析を行うことができます。 指定されなかった場合は、"*標準*" の Lucene アナライザーが使用されます。
+> 解析要件は、実際のシナリオによって大きく異なります。ごく最低限で済む場合もあれば、膨大な作業が必要となる場合もあります。 字句解析の難易度は、あらかじめ定義されているいずれかのアナライザーを選択するか、[カスタム アナライザー](/rest/api/searchservice/Custom-analyzers-in-Azure-Search)を独自に作成するかによって決まります。 アナライザーは、検索可能なフィールドにその適用対象が限定されており、フィールド定義の一環として指定されます。 これにより、フィールドごとに多様な字句解析を行うことができます。 指定されなかった場合は、"*標準*" の Lucene アナライザーが使用されます。
 
 先ほどの例では、解析前の最初のクエリ ツリーに "Spacious," という語句がありました。大文字の "S" とコンマが含まれています。このコンマは、クエリ パーサーによって検索語の一部と解釈されます (クエリ言語の演算子とは見なされません)。  
 
@@ -150,7 +150,7 @@ Spacious,||air-condition*+"Ocean view"
 
 ### <a name="testing-analyzer-behaviors"></a>アナライザーの動作テスト 
 
-アナライザーの動作は、[Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) を使ってテストすることができます。 解析したいテキストを入力すると、指定したアナライザーからどのような語句が生成されるかを確認できます。 たとえば、標準アナライザーで "air-condition" というテキストがどのように加工されるかを確認するには、次のように要求します。
+アナライザーの動作は、[Analyze API](/rest/api/searchservice/test-analyzer) を使ってテストすることができます。 解析したいテキストを入力すると、指定したアナライザーからどのような語句が生成されるかを確認できます。 たとえば、標準アナライザーで "air-condition" というテキストがどのように加工されるかを確認するには、次のように要求します。
 
 ~~~~
 {
@@ -359,8 +359,8 @@ search=Spacious, air-condition* +"Ocean view"
 
 Azure Cognitive Search の関連度スコアは、次の 2 とおりの方法でチューニングできます。
 
-1. **スコアリング プロファイル**: ランク付けされた結果リストにおいて、一連のルールに基づく重みを文書に与えます。 このページの例では、title フィールドに一致の見つかった文書の方が、description フィールドに一致の見つかった文書よりも関連性が高いと見なすことができます。 加えて、仮にホテルごとの料金フィールドをインデックスに含めた場合、料金の低い方の文書に高い重みを与えることも可能です。 詳細については、[スコアリング プロファイルを検索インデックスに追加する方法](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
-2. **項目ブースト** (Full Lucene クエリ構文のみで使用可能): クエリ ツリーの任意の構成要素に適用できるブースト演算子 `^` が用意されています。 このページの例では、*air-condition*\* というプレフィックスで検索する代わりに、*air-condition^2||air-condition** のように単語検索にブーストを適用することもできます。そうすれば、*air-condition* で完全一致する語句と、プレフィックスで一致する語句との両方を検索したうえで、完全一致の語句で一致した文書の方に、より高いランクを与えることができます。 詳細については、[項目ブースト](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)に関するセクションを参照してください。
+1. **スコアリング プロファイル**: ランク付けされた結果リストにおいて、一連のルールに基づく重みを文書に与えます。 このページの例では、title フィールドに一致の見つかった文書の方が、description フィールドに一致の見つかった文書よりも関連性が高いと見なすことができます。 加えて、仮にホテルごとの料金フィールドをインデックスに含めた場合、料金の低い方の文書に高い重みを与えることも可能です。 詳細については、[スコアリング プロファイルを検索インデックスに追加する方法](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
+2. **項目ブースト** (Full Lucene クエリ構文のみで使用可能): クエリ ツリーの任意の構成要素に適用できるブースト演算子 `^` が用意されています。 このページの例では、*air-condition*\* というプレフィックスで検索する代わりに、*air-condition^2||air-condition** のように単語検索にブーストを適用することもできます。そうすれば、*air-condition* で完全一致する語句と、プレフィックスで一致する語句との両方を検索したうえで、完全一致の語句で一致した文書の方に、より高いランクを与えることができます。 詳細については、[項目ブースト](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)に関するセクションを参照してください。
 
 
 ### <a name="scoring-in-a-distributed-index"></a>分散されたインデックスにおけるスコア付け
@@ -383,23 +383,23 @@ Azure Cognitive Search のすべてのインデックスは自動的に複数の
 
 + サンプル インデックスを構築し、さまざまな検索を試してその結果を確認します。 詳しい手順については、[ポータルでのインデックスの構築と照会](search-get-started-portal.md#query-index)に関するページを参照してください。
 
-+ [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) の例に関するセクションや[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
++ [Search Documents](/rest/api/searchservice/search-documents#bkmk_examples) の例に関するセクションや[単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
 
-+ 検索アプリケーションにおけるランク付けをチューニングする方法については、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
++ 検索アプリケーションにおけるランク付けをチューニングする方法については、[スコアリング プロファイル](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)に関するページを参照してください。
 
-+ [言語に固有の字句解析器](https://docs.microsoft.com/rest/api/searchservice/language-support)を適用する方法について書かれた記事を参照します。
++ [言語に固有の字句解析器](/rest/api/searchservice/language-support)を適用する方法について書かれた記事を参照します。
 
-+ 特定のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)します。
++ 特定のフィールドに対して最小限の処理または特殊な処理を適用するための[カスタム アナライザーを構成](/rest/api/searchservice/custom-analyzers-in-azure-search)します。
 
 ## <a name="see-also"></a>関連項目
 
-[Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+[Search Documents REST API](/rest/api/searchservice/search-documents) 
 
-[単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+[単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search) 
 
-[Full Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+[Full Lucene クエリ構文](/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
 
-[検索結果の処理方法](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
+[検索結果の処理方法](./search-pagination-page-layout.md)
 
 <!--Image references-->
 [1]: ./media/search-lucene-query-architecture/architecture-diagram2.png

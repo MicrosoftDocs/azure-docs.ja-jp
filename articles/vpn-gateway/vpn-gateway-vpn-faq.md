@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708928"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121478"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -126,6 +126,10 @@ Azure の VPN では PSK (事前共有キー) の認証を使用します。 事
 ### <a name="can-i-configure-force-tunneling"></a>強制トンネリングを構成できますか。
 
 はい。 [強制トンネリングの構成](vpn-gateway-about-forced-tunneling.md)に関するページを参照してください。
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>VPN 接続で NAT-T を使用できますか。
+
+はい。NAT トラバーサル (NAT-T) がサポートされています。 Azure VPN Gateway によって、NAT に類似する機能が、内部パケットで IPsec トンネルに対して実行されることはありません。  この構成では、オンプレミスのデバイスによって IPSec トンネルが開始されるようにします。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>Azure で自社の VPN サーバーをセットアップし、オンプレミス ネットワークへの接続に使用することはできますか。
 
@@ -247,7 +251,7 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 「 [Virtual Network FAQ](../virtual-network/virtual-networks-faq.md)」で、仮想ネットワークの情報をさらに詳しく参照できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * VPN Gateway の詳細については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
 * VPN Gateway の構成設定の詳細については、「[VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)」をご覧ください。

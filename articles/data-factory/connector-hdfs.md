@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 8041ce07c08c3b6063e2a1b3c7b55b1cec59b19a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 43ab59f109e311d9d7312b77d34321fa98a952d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087760"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926809"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS サーバーからデータをコピーする
+
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-hdfs-connector.md)
 > * [現在のバージョン](connector-hdfs.md)
@@ -253,10 +254,10 @@ DistCp を使用して HDFS から Azure BLOB ストレージ (ステージン�
 
 * MapReduce と YARN サービスが有効であること。  
 * YARN のバージョンが 2.5 以降であること。  
-* HDFS サーバーが、次の対象のデータ ストアと統合されていること。Azure BLOB ストレージまたはご使用の Azure データ レイク ストア:  
+* HDFS サーバーが、次の対象のデータ ストアと統合されていること。**Azure BLOB ストレージ**または **Azure Data Lake Store (ADLS Gen1)** : 
 
     - Azure Blob ファイル システムは、Hadoop 2.7 以降、ネイティブにサポートされています。 Hadoop 環境構成で JAR のパスを指定するだけで十分です。
-    - Azure Data Lake Store ファイル システムは、Hadoop 3.0.0-alpha1 からパッケージ化されます。 ご使用の Hadoop クラスターのバージョンがそのバージョンよりも前のものである場合、Azure Data Lake Storage Gen2 関連の JAR パッケージ (azure-datalake-store.jar) を、[こちら](https://hadoop.apache.org/releases.html)からクラスターに手動でインポートし、Hadoop 環境構成で JAR ファイル パスを指定する必要があります。
+    - Azure Data Lake Store ファイル システムは、Hadoop 3.0.0-alpha1 からパッケージ化されます。 ご使用の Hadoop クラスターのバージョンがそのバージョンよりも前のものである場合、Azure Data Lake Store 関連の JAR パッケージ (azure-datalake-store.jar) を、[こちら](https://hadoop.apache.org/releases.html)からクラスターに手動でインポートし、Hadoop 環境構成で JAR ファイル パスを指定する必要があります。
 
 * HDFS 内に一時フォルダーが準備されていること。 この一時フォルダーは DistCp シェル スクリプトを格納するために使用されるため、KB レベルで領域を消費します。
 * HDFS のリンクされたサービスで提供されているユーザー アカウントに、次のアクセス許可が確実にあること。

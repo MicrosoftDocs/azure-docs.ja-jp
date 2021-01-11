@@ -2,25 +2,21 @@
 title: Azure AD アプリケーション プロキシに関してよく寄せられる質問 | Microsoft Docs
 description: Azure AD アプリケーション プロキシを使用して内部のオンプレミス アプリケーションをリモート ユーザーに公開する方法についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 839ce418fa8ad72e18537cf673c8af0479409ba7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386285"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589165"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -31,6 +27,9 @@ ms.locfileid: "85386285"
 ### <a name="what-license-is-required-to-use-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用するにはどのライセンスが必要ですか。
 
 Azure AD アプリケーション プロキシを使用するには、Azure AD Premium P1 または P2 ライセンスが必要です。 ライセンスの詳細については、[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
+
+### <a name="what-happens-to-azure-ad-application-proxy-in-my-tenant-if-my-license-expires"></a>ライセンスの有効期限が切れた場合、自分のテナントの Azure AD アプリケーション プロキシはどうなりますか。
+ライセンスの有効期限が切れると、アプリケーション プロキシは自動的に無効になります。 お使いのアプリケーションの情報は、最大 1 年間保存されます。
 
 ### <a name="why-is-the-enable-application-proxy-button-grayed-out"></a>[アプリケーション プロキシの有効化] ボタンが淡色表示されているのはなぜですか。
 
@@ -45,6 +44,10 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 - Microsoft AAD アプリケーション プロキシ コネクタ - WAPCSvc - ネットワーク サービス
 - Microsoft AAD Application Proxy Connector Updater - WAPCUpdaterSvc - NT Authority\System
 
+### <a name="can-a-guest-user-with-the-global-administrator-or-the-application-administrator-role-register-the-connector-for-the-guest-tenant"></a>グローバル管理者またはアプリケーション管理者のロールを持つゲスト ユーザーは、(ゲスト) テナントにコネクタを登録できますか。
+
+いいえ、現時点ではできません。 登録の試行は、常にユーザーのホーム テナントで行われます。
+
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>バックエンド アプリケーションが複数の Web サーバーでホストされ、ユーザー セッションの永続性 (持続性) が必要です。 セッションの永続化を実現するにはどうすればよいですか。 
 
 推薦事項に関しては、「[アプリケーション プロキシ コネクタとアプリケーションの高可用性と負荷分散](application-proxy-high-availability-load-balancing.md)」を参照してください。
@@ -52,6 +55,9 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>コネクタ サーバーから Azure へのトラフィックに対する TLS 終了 (TLS/HTTPS 検査またはアクセラレーション) はサポートされていますか。
 
 アプリケーション プロキシ コネクタは、Azure に対して証明書ベースの認証を実行します。 TLS 終了 (TLS/HTTPS 検査またはアクセラレーション) は、この認証方法を中断するため、サポートされていません。 コネクタから Azure へのトラフィックは、TLS 終了を実行しているデバイスをすべてバイパスする必要があります。  
+
+### <a name="is-tls-12-required-for-all-connections"></a>すべての接続に TLS 1.2 が必要ですか。
+はい。 Application Proxy サービスでは、お客様にクラス最高の暗号化を提供するために、アクセスが TLS 1.2 プロトコルのみに制限されています。 これらの変更は段階的にロールアウトされ、2019 年 8 月 31 日以降に有効となりました。 すべてのクライアントとサーバーおよびブラウザーとサーバーの組み合わせが、TLS 1.2 を使用して Application Proxy サービスへの接続を維持するように更新されていることを確認してください。 これらには、Application Proxy を通じて公開されたアプリケーションにアクセスするためにユーザーが使用しているクライアントも含まれます。 便利な参考資料とリソースについては、「[Office 365 での TLS 1.2 に対する準備](https://docs.microsoft.com/microsoft-365/compliance/prepare-tls-1.2-in-office-365)」を参照してください。
 
 ### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>コネクタ サーバーとバックエンド アプリケーション サーバーの間に転送プロキシ デバイスを配置できますか。
 はい。このシナリオは、コネクタ バージョン 1.5.1526.0 以降でサポートされています。 「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)」を参照してください。
@@ -81,6 +87,15 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 
 ## <a name="application-configuration"></a>アプリケーションの構成
 
+### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>証明書が無効か、パスワードが間違っている可能性があるというエラーが返されます
+
+SSL 証明書のアップロード後に、ポータルに「証明書が無効であるか、パスワードが間違っている可能性がある」というメッセージが表示されます。
+
+このエラーの問題解決に使用できるヒントを、次にいくつか示します。
+- 証明書に問題がないことを確認します。 それをお使いのローカル コンピューターにインストールします。 問題が発生しなかった場合、その証明書には問題はありません。
+- パスワードに特殊文字が含まれないことを確認します。 テストする場合、パスワードには 0 から 9、A から Z、a から z の文字のみが含まれている必要があります。
+- 証明書が Microsoft ソフトウェア キー格納プロバイダーで作成されている場合は、RSA アルゴリズムが使用されている必要があります。
+
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>既定値と「長い」バックエンド タイムアウトの長さはどれくらいですか。 タイムアウトは延長できますか。
 
 既定の長さは 85 秒です。 「長い」設定は 180 秒です。 タイムアウト制限を延長することはできません。
@@ -92,6 +107,9 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 ### <a name="can-only-iis-based-applications-be-published-what-about-web-applications-running-on-non-windows-web-servers-does-the-connector-have-to-be-installed-on-a-server-with-iis-installed"></a>公開できるのは IIS ベースのアプリケーションのみですか。 Windows 以外の Web サーバーで実行されている Web アプリケーションを公開することはできますか。 コネクタを IIS がインストールされているサーバーにインストールする必要はありますか。
 
 いいえ。公開済みのアプリケーションには IIS の必要条件はありません。 Windows Server 以外のサーバーで実行されている Web アプリケーションを公開できます。 ただし、Web サーバーがネゴシエート (Kerberos 認証) をサポートしていない場合、Windows 以外のサーバーで事前認証を使用できない場合があります。 コネクタがインストールされているサーバーでは、IIS は必要ありません。
+
+### <a name="can-i-configure-application-proxy-to-add-the-hsts-header"></a>HSTS ヘッダーを追加するようにアプリケーション プロキシを構成できますか。
+アプリケーション プロキシでは、HTTP の Strict-Transport-Security ヘッダーは HTTPS 応答に自動的に追加されませんが、公開されたアプリケーションによって送信された元の応答にそのヘッダーがある場合、それは保持されます。 この機能を有効にするための設定の証明は、ロードマップ上にあります。 これを応答に追加できるようにするプレビューに関心がある場合は、aadapfeedback@microsoft.com に詳細をお問い合わせください。
 
 ## <a name="integrated-windows-authentication"></a>統合 Windows 認証
 
@@ -133,7 +151,7 @@ NTLM 認証は、事前認証またはシングル サインオンの方法と�
 
 ### <a name="is-the-remote-desktop-web-client-html5-supported"></a>リモート デスクトップ Web クライアント (HTML5) はサポートされていますか。
 
-いいえ、このシナリオは現在サポートされていません。 この機能に関する最新情報については、[UserVoice](https://aka.ms/aadapuservoice) フィードバック フォーラムをフォローしてください。
+はい、このシナリオは現在パブリック プレビュー段階です。 「[Azure AD アプリケーション プロキシを使用したリモート デスクトップの公開](application-proxy-integrate-with-remote-desktop-services.md)」を参照してください。
 
 ### <a name="after-i-configured-the-pre-authentication-scenario-i-realized-that-the-user-has-to-authenticate-twice-first-on-the-azure-ad-sign-in-form-and-then-on-the-rdweb-sign-in-form-is-this-expected-how-can-i-reduce-this-to-one-sign-in"></a>事前認証のシナリオの構成後に、ユーザーは 2 回認証する必要がある (1 回目は Azure AD サインイン フォーム、2 回目は RDWeb サインイン フォーム) ことがわかりました。 これは想定される動作ですか。 サインインの回数を 1 回に減らすにはどうすればよいですか。
 

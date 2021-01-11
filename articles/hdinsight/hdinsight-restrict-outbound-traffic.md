@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: 37e6b2986f76529b5f3b2edc69f50259485df0b4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006519"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>ファイアウォールを使用して Azure HDInsight クラスターのアウトバウンド ネットワーク トラフィックを構成する
 
@@ -75,7 +75,7 @@ Azure Firewall を使用して既存の HDInsight からのエグレスをロッ
 
     **[ターゲットの FQDN] セクション**
 
-    | 名前 | ソース アドレス | `Protocol:Port` | ターゲット FQDN | Notes |
+    | 名前 | ソース アドレス | プロトコル:ポート | ターゲット FQDN | Notes |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https:443 | login.windows.net | Windows ログイン アクティビティを許可する |
     | Rule_3 | * | https:443 | login.microsoftonline.com | Windows ログイン アクティビティを許可する |

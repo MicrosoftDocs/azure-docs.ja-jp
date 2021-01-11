@@ -1,7 +1,7 @@
 ---
 title: Azure Data Science Virtual Machine とは
 titleSuffix: Azure Data Science Virtual Machine
-description: Azure Data Science Virtual Machine の概要 - データ サイエンスを実行し、インテリジェントなアプリケーションを開発するための、事前インストール済みで構成済みのツールとライブラリが装備された Azure クラウド プラットフォーム上の簡単に作成して使用できる仮想マシン。
+description: データ サイエンスを実行するためのツールとライブラリがプレインストール、構成されている、Azure クラウド プラットフォームで簡単に利用できる仮想マシン、Azure Data Science Virtual Machine の概要を紹介します。
 keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
 ms.service: machine-learning
@@ -10,59 +10,66 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 03bfee258fe96d90c32b6a305b99856a11d9a087
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 2bfcdfcb01e7908c199054e793d82cdfa1b726c7
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754989"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816339"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure Data Science Virtual Machine とは
 
-Data Science Virtual Machine (DSVM) とは、データ サイエンス専用に構築された Azure クラウド プラットフォーム上のカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 
+Data Science Virtual Machine (DSVM) とは、データ サイエンス専用に構築された Azure クラウド プラットフォーム上のカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。
 
 DSVM を利用できる OS:
 
-+ **Windows Server 2019**
-+ **Ubuntu 18.04 LTS**
-+ Windows Server 2016
-+ Ubuntu 16.04 LTS
++ Windows Server 2019
++ Ubuntu 18.04 LTS
 
-> [!NOTE]
-> ディープ ラーニング用のすべての VM ツールは、Data Science Virtual Machine に組み込まれています。 
+## <a name="comparison-with-azure-machine-learning"></a>Azure Machine Learning との比較
 
-## <a name="why-choose-the-dsvm"></a>DSVM を選択する理由
+DSVM がデータ サイエンス向けにカスタマイズされた VM イメージであるのに対し、[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AzureML) は、次の機能を含んだエンド ツー エンドのプラットフォームです。
 
-Data Science Virtual Machine の目標は、業界を越えてすべてのスキル レベルのデータ専門家に、摩擦のない、事前に構成されたデータ サイエンス環境を提供することです。 DSVM をプロビジョニングすると、同等のワークスペースを独自にロールアウトしなくて済みます。 そうすることによって、インストール、構成、およびパッケージ管理プロセスにかかる数日、場合によっては "_数週間_" の期間を節約できます。 DSVM が割り当てられたら、直ちにデータ サイエンス プロジェクトに関する作業を開始できます。
++ フル マネージドのコンピューティング
+  + コンピューティング インスタンス
+  + 分散 ML タスク用のコンピューティング クラスター
+  + リアルタイム スコアリング用の推論クラスター
++ データストア (例: Blob、ADLS Gen2、SQL DB)
++ 実験の追跡
++ モデル管理
++ ノートブック
++ 環境 (Conda と R の依存関係の管理)
++ ラベル付け
++ パイプライン (エンド ツー エンドのデータ サイエンス ワークフローの自動化)
+
+### <a name="comparison-with-azureml-compute-instances"></a>AzureML コンピューティング インスタンスとの比較
+
+[Azure Machine Learning コンピューティング インスタンス](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance)がフル構成の __マネージド__ VM イメージであるのに対し、DSVM は __アンマネージド__ VM です。
+
+2 つの製品の主な違いは次のとおりです。
+
+
+|特徴量 |データ サイエンス<br>VM |AzureML<br>コンピューティング インスタンス  | 
+|---------|---------|---------|
+| フル マネージド | いいえ        | はい        |
+|言語サポート     |  Python、R、Julia、SQL、C#、<br> Java、Node.js、F#       | Python と R        |
+|オペレーティング システム     | Ubuntu<br>Windows         |    Ubuntu     |
+|事前構成済みの GPU オプション     |  はい       |    はい     |
+|スケールアップ オプション | はい | はい |
+|SSH アクセス    | はい        |    はい     |
+|RDP アクセス    | はい        |     いいえ    |
+|組み込み<br>ホスト ノートブック     |   いいえ<br>(別途構成が必要)      |      はい   |
+|組み込み SSO     | いいえ <br>(別途構成が必要)         |    はい     |
+|組み込みコラボレーション     | いいえ         | はい        |
+|プレインストールされているツール     |  Jupyter(lab)、RStudio Server、VSCode、<br> Visual Studio、PyCharm、Juno、<br>Power BI Desktop、SSMS、 <br>Microsoft Office 365、Apache Drill       |     Jupyter(lab)<br> RStudio Server   |
 
 ## <a name="sample-use-cases"></a>サンプル ユース ケース
 
 以下では、DSVM のお客様の一般的な使用例をいくつか紹介します。
 
-### <a name="moving-data-science-workloads-to-the-cloud"></a>データ サイエンス ワークロードをクラウドに移行する
-
-DSVM は、ローカル デスクトップをマネージド クラウド デスクトップに置き換えようと考えているデータ サイエンス チームに基準となる構成を提供します。これにより、チームのすべてのデータ科学者に、実験を検証して共同作業を促進するための一貫性のある設定が保証されます。 また、システム管理者の負担が軽減されるためコストも低減されます。 この負担軽減により、高度な分析用のソフトウェア パッケージの評価、インストール、および保守に必要な時間が節約されます。
-
-### <a name="data-science-training-and-education"></a>データ サイエンスのトレーニングと教育
-
-データ サイエンスのクラスを教える企業のトレーナーや教育担当者は、通常、仮想マシン イメージを提供します。 そのイメージにより、受講者が一貫したセットアップを行い、サンプルが予想どおりに動作するようにすることができます。 
-
-DSVM は、一貫したセットアップでオンデマンドの環境を作成するため、サポートと非互換性の問題を軽減できます。 このような環境を頻繁に構築する必要がある場合 (特に短期間のトレーニング クラスの場合)、非常にメリットがあります。
-
-### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>大規模なプロジェクトのためのオンデマンドで柔軟な容量
-
-データ サイエンスのハッカーソンや競技または大規模なデータ モデリングと探索では、スケールアウトしたハードウェア容量が通常は短期間に必要になります。 DSVM は、高性能コンピューティング リソースで実行できる実験をスケールアウトされたサーバー上で可能にするために、必要に応じて迅速にデータ サイエンス環境を複製する際に役立ちます。
-
-### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks のカスタム コンピューティング能力
-
-[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) は、インストールせずに、クラウドで Jupyter ノートブックを開発、実行、および共有するための無料のホストされるサービスです。 無料のサービス レベルは、4 GB のメモリと 1 GB のデータに制限されています。 
-
-すべての制限を解除するには、Notebooks プロジェクトを DSVM か、Jupyter サーバー上で実行されている他の任意の VM に接続します。 Azure Active Directory を使用するアカウント (会社のアカウントなど) で Azure Notebooks にサインインすると、Notebooks には、そのアカウントに関連付けられているすべてのサブスクリプションの DSVM が自動的に表示されます。 [DSVM を Azure Notebooks に接続](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)して、利用可能なコンピューティング能力を拡張することができます。
-
 ### <a name="short-term-experimentation-and-evaluation"></a>短期的な実験と評価
 
 DSVM を使用すると、特に公開されている[サンプルとチュートリアル](./dsvm-samples-and-walkthroughs.md)のいくつかを試すことで、新しいデータ サイエンス [ツール](./tools-included.md)を評価または学習できます。
-
 
 ### <a name="deep-learning-with-gpus"></a>GPU を使用したディープ ラーニング
 
@@ -74,7 +81,13 @@ Ubuntu または Windows エディションの DSVM を、GPU ベースでない
 
 [使用可能なディープ ラーニングと AI のフレームワークの詳細について学習](dsvm-tools-deep-learning-frameworks.md)してください。
 
-<a name="included"></a>
+### <a name="data-science-training-and-education"></a>データ サイエンスのトレーニングと教育
+
+データ サイエンスのクラスを教える企業のトレーナーや教育担当者は、通常、仮想マシン イメージを提供します。 そのイメージにより、受講者が一貫したセットアップを行い、サンプルが予想どおりに動作するようにすることができます。
+
+DSVM は、一貫したセットアップでオンデマンドの環境を作成するため、サポートと非互換性の問題を軽減できます。 このような環境を頻繁に構築する必要がある場合 (特に短期間のトレーニング クラスの場合)、非常にメリットがあります。
+
+
 ## <a name="whats-included-on-the-dsvm"></a>DSVM に含まれているもの
 
 Windows と Linux の両方の DSVM 上で使用できるツールの完全な一覧については、[こちら](tools-included.md)を参照してください。
@@ -85,7 +98,7 @@ Windows と Linux の両方の DSVM 上で使用できるツールの完全な�
 
 + Windows:
   + [Windows DSVM を設定する](provision-vm.md)
-  + [Windows DSVM でできる 10 のこと](vm-do-ten-things.md)
+  + [Windows DSVM のデータ サイエンス](vm-do-ten-things.md)
 
 + Linux:
   + [Linux DSVM を設定する (Ubuntu)](dsvm-ubuntu-intro.md)

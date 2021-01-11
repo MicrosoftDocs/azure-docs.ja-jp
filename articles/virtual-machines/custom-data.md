@@ -4,21 +4,21 @@ description: Azure 仮想マシンでのカスタム データと cloud-init の
 services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678360"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284916"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Azure 仮想マシンでのカスタム データと cloud-init
 
 プロビジョニング時にスクリプトまたはその他のメタデータを Microsoft Azure 仮想マシンに挿入する必要がある場合があります。  他のクラウドでは、この概念は多くの場合、ユーザー データと呼ばれます。  Microsoft Azure には、カスタム データと呼ばれる同様の機能があります。 
 
-カスタム データは、最初の起動時または初期セットアップ時にのみ VM で使用可能になります。これを "プロビジョニング" と呼びます。 プロビジョニングとは、VM 作成のパラメーター (ホスト名、ユーザー名、パスワード、証明書、カスタムデータ、キーなど) が VM で使用可能になり、[Linux エージェント](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)や [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init) などのプロビジョニング エージェントがそれらを処理するプロセスです。 
+カスタム データは、最初の起動時または初期セットアップ時にのみ VM で使用可能になります。これを "プロビジョニング" と呼びます。 プロビジョニングとは、VM 作成のパラメーター (ホスト名、ユーザー名、パスワード、証明書、カスタムデータ、キーなど) が VM で使用可能になり、[Linux エージェント](./extensions/agent-linux.md)や [cloud-init](./linux/using-cloud-init.md#troubleshooting-cloud-init) などのプロビジョニング エージェントがそれらを処理するプロセスです。 
 
 
 ## <a name="passing-custom-data-to-the-vm"></a>カスタム データを VM に渡す
@@ -34,7 +34,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Azure Resource Manager (ARM) には、[base64 関数](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#base64)があります。
+Azure Resource Manager (ARM) には、[base64 関数](../azure-resource-manager/templates/template-functions-string.md#base64)があります。
 
 ```json
 "name": "[parameters('virtualMachineName')]",
@@ -74,21 +74,21 @@ Azure では、現在、次の 2 つのプロビジョニング エージェン�
 
 カスタム データの実行をトラブルシューティングするには、 */var/log/waagent.log* を確認してください。
 
-* cloud-init - 既定では、cloud-init はカスタム データを処理し、cloud-init 構成、スクリプトなど、[複数の形式](https://cloudinit.readthedocs.io/en/latest/topics/format.html)のカスタム データを受け入れます。cloud-init は、Linux エージェントと同様にカスタム データを処理します。 構成処理またはスクリプトの実行中にエラーが発生した場合、致命的なプロビジョニング エラーとは見なされないため、スクリプトの完了状態について警告する通知パスを作成する必要があります。 ただし、cloud init は、Linux エージェントとは異なり、ユーザーのカスタム データの構成が完了するのを待たずに、VM の準備ができたことをプラットフォームに報告します。 Azure での cloud-init の詳細については、[こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)を参照してください。
+* cloud-init - 既定では、cloud-init はカスタム データを処理し、cloud-init 構成、スクリプトなど、[複数の形式](https://cloudinit.readthedocs.io/en/latest/topics/format.html)のカスタム データを受け入れます。cloud-init は、Linux エージェントと同様にカスタム データを処理します。 構成処理またはスクリプトの実行中にエラーが発生した場合、致命的なプロビジョニング エラーとは見なされないため、スクリプトの完了状態について警告する通知パスを作成する必要があります。 ただし、cloud init は、Linux エージェントとは異なり、ユーザーのカスタム データの構成が完了するのを待たずに、VM の準備ができたことをプラットフォームに報告します。 Azure での cloud-init の詳細については、[こちらのドキュメント](./linux/using-cloud-init.md)を参照してください。
 
 
-カスタム データの実行のトラブルシューティングについては、トラブルシューティングに関する[こちらのドキュメント](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init)を参照してください。
+カスタム データの実行のトラブルシューティングについては、トラブルシューティングに関する[こちらのドキュメント](./linux/using-cloud-init.md#troubleshooting-cloud-init)を参照してください。
 
 
 ## <a name="faq"></a>よく寄せられる質問
 ### <a name="can-i-update-custom-data-after-the-vm-has-been-created"></a>VM の作成後にカスタム データを更新できますか?
-単一の VM の場合、VM モデルのカスタム データは更新できませんが、VMSS の場合、[REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/update) を使用して VMSS カスタム データを更新できます (PS または AZ CLI クライアントには適用されません)。 VMSS モデルのカスタム データを更新すると、次のようになります。
+単一の VM の場合、VM モデルのカスタム データは更新できませんが、VMSS の場合、[REST API](/rest/api/compute/virtualmachinescalesets/update) を使用して VMSS カスタム データを更新できます (PS または AZ CLI クライアントには適用されません)。 VMSS モデルのカスタム データを更新すると、次のようになります。
 * VMSS の既存のインスタンスは、再イメージ化されるまで、更新されたカスタム データを取得しません。
 * VMSS のアップグレードされた既存のインスタンスは、更新されたカスタム データを取得しません。
 * 新しいインスタンスは、新しいカスタム データを受け取ります。
 
 ### <a name="can-i-place-sensitive-values-in-custom-data"></a>カスタム データに機密性の高い値を配置できますか?
-機密性の高いデータはカスタム データに格納**しない**ことをお勧めします。 詳細については、[Azure のセキュリティと暗号化のベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices)に関する記事を参照してください。
+機密性の高いデータはカスタム データに格納**しない**ことをお勧めします。 詳細については、[Azure のセキュリティと暗号化のベスト プラクティス](../security/fundamentals/data-encryption-best-practices.md)に関する記事を参照してください。
 
 
 ### <a name="is-custom-data-made-available-in-imds"></a>カスタム データは IMDS で使用できますか?

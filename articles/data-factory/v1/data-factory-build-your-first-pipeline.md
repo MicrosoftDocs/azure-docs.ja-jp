@@ -84,7 +84,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 3. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) にある Hive クエリ ファイル (**HQL**) をダウンロードして確認します。 このクエリが、入力データを変換して出力データを生成します。
 4. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) にあるサンプルの入力ファイル (**input.log**) をダウンロードして確認します。
 5. Azure Blob Storage に **adfgetstarted** という名前の BLOB コンテナーを作成します。
-6. **partitionweblogs.hql** ファイルを **adfgetstarted** コンテナーの **script** フォルダーにアップロードします。 [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用します。
+6. **partitionweblogs.hql** ファイルを **adfgetstarted** コンテナーの **script** フォルダーにアップロードします。 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)などのツールを使用します。
 7. **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルをアップロードします。
 
 前提条件を満たせたら、チュートリアルを実行するための次のいずれかのツールまたは SDK を選択します。

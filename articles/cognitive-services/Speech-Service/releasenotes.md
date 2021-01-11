@@ -8,17 +8,125 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: eceb34b57a0b2dd62f93f7732a6b93221e3ecb56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512665"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525923"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
+
+## <a name="text-to-speech-2020-august-release"></a>テキスト読み上げの 2020 年 8 月のリリース
+
+### <a name="new-features"></a>新機能
+
+* **ニューラル TTS: `en-US` Aria 音声の新しい読み上げスタイル**。 AriaNeural は、ニュースを読むときのニュースキャスターのように聞こえます。 'newscast-formal' スタイルの方がより真面目に聞こえるのに対し、'newscast-casual' スタイルの方はよりリラックスしてくだけた感じです。 [SSML での読み上げスタイルの使用方法](speech-synthesis-markup.md)を参照してください。
+
+* **Custom Voice: トレーニング データの品質を自動的にチェックするための新機能がリリースされました**。 データをアップロードすると、システムによってオーディオとトランスクリプト データのさまざまな側面が調べられ、問題が自動的に修正またはフィルター処理されて、音声モデルの品質が向上します。 ここでは、オーディオとスクリプトの形式に加え、オーディオの音量、ノイズ レベル、音声の発音の正確さ、音声と正規化されたテキスト間の調整、オーディオのサイレント状態についても説明します。 
+
+* **Audio Content Creation: より強力な音声チューニングとオーディオ管理機能を可能にする一連の新機能**。
+
+    * 発音: 発音チューニング機能は、最新の音素セットに更新されています。 ライブラリから適切な音素要素を選択し、選択した単語の発音を洗練することができます。 
+
+    * ダウンロード:オーディオの "ダウンロード" または "エクスポート" 機能は、段落によるオーディオ生成をサポートするように強化されています。 複数のオーディオ出力を生成しながら、同じファイルまたは SSML でコンテンツを編集することができます。 "ダウンロード" のファイル構造も改良されています。 すべてのオーディオを 1 つのフォルダーに簡単に取り込むことができるようになりました。 
+
+    * タスクの状態: 複数ファイルのエクスポート エクスペリエンスが向上しました。 これまでは、複数のファイルをエクスポートするときに、いずれかのファイルにエラーが発生すると、タスク全体が失敗していました。 しかし今は、他のすべてのファイルが正常にエクスポートされます。 タスク レポートは、より詳細で構造化された情報で拡充されています。 すべての失敗したファイルと文のログをレポートで確認できるようになりました。 
+
+    * SSML ドキュメント: すべてのチューニング機能の使用方法に関するルールを確認できるように、SSML ドキュメントにリンクされています。
+
+* **Voice List API が更新され、ユーザー フレンドリな表示名と、ニューラル音声でサポートされている読み上げスタイルが含まれるようになりました**。
+
+### <a name="general-tts-voice-quality-improvements"></a>一般的な TTS 音声品質の改善
+
+* 単語レベルの発音エラー率が低減しました。`ru-RU` はエラーが 56% 減少し、`sv-SE` はエラーが 49% 減少しました。
+
+* `en-US` ニューラル音声のポリフォニーの単語の読み上げが 40% 改良されました。 ポリフォニー単語の例には、"read"、"live"、"content"、"record"、"object" などがあります。 
+
+* `fr-FR` での質問口調がより自然になりました。 MOS (Mean Opinion Score) の向上: +0.28
+
+* 次の音声のボコーダーを更新したことで、忠実性が向上し、全体のパフォーマンスが 40% 向上しました。
+
+    | Locale | 音声 |
+    |---|---|    
+    | `en-GB` | Mia |
+    | `es-MX` | Dalia |
+    | `fr-CA` | Sylvie |
+    | `fr-FR` | Denise |
+    | `ja-JP` | Nanami |
+    | `ko-KR` | Sun-Hi |
+
+### <a name="bug-fixes"></a>バグの修正
+
+* Audio Content Creation ツールのいくつかのバグを修正しました 
+    * 自動更新に関する問題を修正しました。 
+    * 東南アジア リージョンの zh-CN の音声スタイルに関する問題を修正しました。
+    * "break" タグによるエクスポート エラー、句読点のエラーなど、安定性の問題を修正しました。    
+
+## <a name="new-speech-to-text-locales-2020-august-release"></a>新しい音声テキスト変換ロケール: 2020 年 8 月のリリース
+8 月にリリースされた 26 個の音声テキスト変換の新しいロケール:2 つのヨーロッパ言語 (`cs-CZ` と `hu-HU`)、5 つの英語ロケール、および南米のほとんどの国をカバーする 19 のスペイン語のロケール。 新しいロケールの一覧を次に示します。 言語の完全な一覧については、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)を参照してください。
+
+| Locale  | Language                          |
+|---------|-----------------------------------|
+| `cs-CZ` | チェコ語 (チェコ共和国)            | 
+| `en-HK` | 英語 (香港)               | 
+| `en-IE` | 英語 (アイルランド)                 | 
+| `en-PH` | 英語 (フィリピン)             | 
+| `en-SG` | 英語 (シンガポール)               | 
+| `en-ZA` | 英語 (南アフリカ)            | 
+| `es-AR` | スペイン語 (アルゼンチン)               | 
+| `es-BO` | スペイン語 (ボリビア)                 | 
+| `es-CL` | スペイン語 (チリ)                   | 
+| `es-CO` | スペイン語 (コロンビア)                | 
+| `es-CR` | スペイン語 (コスタリカ)              | 
+| `es-CU` | スペイン語 (キューバ)                    | 
+| `es-DO` | スペイン語 (ドミニカ共和国)      | 
+| `es-EC` | スペイン語 (エクアドル)                 | 
+| `es-GT` | スペイン語 (グアテマラ)               | 
+| `es-HN` | スペイン語 (ホンジュラス)                | 
+| `es-NI` | スペイン語 (ニカラグア)               | 
+| `es-PA` | スペイン語 (パナマ)                  | 
+| `es-PE` | スペイン語 (ペルー)                    | 
+| `es-PR` | スペイン語 (プエルトリコ)             | 
+| `es-PY` | スペイン語 (パラグアイ)                | 
+| `es-SV` | スペイン語 (エルサルバドル)             | 
+| `es-US` | スペイン語 (米国)                     | 
+| `es-UY` | スペイン語 (ウルグアイ)                 | 
+| `es-VE` | スペイン語 (ベネズエラ)               | 
+| `hu-HU` | ハンガリー語 (ハンガリー)               | 
+
+
+## <a name="speech-sdk-1130-2020-july-release"></a>Speech SDK 1.13.0:2020 年 7 月リリース
+
+**注**:Windows の音声 SDK は、Visual Studio 2015、2017、および 2019 の Microsoft Visual C++ 再配布可能パッケージに依存します。 [こちら](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)からダウンロードしてインストールします。
+
+**新機能**
+- **C#** : 非同期での会話の文字起こしのサポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)のドキュメントを参照してください。  
+- **JavaScript**:[ブラウザー](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition) と [node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition) の両方で、話者認識のサポートが追加されました。
+- **JavaScript**:言語/言語 ID の自動検出のサポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)のドキュメントを参照してください。
+- **Objective-C**:[マルチデバイスの会話](https://docs.microsoft.com/azure/cognitive-services/speech-service/multi-device-conversation)と[会話の文字起こし](https://docs.microsoft.com/azure/cognitive-services/speech-service/conversation-transcription)のサポートが追加されました。 
+- **Python**: Windows および Linux での Python 用圧縮オーディオ サポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)のドキュメントを参照してください。 
+
+**バグの修正**
+- **[すべて]** : KeywordRecognizer で認識後にストリームが送られない原因となっていた問題が修正されました。
+- **[すべて]** : KeywordRecognitionResult から取得したストリームにキーワードが含まれていない原因となっていた問題が修正されました。
+- **[すべて]** : SendMessageAsync で、ユーザーがその待機を終えた後に、実際にネットワーク経由でメッセージが送信されないという問題が修正されました。
+- **[すべて]** : ユーザーが VoiceProfileClient::SpeakerRecEnrollProfileAsync メソッドを複数回呼び出し、呼び出しの完了を待機しなかった場合の、Speaker Recognition API のクラッシュが修正されました。
+- **[すべて]** : VoiceProfileClient クラスと SpeakerRecognizer クラスでのファイル ログの有効化が修正されました。
+- **JavaScript**:ブラウザーが最小化されたときの調整の[問題](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74)が修正されました。
+- **JavaScript**:ストリームでのメモリ リークの[問題](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78)が修正されました。
+- **JavaScript**:NodeJS からの OCSP 応答のキャッシュが追加されました。
+- **Java**: BigInteger フィールドが常に 0 を返す原因となっていた問題が修正されました。
+- **iOS**: iOS App Store で Speech SDK ベースのアプリを発行する場合の[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702)が修正されました。
+
+**サンプル**
+- **C++** :話者認識のサンプル コードが[ここ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)に追加されました。
+
+**COVID-19 の影響によるテストの短縮:** 過去数週間にわたってリモートにて作業を行っているため、通常ならば実施するはずの手動による検証テストを行うことができませんでした。 問題発生の可能性が想定される変更はいっさい行っていません。また、自動テストはすべて成功しました。 しかし、もし仮に何らかの問題が発生した場合には、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) にてお知らせください。<br>
+皆様の健康をお祈りします！
 
 ## <a name="text-to-speech-2020-july-release"></a>テキスト読み上げ 2020 年 7 月リリース
 
@@ -85,10 +193,10 @@ ms.locfileid: "86512665"
 
 ### <a name="samplessdk"></a>サンプル/SDK
 
-* JavaScript:FireFox および macOS と iOS での Safari における再生の問題が修正されました。 
+* JavaScript:Firefox および macOS と iOS での Safari における再生の問題が修正されました。 
 
 ## <a name="speech-sdk-1121-2020-june-release"></a>Speech SDK 1.12.1:2020 年 6 月リリース
-**Speech CLI (別名 SPX)**
+**Speech CLI (SPX とも呼ばれます)**
 -   CLI 内ヘルプ検索機能が追加されました。
     -   `spx help find --text TEXT`
     -   `spx help find --topic NAME`
@@ -115,7 +223,7 @@ ms.locfileid: "86512665"
 
 
 ## <a name="speech-sdk-1120-2020-may-release"></a>Speech SDK 1.12.0:2020-May リリース
-**Speech CLI (別名 SPX)**
+**Speech CLI (SPX とも呼ばれます)**
 - **SPX** は、コマンド ラインから認識、合成、翻訳、バッチ文字起こし、およびカスタム音声管理を実行するための新しいコマンド ライン ツールです。 これを使用して、音声サービスをテストしたり、実行する必要がある音声サービス タスクをスクリプト化したりできます。 ツールをダウンロードし、[こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-overview)のドキュメントを参照してください。
 
 **新機能**

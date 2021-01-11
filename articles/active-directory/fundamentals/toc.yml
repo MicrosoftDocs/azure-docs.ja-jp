@@ -35,8 +35,6 @@
           href: identity-secure-score.md
         - name: リモート ワーカーをセキュリティで保護する
           href: concept-secure-remote-workers.md
-        - name: 継続的アクセス評価
-          href: concept-fundamentals-continuous-access-evaluation.md
     - name: グループとユーザー
       items:
         - name: グループとアクセス管理
@@ -49,6 +47,8 @@
       items:
         - name: Azure AD のアーキテクチャ
           href: active-directory-architecture.md
+        - name: すべてのアプリを Azure AD と統合する
+          href: five-steps-to-full-application-integration-with-azure-ad.md
     - name: デプロイ ガイド
       items:
         - name: デプロイ 30、90、およびそれ以降

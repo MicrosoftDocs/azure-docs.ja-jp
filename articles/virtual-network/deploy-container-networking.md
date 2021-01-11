@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Network コンテナー ネットワークのデプロイ |Microsoft Docs
-description: Kubernetes クラスター用の Azure Virtual Network コンテナー ネットワーク インターフェイス (CNI) プラグインを、ご自分でデプロイする方法、ACS エンジンを使用してデプロイする方法、および Docker コンテナー用にデプロイする方法について説明します。
+description: Kubernetes クラスター用の Azure Virtual Network コンテナー ネットワーク インターフェイス (CNI) プラグインのデプロイ方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: aanandr
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 7cae4b579a933c03ec3a08a00ef032c57d15093f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710016"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289588"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Azure Virtual Network コンテナー ネットワーク インターフェイス プラグインのデプロイ
 

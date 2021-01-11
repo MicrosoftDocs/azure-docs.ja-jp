@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 926f4dd94ba5b1f864a002c282004b3a9f438dca
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223042"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722740"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Monitor ブックを使用して Azure Active Directory Domain Services のセキュリティ監査イベントを確認する
 
@@ -75,7 +75,7 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 
 1. グラフの下にあるセキュリティの概要レポートの下部には、選択したアクティビティの種類の詳細が表示されます。 次のレポート例に示すように、右側で関係するユーザー名を使用してフィルター処理できます。
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Azure Monitor ブックでのアカウント ロックアウトの詳細。](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>アカウント アクティビティ レポート ブックを使用する
 
@@ -93,7 +93,7 @@ Azure AD DS には、次の 2 つのブック テンプレートが含まれて�
 
     次のレポートの例に示すように、**アカウントのユーザー名** (*felix* など) でフィルター処理できます。
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    [![Azure Monitor ブックでのアカウント アクティビティ レポート。](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     グラフの下の領域には、アクティビティの結果やソース ワークステーションなどの情報と共に、個々のサインイン イベントが表示されます。 この情報は、アカウントのロックアウトの原因になったり、潜在的な攻撃を示す可能性があるサインイン イベントを繰り返すソースを特定するのに役立ちます。
 
@@ -123,4 +123,4 @@ Azure Monitor ブック内のすべてのグラフとテーブルは、Kusto ク
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
 [azure-monitor-queries]: ../azure-monitor/log-query/query-language.md
-[kusto-queries]: https://docs.microsoft.com/azure/kusto/query/tutorial?pivots=azuredataexplorer
+[kusto-queries]: /azure/kusto/query/tutorial?pivots=azuredataexplorer

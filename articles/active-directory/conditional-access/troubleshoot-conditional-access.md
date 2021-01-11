@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610518"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032970"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>条件付きアクセスでのサインインに関する問題のトラブルシューティング
 
@@ -55,11 +55,16 @@ ms.locfileid: "82610518"
    1. **[トラブルシューティングおよびサポート]** タブの情報により、コンプライアンス要件を満たしていなかったデバイスなど、サインインが失敗した理由が明確に示される場合があります。
    1. さらに調査するには、 **[ポリシー名]** をクリックして、ポリシーの構成にドリルダウンします。 **[ポリシー名]** をクリックすると、選択したポリシーのポリシー構成ユーザー インターフェイスが表示され、確認および編集できます。
    1. 条件付きアクセス ポリシーの評価に使用された **クライアント ユーザー**と**デバイスの詳細**は、サインイン イベントの **[基本情報]** 、 **[場所]** 、 **[デバイス情報]** 、 **[認証の詳細]** 、 **[追加情報]** タブでも参照できます。
-   1. ポリシーの右側にある省略記号を選択すると、ポリシーの詳細が表示されます。 これにより、管理者はポリシーが正常に適用された、またはされていない理由に関して、追加情報を得ることができます。
+
+### <a name="policy-details"></a>ポリシーの詳細
+
+サインイン イベントでポリシーの右側にある省略記号を選択すると、ポリシーの詳細が表示されます。 これにより、管理者はポリシーが正常に適用された、またはされていない理由に関して、追加情報を得ることができます。
 
    ![サインイン イベントの [条件付きアクセス] タブ](./media/troubleshoot-conditional-access/image5.png)
 
    ![ポリシーの詳細 (プレビュー)](./media/troubleshoot-conditional-access/policy-details.png)
+
+左側にはサインイン時に収集された詳細情報が表示され、右側には適用された条件付きアクセス ポリシーの要件をそれらの詳細が満たすかどうかが示されます。 条件付きアクセス ポリシーは、すべての条件が満たされているか、構成されていない場合にのみ適用されます。
 
 イベントの情報が、サインイン結果を理解したり、必要な結果を得るためにポリシーを調整したりするのに十分でない場合は、サポート インシデントを開くことができます。 対象のサインイン イベントの **[トラブルシューティングおよびサポート]** タブに移動して、 **[新しいサポート リクエストを作成する]** を選択します。
 

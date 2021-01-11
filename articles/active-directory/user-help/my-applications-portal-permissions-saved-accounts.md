@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 4249f753181ea4b54d7e1e1f098717ef669bae4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8507a53959e7d28cbcec2dec6783b2470696d59b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744024"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798110"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>マイ アプリ ポータルでのアプリケーションのアクセス許可の編集または取り消し
 
@@ -26,7 +26,7 @@ ms.locfileid: "83744024"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->このコンテンツはユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+>このコンテンツはユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/access-panel-collections.md)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
 ## <a name="manage-app-permissions"></a>アプリのアクセス許可の管理
 

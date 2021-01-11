@@ -4,23 +4,23 @@ description: Web アプリに対する要求の失敗率の異常な変化を通
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 35c1769672e11cd7d1ec2f628b9d763dc8b90ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a093d5d6bdb96aa6f0a8a92fea48835971aebe16
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254788"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420211"
 ---
 # <a name="smart-detection---failure-anomalies"></a>スマート検出 - 失敗の異常
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) では、Web アプリで要求の失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーにアラートを送信します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 アラートの詳細には、問題のトリアージと診断に役立つよう、失敗の特性および関連するアプリケーション データの分析が表示されます。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
+[Application Insights](./app-insights-overview.md) では、Web アプリで要求の失敗率が異常に増加すると、ほぼリアルタイムで自動的にユーザーにアラートを送信します。 具体的には、失敗として報告された HTTP 要求または依存関係の呼び出しの割合が異常に上昇すると、それが検出されます。 要求の場合、失敗した要求の応答コードは、通常、400 以上です。 アラートの詳細には、問題のトリアージと診断に役立つよう、失敗の特性および関連するアプリケーション データの分析が表示されます。 また、より詳しい診断を行うために、Application Insights ポータルへのリンクも含まれています。 この機能は、機械学習アルゴリズムを使用して通常のエラー率を予測するため、セットアップや構成は不要です。
 
-この機能は、クラウドまたは独自サーバーでホストされ、アプリケーションの要求または依存データを生成するあらゆる Web アプリで利用できます。 たとえば、[TrackRequest()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) または [TrackDependency()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency) を呼び出す worker ロールがある場合などです。
+この機能は、クラウドまたは独自サーバーでホストされ、アプリケーションの要求または依存データを生成するあらゆる Web アプリで利用できます。 たとえば、[TrackRequest()](./api-custom-events-metrics.md#trackrequest) または [TrackDependency()](./api-custom-events-metrics.md#trackdependency) を呼び出す worker ロールがある場合などです。
 
-[プロジェクト用に Application Insights](../../azure-monitor/app/app-insights-overview.md) を設定し、アプリケーションで特定の最少限のデータを生成する場合、エラーの異常のスマート検出は 24 時間かけてアプリケーションの通常の動作を学習してから、オンに切り替わり、アラートを送信できるようになります。
+[プロジェクト用に Application Insights](./app-insights-overview.md) を設定し、アプリケーションで特定の最少限のデータを生成する場合、エラーの異常のスマート検出は 24 時間かけてアプリケーションの通常の動作を学習してから、オンに切り替わり、アラートを送信できるようになります。
 
 アラートの例を次に示します。
 
-[![](./media/proactive-failure-diagnostics/013.png "Sample smart detection alert showing cluster analysis around failure")](./media/proactive-failure-diagnostics/013.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/013.png" alt-text="失敗箇所周辺のクラスター分析を示すスマート検出のアラートのサンプル。" lightbox="./media/proactive-failure-diagnostics/013.png":::
 
 アラートの詳細には次の内容が表示されます。
 
@@ -31,10 +31,10 @@ ms.locfileid: "85254788"
 * Application Insights のデータの関連検索に直接リンクします。
 
 ## <a name="benefits-of-smart-detection"></a>スマート検出の利点
-通常の [メトリック アラート](../../azure-monitor/platform/alerts-log.md) から、問題がある可能性がわかります。 ただし、スマート検出では自動的に診断作業が開始され、ユーザーに代わってさまざまな分析が実行されます。 結果はわかりやすくまとめられるので、問題の原因をすぐに把握できます。
+通常の [メトリック アラート](../platform/alerts-log.md) から、問題がある可能性がわかります。 ただし、スマート検出では自動的に診断作業が開始され、ユーザーに代わってさまざまな分析が実行されます。 結果はわかりやすくまとめられるので、問題の原因をすぐに把握できます。
 
 ## <a name="how-it-works"></a>しくみ
-スマート検出は、アプリから受け取ったデータ (特に失敗率) を監視します。 このルールは、`Successful request` プロパティが false である要求の数と、`Successful call` プロパティが false である依存関係の呼び出しの数をカウントします。 要求の場合、既定では、`Successful request == (resultCode < 400)` です ([フィルター](../../azure-monitor/app/api-filtering-sampling.md#filtering)にカスタム コードを記述した場合、または独自の [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) 呼び出しを生成する場合を除きます)。 
+スマート検出は、アプリから受け取ったデータ (特に失敗率) を監視します。 このルールは、`Successful request` プロパティが false である要求の数と、`Successful call` プロパティが false である依存関係の呼び出しの数をカウントします。 要求の場合、既定では、`Successful request == (resultCode < 400)` です ([フィルター](./api-filtering-sampling.md#filtering)にカスタム コードを記述した場合、または独自の [TrackRequest](./api-custom-events-metrics.md#trackrequest) 呼び出しを生成する場合を除きます)。 
 
 アプリのパフォーマンスには、一般的な動作パターンがあります。 他よりもエラーが発生しやすい要求または依存関係があります。負荷が増えると、全体的なエラー率が上がります。 スマート検出は機械学習を使用し、これらの異常を検出します。
 
@@ -48,7 +48,7 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 分析結果は、アラートとして電子メールで送信されます (送信しないように構成している場合を除きます)。
 
-[手動で設定したアラート](../../azure-monitor/platform/alerts-log.md)と同様に、発生したアラートを検査でき、問題を修正すると解決できます。 Application Insights リソースの [アラート] ページでアラート ルールを構成します。 ただし、その他のアラートとは異なり、スマート検出を設定したり、構成したりする必要はありません。 必要に応じて、無効にすることや、送信先の電子メール アドレスを変更することもできます。
+[手動で設定したアラート](../platform/alerts-log.md)と同様に、発生したアラートを検査でき、問題を修正すると解決できます。 Application Insights リソースの [アラート] ページでアラート ルールを構成します。 ただし、その他のアラートとは異なり、スマート検出を設定したり、構成したりする必要はありません。 必要に応じて、無効にすることや、送信先の電子メール アドレスを変更することもできます。
 
 ### <a name="alert-logic-details"></a>アラート ロジックの詳細
 
@@ -61,22 +61,22 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 ## <a name="configure-alerts"></a>アラートを構成する
 
-スマート検出アラート ルールは、ポータルから、または Azure Resource Manager ([テンプレートの例を参照](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)) を使用して、無効にできます。
+スマート検出アラート ルールは、ポータルから、または Azure Resource Manager ([テンプレートの例を参照](./proactive-arm-config.md)) を使用して、無効にできます。
 
-このアラート ルールは、電子メールと Webhook のアクションが含まれる "Application Insights スマート検出" という名前の関連する[アクション グループ](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)とともに作成され、アラート発生時に追加のアクションをトリガーするように拡張できます。
+このアラート ルールは、電子メールと Webhook のアクションが含まれる "Application Insights スマート検出" という名前の関連する[アクション グループ](../platform/action-groups.md)とともに作成され、アラート発生時に追加のアクションをトリガーするように拡張できます。
 
 > [!NOTE]
-> このアラート ルールから送信される電子メール通知が、サブスクリプションの監視閲覧者ロールおよび監視共同作成者ロールに関連付けられているユーザーに既定で送信されるようになりました。 この詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification)を参照してください。
-> このアラート ルールから送信される通知は、[共通アラート スキーマ](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema)に準拠します。
+> このアラート ルールから送信される電子メール通知が、サブスクリプションの監視閲覧者ロールおよび監視共同作成者ロールに関連付けられているユーザーに既定で送信されるようになりました。 この詳細については、[こちら](./proactive-email-notification.md)を参照してください。
+> このアラート ルールから送信される通知は、[共通アラート スキーマ](../platform/alerts-common-schema.md)に準拠します。
 >
 
 [アラート] ページを開きます。 エラーの異常アラート ルールが、手動で設定したすべてのアラートと共に含まれており、現在アラート状態にあるかどうかを確認できます。
 
-[![](./media/proactive-failure-diagnostics/021.png "On the Application Insights resource page, click 'Alerts' tile, then 'Manage alert rules'")](./media/proactive-failure-diagnostics/021.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Application Insights リソース ページで、[アラート] タイル、[アラート ルールの管理] の順にクリックします。" lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 アラートをクリックして構成します。
 
-[![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="ルールの構成画面。" lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 エラーの異常アラート ルールを無効にしたり削除したりすることはできますが、同じ Application Insights リソースに別のルールを作成することはできません。
 
@@ -292,13 +292,13 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 アラートは、要求失敗率の異常な上昇が検出されたことを示します。 アプリやその環境に何らかの問題があることが考えられます。
 
-さらに詳しく調査する場合は、このページの [View full details in Application Insights]\(Application Insights で完全な詳細を表示\) リンクをクリックすると、関連する要求、例外、依存関係、トレースでフィルター処理された[検索ページ](../../azure-monitor/app/diagnostic-search.md)に直接移動できます。 
+さらに詳しく調査する場合は、このページの [View full details in Application Insights]\(Application Insights で完全な詳細を表示\) リンクをクリックすると、関連する要求、例外、依存関係、トレースでフィルター処理された[検索ページ](./diagnostic-search.md)に直接移動できます。 
 
 また、[Azure portal](https://portal.azure.com) を開き、アプリの Application Insights リソースに移動して、エラー ページを開くこともできます。
 
 [エラーの診断] をクリックすると、問題の詳細を確認して解決するのに役立ちます。
 
-[![](./media/proactive-failure-diagnostics/051.png "Diagnostic search")](./media/proactive-failure-diagnostics/051.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="診断検索。" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 要求の割合と影響を受けるユーザーの数から、問題の緊急度を判断できます。 上の例では、78.5% という失敗率が通常の失敗率である 2.2% と比較され、異常事態が発生していることを示しています。 一方、影響を受けたユーザー数は 46 人のみです。 それが自分のアプリであれば、その深刻度を評価できます。
 
@@ -306,18 +306,18 @@ Web アプリから Application Insights にデータが送られると、スマ
 
 この例では、要求の制限を超えたため、SQL Database から例外が発生しました。
 
-[![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="失敗した要求の詳細。" lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>最新のアラートを確認する
 
 Application Insights リソース ページで **[アラート]** をクリックすると、直近の発生アラートが表示されます。
 
-[![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="アラートの概要。" lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>違い...
 失敗の異常のスマート検出は、Application Insights の類似しているが異なる他の機能を補完します。
 
-* [メトリック アラート](../../azure-monitor/platform/alerts-log.md)は、ユーザーが設定するアラートであり、CPU 占有率、要求率、ページの読み込み時間など、広範なメトリックを監視できます。 このアラートを使用すると、リソースを追加する必要がある場合などに自分に警告することができます。 これに対し、エラーの異常のスマート検出は、重要な少数のメトリック (現在は要求失敗率のみ) を対象としており、Web アプリの要求失敗率が Web アプリの通常の動作と比較して増加すると、ほぼリアルタイムでユーザーに通知するよう設計されています。 メトリック アラートとは異なり、スマート検出は、動作の変化に応じてしきい値を自動的に設定および更新します。 また、スマート検出は、ユーザーに代わって診断作業を開始するため、問題の解決に要する時間が短縮されます。
+* [メトリック アラート](../platform/alerts-log.md)は、ユーザーによって設定され、CPU 占有率、要求率、ページの読み込み時間など、広範なメトリックの監視を行うことができます。 このアラートを使用すると、リソースを追加する必要がある場合などに自分に警告することができます。 これに対し、エラーの異常のスマート検出は、重要な少数のメトリック (現在は要求失敗率のみ) を対象としており、Web アプリの要求失敗率が Web アプリの通常の動作と比較して増加すると、ほぼリアルタイムでユーザーに通知するよう設計されています。 メトリック アラートとは異なり、スマート検出は、動作の変化に応じてしきい値を自動的に設定および更新します。 また、スマート検出は、ユーザーに代わって診断作業を開始するため、問題の解決に要する時間が短縮されます。
 
 * [パフォーマンスの異常のスマート検出](proactive-performance-diagnostics.md)では、マシン インテリジェンスを使用してメトリックの異常なパターンを検出します。ユーザーが構成する必要はありません。 ただし、失敗の異常のスマート検出とは異なり、パフォーマンスの異常のスマート検出の目的は、(たとえば、特定の種類のブラウザーの特定のページで) 適切に処理されない可能性のあるさまざまな使用量のセグメントを検出することです。 分析は毎日実行され、見つかった結果はアラートよりも緊急度が大幅に低い可能性があります。 これに対し、エラーの異常の分析は、受け取ったアプリケーション データに対して継続的に実行され、サーバーのエラー率が予想を超えると数分以内にユーザーに通知します。
 
@@ -332,7 +332,7 @@ Application Insights リソース ページで **[アラート]** をクリッ�
 
 *ユーザーのアプリケーション データは Microsoft からも見られるのですか。*
 
-* いいえ。 サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](../../azure-monitor/app/data-retention-privacy.md)です。
+* いいえ。 サービスは完全に自動化されています。 通知を受け取るだけです。 ユーザーのデータは [プライベート](./data-retention-privacy.md)です。
 
 *このアラートをサブスクライブする必要はありますか。*
 
@@ -348,16 +348,17 @@ Application Insights リソース ページで **[アラート]** をクリッ�
 
 *一部のアラートは既知の問題に関するものであるため、受信を停止したいのですが。*
 
-* [アラート アクション ルール](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules)の抑制機能を使用できます。
+* [アラート アクション ルール](../platform/alerts-action-rules.md)の抑制機能を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 これらの診断ツールを使用すると、アプリからのデータを調査できます。
 
-* [メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)
-* [Search エクスプローラー](../../azure-monitor/app/diagnostic-search.md)
-* [Analytics - 強力なクエリ言語](../../azure-monitor/log-query/get-started-portal.md)
+* [メトリックス エクスプローラー](../platform/metrics-charts.md)
+* [Search エクスプローラー](./diagnostic-search.md)
+* [Analytics - 強力なクエリ言語](../log-query/get-started-portal.md)
 
 スマート検出は自動化されています。 ただし、アラートを追加で設定する機能が用意されています。
 
-* [手動で構成するメトリックのアラート](../../azure-monitor/platform/alerts-log.md)
-* [可用性 Web テスト](../../azure-monitor/app/monitor-web-app-availability.md)
+* [手動で構成するメトリックのアラート](../platform/alerts-log.md)
+* [可用性 Web テスト](./monitor-web-app-availability.md)
+

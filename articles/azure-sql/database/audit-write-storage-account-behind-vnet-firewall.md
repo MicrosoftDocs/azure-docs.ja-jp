@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 06/17/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 7b8c6e09616f261c371b010b38d2c0f81376a6f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ba0a599bcb0b058ce4902882df9459b177fb6b5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944766"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530408"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>VNet とファイアウォールの背後にあるストレージ アカウントに対して監査を書き込む
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -114,13 +114,14 @@ VNet またはファイアウォールの背後にあるストレージ アカ�
      "administratorLoginPassword": "<complex password>",
      "version": "12.0",
      "state": "Ready"
+     }
    }
    ```
 
-2. [Azure Portal](https://portal.azure.com) を開きます。 ストレージ アカウントに移動します。 **[アクセス制御 (IAM)]** を見つけて、 **[ロールの割り当ての追加]** をクリックします。 先ほどの手順で Azure Active Directory (Azure AD) に登録したデータベースをホストするサーバーに、**ストレージ BLOB データ共同作成者** RBAC ロールを割り当てます。
+2. [Azure Portal](https://portal.azure.com) を開きます。 ストレージ アカウントに移動します。 **[アクセス制御 (IAM)]** を見つけて、 **[ロールの割り当ての追加]** をクリックします。 先ほどの手順で Azure Active Directory (Azure AD) に登録したデータベースをホストするサーバーに、**ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
 
    > [!NOTE]
-   > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、「[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+   > 所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 3. *storageAccountAccessKey* を指定せずに、[サーバーの BLOB 監査ポリシー](/rest/api/sql/server%20auditing%20settings/createorupdate)を構成します。
 

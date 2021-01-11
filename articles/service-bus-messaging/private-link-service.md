@@ -5,14 +5,14 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4f3b67794d1a7f3935c79c70f18b8bd4a1e0d7ef
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340443"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716624"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link"></a>Azure Service Bus を Azure Private Link と統合する
+# <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>プライベート エンドポイント経由での Azure Service Bus 名前空間へのアクセスを許可する
 
 Azure Private Link サービスを使用すると、自分の仮想ネットワーク内の**プライベート エンドポイント**経由で、Azure サービス (Azure Service Bus、Azure Storage、Azure Cosmos DB など) と、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
 
@@ -46,7 +46,7 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 
 - Service Bus 名前空間。
 - Azure 仮想ネットワーク。
-- 仮想ネットワーク内のサブネット。
+- 仮想ネットワーク内のサブネット。 **既定**のサブネットを使用できます。 
 - Service Bus 名前空間と仮想ネットワークの両方に対する所有者または共同作成者のアクセス許可。
 
 プライベート エンドポイントと仮想ネットワークは、同じリージョンに存在する必要があります。 ポータルを使用してプライベート エンドポイントのリージョンを選択すると、自動的にフィルター処理が行われ、そのリージョン内にある仮想ネットワークのみが表示されます。 ご利用の Service Bus 名前空間は、別のリージョンに配置することができます。 さらに、ご利用のプライベート エンドポイントでは、自分の仮想ネットワーク内のプライベート IP アドレスが使用されます。
@@ -57,9 +57,20 @@ Service Bus 名前空間を Azure Private Link と統合するには、次のエ
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 
 2. 検索バーで、「**Service Bus**」と入力します。
-3. プライベート エンドポイントの追加先としてリストから **[名前空間]** を選択します。
-4. **[設定]** で **[ネットワーク]** タブを選択します。
-5. ページの上部にある **[プライベート エンドポイント接続]** タブを選択します。
+3. プライベート エンドポイントを追加する**名前空間**を一覧から選択します。
+2. 左側のメニューで、 **[設定]** の下にある **[ネットワーク]** オプションを選択します。 
+
+    > [!NOTE]
+    > **[ネットワーク]** タブは **premium** 名前空間に対してのみ表示されます。  
+    
+    既定では、 **[選択されたネットワーク]** オプションが選択されています。 このページで 1 つ以上の IP ファイアウォール規則または仮想ネットワークを追加しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="[ネットワーク] ページ - 既定" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    **[すべてのネットワーク]** オプションを選択した場合、Service Bus 名前空間はあらゆる IP アドレスからの (アクセス キーを使用した) 接続を受け入れます。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。 
+
+    ![ファイアウォールで [すべてのネットワーク] のオプションが選択されている](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+5. プライベート エンドポイント経由での名前空間へのアクセスを許可するには、ページの上部にある **[プライベート エンドポイント接続]** タブを選択します
 6. ページの上部にある **[+ プライベート エンドポイント]** ボタンを選択します。
 
     ![[プライベート エンドポイントの追加] ボタン](./media/private-link-service/private-link-service-3.png)
@@ -223,7 +234,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 ## <a name="validate-that-the-private-link-connection-works"></a>プライベート リンク接続が機能することを検証する
 
-プライベート エンドポイント リソースの同一サブネット内にあるリソースが、プライベート IP アドレスを使用して自分の Service Bus 名前空間に接続していること、そしてそれらがプライベート DNS ゾーンに正しく統合されていることを検証する必要があります。
+プライベート エンドポイントの仮想ネットワーク内にあるリソースが、プライベート IP アドレスを使用して自分の Service Bus 名前空間に接続していること、そしてそれらがプライベート DNS ゾーンに正しく統合されていることを検証する必要があります。
 
 最初に、[Azure portal での Windows 仮想マシンの作成](../virtual-machines/windows/quick-create-portal.md)に関するページの手順に従って、仮想マシンを作成します。
 

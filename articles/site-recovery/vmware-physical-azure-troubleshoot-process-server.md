@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 7679148e195bd67ab5da58636552a684c25c31b0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4816b597d66aea3bbe7f834004f924b5108de939
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131983"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499757"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
 
@@ -91,7 +91,7 @@ Microsoft Azure Recovery Services エージェント (obengine) 以外のすべ�
 
  初期や継続的に発生するレプリケーションの問題は、ソース マシンとプロセス サーバーの間、またはプロセス サーバーと Azure の間の接続に関する問題が原因であることが少なくありません。 これらの手順を次の図にまとめました。その後に、手順を行うための方法を記載しています。
 
-![接続とレプリケーションのトラブルシューティング](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
+![接続性とレプリケーションのトラブルシューティング手順を示すフローチャート。](./media/vmware-physical-azure-troubleshoot-process-server/troubleshoot-connectivity-replication.png)
 
 
 ## <a name="step-4-verify-time-sync-on-source-machine"></a>手順 4:ソース マシンの時刻同期の確認
@@ -170,7 +170,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
   2. **[パフォーマンス]** タブ > **[リソース モニターを開く]** の順に選択します。
   3. **[リソース モニター]** ページで **[ネットワーク]** タブを選択します。 **[ネットワーク活動のプロセス]** で、cbengine.exe により大量のデータがアクティブに送信されているかどうかを確認します。
 
-       ![ネットワーク活動を処理中のボリューム](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
+       ![[ネットワーク活動のプロセス] に大きな容量の数値が表示されているスクリーンショット。](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 
   Cbengine.exe により大量のデータが送信されていない場合は、次のセクションの手順を実行します。
 
@@ -179,7 +179,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 1. リソース モニターで、 **[cbengine.exe]** を選択します。
 2. **[TCP 接続]** の下で、プロセス サーバーから Azure Storage への接続があるかどうかを確認します。
 
-  ![cbengine.exe と Azure Blob Storage の URL 間の接続](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
+  ![cbengine.exe と Azure Blob Storage の URL との間の接続性を示すスクリーンショット。](./media/vmware-physical-azure-troubleshoot-process-server/rmonitor.png)
 
 ### <a name="check-services"></a>サービスを確認する
 

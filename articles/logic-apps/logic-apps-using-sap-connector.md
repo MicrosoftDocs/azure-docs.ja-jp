@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 07/21/2020
 tags: connectors
-ms.openlocfilehash: 01c1a2b3f9455f19877f1b16b7fff5a7c2e77c76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0f6af706a81db537b9ed66dc49996282c4dbbaa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85323162"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833897"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -128,13 +128,13 @@ SAP コネクタでは [SAP .NET Connector (NCo) ライブラリ](https://suppor
 
 * 既定では、SAP インストーラーによってアセンブリ ファイルが既定のインストール フォルダーに格納されます。 ご自分のシナリオに基づいて、次のように、これらのアセンブリ ファイルを別の場所にコピーする必要があります。
 
-  ISE で実行されているロジック アプリの場合は、[統合サービス環境の前提条件](#sap-ise)に記載されている手順に従います。 マルチテナント Azure で実行され、オンプレミス データ ゲートウェイを使用するロジック アプリの場合は、アセンブリ ファイルを既定のインストール フォルダーからデータ ゲートウェイのインストール フォルダーにコピーします。 データ ゲートウェイで問題が発生した場合は、次のイシューを確認してください。
+  * ISE で実行されているロジック アプリの場合は、[統合サービス環境の前提条件](#sap-ise)に記載されている手順に従います。 マルチテナント Azure で実行され、オンプレミス データ ゲートウェイを使用するロジック アプリの場合は、アセンブリ ファイルを既定のインストール フォルダーからデータ ゲートウェイのインストール フォルダーにコピーします。 データ ゲートウェイで問題が発生した場合は、次のイシューを確認してください。
 
   * データ ゲートウェイは 64 ビット システムでのみ実行されるため、SAP クライアント ライブラリの 64 ビット版をインストールする必要があります。 データ ゲートウェイ ホスト サービスは 32 ビットのアセンブリをサポートしないので、それ以外の場合、"イメージが無効" であることを示すエラーが発生します。
 
   * SAP 接続が失敗し、"お使いのアカウント情報やアクセス許可を確認し、もう一度試してください。" というエラー メッセージが表示された場合は、アセンブリ ファイルが間違った場所にある可能性があります。 アセンブリ ファイルが、データ ゲートウェイのインストール フォルダーにコピーされていることを確認します。
 
-    トラブルシューティングに役立てるため、[.NET アセンブリ バインド ログ ビューアーを使用します](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer)。これにより、アセンブリ ファイルが正しい場所にあることを確認できます。 必要に応じて、SAP クライアント ライブラリをインストールするときに、 **[Global Assembly Cache registration]\(グローバル アセンブリ キャッシュの登録\)** オプションを選択できます。
+    トラブルシューティングに役立てるため、[.NET アセンブリ バインド ログ ビューアーを使用します](/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer)。これにより、アセンブリ ファイルが正しい場所にあることを確認できます。 必要に応じて、SAP クライアント ライブラリをインストールするときに、 **[Global Assembly Cache registration]\(グローバル アセンブリ キャッシュの登録\)** オプションを選択できます。
 
 <a name="sap-library-versions"></a>
 
@@ -187,7 +187,7 @@ SAP コネクタでは [SAP .NET Connector (NCo) ライブラリ](https://suppor
 Azure Logic Apps では、すべてのロジック アプリは、必ず[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)から起動されます。トリガーは、特定のイベントが起こるか特定の条件が満たされたときに発生します。 トリガーが発生するたびに、Logic Apps エンジンによってロジック アプリ インスタンスが作成され、アプリのワークフローが開始されます。
 
 > [!NOTE]
-> ロジック アプリが SAP から IDoc パケットを受信するときに、[要求トリガー](https://docs.microsoft.com/azure/connectors/connectors-native-reqres)では、SAP の WE60 IDoc ドキュメントによって生成される "プレーン" XML スキーマはサポートされません。 ただし、ロジック アプリから SAP "*に*" メッセージを送信するシナリオでは、"プレーン" XML スキーマがサポートされています。 要求トリガーは SAP の IDoc XML では使用できますが、RFC 経由の IDoc では使用できません。 または、XML を必要な形式に変換することもできます。 
+> ロジック アプリが SAP から IDoc パケットを受信するときに、[要求トリガー](../connectors/connectors-native-reqres.md)では、SAP の WE60 IDoc ドキュメントによって生成される "プレーン" XML スキーマはサポートされません。 ただし、ロジック アプリから SAP "*に*" メッセージを送信するシナリオでは、"プレーン" XML スキーマがサポートされています。 要求トリガーは SAP の IDoc XML では使用できますが、RFC 経由の IDoc では使用できません。 または、XML を必要な形式に変換することもできます。 
 
 この例では、ロジック アプリに "*HTTP POST 要求*" を送信できるよう、Azure にエンドポイントを持つロジック アプリを作成します。 ロジック アプリがこれらの HTTP 要求を受信すると、トリガーが作動してワークフロー内の次のステップが実行されます。
 
@@ -262,7 +262,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
       > [!TIP]
       > 式エディターで **SAP アクション**の値を入力します。 これにより、異なる種類のメッセージに対して同じアクションを使用できます。
 
-      IDoc の操作の詳細については、「[IDOC 操作のメッセージ スキーマ](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
+      IDoc の操作の詳細については、「[IDOC 操作のメッセージ スキーマ](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
 
    1. **[入力メッセージ]** ボックス内をクリックして、動的コンテンツ リストを表示します。 このリストの **[HTTP 要求の受信時]** で、 **[本文]** フィールドを選択します。
 
@@ -291,6 +291,29 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    ![SAP アクションの完成](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
 
 1. ロジック アプリを保存します。
+
+#### <a name="add-rfc-request-response"></a>RFC の要求 - 応答を追加する
+
+> [!NOTE]
+> SAP トリガーでは、tRFC 経由で IDoc が受信されますが、仕様上は応答パラメーターはありません。 
+
+Logic Apps へのリモート関数呼び出し (RFC) を使用して SAP ABAP から応答を受け取る必要がある場合は、要求と応答のパターンを作成する必要があります。 ロジック アプリで IDoc を受信するには、最初のアクションを、状態コードが `200 OK` でコンテンツが含まれない [HTTP 要求](../connectors/connectors-native-reqres.md#add-a-response-action)にする必要があります。 この推奨される手順では、直ちに tRFC 経由で SAP LUW の非同期転送が実行され、SAP CPIC の会話が再び使用可能になります。 その後、以降の転送をブロックすることなく、受信した IDoc を処理するための追加アクションをロジック アプリに追加できます。
+
+要求と応答のパターンを実装するには、最初に、[`generate schema` コマンド](#generate-schemas-for-artifacts-in-sap)を使用して RFC スキーマを検出する必要があります。 生成されるスキーマには、2 つのルート ノードが存在する可能性があります。 
+
+1. 要求ノード。これは SAP から受信する呼び出しです。
+1. 応答ノード。これは SAP に戻す応答です。
+
+次の例の要求と応答のパターンは、`STFC_CONNECTION` RFC モジュールから生成されます。 要求の XML が解析されて、SAP 要求が `<ECHOTEXT>` であるノード値が抽出されます。 応答により、現在のタイムスタンプが動的な値として挿入されます。 ロジック アプリから SAP に `STFC_CONNECTION` RFC を送信すると、同様の応答を受け取ります。
+
+```http
+
+<STFC_CONNECTIONResponse xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <ECHOTEXT>@{first(xpath(xml(triggerBody()?['Content']), '/*[local-name()="STFC_CONNECTION"]/*[local-name()="REQUTEXT"]/text()'))}</ECHOTEXT>
+  <RESPTEXT>Azure Logic Apps @{utcNow()}</RESPTEXT>
+
+
+```
 
 ### <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
@@ -379,7 +402,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![複数のメッセージを受信するトリガーの例](media/logic-apps-using-sap-connector/example-trigger.png)
 
-   SAP アクションの詳細については、「[IDoc 操作のメッセージ スキーマ](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
+   SAP アクションの詳細については、「[IDoc 操作のメッセージ スキーマ](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
 
 1. それでは、SAP システムからメッセージを受信できるようにロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -408,7 +431,7 @@ SAP コネクタは、単純な文字列と数値の入力と共に、次のテ�
 
 SAP アクションによるフィルター処理は、オンプレミス データ ゲートウェイの SAP アダプターのレベルで実行されます。 詳細については、[SAP から Logic Apps にテスト用 IDoc を送信する方法](#send-idocs-from-sap)に関するセクションをご覧ください。
 
-SAP からロジック アプリのトリガーに IDoc パケットを送信できない場合は、SAP トランザクション RFC (tRFC) ダイアログ ボックス (T コード SM58) で、tRFC 呼び出し拒否メッセージを確認します。 SAP インターフェイスに、次のエラー メッセージが表示される場合があります。 **[Status Text]\(状態テキスト\)** フィールドのサブ文字列の制限により、これらは切り詰められています。
+SAP からロジック アプリのトリガーに IDoc パケットを送信できない場合は、SAP トランザクション RFC (tRFC) ダイアログ ボックス (T コード SM58) で、tRFC 呼び出し拒否メッセージを確認します。 SAP インターフェイスに、 **[Status Text]\(状態テキスト\)** フィールドの部分文字列の制限によって切り詰められている次のエラー メッセージが表示される場合があります。
 
 * `The RequestContext on the IReplyChannel was closed without a reply being`:エラーにより、チャネルの汎用ハンドラーがチャネルを終了し、他のメッセージを処理するためにチャネルを再構築すると、予期しないエラーが発生します。
 
@@ -422,11 +445,11 @@ SAP からロジック アプリのトリガーに IDoc パケットを送信で
 
 <a name="find-extended-error-logs"></a>
 
-#### <a name="find-extended-error-logs"></a>拡張エラー ログを確認する
+## <a name="find-extended-error-logs"></a>拡張エラー ログを確認する
 
 完全なエラー メッセージについては、SAP アダプターの拡張ログを確認します。 
 
-2020 年 6 月以降のオンプレミス データ ゲートウェイ リリースでは、[アプリ設定でゲートウェイ ログを有効にする](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)ことができます。
+2020 年 6 月以降のオンプレミス データ ゲートウェイ リリースでは、[アプリ設定でゲートウェイ ログを有効にする](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)ことができます。
 
 2020 年 4 月以前のオンプレミス データ ゲートウェイ リリースでは、ログは既定で無効になっています。 拡張ログを取得するには、これらの手順に従います。
 
@@ -481,7 +504,7 @@ SAP から自分のロジック アプリに IDoc を送信するには、次の
 
 #### <a name="create-rfc-destination"></a>RFC 宛先を作成する
 
-1. **[Configuration of RFC Connections]\(RFC 接続の構成\)** 設定を開くには、SAP インターフェイスで、 **/n** プレフィックスを付けた **sm59** トランザクション コード (T コード) を使用します。
+1. **[Configuration of RFC Connections]\(RFC 接続の構成\)** 設定を開くには、SAP インターフェイスで、プレフィックスが **/n** の **sm59** トランザクション コード (T コード) を使用します。
 
 1. **[TCP/IP Connections]\(TCP/IP 接続\)**  >  **[Create]\(作成\)** の順に選択します。
 
@@ -633,12 +656,265 @@ SAP から自分のロジック アプリに IDoc を送信するには、次の
 
 この例では、HTTP 要求でトリガーすることのできるロジック アプリを使用します。 指定された IDoc および BAPI のスキーマを生成するために、"**スキーマを生成する**" SAP アクションによって要求が SAP システムに送信されます。
 
-この SAP アクションは、XML ドキュメント自体のコンテンツやデータではなく、XML スキーマを返します。 応答で返されたスキーマは、Azure Resource Manager コネクタを使用して統合アカウントにアップロードされます。 スキーマには次の部分が含まれます。
+この SAP アクションでは、XML ドキュメント自体のコンテンツやデータではなく、[XML スキーマ](#sample-xml-schemas)が返されます。 応答で返されたスキーマは、Azure Resource Manager コネクタを使用して統合アカウントにアップロードされます。 スキーマには次の部分が含まれます。
 
 * 要求メッセージの構造。 この情報を使用して、BAPI `get` リストを作成します。
 * 応答メッセージの構造。 この情報を使用して応答を解析します。 
 
 要求メッセージを送信するには、汎用 SAP アクションである "**SAP にメッセージを送信する**"、またはターゲットとなる "**BAPI の呼び出し**" アクションを使用します。
+
+### <a name="sample-xml-schemas"></a>XML スキーマのサンプル
+
+サンプル ドキュメントの作成で使用する XML スキーマの生成方法を学習する場合は、次のサンプルを参照してください。 これらの例では、次のようなさまざまな種類のペイロードを操作する方法を示します。
+
+* [RFC 要求](#xml-samples-for-rfc-requests)
+* [BAPI 要求](#xml-samples-for-bapi-requests)
+* [IDoc 要求](#xml-samples-for-idoc-requests)
+* 単純または複合の XML スキーマ データ型
+* テーブル パラメーター
+* オプションの XML 動作
+
+省略可能な XML プロローグで XML スキーマを始めることができます。 SAP コネクタは、XML プロローグの有無に関係なく動作します。
+
+```xml
+
+<?xml version="1.0" encoding="utf-8">
+
+```
+
+#### <a name="xml-samples-for-rfc-requests"></a>RFC 要求の XML サンプル
+
+次に示すのは、基本的な RFC 呼び出しの例です。 RFC 名は `STFC_CONNECTION` です。 この要求では既定の名前空間 `xmlns=` を使用しますが、`xmmlns:exampleAlias=` のような名前空間の別名を割り当てて使用することもできます。 この名前空間の値は、SAP における Microsoft サービス用のすべての RFC に対する名前空間です。 要求には、簡単な入力パラメーター `<REQUTEXT>` があります。
+
+```xml
+
+<STFC_CONNECTION xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <REQUTEXT>exampleInput</REQUTEXT>
+</STFC_CONNECTION>
+
+```
+
+次に示すのは、テーブル パラメーターを使用した RFC 呼び出しの例です。 この例の呼び出しと、テスト RFC のグループは、すべての SAP システムの一部として利用できます。 テーブル パラメーターの名前は `TCPICDAT` です。 テーブルの行の種類は `ABAPTEXT` であり、テーブルの行ごとにこの要素を繰り返します。 この例には、`LINE` という名前の 1 つの行が含まれています。 テーブル パラメーターを使用する要求には、任意の数のフィールドを含めることができ、値は正の整数 (*n*) です。 
+
+```xml
+
+<STFC_WRITE_TO_TCPIC xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <RESTART_QNAME>exampleQName</RESTART_QNAME>
+    <TCPICDAT>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput1</LINE>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput2</LINE>
+      <ABAPTEXT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+        <LINE>exampleFieldInput3</LINE>
+      </ABAPTEXT>
+    </TCPICDAT>
+</STFC_WRITE_TO_TCPIC>
+
+```
+
+次に示すのは、匿名フィールドが存在するテーブル パラメーターを使用した RFC 呼び出しの例です。 匿名フィールドは、フィールドに名前が割り当てられていない場合です。 複合型は別の名前空間で宣言され、その宣言では、現在のノードとそのすべての子要素に対する新しい既定値を設定します。 この例では、記号 */* に対するエスケープ文字として 16 進コード `x002F` が使用されています。これは、この記号が SAP フィールド名で予約されているためです。
+
+```xml
+
+<RFC_XML_TEST_1 xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+  <IM_XML_TABLE>
+    <RFC_XMLCNT xmlns="http://Microsoft.LobServices.Sap/2007/03/Rfc/">
+      <_x002F_AnonymousField>exampleFieldInput</_x002F_AnonymousField>
+    </RFC_XMLCNT>
+  </IM_XML_TABLE>
+</RFC_XML_TEST_1>
+
+```
+
+次の例には、名前空間に対するプレフィックスが含まれています。 すべてのプレフィックスを一度に宣言することも、ノードの属性として任意の数のプレフィックスを宣言することもできます。 RFC 名前空間の別名 `ns0` は、基本型のルートおよびパラメーターとして使用されます。
+
+> [!NOTE]
+> 複合型は、別名が `ns0` である通常の RFC 名前空間ではなく、別名が `ns3` である RFC 型用の別の名前空間で宣言されます。
+
+```xml
+
+<ns0:BBP_RFC_READ_TABLE xmlns:ns0="http://Microsoft.LobServices.Sap/2007/03/Rfc/" xmlns:ns3="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc/">
+  <ns0:DELIMITER>0</ns0:DELIMITER>
+  <ns0:QUERY_TABLE>KNA1</ns0:QUERY_TABLE>
+  <ns0:ROWCOUNT>250</ns0:ROWCOUNT>
+  <ns0:ROWSKIPS>0</ns0:ROWSKIPS>
+  <ns0:FIELDS>
+    <ns3:RFC_DB_FLD>
+      <ns3:FIELDNAME>KUNNR</ns3:FIELDNAME>
+    </ns3:RFC_DB_FLD>
+  </ns0:FIELDS>
+</ns0:BBP_RFC_READ_TABLE>
+
+```
+
+#### <a name="xml-samples-for-bapi-requests"></a>BAPI 要求の XML サンプル
+
+> [!TIP]
+> Logic Apps デザイナーを使用して BAPI 要求を編集している場合は、次の検索関数を使用できます。 
+> 
+> * デザイナーでオブジェクトを選択すると、使用可能なメソッドのドロップダウン メニューが表示されます。
+> * BAPI API の呼び出しによって提供される検索可能なリストを使用して、ビジネス オブジェクトの種類をキーワードでフィルター処理します。
+
+> [!NOTE]
+> SAP では、Logic Apps によって入力フィルターなしで発行される RFC `RPY_BOR_TREE_INIT` に対する応答においてビジネス オブジェクトを記述することにより、外部システムでそれを使用できるようになります。 Logic Apps により、出力テーブル `BOR_TREE` が検査されます。 `SHORT_TEXT` フィールドは、ビジネス オブジェクトの名前に使用されます。 出力テーブルで SAP から返されないビジネス オブジェクトでは、Logic Apps にアクセスできません。
+> カスタム ビジネス オブジェクトを使用する場合は、SAP でこれらのビジネス オブジェクトを公開してリリースする必要があります。 そうしないと、SAP の出力テーブル `BOR_TREE` にカスタム ビジネス オブジェクトが表記されません。 SAP からビジネス オブジェクトを公開するまで、Logic Apps でカスタム ビジネス オブジェクトにアクセスすることはできません。 
+
+次の例では、BAPI メソッド `GETLIST` を使用して、銀行の一覧を取得します。 このサンプルには、銀行のビジネス オブジェクト `BUS1011` が含まれています。 
+
+```xml
+
+<GETLIST xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_CTRY>US</BANK_CTRY>
+  <MAX_ROWS>10</MAX_ROWS>
+</GETLIST>
+
+```
+
+次の例では、`CREATE` メソッドを使用して銀行オブジェクトを作成します。 この例では、前の例と同じビジネス オブジェクト `BUS1011` を使用します。 `CREATE` メソッドを使用して銀行を作成するとき、このメソッドではコミットは既定では行われないため、変更を必ずコミットしてください。
+
+> [!TIP]
+> SAP システムで構成されている検証規則に XML ドキュメントが従っていることを確認します。 たとえば、このサンプル ドキュメントの銀行キー (`<BANK_KEY>`) には、米国では ABA 番号とも呼ばれる銀行支店コードを使用する必要があります。
+
+```xml
+
+<CREATE xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_ADDRESS>
+    <BANK_NAME xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleBankName</BANK_NAME>
+    <REGION xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleRegionName</REGION>
+    <STREET xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">ExampleStreetAddress</STREET>
+    <CITY xmlns="http://Microsoft.LobServices.Sap/2007/03/Types/Rfc">Redmond</CITY>
+  </BANK_ADDRESS>
+  <BANK_COUNTRY>US</BANK_COUNTRY>
+  <BANK_KEY>123456789</BANK_KEY>
+</CREATE>
+
+```
+
+次の例では、銀行支店コード (`<BANK_KEY>` の値) を使用して、銀行の詳細を取得します。 
+
+```xml
+
+<GETDETAIL xmlns="http://Microsoft.LobServices.Sap/2007/03/Bapi/BUS1011">
+  <BANK_COUNTRY>US</BANK_COUNTRY>
+  <BANK_KEY>123456789</BANK_KEY>
+</GETDETAIL>
+
+```
+
+#### <a name="xml-samples-for-idoc-requests"></a>IDoc 要求の XML サンプル
+
+単純な SAP IDoc XML スキーマを生成するには、**SAP Logon** アプリケーションと T コード `WE-60` を使用します。 GUI を使用して SAP ドキュメントにアクセスし、IDoc の種類と拡張機能に対する XML スキーマを XSD 形式で生成します。 汎用 SAP 形式とペイロード、およびそれらの組み込みダイアログの詳細については、[SAP のドキュメント](https://help.sap.com/viewer/index)を参照してください。
+
+この例では、ルート ノードと名前空間を宣言します。 サンプル コードの URI `http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send` では、次の構成が宣言されています。
+
+* `/IDoc` は、すべての IDoc に対するルート ノードです
+* `/3` は、共通セグメント定義に対するレコードの種類のバージョンです
+* `/ORDERS05` は、IDoc の種類です
+* `//` は、IDoc 拡張機能がないため、空のセグメントです
+* `/700` は、SAP のバージョンです
+* `/Send` は、情報を SAP に送信するためのアクションです
+
+```xml
+
+<ns0:Send xmlns:ns0="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700/Send" xmlns:ns3="http://schemas.microsoft.com/2003/10/Serialization" xmlns:ns1="http://Microsoft.LobServices.Sap/2007/03/Types/Idoc/Common/" xmlns:ns2="http://Microsoft.LobServices.Sap/2007/03/Idoc/3/ORDERS05//700">
+  <ns0:idocData>
+
+```
+
+`idocData` ノードを繰り返して、1 回の呼び出しで IDoc のバッチを送信できます。 次の例には、1 つのコントロール レコード `EDI_DC40` と、複数のデータ レコードがあります。
+
+```xml
+
+<...>
+  <ns0:idocData>
+    <ns2:EDI_DC40>
+      <ns1:TABNAM>EDI_DC40</ns1:TABNAM>
+<...>
+      <ns1:ARCKEY>Cor1908207-5</ns1:ARCKEY>
+    </ns2:EDI_DC40>
+    <ns2:E2EDK01005>
+      <ns2:DATAHEADERCOLUMN_SEGNAM>E23DK01005</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:CURCY>USD</ns2:CURCY>
+    </ns2:E2EDK01005>
+    <ns2:E2EDK03>
+<...>
+  </ns0:idocData>
+
+```
+
+次の例は IDoc コントロール レコードのサンプルであり、プレフィックス `EDI_DC` が使用されています。 SAP の実際のインストールと IDoc の種類に合わせて、値を更新する必要があります。 たとえば、IDoc クライアント コードは `800` ではない可能性があります。 SAP チームに連絡し、お使いの SAP インストールに適した値を使用していることを確認してください。
+
+```xml
+
+<ns2:EDI_DC40>
+  <ns:TABNAM>EDI_DC40</ns1:TABNAM>
+  <ns:MANDT>800</ns1:MANDT>
+  <ns:DIRECT>2</ns1:DIRECT>
+  <ns:IDOCTYP>ORDERS05</ns1:IDOCTYP>
+  <ns:CIMTYP></ns1:CIMTYP>
+  <ns:MESTYP>ORDERS</ns1:MESTYP>
+  <ns:STD>X</ns1:STD>
+  <ns:STDVRS>004010</ns1:STDVRS>
+  <ns:STDMES></ns1:STDMES>
+  <ns:SNDPOR>SAPENI</ns1:SNDPOR>
+  <ns:SNDPRT>LS</ns1:SNDPRT>
+  <ns:SNDPFC>AG</ns1:SNDPFC>
+  <ns:SNDPRN>ABAP1PXP1</ns1:SNDPRN>
+  <ns:SNDLAD></ns1:SNDLAD>
+  <ns:RCVPOR>BTSFILE</ns1:RCVPOR>
+  <ns:RCVPRT>LI</ns1:RCVPRT>
+
+```
+
+次の例は、単純なセグメントを含むサンプル データ レコードです。 この例では、SAP 日付形式が使用されています。 厳密に型指定されたドキュメントでは、`2020-12-31 23:59:59` などのネイティブな XML 日付形式を使用できます。
+
+```xml
+
+<ns2:E2EDK01005>
+  <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDK01005</ns2:DATAHEADERCOLUMN_SEGNAM>
+    <ns2:CURCY>USD</ns2:CURCY>
+    <ns2:BSART>OR</ns2:BSART>
+    <ns2:BELNR>1908207-5</ns2:BELNR>
+    <ns2:ABLAD>CC</ns2:ABLAD>
+  </ns2>
+  <ns2:E2EDK03>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDK03</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:IDDAT>002</ns2:IDDAT>
+      <ns2:DATUM>20160611</ns2:DATUM>
+  </ns2:E2EDK03>
+
+```
+
+次の例は、グループ化されたセグメントを含むデータ レコードです。 このレコードには、グループの親ノード `E2EDKT1002GRP` と、`E2EDKT1002` や `E2EDKT2001` などの複数の子ノードが含まれます。 
+
+```xml
+
+<ns2:E2EDKT1002GRP>
+  <ns2:E2EDKT1002>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT1002</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <NS2:TDID>ZONE</ns2:TDID>
+  </ns2:E2EDKT1002>
+  <ns2:E2EDKT2001>
+    <ns2:DATAHEADERCOLUMN_SEGNAM>E2EDKT2001</ns2:DATAHEADERCOLUMN_SEGNAM>
+      <ns2:TDLINE>CRSD</ns2:TDLINE>
+  </ns2:E2EDKT2001>
+</ns2:E2EDKT1002GRP>
+
+```
+
+推奨される方法は、tRFC で使用する IDoc 識別子を作成することです。 SAP コネクタ API の [Send IDoc 操作](/connectors/sap/#send-idoc)を使用して、このトランザクション識別子 `tid` を設定できます。
+
+次の例は、トランザクション識別子 `tid` を設定する別の方法です。 この例では、最後のデータ レコード セグメント ノードと IDoc データ ノードが閉じられます。 その後、GUID `guid` が、重複を検出するための tRFC 識別子として使用されます。 
+
+```xml
+
+    </E2STZUM002GRP>
+  </idocData>
+  <guid>8820ea40-5825-4b2f-ac3c-b83adc34321c</guid>
+</Send>
+
+```
 
 ### <a name="add-an-http-request-trigger"></a>HTTP 要求トリガーを追加する
 
@@ -709,7 +985,7 @@ SAP から自分のロジック アプリに IDoc を送信するには、次の
 
    ![2 つの項目を表示する](media/logic-apps-using-sap-connector/schema-generator-example.png)
 
-   SAP アクションの詳細については、「[IDoc 操作のメッセージ スキーマ](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
+   SAP アクションの詳細については、「[IDoc 操作のメッセージ スキーマ](/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
 
 1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -847,7 +1123,7 @@ Logic Apps から SAP に接続する場合、接続の既定の言語は英語�
 
 たとえば、**HTTP 要求**トリガーを使用して、`Accept-Language` ヘッダーを含む要求をロジック アプリに送信できます。 ロジック アプリのすべてのアクションがこのヘッダーを受け取ります。 次に、SAP では、BAPI エラー メッセージなどのシステム メッセージで指定された言語が使用されます。
 
-ロジック アプリの SAP 接続パラメーターには言語プロパティがありません。 そのため、`Accept-Language` ヘッダーを使用すると、次のエラーが発生する場合があります: **"Please check your account info and/or permissions and try again" (お使いのアカウントの情報やアクセス許可を確認し、もう一度お試しください)** 。 この場合、代わりに SAP コンポーネントのエラー ログを確認してください。 エラーは、実際にはこのヘッダーを使用する SAP コンポーネントで発生するため、これらのいずれかのエラー メッセージが表示される可能性があります。
+ロジック アプリの SAP 接続パラメーターには言語プロパティがありません。 そのため、`Accept-Language` ヘッダーを使用すると、次のエラーが発生する場合があります。 **"Please check your account info and/or permissions and try again" (お使いのアカウントの情報やアクセス許可を確認し、もう一度お試しください)** 。 この場合、代わりに SAP コンポーネントのエラー ログを確認してください。 エラーは、実際にはこのヘッダーを使用する SAP コンポーネントで発生するため、これらのいずれかのエラー メッセージが表示される可能性があります。
 
 * `"SAP.Middleware.Connector.RfcLogonException: Select one of the installed languages"`
 * `"SAP.Middleware.Connector.RfcAbapMessageException: Select one of the installed languages"`
@@ -868,11 +1144,36 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
    ![[Send IDOC]\(IDOC の送信\) アクションのプロパティ](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 
-1. トランザクション ID を明示的に確認するには、 **[Confirm transaction ID]\(トランザクション ID の確認\)** アクションを追加します。 **[Transaction ID]\(トランザクション ID\)** ボックス内をクリックし、動的コンテンツ リストが表示されるようにします。 そのリストから、 **[Send IDOC]\(IDOC の送信\)** アクションから返された **[Transaction ID]\(トランザクション ID\)** の値を選択します。
+1. トランザクション ID を明示的に確認するには、 **[Confirm transaction ID]\(トランザクション ID の確認\)** アクションを追加し、[重複する IDoc が SAPに送信されるのを確実に防ぎます](#avoid-sending-duplicate-idocs)。 **[Transaction ID]\(トランザクション ID\)** ボックス内をクリックし、動的コンテンツ リストが表示されるようにします。 そのリストから、 **[Send IDOC]\(IDOC の送信\)** アクションから返された **[Transaction ID]\(トランザクション ID\)** の値を選択します。
 
    ![[Transaction ID]\(トランザクション ID\) アクション](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
 
    この手順が行われた後、現在のトランザクションは、SAP コネクタ側と SAP システム側の両端で完了としてマークされます。
+
+#### <a name="avoid-sending-duplicate-idocs"></a>重複する IDoc が送信されないようにする
+
+ロジック アプリから SAP に重複する IDoc が送信される問題が発生する場合は、次の手順に従って、IDoc トランザクション識別子として機能する文字列変数を作成します。 このトランザクション識別子を作成すると、一時的な停止、ネットワークの問題、受信確認の喪失などの問題が発生した場合に、重複するネットワーク転送を防ぐことができます。
+
+> [!NOTE]
+> SAP システムでは、指定された時間 (既定では 24 時間) が経過すると、トランザクション識別子がわからなくなります。 その結果、ID または GUID が不明の場合、SAP はトランザクション識別子を確認できません。
+> トランザクション ID の確認が失敗する場合、このエラーは、SAP が確認を応答する前に SAP システムとの通信が失敗したことを示します。
+
+1. Logic Apps デザイナーで、 **[変数を初期化する]** アクションをロジック アプリに追加します。 
+1. **[変数を初期化する]** アクションのエディターで、次の設定を構成します。 そして、変更を保存します。
+    1. **[名前]** に、変数の名前を入力します。 たとえば、「 `IDOCtransferID` 」のように入力します。
+    2. **[型]** では、変数の型として **[文字列]** を選択します。
+    3. **[値]** では、 **[初期値を入力]** テキスト ボックスを選択して、動的コンテンツ メニューを開きます。 **[式]** タブを選択します。関数の一覧で、関数 `guid()` を入力します。 次に、 **[OK]** を選択して変更を保存します。 **[値]** フィールドに、GUID を生成する `guid()` 関数が設定されます。
+1. **[変数を初期化する]** アクションの後に、 **[Send IDOC]\(IDOC を送信する\)** アクションを追加します。
+1. **[Send IDOC]\(IDOC を送信する\)** アクションのエディターで、次の設定を構成します。 そして、変更を保存します。
+    1. **[IDOC type]\(IDOC の種類\)** でメッセージの種類を選択し、 **[Input IDOC message]\(IDOC メッセージを入力する\)** でメッセージを指定します。
+    1. **[SAP release version]\(SAP リリース バージョン\)** では、お使いの SAP 構成の値を選択します。
+    1. **[Record types version]\(レコード タイプ バージョン\)** では、お使いの SAP 構成の値を選択します。
+    1. **[Confirm TID]\(TID を確認する\)** では、 **[No]\(いいえ\)** を選択します。
+    1. **[Add new parameter list]\(新しいパラメーター リストの追加\)**  >  **[Transaction ID GUID]\(トランザクション ID GUID\)** を選択します。 テキスト ボックスを選択して、動的コンテンツ メニューを開きます。 **[変数]** タブで、作成した変数の名前を選択します。 たとえば、「 `IDOCtransferID` 」のように入力します。
+1. **[Send IDOC]\(IDOC を送信する\)** アクションのタイトル バーで、 **[...]**  >  **[設定]** を選択します。 **[再試行ポリシー]** で、 **[なし]**  >  **[完了]** を選択します。
+1. **[Send IDOC]\(IDOC を送信する\)** アクションの後に、 **[Confirm transaction ID]\(トランザクション ID を確認する\)** アクションを追加します。
+1. **[Confirm transaction ID]\(トランザクション ID を確認する\)** アクションのエディターで、次の設定を構成します。 そして、変更を保存します。
+    1. **[トランザクション ID]** に、変数の名前をもう一度入力します。 たとえば、「 `IDOCtransferID` 」のように入力します。
 
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
@@ -884,7 +1185,7 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](https://docs.microsoft.com/connectors/sap/)を参照してください。
+コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/sap/)を参照してください。
 
 > [!NOTE]
 > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。

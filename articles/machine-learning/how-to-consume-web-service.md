@@ -10,13 +10,13 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 991ad3afc51cc2f6dc1853a6b26f53bcb2fd1503
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python, devx-track-csharp
+ms.openlocfilehash: 56cd2117a352626cf59023d62ea8c931401389c5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326411"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018095"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -93,6 +93,9 @@ Azure Machine Learning には、Web サービスへのアクセスを制御す�
 
 キーまたはトークンで保護されているサービスに要求を送信する場合は、__Authorization__ ヘッダーを使用してキーまたはトークンを渡します。 キーまたはトークンは `Bearer <key-or-token>` の形式にする必要があります。ここで、`<key-or-token>` はキーまたはトークンの値です。
 
+キーとトークンの主な違いは、**キーは静的であり、手動で再生成することができ**、**トークンは有効期限に更新する必要があることです**。 キーベースの認証は、Azure Container Instance と Azure Kubernetes Service でデプロイされた Web サービスでサポートされています。また、トークンベースの認証は Azure Kubernetes サービスのデプロイで**のみ**使用できます。 詳細および具体的なコード サンプルについては、認証に関する[方法](how-to-setup-authentication.md#web-service-authentication)を参照してください。
+
+
 #### <a name="authentication-with-keys"></a>キーによる認証
 
 デプロイに対して認証を有効にした場合、認証キーが自動的に作成されます。
@@ -155,33 +158,9 @@ REST API では、要求の本文が次の構造の JSON ドキュメントで�
 > [!IMPORTANT]
 > データの構造は、サービス内のスコアリング スクリプトとモデルで予期される内容と一致する必要があります。 スコアリング スクリプトでは、データがモデルに渡される前に変更される可能性があります。
 
-たとえば、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例のモデルでは、10 個の数値の配列が予期されます。 この例のスコアリング スクリプトでは、要求から Numpy 配列が作成され、モデルに渡されます。 次の例には、このサービスで予期されるデータが示されています。
-
-```json
-{
-    "data": 
-        [
-            [
-                0.0199132141783263, 
-                0.0506801187398187, 
-                0.104808689473925, 
-                0.0700725447072635, 
-                -0.0359677812752396, 
-                -0.0266789028311707, 
-                -0.0249926566315915, 
-                -0.00259226199818282, 
-                0.00371173823343597, 
-                0.0403433716478807
-            ]
-        ]
-}
-```
-
-Web サービスでは、1 つの要求で複数のデータ セットを受け入れることができます。 応答の配列を含む JSON ドキュメントが返されます。
-
 ### <a name="binary-data"></a>Binary Data
 
-サービスでバイナリ データのサポートを有効にする方法については、「[バイナリ データ](how-to-deploy-and-where.md#binary)」を参照してください。
+サービスでバイナリ データのサポートを有効にする方法については、「[バイナリ データ](how-to-deploy-advanced-entry-script.md#binary-data)」を参照してください。
 
 > [!TIP]
 > バイナリ データのサポートの有効化は、デプロイされたモデルによって使用される score.py ファイルで実行されます。 クライアントから、プログラミング言語の HTTP 機能を使用します。 たとえば、次のスニペットは、JPG ファイルの内容を Web サービスに送信します。
@@ -196,11 +175,11 @@ Web サービスでは、1 つの要求で複数のデータ セットを受け�
 
 ### <a name="cross-origin-resource-sharing-cors"></a>クロスオリジン リソース共有 (CORS)
 
-サービスで CORS のサポートを有効にする方法については、「[クロスオリジン リソース共有](how-to-deploy-and-where.md#cors)」を参照してください。
+サービスで CORS のサポートを有効にする方法については、「[クロスオリジン リソース共有](how-to-deploy-advanced-entry-script.md#cors)」を参照してください。
 
 ## <a name="call-the-service-c"></a>サービスを呼び出す (C#)
 
-この例では、C# を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、C# を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```csharp
 using System;
@@ -289,7 +268,7 @@ namespace MLWebServiceClient
 
 ## <a name="call-the-service-go"></a>サービスを呼び出す (Go)
 
-この例では、Go を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Go を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```go
 package main
@@ -381,7 +360,7 @@ func main() {
 
 ## <a name="call-the-service-java"></a>サービスを呼び出す (Java)
 
-この例では、Java を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Java を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```java
 import java.io.IOException;
@@ -461,7 +440,7 @@ public class App {
 
 ## <a name="call-the-service-python"></a>サービスを呼び出す (Python)
 
-この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
+この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```python
 import requests
@@ -518,6 +497,153 @@ print(resp.text)
 ```JSON
 [217.67978776218715, 224.78937091757172]
 ```
+
+
+## <a name="web-service-schema-openapi-specification"></a>Web サービスのスキーマ (OpenAPI 仕様)
+
+デプロイで自動スキーマ生成を使用した場合は、[swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)を使用して、サービスに対する OpenAPI 仕様のアドレスを取得できます。 (例: `print(service.swagger_uri)`)。仕様を取得するには、GET 要求を使用するか、ブラウザーで URI を開きます。
+
+次の JSON ドキュメントは、デプロイに対して生成されるスキーマ (OpenAPI 仕様) の例です。
+
+```json
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "myservice",
+        "description": "API specification for Azure Machine Learning myservice",
+        "version": "1.0"
+    },
+    "schemes": [
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header",
+            "description": "For example: Bearer abc123"
+        }
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "ServiceHealthCheck",
+                "description": "Simple health check endpoint to ensure the service is up at any given point.",
+                "responses": {
+                    "200": {
+                        "description": "If service is up and running, this response will be returned with the content 'Healthy'",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "examples": {
+                            "application/json": "Healthy"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/score": {
+            "post": {
+                "operationId": "RunMLService",
+                "description": "Run web service's model and get the prediction output",
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "serviceInputPayload",
+                        "in": "body",
+                        "description": "The input payload for executing the real-time machine learning service.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceInput"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "The service processed the input correctly and provided a result prediction, if applicable.",
+                        "schema": {
+                            "$ref": "#/definitions/ServiceOutput"
+                        }
+                    },
+                    "default": {
+                        "description": "The service failed to execute due to an error.",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ServiceInput": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                }
+            },
+            "example": {
+                "data": [
+                    [ 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 ]
+                ]
+            }
+        },
+        "ServiceOutput": {
+            "type": "array",
+            "items": {
+                "type": "number",
+                "format": "double"
+            },
+            "example": [
+                3726.995
+            ]
+        },
+        "ErrorResponse": {
+            "type": "object",
+            "properties": {
+                "status_code": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
+```
+
+詳細については、[OpenAPI の仕様](https://swagger.io/specification/)をご覧ください。
+
+仕様からクライアント ライブラリを作成できるユーティリティについては、[swagger-codegen](https://github.com/swagger-api/swagger-codegen) を参照してください。
+
+
+> [!TIP]
+> サービスをデプロイした後、スキーマ JSON ドキュメントを取得できます。 ローカル Web サービスの Swagger ファイルへの URI を取得するには、デプロイされた Web サービスの [swagger_uri プロパティ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri)を使用します (例: `service.swagger_uri`)。
 
 ## <a name="consume-the-service-from-power-bi"></a>Power BI からサービスを使用する
 

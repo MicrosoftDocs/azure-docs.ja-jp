@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: cd6ea6d4967e024ddf88fb9572d5efae8b7a7815
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 48080bb4d1e24f7f98d3dfe1fd63b65ba46df35e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495340"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289903"
 ---
 ### <a name="property-limits"></a>プロパティの制限
 
@@ -33,7 +33,7 @@ Azure Time Series Insights のプロパティ制限は、Gen1 の上限である
 * [イベント ハブ ソースを追加する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)方法を学習します。
 * [IoT ハブ ソース](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub)を構成します。
 
-既定では、Gen2 環境で、**環境あたり最大で毎秒 1 メガバイト (MB/秒)** の[イングレス レートをサポート](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-throughput-limitations)できます。 お客様は、必要に応じて、最大 **16 MB/秒**のスループットまで、環境をスケーリングすることができます。 また、パーティションごとに **0.5 MB/秒**の制限があります。
+既定では、Gen2 環境で、**環境あたり最大で毎秒 1 メガバイト (MB/秒)** の[イングレス レートをサポート](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingress-throughput-limits)できます。 お客様は、必要に応じて、最大 **16 MB/秒**のスループットまで、環境をスケーリングすることができます。 また、パーティションごとに **0.5 MB/秒**の制限があります。
 
 ### <a name="api-limits"></a>API の制限
 

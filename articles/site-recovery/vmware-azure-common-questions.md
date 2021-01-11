@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用した VMware のディザスター リカ�
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: a523df21caca2a6def4274542979e9963345384b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 603dc77e6f2a53abb1d65688ced77e58297b8ab5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135159"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086151"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -181,6 +181,10 @@ Azure への VMware のレプリケーションでは、ソース VM のディ�
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>仮想ネットワーク (Azure Storage ファイアウォールあり) が構成されているキャッシュまたはターゲット ストレージ アカウントにレプリケートすることはできますか?
 
 いいえ、Site Recovery では、仮想ネットワーク上の Azure Storage へのレプリケーションはサポートされていません。
+
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>クラッシュ整合性復旧ポイントはどのくらいの頻度で生成されますか?
+
+Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが生成されます。
 
 ## <a name="component-upgrade"></a>コンポーネントのアップグレード
 

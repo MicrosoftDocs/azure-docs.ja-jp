@@ -3,7 +3,7 @@ title: Azure Front Door の構成に関する問題のトラブルシューテ�
 description: このチュートリアルでは、Front Door で発生する可能性のある、一般的な問題のいくつかを自己解決する方法を説明します。
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
-ms.author: sharadag
-ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: babe24d0c934cffac00a5100d1da7ee252d147da
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743577"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399057"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>ルーティングの一般的な問題のトラブルシューティング
 
@@ -102,7 +102,7 @@ ms.locfileid: "84743577"
          - たとえば、バックエンドが HTTP 要求のみを許可している場合、次の構成が有効になります。
             - _[accepted protocols]_ \(許可されているプロトコル\) は、HTTP および HTTPS です。 _[転送プロトコル]_ は HTTP です。 HTTPS は許可されているプロトコルであるため、一致要求は機能しません。要求が HTTPS で受信された場合、Front Door は HTTPS を使用してそれを転送します。
 
-            - _[accepted protocols]_ \(許可されているプロトコル\) は、HTTP です。 _[転送プロトコル]_ は、一致要求または HTTPS です。
+            - _[accepted protocols]_ \(許可されているプロトコル\) は、HTTP です。 _[転送プロトコル]_ は、一致要求または HTTP です。
 
     - 既定で _[Url の書き換え]_ は無効になっており、バックエンドでホストされている使用可能にしたいリソースの範囲を限定する場合にのみこのフィールドは使用する必要があります。 これを無効にすると、Front Door は受信したのと同じ要求パスを転送します。 このフィールドの構成が不正で、Front Door が使用不能なバックエンドからリソースを要求しているため、HTTP 404 の状態コードが返されることもあります。
 

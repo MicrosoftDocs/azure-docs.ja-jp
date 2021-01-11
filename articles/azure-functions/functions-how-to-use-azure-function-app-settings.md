@@ -1,5 +1,5 @@
 ---
-title: Azure での関数アプリの設定の構成
+title: Azure での Function App の設定の構成
 description: Azure Function App の設定を構成する方法について説明します。
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
@@ -12,32 +12,32 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 05/12/2020
 ms.locfileid: "83122301"
 ---
-# <a name="manage-your-function-app"></a>お使いの関数アプリの管理 
+# <a name="manage-your-function-app"></a>お使いの Function App の管理 
 
-Azure Functions では、関数アプリに個々の関数の実行コンテキストが用意されています。 関数アプリの動作は、特定の関数アプリによってホストされるすべての関数に適用されます。 関数アプリ内のすべての関数は、同じ[言語](supported-languages.md)である必要があります。 
+Azure Functions では、Function App に個々の関数の実行コンテキストが用意されています。 Function App の動作は、特定の Function App によってホストされるすべての関数に適用されます。 Function App リ内のすべての関数は、同じ[言語](supported-languages.md)である必要があります。 
 
-関数アプリ内の個々の関数は、共に配置され、共にスケーリングされます。 同じ関数アプリ内のすべての関数は、関数アプリがスケーリングされるときに、インスタンスごとに同じリソースを使用します。 
+Function App 内の個々の関数は、共に配置され、共にスケーリングされます。 同じ Function App 内のすべての関数は、Function App がスケーリングされるときに、インスタンスごとに同じリソースを使用します。 
 
-接続文字列、環境変数、およびその他のアプリケーション設定は、関数アプリごとに別に定義されます。 関数アプリ間で共有する必要があるすべてのデータは、外部の永続化されたストアに格納する必要があります。
+接続文字列、環境変数、およびその他のアプリケーション設定は、Function App ごとに別に定義されます。 Function App 間で共有する必要があるすべてのデータは、外部の永続化されたストアに格納する必要があります。
 
-この記事では、お使いの関数アプリを構成および管理する方法を説明します。 
+この記事では、お使いの Function App を構成および管理する方法を説明します。 
 
 > [!TIP]  
 > 多くの構成オプションは、[Azure CLI] を使用して管理することもできます。 
 
 ## <a name="get-started-in-the-azure-portal"></a>Azure portal での作業開始
 
-1. まず、[Azure Portal] に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで関数アプリの名前を入力し、一覧からその関数アプリを選択します。 
+1. まず、[Azure Portal] に移動し、Azure アカウントにサインインします。 ポータルの上部にある検索バーで Function App の名前を入力し、一覧からその Function App を選択します。 
 
 2. 左側のウィンドウの **[設定]** で、 **[構成]** を選択します。
 
-    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure portal の関数アプリの概要":::
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure portal の Function App の概要":::
 
-関数アプリの管理に必要なすべての機能には、概要ページからアクセスできます (特に **[[アプリケーションの設定]](#settings)** と **[[プラットフォーム機能]](#platform-features)** )。
+Function App の管理に必要なすべての機能には、概要ページからアクセスできます (特に **[[アプリケーションの設定]](#settings)** と **[[プラットフォーム機能]](#platform-features)** )。
 
 ## <a name="application-settings"></a><a name="settings"></a>アプリケーションの設定
 
-**[アプリケーションの設定]** タブでは、関数アプリに使用される設定を管理します。 これらの設定は暗号化されて格納されているため、ポータルで値を表示するには **[値を表示する]** を選択する必要があります。 また、Azure CLI を使用してアプリケーション設定にアクセスすることもできます。
+**[アプリケーションの設定]** タブでは、Function App に使用される設定を管理します。 これらの設定は暗号化されて格納されているため、ポータルで値を表示するには **[値を表示する]** を選択する必要があります。 また、Azure CLI を使用してアプリケーション設定にアクセスすることもできます。
 
 ### <a name="portal"></a>ポータル
 
@@ -67,14 +67,14 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-ローカルで関数アプリを開発する場合、これらの値を、local.settings.json プロジェクト ファイルにローカルのコピーとして保持する必要があります。 詳細については、[ローカルの設定ファイル](functions-run-local.md#local-settings-file)に関するページを参照してください。
+ローカルで Function App を開発する場合、これらの値を、local.settings.json プロジェクト ファイルにローカルのコピーとして保持する必要があります。 詳細については、[ローカルの設定ファイル](functions-run-local.md#local-settings-file)に関するページを参照してください。
 
 ## <a name="platform-features"></a>プラットフォーム機能
 
-関数アプリは、Azure App Service プラットフォームで実行され、管理されます。 このため、Azure の主要 Web ホスティング プラットフォームのほとんどの機能にアクセスできます。 左側のウィンドウでは、関数アプリで使用できる App Service プラットフォームの多くの機能にアクセスできます。 
+Function App は、Azure App Service プラットフォームで実行され、管理されます。 このため、Azure の主要 Web ホスティング プラットフォームのほとんどの機能にアクセスできます。 左側のウィンドウでは、Function App で使用できる App Service プラットフォームの多くの機能にアクセスできます。 
 
 > [!NOTE]
-> 関数アプリが従量課金ホスティング プランで実行されている場合は、一部の App Service 機能が使用できません。
+>  Function App が従量課金ホスティング プランで実行されている場合は、一部の App Service 機能が使用できません。
 
 この記事の残りの部分では、Functions で便利な Azure portal で使用できる次の App Service 機能について説明します。
 
@@ -91,7 +91,7 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 ![App Service Editor](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-App Service Editor は、JSON 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、Git リポジトリとの統合、コードの実行とデバッグ、および関数アプリの設定変更を行うことができます。 このエディターは、組み込みの関数アプリ エディターと比較して、お使いの関数の開発環境が強化されています。  
+App Service Editor は、JSON 構成ファイルとコード ファイルを変更するために使用できる高度なポータル内エディターです。 このオプションを選択すると、別のブラウザー タブが基本的なエディターで起動します。 これにより、Git リポジトリとの統合、コードの実行とデバッグ、および Function App の設定変更を行うことができます。 このエディターは、組み込みの Function App エディターと比較して、お使いの関数の開発環境が強化されています。  
 
 お使いの関数は、お使いのローカル コンピューターで開発することを検討することをお勧めします。 ローカルで開発し、Azure に発行する場合、お使いのプロジェクト ファイルはポータルで読み取り専用になります。 詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-develop-local.md)」を参照してください。
 
@@ -99,7 +99,7 @@ App Service Editor は、JSON 構成ファイルとコード ファイルを変�
 
 ![関数アプリ コンソール](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-ポータル内コンソールは、コマンド ラインから関数アプリを操作するのに適した開発者ツールです。 一般的なコマンドには、ディレクトリやファイルの作成、ナビゲーション、バッチ ファイルやスクリプトの実行などがあります。 
+ポータル内コンソールは、コマンド ラインから Function App を操作するのに適した開発者ツールです。 一般的なコマンドには、ディレクトリやファイルの作成、ナビゲーション、バッチ ファイルやスクリプトの実行などがあります。 
 
 ローカルで開発する場合、[Azure Functions Core Tools](functions-run-local.md) および [Azure CLI] を使用することをお勧めします。
 
@@ -107,7 +107,7 @@ App Service Editor は、JSON 構成ファイルとコード ファイルを変�
 
 ![Kudu の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、関数アプリの高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、`https://<myfunctionapp>.scm.azurewebsites.net/` など、関数アプリの SCM エンドポイントにアクセスして、**Kudu** を起動することもできます 
+App Service 用の高度なツール (Kudu とも呼ばれます) を使用すると、Function App の高度な管理機能にアクセスできます。 Kudu から、システム情報、アプリ設定、環境変数、サイト拡張機能、HTTP ヘッダー、およびサーバー変数を管理します。 また、`https://<myfunctionapp>.scm.azurewebsites.net/` など、Function App の SCM エンドポイントにアクセスして、**Kudu** を起動することもできます 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>デプロイ センター
@@ -116,11 +116,11 @@ App Service 用の高度なツール (Kudu とも呼ばれます) を使用す�
 
 ### <a name="cross-origin-resource-sharing"></a><a name="cors"></a>クロス オリジン リソース共有
 
-最新のブラウザーでは、クライアントで悪意のあるコードが実行されるのを防ぐために、Web アプリケーションから別のドメインで実行されるリソースへの要求をブロックします。 [クロス オリジン リソース共有 (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) を使用すると、お使いの関数アプリでどこのオリジンがエンドポイントを呼び出せるかを `Access-Control-Allow-Origin` ヘッダーで宣言できます。
+最新のブラウザーでは、クライアントで悪意のあるコードが実行されるのを防ぐために、Web アプリケーションから別のドメインで実行されるリソースへの要求をブロックします。 [クロス オリジン リソース共有 (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) を使用すると、お使いの Function App でどこのオリジンがエンドポイントを呼び出せるかを `Access-Control-Allow-Origin` ヘッダーで宣言できます。
 
 #### <a name="portal"></a>ポータル
 
-お使いの関数アプリの **[許可されたオリジン]** 一覧を構成すると、お使いの関数アプリの HTTP エンドポイントからのすべての応答に `Access-Control-Allow-Origin` ヘッダーが自動追加されます。 
+お使いの Function App の **[許可されたオリジン]** 一覧を構成すると、お使いの Function App の HTTP エンドポイントからのすべての応答に `Access-Control-Allow-Origin` ヘッダーが自動追加されます。 
 
 ![関数アプリの CORS 一覧の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 

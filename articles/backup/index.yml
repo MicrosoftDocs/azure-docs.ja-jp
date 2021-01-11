@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: 19b39cbba137a1ca66405873f56f565b7fbc8ae9
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: f78a311125340f447cb0f2dda960e34c289c123a
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87079283"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88650844"
 landingContent:
 - title: Azure Backup について
   linkLists:

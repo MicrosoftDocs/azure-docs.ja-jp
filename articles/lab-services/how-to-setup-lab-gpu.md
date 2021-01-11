@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 63b7a8c58bb6d277233268ed4fc0bc870fdd337f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f41ad80e0e39d66020d039d6229a4b0fc62627f1
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443402"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286004"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>GPU 仮想マシンを使用してラボを設定する
 
@@ -32,7 +32,7 @@ ms.locfileid: "85443402"
 | ---- | ----- | --- | ----------- | 
 | Small GPU (Compute) | -&nbsp;6&nbsp;コア<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |このサイズは、人工知能 (AI) やディープ ラーニングなどのコンピューティング集中型アプリケーションに最適です。 |
 
-"*視覚化*" GPU サイズは、グラフィックス集約型アプリケーションを対象としています。  たとえば、[SolidWorks エンジニアリング クラスの種類](./class-type-solidworks.md)では、**小規模 GPU (視覚化)** サイズの使用が示されています。  学生はソリッド オブジェクトのモデリングと視覚化に SolidWorks 3D コンピューター支援設計 (CAD) 環境を使用するため、この種類のクラスには視覚化 GPU が適しています。
+"*視覚化*" GPU サイズは、グラフィックス集約型アプリケーションを対象としています。  たとえば、[SOLIDWORKS エンジニアリング クラスの種類](./class-type-solidworks.md)では、**小規模 GPU (視覚化)** サイズの使用が示されています。  学生はソリッド オブジェクトのモデリングと視覚化に SOLIDWORKS 3D コンピューター支援設計 (CAD) 環境を使用するため、この種類のクラスには視覚化 GPU が適しています。
 
 | サイズ | コア | RAM | 説明 | 
 | ---- | ----- | --- | ----------- | 
@@ -45,7 +45,7 @@ ms.locfileid: "85443402"
 ![[新しいラボ] の [GPU ドライバーをインストールする] オプションのスクリーンショット](./media/how-to-setup-gpu/lab-gpu-drivers.png)
 
 上の図に示すように、このオプションは既定で有効になっており、選択した GPU とイメージの種類に対する "*最新の*" ドライバーが確実にインストールされます。
-- "*コンピューティング*" GPU サイズを選択すると、ラボ VM は [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU によって増強されます。  この場合、最新の [Compute Unified Device Architecture (CUDA)](https://www.nvidia.com/object/io_69526.html) ドライバーがインストールされ、ハイパフォーマンス コンピューティングが可能になります。
+- "*コンピューティング*" GPU サイズを選択すると、ラボ VM は [NVIDIA Tesla K80](https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf) GPU によって増強されます。  この場合、最新の [Compute Unified Device Architecture (CUDA)](http://developer.download.nvidia.com/compute/cuda/2_0/docs/CudaReferenceManual_2.0.pdf) ドライバーがインストールされ、ハイパフォーマンス コンピューティングが可能になります。
 - "*視覚化*" GPU サイズを選択すると、ラボの VM は [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU と [GRID テクノロジ](https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/solutions/resources/documents1/NVIDIA_GRID_vPC_Solution_Overview.pdf)によって増強されます。  この場合、最新の GRID ドライバーがインストールされ、グラフィックス集約型アプリケーションを使用できるようになります。
 
 ### <a name="install-the-drivers-manually"></a>ドライバーを手動でインストールする
@@ -113,7 +113,7 @@ ms.locfileid: "85443402"
 次の記事をご覧ください。
 
 - [クラスルーム ラボを作成して管理する](how-to-manage-classroom-labs.md)
-- [SolidWorks のコンピューター支援設計 (CAD) クラスの種類](class-type-solidworks.md)
+- [SOLIDWORKS のコンピューター支援設計 (CAD) クラスの種類](class-type-solidworks.md)
 - [MATLAB (matrix laboratory) クラスの種類](class-type-matlab.md)
 
 

@@ -10,12 +10,13 @@ ms.date: 05/28/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 4309f1dc63ac7dd96e22f4564a32aae6ed59ad84
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: cad80a554db0424ad8635e81cbfb4225705e9c89
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195802"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89073014"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>ストレージ アカウントの最終同期時刻プロパティを確認する
 

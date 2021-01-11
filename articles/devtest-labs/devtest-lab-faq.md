@@ -273,7 +273,7 @@ foreach($labVM in $labVMs)
 カスタム イメージを作成するために VHD ファイルのアップロードを自動化する場合、次の 2 つのオプションがあります。
 
 - [AzCopy](../storage/common/storage-use-azcopy-v10.md) を使用して、ラボに関連付けられているストレージ アカウントに VHD ファイルをコピーまたはアップロードします。
-- [Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。 ストレージ エクスプローラーは、Windows、OS X、Linux で動作するスタンドアロン アプリです。
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。 ストレージ エクスプローラーは、Windows、OS X、Linux で動作するスタンドアロン アプリです。
 
 ラボに関連付けられているコピー先ストレージ アカウントを検索するには、次の手順に従います。
 

@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eca304901e391c931aba892abf3cb2a19d4ae3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18c3b0397a0ad3e9e368d1a14e20a999ced5545b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367752"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690274"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション使用時の "この企業アプリケーションにアクセスできない" というエラー
 
@@ -50,7 +50,7 @@ ms.locfileid: "85367752"
 無効なゲートウェイのエラーは、コネクタがバックエンド アプリケーションに到達できないことを示します。 正しいアプリケーションを発行していることを確認します。 このエラーの原因となる一般的な間違いは以下の通りです。
 
 - 内部 URL への入力ミスまたは間違い
-- アプリケーションのルートが発行されていない。 たとえば、<http://expenses/reimbursement> を公開しているが、<http://expenses> にアクセスしようとしている。
+- アプリケーションのルートが発行されていない。 たとえば、`http://expenses/reimbursement` を公開しているが、`http://expenses` にアクセスしようとしている。
 - Kerberos の制約付き委任 (KCD) の構成に関する問題
 - バックエンド アプリケーションに関する問題
 

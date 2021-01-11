@@ -3,16 +3,17 @@ title: Azure EA Portal のアクセスのトラブルシューティング
 description: この記事では、Azure Enterprise Agreement (EA) に関して Azure EA Portal で発生する可能性のある一般的な問題について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/05/2020
+ms.date: 08/20/2020
 ms.topic: troubleshooting
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 2a6d1e82fda3a3c76af3fe705db5b398dba2d6a1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5402ee3283e5ae11f43884b4002486e8bdefae2c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115844"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89294409"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング
 
@@ -31,7 +32,7 @@ Azure EA Portal を使用して、さまざまな認証レベルのユーザー�
 - テナント間の職場または学校アカウント - クラウドへのフェデレーションを使用して Active Directory を設定しており、複数のテナントにアカウントが存在する組織。
 - 混在アカウント - Microsoft アカウントおよび/または職場または学校アカウントを使用してユーザーを追加できます。
 
-登録に追加された最初の職場または学校アカウントによって、"_既定_" のドメイン、つまり "_マスター_" ドメインが決まります。 職場または学校アカウントを別のテナントに追加するには、登録の認証レベルをテナント間の認証に変更する必要があります。
+登録に追加された最初の職場または学校アカウントによって、"_既定_" のドメインが決まります。 職場または学校アカウントを別のテナントに追加するには、登録の認証レベルをテナント間の認証に変更する必要があります。
 
 認証レベルを更新するには、次の手順を実行します。
 

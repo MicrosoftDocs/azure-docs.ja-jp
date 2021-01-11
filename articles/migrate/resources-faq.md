@@ -3,12 +3,12 @@ title: Azure Migrate のよくあるご質問
 description: Azure Migrate サービスに関する一般的な質問の回答を示します。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81530319"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847467"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: 一般的な質問
 
@@ -29,9 +29,19 @@ Azure Migrate を使用して、オンプレミスのインフラストラクチ
 
 [Azure Migrate](migrate-services-overview.md) は、評価と Azure への移行を行うための中央ハブとなります。 
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md) はディザスター リカバリー ソリューションです。 
+- Azure Migrate を使用すると、Azure Migrate ツール、その他の Azure サービス、サードパーティ製のツールによって相互運用性と将来の拡張性が確保されます。
+- Azure Migrate: Server Migration ツールは、サーバーを Azure に移行するための専用ツールです。 これは移行のために最適化されています。 移行とは直接関係ない概念やシナリオを理解する必要はありません。 
+- VM のレプリケーションが開始された時点から 180 日間の移行に関して、ツールの使用料金は発生しません。 これにより、移行を完了する時間を確保できます。 料金は、レプリケーションで使用されるストレージとネットワークのリソース、およびテスト移行時に使用されるコンピューティング料金に対してのみ発生します。
+- Azure Migrate では、Site Recovery でサポートされているすべての移行シナリオがサポートされます。 さらに、VMware VM の場合、Azure Migrate にはエージェントレスの移行オプションが用意されています。
+- 新しい移行機能は、Azure Migrate: Server Migration ツールでのみ優先的に使用できます。 これらの機能は、Site Recovery を対象としたものではありません。
+
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) は、ディザスター リカバリーにのみ使用する必要があります。
 
 Azure Migrate: Server Migration ツールは、一部のオンプレミス マシンのリフトアンドシフト移行に、いくつかのバックエンド Site Recovery 機能を使用します。
+
+## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Azure Migrate の従来のエクスペリエンスを使用するプロジェクトがあります。 新しいバージョンを使い始めるにはどうすればよいですか。
+
+旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](how-to-add-tool-first-time.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate:Server Assessment と Map Toolkit の違いは何ですか。
 

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c27a50f823dcda74d735e6314c9004ec36769d4
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 8a7bb300bb634b342b1141d175b0046c7d2d7e2b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870880"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810311"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Xamarin Android アプリを作成する
 
@@ -63,9 +63,7 @@ Visual Studio で `Xamarin/SampleXamarin.sln` を開きます。
 
 `SpatialAnchorsAccountId` フィールドを見つけ、`Set me` をアカウント識別子に置き換えます。
 
-`Xamarin/SampleXamarin.Android/AzureSpatialAnchorsManager.cs`を開きます。
-
-`AzureSpatialAnchorsManager(Session arCoreSession)` を見つけ、`this.spatialAnchorsSession.Configuration.AccountDomain = "MyAccountDomain";` を追加し、前のアカウント ドメインを置き換えます。
+`SpatialAnchorsAccountDomain` フィールドを見つけ、`Set me` をアカウント ドメインに置き換えます。
 
 ## <a name="deploy-the-app-to-your-android-device"></a>アプリを Android デバイスに配置する
 

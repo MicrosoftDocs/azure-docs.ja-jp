@@ -2,18 +2,18 @@
 title: Azure Site Recovery で Azure VM をプライマリ リージョンに再保護する | Microsoft Docs
 description: Azure Site Recovery を使用して、(セカンダリからプライマリ リージョンに) フェールオーバーした後に Azure VM を再保護する方法について説明します。
 services: site-recovery
-author: rajani-janaki-ram
-manager: gauravd
+author: Rajeswari-Mamilla
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: rajanaki
-ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.author: ramamill
+ms.openlocfilehash: da740909cedb8e2bb78f5f70e062481395a5c181
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738067"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422081"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
 
@@ -95,10 +95,6 @@ ms.locfileid: "82738067"
 |ソース リージョンには 1 TB の Premium ディスクを使った 1 つの VM がある。<br/>20 GB のデータのみが使用され、残りのディスクは空である。<br/>ディスクの種類は 200 MBps スループットの Premium。<br/>フェールオーバー直後のディスクの初期データは 15 GB。 フェールオーバー後には、5 GB のデータ変更があった。 そのため、入力されたデータの合計は 20 GB| おおよその時間:30 分から 45 分。<br/>ディスクに入力されたデータはディスクのサイズの 10% 未満であるため、完全な初期レプリケーションを実行する。<br/>転送速度は、スループットの約 16% (32 MBps)。 そのため、20 GB の変更を適用する転送時間は 20 GB/32 MBps で、およそ 11 分。<br/>Site Recovery で自動スケールを行うために、およそ 20 分から 30 分のオーバーヘッド時間が必要 |
 
 プライマリ リージョンにフェールバックした後に VM が再保護された場合 (つまり、VM がプライマリ リージョンから DR リージョンに再保護された場合)、ターゲット VM および関連 NIC は削除されます。
-
-VM が DR リージョンからプライマリ リージョンに再保護された場合、以前のプライマリ VM および関連 NIC は削除されません。
-
-プライマリ リージョンにフェールバックした後に VM が再保護された場合 (つまり、VM がプライマリ リージョンから DR リージョンに再保護された場合)、ターゲット VM および関連 NIC は削除されます。 
 
 VM が DR リージョンからプライマリ リージョンに再保護された場合、以前のプライマリ VM および関連 NIC は削除されません。
 

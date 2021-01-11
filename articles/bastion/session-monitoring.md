@@ -20,13 +20,13 @@ Bastion サービスをプロビジョニングし、仮想ネットワークに
 
 ## <a name="monitor-remote-sessions"></a><a name="monitor"></a>リモート セッションを監視する
 
-1. [Azure portal](https://portal.azure.com) で、Azure Bastion リソースに移動し、Azure Bastion ページから **[Sessions]/(セッション/)** を選択します。
+1. [Azure portal](https://portal.azure.com) で、Azure Bastion リソースに移動し、Azure Bastion ページから **[Sessions]\(セッション\)** を選択します。
 
    ![セッション](./media/session-monitoring/sessions.png)
-2. **[Sessions]/(セッション/)** ページの右側に、進行中のリモート セッションが表示されます。
+2. **[Sessions]\(セッション\)** ページの右側に、進行中のリモート セッションが表示されます。
 
    ![セッションの表示](./media/session-monitoring/view-session.png)
-3. **[Refresh]/(更新/)** を選択して、更新されたリモート セッションの一覧を表示します。 [Refresh]/(更新/) を選択すると、Azure Bastion は最新の監視情報を取得し、ポータルで更新します。
+3. **[Refresh]\(更新\)** を選択して、更新されたリモート セッションの一覧を表示します。 [Refresh]\(更新\) を選択すると、Azure Bastion は最新の監視情報を取得し、ポータルで更新します。
 
    ![更新](./media/session-monitoring/refresh.png)
 
@@ -35,16 +35,16 @@ Bastion サービスをプロビジョニングし、仮想ネットワークに
 
 セッションのセットを選択して、強制的に切断できます。 次の手順では、リモート セッションを削除する方法について説明します。
 
-1. Azure Bastion リソースに移動し、Azure Bastion ページから **[Sessions]/(セッション/)** を選択します。
+1. Azure Bastion リソースに移動し、Azure Bastion ページから **[Sessions]\(セッション\)** を選択します。
 
    ![移動](./media/session-monitoring/navigate.png)
-2. [Sessions]/(セッション/) を選択すると、リモート セッションの一覧が表示されます。
+2. [Sessions]\(セッション\) を選択すると、リモート セッションの一覧が表示されます。
 
    ![セッションの一覧](./media/session-monitoring/list.png)
-3. 特定のリモート セッションを選択してから、セッション行の右端にある 3 つの省略記号を選択し、 **[Delete]/(削除/)** を選択します。
+3. 特定のリモート セッションを選択してから、セッション行の右端にある 3 つの省略記号を選択し、 **[Delete]\(削除\)** を選択します。
 
    ![delete](./media/session-monitoring/delete.png)
-4. [Delete]/(削除/) を選択すると、リモート セッションが切断され、リモート セッションでユーザーに "切断されました" というメッセージが表示されます。
+4. [Delete]\(削除\) を選択すると、リモート セッションが切断され、リモート セッションでユーザーに "切断されました" というメッセージが表示されます。
 
    ![切断](./media/session-monitoring/disconnect.png)
 

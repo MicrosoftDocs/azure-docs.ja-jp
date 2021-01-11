@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 421fddb819d4d396d3ab8890789e58ccb935cbc0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806813"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935009"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Cognitive Search の操作とアクティビティを監視する
 
@@ -59,7 +59,7 @@ Azure Cognitive Search は、サービスの正常性とクエリのメトリッ
 
 ### <a name="activity-logs-and-service-health"></a>アクティビティ ログとサービス正常性
 
-ポータルの [ **[アクティビティ ログ]** ](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) ページでは、Azure Resource Manager から情報を収集し、サービス正常性の変化をレポートします。 アクティビティ ログを監視して、サービス正常性に関連したクリティカル、エラー、警告の各状態を把握することができます。
+ポータルの [ **[アクティビティ ログ]** ](../azure-monitor/platform/activity-log.md#view-the-activity-log) ページでは、Azure Resource Manager から情報を収集し、サービス正常性の変化をレポートします。 アクティビティ ログを監視して、サービス正常性に関連したクリティカル、エラー、警告の各状態を把握することができます。
 
 共通エントリには、API キー ("*管理者キーの取得*" や "*クエリ キーの取得*" など、情報提供を目的とした一般的な通知) への参照が含まれています。 これらのアクティビティは、クエリ キーまたは、管理者キーを使用して作成された要求 (オブジェクトの作成または削除) を示しますが、要求自体は表示されません。 この粒度の情報については、診断ログを構成する必要があります。
 
@@ -75,13 +75,13 @@ Azure Cognitive Search は、サービスの正常性とクエリのメトリッ
  "レベルの制限を基準とした使用状況")
 
 > [!NOTE]
-> ストレージに関連したアラートは現在利用できません。ストレージ消費量は集計されず、Azure Monitor の **AzureMetrics** テーブルにも記録されません。 ストレージのアラートを取得するには、リソースに関連した通知を生成する[カスタム ソリューションを作成](../azure-monitor/insights/solutions-creating.md)する必要があります。そこでは、独自のコードでストレージ サイズを調べて応答を処理します。
+> ストレージに関連したアラートは現在利用できません。ストレージ消費量は集計されず、Azure Monitor の **AzureMetrics** テーブルにも記録されません。 ストレージのアラートを取得するには、リソースに関連した通知を生成する[カスタム ソリューションを作成](../azure-monitor/insights/solutions.md)する必要があります。そこでは、独自のコードでストレージ サイズを調べて応答を処理します。
 
 <a name="add-azure-monitor"></a>
 
 ## <a name="add-on-monitoring-with-azure-monitor"></a>Azure Monitor を使用したアドオンの監視
 
-Azure Cognitive Search を含む多くのサービスは、追加のアラート、メトリック、および診断データのログ記録のために、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) と統合されます。 
+Azure Cognitive Search を含む多くのサービスは、追加のアラート、メトリック、および診断データのログ記録のために、[Azure Monitor](../azure-monitor/index.yml) と統合されます。 
 
 データの収集と保存を制御する場合は、検索サービスに[診断ログを有効](search-monitor-logs.md)にします。 Azure Monitor によってキャプチャされたログに記録されたイベントは、**AzureDiagnostics** テーブルに格納され、クエリとインデックス作成に関連する操作データで構成されます。
 
@@ -107,4 +107,4 @@ $filter パラメーターを含んだクエリ文字列とは別に、この情
 Azure Cognitive Search などのリソースを含む Azure サービスを監視するうえで、Azure Monitor を使いこなすことが欠かせません。 Azure Monitor を十分に理解していない場合は、時間を取ってリソースに関連した記事を確認してください。 チュートリアルのほか、次の記事からお読みいただくことをお勧めします。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor を使用した Azure リソースの監視](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)
+> [Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)

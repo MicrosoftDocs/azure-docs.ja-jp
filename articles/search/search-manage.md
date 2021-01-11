@@ -9,20 +9,20 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 45f9c56fce0c843d9f1ed069abf7d1ed6e2fa604
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565905"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935043"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal での Azure Cognitive Search のサービス管理
 
 > [!div class="op_single_selector"]
 >
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [ポータル](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
@@ -33,9 +33,9 @@ Azure Cognitive Search は、高度な検索エクスペリエンスをカスタ
 * 左側にある **[キー]** ページを使用してアクセスを管理します。
 * 左側の **[スケール]** ページを使用して容量を調整します。
 
-ポータルで実行されるのと同じタスクを、[管理 API](https://docs.microsoft.com/rest/api/searchmanagement/) や [Az.Search PowerShell モジュール](search-manage-powershell.md)を使用してプログラムで処理することもできます。 管理タスクは、ポータルとプログラマティック インターフェイスにわたって完全に表現されます。 1 つのモダリティでのみ使用できる特定の管理タスクはありません。
+ポータルで実行されるのと同じタスクを、[管理 API](/rest/api/searchmanagement/) や [Az.Search PowerShell モジュール](search-manage-powershell.md)を使用してプログラムで処理することもできます。 管理タスクは、ポータルとプログラマティック インターフェイスにわたって完全に表現されます。 1 つのモダリティでのみ使用できる特定の管理タスクはありません。
 
-Azure Cognitive Search では、より詳細な監視と管理を行うために、他の Azure サービスを活用します。 検索サービス自体によって格納されるデータはコンテンツ (インデックス、インデクサーとデータ ソースの定義、およびその他のオブジェクト) だけです。 ポータルのページに報告が出力されるメトリックは、30 日のローリング サイクルで内部ログから取得されます。 ユーザーが制御するログのデータ保持とその他のイベントについては、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) が必要になります。 
+Azure Cognitive Search では、より詳細な監視と管理を行うために、他の Azure サービスを活用します。 検索サービス自体によって格納されるデータはコンテンツ (インデックス、インデクサーとデータ ソースの定義、およびその他のオブジェクト) だけです。 ポータルのページに報告が出力されるメトリックは、30 日のローリング サイクルで内部ログから取得されます。 ユーザーが制御するログのデータ保持とその他のイベントについては、[Azure Monitor](../azure-monitor/index.yml) が必要になります。 
 
 ## <a name="fixed-service-properties"></a>固定サービスのプロパティ
 
@@ -56,9 +56,9 @@ Basic で最大数である 1 つのパーティションを使用して開始�
 * サービスに対する読み取り専用アクセスがクエリの権限で、通常は、URL とクエリ API キーを与えることによってクライアント アプリケーションに付与されます。
 * 読み取り/書き込みアクセスでは、API キー、インデックス、インデクサー、データ ソース、スケジュールを含むサーバー オブジェクトを追加、削除、または変更する機能が提供されます。URL と管理 API キーを与えることによって、読み取り/書き込みアクセスが付与されます。
 
-サービスのプロビジョニング装置に対する権限は、ロールの割り当てを通して付与されます。 [ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) は、Azure リソースをプロビジョニングするために [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムです。 
+サービスのプロビジョニング装置に対する権限は、ロールの割り当てを通して付与されます。 [Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) は、Azure リソースをプロビジョニングするために [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムです。 
 
-Azure Cognitive Search のコンテキストでは、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) のうちどれを使用しているかとは無関係に、[RBAC ロールの割り当て](search-security-rbac.md)によって、タスクを実行できるユーザーが決定されます。
+Azure Cognitive Search のコンテキストでは、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api) のうちどれを使用しているかとは無関係に、[Azure ロールの割り当て](search-security-rbac.md)によって、タスクを実行できるユーザーが決定されます。
 
 * サービスの作成または削除
 * サービスのスケーリング
@@ -73,12 +73,12 @@ Azure Cognitive Search のコンテキストでは、[ポータル](search-manag
 
 Basic レベル以上では、サービス レベル アグリーメント (SLA) に従って、すべての Azure Cognitive Search サービスが 99.9% の可用性を実現するようにマイクロソフトによって監視されます。 サービスの速度が低下した場合や、要求のスループットが SLA のしきい値を下回った場合は、サポート チームが利用可能なログ ファイルを確認して問題に対処します。
 
-Azure Cognitive Search では、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) を活用し、インデックス作成とクエリのアクティビティを収集して格納します。 検索サービス自体では、そのコンテンツ (インデックス、インデクサー定義、データ ソース定義、スキルセット定義、シノニム マップ) だけが格納されます。 キャッシュ情報とログに記録された情報は、多くの場合、Azure Storage アカウントに格納されます。 インデックス作成とクエリのワークロードをログに記録することの詳細については、[ログ データの収集と分析](search-monitor-logs.md)に関するページを参照してください。
+Azure Cognitive Search では、[Azure Monitor](../azure-monitor/index.yml) を活用し、インデックス作成とクエリのアクティビティを収集して格納します。 検索サービス自体では、そのコンテンツ (インデックス、インデクサー定義、データ ソース定義、スキルセット定義、シノニム マップ) だけが格納されます。 キャッシュ情報とログに記録された情報は、多くの場合、Azure Storage アカウントに格納されます。 インデックス作成とクエリのワークロードをログに記録することの詳細については、[ログ データの収集と分析](search-monitor-logs.md)に関するページを参照してください。
 
 サービスに関する一般的な情報については、Azure Cognitive Search に組み込まれている機能だけを使用して、以下の方法で情報を取得できます。
 
 * サービスの **[概要]** ページを使用し、通知、プロパティ、およびステータス メッセージを通して。
-* [PowerShell](search-manage-powershell.md) または[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) を使用し、[サービスのプロパティを取得する](https://docs.microsoft.com/rest/api/searchmanagement/services)。 プログラム階層で提供される新しい情報や操作はありません。 スクリプトを記述できるようにインターフェイスが存在します。
+* [PowerShell](search-manage-powershell.md) または[管理 REST API](/rest/api/searchmanagement/) を使用し、[サービスのプロパティを取得する](/rest/api/searchmanagement/services)。 プログラム階層で提供される新しい情報や操作はありません。 スクリプトを記述できるようにインターフェイスが存在します。
 
 ## <a name="monitor-resource-usage"></a>リソース使用量を監視する
 
@@ -86,8 +86,8 @@ Azure Cognitive Search では、[Azure Monitor](https://docs.microsoft.com/azure
 
 検索サービス REST API を使用して、プログラムでドキュメントとインデックスの数を取得できます。 
 
-* [インデックス統計の取得](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [ドキュメントのカウント](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [インデックス統計の取得](/rest/api/searchservice/Get-Index-Statistics)
+* [ドキュメントのカウント](/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>障害復旧とサービスの停止
 
@@ -123,7 +123,7 @@ Azure Cognitive Search は主要なデータ ストレージ ソリューショ�
 
 より一般的なのはレプリカを追加することですが、ストレージが制限されている場合は、パーティションを追加してより多くの容量を取得できます。 サービスをプロビジョニングしたサービス レベルによって、パーティションを追加できるかどうかが決まります。 Basic サービス レベルは、1 つのパーティションでロックされています。 Standard サービス レベル以上では、追加のパーティションがサポートされています。
 
-パーティションは 12 の倍数 (具体的には、1、2、3、4、6、12) で追加されます。 これは、シャーディングのアーティファクトです。 インデックスは 12 個のシャードで作成され、これらはすべて 1 個のパーティションまたは均等に 2、3、4、6、12 個のパーティションに格納されます (パーティションごとに 1 つのシャード)。
+パーティションは 12 の約数 (具体的には、1、2、3、4、6、12) で追加されます。 これは、シャーディングのアーティファクトです。 インデックスは 12 個のシャードで作成され、これらはすべて 1 個のパーティションまたは均等に 2、3、4、6、12 個のパーティションに格納されます (パーティションごとに 1 つのシャード)。
 
 ### <a name="remove-replicas"></a>レプリカの削除
 
@@ -135,7 +135,7 @@ Azure Cognitive Search は主要なデータ ストレージ ソリューショ�
 
 特定のパーティションにどのインデックス シャードが格納されているかを検出する方法はありません。 各パーティションで約 25 GB のストレージが提供されるため、現在のパーティションの数で対応できるサイズまでストレージを削減する必要があります。 1 つのパーティションに戻す場合は、12 個のシャードをすべて収める必要があります。
 
-将来の計画を立てるには、ストレージをチェックして (「 [Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)」を使用) 実際にどのくらい使用したかを確認します。 
+将来の計画を立てるには、ストレージをチェックして (「 [Get Index Statistics (Azure Search API) (インデックス統計の取得 (Azure Search API))](/rest/api/searchservice/Get-Index-Statistics)」を使用) 実際にどのくらい使用したかを確認します。 
 
 ## <a name="next-steps"></a>次のステップ
 

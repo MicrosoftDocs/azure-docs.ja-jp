@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 53b1c22e93c342373cae2bbb14958f4810a79630
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8d5a8555b2bd57dc024318464e38f042469beb4b
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092322"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89458673"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>チュートリアル:R を使用して機械学習モデルを作成する (プレビュー)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,8 @@ ms.locfileid: "87092322"
 このチュートリアルでは、以下のタスクを実行します。
 > [!div class="checklist"]
 > * Azure Machine Learning ワークスペースの作成
-> * このチュートリアルの実行に必要なファイルが含まれたノートブック フォルダーをワークスペースにクローンする
 > * ワークスペースから RStudio を開く
+> * このチュートリアルの実行に必要なファイルがある https://github.com/Azure/azureml-sdk-for-r をワークスペースにクローンする
 > * データを読み込み、トレーニングを準備する
 > * データをデータストアにアップロードして、リモート トレーニングに使用できるようにする
 > * モデルをリモートでトレーニングするためのコンピューティング リソースを作成する
@@ -53,33 +53,11 @@ Azure Machine Learning ワークスペースは、機械学習モデルを実験
 > お使いの**ワークスペース**と**サブスクリプション**をメモしておきます。 これらは、適切な場所に実験を作成するために必要になります。 
 
 
-## <a name="clone-a-notebook-folder"></a><a name="azure"></a>ノートブック フォルダーの複製
-
-この例では、インストール不要であらかじめ構成されているエクスペリエンスを実現するために、お使いのワークスペースでクラウド ノートブック サーバーを使用します。 お使いの環境、パッケージ、および依存関係を制御したい場合は、[独自の環境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)を使用してください。
-
-Azure Machine Learning Studio で、次の実験の設定を完了し、ステップを実行します。Azure Machine Learning Studio は、あらゆるスキル レベルのデータ サイエンス実務者がデータ サイエンス シナリオを実行するための機械学習ツールを含む統合インターフェイスです。
-
-1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインします。
-
-1. お使いのサブスクリプションと、作成したワークスペースを選択します。
-
-1. 左側にある **[ノートブック]** を選択します。
-
-1. **Samples** フォルダーを開きます。
-
-1. **R** フォルダーを開きます。
-
-1. バージョン番号が付いたフォルダーを開きます。  この番号は、R SDK の現在のリリースを表します。
-
-1. **vignettes** フォルダーの右側にある **[...]** を選択し、 **[クローン]** を選択します。
-
-    ![フォルダーを複製する](media/tutorial-1st-r-experiment/clone-folder.png)
-
-1. フォルダーの一覧には、ワークスペースにアクセスする各ユーザーが表示されます。  自分のフォルダーを選択して **vignettes** フォルダーをそこにクローンします。
-
 ## <a name="open-rstudio"></a><a name="open"></a>RStudio を開く
 
-このチュートリアルを実行するには、コンピューティング インスタンスまたは Notebook VM で RStudio を使用します。  
+この例では、インストール不要の事前構成されたエクスペリエンスを実現するために、お使いのワークスペースのコンピューティング インスタンスを使用します。 自分のマシンで環境、パッケージ、依存関係を制御したい場合は、[独自の環境](https://azure.github.io/azureml-sdk-for-r/articles/installation.html)を使用してください。
+
+このチュートリアルを実行するには、Azure ML コンピューティング インスタンスで RStudio を使用します。  
 
 1. 左側にある **[Compute]** を選択します。
 
@@ -87,10 +65,19 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 1. コンピューティングが実行されたら、**RStudio** リンクを使用して RStudio を開きます。
 
-1. RStudio では、*vignettes* フォルダーは、右下の **Files** セクションの *Users* から数レベル下にあります。  *vignettes* にある *train-and-deploy-to-aci* フォルダーを選択して、このチュートリアルで必要なファイルを見つけます。
+
+## <a name="clone-the-sample-vignettes"></a><a name="azure"></a>サンプルのビネットをクローンする 
+
+このチュートリアルで実行するビネット ファイルのコピーのために https://github.com/azure/azureml-sdk-for-r GitHub リポジトリをクローンします。
+
+1. RStudio で、[Terminal]\(ターミナル\) タブに移動し、リポジトリをクローンするディレクトリに移動します。
+
+1. ターミナルで "git clone https://github.com/Azure/azureml-sdk-for-r" を実行して、リポジトリをクローンします。
+
+1. RStudio で、クローンされた *azureml-sdk-for-r* フォルダーの *vignettes* フォルダーに移動します。  *vignettes* の下で、 *train-and-deploy-first-model.Rmd* ファイルを選択し、このチュートリアルで使用されるビネットを検索します。 このビネットに使用されるその他のファイルは、*train-and-deploy-first-model* サブフォルダーにあります。 ビネットを開いたら、 **[Session]\(セッション\) > [Set Working Directory]\(作業ディレクトリの設定\) > [To Source File Location]\(ソース ファイルの場所に\)** を使用して、作業ディレクトリをそのファイルの場所に設定します。 
 
 > [!Important]
-> 以降この記事には、*train-and-deploy-to-aci.Rmd* ファイルと同じ内容が記載されています。 RMarkdown の使用経験がある場合は、そのファイルのコードを自由に使用できます。  また、そこから、またはこの記事から、コード スニペットをコピーして R スクリプトまたはコマンド ラインに貼り付けることもできます。  
+> 以降この記事には、*train-and-deploy-first-model.Rmd* ファイルと同じ内容が記載されています。 RMarkdown の使用経験がある場合は、そのファイルのコードを自由に使用できます。  また、そこから、またはこの記事から、コード スニペットをコピーして R スクリプトまたはコマンド ラインに貼り付けることもできます。 
 
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
@@ -102,22 +89,15 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 * リモートのコンピューティング先を作成して、トレーニングに使用する
 
 ### <a name="install-required-packages"></a>必要なパッケージをインストールする
-
- * CRAN から最新バージョンをインストールします。
-
-    ```R
-    # install the latest version from CRAN
-    install.packages("azuremlsdk")
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+コンピューティング インスタンスには、CRAN の R SDK の最新バージョンが既にインストールされています。 代わりに GitHub から開発バージョンをインストールして、最新のバグ修正プログラムを取得する場合は、次のコードを実行してください。
     
-* または、GitHub から開発バージョンをインストールします。
+```R
+remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
+azuremlsdk::install_azureml()
+```
 
-    ```R
-    # or install the development version from GitHub
-    remotes::install_github('https://github.com/Azure/azureml-sdk-for-r')
-    azuremlsdk::install_azureml(envname = 'r-reticulate')
-    ```
+> [!WARNING]
+> インストール プロセス中に "`Would you like to install Miniconda? [Y/n]:`" というメッセージが表示された場合は、"`n`" で応答してください。コンピューティング インスタンスには既に Anaconda がインストールされているため、Miniconda のインストールは必要ありません。
 
 先に進んで、**azuremlsdk** パッケージをインポートします。
 
@@ -204,7 +184,7 @@ upload_files_to_datastore(ds,
 * ジョブを送信する
 
 ### <a name="prepare-the-training-script"></a>トレーニング スクリプトを準備する
-このチュートリアルと同じディレクトリに、`accidents.R` というトレーニング スクリプトが用意されています。 Azure Machine Learning サービスをトレーニングに活用するために行われた**トレーニング スクリプト内**の次の詳細に注意してください。
+`accidents.R` というトレーニング スクリプトが *train-and-deploy-first-model* ディレクトリに用意されています。 Azure Machine Learning サービスをトレーニングに活用するために行われた**トレーニング スクリプト内**の次の詳細に注意してください。
 
 * このトレーニング スクリプトは、引数 `-d` を受け取り、トレーニング データが含まれるディレクトリを検出します。 後でジョブを定義して送信する際に、次のように、引数にデータストアを指定します。 Azure ML は、トレーニング ジョブ用にストレージ フォルダーをリモート クラスターにマウントします。
 * トレーニング スクリプトは、`log_metric_to_run()` を使用して Azure ML の実行レコードにメトリックとして最終的な精度をログに記録します。 Azure ML SDK には、トレーニングの実行中にさまざまなメトリックをログに記録するためのログ記録 API のセットが用意されています。 これらのメトリックは記録され、実験の実行レコードに保存されます。 メトリックにはいつでもアクセスでき、[スタジオ](https://ml.azure.com)の実行の詳細ページで表示することもできます。 `log_*()` のログ記録方法の完全なセットについては、[リファレンス](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)を参照してください。
@@ -223,7 +203,7 @@ Azure ML Estimator には、コンピューティング先でトレーニング 
 * トレーニングに必要な環境の依存関係。 トレーニング用に構築された既定の Docker イメージには、トレーニング スクリプトで必要とされる 3 つのパッケージ (`caret`、`e1071`、`optparse`) があらかじめ含まれています。  そのため、追加情報を指定する必要はありません。 既定では含まれていない R パッケージを使用する場合は、Estimator の `cran_packages` パラメーターを使用して、CRAN パッケージを追加します。 構成可能なオプションの完全なセットについては、[`estimator()`](https://azure.github.io/azureml-sdk-for-r/reference/estimator.html) リファレンスを参照してください。
 
 ```R
-est <- estimator(source_directory = ".",
+est <- estimator(source_directory = "train-and-deploy-first-model",
                  entry_script = "accidents.R",
                  script_params = list("--data_folder" = ds$path(target_path)),
                  compute_target = compute_target
@@ -338,6 +318,7 @@ r_env <- r_environment(name = "basic_env")
 ```R
 inference_config <- inference_config(
   entry_script = "accident_predict.R",
+  source_directory = "train-and-deploy-first-model",
   environment = r_env)
 ```
 

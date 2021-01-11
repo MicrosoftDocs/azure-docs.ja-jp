@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: e9d6f31674db0744e220a9cd88033a32bb5c1e17
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 02828e0c159e2d30dacc5759f1239dae1268dac5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024691"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87491784"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>チュートリアル:ハイブリッド環境の Azure Active Directory Domain Services でパスワード同期を有効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "86024691"
 
 オンプレミスの AD DS 環境から同期されるアカウントで Azure AD DS を使用するには、NTLM および Kerberos 認証に必要なこれらのパスワード ハッシュを同期するよう Azure AD Connect を構成する必要があります。 Azure AD Connect の構成後は、オンプレミスのアカウント作成またはパスワード変更イベントによって従来のパスワード ハッシュも Azure AD に同期されます。
 
-オンプレミスの AD DS 環境を持たないクラウド専用アカウントを使用する場合、これらの手順を実行する必要はありません。
+オンプレミスの AD DS 環境を持たないクラウド専用アカウントを使用する場合、または "*リソース フォレスト*" を使用する場合は、これらの手順を実行する必要はありません。 リソース フォレストを使用するマネージド ドメインの場合、オンプレミスのパスワード ハッシュが同期されることはありません。 オンプレミスのアカウントの認証では、独自の AD DS ドメイン コントローラーに対するフォレストの信頼を使用します。
 
 このチュートリアルで学習する内容は次のとおりです。
 

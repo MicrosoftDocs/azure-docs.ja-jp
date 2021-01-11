@@ -5,35 +5,34 @@ description: Windows Data Science Virtual Machine 上でデータ探索および
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 7d9aced42efefc8651605be44f0091b2f4f2815e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: dba0f22f1dfece7edd92a80ae1c3a91616a4236c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959281"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815931"
 ---
-# <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
+# <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Data Science Virtual Machine を使用したデータ サイエンス
 
 Windows Data Science Virtual Machine (DSVM) は強力なデータ サイエンス開発環境であり、ここではデータ探索およびモデリング タスクを実行することができます。 この環境は既に構築されていて、いくつかの一般的なデータ分析ツールがバンドルされているため、オンプレミス、クラウド、ハイブリッドの各デプロイの分析を簡単に開始することができます。 
 
-DSVM は Azure サービスと密接に連携します。 Azure 上の Azure SQL Data Warehouse、Azure Data Lake、Azure Storage、または Azure Cosmos DB に既に保存されているデータを読み取って処理することができます。 Azure Machine Learning や Azure Data Factory など、その他の分析ツールを利用することもできます。
+DSVM は Azure サービスと密接に連携します。 Azure 上の Azure Synapse (旧称 SQL DW)、Azure Data Lake、Azure Storage、または Azure Cosmos DB に既に保存されているデータを読み取って処理することができます。 Azure Machine Learning など、その他の分析ツールを利用することもできます。
 
 この記事では、DSVM を使用してデータ サイエンス タスクを実行したり、他の Azure サービスとやりとりしたりする方法について説明します。 DSVM では次のことを実行できます。
 
-- DSVM 上で Microsoft Machine Learning Server および Python を使用してデータの探索およびモデルの開発をローカルで行います。
 - Jupyter ノートブックを使用して、Python 2、Python 3、Microsoft R を使用して、ご自分のデータをブラウザーで実験します (Microsoft R は、パフォーマンスを考慮して設計された、エンタープライズ対応の R バージョンです)。
-- R や Python を通して構築されたモデルを Azure Machine Learning 上にデプロイすると、クライアント アプリケーションからシンプルな Web サービス インターフェイスを使用してモデルにアクセスできるようになります。
+- DSVM 上で Microsoft Machine Learning Server および Python を使用してデータの探索およびモデルの開発をローカルで行います。
 - Azure portal または PowerShell を使用して Azure リソースを管理します。
 - ご利用の DSVM にマウント可能なドライブとして Azure Files 共有を作成することによってストレージ スペースを拡張し、大規模なデータセット/コードをチーム全体で共有します。
 - GitHub を使用してチームとコードを共有します。 インストール済みの次の Git クライアントを使用してリポジトリにアクセスします: Git Bash と Git GUI。
-- Azure Blob Storage、Azure Data Lake、Azure Cosmos DB、Azure SQL Data Warehouse、Azure SQL Database など、Azure のデータ サービスと分析サービスにアクセスします。
+- Azure Blob Storage、Azure Cosmos DB、Azure Synapse (旧称 SQL DW)、Azure SQL Database など、Azure のデータおよび分析サービスにアクセスします。
 - DSVM にプレインストールされた Power BI Desktop インスタンスを使用してレポートとダッシュボードを作成し、それらをクラウドにデプロイします。
-- プロジェクトのニーズを満たすように、ご利用の DSVM を動的にスケーリングします。
+
 - ご利用の仮想マシン上に追加のツールをインストールします。   
 
 > [!NOTE]
@@ -49,20 +48,6 @@ DSVM は Azure サービスと密接に連携します。 Azure 上の Azure SQL
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Microsoft Machine Learning Server を使用してデータを探索し、モデルを開発する
-R や Python などの言語を使用して、DSVM 上で直接データ分析を実行できます。
-
-R の場合は、スタート メニューまたはデスクトップにある RStudio などの IDE を使用できます。 または、R Tools for Visual Studio を使用することもできます。 Microsoft は、オープン ソース CRAN R の上に追加のライブラリを提供することで、スケーラブルな分析を可能にし、並列チャンク分析で許容されたメモリ サイズを超える大きなデータを分析する機能を有効にしました。 
-
-Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能がプレインストールされる Visual Studio Community Edition などの IDE を使用できます。 既定では、ルート Conda 環境である Python 3.6 のみが PTVS で構成されます。 Anaconda Python 2.7 を有効にするには、次の手順を行います。
-
-1. Visual Studio Community Edition 内で **[ツール]**  >  **[Python ツール]**  >  **[Python 環境]** の順に移動し、 **[+ カスタム]** を選択して、各バージョンのカスタム環境を作成します。
-1. 説明を入力し、環境プレフィックス パス (Anaconda Python 2.7 の場合は **c:\anaconda\envs\python2**) を設定します。
-1. **[自動検出]**  >  **[適用]** の順に選択して環境を保存します。
-
-Python 環境の作成方法の詳細については、[PTVS のドキュメント](https://aka.ms/ptvsdocs)を参照してください。
-
-これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]**  >  **[Python]** の順に移動し、作成する Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Python 2.7 または 3.6) に設定できます。これには、 **[Python 環境]** を右クリックして、 **[Python 環境の追加/削除]** を選択します。 PTVS の操作方法の詳細については、製品の[製品のドキュメント](https://aka.ms/ptvsdocs)を参照してください。
 
 ## <a name="use-jupyter-notebooks"></a>Jupyter Notebook の使用
 Jupyter Notebook には、データ探索とモデリング用のブラウザーベースの IDE が用意されています。 Jupyter Notebook では Python 2、Python 3、R (オープン ソースおよび Microsoft R Server の両方) のいずれを使用することもできます。
@@ -83,114 +68,22 @@ Jupyter を開始すると、DSVM にあらかじめパッケージ化されて�
 
 ノートブックを開いているときは、ご自分で選んだライブラリを使用して、ご利用のデータの探索、モデルの構築、モデルのテストを行うことができます。
 
-## <a name="train-and-deploy-models-by-using-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングおよびデプロイする
-モデルを構築して検証したら、通常、次の手順として、それを運用環境にデプロイします。 この手順では、クライアント アプリケーションを使用して、リアルタイムまたはバッチ モードでモデルの予測を呼び出すことができます。 R または Python で構築されたモデルを運用可能な状態にするためのメカニズムは、Azure Machine Learning によって提供されます。
+## <a name="explore-data-and-develop-models-with-microsoft-machine-learning-server"></a>Microsoft Machine Learning Server を使用してデータを探索し、モデルを開発する
+R や Python などの言語を使用して、DSVM 上で直接データ分析を実行できます。
 
-Azure Machine Learning でモデルを運用化すると、Web サービスが公開されます。 これにより、クライアントは、入力パラメーターを渡して、出力としてモデルから予測を受け取る REST 呼び出しを実行することができます。
+R の場合は、スタート メニューまたはデスクトップにある RStudio などの IDE を使用できます。 または、R Tools for Visual Studio を使用することもできます。 Microsoft は、オープン ソース CRAN R の上に追加のライブラリを提供することで、スケーラブルな分析を可能にし、並列チャンク分析で許容されたメモリ サイズを超える大きなデータを分析する機能を有効にしました。 
 
-### <a name="build-and-operationalize-python-models"></a>Python モデルを構築して運用可能な状態にする
-Python Jupyter ノートブックで開発された、Scikit-learn ライブラリを使用してシンプルなモデルを作成するコード スニペットを次に示します。
+Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能がプレインストールされる Visual Studio Community Edition などの IDE を使用できます。 既定では、ルート Conda 環境である Python 3.6 のみが PTVS で構成されます。 Anaconda Python 2.7 を有効にするには、次の手順を行います。
 
-```python
-# IRIS classification
-from sklearn import datasets
-from sklearn import svm
-clf = svm.SVC()
-iris = datasets.load_iris()
-X, y = iris.data, iris.target
-clf.fit(X, y)
-```
+1. Visual Studio Community Edition 内で **[ツール]**  >  **[Python ツール]**  >  **[Python 環境]** の順に移動し、 **[+ カスタム]** を選択して、各バージョンのカスタム環境を作成します。
+1. 説明を入力し、環境プレフィックス パス (Anaconda Python 2.7 の場合は **c:\anaconda\envs\python2**) を設定します。
+1. **[自動検出]**  >  **[適用]** の順に選択して環境を保存します。
 
-Python のモデルを Azure Machine Learning にデプロイするために使用するメソッドでは、モデルの予測が関数にラップされ、プレインストールされている Azure Machine Learning Python ライブラリに用意された属性でそれが修飾されます。 この属性では、Azure Machine Learning のワークスペース ID、API キー、入力パラメーター、戻り値パラメーターが指定されます。  
+Python 環境の作成方法の詳細については、[PTVS のドキュメント](https://aka.ms/ptvsdocs)を参照してください。
 
-```python
-from azureml import services
-@services.publish(workspaceid, auth_token)
-@services.types(sep_l=float, sep_w=float, pet_l=float, pet_w=float)
-@services.returns(int)  # 0, or 1, or 2
-def predictIris(sep_l, sep_w, pet_l, pet_w):
-    inputArray = [sep_l, sep_w, pet_l, pet_w]
+これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]**  >  **[Python]** の順に移動し、作成する Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Python 2.7 または 3.6) に設定できます。これには、 **[Python 環境]** を右クリックして、 **[Python 環境の追加/削除]** を選択します。 PTVS の操作方法の詳細については、製品の[製品のドキュメント](https://aka.ms/ptvsdocs)を参照してください。
 
 
-return clf.predict(inputArray)
-```
-
-これでクライアントから Web サービスを呼び出すことができます。 便利なラッパーによって、REST API 要求が構築されます。 以下に、Web サービスを利用するためのサンプル コードを示します。
-
-```python
-# Consume through web service URL and keys
-from azureml import services
-@services.service(url, api_key)
-@services.types(sep_l = float, sep_w = float, pet_l=float, pet_w=float)
-@services.returns(float)
-def IrisPredictor(sep_l, sep_w, pet_l, pet_w):
-pass
-
-IrisPredictor(3,2,3,4)
-```
-
-### <a name="build-and-operationalize-r-models"></a>R モデルを構築して運用可能な状態にする
-Data Science Virtual Machine やその他の環境で構築された R のモデルは、Python の場合と同様の方法で Azure Machine Learning にデプロイすることができます。 次に手順を示します。
-
-1. ワークスペース ID と認証トークンを提供する settings.json ファイルを作成します。 
-2. モデルの予測関数のラッパーを作成します。
-3. Azure Machine Learning ライブラリで ```publishWebService``` を呼び出し、関数ラッパーを渡します。  
-
-次の手順とコード スニペットを使用して、Azure Machine Learning でモデルを Web サービスとして設定、ビルド、公開、および利用します。
-
-#### <a name="set-up"></a>設定
-
-ホーム ディレクトリの下にある ```.azureml``` という名前のディレクトリに settings.json ファイルを作成します。 ご利用の Azure Machine Learning ワークスペースからのパラメーターを入力します。
-
-settings.json ファイルの構造を次に示します。
-
-```json
-{"workspace":{
-"id"                  : "ENTER YOUR AZUREML WORKSPACE ID",
-"authorization_token" : "ENTER YOUR AZUREML AUTH TOKEN"
-}}
-```
-
-#### <a name="build-a-model-in-r-and-publish-it-in-azure-machine-learning"></a>R でモデルを構築して Azure Machine Learning で発行する
-
-```r
-library(AzureML)
-ws <- workspace(config="~/.azureml/settings.json")
-
-if(!require("lme4")) install.packages("lme4")
-library(lme4)
-set.seed(1)
-train <- sleepstudy[sample(nrow(sleepstudy), 120),]
-m <- lm(Reaction ~ Days + Subject, data = train)
-
-# Define a prediction function to publish based on the model:
-sleepyPredict <- function(newdata){
-        predict(m, newdata=newdata)
-}
-
-ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema = sleepstudy, data.frame=TRUE)
-```
-
-#### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Azure Machine Learning にデプロイされたモデルを利用する
-クライアント アプリケーションからモデルを利用するには、Azure Machine Learning ライブラリを使用して、公開されている Web サービスを名前で検索します。 `services` API 呼び出しを使用して、エンドポイントを特定します。 後は、`consume` 関数を呼び出して、予測の対象となるデータ フレームを渡すだけです。
-
-次のコードを使用して、Azure Machine Learning Web サービスとして発行されたモデルを利用します。
-
-```r
-library(AzureML)
-library(lme4)
-ws <- workspace(config="~/.azureml/settings.json")
-
-s <-  services(ws, name = "sleepy lm")
-s <- tail(s, 1) # use the last published function, in case of duplicate function names
-
-ep <- endpoints(ws, s)
-
-# Try this out, and compare with raw data
-ans = consume(ep, sleepstudy)$ans
-```
-
-Machine Learning Studio の R パッケージの詳細については、[こちら](/azure/machine-learning/studio-module-reference/r-packages-supported-by-azure-machine-learning)を参照してください。
 
 ## <a name="manage-azure-resources"></a>Azure のリソースを管理する
 DSVM では、仮想マシン上でローカルに分析ソリューションを構築することはできません。 また、Azure クラウド プラットフォーム上のサービスには、アクセスすることができます。 Azure には、コンピューティング サービス、ストレージ サービス、データ分析など、ご利用の DSVM から管理してアクセスできるさまざまなサービスが用意されています。
@@ -255,7 +148,7 @@ git clone https://github.com/Azure/DataScienceVM.git
 
 Visual Studio から同じクローン操作を行うこともできます。 下のスクリーンショットでは、Visual Studio で Git と GitHub ツールにアクセスする方法を示しています。
 
-![GitHub 接続が表示される Visual Studio のスクリーンショット](./media/vm-do-ten-things/VSGit.PNG)
+![GitHub 接続が表示される Visual Studio のスクリーンショット](./media/vm-do-ten-things/VSGit.png)
 
 Git を使った GitHub リポジトリの操作の詳細については、github.com で公開されているリソースをご覧ください。 [チート シート](https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
 
@@ -270,7 +163,7 @@ Azure Blob Storage は、大規模データにも小規模データにも対応�
    ![Azure portal でのストレージ アカウント作成プロセスのスクリーンショット](./media/vm-do-ten-things/create-azure-blob.png)
 
 * コマンドライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` にプレインストールされていることを確認します。 azcopy.exe を含むディレクトリが既に PATH 環境変数上にあるので、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、[AzCopy のドキュメント](../../storage/common/storage-use-azcopy.md)を参照してください。
-* Azure ストレージ エクスプローラー ツールを起動します。 これは [Storage Explorer の Web ページ](https://storageexplorer.com/)からダウンロードできます。 
+* Azure Storage Explorer ツールを起動します。 これは [Storage Explorer の Web ページ](https://storageexplorer.com/)からダウンロードできます。 
 
    ![ストレージ アカウントにアクセスする Azure Storage Explorer のスクリーンショット](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
@@ -299,18 +192,12 @@ AzCopy コマンドを実行して Azure BLOB にコピーすると、対象フ�
 
 ![アップロードされた CSV ファイルを表示する、ストレージ アカウントのスクリーンショット](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>VM から Azure BLOB にデータを移動する: Azure ストレージ エクスプローラー
+#### <a name="move-data-from-a-vm-to-an-azure-blob-azure-storage-explorer"></a>VM から Azure BLOB にデータを移動する: Azure Storage Explorer
 
 Azure Storage Explorer を使用して、ご利用の VM 内のローカル ファイルからデータをアップロードすることもできます。
 
 * コンテナーにデータをアップロードするには、ターゲット コンテナーを選択し、 **[アップロード]** ボタンを選択します。![Azure Storage Explorer の [アップロード] ボタンのスクリーンショット](./media/vm-do-ten-things/storage-accounts.png)
 * **[ファイル]** ボックスの右側の省略記号 **[...]** を選択し、アップロードする 1 つまたは複数のファイルをファイル システムから選択します。さらに、 **[アップロード]** を選択して、ファイルのアップロードを開始します。![ファイルのアップロード ダイアログ ボックスのスクリーンショット](./media/vm-do-ten-things/upload-files-to-blob.png)
-
-#### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Azure BLOB からデータを読み取る: Machine Learning リーダー モジュール
-
-Azure Machine Learning Studio では、データのインポート モジュールを使用してご利用の BLOB からデータを読み取ることができます。
-
-![Machine Learning Studio でのデータのインポート モジュールのスクリーンショット](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Azure BLOB からデータを読み取る: Python ODBC
 
@@ -362,97 +249,13 @@ print 'the size of the data is: %d rows and  %d columns' % df1.shape
 
 データはデータ フレームとして読み取られます。
 
-![データの最初の 10 行のスクリーンショット](./media/vm-do-ten-things/IPNB_data_readin.PNG)
+![データの最初の 10 行のスクリーンショット](./media/vm-do-ten-things/IPNB_data_readin.png)
 
-### <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake Storage は、ビッグ データ分析ワークロード用のハイパースケール リポジトリであり、Hadoop 分散ファイル システム (HDFS) と互換性があります。 Hadoop、Spark、および Azure Data Lake Analytics で動作します。 このセクションでは、データを Azure Data Lake Storage に移動し、Azure Data Lake Analytics を使用して分析を実行する方法について説明します。
 
-#### <a name="prerequisites"></a>前提条件
+### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (旧称 SQL DW) およびデータベース
+Azure Synapse Analytics (旧称 SQL DW) は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
 
-* [Azure portal](https://portal.azure.com) で Azure Data Lake Analytics インスタンスを作成します。
-
-   ![Azure portal から Data Lake Analytics インスタンスを作成しているスクリーンショット](./media/vm-do-ten-things/azure-data-lake-create-v3.png)
-
-* [Azure Data Lake and Stream Analytics Tools for Visual Studio プラグイン](https://www.microsoft.com/download/details.aspx?id=49504)は、仮想マシン上の Visual Studio Community Edition に既にインストールされています。 Visual Studio を起動して Azure サブスクリプションにサインインすると、Visual Studio の左パネルに Azure Data Analytics のアカウントとストレージが表示されます。
-
-   ![Visual Studio での Data Lake Tools のプラグインのスクリーンショット](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
-
-#### <a name="move-data-from-a-vm-to-data-lake-azure-data-lake-explorer"></a>VM から Data Lake にデータを移動する: Azure Data Lake エクスプローラー
-
-Azure Data Lake Explorer を使用して、[ご利用の仮想マシン内のローカル ファイルから Data Lake Storage にデータをアップロードできます](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal)。
-
-また、[Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して、Azure Data Lake との間のデータ移動を運用可能にするデータ パイプラインを作成することもできます。 データ パイプラインを作成する手順については、[こちらの記事](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)をご覧ください。
-
-#### <a name="read-data-from-an-azure-blob-to-data-lake-u-sql"></a>Azure BLOB から Data Lake にデータを読み取る: U-SQL
-
-ご利用のデータが Azure Blob Storage に存在する場合、U-SQL クエリで Azure BLOB から直接データを読み取ることができます。 U-SQL クエリを作成する前に、ご利用の BLOB ストレージ アカウントがご利用の Azure Data Lake インスタンスにリンクされていることを確認します。 Azure portal に移動して [Azure Data Lake Analytics] ダッシュボードを探し、 **[データ ソースの追加]** を選択します。ストレージの種類に **[Azure Storage]** を選択し、Azure ストレージ アカウントの名前とキーでプラグ インします。 これで、ストレージ アカウントの格納データを参照できます。
-
-![[データ ソースの追加] ダイアログ ボックスのスクリーンショット](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
-
-Visual Studio では、BLOB ストレージからのデータ読み取り、データ操作、機能の設計を実行できるほか、結果として得られたデータを Azure Data Lake または Azure Blob Storage に出力することができます。 BLOB ストレージ内のデータを参照する場合は、**wasb://** を使用します。 Azure Data Lake でデータを参照する場合は、**swbhdfs://** を使用します。
-
-Visual Studio で次の U-SQL クエリを使用することができます。
-
-```usql
-@a =
-    EXTRACT medallion string,
-            hack_license string,
-            vendor_id string,
-            rate_code string,
-            store_and_fwd_flag string,
-            pickup_datetime string,
-            dropoff_datetime string,
-            passenger_count int,
-            trip_time_in_secs double,
-            trip_distance double,
-            pickup_longitude string,
-            pickup_latitude string,
-            dropoff_longitude string,
-            dropoff_latitude string
-
-    FROM "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Input Data File Name>"
-    USING Extractors.Csv();
-
-@b =
-    SELECT vendor_id,
-    COUNT(medallion) AS cnt_medallion,
-    SUM(passenger_count) AS cnt_passenger,
-    AVG(trip_distance) AS avg_trip_dist,
-    MIN(trip_distance) AS min_trip_dist,
-    MAX(trip_distance) AS max_trip_dist,
-    AVG(trip_time_in_secs) AS avg_trip_time
-    FROM @a
-    GROUP BY vendor_id;
-
-OUTPUT @b   
-TO "swebhdfs://<Azure Data Lake Storage Account Name>.azuredatalakestore.net/<Folder Name>/<Output Data File Name>"
-USING Outputters.Csv();
-
-OUTPUT @b   
-TO "wasb://<Container name>@<Azure Blob Storage Account Name>.blob.core.windows.net/<Output Data File Name>"
-USING Outputters.Csv();
-```
-
-ご利用のクエリがサーバーに送信されると、ご自分のジョブの状態がダイアグラムに表示されます。
-
-![ジョブの状態ダイアグラムのスクリーンショット](./media/vm-do-ten-things/USQL_Job_Status.PNG)
-
-#### <a name="query-data-in-data-lake-u-sql"></a>Data Lake 内のデータを照会する: U-SQL
-
-Azure Data Lake にデータセットを取り込んだ後、[U-SQL 言語](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md)を使用してデータを照会、探索することができます。 U-SQL 言語は T-SQL と似ていますが、C# の機能が一部組み合わされているため、ユーザーは独自のモジュールやユーザー定義関数を作成することが可能です。 先ほどの手順で紹介したスクリプトを使用することができます。
-
-クエリがサーバーに送信されると、Azure Data Lake Explorer に tripdata_summary.CSV が表示されます。 そのファイルを右クリックすると、データがプレビューされます。
-
-![Data Lake Explorer での CSV ファイルのスクリーンショット](./media/vm-do-ten-things/USQL_create_summary.png)
-
-ファイルの情報が表示されます。
-
-![ファイル概要情報のスクリーンショット](./media/vm-do-ten-things/USQL_tripdata_summary.png)
-
-### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Data Warehouse とデータベース
-Azure SQL Data Warehouse は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
-
-使用する Azure SQL データ ウェアハウスは、こちらの[記事](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)に記載されている手順に従ってプロビジョニングできます。 SQL データ ウェアハウスをプロビジョニングしたら、[こちらのチュートリアル](../team-data-science-process/sqldw-walkthrough.md)を使用して、SQL データ ウェアハウス内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
+Azure Synapse Analytics をプロビジョニングするには、こちらの[記事](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)に記載されている手順に従ってください。 SQL データ ウェアハウスをプロビジョニングしたら、[こちらのチュートリアル](../team-data-science-process/sqldw-walkthrough.md)を使用して、SQL データ ウェアハウス内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB は、クラウドにおける NoSQL データベースです。 それを使用すれば、JSON などのドキュメントを操作することや、そうしたドキュメントを格納してクエリを実行することができます。
@@ -502,13 +305,12 @@ in
 プロジェクトのニーズを満たすために、DSVM はスケールアップしたりスケールダウンしたりすることができます。 夜間や週末に VM を使用する必要がない場合は、[Azure portal](https://portal.azure.com) から VM をシャットダウンすることができます。
 
 > [!NOTE]
-> VM 上でオペレーティング システムのシャットダウン ボタンを使用しただけであっても、コンピューティングの料金は発生します。  
+> VM 上でオペレーティング システムのシャットダウン ボタンを使用しただけであっても、コンピューティングの料金は発生します。 代わりに、Azure portal または Cloud Shell を使用して DSVM の割り当てを解除する必要があります。
 > 
 > 
 
 大規模な分析を処理する必要が生じると、より多くの CPU、メモリ、またはディスク容量を必要とする場合があります。 その場合は、CPU コア数、ディープ ラーニング用の GPU ベース インスタンス、メモリ容量、ディスクの種類 (ソリッド ステート ドライブなど) の観点から、処理能力や予算のニーズに応じて VM のサイズを選ぶことができます。 VM とその時間単位のコンピューティング料金をまとめた一覧については、「[Azure Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」ページをご覧ください。
 
-同様に、VM 処理容量のニーズが減少する可能性もあります (例: Hadoop または Spark クラスターに主なワークロードを移動した場合)。その後、[Azure portal](https://portal.azure.com) からクラスターをスケール ダウンし、ご利用の VM インスタンスの設定に移動できます。 
 
 ## <a name="add-more-tools"></a>ツールをさらに追加する
 DSVM に事前に組み込まれているツールを使用すると、多くの一般的なデータ分析ニーズに対応できます。 これにより、ご利用の環境を 1 つずつインストールして構成する必要がなくなるため、時間の節約になります。 また、使用するリソースについてのみ支払いを行うので、コストも節約できます。
@@ -526,7 +328,7 @@ DSVM に事前に組み込まれているツールを使用すると、多くの
 
 - [音声のディープ ラーニング](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): このチュートリアルでは、[都市音声データセット](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html)で発生する音声イベントを検出するためのディープ ラーニング モデルをトレーニングする方法を説明します。 また、音声データを操作する方法の概要についても説明します。
 
-- [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルでは、2 つのニューラル ネットワーク アーキテクチャを構築してトレーニングする方法を示します。Hierarchical Attention Network と Long Short Term Memory (LSTM) ネットワークです。 これらのニューラル ネットワークでは、ディープ ラーニング用の Keras API を使用して、テキスト ドキュメントを分類します。 Keras は、最も普及している 3 つのディープ ラーニング フレームワーク (Microsoft Cognitive Toolkit、TensorFlow、および Theano) のフロントエンドです。
+- [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルでは、2 つのニューラル ネットワーク アーキテクチャを構築してトレーニングする方法を示します。Hierarchical Attention Network と Long Short Term Memory (LSTM) ネットワークです。 これらのニューラル ネットワークでは、ディープ ラーニング用の Keras API を使用して、テキスト ドキュメントを分類します。 
 
 ## <a name="summary"></a>まとめ
 この記事では、Microsoft Data Science Virtual Machine 上でできることの一部について説明しました。 DSVM を効果的な分析環境にするためにできることは他にも多数あります。

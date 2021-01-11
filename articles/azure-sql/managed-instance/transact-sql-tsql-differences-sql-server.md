@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 229a74fe760386b59bc83373cc7b1429bd826929
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d611fc7eff2efa7a632f4b5467b5829a8374b95e
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298449"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705386"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "85298449"
 
 SQL Managed Instance は、SQL Server データベース エンジンとの高い互換性を備えており、ほとんどの機能は SQL Managed Instance でサポートされています。
 
-![移行](./media/transact-sql-tsql-differences-sql-server/migration.png)
+![SQL Server からの移行が簡単](./media/transact-sql-tsql-differences-sql-server/migration.png)
 
 SQL Managed Instance には、SQL Server と比べて PaaS の制限と動作の違いがいくつかあります。 それらの相違点は、次のカテゴリに分けることができます。<a name="Differences"></a>
 
@@ -364,7 +364,7 @@ MSDTC も[エラスティック トランザクション](../database/elastic-tr
 
 ### <a name="external-libraries"></a>外部ライブラリ
 
-In-Database R および In-Database Python 外部ライブラリはまだサポートされていません。 「[SQL Server Machine Learning Services](/sql/advanced-analytics/r/sql-server-r-services)」をご覧ください。
+In-Database R および Python 外部ライブラリは、限られたパブリック プレビューでサポートされています。 「[Azure SQL Managed Instance の Machine Learning Services (プレビュー)](machine-learning-services-overview.md)」を参照してください。
 
 ### <a name="filestream-and-filetable"></a>Filestream と FileTable
 

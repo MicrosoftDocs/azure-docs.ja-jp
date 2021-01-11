@@ -8,24 +8,68 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/26/2020
 ms.author: aahi
-ms.openlocfilehash: 3d9fb7f3fa01c06cc778e4062dd1d136e9c6e342
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: f017960e304df04148c318b5098f384e6140de9a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103400"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930912"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
 
-## <a name="july-2020"></a>2020 年 7 月
+## <a name="august-2020"></a>2020 年 8 月
 
-### <a name="text-analytics-for-health-container-public-gated-preview"></a>Text Analytics for Health コンテナーのパブリックのゲート付きプレビュー
+### <a name="general-api-updates"></a>一般的な API の更新
 
-Text Analytics for Health コンテナーがパブリックのゲート付きプレビュー段階に入りました。これにより、患者の問診票、医師のメモ、研究論文、退院要約などの臨床ドキュメントに記載されている英語の非構造化テキストから情報を抽出できるようになります。 現在、Text Analytics for Health コンテナーの使用には課金されません。 
+* v3 の `/keyphrases`、`/pii`、および `/languages` の各エンドポイントのモデル バージョン `2020-07-01` では、次のものが追加されています。
+    * 固有表現認識を目的とした、追加の政府および国に固有の[エンティティ カテゴリ](named-entity-types.md?tabs=personal)。
+    * 感情分析 v3 でのノルウェー語およびトルコ語のサポート。
+* 公開されている[データ制限](concepts/data-limits.md)を超える v3 API 要求に対して、HTTP 400 エラーが返されるようになりました。 
+* オフセットを返すエンドポイントでは、オプションの `stringIndexType` パラメーターがサポートされるようになりました。このパラメーターは、サポートされている[文字列インデックス スキーム](concepts/text-offsets.md)と一致するように、返された `offset` と `length` の値を調整します。
+
+### <a name="text-analytics-for-health-container-august-updates"></a>Text Analytics for health コンテナーの 8 月の更新
+
+次の更新は、Text Analytics health コンテナーの 8 月のリリースのみに固有のものです。
+
+* Text Analytics for health の新しいモデルバージョン: `2020-07-24`
+* Text Analytics for health 要求を送信するための新しい URL:`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (この新しいコンテナー イメージに含まれるデモ Web アプリを使用するには、ブラウザー キャッシュのクリアが必要になることに注意してください)
+
+JSON 応答の次のプロパティが変更されました。
+
+* `type` の名前が `category` に変更されました 
+* `score` の名前が `confidenceScore` に変更されました
+* JSON 出力の `category` フィールド内のエンティティは、パスカル ケースになっています。 次のエンティティの名前が変更されました。
+    * `EXAMINATION_RELATION` の名前が `RelationalOperator` に変更されました。
+    * `EXAMINATION_UNIT` の名前が `MeasurementUnit` に変更されました。
+    * `EXAMINATION_VALUE` の名前が `MeasurementValue` に変更されました。
+    * `ROUTE_OR_MODE` の名前が `MedicationRoute` に変更されました。
+    * リレーショナル エンティティ `ROUTE_OR_MODE_OF_MEDICATION` の名前が `RouteOfMedication` に変更されました。
+
+次のエンティティが追加されています。
+
+* NER
+    * `AdministrativeEvent`
+    * `CareEnvironment`
+    * `HealthcareProfession`
+    * `MedicationForm` 
+
+* 関係抽出
+    * `DirectionOfCondition`
+    * `DirectionOfExamination`
+    * `DirectionOfTreatment`
+
+> [!div class="nextstepaction"]
+> [Text Analytics for health コンテナーの詳細情報](how-tos/text-analytics-for-health.md)
+
+## <a name="july-2020"></a>2020 年 7 月 
+
+### <a name="text-analytics-for-health-container---public-gated-preview"></a>Text Analytics for health コンテナー - パブリックのゲート付きプレビュー
+
+Text Analytics for health コンテナーがパブリックのゲート付きプレビュー段階に入りました。これにより、患者の問診票、医師のメモ、研究論文、退院要約などの臨床ドキュメントに記載されている英語の非構造化テキストから情報を抽出できるようになります。 現在、Text Analytics for health コンテナーの使用に対して課金されることはありません。
 
 コンテナーには、以下の機能が用意されています。
 
@@ -33,10 +77,6 @@ Text Analytics for Health コンテナーがパブリックのゲート付きプ
 * 関係抽出
 * エンティティ リンク設定
 * 否定
-
-
-> [!div class="nextstepaction"]
-> [Text Analytics for Health コンテナーの詳細情報](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 

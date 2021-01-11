@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージの有効期限
 description: この記事では、Azure Service Bus メッセージの有効期限と Time to Live について説明します。 このような期限が過ぎると、メッセージは配信されなくなります。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ca789be91e835576ec06a422bdbbbf25eb775dac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41711428711533a6ecac449f59d415e86474545b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341213"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064725"
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 
@@ -27,9 +27,9 @@ ms.locfileid: "85341213"
 キューまたはトピックに送信されたすべてのメッセージには、[defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) プロパティでエンティティ レベルに設定された既定の有効期限が適用され、これは、作成中にポータルで設定し後で調整することもできます。 既定の有効期限は、[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) が明示的に設定されていないエンティティに送信されるすべてのメッセージに使用されます。 既定の有効期限は、**TimeToLive** 値の上限としても機能します。 **TimeToLive** 有効期限が既定値より長いメッセージは、エンキューされる前に **defaultMessageTimeToLive** の値に自動的に調整されます。
 
 > [!NOTE]
-> 特に指定されていない場合、ブローカー メッセージの既定の [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 値は [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) です。
+> 特に指定されていない場合、ブローカー メッセージの既定の [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 値は [TimeSpan.Max](/dotnet/api/system.timespan.maxvalue) です。
 >
-> メッセージング エンティティ (キューおよびトピック) の既定の有効期限も、Service Bus の Standard レベルと Premium レベルでは [TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue) です。  Basic レベルでは、既定の有効期間は 14 日間です。
+> メッセージング エンティティ (キューおよびトピック) の既定の有効期限も、Service Bus の Standard レベルと Premium レベルでは [TimeSpan.Max](/dotnet/api/system.timespan.maxvalue) です。  Basic レベルでは、既定の有効期間は 14 日間です。
 
 有効期限が切れたメッセージは、[EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) プロパティを設定するか、またはポータルでそれぞれのボックスにチェックを付けることで、[配信不能キュー](service-bus-dead-letter-queues.md)に移動することもできます。 オプションを無効のままにすると、期限切れのメッセージは削除されます。 配信不能キューに移動された期限切れのメッセージは、ユーザー プロパティ セクションにブローカーが保存する [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) プロパティを評価することで、他の配信不能キューと区別できます。この場合、値は [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) になります。
 

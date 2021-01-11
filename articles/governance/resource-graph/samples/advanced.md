@@ -1,14 +1,14 @@
 ---
 title: 高度なクエリのサンプル
 description: Azure Resource Graph を使用して、列の操作、使用されているタグの一覧表示、正規表現を使用したリソースの照合など、高度なクエリを実行します。
-ms.date: 07/14/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: 38013be583c74e968160cb7ec3a4dd32ede213b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ba00144a53afd041abe2513862d8a05a51e78809
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087494"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795679"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Resource Graph の高度なクエリのサンプル
 
@@ -29,6 +29,7 @@ Azure Resource Graph でクエリを理解する最初の手順は、[クエリ�
 - [リソース グループ上の特定のタグを含んだストレージ アカウントを検索する](#join-findstoragetag)
 - [2 つのクエリの結果を結合して 1 つの結果にする](#unionresults)
 - [DisplayNames でテナント名とサブスクリプション名を含める](#displaynames)
+- [電源状態の拡張プロパティ別に仮想マシンを集計する](#vm-powerstate)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
 
@@ -322,7 +323,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip"></a>仮想マシンとそのネットワーク インターフェイスおよびパブリック IP を一覧表示する
 
-このクエリでは、2 つの **leftouter** `join` コマンドを使用して、仮想マシンとそれに関連するネットワーク インターフェイス、さらに、それらのネットワーク インターフェイスに関連付けられたパブリック IP アドレスを結合します。
+このクエリでは、2 つの **leftouter** `join` コマンドを使用して、Resource Manager デプロイ モデルで作成された仮想マシン、それに関連するネットワーク インターフェイス、さらに、それらのネットワーク インターフェイスに関連付けられたパブリック IP アドレスを結合します。
 
 ```kusto
 Resources
@@ -525,9 +526,42 @@ Search-AzGraph -Query "ResourceContainers | where type=='microsoft.resources/sub
 
 ---
 
+## <a name="summarize-virtual-machine-by-the-power-states-extended-property"></a><a name="vm-powerstate"></a>電源状態の拡張プロパティ別に仮想マシンを集計する
+
+このクエリは、仮想マシンに対する[拡張プロパティ](../concepts/query-language.md#extended-properties)を使用して、電源状態別に集計します。
+
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az graph query -q "Resources | where type == 'microsoft.compute/virtualmachines' | summarize count() by tostring(properties.extended.instanceView.powerState.code)"
+```
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Search-AzGraph -Query "Resources | where type == 'microsoft.compute/virtualmachines' | summarize count() by tostring(properties.extended.instanceView.powerState.code)"
+```
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+:::image type="icon" source="../media/resource-graph-small.png"::: このクエリを Azure Resource Graph エクスプローラーで試してください。
+
+- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.com <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- Azure Government ポータル: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.us <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- Azure China 21Vianet ポータル: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D%3D%20%27microsoft.compute%2Fvirtualmachines%27%20%7C%20summarize%20count%28%29%20by%20tostring%28properties.extended.instanceView.powerState.code%29" target="_blank">portal.azure.cn <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+
+---
+
 ## <a name="include-the-tenant-and-subscription-names-with-displaynames"></a><a name="displaynames"></a>DisplayNames でテナント名とサブスクリプション名を含める
 
-このクエリは、新しい **Include** パラメーターと _DisplayNames_ オプションを使用して、**subscriptionDisplayName** と **tenantDisplayName** を結果に追加します。 このパラメーターは、Azure CLI と Azure PowerShell でのみ使用できます。
+このクエリは、_DisplayNames_ オプションを指定した **Include** パラメーター使用して、**subscriptionDisplayName** と **tenantDisplayName** を結果に追加します。 このパラメーターは、Azure CLI と Azure PowerShell でのみ使用できます。
 
 ```azurecli-interactive
 az graph query -q "limit 1" --include displayNames

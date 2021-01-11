@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 1f098b866eee6fd8555cafcec0f64a0a5f261f9e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 03a1e44ee3bdaa168fb3eb17078bfecb1f45c443
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079980"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479491"
 ---
 # <a name="restart-vms"></a>VM の再起動
 

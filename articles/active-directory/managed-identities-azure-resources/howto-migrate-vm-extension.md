@@ -3,7 +3,7 @@ title: マネージド ID VM 拡張機能の使用を停止する - Azure AD
 description: VM 拡張機能の使用を止めて、認証用の Azure Instance Metadata Service (IMDS) の使用を開始する手順を順を追って説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: markvi
-ms.openlocfilehash: afcbf5187a3b5ef3f44aebda22d376e9b796bf59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.author: barclayn
+ms.openlocfilehash: 5b298767f9814f76dd606bab29bd0b245dad6937
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848391"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260188"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>仮想マシンのマネージド ID 拡張機能の使用を止めて Azure Instance Metadata Service の使用を開始する方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "85848391"
 
 ### <a name="provision-the-extension"></a>拡張機能のプロビジョニング 
 
-マネージド ID を持つように仮想マシンまたは仮想マシン スケール セットを構成する場合、必要に応じて、[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) コマンドレットで `-Type` パラメーターを使用して、Azure リソースのマネージド ID VM 拡張機能をプロビジョニングするように選択することもできます。 仮想マシンのタイプに応じて `ManagedIdentityExtensionForWindows` または `ManagedIdentityExtensionForLinux` を渡し、`-Name` パラメーターを使用して名前を付けることができます。 `-Settings` パラメーターは、トークン取得用に OAuth トークン エンドポイントによって使用されるポートを指定します。
+マネージド ID を持つように仮想マシンまたは仮想マシン スケール セットを構成する場合、必要に応じて、[Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension) コマンドレットで `-Type` パラメーターを使用して、Azure リソースのマネージド ID VM 拡張機能をプロビジョニングするように選択することもできます。 仮想マシンのタイプに応じて `ManagedIdentityExtensionForWindows` または `ManagedIdentityExtensionForLinux` を渡し、`-Name` パラメーターを使用して名前を付けることができます。 `-Settings` パラメーターは、トークン取得用に OAuth トークン エンドポイントによって使用されるポートを指定します。
 
 ```powershell
    $settings = @{ "port" = 50342 }
@@ -96,7 +96,7 @@ Azure Resource Manager デプロイ テンプレートを使用して、仮想�
 仮想マシン拡張機能のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 この場合、仮想マシンを再起動してからやり直してください。 
 
 ### <a name="remove-the-extension"></a>拡張機能を削除する 
-この拡張機能を削除するには、Azure CLI または Powershell 用の `Remove-AzVMExtension` を使用して、仮想マシン スケール セット用の [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/) または [az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) で、`-n ManagedIdentityExtensionForWindows` または `-n ManagedIdentityExtensionForLinux` スイッチを使用します (VM の種類に応じます)。
+この拡張機能を削除するには、Azure CLI または Powershell 用の `Remove-AzVMExtension` を使用して、仮想マシン スケール セット用の [az vm extension delete](/cli/azure/vm/) または [az vmss extension delete](/cli/azure/vmss) で、`-n ManagedIdentityExtensionForWindows` または `-n ManagedIdentityExtensionForLinux` スイッチを使用します (VM の種類に応じます)。
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -196,7 +196,7 @@ Azure リソース仮想マシン拡張機能のマネージド ID (2019 年 1 �
 
 ## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-[Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) は、実行中の仮想マシン インスタンスに関する情報を提供します。これらの情報を使用して仮想マシンの管理と構成を行うことができる REST エンドポイントです。 このエンドポイントは、仮想マシンからのみアクセスすることができる、よく知られているルーティング不可能な IP アドレス (`169.254.169.254`) で使用できます。
+[Azure Instance Metadata Service (IMDS)](../../virtual-machines/windows/instance-metadata-service.md) は、実行中の仮想マシン インスタンスに関する情報を提供します。これらの情報を使用して仮想マシンの管理と構成を行うことができる REST エンドポイントです。 このエンドポイントは、仮想マシンからのみアクセスすることができる、よく知られているルーティング不可能な IP アドレス (`169.254.169.254`) で使用できます。
 
 Azure IMDS を使用トークンを要求することには、いくつかの利点があります。 
 
@@ -212,4 +212,4 @@ Azure IMDS を使用トークンを要求することには、いくつかの利
 ## <a name="next-steps"></a>次の手順
 
 * [Azure 仮想マシン上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法](how-to-use-vm-token.md)
-* [Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+* [Azure Instance Metadata Service](../../virtual-machines/windows/instance-metadata-service.md)

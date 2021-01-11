@@ -3,18 +3,23 @@ title: レジストリの正常性をチェックする
 description: Azure コンテナー レジストリの使用時の一般的な問題 (ローカル Docker の構成やレジストリへの接続性など) を特定するためのクイック診断コマンドを実行する方法について説明します。
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74456417"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245385"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure コンテナー レジストリの正常性のチェック
 
 Azure コンテナー レジストリを使用しているときに、問題が発生する場合があります。 たとえば、ローカル環境の Docker に問題があるために、コンテナー イメージをプルできない場合があります。 また、ネットワークの問題により、レジストリに接続できない場合もあります。 
 
 最初の診断手順として、[az acr check-health][az-acr-check-health] コマンドを実行して、環境の正常性に関する情報を取得し、必要に応じてターゲット レジストリにアクセスします。 このコマンドは Azure CLI バージョン 2.0.67 以降で使用できます。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+
+レジストリの追加のトラブルシューティング ガイダンスについては、以下を参照してください。
+* [レジストリ ログインのトラブルシューティング](container-registry-troubleshoot-login.md)
+* [レジストリに関するネットワークの問題のトラブルシューティング](container-registry-troubleshoot-access.md)
+* [レジストリのパフォーマンスのトラブルシューティング](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>az acr check-health を実行する
 

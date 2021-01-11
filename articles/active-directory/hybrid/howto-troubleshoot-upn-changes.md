@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 885d30305ba2b186052e17b9b455b2248bca541b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: caf0fdf5fd167987ea0fd7111a05b04bd5bf848f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608519"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279790"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory でのユーザー プリンシパル名の変更の計画とトラブルシューティング
 
@@ -71,14 +71,14 @@ Active Directory では、既定の UPN サフィックスは、ユーザー ア
 
 username@contoso.com
 
- ただし、Active Directory ドメインと信頼関係を使用して、[複数の UPN サフィックスを追加する](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)こともできます。 
+ ただし、Active Directory ドメインと信頼関係を使用して、[複数の UPN サフィックスを追加する](../fundamentals/add-custom-domain.md)こともできます。 
 
 たとえば、labs.contoso.com を追加し、ユーザーの UPN とメール アドレスにそれを反映させることができます。 この場合、次のようになります
 
 username@labs.contoso.com.
 
 >[!IMPORTANT]
-> [Active Directory でサフィックスを変更](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)した場合は、一致するカスタム ドメイン名を [Azure AD に追加して検証する](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)必要があります。 
+> [Active Directory でサフィックスを変更](../fundamentals/add-custom-domain.md)した場合は、一致するカスタム ドメイン名を [Azure AD に追加して検証する](../fundamentals/add-custom-domain.md)必要があります。 
 
 ![検証済みドメインのスクリーンショット](./media/howto-troubleshoot-upn-changes/custom-domains.png)
 
@@ -101,7 +101,7 @@ userPrincipalName 属性の値が Azure AD の検証済みドメインに対応�
 
 ### <a name="roll-out-bulk-upn-changes"></a>UPN の一括変更をロールアウトする
 
-UPN の一括変更については、[パイロットのベスト プラクティス](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)に従ってください。 また、すぐに解決できない問題が見つかった場合に UPN を元に戻すため、テスト済みのロールバック計画も用意します。 パイロットを実行したら、さまざまな組織の役割とアプリやデバイスの特定のセットが含まれる少数のユーザーのセットを対象にすることができます。
+UPN の一括変更については、[パイロットのベスト プラクティス](../fundamentals/active-directory-deployment-plans.md)に従ってください。 また、すぐに解決できない問題が見つかった場合に UPN を元に戻すため、テスト済みのロールバック計画も用意します。 パイロットを実行したら、さまざまな組織の役割とアプリやデバイスの特定のセットが含まれる少数のユーザーのセットを対象にすることができます。
 
 この最初のユーザーのサブセットを使用すると、ユーザーが変更の一部として期待する内容を把握できます。 この情報をユーザーのコミュニケーションに含めます。
 
@@ -111,22 +111,22 @@ UPN の一括変更については、[パイロットのベスト プラクテ�
 
 ## <a name="apps-known-issues-and-workarounds"></a>アプリの既知の問題と回避策
 
-[サービスとしてのソフトウェア (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) アプリケーションおよび基幹業務 (LoB) アプリケーションでは、多くの場合、UPN を利用して、ユーザーの検索や、ロールなどのユーザー プロファイル情報の格納が行われます。 ユーザーが初めてアプリにサインインするときにユーザー プロファイルを作成するために [Just-In-Time プロビジョニング](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)を使用するアプリケーションは、UPN の変更によって影響を受ける可能性があります。
+[サービスとしてのソフトウェア (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) アプリケーションおよび基幹業務 (LoB) アプリケーションでは、多くの場合、UPN を利用して、ユーザーの検索や、ロールなどのユーザー プロファイル情報の格納が行われます。 ユーザーが初めてアプリにサインインするときにユーザー プロファイルを作成するために [Just-In-Time プロビジョニング](../app-provisioning/user-provisioning.md)を使用するアプリケーションは、UPN の変更によって影響を受ける可能性があります。
 
 **既知の問題**<br>
-ユーザーの UPN を変更すると、Azure AD ユーザーと、アプリケーションで作成されたユーザー プロファイルの間の関係が壊れる可能性があります。 アプリケーションで [Just-In-Time プロビジョニング](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)を使用している場合は、新しいユーザー プロファイルが作成される可能性があります。 その場合、アプリケーション管理者は手動で変更を行って、この関係を修正する必要があります。
+ユーザーの UPN を変更すると、Azure AD ユーザーと、アプリケーションで作成されたユーザー プロファイルの間の関係が壊れる可能性があります。 アプリケーションで [Just-In-Time プロビジョニング](../app-provisioning/user-provisioning.md)を使用している場合は、新しいユーザー プロファイルが作成される可能性があります。 その場合、アプリケーション管理者は手動で変更を行って、この関係を修正する必要があります。
 
 **回避策**<br>
-[Azure AD の自動化されたユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を使用すると、サポートされているクラウド アプリケーションでのユーザー ID を自動的に作成、管理、削除できます。 アプリケーションで自動化されたユーザー プロビジョニングを構成すると、アプリケーションの UPN が自動的に更新されます。 プログレッシブ ロールアウトの一部としてアプリケーションをテストし、UPN の変更によって影響を受けないことを検証します。
-開発者は、[アプリケーションに SCIM サポートを追加](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)して、Azure Active Directory からの自動ユーザー プロビジョニングを有効にすることを検討してください。 
+[Azure AD の自動化されたユーザー プロビジョニング](../app-provisioning/user-provisioning.md)を使用すると、サポートされているクラウド アプリケーションでのユーザー ID を自動的に作成、管理、削除できます。 アプリケーションで自動化されたユーザー プロビジョニングを構成すると、アプリケーションの UPN が自動的に更新されます。 プログレッシブ ロールアウトの一部としてアプリケーションをテストし、UPN の変更によって影響を受けないことを検証します。
+開発者は、[アプリケーションに SCIM サポートを追加](../app-provisioning/use-scim-to-provision-users-and-groups.md)して、Azure Active Directory からの自動ユーザー プロビジョニングを有効にすることを検討してください。 
 
 ## <a name="managed-devices-known-issues-and-workarounds"></a>マネージド デバイスに関する既知の問題と回避策
 
-[Azure AD にデバイスを設定する](https://docs.microsoft.com/azure/active-directory/devices/overview)ことにより、クラウドとオンプレミス リソースの間でシングル サインオン (SSO) を使用して、ユーザーの生産性を最大化できます。
+[Azure AD にデバイスを設定する](../devices/overview.md)ことにより、クラウドとオンプレミス リソースの間でシングル サインオン (SSO) を使用して、ユーザーの生産性を最大化できます。
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD 参加済みデバイス
 
-[Azure AD 参加](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-ad-join)デバイスは Azure AD に直接参加し、ユーザーは組織の ID を使用してデバイスにサインインできます。
+[Azure AD 参加](../devices/concept-azure-ad-join.md)デバイスは Azure AD に直接参加し、ユーザーは組織の ID を使用してデバイスにサインインできます。
 
 **既知の問題** <br>
 認証を Azure AD に依存するアプリケーションで、シングル サインオンに関する問題が発生する可能性があります。
@@ -135,14 +135,14 @@ UPN の一括変更については、[パイロットのベスト プラクテ�
 この項で説明した問題は、2020 年 5 月の Windows 10 更新プログラム (2004) で修正されました。
 
 **回避策** <br>
-UPN の変更が Azure AD に同期されるのに十分な時間を確保します。 新しい UPN が Azure AD ポータルに反映されたことを確認した後、[その他のユーザー] タイルを選択して新しい UPN でサインインするようにユーザーに依頼します。 [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0) を使用して確認することもできます。 新しい UPN でサインインした後も、古い UPN への参照により、[職場または学校へのアクセス] という Windows の設定が表示される場合があります。
+UPN の変更が Azure AD に同期されるのに十分な時間を確保します。 新しい UPN が Azure AD ポータルに反映されたことを確認した後、[その他のユーザー] タイルを選択して新しい UPN でサインインするようにユーザーに依頼します。 [PowerShell](/powershell/module/azuread/get-azureaduser?view=azureadps-2.0) を使用して確認することもできます。 新しい UPN でサインインした後も、古い UPN への参照により、[職場または学校へのアクセス] という Windows の設定が表示される場合があります。
 
 ![検証済みドメインのスクリーンショット](./media/howto-troubleshoot-upn-changes/other-user.png)
 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
-[ハイブリッド Azure AD 参加済み](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-ad-join-hybrid)デバイスは、Active Directory と Azure AD に参加しています。 環境にオンプレミスの Active Directory フットプリントがあり、Azure AD によって提供される機能も利用したい場合は、Hybrid Azure AD 参加済みデバイスを実装できます。
+[ハイブリッド Azure AD 参加済み](../devices/concept-azure-ad-join-hybrid.md)デバイスは、Active Directory と Azure AD に参加しています。 環境にオンプレミスの Active Directory フットプリントがあり、Azure AD によって提供される機能も利用したい場合は、Hybrid Azure AD 参加済みデバイスを実装できます。
 
 **既知の問題** 
 
@@ -163,18 +163,18 @@ Windows 10 の Hybrid Azure AD 参加済みデバイスでは、予期しない�
 
 **dsregcmd /leave**
 
-Windows Hello for Business が使用されている場合、ユーザーは[再登録する](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision)必要があります。 Windows 7 および8.1 のデバイスは、UPN 変更後のこの問題による影響を受けません。
+Windows Hello for Business が使用されている場合、ユーザーは[再登録する](/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-whfb-provision)必要があります。 Windows 7 および8.1 のデバイスは、UPN 変更後のこの問題による影響を受けません。
 
 
 ## <a name="microsoft-authenticator-known-issues-and-workarounds"></a>Microsoft Authenticator に関する既知の問題と回避策
 
-組織では、組織のアプリケーションやデータへのサインインとアクセスに、[Microsoft Authenticator アプリ](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview)の使用が要求されている場合があります。 アプリにユーザー名が表示される場合でも、ユーザーが登録プロセスを完了するまで、アカウントは検証方法として機能するように設定されません。
+組織では、組織のアプリケーションやデータへのサインインとアクセスに、[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)の使用が要求されている場合があります。 アプリにユーザー名が表示される場合でも、ユーザーが登録プロセスを完了するまで、アカウントは検証方法として機能するように設定されません。
 
-[Microsoft Authenticator アプリ](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview)には、次の 4 つの主要な機能があります。
+[Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)には、次の 4 つの主要な機能があります。
 
 * プッシュ通知または確認コードを使用した多要素認証
 
-* [ブローカー認証](https://docs.microsoft.com/azure/active-directory/develop/brokered-auth)を使用するアプリケーションにシングル サインオンを提供するための、iOS および Android デバイスでの認証ブローカーとしての機能
+* [ブローカー認証](../develop/brokered-auth.md)を使用するアプリケーションにシングル サインオンを提供するための、iOS および Android デバイスでの認証ブローカーとしての機能
 
 * Intune App Protection やデバイスの登録と管理などの他の機能に対する要件である、Azure AD へのデバイスの登録 (Workplace Join とも呼ばれます)
 
@@ -182,11 +182,11 @@ Windows Hello for Business が使用されている場合、ユーザーは[再�
 
 ### <a name="multi-factor-authentication-with-android-devices"></a>Android デバイスでの Multi-Factor Authentication
 
-Microsoft Authenticator アプリには、帯域外検証オプションが用意されています。 [Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks) では、サインイン時にユーザーに自動音声通話または SMS 送信を行うのではなく、ユーザーのスマートフォンまたはタブレットの Microsoft Authenticator アプリにプッシュ通知が行われます。 ユーザーはアプリで [許可] をタップ (または、PIN または生体認証情報を入力して [認証] をタップ) するだけで、サインインを完了することができます。
+Microsoft Authenticator アプリには、帯域外検証オプションが用意されています。 [Multi-Factor Authentication (MFA)](../authentication/concept-mfa-howitworks.md) では、サインイン時にユーザーに自動音声通話または SMS 送信を行うのではなく、ユーザーのスマートフォンまたはタブレットの Microsoft Authenticator アプリにプッシュ通知が行われます。 ユーザーはアプリで [許可] をタップ (または、PIN または生体認証情報を入力して [認証] をタップ) するだけで、サインインを完了することができます。
 
 **既知の問題** 
 
-ユーザーの UPN を変更すると、ユーザー アカウントに古い UPN が引き続き表示され、通知が受信されない可能性があります。 [検証コード](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-faq)は引き続き機能します。
+ユーザーの UPN を変更すると、ユーザー アカウントに古い UPN が引き続き表示され、通知が受信されない可能性があります。 [検証コード](../user-help/user-help-auth-app-faq.md)は引き続き機能します。
 
 **回避策**
 
@@ -202,7 +202,7 @@ Microsoft Authenticator のように、Android および iOS のブローカー�
 
 * アプリケーション ID の検証 - アプリケーションはブローカーを呼び出してリダイレクト URL を渡し、それがブローカーによって検証されます。
 
-さらに、アプリケーションでは、[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/)などのより高度な機能に参加し、[Microsoft Intune のシナリオ](https://docs.microsoft.com/azure/active-directory/develop/msal-net-use-brokers-with-xamarin-apps)をサポートすることができます。
+さらに、アプリケーションでは、[条件付きアクセス](../conditional-access/index.yml)などのより高度な機能に参加し、[Microsoft Intune のシナリオ](../develop/msal-net-use-brokers-with-xamarin-apps.md)をサポートすることができます。
 
 **既知の問題**<br>
 アプリケーションによって渡される login_hint とブローカーに格納されている UPN が一致しないために、ブローカーで支援されたサインインを使用する新しいアプリケーションでは、ユーザーにより対話的な認証プロンプトが提供されます。
@@ -240,17 +240,17 @@ UPN を変更すると、新しい UPN を使用する新しいアカウント�
 複数のユーザーが同じキーに登録されている場合、サインイン画面のアカウント選択ページに古い UPN が表示されます。 セキュリティ キーを使用したサインインは、UPN の変更による影響を受けません。  
 
 **回避策**<br>
-古い UPN への参照を削除するには、ユーザーは[セキュリティ キーをリセットして再登録する](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-security-key#known-issues)必要があります。
+古い UPN への参照を削除するには、ユーザーは[セキュリティ キーをリセットして再登録する](../authentication/howto-authentication-passwordless-security-key.md#known-issues)必要があります。
 
 ## <a name="onedrive-known-issues-and-workarounds"></a>OneDrive に関する既知の問題と回避策
 
-OneDrive のユーザーは、UPN の変更後に問題が発生することがわかっています。 詳細については、「[UPN の変更が OneDrive の URL と OneDrive の機能に与える影響](https://docs.microsoft.com/onedrive/upn-changes)」を参照してください。
+OneDrive のユーザーは、UPN の変更後に問題が発生することがわかっています。 詳細については、「[UPN の変更が OneDrive の URL と OneDrive の機能に与える影響](/onedrive/upn-changes)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 次のリソースを参照してください。
-* [Azure AD Connect:設計概念](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts)
+* [Azure AD Connect:設計概念](./plan-connect-design-concepts.md)
 
-* [Azure AD の UserPrincipalName の設定](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-userprincipalname)
+* [Azure AD の UserPrincipalName の設定](./plan-connect-userprincipalname.md)
 
-* [Microsoft ID プラットフォームの ID トークン](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)
+* [Microsoft ID プラットフォームの ID トークン](../develop/id-tokens.md)

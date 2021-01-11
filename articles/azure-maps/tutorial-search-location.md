@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:マップ上の近くの場所を検索する | Microsoft Azure Maps
-description: このチュートリアルでは、Microsoft Azure Maps を使用して、マップ上で目的地を検索する方法について学習します。
+description: マップ上で目的地を検索する方法について説明します。 Azure Maps Web SDK を使用して、検索機能と対話型のポップアップ ボックスをマップに追加する方法をご覧ください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8dc430febb25283ab5bd32496bb2f71ba19c895b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281533"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035860"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>チュートリアル:Azure Maps を使用して近くの目的地を検索する
 

@@ -3,12 +3,12 @@ title: Azure Monitor ログのデータ モデル
 description: この記事では、Azure Backup データに使用する Azure Monitor Log Analytics データ モデルの詳細について説明します。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7822f88c9ea3e0cd83b7e600d63984a8a51becb1
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539076"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890265"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 
@@ -94,14 +94,14 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 
 | フィールド | データ型 | 説明 |
 | --- | --- | --- |
-| EventName_s |Text |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |  
+| EventName_s |Text |このフィールドは、このイベントの名前を表します。 これは常に AzureBackupCentralReport です |  
 | BackupItemUniqueId_s |Text |バックアップ項目の一意の ID |
-| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョンを表します これは **V2** です |
 | State_s |Text |バックアップ項目アソシエーション オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |Text |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | BackupItemSourceSize_s |Text | バックアップ項目のフロント エンドのサイズ |
 | BackupManagementServerUniqueId_s |Text | 該当する場合、バックアップ項目の保護に使用されるバックアップ管理サーバーを一意に識別するフィールド |
-| カテゴリ |Text |このフィールドは Log Analytics にプッシュされた診断データのカテゴリ (AzureBackupReport) を表します。 |
+| カテゴリ |Text |このフィールドは Log Analytics にプッシュされた診断データのカテゴリを表します。 これは AzureBackupReport です |
 | OperationName |Text |このフィールドは現在の操作の名前 (BackupItemAssociation) を表します。 |
 | リソース |Text |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | ProtectedContainerUniqueId_s |Text |バックアップ項目に関連付けられている保護されるサーバーの一意の識別子 (V1 では ProtectedServerUniqueId_s でした) |
@@ -144,7 +144,7 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 | State_s |Text |ジョブ オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |Text |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |Text |このフィールドは現在の操作の名前 (Job) を表します。 |
-| カテゴリ |Text |このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AzureBackupReport) を表します |
+| カテゴリ |Text |このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリを表します。 これは AzureBackupReport です |
 | リソース |Text |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | ProtectedServerUniqueId_s |Text |ジョブに関連付けられている保護されるサーバーの一意の識別子 |
 | ProtectedContainerUniqueId_s |Text | ジョブが実行される保護されたコンテナーを識別する、一意の ID |
@@ -174,12 +174,12 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 
 | フィールド | データ型 | 適用可能なバージョン | 説明 |
 | --- | --- | --- | --- |
-| EventName_s |Text ||このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
-| SchemaVersion_s |Text ||このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| EventName_s |Text ||このフィールドは、このイベントの名前を表します。 これは常に AzureBackupCentralReport です |
+| SchemaVersion_s |Text ||このフィールドは、スキーマの現在のバージョンを表します これは **V2** です |
 | State_s |Text ||ポリシー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |Text ||バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |Text ||このフィールドは現在の操作の名前 (Policy) を表します。 |
-| カテゴリ |Text ||このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AzureBackupReport) を表します |
+| カテゴリ |Text ||このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリを表します。 これは AzureBackupReport です |
 | リソース |Text ||これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | PolicyUniqueId_g |Text ||ポリシーを識別する一意の ID |
 | PolicyName_s |Text ||定義されたポリシーの名前 |
@@ -222,12 +222,12 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 
 | フィールド | データ型 | 適用可能なバージョン | 説明 |
 | --- | --- | --- | --- |
-| EventName_s |Text ||このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
-| SchemaVersion_s |Text ||このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| EventName_s |Text ||このフィールドは、このイベントの名前を表します。 これは常に AzureBackupCentralReport です |
+| SchemaVersion_s |Text ||このフィールドは、スキーマの現在のバージョンを表します これは **V2** です |
 | State_s |Text ||ポリシー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |Text ||バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |Text ||このフィールドは現在の操作の名前 (PolicyAssociation) を表します。 |
-| カテゴリ |Text ||このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AzureBackupReport) を表します |
+| カテゴリ |Text ||このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリを表します。 これは AzureBackupReport です |
 | リソース |Text ||これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | PolicyUniqueId_g |Text ||ポリシーを識別する一意の ID |
 | VaultUniqueId_s |Text ||ポリシーが属しているコンテナーの一意の ID |
@@ -266,12 +266,12 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 | --- | --- | --- |
 | CloudStorageInBytes_s |10 進数 |最新の値に基づいて計算された、バックアップによって使用されるクラウド バックアップ ストレージ (このフィールドは v1 スキーマ専用です)|
 | ProtectedInstances_s |10 進数 |最新の値に基づいて計算された、課金されるフロントエンド ストレージの計算に使用する保護されるインスタンスの数 |
-| EventName_s |Text |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
-| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| EventName_s |Text |このフィールドは、このイベントの名前を表します。 これは常に AzureBackupCentralReport です |
+| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョンを表します これは **V2** です |
 | State_s |Text |ストレージ オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |Text |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | OperationName |Text |このフィールドは現在の操作の名前 (Storage) を表します。 |
-| カテゴリ |Text |このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AzureBackupReport) を表します |
+| カテゴリ |Text |このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリを表します。 これは AzureBackupReport です |
 | リソース |Text |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | ProtectedServerUniqueId_s |Text |ストレージを計算するために使用する保護されるサーバーの一意の ID |
 | VaultUniqueId_s |Text |ストレージを計算するために使用するコンテナーの一意の ID |
@@ -293,7 +293,7 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 | フィールド | データ型 | 説明 |
 | --- | --- |  --- |
 | StorageUniqueId_s |Text |ストレージ エントリの識別に使用される一意 ID |
-| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョンを表します これは **V2** です |
 | BackupItemUniqueId_s |Text |ストレージ エントリに関連するバックアップ項目の識別に使用される一意 ID |
 | BackupManagementServerUniqueId_s |Text |ストレージ エントリに関連するバックアップ管理サーバーの識別に使用される一意 ID|
 | VaultUniqueId_s |Text |ストレージ エントリに関連するコンテナーの識別に使用される一意 ID|
@@ -306,11 +306,11 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 
 | フィールド | データ型 | 説明 |
 | --- | --- | --- |
-| EventName_s |Text |このフィールドはこのイベントの名前 (常に AzureBackupCentralReport) を表します。 |
-| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| EventName_s |Text |このフィールドは、このイベントの名前を表します。 これは常に AzureBackupCentralReport です |
+| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョンを表します これは **V2** です |
 | State_s |Text |コンテナー オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | OperationName |Text |このフィールドは現在の操作の名前 (Vault) を表します。 |
-| カテゴリ |Text |このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリ (AzureBackupReport) を表します |
+| カテゴリ |Text |このフィールドは Azure Monitor ログにプッシュされた診断データのカテゴリを表します。 これは AzureBackupReport です |
 | リソース |Text |これはデータの収集対象のリソースであり、Recovery Services コンテナー名を示します。 |
 | VaultUniqueId_s |Text |コンテナーの一意の ID |
 | VaultName_s |Text |コンテナーの名前 |
@@ -461,35 +461,37 @@ Azure Diagnostics テーブルにある Azure Backup データのクエリを作
     ````
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 スキーマと V2 スキーマ
-以前は、Azure Backup エージェントと Azure VM のバックアップの診断データは、"***V1 スキーマ***" と呼ばれるスキーマの Azure Diagnostics テーブルに送信されました。 その後、他のシナリオやワークロードをサポートするために新しい列が追加され、診断データは "***V2 スキーマ***" と呼ばれる新しいスキーマにプッシュされました。 
 
-旧バージョンとの互換性の理由により、Azure Backup エージェントと Azure VM のバックアップの診断データは、現在、V1 スキーマと V2 スキーマの両方の Azure Diagnostics テーブルに送信されます (V1 スキーマは非推奨のパスになりました)。 ログ クエリで SchemaVersion_s=="V1" のレコードをフィルター処理すると、Log Analytics のどのレコードが V1 スキーマのものであるかを識別できます。 
+以前は、Azure Backup エージェントと Azure VM のバックアップの診断データは、"***V1 スキーマ***" と呼ばれるスキーマの Azure Diagnostics テーブルに送信されました。 その後、他のシナリオやワークロードをサポートするために新しい列が追加され、診断データは "***V2 スキーマ***" と呼ばれる新しいスキーマにプッシュされました。  
+
+旧バージョンとの互換性の理由により、Azure Backup エージェントと Azure VM のバックアップの診断データは、現在、V1 スキーマと V2 スキーマの両方の Azure Diagnostics テーブルに送信されます (V1 スキーマは非推奨のパスになりました)。 ログ クエリで SchemaVersion_s=="V1" のレコードをフィルター処理すると、Log Analytics のどのレコードが V1 スキーマのものであるかを識別できます。
 
 V1 スキーマのみに属する列を特定するには、上記で説明した[データ モデル](#using-azure-backup-data-model)の 3 列目にある「説明」を参照してください。
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>V2 スキーマを使用するようにクエリを変更する
+
 V1 スキーマは非推奨になる予定であるため、Azure Backup 診断データに対するすべてのカスタム クエリで V2 スキーマのみを使用することをお勧めします。 以下に、V1 スキーマへの依存関係を削除するようにクエリを更新する方法の例を示します。
 
 1. V1 スキーマにのみ適用可能なフィールドがクエリで使用されているかどうかを確認します。 次のように、すべてのバックアップ項目とそれに関連付けられている保護されるサーバーを一覧表示するクエリがあるとします。
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+    ````
 
-上記のクエリでは、V1 スキーマにのみ適用可能なフィールド ProtectedServerUniqueId_s が使用されています。 このフィールドに相当する V2 スキーマでのフィールドは、ProtectedContainerUniqueId_s です (上の表を参照)。 フィールド BackupItemUniqueId_s は V2 スキーマにも適用でき、同じフィールドをこのクエリで使用できます。
+    上記のクエリでは、V1 スキーマにのみ適用可能なフィールド ProtectedServerUniqueId_s が使用されています。 このフィールドに相当する V2 スキーマでのフィールドは、ProtectedContainerUniqueId_s です (上の表を参照)。 フィールド BackupItemUniqueId_s は V2 スキーマにも適用でき、同じフィールドをこのクエリで使用できます。
 
-2. V2 スキーマのフィールド名を使用するようにクエリを更新します。 すべてのクエリでフィルター where SchemaVersion_s == "V2" を使用することをお勧めします。これにより、V2 スキーマに対応するレコードのみがクエリによって解析されます。
+2. V2 スキーマのフィールド名を使用するようにクエリを更新します。 すべてのクエリでフィルター **where SchemaVersion_s == "V2"** を使用することをお勧めします。これにより、V2 スキーマに対応するレコードのみがクエリによって解析されます。
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| where SchemaVersion_s=="V2"
-| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | where SchemaVersion_s=="V2"
+    | distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s
+    ````
 
 ## <a name="next-steps"></a>次のステップ
 

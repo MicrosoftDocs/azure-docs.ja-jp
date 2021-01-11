@@ -23,7 +23,7 @@ ms.locfileid: "79533183"
 > * Blockchain Data Manager インスタンスを作成する
 > * トランザクションのプロパティとイベントをデコードするブロックチェーン アプリケーションを追加する
 > * トランザクション データを保存する Azure Cosmos DB アカウントとデータベースを作成する
-> * Azure Event Grid トピックを Azure Cosmos DB に接続する Azure ロジック アプリを作成する
+> * Azure Event Grid トピックを Azure Cosmos DB に接続する Azure Logic Apps を作成する
 > * ブロックチェーン台帳にトランザクションを送信する
 > * Azure Cosmos DB でデコードされたトランザクション データを表示する
 

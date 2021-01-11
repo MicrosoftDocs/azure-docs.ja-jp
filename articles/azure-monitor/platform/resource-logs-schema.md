@@ -4,19 +4,19 @@ description: Azure リソース ログでサポートされているサービス
 ms.subservice: logs
 ms.topic: reference
 ms.date: 06/15/2020
-ms.openlocfilehash: 37c4093e52caf091489c60a8cdf497cffeffe9ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2dc4030816ab0b31befe46ac60d5e96fdae917
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413860"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782126"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
 > [!NOTE]
 > リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が Azure リソースだけを含むようになったため、2019 年 10 月に変更されました。 また、収集できるリソース ログのカテゴリの一覧は、この記事に表示されていました。 これらは、[リソース ログのカテゴリ](resource-logs-categories.md)に移動しました。 
 
-[Azure Monitor リソース ログ](../../azure-monitor/platform/platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。
+[Azure Monitor リソース ログ](./platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。
 
 (`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 この記事では、リソース ログの上位スキーマについて説明し、各サービスのスキーマへのリンクを示します。
 
@@ -60,10 +60,11 @@ ms.locfileid: "85413860"
 | Cognitive Services | [Azure Cognitive Services のログ記録](../../cognitive-services/diagnostic-logging.md) |
 | Container Registry | [Azure Container Registry のログ記録](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [CDN の Azure ログ](../../cdn/cdn-azure-diagnostic-logs.md) |
-| Cosmos DB | [Azure Cosmos DB のログ](../../cosmos-db/logging.md) |
+| Cosmos DB | [Azure Cosmos DB のログ](../../cosmos-db/monitor-cosmos-db.md) |
 | Data Factory | [Azure Monitor を使用して、データ ファクトリを監視する](../../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics のログへのアクセス](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store のログへのアクセス](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
+| Azure Databricks | [Azure Databricks の診断ログ](https://github.com/MicrosoftDocs/databricks-pr/blob/live/databricks/administration-guide/account-settings/azure-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs のログ](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | スキーマは使用できません。 |
 | Azure Firewall | スキーマは使用できません。 |
@@ -74,7 +75,7 @@ ms.locfileid: "85413860"
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDOS Protection | [Azure DDoS Protection Standard を管理する](../../virtual-network/manage-ddos-protection.md) |
-| Power BI 専用 | [Azure の Power BI Embedded のログ記録](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
+| Power BI 専用 | [Azure の Power BI Embedded のログ記録](/power-bi/developer/azure-pbie-diag-logs) |
 | 復旧サービス | [Azure Backup のデータ モデル](../../backup/backup-azure-reports-data-model.md)|
 | 検索 |[検索トラフィックの分析の有効化と使用](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus のログ](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,7 +89,8 @@ ms.locfileid: "85413860"
 ## <a name="next-steps"></a>次の手順
 
 * [収集できるリソース ログのカテゴリを確認する](resource-logs-categories.md)
-* [リソース ログの詳細を確認する](../../azure-monitor/platform/platform-logs-overview.md)
-* [リソースのリソース ログを **Event Hubs** にストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
-* [Azure Monitor REST API を使用してリソース ログの診断設定を変更する](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
-* [Log Analytics を使用した、Azure ストレージからのログの分析](../../azure-monitor/platform/collect-azure-metrics-logs.md)
+* [リソース ログの詳細を確認する](./platform-logs-overview.md)
+* [リソースのリソース ログを **Event Hubs** にストリーミングする](./resource-logs.md#send-to-azure-event-hubs)
+* [Azure Monitor REST API を使用してリソース ログの診断設定を変更する](/rest/api/monitor/diagnosticsettings)
+* [Log Analytics を使用した、Azure ストレージからのログの分析](./resource-logs.md#send-to-log-analytics-workspace)
+

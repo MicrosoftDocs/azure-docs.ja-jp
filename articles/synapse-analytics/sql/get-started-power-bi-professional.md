@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f5699624300d262630c9582131d00f33f5ce5be9
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 497c6f669699f1e1ce879c0c7da2593256b97448
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212889"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501101"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Power BI Professional で Synapse SQL に接続する
 
@@ -90,7 +90,7 @@ SECRET = '';
 GO
 ```
 
-## <a name="creating-power-bi-desktop-report"></a>Power BI Desktop レポートの作成
+## <a name="create-a-power-bi-desktop-report"></a>Power BI Desktop レポートを作成する
 
 Power BI Desktop アプリケーションを開き、 **[データの取得]** オプションを選択します。
 

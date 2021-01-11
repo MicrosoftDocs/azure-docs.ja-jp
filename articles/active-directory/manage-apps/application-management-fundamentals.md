@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c633f6d311d052b9f9388a38b17c6459aec4b6cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760271"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642437"
 ---
 # <a name="application-management-best-practices"></a>アプリケーション管理のベスト プラクティス
 
@@ -33,8 +33,8 @@ ms.locfileid: "84760271"
 | アプリについて Azure AD アプリケーション ギャラリーをチェックする  | Azure AD には、エンタープライズ シングル サインオン (SSO) に対応した、事前に統合された何千ものアプリケーションが含まれるギャラリーがあります。 アプリ固有のセットアップのガイダンスについては、[SaaS アプリのチュートリアルの一覧](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)を参照してください。  | 
 | SAML ベースのフェデレーション SSO を使用する  | アプリケーションがサポートしている場合は、パスワード ベースの SSO や ADFS ではなく、SAML ベースのフェデレーション SSO を Azure AD で使用します。  | 
 | 証明書の署名には SHA-256 を使用する  | Azure AD は、既定では SHA-256 アルゴリズムを使用して、SAML 応答に署名します。 アプリケーションで SHA-1 が必要な場合以外は、SHA-256 を使用します (「[証明書署名オプション](certificate-signing-options.md)」と[アプリケーションのサインインの問題](application-sign-in-problem-application-error.md)に関するページを参照してください。)  | 
-| ユーザー割り当てを要求する  | 既定では、ユーザーは自分への割り当てなしにエンタープライズ アプリケーションにアクセスできます。 ただし、アプリケーションがロールを公開している場合、またはアプリケーションがユーザーのアクセス パネルに表示されるようにする場合は、ユーザー割り当てが必要です。 ([アプリケーションの統合に関する開発者ガイド](developer-guidance-for-integrating-applications.md)を参照してください。)  | 
-| [マイ アプリ] アクセス パネルをユーザーにデプロイする | `https://myapps.microsoft.com` の[アクセス パネル](end-user-experiences.md)は、割り当てられたクラウドベースのアプリケーションのために、単一のエントリ ポイントをユーザーに提供する Web ベースのポータルです。 グループ管理やセルフサービス パスワード リセット などの追加機能が加えられても、ユーザーはアクセス パネルでそれらを見つけることができます。 [アクセス パネルのデプロイの計画](access-panel-deployment-plan.md)に関するページを参照してください。
+| ユーザー割り当てを要求する  | 既定では、ユーザーは自分への割り当てなしにエンタープライズ アプリケーションにアクセスできます。 ただし、アプリケーションでロールが公開されている場合、またはユーザーのマイ アプリにアプリケーションを表示する場合は、ユーザー割り当てが必要です。 ([アプリケーションの統合に関する開発者ガイド](developer-guidance-for-integrating-applications.md)を参照してください。)  | 
+| マイ アプリをユーザー向けにデプロイする | `https://myapps.microsoft.com` の[マイ アプリ](end-user-experiences.md)は、割り当てられたクラウドベースのアプリケーションのために、単一のエントリ ポイントをユーザーに提供する Web ベースのポータルです。 グループ管理やセルフサービス パスワード リセットなどの追加機能が追加されても、ユーザーはマイ アプリでそれらを見つけることができます。 詳細については、「[マイ アプリのデプロイの計画](access-panel-deployment-plan.md)」を参照してください。
 | グループの割り当てを使用する  | サブスクリプションに含まれる場合は、グループをアプリケーションに割り当てて、継続的なアクセス管理をグループ所有者に委任できるようにします。 ([アプリケーションの統合に関する開発者ガイド](developer-guidance-for-integrating-applications.md)を参照してください。)   | 
 | 証明書管理のためのプロセスを確立する | 署名証明書の最長有効期間は 3 年です。 証明書の期限切れによる停止を防止または最小限にするには、ロールとメール配布リストを使用して、証明書関連の変更通知が厳重に監視されるようにします。 |
 

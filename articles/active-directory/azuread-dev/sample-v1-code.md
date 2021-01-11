@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387611"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116208"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -124,4 +124,4 @@ Azure AD での認証を含む、Microsoft Graph API のさまざまな使用パ
 
 - [Azure Active Directory 開発者ガイド](v1-overview.md)
 - [Azure Active Directory 認証ライブラリ](active-directory-authentication-libraries.md)
-- [Microsoft Graph API の概念とリファレンス](https://docs.microsoft.com/graph/use-the-api)
+- [Microsoft Graph API の概念とリファレンス](/graph/use-the-api)

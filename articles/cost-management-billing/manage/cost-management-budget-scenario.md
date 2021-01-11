@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: bfe790924d639a35644a1b8438755d1146dcded7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281839"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690189"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -28,8 +29,8 @@ ms.locfileid: "87281839"
 このチュートリアルで説明するアクションでは、次のことを行います。
 
 - Azure Automation Runbook を作成します。この Runbook で、Webhook を使用して VM を停止します。
-- Azure ロジック アプリを作成します。このアプリは予算のしきい値に基づいてトリガーされ、適切なパラメーター付きで Runbook を呼び出します。
-- Azure Monitor アクション グループを作成します。このグループは、予算のしきい値に達したときに Azure ロジック アプリをトリガーするように構成されます。
+- Azure Logic Apps を作成します。このアプリは予算のしきい値に基づいてトリガーされ、適切なパラメーター付きで Runbook を呼び出します。
+- Azure Monitor アクション グループを作成します。このグループは、予算のしきい値に達したときに Azure Logic Apps をトリガーするように構成されます。
 - Azure 予算を作成し、希望のしきい値を指定して、アクション グループに関連付けます。
 
 ## <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する
@@ -88,7 +89,7 @@ ms.locfileid: "87281839"
 
 Azure Automation のセットアップが完了しました。 単純な Postman テストを使用して、Webhook が機能することを検証できます。 次に、オーケストレーションのためのロジック アプリを作成する必要があります。
 
-## <a name="create-an-azure-logic-app-for-orchestration"></a>オーケストレーションのための Azure ロジック アプリを作成する
+## <a name="create-an-azure-logic-app-for-orchestration"></a>オーケストレーションのための Azure Logic Apps を作成する
 
 Logic Apps は、プロセスをワークフローとして構築、スケジューリング、自動化し、企業や組織の間でアプリ、データ、システム、サービスを統合する際に役立つサービスです。 このシナリオで作成する[ロジック アプリ](https://docs.microsoft.com/azure/logic-apps/)は、作成したオートメーション Webhook を呼び出すだけでなく、その他の処理も行います。
 
@@ -285,28 +286,26 @@ Cost Management の[予算機能](../costs/tutorial-acm-create-budgets.md)を使
                 "startDate": "2018-06-01T00:00:00Z",
                 "endDate": "2018-10-31T00:00:00Z"
                 },
-                "filters": {
-                },
+                "filters": {},
             "notifications": {
                 "Actual_GreaterThan_80_Percent": {
                     "enabled": true,
                     "operator": "GreaterThan",
                     "threshold": 80,
-                    "contactEmails": [
-                    ],
-                    "contactRoles": [
-                    ],
+                    "contactEmails": [],
+                    "contactRoles": [],
                     "contactGroups": [
-                    "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}
+                        "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}"
                     ]
                 },
-            "Actual_EqualTo_100_Percent": {
-                    "operator": "EqualTo",
-                    "threshold": 100,
-                    "contactGroups": [
-                "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}"
-                    ]
-                }
+               "Actual_EqualTo_100_Percent": {
+                       "operator": "EqualTo",
+                       "threshold": 100,
+                       "contactGroups": [
+                           "/subscriptions/{subscriptionid}/resourceGroups/{resourcegroupname}/providers/microsoft.insights/actionGroups/{actiongroupname}"
+                       ]
+                   }
+               }
             }
         }
     ```
@@ -325,8 +324,8 @@ Cost Management の[予算機能](../costs/tutorial-acm-create-budgets.md)を使
 このチュートリアルで学習した内容は次のとおりです。
 
 - VM を停止するための Azure Automation Runbook を作成する方法。
-- 予算のしきい値に基づいてトリガーされ、適切なパラメーター付きで関連する Runbook を呼び出す Azure ロジック アプリを作成する方法。
-- 予算のしきい値に到達したときに Azure ロジック アプリをトリガーするように構成された Azure Monitor アクション グループを作成する方法。
+- 予算のしきい値に基づいてトリガーされ、適切なパラメーター付きで関連する Runbook を呼び出す Azure Logic Apps を作成する方法。
+- 予算のしきい値に到達したときに Azure Logic Apps をトリガーするように構成された Azure Monitor アクション グループを作成する方法。
 - Azure 予算を作成して希望のしきい値を指定し、アクション グループに関連付ける方法。
 
 これで、サブスクリプションの予算が完成し、構成した予算のしきい値に達したときに VM がシャットダウンされるようになりました。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 60d06fa4cf6d116f9c802cda544a356e469755b5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 5ed99fd6a16743846033313fcf13702f69f3e728
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223076"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088361"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -27,7 +27,7 @@ Azure CLI は、コマンドラインやスクリプトで Azure リソースを
 
 このドキュメントでは、Azure VM で Oracle Golden Gate を作成、インストール、および構成する方法を、順を追って説明します。 このチュートリアルでは、1 つのリージョンの可用性セットに 2 つの仮想マシンを設定します。 同じチュートリアルを使用して、1 つの Azure リージョン内の異なる複数の Availability Zones の VM、または 2 つの異なるリージョン内の VM セットアップに、OracleGolden Gate をセットアップすることもできます。
 
-開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
+開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](/cli/azure/install-azure-cli)を参照してください。
 
 ## <a name="prepare-the-environment"></a>環境の準備
 
@@ -68,7 +68,7 @@ az group create --name myResourceGroup --location westus
 
 ### <a name="create-an-availability-set"></a>可用性セットの作成
 
-次の手順は省略可能ですが、実施することをお勧めします。 詳細については、[Azure 可用性セットのガイド](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に関する記事をご覧ください。
+次の手順は省略可能ですが、実施することをお勧めします。 詳細については、[Azure 可用性セットのガイド](../../windows/infrastructure-example.md)に関する記事をご覧ください。
 
 ```azurecli
 az vm availability-set create \

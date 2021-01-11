@@ -135,7 +135,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 次の手順は、Ubuntu 18.0.4 上で作成されました。 Ubuntu 16.0.10 は、strongSwan GUI をサポートしていません。 Ubuntu 16.0.10 を使う場合は、[コマンド ライン](#linuxinstallcli)を使う必要があります。 Linux および strongSwan のバージョンによっては、次に示す例が実際に表示される画面と一致しない可能性があります。
 
-1. **[端末]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。
+1. **[ターミナル]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。
 
    ```
    sudo apt install network-manager-strongswan

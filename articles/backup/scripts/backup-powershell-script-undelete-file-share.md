@@ -3,12 +3,13 @@ title: PowerShell スクリプト - 削除されたファイル共有の削除�
 description: Azure PowerShell スクリプトを使用して、誤って削除されたファイル共有の削除を取り消す方法について説明します。
 ms.topic: sample
 ms.date: 02/02/2020
-ms.openlocfilehash: d3a3ad3c2904b98f7a3350d3672b51f3a1e9415e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 99cd980e13b3b9b9a7a450520218c76ccf26fd69
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87007634"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079865"
 ---
 # <a name="powershell-script-to-undelete-an-accidentally-deleted-file-share"></a>誤って削除されたファイル共有の削除を取り消す PowerShell スクリプト
 

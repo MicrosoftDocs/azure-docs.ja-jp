@@ -1,6 +1,6 @@
 ---
 title: Azure キューの概要 - Azure Storage
-description: Azure キューの概要
+description: 多数のメッセージを格納するためのサービスである Azure キューの概要を参照してください。 キュー サービスには、URL 形式、ストレージ アカウント、キュー、およびメッセージが含まれます。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/18/2020
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: dineshm
-ms.openlocfilehash: 678ab8a3f3dace17671c242939c20cb5499b2e39
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: c16f02922b2e815ddd4986ab07bf260b20d871ee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84805124"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826502"
 ---
 # <a name="what-are-azure-queues"></a>Azure キューとは
 
@@ -25,7 +25,7 @@ Azure Queue storage は、多数のメッセージを格納するためのサー
 
 ![ストレージ アカウント、キュー、メッセージの関係を示す図](./media/storage-queues-introduction/queue1.png)
 
-* **URL 形式**: キューは、次の URL 形式を使用してアドレス指定できます。
+* **URL 形式:** キューは、次の URL 形式を使用してアドレス指定できます。
 
     `https://<storage account>.queue.core.windows.net/<queue>`
   

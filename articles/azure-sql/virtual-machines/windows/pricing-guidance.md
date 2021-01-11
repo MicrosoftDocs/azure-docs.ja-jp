@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fc14d79edda1fb8e0083dffa68d23f46630ba2f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1d07b3ff41c16ff2145311a0b42d8c57a8e7b82
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84342597"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141960"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 上の SQL Server の料金ガイダンス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "84342597"
 
 **使用した分の SQL Server ライセンス料金を支払う**方法 (**従量課金制**とも呼ばれている) は、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれることを意味します。 SQL Server の各種エディション (Web、Standard、Enterprise) の料金は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の Azure Virtual Machines の料金ページで確認できます。
 
-コストはすべてのバージョンの SQL Server (2012 SP3 から 2017 まで) で同じです。 1 秒あたりのライセンス コストは、VM vCPU の数によって異なります。
+コストはすべてのバージョンの SQL Server (2012 SP3 から 2019 まで) で同じです。 1 秒あたりのライセンス コストは、VM vCPU の数によって異なります。
 
 使用した分だけ SQL Server ライセンス料金を支払う方法は、次の場合にお勧めします。
 

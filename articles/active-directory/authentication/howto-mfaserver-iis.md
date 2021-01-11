@@ -11,19 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2377ca4b929200ecd0a3a7de01dd3a58be6b7863
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 5c072298bf5cce4e22fe50d2474c7abe6b915f74
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845442"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919507"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS Web アプリの Azure Multi-Factor Authentication Server の構成
 
 Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクションを使用して、IIS 認証を有効にし、Microsoft IIS Web アプリケーションと統合するように構成できます。 Azure MFA Server では、Azure Multi-Factor Authentication を追加するために、IIS Web サーバーに対して行われる要求をフィルター処理できるプラグインがインストールされます。 IIS プラグインは、フォームベースの認証と統合 Windows HTTP 認証のサポートを提供します。 さらに、信頼できる IP を構成して、内部 IP アドレスを 2 要素認証から除外できます。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。 クラウドベースの Azure Multi-Factor Authentication を使用する場合、Azure Multi-Factor Authentication (MFA) Server によって提供される IIS プラグインに代わる方法はありません。 代わりに、Web アプリケーション プロキシ (WAP) を Active Directory フェデレーション サービス (AD FS) または Azure Active Directory のアプリケーション プロキシと共に使用します。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなりました。 サインイン イベント時に多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication (MFA) を使用していただく必要があります。
+>
+> クラウドベースの MFA の使用を開始するには、「[チュートリアル: Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する](tutorial-enable-azure-mfa.md)」を参照してください。
+>
+> 2019 年 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+>
+> クラウドベースの Azure Multi-Factor Authentication を使用する場合、Azure Multi-Factor Authentication (MFA) Server によって提供される IIS プラグインに代わる方法はありません。 代わりに、Web アプリケーション プロキシ (WAP) を Active Directory フェデレーション サービス (AD FS) または Azure Active Directory のアプリケーション プロキシと共に使用します。
 
 ![MFA Server での IIS 認証](./media/howto-mfaserver-iis/iis.png)
 
@@ -58,7 +64,7 @@ Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクション�
 1. Azure Multi-Factor Authentication Server で、左側のメニューの [IIS 認証] アイコンをクリックします。
 2. **[HTTP]** タブをクリックします。
 3. **[追加]** をクリックします。
-4. [ベース URL の追加] ダイアログ ボックスで、HTTP 認証が実行される Web サイトの URL (例: <http://localhost/owa>) を入力し、アプリケーション名 (省略可能) を指定します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
+4. [ベース URL の追加] ダイアログ ボックスで、HTTP 認証が実行される Web サイトの URL (例: `http://localhost/owa`) を入力し、アプリケーション名 (省略可能) を指定します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 5. 既定値では不十分な場合は、アイドル状態のタイムアウトと最大セッション時間を調整します。
 6. すべてのユーザーを Server にインポート済みであるか、インポートする予定であり、多要素認証の対象となる場合は、 **[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。
 7. 必要に応じて、 **[Cookie のキャッシュ]** チェック ボックスをオンにします。

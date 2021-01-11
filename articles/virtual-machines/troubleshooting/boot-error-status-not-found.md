@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 817f9e362e639cbb8f0cc79607c376c0e8216ec7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663730"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088667"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Windows ブート マネージャー エラーのトラブルシューティング - 0xC0000225 "状態が見つかりません"
  
@@ -27,7 +27,7 @@ ms.locfileid: "83663730"
 
 ## <a name="symptoms"></a>現象
 
-[ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)を使用して VM のスクリーンショットを表示すると、スクリーンショットに Windows を開始できなかったことを示すエラーが状態コード *0xc0000225* と共に表示されます。
+[ブート診断](./boot-diagnostics.md)を使用して VM のスクリーンショットを表示すると、スクリーンショットに Windows を開始できなかったことを示すエラーが状態コード *0xc0000225* と共に表示されます。
 
 このエラー コードに関連するファイルによって、問題を解決するための手順が通知されます。 **[ファイル]** セクションのテキストを検索して、適切なアクションを判断してください。
 
@@ -90,7 +90,7 @@ ms.locfileid: "83663730"
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
-1. [仮想マシンの修復コマンド](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
+1. [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 1. リモート デスクトップ接続を使用して修復 VM に接続します。
 
 ### <a name="select-a-solution"></a>解決策を選択する
@@ -178,7 +178,7 @@ ms.locfileid: "83663730"
          sel disk <DISK #>
          ```
 
-         次の図は、ディスクの一覧表示と選択の結果を示しています。 Disk 0 (127 GB | Online)、Disk 1 (32 GB | Online)、Disk 2 (127 GB | Online) が表示され、コマンド `sel disk 2` で Disk 2 が選択されています。
+         次の図は、ディスクの一覧表示と選択の結果を示しています。 Disk 0 (127 GB / Online)、Disk 1 (32 GB / Online)、Disk 2 (127 GB / Online) が表示され、コマンド `sel disk 2` で Disk 2 が選択されています。
 
          ![ディスクの一覧表示とその後の選択の結果。 Disk 0 (127 GB | Online)、Disk 1 (32 GB | Online)、Disk 2 (127 GB | Online) が表示され、Disk 2 が選択されています。](./media/troubleshoot-boot-error-status-not-found/9.png)
 
@@ -189,7 +189,7 @@ ms.locfileid: "83663730"
          sel partition <PARTITION #>
          ```
 
-         次の図は、パーティションの一覧表示と選択の結果を示しています。 Partition 1 (Reserved | 16MB)、Partition 2 (System | 100MB)、Partition 3 (Primary | 126 GB) が表示され、コマンド `sel part 2` で Partition 2 が選択されています。
+         次の図は、パーティションの一覧表示と選択の結果を示しています。 Partition 1 (Reserved / 16MB)、Partition 2 (System / 100MB)、Partition 3 (Primary / 126 GB) が表示され、コマンド `sel part 2` で Partition 2 が選択されています。
 
          ![パーティションの一覧表示とその後の選択の結果。 Partition 1 (Reserved | 16MB)、Partition 2 (System | 100MB)、Partition 3 (Primary | 126 GB) が表示され、Partition 2 が選択されています。](./media/troubleshoot-boot-error-status-not-found/10.png)
 
@@ -303,4 +303,4 @@ ms.locfileid: "83663730"
    
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-[VM 修復コマンドの手順 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) に従って VM を再構築します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) に従って VM を再構築します。

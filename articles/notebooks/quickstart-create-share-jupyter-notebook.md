@@ -1,21 +1,21 @@
 ---
-title: Azure Notebooks プレビューで Jupyter ノートブックを作成して共有する
-description: Azure Notebooks プレビューで Jupyter ノートブックをすばやく作成して実行した後、そのノートブックを他のユーザーと共有します。
+title: Azure Notebooks プレビューで Jupyter Notebook を作成して共有する
+description: Azure Notebooks プレビューで Jupyter Notebook をすばやく作成して実行した後、そのノートブックを他のユーザーと共有します。
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.custom: tracking-python
-ms.openlocfilehash: 809cb006e1ea40e31d079b40febee6a09714731f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85832102"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589335"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを作成して共有する
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-このクイックスタートでは、Azure Notebooks で Jupyter ノートブックを作成、実行した後、そのノートブックを他のユーザーと共有します。 Jupyter では、Markdown テキスト、実行可能コード、永続データ、グラフィックス、視覚エフェクトを 1 つの共有可能なキャンバス (ノートブック) に簡単に組み合わせることができます。 Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。
+このクイックスタートでは、Azure Notebooks で Jupyter Notebook を作成、実行した後、そのノートブックを他のユーザーと共有します。 Jupyter では、Markdown テキスト、実行可能コード、永続データ、グラフィックス、視覚エフェクトを 1 つの共有可能なキャンバス (ノートブック) に簡単に組み合わせることができます。 Azure Notebooks は、インストールせずにクラウド上で Jupyter Notebook を作成、実行するための無料でホストされているサービスです。
 
 ## <a name="prerequisites"></a>前提条件
 [なし] :
@@ -43,9 +43,9 @@ ms.locfileid: "85832102"
 
 1. しばらくすると、Azure Notebooks は新しいプロジェクトに移動します。 **[+ 新規]** ドロップダウン ( **[+]** とだけ表示されている場合があります) を選択し、 **[Notebook]\(ノートブック\)** を選択することで、新しいノートブックをプロジェクトに追加します。
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    :::image type="content" source="media/quickstarts/empty-project-new-notebook-button.png" alt-text="新しい空のプロジェクトと、ノートブックの追加コマンド。" lightbox="media/quickstarts/empty-project-new-notebook-button.png":::
 
-1. 表示される **[Create New Notebook]\(新しいノートブックの作成\)** ポップアップで、ノートブックのファイル名 (例: *HelloWorldInPython.ipynb*、 *.ipynb* は IronPython (Jupyter) ノートブックを意味します) を入力し、言語 ("*カーネル*" とも呼ばれます) として **[Python 3.6]** を選択します。
+1. 表示される **[Create New Notebook]\(新しいノートブックの作成\)** ポップアップで、ノートブックのファイル名 (例: *HelloWorldInPython.ipynb*、*.ipynb* は IronPython (Jupyter) ノートブックを意味します) を入力し、言語 ("*カーネル*" とも呼ばれます) として **[Python 3.6]** を選択します。
 
     ![新しいノートブックの作成ポップアップ](media/quickstarts/new-notebook-popup.png)
 
@@ -97,13 +97,13 @@ ms.locfileid: "85832102"
 
 ## <a name="share-the-notebook"></a>ノートブックを共有する
 
-ノートブックを共有するには、必要な場合はプロジェクトのページに戻り、ノートブック ファイルを右クリックし、 **[Copy Link]\(リンクのコピー\)** (キーボード ショートカット: Y) を選択して、適切なメッセージにそのリンクを貼り付けます (メール、IM など)。
+ノートブックを共有するには、必要な場合はプロジェクトのページに戻り、ノートブック ファイルを右クリックし、**[Copy Link]\(リンクのコピー\)** (キーボード ショートカット: Y) を選択して、適切なメッセージにそのリンクを貼り付けます (メール、IM など)。
 
-プロジェクト ページでは、 **[Share]\(共有\)** メニューを使用してリンクを取得し、そのリンクでメール メッセージを作成するか、または HTML と Markdown の埋め込みコードを取得することもできます。
+プロジェクト ページでは、**[Share]\(共有\)** メニューを使用してリンクを取得し、そのリンクでメール メッセージを作成するか、または HTML と Markdown の埋め込みコードを取得することもできます。
 
 ![プロジェクト共有コマンド](media/quickstarts/share-project-command.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)
+> [チュートリアル:線形回帰を行う Jupyter Notebook を作成して実行する](tutorial-create-run-jupyter-notebook.md)

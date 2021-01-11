@@ -7,13 +7,13 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/19/2019
-ms.openlocfilehash: 39179c9b6d02d810561485f6a4af0102711ad0ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/24/2020
+ms.openlocfilehash: cae8647d970020a22d59dc49b058d43fe28dd00c
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82186636"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816458"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 
@@ -24,19 +24,17 @@ ms.locfileid: "82186636"
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>エラー コード: DeploymentDocument 'CsmDocument_2_0' で検証に失敗しました
 
-### <a name="error"></a>エラー
+**Error**: ""スクリプト操作の場所を次のアクセスされた URI にすることはできません:\<SCRIPT ACTION URL\>"
 
-""スクリプト操作の場所を次のアクセスされた URI にすることはできません:\<SCRIPT ACTION URL\>"
-
-#### <a name="error-message"></a>エラー メッセージ
+### <a name="error-message-1"></a>エラー メッセージ 1
 
 "リモート サーバーがエラーを返しました: (404) 見つかりません。"
 
-### <a name="cause"></a>原因
+#### <a name="cause"></a>原因
 
 HDInsight サービスから、クラスター作成要求の一部として指定したスクリプト操作 URL にアクセスできません。 サービスでは、スクリプト操作にアクセスしようとすると、上記のエラー メッセージを受け取ります。
 
-### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方法
 
 - HTTP または HTTPS URL の場合は、incognito ブラウザー ウィンドウからアクセスを試行して、URL を確認します。
 - WASB URL の場合は、要求で指定したストレージ アカウントにスクリプトが存在することを確認します。 また、このストレージ アカウント用のストレージ キーが正しいことを確認します。
@@ -44,37 +42,29 @@ HDInsight サービスから、クラスター作成要求の一部として指�
 
 ---
 
-## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>エラー コード: DeploymentDocument 'CsmDocument_2_0' で検証に失敗しました
-
-### <a name="error"></a>エラー
-
-"スクリプト操作の場所を次のアクセスされた URI にすることはできません: \<SCRIPT_ACTION_URL\>"
-
-#### <a name="error-message"></a>エラー メッセージ
+### <a name="error-message-2"></a>エラー メッセージ 2
 
 "指定されたスクリプト URI \<SCRIPT_URI\> は ADLS 上にありますが、このクラスターには Data Lake Storage プリンシパルがありません"
 
-### <a name="cause"></a>原因
+#### <a name="cause"></a>原因
 
 HDInsight サービスから、クラスター作成要求の一部として指定したスクリプト操作 URL にアクセスできません。 サービスでは、スクリプト操作にアクセスしようとすると、上記のエラー メッセージを受け取ります。
 
-### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方法
 
 対応する Azure Data Lake Storage Gen 1 アカウントをクラスターに追加します。 また、Data Lake Storage Gen 1 アカウントにアクセスするサービス プリンシパルをクラスターに追加します。
 
 ---
 
-## <a name="error-code-deploymentdocument-csmdocument_2_0-failed-the-validation"></a>エラー コード:DeploymentDocument 'CsmDocument_2_0' で検証に失敗しました
-
-### <a name="error"></a>エラー
+### <a name="error-message-3"></a>エラー メッセージ 3
 
 "要求で指定された VM サイズ '\<CUSTOMER_SPECIFIED_VM_SIZE\>' が無効であるか、'\<ROLE\>' ロールでサポートされていません。 有効な値: \<VALID_VM_SIZE_FOR_ROLE\>。"
 
-### <a name="cause"></a>原因
+#### <a name="cause"></a>原因
 
 指定した仮想マシンのサイズがロールで許可されていません。 このエラーは、VM サイズの値が予期したとおりに動作しないか、コンピューターのロールに適していないことが原因で発生する可能性があります。
 
-### <a name="resolution"></a>解決方法
+#### <a name="resolution"></a>解決方法
 
 エラー メッセージには、VM サイズの有効な値が表示されます。 これらの値のいずれかを選択し、クラスター作成要求を再試行してください。
 

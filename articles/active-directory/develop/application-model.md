@@ -13,12 +13,12 @@ ms.date: 04/28/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 774822eae5ab327f57da3eca4499ca14d3e0c7a1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 5aca96a9c3bc4e8f1061f677e316565b10014ac9
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584167"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117483"
 ---
 # <a name="application-model"></a>アプリケーション モデル
 
@@ -86,4 +86,4 @@ Microsoft ID プラットフォームでは、[アプリケーション オブ�
 
 * Microsoft ID プラットフォームにおけるアプリケーション オブジェクトとサービス プリンシパルの詳細については、「[アプリケーションを Azure AD に追加する方法と理由](active-directory-how-applications-are-added.md)」を参照してください。
 * シングルテナント アプリとマルチテナント アプリの詳細については、「[Azure Active Directory のテナント](single-and-multi-tenant-apps.md)」を参照してください。
-* Azure AD では、組織がユーザー (通常は、Google アカウントなどのソーシャル ID を使用するお客様) をサインインさせることができるように、Azure Active Directory B2C も提供しています。これについて詳しくは、[Azure Active Directory B2C のドキュメント](https://docs.microsoft.com/azure/active-directory-b2c)を参照してください。
+* Azure AD では、組織がユーザー (通常は、Google アカウントなどのソーシャル ID を使用するお客様) をサインインさせることができるように、Azure Active Directory B2C も提供しています。これについて詳しくは、[Azure Active Directory B2C のドキュメント](../../active-directory-b2c/index.yml)を参照してください。

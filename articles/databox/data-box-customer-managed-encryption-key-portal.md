@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 60e621b34250b036888b233b084ba1ddff939048
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84635001"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087800"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Azure Key Vault のカスタマー マネージド キーを Azure Data Box に使用する
 
@@ -107,13 +107,13 @@ Azure Data Box のカスタマー マネージド キーの構成は省略可能
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| カスタマー マネージド キーが無効化されたため、パスキーをフェッチできませんでした。| 回復可能 (キー バージョンを有効にした場合)。|
 | SsemUserErrorEncryptionKeyExpired| カスタマー マネージド キーの有効期限が切れたため、パスキーをフェッチできませんでした。| 回復可能 (キー バージョンを有効にした場合)。|
-| SsemUserErrorKeyDetailsNotFound| カスタマー マネージド キーが見つからなかったため、パスキーをフェッチできませんでした。| キー コンテナーを削除した場合は、カスタマー マネージド キーを復旧できません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)」を参照してください。 キー コンテナーを削除した場合:<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>それ以外の場合、キー コンテナーがテナント移行の対象になっていた場合は回復できます。下のいずれかの手順で回復できます。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol> |
+| SsemUserErrorKeyDetailsNotFound| カスタマー マネージド キーが見つからなかったため、パスキーをフェッチできませんでした。| キー コンテナーを削除した場合は、カスタマー マネージド キーを復旧できません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../key-vault/general/move-subscription.md)」を参照してください。 キー コンテナーを削除した場合:<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>それ以外の場合、キー コンテナーがテナント移行の対象になっていた場合は回復できます。下のいずれかの手順で回復できます。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol> |
 | SsemUserErrorKeyVaultBadRequestException| カスタマー マネージド キーのアクセスが取り消されたため、パスキーをフェッチできませんでした。| 回復可能。次のことを確認してください。 <ol><li>キー コンテナーのアクセス ポリシーに引き続き MSI が含まれている。</li><li>アクセス ポリシーで、Get、Wrap、Unwrap へのアクセス許可が指定されている。</li><li>キー コンテナーがファイアウォールの内側の VNet にある場合は、 **[信頼された Microsoft サービスを許可]** が有効になっているかどうかを確認します。</li></ol>|
-| SsemUserErrorKeyVaultDetailsNotFound| カスタマー マネージド キーの関連づけられているキー コンテナーが見つからなかったため、パスキーをフェッチできませんでした。 | キー コンテナーを削除した場合は、カスタマー マネージド キーを復旧できません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix)」を参照してください。 キー コンテナーを削除した場合:<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](https://docs.microsoft.com/azure/key-vault/general/soft-delete-powershell#recovering-a-key-vault)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>それ以外の場合、キー コンテナーがテナント移行の対象になっていた場合は回復できます。下のいずれかの手順で回復できます。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol> |
+| SsemUserErrorKeyVaultDetailsNotFound| カスタマー マネージド キーの関連づけられているキー コンテナーが見つからなかったため、パスキーをフェッチできませんでした。 | キー コンテナーを削除した場合は、カスタマー マネージド キーを復旧できません。  キー コンテナーを別のテナントに移行した場合は、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../key-vault/general/move-subscription.md)」を参照してください。 キー コンテナーを削除した場合:<ol><li>回復可能。消去保護期間内であれば、「[キー コンテナーの復旧](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)」にある手順を利用します。</li><li>回復不可能。消去保護期間を超えている場合。</li></ol><br>それ以外の場合、キー コンテナーがテナント移行の対象になっていた場合は回復できます。下のいずれかの手順で回復できます。 <ol><li>キー コンテナーを古いテナントに戻します。</li><li>`Identity = None` を設定し、値を `Identity = SystemAssigned` に戻します。 これにより、ID が削除され、新しい ID の作成後に再登録されます。 キー コンテナーのアクセス ポリシーで新しい ID の `Get`、`Wrap`、`Unwrap` アクセス許可を有効にします。</li></ol> |
 | SsemUserErrorSystemAssignedIdentityAbsent  | カスタマー マネージド キーが見つからなかったため、パスキーをフェッチできませんでした。| 回復可能。次のことを確認してください。 <ol><li>キー コンテナーのアクセス ポリシーに引き続き MSI が含まれている。</li><li>ID は、システムによって割り当てられたものである。</li><li>キー コンテナーのアクセス ポリシーで、この ID に対して Get、Wrap、および Unwrap のアクセス許可を有効にします。</li></ol>|
 | 一般的なエラー  | パスキーをフェッチできませんでした。| これは一般的なエラーです。 エラーをトラブルシューティングして、次の手順を決定するには、Microsoft サポートにお問い合わせください。|
 
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+- [Azure Key Vault とは](../key-vault/general/overview.md)

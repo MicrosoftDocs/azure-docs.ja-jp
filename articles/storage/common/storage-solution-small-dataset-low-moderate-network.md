@@ -49,7 +49,7 @@ ms.locfileid: "85504306"
 
 次の表は、主な機能における相違点をまとめたものです。
 
-| 機能 | Azure ストレージ エクスプローラー | Azure portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST API または SDK |
+| 機能 | Azure Storage Explorer | Azure portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure Storage REST API または SDK |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | 可用性 | ダウンロードしてインストールする <br>スタンドアロン ツール | Azure portal の Web ベースの探索ツール | コマンド ライン ツール |.NET、Java、Python、JavaScript、C++、Go、Ruby、および PHP でのプログラミング可能なインターフェイス |
 | グラフィカル インターフェイス | はい | はい | いいえ | いいえ |

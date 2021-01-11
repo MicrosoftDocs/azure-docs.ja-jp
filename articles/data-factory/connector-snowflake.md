@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 43839e19eb252c9fa7ab46605fd247f3a798d223
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.date: 07/30/2020
+ms.openlocfilehash: 48248b07b64278d5c8d4f297bf83df813aa486fe
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220305"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529502"
 ---
 # <a name="copy-data-from-and-to-snowflake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Snowflake との間でデータをコピーする
 
@@ -49,7 +49,7 @@ Snowflake のリンクされたサービスでは、次のプロパティがサ�
 | プロパティ         | 説明                                                  | 必須 |
 | :--------------- | :----------------------------------------------------------- | :------- |
 | type             | type プロパティは **Snowflake** に設定する必要があります。              | はい      |
-| connectionString | [完全なアカウント名](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (リージョンとクラウド プラットフォームを識別する追加のセグメントを含む)、ユーザー名、パスワード、データベース、およびウェアハウスを構成します。 Snowflake インスタンスに接続するための JDBC 接続文字列を指定します。 Azure Key Vault にパスワードを格納することもできます。 詳しくは、表の下の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。| はい      |
+| connectionString | Snowflake インスタンスに接続するために必要な情報を指定します。 Azure Key Vault には、パスワードまたは接続文字列全体を格納できます。 詳しくは、表の下の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事をご覧ください。<br><br>いくつかの一般的な設定:<br>- **アカウント名:** Snowflake アカウントの[完全なアカウント名](https://docs.snowflake.net/manuals/user-guide/connecting.html#your-snowflake-account-name) (リージョンとクラウド プラットフォームを識別する追加のセグメントを含む)。xy12345.east-us-2.azure など。<br/>- **ユーザー名:** 接続に対するユーザーのログイン名。<br>- **パスワード:** ユーザーのパスワードです。<br>- **データベース:** 接続後に使用する既定のデータベース。 指定したロールが特権を持っている既存のデータベースである必要があります。<br>- **ウェアハウス:** 接続後に使用する仮想ウェアハウス。 指定したロールが特権を持っている既存のウェアハウスである必要があります。<br>- **ロール:** Snowflake セッションで使用する既定のアクセス制御ロール。 指定するロールは、指定したユーザーに既に割り当てられている既存のロールである必要があります。 既定のロールは PUBLIC です。 | はい      |
 | connectVia       | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたはセルフホステッド統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ       |
 
 **例:**
@@ -60,7 +60,7 @@ Snowflake のリンクされたサービスでは、次のプロパティがサ�
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>"
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&password=<password>&db=<database>&warehouse=<warehouse>&role=<myRole>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -78,7 +78,7 @@ Snowflake のリンクされたサービスでは、次のプロパティがサ�
     "properties": {
         "type": "Snowflake",
         "typeProperties": {
-            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>",
+            "connectionString": "jdbc:snowflake://<accountname>.snowflakecomputing.com/?user=<username>&db=<database>&warehouse=<warehouse>&role=<myRole>",
             "password": {
                 "type": "AzureKeyVaultSecret",
                 "store": { 

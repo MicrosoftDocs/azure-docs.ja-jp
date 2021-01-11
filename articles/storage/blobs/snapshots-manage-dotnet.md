@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463537"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185283"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>.NET での BLOB スナップショットの作成と管理
 
@@ -24,7 +24,7 @@ Azure Storage での BLOB スナップショットの詳細については、[.N
 
 ## <a name="create-a-snapshot"></a>スナップショットの作成
 
-# <a name="net-version-12x"></a>[.NET バージョン 12.x](#tab/v12)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 .NET 用の Azure Storage クライアント ライブラリのバージョン 12.x を使用してブロック BLOB のスナップショットを作成するには、次のいずれかのメソッドを使用します。
 
@@ -77,7 +77,7 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-version-11x"></a>[.NET バージョン 11.x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 .NET 用の Azure Storage クライアント ライブラリのバージョン 11.x を使用してブロック BLOB のスナップショットを作成するには、次のいずれかのメソッドを使用します。
 
@@ -126,7 +126,7 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 BLOB を削除するには、まずその BLOB のスナップショットをすべて削除する必要があります。 スナップショットは個別に削除することも、コピー元 BLOB が削除されたときにすべてのスナップショットを削除するように指定することもできます。 スナップショットがまだ存在する BLOB を削除しようとすると、エラーが発生します。
 
-# <a name="net-version-12x"></a>[.NET バージョン 12.x](#tab/v12)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 .NET 用の Azure Storage クライアント ライブラリのバージョン 12.x を使用して BLOB とそのスナップショットを削除するには、次のいずれかのメソッドを使用し、[DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption) 列挙型を含めます。
 
@@ -141,7 +141,7 @@ BLOB を削除するには、まずその BLOB のスナップショットをす
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-version-11x"></a>[.NET バージョン 11.x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 .NET 用の Azure Storage クライアント ライブラリのバージョン 11.x を使用して BLOB とそのスナップショットを削除するには、次のいずれかの BLOB 削除メソッドを使用し、[DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption) 列挙型を含めます。
 

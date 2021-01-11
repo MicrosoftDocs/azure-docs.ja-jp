@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.custom: tracking-python
-ms.openlocfilehash: 193dc7a953bc746ec7211433f846343969176c96
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-python
+ms.openlocfilehash: b63f38609b4b61130e515dd118e8ced9f201defd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243700"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851716"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 
@@ -28,7 +28,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 このセクションのテンプレートを使用して、開発者ポータルの API ページの内容をカスタマイズできます。  
   
 -   [API リスト](#APIList)  
--   [操作](#Product)  
+-   [Operation](#Product)  
 -   [コード サンプル](#CodeSamples)  
     -   [Curl](#Curl)  
     -   [C#](#CSharp)  
@@ -115,7 +115,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ```  
   
 ## <a name="operation"></a><a name="Product"></a> Operation  
- **操作**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
+ **Operation**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
   
  ![開発者ポータルの操作ページ](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開発者ポータル テンプレートの操作ページ")  
   
@@ -351,11 +351,11 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |`apiName`|string|API の名前。|  
 |`apiDescription`|string|API の説明。|  
 |`api`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティ。|現在の API。|  
-|`operation`|[操作](api-management-template-data-model-reference.md#Operation)|現在表示されている操作。|  
-|`sampleUrl`|string|現在の操作の URL。|  
-|`operationMenu`|[Operation menu](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
-|`consoleUrl`|URI|**[試してみる]** ボタンの URI。|  
-|`samples`|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
+|`operation`|[Operation](api-management-template-data-model-reference.md#Operation)|現在表示されている Operation。|  
+|`sampleUrl`|string|現在の Operation の URL。|  
+|`operationMenu`|[Operation menu](api-management-template-data-model-reference.md#Menu)|この API の Operation のメニュー。|  
+|`consoleUrl`|URI|**[使ってみる]** ボタンの URI。|  
+|`samples`|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の Operation のコード サンプル。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   

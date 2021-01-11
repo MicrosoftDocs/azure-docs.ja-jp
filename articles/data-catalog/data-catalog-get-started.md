@@ -1,17 +1,17 @@
 ---
-title: Azure データ カタログを作成する
-description: このクイックスタートでは、Azure portal を使用して Azure Data Catalog を作成する方法について説明します。
+title: クイック スタート:Azure データ カタログを作成する
+description: このクイックスタートでは、Azure Portal を使用して Azure Data Catalog を作成する方法について説明します。
 author: JasonWHowell
 ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e37bd22e0bd0f750ef7b4ae9cc8465ed5292883e
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: e08527ae530b7b5ed5e5293a3af9e2d8dd3f795a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860989"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118792"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>クイック スタート:Azure データ カタログを作成する
 
@@ -37,7 +37,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
 組織 (Azure Active Directory ドメイン) ごとにプロビジョニングできるデータ カタログは 1 つだけです。 そのため、この Azure Active Directory ドメインに属している、Azure サブスクリプションの所有者または共同所有者が既にカタログを作成している場合、複数の Azure サブスクリプションを所有していても、もう一度カタログを作成することはできません。 データ カタログが Azure Active Directory ドメイン内のユーザーによって作成されているかどうかをテストするには、 [Azure Data Catalog ホーム ページ](http://azuredatacatalog.com) に移動し、カタログが表示されるかどうかを確認してください。 カタログが既に作成されている場合は、以下の手順をスキップし、次のセクションに進んでください。
 
-1. [Azure portal](https://portal.azure.com) >  **[リソースの作成]** の順に移動し、 **[データ カタログ]** を選択します。
+1. [Azure Portal](https://portal.azure.com) >  **[リソースの作成]** の順に移動し、 **[データ カタログ]** を選択します。
 
     ![Azure Data Catalog の作成ボタン](media/data-catalog-get-started/data-catalog-create.png)
 
@@ -83,7 +83,7 @@ Data Catalog をセットアップするには、Azure サブスクリプショ�
 
     ![Azure Data Catalog--作成完了](media/data-catalog-get-started/data-catalog-created.png)
 
-## <a name="find-a-data-catalog-in-the-azure-portal"></a>Azure ポータルでのデータ カタログの検索
+## <a name="find-a-data-catalog-in-the-azure-portal"></a>Azure Portal でのデータ カタログの検索
 
 1. Web ブラウザーの別のタブまたは別の Web ブラウザー ウィンドウで、 [Azure Portal](https://portal.azure.com) に移動し、前の手順でデータ カタログを作成する際に使用したのと同じアカウントでサインインします。
 

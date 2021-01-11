@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: e77701e17ef1b47aa6b8e3b8f2d10e93bf5e054e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: b4f832750f7a94a6a60cbb1d3ba630925dd4fff2
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093640"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021733"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>チュートリアル:.NET で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -56,21 +56,15 @@ Azure CLI を使用して Azure にサインインするには、次のように
 az login
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
+## <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
 
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
-### <a name="populate-your-key-vault-with-a-secret"></a>キー コンテナーにシークレットを格納する
+## <a name="populate-your-key-vault-with-a-secret"></a>キー コンテナーにシークレットを格納する
 
-ここで、[az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) コマンドを使用して、シークレットをキー コンテナーに追加します。 **mySecret** というキー コンテナーにシークレットを作成するには、次のコマンドを入力します。
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
-```azurecli
-az keyvault secret set --vault-name "<your-unique-key-vault-name>" --name "mySecret" --value "MySecret"
-```
-
-このシークレットには、**MySecret** という値が格納されます。
-
-### <a name="create-a-virtual-machine"></a>仮想マシンの作成
+## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 次のいずれかの方法を使用して、Windows または Linux 仮想マシンを作成します。
 
 | Windows | Linux |
@@ -79,7 +73,7 @@ az keyvault secret set --vault-name "<your-unique-key-vault-name>" --name "mySec
 | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
-### <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
+## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
 [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) コマンドを使用して、仮想マシン用のシステムによって割り当てられる ID を作成します。
 
 ```azurecli
@@ -95,16 +89,16 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 }
 ```
 
-### <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
+## <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
 [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを実行して、前に作成した ID アクセス許可をキー コンテナーに割り当てます。
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-### <a name="sign-in-to-the-virtual-machine"></a>仮想マシンにサインインする
+## <a name="sign-in-to-the-virtual-machine"></a>仮想マシンにサインインする
 
-仮想マシンにサインインするには、[Windows が実行されている Azure 仮想マシンへの接続とサインイン](../../virtual-machines/windows/connect-logon.md)に関するページまたは [Linux が実行されている Azure 仮想マシンへの接続とサインイン](../../virtual-machines/linux/login-using-aad.md)に関するページの手順に従ってください。
+仮想マシンにサインインするには、[Azure Windows 仮想マシンへの接続とサインイン](../../virtual-machines/windows/connect-logon.md)に関するページまたは [Azure Linux 仮想マシンへの接続とサインイン](../../virtual-machines/linux/login-using-aad.md)に関するページの手順に従います。
 
 ## <a name="set-up-the-console-app"></a>コンソール アプリを設定する
 

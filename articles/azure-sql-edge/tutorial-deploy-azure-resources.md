@@ -9,12 +9,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 8c17351c049ef419ab95f46a54aa9f8cc523f7cf
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: 76c45e586ea7101015cb878d198cab73ed32498e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84887453"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018248"
 ---
 # <a name="install-software-and-set-up-resources-for-the-tutorial"></a>チュートリアル用にソフトウェアをインストールしてリソースを設定する
 
@@ -30,7 +30,7 @@ ms.locfileid: "84887453"
 4. [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio/) をインストールします。
 5. Azure Data Studio を開き、ノートブック用に Python を構成します。 詳しくは、「[ノートブック用の Python の構成](/sql/azure-data-studio/sql-notebooks#configure-python-for-notebooks)」を参照してください。この手順には数分かかることがあります。
 6. [Azure CLI](https://github.com/Azure/azure-powershell/releases/tag/v3.5.0-February2020) の最新バージョンをインストールします。 次のスクリプトでは、AZ PowerShell が最新バージョン (3.5.0、2020 年 2 月) である必要があります。
-7. チュートリアルで使用される [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) と [AMD または ARM Docker イメージ ファイル](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/tar-files)をダウンロードします。
+7. チュートリアルで使用される [DACPAC](https://github.com/microsoft/sql-server-samples/tree/master/samples/demos/azure-sql-edge-demos/iron-ore-silica-impurities/DACPAC) と [AMD または ARM Docker イメージ ファイル](https://www.docker.com/blog/multi-arch-images/)をダウンロードします。
 
 ## <a name="deploy-azure-resources-using-powershell-script"></a>PowerShell スクリプトを使用した Azure リソースのデプロイ
 

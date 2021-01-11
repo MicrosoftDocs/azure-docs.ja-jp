@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: eab7b556dc45d03bf440a3bc63aa6bf2d799face
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/24/2020
+ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103625"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607418"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>コマーシャル マーケットプレースの一覧を Azure Active Directory に統合する
 
@@ -20,7 +20,7 @@ ms.locfileid: "86103625"
 
 ## <a name="azure-ad-benefits"></a>Azure AD の利点
 
-Microsoft AppSource と Azure Marketplace のお客様は、製品内エクスペリエンスを利用して、ネットショップの一覧カタログを検索します。 これらのアクションでは、お客様が製品にサインインする必要があります。 Azure AD 統合には次のような利点があります。
+Microsoft AppSource と Azure Marketplace のお客様は、製品内エクスペリエンスを利用して、オンライン ストアの一覧カタログを検索します。 これらのアクションでは、お客様が製品にサインインする必要があります。 Azure AD 統合には次のような利点があります。
 
 - より迅速なエンゲージメントと最適化されたカスタマー エクスペリエンス
 - 数百万単位のエンタープライズ ユーザーのシングル サインオン (SSO)
@@ -40,10 +40,11 @@ Microsoft AppSource と Azure Marketplace のお客様は、製品内エクス�
 | Containers  | 該当なし | 該当なし | 該当なし | いいえ |
 | コンサルティング サービス  | いいえ | 該当なし | 該当なし | 該当なし |
 
-SaaS 技術要件に関する詳細については、「[SaaS アプリケーションのオファー発行ガイド](marketplace-saas-applications-technical-publishing-guide.md)」を参照してください。
+SaaS 技術要件の詳細については、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](./azure-ad-saas.md)」を参照してください。
 
 ## <a name="azure-ad-integration"></a>Azure AD の統合
 
+- 取引可能な SaaS (サービスとしてのソフトウェア) オファーのために Azure AD を統合する方法の詳細については、「[コマーシャル マーケットプレースにおける Azure AD と取引可能な SaaS オファー](./azure-ad-saas.md)」を参照してください。
 - 一覧への Azure AD の統合によってシングル サインオンを有効にする方法については、[開発者向けの Azure Active Directory](../active-directory/develop/index.yml) に関する記事をご覧ください。
 - Azure AD シングル サインオンについて詳しくは、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../active-directory/manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
@@ -55,8 +56,8 @@ SaaS 技術要件に関する詳細については、「[SaaS アプリケーシ
 
 Azure AD を使って、アプリまたは試用版一覧でワンクリック認証を有効にした場合、次のことが行われます。
 
-- Marketplace から試用版一覧へのカスタマー エクスペリエンスを簡素化する。
-- ユーザーが Marketplace から公開元のドメインまたは試用環境にリダイレクトされる場合でも、製品内エクスペリエンスの感覚を維持する。
+- コマーシャル マーケットプレースから試用版一覧へのカスタマー エクスペリエンスを簡素化する。
+- ユーザーがコマーシャル マーケットプレースから公開元のドメインまたは試用環境にリダイレクトされる場合でも、製品内エクスペリエンスの感覚を維持する。
 - 余分なサインイン手順がないため、ユーザーがリダイレクトされるときに中止される可能性を低くする。
 - 大規模な Azure AD ユーザーの展開障壁を削減する。
 
@@ -66,12 +67,12 @@ Azure AD を使って、アプリまたは試用版一覧でワンクリック�
 
 Azure AD を使用して、次のアクションをサポートします。
 
-- Marketplace のネットショップの 1 つにアプリを登録する。 詳しくは、[アプリの登録](../active-directory/develop/quickstart-register-app.md)または [AppSource 認定](../active-directory/azuread-dev/howto-get-appsource-certified.md)に関する記事をご覧ください。
+- コマーシャル マーケットプレースのオンライン ストアの 1 つにアプリを登録する。 詳しくは、[アプリの登録](../active-directory/develop/quickstart-register-app.md)または [AppSource 認定](../active-directory/azuread-dev/howto-get-appsource-certified.md)に関する記事をご覧ください。
 - Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを取得する。
 
 Azure AD フェデレーション シングル サインオンを使用した経験がない場合は、次の手順に従います。
 
-1. Marketplace にアプリを登録します。
+1. コマーシャル マーケットプレースにお使いのアプリを登録します。
 1. [OAuth 2.0](../active-directory/azuread-dev/v1-protocols-oauth-code.md) または [OpenID Connect](../active-directory/azuread-dev/v1-protocols-openid-connect-code.md) を使って、Azure AD で SSO を開発します。
 1. Azure AD でマルチテナント サポート機能を有効にして、ワンクリックの試用版エクスペリエンスを提供します。
 
@@ -88,7 +89,7 @@ Azure AD を使用して、次のアクションの 1 つをサポートしま�
 
 まだ行っていない場合は、 
 
-- マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
+- コマーシャル マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
 
 パートナー センターに登録するには、新しいプランの作成を開始するか、既存のものを操作します。
 

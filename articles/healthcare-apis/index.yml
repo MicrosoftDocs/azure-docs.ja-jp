@@ -9,15 +9,15 @@ metadata:
   ms.subservice: fhir
   ms.topic: landing-page
   ms.collection: collection
-  author: hansenms
-  ms.author: mihansen
-  ms.date: 11/06/2019
-  ms.openlocfilehash: 7940d28dc3ad0e77510fc0522224f81190dd0db7
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  author: matjazl
+  ms.author: matjazl
+  ms.date: 08/13/2020
+  ms.openlocfilehash: d633b5376832672ecc7c917e24728666b889e16c
+  ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86521345"
+  ms.lasthandoff: 08/13/2020
+  ms.locfileid: "88183447"
 landingContent:
 - title: Azure API for FHIR の開始
   linkLists:
@@ -25,11 +25,13 @@ landingContent:
     links:
     - text: Azure API for FHIR とは
       url: overview.md
+    - text: Azure IoT Connector for FHIR (プレビュー) とは
+      url: overview.md#azure-iot-connector-for-fhir-preview
   - linkListType: quickstart
     links:
     - text: FHIR 用の API サーバーのデプロイ
       url: fhir-paas-portal-quickstart.md
-    - text: IoT コネクタをデプロイする (プレビュー)
+    - text: Azure IoT Connector for FHIR (プレビュー) をデプロイする
       url: iot-fhir-portal-quickstart.md
 - title: チュートリアルの設定
   linkLists:
@@ -41,6 +43,8 @@ landingContent:
       url: access-fhir-postman-tutorial.md
     - text: サードパーティ アプリと医療記録の SMART 統合
       url: use-smart-on-fhir-proxy.md
+    - text: Azure IoT Hub を通じてデバイス データを受信する
+      url: device-data-through-iot-hub.md
 - title: AD 認証用のアプリの登録
   linkLists:
   - linkListType: how-to-guide

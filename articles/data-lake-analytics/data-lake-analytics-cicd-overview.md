@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 09b4f36a5c97b6bcc0a8d11d2fb1ee0893fae80a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130139"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496119"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
 
@@ -35,7 +35,7 @@ U-SQL プロジェクトは、Microsoft Build Engine (MSBuild) で対応する�
 
 U-SQL プロジェクトのビルド タスクを設定する前に、U-SQL プロジェクトの最新バージョンを使用していることを確認します。 エディターで U-SQL プロジェクト ファイルを開き、次のインポート項目があることを確認します。
 
-```   
+```xml
 <!-- check for SDK Build target in current path then in USQLSDKPath-->
 <Import Project="UsqlSDKBuild.targets" Condition="Exists('UsqlSDKBuild.targets')" />
 <Import Project="$(USQLSDKPath)\UsqlSDKBuild.targets" Condition="!Exists('UsqlSDKBuild.targets') And '$(USQLSDKPath)' != '' And Exists('$(USQLSDKPath)\UsqlSDKBuild.targets')" />
@@ -66,14 +66,14 @@ U-SQL プロジェクトの U-SQL スクリプトには、U-SQL データベー�
 詳細については、[U-SQL データベース プロジェクト](data-lake-analytics-data-lake-tools-develop-usql-database.md)に関するページを参照してください。
 
 >[!NOTE]
->DROP ステートメントでは、意図しない削除の問題が発生することがあります。 DROP ステートメントを有効にするには、MSBuild 引数を明示的に指定する必要があります。 **AllowDropStatement** では、アセンブリのドロップやテーブル値関数のドロップなど、非データ関連の DROP 操作を有効にします。 **AllowDataDropStatement** では、テーブルのドロップやスキーマのドロップなど、データ関連の DROP 操作を有効にします。 AllowDataDropStatement を使用する前に、AllowDropStatement を有効にする必要があります。
+> DROP ステートメントは、誤削除の原因となる場合があります。 DROP ステートメントを有効にするには、MSBuild 引数を明示的に指定する必要があります。 **AllowDropStatement** では、アセンブリのドロップやテーブル値関数のドロップなど、非データ関連の DROP 操作を有効にします。 **AllowDataDropStatement** では、テーブルのドロップやスキーマのドロップなど、データ関連の DROP 操作を有効にします。 AllowDataDropStatement を使用する前に、AllowDropStatement を有効にする必要があります。
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>MSBuild コマンド ラインを使用して U-SQL プロジェクトをビルドする
 
 まずプロジェクトを移行し、NuGet パッケージを入手します。 次に、以下の引数を追加して標準の MSBuild コマンド ラインを呼び出し、U-SQL プロジェクトをビルドします。 
 
-``` 
+```console
 msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime;USQLTargetType=SyntaxCheck;DataRoot=datarootfolder;/p:EnableDeployment=true
 ``` 
 
@@ -100,7 +100,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
     ![U-SQL プロジェクトの CI/CD MSBuild 変数を定義する](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
-    ```
+    ```console
     /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime /p:USQLTargetType=SyntaxCheck /p:DataRoot=$(Build.SourcesDirectory) /p:EnableDeployment=true
     ```
 
@@ -109,9 +109,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 ビルドの実行後、U-SQL プロジェクト内のすべてのスクリプトがビルドされ、`USQLProjectName.usqlpack` という名前の zip ファイルに出力されます。 プロジェクトのフォルダー構造は、zip 形式のビルド出力でも維持されます。
 
 > [!NOTE]
->
 > 各 U-SQL スクリプトの分離コード ファイルは、インライン ステートメントとしてスクリプトのビルド出力にマージされます。
->
 
 ## <a name="test-u-sql-scripts"></a>U-SQL スクリプトのテスト
 
@@ -229,6 +227,10 @@ Function Main()
 
 Main
 ```
+
+>[!NOTE]
+> `Submit-AzDataLakeAnalyticsJob` および `Wait-AzDataLakeAnalyticsJob` コマンドは、どちらも Azure Resource Manager フレームワークに含まれる Azure Data Lake Analytics の Azure PowerShell コマンドレットです。 Azure PowerShell がインストールされているワークステーションが必要です。 その他のコマンドと例については、[コマンド一覧](https://docs.microsoft.com/powershell/module/Az.DataLakeAnalytics/?view=azps-4.3.0)を参照してください。
+>
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>Azure Data Factory を通じた U-SQL ジョブのデプロイ
 

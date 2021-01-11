@@ -3,12 +3,12 @@ title: DevTest Labs のコンセプト | Microsoft Docs
 description: DevTest Labs の基本概念と、DevTest Labs を Azure Virtual Machines を簡単に作成、管理、監視するために使用する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b6e845acb34a398af52392b3a90b9213a9945dd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482753"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283845"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest ラボの概念
 ## <a name="overview"></a>概要
@@ -20,7 +20,7 @@ ms.locfileid: "85482753"
 ## <a name="virtual-machine"></a>仮想マシン
 Azure VM は、Azure が提供する数種類の[スケーラブルなオンデマンド コンピューティング リソース](/azure/architecture/guide/technology-choices/compute-decision-tree)の 1 つです。 Azure VM は、その VM を実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。ただし、VM を維持するために、そこで実行するソフトウェアの構成、修正、インストールなど、引き続き特定のタスクを実行する必要があります。
 
-「[Azure における Windows 仮想マシンの概要](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-overview)」では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
+「[Azure における Windows 仮想マシンの概要](../virtual-machines/windows/overview.md)」では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
 
 ## <a name="claimable-vm"></a>要求可能 VM
 Azure の要求可能 VM は、アクセス許可を持つあらゆるラボ ユーザーが使用できる仮想マシンです。 ラボ管理者は、特定の基本イメージとアーティファクトで VM を準備し、これらを共有プールに保存できます。 次に、ラボ ユーザーは、その特定の構成の 1 つの作業用 VM を必要なときにプールから要求できます。
@@ -28,7 +28,7 @@ Azure の要求可能 VM は、アクセス許可を持つあらゆるラボ ユ
 要求可能な VM は最初、特定のユーザーに割り当てられず、"要求可能な仮想マシン" の下のすべてのユーザーの一覧に表示されます。 ユーザーが VM を要求すると、その VM は、"マイ仮想マシン" 領域に挿入され、他のユーザーが要求できなくなります。
 
 ## <a name="environment"></a>環境
-DevTest ラボでは、環境とは、ラボ内の Azure リソースのコレクションを指します。 [このブログ投稿](https://blogs.msdn.microsoft.com/devtestlab/2016/11/16/connect-2016-news-for-azure-devtest-labs-azure-resource-manager-template-based-environments-vm-auto-shutdown-and-more/)では、Azure Resource Manager テンプレートから複数 VM の環境を作成する方法について説明します。
+DevTest ラボでは、環境とは、ラボ内の Azure リソースのコレクションを指します。 [このブログ投稿](./devtest-lab-faq.md#blog-post)では、Azure Resource Manager テンプレートから複数 VM の環境を作成する方法について説明します。
 
 ## <a name="base-images"></a>基本イメージ
 基本イメージは、VM をすばやく作成するためのすべてのツールと設定がプレインストールされ、構成されている VM イメージです。 既存のベースを選択し、テスト エージェントをインストールするためのアーティファクトを追加することで、VM をプロビジョニングできます。 次に、プロビジョニング済みの VM をベースとして保存することで、テスト エージェントを VM の各プロビジョニングに再インストールすることなく、ベースを使用できます。
@@ -56,7 +56,7 @@ DevTest ラボでは、環境とは、ラボ内の Azure リソースのコレ�
 キャップは、ラボにおける無駄を最小限に抑えるメカニズムです。 たとえば、ユーザーごと、またはラボで作成できるVM の数を制限するためのキャップを設定できます。
 
 ## <a name="security-levels"></a>セキュリティ レベル
-セキュリティ アクセスは、Azure のロール ベースのアクセス制御 (RBAC) によって決定されます。 アクセスのしくみを理解するには、RBAC によって定義されているアクセス許可、ロール、およびスコープの違いを理解することが有用です。
+セキュリティ アクセスは、Azure のロールベースのアクセス制御 (Azure RBAC) によって決定されます。 アクセスのしくみを理解するには、RBAC によって定義されているアクセス許可、ロール、およびスコープの違いを理解することが有用です。
 
 * アクセス許可 - アクセス許可とは、特定のアクションへのアクセスを定義したもの (たとえば、すべての仮想マシンへの読み取りアクセス) です。
 * ロール - ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。 たとえば、" *サブスクリプション所有者* " ロールは、サブスクリプション内のすべてのリソースにアクセスできます。
@@ -74,7 +74,7 @@ DevTest Labs にカスタム ロールを作成する方法については、記
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 この記事で取り扱う概念はすべて Azure Resource Manager テンプレートを利用して構成できます。Azure Resource Manager テンプレートを利用すると、Azure ソリューションのインフラストラクチャ/構成を定義し、一貫性のある状態で繰り返しデプロイできます。
 
-「[Azure Resource Manager テンプレートの構造と構文の詳細](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates#template-format)」では、Azure Resource Manager テンプレートの構造とテンプレートのさまざまなセクションで利用できるプロパティについて説明しています。
+「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md#template-format)」では、Azure Resource Manager テンプレートの構造とテンプレートのさまざまなセクションで利用できるプロパティについて説明しています。
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

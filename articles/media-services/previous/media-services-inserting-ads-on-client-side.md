@@ -14,14 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 70db1ff63e3c2a7e7806e5ef3c55b4e4af4a5259
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594867"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263571"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 この記事では、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
 
 ライブ ストリーミング ビデオでのクローズド キャプションと広告のサポートの詳細については、「 [サポートされる字幕と広告挿入の標準](media-services-live-streaming-with-onprem-encoders.md#cc_and_ads)」をご覧ください。

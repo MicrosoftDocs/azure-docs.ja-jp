@@ -1,20 +1,21 @@
 ---
-title: Azure CLI Azure Cache for Redis のサンプル
-description: Azure Cache for Redis 用の Azure CLI サンプルキャッシュの作成、キャッシュの削除、キャッシュの詳細、ホスト名、ポート、およびキーの取得、Web アプリの接続。
+title: Azure CLI を使用した Azure Cache for Redis の管理
+description: Azure Cache for Redis を管理するための Azure CLI サンプル:キャッシュの作成、キャッシュの削除、キャッシュの詳細、ホスト名、ポート、およびキーの取得、Web アプリの接続。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
-ms.openlocfilehash: 43a986f884d621f257de2e9c305a0bcc59092d3d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9bfdd2d03b3ab6edd04a641787475930435a9ffc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033667"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499604"
 ---
-# <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure Cache for Redis 用の Azure CLI サンプル
+# <a name="manage-azure-cache-for-redis-with-azure-cli"></a>Azure CLI を使用した Azure Cache for Redis の管理
 
 次の表には、Azure CLI を使用して構築された Bash スクリプトへのリンクが含まれています。
 

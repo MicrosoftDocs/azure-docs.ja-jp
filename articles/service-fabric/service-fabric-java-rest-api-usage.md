@@ -40,7 +40,7 @@ AutoRest ツールを使って Service Fabric Java クライアント コード�
     npm install -g autorest
     ```
 
-3. ローカル コンピューターで [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) リポジトリをフォークして複製し、お使いのコンピューターの端末から複製した場所に移動します。
+3. ローカル コンピューターで [azure-rest-api-specs](https://github.com/Azure/azure-rest-api-specs) リポジトリをフォークして複製し、お使いのコンピューターのターミナルから複製した場所に移動します。
 
 
 4. 複製したリポジトリで下記の場所に移動します。

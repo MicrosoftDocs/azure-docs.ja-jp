@@ -5,18 +5,18 @@ description: デプロイされた Azure Machine Learning モデルからデー�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: d7e3aeba14373861d831056678576c52f6b2184f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: 3ece750ab63c2c8e33fbfb46739eec55de4f5d07
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536324"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320189"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
 
@@ -71,7 +71,7 @@ ms.locfileid: "86536324"
 
 ## <a name="enable-data-collection"></a>データ収集を有効にする
 
-データ コレクションは、Azure Machine Learning または他のツールを使用してデプロイするモデルに関係なく有効にできます。
+[データ収集](https://docs.microsoft.com/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?view=azure-ml-py)は、Azure Machine Learning または他のツールを使用してデプロイするモデルに関係なく、有効にすることができます。
 
 データ コレクションを有効にするには、次の操作を行う必要があります。
 

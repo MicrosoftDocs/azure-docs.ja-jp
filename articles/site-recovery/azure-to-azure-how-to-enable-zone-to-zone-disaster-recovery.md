@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 723329022d748ee18a07fcaeaecc2aff0e5f707b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a1952f6dccf12de4cb1571dacabecf78c65cd01b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528980"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87021649"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Azure 仮想マシンのゾーン間ディザスター リカバリーを有効にする
 
@@ -20,7 +20,6 @@ ms.locfileid: "86528980"
 
 >[!NOTE]
 >
->- Site Recovery では現在、ポータルを経由したゾーン間ディザスター リカバリーの復旧計画はサポートされていません。 ゾーン間ディザスター リカバリーの復旧計画を利用するには、PowerShell または REST API を使用してください。 
 >- ゾーン間ディザスター リカバリーのサポートは現在、東南アジアおよび英国南部の 2 つのリージョンに限られています。  
 >- Site Recovery では、ゾーン間ディザスター リカバリーが使用されている場合、顧客データがデプロイされているリージョンからそのデータが移動または保存されることはありません。 お客様は、別のリージョンから Recovery Services コンテナーを選択することもできます。 Recovery Services コンテナーにはメタデータが含まれますが、実際の顧客データは含まれません。
 
@@ -66,7 +65,7 @@ Availability Zones は、Azure リージョン内の一意の物理的な場所�
 
 お使いの VM にゾーン間ディザスター リカバリーをデプロイする前に、その VM で有効になっている他の機能がゾーン間のディザスター リカバリーと相互運用可能であるようにすることが重要です。
 
-|機能  | サポートに関する声明  |
+|特徴量  | サポートに関する声明  |
 |---------|---------|
 |クラシック VM   |     サポートされていません    |
 |ARM VM    |    サポートされています    |

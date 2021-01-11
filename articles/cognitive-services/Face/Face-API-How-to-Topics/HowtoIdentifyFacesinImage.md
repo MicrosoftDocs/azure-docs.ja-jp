@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 07/02/2020
 ms.author: sbowles
-ms.openlocfilehash: 607f67258c5d069590f934891c09ccada780c977
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bae84d93d15abe8804a430dacd2f2cddf8a9aed9
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918737"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919167"
 ---
 # <a name="example-identify-faces-in-images"></a>例:画像内の顔を識別する
 

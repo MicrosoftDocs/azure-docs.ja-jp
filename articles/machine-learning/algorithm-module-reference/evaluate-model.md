@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/08/2020
-ms.openlocfilehash: fe0d3819701e062fa2253bc6dd0c3a28eaeaadfb
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/27/2020
+ms.openlocfilehash: 7f37a598c31f340e66437a6478512fad1f79121f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171119"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285953"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
@@ -80,9 +80,9 @@ ms.locfileid: "86171119"
   
 -   **Accuracy (正確性)** は、分類モデルの利点をケース全体に対する真の結果の割合として測定します。  
   
--   **Precision (精度)** は、すべての肯定的な結果に対する真の結果の割合です。  
+-   **Precision (精度)** は、すべての肯定的な結果に対する真の結果の割合です。 精度 = TP/(TP + FP)  
   
--   **Recall (再現率)** は、モデルによって返されるすべての正しい結果の割合です。  
+-   **再現率**は、実際に取得された関連するインスタンスの合計量の割合です。 再現率 = TP/(TP + FN)  
   
 -   **F1 score (F1 スコア)** は、精度と再現率の加重平均として、0 から 1 の範囲で計算されます。理想的な F1 スコアの値は 1 です。  
   

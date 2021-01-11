@@ -1,7 +1,7 @@
 ---
 title: Visual Studio Code を使って接続し、クエリを実行する
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Visual Studio Code を使用して Azure SQL データベースまたは Azure 上の SQL マネージド インスタンスに接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
+description: Visual Studio Code を使用して Azure SQL Database または Azure 上の SQL マネージド インスタンスに接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
 keywords: SQL Database への接続
 services: sql-database
 ms.service: sql-database
@@ -23,13 +23,13 @@ ms.locfileid: "86515055"
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>クイック スタート:Visual Studio Code を使って接続し、クエリを実行する 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows に対応するグラフィカル コード エディターです。 また、SQL Server インスタンス、Azure SQL データベース、Azure SQL マネージド インスタンス、Azure Synapse Analytics のデータベースに対してクエリを実行するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)などの拡張機能をサポートしています。 このクイックスタートでは、Visual Studio Code を使って Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続し、Transact-SQL ステートメントを実行してデータのクエリ、挿入、更新、および削除を実行する方法について説明します。
+[Visual Studio Code](https://code.visualstudio.com/docs) は、Linux、macOS、Windows に対応するグラフィカル コード エディターです。 また、SQL Server インスタンス、Azure SQL Database、Azure SQL Managed Instance、Azure Synapse Analytics のデータベースに対してクエリを実行するための [mssql 拡張機能](https://aka.ms/mssql-marketplace)などの拡張機能をサポートしています。 このクイックスタートでは、Visual Studio Code を使って Azure SQL Database または Azure SQL Managed Instance に接続し、Transact-SQL ステートメントを実行してデータのクエリ、挿入、更新、および削除を実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure SQL Database または Azure SQL Managed Instance のデータベース。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-  | アクション | Azure SQL データベース | Azure SQL Managed Instance |
+  | アクション | Azure SQL Database | Azure SQL Managed Instance |
   |:--- |:--- |:---|
   | 作成| [ポータル](single-database-create-quickstart.md) | [ポータル](../managed-instance/instance-create-quickstart.md) |
   || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -72,7 +72,7 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 ## <a name="get-server-connection-information"></a>サーバーの接続情報を取得する
 
-Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+Azure SQL Database に接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
@@ -193,6 +193,6 @@ Visual Studio Code を使用して、サーバーへの接続を確立します�
 
 ## <a name="next-steps"></a>次のステップ
 
-- SQL Server Management Studio を使用して接続と照会を行うには、「[クイック スタート: SSMS を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する](connect-query-ssms.md)」を参照してください。
+- SQL Server Management Studio を使用して接続と照会を行うには、「[クイック スタート: SSMS を使用して Azure SQL Database または Azure SQL Managed Instance に接続してクエリを実行する](connect-query-ssms.md)」を参照してください。
 - Azure portal を使用して接続と照会を行うには、「[クイック スタート: Azure portal の SQL クエリ エディターを使って接続とデータの照会を行う](connect-query-portal.md)」を参照してください。
 - Visual Studio Code の使用に関するMSDN マガジンの記事については、[MSSQL 拡張機能によるデータベース IDE の作成に関するブログの投稿](https://msdn.microsoft.com/magazine/mt809115)を参照してください。

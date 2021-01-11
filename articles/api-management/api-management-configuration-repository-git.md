@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 183a3561a7c01d8f0911a70846384cf8ebc7dd9c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fb252ac0b4863138fb2a9c3008dc6475bc988e5f
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86254845"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723947"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -37,7 +37,7 @@ Git を使用して API Management サービス インスタンスを管理す�
 
 1. サービスの Git 構成にアクセスする
 2. サービス構成データベースを Git リポジトリに保存する
-3. Git リポジトリをローカル コンピューターにクローンする
+3. Git リポジトリをローカル コンピューターに複製する
 4. 最新のリポジトリをローカル コンピューターにプルし、変更をコミットしてリポジトリにプッシュする
 5. リポジトリからサービス構成データベースに変更をデプロイする
 

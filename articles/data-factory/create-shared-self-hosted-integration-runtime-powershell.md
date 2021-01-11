@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 28836d0b1109952d8cf81c66b44b1f98d9b770bf
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84655758"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136050"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory で共有のセルフホステッド統合ランタイムを作成する
 
@@ -155,7 +155,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 #### <a name="create-another-data-factory"></a>別のデータ ファクトリを作成する
 
 > [!NOTE]  
-> この手順は省略可能です。 共有先のデータ ファクトリが既にある場合は、この手順をスキップしてください。
+> この手順は省略可能です。 共有先のデータ ファクトリが既にある場合は、この手順をスキップしてください。 ただし、他のデータ ファクトリに対してロールの割り当てを追加または削除するには、[ユーザー アクセス管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)や[所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)など、`Microsoft.Authorization/roleAssignments/write` アクセス許可と `Microsoft.Authorization/roleAssignments/delete` アクセス許可が必要です。
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

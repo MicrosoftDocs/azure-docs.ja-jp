@@ -3,18 +3,16 @@ title: Azure Portal を使用した Azure Data Lake Analytics の管理
 description: このアーティクルでは、Data Lake Analytics アカウント、データ ソース、ユーザー、およびジョブを管理するために Azure portal を使用する方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
-ms.openlocfilehash: e9709f8ee700958b310b2fa94a546bb3ea4fc511
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121318"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531214"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -97,7 +95,7 @@ Azure Data Factory や VM など、他の Azure サービスが Data Lake Analyt
 
 他の Azure サービスと同様に、ロールベースのアクセス制御 (RBAC) を使用して、ユーザーがサービスと対話する方法を制御できます。
 
-標準の RBAC ロールには、次のような機能があります。
+標準の Azure ロールには、次のような機能があります。
 * **所有者**:ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
 * **共同作成者**:ジョブの送信、ジョブの監視、任意のユーザーのジョブの取り消し、アカウントの構成を行えます。
 * **閲覧者**:ジョブを監視できます。

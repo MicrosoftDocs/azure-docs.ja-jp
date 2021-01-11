@@ -3,12 +3,12 @@ title: コスト分析と予算
 description: Batch ワークロードの実行に使用される、基になるコンピューティング リソースとソフトウェア ライセンスについて、コスト分析を取得して予算を設定する方法について説明します。
 ms.topic: how-to
 ms.date: 07/19/2019
-ms.openlocfilehash: 13c8cc508a4940b5e21570104527c40988879919
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 50ca1ecfd0a973ff39dabfcb62175ce820d0a0d6
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83725773"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654244"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Azure Batch のコスト分析と予算
 
@@ -68,7 +68,7 @@ Azure portal では、Batch プールまたは Batch アカウントの予算と
 
 ### <a name="virtual-machine-os-disk-type"></a>仮想マシン OS ディスクの種類
 
-[VM OS ディスクの種類](../virtual-machines/windows/disks-types.md)は複数あります。 ほとんどの VM シリーズには、Premium ストレージと Standard ストレージの両方をサポートするサイズがあります。 ’s’ VM サイズがプールに選択されている場合、Batch には PremiumSSD OS ディスクが構成されます。 ’s 以外’ の VM サイズを選択すると、より低コストな Standard HDD ディスクの種類が使用されます。 たとえば、Premium SSD OS ディスクは `Standard_D2s_v3` に使用され、Standard HDD OS ディスクは `Standard_D2_v3` に使用されます。
+[VM OS ディスクの種類](../virtual-machines/disks-types.md)は複数あります。 ほとんどの VM シリーズには、Premium ストレージと Standard ストレージの両方をサポートするサイズがあります。 ’s’ VM サイズがプールに選択されている場合、Batch には PremiumSSD OS ディスクが構成されます。 ’s 以外’ の VM サイズを選択すると、より低コストな Standard HDD ディスクの種類が使用されます。 たとえば、Premium SSD OS ディスクは `Standard_D2s_v3` に使用され、Standard HDD OS ディスクは `Standard_D2_v3` に使用されます。
 
 Premium SSD OS ディスクはより高価ですが、パフォーマンスが高く、Premium ディスクを使用する VM は Standard HDD OS ディスクを使用する VM よりもやや速く起動できます。 Batch では、OS ディスクはアプリケーションほどの頻度では使用されません。また、タスク ファイルは VM の一時 SSD ディスク上にあります。 そのため、多くの場合、’s’ VM サイズを指定した場合にプロビジョニングされる Premium SSD に追加コストを支払う必要はありません。
 

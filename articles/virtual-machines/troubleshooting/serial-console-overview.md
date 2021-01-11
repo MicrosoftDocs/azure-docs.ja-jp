@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28c5a3085d84b25deb7c5ee09a9c9cc4d7a06819
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656476"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374067"
 ---
 # <a name="azure-serial-console"></a>Azure シリアル コンソール
 
@@ -27,18 +27,18 @@ Azure portal のシリアル コンソールでは、Linux または Windows を
 
 シリアル コンソールは、VM と仮想マシン スケール セット インスタンスに対して同じ方法で動作します。 このドキュメントでは、特に記載のない限り、VM という記述にはすべて仮想マシン スケール セット インスタンスが暗黙的に含まれます。
 
-> [!NOTE]
-> シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
+シリアル コンソールは、グローバル Azure リージョンで一般公開されており、Azure Government ではパブリック プレビュー段階にあります。 Azure China Cloud ではまだ利用できません。
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Azure シリアル コンソールにアクセスするための前提条件
 VM または仮想マシン スケール セット インスタンスのシリアル コンソールにアクセスするには、次のものが必要です。
 
 - VM に対してブート診断を有効にする必要があります
-- パスワード認証を使用するユーザー アカウントが VM 内に存在する必要があります。 パスワード ベースのユーザーは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成できます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
+- パスワード認証を使用するユーザー アカウントが VM 内に存在する必要があります。 パスワード ベースのユーザーは、VM アクセス拡張機能の[パスワードのリセット](../extensions/vmaccess.md#reset-password)機能を使用して作成できます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
 - シリアル コンソールにアクセスする Azure アカウントには、VM および[ブート診断](boot-diagnostics.md)ストレージ アカウントの両方に、[仮想マシン共同作成者ロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)が必要です
+- クラシック デプロイはサポートされていません。 VM または仮想マシン スケール セット インスタンスは、Azure Resource Manager デプロイ モデルを使用する必要があります。
 
 > [!NOTE]
-> クラシック デプロイはサポートされていません。 VM または仮想マシン スケール セット インスタンスは、Azure Resource Manager デプロイ モデルを使用する必要があります。
+> シリアル コンソールは、現在マネージド ブート診断ストレージ アカウントとの完全な互換性がありません。 シリアル コンソールを使用するには、カスタム ストレージ アカウントを使用していることを確認してください。
 
 ## <a name="get-started-with-the-serial-console"></a>シリアル コンソールの概要
 VM および仮想マシン スケール セット用のシリアル コンソールには、Azure portal を使用してのみアクセスできます。
@@ -69,7 +69,7 @@ VM 用のシリアル コンソールには、Azure portal で **[サポート +
 
 
 ### <a name="tls-12-in-serial-console"></a>シリアル コンソールでの TLS 1.2
-シリアル コンソールでは、TLS 1.2 をエンドツーエンドで使用して、サービス内のすべての通信をセキュリティで保護します。 シリアル コンソールはユーザーによって管理される起動診断ストレージ アカウントに依存しており、TLS 1.2 をストレージ アカウント用に別個に構成する必要があります。 そのための手順については、[こちら](https://docs.microsoft.com/azure/storage/common/storage-security-tls)を参照してください。
+シリアル コンソールでは、TLS 1.2 をエンドツーエンドで使用して、サービス内のすべての通信をセキュリティで保護します。 シリアル コンソールはユーザーによって管理される起動診断ストレージ アカウントに依存しており、TLS 1.2 をストレージ アカウント用に別個に構成する必要があります。 そのための手順については、[こちら](../../storage/common/transport-layer-security-configure-minimum-version.md)を参照してください。
 
 ## <a name="advanced-uses-for-serial-console"></a>シリアル コンソールの高度な使用方法
 VM へのコンソール アクセス以外に、Azure シリアル コンソールを使用して次のことを行うこともできます。

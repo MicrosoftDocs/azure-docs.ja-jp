@@ -10,26 +10,36 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 2ea850acf0ef581ea66733b0293ba044c87bb3a0
-ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2020
-ms.locfileid: "85362144"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289421"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する
 
 このクイックスタートでは、Speech Studio を使用して基本的なカスタム コマンド アプリケーションを作成してテストします。 また、Windows クライアント アプリからこのアプリケーションにアクセスすることもできます。 **カスタム コマンド**を使用すると、音声優先の対話操作を行うために最適化された、リッチな音声コマンド処理アプリを簡単に構築できます。 これにより、統一された作成エクスペリエンス、自動ホスティング モデル、比較的低い複雑性が実現し、音声コマンドのシナリオに最適なソリューションの構築に専念できるようになります。
 
+## <a name="region-availability"></a>利用可能なリージョン
+現時点では、カスタム コマンドは、次のリージョンで作成された音声サブスクリプションをサポートしています。
+* 米国西部
+* 米国西部 2
+* 米国東部
+* 米国東部 2
+* 北ヨーロッパ
+* 西ヨーロッパ
+* 米国中西部
+* インド中部
+* 東アジア
+* 東南アジア
+
 ## <a name="prerequisites"></a>前提条件
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">カスタム コマンドをサポートするリージョンに Azure Speech リソースを作成する。<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">カスタム コマンドをサポートするリージョンに Azure Speech リソースを作成する。<span class="docon docon-navigate-external x-hidden-focus"></span></a> サポートされているリージョンの一覧については、上記の「**利用可能なリージョン**」の項を参照してください。
 > * サンプルの [Smart Room Lite](https://aka.ms/speech/cc-quickstart) JSON ファイルをダウンロードする。
 > * [Windows 音声アシスタント クライアント](https://aka.ms/speech/va-samples-wvac)の最新バージョンをダウンロードする。
-
-> [!NOTE]
-> 現時点で、カスタム コマンドによってサポートされているのは、westus、westus2、northeurope の各リージョンの音声サブスクリプションのみです。
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>カスタム コマンドを使用するため Speech Studio にアクセスする
 

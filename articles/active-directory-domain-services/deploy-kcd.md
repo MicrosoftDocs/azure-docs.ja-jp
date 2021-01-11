@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 0d2d5a9a6d897e3dde039f6124a1b6c1b356a29a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 7f1640f74c3fca27e1d992f3e2cc538f6e2c7fef
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040097"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722995"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services で Kerberos の制約付き委任 (KCD) を構成する
 
@@ -113,4 +113,4 @@ Active Directory Domain Services で委任がどのように機能するかの�
 [Set-ADUser]: /powershell/module/addsadministration/set-aduser
 
 <!-- EXTERNAL LINKS -->
-[kcd-technet]: https://technet.microsoft.com/library/jj553400.aspx
+[kcd-technet]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj553400(v=ws.11)

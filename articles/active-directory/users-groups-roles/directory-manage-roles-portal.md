@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e067e8d56f8a928f952648fc76cd5d6b7a1afe7
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: fea05ada52ba4281acb3451769446d7f0bad790d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86221284"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448734"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory で管理者ロールを表示して割り当てる
 
@@ -56,6 +56,12 @@ Azure Active Directory ポータルで、管理者ロールのすべてのメン
 ロールのメンバーを表示しているときに、 **[説明]** を選択すると、ロールの割り当てによって付与されているアクセス許可の完全な一覧が表示されます。 このページには、ディレクトリ ロールの管理について説明している関連ドキュメントへのリンクが含まれています。
 
 ![管理者ロールのアクセス許可の一覧](./media/directory-manage-roles-portal/role-description.png)
+
+## <a name="download-role-assignments"></a>ロールの割り当てのダウンロード
+
+特定のロールのすべての割り当てをダウンロードするには、 **[ロールと管理者]** ページでロールを選択し、 **[ロールの割り当てのダウンロード]** を選択します。 そのロールのすべてのスコープでの割り当てを一覧表示する CSV ファイルがダウンロードされます。
+
+![ロールのすべての割り当てをダウンロードする](./media/directory-manage-roles-portal/download-role-assignments.png)
 
 ## <a name="assign-a-role"></a>ロールの割り当て
 

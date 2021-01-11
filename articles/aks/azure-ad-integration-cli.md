@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfc3a546f4845d5eb2e4e144b66b5d97e4a68829
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518030"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612420"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する (レガシ)
 
@@ -27,6 +27,7 @@ Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Director
 ## <a name="the-following-limitations-apply"></a>次の制限事項が適用されます。
 
 - Azure AD は、RBAC が有効なクラスターでのみ有効にすることができます。
+- Azure AD のレガシ統合は、クラスター作成時にのみ有効にすることができます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -79,7 +80,7 @@ serverApplicationSecret=$(az ad sp credential reset \
     --query password -o tsv)
 ```
 
-Azure AD には、次のアクションを実行するためのアクセス許可が必要です。
+Azure AD サービス プリンシパルには、次のアクションを実行するためのアクセス許可が必要です。
 
 * ディレクトリ データの読み取り
 * サインインとユーザー プロファイルの読み取り
@@ -280,7 +281,7 @@ ID とリソース管理に関するベスト プラクティスについては�
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

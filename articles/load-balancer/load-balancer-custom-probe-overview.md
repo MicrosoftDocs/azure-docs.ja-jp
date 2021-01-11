@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e00d6b674453f12f94a2859f9b0533aea0e7332c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207559"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051357"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -263,6 +263,6 @@ VM に複数のインターフェイスがある場合は、プローブを受�
 ## <a name="next-steps"></a>次のステップ
 
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
-- [PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成の概要](quickstart-create-standard-load-balancer-powershell.md)
+- [PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成の概要](quickstart-load-balancer-standard-public-powershell.md)
 - [正常性プローブ用の REST API](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - [Load Balancer の Uservoice](https://aka.ms/lbuservoice) で新しい正常性プローブ機能をリクエストする

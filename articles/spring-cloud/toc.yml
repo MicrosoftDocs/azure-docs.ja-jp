@@ -5,23 +5,30 @@
   items:
     - name: Azure Spring Cloud とは
       href: spring-cloud-overview.md
-    - name: Spring マイクロサービス アプリ用の Java とベース OS
-      href: spring-cloud-principles-microservice-apps.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: Spring Cloud アプリを起動する - ポータル
-      href: spring-cloud-quickstart-launch-app-portal.md
-    - name: Spring Cloud アプリを起動する - Azure CLI
-      href: spring-cloud-quickstart-launch-app-cli.md
-    - name: Spring Cloud アプリを起動する - ソース
-      href: spring-cloud-launch-from-source.md
-    - name: Spring Cloud アプリを起動する - Maven
-      href: spring-cloud-quickstart-launch-app-maven.md
+    - name: 最初のアプリを起動する
+      href: spring-cloud-quickstart.md
+    - name: マイクロサービスをビルドして実行する
+      expanded: true
+      items:
+        - name: サンプル アプリの概要
+          href: spring-cloud-quickstart-sample-app-introduction.md
+        - name: Azure Spring Cloud サービスのプロビジョニング
+          href: spring-cloud-quickstart-provision-service-instance.md
+        - name: 構成サーバーを設定する
+          href: spring-cloud-quickstart-setup-config-server.md
+        - name: アプリをビルドして配置する
+          href: spring-cloud-quickstart-deploy-apps.md
+        - name: ログ、メトリック、トレースの使用
+          href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: チュートリアル
   items:
     - name: アプリを手動でスケーリングする
       href: spring-cloud-tutorial-scale-manual.md
+    - name: アプリを自動スケーリングする
+      href: spring-cloud-tutorial-setup-autoscale.md
     - name: アラートとアクション グループ
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: IntelliJ を使用してアプリを展開する
@@ -38,15 +45,12 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: マイクロサービス アプリケーションの自動スケーリングを設定する
-      href: spring-cloud-tutorial-setup-autoscale.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+    - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
+      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: 概念
   items:
+    - name: アプリとデプロイについて
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: クォータと制限について
       href: spring-cloud-quotas.md
     - name: メトリックを理解する
@@ -109,9 +113,14 @@
   items:
     - name: Azure CLI プラグイン
       href: 'https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.springcloud'
     - name: リソース
       href: spring-cloud-resources.md
     - name: よく寄せられる質問
       href: spring-cloud-faq.md
     - name: REST API リファレンス
       href: 'https://docs.microsoft.com/rest/api/azurespringclould/'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md

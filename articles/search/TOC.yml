@@ -79,18 +79,15 @@
 - name: サンプル
   items:
     - name: C# のサンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
+      href: /samples/browse/?languages=csharp&products=azure-cognitive-search
     - name: Java のサンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
+      href: /samples/browse/?languages=java&products=azure-cognitive-search
     - name: JavaScript のサンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
+      href: /samples/browse/?languages=javascript&products=azure-cognitive-search
     - name: Python のサンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
+      href: /samples/browse/?languages=python&products=azure-cognitive-search
     - name: REST サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?languages=http&expanded=azure&products=azure-cognitive-search'
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
+      href: /samples/browse/?expanded=azure&languages=http&products=azure-cognitive-search
 - name: 概念
   items:
     - name: フルテキスト検索
@@ -117,6 +114,8 @@
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
+        - name: インデクサー リソースのセキュリティ保護
+          href: search-indexer-securing-resources.md
 - name: 操作方法ガイド
   items:
     - name: インデックスとコンストラクトの作成
@@ -155,7 +154,7 @@
           href: search-howto-large-index.md
         - name: 同時更新を処理する
           href: search-howto-concurrency.md
-    - name: Azure データの取り込み
+    - name: Azure のみのデータを取り込む
       items:
         - name: インデクサーを構成する
           href: search-indexer-overview.md
@@ -203,7 +202,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
-    - name: AI を使用した取り込み
+    - name: スキルを使用する (AI)
       items:
         - name: Cognitive Services リソースをアタッチする
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +214,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: インデックスのフィールドにマップする
               href: cognitive-search-output-field-mapping.md
-            - name: 画像から情報を抽出する
+            - name: イメージ ファイルの処理
               href: cognitive-search-concept-image-scenarios.md
             - name: キャッシュ (インクリメンタル) エンリッチメント
               href: search-howto-incremental-index.md
@@ -312,9 +311,15 @@
         - name: プレビュー機能一覧
           href: search-api-preview.md
         - name: .NET での開発
-          href: search-howto-dotnet-sdk.md
+          items:
+            - name: Microsoft.Azure.Search (v10) を使用する
+              href: search-howto-dotnet-sdk.md
+            - name: 作業開始 (v10)
+              href: search-get-started-dotnet-v10.md
         - name: SDK をアップグレードする
           items:
+            - name: .NET SDK 11.0
+              href: search-dotnet-sdk-migration-version-11.md
             - name: .NET SDK 10.0
               href: search-dotnet-sdk-migration-version-10.md
             - name: .NET SDK 9.0
@@ -335,6 +340,8 @@
           items:
             - name: カスタマー マネージド キー
               href: search-security-manage-encryption-keys.md
+            - name: キー情報の取得
+              href: search-security-get-encryption-keys.md
         - name: 受信セキュリティ
           items:
             - name: API アクセス キー
@@ -347,8 +354,16 @@
           items:
             - name: セキュリティ フィルター
               href: search-security-trimming-for-azure-search.md
-            - name: AAD の ID のフィルター処理
+            - name: ユーザー ID でフィルター処理する
               href: search-security-trimming-for-azure-search-with-aad.md
+        - name: アウトバウンド セキュリティ (インデクサー)
+          items:
+            - name: IP 範囲に対するアクセス
+              href: search-indexer-howto-access-ip-restricted.md
+            - name: 信頼されたサービスの例外によるアクセス
+              href: search-indexer-howto-access-trusted-service-exception.md
+            - name: プライベート エンドポイント経由のアクセス
+              href: search-indexer-howto-access-private.md
     - name: 管理する
       items:
         - name: ポータル
@@ -387,36 +402,36 @@
       href: /azure/templates/microsoft.search/searchservices
     - name: REST
       items:
-        - name: 検索 2020-06-30
+        - name: Search API (安定)
           href: /rest/api/searchservice
-        - name: 検索 2020-06-30-Preview
+        - name: Search API (プレビュー)
           href: /rest/api/searchservice/index-preview
-        - name: 管理 2020-03-13
+        - name: Management API (安定)
           href: /rest/api/searchmanagement
-        - name: 管理 2019-10-01-Preview
-          href: /rest/api/searchmanagement/index-2019-10-01-preview
+        - name: Management API (プレビュー)
+          href: /rest/api/searchmanagement/index-preview
     - name: .NET
       items:
         - name: Search API
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/search.documents-readme?view=azure-dotnet
         - name: 管理 API
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/search/management?view=azure-dotnet'
+          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
     - name: Java
       items:
         - name: 管理 API
-          href: 'https://docs.microsoft.com/java/api/overview/azure/search/management?view=azure-java-stable'
+          href: /java/api/overview/azure/search/management?view=azure-java-stable
     - name: JavaScript
       items:
         - name: Search API
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest'
+          href: /javascript/api/overview/azure/search-documents-readme?view=azure-node-latest
         - name: 管理 API
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/search/management?view=azure-node-latest'
+          href: /javascript/api/overview/azure/search/management?view=azure-node-latest
     - name: Python
       items:
         - name: Search API
-          href: 'https://docs.microsoft.com/python/api/overview/azure/search-documents-readme?view=azure-python'
+          href: /python/api/overview/azure/search-documents-readme?view=azure-python
         - name: 管理 API
-          href: 'https://docs.microsoft.com/python/api/overview/azure/search/management?view=azure-python'
+          href: /python/api/overview/azure/search/management?view=azure-python
     - name: OData 言語のリファレンス
       items:
         - name: 概要
@@ -488,6 +503,9 @@
           items:
             - name: 名前付きエンティティの認識
               href: cognitive-search-skill-named-entity-recognition.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure コミュニティ サポート
@@ -509,7 +527,7 @@
     - name: トレーニング
       items:
         - name: 入門 (Microsoft Learn)
-          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+          href: /learn/modules/intro-to-azure-search/
         - name: アプリに検索を追加する (Pluralsight)
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: 開発者向けコース (Pluralsight)

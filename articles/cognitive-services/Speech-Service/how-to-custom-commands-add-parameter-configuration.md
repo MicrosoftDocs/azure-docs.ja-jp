@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: sausin
-ms.openlocfilehash: 5417ff3b53526adbaeba2b9df58694ad495475d3
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: 45dba3b7f46ec558c46b8505da26fd3ef4de4cbc
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307330"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284185"
 ---
 # <a name="add-configurations-to-commands-parameters"></a>コマンドのパラメーターに構成を追加する
 
@@ -39,11 +39,11 @@ ms.locfileid: "85307330"
 
 **TurnOnOff** コマンドの **SubjectDevice** パラメーターを再利用します。 このパラメーターの現在の構成では、**内部カタログから定義済みの入力を受け入れます**。 これは、パラメーターの構成で定義されているデバイスの静的なリストを参照します。 このコンテンツを、独立して更新できる外部データ ソースに移動します。
 
-これを行うには、最初に新しい Web エンドポイントを追加します。 左側のペインの **[Web エンドポイント]** セクションに移動し、次の構成で新しい Web エンドポイントを追加します。
+これを行うには、最初に新しい Web エンドポイントを追加します。 左側のペインの **[Web endpoint]\(Web エンドポイント\)** セクションに移動し、次の構成で新しい Web エンドポイントを追加します。
 
 | 設定 | 推奨値 |
 |----|----|
-| 名前 | `getDevices` |
+| Name | `getDevices` |
 | URL | `https://aka.ms/speech/cc-sampledevices` |
 | Method | GET |
 
@@ -75,18 +75,18 @@ ms.locfileid: "85307330"
 
 | 設定 | 推奨値 |
 | ----| ---- |
-| 構成 | 外部カタログから定義済みの入力を受け取る |                               
+| Configuration (構成) | 外部カタログから定義済みの入力を受け取る |                               
 | Catalog endpoint (カタログ エンドポイント) | getDevices |
 | Method | GET |
 
-次に、 **[保存]** を選択します。
+次に、 **[Save]\(保存\)** を選択します。
 
 > [!IMPORTANT]
-> 左側のペインの **[Web エンドポイント]** セクションで Web エンドポイントを設定しない限り、外部カタログからの入力を受け入れるパラメーターを構成するオプションは表示されません。
+> 左側のペインの **[Web endpoint]\(Web エンドポイント\)** セクションで Web エンドポイントを設定しない限り、外部カタログからの入力を受け入れるパラメーターを構成するオプションは表示されません。
 
 ### <a name="try-it-out"></a>試してみる
 
-**[トレーニング]** を選択し、トレーニングの完了を待ちます。 トレーニングが完了したら、 **[テスト]** を選択して、いくつか会話を試してみます。
+**[Train]\(トレーニング\)** を選択し、トレーニングの完了を待ちます。 トレーニングが完了したら、 **[Test]\(テスト\)** を選択して、いくつか会話を試してみます。
 
 * 入力: turn on (オンにする)
 * 出力:Which device do you want to control? (どのデバイスを制御しますか?)
@@ -98,30 +98,30 @@ ms.locfileid: "85307330"
 
 ## <a name="add-validation-to-parameters"></a>パラメーターに検証を追加する
 
-**検証**は、特定のパラメーターの型に適用できるコンストラクトであり、パラメーターの値に対する制約を構成し、値が制約内に収まらない場合は修正を求めることができます。 検証コンストラクトを拡張するパラメーター型の完全な一覧については、[リファレンス](./custom-commands-references.md)のページを参照してください。
+**Validations\(検証\)** は、特定のパラメーターの型に適用できるコンストラクトであり、パラメーターの値に対する制約を構成し、値が制約内に収まらない場合は修正を求めることができます。 検証コンストラクトを拡張するパラメーター型の完全な一覧については、[リファレンス](./custom-commands-references.md)のページを参照してください。
 
 **SetTemperature** コマンドを使用して検証をテストします。 次の手順を使用して、**Temperature** パラメーターの検証を追加します。
 
 1. 左側のペインで **SetTemperature** コマンドを選択します。
 1. 中央のペインで **Temperature** を選択します。
 1. 右のペインで **[Add a validation]\(検証を追加する\)** を選択します。
-1. **[New validation]\(新しい検証\)** ウィンドウで、次のように検証を構成して、 **[作成]** を選択します。
+1. **[New validation]\(新しい検証\)** ウィンドウで、次のように検証を構成して、 **[Create]\(作成\)** を選択します。
 
 
     | パラメーターの構成 | 推奨値 | 説明 |
     | ---- | ---- | ---- |
     | Min Value (最小値) | `60` | Number パラメーターの場合、このパラメーターで想定できる最小値 |
     | Max Value (最大値) | `80` | 数値パラメーターの場合、このパラメーターで想定できる最大値 |
-    | 失敗応答 |  [Simple editor]\(シンプル エディター\) > [First Variation]\(最初のバリエーション\) > 「`Sorry, I can only set temperature between 60 and 80 degrees`」 | 検証が失敗した場合に新しい値の入力を求めるプロンプトを表示します |
+    | Failure response (失敗応答) |  [Simple editor]\(シンプル エディター\) > [First Variation]\(最初のバリエーション\) > 「`Sorry, I can only set temperature between 60 and 80 degrees`」 | 検証が失敗した場合に新しい値の入力を求めるプロンプトを表示します |
 
     > [!div class="mx-imgBorder"]
     > ![範囲検証を追加する](media/custom-commands/add-validations-temperature.png)
 
 ### <a name="try-it-out"></a>試してみる
 
-1. 右側のペインの上部にある **[トレーニング]** アイコンを選択します。
+1. 右側のペインの上部にある **[Train]\(トレーニング\)** アイコンを選択します。
 
-1. トレーニングが完了したら、 **[テスト]** を選択して、いくつか会話を試してみます。
+1. トレーニングが完了したら、 **[Test]\(テスト\)** を選択して、いくつか会話を試してみます。
 
     - 次の内容を入力します。Set the temperature to 72 degrees (温度を 72 度に設定して)
     - 出力:Ok, setting temperature to 72 degrees (はい、温度を 72 度に設定します)

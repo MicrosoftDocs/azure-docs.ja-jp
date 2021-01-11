@@ -6,17 +6,17 @@ author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: quickstart
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2020
 ms.author: kenwith
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2f552866f0f963a96127240bdc5f3718132e360b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 318458eae72d6ffa679f08ffd32e8e8251e7484b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294710"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562329"
 ---
 # <a name="get-it-now---add-an-app-from-the-azure-marketplace"></a>[今すぐ入手する] - Azure Marketplace からアプリを追加する
 

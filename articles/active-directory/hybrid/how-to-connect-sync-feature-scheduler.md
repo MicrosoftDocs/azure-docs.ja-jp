@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147005"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053050"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: Scheduler
 このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ (同期エンジン) について説明します。
@@ -171,7 +171,7 @@ d - 日数、HH - 時間数、mm - 分数、ss - 秒数
 スケジューラはアクティブなままで、次の機会に再度開始されます。
 
 ## <a name="custom-scheduler"></a>カスタム スケジューラ
-このセクションに記載されているコマンドレットは、[1.1.130.0](reference-connect-version-history.md#111300) 以降でのみ利用できます。
+このセクションに記載されているコマンドレットは、[1.1.130.0](reference-connect-version-history.md) 以降でのみ利用できます。
 
 組み込みのスケジューラで自社の要件を満たすことができない場合は、PowerShell を使用してコネクタをスケジュールすることができます。
 

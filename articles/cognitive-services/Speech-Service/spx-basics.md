@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: 3af3134f715dc124b4aee3ac0a7bfbf11df6a462
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: e859ac13c72ed07d3f57da6e61fd6d9f827f0fca
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85801871"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854896"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Speech CLI の基本を学ぶ
 
@@ -25,7 +25,27 @@ ms.locfileid: "85801871"
 
 ## <a name="basic-usage"></a>基本的な使用方法
 
-このセクションでは、初めてのテストと実験に役立つことが多いいくつかの基本的な SPX コマンドについて説明します。 まず、次のコマンドを実行して、既定のマイクを使用した音声認識を実行します。
+このセクションでは、初めてのテストと実験に役立つことが多いいくつかの基本的な SPX コマンドについて説明します。 まずは、次のコマンドを実行して、ツールに組み込まれているヘルプを参照してください。
+
+```shell
+spx
+```
+
+コマンド パラメーターの右側に一覧表示されている **see: (参照)** ヘルプ トピックに注目してください。 これらのコマンドを入力することで、サブコマンドについての詳しいヘルプを表示できます。
+
+キーワードでヘルプ トピックを検索することができます。 たとえば、次のコマンドを入力すると、Speech CLI の使用例が一覧表示されます。
+
+```shell
+spx help find --topics "examples"
+```
+
+recognize コマンドのオプションを表示するには、次のコマンドを入力します。
+
+```shell
+spx help recognize
+```
+
+次に、次のコマンドを実行して、Speech サービスを使用して既定のマイクによる音声認識を実行します。
 
 ```shell
 spx recognize --microphone

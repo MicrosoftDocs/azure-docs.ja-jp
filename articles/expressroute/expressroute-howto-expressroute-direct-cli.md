@@ -1,18 +1,19 @@
 ---
 title: 'Azure ExpressRoute: ExpressRoute Direct を構成する: CLI'
-description: この記事は、Azure CLI を使用して ExpressRoute Direct を構成するのに役立ちます
+description: 世界中のピアリングの場所で Microsoft のグローバル ネットワークに直接接続するため、Azure CLI を使用して Azure ExpressRoute Direct を構成する方法について説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/20/2019
-ms.author: cherylmc
-ms.openlocfilehash: 343b63f960ccc458b1b1603f924b890366982477
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4eea79d6166ef4beae3b2d61e47e7df0bc82624c
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736273"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395963"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 

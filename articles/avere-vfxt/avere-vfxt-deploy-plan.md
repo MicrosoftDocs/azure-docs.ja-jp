@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT システムの計画 - Azure
-description: Avere vFXT for Azure をデプロイする前に行う計画について説明します
+description: ニーズに適した Avere vFXT for Azure クラスターを計画します。 Azure Marketplace にアクセスしたり、仮想マシンを作成したりする前に確認する質問について説明します。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: e5c33144dcebe491757dfafb2879fe51545827ce
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754399"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272792"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT システムの計画
 
@@ -166,7 +166,7 @@ Azure クラスターの Avere vFXT は、プライベート サブネット内�
 
 ## <a name="vm-access-roles"></a>VM アクセス ロール
 
-Azure では、[ロールベースのアクセス制御](../role-based-access-control/index.yml) (RBAC) を使用し、クラスターの VM を承認して特定のタスクを実行します。 たとえば、クラスター コントローラーは、クラスター ノード VM を作成して構成するための承認を必要とします。 クラスター ノードでは、IP アドレスを他のクラスター ノードに割り当てたり、再割り当てしたりできる必要があります。
+Azure では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/index.yml) を使用してクラスターの VM を承認し、特定のタスクを実行します。 たとえば、クラスター コントローラーは、クラスター ノード VM を作成して構成するための承認を必要とします。 クラスター ノードでは、IP アドレスを他のクラスター ノードに割り当てたり、再割り当てしたりできる必要があります。
 
 Avere vFXT 仮想マシンでは、次の 2 つの組み込み Azure ロールが使用されます。
 

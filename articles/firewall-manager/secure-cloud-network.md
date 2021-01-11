@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9da1340d08d4eaab3ba208c667861093ef0f799b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084706"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079117"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>チュートリアル:Azure Firewall Manager を使用して仮想ハブのセキュリティを保護する
 
@@ -32,6 +32,10 @@ Firewall Manager では、ハブ仮想ネットワーク アーキテクチャ�
 > * サーバーをデプロイする
 > * ファイアウォール ポリシーを作成してハブをセキュリティで保護する
 > * ファイアウォールをテストする
+
+## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>ハブとスポークのアーキテクチャを作成する
 
@@ -108,7 +112,7 @@ Firewall Manager を使用して、セキュリティ保護付き仮想ハブを
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>ハブとスポークのルーティングを構成する
 
-Azure portal から Cloud Shell を開き、次の Azure PowerShell を実行して、必要なハブとスポークのルーティングを構成します。
+Azure portal から Cloud Shell を開き、次の Azure PowerShell を実行して、必要なハブとスポークのルーティングを構成します。 ピアリングされたスポークおよびブランチ接続では、伝達を **NONE** に設定する必要があります。 こうすることで、スポーク間の Any-to-Any 通信を防ぎ、代わりに既定ルートを使用してトラフィックをファイアウォールにルーティングすることができます。
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
@@ -270,6 +274,10 @@ DNAT 規則を追加して、リモート デスクトップを **Srv-Workload-0
 
 これで、ファイアウォールのネットワーク規則が機能していることを確認できました。
 * リモート デスクトップを別の仮想ネットワークにあるサーバーに接続できます。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+ファイアウォール リソースのテストが完了したら、 **fw-manager** リソース グループを削除して、ファイアウォール関連のすべてのリソースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

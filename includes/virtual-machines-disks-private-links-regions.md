@@ -7,18 +7,14 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
-ms.custom: include file
-ms.openlocfilehash: c564db3d454c138a62cae1adcd9971d305ec15ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: references_regions
+ms.openlocfilehash: 57e8c2cab69e68d10eb57afa01a9968041bb5906
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535584"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87771134"
 ---
 マネージド ディスクのインポートまたはエクスポート用のプライベート リンクは、現在、以下でのみ使用できます。
 
-- 米国東部
-- 米国西部 2
-- 米国中南部
-- US Gov バージニア州
-- US Gov アリゾナ
+- 米国中北部

@@ -10,16 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 90a5ec8c58865c3aa1b210db51b9ffeb7169d641
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84678071"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640414"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Speech Service の音声変換 (音声認識とも呼ばれる) を使用すると、オーディオ ストリームをテキストにリアルタイムで文字起こしできます。 アプリケーション、ツール、またはデバイスで、このテキストを使用、表示することや、このテキストをコマンド入力としてアクションを実行することができます。 このサービスでは、Microsoft が Cortana や Office 製品に対して使用するのと同じ認識テクノロジが採用されています。 これは、<a href="./speech-translation.md" target="_blank">翻訳 <span class="docon docon-navigate-external x-hidden-focus"></span></a> および<a href="./text-to-speech.md" target="_blank">テキスト読み上げ <span class="docon docon-navigate-external x-hidden-focus"></span></a> サービス オファリングとシームレスに連携します。 使用可能な音声変換の言語の詳細については、[サポートされる言語](language-support.md#speech-to-text)に関するページを参照してください。
 
@@ -30,6 +28,8 @@ Speech Service の音声変換 (音声認識とも呼ばれる) を使用する�
 > [!NOTE]
 > Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API を使用している場合、Speech サービスへの移行に役立つガイドが作成されています。
 > - [Bing Speech から Speech Service に移行する](how-to-migrate-from-bing-speech.md)
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 ## <a name="get-started-with-speech-to-text"></a>音声変換の概要
 
@@ -58,6 +58,10 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 ## <a name="customization"></a>カスタマイズ
 
 標準の Speech Service モデルに加えて、カスタム モデルも作成できます。 カスタマイズにより、話し方、ボキャブラリ、背景ノイズなどの音声認識の障壁を克服できます。「[カスタム音声](how-to-custom-speech.md)」を参照してください。 カスタマイズのオプションは、言語やロケールによって異なります。[サポートされる言語](supported-languages.md)に関するページを参照して、サポートについて確認してください。
+
+## <a name="batch-transcription"></a>バッチ文字起こし
+
+バッチ文字起こしは、ストレージ内の大量のオーディオを文字起こしできる一連の REST API 操作です。 Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしの結果を受け取ることができます。 Batch Transcription API の使用方法の詳細については、[使用方法](batch-transcription.md)に関するページを参照してください。
 
 [!INCLUDE [speech-reference-doc-links](includes/speech-reference-doc-links.md)]
 

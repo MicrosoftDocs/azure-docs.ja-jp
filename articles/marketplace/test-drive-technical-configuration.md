@@ -5,12 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: 9c4bd4fb5fc6a25027c2f01466a0d5afc1694b03
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+author: keferna
+ms.author: keferna
+ms.openlocfilehash: a7afaf0da3bbb021d76c2d109cb385d86fd7c860
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121488"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319849"
 ---
 # <a name="test-drive-technical-configuration"></a>体験版の技術的な構成
 

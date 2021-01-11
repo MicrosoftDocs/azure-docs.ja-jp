@@ -1,6 +1,6 @@
 ---
 title: Event Grid を使用して Azure Maps イベントに反応する
-description: この記事では、Event Grid を使用して Microsoft Azure Maps イベントに対応する方法について説明します。
+description: Geofence に関連する Azure Maps イベントに対処する方法について調べます。 マップ イベントをリッスンする方法および Event Grid を使用してイベントをイベント ハンドラーに再ルーティングする方法について確認します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/16/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: eb64634f25564abc4044364950b4d462a22608aa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 701c94237ef5348e11b5d7fbc85d4da1f20136ee
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499513"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036812"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Event Grid を使用して Azure Maps イベントに反応する
 

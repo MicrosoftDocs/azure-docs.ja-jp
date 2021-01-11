@@ -25,7 +25,7 @@ ms.locfileid: "87282774"
 - Azure SQL Edge のインスタンスは、パブリッシャーのプッシュ サブスクライバーである必要があります。
 - パブリッシャーとディストリビューターは、次のいずれかが可能です。
    - オンプレミスで実行されている SQL Server のインスタンス、または Azure 仮想マシンで実行されている SQL Server のインスタンス。 詳細については、[Azure Virtual Machines 上の SQL Server の概要](https://docs.microsoft.com/azure/azure-sql/virtual-machines/)に関するページをご覧ください。 SQL Server インスタンスでは、SQL Server 2016 よりも大きいバージョンが使用されている必要があります。
-   - Azure SQL Managed Instance のインスタンス。 SQL マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)」を参照してください。
+   - Azure SQL Managed Instance のインスタンス。 SQL Managed Instance では、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](https://docs.microsoft.com/azure/sql-database/replication-with-sql-database-managed-instance/)」を参照してください。
 
 - ディストリビューション データベースとレプリケーション エージェントを Azure SQL Edge のインスタンスに配置することはできません。  
 

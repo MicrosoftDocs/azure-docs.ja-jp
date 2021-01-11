@@ -11,19 +11,19 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0a7a5f21ee868da2b9c3a6c7dc8bb5968531d0d0
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320172"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824204"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning トレーニング ジョブや推論ジョブを Azure Virtual Network (vnet) 内で分離して、機械学習のライフサイクルをセキュリティで保護する方法について説明します。 Azure Machine Learning は、モデルのトレーニングとデプロイを行うためのコンピューティング リソース ([コンピューティング先](concept-compute-target.md)とも呼ばれます) を他の Azure サービスに依存しています。 ターゲットは、仮想ネットワーク内に作成することができます。 たとえば、Azure Machine Learning コンピューティングを使用してモデルをトレーニングしてから、そのモデルを Azure Kubernetes Service (AKS) にデプロイすることができます。 
 
-__仮想ネットワーク__は、パブリック インターネットから Azure リソースを分離するセキュリティ境界として機能します。 また、Azure の仮想ネットワークをオンプレミス ネットワークに結合することもできます。 ネットワークを結合すると、モデルのトレーニングと、推論用にデプロイしたモデルへのアクセスを、安全に行うことができます。
+__仮想ネットワーク__ は、パブリック インターネットから Azure リソースを分離するセキュリティ境界として機能します。 また、Azure の仮想ネットワークをオンプレミス ネットワークに結合することもできます。 ネットワークを結合すると、モデルのトレーニングと、推論用にデプロイしたモデルへのアクセスを、安全に行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,6 +32,13 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 + [Azure Virtual Network サービス](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)と [IP ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)の両方に関する全般かつ実用的な知識。
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
+
++ リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure のロールベースのアクセス制御 (RBAC) で次のアクションへのアクセス許可を持っている必要があります。
+
+    - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/join/action"。
+    - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
+
+    ネットワークでの RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください
 
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 
@@ -57,9 +64,6 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 > [!WARNING]
 > 
 > Azure Machine Learning コンピューティング インスタンス プレビューは、Private Link が有効になっているワークスペースではサポートされていません。
->
-> Azure Machine Learning では、Private Link が有効になっている Azure Kubernetes Service の使用はサポートされていません。 代わりに、仮想ネットワークで Azure Kubernetes Service を使用できます。 詳細については、「[Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-enable-virtual-network.md)」を参照してください。
-
 
 <a id="amlcompute"></a>
 
@@ -68,7 +72,7 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 データが仮想ネットワークに保存されている場合は、ワークスペース [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用して、スタジオにデータへのアクセス権を許可する必要があります。
 
 > [!IMPORTANT]
-> ほとんどのスタジオでは仮想ネットワークに格納されているデータを操作しますが、統合されたノートブックは__機能しません__。 統合されたノートブックでは、仮想ネットワーク内のストレージの使用はサポートされていません。 代わりに、コンピューティング インスタンスから Jupyter Notebook を使用できます。 詳細については、「[コンピューティング インスタンス ノートブック内のデータにアクセスする](#access-data-in-a-compute-instance-notebook)」のセクションを参照してください。
+> ほとんどのスタジオでは仮想ネットワークに格納されているデータを操作しますが、統合されたノートブックは __機能しません__。 統合されたノートブックでは、仮想ネットワーク内のストレージの使用はサポートされていません。 代わりに、コンピューティング インスタンスから Jupyter Notebook を使用できます。 詳細については、「[コンピューティング インスタンス ノートブック内のデータにアクセスする](#access-data-in-a-compute-instance-notebook)」のセクションを参照してください。
 
 スタジオにアクセス権を許可できない場合、`Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` というエラーが表示され、次の操作が無効になります。
 
@@ -88,13 +92,13 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 
 ワークスペースとストレージ アカウントは、相互にアクセスできるように、同一の仮想ネットワークに追加します。
 
-1. ワークスペースを仮想ネットワークに接続するため、[Azure Private Link を有効化](how-to-configure-private-link.md)します。 この機能は現在プレビュー段階であり、米国東部、米国西部 2、米国中南部の各リージョンでご利用いただけます。
+1. ワークスペースを仮想ネットワークに接続するため、[Azure Private Link を有効化](how-to-configure-private-link.md)します。 この機能は現在プレビュー段階であり、米国東部および米国西部 2 のリージョンでご利用いただけます。
 
 1. ストレージ アカウントを仮想ネットワークに接続するため、[ファイアウォールと仮想ネットワークの設定を構成](#use-a-storage-account-for-your-workspace)します。
 
 ### <a name="configure-a-datastore-to-use-managed-identity"></a>マネージド ID を使用するようにデータストアを構成する
 
-ワークスペースとストレージ サービス アカウントを仮想ネットワークに追加した後、データへのアクセスにマネージド ID を使用するようにデータストアを構成する必要があります。 この手順により、Azure リソースベース アクセス制御 (RBAC) を使用して、ワークスペースのマネージド ID がストレージ サービスに__閲覧者__として追加されます。 __閲覧者__のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。
+ワークスペースとストレージ サービス アカウントを仮想ネットワークに追加した後、データへのアクセスにマネージド ID を使用するようにデータストアを構成する必要があります。 この手順により、Azure リソースベース アクセス制御 (RBAC) を使用して、ワークスペースのマネージド ID がストレージ サービスに __閲覧者__ として追加されます。 __閲覧者__ のアクセス権を指定することにより、ワークスペースはファイアウォールの設定を取得し、データが仮想ネットワークから離れないようにすることができます。
 
 1. スタジオで、 __[データストア]__ を選択します。
 
@@ -152,7 +156,7 @@ SQL 包含ユーザーを作成したら、これに対してアクセス許可�
 
 仮想ネットワーク内のリソース (コンピューティング インスタンスや仮想マシンなど) からスタジオにアクセスする場合は、仮想ネットワークからスタジオへの送信トラフィックを許可する必要があります。 
 
-たとえば、ネットワーク セキュリティ グループ (NSG) を使用して送信トラフィックを制限している場合は、__AzureFrontDoor.Frontend__ の__サービス タグ__宛先に規則を追加します。
+たとえば、ネットワーク セキュリティ グループ (NSG) を使用して送信トラフィックを制限している場合は、__AzureFrontDoor.Frontend__ の __サービス タグ__ 宛先に規則を追加します。
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>ワークスペース用のストレージ アカウントを使用する
 
@@ -256,7 +260,7 @@ validate=False)
 > * コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信が無効になっていないことを確認してください。
 
 > [!TIP]
-> Machine Learning コンピューティング インスタンスまたはクラスターにより、__仮想ネットワークが含まれているリソース グループ__に追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
+> Machine Learning コンピューティング インスタンスまたはクラスターにより、__仮想ネットワークが含まれているリソース グループ__ に追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
 > 
 > * 1 つのネットワーク セキュリティ グループ
 > * 1 つのパブリック IP アドレス
@@ -362,6 +366,12 @@ Azure Machine Learning コンピューティングで[強制トンネリング](
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+
+        > [!TIP]
+        > 米国バージニア、米国アリゾナ、または中国東部 2 のリージョンを使用している場合、これらのコマンドは IP アドレスを返しません。 代わりに、次のいずれかのリンクを使用して IP アドレスの一覧をダウンロードします。
+        >
+        > * [Azure Government の Azure IP 範囲とサービス タグ](https://www.microsoft.com/download/details.aspx?id=57063)
+        > * [Azure China の Azure IP 範囲とサービス タグ](https://www.microsoft.com//download/details.aspx?id=57062)
     
     UDR を追加するときに、関連する各 Batch の IP アドレス プレフィックスのルートを定義し、 __[次ホップの種類]__ を __[インターネット]__ に設定します。 次の図に、Azure portal でのこの UDR の例を示します。
 
@@ -448,9 +458,6 @@ Azure のコンピューティング インスタンスでノートブックを�
 > 次の手順を開始する前に、「[Azure Kubernetes サービス (AKS) における高度なネットワークの構成](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites)」攻略ガイドの前提条件に従って、クラスターの IP アドレス指定を計画してください。
 >
 > AKS インスタンスと Azure の仮想ネットワークは同じリージョンに存在する必要があります。 仮想ネットワークでワークスペースによって使用される Azure Storage アカウントをセキュリティで保護する場合、それらは AKS インスタンスと同じ仮想ネットワークに存在する必要があります。
-
-> [!WARNING]
-> Azure Machine Learning では、プライベート リンクが有効になっている Azure Kubernetes サービスの使用はサポートされていません。
 
 1. [Azure Machine Learning Studio](https://ml.azure.com/) にサインインし、お使いのサブスクリプションとワークスペースを選択します。
 
@@ -542,7 +549,7 @@ AKS での内部ロードバランサーの使用の詳細については、「[
 > [!IMPORTANT]
 > Azure Kubernetes Service クラスターを作成しているときに、プライベート IP を有効にすることはできません。 既存のクラスターの更新として有効にする必要があります。
 
-次のコード スニペットは、__新しい AKS クラスターを作成__し、プライベート IP/内部ロード バランサーを使用するように更新する方法を示しています。
+次のコード スニペットは、__新しい AKS クラスターを作成__ し、プライベート IP/内部ロード バランサーを使用するように更新する方法を示しています。
 
 ```python
 import azureml.core
@@ -606,7 +613,7 @@ az rest --method put --uri https://management.azure.com/subscriptions/<subscript
 } 
 ```
 
-ワークスペースに__既存のクラスターを接続する__場合は、アタッチ操作が完了するまで待ってから、ロード バランサーを構成する必要があります。
+ワークスペースに __既存のクラスターを接続する__ 場合は、アタッチ操作が完了するまで待ってから、ロード バランサーを構成する必要があります。
 
 クラスターのアタッチの詳細については、「[既存の AKS クラスターをアタッチする](how-to-deploy-azure-kubernetes-service.md#attach-an-existing-aks-cluster)」を参照してください。
 
@@ -631,7 +638,7 @@ aks_target.wait_for_completion(show_output = True)
 
 ## <a name="use-azure-container-instances-aci"></a>Azure Container Instances (ACI) を使用する
 
-Azure Container Instances は、モデルのデプロイ時に動的に作成されます。 Azure Machine Learning で仮想ネットワーク内に ACI を作成できるようにするには、デプロイで使用されるサブネットに対して__サブネットの委任__を有効にする必要があります。
+Azure Container Instances は、モデルのデプロイ時に動的に作成されます。 Azure Machine Learning で仮想ネットワーク内に ACI を作成できるようにするには、デプロイで使用されるサブネットに対して __サブネットの委任__ を有効にする必要があります。
 
 > [!WARNING]
 > 仮想ネットワークで Azure Container Instances を使用する場合、仮想ネットワークは、Azure Machine Learning ワークスペースと同じリソース グループに含まれている必要があります。

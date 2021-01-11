@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3a8b271a030de2ddd3aa40b5bb0af871319c0e1f
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: d2ef76a054642807f0d72a758ae084a19557caf8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171807"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009003"
 ---
 # <a name="azure-resource-graph-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Azure Resource Graph のセキュリティ ベースライン
 
@@ -26,7 +26,7 @@ ms.locfileid: "86171807"
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: ユーザー アクセスを定期的に確認して調整する
 
-**ガイダンス**:Azure Resource Graph は、ロールベースのアクセス制御 (RBAC) に基づいて、リソースの種類とプロパティへのアクセスを提供します。 セキュリティ プリンシパル (ユーザー、グループ、およびサービス アカウント) に付与されたアクセス権を定期的に監査して確認し、クエリが適切なリソースの結果を返すようにします。
+**ガイダンス**: Azure Resource Graph は、Azure ロールベースのアクセス制御 (Azure RBAC) に基づいて、リソースの種類とプロパティへのアクセスを提供します。 セキュリティ プリンシパル (ユーザー、グループ、およびサービス アカウント) に付与されたアクセス権を定期的に監査して確認し、クエリが適切なリソースの結果を返すようにします。
 
 * [Azure Resource Graph でのアクセス許可](../overview.md#permissions-in-azure-resource-graph)
 

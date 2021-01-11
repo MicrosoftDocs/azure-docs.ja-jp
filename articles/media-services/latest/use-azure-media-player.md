@@ -3,20 +3,20 @@ title: Azure Media Player での再生 - Azure | Microsoft Docs
 description: Azure Media Player は、さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生できる組み込みの Web ビデオ プレーヤーです。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
-ms.author: juliako
-ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.author: inhenkel
+ms.openlocfilehash: a3b32110a7236d47946c3a1f901aaedf51b47775
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292886"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89253983"
 ---
 # <a name="playback-with-azure-media-player"></a>Azure Media Player を使用した再生
 
@@ -47,7 +47,7 @@ Microsoft Azure Media Services では、HLS、DASH、スムーズ ストリー�
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>Azure Media Player を HTML で設定する
 
-Azure Media Player は簡単にセットアップできます。 Media Services アカウントからメディア コンテンツの基本再生を取得するのにいくらか時間がかかるだけです。 Azure Media Player を設定および構成する方法の詳細については、[Azure Media Player のドキュメント](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)を参照してください。
+Azure Media Player は簡単にセットアップできます。 Media Services アカウントからメディア コンテンツの基本再生を取得するのにいくらか時間がかかるだけです。 Azure Media Player を設定および構成する方法の詳細については、[Azure Media Player のドキュメント](../azure-media-player/azure-media-player-overview.md)を参照してください。
 
 ## <a name="additional-notes"></a>その他のメモ
 
@@ -55,5 +55,5 @@ Azure Media Player は簡単にセットアップできます。 Media Services 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Media Player のドキュメント](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Azure Media Player のドキュメント](../azure-media-player/azure-media-player-overview.md)
 * [Azure Media Player のサンプル](https://github.com/Azure-Samples/azure-media-player-samples)

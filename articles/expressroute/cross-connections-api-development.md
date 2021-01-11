@@ -2,17 +2,17 @@
 title: Azure ExpressRoute CrossConnnections API の開発と統合
 description: この記事では、ExpressRoute パートナ向けに expressRouteCrossConnections リソースの種類に関する詳しい概要を示します。
 services: expressroute
-author: mialdrid
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
-ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 25c8288e1804e6a08ae2b5b128ab6fbc699563f9
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187026"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397850"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API の開発と統合
 
@@ -30,7 +30,7 @@ expressRouteCrossConnections リソースへの移行のメリット:
 
 * ExpressRoute パートナー向けの今後の機能強化はすべて、ExpressRouteCrossConnection リソースで利用可能になる予定です。
 
-* パートナーは、[Role-Based Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) を expressRouteCrossConnection リソースに適用できます。 これらの制御では、expressRouteCrossConnection リソースと add/update/delete ピアリングの構成を変更できるユーザー アカウントへのアクセス許可を定義できます。
+* パートナーは、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を expressRouteCrossConnection リソースに適用できます。 これらの制御では、expressRouteCrossConnection リソースと add/update/delete ピアリングの構成を変更できるユーザー アカウントへのアクセス許可を定義できます。
 
 * expressRouteCrossConnection リソースでは、ExpressRoute 接続のトラブルシューティングに役立つ可能性のある API が公開されています。 これには、ARP テーブル、BGP ルート テーブルの概要、および BGP ルート テーブルの詳細が含まれます。 この機能は、従来のデプロイ API ではサポートされていません。
 

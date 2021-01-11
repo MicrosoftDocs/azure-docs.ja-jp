@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848676"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716726"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
@@ -43,7 +43,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | エラー コード | エラー メッセージ | トラブルシューティングの手順 |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | エラー: userObjectSid の検索に失敗しました | ユーザーがオンプレミスの Active Directory インスタンスに存在することを確認します。 フォレスト間の信頼を使用している場合、詳細については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](/windows/win32/adschema/attributes-all)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
 | **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId 値が空です | ユーザーの AlternateLoginId 属性が構成されていることを確認します。 |
 
 ## <a name="errors-your-users-may-encounter"></a>ユーザー側で発生する可能性があるエラー
@@ -99,7 +99,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 ### <a name="health-check-script"></a>正常性チェック スクリプト
 
-[Azure MFA NPS 拡張機能の正常性チェック スクリプト](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)では、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックが実行されます。 スクリプトを実行し、オプション 3 を選択します。
+[Azure MFA NPS 拡張機能の正常性チェック スクリプト](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)では、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックが実行されます。 スクリプトを実行し、オプション 3 を選択します。
 
 ### <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
 

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/07/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed10a9258590f8f9037a574bd0322a82dd309a5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c47b0249824a3683b8f24cc01cc5eea5ccf32585
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385248"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482670"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) で[シングル サインオン (SSO)
     - 最小値 (この値を含む) = 15 分。
     - 最大値 (この値を含む) = 1,440 分。
 - **[Web アプリのセッション タイムアウト]** - [セッションの有効期限の種類](session-overview.md#session-expiry-type)、 *[ローリング]* または *[絶対]* 。 
-- **[シングル サインオン構成]** - Azure AD B2C テナント内の複数のアプリとユーザー フローにまたがるシングル サインオン (SSO) の動作の[セッション スコープ](session-overview.md#session-scope)。 
+- **[シングル サインオン構成]** - Azure AD B2C テナント内の複数のアプリとユーザー フローにまたがるシングル サインオン (SSO) の動作の[セッション スコープ](session-overview.md#session-scope)。
 
 
 ## <a name="configure-the-properties"></a>プロパティを構成する
@@ -38,7 +38,7 @@ Azure Active Directory B2C (Azure AD B2C) で[シングル サインオン (SSO)
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-4. **[ユーザー フロー (ポリシー)]** を選択します。
+4. **[ユーザー フロー]** を選択します。
 5. あらかじめ作成しておいたユーザー フローを開きます。
 6. **[プロパティ]** を選択します。
 7. **[Web アプリのセッションの有効期間 (分)]** 、 **[Web アプリのセッション タイムアウト]** 、 **[シングル サインオン構成]** 、 **[ログアウト要求に ID トークンが必要]** を必要に応じて構成します。

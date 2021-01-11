@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: 84abbe8d9958bf41768f3706a700ae0ecad6b44f
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a89acb73ea5c78c9f82758e0a322fb9001698c24
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856997"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004336"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Azure Cache for Redis でデータをインポートまたはエクスポートする
 Import/Export は Azure Cache for Redis のデータ管理操作です。Azure Cache for Redis データベース (RDB) のスナップショットを Premium キャッシュと Azure Storage アカウント内の BLOB の間でインポートとエクスポートを行うことで、データを Azure Cache for Redis にインポートしたり、Azure Cache for Redis からエクスポートしたりすることができます。
@@ -24,7 +24,7 @@ Import/Export により、異なる Azure Cache for Redis インスタンス間�
 この記事では Azure Cache for Redis でデータをインポートまたはエクスポートする方法を説明し、よく寄せられる質問に回答します。
 
 > [!IMPORTANT]
-> インポート/エクスポートは、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。
+> Import/Export は、[Premium レベル](cache-overview.md#service-tiers)のキャッシュでのみ使用できます。
 >
 >
 
@@ -152,6 +152,6 @@ The request to import data into cache 'contoso55' failed with status 'error' and
 Export は、ページ BLOB として格納されている RDB ファイルでのみ機能します。 それ以外のタイプの BLOB は、ホット層とクール層の BLOB ストレージ アカウントも含め、現時点ではサポートされていません。 詳細については、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Premium キャッシュ機能をさらに使用する方法を学習します。
+Azure Cache for Redis 機能について詳しく確認します。
 
-* [Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)
+* [Azure Cache for Redis サービス レベル](cache-overview.md#service-tiers)

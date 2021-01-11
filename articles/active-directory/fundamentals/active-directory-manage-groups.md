@@ -2,7 +2,7 @@
 title: グループを使用してアプリとリソースのアクセスを管理する - Azure AD
 description: Azure Active Directory グループを使用して、組織のクラウドベースのアプリ、オンプレミスのアプリ、およびリソースに対するアクセスを管理する方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982601"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797309"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory グループを使用したアプリとリソース アクセスの管理
 Azure Active Directory (Azure AD) では、グループを使用してクラウド ベースのアプリ、オンプレミスのアプリ、およびリソースへのアクセスの管理できます。 リソースは、Azure AD 内のロールを使用してオブジェクトを管理するアクセス許可のように、Azure AD 組織の一部となっている場合と、サービスとしてのソフトウェア (SaaS) アプリ、Azure サービス、SharePoint サイト、オンプレミスのリソースのように、Azure AD 組織の外部リソースである場合があります。

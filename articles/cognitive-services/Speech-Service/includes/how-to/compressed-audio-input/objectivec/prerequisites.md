@@ -25,6 +25,6 @@ ms.locfileid: "81422284"
 
 1. 構築した `GStreamerWrapper.framework` および[ここ](https://aka.ms/csspeech/iosbinary)からダウンロードできる Cognitive Services Speech SDK のフレームワークを、サンプル プロジェクトを含むディレクトリにコピーします。
 1. *[プロジェクトの設定]* で、フレームワークへのパスを調整します。
-   1. **[Embedded Binaries]\(埋め込みバイナリ\)** ヘッダーの下の **[全般]** タブで、フレームワークとして SDK ライブラリを追加します **[Add embedded binaries]/(埋め込みバイナリの追加/)**  >  **[その他の追加]** に移動し、選択したディレクトリに移動して、両方のフレームワークを選択します。
+   1. **[Embedded Binaries]\(埋め込みバイナリ\)** ヘッダーの下の **[全般]** タブで、フレームワークとして SDK ライブラリを追加します **[Add embedded binaries]\(埋め込みバイナリの追加\)**  >  **[その他の追加]** に移動し、選択したディレクトリに移動して、両方のフレームワークを選択します。
    1. **[Build Settings]** タブに移動し、 **[All]** の設定をアクティブにします。
 1. ディレクトリ `$(SRCROOT)/..` を、 **[Search Paths]** 見出しの下にある _[Framework Search Paths]_ に追加します。

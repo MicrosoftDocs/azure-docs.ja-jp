@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/20/2020
+ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: cd100fca074e63c56cd6a19843cc68e1a1ddf214
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 12bf87e16bf4506f2015dd75fb360f8de8399902
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850290"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797821"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB の監視
 
@@ -23,7 +23,7 @@ Azure リソースに依存するクリティカルなアプリケーション�
 
 * **Azure Cosmos DB ポータルからの監視:** Azure Cosmos アカウントの **[メトリック]** タブ内で使用可能なメトリックを使用して監視できます。 このタブのメトリックには、スループット、ストレージ、可用性、待機時間、一貫性、システム レベルのメトリックが含まれます。 既定では、これらのメトリックの保有期間は 7 日間です。 詳細については、この記事の「[Azure Cosmos DB から収集したデータの監視](#monitoring-from-azure-cosmos-db)」を参照してください。
 
-* **Azure Monitor のメトリックを使用した監視:** Azure Cosmos アカウントのメトリックを監視し、Azure Monitor からダッシュボードを作成することができます。 既定では、Azure Monitor は Azure Cosmos DB メトリックを収集するため、何も明示的に構成する必要はありません。 これらのメトリックは 1 分単位で収集されます。粒度は、選択したメトリックによって異なる場合があります。 既定では、これらのメトリックの保有期間は 30 日間です。 前のオプションで使用できるほとんどのメトリックも、これらのメトリックで利用できます。 詳細については、この記事の「[メトリック データの分析」](#analyze-metric-data)を参照してください。
+* **Azure Monitor のメトリックを使用した監視:** Azure Cosmos アカウントのメトリックを監視し、Azure Monitor からダッシュボードを作成することができます。 既定では、Azure Monitor は Azure Cosmos DB メトリックを収集するため、何も明示的に構成する必要はありません。 これらのメトリックは 1 分単位で収集されます。粒度は、選択したメトリックによって異なる場合があります。 既定では、これらのメトリックの保有期間は 30 日間です。 前のオプションで使用できるほとんどのメトリックも、これらのメトリックで利用できます。 メトリックのディメンション値 (コンテナー名など) は、大文字と小文字が区別されません。 そのため、これらのディメンション値に対して文字列比較を行う場合は、大文字と小文字を区別しない比較を使用する必要があります。 詳細については、この記事の「[メトリック データの分析」](#analyze-metric-data)を参照してください。
 
 * **Azure Monitor の診断ログを使用した監視:** Azure Cosmos アカウントのログを監視し、Azure Monitor からダッシュボードを作成することができます。 1 秒単位で発生するイベントやトレースなどのテレメトリは、ログとして格納されます。 たとえば、コンテナーのスループットが変化した場合、Cosmos アカウントのプロパティが変更されます。これらのイベントはログ内でキャプチャされます。 収集したデータに対してクエリを実行することで、これらのログを分析できます。 詳細については、この記事の「[ログ データの分析](#analyze-log-data)」を参照してください。
 
@@ -158,14 +158,16 @@ Azure Monitor のログのデータはテーブルに格納され、各テーブ
 その他のメトリックにアクセスするには、 [Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)を使用します。 使用できるメトリック定義は、次の URL を呼び出すことで取得できます。
 
 ```http
-https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01
 ```
 
-クエリでメトリックを個別に取得する場合には、次の形式を使用します。
+メトリックを個別に取得する場合には、次の形式を使用します。
 
 ```http
-https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metrics?timespan={StartTime}/{EndTime}&interval={AggregationInterval}&metricnames={MetricName}&aggregation={AggregationType}&`$filter={Filter}&api-version=2018-01-01
 ```
+
+詳細については、[Azure 監視 REST API](../azure-monitor/platform/rest-api-walkthrough.md) に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

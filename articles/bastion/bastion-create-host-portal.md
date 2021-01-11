@@ -1,18 +1,18 @@
 ---
 title: 'Azure Bastion ホストを作成する: ポータル'
-description: この記事では、ポータルを使用して Azure Bastion ホストを作成する方法について学習します
+description: この記事では、仮想ネットワーク内のすべての仮想マシンに RDP/SSH 接続を提供する Azure Bastion ホストを作成する方法について説明します。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
-ms.openlocfilehash: d18d520419e77a225431d9c2a395f62411656537
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744274"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270752"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>ポータルを使用して Azure Bastion ホストを作成する
 

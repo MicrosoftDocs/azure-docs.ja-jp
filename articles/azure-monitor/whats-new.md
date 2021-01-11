@@ -6,21 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: 192219a804365957e9eaa0577019ff18d75861bf
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498510"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827743"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor のドキュメントの最新情報
 
 この記事では、Azure Monitor に関して新たに執筆された記事または大幅に更新された記事を一覧で紹介しています。 毎月第 1 週目に更新され、前月から更新された記事が掲載されます。
 
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="general"></a>全般
+- [Azure Monitor をデプロイする](deploy-scale.md) - Azure Monitor for VMs オンボード コンテンツの再構築。
+- [Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する](platform/private-link-security.md) - 制限に関してセクションを追加しました。
+
+### <a name="alerts"></a>警告
+- [Azure Monitor アラートのアクション ルール](platform/alerts-action-rules.md) - CLI プロセスを追加しました。
+- [Azure portal でのアクション グループの作成および管理](platform/action-groups.md) - UI の変更を反映して更新しました。
+- [Azure Monitor Log Analytics の保存済みクエリ](log-query/saved-queries.md) - 新しい記事。
+- [Azure Monitor のログ アラートのトラブルシューティング](platform/alerts-troubleshoot-log.md) - アラート ルール クォータに関するセクションを追加しました。
+- [Azure メトリック警告のトラブルシューティング](platform/alerts-troubleshoot-metric.md) - まだ生成されていないカスタム メトリックに対するアラート ルールに関するセクションを追加しました。
+- [Azure Monitor でのメトリック アラートのしくみを理解する](platform/alerts-metric-overview.md) - 集計の粒度を選択するための推奨事項を追加しました。
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Web アプリ拡張機能のリリース ノート - Application Insights](app/web-app-extension-release-notes.md) - 新しい記事。
+- [Application Insights リソース用の Resource Manager テンプレートのサンプル](samples/resource-manager-app-resource.md) - 新しい記事。
+- [Azure Application Insights Profiler に関する問題のトラブルシューティング](app/profiler-troubleshooting.md) - ASP.NET Core アプリのプロファイラーを Azure App Service で実行するバグに関する注意を追加しました。 
+
+### <a name="containers"></a>Containers
+- [Azure Monitor for containers からのログ アラート](insights/container-insights-log-alerts.md) - 新しい記事。
+- [Azure Monitor for containers からのメトリック アラート](insights/container-insights-metric-alerts.md) - 新しい記事。
+
+### <a name="logs"></a>ログ
+- [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - エラー メッセージとクエリの CMK 構成のセクションを追加しました。
+- [Azure Monitor HTTP データ コレクター API](platform/data-collector-api.md) - Python 3 のサンプルを追加しました。
+- [Azure Monitor でログ クエリを最適化する](log-query/query-optimization.md) - サブクエリを使用するときの複数のデータ スキャンの回避に関するセクションを追加しました。
+- [チュートリアル:Log Analytics クエリの使用方法](log-query/get-started-portal.md) - ビデオを追加しました。
+
+### <a name="platform-logs"></a>プラットフォーム ログ
+- [プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](platform/diagnostic-settings.md) - ビデオを追加しました。
+- [Azure Monitor 用の Resource Manager テンプレートのサンプル](samples/resource-manager-samples.md) - ログの送信先の種類を使用する ARM サンプルを追加しました。 
+
+### <a name="solutions"></a>ソリューション
+- [Azure Monitor での監視ソリューション](insights/solutions.md) - CLI プロセスを追加しました。
+- [Azure の Office 365 管理ソリューション](insights/solution-office-365.md) - 提供終了日を変更しました。
+
+### <a name="virtual-machines"></a>仮想マシン
+
+Azure Monitor for VMs コンテンツの再構築による新規および更新された記事
+
+- [Azure Monitor for VMs とは?](insights/vminsights-overview.md)
+- [Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する](insights/vminsights-configure-workspace.md)
+- [Linux コンピューターを Azure Monitor に接続する](platform/agent-linux.md)
+- [ハイブリッド環境で Azure Monitor を有効にする](insights/vminsights-enable-hybrid.md)
+- [Azure portal で 1 つの仮想マシンまたは仮想マシン スケール セットで Azure Monitor を有効にする](insights/vminsights-enable-portal.md)
+- [Azure Policy を使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-at-scale-policy.md)
+- [Azure Monitor for VMs の有効化の概要](insights/vminsights-enable-overview.md)
+- [PowerShell を使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-powershell.md)
+- [Resource Manager テンプレートを使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-resource-manager.md)
+- [PowerShell またはテンプレートを使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-at-scale-powershell.md)
+
+
+### <a name="visualizations"></a>視覚化
+- [Log Analytics ダッシュボードの視覚化のアップグレード](log-query/dashboard-upgrade.md) - 更新間隔を更新しました。
+- [Azure Monitor からのデータを視覚化する](visualizations.md) - ビデオを追加しました。
+
+
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="general"></a>全般
-- [Azure Monitor をデプロイする](platform/deploy-scale.md) - 新しい記事。
+- [Azure Monitor をデプロイする](deploy-scale.md) - 新しい記事。
 - [Azure Monitor のカスタマー マネージド キー](platform/customer-managed-keys.md) - billingtype プロパティを更新しました。 PowerShell コマンドを追加しました。
 
 ### <a name="agents"></a>エージェント
@@ -54,7 +112,7 @@ ms.locfileid: "86498510"
 - [Azure Log Analytics ワークスペースの削除と復旧](platform/delete-workspace.md) - PowerShell コマンドを追加しました。 トラブルシューティングを更新しました。
 - [Azure Monitor で Log Analytics ワークスペースを管理する](platform/manage-access.md) - RBAC セクションに許可されないテーブルの例を追加しました。
 - [Azure Monitor ログの使用量とコストを管理する](platform/manage-cost-storage.md) - データ サイズの計算に関する詳細を追加しました。 データ ボリューム アラートの構成について更新しました。 Azure Sentinel によって収集されるセキュリティ データの詳細。 データ上限の明確化。
-- [Azure Logic Apps と Power Automate で Azure Monitor ログを使用する](platform/logicapp-flow-connector.md) - コネクターの制限を追加しました。
+- [Azure Logic Apps と Power Automate で Azure Monitor ログを使用する](platform/logicapp-flow-connector.md) - コネクタの制限を追加しました。
 
 ### <a name="metrics"></a>メトリック
 - [Azure Monitor でサポートされているメトリック (リソースの種類別)](platform/metrics-supported.md) - SQL Server のメトリックを更新しました。
@@ -66,7 +124,8 @@ ms.locfileid: "86498510"
 - [Azure portal を使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する](learn/quick-collect-activity-log-portal.md) - 新しい記事。
 - [Azure Resource Manager テンプレートを使用して Azure アクティビティ ログを Log Analytics ワークスペースに送信する](learn/quick-collect-activity-log-arm.md) - 新しい記事。
 
-#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>プラットフォーム ログ コンテンツの再構築と統合による新規および更新された記事
+プラットフォーム ログ コンテンツの再構築と統合による新規および更新された記事
+
 - [Azure リソース ログをストレージ アカウントにアーカイブする](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure アクティビティ ログのイベント スキーマ](platform/activity-log-schema.md)
 - [Azure アクティビティ ログ](platform/activity-log.md)
@@ -84,7 +143,7 @@ ms.locfileid: "86498510"
 - [Azure Monitor で Azure アクティビティ ログ イベントを表示する](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>仮想マシン
-- [Azure portal で Azure Monitor for VMs を有効にする](insights/vminsights-enable-single-vm.md) - Azure Arc を含めるように更新しました。
+- [Azure portal で Azure Monitor for VMs を有効にする](./insights/vminsights-enable-portal.md) - Azure Arc を含めるように更新しました。
 - [Azure Monitor for VMs の有効化の概要](insights/vminsights-enable-overview.md) - Azure Arc を含めるように更新しました。
 - [Azure Monitor for VMs とは?](insights/vminsights-overview.md) - Azure Arc を含めるように更新しました。
 
@@ -293,7 +352,7 @@ Azure Monitor for VMs の一般提供に関する全般的な更新
 
 - [Azure Monitor for VMs とは?](insights/vminsights-overview.md)
 - [Azure Monitor for VMs についてよく寄せられる質問](insights/vminsights-ga-release-faq.md) 
-- [Azure Policy を使用して Azure Monitor for VMs を有効にする](insights/vminsights-enable-at-scale-policy.md) 
+- [Azure Policy を使用して Azure Monitor for VMs を有効にする](./insights/vminsights-enable-policy.md) 
 - [Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法](insights/vminsights-performance.md)
 - [Azure Monitor for VMs からログを照会する方法](insights/vminsights-log-search.md)
 - [Azure Monitor for VMs を使用してアプリの依存関係を表示する](insights/vminsights-maps.md) 

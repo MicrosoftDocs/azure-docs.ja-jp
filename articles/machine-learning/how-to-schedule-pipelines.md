@@ -5,17 +5,17 @@ description: Azure Machine Learning SDK for Python を使用して機械学習�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 3fede6bf194d0dd6b18118df7a44b7ccd0224a25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 351d52128660c25c557c536f2835e0e71c0115f7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84552187"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842962"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する
 
@@ -106,7 +106,7 @@ Azure Logic Apps は、Azure Machine Learning パイプラインよりも複雑�
 
 ## <a name="view-your-scheduled-pipelines"></a>スケジュールされたパイプラインを表示する
 
-Web ブラウザーで Azure Machine Learning に移動します。 ナビゲーション パネルの **[エンドポイント]** セクションで、 **[Pipeline endpoints]/(パイプラインのエンドポイント/)** を選択します。 これにより、ワークスペースで発行されたパイプラインの一覧が表示されます。
+Web ブラウザーで Azure Machine Learning に移動します。 ナビゲーション パネルの **[エンドポイント]** セクションで、 **[Pipeline endpoints]\(パイプラインのエンドポイント\)** を選択します。 これにより、ワークスペースで発行されたパイプラインの一覧が表示されます。
 
 ![AML の [パイプライン] ページ](./media/how-to-schedule-pipelines/scheduled-pipelines.png)
 

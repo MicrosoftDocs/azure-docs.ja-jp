@@ -6,14 +6,14 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: b16132c24d35ee2c9902fa2b21c44416d8376b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92a9370ec866b6d2c14988871e3c742a40679885
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77470906"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077810"
 ---
-# <a name="use-the-new-authentication-for-your-storsimple"></a>StorSimple の新しい認証を使用する
+# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>StorSimple に Azure Active Directory (AD) 認証を使用する
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 

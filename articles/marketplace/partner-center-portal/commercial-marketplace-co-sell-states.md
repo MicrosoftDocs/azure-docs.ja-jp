@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 04/01/2020
-ms.openlocfilehash: 7dd28ab23894988a1ee193f2f8d72cb83b7aafe8
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 09/02/2020
+ms.openlocfilehash: 44f06773eec965fad610da1a4286bdf224e3a88b
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120519"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321482"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketplace での共同販売の州コード
 
@@ -78,7 +78,7 @@ ms.locfileid: "86120519"
 | 北マリアナ諸島            | US-MP     |
 | プエルトリコ                         | US-PR     |
 | 合衆国領有小離島 | US-UM    |
-| アメリカ領ヴァージン諸島                 | US-VI    |
+| 米国バージン諸島                 | US-VI    |
 
 ## <a name="canadian-provinces-and-territories"></a>カナダの州と準州
 

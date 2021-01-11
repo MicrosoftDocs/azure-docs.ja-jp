@@ -6,12 +6,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.subservice: ''
-ms.openlocfilehash: a7ff659eb6fc204208c84146a2fc33c8278f7154
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c81d9774dccf8c02d2eab7b1ebbb69e6671869e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207281"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423798"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する (プレビュー)
 
@@ -132,15 +132,15 @@ Automation アカウント リソースを設定する前に、ネットワー�
 
 ## <a name="set-public-network-access-flags"></a>パブリック ネットワーク アクセスのフラグを設定する
 
-Automation アカウントの構成によって、すべてのパブリック構成を拒否し、プライベート エンドポイント経由の接続のみを許可するようにして、ネットワーク セキュリティを強化できます。 Automation アカウントへのアクセスを VNet 内のみに制限し、パブリック インターネットからのアクセスを許可しない場合は、`publicNetworkAccess` プロパティを `$true` に設定できます。
+Automation アカウントの構成によって、すべてのパブリック構成を拒否し、プライベート エンドポイント経由の接続のみを許可するようにして、ネットワーク セキュリティを強化できます。 Automation アカウントへのアクセスを VNet 内のみに制限し、パブリック インターネットからのアクセスを許可しない場合は、`publicNetworkAccess` プロパティを `$false` に設定できます。
 
-**[Deny public network access]\(パブリック ネットワーク アクセスを拒否する\)** 設定を `true` に設定すると、プライベート エンドポイント経由の接続のみが許可され、パブリック エンドポイント経由の接続はすべて拒否され、エラー メッセージが表示されます。
+**[パブリック ネットワーク アクセス]** 設定を `$false` に設定すると、プライベート エンドポイント経由の接続のみが許可され、パブリック エンドポイント経由のすべての接続は Unauthorized というエラー メッセージと HTTP 状態コード 401 が表示されて拒否されます。 
 
 次の PowerShell スクリプトは、**パブリック ネットワーク アクセス** プロパティを Automation アカウント レベルで `Get` および `Set` する方法を示しています。
 
 ```powershell
 $account = Get-AzResource -ResourceType Microsoft.Automation/automationAccounts -ResourceGroupName "<resourceGroupName>" -Name "<automationAccountName>" -ApiVersion "2020-01-13-preview"
-$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $true
+$account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty -Value $false
 $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 ```
 

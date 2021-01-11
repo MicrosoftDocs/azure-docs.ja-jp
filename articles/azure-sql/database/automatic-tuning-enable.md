@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 6ffc81f7fc5cf36ff4e9bada8f72cfef013afcbc
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 94ffe2852380d238e9829a8ab0cc69ebe82b74fe
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85982789"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87373506"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>クエリの監視とワークロード パフォーマンスの向上のために Azure portal で自動チューニングを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -117,7 +117,7 @@ ALTER DATABASE current SET AUTOMATIC_TUNING (FORCE_LAST_GOOD_PLAN = ON, CREATE_I
 
 ## <a name="permissions"></a>アクセス許可
 
-自動チューニングは Azure の機能であるため、これを使用するには、Azure の組み込み RBAC ロールを使用する必要があります。 SQL 認証を使用するだけでは、Azure portal からその機能を使用することはできません。
+自動チューニングは Azure の機能であるため、これを使用するには、Azure の組み込みロールを使用する必要があります。 SQL 認証を使用するだけでは、Azure portal からその機能を使用することはできません。
 
 自動チューニングを使用するには、ユーザーに付与する必要がある最小限のアクセス許可は、Azure の組み込みロールである [SQL Database 共同作成者](../../role-based-access-control/built-in-roles.md#sql-db-contributor)ロールです。 SQL Server 共同作成者、SQL Managed Instance 共同作成者、共同作成者、所有者など、上位の特権ロールの使用を検討することもできます。
 

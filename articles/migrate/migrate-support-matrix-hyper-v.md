@@ -3,12 +3,12 @@ title: Azure Migrate での Hyper-V の評価のサポート
 description: Azure Migrate Server Assessment を使用した Hyper-V の評価のサポートについて説明します。
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 2cf13904a3642b8b91d61c84bb1c51cbb97f0846
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3d55d71fc4e9551fa19afe8c3f37d31107e4d2e7
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324813"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641825"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -34,7 +34,7 @@ Hyper-V VM の評価を設定するには、Azure Migrate プロジェクトを�
 
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
-| **Hyper-V ホスト**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。<br/><br/> Hyper-V ホストは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 を実行できます。<br/> Windows Server 2012 を実行している Hyper-V ホスト上にある VM を評価することはできません。
+| **Hyper-V ホスト**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。<br/><br/> Hyper-V ホストは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 を実行できます。 これらのオペレーティング システムの Server コア インストールもサポートされています。 <br/>Windows Server 2012 を実行している Hyper-V ホスト上にある VM を評価することはできません。
 | **アクセス許可**           | Hyper-V ホストに対する管理者のアクセス許可が必要です。 <br/> 管理者のアクセス許可を割り当てたくない場合には、代わりにローカルまたはドメインのユーザー アカウントを作成し、そのユーザー アカウントを Remote Management Users、Hyper-V Administrators、Performance Monitor Users のグループに追加します。 |
 | **PowerShell リモート処理**   | [PowerShell リモート処理](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7)は、各 Hyper-V ホストで有効にする必要があります。 |
 | **Hyper-V レプリカ**       | Hyper-V レプリカを使用する (または、同じ VM 識別子を持つ複数の VM がある) 場合、Azure Migrate を使用して元の VM とレプリケートされた VM の両方を検出すると、Azure Migrate によって生成される評価が正確ではない可能性があります。 |

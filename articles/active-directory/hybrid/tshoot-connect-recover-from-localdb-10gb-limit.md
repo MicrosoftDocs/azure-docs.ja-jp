@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6a61a4a26176ee353d1f182579e1f8d80a95aab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356000"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89275904"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect:LocalDB の 10 GB 制限からの回復方法
 Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 SQL Server Express には、10 GB のサイズ制限があります。 LocalDB を使用していて、この上限に達すると、Azure AD Connect Synchronization Service は正常に開始または同期できなくなります。 この記事では、回復の手順を説明します。
@@ -55,7 +55,7 @@ Azure AD Connect には、ID データを格納する SQL Server データベー
 5. 実行されていない場合は、サービスを開始してみてください。 サービスが正常に開始した場合は、「[データベースを縮小する](#shrink-the-database)」の手順をスキップし、「[実行履歴データを削除する](#delete-run-history-data)」の手順に進みます。 そうでない場合は、「[データベースを縮小する](#shrink-the-database)」の手順に進みます。
 
 ### <a name="shrink-the-database"></a>データベースを縮小する
-縮小操作を使用して、Synchronization Service を開始するための十分な DB 空き領域を確保します。 データベース内の空白を削除することによって、DB 空き領域が確保されます。 必ず領域を回復できる保証はないため、この手順はベスト エフォートです。 縮小操作の詳細については、「[データベースの圧縮](https://msdn.microsoft.com/library/ms189035.aspx)」という記事を参照してください。
+縮小操作を使用して、Synchronization Service を開始するための十分な DB 空き領域を確保します。 データベース内の空白を削除することによって、DB 空き領域が確保されます。 必ず領域を回復できる保証はないため、この手順はベスト エフォートです。 縮小操作の詳細については、「[データベースの圧縮](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15)」という記事を参照してください。
 
 > [!IMPORTANT]
 > Synchronization Service を実行できる場合は、この手順をスキップしてください。 SQL DB の縮小は、断片化の増加によってパフォーマンスが低下する可能性があるため、お勧めしません。
@@ -100,8 +100,8 @@ Azure AD Connect 用に作成されるデータベースの名前は、**ADSync*
 
 ## <a name="long-term-solution--migrate-to-full-sql"></a>長期的な解決策 – 完全バージョンの SQL への移行
 一般に、この問題は、Azure AD Connect がオンプレミスの Active Directory を Azure AD に同期するのに 10 GB というデータベース サイズが十分でなくなったことを示しています。 SQL Server の完全バージョンを使用するよう切り替えることをお勧めします。 既存の Azure AD Connect デプロイの LocalDB を、SQL の完全バージョンのデータベースに直接置き換えることはできません。 代わりに、SQL の完全バージョンを搭載した新しい Azure AD Connect サーバーをデプロイする必要があります。 スウィング移行を実行することをお勧めします。スウィング移行では、新しい Azure AD Connect サーバー (SQL DB を含む) がステージング サーバーとして、既存の Azure AD Connect サーバー (LocalDB を含む) の隣にデプロイされます。 
-* Azure AD Connect でリモート SQL を構成する方法の手順については、「[Azure AD Connect のカスタム インストール](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom)」を参照してください。
-* Azure AD Connect アップグレードのスウィング移行の手順については、「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration)」を参照してください。
+* Azure AD Connect でリモート SQL を構成する方法の手順については、「[Azure AD Connect のカスタム インストール](./how-to-connect-install-custom.md)」を参照してください。
+* Azure AD Connect アップグレードのスウィング移行の手順については、「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](./how-to-upgrade-previous-version.md#swing-migration)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

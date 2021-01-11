@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: c07c00345140d96bf3265fb280fe29b1274bdee6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 58f1c2621165a7074c04752832c6560b2fd3e423
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85321308"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935434"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>例:Form Recognizer カスタム スキルを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "85321308"
 
 ## <a name="train-your-model"></a>モデルをトレーニングする
 
-このスキルを使用する前に、入力フォームで Form Recognizer モデルのトレーニングを行う必要があります。 モデルのトレーニング方法については、[cURL クイックスタート](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract)に従ってください。 このクイックスタートに記載されているサンプル フォームを使用するか、独自のデータを使用できます。 モデルのトレーニング後、その ID 値を安全な場所にコピーします。
+このスキルを使用する前に、入力フォームで Form Recognizer モデルのトレーニングを行う必要があります。 モデルのトレーニング方法については、[cURL クイックスタート](../cognitive-services/form-recognizer/quickstarts/curl-train-extract.md)に従ってください。 このクイックスタートに記載されているサンプル フォームを使用するか、独自のデータを使用できます。 モデルのトレーニング後、その ID 値を安全な場所にコピーします。
 
 ## <a name="set-up-the-custom-skill"></a>カスタム スキルを設定する
 
@@ -167,5 +167,5 @@ Azure BLOB ストレージにないリモート ドキュメントを分析す�
 * [Azure Search Power Skills: カスタム スキルのリポジトリ](https://github.com/Azure-Samples/azure-search-power-skills)
 * [AI エンリッチメント パイプラインにカスタム スキルを追加する方法](cognitive-search-custom-skill-interface.md)
 * [スキルセットを定義する](cognitive-search-defining-skillset.md)
-* [スキルセットを作成する (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+* [スキルセットを作成する (REST)](/rest/api/searchservice/create-skillset)
 * [強化されたフィールドをマッピングする](cognitive-search-output-field-mapping.md)

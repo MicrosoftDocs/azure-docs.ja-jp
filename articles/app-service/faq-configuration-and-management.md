@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 867c011cb3086cab736d17501e72bc477d0d2889
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5545acbfd6bb239b9518fbe352b819f300dafaf0
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160002"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962351"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -65,11 +65,11 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
     * Value = *目的のタイム ゾーン*
 3. **[保存]** を選択します。
 
-Windows で実行される App Service の場合、指定可能な値については、[既定のタイム ゾーン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。 Linux で実行される App Service の場合、タイム ゾーン値として [TZ データベース名](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)を設定します。 TZ データベース名の例を挙げると、America/Adak のようになります。
+Windows で実行される App Service の場合、指定可能な値については、[既定のタイム ゾーン](/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。 Linux で実行される App Service の場合、タイム ゾーン値として [TZ データベース名](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)を設定します。 TZ データベース名の例を挙げると、America/Adak のようになります。
 
-## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な WebJobs がときどき失敗する理由はなんですか?
+## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 
-既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 Basic プランおよび Standard プランでは、 **[常時接続]** 設定をオンにして、常に Web アプリをロードしておくことができます。 アプリで継続的な WebJobs を実行する場合は、 **[常時接続]** をオンにする必要があります。そうしないと、WebJobs の実行の信頼性が低下する可能性があります。 詳細については、「[Create a continuously running WebJob](webjobs-create.md#CreateContinuous)」(継続的に実行する WebJobs の作成) を参照してください。
+既定では、設定された期間だけアイドル状態が続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 Basic プランおよび Standard プランでは、 **[常時接続]** 設定をオンにして、常に Web アプリをロードしておくことができます。 アプリで継続的な Web ジョブを実行する場合は、 **[常時接続]** をオンにする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。 詳細については、「[Create a continuously running WebJob](webjobs-create.md#CreateContinuous)」(継続的に実行する Web ジョブの作成) を参照してください。
 
 ## <a name="how-do-i-get-the-outbound-ip-address-for-my-web-app"></a>Web アプリの送信 IP アドレスはどのように取得しますか?
 
@@ -121,12 +121,12 @@ Standard および Premium App Service プランでは、Web アプリを App Se
 
 デプロイ スロットの使用の詳細については、「[Set up a staging environment in App Service](deploy-staging-slots.md)」(App Service でのステージング環境のセットアップ) を参照してください。
 
-## <a name="how-do-i-access-and-review-webjob-logs"></a>WebJobs のログにアクセスして確認するにはどうすればよいですか?
+## <a name="how-do-i-access-and-review-webjob-logs"></a>Web ジョブのログにアクセスして確認するにはどうすればよいですか?
 
-WebJobs のログを確認するには、次の手順を実行します。
+Web ジョブのログを確認するには、次の手順を実行します。
 
 1. **Kudu の Web サイト** (`https://*yourwebsitename*.scm.azurewebsites.net`) にサインインします。
-2. [WebJobs] を選択します。
+2. [Web ジョブ] を選択します。
 3. **[出力の切り替え]** ボタンを選択します。
 4. 出力ファイルをダウンロードするには、**ダウンロード** リンクを選択します。
 5. 個別実行では、 **[個別呼び出し]** を選択します。
@@ -141,13 +141,13 @@ WebJobs のログを確認するには、次の手順を実行します。
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>解決策
+### <a name="resolution"></a>解像度
 
 修正されたハイブリッド接続マネージャーの問題によって、例外が発生しました。 この問題を解決するために [ハイブリッド接続マネージャーを更新](https://go.microsoft.com/fwlink/?LinkID=841308)してください。
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>URL 書き換え規則を追加する方法を教えてください。
 
-URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services: URL 書き換えについて](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)」を参照してください。
+URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services: URL 書き換えについて](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write)」を参照してください。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>App Service への受信トラフィックを制御するにはどうすればいいですか?
 
@@ -222,15 +222,15 @@ Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provi
 * ネットワーク セキュリティ グループが不適切であるために App Service Environment のネットワーク接続の要件を満たすことができない。
 * 強制トンネリングがオンになっている。
 
-詳細については、[新しい Azure App Service Environment をデプロイ (作成) するときによくある問題](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/)についてのページを参照してください。
+詳細については、[新しい Azure App Service Environment をデプロイ (作成) するときによくある問題](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase)についてのページを参照してください。
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>App Service プランを削除できないのはなぜですか?
 
 App Service アプリがApp Service プランに関連付けられている場合、App Service プランを削除することはできません。 App Service プランを削除する前に、関連付けられているすべての App Service アプリを App Service プランから削除します。
 
-## <a name="how-do-i-schedule-a-webjob"></a>WebJobs をスケジュールする方法は?
+## <a name="how-do-i-schedule-a-webjob"></a>Web ジョブをスケジュールする方法は?
 
-Cron 式を使用して WebJobs のスケジュールを作成できます。
+Cron 式を使用して Web ジョブのスケジュールを作成できます。
 
 1. settings.job ファイルを作成します。
 2. Cron 式を使用して、この JSON ファイルにスケジュールのプロパティを含めます。 
@@ -240,7 +240,7 @@ Cron 式を使用して WebJobs のスケジュールを作成できます。
     {month} {day of the week}" }
     ```
 
-WebJobs のスケジュールの詳細については、「[Create a scheduled WebJob by using a Cron expression](webjobs-create.md#CreateScheduledCRON)」(Cron 式を使用して、WebJobs のスケジュールを作成する) を参照してください。
+Web ジョブのスケジュールの詳細については、「[Create a scheduled WebJob by using a Cron expression](webjobs-create.md#CreateScheduledCRON)」(Cron 式を使用して、Web ジョブのスケジュールを作成する) を参照してください。
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>App Service アプリの侵入テストを実行する方法は?
 
@@ -286,7 +286,7 @@ Azure の Web アプリを使用して新しい Web サイトを作成すると�
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>App Service にインストールされている .NET のバージョンはどうすればわかりますか?
 
-App Service にインストールされている Microsoft .NET のバージョンを検索する最も簡単な方法は、Kudu コンソールを使用することです。 Kudu コンソールは、ポータルから、または、App Service アプリの URL を使用してアクセスできます。 詳細については、「[Determine the installed .NET version in App Service](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/)」(App Service にインストールされた .NET バージョンを確認する) を参照してください。
+App Service にインストールされている Microsoft .NET のバージョンを検索する最も簡単な方法は、Kudu コンソールを使用することです。 Kudu コンソールは、ポータルから、または、App Service アプリの URL を使用してアクセスできます。 詳細については、「[Determine the installed .NET version in App Service](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services)」(App Service にインストールされた .NET バージョンを確認する) を参照してください。
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>自動スケールが期待どおりに動作しないのはなぜですか?
 

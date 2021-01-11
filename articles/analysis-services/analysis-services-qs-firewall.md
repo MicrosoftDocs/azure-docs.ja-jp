@@ -4,15 +4,15 @@ description: このクイック スタートでは、Azure portal を利用し�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 05/19/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 48618815519fad31bff5d6a8d2d2edc82535f437
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: e4953137cf939c35c6ac73fe51ca43eca6e99edc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697900"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192437"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート:サーバーのファイアウォールの構成 - ポータル
 
@@ -22,8 +22,9 @@ ms.locfileid: "83697900"
 
 - サブスクリプションの Analysis Services サーバー。 詳しくは、「[クイック スタート: サーバーの作成 - ポータル](analysis-services-create-server.md)」または「[クイック スタート: サーバーの作成 - PowerShell](analysis-services-create-powershell.md)」をご覧ください。
 - クライアント コンピューターの 1 つまたは複数の IP アドレス範囲 (必要な場合)。
-- [Power BI サービスからのアクセスを許可する] が有効になっている場合でも、Power BI Premium を Azure Analysis Services に接続する一部のシナリオ (データのインポート (更新)、レポートのページ割り付けなど) は現在サポートされていません。 Power BI Premium から Live Connect を使用する一般的なシナリオはサポートされています。 Power BI Pro シナリオはすべてサポートされています。
 
+> [!NOTE]
+> Microsoft Cloud Germany では現在、ファイアウォールが有効であるときに、Power BI Premium からのデータのインポート (更新) やページ分割されたレポートの接続はサポートされません。[Power BI からのアクセスを許可する] がオンに設定されていても同様です。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする 
 
@@ -32,9 +33,9 @@ ms.locfileid: "83697900"
 ## <a name="configure-a-firewall"></a>ファイアウォールを構成する
 
 1. サーバーをクリックして [概要] ページを開きます。 
-2. **[設定]**  >  **[ファイアウォール]**  >  **[ファイアウォールを有効にする]** で、 **[オン]** をクリックします。
-3. Power BI サービスからの DirectQuery アクセスを許可するには、 **[Allow access from Power BI]\(Power BI からのアクセスを許可する\)** で **[オン]** をクリックします。  
-4. (省略可能) 1 つまたは複数の IP アドレス範囲を指定します。 各範囲の名前、開始 IP アドレス、終了 IP アドレスを入力します。 ファイアウォール規則の名前は 128 文字に制限され、大文字、小文字、数値、アンダースコア、およびハイフンのみを使用できます。 ホワイトスペースとその他の特殊文字は使用できません。
+2. **[設定]**  >  **[ファイアウォール]**  >  **[ファイアウォールを有効にする]** で、 **[オン]** を選択します。
+3. Power BI や Power BI Premium からの接続を有効にするために、 **[Power BI からのアクセスを許可する]** で **[オン]** を選択します。  
+4. (省略可能) 1 つまたは複数の IP アドレス範囲を指定します。 各範囲の名前、開始 IP アドレス、終了 IP アドレスを入力します。 ファイアウォール規則の名前は 128 文字に制限され、大文字、小文字、数値、アンダースコア、およびハイフンのみを使用できます。 空白スペースとその他の特殊文字は使用できません。
 5. **[保存]** をクリックします。
 
      ![ファイアウォールの設定](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
@@ -43,8 +44,8 @@ ms.locfileid: "83697900"
 
 不要になった場合は、IP アドレス範囲を削除するか、ファイアウォールを無効にします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、サーバーのファイアウォールを構成する方法を説明しました。 サーバーが存在し、ファイアウォールで保護されたので、ポータルからそれに基本的なサンプル データ モデルを追加できます。 サンプル モデルがあると、モデル データベース ロールの構成とクライアント接続のテストについて理解するのに役立ちます。 詳しくは、サンプル モデルの追加のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)
+> [チュートリアル: サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)

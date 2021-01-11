@@ -4,7 +4,7 @@
   items:
     - name: Traffic Manager について
       href: traffic-manager-overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Traffic Manager プロファイルの作成 - ポータル
       href: quickstart-create-traffic-manager-profile.md
@@ -12,6 +12,9 @@
       href: quickstart-create-traffic-manager-profile-powershell.md
     - name: Traffic Manager プロファイルの作成 - Azure CLI
       href: quickstart-create-traffic-manager-profile-cli.md
+    - name: Traffic Manager プロファイルの作成 - ARM テンプレート
+      href: quickstart-create-traffic-manager-profile-template.md
+  expanded: true
 - name: チュートリアル
   items:
     - name: トラフィックをルーティングして待ち時間を削減する
@@ -59,7 +62,7 @@
       href: traffic-manager-how-it-works.md
     - name: FAQ
       href: traffic-manager-FAQs.md
-- name: 操作方法
+- name: 操作方法ガイド
   items:
     - name: Traffic Manager でのパフォーマンス ルーティングの構成
       href: traffic-manager-configure-performance-routing-method.md
@@ -132,7 +135,7 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの制限
-      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits'
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md#traffic-manager-limits
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=traffic-manager'
     - name: SLA

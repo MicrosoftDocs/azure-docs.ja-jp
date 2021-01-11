@@ -5,13 +5,13 @@ author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/04/2019
-ms.openlocfilehash: e813459ddf516b170e7f429646dad38452188335
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/23/2020
+ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102380"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171639"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 

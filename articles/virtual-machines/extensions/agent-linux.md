@@ -1,26 +1,19 @@
 ---
 title: Azure Linux VM エージェントの概要
 description: Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。
-services: virtual-machines-linux
-documentationcenter: ''
 author: axayjo
-manager: gwallace
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4143e049f0a89d1218d9442eaebc1c5ebaf4cc77
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 2237b0b0d0c1f6e95e100743b377f9c04f57210f
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186828"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279705"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 
@@ -72,7 +65,7 @@ Microsoft Azure Linux エージェント (waagent) は、Linux と FreeBSD の�
 次のシステムがテスト済みで、Azure Linux エージェントで機能することがわかっています。
 
 > [!NOTE]
-> この一覧は、Microsoft Azure Platform でサポートされるシステムの公式の一覧とは異なる場合があります (Microsoft Azure Platform でサポートされるシステムの一覧: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216))
+> この一覧は、[サポートされているディストリビューション](../linux/endorsed-distros.md)の公式の一覧とは異なる可能性があります。
 > 
 > 
 
@@ -99,6 +92,9 @@ Linux エージェントが正しく機能するには、次の該当するシ�
 * テキスト処理ツール: sed、grep
 * ネットワーク ツール: ip-route
 * UDF ファイルシステムのマウントのカーネル サポート。
+
+VM が IP アドレス168.63.129.16 にアクセスできることを確認します。 詳しくは、「[IP アドレス 168.63.129.16 とは](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)」を参照してください。
+
 
 ## <a name="installation"></a>インストール
 使用しているディストリビューションのパッケージのリポジトリから RPM または DEB パッケージを使用してインストールする方法は、Azure Linux エージェントのインストールおよびアップグレードとしてお勧めする方法です。 すべての[動作保証済みディストリビューション プロバイダー](../linux/endorsed-distros.md)Azure Linux エージェント パッケージをイメージとリポジトリに統合します。
@@ -344,5 +340,4 @@ Ubuntu Cloud Image では [cloud-init](https://launchpad.net/ubuntu/+source/clou
 * 詳しくは､プロビジョニング中に Ubuntu Cloud Image にリソース ディスク マウント ポイントとスワップ領域を構成するための次のリソースを参照してください。
   
   * [Ubuntu Wiki: スワップ パーティションの構成](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Azure の仮想マシンにカスタム データを挿入する](../windows/classic/inject-custom-data.md)
-
+  * [Azure の仮想マシンにカスタム データを挿入する](../windows/tutorial-automate-vm-deployment.md)

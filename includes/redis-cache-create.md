@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: wesmc
 ms.custom: include file
-ms.openlocfilehash: 3c064aa8e57a77b96161da06847f543816be1217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0557f8eb2fd120baeebee96acb4ef539344e3e7
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73719100"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528831"
 ---
 1. キャッシュを作成するには、[Azure portal](https://portal.azure.com) にサインインし、 **[リソースの作成]** を選択します。 
    
@@ -37,7 +37,10 @@ ms.locfileid: "73719100"
    
    ![Azure Cache for Redis を作成する](media/redis-cache-create/redis-cache-cache-create.png) 
    
-   キャッシュが作成されるまで、しばらく時間がかかります。 Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
+   > [!NOTE]
+   > キャッシュのプロビジョニングには、約 15 分から 20 分かかると予想されます。   
+   
+   Azure Cache for Redis の **[概要]** ページで進行状況を監視できます。 **[状態]** に "**実行中**" と表示されている場合は、キャッシュを使用する準備ができています。
    
    ![Azure Cache for Redis が作成された](media/redis-cache-create/redis-cache-cache-created.png)
 

@@ -3,12 +3,13 @@ title: チュートリアル:CLI を使用してバックアップされた SAP 
 description: このチュートリアルでは、Azure VM で実行されたバックアップ SAP HANA データベースを Azure CLI を使用して管理する方法について説明します。
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 40cfb46faf993a995248d79d60c62de912bd88ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 3051eb9a6f0c395f8ec06d92d6501296ec39c768
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538141"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007300"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure VM 内の SAP HANA データベースを管理する
 

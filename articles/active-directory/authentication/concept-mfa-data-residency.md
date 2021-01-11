@@ -5,22 +5,22 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 07/14/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a75e9d5c8501274553edef36b475b2bd21b7875
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ee4b15311dfefecd9a533add9c5a028a9b7b22fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738803"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87051161"
 ---
 # <a name="data-residency-and-customer-data-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のデータの保存場所と顧客データ
 
-Office 365 や Azure などの Microsoft オンライン サービスにサブスクライブするとき、ご自身の組織によって提供されるアドレスに基づいて、Azure AD により顧客データが地理的な場所に保存されます。 ご自身の顧客のデータがどこに保存されるかについては、Microsoft セキュリティ センターの「[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」を参照してください。
+Office 365 や Azure などの Microsoft オンライン サービスにサブスクライブするとき、ご自身の組織によって提供されるアドレスに基づいて、Azure AD により顧客データが地理的な場所に保存されます。 ご自身の顧客のデータがどこに保存されるかについては、Microsoft トラスト センターの「[お客様のデータの場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)」を参照してください。
 
 クラウドベースの Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server では、一定量の個人データと組織データが処理され、保存されます。 この記事では、どのようなデータがどこに保存されるのかについて、概要を説明します。
 

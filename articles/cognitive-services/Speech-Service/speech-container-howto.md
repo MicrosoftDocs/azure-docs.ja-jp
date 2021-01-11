@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: e120eb20d247ce2def7f7c322ead3066c1d4386e
-ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
+ms.openlocfilehash: dc17c25a84c3d0af39bfa7a8902bdc1d93f201e8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84974655"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518324"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
@@ -33,7 +33,7 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 | テキスト読み上げ | テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.5.0 |
 | カスタム テキスト読み上げ | [Custom Voice ポータル](https://aka.ms/custom-voice-portal)のカスタム モデルを利用し、テキストを、プレーンテキストの入力または音声合成マークアップ言語 (SSML) を含む自然な音声に変換します。 | 1.5.0 |
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -354,7 +354,7 @@ ApiKey={API_KEY}
 このコマンドは、次の操作を行います。
 
 * コンテナー イメージから *Text-to-speech* コンテナーを実行します
-* 2 つの CPU コアと 1 ギガバイト (GB) のメモリを割り当てます。
+* 1 つの CPU コアと 2 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
 
@@ -394,7 +394,7 @@ ApiKey={API_KEY}
 このコマンドは、次の操作を行います。
 
 * コンテナー イメージから*カスタム テキスト読み上げ* コンテナーを実行します
-* 2 つの CPU コアと 1 ギガバイト (GB) のメモリを割り当てます。
+* 1 つの CPU コアと 2 ギガバイト (GB) のメモリを割り当てます。
 * *カスタム テキスト読み上げ* モデルをボリューム入力マウント (*C:\CustomVoice* など) から読み込みます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * `ModelId` が指定されたモデルをダウンロードします (ボリューム マウントで見つからない場合)。

@@ -17,7 +17,7 @@
       items:
         - name: REST API
           items:
-            - name: 'C# の使用'
+            - name: C# の使用
               href: call-endpoint-csharp.md
             - name: Java の使用
               href: call-endpoint-java.md
@@ -94,7 +94,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=bing+custom+search'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
@@ -103,7 +103,7 @@
     - name: ナレッジ ベース
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: API キーを取得する
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: 試してみる
       href: 'https://aka.ms/bingcustomsearchtryit'
     - name: Bing Custom Search エンドポイント

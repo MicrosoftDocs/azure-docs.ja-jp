@@ -2,18 +2,19 @@
 title: クイック スタート:Azure CLI を使用して Azure API for FHIR をデプロイする
 description: このクイックスタートでは、Azure CLI を使用して Azure API for FHIR を Azure にデプロイする方法について説明します。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
-ms.author: mihansen
-ms.openlocfilehash: 3eca478c3417810bfa227f55427294517247e083
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.author: matjazl
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: e1aa3362217a4edcfcf547c69b9effde00459f7e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "84820043"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850561"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure API for FHIR をデプロイする
 

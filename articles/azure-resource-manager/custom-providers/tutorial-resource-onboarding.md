@@ -14,7 +14,7 @@ ms.locfileid: "75648609"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>チュートリアル:Azure カスタム プロバイダーを使用したリソースのオンボード
 
-このチュートリアルでは、Microsoft.CustomProviders/associations リソースの種類を使用して、Azure Resource Manager API を拡張するカスタム リソース プロバイダーを Azure にデプロイします。 チュートリアルでは、カスタム プロバイダー インスタンスが配置されているリソース グループの外にある既存のリソースを拡張する方法を示します。 このチュートリアルでは、カスタム リソース プロバイダーは Azure ロジックアプリによって提供されていますが、任意のパブリック API エンドポイントを使用してもかまいません。
+このチュートリアルでは、Microsoft.CustomProviders/associations リソースの種類を使用して、Azure Resource Manager API を拡張するカスタム リソース プロバイダーを Azure にデプロイします。 チュートリアルでは、カスタム プロバイダー インスタンスが配置されているリソース グループの外にある既存のリソースを拡張する方法を示します。 このチュートリアルでは、カスタム リソース プロバイダーは Azure Logic Apps によって提供されていますが、任意のパブリック API エンドポイントを使用してもかまいません。
 
 ## <a name="prerequisites"></a>前提条件
 

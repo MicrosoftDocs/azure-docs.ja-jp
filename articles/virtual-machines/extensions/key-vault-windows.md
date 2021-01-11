@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d66ef8f142a72bfdea2dcf3eeb996b18173de04d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 70dcee1cce49c658a60e98821a3ce60ec443408a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502964"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932578"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -73,9 +73,9 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 > 
 > これは、`/secrets` のパスでは秘密キーを含む完全な証明書が返されるのに対し、`/certificates` のパスでは返されないためです。 証明書について詳しくは、次の記事をご覧ください: 「[Key Vault 証明書](../../key-vault/general/about-keys-secrets-certificates.md)」
 
-> [!NOTE]
-> 'authenticationSettings' プロパティは、VM に複数の ID が割り当てられるシナリオでは省略可能です。
-> Key Vault への認証に使用する ID を指定できます。
+> [!IMPORTANT]
+> "authenticationSettings" プロパティは、**ユーザー割り当て ID** を使用する VM の場合にのみ**必須**です。
+> Key Vault への認証に使用する ID を指定します。
 
 
 ### <a name="property-values"></a>プロパティ値
@@ -89,7 +89,7 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 | pollingIntervalInS | 3600 | string |
 | certificateStoreName | MY | string |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
+| certificateStoreLocation  | LocalMachine または CurrentUser (大文字と小文字を区別する) | string |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 文字列配列
 | msiEndpoint | http://169.254.169.254/metadata/identity | string |
@@ -130,6 +130,8 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell でのデプロイ
+> [!WARNING]
+> 多くの場合、PowerShell クライアントでは、`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.` エラーを伴って akvvm_service が失敗する原因となる settings.json で、`\` が `"` に追加されます。
 
 Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮想マシンまたは仮想マシンのスケールセットにデプロイすることができます。 
 

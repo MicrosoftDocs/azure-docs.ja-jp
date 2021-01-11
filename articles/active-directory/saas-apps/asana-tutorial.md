@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Asana の統合 | Microsoft Docs'
 description: Azure Active Directory と Asana の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5531a7c1a95e472239c639e3307623fc4ccedd37
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dd2c02f25584fd32acd32277a1dd2300c6a98e73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157870"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>チュートリアル: Azure Active Directory と Asana の統合
 
@@ -128,7 +123,7 @@ Asana を使用して Azure AD シングル サインオンを構成するには
 
 ### <a name="configure-asana-single-sign-on"></a>Asana のシングル サインオンの構成
 
-1. 別のブラウザー ウィンドウで、Asana アプリケーションにサインオンします。 Asana で SSO を構成するために、画面の右上隅にあるワークスペース名をクリックして、ワークスペースの設定にアクセスします。 その後、 **[\<your workspace name\> Settings (<ワークスペース名> 設定)]** をクリックします。
+1. 別のブラウザー ウィンドウで、Asana アプリケーションにサインオンします。 Asana で SSO を構成するために、画面の右上隅にあるワークスペース名をクリックして、ワークスペースの設定にアクセスします。 次に、 **[\<your workspace name\> Settings]\(<ワークスペース名> 設定\)** をクリックします。
 
     ![Asana SSO 設定](./media/asana-tutorial/tutorial_asana_09.png)
 

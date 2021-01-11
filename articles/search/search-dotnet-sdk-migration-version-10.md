@@ -1,5 +1,5 @@
 ---
-title: Azure Cognitive Search .NET SDK バージョン 10 へのアップグレード
+title: .NET SDK バージョン10 にアップグレードする
 titleSuffix: Azure Cognitive Search
 description: 以前のバージョンから Azure Cognitive Search .NET SDK バージョン 10 にコードを移行します。 新機能と必要なコード変更について説明します。
 manager: nitinme
@@ -9,16 +9,17 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: bfe24ff38446fa0d0ccea96799e6f42b561713bf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562382"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002812"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Cognitive Search .NET SDK バージョン 10 へのアップグレード
 
-バージョン 9.0 以前の [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用している場合、アプリケーションをアップグレードしてバージョン 10 を使用するには、この記事が役に立ちます。
+バージョン 9.0 以前の [.NET SDK](/dotnet/api/overview/azure/search) を使用している場合、アプリケーションをアップグレードしてバージョン 10 を使用するには、この記事が役に立ちます。
 
 バージョン10では Azure Search の名前が Azure Cognitive Search に変更されますが、名前空間とパッケージ名は変更されません。 以前のバージョンの SDK (9.0 以前) では、変更前の名前が引き続き使用されます。 例を含む SDK の使用方法の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
@@ -35,13 +36,13 @@ ms.locfileid: "85562382"
 Azure Cognitive Search .NET SDK のバージョン 10 は、これらの更新が含まれている REST API `2019-05-06` を対象としています。
 
 * 2 つの新しいスキルの導入 - [条件付きスキル](cognitive-search-skill-conditional.md)と[テキスト翻訳スキル](cognitive-search-skill-text-translation.md)。
-* 入れ子になったコンテキストからの統合に対応するために、[Shaper スキル](cognitive-search-skill-shaper.md)の入力が再構築されました。 詳細については、こちらの [JSON 定義の例](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)を参照してください。
+* 入れ子になったコンテキストからの統合に対応するために、[Shaper スキル](cognitive-search-skill-shaper.md)の入力が再構築されました。 詳細については、こちらの [JSON 定義の例](./cognitive-search-skill-shaper.md#scenario-3-input-consolidation-from-nested-contexts)を参照してください。
 * 2 つの新しい[フィールド マッピング関数](search-indexer-field-mappings.md)の追加:
-    - [urlEncode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urlencode-function)
-    - [urlDecode](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#urldecode-function)
-* 場合によっては、[インデクサー実行の状態](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)に表示されるエラーや警告に、デバッグに役立つ追加情報が含まれていることがあります。 `IndexerExecutionResult` は、この動作を反映するように更新されました。
+    - [urlEncode](./search-indexer-field-mappings.md#urlencode-function)
+    - [urlDecode](./search-indexer-field-mappings.md#urldecode-function)
+* 場合によっては、[インデクサー実行の状態](/rest/api/searchservice/get-indexer-status)に表示されるエラーや警告に、デバッグに役立つ追加情報が含まれていることがあります。 `IndexerExecutionResult` は、この動作を反映するように更新されました。
 * [スキルセット](cognitive-search-defining-skillset.md)内で定義された個々のスキルは、`name` プロパティを指定することで、必要に応じて識別できます。
-* `ServiceLimits` は[複合型](https://docs.microsoft.com/azure/search/search-howto-complex-data-types)の制限を示し、`IndexerExecutionInfo` は関連するインデクサーの制限またはクォータを示します。
+* `ServiceLimits` は[複合型](./search-howto-complex-data-types.md)の制限を示し、`IndexerExecutionInfo` は関連するインデクサーの制限またはクォータを示します。
 
 <a name="UpgradeSteps"></a>
 
@@ -159,4 +160,3 @@ var skillset = new Skillset()
 - Shaper スキルに対する変更によって影響を受ける可能性が最も高いのは、新規または既存のコードです。 次の手順として、入力構造を示すこの例を見直してください。[Shaper スキルの JSON 定義の例](cognitive-search-skill-shaper.md)
 - [AI エンリッチメントの概要](cognitive-search-concept-intro.md)に関するページを参照してください。
 - SDK についてのご意見をお待ちしております。 問題が発生した場合は、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search) でご質問ください。 バグを発見した場合は、 [Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。 ご自身の問題のタイトルの前には、必ず "[Azure Cognitive Search]" を付けてください。
-

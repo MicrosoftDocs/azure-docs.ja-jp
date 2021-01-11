@@ -1,18 +1,18 @@
 ---
 title: Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するヘルプを表示する
-description: Azure VMware Solution (AVS) プライベート クラウドから必要な情報を取得して、AVS デプロイまたはプロビジョニングのエラーに対するサービス要求をファイルに取り込む方法について説明します。
+description: Azure VMware Solution のプライベート クラウドから必要な情報を取得して、Azure VMware Solution のデプロイまたはプロビジョニングのエラーに対するサービス要求をファイルに取り込む方法について説明します。
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 05c9dee088b37c37cdcdee7e745cdcd2222b63e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514579"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752241"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関するヘルプを表示する
 
-この記事では、Azure portal でサービス要求 (SR) を開き、プライベート クラウドでの Azure VMware Solution (AVS) のデプロイまたはプロビジョニングのエラーに関する支援を受ける方法について説明します。 ただし、まず、Azure portal でいくつかの重要な情報を収集する必要があります。 ほとんどの場合、次のものが必要です。
+この記事では、Azure portal でサービス要求 (SR) を開き、プライベート クラウドでの Azure VMware Solution のデプロイまたはプロビジョニングのエラーに関する支援を受ける方法について説明します。 ただし、まず、Azure portal でいくつかの重要な情報を収集する必要があります。 ほとんどの場合、次のものが必要です。
 
 - 関連付け ID (失敗したデプロイのもの)
 - ExpressRoute 回線 ID (プライベート クラウドの ExpressRoute 回線を使用して既存のプライベート クラウドをスケーリングまたはピアリングしようとして失敗した場合)
@@ -27,7 +27,7 @@ ms.locfileid: "86514579"
 
 サービス要求に含めるため、この関連付け ID をコピーして保存します。 詳細については、この記事の最後にある「[サポート リクエストの作成](#create-your-support-request)」を参照してください。
 
-プライベート クラウドをデプロイする前に事前検証段階でエラーが発生した場合、関連付け ID は生成されません。 この場合は、次のような、AVS プライベート クラウドの作成時に使用した情報を入力するだけで済みます。
+プライベート クラウドをデプロイする前に事前検証段階でエラーが発生した場合、関連付け ID は生成されません。 この場合は、次のような、Azure VMware Solution のプライベート クラウドの作成時に使用した情報を入力するだけで済みます。
 
 - 場所
 - Resource group
@@ -53,7 +53,7 @@ ms.locfileid: "86514579"
 
 次に、リソースの名前、またはリソースの作成で使用した他の一意の情報を検索して、失敗したデプロイとその関連付け ID を検索します。 次の例では、プライベート クラウド リソース (pc03) での検索結果を示します。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="失敗した過去の AVS デプロイを検索します。":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="過去に失敗した Azure VMware Solution のデプロイを検索します。":::
  
 失敗したデプロイの操作名を選択すると、ウィンドウが開き、詳細が表示されます。 [JSON] タブを選択し、[correlationId] を探します。 コピーして SR に含めます。 
  
@@ -63,7 +63,7 @@ ms.locfileid: "86514579"
 
 ポータルでプライベート クラウドを表示する場合は、 **[接続性] > [ExpressRoute]** を選択し、 **[ExpressRoute ID]** をクリップボードにコピーします。
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute ID を収集します。"::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="ExpressRoute ID をクリップボードにコピーします。"::: 
  
 ExpressRoute ID を新しいサポート リクエストの適切なフィールドに貼り付けます。 詳細については、次のセクション、「[サポート リクエストの作成](#create-your-support-request)」を参照してください。
  
@@ -74,11 +74,11 @@ ExpressRoute ID を新しいサポート リクエストの適切なフィール
 
 サポート リクエストを作成するための一般的なガイダンスについては、[Azure サポート リクエストを作成する方法](../azure-portal/supportability/how-to-create-azure-support-request.md)に関する記事を参照してください。 
 
-ここでは、AVS デプロイまたはプロビジョニング エラーのための SR の作成に固有の追加のガイダンスを示します。
+ここでは、Azure VMware Solution のデプロイまたはプロビジョニング エラーのための SR の作成に固有の追加のガイダンスを示します。
 
 1. **[ヘルプ]** アイコン、 **[+ 新しいサポート リクエスト]** の順に選択します。
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="ExpressRoute ID を収集します。":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="SR の ExpressRoute ID を収集します。":::
 
 2. すべての必須フィールドに入力し、 **[基本]** タブで次の操作を行います。
 

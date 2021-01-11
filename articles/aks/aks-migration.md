@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 70ffe0bb98e89babe2f5998ee66666dd5368f7f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518047"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280224"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -23,6 +23,7 @@ ms.locfileid: "86518047"
 * [2020 年 1 月 31 日に廃止される Azure Container Service (ACS)](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) から AKS への移行
 * [AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)から AKS への移行
 * Azure 以外に基づく Kubernetes クラスターから AKS への移行
+* 既存のリソースを別のリージョンに移動する
 
 移行するときは、ターゲットの Kubernetes のバージョンが AKS に対して確実にサポート対象期間内であるようにします。 古いバージョンを使用している場合は、サポート対象範囲内ではなく、AKS でサポートされるようにバージョンをアップグレードすることが必要になる場合があります。 詳細については、[AKS でサポートされる Kubernetes のバージョン](./supported-kubernetes-versions.md)に関する記事を参照してください。
 

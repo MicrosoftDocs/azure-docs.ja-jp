@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d30a32a58dd2385a214d813307c645c56afdc8
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024457"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87274682"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -80,8 +80,7 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 - Microsoft Dynamics 365
 - Microsoft Edge
 - Microsoft Excel
-- Microsoft Flow
-- Microsoft Intune Managed Browser
+- Microsoft Power Automate
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
@@ -123,9 +122,22 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 この設定は、以下のクライアント アプリに適用されます。
 
 - Microsoft Cortana
+- Microsoft Edge
+- Microsoft Excel
+- Microsoft Office
 - Microsoft OneDrive
+- Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerPoint
+- Microsoft SharePoint
+- Microsoft Word
+- MultiLine for Intune
+- Nine Mail - Email & Calendar
+
+> [!NOTE]
+> Microsoft Kaizala、Microsoft Skype for Business、および Microsoft Visio では、**アプリの保護ポリシーを必須にする**許可はサポートされていません。 これらのアプリを動作させる必要がある場合は、**承認済みのアプリを必須にする**許可を明示的に使用してください。 この 3 つのアプリケーションでは、2 つの許可の間で or 句を使用することはできません。
 
 **解説**
 

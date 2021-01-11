@@ -1,7 +1,7 @@
 ---
 title: Azure Virtual Network の IPv6 の概要
 titlesuffix: Azure Virtual Network
-description: Azure 仮想ネットワーク内の IPv6 エンドポイントおよびデータ パスを IPv6 の観点から説明します。
+description: Azure Virtual Network 内の IPv6 エンドポイントおよびデータ パスを IPv6 の観点から説明します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -24,7 +24,7 @@ ms.locfileid: "83653306"
 Azure Virtual Network (VNet) の IPv6 により、仮想ネットワークやインターネットで IPv6 接続や IPv4 接続を使用するアプリケーションを Azure 内でホストできます。 パブリック IPv4 アドレスが枯渇したことから、モビリティおよびモノのインターネット (IoT) 向けの新しいネットワークは、IPv6 をベースに構築されることが多くなっています。 老舗の ISP やモバイル ネットワークでも IPv6 への転換が進められています。 IPv4 専用のサービスは、既存の市場でも新興市場でも実際に不利になる場合があります。 デュアル スタック IPv4/IPv6 接続により、Azure でホストされるサービスは、このテクノロジのギャップを乗り越えることができます。これにより、既存の IPv4 用およびこの新しい IPv6 用のどちらのデバイスおよびネットワークにも簡単に接続できる、グローバルに使用可能なデュアル スタック サービスが実現されます。
 
 Azure の最初の IPv6 接続により、Azure 内でホストされるアプリケーションでは、デュアル スタック (IPv4/IPv6) インターネット接続を簡単に利用できるようになりました。 接続がインバウンドで開始される場合でも、アウトバウンドで開始される場合でも、IPv6 接続が負荷分散されるため、VM のデプロイが簡単になります。 この機能は依然として使用できます。詳細については、[こちら](../load-balancer/load-balancer-ipv6-overview.md)を参照してください。
-Azure 仮想ネットワークの IPv6 は、はるかに充実した機能を備えているため、Azure 内に IPv6 ソリューション アーキテクチャ全体をデプロイできます。
+Azure Virtual Network の IPv6 は、はるかに充実した機能を備えているため、Azure 内に IPv6 ソリューション アーキテクチャ全体をデプロイできます。
 
 
 次の図は、Azure 内のシンプルなデュアル スタック (IPv4/IPv6) デプロイメントを示しています。
@@ -73,8 +73,8 @@ Azure VNet の IPv6 には、以下の機能が含まれています。
 Azure VNET の IPv6 は、お客様が Azure でデュアル スタック (IPv4 + IPv6) アプリケーションをホストできるようにするための基本機能セットです。  時間をかけてより多くの Azure ネットワーク機能に IPv6 のサポートを追加し、最終的には Azure PaaS サービスのデュアル スタック バージョンを提供する予定ですが、それまでの間は、デュアル スタック仮想マシンの IPv4 エンドポイント経由で、すべての Azure PaaS サービスにアクセスできます。   
 
 ## <a name="limitations"></a>制限事項
-Azure 仮想ネットワークの IPv6 の現在のリリースには、次の制限があります。
-- Azure 仮想ネットワークの IPv6 は、すべてのデプロイ方法を使用して、すべてのグローバル Azure Commercial リージョンと米国政府リージョンで使用できます。  
+Azure Virtual Network の IPv6 の現在のリリースには、次の制限があります。
+- Azure Virtual Network の IPv6 は、すべてのデプロイ方法を使用して、すべてのグローバル Azure Commercial リージョンと米国政府リージョンで使用できます。  
 - ExpressRoute ゲートウェイは、IPv6 を有効になっている VNET で IPv4 専用のトラフィックに対して使用できます。  IPv6 トラフィックについては、今後サポートされる予定です。   
 - VPN ゲートウェイは、IPv6 が有効になっている VNET で、直接的にも、"UseRemoteGateway" とのピアリングでも使用できません。
 - Azure プラットフォーム (AKS など) では、コンテナーに対する IPv6 通信はサポートされていません。  

@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 171b355f40939efb31e96a4bf8b2d77e97d19f25
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147093"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012724"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>自動機械学習でのオーバーフィット データと不均衡データを防止する
 
@@ -101,7 +101,7 @@ ms.locfileid: "86147093"
 
 - より小さいクラスをアップサンプリングするか、より大きいクラスをダウンサンプリングすることで、クラスの偏りを均等にするための再サンプリング。 これらの方法では、処理および分析するための専門知識が必要です。
 
-- 偏ったデータのパフォーマンス メトリックを確認します。 たとえば、F1 スコアは、精度とリコールの加重平均です。 精度では分類子の正確性が測定され、低精度は擬陽性の数が多いことを示します。リコールでは分類子の完全性が測定されて、低いリコールは擬陰性の数が多いことを示します。
+- 偏ったデータのパフォーマンス メトリックを確認します。 たとえば F1 スコアは、精度とリコールの調和平均です。 精度では分類子の正確性が測定され、高精度は擬陽性の数が少ないことを示します。リコールでは分類子の完全性が測定されて、高いリコールは擬陰性の数が少ないことを示します。
 
 ## <a name="next-steps"></a>次のステップ
 

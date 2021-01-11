@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 149d1eab696ae8419bed79cd2cdc0b066c32060c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528055"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856124"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
@@ -106,7 +106,7 @@ ms.locfileid: "86528055"
 
 1. 管理者は、ゲストと[環境 URL を共有します](time-series-insights-parameterized-urls.md)。
 
-1. 招待に使用されたメール アドレスに対してゲスト ユーザーがサインインして、招待を承諾すると、そのユーザーは Azure portal に誘導されます。 
+1. 招待に使用されたメール アドレスに対してゲスト ユーザーがサインインして、招待を承諾すると、そのユーザーは Azure portal に誘導されます。
 
 1. ゲストは、管理者が提供する環境 URL を使用して共有環境にアクセスできるようになります。 この URL を Web ブラウザーに入力すると、すぐにアクセスできます。
 
@@ -114,14 +114,14 @@ ms.locfileid: "86528055"
 
     [![insights.azure.com でのアバターの選択](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
+    ゲスト ユーザーが管理者のテナントを選択すると、共有されている Azure Time Series Insights 環境を選択できるようになります。
 
-    ゲスト ユーザーが管理者のテナントを選択すると、共有されている Azure Time Series Insights 環境を選択できるようになります。 
-    
     ユーザーは、**手順 5.** で提供されたロールに関連付けられているすべての能力を持つようになりました。
 
     [![ゲスト ユーザーがドロップダウンから Azure テナントを選択する](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
+
 * Azure Active Directory アプリの登録手順については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関する記事を参照してください。
 
-* [Azure Time Series Insights Gen2 エクスプローラーで自分の環境](./time-series-insights-update-explorer.md)を表示します。
+* [Azure Time Series Insights TSI Explorer で自分の環境](./time-series-insights-update-explorer.md)を表示します。

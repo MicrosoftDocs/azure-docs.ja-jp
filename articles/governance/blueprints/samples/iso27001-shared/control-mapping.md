@@ -3,12 +3,12 @@ title: ISO 27001 共有サービス ブループリント サンプルのコン�
 description: ISO 27001 共有サービスのブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: a6d2d586efd15b258f65e8c28cd8e233f3d984a6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7655ae2828972a9b99479c7a94f02b02005a9284
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536818"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927132"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービスのブループリント サンプルのコントロール マッピング
 
@@ -34,7 +34,7 @@ Azure サブスクリプションの所有者を 1 人しか設定しなかっ�
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 ネットワークおよびネットワーク サービスへのアクセス
 
-Azure では、Azure リソースにアクセスするユーザーを管理するために、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 このブループリントでは、7 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、Azure リソースへのアクセスを制御できます。 これらのポリシーは、リソースの種類や構成の使用状況を監査することで、リソースへのアクセスをより厳格に制限するためのものです。
+Azure では、Azure リソースにアクセスするユーザーを管理するために、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 このブループリントでは、7 つの [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、Azure リソースへのアクセスを制御できます。 これらのポリシーは、リソースの種類や構成の使用状況を監査することで、リソースへのアクセスをより厳格に制限するためのものです。
 これらのポリシーに違反しているリソースを把握することで、適切な是正措置を実施し、承認済みのユーザーだけが Azure リソースにアクセスできるようにすることができます。
 
 - パスワードなしのアカウントがある Linux VM を監査するための前提条件をデプロイする
@@ -69,7 +69,7 @@ Azure では、Azure リソースにアクセスするユーザーを管理す�
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 ユーザー アクセス権のレビュー
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的にレビューする必要があるアカウント (非推奨のアカウントや、管理者特権のアクセス許可を持つ外部アカウントなど) を監査するための、4 つの [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 Azure リソースにできるユーザーとそのアクセス許可は、Azure portal を使用して確認できます。 このブループリントでは、優先的にレビューする必要があるアカウント (非推奨のアカウントや、管理者特権のアクセス許可を持つ外部アカウントなど) を監査するための、4 つの [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - 非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある
@@ -78,7 +78,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A.9.2.6 アクセス権の削除や調整
 
-Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) が実装されています。 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) と RBAC を使用すれば、ユーザー ロールを更新して組織の変更を反映することができます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査するための、2 つの [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
+Azure では、Azure のリソースにアクセスするユーザーを効果的に管理できるように、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../../../role-based-access-control/overview.md) が実装されています。 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) と RBAC を使用すれば、ユーザー ロールを更新して組織の変更を反映することができます。 必要な場合は、サインインしようとしているアカウントをブロック (または削除) して、Azure リソースへのアクセス権を直ちに削除することもできます。 このブループリントでは、削除を検討する必要がある非推奨アカウントを監査するための、2 つの [Azure Policy](../../../policy/overview.md) 定義が割り当てられます。
 
 - 非推奨のアカウントをサブスクリプションから削除する必要がある
 - 所有者としてのアクセス許可を持つ非推奨のアカウントをサブスクリプションから削除する必要がある

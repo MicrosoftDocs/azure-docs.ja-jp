@@ -1,18 +1,21 @@
 ---
 title: サービス プロバイダーを表示し、管理する
 description: サービス プロバイダー、サービス プロバイダーのオファー、委任したリソースに関する情報は、顧客が Azure portal の [サービス プロバイダー] ページを使用して確認できます。
-ms.date: 07/10/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: bc0de0d3fd7ac4fe7c00720aab41961d9100ff5a
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: c22408a52d973a244d67528a73d4eaa487f166ba
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273780"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167166"
 ---
 # <a name="view-and-manage-service-providers"></a>サービス プロバイダーを表示し、管理する
 
-顧客は、[Azure portal](https://portal.azure.com) の **[サービス プロバイダー]** ページを使用してサービス プロバイダーの詳細およびオファーを確認したり、[Azure Lighthouse](../overview.md) に特定のリソースを委任したり、新しいサービス プロバイダー オファーを購入したりすることができます。 ここではサービス プロバイダーと顧客に言及しますが、複数のテナントを管理している企業では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
+顧客は、[Azure portal](https://portal.azure.com) の **[サービス プロバイダー]** ページを使用してサービス プロバイダーの詳細およびオファーを確認したり、[Azure Lighthouse](../overview.md) に特定のリソースを委任したり、新しいサービス プロバイダー オファーを購入したりすることができます。
+
+> [!TIP]
+> ここではサービス プロバイダーと顧客に言及しますが、[複数のテナントを管理している企業](../concepts/enterprise.md)では、同じプロセスを使用して自社の管理エクスペリエンスを強化することができます。
 
 Azure portal の **[サービス プロバイダー]** ページにアクセスするには、顧客が **[すべてのサービス]** を選択し、 **[サービス プロバイダー]** を探して選択します。 Azure portal の上部付近にある検索ボックスに「サービス プロバイダー」または「Azure Lighthouse」と入力して見つけることもできます。
 

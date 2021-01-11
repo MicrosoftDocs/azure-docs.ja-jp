@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035487"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116463"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>トラブルシューティング:オンプレミスの Azure AD パスワード保護
 
@@ -72,7 +72,20 @@ Azure AD パスワード保護には、Microsoft キー配布サービスによ�
 
    Windows Server 2016 で導入された KDS セキュリティ修正プログラムでは、KDS 暗号化バッファーの形式が変更されており、これらのバッファーは、Windows Server 2012 および Windows Server 2012 R2 での暗号化解除に失敗することがあります。 逆方向は問題ありません。Windows Server 2012 および Windows Server 2012 R2 で KDS 暗号化されたバッファーは常に、Windows Server 2016 以降で正常に暗号化解除されます。 Active Directory ドメイン内のドメイン コントローラーでこれらのオペレーティング システムが混在して実行されている場合は、Azure AD パスワード保護の暗号化解除エラーがときどき報告されることがあります。 セキュリティ修正プログラムの性質上、また特定の時点でどの Azure AD パスワード保護 DC エージェント上のドメイン コントローラーによってデータが暗号化されるかわからないため、これらの障害のタイミングや症状を正確に予測することはできません。
 
-   Microsoft はこの問題の修正を調査していますが、まだ ETA は利用できません。 それまでの間は、このような互換性のないオペレーティング システムを Active Directory ドメインに混在させないようにする以外に、この問題を回避することはできません。 つまり、Windows Server 2012 と Windows Server 2012 R2 のドメイン コントローラーのみを実行するか、Windows Server 2016 以降のドメイン コントローラーのみを実行する必要があります。
+   このような互換性のないオペレーティング システムを Active Directory ドメイン内に混在させ、実行することがないようにする以外、この問題の回避策はありません。 つまり、Windows Server 2012 と Windows Server 2012 R2 のドメイン コントローラーのみを実行するか、Windows Server 2016 以降のドメイン コントローラーのみを実行する必要があります。
+
+## <a name="dc-agent-thinks-the-forest-has-not-been-registered"></a>フォレストが登録されていないと DC エージェントが認識する
+
+この問題の症状は、30016 イベントが DC Agent\Admin チャネルにログ記録されることです。その一部を次に示します。
+
+```text
+The forest has not been registered with Azure. Password policies cannot be downloaded from Azure unless this is corrected.
+```
+
+この問題には考えられる原因が 2 つあります。
+
+1. フォレストが実際に登録されていなかった。 問題を解決するには、[デプロイの要件](howto-password-ban-bad-on-premises-deploy.md)に関するセクションで説明されているように、Register-AzureADPasswordProtectionForest コマンドを実行してください。
+1. フォレストは登録されていたが、DC エージェントがフォレスト登録データの暗号化を解除できない。 この場合の根本原因は、上記の、「[DC エージェントがパスワード ポリシー ファイルを暗号化または暗号化解除できない](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files)」の 2 番目の問題と同じです。 このエラーが表示されるのが Windows Server 2012 または Windows Server 2012R2 ドメイン コントローラーで実行されている DC エージェントでのみで、Windows Server 2016 以降のドメイン コントローラーで実行されている DC エージェントでは問題がなければ、この仮説を簡単に確認できます。 回避策は同じで、すべてのドメイン コントローラーを Windows Server 2016 以降にアップグレードします。
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>脆弱なパスワードが受け入れられているが、受け入れるべきではない
 
@@ -247,7 +260,7 @@ Azure AD パスワード保護ソフトウェアをアンインストールし�
 
    sysvol 共有が既定以外の場所に設定されている場合は、別のパスになります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure AD パスワード保護についてよく寄せられる質問](howto-password-ban-bad-on-premises-faq.md)
 

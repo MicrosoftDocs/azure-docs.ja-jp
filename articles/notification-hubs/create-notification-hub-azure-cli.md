@@ -11,20 +11,21 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: dbradish
-ms.reviewer: sethm
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: d32bae48348e482e0e175760a416097ffbc17a1c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: f1829b6d8ab7b2cab0734ffd3cbab295e6c39678
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080949"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761095"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure 通知ハブを作成する
 
 Azure Notification Hubs は、任意のバックエンド (クラウドまたはオンプレミス) から任意のプラットフォーム (iOS、Android、Windows、Kindle、Baidu など) に通知を送信できる、使いやすく、かつスケールアウトされたプッシュ エンジンを提供します。 このサービスの詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
 
-このクイック スタートでは、Azure CLI を使用して通知ハブを作成します。 最初のセクションでは、通知ハブ名前空間を作成する手順について説明します。  2 つ目のセクションでは、既存の名前空間に通知ハブを作成する手順について説明します。  カスタム アクセス ポリシーを作成する方法についても学習します。  
+このクイック スタートでは、Azure CLI を使用して通知ハブを作成します。 最初のセクションでは、Notification Hubs 名前空間を作成する手順について説明します。 2 つ目のセクションでは、既存の名前空間に通知ハブを作成する手順について説明します。 カスタム アクセス ポリシーを作成する方法についても学習します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -34,9 +35,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
-1. サインインします。
-
-   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
+1. CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。
 
     ```azurecli
     az login
@@ -44,9 +43,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
     ターミナルに表示される手順に従って、認証プロセスを完了します。
 
-2. Azure CLI 拡張機能をインストールします。
-
-   Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。  Azure CLI 拡張機能を使用すると、コア CLI の一部としてまだ出荷されていない実験用コマンドおよびプレリリース コマンドにアクセスできます。  更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
+2. Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。 Azure CLI 拡張機能を使用すると、コア CLI の一部としてまだ出荷されていない実験用コマンドおよびプレリリース コマンドにアクセスできます。 更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
 
    次のコマンドを実行して、[Notification Hubs の拡張機能](/cli/azure/ext/notification-hub/notification-hub)をインストールします。
 
@@ -64,11 +61,11 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
    az group create --name spnhubrg --location eastus
    ```
 
-## <a name="create-a-notification-hub-namespace"></a>通知ハブ名前空間を作成する
+## <a name="create-a-notification-hubs-namespace"></a>Notification Hubs の名前空間を作成する
 
 1. 対象の通知ハブ用の名前空間を作成します。
 
-   名前空間には 1 つまたは複数のハブが含まれます。**名前はすべての Azure サブスクリプションで一意であり、長さが 6 文字以上である必要があります**。  名前の可用性を確認するには、[az notification-hub namespace check-availability](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability) コマンドを使用します。
+   名前空間には 1 つまたは複数のハブが含まれます。名前はすべての Azure サブスクリプションで一意であり、長さが 6 文字以上である必要があります。 名前の可用性を確認するには、[az notification-hub namespace check-availability](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability) コマンドを使用します。
 
    ```azurecli
    az notification-hub namespace check-availability --name spnhubns
@@ -76,7 +73,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
    可用性の要求に対する応答として、Azure CLI により次のコンソール出力が表示されます。
 
-   ```output
+   ```shell
    {
    "id": "/subscriptions/yourSubscriptionID/providers/Microsoft.NotificationHubs/checkNamespaceAvailability",
    "isAvailable": true,
@@ -89,30 +86,30 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
    }
    ```
 
-   Azure CLI 応答の 2 行目の `"isAvailable": true` に注目してください。  名前空間に指定した目的の名前が使用可能な場合、この行は `false` になります。  名前が使用できることを確認したら、[az notification-hub namespace create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) コマンドを実行して名前空間を作成します。  
+   Azure CLI 応答の 2 行目の `"isAvailable": true` に注目してください。 名前空間に指定した目的の名前が使用できない場合、この行は `false` になります。 名前が使用できることを確認したら、[az notification-hub namespace create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) コマンドを実行して名前空間を作成します。  
 
    ```azurecli
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   `az notification-hub namespace create` コマンドに指定した `--name` が使用できない場合、または [Azure リソースの命名規則と制限](../azure-resource-manager/management/resource-name-rules.md)を満たさない場合、Azure CLI は次のコンソール出力で応答します。
+   `az notification-hub namespace create` コマンドに指定した `--name` が使用できない場合、または [Azure リソースの命名規則と制限](../azure-resource-manager/management/resource-name-rules.md)を満たさない場合、Azure CLI の応答では次のコンソール出力が表示されます。
 
-   ```output
+   ```shell
    #the name is not available
    The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.
 
-   #the name is invalied
+   #the name is invalid
    The specified service namespace is invalid.
    ```
 
    試した最初の名前が成功しない場合は、新しい名前空間に別の名前を選択して、`az notification-hub namespace create` コマンドを再度実行します。
 
    > [!NOTE]
-   > この手順以降は、このクイックスタートからコピーする各 Azure CLI コマンドの `--namespace` パラメーターの値を置き換える必要があります。
+   > このステップ以降は、このクイックスタートからコピーした各 Azure CLI コマンドの `--namespace` パラメーターの値を置き換える必要があります。
 
 2. 名前空間の一覧を取得します。
 
-   新しい名前空間の詳細を表示するには、[az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) コマンドを使用します。  サブスクリプションのすべての名前空間を表示する場合は、`--resource-group` パラメーターを省略できます。
+   新しい名前空間の詳細を表示するには、[az notification-hub namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) コマンドを使用します。 サブスクリプションのすべての名前空間を表示する場合は、`--resource-group` パラメーターを省略できます。
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -122,7 +119,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 1. 最初の通知ハブを作成します。
 
-   新しい名前空間に 1 つまたは複数の通知ハブを作成できます。  [az notification-hub create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) コマンドを実行して、通知ハブを作成します。
+   新しい名前空間に 1 つまたは複数の通知ハブを作成できます。 [az notification-hub create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) コマンドを実行して、通知ハブを作成します。
 
    ```azurecli
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name spfcmtutorial1nhub --location eastus --sku Free
@@ -130,7 +127,7 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 2. 2 つ目の通知ハブを作成します。
 
-   単一の名前空間に複数の通知ハブを作成することができます。  同じ名前空間に 2 つ目の通知ハブを作成するには、別のハブ名を使用して `az notification-hub create` コマンドをもう一度実行します。
+   単一の名前空間に複数の通知ハブを作成することができます。 同じ名前空間に 2 つ目の通知ハブを作成するには、別のハブ名を使用して `az notification-hub create` コマンドをもう一度実行します。
 
    ```azurecli
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name mysecondnhub --location eastus --sku Free
@@ -138,49 +135,43 @@ Notification Hubs には、バージョン 2.0.67 以降の Azure CLI が必要�
 
 3. 通知ハブの一覧を取得します。
 
-   Azure CLI で実行されたコマンドごとに成功またはエラー メッセージが返されますが、通知ハブの一覧を照会できると安心です。  [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) コマンドは、この目的のために設計されています。
+   Azure CLI で実行されたコマンドごとに成功またはエラー メッセージが返されますが、通知ハブの一覧を照会できると安心です。 [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) コマンドは、この目的のために設計されています。
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table
    ```
 
-## <a name="work-with-notification-hub-access-policies"></a>通知ハブのアクセス ポリシーを操作する
+## <a name="work-with-access-policies"></a>アクセス ポリシーを操作する
 
-1. 通知ハブ用のアクセス ポリシーを一覧表示します。
-
-   Azure Notification Hubs は、アクセス ポリシーを使用して [Shared Access Signature セキュリティ](./notification-hubs-push-notification-security.md)を使用します。  通知ハブを作成すると、2 つのポリシーが自動的に作成されます。  プッシュ通知を構成するには、これらのポリシーの接続文字列が必要です。  [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) を実行すると、ポリシー名とそれぞれのリソース グループの一覧が返されます。
+1. Azure Notification Hubs は、アクセス ポリシーを使用して [Shared Access Signature セキュリティ](./notification-hubs-push-notification-security.md)を使用します。 通知ハブを作成すると、2 つのポリシーが自動的に作成されます。 プッシュ通知を構成するには、これらのポリシーの接続文字列が必要です。 [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) を実行すると、ポリシー名とそれぞれのリソース グループの一覧が返されます。
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
    ```
 
    > [!IMPORTANT]
-   > アプリケーションで _DefaultFullSharedAccessSignature_ ポリシーを使用しないでください。 これはバックエンドのみで使用します。  クライアント アプリケーションでは `Listen` アクセス ポリシーのみを使用してください。
+   > アプリケーションで _DefaultFullSharedAccessSignature_ ポリシーを使用しないでください。 このポリシーの使用が意図されているのはバックエンドだけです。 クライアント アプリケーションでは `Listen` アクセス ポリシーのみを使用してください。
 
-2. 通知ハブ用の新しい承認規則を作成します。
-
-   意味のある名前を持つ追加の承認規則を作成する場合は、[az notification-hub authorization-rule create](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) コマンドを使用して、独自のアクセス ポリシーを作成およびカスタマイズできます。  `--rights` パラメーターは、割り当てたいアクセス許可のスペース区切りの一覧です。
+2. 意味のある名前を持つ追加の承認規則を作成する場合は、[az notification-hub authorization-rule create](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) コマンドを使用して、独自のアクセス ポリシーを作成およびカスタマイズできます。 `--rights` パラメーターは、割り当てたいアクセス許可のスペース区切りの一覧です。
 
    ```azurecli
    az notification-hub authorization-rule create --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --rights Listen Manage Send
    ```
 
-3. 通知ハブ アクセス ポリシー用のキーと接続文字列を一覧表示する
-
-   アクセス ポリシーごとに、キーと接続文字列の 2 つのセットがあります。  これらは、後で[通知ハブを構成する](./configure-notification-hub-portal-pns-settings.md)ために必要になります。  通知ハブ アクセス ポリシーのキーと接続文字列を一覧表示するには、[az notification-hub authorization-rule](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) コマンドを使用します。
+3. アクセス ポリシーごとに、キーと接続文字列の 2 つのセットがあります。 これらは、後で[通知ハブを構成する](./configure-notification-hub-portal-pns-settings.md)ために必要になります。 Notification Hubs アクセス ポリシーのキーと接続文字列を一覧表示するには、[az notification-hub authorization-rule](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) コマンドを使用します。
 
    ```azurecli
-   #query the keys and connection strings for DefaultListenSharedAccessSignature
+   # query the keys and connection strings for DefaultListenSharedAccessSignature
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name DefaultListenSharedAccessSignature --output table
    ```
 
    ```azurecli
-   #query the keys and connection strings for a custom policy
+   # query the keys and connection strings for a custom policy
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --output table
    ```
 
    > [!NOTE]
-   > [通知ハブ名前空間](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys)と[通知ハブ](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)には、別個のアクセス ポリシーがあります。  キーと接続文字列に対してクエリを実行する場合は、正しい Azure CLI 参照を使用していることを確認してください。
+   > [Notification Hubs 名前空間](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys)と[通知ハブ](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)には、別個のアクセス ポリシーがあります。 キーと接続文字列に対してクエリを実行する場合は、正しい Azure CLI 参照を使用していることを確認してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

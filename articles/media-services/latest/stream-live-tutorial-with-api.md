@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Azure Media Services v3 を使ってライブ ストリーム配信する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-csharp
 ms.date: 06/13/2019
-ms.author: juliako
-ms.openlocfilehash: b92d26da837cab72a4c4404a7b5b3de5d3116480
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: inhenkel
+ms.openlocfilehash: b2e456474a9d052d9515c8169ce233e9577a5c53
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043358"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89256567"
 ---
 # <a name="tutorial-stream-live-with-media-services"></a>チュートリアル:Media Services によるライブ ストリーム配信
 

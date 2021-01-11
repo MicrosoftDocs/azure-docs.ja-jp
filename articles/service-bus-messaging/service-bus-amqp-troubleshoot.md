@@ -3,12 +3,12 @@ title: Azure Service Bus での AMQP エラーのトラブルシューティン�
 description: Azure Service Bus を使用しているときに受け取る可能性がある AMQP エラーの一覧と、それらのエラーの原因を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9680e930dd8c1cb8cbd062f029af9d674d62c0e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 88b10940e0b910f50e6ccf7f8c53134fa7f0ba2f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337830"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064351"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Azure Service Bus での AMQP エラー
 この記事では、Azure Service Bus で AMQP を使用しているときに受け取るエラーの一部を示します。 それらはすべてサービスの標準的な動作です。 接続/リンクで送信/受信の呼び出しを行うことで、それらを回避できます。接続/リンクが自動的に再作成されます。
@@ -44,4 +44,4 @@ AMQP と Service Bus の詳細については、次のリンクを参照して�
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
 [AMQP 1.0 プロトコル ガイド]: service-bus-amqp-protocol-guide.md
-[Windows Server 用 Service Bus の AMQP]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)
+[Windows Server 用 Service Bus の AMQP]: /previous-versions/service-bus-archive/dn282144(v=azure.100)

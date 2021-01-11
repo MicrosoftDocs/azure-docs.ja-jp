@@ -1,14 +1,14 @@
 ---
 title: コードとしてのポリシー ワークフローの設計
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
-ms.date: 05/20/2020
+ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17964459c6c06e6d7df09da4d3f0813350f209ec
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 02ff979feac1afb5f1664e6387e0abcde69b60eb
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970945"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131499"
 ---
 # <a name="design-policy-as-code-workflows"></a>コードとしてのポリシー ワークフローの設計
 
@@ -20,6 +20,24 @@ ms.locfileid: "85970945"
 コードとしてのポリシーは、これらのアイデアを組み合わせたものです。 基本的には、ソース管理でポリシー定義を保持し、変更が行われるたびにその変更をテストして検証します。 ただし、これはコードとしてのインフラストラクチャまたは DevOps に対するポリシー関与の範囲とすべきではありません。
 
 この検証手順も、他の継続的インテグレーションまたは継続的デプロイのワークフローのコンポーネントである必要があります。 例として、アプリケーション環境や仮想インフラストラクチャのデプロイなどがあります。 Azure Policy 検証をビルドおよびデプロイ プロセスの初期コンポーネントとすることにより、アプリケーションと運用チームは、運用環境へのデプロイを試行するよりもずっと前に、変更が準拠していないかどうかを遅滞なく見つけることができます。
+
+## <a name="definitions-and-foundational-information"></a>定義と基本情報
+
+Policy as Code ワークフローの詳細を説明する前に、次の定義と例を確認してください。
+
+- [ポリシー定義](./definition-structure.md)
+- [イニシアチブ定義](./initiative-definition-structure.md)
+
+ファイル名は、ポリシーまたはイニシアチブのいずれかの定義の一部に対応しています。
+- `policy(set).json` - 定義全体
+- `policy(set).parameters.json` - 定義の `properties.parameters` の部分
+- `policy.rules.json` - 定義の `properties.policyRule` の部分
+- `policyset.definitions.json` - 定義の `properties.policyDefinitions` の部分
+
+これらのファイル形式の例は、[Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy/)で入手できます。
+
+- ポリシー定義:[リソースにタグを追加する](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
+- イニシアチブ定義:[課金タグ](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
 
 ## <a name="workflow-overview"></a>ワークフローの概要
 

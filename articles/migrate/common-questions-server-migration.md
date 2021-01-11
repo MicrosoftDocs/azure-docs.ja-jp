@@ -3,12 +3,12 @@ title: Azure Migrate Server Migration についてよく寄せられる質問
 description: Azure Migrate Server Migration を使用したマシンの移行についてよく寄せられる質問の回答を示します。
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 282f7ab27eead59fc87a95ea7d397268177f4f2c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: af40aecaa1614542074cf87ce95eb81492233bdc
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224130"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321226"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server Migration:一般的な質問
 
@@ -80,7 +80,7 @@ vCenter Server 5.5 および vSphere ESXi ホスト バージョン 5.5 以上�
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>エージェントレスの移行を使用して、一度にレプリケートできる VM の数はいくつですか?
 
-現在、お客様は vCenter Server のインスタンスごとに 100 台の VM を同時に移行できます。 10 台の VM のバッチで移行します。
+現在、お客様は vCenter Server のインスタンスごとに 300 台の VM を同時に移行できます。 10 台の VM のバッチで移行します。
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>エージェントレス VMware レプリケーションに対する Azure Migrate アプライアンスの使用においてレプリケーションを調整するにはどうすればよいですか?  
 
@@ -106,7 +106,7 @@ VM が他の方法で既に Azure にレプリケートされている場合は�
 
 ## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>VCenter Server 内の VM を検出するために、2 つ (またはそれ以上) のアプライアンスをデプロイしました。 しかし、VM を移行しようとすると、いずれかのアプライアンスに対応する VM のみが表示されます。
 
-これは適切なユース ケースですが、現時点ではサポートされていません。 2 つ (またはそれ以上) のアプライアンスをデプロイして同じ一式の VM を検出すると、サービスの問題が発生し、2 つのアプライアンス間で VM の所有権が切り替えられます。 このため、VM が表示されたり消えたりします。 このような場合、問題を解決するには、1 つのアプライアンスを削除して、ハード更新を行う必要があります。
+複数のアプライアンスがセットアップされている場合は、指定された vCenter アカウントの VM 間に重複がないことが必要です。 このような重複が検出されるのは、サポートされていないシナリオです。
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>Vmware VM を移行するには VMware vCenter が必要ですか?
 Vmware エージェントベースまたはエージェントレス移行を使用して [VMware Vm](server-migrate-overview.md) を移行するには、VM が配置されている ESXi ホストを vCenter Server で管理する必要があります。 VCenter Server がない場合は、物理サーバーとして移行することで VMware VM を移行できます。 [詳細については、こちらを参照してください](migrate-support-matrix-physical-migration.md)。

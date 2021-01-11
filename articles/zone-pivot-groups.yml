@@ -295,7 +295,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -365,7 +365,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -385,7 +385,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -403,7 +403,7 @@ groups:
   - id: programming-language-cpp
     title: C++
   - id: programming-language-go
-    title: Go
+    title: 移動
   - id: programming-language-java
     title: Java
   - id: programming-language-python
@@ -488,10 +488,88 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
+- id: programming-languages-spark-all-minus-sql
+  title: プログラミング言語
+  prompt: 言語の選択
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-scala
+    title: Scala
+  - id: programming-language-python
+    title: Python
+- id: aml-control-methods
+  title: Azure Machine Learning コントロール プレーン
+  prompt: Azure Machine Learning コントロール プレーンのインターフェイスを選択する
+  pivots:
+  - id: py-sdk
+    title: Python SDK
+  - id: cli
+    title: Azure CLI
+- id: speech-full-stack
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-spx
+    title: CLI
+- id: programming-languages-voice-assistants
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-more
+    title: その他の言語
+- id: ams-lva-edge-programming-languages
+  title: Live Video Analytics on IoT Edge のプログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: app-service-platform-windows-linux
+  title: App Service プラットフォーム
+  prompt: ホスティング プラットフォームを選択する
+  pivots:
+  - id: platform-linux
+    title: Linux
+  - id: platform-windows
+    title: Windows
+- id: app-service-containers-windows-linux
+  title: カスタム コンテナーを使用した App Service
+  prompt: カスタム コンテナー プラットフォームを選択する
+  pivots:
+  - id: container-linux
+    title: Linux コンテナー
+  - id: container-windows
+    title: Windows コンテナー
+- id: programming-languages-spring-cloud
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-csharp
+    title: C#
 metadata:
-  ms.openlocfilehash: ec7beebb81bf6a96912ff43a1e071f85d0d8a108
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+  ms.openlocfilehash: 0659c68f39493c3e3b2e66ebc5a38d96cd13404d
+  ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87291856"
+  ms.lasthandoff: 08/27/2020
+  ms.locfileid: "88998919"

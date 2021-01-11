@@ -6,13 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: eb770dab33e1ec0e1a35f7ebcb6e620fc93692aa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: da0c3284b42be6d9054b7386839004b57d8ca274
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87383003"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935740"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service の認証
 

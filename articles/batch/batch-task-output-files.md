@@ -2,14 +2,14 @@
 title: Batch サービス API を使用して出力のデータを Azure Storage に保持する
 description: Batch サービス API を使用して Batch タスクおよびジョブの出力データを Azure Storage に保持する方法について説明します。
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.custom: seodec18
-ms.openlocfilehash: 24e9f242b3c71965984534ac986031757bbc8420
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/30/2020
+ms.custom: seodec18, devx-track-csharp
+ms.openlocfilehash: 720c064c6b382bc62565c0828422181c761df8e8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143520"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936930"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
@@ -19,6 +19,9 @@ Batch サービス API は、仮想マシン構成のプールで実行される
 
 タスクの出力を保持するために Batch サービス API を使用することの利点は、タスクが実行されるアプリケーションに変更を加える必要がないところにあります。 代わりに、クライアント アプリケーションにいくつか変更を加えれば、タスクを作成する同じコード内からタスクの出力を保持できます。
 
+> [!IMPORTANT]
+> Batch サービス API を使用した Azure Storage へのタスク データの保持は、[2018 年 2 月 1 日](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md#1204)以前に作成されたプールでは機能しません。
+
 ## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>Batch サービス API を使用してタスク出力を保持するとよいケース
 
 Azure Batch は、タスクの出力を保持するために複数の方法を提供しています。 次のようなシナリオは、Batch サービス API を使用するのが最適なケースです。
@@ -26,7 +29,7 @@ Azure Batch は、タスクの出力を保持するために複数の方法を�
 - タスクが実行されているアプリケーションを変更せずに、タスクの出力をクライアント アプリケーション内から保持するためのコードを記述する。
 - 仮想マシンの構成で作成されたプール内の Batch タスクおよびジョブ マネージャー タスクからの出力を保持する。
 - 任意の名前の Azure Storage コンテナーに出力を保持する。
-- [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)に準拠した名前の Azure Storage コンテナーに出力を保持する。 
+- [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)に準拠した名前の Azure Storage コンテナーに出力を保持する。
 
 検討しているシナリオが上記のシナリオと異なる場合は、別のアプローチを考慮する必要があります。 たとえば、Batch サービス API は現時点で、タスクの実行中に Azure Storage に出力をストリーミングする機能をサポートしていません。 出力をストリーミングするには、.NET の場合に利用可能な Batch ファイル規則ライブラリの使用をご検討ください。 その他の言語の場合には、開発者が自分で独自のソリューションを実装する必要があります。 タスクの出力を保持するために利用できるその他のオプションの詳細については、「[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)」を参照してください。
 
@@ -88,6 +91,9 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
             uploadCondition: OutputFileUploadCondition.TaskCompletion)),
 }
 ```
+
+> [!NOTE]
+> Linux でこの例を使用する場合は、円記号をスラッシュに変更してください。
 
 ### <a name="specify-a-file-pattern-for-matching"></a>ファイル パターンの一致を指定する
 
@@ -169,7 +175,7 @@ C# 以外の言語で開発している場合は、自分でファイル規則�
 
 ## <a name="code-sample"></a>コード サンプル
 
-[PersistOutputs][github_persistoutputs] サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル][github_samples]の 1 つです。 この Visual Studio ソリューションは、.NET 用の Batch クライアント ライブラリを使用して持続性のあるストレージにタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
+[PersistOutputs](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs) サンプル プロジェクトは、GitHub にある [Azure Batch コード サンプル](https://github.com/Azure/azure-batch-samples)の 1 つです。 この Visual Studio ソリューションは、.NET 用の Batch クライアント ライブラリを使用して持続性のあるストレージにタスク出力を保持する方法を示しています。 サンプルを実行するには、次の手順に従います。
 
 1. **Visual Studio 2019** でプロジェクトを開きます。
 2. Microsoft.Azure.Batch.Samples.Common プロジェクトの **AccountSettings.settings** に、Batch と Storage の**アカウント資格情報**を追加します。
@@ -181,8 +187,5 @@ C# 以外の言語で開発している場合は、自分でファイル規則�
 
 ## <a name="next-steps"></a>次のステップ
 
-- .NET 用のファイル規則ライブラリを使用してタスク出力を保持することの詳細については、「[.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持](batch-task-output-file-conventions.md)」を参照してください。
+- .NET 用のファイル規則ライブラリを使用してタスク出力を保持する方法について詳しくは、「[.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持](batch-task-output-file-conventions.md)」を参照してください。
 - Azure Batch で出力データを保持するためのその他の方法については、「[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)」を参照してください。
-
-[github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
-[github_samples]: https://github.com/Azure/azure-batch-samples

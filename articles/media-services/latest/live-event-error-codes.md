@@ -10,17 +10,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/4/2020
+ms.topic: error-reference
+ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 8f86c157652f6219afdf1df1da9b8ad385f059aa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 13277c3d46d5b68aa5705699f45a2bf9e97a78d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000953"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291536"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services ライブ イベント エラー コード
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このセクションの表では、[ライブ イベント](live-events-outputs-concept.md)のエラーコードを一覧に示します。
 

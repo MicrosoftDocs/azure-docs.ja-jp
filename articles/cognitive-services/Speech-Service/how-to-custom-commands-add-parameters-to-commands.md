@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 9363f400754a38d4cc6efd29ac48d7a0476de66f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0ed237debc2395ed307658b2d57a541574f9478a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524303"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284151"
 ---
 # <a name="add-parameters-to-commands"></a>コマンドにパラメーターを追加する
 
@@ -47,7 +47,7 @@ ms.locfileid: "86524303"
        > [!div class="mx-imgBorder"]
        > ![必須パラメーターの応答を作成する](media/custom-commands/add-required-on-off-parameter-response.png)
    
-   1. 次に、パラメーターのプロパティを構成します。 コマンドのすべての構成プロパティの説明については、[リファレンス](./custom-commands-references.md)を参照してください。 このパラメーターの残りのプロパティを次のように構成します。
+   1. 次に、パラメーターのプロパティを構成します。 コマンドのすべての構成プロパティの説明については、[リファレンス](./custom-commands-references.md)を参照してください。 パラメーターのプロパティを次のように構成します。
       
 
        | 構成      | 推奨値     | 説明                                                      |
@@ -61,11 +61,10 @@ ms.locfileid: "86524303"
        | 定義済み入力値     | `on`, `off`           | 一連の入力可能値とその別名         |
        
         
-   1. 定義済み入力値を追加するには、 **[Add a predefined input]\(定義済みの入力を追加\)** を選択し、 **[新しい項目]** ウィンドウで、上の表に示されているように **[名前]** を入力します。 今回の場合は別名を使用しないため、空白のままにします。 
-
-    > [!div class="mx-imgBorder"]
-
-    > ![パラメーターの作成](media/custom-commands/create-on-off-parameter.png)
+   1. 定義済み入力値を追加するには、 **[Add a predefined input]\(定義済みの入力を追加\)** を選択し、 **[新しい項目]** ウィンドウで、上の表に示されているように **[名前]** を入力します。 今回の場合は別名を使用しないため、空白のままにします。
+   
+      > [!div class="mx-imgBorder"]
+      > ![パラメーターの作成](media/custom-commands/create-on-off-parameter.png)
 
    1. パラメーターのすべての構成を保存するには、 **[保存]** を選択します。
  
@@ -118,6 +117,7 @@ turn something
 
 1. **[条件]** セクションで、 **[条件の追加]** を選択します。
 1. **[新しい条件]** ウィンドウの **[種類]** リストで、 **[必要なパラメーター]** を選択します。 下のチェックリストで、**OnOff** と **SubjectDevice** の両方を選択します。
+1. **[IsGlobal]** をオフのままにします。
 1. **［作成］** を選択します
 1. **[アクション]** セクションで、既存の **[Send speech response]\(音声応答の送信\)** アクションにカーソルを移動して編集ボタンを選択することで、そのアクションを編集します。 今回は、新しく作成した **OnOff** と **SubjectDevice** のパラメーターを使用します。
 

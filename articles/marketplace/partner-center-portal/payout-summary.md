@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: dc690e29129f5be68456e6a9dc075ba72f11b121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318234"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502632"
 ---
 # <a name="payout-summaries"></a>支払いの概要
 
 [支払いの概要] には、Microsoft で獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払われる金額を確認することもできます。
 
-Azure Marketplace で製品を販売すると、[支払いの概要] に、正常に行われた支払いに関する情報も表示されます。 詳細については、[Microsoft Azure Marketplace の参加ポリシー](https://docs.microsoft.com/legal/marketplace/participation-policy)と [Microsoft Azure Marketplace の発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)に関するページをご覧ください。
+Azure Marketplace で製品を販売すると、[支払いの概要] に、正常に行われた支払いに関する情報も表示されます。 詳細については、[Microsoft Azure Marketplace の参加ポリシー](https://docs.microsoft.com/legal/marketplace/participation-policy)と [Microsoft Azure Marketplace の発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)に関するページをご覧ください。
 
 > [!NOTE]
 > 支払いの対象となるには、収益が $50 の[支払いしきい値](payment-thresholds-methods-timeframes.md)に達している必要があります。 支払いしきい値の詳細については、このページを参照し、アプリ開発者契約を確認してください。

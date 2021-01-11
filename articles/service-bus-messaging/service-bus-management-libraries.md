@@ -4,12 +4,13 @@ description: この記事では、Azure Service Bus 管理ライブラリを使�
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 042edcd1851f86dd2a660673bc87884b68410bfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 915606bffc2037c8fcd1a7d33218143f40c78f2c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341720"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89008048"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
 
@@ -26,11 +27,11 @@ Azure Service Bus 管理ライブラリは、Service Bus の名前空間とエ�
 
 Service Bus 管理ライブラリの使用を開始するには、Azure Active Directory (Azure AD) サービスで認証する必要があります。 Azure AD では、Azure リソースへのアクセスを提供するサービス プリンシパルとして認証する必要があります。 サービス プリンシパルを作成する方法については、次の記事のいずれかをご覧ください。  
 
-* [リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルを Azure Portal で作成する](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-* [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルを Azure Portal で作成する](../active-directory/develop/howto-create-service-principal-portal.md)
+* [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
+* [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
 
-これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対しては、少なくとも [**Azure Service Bus データ所有者**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner)または[**共同作成者**](/azure/role-based-access-control/built-in-roles#contributor)のアクセス許可が必要です。
+これらのチュートリアルでは、`AppId` (クライアント ID)、`TenantId`、`ClientSecret` (認証キー) が提供されます。これらはすべて管理ライブラリによって認証に使用されます。 実行するリソース グループに対しては、少なくとも [**Azure Service Bus データ所有者**](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)または[**共同作成者**](../role-based-access-control/built-in-roles.md#contributor)のアクセス許可が必要です。
 
 ## <a name="programming-pattern"></a>プログラミング パターン
 

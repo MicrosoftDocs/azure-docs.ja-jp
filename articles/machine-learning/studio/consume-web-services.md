@@ -1,6 +1,5 @@
 ---
-title: Web サービスを使用する
-titleSuffix: ML Studio (classic) - Azure
+title: ML Studio (classic):Web サービスを使用する - Azure
 description: Azure Machine Learning Studio (クラシック) から機械学習サービスがデプロイされると、リアルタイムの要求応答サービスまたはバッチ実行サービスのいずれかとして、RESTFul Web サービスを使用できます。
 services: machine-learning
 ms.service: machine-learning
@@ -8,16 +7,19 @@ ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18, tracking-python
+ms.custom: seodec18, devx-track-python, devx-track-javascript, devx-track-csharp
 ms.date: 05/29/2020
-ms.openlocfilehash: 8d78d26298790e033f006fd3f37567caf97f97ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d17e63bce2be5a871184411aaae410acd840951
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696628"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015018"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスを使用する方法
+# <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (classic) Web サービスを使用する方法
+
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 Azure Machine Learning Studio (クラシック) の予測モデルを Web サービスとしてデプロイすると、REST API を使用してデータを送信し、予測を取得することができます。 リアルタイムまたはバッチ モードでデータを送信できます。
 

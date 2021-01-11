@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: d190d3f133c4b12b58dade878dc66755c25e1ed8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 99c5ff39820b652a33ab670e63ca709f8747c4cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86078376"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751282"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - セキュリティおよび DevOps のベスト プラクティス
 
@@ -111,8 +111,6 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 詳しくは、次の記事を参照してください。[HDInsight クラスターを新しいバージョンにアップグレードする](../hdinsight-upgrade-cluster.md)
 
 ## <a name="patch-cluster-operating-systems"></a>クラスターのオペレーティング システムにパッチを適用する
-
-管理された Hadoop サービスとして、HDInsight では、HDInsight クラスターで使用される VM の OS の修正プログラムを適用処理します。
 
 詳しくは、次の記事を参照してください。[HDInsight 用の OS の修正プログラム](../hdinsight-os-patching.md)。
 

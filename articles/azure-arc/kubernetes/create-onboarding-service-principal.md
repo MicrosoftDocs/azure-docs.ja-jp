@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Azure Arc 対応オンボード サービス プリンシパルを作成します '
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 3c95c6bb85c7c1bc097b7751a560a658863c0afd
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725603"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87050072"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Azure Arc 対応オンボード サービス プリンシパルの作成 (プレビュー)
 
@@ -45,7 +45,7 @@ az ad sp create-for-RBAC --skip-assignment --name "https://azure-arc-for-k8s-onb
 
 ## <a name="assign-permissions"></a>アクセス許可の割り当て
 
-新しいサービス プリンシパルを作成したら、新しく作成したプリンシパルに "Azure Arc for Kubernetes Onboarding" ロールを割り当てます。 これは、アクセス許可が制限された組み込みの Azure ロールであり、プリンシパルはクラスターを Azure に登録することだけが許可されます。 プリンシパルは、サブスクリプション内の他のクラスターまたはリソースを更新、削除、変更することはできません。
+新しいサービス プリンシパルを作成したら、新しく作成したプリンシパルに "Kubernetes クラスター - Azure Arc のオンボード" ロールを割り当てます。 これは、アクセス許可が制限された組み込みの Azure ロールであり、プリンシパルはクラスターを Azure に登録することだけが許可されます。 プリンシパルは、サブスクリプション内の他のクラスターまたはリソースを更新、削除、変更することはできません。
 
 機能が制限されているため、お客様はこのプリンシパルを再利用して、複数のクラスターを簡単にオンボードできます。
 

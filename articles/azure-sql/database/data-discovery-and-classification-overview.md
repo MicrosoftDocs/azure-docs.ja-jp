@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 tags: azure-synapse
-ms.openlocfilehash: 8e04cb87895f00e1ee992745c43a884596bd8398
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 3f1f284255d1c0e77779c175951eaf33d3e56067
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85987267"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004105"
 ---
 # <a name="data-discovery--classification"></a>データの検出と分類
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -137,7 +137,7 @@ Azure 組織全体の分類法の定義とカスタマイズは 1 か所で行�
 - Contributor
 - SQL Security Manager
 
-ロールベースのアクセス許可の詳細については、[Azure リソースの RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) に関する記事をご覧ください。
+ロールベースのアクセス許可の詳細については、[Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) に関する記事を参照してください。
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>分類の管理
 

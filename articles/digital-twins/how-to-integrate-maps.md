@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
+title: Azure Maps と統合する
 titleSuffix: Azure Digital Twins
-description: Azure Maps に示されている情報を更新するために、ツイン グラフと Azure Digital Twins の通知を使用できる Azure 関数を作成する方法を確認します。
+description: Azure Maps フロア ガイドを更新するために、ツイン グラフと Azure Digital Twins の通知を使用できる Azure 関数を作成する方法を確認します。
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 8f3e670a4f2a49bcce48be1ba0452a36cbf96df1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392320"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235912"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
 
@@ -27,9 +27,9 @@ ms.locfileid: "85392320"
 
 ### <a name="prerequisites"></a>前提条件
 
-* Azure Digital Twins の[チュートリアル: エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)に関するページを参照してください。
+* Azure Digital Twins の[*チュートリアル: エンド ツー エンドのソリューションの接続*](./tutorial-end-to-end.md)に関するページを参照してください。
     * 追加のエンドポイントとルートを使用して、このツインを拡張します。 また、このチュートリアルでは、関数アプリに別の関数を追加します。 
-* Azure Maps の[チュートリアル: Azure Maps Creator を使用する屋内マップの作成](../azure-maps/tutorial-creator-indoor-maps.md)方法に従って、"*地物状態セット*" を含む Azure Maps の屋内マップを作成します。
+* Azure Maps の[*チュートリアル: Azure Maps Creator を使用する屋内マップの作成*](../azure-maps/tutorial-creator-indoor-maps.md)方法に従って、"*地物状態セット*" を含む Azure Maps の屋内マップを作成します。
     * [地物状態セット](../azure-maps/creator-indoor-maps.md#feature-statesets)は、部屋や機器といったデータセットの地物に割り当てられた動的なプロパティ (状態) のコレクションです。 上記の Azure Maps チュートリアルでは、地物状態セットによって、マップに表示される部屋の状態が格納されます。
     * 地物の "*状態セット ID*" と Azure Maps の "*サブスクリプション ID*" が必要になります。
 
@@ -45,7 +45,7 @@ ms.locfileid: "85392320"
 
 ## <a name="create-a-route-and-filter-to-twin-update-notifications"></a>ルートを作成してツイン更新通知にフィルターを適用する
 
-ツインの状態が更新されるたびに、Azure Digital Twins インスタンスでツイン更新イベントを生成できます。 [Azure Digital Twins のチュートリアル:エンドツーエンドのソリューションの接続](./tutorial-end-to-end.md)に関するページ (上記のリンク) では、温度計を使用して、部屋のツインに付属する温度属性を更新するシナリオについて説明しています。 ツインの更新通知をサブスクライブし、その情報を使用してマップを更新することで、このソリューションを拡張します。
+ツインの状態が更新されるたびに、Azure Digital Twins インスタンスでツイン更新イベントを生成できます。 Azure Digital Twins の[*チュートリアル:エンドツーエンドのソリューションの接続*](./tutorial-end-to-end.md)に関するページ (上記のリンク) では、温度計を使用して、部屋のツインに付属する温度属性を更新するシナリオについて説明しています。 ツインの更新通知をサブスクライブし、その情報を使用してマップを更新することで、このソリューションを拡張します。
 
 このパターンでは、IoT デバイスではなく、部屋のツインから直接読み取りを行います。これにより、マッピング ロジックを更新しなくても、基になるデータ ソースを温度に合わせて柔軟に変更することができます。 たとえば、複数の温度計を追加したり、別の部屋と温度計を共有するようにこの部屋を設定したりすることができます。これらはすべて、マップ ロジックを更新せずに行うことができます。
 
@@ -61,14 +61,14 @@ ms.locfileid: "85392320"
 
 3. Azure Digital Twins でルートを作成し、ツイン更新イベントをエンドポイントに送信します。
     ```azurecli
-    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "{ "endpointId": "<endpoint-ID>","filter": "type = 'Microsoft.DigitalTwins.Twin.Update'"}"
+    az dt route create -n <your-Azure-Digital-Twins-instance-name> --endpoint-name <Event-Grid-endpoint-name> --route-name <my_route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
     ```
 
 ## <a name="create-an-azure-function-to-update-maps"></a>マップを更新する Azure 関数を作成する
 
-[エンドツーエンドのチュートリアル](./tutorial-end-to-end.md)で、Event Grid によってトリガーされる関数を関数アプリ内に作成します。 この関数によって、これらの通知がアンパックされ、1 つの部屋の温度を更新するために Azure Maps の地物状態セットに更新が送信されます。 
+エンドツーエンドのチュートリアルで、Event Grid によってトリガーされる関数を関数アプリ内に作成します ([*チュートリアル: エンド ツー エンドのソリューションの接続*](./tutorial-end-to-end.md)に関するページを参照)。 この関数によって、これらの通知がアンパックされ、1 つの部屋の温度を更新するために Azure Maps の地物状態セットに更新が送信されます。 
 
-参照情報については、次のドキュメントを参照してください: [Azure Functions の Azure Event Grid トリガー](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger)。
+参照情報については、次のドキュメントを参照してください: [*Azure Functions の Azure Event Grid トリガー*](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger)。
 
 関数コードを次のコードに置き換えます。 これにより、空間のツインに対する更新のみが除外され、更新された温度が読み取られ、その情報が Azure Maps に送信されるようになります。
 
@@ -100,7 +100,7 @@ namespace SampleFunctionsApp
 
             //Parse updates to "space" twins
             if (message["data"]["modelId"].ToString() == "dtmi:contosocom:DigitalTwins:Space;1")
-            {   //Set the ID of the room to be updated in our map. 
+            {   //Set the ID of the room to be updated in your map. 
                 //Replace this line with your logic for retrieving featureID. 
                 string featureID = "UNIT103";
 
@@ -138,9 +138,9 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 ライブ更新温度を表示するには、以下の手順に従います。
 
-1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ([チュートリアル:エンドツーエンドのソリューションの接続](tutorial-end-to-end.md)に関するページを参照)。 この手順は、「[*シミュレーションを構成して実行する*](././tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションにあります。
+1. **DeviceSimulator** プロジェクトを実行し、シミュレートされた IoT データの送信を Azure Digital Twins から開始します ([*チュートリアル:エンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照)。 この手順は、「[*シミュレーションを構成して実行する*](././tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションにあります。
 2. [**Azure Maps Indoor** モジュール](../azure-maps/how-to-use-indoor-module.md)を使用して、Azure Maps Creator で作成された屋内マップをレンダリングします。
-    1. 「[*例: Indoor Maps モジュールを使用する*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)」 (Indoor Maps の「[チュートリアル: Azure Maps の Indoor Maps モジュールを使用する](../azure-maps/how-to-use-indoor-module.md)」に含まれるセクション) の HTML をローカル ファイルにコピーします。
+    1. 「[*例: Indoor Maps モジュールを使用する*](../azure-maps/how-to-use-indoor-module.md#example-use-the-indoor-maps-module)」 (Indoor Maps の「[*チュートリアル: Azure Maps の Indoor Maps モジュールを使用する*](../azure-maps/how-to-use-indoor-module.md)」に含まれるセクション) の HTML をローカル ファイルにコピーします。
     1. ローカル HTML ファイルの *tilesetId* と *statesetID* を、実際の値に置き換えます。
     1. ブラウザーでそのファイルを開きます。
 
@@ -160,5 +160,5 @@ az functionapp config appsettings set --settings "statesetID=<your-Azure-Maps-st
 
 ツイン グラフの情報の管理、アップグレード、および取得について詳しくは、以下の参照情報をご覧ください。
 
-* [方法: デジタル ツインを管理する](./how-to-manage-twin.md)
-* [方法: ツイン グラフにクエリを実行する](./how-to-query-graph.md)
+* [*方法: Digital Twins を管理する*](./how-to-manage-twin.md)
+* [*方法: ツイン グラフにクエリを実行する*](./how-to-query-graph.md)

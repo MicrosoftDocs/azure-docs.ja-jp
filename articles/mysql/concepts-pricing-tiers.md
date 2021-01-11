@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: b9cf070e1431c04a7e899a3b8875c8db796608d3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 163f440c9f98a1d53793fddab2590f7345944fda
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119890"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87171005"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -83,9 +83,9 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 
 ストレージはスケールアップのみ可能で、スケールダウンはできないことに注意してください。
 
-## <a name="backup"></a>バックアップ
+## <a name="backup-storage"></a>バックアップ ストレージ 
 
-サービスによって、サーバーのバックアップが自動的に取得されます。 7 日間から 35 日間までの保持期間を選択できます。 汎用サーバーとメモリ最適化サーバーでは、バックアップに geo 冗長ストレージを使用することを選択できます。 バックアップの詳細については[概念に関するアーティクル](concepts-backup.md) をご覧ください。
+Azure Database for MySQL は、プロビジョニングされているサーバー ストレージの 100% までをバックアップ ストレージとして追加コストなしで提供します。 この量を超えて使用するバックアップ ストレージは、月ごとに GB 単位で請求されます。 たとえば、サーバーを 250 GB のストレージでプロビジョニングする場合は、サーバーのバックアップに 250 GB の追加のストレージを追加料金なしで利用できます。 250 GB を超えるバックアップのストレージについては、[価格モデル](https://azure.microsoft.com/pricing/details/mysql/)に従って請求されます。 バックアップ ストレージの使用状況に影響を与える要素を理解し、バックアップ ストレージのコストを監視および制御するには、[バックアップに関するドキュメント](concepts-backup.md)を参照してください。
 
 ## <a name="scale-resources"></a>リソースのスケール
 

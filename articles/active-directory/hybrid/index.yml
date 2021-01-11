@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: b2596145f500d3bc3c08c754abdb3703501dc4d9
-  ms.sourcegitcommit: f98ab5af0fa17a9bba575286c588af36ff075615
+  ms.openlocfilehash: 5c2b9168ad2dcd25e0d99997f17a8ea4cc891eea
+  ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/25/2020
-  ms.locfileid: "85356561"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89278515"
 landingContent:
 - title: ハイブリッド ID について
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: 自分に適切な認証方法を特定する
-      url: /azure/security/fundamentals/choose-ad-authn
+      url: ./choose-ad-authn.md
 - title: ハイブリッド ID の使用を開始する
   linkLists:
   - linkListType: how-to-guide

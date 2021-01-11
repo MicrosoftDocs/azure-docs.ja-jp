@@ -167,7 +167,7 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -187,7 +187,7 @@
               href: concepts-data-flow-monitoring.md
             - name: データ フローのパフォーマンス
               href: concepts-data-flow-performance.md
-            - name: グラフの管理
+            - name: データ フロー キャンバスの管理
               href: concepts-data-flow-manage-graph.md
             - name: 式ビルダー
               href: concepts-data-flow-expression-builder.md
@@ -209,14 +209,14 @@
       items:
         - name: データ ファクトリの視覚的な作成
           href: author-visually.md
+        - name: 反復開発とデバッグ
+          href: iterative-development-debugging.md
         - name: 管理ハブ
           href: author-management-hub.md
         - name: ソース管理
           href: source-control.md
         - name: 継続的インテグレーションと配信
           href: continuous-integration-deployment.md
-        - name: 反復開発とデバッグ
-          href: iterative-development-debugging.md
     - name: Connectors
       items:
         - name: コネクタの概要
@@ -562,13 +562,15 @@
       items:
         - name: リンクされたサービスをパラメーター化する
           href: parameterize-linked-services.md
+        - name: グローバル パラメーター
+          href: author-global-parameters.md
         - name: 式言語
           href: control-flow-expression-language-functions.md
         - name: システム変数
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
@@ -588,6 +590,8 @@
           href: enable-customer-managed-key.md
         - name: マネージド仮想ネットワーク
           href: managed-virtual-network-private-endpoint.md
+        - name: Data Factory の Azure Private Link
+          href: data-factory-private-link.md
     - name: 監視と管理
       items:
         - name: 視覚的な監視
@@ -618,6 +622,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: セルフホステッド統合ランタイムのオートメーション スクリプト
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: Windows コンテナーでセルフホステッド統合ランタイムを実行する
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: Azure での SSIS パッケージの実行
       items:
         - name: SSDT からの Azure での SSIS パッケージの実行
@@ -726,6 +732,8 @@
           href: pricing-concepts.md
     - name: トラブルシューティング ガイド
       items:
+        - name: Data Factory UX
+          href: data-factory-ux-troubleshoot-guide.md
         - name: Activities
           href: data-factory-troubleshoot-guide.md
         - name: Connectors

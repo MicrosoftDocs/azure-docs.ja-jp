@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Microsoft Azure Maps でジオフェンスを作成してデバイスを追跡する
-description: Microsoft Azure Maps 空間サービスを使用して、ジオフェンスを設定し、そのジオフェンスを基準にしてデバイスを追跡する方法について説明します。
+description: ジオフェンスを設定する方法について説明します。 Azure Maps 空間サービスを使用して、ジオフェンスを基準にデバイスを追跡する方法をご確認ください。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 7/15/2020
+ms.date: 8/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 775d98b992f2bca4441c868873ceaeb2389db81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3ea9923dd98a49b1533defa3e95616655b7ea78d
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517402"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299305"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
@@ -25,7 +25,7 @@ ms.locfileid: "86517402"
 上記のシナリオにおいて、建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次の方法について取り上げます。
 
 > [!div class="checklist"]
-> * 監視する建設現場区域を定義する[ジオフェンス GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用して、ジオフェンスをポリゴン座標として Azure Maps アカウントにアップロードします。
+> * 監視対象の建設現場区域を定義する[ジオフェンシング GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) を使用して、ジオフェンスをポリゴン座標として Azure Maps アカウントにアップロードします。
 > * 機材がジオフェンス領域を出入りしたときにトリガーされ、電子メールによる通知を建設現場の作業の管理者に送信する 2 つの[ロジック アプリ](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps)を設定する。
 > * [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) を使用して Azure Maps ジオフェンスの enter イベントと exit イベントをサブスクライブする。 ここでは、2 つのロジック アプリに定義された HTTP エンドポイントを呼び出す Web hook イベントのサブスクリプションを 2 つ設定します。 これらのロジック アプリから、ジオフェンスを出入りする機材の適切な電子メール通知が送信されます。
 > * 機材がジオフェンス領域を出入りしたときに、[Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) を使用して通知を受信する。
@@ -258,15 +258,15 @@ Azure Maps では、3 種類のイベントがサポートされています。 
 
 5. 前のセクションで作成したロジック アプリの Exit エンドポイントについても、手順 1. から手順 4. を繰り返します。 手順 3. で、イベントの種類として必ず `Geofence Exited` を選択してください。
 
-## <a name="use-search-geofence-get-api"></a>Search Geofence Get API を使用する
+## <a name="use-spatial-geofence-get-api"></a>Spatial Geofence Get API を使用する
 
-今度は、[Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) を使用して、機材がジオフェンスを出入りしたときに電子メールによる通知を作業の管理者に送信します。
+今度は、[Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) を使用して、機材がジオフェンスを出入りしたときに電子メールによる通知を作業の管理者に送信します。
 
 機材にはそれぞれ `deviceId` があります。 このチュートリアルでは、一意の ID が `device_1` である単一の機材を追跡します。
 
 わかりやすくするために、時間の経過に伴う 5 つの機材位置を次の図で示しました。ジオフェンス外側のどこかにある *Start* 位置が起点となります。 *Start* 位置は定義していません。このチュートリアルの目的上、その位置のデバイスに対してクエリを実行することはないためです。
 
-ジオフェンスの最初の出入りを示す機材位置を [Search Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) に照会すると、Event Grid によって適切なロジック アプリ エンドポイントが呼び出されて、電子メールによる通知が作業の管理者に送信されます。
+ジオフェンスの最初の出入りを示す機材位置を指定して [Spatial Geofence Get API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) に対するクエリを実行すると、Event Grid によって適切なロジック アプリ エンドポイントが呼び出されて、電子メールによる通知が作業の管理者に送信されます。
 
 以降の各セクションでは、5 つの異なる機材位置座標を使用して HTTP GET Geofencing API 要求を実行します。
 

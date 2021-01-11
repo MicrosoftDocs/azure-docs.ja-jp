@@ -32,7 +32,7 @@ ms.locfileid: "82981223"
 Azure CLI を使用してマネージド ID を設定するには、既存の構成ストアに対して [az appconfig identity assign] コマンドを使用します。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
 
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
-- 以下の各コード ブロックの右上隅にある [試してみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
+- 以下の各コード ブロックの右上隅にある [使ってみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
 - ローカルの CLI コンソールを使用する場合は、[Azure CLI の最新バージョン (2.1 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 
 次の手順では、CLI を使用して、App Configuration ストアを作成し、それに ID を割り当てる方法について説明します。
@@ -65,7 +65,7 @@ Azure CLI を使用してマネージド ID を設定するには、既存の構
 Azure CLI を使用してマネージド ID を設定するには、既存の構成ストアに対して [az appconfig identity assign] コマンドを使用します。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
 
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
-- 以下の各コード ブロックの右上隅にある [試してみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
+- 以下の各コード ブロックの右上隅にある [使ってみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
 - ローカル CLI コンソールを使用する場合、[Azure CLI の最新バージョン (2.0.31 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 
 次の手順では、CLI を使用して、ユーザー割り当て ID と App Configuration ストアを作成し、ID をストアに割り当てる方法について説明します。

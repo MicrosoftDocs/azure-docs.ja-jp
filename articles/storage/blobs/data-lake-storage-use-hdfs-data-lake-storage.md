@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 で HDFS CLI を使用する
-description: Data Lake Storage Gen2 の HDFS CLI の概要
+description: Azure Data Lake Storage Gen2 には、Hadoop 分散ファイル システム (HDFS) の CLI を使用します。 コンテナーの作成、ファイルやディレクトリの一覧の取得などを行います。
 services: storage
 author: normesta
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 36e6b39aaf481abaabe4fb5a4a71a527d1e74749
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109452"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836311"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
@@ -116,7 +116,7 @@ hdfs dfs -mkdir /samplefolder
 
 コマンドの完全な一覧は、[Apache Hadoop 2.4.1 ファイル システム シェル ガイド](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)の Web サイトでご覧になれます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Use an Azure Data Lake Storage Gen2 capable account in Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md) (Azure Databricks で Azure Data Lake Storage Gen2 対応アカウントを使用する)
 

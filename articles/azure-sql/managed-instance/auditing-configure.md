@@ -26,7 +26,7 @@ ms.locfileid: "87117352"
 [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) の監査では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
 
 - 規定コンプライアンスの維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。
-- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新のコンプライアンス証明書の一覧を入手できます。
+- コンプライアンスを保証するものではありませんが、標準へのコンプライアンスを強化します。 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新のコンプライアンス証明書の一覧を入手できます。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>Azure Storage に対するサーバー監査の設定
 
@@ -211,7 +211,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
 - システム関数 `sys.fn_get_audit_file` (T-SQL) を使って、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file のドキュメント](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)を参照してください。
 
-- [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
 
 - 監査ログの使い方の完全な一覧については、[Azure SQL Database 監査の使用](../../azure-sql/database/auditing-overview.md)に関するページをご覧ください。
 
@@ -247,6 +247,6 @@ Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違
 ## <a name="next-steps"></a>次のステップ
 
 - 監査ログの使い方の完全な一覧については、[Azure SQL Database 監査の使用](../../azure-sql/database/auditing-overview.md)に関するページをご覧ください。
-- 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure セキュリティ センター](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新のコンプライアンス証明書の一覧を入手できます。
+- 標準コンプライアンスをサポートする Azure プログラムの詳細については、[Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)をご覧ください。ここから最新のコンプライアンス証明書の一覧を入手できます。
 
 <!--Image references-->

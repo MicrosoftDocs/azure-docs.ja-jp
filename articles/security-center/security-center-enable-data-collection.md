@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519716"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387372"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。
@@ -211,15 +211,17 @@ Security Center によって、Log Analytics エージェント拡張機能は�
     - Log Analytics エージェントがクライアント ワークステーションにインストールされ、既存の Log Analytics ワークスペースにレポートする環境が整っている場合は、[Azure Security Center でサポートされるオペレーティング システム](security-center-os-coverage.md)の一覧で、ご利用のオペレーティング システムがサポートされているかどうかを確認します。 詳しくは、「[既存の Log Analytics ユーザー](./faq-azure-monitor-logs.md)」をご覧ください。
  
 ### <a name="turn-off-automatic-provisioning"></a>自動プロビジョニングを無効にする<a name="offprovisioning"></a>
-リソースの自動プロビジョニングは、セキュリティ ポリシーでこの設定をオフにすることで、いつでも無効にすることができます。 
+Log Analytics エージェントの自動プロビジョニングをオフにするには:
 
+1. ポータルの Security Center のメニューで、 **[価格と設定]** を選択します。
+2. 関連するサブスクリプションを選択します。
 
-1. Security Center のメイン メニューに戻り、[セキュリティ ポリシー] を選択します。
-2. 自動プロビジョニングを無効にするサブスクリプションの行で、 **[設定の編集]** をクリックします。
-3. **[セキュリティ ポリシー - データ収集]** ページの **[自動プロビジョニング]** で、 **[オフ]** を選択します。
-4. **[保存]** を選択します。
+   ![サブスクリプションの選択][7]
 
-   ![自動プロビジョニングの無効化][6]
+3. **[データ収集]** を選択します。
+4. **[Auto Provisioning]\(自動プロビジョニング\)** で **[オフ]** を選択して、自動プロビジョニングを無効にします。
+5. **[保存]** を選択します。 
+
 
 自動プロビジョニングを無効 (オフ) にすると、既定のワークスペース構成セクションは表示されません。
 

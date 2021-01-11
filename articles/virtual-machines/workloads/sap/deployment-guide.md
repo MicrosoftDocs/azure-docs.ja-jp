@@ -13,14 +13,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/22/2020
+ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: b6a284d13d0d737eca65b2593813b3d1b999cfdf
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 6b66db639e0b22a7e0c45486465a1fa395aba33d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133158"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653513"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -74,7 +74,7 @@ ms.locfileid: "86133158"
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azureps-cmdlets-docs
+[azure-ps]:/powershell/azure/
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
 [azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
@@ -256,7 +256,7 @@ ms.locfileid: "86133158"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -285,15 +285,15 @@ ms.locfileid: "86133158"
 [virtual-machines-linux-tutorial]:../../linux/quick-create-cli.md
 [virtual-machines-linux-update-agent]:../../linux/update-agent.md
 [virtual-machines-manage-availability]:../../linux/manage-availability.md
-[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../virtual-machines-windows-ps-create.md
+[virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../windows/quick-create-powershell.md
 [virtual-machines-sizes]:../../linux/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
 [virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
 [virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
 [virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
-[virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
-[virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
+[virtual-machines-upload-image-windows-resource-manager]:../../windows/upload-image.md
+[virtual-machines-windows-tutorial]:../../windows/quick-create-portal.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
@@ -443,8 +443,8 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
 1. **設定**:
    * **Storage**
      * **ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
-     * **[マネージド ディスクの使用]** : Managed Disks を使用する場合は、[はい] を選択します。 Managed Disks について詳しくは、計画ガイドの [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) の章をご覧ください。
-     * **ストレージ アカウント**: 既存のストレージ アカウントを選択するか、または新しいアカウントを作成します。 すべてのストレージの種類が SAP アプリケーションの実行に対応しているわけではありません。 ストレージの種類の詳細については、「[RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)」を参照してください。
+     * **[マネージド ディスクの使用]** : Managed Disks を使用する場合は、[はい] を選択します。 Managed Disks について詳しくは、計画ガイドの [Managed Disks](./planning-guide-storage.md#microsoft-azure-storage-resiliency) の章をご覧ください。
+     * **ストレージ アカウント**: 既存のストレージ アカウントを選択するか、または新しいアカウントを作成します。 すべてのストレージの種類が SAP アプリケーションの実行に対応しているわけではありません。 ストレージの種類の詳細については、「[RDBMS デプロイの VM のストレージの構造](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)」を参照してください。
    * **Network**
      * **[仮想ネットワーク]** と **[サブネット]** : 仮想マシンをイントラネットと統合するには、オンプレミスのネットワークに接続されている仮想ネットワークを選択します。
      * **[パブリック IP アドレス]** : 使用するパブリック IP アドレスを選択するか、または新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスできます。 仮想マシンへのアクセスをセキュリティで保護するために、ネットワーク セキュリティ グループも作成してください。
@@ -500,7 +500,7 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
 
      大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
       * [Use of Azure Premium SSD Storage for SAP DBMS Instance (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)][2367194]
-      * [RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [RDBMS デプロイの VM のストレージの構造](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
    * **[管理ユーザー名]** と **[管理パスワード]** : ユーザー名とパスワード。
@@ -545,7 +545,7 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 ---
 > ![Windows][Logo_Windows] Windows
 >
-> 複数の仮想マシンをデプロイするために使用できる Windows イメージを準備するには、オンプレミス VM で Windows 設定 (Windows SID やホスト名など) を抽象化または汎用化する必要があります。 これを行うには、[sysprep](https://msdn.microsoft.com/library/hh825084.aspx) を使用します。
+> 複数の仮想マシンをデプロイするために使用できる Windows イメージを準備するには、オンプレミス VM で Windows 設定 (Windows SID やホスト名など) を抽象化または汎用化する必要があります。 これを行うには、[sysprep](/previous-versions/windows/it-pro/windows-8.1-and-8/hh825084(v=win.10)) を使用します。
 >
 > ![Linux][Logo_Linux] Linux
 >
@@ -562,7 +562,7 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 
 #### <a name="create-a-virtual-machine-by-using-the-azure-portal"></a>Azure Portal を使用した仮想マシンの作成
 
-管理ディスクのイメージから新しい仮想マシンを作成する最も簡単な方法は、Azure Portal を使うことです。 管理ディスクイメージを作成する方法について詳しくは、「[Azure で一般化された VM の管理対象イメージをキャプチャする](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)」をご覧ください
+管理ディスクのイメージから新しい仮想マシンを作成する最も簡単な方法は、Azure Portal を使うことです。 管理ディスクイメージを作成する方法について詳しくは、「[Azure で一般化された VM の管理対象イメージをキャプチャする](../../windows/capture-image-resource.md)」をご覧ください
 
 1.  <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages> にアクセスします。 または、Azure Portal のメニューで **[イメージ]** を選びます。
 1.  デプロイする管理ディスク イメージを選び、 **[VM の作成]** をクリックします
@@ -583,7 +583,7 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 1. **設定**:
    * **Storage**
      * **ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
-     * **[マネージド ディスクの使用]** : Managed Disks を使用する場合は、[はい] を選択します。 Managed Disks について詳しくは、計画ガイドの [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#microsoft-azure-storage-resiliency) の章をご覧ください。
+     * **[マネージド ディスクの使用]** : Managed Disks を使用する場合は、[はい] を選択します。 Managed Disks について詳しくは、計画ガイドの [Managed Disks](./planning-guide-storage.md#microsoft-azure-storage-resiliency) の章をご覧ください。
    * **Network**
      * **[仮想ネットワーク]** と **[サブネット]** : 仮想マシンをイントラネットと統合するには、オンプレミスのネットワークに接続されている仮想ネットワークを選択します。
      * **[パブリック IP アドレス]** : 使用するパブリック IP アドレスを選択するか、または新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスできます。 仮想マシンへのアクセスをセキュリティで保護するために、ネットワーク セキュリティ グループも作成してください。
@@ -636,7 +636,7 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
 
      大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
       * [Use of Azure Premium SSD Storage for SAP DBMS Instance (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)][2367194]
-      * [RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [RDBMS デプロイの VM のストレージの構造](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
    * **[User image VHD URI] (ユーザー イメージ VHD の URI)** (非管理ディスク イメージ テンプレートのみ): プライベート OS イメージ VHD の URI (https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd など)。
@@ -728,7 +728,7 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
 
      大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
       * [Use of Azure Premium SSD Storage for SAP DBMS Instance (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)][2367194]
-      * [RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
+      * [RDBMS デプロイの VM のストレージの構造](./dbms_guide_general.md#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
    * **[OS disk VHD URI] (OS ディスク VHD の URI)** (非管理ディスク テンプレートのみ): プライベート OS ディスクの URI (https://&lt; アカウント名>.blob.core.windows.net/vhds/osdisk.vhd など)。
@@ -780,9 +780,9 @@ SAP で現在の環境がサポートされるように、「[Azure Extension fo
 
 ### <a name="deploy-azure-powershell-cmdlets"></a><a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell コマンドレットのデプロイ
 
-[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関する記事で説明されている手順に従ってください
+[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関する記事で説明されている手順に従ってください
 
-PowerShell コマンドレットの更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。 [こちら](https://docs.microsoft.com/powershell/azure/install-az-ps#update-the-azure-powershell-module)の記事で説明されている手順に従ってください。 SAP Note [1928533] または [2015553] に特に記載されていない限り、最新バージョンの Azure PowerShell コマンドレットを使用することをお勧めします。
+PowerShell コマンドレットの更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。 [こちら](/powershell/azure/install-az-ps#update-the-azure-powershell-module)の記事で説明されている手順に従ってください。 SAP Note [1928533] または [2015553] に特に記載されていない限り、最新バージョンの Azure PowerShell コマンドレットを使用することをお勧めします。
 
 コンピューターにインストールされている Azure PowerShell コマンドレットのバージョンを確認するには、次の PowerShell コマンドを実行します。
 
@@ -792,7 +792,7 @@ PowerShell コマンドレットの更新プログラムがあるかどうかを
 
 ### <a name="deploy-azure-cli"></a><a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Azure CLI のデプロイ
 
-記事「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」で説明されている手順に従ってください
+記事「[Azure CLI のインストール](/cli/azure/install-azure-cli)」で説明されている手順に従ってください
 
 Azure CLI の更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。
 
@@ -933,7 +933,7 @@ PowerShell を使用して Azure Extension for SAP をインストールする�
 
 1. 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認します。 詳細については、「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」をご覧ください。  
 1. 次の PowerShell コマンドレットを実行します。
-    使用可能な環境の一覧を表示するには、`commandlet Get-AzEnvironment` を実行します。 グローバル Azure を使う場合の環境は **AzureCloud** です。 Azure China 21Vianet の場合は、**AzureChinaCloud** を選択します。
+    使用可能な環境の一覧を表示するには、コマンドレット `Get-AzEnvironment` を実行します。 グローバル Azure を使う場合の環境は **AzureCloud** です。 Azure China 21Vianet の場合は、**AzureChinaCloud** を選択します。
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -1023,44 +1023,21 @@ Azure CLI を使用して Azure Extension for SAP をインストールするに
 
 SAP 用の新しい VM 拡張機能では、VM の監視データと構成データにアクセスするために、VM に割り当てられたマネージド ID が使用されます。 PowerShell を使用して新しい Azure Extension for SAP をインストールするには、まずそのような ID を VM に割り当ててから、その VM で使用されているすべてのリソース (ディスクやネットワーク インターフェイスなど) に対するアクセス権をその ID に付与する必要があります。
 
-このプロセスは、次のバージョンの Azure PowerShell (> 4.2.0) で自動化されます。 新しいバージョンが利用可能になったら、この記事は更新されます。 それまでは、次の手順に従って手動で拡張機能をインストールしてください。
-
 > [!NOTE]
 > 次の手順では、リソース グループまたは個々のリソース (仮想マシン、データ ディスクなど) に対する所有者特権が必要です。
 
 1. 必ず SAP Host Agent 7.21 PL 47 以上を使用してください。
 1. 必ず現在のバージョンの SAP 用 VM 拡張機能をアンインストールしてください。 同じ仮想マシンに両方のバージョンの SAP 用 VM 拡張機能をインストールすることはサポートされていません。
-1. 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認します。 詳細については、「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」をご覧ください。
-1. 記事「[PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する][qs-configure-powershell-windows-vm]」に記載されている手順に従って、VM に対してシステム割り当てマネージド ID を有効にします。 ユーザー割り当てマネージド ID は、SAP 用 VM 拡張機能ではサポートされていません。 ただし、システム割り当て ID とユーザー割り当て ID の両方を有効にすることができます。
-    
-    例:
-    ```powershell
-    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
-    Update-AzVM -ResourceGroupName $vm.ResourceGroupName -VM $vm -IdentityType SystemAssigned
-    ```
-
-1. 「[PowerShell を使用して、リソースにマネージド ID アクセスを割り当てる][howto-assign-access-powershell]」の説明に従って、VM のリソース グループ、またはすべてのネットワーク インターフェイス、マネージド ディスク、および VM 自体に、マネージド ID アクセスを割り当てます。例:
+1. 最新バージョンの Azure PowerShell コマンドレット (4.3.0 以上) がインストールされていることを確認します。 詳細については、「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」をご覧ください。
+1. 次の PowerShell コマンドレットを実行します。
+    使用可能な環境の一覧を表示するには、コマンドレット `Get-AzEnvironment` を実行します。 グローバル Azure を使う場合の環境は **AzureCloud** です。 Azure China 21Vianet の場合は、**AzureChinaCloud** を選択します。
 
     ```powershell
-    $spID = (Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>).identity.principalid
-    $rg = Get-AzResourceGroup -Name $vm.ResourceGroupName
-    New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope $rg.ResourceId
-    ```
-
-1. 次の PowerShell コマンドレットを実行して、Azure Extension for SAP をインストールします。
-    現時点では、この拡張機能は AzureCloud でのみサポートされています。 Azure China 21Vianet、Azure Government、またはその他の特殊な環境はまだサポートされていません。
-
-    ```powershell
-    $env = Get-AzEnvironment -Name AzureCloud
+    $env = Get-AzEnvironment -Name <name of the environment>
     Connect-AzAccount -Environment $env
     Set-AzContext -SubscriptionName <subscription name>
 
-    $vm = Get-AzVM -ResourceGroupName <resource-group-name> -Name <vm name>
-    if ($vm.StorageProfile.OsDisk.OsType -eq "Windows") {
-      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Windows -Name MonitorX64Windows -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
-    } else {
-      Set-AzVMExtension -Publisher Microsoft.AzureCAT.AzureEnhancedMonitoring -ExtensionType MonitorX64Linux -Name MonitorX64Linux -TypeHandlerVersion "1.0" -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Settings @{"system" = "SAP"} -Location $vm.Location
-    }
+    Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name> -InstallNewExtension
     ```
 
 #### <a name="configure-the-new-azure-extension-for-sap-with-azure-cli"></a><a name="c8749c24-fada-42ad-b114-f9aae2dc37da"></a>Azure CLI を使用して新しい Azure Extension for SAP を構成する
@@ -1116,7 +1093,10 @@ Azure VM をデプロイし、関連する Azure Extension for SAP を設定し�
 
 ### <a name="readiness-check-for-the-azure-extension-for-sap"></a><a name="bb61ce92-8c5c-461f-8c53-39f5e5ed91f2"></a>Azure Extension for SAP の適合性チェック
 
-このチェックでは、SAP アプリケーション内で表示されるすべてのパフォーマンス メトリックが、基になる Azure Extension for SAP によって提供されていることを確認します。 新しい Azure Extension for SAP をデプロイした場合は、このガイドに含まれている「[新しい Azure Extension for SAP の適合性チェック][deployment-guide-5.1-new]」の章に従ってください。
+> [!NOTE]
+> VM 拡張機能には 2 つのバージョンがあります。 この章では、既定の VM 拡張機能について説明します。 新しい VM 拡張機能がインストールされている場合は、「[新しい Azure Extension for SAP の適合性チェック][deployment-guide-5.1-new]」の章を参照してください。
+
+このチェックでは、SAP アプリケーション内で表示されるすべてのパフォーマンス メトリックが、基になる Azure Extension for SAP によって提供されていることを確認します。
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Windows VM での適合性チェックの実行
 
@@ -1215,7 +1195,10 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 ### <a name="readiness-check-for-the-new-azure-extension-for-sap"></a><a name="7bf24f59-7347-4c7a-b094-4693e4687ee5"></a>新しい Azure Extension for SAP の適合性チェック
 
-このチェックでは、SAP アプリケーション内で表示されるすべてのパフォーマンス メトリックが、基になる Azure Extension for SAP によって提供されていることを確認します。 以前の Azure Extension for SAP をデプロイした場合は、このガイドに含まれている「[Azure Extension for SAP の適合性チェック][deployment-guide-5.1]」の章に従ってください。
+> [!NOTE]
+> VM 拡張機能には 2 つのバージョンがあります。 この章では、新しい VM 拡張機能について説明します。 既定の VM 拡張機能がインストールされている場合は、「[Azure Extension for SAP の適合性チェック][deployment-guide-5.1]」の章を参照してください。
+
+このチェックでは、SAP アプリケーション内で表示されるすべてのパフォーマンス メトリックが、基になる Azure Extension for SAP によって提供されていることを確認します。
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Windows VM での適合性チェックの実行
 
@@ -1277,6 +1260,9 @@ http://127.0.0.1:11812/azure4sap/metrics でアクセスできる XML ファイ�
 
 ### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Azure Extension for SAP の構成の正常性チェック
 
+> [!NOTE]
+> VM 拡張機能には 2 つのバージョンがあります。 この章では、既定の VM 拡張機能について説明します。 新しい VM 拡張機能がインストールされている場合は、「[新しい Azure Extension for SAP の構成の正常性チェック][deployment-guide-5.2-new]」の章を参照してください。
+
 一部のインフラストラクチャ データが、「[Azure Extension for SAP の適合性チェック][deployment-guide-5.1]」で説明したテストで示されているように正しく提供されない場合は、`Test-AzVMAEMExtension` コマンドレットを実行して、Azure インフラストラクチャと Azure Extension for SAP が正しく構成されているかどうかを確認します。
 
 1. 「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」で説明したように、Azure PowerShell コマンドレットの最新バージョンがインストールされていることを確認します。
@@ -1301,6 +1287,9 @@ http://127.0.0.1:11812/azure4sap/metrics でアクセスできる XML ファイ�
 
 ### <a name="health-check-for-the-new-azure-extension-for-sap-configuration"></a><a name="464ac96d-7d3c-435d-a5ae-3faf3bfef4b3"></a>新しい Azure Extension for SAP の構成の正常性チェック
 
+> [!NOTE]
+> VM 拡張機能には 2 つのバージョンがあります。 この章では、新しい VM 拡張機能について説明します。 既定の VM 拡張機能がインストールされている場合は、「[Azure Extension for SAP の構成の正常性チェック][deployment-guide-5.2]」の章を参照してください。
+
 一部のインフラストラクチャ データが、「[Azure Extension for SAP の適合性チェック][deployment-guide-5.1-new]」で説明したテストで示されているように正しく提供されない場合は、`Get-AzVMExtension` コマンドレットを実行して、Azure Extension for SAP がインストールされているかどうかを確認します。 `Test-AzVMAEMExtension` では、新しい拡張機能はまだサポートされていません。 コマンドレットで新しい拡張機能がサポートされたら、この記事は更新されます。
 
 1. 「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」で説明したように、Azure PowerShell コマンドレットの最新バージョンがインストールされていることを確認します。
@@ -1310,12 +1299,15 @@ http://127.0.0.1:11812/azure4sap/metrics でアクセスできる XML ファイ�
    $env = Get-AzEnvironment -Name <name of the environment>
    Connect-AzAccount -Environment $env
    Set-AzContext -SubscriptionName <subscription name>
-   Get-AzVMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
 
-1. コマンドレットを実行すると、選択した仮想マシンのすべての拡張機能が一覧表示されます。 VM に Azure Extension for SAP がインストールされていることを確認します。
+1. 選択した仮想マシン上の、SAP 用 VM 拡張機能の構成がコマンドレットによってテストされます。
 
 ### <a name="troubleshooting-azure-extension-for-sap"></a><a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Azure Extension for SAP のトラブルシューティング
+
+> [!NOTE]
+> VM 拡張機能には 2 つのバージョンがあります。 この章では、既定の VM 拡張機能について説明します。 新しい VM 拡張機能がインストールされている場合は、「[新しい Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3-new]」の章を参照してください。
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
 
@@ -1406,6 +1398,9 @@ Azure のパフォーマンス メトリックは、デーモンによって収�
 SAP Note [1999351] を使用したトラブルシューティングで問題が解決しない場合は、「[Azure Extension for SAP を構成する][deployment-guide-4.5]」の説明に従って、`Set-AzVMAEMExtension` 構成スクリプトを再実行します。 ストレージ分析または診断カウンターは、有効になった直後には作成されないことがあるため、1 時間待たなければならない場合があります。 問題が解決しない場合は、Windows では BC-OP-NT-AZR コンポーネント、Linux 仮想マシンでは BC-OP-LNX-AZR コンポーネントで、SAP カスタマー サポート メッセージを開きます。
 
 ### <a name="troubleshooting-the-new-azure-extension-for-sap"></a><a name="b7afb8ef-a64c-495d-bb37-2af96688c530"></a>新しい Azure Extension for SAP のトラブルシューティング
+
+> [!NOTE]
+> VM 拡張機能には 2 つのバージョンがあります。 この章では、新しい VM 拡張機能について説明します。 既定の VM 拡張機能がインストールされている場合は、「[Azure Extension for SAP のトラブルシューティング][deployment-guide-5.3]」の章を参照してください。
 
 #### <a name="windowslogo_windows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
 

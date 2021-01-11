@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 817a7c132657ba0ad8910a334b571f9d05481a0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 70a9d9f8b137f02e647d1ea0edddd409ec3cdaf3
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021224"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079194"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>チュートリアル:Terraform を使用して Azure Spring Cloud インスタンスをプロビジョニングする
 
@@ -37,7 +37,7 @@ ms.locfileid: "87021224"
 
 1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
-1. [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#use-azure-cloud-shell) を開きます。
+1. [Azure Cloud Shell](https://docs.microsoft.com/azure/app-service/quickstart-java#use-azure-cloud-shell) を開きます。
 
 1. Cloud Shell エディターを開始します。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
-ms.openlocfilehash: 5d16c62c14ff6f24e519173b979e11d21d997927
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7cfa3d5652e13ddc88db70674049069a5b391297
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505790"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322127"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Monitor でクロスリソース ログ クエリを実行する  
 
@@ -120,7 +120,7 @@ app('Contoso-app5').requests
 
 
 
-次のようなクロスリソース クエリで[この関数を使用](../../azure-monitor/log-query/functions.md#use-a-function)できるようになります。 関数のエイリアス _applicationsScoping_ から、すべての定義済みアプリケーションから要求テーブルの和集合が返されます。 このクエリによって、失敗した要求がフィルター処理され、アプリケーション別に傾向が視覚化されます。 _parse_ 演算子はこの例では省略可能です。 _SourceApp_ プロパティからアプリケーション名が抽出されます。
+次のようなクロスリソース クエリで[この関数を使用](./functions.md#use-a-function)できるようになります。 関数のエイリアス _applicationsScoping_ から、すべての定義済みアプリケーションから要求テーブルの和集合が返されます。 このクエリによって、失敗した要求がフィルター処理され、アプリケーション別に傾向が視覚化されます。 _parse_ 演算子はこの例では省略可能です。 _SourceApp_ プロパティからアプリケーション名が抽出されます。
 
 ```Kusto
 applicationsScoping 
@@ -141,3 +141,4 @@ applicationsScoping
 
 - ログ クエリの概要と、Azure Monitor ログ データがどのように構成されているかについては、[Azure Monitor でログ データを分析する](log-query-overview.md)ことに関するページを参照してください。
 - Azure Monitor ログ クエリのすべてのリソースを確認するには、[Azure Monitor ログ クエリ](query-language.md)に関するページを参照してください。
+

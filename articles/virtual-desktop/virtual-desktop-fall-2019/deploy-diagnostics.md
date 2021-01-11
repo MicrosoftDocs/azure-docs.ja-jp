@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop の診断ツールをデプロイする - Azure
-description: Windows Virtual Desktop の診断 UX ツールをデプロイする方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) の診断ツールをデプロイする - Azure
+description: Windows Virtual Desktop (クラシック) の診断 UX ツールをデプロイする方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 544610f4011f7ad12d5b311aab3afd4bc1373ac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61c31b24b01b40da4d73a308a4f304f6ff242e41
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362341"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691413"
 ---
-# <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows Virtual Desktop (クラシック) の診断ツールをデプロイする
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (クラシック) に適用されます。
 
 >[!IMPORTANT]
 >サービスの需要が増加したため、2020 年 3 月 16 日より、ユーザーエクスペリエンスに影響を与える診断クエリを一時的に無効にしました。 このツールはこれらのクエリに依存して機能するため、動作が停止します。 診断クエリを再度利用できるようになったときに、この記事を更新します。
@@ -198,7 +196,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
    > [!div class="mx-imgBorder"]
    > ![リダイレクト URI ページ](../media/redirect-uri-page.png)
 
-8. ここで、ご使用の Azure リソースに移動し、テンプレートで指定した名前の Azure App Services リソースを選択し、それに関連付けられている URL に移動します。 (たとえば、テンプレートで使用したアプリ名が `contosoapp45` の場合、関連付けられている URL は <https://contosoapp45.azurewebsites.net> になります)。
+8. ここで、ご使用の Azure リソースに移動し、テンプレートで指定した名前の Azure App Services リソースを選択し、それに関連付けられている URL に移動します。 (たとえば、テンプレートで使用したアプリ名が `contosoapp45` の場合、関連付けられている URL は <http://contoso.azurewebsites.net> になります)。
 9. 適切な Azure Active Directory ユーザー アカウントを使用してサインインします。
 10.   **[Accept]\(承認\)** を選択します。
 

@@ -12,12 +12,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: e1cfe7216c1b37812c482cfacbd5d1c3f155418f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b5a83b3976dd3d3af1bfd5695815f7571d73dd9d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507830"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652187"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
 
@@ -45,7 +45,7 @@ Azure でサポートされている SAP ソフトウェアの詳細について
 
 Azure Backup は、[backint](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) と呼ばれる専用の SAP HANA インターフェイスを使用して統合され、SAP HANA のバックアップ ソリューションとして認定を受けています。 ソリューション、その機能、および使用できる Azure リージョンの詳細については、[Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス](../../../backup/sap-hana-backup-support-matrix.md#scenario-support)」を参照してください。 HANA の Azure Backup サービスの詳細と原則については、「[Azure VM での SAP HANA データベースバックアップについて](../../../backup/sap-hana-db-about.md)」の記事を参照してください。 
 
-Azure Backup サービスを利用する 2 つ目の方法は、Azure Premium Storage のディスク スナップショットを使用してアプリケーション整合性バックアップを作成することです。 [Azure Ultra ディスク](../../linux/disks-enable-ultra-ssd.md)や [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) など、その他の HANA 認定 Azure ストレージでは、Azure Backup サービスによるこの種のスナップショットはサポートされていません。 次の記事を参照してください。
+Azure Backup サービスを利用する 2 つ目の方法は、Azure Premium Storage のディスク スナップショットを使用してアプリケーション整合性バックアップを作成することです。 [Azure Ultra ディスク](../../disks-enable-ultra-ssd.md)や [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) など、その他の HANA 認定 Azure ストレージでは、Azure Backup サービスによるこの種のスナップショットはサポートされていません。 次の記事を参照してください。
 
 - [Azure における VM バックアップ インフラストラクチャの計画を立てる](../../../backup/backup-azure-vms-introduction.md)
 - [Azure Linux VM のアプリケーション整合性バックアップ](../../../backup/backup-azure-linux-app-consistent.md) 

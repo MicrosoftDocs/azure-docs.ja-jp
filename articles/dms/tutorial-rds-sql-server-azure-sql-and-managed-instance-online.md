@@ -19,9 +19,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85314934"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して RDS SQL Server を Azure SQL Database または Azure SQL マネージド インスタンスにオンラインで移行する
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して RDS SQL Server を Azure SQL Database または Azure SQL Managed Instance にオンラインで移行する
 
-Azure Database Migration Service を使用すれば、RDS SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) または [Azure SQL マネージド インスタンス](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)に最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2012 (以降) の RDS SQL Server インスタンスに復元された **Adventureworks2012** データベースを SQL Database または SQL マネージド インスタンスに移行します。
+Azure Database Migration Service を使用すれば、RDS SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) または [Azure SQL Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) に最小限のダウンタイムでデータベースを移行できます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2012 (以降) の RDS SQL Server インスタンスに復元された **Adventureworks2012** データベースを SQL Database または SQL Managed Instance に移行します。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
@@ -50,7 +50,7 @@ Azure Database Migration Service を使用すれば、RDS SQL Server インス�
 * [RDS SQL Server データベース](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_GettingStarted.CreatingConnecting.SQLServer.html)を作成します。
 * [Azure portal で Azure SQL Database のデータベースを作成](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)するか、または [SQL Managed Instance でデータベースを作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)してから、**AdventureWorks2012** という名前の空のデータベースを作成します。 
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) v3.3 以降をダウンロードしてインストールします。
-* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。 SQL マネージド インスタンスに移行する場合は、SQL マネージド インスタンスに使用されるのと同じ仮想ネットワーク内の異なるサブネットに DMS インスタンスを作成します。  または、DMS に異なる仮想ネットワークを使用する場合、2 つの仮想ネットワーク間に仮想ネットワーク ピアリングを作成する必要があります。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
+* Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の Microsoft Azure 仮想ネットワークを作成します。 SQL Managed Instance に移行する場合は、SQL Managed Instance に使用されるのと同じ仮想ネットワーク内の異なるサブネットに DMS インスタンスを作成します。  または、DMS に異なる仮想ネットワークを使用する場合、2 つの仮想ネットワーク間に仮想ネットワーク ピアリングを作成する必要があります。 仮想ネットワークの作成方法の詳細については、[Virtual Network のドキュメント](https://docs.microsoft.com/azure/virtual-network/)を参照してください。特に、詳細な手順が記載されたクイックスタートの記事を参照してください。
 
     > [!NOTE]
     > 仮想ネットワークのセットアップ中、Microsoft へのネットワーク ピアリングに ExpressRoute を使用する場合は、サービスのプロビジョニング先となるサブネットに、次のサービス [エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を追加してください。

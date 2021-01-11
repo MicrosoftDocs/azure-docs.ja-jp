@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: ログをイベント ハブにストリーミングする
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: ログ分析ウィザード
+      href: tutorial-log-analytics-wizard.md
 - name: 概念
   items:
     - name: レポートと監視のデプロイを計画する
@@ -34,11 +36,11 @@
     - name: 使用状況と分析情報のレポート
       href: concept-usage-insights-report.md
     - name: リスクの高いサインイン
-      href: concept-risky-sign-ins.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: リスク検出
-      href: concept-risk-events.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: リスクのあるユーザー
-      href: concept-user-at-risk.md
+      href: ../identity-protection/overview-identity-protection.md
     - name: プロビジョニング ログ
       href: concept-provisioning-logs.md
     - name: レポート API
@@ -92,9 +94,9 @@
     - name: レポート用の Azure AD PowerShell コマンドレット
       href: reference-powershell-reporting.md
     - name: 監査ログの API リファレンス
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit'
+      href: /graph/api/resources/directoryaudit?view=graph-rest-beta
     - name: サインイン ログの API リファレンス
-      href: 'https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin'
+      href: /graph/api/resources/signin?view=graph-rest-beta
     - name: 監査アクティビティ
       href: reference-audit-activities.md
     - name: データ保有ポリシー

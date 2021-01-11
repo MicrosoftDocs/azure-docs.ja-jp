@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d43e6e89faa8eca720e3aeafc873af1a18b9753b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0863a782b7f4531b900bc3c005a39387c83d983
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555023"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268229"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>方法:Azure AD Join の実装を計画する
 
@@ -26,7 +26,7 @@ Azure AD 参加により、ユーザーの生産性とセキュリティを維�
  
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、[Azure Active Directory でのデバイス管理の概要](../device-management-introduction.md)を理解していることを前提とします
+この記事では、[Azure Active Directory でのデバイス管理の概要](./overview.md)を理解していることを前提とします
 
 ## <a name="plan-your-implementation"></a>実装の計画
 
@@ -58,7 +58,7 @@ Azure AD 参加は、マネージド環境とフェデレーション環境の�
 
 ### <a name="managed-environment"></a>マネージド環境
 
-マネージド環境は、[パスワード ハッシュ同期](/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization)または[パススルー認証](/azure/active-directory/hybrid/how-to-connect-pta-quick-start)のいずれかとシームレス シングル サインオンを使用してデプロイできます。
+マネージド環境は、[パスワード ハッシュ同期](../hybrid/how-to-connect-password-hash-synchronization.md)または[パススルー認証](../hybrid/how-to-connect-pta-quick-start.md)のいずれかとシームレス シングル サインオンを使用してデプロイできます。
 
 これらのシナリオでは、フェデレーション サーバーを認証用に構成する必要はありません。
 
@@ -90,7 +90,7 @@ ID プロバイダーによってこれらのプロトコルがサポートさ�
 
 ユーザーを以下の場所に作成する場合:
 
-- **オンプレミスの Active Directory**: [Azure AD Connect](/azure/active-directory/hybrid/how-to-connect-sync-whatis) を使用して Azure AD と同期する必要があります。 
+- **オンプレミスの Active Directory**: [Azure AD Connect](../hybrid/how-to-connect-sync-whatis.md) を使用して Azure AD と同期する必要があります。 
 - **Azure AD**: 追加のセットアップは不要です。
 
 Azure AD の UPN とは異なるオンプレミスの UPN は、Azure AD 参加済みデバイスでサポートされていません。 お客様のユーザーがオンプレミスの UPN を使用している場合は、Azure AD 内でプライマリ UPN を使用するように切り替えることを計画してください。
@@ -162,7 +162,7 @@ AD FS を使用する場合は、「[AD FS によるシングル サインオン
 
 デバイスがドメイン コントローラーへのアクセス権を持つ場合、ユーザーは Azure AD 参加済みデバイスから SSO を取得します。 
 
-**推奨事項:** [Azure AD アプリのプロキシ](/azure/active-directory/manage-apps/application-proxy)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
+**推奨事項:** [Azure AD アプリのプロキシ](../manage-apps/application-proxy.md)をデプロイして、これらのアプリケーションへのアクセスをセキュリティで保護できるようにします。
 
 ### <a name="on-premises-network-shares"></a>オンプレミスのネットワーク共有
 
@@ -190,7 +190,7 @@ Windows 10 2004 更新プログラムを開始すると、ユーザーは Azure 
 
 次のアプローチを使用して Azure AD 参加をプロビジョニングできます。
 
-- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](/azure/active-directory/user-help/user-help-join-device-on-network)」をご覧ください。 
+- **OOBE/設定内でのセルフサービス** - セルフサービス モードでは、ユーザーは Windows Out of Box Experience (OOBE) の実行中に、または Windows 設定から、Azure AD 参加のプロセスを実行します。 詳しくは、「[職場のデバイスを組織のネットワークに参加させる](../user-help/user-help-join-device-on-network.md)」をご覧ください。 
 - **Windows Autopilot** - Windows Autopilot により、Azure AD 参加を実行する OOBE のエクスペリエンスを円滑にするためにデバイスの事前構成を行うことができます。 詳しくは、「[Windows Autopilot の概要](/windows/deployment/windows-autopilot/windows-10-autopilot)」をご覧ください。 
 - **一括登録** - 一括登録により、一括プロビジョニング ツールを使用してデバイスを構成することで、管理者主導の Azure AD 参加が可能になります。 詳しくは、「[Windows デバイスの一括登録](/intune/windows-bulk-enroll)」をご覧ください。
  
@@ -297,7 +297,7 @@ Azure AD 参加済みデバイスに対して MDM プロバイダーが構成さ
 
 > [!div class="nextstepaction"]
 > [最初の実行中に新しい Windows 10 デバイスを Azure AD に参加させる](azuread-joined-devices-frx.md)
-> [職場のデバイスを組織のネットワークに参加させる](/azure/active-directory/user-help/user-help-join-device-on-network)
+> [職場のデバイスを組織のネットワークに参加させる](../user-help/user-help-join-device-on-network.md)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 110fef2dcb4c1581d49fcb776276ebd9c4ae2235
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497065"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797940"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats のトラブルシューティング
 
-この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[サポート フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
+この記事では、Azure FarmBeats の一般的な問題の解決策を示します。 さらに支援が必要な場合は、[Q&A サポート フォーラム](https://aka.ms/farmbeatssupport)に問い合わせるか、farmbeatssupport@microsoft.com にメールでご連絡ください。
 
 > [!NOTE]
   > 4 月中に FarmBeats をインストールし、ジョブが空のエラー メッセージで失敗する場合は、重要な保健機関や安全機関へのサポートを優先するために、インストールにバッチ クォータが割り当てられていない可能性があります。 詳細については、 [こちら](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) をご覧ください。 ジョブを正常に実行するには、Batch アカウントへの VM の割り当てを要求する必要があります。
@@ -105,7 +105,7 @@ ms.locfileid: "86497065"
 **是正措置**:
 
 1. Datahub Swagger でパートナー API にアクセスします。
-2. **[Get]\(取得\)**  >  **[Try it out]\(試してみる\)**  >  **[Execute]\(実行\)** の順に選択します。
+2. **[Get]\(取得\)**  >  **[Try it out]\(使ってみる\)**  >  **[Execute]\(実行\)** の順に選択します。
 
 > [!NOTE]
 > 関心のあるセンサー パートナーのパートナー ID。

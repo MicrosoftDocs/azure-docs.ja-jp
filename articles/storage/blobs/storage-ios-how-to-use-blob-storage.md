@@ -127,7 +127,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 }
 ```
 
-このコード例が正常に機能していることを確認するには、 [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com) で、 *newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
+このコード例が正常に機能していることを確認するには、 [Microsoft Azure Storage Explorer](https://storageexplorer.com) で、 *newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
 
 ## <a name="set-container-permissions"></a>コンテナーのアクセス許可を設定する
 
@@ -208,7 +208,7 @@ Blob service の概念に関するセクションで説明したように、Blob
 }
 ```
 
-このコード例が正常に機能していることを確認するには、[Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
+このコード例が正常に機能していることを確認するには、[Microsoft Azure Storage Explorer](https://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
 
 ```http
 https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob

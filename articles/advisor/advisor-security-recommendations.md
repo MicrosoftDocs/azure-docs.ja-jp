@@ -3,12 +3,12 @@ title: Azure Advisor を使用してリソースのセキュリティを向上�
 description: Azure Advisor を使用して、Azure のデプロイのセキュリティを向上させます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bf7a316c893600bed18b9392404af5792e2e31f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85113859"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057661"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Advisor を使用してリソースのセキュリティを向上させる
 
@@ -16,7 +16,7 @@ Azure Advisor は、すべての Azure リソースに関する推奨事項を�
 
 Security Center は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 それは、Azure リソースのセキュリティの状態を定期的に分析します。 セキュリティ センターでは、潜在的なセキュリティの脆弱性が特定されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成するプロセスを説明します。 
 
-セキュリティの推奨事項の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](https://azure.microsoft.com/documentation/articles/security-center-recommendations/)」を参照してください。
+セキュリティの推奨事項の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](../security-center/security-center-recommendations.md)」を参照してください。
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Azure Advisor のセキュリティに関する推奨事項にアクセスする方法
 
@@ -33,5 +33,5 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)
  

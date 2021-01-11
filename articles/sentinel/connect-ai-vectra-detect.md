@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
-ms.openlocfilehash: 964bab2b81f6ce69e77fd69cab55f6d1894e4edb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c57f4a49ac89f1347fc88f8bacddce3abab7e44e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85368405"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87038224"
 ---
 # <a name="connect-ai-vectra-detect-to-azure-sentinel"></a>Azure Sentinel に AI Vectra 検出を接続する
+
+> [!IMPORTANT]
+> Azure Sentinel の AI Vectra 検出データ コネクタは、現在パブリック プレビュー段階にあります。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 この記事では、Azure Sentinel に [AI Vectra 検出](https://www.vectra.ai/product/cognito-detect)を接続する方法について説明します。 AI Vectra 検出データ コネクタを使用すると、AI Vectra 検出データを Azure Sentinel に簡単に取り込むことができます。これにより、ブック内で表示し、これを利用してカスタム アラートを作成し、調査を向上させる目的で組み入れることができます。
 

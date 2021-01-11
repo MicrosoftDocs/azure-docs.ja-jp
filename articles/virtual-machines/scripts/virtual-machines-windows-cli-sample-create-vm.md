@@ -14,12 +14,13 @@ ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 05d79d42ecf2f7ba5de3573cfe4c9d00d7749616
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bcee06dbd330dbed2f682c31266477df0a3f173b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079912"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497904"
 ---
 # <a name="create-a-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した仮想マシンの作成
 

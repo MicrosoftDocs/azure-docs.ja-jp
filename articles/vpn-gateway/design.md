@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/01/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7b9077af50115e912415d784dc98ace081c0c88
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: d0bcd0608796545a4982f72f276399d5f692e765
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84302314"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852700"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway の設計
 
@@ -26,6 +26,8 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 S2S 接続は、クロスプレミスおよびハイブリッド構成に使用できます。 サイト間接続には、パブリック IP アドレスを割り当てたオンプレミスの VPN デバイスが必要です。 VPN デバイスの選択に関する詳細については、[VPN Gateway に関する FAQ の VPN デバイスに関する項目](vpn-gateway-vpn-faq.md#s2s)を参照してください。
 
 ![Azure VPN Gateway サイト間接続の例](./media/design/vpngateway-site-to-site-connection-diagram.png)
+
+VPN Gateway は、1 つのパブリック IP を使用してアクティブ/スタンバイ モードで構成することも、2 つのパブリック IP を使用してアクティブ/アクティブ モードで構成することもできます。 アクティブ/スタンバイ モードでは、一方の IPsec トンネルがアクティブになり、もう一方のトンネルがスタンバイ状態になります。 このセットアップでは、トラフィックはアクティブ トンネルを通過します。このトンネルで何らかの問題が発生した場合、トラフィックはスタンバイ トンネルに切り替わります。 両方の IPsec トンネルが同時にアクティブになり、両方のトンネルを同時に通過するデータ フローがある場合は、アクティブ/アクティブ モードで VPN Gateway を設定することを "*お勧め*" します。 アクティブ/アクティブ モードのもう 1 つの利点は、顧客がより高いスループットを体験できることです。
 
 ### <a name="multi-site"></a><a name="Multi"></a>マルチサイト
 

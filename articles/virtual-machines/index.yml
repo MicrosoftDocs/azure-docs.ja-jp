@@ -11,12 +11,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 02/14/2020
-  ms.openlocfilehash: aa1492a021caa69303834ce4a144d33ca05b15e0
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.openlocfilehash: eb7d7c911fc099a5f3b5456d7fb77688e0b06af5
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86502845"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816475"
 highlightedContent:
   items:
   - title: Azure CLI を使用して Linux 仮想マシンを作成する
@@ -30,7 +30,7 @@ highlightedContent:
     url: ../virtual-machine-scale-sets/quick-create-portal.md
   - title: スポット VM - 非常に低コストで未使用の容量を利用できます。
     itemType: concept
-    url: ./linux/spot-vms.md
+    url: ./spot-vms.md
   - title: 専用ホスト - 1 つまたは複数の仮想マシンをホストする物理サーバー。
     itemType: concept
     url: ./linux/dedicated-hosts.md
@@ -50,7 +50,7 @@ conceptualContent:
     - url: ./linux/image-builder.md
       itemType: how-to-guide
       text: Azure Image Builder
-    - url: /azure/virtual-machines/troubleshooting/linux-index
+    - url: ./troubleshooting/linux-index.yml
       itemType: how-to-guide
       text: Linux 仮想マシンのトラブルシューティング
     footerLink:
@@ -67,7 +67,7 @@ conceptualContent:
     - url: ../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md?context=azure/virtual-machines/windows/context/windows-vm-context
       itemType: how-to-guide
       text: マネージド ID の構成
-    - url: /azure/virtual-machines/troubleshooting/index
+    - url: ./troubleshooting/index.yml
       itemType: how-to-guide
       text: Windows 仮想マシンのトラブルシューティング
     footerLink:

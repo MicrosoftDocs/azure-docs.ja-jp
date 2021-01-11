@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a66613406de66cf9478b90d4ad58c115a30fdf5d
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 82d797189096994e02c77e9d342c00b13dfa187d
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224761"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337094"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -213,13 +213,13 @@ IoT Central の主な機能の 1 つとして、デバイスの接続時にデ�
 
 次のスニペットは、自動的な関連付けが機能するために、DPS 登録呼び出し中にデバイスで送信する必要がある追加のペイロードの形式を示しています。
 
-IoT プラグ アンド プレイをサポートしていない一般提供デバイス SDK を使用するデバイスの形式は、次のとおりです。
+一般提供デバイス SDK を使用するデバイスの形式は、次のとおりです。
 
 ```javascript
     iotcModelId: '< this is the URN for the capability model>';
 ```
 
-IoT プラグ アンド プレイをサポートしているパブリック プレビュー デバイス SDK を使用するデバイスの形式は、次のとおりです。
+パブリック プレビュー デバイス SDK を使用するデバイスの形式は、次のとおりです。
 
 ```javascript
 '__iot:interfaces': {
@@ -280,8 +280,6 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
 | コマンド | ダイレクト メソッド |
-
-デバイス SDK の使用方法の詳細については、「[MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する](howto-connect-devkit.md)」のコード例を参照してください。
 
 ### <a name="protocols"></a>プロトコル
 

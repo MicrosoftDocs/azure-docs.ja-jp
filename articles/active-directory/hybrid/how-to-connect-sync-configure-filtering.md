@@ -16,12 +16,12 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 753e00ef5f015c554e49d7326120d29f5c5da4a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1879df40122549ddc4c57557017fa2c84c883368
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357768"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88061508"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同期: フィルター処理の構成
 フィルター処理を使用することによって、オンプレミスのディレクトリからどのオブジェクトを Azure Active Directory (Azure AD) に反映するかを制御できます。 既定の構成では、構成されているフォレスト内の全ドメインの全オブジェクトが対象となります。 通常は、この構成を推奨します。 Office 365 のワークロード (Exchange Online、Skype for Business など) を使っているユーザーには、完全なグローバル アドレス一覧を表示した方が、電子メールの送信先や電話の相手を探すうえで便利です。 既定では、オンプレミス環境の Exchange または Lync と同じ利便性が得られるように構成されています。
@@ -47,7 +47,7 @@ Azure AD Connect Sync では、いつでもフィルター処理を有効にで�
 
 意図せず多数のオブジェクトを削除してしまうことのないよう、"[誤って削除されないように保護する](how-to-connect-sync-feature-prevent-accidental-deletes.md)" 機能が既定で有効になっています。 フィルター処理で多数のオブジェクトを削除する場合 (既定では 500 個)、この記事の手順に従って、削除処理を Azure AD に反映できるようにする必要があります。
 
-November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) より前のビルドを使用し、フィルターの構成を変更して、パスワード ハッシュ同期を使用する場合は、構成を完了した後、すべてのパスワードの完全同期をトリガーする必要があります。 パスワードの完全同期をトリガーする方法の手順については、「[すべてのパスワードの完全同期の開始](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)」を参照してください。 ビルド 1.0.9125 以降を使用している場合、パスワードを同期する必要があるかどうかとこの特別な手順が今後必要かどうかの計算も、通常の**完全同期**処理で行われます。
+November 2015 ([1.0.9125](reference-connect-version-history.md)) より前のビルドを使用し、フィルターの構成を変更して、パスワード ハッシュ同期を使用する場合は、構成を完了した後、すべてのパスワードの完全同期をトリガーする必要があります。 パスワードの完全同期をトリガーする方法の手順については、「[すべてのパスワードの完全同期の開始](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords)」を参照してください。 ビルド 1.0.9125 以降を使用している場合、パスワードを同期する必要があるかどうかとこの特別な手順が今後必要かどうかの計算も、通常の**完全同期**処理で行われます。
 
 フィルター処理のエラーが原因で**ユーザー** オブジェクトが Azure AD から誤って削除された場合、フィルター処理構成を削除することで Azure AD 内にユーザー オブジェクトを再生成できます。 その後、ディレクトリの同期を再実行できます。 この操作により、Azure AD 内のごみ箱からユーザーが復元されます。 ただし、その他の種類のオブジェクトについては削除を取り消すことができません。 たとえば、リソースの ACL に使用されていたセキュリティ グループをうっかり削除すると、そのグループおよび対応する ACL は復元できなくなります。
 
@@ -202,7 +202,7 @@ Azure AD Connect インストール ウィザードでは、常にこの構成�
 この構成では、ManagedObjects の下に作成された新しい OU は同期されません。
 
 ## <a name="attribute-based-filtering"></a>属性ベースのフィルター処理
-以下の手順は、November 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) 以降のビルドを想定しています。
+以下の手順は、November 2015 ([1.0.9125](reference-connect-version-history.md)) 以降のビルドを想定しています。
 
 > [!IMPORTANT]
 >**Azure AD Connect** によって作成された既定の規則は、変更しないことをお勧めします。 規則を変更する場合は、複製してから、元の規則を無効にします。 複製した規則を変更してください。 これによって (元の規則を無効にすることによって)、その規則によって有効にしたバグ修正や機能は見つからなくなります。

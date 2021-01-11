@@ -1,5 +1,5 @@
 ---
-title: SSIS パッケージを SQL マネージド インスタンスに移行する
+title: SSIS パッケージを SQL Managed Instanc に移行する
 titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service または Data Migration Assistant を使用して、SQL Server Integration Services (SSIS) パッケージとプロジェクトを Azure SQL Managed Instance に移行する方法について説明します。
 services: database-migration

@@ -8,6 +8,8 @@
       href: features.md
     - name: リリース ノート
       href: release-notes.md
+    - name: 使用状況と診断データの収集
+      href: usage-and-diagnostics-data-configuration.md
 - name: クイックスタート
   expanded: true
   items:

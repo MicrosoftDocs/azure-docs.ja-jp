@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96733ffaae101bb2cf716fda7500a8269ce8e357
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: ea4cc792100edf59188a9be99c384747267dc0d8
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970486"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892764"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -111,7 +111,7 @@ Windows 8 以降 | 54,400 GB
 Windows 7 |1,700 GB
 Windows Server 2012 またはそれ以降 | 54,400 GB
 Windows Server 2008、Windows Server 2008 R2 | 1,700 GB
-Azure VM | [Azure VM バックアップのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support)を確認してください
+Azure VM | [Azure VM バックアップのサポート マトリックス](./backup-support-matrix-iaas.md#vm-storage-support)を確認してください
 
 ### <a name="how-is-the-data-source-size-determined"></a>データ ソースのサイズはどのように決定されますか。
 
@@ -127,7 +127,7 @@ BMR/システム状態 |バックアップ対象のコンピューターの BMR 
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Recovery Services コンテナーを使用してバックアップできるデータ量に制限はありますか。
 
-Recovery Services コンテナーを使用してバックアップできる合計データ量に制限はありません。 個々のデータ ソース (Azure VM 以外) は、最大 54,400 GB のサイズにすることができます。 制限の詳細については、[サポート マトリックスのコンテナーの制限に関するセクション](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)を参照してください。
+Recovery Services コンテナーを使用してバックアップできる合計データ量に制限はありません。 個々のデータ ソース (Azure VM 以外) は、最大 54,400 GB のサイズにすることができます。 制限の詳細については、[サポート マトリックスのコンテナーの制限に関するセクション](./backup-support-matrix.md#vault-support)を参照してください。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップ対象として選択したデータよりも小さいのはなぜでしょうか。
 
@@ -197,6 +197,10 @@ Azure Backup からの回復の数に制限はありません。
 - リテンション期間が延長された場合、既にある復旧ポイントは、新しいポリシーに従って保存するようにマーキングされます。
 - リテンション期間が短縮された場合、次回のクリーンアップ ジョブで排除対象としてマーキングされて、その後削除されます。
 
+### <a name="how-long-is-data-retained-when-stopping-backups-but-selecting-the-option-to-retain-backup-data"></a>バックアップを停止したもののバックアップ データを保持するオプションを選択した場合、データはどのくらいの期間にわたって保持されますか。
+
+バックアップが停止し、データが保持されている場合、データ排除用の既存のポリシー ルールが中断し、管理者が削除するまでデータは無期限に保持されます。
+
 ## <a name="encryption"></a>暗号化
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Azure に送信されるデータは暗号化されますか。
@@ -214,7 +218,7 @@ Azure Backup からの回復の数に制限はありません。
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>バックアップ データの暗号化に使用される暗号化キーの最小の長さはどれくらいですか。
 
-Azure Backup エージェントを使用する場合、暗号化キーは 16 文字以上である必要があります。 Azure VM に関しては、Azure Key Vault で使用されるキーの長さに制限はありません。
+Microsoft Azure Recovery Services (MARS) エージェントによって使用される暗号化キーは、16 文字以上のパス フレーズから派生します。 Azure VM の場合、Azure Key Vault で使用されるキーの長さに制限はありません。
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>暗号化キーを紛失した場合はどうなりますか? データを回復できますか。 マイクロソフトがデータを回復することはできますか。
 

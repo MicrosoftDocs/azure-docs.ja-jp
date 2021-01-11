@@ -1,5 +1,5 @@
 ---
-title: ETL の代わりに Synapse SQL プール用に ELT を設計する | Microsoft Docs
+title: SQL プール用の PolyBase データ読み込み戦略を設計する
 description: ETL の代わりに、データの読み込みまたは SQL プール用に抽出、読み込み、変換 (ELT) プロセスを設計します。
 services: synapse-analytics
 author: kevinvngo
@@ -10,24 +10,24 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 49ffb848dbcbed72776a5d767bb4b4872978af20
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965374"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490287"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure Synapse SQL プール用の PolyBase データ読み込み戦略を設計する
+# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Azure Synapse SQL プール用の PolyBase データ読み込み戦略を設計する
 
-従来の SMP データ ウェアハウスでは、データの読み込みに ETL (抽出、変換、読み込み) プロセスが使用されます。 Azure SQL プールは、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活かした超並列処理 (MPP: Massively Parallel Processing) アーキテクチャです。 ELT (抽出、読み込み、変換) プロセスを利用することで、MPP の利点を活かすと共に、読み込むデータを事前に変換するために必要なリソースをなくすことができます。
+従来の SMP データ ウェアハウスでは、データの読み込みに ETL (抽出、変換、読み込み) プロセスが使用されます。 Azure SQL プールは、コンピューティング リソースとストレージ リソースのスケーラビリティと柔軟性を活かした超並列処理 (MPP: Massively Parallel Processing) アーキテクチャです。 抽出、読み込み、変換 (ELT) プロセスを利用することで、MPP の利点を活かすと共に、読み込む前にデータを事前に変換するために必要なリソースをなくすことができます。
 
 SQL プールは、Polybase 以外にもさまざまな読み込み方法 (BCP、SQL BulkCopy API など) をサポートしていますが、データを読み込むための最速かつ最もスケーラブルな方法は PolyBase です。  PolyBase は、Azure Blob Storage または Azure Data Lake Store に格納されている外部データに T-SQL 言語でアクセスするテクノロジです。
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="what-is-elt"></a>ELT とは?
+## <a name="extract-load-and-transform-elt"></a>抽出、読み込み、変換 (ELT)
 
-ETL (抽出、変換、読み込み) とは、データがソース システムから抽出されてデータ ウェアハウスに読み込まれ、その後変換されるプロセスです。
+ELT (抽出、読み込み、変換) とは、データがソース システムから抽出されてデータ ウェアハウスに読み込まれ、その後変換されるプロセスです。
 
 SQL プール用に PolyBase ELT を実装する基本的な手順は次のとおりです。
 

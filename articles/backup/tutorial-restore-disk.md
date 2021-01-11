@@ -1,17 +1,17 @@
 ---
-title: チュートリアル - Azure Backup で VM ディスクを復元する
+title: チュートリアル - Azure CLI を使用した VM の復元
 description: Azure でバックアップおよび Recovery Services を使用して、ディスクを復元し、回復した VM を作成する方法について説明します。
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: efad97c3668c50669be89e6eccaadb26cb313e81
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d93f3d24762f4b9a3da4a9e725d28810f6700fe0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289471"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890690"
 ---
-# <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure でディスクを復元し、回復した VM を作成する
+# <a name="restore-a-vm-with-azure-cli"></a>Azure CLI を使用した VM の復元
 
 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体または個々のファイルを復元することができます。 この記事では、CLI を使用して完全な VM を復元する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -59,7 +59,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>VM ディスクを復元する
 
 > [!IMPORTANT]
-> マネージド ディスクの復元などの高速復元のすべてのベネフィットを利用できるよう、Az CLI バージョン 2.0.74 以降を使用することを非常に強くお勧めします。 ユーザーは常に最新バージョンを使用するのが最善です。
+> マネージド ディスクの復元などの高速復元のすべてのベネフィットを利用できるよう、Az CLI バージョン 2.0.74 以降を使用することを非常に強くお勧めします。 常に最新バージョンを使用することをお勧めします。
 
 ### <a name="managed-disk-restore"></a>マネージド ディスクの復元
 
@@ -88,7 +88,7 @@ az backup recoverypoint list \
     ```
 
     > [!WARNING]
-    > ターゲット リソース グループを指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアの利点が得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、target-resource-group パラメーターを指定せず、restore-as-unmanaged-disk パラメーターを代わりに指定します。 このパラメーターは、az 3.4.0 以降で利用できます。
+    > **target-resource-group** を指定しないと、マネージド ディスクは、指定したストレージ アカウントにアンマネージド ディスクとして復元されます。 ディスク全体の復元にかかる時間は、指定したストレージ アカウントに依存するため、これは復元時間に大きく影響します。 target-resource-group パラメーターが指定されている場合にのみ、インスタント リストアのベネフィットが得られます。 マネージド ディスクをアンマネージドとして復元する場合は、次に示すように、**target-resource-group** パラメーターを指定せず、**restore-as-unmanaged-disk** パラメーターを代わりに指定してください。 このパラメーターは、az 3.4.0 以降で利用できます。
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -101,11 +101,11 @@ az backup recoverypoint list \
     --restore-as-unmanaged-disk
     ```
 
-これにより、マネージド ディスクがアンマネージド ディスクとして指定のストレージ アカウントに復元され、"インスタント" リストア機能は利用されなくなります。 CLI の将来のバージョンでは、target-resource-group パラメーターと 'restore-as-unmanaged-disk' パラメーターのどちらかを指定することが必須となります。
+これにより、マネージド ディスクがアンマネージド ディスクとして指定のストレージ アカウントに復元され、"インスタント" リストア機能は利用されなくなります。 CLI の将来のバージョンでは、**target-resource-group** パラメーターまたは **restore-as-unmanaged-disk** パラメーターのどちらかを指定することが必須となります。
 
 ### <a name="unmanaged-disks-restore"></a>アンマネージド ディスクの復元
 
-バックアップされた VM にアンマネージド ディスクが存在し、復旧ポイントからディスクを復元したい場合は、最初に Azure ストレージ アカウントを指定します。 このストレージ アカウントは、後で復元されたディスクから VM をデプロイするために使用できる、VM の構成とデプロイ テンプレートを格納するために使用されます。 既定では、アンマネージド ディスクは元のストレージ アカウントに復元されます。 すべてのアンマネージド ディスクを 1 つの場所に復元したい場合は、指定したストレージ アカウントをそれらのディスクのステージング場所としても使用できます。
+バックアップされた VM にアンマネージド ディスクが存在し、復旧ポイントからディスクを復元したい場合は、最初に Azure ストレージ アカウントを指定します。 このストレージ アカウントは、後で復元されたディスクから VM をデプロイするために使用できる、VM の構成とデプロイ テンプレートを格納するために使用されます。 既定では、アンマネージド ディスクは元のストレージ アカウントに復元されます。 すべてのアンマネージド ディスクを 1 つの場所に復元したい場合は、指定したストレージ アカウントをそれらのディスクのステージング場所として使用することもできます。
 
 追加手順では、VM を作成するために復元されたディスクが使用されます。
 

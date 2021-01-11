@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 08/25/2020
 ms.author: allensu
-ms.openlocfilehash: 80e2ba8df9c81d2a34f63b2f1bc943ee5d731bae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549583"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855788"
 ---
 # <a name="what-is-virtual-network-nat"></a>Virtual Network NAT とは
 
@@ -32,7 +32,7 @@ Virtual Network NAT (ネットワーク アドレス変換) は、仮想ネッ�
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" width="256" title="Virtual Network NAT">
+  <img src="./media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="Virtual Network NAT">
 </p>
 
 
@@ -74,7 +74,7 @@ NAT および NAT と共存可能な Standard SKU 機能は、フローがどち
 ![Virtual Network NAT flow direction](./media/nat-overview/flow-direction4.svg)
 -->
 <p align="center">
-  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Virtual Network NAT のフロー方向">
+  <img src="./media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="512" title="Virtual Network NAT のフロー方向">
 </p>
 
 *図:Virtual Network NAT のフロー方向*
@@ -103,7 +103,7 @@ NAT のパブリック側からは、TCP リセット パケットなどのト�
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/az-directions.svg" width="512" title="Virtual Network NAT と可用性ゾーン">
+  <img src="./media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="512" title="Virtual Network NAT と可用性ゾーン">
 </p>
 
 *図:Virtual Network NAT と可用性ゾーン*
@@ -123,37 +123,22 @@ NAT のパブリック側からは、TCP リセット パケットなどのト�
 
 一般提供時には、NAT のデータ パスの可用性が 99.9% 以上となります。
 
-
 ## <a name="pricing"></a>価格
 
-NAT ゲートウェイは、2 つの測定値を使用して課金されます。
-
-| 測定 | 料金 |
-| --- | --- |
-| リソース時間 | $0.045/時 |
-| データ処理量 | $0.045/GB |
-
-リソース時間は、NAT ゲートウェイ リソースが存在する期間に相当します。
-データ処理量は、NAT ゲートウェイ リソースによって処理されたすべてのトラフィックに相当します。
+料金の詳細については、[Virtual Network の価格](https://azure.microsoft.com/pricing/details/virtual-network)に関する記事を参照してください。
 
 ## <a name="availability"></a>可用性
 
-Virtual Network NAT と NAT ゲートウェイ リソースは、すべての Azure パブリック クラウド [リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用できます。
-
-## <a name="support"></a>サポート
-
-NAT のサポートは、通常のサポート チャンネルを通じて提供されます。
+Virtual Network NAT と NAT ゲートウェイ リソースは、すべての Azure クラウド [リージョン](https://azure.microsoft.com/global-infrastructure/regions/)のすべてのリージョンで利用できます。
 
 ## <a name="suggestions"></a>検索候補
 
 サービスを改善するために、皆様のご意見をお待ちしております。 今後の新機能に関する提案や投票も、[NAT の UserVoice](https://aka.ms/natuservoice) で受け付けております。
 
-
 ## <a name="limitations"></a>制限事項
 
 * NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。 Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
 * サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。  IPv6 プレフィックスを持つサブネットに NAT をデプロイすることはできません。
-* NAT を使用している場合、NSG フロー ログはサポートされません。
 * NAT を複数の仮想ネットワークにまたがって使用することはできません。
 
 ## <a name="next-steps"></a>次のステップ

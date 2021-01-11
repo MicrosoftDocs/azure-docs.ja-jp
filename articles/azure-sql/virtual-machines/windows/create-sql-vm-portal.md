@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8b16551abf5b52a9b848988a50fe556d364907b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e315f49cb0b78e13c4b6132f844397d1261ff0f9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669292"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652018"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Azure portal を使用して SQL Server がインストールされた Windows 仮想マシンをプロビジョニングする方法
 
@@ -104,7 +104,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 * **[詳細]** で、 **[Managed Disks を使用]** の下の **[はい]** を選択します。
 
    > [!NOTE]
-   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、[Azure Managed Disks の概要](../../../virtual-machines/windows/managed-disks-overview.md)に関する記事をご覧ください。 可用性セットのマネージド ディスクの詳細については、「[可用性セット内の VM にマネージド ディスクを使用する](../../../virtual-machines/windows/manage-availability.md)」を参照してください。
+   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、[Azure Managed Disks の概要](../../../virtual-machines/managed-disks-overview.md)に関する記事をご覧ください。 可用性セットのマネージド ディスクの詳細については、「[可用性セット内の VM にマネージド ディスクを使用する](../../../virtual-machines/windows/manage-availability.md)」を参照してください。
 
 ![SQL VM ディスク設定](./media/create-sql-vm-portal/azure-sqlvm-disks.png)
   

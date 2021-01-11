@@ -1,19 +1,19 @@
 ---
-title: マッピング データ フローの視覚的な監視
-description: Azure Data Factory のデータ フローを視覚的に監視する方法
+title: マッピング データ フローの監視
+description: Azure Data Factory でマッピング データ フローを視覚的に監視する方法
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/03/2020
-ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 08/19/2020
+ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958900"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650895"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 
@@ -27,7 +27,7 @@ ms.locfileid: "85958900"
 
 実行時間や状態など、このレベルでの統計も表示されます。 アクティビティ レベルの実行 ID は、パイプライン レベルの実行 ID とは異なります。 以前のレベルの実行 ID は、パイプラインの実行 ID です。 眼鏡を選択すると、データ フローの実行に関する詳細が示されます。
 
-![データ フローの監視](media/data-flow/mon002.png "データ フローの監視")
+![データ フローの監視](media/data-flow/monitoring-details.png "データ フローの監視")
 
 グラフィカルなノード監視ビューを開いているときは、表示専用のシンプルなバージョンのデータ フロー グラフが表示されます。
 
@@ -76,6 +76,10 @@ ms.locfileid: "85958900"
          ]
 }
 ```
+
+### <a name="post-processing-time"></a>後処理時間
+
+マップでシンク変換アイコンを選択すると、右側のスライドイン パネルの下部に "後処理時間" という追加のデータ ポイントが表示されます。 これは、データが読み込まれ、変換され、書き込まれた "*後に*"、Spark クラスターでジョブを実行するために費やされた時間です。 この時間には、接続プールの終了、ドライバーのシャットダウン、ファイルの削除、ファイルの結合などが含まれます。フローで "ファイルの移動" や "1 つのファイルへの出力" などの操作を実行すると、後処理時間の値が増加することがあります。
   
 ## <a name="monitor-icons"></a>監視アイコン
 

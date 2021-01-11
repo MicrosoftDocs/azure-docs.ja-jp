@@ -5,19 +5,19 @@ description: この Azure PowerShell サンプル スクリプトを使用して
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
-ms.custom: seo-dt-2019
+ms.custom: seo-dt-2019, devx-track-azurepowershell
 ms.devlang: PowerShell
 ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 8ac742c42a32e8b864c4be71e786c292ceb1514d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6758aed67949032bb93086527623b60af33e716e
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073375"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079559"
 ---
 # <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>PowerShell と Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成する
 

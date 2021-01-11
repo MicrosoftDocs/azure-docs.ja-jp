@@ -4,12 +4,12 @@ description: このチュートリアルでは、Recovery Services コンテナ�
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372554"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89180577"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -53,7 +53,7 @@ Recovery Services コンテナーには、バックアップ データと、保�
 
     ![Recovery Services コンテナーの値](./media/tutorial-backup-vm-at-scale/review-and-create.png)
 
-    Recovery Services コンテナーは、保護する仮想マシンと同じ場所にある必要があります。 複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成します。 このチュートリアルでは、Recovery Services コンテナーを *西ヨーロッパ* に作成します。*myVM* (クイックスタートで作成された仮想マシン) は西ヨーロッパに作成されたためです。
+    Recovery Services コンテナーは、保護する仮想マシンと同じ場所にある必要があります。 複数のリージョンに仮想マシンがある場合は、各リージョンで Recovery Services コンテナーを作成します。 このチュートリアルでは、*myVM* (クイックスタートで作成された仮想マシン) が作成された "*西ヨーロッパ*" に Recovery Services コンテナーを作成します。
 
 1. Recovery Services コンテナーを作成する準備ができたら、 **[作成]** を選択します。
 
@@ -114,7 +114,7 @@ Recovery Services コンテナーを作成した後、次の手順は、デー�
 
 ## <a name="initial-backup"></a>初回バックアップ
 
-Recovery Services コンテナーのバックアップを有効にしましたが、初回バックアップは作成されていません。 データが保護されるように最初のバックアップをトリガーすることが、ディザスター リカバリーのベスト プラクティスです。
+Recovery Services コンテナーのバックアップを有効にしましたが、初回バックアップが作成されていません。 データが保護されるように最初のバックアップをトリガーすることが、ディザスター リカバリーのベスト プラクティスです。
 
 オンデマンド バックアップ ジョブを実行するには、次の手順に従います。
 
@@ -136,7 +136,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
 1. コンテキスト メニューで、 **[今すぐバックアップ]** を選択します。
 
-    ![コンテキスト メニュー](./media/tutorial-backup-vm-at-scale/context-menu.png)
+    ![コンテキスト メニュー - [今すぐバックアップ] の選択](./media/tutorial-backup-vm-at-scale/context-menu.png)
 
     [今すぐバックアップ] メニューが開きます。
 
@@ -156,7 +156,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
 1. **[myRecoveryServicesVault]** ダッシュボードで、 **[バックアップ項目]** の下の **[3]** を選択して、[バックアップ項目] メニューを開きます。
 
-    ![[バックアップ項目]](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![[バックアップ項目] メニューを開く](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. **[バックアップ項目]** メニューで、 **[Azure 仮想マシン]** を選択して、コンテナーに関連付けられている仮想マシンの一覧を開きます。
 
@@ -166,7 +166,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
 1. **[バックアップ項目]** メニューで、省略記号を選択してコンテキスト メニューを開きます。
 
-    ![コンテキスト メニュー](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
+    ![[バックアップ項目] メニューでコンテキスト メニューを開く](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
 1. コンテキスト メニューで、 **[バックアップの停止]** を選択して [バックアップの停止] メニューを開きます。
 
@@ -185,7 +185,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
 1. コンテナーに項目がなくなったら、 **[削除]** を選択します。
 
-    ![[バックアップの停止] を選択してコンテナーを削除する](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![[削除] の選択](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     コンテナーが削除されると、Recovery Services コンテナーの一覧に戻ります。
 

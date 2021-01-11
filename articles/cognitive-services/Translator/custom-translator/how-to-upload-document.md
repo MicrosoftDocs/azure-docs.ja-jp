@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: aaebf849cc69db7c85d1472f4d71774bc599be11
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8597b3e4ffab44672e88374010fa829211fbc18b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994305"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507331"
 ---
 # <a name="upload-a-document"></a>ドキュメントのアップロード
 
@@ -24,7 +24,7 @@ ms.locfileid: "83994305"
 
 ## <a name="how-to-upload-document"></a>ドキュメントのアップロード方法
 
-[カスタム翻訳ツール](https://portal.customtranslator.azure.ai) ポータルから、[ドキュメント] タブをクリックしてドキュメント ページに移動します。
+[Custom Translator](https://portal.customtranslator.azure.ai) ポータルから、[ドキュメント] タブをクリックしてドキュメント ページに移動します。
 
 ![ドキュメントのアップロード リンク](media/how-to/how-to-upload-1.png)
 

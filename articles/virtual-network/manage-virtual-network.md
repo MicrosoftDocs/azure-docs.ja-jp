@@ -1,7 +1,7 @@
 ---
 title: Azure 仮想ネットワークを作成、変更、削除する
 titlesuffix: Azure Virtual Network
-description: Azure で仮想ネットワークを作成、変更、削除する方法について説明します。
+description: 仮想ネットワークを作成および削除し、既存の仮想ネットワークの DNS サーバーや IP アドレス空間などの設定を変更します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 3f0060944a2733c31c3bef67aa005e5476778ce2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5581a4c43f0b78dc8c14c44bfb1ded371a925fd0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84710033"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88706032"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -49,9 +49,8 @@ ms.locfileid: "84710033"
 
      ポータルで仮想ネットワークを作成する際に定義できるアドレス範囲は 1 つだけですが、仮想ネットワークの作成後にアドレス範囲をアドレス空間に追加することができます。 既存の仮想ネットワークにアドレス範囲を追加する方法については、「[アドレス範囲の追加または削除](#add-or-remove-an-address-range)」を参照してください。
 
-     >[!WARNING]
-     >仮想ネットワークのアドレス範囲が他の仮想ネットワークやオンプレミス ネットワークと重複している場合、そのネットワークに接続することはできません。 アドレス範囲を定義する前に、将来その仮想ネットワークを他の仮想ネットワークやオンプレミス ネットワークに接続する可能性があるかどうかを検討してください。
-     >
+     > [!WARNING]
+     > 仮想ネットワークのアドレス範囲が他の仮想ネットワークやオンプレミス ネットワークと重複している場合、その 2 つのネットワークに接続することはできません。 アドレス範囲を定義する前に、将来その仮想ネットワークを他の仮想ネットワークやオンプレミス ネットワークに接続する可能性があるかどうかを検討してください。 Microsoft では、プライベート アドレス空間または組織が所有するパブリック アドレス空間を使用して、仮想ネットワークのアドレス範囲を構成することをお勧めします。
      >
 
      - **[サブネット名]** : 仮想ネットワーク内で一意となるサブネット名を使用してください。 サブネットの作成後は、サブネット名を変更できません。 ポータルでは、仮想ネットワークを作成する際にサブネットを 1 つ定義するよう求められますが、仮想ネットワークにサブネットを設定することは必須ではありません。 ポータルでは、仮想ネットワークの作成時に定義できるサブネットは 1 つのみです。 仮想ネットワークを作成した後で、仮想ネットワークにサブネットを追加できます。 仮想ネットワークにサブネットを追加するには、[サブネットの管理](virtual-network-manage-subnet.md)に関するページを参照してください。 Azure CLI または PowerShell を使用して、複数のサブネットを持つ仮想ネットワークを作成できます。

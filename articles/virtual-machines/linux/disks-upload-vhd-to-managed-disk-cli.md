@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 8656f0396aff7f20c867a5fae3d929236a3aa0d5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c7eb50caa4e7f0505809da64dd0309c6e0b8709f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510448"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691345"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
 
@@ -28,7 +28,7 @@ ms.locfileid: "86510448"
 
 ## <a name="getting-started"></a>作業の開始
 
-GUI を使用してディスクをアップロードする場合は、Azure Storage Explorer を使用します。 詳細については、次を参照してください。[Azure Storage Explorer を使用して Azure マネージド ディスクを管理する](disks-use-storage-explorer-managed-disks.md)
+GUI を使用してディスクをアップロードする場合は、Azure Storage Explorer を使用します。 詳細については、次を参照してください。[Azure Storage Explorer を使用して Azure マネージド ディスクを管理する](../disks-use-storage-explorer-managed-disks.md)
 
 ご利用の VHD を Azure にアップロードするには、このアップロード プロセス用に構成された空のマネージド ディスクを作成する必要があります。 作成する前に、それらのディスクについて把握しておく必要がある追加情報があります。
 

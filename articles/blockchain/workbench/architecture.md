@@ -4,12 +4,12 @@ description: Azure Blockchain Workbench Preview アーキテクチャとその�
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
-ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fff70ef2eeb1dc27d33769fd48fe5923f56717b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253428"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049181"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench アーキテクチャ
 
@@ -116,4 +116,4 @@ Azure Monitor は、ブロックチェーン ネットワークの正常性に�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Blockchain Workbench のデプロイ](../../blockchain-workbench/blockchain-workbench-deploy.md)
+> [Azure Blockchain Workbench のデプロイ](./deploy.md)

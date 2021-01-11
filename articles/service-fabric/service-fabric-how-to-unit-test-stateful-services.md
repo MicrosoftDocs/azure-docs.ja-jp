@@ -3,12 +3,13 @@ title: ステートフル サービスの単体テストの開発
 description: ステートフル サービス向け Azure Service Fabric での単体テスト、および開発中に留意すべき特別な考慮事項について説明します。
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 9c657bd8295d01a4e0fa4e44e969b33946684bfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 287c0544daa3c44d91fd336b502c496b9b4bb266
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75639838"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011397"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>ステートフル サービスの単体テストの作成
 Service Fabric ステートフル サービスの単体テストにより、従来のアプリケーションまたはドメイン固有の単体テストでは必ずしも検出されない一般的な誤りが明らかになります。 ステートフル サービスの単体テストを作成するときに、留意すべき特別な考慮事項があります。

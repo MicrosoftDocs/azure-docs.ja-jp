@@ -1,15 +1,15 @@
 ---
 title: ブロックチェーン アプリケーションを作成する - Azure Blockchain Workbench
 description: Azure Blockchain Workbench プレビュー用ブロックチェーン アプリケーションを作成する方法についてのチュートリアル。
-ms.date: 10/14/2019
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.reviewer: brendal
-ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073106"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784030"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench 用ブロックチェーン アプリケーションを作成する
 
@@ -40,7 +40,7 @@ Azure Blockchain Workbench を使用すると、構成とスマート コント�
 
 ## <a name="configuration-file"></a>構成ファイル
 
-構成メタデータでは、ブロックチェーン アプリケーションの大まかなワークフローと対話モデルを定義します。 構成メタデータは、ブロックチェーン アプリケーションのワークフローのステージと対話モデルを表します。
+構成メタデータでは、ブロックチェーン アプリケーションの大まかなワークフローと対話モデルを定義します。 構成メタデータは、ブロックチェーン アプリケーションのワークフローのステージと対話モデルを表します。 構成ファイルの内容の詳細については、「[Azure Blockchain Workbench configuration reference (Azure Blockchain Workbench の構成リファレンス)](configuration.md)」を参照してください。
 
 1. 任意のエディターで、`HelloBlockchain.json` という名前のファイルを作成します。
 2. ブロックチェーン アプリケーションの構成を定義する次の JSON を追加します。
@@ -211,8 +211,6 @@ Azure Blockchain Workbench を使用すると、構成とスマート コント�
 ### <a name="workflows"></a>Workflows
 
 ワークフローでは、コントラクトのステージとアクションを 1 つ以上定義します。 要求 - 応答シナリオの場合、ワークフローの最初のステージ (状態) では、要求元 (ロール) がアクション (遷移) を実行して、要求を送信します (関数)。 次のステージ (状態) では、レスポンダー (ロール) がアクション (遷移) を実行して、応答を送信します (関数)。 アプリケーションのワークフローには、コントラクトのフローを記述するために必要なプロパティ、関数、および状態を含めることができます。
-
-構成ファイルの内容の詳細については、「[Azure Blockchain Workbench configuration reference (Azure Blockchain Workbench の構成リファレンス)](configuration.md)」を参照してください。
 
 ## <a name="smart-contract-code-file"></a>スマート コントラクト コード ファイル
 

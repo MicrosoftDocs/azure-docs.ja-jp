@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 07/15/2020
-ms.openlocfilehash: 760624b06d00a873ff48c659ef65f9af62cd6454
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 1afeca4f627236c5172dd07a44751015c16d2f58
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084026"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462022"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用してオートコンプリートと検索候補を追加する
 
@@ -30,7 +31,7 @@ ms.locfileid: "87084026"
 
 このチュートリアルはシリーズの一部であり、[Azure Cognitive Search での検索結果のページングの C# チュートリアル](tutorial-csharp-paging.md)で作成したページング プロジェクトを基に作成されています。
 
-別途 [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead) チュートリアルのソリューションをダウンロードして実行してもかまいません。
+別途 [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10/3-add-typeahead) チュートリアルのソリューションをダウンロードして実行してもかまいません。
 
 ## <a name="add-suggestions"></a>検索候補を追加する
 
@@ -144,7 +145,7 @@ ms.locfileid: "87084026"
  
     ![fuzzy を true に設定した状態で「pa」と入力する](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
 
-    関心をお持ちであれば、あいまい検索で使用されるロジックを詳細に説明している [Azure Cognitive Search での Lucene クエリ構文](https://docs.microsoft.com/azure/search/query-lucene-syntax)に関するページを参照してください。
+    関心をお持ちであれば、あいまい検索で使用されるロジックを詳細に説明している [Azure Cognitive Search での Lucene クエリ構文](./query-lucene-syntax.md)に関するページを参照してください。
 
 ## <a name="add-highlighting-to-the-suggestions"></a>検索候補に強調表示を追加する
 
@@ -243,7 +244,7 @@ ms.locfileid: "87084026"
 
     検索候補の提示のときのように、オートコンプリート検索内で "sg" と呼ばれる同じ *suggester* 関数を使用していることに注目してください (こうすることで、ホテル名のみオートコンプリートしようとしています)。
 
-    **AutocompleteMode** の設定はいくつか存在し、ここで使用しているのは **OneTermWithContext** です。 その他のオプションについては、[オートコンプリート API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) に関するページを参照してください。
+    **AutocompleteMode** の設定はいくつか存在し、ここで使用しているのは **OneTermWithContext** です。 その他のオプションについては、[オートコンプリート API](/rest/api/searchservice/autocomplete) に関するページを参照してください。
 
 4. アプリケーションを実行します。 ドロップダウン リストに表示される選択候補が単語単位になっていることに注目してください。 "re" で始まる単語を入力してみてください。 入力される文字数が増えるにつれて、選択候補の数が減ることに注目してください。
 
@@ -463,5 +464,3 @@ ms.locfileid: "87084026"
 
 > [!div class="nextstepaction"]
 > [C# チュートリアル: ナビゲーションをサポートするファセットの使用 - Azure Cognitive Search](tutorial-csharp-facets.md)
-
-

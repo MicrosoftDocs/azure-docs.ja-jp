@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: d9fda476a184731cd00317facbeceaf7bdf55edf
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 9ce2ea7da562372e5c1c25d4c0fe9ab410b02a1d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85561465"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903409"
 ---
 # <a name="request-limits-for-translator"></a>Translator に対する要求の制限
 
@@ -23,18 +23,18 @@ ms.locfileid: "85561465"
 
 ## <a name="character-and-array-limits-per-request"></a>要求あたりの文字および配列制限
 
-各翻訳要求は、翻訳先のすべての対象言語の合計で 5,000 文字までに制限されています。 たとえば、1,500 文字を 3 つの異なる言語に翻訳する翻訳要求を送信すると、要求のサイズは 1,500 x 3 = 4,500 文字になり、要求の上限が満たされます。 要求の数ではなく、文字単位で課金されます。 送信する要求を短くすることをお勧めします。
+各翻訳要求は、翻訳先のすべての対象言語で合計 10,000 文字までに制限されています。 たとえば、3,000 文字を 3 つの異なる言語に翻訳する翻訳要求を送信すると、要求のサイズは 3,000 x 3 = 9,000 文字となり、要求の上限が満たされます。 要求の数ではなく、文字単位で課金されます。 送信する要求を短くすることをお勧めします。
 
 次の表には、Translator の各操作に関する配列要素および文字の制限が一覧表示されています。
 
 | 操作 | 配列要素の最大サイズ |    配列要素の最大数 |    最大要求サイズ (文字数) |
 |:----|:----|:----|:----|
-| Translate | 5,000    | 100    | 5,000 |
-| Transliterate | 5,000    | 10    | 5,000 |
-| Detect | 10,000 |    100 |    50,000 |
-| BreakSentence | 10,000    | 100 |    50,000 |
-| 辞書検索| 100 |    10    | 1,000 |
-| 辞書の例 | テキストに 100 と翻訳に 100 (合計 200)| 10|    2,000 |
+| Translate | 10,000    | 100   | 10,000 |
+| Transliterate | 5,000 | 10    | 5,000 |
+| Detect | 10,000 | 100 |   50,000 |
+| BreakSentence | 50,000    | 100 | 50,000 |
+| 辞書検索| 100 |  10  | 1,000 |
+| 辞書の例 | テキストに 100 と翻訳に 100 (合計 200)| 10|   2,000 |
 
 ## <a name="character-limits-per-hour"></a>時間あたりの文字制限
 

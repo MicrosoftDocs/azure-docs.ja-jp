@@ -11,20 +11,20 @@ ms.topic: reference
 ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 612663c2edc8aa7bc1eb3a2e4c8106b3e778a961
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781686"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235504"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>SCIM と Microsoft Graph を一緒に使用してユーザーをプロビジョニングし、必要なデータでアプリケーションを強化する
 
-**対象読者:** この記事は、Azure Active Directory (Azure AD) と統合されるアプリケーションを構築する開発者を対象としています。 Zoom、ServiceNow、DropBox など、Azure AD と既に統合されているアプリケーションを使用する場合は、この記事をスキップして、アプリケーション固有の[チュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)を参照するか、[プロビジョニング サービスがどのように機能するか](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)を確認してください。
+**対象読者:** この記事は、Azure Active Directory (Azure AD) と統合されるアプリケーションを構築する開発者を対象としています。 Zoom、ServiceNow、DropBox など、Azure AD と既に統合されているアプリケーションを使用する場合は、この記事をスキップして、アプリケーション固有の[チュートリアル](../saas-apps/tutorial-list.md)を参照するか、[プロビジョニング サービスがどのように機能するか](./how-provisioning-works.md)を確認してください。
 
 **一般的なシナリオ**
 
-Azure AD には、プロビジョニングのためのすぐに使用できるサービスと、アプリケーションを構築するための拡張可能なプラットフォームが用意されています。 次のデシジョン ツリーは、開発者が [SCIM](https://aka.ms/scimoverview) と [Microsoft Graph](https://docs.microsoft.com/graph/overview) を使用してプロビジョニングを自動化する方法を示しています。 
+Azure AD には、プロビジョニングのためのすぐに使用できるサービスと、アプリケーションを構築するための拡張可能なプラットフォームが用意されています。 次のデシジョン ツリーは、開発者が [SCIM](https://aka.ms/scimoverview) と [Microsoft Graph](/graph/overview) を使用してプロビジョニングを自動化する方法を示しています。 
 
 > [!div class="checklist"]
 > * 自分のアプリケーションでユーザーを自動的に作成する
@@ -97,15 +97,15 @@ DELETE /Users/5171a35d82074e068ce2 HTTP/1.1
 ## <a name="scenario-4-enrich-my-app-with-data-from-microsoft-services-such-as-teams-outlook-and-onedrive"></a>シナリオ 4: Teams、Outlook、OneDrive などの Microsoft サービスからのデータでアプリを強化する
 自分のアプリケーションは Microsoft Teams に組み込まれており、メッセージ データを利用しています。 また、ユーザーのファイルは OneDrive に保存されます。 これらのサービスと Microsoft 全体のデータで自分のアプリケーションを強化するにはどうすればよいですか。
 
-**推奨事項:** [Microsoft Graph](https://docs.microsoft.com/graph/) が、Microsoft データにアクセスするためのエントリ ポイントになります。 各ワークロードにより、必要なデータを備えた API が公開されます。 上記のシナリオでは、Microsoft Graph を [SCIM プロビジョニング](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)と共に使用することができます。 SCIM を使用して基本的なユーザー属性を自分のアプリケーションにプロビジョニングしつつ、Graph を呼び出してその他の必要なデータを取得できます。 
+**推奨事項:** [Microsoft Graph](/graph/) が、Microsoft データにアクセスするためのエントリ ポイントになります。 各ワークロードにより、必要なデータを備えた API が公開されます。 上記のシナリオでは、Microsoft Graph を [SCIM プロビジョニング](./use-scim-to-provision-users-and-groups.md)と共に使用することができます。 SCIM を使用して基本的なユーザー属性を自分のアプリケーションにプロビジョニングしつつ、Graph を呼び出してその他の必要なデータを取得できます。 
 
 ## <a name="scenario-5-track-changes-in-microsoft-services-such-as-teams-outlook-and-azure-ad"></a>シナリオ 5: Teams、Outlook、Azure AD などの Microsoft サービスにおける変更を追跡する
 Teams と Outlook のメッセージの変更を追跡し、リアルタイムでそれらに対応できるようにする必要があります。 これらの変更を自分のアプリケーションにプッシュするにはどうすればよいですか。
 
-**推奨事項:** Microsoft Graph には、さまざまなリソースの[変更通知](https://docs.microsoft.com/graph/webhooks)および[変更追跡機能](https://docs.microsoft.com/graph/delta-query-overview)が用意されています。 変更通知に関する次の制限事項に注意してください。
+**推奨事項:** Microsoft Graph には、さまざまなリソースの[変更通知](/graph/webhooks)および[変更追跡機能](/graph/delta-query-overview)が用意されています。 変更通知に関する次の制限事項に注意してください。
 - イベント レシーバーがイベントを確認した後、なんらかの理由でそのイベントを処理できない場合は、イベントが失われる可能性があります。
 - 変更を受信する順序は、時系列であるとは限りません。
-- 必ずしも変更通知に[リソース データ](https://docs.microsoft.com/graph/webhooks-with-resource-data)が含まれるとは限りません。上記の理由により、開発者は、多くの場合、同期シナリオの変更追跡と共に変更通知を使用します。 
+- 必ずしも変更通知に[リソース データ](/graph/webhooks-with-resource-data)が含まれるとは限りません。上記の理由により、開発者は、多くの場合、同期シナリオの変更追跡と共に変更通知を使用します。 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>シナリオ 6:Azure AD でユーザーとグループをプロビジョニングする
 自分のアプリケーションでは、お客様が必要とするユーザーに関する情報を Azure AD に作成します。 これには、採用を管理する HR アプリケーションや、ユーザーの電話番号を作成する通信アプリ、Azure AD で有用になる可能性があるデータを生成するその他のアプリなどがあります。 Azure AD のユーザー レコードにこのデータを入力するにはどうすればよいですか。 
@@ -117,5 +117,5 @@ Teams と Outlook のメッセージの変更を追跡し、リアルタイム�
 
 ## <a name="related-articles"></a>関連記事
 
-- [同期に関する Microsoft Graph のドキュメントを確認する](https://docs.microsoft.com/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [同期に関する Microsoft Graph のドキュメントを確認する](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
 - [カスタム SCIM アプリと Azure AD の統合](use-scim-to-provision-users-and-groups.md)

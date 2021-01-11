@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 4d9030e21c3b8f31c18c26fc54dc76d5b8d84a17
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 404bd600f825a5da334811744132c6aa9b751566
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85100057"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006895"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -18,7 +18,7 @@ Kubernetes では、API サーバーは、リソースの作成やノードの�
 この記事では、API サーバーで許可された IP アドレス範囲を使用して、コントロール プレーンにアクセスできる IP アドレスと CIDR を制限する方法を示します。
 
 > [!IMPORTANT]
-> 新しいクラスターでは、API サーバーで許可された IP アドレス範囲は *Standard* SKU ロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能しますが、*Standard* SKU ロード バランサーに移行することはできません。 これらの既存のクラスターは、Kubernetes のバージョンまたはコントロール プレーンがアップグレードされた場合も引き続き機能します。
+> API サーバーで許可される IP アドレス範囲が、2019 年 10 月のプレビューの範囲外に移動され後に作成されたクラスターでは、API サーバーで許可される IP アドレス範囲は *Standard* SKU のロード バランサーでのみサポートされます。 *Basic* SKU ロード バランサーと API サーバーで許可された IP アドレス範囲が構成された既存のクラスターは、引き続き機能しますが、*Standard* SKU ロード バランサーに移行することはできません。 これらの既存のクラスターは、Kubernetes のバージョンまたはコントロール プレーンがアップグレードされた場合も引き続き機能します。 API サーバーで許可される IP アドレス範囲は、プライベート クラスターではサポートされません。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -36,7 +36,7 @@ API サーバーやその他のクラスター コンポーネントの詳細に
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>API サーバーの許可された IP 範囲を有効にした AKS クラスターを作成する
 
-API サーバーの許可された IP の範囲は、新しい AKS クラスターに対してのみ機能し、プライベート AKS クラスターではサポートされていません。 [az aks create][az-aks-create] を使用してクラスターを作成し、 *`--api-server-authorized-ip-ranges`* パラメーターを使用して、許可された IP アドレス範囲のリストを指定します。 これらの IP アドレス範囲は通常、オンプレミス ネットワークまたはパブリック IP によって使用されるアドレス範囲です。 CIDR 範囲を指定する場合は、その範囲内の最初の IP アドレスから始めます。 たとえば、*137.117.106.90/29* は有効な範囲ですが、範囲内の最初の IP アドレス (*137.117.106.88/29* など) を指定するようにしてください。
+[az aks create][az-aks-create] を使用してクラスターを作成し、 *`--api-server-authorized-ip-ranges`* パラメーターを使用して、許可された IP アドレス範囲のリストを指定します。 これらの IP アドレス範囲は通常、オンプレミス ネットワークまたはパブリック IP によって使用されるアドレス範囲です。 CIDR 範囲を指定する場合は、その範囲内の最初の IP アドレスから始めます。 たとえば、*137.117.106.90/29* は有効な範囲ですが、範囲内の最初の IP アドレス (*137.117.106.88/29* など) を指定するようにしてください。
 
 > [!IMPORTANT]
 > 既定では、クラスターは [Standard SKU ロード バランサー][standard-sku-lb]を使用します。これを使用して、アウトバウンド ゲートウェイを構成できます。 クラスターの作成時に API サーバーの許可された IP 範囲を有効にすると、指定した範囲の他に、クラスターのパブリック IP も既定で許可されます。 *`--api-server-authorized-ip-ranges`* に *""* を指定するか、値を指定しなかった場合、API サーバーの許可された IP 範囲は無効になります。 PowerShell を使用している場合は、解析の問題を回避するために、 *`--api-server-authorized-ip-ranges=""`* (等号付き) を使用することに注意してください。
@@ -59,8 +59,10 @@ az aks create \
 > - ファイアウォール パブリック IP アドレス
 > - クラスターを管理するネットワークを表すあらゆる範囲
 > - AKS クラスターで Azure Dev Spaces を使用している場合は、[リージョンに基づく追加の範囲][dev-spaces-ranges]を許可する必要があります。
-
-> 指定できる IP 範囲の数の上限は 3500 です。 
+>
+> 指定できる IP 範囲の数の上限は 200 です。
+>
+> ルールが反映されるまで、最大 2 分かかる場合があります。 接続をテストするときは、その時間に至るまで待ってください。
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standard SKU ロード バランサーのアウトバウンド IP を指定する
 

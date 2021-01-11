@@ -7,14 +7,17 @@ ms.date: 05/14/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 664819b209aeb09093ce8711456b86ff4d3e8949
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: d246adbf8e87d5503bc19bcd497dd00370c0a867
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249477"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001918"
 ---
 # <a name="monitor-the-overall-health-of-the-devices-connected-to-an-iot-central-application"></a>IoT Central アプリケーションに接続されているデバイスの全体的な正常性状態を監視する
+
+> [!NOTE]
+> メトリックは、バージョン 3 の IoT Central アプリケーションでのみ使用できます。 アプリケーションのバージョンを確認する方法については、「[アプリケーションに関する情報](./howto-get-app-info.md)」を参照してください。
 
 *この記事は、オペレーターおよび管理者に適用されます。*
 
@@ -35,25 +38,15 @@ ms.locfileid: "84249477"
 1. ポータルで IoT Central アプリケーション リソースに移動します。 既定では、IoT Central リソースは **IOTC** という名前のリソース グループに配置されます。
 1. アプリケーションのメトリックからグラフを作成するには、 **[監視]** セクションで **[メトリック]** を選択します。
 
+![Azure メトリック](media/howto-monitor-application-health/metrics.png)
+
 ### <a name="azure-portal-permissions"></a>Azure portal アクセス許可
 
 Azure portal のメトリックへのアクセスは [Azure ロールベースのアクセス制御](../../role-based-access-control/overview.md)によって管理されます。 Azure portal を使用して、IoT Central アプリケーション/リソース グループ/サブスクリプションにユーザーを追加し、アクセス権を付与します。 ユーザーは、既に IoT Central アプリケーションに追加されている場合でも、ポータルに追加する必要があります。 [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)を使用して、きめ細かなアクセス制御を行うことができます。
 
 ## <a name="iot-central-metrics"></a>IoT Central メトリック
 
-次の表では、IoT Central で現在使用できるメトリックについて説明します。
-
-| メトリック | メトリックの表示名 | ユニット | 集計の種類 | 説明 |
-|--------|---------------------|------|------------------|-------------|
-| connectedDeviceCount         | Total Connected Devices (接続されたデバイスの総数)                              | Count  | 合計             | IoT Central に接続されているデバイスの数                               |
-| c2d.property.read.success    | Successful Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの成功数)    | Count  | 合計             | IoT Central から開始されて成功した、すべてのプロパティ読み取りの数    |
-| c2d.property.read.failure    | Failed Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの失敗数)        | Count  | 合計             | IoT Central から開始されて失敗した、すべてのプロパティ読み取りの数        |
-| d2c.property.read.success    | Successful Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの成功数)        | Count  | 合計             | デバイスから開始されて成功した、すべてのプロパティ読み取りの数        |
-| d2c.property.read.failure    | Failed Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの失敗数)            | Count  | 合計             | デバイスから開始されて失敗した、すべてのプロパティ読み取りの数            |
-| c2d.property.update.success  | Successful Device Property Updates from IoT Central (IoT Central からのデバイス プロパティ更新の成功数)  | Count  | 合計             | IoT Central から開始されて成功した、すべてのプロパティ更新の数  |
-| c2d.property.update.failure  | Failed Device Property Updates from IoT Central (IoT Central からのデバイス プロパティ更新の失敗数)      | Count  | 合計             | IoT Central から開始されて失敗した、すべてのプロパティ更新の数      |
-| d2c.property.update.success  | Successful Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の成功数)      | Count  | 合計             | デバイスから開始されて成功した、すべてのプロパティ更新の数      |
-| d2c.property.update.failure  | Failed Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の失敗数)          | Count  | 合計             | デバイスから開始されて失敗した、すべてのプロパティ更新の数          |
+IoT Central で現在使用できるメトリックの一覧については、「[Azure Monitor のサポートされるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftiotcentraliotapps)」を参照してください。
 
 ### <a name="metrics-and-invoices"></a>メトリックと請求書
 

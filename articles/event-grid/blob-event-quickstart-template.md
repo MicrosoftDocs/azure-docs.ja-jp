@@ -3,12 +3,12 @@ title: BLOB ストレージ イベントを Web エンドポイントに送信�
 description: Azure Event Grid と Azure Resource Manager テンプレートを使用して BLOB ストレージ アカウントを作成し、そのイベントをサブスクライブします。 Webhook にイベントを送信します。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 32fc17d1af552afa5a81fbc4a5973d69006742b9
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103315"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661267"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>ARM テンプレートを使用して BLOB ストレージ イベントを Web エンドポイントにルーティングする
 
@@ -41,7 +41,7 @@ BLOB ストレージのイベントをサブスクライブする前に、イベ
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-event-grid-subscription-and-storage/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json" range="1-91" highlight="40-85":::
+:::code language="json" source="~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
@@ -86,7 +86,7 @@ BLOB ストレージのイベントをトリガーするには、ファイルを
 
 Azure Resource Manager テンプレートの詳細については、次の記事を参照してください。
 
-* [Azure Resource Manager のドキュメント](/azure/azure-resource-manager)
+* [Azure Resource Manager のドキュメント](../azure-resource-manager/index.yml)
 * [Azure Resource Manager テンプレートのリソースを定義する](/azure/templates/)
 * [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)。

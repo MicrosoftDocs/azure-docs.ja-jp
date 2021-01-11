@@ -9,14 +9,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: 9fd8d6428e94007002d524d9ade99f6b368b8201
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 220677df3bd0c221f61efd28a80b05cfd76e2734
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70307243"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086644"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>PowerShell を使用して、送信されたデータ共有の使用状況を監視する
+# <a name="use-a-powershell-script-to-monitor-the-usage-of-a-sent-data-share"></a>送信されたデータ共有の使用状況を監視するために PowerShell スクリプトを使用する
 
 この PowerShell スクリプトでは、データ共有の招待を作成します。
 

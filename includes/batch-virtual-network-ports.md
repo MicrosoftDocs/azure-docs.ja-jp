@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.date: 06/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 1b21141a4b3f9ae92cdcf1d5a93a457012cb136a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3e4bca058f554f60dfa5c237633d1fecf06dfea7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506607"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507465"
 ---
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -89,7 +89,7 @@ ms.locfileid: "85506607"
 
 `/subscriptions/{subscription}/resourceGroups/{group}/providers/Microsoft.ClassicNetwork /virtualNetworks/{network}/subnets/{subnet}`
 
-**アクセス許可** - `Microsoft Azure Batch` サービス プリンシパルに、指定された VNET に対する `Classic Virtual Machine Contributor` ロールベースのアクセス制御 (RBAC) のロールが付与されている必要があります。
+**アクセス許可** - `Microsoft Azure Batch` サービス プリンシパルに、指定された VNet に対する `Classic Virtual Machine Contributor` Azure ロールが付与されている必要があります。
 
 #### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 

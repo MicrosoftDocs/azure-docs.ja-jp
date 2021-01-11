@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/09/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e50d6b6fe88cbad42d238ee2779abfe10e752f0e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 656161849ce8d48fb15cfac4024ec5b77adb5fee
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327278"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829511"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 [Azure アクティビティ ログ](platform-logs-overview.md)により、Azure で発生したサブスクリプションレベルのイベントの分析が得られます。 この記事では、アクティビティ ログのカテゴリとそれぞれのスキーマについて説明します。 
@@ -796,7 +796,7 @@ ms.locfileid: "87327278"
 Azure アクティビティ ログをストレージ アカウントまたはイベント ハブにストリーミングする場合、データは[リソース ログ スキーマ](./resource-logs-schema.md)に従います。 上記のスキーマからリソース ログ スキーマへのプロパティのマッピングを次の表に示します。
 
 > [!IMPORTANT]
-> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](/azure/azure-monitor/platform/resource-logs-blob-format)」を参照してください。
+> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](./resource-logs-blob-format.md)」を参照してください。
 
 
 | リソース ログのスキーマ プロパティ | アクティビティ ログ REST API スキーマ プロパティ | Notes |
@@ -885,4 +885,3 @@ Azure アクティビティ ログをストレージ アカウントまたはイ
 ## <a name="next-steps"></a>次のステップ
 * [アクティビティ ログについて詳しく学習します](platform-logs-overview.md)
 * [アクティビティ ログを Log Analytics ワークスペース、Azure Storage、またはイベントハブに送信するための診断設定を作成する](diagnostic-settings.md)
-

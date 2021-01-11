@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 6eb983eb5e36c5f3ac6b6eca049239d12bc01a0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8faf4ca8e27b280a60750d5f349ab0282ed593bf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514623"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86999498"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>StorSimple デバイス マネージャー サービスを使用してハードウェア コンポーネントと状態を監視する
 
@@ -49,11 +49,11 @@ ms.locfileid: "85514623"
 
 1. **[デバイス]** に移動し、特定の StorSimple デバイスを選択します。 **[モニター]、[ハードウェアの正常性]** の順に移動します。
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
+    ![デバイス マネージャー サービスの [設定] ブレードを示すスクリーンショット。 [モニター] の [ハードウェアの正常性] が選択されている。](./media/storsimple-8000-monitor-hardware-status/hw-health1.png)
 
 2. **[ハードウェア コンポーネント]** セクションを見つけ、使用可能なコンポーネントから選択します。 コンポーネントのラベルをクリックするだけで一覧が展開され、さまざまなデバイス コンポーネントの状態が表示されます。 [主エンクロージャのコンポーネントの詳細な一覧](#component-list-for-primary-enclosure-of-storsimple-device)と [EBOD エンクロージャのコンポーネントの詳細な一覧](#component-list-for-ebod-enclosure-of-storsimple-device)をご覧ください。
 
-    ![](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
+    ![[ハードウェア コンポーネント] セクションで 1 つのコンポーネントが選択されていることを示すスクリーンショット。 隣接するブレードに、そのコンポーネントのパーツの名前と状態が表示されている。](./media/storsimple-8000-monitor-hardware-status/hw-health2.png)
 
 3. コンポーネントの状態を判断するには、次の色の設定スキームを使用します。
    
@@ -64,22 +64,22 @@ ms.locfileid: "85514623"
    
    次のスクリーン ショットは、コンポーネントの状態が **[OK]** 、 **[警告]** 、および **[失敗]** であるデバイスを示しています。
        
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
+   ![[ハードウェア コンポーネント] セクションの 3 つのコンポーネントを示すスクリーンショット。1 つは正常状態、1 つはエラー状態、1 つは警告状態にある。](./media/storsimple-8000-monitor-hardware-status/hw-health3.png)
 
    **[共有コンポーネント]** を展開することで、NVRAM とクラスターの機能が低下していることを確認できます。
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
+   ![[共有コンポーネント] 項目が選択されていることを示すスクリーンショット。 隣接するブレードで、NVRAM とクラスターが警告状態になっている。](./media/storsimple-8000-monitor-hardware-status/hw-health5.png)
 
    **[コントローラー 1 のコンポーネント]** を展開することで、クラスター ノードが失敗していることを確認できます。  
 
-   ![](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
+   ![[コントローラー 1 コンポーネント] 項目が選択されていることを示すスクリーンショット。 隣接するブレードで、クラスター ノードがエラー状態になっている。](./media/storsimple-8000-monitor-hardware-status/hw-health4.png)  
 
 4. **正常** な状態にないコンポーネントを見つけた場合は、Microsoft サポートにお問い合わせください。 デバイスでアラートが有効になっている場合は、電子メール アラートを受信します。 障害が発生したハードウェア コンポーネントを交換する必要がある場合は、「 [StorSimple のハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」をご覧ください。
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple デバイスの主エンクロージャのコンポーネントの一覧
 次の表では、オンプレミスの StorSimple デバイスの主エンクロージャ (8100 と 8600 の両方に存在します) に含まれる物理コンポーネントと論理コンポーネントについて説明します。
 
-| コンポーネント | [Module] | 種類 | Location | 現場交換可能ユニット (FRU) である | 説明 |
+| コンポーネント | Module | Type | 場所 | 現場交換可能ユニット (FRU) である | 説明 |
 | --- | --- | --- | --- | --- | --- |
 | スロット [0 ～ 11] のドライブ |ディスク ドライブ |物理 |共有 |はい |主エンクロージャの SSD ドライブまたは HDD ドライブごとに 1 ラインあります。 |
 | 周辺温度センサー |エンクロージャ |物理 |共有 |いいえ |シャーシ内の温度を測定します。 |
@@ -120,7 +120,7 @@ ms.locfileid: "85514623"
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>StorSimple デバイスの EBOD エンクロージャのコンポーネントの一覧
 次の表では、オンプレミスの StorSimple デバイスの EBOD エンクロージャ (8600 モデルにのみ存在します) に含まれる物理コンポーネントと論理コンポーネントについて説明します。
 
-| コンポーネント | [Module] | 種類 | Location | FRU である | 説明 |
+| コンポーネント | Module | Type | 場所 | FRU である | 説明 |
 | --- | --- | --- | --- | --- | --- |
 | スロット [0 ～ 11] のドライブ |ディスク ドライブ |物理 |共有 |はい |EBOD エンクロージャの前面にある HDD ドライブごとに 1 ラインあります。 |
 | 周辺温度センサー |エンクロージャ |物理 |共有 |いいえ |シャーシ内の温度を測定します。 |

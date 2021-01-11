@@ -2,17 +2,17 @@
 title: 回線の帯域幅のアップグレードについて | Azure ExpressRoute
 description: この記事では、ExpressRoute 回線の帯域幅をアップグレードするためのベスト プラクティスについて説明します
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.author: cherylmc
-ms.openlocfilehash: a8f5aaa7b2a054aa31198779414387cebf0f0fbd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: duau
+ms.openlocfilehash: 7831e7944321e074c312853e1534c47970ebdfdb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537039"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89397952"
 ---
 # <a name="about-upgrading-expressroute-circuit-bandwidth"></a>ExpressRoute 回線の帯域幅のアップグレードについて
 

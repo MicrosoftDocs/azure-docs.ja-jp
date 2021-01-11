@@ -51,7 +51,7 @@ ms.locfileid: "86497048"
 * Power BI サービス アカウント。 まだない場合は、[Power BI サービスの無料試用版アカウントを作成する](https://app.powerbi.com/)ことができます。 これまで Power BI を使ったことがない場合は、[Power BI の使用開始](https://docs.microsoft.com/power-bi/service-get-started)に関する記事を参照してください。
 
 ## <a name="set-up-a-continuous-data-export-to-azure-event-hubs"></a>Azure Event Hubs への継続的データ エクスポートをセットアップする
-最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure イベント ハブへの継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
+最初に、Azure IoT Central アプリ テンプレートからサブスクリプションの Azure Event Hub への継続的データ エクスポートを設定する必要があります。 これは、[Event Hubs へのエクスポート](https://docs.microsoft.com/azure/iot-central/core/howto-export-data)に関する Azure IoT Central チュートリアルの手順に従って行うことができます。 このチュートリアルでは、テレメトリ用のエクスポートのみが必要です。
 
 ## <a name="create-a-power-bi-streaming-dataset"></a>Power BI ストリーミング データセットを作成する
 

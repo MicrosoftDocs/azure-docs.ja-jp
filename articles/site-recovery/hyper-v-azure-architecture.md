@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: e0fd3a6bc62feeb3728fa88b4aad56c8713bce11
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134924"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495728"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -36,7 +36,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 **Hyper-V から Azure へのアーキテクチャ (VMM なし)**
 
-![Architecture](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![オンプレミスの Hyper-V サイトから Azure へのアーキテクチャ (VMM なし) を示す図。](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>アーキテクチャのコンポーネント - Hyper-V (VMM あり)
@@ -53,13 +53,30 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 
 **Hyper-V から Azure へのアーキテクチャ (VMM あり)**
 
-![Components](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![オンプレミスの Hyper-V サイトから Azure へのアーキテクチャ (VMM あり) を示す図。](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
+## <a name="set-up-outbound-network-connectivity"></a>発信ネットワーク接続を設定する
+
+Site Recovery を期待どおりに動作させるためには、環境でレプリケートが可能になるように、発信ネットワーク接続を変更する必要があります。
+
+> [!NOTE]
+> Site Recovery では、ネットワーク接続を制御するための認証プロキシの使用をサポートしていません。
+
+### <a name="outbound-connectivity-for-urls"></a>URL に対する送信接続
+
+アウトバウンド接続を制御するために URL ベースのファイアウォール プロキシを使用している場合、以下の URL へのアクセスを許可してください。
+
+| **名前**                  | **商用**                               | **政府**                                 | **説明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery サービス URL に対する承認と認証を提供します。 |
+| レプリケーション               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM と Site Recovery サービスの通信を許可します。 |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM による Site Recovery の監視および診断データの書き込みを許可します。 |
 
 
 ## <a name="replication-process"></a>レプリケーション プロセス
 
-![Hyper-V から Azure へのレプリケーション](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![Hyper-V から Azure へのレプリケーション プロセスを示す図](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **レプリケーションと回復プロセス**
 
@@ -69,7 +86,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 1. Hyper-V VM の保護を有効にした後、Azure Portal またはオンプレミスで、**保護の有効化**が始まります。
 2. このジョブは、マシンが前提条件を満たしていることを確認してから、構成された設定を使用してレプリケーションをセットアップするために、[CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice) を呼び出します。
 3. ジョブが [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) メソッドを呼び出して初期レプリケーションを開始し、完全 VM レプリケーションを初期化して、VM の仮想ディスクを Azure に送信します。
-4. ジョブは **[ジョブ]** タブで監視できます。    ![ジョブ一覧](media/hyper-v-azure-architecture/image1.png) ![[保護を有効にする] の詳細](media/hyper-v-azure-architecture/image2.png)
+4. ジョブは **[ジョブ]** タブで監視できます。    ![[ジョブ] タブ内のジョブ一覧のスクリーンショット。](media/hyper-v-azure-architecture/image1.png)![より詳細な情報が含まれた [保護の有効化] 画面のスクリーンショット。](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初期データ レプリケーション
@@ -106,7 +123,7 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 2. 再同期が完了すると、通常の差分レプリケーションが再開されます。
 3. 既定の業務時間外の再同期を待ちたくない場合は、VM を手動で再同期できます。 たとえば、障害が発生した場合などです。 そのためには、Azure Portal で VM を選択し、 **[再同期]** を選択します。
 
-    ![Manual resynchronization](./media/hyper-v-azure-architecture/image4-site.png)
+    ![再同期オプションを示すスクリーンショット。](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>プロセスの再試行

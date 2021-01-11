@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16537ba72eb9f11abd8de47256150818c121a140
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3d67dbc0eedba8cc32c188636032d96b31f45adf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80652653"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717780"
 ---
 # <a name="azure-ad-password-protection-on-premises-frequently-asked-questions"></a>オンプレミスでの Azure AD パスワード保護に関するよく寄せられる質問
 
@@ -46,7 +46,7 @@ Azure AD ポータルでは、パブリック クラウド以外の場合でも�
 
 パスワードの設定 (パスワードのリセットとも呼ばれます) は、たとえば Active Directory ユーザーとコンピューターの管理ツールを使用して、管理者がアカウントのパスワードを新しいパスワードに置き換える場合のアクションです。 この操作には高いレベルの特権 (通常はドメイン管理者) が必要であり、通常、操作を実行する担当者は古いパスワードを知りません。 ヘルプ デスクのシナリオで、パスワードの設定がよく実行されます。たとえば、パスワードを忘れたユーザーを支援する場合などです。 また、パスワードを指定して新しいユーザー アカウントを初めて作成するときにもパスワードの設定イベントが発生します。
 
-パスワード検証ポリシーは、実行されているのがパスワードの変更か設定かに関係なく同じように動作します。 Azure AD パスワード保護 DC エージェント サービスは、パスワードの変更または設定操作が行われたかどうかをユーザーに通知するために、さまざまなイベントをログに記録します。  「[Azure AD パスワード保護の監視とログ記録](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)」をご覧ください。
+パスワード検証ポリシーは、実行されているのがパスワードの変更か設定かに関係なく同じように動作します。 Azure AD パスワード保護 DC エージェント サービスは、パスワードの変更または設定操作が行われたかどうかをユーザーに通知するために、さまざまなイベントをログに記録します。  「[Azure AD パスワード保護の監視とログ記録](./howto-password-ban-bad-on-premises-monitor.md)」をご覧ください。
 
 **Q:Active Directory ユーザーとコンピューター管理スナップインを利用して弱いパスワードを設定しようとすると、重複パスワード拒否イベントがログに記録されるのはなぜですか。**
 
@@ -54,7 +54,7 @@ Active Directory ユーザーとコンピューター管理スナップインで
 
 **Q:Azure AD パスワード保護のパスワード検証イベントが空のユーザー名でログに記録されるのはなぜですか。**
 
-Active Directory では、パスワードをテストして、ドメインの現在のパスワード複雑さ要件が満たされているかどうかを確認する機能がサポートされています (たとえば、[NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API を使用して)。 この方法でパスワードが検証されるとき、テストには、Azure AD パスワード保護などのパスワード フィルター DLL ベースの製品による検証も含まれます。ただし、特定のパスワード フィルター DLL に渡されるユーザー名は空になります。 このシナリオの Azure AD パスワード保護でも、現在有効なパスワード ポリシーを使用してパスワードが検証され、結果をキャプチャするためのイベント ログ メッセージが発行されますが、イベント ログ メッセージのユーザー名フィールドは空になります。
+Active Directory では、パスワードをテストして、ドメインの現在のパスワード複雑さ要件が満たされているかどうかを確認する機能がサポートされています (たとえば、[NetValidatePasswordPolicy](/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) API を使用して)。 この方法でパスワードが検証されるとき、テストには、Azure AD パスワード保護などのパスワード フィルター DLL ベースの製品による検証も含まれます。ただし、特定のパスワード フィルター DLL に渡されるユーザー名は空になります。 このシナリオの Azure AD パスワード保護でも、現在有効なパスワード ポリシーを使用してパスワードが検証され、結果をキャプチャするためのイベント ログ メッセージが発行されますが、イベント ログ メッセージのユーザー名フィールドは空になります。
 
 **Q:その他のパスワード フィルター ベースの製品とサイド バイ サイドで Azure AD パスワード保護をインストールすることはサポートされていますか?**
 
@@ -74,13 +74,13 @@ FRS (DFSR に対する先行テクノロジ) には、多くの既知の問題�
 
 詳細については、次の記事を参照してください。
 
-[sysvol レプリケーションを DFSR に移行するケース](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+[sysvol レプリケーションを DFSR に移行するケース](/archive/blogs/askds/the-case-for-migrating-sysvol-to-dfsr)
 
 [FRS の終了が近づいています](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
 ご利用のドメインでまだ DFSR を使用していない場合、Azure AD パスワード保護をインストールする前に DFSR 使用にドメインを移行する必要があります。 詳細については、次のリンクを参照してください。
 
-[SYSVOL レプリケーション移行ガイド: FRS レプリケーションから DFS レプリケーションに移行する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+[SYSVOL レプリケーション移行ガイド: FRS レプリケーションから DFS レプリケーションに移行する](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
 > [!WARNING]
 > Azure AD パスワード保護 DC エージェント ソフトウェアは、現在、sysvol レプリケーションにまだ FRS を使用しているドメインのドメイン コントローラーにインストールされますが、この環境ではソフトウェアは正しく機能しません。 その他のマイナスの副作用としては、個々のファイルを複製できない、sysvol 復元処理が成功したように見えたが、一部のファイルの複製に失敗しており、何のエラーも表示されない、などがあります。 できるだけ早く、DFSR の使用にドメインを移行してください。DFSR に固有のメリットがあるだけでなく、Azure AD パスワード保護のデプロイのブロックを解除します。 今後のバージョンでは、ドメインで依然として FRS を使用している場合、このソフトウェアは自動的に無効になります。
@@ -101,7 +101,7 @@ FRS (DFSR に対する先行テクノロジ) には、多くの既知の問題�
 
 はい。 Azure AD パスワード保護プロキシ サービスと Azure AD Connect は、互いに直接競合することはありません。
 
-残念ながら、Azure AD パスワード保護プロキシ ソフトウェアによってインストールされた Microsoft Azure AD Connect エージェント アップデーター サービスのバージョンと、[Azure Active Directory アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) ソフトウェアによってインストールされたサービスのバージョンとの間には互換性がありません。 この非互換性が原因で、エージェント アップデーター サービスがソフトウェアの更新のために Azure に接続できなくなっている可能性があります。 Azure AD パスワード保護プロキシと Azure Active Directory アプリケーション プロキシを同じマシンにインストールすることはお勧めしません。
+残念ながら、Azure AD パスワード保護プロキシ ソフトウェアによってインストールされた Microsoft Azure AD Connect エージェント アップデーター サービスのバージョンと、[Azure Active Directory アプリケーション プロキシ](../manage-apps/application-proxy.md) ソフトウェアによってインストールされたサービスのバージョンとの間には互換性がありません。 この非互換性が原因で、エージェント アップデーター サービスがソフトウェアの更新のために Azure に接続できなくなっている可能性があります。 Azure AD パスワード保護プロキシと Azure Active Directory アプリケーション プロキシを同じマシンにインストールすることはお勧めしません。
 
 **Q:DC エージェントとプロキシはどのような順序でインストールして登録する必要がありますか?**
 
@@ -149,7 +149,7 @@ Azure AD パスワード保護 DC エージェント サービスは、既存の
 
 [Azure AD Password Protection is now generally available! (Azure AD パスワード保護の一般提供が開始されました)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Email Phishing Protection Guide – Part 15:Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/) (電子メールのフィッシング保護ガイド – パート 15: Microsoft Azure AD パスワード保護サービス (オンプレミスの場合も))
+[Email Phishing Protection Guide – Part 15:Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](http://kmartins.com/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/) (電子メールのフィッシング保護ガイド – パート 15: Microsoft Azure AD パスワード保護サービス (オンプレミスの場合も))
 
 [Azure AD Password Protection and Smart Lockout are now in Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529) (Azure AD パスワード保護およびスマート ロックアウトがパブリック プレビュー段階になりました)
 

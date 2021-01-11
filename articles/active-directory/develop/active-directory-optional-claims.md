@@ -1,37 +1,37 @@
 ---
 title: Azure AD アプリに省略可能な要求を提供する
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory によって発行された SAML 2.0 および JSON Web Token (JWT) トークンに、カスタムまたは追加の要求を追加する方法。
+description: Microsoft ID プラットフォームによって発行された SAML 2.0 および JSON Web トークン (JWT) トークンに、カスタムまたは追加の要求を追加する方法。
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/11/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: f751c45b12ec2c8f6f09080b01b24f59af1fc0d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e53cf38c9544884caddfdf03c2615217c49ec3d0
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478333"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068728"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
+# <a name="how-to-provide-optional-claims-to-your-app"></a>方法:アプリに省略可能な要求を提供する
 
 アプリケーション開発者は、Azure AD アプリケーションで省略可能な要求を使用して、アプリケーションに送信されるトークンに含めたい要求を指定できます。
 
 次の処理に省略可能な要求を使用できます。
 
 - アプリケーションのトークンに含める追加の要求を選択する。
-- Azure AD からトークンで返される特定の要求の動作を変更する。
+- Microsoft ID プラットフォームからトークンで返される特定の要求の動作を変更する。
 - アプリケーションのカスタムの要求を追加してアクセスする。
 
 標準の要求の一覧については、[アクセス トークン](access-tokens.md)と [id_token](id-tokens.md) の要求のドキュメントを参照してください。
 
-省略可能な要求は v1.0 と v2.0 の両方の形式のトークンと、SAML トークンでサポートされていますが、v1.0 から v2.0 に移行すると、最大限の価値が得られます。 [v2.0 の Microsoft ID プラットフォーム エンドポイント](active-directory-appmodel-v2-overview.md)の目標の 1 つは、トークン サイズを小さくしてクライアントによる最適なパフォーマンスを確保することです。 その結果、以前のバージョンではアクセス トークンと ID トークンに含まれていた一部の要求は、v2.0 トークンでは削除されたため、アプリケーションごとに具体的に要求する必要があります。
+省略可能な要求は v1.0 と v2.0 の両方の形式のトークンと、SAML トークンでサポートされていますが、v1.0 から v2.0 に移行すると、最大限の価値が得られます。 [v2.0 の Microsoft ID プラットフォーム エンドポイント](./v2-overview.md)の目標の 1 つは、トークン サイズを小さくしてクライアントによる最適なパフォーマンスを確保することです。 その結果、以前のバージョンではアクセス トークンと ID トークンに含まれていた一部の要求は、v2.0 トークンでは削除されたため、アプリケーションごとに具体的に要求する必要があります。
 
 **表 1:適用性**
 
@@ -53,23 +53,20 @@ ms.locfileid: "85478333"
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | ユーザーが最後に認証された時刻。 OpenID Connect の仕様を参照してください。| JWT        |           |  |
 | `tenant_region_scope`      | リソースのテナントのリージョン | JWT        |           | |
-| `home_oid`                 | ゲスト ユーザーの場合、ユーザーのホーム テナント内のユーザーのオブジェクト ID。| JWT        |           | |
 | `sid`                      | セッション ID。セッションごとのユーザーのサインアウトに使用されます。 | JWT        |  個人用アカウントと Azure AD アカウント。   |         |
-| `platf`                    | デバイスのプラットフォーム    | JWT        |           | デバイスの種類を検証できる、マネージド デバイスに制限されます。|
 | `verified_primary_email`   | ユーザーの PrimaryAuthoritativeEmail が送信元です      | JWT        |           |         |
 | `verified_secondary_email` | ユーザーの SecondaryAuthoritativeEmail が送信元です   | JWT        |           |        |
-| `enfpolids`                | 適用されたポリシー ID。 現在のユーザーに対して評価されたポリシー ID の一覧。 | JWT |  |  |
 | `vnet`                     | VNET 指定子情報。 | JWT        |           |      |
 | `fwd`                      | IP アドレス。| JWT    |   | 要求側クライアントの元の IPv4 アドレスを追加します (VNET 内の場合) |
-| `ctry`                     | ユーザーの国またはリージョン | JWT |  | Azure AD は、存在する場合、`ctry` の省略可能な要求を返します。要求の値は、FR、JP、SZ などの標準の 2 文字の国またはリージョン番号です。 |
-| `tenant_ctry`              | リソース テナントの国またはリージョン | JWT | | |
-| `xms_pdl`             | 優先されるデータの場所   | JWT | | Multi-Geo テナントの場合、優先されるデータの場所は、ユーザーがどの地域にいるかを示す 3 文字のコードです。 詳細については、[優先されるデータの場所に関する Azure AD Connect のドキュメント](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation)を参照してください。<br/>たとえば、アジア太平洋の場合は `APC` です。 |
+| `ctry`                     | ユーザーの国またはリージョン | JWT、SAML |  | Azure AD は、存在する場合、`ctry` の省略可能な要求を返します。フィールドの値は、FR、JP、SZ などの標準の 2 文字の国またはリージョン番号です。 |
+| `tenant_ctry`              | リソース テナントの国 | JWT | | 管理者がテナント レベルを設定することを除き `ctry` と同じです。また、標準の 2 文字値にする必要があります。 |
+| `xms_pdl`             | 優先されるデータの場所   | JWT | | Multi-Geo テナントの場合、優先されるデータの場所は、ユーザーがどの地域にいるかを示す 3 文字のコードです。 詳細については、[優先されるデータの場所に関する Azure AD Connect のドキュメント](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)を参照してください。<br/>たとえば、アジア太平洋の場合は `APC` です。 |
 | `xms_pl`                   | ユーザーの優先する言語  | JWT ||ユーザーの優先する言語 (設定されている場合)。 ゲスト アクセスのシナリオの場合、ソースはホーム テナントです。 LL-CC ("en-us") という形式です。 |
 | `xms_tpl`                  | テナントの優先する言語| JWT | | リソース テナントの優先する言語 (設定されている場合)。 LL ("en") という形式です。 |
-| `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
+| `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
 | `email`                    | このユーザーのアドレス指定可能なメール アドレス (ユーザーが持っている場合)。  | JWT、SAML | MSA、Azure AD | ユーザーがテナントのゲストである場合、この値は既定で含まれます。  マネージド ユーザー (テナント内のユーザー) の場合は、この省略可能な要求により、または OpenID スコープで (v2.0 の場合のみ)、それを要求する必要があります。  マネージド ユーザーの場合、メール アドレスは [Office 管理ポータル](https://portal.office.com/adminportal/home#/users)で設定する必要があります。|
-| `groups`| グループ要求の省略可能な形式 |JWT、SAML| |[アプリケーション マニフェスト](reference-app-manifest.md) の GroupMembershipClaims 設定と共に使用されます (こちらも設定する必要があります)。 詳細については、後述の[グループ要求](#configuring-groups-optional-claims)に関する説明を参照してください。 グループ要求の詳細については、[グループ要求の構成方法](../hybrid/how-to-connect-fed-group-claims.md)に関する記事を参照してください
 | `acct`                | テナント内のユーザー アカウントの状態 | JWT、SAML | | ユーザーがテナントのメンバーである場合、値は `0` です。 ユーザーがゲストの場合、値は `1` です。 |
+| `groups`| グループ要求の省略可能な形式 |JWT、SAML| |[アプリケーション マニフェスト](reference-app-manifest.md) の GroupMembershipClaims 設定と共に使用されます (こちらも設定する必要があります)。 詳細については、後述の[グループ要求](#configuring-groups-optional-claims)に関する説明を参照してください。 グループ要求の詳細については、[グループ要求の構成方法](../hybrid/how-to-connect-fed-group-claims.md)に関する記事を参照してください
 | `upn`                      | UserPrincipalName | JWT、SAML  |           | この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。  |
 | `idtyp`                    | トークンの種類   | JWT のアクセス トークン | 特殊: アプリ専用アクセス トークンのみ |  トークンがアプリ専用トークンの場合、値は `app` です。 API を使用してトークンがアプリ トークンかアプリ + ユーザー トークンかを判断する場合、これが最も正確な方法です。|
 
@@ -185,7 +182,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 **表 5:OptionalClaims 型のプロパティ**
 
-| 名前          | Type                       | 説明                                           |
+| 名前          | 種類                       | 説明                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | コレクション (OptionalClaim) | JWT ID トークンで返される省略可能な要求。     |
 | `accessToken` | コレクション (OptionalClaim) | JWT アクセス トークンで返される省略可能な要求。 |
@@ -193,12 +190,12 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 ### <a name="optionalclaim-type"></a>OptionalClaim 型
 
-アプリケーションまたはサービス プリンシパルに関連付けられている省略可能な要求が含まれます。 [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) 型の idToken、accessToken、および saml2Token プロパティは、OptionalClaim のコレクションです。
+アプリケーションまたはサービス プリンシパルに関連付けられている省略可能な要求が含まれます。 [OptionalClaims](/graph/api/resources/optionalclaims?view=graph-rest-1.0) 型の idToken、accessToken、および saml2Token プロパティは、OptionalClaim のコレクションです。
 特定の要求でサポートされている場合は、AdditionalProperties フィールドを使用して OptionalClaim の動作を変更することもできます。
 
 **表 6:OptionalClaim 型のプロパティ**
 
-| 名前                   | Type                    | 説明                                                                                                                                                                                                                                                                                                   |
+| 名前                   | 種類                    | 説明                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 省略可能な要求の名前。                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | 要求のソース (ディレクトリ オブジェクト)。 定義済みの要求と、拡張プロパティのユーザー定義の要求があります。 ソース値が null の場合、この要求は定義済みの省略可能な要求です。 ソース値が user の場合、name プロパティの値はユーザー オブジェクトの拡張プロパティです。 |
@@ -207,7 +204,7 @@ UI またはアプリケーション マニフェストを使用して、アプ�
 
 ## <a name="configuring-directory-extension-optional-claims"></a>ディレクトリ拡張機能の省略可能な要求の構成
 
-標準の省略可能な要求セットに加え、拡張機能を含むようにトークンを構成することもできます。 詳細については、[Microsoft Graph extensionProperty のドキュメント](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0)を参照してください。
+標準の省略可能な要求セットに加え、拡張機能を含むようにトークンを構成することもできます。 詳細については、[Microsoft Graph extensionProperty のドキュメント](/graph/api/resources/extensionproperty?view=graph-rest-1.0)を参照してください。
 
 スキーマとオープン拡張機能は、省略可能な要求ではサポートされず、AAD-Graph スタイルのディレクトリ拡張機能のみがサポートされます。 ユーザーが設定した追加の識別子や重要な構成オプションなど、アプリで使用できる追加のユーザー情報をアタッチする場合にこの機能が便利です。 例については、このページの最後を参照してください。
 
@@ -364,8 +361,8 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 アプリケーションの ID 構成に関するプロパティを更新し、省略可能な要求を有効にして構成するには、複数のオプションがあります。
 
 - **トークン構成** UI を使用できます (次の例を参照)
-- **マニフェスト** を使用できます (次の例を参照)。 マニフェストの概要については、まず [Azure AD アプリケーション マニフェストの概要に関するドキュメント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)を参照してください。
-- また、[Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0) を使用してアプリケーションを更新するアプリケーションを作成することもできます。 Microsoft Graph API リファレンス ガイドにある [OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0) という種類を使用すると、省略可能な要求の構成に役立ちます。
+- **マニフェスト** を使用できます (次の例を参照)。 マニフェストの概要については、まず [Azure AD アプリケーション マニフェストの概要に関するドキュメント](./reference-app-manifest.md)を参照してください。
+- また、[Microsoft Graph API](/graph/use-the-api?context=graph%2fapi%2f1.0&view=graph-rest-1.0) を使用してアプリケーションを更新するアプリケーションを作成することもできます。 Microsoft Graph API リファレンス ガイドにある [OptionalClaims](/graph/api/resources/optionalclaims?view=graph-rest-1.0) という種類を使用すると、省略可能な要求の構成に役立ちます。
 
 **例:**
 
@@ -406,7 +403,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から探して選択します。
 1. **[管理]** セクションで、 **[マニフェスト]** を選択して、インライン マニフェスト エディターを開きます。
-1. このエディターを使用して、マニフェストを直接編集できます。 マニフェストは、[アプリケーション エンティティ](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)のスキーマに従っています。保存されると、マニフェストの書式が自動的に構成されます。 新しい要素が `OptionalClaims` プロパティに追加されます。
+1. このエディターを使用して、マニフェストを直接編集できます。 マニフェストは、[アプリケーション エンティティ](./reference-app-manifest.md)のスキーマに従っています。保存されると、マニフェストの書式が自動的に構成されます。 新しい要素が `OptionalClaims` プロパティに追加されます。
 
     ```json
     "optionalClaims": {

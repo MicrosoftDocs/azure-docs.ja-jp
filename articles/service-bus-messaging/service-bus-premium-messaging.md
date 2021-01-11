@@ -2,13 +2,13 @@
 title: Azure Service Bus の Premium レベルと Standard レベル
 description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: eb2d3dda18eb08809a5c8f1020490acdb1e9a21c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/28/2020
+ms.openlocfilehash: 82f8dbce7c48cb6efea67de4297239915e46eac8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337406"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386352"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -24,7 +24,7 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 | 予測可能なパフォーマンス |変わりやすい待機時間 |
 | 固定価格 |従量課金制の変わりやすい料金 |
 | ワークロードをスケールアップおよびスケールダウンする機能 |該当なし |
-| 最大 1 MB のメッセージ サイズ |最大 256 KB のメッセージ サイズ |
+| 最大 1 MB のメッセージ サイズ。 この制限は、将来引き上げられる可能性があります。 サービスの最新の重要な更新については、[Azure に関するメッセージング ブログ](https://techcommunity.microsoft.com/t5/messaging-on-azure/bg-p/MessagingonAzureBlog)をご覧ください。 |最大 256 KB のメッセージ サイズ |
 
 **Service Bus Premium メッセージング**では、各顧客のワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーを、*メッセージング ユニット*と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 各 Service Bus Premium 名前空間に対して 1、2、4、または 8 のメッセージング ユニットを購入することができます。 1 つのワークロードまたはエンティティが複数のメッセージング ユニットにまたがることができ、メッセージング ユニットの数は任意で変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。
 
@@ -40,7 +40,7 @@ Premium メッセージングでは、パーティション分割されたキュ
 
 ### <a name="express-entities"></a>エクスプレス エンティティ
 
-完全に分離されたランタイム環境で Premium メッセージングが実行されるため、Premium 名前空間ではエクスプレス エンティティがサポートされません。 エクスプレス機能の詳細については、[QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティを参照してください。
+分離されたランタイム環境で Premium メッセージングが実行されるため、Premium 名前空間ではエクスプレス エンティティがサポートされません。 エクスプレス機能の詳細については、[QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティを参照してください。
 
 Standard メッセージングで実行しているコードがあり、それを Premium レベルに移植したい場合は、[EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) プロパティが **false** (既定値) に設定されていることを確認します。
 
@@ -51,9 +51,9 @@ Standard メッセージングで実行しているコードがあり、それ�
 - ランタイム操作 (メッセージの送受信)
 - 操作とアラートの監視
 
-ただし追加の CPU とメモリ使用によりさらに課金されることはありません。 Premium メッセージング レベルでは、メッセージング ユニットの料金は単一です。
+ただし、追加の CPU とメモリ使用によりさらに課金されることはありません。 Premium メッセージング レベルでは、メッセージング ユニットの料金は単一です。
 
-CPU とメモリの使用は追跡され、次の理由で表示されます。 
+次の理由で、CPU とメモリの使用が追跡され、表示されます。 
 
 - システム内部に透明性を提供する。
 - 購入したリソースの容量を把握する。

@@ -3,7 +3,7 @@ title: Azure VM における SQL Server のバックアップと復元 | Microso
 description: Azure Virtual Machines で実行されている SQL Server データベースのバックアップと復元に関する考慮事項について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a19bf26418d6a61d3aa2421957614abe6dd04e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a03a91eeb9296e60aa147f97634a15e8d344209
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84669202"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87293045"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server のバックアップと復元
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -127,7 +127,7 @@ SQL Server 2016 以降では、マネージド バックアップに、スケジ
 
 次の表には、Azure の SQL Server 仮想マシンのバックアップと復元の各オプションの機能がまとめられています。
 
-|| **自動化されたバックアップ** | **SQL の Azure Backup** | **手動バックアップ** |
+| オプション | 自動バックアップ | SQL の Azure Backup | 手動バックアップ |
 |---|---|---|---|
 | 追加の Azure サービスが必要 |   | ![はい](./media/backup-restore/yes.png) |   |
 | Azure portal でのバックアップ ポリシーの構成 | ![はい](./media/backup-restore/yes.png) | ![はい](./media/backup-restore/yes.png) |   |

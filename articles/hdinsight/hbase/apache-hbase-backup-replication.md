@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: b1830ddef44ef33d19c953622951779632e33e71
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 5a3760956dfe9a713d344fd6684d75ea240ab7de
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076744"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705726"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -213,7 +213,13 @@ hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -
 hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 ```
 
-スナップショットがエクスポートされたら、エクスポート先クラスターのヘッド ノードに SSH で接続し、前に説明したように restore_snapshot コマンドを使用してスナップショットを復元します。
+ソース クラスターにセカンダリ Azure Storage アカウントが接続されていない場合、またはソース クラスターがオンプレミスのクラスター (または非 HDI クラスター) である場合は、HDI クラスターのストレージ アカウントにアクセスしようとすると、承認の問題が発生する可能性があります。 これを解決するには、次の例に示すように、コマンドライン パラメーターとしてストレージ アカウントのキーを指定します。 ストレージ アカウントのキーは、Azure Portal で取得できます。
+
+```console
+hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -Dfs.azure.account.key.myaccount.blob.core.windows.net=mykey -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
+```
+
+スナップショットがエクスポートされたら、エクスポート先クラスターのヘッド ノードに SSH で接続し、前に説明したように `restore_snapshot` コマンドを使用してスナップショットを復元します。
 
 スナップショットは、`snapshot` コマンドの時点でのテーブルの完全バックアップを提供します。 スナップショットでは、時間枠ごとに増分スナップショットを実行することも、スナップショットに含める列ファミリのサブセットを指定することもできません。
 

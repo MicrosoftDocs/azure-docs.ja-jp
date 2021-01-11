@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 0ab95223d084436d1bf39ba557ec3b01c0b534d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 829ddc0b63031722cdcb572a2833926a7837d05d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503389"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004121"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -37,15 +38,15 @@ ms.locfileid: "86503389"
 
 * .NET クイック スタート記事の「[データベース アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
 
-それでは、GitHub からサンプル .NET アプリケーションをダウンロードして、コードの作業を行います。 このアプリケーションでは、Azure Cosmos アカウントに格納されているデータに対して一括操作を実行します。 アプリケーションを複製するために、コマンド プロンプトを開き、コピー先のディレクトリに移動し、次のコマンドを実行します。
+それでは、GitHub からサンプル .NET アプリケーションをダウンロードして、コードの作業を行います。 このアプリケーションでは、Azure Cosmos アカウントに格納されているデータに対して一括操作を実行します。 アプリケーションをクローンするために、コマンド プロンプトを開き、コピー先のディレクトリに移動し、次のコマンドを実行します。
 
 ```bash
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-複製されたリポジトリには、2 つのサンプル "BulkImportSample" と "BulkUpdateSample" が含まれています。 どちらかのサンプル アプリケーションを開き、App.config ファイルの接続文字列を Azure Cosmos DB アカウントの接続文字列に更新し、ソリューションをビルドして実行します。
+クローンされたリポジトリには、2 つのサンプル "BulkImportSample" と "BulkUpdateSample" が含まれています。 どちらかのサンプル アプリケーションを開き、App.config ファイルの接続文字列を Azure Cosmos DB アカウントの接続文字列に更新し、ソリューションをビルドして実行します。
 
 "BulkImportSample" アプリケーションでは、ランダムなドキュメントを生成し、Azure Cosmos アカウントに一括インポートします。 "BulkUpdateSample" アプリケーションでは、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたドキュメントを一括更新します。 次のセクションでは、これらのサンプル アプリケーションのコードを確認します。
 

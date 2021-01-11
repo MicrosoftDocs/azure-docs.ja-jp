@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 4b77c2d724a8540c0e43c45690877367a4b72416
-  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+  ms.openlocfilehash: 64e20f9a06acf85def278c1017bbbd588c7a6b39
+  ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87337026"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89425978"
 highlightedContent:
   items:
   - title: IoT Central とは
@@ -70,7 +70,7 @@ conceptualContent:
       text: テレメトリ ルールを作成する
     - url: ./core/howto-export-data.md
       itemType: how-to-guide
-      text: Azure で宛先にデータをエクスポートする
+      text: クラウドの宛先にデータをエクスポートする - プレビュー
     footerLink:
       url: ./core/index.yml
       text: 詳細情報
@@ -91,6 +91,8 @@ productDirectory:
       url: ./retail/tutorial-iot-central-connected-logistics.md
     - text: デジタル流通センター アプリケーションを作成する
       url: ./retail/tutorial-iot-central-digital-distribution-center.md
+    - text: ビデオ分析アプリケーションを作成する
+      url: ./retail/tutorial-video-analytics-create-app.md
   - title: ヘルスケア業界向けの構築
     imageSrc: ./healthcare/media/index/iot-central-healthcare.svg
     links:

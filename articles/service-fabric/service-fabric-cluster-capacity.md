@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247779"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718103"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 
@@ -56,7 +56,7 @@ ms.locfileid: "86247779"
 
     Service Fabric では、特定のゾーンに固定されるノード タイプをデプロイすることによって、[Availability Zones](../availability-zones/az-overview.md) にまたがるクラスターをサポートし、アプリケーションの高可用性を確保します。 Availability Zones には追加のノード タイプの計画が必要で、最小要件を満たす必要があります。 詳細については、[複数の Availability Zones にまたがる Azure Service Fabric クラスターのプライマリ ノード タイプに推奨されるトポロジ](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones)に関するページを参照してください。 
 
-クラスターの最初の作成でノード タイプの数とプロパティを決定するときには、いったんクラスターをデプロイすれば、(プライマリ以外の) ノード タイプをいつでも追加、変更、または削除できることを念頭に置いてください。 実行中のクラスターで[プライマリ ノード タイプを変更することもできます](service-fabric-scale-up-node-type.md) (ただし、運用環境でそうした操作を行うには、非常に多くの計画と注意が必要です)。
+クラスターの最初の作成でノード タイプの数とプロパティを決定するときには、いったんクラスターをデプロイすれば、(プライマリ以外の) ノード タイプをいつでも追加、変更、または削除できることを念頭に置いてください。 実行中のクラスターで[プライマリ ノード タイプを変更することもできます](service-fabric-scale-up-primary-node-type.md) (ただし、運用環境でそうした操作を行うには、非常に多くの計画と注意が必要です)。
 
 ノード タイプのプロパティに関するその他の考慮事項は、持続性レベルです。これにより、Azure インフラストラクチャ内でノード タイプの VM が持つ権限が決まります。 次に説明するように、クラスターのために選択した VM のサイズと、個々のノード タイプに割り当てたインスタンス数を参考にすると、ノード タイプごとに適切な耐久性レベルを決定する助けになります。
 
@@ -105,7 +105,7 @@ Silver または Gold の持続性は、頻繁なスケールイン (VM イン�
 以下の推奨事項に従って、持続性が Silver または Gold であるノード タイプを管理します。
 
 * クラスターとアプリケーションを常に正常な状態に維持し、アプリケーションが適切なタイミングですべての[サービス レプリカのライフサイクル イベント](service-fabric-reliable-services-lifecycle.md) (ビルドのレプリカが停止するなど) に応答することを確認します。
-* VM サイズの変更 (スケールアップ/ダウン) を行うためには、より安全な方法を採用します。 仮想マシン スケール セットの VM サイズを変更する場合は、慎重な計画と注意が必要とされます。 詳細については、[Service Fabric ノード タイプのスケールアップ](service-fabric-scale-up-node-type.md)に関するページを参照してください
+* VM サイズの変更 (スケールアップ/ダウン) を行うためには、より安全な方法を採用します。 仮想マシン スケール セットの VM サイズを変更する場合は、慎重な計画と注意が必要とされます。 詳細については、[Service Fabric ノード タイプのスケールアップ](service-fabric-scale-up-primary-node-type.md)に関するページを参照してください
 * 持続性レベルが Gold または Silver である任意の仮想マシン スケール セットのノードを最小数である 5 つ保持します。 このしきい値を超えてスケールインした場合には、クラスターがエラー状態になり、削除されたノードの状態 (`Remove-ServiceFabricNodeState`) を手動でクリーンアップする必要があります。
 * 持続性レベルが Silver または Gold の各仮想マシン スケール セットは、Service Fabric クラスター内の独自のノード タイプにマップする必要があります。 複数の仮想マシン スケール セットを 1 つのノード タイプにマッピングすると、Service Fabric クラスターと Azure インフラストラクチャ間の連携が正常に動作しなくなります。
 * VM インスタンスをランダムに削除せず、仮想マシン スケール セットのスケール イン機能を常に使用してください。 ランダムな VM インスタンスを削除すると、[アップグレード ドメイン](service-fabric-cluster-resource-manager-cluster-description.md#upgrade-domains)と[障害ドメイン](service-fabric-cluster-resource-manager-cluster-description.md#fault-domains)にわたって散在する VM インスタンスで不均衡が生じる可能性があります。 この不均衡は、サービス インスタンス/サービス レプリカ間で適切に負荷分散を行うシステムの機能に悪影響を及ぼす場合があります。
@@ -155,7 +155,7 @@ Silver または Gold の持続性は、頻繁なスケールイン (VM イン�
 
 #### <a name="virtual-machine-sizing"></a>仮想マシンのサイズ設定
 
-**運用環境のワークロードの場合、推奨される VM サイズ (SKU) は、50 GB 以上のローカル SSD を使用する、Standard D2_V2 (または同等のもの) です。** 推奨されるのは少なくとも 50 GB のローカル SSD ですが、一部のワークロード (Windows コンテナーを実行するものなど) には、より大容量のディスクが必要です。 運用環境のワークロード用にその他の [VM サイズ](../virtual-machines/sizes-general.md)を選択する場合は、以下の制約に留意してください。
+**運用環境のワークロードの場合、推奨される VM サイズ (SKU) は、50 GB 以上のローカル SSD、2 コア、および 4 GiB のメモリを持つ [Standard D2_V2](../virtual-machines/dv2-dsv2-series.md) (または同等のもの) です。** 推奨されるのは少なくとも 50 GB のローカル SSD ですが、一部のワークロード (Windows コンテナーを実行するものなど) には、より大容量のディスクが必要です。 運用環境のワークロード用にその他の [VM サイズ](../virtual-machines/sizes-general.md)を選択する場合は、以下の制約に留意してください。
 
 - Standard A0 のような、部分的コアの VM サイズはサポートされていません。
 - *A シリーズ* VM サイズは、パフォーマンス上の理由でサポートされていません。

@@ -7,42 +7,29 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0f5481531d23eeb579dcabe80e028ed7b482b09f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037768"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762268"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>仮想ハブの有効なルートを表示する
 
 Azure portal で Virtual WAN ハブのすべてのルートを表示できます。 この記事では、有効なルートを表示する手順について説明します。 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
-> [!NOTE]
-> Azure portal では、これらの機能の一部が現在ロールアウト中であるため、8 月 3 日の週まで使用できない可能性があります。 
->
-
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>接続またはルート テーブルを選択する
 
 1. 仮想ハブに移動し、 **[ルーティング]** を選択します。 [ルーティング] ページで、 **[有効なルート]** を選択します。
-1. ドロップダウンから、 **[接続の種類]** または **[ルート テーブル]** を選択できます。 [ルート テーブル] オプションが表示されない場合は、この仮想ハブにカスタムまたは既定のルート テーブルが設定されていません。
-1. **[Connections / Route Tables]\(接続またはルート テーブル\)** のドロップダウンからは、次の項目を選択できます。
-
-   * 仮想ネットワーク接続
-   * VPN サイト接続
-   * ExpressRoute 接続
-   * ポイント対サイト接続
-   * ルート テーブル
-
-   :::image type="content" source="./media/effective-routes-virtual-hub/routing.png" alt-text="ルーティング":::
+1. ドロップダウンから、 **[ルート テーブル]** を選択できます。 [ルート テーブル] オプションが表示されない場合は、この仮想ハブにカスタムまたは既定のルート テーブルが設定されていません。
 
 ## <a name="view-output"></a><a name="output"></a>出力を表示する
 
 ページの出力には、次のフィールドが表示されます。
 
-* **プレフィックス**: 現在のエンティティが認識しているアドレス プレフィックス。
+* **プレフィックス**: 現在のエンティティに認識されるアドレス プレフィックス (仮想ハブ ルーターから学習)
 * **次ホップの種類**: 仮想ネットワーク接続、VPN_S2S_Gateway、ExpressRoute ゲートウェイ、リモート ハブ、または Azure Firewall のいずれかです。
-* **次ホップ**:これは IP であるか、または現在のハブを意味する場合は単に [On-link]\(オンリンク\) と表示されます。
+* **次ホップ**:これは次のホップのリソース ID へのリンクです。あるいはこれは単純に、現在のハブを意味するオンリンクを示します。
 * **配信元**:ルーティング ソースのリソース ID。
 * **AS パス**: BGP 属性の AS (自律システム) パスは、パスにアタッチされているプレフィックスのアドバタイズ元の場所に到達するために走査する必要があるすべての AS 番号が一覧表示されます。
 
@@ -54,13 +41,15 @@ AS パスを表示するには、テーブルの下部にあるスクロール�
 
 | **プレフィックス** |  **次ホップの種類** | **次ホップ** |  **ルートの発信元** |**AS パス** |
 | ---        | ---                | ---          | ---               | ---         |
-| 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw| 20000|
+| 10.2.0.0/24| VPN_S2S_Gateway |/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw|/subscriptions/`<sub id>`/resourceGroups/`<resource group name>`/providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
 **考慮事項:**
 
 * **[Get Effective Routes]\(有効なルートを取得\)** に 0.0.0.0/0 と表示されている場合は、ルートがルート テーブルのいずれかに存在することを意味します。 ただし、このルートがインターネット用に設定されている場合は、接続時に追加のフラグ **"enableInternetSecurity": true** が必要となります。 接続時に "enableInternetSecurity" フラグが "false" になっている場合、VM NIC の有効なルートとしてルートが示されません。
 
 * 仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続の編集時に、Azure Virtual WAN ポータルに **[Propagate Default Route]\(既定のルートを伝達する\)** フィールドが表示されます。 このフィールドは **enableInternetSecurity** フラグを示します。このフラグは、ExpressRoute 接続と VPN 接続の場合は常に既定で "false" になりますが、仮想ネットワーク接続の場合は "true" になります。
+
+* VM NIC 上で有効なルートを表示しているとき、次のホップが "仮想ネットワーク ゲートウェイ" であれば、それは、仮想 WAN ハブに接続されているスポークに VM があるとき、仮想ハブ ルーターを意味します。
 
 ## <a name="next-steps"></a>次のステップ
 

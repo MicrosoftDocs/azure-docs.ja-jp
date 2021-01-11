@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files に登録する | Microsoft Docs
-description: Azure NetApp Files に使用して使用する方法について説明します。
+description: 順番待ちリクエストを送信し、Azure NetApp Files 用に Azure リソース プロバイダーを登録することによって、Azure NetApp Files に登録する方法について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: cdb96f08f78e22dd0e46070ab62bf9327e2d72a3
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: b8707b6fb006a45d63f1b2b426530a7e25f5b497
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956306"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512926"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files に登録する
 

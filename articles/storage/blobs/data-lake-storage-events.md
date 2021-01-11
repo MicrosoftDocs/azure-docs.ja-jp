@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 85fad873b6c176d2278ea48709d2892ab515a025
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8df4de01750de92222bfa9021b66828927804e85
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78303309"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89005481"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>チュートリアル:Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する
 
@@ -53,7 +54,7 @@ ms.locfileid: "78303309"
 
 まず、販売注文を記述した csv ファイルを作成し、そのファイルをストレージ アカウントにアップロードします。 後で、このファイルのデータを使用して、Databricks Delta テーブルの最初の行に値を設定します。
 
-1. Azure ストレージ エクスプローラーを開きます。 次に、ストレージ アカウントに移動し、 **[BLOB コンテナー]** セクションで、**data** という名前の新しいコンテナーを作成します。
+1. Azure Storage Explorer を開きます。 次に、ストレージ アカウントに移動し、 **[BLOB コンテナー]** セクションで、**data** という名前の新しいコンテナーを作成します。
 
    ![data フォルダー](./media/data-lake-storage-events/data-container.png "data フォルダー")
 

@@ -172,7 +172,7 @@ Azure portal で VM を作成するときに、Azure Resource Manager テンプ�
 ### <a name="use-azure-rest-api"></a>Azure REST API の使用
 次の手順では、REST API を使用してイメージのプロパティを取得する方法について説明します。これらの手順は、ラボの既存の VM に対してのみ有効です。 
 
-1. [[Virtual Machines - list]\(仮想マシン - 一覧\)](/rest/api/dtl/virtualmachines/list) ページに移動し、 **[Try it]\(試してみる\)** ボタンを選択します。 
+1. [[Virtual Machines - list]\(仮想マシン - 一覧\)](/rest/api/dtl/virtualmachines/list) ページに移動し、 **[Try it]\(使ってみる\)** ボタンを選択します。 
 2. **Azure サブスクリプション**を選択します。
 3. **ラボのリソース グループ**を入力します。
 4. **ラボの名前**を入力します。 

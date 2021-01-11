@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95ea7eb470a5880bc88b3df903d33854f363e974
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9ec9e110c3a476c9096ae3e216c9780da0e0f49
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72881322"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88949198"
 ---
 # <a name="identity-protection-and-b2b-users"></a>Identity Protection と B2B ユーザー
 
@@ -53,4 +53,4 @@ B2B ユーザーのリスク評価と修復は、それらのユーザーのホ�
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 
-- [Azure AD B2B コラボレーションとは](../b2b/what-is-b2b.md)
+- [Azure AD B2B コラボレーションとは](../external-identities/what-is-b2b.md)

@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 7f889d6730012a11ebf82a78583ef420b7621075
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 32a873af3d287c3bd1e83de6db8e17ebc1d2958b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337655"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855618"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューとは
 
@@ -61,6 +61,10 @@ IoT プラグ アンド プレイ デバイスを IoT ハブに接続すると�
 
 > [!Important]
 > IoT プラグ アンド プレイ デバイスでは、WebSocket 経由で MQTT または MQTT を使用する必要があります。 AMQP や HTTP などの他のプロトコルは、IoT プラグ アンド プレイ デバイスの実装には無効です。
+
+## <a name="device-certification"></a>デバイス認定
+
+[IoT プラグ アンド プレイ デバイス認定プログラム](howto-certify-device.md)は、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 

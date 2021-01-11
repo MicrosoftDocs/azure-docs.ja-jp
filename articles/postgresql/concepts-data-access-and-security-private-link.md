@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 90e0f74f3a17a2c98abfcd886d59344b18619f8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 773815cd64af2a398001bac91e14cca0b204ca8e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508999"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832068"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Azure Database for PostgreSQL 用の Private Link - 単一サーバー
 
@@ -20,7 +20,7 @@ Private Link を使用すると、Azure Database for PostgreSQL - 単一サー�
 Private Link 機能をサポートしている PaaS サービスの一覧については、Private Link の[ドキュメント](https://docs.microsoft.com/azure/private-link/index)を参照してください。 プライベート エンドポイントは、特定の [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) およびサブネット内のプライベート IP アドレスです。
 
 > [!NOTE]
-> この機能は、Azure Database for PostgreSQL 単一サーバーが General Purpose および Memory Optimized 価格レベルをサポートしているすべての Azure リージョンで利用できます。
+> プライベート リンク機能は、General Purpose または Memory Optimized のいずれかの価格レベルの Azure Database for PostgreSQL サーバーでのみ使用できます。 データベース サーバーがこれらの価格レベルのいずれかであることを確認します。
 
 ## <a name="data-exfiltration-prevention"></a>データの流出防止
 

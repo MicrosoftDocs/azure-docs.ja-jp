@@ -1,6 +1,6 @@
 ---
-title: Long データ型のサポートの追加 | Microsoft Docs
-description: Long データ型のサポート
+title: Azure Time Series Insights Gen2 での Long データ型のサポート | Microsoft Docs
+description: Azure Time Series Insights Gen2 での Long データ型のサポート。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -8,46 +8,67 @@ ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: dpalled
-ms.openlocfilehash: c31ca7fd3eca89159d583b8a51b59a7bd6b8ed67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8d9b166d4ac9290a0389eac23f9d6882f667e1a0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528056"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856101"
 ---
-# <a name="adding-support-for-long-data-type"></a>Long データ型のサポートの追加
+# <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 での Long データ型のサポートの追加
 
-これらの変更は Gen2 環境にのみ適用されます。 Gen1 環境がある場合は、これらの変更を無視してもかまいません。
+Long データ型のサポートの追加は、Azure Time Series Insights Gen2 環境でのみ、数値データを格納およびインデックスを付ける方法に影響します。 Gen1 環境がある場合は、これらの変更を無視することができます。
 
-ここでは、ユーザーに影響を与える可能性のある Azure Time Series Insights Gen2 での数値データの格納とインデックス作成の方法を変更しています。 次のいずれかのケースの影響を受けている場合は、できるだけ早く必要な変更を行ってください。 データは、リージョンに応じて、2020 年 6 月 29 日から 7 月 30 日までの間に Long および Double としてのインデックス作成が開始されます。 この変更に関してご不明な点や懸念事項がある場合は、Azure portal を通じてサポート チケットを送信し、この情報を伝えてください。
+お客様のリージョンに応じて、2020 年 6 月 29 日または 6 月 30 日以降、データは **Long** および **Double** としてインデックス付けされるようになります。  この変更に関してご不明な点や懸念事項がある場合は、Azure portal を通じてサポート チケットを送信し、この情報を伝えてください。
 
-この変更は、次のような場合に影響を及ぼします。
+次のいずれかのケースの影響を受ける場合は、推奨される変更を行ってください。
 
-1. 現在タイム シリーズ モデル変数を使用していて、テレメトリ データで整数データ型のみを送信する場合。
-1. 現在タイム シリーズ モデル変数を使用していて、テレメトリ データで整数データ型と非整数データ型の両方を送信する場合。
-1. カテゴリ変数を使用して、整数値をカテゴリにマップする場合。
-1. JavaScript SDK を使用して、カスタムのフロントエンド アプリケーションを構築する場合。
-1. Warm ストア (WS) の 1,000 個のプロパティ名の制限に近づいていて、整数データと非整数データの両方を送信する場合は、[Azure portal](https://portal.azure.com/) でプロパティ数をメトリックとして表示できます。
+- **ケース 1**:現在タイム シリーズ モデル変数を使用していて、テレメトリ データで整数データ型のみを送信する。
+- **ケース 2**:現在タイム シリーズ モデル変数を使用していて、テレメトリ データで整数データ型と非整数データ型の両方を送信する。
+- **ケース 3**:カテゴリ変数を使用して、整数値をカテゴリにマップする。
+- **ケース 4**:JavaScript SDK を使用して、カスタム フロントエンド アプリケーションを構築する。
+- **ケース 5**:ウォーム ストアの 1,000 プロパティの名前制限に近づいており、整数データと非整数データの両方を送信している。 プロパティの数は、[Azure portal](https://portal.azure.com/) でメトリックとして表示できます。
 
-上記のいずれかのケースに該当する場合は、この変更に対応するためにモデルに変更を加える必要があります。 Azure Time Series Insights Gen2 エクスプローラーと、推奨される変更を加えた API を使用するカスタム クライアントの両方で、変数定義の Time Series 式を更新してください。 詳細については、以下をご覧ください。
+いずれかのケースに該当する場合は、モデルに変更を加えてください。 変数定義の Time Series の式 (TSX) を、推奨される変更で更新します。 両方を更新します。
 
-IoT ソリューションと制約によっては、Azure Time Series Insights Gen2 環境に送信されるデータを表示できない場合があります。 データが整数のみであるか、整数と非整数の両方であるかがわからない場合は、いくつかのオプションがあります。 この機能がリリースされるまで待ってから、エクスプローラー UI で未加工のイベントを調査して、2 つの別々の列に保存されているプロパティを把握することができます。 すべての数値タグに対して以下の変更を事前に加えることも、イベントのサブセットをストレージに一時的にルーティングして、スキーマについて十分に理解して調査することもできます。 イベントを保存するには、Event Hubs に対して[イベント キャプチャ](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)を有効にするか、IoT Hub から Azure Blob Storage に[ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage)します。 データは、[Event Hub Explorer](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer) を使用して、または[イベント プロセッサ ホスト](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)を使用して監視することもできます。 IoT Hub を使用する場合は、組み込みエンドポイントにアクセスする方法について、[こちら](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)のドキュメントを参照してください。
+- Azure Time Series Insights TSI Explorer
+- Microsoft の API を使用する任意のカスタム クライアント
 
-これらの変更の影響を受けていて、上記の日付までに変更できない場合は、中断が発生する可能性があることに注意してください。この場合、クエリ API または Time Series Insights Explorer を使用してアクセスされた、影響を受けるタイム シリーズ変数は、*null* を返します (つまり、エクスプローラーにデータが表示されません)。
+IoT ソリューションと制約によっては、Azure Time Series Insights Gen2 環境に送信されるデータを表示できない場合があります。 データが整数のみであるか、整数と非整数の両方であるかがわからない場合は、いくつかのオプションがあります。
+
+- 機能がリリースされるまで待つことができます。 その後、エクスプローラー UI で未加工のイベントを調査して、2 つの別々の列に保存されているプロパティを把握することができます。
+- 事前にすべての数値タグに対して推奨される変更を行うことができます。
+- イベントのサブセットをストレージに一時的にルーティングして、スキーマについて十分に理解して調査することができます。
+
+イベントを保存するには、Azure Event Hubs に対して[イベント キャプチャ](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)を有効にするか、IoT Hub から Azure Blob Storage に[ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage)します。
+
+データは、[Event Hub Explorer](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer) を使用して、または[イベント プロセッサ ホスト](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)を使用して監視することもできます。
+
+IoT Hub を使用する場合、組み込みのエンドポイントへのアクセス方法については、「[デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)」を参照してください。
+
+> [!NOTE]
+> 推奨される変更を加えないと、中断が発生する可能性があります。 たとえば、クエリ API または Time Series Insights エクスプローラーを介してアクセスされる、影響を受ける Time Series Insights 変数によって、**null** が返されます (つまり、エクスプローラーにデータが表示されません)。
 
 ## <a name="recommended-changes"></a>推奨される変更
 
-ケース 1 および 2: **タイム シリーズ モデル変数を使用し、整数データ型のみを送信するか、またはテレメトリ データで整数型と非整数型の両方を送信します。**
+### <a name="case-1-using-time-series-model-variables-and-sending-only-integral-data-types-in-telemetry-data"></a>ケース 1: タイム シリーズ モデル変数を使用していて、テレメトリ データで整数データ型のみを送信している
 
-現時点で整数のテレメトリ データを送信している場合、データは "propertyValue_double" と "propertyValue_long" の 2 つの列に分割されます。
+ケース 1 の推奨される変更は、ケース 2 の場合と同じです。 ケース 2 のセクションの指示に従ってください。
 
-変更が有効になり、"propertyValue_double" 内の以前に取り込まれた (および将来取り込まれる) 数値データがコピーされない場合は、整数データが "propertyValue_long" に書き込まれます。
+### <a name="case-2-using-time-series-model-variables-and-sending-both-integral-and-nonintegral-types-in-telemetry-data"></a>ケース 2: タイム シリーズ モデル変数を使用していて、テレメトリ データで整数型と非整数型の両方を送信している
 
-"PropertyValue" プロパティに対してこれら 2 つの列のデータのクエリを実行する場合は、TSX で *coalesce()* スカラー関数を使用する必要があります。 この関数は、同じ DataType の引数を受け取り、引数リスト内の最初の null 以外の値を返します (詳細については、[こちら](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)を参照してください)。
+現在、整数のテレメトリ データを送信している場合、データは次の 2 つの列に分割されます。
 
-### <a name="variable-definition-in-time-series-explorer---numeric"></a>Time Series エクスプローラーでの変数の定義 - 数値
+- **propertyValue_double**
+- **propertyValue_long**
+
+整数データは **propertyValue_long** に書き込まれます。 以前に **propertyValue_double** に取り込まれた (および今後取り込まれる) 数値データはコピーされません。
+
+**propertyValue** プロパティに対してこれら 2 つの列のデータのクエリを実行する場合は、TSX で **coalesce()** スカラー関数を使用する必要があります。 この関数によって、同じ **DataType** の引数が受け取られ、引数リスト内の最初の null 以外の値が返されます。 詳細については、[Azure Time Series Insights Gen2 データ アクセスの概念](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax#other-functions)に関するページを参照してください。
+
+#### <a name="variable-definition-in-tsx---numeric"></a>TSX の変数定義 - 数値
 
 *前の変数の定義:*
 
@@ -57,9 +78,9 @@ IoT ソリューションと制約によっては、Azure Time Series Insights G
 
 [![新しい変数の定義](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-*“coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))”* を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
+**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)として使用することもできます。
 
-### <a name="inline-variable-definition-using-time-series-query-apis---numeric"></a>Time Series Query API を使用したインライン変数の定義 - 数値
+#### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>TSX クエリ API を使用したインライン変数の定義 - 数値
 
 *前の変数の定義:*
 
@@ -105,16 +126,16 @@ IoT ソリューションと制約によっては、Azure Time Series Insights G
 }
 ```
 
-*“coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))”* を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
+**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)として使用することもできます。
 
 > [!NOTE]
-> これらの変数は、使用される可能性のあるすべての場所 (タイム シリーズ モデル、保存済みのクエリ、Power BI コネクタのクエリ) で更新することをお勧めします。
+> これらの変数は、使用されている可能性があるすべての場所で更新することをお勧めします。 このような場所には、タイム シリーズ モデル、保存されたクエリ、Power BI コネクタのクエリなどがあります。
 
-ケース 3: **カテゴリ変数を使用した整数値のカテゴリへのマッピング**
+### <a name="case-3-using-categorical-variables-to-map-integer-values-to-categories"></a>ケース 3: カテゴリ変数を使用した整数値のカテゴリへのマッピング
 
-現時点で整数値をカテゴリにマップするカテゴリ変数を使用している場合は、toLong 関数を使用して Double 型から Long 型にデータを変換している可能性があります。 上記の場合と同様に、Double と Long の DataType の列を結合する必要があります。
+現時点で整数値をカテゴリにマップするカテゴリ変数を使用している場合は、**toLong** 関数を使用して **Double** 型から **Long** 型にデータを変換している可能性があります。 ケース 1 および 2 と同様に、**Double** と **Long** の **DataType** 列を結合する必要があります。
 
-### <a name="variable-definition-in-time-series-explorer---categorical"></a>Time Series エクスプローラーでの変数の定義 - カテゴリ
+#### <a name="variable-definition-in-time-series-explorer---categorical"></a>Time Series エクスプローラーでの変数の定義 - カテゴリ
 
 *前の変数の定義:*
 
@@ -124,11 +145,11 @@ IoT ソリューションと制約によっては、Azure Time Series Insights G
 
 [![新しい変数の定義](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-*“coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))”* を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
+**coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))** を、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)として使用することもできます。
 
-カテゴリ変数では、値を整数型にする必要があります。 coalesce() 内のすべての引数の DataType は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)で Long 型である必要があります。
+カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)で **Long** 型である必要があります。
 
-### <a name="inline-variable-definition-using-time-series-query-apis---categorical"></a>Time Series Query API を使用したインライン変数の定義 - カテゴリ
+#### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>TSX クエリ API を使用したインライン変数の定義 - カテゴリ
 
 *前の変数の定義:*
 
@@ -206,19 +227,19 @@ IoT ソリューションと制約によっては、Azure Time Series Insights G
 }
 ```
 
-カテゴリ変数では、値を整数型にする必要があります。 coalesce() 内のすべての引数の DataType は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)で Long 型である必要があります。
+カテゴリ変数では、値を整数型にする必要があります。 **coalesce()** 内のすべての引数の **DataType** は、カスタムの [Time Series 式](https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax)で **Long** 型である必要があります。
 
 > [!NOTE]
-> これらの変数は、使用される可能性のあるすべての場所 (タイム シリーズ モデル、保存済みのクエリ、Power BI コネクタのクエリ) で更新することをお勧めします。
+> これらの変数は、使用されている可能性があるすべての場所で更新することをお勧めします。 このような場所には、タイム シリーズ モデル、保存されたクエリ、Power BI コネクタのクエリなどがあります。
 
-ケース 4:**JavaScript SDK を使用したカスタム フロントエンド アプリケーションの構築**
+### <a name="case-4-using-the-javascript-sdk-to-build-a-custom-front-end-application"></a>ケース 4:JavaScript SDK を使用したカスタム フロントエンド アプリケーションの構築
 
-上記のケース 1 ～ 3 の影響を受けていて、カスタム アプリケーションを構築する場合は、上記の例に示すように、*coalesce()* 関数を使用するようにクエリを更新する必要があります。
+ケース 1 - 3 の影響を受けていて、カスタム アプリケーションを構築する場合は、前の例で示したように、**coalesce()** 関数を使用するようにクエリを更新する必要があります。
 
-ケース 5: **Warm ストアの 1,000 個のプロパティの上限に近づいている**
+### <a name="case-5-nearing-warm-store-1000-property-limit"></a>ケース 5: Warm ストアの 1,000 個のプロパティの上限に近づいている
 
-多数のプロパティがある Warm ストアのユーザーで、この変更によって環境が 1,000 個の WS プロパティ名の制限を超える可能性がある場合は、Azure portal からサポート チケットを送信し、この通信を伝えてください。
+多数のプロパティがあるウォーム ストアのユーザーで、この変更によって環境が 1,000 個のウォーム ストアのプロパティ名の制限を超える可能性がある場合は、Azure portal からサポート チケットを送信し、この通信を伝えてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* サポートされているデータ型の完全な一覧については、[サポートされているデータ型](concepts-supported-data-types.md)を参照してください。
+- [サポートされているデータ型](concepts-supported-data-types.md)の完全な一覧を表示します。

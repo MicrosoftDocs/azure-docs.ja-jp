@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 03d4c2e0685ea165cbad524360a3db6e6c809733
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: faa98f1c52cfe2dd0e19f085f4d33dedb6f01851
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146130"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934890"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>あいまい検索によるスペルミスと入力ミスの修正
 
@@ -136,5 +136,5 @@ search=scal~&highlight=Description
 
 + [Azure Cognitive Search のフルテキスト検索のしくみ (クエリ解析アーキテクチャ)](search-lucene-query-architecture.md)
 + [Search エクスプローラー](search-explorer.md)
-+ [.NET におけるクエリの実行方法](search-query-dotnet.md)
-+ [REST におけるクエリの実行方法](search-create-index-rest-api.md)
++ [.NET におけるクエリの実行方法](./search-get-started-dotnet.md)
++ [REST におけるクエリの実行方法](./search-get-started-powershell.md)

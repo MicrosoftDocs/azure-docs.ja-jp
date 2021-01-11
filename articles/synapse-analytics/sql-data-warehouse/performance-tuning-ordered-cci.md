@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 6cd81031f27d772912383fa050e0f946bf9964c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 454e205904b3623bdb5adc906465f01abd77092a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204661"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795611"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>順序指定クラスター化列ストア インデックスを使用したパフォーマンス チューニング  
 
@@ -48,6 +48,9 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 
 
 ```
+
+>[!TIP]
+> Synapse SQL のパフォーマンスを向上させるには、永続的なユーザー テーブルで、**sys.pdw_table_mappings** ではなく **sys.pdw_permanent_table_mappings** を使用することを検討してください。 詳細については、「 **[sys.pdw_permanent_table_mappings &#40;Transact-SQL&#41;](/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=azure-sqldw-latest)** 」を参照してください。
 
 > [!NOTE] 
 > 順序指定 CCI テーブルで、DML またはデータ読み込み操作によって同一バッチから作成された新しいデータは、そのバッチの範囲内で並べ替えられます。テーブル内の全データを対象としたグローバルな並べ替えは実行されません。  ユーザーは、順序指定 CCI を再構築して、テーブ内のすべてのデータを並べ替えることができます。  Synapse SQL では、列ストア インデックスの再構築はオフライン操作です。  パーティション テーブルの場合、再構築は一度に 1 つのパーティションずつ実行されます。  再構築されるパーティション内のデータは "オフライン" であり、そのパーティションの再構築が完了するまで使用できません。 

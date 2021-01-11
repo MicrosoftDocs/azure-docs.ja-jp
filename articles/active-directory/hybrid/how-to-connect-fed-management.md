@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58bc154f4ffb234df52faf3c02b5ed7ecaf77c2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 72339d9ce492446d05f23b63ac2d0a1c2d62f766
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830929"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276781"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
 この記事では、Azure Active Directory (Azure AD) Connect を使用して、Active Directory フェデレーション サービス (AD FS) を管理およびカスタマイズする方法について説明します。 また、AD FS ファームの完全な構成のために必要となる可能性のある他の一般的な AD FS タスクについても説明します。
@@ -85,7 +85,7 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
     KB が欠落している場合、構成を修正するには、必要な [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590)をインストールしたあと、[[AAD と AD FS 信頼を修復します]](#repairthetrust) を使用して信頼を修復します。
 
 > [!NOTE]
-> 代替 ID および手動構成の手順の詳細については、「[代替ログイン ID の構成](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
+> 代替 ID および手動構成の手順の詳細については、「[代替ログイン ID の構成](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)」を参照してください。
 
 ## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>AD FS サーバーを追加する 
 
@@ -174,7 +174,7 @@ Azure AD Connect を使用すると、Azure AD とのフェデレーションを
 
    ![Azure AD domain](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    ドメインを選択すると、ウィザードによって今後実行されるアクションと構成の影響に関する適切な情報が表示されます。 Azure AD でまだ確認されていないドメインを選択すると、ドメインの確認に役立つ情報が表示される場合もあります。 詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md) 」を参照してください。
+    ドメインを選択すると、ウィザードによって今後実行されるアクションと構成の影響に関する適切な情報が表示されます。 Azure AD でまだ確認されていないドメインを選択すると、ドメインの確認に役立つ情報が表示される場合もあります。 詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../fundamentals/add-custom-domain.md) 」を参照してください。
 
 5. **[次へ]** をクリックします。 **[構成の準備完了]** ページに、Azure AD Connect によって実行されるアクションの一覧が表示されます。 **[インストール]** をクリックして構成を終了します。
 
@@ -207,7 +207,7 @@ Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requi
 ```
 
 ## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>AD FS の要求規則を変更する 
-AD FS では、カスタム要求規則の作成に使用できる、機能豊富な要求言語がサポートされています。 詳細については、「 [要求規則言語の役割](https://technet.microsoft.com/library/dd807118.aspx)」を参照してください。
+AD FS では、カスタム要求規則の作成に使用できる、機能豊富な要求言語がサポートされています。 詳細については、「 [要求規則言語の役割](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807118(v=ws.11))」を参照してください。
 
 以下のセクションでは、Azure AD と AD FS のフェデレーションに関連するいくつかのシナリオ向けにカスタム規則を作成する方法について説明します。
 

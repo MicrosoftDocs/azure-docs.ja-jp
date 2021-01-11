@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 06/25/2020
 ms.reviwer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 1ee4c8a52098bfa7c012e85f25371c306b106b86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5e786a64d7d9606a3a99a3f1b3f8c67c9869cd1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029435"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830684"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
 **問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
@@ -23,7 +23,7 @@ ms.locfileid: "87029435"
 次のような点を検討します。
 
 * 各 VM の vCPU 数はいくつですか。すべての vCPU を読み込んでいますか。
-  上の例の Azure クイックスタート テンプレートには do_work.php スクリプトが含まれ、1 つの vCPU が読み込まれます。 Standard_A1 や D1 などの単一 vCPU の VM よりも大きいサイズの VM を使用する場合は、この負荷を複数回読み込む必要があります。 VM の vCPU 数を確認する方法については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+  上の例の Azure クイックスタート テンプレートには do_work.php スクリプトが含まれ、1 つの vCPU が読み込まれます。 Standard_A1 や D1 などの単一 vCPU の VM よりも大きいサイズの VM を使用する場合は、この負荷を複数回読み込む必要があります。 VM の vCPU 数を確認する方法については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 * 仮想マシン スケール セット内の VM 数はいくつですか。VM ごとに設定を行っていませんか。
   
     自動スケール規則で定義された時間内に、スケール セット内の**すべての** VM における平均 CPU 使用率がしきい値を超えた場合にのみ、スケールアウト イベントが発生します。

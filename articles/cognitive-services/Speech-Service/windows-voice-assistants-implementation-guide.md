@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 726dd4e18565174c8bbf49b204af64129e607db5
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a529875536c2feafe05695e5d20daed0873a95e6
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714731"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934448"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Windows の音声アシスタントの実装
 

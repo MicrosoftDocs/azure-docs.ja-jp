@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bcbbd9378b6ea861c926eed16d2ceed8131b913
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720012"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082751"
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process の役割とタスク
 
@@ -107,7 +107,7 @@ Team Data Science Process (TDSP) は、構造化された手法で予測分析�
 
 ## <a name="data-science-project-execution-workflow"></a>データ サイエンス プロジェクトの実行ワークフロー
 
-該当するチュートリアルに従うことにより、データ サイエンティスト、プロジェクト リーダー、チーム リーダーは作業項目を作成して、プロジェクトのすべてのタスクおよび段階を終始追跡できます。 また、Azure Repos を使用し、データ サイエンティスト間の共同作業を促進し、プロジェクトの実行中に生成されるアーティファクトをプロジェクト メンバー全員でバージョン管理し、共有することができます。 Azure DevOps を使用すると、Azure Boards のお使いの作業項目をお使いの Azure Repos リポジトリの分岐にリンクして、作業項目に対して行われた処理を簡単に追跡できます。
+該当するチュートリアルに従うことにより、データ サイエンティスト、プロジェクト リーダー、チーム リーダーは作業項目を作成して、プロジェクトのすべてのタスクおよび段階を終始追跡できます。 また、Azure Repos を使用し、データ サイエンティスト間の共同作業を促進し、プロジェクトの実行中に生成されるアーティファクトをプロジェクト メンバー全員でバージョン管理し、共有することができます。 Azure DevOps を使用すると、Azure Boards のお使いの作業項目をお使いの Azure Repos リポジトリのブランチにリンクして、作業項目に対して行われた処理を簡単に追跡できます。
 
 次の図は、プロジェクトを遂行する TDSP ワークフローの概要です。
 
@@ -116,8 +116,8 @@ Team Data Science Process (TDSP) は、構造化された手法で予測分析�
 このワークフローの手順は、次の 3 つのアクティビティにグループ化できます。
 
 - プロジェクト リーダーによるスプリント計画の実施
-- データ サイエンティストによる作業項目に対処するための `git` 分岐上のアーティファクトの開発
-- プロジェクト リーダーまたは他のチーム メンバーによるコードのレビューと、作業分岐のマスター分岐へのマージ
+- データ サイエンティストによる作業項目に対処するための `git` ブランチ上のアーティファクトの開発
+- プロジェクト リーダーまたは他のチーム メンバーによるコードのレビューと、作業ブランチのプライマリブランチへのマージ
 
 プロジェクト実行のワークフローの詳細な手順については、「[データ サイエンス プロジェクトのアジャイル開発](agile-development.md)」を参照してください。
 

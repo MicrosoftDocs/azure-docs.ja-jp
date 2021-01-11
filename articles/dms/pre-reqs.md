@@ -127,7 +127,7 @@ Azure Database Migration Service を使用して SQL Server から Azure SQL Dat
 
 ## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>SQL Server から Azure SQL Managed Instance への移行の前提条件
 
-* SQL マネージド インスタンスを作成します。手順の詳細については、[Azure portal で Azure SQL マネージド インスタンスを作成する方法](https://aka.ms/sqldbmi)に関する記事を参照してください。
+* SQL Managed Instance を作成します。手順の詳細については、[Azure portal で Azure SQL Managed Instance を作成する方法](https://aka.ms/sqldbmi)に関する記事を参照してください。
 * Azure Database Migration Service の IP アドレスまたはサブネット範囲でポート 445 の SMB トラフィックを許可するようにファイアウォールを開きます。
 * Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
 * 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。

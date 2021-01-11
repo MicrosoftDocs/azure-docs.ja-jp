@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Machines 上の SQL Server に関するドキュメントの変更 | Microsoft Docs
-description: Azure Virtual Machines 上の SQL Server の新機能と機能改善について説明します。
+description: Azure Virtual Machines 上の SQL Server のさまざまなリリースにおける新機能と機能改善について説明します。
 services: virtual-machines-windows
 author: MashaMSFT
 ms.author: mathoma
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/06/2020
-ms.openlocfilehash: 8474b49e3e6b12a613de19df055cbf6e43fb0aa2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df1e1e90b35c29678151d4f9159195f829022a62
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503790"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236626"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | [変更点] | 詳細 |
 | --- | --- |
 | **分散ネットワーク名 (DNN)** | Windows Server 2016 以降の SQL Server 2019 では、Azure Load Balancer を使用する代わりに[分散ネットワーク名](hadr-distributed-network-name-dnn-configure.md)を使用してフェールオーバー クラスター インスタンス (FCI) にトラフィックをルーティングするためのサポートをプレビュー公開しています。 このサポートにより、Azure の高可用性 (HA) ソリューションへの接続が簡素化および合理化されます。 | 
-| **Azure 共有ディスクを使用した FCI** | Windows Server 2016 以降の仮想マシン上の SQL Server 2019 で [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)を使用して、[フェールオーバー クラスター インスタンス (FCI)](failover-cluster-instance-overview.md) をデプロイできるようになりました。 |
+| **Azure 共有ディスクを使用した FCI** | [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)を使用し、[フェールオーバー クラスター インスタンス (FCI)](failover-cluster-instance-overview.md) をデプロイできるようになりました。 |
 | **再構成された FCI のドキュメント** | 書き直しおよび再構成により、[Azure VM 上の SQL Server を使用したフェールオーバー クラスター インスタンス](failover-cluster-instance-overview.md)に関するドキュメントがわかりやすくなりました。 [クラスター構成のベスト プラクティス](hadr-cluster-best-practices.md)、[SQL Server FCI 用の仮想マシン](failover-cluster-instance-prepare-vm.md)を準備する方法、[Azure Load Balancer](hadr-vnn-azure-load-balancer-configure.md) を構成する方法など、構成コンテンツの一部が分けられました。 | 
 | &nbsp; | &nbsp; |
 

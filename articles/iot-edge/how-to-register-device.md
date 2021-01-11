@@ -8,13 +8,14 @@ ms.date: 01/08/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
+ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 2ac6a38d99f588c9dbab7a40bc092aa01b27649a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0f41dbb4e6231e804249c3fce3dfc8275dcc00aa
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83726011"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489012"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Azure IoT Edge デバイスを登録する
 

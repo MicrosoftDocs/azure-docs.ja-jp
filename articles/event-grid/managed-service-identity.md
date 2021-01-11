@@ -3,12 +3,12 @@ title: マネージド サービス ID を使用したイベント配信
 description: この記事では、Azure イベント グリッド トピックに対してマネージド サービス ID を有効にする方法を説明します。 これを使用して、サポートされている配信先にイベントを転送します。
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: c05eb2e78595e962494a60b1ffa8ead899aa0109
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7eaa3ddd43cc68a99ad7c2bab66630f30d4960c9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371262"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534245"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>マネージド ID を使用したイベント配信
 この記事では、Azure イベント グリッド トピックまたはドメインに対して、[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする方法を説明します。 これを使用して、Service Bus のキューとトピック、イベント ハブ、ストレージ アカウントなどの、サポートされている配信先にイベントを転送します。
@@ -63,20 +63,20 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 
 既存のドメインを更新するコマンドも同様です (`az eventgrid domain update`)。
 
-## <a name="supported-destinations-and-rbac-roles"></a>サポートされている配信先と RBAC ロール
-イベント グリッド トピックまたはドメインに対して ID を有効にすると、Azure によって Azure Active Directory 内で自動的に ID が作成されます。 トピックまたはドメインによってサポート対象の配信先にイベントを転送できるように、適切なロールベースのアクセス制御 (RBAC) ロールにこの ID を追加します。 たとえば、ある Azure Event Hubs 名前空間の **Azure Event Hubs データ送信者**ロールに ID を追加すると、イベント グリッド トピックによってその名前空間のイベント ハブにイベントを転送できるようになります。 
+## <a name="supported-destinations-and-azure-roles"></a>サポートされている配信先と Azure ロール
+イベント グリッド トピックまたはドメインに対して ID を有効にすると、Azure によって Azure Active Directory 内で自動的に ID が作成されます。 トピックまたはドメインによってサポート対象の配信先にイベントを転送できるように、適切な Azure ロールにこの ID を追加します。 たとえば、ある Azure Event Hubs 名前空間の **Azure Event Hubs データ送信者**ロールに ID を追加すると、イベント グリッド トピックによってその名前空間のイベント ハブにイベントを転送できるようになります。 
 
 現在、Azure イベント グリッド では、システム割り当てマネージド ID で構成されたトピックやドメインによって、次の配信先にイベントを転送することをサポートしています。 この表は、トピックによってイベントを転送できるようにするために、ID を含めるべきロールも示しています。
 
-| 到着地 | RBAC ロール | 
+| 到着地 | Azure ロール | 
 | ----------- | --------- | 
 | Service Bus のキューとトピック | [Azure Service Bus データ送信者](../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus) |
 | Azure Event Hubs | [Azure Event Hubs データ送信者](../event-hubs/authorize-access-azure-active-directory.md#azure-built-in-roles-for-azure-event-hubs) | 
-| Azure BLOB ストレージ | [ストレージ BLOB データ共同作成者](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) |
-| Azure Queue Storage |[ストレージ キュー データ メッセージ送信者](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues) | 
+| Azure BLOB ストレージ | [ストレージ BLOB データ共同作成者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) |
+| Azure Queue Storage |[ストレージ キュー データ メッセージ送信者](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues) | 
 
-## <a name="add-an-identity-to-rbac-roles-on-destinations"></a>ID を配信先の RBAC ロールに追加する
-このセクションでは、トピックまたはドメインの ID を RBAC ロールに追加する方法を説明します。 
+## <a name="add-an-identity-to-azure-roles-on-destinations"></a>ID を配信先の Azure ロールに追加する
+このセクションでは、トピックまたはドメインの ID を Azure ロールに追加する方法について説明します。 
 
 ### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 トピックやドメインによってイベントを配信先に転送できるようにするために、Azure portal を使用して、トピックやドメインの ID を適切なロールに割り当てることができます。 
@@ -94,7 +94,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 表に示されている他のロールへの ID の追加の手順も同様です。 
 
 ### <a name="use-the-azure-cli"></a>Azure CLI の使用
-このセクションの例では、Azure CLI を使用して ID を RBAC ロールに追加する方法を説明します。 サンプル コマンドは、イベント グリッド トピックのものです。 イベント グリッド ドメインのコマンドも同様です。 
+このセクションの例では、Azure CLI を使用して ID を Azure ロールに追加する方法を説明します。 サンプル コマンドは、イベント グリッド トピックのものです。 イベント グリッド ドメインのコマンドも同様です。 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>トピックのシステム ID のプリンシパル ID を取得する 
 最初に、トピックのシステム マネージド ID のプリンシパル ID を取得して、その ID を適切なロールに割り当てます。

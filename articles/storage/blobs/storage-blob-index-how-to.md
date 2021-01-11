@@ -8,12 +8,13 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: hux
-ms.openlocfilehash: 6e3ce99211da35105fd9e118a850110dfd48ece1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: adc510ef89a912e6d76949794aacbf130a8f066d
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986287"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018877"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する
 
@@ -32,11 +33,9 @@ BLOB インデックスの詳細については、「[BLOB インデックスを
 # <a name="net"></a>[.NET](#tab/net)
 BLOB インデックスがパブリック プレビューであるため、.NET ストレージ パッケージはプレビュー NuGet フィードでリリースされます。 このライブラリは、今から一般公開されるまでに変更される可能性があります。 
 
-1. Visual Studio で、NuGet パッケージ ソースに `https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json` URL を追加します。 
+1. Visual Studio プロジェクトをセットアップして、.NET 用 Azure Blob Storage クライアント ライブラリ v12 の使用を開始します。 詳細については、[.NET クイックスタート](storage-quickstart-blobs-dotnet.md)を参照してください
 
-   詳細については、「[パッケージ ソース](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)」を参照してください。
-
-2. NuGet パッケージ マネージャーで、**Azure.Storage.Blobs** パッケージを見つけて、バージョン **12.5.0-dev.20200422.2** をプロジェクトにインストールします。 コマンド ```Install-Package Azure.Storage.Blobs -Version 12.5.0-dev.20200422.2``` を実行することもできます
+2. NuGet パッケージ マネージャーで、**Azure.Storage.Blobs** パッケージを見つけて、バージョン **12.5.0-preview.6** 以降をプロジェクトにインストールします。 コマンド ```Install-Package Azure.Storage.Blobs -Version 12.5.0-preview.6``` を実行することもできます
 
    詳細については、「[パッケージを検索してインストールする](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)」を参照してください。
 
@@ -70,7 +69,9 @@ using System.Threading.Tasks;
 ![BLOB インデックス タグを使用してデータをアップロードする](media/storage-blob-index-concepts/blob-index-upload-data-with-tags.png)
 
 # <a name="net"></a>[.NET](#tab/net)
+
 次の例は、作成時にタグが設定される追加 BLOB を作成する方法を示しています。
+
 ```csharp
 static async Task BlobIndexTagsOnCreate()
    {
@@ -84,7 +85,7 @@ static async Task BlobIndexTagsOnCreate()
 
           // Create an append blob
           AppendBlobClient appendBlobWithTags = container.GetAppendBlobClient("myAppendBlob0.logs");
-         
+
           // Blob Index tags to upload
           CreateAppendBlobOptions appendOptions = new CreateAppendBlobOptions();
           appendOptions.Tags = new Dictionary<string, string>

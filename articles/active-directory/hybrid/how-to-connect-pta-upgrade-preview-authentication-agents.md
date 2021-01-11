@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d27018a19db85e8544029db4f1b638ef7cae448a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358142"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279484"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory パススルー認証: 認証エージェント (プレビュー) のアップグレード
 
@@ -60,7 +60,7 @@ ms.locfileid: "85358142"
 
 アップグレードの前に、次のことを行っておく必要があります。
 
-1. **クラウド専用のグローバル管理者アカウントを作成する**: パススルー認証エージェントが正常に動作していない緊急の状況で使うクラウド専用のグローバル管理者アカウントを用意しないで、アップグレードを行わないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
+1. **クラウド専用のグローバル管理者アカウントを作成する**: パススルー認証エージェントが正常に動作していない緊急の状況で使うクラウド専用のグローバル管理者アカウントを用意しないで、アップグレードを行わないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../fundamentals/add-users-azure-active-directory.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
 2.  **高可用性を確保する**: まだ行っていない場合、[こちらの説明](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)に従って、サインイン要求に高可用性を提供するための 2 番目のスタンドアロン認証エージェントをインストールします。
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Azure AD Connect サーバーの認証エージェントをアップグレードする

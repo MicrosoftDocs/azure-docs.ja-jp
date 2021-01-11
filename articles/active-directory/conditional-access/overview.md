@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: fb8687c091e8c34ad1fbae2a50981327b3994b6e
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 6475fc61502a82844605ba267db5f8da984c8de6
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051940"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948880"
 ---
 # <a name="what-is-conditional-access"></a>条件付きアクセスとは
 
@@ -38,7 +38,8 @@ ms.locfileid: "85051940"
 
 ![概念的な条件付きアクセスのプロセス フロー](./media/overview/conditional-access-overview-how-it-works.png)
 
-条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する組織の防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセス権を判定できます。
+> [!IMPORTANT]
+> 条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する組織の防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセス権を判定できます。
 
 ## <a name="common-signals"></a>一般的なシグナル
 
@@ -99,6 +100,6 @@ Azure AD の条件付きアクセスを使用して、自動化されたアク�
 
 - [条件付きアクセス ポリシーを 1 つずつ作成する](concept-conditional-access-policies.md)
 - [条件付きアクセスのデプロイを計画する](plan-conditional-access.md)
-- [Identity Protection について学ぶ](../identity-protection/overview-v2.md)
+- [Identity Protection について学ぶ](../identity-protection/overview-identity-protection.md)
 - [Microsoft Cloud App Security について学ぶ](/cloud-app-security/what-is-cloud-app-security)
 - [Microsoft Intune について学ぶ](/intune/index)

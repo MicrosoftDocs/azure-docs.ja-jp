@@ -6,13 +6,14 @@ ms.author: banders
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.openlocfilehash: 904ea7a50e4546d2721a9e701c78b6b77ed2d43a
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84791284"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683183"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 

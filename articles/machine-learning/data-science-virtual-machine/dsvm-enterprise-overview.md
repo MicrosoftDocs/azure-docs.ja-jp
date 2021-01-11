@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 03fdbf6979db3249d1322a3025b48de81b953ae1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b1357c9bb125cb881ac4aa6dd31c9dcaf53954f0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856218"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919941"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>データ サイエンス仮想マシンに基づくチーム分析と AI 環境 
 [Data Science Virtual Machine](overview.md) (DSVM) では、人工知能 (AI) およびデータ分析用にあらかじめ構築されているソフトウェアで、Azure プラットフォーム上にリッチな環境を提供します。
@@ -40,7 +40,7 @@ DSVM は、Azure インフラストラクチャ レベルで動作するため�
 * [ネットワークのセキュリティ](https://docs.microsoft.com/azure/security/fundamentals/network-security)
 * [監視](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)と[管理](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [ログ記録と監査](https://docs.microsoft.com/azure/security/fundamentals/log-audit)
-* [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [ポリシーの設定と適用](../../governance/policy/overview.md)
 * [マルウェア対策](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
 * [暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)

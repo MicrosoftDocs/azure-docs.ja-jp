@@ -1,5 +1,5 @@
 ---
-title: Azure Arc 対応のクラスター構成に対して GitOps を使用する (プレビュー)
+title: Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,24 +8,24 @@ author: mlearned
 ms.author: mlearned
 description: Azure Arc 対応のクラスター構成に対して GitOps を使用する (プレビュー)
 keywords: GitOps、Kubernetes、K8s、Azure、Arc、Azure Kubernetes Service、コンテナー
-ms.openlocfilehash: 890b35aac33a6fa207a71d76143997a1b93116bf
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: e25fdf3a51b3e9264c85707df31d3a4d107b25ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856987"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049965"
 ---
-# <a name="use-gitops-for-an-azure-arc-enabled--configuration-preview"></a>Azure Arc 対応の構成に GitOps を使用する (プレビュー)
+# <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Arc 対応 Kubernetes クラスターに対して GitOps を使用して構成をデプロイする (プレビュー)
 
-このアーキテクチャでは、GitOps ワークフローを使用してクラスターが構成され、アプリケーションがデプロイされます。 構成は .yaml ファイルで宣言によって記述され、Git に格納されています。 エージェントでは、Git リポジトリの変更が監視され、適用されます。  この同じエージェントによって、クラスターの状態が Git リポジトリで宣言された状態と一致することが定期的に保証され、管理されていない変更が発生した場合にクラスターは望ましい状態に戻されます。
+GitOps では、Git リポジトリ内で Kubernetes 構成 (デプロイ、名前空間など) の望ましい状態を宣言した後、ポーリングしたり、演算子を使用してこれらの構成をクラスターにプルベースで展開したりします。 このドキュメントでは、Azure Arc 対応 Kubernetes クラスターでのこのようなワークフローのセットアップについて説明します。
 
-クラスターと 1 つ以上の Git リポジトリの間の接続は、Azure Resource Manager で `sourceControlConfiguration` 拡張リソースとして追跡されます。 `sourceControlConfiguration` リソースのプロパティは、Kubernetes リソースが Git からお客様のクラスターへとフローする場所と方法を表します。 `sourceControlConfiguration` データは、データの機密性を確保するため、暗号化された状態で CosmosDb データベースに格納されます。
+クラスターと 1 つ以上の Git リポジトリの間の接続は、Azure Resource Manager で `sourceControlConfiguration` 拡張リソースとして追跡されます。 `sourceControlConfiguration` リソースのプロパティは、Kubernetes リソースが Git からお客様のクラスターへとフローする場所と方法を表します。 `sourceControlConfiguration` データの保存中は Azure Cosmos DB データベースに暗号化された状態で格納されるので、データの機密性が確保されます。
 
-クラスターで実行されている Azure Arc 対応の Kubernetes `config-agent` では、新規または更新された `sourceControlConfiguration` リソースが監視され、Git リポジトリ リンクの追加、更新、または削除が自動的に調整されます。
-
-同じパターンを使用して、異機種混合の環境全体にデプロイされているような、より大規模なクラスターのコレクションを管理できます。 たとえば、組織のベースライン構成を定義するリポジトリが 1 つあり、それを一度に数十の Kubernetes クラスターに適用しているとします。
+クラスターで実行されている `config-agent` は、Azure Arc 対応 Kubernetes リソースで新規または更新された `sourceControlConfiguration` の拡張リソースを監視し、Git リポジトリを監視するための Flux 演算子をデプロイし、`sourceControlConfiguration` に加えられた更新を伝達する役割を担います。 複数の `sourceControlConfiguration` リソースを同じ Azure Arc 対応 Kubernetes クラスター上の `namespace` スコープで作成し、マルチテナントを実現することもできます。 このような場合、各演算子はそれぞれの名前空間にのみ構成をデプロイできます。
 
 この Git リポジトリには、Namespace、ConfigMap、Deployment、DaemonSet などの有効な Kubernetes リソースを含めることができます。また、アプリケーションをデプロイするための Helm グラフを含めることもできます。 一般的なシナリオ セットとして、組織のベースライン構成の定義が含まれます。これには、一般的な RBAC ロールとバインド、監視エージェントまたはログ エージェント、またはクラスター全体のサービスが含まれる場合があります。
+
+同じパターンを使用して、異機種混合の環境全体にデプロイされているような、より大規模なクラスターのコレクションを管理できます。 たとえば、組織のベースライン構成を定義するリポジトリが 1 つあり、それを一度に数十の Kubernetes クラスターに適用しているとします。 [Azure Policy では、スコープ (サブスクリプションまたはリソース グループ) にあるすべての Azure Arc 対応 Kubernetes リソースで、特定のパラメーター セットを使用して `sourceControlConfiguration` の作成を自動化](use-azure-policy.md)できます。
 
 このファースト ステップ ガイドでは、クラスターと管理者のスコープを使用して一連の構成を適用する方法について説明します。
 
@@ -39,8 +39,8 @@ ms.locfileid: "85856987"
 **Deployment:** `cluster-config/azure-vote`
 **ConfigMap:** `team-a/endpoints`
 
-`config-agent` を使用すると、30 秒ごとに新規または更新された `sourceControlConfiguration` について Azure がポーリングされます。  これは、`config-agent` で新規または更新された構成の取得にかかる最大時間です。
-プライベート リポジトリを関連付ける場合は、[プライベート git リポジトリから構成を適用する](#apply-configuration-from-a-private-git-repository)手順も完了するようにします。
+`config-agent` は、新規または更新された `sourceControlConfiguration` を 30 秒ごと (`config-agent` が新規または更新された構成を取得するためにかかる最大時間) に Azure でポーリングします。
+`sourceControlConfiguration` を持つプライベート リポジトリを関連付ける場合は、[プライベート git リポジトリから構成を適用する](#apply-configuration-from-a-private-git-repository)手順も完了するようにします。
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
@@ -117,7 +117,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 構成の作成をカスタマイズするために、いくつかの追加パラメーターを次に示します。
 
-`--enable-helm-operator`:*省略可能*: Helm グラフの配置のサポートを有効にするように切り替えます。 既定では、この構成は無効です。
+`--enable-helm-operator`:*省略可能*: Helm グラフの配置のサポートを有効にするように切り替えます。
 
 `--helm-operator-chart-values`:*省略可能*: Helm 演算子 (有効な場合) のグラフの値。  たとえば、'--set helm.versions=v3' です。
 
@@ -125,7 +125,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 `--operator-namespace`:*省略可能*: オペレーターの名前空間の名前。 既定値: 'default'
 
-`--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases/prod' ``` のように指定します。
+`--operator-params`:*省略可能*: オペレーターのパラメーター。 単一引用符で囲む必要があります。 たとえば、```--operator-params='--git-readonly --git-path=releases' ``` のように指定します。
 
 --operator-params でサポートされているオプション
 
@@ -150,6 +150,9 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
    ```
 
 詳細については、[Flux のドキュメント](https://aka.ms/FluxcdReadme)を参照してください。
+
+> [!TIP]
+> sourceControlConfiguration は、Azure portal の Azure Arc 対応 Kubernetes リソース ブレードの **[構成]** タブで作成することもできます。
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>sourceControlConfiguration を確認する
 
@@ -206,7 +209,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>プライベート git リポジトリから構成を適用する
 
-プライベート git リポジトリを使用している場合、ループを閉じるためにもう 1 つのタスクを実行する必要があります。リポジトリで、`flux` によって生成された公開キーを**デプロイ キー**として追加する必要があります。
+プライベート git リポジトリを使用している場合、ループを閉じるためにもう 1 つのタスクを実行する必要があります。リポジトリで、`flux` によって生成された公開キーを**デプロイ キー**として追加します。
 
 **Azure CLI を使用して公開キーを取得する**
 
@@ -232,7 +235,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 5. 公開キーを貼り付けます (囲んでいる引用符は除きます)
 6. **[Add key]\(キーの追加\)** をクリックします
 
-デプロイ キーを管理する方法の詳細については、GitHub のドキュメントを参照してください。
+これらのキーを管理する方法の詳細については、GitHub のドキュメントを参照してください。
 
 **Azure DevOps リポジトリを使用している場合は SSH キーにキーを追加する**
 
@@ -292,9 +295,11 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>構成を削除する
 
-Azure CLI または Azure portal を使用して `sourceControlConfiguration` を削除できます。  delete コマンドを開始すると、Azure の `sourceControlConfiguration` リソースはすぐに削除されますが、クラスターから関連オブジェクトが完全に削除されるまでに最大 1 時間かかることがあります (これを短縮するためにバックログ項目が用意されています)。 `sourceControlConfiguration` が名前空間スコープで作成された場合、その名前空間はクラスターから削除されません (その名前空間で作成された可能性のある他のリソースが中断されないようにするため)。
+`sourceControlConfiguration` を削除するには、Azure CLI または Azure portal を使用します。  delete コマンドを開始すると、Azure の `sourceControlConfiguration` リソースはすぐに削除されますが、クラスターから関連オブジェクトが完全に削除されるまでに最大 1 時間かかることがあります (このタイムラグを短縮するためにバックログ項目が用意されています)。
 
-`sourceControlConfiguration` が削除されても、追跡対象の git リポジトリからのデプロイの結果としてクラスターに加えられた変更は削除されないことに注意してください。
+> [!NOTE]
+> 名前空間スコープを持つ sourceControlConfiguration を作成した後、名前空間で `edit` ロールがバインドされているユーザーは、この名前空間にワークロードをデプロイできます。 名前空間スコープを持つこの `sourceControlConfiguration` が削除されると、その名前空間はそのまま残り、他のワークロードが中断されることを防ぐために削除されません。
+> `sourceControlConfiguration` が削除されても、追跡対象の git リポジトリからのデプロイの結果としてクラスターに加えられた変更は削除されません。
 
 ```console
 az k8sconfiguration delete --name '<config name>' -g '<resource group name>' --cluster-name '<cluster name>' --cluster-type connectedClusters
@@ -308,5 +313,5 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クラスター構成に GitOps を Helm と共に使用する](./use-gitops-with-helm.md)
+- [ソース管理の構成で Helm を使用する](./use-gitops-with-helm.md)
 - [Azure Policy を使用してクラスター構成を管理する](./use-azure-policy.md)

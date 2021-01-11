@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3469b612081f9cb96beec98a065e0827d1c04b4c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118819"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261839"
 ---
-# <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate での AVS 評価:Server Assessment
+# <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>サーバー評価の概要 (Azure VMware Solution への移行)
 
 [Azure Migrate](migrate-services-overview.md) では、オンプレミスのアプリとワークロードの検出、評価、および移行を追跡するための中央ハブが提供されます。 また、Azure までプライベート クラウドとパブリック クラウドのインスタンスを追跡します。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
 
@@ -256,8 +256,8 @@ Azure VMware Solution (AVS) はプレビュー段階であるため、評価の�
 ## <a name="migration-tool-guidance"></a>移行ツールのガイダンス
 
 Azure VMware Solution (AVS) 評価の Azure 対応性レポートでは、次の推奨ツールを確認できます。 
-- **VMware HCX または Enterprise**:VMware マシンの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMWare Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/hybrid-cloud-extension-installation.md)。
-- **不明**:CSV ファイルを介してインポートされたマシンの場合、既定の移行ツールは不明です。 ただし VMware マシンの場合は、VMWare Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。
+- **VMware HCX または Enterprise**: VMware マシンの場合、オンプレミスのワークロードを Azure VMware Solution (AVS) プライベート クラウドに移行するために推奨される移行ツールは、VMware Hybrid Cloud Extension (HCX) ソリューションです。 [詳細については、こちらを参照してください](../azure-vmware/hybrid-cloud-extension-installation.md)。
+- **不明**:CSV ファイルを介してインポートされたマシンの場合、既定の移行ツールは不明です。 ただし VMware マシンの場合は、VMware Hybrid Cloud Extension (HCX) ソリューションを使用することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

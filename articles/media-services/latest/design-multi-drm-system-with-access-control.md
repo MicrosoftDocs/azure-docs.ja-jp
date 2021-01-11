@@ -10,18 +10,20 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/21/2018
+ms.topic: conceptual
+ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 3d02c335f6e950300a7ced36643e6276c3d8d16a
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957377"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298200"
 ---
-# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 
+# <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Over-the-Top (OTT) 用またはオンライン ストリーミング ソリューション用のデジタル著作権管理 (DRM) サブシステムの設計と構築は、複雑なタスクです。 通常、運営会社/オンライン ビデオ プロバイダーはこのタスクを専門の DRM サービス プロバイダーに外部委託します。 このドキュメントでは、OTT またはオンライン ストリーミング ソリューションでのエンド ツー エンドの DRM サブシステムの参照設計と参照実装について説明します。
 
@@ -214,7 +216,7 @@ ASP.NET MVC プレーヤー アプリ用に Azure AD をセットアップする
 Azure AD に関する情報:
 
 * 開発者向けの情報については、「[開発者のための Azure Active Directory](../../active-directory/develop/v2-overview.md)」をご覧ください。
-* 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-administer.md)」をご覧ください。
+* 管理者向けの情報については、「[Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-whatis.md)」をご覧ください。
 
 ### <a name="some-issues-in-implementation"></a>実装での問題
 

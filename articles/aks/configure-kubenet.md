@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: c5369d63c0937605cc288e3a90466e723e69d163
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 037e07a1d8a6a3b4016d00f1b5a68bffc9caf335
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255440"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543369"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -47,6 +47,17 @@ Azure CLI バージョン 2.0.65 以降がインストールされて構成さ�
 Azure でサポートされる UDR のルート数は最大 400 なので、AKS クラスターに 400 個より多くのノードを作成することはできません。 AKS [仮想ノード][virtual-nodes]や Azure ネットワーク ポリシーは、*kubenet* ではサポートされていません。  Kubernet でサポートされている [Calico ネットワーク ポリシー][calico-network-policies]をご利用ください。
 
 *Azure CNI* では、各ポッドは IP サブネット内の IP アドレスを受け取り、他のポッドやサービスと直接通信できます。 クラスターは、ユーザーが指定する IP アドレスの範囲まで拡大できます。 ただし、IP アドレスの範囲を事前に計画する必要があり、すべての IP アドレスは、ノードでサポートできるポッドの最大数に基づいて AKS ノードによって消費されます。 *Azure CNI* では、[仮想ノード][virtual-nodes]やネットワーク ポリシー (Azure または Calico) などの高度なネットワーク機能とシナリオがサポートされます。
+
+### <a name="limitations--considerations-for-kubenet"></a>kubenet に関する制限と考慮事項
+
+* kubenet の設計には、追加のホップが必要になるため、ポッド通信の待機時間がわずかに増加します。
+* kubenet を使用するには、ルート テーブルとユーザー定義ルートが必要になるため、操作が複雑になります。
+* kubenet の設計により、直接的なポッドのアドレス指定は kubenet ではサポートされていません。
+* Azure CNI クラスターとは異なり、複数の kubenet クラスターで 1 つのサブネットを共有することはできません。
+* **kubenet でサポートされていない機能**には次のものが含まれます。
+   * [Azure ネットワーク ポリシー](use-network-policies.md#create-an-aks-cluster-and-enable-network-policy)。ただし、Calico ネットワーク ポリシーは kubenet でサポートされています。
+   * [Windows ノード プール](windows-node-limitations.md)
+   * [仮想ノード アドオン](virtual-nodes-portal.md#known-limitations)
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP アドレスの使用可能性と不足
 

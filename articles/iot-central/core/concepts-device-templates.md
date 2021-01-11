@@ -7,12 +7,12 @@ ms.date: 05/21/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2d5009086a24a54c9a2ec4734d3c4dcbebb04475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1eab1022e9b0f03597c108c3c927909aa9bb2712
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84418642"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337111"
 ---
 # <a name="what-are-device-templates"></a>デバイス テンプレートとは
 
@@ -28,6 +28,9 @@ Azure IoT Central のデバイス テンプレートは、アプリケーショ�
 - "_クラウド プロパティ_"。 デバイス テンプレートのこの部分では、ソリューション開発者が、格納するデバイス メタデータを指定します。 クラウド プロパティがデバイスと同期されることはなく、アプリケーション内にのみ存在します。 クラウド プロパティは、DCM を実装するためにデバイス開発者が作成するコードには影響しません。
 - "_カスタマイズ_"。 デバイス テンプレートのこの部分では、ソリューション開発者が、DCM 内の一部の定義をオーバーライドします。 カスタマイズは、ソリューション開発者が、アプリケーションにより値が処理される方法を設定し直す必要がある場合に役立ちます。たとえば、プロパティの表示名の変更、テレメトリ値を表示するために使用する色の変更などがあります。 カスタマイズは、DCM を実装するためにデバイス開発者が作成するコードには影響しません。
 - "_ビュー_"。 デバイス テンプレートのこの部分では、ソリューション開発者が、デバイスからのデータを表示する視覚化と、デバイスの管理や制御を行うフォームを定義します。 ビューでは、DCM、クラウド プロパティ、カスタマイズが使用されます。 ビューは、DCM を実装するためにデバイス開発者が作成するコードには影響しません。
+
+> [!NOTE]
+> [IoT プラグ アンド プレイのパブリック プレビュー更新リリース](../../iot-pnp/overview-iot-plug-and-play.md) は、GA の開始前に IoT プラグ アンド プレイの認定を受けることができるデバイスの構築を開始するデバイス開発者と OEM を対象としています。
 
 ## <a name="device-capability-models"></a>デバイス機能モデル
 
@@ -221,6 +224,6 @@ IoT Central のデータ エクスポート機能を使用して、ストレー�
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス開発者として、デバイス テンプレートについて学んだので、次のステップとして、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を読み、デバイスを IoT Central に登録する方法と IoT Central でデバイスの接続を保護する方法の詳細を把握することをお勧めします。
+デバイス開発者としてデバイス テンプレートについて学習したので、推奨される次の手順は、[テレメトリ、プロパティ、およびコマンド ペイロード](./concepts-telemetry-properties-commands.md)を読み取り、デバイスが IoT Central とやり取りするデータの詳細について学ぶことです。
 
 ソリューション開発者として、次のステップでは、「[Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する](./howto-set-up-template.md)」を読み、デバイス テンプレートを作成する方法の詳細を把握することをお勧めします。

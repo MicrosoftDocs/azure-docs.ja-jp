@@ -55,7 +55,7 @@ ms.locfileid: "87290704"
 
 ## <a name="data-preparation-and-analysis"></a>データの準備と分析  
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、[Azure イベント ハブ](#azure-event-hub) サービスから取得した入力ストリームをほぼリアルタイムで分析できます。 次に結果を [Power BI](https://powerbi.microsoft.com) ダッシュボード上に公開し、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスによって処理するために、すべての未加工の受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブします。
+[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、[Azure Event Hub](#azure-event-hub) サービスから取得した入力ストリームをほぼリアルタイムで分析できます。 次に結果を [Power BI](https://powerbi.microsoft.com) ダッシュボード上に公開し、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスによって処理するために、すべての未加工の受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブします。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight カスタム集計
 HDInsight を使用して、(Azure Data Factory によって調整される) [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行し、Azure Stream Analytics リソースを使用してアーカイブされた未加工のイベントの集計を行います。

@@ -7,12 +7,13 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 35359c63b79d9eea6f8f6ad688bd040428a39eb8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120485"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503448"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>チュートリアル:Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
 
@@ -24,12 +25,12 @@ Azure Event Grid を使うと、ダウンストリームのビジネス アプ�
 
 * 有効な Azure サブスクリプション サブスクリプションがない場合は、[無料の Azure アカウントを作成](https://azure.microsoft.com/pricing/free-trial/)できます。
 
-* Azure Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 このメール アカウントは、イベント通知の送信に使われます。 サポートされている Logic App コネクタの完全な一覧については、[コネクタの概要](https://docs.microsoft.com/connectors/)に関するページを参照してください。
+* Azure Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 このメール アカウントは、イベント通知の送信に使われます。 サポートされている Logic App コネクタの完全な一覧については、[コネクタの概要](/connectors/)に関するページを参照してください。
 
   > [!IMPORTANT]
-  > Gmail を使用する前に、G-Suite ビジネス アカウント (カスタム ドメインを持つメール アドレス) または Gmail コンシューマー アカウント (@gmail.com または @googlemail.com のメール アドレス) があるかどうかを確認してください。 ロジック アプリで制限なしに Gmail コネクタを他のコネクタと共に使用できるのは、G Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみで Gmail コネクタを使用できるほか、[認証に使用する Google クライアント アプリを作成する](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+  > Gmail を使用する前に、G-Suite ビジネス アカウント (カスタム ドメインを持つメール アドレス) または Gmail コンシューマー アカウント (@gmail.com または @googlemail.com のメール アドレス) があるかどうかを確認してください。 ロジック アプリで制限なしに Gmail コネクタを他のコネクタと共に使用できるのは、G Suite ビジネス アカウントだけです。 Gmail コンシューマー アカウントを持っている場合は、Google によって承認された特定のサービスのみで Gmail コネクタを使用できるほか、[認証に使用する Google クライアント アプリを作成する](/connectors/gmail/#authentication-and-bring-your-own-application)ことができます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
 
-* Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](../iot-hub/iot-hub-csharp-csharp-getstarted.md)」のチュートリアルをご覧ください。
+* Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](../iot-hub/quickstart-send-telemetry-dotnet.md)」のチュートリアルをご覧ください。
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します
 
@@ -247,7 +248,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-Azure Portal を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity)に関する Azure CLI のページを参照してください。
+Azure Portal を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-iot/iot/hub/device-identity)に関する Azure CLI のページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

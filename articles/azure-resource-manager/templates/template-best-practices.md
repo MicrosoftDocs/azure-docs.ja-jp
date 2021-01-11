@@ -3,12 +3,12 @@ title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248919"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809257"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
@@ -226,7 +226,7 @@ ms.locfileid: "86248919"
    
      仮想マシンへの接続の詳細については、以下の記事を参照してください。
    
-   * [Azure で N 層アーキテクチャの VM を実行する](../../guidance/guidance-compute-n-tier-vm.md)
+   * [Azure で N 層アーキテクチャの VM を実行する](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
    * [Azure Resource Manager の VM の WinRM アクセスを設定する](../../virtual-machines/windows/winrm.md)
    * [Azure Portal を使用して VM への外部アクセスを許可する](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [PowerShell を使用して VM への外部アクセスを許可する](../../virtual-machines/windows/nsg-quickstart-powershell.md)

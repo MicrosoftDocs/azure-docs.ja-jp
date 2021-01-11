@@ -4,15 +4,16 @@ description: 仮想マシン、SQL データベース、Azure Cosmos DB、その
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 04/30/2020
+ms.subservice: reservations
+ms.topic: overview
+ms.date: 08/04/2020
 ms.author: banders
-ms.openlocfilehash: 3f124e94398e53e3ab8ff7eb4b054d252129128b
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: a5ab489e995506deb806fe5f0cee4a147ae42ac2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84986999"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682588"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -20,7 +21,7 @@ Azure の予約には、複数の製品に対する計画を 1 年分または 3
 
 予約の支払いは、前払いとすることも、月払いとすることもできます。 前払いも月払いも予約の総コストは同じであり、月払いを選んだとしても追加料金を支払う必要はありません。 毎月の支払いは、サードパーティ製品ではなく、Azure の予約で利用できます。
 
-予約は Azure portal ([https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)) で購入できます。
+予約は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。
 
 ## <a name="why-buy-a-reservation"></a>予約を購入する理由
 
@@ -109,7 +110,6 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 - **Azure Red Hat OpenShift** - 予約は Azure インフラストラクチャのコストではなく、OpenShift のコストに適用されます。
 
 Windows 仮想マシンと SQL Database については、ソフトウェアのコストに予約割引が適用されません。 ライセンス コストは、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)で充当することができます。
-
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

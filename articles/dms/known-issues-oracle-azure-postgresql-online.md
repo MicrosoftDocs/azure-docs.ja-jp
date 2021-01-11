@@ -50,7 +50,7 @@ Azure Database Migration Service では、Azure Database for PostgreSQL-Single S
 - ユーザー定義データ型
 - Notes
 - 仮想列
-- ROWID 列に基づく具体化されたビュー
+- ROWID 列に基づくマテリアライズドビュー
 
 また、空の BLOB/CLOB 列はターゲットの NULL にマップされます。
 

@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 9d0964fb28451abe0a77276d6f9d605fcaac2514
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 72ccf2a765f50358635e4a803ed0b92e60bd7d19
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86156396"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012214"
 ---
 # <a name="azure-machine-learning-curated-environments"></a>Azure Machine Learning のキュレーションされた環境
 
-この記事では、Azure Machine Learning のキュレーションされた環境、およびそれらにプレインストールされているパッケージとチャネルの一覧を示します。
+この記事では、Azure Machine Learning のキュレーションされた環境、およびそれらにプレインストールされているパッケージとチャネルの一覧を示します。 キュレートされた環境は Azure Machine Learning から提供され、既定でお使いのワークスペースで利用できます。 キャッシュされた Docker イメージでサポートされるため、実行準備コストが削減され、デプロイ時間を短縮できます。 このような環境を使用すれば、さまざまな機械学習フレームワークをすぐに使い始めることができます。
 
 > [!NOTE]
 > このリストは、2020 年 6 月時点の情報で更新されています。 Python SDK を使用して、更新された最新のリストを取得します。 詳細については、[環境に関する記事](./how-to-use-environments.md#use-a-curated-environment)を参照してください。

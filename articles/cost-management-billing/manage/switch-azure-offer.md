@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ee2de33fadb068ee2697f79c1ebcb1b2fa4e5fcc
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: e62ea7052420e2d0c20b99935659a5443540a942
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715887"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686821"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure サブスクリプションを別のオファーに変更する
 

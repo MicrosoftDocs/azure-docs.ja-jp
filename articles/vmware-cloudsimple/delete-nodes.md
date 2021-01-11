@@ -1,6 +1,6 @@
 ---
 title: VMware Solution by CloudSimple のノードの削除 - Azure
-description: CloudSimple デプロイで VMware からノードを削除する方法について学習します
+description: CloudSimple デプロイで VMware からノードを削除する方法について学習します。 CloudSimple ノードは従量制で課金されます。 Azure portal から、使用されていないノードを削除します。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 569bc6350b1bfa01228d49d28a1d12e2ab62f6f0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024740"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142266"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>Azure VMware Solution by CloudSimple からのノードの削除
 
@@ -47,6 +47,6 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 > [!NOTE]
 > 削除できるのは、プライベート クラウドの一部ではないノードだけです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [プライベート クラウド](cloudsimple-private-cloud.md)について説明します。

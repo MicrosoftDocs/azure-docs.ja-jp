@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 08/20/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: db6a8965b6a0d03c3de95644d3d455ce3c950960
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5521e49c767a2510bf7c8c53cf6ac5e86b73b466
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080439"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837178"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットに対する計画メンテナンスの通知
 
@@ -181,7 +181,7 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンでは、更新ドメインが使用されます。 メンテナンスを実行するときに、Azure では更新ドメインの制約が遵守され、(同じ可用性セット内の) 別の更新ドメインの VM は再起動されません。 また、Azure は VM の次のグループに移行する前に少なくとも 30 分待機します。 
 
-高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](../virtual-machines/windows/availability.md)」を参照してください。
+高可用性の詳細については、「[Azure の仮想マシンのリージョンと可用性について](../virtual-machines/availability.md)」を参照してください。
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 

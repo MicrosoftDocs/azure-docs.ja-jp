@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/06/2020
+ms.openlocfilehash: 5d16e7f81a439d622a418dbc8cdff2d66c2a814f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704184"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903563"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -27,7 +27,7 @@ SU 使用率 (%) メトリックはワークロードのメモリ消費量を表
 
 2. リソースの一覧で、スケールする Stream Analytics ジョブを見つけて開きます。 
 
-3. ジョブ ページの **[構成]** 見出しで、 **[スケーリング]** を選択します。 
+3. ジョブ ページの **[構成]** 見出しで、 **[スケーリング]** を選択します。 ジョブを作成するときの既定の SU 数は 3 です。
 
     ![Azure Portal での Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
     
@@ -47,7 +47,7 @@ Azure Portal を使用して、ジョブのスループットを追跡できま�
 
 一般に、**PARTITION BY** を使用していないクエリであれば、6 個の SU から始めることがベスト プラクティスです。 そのうえで、試行錯誤により最適な数を検討します。具体的には、典型的な量のデータを渡して SU% 使用率のメトリックを確認し、SU の数を調整する作業を繰り返すことによって、最適な SU の数を割り出します。 Stream Analytics ジョブで使用できるストリーミング ユニットの最大数は、ジョブに定義されたクエリのステップ数と各ステップのパーティション数によって異なります。 制限の詳細については、[こちら](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job)を参照してください。
 
-適切な SU 数の選択の詳細については、次のページを参照してください:[スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
+適切な SU 数の選択について詳しくは、「[スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」をご覧ください
 
 > [!Note]
 > 特定のジョブに必要な SU 数の選択は、入力のパーティション構成と、ジョブに定義されたクエリによって異なります。 1 つのジョブについて、クォータまでの SU 数を選択できます。 既定では、各 Azure サブスクリプションには、特定のリージョン内のすべての分析ジョブを対象に最大 500 個という SU のクォータが設定されています。 このクォータを超えてサブスクリプションの SU 数を増やす場合は、[Microsoft サポート](https://support.microsoft.com)までご連絡ください。 ジョブごとの SU 数の有効な値は 1、3、6 であり、6 ずつ増加します。
@@ -66,11 +66,11 @@ SU% 使用率は、予想されるレベルに戻る前に、短期間で突然 
 Azure Stream Analytics ジョブの固有の機能の 1 つに、ウィンドウ集計、一時的な結合、一時的な分析関数などのステートフル処理の実行があります。 これらの各演算子によって状態情報が保持されます。 これらのクエリ要素の最大ウィンドウ サイズは 7 日間です。 
 
 テンポラル ウィンドウの概念は、いくつかの Stream Analytics クエリ要素に現れます。
-1. ウィンドウ集計:タンブリング ウィンドウ、ホッピング ウィンドウ、スライディング ウィンドウの GROUP BY
+1. ウィンドウ集計 (タンブリング ウィンドウ、ホッピング ウィンドウ、スライディング ウィンドウの GROUP BY)
 
-2. テンポラル結合:DATEDIFF 関数を使用した JOIN
+2. テンポラル結合: DATEDIFF 関数を使用した JOIN
 
-3. テンポラル分析関数:LIMIT DURATION を使用した ISFIRST、LAST、および LAG
+3. テンポラル分析関数: LIMIT DURATION を使用した ISFIRST、LAST、LAG
 
 Stream Analytics ジョブが使用するメモリ (ストリーミング ユニット メトリックの一部) は、次の要因の影響を受けます。
 
@@ -123,7 +123,7 @@ Stream Analytics ジョブが使用するメモリ (ストリーミング ユニ
 クエリは、パーティション分割されると、複数のノードに広がります。 その結果、各ノードで受信されるイベントの数が減少するため、結合ウィンドウに保持される状態のサイズが減少します。 
 
 ## <a name="temporal-analytic-functions"></a>一時的な分析関数
-一時的な分析関数で使用されたメモリ (状態サイズ) は、期間で乗算したイベント レートに比例します。 分析関数によって消費されるメモリは、時間枠のサイズではなく、むしろ各時間枠のパーティション数に比例しています。
+一時的な分析関数で使用されたメモリ (状態サイズ) は、期間で乗算したイベント レートに比例します。分析関数によって消費されるメモリは、時間枠のサイズではなく、むしろ各時間枠のパーティション数に比例しています。
 
 修復は、一時的な結合と同様です。 **PARTITION BY** を使用してクエリをスケールアウトできます。 
 

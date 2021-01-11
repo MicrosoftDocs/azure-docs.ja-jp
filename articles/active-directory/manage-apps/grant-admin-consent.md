@@ -12,12 +12,12 @@ ms.date: 11/04/2019
 ms.author: kenwith
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c24023bdd3540785dec58ebeaa14d99ab659ab1
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 713b4ed2559e3cd16943af92e68818047e249ef4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848368"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501016"
 ---
 # <a name="grant-tenant-wide-admin-consent-to-an-application"></a>アプリケーションに対してテナント全体の管理者の同意を付与する
 
@@ -30,10 +30,17 @@ ms.locfileid: "85848368"
 テナント全体の管理者の同意を付与するには、[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)、[アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#application-administrator)、または[クラウド アプリケーション管理者](../users-groups-roles/directory-assign-admin-roles.md#cloud-application-administrator)としてサインインする必要があります。
 
 > [!IMPORTANT]
-> アプリケーションにテナント全体の管理者の同意が付与されていると、ユーザーの割り当てが必要であると構成されていない限り、すべてのユーザーがアプリにサインインできるようになります。 アプリケーションにサインインできるユーザーを制限するには、ユーザーの割り当てを必要にした後、アプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](methods-for-assigning-users-and-groups.md)に関するページを参照してください。
+> アプリケーションにテナント全体の管理者の同意が付与されていると、ユーザーの割り当てが必要であると構成されていない限り、すべてのユーザーがアプリにサインインできるようになります。 アプリケーションにサインインできるユーザーを制限するには、ユーザー割り当てを要求してから、アプリケーションにユーザーまたはグループを割り当てます。 詳細については、[ユーザーとグループの割り当て方法](methods-for-assigning-users-and-groups.md)に関するページを参照してください。
+>
+> Microsoft Graph API に管理者の同意を与えるには、グローバル管理者ロールが必要です。
+>
+
 
 > [!WARNING]
 > テナント全体の管理者の同意をアプリケーションに付与すると、アプリおよびアプリの発行者に、組織のデータへのアクセスが許可されます。 同意を付与する前に、アプリケーションで要求されているアクセス許可をよく確認してください。
+>
+> Microsoft Graph API に管理者の同意を与えるには、グローバル管理者ロールが必要です。
+>
 
 ## <a name="grant-admin-consent-from-the-azure-portal"></a>Azure portal から管理者の同意を付与する
 
@@ -82,7 +89,7 @@ https://login.microsoftonline.com/{tenant-id}/adminconsent?client_id={client-id}
 
 ## <a name="next-steps"></a>次のステップ
 
-[エンド ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)
+[Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する](configure-user-consent.md)
 
 [管理者の同意ワークフローの構成](configure-admin-consent-workflow.md)
 

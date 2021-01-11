@@ -12,12 +12,12 @@ metadata:
   ms.author: kumud
   manager: mtillman
   ms.date: 03/17/2020
-  ms.openlocfilehash: eba71e790c9da1978e0c9cac84b1913447972db2
-  ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+  ms.openlocfilehash: 55340e52505498f2475487567f141437347c3d10
+  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/22/2020
-  ms.locfileid: "83800711"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89290380"
 highlightedContent:
   items:
   - title: Azure ネットワークとは
@@ -113,12 +113,12 @@ conceptualContent:
     - url: ../load-balancer/load-balancer-overview.md
       itemType: overview
       text: Azure Load Balancer の概要
+    - url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
+      itemType: whats-new
+      text: 新機能
     - url: ../load-balancer/quickstart-load-balancer-standard-public-portal.md
       itemType: quickstart
       text: VM へのインターネット トラフィックの負荷分散を行う
-    - url: ../load-balancer/tutorial-load-balancer-port-forwarding-portal.md
-      itemType: tutorial
-      text: ポート転送の構成
     - url: ../load-balancer/load-balancer-troubleshoot.md
       itemType: how-to-guide
       text: Azure Load Balancer のトラブルシューティング

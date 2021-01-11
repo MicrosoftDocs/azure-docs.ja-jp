@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.custom: mvc
-ms.openlocfilehash: 9e4333891d701e1c505e5f45f9012057aa07d808
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: f5ce14286402f871063629cfe0a7f8fd58c15f09
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088633"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500319"
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>DSC を使用して、IIS で VM を作成する
 

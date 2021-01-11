@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f209a8b1d7ba5ab4fc213e43d56c04aebc3bd410
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: e6702ab3753604af50e21f931dd23f63de3c1451
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224266"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936199"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -71,11 +71,11 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 > [!NOTE]
 > 確認された証明書の URL は、`https://myVaultName.vault.azure.net/secrets/myCertName` の形式である必要があります。
 > 
-> これは、`/secrets` のパスでは秘密キーを含む完全な証明書が返されるのに対し、`/certificates` のパスでは返されないためです。 証明書について詳しくは、次の記事をご覧ください: 「[Key Vault 証明書](https://docs.microsoft.com/azure/key-vault/about-keys-secrets-and-certificates#key-vault-certificates)」
+> これは、`/secrets` のパスでは秘密キーを含む完全な証明書が返されるのに対し、`/certificates` のパスでは返されないためです。 証明書について詳しくは、次の記事をご覧ください: 「[Key Vault 証明書](../../key-vault/general/about-keys-secrets-certificates.md)」
 
-> [!NOTE]
-> "authenticationSettings" プロパティは、VM に複数の ID が割り当てられるシナリオでは省略可能です。
-> Key Vault への認証に使用する ID を指定できます。
+> [!IMPORTANT]
+> "authenticationSettings" プロパティは、**ユーザー割り当て ID** を使用する VM の場合にのみ**必須**です。
+> Key Vault への認証に使用する ID を指定します。
 
 
 ### <a name="property-values"></a>プロパティ値
@@ -130,6 +130,8 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell でのデプロイ
+> [!WARNING]
+> 多くの場合、PowerShell クライアントでは、`[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.` エラーを伴って akvvm_service が失敗する原因となる settings.json で、`\` が `"` に追加されます。
 
 Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮想マシンまたは仮想マシンのスケールセットにデプロイすることができます。 
 
@@ -204,7 +206,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 次の制限/要件に注意してください。
 - Key Vault の制限:
   - デプロイ時に存在している必要があります 
-  - マネージド ID を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されている必要があります。 「[マネージド ID で Key Vault の認証を提供する](../../key-vault/managed-identity.md)」を参照してください
+  - マネージド ID を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されている必要があります。 「[マネージド ID で Key Vault の認証を提供する](../../key-vault/general/managed-identity.md)」を参照してください
 
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート

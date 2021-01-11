@@ -2,43 +2,65 @@
 title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: ab39fed11ee53849e7d588d16749de96172b234d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832816"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002784"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
-リソースの管理を簡略化するには、Azure サブスクリプションのレベルでリソースをデプロイできます。 たとえば、[ポリシー](../../governance/policy/overview.md)および[ロールベースのアクセス制御](../../role-based-access-control/overview.md)をサブスクリプションにデプロイでき、これらのリソースがサブスクリプション全体に適用されます。 リソース グループを作成してこれらのリソース グループにリソースをデプロイすることもできます。
+リソースの管理を簡略化するには、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure サブスクリプションのレベルでリソースをデプロイします。 たとえば、[ポリシー](../../governance/policy/overview.md)および [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) をサブスクリプションにデプロイすると、これらのリソースがサブスクリプション全体に適用されます。 サブスクリプション内にリソース グループを作成し、サブスクリプションのリソース グループにリソースをデプロイすることもできます。
 
 > [!NOTE]
 > サブスクリプション レベルのデプロイでは、800 の異なるリソース グループにデプロイできます。
 
-サブスクリプション レベルでテンプレートをデプロイするには、Azure CLI、PowerShell、または REST API を使用します。
+サブスクリプション レベルでテンプレートをデプロイするには、Azure CLI、PowerShell、REST API、またはポータルを使用します。
 
 ## <a name="supported-resources"></a>サポートされているリソース
 
-サブスクリプション レベルでは、次のリソースの種類をデプロイできます。
+すべてのリソースの種類をサブスクリプション レベルにデプロイできるわけではありません。 このセクションでは、サポートされているリソースの種類を示します。
 
+Azure Blueprints では、以下を使用します。
+
+* [artifacts](/azure/templates/microsoft.blueprint/blueprints/artifacts)
 * [blueprints](/azure/templates/microsoft.blueprint/blueprints)
-* [budgets](/azure/templates/microsoft.consumption/budgets)
-* [デプロイ](/azure/templates/microsoft.resources/deployments) - リソース グループにデプロイする入れ子になったテンプレートの場合。
-* [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
-* [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
+* [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
+* [versions (Blueprints)](/azure/templates/microsoft.blueprint/blueprints/versions)
+
+Azure ポリシーでは、以下を使用します。
+
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [remediations](/azure/templates/microsoft.policyinsights/2019-07-01/remediations)
-* [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
+* [remediations](/azure/templates/microsoft.policyinsights/remediations)
+
+ロールベースのアクセス制御では、以下を使用します。
+
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
-* [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
+
+リソース グループにデプロイする入れ子になったテンプレートでは、以下を使用します。
+
+* [deployments](/azure/templates/microsoft.resources/deployments)
+
+新しいリソース グループを作成する場合は、以下を使用します。
+
+* [resourceGroups](/azure/templates/microsoft.resources/resourcegroups)
+
+サブスクリプションを管理する場合は、以下を使用します。
+
+* [budgets](/azure/templates/microsoft.consumption/budgets)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [tags](/azure/templates/microsoft.resources/tags)
-* [workspacesettings](/azure/templates/microsoft.security/workspacesettings)
+
+その他に、以下の種類がサポートされています。
+
+* [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
+* [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
+* [peerAsns](/azure/templates/microsoft.peering/2019-09-01-preview/peerasns)
 
 ### <a name="schema"></a>スキーマ
 
@@ -91,6 +113,47 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
 
 デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
 
+## <a name="deployment-scopes"></a>デプロイのスコープ
+
+サブスクリプションにデプロイする場合は、サブスクリプションまたはサブスクリプション内の任意のリソース グループを対象にすることができます。 テンプレートをデプロイするユーザーは、特定のスコープにアクセスできる必要があります。
+
+テンプレートのリソース セクション内で定義されたリソースは、サブスクリプションに適用されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        subscription-level-resources
+    ],
+    "outputs": {}
+}
+```
+
+サブスクリプション内のリソース グループを対象にするには、入れ子になったデプロイを追加して、`resourceGroup` プロパティを含めます。 次の例では、入れ子になったデプロイは `rg2` という名前のリソース グループを対象としています。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2020-06-01",
+            "name": "nestedDeployment",
+            "resourceGroup": "rg2",
+            "properties": {
+                "mode": "Incremental",
+                "template": {
+                    nested-template
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 
 サブスクリプション レベルのデプロイでは、テンプレート関数を使用する場合に、次のようないくつかの重要な考慮事項があります。
@@ -111,9 +174,11 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
   /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```
 
-## <a name="create-resource-groups"></a>リソース グループを作成する
+## <a name="resource-groups"></a>リソース グループ
 
-Azure Resource Manager テンプレートでリソース グループを作成するには、[Microsoft.Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) リソースを定義してリソース グループの名前と場所を指定します。 同じテンプレートでリソース グループを作成し、そのリソース グループにリソースをデプロイすることができます。
+### <a name="create-resource-groups"></a>リソース グループを作成する
+
+ARM テンプレートでリソース グループを作成するには、[Microsoft.Resources/resourceGroups](/azure/templates/microsoft.resources/allversions) リソースを定義して、リソース グループの名前と場所を指定します。
 
 次のテンプレートでは、空のリソース グループを作成します。
 
@@ -133,7 +198,7 @@ Azure Resource Manager テンプレートでリソース グループを作成�
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -164,7 +229,7 @@ Azure Resource Manager テンプレートでリソース グループを作成�
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -180,7 +245,7 @@ Azure Resource Manager テンプレートでリソース グループを作成�
 
 リソースの反復については、[Azure Resource Manager テンプレートでリソースの複数のインスタンスをデプロイする](./copy-resources.md)ことに関するページと、「[チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./template-tutorial-create-multiple-instances.md)」を参照してください。
 
-## <a name="resource-group-and-resources"></a>リソース グループとリソース
+### <a name="create-resource-group-and-resources"></a>リソース グループとリソースを作成する
 
 リソース グループを作成してそれにリソースをデプロイするには、入れ子になったテンプレートを使います。 入れ子になったテンプレートでは、リソース グループにデプロイするリソースを定義します。 リソースをデプロイする前にリソース グループを確実に存在させるには、リソース グループに依存するように入れ子になったテンプレートを設定します。 最大 800 のリソース グループにデプロイできます。
 
@@ -208,14 +273,14 @@ Azure Resource Manager テンプレートでリソース グループを作成�
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-10-01",
+      "apiVersion": "2020-06-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [
@@ -406,14 +471,16 @@ New-AzSubscriptionDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
-## <a name="template-samples"></a>テンプレートのサンプル
+## <a name="access-control"></a>アクセス制御
 
-* [リソース グループを作成してロックし、アクセス許可を付与します](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments/create-rg-lock-role-assignment)。
-* [リソース グループ、ポリシー、およびポリシーの割り当てを作成します](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json)。
+ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](../../role-based-access-control/role-assignments-template.md)」を参照してください。
+
+次の例では、リソース グループを作成し、そのグループにロックを適用して、プリンシパルにロールを割り当てます。
+
+:::code language="json" source="~/quickstart-templates/subscription-deployments/create-rg-lock-role-assignment/azuredeploy.json":::
 
 ## <a name="next-steps"></a>次のステップ
 
-* ロールの割り当てについては、「[RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-template.md)」をご覧ください。
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
 * サンプル テンプレートは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-deployments) に掲載されています。
 * [管理グループ レベル](deploy-to-management-group.md)と[テナント レベル](deploy-to-tenant.md)でテンプレートをデプロイすることもできます。

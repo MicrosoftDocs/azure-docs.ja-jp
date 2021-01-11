@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 082575a67ea43d62f322e177cff087e5bd572c27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a9d508afac64e448ca220a36b2be983da85d96b0
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792890"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89002625"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Cognitive Search でファセット フィルターを作成する方法 
 
@@ -28,7 +29,7 @@ ms.locfileid: "72792890"
 
 ファセットは動的であり、クエリで返されます。 検索の応答で、結果のナビゲートに使用されるファセット カテゴリが提供されます。 ファセットの知識がない場合、次の例はファセット ナビゲーション構造を示しています。
 
-  ![](./media/search-filters-facets/facet-nav.png)
+  ![検索ダイアログを示すイメージ。フィルター処理された検索結果が肩書でグループ化されています。 矢印は、結果がファセット ナビゲーション構造に表示されるファセットであることを示しています。](./media/search-filters-facets/facet-nav.png)
 
 ファセット ナビゲーションを初めて使用する場合、詳細については、 [Azure Cognitive Search へのファセット ナビゲーションの実装方法](search-faceted-navigation.md)に関するページを参照してください。
 
@@ -38,7 +39,7 @@ ms.locfileid: "72792890"
 
 ファセットは、インデックスの作成時に `facetable` 属性を `true` に設定することで、フィールドごとに有効になります。 通常、エンド ユーザーが選択したファセットに基づいて検索アプリケーションがこのようなフィールドでフィルター処理を行うことができるように、これらのフィールドの `filterable` 属性も `true` に設定する必要があります。 
 
-REST API を使用してインデックスを作成すると、ファセット ナビゲーションで使用される可能性があるすべての[フィールドの型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)が、既定で `facetable` とマークされます。
+REST API を使用してインデックスを作成すると、ファセット ナビゲーションで使用される可能性があるすべての[フィールドの型](/rest/api/searchservice/supported-data-types)が、既定で `facetable` とマークされます。
 
 + `Edm.String`
 + `Edm.DateTimeOffset`
@@ -77,11 +78,11 @@ REST API を使用してインデックスを作成すると、ファセット �
 ```
 
 > [!Note]
-> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `category`、`tags`、`parkingIncluded`、`smokingAllowed`、および `rating` フィールドに `filterable` および `facetable` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
+> このインデックス定義は、[REST API を使用した Azure Cognitive Search インデックスの作成](./search-get-started-powershell.md)に関する記事からコピーしたものです。 フィールド定義の表面的な違い以外は全く同じです。 `category`、`tags`、`parkingIncluded`、`smokingAllowed`、および `rating` フィールドに `filterable` および `facetable` 属性がで明示的に追加されています。 REST API を使用する場合、実際には、`filterable` および `facetable` はこれらのフィールドでは既定で有効になります。 .NET SDK を使用する場合、これらの属性は明示的に有効にする必要があります。
 
 ## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
 
-(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-get-started-dotnet#1---create-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
+(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](./search-get-started-dotnet.md#1---create-an-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
 
 ## <a name="add-facet-filters-to-a-query"></a>クエリへのファセット フィルターの追加
 
@@ -121,8 +122,8 @@ Azure Cognitive Search のファセット ナビゲーションの課題の 1 �
 
 これは一般的なユース ケースですが、現時点ではファセット ナビゲーション構造ですぐに利用できるものではありません。 静的なファセットを必要とする開発者は、通常、結果に適用されるクエリと、ナビゲーションのためにファセットの静的リストの作成に使用されるクエリの 2 つのフィルター処理されたクエリを発行してこの制限に対処しています。
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 + [Azure Cognitive Search のフィルター](search-filters.md)
-+ [Index REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-index)
-+ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Index REST API の作成](/rest/api/searchservice/create-index)
++ [Search Documents REST API](/rest/api/searchservice/search-documents)

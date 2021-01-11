@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed1c3628b33d3ed29c3af3b773f2b635e684a67
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601634"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717049"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)
 
@@ -45,7 +45,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>パスワードなしの電話によるサインインの認証方法を有効にする
 
-1. [Azure ポータル](https://portal.azure.com)
+1. **全体管理者**アカウントで [Azure portal](https://portal.azure.com) にサインインします。
 1. *Azure Active Directory* を検索して選択します。 **[セキュリティ]**  >  **[認証方法]**  >  **[認証方法ポリシー (プレビュー)]** の順に選択します。
 1. **[Passwordless phone sign-in]\(パスワードなしの電話によるサインイン\)** で、次のオプションを選択します。
    1. **有効にする** - [はい] または [いいえ]
@@ -62,7 +62,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 1. **Microsoft Authenticator** で、アカウントのドロップダウン メニューから **[電話によるサインインを有効にする]** を選択します。
 1. アプリの指示に従って、パスワードなしの電話によるサインインの登録を完了します。 
 
-組織は、Microsoft Authenticator アプリでの設定と電話によるサインインの有効化をさらに支援するために、[パスワードではなく電話でサインインする方法](../user-help/microsoft-authenticator-app-phone-signin-faq.md)に関する記事をユーザーに紹介することができます。 これらの設定を適用するには、ログアウトしてからテナントに再度ログインする必要がある場合があります。 
+組織は、Microsoft Authenticator アプリでの設定と電話によるサインインの有効化をさらに支援するために、[パスワードではなく電話でサインインする方法](../user-help/user-help-auth-app-sign-in.md)に関する記事をユーザーに紹介することができます。 これらの設定を適用するには、ログアウトしてからテナントに再度ログインする必要がある場合があります。 
 
 ## <a name="sign-in-with-passwordless-credential"></a>パスワードなしの資格情報でサインインする
 

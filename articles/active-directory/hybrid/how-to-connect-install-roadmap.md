@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bee5ba92f6795df6635dc98a19cabaeb9692a470
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd3361657406f2ece6a48b74d3ca6ee3d9ed68ca
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358737"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277359"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -49,14 +49,14 @@ Azure AD Connect は [Microsoft ダウンロード センター](https://go.micr
 |インストール後に | [インストールの確認とライセンスの割り当て](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Azure AD Connect のインストールの詳細
-[運用](how-to-connect-sync-operations.md) 上の問題への備えも必要になることがあります。 [障害](how-to-connect-sync-staging-server.md#disaster-recovery)が発生したときにフェールオーバーできるように、スタンバイ サーバーを用意するという方法もあります。 頻繁に構成を変更する予定がある場合は、 [ステージング モード](how-to-connect-sync-staging-server.md) サーバーについて計画してください。
+[運用](./how-to-connect-sync-staging-server.md) 上の問題への備えも必要になることがあります。 [障害](how-to-connect-sync-staging-server.md#disaster-recovery)が発生したときにフェールオーバーできるように、スタンバイ サーバーを用意するという方法もあります。 頻繁に構成を変更する予定がある場合は、 [ステージング モード](how-to-connect-sync-staging-server.md) サーバーについて計画してください。
 
 |トピック |Link|  
 | --- | --- |
 |サポートされているトポロジ | [Azure AD Connect のトポロジ](plan-connect-topologies.md)|
 |設計概念 | [Azure AD Connect の設計概念](plan-connect-design-concepts.md)|
 |インストールで使用するアカウント | [Azure AD Connect の資格情報とアクセス許可の詳細](reference-connect-accounts-permissions.md)|
-|運用計画 | [Azure AD Connect 同期:操作タスクおよび考慮事項](how-to-connect-sync-operations.md)|
+|運用計画 | [Azure AD Connect 同期:操作タスクおよび考慮事項](./how-to-connect-sync-staging-server.md)|
 |ユーザーのサインイン オプション | [Azure AD Connect ユーザーのサインイン オプション](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>同期機能を構成する
@@ -66,7 +66,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 
 [パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)は、Active Directory のパスワード ハッシュを Azure AD と同期させる機能です。 エンド ユーザーがオンプレミスとクラウドで同じパスワードを使用でき、しかもそれを 1 か所で管理することができます。 オンプレミスの Active Directory が認証機関として使用されているため、独自のパスワード ポリシーを使用することもできます。
 
-[パスワード ライトバック](../authentication/quickstart-sspr.md) により、ユーザーはクラウドでパスワードを変更およびリセットし、オンプレミスのパスワード ポリシーを適用できます。
+[パスワード ライトバック](../authentication/tutorial-enable-sspr.md) により、ユーザーはクラウドでパスワードを変更およびリセットし、オンプレミスのパスワード ポリシーを適用できます。
 
 [デバイスの書き戻し](how-to-connect-device-writeback.md)により、Azure AD に登録されているデバイスをオンプレミスの Active Directory にライトバックできます。これにより、そのデバイスを条件付きアクセスに使用できるようになります。
 
@@ -80,7 +80,7 @@ Azure AD Connect には、必要に応じて有効にすることができる機
 |フィルター処理の構成 | [Azure AD Connect 同期:フィルター処理の構成](how-to-connect-sync-configure-filtering.md)|
 |パスワード ハッシュの同期 | [パスワード ハッシュの同期](how-to-connect-password-hash-synchronization.md)|
 |パススルー認証 | [パススルー認証](how-to-connect-pta.md)
-|パスワードの書き戻し | [パスワード管理の概要](../authentication/quickstart-sspr.md)|
+|パスワードの書き戻し | [パスワード管理の概要](../authentication/tutorial-enable-sspr.md)|
 |デバイスの書き戻し | [Azure AD Connect でのデバイスの書き戻しの有効化](how-to-connect-device-writeback.md)|
 |誤って削除されないように保護する | [Azure AD Connect 同期:誤って削除されないように保護する](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
 |自動アップグレード | [Azure AD Connect:自動アップグレード](how-to-connect-install-automatic-upgrade.md)|

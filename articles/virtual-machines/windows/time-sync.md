@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: cd9a196e5f957782de91cff69c01fbfa5716369a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 830bdd45be4b0365ac45bc3ea366b99a34882a4c
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82100500"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871481"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure での Windows VM の時刻同期
 
@@ -24,7 +24,7 @@ Azure は、Windows Server 2016 を実行しているインフラストラクチ
 >[!NOTE]
 >Windows Time サービスの概要については、こちらの[概要ビデオ](https://aka.ms/WS2016TimeVideo)をご覧ください。
 >
-> 詳細については、「[Windows Server 2016 の正確な時刻](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)」を参照してください。 
+> 詳細については、「[Windows Server 2016 の正確な時刻](/windows-server/networking/windows-time-service/accurate-time)」を参照してください。 
 
 ## <a name="overview"></a>概要
 
@@ -60,7 +60,7 @@ Azure でホストされている Windows VM の時刻同期を構成するた�
 - NtpClient プロバイダー。time.windows.com から情報を取得します。
 - VMICTimeSync サービス。VM にホスト時刻を知らせ、VM がメンテナンスのために一時停止した後、修正を行うために使用されます。 Azure ホストでは、Microsoft 所有の Stratum 1 デバイスを使用して、正確な時刻を保持します。
 
-w32time では、階層レベル、ルート遅延、ルート分散、タイム オフセットという優先順位でタイム プロバイダーが選択されます。 ほとんどの場合、w32time では、ホストより time.windows.com が選択されます。time.windows.com で報告される階層の方が低いためです。 
+w32time では、階層レベル、ルート遅延、ルート分散、タイム オフセットという優先順位でタイム プロバイダーが選択されます。 ほとんどの場合、Azure VM 上の w32time では、両方のタイム ソースを比較するために行う評価のせいで、ホスト時間が優先されます。 
 
 ドメイン参加コンピューターの場合、ドメイン自体により時刻同期階層が確立されますが、それでもフォレスト ルートではどこかから時刻を取得する必要があります。次の考慮事項が引き続き当てはまります。
 
@@ -115,8 +115,8 @@ w32tm /query /source
 
 次のような意味を持つ項目が出力されます。
     
-- **time.windows.com** - 既定の構成では、w32time は time.windows.com から時刻を取得します。 時刻同期の質はインターネットの接続性に左右され、パケット遅延の影響を受けます。 既定の設定では、通常、これが出力されます。
-- **VM IC Time Synchronization Provider** - VM はホストの時刻と同期しています。 現在、ホストのみの時刻同期または NtpServer が選択できない場合、通常、結果的にこれになります。 
+- **time.windows.com** - 既定の構成では、w32time は time.windows.com から時刻を取得します。 時刻同期の質はインターネットの接続性に左右され、パケット遅延の影響を受けます。 これは、物理マシン上で取得する通常の出力です。
+- **VM IC Time Synchronization Provider** - VM はホストの時刻と同期しています。 これは、Azure で実行されている仮想マシン上で取得する通常の出力です。 
 - *お使いのドメイン サーバー* - 現在のコンピューターがあるドメインに入っており、そのドメインによって時刻同期階層が定義されます。
 - *その他のサーバー* - 別のサーバーから時刻を取得するように w32time が明示的に構成されました。 時間同期の質はこのタイム サーバーの質に左右されます。
 - **Local CMOS Clock** - 時計は同期していません。 再起動後、w32time に十分な起動時間が与えられなかった場合や、構成した時刻ソースの一部が利用できないとき、これが出力されることがあります。
@@ -172,9 +172,7 @@ w32tm /dumpreg /subkey:Parameters | findstr /i "ntpserver"
 
 以下は、時刻同期に関する詳細のリンクです。
 
-- [Windows タイム サービスのツールと設定](https://docs.microsoft.com/windows-server/networking/windows-time-service/Windows-Time-Service-Tools-and-Settings)
-- [Windows Server 2016 の機能強化](https://docs.microsoft.com/windows-server/networking/windows-time-service/windows-server-2016-improvements)
-- [Windows Server 2016 の正確な時刻](https://docs.microsoft.com/windows-server/networking/windows-time-service/accurate-time)
-- [Windows タイム サービスで精度の高い環境を構成するためのサポート範囲](https://docs.microsoft.com/windows-server/networking/windows-time-service/support-boundary)
-
-
+- [Windows タイム サービスのツールと設定](/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings)
+- [Windows Server 2016 の機能強化](/windows-server/networking/windows-time-service/windows-server-2016-improvements)
+- [Windows Server 2016 の正確な時刻](/windows-server/networking/windows-time-service/accurate-time)
+- [Windows タイム サービスで精度の高い環境を構成するためのサポート範囲](/windows-server/networking/windows-time-service/support-boundary)

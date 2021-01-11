@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 35842520b26d3a98342660244295e26e934e7d3c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848477"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717372"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -50,7 +50,7 @@ NPS 拡張機能は、既存のインフラストラクチャで使用します�
 
 ### <a name="licenses"></a>ライセンス
 
-Azure MFA の NPS 拡張機能は、[Azure Multi-Factor Authentication のライセンス](multi-factor-authentication.md) (Azure AD Premium、EMS、または MFA スタンドアロン ライセンスに含まれています) をお持ちのお客様にご利用いただけます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 
+Azure MFA の NPS 拡張機能は、[Azure Multi-Factor Authentication のライセンス](./concept-mfa-howitworks.md) (Azure AD Premium、EMS、または MFA スタンドアロン ライセンスに含まれています) をお持ちのお客様にご利用いただけます。 使用量ベースの Azure MFA のライセンス (ユーザーごと、認証ごとのライセンスなど) は、NPS 拡張機能に対応していません。 
 
 ### <a name="software"></a>ソフトウェア
 
@@ -290,7 +290,7 @@ MFA に登録されていないユーザーがいる場合は、そのユーザ�
 
 次のスクリプトは、NPS 拡張機能のトラブルシューティングを行うときに、基本的な正常性チェックの手順を実行するために使用できます。
 
-[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -365,7 +365,7 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>TLS/SSL プロトコルと暗号スイートの管理
 
-組織で求められない限り、以前の強度の低い暗号スイートを無効にするか、削除することをお勧めします。 このタスクを完了する方法については、「[Managing SSL/TLS Protocols and Cipher Suites for AD FS (AD FS の SSL/TLS プロトコルおよび暗号スイートの管理)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください
+組織で求められない限り、以前の強度の低い暗号スイートを無効にするか、削除することをお勧めします。 このタスクを完了する方法については、「[Managing SSL/TLS Protocols and Cipher Suites for AD FS (AD FS の SSL/TLS プロトコルおよび暗号スイートの管理)](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください
 
 ### <a name="additional-troubleshooting"></a>その他のトラブルシューティング
 
@@ -373,7 +373,7 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Windows Server のネットワーク ポリシー サーバーの概要と構成](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+- [Windows Server のネットワーク ポリシー サーバーの概要と構成](/windows-server/networking/technologies/nps/nps-top)
 
 - ログインに別の ID を設定するか、「[Advanced configuration options for the NPS extension for Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md)」 (Multi-Factor Authentication の NPS 拡張機能の高度な構成オプション) の 2 段階認証を実行しない IP の例外リストを設定する
 

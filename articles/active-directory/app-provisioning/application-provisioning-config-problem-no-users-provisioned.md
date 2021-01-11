@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: cc3c62da371d66c2aa957974ad6d4472aaf5648e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d07450b61558814a99bf85668c55899c8cf9d389
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782281"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234790"
 ---
 # <a name="no-users-are-being-provisioned"></a>ユーザーがプロビジョニングされていない 
 >[!NOTE]
@@ -58,7 +58,7 @@ Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンター�
 - **必須の属性が見つからないか、ユーザー用に設定されていません**。 プロビジョニングを設定するときに考慮すべき重要なことは、どのユーザー (またはグループ) プロパティが Azure AD からアプリケーションに提供されるかを定義する属性マッピングとワークフローを確認して構成することです。 この構成には、2 つのシステム間でユーザーまたはグループを一意に識別して照合するために使用される "照合プロパティ" の設定が含まれます。 この重要なプロセスの詳細については、「[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)」を参照してください。
 - **グループの属性マッピング:** 一部のアプリケーションでサポートされている場合は、メンバーだけでなくグループの名前と詳細もプロビジョニングします。 **[プロビジョニング]** タブに表示されるグループ オブジェクトの **[マッピング]** を有効または無効にして、この機能を有効または無効にすることができます。グループのプロビジョニングが有効になっている場合は、適切なフィールドが "照合 ID" に使用されていることを確かめるために、属性マッピングを必ず確認してください。 この照合 ID は、表示名または電子メール エイリアスである場合があります。 照合プロパティが空か、または Azure AD のグループ用に設定されていない場合、グループとそのメンバーはプロビジョニングされません。
 ## <a name="provisioning-users-assigned-to-the-default-access-role"></a>既定のアクセス ロールに割り当てられたユーザーのプロビジョニング
-ギャラリーからのアプリケーションの既定のロールは、"既定のアクセス" ロールと呼ばれます。 これまで、このロールに割り当てられたユーザーは、"実質的に資格なし" であるため、プロビジョニングされず、[プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) で [スキップされました] とマークされています。 
+ギャラリーからのアプリケーションの既定のロールは、"既定のアクセス" ロールと呼ばれます。 これまで、このロールに割り当てられたユーザーは、"実質的に資格なし" であるため、プロビジョニングされず、[プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md) で [スキップされました] とマークされています。 
 
 **2020 年 4 月 16 日より後に作成されたプロビジョニング構成の動作:** 既定のアクセス ロールに割り当てられているユーザーは、他のすべてのロールと同じように評価されます。 既定のアクセスが割り当てられているユーザーは、"実質的に資格なし" としてスキップされなくなります。 
 

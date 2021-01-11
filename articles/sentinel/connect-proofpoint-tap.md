@@ -14,14 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: e4185de879fa6136531e6d4c64908befa1d3bc45
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: df4292a40335e58c64b8ebc50ffb6ac1ceee8836
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528067"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87059900"
 ---
 # <a name="connect-your-proofpoint-tap-to-azure-sentinel-with-azure-function"></a>Azure Functions を使用して Proofpoint TAP を Azure Sentinel に接続する
+
+> [!IMPORTANT]
+> Azure Sentinel の Proofpoint TAP データ コネクタは、現在パブリック プレビュー段階にあります。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 Proofpoint Targeted Attack Protection (TAP) コネクタを使用すると、Azure Sentinel にすべての [Proofpoint TAP](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) セキュリティ ソリューションのログを簡単に接続して、ダッシュボードの表示、カスタム アラートの作成、調査の改善を行うことができます。 Proofpoint TAP と Azure Sentinel の統合では、Azure Functions を使用して REST API によりログ データをプルします。
 

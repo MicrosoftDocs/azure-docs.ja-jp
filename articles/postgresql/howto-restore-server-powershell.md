@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 879dec5ec34482c677730ad4e675916da0200553
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: f582159b0ce1355b34c42496dc7516264b62d365
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120587"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902033"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-postgresql-server-using-powershell"></a>PowerShell を使用して Azure Database for PostgreSQL サーバーをバックアップおよび復元する方法
 
@@ -132,4 +133,4 @@ geo リストアを使用して新しいサーバーを作成すると、**Sku**
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [PowerShell を使用して Azure Database for PostgreSQL サーバー パラメーターをカスタマイズする](howto-configure-server-parameters-using-powershell.md)
+> [PowerShell を使用して Azure Database for PostgreSQL 接続文字列を生成する方法](howto-connection-string-powershell.md)

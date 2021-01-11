@@ -3,12 +3,12 @@ title: Azure DevTest Labs のラボ VM でマネージド ID を有効にする
 description: この記事では、ラボ所有者がラボ仮想マシン上でユーザー割り当てのマネージド ID を有効にする方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 886dc3b541c624d9f7a300fbbe696e1d2e143641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b4bf2900acebaeecd5cbc4cb65635aee6de87dda
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476004"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717636"
 ---
 # <a name="enable-user-assigned-managed-identities-on-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs のラボ仮想マシン上でユーザー割り当てのマネージド ID を有効にする
 ラボ所有者は、ラボ仮想マシン (VM) 上の Azure DevTest Labs でユーザー割り当てのマネージド ID を有効にすることができます。
@@ -25,14 +25,16 @@ ms.locfileid: "85476004"
 
 1. [ユーザー割り当て済みマネージド ID をサブスクリプションに作成します](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)
 1. ラボの **[構成とポリシー]** ページに移動します。
-2. 左側のメニューの **[ID (プレビュー)]** を選択します。
-3. **[仮想マシン]** タブを選択します。
-4. **[追加]** を選択して、事前設定されたドロップダウン リストから既存の ID を選択します。 
+1. 左側のメニューの **[ID (プレビュー)]** を選択します。
+1. **[仮想マシン]** タブを選択します。
+1. **[追加]** を選択して、事前設定されたドロップダウン リストから既存の ID を選択します。 
 
-    ![ID の[追加] ボタン](./media/enable-managed-identities-lab-vms/add-identity-button.png)
-5. ドロップダウン リストから既存の**ユーザー マネージド ID** を選択し、 **[OK]** を選択します。 
+    > [!div class="mx-imgBorder"]
+    > ![ID の[追加] ボタン](./media/enable-managed-identities-lab-vms/add-identity-button.png)
+1. ドロップダウン リストから既存の**ユーザー マネージド ID** を選択し、 **[OK]** を選択します。 
 
-    ![ID を追加する](./media/enable-managed-identities-lab-vms/add-identity.png)
+    > [!div class="mx-imgBorder"]
+    > ![ID を追加する](./media/enable-managed-identities-lab-vms/add-identity.png)
 
 ## <a name="use-api"></a>API を使用する
 

@@ -6,21 +6,21 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 05/08/2020
-ms.openlocfilehash: ad4e80c98097955703e4a6fb3c64e93a338f2720
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/22/2020
+ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121165"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607332"
 ---
-# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースに関するよくあるご質問
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースに関するよくあるご質問
 
 この記事では、コマーシャル マーケットプレースに関してよく寄せられる質問に回答します。
 
 ## <a name="general"></a>全般
 
-### <a name="what-is-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
+### <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
 
 コマーシャル マーケットプレースは、企業や政府機関をパートナーによって構築されたソリューションと結び付けるものです。 パートナーは、パートナー センターでオファーを作成して管理します。お客様は、Microsoft AppSource、Azure Marketplace、クラウド ソリューション プロバイダー プログラムの再販業者、共同販売プログラムでの販売チームなど、製品内のエクスペリエンスを通じて、ソリューションを探して購入することができます。
 
@@ -46,7 +46,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースには登録料がかかりますか?
 
-いいえ、コマーシャル マーケットプレースでオファーを発行する場合、料金はかかりません。 取引手数料として、売上のごく一部をいただきます。これは、Marketplace Rewards プログラム、プラットフォームの刷新、コマーシャル マーケットプレースの運用に充てられます。
+いいえ、コマーシャル マーケットプレースでオファーを発行する場合、料金はかかりません。 取引手数料として、売上のごく一部をいただきます。これは、Marketplace Rewards プログラム、プラットフォームの刷新、コマーシャル マーケットプレースの運用に充てられます。 この取引手数料は、[Azure IP 共同販売](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)インセンティブの対象となるオファーでは減額されます。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの発行元としてサインアップするにはどうすればよいですか?
 
@@ -60,7 +60,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 - 自動的に提供されるソリューションの場合、有料、ライセンス持ち込み (BYOL)、無料のいずれであっても、顧客は "*今すぐ入手*" を勧められます。
 - 体験版 (デモ) がサポートされているオファーでは、顧客は "*体験版*" を使用するよう求められます。 
-- コマーシャル マーケットプレースの外部で試用版が提供されているサービスとしてのソフトウェア (SaaS) オファーでは、"*無料試用版*" と表示されます。
+- コマーシャル マーケットプレースの外部で試用版を提供するサービスとしてのソフトウェア (SaaS) オファーでは、"*無料試用版*" と表示されます。
 - 簡易登録では、顧客に "*連絡してください*" と要求することができます。
 
 ### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース向けのオファーを作成するにはどうすればよいですか?
@@ -77,7 +77,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 ### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>コマーシャル マーケットプレースでは、自分の組織に関するどのような分析を利用できますか?
 
-コマーシャル マーケットプレース内のオファーに関するレポートが提供されます。 顧客、注文、ストア エンゲージメントなどについてのデータにアクセスするには、[パートナー センターでのコマーシャル マーケットプレース向け分析](partner-center-portal/analytics.md)に関するページを参照してください。
+コマーシャル マーケットプレース内でのオファーに関するレポートが提供されます。 顧客、注文、ストア エンゲージメントなどについてのデータにアクセスするには、[パートナー センターでのコマーシャル マーケットプレース向け分析](partner-center-portal/analytics.md)に関するページを参照してください。
 
 ### <a name="what-is-microsofts-relationship-with-my-customers"></a>Microsoft とパートナーの顧客の間にはどのような関係がありますか?
 
@@ -120,11 +120,11 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 発行プロセスの間に、パートナーにはオファーのプレビューへのアクセスが提供されます。 アクセスできるのは **[プレビュー]** タブで指定されているユーザーに限定され、他のユーザーにこのオファーを表示することはできません。 プレビューを購入して、プロセスをテストできます。ただし、オファーの設定に応じて全額料金が請求されます。
 
-購入を非常に低価格で行うためには、テストのコストとして受け入れることのできる価格で設定した、自分だけが表示できるプライベート プランを自分自身に発行することをお勧めします。 価格 $0.00 はサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されないため、$1.00 に価格を設定することをお勧めします。
+低価格で購入するには、プライベート プランを発行することをお勧めします。このプランは、自分にのみ表示することができ、テストのコストとして受け入れ可能な価格で購入できます。 価格 $0.00 はサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されないため、$1.00 に価格を設定することをお勧めします。
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>コマーシャル マーケットプレースからのリードはどのようなもので、そのリードに対して何を行う必要がありますか?
 
-顧客が Microsoft AppSource や Azure Marketplace のネットショップでオファーを使用すると、情報が収集されます。 十分な関心があることを顧客が示すと、リードが作成され、パートナーが選択したシステムに営業案件が送信されます。 コマーシャル マーケットプレースで成功している発行元は、多くの場合、リードを追跡し、関係を築いて、関心を取引に結び付けています。
+顧客が Microsoft AppSource や Azure Marketplace のオンライン ストアでオファーを使用すると、情報が収集されます。 十分な関心があることを顧客が示すと、リードが作成され、パートナーが選択したシステムに営業案件が送信されます。 コマーシャル マーケットプレースで成功している発行元は、多くの場合、リードを追跡し、関係を築いて、関心を取引に結び付けています。
 
 詳細については、「[コマーシャル マーケットプレース オファーからの顧客リード](partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
 
@@ -140,7 +140,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource と Azure Marketplace の両方にオファーを表示できますか?
 
-Microsoft AppSource はビジネス ソリューションと業界ソリューションが提供される場所であり、Azure Marketplace は IT および開発者向けソリューション用に設計されています。 オファーは、オファーの作成時に選択したカテゴリと業種に基づいて各ネットショップで利用できます。 まれに、オファーが両方のネットショップのユーザーに関連している場合は、両方に表示されることがあります。
+Microsoft AppSource はビジネス ソリューションと業界ソリューションが提供される場所であり、Azure Marketplace は IT および開発者向けソリューション用に設計されています。 オファーは、オファーの作成時に選択したカテゴリと業種に基づいて、各オンライン ストアで利用できます。 まれに、オファーが両方のオンライン ストアのユーザーに関係することがありますが、その場合は両方に表示されます。
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラムとはどのようなものですか?
 
@@ -285,7 +285,7 @@ Azure Marketplace の場合、顧客は、アクティブな Azure サブスク�
 
 ### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>税金の管理が肩代わりされるのはどの国/地域ですか?
 
-顧客は世界中のコマーシャル マーケットプレースでソリューションを探すことができ、多くの場所で Microsoft が税金を管理しています。 
+顧客は世界中のコマーシャル マーケットプレースからソリューションを探すことができ、税金は多くの場所で Microsoft が管理しています。 
 
 場所の完全な一覧を確認するには、「[コマーシャル マーケットプレース発行元向けの税の詳細](partner-center-portal/tax-details-paid-transactions.md)」をご覧ください。
 

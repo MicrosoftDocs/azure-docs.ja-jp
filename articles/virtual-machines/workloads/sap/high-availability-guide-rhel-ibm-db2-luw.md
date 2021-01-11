@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
-ms.openlocfilehash: 1a00a3c1e0d34a8c7abbcd5bfc7a6771d9e2a4c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82983042"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077395"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性
 
@@ -67,7 +67,7 @@ SAP ノート [1928533] に記載されているように、サポートされ�
 
 
 ## <a name="overview"></a>概要
-高可用性を実現するには、HADR を搭載した IBM Db2 LUW を 2 台以上の Azure 仮想マシンにインストールします。このとき、これらの仮想マシンは、[Azure 可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)にデプロイするか、[Azure Availability Zones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) にデプロイします。 
+高可用性を実現するには、HADR を搭載した IBM Db2 LUW を 2 台以上の Azure 仮想マシンにインストールします。このとき、これらの仮想マシンは、[Azure 可用性セット](../../windows/tutorial-availability-sets.md)にデプロイするか、[Azure Availability Zones](./sap-ha-availability-zones.md) にデプロイします。 
 
 以下の図には、データベース サーバーである 2 台の Azure VM の設定が示されています。 どちらのデータベース サーバー Azure VM も、それぞれ独自のストレージが接続され、稼動しています。 HADR では、いずれか 1 つの Azure VM にある 1 つのデータベース インスタンスにプライマリ インスタンスの役割が与えられます。 すべてのクライアントは、プライマリ インスタンスに接続されます。 データベース トランザクションにおけるすべての変更は、Db2 のトランザクション ログとしてローカルに永続化されます。 トランザクション ログ レコードは、ローカルに永続化されると、セカンダリ データベース サーバー (スタンバイ サーバーまたはスタンバイ インスタンス) 上のデータベース インスタンスに TCP/IP 経由で転送されます。 スタンバイ インスタンスは、転送されたトランザクション ログ レコードをロールフォワードすることによってローカル データベースを更新します。 このようにして、スタンバイ サーバーはプライマリ サーバーと同期された状態で維持されます。
 
@@ -398,10 +398,10 @@ Daemon Status: corosync: active/disabled pacemaker: active/disabled pcsd: active
 
 
 ### <a name="configure-azure-load-balancer"></a>Azure Load Balancer を構成する
-Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) を使用して、以下の操作を行うことをお勧めします。
+Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-overview.md) を使用して、以下の操作を行うことをお勧めします。
 
 > [!NOTE]
-> Standard Load Balancer SKU では、Load Balancer の管理下にあるノードからパブリック IP アドレスへのアクセスが制限されます。 「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)」という記事では、それらのノードからパブリック IP アドレスにアクセスできるようにする方法が説明されています
+> Standard Load Balancer SKU では、Load Balancer の管理下にあるノードからパブリック IP アドレスへのアクセスが制限されます。 「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」という記事では、それらのノードからパブリック IP アドレスにアクセスできるようにする方法が説明されています
 
 
 
@@ -511,7 +511,7 @@ HADR 設定の Db2 ログ アーカイブを構成するには、すべてのロ
 
 - [Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS][glusterfs] 
 - [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性][anf-rhel]
-- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) (NFS 共有を作成する場合)
+- [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) (NFS 共有を作成する場合)
 
 ## <a name="test-the-cluster-setup"></a>クラスターの設定をテストする
 
@@ -816,7 +816,7 @@ rsc_st_azure    (stonith:fence_azure_arm):      Started az-idb02
      nc_db2id2_ID2      (ocf::heartbeat:azure-lb):      Started az-idb02</code></pre>
 
 ## <a name="next-steps"></a>次のステップ
-- [SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+- [SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](./sap-high-availability-architecture-scenarios.md)
 - [Azure の Red Hat Enterprise Linux に Pacemaker をセットアップする][rhel-pcs-azr]
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533

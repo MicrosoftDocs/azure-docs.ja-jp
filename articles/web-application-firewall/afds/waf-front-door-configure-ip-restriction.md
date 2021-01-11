@@ -30,9 +30,9 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
 
 ### <a name="create-a-waf-policy"></a>WAF ポリシーを作成する
 
-1. Azure portal で、 **[Create a resource]/(リソースの作成/)** を選択し、検索ボックスに「**Web application firewall**」と入力して、 **[Web Application Firewall (WAF)]/(Web アプリケーション ファイアウォール (WAF)/)** を選択します。
+1. Azure portal で、 **[Create a resource]\(リソースの作成\)** を選択し、検索ボックスに「**Web application firewall**」と入力して、 **[Web Application Firewall (WAF)]\(Web アプリケーション ファイアウォール (WAF)\)** を選択します。
 2. **［作成］** を選択します
-3. **[Create a WAF policy]/(WAF ポリシーの作成/)** ページで、次の値を使用して **[基本]** タブを完成させます。
+3. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページで、次の値を使用して **[基本]** タブを完成させます。
    
    |設定  |値  |
    |---------|---------|
@@ -42,11 +42,11 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    |ポリシー名     |ポリシーの名前を入力します|
    |[ポリシーの状態]     |Enabled|
 
-   **[Next: Policy settings]/(次へ: ポリシー設定/)** を選択します
+   **[Next: Policy settings]\(次へ: ポリシー設定\)** を選択します
 
 1. **[ポリシー設定]** タブで、 **[防止]** を選択します。 **ブロックの応答本文**には、「*You've been blocked!* 」と入力します そうすると、カスタム ルールが有効になっていることを確認できます。
-2. **[Next: Managed rules]/(次へ: マネージド ルール/)** を選択します。
-3. **[Next: Custom rules]/(次へ: カスタム ルール/)** を選択します。
+2. **[Next: Managed rules]\(次へ: マネージド ルール\)** を選択します。
+3. **[Next: Custom rules]\(次へ: カスタム ルール\)** を選択します。
 4. **[カスタム ルールの追加]** を選択します。
 5. **[カスタム ルールの追加]** ページで、次のテスト値を使用してカスタム ルールを作成します。
 
@@ -65,8 +65,8 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="カスタム規則":::
 
    **[追加]** を選択します。
-6. **[Next: Association]/(次へ: 関連付け/)** を選択します。
-7. **[Add frontend host]/(フロントエンド ホストの追加/)** を選択します。
+6. **[Next: Association]\(次へ: 関連付け\)** を選択します。
+7. **[Add frontend host]\(フロントエンド ホストの追加\)** を選択します。
 8. **[フロントエンド ホスト]** では、フロントエンド ホストを選択し、 **[追加]** を選択します。
 9. **[Review + create]\(レビュー + 作成\)** を選択します。
 10. ポリシー検証に合格した後、 **[作成]** を選択します。
@@ -87,7 +87,7 @@ Azure Front Door プロファイルを作成するには、「[クイック ス�
 IP 制限ポリシーの構成を始める前に、ご自分の CLI 環境をセットアップして、Azure Front Door プロファイルを作成します。
 
 #### <a name="set-up-the-azure-cli-environment"></a>Azure CLI 環境をセットアップする
-1. [Azure CLI](/cli/azure/install-azure-cli) をインストールするか、Azure Cloud Shell を使用します。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 続く CLI コマンドで **[試してみる]** ボタンを選択し、次に、開いた Cloud Shell セッションでご自分の Azure アカウントにサインインします。 セッションが開始されたら、`az extension add --name front-door` を入力して Azure Front Door 拡張機能を追加します。
+1. [Azure CLI](/cli/azure/install-azure-cli) をインストールするか、Azure Cloud Shell を使用します。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 続く CLI コマンドで **[使ってみる]** ボタンを選択し、次に、開いた Cloud Shell セッションでご自分の Azure アカウントにサインインします。 セッションが開始されたら、`az extension add --name front-door` を入力して Azure Front Door 拡張機能を追加します。
  2. Bash でローカルに CLI を使用している場合は、`az login` を使って Azure にサインインします。
 
 #### <a name="create-an-azure-front-door-profile"></a>Azure Front Door プロファイルを作成する

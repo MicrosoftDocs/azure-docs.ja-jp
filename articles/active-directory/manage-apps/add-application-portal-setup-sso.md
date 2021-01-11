@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 040cc2dfa48f24fff4c7dda2cb6010efb01e9b86
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387287"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300138"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへのシングル サインオン (SSO) を設定する
 
@@ -32,6 +32,7 @@ Azure AD テナントに追加したアプリケーションへの SSO を設定
 - 省略可能:[アプリの表示](view-applications-portal.md)の完了。
 - 省略可能:[アプリの追加](add-application-portal.md)の完了。
 - 省略可能:[アプリの構成](add-application-portal-configure.md)の完了。
+- 省略可能:[アプリへのユーザーの割り当て](add-application-portal-assign-users.md)の完了。
 
 
 >[!IMPORTANT]
@@ -61,6 +62,16 @@ Azure AD テナントへのアプリケーションの追加が完了すると�
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="GitHub の価格設定ページの Enterprise サブスクリプション内に表示されたシングル サインオン オプションを示すスクリーンショット。":::
 
 
-## <a name="next-step"></a>次のステップ
+> [!TIP]
+> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](https://docs.microsoft.com/graph/application-saml-sso-configure-api)に関するページを参照してください。
 
-- [アプリを削除する](delete-application-portal.md)
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタート シリーズを完了したら、アプリを削除してテスト テナントをクリーンアップすることを検討してください。 アプリの削除については、このシリーズの最後のクイックスタートである[アプリの削除](delete-application-portal.md)に関する記事で説明されています。
+
+## <a name="next-steps"></a>次のステップ
+
+次の記事に進み、アプリを削除する方法を学習してください。
+> [!div class="nextstepaction"]
+> [アプリを削除する](delete-application-portal.md)

@@ -3,12 +3,13 @@ title: チャット ボットで Personalizer を使用する - Personalizer
 description: Personalizer ループを使用して C# .NET チャット ボットをカスタマイズし、アクション (特徴を伴う) およびコンテキストの特徴に基づいてユーザーに適切なコンテンツを提供します。
 ms.topic: tutorial
 ms.date: 07/17/2020
-ms.openlocfilehash: 8e936b4017ad50434bc7d6b05b4217f82a9080e0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ee037632b068b0d8d2f3ed3b6ea7a83d157c5083
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131669"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935655"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>チュートリアル:.NET チャット ボットで Personalizer を使用する
 
@@ -63,7 +64,7 @@ C# .NET チャット ボットを Personalizer ループとともに使用して
 * アクション "_と特徴_"
 * コンテキストの特徴
 
-モデルの**特徴**は、チャット ボットのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも_ありません_。
+モデルの**特徴**は、チャット ボットのユーザーベースのメンバー間で集約 (グループ化) できるアクションまたはコンテキストに関する情報です。 特徴は、個別に特定されたもの (ユーザー ID など) でも、詳細に特定されたもの (正確な時刻など) でも "_ありません_"。
 
 特徴は、アクションをモデル内の現在のコンテキストに合わせるために使用されます。 モデルは、アクション、コンテキスト、それらの特徴に関する Personalizer の過去の知識を表現したものであり、知識や経験に基づいた決定を可能にします。
 

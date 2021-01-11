@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253190"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419735"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのサービス依存関係の概要 
 
@@ -51,6 +51,7 @@ Office スタックでアプリケーションを使用してこれを実現す�
 |                     | SharePoint                                  | 事前バインディング |
 | Microsoft Teams     | Exchange                                    | 事前バインディング |
 |                     | MS Planner                                  | 遅延バインディング  |
+|                     | Microsoft Stream                            | 遅延バインディング  |
 |                     | SharePoint                                  | 事前バインディング |
 |                     | Skype for Business Online                   | 事前バインディング |
 | Office ポータル       | Exchange                                    | 遅延バインディング  |

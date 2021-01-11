@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: aa9813480425d179bdd11bac6f6f944f9f65e3ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78204be967bafdd7d01af4f9f286bd15347e4a9f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741960"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798042"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>マイ アプリ ポータルからアプリにサインインして開始する
 
@@ -33,7 +33,7 @@ ms.locfileid: "83741960"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 > [!Important]
-> このコンテンツは、マイ アプリのユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](https://docs.microsoft.com/azure/active-directory/manage-apps)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
+> このコンテンツは、マイ アプリのユーザーを対象としています。 管理者の方は、「[アプリケーション管理のドキュメント](../manage-apps/index.yml)」で、クラウドベースのアプリの設定と管理の方法を詳しくご覧いただけます。
 
 ## <a name="supported-browsers"></a>サポートされているブラウザー
 
@@ -59,7 +59,7 @@ ms.locfileid: "83741960"
 
 - **[最近の使用]** セクションで使用した最後のアプリを確認する。
 
-- リモート時に[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)を利用して社内 URL を使用する。
+- リモート時に[アプリケーション プロキシ](../manage-apps/application-proxy.md)を利用して社内 URL を使用する。
 
 ### <a name="to-download-and-install-the-extension"></a>拡張機能をダウンロードしてインストールするには
 

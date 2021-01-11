@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 06/03/2020
+ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 349ad3a1fbdf9340eb2b6c2ec92ba85b0357dd8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 051d88494049662891e1891f900aa580a005ffe4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84432504"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799470"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)
 
@@ -30,7 +30,8 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 | Question | Answer |
 | -------- | ------ |
 | デバイスを登録することは、会社またはサービスに自分のデバイスへのアクセスを許可することに同意することになりますか? | デバイスを登録すると、ご自身のデバイスから組織のサービスにアクセスできるようになります。また、組織からご自身のデバイスへのアクセスは許可されません。 |
-| Windows Mobile デバイスを使用していますが、Windows Mobile の Microsoft Authenticator が非推奨とされています。 このアプリを引き続き認証に使用することはできますか? | Windows Mobile で Microsoft Authenticator を使用するすべての認証は、2020 年 7 月 15 日以降に廃止される予定です。 アカウントからロックアウトされないようにするため、代替の認証方法を使用することを強くお勧めします。<br>エンタープライズ ユーザー向けの代替オプションは次のとおりです。<br><ul><li>Android または iOS 用の Microsoft Authenticator を設定します。</li><li>確認コードを受信するように SMS を設定します。</li><li>ID 確認の電話を受信するため、電話番号を設定します。</li></ul><br>個人用 Microsoft アカウント ユーザー向けの代替オプションは次のとおりです。<br><ul><li>Android または iOS 用の Microsoft Authenticator アプリを設定する。</li><li>[Microsoft アカウント セキュリティ ページ](https://account.microsoft.com/security/)からセキュリティ情報を更新して、代替のサインイン方法 (SMS またはメール) を設定します。</li></ul> |
+| アプリ ロックとは何ですか。それをどのように利用してセキュリティを強化するのでしょうか。 | アプリ ロックを利用すると、ワンタイム パスコード、アプリの情報、アプリの設定のセキュリティが強化されます。 アプリ ロックを有効にすると、Authenticator を開くたびに、デバイス PIN または生体認証を使用した認証が求められます。 また、アプリ ロックを利用すると、サインイン通知を承認するたびにご自分の PIN または生体認証が要求されることで、本人だけが通知を承認できる唯一のユーザーであることを保証するのにも役立ちます。 アプリ ロックのオンとオフは [Authenticator 設定] ページで切り替えます。 既定では、アプリ ロックは、デバイスに PIN または生体認証を設定したときにオンになります。<br><br>残念ながら、アプリ ロックによって Authenticator へ誰かがアクセスすることを阻止できる保証はありません。 これは、デバイスの登録が、Android のアカウント設定内やポータル サイト アプリ内など、Authenticator の外部の他の場所で行われる可能性があるためです。 |
+| Windows Mobile デバイスを使用していますが、Windows Mobile の Microsoft Authenticator が非推奨とされています。 このアプリを引き続き認証に使用することはできますか? | Windows Mobile で Microsoft Authenticator を使用するすべての認証は、2020 年 7 月 15 日以降に廃止される予定です。 アカウントからロックアウトされないようにするため、代替の認証方法を使用することを強くお勧めします。<br>エンタープライズ ユーザー向けの代替オプションは次のとおりです。<br><ul><li>[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) または [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458) 用の Microsoft Authenticator の設定。</li><li>確認コードを受信するための [SMS の設定](multi-factor-authentication-setup-phone-number.md)。</li><li>[ID を確認するための電話](multi-factor-authentication-setup-office-phone.md)を受ける電話番号の設定。</li></ul><br>個人用 Microsoft アカウント ユーザー向けの代替オプションは次のとおりです。<br><ul><li>[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator) または [iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458) 用の Microsoft Authenticator の設定。</li><li>[Microsoft アカウント セキュリティ ページ](https://account.microsoft.com/security/)からセキュリティ情報を更新して、代替のサインイン方法 (SMS またはメール) を設定します。</li></ul> |
 | Android Authenticator でワンタイム パスワード (OTP) コードのスクリーンショット撮影することはできますか? | Authenticator Android の 6.2003.1704 リリース以降では、Authenticator のスクリーンショットが撮影されるたびに、既定ですべての OTP コードが非表示になります。 スクリーンショットに OTP コードを表示したり、他のアプリを使用して Authenticator の画面をキャプチャできるようにしたい場合は、可能です。 Authenticator で **[画面のキャプチャ]** 設定を有効にし、アプリを再起動するだけです。 |
 | Authenticator でユーザーについてどのようなデータが格納されますか? また、どうすれば削除できますか? | Authenticator アプリは、次の 3 種類の情報を収集します。<ul><li>アカウントを追加したときに入力したアカウント情報。 このデータは、アカウントを削除することで削除できます。</li><li>診断ログ データ。アプリの **[ヘルプ]** メニューから **[ログの送信]** を選択して Microsoft にログを送信するまで、アプリ内にのみ存在します。 これらのログには、メール アドレス、サーバー アドレス、IP アドレスなどの個人データが含まれる場合があります。 また、デバイス名やオペレーティング システムのバージョンなどのデバイス データが含まれる場合もあります。 収集される個人データは、アプリの問題をトラブルシューティングするために必要な情報に限定されます。 これらのログ ファイルはいつでもアプリで閲覧でき、収集される情報を確認できます。 ログ ファイルを送信すると、Authentication アプリのエンジニアは、ユーザーから報告された問題のトラブルシューティングにのみ、これを使用します。</li><li>"アカウントの追加フローが開始されました/アカウントが正常に追加されました"、"通知が承認されました" など、個人を特定できない使用データ。"アカウントの追加フローが開始されました/アカウントが正常に追加されました"、"通知が承認されました" など、個人を特定できない使用データ。 このデータは、エンジニアリングに関する決定に不可欠な要素です。 ユーザーの使用状況は、ユーザーにとって重要なアプリの改善点を判断するのに役立ちます。 アプリを初めて使用すると、このデータ収集の通知が表示されます。 ここでは、アプリの **[設定]** ページで無効にできることが通知されます。 この設定は、いつでもオンまたはオフにすることができます。</li></ul> |
 | アプリのコードの目的は何ですか。 | Authenticator を開くと、追加したアカウントがタイルで表示されます。 お使いの職場または学校アカウントと個人用 Microsoft アカウントに対し、(アカウント タイルをタップしてアクセスする) アカウントの全画面ビューに 6 桁または 8 桁の数字が表示されます。 その他のアカウントの場合は、アプリの **[アカウント]** ページに 6 桁または 8 桁の数字が表示されます。<br>これらのコードは、ユーザーが本人であることを確認するために、シングル使用パスワードとして使用します。 ユーザー名とパスワードを使用してサインインした後、そのアカウントに関連付けられている確認コードを入力します。 たとえば、Katy が Contoso アカウントにサインインする場合、アカウント タイルをタップしてから確認コード 895823 を使用します。 Outlook アカウントの場合は、同じ手順に従います。<br>Contoso アカウント タイルをタップします。<br>![Authenticator アプリのアカウント タイル](media/user-help-auth-app-faq/katy-signin.png)<br>Contoso アカウント タイルをタップすると、確認コードが全画面表示で表示されます。<br>![Authenticator のアカウント タイル上の確認コード](media/user-help-auth-app-faq/verification-code.png) |
@@ -63,6 +64,6 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 
 - 2 段階認証について詳しくは、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」をご覧ください
 
-- セキュリティ情報の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください
+- セキュリティ情報の詳細については、「[セキュリティ情報 (プレビュー) の概要](./security-info-setup-signin.md)」を参照してください
 
 - 疑問点への答えがここで見つからなかった場合は、ぜひお知らせください。 [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp)に質問を投稿してコミュニティからのサポートを受けるか、このページにコメントを残してください。

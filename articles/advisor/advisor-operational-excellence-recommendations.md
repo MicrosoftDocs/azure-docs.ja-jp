@@ -3,12 +3,12 @@ title: Advisor を使用してオペレーショナル エクセレンスを向�
 description: Azure Advisor を使用して、Azure サブスクリプションのオペレーショナル エクセレンスを最適化し、成熟させます。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 1cac5a3f93df8422a3896b1251857bf552731fb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036adb7e7d59bd78980c72b210ad41faea277d00
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85125397"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258479"
 ---
 # <a name="achieve-operational-excellence-by-using-azure-advisor"></a>Azure Advisor を使用してオペレーショナル エクセレンスを実現する
 
@@ -54,6 +54,16 @@ Azure Policy は、ポリシーの作成、割り当て、管理に使用でき�
 
 **"*リソース グループからのタグの継承*" を有効にする。** このポリシーは、任意のリソースが作成または更新されるときに、親リソース グループのタグと値を追加または置換します。 修復タスクをトリガーすることで、既存のリソースを修復できます。
 
+## <a name="no-validation-environment-enabled"></a>検証環境が有効になっていません
+現在のサブスクリプションで検証環境が有効になっていないことが、Azure Advisor で確認されました。 お使いのホスト プールの作成時に、プロパティ タブの \"[Validation environment]\"\(検証環境\) で \"[いいえ]\" が選択されています。検証環境が有効になっているホスト プールが少なくとも 1 つあれば、潜在的な問題が早期に検出される Windows Virtual Desktop サービスのデプロイを通じて、ビジネス継続性が確保されます。 [詳細情報](https://docs.microsoft.com/azure/virtual-desktop/create-validation-host-pool)
+
+## <a name="ensure-production-non-validation-environment-to-benefit-from-stable-functionality"></a>確実に、運用 (非検証) 環境で安定した機能を利用できるようにする
+お使いのホスト プールで検証環境が有効になっている数が多すぎることが Azure Advisor で確認されました。 検証環境をその目的に最適化するには、お使いのホスト プールの少なくとも 1 つには検証環境を設定しますが、半分より多くには設定しないようにする必要があります。 使用しているホスト プールで検証環境の有効または無効のバランスを適正にすると、特定の更新プログラムで提供される Windows Virtual Desktop のマルチステージ デプロイの利点を最適に利用できるようになります。 この問題を解決するには、お使いのホスト プールのプロパティを開き、\"[Validation Environment]\"\(検証環境\) の設定の横にある \"[いいえ]\" を選択します。
+
+## <a name="enable-traffic-analytics-to-view-insights-into-traffic-patterns-across-azure-resources"></a>Traffic Analytics を有効にして、Azure リソース間のトラフィック パターンに関する分析情報を表示する
+Traffic Analytics は、Azure でのユーザーとアプリケーションのアクティビティを可視化するクラウドベースのソリューションです。 Traffic Analytics により、Network Watcher ネットワーク セキュリティ グループ (NSG) フロー ログが分析され、トラフィック フローに関する分析情報が提供されます。 Traffic Analytics を使用すると、Azure と Azure 以外のデプロイ全体のトップ トーカーを表示し、環境内の開いているポート、プロトコル、および悪意のあるフローを調査し、ネットワークのデプロイを最適化してパフォーマンスを向上させることができます。 10 分と 60 分の処理間隔でフロー ログを処理できるため、トラフィックの分析を高速化できます。 お使いの Azure リソースに対して Traffic Analytics を有効にすることをお勧めします。 
+
+
 ## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項の詳細については、以下を参照してください。
@@ -63,4 +73,4 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の信頼性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
-* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor REST API](/rest/api/advisor/)

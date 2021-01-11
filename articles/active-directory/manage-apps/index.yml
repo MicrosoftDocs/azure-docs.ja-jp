@@ -9,15 +9,15 @@ metadata:
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 10/10/2019
-  author: msmimart
-  ms.author: mimart
+  author: kenwith
+  ms.author: kenwith
   manager: celested
-  ms.openlocfilehash: b91e63e7e0b639ca969f9a35c6e3352343408194
-  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+  ms.openlocfilehash: dc056bbfb880b8cdfc2326edc3036657803f24d7
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/29/2020
-  ms.locfileid: "87385808"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88209119"
 landingContent:
 - title: アプリケーション管理について
   linkLists:
@@ -25,8 +25,12 @@ landingContent:
     links:
     - text: アプリケーション管理とは
       url: what-is-application-management.md
-    - text: SaaS アプリのチュートリアル
-      url: /azure/active-directory/saas-apps/
+    - text: シングル サインオンとは
+      url: what-is-single-sign-on.md
+  - linkListType: quickstart
+    links:
+    - text: クイックスタート シリーズ
+      url: view-applications-portal.md
 - title: クラウド アプリとシングル サインオンの管理
   linkLists:
   - linkListType: concept
@@ -35,14 +39,8 @@ landingContent:
       url: what-is-single-sign-on.md
     - text: エンドユーザー エクスペリエンス
       url: end-user-experiences.md
-  - linkListType: quickstart
-    links:
-    - text: ギャラリー アプリの追加
-      url: add-application-portal.md
   - linkListType: how-to-guide
     links:
-    - text: ギャラリー以外のアプリの追加
-      url: add-non-gallery-app.md
     - text: Configure single sign-on
       url: configure-saml-single-sign-on.md
     - text: ユーザーまたはグループをアプリに割り当てる

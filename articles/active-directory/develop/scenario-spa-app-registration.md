@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9dc5b446e2ab26ca43c2a300e1af1237353325a3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: efd51e90bb14f3d97b76eb6ac45b384192bb8da0
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682399"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311570"
 ---
 # <a name="single-page-application-app-registration"></a>シングルページ アプリケーション：アプリの登録
 
 Microsoft ID プラットフォームにシングル ページ アプリケーション (SPA) を登録するには、次の手順を実行します。 登録手順は、暗黙的な許可フローをサポートする MSAL.js 1.0 と、PKCE での承認コード フローをサポートする MSAL.js 2.0 で異なります。
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="create-the-app-registration"></a>アプリの登録を作成する
 
@@ -38,7 +40,7 @@ MSAL.js 1.0 ベースと MSAL.js 2.0 ベースの両方のアプリケーショ�
 - [承認コード フローを使用した MSAL.js 2.0](#redirect-uri-msaljs-20-with-auth-code-flow) (推奨)
 - [暗黙的なフローを使用した MSAL.js 1.0](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>リダイレクト URI: 承認コード フローを使用した MSAL.js 2.0
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>リダイレクト URI: [承認コード フローを使用した MSAL.js 2.0](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
 MSAL.js 2.0 以降を使用するアプリのリダイレクト URI を追加するには、次の手順に従います。 MSAL.js 2.0 以降では、[ブラウザーのサード パーティ Cookie の制限](reference-third-party-cookies-spas.md)に対応して、PKCE および CORS を使用した承認コード フローをサポートしています。 暗黙的な許可フローは、MSAL.js 2.0 以降ではサポートされていません。
 
@@ -50,7 +52,9 @@ MSAL.js 2.0 以降を使用するアプリのリダイレクト URI を追加す
 
 これで、シングル ページ アプリケーション (SPA) の登録が完了し、クライアントがリダイレクトされ、セキュリティ トークンが送信されるリダイレクト URI が構成されました。 **[プラットフォームの追加]** ウィンドウの **[シングル ページ アプリケーション]** タイルを使用してリダイレクト URI を構成すると、アプリケーションの登録は、PKCE と CORS を使用した承認コード フローをサポートするように構成されます。
 
-## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>リダイレクト URI: 暗黙的なフローを使用した MSAL.js 1.0
+さらに詳細なガイダンスについては、[チュートリアル](tutorial-v2-javascript-auth-code.md)に従ってください。
+
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>リダイレクト URI: [暗黙的なフローを使用した MSAL.js 1.0](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
 
 次の手順に従って、MSAL.js 1.3 以前と暗黙的な許可フローを使用するシングル ページ アプリのリダイレクト URI を追加します。 MSAL.js 1.3 以前を使用するアプリケーションでは、承認コード フローはサポートされていません。
 
@@ -64,6 +68,8 @@ MSAL.js 2.0 以降を使用するアプリのリダイレクト URI を追加す
 1. **[構成]** を選択して、リダイレクト URI の追加を完了します。
 
 これで、シングル ページ アプリケーション (SPA) の登録が完了し、クライアントがリダイレクトされ、セキュリティ トークンが送信されるリダイレクト URI が構成されました。 **ID トークン**と**アクセス トークン**のどちらかまたは両方を選択すると、暗黙的な許可フローが有効になります。
+
+さらに詳細なガイダンスについては、[チュートリアル](tutorial-v2-javascript-spa.md)に従ってください。
 
 ## <a name="note-about-authorization-flows"></a>承認フローについての注意事項
 

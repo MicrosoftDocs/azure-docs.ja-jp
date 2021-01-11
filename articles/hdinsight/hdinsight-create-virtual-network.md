@@ -162,7 +162,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
 次の手順を使用して、受信トラフィックを制限するが HDInsight が必要とする IP アドレスからのトラフィックは許可する仮想ネットワークを作成します。
 
-1. 次のコマンドを使用して、 `hdisecure`という名前の新しいネットワーク セキュリティ グループを作成します。 `RESOURCEGROUP` を、Azure 仮想ネットワークが含まれているリソース グループに置き換えます。 `LOCATION` を、グループが作成された場所 (リージョン) に置き換えます。
+1. 次のコマンドを使用して、 `hdisecure`という名前の新しいネットワーク セキュリティ グループを作成します。 `RESOURCEGROUP` を、Azure Virtual Network が含まれているリソース グループに置き換えます。 `LOCATION` を、グループが作成された場所 (リージョン) に置き換えます。
 
     ```azurecli
     az network nsg create -g RESOURCEGROUP -n hdisecure -l LOCATION
@@ -170,7 +170,7 @@ Add-AzNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -So
 
     グループが作成されたら、新しいグループに関する情報が表示されます。
 
-2. ポート 443 上で Azure HDInsight の正常性と管理サービスからのインバウンド通信を許可する新しいネットワーク セキュリティ グループにルールを追加するには、次を使用します。 `RESOURCEGROUP` を、Azure 仮想ネットワークが含まれているリソース グループの名前に置き換えます。
+2. ポート 443 上で Azure HDInsight の正常性と管理サービスからのインバウンド通信を許可する新しいネットワーク セキュリティ グループにルールを追加するには、次を使用します。 `RESOURCEGROUP` を、Azure Virtual Network が含まれているリソース グループの名前に置き換えます。
 
     > [!IMPORTANT]  
     > この例の `hdirule1` と `hdirule2` の IP アドレスを、使用している Azure のリージョンに合わせて変更してください。 この情報については、[HDInsight 管理 IP アドレス](hdinsight-management-ip-addresses.md)に関する記事を参照してください。

@@ -52,7 +52,7 @@ ms.locfileid: "67109367"
 | VPN | | |X |
 
 > [!NOTE]
-> 各 Azure サービスが準拠している認定の詳細については、[Microsoft Azure Security Center](https://azure.microsoft.com/support/trust-center/)の[製品ごとのコンプライアンス](https://azure.microsoft.com/support/trust-center/services/)をお読みください。
+> 各 Azure サービスが準拠している認定の詳細については、[Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/)の[製品ごとのコンプライアンス](https://azure.microsoft.com/support/trust-center/services/)をお読みください。
 > データ保護のオプションでは複数層のアプローチを使用しているため、オプションを比較することはこのタスクには適しません。 必ず、データの状態ごとに使用可能なすべてのオプションを使用してください。
 >
 >

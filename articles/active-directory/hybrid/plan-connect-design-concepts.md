@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: baa03499cc11bda24ead986dd64621572484cbb1
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698599"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279654"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
 このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
@@ -165,7 +165,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>AD FS の構成またはサードパーティのフェデレーションの構成に対する影響
 Azure AD Connect を使用してオンプレミス AD FS デプロイを管理している場合、同じ AD 属性を sourceAnchor として使用するように、要求規則が自動的に更新されます。 これによって、ADFS によって生成される ImmutableID 要求と Azure AD にエクスポートされる sourceAnchor 値との整合性が確実に保たれます。
 
-Azure AD Connect を使わずに AD FS を管理している場合や、サードパーティのフェデレーション サーバーを認証に使用している場合は、ImmutableID 要求の要求規則を手動で更新して、Azure AD にエクスポートされる sourceAnchor 値との整合性を確保する必要があります (「[AD FS の要求規則を変更する](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims)」を参照)。 インストールが完了するとウィザードから次の警告が返されます。
+Azure AD Connect を使わずに AD FS を管理している場合や、サードパーティのフェデレーション サーバーを認証に使用している場合は、ImmutableID 要求の要求規則を手動で更新して、Azure AD にエクスポートされる sourceAnchor 値との整合性を確保する必要があります (「[AD FS の要求規則を変更する](./how-to-connect-fed-management.md#modclaims)」を参照)。 インストールが完了するとウィザードから次の警告が返されます。
 
 ![サード パーティのフェデレーション構成](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
@@ -193,7 +193,7 @@ John は、contoso.com に属するユーザーです。 Azure AD ディレク�
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>ルーティング不可能なオンプレミス ドメインと Azure AD の UPN
 組織によっては、contoso.local のようにルーティング不可能なドメインや、contoso のような単純な単一ラベルのドメインなどが存在します。 ルーティング不可能なドメインは Azure AD では確認できません。 Azure AD Connect は、Azure AD で確認済みのドメインのみに対して同期できます。 Azure AD ディレクトリを作成すると、ルーティング可能なドメインが作成され、そのドメインが Azure AD の既定のドメインになります (例: contoso.onmicrosoft.com)。 そのため、既定の onmicrosoft.com ドメインに同期しないシナリオでは、他のルーティング可能なドメインを確認することが必要になります。
 
-ドメインの追加と確認の詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md) 」を参照してください。
+ドメインの追加と確認の詳細については、「 [Azure Active Directory へのカスタム ドメイン名の追加](../fundamentals/add-custom-domain.md) 」を参照してください。
 
 ルーティング不可能なドメイン環境で実行している場合、その環境が Azure AD Connect で検出され、簡単設定を続行するかどうかについて適切な警告が表示されます。 ルーティング不可能なドメインで運用している場合は、ユーザーの UPN でもルーティング不可能なサフィックスが使用されている可能性があります。 たとえば、contoso.local で運用している場合、Azure AD Connect では簡単設定を使用するのではなく、カスタム設定を使用するように推奨されます。 カスタム設定を使用すると、ユーザーの Azure AD への同期後に Azure へのサインインで UPN として使用する属性を指定できます。
 

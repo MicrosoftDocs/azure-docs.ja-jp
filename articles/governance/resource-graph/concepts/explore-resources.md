@@ -1,14 +1,14 @@
 ---
 title: Azure リソースの探索
 description: Resource Graph クエリ言語を使用してリソースを探索し、それらがどのように接続されているかを確認する方法について説明します。
-ms.date: 05/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dcd27380cb67213c3c2c7a5776243b5e9a2e37f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83654490"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056586"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する
 
@@ -207,8 +207,8 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-クエリを実行する前に、**type** が **Microsoft.Compute/disks** であることがなぜわかるかを見てみましょう。
-完全な ID を確認すると、文字列の一部が **/providers/Microsoft.Compute/disks/** となっています。 この文字列の部分から、検索対象となる種類がわかります。 別の方法としては、種類による制限を削除し、代わりに ID フィールドだけを使用して検索を行います。 ID は一意なので、1 つのレコードだけが返され、含まれる **type** プロパティによってその詳細情報が提供されます。
+クエリを実行する前に、**type** が **Microsoft.Compute/disks** であることがなぜわかるかを見てみましょう。 完全な ID を確認すると、文字列の一部が **/providers/Microsoft.Compute/disks/** となっています。
+この文字列の部分から、検索対象となる種類がわかります。 別の方法としては、種類による制限を削除し、代わりに ID フィールドだけを使用して検索を行います。 ID は一意なので、1 つのレコードだけが返され、含まれる **type** プロパティによってその詳細情報が提供されます。
 
 > [!NOTE]
 > この例を動作させるには、ID フィールドを、独自の環境の結果に置き換える必要があります。

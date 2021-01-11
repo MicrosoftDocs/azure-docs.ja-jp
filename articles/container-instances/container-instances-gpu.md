@@ -2,13 +2,13 @@
 title: GPU 対応コンテナー インスタンスをデプロイする
 description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: a25efc90573eb338b81f4a6532a632a140c7ab7d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259593"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387093"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -33,9 +33,6 @@ ms.locfileid: "86259593"
 
 ## <a name="about-gpu-resources"></a>GPU リソースについて
 
-> [!IMPORTANT]
-> GPU リソースは、要求時にのみ使用できます。 GPU リソースへのアクセスを要求するには、[Azure サポート要求][azure-support]を送信してください。
-
 ### <a name="count-and-sku"></a>カウントと SKU
 
 コンテナー インスタンスで GPU を使用するには、次の情報を使って *GPU リソース*を指定します。
@@ -53,6 +50,9 @@ ms.locfileid: "86259593"
 
 GPU リソースをデプロイするときに、ワークロードに適した CPU とメモリ リソースを設定します。上記の表は最大値を表しています。 これらの値は、現在、GPU リソースのないコンテナー グループで使用可能な CPU とメモリ リソースよりも大きくなっています。  
 
+> [!IMPORTANT]
+> GPU リソースの既定の[サブスクリプション制限](container-instances-quotas.md) (クォータ) は、SKU によって異なります。 P100 SKU と V100 SKU の既定の CPU 制限は、最初は 0 に設定されています。 使用可能なリージョンでの引き上げを要求するには、[Azure サポート リクエスト][azure-support]を送信してください。
+
 ### <a name="things-to-know"></a>注意事項
 
 * **デプロイ時**- GPU リソースを含むコンテナー グループの作成には、最大で **8 - 10 分**かかります。 これは、Azure で GPU VM をプロビジョニングして構成するための追加時間によるものです。 
@@ -63,7 +63,7 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 
 * **CUDA ドライバー** - GPU リソースがあるコンテナー インスタンスは、NVIDIA CUDA ドライバーとコンテナーのランタイムを使用して事前にプロビジョニングされているため、CUDA ワークロード用に開発されたコンテナー イメージを使用できます。
 
-  現時点では、CUDA 9.0 がサポートされています。 たとえば、次の基本イメージを Docker ファイルで使用できます。
+  現時点では、CUDA 9.0 のみがサポートされています。 たとえば、次の基本イメージを Docker ファイルで使用できます。
   * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
   * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
     

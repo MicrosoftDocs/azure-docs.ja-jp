@@ -3,12 +3,12 @@ title: Azure Arc 対応 Kubernetes クラスターに Azure Monitor for containe
 description: この記事では、Azure Monitor for containers を使用して Azure Arc 対応 Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: b1adbd5c1f9f0710a814c91872d3f8a9f1afb50f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8002b20f37ca5149c58ca3e29402916ebbc1333
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261054"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092883"
 ---
 # <a name="enable-monitoring-of-azure-arc-enabled-kubernetes-cluster"></a>Azure Arc 対応 Kubernetes クラスターの監視を有効にする
 
@@ -63,7 +63,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
     >[!IMPORTANT]
     >Azure Arc 対応 Kubernetes クラスターの監視は、ciprod04162020 以降のバージョンのエージェントに限りサポートされます。
 
-- Powershell のスクリプト化された方法を使用して監視を有効にする場合は、[PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-6) が必要です。
+- Powershell のスクリプト化された方法を使用して監視を有効にする場合は、[PowerShell Core](/powershell/scripting/install/installing-powershell?view=powershell-6) が必要です。
 
 - Bash のスクリプト化された方法を使用して監視を有効にする場合は、[Bash バージョン 4](https://www.gnu.org/software/bash/) が必要です。
 

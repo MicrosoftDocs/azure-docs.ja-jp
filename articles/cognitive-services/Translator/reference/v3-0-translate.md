@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/17/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 563f4693c358c570caa2566f58002ddfe6c7bc69
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584639"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903988"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0:Translate
 
@@ -59,7 +59,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>  
   <tr>
     <td>textType</td>
-    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は <code>plain</code> (既定値) または <code>html</code> です。</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定可能値: <code>plain</code> (既定値) または <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
@@ -136,7 +136,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 次の制限事項が適用されます。
 
 * 配列に含めることができる要素は、最大でも 100 個です。
-* 要求に含めるテキスト全体では、スペースも含めて 5,000 文字を超えてはなりません。
+* 要求に含めるテキスト全体では、スペースも含めて 10,000 文字を超えてはなりません。
 
 ## <a name="response-body"></a>応答本文
 
@@ -234,7 +234,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   </tr>
 </table> 
 
-エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ [v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で、一般的なエラー コードを確認できます。 
+エラーが発生した場合は、要求の結果として JSON エラー応答も返されます。 このエラーコードは 3 桁の HTTP ステータス コードの後に､エラーをさらに分類するための 3 桁の数字を続けた 6 桁の数字です｡ 一般的なエラー コードは、[v3 Translator のリファレンス ページ](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)で確認できます。 
 
 ## <a name="examples"></a>例
 
@@ -317,6 +317,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json; charset=UTF-8" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
 ```
 
+応答には、テキストの全箇所の翻訳が要求とまったく同じ順序で含まれます。
 応答本文を次に示します。
 
 ```

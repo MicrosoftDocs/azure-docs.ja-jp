@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 31a3b0ef548067d8af45610355360860eaff8257
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310987"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280887"
 ---
 # <a name="send-security-messages-sdk"></a>セキュリティ メッセージの送信 SDK
 

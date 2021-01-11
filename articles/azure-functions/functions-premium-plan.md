@@ -15,7 +15,7 @@ ms.locfileid: "86506198"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
-Azure Functions の Premium プラン (Elastic Premium プランとも呼ばれます) は、関数アプリのホスティング オプションです。 Premium プランでは、VNet 接続、コールド スタートなし、プレミアム ハードウェアなどの機能が提供されます。  複数の関数アプリを同じ Premium プランにデプロイできます。プランでは、コンピューティング インスタンス サイズ、基本プラン サイズ、および最大プラン サイズを構成できます。  Premium プランと、他のプランおよびホスティング タイプの比較については、[関数のスケールとホスティング オプション](functions-scale.md)に関するページを参照してください。
+Azure Functions の Premium プラン (Elastic Premium プランとも呼ばれます) は、Function App のホスティング オプションです。 Premium プランでは、VNet 接続、コールド スタートなし、プレミアム ハードウェアなどの機能が提供されます。  複数の Function App を同じ Premium プランにデプロイできます。プランでは、コンピューティング インスタンス サイズ、基本プラン サイズ、および最大プラン サイズを構成できます。  Premium プランと、他のプランおよびホスティング タイプの比較については、[関数のスケールとホスティング オプション](functions-scale.md)に関するページを参照してください。
 
 ## <a name="create-a-premium-plan"></a>Premium プランを作成する
 
@@ -30,11 +30,11 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 この例の `<RESOURCE_GROUP>` と `<PLAN_NAME>` は、それぞれ実際のリソース グループおよびリソース グループ内で一意となる実際のプランの名前に置き換えてください。 [サポートされる `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions) を指定します。 Linux をサポートする Premium プランを作成するには、`--is-linux` オプションを指定します。
 
-プランが作成されたら、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) を使用して関数アプリを作成できます。 ポータルで、プランとアプリの両方が同時に作成されます。 完全な Azure CLI スクリプトの例については、「[Premium プランの関数アプリを作成する](scripts/functions-cli-create-premium-plan.md)」を参照してください。
+プランが作成されたら、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) を使用して Function App を作成できます。 ポータルで、プランとアプリの両方が同時に作成されます。 完全な Azure CLI スクリプトの例については、「[Premium プランの Function App を作成する](scripts/functions-cli-create-premium-plan.md)」を参照してください。
 
 ## <a name="features"></a>特徴
 
-Premium プランにデプロイされた関数アプリでは、次の機能を利用できます。
+Premium プランにデプロイされた Function App では、次の機能を利用できます。
 
 ### <a name="pre-warmed-instances"></a>事前ウォーミングされたインスタンス
 
@@ -42,7 +42,7 @@ Premium プランにデプロイされた関数アプリでは、次の機能を
 
 Premium プランでは、最小プラン サイズまで、指定された数のインスタンスでアプリを事前ウォーミングしておくことができます。  インスタンスの事前ウォーミングによって、高負荷になる前にアプリを事前スケールすることもできます。 アプリがスケール アウトするとき、アプリはまず、事前ウォーミングされたインスタンスにスケールします。 次のスケール操作に備えて、追加のインスタンスが引き続き、すぐにバッファー アウトおよびウォーミングされます。 事前ウォーミングされたインスタンスのバッファーを確保しておくことで、コールド スタートの待機時間を効果的に回避できます。  事前ウォーミングされたインスタンスは Premium プランの機能であり、お客様には、プランがアクティブなときは常に、少なくとも 1 つのインスタンスが実行されていて利用可能である状態を維持していただく必要があります。
 
-Azure portal 上で事前ウォーミングされたインスタンスの数を構成するには、選択した**関数アプリ**から、 **[プラットフォーム機能]** タブへ移動して、 **[スケールアウト]** オプションを選択します。 関数アプリの編集ウィンドウでは、事前ウォーミングされたインスタンスはそのアプリ固有ですが、最小および最大のインスタンスはプラン全体に適用されます。
+Azure portal 上で事前ウォーミングされたインスタンスの数を構成するには、選択した**Function App**から、 **[プラットフォーム機能]** タブへ移動して、 **[スケールアウト]** オプションを選択します。 Function App の編集ウィンドウでは、事前ウォーミングされたインスタンスはそのアプリ固有ですが、最小および最大のインスタンスはプラン全体に適用されます。
 
 ![エラスティック スケールの設定](./media/functions-premium-plan/scale-out.png)
 
@@ -56,13 +56,13 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 Premium プランにデプロイされた Azure Functions では、[Web アプリ向けの新しい VNet 統合](../app-service/web-sites-integrate-with-vnet.md)を利用します。  構成すると、アプリを VNet 内のリソースと通信させる、またはサービス エンドポイントを介してセキュリティで保護することができます。  受信トラフィックを制限するための IP 制限もアプリで利用できます。
 
-Premium プランで関数アプリにサブネットを割り当てるときは、個々の潜在的インスタンスのための十分な IP アドレスがあるサブネットが必要です。 使用可能なアドレスが 100 以上の IP ブロックが必要です。
+Premium プランで Function App にサブネットを割り当てるときは、個々の潜在的インスタンスのための十分な IP アドレスがあるサブネットが必要です。 使用可能なアドレスが 100 以上の IP ブロックが必要です。
 
-詳細については、[お使いの関数アプリと VNet の統合](functions-create-vnet.md)に関するページを参照してください。
+詳細については、[お使いの Function App と VNet の統合](functions-create-vnet.md)に関するページを参照してください。
 
 ### <a name="rapid-elastic-scale"></a>高速エラスティック スケール
 
-従量課金プランと同じ高速スケーリング ロジックを使用して、追加のコンピューティング インスタンスが自動的にアプリのために追加されます。 同じ Azure App Service のアプリは、個々のアプリのニーズに基づき、互いに依存せずにスケーリングします。 ただし、同じ Azure App Service の関数アプリでは、可能であれば、コストを下げる目的で VM リソースが共有されます。 VM に関連付けられているアプリの数は、各アプリの占有領域と VM のサイズによって変わります。
+従量課金プランと同じ高速スケーリング ロジックを使用して、追加のコンピューティング インスタンスが自動的にアプリのために追加されます。 同じ Azure App Service のアプリは、個々のアプリのニーズに基づき、互いに依存せずにスケーリングします。 ただし、同じ Azure App Service の Function App では、可能であれば、コストを下げる目的で VM リソースが共有されます。 VM に関連付けられているアプリの数は、各アプリの占有領域と VM のサイズによって変わります。
 
 スケーリングのしくみの詳細については、[関数のスケールとホスティング](./functions-scale.md#how-the-consumption-and-premium-plans-work)に関するページを参照してください。
 
@@ -79,7 +79,7 @@ Azure Functions の従量課金プランでは、1 回の実行が 10 分まで�
 
 プラン サイズを超えるインスタンスがアプリに必要な場合、インスタンスの数が最大バースト制限に達するまでアプリのスケール アウトを続けることができます。  プラン サイズを超えたインスタンスに対する課金は、インスタンスが実行されていてお客様に貸し出されている間のみ発生します。  最小プランのインスタンスはお客様のアプリに対して保証されていますが、定義された最大制限までのアプリのスケール アウトに関してはベスト エフォートでの提供となります。
 
-プラン サイズまたは最大値は Azure portal で構成できます。プランまたはそのプランにデプロイされている関数アプリの **[スケール アウト]** オプションを選択します ( **[プラットフォーム機能]** の下にあります)。
+プラン サイズまたは最大値は Azure portal で構成できます。プランまたはそのプランにデプロイされている Function App の **[スケール アウト]** オプションを選択します ( **[プラットフォーム機能]** の下にあります)。
 
 Azure CLI から最大バースト制限を増やすこともできます。
 
@@ -98,9 +98,9 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |EP3|4|14 GB|250 GB|
 
 ### <a name="memory-utilization-considerations"></a>メモリ使用率に関する注意点
-メモリの多いコンピューターでお使いの関数アプリを実行しても、利用可能なすべてのメモリを使用できるとは限りません。
+メモリの多いコンピューターでお使いの Function App を実行しても、利用可能なすべてのメモリを使用できるとは限りません。
 
-たとえば、JavaScript 関数アプリには、Node.js の既定のメモリ上限の制限があります。 この固定のメモリ制限を増やすには、値に `--max-old-space-size=<max memory in MB>` を使用して `languageWorkers:node:arguments` のアプリ設定を追加します。
+たとえば、JavaScript Function App には、Node.js の既定のメモリ上限の制限があります。 この固定のメモリ制限を増やすには、値に `--max-old-space-size=<max memory in MB>` を使用して `languageWorkers:node:arguments` のアプリ設定を追加します。
 
 ## <a name="region-max-scale-out"></a>リージョン最大スケール アウト
 

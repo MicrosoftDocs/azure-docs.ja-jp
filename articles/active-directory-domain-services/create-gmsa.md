@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 923502132fdbe0b4a56c0fc23c19475e9074b8ff
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 723b8cf7a71e5af672c8665040645d55645fe9f7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040250"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281856"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でグループで管理されるサービス アカウント (gMSA) を作成する
 
@@ -76,7 +76,7 @@ New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=aaddscontoso,DC=COM"
 * **-Name** は *WebFarmSvc* に設定されます
 * **-Path** パラメーターは、前の手順で作成された gMSA のカスタム OU を指定します。
 * DNS エントリとサービス プリンシパル名が *WebFarmSvc.aaddscontoso.com* に対して設定されます。
-* *AADDSCONTOSO-SERVER$* のプリンシパルでは、ID を使用するパスワードの取得が可能です。
+* *AADDSCONTOSO-SERVER$* のプリンシパルでは、パスワードを取得して ID を使用することが可能です。
 
 独自の名前とドメイン名を指定します。
 

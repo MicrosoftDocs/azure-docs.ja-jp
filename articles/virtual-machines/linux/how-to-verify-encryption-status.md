@@ -6,13 +6,13 @@ ms.service: security
 ms.topic: how-to
 ms.author: kaib
 ms.date: 03/11/2020
-ms.custom: seodec18
-ms.openlocfilehash: 58bb3f38938414f25551d0df47a50b6a8f386acc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: e39a230c71cf48422220768adfa8de91cbaa6692
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283335"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072844"
 ---
 # <a name="verify-encryption-status-for-linux"></a>Linux の暗号化の状態を確認する 
 

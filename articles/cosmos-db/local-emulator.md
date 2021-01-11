@@ -5,13 +5,14 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 01/31/2020
-ms.openlocfilehash: e06a2eac5387cd02e95d8252ae04edc356683ed9
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.date: 08/19/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: ece2fdf5c75decb9a2139b973ad4bbb3f0803a0b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028245"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89011176"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -35,6 +36,7 @@ Azure Cosmos Emulator は、ローカルの開発者ワークステーション�
 
 * エミュレーターのデータ エクスプローラーでは現在、SQL API 用のクライアントがサポートされています。 MongoDB、Table、Graph、Cassandra などの API のような、Azure Cosmos DB 用の API については、データ エクスプローラーのビューと操作が完全にはサポートされていません。
 * Azure Cosmos Emulator は、1 つの固定アカウントと既知のマスター キーのみに対応しています。 Azure Cosmos Emulator ではキーを再生成できませんが、コマンドライン オプションを使って既定のキーを変更することは可能です。
+* Azure Cosmos Emulator は、[プロビジョニングされたスループット](set-throughput.md) モードで Azure Cosmos アカウントをサポートしています。現在、[サーバーレス](serverless.md) モードでは Azure Cosmos アカウントはサポートされません。
 * Azure Cosmos Emulator はスケーラブルなサービスではなく、大量のコンテナーはサポートされません。
 * Azure Cosmos Emulator では、異なる [Azure Cosmos DB 整合性レベル](consistency-levels.md)を利用できません。
 * Azure Cosmos Emulator では、[複数リージョンのレプリケーション](distribute-data-globally.md)を利用できません。
@@ -114,12 +116,13 @@ Azure Cosmos DB と同様に、Azure Cosmos Emulator では TLS 経由のセキ�
 
 ### <a name="sql-api"></a>SQL API
 
-デスクトップで Azure Cosmos Emulator が実行中になったら、サポートされている [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) または [Azure Cosmos DB REST API](/rest/api/cosmos-db/) を使用してエミュレーターを操作できます。 Azure Cosmos Emulator にはデータ エクスプローラーも組み込まれており、コードを記述することなく、SQL API または Cosmos DB for MongoDB API 用のコンテナーを作成したり、項目の表示と編集を行ったりできます。
+デスクトップで Azure Cosmos Emulator が実行中になったら、サポートされている [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) または [Azure Cosmos DB REST API](/rest/api/cosmos-db/) を使用してエミュレーターを操作できます。 Azure Cosmos Emulator にはデータ エクスプローラーも組み込まれており、コードを記述することなく、SQL API または Cosmos DB for MongoDB API 用のコンテナーを作成したり、項目の表示と編集を行ったりできます。
 
 ```csharp
 // Connect to the Azure Cosmos Emulator running locally
-DocumentClient client = new DocumentClient(
-   new Uri("https://localhost:8081"), "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+CosmosClient client = new CosmosClient(
+   "https://localhost:8081", 
+    "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
 ```
 
@@ -428,7 +431,7 @@ Linux Docker コンテナーで実行されている .NET クライアント ア
 
 ## <a name="running-on-mac-or-linux"></a>Mac または Linux 上での実行<a id="mac"></a>
 
-現在、Cosmos エミュレーターは Windows でのみ実行できます。 Mac または Linux を実行するユーザーは、Windows 仮想マシンによってホストされる、Parallels や VirtualBox などのハイパーバイザー内でエミュレーターを実行できます。 これを有効にする手順は、次のとおりです。
+現在、Cosmos エミュレーターは Windows でのみ実行できます。 Mac または Linux を実行するユーザーは、ハイパーバイザー (Parallels や VirtualBox など) でホストされる Windows 仮想マシンでエミュレーターを実行できます。 これを有効にする手順は、次のとおりです。
 
 Windows VM 内で以下のコマンドを実行して、IPv4 アドレスをメモします。
 
@@ -444,7 +447,36 @@ ipconfig.exe
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-最後に、エミュレーターの CA 証明書を Linux または Mac 環境にインポートする必要があります。
+最後に、Linux または Mac 環境で実行されているアプリケーションとエミュレーターの間の証明書の信頼プロセスを解決する必要があります。 2 つのオプションがあります。
+
+1. アプリケーションで SSL 検証を無効にします。
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1+](#tab/ssl-netstd21)
+
+   .NET Standard 2.1 以降と互換性のあるフレームワークで実行されているアプリケーションの場合は、`CosmosClientOptions.HttpClientFactory` を活用できます。
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET Standard 2.0](#tab/ssl-netstd20)
+
+   .NET Standard 2.0 と互換性のあるフレームワークで実行されているアプリケーションの場合は、`CosmosClientOptions.HttpClientFactory` を活用できます。
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+# <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
+
+   Node.js アプリケーションの場合は、アプリケーションの起動中に `NODE_TLS_REJECT_UNAUTHORIZED` を設定するように `package.json` ファイルを変更できます。
+
+   ```json
+   "start": NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js
+   ```
+
+--- 
+
+> [!NOTE]
+> SSL 検証の無効化は、開発目的の場合にのみお勧めします。運用環境で実行するときは無効にしないでください。
+
+2. エミュレーターの CA 証明書を Linux または Mac 環境にインポートします。
 
 ### <a name="linux"></a>Linux
 
@@ -507,6 +539,8 @@ Mac 環境では、次の手順に従います。
 - 接続の問題が発生した場合は、[トレース ファイルを収集](#trace-files)し、それらを圧縮して、[Azure portal](https://portal.azure.com) からサポート チケットを開いてください。
 
 - "**サービス利用不可**" というメッセージが表示された場合、エミュレーターがネットワーク スタックの初期化に失敗している可能性があります。 Pulse Secure クライアントまたは Juniper Networks クライアントのネットワーク フィルター ドライバーが問題の原因である可能性があるため、これらのクライアントがインストールされているかどうかを確認してください。 通常、サード パーティのネットワーク フィルター ドライバーをアンインストールすると、問題が解決されます。 このほか、/DisableRIO オプションを指定してエミュレーターを起動する方法もあります。このオプションを使うと、エミュレーターのネットワーク通信が通常の Winsock に切り替わります。 
+
+- **"禁止"、"メッセージ": "転送プロトコルまたは暗号で禁止された暗号化を使用して要求が行われています。アカウントの SSL/TLS の許可されている最小プロトコル設定を確認してください..."** の接続の問題が発生した場合、これは OS のグローバルな変更 (Insider Preview ビルド 20170 など) または既定として TLS 1.3 を有効にするブラウザーの設定が原因である可能性があります。 SDK を使用して Cosmos エミュレーターに対して要求を実行すると、同様のエラーが発生する場合があります。例: **Microsoft.Azure.Documents.DocumentClientException: 転送プロトコルまたは暗号で禁止された暗号化を使用して要求が行われています。アカウントの SSL/TLS の許可されている最小プロトコル設定を確認してください**。 Cosmos エミュレーターは TLS 1.2 プロトコルのみを受け入れて動作するため、この時点ではこれが予想されます。 回避策として、設定を変更し、TLS 1.2 を既定の設定にすることをお勧めします。たとえば、IIS マネージャーで [サイト]、[Default Web Site] の順に移動し、ポート 8081 の [サイト バインド] を見つけて、TLS 1.3 を無効にするように編集します。 [設定] オプションを使用して、Web ブラウザーに対して同様の操作を実行できます。
 
 - エミュレーターの実行中に、ご利用のコンピューターがスリープ モードになった場合や、そのコンピューターで OS を更新した場合、"**サービスは現在使用できません**" というメッセージが表示される可能性があります。 Windows 通知トレイに表示されているアイコンを右クリックし、 **[Reset Data]\(データのリセット\)** を選択して、エミュレーターのデータをリセットします。
 

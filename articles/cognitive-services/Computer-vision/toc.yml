@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Computer Vision とは
-      href: Home.md
+      href: overview.md
     - name: 新機能
       href: whats-new.md
 - name: クイックスタート
@@ -137,7 +137,7 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
-    - name: Computer Vision API v3.1-preview.1
+    - name: Computer Vision API v3.1 プレビュー
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005'
     - name: Computer Vision API v3.0
       href: 'https://aka.ms/computer-vision-v3-ref'
@@ -185,3 +185,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: v2.0 または 2.1 から 3.0 へのアップグレード
+      href: upgrade-api-versions.md

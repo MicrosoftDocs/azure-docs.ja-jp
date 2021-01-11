@@ -1,6 +1,6 @@
 ---
-title: Azure ポータルで Azure AD 認証を開始する | Microsoft Docs
-description: Azure ポータルを使用して Azure Active Directory (Azure AD) 認証にアクセスして Azure Media Services API を利用する方法を説明します。
+title: Azure Portal で Azure AD 認証を開始する | Microsoft Docs
+description: Azure Portal を使用して Azure Active Directory (Azure AD) 認証にアクセスして Azure Media Services API を利用する方法を説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,24 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 208019bbc86b22443c7d012400d4e4324679aee9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3d6c494232456b4819c9275d66fa6f7ab5de9b77
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084468"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89260732"
 ---
-# <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure ポータルで Azure AD 認証を開始する
+# <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure Portal で Azure AD 認証を開始する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
 > Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
-Azure ポータルを使用して Azure Active Directory (Azure AD) 認証にアクセスして Azure Media Services API にアクセスする方法を説明します。
+Azure Portal を使用して Azure Active Directory (Azure AD) 認証にアクセスして Azure Media Services API にアクセスする方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure アカウント。 アカウントをお持ちでない場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)で作業を開始してください。 
-- Media Services アカウント。 詳細については、「[Azure ポータルを使用した Azure Media Services アカウントの作成](media-services-portal-create-account.md)」を参照してください。
+- Media Services アカウント。 詳細については、「[Azure Portal を使用した Azure Media Services アカウントの作成](media-services-portal-create-account.md)」を参照してください。
 
 Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの認証オプションがあります。
 
@@ -41,7 +43,7 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 
 このページでは、API への接続に使用する認証方法を選択できます。 このページには、API に接続するために必要な値も表示されます。
 
-1. [Azure ポータル](https://portal.azure.com/) で Media Services アカウントを選択します。
+1. [Azure Portal](https://portal.azure.com/) で Media Services アカウントを選択します。
 2. Media Services API に接続する方法を選択します。
 3. **[Media Services API に接続する]** で、接続する Media Services API のバージョンを選択します。
 

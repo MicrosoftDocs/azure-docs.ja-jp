@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 23f12278d02715bd94f1ea26abf2bd4b2b03caf1
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 6b95eeaf7dd72c85c3940e3cdc2a71c193c35ff5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187406"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008610"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Automation で資格情報を管理する
 
@@ -44,7 +44,7 @@ PowerShell を使用して Automation 資格情報を作成および管理する
 |:--- |:--- |
 | `Get-AutomationPSCredential` |Runbook または DSC 構成で使用する `PSCredential` オブジェクトを取得します。 `Get-AzAutomationCredential` コマンドレットは資格情報を取得するだけなので、ほとんどの場合、代わりにこの[内部コマンドレット](modules.md#internal-cmdlets)を使用する必要があります。 通常、この情報は別のコマンドレットに渡す場合には役に立ちません。 |
 | [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |ユーザー名とパスワードの入力を求めるプロンプトが表示された資格情報を取得します。 このコマンドレットは既定の Microsoft.PowerShell.Security モジュールの一部です。 「[既定のモジュール](modules.md#default-modules)」を参照してください。|
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | 資格情報資産を作成します。 このコマンドレットは、既定の Azure モジュールの一部です。 「[既定のモジュール](modules.md#default-modules)」を参照してください。|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) | 資格情報資産を作成します。 このコマンドレットは、既定の Azure モジュールの一部です。 「[既定のモジュール](modules.md#default-modules)」を参照してください。|
 
 コード内の `PSCredential` オブジェクトを取得するには、`Orchestrator.AssetManagement.Cmdlets` モジュールをインポートする必要があります。 詳細については、「[Azure Automation でモジュールを管理する](modules.md)」をご覧ください。
 

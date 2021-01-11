@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c4121482c37afcda0f580656bbe583128b7720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829399"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120577"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -35,7 +35,7 @@ Azure でアプリケーションをホストすると、アプリケーショ�
 
 Azure が提供しているどのサービスでも、ソリューション アーキテクチャのサポートに必要なサービスをなかなか見つけ出せないことがあります。 ここでは、開発者が一般的に使用する Azure サービスを取り上げます。 すべての Azure サービスの一覧については、[Azure のドキュメント](../../index.yml)を参照してください。
 
-まず、Azure でアプリケーションをホストする方法を決める必要があります。 インフラストラクチャ全体を仮想マシン (VM) として管理する必要はありますか。 Azure が提供するプラットフォーム管理施設を使用できますか。 それとも、コードの実行をホストする用途でのみサーバーレス フレームワークが必要でしょうか。
+まず、Azure でアプリケーションをホストする方法を決める必要があります。 インフラストラクチャ全体を仮想マシン (VM) として管理する必要はありますか? Azure が提供するプラットフォーム管理施設を使用できますか。 それとも、コードの実行をホストする用途でのみサーバーレス フレームワークが必要でしょうか。
 
 アプリケーションにクラウド記憶域が必要なら、Azure には複数のオプションがあります。 Azure のエンタープライズ認証を利用することができます。 また、クラウドベースの開発および監視用のツールもあり、ほとんどのホスティング サービスでは DevOps 統合が提供されています。
 
@@ -64,7 +64,7 @@ App Service は DevOps を念頭に置いて設計されています。 発行�
 
 > **いつ使用するか**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用にフル マネージドのホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
 >
-> **作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service/app-service-web-get-started-dotnet.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
+> **作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service/quickstart-dotnetcore.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
 >
 > **今すぐ試す**:App Service なら、Azure アカウントを新規登録することなく、一時的なアプリをプロビジョニングしてプラットフォームを試すことができます。 プラットフォームと [Azure App Service アプリの作成](https://tryappservice.azure.com/)を試してみましょう。
 
@@ -76,7 +76,7 @@ VM の場合は細かいレベルで制御できるため、Azure 上で PaaS �
 
 > **いつ使用するか**: アプリケーション インフラストラクチャを完全に制御したい場合、またはオンプレミス アプリケーション ワークロードを変更せずに Azure に移行したい場合は、Virtual Machines を使用します。
 >
-> **作業開始**: [Linux VM](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) または [Windows VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) を Azure portal から作成します。
+> **作業開始**: [Linux VM](../../virtual-machines/linux/quick-create-portal.md) または [Windows VM](../../virtual-machines/windows/quick-create-portal.md) を Azure portal から作成します。
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (サーバーレス)
 
@@ -141,11 +141,6 @@ OS 仮想化の形式の 1 つである Docker コンテナーを使用すると
 
 Azure には、アプリケーションでコンテナーを使用する方法がいくつか用意されています。
 
-- **Azure Docker VM 拡張機能**:Docker ツールを使用して、Docker ホストとして動作するように VM を構成できます。
-
-  > **いつ使用するか**: VM 上のアプリケーション用に一貫性のあるコンテナー デプロイを生成する場合、または [Docker Compose](https://docs.docker.com/compose/overview/) を使用する場合。
-  >
-  > **作業開始**: [Docker VM 拡張機能を使用して Azure に Docker 環境を作成します](../../virtual-machines/virtual-machines-linux-dockerextension.md)。
 
 - **Azure Kubernetes Service**:コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。 Azure Kubernetes Service の詳細については、[Azure Kubernetes Service の概要](../../aks/intro-kubernetes.md)に関する記事を参照してください。
 
@@ -290,7 +285,7 @@ Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ば
 
 ### <a name="manage-your-subscriptions"></a>サブスクリプションを管理する
 
-サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション オファーの種類別一覧については、「[Microsoft Azure オファーの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。 Azure サブスクリプションには、サブスクリプションを完全に制御できるアカウント管理者がいます。 また、サブスクリプション内のすべてのサービスを制御できるサービス管理者もいます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../cost-management-billing/manage/add-change-subscription-administrator.md)」を参照してください。 個々のアカウントに、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを細かく管理する権限を与えることができます。
+サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション オファーの種類別一覧については、「[Microsoft Azure オファーの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。 Azure サブスクリプションには、サブスクリプションを完全に制御できるアカウント管理者がいます。 また、サブスクリプション内のすべてのサービスを制御できるサービス管理者もいます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../cost-management-billing/manage/add-change-subscription-administrator.md)」を参照してください。 個々のアカウントに、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを詳細に制御する権限を与えることができます。
 
 #### <a name="resource-groups"></a>リソース グループ
 
@@ -302,7 +297,7 @@ Azure Resource Explorer は、サブスクリプションで作成済みのリ�
 
 Azure リソースへのアクセス権を許可する場合、そのタスクの実行に必要最小限の特権をユーザーに付与することが常にベスト プラクティスです。
 
-- **ロールベースのアクセス制御 (RBAC)** :Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。 詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
+- **ロールベースのアクセス制御 (RBAC)** :Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。 詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
   > **いつ使用するか**: ユーザーやグループに対する詳細なアクセス管理が必要な場合、またはユーザーをサブスクリプションの所有者にする必要がある場合に使用します。
   >

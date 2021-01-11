@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 7627625a917a8f652da62d4197368f023ad8c110
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964500"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588927"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Key Vault と DigiCert 証明機関の統合
 
@@ -105,7 +105,7 @@ New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGrou
 
 ```azurepowershell-interactive
 $accountId = "myDigiCertCertCentralAccountID"
-$org = New-AzureKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
+$org = New-AzKeyVaultCertificateOrganizationDetails -Id OrganizationIDfromDigiCertAccount
 $secureApiKey = ConvertTo-SecureString DigiCertCertCentralAPIKey -AsPlainText –Force
 $issuerName = "DigiCertCA"
 ```
@@ -131,6 +131,16 @@ Add-AzKeyVaultCertificate -VaultName "Contoso-Vaultname" -Name "ExampleCertifica
  ![証明書のプロパティ](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 詳しくは、[Key Vault REST API リファレンス内の証明書の操作](/rest/api/keyvault)の説明をご覧ください。 アクセス許可の設定については、「[Vaults - Create or Update](/rest/api/keyvault/vaults/createorupdate)」(コンテナー - 作成または更新) および「[Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy)」(コンテナー -アクセス ポリシーの更新) をご覧ください。
+
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+- KeyVault を使用して DigiCert ワイルドカード証明書を生成できますか。 
+   はい。 これは、DigiCert アカウントをどのように構成したかによって異なります。
+- EV 証明書を作成する場合、それを指定するにはどうすればよいですか。 
+   証明書を作成するときに、[ポリシーの詳細構成] をクリックし、証明書の種類を指定します。 サポートされている値は、次のとおりです。OV-SSL、EV-SSL
+- 統合を通じて DigiCert 証明書を作成する場合と、DigiCert を通じて証明書を直接取得する場合とで、時間的な差異は生じますか。
+   いいえ。 証明書を作成するときに時間がかかることがあるのは検証のプロセスであり、その検証は DigiCert が従うプロセスに依存します。
+
 
 ## <a name="next-steps"></a>次のステップ
 

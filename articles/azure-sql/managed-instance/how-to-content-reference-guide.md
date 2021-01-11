@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 23ce3272d99401340d784f88dd537baa55774a63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de8d1b7aba7763799228c831af61bf83a79937bb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708826"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167982"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance のコンテンツ参照
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -75,6 +75,14 @@ ms.locfileid: "84708826"
 - [イベント ファイルへの拡張イベントの格納](../database/xevent-code-event-file.md)
 - [リング バッファーへの拡張イベントの格納](../database/xevent-code-ring-buffer.md)
 
+### <a name="alerting"></a>アラート
+
+- [マネージド インスタンスでのアラートの作成](alerts-create.md)
+
+## <a name="operations"></a>Operations
+
+- [SQL Managed Instance でユーザーによって開始される手動フェールオーバー](user-initiated-failover.md)
+
 ## <a name="develop-applications"></a>アプリケーションを開発する
 
 - [接続](../database/connect-query-content-reference-guide.md#libraries)
@@ -99,8 +107,6 @@ ms.locfileid: "84708826"
 - [SaaS の設計パターン](../database/saas-tenancy-app-design-patterns.md)
 - [SaaS Video Indexer](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS アプリのセキュリティ](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

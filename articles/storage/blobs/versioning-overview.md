@@ -9,12 +9,13 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fd620e253e661f986f67a440272937026cb4ff7f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 494c1fc1c1c91538240258ab0517c7ff79bdfa74
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528402"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056535"
 ---
 # <a name="blob-versioning-preview"></a>BLOB のバージョン管理 (プレビュー)
 
@@ -23,6 +24,8 @@ BLOB ストレージのバージョン管理 (プレビュー) を有効にし�
 BLOB のバージョン管理はストレージ アカウントに対して有効になり、ストレージ アカウント内のすべての BLOB に適用されます。 ストレージ アカウントに対して BLOB のバージョン管理を有効にした後、Azure Storage によって、ストレージ アカウント内のすべての BLOB のバージョンが自動的に維持されます。
 
 Microsoft では、優れたデータ保護を実現するために、BLOB のバージョン管理を使用して以前のバージョンの BLOB を維持することをお勧めします。 可能であれば、BLOB スナップショットではなく、BLOB のバージョン管理を使用して、以前のバージョンを維持するようにしてください。 BLOB スナップショットでは、以前のバージョンの BLOB が維持されるという点で似たような機能が提供されますが、スナップショットはアプリケーションを使用して手動で維持する必要があります。
+
+BLOB のバージョン管理を有効にする方法については、「[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)」を参照してください。
 
 > [!IMPORTANT]
 > ストレージ アカウントやコンテナーが誤って削除された場合、BLOB のバージョン管理はその復旧には役立ちません。 ストレージ アカウントが誤って削除されないようにするには、ストレージ アカウント リソースに対して **CannotDelete** ロックを構成します。 Azure リソースのロックの詳細については、「[リソースのロックによる予期せぬ変更の防止](../../azure-resource-manager/management/lock-resources.md)」を参照してください。
@@ -203,7 +206,8 @@ BLOB バージョンの署名済みリソースは、`bv` です。 詳細につ
 - カナダ東部
 - カナダ中部
 
-プレビューは、非運用環境のみでの使用を意図されています。
+> [!IMPORTANT]
+> BLOB のバージョン管理のプレビューは、非運用環境のみでの使用を意図されています。 運用環境のサービス レベル契約(SLA) は現在使用できません。
 
 バージョン 2019-10-10 以降の Azure Storage REST API では、BLOB のバージョン管理がサポートされています。
 
@@ -225,7 +229,7 @@ BLOB のバージョン管理プレビューに登録するには、PowerShell �
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-PowerShell を使用して登録を行うには、[Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) コマンドを呼び出します。
+PowerShell を使用して登録を行うには、[Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) コマンドを呼び出します。
 
 ```powershell
 # Register for blob versioning (preview)
@@ -241,8 +245,8 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 Azure CLI を使用して登録を行うには、[az feature register](/cli/azure/feature#az-feature-register) コマンドを呼び出します。
 
 ```azurecli
-az feature register --namespace Microsoft.Storage \
-    --name Versioning
+az feature register --namespace Microsoft.Storage --name Versioning
+az provider register --namespace 'Microsoft.Storage'
 ```
 
 ---
@@ -265,8 +269,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
 Azure CLI での登録の状態を確認するには、[az feature](/cli/azure/feature#az-feature-show) コマンドを呼び出します。
 
 ```azurecli
-az feature show --namespace Microsoft.Storage \
-    --name Versioning
+az feature show --namespace Microsoft.Storage --name Versioning
 ```
 
 ---

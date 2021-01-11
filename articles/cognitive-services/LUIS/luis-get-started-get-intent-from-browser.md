@@ -3,12 +3,12 @@ title: クイック スタート:ブラウザーを使用して予測を照会�
 description: このクイックスタートでは、利用可能なパブリック LUIS アプリを使用して、ブラウザーで会話形式のテキストからユーザーの意図を判断します。
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 24c7a8aca410ad10b8a9299c4bca2f13d0feb780
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769984"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245997"
 ---
 # <a name="quickstart-query-prediction-runtime-with-user-text"></a>クイック スタート:ユーザー テキストを使用して予測ランタイムに照会する
 
@@ -19,7 +19,7 @@ LUIS の予測エンドポイントから返される内容を理解するため
 パブリック アプリのクエリには、以下が必要です。
 
 * お使いの Language Understanding (LUIS) リソース情報:
-    * **予測キー** - [LUIS ポータル](https://www.luis.ai/)から取得できます。 まだキーを作成するサブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
+    * **予測キー** - [LUIS ポータル](https://www.luis.ai/)から取得できます。 まだキーを作成するサブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/cognitive-services)に登録できます。
     * **予測エンドポイント サブドメイン** - サブドメインは、お使いの LUIS リソースの**名前**でもあります。
 * LUIS アプリ ID - パブリック IoT アプリ ID `df67dcdb-c37d-46af-88e1-8b97951ca1c2` を使用します。 クイックスタートのコードで使用されるユーザー クエリは、そのアプリに固有のものです。
 

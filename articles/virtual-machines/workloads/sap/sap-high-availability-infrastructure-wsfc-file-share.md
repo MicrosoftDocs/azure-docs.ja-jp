@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 14ffcbf2e111e052f4b45259b0b25664049d3b3d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83201666"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855363"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
@@ -57,11 +57,7 @@ ms.locfileid: "83201666"
 [sap-ascs-high-availability-multi-sid-wsfc]:sap-ascs-high-availability-multi-sid-wsfc.md
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-[sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]:sap-high-availability-infrastructure-wsfc-shared-disk.md#47d5300a-a830-41d4-83dd-1a0d1ffdbe6a
-[sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]:sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e
-[sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]:sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30
-[sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]:sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e
-[sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c
+[sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 [sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 [sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]:sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c
 [sap-high-availability-installation-wsfc-file-share]:sap-high-availability-installation-wsfc-file-share.md
@@ -250,19 +246,11 @@ ms.locfileid: "83201666"
 
 Azure インフラストラクチャを準備するには、以下を完了します。
 
-* [アーキテクチャ テンプレート 1、2、3 向けのインフラストラクチャを準備します][sap-high-availability-infrastructure-wsfc-shared-disk]。
+* [VM をデプロイします][sap-high-availability-infrastructure-wsfc-shared-disk]。
 
-* [Azure 仮想ネットワークを作成します][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network]。
+* [SAP ASCS 用の Azure ロード バランサーを作成して構成します][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
 
-* [必要な DNS IP アドレスを設定します][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip]。
-
-* [SAP 仮想マシンの静的 IP アドレスを設定します][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip]。
-
-* [Azure 内部ロード バランサーの静的 IP アドレスを設定します][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb]。
-
-* [Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を設定します][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。
-
-* [Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を変更します][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules]。
+* [エンキュー レプリケーション サーバー 2 (ERS2) を使用している場合、ERS2 の Azure Load Balancer 構成を実行します][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules]。 
 
 * [Windows 仮想マシンをドメインに追加します][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain]。
 

@@ -7,15 +7,15 @@ metadata:
   services: frontdoor
   ms.service: frontdoor
   ms.topic: landing-page
-  author: vhorne
-  ms.author: victorh
+  author: duongau
+  ms.author: duau
   ms.date: 03/03/2020
-  ms.openlocfilehash: f6059ee181095a7f60da02e192c32818fe5b542f
-  ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+  ms.openlocfilehash: 9ecba8b92524ec6494cd210e53392bdadf228fa0
+  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/24/2020
-  ms.locfileid: "85321504"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89398717"
 landingContent:
 - title: Azure Front Door について
   linkLists:

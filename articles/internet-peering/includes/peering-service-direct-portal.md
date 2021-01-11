@@ -27,7 +27,7 @@ ms.locfileid: "81687040"
 
 1. **[Registered Prefixes]\(登録されたプレフィックス\)** ウィンドウで **[Add registered prefix]\(登録されたプレフィックスの追加\)** を選択します。
     > [!div class="mx-imgBorder"]
-    > ![[Add Registered Prefix]/(登録されたプレフィックスの追加/)](../media/setup-direct-modify-add-registered-prefix.png)
+    > ![[Add Registered Prefix]\(登録されたプレフィックスの追加\)](../media/setup-direct-modify-add-registered-prefix.png)
 1. **[名前]** と **[プレフィックス]** を選択し、 **[保存]** を選択してプレフィックスを登録します。
     > [!div class="mx-imgBorder"]
     >  ![プレフィックスを登録する](../media/setup-direct-modify-register-a-prefix.png) 
@@ -35,6 +35,6 @@ ms.locfileid: "81687040"
 1. プレフィックスが作成されると、 **[Registered Prefixes]\(登録されたプレフィックス\)** の一覧に表示されます。 プレフィックスの **[名前]** を選択すると、詳細が表示されます。
     > [!div class="mx-imgBorder"]
     > ![登録されたプレフィックスと接続](../media/setup-direct-modify-registered-prefixes.png)
-1. 登録されたプレフィックスのページで、プレフィックスごとの **[Prefix key]/(プレフィックス キー/)** を含む完全な詳細が表示されます。 このキーは、このプレフィックスが割り当てられた顧客に、そのプロバイダー ISP から提供する必要があります。 顧客は、このキーを使用してサブスクリプション内にプレフィックスを登録できます。
+1. 登録されたプレフィックスのページで、プレフィックスごとの **[Prefix key]\(プレフィックス キー\)** を含む完全な詳細が表示されます。 このキーは、このプレフィックスが割り当てられた顧客に、そのプロバイダー ISP から提供する必要があります。 顧客は、このキーを使用してサブスクリプション内にプレフィックスを登録できます。
     > [!div class="mx-imgBorder"]
     > ![プレフィックス キーを持つプレフィックス](../media/setup-direct-modify-registered-prefix-detail.png)

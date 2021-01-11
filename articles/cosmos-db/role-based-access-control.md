@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: cbb97dd260e5aee53595afc24e577ce08334e2b2
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 6edf5de852ea836de8be02636dd8a971ccebb86d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027020"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530573"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB のロールベースのアクセス制御
 
-Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応するロールベースのアクセス制御 (RBAC) が組み込まれています。 Azure Active Directory にプロファイルを持つ個人は、これらの RBAC ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソース上のリソースと操作へのアクセスを許可または拒否できます。 ロールの割り当ては、Azure Cosmos アカウント、データベース、コンテナー、およびオファー (スループット) へのアクセスを含む、コントロールプレーン アクセスのみに限定されています。
+Azure Cosmos DB には、Azure Cosmos DB の一般的な管理シナリオに対応するロールベースのアクセス制御 (RBAC) が組み込まれています。 Azure Active Directory にプロファイルを持つ個人は、これらの Azure ロールをユーザー、グループ、サービス プリンシパル、またはマネージド ID に割り当てて、Azure Cosmos DB リソースに対する操作とリソースへのアクセスを許可または拒否できます。 ロールの割り当ては、Azure Cosmos アカウント、データベース、コンテナー、およびオファー (スループット) へのアクセスを含む、コントロールプレーン アクセスのみに限定されています。
 
 ## <a name="built-in-roles"></a>組み込みのロール
 
@@ -39,16 +39,16 @@ Azure portal の **[アクセス制御 (IAM)]** ウィンドウは、Azure Cosmo
 
 ## <a name="custom-roles"></a>カスタム ロール
 
-組み込みのロールに加えて、ユーザーは Azure で[カスタム ロール](../role-based-access-control/custom-roles.md)を作成し、それらのロールを Active Directory テナント内のすべてのサブスクリプションにわたるサービス プリンシパルに適用することもできます。 カスタム ロールによって、ユーザーは、カスタムのリソース プロバイダー操作セットを使用して RBAC ロール定義を作成できるようになります。 Azure Cosmos DB のカスタム ロールを構築するために使用できる操作の詳細については、「[Azure Cosmos DB のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)」を参照してください。
+組み込みのロールに加えて、ユーザーは Azure で[カスタム ロール](../role-based-access-control/custom-roles.md)を作成し、それらのロールを Active Directory テナント内のすべてのサブスクリプションにわたるサービス プリンシパルに適用することもできます。 カスタム ロールによって、ユーザーは、カスタムのリソース プロバイダー操作セットを使用して Azure ロール定義を作成できるようになります。 Azure Cosmos DB のカスタム ロールを構築するために使用できる操作の詳細については、「[Azure Cosmos DB のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)」を参照してください。
 
-## <a name="preventing-changes-from-cosmos-sdk"></a>Cosmos SDK からの変更の防止
+## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>Azure Cosmos DB SDK からの変更の防止
+
+アカウント キーを使用して接続しているクライアント (つまり Azure Cosmos SDK 経由で接続しているアプリケーション) がリソースを変更しないように、Azure Cosmos DB リソース プロバイダーをロックできます。 Azure portal からの変更も、この対象になります。 この機能は、運用環境における制御とガバナンスの強化を必要とするユーザーに適している可能性があります。 SDK からの変更を防止すると、コントロール プレーン操作に対するリソース ロックや診断ログなどの機能も有効になります。 Azure Cosmos DB SDK から接続しているクライアントは、Azure Cosmos アカウント、データベース、コンテナー、スループットのプロパティを変更できません。 Cosmos コンテナー自体に対するデータの読み取りと書き込みに関連する操作は影響を受けません。
+
+この機能を有効にした場合、リソースへの変更を行うことができるのは、適切な Azure ロールを持つユーザーと、管理サービス ID を含む Azure Active Directory 資格情報だけです。
 
 > [!WARNING]
-> この機能を有効にすると、アプリケーションに危険な影響を与える可能性があります。 この機能を有効にする前に、十分にお読みください。
-
-Azure Cosmos DB リソース プロバイダーをロックして、リソースが、アカウント キーを使用して接続している任意のクライアント (つまり Cosmos SDK 経由で接続しているアプリケーション) から変更されないようにすることができます。 これには、Azure portal からの変更も含まれます。 これは、運用環境でより高いレベルの制御とガバナンスを必要とし、リソース ロックなどの機能を有効にし、コントロール プレーン操作の診断ログを有効にするユーザーに適しています。 Cosmos DB SDK を介して接続しているクライアントは、Cosmos アカウント、データベース、コンテナー、スループットのプロパティを変更できません。 Cosmos コンテナー自体に対するデータの読み取りと書き込みに関連する操作は影響を受けません。
-
-設定した場合、リソースへの変更を行うことができるのは、適切な RBAC ロールを持つユーザーと、管理サービス ID を含む Azure Active Directory 資格情報だけです。
+> この機能を有効にすると、アプリケーションに影響を与える可能性があります。 有効にする前に、その影響について理解しておいてください。
 
 ### <a name="check-list-before-enabling"></a>有効にする前のチェック リスト
 
@@ -64,11 +64,11 @@ Azure Cosmos DB リソース プロバイダーをロックして、リソース
 
 - ストアド プロシージャ、トリガー、またはユーザー定義関数の変更。
 
-アプリケーションにより (または Azure portal 経由でユーザーにより) これらのいずれかの操作が実行される場合は、[ARM テンプレート](manage-sql-with-resource-manager.md)、[PowerShell](manage-with-powershell.md)、[Azure CLI](manage-with-cli.md)、[REST](/rest/api/cosmos-db-resource-provider/) または [Azure 管理ライブラリ](https://github.com/Azure-Samples/cosmos-management-net)経由で実行されるように移行する必要があります。 Azure の管理は、[複数の言語](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)で使用できることに留意してください。
+このような操作がアプリケーションにより (または Azure portal 経由でユーザーにより) 実行される場合は、[ARM テンプレート](manage-sql-with-resource-manager.md)、[PowerShell](manage-with-powershell.md)、[Azure CLI](manage-with-cli.md)、REST または [Azure 管理ライブラリ](https://github.com/Azure-Samples/cosmos-management-net)経由で実行されるように移行する必要があります。 Azure の管理は、[複数の言語](https://docs.microsoft.com/azure/?product=featured#languages-and-tools)で使用できることに留意してください。
 
 ### <a name="set-via-arm-template"></a>ARM テンプレートを使用して設定する
 
-ARM テンプレートを使用してこのプロパティを設定するには、既存のテンプレートを更新するか、現在のデプロイ用の新しいテンプレートをエクスポートしてから、databaseAccounts リソースのプロパティに `"disableKeyBasedMetadataWriteAccess": true` を含めます。 次に、このプロパティ設定を含む Azure Resource Manager テンプレートの基本的な例を示します。
+ARM テンプレートを使用してこのプロパティを設定するには、既存のテンプレートを更新するか、現在のデプロイ用の新しいテンプレートをエクスポートしてから、`databaseAccounts` リソースのプロパティに `"disableKeyBasedMetadataWriteAccess": true` を含めます。 次に、このプロパティ設定を含む Azure Resource Manager テンプレートの基本的な例を示します。
 
 ```json
 {
@@ -111,5 +111,5 @@ Update-AzCosmosDBAccount -ResourceGroupName [ResourceGroupName] -Name [CosmosDBA
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)
-- [Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)
+- [Azure カスタム ロール](../role-based-access-control/custom-roles.md)
 - [Azure Cosmos DB のデータへのアクセスをセキュリティで保護する](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)

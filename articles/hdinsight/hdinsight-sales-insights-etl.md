@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>スクリプトとデータを含むリポジトリを複製する
 
-1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
+1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[使ってみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
 
     ```azurecli-interactive
     az login

@@ -3,12 +3,12 @@ title: Azure Event Hubs - リアルタイム イベントでのデータの異�
 description: チュートリアル:Microsoft Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 595c0e06750171c844249a77ecef16c84dc8ada5
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85315620"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934057"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル:Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -308,7 +308,7 @@ Stream Analytics ジョブで、 **[開始]** 、 **[今すぐ]** 、 **[開始]
 
    ![データセットを指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. 視覚化タイプとして **[カード]** を選択します。 **[フィールド]** で、 **[値の追加]** をクリックし、 **[fraudulentuses]** を選択します。
+9. 視覚化タイプとして **[カード]** を選択します。 **[フィールド]** で、 **[値の追加]** をクリックし、`fraudulentuses` を選択します。
 
    ![視覚化タイプとフィールドを指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -329,9 +329,9 @@ Stream Analytics ジョブで、 **[開始]** 、 **[今すぐ]** 、 **[開始]
 
 12. **[視覚化タイプ]** で、 **[折れ線グラフ]** を選択します。
 
-13. **[軸]** で、 **[値の追加]** をクリックし、 **[windowend]** を選択します。 
+13. **[軸]** で、 **[値の追加]** をクリックし、`windowend` を選択します。 
 
-14. **[値]** で、 **[値の追加]** をクリックし、 **[fraudulentuses]** を選択します。
+14. **[値]** で、 **[値の追加]** をクリックし、`fraudulentuses` を選択します。
 
 15. **[表示する時間枠]** で、過去 5 分間を選びます。 **[次へ]** をクリックします。
 
@@ -378,6 +378,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 次の記事に進み、Azure Event Hubs について詳しく学習してください。
 
 > [!div class="nextstepaction"]
-> [.NET Standard で Azure Event Hubs へのメッセージ送信を開始する](get-started-dotnet-standard-send-v2.md)
+> [.NET Standard で Azure Event Hubs へのメッセージ送信を開始する](event-hubs-dotnet-standard-getstarted-send.md)
 
 [無料アカウントを作成]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -1,6 +1,5 @@
 ---
-title: モデルが Web サービスになるまでの過程
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): モデルが Web サービスになるまでの過程 - Azure'
 description: Azure Machine Learning Studio (クラシック) モデルが開発中の実験から Web サービスになるまでにたどる過程の概要。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 4d7ab5cada77ccebc214e09b43fbb70b3ad8bb59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b659335d09ed26b6556ccb7937094d90e1c5f1e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84117199"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428412"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (クラシック) モデルが実験から Web サービスになるまでの過程
+
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (classic)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 Azure Machine Learning Studio (クラシック) によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
 
@@ -96,7 +98,7 @@ Machine Learning Studio (クラシック) を使用して予測 Web サービス
 
 機械学習モデルを維持したまま新しいデータで再トレーニングする必要がある場合、選択肢は 2 つあります。
 
-1. **Web サービスの実行中にモデルを再トレーニングする**: 予測 Web サービスの実行中にモデルを再トレーニングするには、トレーニング実験にいくつか変更を加えて "***再トレーニング実験***" にすることで実行できます。さらにそれを " ***再トレーニング Web* サービス**" としてデプロイできます。 この方法の手順については、「[プログラムによる Machine Learning のモデルの再トレーニング](/azure/machine-learning/studio/retrain-machine-learning-model)」を参照してください。
+1. **Web サービスの実行中にモデルを再トレーニングする**: 予測 Web サービスの実行中にモデルを再トレーニングするには、トレーニング実験にいくつか変更を加えて "***再トレーニング実験***" にすることで実行できます。さらにそれを "***再トレーニング Web* サービス**" としてデプロイできます。 この方法の手順については、「[プログラムによる Machine Learning のモデルの再トレーニング](/azure/machine-learning/studio/retrain-machine-learning-model)」を参照してください。
 2. **元のトレーニング実験に戻り、さまざまなトレーニング データを使用してモデルを開発する**: 予測実験は Web サービスにリンクされますが、この方法では、トレーニング実験は直接リンクされません。 元のトレーニング実験を変更し、 **[Web サービスの設定]** をクリックすると、"*新しい*" 予測実験が作成されます。これをデプロイすると、"*新しい*" Web サービスが作成されます。 単に元の Web サービスを更新するのではありません。
 
    トレーニング実験を変更する必要がある場合は、トレーニング実験を開き、 **[名前を付けて保存]** をクリックしてコピーを作成します。 これにより、元のトレーニング実験、予測実験、Web サービスはそのままの状態で維持されます。 そのうえで、変更を加えることにより、新しい Web サービスを作成できます。 新しい Web サービスをデプロイした後で、前の Web サービスを停止するか、新しい Web サービスと共に実行し続けるかを決定できます。

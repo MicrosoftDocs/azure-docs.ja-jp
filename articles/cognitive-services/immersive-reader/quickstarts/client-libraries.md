@@ -11,12 +11,13 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 05/20/2020
 ms.author: pasta
-ms.openlocfilehash: da90c60319aff7fea239c107bb8677950ca57125
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5693ae7c4f42ba2f307cd888b65d269932b6fbff
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86038352"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88921777"
 ---
 # <a name="quickstart-use-the-immersive-reader-client-library"></a>クイック スタート:イマーシブ リーダー クライアント ライブラリを使用する
 

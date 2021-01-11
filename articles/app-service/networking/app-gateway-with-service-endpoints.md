@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 5e32baa10e98f0f57a861f8cebfb7506ad615631
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74979924"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88958935"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>サービス エンドポイントと Application Gateway の統合
 App Service には、Azure Application Gateway との統合において少し異なる構成を必要とする 3 つのバリエーションがあります。 バリエーションには、通常の App Service (マルチテナント、内部ロード バランサー (ILB) App Service Environment (ASE)、外部 ASE とも呼ばれます) が含まれます。 この記事では、App Service (マルチテナント) を使用して構成し、ILB と外部 ASE に関する考慮事項について説明します。
@@ -33,7 +33,7 @@ App Service (マルチテナント) には、インターネットに接続す�
 
 ## <a name="using-azure-portal"></a>Azure Portal の使用
 Azure portal では、4 つの手順に従ってセットアップのプロビジョニングと構成を行います。 既存のリソースがある場合は、最初の手順を省略できます。
-1. [.Net Core のクイック スタート](../../app-service/app-service-web-get-started-dotnet.md)などの App Service ドキュメントのクイック スタートのいずれかを使用して、App Service を作成します。
+1. [.Net Core のクイック スタート](../quickstart-dotnetcore.md)などの App Service ドキュメントのクイック スタートのいずれかを使用して、App Service を作成します。
 2. [ポータルのクイック スタート](../../application-gateway/quick-create-portal.md)を使用して Application Gateway を作成します。この際、[バックエンド ターゲットの追加] セクションはスキップします。
 3. [Application Gateway で App Service をバックエンドとして](../../application-gateway/configure-web-app-portal.md)構成します。この際、[アクセスを制限する] セクションはスキップします。
 4. 最後に、[サービス エンドポイントを使用してアクセス制限](../../app-service/app-service-ip-restrictions.md#service-endpoints)を作成します。
@@ -84,6 +84,6 @@ az webapp config access-restriction add --resource-group myRG --name myWebApp --
 ```
 
 ## <a name="next-steps"></a>次のステップ
-App Service Environment の詳細については、[App Service Environment に関するドキュメント](https://docs.microsoft.com/azure/app-service/environment)を参照してください。
+App Service Environment の詳細については、[App Service Environment に関するドキュメント](/azure/app-service/environment)を参照してください。
 
 Web アプリをさらにセキュリティで保護するために、Application Gateway の Web アプリケーション ファイアウォールに関する情報は、[Azure Web アプリケーション ファイアウォールのドキュメント](../../web-application-firewall/ag/ag-overview.md)に記載されています。

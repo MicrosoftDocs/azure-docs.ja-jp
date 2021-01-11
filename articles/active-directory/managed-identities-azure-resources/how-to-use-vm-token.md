@@ -3,7 +3,7 @@ title: 仮想マシン上でマネージド ID を使用してアクセス ト�
 description: 仮想マシン上で Azure リソースのマネージド ID を使用して OAuth アクセス トークンを取得する手順と例について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51f254bef223294661180f21019ae8c5a842015c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608383"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266291"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Azure VM 上で Azure リソースのマネージド ID を使用してアクセス トークンを取得する方法 
 
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリを使用してトークンを取得する
 
-.NET アプリケーションと Functions の場合、Azure リソースのマネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス](/azure/key-vault/service-to-service-authentication)に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+.NET アプリケーションと Functions の場合、Azure リソースのマネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure?view=azure-cli-latest)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス](../../key-vault/general/service-to-service-authentication.md)に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) および [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet パッケージに対する参照をアプリケーションに追加します。
 
@@ -141,7 +141,7 @@ Content-Type: application/json
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Microsoft.Azure.Services.AppAuthentication およびそれによって公開される操作の詳細については、[Microsoft.Azure.Services.AppAuthentication リファレンス](/azure/key-vault/service-to-service-authentication)と [Azure リソースのマネージド ID を使用する App Service および KeyVault の .NET サンプル](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)を参照してください。
+Microsoft.Azure.Services.AppAuthentication およびそれによって公開される操作の詳細については、[Microsoft.Azure.Services.AppAuthentication リファレンス](../../key-vault/general/service-to-service-authentication.md)と [Azure リソースのマネージド ID を使用する App Service および KeyVault の .NET サンプル](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)を参照してください。
 
 ## <a name="get-a-token-using-c"></a>C# を使用してトークンを取得する
 
@@ -381,7 +381,7 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 |           | access_denied | リソース所有者または承認サーバーによって、要求が拒否されました。 |  |
 |           | unsupported_response_type | このメソッドを使用したアクセス トークンの取得は、承認サーバーによってサポートされていません。 |  |
 |           | invalid_scope | 要求されたスコープが無効、不明、または形式が正しくありません。 |  |
-| 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、 *\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」で、サービスの一覧と、そのリソース ID を参照してください。
+| 500 内部サーバー エラー | unknown | Active Directory からのトークンの取得に失敗しました。 詳細については、 *\<file path\>* のログを参照してください | Azure リソースのマネージド ID が VM 上で有効なことを確認します。 VM の構成についてサポートが必要な場合は、「[Azure portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」を参照してください。<br><br>また、HTTP GET 要求の URI、特にクエリ文字列で指定されたリソース URI の形式が正しいかどうかを確認します。 例については、上記の「REST」セクションの「要求のサンプル」を参照してください。または、「[Azure AD 認証をサポートしている Azure サービス](./services-support-managed-identities.md)」で、サービスの一覧と、そのリソース ID を参照してください。
 
 ## <a name="retry-guidance"></a>再試行のガイダンス 
 
@@ -397,17 +397,9 @@ Azure リソース エンドポイントのマネージド ID は、HTTP 応答�
 
 ## <a name="resource-ids-for-azure-services"></a>Azure サービスのリソース ID
 
-Azure AD をサポートするリソースで、Azure リソースのマネージド ID をテスト済みのリソースとそれぞれのリソース ID の一覧については、「[Azure AD 認証をサポートしている Azure サービス](services-support-msi.md)」を参照してください。
+Azure AD をサポートするリソースで、Azure リソースのマネージド ID をテスト済みのリソースとそれぞれのリソース ID の一覧については、「[Azure AD 認証をサポートしている Azure サービス](./services-support-managed-identities.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
 - Azure VM 上で Azure リソースのマネージド ID を有効にするには、「[Configure managed identities for Azure resources on a VM using the Azure portal](qs-configure-portal-windows-vm.md)」 (Azure portal を使用して VM 上で Azure リソースのマネージド ID を構成する) を参照してください。
-
-
-
-
-
-
-
-

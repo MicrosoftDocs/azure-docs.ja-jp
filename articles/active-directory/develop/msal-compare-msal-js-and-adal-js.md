@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696420"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120900"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>MSAL JS と ADAL JS の相違点
 
@@ -30,7 +30,7 @@ Azure AD エンティティを認証し、Azure AD からのトークンを要�
 
 ほとんどの場合、Microsoft ID プラットフォームと MSAL.js (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.js を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。
 
-v1.0 エンドポイント (および ADAL.js) を既に使い慣れている場合は、[v2.0 エンドポイントの変更点](active-directory-v2-compare.md)に関するページをお読みください。
+v1.0 エンドポイント (および ADAL.js) を既に使い慣れている場合は、[v2.0 エンドポイントの変更点](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページをお読みください。
 
 ただし、アプリケーションで、以前のバージョンの [Active Directory フェデレーション サービス (ADFS)](/windows-server/identity/active-directory-federation-services) を使用してユーザーをサインインさせる必要がある場合は、引き続き ADAL.js を使用する必要があります。
 
@@ -96,4 +96,4 @@ v2.0 では、`https://login.microsoftonline.com/common` 機関を使用する�
     ```
 
 ## <a name="next-steps"></a>次のステップ
-詳細については、[v1.0 と v2.0 の比較](active-directory-v2-compare.md)に関するページを参照してください。
+詳細については、[v1.0 と v2.0 の比較](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページを参照してください。

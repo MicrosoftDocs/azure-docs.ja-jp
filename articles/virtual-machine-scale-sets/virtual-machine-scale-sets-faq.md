@@ -9,12 +9,12 @@ ms.subservice: faq
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: cf58b62001ce5d193e3a06973215d82138ad4b59
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85855584"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080473"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -71,15 +71,15 @@ VM イメージを作成しキャプチャしてから、それをスケール �
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure の自動スケールのベスト プラクティスを教えてください。
 
-自動スケールのベスト プラクティスについては、[仮想マシンの自動スケールのベスト プラクティス](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-best-practices)に関するページを参照してください。
+自動スケールのベスト プラクティスについては、[仮想マシンの自動スケールのベスト プラクティス](../azure-monitor/platform/autoscale-best-practices.md)に関するページを参照してください。
 
 ### <a name="where-do-i-find-metric-names-for-autoscaling-that-uses-host-based-metrics"></a>ホストベースのメトリックを使用した自動スケールのメトリック名はどこで確認できますか。
 
-ホストベースのメトリックを使用した自動スケールのメトリック名については、「[Azure Monitor のサポートされるメトリック](https://azure.microsoft.com/documentation/articles/monitoring-supported-metrics/)」を参照してください。
+ホストベースのメトリックを使用した自動スケールのメトリック名については、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例はありますか。
 
-はい。 Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例については、「[Azure Monitor の自動スケールの一般的なメトリック](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)」を参照してください。
+はい。 Azure Service Bus のトピックとキューの長さに基づいた自動スケールの例については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」を参照してください。
 
 Service Bus キューの場合は、次の JSON を使用します。
 
@@ -104,9 +104,9 @@ Service Bus キューの場合は、次の JSON を使用します。
 
 VM の自動スケール設定は、ホストレベルのメトリックまたはゲスト OS ベースのメトリックを使用するように作成できます。
 
-サポートされるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-autoscale-common-metrics)」を参照してください。
+サポートされるメトリックの一覧については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」を参照してください。
 
-仮想マシン スケール セットの完全なサンプルについては、[仮想マシン スケール セット向けの Resource Manager テンプレートを使用した高度な自動スケール構成](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets)に関するページを参照してください。
+仮想マシン スケール セットの完全なサンプルについては、[仮想マシン スケール セット向けの Resource Manager テンプレートを使用した高度な自動スケール構成](../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md)に関するページを参照してください。
 
 サンプルには、ホストレベル CPU のメトリックとメッセージ数のメトリックが使用されています。
 
@@ -114,13 +114,13 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>仮想マシン スケール セットに対するアラート ルールの設定方法を教えてください。
 
-仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts)」を参照してください。
+仮想マシン スケール セットのメトリックに対するアラートは、PowerShell または Azure CLI で作成できます。 詳細については、「[Azure Monitor の PowerShell クイックスタート サンプル](../azure-monitor/samples/powershell-samples.md#create-metric-alerts)」と「[Azure Monitor クロスプラットフォーム CLI のクイックスタート サンプル](../azure-monitor/samples/cli-samples.md#work-with-alerts)」を参照してください。
 
 仮想マシン スケール セットの TargetResourceId は次のような形式になっています。
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.Compute/virtualMachineScaleSets/yourvmssname
 
-アラートは、メトリックとなる VM のパフォーマンス カウンターを自由に選んで設定することができます。 詳細については、「[Azure Monitor の自動スケールの一般的なメトリック](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)」の記事の [Resource Manager ベースの Windows VM のゲスト OS メトリック](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-resource-manager-based-windows-vms)と [Linux VM のゲスト OS メトリック](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/#guest-os-metrics-linux-vms)に関するセクションを参照してください。
+アラートは、メトリックとなる VM のパフォーマンス カウンターを自由に選んで設定することができます。 詳細については、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」の記事の [Resource Manager ベースの Windows VM のゲスト OS メトリック](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-for-resource-manager-based-windows-vms)と [Linux VM のゲスト OS メトリック](../azure-monitor/platform/autoscale-common-metrics.md#guest-os-metrics-linux-vms)に関するセクションを参照してください。
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>仮想マシン スケール セットに対する自動スケールを PowerShell で設定する方法を教えてください。
 
@@ -159,7 +159,7 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 
 このコードは、Windows と Linux をサポートします。
 
-詳細については、[仮想マシン スケール セットの作成または更新](https://msdn.microsoft.com/library/mt589035.aspx)に関するページを参照してください。
+詳細については、[仮想マシン スケール セットの作成または更新](/rest/api/compute/virtualmachinescalesets/createorupdate)に関するページを参照してください。
 
 
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Azure Service Fabric クラスター用にプロビジョニングされた自己署名証明書の使用方法
@@ -169,7 +169,7 @@ VM に対して証明書を安全に配布するには、お客様のキー コ�
 az sf cluster create -h
 ```
 
-証明機関によって提供される分散型の信頼を自己署名証明書を使用して実現することはできません。エンタープライズ運用ソリューションのホストとして使用することを目的とした Service Fabric クラスターに自己署名証明書は使用しないでください。Service Fabric の詳しいセキュリティ ガイダンスについては、「[Azure Service Fabric セキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices)」と「[Service Fabric クラスターのセキュリティに関するシナリオ](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)」を参照してください。
+証明機関によって提供される分散型の信頼を自己署名証明書を使用して実現することはできません。エンタープライズ運用ソリューションのホストとして使用することを目的とした Service Fabric クラスターに自己署名証明書は使用しないでください。Service Fabric の詳しいセキュリティ ガイダンスについては、「[Azure Service Fabric セキュリティに関するベスト プラクティス](../security/fundamentals/service-fabric-best-practices.md)」と「[Service Fabric クラスターのセキュリティに関するシナリオ](../service-fabric/service-fabric-cluster-security.md)」を参照してください。
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>Resource Manager テンプレートから、Linux 仮想マシン スケール セットで SSH 認証に使用する SSH キー ペアを指定することはできますか。
 
@@ -197,7 +197,7 @@ az sf cluster create -h
 
 この JSON ブロックは、[この Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)で使用されています。
 
-詳細については、[仮想マシン スケール セットの作成または更新](https://msdn.microsoft.com/library/azure/mt589035.aspx#linuxconfiguration)に関するページを参照してください。
+詳細については、[仮想マシン スケール セットの作成または更新](/rest/api/compute/virtualmachinescalesets/createorupdate#linuxconfiguration)に関するページを参照してください。
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>非推奨の証明書を削除するにはどうすればよいですか?
 
@@ -240,7 +240,7 @@ keyData | はい | String | Base64 でエンコードされた SSH 公開キー�
 
 同じキー コンテナーからシークレットをさらに追加する場合は、$vmss.properties.osProfile.secrets[0].vaultCertificates リストを更新してください。
 
-適切な入力構造については、[仮想マシン セットの作成または更新](https://msdn.microsoft.com/library/azure/mt589035.aspx)に関するページを参照してください。
+適切な入力構造については、[仮想マシン セットの作成または更新](/rest/api/compute/virtualmachinescalesets/createorupdate)に関するページを参照してください。
 
 キー コンテナーに存在する仮想マシン スケール セット オブジェクトから該当するシークレットを見つけてください。 その後、そのコンテナーに関連付けられているリストに証明書参照 (URL とシークレット ストア名) を追加します。
 
@@ -268,7 +268,7 @@ OS プロファイルの Secrets プロパティに Windows リモート管理 (
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>Linux VM の証明書はどこに配置されますか。
 
-Linux VM の証明書をデプロイする方法については、[ユーザーが管理するキー コンテナーから証明書を VM にデプロイする方法](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/)についてのブログを参照してください。
+Linux VM の証明書をデプロイする方法については、[ユーザーが管理するキー コンテナーから証明書を VM にデプロイする方法](/archive/blogs/kv/deploy-certificates-to-vms-from-customer-managed-key-vault)についてのブログを参照してください。
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>新しいコンテナー証明書を新しい証明書オブジェクトに追加するにはどうすればよいですか。
 
@@ -304,7 +304,7 @@ VM を作成してからキー コンテナーのシークレットを更新し�
 
 仮想マシン スケール セットに .cer 公開キーをデプロイするには、.cer ファイルだけを含んだ .pfx ファイルを生成します。 これを行うには、`X509ContentType = Pfx` を実行します。 たとえば、C# または PowerShell で .cer ファイルを x509Certificate2 オブジェクトとして読み込んで、そのメソッドを呼び出します。
 
-詳細については、「[X509Certificate.Export メソッド (X509ContentType, String)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx))」を参照してください。
+詳細については、「[X509Certificate.Export メソッド (X509ContentType, String)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate.export?view=netcore-3.1#system_security_cryptography_x509certificates_x509certificate_export_system_security_cryptography_x509certificates_x509contenttype_system_string_)」を参照してください。
 
 ### <a name="how-do-i-pass-in-certificates-as-base64-strings"></a>Base64 文字列として証明書で渡す方法
 
@@ -334,7 +334,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/Compliance/PCI)を参照してください。
 
-### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットで機能しますか。
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は仮想マシン スケール セットで機能しますか。
 
 はい。 [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) および [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) 用の Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。
 
@@ -436,7 +436,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-execute-a-custom-script-thats-hosted-in-a-private-storage-account"></a>プライベート ストレージ アカウントでホストされているカスタム スクリプトを実行する方法
 
-プライベート ストレージ アカウントでホストされているカスタム スクリプトを実行するには、ストレージ アカウント キーとストレージ アカウント名を使用して保護された設定を構成します。 詳細については、「[Custom Script Extension](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)」 (カスタムのスクリプト拡張機能) を参照してください。
+プライベート ストレージ アカウントでホストされているカスタム スクリプトを実行するには、ストレージ アカウント キーとストレージ アカウント名を使用して保護された設定を構成します。 詳細については、「[Custom Script Extension](../virtual-machines/extensions/custom-script-windows.md?toc=/azure/virtual-machines/windows/toc.json#property-managedidentity)」 (カスタムのスクリプト拡張機能) を参照してください。
 
 ## <a name="passwords"></a>パスワード
 
@@ -448,7 +448,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     スケール セット モデルの管理者資格情報を直接更新します (たとえば Azure Resource Explorer、PowerShell、CLI を使用します)。 スケール セットが更新されると、すべての新しい VM では新しい資格情報が使用されます。 既存の VM では、新しい資格情報は、それらが再イメージ化された場合のみ使用されます。
 
-- VM アクセス拡張機能を使用してパスワードをリセットする。 [こちら](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)で説明されているパスワードの要件に従っていることを確認します。
+- VM アクセス拡張機能を使用してパスワードをリセットする。 [こちら](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)で説明されているパスワードの要件に従っていることを確認します。
 
     次の PowerShell サンプルを使用します。
 
@@ -635,7 +635,7 @@ Azure Portal で仮想マシン スケール セットの VM 数を変更する�
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>仮想マシン スケール セットを新しいイメージに更新する方法を教えてください。 パッチはどのように管理するのでしょうか。
 
-仮想マシン スケール セットを新しいイメージに更新し、パッチの適用を管理する方法については、「[仮想マシン スケール セットのアップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)」を参照してください。
+仮想マシン スケール セットを新しいイメージに更新し、パッチの適用を管理する方法については、「[仮想マシン スケール セットのアップグレード](./virtual-machine-scale-sets-upgrade-scale-set.md)」を参照してください。
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>イメージを変更せずに、再イメージ化操作を使用して VM をリセットすることはできますか (つまり、新しいイメージにではなく、出荷時の設定に VM をリセットできますか)。
 

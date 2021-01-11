@@ -3,16 +3,16 @@ title: お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止
 description: この記事では、コンテナー用の Azure Monitor でお使いの Azure Red Hat OpenShift クラスターの監視を停止する方法について説明します。
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 26c8a574894e117694545508174d0ce7d0f0f5ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ed92cd4cda1f3b5d43cc605d7224236528b94bf
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091217"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815438"
 ---
-# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法
+# <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>お使いの Azure Red Hat OpenShift v3 クラスターの監視を停止する方法 
 
-お使いの Azure Red Hat OpenShift バージョン 3.x クラスターの監視を有効にした後に、監視する必要がなくなった場合には、Azure Monitor for containers によるクラスターの監視を停止することができます。 この記事では、提供されている Azure Resource Manager テンプレートを使用して、これを行う方法を示します。  
+お使いの Azure Red Hat OpenShift バージョン 3.x クラスターの監視を有効にした後に、監視する必要がなくなった場合には、Azure Monitor for containers によるクラスターの監視を停止することができます。 この記事では、提供されている Azure Resource Manager テンプレートを使用して、これを行う方法を示します。 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 

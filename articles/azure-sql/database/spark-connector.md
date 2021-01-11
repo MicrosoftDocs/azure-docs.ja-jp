@@ -11,12 +11,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: cb7fb7f6c44f9e1c4a9b073c666543a2e892582a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e7ce11a5fdba5c7d98cc331d581e827d34f7af42
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985501"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318847"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Spark コネクタを使用したリアルタイムのビッグ データ分析の高速化 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Spark コネクタを使用すると、Azure SQL Database、Azure SQL Managed In
 
 ## <a name="download-and-build-a-spark-connector"></a>Spark コネクタのダウンロードと構築
 
-開始するには、GitHub の [azure-sqldb-spark リポジトリ](https://github.com/Azure/azure-sqldb-spark)から Spark コネクタをダウンロードします。
+開始するには、GitHub の [azure-sqldb-spark リポジトリ](https://github.com/microsoft/sql-spark-connector)から Spark コネクタをダウンロードします。
 
 ### <a name="official-supported-versions"></a>正式にサポートされているバージョン
 
@@ -232,7 +232,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 
 Spark コネクタをまだダウンロードしていない場合は、[GitHub の azure-sqldb-spark リポジトリ](https://github.com/Azure/azure-sqldb-spark)からダウンロードし、リポジトリのその他のリソースを調べます。
 
-- [Azure Databricks ノートブックのサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
+- [Azure Databricks notebooks のサンプル](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [サンプル スクリプト (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
 また、[Apache Spark SQL、DataFrames、データセット ガイド](https://spark.apache.org/docs/latest/sql-programming-guide.html)と [Azure Databricks ドキュメント](https://docs.microsoft.com/azure/azure-databricks/)を確認することもできます。

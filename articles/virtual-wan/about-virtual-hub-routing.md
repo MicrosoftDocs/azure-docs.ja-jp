@@ -8,26 +8,23 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 659cb9aabe5fcca68aea9a73ea9beadb8e52ec50
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259177"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762319"
 ---
 # <a name="about-virtual-hub-routing"></a>仮想ハブのルーティングについて
 
-仮想ハブのルーティング機能は、Border Gateway Protocol (BGP) を使用してゲートウェイ間のすべてのルーティングを管理するルーターによって提供されます。 仮想ハブには、サイト間 VPN ゲートウェイ、ExpressRoute ゲートウェイ、ポイント対サイト ゲートウェイ、Azure Firewall などの複数のゲートウェイを含めることができます。 また、このルーターは、仮想ハブに接続する仮想ネットワーク間の転送接続を提供し、最大 50 Gbps の合計スループットをサポートできます。 これらのルーティング機能は、Standard Virtual WAN のお客様に適用されます。
+仮想ハブのルーティング機能は、Border Gateway Protocol (BGP) を使用してゲートウェイ間のすべてのルーティングを管理するルーターによって提供されます。 仮想ハブには、サイト間 VPN ゲートウェイ、ExpressRoute ゲートウェイ、ポイント対サイト ゲートウェイ、Azure Firewall などの複数のゲートウェイを含めることができます。 また、このルーターは、仮想ハブに接続する仮想ネットワーク間の転送接続を提供し、最大 50 Gbps の合計スループットをサポートできます。 これらのルーティング機能は、Standard Virtual WAN のお客様に適用されます。 
 
 ルーティングを構成する方法については、「[仮想ハブのルーティングを構成する方法](how-to-virtual-hub-routing.md)」を参照してください。
 
 ## <a name="routing-concepts"></a><a name="concepts"></a>ルーティングの概念
 
 次のセクションでは、仮想ハブのルーティングでの主要な概念について説明します。
-
-> [!NOTE]
-> 仮想ネットワーク接続におけるハブ ルート テーブル、関連付け、伝達、静的ルートというこれら新しい概念の一部はまだ展開中である場合があり、8 月 3 日の週に完了する予定です。
->
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>ハブ ルート テーブル
 
@@ -60,6 +57,9 @@ ms.locfileid: "86259177"
 
 :::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="伝達":::
 
+### <a name="labels"></a><a name="static"></a>ラベル
+ラベルは、ルート テーブルを論理的にグループ化するためのメカニズムを提供します。 接続から複数のルート テーブルにルートを伝達するときに特に役立ちます。 たとえば、既定のルート テーブルには、'Default' という組み込みのラベルがあります。 ユーザーが接続ルートを 'Default' ラベルに伝達すると、Virtual WAN 内のすべてのハブのすべての既定のルート テーブルに自動的に反映されます。 
+
 ### <a name="configuring-static-routes-in-a-virtual-network-connection"></a><a name="static"></a>仮想ネットワーク接続での静的ルートの構成
 
 静的ルートを構成すると、仮想ハブに接続されたスポーク VNet にプロビジョニングされているネットワーク仮想アプライアンス (NVA) のものである可能性がある次ホップ IP 経由でトラフィックを誘導するメカニズムが提供されます。 静的ルートは、ルート名、宛先プレフィックスの一覧、および次ホップ IP で構成されます。
@@ -73,9 +73,20 @@ Azure portal でのみ使用できます。ユーザーはこのオプション�
 
 * **仮想ハブに既存のルートがある Standard Virtual WAN のお客様**:
 
-新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、(Azure portal のハブの [ルート テーブル] セクションにある) 新しいルート テーブルを作成する必要があります。
+Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、(Azure portal のハブの [ルート テーブル] セクションにある) 新しいルート テーブルを作成する必要があります。
 
-* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:新しいルート テーブルの機能を使用するには、Azure でのロールアウトが完了する 8 月 3 日の週までお待ちください。 Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
+* **仮想ハブに既存のルートがある Basic Virtual WAN のお客様**:Azure portal のハブの [ルーティング] セクションにルートが既にある場合、まずそれらを削除してから、お使いの Basic Virtual WAN を Standard Virtual WAN に**アップグレード**します。 「[Virtual WAN を Basic から Standard にアップグレードする](upgrade-virtual-wan.md)」を参照してください。
+
+## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>Virtual WAN ルーティングに関する考慮事項
+
+Virtual WAN ルーティングを構成するときは、次の点を考慮してください。
+
+* すべてのブランチ接続 (ポイント対サイト、サイト間、および ExpressRoute) が既定のルート テーブルに関連付けられている必要があります。 これにより、すべてのブランチが同じプレフィックスを学習します。
+* すべてのブランチ接続が、同じルート テーブルのセットにルートを伝達する必要があります。 たとえば、ブランチが既定のルート テーブルに伝達するように決定した場合、この構成はすべてのブランチで一貫している必要があります。 その結果、既定のルート テーブルに関連付けられているすべての接続が、すべてのブランチに到達できるようになります。
+* Azure Firewall を経由したブランチ間接続は現在サポートされていません。
+* 複数のリージョンで Azure Firewall を使用する場合は、すべてのスポーク仮想ネットワークが同じルート テーブルに関連付けられている必要があります。 たとえば、VNet のサブセットが Azure Firewall を通過し、他の VNet が同じ仮想ハブ内の Azure Firewall をバイパスすることはできません。
+* VNet 接続ごとに次ホップ IP を 1 つ構成できます。
+* 仮想ハブでは、0.0.0.0/0 と次ホップ仮想ネットワーク接続 (または VNet 接続のアプライアンスの IP) に対して静的ルートがサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 

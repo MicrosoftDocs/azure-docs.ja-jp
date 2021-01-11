@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75422939"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321958"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
 
@@ -49,8 +49,8 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 #### <a name="owners-recommended-reading"></a>所有者向けの推奨資料
 
-- [Azure Active Directory での管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Azure でのガバナンス](https://docs.microsoft.com/azure/security/governance-in-azure)
+- [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure でのガバナンス](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>ハイブリッド管理
 
@@ -69,12 +69,12 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 #### <a name="hybrid-management-recommended-reading"></a>ハイブリッド管理に関する推奨資料
 
-- [Azure AD Connect:自動アップグレード](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)
-- [Azure AD アプリケーション プロキシ コネクタを理解する | 自動アップデート](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#automatic-updates)
+- [Azure AD Connect:自動アップグレード](../hybrid/how-to-connect-install-automatic-upgrade.md)
+- [Azure AD アプリケーション プロキシ コネクタを理解する | 自動アップデート](../manage-apps/application-proxy-connectors.md#automatic-updates)
 
 ### <a name="azure-ad-connect-health-alert-baseline"></a>Azure AD Connect Health のアラートのベースライン
 
-Azure AD Connect および AD FS を監視するために組織は [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#what-is-azure-ad-connect-health) をデプロイする必要があります。 Azure AD Connect と AD FS は、ライフサイクル管理と認証を壊して、結果的に停止を引き起こす可能性があるクリティカルなコンポーネントです。 Azure AD Connect Health は、オンプレミスの ID インフラストラクチャを監視して把握し、環境の信頼性を確保するのに役立ちます。
+Azure AD Connect および AD FS を監視するために組織は [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md#what-is-azure-ad-connect-health) をデプロイする必要があります。 Azure AD Connect と AD FS は、ライフサイクル管理と認証を壊して、結果的に停止を引き起こす可能性があるクリティカルなコンポーネントです。 Azure AD Connect Health は、オンプレミスの ID インフラストラクチャを監視して把握し、環境の信頼性を確保するのに役立ちます。
 
 ![Azure AD Connect Health のアーキテクチャ](./media/active-directory-ops-guide/active-directory-ops-img16.png)
 
@@ -82,7 +82,7 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 #### <a name="azure-ad-connect-health-recommended-reading"></a>Azure AD Connect Health に関する推奨資料
 
-- [Azure AD Connect Health エージェントのインストール](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-agent-install)
+- [Azure AD Connect Health エージェントのインストール](../hybrid/how-to-connect-health-agent-install.md)
 
 ### <a name="on-premises-agents-logs"></a>オンプレミスのエージェント ログ
 
@@ -90,11 +90,11 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>オンプレミスのエージェント ログに関する推奨資料
 
-- [アプリケーション プロキシのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-troubleshoot)
-- [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-troubleshoot#password-writeback-event-log-error-codes)
-- [Azure AD アプリケーション プロキシ コネクタについて](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)
-- [Azure AD Connect:パススルー認証のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-pass-through-authentication#collecting-pass-through-authentication-agent-logs)
-- [Azure MFA NPS 拡張機能のエラー コードのトラブルシューティング](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-errors)
+- [アプリケーション プロキシのトラブルシューティング](../manage-apps/application-proxy-troubleshoot.md)
+- [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [Azure AD アプリケーション プロキシ コネクタについて](../manage-apps/application-proxy-connectors.md)
+- [Azure AD Connect:パススルー認証のトラブルシューティング](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
+- [Azure MFA NPS 拡張機能のエラー コードのトラブルシューティング](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>オンプレミスのエージェント管理
 
@@ -106,14 +106,14 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 #### <a name="on-premises-agents-management-recommended-reading"></a>オンプレミスのエージェント管理に関する推奨資料
 
-- [Azure AD アプリケーション プロキシ コネクタについて](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
+- [Azure AD アプリケーション プロキシ コネクタについて](../manage-apps/application-proxy-connectors.md)
 - [Azure AD パススルー認証 - クイックスタート](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>大規模な管理
 
 ### <a name="identity-secure-score"></a>ID セキュリティ スコア
 
-[ID セキュリティ スコア](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score)は、組織のセキュリティ対策を定量化して計測します。 報告された結果を絶えず確認して対処し、最高のスコアを得ることが重要です。 このスコアは、次のために役立ちます。
+[ID セキュリティ スコア](./identity-secure-score.md)は、組織のセキュリティ対策を定量化して計測します。 報告された結果を絶えず確認して対処し、最高のスコアを得ることが重要です。 このスコアは、次のために役立ちます。
 
 - ID セキュリティ体制を客観的に測定する
 - ID セキュリティの強化を計画する
@@ -125,15 +125,15 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 ### <a name="notifications"></a>通知
 
-Microsoft は、管理者に電子メール通知を送信して、サービスのさまざまな変更、必要な構成の更新、および管理者の介入が必要なエラーを通知します。 お客様は、通知の電子メールアドレスを設定して、すべての通知を確認して対処することができる適切なチームメンバーに通知を送信することが重要です。 [Office 365 メッセージ センター](https://docs.microsoft.com/office365/admin/manage/message-center) に複数の受信者を追加し、通知 (Azure AD Connect Health 通知を含む) を配布リストまたは共有メールボックスに送信するように要求することをお勧めします。 メール アドレスを持つグローバル管理者アカウントが 1 つしかない場合は、メールに対応しているアカウントを少なくとも 2 つ構成してください。
+Microsoft は、管理者に電子メール通知を送信して、サービスのさまざまな変更、必要な構成の更新、および管理者の介入が必要なエラーを通知します。 お客様は、通知の電子メールアドレスを設定して、すべての通知を確認して対処することができる適切なチームメンバーに通知を送信することが重要です。 [Office 365 メッセージ センター](/office365/admin/manage/message-center) に複数の受信者を追加し、通知 (Azure AD Connect Health 通知を含む) を配布リストまたは共有メールボックスに送信するように要求することをお勧めします。 メール アドレスを持つグローバル管理者アカウントが 1 つしかない場合は、メールに対応しているアカウントを少なくとも 2 つ構成してください。
 
 Azure AD によって使用される "差出人" アドレスは 2 つあります。<o365mc@email2.microsoft.com> は、Office 365 のメッセージ センターの通知に使用され、<azure-noreply@microsoft.com> 以下に関連する通知を送信します。
 
-- [Azure AD アクセス レビュー](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
-- [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
-- [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
-- [エンタープライズ アプリの証明書期限切れ通知](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
+- [Azure AD アクセス レビュー](../governance/access-reviews-overview.md)
+- [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
+- [Azure AD Identity Protection](../identity-protection/howto-identity-protection-configure-notifications.md)
+- [Azure AD Privileged Identity Management](../privileged-identity-management/pim-email-notifications.md)
+- [エンタープライズ アプリの証明書期限切れ通知](../manage-apps/manage-certificates-for-federated-single-sign-on.md#add-email-notification-addresses-for-certificate-expiration)
 - エンタープライズ アプリのサービス プロビジョニング通知
 
 送信される通知の種類と確認する場所については、次の表を参照してください。
@@ -148,13 +148,13 @@ Azure AD によって使用される "差出人" アドレスは 2 つありま�
 
 #### <a name="notifications-recommended-reading"></a>通知に関する推奨資料
 
-- [組織の住所、技術部連絡先、およびその他の情報を変更する - Office 365](https://docs.microsoft.com/office365/admin/manage/change-address-contact-and-more)
+- [組織の住所、技術部連絡先、およびその他の情報を変更する - Office 365](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>運用における外部からのアクセス
 
 ### <a name="ad-fs-lockdown"></a>AD FS のロックダウン
 
-Azure AD で直接認証されるようアプリケーションを構成している組織は、 [Azure AD スマート ロックアウト](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の [エクストラネット ロックアウト保護](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 以降で AD FS を使っている場合は、 [エクストラネット スマート ロックアウト](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 少なくとも、オンプレミスの Active Directory へのブルート フォース攻撃のリスクを含むように、エクストラネット ロックアウトを有効にすることをお勧めします。 ただし、Windows 2016 以降で AD FS を利用している場合は、[パスワード スプレー](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)攻撃を軽減するのに役立つ、エクストラネットのスマート ロックアウトも有効にする必要があります。
+Azure AD で直接認証されるようアプリケーションを構成している組織は、 [Azure AD スマート ロックアウト](../authentication/concept-sspr-howitworks.md)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の [エクストラネット ロックアウト保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 以降で AD FS を使っている場合は、 [エクストラネット スマート ロックアウト](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 少なくとも、オンプレミスの Active Directory へのブルート フォース攻撃のリスクを含むように、エクストラネット ロックアウトを有効にすることをお勧めします。 ただし、Windows 2016 以降で AD FS を利用している場合は、[パスワード スプレー](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)攻撃を軽減するのに役立つ、エクストラネットのスマート ロックアウトも有効にする必要があります。
 
 AD FS が Azure AD フェデレーションにのみ使用される場合、攻撃対象を最小限に抑えるために無効にできるエンドポイントがいくつかあります。 たとえば、AD FS が Azure AD にのみ使用される場合、**usernamemixed** および **windowstransport** に対して有効になっているエンドポイント以外の WS-Trust エンドポイントを無効にする必要があります。
 
@@ -164,7 +164,7 @@ AD FS が Azure AD フェデレーションにのみ使用される場合、攻�
 
 Active Directory 管理階層モデルは、環境のフル コントロール (階層 0) と攻撃者が頻繁に侵害するリスクが高いワークステーション資産の間で、一連のバッファー ゾーンを使用して ID システムを保護するよう設計されています。 ![階層モデルの 3 つの階層を示す図](./media/active-directory-ops-guide/active-directory-ops-img18.png)
 
-[階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)は 3 つのレベルで構成され、管理者アカウントのみが含まれ、標準ユーザー アカウントは含まれません。
+[階層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)は 3 つのレベルで構成され、管理者アカウントのみが含まれ、標準ユーザー アカウントは含まれません。
 
 - **階層 0** - 環境内のエンタープライズ ID を直接管理します。 階層 0 には、Active Directory フォレスト、ドメイン、ドメイン コントローラー、それに含まれるすべての資産を直接的または間接的に管理するアカウント、グループ、その他の資産が含まれます。 階層 0 のすべての資産は、事実上相互に管理しあっているため、セキュリティの機密性は同じです。
 - **階層 1** - エンタープライズ サーバーとアプリケーションを管理します。 階層 1 の資産には、サーバーのオペレーティング システム、クラウド サービス、エンタープライズ アプリケーションが含まれます。 階層 1 の管理者アカウントによって、これらの資産でホストされている多くのビジネス価値を管理します。 一般的なロールの例として、すべてのエンタープライズ サービスに影響する機能を持つこれらのオペレーティング システムを管理しているサーバー管理者があります。

@@ -35,11 +35,6 @@
               href: container-registry-tutorial-deploy-app.md
             - name: 3 - Web アプリを更新する
               href: container-registry-tutorial-deploy-update.md
-    - name: サンプル
-      items:
-        - name: Azure Policy の組み込み
-          displayName: 'samples, policies, definitions'
-          href: ./policy-samples.md
     - name: 概念
       expanded: false
       items:
@@ -148,6 +143,12 @@
         - name: トラブルシューティング
           expanded: false
           items:
+            - name: ログインのトラブルシューティング
+              href: container-registry-troubleshoot-login.md
+            - name: ネットワークに関する問題のトラブルシューティング
+              href: container-registry-troubleshoot-access.md
+            - name: レジストリのパフォーマンスのトラブルシューティング
+              href: container-registry-troubleshoot-performance.md
             - name: 一般的な問題の検出
               href: container-registry-check-health.md
             - name: よく寄せられる質問
@@ -237,6 +238,9 @@
       href: ../event-grid/event-schema-container-registry.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
     - name: 正常性チェックのエラー
       href: container-registry-health-error-reference.md
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   expanded: false
   items:

@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682425"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120781"
 ---
 # <a name="publisher-verification-preview"></a>発行者の確認 (プレビュー)
 
@@ -42,13 +42,13 @@ Azure AD の同意プロンプトや他の画面に、青い "確認済み" バ�
 
 -  [確認](/partner-center/verification-responses)プロセスが完了している有効な [Microsoft Partner Network](https://partner.microsoft.com/membership) アカウントの MPN ID。 この MPN アカウントは、パートナーの組織の[パートナー グローバル アカウント (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga) である必要があります。 
 
--  DNS 検証済みの[カスタム ドメイン](/azure/active-directory/fundamentals/add-custom-domain)が含まれる Azure AD テナント。 カスタム ドメインは、前のステップで確認の間に使用されたメール アドレスのドメインと一致している必要があります。 
+-  DNS 検証済みの[カスタム ドメイン](../fundamentals/add-custom-domain.md)が含まれる Azure AD テナント。 カスタム ドメインは、前のステップで確認の間に使用されたメール アドレスのドメインと一致している必要があります。 
 
 -  前に使用したのと同じドメインを使用して[パブリッシャー ドメイン](howto-configure-publisher-domain.md)が構成されている、Azure AD テナントに登録されたアプリ。 
 
 -  確認を実行するユーザーは、Azure AD でのアプリの登録とパートナー センターでの MPN アカウントの両方を変更することが、許可されている必要があります。 
 
-    -  Azure AD では、このユーザーは、アプリの所有者であるか、または次のいずれかの[ロール](/azure/active-directory/users-groups-roles/directory-assign-admin-roles)を持っている必要があります: アプリケーション管理者、クラウド アプリケーション管理者、全体管理者。 
+    -  Azure AD では、このユーザーは、アプリの所有者であるか、または次のいずれかの[ロール](../users-groups-roles/directory-assign-admin-roles.md)を持っている必要があります: アプリケーション管理者、クラウド アプリケーション管理者、全体管理者。 
 
     -  パートナー センターでは、このユーザーには次のいずれかの[ロール](/partner-center/permissions-overview)が必要です: MPN 管理者、アカウント管理者、全体管理者 (これは、Azure AD で管理されている共有ロールです)。
     
@@ -67,7 +67,7 @@ Azure AD の同意プロンプトや他の画面に、青い "確認済み" バ�
 
   Microsoft 365 とも統合している開発者は、これらのプログラムから付加的なメリットを得ることができます。 詳細については、[Microsoft 365 の発行元構成証明](/microsoft-365-app-certification/docs/attestation)および [Microsoft 365 のアプリ認定](/microsoft-365-app-certification/docs/certification)に関するページを参照してください。 
 
-- **これは Azure AD アプリケーション ギャラリーと同じものですか。** いいえ。発行者確認は補完的なものですが、[Azure Active Directory アプリケーション ギャラリー](/azure/active-directory/azuread-dev/howto-app-gallery-listing)とは別のプログラムです。 上記の条件を満たす開発者は、そのプログラムへの参加とは関係なく、発行者確認プロセスを完了する必要があります。 
+- **これは Azure AD アプリケーション ギャラリーと同じものですか。** いいえ。発行者確認は補完的なものですが、[Azure Active Directory アプリケーション ギャラリー](../azuread-dev/howto-app-gallery-listing.md)とは別のプログラムです。 上記の条件を満たす開発者は、そのプログラムへの参加とは関係なく、発行者確認プロセスを完了する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 * [アプリを発行者確認済み](mark-app-as-publisher-verified.md)としてマークする方法について学習します。

@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 993dff37f9bde5e674dbe5d41d6d4c6da92f0bc9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e9a2ff5d46557ddf8f5f62b456e8a3d54bf90c55
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327533"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290347"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>クイック スタート:REST API を使用して Java で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -23,7 +23,7 @@ ms.locfileid: "87327533"
 > * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [ポータル](search-get-started-portal.md)
-> * [PowerShell](search-create-index-rest-api.md)
+> * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
 > * [Postman](search-get-started-postman.md)
 
@@ -373,7 +373,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. プロジェクトの構造が次のようになっていることを確認します。
 
-    ![プロジェクトのディレクトリ構造](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
+    ![プロジェクトのディレクトリ構造とクラス](media/search-get-started-java/java-quickstart-basic-code-tree-plus-classes.png)
 
 1. **[Maven]** ツール ウィンドウを開き、次の Maven 目標を実行します: `verify exec:java`
 ![Maven 目標 verify exec:java を実行する](media/search-get-started-java/java-quickstart-execute-maven-goal.png)

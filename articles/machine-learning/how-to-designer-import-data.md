@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327006"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495373"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) にデータをインポートする
 
@@ -32,7 +32,7 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 
 ### <a name="register-a-dataset"></a>データセットを登録する
 
-既存のデータセットは、[SDK を使用してプログラム](how-to-create-register-datasets.md#use-the-sdk)で登録することも、[Azure Machine Learning studio で視覚的](how-to-create-register-datasets.md#use-the-ui)に登録することもできます。
+既存のデータセットは、[SDK を使用してプログラム](how-to-create-register-datasets.md#datasets-sdk)で登録することも、[Azure Machine Learning studio で視覚的](how-to-create-register-datasets.md#datasets-ui)に登録することもできます。
 
 また、任意のデザイナー モジュールの出力をデータセットとして登録することもできます。
 
@@ -59,7 +59,7 @@ Microsoft では、[データセット](concept-data.md#datasets) 使用して�
 [データのインポート] モジュールの詳しい使用方法については、[データのインポートの参照ページ](algorithm-module-reference/import-data.md)を参照してください。
 
 > [!NOTE]
-> データセットに含まれる列が多すぎる場合、次のエラーが発生することがあります。"サイズ制限のため、検証に失敗しました。" これを回避するには、[データセットを Datasets インターフェイスに登録します](how-to-create-register-datasets.md#use-the-ui)。
+> データセットに含まれる列が多すぎる場合、次のエラーが発生することがあります。"サイズ制限のため、検証に失敗しました。" これを回避するには、[データセットを Datasets インターフェイスに登録します](how-to-create-register-datasets.md#datasets-ui)。
 
 ## <a name="supported-sources"></a>サポートされているソース
 

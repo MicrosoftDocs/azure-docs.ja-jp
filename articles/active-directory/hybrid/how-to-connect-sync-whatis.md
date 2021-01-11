@@ -16,12 +16,12 @@ ms.date: 11/08/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc1754eb8818df894e67c1748517b2e2f4356d6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf014feb9ef08b7a24c9640679c7c0baadf298c0
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356867"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277155"
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect sync: 同期を理解してカスタマイズする
 Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、Azure AD Connect の主要コンポーネントです。 オンプレミス環境と Azure AD 間の ID データの同期に関連するすべての操作を処理します。 Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。
@@ -58,7 +58,7 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 | [重複属性の回復性](how-to-connect-syncservice-duplicate-attribute-resiliency.md) |**userPrincipalName** と **proxyAddresses** の重複した属性値の回復性を有効にして使用する方法について説明します。 |
 | **操作と UI** | |
 | [Synchronization Service Manager](how-to-connect-sync-service-manager-ui.md) |[[操作]](how-to-connect-sync-service-manager-ui-operations.md)、[[コネクタ]](how-to-connect-sync-service-manager-ui-connectors.md)、[[メタバース デザイナー]](how-to-connect-sync-service-manager-ui-mvdesigner.md)、[[メタバース検索]](how-to-connect-sync-service-manager-ui-mvsearch.md) の各タブなどの Synchronization Service Manager の UI について説明します。 |
-| [操作タスクおよび考慮事項](how-to-connect-sync-operations.md) |障害回復などの操作上の考慮事項について説明します。 |
+| [操作タスクおよび考慮事項](./how-to-connect-sync-staging-server.md) |障害回復などの操作上の考慮事項について説明します。 |
 | **方法** | |
 | [Azure AD アカウントをリセットする](how-to-connect-azureadaccount.md) |Azure AD Connect 同期サービスから Azure AD への接続に使用するサービス アカウントの資格情報をリセットする方法。 |
 | **詳細情報とリファレンス** | |

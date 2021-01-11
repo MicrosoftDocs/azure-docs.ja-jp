@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 07c507eb139c4c4d339db1ede46956cb09a61dcf
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c5d23770aab0bde745152d918adfe83209819899
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962919"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500761"
 ---
-# <a name="using-transactions-in-sql-pool"></a>SQL プールでのトランザクションの使用
+# <a name="use-transactions-in-sql-pool"></a>SQL プールでのトランザクションの使用
 
 ソリューションを開発するための SQL プール (データ ウェアハウス) でのトランザクションの実装に関するヒントです。
 
@@ -183,7 +183,7 @@ SELECT @xact_state AS TransactionState;
 
 SQL プールでは、ERROR_LINE() 関数を実装またはサポートしていないことにも注意してください。 この関数がコードに含まれている場合は、SQL プールに準拠するために削除する必要があります。 代わりに、コードでクエリ ラベルを使用して同等の機能を実装します。 詳しくは、[ラベル](develop-label.md)に関する記事をご覧ください。
 
-## <a name="using-throw-and-raiserror"></a>THROW と RAISERROR の使用
+## <a name="use-of-throw-and-raiserror"></a>THROW および RAISERROR の使用
 
 THROW は、SQL プールで例外を発生させるための最新の実装ですが、RAISERROR もサポートされています。 ただし、注意が必要な相違点がいくつかあります。
 

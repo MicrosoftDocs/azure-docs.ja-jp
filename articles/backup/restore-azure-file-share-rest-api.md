@@ -3,12 +3,12 @@ title: REST API を使用して Azure ファイル共有を復元する
 description: REST API を使用して、Azure Backup によって作成された復元ポイントから Azure ファイル共有または特定のファイルを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 3a1f2999fa1b50507fd3d1b6f21f508ec9f82841
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 60c73caa5db684e38b94b4d5786f2fd24aa65d08
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538158"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761799"
 ---
 # <a name="restore-azure-file-shares-using-rest-api"></a>REST API を使用して Azure ファイル共有を復元する
 
@@ -64,7 +64,7 @@ GET URI には、すべての必須パラメーターが含まれます。 追�
 GET https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare;azurefiles/recoveryPoints?api-version=2019-05-13
 ```
 
-### <a name="example-response"></a>応答の例
+### <a name="example-response-for-fetch-recovery-points"></a>復旧ポイント フェッチの応答例
 
 GET URI を送信すると、応答として 200 が返されます。
 
@@ -168,7 +168,7 @@ Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパテ�
 
 ### <a name="restore-to-original-location"></a>元の場所に復元する
 
-#### <a name="request-body-example"></a>要求本文の例
+#### <a name="request-body-example-for-restore-to-original-location"></a>元の場所に復元するための要求本文例
 
 次の要求本文では、Azure 共有ファイルの復元をトリガーするために必要なプロパティが定義されています。
 
@@ -192,7 +192,7 @@ Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパテ�
 * **name**:バックアップされたコンテンツの復元先となるターゲット ストレージ アカウント内のファイル共有。
 * **targetFolderPath**: データの復元先となるファイル共有の下のフォルダー。
 
-#### <a name="request-body-example"></a>要求本文の例
+#### <a name="request-body-example-for-restore-to-alternate-location"></a>別の場所に復元するための要求本文例
 
 次の要求本文では、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有が、*afaccount1* ストレージ アカウントの *azurefiles1* ファイル共有に復元されます。
 
@@ -366,7 +366,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;azurefiles;afsaccount/protectedItems/AzureFileShare%3Bazurefiles/recoveryPoints/932886657837421071/restore?api-version=2019-05-13'
 ```
 
-### <a name="create-request-body"></a>要求本文を作成する
+### <a name="create-request-body-for-item-level-recovery-using-rest-api"></a>REST API を使用し、アイテムレベル復元の要求本文を作成する
 
 Azure ファイル共有の復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
 
@@ -376,7 +376,7 @@ Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパテ�
 
 要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](/rest/api/backup/restores/trigger#request-body)をご覧ください。
 
-### <a name="restore-to-original-location"></a>元の場所に復元する
+### <a name="restore-to-original-location-for-item-level-recovery-using-rest-api"></a>REST API を使用し、アイテムレベル復元の元の場所に復元する
 
 次の要求本文では、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有内の *Restoretest.txt* ファイルが復元されます。
 
@@ -402,7 +402,7 @@ Properties | AzureFileShareRestoreRequest | RestoreRequestResource プロパテ�
 }
 ```
 
-### <a name="restore-to-alternate-location"></a>別の場所に復元する
+### <a name="restore-to-alternate-location-for-item-level-recovery-using-rest-api"></a>REST API を使用し、アイテムレベル復元の別の場所に復元する
 
 次の要求本文では、*afsaccount* ストレージ アカウントの *azurefiles* ファイル共有の内の *Restoretest.txt* ファイルが、*afaccount1*ストレージ アカウントの *azurefiles1* ファイル共有内の *restoredata* フォルダーに復元されます。
 

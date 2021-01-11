@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: dbb1d73fc2b19ef701cb08ced24c634bbbadb235
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 359de25d2bdb57ad5c6386586f987942acc120ef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231592"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500148"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database ハイパースケールに関する FAQ
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "86231592"
 
 ### <a name="what-resource-types-and-purchasing-models-support-hyperscale"></a>ハイパースケールをサポートするリソースの種類と購入モデル
 
-ハイパースケール サービス レベルを利用できるのは、Azure SQL データベース において仮想コアベースの購入モデルを使用する単一のデータベースのみです。  
+ハイパースケール サービス レベルを利用できるのは、Azure SQL Database において仮想コアベースの購入モデルを使用する単一のデータベースのみです。  
 
 ### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>ハイパースケール サービス レベルと General Purpose サービス レベルおよび Business Critical サービス レベルとの違い
 
@@ -204,7 +204,9 @@ Parallel Data Warehouse (PDW)、Teradata、またはその他の超並列処理 
 
 ### <a name="can-i-move-my-existing-databases-in-azure-sql-database-to-the-hyperscale-service-tier"></a>既存の Azure SQL Database のデータベースをハイパースケール サービス レベルに移行できるか
 
-はい。 ハイパースケールには既存の Azure SQL Database データベースを移行できます。 これは一方向にしか移行できません。 ハイパースケールから他のサービス レベルにデータベースを移行することはできません。 概念実証 (POC) のために、データベースのコピーを作成して、そのコピーをハイパースケールに移行することをお勧めします。
+はい。 ハイパースケールには既存の Azure SQL Database データベースを移行できます。 これは一方向にしか移行できません。 ハイパースケールから他のサービス レベルにデータベースを移行することはできません。 概念実証 (POC) のために、データベースのコピーを作成して、そのコピーをハイパースケールに移行することをお勧めします。 
+
+既存のデータベースを Hyperscale に移動するのに必要な時間は、データのコピーにかかる時間と、データのコピー中にソース データベースに加えられた変更を再生する時間で構成されます。 データのコピー時間は、データのサイズに比例します。 書き込み操作が少ない期間に移動が行われた場合、変更の再生にかかる時間は短くなります。
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-service-tiers"></a>ハイパースケール データベースを他のサービス レベルに移行できるか
 
@@ -329,7 +331,7 @@ IOPS と IO 待ち時間は、ワークロードのパターンによって異�
 
 ### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>計算レプリカのスケールアップとスケールダウンにかかる時間
 
-コンピューティングのスケールアップまたはスケールダウンには、データ サイズに関係なく、5 分から 10 分かかります。
+コンピューティングのスケールアップまたはスケールダウンには、データ サイズに関係なく、通常、最大 2 分かかります。
 
 ### <a name="is-my-database-offline-while-the-scaling-updown-operation-is-in-progress"></a>スケールアップ/スケールダウン操作の進行中にデータベースはオフラインになるか
 

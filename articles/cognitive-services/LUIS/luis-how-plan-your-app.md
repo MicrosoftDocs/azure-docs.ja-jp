@@ -3,12 +3,12 @@ title: アプリの計画 - LUIS
 description: 関連するアプリの意図とエンティティについて概説し、Language Understanding Intelligent Service (LUIS) でアプリケーション プランを作成します。
 ms.topic: how-to
 ms.date: 05/14/2020
-ms.openlocfilehash: 8141e2a47e2a550a5dba50bc22117649c0bd04e2
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 38d80a77303e248ab137f87f8063b5cbc358f51a
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340234"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892917"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>サブジェクト ドメインとデータ抽出を使用して LUIS アプリ スキーマを計画する
 
@@ -64,7 +64,7 @@ LUIS アプリはサブジェクト ドメインが中心です。 たとえば�
 
 2 つの独立した意図を用意する代わりに、`FlightAction` 機械学習エンティティによって 1 つの意図を作成します。 機械学習エンティティでは、スケジュールおよびキャンセルの要求の両方に対するアクションの詳細と、出発地または到着地のどちらかを抽出する必要があります。
 
-`FlightAction` エンティティは、機械学習エンティティとサブエンティティの次の suedo スキーマで構成されます。
+`FlightAction` エンティティは、機械学習エンティティとサブエンティティの次の psuedo スキーマで構成されます。
 
 * FlightAction
     * アクション

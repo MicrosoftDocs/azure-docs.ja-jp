@@ -1,19 +1,20 @@
 ---
 title: Azure サブスクリプションの請求書による支払い
-description: Azure サブスクリプションを請求書で支払う方法について説明します。
+description: Azure サブスクリプションを請求書で支払う方法について説明します。 よく寄せられる質問を参照し、その他のリソースを確認してください。
 author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 5fb8a9cd5e00bf3a6ebeddaf44a09ac48b94fe7c
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: d55916539f64fc70560565bd5caf6254aac5a908
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849083"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684866"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 

@@ -151,7 +151,7 @@ Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 
 次の手順は、Ubuntu 17.0.4 上で strongSwan 5.5.1 を使用して作成されました。 実際の画面は、使用している Linux と strongSwan のバージョンによって異なる場合があります。
 
-1. **[端末]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。 `libcharon-extra-plugins` に関連するエラーが発生する場合、これを `strongswan-plugin-eap-mschapv2` に置き換えます。
+1. **[ターミナル]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。 `libcharon-extra-plugins` に関連するエラーが発生する場合、これを `strongswan-plugin-eap-mschapv2` に置き換えます。
 
    ```Terminal
    sudo apt-get install strongswan libcharon-extra-plugins moreutils iptables-persistent network-manager-strongswan

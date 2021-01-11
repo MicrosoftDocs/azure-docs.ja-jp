@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 8/6/2020
+ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314222"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870019"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 
@@ -39,7 +39,10 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 2. 左側のメニューで、 **[ジョブ トポロジ]** の下にある **[出力]** を選択します。 次に、 **[+ 追加]** を選択し、ドロップダウン メニューから **[Power BI]** を選択します。
 
-3. **[+ 追加]**  >  **[Power BI]** の順に選択します。 次に、フォームに次の詳細を入力して、 **[承認する]** を選択します。
+3. **[+ 追加]**  >  **[Power BI]** の順に選択します。 続けて、フォームに次の詳細を入力し、独自のユーザー ID を使用して Power BI に接続するために **[承認]** を選択します (トークンは 90日間有効です)。 
+
+>[!NOTE]
+>運用ジョブの場合は、[マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)ように接続することをお勧めします。
 
    |**設定**  |**推奨値**  |
    |---------|---------|
@@ -230,3 +233,4 @@ Power BI で承認が更新されると、承認の領域に緑色のアラー�
 * [Stream Analytics の出力](stream-analytics-define-outputs.md)
 * [Azure Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Stream Analytics の管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

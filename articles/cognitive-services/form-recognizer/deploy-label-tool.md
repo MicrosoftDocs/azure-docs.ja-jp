@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3bb8f0e809ae1acbec1479c20e24c90fd81905d4
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: c7c4e1cc854fdd2fbf03d2274992bbc4a3bb93af
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212447"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717899"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>サンプル ラベル付けツールのデプロイ
 
@@ -70,6 +70,7 @@ Azure portal を使用して新しいリソースを作成するには、次の�
 
 6. ここでは、Docker コンテナーを構成します。 特に注意がない限り、すべてのフィールドが必須です。
 
+    # <a name="v20"></a>[v2.0](#tab/v2-0)  
    * [オプション] - **[単一コンテナー]** を選択します
    * [イメージ ソース] - **[プライベート レジストリ]** を選択します 
    * [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
@@ -78,6 +79,18 @@ Azure portal を使用して新しいリソースを作成するには、次の�
    * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` に設定します
    * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
    * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
+
+    # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1) 
+   * [オプション] - **[単一コンテナー]** を選択します
+   * [イメージ ソース] - **[プライベート レジストリ]** を選択します 
+   * [サーバー URL] - これは `https://mcr.microsoft.com` に設定します
+   * [ユーザー名] (省略可能) - ユーザー名を作成します。 
+   * [パスワード] (省略可能) - 憶えやすい安全なパスワードを作成します。
+   * [イメージとタグ] - これは `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview` に設定します
+   * 継続的なデプロイ - 開発チームがサンプル ラベル付けツールを変更したときに自動更新を受信する場合は、これを**オン**に設定します。
+   * [スタートアップ コマンド] - これは `./run.sh eula=accept` に設定します
+    
+    ---
 
    > [!div class="mx-imgBorder"]
    > ![Docker を構成する](./media/quickstarts/formre-configure-docker.png)
@@ -100,6 +113,8 @@ Azure portal を使用する代わりに、Azure CLI を使用してリソース
 
 Azure CLI から次のコマンドを実行して、サンプル ラベル付けツール用の Web アプリ リソースを作成します。 
 
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
@@ -113,7 +128,24 @@ az container create \
   --cpu 2 \
   --memory 8 \
   --command-line "./run.sh eula=accept"
+``` 
+# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)    
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resource_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8 \
+  --command-line "./run.sh eula=accept"
 ```
+
+---
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>承認のために Azure AD に接続する
 

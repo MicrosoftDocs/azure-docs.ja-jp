@@ -9,22 +9,22 @@ ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 0ce6a754ce09e227332309878bdddd3d8c1733be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f189d1889f3ca3a3aa3234432452b1b3d696c04
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021904"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935094"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>PowerShell を使用して Azure Cognitive Search サービスを管理する
 > [!div class="op_single_selector"]
 > * [ポータル](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
-> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [REST API](/rest/api/searchmanagement/)
+> * [.NET SDK](/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行して、Azure Cognitive Search を作成および構成できます。 **Az.Search** モジュールでは、完全なパリティを保持する [Azure PowerShell](https://docs.microsoft.com/powershell/) を、[Search 管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement) に拡張し、次のタスクを実行できるようにします。
+Windows、Linux、または [Azure Cloud Shell](../cloud-shell/overview.md) で PowerShell コマンドレットとスクリプトを実行して、Azure Cognitive Search を作成および構成できます。 **Az.Search** モジュールでは、完全なパリティを保持する [Azure PowerShell](/powershell/) を、[Search 管理 REST API](/rest/api/searchmanagement) に拡張し、次のタスクを実行できるようにします。
 
 > [!div class="checklist"]
 > * [サブスクリプション内の検索サービスを一覧表示する](#list-search-services)
@@ -36,7 +36,7 @@ Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure
 
 場合によっては、上記の一覧には "*ない*" タスクについて質問されることがあります。 現在、**Az.Search** モジュールや管理 REST API を使用して、サーバー名、リージョン、レベルを変更することはできません。 サービスの作成時に専用のリソースが割り当てられます。 そのため、基になるハードウェア (場所またはノードの種類) を変更するには、新しいサービスが必要です。 同様に、サービス間で、インデックスなどのコンテンツを転送するためのツールや API はありません。
 
-サービス内では、コンテンツの作成と管理は、[Search サービス REST API](https://docs.microsoft.com/rest/api/searchservice/) または [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) を介して行われます。 コンテンツ専用の PowerShell コマンドはありませんが、インデックスを作成したり読み込んだりする REST または .NET API を呼び出す PowerShell スクリプトを記述できます。
+サービス内では、コンテンツの作成と管理は、[Search サービス REST API](/rest/api/searchservice/) または [.NET SDK](/dotnet/api/?term=microsoft.azure.search) を介して行われます。 コンテンツ専用の PowerShell コマンドはありませんが、インデックスを作成したり読み込んだりする REST または .NET API を呼び出す PowerShell スクリプトを記述できます。
 
 <a name="check-versions-and-load"></a>
 
@@ -90,7 +90,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 ## <a name="list-services-in-a-subscription"></a>サブスクリプション内のサービスを一覧表示する
 
-次のコマンドは、[**Az.Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources) から、サブスクリプションで既にプロビジョニングされている既存のリソースとサービスに関する情報を返します。 既に作成されている検索サービスの数がわからない場合は、これらのコマンドがその情報を返して、ポータルに移動する手間を省きます。
+次のコマンドは、[**Az.Resources**](/powershell/module/az.resources/?view=azps-1.4.0#resources) から、サブスクリプションで既にプロビジョニングされている既存のリソースとサービスに関する情報を返します。 既に作成されている検索サービスの数がわからない場合は、これらのコマンドがその情報を返して、ポータルに移動する手間を省きます。
 
 最初のコマンドは、すべての検索サービスを返します。
 
@@ -116,7 +116,7 @@ ResourceId        : /subscriptions/<alpha-numeric-subscription-ID>/resourceGroup
 
 ## <a name="import-azsearch"></a>Az.Search のインポート
 
-[**Az.Search**](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search) からのコマンドは、モジュールを読み込むまでは利用できません。
+[**Az.Search**](/powershell/module/az.search/?view=azps-1.4.0#search) からのコマンドは、モジュールを読み込むまでは利用できません。
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Search
@@ -148,7 +148,7 @@ Cmdlet          Set-AzSearchService                 0.7.1      Az.Search
 
 ## <a name="get-search-service-information"></a>検索サービス情報の取得
 
-**Az.Search** がインポートされ、検索サービスが含まれているリソース グループがわかったら、[Get-AzSearchService](https://docs.microsoft.com/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) を実行して、名前、リージョン、レベル、レプリカとパーティションの数などのサービス定義を返します。
+**Az.Search** がインポートされ、検索サービスが含まれているリソース グループがわかったら、[Get-AzSearchService](/powershell/module/az.search/get-azsearchservice?view=azps-1.4.0) を実行して、名前、リージョン、レベル、レプリカとパーティションの数などのサービス定義を返します。
 
 ```azurepowershell-interactive
 Get-AzSearchService -ResourceGroupName <resource-group-name>
@@ -170,7 +170,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 
 ## <a name="create-or-delete-a-service"></a>サービスの作成または削除
 
-[**New-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) は[新しい検索サービスの作成](search-create-service-portal.md)に使用されます。
+[**New-AzSearchService**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) は[新しい検索サービスの作成](search-create-service-portal.md)に使用されます。
 
 ```azurepowershell-interactive
 New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
@@ -191,7 +191,7 @@ Tags
 
 ## <a name="regenerate-admin-keys"></a>管理者キーを再生成する
 
-[**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) は、管理者 [API キー](search-security-api-keys.md)をロール オーバーするために使用されます。 認証済みのアクセス用に各サービスで 2 つの管理者キーが作成されます。 キーは要求ごとに必要です。 どちらの管理者キーも機能的に同等で、検索サービスに完全な書き込みアクセス権を付与して、情報を取得したり、オブジェクトを作成または削除したりできるようにします。 2 つのキーが存在しているため、1 つを使いながら、もう 1 つを置き換えることができます。 
+[**New-AzSearchAdminKey**](/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) は、管理者 [API キー](search-security-api-keys.md)をロール オーバーするために使用されます。 認証済みのアクセス用に各サービスで 2 つの管理者キーが作成されます。 キーは要求ごとに必要です。 どちらの管理者キーも機能的に同等で、検索サービスに完全な書き込みアクセス権を付与して、情報を取得したり、オブジェクトを作成または削除したりできるようにします。 2 つのキーが存在しているため、1 つを使いながら、もう 1 つを置き換えることができます。 
 
 一度に再生成できるのは、`primary` または `secondary` キーのいずれかとして指定された 1 つのキーのみです。 中断のないサービスの場合は、必ずすべてのクライアント コードを更新して、プライマリ キーのロール オーバー中はセカンダリ キーを使用するようにしてください。 操作の実行中はキーを変更しないでください。
 
@@ -213,7 +213,7 @@ Primary                    Secondary
 
 ## <a name="create-or-delete-query-keys"></a>クエリ キーの作成または削除
 
-[**New-AzSearchQueryKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) は、クライアント アプリから Azure Cognitive Search インデックスへの読み取り専用アクセスのためのクエリ [API キー](search-security-api-keys.md)を作成するために使用します。 クエリ キーは、検索結果を取得する目的で特定のインデックスを認証するために使用します。 クエリ キーは、インデックス、データ ソース、インデクサーなど、サービス上の他の項目への読み取り専用アクセスを付与しません。
+[**New-AzSearchQueryKey**](/powershell/module/az.search/new-azsearchquerykey?view=azps-1.4.0) は、クライアント アプリから Azure Cognitive Search インデックスへの読み取り専用アクセスのためのクエリ [API キー](search-security-api-keys.md)を作成するために使用します。 クエリ キーは、検索結果を取得する目的で特定のインデックスを認証するために使用します。 クエリ キーは、インデックス、データ ソース、インデクサーなど、サービス上の他の項目への読み取り専用アクセスを付与しません。
 
 Azure Cognitive Search で使用するキーを指定することはできません。 API キーは、サービスによって生成されます。
 
@@ -223,7 +223,7 @@ New-AzSearchQueryKey -ResourceGroupName <resource-group-name> -ServiceName <sear
 
 ## <a name="scale-replicas-and-partitions"></a>レプリカとパーティションのスケーリング
 
-[**Set-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) は、[レプリカとパーティションを増減させて](search-capacity-planning.md)サービス内での課金対象のリソースを再調整するために使用します。 レプリカまたはパーティションを増やすと、請求書 (固定料金と変動料金の両方が含まれます) に加算されます。 一時的な処理能力の追加の必要がある場合は、レプリカとパーティションを増やしてワークロードを処理することができます。 ポータルの [概要] ページの監視領域には、クエリの待機時間、1 秒あたりのクエリ数、および調整に関するタイルがあり、現在の容量が適切かどうかが表示されます。
+[**Set-AzSearchService**](/powershell/module/az.search/set-azsearchservice?view=azps-1.4.0) は、[レプリカとパーティションを増減させて](search-capacity-planning.md)サービス内での課金対象のリソースを再調整するために使用します。 レプリカまたはパーティションを増やすと、請求書 (固定料金と変動料金の両方が含まれます) に加算されます。 一時的な処理能力の追加の必要がある場合は、レプリカとパーティションを増やしてワークロードを処理することができます。 ポータルの [概要] ページの監視領域には、クエリの待機時間、1 秒あたりのクエリ数、および調整に関するタイルがあり、現在の容量が適切かどうかが表示されます。
 
 リソース割り当ての追加または削除には時間がかかることがあります。 容量の調整は、既存のワークロードを続行できるように、バックグラウンドで行われます。 追加の容量は準備ができるとすぐに受信要求に使用され、追加の構成は必要ありません。 
 

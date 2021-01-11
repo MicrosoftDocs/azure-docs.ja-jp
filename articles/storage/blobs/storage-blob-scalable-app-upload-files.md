@@ -8,10 +8,10 @@ ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "75371940"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
@@ -44,7 +44,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="configure-the-connection-string"></a>接続文字列の構成
 
-Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 以前のチュートリアルで作成した仮想マシンにログインします。 管理者として **[コマンド プロンプト]** を開き、`/m` スイッチを付加して `setx` コマンドを実行します。このコマンドによって、コンピューター設定の環境変数が保存されます。 環境変数は、**コマンド プロンプト**を再度読み込むまで使用できません。 次のサンプルの **\<storageConnectionString\>** を置き換えます。
+Azure Portal のストレージ アカウントに移動します。 ストレージ アカウントの **[設定]** の下にある **[アクセス キー]** を選択します。 プライマリ キーまたはセカンダリ キーの**接続文字列**をコピーします。 以前のチュートリアルで作成した仮想マシンにログインします。 管理者として **[コマンド プロンプト]** を開き、`/m` スイッチを付加して `setx` コマンドを実行します。このコマンドによって、コンピューター設定の環境変数が保存されます。 環境変数は、**コマンド プロンプト**を再度読み込むまで使用できません。 次のサンプルでは、 **\<storageConnectionString\>** を置き換えます。
 
 ```
 setx storageconnectionstring "<storageConnectionString>" /m

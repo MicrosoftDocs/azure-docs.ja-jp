@@ -1,25 +1,15 @@
 ---
 title: Azure CLI - ラボの仮想マシンを停止して削除する
 description: この記事では、Azure DevTest Labs のラボの仮想マシンを停止して削除する Azure CLI スクリプトを紹介します。
-services: lab-services
-author: spelluru
-manager: ''
-editor: ''
-ms.assetid: ''
-ms.service: lab-services
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
-ms.author: spelluru
-ms.custom: mvc
-ms.openlocfilehash: 3ba2b2c3924f7fea481907b825ba5a04ab50b0bf
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/11/2020
+ms.openlocfilehash: 45d5b3453e29571760d47d52a1a21288be31ea90
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290313"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136127"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure CLI を使用して Azure DevTest Labs のラボの仮想マシンを停止して削除する
 

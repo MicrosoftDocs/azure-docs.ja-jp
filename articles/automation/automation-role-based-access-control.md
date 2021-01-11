@@ -4,14 +4,14 @@ description: この記事では、ロールベースのアクセス制御 (RBAC)
 keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 05/17/2018
+ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e997f80ceee54a1454128c1308032fefa603f5d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186148"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528670"
 ---
 # <a name="manage-role-permissions-and-security"></a>ロールのアクセス許可とセキュリティの管理
 
@@ -19,7 +19,7 @@ Azure のリソースに対するアクセスは、ロールベースのアク�
 
 ## <a name="roles-in-automation-accounts"></a>Automation アカウントのロール
 
-Azure Automation でアクセス権を付与するには、Automation アカウント スコープのユーザー、グループ、アプリケーションに適切な RBAC ロールを割り当てます。 Automation アカウントでは次の組み込みロールがサポートされています。
+Azure Automation でアクセス権を付与するには、Automation アカウント スコープのユーザー、グループ、アプリケーションに適切な Azure ロールを割り当てます。 Automation アカウントでは次の組み込みロールがサポートされています。
 
 | **ロール** | **説明** |
 |:--- |:--- |
@@ -69,7 +69,12 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 ### <a name="automation-operator"></a>Automation Operator
 
-Automation オペレーターは、ジョブの作成と管理、Automation アカウント内のすべての Runbook の名前とプロパティの読み取りを実行できます。  注:個々の Runbook に対するオペレーターのアクセスを制御する場合は、このロールを設定しないでください。代わりに、"Automation ジョブ オペレーター" ロールと "Automation Runbook オペレーター" ロールを組み合わせて使用してください。 次の表は、このロールに付与されるアクセス許可を示しています。
+Automation オペレーターは、ジョブの作成と管理、Automation アカウント内のすべての Runbook の名前とプロパティの読み取りを実行できます。
+
+>[!NOTE]
+>個々の Runbook へのオペレーターのアクセスを制御する場合は、このロールを設定しないでください。 代わりに、**Automation ジョブ オペレーター** ロールと **Automation Runbook オペレーター** ロールを組み合わせて使用します。
+
+次の表は、このロールに付与されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
@@ -96,7 +101,9 @@ Automation オペレーターは、ジョブの作成と管理、Automation ア�
 
 ### <a name="automation-job-operator"></a>Automation ジョブ オペレーター
 
-Automation ジョブ オペレーター ロールは、Automation アカウントのスコープで付与されます。 これにより、アカウント内のすべての Runbook に対してジョブの作成と管理を行うためのアクセス許可がオペレーターに与えられます。 次の表は、このロールに付与されるアクセス許可を示しています。
+Automation ジョブ オペレーター ロールは、Automation アカウントのスコープで付与されます。 これにより、アカウント内のすべての Runbook に対してジョブの作成と管理を行うためのアクセス許可がオペレーターに与えられます。 ジョブ オペレーター ロールに Automation アカウントを含むリソース グループに対する読み取りアクセス許可が付与されている場合、そのロールのメンバーは Runbook を開始できます。 ただし、それらを作成、編集、または削除することはできません。
+
+次の表は、このロールに付与されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
@@ -114,7 +121,7 @@ Automation ジョブ オペレーター ロールは、Automation アカウン�
 
 ### <a name="automation-runbook-operator"></a>Automation Runbook オペレーター
 
-Automation Runbook オペレーター ロールは、Runbook のスコープで付与されます。 Automation Runbook オペレーターは、Runbook の名前とプロパティを表示できます。  このロールと 'Automation ジョブ オペレーター' ロールを組み合わせると、オペレーターは、Runbook に対するジョブの作成と管理も実行できます。 次の表は、このロールに付与されるアクセス許可を示しています。
+Automation Runbook オペレーター ロールは、Runbook のスコープで付与されます。 Automation Runbook オペレーターは、Runbook の名前とプロパティを表示できます。 このロールと **Automation ジョブ オペレーター** ロールを組み合わせると、オペレーターは、Runbook に対するジョブの作成と管理も実行できます。 次の表は、このロールに付与されるアクセス許可を示しています。
 
 |**アクション**  |**説明**  |
 |---------|---------|
@@ -290,6 +297,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
    ![List users](media/automation-role-based-access-control/automation-05-list-users.png)
 
    [ロール] ページから、ユーザーにロールを割り当てることもできます。
+
 4. [アクセス制御 (IAM)] ページから **[ロール]** をクリックして [ロール] ページを開きます。 ロールの名前と、そのロールに割り当てられているユーザー数およびグループ数を確認できます。
 
     ![[ユーザー] ページからのロールの割り当て](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)
@@ -311,7 +319,7 @@ Automation アカウントの管理に関与しないユーザーや既に退社
 
 Automation アカウントに対するロールベースのアクセスは、次の [Azure PowerShell コマンドレット](../role-based-access-control/role-assignments-powershell.md)を使用して構成することもできます。
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) では、Azure Active Directory で利用できるすべての RBAC ロールが一覧表示されます。 このコマンドレットを `Name` パラメーターと共に使用すると、特定のロールで実行できるすべての操作を一覧表示できます。
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) を使用すると、Azure Active Directory で利用できるすべての Azure ロールの一覧が表示されます。 このコマンドレットを `Name` パラメーターと共に使用すると、特定のロールで実行できるすべての操作を一覧表示できます。
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -330,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) では、特定のスコープにおける Azure AD RBAC ロールの割り当てが一覧表示されます。 このコマンドレットにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、`ExpandPrincipalGroups` パラメーターを使用します。
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) を使用すると、特定のスコープにおける Azure ロールの割り当ての一覧が表示されます。 このコマンドレットにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、`ExpandPrincipalGroups` パラメーターを使用します。
 
 **例:** Automation アカウント内のすべてのユーザーとそのロールを一覧表示するには、次のコマンドレットを使用します。
 
@@ -353,7 +361,7 @@ ObjectType         : User
 ```
 
 特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てるには、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) を使用します。
-    
+
 **例:** Automation アカウント スコープのユーザーに対して "Automation オペレーター" ロールを割り当てるには、次のコマンドを使用します。
 
 ```azurepowershell-interactive

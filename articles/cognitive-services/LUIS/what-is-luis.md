@@ -1,14 +1,16 @@
 ---
 title: Language Understanding (LUIS) とは
-description: Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話に適用して、全体の意味を予測し、関連性のある詳細な情報を引き出すクラウド ベースの API サービスです。
+description: Language Understanding (LUIS) - 機械学習を自然言語での会話に使用して、意味を予測し、情報を抽出するクラウドベースの API サービス。
+keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, nlu, ai 会話, 会話型 ai, ai チャットボット, チャットボット メーカー, LUIS, nlp ai, luis ai, azure luis, 自然言語の理解
 ms.topic: overview
-ms.date: 05/05/2020
-ms.openlocfilehash: 231a6580a6776b82173865744e9e8757c2fa08f1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/07/2020
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 98d801f6a34feb40d56215f8b6257a68ec628e10
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538039"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320054"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -40,7 +42,9 @@ LUIS アプリは、クライアント アプリケーションが賢明な選�
 <a name="Key-LUIS-concepts"></a>
 <a name="what-is-a-luis-model"></a>
 
-## <a name="natural-language-processing"></a>自然言語処理
+## <a name="natural-language-understanding-nlu"></a>自然言語理解 (NLU)
+
+LUIS は、自然言語処理 (NLP) のサブセットである NLU の形式で[人工知能 (AI) を提供](artificial-intelligence.md)します。
 
 LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語モデルが含まれます。 LUIS アプリは、構築済みのドメイン モデルをひな形にできるほか、独自にモデルを構築したり、構築済みのドメインの一部に独自の情報を融合したりすることができます。
 
@@ -48,10 +52,11 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 
 * **カスタム モデル**の LUIS を使うと、意図を含む独自のカスタムモデルやエンティティを複数の方法で識別できます。 エンティティには、機械学習エンティティ、特定のエンティティまたはリテラル エンティティ、機械学習エンティティとリテラル エンティティの組み合わせが含まれます。
 
-## <a name="build-the-luis-model"></a>LUIS モデルの構築
-モデルの構築には、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API または [LUIS ポータル](https://www.luis.ai)を使用します。
+[NLP](artificial-intelligence.md)、および NLU の LUIS 固有の領域の詳細を確認してください。
 
-LUIS モデルの出発点は、ユーザーの目的のカテゴリです。これを " **[意図](luis-concept-intent.md)** " といいます。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md)** の例が必要です。 各発話では、抽出する必要があるデータが提供される場合があります。
+## <a name="step-1-design-and-build-your-model"></a>手順 1:モデルを設計して構築する
+
+**[意図](luis-concept-intent.md)** と呼ばれる、ユーザーの意図のカテゴリを使用してモデルを設計します。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md)** の例が必要です。 それぞれの発話からデータが得られますが、それらのデータは[機械学習エンティティ](luis-concept-entity-types.md#effective-machine-learned-entities)を使って抽出する必要があります。
 
 |ユーザーの発話例|Intent|抽出された日付|
 |-----------|-----------|-----------|
@@ -59,9 +64,11 @@ LUIS モデルの出発点は、ユーザーの目的のカテゴリです。こ
 |`When does your store open?`|StoreHoursAndLocation|open|
 |`Schedule a meeting at 1pm with Bob in Distribution`|ScheduleMeeting|1pm、Bob (午後 1 時、Bob)|
 
-## <a name="query-prediction-endpoint"></a>予測エンドポイントに対するクエリの実行
+モデルの構築には、[オーサリング](https://go.microsoft.com/fwlink/?linkid=2092087) API シリーズ、[**LUIS ポータル**](https://www.luis.ai)、またはその両方を使用します。 [ポータル](get-started-portal-build-app.md)と [SDK クライアント ライブラリ](azure-sdk-quickstart.md)を使用して構築する方法について確認してください。
 
-アプリがトレーニングされてエンドポイントに発行された後は、クライアント アプリケーションによって、予測[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API に発話が送信されます。 API によって、分析のために発話にモデルが適用され、予測結果が JSON 形式で返されます。
+## <a name="step-2-get-the-query-prediction"></a>手順 2:クエリ予測を取得する
+
+アプリのモデルがトレーニングされてエンドポイントに発行された後、クライアント アプリケーション (チャットボットなど) によって、予測[エンドポイント](https://go.microsoft.com/fwlink/?linkid=2092356) API に発話が送信されます。 API によって、分析のために発話にモデルが適用され、予測結果が JSON 形式で返されます。
 
 エンドポイントからの JSON 形式の応答には、少なくとも、クエリの発話と上位スコアの意図が含まれます。 以下の **Contact Type** エンティティや全体的なセンチメントなどのデータを抽出することもできます。
 
@@ -69,7 +76,6 @@ LUIS モデルの出発点は、ユーザーの目的のカテゴリです。こ
 {
     "query": "I want to call my HR rep",
     "prediction": {
-        "normalizedQuery": "i want to call my hr rep",
         "topIntent": "HRContact",
         "intents": {
             "HRContact": {
@@ -82,49 +88,52 @@ LUIS モデルの出発点は、ユーザーの目的のカテゴリです。こ
             ]
         },
         "sentiment": {
-            "label": "negative",
-            "score": 0.103343368
+            "label": "neutral",
+            "score": 0.5
         }
     }
 }
 ```
 
-## <a name="improve-model-prediction"></a>モデルの予測の改善
+## <a name="step-3-improve-model-prediction"></a>手順 3:モデルの予測の改善
 
-LUIS アプリが公開され、実際のユーザーの発話を受け取ると、予測精度向上のためにエンドポイント発話の[アクティブな学習](luis-concept-review-endpoint-utterances.md)が LUIS によって提供されます。
+LUIS アプリが公開され、実際のユーザーの発話を受け取ると、予測精度向上のためにエンドポイント発話の[アクティブな学習](luis-concept-review-endpoint-utterances.md)が LUIS によって提供されます。 これらの提案は、開発ライフサイクルの定期的なメンテナンス作業の一部として確認してください。
 
 <a name="using-luis"></a>
 
-## <a name="development-lifecycle"></a>開発ライフサイクル
+## <a name="development-lifecycle-and-tools"></a>開発ライフサイクルとツール
 LUIS を使うと、完全な[開発ライフ サイクル](luis-concept-app-iteration.md)に統合するためのツール、バージョン管理、および他の LUIS 作成者とのコラボレーションが提供されます。
 
-## <a name="implementing-luis"></a>LUIS の実装
-Language Understanding (LUIS) は、REST API として、HTTP 要求を行う任意の製品、サービス、フレームワークで使用できます。 以下に、LUIS で使用される Microsoft の代表的な製品とサービスを列挙しています。
-
-LUIS のトップ クライアント アプリケーション:
-* [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0): テキスト入力を介してユーザーと会話する LUIS 対応のチャット ボットをすばやく作成します。 完成度の高いボット エクスペリエンスを実現するために、[Bot Framework][bot-framework] バージョン [4.x](https://github.com/Microsoft/botbuilder-dotnet) を使用してください。
+Language Understanding (LUIS) は、REST API として、HTTP 要求を行う任意の製品、サービス、フレームワークで使用できます。 LUIS には、いくつかの主要なプログラミング言語用のクライアント ライブラリ (SDK) も用意されています。 提供されている[開発者向けリソース](developer-reference-resource.md)の詳細を確認してください。
 
 LUIS をボットですばやく簡単に使用するためのツール:
 * [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS): この NPM パッケージは、スタンドアロンのコマンドライン ツールまたはインポートとして、作成と予測を提供します。
 * [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen): LUISGen は、エクスポートされた LUIS モデルから厳密に型指定された C# および typescript のソース コードを生成するためのツールです。
 * [Dispatch](https://aka.ms/dispatch-tool): ディスパッチャー モデルを使うことで、いくつかの LUIS アプリや QnA Maker アプリを親アプリから使用できます。
 * [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown): LUDown は、ボットの言語モデルを管理するのに役立つコマンドライン ツールです。
-* [Bot Framework - Composer](https://github.com/microsoft/BotFramework-Composer) - Microsoft Bot Framework を使用したボットや会話エクスペリエンスの作成に携わる開発者およびさまざまな分野にわたるチームのための統合開発ツールです。
+
+## <a name="integrate-with-a-bot"></a>ボットとの統合
+
+[Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) を [Microsoft Bot Framework](https://dev.botframework.com/) と共に使用して、チャットボットを構築してデプロイします。 設計と開発には、グラフィカル インターフェイス ツールの [Composer](https://docs.microsoft.com/composer/) または主要なボット シナリオ用に設計された[実用的なボット サンプル](https://github.com/microsoft/BotBuilder-Samples)を使用します。
+
+## <a name="integrate-with-other-cognitive-services"></a>他の Cognitive Services との統合
 
 LUIS で使用されるその他の Cognitive Services:
 * [QnA Maker][qnamaker] は、多種多様なテキストを質問と回答のナレッジ ベースに統合できるようにします。
 * [Speech サービス](../Speech-Service/overview.md)は、話し言葉による要求をテキストに変換します。
-* [Conversation Learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview): LUIS を使ったボットの会話を短時間で構築できます。
 
-LUIS を使用したサンプル:
-* [会話型 AI](https://github.com/Microsoft/AI) GitHub リポジトリ。
-* [Bot Framework - ボット サンプル](https://github.com/microsoft/BotBuilder-Samples)
+LUIS は、既存の LUIS リソースの一部として Text Analytics の機能を提供します。 この機能には、あらかじめ構築された keyPhrase エンティティを使用した[感情分析](luis-how-to-publish-app.md#configuring-publish-settings)と[キー フレーズ抽出](luis-reference-prebuilt-keyphrase.md)が含まれます。
+
+## <a name="learn-with-the-quickstarts"></a>クイックスタートで学習する
+
+[ポータル](get-started-portal-build-app.md)と [SDK クライアント ライブラリ](azure-sdk-quickstart.md)を使用したハンズオン クイックスタートで LUIS について学習します。
+
 
 ## <a name="next-steps"></a>次のステップ
 
-* [新機能](whats-new.md)
-* [構築済み](luis-get-started-create-app.md)または[カスタム ](luis-quickstart-intents-only.md) ドメインを使用して、新しい LUIS アプリを作成します。
-* 公開 IoT アプリの[予測エンドポイントに対してクエリを実行](luis-get-started-get-intent-from-browser.md)します。
+* サービスとドキュメントの[最新情報](whats-new.md)
+* [意図](luis-concept-intent.md)と[エンティティ](luis-concept-entity-types.md)を使用する[アプリを計画する](luis-how-plan-your-app.md)。
+* [予測エンドポイントに対してクエリを実行する](luis-get-started-get-intent-from-browser.md)。
 * LUIS の[開発者向けリソース](developer-reference-resource.md)。
 
 [bot-framework]: https://docs.microsoft.com/bot-framework/

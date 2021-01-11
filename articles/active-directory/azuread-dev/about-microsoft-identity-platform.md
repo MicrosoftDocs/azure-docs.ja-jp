@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 504caffe0505a4e8a66608fcad528130630a5cc8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236213"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117772"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化
 
@@ -49,7 +49,7 @@ Azure portal **[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083
 
 Azure AD B2C との統合では (ソーシャルまたはローカル ID を認証する場合)、Azure AD B2C テナントにアプリケーションを登録する必要があります。 このエクスペリエンスも Azure portal の一部です。
 
-[アプリケーション API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) を使用して、Microsoft のあらゆる ID を認証するよう、Microsoft ID プラットフォームと統合されたアプリケーションをプログラミングで構成します。
+[アプリケーション API](/graph/api/resources/application?view=graph-rest-1.0) を使用して、Microsoft のあらゆる ID を認証するよう、Microsoft ID プラットフォームと統合されたアプリケーションをプログラミングで構成します。
 
 ### <a name="msal-libraries"></a>MSAL ライブラリ
 
@@ -57,7 +57,7 @@ MSAL ライブラリを使用し、すべての Microsoft ID を認証するア�
 
 MSAL ライブラリを利用し、アプリケーションを Azure AD B2C と統合することもできます。
 
-Web アプリと Web API を構築するための次のサーバー側ライブラリが一般公開されています。[ASP.NET](https://docs.microsoft.com/aspnet/overview) と [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+Web アプリと Web API を構築するための次のサーバー側ライブラリが一般公開されています。[ASP.NET](/aspnet/overview) と [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
 
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイント
 

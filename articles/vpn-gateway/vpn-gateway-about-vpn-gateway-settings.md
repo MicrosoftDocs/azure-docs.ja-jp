@@ -1,18 +1,18 @@
 ---
 title: 'Azure VPN Gateway: 構成設定'
-description: Azure 仮想ネットワーク ゲートウェイ用の VPN Gateway の設定について説明します。
+description: Resource Manager デプロイ モデルで作成された仮想ネットワーク用の VPN Gateway のリソースと設定について説明します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6f801b94a16ae6fcee6896dd70510469c5e20098
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708146"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036914"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 

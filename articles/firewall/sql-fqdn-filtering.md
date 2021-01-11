@@ -21,8 +21,8 @@ SQL FQDN を使用して Azure Firewall アプリケーション規則を構成�
 SQL FQDN では、以下のトラフィックをフィルター処理できます。
 
 - Vnet から Azure SQL Database または Azure SQL Data Warehouse へ。 次に例を示します。*sql server1.database.windows.net* へのアクセスのみ許可します。
-- オンプレミスから Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
-- スポーク間から Vnet で実行されている Azure SQL マネージド インスタンスまたは SQL IaaS へ。
+- オンプレミスから Vnet で実行されている Azure SQL Managed Instance または SQL IaaS へ。
+- スポーク間から Vnet で実行されている Azure SQL Managed Instance または SQL IaaS へ。
 
 SQL の FQDN のフィルター処理は、[プロキシ モード](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy)のみでサポートされます (ポート 1433)。 既定のリダイレクト モードで SQL を使用する場合、[ネットワーク ルール](features.md#network-traffic-filtering-rules)の一部として SQL サービス タグを使用してアクセスをフィルター処理することができます。
 SQL IaaS のトラフィックに既定以外のポートを使用する場合は、ファイアウォール アプリケーション規則でこれらのポートを構成できます。
@@ -30,7 +30,7 @@ SQL IaaS のトラフィックに既定以外のポートを使用する場合�
 ## <a name="configure-using-azure-cli"></a>Azure CLI を使用して構成する
 
 1. [Azure CLI を使用して Azure Firewall](deploy-cli.md) をデプロイします。
-2. Azure SQL Database、SQL Data Warehouse、または SQL マネージド インスタンスへのトラフィックをフィルター処理する場合は、SQL 接続のモードが**プロキシ**に設定されていることを確認します。 SQL 接続モードを切り替える方法については、「[Azure SQL の接続の設定](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)」を参照してください。
+2. Azure SQL Database、SQL Data Warehouse、または SQL Managed Instance へのトラフィックをフィルター処理する場合は、SQL 接続のモードが**プロキシ**に設定されていることを確認します。 SQL 接続モードを切り替える方法については、「[Azure SQL の接続の設定](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)」を参照してください。
 
    > [!NOTE]
    > SQL *プロキシ* モードを使用すると、*リダイレクト*と比較して待機時間が増加する可能性があります。 リダイレクト モードを使用して構成する場合は (Azure 内から接続するクライアントの既定)、代わりに ファイアウォール [ネットワーク ルール](tutorial-firewall-deploy-portal.md#configure-a-network-rule)で SQL [サービス タグ](service-tags.md)を使ってアクセスをフィルター処理できます。
@@ -52,7 +52,7 @@ SQL IaaS のトラフィックに既定以外のポートを使用する場合�
 
 ## <a name="configure-using-the-azure-portal"></a>Azure portal を使用して構成する
 1. [Azure CLI を使用して Azure Firewall](deploy-cli.md) をデプロイします。
-2. Azure SQL Database、SQL Data Warehouse、または SQL マネージド インスタンスへのトラフィックをフィルター処理する場合は、SQL 接続のモードが**プロキシ**に設定されていることを確認します。 SQL 接続モードを切り替える方法については、「[Azure SQL の接続の設定](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)」を参照してください。  
+2. Azure SQL Database、SQL Data Warehouse、または SQL Managed Instance へのトラフィックをフィルター処理する場合は、SQL 接続のモードが**プロキシ**に設定されていることを確認します。 SQL 接続モードを切り替える方法については、「[Azure SQL の接続の設定](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-settings#change-connection-policy-via-azure-cli)」を参照してください。  
 
    > [!NOTE]
    > SQL *プロキシ* モードを使用すると、*リダイレクト*と比較して待機時間が増加する可能性があります。 リダイレクト モードを使用して構成する場合は (Azure 内から接続するクライアントの既定)、代わりに ファイアウォール [ネットワーク ルール](tutorial-firewall-deploy-portal.md#configure-a-network-rule)で SQL [サービス タグ](service-tags.md)を使ってアクセスをフィルター処理できます。

@@ -3,12 +3,12 @@ title: 署名済みのイメージの管理
 description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。 コンテンツの信頼は、Premium サービス レベルの機能です。
 ms.topic: article
 ms.date: 09/06/2019
-ms.openlocfilehash: 74bc61f71fc001d5333fcd3c9ac47fa4dd90218c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 34bb56bab869cb1f12541b65c59b06a73b215377
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84509561"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076850"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
@@ -114,7 +114,7 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 `<service principal ID>` には、サービス プリンシパルの **appId**、**objectId**、またはその **servicePrincipalNames** を指定できます。 サービス プリンシパルと Azure Container Registry の取り扱いについて詳しくは、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」をご覧ください。
 
 > [!IMPORTANT]
-> ロールが変更されたら、新しいロールを有効にするために、`az acr login` を実行して Azure CLI のローカル ID トークンを更新します。 ID のロールの検証の詳細については、「[RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-cli.md)」と「[Azure リソースの RBAC のトラブルシューティング](../role-based-access-control/troubleshooting.md)」を参照してください。
+> ロールが変更されたら、新しいロールを有効にするために、`az acr login` を実行して Azure CLI のローカル ID トークンを更新します。 ID のロールの検証の詳細については、「[RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-cli.md)」と「[Azure RBAC のトラブルシューティング](../role-based-access-control/troubleshooting.md)」を参照してください。
 
 ## <a name="push-a-trusted-image"></a>信頼済みのイメージをプッシュする
 

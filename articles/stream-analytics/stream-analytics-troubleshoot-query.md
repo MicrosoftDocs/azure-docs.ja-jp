@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7c83bc55a00774966681973b95d18cdc58dba19c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: ead175cbcaa9467cb5263ad95100facdda096991
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037207"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337808"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics のクエリのトラブルシューティング
 
@@ -28,9 +28,9 @@ ms.locfileid: "86037207"
     - Azure portal の **[クエリ]** タブで **[テスト]** を選択します。 ダウンロードしたサンプル データを使用して[クエリをテスト](stream-analytics-test-query.md)します。 すべてのエラーを調査し、修正を試みます。   
     - また、Visual Studio の Azure Stream Analytics ツール、または [Visual Studio Code](visual-studio-code-local-run-live-input.md) を使用して、[クエリをローカルでテスト](stream-analytics-live-data-local-testing.md)することもできます。 
 
-2.  Visual Studio の Azure Stream Analytics ツールで、[ジョブ ダイアグラムを使用して段階を追ってローカルでクエリをデバッグ](debug-locally-using-job-diagram.md)します。 ジョブ ダイアグラムには、入力ソース (イベント ハブ、IoT Hub など) のデータが複数のクエリ手順を介して最終的に出力シンクまでどのように流れるかが示されます。 各クエリ ステップは、WITH ステートメントを使用してスクリプトに定義された一時的結果セットにマップされます。 各中間結果セット内のデータとメトリックを表示して、問題の原因を見つけることができます。
+2.  Visual Studio Code の Azure Stream Analytics ツールで、[ジョブ ダイアグラムを使用して段階を追ってローカルでクエリをデバッグ](debug-locally-using-job-diagram-vs-code.md)します。 ジョブ ダイアグラムには、入力ソース (イベント ハブ、IoT Hub など) のデータが複数のクエリ手順を介して最終的に出力シンクまでどのように流れるかが示されます。 各クエリ ステップは、WITH ステートメントを使用してスクリプトに定義された一時的結果セットにマップされます。 各中間結果セット内のデータとメトリックを表示して、問題の原因を見つけることができます。
 
-    ![ジョブ ダイアグラムのプレビュー結果](./media/debug-locally-using-job-diagram/preview-result.png)
+    ![ジョブ ダイアグラムのプレビュー結果](./media/debug-locally-using-job-diagram-vs-code/preview-result.png)
 
 3.  [**Timestamp By**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) を使用する場合は、イベントのタイムスタンプが[ジョブの開始時刻](stream-analytics-out-of-order-and-late-events.md)より後であることを確認します。
 

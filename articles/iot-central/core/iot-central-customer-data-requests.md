@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3cf88b4d3c4c74493235d2997db4d464bb055b81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dabcadea96f4ced5bdf73a35ef533e6d290595c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023754"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001878"
 ---
-# <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
+# <a name="azure-iot-central-customer-data-request-features"></a>Azure IoT Central の顧客データ要求機能
 
 Azure IoT Central は、モノのインターネット (IoT) 資産の接続、監視、管理を簡単かつ大規模に行い、IoT データから深い洞察を作成し、情報に基づくアクションを起こせるようにする、フルマネージド IoT の SaaS (サービスとしてのソフトウェア) ソリューションです。
 

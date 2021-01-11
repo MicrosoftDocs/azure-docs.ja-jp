@@ -4,12 +4,12 @@ description: Azure Migrate Server Assessment を使用して Azure に移行す�
 ms.topic: tutorial
 ms.date: 06/03/2020
 ms.custom: mvc
-ms.openlocfilehash: dd00f800003724b3a5c15d265a5428272e1762fb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8c2784e999e751972883b6c9ffba2485bb9fe9e1
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290219"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950087"
 ---
 # <a name="assess-vmware-vms-with-server-assessment"></a>Server Assessment による VMware VM の評価
 
@@ -66,19 +66,30 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Migrate:Server Assessment では、軽量の Azure Migrate アプライアンスが使用されます。 このアプライアンスは VM の検出を実行し、VM のメタデータとパフォーマンス データを Azure Migrate に送信します。 このアプライアンスは、さまざまな方法で設定できます。
 
-- ダウンロードした OVA テンプレートを使用して VMware VM 上に設定します。 このチュートリアルでは、この方法を使用します。
+- ダウンロードした OVA テンプレートを使用して VMware VM 上に設定します。 **このチュートリアルでは、この方法を使用します。**
 - PowerShell インストーラー スクリプトを使用して VMware VM 上または物理マシン上に設定します。 OVA テンプレートを使用して VM を設定できない場合や、Azure Government をご利用の場合は、[この方法](deploy-appliance-script.md)を使用してください。
 
 アプライアンスの作成後、Azure Migrate:Server Assessment に接続できることを確認し、最初の構成を行い、Azure Migrate プロジェクトに登録します。
 
 
-### <a name="download-the-ova-template"></a>OVA テンプレートをダウンロードする
+### <a name="generate-the-azure-migrate-project-key"></a>Azure Migrate プロジェクト キーを生成する
 
 1. **移行の目標** > **サーバー** > **Azure Migrate: Server Assessment** で、**検出** を選択します。
 2. **[マシンの検出]**  >  **[マシンは仮想化されていますか?]** で、 **[はい。VMware vSphere Hypervisor を使用します]** を選択します。
-3. **[ダウンロード]** を選択して、OVA テンプレート ファイルをダウンロードします。
+3. **[1:Azure Migrate プロジェクト キーを生成します]** で、VMware VM の検出用に設定する Azure Migrate アプライアンスの名前を指定します。名前は 14 文字以内の英数字にする必要があります。
+1. **[キーの生成]** をクリックして、必要な Azure リソースの作成を開始します。 リソースの作成中に [マシンの検出] ページを閉じないでください。
+1. Azure リソースが正常に作成されると、**Azure Migrate プロジェクト キー**が生成されます。
+1. このキーはアプライアンスを設定する際、登録を完了するために必要なので、コピーしておきます。
 
-   ![OVA ファイルをダウンロードするための選択](./media/tutorial-assess-vmware/download-ova.png)
+### <a name="download-the-ova-template"></a>OVA テンプレートをダウンロードする
+**[2:Azure Migrate アプライアンスをダウンロードする]** で、.OVA ファイルを選択し、 **[ダウンロード]** をクリックします。 
+
+
+   ![[マシンの検出] の選択](./media/tutorial-assess-vmware/servers-discover.png)
+
+
+   ![[キーの生成] の選択](./media/tutorial-assess-vmware/generate-key-vmware.png)
+
 
 ### <a name="verify-security"></a>セキュリティを確認する
 
@@ -97,13 +108,13 @@ OVA ファイルをデプロイする前に、それが安全であることを�
     
         **アルゴリズム** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        VMware (10.9 GB) | [最新バージョン](https://aka.ms/migrate/appliance/vmware) | cacbdaef927fe5477fa4e1f494fcb7203cbd6b6ce7402b79f234bc0fe69663dd
+        VMware (11.6 GB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140333) | e9c9a1fe4f3ebae81008328e8f3a7933d78ff835ecd871d1b17f367621ce3c74
 
     - Azure Government の場合:
     
         **アルゴリズム** | **ダウンロード** | **SHA256**
         --- | --- | ---
-        VMware (63.1 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+        VMware (85 MB) | [最新バージョン](https://go.microsoft.com/fwlink/?linkid=2140337) | 7dab9445a89b47302994d6de4caddaa092c1c582c8f3c1fc5b9c4908c7d2f9f7
 
 
 ### <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
@@ -138,49 +149,49 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 3. VM に接続できる任意のマシン上でブラウザーを開き、アプライアンス Web アプリの URL を開きます (**https://*アプライアンス名または IP アドレス*:44368**)。
 
    または、アプリ ショートカットを選択して、アプライアンス デスクトップからアプリを開くこともできます。
+1. **ライセンス条項**に同意し、サード パーティの情報を確認します。
 1. Web アプリの **[前提条件のセットアップ]** で、以下を実行します。
-   - **ライセンス**:ライセンス条項に同意し、サード パーティの情報を確認します。
    - **接続**:VM でインターネットにアクセスできることが、アプリによって確認されます。 VM でプロキシを使用する場合:
-     - **[プロキシの設定]** を選択し、 http://ProxyIPAddress または http://ProxyFQDN の形式で、プロキシ アドレスとリスニング ポートを指定します。
+     - **[プロキシの設定]** をクリックし、プロキシ アドレス (http://ProxyIPAddress または http://ProxyFQDN) の形式) とリッスン ポートを指定します。
      - プロキシで認証が必要な場合は、資格情報を指定します。
      - サポートされるのは HTTP プロキシのみです。
+     - プロキシの詳細を追加した場合、またはプロキシまたは認証を無効にした場合は、 **[保存]** をクリックして接続チェックを再度トリガーします。
    - **時刻同期**:検出を正常に機能させるには、アプライアンス上の時刻がインターネットの時刻と同期している必要があります。
-   - **更新プログラムのインストール**:アプライアンスでは、最新の更新プログラムがインストールされることが保証されます。
-   - **Install VDDK\(VDDK のインストール\)** :アプライアンスでは、VMware vSphere Virtual Disk Development Kit (VDDK) がインストールされていることが確認されます。 インストールされていない場合は、VMware から VDDK 6.7 をダウンロードし、ダウンロードした zip コンテンツをアプライアンス上の指定された場所に抽出します。
+   - **更新プログラムのインストール**:アプライアンスでは、最新の更新プログラムがインストールされることが保証されます。 確認が完了したら、 **[View appliance services]\(アプライアンス サービスを表示\)** をクリックして、アプライアンスで実行されているコンポーネントの状態とバージョンを確認できます。
+   - **Install VDDK\(VDDK のインストール\)** :アプライアンスでは、VMware vSphere Virtual Disk Development Kit (VDDK) がインストールされていることが確認されます。 インストールされていない場合は、**インストール手順**に記載されているとおりに、VMware から VDDK 6.7 をダウンロードし、ダウンロードした zip コンテンツをアプライアンス上の指定された場所に抽出します。
 
-     Azure Migrate Server Migration では、Azure への移行の間に VDDK を使用してマシンがレプリケートされます。       
+     Azure Migrate Server Migration では、Azure への移行の間に VDDK を使用してマシンがレプリケートされます。 
+1. 必要に応じて、アプライアンス構成中ならいつでも、**前提条件の再実行**を行って、アプライアンスがすべての前提条件を満たしているかどうかを確認できます。
 
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
-1. **[ログイン]** を選択します。 表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-2. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
+1. ポータルからコピーした **Azure Migrate プロジェクト キー**を貼り付けます。 このキーがない場合は、 **[Server Assessment] > [検出] > [Manage existing appliances]\(既存のアプライアンスの管理\)** に移動して、キーの生成時に指定したアプライアンス名を選択して、対応するキーをコピーします。
+1. **[ログイン]** をクリックします。 新しいブラウザー タブで Azure ログイン プロンプトが開きます。表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
+1. 新しいタブで、Azure のユーザー名とパスワードを使用してサインインします。
    
    PIN を使用したサインインはサポートされていません。
-3. 正常にサインインしたら、Web アプリに戻ります。
-4. Azure Migrate プロジェクトが作成されたサブスクリプションを選択した後、プロジェクトを選択します。
-5. アプライアンスの名前を指定します。 名前は、14 文字以下の英数字にする必要があります。
-6. **[登録]** を選択します。
+3. 正常にログインしたら、Web アプリに戻ります。 
+4. ログに使用した Azure ユーザー アカウントに、キーの生成時に作成した Azure リソースに対する正しい[アクセス許可](tutorial-prepare-vmware.md#prepare-azure)が付与されている場合、アプライアンスの登録が開始されます。
+1. アプライアンスが正常に登録された後は、 **[詳細の表示]** をクリックすることで登録の詳細を確認できるようになります。
 
 
 ## <a name="start-continuous-discovery"></a>継続的な検出を開始する
 
 VM の構成データとパフォーマンス データを検出するには、アプライアンスを vCenter Server に接続する必要があります。
 
-### <a name="specify-vcenter-server-details"></a>vCenter Server の詳細を指定する
-1. **[vCenter Server の詳細を指定する]** で、vCenter Server インスタンスの名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
-2. vCenter Server インスタンス上の VM を検出するためにアプライアンスが使用する vCenter Server アカウントの資格情報を **[ユーザー名]** と **[パスワード]** に指定します。 
-
+1. **[ステップ 1:Provide vCenter Server credentials]\(ステップ 1: vCenter Server の資格情報を指定する\)** で、 **[資格情報の追加]** をクリックして資格情報のフレンドリ名を指定し、vCenter Server インスタンスでの VM の検出にアプライアンスで使用される vCenter Server またはクラスターの **[ユーザー名]** と **[パスワード]** を追加します。
     - [前のチュートリアル](tutorial-prepare-vmware.md#set-up-permissions-for-assessment)で、必要なアクセス許可を持つアカウントを設定してある必要があります。
     - 検出を特定の VMware オブジェクト (vCenter Server データセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM) にスコーピングする場合、Azure Migrate によって使用されるアカウントを制限するには、[この記事](set-discovery-scope.md)の手順を参照してください。
-
-3. **[接続の検証]** を選択し、アプライアンスが vCenter Server に接続できることを確認します。
-4. **[VM でのアプリケーションと依存関係の検出]** で、必要に応じて **[資格情報の追加]** をクリックし、資格情報が関連するオペレーティング システムと、資格情報のユーザー名およびパスワードを指定します。 **[追加]** をクリックします。
+1. **[ステップ 2:Provide vCenter Server details]\(ステップ 2: VCenter Server の詳細を指定する\)** で、 **[Add discovery source]\(検出ソースの追加\)** をクリックして、ドロップダウンから資格情報のフレンドリ名を選択し、vCenter Server インスタンスの **IP アドレスまたは FQDN** を指定します。 **[ポート]** を既定 (443) のまま使用することも、vCenter Server でリッスンするカスタム ポートを指定して **[保存]** をクリックしることもできます。
+1. [保存] をクリックすると、アプライアンスは、指定された資格情報を使用して vCenter Server への接続の検証を試み、vCenter Server の IP アドレスまたは FQDN に対して**検証状態**を表に表示します。
+1. 検出を開始する前に、vCenter Server への接続はいつでも**再検証**できます。
+1. **[ステップ 3:Provide VM credentials to discover installed applications and to perform agentless dependency mapping]\(ステップ 3: インストールされているアプリケーションを検出するための VM 資格情報を指定し、エージェントレスの依存関係マッピングを実行する\)** で、 **[資格情報の追加]** をクリックし、資格情報を提供するオペレーティング システム、資格情報のフレンドリ名、 **[ユーザー名]** と **[パスワード]** を指定します。 その後、 **[保存]** をクリックします。
 
     - [アプリケーション検出機能](how-to-discover-applications.md)または[エージェントレスの依存関係の分析機能](how-to-create-group-machine-dependencies-agentless.md)のために使用するアカウントを作成した場合は、必要に応じて、ここで資格情報を追加します。
-    - これらの機能を使用していない場合は、この設定を省略できます。
-    - [アプリ検出](migrate-support-matrix-vmware.md#application-discovery-requirements)または[エージェントレス分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)に必要な資格情報を確認してください。
+    - これらの機能を使用しない場合は、スライダーをクリックして手順をスキップできます。 後からいつでもインテントを元に戻すことができます。
+    - [アプリケーション検出](migrate-support-matrix-vmware.md#application-discovery-requirements)または[エージェントレス分析](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)に必要な資格情報を確認してください。
 
-5. VM の検出を開始するには、 **[保存して検出を開始]** を選択します。
+5. VM の検出を開始するには、 **[検出の開始]** をクリックします。 検出が正常に開始されたら、vCenter Server の IP アドレスまたは FQDN に対する検出状態を表で確認できます。
 
 検出は次のように行われます。
 - 検出された VM のメタデータがポータルに表示されるまでに、約 15 分かかります。
@@ -206,7 +217,7 @@ Server Assessment には、サイズ変更の設定基準として、次の 2 �
 
 **サイズ変更の設定基準** | **詳細** | **データ**
 --- | --- | ---
-**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードの推奨値は、CPU とメモリの使用率データに基づきます。
+**パフォーマンスベース** | 収集されたパフォーマンス データに基づいて推奨を行う評価 | **Azure VM の評価**: VM サイズの推奨値は、CPU とメモリの使用率データに基づきます。<br/><br/> ディスクの種類に関する推奨事項 (標準 HDD/SSD またはプレミアム マネージド ディスク) は、オンプレミス ディスクの IOPS とスループットに基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、CPU とメモリの使用率データに基づきます。
 **現状のオンプレミス** | パフォーマンス データを使用せずに推奨を行う評価。 | **Azure VM の評価**: VM サイズに関する推奨事項は、オンプレミスの VM サイズに基づきます<br/><br> 推奨されるディスクの種類は、評価の [ストレージの種類] 設定で選択した内容に基づきます。<br/><br/> **Azure VMware Solution (AVS) の評価**: AVS ノードに関する推奨事項は、オンプレミスの VM サイズに基づきます。
 
 ## <a name="run-an-assessment"></a>評価を実行する

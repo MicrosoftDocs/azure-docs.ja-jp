@@ -58,6 +58,8 @@
       href: remote-work-support.md
     - name: ネットワーク規則内の FQDN
       href: fqdn-filtering-network-rules.md
+    - name: セキュリティ ベースライン
+      href: security-baseline.md
 - name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ

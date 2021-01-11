@@ -8,12 +8,13 @@ ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ba6f4bcaffbf9fa11c949853362485d524bec23a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli, references_regions
+ms.openlocfilehash: 236134887728ebc3dd4d03fa4c9d9d450b39eac2
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510018"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88930674"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -228,6 +229,67 @@ az storage share create \
 
 > [!Note]  
 > ファイル共有の名前はすべて小文字にする必要があります。 ファイル共有およびファイルへの名前付けの詳細については、「 [Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照)](https://msdn.microsoft.com/library/azure/dn167011.aspx)」を参照してください。
+
+### <a name="create-a-hot-or-cool-file-share"></a>ホット ファイル共有またはクールファイル共有を作成する
+**General Purpose v2 (GPv2) ストレージ アカウント**のファイル共有には、トランザクション最適化ホット ファイル共有またはクール ファイル共有 (またはそれらの混合) が含まれます。 トランザクション最適化共有は、すべての Azure リージョンで利用できますが、ホット ファイル共有とクール ファイル共有は、[リージョンのサブセット](storage-files-planning.md#storage-tiers)でのみ利用できます。 Azure PowerShell プレビュー モジュールまたは Azure CLI を使用して、ホット ファイル共有またはクール ファイル共有を作成できます。 
+
+# <a name="portal"></a>[ポータル](#tab/azure-portal)
+Azure portal では、ホット ファイル共有とクール ファイル共有の作成、または既存のトランザクション最適化ファイル共有のホットやクールへの移動は、まだサポートされていません。 PowerShell または Azure CLI でファイル共有を作成するための手順を確認してください。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+```PowerShell
+# Update the Azure storage module to use the preview version. You may need to close and 
+# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
+# the following:
+# - Run the below cmdlets as an administrator.
+# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
+# Get-Module -ListAvailable -Name PowerShellGet
+Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
+Uninstall-Module -Name Az.Storage
+Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
+
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2 
+# storage accounts. Standard tiers are only available in standard storage accounts. 
+$shareName = "myhotshare"
+
+New-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Hot
+
+# You can also change an existing share's tier.
+Update-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Cool
+```
+
+> [!Note]  
+> PowerShell を使用して層を設定し変更する機能が、プレビュー Az.Storage PowerShell モジュールに用意されています。 これらのコマンドレットまたは出力は、一般公開されている Az.Storage PowerShell モジュールでリリースされる前に変更される可能性があるため、この点に留意してスクリプトを作成してください。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+ファイル共有を作成したり特定の層に移動したりする機能は、最新の Azure CLI 更新プログラムで利用できます。 Azure CLI の更新は、使用しているオペレーティング システムや Linux ディストリビューションに固有です。 システム上で Azure CLI を更新する方法については、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+
+```bash
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2
+# storage accounts. Standard tiers are only available in standard storage accounts.
+shareName="myhotshare"
+
+az storage share-rm create \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
+    --name $shareName \
+    --access-tier "Hot"
+```
+
+> [!Note]  
+> `--access-tier` パラメーターで層を設定する機能は、最新の Azure CLI パッケージのプレビューで提供されています。 このコマンドまたはその出力は、一般公開されているものとしてマークされる前に変更される可能性があるため、この点に留意してスクリプトを作成してください。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Files のデプロイの計画](storage-files-planning.md)または、[Azure File Sync のデプロイの計画](storage-sync-files-planning.md)。 

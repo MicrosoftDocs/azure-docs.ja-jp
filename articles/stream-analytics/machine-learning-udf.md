@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 50d6bebd1e38149096b865ad3654a9604d685f5d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e2277e2088a8cb386d6f19799b235d96e08959b0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86141942"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543437"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics と Azure Machine Learning の統合 (プレビュー)
 
@@ -24,7 +25,7 @@ ms.locfileid: "86141942"
 
 1. Azure Machine Learning を使用して、[モデルを Web サービスとしてデプロイ](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)します。
 
-2. スコアリング スクリプトには、スキーマ仕様を生成するために Azure Machine Learning によって使用される[サンプルの入力と出力](../machine-learning/how-to-deploy-and-where.md#example-entry-script)が必要です。 Stream Analytics は、スキーマを使用して Web サービスの関数シグネチャを理解します。 この[サンプルの Swagger 定義](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)を、それが正しく設定されていることを確認するための参照として使用できます。
+2. スコアリング スクリプトには、スキーマ仕様を生成するために Azure Machine Learning によって使用される[サンプルの入力と出力](../machine-learning/how-to-deploy-and-where.md)が必要です。 Stream Analytics は、スキーマを使用して Web サービスの関数シグネチャを理解します。 この[サンプルの Swagger 定義](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json)を、それが正しく設定されていることを確認するための参照として使用できます。
 
 3. Web サービスが JSON シリアル化データを受け入れて返すことを確認します。
 
@@ -146,7 +147,7 @@ FROM input
 
 ## <a name="optimize-the-performance-for-azure-machine-learning-udfs"></a>Azure Machine Learning UDF のパフォーマンスの最適化
 
-モデルを Azure Kubernetes Service にデプロイするときに、[モデルをプロファイルしてリソース使用率を調べる](../machine-learning/how-to-deploy-and-where.md#profilemodel)ことができます。 要求率、応答時間、および失敗率を理解するために、[デプロイに対して App Insights を有効にする](../machine-learning/how-to-enable-app-insights.md)こともできます。
+モデルを Azure Kubernetes Service にデプロイするときに、[モデルをプロファイルしてリソース使用率を調べる](../machine-learning/how-to-deploy-profile-model.md)ことができます。 要求率、応答時間、および失敗率を理解するために、[デプロイに対して App Insights を有効にする](../machine-learning/how-to-enable-app-insights.md)こともできます。
 
 イベントのスループットが高いシナリオがある場合、短いエンドツーエンド待機時間で最適なパフォーマンスを達成するために、Stream Analytics で次のパラメーターを変更することが必要な場合があります。
 

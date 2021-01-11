@@ -1,27 +1,22 @@
 ---
 title: Windows Virtual Desktop PowerShell - Azure
 description: Windows Virtual Desktop 環境の設定時に PowerShell の問題を解決する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456965"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002272"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop PowerShell
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトと Spring 2020 更新プログラムの組み合わせに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (クラシック) を使用している場合は、[こちらの記事](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)を参照してください。
 
 Windows Virtual Desktop で PowerShell を使用するときに発生するエラーと問題を解決する際、この記事を参考にしてください。 リモート デスクトップ サービスの PowerShell については、「[Windows Virtual Desktop PowerShell](/powershell/module/windowsvirtualdesktop/)」を参照してください。
 
@@ -36,10 +31,10 @@ Windows Virtual Desktop サービスに関して製品チームや活発なコ�
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>エラー:New-AzRoleAssignment:"The provided information does not map to an AD object ID" (指定された情報は、AD オブジェクト ID にマップされていません)
 
 ```powershell
-New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**原因:** *-SignInName* パラメーターによって指定されるユーザーが、Windows Virtual Desktop 環境に関連付けられている Azure Active Directory で見つかりません。 
+**原因:** *-SignInName* パラメーターによって指定されるユーザーが、Windows Virtual Desktop 環境に関連付けられている Azure Active Directory で見つかりません。
 
 **解決策:** 次の点を確認してください。
 
@@ -49,7 +44,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 
 ### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>エラー:New-AzRoleAssignment:"The client with object id does not have authorization to perform action over scope (code:AuthorizationFailed)" (オブジェクト ID のあるクライアントでスコープに対するアクションの実行が承認されていない (コード:AuthorizationFailed))
 
-**原因 1:** 使用中のアカウントにサブスクリプションの所有者アクセス許可が与えられていません。 
+**原因 1:** 使用中のアカウントにサブスクリプションの所有者アクセス許可が与えられていません。
 
 **解決策 1:** 所有者アクセス許可が与えられているユーザーは、ロールの割り当てを実行する必要があります。 あるいは、ユーザーをアプリケーション グループに割り当てられるよう、ユーザー アクセス管理者ロールにユーザーを割り当てる必要があります。
 
@@ -60,7 +55,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 ### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>エラー:New-AzWvdHostPool -- the location is not available for resource type (場所がリソースの種類に利用できません)
 
 ```powershell
-New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
 原因: Windows Virtual Desktop では、ホスト プール、アプリケーション グループ、ワークスペースの場所を選択し、特定の場所にサービス メタデータを格納できます。 選択肢はこの機能が利用できる場所に限定されます。 このエラーは、選択した場所で機能が利用できないことを意味します。

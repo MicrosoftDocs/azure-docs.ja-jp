@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge の概要 - Azure
 description: このクイックスタートでは、Live Video Analytics on IoT Edge の使用を開始する方法について説明します。 ライブ ビデオ ストリーム内のモーションを検出する方法について説明します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: ccdbbffb3da240aab7897dd93a6c4ae85c550eba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16c3c849e7d936c6e94539176d8f171f52bd15de
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090078"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067696"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>クイック スタート:はじめに - Live Video Analytics on IoT Edge
 
@@ -84,7 +84,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
 
 ![lva-sample-device ノード](./media/quickstarts/lva-sample-device-node.png)
 
-## <a name="use-direct-methods"></a>ダイレクト メソッドの使用
+## <a name="use-direct-method-calls"></a>ダイレクト メソッドの呼び出しを使用する
 
 ライブ ビデオ ストリームの分析は、モジュールを使用し、ダイレクト メソッドを呼び出すことによって行うことができます。 詳細については、[Live Video Analytics on IoT Edge のダイレクト メソッド](direct-methods.md)に関する記事を参照してください。 
 

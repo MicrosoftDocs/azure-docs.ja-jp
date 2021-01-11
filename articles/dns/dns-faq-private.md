@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 4de585a965cfefa6399b0c0929a8f732d0712617
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939420"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925007"
 ---
 # <a name="azure-private-dns-faq"></a>Azure プライベート DNS に関する FAQ
 
@@ -38,7 +38,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>別のサブスクリプションに属している仮想ネットワークをプライベート ゾーンにリンクできますか。
 
-はい。 ユーザーが仮想ネットワークとプライベート DNS ゾーンでの書き込み操作のアクセス許可を持っている必要があります。 書き込みアクセス許可は、複数の RBAC ロールに付与することができます。 たとえば、従来のネットワークの共同作成者の RBAC ロールには仮想ネットワークへの書き込みアクセス許可があり、プライベート DNS ゾーンの共同作成者ロールにはプライベート DNS ゾーンに対する書き込みアクセス許可があります。 RBAC ロールについて詳しくは、[ロールベースのアクセス制御](../role-based-access-control/overview.md)に関するページをご覧ください。
+はい。 ユーザーが仮想ネットワークとプライベート DNS ゾーンでの書き込み操作のアクセス許可を持っている必要があります。 書き込みアクセス許可は、複数の Azure ロールに付与できます。 たとえば、従来のネットワークの共同作成者の Azure ロールには仮想ネットワークへの書き込みアクセス許可があり、プライベート DNS ゾーンの共同作成者ロールにはプライベート DNS ゾーンに対する書き込みアクセス許可があります。 Azure ロールの詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) に関するページを参照してください。
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>プライベート ゾーンに自動的に登録された仮想マシンの DNS レコードは、仮想マシンを削除すると自動的に削除されますか。
 

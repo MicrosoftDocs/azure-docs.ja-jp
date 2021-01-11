@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a49abdea9d5b80687c53fbaa3d41480825ed504
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 1607bf1cd6f25f56c6819a2ea3194244e10df8dd
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849941"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277539"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -106,14 +106,14 @@ Azure AD ポータルに新しいドメインを正常に追加した後、`Conv
 2. 左側で、 **[信頼関係]** 、 **[証明書利用者信頼]** の順に展開します。
 3. 右側で、 **[Microsoft Office 365 ID プラットフォーム]** エントリを削除します。
    ![Remove Microsoft Online](./media/how-to-connect-install-multiple-domains/trust4.png)
-4. [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
+4. [Windows PowerShell 用 Azure Active Directory モジュール](/previous-versions/azure/jj151815(v=azure.100))をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
 5. フェデレーションの対象である Azure AD ドメインのグローバル管理者のユーザー名とパスワードを入力します。
 6. PowerShell で、`Connect-MsolService -Credential $cred`
 7. PowerShell で、`Update-MSOLFederatedDomain -DomainName <Federated Domain Name> -SupportMultipleDomain` を実行します。  この更新は元のドメインに対するコマンドです。  上記のドメインを使用するので、次のようになります: `Update-MsolFederatedDomain -DomainName bmcontoso.com -SupportMultipleDomain`
 
 次の手順で、PowerShell を使用して新しいトップレベル ドメインを追加します。
 
-1. [Windows PowerShell 用 Azure Active Directory モジュール](https://msdn.microsoft.com/library/azure/jj151815.aspx)をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
+1. [Windows PowerShell 用 Azure Active Directory モジュール](/previous-versions/azure/jj151815(v=azure.100))をインストールしているマシンで、次のコードを実行します: `$cred=Get-Credential`。  
 2. フェデレーションの対象である Azure AD ドメインのグローバル管理者のユーザー名とパスワードを入力します。
 3. PowerShell で、`Connect-MsolService -Credential $cred`
 4. PowerShell で、`New-MsolFederatedDomain –SupportMultipleDomain –DomainName`

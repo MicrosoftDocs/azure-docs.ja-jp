@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1ed1305939f4f8a9de62de85a2f09c323a2636b1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555139"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489590"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>自己管理型の Active Directory Domain Services、Azure Active Directory、およびマネージド Azure Active Directory Domain Services の比較
 
@@ -47,7 +47,7 @@ Kerberos や NTLM などの従来の認証メカニズムにアクセスする�
 
 Azure AD DS では、管理者に代わって Microsoft がコア サービス コンポーネントを "*マネージド*" ドメイン エクスペリエンスとしてデプロイし、管理します。 管理者は、VM、Windows Server OS、ドメイン コントローラー (DC) などのコンポーネント用 AD DS インフラストラクチャのデプロイ、管理、修正プログラムの適用、セキュリティ保護は行いません。
 
-Azure AD DS では、機能のより小さいサブセットが従来の自己管理型 AD DS 環境に提供され、設計と管理の複雑さの一部が軽減されます。 たとえば、設計および保守すべき AD フォレスト、ドメイン、サイト、レプリケート リンクはありません。 [それでも Azure AD DS とオンプレミス環境の間にフォレストの信頼を作成することができます (現在プレビュー段階)][create-forest-trust]。
+Azure AD DS では、機能のより小さいサブセットが従来の自己管理型 AD DS 環境に提供され、設計と管理の複雑さの一部が軽減されます。 たとえば、設計および保守すべき AD フォレスト、ドメイン、サイト、レプリケート リンクはありません。 それでも [Azure AD DS とオンプレミス環境の間にフォレストの信頼を作成する][create-forest-trust]ことができます。
 
 アプリケーションおよびサービスがクラウドで実行され、Kerberos や NTLM などの従来の認証メカニズムにアクセスする必要がある場合、Azure AD DS では、管理オーバーヘッドを最小限に抑えたマネージド ドメイン エクスペリエンスが提供されます。 詳細については、[Azure AD DS でのユーザー アカウント、パスワード、および管理の概念][administration-concepts]に関するページを参照してください。
 

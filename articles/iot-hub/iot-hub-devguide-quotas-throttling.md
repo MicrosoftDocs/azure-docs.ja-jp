@@ -7,12 +7,16 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom:
+- 'Role: Cloud Development'
+- 'Role: Operations'
+- 'Role: Technical Support'
+ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688978"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797804"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -26,9 +30,9 @@ ms.locfileid: "84688978"
 
 また、レベルでは、IoT Hub がすべての操作に適用するスロットル制限も決まります。
 
-### <a name="iot-plug-and-play"></a>IoT プラグ アンド プレイ
+## <a name="iot-plug-and-play"></a>IoT プラグ アンド プレイ
 
-パブリック プレビュー中、IoT プラグ アンド プレイ デバイスでは、インターフェイスごとに個別のメッセージが送信されます。これにより、ご利用のメッセージ クォータに対してカウントされるメッセージ数が増加する可能性があります。
+IoT プラグ アンド プレイ デバイスでは、インターフェイスごとに少なくとも 1 つのテレメトリ メッセージが送信されます。これにより、メッセージ クォータに対してカウントされるメッセージ数が増加する可能性があります。
 
 ## <a name="operation-throttles"></a>操作のスロットル
 
@@ -107,7 +111,8 @@ IoT Hub により、その他の運用上の制限が適用されます。
 | デバイスおよびモジュールの自動構成<sup>1</sup> | 有料の SKU ハブあたり 100 構成。 無料の SKU ハブあたり 20 構成。 |
 | IoT Edge の自動デプロイ<sup>1</sup> | デプロイあたり 50 モジュール。 有料の SKU ハブあたり 100 デプロイ (多層デプロイを含む)。 無料の SKU ハブあたり 10 デプロイ。 |
 | ツイン<sup>1</sup> | 必要なプロパティ セクションと報告されたプロパティ セクションの最大サイズはそれぞれ 32 KB です。 タグ セクションの最大サイズは 8 KB です。 |
-| 共有アクセス ポリシー | 共有アクセス ポリシーの最大数は 16 です |
+| 共有アクセス ポリシー | 共有アクセス ポリシーの最大数は 16 です。 |
+| x509 CA 証明書 | IoT Hub に登録可能な x509 CA 証明書の最大数は 25 です。 |
 
 <sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。
 

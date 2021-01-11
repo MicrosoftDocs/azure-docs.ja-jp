@@ -1,5 +1,5 @@
 ---
-title: 画像モデルのスコア付け
+title: ワイドかつディープなレコメンダーのトレーニング モジュールを使用する
 titleSuffix: Azure Machine Learning
 description: ワイドかつディープなレコメンダーのトレーニング モジュールを使用して、推奨モデルをトレーニングする方法について説明します。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 2ac5e5874ebb34b68cbfe8be1986852c67b97c21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84739793"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420891"
 ---
 # <a name="train-wide--deep-recommender"></a>ワイドかつディープなレコメンダーのトレーニング
 この記事では、Azure Machine Learning デザイナー (プレビュー) で**ワイドかつディープなレコメンダーのトレーニング** モジュールを使用して、推奨モデルをトレーニングする方法について説明します。 このモジュールは、Google によって提案されているワイド & ディープ ラーニング (Wide & Deep Learning) に基づいています。
@@ -105,7 +105,7 @@ ms.locfileid: "84739793"
 
     このハイパーパラメーターは、各トレーニング ステップでのステップ サイズを決定しながら、損失関数の最適解に近づきます。 学習速度が大きすぎると、学習で極小値を飛び越える可能性がありますが、学習速度が小さすぎると収束の問題が発生する可能性があります。
 
-7.  **[Crossed feature dimension]\(クロス積変換された特徴のディメンション\)** : クロス積変換されたユーザー ID および項目 ID の特徴のディメンションを入力します。 
+7.  **[Crossed feature dimension]\(クロス積変換された特徴のディメンション\)** : 目的のユーザー ID および項目 ID の特徴を入力することによって、ディメンションを入力します。 
 
     ワイドかつディープなレコメンダーは、既定でユーザー ID および項目 ID の特徴に対してクロス積変換を実行します。 クロス積変換された結果は、ディメンションを確認するために、この数に従ってハッシュされます。
 

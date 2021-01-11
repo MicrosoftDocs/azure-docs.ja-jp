@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: 08f9f83ab3ba1acdeeebe29c7659cc38cf13ad42
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 07d222139f48e91637405660ae0e0c65ef3acdb6
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288609"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605019"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure コンピューティング ユニット (ACU)
 
@@ -69,6 +69,7 @@ Azure コンピューティング ユニット (ACU) の概念は、Azure SKU �
 | [L4s - L32s](sizes-previous-gen.md) |180 ～ 240* | 1:1 |
 | [L8s_v2 - L80s_v2](lsv2-series.md) |150 - 175** | 2:1 |
 | [M](m-series.md) | 160 から 180 | 2:1\*\*\* |
+| [NVv4](nvv4-series.md) |230 - 260** | 2:1 |
 
 さまざまなサイズの詳細に関するリンクは次のとおりです。
 

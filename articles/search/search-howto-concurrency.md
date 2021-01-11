@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f22e69cbc625d21c398151e413574387a2587790
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 85f14329359eaf051b992f657ac0e4e634d504cf
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145281"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020832"
 ---
 # <a name="how-to-manage-concurrency-in-azure-cognitive-search"></a>Azure Cognitive Search でコンカレンシーを管理する方法
 
@@ -28,8 +29,8 @@ ms.locfileid: "86145281"
 
 すべてのリソースには、オブジェクトのバージョン情報を提供する[*エンティティ タグ (ETag)* ](https://en.wikipedia.org/wiki/HTTP_ETag) があります。 最初に ETag をチェックして、リソースの ETag がローカル コピーと一致することを確認することにより、典型的なワークフロー (取得、ローカル変更、更新) における同時更新を回避できます。
 
-+ REST API では、要求ヘッダーで [ETag](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) を使用します。
-+ .NET SDK では、accessCondition オブジェクトを通じて ETag を設定し、リソースの [If-Match | If-Match-None ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)を設定します。 [IResourceWithETag (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.iresourcewithetag) を継承するすべてのオブジェクトは、accessCondition オブジェクトを持ちます。
++ REST API では、要求ヘッダーで [ETag](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search) を使用します。
++ .NET SDK では、accessCondition オブジェクトを通じて ETag を設定し、リソースの [If-Match | If-Match-None ヘッダー](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)を設定します。 [IResourceWithETag (.NET SDK)](/dotnet/api/microsoft.azure.search.models.iresourcewithetag) を継承するすべてのオブジェクトは、accessCondition オブジェクトを持ちます。
 
 リソースを更新するたびに、その ETag が自動的に変化します。 コンカレンシー管理を実装するときに行うのは、リモート リソースの ETag が、クライアントで変更したリソースのコピーの ETag と同じであることを要求する前提条件を更新要求に課すことだけです。 同時実行プロセスがリモート リソースを既に変更している場合、ETag は前提条件に一致せず、要求は HTTP 412 で失敗します。 .NET SDK を使用している場合、これは (`IsAccessConditionFailed()` 拡張メソッドが true を返す) `CloudException` として明示されます。
 
@@ -217,6 +218,6 @@ ms.locfileid: "86145281"
 
 ## <a name="see-also"></a>参照
 
-[一般的な HTTP 要求ヘッダーと応答ヘッダー](https://docs.microsoft.com/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
-[HTTP 状態コード](https://docs.microsoft.com/rest/api/searchservice/http-status-codes)
-[インデックス操作 (REST API)](https://docs.microsoft.com/rest/api/searchservice/index-operations)
+[一般的な HTTP 要求ヘッダーと応答ヘッダー](/rest/api/searchservice/common-http-request-and-response-headers-used-in-azure-search)
+[HTTP 状態コード](/rest/api/searchservice/http-status-codes)
+[インデックス操作 (REST API)](/rest/api/searchservice/index-operations)

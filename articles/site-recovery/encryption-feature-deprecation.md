@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: rajanaki
-ms.openlocfilehash: b9d333467864f67bc357314830ff885af4232ba0
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 79c129fee6d0339eed752abe94059fa566859bc0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133183"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086185"
 ---
 # <a name="deprecation-of-site-recovery-data-encryption-feature"></a>Site Recovery のデータ暗号化機能の廃止
 
@@ -22,14 +22,14 @@ ms.locfileid: "86133183"
 ## <a name="deprecation-information"></a>廃止情報
 
 
-Site Recovery データ暗号化機能は、レプリケートされたデータがセキュリティ上の脅威から保護されることを保証するため、Hyper-V VM を保護するお客様のために提供されました。 この機能は、**2019 年 12 月 30 日**に廃止になります。 これは、[Storage Service Encryption](../storage/common/storage-service-encryption.md) (SSE) を使用する、より高度な[保存時の暗号化](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/)機能に置き換えられています。 SSE を使用すると、データは暗号化されてからストレージに保存され、取得時に復号化されます。また、Azure へのフェールオーバー時に、VM は暗号化されたストレージ アカウントから実行されるため、目標復旧時間 (RTO) が向上します。
+Site Recovery データ暗号化機能は、レプリケートされたデータがセキュリティ上の脅威から保護されることを保証するため、Hyper-V VM を保護するお客様のために提供されました。 この機能は、**2022 年 4 月 30 日**に廃止になります。 これは、[Storage Service Encryption](../storage/common/storage-service-encryption.md) (SSE) を使用する、より高度な[保存時の暗号化](https://azure.microsoft.com/blog/azure-site-recovery-encryption-at-rest/)機能に置き換えられています。 SSE を使用すると、データは暗号化されてからストレージに保存され、取得時に復号化されます。また、Azure へのフェールオーバー時に、VM は暗号化されたストレージ アカウントから実行されるため、目標復旧時間 (RTO) が向上します。
 
 この機能を使用している既存のお客様には、廃止の詳細と修復の手順が記載された通知が送られています。 
 
 
 ## <a name="what-are-the-implications"></a>どのような影響がありますか?
 
-**2019 年 12 月 30 日**を過ぎると、廃止された暗号化機能を引き続き使用しているすべての VM で、フェールオーバーが実行できなくなります。 
+**2022 年 4 月 30 日**を過ぎると、廃止された暗号化機能を引き続き使用しているすべての VM で、フェールオーバーを実行できなくなります。 
 
 ## <a name="required-action"></a>必要なアクション
 正常なフェールオーバー操作とレプリケーションを続行するには、次の手順に従います。
@@ -44,4 +44,3 @@ SSE が有効になっているストレージ アカウントへの初期レプ
 
 ## <a name="next-steps"></a>次のステップ
 修復手順の実行を計画し、最も早い段階で実行します。 この廃止に関してご質問がおありの場合は、Microsoft サポートにお問い合わせください。 Hyper-V から Azure へのシナリオの詳細については、[こちら](hyper-v-vmm-architecture.md)を参照してください。
-

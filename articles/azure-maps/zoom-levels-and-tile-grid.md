@@ -1,19 +1,19 @@
 ---
-title: ズーム レベルとタイル グリッド | Microsoft Azure Maps
-description: この記事では、 Microsoft Azure Maps のズームレベルとタイルグリッドについて説明します。
-author: Philmea
-ms.author: philmea
-ms.date: 01/22/2020
+title: Microsoft Azure Maps のズーム レベルとタイル グリッド
+description: Azure Maps でズーム レベルを設定する方法を学習します。 geographic 型の座標をピクセル座標、タイル座標、quadkey に変換する方法を確認します。 コード サンプルを表示します。
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 07/14/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: ''
-ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: philmea
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83123906"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035877"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
 
@@ -24,15 +24,11 @@ Azure Maps では、球面メルカトル図法の座標系 (EPSG: 3857) が使�
 
 地図の取得と表示のパフォーマンスを最適化するため、地図は正方形のタイルに分割されています。 Azure Maps SDK では、道路地図にはサイズが 512 x 512 ピクセルのタイルが使われ、衛星画像にはそれより小さい 256 x 256 ピクセルが使われます。 Azure Maps では、23 のズーム レベル (0 から 22 までの番号が付けられている) に対してラスターおよびベクターのタイルが提供されます。 ズーム レベルが 0 の場合は、世界地図が 1 つのタイルに表示されます。
 
-<center>
-
-![ワールドマップタイル](./media/zoom-levels-and-tile-grid/world0.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/world0.png" alt-text="ワールドマップタイル":::
 
 ズーム レベル 1 では、4 つのタイル (2 × 2 個の正方形) を使用して世界地図がレンダリングされます
 
-<center>
-
-![2 x 2 の地図タイル レイアウト](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+:::image type="content" source="./media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png" alt-text="2 x 2 の地図タイル レイアウト":::
 
 ズーム レベルを 1 つ追加するごとに、タイルが 4 分割され、2<sup>ズーム</sup> x 2<sup>ズーム</sup> 個のグリッドが作成されます。 ズーム レベル 22 の場合、グリッドは 2<sup>22</sup> x 2<sup>22</sup> となり、4,194,304 x 4,194,304 個のタイル (合計 17,592,186,044,416 個のタイル) になります。
 
@@ -80,11 +76,7 @@ var mapHeight = mapWidth;
 
 地図の幅と高さはズーム レベルによって異なるため、ピクセル座標もそうです。 地図の左上隅にあるピクセルは、常にピクセル座標が (0, 0) です。 地図の右下隅にあるピクセルのピクセル座標は *(width-1, height-1)* 、または前のセクションの式を参照すると *(tileSize \* 2<sup>zoom</sup>–1, tileSize \* 2<sup>zoom</sup>–1)* になります。 たとえば、レベル 2 で 512 の正方形のタイルを使用する場合、ピクセル座標は次のように (0, 0) から (2047, 2047) の範囲になります。
 
-<center>
-
-![ピクセル寸法を示す地図](media/zoom-levels-and-tile-grid/map-width-height.png)
-
-</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="ピクセル寸法を示す地図":::
 
 緯度と経度の値、および詳細レベルを指定すると、ピクセル XY 座標は次のように計算されます。
 
@@ -110,9 +102,7 @@ var numberOfTilesHigh = numberOfTilesWide;
 
 各タイルには、左上の (0, 0) から右下の *(2<sup>zoom</sup>–1, 2<sup>zoom</sup>–1)* の範囲の XY 座標が与えられます。 たとえば、ズーム レベル 2 の場合、タイルの座標は次のように (0, 0) から (7, 7) までの範囲になります。
 
-<center>
-
-![タイル座標の地図](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="タイル座標の地図":::
 
 ピクセル XY 座標のペアを指定すると、そのピクセルを含むタイルの XY 座標を簡単に特定できます。
 
@@ -126,17 +116,13 @@ var tileY = Math.floor(pixelY / tileSize);
 
 使用するズーム レベルを決定する際は、それぞれの場所が、そのタイル上の固定された位置に配置されるということに注意してください。 つまり、特定の区域を表示するために必要なタイル数は、ズーム グリッドが世界地図上のどこに配置されるかによって左右されます。 たとえば、互いに 900 メートル離れた 2 つの地点がある場合、ズーム レベル 17 では、それらの地点間のルートを 3 つのタイルで表示できる*場合もあります*が、 西側の地点がタイルの右寄りにあり、東側の地点がタイルの左寄りにある場合は、タイルが 4 個必要になる可能性もあります。
 
-<center>
-
-![ズームのデモ スケール](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png" alt-text="ズームのデモ スケール":::
 
 ズーム レベルが決定したら、x と y の値を計算できます。 各ズーム グリッドの左上隅のタイルは x=0, y=0 となり、右下隅のタイルは x=2<sup>zoom-1</sup>, y=2<sup>zoom-1</sup> となります。
 
 次に示すのは、ズーム レベル 1 のズーム グリッドです。
 
-<center>
-
-![ズーム レベル 1 のズーム グリッド](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/api_x_y.png" alt-text="ズーム レベル 1 のズーム グリッド":::
 
 ## <a name="quadkey-indices"></a>quadkey インデックス
 
@@ -157,9 +143,7 @@ quadkey = 100111 (base 2) = 213 (base 4) = "213"
 
 `Qquadkeys` には、興味深い特徴がいくつかあります。 1 つ目として、`quadkey` の長さ (桁数) は、対応するタイルのズーム レベルと同じになります。 2 つ目として、任意のタイルの `quadkey` は、その親タイルの `quadkey` (前のレベルで、それを含むタイル) で開始されます。 次の例で示すように、タイル 2 はタイル 20 から 23 の親です。
 
-<center>
-
-![quadkey タイルのピラミッド](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+:::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="quadkey タイルのピラミッド":::
 
 最後に、`quadkeys` では、通常は XY 空間内のタイルの近接性が保持される 1 次元のインデックス キーが提供されます。 言い換えると、XY 座標が近い 2 つのタイルは、通常、`quadkeys` も比較的近くなります。 これは、隣接するタイルがグループで要求されることが多く、ディスクの読み取り回数を最小限に抑えるには、これらのタイルを同じディスク ブロックに保持することが望ましいため、データベースのパフォーマンスを最適化するために重要なことです。
 

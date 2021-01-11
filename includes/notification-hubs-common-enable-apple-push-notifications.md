@@ -107,7 +107,7 @@ ms.locfileid: "85095507"
     > [!NOTE]
     > 証明書の名前は場合によって異なりますが、名前の前には **Apple Development iOS Push Services** が付き、適切なバンドル ID が関連付けられます。
 
-1. キーチェーン アクセスの **[Certificates] (証明書)** カテゴリで、作成した新しいプッシュ証明書に **[Control]**  + **クリック**を実行します。 **[書き出す]** を選択し、ファイルに名前を付けて、**p12** 形式を選択します。次に、 **[保存]** を選択します。
+1. キーチェーン アクセスの **[Certificates] (証明書)** カテゴリで、作成した新しいプッシュ証明書を **Control** + **クリック**します。 **[書き出す]** を選択し、ファイルに名前を付けて、**p12** 形式を選択します。次に、 **[保存]** を選択します。
 
     ![p12 形式として証明書をエクスポートする](./media/notification-hubs-common-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 

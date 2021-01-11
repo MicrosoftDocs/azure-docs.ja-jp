@@ -1,21 +1,21 @@
 ---
-title: Azure Web アプリケーション ファイアウォールの概要
+title: Azure Application Gateway 上の Azure Web アプリケーション ファイアウォールとは
 titleSuffix: Azure Web Application Firewall
 description: この記事では、Application Gateway 上の Web アプリケーション ファイアウォール (WAF) の概要を説明します
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 08/31/2020
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: d7eaff980b50cc463efc09e49febd4a947a7543c
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.topic: conceptual
+ms.openlocfilehash: e3b7e3ae10afd45105358743ef1fc0f4c6d14e78
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142851"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89227000"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール
+# <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォールとは
 
 Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護します。 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の標的になるケースが増えています。 よくある攻撃の例として、SQL インジェクションやクロスサイト スクリプティングが挙げられます。
 
@@ -158,7 +158,7 @@ Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ�
 組み込みの Azure WAF ファイアウォール イベント ブックを使用すると、WAF 上のセキュリティ イベントの概要を把握できます。 これにはイベントや一致したルール、ブロックされたルールなど、ファイアウォールのログに記録されるあらゆる情報が含まれます。 以下のログを参照してください。 
 
 
-![Sentinel](../media/ag-overview/sentinel.png)
+![Azure WAF ファイアウォール イベント ブック](../media/ag-overview/sentinel.png)
 
 #### <a name="logging"></a>ログ記録
 
@@ -206,10 +206,12 @@ Application Gateway の WAF は、検出した各脅威について詳細なレ�
 
 価格モデルは、WAF_v1 SKU と WAF_v2 SKU で異なります。 詳細については、[Application Gateway の価格](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 
 
+## <a name="whats-new"></a>新機能
+
+Azure Web アプリケーション ファイアウォールの新機能については、「[Azure の更新情報](https://azure.microsoft.com/updates/?category=networking&query=Web%20Application%20Firewall)」を参照してください。
+
 ## <a name="next-steps"></a>次のステップ
 
-- [WAF ポリシーを作成](create-waf-policy-ag.md)してみましょう
 - [WAF のマネージド ルール](application-gateway-crs-rulegroups-rules.md)について理解を深めます
 - [カスタム ルール](custom-waf-rules-overview.md)について理解を深めます
 - 「[Azure Front Door 上の Web アプリケーション ファイアウォール](../afds/afds-overview.md)」を参照してください
-

@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db710385448ed3cdd54e3cbe692ea8b610741af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b48bebe6aa5f9862d5f51fea257c4b7f3057639b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732244"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794472"
 ---
 # <a name="azure-ad-administrative-units-troubleshooting-and-faq"></a>Azure AD の管理単位:トラブルシューティングと FAQ
 
-Azure Active Directory (Azure AD) では、きめ細かい管理制御を行うために、1 つ以上の管理単位 (AU) に制限されたスコープでユーザーを Azure AD ロールに割り当てることができます。 一般的なタスク用の PowerShell スクリプトのサンプルについては、「[管理単位の操作](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)」を参照してください。
+Azure Active Directory (Azure AD) では、きめ細かい管理制御を行うために、1 つ以上の管理単位 (AU) に制限されたスコープでユーザーを Azure AD ロールに割り当てることができます。 一般的なタスク用の PowerShell スクリプトのサンプルについては、「[管理単位の操作](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -67,9 +67,9 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
 **Q:PowerShell と Graph API では管理単位はサポートされていますか?**
 
-**A:** はい。 管理単位のサポートについては、[PowerShell コマンドレットのドキュメント](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0-preview)と[サンプル スクリプト](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)を参照してください。 
+**A:** はい。 管理単位のサポートについては、[PowerShell コマンドレットのドキュメント](/powershell/module/Azuread/?view=azureadps-2.0-preview)と[サンプル スクリプト](/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0-preview)を参照してください。 
 
-Microsoft Graph で [administrativeUnit リソースの種類](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/administrativeunit)のサポートを検索してください。
+Microsoft Graph で [administrativeUnit リソースの種類](/graph/api/resources/administrativeunit?view=graph-rest-beta)のサポートを検索してください。
 
 ## <a name="next-steps"></a>次のステップ
 

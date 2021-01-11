@@ -5,12 +5,13 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: bd2a6e16d34bf6c5b59ce7fa5c99975d44947770
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d957da572bfdd3119dda506ac8f5bb42064d7758
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021672"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020305"
 ---
 # <a name="components"></a>コンポーネント
 

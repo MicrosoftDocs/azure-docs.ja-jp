@@ -82,11 +82,9 @@
     - name: Service Fabric Mesh CLI リファレンス
       href: /cli/azure/ext/mesh
     - name: Service Fabric クライアント リソースの REST API
-      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
+      href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
     - name: Service Fabric Maven CLI リファレンス
       href: service-fabric-mesh-reference-maven.md
-    - name: Resource Manager テンプレート
-      href: /azure/templates/microsoft.servicefabricmesh/allversions
 - name: リソース
   items:
     - name: 一般的な質問
@@ -95,7 +93,7 @@
       href: 'https://github.com/Azure-Samples/service-fabric-mesh'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

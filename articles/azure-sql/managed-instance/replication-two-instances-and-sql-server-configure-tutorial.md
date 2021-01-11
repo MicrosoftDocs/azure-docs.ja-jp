@@ -10,15 +10,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708520"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920145"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>チュートリアル:Azure SQL Managed Instance と SQL Server の間にトランザクション レプリケーションを構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
+
+トランザクション レプリケーションを使用すると、1 つのデータベースから SQL Server または [Azure SQL Managed Instance](sql-managed-instance-paas-overview.md) でホストされている別のデータベースにデータをレプリケートできます。 SQL Managed Instance には、レプリケーション トポロジのパブリッシャー、ディストリビューター、またはサブスクライバーを指定できます。 使用可能な構成については、[トランザクション レプリケーションの構成](replication-transactional-overview.md#common-configurations)に関する記事をご覧ください。 
+
+トランザクション レプリケーションは、現在、SQL Managed Instance でのパブリック プレビュー段階にあります。 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -30,11 +34,11 @@ ms.locfileid: "84708520"
 
 ![マネージド インスタンス パブリッシャー、マネージド インスタンス ディストリビューター、および SQL Server サブスクライバー間でのレプリケーション](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-このチュートリアルは経験豊富なユーザーを対象としたもので、ユーザーは Azure でのマネージド インスタンスと SQL Server VM の両方のデプロイと接続について理解していることを前提としています。 そのため、このチュートリアルの一部のステップについては簡単な説明になっています。
+このチュートリアルは経験豊富なユーザーを対象としたもので、ユーザーは Azure でのマネージド インスタンスと SQL Server VM の両方のデプロイと接続について理解していることを前提としています。 
 
-詳細については、[Azure SQL Managed Instance の概要](sql-managed-instance-paas-overview.md)および [SQL トランザクション レプリケーション](replication-transactional-overview.md)に関する記事を参照してください。
 
-マネージド インスタンス パブリッシャーとマネージド インスタンス サブスクライバーの間にレプリケーションを構成する方法については、[2 つのマネージド インスタンス間でのトランザクション レプリケーションの構成](replication-between-two-instances-configure-tutorial.md)に関する記事をご覧ください。
+> [!NOTE]
+> この記事では、Azure SQL Managed Instance での[トランザクション レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)の使用方法について説明します。 これは、個々のインスタンスを完全に読み取れるレプリカを作成する Azure SQL Managed Instance の機能である、[フェールオーバー グループ](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)とは無関係です。 [フェールオーバー グループを使用してトランザクション レプリケーション](replication-transactional-overview.md#with-failover-groups)を構成する場合は、追加の考慮事項があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -247,6 +251,10 @@ GO
 1. **[新しいクエリ]** ウィンドウを開き、次の Transact-SQL コードを実行して、ディストリビューター マネージド インスタンス上にディストリビューションを構成します。
 
    ```sql
+   EXEC sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
+   
+   EXEC sp_adddistributiondb @database = N'distribution'
+   
    EXEC sp_adddistpublisher @publisher = 'sql-mi-publisher.b6bf57.database.windows.net', -- primary publisher
         @distribution_db = N'distribution',
         @security_mode = 0,

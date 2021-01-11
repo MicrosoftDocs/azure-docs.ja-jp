@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 06/29/2020
-  ms.openlocfilehash: 56944141b70243cda870b5d198be567cfc4ae40c
-  ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+  ms.openlocfilehash: 20b7548b4b6924e797593fc753ad44be1d03f37d
+  ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/20/2020
-  ms.locfileid: "86536784"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89050960"
 landingContent:
 - title: Azure Resource Graph について
   linkLists:
@@ -108,7 +108,7 @@ landingContent:
     - text: Azure SDK for Go
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
     - text: Azure SDK for Java
-      url: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
+      url: /java/api/overview/azure/resourcegraph/management
     - text: Azure SDK for JavaScript
       url: /javascript/api/@azure/arm-resourcegraph
     - text: Azure SDK for Python

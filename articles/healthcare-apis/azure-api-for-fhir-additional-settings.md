@@ -4,16 +4,16 @@ description: Azure API for FHIR に設定できる追加設定の概要
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/22/2019
-ms.openlocfilehash: 896d5bafd879ff3ba09bd5b8922cde4cd8345689
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5de1d99442f307fc7850114915851f994258b537
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871222"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845903"
 ---
 # <a name="additional-settings-for-azure-api-for-fhir"></a>Azure API for FHIR の追加設定
 
@@ -29,7 +29,7 @@ Azure API for FHIR では、データベースを使用してデータを格納�
 
 ## <a name="access-control"></a>アクセス制御
 
-Azure API for FHIR では、承認されたユーザーのみが FHIR API にアクセスできます。 承認されたユーザーは、2 つの異なるメカニズムを使用して構成できます。 アクセス制御を構成するための主な方法として推奨される方法は、[Azure Role Based Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) を使用する方法です。これには、 **[アクセス制御 (IAM)]** ブレードからアクセスできます。 Azure RBAC は、サブスクリプションに関連付けられている Azure Active Directory テナントを使用してデータ プレーンのアクセスをセキュリティで保護する場合にのみ機能します。 別のテナントを使用する場合、Azure API for FHIR には、ローカルの FHIR データ プレーンのアクセス制御メカニズムが用意されています。 ローカルの RBAC メカニズムを使用する場合、構成オプションはそれほど豊富ではありません。 詳細については、次のいずれかのオプションを選択します。
+Azure API for FHIR では、承認されたユーザーのみが FHIR API にアクセスできます。 承認されたユーザーは、2 つの異なるメカニズムを使用して構成できます。 アクセス制御を構成するための主な方法として推奨される方法は、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/) を使用する方法です。これには、 **[アクセス制御 (IAM)]** ブレードからアクセスできます。 Azure RBAC は、サブスクリプションに関連付けられている Azure Active Directory テナントを使用してデータ プレーンのアクセスをセキュリティで保護する場合にのみ機能します。 別のテナントを使用する場合、Azure API for FHIR には、ローカルの FHIR データ プレーンのアクセス制御メカニズムが用意されています。 ローカルの RBAC メカニズムを使用する場合、構成オプションはそれほど豊富ではありません。 詳細については、次のいずれかのオプションを選択します。
 
 * [Azure RBAC for FHIR データ プレーン](configure-azure-rbac.md)。 これは、お使いのサブスクリプションに関連付けられている Azure Active Directory テナントを使用する場合に推奨されるオプションです。
 * [ローカルの FHIR データ プレーンのアクセス制御](configure-local-rbac.md)。 このオプションは、データ プレーンのアクセス制御に外部の Azure Active Directory テナントを使用する必要がある場合にのみ使用してください。 

@@ -1,6 +1,7 @@
 ---
-title: JavaScript シングルページ アプリのチュートリアル- Microsoft ID プラットフォーム | Azure
-description: JavaScript SPA アプリケーションで、Azure Active Directory v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法
+title: JavaScript シングルページ アプリのチュートリアル | Azure
+titleSuffix: Microsoft identity platform
+description: このチュートリアルでは、JavaScript シングルページ アプリ (SPA) で、Microsoft ID プラットフォームによって発行されるアクセス トークンを必要とする API を呼び出す方法について説明します。
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -8,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-javascript
-ms.openlocfilehash: 745132284ee48270b46b6bd2f785d8bec19404fb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 71516104ce5711f716b6af9d37ba96b431749fa3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129680"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118197"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
@@ -25,8 +26,8 @@ ms.locfileid: "87129680"
 - アクセス トークンの取得
 - *Microsoft ID プラットフォーム エンドポイント*のアクセス トークンを必要とする Microsoft Graph API などの API の呼び出し
 
->[!NOTE]
-> Microsoft ID プラットフォームを初めて使用する場合は、「[クイックスタート: JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する](quickstart-v2-javascript.md)」から始めることをお勧めします。
+>[!TIP]
+> このチュートリアルでは MSAL.js v1.x を使用します。これは、シングルページ アプリケーションに対して暗黙的な許可フローを使用するように制限されています。 すべての新しいアプリケーションでは代わりに、[PKCE および CORS がサポートされる MSAL.js 2.x と承認コード フロー](tutorial-v2-javascript-auth-code.md)を使用することをお勧めします。
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
@@ -322,8 +323,8 @@ ms.locfileid: "87129680"
 
  各値の説明:
  - *\<Enter_the_Application_Id_Here>* は、登録したアプリケーションの**アプリケーション (クライアント) ID** です。
- - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)」を参照してください。
- - *\<Enter_the_Tenant_info_here>* には、次のオプションのいずれかが設定されます。
+ - *\<Enter_the_Cloud_Instance_Id_Here>* は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、単に「 *https://login.microsoftonline.com* 」と入力します。 **各国**のクラウド (中国など) の場合は、「[各国のクラウド](./authentication-national-cloud.md)」を参照してください。
+ - *\<Enter_the_Tenant_info_here>* には、次のオプションのいずれかを設定します。
    - アプリケーションで "*この組織のディレクトリ内のアカウントのみ*" がサポートされる場合は、この値を**テナント ID** または**テナント名** (例: *contoso.microsoft.com*) に置き換えます。
    - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **organizations** に置き換えます。
    - アプリケーションで "*任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント*" がサポートされる場合は、この値を **common** に置き換えます。 "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を **consumers** に置き換えます。
@@ -446,7 +447,7 @@ ms.locfileid: "87129680"
    ```
 
    各値の説明:
-   - *\<Enter_the_Graph_Endpoint_Here>* は、MS Graph API のインスタンスです。 グローバル MS Graph API エンドポイントの場合は、この文字列を `https://graph.microsoft.com` に置き換えるだけでかまいません。 国内クラウド デプロイの場合は、[Graph API のドキュメント](https://docs.microsoft.com/graph/deployments)を参照してください。
+   - *\<Enter_the_Graph_Endpoint_Here>* は、MS Graph API のインスタンスです。 グローバル MS Graph API エンドポイントの場合は、この文字列を `https://graph.microsoft.com` に置き換えるだけでかまいません。 国内クラウド デプロイの場合は、[Graph API のドキュメント](/graph/deployments)を参照してください。
 
 1. 次に、`graph.js` という名前の .js ファイルを作成します。このファイルには、Microsoft Graph API の REST 呼び出しを記述することになります。次のコードを追加します。
 

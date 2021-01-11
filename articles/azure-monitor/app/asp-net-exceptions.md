@@ -2,25 +2,26 @@
 title: Azure Application Insights を利用して障害と例外を診断する
 description: 要求テレメトリと共に ASP.NET アプリから例外を取り込みます。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.openlocfilehash: 4d298b3b8541590387995898b0b9f067e8130c3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517214"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936505"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
-ライブ Web アプリの例外は、[Application Insights](../../azure-monitor/app/app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
+ライブ Web アプリの例外は、[Application Insights](./app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
 
 ## <a name="set-up-exception-reporting"></a>例外のレポートを設定する
 * 例外がサーバー アプリから報告されるようにするには、次のいずれかを実行します。
-  * Azure Web アプリ:[Application Insights 拡張機能](../../azure-monitor/app/azure-web-apps.md)を追加する
-  * Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ:[アプリケーション監視拡張機能](../../azure-monitor/app/azure-vm-vmss-apps.md)を追加する
-  * [Application Insights SDK](../../azure-monitor/app/asp-net.md) をアプリ コードにインストールする
-  * IIS Web サーバー:[Application Insights エージェント](../../azure-monitor/app/monitor-performance-live-website-now.md)を実行する
+  * Azure Web アプリ:[Application Insights 拡張機能](./azure-web-apps.md)を追加する
+  * Azure VM と Azure 仮想マシン スケール セットの IIS でホストされたアプリ:[アプリケーション監視拡張機能](./azure-vm-vmss-apps.md)を追加する
+  * [Application Insights SDK](./asp-net.md) をアプリ コードにインストールする
+  * IIS Web サーバー:[Application Insights エージェント](./monitor-performance-live-website-now.md)を実行する
   * Java Web アプリ:[Java エージェント](./java-in-process-agent.md)を有効にする
-* ブラウザー例外をキャッチする [JavaScript スニペット](../../azure-monitor/app/javascript.md)を Web ページにインストールします。
+* ブラウザー例外をキャッチする [JavaScript スニペット](./javascript.md)を Web ページにインストールします。
 * 一部のアプリケーション フレームワークまたは一部の設定では、より多くの例外をキャッチするために余分の手順を実行する必要があります。
   * [Web フォーム](#web-forms)
   * [MVC](#mvc)
@@ -70,29 +71,29 @@ Application Insights には、監視対象のアプリケーションの障害�
 
 いくつかのオプションがあります。
 
-* [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) は通常、使用パターンを監視するために使用されますが、送信されるデータは診断検索のカスタム イベントの下にも表示されます。 イベントには名前が付けられるほか、文字列のプロパティや数値のメトリックが付与され、それらを元に[診断検索の結果をフィルター処理](../../azure-monitor/app/diagnostic-search.md)できます。
-* [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) は、POST 情報などの長いデータを送信できます。
+* [TrackEvent()](./api-custom-events-metrics.md#trackevent) は通常、使用パターンを監視するために使用されますが、送信されるデータは診断検索のカスタム イベントの下にも表示されます。 イベントには名前が付けられるほか、文字列のプロパティや数値のメトリックが付与され、それらを元に[診断検索の結果をフィルター処理](./diagnostic-search.md)できます。
+* [TrackTrace()](./api-custom-events-metrics.md#tracktrace) は、POST 情報などの長いデータを送信できます。
 * [TrackException()](#exceptions) は、スタック トレースを送信します。 [例外に関する詳細](#exceptions)をご覧ください。
 * 既に Log4Net、NLog などのログ記録フレームワークを使用している場合は、[これらのログのキャプチャ](asp-net-trace-logs.md)して、診断検索の要求や例外データの横に表示できます。
 
-これらのイベントを表示するには、左側のメニューから [[検索]](../../azure-monitor/app/diagnostic-search.md) を開き、 **[イベントの種類]** ドロップダウン メニューを選択し、[カスタム イベント]、[トレース]、または [例外] を選択します。
+これらのイベントを表示するには、左側のメニューから [[検索]](./diagnostic-search.md) を開き、 **[イベントの種類]** ドロップダウン メニューを選択し、[カスタム イベント]、[トレース]、または [例外] を選択します。
 
 ![ドリル スルー](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
-> アプリが大量のテレメトリを生成する場合は、アダプティブ サンプリング モジュールが、代表的な一部のイベントのみを送信することによって、ポータルに送信される量を自動的に削減します。 同じ操作に含まれるイベントは、グループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。 [サンプリングについてはこちらを参照してください。](../../azure-monitor/app/sampling.md)
+> アプリが大量のテレメトリを生成する場合は、アダプティブ サンプリング モジュールが、代表的な一部のイベントのみを送信することによって、ポータルに送信される量を自動的に削減します。 同じ操作に含まれるイベントは、グループ単位で選択または選択解除されるので、関連するイベントごとに操作できます。 [サンプリングについてはこちらを参照してください。](./sampling.md)
 >
 >
 
 ### <a name="how-to-see-request-post-data"></a>要求の POST データを表示する方法
 要求詳細では、POST 呼び出しでアプリに送信されたデータは含まれません。 このデータを報告するには:
 
-* アプリケーション プロジェクトに [SDK をインストールします](../../azure-monitor/app/asp-net.md)。
-* アプリケーションにコードを挿入し、[Microsoft.ApplicationInsights.TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) を呼び出します。 メッセージ パラメーターで POST データを送信します。 許可されるサイズには制限があります。そのため、必要不可欠なデータだけを送信するように努めてください。
+* アプリケーション プロジェクトに [SDK をインストールします](./asp-net.md)。
+* アプリケーションにコードを挿入し、[Microsoft.ApplicationInsights.TrackTrace()](./api-custom-events-metrics.md#tracktrace) を呼び出します。 メッセージ パラメーターで POST データを送信します。 許可されるサイズには制限があります。そのため、必要不可欠なデータだけを送信するように努めてください。
 * 失敗した要求を調査するときは、関連付けられているトレースを検索します。
 
 ## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> 例外と関連する診断データをキャプチャする
-最初、ポータルにはアプリの障害の原因となる例外の一部しか表示されません。 ブラウザーの例外はすべて表示されます (Web ページで [JavaScript SDK](../../azure-monitor/app/javascript.md) を使用している場合)。 ただし、ほとんどのサーバー例外は IIS によりキャッチされます。それを確認するには、簡単なコードを記述する必要があります。
+最初、ポータルにはアプリの障害の原因となる例外の一部しか表示されません。 ブラウザーの例外はすべて表示されます (Web ページで [JavaScript SDK](./javascript.md) を使用している場合)。 ただし、ほとんどのサーバー例外は IIS によりキャッチされます。それを確認するには、簡単なコードを記述する必要があります。
 
 次のようにすることができます。
 
@@ -152,7 +153,7 @@ Application Insights には、監視対象のアプリケーションの障害�
     End Try
 ```
 
-プロパティと測定値のパラメーターは省略可能ですが、[フィルター処理と、特別な情報を追加する](../../azure-monitor/app/diagnostic-search.md)のに便利です。 たとえば、複数のゲームを実行できるアプリケーションを使用している場合、1 つのゲームに関連する例外レポートをすべて検索できます。 必要な数だけ項目を各辞書に追加できます。
+プロパティと測定値のパラメーターは省略可能ですが、[フィルター処理と、特別な情報を追加する](./diagnostic-search.md)のに便利です。 たとえば、複数のゲームを実行できるアプリケーションを使用している場合、1 つのゲームに関連する例外レポートをすべて検索できます。 必要な数だけ項目を各辞書に追加できます。
 
 ## <a name="browser-exceptions"></a>ブラウザーの例外
 ほとんどのブラウザー例外が報告されます。
@@ -482,7 +483,7 @@ Add the attribute to the service implementations:
 [サンプル](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>例外パフォーマンス カウンター
-サーバーに [Application Insights エージェントがインストール](../../azure-monitor/app/monitor-performance-live-website-now.md)されている場合は、.NET によって測定された例外レートのグラフを取得できます。 これには、処理済みの .NET 例外と未処理の .NET 例外の両方が含まれます。
+サーバーに [Application Insights エージェントがインストール](./monitor-performance-live-website-now.md)されている場合は、.NET によって測定された例外レートのグラフを取得できます。 これには、処理済みの .NET 例外と未処理の .NET 例外の両方が含まれます。
 
 [Metric Explorer]\(メトリックス エクスプローラー\) タブを開き、新しいグラフを追加して、パフォーマンス カウンターの下に表示されている **[例外レート]** を選択します。
 
@@ -491,6 +492,7 @@ Add the attribute to the service implementations:
 この値は、TrackException レポートをカウントする Application Insights ポータルで算出される "例外" 数とは異なります。 サンプリングの時間間隔が異なります。さらに、SDK では、すべての処理済みの例外と未処理の例外について TrackException レポートを送信するわけではありません。
 
 ## <a name="next-steps"></a>次のステップ
-* [REST、SQL、および依存関係へのその他の呼び出しを監視する](../../azure-monitor/app/asp-net-dependencies.md)
-* [ページの読み込み時間、ブラウザー例外、および AJAX 呼び出しを監視する](../../azure-monitor/app/javascript.md)
-* [パフォーマンス カウンターを監視する](../../azure-monitor/app/performance-counters.md)
+* [REST、SQL、および依存関係へのその他の呼び出しを監視する](./asp-net-dependencies.md)
+* [ページの読み込み時間、ブラウザー例外、および AJAX 呼び出しを監視する](./javascript.md)
+* [パフォーマンス カウンターを監視する](./performance-counters.md)
+

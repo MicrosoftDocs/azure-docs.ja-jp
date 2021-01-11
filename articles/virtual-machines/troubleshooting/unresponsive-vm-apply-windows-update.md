@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16c8eed3377c2191b4345ec59ec1eba8be01369d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80634108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074306"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>Windows Update の適用時に、Azure VM が C01A001D エラー でて応答しません。
 
@@ -27,7 +27,7 @@ ms.locfileid: "80634108"
 
 ## <a name="symptoms"></a>現象
 
-VM のスクリーンショットを見るために [ブート診断](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) を使用すると、 Windows Update (KB) の進行状況が表示されますが、次のエラーコードによって失敗します。'C01A001D'
+VM のスクリーンショットを見るために [ブート診断](./boot-diagnostics.md) を使用すると、 Windows Update (KB) の進行状況が表示されますが、次のエラーコードによって失敗します。'C01A001D'
 
 ![Windows Update が応答しません](./media/unresponsive-vm-apply-windows-update/unresponsive-windows-update.png)
 
@@ -35,7 +35,7 @@ VM のスクリーンショットを見るために [ブート診断](https://do
 
 ファイル システムでコアファイルの作成ができません。 オペレーティング システムがディスクにファイルを書き込めません。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 ### <a name="process-overview"></a>プロセスの概要
 
@@ -49,17 +49,17 @@ VM のスクリーンショットを見るために [ブート診断](https://do
 
 ### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
-1. [VM 修復コマンドのステップ 1 から 3 ](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)に従い、修復 VM を準備します。
+1. [VM 修復コマンドのステップ 1 から 3 ](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に従い、修復 VM を準備します。
 2. リモート デスクトップ接続を使用し、修復 VM に接続します。
 
 ### <a name="free-up-space-on-the-hard-disk"></a>ハードディスクの空き領域を増やす
 
 ディスクが 1 TB になっていない場合には、サイズを変更する必要があります。 ディスクが 1 TB になったら、ディスクのクリーンアップとドライブの最適化を実行します。
 
-1. ディスクがいっぱいかどうかを確認します。 ディスクが 1 TB 未満の場合は、[PowerShell を使用して最大 1 TB にまで拡張します](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
+1. ディスクがいっぱいかどうかを確認します。 ディスクが 1 TB 未満の場合は、[PowerShell を使用して最大 1 TB にまで拡張します](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。
 2. ディスクが 1 TB になったら、ディスクのクリーンアップを実行します。
-    - [破損した VM からデータ ディスクをデタッチします](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk)。
-    - [データ ディスクを、機能している VM に接続します](https://docs.microsoft.com/azure/virtual-machines/windows/attach-disk-ps#attach-an-existing-data-disk-to-a-vm)。
+    - [破損した VM からデータ ディスクをデタッチします](../windows/detach-disk.md)。
+    - [データ ディスクを、機能している VM に接続します](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm)。
     - [ディスク クリーンアップ ツール](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup) を使用して、空き領域を増やします。
 3. サイズ変更とクリーンアップの完了後に、ドライブの最適化を実行します。
 
@@ -115,4 +115,4 @@ VM のスクリーンショットを見るために [ブート診断](https://do
 
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-[VM 修復コマンドのステップ 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) を使って、VM を再構成します。
+[VM 修復コマンドのステップ 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使って、VM を再構成します。

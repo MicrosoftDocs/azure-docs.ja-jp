@@ -6,12 +6,13 @@ author: spelluru
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8f947489c2298e580ae455763709df1734687130
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6f64c8155724a1306f5074a9164bcf97391dfbf6
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85337059"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000347"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>チュートリアル:Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する
 このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 
@@ -355,10 +356,10 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) について学習します。
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) について学習します。
-* [Azure App Service の Logic Apps 機能](https://docs.microsoft.com/azure/logic-apps/)について学習します。
-* Azure Service Bus の詳細については、[こちら](https://docs.microsoft.com/azure/service-bus/)を参照してください。
+* [Azure Event Grid](../event-grid/index.yml) について学習します。
+* [Azure Functions](../azure-functions/index.yml) について学習します。
+* [Azure App Service の Logic Apps 機能](../logic-apps/index.yml)について学習します。
+* Azure Service Bus の詳細については、[こちら](/azure/service-bus/)を参照してください。
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png

@@ -3,12 +3,12 @@ title: セキュリティ コントロール
 description: Azure Backup サービスで使用されるセキュリティ コントロールについて説明します。 これらのコントロールは、このサービスがセキュリティ脆弱性の防止、検出、対応を行う助けとなります。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: c5a324ac3738abfcf1a51442d7acd78a01e5717e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ce1ca0a79476e4985569c677b58892fad91866a5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513542"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892964"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure Backup のセキュリティ コントロール
 
@@ -38,7 +38,7 @@ ms.locfileid: "86513542"
 | セキュリティ コントロール | はい/いいえ | Notes| ドキュメント
 |---|---|--|--|
 | 認証| はい | 認証は Azure Active Directory を介して行われます。 |  |
-| 承認| はい | カスタマーが作成した RBAC ロールとビルトインの RBAC ロールが使用されます。 詳細については、[ロールベースのアクセス制御を使用した Azure Backup の回復ポイントの管理](./backup-rbac-rs-vault.md)に関するページを参照してください。 |  |
+| 承認| はい | カスタマーが作成したロールと Azure 組み込みロールが使用されます。 詳細については、[ロールベースのアクセス制御を使用した Azure Backup の回復ポイントの管理](./backup-rbac-rs-vault.md)に関するページを参照してください。 |  |
 
 ## <a name="data-protection"></a>データ保護
 

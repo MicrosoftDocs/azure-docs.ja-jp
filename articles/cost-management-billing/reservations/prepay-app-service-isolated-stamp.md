@@ -1,22 +1,23 @@
 ---
 title: 予約容量を利用して Azure App Service のコストを節約する
-description: 予約容量を含む Azure App Service の分離印紙税を節約する方法について説明します。
+description: 予約容量を含む Azure App Service Isolated スタンプのコストを節約する方法について説明します。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: c90824ed0119378c2939c4b5edf9dd5b8c31b8c0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c80ed02e137ea092bae1346260dba71cd417bed9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287625"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688931"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>予約容量を含む Azure App Service Isolated 印紙税のコストの節約
 
-3 年分の印紙使用の予約をコミットすることで、Azure App Service 分離印紙税にかかるコストを節約できます。 分離印紙料金の予約容量を購入するには、印紙がデプロイされる Azure リージョンと、購入する印紙数を選択する必要があります。
+3 年分のスタンプ使用の予約をコミットすることで、Azure App Service Isolated スタンプにかかるコストを節約でます。 Isolated スタンプ料金の予約容量を購入するには、スタンプがデプロイされる Azure リージョンと、購入するスタンプ数を選択する必要があります。
 
 予約を購入すると、予約の属性に一致する Isolated スタンプ料金の使用状況は従量課金制で課金されなくなります。 予約は、予約容量のスコープとリージョンに一致する Isolated スタンプ数に自動的に適用されます。 Isolated スタンプに予約を割り当てる必要はありません。 予約は worker には適用されないので、スタンプに関連する他のすべてのリソースには別途課金されます。
 

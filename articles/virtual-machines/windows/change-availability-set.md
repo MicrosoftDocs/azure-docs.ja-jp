@@ -3,22 +3,22 @@ title: VM の可用性セットの変更
 description: Azure PowerShell を使用して仮想マシンの可用性セットを変更する方法について説明します。
 ms.service: virtual-machines
 author: cynthn
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: e014dbe440f1b7baf39c290b8b7ab8fcaea0bada
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: f774056a8faf40e3796b06718e90cd7da988241c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165857"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284627"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>VM の可用性セットを変更する
 以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。 
 
 この記事は、Linux と Windows の両方の VM に適用されます。
 
-この記事は、2019 年 2 月 12 日に [Azure Cloud Shell](https://shell.azure.com/powershell) と [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps) バージョン 1.2.0 を使用して最後にテストされました。
+この記事は、2019 年 2 月 12 日に [Azure Cloud Shell](https://shell.azure.com/powershell) と [Az PowerShell モジュール](/powershell/azure/install-az-ps) バージョン 1.2.0 を使用して最後にテストされました。
 
 この例では、VM がロード バランサーに接続されているかどうかは確認されません。 VM がロード バランサーに接続されている場合は、そのケースを処理するようスクリプトを更新する必要があります。 
 
@@ -107,4 +107,3 @@ ms.locfileid: "86165857"
 ## <a name="next-steps"></a>次のステップ
 
 [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を追加して、記憶域を VM にさらに追加します。
-

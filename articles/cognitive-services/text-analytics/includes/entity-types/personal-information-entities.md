@@ -6,14 +6,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/30/2020
+ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: dd7a8b94aefbf389afef30b327ffaa367a30dd51
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2349c92fb74b546eaa929752f3d2343b9c97e6d1
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108502"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010918"
 ---
 > [!NOTE]
 > `PHI` (保護医療情報) を検出するには、`domain=phi` パラメーターおよびモデル バージョン `2020-04-01` 以降を使用します。
@@ -28,20 +28,18 @@ ms.locfileid: "86108502"
 | PersonType | 該当なし         | 人物の職種または職務。 | `2020-02-01` | |
 | PhoneNumber | 該当なし | 電話番号 (米国および EU の電話番号のみ)。 | `2019-10-01` | `domain=phi` でも返されます |
 |Organization  | 該当なし | 企業、政治団体、音楽バンド、スポーツ クラブ、政府機関、および公的機関。  | `2019-10-01` | 国籍と宗教は、このエンティティ型には含まれていません。  |
-|Organization | 医療 | 医療関係の企業および団体。 | `2020-04-01` | `domain=phi` でも返されます。 |
-|Organization | 証券取引 | 証券取引団体。 | `2020-04-01` | `domain=phi` でも返されます。 |
-| Organization | スポーツ | スポーツ関連の組織。 | `2020-04-01` | `domain=phi` でも返されます。 |
+|Organization | 医療 | 医療関係の企業および団体。 | `2020-04-01` |  |
+|Organization | 証券取引 | 証券取引団体。 | `2020-04-01` |  |
+| Organization | スポーツ | スポーツ関連の組織。 | `2020-04-01` |  |
 | Address | 該当なし | 完全な郵送先住所。  | `2020-04-01` | `domain=phi` でも返されます。 |
 | EU の GPS 座標 | 該当なし | 欧州連合内の場所の GPS 座標。  | `2019-10-01` |  |
 | Email | 該当なし | メール アドレス。 | `2019-10-01` | `domain=phi` でも返されます。   |
 | URL | 該当なし | Web サイトへの URL。 | `2019-10-01` | `domain=phi` でも返されます。 |
-| IP | 該当なし | ネットワーク IP アドレス。 | `2019-10-01` | |
+| IP | 該当なし | ネットワーク IP アドレス。 | `2019-10-01` | `domain=phi` でも返されます。 |
 | DateTime | 該当なし | 日付と時刻。 | `2019-10-01` |  | 
 | DateTime | Date | カレンダーの日付。 | `2019-10-01` | `domain=phi` でも返されます。 |
 | Quantity | 該当なし | 数値と数量です。 | `2019-10-01` |  |
 | Quantity | Age | 年齢。 | `2019-10-01` | | |
-| 国際疾病分類 (ICD-9-CM) | 該当なし | 国際疾病分類第 9 版に関連するエンティティ。   | `2020-04-01` | |
-| 国際疾病分類 (ICD-10-CM) | 該当なし | 国際疾病分類第 10 版に関連するエンティティ。    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Azure の情報
 

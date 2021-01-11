@@ -4,12 +4,12 @@ description: この記事では、コンテナー用 Azure Monitor で kubectl �
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: cbd697f743d0d3369a8c35537ac2755ae5d3fc8c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ef3fd6ce2a5be4f3d06a37b135e0f9cf0851effb
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516466"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116704"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
@@ -42,7 +42,7 @@ Azure portal では、Azure Active Directory クラスターのログイン資�
 >クラスターに対する承認は、Kubernetes および Kubernetes で構成されているセキュリティ モデルによって管理されます。 この機能にアクセスするユーザーには、`az aks get-credentials -n {your cluster name} -g {your resource group}` を実行する場合と同様に、Kubernetes 構成 (*kubeconfig*) をダウンロードするためのアクセス許可が必要です。 Azure RBAC 対応の AKS クラスターと RBAC 認証が有効になっていない AKS クラスターの場合、この構成ファイルには、**Azure Kubernetes Service クラスター ユーザー ロール**の承認および認証トークンが含まれます。 Azure Active Directory (AD) の SAML ベースのシングル サインオンで AKS が有効になっている場合は、Azure AD とクライアント登録の詳細情報が含まれます。
 
 >[!IMPORTANT]
->この機能のユーザーには、`kubeconfig` をダウンロードしてこの機能を使用するために、クラスターに対する [Azure Kubernetes クラスター ユーザー ロール](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions)が必要です。 この機能を利用するユーザーには、クラスターに対する共同作成者アクセス権は**不要**です。
+>この機能のユーザーには、`kubeconfig` をダウンロードしてこの機能を使用するために、クラスターに対する [Azure Kubernetes クラスター ユーザー ロール](../../role-based-access-control/built-in-roles.md)が必要です。 この機能を利用するユーザーには、クラスターに対する共同作成者アクセス権は**不要**です。
 
 ## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>RBAC が有効なクラスターで clusterMonitoringUser を使用する
 

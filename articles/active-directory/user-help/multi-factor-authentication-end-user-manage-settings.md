@@ -12,12 +12,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/06/2020
 ms.author: curtand
-ms.openlocfilehash: 259468d0d3b04b354e782529cefa2149974c9ca0
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: e0a6c566e8e0dfb77b5899f735020d0f1facf3d1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85983307"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798382"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>2 要素検証方法と設定を変更する
 
@@ -31,10 +31,10 @@ ms.locfileid: "85983307"
 
 ## <a name="using-the-additional-security-verification-page"></a>[追加のセキュリティ確認] ページを使用する
 
-2 要素認証の有効化と管理について組織から具体的な手順が提供されている場合は、その手順に従う必要があります。 それ以外の場合は、[[追加のセキュリティ確認]](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time) ページからセキュリティ検証方法の設定にアクセスできます。
+2 要素認証の有効化と管理について組織から具体的な手順が提供されている場合は、その手順に従う必要があります。 それ以外の場合は、[[追加のセキュリティ確認]](./multi-factor-authentication-end-user-first-time.md) ページからセキュリティ検証方法の設定にアクセスできます。
 
 >[!Note]
->画面に表示される内容と、この記事の内容が一致しない場合は、管理者によって **セキュリティ情報 (プレビュー)** エクスペリエンスが有効にされているか、または組織に独自のカスタム ポータルがあることを意味します。 新しいセキュリティ情報エクスペリエンスについて詳しくは、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」をご覧ください。 組織のカスタム ポータルについて詳しくは、組織のヘルプ デスクにお問い合わせください。
+>画面に表示される内容と、この記事の内容が一致しない場合は、管理者によって **セキュリティ情報 (プレビュー)** エクスペリエンスが有効にされているか、または組織に独自のカスタム ポータルがあることを意味します。 新しいセキュリティ情報エクスペリエンスについて詳しくは、「[セキュリティ情報 (プレビュー) の概要](./security-info-setup-signin.md)」をご覧ください。 組織のカスタム ポータルについて詳しくは、組織のヘルプ デスクにお問い合わせください。
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>[追加のセキュリティ確認] ページに移動するには
 

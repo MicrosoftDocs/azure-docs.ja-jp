@@ -13,19 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982957"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854452"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows OS][Logo_Windows] Windows
 >
 
 Windows Server フェールオーバー クラスタリングは、Windows での高可用性の SAP ASCS/SCS インストールと DBMS の基盤です。
@@ -40,7 +40,7 @@ Windows Server フェールオーバー クラスタリングは、Windows で�
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Azure での Windows Server フェールオーバー クラスタリング
 
-ベア メタル デプロイやプライベート クラウド デプロイと比較すると、Azure Virtual Machines では Windows Server フェールオーバー クラスタリングを構成するための追加手順が必要となります。 クラスターを構築するときは、SAP ASCS/SCS インスタンスに複数の IP アドレスと仮想ホスト名を設定する必要があります。
+Azure Virtual Machines を使用した Windows Server フェールオーバー クラスタリングには、追加の構成手順が必要です。 クラスターを構築するときは、SAP ASCS/SCS インスタンスに複数の IP アドレスと仮想ホスト名を設定する必要があります。
 
 ### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure での名前解決とクラスターの仮想ホスト名
 
@@ -52,7 +52,7 @@ Azure Load Balancer サービスは、Azure に "*内部ロード バランサ�
 
 ![図 1: 共有ディスクを使わない Azure の Windows フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
 
-_**図 1:** 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成_
+_共有ディスクを使用しない Azure での Windows Server フェールオーバー クラスタリング構成_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>クラスター共有ディスクを使う SAP ASCS/SCS HA
 Windows では、SAP ASCS/SCS インスタンスには、SAP セントラル サービス、SAP メッセージ サーバー、エンキュー サーバー プロセス、および SAP グローバル ホスト ファイルが含まれます。 SAP グローバル ホスト ファイルは、SAP システム全体のセントラル ファイルを格納します。
@@ -73,30 +73,104 @@ SAP ASCS/SCS インスタンスには、次のコンポーネントがありま�
 
 ![図 2:プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有][sap-ha-guide-figure-8001]
 
-_**図 2:** プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有_
+_プロセス、ファイル構造、および SAP ASCS/SCS インスタンスのグローバル ホスト sapmnt ファイル共有_
 
 高可用性の設定では、SAP ASCS/SCS インスタンスをクラスター化します。 "*クラスター化された共有ディスク*" (この例ではドライブ S) を使って、SAP ASCS/SCS ファイルと SAP グローバル ホスト ファイルを配置します。
 
 ![図 3:共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8002]
 
-_**図 3:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
+_共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
 
-> [!IMPORTANT]
-> これら 2 つのコンポーネントは、同じ SAP ASCS/SCS インスタンスの下で実行されます。
->* 同じ \<ASCS/SCS virtual host name> が、SAP メッセージ プロセスとエンキュー サーバー プロセスへのアクセス、および sapmnt ファイル共有経由での SAP グローバル ホスト ファイルへのアクセスに使われます。
->* 同じクラスター共有ディスク ドライブ S が、これらの間で共有されます。
->
 
+エンキュー サーバー レプリケーション 1 アーキテクチャの場合:
+* 同じ \<ASCS/SCS virtual host name> が、SAP メッセージ プロセスとエンキュー サーバー プロセスへのアクセス、および sapmnt ファイル共有経由での SAP グローバル ホスト ファイルへのアクセスに使われます。
+* 同じクラスター共有ディスク ドライブ S が、これらの間で共有されます。  
+
+エンキュー サーバー レプリケーション 2 アーキテクチャの場合: 
+* 同じ \<ASCS/SCS virtual host name> が、SAP メッセージ サーバー プロセスへのアクセス、および sapmnt ファイル共有経由での SAP グローバル ホスト ファイルへのアクセスに使われます。
+* 同じクラスター共有ディスク ドライブ S が、これらの間で共有されます。
+* エンキュー サーバー プロセスにアクセスするための別の \<ERS virtual host name> があります。  
 
 ![図 4:共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ][sap-ha-guide-figure-8003]
 
-_**図 4:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
+_共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ_
+
+#### <a name="shared-disk-and-enqueue-replication-server"></a>共有ディスクとエンキュー レプリケーション サーバー 
+
+1. 共有ディスクは、エンキュー レプリケーション サーバー (ERS) インスタンスが以下を満たす場合に、エンキュー サーバー レプリケーション 1 アーキテクチャでサポートされます。   
+
+   - クラスター化されていない
+   - `localhost` 名を使用する
+   - 各クラスター ノードのローカル ディスクにデプロイされている
+
+2. 共有ディスクは、エンキュー レプリケーション サーバー 2 (ERS2) インスタンスが以下を満たす場合に、エンキュー サーバー レプリケーション 2 アーキテクチャでもサポートされます。  
+
+   - クラスター化されている
+   - 専用の仮想/ネットワーク ホスト名を使用する
+   - (A)SCS IP アドレスに加えて、Azure 内部ロード バランサーで構成するための ERS 仮想ホスト名の IP アドレスを必要とする
+   - 各クラスター ノードの**ローカル ディスク**にデプロイされるため、共有ディスクを必要としない
+
+   > [!TIP]
+   > エンキュー レプリケーション サーバー 1 と 2 (ERS1 と ERS2) の詳細については、次を参照してください。  
+   > [Microsoft フェールオーバー クラスターでのエンキュー レプリケーション サーバー](https://help.sap.com/viewer/3741bfe0345f4892ae190ee7cfc53d4c/CURRENT_VERSION_SWPM20/en-US/8abd4b52902d4b17a105c2fabdf5c0cf.html)  
+   > [フェールオーバー クラスター環境での新しいエンキュー レプリケーター](https://blogs.sap.com/2019/03/19/new-enqueue-replicator-in-failover-cluster-environments/)  
+
+#### <a name="options-for-shared-disk-in-azure-for-sap-workloads"></a>SAP ワークロード用の Azure の共有ディスクのオプション
+
+Azure の Windows フェールオーバー クラスターの共有ディスクには、次の 2 つのオプションがあります。
+
+- [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) - Azure マネージド ディスクを複数の VM に同時に接続できるようにする機能。 
+- サード パーティ製ソフトウェアの [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster) を使用して、クラスター共有記憶域をシミュレートするミラー化された記憶域を作成する。 
+
+共有ディスクのテクノロジを選択するときは、次の点に注意してください。
+
+**SAP ワークロード用の Azure 共有ディスク**
+- 追加のソフトウェアを維持して運用する必要なく、Azure マネージド ディスクを複数の VM に同時に接続することができます。 
+- 1 つの記憶域クラスターで 1 つの Azure 共有ディスクを操作します。 これは SAP ソリューションの信頼性に影響を与えます。
+- 現在サポートされているデプロイは、可用性セット内の Azure 共有 Premium ディスクを使用するものだけです。 Azure 共有ディスクはゾーン デプロイではサポートされていません。     
+- [Premium SSD の範囲](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes)に指定されている最小ディスク サイズで Azure Premium ディスクをプロビジョニングして、必要な数の VM に同時に接続できるようにします (通常、SAP ASCS Windows フェールオーバー クラスターの場合は 2 つ)。 
+- Azure 共有 Ultra Disk は、可用性セットのデプロイまたはゾーン デプロイをサポートしていないため、SAP ワークロードではサポートされません。  
+ 
+**SIOS**
+- SIOS ソリューションは、2 つのディスク間のリアルタイムの同期データ レプリケーションを実現します
+- SIOS ソリューションでは 2 つのマネージド ディスクを使用し、可用性セットまたは可用性ゾーンのいずれかを使用している場合、マネージド ディスクは異なる記憶域クラスターに配置されます。 
+- 可用性ゾーンでのデプロイはサポートされています
+- サードパーティのソフトウェアをインストールして運用する必要があります。ソフトウェアは追加で購入する必要があります
+
+### <a name="shared-disk-using-azure-shared-disk"></a>Azure 共有ディスクを使用した共有ディスク
+
+Microsoft では、共有ディスク オプションを使用して SAP ASCS/SCS 高可用性を実装するために使用できる [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)を提供しています。
+
+#### <a name="prerequisites-and-limitations"></a>前提条件と制限事項
+
+現時点では、SAP ASCS/SCS インスタンスの Azure 共有ディスクとして Azure Premium SSD ディスクを使用できます。 次の制限事項が現在適用されます。
+
+-  [Azure Ultra Disk](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk) は、SAP ワークロード用の Azure 共有ディスクとしてはサポートされていません。 現時点では、Azure Ultra Disk を可用性セット内で使用して、Azure VM を配置することはできません
+-  Premium SSD ディスクを使用した [Azure 共有ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)は、可用性セット内の VM でのみサポートされています。 Availability Zones のデプロイではサポートされていません。 
+-  Azure 共有ディスクの値 [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) によって、その共有ディスクを使用できるクラスター ノードの数が決まります。 通常、SAP ASCS/SCS インスタンスには、Windows フェールオーバー クラスターに 2 つのノードを構成するため、`maxShares` の値は 2 に設定する必要があります。
+-  すべての SAP ASCS/SCS クラスター VM が、同じ [Azure 近接通信配置グループ](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)にデプロイされる必要があります。   
+   Windows クラスター VM を、PPG を使用せずに Azure 共有ディスクがある可用性セット内にデプロイすることはできますが、PPG を使用すると Azure 共有ディスクとクラスター VM の物理的近距離を確保できるため、VM とストレージ層の間の待機時間が短くなります。    
+
+Azure 共有ディスクの制限事項の詳細については、Azure 共有ディスクのドキュメントの「[制限事項](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations)」セクションを十分注意して参照してください。
+
+> [!IMPORTANT]
+> Azure 共有ディスクを使用して SAP ASCS/SCS Windows フェールオーバー クラスターをデプロイする場合は、デプロイが 1 つの記憶域クラスター内の単一の共有ディスクを使用して動作することに注意してください。 SAP ASCS/SCS インスタンスは、Azure 共有ディスクがデプロイされている記憶域クラスターで問題が発生した場合に影響を受けます。    
+
+> [!TIP]
+> SAP デプロイを計画するときの重要な考慮事項については、[SAP Netweaver on Azure の計画ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)および[SAP ワークロード用の Azure Storage ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)に関する記事を参照してください。
+
+### <a name="supported-os-versions"></a>サポートされている OS のバージョン
+
+Windows Server 2016 と 2019 の両方がサポートされています (最新のデータ センター イメージを使用してください)。
+
+次の理由から、**Windows Server 2019 Datacenter** を使用することを強くお勧めします。
+- Windows 2019 フェールオーバー クラスター サービスは Azure に対応しています
+- Azure ホスト メンテナンスの統合と認識が追加され、Azure のスケジュール イベントを監視することでエクスペリエンスが向上しました。
+- 分散ネットワーク名を使用することができます (これは既定のオプションです)。 そのため、クラスター ネットワーク名に専用の IP アドレスを設定する必要がありません。 また、この IP アドレスを Azure 内部ロード バランサーで構成する必要もありません。 
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>SIOS DataKeeper を使う Azure の共有ディスク
 
-高可用性の SAP ASCS/SCS インスタンスには共有記憶域をクラスター化する必要があります。
-
-代わりに、サード パーティ製ソフトウェアの SIOS DataKeeper Cluster Edition を使用して、クラスター共有記憶域をシミュレートするミラー化された記憶域を作成できます。 SIOS ソリューションは、リアルタイムの同期データ レプリケーションを実現します。
+共有ディスクの代わりに、サード パーティ製ソフトウェアの SIOS DataKeeper Cluster Edition を使用して、クラスター共有記憶域をシミュレートするミラー化された記憶域を作成できます。 SIOS ソリューションは、リアルタイムの同期データ レプリケーションを実現します。
 
 クラスターの共有ディスク リソースを作成するには:
 
@@ -108,7 +182,7 @@ _**図 4:** 共有ディスクを使う SAP ASCS/SCS HA のアーキテクチャ
 
 ![図 5:SIOS DataKeeper を使用する Azure での Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1002]
 
-_**図 5:** SIOS DataKeeper を使用する Azure での Windows フェールオーバー クラスタリング構成_
+_SIOS DataKeeper を使用する Azure での Windows フェールオーバー クラスタリング構成_
 
 > [!NOTE]
 > SQL Server のような一部の DBMS 製品では、高可用性のために共有ディスクは必要ありません。 SQL Server Always On は、DBMS のデータとログ ファイルを、クラスター ノードのローカル ディスクから別のクラスター ノードのローカル ディスクにレプリケートします。 その場合、Windows クラスター構成に共有ディスクは不要です。

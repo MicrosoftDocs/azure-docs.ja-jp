@@ -8,18 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 43172cb08bb1e31c8cff891628ca6ef85cb8c864
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f14bcc1b0576a5ad2f4dbbf30311f613607d3ee5
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404409"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89322332"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
-このチュートリアルでは、Azure Computer Vision サービスを Web アプリに統合して、アップロードされた画像のメタデータを生成する方法について学習します。 これは[デジタル資産管理 (DAM)](../Home.md#computer-vision-for-digital-asset-management) のシナリオに役立ちます。たとえば、企業がすべての画像についてわかりやすいキャプションや検索可能なキーワードをすばやく生成する場合などです。
+このチュートリアルでは、Azure Computer Vision サービスを Web アプリに統合して、アップロードされた画像のメタデータを生成する方法について学習します。 これは[デジタル資産管理 (DAM)](../overview.md#computer-vision-for-digital-asset-management) のシナリオに役立ちます。たとえば、企業がすべての画像についてわかりやすいキャプションや検索可能なキーワードをすばやく生成する場合などです。
 
 完全なアプリ ガイドは、GitHub 上の [Azure Storage と Cognitive Services のラボ](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md)に関するページにあります。このチュートリアルでは、基本的にラボの演習 5 を取り扱います。 すべての手順に従って完全なアプリケーションを作成してみてください。ただし、Computer Vision を既存の Web アプリに統合する方法についてだけ知りたい場合は、こちらをお読みください。
 
@@ -31,7 +32,7 @@ ms.locfileid: "81404409"
 > * Azure Storage の画像にメタデータをアタッチする
 > * Azure Storage Explorer を使用して画像のメタデータを確認する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-computer-vision-credentials"></a>Computer Vision の資格情報を追加する
 
-次に、お客様のアプリが Computer Vision リソースにアクセスできるように、必要な資格情報を追加します
+次に、お客様のアプリが Computer Vision リソースにアクセスできるように、必要な資格情報を追加します。
 
 Visual Studio でお客様の ASP.NET Web アプリケーションを開き、プロジェクトのルートにある **Web.config** ファイルに移動します。 次のステートメントをファイルの `<appSettings>` セクションに追加します。このとき、`VISION_KEY` を前の手順でコピーしたキーに置き換え、`VISION_ENDPOINT` をその前の手順で保存した URL に置き換えます。
 

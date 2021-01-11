@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2cf7dbcd97c8f740447607eaf443bc3ea4a6733
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6175a797b14077cafacaca1f2fd48f36e945d9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500602"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425084"
 ---
 一部の種類のディスクでのみ、共有ディスクを有効にできます。 現在のところ、Ultra ディスクと Premium SSD のみで共有ディスクを有効にできます。 共有ディスクが有効になっているマネージド ディスクはそれぞれ、次の制約を受けます。制限はディスクの種類別に整理されています。
 
@@ -25,6 +25,8 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 
 - Azure Resource Manager または SDK サポートに現在、制限されています。 
 - Windows Server フェールオーバー クラスターの一部のバージョンでは、ベーシック ディスクのみを使用できます。詳細については、「[フェールオーバー クラスタリングのハードウェア要件と記憶域オプション](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)」を参照してください。
+
+共有 Ultra ディスクは、既定で、Ultra ディスクをサポートするすべてのリージョンで利用でき、それらを使用するためのアクセスに対してサインアップする必要はありません。
 
 ### <a name="premium-ssds"></a>Premium SSD
 
@@ -38,4 +40,4 @@ Ultra ディスクを共有するとき、次の追加制限があります。
 - Windows Server フェールオーバー クラスターの一部のバージョンでは、ベーシック ディスクのみを使用できます。詳細については、「[フェールオーバー クラスタリングのハードウェア要件と記憶域オプション](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)」を参照してください。
 - Azure Backup および Azure Site Recovery のサポートは、まだ使用できません。
 
-共有ディスクの使用に関心がある場合は、[サインアップしてアクセスしてください](https://aka.ms/AzureSharedDiskGASignUp)。
+共有 Premium SSD の使用に興味をお持ちの場合は、[サインアップしてアクセスしてください](https://aka.ms/AzureSharedDiskGASignUp)。

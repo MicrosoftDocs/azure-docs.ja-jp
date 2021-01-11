@@ -4,14 +4,15 @@ description: Azure Cache for Redis を使用して ASP.NET ページ出力をキ
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 9c8f91cee01273aa2ed1cbfe1812130b600a094a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cb986f1e0172c4a44381b2f9cf043025cb5abe8a
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84456744"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705029"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
 
@@ -56,7 +57,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 | *host* | string | "localhost" | Redis サーバーの IP アドレスまたはホスト名 |
 | *port* | 正の整数 | 6379 (TLS/SSL 以外)<br/>6380 (TLS/SSL) | Redis サーバー ポート |
 | *accessKey* | string | "" | Redis 認証が有効になっている場合は、Redis サーバーのパスワード。 既定では、値は空の文字列です。これは、セッション状態プロバイダーが Redis サーバーに接続するときにパスワードを使用しないことを意味します。 **Redis サーバーが Azure Redis Cache のようなパブリックにアクセス可能なネットワークにある場合は、セキュリティを強化するために必ず Redis 認証を有効にして、安全なパスワードを提供してください。** |
-| *ssl* | boolean | **false** | Redis サーバーに TLS 経由で接続するかどうか。 Redis は初期状態では TLS をサポートしていないため、この値は既定では **false** です。 **初期状態で SSL をサポートする Azure Redis Cache を使用している場合は、セキュリティを強化するためにこれを必ず true に設定してください。**<br/><br/>既定では、新しいキャッシュに対して非 TLS ポートは無効になっています。 TLS ポートを使用するには、この設定に **true** を指定します。 非 TLS ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。 |
+| *ssl* | boolean | **false** | Redis サーバーに TLS 経由で接続するかどうか。 Redis は初期状態では TLS をサポートしていないため、この値は既定では **false** です。 **初期状態で SSL をサポートする Azure Redis Cache を使用している場合は、セキュリティを強化するためにこれを必ず true に設定してください。**<br/><br/>既定では、新しいキャッシュに対して非 TLS ポートは無効になっています。 TLS ではないポートを使用するには、この設定に **true** を指定します。 非 TLS ポートの有効化の詳細については、[キャッシュの構成](cache-configure.md)に関するトピックの「[アクセス ポート](cache-configure.md#access-ports)」セクションを参照してください。 |
 | *databaseIdNumber* | 正の整数 | 0 | *この属性は、web.config または AppSettings でのみ指定できます。*<br/><br/>使用する Redis データベースを指定します。 |
 | *connectionTimeoutInMilliseconds* | 正の整数 | StackExchange.Redis によって提供されます | StackExchange.Redis.ConnectionMultiplexer の作成時に *ConnectTimeout* を設定するために使用されます。 |
 | *operationTimeoutInMilliseconds* | 正の整数 | StackExchange.Redis によって提供されます | StackExchange.Redis.ConnectionMultiplexer の作成時に *SyncTimeout* を設定するために使用されます。 |

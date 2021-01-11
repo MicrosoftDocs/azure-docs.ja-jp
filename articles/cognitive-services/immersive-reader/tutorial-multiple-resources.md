@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1abd1052c33346d949809d7c35a99ef97bde2c03
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267207"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516284"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>チュートリアル:複数のイマーシブ リーダー リソースを統合する
 
@@ -24,7 +25,7 @@ ms.locfileid: "84267207"
 > * 既存のリソース グループの下に複数のイマーシブ リーダー リソースを作成する
 > * 複数のリソースを使用してイマーシブ リーダーを起動する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

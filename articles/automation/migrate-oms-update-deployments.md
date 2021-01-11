@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9bd6a7ff943b5f3750ce8aaeada32010b88272c2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745622"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447847"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Azure Monitor ログの更新プログラムの展開を Azure portal に移行する
 
@@ -19,7 +19,7 @@ Operations Management Suite (OMS) ポータルは[非推奨](../azure-monitor/pl
 ## <a name="key-information"></a>重要な情報
 
 * 既存の展開は引き続き機能します。 Azure で展開を再作成したら、以前の展開を削除できます。
-* OMS で使用していた既存の機能はすべて Azure で利用できます。 Update Management の詳細については、[Update Management の概要](automation-update-management.md)に関する記事を参照してください。
+* OMS で使用していた既存の機能はすべて Azure で利用できます。 Update Management の詳細については、[Update Management の概要](update-management/update-mgmt-overview.md)に関する記事を参照してください。
 
 ## <a name="access-the-azure-portal"></a>Azure portal にアクセスする
 
@@ -74,4 +74,4 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Automation の Update Management の詳細については、[Update Management の概要](automation-update-management.md)に関する記事を参照してください。
+Azure Automation の Update Management の詳細については、[Update Management の概要](update-management/update-mgmt-overview.md)に関する記事を参照してください。

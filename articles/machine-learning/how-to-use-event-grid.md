@@ -5,21 +5,22 @@ description: Azure Machine Learning で、イベント ドリブンなアプリ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
+ms.custom: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 5c4eae49b849b7dc5dbf7c27d50e241b2a4f36e4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 464d945708fba83877fe6cef9ec1b64ec444bd95
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135967"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650419"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 
-この記事では、[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) によって特定の条件が検出された場合に、Azure Machine Learning イベント (失敗通知メールや ML パイプラインの実行など) に基づいて、イベント ドリブンなアプリケーション、プロセス、または CI/CD ワークフローを設定する方法について説明します。 
+この記事では、[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) によって特定の条件が検出された場合に、Azure Machine Learning イベント (失敗通知メールや ML パイプラインの実行など) に基づいて、イベント ドリブンなアプリケーション、プロセス、または CI/CD ワークフローを設定する方法について説明します。
 
 Azure Machine Learning は、モデルのトレーニング、モデルのデプロイ、監視など、機械学習プロセスのライフサイクル全体を管理します。 Event Grid を使用して、最新のサーバーレス アーキテクチャを使用することで、Azure Machine Learning イベント (トレーニングの実行の完了、モデルの登録とデプロイ、データ ドリフトの検出など) に対応できます。 その後、ワークスペースにおける実行状態の変更、実行の完了、モデルの登録、モデルのデプロイ、データ ドリフトの検出などのイベントをサブスクライブして使用できます。
 
@@ -173,7 +174,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
     ![select-event-runcomplete](./media/how-to-use-event-grid/select-event-runcomplete.png)
 
-1. 上のセクションのフィルター処理方法を使用するか、フィルターを追加して、イベントの種類のサブセットでのみロジック アプリをトリガーすることができます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の__プレフィックス フィルター__が使用されています。
+1. 上のセクションのフィルター処理方法を使用するか、フィルターを追加して、イベントの種類のサブセットでのみロジック アプリをトリガーすることができます。 次のスクリーンショットでは、 __/datadriftID/runs/__ の __プレフィックス フィルター__ が使用されています。
 
     ![filter-events](./media/how-to-use-event-grid/filtering-events.png)
 
@@ -198,7 +199,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 開始する前に、次の操作を行います。
 
-* データセット モニターを設定して、ワークスペース内の[データの誤差を検出する]( https://aka.ms/datadrift)
+* データセット モニターを設定して、ワークスペース内の[データの誤差を検出する](how-to-monitor-datasets.md)
 * 発行される [Azure Data Factory パイプライン](https://docs.microsoft.com/azure/data-factory/)を作成する。
 
 この例では、単純な Data Factory パイプラインを使用してファイルを blob ストアにコピーし、発行された Machine Learning パイプラインを実行します。 このシナリオの詳細については、[Azure Data Factory の Machine Learning の手順](https://docs.microsoft.com/azure/data-factory/transform-data-machine-learning-service)を設定する方法を参照してください。

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 00a4f7f6de207d5e8ad1bcd448cc587e3106d3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a28a8f22a8aa20612a177d88fd99a66660c74618
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87316978"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607547"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal を使用して Cognitive Services リソースを作成する
 
@@ -120,5 +120,6 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 * [Azure Cognitive Services に対する要求の認証](authentication.md)
 * [Azure Cognitive Services とは](Welcome.md)
+* [Azure Management クライアント ライブラリを使用して新しいリソースを作成する](.\cognitive-services-apis-create-account-client-library.md)
 * [自然言語のサポート](language-support.md)
 * [Docker コンテナーのサポート](cognitive-services-container-support.md)

@@ -45,7 +45,7 @@ Azure Security Center の Standard レベルのユーザーには、Security Cen
 以下に示したのは、次の宛先に渡されるアラート イベントのスキーマです。
 
 - Security Center のワークフロー オートメーション内に構成された Azure Logic Apps インスタンス
-- Security Center の連続エクスポート機能を使用する Azure イベント ハブ
+- Security Center の連続エクスポート機能を使用する Azure Event Hub
 
 ワークフロー オートメーション機能の詳細については、「[アラートや推奨事項に対する応答の自動化](workflow-automation.md)」を参照してください。
 連続エクスポートの詳細については、「[アラートと推奨事項のエクスポート](continuous-export.md)」を参照してください。

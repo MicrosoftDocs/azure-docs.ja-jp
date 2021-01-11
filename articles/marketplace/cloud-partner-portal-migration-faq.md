@@ -4,15 +4,15 @@ description: Cloud パートナー ポータルからパートナー センタ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: anbene
+author: mingshen-ms
 ms.author: mingshen
-ms.date: 06/29/2020
-ms.openlocfilehash: e708d9a32d63c306a2d1ee8d06b044652f108dde
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.date: 07/14/2020
+ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231881"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607503"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -20,17 +20,17 @@ Cloud パートナー ポータルはパートナー センターに切り替え
 
 ## <a name="what-does-the-transition-to-partner-center-mean-for-me"></a>パートナー センターへの切り替えはパートナーにとってどのような意味がありますか?
 
-パートナー センターでは、次のように通常どおりビジネスを続けることができます。
+パートナー センターでは、次のようにビジネスを続けることができます。
 
 | 領域<img src="" width=200px> | [変更点] |
 | --- | --- |
 | Account | 新しいパートナー センター アカウントを作成する必要はありません。Cloud パートナーポータルの既存の資格情報を使用してパートナー センターにログインし、アカウント、ユーザー、アクセス許可、請求を管理できるようになります。 公開への同意と会社のプロファイル情報は、支払いプロファイル情報、ユーザー アカウントとアクセス許可、アクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。 詳細については、「[パートナー センターで商業マーケットプレース アカウントを管理する](partner-center-portal/manage-account.md)」を参照してください。 |
-| オファーの公開とオファーの管理のエクスペリエンス | オファーのデータは Cloud パートナー ポータルからパートナー センターに移行されました。 オファーにはパートナー センターでアクセスするようになり、向上したユーザー エクスペリエンスと直感的なインターフェイスが提供されます。 方法については、「[Commercial Marketplace で既存のオファーを更新する](partner-center-portal/update-existing-offer.md)」を参照してください。 |
+| オファーの公開とオファーの管理のエクスペリエンス | オファーのデータは Cloud パートナー ポータルからパートナー センターに移行されました。 オファーにはパートナー センターでアクセスするようになり、向上したユーザー エクスペリエンスと直感的なインターフェイスが提供されます。 方法については、「[コマーシャル マーケットプレースで既存のオファーを更新する](partner-center-portal/update-existing-offer.md)」を参照してください。 |
 | コマーシャル マーケットプレースでのオファーの利用可能性 | 変更はありません。 オファーがコマーシャル マーケットプレースで公開されている場合は、引き続き公開されます。 |
 | 新しい購入とデプロイ | 変更はありません。 顧客は、中断なしでオファーの購入とデプロイを続けることができます。 |
 | 支払い | すべての購入とデプロイは、引き続き通常どおり支払われ続けます。 詳細については、「[コマーシャル マーケットプレースでの支払いの受け取り](partner-center-portal/get-paid.md)」を参照してください。 |
 | 既存の [Cloud パートナー ポータル API](cloud-partner-portal-api-overview.md) との API の統合 | 既存の Cloud パートナー ポータル API は引き続きサポートされており、既存の統合は引き続き機能します。 詳細については、「[Cloud パートナー ポータル REST API はまだサポートされていますか?](#are-the-cloud-partner-portal-rest-apis-still-supported)」を参照してください。 |
-| Analytics | パートナー センターで分析を表示することにより、引き続き売上を監視し、パフォーマンスを評価し、コマーシャル マーケットプレースのオファーを最適化することができます。 詳細については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](partner-center-portal/analytics.md)」を参照してください。 |
+| Analytics | パートナー センターで分析を表示することにより、引き続き売上を監視し、パフォーマンスを評価し、コマーシャル マーケットプレースのオファーを最適化することができます。 CPP とパートナー センターで分析レポートを表示する方法には違いがあります。 たとえば、CPP の **[販売者分析情報]** には、使用量ベースのプランと使用量ベースではないプランのデータを表示する **[注文と使用状況]** タブがありますが、パートナー センターには、 **[注文]** ページに SaaS オファー用の別のタブがあります。 詳細については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](partner-center-portal/analytics.md)」を参照してください。 |
 |||
 
 ## <a name="do-i-need-to-create-a-new-account-to-manage-my-offers-in-partner-center"></a>パートナー センターでオファーを管理するには、新しいアカウントを作成する必要がありますか?
@@ -50,6 +50,19 @@ Cloud パートナー ポータルでよく使用されるページに対する�
 | [履歴] ページ | [https://cloudpartner.azure.com/#history](https://cloudpartner.azure.com/#history) | [履歴] 機能はまだパートナー センターではサポートされていません。 |
 | [分析情報] ダッシュボード | [https://cloudpartner.azure.com/#insights](https://cloudpartner.azure.com/#insights) | [https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) |
 | 支払いレポート | [https://cloudpartner.azure.com/#insights/payout](https://cloudpartner.azure.com/#insights/payout) | [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
+|||
+
+## <a name="payout-report-differences"></a>支払いレポートの相違点
+
+廃止された Cloud パートナー ポータルと現在のパートナー センターでの支払いレポートの相違点は次のとおりです。
+
+| クラウド パートナー ポータル | パートナー センター |
+| --- | --- |
+| **リンク**: https://cloudpartner.azure.com/ | **リンク**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory と https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **ナビゲーション**: 分析情報の支払いで提供される支払いレポート | **ナビゲーション**: パートナー センターで提供される支払いレポート – [支払い] アイコン |
+| **[スコープ]** :<ul><li>進行中の回収、回収済み、および支払い済みを対象に、品目ごとの取引が表示されます。</li><li>レポート - 発注書が作成された後のすべての品目が表示されます。これには、進行中の回収と進行中の課金、および回収の状態とまだ支払いの対象となっていない品目が含まれます。</li></ul> | **[スコープ]** :<ul><li>対象となる収益と見なされると品目が表示されます。</li><li>顧客が最初に Microsoft に支払いをすると、ISV に支払いレポートの開始が表示されます。</li><li>支払いレポートには、進行中の回収と進行中の課金は表示されません。</li></ul> |
+| **支払いの準備ができていない取引**:進行中の課金 | **支払いの準備ができていない取引**:次の見積支払: 支払いの状態は未処理の状態です。 |
+| **支払いの状態:** 該当なし | **支払いの状態:**<ul><li>未処理:収益は支払いの対象となります。</li><li>近日中:収益は、次回の月次支払いで発行元に送信されます。</li><li>送信済み:支払いが銀行に送信されました。</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Cloud パートナー ポータルで公開したオファーはどうなりますか?
@@ -94,19 +107,19 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 
     左側のナビゲーション ペインにコマーシャル マーケットプレース プログラムが表示されない場合は、間違ったアカウントを使用している可能性があります。 次のセクションの手順に従って、正しいアカウントにアクセスしてください。
 
-    [![](media/cpp-pc-faq/overview-menu.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/overview-menu.png#lightbox)
+    [![パートナー センターの [概要] メニューを示すスクリーンショット](media/cpp-pc-faq/overview-menu.png "パートナー センターの [概要] メニューを示す")](media/cpp-pc-faq/overview-menu.png#lightbox)
 
 ### <a name="access-the-right-account-in-partner-center"></a>パートナー センターで正しいアカウントにアクセスする
 
 複数のアカウントに属している場合、パートナー センターでは、左側のナビゲーション メニューに 2 つの矢印でマークされたアカウント ピッカー ボタンが表示されます。 アカウント ピッカー ボタンを選択すると、属しているすべてのアカウントの一覧が表示されます。 一覧から任意のアカウントを選択すると、そのアカウントに関連するすべてのプログラムと情報が表示されます。 ナビゲーション メニューにアカウント ピッカー ボタンが表示されない場合は、メンバーになっているアカウントは 1 つだけです。
 
-[![](media/cpp-pc-faq/picker-button.png "Shows the Partner Center account picker button")](media/cpp-pc-faq/picker-button.png#lightbox)
+[![パートナー センターのアカウント ピッカー ボタンを示すスクリーンショット。](media/cpp-pc-faq/picker-button.png "パートナー センターのアカウント ピッカー ボタンを示す")](media/cpp-pc-faq/picker-button.png#lightbox)
 
 ## <a name="how-do-i-create-new-offers"></a>新しいオファーはどのようにして作成すればよいですか?
 
 新しいオファーを作成するには、[パートナー センター](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)でコマーシャル マーケットプレース プログラムにアクセスします。 [概要] ページで、 **[+ 新しいオファー]** を選択します。
 
-[![](media/cpp-pc-faq/new-offer.png "Shows the Partner Center Overview menu")](media/cpp-pc-faq/new-offer.png#lightbox)
+[![パートナー センターの [概要] メニューを示すスクリーンショット。](media/cpp-pc-faq/new-offer.png "パートナー センターの [概要] メニューを示す")](media/cpp-pc-faq/new-offer.png#lightbox)
 
 ## <a name="i-cant-sign-in-and-need-to-open-a-support-ticket"></a>サインインできず、サポート チケットを開く必要があります
 
@@ -124,32 +137,32 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 
 パートナー センターには、常にすべての更新プログラムを一度に公開するのではなく、発行する変更を選択できるモジュール形式の公開オプションが用意されています。 たとえば、次の画面では、公開対象として選択された変更が **[プロパティ]** と **[オファー登録情報]** への変更だけであることが示されています。 [プレビュー] ページで行った変更は公開されません。
 
-[![](media/cpp-pc-faq/review-page.png "Shows the Partner Center Review and publish page")](media/cpp-pc-faq/review-page.png#lightbox)
+[![パートナー センターの [レビューと公開] ページを示すスクリーンショット。](media/cpp-pc-faq/review-page.png "パートナー センターの [レビューと公開] ページを示す")](media/cpp-pc-faq/review-page.png#lightbox)
 
 公開しない更新内容は、下書きとして保存されます。 引き続きオファーのプレビューを使用し、公開する前にオファーを確認します。
 
 ### <a name="enhanced-preview-options"></a>拡充されたプレビュー オプション
 
-パートナー センターには、フィルター オプションが改善された[比較機能](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers)が含まれています。 これにより、オファーのプレビューとライブ バージョンを比較できます。
+パートナー センターには、フィルター オプションが改善された[比較機能](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers)が含まれています。 これにより、オファーのプレビューとライブ バージョンを比較できます。
 
-[![](media/cpp-pc-faq/compare.png "Shows the Partner Center compare feature")](media/cpp-pc-faq/compare.png#lightbox)
+[![パートナー センターの比較機能を示すスクリーンショット。](media/cpp-pc-faq/compare.png "パートナー センターの比較機能を示す")](media/cpp-pc-faq/compare.png#lightbox)
 
 ### <a name="branding-and-navigation-changes"></a>ブランド化とナビゲーションの変更
 
 ブランド化がいくつか変更されていることがわかります。 たとえば、*SKU* はパートナー センターでは "*プラン*" としてブランド化されています。
 
-[![](media/cpp-pc-faq/plans.png "Shows the Partner Center Plans page")](media/cpp-pc-faq/plans.png#lightbox)
+[![パートナー センターの [プラン] ページを示すスクリーンショット。](media/cpp-pc-faq/plans.png "パートナー センターの [プラン] ページを示す")](media/cpp-pc-faq/plans.png#lightbox)
 
 また、以前は Cloud パートナー ポータルの **[マーケットプレース]** または **[店頭の詳細]** (コンサルティング サービス、Power BI アプリ) ページで提供されていた情報は、パートナー センターでは **[オファー登録情報]** ページで収集されます。
 
-[![](media/cpp-pc-faq/offer-listing.png "Shows the Partner Center Offer listing page")](media/cpp-pc-faq/offer-listing.png#lightbox)
+[![パートナー センターの [オファー登録情報] ページを示すスクリーンショット。](media/cpp-pc-faq/offer-listing.png "パートナー センターの [オファー登録情報] ページを示す")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
 以前は Cloud パートナー ポータルの 1 ページで SKU に提供していた情報は、パートナー センターでは複数のページで収集できるようになりました。
 
 - プラン設定ページ
 - [プランのリスト] ページ
 - [プランの可用性] ページ
-- 次に示すように、[技術的な構成] ページを計画します。 ![![](media/cpp-pc-faq/technical-configuration.png "パートナー センターの [技術的な構成] ページを示す")](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- 次に示すように、[技術的な構成] ページを計画します。 ![![パートナー センターの [技術的な構成] ページを示すスクリーンショット](media/cpp-pc-faq/technical-configuration.png "パートナー センターの [技術的な構成] ページを示す")](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 オファー ID がオファーの左側のナビゲーション バーに表示されるようになりました。
 
@@ -159,7 +172,7 @@ Cloud パートナー ポータルで作成したオファーは、パートナ�
 
 パートナー センター ポータルから直接、マーケットプレースで[オファーの販売停止](partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)を要求できます。 このオプションは、オファーの **[オファー概要]** ページで利用できます。
 
-[![](media/cpp-pc-faq/stop-sell.png "Shows the Partner Center page to stop selling an offer")](media/cpp-pc-faq/stop-sell.png#lightbox)
+[![パートナー センターのオファー販売停止ページを示すスクリーンショット。](media/cpp-pc-faq/stop-sell.png "パートナー センターのオファー販売停止ページを示す")](media/cpp-pc-faq/stop-sell.png#lightbox)
 <br><br>
 
 ## <a name="are-the-cloud-partner-portal-rest-apis-still-supported"></a>Cloud パートナー ポータル REST API はまだサポートされていますか?

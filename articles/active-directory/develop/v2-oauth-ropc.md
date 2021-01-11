@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bfc6b6fa6a2af8750c868aaacb289d39306ce06e
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83770978"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118622"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft ID プラットフォームと OAuth 2.0 リソース所有者のパスワード資格情報
 
@@ -33,7 +33,7 @@ Microsoft ID プラットフォームでは、[OAuth 2.0 リソース所有者�
 > * Azure AD テナントに招待された個人アカウントでは、ROPC を使用できません。
 > * パスワードがないアカウントでは、ROPC 経由でサインインできません。 このシナリオでは、代わりに、自分のアプリに対して別のフローを使用することをお勧めします。
 > * ユーザーが[多要素認証 (MFA)](../authentication/concept-mfa-howitworks.md) を使用してアプリケーションにログインすると、ログインできずにブロックされます。
-> * ROPC は[ハイブリッド ID フェデレーション](/azure/active-directory/hybrid/whatis-fed) シナリオ (たとえば、オンプレミスのアカウントの認証に使用される Azure AD や ADFS) ではサポートされていません。 ユーザーがオンプレミスの ID プロバイダーに全ページ リダイレクトされる場合、Azure AD ではその ID プロバイダーに対してユーザー名とパスワードをテストできません。 ただし、ROPC では[パススルー認証](/azure/active-directory/hybrid/how-to-connect-pta)がサポートされています。
+> * ROPC は[ハイブリッド ID フェデレーション](../hybrid/whatis-fed.md) シナリオ (たとえば、オンプレミスのアカウントの認証に使用される Azure AD や ADFS) ではサポートされていません。 ユーザーがオンプレミスの ID プロバイダーに全ページ リダイレクトされる場合、Azure AD ではその ID プロバイダーに対してユーザー名とパスワードをテストできません。 ただし、ROPC では[パススルー認証](../hybrid/how-to-connect-pta.md)がサポートされています。
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
@@ -113,4 +113,4 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ## <a name="learn-more"></a>詳細情報
 
 * [サンプル コンソール アプリケーション](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)を利用し、ROPC をご自分でお試しください。
-* v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。
+* v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](../azuread-dev/azure-ad-endpoint-comparison.md)に関する記事を参照してください。

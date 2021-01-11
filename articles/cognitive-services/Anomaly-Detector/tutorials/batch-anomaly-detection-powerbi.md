@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 9f27deebe3a1fb21f4c7406bfd424196fb1072ec
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 527ce1c7d434ae94c91c78c865c00aa0687a73cb
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921928"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245504"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>チュートリアル:バッチ検出と Power BI を使用して異常を視覚化する
 
@@ -29,10 +29,10 @@ ms.locfileid: "85921928"
 > * 予期された値と確認された値を含み、データ内で見つかった異常と、異常検出の境界を視覚化します。
 
 ## <a name="prerequisites"></a>前提条件
-* [Azure サブスクリプション](https://azure.microsoft.com/free/)
+* [Azure サブスクリプション](https://azure.microsoft.com/free/cognitive-services)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/) (無料で利用可能)。
 * 時系列データ ポイントを含む Excel ファイル (.xlsx)。 このクイック スタートのサンプル データは、[GitHub](https://go.microsoft.com/fwlink/?linkid=2090962) にあります
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector リソースを作成"  target="_blank">Anomaly Detector リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="Anomaly Detector リソースを作成"  target="_blank">Anomaly Detector リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。
     * 対象のアプリケーションを Anomaly Detector API に接続するには、作成したリソースのキーとエンドポイントが必要です。 この作業は、このクイックスタートの中で後から行います。
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
@@ -52,19 +52,19 @@ Power BI Desktop のメイン ウィンドウで、 **[ホーム]** リボンを
 
 ![Power BI のデータ ソースの "ナビゲーター" 画面のイメージ](../media/tutorials/navigator-dialog-box.png)
 
-Power BI は、最初の列のタイムスタンプを `Date/Time` データ型に変換します。 Anomaly Detector API に送信するためには、これらのタイムスタンプをテキストに変換する必要があります。 Power Query エディターが自動的に開かない場合は、ホーム タブで **[クエリの編集]** をクリックします。 
+Power BI は、最初の列のタイムスタンプを `Date/Time` データ型に変換します。 Anomaly Detector API に送信するためには、これらのタイムスタンプをテキストに変換する必要があります。 Power Query エディターが自動的に開かない場合は、ホーム タブで **[クエリの編集]** をクリックします。
 
 Power Query エディターで **[変換]** リボンをクリックします。 **[任意の列]** グループで **[データ型:]** ドロップダウン メニューを開き、 **[テキスト]** を選択します。
 
 ![Power BI のデータ ソースの "ナビゲーター" 画面のイメージ](../media/tutorials/data-type-drop-down.png)
 
-列の型の変更について通知されたら、 **[現在のものを置換]** をクリックします。 その後、 **[ホーム]** リボンの **[閉じて適用]** または **[適用]** をクリックします。 
+列の型の変更について通知されたら、 **[現在のものを置換]** をクリックします。 その後、 **[ホーム]** リボンの **[閉じて適用]** または **[適用]** をクリックします。
 
 ## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>データを作成して応答の書式を設定するための関数を作成する
 
 データ ファイルの書式を設定して Anomaly Detector API に送信するために、上記で作成したテーブルに対するクエリを呼び出すことができます。 Power Query エディターの **[ホーム]** リボンから、 **[新しいソース]** ドロップダウン メニューを開いて、 **[空のクエリ]** をクリックします。
 
-新しいクエリが選択されていることを確認してから、 **[詳細エディター]** をクリックします。 
+新しいクエリが選択されていることを確認してから、 **[詳細エディター]** をクリックします。
 
 ![Power BI の "詳細エディター" ボタンのイメージ](../media/tutorials/advanced-editor-screen.png)
 
@@ -84,7 +84,7 @@ Power Query エディターで **[変換]** リボンをクリックします。
     jsonresp    = Json.Document(bytesresp),
 
     respTable = Table.FromColumns({
-                    
+
                      Table.Column(inputTable, "Timestamp")
                      ,Table.Column(inputTable, "Value")
                      , Record.Field(jsonresp, "IsAnomaly") as list
@@ -96,7 +96,7 @@ Power Query エディターで **[変換]** リボンをクリックします。
 
                   }, {"Timestamp", "Value", "IsAnomaly", "ExpectedValues", "UpperMargin", "LowerMargin", "IsPositiveAnomaly", "IsNegativeAnomaly"}
                ),
-    
+
     respTable1 = Table.AddColumn(respTable , "UpperMargins", (row) => row[ExpectedValues] + row[UpperMargin]),
     respTable2 = Table.AddColumn(respTable1 , "LowerMargins", (row) => row[ExpectedValues] -  row[LowerMargin]),
     respTable3 = Table.RemoveColumns(respTable2, "UpperMargin"),
@@ -112,7 +112,7 @@ Power Query エディターで **[変換]** リボンをクリックします。
  in results
 ```
 
-**[パラメーターの入力]** の下にある `Sheet1` を選択してデータ シートでクエリを呼び出して、 **[呼び出し]** をクリックします。 
+**[パラメーターの入力]** の下にある `Sheet1` を選択してデータ シートでクエリを呼び出して、 **[呼び出し]** をクリックします。
 
 !["詳細エディター" ボタンのイメージ](../media/tutorials/invoke-function-screenshot.png)
 
@@ -121,23 +121,23 @@ Power Query エディターで **[変換]** リボンをクリックします。
 > [!NOTE]
 > データのプライバシーとアクセスのための組織のポリシーに注意してください。 詳細については、[Power BI Desktop のプライバシー レベル](https://docs.microsoft.com/power-bi/desktop-privacy-levels)に関するページを参照してください。
 
-クエリは外部データ ソースを利用するため、実行しようとすると警告メッセージが表示されることがあります。 
+クエリは外部データ ソースを利用するため、実行しようとすると警告メッセージが表示されることがあります。
 
 ![Power BI によって作成された警告が表示されているイメージ](../media/tutorials/blocked-function.png)
 
-これを解決するには、 **[ファイル]** をクリックしてから、 **[オプションと設定]** をクリックします。 次に、 **[オプション]** をクリックします。 **[現在のファイル]** で **[プライバシー]** を選択して、 **[プライバシー レベルを無視し、可能であればパフォーマンスを向上させる]** を選択します。 
+これを解決するには、 **[ファイル]** をクリックしてから、 **[オプションと設定]** をクリックします。 次に、 **[オプション]** をクリックします。 **[現在のファイル]** で **[プライバシー]** を選択して、 **[プライバシー レベルを無視し、可能であればパフォーマンスを向上させる]** を選択します。
 
 さらに、API に接続する方法を指定するよう求めるメッセージが表示されることもあります。
 
 ![アクセス資格情報を指定する要求が表示されているイメージ](../media/tutorials/edit-credentials-message.png)
 
-これを解決するには、メッセージ内の **[資格情報を編集]** をクリックします。 ダイアログ ボックスが表示されたら、 **[匿名]** を選択して API に匿名で接続します。 次いで **[Connect]** をクリックします。 
+これを解決するには、メッセージ内の **[資格情報を編集]** をクリックします。 ダイアログ ボックスが表示されたら、 **[匿名]** を選択して API に匿名で接続します。 次いで **[Connect]** をクリックします。
 
 その後、 **[ホーム]** リボンの **[閉じて適用]** をクリックして変更内容を適用します。
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>Anomaly Detector API 応答を視覚化する
 
-Power BI のメイン画面で、上で作成したクエリの使用を開始して、データを視覚化します。 まず、 **[視覚化]** で **[折れ線グラフ]** を選択します。 次に、呼び出された関数から折れ線グラフの **[軸]** へのタイムスタンプを追加します。 これを右クリックし、 **[タイムスタンプ]** を選択します。 
+Power BI のメイン画面で、上で作成したクエリの使用を開始して、データを視覚化します。 まず、 **[視覚化]** で **[折れ線グラフ]** を選択します。 次に、呼び出された関数から折れ線グラフの **[軸]** へのタイムスタンプを追加します。 これを右クリックし、 **[タイムスタンプ]** を選択します。
 
 ![タイムスタンプ値を右クリックしている](../media/tutorials/timestamp-right-click.png)
 

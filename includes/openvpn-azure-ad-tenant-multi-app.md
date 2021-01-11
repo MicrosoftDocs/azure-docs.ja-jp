@@ -103,7 +103,7 @@ Azure AD テナントで VPN クライアントを登録します。
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app3.png)
 
-6. 必須フィールドに入力し、 **[状態]** を **[有効]** にします。 **[スコープの追加]** をクリックします。
+6. 必須フィールドに入力し、**[状態]** を **[有効]** にします。 **[スコープの追加]** をクリックします。
 
     ![Azure VPN](./media/openvpn-azure-ad-tenant-multi-app/app4.png)
 

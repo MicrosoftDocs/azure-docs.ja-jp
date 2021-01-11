@@ -7,26 +7,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/25/2020
 ms.author: pafarley
-ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 6118f8109f44081c797cb09a6157abaf4044965e
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141893"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89377814"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
 このクイックスタートでは、Form Recognizer REST API とサンプル ラベル付けツールを使用して、手動でラベル付けされたデータを使ってカスタム モデルをトレーニングします。 この機能の詳細については、概要に関するページの「[ラベルを使用したトレーニング](../overview.md#train-with-labels)」を参照してください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Azure-Form-Recognizer/player]
 
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
 
-- 同じ種類の少なくとも 6 つのフォームのセット。 このデータを使用して、モデルのトレーニングとフォームのテストを行います。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Azure Storage アカウントの BLOB ストレージ コンテナーのルートにトレーニング ファイルをアップロードします。
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
+* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+    * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
+    * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
+* 同じ種類の少なくとも 6 つのフォームのセット。 このデータを使用して、モデルのトレーニングとフォームのテストを行います。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)を使用できます。 Standard パフォーマンス レベルの Azure Storage アカウントの BLOB ストレージ コンテナーのルートに、トレーニング ファイルをアップロードします。
 
 ## <a name="create-a-form-recognizer-resource"></a>Form Recognizer リソースを作成する
 
@@ -52,14 +56,35 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
+
+
+
+
 1. `docker pull` コマンドを使用して、サンプル ラベル付けツールのコンテナーを取得します。
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
+    # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)    
+    ```
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    ```
+
+    ---
+
 1. これで、`docker run` を使用してコンテナーを実行する準備が整いました。
+
+    # <a name="v20"></a>[v2.0](#tab/v2-0)    
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
+    # <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1)    
+    ```
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    ```
+
+    --- 
 
    このコマンドを実行すると、Web ブラウザーからサンプル ラベル付けツールを使用できるようになります。 `http://localhost:3000` にアクセスします。
 
@@ -97,7 +122,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **[説明]** - プロジェクトの説明。
 * **[SAS URL]** - Azure Blob Storage コンテナーの Shared Access Signature (SAS) URL。 SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[共有アクセス署名の取得]** を選択します。 有効期限を、サービスの使用を終了する時刻を設定します。 アクセス許可の **[読み取り]** 、 **[書き込み]** 、 **[削除]** 、および **[表示]** チェック ボックスがオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 
-![サンプル ラベル付けツールの接続設定](../media/label-tool/connections.png)
+:::image type="content" source="../media/label-tool/connections.png" alt-text="サンプル ラベル付けツールの接続設定。":::
+
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
@@ -111,7 +137,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **[API キー]** - Form Recognizer のサブスクリプション キー。
 * **[説明]** (省略可能) - プロジェクトの説明
 
-![サンプル ラベル付けツールの新規プロジェクト ページ](../media/label-tool/new-project.png)
+:::image type="content" source="../media/label-tool/new-project.png" alt-text="サンプル ラベル付けツールの新規プロジェクト ページ。":::
 
 ## <a name="label-your-forms"></a>フォームにラベルを付ける
 
@@ -125,15 +151,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 左側のペインにある **[Run OCR on all files]\(すべてのファイルに対して OCR を実行\)** をクリックして、各ドキュメントのテキスト レイアウト情報を取得します。 ラベル付けツールによって、各テキスト要素の周囲に境界ボックスが描画されます。
 
+どのテーブルが自動的に抽出されたかも示されます。 ドキュメントの左側にあるテーブル (グリッド) アイコンをクリックすると、抽出されたテーブルが表示されます。 テーブルの内容は自動的に抽出されるため、このクイックスタートではテーブルの内容に対するラベル付けは行わず、自動化された抽出を信頼することにします。
+
+:::image type="content" source="../media/label-tool/table-extraction.png" alt-text="サンプル ラベル付けツールでのテーブルの視覚化。":::
+
 ### <a name="apply-labels-to-text"></a>ラベルをテキストに適用する
 
 次に、タグ (ラベル) を作成し、モデルに認識させるテキスト要素に適用します。
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
 1. まず、タグ エディター ペインを使用して、識別するタグを作成します。
    1. **+** をクリックして、新しいタグを作成します。
    1. タグ名を入力します。
    1. Enter キーを押して、タグを保存します。
-1. メインのエディターで、クリックしたままドラッグすることで、強調表示されたテキスト要素から 1 つまたは複数の単語を選択します。
+1. メインのエディターで、強調表示されたテキスト要素から単語を選択します。
 1. 適用するタグをクリックするか、対応するキーボード キーを押します。 数字キーは、最初の 10 個のタグのホットキーとして割り当てられます。 タグの順序は、タグ エディター ペインの上矢印と下矢印のアイコンを使用して変更できます。
     > [!Tip]
     > フォームにラベルを付けるときは、次のヒントに留意してください。
@@ -146,7 +177,30 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     > * **+** の右にあるボタンを使用して、タグの検索、名前の変更、順序変更、削除を行います。
     > * タグそのものは削除せずに、適用されているタグを解除するには、タグ付けされた四角形をドキュメント ビューで選択し、Delete キーを押します。
 
-![サンプル ラベル付けツールのメインのエディター ウィンドウ](../media/label-tool/main-editor.png)
+
+# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1) 
+1. まず、タグ エディター ペインを使用して、識別するタグを作成します。
+   1. **+** をクリックして、新しいタグを作成します。
+   1. タグ名を入力します。
+   1. Enter キーを押して、タグを保存します。
+1. メインのエディターで、強調表示されたテキスト要素から単語を選択します。 "_v2.1 プレビュー_" では、キーと値のペアとして、オプション ボタンやチェック ボックスに似た "_選択マーク_" をクリックして選択することもできます。 選択マークの値が "選択済み" と "未選択" のどちらであるかが Form Recognizer によって識別されます。
+1. 適用するタグをクリックするか、対応するキーボード キーを押します。 数字キーは、最初の 10 個のタグのホットキーとして割り当てられます。 タグの順序は、タグ エディター ペインの上矢印と下矢印のアイコンを使用して変更できます。
+    > [!Tip]
+    > フォームにラベルを付けるときは、次のヒントに留意してください。
+    > * 適用できるタグは、選択したテキスト要素ごとに 1 つのみです。
+    > * 各タグは、1 ページにつき 1 回のみ適用できます。 同じフォームに同じ値が複数回出現する場合は、インスタンスごとに異なるタグを作成します。 たとえば、"invoice # 1"、"invoice # 2" などとします。
+    > * タグは複数のページにまたがることはできません。
+    > * フォームに表示されるラベル値は、2 つの異なるタグを使用して 2 つの部分に分割しないでください。 たとえば、アドレス フィールドが複数の行にまたがる場合でも、1 つのタグを使用してラベルを付ける必要があります。
+    > * タグが付けられたフィールドには値のみを含めます。キーは含めないでください。
+    > * テーブル データは自動的に検出され、最終的な出力 JSON ファイルに表示されます。 ただし、モデルが一部のテーブル データを検出できない場合は、これらのフィールドに手動でタグを付けることもできます。 テーブル内のセルごとに異なるラベルを使用してタグ付けします。 さまざまな行数を含むテーブルがフォームにある場合は、できるだけ大きなテーブルを含む 1 つ以上のフォームにタグを付けてください。
+    > * **+** の右にあるボタンを使用して、タグの検索、名前の変更、順序変更、削除を行います。
+    > * タグそのものは削除せずに、適用されているタグを解除するには、タグ付けされた四角形をドキュメント ビューで選択し、Delete キーを押します。
+
+
+---
+
+:::image type="content" source="../media/label-tool/main-editor-2-1.png" alt-text="サンプル ラベル付けツールのメインのエディター ウィンドウ。":::
+
 
 上記の手順に従って、少なくとも 5 つのフォームにラベルを付けてください。
 
@@ -166,6 +220,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * 既定値、`dmy`、`mdy`、`ymd`
 * `time`
 * `integer`
+* `selectionMark` – "_v2.1-preview.1 の新機能_"
 
 > [!NOTE]
 > 日付の書式設定については、次の規則を参照してください。
@@ -192,18 +247,35 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 左側のペインでトレーニング アイコンをクリックして、[トレーニング] ページを開きます。 次に、 **[Train]** ボタンをクリックして、モデルのトレーニングを開始します。 トレーニング プロセスが完了すると、次の情報が表示されます。
 
-* **[Model ID]** - 作成およびトレーニングされたモデルの ID。 トレーニングの呼び出しごとに、独自の ID を持つ新しいモデルが作成されます。 この文字列を安全な場所にコピーしてください。REST API を使用して予測呼び出しを行う場合に必要になります。
+* **[Model ID]** - 作成およびトレーニングされたモデルの ID。 トレーニングの呼び出しごとに、独自の ID を持つ新しいモデルが作成されます。 この文字列を安全な場所にコピーしてください。[REST API](./curl-train-extract.md) または[クライアント ライブラリ](./client-library.md)を使用して予測呼び出しを行う場合に必要になります。
 * **[Average Accuracy]\(平均精度\)** - モデルの平均精度。 追加のフォームにラベルを付け、再度トレーニングを行って新しいモデルを作成することにより、モデルの精度を向上させることができます。 最初は 5 つのフォームにラベルを付け、必要に応じてフォームの数を増やすことをお勧めします。
 * タグの一覧と、タグごとの予測精度。
 
-![トレーニング ビュー](../media/label-tool/train-screen.png)
+
+:::image type="content" source="../media/label-tool/train-screen.png" alt-text="トレーニング ビュー。":::
 
 トレーニングが完了したら、 **[Average Accuracy]\(平均精度\)** の値を確認します。 低い場合は、入力ドキュメントをさらに追加して、上記の手順を繰り返す必要があります。 既にラベルを付けたドキュメントは、プロジェクトのインデックスに残ります。
 
 > [!TIP]
 > REST API 呼び出しを使用してトレーニング プロセスを実行することもできます。 これを行う方法については、[Python によるラベルを使用したトレーニング](./python-labeled-data.md)に関するページを参照してください。
 
-## <a name="analyze-a-form"></a>フォームを分析する
+## <a name="compose-trained-models"></a>トレーニング済みのモデルを作成する
+
+# <a name="v20"></a>[v2.0](#tab/v2-0)  
+
+現在、この機能は v2.1.preview でご利用いただけます。 preview. 
+
+# <a name="v21-preview"></a>[v2.1 プレビュー](#tab/v2-1) 
+
+[Model Compose]\(モデルの作成\) では、1 つのモデル ID に最大 100 個のモデルを作成できます。 この作成済みのモデル ID で Analyze を呼び出すと、Form Recognizer はまず、送信されたフォームを分類し、最も適合するモデルと突き合わせて、そのモデルでの結果を返します。 これは、受信したフォームが、複数のテンプレートのいずれかに属している場合に役立ちます。
+
+サンプル ラベル付けツールでモデルを作成するには、左側にある [Model Compose]\(モデルの作成\) (マージされる矢印) アイコンをクリックします。 左側で、一緒に作成したいモデルを選択します。 矢印アイコンの付いたモデルは、既に作成済みのモデルです。 [作成] ボタンをクリックします。 ポップアップで、新しく作成するモデルに名前を付け、[作成] をクリックします。 操作が完了すると、新しく作成されたモデルが一覧に表示されます。 
+
+:::image type="content" source="../media/label-tool/model-compose.png" alt-text="モデルの作成の UX ビュー。":::
+
+---
+
+## <a name="analyze-a-form"></a>フォームを分析する 
 
 左側の予測 (電球) アイコンをクリックして、モデルをテストします。 トレーニング プロセスで使用しなかったフォーム ドキュメントをアップロードします。 次に、右側にある **[予測]** ボタンをクリックして、フォームのキーと値の予測を取得します。 このツールでは、境界ボックスにタグが適用され、各タグの信頼度がレポートされます。
 
@@ -228,7 +300,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="resume-a-project"></a>プロジェクトを再開する
 
-最後に、メイン ページ (家のアイコン) に移動し、[Open Cloud Project]\(クラウド プロジェクトを開く\) をクリックします。 その後、Blob Storage 接続を選択し、プロジェクトの *.vott* ファイルを選択します。 これにはセキュリティ トークンが含まれているため、アプリケーションによってプロジェクトの設定がすべて読み込まれます。
+最後に、メイン ページ (家のアイコン) に移動し、[Open Cloud Project]\(クラウド プロジェクトを開く\) をクリックします。 その後、Blob Storage 接続を選択し、プロジェクトの *.fott* ファイルを選択します。 これにはセキュリティ トークンが含まれているため、アプリケーションによってプロジェクトの設定がすべて読み込まれます。
 
 ## <a name="next-steps"></a>次のステップ
 

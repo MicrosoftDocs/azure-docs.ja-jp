@@ -4,12 +4,12 @@ description: Azure Backup サービスの概要を紹介し、このサービス
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 70fcbc432c3a3584047fe5ac39f217981a73df71
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9954c8fa6affca7d2c2b73d7176280587d749476
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513525"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89017891"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup サービスとは
 
@@ -19,7 +19,7 @@ Azure Backup サービスは、データをバックアップし、それを Mic
 
 ## <a name="what-can-i-back-up"></a>バックアップできるデータについて
 
-- **オンプレミス** - [Microsoft Azure Recovery Services (MARS) エージェント](backup-support-matrix-mars-agent.md)を使用して、ファイル、フォルダー、システム状態をバックアップします。 または、DPM または Azure Backup Server (MABS) エージェントを使用して、オンプレミスの VM ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) と [VMWare](backup-azure-backup-server-vmware.md)) のほか、[オンプレミスのワークロード](backup-mabs-protection-matrix.md)を保護します。
+- **オンプレミス** - [Microsoft Azure Recovery Services (MARS) エージェント](backup-support-matrix-mars-agent.md)を使用して、ファイル、フォルダー、システム状態をバックアップします。 または、DPM または Azure Backup Server (MABS) エージェントを使用して、オンプレミスの VM ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) と [VMware](backup-azure-backup-server-vmware.md)) のほか、[オンプレミスのワークロード](backup-mabs-protection-matrix.md)を保護します。
 - **Azure VM** - [Windows VM または Linux VM](backup-azure-vms-introduction.md) 全体を (バックアップ拡張機能を使用して) バックアップするか、[MARS エージェント](backup-azure-manage-mars.md)を使用してファイル、フォルダー、システム状態をバックアップします。
 - **Azure Files 共有** - [Azure File 共有はストレージ アカウントにバックアップします](backup-afs.md)。
 - **Azure VM 内の SQL Server** -  [Azure VM 上で動作する SQL Server データベースをバックアップします](backup-azure-sql-database.md)。
@@ -34,7 +34,7 @@ Azure Backup には、以下のような主な利点があります。
 - **オンプレミス バックアップのオフロード**: Azure Backup では、お客様のオンプレミス リソースをクラウドにバックアップするためのシンプルなソリューションが提供されます。 複雑なオンプレミス バックアップ ソリューションをデプロイせずに、短期および長期のバックアップを行えます。
 - **Azure IaaS VM のバックアップ**: Azure Backup では、元のデータが誤って破壊されることを防ぐために、独立して分離されたバックアップを提供しています。 バックアップは、復旧ポイントの管理機能をビルトインで備えた Recovery Services コンテナーに格納されます。 構成とスケーラビリティは単純で、バックアップは最適化され、必要に応じて簡単に復元することができます。
 - **容易なスケーリング** - Azure Backup では、Azure クラウドの基盤となる機能と無制限のスケールを使用して、高可用性を実現します。その際、保守と監視のオーバーヘッドは発生しません。
-- **無制限のデータ転送が可能**: Azure Backup では、転送する受信データまたは送信データの量に制限がなく、転送されるデータに料金はかかりません。
+- **無制限のデータ転送が可能**: Azure Backup では、転送するインバウンド データまたはアウトバウンド データの量に制限がなく、転送されるデータに料金はかかりません。
   - 送信データとは、復元操作中に Recovery Services コンテナーから転送されるデータを指します。
   - Azure Import/Export サービスを使用してオフライン初期バックアップを実行し、大量のデータをインポートした場合は、受信データに対してコストがかかります。  [詳細については、こちらを参照してください](backup-azure-backup-import-export.md)。
 - **データの安全性の確保**: Azure Backup には、[転送中](backup-azure-security-feature.md)のデータと[保存](backup-azure-security-feature-cloud.md)データを保護するためのソリューションがあります。

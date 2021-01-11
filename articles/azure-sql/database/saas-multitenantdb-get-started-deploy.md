@@ -97,7 +97,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 > zip ファイルを外部ソースからダウンロードして抽出すると、実行可能なコンテンツ (スクリプト、DLL) が Windows によってブロックされる場合があります。 zip ファイルからスクリプトを抽出するとき、以下の手順を実行して、.zip ファイルをブロック解除してから抽出します。 .zip ファイルをブロック解除することによってスクリプトを実行できるようになります。
 
 1. [WingtipTicketsSaaS-MultiTenantDb GitHub リポジトリ](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)を参照します。
-2. **[複製またはダウンロード]** をクリックします。
+2. **[Clone or download]\(複製またはダウンロード\)** をクリックします。
 3. **[Download ZIP]** をクリックし、ファイルを保存します。
 4. **WingtipTicketsSaaS-MultiTenantDb-master.zip** ファイルを右クリックし、 **[プロパティ]** を選択します。
 5. **[全般]** タブで **[ブロックの解除]** を選択し、 **[適用]** をクリックします。

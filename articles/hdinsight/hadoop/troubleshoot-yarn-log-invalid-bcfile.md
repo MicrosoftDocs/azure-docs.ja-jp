@@ -34,7 +34,7 @@ Apache Yarn ログは `IndexFile` 形式に集約されますが、これはフ�
 
 1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
-1. Ambari UI から **[YARN]**  >  **[Configs]/(構成/)**  >  **[Advanced]/(拡張/)**  >  **[Advanced yarn-site] /(拡張 YARN-サイト/)** に移動します。
+1. Ambari UI から **[YARN]**  >  **[Configs]\(構成\)**  >  **[Advanced]\(拡張\)**  >  **[Advanced yarn-site]\(拡張 YARN-サイト\)** に移動します。
 
 1. WASB ストレージの場合:`yarn.log-aggregation.file-formats` の既定値は `IndexedFormat,TFile` です。 値を `TFile` に変更します。
 

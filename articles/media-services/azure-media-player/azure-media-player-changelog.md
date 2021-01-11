@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 07/27/2020
-ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281346"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432664"
 ---
 # <a name="changelog"></a>変更ログ #
 
@@ -57,13 +57,13 @@ ms.locfileid: "87281346"
 
 ### <a name="changes-234"></a>変更 2.3.4
 
-- iOS および MacOS Safari で HLS を再生するときに空のキャプション ラベル/トラックを削除
+- iOS および macOS Safari で HLS を再生するときに空のキャプション ラベル/トラックを削除
 - IMSC1 キャプションの 412s の数を削減
 - ライブ デバッグに役立つように、10 個の連続する空の IMSC1 キャプション応答に対する警告をコンソールに出力
 
 ## <a name="232-official-update-october-9-2019"></a>2.3.2 (公式更新プログラム 2019 年 10 月 9 日)
 
-### <a name="features"></a>特徴
+### <a name="features-232"></a>機能 2.3.2
 
 \- Chromium Edge ブラウザーの DASH 再生の PlayReady サポートを追加
 

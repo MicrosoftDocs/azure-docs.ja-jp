@@ -38,7 +38,7 @@ Azure Database Migration Service プロジェクトに新しいアクティビ�
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>移行のために選択されたデータベースの最大数
 
-Azure SQL Database または Azure SQL マネージド インスタンスに移動するためのデータベース移行プロジェクトのアクティビティを作成すると、次のエラーが発生します。
+Azure SQL Database または Azure SQL Managed Instance に移動するためのデータベース移行プロジェクトのアクティビティを作成すると、次のエラーが発生します。
 
 * **Error**: 移行の設定の検証エラー、"errorDetail": "'Databases' のオブジェクトの最大数 '4' を超えるオブジェクトが移行用に選択されています。"
 

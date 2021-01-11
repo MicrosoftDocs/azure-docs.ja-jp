@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 642082b3fe23e0d007e21409062fe8e777728cc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24e0cfa4227ba5d7c38449d3cf1304add5ae5c1f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518541"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718885"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>チュートリアル:Azure Active Directory のパスワードを保護するためのカスタムの禁止パスワードを構成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "86518541"
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* 少なくとも試用版ライセンスが有効になっている、動作している Azure AD テナント。
+* 少なくとも Azure AD Premium P1 または試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * "*グローバル管理者*" 特権を持つアカウント。
 * パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してパスワード変更イベントをテストします。
@@ -77,7 +77,7 @@ Azure AD には、グローバル禁止パスワードの一覧が用意され�
 
     次の例に示すように、禁止する独自のカスタム パスワードを指定します
 
-    [![](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png "Modify the custom banned password list under Authentication Methods in the Azure portal")](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
+    [ ![Azure portal の [認証方法] でカスタムの禁止パスワード リストを変更する](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords-cropped.png) ](media/tutorial-configure-custom-password-protection/enable-configure-custom-banned-passwords.png#lightbox)
 
 1. **[Windows Server Active Directory のパスワード保護を有効にする]** オプションは、 *[いいえ]* のままにします。
 1. カスタムの禁止パスワードとエントリを有効にするには、 **[保存]** を選択します。
@@ -124,4 +124,4 @@ Azure AD には、グローバル禁止パスワードの一覧が用意され�
 > * 禁止パスワードを使用してパスワードの変更をテストする
 
 > [!div class="nextstepaction"]
-> [リスクベースの Azure Multi-Factor Authentication を有効にする](tutorial-mfa-applications.md)
+> [リスクベースの Azure Multi-Factor Authentication を有効にする](./tutorial-enable-azure-mfa.md)

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4fc459e63dd48adb49ab916c368b68cc3a1ccbaf
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757605"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717032"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Multi-Factor Authentication のデプロイを計画する
 
@@ -74,7 +74,7 @@ Azure Multi-Factor Authentication は、条件付きアクセスでポリシー�
 
 条件付きアクセス ポリシーでは登録が強制され、登録されていないユーザーは最初のサインイン時に登録を完了するよう要求されます。これは、重要なセキュリティに関する考慮事項です。
 
-[Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) は、Azure Multi-factor Authentication の状況に対し、登録ポリシーと、自動化されたリスクの検出と修復のポリシーの両方の点で寄与します。 ID 侵害の脅威があるときにパスワードの変更を強制するポリシー、または次の[イベント](../reports-monitoring/concept-risk-events.md)によってサインインにリスクがあると認められるときに MFA を要求するポリシーを作成できます。
+[Azure AD Identity Protection](../identity-protection/howto-identity-protection-configure-risk-policies.md) は、Azure Multi-factor Authentication の状況に対し、登録ポリシーと、自動化されたリスクの検出と修復のポリシーの両方の点で寄与します。 ID 侵害の脅威があるときにパスワードの変更を強制するポリシー、または次の[イベント](../identity-protection/overview-identity-protection.md)によってサインインにリスクがあると認められるときに MFA を要求するポリシーを作成できます。
 
 * 漏洩した資格情報
 * 匿名の IP アドレスからのサインイン
@@ -108,6 +108,9 @@ Microsoft では、組織が条件付きアクセスを使用し、[ネームド
 ## <a name="plan-authentication-methods"></a>認証方法を計画する
 
 管理者は、ユーザーに対して使用可能にする[認証方法](../authentication/concept-authentication-methods.md)を選択できます。 主要な方法を使用できないときにユーザーがバックアップの方法を使用できるよう、複数の認証方法を許可することが重要です。 管理者は次の方法を有効にできます。
+
+> [!TIP]
+> Microsoft では、最適なセキュリティとユーザー エクスペリエンスを実現するために、Azure Multi-Factor Authentication の主要な方法としてモバイル アプリを使用することが推奨されています。
 
 ### <a name="notification-through-mobile-app"></a>モバイル アプリでの通知
 
@@ -148,7 +151,7 @@ Microsoft Authenticator アプリなどのモバイル アプリで、30 秒ご�
 
 ### <a name="registration-with-identity-protection"></a>Identity Protection を使用する登録
 
-組織が Azure Active Directory Identity Protection を使用して場合は、ユーザーが対話形式で次にサインインするときに登録を求めるよう、[MFA 登録ポリシーを構成](../identity-protection/howto-mfa-policy.md)します。
+組織が Azure Active Directory Identity Protection を使用して場合は、ユーザーが対話形式で次にサインインするときに登録を求めるよう、[MFA 登録ポリシーを構成](../identity-protection/howto-identity-protection-configure-mfa-policy.md)します。
 
 ### <a name="registration-without-identity-protection"></a>Identity Protection を使用しない登録
 
@@ -162,7 +165,7 @@ Microsoft Authenticator アプリなどのモバイル アプリで、30 秒ご�
 2. 条件付きアクセスを使用して、このグループに、すべてのリソースへのアクセスのための多要素認証を強制します。
 3. 定期的に、グループのメンバーシップを再評価し、登録の済んだユーザーをグループから削除します。
 
-[MSOnline PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)に依存する PowerShell コマンドを使用して、登録済みと未登録の Azure MFA ユーザーを識別できます。
+[MSOnline PowerShell モジュール](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)に依存する PowerShell コマンドを使用して、登録済みと未登録の Azure MFA ユーザーを識別できます。
 
 #### <a name="identify-registered-users"></a>登録済みのユーザーを識別する
 
@@ -278,7 +281,7 @@ NPS 拡張機能は、RADIUS とクラウドベースの Azure MFA の間のア�
 
 #### <a name="implementing-your-nps-server"></a>NPS サーバーの実装
 
-既に NPS インスタンスがデプロイされて使用されている場合は、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](howto-mfa-nps-extension.md)」をご覧ください。 NPS を初めて設定する場合は、「[ネットワーク ポリシー サーバー (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」の手順をご覧ください。 トラブルシューティングのガイダンスについては、「[Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)」をご覧ください。
+既に NPS インスタンスがデプロイされて使用されている場合は、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](howto-mfa-nps-extension.md)」をご覧ください。 NPS を初めて設定する場合は、「[ネットワーク ポリシー サーバー (NPS)](/windows-server/networking/technologies/nps/nps-top)」の手順をご覧ください。 トラブルシューティングのガイダンスについては、「[Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](howto-mfa-nps-extension-errors.md)」をご覧ください。
 
 #### <a name="prepare-nps-for-users-that-arent-enrolled-for-mfa"></a>MFA に登録されていないユーザーのために NPS を準備する
 
@@ -322,7 +325,7 @@ Windows セキュリティ ログと AD FS 管理者ログ両方の標準的な 
 
 各 AD FS サーバーでは、ローカル コンピューターの My ストアに、OU=Microsoft AD FS Azure MFA というタイトルの自己署名された Azure MFA 証明書があり、証明書の有効期限の日付が含まれます。 有効期限を確認するには、各 AD FS サーバーでこの証明書の有効期間を調べます。
 
-証明書の有効期限が近づいている場合は、[各 AD FS サーバーで新しい MFA 証明書を生成して検証](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)します。
+証明書の有効期限が近づいている場合は、[各 AD FS サーバーで新しい MFA 証明書を生成して検証](/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)します。
 
 次のガイダンスでは、AD FS サーバー上の Azure MFA 証明書を管理する方法について詳しく説明します。 Azure MFA で AD FS を構成する場合、`New-AdfsAzureMfaTenantCertificate` PowerShell コマンドレットを使用して生成される証明書の有効期限は 2年です。 MFA サービスが中断するのを防ぐため、期限が切れる前に証明書を更新してインストールします。
 
@@ -333,7 +336,7 @@ Windows セキュリティ ログと AD FS 管理者ログ両方の標準的な 
 1. 必要な前提条件をすべて満たします
    1. ハイブリッド シナリオの場合は [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) をデプロイします
    1. クラウド アクセス用に公開されるすべてのオンプレミス アプリには [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を展開します
-   1. RADIUS 認証の場合は [NPS](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) をデプロイします
+   1. RADIUS 認証の場合は [NPS](/windows-server/networking/technologies/nps/nps-top) をデプロイします
    1. ユーザーが先進認証を有効にしたサポートされるバージョンの Microsoft Office にアップグレードしたことを確認します
 1. 選択した[認証方法](#choose-verification-options)を構成します
 1. [名前付きのネットワークの場所](../conditional-access/location-condition.md#named-locations)を定義します
@@ -341,7 +344,7 @@ Windows セキュリティ ログと AD FS 管理者ログ両方の標準的な 
 1. [条件付きアクセス ポリシー](#create-conditional-access-policy)を構成する
 1. MFA 登録ポリシーを構成します
    1. [結合された MFA と SSPR](howto-registration-mfa-sspr-combined.md)
-   1. [Identity Protection](../identity-protection/howto-mfa-policy.md) の場合
+   1. [Identity Protection](../identity-protection/howto-identity-protection-configure-mfa-policy.md) の場合
 1. ユーザーに通知を送り、[https://aka.ms/mfasetup](https://aka.ms/mfasetup) でユーザーに登録させます
 1. [登録したユーザーを追跡します](#identify-non-registered-users)
 

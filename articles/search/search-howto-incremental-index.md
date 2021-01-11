@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 4a732bd81b65c0c6b0cc227e1ed82de7bae3a1a0
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c432b89574949b31612aeba862ece7687c12dde4
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86230708"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922839"
 ---
 # <a name="how-to-configure-caching-for-incremental-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search でインクリメンタル エンリッチメントのキャッシュを構成する方法
 
@@ -38,7 +38,7 @@ ms.locfileid: "86230708"
 
 コンポーネント (データソース、スキルセット、インデックス) を含む既存の有効なインデクサーを使用して開始します。 インデクサーは実行可能である必要があります。 
 
-API クライアントを使用して、[GET インデクサー要求](https://docs.microsoft.com/rest/api/searchservice/get-indexer)を作成してインデクサーの現在の構成を取得します。 プレビュー API バージョンを使用してインデクサーを取得すると、null に設定された `cache` プロパティが定義に追加されます。
+API クライアントを使用して、[GET インデクサー要求](/rest/api/searchservice/get-indexer)を作成してインデクサーの現在の構成を取得します。 プレビュー API バージョンを使用してインデクサーを取得すると、null に設定された `cache` プロパティが定義に追加されます。
 
 ```http
 GET https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
@@ -75,7 +75,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 ### <a name="step-3-reset-the-indexer"></a>手順 3:インデクサーをリセットする
 
-すべてのドキュメントが一貫した状態になるように、既存のインデクサーにインクリメンタル エンリッチメントを設定するときは、インデクサーをリセットする必要があります。 このタスクには、ポータルまたは API クライアントと [Reset Indexer REST API](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) を使用することができます。
+すべてのドキュメントが一貫した状態になるように、既存のインデクサーにインクリメンタル エンリッチメントを設定するときは、インデクサーをリセットする必要があります。 このタスクには、ポータルまたは API クライアントと [Reset Indexer REST API](/rest/api/searchservice/reset-indexer) を使用することができます。
 
 ```http
 POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/reset?api-version=2020-06-30-Preview
@@ -85,7 +85,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 ### <a name="step-4-save-the-updated-definition"></a>手順 4:更新された定義を保存する
 
-PUT 要求を使用して[インデクサーを更新](https://docs.microsoft.com/rest/api/searchservice/preview-api/update-indexer)します。要求の本文には、cache プロパティを含む更新されたインデクサーの定義を含める必要があります。 400 が表示された場合は、インデクサーの定義を確認して、すべての要件が満たされていることを確認します (データ ソース、スキルセット、インデックス)。
+PUT 要求を使用して[インデクサーを更新](/rest/api/searchservice/preview-api/update-indexer)します。要求の本文には、cache プロパティを含む更新されたインデクサーの定義を含める必要があります。 400 が表示された場合は、インデクサーの定義を確認して、すべての要件が満たされていることを確認します (データ ソース、スキルセット、インデックス)。
 
 ```http
 PUT https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]?api-version=2020-06-30-Preview
@@ -115,7 +115,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 インデクサーを実行するには、ポータルまたは API を使用します。 ポータルでは、インデクサーの一覧からインデクサーを選択し、 **[実行]** をクリックします。 ポータルを使用する利点の 1 つは、インデクサーの状態を監視し、ジョブの実行時間と処理されるドキュメントの数を確認できることです。 ポータルのページは、数分ごとに更新されます。
 
-別の方法として、REST を使用して[インデクサーを実行](https://docs.microsoft.com/rest/api/searchservice/run-indexer)することもできます。
+別の方法として、REST を使用して[インデクサーを実行](/rest/api/searchservice/run-indexer)することもできます。
 
 ```http
 POST https://[YOUR-SEARCH-SERVICE].search.windows.net/indexers/[YOUR-INDEXER-NAME]/run?api-version=2020-06-30-Preview
@@ -137,7 +137,7 @@ api-key: [YOUR-ADMIN-KEY]
 
 ## <a name="enable-caching-on-new-indexers"></a>新しいインデクサーでキャッシュを有効にする
 
-新しいインデクサーのインクリメンタル エンリッチメントを設定するには、[[インデクサーの作成] (2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) を呼び出すときにインデクサー定義のペイロードに `cache` プロパティを含めるだけです。 
+新しいインデクサーのインクリメンタル エンリッチメントを設定するには、[[インデクサーの作成] (2020-06-30-Preview)](/rest/api/searchservice/preview-api/create-indexer) を呼び出すときにインデクサー定義のペイロードに `cache` プロパティを含めるだけです。 
 
 
 ```json
@@ -165,16 +165,16 @@ api-key: [YOUR-ADMIN-KEY]
 
 ## <a name="working-with-the-cache"></a>キャッシュの使用
 
-キャッシュが操作可能になると、インデクサーは、[[インデクサーの実行]](https://docs.microsoft.com/rest/api/searchservice/run-indexer) が呼び出さるたびにキャッシュをチェックして、既存の出力のどの部分を使用できるかを確認します。 
+キャッシュが操作可能になると、インデクサーは、[[インデクサーの実行]](/rest/api/searchservice/run-indexer) が呼び出さるたびにキャッシュをチェックして、既存の出力のどの部分を使用できるかを確認します。 
 
 次の表は、さまざまな API がキャッシュにどのように関連しているかをまとめたものです。
 
 | API           | キャッシュの影響     |
 |---------------|------------------|
-| [インデクサーの作成 (2020-06-30-Preview)](https://docs.microsoft.com/rest/api/searchservice/preview-api/create-indexer) | インデクサー定義で指定されている場合は、キャッシュの作成などの最初の使用時にインデクサーを作成して実行します。 |
-| [インデクサー実行](https://docs.microsoft.com/rest/api/searchservice/run-indexer) | 必要に応じてエンリッチメント パイプラインを実行します。 この API は、キャッシュが存在する場合はキャッシュから読み取り、更新されたインデクサー定義にキャッシュを追加した場合はキャッシュを作成します。 キャッシュが有効になっているインデクサーを実行すると、キャッシュされた出力を使用できる場合はインデクサーが手順を省略します。 この API の一般公開版またはプレビュー版 API を使用できます。|
-| [インデクサーのリセット](https://docs.microsoft.com/rest/api/searchservice/reset-indexer)| 増分インデックスの作成情報のインデクサーをクリアします。 次回のインデクサー実行 (オンデマンドまたはスケジュール) は、すべてのスキルの再実行やキャッシュの再構築を含み、最初から完全に再処理されます。 これは、インデクサーを削除して再作成することと機能的には同じです。 この API の一般公開版またはプレビュー版 API を使用できます。|
-| [スキルのリセット](https://docs.microsoft.com/rest/api/searchservice/preview-api/reset-skills) | スキルを変更していない場合でも、次回のインデクサー実行時に再実行するスキルを指定します。 キャッシュは適宜更新されます。 ナレッジ ストアや検索インデックスなどの出力は、キャッシュにある再利用可能なデータと更新されたスキルに基づく新しいコンテンツを使用して更新されます。 |
+| [インデクサーの作成 (2020-06-30-Preview)](/rest/api/searchservice/preview-api/create-indexer) | インデクサー定義で指定されている場合は、キャッシュの作成などの最初の使用時にインデクサーを作成して実行します。 |
+| [インデクサー実行](/rest/api/searchservice/run-indexer) | 必要に応じてエンリッチメント パイプラインを実行します。 この API は、キャッシュが存在する場合はキャッシュから読み取り、更新されたインデクサー定義にキャッシュを追加した場合はキャッシュを作成します。 キャッシュが有効になっているインデクサーを実行すると、キャッシュされた出力を使用できる場合はインデクサーが手順を省略します。 この API の一般公開版またはプレビュー版 API を使用できます。|
+| [インデクサーのリセット](/rest/api/searchservice/reset-indexer)| 増分インデックスの作成情報のインデクサーをクリアします。 次回のインデクサー実行 (オンデマンドまたはスケジュール) は、すべてのスキルの再実行やキャッシュの再構築を含み、最初から完全に再処理されます。 これは、インデクサーを削除して再作成することと機能的には同じです。 この API の一般公開版またはプレビュー版 API を使用できます。|
+| [スキルのリセット](/rest/api/searchservice/preview-api/reset-skills) | スキルを変更していない場合でも、次回のインデクサー実行時に再実行するスキルを指定します。 キャッシュは適宜更新されます。 ナレッジ ストアや検索インデックスなどの出力は、キャッシュにある再利用可能なデータと更新されたスキルに基づく新しいコンテンツを使用して更新されます。 |
 
 キャッシュの動作を制御する方法の詳細については、「[キャッシュ管理](cognitive-search-incremental-indexing-conceptual.md#cache-management)」を参照してください。
 

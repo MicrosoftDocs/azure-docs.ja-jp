@@ -1,23 +1,24 @@
 ---
-title: 「Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する」を参照してください。
+title: Azure CLI で BLOB またはキュー データへのアクセスの承認方法を選択する
 titleSuffix: Azure Storage
 description: Azure CLI を使用して、BLOB またはキューのデータに対するデータ操作を承認する方法を指定します。 データ操作を承認するには、アカウント アクセス キーまたは アクセス共有シグネチャ (SAS) トークンを使用して、Azure AD 資格情報を使用します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: a089ffb7631ded7bd36a4eee5fb862ced3fd2ad0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805479"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589064"
 ---
-# <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>「Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する」を参照してください。
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Azure CLI で BLOB またはキュー データへのアクセスの承認方法を選択する
 
 Azure Storage には、BLOB またはキューのデータに対する操作を承認する方法を指定できるようにするための Azure CLI の拡張機能が用意されています。 データ操作は、次の方法で承認できます。
 
@@ -42,7 +43,7 @@ BLOB データとキュー データの読み取りと書き込みのための�
 
 Azure AD 資格情報で Azure CLI にサインインすると、OAuth 2.0 アクセス トークンが返されます。 そのトークンが Azure CLI によって自動的に使用され、BLOB または Queue storage に対するその後のデータ操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
-BLOB とキューのデータへのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の RBAC ロールの詳細については、[RBAC を使用した Azure ストレージ データへのアクセス権の管理](storage-auth-aad-rbac.md)」を参照してください。
+BLOB とキューのデータへのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD セキュリティ プリンシパルに割り当てることができます。 Azure Storage の Azure ロールの詳細については、[RBAC を使用した Azure Storage データへのアクセス権の管理](storage-auth-aad-rbac.md)に関する記事を参照してください。
 
 ### <a name="permissions-for-calling-data-operations"></a>データ操作呼び出しのアクセス許可
 
@@ -54,10 +55,10 @@ Azure Storage 拡張機能は、BLOB とキュー データの操作でサポー
 
 次の例では、Azure AD の資格情報を使用して Azure CLI からコンテナーを作成する方法を示しています。 コンテナーを作成するには、Azure CLI にログインする必要があります。また、リソース グループとストレージ アカウントが必要になります。 これらのリソースの作成方法については、次をご覧ください。 [クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、リストする ](../blobs/storage-quickstart-blobs-cli.md)。
 
-1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 RBAC ロールの割り当ての詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
+1. コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](storage-auth-aad-rbac.md)」を参照してください。
 
     > [!IMPORTANT]
-    > RBAC ロールの割り当ての反映には数分かかることがあります。
+    > Azure ロールの割り当ての反映には数分かかることがあります。
 
 1. [az storage container create](/cli/azure/storage/container#az-storage-container-create) コマンドを、`--auth-mode` パラメーターに `login` を設定して呼び出し、自分の Azure AD サインイン情報を使用してコンテナーを作成します。 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
@@ -107,5 +108,5 @@ az storage container create \
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure CLI を使用して、BLOB およびキュー データにアクセスするための RBAC ロールを割り当てる](storage-auth-aad-rbac-cli.md)
+- [Azure CLI を使用して、BLOB およびキュー データにアクセスするための Azure ロールを割り当てる](storage-auth-aad-rbac-cli.md)
 - [Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する](storage-auth-aad-msi.md)

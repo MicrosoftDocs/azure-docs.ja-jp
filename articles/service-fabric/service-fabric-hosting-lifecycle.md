@@ -5,12 +5,12 @@ author: tugup
 ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
-ms.openlocfilehash: b106061805ea5485893df292c40974d3ee9bcadb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258823"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405128"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric ホスティングのライフサイクル
 この記事では、アプリケーションがノードでアクティブ化されるときに発生するイベントと、動作を制御するために使用されるさまざまなクラスター構成の概要について説明します。

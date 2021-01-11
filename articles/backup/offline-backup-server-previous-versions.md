@@ -1,14 +1,14 @@
 ---
 title: Data Protection Manager (DPM) および Microsoft Azure Backup Server (MABS) のオフライン バックアップ - 以前のバージョン
-description: Azure Backup では、Azure Import/Export サービスを使用してネットワークからデータを送信できます。 この記事では、DPM と Azure Backup Server でのオフライン バックアップ ワークフローについて説明します。
+description: Azure Backup では、Azure Import/Export サービスを使用してネットワークからデータを送信できます。 この記事では、以前のバージョンの DPM と Azure Backup Server でのオフライン バックアップ ワークフローについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186947"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890095"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM および Azure Backup Server のオフライン バックアップのワークフロー (以前のバージョン)
 
@@ -203,7 +203,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 
 1. Azure への転送を準備する、マウント済みディスクのドライブ文字を入力します (末尾のコロンを除く)。 メッセージが表示されたら、ドライブをフォーマットすることを確認します。
 
-    これにより、ディスクとバックアップ データのコピーの準備が開始されます。 指定したディスクにバックアップ データを格納するための領域が十分にない場合は、メッセージが表示されます。その場合は、追加のディスクを接続する必要があります。 <br/>
+    これにより、ディスクとバックアップ データのコピーの準備が開始されます。 指定したディスクにバックアップ データを格納するための領域が十分にない場合は、ツールによりメッセージが表示されます。その場合は、追加のディスクを接続する必要があります。 <br/>
 
     ツールが正常に完了したら、指定した 1 つ以上のディスクを Azure に発送する準備は完了です。 また、「オフライン バックアップの開始」セクションのワークフローで指定した名前のインポート ジョブも Azure に作成されます。 最後に、ディスクの送付先である Azure データセンターの住所が表示されます。
 

@@ -1,17 +1,18 @@
 ---
 title: REST API を使用して Azure サービスのリソースの使用状況を確認する
-description: Azure REST API を使用して Azure サービスのリソースの使用状況を確認する方法を説明します。
+description: Azure REST API を使用して Azure サービスのリソースの使用状況を確認する方法を説明します。 コスト管理レポートを作成し、特定のリソースの種類をフィルター処理します。
 author: lleonard-msft
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 60a9e17b16f0b539693beb987b4d0610d11a3050
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: a7b06ff41e537513558e7f4dc8e1732966299b01
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521200"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684730"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>REST API を使用して Azure リソースの使用状況を確認する
 

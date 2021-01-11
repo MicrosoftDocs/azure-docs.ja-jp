@@ -1,18 +1,19 @@
 ---
 title: Microsoft 顧客契約の請求先の設定 - Azure
-description: Microsoft 顧客契約の請求先アカウントの設定方法について説明します。
+description: Microsoft 顧客契約の請求先アカウントの設定方法について説明します。 設定の前提条件を参照して、使用可能なその他のリソースを確認してください。
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
-ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
+ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80258058"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88682792"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft 顧客契約の請求先アカウントの設定
 
@@ -250,7 +251,7 @@ Enterprise Agreement 加入契約での Azure の予約は、特典や条件の�
 
 2. "**コスト管理 + 請求**" を検索します。
 
-   ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png)。
+   ![Azure portal の検索を表示するスクリーンショット](./media/mca-setup-account/search-cmb.png).
 
 3. 請求書セクションを選択します。 請求書セクションは、Enterprise Agreement 加入契約内にそれぞれの部署と同じ名前を持ちます。 お持ちのアクセス権によっては、請求先アカウントを選択することが必要な場合があります。 課金アカウントから **[課金プロファイル]** を選択し、 **[請求書セクション]** を選択します。 請求書セクションの一覧から請求書セクションを選択します。
 

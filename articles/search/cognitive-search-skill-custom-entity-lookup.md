@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 00192ab3663944908f282f601396651cdd319df2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987473"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936114"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>カスタム エンティティの参照認知スキル (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "84987473"
 
 **カスタム エンティティの参照**スキルを使うと、ユーザーが定義したカスタムの単語と語句の一覧からテキストを検索できます。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。  
 
-このスキルは Cognitive Services API にバインドされていないため、プレビュー期間中は無料で使用できます。 ただし、1 日の強化の制限を上書きするには、[Cognitive Services リソースを接続する](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)ようにします。 Azure Cognitive Search 経由でアクセスする場合、1 日あたりの制限が Cognitive Services への無料のアクセスに適用されます。
+このスキルは Cognitive Services API にバインドされていないため、プレビュー期間中は無料で使用できます。 ただし、1 日の強化の制限を上書きするには、[Cognitive Services リソースを接続する](./cognitive-search-attach-cognitive-services.md)ようにします。 Azure Cognitive Search 経由でアクセスする場合、1 日あたりの制限が Cognitive Services への無料のアクセスに適用されます。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.CustomEntityLookupSkill 

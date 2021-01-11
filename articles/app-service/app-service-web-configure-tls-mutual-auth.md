@@ -4,13 +4,13 @@ description: TLS でクライアント証明書を認証する方法を学びま
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592368"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213636"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成
 
@@ -24,7 +24,7 @@ ms.locfileid: "82592368"
 
 ## <a name="enable-client-certificates"></a>クライアント証明書を有効にする
 
-アプリでクライアント証明書を必須にするようアプリを設定するには、Azure Portal で **[構成]** >  **[全般設定]** の順に選択して、[Require incoming certificate]\(着信証明書を必須にする\) を **[オン]** にするか、アプリの `clientCertEnabled` 設定を `true` に設定する必要があります。 この設定を行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+アプリでクライアント証明書を必須にするようアプリを設定するには、Azure Portal で **[構成]**  >  **[全般設定]** の順に選択して、[Require incoming certificate]\(着信証明書を必須にする\) を **[オン]** にするか、アプリの `clientCertEnabled` 設定を `true` に設定する必要があります。 この設定を行うには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -34,7 +34,7 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 お使いのアプリケーションで相互認証を有効にすると、お使いのアプリのルート下のすべてのパスで、アクセスにクライアント証明書が必要になります。 特定のパスが匿名アクセスできるよう残すには、お使いのアプリケーションを構成するときに除外するパスを定義する必要があります。
 
-除外するパスを構成するには、 **[構成]** >  **[全般設定]** の順に選択して除外するパスを定義します。 この例では、お使いのアプリケーションの `/public` パスの下のすべてで、クライアント証明書は要求されません。
+除外するパスを構成するには、 **[構成]**  >  **[全般設定]** の順に選択して除外するパスを定義します。 この例では、お使いのアプリケーションの `/public` パスの下のすべてで、クライアント証明書は要求されません。
 
 ![証明書不要のパス][exclusion-paths]
 

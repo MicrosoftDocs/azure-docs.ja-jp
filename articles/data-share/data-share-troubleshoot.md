@@ -2,17 +2,17 @@
 title: Azure Data Share のトラブルシューティング
 description: Azure Data Share でデータ共有を作成または受信するときに発生する、招待の問題やエラーを解決する方法について説明します。
 services: data-share
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 07/10/2019
-ms.openlocfilehash: 510787b395388f0dc895b9646aee8208013f3b42
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/14/2020
+ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322039"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257795"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Data Share での一般的な問題のトラブルシューティング 
 
@@ -34,7 +34,7 @@ ms.locfileid: "85322039"
     1. 「**Microsoft.DataShare**」を検索します
     1. **[登録]** をクリックします。 
 
-    これらの手順を完了するには、[Azure 共同作成者 RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)を持っている必要があります。 
+    これらの手順を完了するには、Azure サブスクリプションに対する [Azure 共同作成者ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor)が必要です。 
 
 * **Azure ログイン用メールではなくメール エイリアスに招待が送信されています。** Azure Data Share サービスを登録している、または Azure テナントに既に Data Share リソースを作成しているにもかかわらず、まだ招待が表示されない場合、その原因として、プロバイダーが受信者として Azure ログイン用メール アドレスではなくメール エイリアスを入力した可能性があります。 データ プロバイダーに問い合わせて、招待がメール エイリアスではなく Azure ログイン用メール アドレスに送信されていることを確認してください。
 

@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124564"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827338"
 ---
 ## <a name="configure-the-sample-project"></a>サンプル プロジェクトを構成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "87124564"
 
 お使いのマシン上のダウンロードしたファイルに移動し、ファイルを解凍します。
 
-解凍したフォルダー内の _AdtSampleApp/_ に移動します。 Visual Studio 2019 で _**AdtE2ESample.sln**_ を開きます。 
+解凍したフォルダー内の _AdtSampleApp_ に移動します。 Visual Studio 2019 で _**AdtE2ESample.sln**_ を開きます。 
 
 Visual Studio の *[ソリューション エクスプローラー]* ペインを使用して、 _[SampleClientApp] > **[serviceConfig.json.TEMPLATE]**_ ファイルのコピーを作成します (右クリック メニューを使用してコピーし、貼り付けることができます)。 コピーの名前を *serviceConfig.json* に変更します。 このファイルは、プロジェクトを実行するために必要な構成変数を含んだ事前設定済みの JSON ファイルとして機能します。
 
@@ -31,6 +31,8 @@ Visual Studio の *[ソリューション エクスプローラー]* ペイン�
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```
+
+
 
 ファイルを保存して閉じます。 
 

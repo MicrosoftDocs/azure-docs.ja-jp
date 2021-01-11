@@ -3,16 +3,16 @@ title: Azure での PowerShell を使用した Application Insights の設定 | 
 description: Application Insights にデータをパイプするための Azure Diagnostics の構成を自動化します。
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 20f5a5c61c65b476a98c59b24283a2d15c39ddae
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3d0b7d1e8d4a164d517834eae877844d85b9a256
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86111186"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320359"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>PowerShell を使用して Azure Cloud Services 向けの Application Insights を設定する
 
-[Microsoft Azure](https://azure.com) は、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) に [Azure Diagnostics を送信するように構成](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
+[Microsoft Azure](https://azure.com) は、[Azure Application Insights](./app-insights-overview.md) に [Azure Diagnostics を送信するように構成](../platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
 
 ## <a name="azure-template"></a>Azure テンプレート
 Web アプリが Azure に存在するとき、Azure Resource Manager テンプレートを使用してリソースを作成する場合、resources ノードに次のコードを追加することで Application Insights を構成できます。
@@ -124,7 +124,7 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 
 ## <a name="see-also"></a>参照
-* [Application Insights で Azure Cloud Services アプリを監視する](../../azure-monitor/app/cloudservices.md)
-* [Azure Diagnostics を Application Insights に送信する](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+* [Application Insights で Azure Cloud Services アプリを監視する](./cloudservices.md)
+* [Azure Diagnostics を Application Insights に送信する](../platform/diagnostics-extension-to-application-insights.md)
 * [アラートの構成を自動化する](powershell-alerts.md)
 

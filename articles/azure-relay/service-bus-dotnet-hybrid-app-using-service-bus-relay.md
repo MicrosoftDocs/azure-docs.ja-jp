@@ -2,13 +2,14 @@
 title: Azure Windows Communication Foundation (WCF) Relay ハイブリッド オンプレミス/クラウド アプリケーション (.NET) | Microsoft Docs
 description: Azure Relay を使用してオンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する方法について説明します。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6299899ee45bbad8b5e5fdbca01805604794d62
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314400"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922550"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Azure Relay を使用してオンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する
 
@@ -244,7 +245,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
     ![認証を指定][18]
 
 1. **[新しい ASP.NET Web アプリケーションを作成する]** に戻り、 **[作成]** を選択して MVC アプリを作成します。
-1. 新しい Web アプリの Azure リソースを構成する [Web アプリの発行](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)の手順に従います。 その後、このチュートリアルに戻り、次の手順に進みます。
+1. 新しい Web アプリの Azure リソースを構成する [Web アプリの発行](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)の手順に従います。 その後、このチュートリアルに戻り、次の手順に進みます。
 1. **ソリューション エクスプローラー**で **[モデル]** を右クリックし、 **[追加]**  >  **[クラス]** を選択します。
 1. クラスに *Product.cs* と名前を付け、 **[追加]** を選択します。
 

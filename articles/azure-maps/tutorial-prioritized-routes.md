@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:移動モード別に複数のルートを検索する |Microsoft Azure Maps
-description: このチュートリアルでは、Microsoft Azure Maps を使用して、さまざまな移動モードでルートを検索する方法について説明します。
+description: Azure Maps を使用し、特定の移動手段における目的地へのルートを検索する方法について説明します。 マップ上に複数のルートを表示する方法をご覧ください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 0cb3c1eadae426cef59b7aad8821343c23e76d79
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7d17b9474edef245f7db16f33c72d722f356f712
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289540"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037594"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>チュートリアル:Azure Maps を使用してさまざまな移動モードのルートを検索します
 

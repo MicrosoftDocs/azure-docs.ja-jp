@@ -3,17 +3,18 @@ title: クイックスタート - コスト分析を使用して Azure のコス
 description: このクイック スタートは、コスト分析を使用して Azure 組織のコストを調査および分析するために役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/08/2020
+ms.date: 08/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8ca9eaeeb8d484c9aeae6646e6f4814afbaed577
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560579"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718528"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -161,6 +162,10 @@ Azure タグ ポリシーを使用してコスト データの可視性を向上
 
 完全な未集計のデータセットが必要な場合は、課金アカウントからダウンロードします。 次に、ポータルの左側のナビゲーション ウィンドウにあるサービスの一覧から、 **[コストの管理と請求]** に移動します。 該当する場合は、課金アカウントを選択します。 **[使用量 + 請求金額]** に移動し、対象の請求期間の **[ダウンロード]** アイコンをクリックします。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+- ピン留めしたコスト分析のためのカスタマイズされたビューが不要になった場合は、ビューがピン留めされているダッシュボードに移動し、ピン留めされているビューを削除します。
+- ダウンロードした使用状況データ ファイルが不要になった場合は、必ず削除してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 4c5d6bf83d9aa9c3717b0f8e08785b0fc897577d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5095931e28438beebf3250155ede1a8af0bb5c64
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244448"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796971"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする
 
@@ -32,7 +32,7 @@ AKS クラスターからのエグレスは、特定のシナリオに合わせ�
 
 ## <a name="overview-of-outbound-types-in-aks"></a>AKS の送信の種類の概要
 
-AKS クラスターは、種類がロード バランサーまたはユーザー定義のルーティングの一意の `outboundType` を使用してカスタマイズできます。
+AKS クラスターは、種類が `loadBalancer` または `userDefinedRouting` の一意の `outboundType` を使用してカスタマイズできます。
 
 > [!IMPORTANT]
 > 送信の種類は、クラスターのエグレス トラフィックにのみ影響します。 詳細については、[イングレス コントローラーの設定](ingress-basic.md)に関する記事を参照してください。
@@ -60,9 +60,13 @@ AKS クラスターは、種類がロード バランサーまたはユーザー
 
 `userDefinedRouting` を設定しても、エグレス パスは AKS によって自動的に構成されません。 エグレス セットアップは、ユーザーが行う必要があります。
 
-AKS クラスターは、事前に構成されたサブネットを持つ既存の仮想ネットワークにデプロイする必要があります。これは、Standard Load Balancer (SLB) アーキテクチャを使用している場合、明示的なエグレスを確立する必要があるためです。 このため、このアーキテクチャでは、ファイアウォール、ゲートウェイ、プロキシなどのアプライアンスにエグレス トラフィックを明示的に送信するか、Standard Load Balancer またはアプライアンスに割り当てられたパブリック IP によってネットワーク アドレス変換 (NAT) を実行できるようにする必要があります。
+AKS クラスターは、事前に構成されたサブネットを持つ既存の仮想ネットワークにデプロイする必要があります。これは、Standard Load Balancer (SLB) アーキテクチャを使用していない場合に、明示的なエグレスを確立する必要があるためです。 このため、このアーキテクチャでは、ファイアウォール、ゲートウェイ、プロキシなどのアプライアンスにエグレス トラフィックを明示的に送信するか、Standard Load Balancer またはアプライアンスに割り当てられたパブリック IP によってネットワーク アドレス変換 (NAT) を実行できるようにする必要があります。
 
-AKS リソース プロバイダーによって Standard ロード バランサー (SLB) がデプロイされます。 このロード バランサーには規則が構成されておらず、[規則が構成されるまで料金はかかりません](https://azure.microsoft.com/pricing/details/load-balancer/)。 AKS によって、SLB フロントエンドのパブリック IP アドレスが自動的にプロビジョニングされたり、ロード バランサーのバックエンド プールが自動的に構成されたりすることは**ありません**。
+#### <a name="load-balancer-creation-with-userdefinedrouting"></a>UserDefinedRouting を使用したロード バランサーの作成
+
+UDR の送信の種類を使用する AKS クラスターは、種類が "loadBalancer" の最初の Kubernetes サービスがデプロイされている場合にのみ、Standard Load Balancer (SLB) を受信します。 ロード バランサーは、"*受信*" 要求用のパブリック IP アドレスと、"*受信*" 要求用のバックエンド プールで構成されます。 受信規則は Azure クラウド プロバイダーによって構成されますが、送信の種類が UDR であるため、**送信パブリック IP アドレスも送信規則も構成されません**。 UDR は引き続きエグレス トラフィックの唯一のソースとなります。
+
+Azure ロード バランサーでは、[規則が設定されるまでは料金が発生しません](https://azure.microsoft.com/pricing/details/load-balancer/)。
 
 ## <a name="deploy-a-cluster-with-outbound-type-of-udr-and-azure-firewall"></a>UDR および Azure Firewall の送信の種類を使用してクラスターをデプロイする
 
@@ -70,8 +74,7 @@ AKS リソース プロバイダーによって Standard ロード バランサ�
 
 > [!IMPORTANT]
 > UDR の送信の種類には、ルート テーブルに 0.0.0.0/0 へのルートと NVA の次のホップの宛先 (ネットワーク仮想アプライアンス) が存在している必要があります。
-> ルート テーブルには、SNAT へのパブリック IP がないインターネットへの既定の 0.0.0.0/0 が既に存在します。このルートを追加しても、エグレスは提供されません。 AKS は、インターネットを指す 0.0.0.0.0/0 のルートを作成せず、NVA やゲートウェイなどを指すルートを作成したことを検証します。
-
+> ルート テーブルには、SNAT へのパブリック IP がないインターネットへの既定の 0.0.0.0/0 が既に存在します。このルートを追加しても、エグレスは提供されません。 AKS は、インターネットを指す 0.0.0.0.0/0 のルートを作成せず、NVA やゲートウェイなどを指すルートを作成したことを検証します。UDR の送信の種類を使用する場合、サービスの種類 **loadbalancer** が構成されていない限り、*受信要求*用のロード バランサーのパブリック IP アドレスは作成されません。 UDR の送信の種類が設定されている場合、**送信要求**用のパブリック IP アドレスが AKS によって作成されることはありません。
 
 ## <a name="next-steps"></a>次のステップ
 

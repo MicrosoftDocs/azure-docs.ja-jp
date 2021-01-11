@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT のクラスター チューニング - Azure
-description: Avere vFXT for Azure のパフォーマンスを最適化するためのカスタム設定の概要
+description: サポート担当者と連携して実行できる、Avere vFXT for Azure での vFXT クラスターのカスタム チューニングについて説明します。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 2d06e3cc80f05cc86980dd2570d1d4d203295ff2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d9f81c9438cb992f81bd3e6319532d67db75552
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505292"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272384"
 ---
 # <a name="cluster-tuning"></a>クラスター チューニング
 

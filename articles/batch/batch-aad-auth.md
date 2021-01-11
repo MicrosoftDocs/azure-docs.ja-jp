@@ -4,12 +4,12 @@ description: Batch は、Batch サービスからの認証に Azure AD をサポ
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: a8601c69c37e973118a7ec9521070864caffb101
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170311"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533514"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -130,9 +130,9 @@ Azure Portal で次の手順に従います。
 1. **[ロール]** ドロップダウン リストで、アプリケーションに *[共同作成者]* または *[リーダー]* のいずれかのロールを選択します。 これらのロールの詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。
 1. **[選択]** フィールドに、アプリケーションの名前を入力します。 一覧からアプリケーションを選択してから、 **[保存]** を選択します。
 
-この時点で、RBAC ロールが割り当てられたアプリケーションがアクセス制御の設定に表示されている必要があります。
+この時点で、Azure ロールが割り当てられたアプリケーションがアクセス制御の設定に表示されている必要があります。
 
-![アプリケーションに RBAC ロールを割り当てる](./media/batch-aad-auth/app-rbac-role.png)
+![アプリケーションに Azure ロールを割り当てる](./media/batch-aad-auth/app-rbac-role.png)
 
 ### <a name="assign-a-custom-role"></a>カスタム ロールを割り当てる
 
@@ -193,7 +193,7 @@ Azure Portal で次の手順に従います。
 }
 ```
 
-カスタム ロールの作成に関する全般的な情報については、「[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
+カスタム ロールの作成に関する一般的な情報の詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md)」を参照してください。
 
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>Azure Active Directory のテナント ID を取得する
 

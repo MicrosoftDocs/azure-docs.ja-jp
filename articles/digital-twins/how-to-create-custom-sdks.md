@@ -7,23 +7,27 @@ ms.author: baanders
 ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 895e33a111fe5bb881d198ee4995b9534ca3d528
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3cf14ce3e8ef9b1d783191fe6c01c5e311d57786
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135880"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855949"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する
 
-現時点では、Azure Digital Twins API と対話するために公開されている唯一のデータ プレーン SDK は、.NET (C#) 用のものです。 .NET SDK と一般的な API については、[Azure Digital Twins の API および SDK を使用する方法](how-to-use-apis-sdks.md)に関する記事をご覧ください。 別の言語で作業している場合、この記事では、AutoRest を使用して、任意の言語で独自の SDK を生成する方法について説明します。
+現時点では、Azure Digital Twins API と対話するために公開されている唯一のデータ プレーン SDK は、.NET (C#) 用のものです。 .NET SDK と一般的な API については、「[*Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md)」を参照してください。 別の言語で作業している場合、この記事では、AutoRest を使用して、任意の言語で独自のデータ プレーン SDK を生成する方法について説明します。
+
+>[!NOTE]
+> 必要に応じて、AutoRest を使用して、コントロール プレーン SDK を生成することもできます。 これを行うには、データ プレーンではなく[コントロール プレーンの Swagger (OpenAPI) ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview)を使用して、この記事の手順を実行します。
 
 ## <a name="set-up-your-machine"></a>コンピューターをセットアップする
 
 SDK を生成するには、次のものが必要です。
 * [AutoRest](https://github.com/Azure/autorest)、バージョン 2.0.4413 (バージョン 3 は現在サポートされていません)
 * [Node.js](https://nodejs.org) (AutoRest の前提条件として)
-* [Azure Digital Twins Swagger (OpenAPI) ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins/preview/2020-03-01-preview) (*digitaltwins.json* という名前)、および例を含む付属のフォルダー。 ローカル コンピューターに Swagger ファイルと例のフォルダーをダウンロードします。
+* Azure Digital Twins [データ プレーン Swagger (OpenAPI) ファイル](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/data-plane/Microsoft.DigitalTwins/preview/2020-05-31-preview) (*digitaltwins.json* という名前)、および例を含む付属のフォルダー。 ローカル コンピューターに Swagger ファイルと例のフォルダーをダウンロードします。
 
 お使いのコンピューターに上記の一覧にあるものがすべて備わったら、AutoRest を使用して SDK を作成することができます。
 
@@ -37,19 +41,19 @@ npm install -g autorest@2.0.4413
 Azure Digital Twins Swagger ファイルに対して AutoRest を実行するには、次の手順に従います。
 1. Azure Digital Twins Swagger ファイルとそれに付属する例のフォルダーを、作業ディレクトリにコピーします。
 2. コマンド プロンプト ウィンドウを使用して、その作業ディレクトリに切り替えます。
-3. 次のコマンドを使用して、AutoRest を実行します。 `<language>` プレースホルダーを、`--python`、`--java`、`--go` などの任意の言語に置き換えてください。(オプションの完全な一覧は [AutoRest の README](https://github.com/Azure/autorest) に記載されています。)
+3. 次のコマンドを使用して、AutoRest を実行します。 `<language>` プレースホルダーを、`python`、`java`、`go` などの任意の言語に置き換えてください。 (オプションの完全な一覧は [AutoRest の README](https://github.com/Azure/autorest) に記載されています。)
 
 ```cmd/sh
-autorest --input-file=adtApiSwagger.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
 ```
 
-その結果、作業ディレクトリに *ADTApi* という名前の新しいフォルダーが表示されます。 生成された SDK ファイルには、名前空間 *ADTApi* が設定されます。この記事の残りの使用例では、この名前空間を使い続けます。
+その結果、作業ディレクトリに *ADTApi* という名前の新しいフォルダーが表示されます。 生成された SDK ファイルの名前空間は *ADTApi* になります。 この記事の残りの使用例では、その名前空間を使用し続けます。
 
 AutoRest では、幅広い言語コード ジェネレーターがサポートされています。
 
 ## <a name="add-the-sdk-to-a-visual-studio-project"></a>SDK を Visual Studio プロジェクトに追加する
 
-AutoRest によって生成されたファイルは、.NET ソリューションに直接追加することができます。 しかし、複数の個別のプロジェクト (クライアント アプリ、Azure Functions アプリなど) で Azure Digital Twins SDK が必要になる可能性が高いため、生成されたファイルから個別のプロジェクト (.NET クラス ライブラリ) をビルドしておくと便利です。 その後、このクラス ライブラリ プロジェクトを、プロジェクト参照として複数のソリューションに含めることができます。
+AutoRest によって生成されたファイルは、.NET ソリューションに直接追加することができます。 ただし、Azure Digital Twins SDK を複数の異なるプロジェクト (クライアント アプリ、Azure Functions アプリなど) に含めることが必要になる場合があります。 このため、生成されたファイルから個別のプロジェクト (.NET クラス ライブラリ) をビルドすると便利な場合があります。 その後、このクラス ライブラリ プロジェクトを、プロジェクト参照として複数のソリューションに含めることができます。
 
 このセクションでは、SDK をクラス ライブラリとしてビルドする方法について説明します。これは独自のプロジェクトであり、他のプロジェクトに含めることができます。 以下の手順は **Visual Studio** に依存しています ([こちら](https://visualstudio.microsoft.com/downloads/)から最新バージョンをインストールできます)。
 
@@ -73,7 +77,7 @@ SDK を正常にビルドするには、プロジェクトに次の参照が必�
 
 1. パネルで、 *[参照]* タブが選択されていることを確認します
 2. 「*Microsoft.Rest*」を検索します
-3. *ClientRuntime* と *ClientRuntime.Azure* パッケージを選択し、ソリューションに追加します
+3. `ClientRuntime` パッケージと `ClientRuntime.Azure` パッケージを選択し、ソリューションに追加します
 
 これで、プロジェクトをビルドし、作成した Azure Digital Twins アプリケーションにプロジェクト参照として含めることができます。
 
@@ -115,7 +119,7 @@ AutoRest では、SDK に対して 2 種類のページング パターンが生
 
 クエリ以外のページング パターンでは、それぞれの呼び出しに 2 つのバージョンがあります。
 * 最初の呼び出しを行うバージョン (`DigitalTwins.ListEdges()` など)
-* 後続のページを取得するための、末尾に "Next" が付いたバージョン (`DigitalTwins.ListEdgesNext()` など)
+* 次のページを取得するためのバージョン。 これらの呼び出しには、"Next" というサフィックスが付いています (`DigitalTwins.ListEdgesNext()`)
 
 次のコード スニペットは、Azure Digital Twins から外部へのリレーションシップの一覧をページ単位で取得する方法を示しています。
 ```csharp
@@ -188,4 +192,4 @@ try
 ## <a name="next-steps"></a>次のステップ
 
 SDK を使用できるクライアント アプリの作成手順を確認します。
-* [チュートリアル:クライアント アプリをコーディングする](tutorial-code.md)
+* [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)

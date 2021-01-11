@@ -5,15 +5,16 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16ba70717d04c44e950ce2ed2c47e54859c4be47
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039756"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684883"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
@@ -32,10 +33,10 @@ ms.locfileid: "87039756"
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Azure portal でサブスクリプションを取り消す
 
 1. [Azure portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で、自分のサブスクリプションを選択します。
-2. 取り消すサブスクリプションを選択します。
-3. **[概要]** を選択し、 **[サブスクリプションの取り消し]** を選択します。
+1. 取り消すサブスクリプションを選択します。
+1. **[概要]** を選択し、 **[サブスクリプションの取り消し]** を選択します。
     ![[キャンセル] ボタンを示すスクリーン ショット](./media/cancel-azure-subscription/cancel_ibiza.png)
-3. 画面の指示に従って、取り消しを完了します。
+1. 画面の指示に従って、取り消しを完了します。
 
 ## <a name="who-can-cancel-a-subscription"></a>サブスクリプションを取り消すことができるユーザー
 
@@ -49,11 +50,20 @@ ms.locfileid: "87039756"
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>サブスクリプションの取り消し後の流れ
 
-取り消し後は、課金がただちに停止されます。 ただし、取り消しがポータルに反映されるまでに最大で 10 分かかります。 請求期間の途中でキャンセルした場合、期間終了後の一般的な請求日に、最終的な課金内容が送信されます。 
+取り消し後は、課金がただちに停止されます。 ただし、取り消しがポータルに反映されるまでに最大で 10 分かかります。 請求期間の途中でキャンセルした場合、期間終了後の一般的な請求日に、最終的な課金内容が送信されます。
 
 取り消し後、サービスが無効になります。 つまり、仮想マシンの割り当てが解除され、一時 IP アドレスが解放され、ストレージが読み取り専用になります。
 
-Microsoft では、お客様がデータにアクセスする必要がある場合や、サブスクリプションの取り消しをキャンセルされた場合に備えて、データを完全に削除する前に 30 から 90 日間保管します。 データの保持に対しては課金されません。 詳しくは、[Microsoft Trust Center の Microsoft によるデータの管理方法](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)に関するページをご覧ください。
+Microsoft では、サブスクリプションが取り消された後、お客様がデータにアクセスする必要がある場合や気が変わった場合に備えて、データを完全に削除するまで 30 から 90 日待ちます。 データの保持に対しては課金されません。 詳しくは、[Microsoft Trust Center の Microsoft によるデータの管理方法](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)に関するページをご覧ください。
+
+## <a name="delete-free-trial-subscription"></a>無料試用版サブスクリプションの削除
+
+無料試用版サブスクリプションをお持ちの場合は、サブスクリプションが自動的に削除されるまで 30 日待つ必要はありません。 サブスクリプションは、取り消してから "*3 日*" 後に削除できます。 **[サブスクリプションの削除]** オプションは、サブスクリプションを取り消してから 3 日後まで使用できません。
+
+1. サブスクリプションを取り消した日から 3 日待ちます。
+1. Azure portal の [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ページでサブスクリプションを選択します。
+1. 削除するサブスクリプションを選択します。
+1. **[概要]** を選択し、 **[サブスクリプションの削除]** を選択します。
 
 ## <a name="reactivate-subscription"></a>サブスクリプションの再アクティブ化
 

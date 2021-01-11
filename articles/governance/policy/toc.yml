@@ -10,16 +10,22 @@
   items:
     - name: ポリシーの割り当て - ポータル
       displayName: 'assign, compliance'
-      href: assign-policy-portal.md
-    - name: ポリシーの割り当て - Azure PowerShell
-      displayName: 'assign, compliance'
-      href: assign-policy-powershell.md
+      href: ./assign-policy-portal.md
     - name: ポリシーの割り当て - Azure CLI
       displayName: 'assign, compliance'
-      href: assign-policy-azurecli.md
+      href: ./assign-policy-azurecli.md
+    - name: ポリシーの割り当て - Azure PowerShell
+      displayName: 'assign, compliance'
+      href: ./assign-policy-powershell.md
+    - name: ポリシーの割り当て - Python
+      displayName: 'assign, compliance'
+      href: ./assign-policy-python.md
+    - name: ポリシーの割り当て - REST
+      displayName: 'armclient, postman'
+      href: ./assign-policy-rest-api.md
     - name: ポリシーの割り当て - ARM テンプレート
       displayName: 'assign, compliance, resource manager'
-      href: assign-policy-template.md
+      href: ./assign-policy-template.md
 - name: チュートリアル
   items:
     - name: Azure Policy の作成と管理
@@ -66,6 +72,8 @@
           href: ./samples/azure-security-benchmark.md
         - name: CIS Microsoft Azure Foundations Benchmark 1.1.0
           href: ./samples/cis-azure-1-1-0.md
+        - name: HIPAA HITRUST 9.2
+          href: ./samples/hipaa-hitrust-9-2.md
         - name: NIST SP 800-53 R4
           href: ./samples/nist-sp-800-53-r4.md
         - name: NIST SP 800-171 R2
@@ -87,6 +95,9 @@
     - name: 新しいポリシーの影響の評価
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: 推奨ポリシー
+      displayName: 'VMs, virtual machines'
+      href: ./concepts/recommended-policies.md
     - name: 規制コンプライアンス
       displayName: 'standards, domains, controls'
       href: ./concepts/regulatory-compliance.md
@@ -156,12 +167,16 @@
       items:
         - name: Azure Monitor の大規模なデプロイ
           displayName: 'monitor, diagnostic settings, dependency agent'
-          href: ../../azure-monitor/platform/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../azure-monitor/deploy-scale.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
         - name: Azure Monitor for VMs の有効化 (プレビュー)
           displayName: 'monitor, insights, log analytics, builtin'
-          href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+          href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fgovernance%2fpolicy%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fgovernance%2fpolicy%2ftoc.json
 - name: トラブルシューティング
-  href: ./troubleshoot/general.md
+  items:
+    - name: 一般的な問題
+      href: ./troubleshoot/general.md
+    - name: 既知の問題
+      href: 'https://github.com/azure/azure-policy#known-issues'
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -183,9 +198,9 @@
     - name: Azure SDK for Java
       items:
         - name: 代入
-          href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.resources.policyassignment
         - name: ポリシーの定義
-          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
+          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions
     - name: Azure SDK for JavaScript
       items:
         - name: ポリシー
@@ -228,31 +243,45 @@
           href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: リソース
   items:
-    - name: 既知の問題
-      href: 'https://github.com/azure/azure-policy#known-issues'
     - name: GitHub - Azure Policy サンプル
       href: 'https://github.com/Azure/azure-policy'
-    - name: GitHub - コミュニティ ポリシー リポジトリ
-      href: 'https://github.com/Azure/Community-Policy'
-    - name: Azure Policy 用の Microsoft Q&A
-      href: /answers/topics/azure-policy.html
-    - name: ガバナンスに関する YouTube チャンネル
-      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
-    - name: ゲスト構成のビデオ
+    - name: コミュニティ ツール
       items:
-        - name: 作業の開始
-          href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
-        - name: イニシアチブについて
-          href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
-        - name: ポリシーの割り当て
-          href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
-        - name: 修復タスク
-          href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
-    - name: 動画 - Ignite 2019
-      href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: GitHub - コミュニティ ポリシー リポジトリ
+          href: 'https://github.com/Azure/Community-Policy'
+        - name: Azure Policy コンプライアンス スキャン用の GitHub アクション
+          href: 'https://github.com/marketplace/actions/azure-policy-compliance-scan'
+        - name: CCO Azure のガバナンス ダッシュボード
+          href: 'https://github.com/Azure/ccodashboard/blob/master/README.md#cco-azure-governance-dashboard-report-pages'
+        - name: AzAdvertizer
+          href: 'https://www.azadvertizer.net/'
+        - name: Azure のガバナンス ビジュアライザー
+          href: 'https://github.com/julianhayward/azure-mg-sub-governance-reporting'
+    - name: フィードバックとサポート
+      items:
+        - name: Azure Policy 用の Microsoft Q&A
+          href: /answers/topics/azure-policy.html
+        - name: Azure サポート チケット
+          href: 'https://azure.microsoft.com/support/create-ticket/'
+        - name: UserVoice
+          href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'
+    - name: ビデオ
+      items:
+        - name: ガバナンスに関する YouTube チャンネル
+          href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+        - name: 動画 - Ignite 2019
+          href: 'https://myignite.techcommunity.microsoft.com/sessions/81584?source=sessions'
+        - name: ゲスト構成のビデオ
+          items:
+            - name: 作業の開始
+              href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
+            - name: イニシアチブについて
+              href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
+            - name: ポリシーの割り当て
+              href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
+            - name: 修復タスク
+              href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: UserVoice
-      href: 'https://feedback.azure.com/forums/915958-azure-governance?category_id=345055'

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Lighthouse ドキュメント
-summary: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
+summary: Azure Lighthouse により、クロステナントおよびマルチテナントの管理が実現し、リソースやテナント間での自動化やスケーラビリティの向上と統制機能の強化が可能になります。
 metadata:
   title: Azure Lighthouse ドキュメント
   description: Azure Lighthouse では、サービス プロバイダーが高度な自動化、スケーラビリティ、統制機能を利用し、すべての顧客を対象に Azure リソースを管理できます。
@@ -10,12 +10,12 @@ metadata:
   author: JnHs
   ms.author: jenhayes
   ms.date: 07/20/2020
-  ms.openlocfilehash: f30f07fd200a5ac14e9733e5def7541b197004b2
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 40352965db20c12e589f52f76869032d1f5f1b10
+  ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87072660"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88659876"
 landingContent:
 - title: Azure Lighthouse について
   linkLists:

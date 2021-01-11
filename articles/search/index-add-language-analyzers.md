@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 8f0909ee1cdce1e6180b91a30b2e9b281098c826
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130553"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935884"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
@@ -59,9 +59,9 @@ Azure Cognitive Search では、Lucene によって提供される 35 個の言�
 > [!NOTE]
 > インデックス作成時とフィールドのクエリ時とで異なる言語アナライザーを使用することはできません。 この機能は、[カスタムアナライザー](index-add-custom-analyzers.md) 用に予約されています。 このため、**searchAnalyzer** プロパティまたは **indexAnalyzer** プロパティを言語アナライザーの名前に設定しようとすると、REST API によってエラー応答が返されます。 代わりに、**アナライザー** プロパティを使用する必要があります。
 
-**searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)」で確認できます。 
+**searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「[ドキュメントの検索](/rest/api/searchservice/search-documents)」で確認できます。 
 
-インデックス プロパティについて詳しくは、「[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)」をご覧ください。 Azure Cognitive Search での解析について詳しくは、[Azure Cognitive Search でのアナライザー](https://docs.microsoft.com/azure/search/search-analyzers)に関する記事をご覧ください。
+インデックス プロパティについて詳しくは、「[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](/rest/api/searchservice/create-index)」をご覧ください。 Azure Cognitive Search での解析について詳しくは、[Azure Cognitive Search でのアナライザー](./search-analyzers.md)に関する記事をご覧ください。
 
 <a name="language-analyzer-list"></a>
 
@@ -131,7 +131,6 @@ Azure Cognitive Search では、Lucene によって提供される 35 個の言�
 
 ## <a name="see-also"></a>関連項目  
 
-+ [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
++ [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index)  
 
-+ [AnalyzerName クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername)  
-
++ [AnalyzerName クラス](/dotnet/api/microsoft.azure.search.models.analyzername)

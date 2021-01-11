@@ -2,25 +2,21 @@
 title: Atlassian Jira/Confluence 管理ガイド - Azure Active Directory| Microsoft Docs
 description: Azure Active Directory (Azure AD) で Atlassian Jira および Confluence を使用するための管理ガイド。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07bd9353f08e9440e495dfa92c608b4d6f70f5cf
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "73161197"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543984"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory 向け Atlassian Jira および Confluence 管理ガイド
 
@@ -147,7 +143,7 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 * **WebSudo を無効にしたい (セキュリティで保護された管理者セッションを無効にする)** :
 
-  * Jira の場合、セキュリティで保護された管理者セッション (つまり、管理機能にアクセスする前のパスワードの確認) は既定で有効になります。 Jira インスタンスでこの機能を削除する場合は、jira-config.properties ファイルに次の行を指定します: `ira.websudo.is.disabled = true`
+  * Jira の場合、セキュリティで保護された管理者セッション (つまり、管理機能にアクセスする前のパスワードの確認) は既定で有効になります。 Jira インスタンスでこの機能を削除する場合は、jira-config.properties ファイルに次の行を指定します: `jira.websudo.is.disabled = true`
 
   * Confluence の場合は、[Confluence のサポート サイト](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)の手順に従います。
 

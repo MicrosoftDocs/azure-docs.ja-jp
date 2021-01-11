@@ -40,7 +40,7 @@
               href: connect-aws.md
             - name: Azure Active Directory
               href: connect-azure-active-directory.md
-            - name: Office 365
+            - name: Office 365 (Teams も対象)
               href: connect-office-365.md
             - name: Cloud App Security
               href: connect-cloud-app-security.md
@@ -54,14 +54,18 @@
               href: connect-microsoft-defender-advanced-threat-protection.md
             - name: Azure ATP
               href: connect-azure-atp.md
+            - name: Azure DDoS Protection
+              href: connect-azure-ddos-protection.md
+            - name: Azure Firewall
+              href: connect-azure-firewall.md
             - name: Azure Security Center
               href: connect-azure-security-center.md
             - name: Azure Security Center for IoT
               href: connect-asc-iot.md
+            - name: Azure Web アプリケーション ファイアウォール (WAF)
+              href: connect-azure-waf.md
             - name: ドメイン ネーム サーバー
               href: connect-dns.md
-            - name: Microsoft Web アプリケーション ファイアウォール
-              href: connect-microsoft-waf.md
             - name: Windows ファイアウォール
               href: connect-windows-firewall.md
             - name: Windows セキュリティ イベント
@@ -169,6 +173,10 @@
           href: livestream.md
     - name: Azure Sentinel の削除
       href: offboard.md
+- name: リファレンス (新規)
+  items:
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/securityinsights/'
 - name: リソース
   items:
     - name: 有用なリソース
@@ -176,7 +184,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
     - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 価格

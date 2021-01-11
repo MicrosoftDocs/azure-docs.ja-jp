@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 05/27/2020
 ms.locfileid: "84033843"
 ---
-# <a name="extended-events-in-azure-sql-database"></a>Azure SQL データベースでの拡張イベント 
+# <a name="extended-events-in-azure-sql-database"></a>Azure SQL Database での拡張イベント 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../../includes/sql-database-xevents-selectors-1-include.md)]

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 5f159ffcea0aa88f354ae503be96a5c571c10adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85806834"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423322"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API でのパーティション分割
 
@@ -31,7 +31,7 @@ Apache Cassandra では、パーティションに格納できるデータのサ
 
 Azure Cosmos DB では、各物理パーティションはレプリカ セットとも呼ばれる一連のレプリカで構成され、パーティションごとに少なくとも 4 つのレプリカがあります。 これは、レプリケーション係数を 1 に設定できる Apache Cassandra とは対照的です。 ただし、データを持つ唯一のノードがダウンした場合は、これによって可用性が低下します。 Cassandra API では、常に 4 のレプリケーション係数 (3 のクォーラム) があります。 Azure Cosmos DB は自動的にレプリカ セットを管理しますが、これらは、Apache Cassandra でさまざまなツールを使用して保持する必要があります。 
 
-Apache Cassandra には、パーティション キーのハッシュであるトークンの概念があります。 トークンは、値の範囲が -2^63 から -2^63 - 1 までの murmur3 64 バイト ハッシュに基づいています。 この範囲は、Apache Cassandra では通常 "トークン リング" と呼ばれます。 トークン リングはトークン範囲に分散され、これらの範囲は、ネイティブの Apache Cassandra クラスターに存在するノード間で分割されます。 Azure Cosmos DB のパーティション分割は、同様の方法で実装されますが、別のハッシュアルゴリズムを使用し、より大きなトークン リングを使用する点が異なります。 
+Apache Cassandra には、パーティション キーのハッシュであるトークンの概念があります。 トークンは、値の範囲が -2^63 から -2^63 - 1 までの murmur3 64 バイト ハッシュに基づいています。 この範囲は、Apache Cassandra では通常 "トークン リング" と呼ばれます。 トークン リングはトークン範囲に分散され、これらの範囲は、ネイティブの Apache Cassandra クラスターに存在するノード間で分割されます。 Azure Cosmos DB のパーティション分割は、同様の方法で実装されますが、別のハッシュアルゴリズムを使用し、より大きな内部トークン リングを使用する点が異なります。 ただし、外部では Apache Cassandra と同じトークン範囲を公開しています。つまり、-2 ^ 63 から -2 ^ 63-1 までです。
 
 
 ## <a name="primary-key"></a>Primary key (プライマリ キー)

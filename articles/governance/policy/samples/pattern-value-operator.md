@@ -4,10 +4,10 @@ description: この Azure Policy パターンでは、ポリシー定義内で v
 ms.date: 06/29/2020
 ms.topic: sample
 ms.openlocfilehash: e246e3a5e2517fa80626081227070bcb2f967784
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85565666"
 ---
 # <a name="azure-policy-pattern-the-value-operator"></a>Azure Policy pattern: value 演算子

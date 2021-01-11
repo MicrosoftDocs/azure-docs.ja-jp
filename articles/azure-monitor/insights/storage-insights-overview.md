@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: 7ab7071f504231290f72646e59a30fa855cff6cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7daba35b9247443c84cedad03f252ea6858da236
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84944493"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327346"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Azure Monitor for Storage でストレージ サービスを監視する
 
@@ -31,7 +31,7 @@ Azure Monitor for Storage では、Azure Storage サービスのパフォーマ�
 
 * **カスタマイズ可能**: 表示するメトリックの変更したり、制限に合わせたしきい値の変更または設定、独自のブックとして保存することができます。 ブック内のグラフは、Azure ダッシュボードにピン留めできます。  
 
-この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/common/storage-metrics-in-azure-monitor.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
+この機能を使用するために有効にしたり構成したりする必要があるものはなく、ストレージ メトリックはストレージ アカウントから既定で収集されます。 Azure Storage で使用できるメトリックについて詳しく理解したい場合は、[Azure Storage メトリック](../../storage/common/monitor-storage.md)に関する記事で Azure Storage のメトリックの説明と定義を確認してください。
 
 >[!NOTE]
 >この機能へのアクセスに対して料金はかからず、構成または有効にした Azure Monitor の基本機能に対してのみ課金されます。[Azure Monitor の価格の詳細](https://azure.microsoft.com/pricing/details/monitor/)に関するページをご覧ください。
@@ -198,7 +198,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 1. メトリック グリッドで **[列の設定]** を選択します。
 
-2. **[列の設定の編集]** ウィンドウの **[列]** セクションで **[microsoft.storage/storageaccounts-Capacity-UsedCapacity$|microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$|microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$|microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$|microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$]** を選択します。 **[カラー パレット]** ドロップダウン リストで、 **[緑]** を選択します。
+2. **[列の設定の編集]** ウィンドウの **[列]** セクションで **microsoft.storage/storageaccounts-Capacity-UsedCapacity$`|`microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$`|`microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$`|`microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$`|`microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$** を選択します。 **[カラー パレット]** ドロップダウン リストで、 **[緑]** を選択します。
 
 3. **[保存して閉じる]** を選択して、変更をコミットします。
 
@@ -242,11 +242,11 @@ Azure Monitor for Storage で発生するストレージ関連の問題のトラ
 
 ### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>可用性の色としきい値を変更するにはどうしたらよいですか。
 
-可用性の色としきい値を変更する方法に関する詳細な手順については、「[可用性のしきい値を変更する](storage-insights-overview.md#modify-the-availability-threshold)」のセクションを参照してください。
+可用性の色としきい値を変更する方法に関する詳細な手順については、「[可用性のしきい値を変更する](#modify-the-availability-threshold)」のセクションを参照してください。
 
 ### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Azure Monitor for Storage に表示されているデータを分析およびトラブルシューティングするにはどうしたらよいですか。
 
- Azure Monitor for Storage に表示されている Azure Storage データを分析およびトラブルシューティングする方法の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting)」の記事を参照してください。
+ Azure Monitor for Storage に表示されている Azure Storage データを分析およびトラブルシューティングする方法の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」の記事を参照してください。
 
 ### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>メトリックにすべての種類のエラーが表示されないのはなぜですか。
 
@@ -269,8 +269,9 @@ n 種類のエラーを表示する場合は、splitByLimit を n+1 として指
 
 ## <a name="next-steps"></a>次のステップ
 
-* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
+* [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications-portal.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 
 * ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などについては、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
 
 * Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
+

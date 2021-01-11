@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/08/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bc0bcd4a978912dccc9f08802acbf2ec1151b3a1
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: a0d5b369e1c143b3df4157329bcf7d3a3f7142d7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170107"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489471"
 ---
 # <a name="integrating-trusona-with-azure-active-directory-b2c"></a>Trusona と Azure Active Directory B2C の統合
 
@@ -125,25 +125,26 @@ Trusona は、パスワードレス認証、多要素認証、およびデジタ
 
 ### <a name="create-a-user-flow-policy"></a>ユーザー フロー ポリシーの作成
 
-1. これで、B2C ID プロバイダー内に Trusona が**新しい OpenID Connect ID プロバイダー**として表示されるはずです。
+これで、B2C ID プロバイダー内に Trusona が**新しい OpenID Connect ID プロバイダー**として表示されるはずです。
 
-2. 左側のナビゲーション ウィンドウで **[ユーザー フロー (ポリシー)]** タブを選択します。
+1. Azure AD B2C テナントの **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
 
-3. **[追加]**  >  **[新しいユーザー フロー]**  >  **[サインアップとサインイン]** の順に選択します。
+1. **[新しいユーザー フロー]** を選択します。
 
-### <a name="configure-the-policy"></a>ポリシーの構成
+1. **[サインアップとサインイン]** を選択してバージョンを選択し、 **[作成]** を選択します。
 
-1. ポリシーに名前を付けます。
+1. ポリシーの **[名前]** を入力します。
 
-2. 新しく作成した **Trusona ID プロバイダー**を選択します。
+1. **[ID プロバイダー]** セクションで、新しく作成した **Trusona ID プロバイダー**を選択します。
 
-3. Trusona は本質的に多要素であるため、多要素認証を無効にしておくことをお勧めします。
+   > [!NOTE]
+   > Trusona は本質的に多要素であるため、多要素認証を無効にしておくことをお勧めします。
 
-4. **［作成］** を選択します
+1. **［作成］** を選択します
 
-5. **[ユーザー属性と要求]** で **[さらに表示する]** を選択します。 フォームで、前のセクションで ID プロバイダーのセットアップ時に指定した属性を、少なくとも 1 つ選択します。
+1. **[ユーザー属性と要求]** で **[さらに表示する]** を選択します。 フォームで、前のセクションで ID プロバイダーのセットアップ時に指定した属性を、少なくとも 1 つ選択します。
 
-6. **[OK]** を選択します。  
+1. **[OK]** を選択します。  
 
 ### <a name="test-the-policy"></a>ポリシーのテスト
 

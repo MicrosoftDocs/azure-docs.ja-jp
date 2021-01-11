@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 692d86fa27ea42df6fe1128b64e408a5d4a4d08b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6935ea505643f253daf4c0b7d818137f52583682
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444456"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132825"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -45,7 +45,7 @@ ms.locfileid: "85444456"
 
 - **[Azure Container Registry](../container-registry/container-registry-vnet.md)** (*Microsoft.ContainerRegistry*):プレビュー公開 (Azure Container Registry を利用できる限られた Azure リージョン)。
 
-最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
+最新情報については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
 ## <a name="key-benefits"></a>主な利点
 
@@ -123,7 +123,7 @@ ms.locfileid: "85444456"
 
 サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。 Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されたサブネットの *Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action* へのアクセス許可を持っている必要があります。 組み込みのサービス管理者ロールには、既定でこのアクセス許可が含まれています。 アクセス許可を変更するには、カスタム ロールを作成します。
 
-組み込みロールの詳細については、「[Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 特定のアクセス許可をカスタム ロールに割り当てる方法の詳細については、「[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+組み込みロールの詳細については、「[Azure 組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 特定のアクセス許可をカスタム ロールに割り当てる方法の詳細については、「[Azure カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 仮想ネットワークと Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 仮想ネットワークと Azure サービス リソースのサブスクリプションが異なる場合、リソースは同じ Active Directory (AD) テナントの下に置かれている必要があります。 
 
@@ -152,4 +152,3 @@ FAQ については、[仮想ネットワーク サービス エンドポイン�
 - [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)
 - [仮想ネットワーク サービス エンドポイント ポリシー](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 - [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
-

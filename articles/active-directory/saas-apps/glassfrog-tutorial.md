@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と GlassFrog の統合 | Microsoft Docs'
 description: Azure Active Directory と GlassFrog の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7cf5dae6-32d6-418e-8ef2-b2041e686086
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: a816cd6df8351a9b9daefd569d1fad2ec0763832
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4a9525b8d2a1d5be212969a53541cc2dfdd78a57
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67101559"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550760"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>チュートリアル: Azure Active Directory と GlassFrog の統合
 

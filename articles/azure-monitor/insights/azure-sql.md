@@ -1,26 +1,26 @@
 ---
 title: Azure Monitor の Azure SQL Analytics ソリューション | Microsoft Docs
-description: Azure SQL Analytics ソリューションは、Azure SQL データベースの管理に役立ちます
+description: Azure SQL Analytics ソリューションは、Azure SQL Database の管理に役立ちます
 ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.date: 02/21/2020
 ms.reviewer: carlrab
-ms.openlocfilehash: bb9bc847944a4228a7b583e21d0aa957f1910a29
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: c871f5fbbe63747c71e1f6ecf83a47c0cd30970e
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087182"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318030"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
 ![Azure SQL Analytics のシンボル](./media/azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics は、1 つのビューですべての Azure SQL データベースのパフォーマンスを、複数のサブスクリプションにわたって大規模に監視するための先進のクラウド監視ソリューションです。 Azure SQL Analytics で組み込みのインテリジェンスを使用して重要なパフォーマンス メトリックを収集し、視覚化することによって、パフォーマンスのトラブルシューティングを行うことができます。
+Azure SQL Analytics は、1 つのビューですべての Azure SQL Database のパフォーマンスを、複数のサブスクリプションにわたって大規模に監視するための先進のクラウド監視ソリューションです。 Azure SQL Analytics で組み込みのインテリジェンスを使用して重要なパフォーマンス メトリックを収集し、視覚化することによって、パフォーマンスのトラブルシューティングを行うことができます。
 
-収集したメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 Azure SQL Analytics は、アプリケーション スタックの各層の問題を特定するのに役立ちます。 Azure 診断メトリックと Azure Monitor ビューを使用して、すべての Azure SQL データベースのデータを単一の Log Analytics ワークスペースに表示します。 Azure Monitor は、構造化データや非構造化データの収集、関連付け、および視覚化に役立ちます。
+収集したメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 Azure SQL Analytics は、アプリケーション スタックの各層の問題を特定するのに役立ちます。 Azure 診断メトリックと Azure Monitor ビューを使用して、すべての Azure SQL Database のデータを単一の Log Analytics ワークスペースに表示します。 Azure Monitor は、構造化データや非構造化データの収集、関連付け、および視覚化に役立ちます。
 
 Azure SQL Analytics ソリューションの使用に関する実践的な概要と、一般的な使用シナリオについては、埋め込みのビデオをご覧ください。
 
@@ -29,12 +29,12 @@ Azure SQL Analytics ソリューションの使用に関する実践的な概要
 
 ## <a name="connected-sources"></a>接続先ソース
 
-Azure SQL Analytics は、すべての Azure SQL データベースを対象に、診断テレメトリのストリーム配信をサポートするクラウド専用の監視ソリューションです。 Azure SQL Analytics は Azure Monitor への接続にエージェントを使用しないため、オンプレミスまたは仮想マシンでホストされている SQL Server の監視はサポートされません。
+Azure SQL Analytics は、すべての Azure SQL Database を対象に、診断テレメトリのストリーム配信をサポートするクラウド専用の監視ソリューションです。 Azure SQL Analytics は Azure Monitor への接続にエージェントを使用しないため、オンプレミスまたは仮想マシンでホストされている SQL Server の監視はサポートされません。
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
 | [診断設定](../platform/diagnostic-settings.md) | **はい** | Azure のメトリックおよびログ データは、Azure によって直接 Azure Monitor ログに送信されます。 |
-| [Azure Storage アカウント](../platform/collect-azure-metrics-logs.md) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
+| [Azure Storage アカウント](../platform/resource-logs.md#send-to-log-analytics-workspace) | いいえ | Azure Monitor は、ストレージ アカウントからデータを読み取りません。 |
 | [Windows エージェント](../platform/agent-windows.md) | いいえ | Azure SQL Analytics では、Windows のダイレクト エージェントは使用されません。 |
 | [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | Azure SQL Analytics では、Linux のダイレクト エージェントは使用されません。 |
 | [System Center Operations Manager 管理グループ](../platform/om-agents.md) | いいえ | Operations Manager エージェントから Azure Monitor への直接の接続は、Azure SQL Analytics では使用されません。 |
@@ -56,7 +56,7 @@ Azure SQL Analytics は、すべての Azure SQL データベースを対象に�
 
 ## <a name="configuration"></a>構成
 
-[Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して、Azure SQL Analytics (プレビュー) を Log Analytics ワークスペースに追加します。
+[Solutions Gallery からの Azure Monitor ソリューションの追加](./solutions.md)に関するページで説明されているプロセスを使用して、Azure SQL Analytics (プレビュー) を Log Analytics ワークスペースに追加します。
 
 ### <a name="configure-azure-sql-database-to-stream-diagnostics-telemetry"></a>診断テレメトリをストリーミングするように Azure SQL Database を構成する
 
@@ -112,7 +112,7 @@ SQL Managed Instance ビューを選択すると、インスタンスの使用�
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights レポート
 
-Azure SQL Database [Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) では、すべての Azure SQL データベースのパフォーマンスに何が起きているかを把握できます。 収集されたすべてのインテリジェントな洞察を Insights パースペクティブを使用して視覚化およびアクセスできます。
+Azure SQL Database [Intelligent Insights](../../azure-sql/database/intelligent-insights-overview.md) では、すべての Azure SQL Database のパフォーマンスに何が起きているかを把握できます。 収集されたすべてのインテリジェントな洞察を Insights パースペクティブを使用して視覚化およびアクセスできます。
 
 ![Azure SQL Analytics Insights](./media/azure-sql/azure-sql-sol-insights.png)
 
@@ -297,3 +297,4 @@ Azure SQL Analytics は無料で使用できますが、毎月割り当てられ
 - Azure Monitor で[ログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な Azure SQL データを表示します。
 - Azure SQL データを表示する[独自のダッシュ ボードを作成](../learn/tutorial-logs-dashboards.md)します。
 - Azure SQL の特定のイベントが発生した場合の[アラートを作成](../platform/alerts-overview.md)します。
+

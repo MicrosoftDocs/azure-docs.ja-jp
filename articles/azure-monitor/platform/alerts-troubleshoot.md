@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c3eed095d87d1e1fa1f210b360822ceefdbe0521
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300775"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87045243"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor のアラートの問題のトラブルシューティング
 
@@ -241,13 +241,13 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
 
 1. **アクセス許可エラーが発生したか?**  
 
-     [共同作成者の監視の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)、またはアクション ルールとアラートに関連した特定のアクセス許可のいずれかが必要です。
+     [共同作成者の監視の組み込みロール](../../role-based-access-control/built-in-roles.md#monitoring-contributor)、またはアクション ルールとアラートに関連した特定のアクセス許可のいずれかが必要です。
 
 1. **アクション ルールのパラメーターを確認したか?**  
 
-    [アクション ルールのドキュメント](alerts-action-rules.md)、または[アクション ルールの PowerShell Set-AzActionRule ](https://docs.microsoft.com/powershell/module/az.alertsmanagement/Set-AzActionRule?view=azps-3.5.0)コマンドを確認してください。 
+    [アクション ルールのドキュメント](alerts-action-rules.md)、または[アクション ルールの PowerShell Set-AzActionRule ](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0)コマンドを確認してください。 
 
 
 ## <a name="next-steps"></a>次のステップ
-- ログ アラートを使用する場合は、[ログ アラートのトラブルシューティング](alert-log-troubleshoot.md)も参照してください。
+- ログ アラートを使用する場合は、[ログ アラートのトラブルシューティング](./alerts-troubleshoot-log.md)も参照してください。
 - [Azure portal](https://portal.azure.com) に戻り、上記のガイダンスに従って問題が解決したかどうかを確認します 

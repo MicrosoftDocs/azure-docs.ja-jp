@@ -2,7 +2,7 @@
 title: グループ所有者を追加または削除する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用してグループ所有者を追加または削除する方法について説明します。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd5fc389ccb52c4a5eeec0e0f544a17b011333a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 30b547ecd4ff76e650d7be837fa5bce03046da50
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604524"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89318592"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Azure Active Directory でグループ所有者を追加または削除する
 Azure Active Directory (Azure AD) グループを所有および管理するのはグループ所有者です。 グループ所有者には、ユーザーまたはサービス プリンシパルがなることができ、メンバーシップを含むグループを管理できます。 既存のグループ所有者またはグループを管理する管理者のみがグループ所有者を割り当てることができます。 グループ所有者は、グループのメンバーである必要はありません。
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) グループを所有および管理するの�
 グループに所有者がいない場合、まだグループを管理する管理者がグループを管理できます。 すべてのグループに少なくとも 1 人の所有者を割り当てることをお勧めします。 所有者がグループに割り当てられた後は、そのグループの最後の所有者を削除することはできません。 グループから最後の所有者を削除する前に、必ず別の所有者を選択してください。
 
 ## <a name="add-an-owner-to-a-group"></a>グループに所有者を追加する
-次に、Azure AD portal を使用して、グループの所有者としてユーザーを追加する方法を示します。 グループ所有者としてサービス プリンシパルを追加するには、[PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0) を使用してそれを実行する手順に従ってください。
+次に、Azure AD portal を使用して、グループの所有者としてユーザーを追加する方法を示します。 グループ所有者としてサービス プリンシパルを追加するには、[PowerShell](/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0) を使用してそれを実行する手順に従ってください。
 
 ### <a name="to-add-a-group-owner"></a>グループ所有者を追加するには
 1. ディレクトリのグローバル管理者アカウントを使用して [Azure portal](https://portal.azure.com) にサインインします。

@@ -1,6 +1,6 @@
 ---
 title: Azure CDN エンドポイント上のアセットを事前に読み込む | Microsoft Docs
-description: Azure CDN エンドポイント上のキャッシュされたコンテンツを事前に読み込む方法について説明します。
+description: Azure Content Delivery Network エンドポイントでキャッシュされたコンテンツを事前に読み込む方法について説明します。 この機能は特定のバージョンの製品で利用できます。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/12/2018
 ms.author: allensu
-ms.openlocfilehash: 587a6c4104693e8ccf610a670064832364a166d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f0968af5cb52904f6044e130adba8b0ba9a6cd1
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84887572"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192574"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "84887572"
 1. [Azure Portal](https://portal.azure.com) で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。 プロファイルのウィンドウが開きます。
     
 2. リスト内のエンドポイントをクリックします。 エンドポイントのウィンドウが開きます。
-3. CDN エンドポイント ウィンドウで、 **[読み込み]** を選択します。
+3. CDN エンドポイント ウィンドウで、**[読み込み]** を選択します。
    
     ![CDN エンドポイント ウィンドウ](./media/cdn-preload-endpoint/cdn-endpoint-blade.png)
    
@@ -47,7 +47,7 @@ ms.locfileid: "84887572"
 4. **[コンテンツ パス]** で、読み込む各アセットの完全なパスを入力します (たとえば、`/pictures/kitten.png`)。
    
    > [!TIP]
-   > テキストの入力を開始すると、 **[コンテンツ パス]** テキスト ボックスが追加されるため、複数のアセットの一覧を作成できます。 一覧からアセットを削除するには、省略記号 (...) ボタンを選択し、 **[削除]** を選択します。
+   > テキストの入力を開始すると、**[コンテンツ パス]** テキスト ボックスが追加されるため、複数のアセットの一覧を作成できます。 一覧からアセットを削除するには、省略記号 (...) ボタンを選択し、**[削除]** を選択します。
    > 
    > 各コンテンツ パスは、次の[正規表現](/dotnet/standard/base-types/regular-expression-language-quick-reference)に準拠する相対 URL にする必要があります。  
    > - 1 つのファイル パスの読み込み: `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
@@ -58,7 +58,7 @@ ms.locfileid: "84887572"
    > 
    
     ![[読み込み] ボタン](./media/cdn-preload-endpoint/cdn-load-paths.png)
-5. コンテンツ パスの入力が終わったら、 **[読み込み]** を選択します。
+5. コンテンツ パスの入力が終わったら、**[読み込み]** を選択します。
    
 
 > [!NOTE]
@@ -66,7 +66,7 @@ ms.locfileid: "84887572"
 > 
 > 
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
 * [Azure CDN REST API リファレンス: エンドポイント上のコンテンツの事前読み込み](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN REST API リファレンス: エンドポイントからのコンテンツの消去](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)

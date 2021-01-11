@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: ba9ff0ead1131b091aa1a5ece2ecf94d2319a968
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: b9478d3b171189decb4e2cca7fc93ba2fa75e32e
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800699"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89482784"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>2 セットの認証資格情報を使用したリソースを対象にシークレットのローテーションを自動化する
 
-Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/managed-identity.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはパスワードが使用されます。 アクセス キーとパスワードはたびたびローテーションする必要があります。
+Azure サービスに対する認証を行う最善の方法は[マネージド ID](../general/authentication.md) を使用することですが、この方法を選択できないシナリオもあります。 このような場合は、アクセス キーまたはパスワードが使用されます。 アクセス キーとパスワードはたびたびローテーションする必要があります。
 
 このチュートリアルでは、2 セットの認証資格情報を使用するデータベースとサービスを対象に、シークレットの定期的なローテーションを自動化する方法について説明します。 具体的には、Azure Event Grid の通知によってトリガーされる関数を使用して、Azure Key Vault にシークレットとして格納されている Azure ストレージ アカウント キーをローテーションします。 :
 
@@ -41,9 +41,8 @@ Azure サービスに対する認証を行う最善の方法は[マネージド 
 * 2 つの Azure ストレージ アカウント
 
 まだ Key Vault とストレージ アカウントをお持ちでない場合は、以下のデプロイ リンクを使用してください。
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+
+[![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. **[リソース グループ]** で、 **[新規作成]** を選択します。 このグループに **akvrotation** という名前を付けて **[OK]** をクリックします。
 1. **[確認および作成]** を選択します。
@@ -79,10 +78,9 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 - ストレージ アカウント キーのローテーション関数とイベント トリガーおよび HTTP トリガー (オンデマンド ローテーション)
 - **SecretNearExpiry** イベントの EventGrid イベント サブスクリプション
 
-1. Azure テンプレートのデプロイのリンクを選択します。
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Azure テンプレートのデプロイのリンクを選択します。 
+
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
 
 1. **[リソース グループ]** 一覧から **[akvrotation]** を選択します。
 1. ローテーションするアクセス キーがあるストレージ アカウントの名前を **[ストレージ アカウント名]** に入力します。
@@ -93,7 +91,7 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 1. **[確認および作成]** を選択します。
 1. **[作成]**
 
-   ![[確認および作成]](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![最初のストレージ アカウントを確認して作成します](../media/secrets/rotation-dual/dual-rotation-2.png)
 
 上記の手順を完了すると、ストレージ アカウント、サーバー ファーム、関数アプリ、Application Insights を使用できるようになります。 デプロイが完了すると、以下の画面が表示されます。![デプロイ完了](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
@@ -138,13 +136,13 @@ az keyvault secret set --name storageKey --vault-name akvrotation-kv --value <ke
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey
 ```
-`CredentialId` が代替の `keyName` に更新され、`value` が再生成されたことがわかります。![シークレットの表示](../media/secrets/rotation-dual/dual-rotation-4.png)
+`CredentialId` が別の `keyName` に更新され、`value` が再生成されたことに注意してください ![最初のストレージ アカウントに対する az keyvault secret show の出力](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 アクセス キーを取得して値を確認します。
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![アクセス キー リスト](../media/secrets/rotation-dual/dual-rotation-5.png)
+![最初のストレージ アカウントに対する az storage account keys list の出力](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-additional-storage-accounts-for-rotation"></a>ローテーションに使用するストレージ アカウントをもう 1 つ追加する
 
@@ -154,10 +152,9 @@ az storage account keys list -n akvrotationstorage
 - ストレージ アカウントのアクセス キーにアクセスする関数アプリにストレージ アカウント キー オペレーターのサービス ロールを割り当てる
 - **SecretNearExpiry** イベントの EventGrid イベント サブスクリプション
 
-1. Azure テンプレートのデプロイのリンクを選択します。
-<br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json" target="_blank">
-    <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
+1. Azure テンプレートのデプロイのリンクを選択します。 
+
+   [![[Azure に配置する] というラベルの付いたボタンが示されている画像。](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscription%2Fazuredeploy.json)
 
 1. **[リソース グループ]** 一覧から **[akvrotation]** を選択します。
 1. ローテーションするアクセス キーがあるストレージ アカウントの名前を **[ストレージ アカウント名]** に入力します。
@@ -167,7 +164,7 @@ az storage account keys list -n akvrotationstorage
 1. **[確認および作成]** を選択します。
 1. **[作成]**
 
-   ![[確認および作成]](../media/secrets/rotation-dual/dual-rotation-7.png)
+   ![2 つ目のストレージ アカウントを確認して作成します](../media/secrets/rotation-dual/dual-rotation-7.png)
 
 ### <a name="add-another-storage-account-access-key-to-key-vault"></a>もう 1 つのストレージ アカウントのアクセス キーを Key Vault に追加する
 
@@ -185,7 +182,7 @@ az storage account keys list -n akvrotationstorage2
 取得した値を **key2Value** と **storageAccountResourceId** に反映します。
 
 ```azurecli
-$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddThh:mm:ssZ")
+tomorrowDate=`date -d tomorrow -Iseconds -u | awk -F'+' '{print $1"Z"}'`
 az keyvault secret set --name storageKey2 --vault-name akvrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 
@@ -193,13 +190,13 @@ az keyvault secret set --name storageKey2 --vault-name akvrotation-kv --value <k
 ```azurecli
 az keyvault secret show --vault-name akvrotation-kv --name storageKey2
 ```
-`CredentialId` が代替の `keyName` に更新され、`value` が再生成されたことがわかります。![シークレットの表示](../media/secrets/rotation-dual/dual-rotation-8.png)
+`CredentialId` が別の `keyName` に更新され、`value` が再生成されたことに注意してください ![2 つ目のストレージ アカウントに対する az keyvault secret show の出力](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 アクセス キーを取得して値を確認します。
 ```azurecli
 az storage account keys list -n akvrotationstorage 
 ```
-![アクセス キー リスト](../media/secrets/rotation-dual/dual-rotation-9.png)
+![2 つ目のストレージ アカウントに対する az storage account keys list の出力](../media/secrets/rotation-dual/dual-rotation-9.png)
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>公開されている Key Vault デュアル資格情報ローテーション関数
 

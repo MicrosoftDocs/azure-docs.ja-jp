@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 685d337f9e6448f44d34a980ed884026d8a0a168
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 641ac1f6a2cc98e48694c42ec1531f679621640d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525417"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869220"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -49,7 +49,7 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 
 ### <a name="images-connected-to-non-eus-repositories"></a>EUS 以外のリポジトリに接続されているイメージ
 
-EUS 以外のリポジトリに接続されている RHEL イメージから VM をプロビジョニングした場合は、`sudo yum update` を実行すると、最新の RHEL マイナー バージョンにアップグレードされます。 たとえば、RHEL 7.4 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.7 VM (RHEL7 ファミリ内の最新のマイナー バージョン) にアップグレードされます。
+EUS 以外のリポジトリに接続されている RHEL イメージから VM をプロビジョニングした場合は、`sudo yum update` を実行すると、最新の RHEL マイナー バージョンにアップグレードされます。 たとえば、RHEL 7.4 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.8 VM (RHEL7 ファミリ内の最新のマイナー バージョン) にアップグレードされます。
 
 EUS 以外のリポジトリに接続されているイメージでは、SKU にマイナー バージョン番号は含まれません。 この SKU は、URN (イメージのフルネーム) 内の 3 番目の要素です。 たとえば、次のイメージはすべて EUS 以外のリポジトリに接続されています。
 

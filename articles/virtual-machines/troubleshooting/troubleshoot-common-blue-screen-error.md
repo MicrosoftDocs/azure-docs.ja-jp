@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 30b4386c223240217096550330c0920ad9ab6871
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: b382efc4d283d64ce0f833bde9104fa2e3bc973a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132914"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088547"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Azure VM の起動時に Windows でブルー スクリーン エラーが表示される
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のあるブルー スクリーン エラーについて説明します。 また、サポート チケットのためのデータを収集する手順について説明します。 
@@ -47,7 +47,7 @@ STOP エラーが発生する理由は複数存在する可能性があります
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>復旧 VM に OS ディスクを接続する
 
 1. バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
-2. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。 
+2. [復旧 VM に OS ディスクを接続します](./troubleshoot-recovery-disks-portal-windows.md)。 
 3. 復旧 VM にリモート デスクトップ接続します。
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
@@ -100,9 +100,6 @@ STOP エラーが発生する理由は複数存在する可能性があります
     reg unload HKLM\BROKENSYSTEM
     ```
 
-3. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](../windows/troubleshoot-recovery-disks-portal.md)。
+3. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](./troubleshoot-recovery-disks-portal-windows.md)。
 4. 問題を再現するために VM を起動すると、ダンプ ファイルが生成されます。
 5. OS ディスクを復旧 VM に接続し、ダンプ ファイルを収集し、ダンプ ファイルと共に[サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
-
-
-

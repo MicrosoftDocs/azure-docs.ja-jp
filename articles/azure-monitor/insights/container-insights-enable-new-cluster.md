@@ -4,12 +4,12 @@ description: Azure Monitor for containers サブスクリプションによっ�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 86ace49ea60bf1bd11633b5a883401f678ecaf8d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7706df4f457167f5bb4d17f1d506594615364380
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516636"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320325"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -29,7 +29,7 @@ Azure CLI で作成した新しい AKS クラスターの監視を有効にす�
 
 ## <a name="enable-using-terraform"></a>Terraform を使用して有効にする
 
-[Terraform を使用して新しい AKS クラスターをデプロイする場合](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)、既存のものを指定することを選択しない場合には、プロファイルに必要な引数を指定して [Log Analytics ワークスペースを作成します](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)。 
+[Terraform を使用して新しい AKS クラスターをデプロイする場合](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks)、既存のものを指定することを選択しない場合には、プロファイルに必要な引数を指定して [Log Analytics ワークスペースを作成します](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html)。 
 
 >[!NOTE]
 >Terraform を使用することを選択する場合、Terraform Azure RM プロバイダー バージョン 1.17.0 以降が実行されている必要があります。
@@ -118,3 +118,4 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 * ソリューションのオンボードを試みた際に問題が発生した場合は、[トラブルシューティング ガイド](container-insights-troubleshoot.md)を確認してください。
 
 * AKS クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、コンテナーの Azure Monitor を[使用する方法](container-insights-analyze.md)について学習します。
+

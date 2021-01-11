@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 0ac35fde59479ffc13c17f8e63d6fccf65c3be27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: e853255f0fc1bc95a4a7fb1658fc41d4fe705c41
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001708"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420058"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps から Azure 関数を呼び出す
 

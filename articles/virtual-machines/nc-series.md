@@ -4,15 +4,15 @@ description: NC シリーズ VM の仕様。
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: sizes
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 9df68d76c9a06a8391c301fa13b6a0d1ac6529a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd62d7f7c04896a8a62ab1290ddbc9370934d333
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84726652"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286242"
 ---
 # <a name="nc-series"></a>NC シリーズ
 

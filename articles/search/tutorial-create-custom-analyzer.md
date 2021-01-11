@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 06/22/2020
-ms.openlocfilehash: a9c2a5beae8a9206554dd6c432c1d8442b652696
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e714c58827ebb4ee7e50696db27644fa65a73af1
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021887"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89290312"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>チュートリアル:電話番号のカスタム アナライザーを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "87021887"
 
 フリー テキスト フィールドなど一部のケースでは、適切な[言語アナライザー](index-add-language-analyzers.md)を選択するだけで検索結果は向上します。 しかし電話番号や URL、メールアドレスなどを厳密に検索するシナリオでは、カスタム アナライザーの使用が必要となる場合があります。
 
-このチュートリアルでは、Postman と Azure Cognitive Search の [REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して次のことを行います。
+このチュートリアルでは、Postman と Azure Cognitive Search の [REST API](/rest/api/searchservice/) を使用して次のことを行います。
 
 > [!div class="checklist"]
 > * アナライザーのしくみを説明する
@@ -225,7 +225,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 ## <a name="4---debug-search-results"></a>4 - 検索結果をデバッグする
 
-検索結果を理解するためには、まず、アナライザーのしくみを理解することが大切です。 そこから、[Analyze Text API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) を使用して既定のアナライザーをテストした後、実際の要件を満たしたアナライザーを作成します。
+検索結果を理解するためには、まず、アナライザーのしくみを理解することが大切です。 そこから、[Analyze Text API](/rest/api/searchservice/test-analyzer) を使用して既定のアナライザーをテストした後、実際の要件を満たしたアナライザーを作成します。
 
 ### <a name="how-analyzers-work"></a>アナライザーのしくみ
 
@@ -239,7 +239,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 以下の図を見ると、この 3 つのコンポーネントが連携して文がトークン化されるようすをご覧いただけます。
 
-  ![アナライザー処理の図](media/tutorial-create-custom-analyzer/analyzers-explained.png)
+  ![文をトークン化するアナライザー処理の図](media/tutorial-create-custom-analyzer/analyzers-explained.png)
 
 その後、高速なフルテキスト検索を可能にする転置インデックスにこれらのトークンが格納されます。  フルテキスト検索は、字句解析中に抽出された一意の語句すべてを、それが出現するドキュメントへと、転置インデックスによってマッピングすることで実現されます。 以下の図に例を示します。
 
@@ -251,7 +251,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 1. 転置インデックスがスキャンされて、一致する語句を含んだドキュメントが検出されます。
 1. 最後に、取得されたドキュメントが[類似性アルゴリズム](index-ranking-similarity.md)によってランク付けされます。
 
-  ![アナライザー処理の図](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
+  ![類似性をランク付けするアナライザー処理の図](media/tutorial-create-custom-analyzer/query-architecture-explained.png)
 
 検索語が転置インデックス内の語句と一致しなかった場合、結果は返されません。 クエリの機構について詳しくは、[フルテキスト検索](search-lucene-query-architecture.md)に関する記事を参照してください。
 
@@ -260,7 +260,7 @@ GET https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basic
 
 ### <a name="test-analyzer-using-the-analyze-text-api"></a>Analyze Text API を使用してアナライザーをテストする
 
-Azure Cognitive Search には、[Analyze Text API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) が用意されています。Analyze Text API を使用してアナライザーをテストし、そのテキスト処理の動作を理解することができます。
+Azure Cognitive Search には、[Analyze Text API](/rest/api/searchservice/test-analyzer) が用意されています。Analyze Text API を使用してアナライザーをテストし、そのテキスト処理の動作を理解することができます。
 
 Analyze Text API は、次の要求を使用して呼び出します。
 

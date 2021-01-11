@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197057"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371823"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>GitHub リポジトリを App Configuration と同期する
 
@@ -20,12 +20,12 @@ ms.locfileid: "84197057"
 &nbsp;&nbsp;&nbsp;&nbsp;•   アプリ全体を再デプロイせずに構成を更新する <br>
 &nbsp;&nbsp;&nbsp;&nbsp;•   Azure App Service や Functions などのサービスとの統合。 
 
-GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)は、GitHub リポジトリの自動化されたプロセスを定義します。 *Azure App Configuration Sync* アクションは、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新をトリガーします。 リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルを使用して、ステップとパラメーターを定義します。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、または分岐するときに構成の更新をトリガーできます。
+GitHub Actions の[ワークフロー](https://help.github.com/articles/about-github-actions#workflow)は、GitHub リポジトリの自動化されたプロセスを定義します。 *Azure App Configuration Sync* アクションは、ソース リポジトリに変更が加えられたときに App Configuration インスタンスの更新をトリガーします。 リポジトリの `/.github/workflows/` パスにある YAML (.yml) ファイルを使用して、ステップとパラメーターを定義します。 アプリ コードと同様に、アプリ構成ファイルをプッシュ、レビュー、またはブランチするときに構成の更新をトリガーできます。
 
 GitHub の[ドキュメント](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)では、GitHub ワークフローとアクションについて詳細に説明されています。 
 
 ## <a name="enable-github-actions-in-your-repository"></a>リポジトリで GitHub Actions を有効にする
-この GitHub アクションの使用を開始するには、リポジトリにアクセスし、 **[Actions]\(アクション\)** タブを選択します。 **[新しいワークフロー]** 、 **[Set up a workflow yourself]\(ワークフローを自分で設定する\)** の順にクリックします。 最後に、マーケットプレース上で "Azure App Configuration Sync" を検索します。
+この GitHub アクションの使用を開始するには、リポジトリにアクセスし、 **[Actions]\(アクション\)** タブを選択します。 **[新しいワークフロー]** 、 **[Set up a workflow yourself]\(ワークフローを自分で設定する\)** の順に選択します。 最後に、マーケットプレース上で "Azure App Configuration Sync" を検索します。
 > [!div class="mx-imgBorder"]
 > ![[Actions]\(アクション\) タブを選択する](media/find-github-action.png)
 
@@ -211,7 +211,7 @@ jobs:
 ## <a name="use-azure-key-vault-with-github-action"></a>Azure Key Vault で GitHub アクションを使用する
 AppConfiguration で Azure Key Vault を使用する開発者は、通常は appsettings.json と secretreferences.json という 2 つの個別のファイルを使用する必要があります。 secretreferences.json には、キー コンテナー シークレットの URL が含まれます。
 
-{ "mySecret": "{\"uri\":\"https://myKeyVault.vault.azure.net/secrets/mySecret"}" }
+{ "mySecret": "{\"uri\":\"https://myKeyVault.vault.azure.net/secrets/mySecret "}" }
 
 appsettings.json に、厳格な同期を実行するように GitHub アクションを構成し、その後、secretreferences.json に、厳格ではない同期を構成します。 次のサンプルでは、いずれかのファイルが更新されると、同期がトリガーされます。
 

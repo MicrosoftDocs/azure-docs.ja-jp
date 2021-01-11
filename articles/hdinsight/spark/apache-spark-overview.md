@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc,seoapr2020
+ms.custom: contperfq1
 ms.topic: overview
-ms.date: 04/17/2020
-ms.openlocfilehash: e933d48a60a01bdbf00205a389778b9a3befeede
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 08/21/2020
+ms.openlocfilehash: 2cbe0b520156e77308f61a725937ac415cb80473
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82188227"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756947"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Apache Spark とは - Azure HDInsight
 
@@ -108,3 +108,4 @@ HDInsight の Apache Spark の詳細については、次の記事を使用で�
 この概要では、Azure HDInsight の Apache Spark の基本について理解します。 HDInsight Spark クラスターを作成し、いくつかの Spark SQL クエリを実行する方法を確認します。
 
 * [HDInsight での Apache Spark クラスターの作成](./apache-spark-jupyter-spark-sql-use-portal.md)
+* [パフォーマンスのための Spark ジョブの最適化](apache-spark-perf.md)

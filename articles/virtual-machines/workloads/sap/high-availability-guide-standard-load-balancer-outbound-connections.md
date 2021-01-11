@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 9419ed320089ff85722e0d9c0582e92491377ab1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907467"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836124"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続
 
@@ -31,11 +31,11 @@ ms.locfileid: "84907467"
 
 ## <a name="overview"></a>概要
 
-クラスタリングを使用して SAP ソリューションに対する高可用性を実装する場合、必要なコンポーネントの 1 つは [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) です。 Azure には、Standard と Basic の 2 つのロード バランサー SKU が用意されています。
+クラスタリングを使用して SAP ソリューションに対する高可用性を実装する場合、必要なコンポーネントの 1 つは [Azure Load Balancer](../../../load-balancer/load-balancer-overview.md) です。 Azure には、Standard と Basic の 2 つのロード バランサー SKU が用意されています。
 
 Standard Azure Load Balancer には、Basic ロード バランサーより優れた点がいくつかあります。 たとえば、Azure 可用性ゾーンをまたがって機能し、トラブルシューティングが容易になる強化された監視とログ記録の機能を備え、待機時間が短縮されます。 "HA ポート" 機能は、すべてのポートが対象です。つまり、すべてのポートを個別に指定する必要がなくなります。  
 
-Azure Load Balancer の Basic SKU と Standard SKU には、いくつかの重要な違いがあります。 そのうちの 1 つは、パブリック エンドポイントへの送信トラフィックの処理です。 Basic SKU と Standard SKU の Load Balancerの詳細な比較については、「[Load Balancer の SKU の比較](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」をご覧ください。  
+Azure Load Balancer の Basic SKU と Standard SKU には、いくつかの重要な違いがあります。 そのうちの 1 つは、パブリック エンドポイントへの送信トラフィックの処理です。 Basic SKU と Standard SKU の Load Balancerの詳細な比較については、「[Load Balancer の SKU の比較](../../../load-balancer/load-balancer-overview.md)」をご覧ください。  
  
 パブリック IP アドレスを持たない VM が、内部 (パブリック IP アドレスがない) Standard Azure Load Balancer のバックエンド プール内に配置されている場合、追加の構成を行わない限り、パブリック エンドポイントへの送信接続はありません。  
 
@@ -60,20 +60,20 @@ SAP のデプロイでパブリック エンドポイントへの送信接続が
 最初に、以下の記事をお読みください。
 
 * Azure Standard Load Balancer
-  * [Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) - Azure Standard Load Balancer、重要な原則、概念、チュートリアルの包括的な概要 
-  * [Azure のアウトバウンド接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios) - Azure で送信接続を実現する方法に関するシナリオ
-  * [Load Balancer のアウトバウンド規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview) - Load Balancer のアウトバウンド規則の概念と、アウトバウンド規則を作成する方法について説明します
+  * [Azure Standard Load Balancer の概要](../../../load-balancer/load-balancer-overview.md) - Azure Standard Load Balancer、重要な原則、概念、チュートリアルの包括的な概要 
+  * [Azure のアウトバウンド接続](../../../load-balancer/load-balancer-outbound-connections.md#scenarios) - Azure で送信接続を実現する方法に関するシナリオ
+  * [Load Balancer のアウトバウンド規則](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules) - Load Balancer のアウトバウンド規則の概念と、アウトバウンド規則を作成する方法について説明します
 * Azure Firewall
-  * [Azure Firewall の概要](https://docs.microsoft.com/azure/firewall/overview) - Azure Firewall の概要
-  * [チュートリアル:Azure Firewall のデプロイと構成](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) - Azure portal を使用して Azure Firewall を構成する方法についての説明
-* [仮想ネットワーク - ユーザー定義規則](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined) - Azure ルーティングの概念と規則  
-* [セキュリティ グループのサービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) - サービス タグを使用してネットワーク セキュリティ グループとファイアウォールの構成を簡略化する方法
+  * [Azure Firewall の概要](../../../firewall/overview.md) - Azure Firewall の概要
+  * [チュートリアル:Azure Firewall のデプロイと構成](../../../firewall/tutorial-firewall-deploy-portal.md) - Azure portal を使用して Azure Firewall を構成する方法についての説明
+* [仮想ネットワーク - ユーザー定義規則](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) - Azure ルーティングの概念と規則  
+* [セキュリティ グループのサービス タグ](../../../virtual-network/security-overview.md#service-tags) - サービス タグを使用してネットワーク セキュリティ グループとファイアウォールの構成を簡略化する方法
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>インターネットへの送信接続のために追加する外部 Azure Standard Load Balancer
 
-パブリック エンドポイントから VM への受信接続を許可せずに、パブリック エンドポイントへの送信接続を実現する 1 つのオプションは、パブリック IP アドレスを使用して 2 番目のロード バランサーを作成し、2 番目のロード バランサーのバックエンド プールに VM を追加して、[送信規則](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)だけを定義することです。  
-VM からの発信呼び出しにアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を使用します。  
-詳しくは、[アウトバウンド接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)に関するドキュメントのシナリオ 2 をご覧ください。  
+パブリック エンドポイントから VM への受信接続を許可せずに、パブリック エンドポイントへの送信接続を実現する 1 つのオプションは、パブリック IP アドレスを使用して 2 番目のロード バランサーを作成し、2 番目のロード バランサーのバックエンド プールに VM を追加して、[送信規則](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)だけを定義することです。  
+VM からの発信呼び出しにアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md)を使用します。  
+詳しくは、[アウトバウンド接続](../../../load-balancer/load-balancer-outbound-connections.md#scenarios)に関するドキュメントのシナリオ 2 をご覧ください。  
 構成は次のようになります。  
 
 ![ネットワーク セキュリティ グループを使用してパブリック エンドポイントへの接続を制御する](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
@@ -81,11 +81,11 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 ### <a name="important-considerations"></a>重要な考慮事項
 
 - 同じサブネット内の複数の VM 用にパブリック Load Balancer を 1 つ追加して、パブリック エンドポイントへの送信接続を実現し、コストを最適化することができます  
-- VM からアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を使用します。 ネットワーク セキュリティ グループは、サブネットまたは各 VM に割り当てることができます。 可能な場合は、[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用して、セキュリティ規則の複雑さを軽減します。  
+- VM からアクセスできるパブリック エンドポイントを制御するには、[ネットワーク セキュリティ グループ](../../../virtual-network/security-overview.md)を使用します。 ネットワーク セキュリティ グループは、サブネットまたは各 VM に割り当てることができます。 可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、セキュリティ規則の複雑さを軽減します。  
 - パブリック IP アドレスとアウトバウンド規則を備えた Azure Standard Load Balancer を使うと、パブリック エンドポイントに直接アクセスできます。 企業のセキュリティ要件で、監査とログ記録のため、集中管理された企業ソリューションを使用してすべての送信トラフィックを通過させる必要がある場合は、このシナリオで要件を満たすことができない可能性があります。  
 
 >[!TIP]
->可能な場合は、[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用して、ネットワーク セキュリティ グループの複雑さを軽減します。 
+>可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、ネットワーク セキュリティ グループの複雑さを軽減します。 
 
 ### <a name="deployment-steps"></a>デプロイメントの手順
 
@@ -100,7 +100,7 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 2. バックエンドプール **MyBackendPoolOfPublicILB** を作成し、VM を追加します。  
    1. 仮想ネットワークを選択します  
    1. VM とその IP アドレスを選択し、バックエンド プールにそれらを追加します  
-3. [アウトバウンド規則を作成します](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-cli#create-outbound-rule)。 現在、Azure portal からアウトバウンド規則を作成することはできません。 アウトバウンド規則は [Azure CLI](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) で作成できます。  
+3. [アウトバウンド規則を作成します](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration)。 現在、Azure portal からアウトバウンド規則を作成することはできません。 アウトバウンド規則は [Azure CLI](../../../cloud-shell/overview.md?view=azure-cli-latest) で作成できます。  
 
    ```azurecli
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
@@ -117,13 +117,13 @@ VM からの発信呼び出しにアクセスできるパブリック エンド�
 
    ![パブリック IP を使用した 2 番目の Load Balancer での送信接続](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-network-security-groups.png)
 
-   Azure ネットワーク セキュリティ グループについて詳しくは、「[セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)」をご覧ください。 
+   Azure ネットワーク セキュリティ グループについて詳しくは、「[セキュリティ グループ](../../../virtual-network/security-overview.md)」をご覧ください。 
 
 ## <a name="azure-firewall-for-outbound-connections-to-internet"></a>インターネットへの送信接続に対する Azure Firewall
 
 パブリック エンドポイントから VM への受信接続を許可せずに、パブリック エンドポイントへの送信接続を実現するもう 1 つのオプションは、Azure Firewall を使用するものです。 Azure Firewall は、高可用性が組み込まれたマネージド サービスであり、複数の可用性ゾーンにまたがることができます。  
-Azure Firewall 経由でトラフィックをルーティングするには、[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)をデプロイし、VM と Azure ロード バランサーがデプロイされているサブネットに関連付け、Azure Firewall をポイントする必要もあります。  
-Azure Firewall をデプロイする方法について詳しくは、[Azure Firewall のデプロイと構成](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)に関するページをご覧ください。  
+Azure Firewall 経由でトラフィックをルーティングするには、[ユーザー定義ルート](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes)をデプロイし、VM と Azure ロード バランサーがデプロイされているサブネットに関連付け、Azure Firewall をポイントする必要もあります。  
+Azure Firewall をデプロイする方法について詳しくは、[Azure Firewall のデプロイと構成](../../../firewall/tutorial-firewall-deploy-portal.md)に関するページをご覧ください。  
 
 アーキテクチャは次のようになります。
 
@@ -137,7 +137,7 @@ Azure Firewall をデプロイする方法について詳しくは、[Azure Fire
 - 企業のファイアウォール ソリューションが Azure Firewall ではなく、すべての送信トラフィックを一元化された企業ソリューションを通過させるというセキュリティ要件がある場合、このソリューションは実用的ではない可能性があります。  
 
 >[!TIP]
->可能な場合は、[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用して、Azure Firewall の規則の複雑さを軽減します。  
+>可能な場合は、[サービス タグ](../../../virtual-network/security-overview.md#service-tags)を使用して、Azure Firewall の規則の複雑さを軽減します。  
 
 ### <a name="deployment-steps"></a>デプロイメントの手順
 
@@ -229,5 +229,5 @@ Pacemaker が Azure 管理 API と通信できるようにするには、すべ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure の SUSE で Pacemaker を構成する方法を学習します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
-* [Azure の Red Hat で Pacemaker を構成する方法を学習します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker)
+* [Azure の SUSE で Pacemaker を構成する方法を学習します](./high-availability-guide-suse-pacemaker.md)
+* [Azure の Red Hat で Pacemaker を構成する方法を学習します](./high-availability-guide-rhel-pacemaker.md)

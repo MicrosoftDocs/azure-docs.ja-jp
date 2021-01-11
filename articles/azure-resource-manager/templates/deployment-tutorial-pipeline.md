@@ -1,15 +1,15 @@
 ---
 title: Azure Pipelines を使用した継続的インテグレーション
 description: Azure Resource Manager テンプレートを継続的にビルド、テスト、およびデプロイする方法について説明します。
-ms.date: 04/22/2020
+ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b8163c357f184ac41ce72dc8c89fcc5030c3180d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c793c8bcbc01cbef99de13ef6dd2f6ce61a50773
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118921"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892679"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -175,8 +175,8 @@ GitHub アカウントをお持ちでない場合は、[前提条件](#prerequis
     * **[場所]** :リソース グループの場所を選択します (**米国中部**など)。
     * **テンプレートの場所**: **[Linked artifact]\(リンクされた成果物\)** を選択します。この場合、タスクは接続されているリポジトリから直接テンプレート ファイルを探します。
     * **テンプレート**:「**CreateWebApp/azuredeploy.json**」と入力します。 フォルダー名とファイル名を変更した場合は、この値を変更する必要があります。
-    * **テンプレート パラメーター**: このフィールドは空のままにします。 **[テンプレート パラメーターのオーバーライド] にパラメーターの値を指定します。
-    * **overrideParameters**: 「 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 」と入力します。 プロジェクト名とリンク済みテンプレートの URL は、実際の値に置き換えてください。 リンク済みテンプレートの URL は、「[GitHub リポジトリを作成する](#create-a-github-repository)」の最後に書き留めた値です。
+    * **テンプレート パラメーター**: このフィールドは空のままにします。 **[テンプレート パラメーターのオーバーライド]** にパラメーターの値を指定します。
+    * **[テンプレート パラメーターのオーバーライド]** : 「 **-projectName [EnterAProjectName] -linkedTemplateUri [EnterTheLinkedTemplateURL]** 」と入力します。 プロジェクト名とリンク済みテンプレートの URL は、実際の値に置き換えてください。 リンク済みテンプレートの URL は、「[GitHub リポジトリを作成する](#create-a-github-repository)」の最後に書き留めた値です。 これは **https://raw.githubusercontent.com** で始まります。
     * **デプロイ モード**: **[増分]** を選択します。
     * **デプロイ名**: 「**DeployPipelineTemplate**」と入力します。 **[デプロイ名]** は、 **[Advanced]\(詳細\)** を選択すると表示されます。
 

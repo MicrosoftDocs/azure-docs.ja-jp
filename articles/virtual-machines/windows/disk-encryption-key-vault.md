@@ -3,17 +3,17 @@ title: Azure Disk Encryption 用のキー コンテナーの作成と構成
 description: この記事では、Azure Disk Encryption で使用するためのキー コンテナーを作成および構成する手順について説明します
 ms.service: virtual-machines
 ms.subservice: security
-ms.topic: article
+ms.topic: how-to
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec0862a0d4de644630c972387f01feaa1a327e67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0779cad02f266d49be055ea485e87c9c8075b7b3
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500754"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87284525"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption 用のキー コンテナーの作成と構成
 
@@ -25,7 +25,7 @@ Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗
 Azure Disk Encryption で使用するためのキー コンテナーの作成と構成には、次の 3 つの手順が必要です。
 
 > [!Note]
-> ボリューム暗号化のために Azure Disk Encryption へのアクセスを有効にするには、Azure Key Vault のアクセス ポリシー設定でオプションを選択する必要があります。
+> ボリューム暗号化のために Azure Disk Encryption へのアクセスを有効にするには、Azure Key Vault のアクセス ポリシー設定でオプションを選択する必要があります。 キー コンテナーでファイアウォールを有効にしている場合は、キー コンテナーの [ネットワーク] タブに移動し、Microsoft の信頼されたサービスへのアクセスを有効にする必要があります。 
 
 1. 必要に応じて、リソース グループを作成する。
 2. キー コンテナーを作成する。 
@@ -43,7 +43,7 @@ Azure Disk Encryption で使用するためのキー コンテナーの作成と
 
 ## <a name="install-tools-and-connect-to-azure"></a>ツールをインストールし、Azure に接続する
 
-この記事の手順を完了するには、[Azure CLI](/cli/azure/)、[Azure PowerShell Az モジュール](/powershell/azure/overview)、または [Azure portal](https://portal.azure.com) のいずれかを使用します。
+この記事の手順を完了するには、[Azure CLI](/cli/azure/)、[Azure PowerShell Az モジュール](/powershell/azure/)、または [Azure portal](https://portal.azure.com) のいずれかを使用します。
 
 ポータルにはブラウザーからアクセスできますが、Azure CLI と Azure PowerShell ではローカル インストールが必要です。詳細については、[Windows 用の Azure Disk Encryption のインストール ツール](disk-encryption-windows.md#install-tools-and-connect-to-azure) に関するセクションを参照してください。
 

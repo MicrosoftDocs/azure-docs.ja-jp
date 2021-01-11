@@ -3,12 +3,12 @@ title: Azure Lab Services でエシカル ハッキング ラボを設定する 
 description: Azure Lab Services を使用してラボを設定し、エシカル ハッキングを教える方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 0e3a5c6e09038ea731e4157657b0e6ad9c9263ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5134a7db824bad69f42a4051319479f712051446
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443997"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297588"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>エシカル ハッキング クラスを教えるためのラボを設定する 
 この記事では、エシカル ハッキングのフォレンジクス面に焦点を当てたクラスを設定する方法について説明します。 侵入テストは、悪意のある攻撃者が利用する可能性のある脆弱性を実証するためにシステムまたはネットワークへの侵入を試みる訓練で、エシカル ハッキング コミュニティで使用します。 
@@ -74,7 +74,7 @@ Rapid7 Metasploitable イメージは、故意にセキュリティの脆弱性�
 1. **[Download Metasploitable Now]\(Metasploitable を今すぐダウンロード\)** ボタンを選択します。
 1. ZIP ファイルがダウンロードされたら、ZIP ファイルを抽出し、その場所を覚えておきます。
 1. 抽出された vmdk ファイルを vhdx ファイルに変換して、Hyper-V で使用できるようにします。 これを行うには、管理特権で PowerShell を開き、vmdk ファイルが置かれているフォルダーに移動して、次の手順に従います。
-    1. [Microsoft Virtual Machine Converter](https://www.microsoft.com/download/details.aspx?id=42497) をダウンロードし、メッセージが表示されたら mvmc_setup ファイルを実行します。
+    1. [Microsoft Virtual Machine Converter](https://download.microsoft.com/download/9/1/E/91E9F42C-3F1F-4AD9-92B7-8DD65DA3B0C2/mvmc_setup.msi) をダウンロードし、メッセージが表示されたら mvmc_setup ファイルを実行します。
     1. PowerShell モジュールをインポートします。  モジュールがインストールされている既定の場所は、C:\Program Files\Microsoft Virtual Machine Converter\ です
 
         ```powershell

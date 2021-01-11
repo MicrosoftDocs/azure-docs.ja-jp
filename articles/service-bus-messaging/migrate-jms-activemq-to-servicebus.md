@@ -1,6 +1,6 @@
 ---
-title: Java Message Service (JMS) アプリケーションを ActiveMQ から Azure Service Bus に移行する |Microsoft Docs
-description: この記事では、ActiveMQ を操作する既存の JMS アプリケーションを移行して、Azure Service Bus を操作する方法について説明します。
+title: Java Message Service (JMS) アプリケーションを Apache ActiveMQ から Azure Service Bus に移行する |Microsoft Docs
+description: この記事では、Apache ActiveMQ を操作する既存の JMS アプリケーションを移行して、Azure Service Bus を操作する方法について説明します。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,69 +13,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
-ms.openlocfilehash: 3da4f693f4cfec47c5456a0c5998f58f5fe02949
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-java
+ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122225"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067156"
 ---
-# <a name="migrate-existing-java-message-service-jms-20-applications-from-active-mq-to-azure-service-bus"></a>既存の Java Message Service (JMS) 2.0 アプリケーションを ActiveMQ から Azure Service Bus に移行する
+# <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>既存の Java Message Service (JMS) 2.0 アプリケーションを Apache ActiveMQ から Azure Service Bus に移行する
 
-Azure Service Bus では、Advanced Message Queuing Protocol (AMQP) プロトコルを介して Java Message Service (JMS) 2.0 API を利用する Java/J2EE および Spring のワークロードがサポートされています。
+この記事では、JMS ブローカーを操作する既存の Java Message Service (JMS) 2.0 アプリケーションを変更して、代わりに Azure Service Bus を操作する方法について説明します。 具体的には、Apache ActiveMQ または Amazon MQ から移行する方法について説明します。
 
-このガイドでは、JMS ブローカー (具体的には Apache ActiveMQ または Amazon MQ) とやり取りして Azure Service Bus を操作する既存の Java Message Service (JMS) 2.0 アプリケーションを変更する場合に注意すべき事項について説明します。
+Azure Service Bus では、Advanced Message Queuing Protocol (AMQP) を介して JMS 2.0 API を使用する Java 2 Platform, Enterprise Edition および Spring のワークロードがサポートされています。
 
 ## <a name="before-you-start"></a>開始する前に
 
 ### <a name="differences-between-azure-service-bus-and-apache-activemq"></a>Azure Service Bus と Apache ActiveMQ との相違点
 
-Azure Service Bus と Apache ActiveMQ は両方とも、クライアント アプリケーションがメッセージを送受信するための JMS プロバイダーとして機能するメッセージ ブローカーです。 どちらの場合も、**キュー**でのポイントツーポイント セマンティクスと、**トピック**および**サブスクリプション**での発行 - サブスクライブ セマンティクスが有効になります。 
+Azure Service Bus と Apache ActiveMQ は両方とも、クライアント アプリケーションがメッセージを送受信するための JMS プロバイダーとして機能するメッセージ ブローカーです。 どちらの場合も、キューでのポイントツーポイント セマンティクスと、トピックおよびサブスクリプションでのパブリッシュ/サブスクライブ セマンティクスが有効になります。 
 
-ただし、両者にはいくつかの違いがあります。
+それでも、次の表に示すように、両者にはいくつかの違いがあります。
 
 | カテゴリ | ActiveMQ | Azure Service Bus |
 | --- | --- | --- |
 | アプリケーションの階層化 | クラスター化モノリス | 2 層 <br> (ゲートウェイ + バックエンド) |
 | プロトコルのサポート | <ul> <li>AMQP</li> <li> STOMP </li> <li> OpenWire </li> </ul> | AMQP |
-| プロビジョニング モード | <ul> <li> IaaS (オンプレミス) </li> <li> AmazonMQ (マネージド PaaS) </li> | マネージド PaaS |
+| プロビジョニング モード | <ul> <li> サービスとしてのインフラストラクチャ (IaaS)、オンプレミス </li> <li> Amazon MQ (マネージド PaaS) </li> | マネージド PaaS (サービスとしてのプラットフォーム) |
 | メッセージ サイズ | ユーザーが構成可能 | 1 MB (Premium レベル) |
 | 高可用性 | お客様による管理 | プラットフォーム管理 |
-| ディザスター リカバリー | お客様による管理 | プラットフォーム管理 | 
+| 障害復旧 | お客様による管理 | プラットフォーム管理 | 
 
 ### <a name="current-supported-and-unsupported-features"></a>現在サポートされている機能とサポートされていない機能
 
 [!INCLUDE [service-bus-jms-features-list](../../includes/service-bus-jms-feature-list.md)]
 
-### <a name="caveats"></a>注意事項
+### <a name="considerations"></a>考慮事項
 
-2 層を持つという Azure Service Bus の性質によって、さまざまな事業継続機能 (高可用性とディザスター リカバリー) が提供されます。 ただし、JMS 機能を利用する際には、いくつかの点を考慮する必要があります。
+2 層を持つという Azure Service Bus の性質によって、さまざまな事業継続機能 (高可用性とディザスター リカバリー) が提供されます。 ただし、JMS 機能を使用する際には、いくつかの点を考慮する必要があります。
 
 #### <a name="service-upgrades"></a>サービスのアップグレード
 
-Service Bus をアップグレードまたは再起動する場合、一時キューまたはトピックが削除されます。
-
-アプリケーションが、一時キューまたはトピックにおけるデータ損失の影響を受ける可能性がある場合は、一時キューまたはトピックを使用**しないで**、代わりに永続的なキュー、トピック、およびサブスクリプションを使用することをお勧めします。
+Service Bus をアップグレードおよび再起動すると、一時キューまたはトピックが削除されます。 アプリケーションが一時キューまたはトピックのデータ損失の影響を受ける場合は、一時キューおよびトピックを使用しないでください。 代わりに、永続キュー、トピック、およびサブスクリプションを使用してください。
 
 #### <a name="data-migration"></a>データ移行
 
-Azure Service Bus を操作するためのクライアント アプリケーションを移行/変更した場合でも、ActiveMQ に保持されているデータは Service Bus には移行されません。
-
-ActiveMQ のキュー、トピック、およびサブスクリプションをドレインし、メッセージを Service Bus のキュー、トピック、およびサブスクリプションに再生する際に、カスタム アプリケーションが必要になる場合があります。
+Azure Service Bus を操作するためのクライアント アプリケーションを移行および変更した場合でも、ActiveMQ に保持されているデータは Service Bus には移行されません。 ActiveMQ のキュー、トピック、およびサブスクリプションをドレインし、メッセージを Service Bus のキュー、トピック、およびサブスクリプションに再生する際に、カスタム アプリケーションが必要になる場合があります。
 
 #### <a name="authentication-and-authorization"></a>認証と権限承認
 
-Azure Active Directory によってサポートされるロール ベースの Access Control (RBAC) は、Azure Service Bus に適した認証メカニズムです。
-
-ただし、Apache QPID JMS では要求ベースの認証がサポートされていないため、RBAC は現在サポートされていません。
-
-現時点では、SAS キーを使用した認証のみがサポートされています。
+Azure Active Directory によってサポートされるロール ベースのアクセス制御 (RBAC) は、Service Bus に適した認証メカニズムです。 ただし、現在、RBAC またはクレームベースの認証は Apache QPID JMS によってサポートされていないため、認証には SAS キーを使用する必要があります。
 
 ## <a name="pre-migration"></a>移行前
 
 ### <a name="version-check"></a>バージョン チェック
 
-以下に、JMS アプリケーションの作成中に使用されるコンポーネントと、サポートされている特定のバージョンを示します。 
+JMS アプリケーションの作成時には、次のコンポーネントとバージョンを使用します。 
 
 | コンポーネント | Version |
 |---|---|
@@ -84,49 +77,46 @@ Azure Active Directory によってサポートされるロール ベースの A
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>AMQP ポートが開いていることを確認する
 
-Azure Service Bus は、AMQP プロトコルを介した通信をサポートしています。 このため、ポート 5671 (AMQP) と 443 (TCP) を介した通信を有効にする必要があります。 クライアント アプリケーションがホストされている場所によっては、これらのポートを介した通信を許可するためのサポート チケットが必要になる場合があります。
+Service Bus では、AMQP プロトコルを介した通信がサポートされます。 このためには、ポート 5671 (AMQP) と 443 (TCP) を介した通信を有効にします。 クライアント アプリケーションがホストされている場所によっては、これらのポートを介した通信を許可するためのサポート チケットが必要になる場合があります。
 
 > [!IMPORTANT]
-> Azure Service Bus は、AMQP 1.0 プロトコル**のみ**をサポートしています。
+> Service Bus では、AMQP 1.0 プロトコルのみがサポートされています。
 
-### <a name="set-up-enterprise-configurations-vnet-firewall-private-endpoint-etc"></a>エンタープライズ構成 (VNET、ファイアウォール、プライベート エンドポイントなど) の設定
+### <a name="set-up-enterprise-configurations"></a>エンタープライズ構成を設定する
 
-Azure Service Bus によって、さまざまなエンタープライズ セキュリティおよび高可用性機能が有効になります。 詳細については、以下のドキュメント リンクを参照してください。
+Service Bus によって、さまざまなエンタープライズ セキュリティおよび高可用性機能が有効になります。 詳細については、次を参照してください。 
 
   * [仮想ネットワーク サービス エンドポイント](service-bus-service-endpoints.md)
   * [ファイアウォール](service-bus-ip-filtering.md)
   * [カスタマー マネージド キー (BYOK) を使用したサービス側の暗号化](configure-customer-managed-key.md)
   * [プライベート エンドポイント](private-link-service.md)
-  * [認証と承認](service-bus-authentication-and-authorization.md)
+  * [認証と権限承認](service-bus-authentication-and-authorization.md)
 
 ### <a name="monitoring-alerts-and-tracing"></a>監視、アラート、トレース
 
-メトリックは、Service Bus 名前空間ごとに Azure Monitor に発行されます。これは、名前空間に割り当てられたリソースのアラートと動的スケーリングに利用できます。
+Service Bus 名前空間ごとに、Azure Monitor にメトリックを発行します。 これらのメトリックを使用して、名前空間に割り当てられたリソースのアラートと動的スケーリングを行うことができます。
 
-さまざまなメトリックの詳細と、これらのメトリックに対するアラートの設定方法については、[Azure Monitor での Service Bus メトリックに関する説明](service-bus-metrics-azure-monitor.md)を参照してください。
+さまざまなメトリックの詳細と、それらに対するアラートの設定方法については、「[Azure Monitor での Service Bus メトリック](service-bus-metrics-azure-monitor.md)」をご覧ください。 また、データ操作のクライアント側のトレースについては[こちら](service-bus-end-to-end-tracing.md)を、管理操作の操作/診断ログについては[こちら](service-bus-diagnostic-logs.md)をご覧ください。
 
-また、データ操作のクライアント側のトレースについては[こちら](service-bus-end-to-end-tracing.md)を、また、管理操作の操作ログ/診断ログについては[こちら](service-bus-diagnostic-logs.md)を参照してください。
+### <a name="metrics---new-relic"></a>メトリック - New Relic
 
-### <a name="metrics---newrelic"></a>メトリック - NewRelic
+ActiveMQ のどのメトリックが Azure Service Bus のどのメトリックにマップされるかを関連付けることができます。 New Relic の Web サイトで以下をご覧ください。
 
-以下では、ActiveMQ のメトリックが Azure Service Bus のどのメトリックにマップされるかについて簡単に説明しています。 以下は、NewRelic から参照されます。
-
-  * [ActiveMQ/Amazon MQ NewRelic メトリック](https://docs.newrelic.com/docs/integrations/amazon-integrations/aws-integrations-list/aws-mq-integration)
-  * [Azure Service Bus NewRelic メトリック](https://docs.newrelic.com/docs/integrations/microsoft-azure-integrations/azure-integrations-list/azure-service-bus-monitoring-integration)
+  * [ActiveMQ/Amazon MQ New Relic メトリック](https://docs.newrelic.com/docs/integrations/amazon-integrations/aws-integrations-list/aws-mq-integration)
+  * [Azure Service Bus New Relic メトリック](https://docs.newrelic.com/docs/integrations/microsoft-azure-integrations/azure-integrations-list/azure-service-bus-monitoring-integration)
 
 > [!NOTE]
-> 現在、NewRelic は ActiveMQ に直接シームレスに統合されていませんが、NewRelic には Amazon MQ に使用できるメトリックがあります。
-> Amazon MQ は ActiveMQ から派生しているため、次のガイドでは、AmazonMQ から Azure Service Bus に NewRelic メトリックがマップされています。
+> 現在、New Relic では ActiveMQ との直接的でシームレスな統合は実現されていませんが、Amazon MQ に使用できるメトリックが用意されています。 Amazon MQ は ActiveMQ から派生しているため、次の表では、AmazonMQ の New Relic メトリックを Azure Service Bus にマップしています。
 >
 
-|メトリックのグループ化| AmazonMQ/ActiveMQ のメトリック | Azure Service Bus のメトリック |
+|メトリックのグループ化| Amazon MQ/ActiveMQ のメトリック | Azure Service Bus のメトリック |
 |------------|---------------------------|--------------------------|
 |ブローカー|`CpuUtilization`|`CPUXNS`|
 |ブローカー|`MemoryUsage`|`WSXNS`|
 |ブローカー|`CurrentConnectionsCount`|`activeConnections`|
 |ブローカー|`EstablishedConnectionsCount`|`activeConnections` + `connectionsClosed`|
-|ブローカー|`InactiveDurableTopicSubscribersCount`|サブスクリプションのメトリックを活用|
-|ブローカー|`TotalMessageCount`|キュー/トピック/サブスクリプション レベル `activeMessages` を活用|
+|ブローカー|`InactiveDurableTopicSubscribersCount`|サブスクリプションのメトリックを使用する|
+|ブローカー|`TotalMessageCount`|キュー/トピック/サブスクリプション レベルの `activeMessages` を使用する|
 |キュー/トピック|`EnqueueCount`|`incomingMessages`|
 |キュー/トピック|`DequeueCount`|`outgoingMessages`|
 |キュー|`QueueSize`|`sizeBytes`|
@@ -135,28 +125,25 @@ Azure Service Bus によって、さまざまなエンタープライズ セキ�
 
 ## <a name="migration"></a>移行
 
-既存の JMS 2.0 アプリケーションを移行して Azure Service Bus を操作するには、以下の手順を実行する必要があります。
+Service Bus を操作するために既存の JMS 2.0 アプリケーションを移行するには、以降のセクションの手順に従ってください。
 
-### <a name="export-topology-from-activemq-and-create-the-entities-in-azure-service-bus-optional"></a>ActiveMQ からトポロジをエクスポートして、Azure Service Bus でエンティティを作成する (省略可能)
+### <a name="export-the-topology-from-activemq-and-create-the-entities-in-service-bus-optional"></a>ActiveMQ からトポロジをエクスポートして Service Bus でエンティティを作成する (省略可能)
 
-クライアント アプリケーションが Azure Service Bus にシームレスに接続できるようにするには、キュー、トピック、サブスクリプションを含むトポロジを **Apache ActiveMQ** から **Azure Service Bus** に移行する必要があります。
+クライアント アプリケーションが Service Bus にシームレスに接続できるようにするには、トポロジ (キュー、トピック、サブスクリプションを含む) を Apache ActiveMQ から Service Bus に移行します。
 
 > [!NOTE]
-> Java Message Service (JMS) アプリケーションでは、キュー、トピック、およびサブスクリプションはランタイム操作で作成します。 ほとんどの Java Message Service (JMS) プロバイダー (メッセージ ブローカー) には、実行に*キュー*、*トピック*、および*サブスクリプション*を作成するための機能があります。
->
-> したがって、上記の手順は省略可能です。
->
-> アプリケーションが実行時にトポロジを作成するための権限を持っていることを確認するには、***SAS ' 管理 '*** 権限を含む接続文字列が使用されていることを確認してください。
+> JMS アプリケーションの場合は、ランタイム操作としてキュー、トピック、およびサブスクリプションを作成します。 ほとんどの JMS プロバイダー (メッセージ ブローカー) には、これらを実行時に作成する機能が用意されています。 そのため、このエクスポート手順は省略可能としています。 アプリケーションが実行時にトポロジを作成する権限を持っていることを確認するには、SAS の `Manage` 権限を含む接続文字列を使用してください。
 
-目的 
-  * [ActiveMQ コマンドライン ツール](https://activemq.apache.org/activemq-command-line-tools-reference) を利用してトポロジをエクスポートします。
-  * [Azure Resource Manager テンプレート](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)を使用して同じトポロジを再作成します。
-  * Azure Resource Manager テンプレートを実行します。
+これを行うには、次の手順を実行します。
+
+1. [ActiveMQ コマンド ライン ツール](https://activemq.apache.org/activemq-command-line-tools-reference) を使用してトポロジをエクスポートします。
+1. [Azure Resource Manager テンプレート](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)を使用して同じトポロジを再作成します。
+1. Azure Resource Manager のテンプレートを実行します。
 
 
 ### <a name="import-the-maven-dependency-for-service-bus-jms-implementation"></a>Service Bus JMS 実装の Maven の依存関係をインポートする
 
-Azure Service Bus とシームレスに接続できるようにするには、次のように、***azure-servicebus-jms*** パッケージを Maven `pom.xml` ファイルに依存関係として追加する必要があります。
+Service Bus とシームレスに接続できるようにするには、次のように、Maven `pom.xml` ファイルへの依存関係として `azure-servicebus-jms` パッケージを追加します。
 
 ```xml
 <dependencies>
@@ -171,11 +158,11 @@ Azure Service Bus とシームレスに接続できるようにするには、�
 
 ### <a name="application-server-configuration-changes"></a>アプリケーション サーバー構成の変更
 
-この部分は、ActiveMQ に接続するクライアント アプリケーションをホストしているアプリケーション サーバーによって異なります。
+この部分は、ActiveMQ に接続するクライアント アプリケーションをホストしているアプリケーション サーバーに合わせてカスタマイズされています。
 
 #### <a name="tomcat"></a>Tomcat
 
-ここでは、`/META-INF/context.xml` ファイルに示されている ActiveMQ に固有の構成を使用します。
+ここでは、`/META-INF/context.xml` ファイルに示されているように、ActiveMQ に固有の構成から開始します。
 
 ```XML
 <Context antiJARLocking="true">
@@ -202,7 +189,7 @@ Azure Service Bus とシームレスに接続できるようにするには、�
 </Context>
 ```
 
-次のように調整して、Azure Service Bus を指定することができます。
+これを、次のように、Service Bus を指すように調整します。
 
 ```xml
 <Context antiJARLocking="true">
@@ -229,11 +216,9 @@ Azure Service Bus とシームレスに接続できるようにするには、�
 
 #### <a name="spring-applications"></a>Spring アプリケーション
 
-##### <a name="update-applicationproperties-file"></a>`application.properties` ファイルを更新する
+##### <a name="update-the-applicationproperties-file"></a>`application.properties` ファイルを更新する
 
-Spring Boot アプリケーションを使用して ActiveMQ に接続する場合です。
-
-ここでの目的は、`application.properties` ファイルから ActiveMQ 固有のプロパティを***削除***することです。
+Spring Boot アプリケーションを使用して ActiveMQ に接続している場合は、`application.properties` ファイルから ActiveMQ 固有のプロパティを削除する必要があります。
 
 ```properties
 spring.activemq.broker-url=<ACTIVEMQ BROKER URL>
@@ -241,21 +226,21 @@ spring.activemq.user=<ACTIVEMQ USERNAME>
 spring.activemq.password=<ACTIVEMQ PASSWORD>
 ```
 
-次に、Service Bus 固有のプロパティを `application.properties` ファイルに***追加***します。
+次に、Service Bus 固有のプロパティを `application.properties` ファイルに追加します。
 
 ```properties
 azure.servicebus.connection-string=Endpoint=myEndpoint;SharedAccessKeyName=mySharedAccessKeyName;SharedAccessKey=mySharedAccessKey
 ```
 
-##### <a name="replace-the-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>ActiveMQConnectionFactory を ServiceBusJmsConnectionFactory に置き換える
+##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>`ActiveMQConnectionFactory` を `ServiceBusJmsConnectionFactory` に置き換えます。
 
-次の手順では、ActiveMQConnectionFactory のインスタンスを ServiceBusJmsConnectionFactory に置き換えます。
+次の手順では、`ActiveMQConnectionFactory` のインスタンスを `ServiceBusJmsConnectionFactory` に置き換えます。
 
 > [!NOTE] 
-> 実際にコードをどのように変更するかは、アプリケーションおよび依存関係の管理方法によって異なります。以下のサンプルでは、***変更する必要がある***コードを示しています。
+> 実際にコードをどのように変更するかは、アプリケーションと、依存関係の管理方法によって異なります。次のサンプルでは、変更する必要がある内容についてのガイダンスを示します。
 >
 
-これまでに、ActiveMQConnectionFactory のオブジェクトを次のようにインスタンス化している可能性があります。
+以前は、次のように、`ActiveMQConnectionFactory` のオブジェクトをインスタンス化していた可能性があります。
 
 ```java
 
@@ -267,7 +252,7 @@ connection.start();
 
 ```
 
-このコードを ServiceBusJmsConnectionFactory のオブジェクトをインスタンス化するように変更します。
+これを、次のように、`ServiceBusJmsConnectionFactory` のオブジェクトをインスタンス化するように変更します。
 
 ```java
 
@@ -283,13 +268,13 @@ connection.start();
 
 ## <a name="post-migration"></a>移行後
 
-Azure Service Bus でメッセージの送受信を開始するようにアプリケーションを変更したので、その機能が想定どおりに動作することを確認する必要があります。 その後、アプリケーション スタックをさらに調整し、最新化することができます。
+Service Bus でメッセージの送受信を開始するようにアプリケーションを変更したので、それが想定どおりに動作することを確認する必要があります。 完了したら、アプリケーション スタックをさらに調整し、最新化できます。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Service Bus JMS 用の Spring Boot スターター](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus)を使用して、Azure Service Bus にシームレスに統合します。
+[Azure Service Bus JMS 用の Spring Boot スターター](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus)を使用して、Service Bus とのシームレスな統合を実現します。
 
-Service Bus メッセージングと Java Message Service (JMS) の詳細については、次のトピックをご覧ください。
+Service Bus メッセージングと JMS の詳細については、次をご覧ください。
 
 * [Service Bus - JMS](service-bus-java-how-to-use-jms-api-amqp.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)

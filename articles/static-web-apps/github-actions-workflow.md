@@ -94,9 +94,9 @@ on:
     - master
 ```
 
-`on` プロパティに関連付けられている設定を使用して、ジョブをトリガーするブランチを定義し、さまざまなプル要求の状態に対してトリガーを起動するように設定できます。
+`on` プロパティに関連付けられている設定を使用して、ジョブをトリガーするブランチを定義し、さまざまな pull request の状態に対してトリガーを起動するように設定できます。
 
-この例では、_master_ ブランチが変更されるとワークフローが開始されます。 ワークフローを開始する変更としては、選択したブランチに対するコミットのプッシュとプル要求のオープンがあります。
+この例では、_master_ ブランチが変更されるとワークフローが開始されます。 ワークフローを開始する変更としては、選択したブランチに対するコミットのプッシュと pull request のオープンがあります。
 
 ## <a name="jobs"></a>ジョブ
 
@@ -106,8 +106,8 @@ Static Web Apps ワークフロー ファイルには、2 つの使用可能な�
 
 | 名前  | 説明 |
 |---------|---------|
-|`build_and_deploy_job` | `on` プロパティに一覧表示されているブランチに対してコミットをプッシュするかプル要求を開くと実行されます。 |
-|`close_pull_request_job` | プル要求を閉じたときにのみ実行され、これにより、プル要求から作成されたステージング環境が削除されます。 |
+|`build_and_deploy_job` | `on` プロパティに一覧表示されているブランチに対してコミットをプッシュするか pull request を開くと実行されます。 |
+|`close_pull_request_job` | pull request を閉じたときにのみ実行され、これにより、pull request から作成されたステージング環境が削除されます。 |
 
 ## <a name="steps"></a>手順
 
@@ -118,7 +118,7 @@ Static Web Apps ワークフロー ファイルには、2 つの使用可能な�
 | ジョブ  | 手順  |
 |---------|---------|
 | `build_and_deploy_job` |<ol><li>Action の環境のリポジトリをチェックアウトします。<li>リポジトリをビルドして Azure Static Web Apps にデプロイします。</ol>|
-| `close_pull_request_job` | <ol><li>プル要求が終了したことを Azure Static Web Apps に通知します。</ol>|
+| `close_pull_request_job` | <ol><li>pull request が終了したことを Azure Static Web Apps に通知します。</ol>|
 
 ## <a name="build-and-deploy"></a>ビルドとデプロイ
 
@@ -168,4 +168,4 @@ with:
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [運用前環境でプル要求を確認する](review-publish-pull-requests.md)
+> [運用前環境で pull request を確認する](review-publish-pull-requests.md)

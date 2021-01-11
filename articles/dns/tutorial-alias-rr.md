@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "76939246"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>チュートリアル:ゾーン内のリソース レコードを参照するエイリアス レコードを作成する
@@ -52,13 +52,13 @@ Azure DNS 内でドメインをホストする手順については、「[チュ
 3. **[名前]** テキスト ボックスに「**test**」と入力します。
 4. **[種類]** で **[A]** を選択します。
 5. **[Alias Record Set]\(エイリアス レコード セット\)** チェック ボックスで **[はい]** を選択します。 続けて、 **[Zone record set]\(ゾーン レコード セット\)** オプションを選択します。
-6. **[Zone record set]/(ゾーン レコード セット/)** で、 **[server]** レコードを選択します。
+6. **[Zone record set]\(ゾーン レコード セット\)** で、 **[server]** レコードを選択します。
 7. **[OK]** を選択します。
 
 ## <a name="test-the-alias-record"></a>エイリアス レコードをテストする
 
 1. お好きな nslookup ツールを起動します。 1 つのオプションとして、[https://network-tools.com/nslook](https://network-tools.com/nslook) を参照します。
-2. クエリの種類を A レコードに設定し、**test.\<実際のドメイン名\>** を検索します。 応答は **10.10.10.10** になります。
+2. クエリの種類を A レコードに設定し、**test.\<your domain name\>** を検索します。 応答は **10.10.10.10** になります。
 3. Azure portal で、**server** A レコードを **10.11.11.11** に変更します。
 4. 数分待ってから、もう一度 nslookup を使用して **test** レコードを検索します。 応答は **10.11.11.11** になります。
 

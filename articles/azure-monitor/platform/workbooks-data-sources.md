@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: 897e615234e17cfe36790778d00cd56371afd91f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560135"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081425"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor ブックのデータ ソース
 
@@ -61,7 +61,7 @@ Azure リソースは、ブックを介してアクセスできる[メトリッ�
 
 ## <a name="azure-data-explorer"></a>Azure Data Explorer
 
-強力な [Kusto](https://docs.microsoft.com/azure/kusto/query/index) クエリ言語を使用できる [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/) クラスターからのクエリがブックでサポートされるようになりました。   
+強力な [Kusto](/azure/kusto/query/index) クエリ言語を使用できる [Azure Data Explorer](/azure/data-explorer/) クラスターからのクエリがブックでサポートされるようになりました。   
 
 ![Kusto クエリ ウィンドウのスクリーンショット](./media/workbooks-overview/data-explorer.png)
 
@@ -90,7 +90,7 @@ JSON プロバイダーを使用すると、静的な JSON コンテンツから
 > [!NOTE]
 > Azure アラート情報のクエリを実行する方法としては、`AlertsManagementResources` テーブルにクエリを実行して、[Azure Resource Graph](#azure-resource-graph) データ ソースを使用することをお勧めします。
 >
-> 例については、[Azure Resource Graph のテーブルのリファレンス](https://docs.microsoft.com/azure/governance/resource-graph/reference/supported-tables-resources)、または[アラート テンプレート](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook)を参照してください。
+> 例については、[Azure Resource Graph のテーブルのリファレンス](../../governance/resource-graph/reference/supported-tables-resources.md)、または[アラート テンプレート](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Azure%20Resources/Alerts/Alerts.workbook)を参照してください。
 >
 > アラート データ ソースは、作成者が ARG の使用に移行している間は、一定期間引き続き使用できます。 テンプレートでこのデータ ソースを使用することはお勧めしません。 
 
@@ -113,5 +113,5 @@ JSON プロバイダーを使用すると、静的な JSON コンテンツから
 
 * ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。
-* [Log Analytics のクエリ最適化のヒント](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization)
+* [Log Analytics のクエリ最適化のヒント](../log-query/query-optimization.md)
 * 

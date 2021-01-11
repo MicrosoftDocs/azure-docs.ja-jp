@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/18/2020
+ms.date: 08/21/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 85689661e7f0d170cd88edde8985f46285e679c6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b3aadab1b4af80f98c57a279b69606a02846e996
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987776"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716845"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,6 +43,8 @@ ms.locfileid: "84987776"
 - MySQL
 - Oracle
 - SQL Server
+- 汎用 HTTP
+- 汎用 REST
 
 ## <a name="data-factory-ui"></a>Data Factory UI
 

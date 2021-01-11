@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266255"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795985"
 ---
 # <a name="what-is-the-additional-verification-page"></a>追加認証ページとは
 
@@ -33,7 +33,7 @@ ms.locfileid: "84266255"
 2 要素認証を使用すると、悪意のあるハッカーがなりすますのを防ぐのに役立ちます。 パスワードが知られてしまった場合でも、デバイスは持っていない可能性が高いです。
 
 >[!Important]
->従業員その他のユーザーに対して 2 要素認証を有効にする方法に関する情報を探している管理者の方は、「[Azure Active Directory 認証のドキュメント](https://docs.microsoft.com/azure/active-directory/authentication/)」を参照してください。 この記事は、職場または学校アカウント (alain@contoso.com など) で 2 要素認証を使用しようとしているユーザーを対象としています。
+>従業員その他のユーザーに対して 2 要素認証を有効にする方法に関する情報を探している管理者の方は、「[Azure Active Directory 認証のドキュメント](../authentication/index.yml)」を参照してください。 この記事は、職場または学校アカウント (alain@contoso.com など) で 2 要素認証を使用しようとしているユーザーを対象としています。
 
 ## <a name="who-decides-if-you-use-this-feature"></a>この機能の使用を決定するユーザー
 

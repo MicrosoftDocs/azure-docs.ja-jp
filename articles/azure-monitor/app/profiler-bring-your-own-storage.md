@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 50dcd3f438645c99e0ed3cfdded7a101ee5f1852
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539858"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117385"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>BYOS (Bring Your Own Storage) を Application Insights Profiler および Visual Studio スナップショット デバッガー用に構成する
 
@@ -63,7 +63,7 @@ _図 1.1_
 Private Link も使用する場合、Virtual Network から信頼された Microsoft サービスへの接続を許可するための 1 つの追加構成が必要です。 [ストレージ ネットワーク セキュリティに関するドキュメント](../../storage/common/storage-network-security.md#trusted-microsoft-services)を参照してください。
 
 ### <a name="link-your-storage-account-with-your-application-insights-resource"></a>ストレージ アカウントを Application Insights リソースにリンクする
-BYOS をコードレベルの診断 (Profiler またはデバッガー) 用に構成するには、次の 2 つのオプションがあります。
+BYOS をコードレベルの診断 (プロファイラー/デバッガー) 用に構成するには、次の 3 つのオプションがあります。
 
 * Azure PowerShell コマンドレットの使用
 * Azure コマンド ライン インターフェイス (CLI) の使用

@@ -9,19 +9,19 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: seo-lt-2019,fasttrack-edit
+ms.custom: seo-lt-2019,fasttrack-edit, devx-track-azurepowershell
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: eb8ec09646fa3f3c226edbe957e19d079fd2607c
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 37d61a5c199b59a13b54344f5ffaf69d7b369a1b
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147415"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078063"
 ---
 # <a name="migrate-sql-server-to-sql-managed-instance-with-powershell--azure-database-migration-service"></a>PowerShell と Azure Database Migration Service を使用して SQL Server から SQL Managed Instance に移行する
 
-この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2005 以上のオンプレミス インスタンスに復元された **Adventureworks2016** データベースを Azure SQL の SQL マネージド インスタンス に移行します。 Microsoft Azure PowerShell の `Az.DataMigration` モジュールを使用して、SQL Server インスタンスから SQL マネージド インスタンスにデータベースを移行できます。
+この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2005 以上のオンプレミス インスタンスに復元された **Adventureworks2016** データベースを Azure SQL の SQL Managed Instance に移行します。 Microsoft Azure PowerShell の `Az.DataMigration` モジュールを使用して、SQL Server インスタンスから SQL Managed Instance にデータベースを移行できます。
 
 この記事では、次の方法について説明します。
 > [!div class="checklist"]
@@ -44,13 +44,13 @@ ms.locfileid: "86147415"
 * TCP/IP プロトコルを有効にする (SQL Server Express のインストールでは既定で無効になっています)。 [サーバー ネットワーク プロトコルの有効化または無効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事の説明に従って、TCP/IP プロトコルを有効にする。
 * [データベース エンジン アクセス用の Windows Firewall](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) の構成。
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-* SQL マネージド インスタンス。 [SQL マネージド インスタンスの作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)に関する記事にある詳しい手順に従って、SQL マネージド インスタンスを作成できます。
+* SQL Managed Instance。 [SQL Managed Instance の作成](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)に関する記事にある詳しい手順に従って、SQL Managed Instance を作成できます。
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降をダウンロードしてインストールする。
 * [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用してオンプレミス ソース サーバーへのサイト間接続を Azure Database Migration Service に提供する、Azure Resource Manager デプロイ モデルを使用して作成された Microsoft Azure 仮想ネットワーク。
 * [SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事で説明されているように、Data Migration Assistant を使用してオンプレミスのデータベースおよびスキーマの移行の評価を完了していること。
 * `Az.DataMigration` モジュール (バージョン 0.7.2 以降) を PowerShell ギャラリーからダウンロードし、[Install-Module PowerShell cmdlet](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用してインストールする。
 * ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可が含まれていることを確認する。
-* ターゲットの SQL マネージド インスタンスへの接続に使用される資格情報に、ターゲットの SQL マネージド インスタンス データベースに対する CONTROL DATABASE アクセス許可が含まれていることを確認する。
+* ターゲットの SQL Managed Instance への接続に使用される資格情報に、ターゲットの SQL Managed Instance データベースに対する CONTROL DATABASE アクセス許可が含まれていることを確認する。
 
     > [!IMPORTANT]
     > オンライン移行の場合は、Azure Active Directory の資格情報を既に設定してある必要があります。 詳細については、[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルを使用して作成する方法](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)に関する記事を参照してください。
@@ -188,7 +188,7 @@ $backupFileShare = New-AzDmsFileShare -Path $backupFileSharePath -Credential $ba
 
 次の手順では、`New-AzDmsSelectedDB` コマンドレットを使用して、ソース データベースとターゲット データベースを選択します。
 
-次の例では、SQL Server から Azure SQL マネージド インスタンスに単一のデータベースを移行しています。
+次の例では、SQL Server から Azure SQL Managed Instance に単一のデータベースを移行しています。
 
 ```powershell
 $selectedDbs = @()
@@ -198,7 +198,7 @@ $selectedDbs += New-AzDmsSelectedDB -MigrateSqlServerSqlDbMi `
   -BackupFileShare $backupFileShare `
 ```
 
-SQL Server インスタンス全体で Azure SQL マネージド インスタンスへのリフトアンドシフトが必要な場合、すべてのデータベースをソースから取得するためのループを以下に示します。 次の例では、$Server、$SourceUserName、$SourcePassword にソース SQL Server の詳細を入力します。
+SQL Server インスタンス全体で Azure SQL Managed Instance へのリフトアンドシフトが必要な場合、すべてのデータベースをソースから取得するためのループを以下に示します。 次の例では、$Server、$SourceUserName、$SourcePassword にソース SQL Server の詳細を入力します。
 
 ```powershell
 $Query = "(select name as Database_Name from master.sys.databases where Database_id>4)";
@@ -289,7 +289,7 @@ $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%
 * *ProjectName*。 タスクを作成する Azure Database Migration Service プロジェクトの名前。 
 * *TaskName*。 作成するタスクの名前。 
 * *SourceConnection*。 ソース SQL Server 接続を表す AzDmsConnInfo オブジェクト。
-* *TargetConnection*。 ターゲットの Azure SQL マネージド インスタンスの接続を表す AzDmsConnInfo オブジェクト。
+* *TargetConnection*。 ターゲットの Azure SQL Managed Instance の接続を表す AzDmsConnInfo オブジェクト。
 * *SourceCred*。 ソース サーバーに接続するための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクト。
 * *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?redirectedfrom=MSDN&view=powershellsdk-1.1.0) オブジェクト。
 * *SelectedDatabase*。 ソースとターゲット データベースのマッピングを表す AzDataMigrationSelectedDB オブジェクト。
@@ -395,7 +395,7 @@ $migTask = New-AzDataMigrationTask -TaskType MigrateSqlServerSqlDbMiSync `
 
 オンライン移行では、データベースの完全バックアップと復元が実行された後、BackupFileShare に格納されているトランザクション ログの復元処理が実行されます。
 
-Azure SQL マネージド インスタンス内のデータベースが最新のデータで更新され、ソース データベースと同期されている場合、一括での実行が可能です。
+Azure SQL Managed Instance 内のデータベースが最新のデータで更新され、ソース データベースと同期されている場合、一括での実行が可能です。
 
 次の例では、一括移行を実行しています。 ユーザーは、それぞれの判断でこのコマンドを呼び出します。
 

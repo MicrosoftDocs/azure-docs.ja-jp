@@ -12,12 +12,12 @@ metadata:
   author: 
   ms.author: 
   ms.date: 10/12/2019
-  ms.openlocfilehash: ef82f7ccfabce330c5604a26d74f0491876a1634
-  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.openlocfilehash: a0d78ead74b7a49c26d25bb82c7903e3fe7096cf
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84259891"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88207782"
 landingContent:
 - title: Live Video Analytics on IoT Edge (プレビュー) について
   linkLists:
@@ -63,6 +63,8 @@ landingContent:
       url: event-based-video-recording-tutorial.md
     - text: 数日間の記録の再生
       url: playback-multi-day-recordings-tutorial.md
+    - text: OpenVINO Model Server を使用してライブ ビデオを分析する
+      url: use-intel-openvino-tutorial.md
 - title: 開発
   linkLists:
   - linkListType: how-to-guide

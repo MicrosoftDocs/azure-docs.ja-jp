@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321277"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639904"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor のカスタム メトリック (プレビュー)
 
@@ -26,6 +26,7 @@ Azure Monitor のカスタム メトリックは現在、パブリック プレ�
 
 カスタム メトリックは複数の方法で Azure Monitor に送信できます。
 - Azure Application Insights SDK を使用してアプリケーションをインストルメント化し、カスタム テレメトリを Azure Monitor に送信する。 
+- [Windows または Linux Azure VM](azure-monitor-agent-overview.md) に Azure Monitor エージェント (プレビュー) をインストールし、[データ収集ルール](data-collection-rule-azure-monitor-agent.md)を使用してパフォーマンス カウンターを Azure Monitor メトリックに送信する。
 - [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[仮想マシン スケール セット](collect-custom-metrics-guestos-resource-manager-vmss.md)、[クラシック VM](collect-custom-metrics-guestos-vm-classic.md)、または[クラシック Cloud Services](collect-custom-metrics-guestos-vm-cloud-service-classic.md) に Windows Azure 診断 (WAD) 拡張機能をインストールして、パフォーマンス カウンターを Azure Monitor に送信する。 
 - [InfluxData Telegraf エージェント](collect-custom-metrics-linux-telegraf.md)を Azure Linux VM にインストールし、Azure Monitor 出力プラグインを使用してメトリックを送信する。
 - [Azure Monitor REST API](./metrics-store-custom-rest-api.md) にカスタム メトリックを直接送信する (`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`)。

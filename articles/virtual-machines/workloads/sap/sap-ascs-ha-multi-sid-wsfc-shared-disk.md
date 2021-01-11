@@ -13,26 +13,24 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8c235cd204b86573746be4bce615939f3b072fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 332c81c8502dac6f057c6ea41c7662e1edde1599
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82977908"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855187"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>Azure で Windows Server フェールオーバー クラスタリングと共有ディスクを使用する SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows OS][Logo_Windows] Windows
 >
-
-2016 年 9 月に、Microsoft では [Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能をリリースしました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。 
 
 SAP がデプロイされている場合は、内部ロード バランサーを使用して SAP Central Services (ASCS/SCS) インスタンスの Windows クラスター構成を作成できます。
 
-この記事では、追加の SAP ASCS/SCS クラスター化インスタンスを、共有ディスクを持つ既存の Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることによって、単一の ASCS/SCS インストールから SAP マルチ SID 構成に移行する方法に焦点を当てます。 このプロセスが完了したら、SAP マルチ SID クラスターの構成は完了です。
+この記事では、共有ディスクをシミュレートする SIOS を使用して、追加の SAP ASCS/SCS クラスター化インスタンスを、共有ディスクを持つ既存の Windows Server フェールオーバー クラスタリング (WSFC) クラスターにインストールすることによって、単一の ASCS/SCS インストールから SAP マルチ SID 構成に移行する方法に焦点を当てます。 このプロセスが完了したら、SAP マルチ SID クラスターの構成は完了です。
 
 > [!NOTE]
 > この機能は、Azure Resource Manager デプロイ モデルでのみ使用できます。
@@ -54,9 +52,10 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 
 > [!IMPORTANT]
 > セットアップは次の条件を満たしている必要があります。
-> * SAP ASCS/SCS インスタンスは同じ WSFC クラスターを共有している必要があります。
-> * 各データベース管理システム (DBMS) SID には、独自の専用 WSFC クラスターが必要です。
-> * 1 つの SAP システム SID に属する SAP アプリケーション サーバーは、独自の専用 VM を持っている必要があります。
+> * SAP ASCS/SCS インスタンスは同じ WSFC クラスターを共有している必要があります。  
+> * 各データベース管理システム (DBMS) SID には、独自の専用 WSFC クラスターが必要です。  
+> * 1 つの SAP システム SID に属する SAP アプリケーション サーバーは、独自の専用 VM を持っている必要があります。  
+> * エンキュー レプリケーション サーバー 1 とエンキュー レプリケーション サーバー 2 を同じクラスター上に配置することは、サポートされていません。  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>共有ディスクを使用した SAP ASCS/SCS マルチ SID アーキテクチャ
 
@@ -246,8 +245,6 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
     また、Azure 内部ロード バランサー プローブ ポート (このシナリオでは 62350) を開きます。 [こちらの記事][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]に説明があります。
 
-7. [SAP evaluated receipt settlement (ERS) Windows サービス インスタンスのスタートアップの種類を変更します][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
-
 8. SAP インストール ガイドで記載されているように、新しい専用 VM に SAP プライマリ アプリケーション サーバーをインストールします。  
 
 9. SAP インストール ガイドで記載されているように、新しい専用 VM に追加の SAP アプリケーション サーバーをインストールします。
@@ -285,7 +282,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 [sap-high-availability-installation-wsfc-shared-disk]:sap-high-availability-installation-wsfc-shared-disk.md
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
-[sap-net-weaver-ports-ascs-scs-ports]:sap-high-availability-infrastructure-wsfc-shared-disk.md#0f3ee255-b31e-4b8a-a95a-d9ed6200468b
+[sap-net-weaver-ports-ascs-scs-ports]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 

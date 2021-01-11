@@ -12,9 +12,9 @@ ms.locfileid: "86169648"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
 
-次のサンプル テンプレートは、さまざまな構成のコンテナー インスタンスを展開します。
+次のサンプル テンプレートは、さまざまな構成のコンテナー インスタンスをデプロイします。
 
-展開オプションについては、[展開](#deployment)セクションを参照してください。 独自のテンプレートを作成する場合は、Azure Container Instances の [Azure Resource Manager テンプレート リファレンス][ref]にテンプレートの形式と使用可能なプロパティが詳しく説明されています。
+デプロイオプションについては、[デプロイ](#deployment)セクションを参照してください。 独自のテンプレートを作成する場合は、Azure Container Instances の [Azure Resource Manager テンプレート リファレンス][ref]にテンプレートの形式と使用可能なプロパティが詳しく説明されています。
 
 ## <a name="sample-templates"></a>サンプル テンプレート
 
@@ -22,15 +22,15 @@ ms.locfileid: "86169648"
 |-|-|
 | **アプリケーション** ||
 | [WordPress][app-wp] | コンテナー グループに WordPress Web サイトと、MySQL データベースを作成します。 WordPress サイトのコンテンツと MySQL データベースは、Azure Files 共有で永続化されます。 WordPress へのパブリック ネットワーク アクセスを公開するアプリケーション ゲートウェイも作成します。 |
-| [SQL Server と IIS を使用する MS NAV][app-nav] | 全機能を備えた自己完結型 Dynamics NAV / Dynamics 365 Business Central 環境に単一の Windows コンテナーを展開します。 |
+| [SQL Server と IIS を使用する MS NAV][app-nav] | 全機能を備えた自己完結型 Dynamics NAV / Dynamics 365 Business Central 環境に単一の Windows コンテナーをデプロイします。 |
 | **Volumes** ||
-| [emptyDir][vol-emptydir] | emptyDir ボリュームを共有する 2 つの Linux コンテナーを展開します。 |
-| [gitRepo][vol-gitrepo] | GitHub リポジトリのクローンを作成し、ボリュームとしてマウントする Linux コンテナーを展開します。 |
+| [emptyDir][vol-emptydir] | emptyDir ボリュームを共有する 2 つの Linux コンテナーをデプロイします。 |
+| [gitRepo][vol-gitrepo] | GitHub リポジトリのクローンを作成し、ボリュームとしてマウントする Linux コンテナーをデプロイします。 |
 | [secret][vol-secret] | シークレット ボリュームとしてマウントされている PFX 証明書を使用して Linux コンテナーを配置します。 |
 | **ネットワーク** ||
-| [UDP 公開されたコンテナー][net-udp] | UDP ポートを公開する、Windows または Linux のコンテナーを展開します。 |
-| [パブリック IP を使用する Linux コンテナー][net-publicip] | パブリック IP を使用してアクセスできる 1 つの Linux コンテナーを展開します。 |
-| [仮想ネットワークでのコンテナー グループの展開][net-vnet] | 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループをデプロイします。 |
+| [UDP 公開されたコンテナー][net-udp] | UDP ポートを公開する、Windows または Linux のコンテナーをデプロイします。 |
+| [パブリック IP を使用する Linux コンテナー][net-publicip] | パブリック IP を使用してアクセスできる 1 つの Linux コンテナーをデプロイします。 |
+| [仮想ネットワークでのコンテナー グループのデプロイ][net-vnet] | 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループをデプロイします。 |
 | **Azure リソース** ||
 | [Azure Storage アカウントおよび Azure Files 共有を作成する][az-files] | コンテナー インスタンスで Azure CLI を使用して、ストレージ アカウントと Azure Files 共有します。
 

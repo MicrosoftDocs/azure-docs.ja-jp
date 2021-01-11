@@ -4,7 +4,7 @@ titleSuffix: Azure Media Services
 description: Azure Media Services v3 の概要と、クイック スタート、チュートリアル、コード サンプルへのリンク。
 services: media-services
 documentationcenter: na
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 tags: ''
@@ -14,17 +14,19 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: mvc
-ms.openlocfilehash: d5f54d65fcfd8a124b30a785697d53ad120fbf9c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b11cd602850d23ac6ec37a9be51912adceb9afbc
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000943"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89267617"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 の概要
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 クラウドベースのプラットフォームである Azure Media Services では、ブロードキャスト品質のビデオ ストリーミングを実現し、アクセス性と配信を強化し、コンテンツを分析するソリューションを構築できます。 アプリ開発者、コール センター、政府機関、またはエンターテイメント会社のいずれであっても、Media Services を利用すると、今日の最も一般的なモバイル デバイスとブラウザーを使用する多くのユーザーに、優れた品質のメディア エクスペリエンスを提供するアプリを作成できます。
 

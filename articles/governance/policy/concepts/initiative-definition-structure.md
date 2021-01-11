@@ -1,14 +1,14 @@
 ---
 title: イニシアチブ定義の構造の詳細
 description: ポリシー イニシアチブ定義を使用し、組織の Azure リソースのデプロイのポリシー定義をグループ化する方法について説明します。
-ms.date: 05/29/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80fa90765caa25d6995220134b9a5b4225133219
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: d7b4adf15193e2cd1b9e516a04c7c989dc442ee9
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205873"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89048501"
 ---
 # <a name="azure-policy-initiative-definition-structure"></a>Azure Policy イニシアチブ定義の構造
 
@@ -284,7 +284,7 @@ Microsoft によって作成された規制コンプライアンスの組み込�
 
 - 規制コンプライアンス イニシアチブの**コントロール**の概要について Azure portal に表示されます。
 - REST API 経由で入手できます。 `Microsoft.PolicyInsights` リソース プロバイダーおよび [policyMetadata 操作グループ](/rest/api/policy-insights/policymetadata/getresource)を参照してください。
-- Azure CLI 経由で入手できます。 [az policy metadata](/cli/azure/policy/metadata?view=azure-cli-latest) コマンドを参照してください。
+- Azure CLI 経由で入手できます。 [az policy metadata](/cli/azure/policy/metadata) コマンドを参照してください。
 
 > [!IMPORTANT]
 > 規制コンプライアンスのためのメタデータ オブジェクトは_読み取り専用_であるため、顧客が作成することはできません。

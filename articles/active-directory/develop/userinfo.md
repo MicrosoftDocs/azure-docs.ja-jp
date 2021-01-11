@@ -13,12 +13,12 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 08386e2c54a45fe4a6e35ce6d7ebb51145827a6d
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 59e811b7813ef94682896e0f95e971ca0094ef65
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268440"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119642"
 ---
 # <a name="microsoft-identity-platform-userinfo-endpoint"></a>Microsoft ID プラットフォームの UserInfo エンドポイント
 
@@ -34,7 +34,7 @@ UserInfo エンドポイントはよく、ユーザーに関する情報を取�
 
 アプリが受信できる ID トークンで利用できる情報は、UserInfo エンドポイントから取得できる情報の上位集合です。  UserInfo エンドポイントを呼び出すトークンを取得すると、同時に ID トークンを取得できます。そのため、ユーザーに関する情報を取得するときは、UserInfo エンドポイントを呼び出す代わりに、その ID トークンを使用することをお勧めします。  ID トークンを使用すると、アプリケーションの起動時のネットワーク要求が 1 から 2 件少なくなるため、アプリケーションの待ち時間を短縮できます。
 
-オフィスの電話番号や役職など、ユーザーについてさらに詳しい情報が必要な場合は、[Microsoft Graph の `/user` API](https://docs.microsoft.com/graph/api/user-get) を呼び出す必要があります。   このほか、[オプションの要求](active-directory-optional-claims.md)を使用して、ID とアクセス トークンに追加のユーザー情報を含めることもできます。
+オフィスの電話番号や役職など、ユーザーについてさらに詳しい情報が必要な場合は、[Microsoft Graph の `/user` API](/graph/api/user-get) を呼び出す必要があります。   このほか、[オプションの要求](active-directory-optional-claims.md)を使用して、ID とアクセス トークンに追加のユーザー情報を含めることもできます。
 
 ## <a name="calling-the-userinfo-endpoint"></a>UserInfo エンドポイントを呼び出す
 

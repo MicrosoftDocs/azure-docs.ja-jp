@@ -3,22 +3,24 @@ title: Azure Media Services v3 のよく寄せられる質問 | Microsoft Docs
 description: この記事では、Azure Media Services v3 についてよく寄せられる質問に対する回答を提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/07/2020
-ms.author: juliako
-ms.openlocfilehash: 70499ad354e2fafaac99fe46c1838a0be2813943
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: d34b5aaaa12a3d296f92e0d7be34ae76931d8506
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011687"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268487"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 この記事では、Azure Media Services v3 についてよく寄せられる質問に対する回答を提供します。
 

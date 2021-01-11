@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: victorh
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 4caed3f330dd3e50fe2652a2cd33c0e4249f2fd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f10bb1f4065f3bdb517fcad4f3eb6caa331c5233
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254346"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273203"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>自動スケーリングとゾーン冗長 Application Gateway v2 
 
-Application Gateway と Web アプリケーション ファイアウォール (WAF) は、Standard_v2 SKU と WAF_v2 SKU でも使用できます。 v2 SKU では、パフォーマンスが強化され、自動スケールダウン、ゾーン冗長、静的 VIP のサポートなどの重要な新機能のサポートが追加されます。 Standard SKU と WAF SKU の既存機能は、[比較](#differences-from-v1-sku)セクションで示されているいくつかの例外を除き、新しい v2 SKU でも引き続きサポートされます。
+Application Gateway は、Standard_v2 SKU で利用できます。 Web アプリケーション ファイアウォール (WAF) は、WAF_v2 SKU で利用できます。 v2 SKU では、パフォーマンスが強化され、自動スケールダウン、ゾーン冗長、静的 VIP のサポートなどの重要な新機能のサポートが追加されます。 Standard SKU と WAF SKU の既存機能は、[比較](#differences-from-v1-sku)セクションで示されているいくつかの例外を除き、新しい v2 SKU でも引き続きサポートされます。
 
 新しい v2 SKU には、次の拡張機能が含まれます。
 
@@ -142,13 +142,13 @@ Azure Application Gateways は常に可用性が高くなるようにデプロ�
 
 最小インスタンス数のゼロで自動スケーリングを構成した場合でも、サービスの可用性が高く、それは常に固定価格に含まれることにご留意ください。
 
-ただし、新しいインスタンスの作成には時間がかかります (約 6、7 分)。 そのため、このダウンタウンを許容できないなら、最小インスタンス数 2 を構成できます。可用性ゾーン サポートを利用することが理想です。 この方法では、通常の状況で、Azure Application Gateway 内にインスタンスが少なくとも 2 つ与えられます。そのため、いずれかに問題が発生した場合、新しいインスタンスが作成されている間、他方がトラフィックに対処します。 1 つの Azure Application Gateway インスタンスで約 10 の容量ユニットをサポートできることにご留意ください。そのため、一般的に与えられるトラフィックの量によっては、自動スケーリング設定の最小インスタンスを 2 より上の値に構成することがあります。
+ただし、新しいインスタンスの作成には時間がかかります (約 6、7 分)。 そのため、このダウンタイムを許容できないなら、最小インスタンス数 2 を構成できます。可用性ゾーン サポートを利用することが理想です。 この方法では、通常の状況で、Azure Application Gateway 内にインスタンスが少なくとも 2 つ与えられます。そのため、いずれかに問題が発生した場合、新しいインスタンスが作成されている間、他方がトラフィックに対処します。 1 つの Azure Application Gateway インスタンスで約 10 の容量ユニットをサポートできることにご留意ください。そのため、一般的に与えられるトラフィックの量によっては、自動スケーリング設定の最小インスタンスを 2 より上の値に構成することがあります。
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>v1 SKU と v2 SKU の機能比較
 
 次の表では、各 SKU で使用できる機能を比較しています。
 
-|                                                   | v1 SKU   | v2 SKU   |
+| 特徴量                                           | v1 SKU   | v2 SKU   |
 | ------------------------------------------------- | -------- | -------- |
 | 自動スケール                                       |          | &#x2713; |
 | ゾーン冗長性                                   |          | &#x2713; |

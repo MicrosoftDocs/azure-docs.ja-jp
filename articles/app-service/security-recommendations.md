@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eba08211355b0f57dd9dd11ec4c18d5912208ec8
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80546700"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962215"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
 
@@ -38,17 +38,17 @@ ms.locfileid: "80546700"
 | 推奨 | 説明 |
 |-|-|
 | HTTP を HTTPS にリダイレクトする | 既定では、クライアントは HTTP と HTTPS のどちらを使用しても Web アプリに接続できます。 HTTPS では、SSL/TLS プロトコルの使用によりセキュリティで保護された接続 (暗号化と認証の両方) が提供されるため、HTTP を HTTPS にリダイレクトすることをお勧めします。 |
-| Azure リソースへの通信を暗号化する | アプリから [SQL Database](https://azure.microsoft.com/services/sql-database/) や [Azure Storage](/azure/storage/) などの Azure リソースへの接続では、接続が Azure 内にとどまります。 接続は Azure 内の共有ネットワークを通過するため、すべての通信を常に暗号化する必要があります。 |
+| Azure リソースへの通信を暗号化する | アプリから [SQL Database](https://azure.microsoft.com/services/sql-database/) や [Azure Storage](../storage/index.yml) などの Azure リソースへの接続では、接続が Azure 内にとどまります。 接続は Azure 内の共有ネットワークを通過するため、すべての通信を常に暗号化する必要があります。 |
 | 可能な限り最新の TLS バージョンを使用する | 2018 年以降、新しい Azure App Service アプリでは TLS 1.2 が使用されています。 新しいバージョンの TLS では、以前のバージョンのプロトコルに比べてセキュリティが強化されています。 |
 | FTPS を使用する | App Service は、ファイルの展開に FTP と FTPS の両方をサポートしています。 可能な限り FTP ではなく FTPS を使用します。 これらのプロトコルの 1 つまたは両方が使用されていない場合は、[無効にする](deploy-ftp.md#enforce-ftps)ことをお勧めします。 |
-| アプリケーション データをセキュリティで保護する | データベースの資格情報、API トークン、秘密キーなどのアプリケーション シークレット情報をコードや構成ファイルに保存しないでください。 一般に受け入れられているのは、選択した言語の標準パターンを使用して[環境変数](https://wikipedia.org/wiki/Environment_variable)としてアクセスする方法です。 Azure App Service では、[アプリ設定](web-sites-configure.md)と[接続文字列](web-sites-configure.md)を通して環境変数を定義できます。 アプリ設定と接続文字列は、Azure で暗号化されて格納されます。 アプリ設定は、アプリの起動時にアプリのプロセス メモリに挿入される前にのみ、暗号化が解除されます。 暗号化キーは定期的に回転されます。 また、高度なシークレット管理のために、Azure App Service アプリを [Azure Key Vault](/azure/key-vault/) と統合することもできます。 [マネージド ID を使用してキー コンテナーにアクセスする](../key-vault/tutorial-web-application-keyvault.md)ことで、App Service アプリは必要なシークレットに安全にアクセスできます。 |
+| アプリケーション データをセキュリティで保護する | データベースの資格情報、API トークン、秘密キーなどのアプリケーション シークレット情報をコードや構成ファイルに保存しないでください。 一般に受け入れられているのは、選択した言語の標準パターンを使用して[環境変数](https://wikipedia.org/wiki/Environment_variable)としてアクセスする方法です。 Azure App Service では、[アプリ設定](./configure-common.md)と[接続文字列](./configure-common.md)を通して環境変数を定義できます。 アプリ設定と接続文字列は、Azure で暗号化されて格納されます。 アプリ設定は、アプリの起動時にアプリのプロセス メモリに挿入される前にのみ、暗号化が解除されます。 暗号化キーは定期的に回転されます。 また、高度なシークレット管理のために、Azure App Service アプリを [Azure Key Vault](../key-vault/index.yml) と統合することもできます。 [マネージド ID を使用してキー コンテナーにアクセスする](../key-vault/general/tutorial-net-create-vault-azure-web-app.md)ことで、App Service アプリは必要なシークレットに安全にアクセスできます。 |
 
 ## <a name="networking"></a>ネットワーク
 
 | 推奨 | 説明 |
 |-|-|
 | 静的 IP の制限を使用する | Windows 上の Azure App Service では、アプリへのアクセスを許可されている IP アドレスの一覧を定義できます。 許可一覧には、個々 の IP アドレスまたはサブネット マスクによって定義された IP アドレスの範囲を含めることができます。 詳細については、「[Azure App Service 静的 IP 制限](app-service-ip-restrictions.md)」を参照してください。  |
-| Isolated 価格レベルを使用する | Isolated 価格レベルを除くすべての価格レベルでは、Azure App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 Isolated 価格レベルでは、専用の [App Service 環境](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service 環境は、[Azure Virtual Network](/azure/virtual-network/) の独自のインスタンスで実行されます。|
+| Isolated 価格レベルを使用する | Isolated 価格レベルを除くすべての価格レベルでは、Azure App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 Isolated 価格レベルでは、専用の [App Service 環境](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service 環境は、[Azure Virtual Network](../virtual-network/index.yml) の独自のインスタンスで実行されます。|
 | オンプレミス リソースへのアクセス時にセキュリティで保護された接続を使用する | オンプレミス リソースへの接続には、[ハイブリッド接続](app-service-hybrid-connections.md)、[仮想ネットワーク統合](web-sites-integrate-with-vnet.md)、または [App Service 環境](environment/intro.md)を使用できます。 |
 | 受信ネットワーク トラフィックへの露出を制限する | ネットワーク セキュリティ グループを使用すると、ネットワーク アクセスを制限し、公開するエンドポイントの数を制御できます。 詳細については、[App Service Environment への受信トラフィックを制御する方法](environment/app-service-app-service-environment-control-inbound-traffic.md)に関する記事を参照してください。 |
 
@@ -60,4 +60,4 @@ ms.locfileid: "80546700"
 
 ## <a name="next-steps"></a>次のステップ
 
-アプリケーション プロバイダーに追加のセキュリティ要件があるかどうかを確認する。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](../security/fundamentals/abstract-develop-secure-apps.md)を参照してください。
+アプリケーション プロバイダーに追加のセキュリティ要件があるかどうかを確認する。 セキュリティで保護されたアプリケーションの開発の詳細については、[セキュリティで保護された開発に関するドキュメント](https://azure.microsoft.com/resources/develop-secure-applications-on-azure/)を参照してください。

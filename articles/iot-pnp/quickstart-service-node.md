@@ -3,17 +3,17 @@ title: Azure IoT ソリューションに接続されている IoT プラグ ア
 description: Node.js を使用して、ご利用の Azure IoT ソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスと接続してやりとりします。
 author: elhorton
 ms.author: elhorton
-ms.date: 07/13/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc
-ms.openlocfilehash: 9ddca58e166baa1e94fcc3edcfbbc64abd578049
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: fd65dcc9ce0be07daa5848a0ac583cf795150e47
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352665"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184756"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-nodejs"></a>クイック スタート:ご利用のソリューションに接続されている IoT プラグ アンド プレイ プレビュー デバイスとやりとりする (Node.js)
 
@@ -33,12 +33,6 @@ IoT プラグ アンド プレイ プレビューを使用すると、基礎と�
 node --version
 ```
 
-次のコマンドを実行し、[IoT プラグ アンド プレイがサポートされる Node service SDK](https://www.npmjs.com/package/azure-iot-digitaltwins-service) をインストールします。
-
-```cmd/sh
-npm i azure-iot-digitaltwins-service
-```
-
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
 次のコマンドを実行して、ご利用のハブに対する "_IoT ハブ接続文字列_" を取得します。 この接続文字列はメモしておいてください。これはこのクイックスタートの後半で使用します。
@@ -53,15 +47,19 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDeviceID> --output
 ```
 
+### <a name="clone-the-sdk-repository-with-the-sample-code"></a>サンプル コードを使用して SDK リポジトリをクローンする
+
+このサービスの SDK はプレビュー段階であるため、[Node SDK のプレビュー ブランチ](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)からサンプルをクローンする必要があります。 任意のフォルダーでターミナル ウィンドウを開きます。 次のコマンドを実行して、[Microsoft Azure IoT SDK for Node.js](https://github.com/Azure/azure-iot-sdk-node) GitHub リポジトリの **pnp-preview-refresh** ブランチをクローンします。
+
+```cmd/sh
+git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
+```
+
 ## <a name="run-the-sample-device"></a>サンプル デバイスを実行する
 
 このクイックスタートでは、Node.js に IoT プラグ アンド プレイ デバイスとして記述されたサンプルのサーモスタット デバイスを使用できます。 サンプル デバイスを実行するには、次のようにします。
 
-1. 任意のフォルダーでターミナル ウィンドウを開きます。 次のコマンドを実行して、[Node.js 用 Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdk-node) の GitHub リポジトリをこの場所にクローンします。
-
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node
-    ```
+1. ターミナル ウィンドウを開いて、GitHub からクローンした Microsoft Azure IoT SDK for Node.js リポジトリが格納されているローカル フォルダーに移動します。
 
 1. このターミナル ウィンドウは、**デバイス** ターミナルとして使用されます。 クローンしたリポジトリのフォルダーに移動し、 */azure-iot-sdk-node/device/samples/pnp* フォルダーに移動します。 次のコマンドを実行して、すべての依存関係をインストールします。
 
@@ -90,10 +88,10 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. **サービス** ターミナルとして使用する別のターミナル ウィンドウを開きます。 service SDK はプレビュー段階であるため、[Node SDK のプレビュー ブランチ](https://github.com/Azure/azure-iot-sdk-node/tree/pnp-preview-refresh)からサンプルをクローンする必要があります。
 
     ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-node -b public-preview-pnp
+    git clone https://github.com/Azure/azure-iot-sdk-node -b pnp-preview-refresh
     ```
 
-1. クローンしたリポジトリ ブランチのフォルダーに移動し、 */azure-iot-samples-node/digital-twins/samples/service/javascript* フォルダーに移動します。 次のコマンドを実行して、すべての依存関係をインストールします。
+1. クローンしたリポジトリ ブランチのフォルダーに移動し、 */azure-iot-sdk-node/digitaltwins/samples/service/javascript* フォルダーに移動します。 次のコマンドを実行して、すべての依存関係をインストールします。
 
     ```cmd/sh
     npm install
@@ -144,14 +142,14 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 
 ### <a name="update-a-writable-property"></a>書き込み可能なプロパティを更新する
 
-1. コード エディターで、*update_digital_twin_property.js* ファイルを開きます。
+1. コード エディターで、*update_digital_twin.js* ファイルを開きます。
 
 1. サンプル コードを確認します。 JSON 修正プログラムを作成して、デバイスのデジタル ツインを更新する方法を確認できます。 このサンプルでは、コードによって、サーモスタットの温度が 42 の値に置き換えられます。
 
     ```javascript
     const patch = [{
         op: 'add',
-        path: 'targetTemperature',
+        path: '/targetTemperature',
         value: '42'
       }]
     ```
@@ -159,43 +157,23 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. **サービス** ターミナルで、次のコマンドを使用して、プロパティを更新するためのサンプルを実行します。
 
     ```cmd/sh
-    node update_digital_twin_property.js
-    ```
-
-1. "**サービス**" ターミナル出力に、更新されたデバイス情報が表示されます。 `thermostat1` コンポーネントまでスクロールして、`targetTemperature` の新しい値の 42 を確認します。
-
-    ```json
-    "modelId": "dtmi:com:example:Thermostat;1",
-        "version": 12,
-        "properties": {
-            "desired": {
-                "targetTemperature": "42",
-                "$metadata": {
-                    "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                    "$lastUpdatedVersion": 5,
-                    "targetTemperature": {
-                        "$lastUpdated": "2020-07-09T13:55:50.7976985Z",
-                        "$lastUpdatedVersion": 5
-                    }
-                },
-                "$version": 5
-            },
-            "reported": {
-                "serialNumber": "123abc",
-                "maxTempSinceLastReboot": 32.279942997143785,
-                "targetTemperature": {
-                    "value": "42",
-                    "ac": 200,
-                    "ad": "Successfully executed patch for targetTemperature",
-                    "av": 2
-                },
+    node update_digital_twin.js
     ```
 
 1. **デバイス** ターミナルで、デバイスによって更新情報が受信されていることを確認します。
 
     ```cmd/sh
-    Received an update for targetTemperature: 42
+    The following properties will be updated for root interface:
+    {
+      targetTemperature: {
+        value: 42,
+        ac: 200,
+        ad: 'Successfully executed patch for targetTemperature',
+        av: 2
+      }
+    }
     updated the property
+    Properties have been reported for component
     ```
 
 1. **サービス** ターミナルで、次のコマンドを実行して、プロパティが更新されていることを確認します。
@@ -207,15 +185,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. **サービス** ターミナル出力の `thermostat1` コンポーネントの下のデジタル ツイン応答で、更新されたターゲット温度が報告されているのがわかります。 デバイスでの更新が完了するまで、しばらく時間がかかる場合があります。 デバイスによってプロパティの更新が処理されるまで、この手順は繰り返します。
 
     ```json
-    "$model": "dtmi:com:example:Thermostat;1",
-    "targetTemperature": {
-      "desiredValue": 42,
-      "desiredVersion": 4,
-      "ackVersion": 4,
-      "ackCode": 200,
-      "ackDescription": "Successfully executed patch for targetTemperature",
-      "lastUpdateTime": "2020-07-09T13:55:30.5062641Z"
-    }
+    targetTemperature: 42,
     ```
 
 ### <a name="invoke-a-command"></a>コマンドを呼び出す
@@ -225,6 +195,8 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. "**サービス**" ターミナルにアクセスします。 次のコマンドを使用して、コマンドを呼び出すためのサンプルを実行します。
 
     ```cmd/sh
+    set IOTHUB_COMMAND_NAME=getMaxMinReport
+    set IOTHUB_COMMAND_PAYLOAD=commandpayload
     node invoke_command.js
     ```
 
@@ -245,7 +217,7 @@ az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --
 1. **デバイス** ターミナルで、コマンドが確認されていることがわかります。
 
     ```cmd/sh
-    MaxMinReport [object Object]
+    MaxMinReport commandpayload
     Response to method 'getMaxMinReport' sent successfully.
     ```
 

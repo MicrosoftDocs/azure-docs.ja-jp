@@ -11,18 +11,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
-ms.openlocfilehash: cbba0401815f6754939cdaeb6e7343cf085dff68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736970"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010871"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>Windows 用の AMD GPU ドライバー拡張機能
 
-この記事では、Windows [NVv4 シリーズ](https://docs.microsoft.com/azure/virtual-machines/nvv4-series)の VM に AMD GPU ドライバーを配置するための VM 拡張機能の概要について説明します。 この拡張機能を使用して AMD ドライバーをインストールすると、[AMD のエンドユーザー使用許諾契約書](https://amd.com/radeonsoftwarems)の条項を受け入れ、同意することになります。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
+この記事では、Windows [NVv4 シリーズ](../nvv4-series.md)の VM に AMD GPU ドライバーを配置するための VM 拡張機能の概要について説明します。 この拡張機能を使用して AMD ドライバーをインストールすると、[AMD のエンドユーザー使用許諾契約書](https://amd.com/radeonsoftwarems)の条項を受け入れ、同意することになります。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
 
-ドライバーの手動インストールの手順と現在サポートされているバージョンについては、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/n-series-amd-driver-setup)をご覧ください。
+ドライバーの手動インストールの手順と現在サポートされているバージョンについては、[こちら](../windows/n-series-amd-driver-setup.md)をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -81,7 +81,7 @@ AMD GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲッ�
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成が必要な仮想マシンを 1 つ以上デプロイするときに最適です。
 
-仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-manager-template-child-resource.md)に関する記事を参照してください。 
+仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/templates/child-resource-name-type.md)に関する記事を参照してください。 
 
 次の例では、拡張機能が仮想マシン リソース内で入れ子になっていることを前提としています。 拡張機能リソースを入れ子にすると、JSON は仮想マシンの `"resources": []` オブジェクトに配置されます。
 
@@ -172,4 +172,4 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 ## <a name="next-steps"></a>次のステップ
 拡張機能の詳細については、「[Windows 用の仮想マシン拡張機能とその機能](features-windows.md)」を参照してください。
 
-N シリーズ VM の詳細については、「[GPU 最適化済み仮想マシンのサイズ](../windows/sizes-gpu.md)」を参照してください。
+N シリーズ VM の詳細については、「[GPU 最適化済み仮想マシンのサイズ](../sizes-gpu.md)」を参照してください。

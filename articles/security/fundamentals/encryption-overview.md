@@ -1,6 +1,6 @@
 ---
 title: Azure の暗号化の概要 | Microsoft Docs
-description: Azure でのさまざまな暗号化オプションの詳細について
+description: Azure での暗号化オプションについて説明します。 保存データの暗号化、転送中のデータの暗号化、Azure Key Vault を使用したキー管理についての情報をご確認ください。
 services: security
 author: msmbaldwin
 ms.assetid: ''
@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 14808016b627bc593d90ff88fc9bddf2449f6ee5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5189270a7b9de9ff5a222ad76ce46254ae5d2ee3
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083958"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542961"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -113,7 +113,7 @@ Azure では、データの機密性を維持しながらデータを別の場�
 
 ### <a name="data-link-layer-encryption-in-azure"></a>Azure のデータリンク層の暗号化
 
-Azure のお客様のトラフィックが、Microsoft (または Microsoft の代理) によって制御されない物理的境界の外で、データセンター間を移動するときは常に、基礎となるネットワーク ハードウェアから [IEEE 802.1AE MAC Security Standards](https://1.ieee802.org/security/802-1ae/) (別名 MACsec) を使用したデータリンク層の暗号化が適用されます。  パケットは送信前にデバイス上で暗号化され、復号され、物理的な "中間者" 攻撃、スヌーピング攻撃、盗聴攻撃を防ぎます。  このテクノロジはネットワーク ハードウェア自体に統合されているため、測定可能なリンクの待機時間を増やすことなく、ネットワーク ハードウェア上でライン レート暗号化を提供します。  この MACsec 暗号化は、リージョン内またはリージョン間を移動するすべての Azure トラフィックに対して、既定でオンになります。顧客側ではいかなる措置も必要ありません。 
+Azure のお客様のトラフィックが、Microsoft (または Microsoft の代理) によって制御されない物理的境界の外で、データセンター間を移動するときは常に、基礎となるネットワーク ハードウェアから [IEEE 802.1AE MAC Security Standards](https://1.ieee802.org/security/802-1ae/) (別名 MACsec) を使用したデータリンク層の暗号化が適用されます。 パケットは送信前にデバイス上で暗号化され、復号され、物理的な "中間者" 攻撃、スヌーピング攻撃、盗聴攻撃を防ぎます。 このテクノロジはネットワーク ハードウェア自体に統合されているため、測定可能なリンクの待機時間を増やすことなく、ネットワーク ハードウェア上でライン レート暗号化を提供します。 この MACsec 暗号化は、リージョン内またはリージョン間を移動するすべての Azure トラフィックに対して、既定でオンになります。お客様側で必要な操作はありません。 
 
 ### <a name="tls-encryption-in-azure"></a>Azure の TLS 暗号化
 

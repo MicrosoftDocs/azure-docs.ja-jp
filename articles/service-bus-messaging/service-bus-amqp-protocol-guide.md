@@ -3,12 +3,12 @@ title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル �
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5957e2d36b57be7db1af279736e8859d1a69b66b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ffccd49d37dbf2a8fc404e9895b648e53007675c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511315"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064538"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -73,7 +73,7 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 ### <a name="amqp-outbound-port-requirements"></a>AMQP 送信ポートの要件
 
-TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
+TCP 経由で AMQP 接続を使用するクライアントでは、ローカル ファイアウォールでポート 5671 と 5672 を開く必要があります。 これらのポートと共に、[EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) 機能が有効になっている場合は、追加のポートを開く必要がある場合があります。 `EnableLinkRedirect` は、メッセージの受信中に 1 ホップをスキップし、スループットを向上させることができるようにする新しいメッセージング機能です。 クライアントは、次の図に示すように、ポート範囲 104XX 経由でバックエンド サービスとの直接通信を開始します。 
 
 ![宛先ポートの一覧][4]
 
@@ -419,5 +419,5 @@ AMQP の詳細については、次のリンクを参照してください。
 [4]: ./media/service-bus-amqp-protocol-guide/amqp4.png
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
-[パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
-[Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: 
+[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)

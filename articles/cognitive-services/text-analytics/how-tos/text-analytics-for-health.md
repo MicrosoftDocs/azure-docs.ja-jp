@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: cbc950647dc2f7102f20766c22f434526ab66639
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 5bb244796414c828e1535e4874fc85aa83f182dc
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86122213"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300070"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
+
+> [!NOTE]
+> Text Analytics for Health コンテナーは最近更新されました。 最近の変更の詳細については、[新機能](../whats-new.md)に関する記事をご覧ください。 一覧にある新機能を使用するには、必ず最新のコンテナーをプルしてください。
 
 > [!IMPORTANT] 
 > Text Analytics for Health は、"現状のまま"、"保証なしで" 提供されるプレビュー機能です。 そのため、**Text Analytics for Health (プレビュー) は、運用環境に実装またはデプロイして使用しないでください。** Text Analytics for Health は、医療デバイス、臨床サポート、診断ツール、または他のテクノロジ (病気や他の状況の診断、治療、軽減、取り扱い、防止での使用が意図されているもの) として使用することを意図されたり、使用できるようにされているものではなく、そのような目的でのこの機能の使用に対して、マイクロソフトからはライセンスや権利は付与されません。 この機能は、専門的な医療のアドバイスや医学的意見、診断、治療、または医療専門家による医学的判断に代わるものとして実装またはデプロイするために設計されたり、それを意図されたりしたものではなく、そのようには使用しないでください。 お客様は、Text Analytics for Health の使用に関するすべての責任を持ちます。 Microsoft では、Text Analytics for Health またはその機能に関連して提供されるすべての資料が、すべての医療目的に対して十分であること、またはすべての人の健康的または医療的な要件を満たすことについて、いっさい保証しません。 
 
 
-Azure Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストから、関連する医療情報を抽出してラベル付けする、コンテナー化されたサービスです。  
+Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストから関連する医療情報を抽出してラベル付けする、コンテナー化されたサービスです。  
 
 ## <a name="features"></a>特徴
 
@@ -62,7 +65,7 @@ Text Analytics for Health では、統一医療言語システム ([UMLS](https:
 
 ---
 
-サポートされているすべてのエンティティの一覧については、Text Analytics for Healthcare によって返される[エンティティのカテゴリ](../named-entity-types.md?tabs=health)を参照してください。
+サポートされているすべてのエンティティの一覧については、Text Analytics for Health によって返される[エンティティのカテゴリ](../named-entity-types.md?tabs=health)を参照してください。
 
 ## <a name="supported-languages"></a>サポートされている言語
 
@@ -70,7 +73,7 @@ Text Analytics for Health では、英語のドキュメントのみがサポー
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
-コンテナーへのアクセスを要求するには、[Cognitive Services コンテナー要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 現在、Text Analytics for Health の使用には課金されません。 
+コンテナーへのアクセスを要求するには、[Cognitive Services コンテナー要求フォーム](https://aka.ms/cognitivegate)に記入して送信します。 現在のところ、Text Analytics for Health の使用には課金されません。 
 
 [!INCLUDE [Request access to the container registry](../../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -80,8 +83,8 @@ Text Analytics for Health では、英語のドキュメントのみがサポー
 
 コンテナーをインストールして実行するには、複数の方法があります。 
 
-1. [Azure portal](text-analytics-how-to-install-containers.md?tabs=healthcare) を使用して Text Analytics リソースを作成し、Docker を使用してコンテナーを取得します。
-2. 次の PowerShell と [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) のスクリプトを使用して、リソース デプロイ コンテナーの構成を自動化します。
+- [Azure portal](text-analytics-how-to-install-containers.md?tabs=healthcare) を使用して Text Analytics リソースを作成し、Docker を使用してコンテナーを取得します。
+- 次の PowerShell と [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) のスクリプトを使用して、リソース デプロイ コンテナーの構成を自動化します。
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Azure Web App for Containers を使用してコンテナーをインストールする
 
@@ -90,7 +93,7 @@ Azure [Web App for Containers](https://azure.microsoft.com/services/app-service/
 > [!NOTE]
 > Azure Web アプリを使用すると、ドメインが自動的に `<appservice_name>.azurewebsites.net` の形式で取得されます
 
-Azure CLI を使用してこの PowerShell スクリプトを実行し、HTTPS 経由でサブスクリプションとコンテナー イメージを使用して、Web App for Containers を作成します。 スクリプトが完了するまで (約 20 分) 待ってから、最初の要求を送信します。
+Azure CLI を使用してこの PowerShell スクリプトを実行し、HTTPS 経由でサブスクリプションとコンテナー イメージを使用して、Web App for Containers を作成します。 スクリプトが完了するまで (約 25 から 30 分) 待ってから、最初の要求を送信します。
 
 ```bash
 $subscription_name = ""                    # THe name of the subscription you want you resource to be created on.
@@ -120,7 +123,8 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 Azure コンテナー インスタンス (ACI) を使用して、デプロイを容易にすることもできます。 ACI は、サーバーレスなマネージド Azure 環境内で Docker コンテナーをオンデマンドで実行できるリソースです。 
 
-Azure portal を使用して ACI リソースをデプロイする手順については、[Azure Container Instances の使用方法](text-analytics-how-to-use-container-instances.md)に関する記事を参照してください。 また、Azure CLI を使用して次の PowerShell スクリプトを実行し、コンテナー イメージを使用してサブスクリプションに ACI を作成することもできます。  スクリプトが完了するまで (約 20 分) 待ってから、最初の要求を送信します。
+Azure portal を使用して ACI リソースをデプロイする手順については、[Azure Container Instances の使用方法](text-analytics-how-to-use-container-instances.md)に関する記事を参照してください。 また、Azure CLI を使用して次の PowerShell スクリプトを実行し、コンテナー イメージを使用してサブスクリプションに ACI を作成することもできます。  スクリプトが完了するまで (約 25 から 30 分) 待ってから、最初の要求を送信します。  ACI リソースあたりの CPU の最大数に制限があるため、要求あたり 5 個を超える大きいドキュメント (それぞれ約 5000 文字) を送信することが予想される場合は、このオプションを選択しないでください。
+可用性の情報については、[ACI リージョンのサポート](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability)に関する記事を参照してください。 
 
 > [!NOTE] 
 > Azure Container Instances には、組み込みドメインに対する HTTPS のサポートは含まれません。 HTTPS が必要な場合は、証明書の作成とドメインの登録など、手動で構成する必要があります。 この手順については、以下の NGINX を参照してください。
@@ -143,7 +147,7 @@ $DOCKER_IMAGE_NAME = "containerpreview.azurecr.io/microsoft/cognitive-services-h
 
 az login
 az account set -s $subscription_name
-az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 5 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
+az container create --resource-group $resource_group_name --name $azure_container_instance_name --image $DOCKER_IMAGE_NAME --cpu 4 --memory 12 --registry-login-server $DOCKER_REGISTRY_LOGIN_SERVER --registry-username $DOCKER_REGISTRY_SERVER_USERNAME --registry-password $DOCKER_REGISTRY_SERVER_PASSWORD --port 5000 --dns-name-label $DNS_LABEL --environment-variables Eula=accept Billing=$TEXT_ANALYTICS_RESOURCE_API_ENDPOINT ApiKey=$TEXT_ANALYTICS_RESOURCE_API_KEY
 
 # Once deployment complete, the resource should be available at: http://<unique_dns_label>.<resource_group_region>.azurecontainer.io:5000
 ```
@@ -228,7 +232,7 @@ docker-compose up
 次の cURL 要求の例を使用し、`serverURL` 変数を適切な値に置き換えて、デプロイしたコンテナーにクエリを送信します。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.0-preview.1/domains/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -268,8 +272,8 @@ example.json
                     "offset": 17,
                     "length": 11,
                     "text": "itchy sores",
-                    "type": "SYMPTOM_OR_SIGN",
-                    "score": 0.97,
+                    "category": "SymptomOrSign",
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -282,8 +286,8 @@ example.json
                     "offset": 11,
                     "length": 4,
                     "text": "50mg",
-                    "type": "DOSAGE",
-                    "score": 1.0,
+                    "category": "Dosage",
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -291,8 +295,8 @@ example.json
                     "offset": 16,
                     "length": 8,
                     "text": "benadryl",
-                    "type": "MEDICATION_NAME",
-                    "score": 0.99,
+                    "category": "MedicationName",
+                    "confidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -338,50 +342,35 @@ example.json
                     "offset": 32,
                     "length": 11,
                     "text": "twice daily",
-                    "type": "FREQUENCY",
-                    "score": 1.0,
+                    "category": "Frequency",
+                    "confidenceScore": 1.0,
                     "isNegated": false
                 }
             ],
             "relations": [
                 {
-                    "relationType": "DOSAGE_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "0",
-                            "role": "ATTRIBUTE"
-                        },
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        }
-                    ]
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
                 },
                 {
-                    "relationType": "FREQUENCY_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        },
-                        {
-                            "id": "2",
-                            "role": "ATTRIBUTE"
-                        }
-                    ]
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-05-08"
+    "modelVersion": "2020-07-24"
 }
 ```
 
-> [!NOTE] 
-> 否定検出では、1 つの否定語句によって一度に複数の用語が処理される場合があります。 認識されたエンティティの否定は、JSON 出力では `isNegated` フラグのブール値によって表されます。
+### <a name="negation-detection-output"></a>否定検出の出力
+
+否定検出を使用する場合、1 つの否定語句によって一度に複数の用語が処理される場合があります。 認識されたエンティティの否定は、JSON 出力では `isNegated` フラグのブール値によって表されます。
 
 ```json
 {
@@ -389,7 +378,7 @@ example.json
   "offset": 90,
   "length": 10,
   "text": "chest pain",
-  "type": "SYMPTOM_OR_SIGN",
+  "category": "SymptomOrSign",
   "score": 0.9972,
   "isNegated": true,
   "links": [
@@ -402,6 +391,30 @@ example.json
       "id": "0000023593"
     },
     ...
+```
+
+### <a name="relation-extraction-output"></a>関係抽出の出力
+
+関係抽出の出力には、関係の "*ソース*" とその "*ターゲット*" への URI 参照が含まれています。 関係ロールが `ENTITY` のエンティティは、`target` フィールドに割り当てられます。 関係ロールが `ATTRIBUTE` のエンティティは、`source` フィールドに割り当てられます。 省略形の関係には、双方向の `source` と `target` フィールドが含まれ、`bidirectional` は `true` に設定されます。 
+
+```json
+"relations": [
+                {
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
+                },
+                {
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
+                }
+            ]
+  },
+...
+]
 ```
 
 ## <a name="see-also"></a>関連項目

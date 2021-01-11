@@ -4,15 +4,16 @@ description: Azure portal またはアカウント センターで Azure への�
 author: v-miegge
 ms.reviewer: judupont
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: fe90c0e6022fc5fcd32ddf4e7bc66e58c126545d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7e30d7a7b4636f256980927446108c78c2b8b480
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102584"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88686532"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング
 

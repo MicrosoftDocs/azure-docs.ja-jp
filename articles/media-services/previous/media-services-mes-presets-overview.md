@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 50c52369a5a957a4dd6279cac5079e2dea023106
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa0514834d1619bbbae4501fe6b1af16d7964ff7
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61463405"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89261477"
 ---
 # <a name="sample-presets-for-media-encoder-standard-mes"></a>Media Encoder Standard (MES) 用のタスク プリセット
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 **Media Encoder Standard** で事前に定義された一連のシステム エンコードを使って、エンコード ジョブを作成できます。 Media Services でのストリーミング用にビデオをエンコードする場合は、"アダプティブ ストリーミング" プリセットを使うことをお勧めします。 このプリセットを指定すると、Media Encoder Standard は[ビットレート ラダーを自動生成](media-services-autogen-bitrate-ladder-with-mes.md)します。 
 
@@ -29,7 +31,7 @@ ms.locfileid: "61463405"
 Media Services では、特定のエンコーディング ニーズと要件を満たすようにプリセットのすべての値をカスタマイズできます。 エンコード プリセットをカスタマイズする必要がある場合、カスタム構成のテンプレートとして、このセクションで説明されている以下のシステム プリセットのいずれかから始めることができます。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  4k エンコードのプリセットを使用する場合は、`S3` 予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
+>  4k エンコードのプリセットを使用する場合は、`S3` 予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](./media-services-scale-media-processing-overview.md)」を参照してください。  
 
 #### <a name="video-rotation-default-setting-in-presets"></a>プリセットのビデオ回転の既定設定:
 Media Encoder Standard では、ビデオの回転は既定で有効になっています。 モバイル デバイスで縦向きモードでビデオを録画した場合、これらのプリセットを使用すると、エンコード前に横向きモードに回転されます。
@@ -86,4 +88,4 @@ Media Encoder Standard では、ビデオの回転は既定で有効になって
   
  [H264 Single Bitrate Low Quality SD for Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md): ビットレートが 56 kbps、音声が AAC ステレオである 1 つの MP4 ファイルを生成します。  
   
- Media Services のエンコーダーに関する情報については、[Encoding On-Demand Azure Media Services を使用したオンデマンド エンコード](https://azure.microsoft.com/documentation/articles/media-services-encode-asset/)に関するページを参照してください。
+ Media Services のエンコーダーに関する情報については、[Encoding On-Demand Azure Media Services を使用したオンデマンド エンコード](./media-services-encode-asset.md)に関するページを参照してください。

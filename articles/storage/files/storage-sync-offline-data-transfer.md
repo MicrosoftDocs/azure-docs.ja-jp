@@ -1,18 +1,18 @@
 ---
 title: Azure Data Box を使用して Azure File Sync にデータを移行する
-description: Azure File Sync と互換性のある方法で大量のデータを移行します。
+description: Azure File Sync と互換性のある方法で大量のデータをオフラインで移行します。同期を有効にした後で、ファイルの競合を回避し、ファイルとフォルダーの ACL およびタイムスタンプを保持します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 438fe490bb241cbc42e53d8502e9065454ebcc4c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514393"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034347"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Azure Data Box を使用して Azure File Sync に大量のデータを移行する
 次に示す 2 つの方法で Azure File Sync に大量のデータを移行できます。
@@ -88,6 +88,13 @@ Azure File Sync は、使用した一括移行ツールが最初に ACL を転�
 
 > [!IMPORTANT]
 > オフライン データ転送モードを無効にした後は、一括移行からのステージング共有がまだ利用可能であっても、オフライン データ転送モードを再度有効にすることはできません。
+
+## <a name="azure-file-sync-and-pre-seeded-files-in-the-cloud"></a>Azure File Sync とクラウドに事前シード処理されたファイル
+
+Azure ファイル共有で DataBox 以外の方法によってファイルをシード処理したことがある場合は、クラウド バックアップからの AzCopy や RoboCopy を始めとする方法を使用した場合でも、この記事で説明した[オフライン データ転送のプロセス](#process-for-offline-data-transfer)に従う必要があります。 ファイルをクラウドに移動する方法として、DataBox を無視する必要があるだけです。 ただし、最終的な Azure File Sync に接続された共有ではなく、*ステージング共有*にファイルをシード処理するプロセスに確実に従っていることが重要です。
+
+> [!WARNING]
+> 最終的な Azure File Sync に接続された共有ではなく、**ステージング共有にファイルをシード処理するプロセスに従ってください**。 そうしないと、ファイルの競合が発生する可能性があります (両方のファイル バージョンが格納されます)。また、ライブ サーバーで削除されたファイルが、古いシードされたファイルのセットにまだ存在する場合は、それが元に戻る可能性があります。 さらに、フォルダーの変更は相互にマージされるため、このようなミスの後は、名前空間を分離するのが非常に困難になります。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)

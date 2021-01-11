@@ -17,11 +17,27 @@
     - name: モーションの検出、Media Services へのビデオの記録
       href: detect-motion-record-video-clips-media-services-quickstart.md
     - name: モーションの検出とイベントの生成
-      href: detect-motion-emit-events-quickstart.md
+      items:
+        - name: ダイレクト メソッド呼び出しの使用
+          displayName: 'detect motion, emit events'
+          href: detect-motion-emit-events-quickstart.md
     - name: モーションの検出、エッジ デバイス上でのビデオの記録
-      href: detect-motion-record-video-clips-edge-devices-quickstart.md
-    - name: ご自分のモデルを使用して Live Video Analytics を実行する
-      href: use-your-model-quickstart.md
+      items:
+        - name: ダイレクト メソッド呼び出しの使用
+          displayName: 'detect motion, record video on edge devices'
+          href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: 独自のモデルを使用してライブ ビデオを分析する
+      items:
+        - name: HTTP 拡張機能の使用
+          items:
+            - name: ダイレクト メソッド呼び出しの使用
+              displayName: 'analyze, your own model, http'
+              href: use-your-model-quickstart.md
+        - name: gRPC 拡張機能の使用
+          items:
+            - name: ダイレクト メソッド呼び出しの使用
+              displayName: 'analyze, your own model, grpc'
+              href: analyze-live-video-use-your-grpc-model-quickstart.md
 - name: チュートリアル
   items:
     - name: 継続的なビデオ記録
@@ -30,14 +46,23 @@
       href: event-based-video-recording-tutorial.md
     - name: 数日間の記録の再生
       href: playback-multi-day-recordings-tutorial.md
+    - name: ライブ ビデオの分析
+      items:
+        - name: HTTP 拡張機能を使用した OVMS の使用
+          displayName: 'intel, OpenVINO'
+          href: use-intel-openvino-tutorial.md
 - name: サンプル
   items:
-    - name: Live Video Analytics on IoT Edge の C# サンプル
+    - name: C# ダイレクト メソッドのサンプル
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: Python ダイレクト メソッドのサンプル
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
 - name: 概念
   items:
     - name: メディア グラフ
       href: media-graph-concept.md
+    - name: メディア グラフ拡張機能
+      href: media-graph-extension-concept.md
     - name: ビデオ記録
       href: video-recording-concept.md
     - name: ビデオ再生
@@ -62,14 +87,18 @@
       href: playback-recordings-how-to.md
     - name: 記録ポリシーの管理
       href: manage-recording-policy-how-to.md
-    - name: 任意の AI を利用したライブ ビデオの分析
-      href: analyze-with-ai-your-choice-how-to.md
     - name: ポータルを使用したダイレクト メソッドの呼び出し
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: トラブルシューティング
       href: troubleshoot-how-to.md
 - name: リファレンス
   items:
+    - name: HTTP 拡張プロトコル
+      href: http-extension-protocol.md
+    - name: gRPC 拡張プロトコル
+      href: grpc-extension-protocol.md
+    - name: 推論メタデータ スキーマ
+      href: inference-metadata-schema.md
     - name: ダイレクト メソッド
       href: direct-methods.md
     - name: モジュール ツインの構成スキーマ

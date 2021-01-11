@@ -72,7 +72,7 @@
           href: pause-and-resume-compute-powershell.md
 - name: 概念
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: sql-data-warehouse-overview-manage-security.md
@@ -122,7 +122,7 @@
               href: /azure/sql-database/transparent-data-encryption-azure-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
             - name: Bring Your Own Key を使用した TDE
               href: /azure/sql-database/transparent-data-encryption-byok-azure-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json
-    - name: データの読み込み
+    - name: データの取り込みと準備
       items:
         - name: 概要
           href: design-elt-data-loading.md
@@ -222,8 +222,6 @@
               href: sql-data-warehouse-develop-user-defined-schemas.md
             - name: 変数の代入
               href: sql-data-warehouse-develop-variable-assignment.md
-            - name: ビュー
-              href: sql-data-warehouse-develop-views.md
     - name: クエリ実行
       items:
         - name: 動的 SQL
@@ -284,7 +282,7 @@
           href: sql-data-warehouse-encryption-tde.md
         - name: 暗号化の有効化 - T-SQL
           href: sql-data-warehouse-encryption-tde-tsql.md
-    - name: データの読み込み
+    - name: データの読み込みと準備
       items:
         - name: Azure Data Lake Storage (ADLS) から
           href: sql-data-warehouse-load-from-azure-data-lake-store.md

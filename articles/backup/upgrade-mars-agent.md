@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェントのアップ�
 description: Microsoft Azure Recovery Services (MARS) エージェントをアップグレードする方法について説明します。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 49daf438b855d19961519d93b6c3ec535de4756f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79abc877f102d83cdb3c72a571f2203984eb54e4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672827"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890217"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントのアップグレード
 
@@ -31,7 +31,7 @@ Azure Backup エージェントと Azure Backup Server をインストールす�
 
     ![MARS エージェントがインストールされているサーバーの一覧](./media/upgrade-mars-agent/protected-servers.png)
 
-1. Azure Backup エージェントのバージョンの列を並べ替えるには、MARS エージェントのインストールでは **[エージェントのバージョン]** 列、または Azure Backup Server のインストールでは **[Azure Backup エージェントのバージョン]** 列をクリックします。
+1. Azure Backup エージェントのバージョンの列を並べ替えるには、MARS エージェントのインストールでは **[エージェントのバージョン]** 列、または Azure Backup Server のインストールでは **[Azure Backup エージェントのバージョン]** 列を選択します。
 
 1. 前の手順では、2.0.9083.0 未満のバージョンまたはエージェントのバージョンが空白として表示されている Azure Backup エージェントがあるサーバーの一覧が表示されます。 これらのサーバーでは、Azure Backup エージェントを更新する必要があります。
 
@@ -39,13 +39,13 @@ Azure Backup エージェントと Azure Backup Server をインストールす�
 
 Azure Backup エージェントの更新が必要なサーバーを特定したら、各サーバーに対して次の手順を実行します (Azure Backup Server または MARS エージェントを使用)。 次の手順に進む前に、[最新バージョンの Azure Backup エージェントをダウンロード](https://aka.ms/azurebackup_agent)してください。
 
-1. Azure Backup エージェントが 2.0.9083.0 未満、または空白の行をクリックします。 これにより、サーバーの詳細画面が開きます。
+1. Azure Backup エージェントが 2.0.9083.0 未満、または空白の行を選択します。 これにより、サーバーの詳細画面が開きます。
 
     ![最新ではないエージェント バージョンの保護されたサーバー](./media/upgrade-mars-agent/old-agent-version.png)
 
     ![最新ではないエージェント バージョンの Azure Backup Server](./media/upgrade-mars-agent/backup-management-servers-old-versions.png)
 
-1. **[接続]** をクリックして、サーバーに接続するためのリモート デスクトップ接続ファイルを受信するか、サーバー上のリモート デスクトップ接続を使用してサーバーに直接接続します。
+1. **[接続]** を選択して、サーバーに接続するためのリモート デスクトップ接続ファイルを受信するか、サーバー上のリモート デスクトップ接続を使用してサーバーに直接接続します。
 
     ![リモート デスクトップ接続を使用してサーバーに接続する](./media/upgrade-mars-agent/connect-to-server.png)
 
@@ -57,7 +57,7 @@ Azure Backup エージェントの更新が必要なサーバーを特定した�
 1. サーバーまたはサーバーのプロキシでインターネット アクセスが制限されている場合は、サーバーまたはプロキシのファイアウォール設定が、使用している Azure Cloud に適した URL を許可するように構成されていることを確認します。
 
     Azure Cloud | URL
-    -- | ---
+    --- | ---
     Azure Cloud (パブリック) |   `https://login.windows.net`
     Azure China 21Vianet Cloud   | `https://login.chinacloudapi.cn`
     Azure US Government Cloud |   `https://login.microsoftonline.us`
@@ -71,9 +71,9 @@ Azure Backup エージェントの更新が必要なサーバーを特定した�
 
     ![Microsoft Azure Recovery Services Agent のアップグレード ウィザード](./media/upgrade-mars-agent/agent-upgrade-wizard.png)
 
-1. **[次へ]** をクリックします。
+1. **[次へ]** を選択します。
 
-1. **[アップグレード]** をクリックします。
+1. **[アップグレード]** を選択します。
 
     ![Microsoft Azure Recovery Services Agent のインストール](./media/upgrade-mars-agent/upgrade-installation.png)
 
@@ -85,7 +85,7 @@ System Center Data Protection Manager (SC DPM) サーバーに Azure Backup エ�
 
 1. SC DPM サーバーに管理者としてサインインします。
 2. DPM コンソールを開きます。
-3. コンソールの左下のナビゲーションにある **[管理]** をクリックします。
+3. コンソールの左下のナビゲーションにある **[管理]** を選択します。
 4. 左側のナビゲーションに表示される情報から、Azure Backup エージェントのバージョン情報を探します。
 5. バージョンが 2.0.9083.0 未満の場合は、最新の Azure Backup エージェントのインストーラーをダウンロードし、DPM サーバーでインストーラーを実行して、Azure Backup エージェントを更新します。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 01bb5f9ae6d8c7a6374a8b1392b061f31fdb63a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff89b38de1ff62ddea328a49b998692e8039341f
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85390586"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661556"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
@@ -65,10 +65,11 @@ Azure Digital Twins のモデルは DTDL で記述され、 *.json* ファイル
 
 この方法に従うと、病院の病棟、ゾーン、または病院自体のモデルを定義することができます。
 
-> [!TIP]
-> DTDL の解析および検証に使用できるクライアント側ライブラリがあります。 これにより、DTDL コンテンツの C# オブジェクト モデルが生成されます。これは、UI 要素の生成など、モデル駆動型の開発シナリオで使用できます。 また、このライブラリを使用して、モデルをアップロードする前に構文エラーが発生しないようにすることもできます。 このライブラリの詳細と、DTDL 検証ツール用に構築されたサンプルへのアクセスについては、[方法: モデルの解析および検証](how-to-use-parser.md)に関するページを参照してください。
+### <a name="validate-syntax"></a>構文を検証する
 
-## <a name="manage-models-with-apis"></a>API を使用してモデルを管理する。
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
+
+## <a name="manage-models-with-apis"></a>API を使用してモデルを管理する
 
 以下のセクションでは、[Azure Digital Twins API と SDK](how-to-use-apis-sdks.md) を使用して、さまざまなモデル管理操作を完了する方法について説明します。
 
@@ -82,7 +83,10 @@ Azure Digital Twins のモデルは DTDL で記述され、 *.json* ファイル
 
 モデルを作成したら、Azure Digital Twins インスタンスにアップロードできます。
 
-その方法を示すコード スニペットは次のとおりです。
+> [!TIP]
+> ご自分のモデルは、ご自分の Azure Digital Twins インスタンスにアップロードする前に、オフラインで検証することをお勧めします。 モデルをサービスにアップロードする前に、[DTDL クライアント側パーサー ライブラリ](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)と [DTDL 検証ツールのサンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)を使用して ([*方法:モデルの解析と検証*](how-to-parse-models.md)に関する記事を参照)、モデルを確認できます。
+
+モデルをアップロードする準備が整ったら、次のコード スニペットを使用できます。
 
 ```csharp
 // 'client' is an instance of DigitalTwinsClient
@@ -126,10 +130,7 @@ client.CreateModels(dtdlStrings);
 ]
 ```
  
-アップロード時に、モデル ファイルが検証されます。
-
-> [!TIP] 
-> [DTDL クライアント側パーサー ライブラリ](how-to-use-parser.md) を使用して、クライアント側でモデルを検証することもできます。
+アップロード時に、サービスによってモデル ファイルが検証されます。
 
 ### <a name="retrieve-models"></a>モデルの取得
 
@@ -173,7 +174,7 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 これらは別の機能であり、互いに影響を与えることはありませんが、一緒に使用してモデルを段階的に削除することもできます。 
 
-### <a name="decommissioning"></a>使用停止
+#### <a name="decommissioning"></a>使用停止
 
 モデルの使用を停止するコードを次に示します。
 
@@ -190,7 +191,7 @@ client.DecommissionModel(dtmiOfPlanetInterface);
 
 インスタンス内のすべてのモデルを一度に削除することも、個別に実行することもできます。
 
-すべてのモデルを削除する方法の例について、ダウンロードできるサンプル アプリは、[サンプル クライアント アプリを使用して基本事項を確認するチュートリアル](tutorial-command-line-app.md)で再利用できます。 *CommandLoop.cs* ファイルでは、`CommandDeleteAllModels` 関数でこれを実行します。
+すべてのモデルを削除する方法の例について、ダウンロードできるサンプル アプリは、[*サンプル クライアント アプリを使用した基本事項の確認に関するチュートリアル*](tutorial-command-line-app.md)" で再利用できます。 *CommandLoop.cs* ファイルでは、`CommandDeleteAllModels` 関数でこれを実行します。
 
 このセクションの残りの部分では、モデルの削除を詳細に分割し、個々のモデルに対してその方法を示します。
 
@@ -247,9 +248,9 @@ Azure Digital Twins ではこの状態を防ぐことができないため、モ
 
 ## <a name="manage-models-with-cli"></a>CLI を使用してモデルを管理する。
 
-モデルは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、[Azure Digital Twins CLI の使用方法](how-to-use-cli.md)に関するページをご覧ください。
+モデルは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、"[*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 モデルに基づいてデジタル ツインを作成して管理する方法を説明します。
-* [デジタル ツインを管理する](how-to-manage-twin.md)
+* [*方法: Digital Twins を管理する*](how-to-manage-twin.md)

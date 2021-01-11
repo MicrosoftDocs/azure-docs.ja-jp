@@ -2,16 +2,16 @@
 title: Azure Automation を使用した Azure Analysis Services モデルの更新 | Microsoft Docs
 description: この記事では、Azure Automation を使用して Azure Analysis Services のモデルの更新をコーディングする方法について説明します。
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: c3c9827814b7d638745761dbb5f3c7d2e581491b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389974"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553905"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新
 
@@ -64,7 +64,10 @@ Azure Automation および PowerShell Runbook を使用して、Azure Analysis �
 
     ![Runbook のインポート](./media/analysis-services-refresh-azure-automation/8.png)
 
-4. **Refresh-Model.ps1** ファイルを参照し、 **[名前]** および **[説明]** を入力して、次に **[作成]** をクリックします。
+4. [Refresh-Model.ps1](#sample-powershell-runbook) ファイルを参照し、 **[名前]** および **[説明]** を入力して、次に **[作成]** をクリックします。
+
+    > [!NOTE]
+    > このドキュメントの下部にある「[Powershell Runbook のサンプル](#sample-powershell-runbook)」セクションのスクリプトを使用して、Refresh-Model.ps1 という名前のファイルを作成し、ローカル コンピューターに保存して Runbook にインポートします。
 
     ![Runbook のインポート](./media/analysis-services-refresh-azure-automation/9.png)
 

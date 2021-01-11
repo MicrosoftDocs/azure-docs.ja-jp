@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/20/2020
-ms.openlocfilehash: 591bff468c90b17812554b02810d9a6cd4f874d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: f9db8a50e670e3c6af7adce0a8efcf3ce569ac89
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262159"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89009629"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Cognitive Search でのテキスト処理のためのアナライザー
 
@@ -48,7 +49,7 @@ Azure Cognitive Search の既定では、["Unicode テキストのセグメン�
 |----------|-------------|
 | [標準 Lucene のアナライザー](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 既定値。 指定や構成は必要ありません。 この汎用アナライザーは、多くの言語とシナリオで適切に実行されます。|
 | 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズまたは構成なしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](index-add-custom-analyzers.md#AnalyzerTable)は、特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](index-add-language-analyzers.md)は、各言語に合わせて高度の言語サポートが必要な場合に使用されます。 Azure Cognitive Search は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
-|[カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 1 つのトークナイザー (必須) と省略可能なフィルター (文字またはトークン) から構成される既存の要素を組み合わせたユーザー定義の構成のことです。|
+|[カスタム アナライザー](/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 1 つのトークナイザー (必須) と省略可能なフィルター (文字またはトークン) から構成される既存の要素を組み合わせたユーザー定義の構成のことです。|
 
 **Pattern** や **Stop** など、いくつかの定義済みアナライザーは、限られた構成オプションしかサポートしていません。 これらのオプションを設定するには、実際には、[定義済みアナライザーのリファレンス](index-add-custom-analyzers.md#AnalyzerTable)で説明されている定義済みアナライザーと代替オプションの 1 つで構成されるカスタム アナライザーを作成します。 他のカスタム構成と同様に、新しい構成に *myPatternAnalyzer* などの名前を付けて、Lucene パターン アナライザーの名前を区別できるようにします。
 
@@ -56,7 +57,7 @@ Azure Cognitive Search の既定では、["Unicode テキストのセグメン�
 
 アナライザーの設定は省略可能です。 一般的な規則として、どれだけ意図したように機能するかを確認するため、最初に既定の標準 Lucene アナライザーを使用してみます。 クエリで期待した結果が返されない場合は、異なるアナライザーに切り替えることが正しい解決策であることがよくあります。
 
-1. [インデックス](https://docs.microsoft.com/rest/api/searchservice/create-index)にフィールド定義を作成する場合は、**analyzer** プロパティを次のいずれかに設定します。`keyword` などの[定義済みアナライザー](index-add-custom-analyzers.md#AnalyzerTable)、`en.microsoft` などの[言語アナライザー](index-add-language-analyzers.md)、またはカスタム アナライザー (同じインデックス スキーマで定義されたもの) です。  
+1. [インデックス](/rest/api/searchservice/create-index)にフィールド定義を作成する場合は、**analyzer** プロパティを次のいずれかに設定します。`keyword` などの[定義済みアナライザー](index-add-custom-analyzers.md#AnalyzerTable)、`en.microsoft` などの[言語アナライザー](index-add-language-analyzers.md)、またはカスタム アナライザー (同じインデックス スキーマで定義されたもの) です。  
  
    ```json
      "fields": [
@@ -88,7 +89,7 @@ Azure Cognitive Search の既定では、["Unicode テキストのセグメン�
     },
    ```
 
-1. カスタム アナライザーの場合のみ、インデックスの **[analyzers]** セクションにエントリを作成してから、前の 2 つの手順のいずれかに従って、フィールド定義にカスタム アナライザーを割り当てます。 詳細については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)および[カスタム アナライザーの追加](index-add-custom-analyzers.md)に関する記事を参照してください。
+1. カスタム アナライザーの場合のみ、インデックスの **[analyzers]** セクションにエントリを作成してから、前の 2 つの手順のいずれかに従って、フィールド定義にカスタム アナライザーを割り当てます。 詳細については、[インデックスの作成](/rest/api/searchservice/create-index)および[カスタム アナライザーの追加](index-add-custom-analyzers.md)に関する記事を参照してください。
 
 ## <a name="when-to-add-analyzers"></a>アナライザーを追加する時期
 
@@ -96,11 +97,11 @@ Azure Cognitive Search の既定では、["Unicode テキストのセグメン�
 
 アナライザーは、用語をトークン化するために使用されるため、フィールドの作成時にアナライザーを割り当てる必要があります。 実際には、物理的に作成済みのフィールドに **analyzer** または **indexAnalyzer** を割り当てることは許可されていません (ただし、インデックスに影響を与えることなく、いつでも **searchAnalyzer** プロパティを変更できます)。
 
-既存のフィールドのアナライザーを変更するには、[インデックスを完全に再構築する](search-howto-reindex.md)必要があります (個々のフィールドを再構築することはできません)。 運用環境のインデックスの場合は、新しいアナライザーの割り当てを指定した新しいフィールドを作成することで再構築を延期し、古いものの代わりに使用を開始することができます。 新しいフィールドを組み込むには [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) を使用し、それを事前設定するには [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。 後で、計画的なインデックス サービスの一環として、インデックスをクリーンアップし、不要になったフィールドを削除することができます。
+既存のフィールドのアナライザーを変更するには、[インデックスを完全に再構築する](search-howto-reindex.md)必要があります (個々のフィールドを再構築することはできません)。 運用環境のインデックスの場合は、新しいアナライザーの割り当てを指定した新しいフィールドを作成することで再構築を延期し、古いものの代わりに使用を開始することができます。 新しいフィールドを組み込むには [Update Index](/rest/api/searchservice/update-index) を使用し、それを事前設定するには [mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。 後で、計画的なインデックス サービスの一環として、インデックスをクリーンアップし、不要になったフィールドを削除することができます。
 
-既存のインデックスに新しいフィールドを追加するには、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) を呼び出してフィールドを追加し、[mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を呼び出してそこにデータを格納します。
+既存のインデックスに新しいフィールドを追加するには、[Update Index](/rest/api/searchservice/update-index) を呼び出してフィールドを追加し、[mergeOrUpload](/rest/api/searchservice/addupdate-or-delete-documents) を呼び出してそこにデータを格納します。
 
-既存のインデックスにカスタム アナライザーを追加し、次のエラーを回避する場合は、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) で **allowIndexDowntime** フラグを渡します。
+既存のインデックスにカスタム アナライザーを追加し、次のエラーを回避する場合は、[Update Index](/rest/api/searchservice/update-index) で **allowIndexDowntime** フラグを渡します。
 
 *"ダウンタイムが発生するため、インデックスの更新は許可されていません。新しいアナライザー、トークナイザー、トークン フィルター、または文字フィルターを既存のインデックスに追加するためには、インデックス更新要求で 'allowIndexDowntime' クエリ パラメーターを 'true' に設定してください。この操作によりインデックスが少なくとも数秒間オフラインになるため、インデックス作成とクエリ要求が失敗することに注意してください。インデックスを更新すると、インデックスのパフォーマンスと書き込み可用性が数分にわたり損なわれる場合があります。インデックスが非常に大きい場合、その時間も長くなります。"*
 
@@ -120,7 +121,7 @@ Azure Cognitive Search では、追加の **indexAnalyzer** および **searchAn
 
 ### <a name="inspect-tokenized-terms"></a>トークン化された用語の検査
 
-検索結果が期待した内容ではない場合、よくあるシナリオとして、クエリの用語入力とインデックス内のトークン化された用語間にトークンの違いがあることが考えられます。 トークンが同じではない場合、一致処理は具体化に失敗します。 トークナイザーの出力を検査する場合、調査ツールとして [Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) を使用することをお勧めします。 応答は、特定のアナライザーによって生成されるトークンで構成されます。
+検索結果が期待した内容ではない場合、よくあるシナリオとして、クエリの用語入力とインデックス内のトークン化された用語間にトークンの違いがあることが考えられます。 トークンが同じではない場合、一致処理は具体化に失敗します。 トークナイザーの出力を検査する場合、調査ツールとして [Analyze API](/rest/api/searchservice/test-analyzer) を使用することをお勧めします。 応答は、特定のアナライザーによって生成されるトークンで構成されます。
 
 <a name="examples"></a>
 
@@ -316,7 +317,7 @@ API には、インデックス作成と検索に別のアナライザーを指�
 
 この例では、Microsoft の英語およびフランス語のアナライザーを説明フィールドに割り当てます。 これは、[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) サンプルの hotels.cs ファイルの Hotel クラスを使用して作成した、hotels インデックスのより大きな定義から抜粋されたスニペットです。
 
-Azure Cognitive Search でサポートされているテキスト アナライザーを提供する [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 型を指定して、[Analyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) を呼び出します。
+Azure Cognitive Search でサポートされているテキスト アナライザーを提供する [AnalyzerName](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) 型を指定して、[Analyzer](/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) を呼び出します。
 
 ```csharp
     public partial class Hotel
@@ -342,7 +343,7 @@ Azure Cognitive Search でサポートされているテキスト アナライ�
 
 カスタマイズまたは構成が必要な場合は、アナライザーのコンストラクトをインデックスに追加する必要があります。 定義したら、前の例で示したようにそれをフィールド定義に追加できます。
 
-[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) オブジェクトを作成します。 その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
+[CustomAnalyzer](/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet) オブジェクトを作成します。 その他の例については、[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs) に関するページを参照してください。
 
 ```csharp
 {
@@ -368,7 +369,7 @@ Azure Cognitive Search でサポートされているテキスト アナライ�
 
 + [Azure Cognitive Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)に関するページの包括的な説明を確認します。 この記事では、例を使って、表面上は直感的ではないと思われるような動作について説明しています。
 
-+ [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) の例に関するセクションや[単純なクエリ構文](query-simple-syntax.md)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
++ [Search Documents](/rest/api/searchservice/search-documents#bkmk_examples) の例に関するセクションや[単純なクエリ構文](query-simple-syntax.md)で紹介されているさまざまなクエリ構文をポータルの Search エクスプローラーで試します。
 
 + [言語に固有の字句解析器](index-add-language-analyzers.md)を適用する方法について書かれた記事を参照します。
 
@@ -376,7 +377,7 @@ Azure Cognitive Search でサポートされているテキスト アナライ�
 
 ## <a name="see-also"></a>関連項目
 
- [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 
+ [Search Documents REST API](/rest/api/searchservice/search-documents) 
 
  [単純なクエリ構文](query-simple-syntax.md) 
 

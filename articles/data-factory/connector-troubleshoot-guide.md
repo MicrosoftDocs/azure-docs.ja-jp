@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/09/2020
+ms.date: 07/20/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: a1b2f74af02db1560dbcdd0bf0c72976dc6dcea8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c8edb36345de4516077b3c857cff33389062cc7f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022335"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044544"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -157,12 +157,28 @@ ms.locfileid: "84022335"
 - **メッセージ**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
 
 
-### <a name="error-code--adlsgen2timeouterror"></a>エラー コード:AdlsGen2TimeoutError
+### <a name="error-code-adlsgen2timeouterror"></a>エラー コード:AdlsGen2TimeoutError
 
 - **メッセージ**: `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
+
+### <a name="error-message-the-underlying-connection-was-closed-could-not-establish-trust-relationship-for-the-ssltls-secure-channel"></a>エラー メッセージ:基になる接続が閉じられました。SSL/TLS のセキュリティで保護されているチャネルに対する信頼関係を確立できませんでした。
+
+- **現象**:コピー アクティビティが次のエラーにより失敗します。 
+
+    ```
+    Message: Failure happened on 'Sink' side. ErrorCode=UserErrorFailedFileOperation,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Upload file failed at path STAGING/PLANT/INDIARENEWABLE/LiveData/2020/01/14\\20200114-0701-oem_gibtvl_mannur_data_10min.csv.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=System.Net.WebException,Message=The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.,Source=System,''Type=System.Security.Authentication.AuthenticationException,Message=The remote certificate is invalid according to the validation procedure.,Source=System,'.
+    ```
+
+- **原因**:TLS ハンドシェイク中に証明書の検証に失敗しました。
+
+- **解決方法**:対処法:ADLS Gen1 の TLS 検証をスキップするには、段階的なコピーを使用します。 この問題を再現し、netmon トレースを収集してから、ネットワーク チームに連絡し、[この記事](self-hosted-integration-runtime-troubleshoot-guide.md#how-to-collect-netmon-trace)に従ってローカル ネットワーク構成を確認する必要があります。
+
+
+    ![ADLS Gen1 のトラブルシューティング](./media/connector-troubleshoot-guide/adls-troubleshoot.png)
+
 
 ### <a name="error-message-the-remote-server-returned-an-error-403-forbidden"></a>エラー メッセージ:リモート サーバーがエラー(403) 禁止されています
 
@@ -222,6 +238,7 @@ ms.locfileid: "84022335"
 - **原因**:エラー メッセージに "InvalidOperationException" が含まれている場合、通常、無効な入力データが原因です。
 
 - **推奨事項**:問題が発生している行を特定するには、コピー アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 参照ドキュメント: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
+
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>エラー コード:SqlUnauthorizedAccess
@@ -372,7 +389,7 @@ ms.locfileid: "84022335"
 
 - **解決方法**:コピー アクティビティ シンクの PolyBase の設定で、"**使用型の既定の**" オプションを false に設定します。
 
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>エラー メッセージ:Java 例外メッセージ: HdfsBridge::CreateRecordReader
+### <a name="error-message-java-exception-message-hdfsbridgecreaterecordreader"></a>エラー メッセージ:Java の例外メッセージ:HdfsBridge::CreateRecordReader
 
 - **現象**: PolyBase を使用して Azure SQL Data Warehouse にデータをコピーすると、次のエラーが発生します。
 
@@ -424,7 +441,7 @@ ms.locfileid: "84022335"
 
 - **メッセージ**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **原因**:アクティビティに 'firstRowAsHeader' を設定すると、最初の行が列名として使用されます。 このエラーは、最初の行に空の値が含まれていることを意味します。 次に例を示します。'ColumnA,,ColumnB'。
+- **原因**:アクティビティに 'firstRowAsHeader' を設定すると、最初の行が列名として使用されます。 このエラーは、最初の行に空の値が含まれていることを意味します。 次に例を示します。'ColumnA,, ColumnB'。
 
 - **推奨事項**:最初の行を確認し、空の値がある場合は値を修正してください。
 

@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 659d136695943d846fe57986d4b64a37f0d8f30e
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223909"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300121"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する
 
@@ -31,6 +30,7 @@ Azure AD テナントからアプリケーションを削除するには、次�
 - 省略可能:[アプリの表示](view-applications-portal.md)の完了。
 - 省略可能:[アプリの追加](add-application-portal.md)の完了。
 - 省略可能:[アプリの構成](add-application-portal-configure.md)の完了。
+- 省略可能:[アプリへのユーザーの割り当て](add-application-portal-assign-users.md)の完了。
 - 省略可能:[シングル サインオンの設定](add-application-portal-setup-sso.md)の完了。
 
 >[!IMPORTANT]
@@ -44,9 +44,15 @@ Azure AD テナントからアプリケーションを削除するには:
 1. 左側のペインの **[管理]** セクションで、 **[プロパティ]** を選択します。
 1. **[削除]** を選択してから **[はい]** を選び、Azure AD テナントからアプリを削除することを確定します。
 
+> [!TIP]
+> Graph API を使用してアプリの管理を自動化できます。[Microsoft Graph API によるアプリ管理の自動化](https://docs.microsoft.com/graph/application-saml-sso-configure-api)に関するページを参照してください。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+このクイックスタート シリーズを完了したら、アプリを削除してテスト テナントをクリーンアップすることを検討してください。 アプリの削除については、このクイックスタートで説明しました。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)
-- [アプリケーション管理の一般的なシナリオ](common-scenarios.md)
-- [アプリケーション管理の可視性と制御](cloud-app-security.md)
+クイックスタート シリーズを完了しました。 次のステップとしては、アプリ管理でのベスト プラクティスについてお読みください。
+> [!div class="nextstepaction"]
+> [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)

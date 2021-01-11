@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506572"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236099"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -259,7 +259,7 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Application Gateway はどのような証明書をサポートしていますか?
 
-Application Gateway は、自己署名証明書、証明機関 (CA) の証明書、Extended Validation (EV) 証明書、ワイルドカード証明書をサポートしています。
+Application Gateway は、自己署名証明書、証明機関 (CA) の証明書、Extended Validation (EV) 証明書、複数ドメイン (SAN) 証明書、ワイルドカード証明書をサポートしています。
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>Application Gateway はどのような暗号スイートをサポートしていますか?
 
@@ -466,30 +466,6 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 - Application Gateway v2 をデプロイした
 - アプリケーション ゲートウェイ サブネットに NSG がある
 - その NSG 上で NSG フロー ログを有効にした
-
-### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>プライベート フロントエンド IP アドレスのみで Application Gateway V2 を使用するにはどうすればよいですか?
-
-Application Gateway V2 は現在、プライベート IP モードのみをサポートしていません。 次の組み合わせをサポートしています。
-* プライベート IP とパブリック IP
-* パブリック IP のみ
-
-ただし、プライベート IP のみで Application Gateway V2 を使用する場合は、次の手順に従うことができます。
-1. パブリックとプライベートの両方のフロントエンド IP アドレスを使用して Application Gateway を作成する
-2. パブリック フロントエンド IP アドレスのリスナーは作成しないでください。 リスナーが作成されていない場合、Application Gateway ではパブリック IP アドレスのトラフィックがリッスンされません。
-3. Application Gateway サブネットの[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)を作成し、次の構成を使用して優先度順にアタッチします。
-    
-    a. [ソース] には **GatewayManager** サービス タグ、[宛先] には **[すべて]** 、[宛先のポート] には **65200-65535** を指定してトラフィックを許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、証明書の認証によって保護 (ロック ダウン) されます。 ゲートウェイ ユーザー管理者を含む外部エンティティは、適切な証明書が配置されていないと、このようなエンドポイントに対する変更を開始できません。
-    
-    b. ソースに **AzureLoadBalancer** サービス タグが付いており、宛先ポートが **[すべて]** のトラフィックを許可します。
-    
-    c. ソースに **Internet** サービス タグが付いており、宛先ポートが **[すべて]** のすべての受信トラフィックを拒否します。 この規則には、受信規則で*最小の優先順位*を指定します。
-    
-    d. プライベート IP アドレスでのアクセスがブロックされないように、VirtualNetwork の受信の許可などの既定の規則を保持します。
-    
-    e. 送信インターネット接続はブロックできません。 そうしないと、ログ記録やメトリックなどで問題が発生します。
-
-プライベート IP のみのアクセスの NSG 構成の例:![プライベート IP アクセスのみの Application Gateway V2 NSG 構成](./media/application-gateway-faq/appgw-privip-nsg.png)
-
 
 ## <a name="next-steps"></a>次のステップ
 

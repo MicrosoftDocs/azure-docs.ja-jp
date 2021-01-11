@@ -8,17 +8,17 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.custom: has-adal-ref
-ms.openlocfilehash: e41d3b47408d29a0463eed5f23117801be107c27
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.custom: has-adal-ref, devx-track-csharp
+ms.openlocfilehash: b32e0a60e099b5ad184f8919be3f93646c3a68b3
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920722"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018146"
 ---
-# <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する
+# <a name="configure-role-based-access-control-in-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する
 
-この記事では、リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する方法について説明します。 ロール ベースのアクセス制御を使用して、ソリューションの特定の機能に対する個々のユーザーのアクセスを制限できます。
+この記事では、リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する方法について説明します。 ロール ベースのアクセス制御を使用すると、ソリューションの特定の機能に対する個々のユーザーのアクセスを制限できます。
 
 ## <a name="default-settings"></a>既定の設定
 
@@ -244,7 +244,7 @@ public async Task DeleteAsync(string id)
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、リモート監視ソリューション アクセラレータで役割に基づくアクセス コントロールがどのように実装されるかを説明しました。
+この記事では、リモート監視ソリューション アクセラレータで、ロールベースのアクセス制御がどのように実装されるかを説明しました。
 
 リモート監視ソリューション アクセラレータで Time Series Insights エクスプローラーへのアクセスを管理する方法については、[Time Series Insights エクスプローラーに対するアクセスの制御を構成する方法](iot-accelerators-remote-monitoring-rbac-tsi.md)に関するページを参照してください。
 

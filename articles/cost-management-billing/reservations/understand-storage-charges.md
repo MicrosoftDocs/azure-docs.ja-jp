@@ -3,15 +3,16 @@ title: Azure Storage に予約割引が適用されるしくみについて | Mi
 description: Azure Storage の予約容量割引がブロック BLOB と Azure Data Lake Storage Gen2 リソースにどのように適用されるかについて説明します。
 author: tamram
 ms.service: cost-management-billing
+ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: tamram
-ms.openlocfilehash: b6360619b7666ab7836a751491e05e379df32d93
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fc1110c124f5e4e6d30c27de0911f86c186b67c2
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199196"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88681636"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-storage"></a>Azure Storage に予約割引が適用されるしくみについて
 

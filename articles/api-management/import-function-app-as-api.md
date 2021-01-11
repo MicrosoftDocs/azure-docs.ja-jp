@@ -115,7 +115,7 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 * apim-{<*お使いの Azure API Management サービス インスタンス名*>} という名前の、Function App 内のホスト キー。
 * {<*お使いの Azure Function App のインスタンス名*>}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
 
-2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)として渡されます。 関数アプリに関連付けられている *Backend* エンティティの `PATCH Backend` [REST API 呼び出し](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
+2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)として渡されます。 Function App に関連付けられている *Backend* エンティティの `PATCH Backend` [REST API 呼び出し](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
 
 > [!WARNING]
 > Azure Function App のホスト キーまたは Azure API Management の名前付きの値のいずれかの値を削除または変更すると、サービス間の通信が失われます。 値は自動的に同期されません。

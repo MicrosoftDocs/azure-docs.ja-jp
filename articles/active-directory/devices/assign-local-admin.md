@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a76d9ccbf7b83ea28de3ef5bb1d140caa7201ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d3082e3dc45102bc8700c7d1285ef832d09712a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386370"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419820"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
@@ -66,6 +66,21 @@ Azure AD 参加を使用して Windows デバイスを Azure AD に接続する�
 
 >[!NOTE]
 > 上記のアクションは、関連するデバイスに以前にサインインしていないユーザーには適用されません。 この場合、管理者特権は、デバイスへの最初のサインインの直後に適用されます。 
+
+## <a name="manage-administrator-privileges-using-azure-ad-groups-preview"></a>Azure AD グループを使用して管理者特権を管理する (プレビュー)
+
+>[!NOTE]
+> 現在、この機能はプレビュー段階にあります。
+
+Windows 10 2004 更新プログラム以降では、Azure AD グループを使用して、[制限されたグループ](/windows/client-management/mdm/policy-csp-restrictedgroups) MDM ポリシーで Azure AD 参加済みデバイスの管理者特権を管理できます。 このポリシーを使用すると、Azure AD 参加済みデバイスのローカル管理者グループに個々のユーザーまたは Azure AD グループを割り当てることができ、さまざまなデバイス グループに対して個別の管理者をきめ細かく構成できます。 
+
+現時点では、Intune にはこのポリシーを管理するための UI がなく、[OMA-URI のカスタム設定](/mem/intune/configuration/custom-settings-windows-10)を使用して構成する必要があります。 このポリシーに関する考慮事項は次のとおりです。 
+
+- ポリシーを使用して Azure AD グループを追加するには、Groups API を実行して取得できるグループの SID が必要です。 SID は、Groups API の `securityIdentifier` プロパティで定義されています。
+- 制限されたグループ ポリシーが適用されると、グループの現在のメンバーでメンバー一覧にないものは削除されます。 したがって、このポリシーを新しいメンバーまたはグループに適用すると、既存の管理者 (つまり、デバイスを参加させたユーザー)、デバイス管理者ロール、グローバル管理者ロールが、デバイスから削除されます。 既存のメンバーが削除されないようにするには、制限されたグループ ポリシーのメンバー一覧の一部として、それらを構成する必要があります。 
+- このポリシーは、Windows 10 デバイスの既知のグループ (Administrators、Users、Guests、Power Users、Remote Desktop Users、Remote Management Users) にのみ適用できます。 
+- 制限されたグループ ポリシーを使用したローカル管理者の管理は、Hybrid Azure AD Join を使用したデバイスまたは Azure AD 登録済みデバイスには適用されません。
+- 制限されたグループ ポリシーは Windows 10 2004 更新プログラムより前から存在していましたが、デバイスのローカル管理者グループのメンバーとして Azure AD グループはサポートされていませんでした。 
 
 ## <a name="manage-regular-users"></a>通常のユーザーの管理
 

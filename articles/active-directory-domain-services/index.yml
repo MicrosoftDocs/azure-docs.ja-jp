@@ -13,12 +13,12 @@ metadata:
   ms.author: iainfou
   manager: daveba
   ms.date: 08/01/2019
-  ms.openlocfilehash: 72fda19e35792e25ba31de2c3d7d4882e9d0e0ef
-  ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+  ms.openlocfilehash: 859c5ecbfc549d1dff1d874977aaecd86a899af0
+  ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87480375"
+  ms.lasthandoff: 08/15/2020
+  ms.locfileid: "88245147"
 landingContent:
 - title: Azure AD Domain Services について
   linkLists:
@@ -88,6 +88,8 @@ landingContent:
       url: join-ubuntu-linux-vm.md
     - text: Red Hat Enterprise Linux
       url: join-rhel-linux-vm.md
+    - text: SUSE Linux Enterprise
+      url: join-suse-linux-vm.md
 - title: トラブルシューティング
   linkLists:
   - linkListType: how-to-guide

@@ -3,12 +3,13 @@ title: リソース プロバイダーの登録エラー
 description: Azure Resource Manager でのリソースのデプロイ時の Azure リソース プロバイダーの登録エラーを解決する方法について説明します。
 ms.topic: troubleshooting
 ms.date: 02/15/2019
-ms.openlocfilehash: a9182be53cc91240a62ab201efc53d674f7cf427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 143cf03a33739f43a29af94fc2f8a336fb3aef8f
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706548"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076669"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>リソース プロバイダーの登録エラーの解決
 

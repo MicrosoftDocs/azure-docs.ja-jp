@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077477"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832520"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>ユーザー VPN 用に Azure Active Directory 認証を構成する
 
@@ -23,14 +23,14 @@ ms.locfileid: "87077477"
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
-> * WAN を作成する
-> * ハブを作成する
-> * P2S の構成を作成する
-> * VPN クライアント プロファイルをダウンロードする
-> * P2S の構成をハブに適用する
-> * VNet をハブに接続する
-> * VPN クライアント構成をダウンロードして適用する
-> * 仮想 WAN を表示する
+> * Virtual WAN を作成する
+> * 仮想ハブを作成する
+> * ユーザー VPN 構成を作成する
+> * Virtual WAN ユーザー VPN プロファイルをダウンロードする
+> * ユーザー VPN 構成を仮想ハブへ適用する
+> * VNet を仮想ハブに接続する
+> * ユーザー VPN クライアント構成をダウンロードして適用する
+> * Virtual WAN を表示する
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "87077477"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-## <a name="create-a-virtual-wan"></a><a name="wan"></a>仮想 WAN を作成する
+## <a name="create-a-virtual-wan"></a><a name="wan"></a>Virtual WAN を作成する
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87077477"
 
 ## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>空の仮想ハブを作成する
 
-1. 仮想 WAN で [ハブ] を選択し、 **[+ 新しいハブ]** をクリックします。
+1. Virtual WAN で [ハブ] を選択し、 **[+ 新しいハブ]** をクリックします。
 
    ![新しいサイト](media/virtual-wan-point-to-site-azure-ad/hub1.jpg)
 2. [仮想ハブを作成する] ページで、次のフィールドに入力します。
@@ -81,9 +81,9 @@ ms.locfileid: "87077477"
 3. **[Review + create]\(レビュー + 作成\)** をクリックします。
 4. **[検証に成功しました]** ページで **[作成]** をクリックします。
 
-## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>新しい P2S 構成を作成する
+## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>新しいユーザー VPN 構成を作成する
 
-P2S 構成には、リモート クライアントを接続するためのパラメーターが定義されています。
+ユーザー VPN 構成には、リモート クライアントを接続するためのパラメーターが定義されています。
 
 1. 仮想 WAN の下で、 **[User VPN configurations]\(ユーザー VPN の構成\)** を選択します。
 
@@ -93,7 +93,16 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 
    ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. 情報を入力して **[作成]** をクリックします
+3. 情報を入力して **[作成]** をクリックします。
+
+   * **構成名** - ユーザー VPN 構成に付ける名前を入力します。
+   * **トンネルの種類** - OpenVPN を選択します。
+   * **認証方法**: [Azure Active Directory] を選択します。
+   * **対象ユーザー** - Azure AD テナントに登録されている [Azure VPN](openvpn-azure-ad-tenant.md) エンタープライズ アプリケーションのアプリケーション ID を入力します。 
+   * **発行者** - `https://sts.windows.net/<your Directory ID>/`
+   * **AAD テナント** - `https://login.microsoftonline.com/<your Directory ID>`
+  
+
 
    ![新しい構成](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
@@ -111,11 +120,11 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 6. **[Confirm]\(確認\)** をクリックします。
 7. この操作は、完了するまで最大 30 分かかることがあります。
 
-## <a name="download-vpn-profile"></a><a name="device"></a>VPN プロファイルをダウンロードする
+## <a name="download-user-vpn-profile"></a><a name="device"></a>ユーザー VPN プロファイルをダウンロードする
 
 VPN プロファイルを使用してクライアントを構成します。
 
-1. 仮想 WAN のページで、 **[User VPN configurations]\(ユーザー VPN の構成\)** をクリックします。
+1. Virtual WAN のページで、 **[ユーザー VPN 構成]** をクリックします。
 2. ページの上部にある **[Download user VPN config]\(ユーザー VPN 構成をダウンロードする\)** をクリックします。
 3. ファイルの作成が完了したら、リンクをクリックしてファイルをダウンロードできます。
 4. プロファイル ファイルを使用して VPN クライアントを構成します。
@@ -188,13 +197,12 @@ VPN プロファイルを使用してクライアントを構成します。
 2. [概要] ページのマップ上の各ポイントは、ハブを表します。
 3. ハブと接続のセクションでは、ハブの状態、サイト、リージョン、VPN 接続の状態、および入出力バイト数を表示できます。
 
-
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 
-これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
+これらのリソースが不要になったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>次のステップ

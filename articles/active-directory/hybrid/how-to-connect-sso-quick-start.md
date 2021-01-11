@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e779e6feeba27711a1746fbf7d6878725790fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1387c8525ec14b1db330252b78474bba66db8b5b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358006"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276135"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
    - ファイアウォールまたはプロキシで許可している場合は、 **\*.msappproxy.net** の URL に対するポート 443 での許可リストへの接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
 
     >[!NOTE]
-    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
+    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](./reference-connect-version-history.md)をご覧ください。
 
 * **サポートされている Azure AD Connect トポロジを使用する**:使用している Azure AD Connect トポロジが[こちら](plan-connect-topologies.md)で説明されているサポートされているトポロジの 1 つであることを確認してください。
 
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
     * Azure AD Connect を使用して Azure AD に同期している。
     * シームレス SSO を有効にさせたいユーザーが含まれている。
     
-* **先進認証を有効にする**:この機能を作動させるには、テナントで[先進認証](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)を有効にする必要があります。
+* **先進認証を有効にする**:この機能を作動させるには、テナントで[先進認証](/office365/enterprise/modern-auth-for-office-2013-and-2016)を有効にする必要があります。
 
 * **Office 365 クライアントの最新版を使用する**:Office 365 クライアント (Outlook、Word、Excel、その他) でサイレント サインオンを利用するには、ユーザーは 16.0.8730.xxxx 以上のバージョンを使用している必要があります。
 
@@ -162,9 +162,9 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 4. 次の値を該当するフィールドに入力し、 **[OK]** をクリックします。
    - **キー パス**:***Software\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap\Domains\microsoftazuread-sso.com\autologon***
-   - **値の名前**: ***https***。
-   - **値の型**:***REG_DWORD***。
-   - **値のデータ**:***00000001***。
+   - **値の名前**: ***https***
+   - **値の型**:***REG_DWORD***
+   - **値のデータ**:***00000001***
  
      ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -187,11 +187,11 @@ macOS を実行しているコンピューターが AD に参加しているこ�
 
 #### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Chromium に基づく Microsoft Edge (すべてのプラットフォーム)
 
-お使いの環境の [AuthNegotiateDelegateAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) ポリシー設定または [AuthServerAllowlist](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を確実に追加します。
+お使いの環境の [AuthNegotiateDelegateAllowlist](/DeployEdge/microsoft-edge-policies#authnegotiatedelegateallowlist) ポリシー設定または [AuthServerAllowlist](/DeployEdge/microsoft-edge-policies#authserverallowlist) ポリシー設定をオーバーライドした場合は、それらの設定に Azure AD の URL (`https://autologon.microsoftazuread-sso.com`) を確実に追加します。
 
 #### <a name="microsoft-edge-based-on-chromium-macos-and-other-non-windows-platforms"></a>Chromium に基づく Microsoft Edge (macOS および他の非 Windows プラットフォーム)
 
-macOS および他の Windows 以外のプラットフォームの Chromium に基づく Microsoft Edge の場合、統合認証用の Azure AD の URL を許可一覧に追加する方法については、[Chromium に基づく Microsoft Edge のポリシー一覧](https://docs.microsoft.com/DeployEdge/microsoft-edge-policies#authserverallowlist)を参照してください。
+macOS および他の Windows 以外のプラットフォームの Chromium に基づく Microsoft Edge の場合、統合認証用の Azure AD の URL を許可一覧に追加する方法については、[Chromium に基づく Microsoft Edge のポリシー一覧](/DeployEdge/microsoft-edge-policies#authserverallowlist)を参照してください。
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
 
@@ -211,7 +211,7 @@ macOS などの Windows 以外のプラットフォームで Google Chrome を�
 
 特定のユーザーについてこの機能をテストするには、次の条件がすべて満たされていることを確認してください。
   - ユーザーが会社のデバイスでサインインしている。
-  - デバイスが Active Directory ドメインに参加している。 デバイスは、[Azure AD 参加済み](../active-directory-azureadjoin-overview.md)である必要は _ありません_。
+  - デバイスが Active Directory ドメインに参加している。 デバイスは、[Azure AD 参加済み](../devices/overview.md)である必要は _ありません_。
   - デバイスが、企業のワイヤードまたはワイヤレス ネットワーク上や、VPN 接続などのリモート アクセス接続を介してドメイン コントローラー (DC) に直接接続している。
   - グループ ポリシーを使用して、このユーザーに[機能がロールアウト](#step-3-roll-out-the-feature)されている。
 

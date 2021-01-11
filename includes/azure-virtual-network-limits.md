@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 511354633b9f88f3d6cd2e2170ce3b7ca1f4ecdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b963cc459094e823499e962736550dcea2345ba2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82095892"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854113"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager
 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
@@ -100,7 +100,7 @@ ms.locfileid: "82095892"
 | 仮想ネットワークごとのプライベート IP アドレス |4,096 |4,096 |
 | 仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数 |2 つ以上の NIC で 500,000 (最大 1,000,000)。 |2 つ以上の NIC で 500,000 (最大 1,000,000)。 |
 | ネットワーク セキュリティ グループ (NSG) |200 |200 |
-| NSG あたりの NSG ルール数 |1,000 |1,000 |
+| NSG あたりの NSG ルール数 |200 |1,000 |
 | ユーザー定義ルート テーブル |200 |200 |
 | ルート テーブルあたりのユーザー定義ルート |400 |400 |
 | パブリック IP アドレス (動的) |500 |500 |

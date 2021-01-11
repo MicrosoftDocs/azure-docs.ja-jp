@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と ForeSee CX Suite の統合 | Microsoft Docs'
 description: Azure Active Directory と ForeSee CX Suite の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5f4b7830-6186-4d17-b77b-504d4192bfde
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: c78fa8ec470f04bcd88ab403249f77a65120c707
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fb0ed4a48eaef2168791abbaf94fb8991fa14132
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67550405"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>チュートリアル: Azure Active Directory と ForeSee CX Suite の統合
 
@@ -119,7 +115,7 @@ ForeSee CX Suite で Azure AD のシングル サインオンを構成するに�
 
     a. **[サインオン URL]** テキスト ボックスに URL として「`https://cxsuite.foresee.com/`」と入力します。
 
-    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。https:\//www.okta.com/saml2/service-provider/\<UniqueID>
+    b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します: https:\//www.okta.com/saml2/service-provider/\<UniqueID>
 
     > [!Note]
     > **識別子**の値が自動的に設定されない場合は、上記のパターンに従って手動で値を入力してください。 この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[ForeSee CX Suite クライアント サポート チーム](mailto:support@foresee.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。

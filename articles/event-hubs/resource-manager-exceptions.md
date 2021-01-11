@@ -3,12 +3,12 @@ title: Azure Event Hubs - Resource Manager の例外 | Microsoft Docs
 description: Azure Resource Manager によって表示される Azure Event Hubs の例外と推奨されるアクションの一覧。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: d8d52f0a0c58ee756afa4d5d8599e2981edb9cdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa1a3ca647bbf9e6590446549455a9853411fd7d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85312527"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281040"
 ---
 # <a name="azure-event-hubs---resource-manager-exceptions"></a>Azure Event Hubs - Resource Manager の例外
 この記事では、Azure Resource Manager を使用して、テンプレートまたは直接呼び出しにより Azure Event Hubs とやり取りするときに生成される例外を示します。
@@ -44,7 +44,7 @@ ms.locfileid: "85312527"
 | BadRequest | なし | Can't update a namespace that is secondary (セカンダリ名前空間は更新できません) | [GeoDR ペアリング](event-hubs-geo-dr.md)のセカンダリ名前空間であるため、名前空間を更新できません。 | 必要に応じて、代わりにこのペアリングでプライマリ名前空間に変更を加えます。 それ以外の場合は、GeoDR のペアリングを解除して変更を行います。 |
 | BadRequest | なし | Can't set Auto-Inflate in basic SKU (Basic SKU では自動インフレを設定できません) | Basic レベルの Event Hubs 名前空間で自動インフレを有効にすることはできません。 | 名前空間で[自動インフレ](event-hubs-auto-inflate.md)を有効にするには、Standard レベルであることを確認します。 |
 | BadRequest | なし | There isn't enough capacity to create the namespace. (名前空間を作成するのに十分な容量がありません。) Contact your Event Hubs administrator. (Event Hubs 管理者に連絡してください。) | 選択したリージョンは容量の上限に達しているため、名前空間を追加で作成することはできません。 | 名前空間を格納する別のリージョンを選択します。 |
-| BadRequest | なし | The operation can't be done on entity type 'ConsumerGroup' because the namespace 'namespace name' is using 'Basic' tier. (名前空間 'namespace name' が 'Basic' レベルを使用しているため、エンティティ型 'ConsumerGroup' に対して操作を実行できません。)  | Basic レベルの Event Hubs 名前空間には、1 つのコンシューマー グループの [クォータ] (event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits) があります (既定)。 コンシューマー グループの作成はサポートされていません。 | 既定のコンシューマー グループ ($Default) を引き続き使用するか、さらに必要な場合は、代わりに Standard レベルの Event Hubs 名前空間を使用することを検討してください。 | 
+| BadRequest | なし | The operation can't be done on entity type 'ConsumerGroup' because the namespace 'namespace name' is using 'Basic' tier. (名前空間 'namespace name' が 'Basic' レベルを使用しているため、エンティティ型 'ConsumerGroup' に対して操作を実行できません。)  | Basic レベルの Event Hubs 名前空間には、1 つのコンシューマー グループ (既定) という[クォータ](event-hubs-quotas.md#event-hubs-basic-and-standard---quotas-and-limits)があります。 コンシューマー グループの作成はサポートされていません。 | 既定のコンシューマー グループ ($Default) を引き続き使用するか、さらに必要な場合は、代わりに Standard レベルの Event Hubs 名前空間を使用することを検討してください。 | 
 | BadRequest | なし | The namespace 'namespace name' doesn't exist. (名前空間 '<名前空間名>' は存在しません。) | 指定された名前空間が見つかりませんでした。 | 名前空間の名前が正しいことと、サブスクリプションに存在することを確認してください。 存在しない場合は、[Event Hubs 名前空間を作成します](event-hubs-create.md)。 | 
 | BadRequest | なし | The location property of the resource doesn't match its containing Namespace. (名前空間と含まれているリソースのロケーション プロパティが一致しません。) | イベント ハブが名前空間のリージョンと一致しなかったため、特定のリージョンでイベント ハブの作成に失敗しました。 | 名前空間と同じリージョンにイベント ハブを作成してみてください。 | 
 

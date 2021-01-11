@@ -9,12 +9,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: efa5e6d576f7bd2965353ce3493fda2e06567180
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a2890e8af2daf4ccd6e6cf9d163b873557e165e0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80659350"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926440"
 ---
 **ターゲット環境を選択してください**
 

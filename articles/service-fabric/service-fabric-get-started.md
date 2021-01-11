@@ -4,13 +4,13 @@ description: ランタイム、SDK、およびツールをインストールし�
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.custom: sfrev
-ms.openlocfilehash: e82c7809f5a6c79b61dc0c6731a696c672f6aa97
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: sfrev, devx-track-azurepowershell
+ms.openlocfilehash: 57e5fe236e117932c3cbc2fcf2479f89aaa261d9
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247338"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069071"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 
@@ -68,8 +68,8 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 
 現在のバージョンは次のとおりです。
 
-* Service Fabric SDK および Tools 4.1.416
-* Service Fabric ランタイム 7.1.417
+* Service Fabric SDK および Tools 4.1.456
+* Service Fabric ランタイム 7.1.456
 
 サポートされているバージョンの一覧については、[Service Fabric のバージョン](service-fabric-versions.md)に関するページを参照してください
 

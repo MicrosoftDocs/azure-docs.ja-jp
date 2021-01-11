@@ -3,17 +3,17 @@ title: Creator を使用して屋内マップを作成する
 description: 屋内マップを作成するには、Azure Maps Creator を使用します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/17/2020
+ms.date: 08/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c3c34ea9e32e100d5756a3930ce9d0147363e379
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027862"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688090"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Creator を使用して屋内マップを作成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "86027862"
 
 屋内マップを作成するには:
 
-1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-account-with-azure-maps)
+1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
 3. [Creator リソースを作成します](how-to-manage-creator.md)
 4. [サンプル Drawing パッケージ](https://github.com/Azure-Samples/am-creator-indoor-data-examples)をダウンロードします。
@@ -52,7 +52,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 2. 要求を作成するには、 **[新規]** をもう一度選択します。 **[新規作成]** ウィンドウで **[要求]** を選択します。 要求の **[要求名]** を入力します。 前の手順で作成したコレクションを選択し、 **[Save]\(保存\)** を選択します。
 
-3. ビルダー タブで **POST** HTTP メソッドを選択し、次の URL を入力して、Drawing パッケージを Azure Maps サービスにアップロードします。 この要求と、この記事で触れられているその他の要求では、`<Azure-Maps-Primary-Subscription-key>` をプライマリ サブスクリプション キーに置き換えます。
+3. ビルダー タブで **POST** HTTP メソッドを選択し、次の URL を入力して、Drawing パッケージを Azure Maps サービスにアップロードします。 この要求と、この記事で触れられているその他の要求では、`{Azure-Maps-Primary-Subscription-key}` をプライマリ サブスクリプション キーに置き換えます。
 
     ```http
     https://atlas.microsoft.com/mapData/upload?api-version=1.0&dataFormat=zip&subscription-key={Azure-Maps-Primary-Subscription-key}
@@ -67,7 +67,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 6. API 呼び出しの状態を確認するには、`status URL` に対して **GET** HTTP 要求を作成します。 認証のために、プライマリ サブスクリプション キーを URL に追加する必要があります。 **GET** 要求は次の URL のようになります。
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 7. **GET** HTTP 要求が正常に完了すると、`resourceLocation` が返されます。 `resourceLocation` には、アップロードされたコンテンツの一意の `udid` が格納されます。 次の手順では任意で、`resourceLocation` URL を使用してこのリソースからメタデータを取得できます。
@@ -109,16 +109,25 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+
     >[!IMPORTANT]
     > このドキュメントの API URL は、場合によっては、Creator リソースの場所に合わせて調整する必要があります。 「[Creator サービスにアクセスする](how-to-manage-creator.md#access-to-creator-services)」を参照してください。
 
-3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、**Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。
+3. **[Send]\(送信\)** ボタンをクリックし、要求が処理されるまで待ちます。 要求が完了したら、応答の **[Headers]\(ヘッダー\)** タブに移動し、**Location** キーを探します。 **Location** キーの値をコピーします。これは、変換要求の `status URL` です。 これは次の手順で使用します。
 
-4. ビルダー タブで新しい **GET** HTTP メソッドを開始します。Azure Maps のプライマリ サブスクリプション キーを `status URL` に追加します。 前の手順の `status URL` で **GET** 要求を行います。 変換プロセスがまだ完了していない場合、次の JSON 応答のようなものが表示されることがあります。
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="Location キーの値をコピーする":::
+
+4. ビルダー タブで新しい **GET** HTTP メソッドを開始します。Azure Maps のプライマリ サブスクリプション キーを `status URL` に追加します。 手順 3 でコピーした `status URL` で **GET** 要求を行います。 `status URL` は次の URL のようになります。
+
+    ```http
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    ```
+
+    変換プロセスがまだ完了していない場合、次の JSON 応答のようなものが表示されることがあります。
 
     ```json
     {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Running"
     }
@@ -128,7 +137,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
     ```json
    {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -143,7 +152,7 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 
 ```json
 {
-    "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+    "operationId": "<operationId>",
     "created": "2020-04-22T19:39:54.9518496+00:00",
     "status": "Failed",
     "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -170,14 +179,14 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 4. `statusURL` で **GET** 要求を行い、`datasetId` を取得します。 認証のために Azure Maps のプライマリ サブスクリプション キーを追加します。 要求は次の URL のようになります。
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 5. **GET** HTTP 要求が正常に完了すると、作成されたデータセットの `datasetId` が応答ヘッダーに含まれます。 `datasetId` をコピーします。 タイルセットを作成するには、`datasetId` を使用する必要があります。
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:52:38.9352189+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://azure.microsoft.com/dataset/{datasetiId}?api-version=1.0"
@@ -199,14 +208,14 @@ Data Upload API は、ここで定義されたパターンを実装する長時�
 3. タイルセットの `statusURL` で **GET** 要求を行います。 認証のために Azure Maps のプライマリ サブスクリプション キーを追加します。 要求は次の URL のようになります。
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/<operationId>?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. **GET** HTTP 要求が正常に完了すると、作成されたタイルセットの `tilesetId` が応答ヘッダーに含まれます。 `tilesetId` をコピーします。
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "createdDateTime": "3/11/2020 8:45:13 PM +00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/tileset/{tilesetId}?api-version=1.0"

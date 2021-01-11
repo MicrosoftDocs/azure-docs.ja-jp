@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: devx-track-javascript
+ms.openlocfilehash: c689b31f73d732dda37b64793f988febc409e6da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298000"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797957"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>チュートリアル:VuePress サイトを Azure Static Web Apps プレビューに発行する
 
@@ -76,7 +77,7 @@ ms.locfileid: "84298000"
     echo 'node_modules' > .gitignore
     ```
 
-1. git リポジトリを初期化します。
+1. Git リポジトリを初期化します。
 
    ```bash
     git init

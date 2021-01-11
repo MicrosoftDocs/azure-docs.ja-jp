@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: rohink
-ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 540c4d6f2dde64cef9b5795d635ac6259bfc69c3
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76939282"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985633"
 ---
 # <a name="what-is-azure-private-dns"></a>Azure プライベート DNS とは
 
@@ -62,7 +62,7 @@ Azure DNS には次の制限事項があります。
 * 特定の仮想ネットワークは、VM DNS レコードの自動登録が有効になっている場合、1 つのプライベート ゾーンにのみリンク可能です。 ただし、複数の仮想ネットワークを 1 つの DNS ゾーンにリンクできます。
 * 逆引き DNS は、リンクされた仮想ネットワーク内のプライベート IP 空間に対してのみ機能します。
 * リンクされた仮想ネットワークのプライベート IP アドレスの逆引き DNS は、仮想マシンの既定のサフィックスとして *internal.cloudapp.net* を返します。 自動登録が有効にされたプライベート ゾーンにリンクされている仮想ネットワークでは、プライベート IP アドレスの逆引き DNS は 2 つの FQDN を返します。1 つは、既定の *internal.cloudapp.net* というサフィックスが付き、もう 1 つはプライベート ゾーンのサフィックスが付きます。
-* 条件付き転送は、現在ネイティブにサポートされていません。 Azure とオンプレミスのネットワーク間で解決を有効にするには、 [VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事を参照してください。
+* 条件付き転送は、現在ネイティブにサポートされていません。 Azure とオンプレミス ネットワーク間の解決を有効にするには、[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関するページを参照してください。
  
 ## <a name="pricing"></a>価格
 

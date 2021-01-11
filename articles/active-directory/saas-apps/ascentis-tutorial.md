@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Ascentis の統合 | Microsoft Docs
 description: Azure Active Directory と Ascentis の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: df45dce8-6718-4711-a90c-86a07f66bc7b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9739fa5e4e59d0808f0bea953c4cfde11e50d37
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 4aed971619b6426b36953ec28c3c72858af9fb70
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607975"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549451"
 ---
 # <a name="tutorial-integrate-ascentis-with-azure-active-directory"></a>チュートリアル:Ascentis の Azure Active Directory との統合
 

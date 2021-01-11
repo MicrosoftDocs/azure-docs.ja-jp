@@ -1,15 +1,15 @@
 ---
 title: Visual Studio を使用する Azure Functions の開発
 description: Azure Functions Tools for Visual Studio 2019 を使用して、Azure Functions を開発およびテストする方法を説明します。
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0df65c4cdbf40b49bc265f4accafde67f41dafb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731029"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612811"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -42,7 +42,7 @@ Visual Studio には、関数の開発時の利点として次のようなこと
 
 ### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Visual Studio 2017 でツールのバージョンを確認する
 
-1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]**  >  **[ツール]** メニューを展開し、 **[Azure Functions と WebJobs ツール]** を選択します。
+1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]**  >  **[ツール]** メニューを展開し、 **[Azure Functions と Web ジョブ ツール]** を選択します。
 
     ![Functions ツールのバージョンを確認する](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -52,7 +52,7 @@ Visual Studio には、関数の開発時の利点として次のようなこと
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Visual Studio 2017 のツールを更新する
 
-1. **[拡張機能と更新プログラム]** ダイアログで、 **[更新プログラム]**  >  **[Visual Studio Marketplace]** を展開し、 **[Azure Functions と WebJobs ツール]** 、 **[更新]** の順に選択します。
+1. **[拡張機能と更新プログラム]** ダイアログで、 **[更新プログラム]**  >  **[Visual Studio Marketplace]** を展開し、 **[Azure Functions と Web ジョブ ツール]** 、 **[更新]** の順に選択します。
 
     ![Functions ツールのバージョンを更新する](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 
@@ -82,13 +82,13 @@ Azure Functions プロジェクトを作成した後、プロジェクト テン
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-プロジェクトを発行しても、Visual Studio では local.settings.json の設定が自動的にアップロードされません。 これらの設定が Azure の関数アプリにも確実に存在するようにするには、プロジェクトを発行した後にそれらをアップロードします。 詳細については、「[Function App の設定](#function-app-settings)」を参照してください。 `ConnectionStrings` コレクション内の値は発行されません。
+プロジェクトを発行しても、Visual Studio では local.settings.json の設定が自動的にアップロードされません。 これらの設定が Azure の Function App にも確実に存在するようにするには、プロジェクトを発行した後にそれらをアップロードします。 詳細については、「[Function App の設定](#function-app-settings)」を参照してください。 `ConnectionStrings` コレクション内の値は発行されません。
 
-コードを使用して、関数アプリの設定値を環境変数として読み取ることもできます。 詳細については、「[環境変数](functions-dotnet-class-library.md#environment-variables)」を参照してください。
+コードを使用して、Function App の設定値を環境変数として読み取ることもできます。 詳細については、「[環境変数](functions-dotnet-class-library.md#environment-variables)」を参照してください。
 
 ## <a name="configure-the-project-for-local-development"></a>ローカル開発用のプロジェクトを構成する
 
-Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と Webhook 以外のすべてのトリガーの種類について、`Values.AzureWebJobsStorage` キーを有効な Azure Storage アカウントの接続文字列に設定します。 関数アプリでは、プロジェクトに必要な `AzureWebJobsStorage` 接続設定に [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)を使用することもできます。 エミュレーターを使用するには、`AzureWebJobsStorage` の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイ前に実際のストレージ アカウント接続文字列に変更します。
+Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と Webhook 以外のすべてのトリガーの種類について、`Values.AzureWebJobsStorage` キーを有効な Azure Storage アカウントの接続文字列に設定します。 Function App では、プロジェクトに必要な `AzureWebJobsStorage` 接続設定に [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)を使用することもできます。 エミュレーターを使用するには、`AzureWebJobsStorage` の値を `UseDevelopmentStorage=true` に設定します。 この設定は、デプロイ前に実際のストレージ アカウント接続文字列に変更します。
 
 ストレージ アカウントの接続文字列を設定するには、次のようにします。
 
@@ -140,7 +140,7 @@ C# クラス ライブラリ関数では、関数で使用されるバインド�
 
 バインド固有の属性は、エントリ ポイント メソッドに指定された各バインド パラメーターに適用されます。 属性ではパラメーターとしてバインド情報を取ります。 前の例では、Queue storage トリガー関数を示す `QueueTrigger` 属性が最初のパラメーターに適用されています。 キュー名および接続文字列の設定名は、パラメーターとして `QueueTrigger` 属性に渡されます。 詳細については、[Azure Functions での Azure Queue ストレージのバインド](functions-bindings-storage-queue-trigger.md)に関する記事を参照してください。
 
-上記の手順を使用して、複数の関数を関数アプリ プロジェクトに追加します。 プロジェクト内の各関数で異なるトリガーを使用できますが、1 つの関数には 1 つのトリガーのみを使用する必要があります。 詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」をご覧ください。
+上記の手順を使用して、複数の関数を Function App プロジェクトに追加します。 プロジェクト内の各関数で異なるトリガーを使用できますが、1 つの関数には 1 つのトリガーのみを使用する必要があります。 詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」をご覧ください。
 
 ## <a name="add-bindings"></a>バインドの追加
 
@@ -154,7 +154,7 @@ C# クラス ライブラリ関数では、関数で使用されるバインド�
 
 3. バインドが必要なアプリ設定がある場合は、[ローカル設定ファイル](functions-run-local.md#local-settings-file)の `Values` コレクションに追加します。 
 
-   この関数では、ローカルで実行するときにこれらの値を使用します。 関数が Azure の関数アプリ で実行される場合は、[関数アプリの設定](#function-app-settings)が使用されます。
+   この関数では、ローカルで実行するときにこれらの値を使用します。 関数が Azure の Function App で実行される場合は、[Function App の設定](#function-app-settings)が使用されます。
 
 4. 適切なバインド属性をメソッド シグネチャに追加します。 次の例では、キュー メッセージによって関数がトリガーされ、出力バインドによって、同じテキストの新しいキュー メッセージが別のキューに作成されます。
 
@@ -200,23 +200,23 @@ Visual Studio から発行する場合、次の 2 つのデプロイ方法のい
 * [Web 配置](functions-deployment-technologies.md#web-deploy-msdeploy):Windows アプリをパッケージ化して任意の IIS サーバーに配置します。
 * [run-From-package を有効にした Zip デプロイ](functions-deployment-technologies.md#zip-deploy):Azure Functions のデプロイに推奨されます。
 
-次の手順を使用して、プロジェクトを Azure 内の関数アプリに発行します。
+次の手順を使用して、プロジェクトを Azure の Function App に発行します。
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
 ## <a name="function-app-settings"></a>Function App の設定
 
-プロジェクトを発行しても、Visual Studio ではこれらの設定が自動的にアップロードされないため、local.settings.json に追加したすべての設定は、Azure の関数アプリにも追加する必要があります。
+プロジェクトを発行しても、Visual Studio ではこれらの設定が自動的にアップロードされないため、local.settings.json に追加したすべての設定は、Azure の Function App にも追加する必要があります。
 
-Azure の関数アプリに必要な設定をアップロードする最も簡単な方法は、プロジェクトが正常に発行された後に表示される **[Azure App Service の設定を管理する]** リンクを選択することです。
+Azure の Function App に必要な設定をアップロードする最も簡単な方法は、プロジェクトが正常に発行された後に表示される **[Azure App Service の設定を管理する]** リンクを選択することです。
 
 :::image type="content" source="./media/functions-develop-vs/functions-vstools-app-settings.png" alt-text="[発行] ウィンドウの設定":::
 
-このリンクを選択すると、関数アプリの **[アプリケーションの設定]** ダイアログが表示され、ここで新しいアプリケーション設定を追加したり、既存の設定を変更したりできます。
+このリンクを選択すると、Function App の **[アプリケーションの設定]** ダイアログが表示され、ここで新しいアプリケーション設定を追加したり、既存の設定を変更したりできます。
 
 ![アプリケーションの設定](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
-**[ローカル]** には local.settings.json ファイルの設定値が表示され、 **[リモート]** には Azure の関数アプリの現在の設定値が表示されます。 新しいアプリ設定を作成するには、 **[設定の追加]** を選択します。 **[ローカルから値を挿入する]** リンクを使用して、設定値を **[リモート]** フィールドにコピーします。 **[OK]** を選択すると、保留中の変更がローカル設定ファイルと関数アプリに書き込まれます。
+**[ローカル]** には local.settings.json ファイルの設定値が表示され、 **[リモート]** には Azure の Function App の現在の設定値が表示されます。 新しいアプリ設定を作成するには、 **[設定の追加]** を選択します。 **[ローカルから値を挿入する]** リンクを使用して、設定値を **[リモート]** フィールドにコピーします。 **[OK]** を選択すると、保留中の変更がローカル設定ファイルと Function App に書き込まれます。
 
 > [!NOTE]
 > 既定では、local.settings.json ファイルはソース管理にチェックインされません。 これは、ソース管理からローカル関数プロジェクトを複製するときに、プロジェクトに local.settings.json ファイルがないことを意味します。 この場合、 **[アプリケーション設定]** ダイアログが期待どおりに動作するように、プロジェクトのルートに local.settings.json ファイルを手動で作成する必要があります。 
@@ -227,9 +227,9 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 * [Azure Functions Core Tools の `--publish-local-settings` 発行オプションを使用する](functions-run-local.md#publish)。
 * [Azure CLI を使用する](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
 
-## <a name="monitoring-functions"></a>関数の監視
+## <a name="monitoring-functions"></a>Functions の監視
 
-関数の実行を監視するための推奨される方法は、関数アプリを Azure Application Insights と統合することです。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。
+関数の実行を監視するための推奨される方法は、Function App を Azure Application Insights と統合することです。 Azure Portal で Function App を作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に Function App を作成する場合は、Azure で Function App の統合は実行されません。
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 

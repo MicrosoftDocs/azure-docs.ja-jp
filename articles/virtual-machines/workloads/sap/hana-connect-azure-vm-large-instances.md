@@ -15,16 +15,16 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6f88fbfcbd539603e435b11661c428d54f3c34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3231241e2fbc6e02725b5611d05b9ee4f0f1a35a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74224727"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082173"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>HANA L インスタンスへの Azure VM の接続
 
-「[SAP HANA on Azure (L インスタンス) とは](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」の記事 で触れているように、Azure における SAP アプリケーション レイヤーと HANA L インスタンスの最小デプロイ環境は次のようになります。
+「[SAP HANA on Azure (L インスタンス) とは](./hana-overview-architecture.md)」の記事 で触れているように、Azure における SAP アプリケーション レイヤーと HANA L インスタンスの最小デプロイ環境は次のようになります。
 
 ![SAP HANA on Azure (L インスタンス) およびオンプレミスに接続された Azure VNet](./media/hana-overview-architecture/image1-architecture.png)
 
@@ -94,13 +94,13 @@ HANA L インスタンスをデプロイするために必要な IP アドレス
 
 最終的に Microsoft に送信する必要があるオプションの IP アドレス範囲:
 
-- [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用してオンプレミスから HANA Large インスタンス ユニットへの直接ルーティングを有効にする場合は、別の /29 IP アドレス範囲を予約する必要があります。 この範囲は、以前に定義した他の IP アドレス範囲と重複しないようにする必要があります。
-- [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して、ある Azure リージョン内の HANA L インスタンス テナントから別の Azure リージョン内の別の HANA L インスタンス テナントへの直接ルーティングを有効にする場合は、別の /29 IP アドレス範囲を予約する必要があります。 この範囲は、以前に定義した他の IP アドレス範囲と重複しないようにする必要があります。
+- [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) を使用してオンプレミスから HANA Large インスタンス ユニットへの直接ルーティングを有効にする場合は、別の /29 IP アドレス範囲を予約する必要があります。 この範囲は、以前に定義した他の IP アドレス範囲と重複しないようにする必要があります。
+- [ExpressRoute Global Reach](../../../expressroute/expressroute-global-reach.md) を使用して、ある Azure リージョン内の HANA L インスタンス テナントから別の Azure リージョン内の別の HANA L インスタンス テナントへの直接ルーティングを有効にする場合は、別の /29 IP アドレス範囲を予約する必要があります。 この範囲は、以前に定義した他の IP アドレス範囲と重複しないようにする必要があります。
 
 ExpressRoute Global Reach の詳細および HANA L インスタンスの使用法については、以下のドキュメントを参照してください。
 
-- [SAP HANA (L インスタンス) のネットワーク アーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture)
-- [HANA Large Instances に仮想ネットワークを接続する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)
+- [SAP HANA (L インスタンス) のネットワーク アーキテクチャ](./hana-network-architecture.md)
+- [HANA Large Instances に仮想ネットワークを接続する](./hana-connect-vnet-express-route.md)
  
 前述の IP アドレス範囲を自分で設計、定義する必要がありますが、 そのすべてを Microsoft に送信する必要はありません。 Microsoft に提出する必要がある IP アドレス範囲は次のとおりです。
 

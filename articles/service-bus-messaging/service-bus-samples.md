@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: article
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: beafd0d49e8fccaef4ccc043d198875b9f1b1ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 750ee2f05e81fe18560a20227aefb52ca343e07b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341017"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067530"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル
 Service Bus メッセージングのサンプルでは、[Service Bus メッセージング](https://azure.microsoft.com/services/service-bus/)の主要な機能をデモンストレーションしています。 現在、サンプルは次の場所でご覧いただけます。
@@ -30,5 +30,4 @@ Service Bus メッセージングのサンプルでは、[Service Bus メッセ�
 Service Bus の概念の要約については、次のトピックを参照してください。
 
 * [Service Bus メッセージングの概要](service-bus-messaging-overview.md)
-* [Service Bus のアーキテクチャ](service-bus-architecture.md)
-
+* [Service Bus のアーキテクチャ](./service-bus-messaging-overview.md)

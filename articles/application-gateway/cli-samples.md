@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 0df0ace18e39a3920354e6c713843adc55bf1394
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 3f957d8b7512d2eddd6c9f4cc412a2cd1d05bb08
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086899"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497717"
 ---
 # <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure Application Gateway のための Azure CLI の例
 

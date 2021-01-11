@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021666"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495945"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>フェールオーバー後にセカンダリ オンプレミス サイトに接続するように IP アドレス指定を設定する
 
@@ -63,11 +63,11 @@ System Center Virtual Machine Manager (VMM) クラウドの Hyper-V VM をセカ
 
 **フェールオーバー前**
 
-![フェールオーバー前](./media/hyper-v-vmm-networking/network-design2.png)
+![フェールオーバー前のサブネットを示す図](./media/hyper-v-vmm-networking/network-design2.png)
 
 **フェールオーバー後**
 
-![フェールオーバー後](./media/hyper-v-vmm-networking/network-design3.png)
+![フェールオーバー後のサブネットを示す図](./media/hyper-v-vmm-networking/network-design3.png)
 
 フェールオーバー後、Site Recovery は VM 上の各ネットワーク インターフェイスに IP アドレスを割り当てます。 このアドレスは、VM インスタンスごとに、関連ネットワークの静的 IP アドレス プールから割り当てられます。
 
@@ -118,11 +118,11 @@ $ip.address
 
 **フェールオーバー前**
 
-![異なる IP アドレス - フェールオーバー前](./media/hyper-v-vmm-networking/network-design10.png)
+![フェールオーバー前の異なる IP アドレスを示す図](./media/hyper-v-vmm-networking/network-design10.png)
 
 **フェールオーバー後**
 
-![異なる IP アドレス - フェールオーバー後](./media/hyper-v-vmm-networking/network-design11.png)
+![フェールオーバー後の異なる IP アドレスを示す図](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>次のステップ

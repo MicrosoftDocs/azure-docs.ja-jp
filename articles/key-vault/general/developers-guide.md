@@ -5,15 +5,15 @@ services: key-vault
 author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2b5c28fccc411a8372ebd6015f796c8309146dfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85476769"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585867"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -38,16 +38,37 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 キー コンテナーでキー、シークレット、または証明書を使用する前に、次の記事に従って、CLI、PowerShell、Resource Manager テンプレートまたは REST でキーを作成し、管理します。
 
-- [CLI を使用した Key Vault の管理](../secrets/quick-create-cli.md)
-- [PowerShell を使用した Key Vault の作成と管理](../secrets/quick-create-powershell.md)
-- [Azure ポートを使用した Key Vault の作成と管理](../secrets/quick-create-portal.md)
-- [Python を使用した Key Vault の作成と管理](../secrets/quick-create-python.md)
-- [Java を使用した Key Vault の作成と管理](../secrets/quick-create-java.md)
-- [Node.js を使用した Key Vault の作成と管理](../secrets/quick-create-node.md)
-- [.NET (v4 SDK) を使用した Key Vault の作成と管理](../secrets/quick-create-net.md)
-- [Azure Resource Manager テンプレートを使用した Key Vault の作成とシークレットの追加](../secrets/quick-create-template.md)
-- [REST を使用した Key Vault の作成と管理](/rest/api/keyvault/)
+- [CLI を使用した Key Vault の管理](quick-create-cli.md)
+- [PowerShell を使用した Key Vault の作成と管理](quick-create-powershell.md)
+- [Azure portal を使用した Key Vault の作成と管理](quick-create-portal.md)
+- [REST を使用した Key Vault の作成と管理](/rest/api/keyvault/vaults/createorupdate)
 
+### <a name="set-and-retrieve-secrets"></a>シークレットを設定および取得する
+
+- [CLI を使用してシークレットを設定および取得する](../secrets/quick-create-cli.md)
+- [PowerShell を使用してシークレットを設定および取得する](../secrets/quick-create-powershell.md)
+- [Azure portal を使用してシークレットを設定および取得する](../secrets/quick-create-portal.md)
+- [REST でのシークレットの操作](/rest/api/keyvault/#secret-operations)
+- [Python を使用してシークレットを設定および取得する](../secrets/quick-create-python.md)
+- [Java を使用してシークレットを設定および取得する](../secrets/quick-create-java.md)
+- [Node.js を使用してシークレットを設定および取得する](../secrets/quick-create-node.md)
+- [.NET (v4 SDK) を使用してシークレットを設定および取得する](../secrets/quick-create-net.md)
+- [Azure Resource Manager テンプレートを使用した Key Vault の作成とシークレットの追加](../secrets/quick-create-template.md)
+
+### <a name="set-and-retrieve-keys"></a>キーを設定および取得する
+
+- [CLI を使用してキーを設定および取得する](../keys/quick-create-cli.md)
+- [PowerShell を使用してキーを設定および取得する](../keys/quick-create-powershell.md)
+- [Azure portal を使用してキーを設定および取得する](../keys/quick-create-portal.md)
+- [REST でのキーの操作](/rest/api/keyvault/#key-operations)
+- [Python を使用してキーを設定および取得する](../secrets/quick-create-python.md)
+
+### <a name="set-and-retrieve-certificates"></a>証明書を設定および取得する
+- [CLI を使用して証明書を設定および取得する](../certificates/quick-create-cli.md)
+- [PowerShell を使用して証明書を設定および取得する](../certificates/quick-create-powershell.md)
+- [Azure portal を使用して証明書を設定および取得する](../certificates/quick-create-portal.md)
+- [REST でのキーの操作](/rest/api/keyvault/#certificate-operations)
+- [Python を使用して証明書を設定および取得する](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>Key Vault を使用したコーディング
 
@@ -65,8 +86,6 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 [Key Vault の .NET API リファレンス](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)。
 
-.NET SDK の 2.x バージョンの詳細については、[リリース ノート](dotnet2api-release-notes.md)をご覧ください。
-
 #### <a name="java"></a>Java
 
 [Key Vault の Java SDK](/java/api/overview/azure/keyvault)
@@ -75,11 +94,11 @@ Azure リソースのマネージド ID の詳細については、[マネージ
 
 Node.js では、キー コンテナー管理 API とキー コンテナー オブジェクト API は別々になっています。 次の概要の記事から、両方にアクセスすることができます。 
 
-[Node.js 用 Azure Key Vault モジュール](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
+[Node.js 用 Azure Key Vault モジュール](https://docs.microsoft.com/javascript/api/overview/azure/key-vault-index?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Python 用 Azure Key Vault ライブラリ](/python/api/overview/azure/key-vault?view=azure-python)
+[Python 用 Azure Key Vault ライブラリ](https://docs.microsoft.com/python/api/overview/azure/key-vault-index?view=azure-python)
 
 #### <a name="azure-cli"></a>Azure CLI
 
@@ -94,13 +113,12 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 アプリケーションで Key Vault を使用する詳細な例については、以下をご覧ください。
 
 - [Azure Key Vault のコード サンプル](https://azure.microsoft.com/resources/samples/?service=key-vault) - Azure Key Vault のコード サンプル。 
-- [Web アプリケーションからの Azure Key Vault の使用](../secrets/quick-create-net.md) - このチュートリアルでは、Azure の Web アプリケーションから Azure Key Vault を使用する方法について学習できます。 
 
 ## <a name="how-tos"></a>方法
 
 次の記事とシナリオは、Azure Key Vault を操作するためのタスク固有のガイダンスを提供します。
 
-- [サブスクリプションの移行後に Key Vault のテナント ID を変更する](subscription-move-fix.md) - テナント A からテナント B に Azure サブスクリプションを移行すると、テナント B のプリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次のガイドを使用します。
+- [サブスクリプションの移行後に Key Vault のテナント ID を変更する](move-subscription.md) - テナント A からテナント B に Azure サブスクリプションを移行すると、テナント B のプリンシパル (ユーザーとアプリケーション) は既存のキー コンテナーにアクセスできなくなります。この問題を解決するには、次のガイドを使用します。
 - [ファイアウォールの背後で Key Vault にアクセスする](access-behind-firewall.md) - キー コンテナーにアクセスするには、Key Vault クライアント アプリケーションが、各種の機能のために複数のエンドポイントにアクセスできる必要があります。
 - [Azure Key Vault の HSM 保護キーを生成し、転送する方法](../keys/hsm-protected-keys.md) - この記事は Azure Key Vault と共に使用する独自の HSM 保護キーを計画、生成、転送する際に役立ちます。
 - [デプロイ時にセキュリティで保護された値 (パスワードなど) を渡す方法](../../azure-resource-manager/templates/key-vault-parameter.md) - デプロイメント時にパラメーターとしてセキュリティで保護された値 (パスワードなど) を渡す必要がある場合、Azure Key Vault にシークレットとしてその値を格納し、他のリソース マネージャー テンプレートで値を参照することができます。
@@ -122,9 +140,8 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
 
-- [Key Vault の論理的な削除の動作](overview-soft-delete.md)に関するページでは、削除が偶発的なものか意図的なものかにかかわらず、削除されたオブジェクトの回復を可能にする機能について説明します。
+- [Key Vault の論理的な削除の動作](soft-delete-overview.md)に関するページでは、削除が偶発的なものか意図的なものかにかかわらず、削除されたオブジェクトの回復を可能にする機能について説明します。
 - [Key Vault のクライアント調整](overview-throttling.md)に関するページでは、調整の基本的な概念を説明するとともに、アプリへのアプローチも紹介します。
-- [Key Vault のストレージ アカウント キーの概要](../secrets/overview-storage-keys.md)に関するページでは、Key Vault 統合 Azure ストレージ アカウント キーについて説明します。
 - [Key Vault のセキュリティ ワールド](overview-security-worlds.md)に関するページでは、リージョンとセキュリティ領域の関係について説明します。
 
 ## <a name="social"></a>ソーシャル

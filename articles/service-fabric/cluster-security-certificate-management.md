@@ -4,12 +4,12 @@ description: X.509 証明書で保護された Service Fabric クラスターで
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: fb5d19e1cceacfeabc4bc670de98e56d3fbc2596
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: aba681157d71f94914462b8d9fc13b90d4d6b153
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246709"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653666"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Service Fabric クラスターでの証明書管理
 
@@ -91,7 +91,7 @@ Service Fabric クラスターのコンテキストで、証明書の発行か�
 "プロビジョニング エージェント" について触れました。これは、秘密キーを含む証明書をコンテナーから取得し、それをクラスターの各ホストにインストールするエンティティです (Service Fabric によって証明書がプロビジョニングされないことを思い出してください)。このコンテキストでは、クラスターは Azure VM や仮想マシン スケール セットのコレクションでホストされます。 Azure では、以下のメカニズムを使用してコンテナーから VM または VMSS に証明書をプロビジョニングできます。ただし、前述のように、コンテナーの所有者からプロビジョニング エージェントに対して、コンテナーの "取得" アクセス許可が以前に付与されていることを前提とします。 
   - アドホック: オペレーターは (pfx/PKCS#12 または pem として) コンテナーから証明書を取得し、それを各ノードにインストールします
   - デプロイ中に仮想マシン スケール セットの "シークレット" として: Compute Service によって、オペレーターの代理でファースト パーティ ID が使用され、テンプレートのデプロイが有効なコンテナーから証明書が取得され、仮想マシン スケール セットの各ノードに ([このように](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates)) インストールされます。これにより、バージョン管理されたシークレットのプロビジョニングのみが可能になることに注意してください
-  - [Key Vault VM 拡張機能](../virtual-machines/extensions/key-vault-windows.md)の使用: これにより、監視対象の証明書を定期的に更新しながら、バージョンなしの宣言を使用して証明書をプロビジョニングできます。 この場合、VM または VMSS には、監視対象の証明書を含むコンテナーへのアクセス権が付与された ID である[マネージド ID](../virtual-machines/windows/security-policy.md#managed-identities-for-azure-resources) が必要です。
+  - [Key Vault VM 拡張機能](../virtual-machines/extensions/key-vault-windows.md)の使用: これにより、監視対象の証明書を定期的に更新しながら、バージョンなしの宣言を使用して証明書をプロビジョニングできます。 この場合、VM または VMSS には、監視対象の証明書を含むコンテナーへのアクセス権が付与された ID である[マネージド ID](../virtual-machines/security-policy.md#managed-identities-for-azure-resources) が必要です。
 
 アドホック メカニズムは、セキュリティから可用性までさまざまな理由からお勧めできません。また、ここではこれ以上詳しく説明しません。詳細については、[仮想マシン スケール セットの証明書](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#certificates)に関するページを参照してください。
 

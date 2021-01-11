@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254616"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079911"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>チュートリアル:Azure App Service Web アプリへの Azure CDN の追加
 
@@ -49,7 +49,7 @@ ms.locfileid: "81254616"
 
 ## <a name="create-the-web-app"></a>Web アプリの作成
 
-ここで扱う Web アプリは、[静的 HTML のクイックスタート](../app-service/app-service-web-get-started-html.md)の「**アプリの参照**」の手順に従って作成します。
+ここで扱う Web アプリは、[静的 HTML のクイックスタート](../app-service/quickstart-html.md)の「**アプリの参照**」の手順に従って作成します。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
@@ -60,7 +60,7 @@ ms.locfileid: "81254616"
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>CDN プロファイルと CDN エンドポイントを作成する
 
-左側のナビゲーションで **[App Services]** を選択し、[静的 HTML のクイック スタート](../app-service/app-service-web-get-started-html.md)で作成したアプリを選択します。
+左側のナビゲーションで **[App Services]** を選択し、[静的 HTML のクイック スタート](../app-service/quickstart-html.md)で作成したアプリを選択します。
 
 ![ポータルで App Service アプリを選択](media/cdn-add-to-web-app/portal-select-app-services.png)
 

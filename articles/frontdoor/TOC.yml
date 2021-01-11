@@ -4,8 +4,6 @@
   items:
     - name: Azure Front Door とは
       href: front-door-overview.md
-    - name: Azure Front Door の新着情報
-      href: front-door-whats-new.md
 - name: クイックスタート
   expanded: true
   items:

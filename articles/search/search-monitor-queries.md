@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: f6594bbeb9899a255d0c38b6a5b2a378388501b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552529"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935077"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Cognitive Search でクエリ要求を監視する
 
@@ -100,7 +100,7 @@ ms.locfileid: "85552529"
 
 現在の数値を簡単に確認できるように、サービスの [概要] ページの **[監視]** タブには、3 つのメトリック (**検索の待ち時間**、**秒あたりの検索クエリ数 (検索ユニットごと)** 、**スロットルされた検索クエリの割合**) が表示されます。これらは、一定の間隔で時間、日、および週単位で測定されるほか、集計の種類を変更するオプションが用意されています。
 
-さらに詳しく調べるには、 **[監視]** メニューからメトリックス エクスプローラーを開き、データを階層化、拡大、および視覚化して、傾向や異常を確認します。 メトリックス エクスプローラーの詳細を確認するには、この[メトリックのグラフの作成に関するチュートリアル](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer)を完了してください。
+さらに詳しく調べるには、 **[監視]** メニューからメトリックス エクスプローラーを開き、データを階層化、拡大、および視覚化して、傾向や異常を確認します。 メトリックス エクスプローラーの詳細を確認するには、この[メトリックのグラフの作成に関するチュートリアル](../azure-monitor/learn/tutorial-metrics-explorer.md)を完了してください。
 
 1. [監視] セクションの下で、 **[メトリックス]** を選択し、スコープがお使いの検索サービスに設定されているメトリックス エクスプローラーを開きます。
 

@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 062b2cac093c3049f65dd485e280776602c06e4b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698769"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279722"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -122,8 +122,8 @@ Office 365 の一部のワークロードでは、サポートされるトポロ
 
 | ワークロード | 制限 |
 | --------- | --------- |
-| Exchange Online | Exchange Online でサポートされているハイブリッド トポロジの詳細については、「[Hybrid deployments with multiple Active Directory forests (複数の Active Directory フォレストを伴うハイブリッド展開)](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。 |
-| Skype for Business | 複数のオンプレミス フォレストを使用している場合は、アカウント リソース フォレスト トポロジのみがサポートされます。 詳細については、「[Skype for Business Server 2015 の環境要件](https://technet.microsoft.com/library/dn933910.aspx)」を参照してください。 |
+| Exchange Online | Exchange Online でサポートされているハイブリッド トポロジの詳細については、「[Hybrid deployments with multiple Active Directory forests (複数の Active Directory フォレストを伴うハイブリッド展開)](/Exchange/hybrid-deployment/hybrid-with-multiple-forests)」を参照してください。 |
+| Skype for Business | 複数のオンプレミス フォレストを使用している場合は、アカウント リソース フォレスト トポロジのみがサポートされます。 詳細については、「[Skype for Business Server 2015 の環境要件](/skypeforbusiness/plan-your-deployment/requirements-for-your-environment/environmental-requirements)」を参照してください。 |
 
 大規模な組織の場合は、[Office 365 PreferredDataLocation](how-to-connect-sync-feature-preferreddatalocation.md) 機能を使用することを検討してください。 これにより、ユーザーのリソースが配置されているデータ センターのリージョンを定義できます。
 
@@ -191,6 +191,11 @@ Azure AD のテナントは、分離するように設計されています。 �
 ![複数のフォレストと複数のディレクトリのトポロジにおける GALSync](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
 FIM 2010 または MIM 2016 オンプレミスを使用して、2 つの Exchange 組織間でユーザーを同期できます (GALSync 経由)。 1 つの組織内のユーザーは、他の組織では外部ユーザーおよび連絡先として表示されます。 これらの異なるオンプレミス Active Directory インスタンスは、独自の Azure AD テナントと同期できます。
+
+### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>承認されていないクライアントを使用した Azure AD Connect バックエンドへのアクセス
+![承認されていないクライアントを使用した Azure AD Connect バックエンドへのアクセス](./media/plan-connect-topologies/other-client-unsupported.png)
+
+Azure Active Directory Connect サーバーは Azure Active Directory Connect バックエンドを介して Azure Active Directory と通信します。 このバックエンドとの通信に使用できるソフトウェアは Azure Active Directory Connect のみです。 他のソフトウェアや方法を使用した Azure Active Directory Connect バックエンドとの通信はサポートされていません。 
 
 ## <a name="next-steps"></a>次のステップ
 これらのシナリオのために Azure AD Connect をインストールする方法については、「 [Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)」を参照してください。

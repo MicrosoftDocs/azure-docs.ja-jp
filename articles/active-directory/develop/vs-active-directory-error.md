@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 5cefc59a6072a945be493487c09b1cc7f9827475
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b437e3117540719c8c0adc5701ac1a5e934340b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830572"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114474"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 
@@ -96,4 +96,4 @@ Web API プロジェクトで Windows 認証を検出するために、接続済
 
 認証の種類を変更するには、互換性のない認証の種類を削除して、再度接続済みサービスの追加を試行します。
 
-詳細については、「 [Azure AD の認証シナリオ](authentication-scenarios.md)」を参照してください。
+詳細については、「 [Azure AD の認証シナリオ](./authentication-vs-authorization.md)」を参照してください。

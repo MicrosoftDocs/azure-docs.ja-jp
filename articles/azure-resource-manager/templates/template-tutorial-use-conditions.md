@@ -178,7 +178,7 @@ Azure クイックスタート テンプレートは、ARM テンプレートの
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 リソース グループを削除するには、 **[Try it]/(試してみる/)** を選択し Cloud Shell を開きます。 PowerShell スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
+Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 リソース グループを削除するには、 **[Try it]\(使ってみる\)** を選択し Cloud Shell を開きます。 PowerShell スクリプトを貼り付けるには、シェル ウィンドウを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"

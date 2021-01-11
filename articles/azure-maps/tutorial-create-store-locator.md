@@ -1,20 +1,20 @@
 ---
 title: チュートリアル:Azure Maps を使用してストア ロケーター アプリケーションを作成する | Microsoft Azure Maps
-description: このチュートリアルでは、Microsoft Azure Maps Web SDK を使用して、ストア ロケーター Web アプリケーションを作成する方法について説明します。
+description: ストア ロケーター Web アプリケーションを作成する方法について説明します。 Azure Maps Web SDK を使用して Web ページを作成し、検索サービスに対してクエリを実行して結果をマップに表示します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/14/2020
+ms.date: 08/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4bb0a4a0a621881fe1d9a59585476baa2ce05f8e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289548"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121257"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してストア ロケーターを作成する
 
@@ -31,25 +31,24 @@ ms.locfileid: "87289548"
 
 <a id="Intro"></a>
 
-まずは、[ストア ロケーターのライブ サンプル](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator)または[ソース コード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)をご覧ください。 
+まずは、[ストア ロケーターのライブ サンプル](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator)または[ソース コード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、まず Azure Maps アカウントを作成して、主キー (サブスクリプション キー) を取得する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-azure-maps-account)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを S1 価格レベルで 作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+1. [S1 価格レベルで Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
+
+Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="design"></a>デザイン
 
 すぐにコードを作成し始めるよりも、まず設計から取り組むことをお勧めします。 単純なものから複雑なものまで、必要に応じてさまざまなストア ロケーターを作成できます。 このチュートリアルでは、シンプルなストア ロケーターを作成します。 読者が必要に応じて機能を拡張しやすいよう、途中でいくつかのヒントを記載しています。 ここでは、Contoso Coffee という架空の企業向けにストア ロケーターを作成します。 次の図は、このチュートリアルで作成するストア ロケーターの一般的なレイアウトのワイヤーフレームを示したものです。
 
-<center>
-
-![Contoso Coffee ショップの場所を示すストア ロケーター アプリケーションのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Contoso Coffee ショップの場所を示すストア ロケーター アプリケーションのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)
 
 このストア ロケーターには、その実用性を最大化するために、ユーザーの画面幅が 700 ピクセルよりも狭いときに調整されるレスポンシブ レイアウトを採用しています。 レスポンシブ レイアウトにより、モバイル デバイスなどの小さな画面でも使いやすいストア ロケーターとなっています。 小さな画面レイアウトのワイヤーフレームを次に示します。  
 
-<center>
-
-![モバイル デバイスにおける Contoso Coffee ストア ロケーター アプリケーションのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![モバイル デバイスにおける Contoso Coffee ストア ロケーター アプリケーションのワイヤーフレーム](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</
 
 ワイヤーフレームを見ると、きわめてシンプルなアプリケーションであることがわかります。 このアプリケーションには、検索ボックス、近隣の店舗の一覧、いくつかのマーカー (記号など) が表示された地図があります。 また、ユーザーがマーカーを選択したときに詳しい情報を表示するポップアップ ウィンドウも存在します。 さらに、このチュートリアルでこのストア ロケーターに組み込む機能は次のとおりです。
 
@@ -71,45 +70,36 @@ ms.locfileid: "87289548"
 
 ストア ロケーター アプリケーションを開発する前に、地図上に表示する店舗のデータセットを作成する必要があります。 このチュートリアルでは、Contoso Coffee という架空のコーヒー ショップのデータセットを使用します。 このシンプルなストア ロケーターのデータセットは、Excel ブックで管理します。 データセットには、米国、カナダ、イギリス、フランス、ドイツ、イタリア、オランダ、デンマーク、スペインの 9 つの国/地域に点在する Contoso Coffee コーヒー ショップ 10,213 店舗の所在地が含まれています。 実際のデータのスクリーンショットを次に示します。
 
-<center>
+![Excel ブック形式のストア ロケーター データのスクリーンショット](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)
 
-![Excel ブック形式のストア ロケーター データのスクリーンショット](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
-
-[この Excel ブックはダウンロード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)できます。 
+[この Excel ブックはダウンロード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)できます。
 
 このデータのスクリーンショットを見ると、次のことが確認できます。
-    
+
 * 所在地情報は、**AddressLine**、**City**、**Municipality** (郡)、**AdminDivision** (州)、**PostCode** (郵便番号)、**Country** の各列を使用して格納されています。  
 * **Latitude** 列と **Longitude** 列には、Contoso Coffee コーヒー ショップの各所在地に対応する座標が格納されています。 座標情報がない場合は、Azure Maps の Search サービスを使用して所在地の座標を特定できます。
 * その他いくつかの列に、コーヒー ショップに関連したメタデータが格納されています。電話番号、ブール型列、店舗の開店時間と閉店時間 (24 時間形式) です。 ブール型列は、Wi-Fi と車椅子の利用の可否に使用されます。 実際の場所データとの関係がより強いメタデータを格納する列を独自に作成してもかまいません。
 
-> [!Note]
-> Azure Maps は、球面メルカトル図法 "EPSG:3857" でデータをレンダリングしますが、WGS84 測地系を使用する "EPSG:4325" のデータを読み取ります。 
+> [!NOTE]
+> Azure Maps は、球面メルカトル図法 "EPSG:3857" でデータをレンダリングしますが、WGS84 測地系を使用する "EPSG:4325" のデータを読み取ります。
 
-データセットをアプリケーションに公開する方法は数多く存在します。 その 1 つが、データベースにデータを読み込んだうえで、そのデータを照会する Web サービスを公開する方法です。 その結果をユーザーのブラウザーに返すことができます。 この方法は、データセットが大きい場合や更新頻度が高い場合に最適です。 ただし、この方法は開発作業が増え、コストも大きくなります。 
+データセットをアプリケーションに公開する方法は数多く存在します。 その 1 つが、データベースにデータを読み込んだうえで、そのデータを照会する Web サービスを公開する方法です。 その結果をユーザーのブラウザーに返すことができます。 この方法は、データセットが大きい場合や更新頻度が高い場合に最適です。 ただし、この方法は開発作業が増え、コストも大きくなります。
 
 さらに別の方法として、ブラウザーで簡単に解析できるフラット テキスト ファイルにこのデータセットを変換する方法もあります。 ファイルそのものは、アプリケーションの他の要素と共にホストすることができます。 この方法ならシンプルな状態を保つことができますが、選択肢として適しているのはデータセットが比較的小さい場合に限られます。ユーザーがすべてのデータをダウンロードすることになるためです。 ここでは、データ ファイルのサイズが 1 MB 未満であるため、このデータセットにフラット テキスト ファイルを使用します。  
 
-このブックをフラット テキスト ファイルに変換するには、タブ区切りファイルとしてブックを保存します。 それぞれの列はタブ文字で区切られているため、コード内で容易に列を解析することができます。 コンマ区切り値 (CSV) 形式を使用することもできますが、その場合、より多くの解析ロジックが必要となります。 コンマを含んでいるフィールドはすべて、前後に引用符を付けてラップされます。 このデータを Excel でタブ区切りファイルとしてエクスポートするには、 **[名前を付けて保存]** を選択します。 **[ファイルの種類]** ボックスの一覧から **[テキスト (タブ区切り)(*.txt)]** を選択します。 このファイルに *ContosoCoffee.txt* という名前を付けます。 
+このブックをフラット テキスト ファイルに変換するには、タブ区切りファイルとしてブックを保存します。 それぞれの列はタブ文字で区切られているため、コード内で容易に列を解析することができます。 コンマ区切り値 (CSV) 形式を使用することもできますが、その場合、より多くの解析ロジックが必要となります。 コンマを含んでいるフィールドはすべて、前後に引用符を付けてラップされます。 このデータを Excel でタブ区切りファイルとしてエクスポートするには、 **[名前を付けて保存]** を選択します。 **[ファイルの種類]** ボックスの一覧から **[テキスト (タブ区切り)(*.txt)]** を選択します。 このファイルに *ContosoCoffee.txt* という名前を付けます。
 
-<center>
-
-![[ファイルの種類] ダイアログ ボックスのスクリーンショット](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+![[ファイルの種類] ダイアログ ボックスのスクリーンショット](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
 テキスト ファイルをメモ帳で開いた場合、次の図のようになります。
 
-<center>
-
-![タブ区切りデータセットが表示されたメモ帳ファイルのスクリーンショット](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
-
+![タブ区切りデータセットが表示されたメモ帳ファイルのスクリーンショット](./media/tutorial-create-store-locator/StoreDataTabFile.png)
 
 ## <a name="set-up-the-project"></a>プロジェクトのセットアップ
 
 プロジェクトの作成には、[Visual Studio](https://visualstudio.microsoft.com) または任意のコード エディターを使用できます。 プロジェクト フォルダーに、*index.html*、*index.css*、*index.js* の 3 つのファイルを作成します。 これらのファイルによって、アプリケーションのレイアウト、スタイル、ロジックが定義されます。 *data* という名前のフォルダーを作成し、そのフォルダーに *ContosoCoffee.txt* を追加します。 *images* という名前の別のフォルダーを作成します。 このアプリケーションでは、地図上のアイコン、ボタン、マーカー用に 10 個の画像を使用します。 [これらの画像をダウンロード](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)することができます。 これでプロジェクト フォルダーは、次の図のようになります。
 
-<center>
-
-![Simple Store Locator プロジェクト フォルダーのスクリーンショット](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+![Simple Store Locator プロジェクト フォルダーのスクリーンショット](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>ユーザー インターフェイスを作成する
 
@@ -922,23 +912,17 @@ ms.locfileid: "87289548"
 
 これで、完全に機能するストア ロケーターができあがりました。 ストア ロケーターの *index.html* ファイルを Web ブラウザーで開いてください。 地図上にクラスターが表示されたら、検索ボックスの使用、[My Location]\(現在位置\) ボタンの選択、クラスターの選択、地図の拡大表示によって場所を検索し、個々の場所を表示することができます。
 
-ユーザーが初めて [My Location]\(現在位置\) ボタンを選択すると、ユーザーの位置情報へのアクセス許可を求めるセキュリティ警告がブラウザーに表示されます。 ユーザーが位置情報の共有に同意した場合、その場所が地図で拡大表示され、付近のコーヒー ショップが表示されます。 
+ユーザーが初めて [My Location]\(現在位置\) ボタンを選択すると、ユーザーの位置情報へのアクセス許可を求めるセキュリティ警告がブラウザーに表示されます。 ユーザーが位置情報の共有に同意した場合、その場所が地図で拡大表示され、付近のコーヒー ショップが表示されます。
 
-<center>
-
-![ユーザーの位置情報へのアクセスを求めるブラウザーの要求のスクリーンショット](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+![ユーザーの位置情報へのアクセスを求めるブラウザーの要求のスクリーンショット](./media/tutorial-create-store-locator/GeolocationApiWarning.png)
 
 コーヒー ショップの所在地を含んだエリアを十分拡大表示すると、クラスターが個々の所在地に分かれます。 地図上のいずれかのアイコンを選択するか、サイド パネル内の項目を選択すると、ポップアップ ウィンドウが表示されます。 ポップアップには、選択した場所に関する情報が表示されます。
 
-<center>
+![完成したストア ロケーターのスクリーンショット](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)
 
-![完成したストア ロケーターのスクリーンショット](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+ブラウザー ウィンドウのサイズを幅 700 ピクセル未満に変更するか、アプリケーションをモバイル デバイスで開いた場合、小さい画面用に合わせてレイアウトが変化します。
 
-ブラウザー ウィンドウのサイズを幅 700 ピクセル未満に変更するか、アプリケーションをモバイル デバイスで開いた場合、小さい画面用に合わせてレイアウトが変化します。 
-
-<center>
-
-![小画面バージョンのストア ロケーターのスクリーンショット](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+![小画面バージョンのストア ロケーターのスクリーンショット](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -950,7 +934,7 @@ ms.locfileid: "87289548"
 > * ユーザーが[ルートに沿って場所をフィルター処理](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)できるようにする。 
 > * [フィルターを設定](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)する機能を追加する。 
 > * クエリ文字列を使用して検索の初期値を指定できるようにする。 このオプションをストア ロケーターに実装すれば、ユーザーが検索をブックマークに登録したり共有したりできます。 このページに対し、別のページから検索を渡す簡単な方法としても利用できます。  
-> * ストア ロケーターを [Azure App Service Web アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)としてデプロイする。 
+> * ストア ロケーターを [Azure App Service Web アプリ](https://docs.microsoft.com/azure/app-service/quickstart-html)としてデプロイする。 
 > * データベースにデータを格納して、付近の所在地を検索する。 詳細については、[SQL Server の空間データ型の概要](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017)と[空間データに対するニアレストネイバーのクエリ](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017)に関するページを参照してください。
 
 > [!div class="nextstepaction"]

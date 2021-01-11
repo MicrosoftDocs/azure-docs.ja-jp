@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk にデータをコピーするチュートリアル | Microsoft Docs
-description: このチュートリアルでは、Azure Data Box Disk にデータをコピーする方法について説明します。
+description: このチュートリアルでは、ホスト コンピューターから Azure Data Box Disk にデータをコピーし、データ整合性を確認するためのチェックサムを生成する方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ff57a67d5e6d617d6d51c924161f586f90f92c3c
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d33f53ef3d6ea0ef6a3040a82ec17b3089075949
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231541"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927115"
 ---
 ::: zone target="docs"
 

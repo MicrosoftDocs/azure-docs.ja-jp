@@ -3,12 +3,12 @@ title: Azure Relay のネットワーク セキュリティ
 description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: a1ade21df39890b7f1c31a81fca1fffafe2acaa0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf49eff29385b5b72639420416df87b9187845e8
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322160"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532987"
 ---
 # <a name="network-security-for-azure-relay"></a>Azure Relay のネットワーク セキュリティ 
 この記事では、Azure Relay で次のセキュリティ機能を使用する方法について説明します。 
@@ -23,7 +23,7 @@ ms.locfileid: "85322160"
 ## <a name="ip-firewall"></a>IP ファイアウォール 
 既定では、要求に有効な認証と承認がある限り、Relay 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
 
-この機能は、Azure Relay へのアクセスを特定の既知のサイトからのみに制限するシナリオに役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure ExpressRoute](/azure/expressroute/expressroute-faqs#supported-services) で Relay を使用する場合、オンプレミス インフラストラクチャ IP アドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
+この機能は、Azure Relay へのアクセスを特定の既知のサイトからのみに制限するシナリオに役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure ExpressRoute](../expressroute/expressroute-faqs.md#supported-services) で Relay を使用する場合、オンプレミス インフラストラクチャ IP アドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
 
 IP ファイアウォール規則は、Relay 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Relay 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
 

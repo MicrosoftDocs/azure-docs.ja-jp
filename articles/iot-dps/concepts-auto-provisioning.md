@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4755d3ac30a4f6fdc0568dd88fa0e362d7d140a9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975331"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066556"
 ---
 # <a name="auto-provisioning-concepts"></a>自動プロビジョニングの概念
 
@@ -103,10 +103,10 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
 
 次に、自分に適したデバイス構成証明メカニズムおよび Device Provisioning Service SDK/言語の「シミュレートされたデバイスの自動プロビジョニング」クイック スタートに進みます。 このクイック スタートでは、"デバイスの加入" と "デバイスの登録および構成" フェーズについて具体的に説明しています。 
 
-|  | シミュレートされたデバイスの構成証明メカニズム | クイック スタート SDK/言語 |  |
-|--|--|--|--|
-|  | トラステッド プラットフォーム モジュール (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509 証明書 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+| シミュレートされたデバイスの構成証明メカニズム | クイック スタート SDK/言語 |
+| -------------------------------------- | ----------------------- |
+| トラステッド プラットフォーム モジュール (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |
+| X.509 証明書 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |
 
 
 

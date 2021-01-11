@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 10/18/2019
-ms.openlocfilehash: a5c5c80aaba083b0f65ac0dab41350765a8f5631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833759"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213454"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis のタイムアウトのトラブルシューティング
 
@@ -30,7 +31,7 @@ Azure Cache for Redis では、提供されるマネージド サービス機能
 
 ## <a name="stackexchangeredis-timeout-exceptions"></a>StackExchange.Redis のタイムアウトの例外
 
-StackExchange.Redis は、同期操作に `synctimeout` という名前の構成設定 (既定値は 1000 ミリ秒) を使用します。 同期呼び出しがこの時間内に完了しない場合、StackExchange.Redis クライアントは、次の例のようなタイムアウト エラーをスローします。
+StackExchange.Redis は、同期操作のために `synctimeout` という名前の構成設定 (既定値は 5000 ミリ秒) を使用します。 同期呼び出しがこの時間内に完了しない場合、StackExchange.Redis クライアントは、次の例のようなタイムアウト エラーをスローします。
 
 ```output
     System.TimeoutException: Timeout performing MGET 2728cc84-58ae-406b-8ec8-3f962419f641, inst: 1,mgr: Inactive, queue: 73, qu=6, qs=67, qc=0, wr=1/1, in=0/0 IOCP: (Busy=6, Free=999, Min=2,Max=1000), WORKER (Busy=7,Free=8184,Min=2,Max=8191)
@@ -73,7 +74,7 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
 
 1. サーバーとクライアント アプリケーションが Azure の同じリージョン内に存在することを確認します。 たとえば、キャッシュは米国東部にあるが、クライアントが米国西部にあり、要求が `synctimeout` の間隔内に完了しない場合はタイムアウトになることがあります。あるいは、ローカルの開発用コンピューターからデバッグしている場合はタイムアウトになることがあります。 
 
-    キャッシュとクライアントを同じ Azure リージョン内に配置することを強くお勧めします。 リージョン間呼び出しを含むシナリオの場合、接続文字列に `synctimeout` プロパティを含めることで、`synctimeout` 間隔を既定値の 1000 ミリ秒間隔より大きい値に設定する必要があります。 次の例は、Azure Cache for Redis によって提供された StackExchange.Redis 用の接続文字列 (`synctimeout` は 2000 ミリ秒) のスニペットを示しています。
+    キャッシュとクライアントを同じ Azure リージョン内に配置することを強くお勧めします。 リージョン間呼び出しを含むシナリオの場合は、接続文字列に `synctimeout` プロパティを含めて、`synctimeout` の間隔を既定の 5000 ミリ秒間隔より大きい値に設定する必要があります。 次の例は、Azure Cache for Redis によって提供された StackExchange.Redis 用の接続文字列 (`synctimeout` は 2000 ミリ秒) のスニペットを示しています。
 
     ```output
     synctimeout=2000,cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...
@@ -120,5 +121,5 @@ StackExchange.Redis は、同期操作に `synctimeout` という名前の構成
 
 - [Azure Cache for Redis のクライアント側の問題に関するトラブルシューティング](cache-troubleshoot-client.md)
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
-- [キャッシュのベンチマークを実行およびテストする方法](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [キャッシュのベンチマークを実行およびテストする方法](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 - [Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)

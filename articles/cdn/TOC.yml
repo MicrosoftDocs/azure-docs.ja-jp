@@ -68,6 +68,8 @@
           href: cdn-restrict-access-by-country.md
         - name: ファイル圧縮によるパフォーマンスの向上
           href: cdn-improve-performance.md
+        - name: エンドポイントのマルチオリジン
+          href: endpoint-multiorigin.md
         - name: キャッシュ動作の制御
           items:
             - name: キャッシュ規則を使用してキャッシュ動作を制御する

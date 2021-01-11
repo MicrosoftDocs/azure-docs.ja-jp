@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 2193bd85265103957c5cafad10a243b266f7e5bc
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 0df61c2ee42d468562efd67a2a66a90a5e4fda53
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026884"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723565"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -24,7 +24,7 @@ Azure Form Recognizer は、機械学習テクノロジを使用して、フォ�
 
 Form Recognizer は、次のサービスで構成されています。
 * **カスタム モデル** - フォームからキーと値のペアおよびテーブル データを抽出します。 これらのモデルは自分が用意した独自のデータでトレーニングされるため、実際のフォームに合わせて調整されます。
-* **あらかじめ構築されたレシート モデル** - 事前構築済みモデルを使用して米国のレシートからデータを抽出します。
+* **事前構築済みモデル** - 事前構築済みモデルを使用して、一意のフォームの種類からデータを抽出します。 現在利用可能なのは、英語のレシートと名刺用の事前構築済みモデルです。
 * **Layout API** - テキストおよびテーブルの構造を、対応する境界ボックスの座標と共にドキュメントから抽出します。
 
 <!-- add diagram -->
@@ -45,9 +45,18 @@ Form Recognizer は、既定では教師なし学習を使用して、フォー�
 
 Form Recognizer は、印刷されたテキストや手書きのテキストの要素について、[Layout API](#layout-api) を使用して予想されるサイズや位置を学習します。 その後、ユーザーによって指定されたラベルを使用して、ドキュメントに含まれるキーと値の関係を学習します。 新しいモデルをトレーニングする際はまず、手動でラベル付けされた同じタイプのフォーム 5 つを使用し、そのうえで、モデルの精度を改善するために必要であれば、ラベル付けされたデータを追加することをお勧めします。
 
-## <a name="prebuilt-receipt-model"></a>あらかじめ構築されたレシート モデル
+## <a name="prebuilt-models"></a>事前構築済みのモデル
 
-Form Recognizer にはさらに、英語で書かれた米国のレシートを読み取るためのモデルも付属しています。&mdash;レストランやガソリン スタンド、小売店などで使用されるタイプのレシートが対象となります ([レシートの例](./media/contoso-receipt-small.png))。 このモデルでは、取引日時、販売店情報、税金と合計金額などの主要な情報が抽出されます。 さらに、あらかじめ構築されたレシート モデルは、レシート内のすべてのテキストを認識して返すようにトレーニングされています。
+Form Recognizer には、一意のフォームの種類に対する事前構築済みモデルも含まれています。
+### <a name="prebuilt-receipt-model"></a>事前構築済みのレシート モデル
+事前構築済みのレシート モデルは、オーストラリア、カナダ、英国、インド、および米国のレストランやガソリン スタンド、小売店などで使用されている種類の英語のレシートを読み取るために使用されます。 このモデルでは、取引日時、販売店情報、税額、明細項目、合計金額などの主要な情報が抽出されます。 さらに、あらかじめ構築されたレシート モデルは、レシート内のすべてのテキストを認識して返すようにトレーニングされています。 
+
+![サンプルのレシート](./media/contoso-receipt-small.png)
+
+### <a name="prebuilt-business-cards-model"></a>事前構築済みの名刺モデル
+名刺モデルを使用すると、個人の名前、役職、住所、電子メール、会社、電話番号などの情報を英語の名刺から抽出できます。 
+
+![サンプルの名刺](./media/business-card-english.jpg)
 
 ## <a name="layout-api"></a>Layout API
 
@@ -90,7 +99,7 @@ Form Recognizer は、高精細の光学式文字認識 (OCR) を使用して、
 
 [!INCLUDE [input requirements](./includes/input-requirements.md)]
 
-### <a name="prebuilt-receipt-model"></a>あらかじめ構築されたレシート モデル
+### <a name="prebuilt"></a>事前構築済み
 
 レシート モデルの入力要件は少し異なります。
 

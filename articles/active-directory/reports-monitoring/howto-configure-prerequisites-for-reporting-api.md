@@ -17,18 +17,18 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4702b12bea2e078af4d10fe9d709d16c361b3f8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 22a8a0efe16b4ab2ea7b8a647284a3449741ac02
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608264"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226966"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
-[Azure Active Directory (Azure AD) レポート API](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、プログラミング言語やツールから呼び出すことができます。
+[Azure Active Directory (Azure AD) レポート API](./concept-reporting-api.md) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、プログラミング言語やツールから呼び出すことができます。
 
-Reporting API は、 [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) を使用して Web API へのアクセスを承認します。
+Reporting API は、 [OAuth](../../api-management/api-management-howto-protect-backend-with-aad.md) を使用して Web API へのアクセスを承認します。
 
 レポート API へのアクセスを準備するには、次が必要です。
 
@@ -225,5 +225,5 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory レポート API と証明書を使用してデータを取得します](tutorial-access-api-with-certificates.md)
-* [監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) 
-* [サインイン アクティビティ レポート API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)
+* [監査 API リファレンス](/graph/api/resources/directoryaudit?view=graph-rest-beta) 
+* [サインイン アクティビティ レポート API リファレンス](/graph/api/resources/signin?view=graph-rest-beta)

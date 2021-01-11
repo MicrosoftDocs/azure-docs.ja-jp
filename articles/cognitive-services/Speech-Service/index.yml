@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: trbye
-  ms.openlocfilehash: 455f71c7fd9defd7a1187f6b5df6b5b3b9c3131b
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.openlocfilehash: 17cc7914c8e02d3b38e2527e1c0bff3afb885b0b
+  ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85563755"
+  ms.lasthandoff: 08/28/2020
+  ms.locfileid: "89055098"
 highlightedContent:
   items:
   - title: 音声サービスとは
@@ -51,29 +51,26 @@ conceptualContent:
       url: index-speech-to-text.yml
   - title: テキスト読み上げ
     links:
+    - itemType: overview
+      text: テキスト読み上げについて
+      url: text-to-speech.md
     - itemType: quickstart
-      text: スピーカーに音声を合成する
-      url: quickstarts/text-to-speech.md
-    - itemType: quickstart
-      text: オーディオ ファイルに音声を合成する
-      url: quickstarts/text-to-speech-audio-file.md
+      text: テキスト読み上げの概要
+      url: get-started-text-to-speech.md
     - itemType: how-to-guide
-      text: 音声合成の基本
-      url: text-to-speech-basics.md
+      text: SSML を使用して合成を改善する
+      url: speech-synthesis-markup.md
     footerLink:
       text: 詳細
       url: index-text-to-speech.yml
   - title: 音声翻訳
     links:
+    - itemType: overview
+      text: 音声翻訳について
+      url: speech-translation.md
     - itemType: quickstart
-      text: 音声テキスト変換の翻訳
-      url: quickstarts/translate-speech-to-text.md
-    - itemType: quickstart
-      text: 音声を複数の言語に翻訳する
-      url: quickstarts/translate-speech-to-text-multiple-languages.md
-    - itemType: how-to-guide
-      text: 音声翻訳の基本
-      url: speech-translation-basics.md
+      text: 音声翻訳を使ってみる
+      url: get-started-speech-translation.md
     footerLink:
       text: 詳細
       url: index-speech-translation.yml

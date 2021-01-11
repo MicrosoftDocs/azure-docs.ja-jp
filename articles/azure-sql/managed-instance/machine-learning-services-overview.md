@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: b5daf283df1ef5d6b42da5bf0a4652aedf2f6284
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad25a9a62757e1e031ce8b93a44e6f2ada4d9964
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708741"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689509"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL Managed Instance の Machine Learning Services (プレビュー)
 
@@ -52,7 +52,23 @@ Python と R のベース ディストリビューションは Machine Learning 
 
 この限定パブリック プレビューには、[Azure プレビューの使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)が適用されます。 
 
-プレビュー プログラムへの参加に関心をお持ちで、その使用条件に同意する場合は、[https://azure.microsoft.com/support/create-ticket/](https://azure.microsoft.com/support/create-ticket/)で Azure サポート チケットを作成して登録を依頼できます。 [問題の種類] に [技術]、[サービス] に [SQL Database Managed Instance]、[問題タイプ] に [その他] を選択します。 依頼では、論理サーバー名、リージョン、サブスクリプション ID などの詳細と共に、SQL Managed Instance の Machine Learning の限定パブリック プレビューに登録されたいことを伝えてください。
+プレビュー プログラムへの参加に関心をお持ちで、その使用条件に同意する場合は、[ **https://azure.microsoft.com/support/create-ticket/** ](https://azure.microsoft.com/support/create-ticket/) で Azure サポート チケットを作成して登録を依頼できます。 
+
+1. 次のオプションを選択します。
+   - 問題の種類 - **技術**
+   - サブスクリプション - *ご使用のサブスクリプションを選択します*
+   - サービス - **SQL Database Managed Instance**
+   - 概要 - *要求の簡単な説明を入力します*
+   - 問題の種類 - **SQL Managed Instance 向けの Machine Learning Services (プレビュー)**
+   - 問題のサブタイプ - **その他の問題または "操作方法" に関する質問**
+
+1. **次へ: 「解決方法」** を参照してください。
+
+1. プレビューに関する情報を読み、次に **[詳細]** をクリックします。
+
+1. **[説明]** には、プレビューで登録する、論理的サーバー名、リージョン、サブスクリプション ID など、要求の詳細を入力します。 その他の詳細を適宜入力します。
+
+1. 完了したら、 **[次へ: 確認および作成]** をクリックし、 **[作成]** をクリックします。
 
 プログラムへの登録が完了すると、Microsoft がパブリック プレビューへのお客様のオンボードを行い、既存または新規のデータベースに Machine Learning Services を使用できるようになります。
 

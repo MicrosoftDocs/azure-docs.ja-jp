@@ -15,12 +15,12 @@ ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce5f47fe662092219180064f7ea49f5573b27818
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358244"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89280147"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -38,14 +38,14 @@ ms.locfileid: "85358244"
 ここでは、この機能のキー セキュリティ面について説明します。
 - この機能は、テナント間でのサインイン要求を分離する、セキュリティで保護されたマルチテナント アーキテクチャ上に構築されています。
 - オンプレミス パスワードが何らかの形でクラウドに保存されることはありません。
-- パスワード検証要求のリッスンおよび応答を行うオンプレミスの認証エージェントは、ネットワーク内からの送信接続のみを行います。 境界ネットワーク (DMZ) でこれらの認証エージェントをインストールする必要はありません。 ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
+- パスワード検証要求のリッスンおよび応答を行うオンプレミスの認証エージェントは、ネットワーク内からの送信接続のみを行います。 境界ネットワーク (DMZ) でこれらの認証エージェントをインストールする必要はありません。 ベスト プラクティスとして、認証エージェントを実行するすべてのサーバーは Tier 0 システムとして扱うようにしてください ([リファレンス](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)を参照)。
 - 認証エージェントから Azure AD への送信通信で使用されるのは、標準ポート (80 と 443) のみです。 ファイアウォールで受信ポートを開く必要はありません。 
   - 認証済みのすべての送信通信でポート 443 が使用されます。
   - ポート 80 が使用されるのは、証明書失効リスト (CRL) をダウンロードして、この機能で使用される証明書が失効していないことを確認する場合のみです。
   - ネットワーク要件の完全な一覧については、「[Azure Active Directory パススルー認証:クイック スタート](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites)」を参照してください。
 - ユーザーがサインイン時に指定するパスワードは、Active Directory に対する検証でオンプレミスの認証エージェントに受け入れられる前に、クラウドで暗号化されます。
 - Azure AD とオンプレミスの認証エージェント間の HTTPS チャネルは、相互認証を使用して保護されます。
-- 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[レガシ認証のブロック](../conditional-access/concept-conditional-access-conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
+- 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../conditional-access/overview.md)と[レガシ認証のブロック](../conditional-access/concept-conditional-access-conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
 
 ## <a name="components-involved"></a>関連するコンポーネント
 
@@ -59,8 +59,8 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>認証エージェントのインストールと登録
 
 以下のいずれかを行うと、認証エージェントがインストールされ、Azure AD に登録されます。
-   - [Azure AD Connect を使用してパススルー認証を有効にする](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
-   - [認証エージェントを追加してサインイン要求の高可用性を確保する](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
+   - [Azure AD Connect を使用してパススルー認証を有効にする](./how-to-connect-pta-quick-start.md#step-2-enable-the-feature)
+   - [認証エージェントを追加してサインイン要求の高可用性を確保する](./how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) 
    
 認証エージェントを機能させるには、次の 3 つのフェーズが必要です。
 
@@ -73,11 +73,11 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 ### <a name="authentication-agent-installation"></a>認証エージェントのインストール
 
 (Azure AD Connect またはスタンドアロンを使用して) オンプレミス サーバーに認証エージェントをインストールできるのは、全体管理者のみです。 インストールでは、次の 2 つの新しい項目が、 **[コントロール パネル]**  >  **[プログラム]**  >  **[プログラムと機能]** の一覧に追加されます。
-- 認証エージェント アプリケーション自体。 このアプリケーションは [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) 権限で実行されます。
-- 認証エージェントの自動更新で使用されるアップデーター アプリケーション。 このアプリケーションは [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) 権限で実行されます。
+- 認証エージェント アプリケーション自体。 このアプリケーションは [NetworkService](/windows/win32/services/networkservice-account) 権限で実行されます。
+- 認証エージェントの自動更新で使用されるアップデーター アプリケーション。 このアプリケーションは [LocalSystem](/windows/win32/services/localsystem-account) 権限で実行されます。
 
 >[!IMPORTANT]
->セキュリティの観点から、管理者は PTA エージェントを実行しているサーバーをドメイン コントローラーとして扱う必要があります。  PTA エージェント サーバーは、「[攻撃に対してドメイン コントローラーをセキュリティで保護する](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)」で説明されている内容に沿って強化する必要があります。
+>セキュリティの観点から、管理者は PTA エージェントを実行しているサーバーをドメイン コントローラーとして扱う必要があります。  PTA エージェント サーバーは、「[攻撃に対してドメイン コントローラーをセキュリティで保護する](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)」で説明されている内容に沿って強化する必要があります。
 
 ### <a name="authentication-agent-registration"></a>認証エージェントの登録
 
@@ -107,7 +107,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
     -  その他の Azure AD サービスはこの CA を使用しません。
     - 証明書の件名 (識別名または DN) はテナント ID に設定されます。 この DN はテナントを一意に識別する GUID です。 この DN により、証明書の範囲がテナントのみでの使用に限定されます。
 6. Azure AD では、Azure AD のみがアクセス可能な、Azure SQL Database 内のデータベースに認証エージェントの公開キーが格納されます。
-7. この証明書 (手順 5 で発行されたもの) は、オンプレミス サーバーの Windows 証明書ストア ([CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE) などの場所) に格納されます。 認証エージェントとアップデーター アプリケーションの両方で使用されます。
+7. この証明書 (手順 5 で発行されたもの) は、オンプレミス サーバーの Windows 証明書ストア ([CERT_SYSTEM_STORE_LOCAL_MACHINE](/windows/win32/seccrypto/system-store-locations#CERT_SYSTEM_STORE_LOCAL_MACHINE) などの場所) に格納されます。 認証エージェントとアップデーター アプリケーションの両方で使用されます。
 
 ### <a name="authentication-agent-initialization"></a>認証エージェントの初期化
 
@@ -144,7 +144,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 8. Azure AD STS が、ユーザー名と暗号化されたパスワードの値で構成されるパスワード検証要求を、テナントに固有の Service Bus キューに配置します。
 9. 初期化された認証エージェントは Service Bus キューに永続的に接続されるため、使用可能な認証エージェントのいずれかがパスワード検証要求を取得します。
 10. 認証エージェントが、ID を使用して、公開キーに固有の暗号化されたパスワード値を見つけ、その秘密キーを使用して暗号化解除します。
-11. 認証エージェントが、[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) (**dwLogonType** パラメーターは **LOGON32_LOGON_NETWORK** に設定) を使用して、オンプレミスの Active Directory に対してユーザー名とパスワードを検証します。 
+11. 認証エージェントが、[Win32 LogonUser API](/windows/win32/api/winbase/nf-winbase-logonusera) (**dwLogonType** パラメーターは **LOGON32_LOGON_NETWORK** に設定) を使用して、オンプレミスの Active Directory に対してユーザー名とパスワードを検証します。 
     - この API は、フェデレーション サインイン シナリオでユーザーのサインイン時に Active Directory フェデレーション サービス (AD FS) によって使用されるものと同じ API です。
     - この API は、Windows Server の標準的な解決プロセスに従ってドメイン コントローラーを検索します。
 12. 認証エージェントが Active Directory から結果を受け取ります。成功、ユーザー名またはパスワードが正しくない、パスワードの期限が切れているなどです。
@@ -179,7 +179,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
     - Azure AD ルート CA を使用して、証明書に署名します。
     - 証明書の件名 (識別名または DN) を、テナントを一意に識別する GUID であるテナント ID に設定します。 この DN により、証明書の範囲がテナントのみに限定されます。
 6. Azure AD では、それのみがアクセス可能な Azure SQL Database 内のデータベースに認証エージェントの公開キーが格納されます。 また、認証エージェントに関連付けられた古い公開キーを無効にします。
-7. その後、新しい証明書 (手順 5 で発行されたもの) はサーバーの Windows 証明書ストア ([CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) などの場所) に格納されます。
+7. その後、新しい証明書 (手順 5 で発行されたもの) はサーバーの Windows 証明書ストア ([CERT_SYSTEM_STORE_CURRENT_USER](/windows/win32/seccrypto/system-store-locations#CERT_SYSTEM_STORE_CURRENT_USER) などの場所) に格納されます。
     - 信頼関係の更新手順は (全体管理者の関与なしで) 非対話形式に行われるため、認証エージェントは CERT_SYSTEM_STORE_LOCAL_MACHINE の場所の既存の証明書を更新するためにアクセスできなくなります。 
     
    > [!NOTE]
@@ -190,7 +190,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 
 新しいバージョンが (バグ修正またはパフォーマンスの強化が行われて) リリースされると、アップデーター アプリケーションによって認証エージェントが自動的に更新されます。 アップデーター アプリケーションでは、テナントに対するパスワード検証要求は処理されません。
 
-Azure AD は、新しいバージョンのソフトウェアを、署名済みの **Windows インストーラー パッケージ (MSI)** としてホストします。 MSI への署名は、ダイジェスト アルゴリズムに SHA256 を指定した [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) を使用することによって行われます。 
+Azure AD は、新しいバージョンのソフトウェアを、署名済みの **Windows インストーラー パッケージ (MSI)** としてホストします。 MSI への署名は、ダイジェスト アルゴリズムに SHA256 を指定した [Microsoft Authenticode](/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms537359(v=vs.85)) を使用することによって行われます。 
 
 ![自動更新](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
@@ -203,7 +203,7 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 4. アップデーターは MSI を実行します。 この操作では次の手順を実行します。
 
    > [!NOTE]
-   > アップデーターは[ローカル システム](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)権限で実行されます。
+   > アップデーターは[ローカル システム](/windows/win32/services/localsystem-account)権限で実行されます。
 
     - 認証エージェント サービスの停止
     - 新しいバージョンの認証エージェントのサーバーへのインストール

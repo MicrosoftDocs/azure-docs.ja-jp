@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/19/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550969"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640601"
 ---
 # <a name="blob-snapshots"></a>BLOB のスナップショット
 
 スナップショットは、ある時点で作成された読み取り専用の BLOB です。
 
 > [!NOTE]
-> BLOB バージョン管理 (プレビュー) は、BLOB の履歴コピーを維持するための代替手段になります。 詳細については、「[BLOB バージョン管理 (プレビュー)](versioning-overview.md)」を参照してください。
+> BLOB バージョン管理 (プレビュー) は、BLOB の以前のバージョンを維持するための代替手段になります。 詳細については、「[BLOB バージョン管理 (プレビュー)](versioning-overview.md)」を参照してください。
 
 ## <a name="about-blob-snapshots"></a>BLOB スナップショットについて
 
@@ -33,7 +33,7 @@ ms.locfileid: "85550969"
 > すべてのスナップショットがベース BLOB の URI を共有します。 ベース BLOB とスナップショットの唯一の違いは、追加される **DateTime** 値です。
 >
 
-BLOB に対するスナップショットの数に制限はありません。 スナップショットは、明示的に削除されるまで保持されます。つまり、スナップショットはベース BLOB よりも長く存続できません。 ベース BLOB に関連付けられたスナップショットを列挙して、現在のスナップショットを追跡できます。
+BLOB に対するスナップショットの数に制限はありません。 スナップショットは、個別に、またはベース BLOB の [Delete Blob](/rest/api/storageservices/delete-blob) 操作の一部として明示的に削除されるまで保持されます。 ベース BLOB に関連付けられたスナップショットを列挙して、現在のスナップショットを追跡できます。
 
 BLOB のスナップショットを作成すると、BLOB のシステム プロパティが同じ値でスナップショットにコピーされます。 また、スナップショットの作成時に別のメタデータを指定しない限り、ベース BLOB のメタデータもスナップショットにコピーされます。 作成したスナップショットの読み取り、コピー、削除はできますが、変更はできません。
 
@@ -51,15 +51,15 @@ VHD ファイルは、VM ディスクの現時点の情報と状態の格納に�
 
 - ストレージ アカウントには、一意のブロックまたはページに対する料金が発生します。そのブロックまたはページが BLOB とスナップショットのどちらに含まれているかは関係ありません。 BLOB に関連付けられているスナップショットについてアカウントに追加料金が発生するのは、そのベースになっている BLOB を更新したときです。 ベース BLOB を更新すると、BLOB はスナップショットから分化します。 この場合、各 BLOB またはスナップショットの一意のブロックまたはページに対して課金されます。
 - ブロック BLOB 内のブロックを置き換えた場合、以後そのブロックは一意のブロックとして課金されます。 そのブロックに割り当てられているブロック ID とデータが、スナップショット側と同じであっても変わりません。 ブロックが再度コミットされると、そのブロックはスナップショット内の対応するブロックから分化し、そのデータに対する料金が発生します。 これは、まったく同じデータでページ BLOB 内のページを更新した場合にも当てはまります。
-- [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream]、[UploadFromByteArray][dotnet_UploadFromByteArray] のいずれかのメソッドを呼び出してブロック BLOB を置き換えると、その BLOB 内のすべてのブロックが置き換えられます。 その BLOB に関連付けられているスナップショットがある場合、ベース BLOB とスナップショットのすべてのブロックが分化し、両方の BLOB のすべてのブロックが課金対象となります。 これは、ベース BLOB 内のデータとスナップショット内のデータとがまったく同一であっても変わりません。
+- BLOB の内容全体を上書きするメソッドを呼び出してブロック BLOB を更新すると、BLOB 内のすべてのブロックが置き換えられます。 その BLOB に関連付けられているスナップショットがある場合、ベース BLOB とスナップショットのすべてのブロックが分化し、両方の BLOB のすべてのブロックが課金対象となります。 これは、ベース BLOB 内のデータとスナップショット内のデータとがまったく同一であっても変わりません。
 - 2 つのブロックに格納されているデータが同一であるかどうかを判断する方法は、Azure Blob service には用意されていません。 アップロードされてコミットされたブロックは、同じデータや同じブロック ID がある場合でも、それぞれが一意のものとして扱われます。 料金は一意のブロックに対して発生するため、スナップショットがある BLOB を更新すると、一意のブロックが増え、追加料金が発生することを考慮することが重要です。
 
-### <a name="minimize-cost-with-snapshot-management"></a>スナップショット管理によりコストを最小限に抑える
+### <a name="minimize-costs-with-snapshot-management"></a>スナップショット管理によりコストを最小限に抑える
 
 不要な料金を回避するために、スナップショットを慎重に管理することをお勧めします。 次のベスト プラクティスに従えば、スナップショットの記憶域から発生するコストを最小限に抑えられます。
 
 - まったく同じデータで更新する場合も含め、BLOB を更新するときは必ずその BLOB に関連付けられているスナップショットを削除してから作成し直すようにします (アプリケーションの設計上、スナップショットを維持しなければならない場合を除く)。 BLOB のスナップショットを削除してから作成し直すことにより、BLOB とスナップショットの分化を確実に防ぐことができます。
-- BLOB のスナップショットを維持する場合は、[UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream]、または [UploadFromByteArray][dotnet_UploadFromByteArray] の呼び出しによる BLOB の更新を行わないようにします。 これらのメソッドを呼び出すと、BLOB 内のすべてのブロックが置き換えられ、ベース BLOB とスナップショットが大幅に分化します。 代わりに、[PutBlock][dotnet_PutBlock] と [PutBlockList][dotnet_PutBlockList] メソッドを使用して、可能な限り小数のブロックを更新するようにしてください。
+- BLOB のスナップショットを維持する場合は、BLOB を更新するときに BLOB 全体を上書きするメソッドを呼び出さないでください。 代わりに、コストを抑えるために、可能な限り少ない数のブロックを更新してください。
 
 ### <a name="snapshot-billing-scenarios"></a>スナップショットの課金シナリオ
 
@@ -85,9 +85,12 @@ VHD ファイルは、VM ディスクの現時点の情報と状態の格納に�
 
 #### <a name="scenario-4"></a>シナリオ 4
 
-シナリオ 4 では、ベース BLOB が完全に更新されており、元のブロックは 1 つも含まれていません。 このため、8 つある一意のブロックすべてについての料金がアカウントに課金されます。 このシナリオは、[UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream]、[UploadFromByteArray][dotnet_UploadFromByteArray] などの更新メソッド を使用する場合に発生する可能性があります。これは、これらのメソッドによって BLOB の内容がすべて置き換えられるためです。
+シナリオ 4 では、ベース BLOB が完全に更新されており、元のブロックは 1 つも含まれていません。 このため、8 つある一意のブロックすべてについての料金がアカウントに課金されます。
 
 ![Azure Storage のリソース](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+
+> [!TIP]
+> BLOB 全体を上書きするメソッドを呼び出さずに、個別のブロックを更新してコストを抑えるようにします。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -83,9 +83,6 @@
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: NoSQL とリレーショナル データベース
@@ -125,20 +122,26 @@
           href: partition-data.md
         - name: 合成パーティション キー
           href: synthetic-partition-keys.md
-    - name: プロビジョニング スループット
+    - name: 容量
       items:
         - name: 要求ユニット
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: プロビジョニングされたスループットの概要
-          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
-          href: set-throughput.md
-        - name: 自動スケーリングのスループットをプロビジョニングする
-          href: provision-throughput-autoscale.md
-        - name: 自動スケーリングと標準 (手動) のスループットのいずれかを選択
-          href: how-to-choose-offer.md
-        - name: 自動スケーリングに関する FAQ
-          href: autoscale-faq.md
+        - name: プロビジョニング スループット
+          items:
+            - name: プロビジョニングされたスループットの概要
+              displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+              href: set-throughput.md
+            - name: 自動スケーリングのスループットをプロビジョニングする
+              href: provision-throughput-autoscale.md
+            - name: 自動スケーリングと標準 (手動) のスループットのいずれかを選択
+              href: how-to-choose-offer.md
+            - name: 自動スケーリングに関する FAQ
+              href: autoscale-faq.md
+        - name: サーバーレス
+          href: serverless.md
+        - name: プロビジョニングされたスループットとサーバーレスのいずれかを選択
+          href: throughput-serverless.md
     - name: SQL クエリ (SQL query)
       items:
         - name: 作業の開始
@@ -223,21 +226,39 @@
                     - name: 日付と時刻関数
                       displayName: 'date and time functions, date and time, datetime, system functions, built-in functions'
                       href: sql-query-date-time-functions.md
-                    - name: GetCurrentDateTime
-                      displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
-                      href: sql-query-getcurrentdatetime.md
-                    - name: GetCurrentTimestamp
-                      displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
-                      href: sql-query-getcurrenttimestamp.md
-                    - name: DateTimeFromParts
-                      displayName: 'DateTimeFromParts, date time from parts, date and time functions, datetime'
-                      href: sql-query-datetimefromparts.md
                     - name: DateTimeAdd
                       displayName: 'DateTimeAdd, date time add, timestamp, date and time functions, datetime'
                       href: sql-query-datetimeadd.md
                     - name: DateTimeDiff
                       displayName: 'DateTimeDiff, date time diff, date and time functions, datetime'
                       href: sql-query-datetimediff.md
+                    - name: DateTimeFromParts
+                      displayName: 'DateTimeFromParts, date time from parts, date and time functions, datetime'
+                      href: sql-query-datetimefromparts.md
+                    - name: DateTimePart
+                      displayName: 'DateTimePart, date time part, date and time functions, datetime'
+                      href: sql-query-datetimepart.md
+                    - name: DateTimeToTicks
+                      displayName: 'DateTimeToTicks, date time to ticks, date and time functions, datetime, ticks'
+                      href: sql-query-datetimetoticks.md
+                    - name: DateTimeToTimestamp
+                      displayName: 'DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp'
+                      href: sql-query-datetimetotimestamp.md
+                    - name: GetCurrentDateTime
+                      displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
+                      href: sql-query-getcurrentdatetime.md
+                    - name: GetCurrentTicks
+                      displayName: 'GetCurrentTicks, get current ticks, date and time functions, datetime, ticks'
+                      href: sql-query-getcurrentticks.md
+                    - name: GetCurrentTimestamp
+                      displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
+                      href: sql-query-getcurrenttimestamp.md
+                    - name: TicksToDateTime
+                      displayName: 'TicksToDateTime, ticks to date time, date and time functions, datetime, ticks'
+                      href: sql-query-tickstodatetime.md
+                    - name: TimestampToDateTime
+                      displayName: 'TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp'
+                      href: sql-query-timestamptodatetime.md
                 - name: 数学関数
                   items:
                     - name: 数学関数
@@ -486,6 +507,8 @@
           href: unique-keys.md
         - name: トランザクションとオプティミスティック同時実行制御
           href: database-transactions-optimistic-concurrency.md
+        - name: '[Attachments]'
+          href: attachments.md
     - name: Change Feed
       items:
         - name: 変更フィードの概要
@@ -550,7 +573,7 @@
           href: optimize-dev-test.md
         - name: 予約容量によるコストの最適化
           href: cosmos-db-reserved-capacity.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティの概要
           href: database-security.md
@@ -638,6 +661,14 @@
               href: cassandra-secondary-index.md
         - name: 操作方法ガイド
           items:
+            - name: Cassandra API への移行
+              items:
+                - name: 移行 - Striim を使用して Oracle DB から Cassandra API へ
+                  href: cosmosdb-cassandra-api-migrate-data-striim.md
+                - name: 移行 - Blitzz を使用して Oracle DB から Cassandra API へ
+                  href: oracle-migrate-cosmos-db-blitzz.md
+                - name: 移行 - Blitzz を使用して Apache Cassandra から Cassandra API へ
+                  href: cassandra-migrate-cosmos-db-blitzz.md
             - name: Change Feed
               href: cassandra-change-feed.md
             - name: Spring Data の格納と管理
@@ -713,12 +744,9 @@
                       href: tutorial-develop-mongodb-nodejs-part6.md
                 - name: Node.js と React のアプリ
                   href: tutorial-develop-mongodb-react.md
-            - name: 2 - データの移行
-              displayName: import
-              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
-            - name: 3 - データのクエリ
+            - name: 2 - データに対するクエリ実行
               href: tutorial-query-mongodb.md
-            - name: 4 - データのグローバル分散
+            - name: 3 - データのグローバル分散
               href: tutorial-global-distribution-mongodb.md
         - name: 概念
           items:
@@ -730,10 +758,16 @@
               href: mongodb-api-faq.md
         - name: 操作方法ガイド
           items:
-            - name: 移行前ガイド
-              href: mongodb-pre-migration.md
-            - name: 移行後ガイド
-              href: mongodb-post-migration.md
+            - name: MongoDB API への移行
+              items:
+                - name: 移行前ガイド
+                  href: mongodb-pre-migration.md
+                - name: Database Migration Service (オンライン)
+                  href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: Database Migration Service (オフライン)
+                  href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+                - name: 移行後ガイド
+                  href: mongodb-post-migration.md
             - name: 接続文字列を取得する
               href: connect-mongodb-account.md
             - name: Studio 3T を使用して接続する
@@ -944,26 +978,28 @@
           href: how-to-manage-conflicts.md
         - name: セッション トークン形式の変換
           href: how-to-convert-session-token.md
-    - name: プロビジョニング スループット
+    - name: 容量
       items:
-        - name: コンテナーでの標準 (手動) スループットをプロビジョニングする
-          displayName: 'request units, RUs, RU, collection level'
-          href: how-to-provision-container-throughput.md
-        - name: データベースでの標準 (手動) スループットをプロビジョニングする
-          displayName: 'request units, RUs, RU, shared throughput, database level'
-          href: how-to-provision-database-throughput.md
-        - name: データベースまたはコンテナーでの自動スケーリングのスループットをプロビジョニングする
-          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-          href: how-to-provision-autoscale-throughput.md
-        - name: Cosmos 容量計画ツールを使用して RU/秒を見積もる
-          displayName: 'request units, RUs, RU, capacity'
-          href: estimate-ru-with-capacity-planner.md
         - name: 要求ユニット使用量を確認する
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
-        - name: Azure Functions タイマーを使用してスケーリングする
-          displayName: 'request units, RUs, RU, timer'
-          href: scale-on-schedule.md
+        - name: プロビジョニング スループット
+          items:
+            - name: コンテナーでの標準 (手動) スループットをプロビジョニングする
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-container-throughput.md
+            - name: データベースでの標準 (手動) スループットをプロビジョニングする
+              displayName: 'request units, RUs, RU, shared throughput, database level'
+              href: how-to-provision-database-throughput.md
+            - name: データベースまたはコンテナーでの自動スケーリングのスループットをプロビジョニングする
+              displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+              href: how-to-provision-autoscale-throughput.md
+            - name: Cosmos 容量計画ツールを使用して RU/秒を見積もる
+              displayName: 'request units, RUs, RU, capacity'
+              href: estimate-ru-with-capacity-planner.md
+            - name: Azure Functions タイマーを使用してスケーリングする
+              displayName: 'request units, RUs, RU, timer'
+              href: scale-on-schedule.md
     - name: コンテナーと項目を操作する
       items:
         - name: Cosmos DB のデータを操作する
@@ -1100,7 +1136,7 @@
           href: how-to-write-javascript-query-api.md
         - name: ストアド プロシージャ、トリガー、UDF の使用
           href: how-to-use-stored-procedures-triggers-udfs.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: IP ファイアウォールの構成
           href: how-to-configure-firewall.md
@@ -1210,12 +1246,6 @@
           href: cosmosdb-migrationchoices.md
         - name: Striim を使用して SQL API に移行する
           href: cosmosdb-sql-api-migrate-data-striim.md
-        - name: Striim を使用して Cassandra API に移行する
-          href: cosmosdb-cassandra-api-migrate-data-striim.md
-        - name: 移行 - Blitzz を使用して Oracle DB から Cassandra API へ
-          href: oracle-migrate-cosmos-db-blitzz.md
-        - name: 移行 - Blitzz を使用して Apache Cassandra から Cassandra API へ
-          href: cassandra-migrate-cosmos-db-blitzz.md
         - name: 数百テラバイトのデータを Azure Cosmos DB に移行する
           href: migrate-cosmosdb-data.md
         - name: 1 対多のリレーショナル データを移行する
@@ -1248,7 +1278,7 @@
           href: sql-api-sdk-dotnet-changefeed.md
         - name: .NET バルク エグゼキューター ライブラリ v2
           href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Java SDK
+    - name: Java SDK とコネクタ
       items:
         - name: Java SDK v4
           href: sql-api-sdk-java-v4.md
@@ -1256,6 +1286,12 @@
           href: sql-api-sdk-async-java.md
         - name: 同期の Java SDK v2
           href: sql-api-sdk-java.md
+        - name: Spring Data コネクタ v2
+          href: sql-api-sdk-java-spring-v2.md
+        - name: Spring Data コネクタ v3
+          href: sql-api-sdk-java-spring-v3.md
+        - name: Spark コネクタ
+          href: sql-api-sdk-java-spark.md
         - name: Java バルク エグゼキューター ライブラリ v2
           href: sql-api-sdk-bulk-executor-java.md
     - name: Node.js
@@ -1271,6 +1307,11 @@
       displayName: ARM
     - name: エミュレーターのリリース ノート
       href: local-emulator-release-notes.md
+- name: リファレンス
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

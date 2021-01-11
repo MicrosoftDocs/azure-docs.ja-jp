@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - VPN Gateway の作成 | Microsoft Docs
-description: PowerShell を使用して VPN Gateway を作成します。
+description: PowerShell スクリプトを使用して、仮想ネットワーク、ネットワーク サブネット、ルートベースの VPN ゲートウェイを作成します。
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 1531bf7fdb2ec23be49f5a31145e3d8c2487aedc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1fc8339b3d5d5f02611c750e8016c2fc3df1d8a3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087001"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035384"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>PowerShell を使用して VPN Gateway を作成する
 

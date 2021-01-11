@@ -1,20 +1,20 @@
 ---
-title: Azure セキュリティ ベンチマーク用の Data Lake Analytics セキュリティ ベースライン
+title: Data Lake Analytics 用の Azure セキュリティ ベースライン
 description: Data Lake Analytics セキュリティ ベースラインでは、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
 ms.service: data-lake-analytics
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 5e6d5beaad5080bf3081d5f68722623fb62d6c8a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528228"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005132"
 ---
-# <a name="data-lake-analytics-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Data Lake Analytics セキュリティ ベースライン
+# <a name="azure-security-baseline-for-data-lake-analytics"></a>Data Lake Analytics 用の Azure セキュリティ ベースライン
 
 Data Lake Analytics 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
@@ -256,7 +256,7 @@ Data Lake Analytics 用の Azure セキュリティ ベースラインには、�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**: Data Lake Analytics には既定のパスワードの概念がありません。認証は、Azure Active Directory によって提供され、ロールベースのアクセス制御 (RBAC) によってセキュリティ保護されるためです。
+**ガイダンス**:Data Lake Analytics には既定のパスワードの概念がありません。認証は、Azure Active Directory によって提供され、Azure ロールベースのアクセス制御 (Azure RBAC) によってセキュリティ保護されるためです。
 
 * [Azure Data Lake Analytics の概要](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-overview)
 

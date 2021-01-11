@@ -3,12 +3,12 @@ title: Azure DevTest Labs で自動シャットダウン ポリシーを管理�
 description: 使用されていないときに仮想マシンが自動的にシャットダウンされるように、ラボの自動シャットダウン ポリシーを設定する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a865d178bd4bcf9715cefc7c5a01b31a6d6a9435
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a30070470f9a75ec5c56d448cd09ca82dd0cbce7
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482736"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287548"
 ---
 # <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボとコンピューティング仮想マシンの自動シャットダウンを構成する
 
@@ -71,7 +71,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 - この時間の自動シャットダウンをスキップします
 - VM での作業を続けられるように、自動シャットダウンを 1 時間または 2 時間だけ一時停止します。
 
-通知は、構成されている Web hook エンドポイントを介して、または自動シャットダウンの設定でラボ所有者によって指定されたメール アドレスに、送信されます。 Webhook を使用すると、特定のイベントをサブスクライブする統合を構築または設定できます。 これらのイベントのいずれかがトリガーされると、DevTest Labs では、Webhook で構成されている URL に HTTP POST ペイロードが送信されます。 webhook の詳細については、「[webhook または API Azure Function を作成する](../azure-functions/functions-create-a-web-hook-or-api-function.md)」を参照してください。 
+通知は、構成されている Web hook エンドポイントを介して、または自動シャットダウンの設定でラボ所有者によって指定されたメール アドレスに、送信されます。 Webhook を使用すると、特定のイベントをサブスクライブする統合を構築または設定できます。 これらのイベントのいずれかがトリガーされると、DevTest Labs では、Webhook で構成されている URL に HTTP POST ペイロードが送信されます。 webhook の詳細については、「[webhook または API Azure Function を作成する](../azure-functions/functions-bindings-http-webhook.md)」を参照してください。 
 
 さまざまなアプリ (たとえば、Slack、Azure Logic Apps など) で広範にサポートされていて、独自の通知送信方法を実装できるため、Web hook を使うことをお勧めします。 この記事では、例として、Azure Logic Apps を使用してメールで自動シャットダウン通知を受け取る方法を示します。 最初に、ラボで自動シャットダウン通知を有効にする基本的な手順を簡単に見ておきましょう。   
 
@@ -211,4 +211,3 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 ## <a name="next-steps"></a>次のステップ
 すべてのポリシーの設定方法については、[Azure DevTest Labs でのラボ ポリシーの定義](devtest-lab-set-lab-policy.md)に関する記事をご覧ください。
-

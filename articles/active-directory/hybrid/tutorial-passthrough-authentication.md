@@ -11,12 +11,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96846d75111fe11b225704a248baeb006a3df3fb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c87a965c96920ea2ce90dae0333147338c99018a
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "66473013"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279144"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>チュートリアル:パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
 
@@ -26,9 +26,9 @@ ms.locfileid: "66473013"
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するために必要な前提条件を次に示します。
-- [Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/hyper-v-technology-overview) がインストールされたコンピューター。  これは、[Windows 10](https://docs.microsoft.com/virtualization/hyper-v-on-windows/about/supported-guest-os) または [Windows Server 2016](https://docs.microsoft.com/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) コンピューターに対して行うことをお勧めします。
+- [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) がインストールされたコンピューター。  これは、[Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) または [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) コンピューターに対して行うことをお勧めします。
 - [Azure サブスクリプション](https://azure.microsoft.com/free)
-- - 仮想マシンがインターネットで通信できるようにするための[外部ネットワーク アダプター](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/connect-to-network)。
+- - 仮想マシンがインターネットで通信できるようにするための[外部ネットワーク アダプター](/virtualization/hyper-v-on-windows/quick-start/connect-to-network)。
 - Windows Server 2016 のコピー
 - 確認可能な[カスタム ドメイン](../../active-directory/fundamentals/add-custom-domain.md)
 

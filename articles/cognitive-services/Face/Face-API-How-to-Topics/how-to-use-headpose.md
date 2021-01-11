@@ -9,12 +9,13 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/29/2019
 ms.author: pafarley
-ms.openlocfilehash: 534846044770d66ec5171ad4f61de921d2d5d194
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: fe9cc44542e97880b076d871dde82f5a02a58957
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76169801"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928974"
 ---
 # <a name="use-the-headpose-attribute"></a>HeadPose 属性を使用する
 

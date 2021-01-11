@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 05/18/2020
+ms.date: 08/25/2020
 ms.author: aahi
-ms.openlocfilehash: acd8fae81baa7ad65b8d9c321c55a6311cbf4c72
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: a0557c3ccf6510ab3ee2ae29cbef1fc754473345
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141247"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933020"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>方法:Text Analytics API を使用してセンチメントを検出する
 
@@ -40,7 +40,7 @@ Text Analytics API の感情分析機能では、テキストを評価し、各�
 
 Sentiment Analysis v3 では、文レベルとドキュメント レベルで返されるセンチメント ラベルとそれぞれの信頼度スコアがテキストに適用されます。 
 
-ラベルには `positive`、`negative`、`neutral` があります。 ドキュメント レベルでは、`mixed` センチメント ラベルも返されます。 ドキュメントのセンチメントは、次のように決定されます。
+ラベルは、*positive*、*negative*、および *neutral* です。 ドキュメント レベルでは、*mixed* センチメント ラベルが返されることもあります。 ドキュメントのセンチメントは、次のように決定されます。
 
 | 文章のセンチメント                                                                            | 返されるドキュメントのラベル |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -49,7 +49,7 @@ Sentiment Analysis v3 では、文レベルとドキュメント レベルで返
 | ドキュメントに、`negative` の文が少なくとも 1 つ、`positive` の文が少なくとも 1 つ含まれている。    | `mixed`                 |
 | ドキュメント内のすべての文が `neutral` である。                                                  | `neutral`               |
 
-信頼度スコアは、1 から 0 の範囲で割り当てられます。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 それぞれのドキュメントまたは文の範囲内での信頼度スコアの合計は 1 になります。
+信頼度スコアは、1 から 0 の範囲で割り当てられます。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 各ドキュメントまたは各文で、ラベル (positive、negative、neutral) に関連付けられた予測スコアは合計で 1 になります。
 
 ### <a name="opinion-mining"></a>意見マイニング
 

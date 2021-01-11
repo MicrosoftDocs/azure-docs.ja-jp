@@ -2,13 +2,13 @@
 title: コンテナーに対する Azure Monitor エージェントを管理する方法 | Microsoft Docs
 description: この記事では、コンテナーに対する Azure Monitor によって使用されるコンテナー化された Log Analytics エージェントで、最も一般的なメンテナンス タスクを管理する方法について説明します。
 ms.topic: conceptual
-ms.date: 06/15/2020
-ms.openlocfilehash: fc5bc0d60cb4ef1e375a997cbb3fe4bd2aed3235
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/21/2020
+ms.openlocfilehash: 1a397dbc5ebc4952b09c504b70df6ad99c00b216
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107412"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87041274"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>コンテナーに対する Azure Monitor エージェントを管理する方法
 
@@ -30,31 +30,12 @@ AKS クラスター上のエージェントをアップグレードするプロ�
 
 新しいバージョンのエージェントをインストールするには、[Azure CLI を使用して監視を有効にする](container-insights-enable-new-cluster.md#enable-using-azure-cli)に関する記事の手順に従って、このプロセスを完了します。  
 
-監視を再び有効にした後、クラスターの更新された正常性メトリックが表示されるまで、約 15 分かかる場合があります。 エージェントが正常にアップグレードされたことを確認するには、`kubectl logs omsagent-484hw --namespace=kube-system` コマンドを実行します
+監視を再び有効にした後、クラスターの更新された正常性メトリックが表示されるまで、約 15 分かかる場合があります。 エージェントが正常にアップグレードされたことを確認するには、次のいずれかを実行します。
 
-ステータスは次の例のようになります。ここで、*omi* と *omsagent* の値は、[エージェントのリリース履歴](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)で指定された最新バージョンと一致する必要があります。  
+* コマンド `kubectl get pod <omsagent-pod-name> -n kube-system -o=jsonpath='{.spec.containers[0].image}'` を実行します。 返された状態で、出力の *Containers* セクションにある omsagent の **Image** の下の値をメモします。
+* **[ノード]** タブでクラスター ノードを選択し、右側の **[プロパティ]** ペインにある **[エージェント イメージ タグ]** の下の値をメモします。
 
-```console
-User@aksuser:~$ kubectl logs omsagent-484hw --namespace=kube-system
-:
-:
-instance of Container_HostInventory
-{
-    [Key] InstanceID=3a4407a5-d840-4c59-b2f0-8d42e07298c2
-    Computer=aks-nodepool1-39773055-0
-    DockerVersion=1.13.1
-    OperatingSystem=Ubuntu 16.04.3 LTS
-    Volume=local
-    Network=bridge host macvlan null overlay
-    NodeRole=Not Orchestrated
-    OrchestratorType=Kubernetes
-}
-Primary Workspace: b438b4f6-912a-46d5-9cb1-b44069212abc
-Status: Onboarded(OMSAgent Running)
-omi 1.4.2.5
-omsagent 1.6.0-163
-docker-cimprov 1.0.0.31
-```
+表示されるエージェントのバージョンは、[[Release history]\(リリース履歴\)](https://github.com/microsoft/docker-provider/tree/ci_feature_prod) ページに表示されている最新バージョンと一致している必要があります。
 
 ### <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>ハイブリッド Kubernetes クラスター上でエージェントをアップグレードする
 

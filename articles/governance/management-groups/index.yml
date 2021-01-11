@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 06/29/2020
-  ms.openlocfilehash: d27bb0be6698a6b92c459143604ad2ebeb00b728
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.date: 08/31/2020
+  ms.openlocfilehash: a2d736b2706b3b0958bb544c6d0e4434c78e6791
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85551871"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89231335"
 landingContent:
 - title: Azure のガバナンスについて
   linkLists:
@@ -29,14 +29,26 @@ landingContent:
     links:
     - text: Azure 管理グループ
       url: ./overview.md
-- title: リソースの整理
+- title: 作業開始
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 管理グループの作成 (ポータル)
+      url: ./create-management-group-portal.md
+    - text: 管理グループの作成 (Azure CLI)
+      url: ./create-management-group-azure-cli.md
+    - text: 管理グループの作成 (Azure PowerShell)
+      url: ./create-management-group-powershell.md
+    - text: 管理グループの作成 (REST)
+      url: ./create-management-group-rest-api.md
+    - text: 管理グループへのリソースのデプロイ (ARM テンプレート)
+      url: ../../azure-resource-manager/templates/deploy-to-management-group.md
   - linkListType: how-to-guide
     links:
-    - text: 管理グループの作成
-      url: ./create.md
-    - text: リソースの管理
+    - text: リソース階層の管理
       url: ./manage.md
+    - text: リソース階層の保護
+      url: ./how-to/protect-resource-hierarchy.md
 - title: リファレンス
   linkLists:
   - linkListType: reference

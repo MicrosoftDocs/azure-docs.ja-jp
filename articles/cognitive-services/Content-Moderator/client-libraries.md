@@ -9,15 +9,15 @@ zone_pivot_groups: programming-languages-set-eleven
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 04/24/2020
+ms.date: 08/17/2020
 ms.author: pafarley
-ms.custom: tracking-python
-ms.openlocfilehash: f7de66a2abde812fc5916277288d5176fa5bfbf7
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: 4abb316f7b0b9fcdd41cab7248e71f719af6074f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84611003"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88929119"
 ---
 # <a name="quickstart-use-the-content-moderator-client-library"></a>クイック スタート:Content Moderator クライアント ライブラリを使用する
 

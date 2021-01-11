@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 86982aa418433ecef6a81252363091714185fe22
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 50c95dc9d045711cb6968b98957d255b4ca73d2c
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202289"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932765"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>データ インポートの概要 - Azure Cognitive Search
 
@@ -34,12 +34,12 @@ Azure Cognitive Search では、[検索インデックス](search-what-is-an-ind
 
 次の API を使用して、1 つまたは複数のドキュメントをインデックスに読み込むことができます。
 
-+ [ドキュメントの追加、更新、削除 (REST API)](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents)
-+ [indexAction クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)または [indexBatch クラス](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
++ [ドキュメントの追加、更新、削除 (REST API)](/rest/api/searchservice/AddUpdate-or-Delete-Documents)
++ [indexAction クラス](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet)または [indexBatch クラス](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) 
 
 現在では、ポータルを使用してデータをプッシュするためのツール サポートはありません。
 
-各方法の概要については、「[Quickstart: PowerShell を使用した Azure Cognitive Search インデックスの作成](search-create-index-rest-api.md)」または[C# の クイック スタートの.NET SDK を使用した Azure Cognitive Search インデックスの作成](search-get-started-dotnet.md)に関する記事をご覧ください。
+各方法の概要については、「[Quickstart: PowerShell を使用した Azure Cognitive Search インデックスの作成](./search-get-started-powershell.md)」または[C# の クイック スタートの.NET SDK を使用した Azure Cognitive Search インデックスの作成](search-get-started-dotnet.md)に関する記事をご覧ください。
 
 <a name="indexing-actions"></a>
 
@@ -61,7 +61,7 @@ REST API では、JSON 要求本文を利用して HTTP POST 要求を Azure Cog
 
 ### <a name="formulate-your-query"></a>クエリの作成
 
-[REST API を使用してインデックスを検索する](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義された HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義された HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの[制限が緩やか](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
+[REST API を使用してインデックスを検索する](/rest/api/searchservice/Search-Documents)方法は 2 とおりあります。 その 1 つは、要求本文の JSON オブジェクトにクエリ パラメーターが定義された HTTP POST 要求を発行する方法です。 もう 1 つは、要求 URL にクエリ パラメーターが定義された HTTP GET 要求を発行する方法です。 POST の方が GET よりもクエリ パラメーターのサイズの[制限が緩やか](/rest/api/searchservice/Search-Documents)です。 そのため、GET の方が便利である特殊な状況を除いて、POST を使用することをお勧めします。
 
 POST と GET のどちらについても、要求 URL で*サービス名*、*インデックス名*、および *API バージョン*を指定する必要があります。 
 

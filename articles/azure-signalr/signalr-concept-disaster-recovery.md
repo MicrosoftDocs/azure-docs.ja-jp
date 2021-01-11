@@ -4,14 +4,15 @@ description: 複数の SignalR サービス インスタンスをセットアッ
 author: chenkennt
 ms.service: signalr
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 1bf8191b0a76ad442ac5d2b286c214f6ee9da822
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 71bcb72b645c574eedd24ff868751f366738e73d
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504854"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935689"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-signalr-service"></a>Azure SignalR Service の回復性とディザスター リカバリー
 

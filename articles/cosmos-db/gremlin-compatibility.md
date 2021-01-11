@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 1db7937cb574ce62986f25e0bfa688dc54b5c606
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84700601"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092509"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin の互換性
 Azure Cosmos DB Graph エンジンは [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) のトラバーサル ステップの仕様に厳密に従っていますが、実装には Azure Cosmos DB に固有の違いがあります。 サポートされている Gremlin のステップの一覧を確認するには、[Gremlin API でのワイヤ プロトコルのサポート](gremlin-support.md)に関する記事を参照してください。
@@ -69,7 +69,7 @@ Azure Cosmos DB Graph エンジンは [Apache TinkerPop](https://tinkerpop.apach
     g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
     ```
 
-    [Gremlin の `executionProfile()` ステップ](graph-execution-profile.md を使用して、クエリのパフォーマンスを確認できます。
+    [Gremlin の `executionProfile()` ステップ](graph-execution-profile.md)を使用して、クエリのパフォーマンスを確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 * [Cosmos DB ユーザーの声](https://feedback.azure.com/forums/263030-azure-cosmos-db)のページにアクセスして、フィードバックを共有し、お客様にとって重要な機能に取り組めるようにチームをサポートしてください。

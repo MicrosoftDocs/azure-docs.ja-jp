@@ -2,13 +2,14 @@
 title: Azure Resource Manager の概要
 description: Azure Resource Manager を使用して、Azure のリソースをデプロイ、管理、およびのアクセス制御する方法について説明します。
 ms.topic: overview
-ms.date: 04/21/2020
-ms.openlocfilehash: 089919e227b33859dbeabd98ecd75845a28a3f42
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 09/01/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 2dc33093df0d9bc0bd75410bac8d200fe6555257
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087029"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89293950"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager とは
 
@@ -68,25 +69,33 @@ Azure には、[管理グループ](../../governance/management-groups/overview.
 
 リソース グループを定義する際、次のような考慮すべき要素があります。
 
-* グループ内のすべてのリソースで、同じライフサイクルが共有される必要がある。 そのため、これらのリソースは一緒にデプロイ、更新、削除されます。 サーバーなどの 1 つのリソースが、別のデプロイ サイクル上に存在する必要がある場合は、別のリソース グループに含めなければなりません。
+* リソース グループ内のすべてのリソースで、同じライフサイクルが共有される必要がある。 そのため、これらのリソースは一緒にデプロイ、更新、削除されます。 サーバーなどの 1 つのリソースが、別のデプロイ サイクル上に存在する必要がある場合は、別のリソース グループに含めなければなりません。
 
-* 各リソースは、1 つのリソース グループにのみ存在できる。
-
-* リソース グループの外部に存在するリソースもある。 これらのリソースは、[サブスクリプション](../templates/deploy-to-subscription.md)、[管理グループ](../templates/deploy-to-management-group.md)、または[テナント](../templates/deploy-to-tenant.md)にデプロイされます。 これらのスコープでは、特定のリソースの種類のみがサポートされます。
+* 各リソースが所属できるリソース グループは 1 つに限られます。
 
 * リソースは、いつでもリソース グループに追加したり、削除できる。
 
 * あるリソース グループから別のリソース グループへリソースを移動できる。 詳細については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](move-resource-group-and-subscription.md)」を参照してください。
 
-* リソース グループには、別のリージョンに配置されたリソースを含めることができる。
+* リソース グループのリソースは、リソース グループとは別のリージョンに配置できます。
 
-* リソース グループを使用すると、管理操作のアクセス制御のスコープを設定できる。
+* リソース グループを作成するとき、そのリソース グループの場所を指定する必要があります。 "なぜリソース グループに場所が必要なのか。 リソースがリソース グループとは異なる場所に存在してよいとしたら、いったいなぜリソース グループの場所が問題になるのか" と、疑問に思われるかもしれません。 リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
 
-* リソースは、他のリソース グループ内のリソースとやり取りできる。 このやり取りは、2 つの関連するリソースで同じライフサイクルが共有されていない場合によく見られます (データベースに接続する Web アプリなど)。
+   リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service)」を参照してください。
 
-リソース グループを作成するとき、そのリソース グループの場所を指定する必要があります。 "なぜリソース グループに場所が必要なのか。 リソースがリソース グループとは異なる場所に存在してよいとしたら、いったいなぜリソース グループの場所が問題になるのか" と、疑問に思われるかもしれません。 リソース グループには、リソースについてのメタデータが格納されます。 リソース グループの場所を指定するとき、このメタデータが格納される場所を指定することになります。 コンプライアンス上の理由から、データは特定のリージョンに格納されるようにする必要があります。
+* リソース グループを使用すると、管理操作のアクセス制御のスコープを設定できる。 リソース グループを管理するために、[Azure ポリシー](../../governance/policy/overview.md)、[RBAC のロール](../../role-based-access-control/role-assignments-portal.md)、または[リソース ロック](lock-resources.md)を割り当てることができます。
 
-リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 信頼性の高いアプリケーションの設計の詳細については、「[信頼性の高い Azure アプリケーションの設計](/azure/architecture/checklist/resiliency-per-service)」を参照してください。
+* リソース グループに[タグを適用](tag-resources.md)できます。 リソース グループ内のリソースは、これらのタグを継承しません。
+
+* リソースは、他のリソース グループ内のリソースに接続できます。 このシナリオは、2 つのリソースが関連を持っていても、同じライフサイクルを共有していない場合に一般的です。 たとえば、別のリソース グループ内のデータベースに接続している Web アプリがある場合があります。
+
+* リソース グループを削除すると、リソース グループ内のすべてのリソースも削除されます。 Azure Resource Manager によってこれらの削除がどのように調整されるかについては、「[Azure Resource Manager のリソース グループとリソースの削除](delete-resource-group.md)」を参照してください。
+
+* 各リソース グループには、リソースの種類のインスタンスを最大 800 個までデプロイできます。 一部のリソースの種類は、[800 インスタンスの制限から除外](resources-without-resource-group-limit.md)されています。
+
+* リソース グループの外部に存在するリソースもある。 これらのリソースは、[サブスクリプション](../templates/deploy-to-subscription.md)、[管理グループ](../templates/deploy-to-management-group.md)、または[テナント](../templates/deploy-to-tenant.md)にデプロイされます。 これらのスコープでは、特定のリソースの種類のみがサポートされます。
+
+* リソース グループを作成するには、[ポータル](manage-resource-groups-portal.md#create-resource-groups)、[PowerShell](manage-resource-groups-powershell.md#create-resource-groups)、[Azure CLI](manage-resource-groups-cli.md#create-resource-groups)、または [Azure Resource Manager (ARM) テンプレート](../templates/deploy-to-subscription.md#resource-groups)を使用できます。
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager の回復性
 

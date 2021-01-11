@@ -7,12 +7,13 @@ ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: ade688c3fe339db864994923d0ff40dfe41b7cb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-java
+ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263009"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319764"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -43,11 +44,11 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコー
 
 2. **Cosmos DB:** 生成されたデータは、Azure Cosmos コンテナーに格納されます。  
 
-3. **変更フィード:** 変更フィードでは、Azure Cosmos コンテナーに対する変更がリッスンされます。 新しいドキュメントがコレクションに追加されるたびに (つまりユーザーが商品を閲覧する、カートに商品を追加する、商品を購入するなどのイベントが発生したとき)、変更フィードは [Azure 関数](../azure-functions/functions-overview.md)をトリガーします。  
+3. **変更フィード:** 変更フィードでは、Azure Cosmos コンテナーに対する変更がリッスンされます。 新しいドキュメントがコレクションに追加されるたびに (つまりユーザーが商品を閲覧する、カートに商品を追加する、商品を購入するなどのイベントが発生したとき)、変更フィードは [Azure Function](../azure-functions/functions-overview.md)をトリガーします。  
 
-4. **Azure 関数:** Azure 関数が新しいデータを処理して [Azure イベント ハブ](../event-hubs/event-hubs-about.md)に送信します。  
+4. **Azure Function:** Azure 関数が新しいデータを処理して [Azure Event Hub](../event-hubs/event-hubs-about.md)に送信します。  
 
-5. **イベント ハブ:** Azure イベント ハブがそれらのイベントを格納し、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) に送信してさらに分析します。  
+5. **Event Hub:** Azure Event Hub がそれらのイベントを格納し、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) に送信してさらに分析します。  
 
 6. **Azure Stream Analytics:** Azure Stream Analytics がイベントを処理し、リアルタイムでデータ分析を実行するクエリを定義します。 その後、このデータは [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop) に送信されます。  
 
@@ -133,7 +134,7 @@ Azure Storage のアカウントではユーザーがデータを格納できま
 
 ### <a name="get-the-event-hub-namespace-connection-string"></a>イベント ハブの名前空間の接続文字列を取得する
 
-Azure イベント ハブは、イベント データを取得し、そのデータを格納、処理、および転送します。 このラボでは、Azure イベント ハブは新しいイベント (ユーザーが商品を閲覧した、ユーザーのカートに追加した、購入したなど) が発生するたびにドキュメントを取得し、そのドキュメントを Azure Stream Analytics に転送します。
+Azure Event Hub は、イベント データを取得し、そのデータを格納、処理、および転送します。 このラボでは、Azure Event Hub は新しいイベント (ユーザーが商品を閲覧した、ユーザーのカートに追加した、購入したなど) が発生するたびにドキュメントを取得し、そのドキュメントを Azure Stream Analytics に転送します。
 
 1. リソース グループに戻り、プレラボで作成して名前を付けた**イベント ハブの名前空間**を開きます。  
 

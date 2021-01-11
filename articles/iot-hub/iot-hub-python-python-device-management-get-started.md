@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.custom: mqtt, tracking-python
-ms.openlocfilehash: 3e48e52294884294a2e4649e8fc0e0b9c42e0c0a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mqtt, devx-track-python
+ms.openlocfilehash: d4c514042b89341b90b0bb9c939ef4b463741916
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608538"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872720"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 

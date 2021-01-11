@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 8123608cbf2c1a4cbe0dc51d81d42b288bf2a91d
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 259b27528779c9934da6d69ca46f2794e2257d24
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024929"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723029"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -184,7 +184,7 @@ Windows Server VM が再起動すると、マネージド ドメインで適用�
 
 ### <a name="unjoin-the-vm-from-the-managed-domain"></a>マネージド ドメインへの VM の参加を解除する
 
-マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-managed-domain)ための手順を実行します。 このとき、マネージド ドメインに参加させる代わりに、ワークグループ (既定の "*ワークグループ*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトがマネージド ドメインから削除されます。
+マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-managed-domain)ための手順を実行します。 このとき、マネージド ドメインに参加させる代わりに、ワークグループ (既定の "*WORKGROUP*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトがマネージド ドメインから削除されます。
 
 ドメインへの参加を解除せずに [VM を削除](#delete-the-vm)すると、孤立したコンピューター オブジェクトが Azure AD DS に残されます。
 
@@ -244,7 +244,7 @@ Windows Server VM が再起動すると、マネージド ドメインで適用�
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
-[password-sync]: active-directory-ds-getting-started-password-sync.md
+[password-sync]: ./tutorial-create-instance.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

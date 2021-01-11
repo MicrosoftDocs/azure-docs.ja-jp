@@ -50,7 +50,7 @@ Capture は、イベント ハブを作成するときに、 **[イベント ハ
     ![[作成] ボタンの選択](./media/event-hubs-capture-enable-through-portal/create-event-hub-data-lake-storage.png)
 
     > [!NOTE]
-    > このユーザー インターフェイス (UI) を使用して Azure Data Lake Storage Gen 2 で作成したコンテナーは、**ストレージ エクスプローラー**の **[ファイル システム]** に表示されます。 同様に、Data Lake Storage Gen 2 アカウントで作成したファイル システムは、この UI でコンテナーとして表示されます。 
+    > このユーザー インターフェイス (UI) を使用して Azure Data Lake Storage Gen 2 で作成したコンテナーは、**Storage Explorer** の **[ファイル システム]** に表示されます。 同様に、Data Lake Storage Gen 2 アカウントで作成したファイル システムは、この UI でコンテナーとして表示されます。 
 
 
 ## <a name="capture-data-to-azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1 へのデータのキャプチャ 

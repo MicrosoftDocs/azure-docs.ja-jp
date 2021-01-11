@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージング エンティティを一時停�
 description: この記事では、Azure Service Bus メッセージ エンティティ (キュー、トピック、およびサブスクリプション) を一時停止し、再アクティブ化する方法について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 4c4e554ada8c66b56d5d466c7becfc813701402a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2dad0b774f271ed719ca09b1e749559d5e1868bd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340004"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078864"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>メッセージ エンティティの一時停止と再アクティブ化 (無効化)
 
@@ -18,9 +18,11 @@ ms.locfileid: "85340004"
 
 一時停止または再アクティブ化はユーザーまたはシステムのいずれかが実行できます。 システムは、サブスクリプションの使用制限を越えるなど重大な管理上の理由がある場合のみ、エンティティを一時停止します。 システムによって無効化されたエンティティは、ユーザーによって再アクティブ化することはできませんが、一時停止の原因が解消されれば復元されます。
 
-ポータルの各エンティティの **[プロパティ]** セクションで状態を変更できます。以下のスクリーンショットはキューの切り替えを示しています。
+ポータルでは、各エンティティの **[概要]** セクションを使用して状態を変更できます。現在の状態はハイパーリンクとして **[状態]** に表示されます。
 
-![][1]
+次のスクリーンショットは、ハイパーリンクを選択することによってエンティティを変更できる、使用可能な状態を示しています。 
+
+![エンティティの状態オプションを変更するための [概要] 内にある Service Bus 機能のスクリーンショット。][1]
 
 ポータルでは、キューの完全無効化のみ実行できます。 .NET Framework SDK の Service Bus [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API を使用するか、Azure CLI または Azure PowerShell 経由の Azure Resource Manager テンプレートを使用して、送信と受信操作を個別に無効化することもできます。
 
@@ -55,5 +57,5 @@ Service Bus メッセージングの詳細については、次のトピック�
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-[1]: ./media/entity-suspend/queue-disable.png
+[1]: ./media/entity-suspend/entity-state-change.png
 

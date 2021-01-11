@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480441"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496391"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics の SQL オンデマンド (プレビュー) 
 
@@ -31,7 +31,7 @@ SQL オンデマンドはサーバーレスであるため、インフラスト�
 
 データ パイプラインで Apache Spark for Azure Synapse を使用する場合は、データの準備、クレンジング、またはエンリッチメントのために、プロセスで作成した [Spark 外部テーブルに対してクエリ](develop-storage-files-spark-tables.md)を SQL オンデマンドから直接実行できます。 [Private Link](../security/how-to-connect-to-workspace-with-private-links.md) を使用して、SQL オンデマンド エンドポイントを[マネージド ワークスペース VNet](../security/synapse-workspace-managed-vnet.md) に組み込みます。  
 
-## <a name="who-is-sql-on-demand-for"></a>SQL オンデマンドの対象ユーザー
+## <a name="sql-on-demand-benefits"></a>SQL オンデマンドのベネフィット
 
 データ レイク内のデータを探索したり、そこから分析情報を得たり、既存のデータ変換パイプラインを最適化したりする必要がある場合は、SQL オンデマンドを活用することができます。 これは、次のシナリオに適しています。
 
@@ -46,7 +46,7 @@ SQL オンデマンドは、さまざまな職務の役に立ちます。
 - データ アナリストは、使い慣れた T-SQL 言語や、SQL オンデマンドに接続できるお気に入りのツールを使用して、データ サイエンティストまたはデータ エンジニアによって作成された[データと Spark 外部テーブル](develop-storage-files-spark-tables.md)を探索できます。
 - BI プロフェッショナルは、レイク内のデータおよび Spark テーブルに基づいて [Power BI レポートをすばやく作成](tutorial-connect-power-bi-desktop.md)できます。
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>使用を開始するために必要な作業
+## <a name="how-to-start-using-sql-on-demand"></a>SQL オンデマンドを使い始める方法
 
 SQL オンデマンド エンドポイントは、すべての Azure Synapse ワークスペース内で提供されます。 ワークスペースを作成し、使い慣れたツールを使用してすぐにデータのクエリ実行を開始できます。
 
@@ -54,7 +54,7 @@ SQL オンデマンド エンドポイントは、すべての Azure Synapse ワ
 
 SQL オンデマンドでは、既存の SQL アドホック クエリ実行およびビジネス インテリジェンス ツールをデータ レイクに利用できます。 使い慣れた T-SQL 構文を使えるため、SQL 製品との TDS 接続を確立できるツールであれば、[Synapse SQL オンデマンドに接続してクエリを実行](connect-overview.md)できます。 Azure Data Studio に接続してアドホック クエリを実行したり、Power BI に接続して数分で分析情報を得たりできます。
 
-## <a name="is-full-t-sql-supported"></a>T-SQL が完全にサポートされているか
+## <a name="t-sql-support"></a>T-SQL のサポート
 
 SQL オンデマンドでは T-SQL クエリの実行領域を提供します。これは、半構造化データと非構造化データのクエリ実行に関する機能に対応できるよう、いくつかの点でわずかに強化、拡張されています。 さらに、SQL オンデマンドの設計上の理由から、T-SQL 言語の一部の要素はサポートされていません。たとえば、DML 機能は現在サポートされていません。
 
@@ -81,7 +81,7 @@ SQL オンデマンドにはローカル ストレージがなく、メタデー
 
 - テーブル
 - トリガー
-- 具体化されたビュー
+- マテリアライズドビュー
 - ビューとセキュリティに関連しない DDL ステートメント
 - DML ステートメント
 

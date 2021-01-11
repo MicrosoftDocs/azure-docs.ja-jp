@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0120bf3f2bd347ae60677b89ec658f08140af49
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c083b319b11807a88461b2464153821fa2ad0b67
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356357"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276186"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Government クラウドのハイブリッド ID に関する考慮事項
 
@@ -25,7 +25,7 @@ ms.locfileid: "85356357"
 > [!NOTE]
 > オンプレミスの Microsoft Azure Active Directory (Azure AD) 環境を Azure Government クラウドと統合するには、[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) の最新リリースにアップグレードする必要があります。
 
-米国政府の国防総省エンドポイントの完全一覧については、[こちらのドキュメント](https://docs.microsoft.com/office365/enterprise/office-365-u-s-government-dod-endpoints)を参照してください。
+米国政府の国防総省エンドポイントの完全一覧については、[こちらのドキュメント](/office365/enterprise/office-365-u-s-government-dod-endpoints)を参照してください。
 
 ## <a name="azure-ad-pass-through-authentication"></a>Azure AD パススルー認証
 
@@ -42,7 +42,7 @@ ms.locfileid: "85356357"
 |-----|-----|
 |&#42;.msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|エージェントではこれらの URL を使用し、Azure AD クラウド サービスと通信します。 |
 |`mscrl.microsoft.us:80` </br>`crl.microsoft.us:80` </br>`ocsp.msocsp.us:80` </br>`www.microsoft.us:80`| エージェントでは、これらの URL を使用して、証明書が検証されます。|
-|login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;.microsoftonline.us </br>&#42;.microsoftonline-p.us </br>&#42;.msauth.net </br>&#42;.msauthimages.net </br>&#42;.msecnd.net</br>&#42;.msftauth.net </br>&#42;.msftauthimages.net</br>&#42;.phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| エージェントでは、登録プロセスの間にこれらの URL が使用されます。
+|login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;.microsoftonline.us </br>&#42;.microsoftonline-p.us </br>&#42;.msauth.net </br>&#42;.msauthimages.net </br>&#42;.msecnd.net</br>&#42;.msftauth.net </br>&#42;.msftauthimages.net</br>&#42;.phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctldl.windowsupdate.us:80| エージェントでは、登録プロセスの間にこれらの URL が使用されます。
 
 ### <a name="install-the-agent-for-the-azure-government-cloud"></a>Azure Government クラウド用にエージェントをインストールする
 

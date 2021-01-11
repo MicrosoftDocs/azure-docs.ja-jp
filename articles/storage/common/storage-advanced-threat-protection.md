@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/21/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e037607d1f86e6df4d3f5b12e29ba8fde447ebc9
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118420"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757933"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection for Azure Storage を構成する
 
@@ -32,6 +32,17 @@ Advanced Threat Protection for Azure Storage では、ストレージ アカウ�
 Data Lake Storage 用に階層型名前空間が有効になっているアカウントでは、Azure Blob Storage API と Data Lake Storage API の両方を使用するトランザクションがサポートされます。 Azure ファイル共有では、SMB 経由のトランザクションがサポートされます。
 
 30 日間の無料試用など、価格の詳細については、[Azure Security Center の価格ページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+
+次の一覧では、Azure Storage の脅威に対する高度な防御機能の可用性をまとめています。
+
+- リリース状態:
+  - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (一般提供)
+  - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (プレビューでは SMB と REST のトランザクションがサポートされています)
+  - Azure Data Lake Storage Gen2 (プレビュー)
+- クラウド:<br>
+    ✔ 商用クラウド<br>
+    ✔ US Gov<br>
+    ✘ China Gov、その他の Gov
 
 ## <a name="set-up-advanced-threat-protection"></a>Advanced Threat Protection の設定
 

@@ -11,13 +11,13 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: aahi
-ms.custom: tracking-python
-ms.openlocfilehash: 154e158079b9963c02aad02f6b399d28a0b34272
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 34e7b5485d3e2828393d1f069f63597c0a97760f
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607892"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934415"
 ---
 # <a name="quickstart-use-the-bing-visual-search-client-library"></a>クイック スタート:Bing Visual Search クライアント ライブラリを使用する
 

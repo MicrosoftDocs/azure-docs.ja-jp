@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, has-adal-ref
-ms.openlocfilehash: 653ca578e9fafd245c22bcfd7db038d5c23da016
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, has-adal-ref, devx-track-javascript
+ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326955"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904540"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,6 +36,9 @@ Azure Machine Learning ワークスペース、および Web サービスとし�
 * [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning Notebook VM](concept-azure-machine-learning-architecture.md#compute-instance) を使用します。
 
 ## <a name="interactive-authentication"></a>対話型認証
+
+> [!IMPORTANT]
+> 対話型認証では、ブラウザーが使用され、Cookie (サードパーティの Cookie を含む) が必要です。 Cookie を無効にしている場合は、"サインインできませんでした" などのエラーを受け取る場合があります。 このエラーは、[Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks) を有効にしている場合にも発生する場合があります。
 
 ドキュメントとサンプルのほとんどの例では、対話型認証が使用されています。 たとえば、SDK を使用する場合は、UI ベースの認証フローを使用して自動的に入力を求める関数呼び出しが 2 つあります。
 
@@ -67,10 +70,10 @@ Azure Machine Learning ワークスペース、および Web サービスとし�
 
 ## <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 
-サービス プリンシパル (SP) の認証を使用するには、最初に SP を作成して、ワークスペースへのアクセス権を付与する必要があります。 既に説明したように、Azure のロールベースのアクセス制御 (RBAC) を使用してアクセスを制御するため、SP に付与するアクセス権も決定する必要があります。
+サービス プリンシパル (SP) の認証を使用するには、最初に SP を作成して、ワークスペースへのアクセス権を付与する必要があります。 既に説明したように、Azure のロールベースのアクセス制御 (Azure RBAC) を使用してアクセスを制御するため、SP に付与するアクセス権も決定する必要があります。
 
 > [!IMPORTANT]
-> サービス プリンシパルを使用する場合は、使用する__タスクに必要な最小限のアクセス権__を付与します。 たとえば、サービス プリンシパルが Web デプロイのアクセス トークンを読み取るためにのみ使用される場合は、所有者または共同作成者のアクセス権は付与しません。
+> サービス プリンシパルを使用する場合は、使用する __タスクに必要な最小限のアクセス権__ を付与します。 たとえば、サービス プリンシパルが Web デプロイのアクセス トークンを読み取るためにのみ使用される場合は、所有者または共同作成者のアクセス権は付与しません。
 >
 > 最小限のアクセス権を付与する理由は、サービス プリンシパルがパスワードを使用して認証を行うためであり、パスワードがオートメーション スクリプトの一部として格納される可能性があるからです。 パスワードが漏洩した場合、特定のタスクに必要な最小限のアクセス権のみを保持しているため、SP が悪意を持って使用される可能性が最小限に抑えられます。
 

@@ -3,19 +3,20 @@ title: Web サービスで AAD ID を使用する
 titleSuffix: Azure Machine Learning
 description: Azure Kubernetes Service の Web サービスで AAD ID を使用し、スコアリング中にクラウド リソースにアクセスします。
 services: machine-learning
-author: trevorbye
-ms.author: trbye
+ms.author: larryfr
+author: BlackMist
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: 660cb14bd081dffbf3e9fb5f02b7690212915355
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.custom: how-to
+ms.openlocfilehash: f76e149339e80ddeba8431afffbd677a4b595ec3
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807487"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319475"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes Service の Machine Learning Web サービスで Azure AD ID を使用する
 
@@ -150,6 +151,9 @@ secret_client = SecretClient(
     credential=credential)
 secret = secret_client.get_secret(my_secret_name)
 ```
+
+> [!IMPORTANT]
+> この例では、DefaultAzureCredential を使用します。 特定のアクセス ポリシーを使用して ID アクセス権を付与するには、「[パート4: Azure Key Vault からシークレットを取得する](../key-vault/general/authentication.md#part-4-retrieve-the-secret-from-your-azure-key-vault-in-an-application-python)」を参照してください。
 
 ### <a name="access-blob-from-your-web-service"></a>Web サービスから BLOB にアクセスする
 

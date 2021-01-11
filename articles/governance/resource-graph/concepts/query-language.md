@@ -1,14 +1,14 @@
 ---
 title: クエリ言語を理解する
 description: Resource Graph テーブルと、Azure Resource Graph で使用可能な Kusto データ型、演算子、関数について説明します。
-ms.date: 06/29/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c545a8a5113f800545660a3ea812b61711630c2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970452"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798552"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Azure Resource Graph クエリ言語の概要
 
@@ -19,6 +19,7 @@ Azure Resource Graph のクエリ言語では、さまざまな演算子と関�
 - [Resource Graph テーブル](#resource-graph-tables)
 - [Resource Graph のカスタム言語要素](#resource-graph-custom-language-elements)
 - [サポートされる KQL 言語要素](#supported-kql-language-elements)
+- [クエリのスコープ](#query-scope)
 - [エスケープ文字](#escape-characters)
 
 ## <a name="resource-graph-tables"></a>Resource Graph テーブル
@@ -63,6 +64,25 @@ Resources
 > [!NOTE]
 > `project` を使用して `join` の結果を制限する場合は、2 つのテーブルを関連付けるために `join` によって使用されるプロパティ (上記の例の _subscriptionId_) が `project` に含まれている必要があります。
 
+## <a name="extended-properties-preview"></a><a name="extended-properties"></a>拡張プロパティ (プレビュー)
+
+_プレビュー_機能として、Resource Graph の一部のリソースの種類には、Azure Resource Manager によって提供されるプロパティ以外に、クエリで使用できる追加の種類関連のプロパティがあります。 この一連の値は_拡張プロパティ_と呼ばれ、`properties.extended` でサポートされているリソースの種類に存在します。 _拡張プロパティ_があるリソースの種類を確認するには、次のクエリを使用します。
+
+```kusto
+Resources
+| where isnotnull(properties.extended)
+| distinct type
+| order by type asc
+```
+
+例:`instanceView.powerState.code` によって、仮想マシンの数を取得します。
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
+
 ## <a name="resource-graph-custom-language-elements"></a>Resource Graph のカスタム言語要素
 
 ### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共有クエリ構文 (プレビュー)
@@ -92,7 +112,7 @@ Resources
 
 ## <a name="supported-kql-language-elements"></a>サポートされる KQL 言語要素
 
-Resource Graph では、すべての KQL [データ型 ](/azure/kusto/query/scalar-data-types/)、[スカラー関数](/azure/kusto/query/scalarfunctions)、[スカラー演算子](/azure/kusto/query/binoperators)、[集計関数](/azure/kusto/query/any-aggfunction) がサポートされています。 Resource Graph では、特定の[テーブル演算子](/azure/kusto/query/queries)がサポートされます。その中には、動作が異なるものもあります。
+Resource Graph では、KQL [データ型](/azure/kusto/query/scalar-data-types/)、[スカラー関数](/azure/kusto/query/scalarfunctions)、[スカラー演算子](/azure/kusto/query/binoperators)、[集計関数](/azure/kusto/query/any-aggfunction)のサブセットがサポートされています。 Resource Graph では、特定の[テーブル演算子](/azure/kusto/query/queries)がサポートされます。その中には、動作が異なるものもあります。
 
 ### <a name="supported-tabulartop-level-operators"></a>サポートされているテーブル演算子/上位レベルの演算子
 
@@ -116,6 +136,30 @@ Resource Graph では、すべての KQL [データ型 ](/azure/kusto/query/scal
 |[top](/azure/kusto/query/topoperator) |[名前とその OS の種類による最初の 5 つの仮想マシンの表示](../samples/starter.md#show-sorted) | |
 |[union](/azure/kusto/query/unionoperator) |[2 つのクエリの結果を結合して 1 つの結果にする](../samples/advanced.md#unionresults) |1 つのテーブルを使用できます:_T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. 1 つのクエリでは `union` 分岐が 3 つに制限されます。 `union` 分岐テーブルのあいまい解決は許可されていません。 1 つのテーブル内、または _Resources_ テーブルと _ResourceContainers_ テーブルの間で使用できます。 |
 |[where](/azure/kusto/query/whereoperator) |[ストレージを含むリソースの表示](../samples/starter.md#show-storage) | |
+
+## <a name="query-scope"></a>クエリ スコープ
+
+クエリによってリソースが返されるサブスクリプションのスコープは、Resource Graph にアクセスする方法によって異なります。 Azure CLI および Azure PowerShell は、承認されたユーザーのコンテキストに基づいて、要求に含めるサブスクリプションの一覧を設定します。 サブスクリプションの一覧は、それぞれ **subscriptions** と **Subscription** パラメーターを使用して、それぞれに対して手動で定義できます。
+REST API およびその他のすべての SDK では、リソースを含めるサブスクリプションの一覧は、要求の一部として明示的に定義する必要があります。
+
+**プレビュー**として、REST API バージョン `2020-04-01-preview` では、クエリのスコープを[管理グループ](../../management-groups/overview.md)に設定するプロパティが追加されます。 また、このプレビュー API では、サブスクリプション プロパティは省略可能になります。 管理グループまたはサブスクリプションの一覧が定義されていない場合は、認証されたユーザーがアクセスできるすべてのリソースがクエリ スコープになります。 新しい `managementGroupId` プロパティは管理グループ ID を取ります。これは、管理グループの名前とは異なります。 `managementGroupId` を指定すると、指定した管理グループ階層内、またはその下にある最初の5000 件のサブスクリプションのリソースが含まれます。 `managementGroupId` を `subscriptions` と同時に使用することはできません。
+
+例:ID "myMG" を持つ "My Management Group" という名前の管理グループの階層内のすべてのリソースに対してクエリを実行します。
+
+- REST API URI
+
+  ```http
+  POST https://management.azure.com/providers/Microsoft.ResourceGraph/resources?api-version=2020-04-01-preview
+  ```
+
+- 要求本文
+
+  ```json
+  {
+      "query": "Resources | summarize count()",
+      "managementGroupId": "myMG"
+  }
+  ```
 
 ## <a name="escape-characters"></a>エスケープ文字
 

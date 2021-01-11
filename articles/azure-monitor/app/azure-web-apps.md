@@ -2,14 +2,14 @@
 title: Azure App Services のパフォーマンスを監視する | Microsoft Docs
 description: Azure App Services のアプリケーション パフォーマンスの監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 08/06/2020
+ms.custom: devx-track-javascript, devx-track-dotnet
+ms.openlocfilehash: 1e06aacaa12a428b42090ecb8e8ae89ae1e5ad76
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373166"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933785"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -114,16 +114,14 @@ Python App Service ベースの Web アプリケーションでは、エージ�
 
 ASP.NET の場合、クライアント側の監視はオプトインです。 クライアント側の監視を有効にするには:
 
-* **[設定]** 、** **[アプリケーション設定]** ** の順に選択します
-   * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
+* **[設定]** **>** **[構成]**
+   * [アプリケーション設定] で、**新しいアプリケーション設定**を作成します。
 
      名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      値: `true`
 
    * 設定を **[保存]** し、アプリを **[再起動]** します。
-
-![アプリケーション設定 UI のスクリーンショット](./media/azure-web-apps/appinsights-javascript-enabled.png)
 
 クライアント側の監視を無効にするには、[アプリケーション設定] から関連付けられているキーと値のペアを削除するか、値を false に設定します。
 
@@ -133,16 +131,14 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 
 何らかの理由でクライアント側の監視を無効にするには、次の手順を実行します。
 
-* **[設定]**  >  **[アプリケーション設定]** の順に選択します。
-   * [アプリケーション設定] で、新しい**アプリ設定名**と**値**を追加します。
+* **[設定]** **>** **[構成]**
+   * [アプリケーション設定] で、**新しいアプリケーション設定**を作成します。
 
      名前: `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
      値: `false`
 
    * 設定を **[保存]** し、アプリを **[再起動]** します。
-
-![アプリケーション設定 UI のスクリーンショット](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
@@ -396,6 +392,12 @@ APPINSIGHTS_JAVASCRIPT_ENABLED=true を使用する場合 (この場合、コン
 これは、APPINSIGHTS_JAVASCRIPT_ENABLED アプリケーション設定が true に設定されており、同時に content-encoding が存在することが原因です。 このシナリオはまだサポートされていません。 回避策は、アプリケーション設定から APPINSIGHTS_JAVASCRIPT_ENABLED を削除することです。 残念ながら、これは、クライアント/ブラウザー側の JavaScript インストルメンテーションがまだ必要な場合、Web ペーでは手動の SDK 参照が必要であることを意味します。 JavaScript SDK での手動のインストルメンテーションに関する[手順](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup)に従ってください。
 
 Application Insights エージェント/拡張機能の最新情報については、[リリース ノート](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)のページを参照してください。
+
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>Web アプリでデプロイされた既定の Web サイトでは、クライアント側の自動監視はサポートされません
+
+Azure App Services で `ASP.NET` または `.NET Core` ランタイムを使用して Web アプリを作成すると、1 つの静的な HTML ページがスターター Web サイトとしてデプロイされます。 静的な Web ページには、IIS の .NET マネージド Web パーツも読み込まれます。 これにより、サーバー側のコードなし監視をテストすることはできますが、クライアント側の自動監視はサポートされません。
+
+Azure App Services Web アプリで ASP.NET または ASP.NET Core に対するクライアント側のコードなし監視をテストする場合は、[ASP.NET Core Web アプリの作成](../../app-service/quickstart-dotnetcore.md)と [ASP.NET Framework Web アプリの作成](../../app-service/quickstart-dotnet-framework.md)に関する公式のガイドに従って、この記事にある監視を有効にするための手順を使用することをお勧めします。
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP および WordPress はサポートされていない
 

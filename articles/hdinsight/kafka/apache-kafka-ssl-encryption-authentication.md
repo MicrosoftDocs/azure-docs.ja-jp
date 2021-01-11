@@ -128,7 +128,7 @@ Kafka TLS ブローカーのセットアップでは、4 つの HDInsight クラ
 
 1. Azure portal にサインインし、ご利用の Azure HDInsight Apache Kafka クラスターを選択します。
 1. **[クラスター ダッシュボード]** の **[Ambari ホーム]** をクリックして、Ambari UI に移動します。
-1. **[Kafka Broker]/(Kafka ブローカー/)** で、**リスナー** プロパティを `PLAINTEXT://localhost:9092,SSL://localhost:9093` に設定します。
+1. **[Kafka Broker]\(Kafka ブローカー/)** で、**リスナー** プロパティを `PLAINTEXT://localhost:9092,SSL://localhost:9093` に設定します。
 1. **[Advanced kafka-broker]\(Kafka ブローカーの高度な設定\)** で **security.inter.broker.protocol** プロパティを `SSL` に設定します。
 
     ![Ambari での Kafka ssl 構成プロパティの編集](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari.png)

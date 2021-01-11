@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b67c836be3395061e33b5988a4bb06fa5ee20f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9d2f295394d89432f3c6dd99585cc4363d4ff74
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85608553"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641366"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -483,7 +483,7 @@ AD FS では、次の 2 つの主な方法で既存の外部ユーザーを設�
 
 デプロイが完了したら、デプロイが成功したことと、実行する必要がある新しい手順の注意を、ユーザーに通知できます。
 
-* 移行されたすべてのアプリケーションにアクセスするには[アクセス パネル](https://myapps.microsoft.com)を使用するようユーザーに指示します。 
+* [マイ アプリ](https://myapps.microsoft.com)を使用して、移行されたすべてのアプリケーションにアクセスするようにユーザーに指示します。 
 
 * MFA の設定の更新が必要な場合があることをユーザーに通知します。 
 

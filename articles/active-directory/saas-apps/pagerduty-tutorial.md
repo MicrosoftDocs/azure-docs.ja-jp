@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と PagerDuty の統合 | Microsoft Docs
 description: Azure Active Directory と PagerDuty の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 99d9988a02b046562c2517df8a81b8ef5c778ef2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 2bc486987dd25d899728af4861c0b71ef14d9f4a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683515"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554088"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と PagerDuty の統合
 
@@ -38,6 +34,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
 * PagerDuty でのシングル サインオン (SSO) が有効なサブスクリプション。
+
+> [!NOTE]
+> Azure AD で MFA またはパスワードレス認証を使用している場合は、SAML 要求で AuthnContext 値をオフにしてください。 そうしないと、Azure AD によって AuthnContext の不一致エラーがスローされ、トークンがアプリケーションに送り返されなくなります。
 
 ## <a name="scenario-description"></a>シナリオの説明
 

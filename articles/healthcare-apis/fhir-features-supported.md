@@ -2,18 +2,18 @@
 title: Azure でサポートされる FHIR 機能 - Azure API for FHIR
 description: この記事では、Azure API for FHIR で実装されている FHIR 仕様の機能について説明します。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 7f92395f19d84f904493af458d1334f8013fd263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: bdf328222fef1f763776bd26c47f5cd4d65e487e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85808031"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89000007"
 ---
 # <a name="features"></a>特徴
 
@@ -90,7 +90,7 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | `_security`             | はい       | はい       | はい       |         |
 | `_text`                 | いいえ        | いいえ        | いいえ        |         |
 | `_content`              | いいえ        | いいえ        | いいえ        |         |
-| `_list`                 | いいえ        | はい       | はい       |         |
+| `_list`                 | はい       | はい       | はい       |         |
 | `_has`                  | いいえ        | いいえ        | いいえ        |         |
 | `_type`                 | はい       | はい       | はい       |         |
 | `_query`                | いいえ        | いいえ        | いいえ        |         |
@@ -98,12 +98,12 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | 検索操作       | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | いいえ        | いいえ        | いいえ        |         |
-| `_sort`                 | いいえ        | いいえ        | いいえ        |         |
+| `_sort`                 | いいえ        | Partial   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
 | `_score`                | いいえ        | いいえ        | いいえ        |         |
 | `_count`                | はい       | はい       | はい       |         |
 | `_summary`              | 部分的   | 部分的   | 部分的   | `_summary=count` がサポートされています |
 | `_include`              | いいえ        | はい       | いいえ        |         |
-| `_revinclude`           | いいえ        | いいえ        | いいえ        |         |
+| `_revinclude`           | いいえ        | はい       | いいえ        | 含まれる項目は 100 に制限されています。 |
 | `_contained`            | いいえ        | いいえ        | いいえ        |         |
 | `_elements`             | いいえ        | いいえ        | いいえ        |         |
 

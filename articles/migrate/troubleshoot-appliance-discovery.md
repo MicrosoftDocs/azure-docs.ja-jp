@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 40bd39299380c400f945585651a7ad99e3eb3fa7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1ddcdfd9efddd050f996e5c2b953baba242967fa
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114059"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640584"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -118,6 +118,28 @@ Azure へのサインインに正しくない Azure アカウントを使用し�
     4. hosts ファイルを保存して閉じます。
     5. アプライアンス管理アプリを使用して、アプライアンスからホストに接続できるかどうかを確認します。 30 分後、これらのホストの最新情報が Azure portal に表示されるようになるはずです。
 
+
+## <a name="error-60001-unable-to-connect-to-server"></a>Error 60001:サーバーに接続できない 
+
+- アプライアンスからサーバーへの接続があることを確認します
+- Linux サーバーの場合は、次の手順に従ってパスワード ベースの認証が有効になっていることを確認します。
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PasswordAuthentication" オプションを [はい] に設定します。 ファイルを保存します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+- Windows サーバーの場合は、リモート WMI 呼び出しを許可するため、ポート 5985 が開かれていることを確認します。
+- GCP Linux サーバーを検出中で、ルート ユーザーを使用している場合は、次のコマンドを使用して、ルート ログインの既定の設定を変更します
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PermitRootLogin" オプションを [はい] に設定します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+
+## <a name="error-no-suitable-authentication-method-found"></a>エラー:適切な認証方法が見つからない
+
+次の手順に従って、Linux サーバーでパスワード ベースの認証が有効になっていることを確認します。
+    1. Linux マシンにログインし、コマンド 'vi /etc/ssh/sshd_config' を使用して SSH 構成ファイルを開きます
+    2. "PasswordAuthentication" オプションを [はい] に設定します。 ファイルを保存します。
+    3. "service sshd restart" を実行して SSH サービスを再起動します
+
+
 ## <a name="discovered-vms-not-in-portal"></a>ポータルで VM が検出されない
 
 検出状態は "Discovery in progress (検出中)" だが、ポータルに VM がまだ表示されない場合は、数分お待ちください。
@@ -164,6 +186,9 @@ VM を削除してもまだポータルに表示されている場合は、30 �
 
 ## <a name="unable-to-export-application-inventory"></a>アプリケーション インベントリのエクスポートができない
 ポータルからインベントリをダウンロードするユーザーに、サブスクリプションに対する共同作成者権限があることを確認します。
+
+## <a name="no-suitable-authentication-method-found-to-complete-authentication-publickey"></a>認証を完了するための適切な認証方法が見つからない (publickey)
+キーベースの認証は機能しません。パスワード認証を使用してください。
 
 ## <a name="common-app-discovery-errors"></a>一般的なアプリ検出エラー
 

@@ -1,26 +1,20 @@
 ---
 title: チュートリアル - Azure CLI を使用した Azure ディスクの管理
 description: このチュートリアルでは、Azure CLI を使用して、仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/14/2018
+ms.date: 08/20/2020
 ms.author: cynthn
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: c9165d1f539ea585ae1370b7651cda4b9336f85f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 948a4ae8c329d69e404ef8d0f609748b955b0ecc
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069420"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89078851"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
 
@@ -49,20 +43,20 @@ Azure 仮想マシンを作成すると、2 つのディスクが仮想マシン
 
 ## <a name="vm-disk-types"></a>VM ディスクの種類
 
-Azure では、Standard と Premium の 2 種類のディスクを提供しています。
+Azure では、2 種類のディスクを提供しています。
 
-### <a name="standard-disk"></a>Standard ディスク
+**Standard ディスク** - HDD が使用されており、高パフォーマンスでありながらコスト効率にも優れたストレージを提供します。 Standard ディスクは、コスト効率が重視される、開発およびテストのワークロードに最適です。
 
-Standard Storage では、HDD が使用されており、高パフォーマンスでありながらコスト効率にも優れたストレージを提供します。 Standard ディスクは、コスト効率が重視される、開発およびテストのワークロードに最適です。
+**Premium ディスク** - SSD ベースの高性能で待ち時間の短いディスクが使用されています。 実稼働ワークロードを実行する VM に最適です。 [サイズ名](../vm-naming-conventions.md)に **S** を含む VM サイズでは、通常、Premium Storage がサポートされています。 たとえば、DS シリーズ、DSv2 シリーズ、GS シリーズ、FS シリーズの VM は、Premium Storage をサポートしています。 ディスク サイズを選択するときは、値を切り上げて 1 つ上の種類にします。 たとえば、ディスク サイズが 64 GB より大きく、128 GB 未満の場合、ディスクの種類は P10 です。 
 
-### <a name="premium-disk"></a>Premium ディスク
+<br>
 
-Premium ディスクは、SSD ベースの高性能で待機時間の短いディスクによってサポートされています。 実稼働ワークロードを実行する VM に最適です。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、FS シリーズの VM をサポートしています。 ディスク サイズを選択するときは、値を切り上げて 1 つ上の種類にします。 たとえば、ディスク サイズが 128 GB 未満の場合、ディスクの種類は P10 です。 ディスク サイズが 129 ～ 512 GB の場合、サイズは P20 です。 512 GB を超えた場合、サイズは P30 です。
 
-### <a name="premium-disk-performance"></a>Premium ディスクのパフォーマンス
 [!INCLUDE [disk-storage-premium-ssd-sizes](../../../includes/disk-storage-premium-ssd-sizes.md)]
 
-上記の表は、ディスクあたりの最大 IOPS を割り出していますが、複数のデータ ディスクをストライピングすることによって、より高いレベルのパフォーマンスを実現できます。 たとえば、Standard_GS5 VM では、最大 80,000 IOPS を実現できます。 VM あたりの最大 IOPS の詳細については、[Linux VM のサイズ](sizes.md)に関するページを参照してください。
+Premium Storage ディスクをプロビジョニングすると、Standard Storage とは異なり、対象のディスクの容量、IOPS、スループットが保証されます。 たとえば、P50 ディスクを作成した場合、対象のディスクに 4,095 GB のストレージ容量、7,500 IOPS、および 250 MB/秒のスループットがプロビジョニングされます。 アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。 Premium SSD ディスクは、1 桁のミリ秒の低遅延と、前出の表に示した目標 IOPS とスループットを 99.9% の時間で提供するように設計されています。
+
+上記の表は、ディスクあたりの最大 IOPS を割り出していますが、複数のデータ ディスクをストライピングすることによって、より高いレベルのパフォーマンスを実現できます。 たとえば、64 のデータ ディスクを Standard_GS5 VM に接続することができます。 これらの各ディスクのサイズが P30 である場合、最大 80,000 IOPS を実現できます。 VM あたりの最大 IOPS について詳しくは、「[VM の種類とサイズ](../sizes.md)」をご覧ください。
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
@@ -119,16 +113,17 @@ az vm disk attach \
 ssh 10.101.10.10
 ```
 
-`fdisk` を使用してディスクをパーティション分割します。
+`parted` を使用してディスクをパーティション分割します。
 
 ```bash
-(echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
 ```
 
-`mkfs` コマンドを使用してパーティションにファイル システムを書き込みます。
+`mkfs` コマンドを使用してパーティションにファイル システムを書き込みます。 `partprobe` を使用して、変更を OS に認識させます。
 
 ```bash
-sudo mkfs -t ext4 /dev/sdc1
+sudo mkfs.xfs /dev/sdc1
+sudo partprobe /dev/sdc1
 ```
 
 オペレーティング システムでアクセスできるように、新しいディスクをマウントします。
@@ -137,18 +132,19 @@ sudo mkfs -t ext4 /dev/sdc1
 sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
 ```
 
-これで *datadrive* マウント ポイントを通じてディスクにアクセスできるようになりました。これは `df -h` コマンドを実行することで確認できます。
+これで `/datadrive` マウント ポイントを通じてディスクにアクセスできるようになりました。これは `df -h` コマンドを実行して確認できます。
 
 ```bash
-df -h
+df -h | grep -i "sd"
 ```
 
-出力には、 */datadrive* にマウントされた新しいドライブが示されます。
+出力には、`/datadrive` に新しいドライブがマウントされていることが示されます。
 
 ```bash
 Filesystem      Size  Used Avail Use% Mounted on
-/dev/sda1        30G  1.4G   28G   5% /
-/dev/sdb1       6.8G   16M  6.4G   1% /mnt
+/dev/sda1        29G  2.0G   27G   7% /
+/dev/sda15      105M  3.6M  101M   4% /boot/efi
+/dev/sdb1        14G   41M   13G   1% /mnt
 /dev/sdc1        50G   52M   47G   1% /datadrive
 ```
 
@@ -161,14 +157,25 @@ sudo -i blkid
 出力には、ドライブ (この例では `/dev/sdc1`) の UUID が表示されます。
 
 ```bash
-/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
+/dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="xfs"
 ```
 
-次のような行を */etc/fstab* ファイルに追加します。
+> [!NOTE]
+> **/etc/fstab** ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。 編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。 編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
+
+テキスト エディターで次のように `/etc/fstab` ファイルを開きます。
 
 ```bash
-UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  ext4    defaults,nofail   1  2
+sudo nano /etc/fstab
 ```
+
+次のような行を */etc/fstab* ファイルに追加します。 UUID 値は実際のものに置き換えてください。
+
+```bash
+UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive  xfs    defaults,nofail   1  2
+```
+
+ファイルの編集が完了したら、`Ctrl+O` を使用してファイルを書き込み、 `Ctrl+X` を使用してエディターを終了します。
 
 ディスクが構成されたので、SSH セッションを閉じます。
 
@@ -182,7 +189,7 @@ exit
 
 ### <a name="create-snapshot"></a>スナップショットの作成
 
-仮想マシンのディスクのスナップショットを作成する前に、ディスクの ID または名前が必要です。 ディスク ID を取得するには、[az vm show](/cli/azure/vm#az-vm-show) コマンドを使用します。 この例では、ディスク ID を変数に格納して、後の手順で使用できるようにしています。
+スナップショットを作成する前に、ディスクの ID または名前が必要です。 [az vm show](/cli/azure/vm#az-vm-show) を使用して、ディスク ID を取得します。 この例では、ディスク ID を変数に格納して、後の手順で使用できるようにしています。
 
 ```azurecli-interactive
 osdiskid=$(az vm show \
@@ -192,7 +199,7 @@ osdiskid=$(az vm show \
    -o tsv)
 ```
 
-仮想マシンのディスク ID を取得したら、次のコマンドでディスクのスナップショットを作成します。
+ID を取得したので、 [az snapshot create](/cli/azure/snapshot#az-snapshot-create) を使用してディスクのスナップショットを作成します。
 
 ```azurecli-interactive
 az snapshot create \
@@ -203,7 +210,7 @@ az snapshot create \
 
 ### <a name="create-disk-from-snapshot"></a>スナップショットからのディスクの作成
 
-このスナップショットをディスクに変換すれば、それを使って仮想マシンを作成し直すことができます。
+その後、[az disk create](/cli/azure/disk#az-disk-create) を使用してこのスナップショットをディスクに変換できます。これを使用して、仮想マシンを再作成することができます。
 
 ```azurecli-interactive
 az disk create \
@@ -214,7 +221,7 @@ az disk create \
 
 ### <a name="restore-virtual-machine-from-snapshot"></a>スナップショットからの仮想マシンの復元
 
-実際に仮想マシンを復元してみましょう。既存の仮想マシンは削除します。
+実際に仮想マシンの復旧を試すために、[az vm delete](/cli/azure/vm#az-vm-delete) を使用して既存の仮想マシンを削除します。
 
 ```azurecli-interactive
 az vm delete \
@@ -236,7 +243,7 @@ az vm create \
 
 すべてのデータ ディスクを仮想マシンに再度接続する必要があります。
 
-まず、[az disk list](/cli/azure/disk#az-disk-list) コマンドを使用して、データ ディスクの名前を見つけます。 この例では、このディスク名を *datadisk* という変数に格納しています。次の手順でこの変数を使用します。
+[az disk list](/cli/azure/disk#az-disk-list) コマンドを使用して、データ ディスク名を見つけます。 この例では、このディスク名を `datadisk` という変数に格納しています。次の手順でこの変数を使用します。
 
 ```azurecli-interactive
 datadisk=$(az disk list \

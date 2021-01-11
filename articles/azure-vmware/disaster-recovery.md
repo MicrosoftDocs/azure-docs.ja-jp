@@ -1,14 +1,14 @@
 ---
 title: 仮想マシンのディザスター リカバリーを完了する
-description: この記事では、AVS を使用して仮想マシンのディザスター リカバリーを完了する方法について説明します
+description: この記事では、Azure VMware Solution を使用して仮想マシンのディザスター リカバリーを完了する方法について説明します
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 5ccaa009c8e3e059597636a8bb78cc3bd255fe68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 76a417b9ba00c4c0e6e958e5a04d19aecfe24563
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749950"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752276"
 ---
 # <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Azure VMware Solution を使用して仮想マシンのディザスター リカバリーを完了する
 
@@ -46,7 +46,7 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="[PROTECT VMS]\(VM の保護\) の選択" border="true":::
 
-開いたウィンドウで、ソースおよびリモートの各サイトを選択します。この場合のリモート サイトは、AVS プライベート クラウドである必要があります。
+開いたウィンドウで、ソースおよびリモートの各サイトを選択します。この場合のリモート サイトは、Azure VMware Solution のプライベート クラウドである必要があります。
 
 :::image type="content" source="./media/disaster-recovery/protect-virtual-machines.png" alt-text="VM の保護のウィンドウ" border="true":::
 
@@ -56,7 +56,7 @@ VMware HCX には、レプリケーション ポリシーのきめ細かい制�
 
 - **Enable Quiescence (休止を有効にする):** 一貫性のあるコピーがリモート サイトに同期されるように、VM を一時停止します。
 
-- **同期先ストレージ:** 保護されている VM のリモート データストアを選択します。 AVS プライベート クラウドでは、この選択は vSAN データストアである必要があります。
+- **同期先ストレージ:** 保護されている VM のリモート データストアを選択します。 Azure VMware Solution のプライベート クラウドでは、この選択は vSAN データストアである必要があります。
 
 - **コンピューティング コンテナー:** リモート vSphere クラスターまたはリソース プールです。
 
@@ -95,7 +95,7 @@ VM が保護されると、 **[Snapshots]\(スナップショット\)** タブ�
 
 ## <a name="complete-a-test-recover-of-virtual-machines"></a>仮想マシンのテスト復旧を完了する
 
-AVS プライベート クラウドであるリモート サイトで **vSphere クライアント**にログインします。 **HCX プラグイン**内の [ディザスター リカバリー] 領域で、任意の VM の縦方向の省略記号を選択して、操作メニューを表示します。 **[Test Recover VM]\(VM のテスト復旧\)** を選択します。
+Azure VMware Solution のプライベート クラウドであるリモート サイトで **vSphere クライアント**にログインします。 **HCX プラグイン**内の [ディザスター リカバリー] 領域で、任意の VM の縦方向の省略記号を選択して、操作メニューを表示します。 **[Test Recover VM]\(VM のテスト復旧\)** を選択します。
 
 :::image type="content" source="./media/disaster-recovery/test-recover-virtual-machine.png" alt-text="[Test Recover VM]\(VM のテスト復旧\) の選択" border="true":::
 
@@ -105,7 +105,7 @@ AVS プライベート クラウドであるリモート サイトで **vSphere 
 
 **[テスト]** をクリックすると、復旧操作が開始されます。
 
-テスト復旧操作が完了すると、新しい VM を AVS プライベート クラウド vCenter で確認できます。
+テスト復旧操作が完了すると、新しい VM を Azure VMware Solution プライベート クラウドの vCenter で確認できます。
 
 :::image type="content" source="./media/disaster-recovery/verify-test-recovery.png" alt-text="復旧操作の確認" border="true":::
 
@@ -115,7 +115,7 @@ VM やその上で実行されているアプリケーションでテストを�
 
 ## <a name="recover-virtual-machines"></a>仮想マシンを復旧する
 
-AVS プライベート クラウドであるリモート サイトで **vSphere クライアント**にログインし、**HCX プラグイン**にアクセスします。
+Azure VMware Solution のプライベート クラウドであるリモート サイトで **vSphere クライアント**にログインし、**HCX プラグイン**にアクセスします。
 
 復旧シナリオでは、仮想マシンのグループがこの例に使用されます。
 
@@ -131,7 +131,7 @@ AVS プライベート クラウドであるリモート サイトで **vSphere 
 
 ## <a name="complete-a-reverse-replication-on-virtual-machines"></a>仮想マシンでレプリケーションの反転を完了する
 
-AVS プライベート クラウドで **vSphere クライアント**にログインし、**HCX プラグイン**にアクセスします。
+Azure VMware Solution のプライベート クラウドで **vSphere クライアント**にログインし、**HCX プラグイン**にアクセスします。
 レプリケーションの反転を開始する前に、ソース サイトの元の仮想マシンの電源をオフにしておく必要があります。 仮想マシンの電源がオフになっていない場合、この操作は失敗します。
 
 ソース サイトにレプリケートする仮想マシンを一覧から選択し、 **[アクション]** メニューを開いて、 **[反転]** を選択します。 ポップアップ ウィンドウで **[反転]** をクリックして、レプリケーションを開始します。

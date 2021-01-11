@@ -6,12 +6,13 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: zhshang
-ms.openlocfilehash: c8d74342e624b837c7ee803a2bcdcc12a3fb814b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: bd112526c7b36d5636d5d85c66b25b6310d35d1e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75659289"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500489"
 ---
 # <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure SignalR Service のインスタンスをスケーリングする方法
 この記事では、Azure SignalR Service のインスタンスをスケーリングする方法を示します。 スケーリングには、スケールアップとスケールアウトの 2 つのシナリオがあります。

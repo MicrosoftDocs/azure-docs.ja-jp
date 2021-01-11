@@ -46,6 +46,8 @@
       href: disable-private-link-service-network-policy.md
     - name: プライベート エンドポイントを管理する
       href: manage-private-endpoint.md
+    - name: Azure Firewall を使用してトラフィックを検査する
+      href: inspect-traffic-with-azure-firewall.md
     - name: トラブルシューティング
       items:
         - name: プライベート エンドポイントの接続に関する問題のトラブルシューティング

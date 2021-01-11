@@ -6,18 +6,17 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: aa9b186e74ed3b8fe5496afd5b21c54f50537d5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148346"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049786"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler の有効化または表示に関する問題のトラブルシューティング
 
-## <a name="active-issues"></a>アクティブな懸案事項
-
-* 現在は、Azure App Service で ASP.NET Core 3.x アプリケーションのプロファイリングがサポートされています。
+> [!CAUTION]
+> Azure App Service で ASP.NET Core アプリに対して Profiler を実行すると、バグが発生します。 既に修正プログラムがありますが、世界中にデプロイされるまでに数週間かかります。 [こちら](./asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)の手順に従って Application Insights SDK をアプリケーションに追加することで、このバグを回避できます。
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>一般的なトラブルシューティング
 
@@ -76,7 +75,7 @@ Profiler を正常に動作させるためには:
 
 
 * **ApplicationInsightsProfiler3** WebJob が実行されている必要があります。 WebJob を確認するには:
-   1. [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/) に移動します。
+   1. [Kudu](/archive/blogs/cdndevs/the-kudu-debug-console-azure-websites-best-kept-secret) に移動します。
    1. **[Tools]\(ツール\)** メニューの **[WebJobs Dashboard]\(WebJobs ダッシュボード\)** を選択します。  
       **[WebJobs]\(WebJobs\)** ウィンドウが開きます。 
    
@@ -194,11 +193,3 @@ Azure Diagnostics の構成に使用された設定を確認するには:
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
 [profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
 [profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
-
-
-
-
-
-
-
-

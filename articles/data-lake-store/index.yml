@@ -42,7 +42,7 @@ landingContent:
     links:
     - text: Azure Data Factory の使用
       url: ../data-factory/load-azure-data-lake-store.md
-    - text: ストレージ エクスプローラーの使用
+    - text: Storage Explorer の使用
       url: data-lake-store-in-storage-explorer.md
     - text: AdlCopy を使用
       url: data-lake-store-copy-data-azure-storage-blob.md

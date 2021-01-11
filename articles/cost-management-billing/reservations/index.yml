@@ -5,17 +5,18 @@ metadata:
   title: Azure の予約による節約
   description: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
   ms.service: cost-management-billing
+  ms.subservice: reservations
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
   ms.date: 04/30/2020
-  ms.openlocfilehash: 4706c13d6c9e354c6c7ca382f724a7b1094bdda3
-  ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+  ms.openlocfilehash: d8c7e7eee6307ce48e89cb5ade65d7dbff0f42d4
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/09/2020
-  ms.locfileid: "86207120"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88684696"
 landingContent:
 - title: 予約の購入
   linkLists:

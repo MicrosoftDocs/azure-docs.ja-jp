@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 91c4124bb7feb2b7da53ced318b24df320283cca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: ff42c8be6ba69a7fbd50474756b975067035349c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028568"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079544"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>PowerShell で Docker ホストを作成する
 

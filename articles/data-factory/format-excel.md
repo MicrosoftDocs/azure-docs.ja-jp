@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/21/2020
 ms.author: jingwang
-ms.openlocfilehash: a937548c9318d98e8832720706626b74167d32d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dd5e116f0c6844abeffc27820da03462c6e1cbbc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044401"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718205"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory での Excel 形式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,7 +32,7 @@ Excel 形式は、以下のコネクタでサポートされています。[Amaz
 | type             | データセットの type プロパティは、**Excel** に設定する必要があります。   | はい      |
 | location         | ファイルの場所の設定。 ファイル ベースの各コネクタには、固有の場所の種類と `location` でサポートされるプロパティがあります。 | はい      |
 | sheetName        | データを読み取る Excel ワークシートの名前。                       | はい      |
-| range            | 選択範囲のデータを検索するために指定するワークシート内のセルの範囲。たとえば、`A3:H5` (A3 から H5 の範囲のテーブル)、`A3` (セル A3 を起点とするテーブル)、`A3:A3` (単一のセル) を指定します。 指定しなかった場合、ADF により、ワークシート全体がテーブルとして読み取られます。 | いいえ       |
+| range            | 特定のワークシート内で選択データを見つけるセル範囲。例:<br>- 指定なし: 空ではない最初の行と列からワークシート全体を表として読み取ります<br>- `A3`: 特定のセルから始まる表を読み取り、下にあるすべての行と右にあるすべての列を動的に検出します<br>- `A3:H5`: この固定範囲を表として読み取ります<br>- `A3:A3`: この単一セルを読み取ります | いいえ       |
 | firstRowAsHeader | 指定したワークシート (または範囲) 内の先頭行を、列名を含んだヘッダー行として扱うかどうかを指定します。<br>使用できる値は **true** と **false** (既定値) です。 | いいえ       |
 | nullValue        | null 値の文字列表現を指定します。 <br>既定値は**空の文字列**です。 | いいえ       |
 | compression | ファイル圧縮を構成するためのプロパティのグループ。 アクティビティの実行中に圧縮/圧縮解除を行う場合は、このセクションを構成します。 | いいえ |

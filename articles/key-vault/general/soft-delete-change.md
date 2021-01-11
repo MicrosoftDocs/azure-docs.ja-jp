@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91068bacee0bde9e11cc23816bd8e2a101854fb2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c75da4c27eae76df51836143c4fb383a1473159a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388281"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564131"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>すべてのキー コンテナーでの論理的な削除の有効化
 
@@ -73,7 +73,7 @@ ms.locfileid: "87388281"
 1. Azure ポータルにログインします。
 2. キー コンテナーを検索します。
 3. [設定] で [プロパティ] を選択します。
-4. [論理的な削除] で、[Enable recovery of this vault and its objects]\(このコンテナーとそのオブジェクトの回復を有効にする\) に対応するオプション ボタンを選択します。
+4. [論理的な削除] で、[Enable recovery of this vault and its objects]\(このコンテナーとそのオブジェクトの回復を有効にする\) に対応するラジオ ボタンを選択します。
 5. 論理的な削除の保持期間を設定します。
 6. [保存] を選択します。
 

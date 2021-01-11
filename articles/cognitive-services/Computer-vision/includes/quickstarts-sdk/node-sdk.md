@@ -9,12 +9,13 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: pafarley
-ms.openlocfilehash: 556e56991d59eb65f789fde4d705706a03a63be9
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 71e6d159a7bb69e5aab28752f5ecf1eacaebd624
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073238"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89321899"
 ---
 <a name="HOLTop"></a>
 
@@ -139,7 +140,7 @@ npm install @azure/cognitiveservices-computervision
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objects)]
 
-ヘルパー関数 `formatRectObjects` を定義します。
+上、左、下、および右の座標と、幅および高さを返すように、ヘルパー関数 `formatRectObjects` を定義します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_objectformat)]
 
@@ -207,9 +208,9 @@ Computer Vision では、特殊なモデルを使用して、画像をさらに�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="read-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストを読み取る
+## <a name="extract-text-ocr-with-read"></a>Read を使用したテキストの抽出 (OCR)
 
-Computer Vision は、画像に映っているテキストを読み取って、文字ストリームに変換することができます。
+Computer Vision では、画像に映っているテキストを抽出し、文字ストリームに変換することができます。 このサンプルでは、Read 操作を使用します。
 
 > [!NOTE]
 > また、ローカルの画像からテキストを読み取ることもできます。 ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) 上のサンプル コードを参照してください。
@@ -220,17 +221,17 @@ Computer Vision は、画像に映っているテキストを読み取って、�
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
-### <a name="call-the-recognize-api"></a>Recognize API を呼び出す
+### <a name="call-the-read-api"></a>Read API を呼び出す
 
-次のコードを追加します。これによって、指定された画像の `recognizeText` 関数が呼び出されます。
+以下のコードは、指定された画像に対して `readTextFromURL` 関数と `readTextFromFile` 関数を呼び出すものです。このコードを追加します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-`recognizeText` 関数を定義します。 これにより、クライアント オブジェクトに対して **recognizeText** メソッドが呼び出され、操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。 次に、結果が返されるまで、操作 ID を使用して 1 秒間隔で操作が確認されます。 次に、抽出された結果が返されます。
+`readTextFromURL` 関数と `readTextFromFile` 関数を定義します。 これらにより、クライアント オブジェクトに対して **read** メソッドと **readInStream** メソッドが呼び出され、操作 ID が返され、画像の内容を読み取る非同期プロセスが開始されます。 次に、結果が返されるまで、操作 ID を使用して操作の状態が確認されます。 次に、抽出された結果が返されます。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 
-次に、ヘルパー関数 `printRecText` を定義します。これにより、Recognize 操作の結果がコンソールに出力されます。
+次に、ヘルパー関数 `printRecText` を定義します。これにより、Read 操作の結果がコンソールに出力されます。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
@@ -254,5 +255,5 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 > [!div class="nextstepaction"]
 >[Computer Vision API リファレンス (Node.js)](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
 
-* [Computer Vision とは](../../Home.md)
+* [Computer Vision とは](../../overview.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) にあります。

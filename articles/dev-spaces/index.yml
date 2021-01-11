@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 778d697f5c84f99da6974b9d689ddfe35930cd33
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: ac8900298670323551a25d4ef7ac3f7b44249c5a
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87072901"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88209890"
 landingContent:
 - title: Azure Dev Spaces について
   linkLists:
@@ -32,18 +32,6 @@ landingContent:
     links:
     - text: Azure Dev Spaces のインストール
       url: how-to/install-dev-spaces.md
-- title: マイクロサービスの開発とテスト
-  linkLists:
-  - linkListType: quickstart
-    links:
-    - text: マイクロサービスを実行してデバッグする
-      url: quickstart-netcore.md
-    - text: 一連のマイクロサービスでチームと共同作業を行う
-      url: quickstart-team-development.md
-  - linkListType: how-to-guide
-    links:
-    - text: CI/CD パイプラインで Dev Spaces を統合してエンドツーエンドのテストを改善する
-      url: how-to/setup-cicd.md
 - title: 高度なシナリオ
   linkLists:
   - linkListType: how-to-guide

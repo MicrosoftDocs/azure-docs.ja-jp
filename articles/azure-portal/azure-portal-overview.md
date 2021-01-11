@@ -1,6 +1,6 @@
 ---
 title: Azure Portal の概要 | Microsoft Docs
-description: Azure portal は、Azure サービスの管理に使用できるグラフィカル ユーザー インターフェイスです。 Azure portal でリソース間を移動およびリソースを検索する手順について説明します。
+description: Azure Portal は、Azure サービスの管理に使用できるグラフィカル ユーザー インターフェイスです。 Azure Portal でリソース間を移動およびリソースを検索する手順について説明します。
 services: azure-portal
 keywords: ポータル
 author: mgblythe
@@ -18,15 +18,15 @@ ms.locfileid: "84763926"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal の概要
 
-この記事では、Azure portal を紹介し、ポータル ページの要素を示し、Azure portal の管理エクスペリエンスの概要について説明します。
+この記事では、Azure Portal を紹介し、ポータル ページの要素を示し、Azure Portal の管理エクスペリエンスの概要について説明します。
 
-## <a name="what-is-the-azure-portal"></a>Azure portal とは
+## <a name="what-is-the-azure-portal"></a>Azure Portal とは
 
-Azure portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。 Azure portal では、グラフィカル ユーザー インターフェイスを使用して、Azure サブスクリプションを管理できます。 簡単な Web アプリから複雑なクラウド デプロイまで、すべてを構築、管理、監視することができます。 リソースを整理して表示するカスタム ダッシュボードを作成できます。 最適なエクスペリエンスを提供するアクセシビリティ オプションを構成できます。
+Azure Portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。 Azure Portal では、グラフィカル ユーザー インターフェイスを使用して、Azure サブスクリプションを管理できます。 簡単な Web アプリから複雑なクラウド デプロイまで、すべてを構築、管理、監視することができます。 リソースを整理して表示するカスタム ダッシュボードを作成できます。 最適なエクスペリエンスを提供するアクセシビリティ オプションを構成できます。
 
-Azure portal は、回復性と継続的な可用性を実現するよう設計されています。 すべての Azure データセンターにプレゼンスがあります。 この構成により、Azure portal は、個々のデータセンターの障害に対する回復性を確保し、ユーザーの近くにあることでネットワークの速度低下を回避します。 Azure portal は、継続的に更新され、メンテナンス アクティビティのためのダウンタイムを必要としません。
+Azure Portal は、回復性と継続的な可用性を実現するよう設計されています。 すべての Azure データセンターにプレゼンスがあります。 この構成により、Azure Portal は、個々のデータセンターの障害に対する回復性を確保し、ユーザーの近くにあることでネットワークの速度低下を回避します。 Azure Portal は、継続的に更新され、メンテナンス アクティビティのためのダウンタイムを必要としません。
 
-## <a name="azure-portal-menu"></a>Azure portal メニュー
+## <a name="azure-portal-menu"></a>Azure Portal メニュー
 
 ポータル メニューの既定のモードを選択できます。 ドッキングすることも、ポップアップ パネルとして動作させることもできます。
 
@@ -44,7 +44,7 @@ Azure サービスの新規サブスクライバーが[ポータルにサイン�
 
 ![既定のビュー セレクターを示すスクリーンショット](./media/azure-portal-overview/azure-portal-default-view.png)
 
-Azure portal メニューと Azure の既定のビューの両方とも、 **[ポータルの設定]** で変更できます。 選択内容を変更すると、その変更はすぐに適用されます。
+Azure Portal メニューと Azure の既定のビューの両方とも、 **[ポータルの設定]** で変更できます。 選択内容を変更すると、その変更はすぐに適用されます。
 
 ![既定のビュー セレクターを示すスクリーンショット](./media/azure-portal-overview/azure-portal-overview-portal-settings-menu-home.png)
 
@@ -56,9 +56,9 @@ Azure portal メニューと Azure の既定のビューの両方とも、 **[�
 
 基本的なポータルのレイアウトと操作方法を理解することをお勧めします。 ここでは、ユーザー インターフェイスのコンポーネントと、説明に使う用語の一部を紹介します。 より詳細なポータルのツアーについては、コースのレッスン「[ポータルを操作する](https://docs.microsoft.com/learn/modules/tour-azure-portal/3-navigate-the-portal)」を参照してください。
 
-Azure portal のメニューとページ ヘッダーは、常に存在するグローバル要素です。 恒常的に表示されているこれらの機能は、各サービスまたは機能に関連付けられているユーザー インターフェイスの「シェル」です。ヘッダーからは、グローバル コントロールにアクセスできます。 リソースの構成ページ ("ブレード" とも呼ばれます) にも、機能間を移動する際に便利なリソース メニューが表示される場合があります。
+Azure Portal のメニューとページ ヘッダーは、常に存在するグローバル要素です。 恒常的に表示されているこれらの機能は、各サービスまたは機能に関連付けられているユーザー インターフェイスの「シェル」です。ヘッダーからは、グローバル コントロールにアクセスできます。 リソースの構成ページ ("ブレード" とも呼ばれます) にも、機能間を移動する際に便利なリソース メニューが表示される場合があります。
 
-次の図では、Azure portal の基本的な要素にラベルが付けられています。それぞれの詳細は、次の表で説明されています。
+次の図では、Azure Portal の基本的な要素にラベルが付けられています。それぞれの詳細は、次の表で説明されています。
 
 ![全画面表示のポータル ビューと重要な UI 要素を示すスクリーンショット](./media/azure-portal-overview/azure-portal-overview-portal-callouts.png)
 
@@ -87,7 +87,7 @@ Azure portal のメニューとページ ヘッダーは、常に存在するグ
 > [!TIP]
 > リソース、サービス、またはドキュメントを検索する最も簡単な方法は、グローバル ヘッダーの*検索*を使用することです。 前のページに戻るには、階層リンクを使用します。
 >
-Azure portal でグローバル検索を使用する方法のデモについては、こちらのビデオをご覧ください。
+Azure Portal でグローバル検索を使用する方法のデモについては、こちらのビデオをご覧ください。
 
 
 > [!VIDEO https://www.youtube.com/embed/nZ7WwTZcQbo]
@@ -96,6 +96,6 @@ Azure portal でグローバル検索を使用する方法のデモについて�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [サポートされているブラウザーとデバイス](../azure-portal/azure-portal-supported-browsers-devices.md)で、Azure portal を実行できる場所について学習します
+* [サポートされているブラウザーとデバイス](../azure-portal/azure-portal-supported-browsers-devices.md)で、Azure Portal を実行できる場所について学習します
 * [Azure mobile app](https://azure.microsoft.com/features/azure-portal/mobile-app/) で移動中も接続を維持します
 * [Azure クイックスタート センター](../azure-portal/azure-portal-quickstart-center.md)を使用してご利用になるクラウド環境をオンボードおよび設定します

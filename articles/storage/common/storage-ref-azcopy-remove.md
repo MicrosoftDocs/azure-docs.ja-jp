@@ -4,16 +4,16 @@ description: この記事では、azcopy remove コマンドに関する参照�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 05/04/2020
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: ab085b9a41120a9f56c1c2e39a89def8c3893747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cdb49f6865afa4101468dc35b4e416d999b63f5
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84221080"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285222"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -34,31 +34,31 @@ azcopy remove [resourceURL] [flags]
 
 ## <a name="examples"></a>例
 
-SAS を使用して 1 つの BLOB を削除します。
+SAS トークンを使用して 1 つの BLOB を削除します。
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-SAS を使用して仮想ディレクトリ全体を削除します。
-
+SAS トークンを使用して仮想ディレクトリ全体を削除します。
+ 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true
 ```
 
-仮想ディレクトリ内の上位の BLOB のみを削除し、サブディレクトリは削除しません。
+仮想ディレクトリ内の BLOB のみを削除しますが、サブディレクトリや、それらのサブディレクトリ内の BLOB は削除しないでください。
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-仮想ディレクトリ内の BLOB のサブセットを削除します (例: jpg ファイルおよび pdf ファイルのみ、または BLOB 名が "exactName" の場合)。
+仮想ディレクトリ内の BLOB のサブセットを削除します (例: jpg ファイルおよび pdf ファイルのみを削除する、または BLOB 名が `exactName` の場合に削除する)。
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --include-pattern="*.jpg;*.pdf;exactName"
 ```
 
-仮想ディレクトリ全体を削除しますが、スコープから特定の BLOB を除外します (たとえば、foo で始まるすべての BLOB や、bar で終わるすべての BLOB)。
+仮想ディレクトリ全体を削除しますが、スコープから特定の BLOB を除外します (例: foo で始まるすべての BLOB や bar で終わるすべての BLOB)。
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive=true --exclude-pattern="foo*;*bar"
@@ -68,20 +68,19 @@ URL エンコードされていない相対パスをファイルに配置して�
 
 ```azcopy
 azcopy rm "https://[account].blob.core.windows.net/[container]/[path/to/parent/dir]" --recursive=true --list-of-files=/usr/bar/list.txt
-file content:
-  dir1/dir2
-  blob1
-  blob2
-
+- file content:
+    dir1/dir2
+    blob1
+    blob2
 ```
 
-階層型名前空間がある BLOB ストレージ アカウントからファイルを 1 つ削除します (include/exclude はサポートされていません)。
+階層型名前空間がある BLOB ストレージ アカウントから 1 つのファイルを削除します (include/exclude はサポートされていません)。
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/file]?[SAS]"
 ```
 
-階層型名前空間がある BLOB ストレージ アカウントからディレクトリを 1 つ削除します (include/exclude はサポートされていません)。
+階層型名前空間がある BLOB ストレージ アカウントから 1 つのディレクトリを削除します (include/exclude はサポートされていません)。
 
 ```azcopy
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
@@ -89,31 +88,31 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Options
 
-**--delete-snapshots** string   既定では、BLOB にスナップショットがある場合、削除操作は失敗します。 ルート BLOB とそのすべてのスナップショットを削除するには、"include" を指定します。逆に、スナップショットだけを削除し、ルート BLOB は保持するには、"only" を指定します。
+**--delete-snapshots** string   既定では、BLOB にスナップショットがある場合、削除操作は失敗します。 ルート BLOB とそのすべてのスナップショットを削除する場合は `include` を指定します。一方、スナップショットだけを削除し、ルート BLOB は保持する場合は `only` を指定します。
 
-**--exclude-path** string      削除時にこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: myFolder;myFolder/subDirName/file.pdf。
+**--exclude-path** string   削除時にこれらのパスを除外します。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: `myFolder;myFolder/subDirName/file.pdf`
 
-**--exclude-pattern** string   名前がパターンの一覧と一致するファイルを除外します。 例: *.jpg;* .pdf;exactName
+**--exclude-pattern** string   名前がパターンの一覧と一致するファイルを除外します。 例: `*.jpg`、`*.pdf`、`exactName`
 
-**--force-if-read-only**    Azure Files のファイルまたはフォルダーを削除するときに、既存のオブジェクトで読み取り専用属性が設定されている場合でも、削除の実行を強制します
+**--force-if-read-only**   Azure Files のファイルまたはフォルダーを削除するときに、既存のオブジェクトに読み取り専用属性が設定されている場合でも削除を強制的に実行します。
 
-**-h、--help**   remove のヘルプ
+**--help**   remove のヘルプ。
 
-**--include-path**string      削除する際にこれらのパスのみを含めます。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: myFolder;myFolder/subDirName/file.pdf
+**--include-path** string   削除するときに、これらのパスのみを含めます。 このオプションでは、ワイルドカード文字 (*) はサポートされていません。 相対パスのプレフィックスを確認します。 例: `myFolder;myFolder/subDirName/file.pdf`
 
-**--include-pattern** string   名前がパターンの一覧と一致するファイルをのみを含めます。 例: *.jpg;* .pdf;exactName
+**--include-pattern** string  名前がパターンの一覧と一致するファイルをのみを含めます。 例: *`.jpg`、* `.pdf`、`exactName`
 
-**--list-of-files** string     削除するファイルとディレクトリの一覧を含むファイルの場所を定義します。 相対パスは改行で区切る必要があり、パスを URL エンコードすることはできません。
+**--list-of-files** string  削除するファイルとディレクトリの一覧を含むファイルの場所を定義します。 相対パスは改行で区切る必要があり、パスを URL エンコードすることはできません。
 
-**--log-level** string         ログ ファイルのログの詳細度を定義します。 利用可能なレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (遅い応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 (規定値は 'INFO') (規定値は "INFO")
+**--log-level** string   ログ ファイルのログ詳細度を定義します。 指定できるレベルには、`INFO` (すべての要求/応答)、`WARNING` (低速な応答)、`ERROR` (失敗した要求のみ)、`NONE` (出力ログなし) が含まれます。 (既定値は `INFO`) (既定値は `INFO`)
 
-**--recursive**                ディレクトリ間で同期するときにサブディレクトリを再帰的に検索します。
+**--recursive**    ディレクトリ間で同期するときに、サブディレクトリ内を再帰的に調べます。
 
 ## <a name="options-inherited-from-parent-commands"></a>親コマンドから継承されるオプション
 
 |オプション|説明|
 |---|---|
-|--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
+|--cap-mbps float|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
 |--trusted-microsoft-suffixes string   |Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。|
 

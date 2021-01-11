@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services v3 入力メタデータのスキーマ
 description: この記事では、Azure Media Services v3 入力メタデータのスキーマの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -10,17 +10,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/14/2020
-ms.author: juliako
-ms.openlocfilehash: 40e61061878c8aec6bad353bfd0c5f2f4178ce14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: reference
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: 9ddfe3ea0d26a9032922423e7f2c2a2b6c3e411a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85095561"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295563"
 ---
-# <a name="input-metadata"></a>入力メタデータ 
+# <a name="input-metadata"></a>入力メタデータ
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 エンコード ジョブは、エンコーディング タスクを実行する入力資産に関連付けられています。  タスクが完了すると、出力資産が生成されます。 出力資産には、ビデオ、オーディオ、サムネイル、マニフェスト、およびその他のファイルが含まれます。 
 
@@ -51,9 +53,9 @@ JSON スキーマ の例は、この記事の最後に記載されています�
 
 | 名前 | 説明 |
 | --- | --- |
-| **名前**<br />必須 |資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short.mp4"` |
+| **Name**<br />必須 |資産ファイルの名前。 <br /><br />例: `"Name": "Ignite-short.mp4"` |
 | **Uri**<br />必須 |入力資産が配置されている URL。 出力資産が属している入力資産を特定するには、ID ではなく `Uri` フィールドを使用します。|
-| **[サイズ]**<br />必須 |資産ファイルのサイズ (バイト単位)。  <br /><br />例: `"Size": 75739259`|
+| **Size**<br />必須 |資産ファイルのサイズ (バイト単位)。  <br /><br />例: `"Size": 75739259`|
 | **Duration**<br />必須 |コンテンツの再生時間。 <br /><br />例: `"Duration": "PT1M10.304S"`. |
 | **NumberOfStreams**<br />必須 |資産ファイル内のストリーム数。  <br /><br />例: `"NumberOfStreams": 2`|
 | **FormatNames**<br />必須 |形式の名前。  <br /><br />例: `"FormatNames": "mov,mp4,m4a,3gp,3g2,mj2"`|
@@ -63,10 +65,10 @@ JSON スキーマ の例は、この記事の最後に記載されています�
 
 ## <a name="videotracks"></a>VideoTracks
 
-| 名前 |  | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **FourCC**<br />必須 |ffmpeg によって報告されるビデオ コーデックの FourCC コード。<br /><br />例: `"FourCC": "avc1"` |
-| **プロファイル** |ビデオ トラックのプロファイル。 <br /><br />例: `"Profile": "Main"`|
+| **Profile** |ビデオ トラックのプロファイル。 <br /><br />例: `"Profile": "Main"`|
 | **Level** |ビデオ トラックのレベル。 <br /><br />例: `"Level": "3.2"`|
 | **PixelFormat** |ビデオ トラックのピクセル形式。 <br /><br />例: `"PixelFormat": "yuv420p"`|
 | **Width**<br />必須 |エンコードされたビデオの幅 (ピクセル単位)。 <br /><br />例: `"Width": "1280"`|

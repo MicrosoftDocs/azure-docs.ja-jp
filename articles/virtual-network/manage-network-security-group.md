@@ -1,7 +1,7 @@
 ---
 title: Azure ネットワーク セキュリティ グループを作成、変更、削除する
 titlesuffix: Azure Virtual Network
-description: ネットワーク セキュリティ グループの作成、変更、削除の方法について説明します。
+description: セキュリティ規則に関する情報の参照先、およびネットワーク セキュリティ グループを作成、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 38fe9582595969ac92d3468b3b7e8c0a9d793c0c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dfb6426ec4e75f6484df37008522b966ebc3af6f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708282"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281261"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 

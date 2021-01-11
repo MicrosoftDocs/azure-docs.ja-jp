@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a2e8bb6da4cf126a9dbd955b082d77965772f6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ce7041cd74a6bfd3ac736d3ae774324122ed737b
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357581"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277070"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect 同期 V2 エンドポイント API (パブリック プレビュー) 
 Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、次のものがサポートされています。
@@ -33,7 +33,7 @@ Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイ�
 新しい V2 エンドポイントを使用するには、[Azure AD Connect バージョン 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) 以降を使用し、以下で説明するデプロイ手順に従って、Azure AD Connect サーバーに対して V2 エンドポイントを有効にする必要があります。   
 
 >[!NOTE]
->現時点では、このパブリック プレビューを使用できるのは Azure グローバル クラウドのみであり、[国内クラウド](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)では使用できません。
+>現時点では、このパブリック プレビューを使用できるのは Azure グローバル クラウドのみであり、[国内クラウド](../develop/authentication-national-cloud.md)では使用できません。
 
 ### <a name="public-preview-limitations"></a>パブリック プレビューの制限事項  
 このリリースでは広範なテストが行われていますが、それでも問題が発生する可能性があります。 このパブリック プレビュー リリースの目的の 1 つは、そのような問題を見つけて修正することです。  
@@ -44,7 +44,7 @@ Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイ�
 ## <a name="deployment-guidance"></a>展開のガイダンス 
 V2 エンドポイントを使用するには、[Azure AD Connect バージョン 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) 以降をデプロイする必要があります。 提供されているリンクを使用してダウンロードしてください。 
 
-環境内に新しいエンドポイントをロールアウトするには、[スウィング移行](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)方法を使用することをお勧めします。 これにより、大きなロールバックが必要な場合に対する明確なコンティンジェンシー計画が提供されます。 次の例では、このシナリオでスウィング移行を使用する方法を示します。 スウィング移行のデプロイ方法の詳細については、提供されているリンクを参照してください。 
+環境内に新しいエンドポイントをロールアウトするには、[スウィング移行](./how-to-upgrade-previous-version.md#swing-migration)方法を使用することをお勧めします。 これにより、大きなロールバックが必要な場合に対する明確なコンティンジェンシー計画が提供されます。 次の例では、このシナリオでスウィング移行を使用する方法を示します。 スウィング移行のデプロイ方法の詳細については、提供されているリンクを参照してください。 
 
 ### <a name="swing-migration-for-deploying-v2-endpoint"></a>V2 エンドポイントをデプロイするためのスウィング移行
 次の手順では、スウィング方法を使用して V2 エンドポイントをデプロイする方法を示します。

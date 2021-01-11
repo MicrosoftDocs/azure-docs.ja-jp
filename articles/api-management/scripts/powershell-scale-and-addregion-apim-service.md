@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - サービス インスタンスのスケーリング | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - サービス インスタンスのスケーリング
+description: API Management サービス インスタンスのスケーリングと、リージョンの追加方法について説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: a880bf617f4d1d81b73fda1fbe27d2dd803619a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec54f1dcf3f7f28415646a58c057453985d450f0
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008831"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902271"
 ---
 # <a name="scale-the-service-instance"></a>サービス インスタンスのスケーリング
 

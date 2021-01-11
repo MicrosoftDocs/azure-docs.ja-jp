@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: e6d61e329ba91f53b11ace4d258b35950e188dcb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d38fa2afe35976283e5129eab7d7f8ef3a1103b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76771214"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236490"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 
@@ -98,7 +98,7 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Windows デスクトップから Azure ストレージ エミュレーターを起動するには、 **[スタート]** ボタンをクリックするか、Windows キーを押します。 入力し、*Microsoft Azure ストレージ エミュレーター* を実行します。 詳細については、「[Azure ストレージ エミュレーターを使用した開発とテスト](../storage/common/storage-use-emulator.md)」を参照してください。
+Windows デスクトップから Azure ストレージ エミュレーターを起動するには、 **[スタート]** ボタンをクリックするか、Windows キーを押します。 入力し、*Microsoft Azure ストレージ エミュレーター* を実行します。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
 
 ### <a name="retrieve-your-connection-string"></a>接続文字列の取得
 
@@ -507,7 +507,7 @@ Visual Studio Community エディションの場合、インクルード ファ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+[Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 Azure Storage および Azure Cosmos DB の Table API について詳しくは、次のリンクを参照してください。
 

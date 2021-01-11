@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/21/2020
 ms.author: rajosh
-ms.openlocfilehash: e80ec71bef8c34331fac076b7b08be48a9571c2e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: db1de363856fd560fea97f8f9cdf542717c4cca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107701"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090095"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Azure Migrate を使用した移行計画の作成
 
@@ -151,7 +151,7 @@ VM が Azure に対応しているかどうかを確認するために、Azure V
 
 - 必要に応じて、実装のサポートを受けることができます。 クラウドに移行する多くの組織が、外部からサポートを受けています。 パーソナライズされたサポートを受けながら迅速かつ自信を持って Azure に移行するには、 [Azure Expert Managed Service Provider](https://www.microsoft.com/solution-providers/search?cacheId=9c2fed4f-f9e2-42fb-8966-4c565f08f11e&ocid=CM_Discovery_Checklist_PDF)  または  [FastTrack for Azure](https://azure.microsoft.com/programs/azure-fasttrack/?ocid=CM_Discovery_Checklist_PDF) のご利用をご検討ください。  
 
-移行するアプリケーションのリスト/グループ、アプリとデータベースの可用性とダウンタイムの制約、および必要な移行マイルストーンに関する詳細情報を含む、効果的なクラウド移行計画を作成します。 また、移行計画では、データのコピーにかかる時間を考慮し、移行後のテストや切り替えの作業に必要なバッファーを持たせる必要があります。 移行後のテストでは、機能、統合、セキュリティ、およびパフォーマンスに関するテストのユース ケースを含めて、移行されたアプリケーションが想定どおりに動作し、すべてのデータベース オブジェクトとデータのリレーションシップがクラウドに正常に転送されたことを確認する必要があります。 移行後のテストでは、機能、統合、セキュリティ、およびパフォーマンスに関するテストのユース ケースを含めて、移行されたアプリケーションが想定どおりに動作し、すべてのデータベース オブジェクトとデータのリレーションシップがクラウドに正常に転送されたことを確認する必要があります。  
+移行するアプリケーションのリスト/グループ、アプリとデータベースの可用性とダウンタイムの制約、および必要な移行マイルストーンに関する詳細情報を含む、効果的なクラウド移行計画を作成します。 また、移行計画では、データのコピーにかかる時間を考慮し、移行後のテストや切り替えの作業に必要なバッファーを持たせる必要があります。 移行後のテストでは、機能、統合、セキュリティ、およびパフォーマンスに関するテストのユース ケースを含めて、移行されたアプリケーションが想定どおりに動作し、すべてのデータベース オブジェクトとデータのリレーションシップがクラウドに正常に転送されたことを確認する必要があります。  
 
 この分析を使用して移行のロードマップを作成し、メンテナンス期間を宣言することで、アプリケーションとデータベースをゼロまたは最小限のダウンタイムで移行しながら、移行中の運用/ビジネスへの影響を最小限に抑えることができます。  
 

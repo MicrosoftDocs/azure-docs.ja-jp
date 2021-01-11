@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Certify の統合 | Microsoft Docs'
 description: Azure Active Directory と Certify の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0b36e020-175a-4534-b341-85260739f889
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f94e1ef064dd51668d8dd13e1efbe6d3f70a2e0e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8cf84165ef2b308038b6675920179262c0a2fdc9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157419"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-certify"></a>チュートリアル: Azure Active Directory と Certify の統合
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: b952d6b6fec9a1ec0dcd8af1a9566e67d3301d77
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: efcc4aebf16fccc70af7c77f0e8481d24f13b9cd
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496708"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935264"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Azure Cognitive Search のプレビュー機能
 
@@ -23,17 +23,17 @@ ms.locfileid: "86496708"
 
 |機能&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | カテゴリ | 説明 | 可用性  |
 |---------|------------------|-------------|---------------|
-| [**Azure Machine Learning (AML) スキル**](cognitive-search-aml-skill.md) | AI エンリッチメント| Azure Machine Learning からの推論エンドポイントを統合するための新しいスキルの種類です。 [このチュートリアル](cognitive-search-tutorial-aml-custom-skill.md)で作業を開始します。 | [Search REST API 2020-06-30-Preview](https://docs.microsoft.com/rest/api/searchservice/) または 2019-05-06-Preview を使用します。 また、Cognitive Search と Azure ML サービスが同じサブスクリプションにデプロイされていることを前提として、ポータル (スキルセットの設計) でも利用できます。 |
-| [**featuresMode パラメーター**](https://docs.microsoft.com/rest/api/searchservice/search-documents#featuresmode) | 関連性 (スコアリング) | 関連性のスコアリングで、フィールドごとの類似性スコア、フィールドごとの用語の頻度、およびフィールドごとの一致した一意のトークン数の詳細が含まれ強化されました。 これらのデータ ポイントは、[カスタム スコアリング ソリューション](https://github.com/Azure-Samples/search-ranking-tutorial)で使用できます。 | このクエリ パラメーターを、api-version=2020-06-30-Preview または 2019-05-06-Preview の [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) を使用して追加します。 |
-| [**マネージド サービス ID**](search-howto-managed-identities-data-sources.md) | インデクサー、セキュリティ| Azure Active Directory に検索サービスを登録してそれを信頼されたサービスにし、Azure データ ソースに対する RBAC アクセス許可を使用して、インデクサーによる読み取り専用アクセスを許可します。 | この機能にアクセスするには、ポータルを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用します。 |
+| [**Azure Machine Learning (AML) スキル**](cognitive-search-aml-skill.md) | AI エンリッチメント| Azure Machine Learning からの推論エンドポイントを統合するための新しいスキルの種類です。 [このチュートリアル](cognitive-search-tutorial-aml-custom-skill.md)で作業を開始します。 | [Search REST API 2020-06-30-Preview](/rest/api/searchservice/) または 2019-05-06-Preview を使用します。 また、Cognitive Search と Azure ML サービスが同じサブスクリプションにデプロイされていることを前提として、ポータル (スキルセットの設計) でも利用できます。 |
+| [**featuresMode パラメーター**](/rest/api/searchservice/search-documents#featuresmode) | 関連性 (スコアリング) | 関連性のスコアリングで、フィールドごとの類似性スコア、フィールドごとの用語の頻度、およびフィールドごとの一致した一意のトークン数の詳細が含まれ強化されました。 これらのデータ ポイントは、[カスタム スコアリング ソリューション](https://github.com/Azure-Samples/search-ranking-tutorial)で使用できます。 | このクエリ パラメーターを、api-version=2020-06-30-Preview または 2019-05-06-Preview の [Search Documents (REST)](/rest/api/searchservice/search-documents) を使用して追加します。 |
+| [**マネージド サービス ID**](search-howto-managed-identities-data-sources.md) | インデクサー、セキュリティ| Azure Active Directory に検索サービスを登録してそれを信頼されたサービスにし、Azure データ ソースに対する RBAC アクセス許可を使用して、インデクサーによる読み取り専用アクセスを許可します。 | この機能にアクセスするには、ポータルを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用します。 |
 | [**デバッグ セッション**](cognitive-search-debug-session.md) | ポータル、AI エンリッチメント (スキルセット) | スキルセットの問題を調査して解決するために使用する、セッション内スキルセット エディター。 デバッグ セッション中に適用された修正は、サービス内のスキルセットに保存できます。 | ポータルのみで、デバッグ セッションを開くための [概要] ページの中間ページのリンクを使用します。 |
-| [**ネイティブ BLOB の論理的な削除**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | インデクサー、Azure BLOB| Azure Cognitive Search の Azure Blob Storage インデクサーは、論理的に削除された状態にある BLOB を認識し、インデックス作成時に対応する検索ドキュメントを削除します。 | この構成設定を追加するには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の[Create Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) を使用します。 |
-| [**カスタム エンティティの参照スキル**](cognitive-search-skill-custom-entity-lookup.md ) | AI エンリッチメント (スキルセット) | ユーザーが定義したカスタムの単語と語句のリストからテキストを検索するコグニティブ スキル。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルでは、ある程度のあいまい一致もサポートされており、類似しているが完全一致ではない一致を見つけるために適用できます。 | このプレビュー スキルを参照するには、ポータルのスキルセット エディターを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) を使用します。 |
-| [**PII 検出スキル**](cognitive-search-skill-pii-detection.md) | AI エンリッチメント (スキルセット) | 入力テキストから個人を特定できる情報を抽出する、インデックス作成中に使用されるコグニティブ スキルです。ユーザーには、さまざまな方法でそれをそのテキストからマスクするためのオプションが提供されます。 | このプレビュー スキルを参照するには、ポータルのスキルセット エディターを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Skillset (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset) を使用します。 |
-| [**インクリメンタル エンリッチメント**](cognitive-search-incremental-indexing-conceptual.md) | インデクサーの構成| エンリッチメント パイプラインにキャッシュが追加され、スキルセットや別のオブジェクトに対する更新など、目的の変更によってコンテンツが変更されない場合に既存の出力を再利用できます。 キャッシュは、スキルセットによって生成されるエンリッチされたドキュメントにのみ適用されます。| この構成設定を追加するには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の[Create Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) を使用します。 |
-| [**Cosmos DB インデクサー:MongoDB API、Gremlin API、Cassandra API**](search-howto-index-cosmosdb.md) | インデクサー データ ソース | Cosmos DB には、SQL の API が一般公開されていますが、MongoDB、Gremlin、Cassandra 用の API はプレビュー段階です。 | Gremlin と Cassandra のみでは、バックエンドでご自分のサブスクリプションがサポートされるように、[最初にサインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)します。 MongoDB データ ソースは、ポータルで構成できます。 それ以外の場合、3 つのすべての API のデータ ソースは、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して構成できます。 |
-|  [**Azure Data Lake Storage Gen2 インデクサー**](search-howto-index-azure-data-lake-storage.md) | インデクサー データ ソース | Azure Data Lake Storage Gen2 の内容とメタデータからインデックスを作成します。| バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースにアクセスするには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用します。 |
-| [**moreLikeThis**](search-more-like-this.md) | クエリ | 特定のドキュメントに関連する別のドキュメントを検索します。 この機能は、以前のプレビューからありました。 | このクエリ パラメーターを、api-version=2020-06-30-Preview、2019-05-06-Preview、2016-09-01-Preview または 2017-11-11-Preview の [Search Documents (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) 呼び出しに追加します。 |
+| [**ネイティブ BLOB の論理的な削除**](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) | インデクサー、Azure BLOB| Azure Cognitive Search の Azure Blob Storage インデクサーは、論理的に削除された状態にある BLOB を認識し、インデックス作成時に対応する検索ドキュメントを削除します。 | この構成設定を追加するには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の[Create Indexer (REST)](/rest/api/searchservice/create-indexer) を使用します。 |
+| [**カスタム エンティティの参照スキル**](cognitive-search-skill-custom-entity-lookup.md ) | AI エンリッチメント (スキルセット) | ユーザーが定義したカスタムの単語と語句のリストからテキストを検索するコグニティブ スキル。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルでは、ある程度のあいまい一致もサポートされており、類似しているが完全一致ではない一致を見つけるために適用できます。 | このプレビュー スキルを参照するには、ポータルのスキルセット エディターを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Skillset (REST)](/rest/api/searchservice/create-skillset) を使用します。 |
+| [**PII 検出スキル**](cognitive-search-skill-pii-detection.md) | AI エンリッチメント (スキルセット) | 入力テキストから個人を特定できる情報を抽出する、インデックス作成中に使用されるコグニティブ スキルです。ユーザーには、さまざまな方法でそれをそのテキストからマスクするためのオプションが提供されます。 | このプレビュー スキルを参照するには、ポータルのスキルセット エディターを使用するか、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Skillset (REST)](/rest/api/searchservice/create-skillset) を使用します。 |
+| [**インクリメンタル エンリッチメント**](cognitive-search-incremental-indexing-conceptual.md) | インデクサーの構成| エンリッチメント パイプラインにキャッシュが追加され、スキルセットや別のオブジェクトに対する更新など、目的の変更によってコンテンツが変更されない場合に既存の出力を再利用できます。 キャッシュは、スキルセットによって生成されるエンリッチされたドキュメントにのみ適用されます。| この構成設定を追加するには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の[Create Indexer (REST)](/rest/api/searchservice/create-indexer) を使用します。 |
+| [**Cosmos DB インデクサー:MongoDB API、Gremlin API、Cassandra API**](search-howto-index-cosmosdb.md) | インデクサー データ ソース | Cosmos DB には、SQL の API が一般公開されていますが、MongoDB、Gremlin、Cassandra 用の API はプレビュー段階です。 | Gremlin と Cassandra のみでは、バックエンドでご自分のサブスクリプションがサポートされるように、[最初にサインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)します。 MongoDB データ ソースは、ポータルで構成できます。 それ以外の場合、3 つのすべての API のデータ ソースは、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用して構成できます。 |
+|  [**Azure Data Lake Storage Gen2 インデクサー**](search-howto-index-azure-data-lake-storage.md) | インデクサー データ ソース | Azure Data Lake Storage Gen2 の内容とメタデータからインデックスを作成します。| バックエンドでご自分のサブスクリプションがサポートされるように、[サインアップ](https://aka.ms/azure-cognitive-search/indexer-preview)する必要があります。 このデータ ソースにアクセスするには、api-version=2020-06-30-Preview または api-version=2019-05-06-Preview の [Create Data Source (REST)](/rest/api/searchservice/create-data-source) を使用します。 |
+| [**moreLikeThis**](search-more-like-this.md) | クエリ | 特定のドキュメントに関連する別のドキュメントを検索します。 この機能は、以前のプレビューからありました。 | このクエリ パラメーターを、api-version=2020-06-30-Preview、2019-05-06-Preview、2016-09-01-Preview または 2017-11-11-Preview の [Search Documents (REST)](/rest/api/searchservice/search-documents) 呼び出しに追加します。 |
 
 ## <a name="calling-preview-rest-apis"></a>プレビューの REST API の呼び出し
 
@@ -43,9 +43,9 @@ Azure Cognitive Search では常に、まず REST API によって、次に .NET
 
 一部のプレビュー機能にはポータルと .NET SDK で使用できるものがありますが、REST API には常にプレビュー機能があります。
 
-+ 検索操作の場合、現在のプレビュー バージョンは [ **`2020-06-30-Preview`** ](https://docs.microsoft.com/rest/api/searchservice/index-preview) です。
++ 検索操作の場合、現在のプレビュー バージョンは [ **`2020-06-30-Preview`** ](/rest/api/searchservice/index-preview) です。
 
-+ 管理操作の場合、現在のプレビュー バージョンは [ **`2019-10-01-Preview`** ](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) です。
++ 管理操作の場合、現在のプレビュー バージョンは [ **`2019-10-01-Preview`** ](/rest/api/searchmanagement/index-2019-10-01-preview) です。
 
 古いプレビューはまだ動作しますが、時間がたてば古くなります。 ご自分のコードで `api-version=2019-05-06-Preview`、`api-version=2016-09-01-Preview` または `api-version=2017-11-11-Preview` を呼び出している場合、それらの呼び出しはまだ有効です。 ただし、機能強化の更新が行われるのは、最新のプレビュー バージョンのみです。 
 
@@ -62,4 +62,4 @@ Azure Cognitive Search サービスは複数のバージョンで使用できま
 Search REST プレビュー API リファレンス ドキュメントを確認します。 問題が発生した場合は、[Stack Overflow](https://stackoverflow.com/) または[サポートへの問い合わせ](https://azure.microsoft.com/support/community/?product=search)でサポートを依頼してください。
 
 > [!div class="nextstepaction"]
-> [Search Service REST API リファレンス (プレビュー)](https://docs.microsoft.com/rest/api/searchservice/index-preview)
+> [Search Service REST API リファレンス (プレビュー)](/rest/api/searchservice/index-preview)

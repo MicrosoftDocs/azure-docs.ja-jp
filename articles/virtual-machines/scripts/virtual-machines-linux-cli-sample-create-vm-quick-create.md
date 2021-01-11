@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 47f08929807fb9c0a4e08460b7acc795eca97518
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4611095b936afed0870d12e1ce7b2cbd60f03b88
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085335"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479648"
 ---
 # <a name="create-a-virtual-machine"></a>仮想マシンの作成
 

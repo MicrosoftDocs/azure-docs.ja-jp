@@ -2,21 +2,21 @@
 title: PowerShell を使用して Application Insights のアラートを設定する | Microsoft Docs
 description: Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。
 ms.topic: conceptual
-ms.date: 10/31/2016
-ms.openlocfilehash: 3a3d614ec57242a2ea4b29a86d6365a2efe56f94
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/23/2016
+ms.openlocfilehash: 74d477b6660c0f7ec2ee32b34169bb85886936e5
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516959"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322467"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) では、[アラート](../../azure-monitor/platform/alerts-log.md)の構成を自動化できます。
+[Application Insights](./app-insights-overview.md) では、[アラート](../platform/alerts-log.md)の構成を自動化できます。
 
-さらに、[webhook を設定して、アラートへの対応を自動化](../../azure-monitor/platform/alerts-webhooks.md)することもできます。
+さらに、[webhook を設定して、アラートへの対応を自動化](../platform/alerts-webhooks.md)することもできます。
 
 > [!NOTE]
 > リソースと警告を同時に作成したい場合は、[Azure Resource Manager テンプレートの使用](powershell.md)を検討してください。
@@ -30,7 +30,7 @@ ms.locfileid: "86516959"
 * このインストーラーを使用して Microsoft Azure PowerShell をインストールする。
 
 ## <a name="connect-to-azure"></a>Azure に接続する
-Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azure/overview)します。
+Azure PowerShell を起動して、 [サブスクリプションに接続](/powershell/azure/)します。
 
 ```azurepowershell
 Add-AzAccount
@@ -51,7 +51,7 @@ Get-AzAlertRule -ResourceGroup "Fabrikam" `
 Add-AzMetricAlertRule -Name "{ALERT NAME}" `
   -Description "{TEXT}" `
   -ResourceGroup "{GROUP NAME}" `
-  -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
+  -TargetResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
   -MetricName "{METRIC NAME}" `
   -Operator GreaterThan `
   -Threshold {NUMBER}  `
@@ -71,7 +71,7 @@ GUID は、サブスクリプション ID です (アプリケーションのイ
 ```azurepowershell
 Add-AzMetricAlertRule -Name "slow responses" `
   -ResourceGroup "Fabrikam" `
-  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
   -MetricName "request.duration" `
   -Operator GreaterThan `
   -Threshold 1 `
@@ -82,13 +82,13 @@ Add-AzMetricAlertRule -Name "slow responses" `
 ```
 
 ## <a name="example-2"></a>例 2
-[TrackMetric()](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) を使用して "salesPerHour" という名前のメトリックを報告するアプリケーションがあります。 24 時間にわたる "salesPerHour" の平均が 100 を下回る場合は、私の同僚に電子メールを送信してください。
+[TrackMetric()](./api-custom-events-metrics.md#trackmetric) を使用して "salesPerHour" という名前のメトリックを報告するアプリケーションがあります。 24 時間にわたる "salesPerHour" の平均が 100 を下回る場合は、私の同僚に電子メールを送信してください。
 
 ```azurepowershell
 Add-AzMetricAlertRule -Name "poor sales" `
   -Description "slow sales alert" `
   -ResourceGroup "Fabrikam" `
-  -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
+  -TargetResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
   -MetricName "salesPerHour" `
   -Operator LessThan `
   -Threshold 100 `
@@ -98,7 +98,7 @@ Add-AzMetricAlertRule -Name "poor sales" `
   -RuleType Metric
 ```
 
-別の追跡呼び出しの [測定パラメーター](../../azure-monitor/app/api-custom-events-metrics.md#properties) (TrackEvent や trackPageView など) を使用して報告されるメトリックにも同じルールを使用できます。
+別の追跡呼び出しの [測定パラメーター](./api-custom-events-metrics.md#properties) (TrackEvent や trackPageView など) を使用して報告されるメトリックにも同じルールを使用できます。
 
 ## <a name="metric-names"></a>メトリックの名前
 | メトリックの名前 | 画面の名前 | 説明 |
@@ -124,22 +124,23 @@ Add-AzMetricAlertRule -Name "poor sales" `
 | `request.rate` |要求レート |1 秒あたりのアプリケーションに出されるすべての要求のレート。 |
 | `requestFailed.count` |失敗した要求 |400 またはこれより大きな応答コードを生じさせた HTTP 要求の数 |
 | `view.count` |ページ ビュー |Web ページに対するクライアント ユーザーの要求数。 代理トラフィックはフィルターで除外されます。 |
-| {カスタム メトリック名} |{メトリック名} |[TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) または[追跡呼び出しの測定パラメーター](../../azure-monitor/app/api-custom-events-metrics.md#properties)で報告されるメトリック値。 |
+| {カスタム メトリック名} |{メトリック名} |[TrackMetric](./api-custom-events-metrics.md#trackmetric) または[追跡呼び出しの測定パラメーター](./api-custom-events-metrics.md#properties)で報告されるメトリック値。 |
 
 メトリックは、さまざまなテレメトリ モジュールによって送信されます。
 
 | メトリック グループ | コレクター モジュール |
 | --- | --- |
-| basicExceptionBrowser、<br/>clientPerformance、<br/>view |[ブラウザーの JavaScript](../../azure-monitor/app/javascript.md) |
-| performanceCounter |[パフォーマンス](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| remoteDependencyFailed |[依存関係](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
-| request、<br/>requestFailed |[サーバー要求](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
+| basicExceptionBrowser、<br/>clientPerformance、<br/>view |[ブラウザーの JavaScript](./javascript.md) |
+| performanceCounter |[パフォーマンス](./configuration-with-applicationinsights-config.md) |
+| remoteDependencyFailed |[依存関係](./configuration-with-applicationinsights-config.md) |
+| request、<br/>requestFailed |[サーバー要求](./configuration-with-applicationinsights-config.md) |
 
 ## <a name="webhooks"></a>Webhooks
-[アラートへの対応を自動化](../../azure-monitor/platform/alerts-webhooks.md)できます。 アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
+[アラートへの対応を自動化](../platform/alerts-webhooks.md)できます。 アラートが発生すると、Azure は任意の Web アドレスを呼び出します。
 
 ## <a name="see-also"></a>参照
 * [Application Insights を構成するスクリプト](./create-new-resource.md#creating-a-resource-automatically)
 * [テンプレートから Application Insights と Web テスト リソースを作成する](powershell.md)
 * [Microsoft Azure Diagnostics の Application Insights への結合を自動化する](powershell-azure-diagnostics.md)
-* [アラートへの対応を自動化する](../../azure-monitor/platform/alerts-webhooks.md)
+* [アラートへの対応を自動化する](../platform/alerts-webhooks.md)
+

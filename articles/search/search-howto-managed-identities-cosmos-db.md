@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 107cd113645a2cbd4b452f9350fa67d734ee6df8
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: df37b7f1c5b1ed35b6c3779eea470b2fb0936ecf
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143643"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936658"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する (プレビュー)
 
 > [!IMPORTANT] 
-> マネージド ID を使用する、データ ソースへの接続の設定のサポートは現在限定的なパブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
-> プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)に必要事項を入力して行うことができます。
+> マネージド ID を使用したデータ ソースへの接続の設定のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
 
 このページでは、データ ソースのオブジェクト接続文字列で資格情報を指定する代わりに、マネージド ID を使用して Azure Cosmos DB データベースへのインデクサー接続を設定する方法を説明します。
 
@@ -32,11 +31,11 @@ ms.locfileid: "86143643"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - システム割り当てマネージド ID をオンにする
 
-システム割り当てマネージド ID が有効になると、お客様の検索サービスのための ID が Azure によって作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 その後、インデックス作成中にデータへのアクセスを許可する、ロールベースのアクセス制御 (RBAC) の割り当てにおいて、この ID を使用することができます。
+システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 その後、インデックス作成中にデータへのアクセスを許可する、ロールベースのアクセス制御 (RBAC) の割り当てで、この ID を使用することができます。
 
 ![システム割り当てマネージド ID をオンにする](./media/search-managed-identities/turn-on-system-assigned-identity.png "システム割り当てマネージド ID をオンにする")
 
-**[保存]** を選択すると、検索サービスに割り当てられたオブジェクト ID が表示されるようになります。
+**[保存]** を選択した後に、検索サービスに割り当てられたオブジェクト ID が表示されます。
 
 ![オブジェクト ID](./media/search-managed-identities/system-assigned-identity-object-id.png "Object ID")
  
@@ -46,23 +45,21 @@ ms.locfileid: "86143643"
 
 1. Azure portal で、インデックスを作成するデータが含まれている Cosmos DB アカウントに移動します。
 2. **[アクセス制御 (IAM)]** を選択します
-3. **[追加]** 、 **[ロールの割り当ての追加]** を選択します
+3. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択します
 
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-cosmos-db.png "ロールの割り当ての追加")
 
 4. **[Cosmos DB アカウントの閲覧者ロール]** を選択します
 5. **[アクセスの割り当て先]** を **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
-6. 検索サービスを検索して選択し、 **[保存]** を選択します
+6. 検索サービスを検索し、それを選んでから、 **[保存]** を選択します
 
     ![閲覧者とデータ アクセスのロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-cosmos-db-account-reader-role.png "閲覧者とデータ アクセスのロールの割り当てを追加する")
 
 ### <a name="3---create-the-data-source"></a>3 - データ ソースを作成する
 
-**データ ソース**は、インデックスを作成するデータ、資格情報、およびデータの変更を識別するためのポリシー (コレクション内の変更または削除されたドキュメントなど) を指定します。 データ ソースは、複数のインデクサーから使用できるように、独立したリソースとして定義します。
+[REST API](/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用して Cosmos DB のデータにインデックスを付けるためのデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
 
-マネージド ID を使用してデータ ソースに対して認証する場合、**credentials** にはアカウント キーは含まれません。
-
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して Cosmos DB データ ソース オブジェクトを作成する方法の例:
+マネージド ID を使用して認証する場合、**資格情報**にはアカウント キーは含まれません。
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -94,8 +91,6 @@ api-key: [Search service admin key]
 | **dataChangeDetectionPolicy** | 推奨 |
 |**dataDeletionDetectionPolicy** | 省略可能 |
 
-Azure portal と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) も、マネージド ID 接続文字列をサポートしています。 Azure portal では、このページ上部のリンクを使用してプレビューにサインアップする際に提供される、機能フラグが必要です。 
-
 ### <a name="4---create-the-index"></a>4 - インデックスを作成する
 
 インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
@@ -116,7 +111,7 @@ api-key: [admin key]
 }
 ```
 
-インデックスの作成の詳細については、[インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)に関する記事をご覧ください。
+インデックスの作成の詳細については、[インデックスの作成](/rest/api/searchservice/create-index)に関する記事をご覧ください。
 
 ### <a name="5---create-the-indexer"></a>5 - インデクサーを作成する
 
@@ -141,7 +136,7 @@ api-key: [admin key]
 
 このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](https://docs.microsoft.com/rest/api/searchservice/create-indexer)」をご覧ください。
+インデクサー作成 API の詳細については、「 [インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 

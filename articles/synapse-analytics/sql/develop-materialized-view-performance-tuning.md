@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: a3b012d86444ca2bb9b84af37aa17424221457d1
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: d476bef6faa19defad1d2e1ef1a90f7e5d83def5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955065"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495694"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>具体化されたビューを使用したパフォーマンス チューニング
 
@@ -40,7 +40,7 @@ SQL プールでは、標準ビューと具体化されたビューの両方が�
 |追加のストレージ                   | いいえ                                           | はい
 |構文                          | CREATE VIEW                                  | CREATE MATERIALIZED VIEW AS SELECT
 
-## <a name="benefits-of-using-materialized-views"></a>具体化されたビューを使用する利点
+## <a name="benefits-of-materialized-views"></a>具体化されたビューの利点
 
 具体化されたビューが適切に設計されていると、次のような利点が得られます。
 

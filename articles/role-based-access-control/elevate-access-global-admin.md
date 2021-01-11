@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791998"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799334"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
@@ -144,6 +144,22 @@ CanDelegate        : False
     ```
 
 ## <a name="azure-cli"></a>Azure CLI
+
+### <a name="elevate-access-for-a-global-administrator"></a>全体管理者のアクセス権を昇格する
+
+Azure CLI を使用して全体管理者のアクセス権を昇格するには、以下の基本的な手順を実行します。
+
+1. [az rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) コマンドを使用して `elevateAccess` エンドポイントを呼び出します。これにより、ユーザー アクセス管理者ロールがルート スコープ (`/`) で付与されます。
+
+    ```azurecli
+    az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
+    ```
+
+1. 昇格させたアクセス権で必要な変更を加えます。
+
+    ロールの割り当ての詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](role-assignments-cli.md)」をご覧ください。
+
+1. 後述のセクションの手順を実行して、昇格したアクセス権を削除します。
 
 ### <a name="list-role-assignment-at-root-scope-"></a>ルート スコープ (/) のロールの割り当てを一覧表示する
 

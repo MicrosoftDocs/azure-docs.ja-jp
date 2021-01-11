@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: e8d1498520ea0c59372ec4e1096b6f2b4bcf885f
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 2a6033ef1d2b7dda04b1510d42fa49141e0b79b4
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921132"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135999"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル:SQL API を使って Azure Cosmos DB に対するクエリを実行する
 
@@ -113,7 +113,7 @@ SQL クエリについて詳しくは、次を参照してください。
 
 ## <a name="example-query-2"></a>サンプル クエリ 2
 
-次のクエリでは、ID が `WakefieldFamily` と一致する家族の子供の名前がすべて学年順に返されます。
+次のクエリでは、ID が `WakefieldFamily` と一致する家族の子供の名前がすべて返されます。
 
 **クエリ**
 

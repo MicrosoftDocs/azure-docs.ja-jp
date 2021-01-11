@@ -52,7 +52,7 @@ HDInsight クラスターには、クラスター ノードとして VM のグ�
 
 ## <a name="use-rest-api-to-reboot-vms"></a>REST API を使用して VM を再起動する
 
-API ドキュメントの**試してみる**機能を使用して、HDInsight に要求を送信できます。 ノードの再起動操作を使用するには、ノードの一覧表示とノードの再起動という 2 つの手順が必要です。
+API ドキュメントの**使ってみる**機能を使用して、HDInsight に要求を送信できます。 ノードの再起動操作を使用するには、ノードの一覧表示とノードの再起動という 2 つの手順が必要です。
 
 1. ノードを一覧表示します。 クラスター ノードの一覧は、REST API または Ambari から取得できます。 詳細については、[HDInsight の List Hosts REST API 操作](https://docs.microsoft.com/rest/api/hdinsight/virtualmachines/listhosts)に関する記事を参照してください。
 

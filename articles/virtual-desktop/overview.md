@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop とは - Azure
 description: Windows Virtual Desktop の概要
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 08/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cc5ad91c779a3445712db962fb97bab309eda973
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386575"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661114"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
@@ -48,7 +46,7 @@ Windows Virtual Desktop を使うと、スケーラブルで柔軟な環境を�
 
 仮想デスクトップをデプロイおよび管理できます。
 
-* ホスト プールの構成、アプリ グループの作成、ユーザーの割り当て、リソースの公開には、Windows Virtual Desktop の PowerShell インターフェイスと REST インターフェイスを利用できます。
+* Azure portal と、Windows Virtual Desktop の PowerShell および REST インターフェイスを使用して、ホスト プールの構成、アプリ グループの作成、ユーザーの割り当て、リソースの公開を行うことができます。
 * 単一のホスト プールから完全版のデスクトップと個々のリモート アプリのどちらも公開できます。また、ユーザー グループに応じてアプリ グループを個別に作成できるほか、ユーザーを複数のアプリ グループに割り当ててイメージの数を削減することも可能です。
 * 環境の管理では、ロールの割り当てにあらかじめ用意されている委任アクセス権を使用したり、診断情報を収集してさまざまな構成やユーザー エラーに対する理解を深めたりすることができます。
 * 新しい診断サービスを使ってエラーのトラブルシューティングが可能です。
@@ -63,7 +61,7 @@ Windows Virtual Desktop を使うと、スケーラブルで柔軟な環境を�
 
 Windows Virtual Desktop を設定し、ユーザーを Windows のデスクトップやアプリケーションに正常に接続するうえで必要なことがいくつかあります。
 
-以下の OS のサポートが追加される予定になっています。デプロイする予定のデスクトップとアプリに基づいて、ユーザーのための[適切なライセンス](https://azure.microsoft.com/pricing/details/virtual-desktop/)があることを確認してください。
+次のオペレーティング システムがサポートされています。デプロイする予定のデスクトップとアプリに基づいて、ユーザーのための[適切なライセンス](https://azure.microsoft.com/pricing/details/virtual-desktop/)があることを確認してください。
 
 |OS|必要とされるライセンス|
 |---|---|
@@ -73,11 +71,17 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 
 インフラストラクチャが Windows Virtual Desktop をサポートするうえで必要なものは次のとおりです。
 
-* [Azure Active Directory](/azure/active-directory/)
-* Azure Active Directory と同期している Windows Server Active Directory。 これは、次のいずれかを使用して構成できます。
-  * Azure AD Connect (ハイブリッド組織向け)
-  * Azure AD Domain Services (ハイブリッドまたはクラウド組織向け)
-* Windows Server Active Directory を含むか、またはこのディレクトリに接続されている仮想ネットワークが含まれる Azure サブスクリプション
+* [Azure Active Directory](/azure/active-directory/)。
+* Azure Active Directory と同期している Windows Server Active Directory。 これは、Azure AD Connect (ハイブリッド組織の場合) または Azure AD Domain Services (ハイブリッドまたはクラウド組織の場合) を使用して構成できます。
+  * Azure Active Directory と同期している Windows Server AD。 ユーザーのソースは Windows Server AD であり、Windows Virtual Desktop VM は Windows Server AD ドメインに参加しています。
+  * Azure Active Directory と同期している Windows Server AD。 ユーザーのソースは Windows Server AD であり、Windows Virtual Desktop VM は Azure AD Domain Services ドメインに参加しています。
+  * Azure AD Domain Services ドメイン。 ユーザーのソースは Azure Active Directory であり、Windows Virtual Desktop VM は Azure AD Domain Services ドメインに参加しています。
+* Windows Server Active Directory または Azure AD DS インスタンスを含むかインスタンスに接続されている仮想ネットワークを含む、同じ Azure AD テナントを親とする Azure サブスクリプション。
+
+Windows Virtual Desktop に接続するためのユーザー要件は次のとおりです。
+
+* ユーザーのソースは、Azure AD に接続されている同じ Active Directory である必要があります。 Windows Virtual Desktop では、B2B または MSA アカウントはサポートされていません。
+* Windows Virtual Desktop のサブスクライブに使用する UPN は、VM が参加している Active Directory ドメインに存在する必要があります。
 
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
@@ -93,7 +97,7 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 
 最適なパフォーマンスを実現するために、お使いのネットワークが次の要件を満たしていることを確認してください。
 
-* クライアントのネットワークからホスト プールをデプロイした Azure リージョンまでのラウンドトリップ (RTT) 待ち時間は、150 ミリ秒を下回っている必要があります。
+* クライアントのネットワークからホスト プールをデプロイした Azure リージョンまでのラウンドトリップ (RTT) 待ち時間は、150 ミリ秒を下回っている必要があります。 [エクスペリエンス予測ツール](https://azure.microsoft.com/services/virtual-desktop/assessment)を使用して、接続の正常性と推奨される Azure リージョンを表示します。
 * デスクトップとアプリをホストしている VM が管理サービスに接続する際には、ネットワーク トラフィックが国/リージョン外に流れることがあります。
 * ネットワークのパフォーマンスを最適化するために、セッション ホストの VM を管理サービスと同じ Azure リージョンに配置することをお勧めします。
 
@@ -113,7 +117,7 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 > [!IMPORTANT]
 > Windows Virtual Desktop では、現在、Windows Store のリモート デスクトップ クライアントはサポートされていません。 このクライアントのサポートは、将来のリリースで追加されます。
 
-リモート クライアントを使用するためにブロックを解除する必要がある URL の詳細については、「[安全な URL の一覧](safe-url-list.md)」を参照してください。
+クライアントを使用するためにブロックを解除する必要がある URL の詳細については、「[安全な URL リスト](safe-url-list.md)」をご覧ください。
 
 ## <a name="supported-virtual-machine-os-images"></a>サポートされている仮想マシン OS イメージ
 
@@ -132,14 +136,14 @@ Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、
 
 |オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 マルチセッション、バージョン 1903|はい|○|○|はい|
-|Windows 10 マルチセッション、バージョン 1809|○|[はい]|いいえ|いいえ|
-|Windows 10 Enterprise、バージョン 1903|○|○|○|○|
-|Windows 10 Enterprise、バージョン 1809|○|[はい]|いいえ|いいえ|
-|Windows 7 Enterprise|○|[はい]|いいえ|いいえ|
-|Windows Server 2019|○|[はい]|いいえ|いいえ|
-|Windows Server 2016|はい|○|○|はい|
-|Windows Server 2012 R2|はい|[はい]|いいえ|いいえ|
+|Windows 10 Enterprise (マルチセッション)、バージョン 2004|はい|はい|はい|はい|
+|Windows 10 Enterprise (マルチセッション)、バージョン 1909|はい|はい|はい|はい|
+|Windows 10 Enterprise (マルチセッション)、バージョン 1903|はい|はい|いいえ|いいえ|
+|Windows 10 Enterprise (マルチセッション)、バージョン 1809|はい|はい|いいえ|いいえ|
+|Windows 7 Enterprise|はい|はい|いいえ|いいえ|
+|Windows Server 2019|はい|はい|いいえ|いいえ|
+|Windows Server 2016|はい|はい|はい|はい|
+|Windows Server 2012 R2|はい|はい|いいえ|いいえ|
 
 ## <a name="next-steps"></a>次のステップ
 

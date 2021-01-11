@@ -1,5 +1,5 @@
 ---
-title: 統計の作成と更新
+title: Azure Synapse SQL リソースを使用して統計の作成と更新を行う
 description: Synapse SQL のクエリ最適化統計の作成と更新に関するレコメンデーションと例。
 services: synapse-analytics
 author: filippopovic
@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 25c92437b350d7329c340fe1ea13b3df40e231ba
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659232"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87020601"
 ---
 # <a name="statistics-in-synapse-sql"></a>Synapse SQL の統計
 

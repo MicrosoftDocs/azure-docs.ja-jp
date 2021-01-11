@@ -2,20 +2,20 @@
 title: GitHub アクションによるコンテナー インスタンスのデプロイ
 description: コンテナー イメージを構築し、Azure Container Instances にプッシュおよびデプロイする手順を自動化する GitHub アクションを構成します
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.custom: ''
-ms.openlocfilehash: fab0eff04d86428a7e3eba730373da72c903b0ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8da72d3911797e8e3a4551f2af100afb0d7ea0fb
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84744002"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755009"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub アクションを構成してコンテナー インスタンスを作成する
 
-[GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、プル要求や問題に対して共同作業を行ったりするために使用します。
+[GitHub Actions](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、 pull request や問題に対して共同作業を行ったりするために使用します。
 
-[[Deploy to Azure Container Instances]\(Azure Container Instances にデプロイ\)](https://github.com/azure/aci-deploy) GitHub アクションを使用して、Azure Container Instances へのコンテナーのデプロイを自動化します。 このアクションでは、[az container create][az-container-create] コマンドと同様にコンテナー インスタンスのプロパティを設定できます。
+[[Deploy to Azure Container Instances]\(Azure Container Instances にデプロイ\)](https://github.com/azure/aci-deploy) GitHub アクションを使用して、Azure Container Instances への単一のコンテナーのデプロイを自動化します。 このアクションでは、[az container create][az-container-create] コマンドと同様にコンテナー インスタンスのプロパティを設定できます。
 
 この記事では、以下のアクションを実行するワークフローを GitHub リポジトリで設定する方法について説明します。
 
@@ -25,8 +25,8 @@ ms.locfileid: "84744002"
 
 この記事では、ワークフローを設定する 2 つの方法を示します。
 
-* [Deploy to Azure Container Instances] (Azure Container Instances にデプロイ) アクションやその他のアクションを使用して、GitHub リポジトリでワークフローを自分で構成します。  
-* Azure CLI の [[Azure に配置する]](https://github.com/Azure/deploy-to-azure-cli-extension) 拡張機能で `az container app up` コマンドを使用します。 このコマンドは、GitHub ワークフローの作成とデプロイ手順を効率化します。
+* [GitHub ワークフローを構成する](#configure-github-workflow) - [Deploy to Azure Container Instances] (Azure Container Instances にデプロイ) アクションやその他のアクションを使用して、GitHub リポジトリでワークフローを作成します。  
+* [CLI 拡張機能を使用する](#use-deploy-to-azure-extension) - Azure CLI の [[Azure に配置する]](https://github.com/Azure/deploy-to-azure-cli-extension) 拡張機能で `az container app up` コマンドを使用します。 このコマンドは、GitHub ワークフローの作成とデプロイ手順を効率化します。
 
 > [!IMPORTANT]
 > Azure Container Instances 用の GitHub アクションは現在、プレビュー段階です。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
@@ -45,7 +45,7 @@ ms.locfileid: "84744002"
 
   ![GitHub の [フォーク] ボタン (マーク済み) のスクリーンショット](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* リポジトリに対して Actions が有効になっていることを確認します。 フォークされたリポジトリに移動し、 **[設定]**  >  **[Actions]\(アクション\)** を選択します。 **[Actions permissions]\(アクションのアクセス許可\)** で、 **[Enable local and third party Actions for this repository]\(このリポジトリに対してローカルおよびサード パーティのアクションを有効にする\)** が選択されていることを確認します。
+* リポジトリに対して Actions が有効になっていることを確認します。 フォークされたリポジトリに移動し、 **[Settings]\(設定\)**  >  **[Actions]\(アクション\)** を選択します。 **[Actions permissions]\(アクションのアクセス許可\)** で、 **[Enable local and third party Actions for this repository]\(このリポジトリに対してローカルおよびサード パーティのアクションを有効にする\)** が選択されていることを確認します。
 
 ## <a name="configure-github-workflow"></a>GitHub ワークフローを構成する
 
@@ -91,7 +91,7 @@ JSON 出力は、後の手順で使用されるため保存します。 また�
 
 ### <a name="update-service-principal-for-registry-authentication"></a>レジストリ認証のサービス プリンシパルを更新する
 
-Azure サービス プリンシパルの資格情報を更新して、コンテナー レジストリに対するプッシュとプルのアクセス許可を付与します。 この手順により、GitHub ワークフローはサービス プリンシパルを使用して[コンテナー レジストリに対する認証](../container-registry/container-registry-auth-service-principal.md)を実行できます。 
+Azure サービス プリンシパルの資格情報を更新して、コンテナー レジストリに対するプッシュとプルのアクセスを許可します。 この手順により、GitHub ワークフローでサービス プリンシパルを使用して、[コンテナー レジストリに対する認証](../container-registry/container-registry-auth-service-principal.md)と、Docker イメージのプッシュおよびプルを実行できます。 
 
 コンテナー レジストリのリソース ID を取得します。 次の [az acr show][az-acr-show] コマンドでは、自分のレジストリの名前に置き換えます。
 
@@ -118,8 +118,8 @@ az role assignment create \
 
 |Secret  |値  |
 |---------|---------|
-|`AZURE_CREDENTIALS`     | サービス プリンシパルの作成からの JSON 出力全体 |
-|`REGISTRY_LOGIN_SERVER`   | レジストリのログイン サーバー名 (すべて小文字)。 例: *myregistry.azure.cr.io*        |
+|`AZURE_CREDENTIALS`     | サービス プリンシパルの作成ステップからの JSON 出力全体 |
+|`REGISTRY_LOGIN_SERVER`   | レジストリのログイン サーバー名 (すべて小文字)。 例: *myregistry.azurecr.io*        |
 |`REGISTRY_USERNAME`     |  サービス プリンシパルの作成からの JSON 出力からの `clientId`       |
 |`REGISTRY_PASSWORD`     |  サービス プリンシパルの作成からの JSON 出力からの `clientSecret` |
 | `RESOURCE_GROUP` | サービス プリンシパルのスコープ指定に使用したリソース グループの名前 |
@@ -177,9 +177,9 @@ jobs:
 
 ![ワークフローの進行状況を表示する](./media/container-instances-github-action/github-action-progress.png)
 
-ワークフローの各手順の状態と結果の表示については、[ワークフロー実行の管理](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)に関するページを参照してください。
+ワークフローの各手順の状態と結果の表示については、[ワークフロー実行の管理](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)に関するページを参照してください。 ワークフローが完了しない場合は、[ログの表示とエラーの診断](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures)に関するページを参照してください。
 
-ワークフローが完了したら、[az container show][az-container-show] コマンドを実行して、*aci-sampleapp* という名前のコンテナー インスタンスの情報を取得します。 リソース グループの名前は自分のものに置き換えてください。 
+ワークフローが正常に完了したら、[az container show][az-container-show] コマンドを実行して、*aci-sampleapp* という名前のコンテナー インスタンスの情報を取得します。 リソース グループの名前は自分のものに置き換えてください。 
 
 ```azurecli
 az container show \
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>コマンドの進行状況
 
-* プロンプトが表示されたら、GitHub 資格情報を入力するか、*repo* および *user* スコープを持つ [GitHub 個人用アクセス トークン](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) を入力して、レジストリに認証します。 GitHub 資格情報を入力した場合、コマンドによって PAT が作成されます。
+* プロンプトが表示されたら、GitHub 資格情報を入力するか、*repo* および *user* スコープを持つ [GitHub 個人用アクセス トークン](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (PAT) を入力して、GitHub アカウントで認証します。 GitHub 資格情報を入力した場合、コマンドによって PAT が作成されます。 追加のプロンプトに従って、ワークフローを構成します。
 
 * このコマンドは、ワークフローのリポジトリ シークレットを作成します。
 
@@ -258,11 +258,29 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
+ワークフローの状態と各手順の結果を GitHub UI で表示する方法については、[ワークフロー実行の管理](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)に関するページを参照してください。
+
 ### <a name="validate-workflow"></a>ワークフローを検証する
 
-ワークフローは、GitHub リポジトリのベース名 (この場合は *acr-build-helloworld-node*) を使用して Azure コンテナー インスタンスをデプロイします。 ブラウザーで、提供されているリンクを参照して、実行中の Web アプリを表示できます。 アプリのリッスン ポートが 8080 以外の場合、URL でそのポートを指定します。
+ワークフローは、GitHub リポジトリのベース名 (この場合は *acr-build-helloworld-node*) を使用して Azure コンテナー インスタンスをデプロイします。 ワークフローが正常に完了したら、[az container show][az-container-show] コマンドを実行して、*acr-build-helloworld-node* という名前のコンテナー インスタンスの情報を取得します。 リソース グループの名前は自分のものに置き換えてください。 
 
-ワークフローの状態と各手順の結果を GitHub UI で表示する方法については、[ワークフロー実行の管理](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run)に関するページを参照してください。
+```azurecli
+az container show \
+  --resource-group <resource-group-name> \
+  --name acr-build-helloworld-node \
+  --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" \
+  --output table
+```
+
+出力は次のようになります。
+
+```console
+FQDN                                                   ProvisioningState
+---------------------------------                      -------------------
+acr-build-helloworld-node.westus.azurecontainer.io     Succeeded
+```
+
+インスタンスがプロビジョニングされたら、ブラウザーでコンテナーの FQDN にアクセスして、実行中の Web アプリを表示します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

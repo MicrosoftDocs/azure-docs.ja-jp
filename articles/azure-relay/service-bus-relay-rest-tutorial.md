@@ -2,13 +2,14 @@
 title: チュートリアル:Azure Relay を使用した REST のチュートリアル
 description: チュートリアル:REST ベースのインターフェイスを表示する Azure Relay ホスト アプリケーションを構築します。
 ms.topic: tutorial
+ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 0d42bd664be0881ee0c1f036231acc67e49b6f8a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 0620f55650d0e4da0cd7a616649df952f3017455
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85316642"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922329"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>チュートリアル:Azure WCF Relay REST のチュートリアル
 

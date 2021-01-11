@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a79db217c5444e59e35d4dfad9fbb98bbccbd251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079810"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648991"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
 Azure での SAP NetWeaver、Business One、`Hybris`、または S/4HANA システム アーキテクチャの設計により、さまざまなアーキテクチャやツールで、スケーラブルで、効率性、可用性に優れたデプロイを実現するためのさまざまな機会が提供されます。 使用されているオペレーティング システムまたは DBMS によっては、制限があります。 また、オンプレミスでサポートされているすべてのシナリオが、Azure でも同じようにサポートされているわけではありません。 このドキュメントでは、サポートされていない非高可用性構成と高可用性構成、および Azure VM だけを使用するアーキテクチャについて説明します。 [HANA Large Instances](./hana-overview-architecture.md) でサポートされているシナリオについては、「[HANA L インスタンスのサポートされるシナリオ](./hana-supported-scenario.md)」をご覧ください。 
@@ -215,7 +215,7 @@ SUSE では、Pacemaker に基づくマルチ SID クラスターもサポート
 SAP HANA スケールアウト シナリオは、[SAP HANA ハードウェア ディレクトリ](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に列記されている HANA 認定 Azure VM のサブセットについてサポートされています。 "Clustering" 列が "Yes" になっているすべての VM は、OLAP または S/4HANA のスケールアウトに使用できます。スタンバイを使用しない構成は、次の Azure Storage の種類でサポートされます。 
 
 - Azure Premium Storage (/hana/log ボリューム用の Azure 書き込みアクセラレータを含む)
-- [Ultra Disk](../../linux/disks-enable-ultra-ssd.md)
+- [Ultra Disk](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) 
 
 スタンバイ ノードを使用する OLAP または S/4HANA の SAP HANA スケールアウト構成は、Azure NetApp Files でホストされる NFS 共有でのみサポートされています。
@@ -246,7 +246,7 @@ DBMS レイヤーでは、Always On、Oracle Data Guard、DB2 HADR、SAP ASE Alw
 - 1 つの Azure 可用性セットに異なる VM が収集されているときに VM ファミリ間でサイズを変更すると、または VM の M シリーズ ファミリと Mv2 ファミリの間でサイズの変更を行うと、問題になることがあります
 - 最小限の遅延で変更のストリームを受信できるデータベース インスタンスの CPU とメモリの消費量、および最小限の遅延でこれらの変更をデータに適用するのに十分な CPU とメモリ リソース  
 
-さまざまな VM サイズの制限について詳しくは、[こちら](../../linux/sizes.md)を参照してください 
+さまざまな VM サイズの制限について詳しくは、[こちら](../../sizes.md)を参照してください 
 
 DR ターゲットのデプロイ方法としてもう 1 つサポートされているのは、非運用 SAP インスタンスの非運用 DBMS インスタンスが実行されている VM に 2 つ目の DBMS インスタンスをインストールする方法です。 この方法は、DR シナリオのメイン インスタンスとして機能する必要がある特定のターゲット インスタンスに必要なメモリ、CPU リソース、ネットワーク帯域幅、ストレージ帯域幅を把握する必要があるため、少々困難になる場合があります。 特に HANA では、データが DR ターゲット インスタンスに事前に読み込まれないように、共有ホスト上で DR ターゲットとして機能するインスタンスを構成することを強くお勧めします。
 

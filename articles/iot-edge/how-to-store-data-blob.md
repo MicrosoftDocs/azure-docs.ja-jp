@@ -197,7 +197,7 @@ Azure Blob Storage のドキュメントには、複数の言語のクイック 
 
 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、ご自身のローカル ストレージ アカウントに接続できます。
 
-1. Azure ストレージ エクスプローラーをダウンロードしてインストールします
+1. Azure Storage Explorer をダウンロードしてインストールします
 
 1. 接続文字列を使用して Azure Storage に接続します
 

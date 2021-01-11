@@ -6,16 +6,17 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 7c220ff2882e12f5239dbd5abc5f87b900cb3807
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 7e809c1990f31687acb559b5ecd6684bfec52483
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609408"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423271"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
-このリファレンスでは、ロジック アプリの基となるワークフロー定義でトリガーとアクションを識別するために使用される一般的な種類について説明します。ワークフロー定義については、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で説明および検証されています。 ロジック アプリで使用できる特定のコネクターのトリガーおよびアクションを見つけるには、[コネクタの概要](https://docs.microsoft.com/connectors/)にある一覧を参照してください。
+このリファレンスでは、ロジック アプリの基となるワークフロー定義でトリガーとアクションを識別するために使用される一般的な種類について説明します。ワークフロー定義については、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で説明および検証されています。 ロジック アプリで使用できる特定のコネクターのトリガーおよびアクションを見つけるには、[コネクタの概要](/connectors/)にある一覧を参照してください。
 
 <a name="triggers-overview"></a>
 
@@ -569,7 +570,7 @@ ms.locfileid: "84609408"
 
 このトリガーを使用すると、受信要求を受け入れることができるエンドポイントを作成して、ロジック アプリを呼び出し可能にすることができます。 このトリガーには、トリガーが受信要求から受信するペイロード、つまり入力を記述および検証する JSON スキーマを指定します。 そのスキーマを使用すると、ワークフロー内の後続のアクションから、より簡単にトリガーのプロパティを参照することもできます。
 
-このトリガーを呼び出すには、`listCallbackUrl` API を使用する必要があります。このトリガーについては、[Workflow Service REST API](https://docs.microsoft.com/rest/api/logic/workflows) の説明を参照してください。 このトリガーを HTTP エンドポイントとして使用する方法については、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
+このトリガーを呼び出すには、`listCallbackUrl` API を使用する必要があります。このトリガーについては、[Workflow Service REST API](/rest/api/logic/workflows) の説明を参照してください。 このトリガーを HTTP エンドポイントとして使用する方法については、「[HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
 
 ```json
 "manual": {
@@ -2657,7 +2658,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 ### <a name="run-actions-in-a-synchronous-operation-pattern"></a>同期操作パターンでアクションを実行する
 
-既定では、Azure Logic Apps の HTTP アクションと APIConnection アクションは、標準的な[*非同期操作パターン*](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)に従いますが、Response アクションは*同期操作パターン*に従います。 非同期パターンは、アクションによって指定されたエンドポイント、サービス、システム、または API へ要求が呼び出される、または送信された後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すことを指定します。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止し、["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) の成功応答またはその他の非 202 応答が返されるまで、呼び出し元が非同期要求の状態を継続的にポーリングまたは確認するために使用できる URL および更新 ID を指定する `location` ヘッダーを含めることができます。 詳細については、「[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](https://docs.microsoft.com/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)」を参照してください。
+既定では、Azure Logic Apps の HTTP アクションと APIConnection アクションは、標準的な[*非同期操作パターン*](/azure/architecture/patterns/async-request-reply)に従いますが、Response アクションは*同期操作パターン*に従います。 非同期パターンは、アクションによって指定されたエンドポイント、サービス、システム、または API へ要求が呼び出される、または送信された後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すことを指定します。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止し、["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) の成功応答またはその他の非 202 応答が返されるまで、呼び出し元が非同期要求の状態を継続的にポーリングまたは確認するために使用できる URL および更新 ID を指定する `location` ヘッダーを含めることができます。 詳細については、「[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)」を参照してください。
 
 * ロジック アプリ デザイナーでは、HTTP アクション、APIConnection アクション、および Response アクションの**非同期パターン**設定があります。 この設定を有効にした場合、呼び出し元は処理が終了するのを待たず、次のアクションに進むことができますが、処理が停止するまで状態のチェックは続行されます。 無効にした場合、この設定は次のアクションに進む前に、呼び出し元が処理の終了を待機することを指定します。 この設定を見つけるには、次の手順を実行します。
 

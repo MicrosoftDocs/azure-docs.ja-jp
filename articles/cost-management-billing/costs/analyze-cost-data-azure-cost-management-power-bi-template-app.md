@@ -6,13 +6,14 @@ ms.author: banders
 ms.date: 07/24/2020
 ms.topic: how-to
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 388fbcf8dde2e01bf7f4e6c8b4ecbe344fd036d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290901"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685053"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Enterprise Agreement (EA) 用の Azure Cost Management Power BI アプリを使用してコストを分析する
 
@@ -75,7 +76,7 @@ Azure Cost Management Power BI アプリは現在、[Enterprise Agreement](https
 
 **[Top 5 Usage drivers]\(上位 5 つの使用量ドライバー)** - このレポートには、上位 5 つの MeterCategory および対応する MeterName によるフィルター処理されたコストの概要が表示されます。
 
-**[Windows Server AHB Usage]/(Windows Server AHB 使用量/)** - このレポートには、Azure ハイブリッド特典が有効になっている仮想マシンの数が表示されます。 また、仮想マシンによって使用されるコア/vCPU の数も表示されます。
+**[Windows Server AHB Usage]\(Windows Server AHB 使用量\)** - このレポートには、Azure ハイブリッド特典が有効になっている仮想マシンの数が表示されます。 また、仮想マシンによって使用されるコア/vCPU の数も表示されます。
 
 ![Azure ハイブリッド特典の完全なレポート](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
 

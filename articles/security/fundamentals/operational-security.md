@@ -1,6 +1,6 @@
 ---
 title: Azure で運用可能なセキュリティ | Microsoft Docs
-description: Microsoft Azure Monitor ログおよびそのサービスとしくみについて説明します。
+description: この概要を読むことで、Microsoft Azure Monitor のログ、そのサービス、その動作について知ることができます。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6e5a22a073a2a61db4a630388fee886e2f4ed26
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749962"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543335"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -108,7 +108,7 @@ Azure Backup で保護されるデータは、特定の地域リージョンに�
 
 ![管理ソリューション](./media/operational-security/azure-operational-security-fig4.png)
 
-複数のサービスを使用して追加の機能を提供するソリューションの良い例は、[更新管理ソリューション](../../automation/automation-update-management.md)です。 このソリューションでは、Windows と Linux 用の [Azure Monitor ログ](../../log-analytics/log-analytics-queries.md) エージェントを使用して、各エージェントから必要な更新プログラムの情報を収集します。 このデータは、付属のダッシュボードを使ってデータを分析できる Azure Monitor ログ リポジトリに書き込まれます。
+複数のサービスを使用して追加の機能を提供するソリューションの良い例は、[更新管理ソリューション](../../automation/update-management/update-mgmt-overview.md)です。 このソリューションでは、Windows と Linux 用の [Azure Monitor ログ](../../log-analytics/log-analytics-queries.md) エージェントを使用して、各エージェントから必要な更新プログラムの情報を収集します。 このデータは、付属のダッシュボードを使ってデータを分析できる Azure Monitor ログ リポジトリに書き込まれます。
 
 必要な更新プログラムをインストールするために、デプロイ作成時に [Azure Automation](../../automation/automation-intro.md) の Runbook が使用されます。 このプロセスはすべてポータルで管理するため、根底にある詳細について配慮する必要はありません。
 

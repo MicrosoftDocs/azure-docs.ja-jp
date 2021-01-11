@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fd4cc4cfa7b7be9085ac404cab7fc7447b6d66a7
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283454"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987139"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>SQL オンデマンド (プレビュー) のストレージ アカウント アクセスを制御する
 
@@ -81,15 +81,16 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 承認と Azure Storage の種類の次の組み合わせを使用できます。
 
-|                     | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
+| 承認の種類  | Blob Storage   | ADLS Gen1        | ADLS Gen2     |
 | ------------------- | ------------   | --------------   | -----------   |
-| *SAS*               | サポートされています      | サポートされていません   | サポートされています     |
-| *マネージド ID* | サポートされています      | サポートされています        | サポートされています     |
-| *ユーザー ID*    | サポートされています      | サポートされています        | サポートされています     |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | サポートされています\*      | サポートされていません   | サポートされています\*     |
+| [Managed Identity](?tabs=managed-identity#supported-storage-authorization-types) | サポートされています      | サポートされています        | サポートされています     |
+| [ユーザー ID](?tabs=user-identity#supported-storage-authorization-types)    | サポートされています\*      | サポートされています\*        | サポートされています\*     |
 
+\* ファイアウォールで保護されていないストレージには、SAS トークンと Azure AD ID を使用してアクセスできます。
 
 > [!IMPORTANT]
-> ファイアウォールで保護されているストレージにアクセスする場合に使用できるのは、マネージド ID のみです。 [信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロール](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
+> ファイアウォールで保護されているストレージにアクセスする場合に使用できるのは、マネージド ID のみです。 [信頼された Microsoft サービスを許可](../../storage/common/storage-network-security.md#trusted-microsoft-services)する設定を行い、そのリソース インスタンスの[システムによって割り当てられたマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [Azure ロール](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)を割り当てる必要があります。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた Azure ロールに対応します。
 >
 
 ## <a name="credentials"></a>資格情報
@@ -177,27 +178,46 @@ WITH IDENTITY='Managed Identity'
 
 Azure AD ユーザーは、少なくとも `Storage Blob Data Owner`、`Storage Blob Data Contributor`、`Storage Blob Data Reader` のいずれかのロールがあれば、Azure Storage 上のあらゆるファイルにアクセスできます。 ストレージにアクセスするために、Azure AD ユーザーの資格情報は必要ありません。
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>'
+)
+```
+
 SQL ユーザーが Azure AD Authentication を使用してストレージにアクセスすることはできません。
 
 ### <a name="shared-access-signature"></a>[共有アクセス署名](#tab/shared-access-signature)
 
-次のスクリプトによって作成される資格情報は、資格情報で指定された SAS トークンを使用するストレージ上のファイルにアクセスするために使用されます。
+次のスクリプトによって作成される資格情報は、資格情報で指定された SAS トークンを使用するストレージ上のファイルにアクセスするために使用されます。 スクリプトでは、この SAS トークンを使用してストレージにアクセスするサンプル外部データ ソースを作成します。
 
 ```sql
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>'
+GO
 CREATE DATABASE SCOPED CREDENTIAL [SasToken]
 WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
      SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SasToken
+)
 ```
 
 ### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
 
-次のスクリプトによって作成されるデータベーススコープ資格情報は、現在の Azure AD ユーザーをサービスのマネージド ID として借用するために使用できます。 
+次のスクリプトによって作成されるデータベーススコープ資格情報は、現在の Azure AD ユーザーをサービスのマネージド ID として借用するために使用できます。 スクリプトでは、ワークスペース ID を使用してストレージにアクセスするサンプル外部データ ソースを作成します。
 
 ```sql
-CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
+-- Optional: Create MASTER KEY if not exists in database:
+-- CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<Very Strong Password>
+CREATE DATABASE SCOPED CREDENTIAL SynapseIdentity
 WITH IDENTITY = 'Managed Identity';
 GO
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<container>/<path>',
+          CREDENTIAL = SynapseIdentity
+)
 ```
 
 データベーススコープ資格情報は、ストレージ アカウントの名前と一致する必要はありません。それがストレージの場所を定義するデータ ソースで明示的に使用されるためです。
@@ -206,6 +226,11 @@ GO
 
 データベーススコープ資格情報は、一般公開されているファイルへのアクセスを許可する場合には必要がありません。 [データベーススコープ資格情報なしでデータソース](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source)を作成して、Azure Storage 上の一般公開されているファイルにアクセスします。
 
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://<storage_account>.blob.core.windows.net/<container>/<path>'
+)
+```
 ---
 
 データベーススコープ資格情報は、外部データ ソースで使用され、そのストレージへのアクセスに使用される認証方法を指定します。
@@ -219,7 +244,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>例
 
-**一般公開されているデータ ソースへのアクセス**
+### <a name="access-a-publicly-available-data-source"></a>**一般公開されているデータ ソースにアクセスする**
 
 次のスクリプトを使用して、一般公開されているデータ ソースにアクセスするテーブルを作成します。
 
@@ -248,7 +273,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-**資格情報を使用したデータ ソースへのアクセス**
+### <a name="access-a-data-source-using-credentials"></a>**資格情報を使用してデータ ソースにアクセスする**
 
 次のスクリプトを変更して、SAS トークン、ユーザーの Azure AD ID、またはワークスペースのマネージド ID を使用して Azure Storage にアクセスする外部テーブルを作成します。
 

@@ -9,12 +9,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 1068f715eb80eb5b7991a5b25c71c81d26d9f3c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e3d169ac42e03f0c57ea1c23247fd0daa1cf51d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102798"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926436"
 ---
 ## <a name="prerequisites"></a>前提条件
 

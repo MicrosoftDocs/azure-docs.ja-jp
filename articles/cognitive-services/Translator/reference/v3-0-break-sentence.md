@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 01/21/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 01a5404100da6c669da4513ac9fd08c959df220e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 340b0ed02821fb98f271539ac39e0ccad8581082
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588634"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904005"
 ---
 # <a name="translator-30-breaksentence"></a>Translator 3.0:BreakSentence
 
@@ -61,7 +61,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 次の制限事項が適用されます。
 
 * 配列に含めることができる要素は、最大でも 100 個です。
-* 配列要素のテキスト値は、スペースも含めて 10,000 文字を超えてはなりません。
+* 配列要素のテキスト値は、スペースも含めて 50,000 文字を超えてはなりません。
 * 要求に含めるテキスト全体では、スペースも含めて 50,000 文字を超えてはなりません。
 * `language` クエリ パラメーターを指定する場合は、すべての配列要素が同じ言語である必要があります。 指定しないと、言語の自動検出が配列の各要素に個別に適用されます。
 

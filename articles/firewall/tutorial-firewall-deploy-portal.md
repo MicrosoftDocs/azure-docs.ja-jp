@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 8b4d58163c28e00c30c5b0f9db3a6ff259fbf5ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536929"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069325"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -47,6 +47,8 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * ファイアウォールをテストする
 
 必要に応じて、[Azure PowerShell](deploy-ps.md) を使ってこのチュートリアルの手順を完了できます。
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -92,7 +94,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. **[サブネット アドレス範囲]** に「**10.0.2.0/24**」と入力します。
 6. **[追加]** を選択します。
 7. **[確認および作成]** を選択します。
-8. **[作成]** を選択します。
+8. **［作成］** を選択します
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 

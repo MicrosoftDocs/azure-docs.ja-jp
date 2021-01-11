@@ -6,22 +6,24 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
-ms.openlocfilehash: af63ef6f33cc0e3dfe7f186ad2e36b854a728c6b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 7733148777cde2a487e5c93d7750eb7a24ff531c
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120578"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88999395"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>マネージド ID を使用して Azure Database for MySQL に接続する
 
-この記事では、Azure 仮想マシン (VM) のユーザー割り当て ID を使用して、Azure Database for MySQL サーバーにアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。 学習内容は次のとおりです。
+この記事では、Azure 仮想マシン (VM) のユーザー割り当て ID を使用して、Azure Database for MySQL サーバーにアクセスする方法について説明します。 管理対象サービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。 
 
-> [!div class="checklist"]
-> * VM に Azure Database for MySQL サーバーへのアクセスを許可する
-> * VM のユーザー割り当て ID を表すユーザーをデータベースに作成する
-> * VM ID を使用してアクセス トークンを取得し、それを使用して Azure Database for MySQL サーバーにクエリを実行する
-> * C# サンプル アプリケーションにトークン取得を実装する
+学習内容は次のとおりです。
+
+- VM に Azure Database for MySQL サーバーへのアクセスを許可する
+- VM のユーザー割り当て ID を表すユーザーをデータベースに作成する
+- VM ID を使用してアクセス トークンを取得し、それを使用して Azure Database for MySQL サーバーにクエリを実行する
+- C# サンプル アプリケーションにトークン取得を実装する
 
 > [!IMPORTANT]
 > マネージド ID を使用した接続は、MySQL 5.7 以降でのみ使用できます。

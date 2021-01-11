@@ -29,8 +29,12 @@
       href: quickstart-configure-your-solution.md
     - name: Azure Security Center for IoT モジュール ツインを作成する
       href: quickstart-create-security-twin.md
+    - name: セキュリティに関する推奨事項の調査
+      href: quickstart-investigate-security-recommendations.md
     - name: カスタムのセキュリティのアラートを作成する
       href: quickstart-create-custom-alerts.md
+    - name: セキュリティ アラートについて調査する
+      href: quickstart-investigate-security-alerts.md
 - name: 概念
   items:
     - name: セキュリティ エージェントの認証
@@ -90,6 +94,6 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: 'https://blogs.msdn.com/b/azuresecurity/'
+      href: 'https://docs.microsoft.com/archive/blogs/azuresecurity/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/regions/services/'

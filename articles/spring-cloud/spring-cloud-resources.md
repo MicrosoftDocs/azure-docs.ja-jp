@@ -6,12 +6,13 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 11/1/2019
 ms.author: brendm
-ms.openlocfilehash: d65bd76fbef66f741f51292b24483e7df5da7c79
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: devx-track-java
+ms.openlocfilehash: 1cea1bbe86c411e856784d38e8b7d2471a9822bb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836245"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083703"
 ---
 # <a name="azure-spring-cloud-developer-resources"></a>Azure Spring Cloud の開発者向けリソース
 

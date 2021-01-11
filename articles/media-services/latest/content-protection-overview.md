@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c1c9440f7ec70cea98f270f04c3030c800dd0fde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0be481d90562ca611b021e2f05d9109eb51958c8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79461114"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023264"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
@@ -244,7 +244,7 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId` は、要求されたキーの値を持っています。 要求をユーザー側のエンティティにマップする場合は、`AlternativeMediaId` を使用できます。 たとえば、`AlternativeMediaId` を使用すると、アクセス許可を調べるときに役立ちます。
 
-カスタムのライセンス/キーの取得 URL を使用する REST の例については、「[ストリーミング ポリシー - 作成](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)」をご覧ください。
+カスタムのライセンス/キーの取得 URL を使用する REST の例については、「[ストリーミング ポリシー - 作成](/rest/api/media/streamingpolicies/create)」をご覧ください。
 
 > [!NOTE]
 > Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
@@ -266,4 +266,4 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 * [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)
 * [ストレージ側の暗号化](storage-account-concept.md#storage-side-encryption)
 * [よく寄せられる質問](frequently-asked-questions.md)
-* [JSON Web トークン ハンドラー](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)
+* [JSON Web トークン ハンドラー](/dotnet/framework/security/json-web-token-handler)

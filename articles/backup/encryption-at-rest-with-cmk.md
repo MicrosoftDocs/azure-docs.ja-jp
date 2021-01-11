@@ -3,12 +3,12 @@ title: カスタマー マネージド キーを使用したバックアップ �
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 55b994d287e4e2d3971b43359936815822bc18a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388001"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892645"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -39,7 +39,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 
 - この機能は、現在、Azure portal からのみ構成できます。
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+自分の Recovery Services コンテナーを作成して構成していない場合は、[こちらで方法を確認](backup-create-rs-vault.md)してください。
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>カスタマー マネージド キーを使用して暗号化するためのコンテナーの構成
 
@@ -60,7 +60,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 Azure Backup では、システム割り当てマネージド ID を使用して、Azure キー コンテナーに格納されている暗号化キーにアクセスする Recovery Services コンテナーを認証します。 Recovery Services コンテナーのマネージド ID を有効にするには、次の手順に従います。
 
 >[!NOTE]
->マネージド ID は、いったん有効にしたら (一時的にであっても) 無効にしないでください。 マネージド ID を無効にすると、動作に一貫性がなくなる可能性があります。
+>マネージド ID は、いったん有効にしたら (一時的にであっても) 無効に**しないでください**。 マネージド ID を無効にすると、動作に一貫性がなくなる可能性があります。
 
 1. ご自身の Recovery Services コンテナー、 **[ID]** の順に移動します
 
@@ -138,7 +138,7 @@ Azure Backup では、システム割り当てマネージド ID を使用して
 > - ここまでの手順がすべて正常に完了していること:
 >   - Recovery Services コンテナーのマネージド ID が有効になり、必要なアクセス許可が割り当てられている
 >   - Azure キー コンテナーで、論理的な削除と消去保護が有効になっている
-> - CMK 暗号化を有効にする Recovery Services コンテナーでは、項目が保護されておらず、その登録もされていない
+> - CMK 暗号化を有効にする Recovery Services コンテナーでは、項目の保護も、その登録も**されていない**
 
 上記の内容を確認したら、引き続きコンテナーの暗号化キーを選択します。
 
@@ -252,7 +252,7 @@ Azure VM で実行されているバックアップ SAP HANA または SQL デ�
 
 ### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-cmk-encryption"></a>この記事にある手順の 1 つを実行しないまま続行し、データ ソースを保護しました。 引き続き CMK 暗号化を使用できますか。
 
-記事の手順に従わずに項目の保護まで続行した場合、カスタマー マネージド キーを使用した暗号化をコンテナーで使用できなくなる可能性があります。 このため、項目の保護に進む前に、[このチェックリスト](#backing-up-to-a-vault-encrypted-with-customer-managed-keys)を参照することをお勧めします。
+記事のステップに従わずに項目の保護まで続行した場合、カスタマー マネージド キーを使用した暗号化をコンテナーで使用できなくなる可能性があります。 このため、項目の保護に進む前に、[このチェックリスト](#backing-up-to-a-vault-encrypted-with-customer-managed-keys)を参照することをお勧めします。
 
 ### <a name="does-using-cmk-encryption-add-to-the-cost-of-my-backups"></a>CMK 暗号化を使用すると、バックアップのコストは増えますか。
 

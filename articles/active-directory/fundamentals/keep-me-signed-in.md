@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd24e6847dbf02bc7efe5d9e6ea02043879f720b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: bed6bc43dfc15abf2bdf9f38a5de2240d348d6fb
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86054714"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320258"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Azure AD アカウントに "サインインの状態を維持しますか?" のプロンプトを構成する
 
@@ -57,7 +57,7 @@ ms.locfileid: "86054714"
 
 ユーザーに割り込みが表示されないようにするには、ブランドの詳細設定で **[サインインしたままにするオプションを表示する]** 設定を **[いいえ]** に設定します。 これにより、Azure AD ディレクトリ内のすべてのユーザーに対して KMSI プロンプトが無効になります。
 
-また、条件付きアクセスで永続的なブラウザー セッション制御を使用して、ユーザーに KMSI プロンプトが表示されないようにすることもできます。 このオプションを使用すると、選択したユーザー グループ (全体管理者など) に対して KMSI プロンプトを無効にすることができます。ディレクトリ内の残りのユーザーのサインイン動作は影響を受けません。 詳細については、[ユーザー サインインの頻度](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)に関するページを参照してください。 
+また、条件付きアクセスで永続的なブラウザー セッション制御を使用して、ユーザーに KMSI プロンプトが表示されないようにすることもできます。 このオプションを使用すると、選択したユーザー グループ (全体管理者など) に対して KMSI プロンプトを無効にすることができます。ディレクトリ内の残りのユーザーのサインイン動作は影響を受けません。 詳細については、[ユーザー サインインの頻度](../conditional-access/howto-conditional-access-session-lifetime.md)に関するページを参照してください。 
 
 ユーザーにベネフィットがある場合にのみ KMSI プロンプトが表示されるようにするには、次のような場合に意図的に KMSI プロンプトが表示されないようにします。
 
@@ -72,6 +72,6 @@ ms.locfileid: "86054714"
 
 サインイン セッションのタイムアウトに影響するその他の設定について学習する。
 
-* Microsoft 365 - [アイドル セッション タイムアウト](https://docs.microsoft.com/sharepoint/sign-out-inactive-users)
-* Azure AD 条件付きアクセス - [ユーザー サインインの頻度](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)
-* Azure portal - [ディレクトリレベルの非アクティブ タイムアウト](https://docs.microsoft.com/azure/azure-portal/admin-timeout)
+* Microsoft 365 - [アイドル セッション タイムアウト](/sharepoint/sign-out-inactive-users)
+* Azure AD 条件付きアクセス - [ユーザー サインインの頻度](../conditional-access/howto-conditional-access-session-lifetime.md)
+* Azure portal - [ディレクトリレベルの非アクティブ タイムアウト](../../azure-portal/set-preferences.md#change-the-directory-timeout-setting-admin)

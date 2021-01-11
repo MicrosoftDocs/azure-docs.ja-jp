@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: d74994609799c155453f0c7cac887f2e033ea90b
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087284"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649671"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシンを作成する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json" range="1-225" highlight="67-224":::
+:::code language="json" source="~/quickstart-templates/101-vm-simple-windows/azuredeploy.json":::
 
 
 このテンプレートでは、いくつかのリソースが定義されています。
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - **管理者パスワード**: 管理者アカウントに使用するパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
     - **DNS ラベル プレフィックス**: DNS ラベルの一部として使用する一意の識別子を入力します。
     - **Windows OS バージョン**: VM 上で実行する Windows のバージョンを選択します。
-    - **VM サイズ**: VM に使用する[サイズ](sizes.md)を選択します。
+    - **VM サイズ**: VM に使用する[サイズ](../sizes.md)を選択します。
     - **場所**: 既定値は、それが既に存在する場合、リソース グループと同じ場所になります。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証が完了したら、 **[作成]** を選択して VM を作成し、デプロイします。
 

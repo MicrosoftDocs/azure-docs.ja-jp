@@ -1,44 +1,33 @@
 ---
-title: Azure Monitor アラート用の移行ツールを理解する
-description: アラート移行ツールのしくみと問題のトラブルシューティングの方法について説明します。
+title: Azure Monitor アラートのための移行について
+description: アラート移行のしくみと問題のトラブルシューティングの方法について説明します。
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52a74593fcfbdc2c1e464077e4ae460f6a5a9c39
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073613"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852397"
 ---
-# <a name="understand-how-the-migration-tool-works"></a>移行ツールの動作の理解
+# <a name="understand-migration-options-to-newer-alerts"></a>新しいアラートへの移行オプションについて
 
-[以前発表された](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートは 2019 年 8 月 31 日までに廃止される予定です (当初は 2019 年 6 月 30 日でした)。 Azure portal には、クラシック アラート ルールを使用しているお客様と移行を自分でトリガーしたいと思っているお客様を対象に、移行ツールが用意されています。
+従来のアラートは[廃止](./monitoring-classic-retirement.md)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。 残りのアラート移行である [Azure Government クラウド](../../azure-government/documentation-government-welcome.md)と [Azure China 21Vianet](https://docs.azure.cn/) については、近日中に新しい日付が発表されます。
 
-この記事では、自主的移行ツールのしくみについて説明します。 また、一般的な問題をいくつか取り上げて、その解決方法を紹介します。
-
-> [!NOTE]
-> 移行ツールの展開が遅れたことで、クラシック アラート移行の提供終了日が、最初に発表された 2019 年 6 月 30 日から [2019 年 8 月 31 日に延長](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/)されました。
-
-## <a name="classic-alert-rules-that-will-not-be-migrated"></a>移行されないクラシック アラート ルール
+この記事では、手動移行と自発的移行ツールがどのように機能するかについて説明します。このツールは、残りのアラート ルールを移行するために使用されます。 また、一般的な問題をいくつか取り上げて、その解決方法を紹介します。
 
 > [!IMPORTANT]
 > アクティビティ ログのアラート (サービス正常性のアラートを含む) とログ アラートは移行の影響を受けません。 移行は、[ここ](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)で説明されているクラシック アラート ルールにのみ適用されます。
 
-ほぼすべての[クラシック アラート ルール](monitoring-classic-retirement.md#retirement-of-classic-monitoring-and-alerting-platform)をツールで移行できますが、例外がいくつかあります。 以下のアラート ルールは、ツールを使用して (または 2019 年 9 月 の自動移行開始時に) 移行されません。
-
-- 仮想マシンのゲスト メトリックに対するクラシック アラート ルール (Windows と Linux の両方)。 この記事の後半の[新しいメトリック アラートでこれらのアラート ルールを再作成するためのガイダンス](#guest-metrics-on-virtual-machines)を参照してください。
-- クラシック ストレージ メトリックに対するクラシック アラート ルール。 [お使いのクラシック ストレージ アカウントの監視に関するガイダンス](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)を参照してください。
-- 一部のストレージ アカウント メトリックに対するクラシック アラート ルール。 この記事の後半で[詳細](#storage-account-metrics)をご確認ください。
-- 一部の Cosmos DB メトリックに対するクラシック アラート ルール。 この記事の後半で[詳細](#cosmos-db-metrics)をご確認ください。
-- すべてのクラシック仮想マシンおよびクラウド サービス メトリックに対するクラシック アラート ルール (Microsoft.ClassicCompute/virtualMachines および Microsoft.ClassicCompute/domainNames/slots/roles)。 この記事の後半で[詳細](#classic-compute-metrics)をご確認ください。
-
-お使いのサブスクリプションにこれらのクラシック ルールが含まれている場合、そのルールは手動で移行する必要があります。 自動移行を提供することができないため、これらの種類の既存のクラシック メトリック アラートは 2020年 6 月まで動作し続ける予定です。 この拡張機能により、新しいアラートに移行する時間が確保されます。 2020 年 6 月までは、上記の例外に関する新しいクラシック アラートを引き続き作成することもできます。 ただし、他のすべてについては、2019 年 8 月を過ぎると新しいクラシック アラートを作成することはできません。
-
 > [!NOTE]
-> 上に一覧で示した例外のほかに、クラシック アラート ルールが有効でない場合、つまり[非推奨のメトリック](#classic-alert-rules-on-deprecated-metrics)や削除済みのリソースに対するルールである場合、それらは移行されず、サービスの廃止後は使用できなくなります。
+> クラシック アラート ルールが有効でない、つまり、[非推奨のメトリック](#classic-alert-rules-on-deprecated-metrics)や削除済みのリソースについてのルールである場合、それらは移行されず、サービスの廃止後は使用できなくなります。
+
+## <a name="manually-migrating-classic-alerts-to-newer-alerts"></a>従来のアラートの新しいアラートへの手動移行
+
+残りのアラートを手動で移行することに関心のあるお客様は、以降のセクションを参考にして、それを既に実行することができます。 これらのセクションでは、リソース プロバイダーによって廃止されていて、現在は直接移行できないメトリックも定義しています。
 
 ### <a name="guest-metrics-on-virtual-machines"></a>仮想マシンのゲスト メトリック
 
@@ -104,7 +93,7 @@ HTTP 2xx、HTTP 3xx、HTTP 400、HTTP 401、内部サーバー エラー、サ�
 
 ### <a name="classic-compute-metrics"></a>従来のコンピューティング メトリック
 
-クラシック コンピューティング リソースは新しいアラートでまだサポートされていないため、クラシック コンピューティング メトリックに関するアラートは移行ツールを使用しても移行されません。 これらのリソースの種類に対する新しいアラートのサポートは、今後追加される予定です。 追加されたら、お客様は 2020 年 6 月より前のクラシック アラート ルールに基づいて、新しい同等のアラート ルールを作成し直す必要があります。
+クラシック コンピューティング リソースは新しいアラートでまだサポートされていないため、クラシック コンピューティング メトリックに関するアラートは移行ツールを使用しても移行されません。 これらのリソースの種類に対する新しいアラートのサポートは現在パブリック プレビュー段階であり、お客様は従来のアラート ルールに基づいて新しい同等のアラート ルールを再作成できます。
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>非推奨のメトリックに対するクラシック アラート ルール
 

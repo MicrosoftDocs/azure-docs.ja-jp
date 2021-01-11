@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807861"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795917"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -37,10 +37,10 @@ ms.locfileid: "85807861"
 * プロセス、管理作業、ナレッジ管理
 * ホスト防御、アカウントの保護、ID 管理などの技術的なコンポーネント
 
-重要な Microsoft サービスで管理および報告されている方法で、特権アクセスを保護します。 オンプレミスの管理者アカウントがある場合は、「[特権アクセスの保護](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)」で、Active Directory でのオンプレミスおよびハイブリッドの特権アクセスに関するガイダンスをご覧ください。
+重要な Microsoft サービスで管理および報告されている方法で、特権アクセスを保護します。 オンプレミスの管理者アカウントがある場合は、「[特権アクセスの保護](/windows-server/identity/securing-privileged-access/securing-privileged-access)」で、Active Directory でのオンプレミスおよびハイブリッドの特権アクセスに関するガイダンスをご覧ください。
 
 > [!NOTE]
-> この記事のガイダンスでは、Azure Active Directory Premium プラン P1 と P2 に含まれている Azure Active Directory の主な機能を参照します。 Azure Active Directory Premium P2 は、EMS E5 スイートおよび Microsoft 365 E5 スイートに含まれています。 このガイダンスでは、組織がユーザー用に Azure AD Premium P2 ライセンスを既に購入していることを想定しています。 これらのライセンスがない場合、ガイダンスの一部は組織に適用されないことがあります。 また、この記事全体で、グローバル管理者 (または全体管理者) という用語は "会社の管理者" または "テナント管理者" と同義です。
+> この記事のガイダンスでは、Azure Active Directory Premium プラン P1 と P2 に含まれている Azure Active Directory の主な機能を参照します。 Azure Active Directory Premium P2 は、EMS E5 スイートおよび Microsoft 365 E5 スイートに含まれています。 このガイダンスでは、組織がユーザー用に Azure AD Premium P2 ライセンスを既に購入していることを想定しています。 これらのライセンスがない場合、ガイダンスの一部は組織に適用されないことがあります。 また、この記事全体を通して、グローバル管理者 (または全体管理者) という用語は "社内管理者" または "テナント管理者" と同義です。
 
 ## <a name="develop-a-roadmap"></a>ロードマップの作成
 
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management を有効にした後、次の Azure AD 
 * Exchange 管理者
 * SharePoint 管理者
 
-Azure AD Privileged Identity Management が組織内にない場合は、[PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) を使用できます。 全体管理者は、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持つため、全体管理者ロールから始めます。 これらのアクセス許可は、Microsoft 365 管理センター、Azure portal、または Microsoft PowerShell の Azure AD モジュールのいずれで割り当てられた場合でも付与されます。
+Azure AD Privileged Identity Management が組織内にない場合は、[PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) を使用できます。 全体管理者は、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持つため、全体管理者ロールから始めます。 これらのアクセス許可は、Microsoft 365 管理センター、Azure portal、または Microsoft PowerShell の Azure AD モジュールのいずれで割り当てられた場合でも付与されます。
 
 このようなロールの不要になったアカウントがあれば削除します。 次に、管理者ロールに割り当てられている残りのアカウントを分類します。
 
@@ -130,7 +130,7 @@ Azure AD Privileged Identity Management が組織内にない場合は、[PowerS
 
 * 管理者ロールを持つユーザーと、それらのユーザーが管理できるサービスを識別します。
 * Azure AD PIM を使用して、Azure AD への管理者アクセス権を持つ組織内のユーザーを確認します。
-* Azure AD で定義されているロール以外に、Office 365 には、組織内のユーザーに割り当てることができる管理者ロールのセットが付属します。 各管理者ロールは、共通のビジネス機能にマップされ、[Microsoft 365 管理センター](https://admin.microsoft.com)で特定のタスクを行うためのアクセス許可を組織のユーザーに付与します。 Microsoft 365 管理センターを使用して、Azure AD で管理されていないロール経由を含め、Office 365 への管理者アクセス権を持つ組織内のユーザーを確認します。 詳しくは、[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)と [Office 365 のセキュリティ プラクティス](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)に関する記事をご覧ください。
+* Azure AD で定義されているロール以外に、Office 365 には、組織内のユーザーに割り当てることができる管理者ロールのセットが付属します。 各管理者ロールは、共通のビジネス機能にマップされ、[Microsoft 365 管理センター](https://admin.microsoft.com)で特定のタスクを行うためのアクセス許可を組織のユーザーに付与します。 Microsoft 365 管理センターを使用して、Azure AD で管理されていないロール経由を含め、Office 365 への管理者アクセス権を持つ組織内のユーザーを確認します。 詳しくは、[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)と [Office 365 のセキュリティ プラクティス](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)に関する記事をご覧ください。
 * Azure、Intune、Dynamics 365 など、組織が利用しているサービスでインベントリを実行します。
 * 管理目的で使用されているアカウントが次のようになっていることを確認します。
 
@@ -169,15 +169,15 @@ Azure AD では、すべてのユーザーに多要素認証 (MFA) を要求す�
 
 * 組織のすべてのユーザーに対して、[条件付きアクセス ポリシーを使用して MFA](../authentication/howto-mfa-getstarted.md) を有効にします。
 
-Windows Hello for Business を使用する場合は、Windows Hello サインイン エクスペリエンスを使用して MFA 要件を満たすことができます。 詳しくは、「[Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)」をご覧ください。
+Windows Hello for Business を使用する場合は、Windows Hello サインイン エクスペリエンスを使用して MFA 要件を満たすことができます。 詳しくは、「[Windows Hello](/windows/uwp/security/microsoft-passport)」をご覧ください。
 
 #### <a name="configure-identity-protection"></a>Identity Protection を構成する
 
-Azure AD Identity Protection は、アルゴリズムベースの監視およびレポート ツールで、組織の ID に影響する潜在的な脆弱性を検出します。 検出された不審なアクティビティへの自動対応を構成し、それらを解決するのに適切なアクションを実行できます。 詳細については、「[Azure Active Directory Identity Protection](../active-directory-identityprotection.md)」をご覧ください。
+Azure AD Identity Protection は、アルゴリズムベースの監視およびレポート ツールで、組織の ID に影響する潜在的な脆弱性を検出します。 検出された不審なアクティビティへの自動対応を構成し、それらを解決するのに適切なアクションを実行できます。 詳細については、「[Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md)」をご覧ください。
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Office 365 セキュリティ スコアを取得する (Office 365 を使用している場合)
 
-セキュリティ スコアは、使用している Office 365 サービスの設定とアクティビティを参照して、Microsoft によって確立されたベースラインと比較します。 セキュリティ プラクティスにどの程度従っているかに基づいてスコアが算出されます。 Office 365 Business Premium または Enterprise サブスクリプションの管理者アクセス許可を持つユーザーは、[https://securescore.office.com](https://securescore.office.com/) でセキュリティ スコアにアクセスできます。
+セキュリティ スコアでは、使用している Office 365 サービスの設定とアクティビティを参照して、Microsoft によって確立されたベースラインと比較します。 セキュリティ プラクティスにどの程度従っているかに基づいてスコアが算出されます。 Office 365 Business Premium または Enterprise サブスクリプションの管理者アクセス許可を持つユーザーは、[https://securescore.office.com](https://securescore.office.com/) でセキュリティ スコアにアクセスできます。
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Office 365 セキュリティおよびコンプライアンス ガイダンスを確認する (Office 365 を使用している場合)
 
@@ -193,7 +193,7 @@ Office 365 を使用しているユーザーの組織を監視して、管理者
 
 #### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>まだ行っていない場合は、オンプレミスの特権管理者アカウントをセキュリティで保護する
 
-Azure Active Directory 組織がオンプレミスの Active Directory と同期されている場合は、[特権アクセスのセキュリティ保護のロードマップ](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): この段階には次のものが含まれます。
+Azure Active Directory 組織がオンプレミスの Active Directory と同期されている場合は、[特権アクセスのセキュリティ保護のロードマップ](/windows-server/identity/securing-privileged-access/securing-privileged-access): この段階には次のものが含まれます。
 
 * オンプレミスの管理タスクを実行する必要があるユーザー用に個別の管理者アカウントを作成する
 * Active Directory 管理者向けの特権アクセス ワークステーションを配置する
@@ -211,13 +211,13 @@ Xbox、Live、Outlook などの他のプログラムの Microsoft アカウン�
 
 #### <a name="monitor-azure-activity"></a>Azure のアクティビティを監視する
 
-Azure アクティビティ ログは、Azure でのサブスクリプション レベルのイベント履歴を提供します。 このログは、だれがどのリソースをいつ作成、更新、または削除したかについての情報を提供します。 詳しくは、「[Azure サブスクリプションの重要なアクションを監査して通知を受信する](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)」をご覧ください。
+Azure アクティビティ ログは、Azure でのサブスクリプション レベルのイベント履歴を提供します。 このログは、だれがどのリソースをいつ作成、更新、または削除したかについての情報を提供します。 詳しくは、「[Azure サブスクリプションの重要なアクションを監査して通知を受信する](../../azure-monitor/platform/alerts-activity-log.md)」をご覧ください。
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Azure AD を介して他のクラウド アプリへのアクセスを管理する組織における追加の手順
 
 #### <a name="configure-conditional-access-policies"></a>条件付きアクセス ポリシーを構成する
 
-オンプレミスのアプリケーションとクラウドでホストされるアプリケーションの条件付きアクセス ポリシーを準備します。 ユーザーがワークプレースに参加しているデバイスを持っている場合、詳しくは「[Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定](../active-directory-device-registration-on-premises-setup.md)」をご覧ください。
+オンプレミスのアプリケーションとクラウドでホストされるアプリケーションの条件付きアクセス ポリシーを準備します。 ユーザーがワークプレースに参加しているデバイスを持っている場合、詳しくは「[Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定](../devices/overview.md)」をご覧ください。
 
 ## <a name="stage-3-take-control-of-admin-activity"></a>ステージ 3:管理者アクティビティの制御
 
@@ -255,7 +255,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 * 偽装攻撃
 * キーボード操作のログ記録、Pass-the-Hash、Pass-The-Ticket などの資格情報の盗用攻撃
 
-特権アクセス ワークステーションを配置することで、管理者が強化されていないデスクトップ環境で資格情報を入力するリスクを軽減できます。 詳しくは、[Privileged Access Workstations](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) に関するページをご覧ください。
+特権アクセス ワークステーションを配置することで、管理者が強化されていないデスクトップ環境で資格情報を入力するリスクを軽減できます。 詳しくは、[Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations) に関するページをご覧ください。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>インシデントの処理に関する米国国立標準技術研究所の推奨事項を確認する
 
@@ -279,7 +279,7 @@ Azure Active Directory の場合は、[Azure AD Privileged Identity Management](
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>パスワードベースのサインイン プロトコルへの露出を確認する (Exchange Online を使用している場合)
 
-資格情報が侵害された場合に、組織にとって致命的になる可能性のあるすべてのユーザーを識別することをお勧めします。 これらのユーザーには、強力な認証要件を設定し、Azure AD 条件付きアクセスを使用して、ユーザー名とパスワードを使用して電子メールにサインインしないようにします。 [条件付きアクセスを使用してレガシ認証](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)をブロックすることができます。また、Exchange Online を使用して[基本認証をブロック](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)することができます。
+資格情報が侵害された場合に、組織にとって致命的になる可能性のあるすべてのユーザーを識別することをお勧めします。 これらのユーザーには、強力な認証要件を設定し、Azure AD 条件付きアクセスを使用して、ユーザー名とパスワードを使用して電子メールにサインインしないようにします。 [条件付きアクセスを使用してレガシ認証](../conditional-access/block-legacy-authentication.md)をブロックすることができます。また、Exchange Online を使用して[基本認証をブロック](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)することができます。
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Office 365 ロールのロール レビュー アセスメントを実行する (Office 365 を使用している場合)
 
@@ -291,7 +291,7 @@ Azure Active Directory の場合は、[Azure AD Privileged Identity Management](
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>オンプレミスの特権管理者アカウントのセキュリティ保護に進む
 
-Azure Active Directory がオンプレミスの Active Directory に接続されている場合は、[特権アクセスのセキュリティ保護のロードマップ](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): ステージ 2 のガイダンスに従います。 このステージでは、次のことを行います。
+Azure Active Directory がオンプレミスの Active Directory に接続されている場合は、[特権アクセスのセキュリティ保護のロードマップ](/windows-server/identity/securing-privileged-access/securing-privileged-access): ステージ 2 のガイダンスに従います。 このステージでは、次のことを行います。
 
 * すべての管理者向けに特権アクセス ワークステーションを配置する
 * Require MFA (MFA が必須)
@@ -314,11 +314,11 @@ Azure Active Directory がオンプレミスの Active Directory に接続され
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Azure AD 管理者ロールに対して PIM を実装する
 
-Azure AD 管理者ロールと共に Privileged Identity Management を使用して、Azure リソースへのアクセスを管理、制御、監視します。 PIM を使用した保護では、特権の露出時間を短縮し、レポートとアラートを通じて使用状況の可視性を高めます。 詳しくは、[Privileged Identity Management での Azure リソースへの RBAC アクセスの管理](../../role-based-access-control/pim-azure-resource.md)に関する記事をご覧ください。
+Azure AD 管理者ロールと共に Privileged Identity Management を使用して、Azure リソースへのアクセスを管理、制御、監視します。 PIM を使用した保護では、特権の露出時間を短縮し、レポートとアラートを通じて使用状況の可視性を高めます。 詳しくは、[Privileged Identity Management での Azure リソースへの RBAC アクセスの管理](../../role-based-access-control/best-practices.md)に関する記事をご覧ください。
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>Azure ログ統合を使用して、関連する Azure ログを SIEM システムに送信する
 
-Azure ログ統合を使用すると、未加工のログを、Azure リソースから組織の既存のセキュリティ情報イベント管理 (SIEM) システムに統合できます。 [Azure ログ統合](../../security/fundamentals/azure-log-integration-overview.md)では、Windows イベント ビューアーのログから Windows イベントが収集され、Azure リソースが次から収集されます。
+Azure ログ統合を使用すると、未加工のログを、Azure リソースから組織の既存のセキュリティ情報イベント管理 (SIEM) システムに統合できます。 [Azure ログ統合](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)では、Windows イベント ビューアーのログから Windows イベントが収集され、Azure リソースが次から収集されます。
 
 * Azure アクティビティ ログ
 * Azure Security Center のアラート
@@ -332,7 +332,7 @@ Azure AD を使用すると、Dropbox、Salesforce、ServiceNow などのクラ�
 
 #### <a name="integrate-information-protection"></a>Information Protection を統合する
 
-Microsoft Cloud App Security を使用すると、ファイルを調査し、Azure Information Protection 分類ラベルに基づいてポリシーを設定して、クラウド データの可視性と制御を向上させることができます。 クラウド内のファイルをスキャンして分類し、Azure Information Protection ラベルを適用します。 詳しくは、「[Azure Information Protection の統合](https://docs.microsoft.com/cloud-app-security/azip-integration)」をご覧ください。
+Microsoft Cloud App Security を使用すると、ファイルを調査し、Azure Information Protection 分類ラベルに基づいてポリシーを設定して、クラウド データの可視性と制御を向上させることができます。 クラウド内のファイルをスキャンして分類し、Azure Information Protection ラベルを適用します。 詳しくは、「[Azure Information Protection の統合](/cloud-app-security/azip-integration)」をご覧ください。
 
 #### <a name="configure-conditional-access"></a>条件付きアクセスを構成する
 
@@ -340,7 +340,7 @@ Microsoft Cloud App Security を使用すると、ファイルを調査し、Azu
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>接続されているクラウド アプリのアクティビティを監視する
 
-接続されているアプリケーションでもユーザーのアクセスが確実に保護されるように、[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) の利用をお勧めします。 この機能により、クラウド アプリへのエンタープライズ アクセスと管理者アカウントが保護され、以下が可能になります。
+接続されているアプリケーションでもユーザーのアクセスが確実に保護されるように、[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) の利用をお勧めします。 この機能により、クラウド アプリへのエンタープライズ アクセスと管理者アカウントが保護され、以下が可能になります。
 
 * 可視性と制御をクラウド アプリに拡張する
 * アクセス、アクティビティ、データ共有のポリシーを作成する
@@ -348,7 +348,7 @@ Microsoft Cloud App Security を使用すると、ファイルを調査し、Azu
 * データの漏えいを防ぐ
 * リスクを最小限に抑え、脅威の防止とポリシーの適用を自動化する
 
-Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サーバーと統合して、Office 365 のアラートとアクティビティの一元的な監視を可能にします。 サーバー上で稼働し、Cloud App Security からのアラートとアクティビティをプルして、SIEM サーバーにストリーム送信します。 詳しくは、「[SIEM の統合](https://docs.microsoft.com/cloud-app-security/siem)」をご覧ください。
+Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サーバーと統合して、Office 365 のアラートとアクティビティの一元的な監視を可能にします。 サーバー上で稼働し、Cloud App Security からのアラートとアクティビティをプルして、SIEM サーバーにストリーム送信します。 詳しくは、「[SIEM の統合](/cloud-app-security/siem)」をご覧ください。
 
 ## <a name="stage-4-continue-building-defenses"></a>ステージ 4: 防御の構築を継続する
 
@@ -373,7 +373,7 @@ Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サ�
 * 必要な場合にのみ特権アクセスを付与し、その後削除します (Just-In-Time)
 * 特権アカウントに関連する監査アクティビティ ログを保持します
 
-完全なセキュリティ ロードマップの構築について詳しくは、「[Microsoft クラウド IT アーキテクチャのリソース](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)」をご覧ください。 ロードマップのいずれかの部分の実装で Microsoft サービスを利用するには、Microsoft の担当者にお問い合わせいただくか、[企業を保護するための重要なサイバー防御の構築](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)に関するページをご覧ください。
+完全なセキュリティ ロードマップの構築について詳しくは、「[Microsoft クラウド IT アーキテクチャのリソース](https://almbok.com/office365/microsoft_cloud_it_architecture_resources)」をご覧ください。 ロードマップのいずれかの部分の実装で Microsoft サービスを利用するには、Microsoft の担当者にお問い合わせいただくか、[企業を保護するための重要なサイバー防御の構築](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)に関するページをご覧ください。
 
 セキュリティで保護された特権アクセスのロードマップのこの最終的な継続ステージには、次のコンポーネントが含まれます。
 
@@ -385,7 +385,7 @@ Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サ�
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスの管理権を持つユーザーを確認する
 
-詳しくは、「[ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](../device-management-hybrid-azuread-joined-devices-setup.md)」をご覧ください。
+詳しくは、「[ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](../devices/hybrid-azuread-join-plan.md)」をご覧ください。
 
 #### <a name="review-members-of-built-in-office-365-admin-roles"></a>[Office 365 の組み込み管理者ロール](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)のメンバーを確認する
 Office 365 を使用していない場合は、この手順をスキップします。
@@ -440,7 +440,7 @@ Microsoft Office 365 がセキュリティ インシデントを処理する方�
 
 **回答:** 常に最新の状態に保たれているグローバル管理者アカウントを作成します。
 
-**質問:** 全体管理者が 1 つしか残っておらず、アクセスできない場合はどうしますか?
+**質問:** 全体管理者が 1 人しか残っておらず、連絡を取ることができない場合はどうしますか?
 
 **回答:** 非常用アカウントの 1 つを使用して、即時特権アクセス権を取得します。
 

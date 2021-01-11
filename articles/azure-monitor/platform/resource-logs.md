@@ -4,20 +4,20 @@ description: Azure Monitor の Log Analytics ワークスペースに Azure リ�
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 492aae69895d62c784d15cd77405d0c52ec13e3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84946963"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800502"
 ---
 # <a name="azure-resource-logs"></a>Azure リソース ログ
 Azure リソース ログは、Azure リソース内で実行された操作に関する分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 リソース ログの内容は、Azure サービスとリソースの種類によって異なります。 既定では、リソース ログは収集されません。 各 Azure リソースのリソース ログを、[Azure Monitor ログ](data-platform-logs.md)で使用するために Log Analytics ワークスペースに送信したり、Azure の外部に転送するために Azure Event Hubs に送信したり、アーカイブ用に Azure Storage に送信したりするために、各 Azure リソースの診断設定を作成する必要があります。
 
-診断設定を作成する方法の詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](diagnostic-settings.md)」を参照してください。Azure Policy を使用して、作成した各 Azure リソースの診断設定を自動的に作成する方法については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](deploy-scale.md)」を参照してください。
+診断設定を作成する方法の詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](diagnostic-settings.md)」を参照してください。Azure Policy を使用して、作成した各 Azure リソースの診断設定を自動的に作成する方法については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」を参照してください。
 
 ## <a name="send-to-log-analytics-workspace"></a>Log Analytics ワークスペースに送信する
  次のような [Azure Monitor ログ](data-platform-logs.md)の機能を有効にするには、リソース ログを Log Analytics ワークスペースに送信します。
@@ -85,17 +85,15 @@ AzureDiagnostics テーブルは次のようになります。
 
 
 ### <a name="select-the-collection-mode"></a>コレクション モードを選択する
-ほとんどの Azure リソースでは、ユーザーに選択肢を与えることなく、**Azure 診断**または**リソース固有モード**でワークスペースにデータが書き込まれます。 使用されるモードの詳細については、[各サービスのドキュメント](diagnostic-logs-schema.md)を参照してください。 最終的には、すべての Azure サービスで、リソース固有モードが使用されるようになります。 この移行の一環として、一部のリソースでは診断設定でモードを選択できるようになります。 新しい診断設定ではリソース固有モードを指定してください。これにより、データの管理が容易になり、後日行う移行が複雑になるのを回避できる場合があります。
+ほとんどの Azure リソースでは、ユーザーに選択肢を与えることなく、**Azure 診断**または**リソース固有モード**でワークスペースにデータが書き込まれます。 使用されるモードの詳細については、[各サービスのドキュメント](./resource-logs-schema.md)を参照してください。 最終的には、すべての Azure サービスで、リソース固有モードが使用されるようになります。 この移行の一環として、一部のリソースでは診断設定でモードを選択できるようになります。 新しい診断設定ではリソース固有モードを指定してください。これにより、データの管理が容易になり、後日行う移行が複雑になるのを回避できる場合があります。
   
    ![診断設定のモード セレクター](media/resource-logs-collect-workspace/diagnostic-settings-mode-selector.png)
 
-
-
-
 > [!NOTE]
-> 現在、Azure portal で診断設定を構成する場合は、**Azure 診断**または**リソース固有**モードを選択できるだけとなっています。 CLI、PowerShell、または Rest API を使用して設定を構成する場合、既定では **Azure 診断**となります。
+> Resource Manager テンプレートを使用してコレクション モードを設定する例については、「[Azure Monitor の診断設定用の Resource Manager テンプレートのサンプル](../samples/resource-manager-diagnostic-settings.md#diagnostic-setting-for-recovery-services-vault)」を参照してください。
 
-既存の診断設定をリソース固有モードに変更できます。 この場合、既に収集されたデータは、ワークスペースに対するご利用の保有期間設定に従って削除されるまで、_AzureDiagnostics_ テーブル内に残ります。 新しいデータは、専用のテーブルに収集されます。 両方のテーブルのデータに対してクエリを実行するには、[union](https://docs.microsoft.com/azure/kusto/query/unionoperator) 演算子を使用します。
+
+既存の診断設定をリソース固有モードに変更できます。 この場合、既に収集されたデータは、ワークスペースに対するご利用の保有期間設定に従って削除されるまで、_AzureDiagnostics_ テーブル内に残ります。 新しいデータは、専用のテーブルに収集されます。 両方のテーブルのデータに対してクエリを実行するには、[union](/azure/kusto/query/unionoperator) 演算子を使用します。
 
 リソース固有モードをサポートしている Azure サービスに関するお知らせは、[Azure の更新情報](https://azure.microsoft.com/updates/)を引き続きご覧ください。
 
@@ -191,7 +189,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/00000000
 
 各 PT1H.json BLOB には、BLOB の URL で指定された時間内に発生したイベントの JSON BLOB が含まれます (例: h = 12)。 現在の時間内にイベントが発生すると、PT1H.json ファイルにイベントが追加されます。 リソース ログ イベントは 1 時間ごとに個々の BLOB に分類されるため、分の値 (m = 00) は常に 00 です。
 
-PT1H.json ファイル内では、各イベントは、次の形式で保存されます。 これには一般的な最上位スキーマを使用しますが、「[リソース ログのスキーマ](diagnostic-logs-schema.md)」で説明されているように、各 Azure サービスに固有です。
+PT1H.json ファイル内では、各イベントは、次の形式で保存されます。 これには一般的な最上位スキーマを使用しますが、「[リソース ログのスキーマ](./resource-logs-schema.md)」で説明されているように、各 Azure サービスに固有です。
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}

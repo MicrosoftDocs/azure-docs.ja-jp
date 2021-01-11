@@ -2,16 +2,16 @@
 title: Azure Analysis Services の実行時間の長い操作に関するベスト プラクティス | Microsoft Docs
 description: この記事では、実行時間の長い操作に関するベスト プラクティスについて説明します。
 author: minewiskan
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: owend
-ms.openlocfilehash: 3f6b2194cc422a827bbc7a15c012173b3f814b52
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5195d63180d45ad408256264e3cf10174e55cd96
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426487"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551950"
 ---
 # <a name="best-practices-for-long-running-operations"></a>実行時間の長い操作に関するベスト プラクティス
 

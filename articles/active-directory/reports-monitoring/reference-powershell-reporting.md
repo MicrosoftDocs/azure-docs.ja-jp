@@ -17,24 +17,26 @@ ms.date: 08/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0510184e2471d61c8911b5fcd484fd5dec0bce28
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144476"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89231131"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>レポート用の Azure AD PowerShell コマンドレット
 
 > [!NOTE] 
-> 現時点では、これらの PowerShell コマンドレットは [Azure AD プレビュー](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) モジュールでのみ使用できます。 プレビュー モジュールは運用環境では推奨されないことに注意してください。 
+> 現時点では、これらの PowerShell コマンドレットは [Azure AD プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) モジュールでのみ使用できます。 プレビュー モジュールは運用環境では推奨されないことに注意してください。 
 
 パブリック プレビュー リリースをインストールするには、以下を使用します。 
 
 ```powershell
 Install-module AzureADPreview
 ```
-PowerShell を使用して Azure AD に接続する方法の詳細については、[Azure AD Powershell for Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) に関する記事を参照してください。  
+
+PowerShell を使用して Azure AD に接続する方法の詳細については、[Azure AD PowerShell for Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) に関する記事を参照してください。  
 
 Azure Active Directory (Azure AD) レポートを使用すると、自分の方向のすべての書き込み操作 (監査ログ) および認証データ (サインイン ログ) に関するアクティビティの詳細を取得できます。 この情報は MS Graph API を使用して入手できますが、レポート用の Azure AD PowerShell コマンドレットを使用して、同じデータを取得できるようになりました。
 

@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/20/2020
-ms.openlocfilehash: 464f0dcab3debf92605d2f13be9b25ece63f4bf2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/21/2020
+ms.custom: contperfq1
+ms.openlocfilehash: 456b955d40e417c9851734b0acaa86a14c9c83f0
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737684"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757848"
 ---
 # <a name="cluster-configuration-optimization-for-apache-spark"></a>Apache Spark のクラスター構成の最適化
 

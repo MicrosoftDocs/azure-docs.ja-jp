@@ -1,15 +1,16 @@
 ---
 title: Azure 上に Ethereum Proof-of-Authority Consortium ソリューション テンプレートをデプロイする
 description: Etherereum Proof-of-Authority Consortium ソリューションを使用して Azure 上にマルチメンバー コンソーシアム型 Ethereum ネットワークをデプロイして構成する
-ms.date: 07/07/2020
+ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 859be5d779663e429ef333c8fd8163c0aa60eab5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085924"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386114"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
 
@@ -23,11 +24,14 @@ ms.locfileid: "86085924"
 
 Ethereum Proof-of-Authority Consortium ソリューション テンプレートを使用する前に、利用可能な Azure Blockchain オプションの一般的なユース ケースと実際のシナリオを比較してください。
 
+> [!IMPORTANT]
+> Azure ソリューション テンプレートでの Ethereum ではなく、[Azure Blockchain Service](../service/overview.md) の使用を検討します。 Azure Blockchain Service は、サポートされているマネージド Azure サービスです。 Parity Ethereum は、コミュニティ主導の開発とメンテナンスに移行されました。 詳細については、「[OpenEthereum DAO への Parity Ethereum の移行](https://www.parity.io/parity-ethereum-openethereum-dao/)」を参照してください。
+
 オプション | サービス モデル | 一般的なユース ケース
 -------|---------------|-----------------
-ソリューション テンプレート | IaaS | ソリューション テンプレートは、完全に構成されたブロックチェーン ネットワーク トポロジのプロビジョニングに使用できる Azure Resource Manager テンプレートです。 これらのテンプレートでは、特定のブロックチェーン ネットワークの種類に対応する Microsoft Azure コンピューティング、ネットワーク、およびストレージ サービスをデプロイして構成します。 ソリューション テンプレートは、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A の質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)をご利用ください。
+ソリューション テンプレート | IaaS | ソリューション テンプレートは、完全に構成されたブロックチェーン ネットワーク トポロジのプロビジョニングに使用できる Azure Resource Manager テンプレートです。 これらのテンプレートでは、特定のブロックチェーン ネットワークの種類に対応する Microsoft Azure コンピューティング、ネットワーク、およびストレージ サービスをデプロイして構成します。 ソリューション テンプレートは、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A の質問ページ](/answers/topics/azure-blockchain-workbench.html)をご利用ください。
 [Azure Blockchain Service](../service/overview.md) | PaaS | Azure Blockchain Service (プレビュー) により、コンソーシアム ブロックチェーン ネットワークの構成、管理、ガバナンスが簡素化されます。 Azure Blockchain Service は、PaaS、コンソーシアム管理、またはコントラクトとトランザクションのプライバシーを必要とするソリューションに使用します。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS および PaaS | Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン ソリューションまたはブロックチェーン アプリケーションの概念実証のプロトタイプを作成する際に使用します。 Azure Blockchain Workbench は、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)をご利用ください。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS および PaaS | Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン ソリューションまたはブロックチェーン アプリケーションの概念実証のプロトタイプを作成する際に使用します。 Azure Blockchain Workbench は、サービス レベル アグリーメントなしで提供されます。 サポートが必要な場合には、[Microsoft Q&A 質問ページ](/answers/topics/azure-blockchain-workbench.html)をご利用ください。
 
 ## <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
@@ -731,10 +735,10 @@ Azure Blockchain の最新情報については、[Azure Blockchain のブログ
 
 Microsoft のエンジニアや Azure Blockchain コミュニティのエキスパートと交流できます。
 
-* [Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html)。 ブロックチェーン テンプレートに関するエンジニアリング サポートは、デプロイに関する問題に限定されています。
+* [Microsoft Q&A 質問ページ](/answers/topics/azure-blockchain-workbench.html)。 ブロックチェーン テンプレートに関するエンジニアリング サポートは、デプロイに関する問題に限定されています。
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>次のステップ
 
-その他の Azure Blockchain ソリューションについては、[Azure Blockchain のドキュメント](https://docs.microsoft.com/azure/blockchain/)をご覧ください。
+その他の Azure Blockchain ソリューションについては、[Azure Blockchain のドキュメント](../index.yml)をご覧ください。

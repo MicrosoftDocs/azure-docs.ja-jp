@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell を使用して Synapse SQL プールを作成し、クエリを実行する
+title: Azure PowerShell を使用して Synapse SQL プールを作成する
 description: Azure PowerShell からサーバーレベルのファイアウォール規則を使用して、Synapse SQL プールをすばやく作成します。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,15 +10,15 @@ ms.subservice: sql-dw
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 21ca3968065df2575b101efa7735d56f87683938
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
+ms.openlocfilehash: 098b33491076de5e7e71fed7439cc6090e0183bb
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85211070"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89076797"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Synapse SQL プールを作成し、クエリを実行する
+# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Synapse SQL プールを作成する
 
 Azure PowerShell を使用して、Azure Synapse Analytics で Synapse SQL プール (データ ウェアハウス) を作成します。
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは SQL プールを作成し、ファイアウォール規則を作成し、SQL プールに接続していくつかのクエリを実行しました。 理解をさらに深めるために、[SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事に進んでください。
+ここでは SQL プールを作成し、ファイアウォール規則を作成し、SQL プールに接続しました。 理解をさらに深めるために、[SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事に進んでください。

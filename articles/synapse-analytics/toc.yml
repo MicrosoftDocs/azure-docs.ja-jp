@@ -34,8 +34,12 @@
       href: release-notes.md
 - name: クイックスタート
   items:
-    - name: Synapse ワークスペースを作成する
+    - name: Azure portal を使用して Synapse ワークスペースを作成する
       href: quickstart-create-workspace.md
+    - name: テンプレートを使用したデプロイ
+      href: quickstart-deployment-template-workspaces.md
+    - name: Azure CLI を使用して Synapse ワークスペースを作成する
+      href: quickstart-create-workspace-cli.md
     - name: Synapse Studio を使用する
       href: quickstart-synapse-studio.md
     - name: Power BI ワークスペースをリンクする
@@ -74,10 +78,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: データ サイエンティスト
       items:
-        - name: NYC タクシーの予測のヒント
+        - name: Azure AutoML を使用して回帰実験を実行する
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: Apache Spark MLlib を使用して分類モデルを作成する
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: 追加のライブラリを使用して Apache Spark を補強する
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: データ アナリスト
       items:
         - name: オンデマンドで SQL を使用して分析し、Synapse Studio を使用して視覚化する
@@ -122,7 +126,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Spark プール履歴サーバー
               href: ./spark/apache-spark-history-server.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -202,18 +206,28 @@
               href: ./spark/apache-spark-overview.md
             - name: Apache Spark の概念
               href: ./spark/apache-spark-concepts.md
-            - name: ランタイム言語とライブラリのサポート
-              href: ./spark/apache-spark-version-support.md
             - name: Delta Lake とは
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: Delta Lake 機能の概要
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark のパフォーマンス
               href: ./spark/apache-spark-performance.md
+            - name: Hyperspace のインデックスを使用した Apache Spark のパフォーマンス最適化
+              href: ./spark/apache-spark-performance-hyperspace.md
             - name: Apache Spark の自動スケール動作
               href: ./spark/apache-spark-autoscale.md
         - name: 開発
           items:
+            - name: ライブラリ
+              items:
+                - name: ライブラリの追加と管理
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: ランタイム言語とライブラリのサポート
+                  href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio ノートブック
               href: ./spark/apache-spark-development-using-notebooks.md
+            - name: TokenLibrary を使用した資格情報のセキュリティ保護
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
             - name: .NET for Apache Spark
               href: ./spark/spark-dotnet.md
             - name: Apache Spark 機械学習
@@ -230,7 +244,7 @@
               href: sql/on-demand-workspace-overview.md
             - name: SQL プール
               href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: アーキテクチャ
+            - name: Architecture
               href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機能の概要
               href: sql/overview-features.md
@@ -240,7 +254,7 @@
               href: sql/best-practices-sql-on-demand.md
             - name: SQL プールのベスト プラクティス
               href: sql/best-practices-sql-pool.md
-        - name: データの読み込み
+        - name: データの取り込みと準備
           items:
             - name: 概要
               href: ./sql-data-warehouse/design-elt-data-loading.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
@@ -267,7 +281,7 @@
             - name: 結果セットのキャッシュ
               href: /sql/t-sql/statements/set-result-set-caching-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Machine Learning 予測
-              href: ./sql-data-warehouse/sql-data-warehouse-predict.md
+              href: ./sql-data-warehouse/sql-data-warehouse-predict.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: テーブル
               items:
                 - name: 概要
@@ -408,7 +422,7 @@
                   href: ./sql-data-warehouse/sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Gen2 へのアップグレード
               href: ./sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-    - name: データの読み込み
+    - name: データの取り込みと準備
       items:
         - name: データ ウェアハウスへ
           items:
@@ -450,6 +464,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Synapse Analytics の Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: Apache Spark を使用して Synapse Link のデータを SQL プールにコピーする
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse SQL
           items:
             - name: ストレージ内のデータのクエリ
@@ -908,7 +924,7 @@
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 質問と回答
-      href: 'https://docs.microsoft.com/en-us/answers/questions/topics/single/25423.html'
+      href: 'https://docs.microsoft.com/answers/questions/topics/single/25423.html'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
     - name: Stack Overflow

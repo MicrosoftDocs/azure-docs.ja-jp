@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 08/17/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ace22a6896a121f5cd8af838c7b0e427bd0287dc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b48e5e28b15d17796138d493a7d9c628791df2e6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "67180857"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830132"
 ---
-## <a name="enable-event-grid-resource-provider"></a>Event Grid リソース プロバイダーを有効にする
+## <a name="enable-the-event-grid-resource-provider"></a>Event Grid リソース プロバイダーを有効にする
 
 Azure サブスクリプションで Event Grid を使用したことがない場合は、Event Grid リソース プロバイダーを登録する必要がある可能性があります。 以下のプロバイダーを登録するコマンドを実行します。
 

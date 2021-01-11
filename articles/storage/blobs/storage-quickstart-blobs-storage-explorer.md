@@ -1,7 +1,7 @@
 ---
 title: クイックスタート - Azure Storage Explorer を使用して BLOB を作成する
 titleSuffix: Azure Storage
-description: このクイックスタートでは、Azure Storage Explorer を使用してコンテナーと BLOB を作成する方法や、その BLOB をローカル コンピューターにダウンロードする方法、さらにコンテナーにあるすべての BLOB を表示する方法について説明します。
+description: Azure Storage Explorer を使用してコンテナーと BLOB を作成する方法、その BLOB をローカル コンピューターにダウンロードする方法、およびコンテナーにあるすべての BLOB を表示する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3ed0885152b15ef365d0e02c198b684bedd2f95b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f8768a1b2542eb0461ef0c50c96e22c80eced57a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083652"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836464"
 ---
 # <a name="quickstart-use-azure-storage-explorer-to-create-a-blob"></a>クイック スタート:Azure Storage Explorer を使用して BLOB を作成する
 

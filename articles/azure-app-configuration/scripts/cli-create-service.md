@@ -1,19 +1,20 @@
 ---
 title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの作成
 titleSuffix: Azure App Configuration
-description: Azure CLI スクリプトを使用して Azure App Configuration ストアを作成します
+description: サンプル Azure CLI スクリプトを使用して、Azure App Configuration ストアを作成します。 スクリプトで使用されているコマンドへのリファレンス記事のリンクを参照してください。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: a4d15b8ea9b6881add23875e201d7c6be39bb24b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7b3221c55cef6207ea38ac1375202acd8b8ab4f1
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774213"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588328"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
 

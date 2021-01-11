@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3589b4af06bc27a79c429bb0ccd743857651db97
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71266071"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653547"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 仮想マシンの SAP HANA の高可用性
 
@@ -37,9 +37,9 @@ Azure VM 上の SAP HANA のようなミッション クリティカルなデー
 
 以下の記事では、Azure で SAP HANA の使用に関する優れた概要を提供しています。
 
-- [Azure VM への単一インスタンスの SAP HANA の手動インストール](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Azure VM への単一インスタンスの SAP HANA の手動インストール](./hana-get-started.md)
 - [Azure VM での SAP HANA システム レプリケーションのセットアップ](sap-hana-high-availability.md)
-- [Azure VM での SAP HANA のバックアップ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [Azure VM での SAP HANA のバックアップ](./sap-hana-backup-guide.md)
 
 また、SAP HANA に関する以下の記事をよく理解しておくこともお勧めします。
 
@@ -52,7 +52,7 @@ Azure VM 上の SAP HANA のようなミッション クリティカルなデー
 - [SAP HANA サービスの自動再起動](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [SAP HANA システム レプリケーションの構成](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Azure での VM デプロイについて理解することも必要ですが、Azure で可用性アーキテクチャを定義する前に、「[Azure での Windows 仮想マシンの可用性の管理](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)」を読むことをお勧めします。
+Azure での VM デプロイについて理解することも必要ですが、Azure で可用性アーキテクチャを定義する前に、「[Azure での Windows 仮想マシンの可用性の管理](../../windows/manage-availability.md)」を読むことをお勧めします。
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure コンポーネントのサービス レベル アグリーメント
 
@@ -60,16 +60,16 @@ Azure では、ネットワーク、ストレージ、VM などのコンポー�
 
 「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」では、3 つの異なる構成に対する、次の 3 つの異なる SLA について説明しています。
 
-- OS ディスクとすべてのデータ ディスクに対して [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) を使用する単一の VM。 このオプションは、月次で 99.9% の稼働時間を提供します。
-- [Azure 可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)で編成されている複数 (2 台以上) の VM。 このオプションは、月次で 99.95% の稼働時間を提供します。
-- [可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)で編成されている複数 (2 台以上) の VM。 このオプションは、月次で 99.99% の稼働時間を提供します。
+- OS ディスクとすべてのデータ ディスクに対して [Azure Premium SSD](../../managed-disks-overview.md) を使用する単一の VM。 このオプションは、月次で 99.9% の稼働時間を提供します。
+- [Azure 可用性セット](../../windows/tutorial-availability-sets.md)で編成されている複数 (2 台以上) の VM。 このオプションは、月次で 99.95% の稼働時間を提供します。
+- [可用性ゾーン](../../../availability-zones/az-overview.md)で編成されている複数 (2 台以上) の VM。 このオプションは、月次で 99.99% の稼働時間を提供します。
 
 Azure コンポーネントで提供可能な SLA に対する可用性の要件を評価してください。 その後、SAP HANA のシナリオを選択して、必要な可用性レベルを実現してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[1 つの Azure リージョン内での SAP HANA の可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)」を確認する
-- 「[Azure リージョンの枠を越えた SAP HANA の可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)」を確認する 
+- 「[1 つの Azure リージョン内での SAP HANA の可用性](./sap-hana-availability-one-region.md)」を確認する
+- 「[Azure リージョンの枠を越えた SAP HANA の可用性](./sap-hana-availability-across-regions.md)」を確認する 
 
 
 
@@ -86,5 +86,3 @@ Azure コンポーネントで提供可能な SLA に対する可用性の要件
 
 
   
-
-

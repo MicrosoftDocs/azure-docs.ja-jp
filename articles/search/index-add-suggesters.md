@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 2a0798ee923624aef9f29c1e9cc30f38b55770a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4889e73e851e285c84d5d4429298e9a7cdacc140
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565329"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89014389"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>クエリでオートコンプリートと候補の結果を有効にする suggester を作成する
 
@@ -25,7 +26,7 @@ Azure Cognitive Search では、[検索インデックス](search-what-is-an-ind
 
 これらの機能は、個別に、または組み合わせて使用できます。 Azure Cognitive Search でこれらの動作を実装するために、インデックスとクエリのコンポーネントがあります。 
 
-+ インデックスで、suggester をインデックスに追加します。 ポータル、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)、または [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet) を使用できます。 この記事の残りの部分では、suggester の作成に焦点を絞って説明します。
++ インデックスで、suggester をインデックスに追加します。 ポータル、[REST API](/rest/api/searchservice/create-index)、または [.NET SDK](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet) を使用できます。 この記事の残りの部分では、suggester の作成に焦点を絞って説明します。
 
 + クエリ要求では、[後で示す API 一覧](#how-to-use-a-suggester)のいずれかを呼び出します。
 
@@ -37,7 +38,7 @@ suggester は、部分的なクエリで一致するプレフィックスを格�
 
 ## <a name="define-a-suggester"></a>suggester を定義する
 
-suggester を作成するには、[インデックス スキーマ](https://docs.microsoft.com/rest/api/searchservice/create-index)に suggester を追加し、[各プロパティを設定](#property-reference)します。 suggester の作成に最適なタイミングは、それを使用するフィールドを定義するときです。
+suggester を作成するには、[インデックス スキーマ](/rest/api/searchservice/create-index)に suggester を追加し、[各プロパティを設定](#property-reference)します。 suggester の作成に最適なタイミングは、それを使用するフィールドを定義するときです。
 
 + 文字列フィールドのみを使用する
 
@@ -57,7 +58,7 @@ suggester は、いくつかのプロパティを備えていますが、基本�
 
 アナライザーを選択すると、フィールドをトークン化する方法と、その後のプレフィックスを付ける方法が決まります。 たとえば、"context-sensitive" などのハイフンでつながれた文字列の場合、言語アナライザーを使用すると、"context"、"sensitive"、"context-sensitive" というトークンの組み合わせになります。 ここでは標準の Lucene アナライザーを使用したので、ハイフンでつながれた文字列は存在しません。 
 
-アナライザーを評価する場合、用語がどのようにトークン化され、その後、どのようにプレフィックスが付けられるかを理解するために、[テキストの分析 API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) を使用することをお勧めします。 インデックスを作成したら、文字列に対してさまざまなアナライザーを試して、トークン出力を確認することができます。
+アナライザーを評価する場合、用語がどのようにトークン化され、その後、どのようにプレフィックスが付けられるかを理解するために、[テキストの分析 API](/rest/api/searchservice/test-analyzer) を使用することをお勧めします。 インデックスを作成したら、文字列に対してさまざまなアナライザーを試して、トークン出力を確認することができます。
 
 [カスタム アナライザー](index-add-custom-analyzers.md)または[定義済みアナライザー](index-add-custom-analyzers.md#predefined-analyzers-reference) (標準の Lucene を除く) を使用するフィールドは、不適切な結果を防ぐために明示的に許可されません。
 
@@ -72,7 +73,7 @@ suggester の作成に最適なタイミングは、フィールド定義自体�
 
 ## <a name="create-using-rest"></a>REST を使用して作成する
 
-REST API では、[インデックス作成](https://docs.microsoft.com/rest/api/searchservice/create-index)または[インデックス更新](https://docs.microsoft.com/rest/api/searchservice/update-index)を使用して suggester を追加します。 
+REST API では、[インデックス作成](/rest/api/searchservice/create-index)または[インデックス更新](/rest/api/searchservice/update-index)を使用して suggester を追加します。 
 
   ```json
   {
@@ -110,7 +111,7 @@ REST API では、[インデックス作成](https://docs.microsoft.com/rest/api
 
 ## <a name="create-using-net"></a>.NET を使用して作成する
 
-C# では、[Suggester オブジェクト](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)を定義します。 `Suggesters` はコレクションですが、1 つの項目のみを取ることができます。 
+C# では、[Suggester オブジェクト](/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)を定義します。 `Suggesters` はコレクションですが、1 つの項目のみを取ることができます。 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -137,7 +138,7 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 |--------------|-----------------|
 |`name`        |suggester の名前。|
 |`searchMode`  |候補語句の検索に使用する戦略。 現在サポートされているモードは `analyzingInfixMatching` のみです。これは、現在、用語の先頭でマッチングを実行します。|
-|`sourceFields`|検索候補の内容のソースである 1 つまたは複数のフィールドのリスト。 フィールドは `Edm.String` 型および `Collection(Edm.String)` 型である必要があります。 フィールドにアナライザーが指定されている場合は、(カスタム アナライザーではなく) [こちらの一覧](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)の名前付きアナライザーである必要があります。<p/> ベスト プラクティスとしては、検索バーまたはドロップダウン リストのどちらの補完された文字列でも、想定される適切な応答に利用するフィールドのみを指定します。<p/>ホテル名には有効桁数があるため、適切な選択肢です。 説明やコメントなどの詳細なフィールドは、文字数が多くなりすぎます。 同様に、カテゴリやタグなどの反復的なフィールドでは、効果が低くなります。 例には、複数のフィールドを含めることができることを例示するために、ひとまず、"カテゴリ" を組み入れています。 |
+|`sourceFields`|検索候補の内容のソースである 1 つまたは複数のフィールドのリスト。 フィールドは `Edm.String` 型および `Collection(Edm.String)` 型である必要があります。 フィールドにアナライザーが指定されている場合は、(カスタム アナライザーではなく) [こちらの一覧](/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)の名前付きアナライザーである必要があります。<p/> ベスト プラクティスとしては、検索バーまたはドロップダウン リストのどちらの補完された文字列でも、想定される適切な応答に利用するフィールドのみを指定します。<p/>ホテル名には有効桁数があるため、適切な選択肢です。 説明やコメントなどの詳細なフィールドは、文字数が多くなりすぎます。 同様に、カテゴリやタグなどの反復的なフィールドでは、効果が低くなります。 例には、複数のフィールドを含めることができることを例示するために、ひとまず、"カテゴリ" を組み入れています。 |
 
 <a name="how-to-use-a-suggester"></a>
 
@@ -145,10 +146,10 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 
 クエリには suggester が使用されています。 suggester を作成したら、search-as-you-type エクスペリエンス用の次の API のいずれかを呼び出します。
 
-+ [検索候補 REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [オートコンプリート REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [AutocompleteWithHttpMessagesAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [検索候補 REST API](/rest/api/searchservice/suggestions) 
++ [オートコンプリート REST API](/rest/api/searchservice/autocomplete) 
++ [SuggestWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
++ [AutocompleteWithHttpMessagesAsync メソッド](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 検索アプリケーションでは、クライアント コードで、[jQuery UI Autocomplete](https://jqueryui.com/autocomplete/) などのライブラリを利用して、部分クエリを収集し、一致を提供する必要があります。 このタスクの詳細については、[クライアント コードへのオートコンプリートまたは候補の結果の追加](search-autocomplete-tutorial.md)に関するページを参照してください。
 
@@ -173,4 +174,4 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2020-06-30
 要求の形式の詳細については、次の記事を参照することをお勧めします。
 
 > [!div class="nextstepaction"]
-> [クライアント コードにオートコンプリートと検索候補を追加する](search-autocomplete-tutorial.md) 
+> [クライアント コードにオートコンプリートと検索候補を追加する](search-autocomplete-tutorial.md)

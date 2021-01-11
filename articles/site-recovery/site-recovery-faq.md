@@ -2,14 +2,14 @@
 title: Azure Site Recovery サービスに関する一般的な質問
 description: この記事では、Azure Site Recovery に関してよく寄せられる一般的な質問について説明します。
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: b02d001d6fad905badaf17422bdd0554e3fc8493
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: d77f62a57a75f13589b11e023f902c1a128a0d95
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133658"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950495"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -116,6 +116,19 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 ### <a name="how-can-i-enforce-tls-12-on-hyperv-to-azure-site-recovery-scenarios"></a>HyperV から Azure へのサイトの回復のシナリオに TLS 1.2 を適用するにはどうすればよいですか。
 Azure Site Recovery のマイクロサービス間のすべての通信は、TLS 1.2 プロトコルで発生します。 Site Recovery は、システム (OS) で構成されたセキュリティ プロバイダーを使用し、使用可能な最新の TLS プロトコルを使用します。 ユーザーは、レジストリで TLS 1.2 を明示的に有効にする必要があります。その後、Site Recovery は、サービスとの通信に TLS 1.2 を使用するようになります。 
 
+### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>レプリケーション データの読み取りと書き込みのために Site Recovery サービスからアクセスされるストレージ アカウントに対して、制限付きアクセスを適用するにはどうすればいいですか。
+*[Identity]\(ID\)* 設定に移動して、Recovery Services コンテナーのマネージド ID を切り替えることができます。 コンテナーが Azure Active Directory に登録されたら、ストレージ アカウントに移動して、以下のロールの割り当てをコンテナーに指定することができます。
+
+- Resource Manager ベースのストレージ アカウント (Standard タイプ):
+  - [Contributor](../role-based-access-control/built-in-roles.md#contributor)
+  - [ストレージ BLOB データ共同作成者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- Resource Manager ベースのストレージ アカウント (Premium タイプ):
+  - [Contributor](../role-based-access-control/built-in-roles.md#contributor)
+  - [ストレージ BLOB データ所有者](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- 従来のストレージ アカウント:
+  - [Classic Storage Account Contributor](../role-based-access-control/built-in-roles.md#classic-storage-account-contributor)
+  - [従来のストレージ アカウント キー オペレーターのサービス ロール](../role-based-access-control/built-in-roles.md#classic-storage-account-key-operator-service-role)
+
 ## <a name="disaster-recovery"></a>障害復旧
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery が保護できるものは何ですか。
@@ -142,7 +155,7 @@ Site Recovery では、オンプレミスの VMware VM のディザスター リ
 ### <a name="is-disaster-recovery-supported-for-hyper-v-vms"></a>Hyper-V VM でディザスター リカバリーはサポートされますか?
 はい、Site Recovery では、オンプレミスの Hyper-V VM のディザスター リカバリーをサポートします。 Hyper-V VM のディザスター リカバリーに関する[一般的な質問を確認します](hyper-v-azure-common-questions.md)。
 
-## <a name="is-disaster-recovery-supported-for-physical-servers"></a>物理サーバーでディザスター リカバリーはサポートされますか?
+### <a name="is-disaster-recovery-supported-for-physical-servers"></a>物理サーバーでディザスター リカバリーはサポートされますか?
 はい、Site Recovery では、Windows および Linux を実行しているオンプレミスの物理サーバーの Azure またはセカンダリ サイトへのディザスター リカバリーをサポートします。 [Azure](vmware-physical-azure-support-matrix.md#replicated-machines) および[セカンダリ サイト](vmware-physical-secondary-support-matrix.md#replicated-vm-support)へのディザスター リカバリーについての要件を確認します。
 フェールオーバー後、物理サーバーは Azure で VM として実行されることに注意してください。 Azure からオンプレミスの物理サーバーへのフェールバックは、現在サポートされていません。 VMware 仮想マシンにのみフェールバックできます。
 
@@ -234,6 +247,73 @@ Hyper-V 仮想マシンをレプリケートする場合、および Azure に V
 
 >[!Note]
 >カスタム スクリプトをサポートするには、Site Recovery エージェントのバージョンは 9.24 以上である必要があります。
+
+## <a name="replication-policy"></a>Replication policy
+
+### <a name="what-is-a-replication-policy"></a>レプリケーション ポリシーとは何ですか?
+
+レプリケーション ポリシーによって、復旧ポイントの保持履歴設定が定義されます。 このポリシーでは、アプリ整合性スナップショットの頻度も定義されます。 既定では、次のような既定の設定の新しいレプリケーション ポリシーが Azure Site Recovery で作成されます。
+
+- 復旧ポイントの保持履歴は 24 時間。
+- アプリ整合性スナップショットの頻度は 4 時間。
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>クラッシュ整合性復旧ポイントとは何ですか?
+
+クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。
+
+現在、ほとんどのアプリケーションは、クラッシュ整合性のスナップショットから十分に復旧できます。 クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>クラッシュ整合性復旧ポイントはどのくらいの頻度で生成されますか?
+
+Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>アプリケーション整合性復旧ポイントとは何ですか?
+
+アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性復旧ポイントでは、クラッシュ整合性スナップショットと同じデータがキャプチャされますが、さらに、メモリに入っていたデータと処理中のすべてのトランザクションもキャプチャされます。
+
+これらの追加コンテンツのため、アプリケーション整合性スナップショットは最も複雑となり、時間がかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>アプリケーション整合性復旧ポイントがアプリケーション パフォーマンスにもたらす影響について教えてください。
+
+アプリケーション整合性復旧ポイントの場合、メモリに入っているデータと処理中のデータがすべてキャプチャされます。 復旧ポイントでそのデータがキャプチャされるため、アプリケーションを停止する目的で、ボリューム シャドウ コピー サービスなどのフレームワークが Windows で必要になります。 キャプチャ プロセスが頻繁に行われる場合、ワークロードが既にビジー状態であれば、パフォーマンスに影響が出ることがあります。 データベース以外のワークロードの場合、アプリ整合性復旧ポイントの頻度を低く設定しないことをお勧めします。 データベース ワークロードの場合であっても、1 時間で十分です。
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>アプリケーション整合性復旧ポイントが生成される最小の頻度はどのくらいですか?
+
+Site Recovery では、アプリケーション整合性復旧ポイントを 1 時間という最小の頻度で作成できます。
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>復旧ポイントはどのように生成されて保存されますか?
+
+Site Recovery で復旧ポイントを生成する方法を理解するため、レプリケーション ポリシーの例を見てみましょう。 このレプリケーション ポリシーの復旧ポイントには 24 時間の保持期間が設定されており、アプリ整合性スナップショットは 1 時間おきに作成されます。
+
+Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。 この頻度は変更できません。 最後の 1 時間については、12 のクラッシュ整合性ポイントと 1 つのアプリ整合性ポイントから選択できます。 時間が経過すると、最後の 1 時間を超えた復旧ポイントは Site Recovery によってすべて取り除かれ、1 時間につき 1 つの復旧ポイントのみが保存されます。
+
+次のスクリーンショットはこの例を示したものです。 スクリーンショットでは次のようになっています。
+
+- 最後の 1 時間以内では、5 分ごとに復旧ポイントがあります。
+- 最後の 1 時間を超えると、Site Recovery では復旧ポイントが 1 つだけ保持されます。
+
+   ![生成された復旧ポイントの一覧](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>過去のどの時点まで遡って復旧できますか?
+
+使用できる最も古い復旧ポイントは 72 時間です。
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>レプリケーション ポリシーを 24 時間に設定しています。 問題が発生し、Site Recovery で 24 時間以上復旧ポイントを生成できなくなった場合、どうなりますか? 以前の復旧ポイントはなくなりますか?
+
+いいえ、以前のすべての復旧ポイントが Site Recovery によって保持されます。 復旧ポイントの保持期間に基づき、Site Recovery では、新しいポイントが生成された場合にのみ、最も古いポイントが置換されます。 問題のために、Site Recovery では新しい復旧ポイントを生成できません。 新しい復旧ポイントができるまで、保持期間に到達した後も古いポイントはすべて残ります。
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM でレプリケーションを有効にした後で、レプリケーション ポリシーを変更するにはどうしたらよいですか?
+
+**[Site Recovery コンテナー]**  >  **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]** の順に移動します。 編集するポリシーを選択し、変更内容を保存します。 変更は既存のすべてのレプリケーションにも適用されます。
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>すべての復旧ポイントが VM の完全なコピーですか、それとも差分ですか?
+
+生成される最初の復旧ポイントには、完全なコピーがあります。 それ以降の復旧ポイントでは、差分変更が保持されます。
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>復旧ポイントの保持期間を長くすると、ストレージ コストは増えますか?
+
+はい、保持期間を 24 時間から 72 時間に増やすと、Site Recovery により追加の 48 時間分の復旧ポイントが保存されます。 追加の時間により、ストレージ料金が発生します。 たとえば、1 つの復旧ポイントで 10 GB の差分変更があったとき、GB あたりのコストが 1 か月 $0.16 であるとします。 追加料金は 1 か月あたり $1.60 × 48 になります。
+
 
 ## <a name="failover"></a>[フェールオーバー]
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure にフェールオーバーする場合、フェールオーバー後に Azure VM にどうしたらアクセスできますか?

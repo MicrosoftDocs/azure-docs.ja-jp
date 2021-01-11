@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell スクリプトのサンプル - ユーザーの追加 | Microsoft Docs
-description: Azure PowerShell スクリプトのサンプル - ユーザーの追加
+description: API Management でユーザーを追加し、サブスクリプション キーを取得する方法を説明します。 サンプル スクリプトを参照し、使用可能なその他のリソースを確認してください。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 2cfbfdfc4374d528159e9e026016a0583a1a9ac9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0573097d9821b8cf14573f2e5c5291461c2c7ed7
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009069"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843863"
 ---
 # <a name="add-a-user"></a>ユーザーの追加
 

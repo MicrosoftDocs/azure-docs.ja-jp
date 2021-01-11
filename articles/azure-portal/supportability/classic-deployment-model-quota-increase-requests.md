@@ -46,7 +46,7 @@ Azure portal で **[ヘルプとサポート]** を使用してサポート リ�
 
    ![クォータを増やすサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![増やすクォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -86,7 +86,7 @@ Azure portal で **[使用量 + クォータ]** を使用してサポート リ�
 
    ![クォータを増やすために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. **[クォータの種類]** として **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** として **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![[クォータの種類] を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 

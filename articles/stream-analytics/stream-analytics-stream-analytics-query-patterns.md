@@ -6,14 +6,15 @@ author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
-ms.openlocfilehash: 78dde3f6706ecbc54daca162ac718911752fa0ca
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 0eabe147563ee712e20e57aafc1029daf2a8610a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832964"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641043"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Azure Stream Analytics での一般的なクエリ パターン
 
@@ -28,200 +29,6 @@ Azure Stream Analytics のクエリは SQL に類似したクエリ言語で表�
 Azure Stream Analytics では、CSV、JSON、および Avro データ形式のイベントの処理をサポートします。
 
 JSON と Avro のどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含むことができます。 これらの複雑なデータ型の操作については、[JSON および AVRO データの解析](stream-analytics-parsing-json.md)に関する記事をご覧ください。
-
-## <a name="simple-pass-through-query"></a>単純なパススルー クエリ
-
-単純なパススルー クエリを使用すると、入力ストリーム データを出力にコピーできます。 たとえば、リアルタイムの車両情報を含むデータ ストリームを SQL データベースに保存して、レター分析を行う必要がある場合、単純なパススルー クエリを使用してジョブを実行します。
-
-**入力**:
-
-| Make | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
-
-**出力**:
-
-| Make | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
-
-**Query**:
-
-```SQL
-SELECT
-    *
-INTO Output
-FROM Input
-```
-
-**SELECT** * クエリを実行すると、受信イベントのすべてのフィールドが射影され、出力に送信されます。 同様に、**SELECT** を使用して、入力から必須フィールドのみを射影することもできます。 以下の例では、車両の *Make* と *Time* のみが保存される必須フィールドである場合、これらのフィールドを **SELECT** ステートメントで指定できます。
-
-**入力**:
-
-| Make | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
-
-**出力**:
-
-| Make | Time |
-| --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make1 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:04.0000000Z |
-
-**Query**:
-
-```SQL
-SELECT
-    Make, Time
-INTO Output
-FROM Input
-```
-## <a name="data-aggregation-over-time"></a>時間ごとのデータ集計
-
-時間枠で情報を計算するために、データをまとめて集計できます。 以下の例では、特定の自動車メーカーごとに直近 10 分間のカウントが計算されます。
-
-**入力**:
-
-| Make | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
-| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
-| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
-
-**出力**:
-
-| Make | Count |
-| --- | --- |
-| Make1 | 2 |
-| Make2 | 1 |
-
-**Query**:
-
-```SQL
-SELECT
-    Make,
-    COUNT(*) AS Count
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Make,
-    TumblingWindow(second, 10)
-```
-
-この集計では、自動車を *Make* でグループ化して、10 秒ごとにカウントします。 出力には、料金所を通過した自動車の *Make* と *Count* が含まれます。
-
-TumblingWindow は、イベントをグループ化するために使用されるウィンドウ関数です。 集計は、グループ化されたすべてのイベントに適用できます。 詳細については、[ウィンドウ関数](stream-analytics-window-functions.md)に関するページを参照してください。
-
-集計の詳細については、[集計関数](/stream-analytics-query/aggregate-functions-azure-stream-analytics)に関するページを参照してください。
-
-## <a name="data-conversion"></a>データ変換
-
-**CAST** メソッドを使用して、データをリアルタイムでキャストできます。 たとえば、自動車の重量を型 **nvarchar (max)** から型 **bigint** に変換し、数値計算で使用することができます。
-
-**入力**:
-
-| Make | Time | Weight |
-| --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
-| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
-
-**出力**:
-
-| Make | Weight |
-| --- | --- |
-| Make1 |3000 |
-
-**Query**:
-
-```SQL
-SELECT
-    Make,
-    SUM(CAST(Weight AS BIGINT)) AS Weight
-FROM
-    Input TIMESTAMP BY Time
-GROUP BY
-    Make,
-    TumblingWindow(second, 10)
-```
-
-**CAST** ステートメントを使用してデータ型を指定します。 サポートされるデータ型の一覧については、「[データ型 (Azure Stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics)」をご覧ください。
-
-詳細については、[データ変換関数](/stream-analytics-query/conversion-functions-azure-stream-analytics)に関するページを参照してください。
-
-## <a name="string-matching-with-like-and-not-like"></a>LIKE と NOT LIKE を使用した文字列の照合
-
-**LIKE** や **NOT LIKE** を使用して、フィールドが特定のパターンに一致するかどうかを検証することができます。 たとえば、文字 "A" で始まり、番号 9 で終わるナンバー プレートだけを返すフィルターを作成できます。
-
-**入力**:
-
-| Make | License_plate | Time |
-| --- | --- | --- |
-| Make1 |ABC-123 |2015-01-01T00:00:01.0000000Z |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
-
-**出力**:
-
-| Make | License_plate | Time |
-| --- | --- | --- |
-| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
-| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
-
-**Query**:
-
-```SQL
-SELECT
-    *
-FROM
-    Input TIMESTAMP BY Time
-WHERE
-    License_plate LIKE 'A%9'
-```
-
-**LIKE** ステートメントを使用して **License_plate** フィールドの値を検査します。 値は、文字 "A" で始まり、0 文字以上の文字列が続き、数字 9 で終わる必要があります。
-
-## <a name="specify-logic-for-different-casesvalues-case-statements"></a>異なるケース/値に異なるロジックを指定する (CASE ステートメント)
-
-**CASE** ステートメントでは、特定の条件に基づいてさまざまなフィールドに対して異なる計算を行うことができます。 たとえば、レーン "A" を *Make1* の自動車、レーン "B" をその他のメーカーに割り当てることができます。
-
-**入力**:
-
-| Make | Time |
-| --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:03.0000000Z |
-
-**出力**:
-
-| Make |Dispatch_to_lane | Time |
-| --- | --- | --- |
-| Make1 |"A" |2015-01-01T00:00:01.0000000Z |
-| Make2 |"B" |2015-01-01T00:00:02.0000000Z |
-
-**解決策**:
-
-```SQL
-SELECT
-    Make
-    CASE
-        WHEN Make = "Make1" THEN "A"
-        ELSE "B"
-    END AS Dispatch_to_lane,
-    System.TimeStamp() AS Time
-FROM
-    Input TIMESTAMP BY Time
-```
-
-**CASE** 式を使用して、式を一連の単純な式と比較して結果を決定します。 この例では *Make1* の車両はレーン "A" にディスパッチされますが、その他のメーカーの車両にはレーン "B" が割り当てられます。
-
-詳細については、[case 式](/stream-analytics-query/case-azure-stream-analytics)に関するページを参照してください。
 
 ## <a name="send-data-to-multiple-outputs"></a>複数の出力にデータを送信する
 
@@ -308,40 +115,91 @@ HAVING [Count] >= 3
 
 詳細については、[**WITH** 句](/stream-analytics-query/with-azure-stream-analytics)に関するページを参照してください。
 
-## <a name="count-unique-values"></a>一意の値をカウントする
+## <a name="simple-pass-through-query"></a>単純なパススルー クエリ
 
-**COUNT** と **DISTINCT** を使用すると、ストリームに出現するフィールドの、値ごとの件数を一定間隔でカウントできます。 料金所を通過した自動車の、*Make* ごとの台数を 2 秒間隔で計算するクエリを作成できます。
+単純なパススルー クエリを使用すると、入力ストリーム データを出力にコピーできます。 たとえば、リアルタイムの車両情報を含むデータ ストリームを SQL データベースに保存して、レター分析を行う必要がある場合、単純なパススルー クエリを使用してジョブを実行します。
 
 **入力**:
+
+| Make | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+
+**出力**:
+
+| Make | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+
+**Query**:
+
+```SQL
+SELECT
+    *
+INTO Output
+FROM Input
+```
+
+**SELECT** * クエリを実行すると、受信イベントのすべてのフィールドが射影され、出力に送信されます。 同様に、**SELECT** を使用して、入力から必須フィールドのみを射影することもできます。 以下の例では、車両の *Make* と *Time* のみが保存される必須フィールドである場合、これらのフィールドを **SELECT** ステートメントで指定できます。
+
+**入力**:
+
+| Make | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
+
+**出力**:
 
 | Make | Time |
 | --- | --- |
 | Make1 |2015-01-01T00:00:01.0000000Z |
 | Make1 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:01.0000000Z |
-| Make2 |2015-01-01T00:00:02.0000000Z |
-| Make2 |2015-01-01T00:00:03.0000000Z |
+| Make2 |2015-01-01T00:00:04.0000000Z |
 
-**出力:**
-
-| Count_make | Time |
-| --- | --- |
-| 2 |2015-01-01T00:00:02.000Z |
-| 1 |2015-01-01T00:00:04.000Z |
-
-**クエリ:**
+**Query**:
 
 ```SQL
 SELECT
-     COUNT(DISTINCT Make) AS Count_make,
-     System.TIMESTAMP() AS Time
-FROM Input TIMESTAMP BY TIME
-GROUP BY 
-     TumblingWindow(second, 2)
+    Make, Time
+INTO Output
+FROM Input
 ```
 
-**COUNT(DISTINCT Make)** は、ある時間枠内で、**Make** 列の個別の値の数を返します。
-詳細については、[**COUNT** 集計関数](/stream-analytics-query/count-azure-stream-analytics)に関するページを参照してください。
+## <a name="string-matching-with-like-and-not-like"></a>LIKE と NOT LIKE を使用した文字列の照合
+
+**LIKE** や **NOT LIKE** を使用して、フィールドが特定のパターンに一致するかどうかを検証することができます。 たとえば、文字 "A" で始まり、番号 9 で終わるナンバー プレートだけを返すフィルターを作成できます。
+
+**入力**:
+
+| Make | License_plate | Time |
+| --- | --- | --- |
+| Make1 |ABC-123 |2015-01-01T00:00:01.0000000Z |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
+
+**出力**:
+
+| Make | License_plate | Time |
+| --- | --- | --- |
+| Make2 |AAA-999 |2015-01-01T00:00:02.0000000Z |
+| Make3 |ABC-369 |2015-01-01T00:00:03.0000000Z |
+
+**Query**:
+
+```SQL
+SELECT
+    *
+FROM
+    Input TIMESTAMP BY Time
+WHERE
+    License_plate LIKE 'A%9'
+```
+
+**LIKE** ステートメントを使用して **License_plate** フィールドの値を検査します。 値は、文字 "A" で始まり、0 文字以上の文字列が続き、数字 9 で終わる必要があります。
 
 ## <a name="calculation-over-past-events"></a>過去のイベントに対する計算
 
@@ -375,69 +233,6 @@ WHERE
 **LAG** を使用して入力ストリームで 1 つ前のイベントを調べて、*Make* の値を取得し、その値を現在のイベントの *Make* と比較し、イベントを出力します。
 
 詳細については、[**LAG**](/stream-analytics-query/lag-azure-stream-analytics) に関するページを参照してください。
-
-## <a name="retrieve-the-first-event-in-a-window"></a>期間内の最初のイベントを取得する
-
-**IsFirst** は、時間枠内の最初のイベントを取得するために使用できます。 たとえば、10 分間隔で最初の自動車情報を出力します。
-
-**入力**:
-
-| License_plate | Make | Time |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
-| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
-| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
-
-**出力**:
-
-| License_plate | Make | Time |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-
-**Query**:
-
-```SQL
-SELECT 
-    License_plate,
-    Make,
-    Time
-FROM 
-    Input TIMESTAMP BY Time
-WHERE 
-    IsFirst(minute, 10) = 1
-```
-
-**IsFirst** を使用して、データをパーティション分割し、10 分間隔で検出された自動車の *Make* ごとの最初のイベントを計算することもできます。
-
-**出力**:
-
-| License_plate | Make | Time |
-| --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
-| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
-| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
-| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
-| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
-
-**Query**:
-
-```SQL
-SELECT 
-    License_plate,
-    Make,
-    Time
-FROM 
-    Input TIMESTAMP BY Time
-WHERE 
-    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
-```
-
-詳細については、[**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics) に関するページを参照してください。
 
 ## <a name="return-the-last-event-in-a-window"></a>期間内の最後のイベントを返す
 
@@ -492,6 +287,89 @@ FROM
 
 ストリームの結合の詳細については、[**JOIN**](/stream-analytics-query/join-azure-stream-analytics) に関するページを参照してください。
 
+## <a name="data-aggregation-over-time"></a>時間ごとのデータ集計
+
+時間枠で情報を計算するために、データをまとめて集計できます。 この例では、特定の自動車メーカーごとに直近 10 秒間のカウントが計算されます。
+
+**入力**:
+
+| Make | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |1000 |
+| Make1 |2015-01-01T00:00:02.0000000Z |2000 |
+| Make2 |2015-01-01T00:00:04.0000000Z |1500 |
+
+**出力**:
+
+| Make | Count |
+| --- | --- |
+| Make1 | 2 |
+| Make2 | 1 |
+
+**Query**:
+
+```SQL
+SELECT
+    Make,
+    COUNT(*) AS Count
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+この集計では、自動車を *Make* でグループ化して、10 秒ごとにカウントします。 出力には、料金所を通過した自動車の *Make* と *Count* が含まれます。
+
+TumblingWindow は、イベントをグループ化するために使用されるウィンドウ関数です。 集計は、グループ化されたすべてのイベントに適用できます。 詳細については、[ウィンドウ関数](stream-analytics-window-functions.md)に関するページを参照してください。
+
+集計の詳細については、[集計関数](/stream-analytics-query/aggregate-functions-azure-stream-analytics)に関するページを参照してください。
+
+## <a name="periodically-output-values"></a>定期的な値の出力
+
+不規則または見つからないイベントが発生した場合は、よりまばらなデータ入力から定期的な間隔の出力を生成できます。 たとえば、最近検出されたデータ ポイントを報告する 5 秒ごとのイベントを生成します。
+
+**入力**:
+
+| Time | 値 |
+| --- | --- |
+| "2014-01-01T06:01:00" |1 |
+| "2014-01-01T06:01:05" |2 |
+| "2014-01-01T06:01:10" |3 |
+| "2014-01-01T06:01:15" |4 |
+| "2014-01-01T06:01:30" |5 |
+| "2014-01-01T06:01:35" |6 |
+
+**出力 (最初の 10 行)** :
+
+| Window_end | Last_event.Time | Last_event.Value |
+| --- | --- | --- |
+| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
+| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
+| 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
+| 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
+| 2014-01-01T14:01:20.000Z |2014-01-01T14:01:15.000Z |4 |
+| 2014-01-01T14:01:25.000Z |2014-01-01T14:01:15.000Z |4 |
+| 2014-01-01T14:01:30.000Z |2014-01-01T14:01:30.000Z |5 |
+| 2014-01-01T14:01:35.000Z |2014-01-01T14:01:35.000Z |6 |
+| 2014-01-01T14:01:40.000Z |2014-01-01T14:01:35.000Z |6 |
+| 2014-01-01T14:01:45.000Z |2014-01-01T14:01:35.000Z |6 |
+
+**Query**:
+
+```SQL
+SELECT
+    System.Timestamp() AS Window_end,
+    TopOne() OVER (ORDER BY Time DESC) AS Last_event
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    HOPPINGWINDOW(second, 300, 5)
+```
+
+このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。 **HOPPINGWINDOW** 期間で、クエリが最新のイベントを検出するためにさかのぼる期間を指定します。
+
+詳細については、[ホッピング ウィンドウ](/stream-analytics-query/hopping-window-azure-stream-analytics)に関するページを参照してください。
 
 ## <a name="correlate-events-in-a-stream"></a>ストリームでのイベントの関連付け
 
@@ -565,142 +443,103 @@ WHERE
 
 **LAST** 関数を使用して、特定の条件内で最後のイベントを取得できます。 この例では、条件は Start 型のイベントで、ユーザーと機能に対して **PARTITION BY** を実行することで検索をパーティション分割します。 これにより、すべてのユーザーと機能が、開始イベントを検索するときに個別に処理されます。 **LIMIT DURATION** を使用して、終了イベントと開始イベントの間の過去 1 時間に検索を制限します。
 
-## <a name="detect-the-duration-of-a-condition"></a>条件の期間を検出する
+## <a name="count-unique-values"></a>一意の値をカウントする
 
-複数のイベントが対象となる条件の場合は、**LAG** 関数を使用して、その条件の期間を特定できます。 たとえば、バグのためにすべての自動車の重量が正しくない (20,000 ポンドを超過) 結果になった場合、バグが継続した期間を計算する必要があります。
+**COUNT** と **DISTINCT** を使用すると、ストリームに出現するフィールドの、値ごとの件数を一定間隔でカウントできます。 料金所を通過した自動車の、*Make* ごとの台数を 2 秒間隔で計算するクエリを作成できます。
 
 **入力**:
 
-| Make | Time | Weight |
+| Make | Time |
+| --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |
+| Make1 |2015-01-01T00:00:02.0000000Z |
+| Make2 |2015-01-01T00:00:01.0000000Z |
+| Make2 |2015-01-01T00:00:02.0000000Z |
+| Make2 |2015-01-01T00:00:03.0000000Z |
+
+**出力:**
+
+| Count_make | Time |
+| --- | --- |
+| 2 |2015-01-01T00:00:02.000Z |
+| 1 |2015-01-01T00:00:04.000Z |
+
+**クエリ:**
+
+```SQL
+SELECT
+     COUNT(DISTINCT Make) AS Count_make,
+     System.TIMESTAMP() AS Time
+FROM Input TIMESTAMP BY TIME
+GROUP BY 
+     TumblingWindow(second, 2)
+```
+
+**COUNT(DISTINCT Make)** は、ある時間枠内で、**Make** 列の個別の値の数を返します。
+詳細については、[**COUNT** 集計関数](/stream-analytics-query/count-azure-stream-analytics)に関するページを参照してください。
+
+## <a name="retrieve-the-first-event-in-a-window"></a>期間内の最初のイベントを取得する
+
+**IsFirst** は、時間枠内の最初のイベントを取得するために使用できます。 たとえば、10 分間隔で最初の自動車情報を出力します。
+
+**入力**:
+
+| License_plate | Make | Time |
 | --- | --- | --- |
-| Make1 |2015-01-01T00:00:01.0000000Z |2000 |
-| Make2 |2015-01-01T00:00:02.0000000Z |25000 |
-| Make1 |2015-01-01T00:00:03.0000000Z |26000 |
-| Make2 |2015-01-01T00:00:04.0000000Z |25000 |
-| Make1 |2015-01-01T00:00:05.0000000Z |26000 |
-| Make2 |2015-01-01T00:00:06.0000000Z |25000 |
-| Make1 |2015-01-01T00:00:07.0000000Z |26000 |
-| Make2 |2015-01-01T00:00:08.0000000Z |2000 |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
+| RMV 8282 |Make1 |2015-07-27T00:05:01.0000000Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
+| VFE 1616 |Make2 |2015-07-27T00:09:31.0000000Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
 
 **出力**:
 
-| Start_fault | End_fault |
-| --- | --- |
-| 2015-01-01T00:00:02.000Z |2015-01-01T00:00:07.000Z |
+| License_plate | Make | Time |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
 
 **Query**:
 
 ```SQL
-WITH SelectPreviousEvent AS
-(
-SELECT
-    *,
-    LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previous_time,
-    LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previous_weight
-FROM input TIMESTAMP BY [time]
-)
-
 SELECT 
-    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previous_weight < 20000 ) [Start_fault],
-    previous_time [End_fault]
-FROM SelectPreviousEvent
-WHERE
-    [weight] < 20000
-    AND previous_weight > 20000
-```
-最初の **SELECT** ステートメントでは、現在の重量測定値を前の測定値と関連付け、現在の測定値と共に射影します。 2 番目の **SELECT** では、*previous_weight* が 20000 未満であり、現在の重量が 20000 未満で、現在のイベントの *previous_weight* が 20000 を超えていた最後のイベントを探します。
-
-End_fault は、前のイベントでは問題が発生し、現在のイベントでは問題が発生していないイベントです。Start_fault は、それより前で問題が発生していない最後のイベントです。
-
-## <a name="periodically-output-values"></a>定期的な値の出力
-
-不規則または見つからないイベントが発生した場合は、よりまばらなデータ入力から定期的な間隔の出力を生成できます。 たとえば、最近検出されたデータ ポイントを報告する 5 秒ごとのイベントを生成します。
-
-**入力**:
-
-| Time | 値 |
-| --- | --- |
-| "2014-01-01T06:01:00" |1 |
-| "2014-01-01T06:01:05" |2 |
-| "2014-01-01T06:01:10" |3 |
-| "2014-01-01T06:01:15" |4 |
-| "2014-01-01T06:01:30" |5 |
-| "2014-01-01T06:01:35" |6 |
-
-**出力 (最初の 10 行)** :
-
-| Window_end | Last_event.Time | Last_event.Value |
-| --- | --- | --- |
-| 2014-01-01T14:01:00.000Z |2014-01-01T14:01:00.000Z |1 |
-| 2014-01-01T14:01:05.000Z |2014-01-01T14:01:05.000Z |2 |
-| 2014-01-01T14:01:10.000Z |2014-01-01T14:01:10.000Z |3 |
-| 2014-01-01T14:01:15.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:20.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:25.000Z |2014-01-01T14:01:15.000Z |4 |
-| 2014-01-01T14:01:30.000Z |2014-01-01T14:01:30.000Z |5 |
-| 2014-01-01T14:01:35.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:40.000Z |2014-01-01T14:01:35.000Z |6 |
-| 2014-01-01T14:01:45.000Z |2014-01-01T14:01:35.000Z |6 |
-
-**Query**:
-
-```SQL
-SELECT
-    System.Timestamp() AS Window_end,
-    TopOne() OVER (ORDER BY Time DESC) AS Last_event
-FROM
+    License_plate,
+    Make,
+    Time
+FROM 
     Input TIMESTAMP BY Time
-GROUP BY
-    HOPPINGWINDOW(second, 300, 5)
+WHERE 
+    IsFirst(minute, 10) = 1
 ```
 
-このクエリは、5 秒ごとにイベントを生成し、それまでに受信した最後のイベントを出力します。 **HOPPINGWINDOW** 期間で、クエリが最新のイベントを検出するためにさかのぼる期間を指定します。
-
-詳細については、[ホッピング ウィンドウ](/stream-analytics-query/hopping-window-azure-stream-analytics)に関するページを参照してください。
-
-## <a name="process-events-with-independent-time-substreams"></a>個別の時間でイベントを処理する (サブストリーム)
-
-イベント プロデューサー間またはパーティション間のクロックのずれや、ネットワーク待機時間が原因でイベントが遅れて、あるいは順序がずれて到着することがあります。
-たとえば、*TollID* 2 のデバイス クロックは *TollID* 1 より 5 秒遅れており、*TollID* 3 のデバイス クロックは *TollID* 1 より 10 秒遅れています。 計算は料金所ごとに個別に実行され、各料金所のクロック データだけがタイムスタンプとして考慮されます。
-
-**入力**:
-
-| LicensePlate | Make | Time | TollID |
-| --- | --- | --- | --- |
-| DXE 5291 |Make1 |2015-07-27T00:00:01.0000000Z | 1 |
-| YHN 6970 |Make2 |2015-07-27T00:00:05.0000000Z | 1 |
-| QYF 9358 |Make1 |2015-07-27T00:00:01.0000000Z | 2 |
-| GXF 9462 |Make3 |2015-07-27T00:00:04.0000000Z | 2 |
-| VFE 1616 |Make2 |2015-07-27T00:00:10.0000000Z | 1 |
-| RMV 8282 |Make1 |2015-07-27T00:00:03.0000000Z | 3 |
-| MDR 6128 |Make3 |2015-07-27T00:00:11.0000000Z | 2 |
-| YZK 5704 |Make4 |2015-07-27T00:00:07.0000000Z | 3 |
+**IsFirst** を使用して、データをパーティション分割し、10 分間隔で検出された自動車の *Make* ごとの最初のイベントを計算することもできます。
 
 **出力**:
 
-| TollID | Count |
-| --- | --- |
-| 1 | 2 |
-| 2 | 2 |
-| 1 | 1 |
-| 3 | 1 |
-| 2 | 1 |
-| 3 | 1 |
+| License_plate | Make | Time |
+| --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:05.0000000Z |
+| YZK 5704 |Make3 |2015-07-27T00:02:17.0000000Z |
+| YHN 6970 |Make2 |2015-07-27T00:06:00.0000000Z |
+| QYF 9358 |Make1 |2015-07-27T00:12:02.0000000Z |
+| MDR 6128 |Make4 |2015-07-27T00:13:45.0000000Z |
 
 **Query**:
 
 ```SQL
-SELECT
-      TollId,
-      COUNT(*) AS Count
-FROM input
-      TIMESTAMP BY Time OVER TollId
-GROUP BY TUMBLINGWINDOW(second, 5), TollId
+SELECT 
+    License_plate,
+    Make,
+    Time
+FROM 
+    Input TIMESTAMP BY Time
+WHERE 
+    IsFirst(minute, 10) OVER (PARTITION BY Make) = 1
 ```
 
-**TIMESTAMP OVER BY** 句では、サブストリームを使用して各デバイスのタイムラインで個別に検索します。 各 *TollID* の出力イベントは、計算されるときに生成されます。つまり、すべてのデバイスが同じクロックを参照しているように順序が変更されるのではなく、各 *TollID* を基準にしてイベントが順序付けられます。
-
-詳細については、[TIMESTAMP BY OVER](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) に関するページを参照してください。
+詳細については、[**IsFirst**](/stream-analytics-query/isfirst-azure-stream-analytics) に関するページを参照してください。
 
 ## <a name="remove-duplicate-events-in-a-window"></a>期間内の重複するイベントを削除する
 
@@ -750,6 +589,168 @@ GROUP BY DeviceId,TumblingWindow(minute, 5)
 **COUNT(DISTINCT Time)** は、特定の時間枠内での、Time 列の個別の値の数を返します。 その後、最初のステップの出力を使用し、重複を除去することによって、デバイスあたりの平均を計算できます。
 
 詳細については、[COUNT(DISTINCT Time)](/stream-analytics-query/count-azure-stream-analytics) に関するページを参照してください。
+
+## <a name="specify-logic-for-different-casesvalues-case-statements"></a>異なるケース/値に異なるロジックを指定する (CASE ステートメント)
+
+**CASE** ステートメントでは、特定の条件に基づいてさまざまなフィールドに対して異なる計算を行うことができます。 たとえば、レーン "A" を *Make1* の自動車、レーン "B" をその他のメーカーに割り当てることができます。
+
+**入力**:
+
+| Make | Time |
+| --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |
+| Make2 |2015-01-01T00:00:02.0000000Z |
+| Make2 |2015-01-01T00:00:03.0000000Z |
+
+**出力**:
+
+| Make |Dispatch_to_lane | Time |
+| --- | --- | --- |
+| Make1 |"A" |2015-01-01T00:00:01.0000000Z |
+| Make2 |"B" |2015-01-01T00:00:02.0000000Z |
+
+**解決策**:
+
+```SQL
+SELECT
+    Make
+    CASE
+        WHEN Make = "Make1" THEN "A"
+        ELSE "B"
+    END AS Dispatch_to_lane,
+    System.TimeStamp() AS Time
+FROM
+    Input TIMESTAMP BY Time
+```
+
+**CASE** 式を使用して、式を一連の単純な式と比較して結果を決定します。 この例では *Make1* の車両はレーン "A" にディスパッチされますが、その他のメーカーの車両にはレーン "B" が割り当てられます。
+
+詳細については、[case 式](/stream-analytics-query/case-azure-stream-analytics)に関するページを参照してください。
+
+## <a name="data-conversion"></a>データ変換
+
+**CAST** メソッドを使用して、データをリアルタイムでキャストできます。 たとえば、自動車の重量を型 **nvarchar (max)** から型 **bigint** に変換し、数値計算で使用することができます。
+
+**入力**:
+
+| Make | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |"1000" |
+| Make1 |2015-01-01T00:00:02.0000000Z |"2000" |
+
+**出力**:
+
+| Make | Weight |
+| --- | --- |
+| Make1 |3000 |
+
+**Query**:
+
+```SQL
+SELECT
+    Make,
+    SUM(CAST(Weight AS BIGINT)) AS Weight
+FROM
+    Input TIMESTAMP BY Time
+GROUP BY
+    Make,
+    TumblingWindow(second, 10)
+```
+
+**CAST** ステートメントを使用してデータ型を指定します。 サポートされるデータ型の一覧については、「[データ型 (Azure Stream Analytics)](/stream-analytics-query/data-types-azure-stream-analytics)」をご覧ください。
+
+詳細については、[データ変換関数](/stream-analytics-query/conversion-functions-azure-stream-analytics)に関するページを参照してください。
+
+## <a name="detect-the-duration-of-a-condition"></a>条件の期間を検出する
+
+複数のイベントが対象となる条件の場合は、**LAG** 関数を使用して、その条件の期間を特定できます。 たとえば、バグのためにすべての自動車の重量が正しくない (20,000 ポンドを超過) 結果になった場合、バグが継続した期間を計算する必要があります。
+
+**入力**:
+
+| Make | Time | Weight |
+| --- | --- | --- |
+| Make1 |2015-01-01T00:00:01.0000000Z |2000 |
+| Make2 |2015-01-01T00:00:02.0000000Z |25000 |
+| Make1 |2015-01-01T00:00:03.0000000Z |26000 |
+| Make2 |2015-01-01T00:00:04.0000000Z |25000 |
+| Make1 |2015-01-01T00:00:05.0000000Z |26000 |
+| Make2 |2015-01-01T00:00:06.0000000Z |25000 |
+| Make1 |2015-01-01T00:00:07.0000000Z |26000 |
+| Make2 |2015-01-01T00:00:08.0000000Z |2000 |
+
+**出力**:
+
+| Start_fault | End_fault |
+| --- | --- |
+| 2015-01-01T00:00:02.000Z |2015-01-01T00:00:07.000Z |
+
+**Query**:
+
+```SQL
+WITH SelectPreviousEvent AS
+(
+SELECT
+    *,
+    LAG([time]) OVER (LIMIT DURATION(hour, 24)) as previous_time,
+    LAG([weight]) OVER (LIMIT DURATION(hour, 24)) as previous_weight
+FROM input TIMESTAMP BY [time]
+)
+
+SELECT 
+    LAG(time) OVER (LIMIT DURATION(hour, 24) WHEN previous_weight < 20000 ) [Start_fault],
+    previous_time [End_fault]
+FROM SelectPreviousEvent
+WHERE
+    [weight] < 20000
+    AND previous_weight > 20000
+```
+最初の **SELECT** ステートメントでは、現在の重量測定値を前の測定値と関連付け、現在の測定値と共に射影します。 2 番目の **SELECT** では、*previous_weight* が 20000 未満であり、現在の重量が 20000 未満で、現在のイベントの *previous_weight* が 20000 を超えていた最後のイベントを探します。
+
+End_fault は、前のイベントでは問題が発生し、現在のイベントでは問題が発生していないイベントです。Start_fault は、それより前で問題が発生していない最後のイベントです。
+
+## <a name="process-events-with-independent-time-substreams"></a>個別の時間でイベントを処理する (サブストリーム)
+
+イベント プロデューサー間またはパーティション間のクロックのずれや、ネットワーク待機時間が原因でイベントが遅れて、あるいは順序がずれて到着することがあります。
+たとえば、*TollID* 2 のデバイス クロックは *TollID* 1 より 5 秒遅れており、*TollID* 3 のデバイス クロックは *TollID* 1 より 10 秒遅れています。 計算は料金所ごとに個別に実行され、各料金所のクロック データだけがタイムスタンプとして考慮されます。
+
+**入力**:
+
+| LicensePlate | Make | Time | TollID |
+| --- | --- | --- | --- |
+| DXE 5291 |Make1 |2015-07-27T00:00:01.0000000Z | 1 |
+| YHN 6970 |Make2 |2015-07-27T00:00:05.0000000Z | 1 |
+| QYF 9358 |Make1 |2015-07-27T00:00:01.0000000Z | 2 |
+| GXF 9462 |Make3 |2015-07-27T00:00:04.0000000Z | 2 |
+| VFE 1616 |Make2 |2015-07-27T00:00:10.0000000Z | 1 |
+| RMV 8282 |Make1 |2015-07-27T00:00:03.0000000Z | 3 |
+| MDR 6128 |Make3 |2015-07-27T00:00:11.0000000Z | 2 |
+| YZK 5704 |Make4 |2015-07-27T00:00:07.0000000Z | 3 |
+
+**出力**:
+
+| TollID | Count |
+| --- | --- |
+| 1 | 2 |
+| 2 | 2 |
+| 1 | 1 |
+| 3 | 1 |
+| 2 | 1 |
+| 3 | 1 |
+
+**Query**:
+
+```SQL
+SELECT
+      TollId,
+      COUNT(*) AS Count
+FROM input
+      TIMESTAMP BY Time OVER TollId
+GROUP BY TUMBLINGWINDOW(second, 5), TollId
+```
+
+**TIMESTAMP OVER BY** 句では、サブストリームを使用して各デバイスのタイムラインで個別に検索します。 各 *TollID* の出力イベントは、計算されるときに生成されます。つまり、すべてのデバイスが同じクロックを参照しているように順序が変更されるのではなく、各 *TollID* を基準にしてイベントが順序付けられます。
+
+詳細については、[TIMESTAMP BY OVER](/stream-analytics-query/timestamp-by-azure-stream-analytics#over-clause-interacts-with-event-ordering) に関するページを参照してください。
 
 ## <a name="session-windows"></a>セッション ウィンドウ
 
@@ -862,10 +863,10 @@ From
 
 ```SQL
 SELECT *
-FROM intput TIMESTAMP BY time OVER ATM_id
+FROM input TIMESTAMP BY time OVER ATM_id
 MATCH_RECOGNIZE (
-    PARTITON BY ATM_id
     LIMIT DURATION(minute, 1)
+    PARTITON BY ATM_id
     MEASURES
         First(Warning.ATM_id) AS ATM_id,
         First(Warning.Operation_Id) AS First_Warning_Operation_id,
@@ -885,6 +886,7 @@ MATCH_RECOGNIZE (
 詳細については、[MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics) に関するページを参照してください。
 
 ## <a name="geofencing-and-geospatial-queries"></a>ジオフェンシングおよび地理空間クエリ
+
 Azure Stream Analytics には、フリート管理、ライド シェア、コネクテッド カー、および資産追跡などのシナリオを実装するために使用できる、組み込みの地理空間関数が用意されています。
 地理空間データは、イベント ストリームまたは参照データの一部として、GeoJSON または WKT 形式で取り込むことができます。
 たとえば、パスポート印刷機械の製造を専門とする会社が、政府機関や領事館に機械をリースします。 その機械を置き間違えてパスポートの偽造に使われることがないようにするため、そのような機械の場所は厳重に管理されます。 各機械には GPS トラッカーが搭載され、その情報は Azure Stream Analytics ジョブにリレーされます。

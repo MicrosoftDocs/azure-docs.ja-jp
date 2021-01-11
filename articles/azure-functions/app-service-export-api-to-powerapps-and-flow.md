@@ -4,12 +4,12 @@ description: App Service でホストされる API を PowerApps および Micro
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
-ms.openlocfilehash: 8ded1c5fba902adeaeb883894452c00c4ae1d617
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115824"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015087"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
@@ -146,9 +146,9 @@ Azure AD を使用する場合、API 自体に対して、または、カスタ�
 
 - API の登録を構成するには、[App Service の認証と承認の構成](../app-service/configure-authentication-provider-aad.md)機能を使用してください。
 
-- コネクタの登録を構成するには、[Azure AD アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)ための手順に従います。 登録には、API および `https://msmanaged-na.consent.azure-apim.net/redirect` の応答 URL への委任アクセス許可が含まれている必要があります。 
+- コネクタの登録を構成するには、[Azure AD アプリケーションを追加する](../active-directory/develop/quickstart-register-app.md)ための手順に従います。 登録には、API および `https://msmanaged-na.consent.azure-apim.net/redirect` の応答 URL への委任アクセス許可が含まれている必要があります。 
 
-詳細については、[PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) および [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication) の Azure AD 登録の例をご覧ください。 これらの例では、API として Azure Resource Manager を使用しています。手順に従う場合は、API を置き換えてください。
+詳細については、[PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) および [Microsoft Flow](/connectors/custom-connectors/azure-active-directory-authentication) の Azure AD 登録の例をご覧ください。 これらの例では、API として Azure Resource Manager を使用しています。手順に従う場合は、API を置き換えてください。
 
 次の構成値が必要です。
 - **クライアント ID** - コネクタの Azure AD 登録のクライアント ID
@@ -169,5 +169,3 @@ Azure AD を使用する場合、API 自体に対して、または、カスタ�
 - **承認 URL** - OAuth 2.0 の承認 URL
 - **トークン URL** - OAuth 2.0 のトークン URL
 - **更新 URL** - OAuth 2.0 の更新 URL
-
-

@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple プライベート クラウドの削除
-description: CloudSimple プライベート クラウドを削除する方法について説明します。
+description: CloudSimple プライベート クラウドを削除する方法について説明します。 プライベート クラウドを削除すると、すべてのクラスターが削除されます。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11fda35f5b236a4930b3d90eb7e3a62ea60207cf
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024757"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142232"
 ---
 # <a name="delete-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの削除
 
@@ -47,7 +47,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![プライベート クラウドを削除する](media/delete-private-cloud.png)
 
-5. 確認ページで、プライベート クラウドの名前を入力し、 **[削除]** をクリックします。 
+5. 確認ページで、プライベート クラウドの名前を入力し、**[削除]** をクリックします。 
 
     ![プライベート クラウドを削除する - 確認](media/delete-private-cloud-confirm.png)
 
@@ -56,6 +56,6 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 > [!CAUTION]
 > プライベート クラウドを削除した後にノードを削除する必要があります。  ノードの従量制課金は、サブスクリプションからノードが削除されるまで続行されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ノードを削除する](delete-nodes.md)

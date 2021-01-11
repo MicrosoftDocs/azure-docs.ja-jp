@@ -6,13 +6,14 @@ ms.author: banders
 ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: f67cc019e8e7d4da4b0db1c0bbfdb6ee1cd495d7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 82e542eafe1578a969c4348fe7562ba1da106e2c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561871"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683404"
 ---
 # <a name="group-and-filter-options-in-cost-analysis"></a>コスト分析のグループとフィルターのオプション
 

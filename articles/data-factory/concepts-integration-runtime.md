@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497644"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407695"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム 
 
@@ -45,13 +45,10 @@ Data Factory には 3 種類の統合ランタイム (IR) が用意されてい�
 
 IR の種類 | パブリック ネットワーク | プライベート ネットワーク
 ------- | -------------- | ---------------
-Azure | Data Flow<br/>データの移動<br/>アクティビティのディスパッチ | &nbsp;
+Azure | Data Flow<br/>データの移動<br/>アクティビティのディスパッチ | Data Flow<br/>データの移動<br/>アクティビティのディスパッチ
 セルフホステッド | データの移動<br/>アクティビティのディスパッチ | データの移動<br/>アクティビティのディスパッチ
 Azure-SSIS | SSIS パッケージ実行 | SSIS パッケージ実行
 
-次の図は、さまざまな統合ランタイムを組み合わせて使用し、優れたデータ統合機能やネットワークのサポートを提供する方法を示しています。
-
-![各種の統合ランタイム](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure 統合ランタイム
 
@@ -63,7 +60,7 @@ Azure Integration Runtime では以下が可能です。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR のネットワーク環境
 
-Azure Integration Runtime では、だれでもアクセス可能なエンドポイントを使用して、データ ストアやコンピューティング サービスへの接続がサポートされます。 Azure Virtual Network 環境にはセルフホステッド統合ランタイムを使用します。
+Azure Integration Runtime では、だれでもアクセス可能なエンドポイントを使用して、データ ストアやコンピューティング サービスへの接続がサポートされます。 マネージド仮想ネットワークを有効にすると、Azure Integration Runtime では、プライベート ネットワーク環境でプライベート リンク サービスを使用したデータ ストアへの接続がサポートされます。
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR のコンピューティング リソースとスケーリング
 Azure 統合ランタイムは、Azure 内のフル マネージドのサーバーレス コンピューティングを提供します。  インフラストラクチャのプロビジョニング、ソフトウェアのインストール、修正プログラムの適用、容量のスケーリングについて心配する必要はありません。  さらに、実際の使用時間分だけのお支払いになります。
@@ -136,7 +133,7 @@ IR の場所は、そのバックエンドのコンピューティングの場�
 
 Azure IR の特定の場所を設定することができます。その場合は、その特定のリージョンでアクティビティの実行やディスパッチが行われます。
 
-既定の設定である自動解決の Azure IR を使用することを選択した場合は、次のようになります。
+パブリック ネットワークで、既定の設定である自動解決の Azure IR を使用することを選択した場合、
 
 - コピー アクティビティの場合、ADF は可能な限り、シンク データ ストアの場所を自動的に検出し、同じリージョン (使用可能な場合) または同じ地理的な場所の最も近いリージョンのどちらかにある IR を使用しようとします。シンク データ ストアのリージョンを検出できない場合は、代わりにデータ ファクトリのリージョン内の IR が使用されます。
 
@@ -154,6 +151,8 @@ Azure IR の特定の場所を設定することができます。その場合�
 
   > [!TIP] 
   > 可能な場合は、Data Flow を対応するデータ ストアと同じリージョンで実行することをお勧めします。 これを実現するには、Azure IR を自動解決するか (データ ストアの場所が Data Factory の場所と同じ場合)、データ ストアと同じリージョンに新しい Azure IR インスタンスを作成し、そこでデータ フローを実行します。 
+
+自動解決 Azure IR に対してマネージド仮想ネットワークを有効にすると、ADF ではデータ ファクトリ リージョンの IR が使用されます。 
 
 アクティビティの実行時に有効になっている IR の場所は、UI 上のパイプラインのアクティビティの監視ビューまたはアクティビティの監視のペイロードで監視できます。
 

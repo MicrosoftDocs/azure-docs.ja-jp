@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.custom: mvc
-ms.openlocfilehash: 14340138a221dd00aa10651da9e209468b3c8550
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: ea889f48aaf3218ad9f3f286d1cda4f8a761a7ac
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891703"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89069971"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して Azure HDInsight 内に Apache Spark クラスターを作成する
 
@@ -54,7 +54,7 @@ PowerShell スクリプトを実行すると、次の値の入力を求められ
 |クラスター ログイン資格情報 | このクイック スタートでは後で、このアカウントを使ってクラスター ダッシュボードに接続します。|
 |SSH ユーザー資格情報 | SSH クライアントを使って、HDInsight のクラスターとのリモート コマンド ライン セッションを作成できます。|
 
-1. 次のコード ブロックの右上隅にある **[試してみる]** を選択して [Azure Cloud Shell](../../cloud-shell/overview.md) を開き、説明に従って Azure に接続します。
+1. 次のコード ブロックの右上隅にある **[使ってみる]** を選択して [Azure Cloud Shell](../../cloud-shell/overview.md) を開き、説明に従って Azure に接続します。
 
 2. 次の PowerShell スクリプトをコピーして Cloud Shell に貼り付けます。
 

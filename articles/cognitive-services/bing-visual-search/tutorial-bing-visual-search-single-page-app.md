@@ -10,12 +10,13 @@ ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: aahi
-ms.openlocfilehash: 83cdaecfb819fb1f4677b051f87e23e0e03daef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f1b32a72d81b42e7a349f92dcdc7a141a013312d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370098"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404028"
 ---
 # <a name="tutorial-create-a-visual-search-single-page-web-app"></a>チュートリアル:Visual Search のシングルページ Web アプリを作成する
 

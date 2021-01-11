@@ -43,7 +43,7 @@
         - name: ライセンス
           href: concept-mfa-licensing.md
         - name: Office 365 での MFA
-          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: よく寄せられる質問
           href: multi-factor-authentication-faq.md
     - name: パスワードレスの認証
@@ -87,7 +87,7 @@
         - name: ディレクトリ フェデレーション
           items:
             - name: Windows Server 2016 AD FS アダプター
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+              href: /windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
             - name: フェデレーション サービス
               href: multi-factor-authentication-get-started-adfs.md
             - name: AD FS を使用する
@@ -116,10 +116,14 @@
               href: howto-authentication-passwordless-security-key-windows.md
             - name: オンプレミスのリソースへの SSO
               href: howto-authentication-passwordless-security-key-on-premises.md
+            - name: ハイブリッドに関する FAQ
+              href: howto-authentication-passwordless-faqs.md
+            - name: ハイブリッドのトラブルシューティング
+              href: howto-authentication-passwordless-troubleshoot.md
         - name: パスワードレスの電話によるサインイン
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business
-          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+          href: /windows/security/identity-protection/hello-for-business/hello-identity-verification
     - name: セキュリティ情報の登録
       items:
         - name: 統合された登録の有効化
@@ -209,7 +213,7 @@
               href: howto-mfa-nps-extension-errors.md
     - name: トラブルシューティング
       items:
-        - name: SSPR のトラブルシューティング
+        - name: SSPR
           href: active-directory-passwords-troubleshoot.md
         - name: SSPR に関する FAQ
           href: active-directory-passwords-faq.md
@@ -220,7 +224,7 @@
 - name: リファレンス
   items:
     - name: MFA ユーザー ガイド
-      href: ./end-user/current/multi-factor-authentication-end-user.md
+      href: ../user-help/multi-factor-authentication-end-user-first-time.md
     - name: コード サンプル
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell コマンドレット
@@ -234,7 +238,7 @@
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: サービスの更新情報

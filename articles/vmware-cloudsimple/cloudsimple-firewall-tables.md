@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple - ファイアウォール テーブル
-description: CloudSimple プライベート クラウドのファイアウォールのテーブルとファイアウォールのルールについて説明します。
+description: すべてのファイアウォール テーブルに作成される既定の規則など、CloudSimple プライベート クラウドのファイアウォール テーブルとファイアウォール規則について説明します。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 89bef6cef48f2b972aa3f931008b0db84431b832
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c44c39f66a0a0161eea8a7e9656bbe0e3d1015c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025046"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140872"
 ---
 # <a name="firewall-tables-overview"></a>ファイアウォール テーブルの概要
 

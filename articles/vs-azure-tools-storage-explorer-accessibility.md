@@ -1,6 +1,6 @@
 ---
-title: Azure Storage Explorer のアクセシビリティ (プレビュー) | Microsoft Docs
-description: Azure Storage Explorer のアクセシビリティ (プレビュー)
+title: Azure Storage Explorer のアクセシビリティ | Microsoft Docs
+description: Azure Storage Explorer のアクセシビリティについて説明します。 使用できるスクリーン リーダー、ズーム機能、ハイコントラスト テーマ、およびショートカット キーについて確認します。
 services: storage
 documentationcenter: na
 author: MrayermannMSFT
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
-ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca4a8d719277eaa1d853d53d282649f839256be9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60457268"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035487"
 ---
 # <a name="storage-explorer-accessibility"></a>Storage Explorer のアクセシビリティ
 
@@ -55,7 +55,7 @@ Storage Explorer には、**ハイ コントラスト （淡色）** と**ハイ
 
 ### <a name="window-commands"></a>ウィンドウ コマンド
 
-command       | キーボード ショートカット
+コマンド       | キーボード ショートカット
 --------------|--------------------
 新しいウィンドウ    | **Ctrl + Shift + N**
 エディターを閉じる  | **Ctrl + F4**
@@ -63,7 +63,7 @@ command       | キーボード ショートカット
 
 ### <a name="navigation-commands"></a>ナビゲーション コマンド
 
-command                | キーボード ショートカット
+コマンド                | キーボード ショートカット
 -----------------------|----------------------
 次のパネルにフォーカス       | **F6**
 前のグループにフォーカス   | **Shift + F6**
@@ -78,14 +78,14 @@ command                | キーボード ショートカット
 
 ### <a name="zoom-commands"></a>ズーム コマンド
 
-command  | キーボード ショートカット
+コマンド  | キーボード ショートカット
 ---------|------------------
 拡大  | **Ctrl + =**
 縮小 | **Ctrl + -**
 
 ### <a name="blob-and-file-share-editor-commands"></a>BLOB およびファイル共有エディター コマンド
 
-command | キーボード ショートカット
+コマンド | キーボード ショートカット
 --------|--------------------
 戻る    | **Alt + ←**
 転送 | **Alt + →**
@@ -93,16 +93,16 @@ command | キーボード ショートカット
 
 ### <a name="editor-commands"></a>エディターのコマンド
 
-command | キーボード ショートカット
+コマンド | キーボード ショートカット
 --------|------------------
-コピー    | **Ctrl + C**
-切り取り     | **Ctrl + X**
-貼り付け   | **Ctrl + V**
+コピー    | **Control + C**
+［切り取り］     | **Control + X**
+貼り付け   | **Control + V**
 更新  | **Ctrl + R**
 
 ### <a name="other-commands"></a>その他のコマンド
 
-command                | キーボード ショートカット
+コマンド                | キーボード ショートカット
 -----------------------|------------------
 開発者ツールの切り替え | **F12**
 再読み込み                 | **Alt + Control + R**

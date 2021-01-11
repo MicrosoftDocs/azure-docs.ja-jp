@@ -4,18 +4,18 @@ description: Azure HPC Cache インスタンスを作成する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 07/10/2020
 ms.author: v-erkel
-ms.openlocfilehash: 894595ee3660532bf046a39e994fa669f7c6b002
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a988f08b2b6e30543c112b20e5b374130ceddc47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84434106"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092492"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
-Azure portal を使用してキャッシュを作成します。
+Azure portal または Azure CLI を使用してキャッシュを作成します。
 
 ![Azure portal に表示されるキャッシュの概要と下部の作成ボタンのスクリーンショット](media/hpc-cache-home-page.png)
 
@@ -23,11 +23,13 @@ Azure portal を使用してキャッシュを作成します。
 
 [![ビデオのサムネイル:Azure HPC Cache:セットアップ (クリックしてビデオ ページにアクセス)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
+## <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 ## <a name="define-basic-details"></a>基本的な詳細を定義する
 
 ![Azure portal のプロジェクト詳細ページのスクリーンショット](media/hpc-cache-create-basics.png)
 
-**[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。 サブスクリプションが[アクセス](hpc-cache-prereqs.md#azure-subscription)一覧にあることを確認します。
+**[プロジェクトの詳細]** で、キャッシュのホストとなるサブスクリプションとリソース グループを選択します。 サブスクリプションが[アクセス](hpc-cache-prerequisites.md#azure-subscription)一覧にあることを確認します。
 
 **[サービスの詳細]** で、キャッシュの名前と、これらのその他の属性を設定します。
 
@@ -57,9 +59,9 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 
 ## <a name="enable-azure-key-vault-encryption-optional"></a>Azure Key Vault の暗号化を有効にする (省略可能)
 
-カスタマー マネージド暗号化キーをサポートしているリージョンにキャッシュがある場合は、 **[キャッシュ]** と **[タグ]** タブの間に **[Disk encryption keys]\(ディスク暗号化キー\)** ページが表示されます。 公開時点では、このオプションは米国東部、米国中南部、米国西部 2 でサポートされています。
+カスタマー マネージド暗号化キーをサポートしているリージョンにキャッシュがある場合は、 **[キャッシュ]** と **[タグ]** タブの間に **[Disk encryption keys]\(ディスク暗号化キー\)** ページが表示されます。 リージョンのサポートの詳細については、「[リージョン別の提供状況](hpc-cache-overview.md#region-availability)」を参照してください。
 
-キャッシュ ストレージで使用する暗号化キーを管理する場合は、 **[Disk encryption keys]\(ディスク暗号化キー\)** ページで Azure Key Vault 情報を入力します。 キー コンテナーは、キャッシュと同じリージョンおよび同じサブスクリプションに存在する必要があります。
+キャッシュ ストレージで使用する暗号化キーを管理する場合は、 **[Disk encryption keys] (ディスク暗号化キー)** ページで、お使いの Azure Key Vault の情報を入力します。 キー コンテナーは、キャッシュと同じリージョンおよび同じサブスクリプションに存在する必要があります。
 
 カスタマー マネージド キーが不要な場合は、このセクションを省略できます。 Azure では、既定で Microsoft のマネージド キーを使用してデータを暗号化します。 詳細については、[Azure Storage の暗号化](../storage/common/storage-service-encryption.md)に関する記事を参照してください。
 
@@ -95,6 +97,99 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 
 > [!NOTE]
 > キャッシュでカスタマー マネージド暗号化キーを使用する場合は、デプロイの状態が完了に変更される前に、リソースの一覧にそのキャッシュが表示されることがあります。 キャッシュの状態が **[Waiting for key]\(キーの待機中\)** になるとすぐに、それに対してキー コンテナーの使用を[承認する](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache)ことができます。
+
+## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+## <a name="create-the-cache-with-azure-cli"></a>Azure CLI でキャッシュを作成する
+
+[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+
+> [!NOTE]
+> Azure CLI では、現在のところ、カスタマー マネージド暗号化キーを使用したキャッシュの作成はサポートされていません。 Azure portal を使用します。
+
+[az hpc-cache create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) コマンドを使用して、新しい Azure HPC Cache を作成します。
+
+以下の値を指定します。
+
+* キャッシュのリソース グループ名
+* キャッシュ名
+* Azure リージョン
+* キャッシュのサブネット (次の形式):
+
+  ``--subnet "/subscriptions/<subscription_id>/resourceGroups/<cache_resource_group>/providers/Microsoft.Network/virtualNetworks/<virtual_network_name>/sub
+nets/<cache_subnet_name>"``
+
+  キャッシュのサブネットには少なくとも 64 個の IP アドレス (/24) が必要で、そこに他のリソースを格納することはできません。
+
+* キャッシュ容量。 2 つの値で、Azure HPC Cache の最大スループットを設定します。
+
+  * キャッシュ サイズ (GB)
+  * キャッシュ インフラストラクチャで使用される仮想マシンの SKU
+
+  [az hpc-cache skus list](/cli/azure/ext/hpc-cache/hpc-cache/skus) を実行すると、使用可能な SKU と、各 SKU で有効なキャッシュ サイズ オプションが表示されます。 キャッシュ サイズ オプションの範囲は 3 TB ～ 48 TB ですが、サポートされるのは一部の値のみです。
+
+  次の表は、このドキュメントの準備時点 (2020 年 7 月) で有効な、キャッシュ サイズと SKU の組み合わせを示しています。
+
+  | キャッシュ サイズ | Standard_2G | Standard_4G | Standard_8G |
+  |------------|-------------|-------------|-------------|
+  | 3,072 GB    | 可         | no          | Ｘ          |
+  | 6144 GB    | 可         | 可         | no          |
+  | 12288 GB   | 可         | 可         | 可         |
+  | 24576 GB   | Ｘ          | 可         | 可         |
+  | 49152 GB   | Ｘ          | no          | 可         |
+
+  料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
+
+キャッシュ作成の例:
+
+```azurecli
+az hpc-cache create --resource-group doc-demo-rg --name my-cache-0619 \
+    --location "eastus" --cache-size-gb "3072" \
+    --subnet "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default" \
+    --sku-name "Standard_2G"
+```
+
+キャッシュの作成には数分かかります。 成功すると、create コマンドから次のような出力が返されます。
+
+```azurecli
+{
+  "cacheSizeGb": 3072,
+  "health": {
+    "state": "Healthy",
+    "statusDescription": "The cache is in Running state"
+  },
+  "id": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.StorageCache/caches/my-cache-0619",
+  "location": "eastus",
+  "mountAddresses": [
+    "10.3.0.17",
+    "10.3.0.18",
+    "10.3.0.19"
+  ],
+  "name": "my-cache-0619",
+  "provisioningState": "Succeeded",
+  "resourceGroup": "doc-demo-rg",
+  "sku": {
+    "name": "Standard_2G"
+  },
+  "subnet": "/subscriptions/<subscription-ID>/resourceGroups/doc-demo-rg/providers/Microsoft.Network/virtualNetworks/vnet-doc0619/subnets/default",
+  "tags": null,
+  "type": "Microsoft.StorageCache/caches",
+  "upgradeStatus": {
+    "currentFirmwareVersion": "5.3.42",
+    "firmwareUpdateDeadline": "0001-01-01T00:00:00+00:00",
+    "firmwareUpdateStatus": "unavailable",
+    "lastFirmwareUpdate": "2020-04-01T15:19:54.068299+00:00",
+    "pendingFirmwareVersion": null
+  }
+}
+```
+
+メッセージには、以下の項目を含む便利な情報がいくつか含まれています。
+
+* クライアントのマウント アドレス - クライアントをキャッシュに接続する準備ができたら、これらの IP アドレスを使用します。 詳細については、「[Azure HPC Cache をマウントする](hpc-cache-mount.md)」を参照してください。
+* アップグレードの状態 - ソフトウェア更新プログラムがリリースされると、このメッセージが変化します。 [キャッシュ ソフトウェアのアップグレード](hpc-cache-manage.md#upgrade-cache-software)は、都合のよいときに手動で行えます。または、数日後には自動的に適用されます。
+
+---
 
 ## <a name="next-steps"></a>次のステップ
 

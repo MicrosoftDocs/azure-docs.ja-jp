@@ -1,20 +1,20 @@
 ---
 title: 暗号化スコープの作成と管理 (プレビュー)
-description: ''
+description: コンテナーまたは BLOB レベルで BLOB データを分離するための暗号化スコープを作成する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/13/2020
+ms.date: 08/25/2020
 ms.topic: conceptual
 ms.author: tamram
-ms.reviewer: cbrooks
+ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f589f0108cf21e77be5103afcaa0242c6f191ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 32b46d21228bcd84fc3da11cc6ed42c740fece39
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540581"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870257"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>暗号化スコープの作成と管理 (プレビュー)
 
@@ -22,9 +22,11 @@ ms.locfileid: "86540581"
 
 この記事では、暗号化スコープを作成する方法について説明します。 また、BLOB またはコンテナーを作成するときに暗号化スコープを指定する方法についても説明します。
 
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
+
 ## <a name="create-an-encryption-scope"></a>暗号化スコープの作成
 
-暗号化スコープを作成するには、まず Azure キー コンテナーを作成し、スコープで使用するキーを追加する必要があります。 キー コンテナーでは、**論理的な削除**と**消去保護**プロパティの両方が有効になっている必要があり、これがストレージ アカウントと同じリージョンに存在する必要があります。 詳細については、「[Azure Key Vault で顧客マネージド キーを使用して Azure Storage の暗号化を管理する](../common/encryption-customer-managed-keys.md)」を参照してください。
+暗号化スコープは、Microsoft マネージド キーを使用して作成することも、Azure Key Vault に格納されているカスタマー マネージド キーを使用して作成することもできます。 カスタマー マネージド キーを使用して暗号化スコープを作成するには、まず Azure キー コンテナーを作成し、スコープで使用するキーを追加する必要があります。 キー コンテナーでは、**論理的な削除**と**消去保護**プロパティの両方が有効になっている必要があり、これがストレージ アカウントと同じリージョンに存在する必要があります。 詳細については、「[Azure Key Vault で顧客マネージド キーを使用して Azure Storage の暗号化を管理する](../common/encryption-customer-managed-keys.md)」を参照してください。
 
 暗号化スコープは、作成時に自動的に有効になります。 作成した暗号化スコープは、BLOB の作成時に指定できます。 コンテナーを作成するときに既定の暗号化スコープを指定することもできます。これは、コンテナー内のすべての BLOB に自動的に適用されます。
 

@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6232ba859c985929c9df0fb5020fb932611bbb40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 982aa4bdb37af53999e75b7e33db990adb057938
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85079433"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019761"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>例:C# で Azure Cognitive Search にシノニムを追加する
 
@@ -22,8 +23,8 @@ ms.locfileid: "85079433"
 Azure Cognitive Search では、シノニムは同等の用語を関連付ける "*マッピング規則*" を通じて "*シノニム マップ*" で定義されています。 この例では、既にインデックスがある状態で同意語を追加して使用する最も重要な手順について取り上げます。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * [SynonymMap](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) クラスを使用して、シノニム マップを作成する。 
-> * シノニムを介してクエリ拡張をサポートする必要があるフィールドに対して [SynonymMaps](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) プロパティを設定する。
+> * [SynonymMap](/dotnet/api/microsoft.azure.search.models.synonymmap?view=azure-dotnet) クラスを使用して、シノニム マップを作成する。 
+> * シノニムを介してクエリ拡張をサポートする必要があるフィールドに対して [SynonymMaps](/dotnet/api/microsoft.azure.search.models.field.synonymmaps?view=azure-dotnet) プロパティを設定する。
 
 シノニム対応フィールドに対するクエリは、通常と同じ方法で実行できます。 クエリ構文を追加しなくてもシノニムにアクセスできます。
 
@@ -38,8 +39,8 @@ Azure Cognitive Search では、シノニムは同等の用語を関連付ける
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Cognitive Search サービス](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET ライブラリ](https://docs.microsoft.com/dotnet/api/overview/azure/search)
-* [.NET アプリケーションから Azure Cognitive Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+* [Microsoft.Azure.Search .NET ライブラリ](/dotnet/api/overview/azure/search)
+* [.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)
 
 ## <a name="overview"></a>概要
 
@@ -77,7 +78,7 @@ Azure Cognitive Search では、シノニムは同等の用語を関連付ける
       Console.ReadKey();
   }
 ```
-サンプル インデックスの作成と設定の手順は、[.NET アプリケーションから Azure Cognitive Search を使用する方法](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)に関する記事で説明されています。
+サンプル インデックスの作成と設定の手順は、[.NET アプリケーションから Azure Cognitive Search を使用する方法](./search-howto-dotnet-sdk.md)に関する記事で説明されています。
 
 ## <a name="before-queries"></a>"前" のクエリ
 
@@ -173,7 +174,7 @@ Name: Roach Motel       Category: Budget        Tags: [motel, budget]
 
 ## <a name="next-steps"></a>次のステップ
 
-この例では、マッピング規則を作成、ポストしてからクエリでシノニム マップを呼び出す C# コードのシノニム機能を示します。 さらに詳しい情報については、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) と [REST API](https://docs.microsoft.com/rest/api/searchservice/) のリファレンス ドキュメントをご覧ください。
+この例では、マッピング規則を作成、ポストしてからクエリでシノニム マップを呼び出す C# コードのシノニム機能を示します。 さらに詳しい情報については、[.NET SDK](/dotnet/api/microsoft.azure.search) と [REST API](/rest/api/searchservice/) のリファレンス ドキュメントをご覧ください。
 
 > [!div class="nextstepaction"]
 > [Azure Cognitive Search でシノニムを使用する方法](search-synonyms.md)

@@ -8,12 +8,13 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 10c8008d73390174c44ec503f708c1e2c0011e09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 848f617aaf74960aeecd856016321ac7607eca00
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78944310"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422897"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -78,7 +79,7 @@ C でモジュールを開発している場合を除き、IoT Edge ソリュー
 
 次の手順では、Visual Studio Code と Azure IoT Tools を使用して好きな開発言語 (C# で記述されている Azure Functions を含む) で IoT Edge モジュールを作成する方法を説明します。 まずはソリューションを作成し、次にそのソリューション内に最初のモジュールを生成します。 各ソリューションには複数のモジュールを含めることができます。
 
-1. **[ビュー]**  >  **[コマンド パレット]** を選択します。
+1. **[表示]**  >  **[コマンド パレット]** を選択します。
 
 1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。
 
@@ -167,7 +168,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `Program.cs` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (.NET Core)]\(<モジュール名> のローカル デバッグ (.NET Core)\)** を選択します。
+     - **[表示] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (.NET Core)]\(<モジュール名> のローカル デバッグ (.NET Core)\)** を選択します。
 
         > [!NOTE]
         > .NET Core `TargetFramework` が `launch.json` 内のプログラム パスと一致しない場合は、Visual Studio Code がこのプログラムを正常に起動できるように .csproj ファイル内の `TargetFramework` に合わせて `launch.json` 内のプログラム パスを手動で更新する必要があります。
@@ -181,11 +182,11 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
      - `app.js` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Node.js)]\(<モジュール名> のローカル デバッグ (Node.js)\)** を選択します。
+     - **[表示] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Node.js)]\(<モジュール名> のローカル デバッグ (Node.js)\)** を選択します。
    - **Java**
      - `App.java` ファイルを開き、ブレークポイントを追加します。
 
-     - **[ビュー] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Java)]\(<モジュール名> のローカル デバッグ (Java)\)** を選択します。
+     - **[表示] > [デバッグ]** の順に選択して、Visual Studio Code の [デバッグ] ビューに移動します。 ドロップダウンからデバッグ構成として **[ *&lt;your module name&gt;* Local Debug (Java)]\(<モジュール名> のローカル デバッグ (Java)\)** を選択します。
 
 1. **[デバッグの開始]** をクリックするか **F5** キーを押して、デバッグ セッションを開始します。
 

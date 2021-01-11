@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
-ms.openlocfilehash: 96ad10fcca260223d92203a80f396de816238efc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dce3c484a16918931df80d5201fad090b2c0cb2e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529564"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922635"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Azure Cognitive Search でのシノニム
 
@@ -23,7 +23,7 @@ Azure Cognitive Search では、シノニムの拡張は、クエリ時に行わ
 
 ## <a name="create-synonyms"></a>シノニムを作成する
 
-シノニムの作成はポータルでサポートされませんが、REST API または .NET SDK を使用できます。 REST を使い始めるときは、[Postman](search-get-started-postman.md)と、[シノニム マップの作成](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map) API を使用する公式化された要求を使用することをお勧めします。 C# 開発者は、[C# を使用した Azure Cognitive Search へのシノニムの追加](search-synonyms-tutorial-sdk.md)に関するページから始めることができます。
+シノニムの作成はポータルでサポートされませんが、REST API または .NET SDK を使用できます。 REST を使い始めるときは、[Postman](search-get-started-postman.md)と、[シノニム マップの作成](/rest/api/searchservice/create-synonym-map) API を使用する公式化された要求を使用することをお勧めします。 C# 開発者は、[C# を使用した Azure Cognitive Search へのシノニムの追加](search-synonyms-tutorial-sdk.md)に関するページから始めることができます。
 
 サービス側の暗号化の保存で[顧客管理のキー](search-security-manage-encryption-keys.md)を使用している場合は、その保護をシノニム マップのコンテンツに適用することもできます。
 
@@ -173,4 +173,4 @@ Washington, Wash., WA => WA
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [シノニム マップの作成](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)
+> [シノニム マップの作成](/rest/api/searchservice/create-synonym-map)

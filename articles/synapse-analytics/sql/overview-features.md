@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: e1223a9cd5bd3a092bc35c9ba03f7352c6ac7eed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce7238aaa10b1e73f7fa3c061045f47cbc472e23
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87059405"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378697"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>Azure Synapse SQL でサポートされる Transact-SQL 機能
 
@@ -36,7 +36,7 @@ Synapse SQL の消費モデルでは、さまざまなデータベース オブ�
 | **関数** | [はい](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | はい。インライン テーブル値関数のみです。 |
 | **トリガー** | いいえ | いいえ |
 | **外部テーブル** | [はい](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 サポートされる[データ形式](#data-formats)をご確認ください。 | [はい](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 サポートされる[データ形式](#data-formats)をご確認ください。 |
-| **クエリのキャッシュ** | はい。複数の形式 (SSD ベースのキャッシュ、インメモリ、結果セットのキャッシュ)。 さらに、具体化されたビューがサポートされます | いいえ |
+| **クエリのキャッシュ** | はい。複数の形式 (SSD ベースのキャッシュ、インメモリ、結果セットのキャッシュ)。 さらに、マテリアライズドビューがサポートされます | いいえ |
 | **テーブル変数** | [いいえ](/sql/t-sql/data-types/table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。一時テーブルを使用します | いいえ |
 | **[テーブルの分散](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**               | はい | いいえ |
 | **[テーブルのインデックス](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)**                           | はい | いいえ |
@@ -54,7 +54,7 @@ Synapse SQL で使用されるクエリ言語では、従量課金モデルに�
 | **INSERT ステートメント** | はい | いいえ |
 | **UPDATE ステートメント** | はい | いいえ |
 | **DELETE ステートメント** | はい | いいえ |
-| **MERGE ステートメント** | はい | いいえ |
+| **MERGE ステートメント** | いいえ | いいえ |
 | **[トランザクション](develop-transactions.md)** | はい | いいえ |
 | **[ラベル](develop-label.md)** | はい | いいえ |
 | **データ読み込み** | はい。 推奨されるユーティリティは [COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ステートメントです。ただし、データ読み込みでは一括読み込み (BCP) と [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) の両方がサポートされます。 | いいえ |

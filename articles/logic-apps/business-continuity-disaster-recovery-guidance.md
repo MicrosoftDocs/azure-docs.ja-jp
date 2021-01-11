@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: cc55b24c4852028eb1244e97b48415ba08420e20
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437716"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066536"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps の事業継続とディザスター リカバリー
 
@@ -157,7 +157,7 @@ Azure Logic Apps には、[組み込みのトリガーとアクションに加�
 
 破棄された進行中のワークフロー インスタンスの数を最小限に抑えるには、次の例のように、実装できる各種メッセージ パターンから選択します。
 
-* [固定ルート指定スリップ パターン](https://docs.microsoft.com/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
+* [固定ルート指定スリップ パターン](/biztalk/esb-toolkit/message-routing-patterns#routing-slip)
 
   このエンタープライズ メッセージ パターンは、ビジネス プロセスを小さなステージに分割します。 各ステージで、そのステージのワークロードを処理するロジック アプリを設定します。 ロジック アプリは、Azure Service Bus のキューやトピックなど、非同期メッセージング プロトコルを使用して相互に通信します。 プロセスを小さなステージに分割すると、障害の発生したロジック アプリのインスタンスでスタックする可能性があるビジネス プロセスの数を削減できます。 このパターンの一般的な情報については、「[Enterprise 統合パターン - ルート指定スリップ](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RoutingTable.html)」を参照してください。
 
@@ -165,7 +165,7 @@ Azure Logic Apps には、[組み込みのトリガーとアクションに加�
 
   ![ビジネス プロセスをロジック アプリが表すステージに分割し、各ステージは Azure Service Bus キューを使用して相互に通信します。](./media/business-continuity-disaster-recovery-guidance/fixed-routing-slip-pattern.png)
 
-  プライマリとセカンダリのロジック アプリのインスタンスがどちらもそれぞれの場所で同じルート指定スリップ パターンに従っている場合、それらのインスタンスに対して[アクティブ/アクティブ ロール](#roles)を 設定することにより、[競合コンシューマー パターン](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers)を実装できます。
+  プライマリとセカンダリのロジック アプリのインスタンスがどちらもそれぞれの場所で同じルート指定スリップ パターンに従っている場合、それらのインスタンスに対して[アクティブ/アクティブ ロール](#roles)を 設定することにより、[競合コンシューマー パターン](/azure/architecture/patterns/competing-consumers)を実装できます。
 
 * [プロセス マネージャー (ブローカー) パターン](https://www.enterpriseintegrationpatterns.com/patterns/messaging/ProcessManager.html)
 
@@ -249,7 +249,7 @@ Azure Logic Apps には、[組み込みのトリガーとアクションに加�
   たとえば、Azure Service Bus キューなど、メッセージ キューからの読み取りではサーバー側の状態を使用することで、キュー サービスがメッセージのロックを保持し、他のクライアントが同じメッセージを読み取れないようにします。
 
   > [!NOTE]
-  > ロジック アプリが Service Bus キューからなど、特定の順序でメッセージを読み取る必要がある場合、競合コンシューマー パターンを使用できます。これは Service Bus セッションと組み合わせた場合にのみ可能で[*シーケンシャルなコンボイ* パターン](https://docs.microsoft.com/azure/architecture/patterns/sequential-convoy)とも呼ばれています。 それ以外の場合は、アクティブ/パッシブ ロールでロジック アプリのインスタンスを設定する必要があります。
+  > ロジック アプリが Service Bus キューからなど、特定の順序でメッセージを読み取る必要がある場合、競合コンシューマー パターンを使用できます。これは Service Bus セッションと組み合わせた場合にのみ可能で[*シーケンシャルなコンボイ* パターン](/azure/architecture/patterns/sequential-convoy)とも呼ばれています。 それ以外の場合は、アクティブ/パッシブ ロールでロジック アプリのインスタンスを設定する必要があります。
 
 <a name="request-trigger"></a>
 
@@ -271,7 +271,7 @@ Azure Logic Apps には、[組み込みのトリガーとアクションに加�
 
 * [アクティブ/パッシブ](#roles):プライマリ インスタンスだけがアクティブになり、すべての作業が処理されまる一方、セカンダリ インスタンスは、プライマリに中断または障害が発生するまで待機します。 呼び出し元またはルーターは、セカンダリ インスタンスを呼び出すタイミングを決定します。
 
-推奨されるアーキテクチャとして、Azure API Management を Request トリガーを使用するロジック アプリのプロキシとして使用できます。 API Management には、[組み込みのリージョン間の回復機能](https://docs.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)および複数のエンドポイント間でトラフィックをルート指定する機能が用意されています。
+推奨されるアーキテクチャとして、Azure API Management を Request トリガーを使用するロジック アプリのプロキシとして使用できます。 API Management には、[組み込みのリージョン間の回復機能](../api-management/api-management-howto-deploy-multi-region.md)および複数のエンドポイント間でトラフィックをルート指定する機能が用意されています。
 
 <a name="webhook-trigger"></a>
 
@@ -331,7 +331,7 @@ Azure Logic Apps には、[組み込みのトリガーとアクションに加�
 
 ### <a name="activate-your-secondary-instance"></a>セカンダリ インスタンスのアクティブ化
 
-セカンダリ インスタンスを自動的にアクティブにするには、[Azure Resource Manager コネクタ](https://docs.microsoft.com/connectors/arm/)などの管理 API を呼び出し、セカンダリの場所で適切なロジック アプリをアクティブ化するロジック アプリを作成します。 ウォッチドッグ アプリを拡張して、所定の数のエラーが発生した後にこのアクティブ化ロジック アプリを呼び出すことができます。
+セカンダリ インスタンスを自動的にアクティブにするには、[Azure Resource Manager コネクタ](/connectors/arm/)などの管理 API を呼び出し、セカンダリの場所で適切なロジック アプリをアクティブ化するロジック アプリを作成します。 ウォッチドッグ アプリを拡張して、所定の数のエラーが発生した後にこのアクティブ化ロジック アプリを呼び出すことができます。
 
 <a name="collect-diagnostic-data"></a>
 
@@ -348,9 +348,9 @@ Azure Logic Apps には、[組み込みのトリガーとアクションに加�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure の回復性の概要](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
-* [特定の Azure サービスの回復性のチェックリスト](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)
-* [Azure での回復性のためのデータ管理](https://docs.microsoft.com/azure/architecture/framework/resiliency/data-management)
-* [Azure アプリケーションのバックアップとディザスター リカバリー](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery)
-* [リージョン全体でのサービスの中断から回復する](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)
+* [Azure の回復性の概要](/azure/architecture/framework/resiliency/overview)
+* [特定の Azure サービスの回復性のチェックリスト](/azure/architecture/checklist/resiliency-per-service)
+* [Azure での回復性のためのデータ管理](/azure/architecture/framework/resiliency/data-management)
+* [Azure アプリケーションのバックアップとディザスター リカバリー](/azure/architecture/framework/resiliency/backup-and-recovery)
+* [リージョン全体でのサービスの中断から回復する](/azure/architecture/resiliency/recovery-loss-azure-region)
 * [Microsoft Service Level Agreements (SLAs) for Azure services](https://azure.microsoft.com/support/legal/sla/)

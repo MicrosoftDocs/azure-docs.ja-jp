@@ -9,12 +9,12 @@ ms.date: 4/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b0952f31bf6e327ff6d9f632f242919139ed6cae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0c1d83c2dac0163cd9b9cbc07969103381e85471
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512012"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855392"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure portal を使用した大規模な IoT Edge モジュールの展開
 
@@ -61,7 +61,7 @@ IoT Edge には、シナリオをカスタマイズするために使用でき�
 
 ### <a name="step-2-modules"></a>手順 2:モジュール
 
-デプロイには、最大 30 個のモジュールを追加できます。 モジュールを含まないデプロイを作成すると、ターゲット デバイスから現在のモジュールが削除されます。
+デプロイには、最大 50 個のモジュールを追加できます。 モジュールを含まないデプロイを作成すると、ターゲット デバイスから現在のモジュールが削除されます。
 
 デプロイでは、IoT Edge エージェント モジュールと IoT Edge ハブ モジュールの設定を管理できます。 これらの 2 つのランタイム モジュールを構成するには、 **[ランタイムの設定]** を選択します。 多層デプロイでは、これらのランタイム モジュールは含まれていないため、構成できません。
 

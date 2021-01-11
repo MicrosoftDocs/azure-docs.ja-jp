@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f24a04db9317083fb47c0956174e649b5bd7ae10
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048905"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815693"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps コミュニティ - オープンソース プロジェクト
 
@@ -22,16 +22,41 @@ ms.locfileid: "77048905"
 
 次の一覧に、最も広く使用されている Azure Maps のオープンソース プロジェクトとサンプルのいくつかを示します。
 
+**ボット**
+
+| プロジェクト名 | 説明 |
+|-|-|
+| [Bot Framework - 目的地スキル](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | 目的地スキルは、Azure Bot Service および Bot Framework と共に Azure Maps を使用して、仮想アシスタントに対する POI 関連の機能を提供します。 |
+| [BotBuilder Location](https://github.com/Microsoft/BotBuilder-Location) | Bing Maps REST サービスを利用する Microsoft Bot Framework 用のオープンソースの場所の選択コントロールです。 |
+
+**Web SDK モジュールを開く**
+
+次に、Azure Maps Web SDK の機能を拡張するオープンソース プロジェクトの一覧を示します。
+
+| プロジェクト名 | 説明 |
+|-|-|
+| [Azure Maps アニメーション モジュール](https://github.com/Azure-Samples/azure-maps-animations)| Azure Maps Web SDK で使用するための、アニメーションの豊富なライブラリ。 |
+| [Azure Maps Services UI モジュール](https://github.com/Azure-Samples/azure-maps-services-ui) | Azure Maps REST サービスをラップする Web UI コントロールのセット。 |
+
+**サンプル**
+
 | プロジェクト名 | 説明 |
 |-|-|
 | [Azure Maps のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web ベースのアプリで Azure Maps を使用するためのコード サンプルのコレクション。 |
 | [Azure Maps Gov Cloud のコード サンプル](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Government Cloud 経由で Azure Maps を使用するためのコード サンプルのコレクション。 |
 | [Azure Maps および Azure Active Directory のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure Maps と Azure Active Directory を使用する方法を示すサンプルのコレクション。 | 
-| [Azure Maps を使用した IoT 空間分析の実装](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 空間と時間に生じる関連イベントを追跡およびキャプチャすることは、一般的な IoT シナリオです。 |
 | [Azure Maps の Jupyter Notebook サンプル](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Azure Maps REST サービスを使用した python サンプルのコレクション。 |
-| [Bot Framework - 目的地スキル](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | 目的地スキルは、Azure Bot Service および Bot Framework と共に Azure Maps を使用して、仮想アシスタントに対する POI 関連の機能を提供します。 |
+| [Azure Maps .NET UWP IoT リモート コントロール](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | これは、Azure Maps サービスと IoT Hub サービスを使用して、リモートで制御されるマップを構築する方法を示すサンプル アプリケーションです。 |
+| [Azure Maps を使用した IoT 空間分析の実装](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | 空間と時間に生じる関連イベントを追跡およびキャプチャすることは、一般的な IoT シナリオです。 |
 
-コミュニティによって作成されたオープンソース プロジェクトを含むより詳細な一覧については、[こちら](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)を参照してください。
+**ツールとリソース**
+
+| プロジェクト名 | 説明 |
+|-|-|
+| [Azure Maps Docs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | すべての Azure Location Based Services ドキュメントのソース。 |
+| [Azure Maps Creator ツール](https://github.com/Azure-Samples/AzureMapsCreator) | Azure Maps Creator ツール用の Python ツール。 |
+
+コミュニティによって作成されたプロジェクトを含む Azure Maps のオープンソース プロジェクトのより詳細な一覧については、[こちら](https://github.com/microsoft/Maps/blob/master/AzureMaps.md)を参照してください。
 
 ## <a name="supportability-of-open-source-projects"></a>オープンソース プロジェクトのサポートの可否
 

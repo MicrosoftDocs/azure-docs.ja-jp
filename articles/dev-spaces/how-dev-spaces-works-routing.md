@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスと、ルーティングがどのように機能するかについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512471"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213401"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Azure Dev Spaces でルーティングがどのように機能するか
 
@@ -49,7 +49,7 @@ HTTP ではないその他の TCP トラフィックはすべて、未変更の�
 
 ## <a name="sharing-a-dev-space"></a>開発スペースを共有する
 
-チームで作業している場合は、[チーム全体で開発スペースを共有](how-to/share-dev-spaces.md)したり、派生の開発スペースを作成したりできます。 開発スペースは、その開発スペースのリソース グループへの共同作成者アクセス権を持つユーザーが使用できます。
+チームで作業している場合は、チーム全体で開発スペースを共有したり、派生の開発スペースを作成したりできます。 開発スペースは、その開発スペースのリソース グループへの共同作成者アクセス権を持つユーザーが使用できます。
 
 別の開発スペースから派生した新しい開発スペースを作成することもできます。 派生の開発スペースを作成すると、その開発スペースの名前空間に *azds.io/parent-space=PARENT-SPACE-NAME* ラベルが追加されます。 また、親開発スペースからのすべてのアプリケーションが派生の開発スペースと共有されます。 更新バージョンのアプリケーションを派生の開発スペースにデプロイする場合、そのアプリケーションは派生の開発スペースにのみ存在し、親開発スペースには影響しません。 最大で 3 レベルの派生の開発スペースまたは "*親の親*" であるスペースを使用できます。
 
@@ -66,11 +66,9 @@ HTTP ではないその他の TCP トラフィックはすべて、未変更の�
 
 Azure Dev Spaces で迅速な反復処理と開発を提供するためにルーティングがどのように使用されているかについての例を確認するには、「[Local Process with Kubernetes のしくみ][how-it-works-local-process-kubernetes]」、「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」、[GitHub Actions と Azure Kubernetes Service][pr-flow] に関する記事を参照してください。
 
-チーム開発のために Azure Dev Spaces でルーティングの使用を開始するには、[Azure Dev Spacesでのチーム開発][quickstart-team]に関するクイックスタートを参照してください。
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 [how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
-[quickstart-team]: quickstart-team-development.md
 [troubleshooting]: troubleshooting.md

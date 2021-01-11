@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop サービスの接続に関するトラブルシューティング - Azure
-description: Windows Virtual Desktop テナント環境でクライアント接続を設定するときの問題を解決する方法です。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) サービスの接続に関するトラブルシューティング - Azure
+description: Windows Virtual Desktop (クラシック) テナント環境でクライアント接続を設定するときの問題の解決方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 356506224a0273eeea65f0f901fbc79c338498d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8a034cb8371972c2c7908cdba4dd491c17d8cc9f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83743597"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008544"
 ---
-# <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop サービスの接続
+# <a name="windows-virtual-desktop-classic-service-connections"></a>Windows Virtual Desktop (クラシック) サービスの接続
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-service-connection.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-service-connection.md)を参照してください。
 
 Windows Virtual Desktop クライアントの接続に関する問題を解決するには、この記事を使います。
 

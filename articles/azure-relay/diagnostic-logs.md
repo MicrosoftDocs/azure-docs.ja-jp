@@ -3,12 +3,12 @@ title: ハイブリッド接続の診断ログ
 description: この記事では、Azure Relay で使用可能なすべてのアクティビティ ログと診断ログの概要について説明します。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314903"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533004"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Azure Relay ハイブリッド接続の診断ログを有効にする
 Azure Relay ハイブリッド接続の使用を開始するときは、リスナーとセンダーが開かれて閉じられる方法とタイミング、およびハイブリッド接続が作成され、メッセージが送信される方法を監視することが必要な場合があります。 この記事では、Azure Relay サービスで提供されるアクティビティ ログと診断ログの概要について説明します。 
@@ -46,13 +46,13 @@ Azure Relay 名前空間のアクティビティ ログを表示するには、A
         ![診断設定の例](./media/diagnostic-logs/sample-diagnostic-settings.png)
 1. ツール バーの **[保存]** を選択して設定を保存します。
 
-新しい設定は、10 分ほどで有効になります。 構成されたアーカイブ ターゲットの **[診断ログ]** ペインにログが表示されます。 診断設定の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)に関するページを参照してください。
+新しい設定は、10 分ほどで有効になります。 構成されたアーカイブ ターゲットの **[診断ログ]** ペインにログが表示されます。 診断設定の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/platform-logs-overview.md)に関するページを参照してください。
 
 
 ## <a name="schema-for-hybrid-connections-events"></a>ハイブリッド接続イベントのスキーマ
 ハイブリッド接続イベント ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-| 名前 | [説明] |
+| 名前 | 説明 |
 | ------- | ------- |
 | ResourceId | Azure Resource Manager リソース ID |
 | ActivityId | 指定された操作を識別するために使用される内部 ID。 "TrackingId" と呼ばれることもあります |

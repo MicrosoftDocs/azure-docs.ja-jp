@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Innotas の統合 | Microsoft Docs'
 description: Azure Active Directory と Innotas の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: eb9e9c2c-4b09-4177-bbab-423fd657448e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 3671f948bb61a348492d89e9b4bf011400d1e986
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 67cc4e7d6d2ca4cbfd51e2be7f027e1557da8829
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100222"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550471"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innotas"></a>チュートリアル: Azure Active Directory と Innotas の統合
 

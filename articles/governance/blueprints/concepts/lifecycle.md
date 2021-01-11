@@ -1,14 +1,14 @@
 ---
 title: ブループリントのライフサイクルの概要
 description: ブループリントの更新と削除を含む、ブループリント定義のライフサイクルの順番と各ステージの詳細について説明します。
-ms.date: 05/06/2020
+ms.date: 08/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c1de2cf869362154b112c3eef74ed1fb0db3a993
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82864030"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89049708"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint のライフサイクルの概要
 
@@ -81,14 +81,14 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ライフサイクルの間に、ブループリントをサブスクリプションに割り当てることができるポイントがいくつかあります。 ブループリントのバージョンのモードが**発行済み**のときは常に、そのバージョンをサブスクリプションに割り当てることができます。 このライフサイクルにより、新しいバージョンの開発中であっても、ブループリントのバージョンを使用してアクティブに割り当てられます。
 
-ブループリントのバージョンが割り当てられるので、どこで割り当てられており、どのパラメーターが割り当てられているのかを理解しておくことが重要です。 パラメーターは静的または動的にできます。 詳しくは、[静的および動的パラメーター](parameters.md)に関するページをご覧ください。
+ブループリントのバージョンが割り当てられるので、どこで割り当てられており、どのパラメーターが割り当てられているのかを理解しておくことが重要です。 パラメーターは静的または動的にできます。 詳しくは、[静的および動的パラメーター](./parameters.md)に関するページをご覧ください。
 
 ### <a name="updating-assignments"></a>割り当ての更新
 
 ブループリントが割り当てられたら、割り当てを更新できます。 既存の割り当てを更新する理由は次のとおりです。
 
-- [リソース ロック](resource-locking.md)を追加または削除する
-- [動的パラメーター](parameters.md#dynamic-parameters)の値を変更する
+- [リソース ロック](./resource-locking.md)を追加または削除する
+- [動的パラメーター](./parameters.md#dynamic-parameters)の値を変更する
 - 割り当てを、ブループリントの新しい**発行済み**バージョンにアップグレードする
 
 方法については、[既存の割り当ての更新](../how-to/update-existing-assignments.md)に関するページをご覧ください。
@@ -97,7 +97,7 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ブループリントが不要になった場合は、管理グループまたはサブスクリプションから割り当てを解除できます。 ブループリントの割り当て解除中に、次の処理が行われます。
 
-- [ブループリントのリソース ロック](resource-locking.md)の削除
+- [ブループリントのリソース ロック](./resource-locking.md)の削除
 - ブループリント割り当てオブジェクトの削除
 - (条件付き) **システム割り当てマネージド ID** が使用された場合は、それも削除されます。
 
@@ -106,8 +106,8 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [静的および動的パラメーター](./parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](./sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](./resource-locking.md)の使用方法を調べる。
 - [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
 - ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

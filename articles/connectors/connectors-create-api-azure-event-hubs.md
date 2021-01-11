@@ -3,16 +3,16 @@ title: Azure Event Hubs に接続する
 description: Azure Event Hubs と Azure Logic Apps を使用してイベントを監視および管理する自動化されたタスクとワークフローを作成する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 7dab9753334a1f071d85d0d2bccbd88340e37634
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284100"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031431"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs および Azure Logic Apps でイベントを監視および送受信する
 
@@ -20,7 +20,7 @@ ms.locfileid: "87284100"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * [Azure Event Hubs 名前空間とイベント ハブ](../event-hubs/event-hubs-create.md)
 
@@ -62,6 +62,9 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 この例では、新しいイベントがご自身のイベント ハブに送信されたときに、ロジック アプリ ワークフローを開始する方法を示します。 
 
+> [!NOTE]
+> イベント ハブ トリガーはすべて "*長いポーリング*" のトリガーです。つまり、このトリガーですべてのイベントが処理され、パーティションごとに 30 秒待機すると、イベント ハブに新しいイベントが表示されます。 そのため、4 つのパーティションでトリガーを設定している場合、トリガーがすべてのパーティションのポーリングを完了するまで、この遅延で最大 2 分とられます。 この遅延内でイベントを受信しなかった場合、トリガーの実行はスキップされます。 そうでない場合、トリガーはご自身のイベント ハブが空になるまでイベントの読み取りを続けます。 次のトリガーのポーリングは、トリガーのプロパティで指定する繰り返し間隔に基づいて発生します。
+
 1. Azure Portal または Visual Studio で、Logic Apps デザイナーを開いて、空のロジック アプリを作成します。 この例では、Azure Portal を使用します。
 
 1. 検索ボックスに、フィルターとして「イベント ハブ」と入力します。 トリガーの一覧から、**イベント ハブでイベントを使用できる場合**
@@ -70,41 +73,36 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 1. 接続の詳細の入力を求められたら、[Event Hubs 接続をすぐに作成](#create-connection)します。 
 
-1. トリガーには、監視するイベント ハブの情報を提供します。 その他のプロパティについては、 **[Add new parameter]** (新しいパラメーターを追加) 一覧を開いてください。 パラメーターを選択すると、そのプロパティがトリガー カードに追加されます。
+1. トリガーには、監視するイベント ハブの情報を提供します。 その他のプロパティについては、[**Add new parameter**] (新しいパラメーターを追加) 一覧を開いてください。 パラメーターを選択すると、そのプロパティがトリガー カードに追加されます。
 
    ![トリガーのプロパティ](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | 必須 | Description |
    |----------|----------|-------------|
-   | **イベント ハブ名** | はい | 監視するイベント ハブの名前 |
-   | **コンテンツの種類** | いいえ | イベントのコンテンツの種類 既定では、 `application/octet-stream`です。 |
-   | **コンシューマー グループ名** | いいえ | イベントを読み取るために使用する[イベント ハブのコンシューマー グループ名](../event-hubs/event-hubs-features.md#consumer-groups) 指定されていない場合は、既定のコンシューマー グループが使用されます。 |
-   | **最大イベント数** | いいえ | 最大イベント数。 トリガーは、1 からこのプロパティによって指定されたイベントの数までの値を返します。 |
+   | **イベント ハブ名** | Yes | 監視するイベント ハブの名前 |
+   | **Content type** | No | イベントのコンテンツの種類 既定では、 `application/octet-stream`です。 |
+   | **コンシューマー グループ名** | No | イベントを読み取るために使用する[イベント ハブのコンシューマー グループ名](../event-hubs/event-hubs-features.md#consumer-groups) 指定されていない場合は、既定のコンシューマー グループが使用されます。 |
+   | **最大イベント数** | No | 最大イベント数。 トリガーは、1 からこのプロパティによって指定されたイベントの数までの値を返します。 |
    | **間隔** | はい | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 |
    | **頻度** | はい | 繰り返しの時間の単位 |
    ||||
 
    **追加のプロパティ**
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | 必須 | Description |
    |----------|----------|-------------|
-   | **コンテンツ スキーマ** | いいえ | イベント ハブから読み取るイベントの JSON コンテンツ スキーマ たとえば、コンテンツのスキーマを指定する場合は、スキーマと一致するイベントのみのロジック アプリをトリガーできます。 |
-   | **最小パーティション キー** | いいえ | 読み取る最小の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
-   | **最大パーティション キー** | いいえ | 読み取る最大の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
+   | **コンテンツ スキーマ** | No | イベント ハブから読み取るイベントの JSON コンテンツ スキーマ たとえば、コンテンツのスキーマを指定する場合は、スキーマと一致するイベントのみのロジック アプリをトリガーできます。 |
+   | **最小パーティション キー** | No | 読み取る最小の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
+   | **最大パーティション キー** | No | 読み取る最大の[パーティション](../event-hubs/event-hubs-features.md#partitions) ID を入力します。 既定では、すべてのパーティションが読み取られます。 |
    | **タイム ゾーン** | いいえ | 開始時刻を指定したときに限り適用されます。このトリガーに UTC オフセットを指定することはできないためです。 適用するタイム ゾーンを選択してください。 <p>詳細については、「[定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する](../connectors/connectors-native-recurrence.md)」を参照してください。 |
    | **[開始時刻]** | いいえ | 開始時刻を次の形式で指定します。 <p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合)<p>または<p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合)<p>詳細については、「[定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する](../connectors/connectors-native-recurrence.md)」を参照してください。 |
    ||||
 
-1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
+1. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。
 
 1. トリガーの結果を使用して実行するタスクの 1 つまたは複数のアクションをロジック アプリに追加する操作に進みます。 
 
    たとえば、カテゴリなどの特定の値に基づいてイベントをフィルター処理するには、**イベントの送信**アクションで条件を満たすイベントだけが送信されるように条件を追加できます。 
-
-> [!NOTE]
-> イベント ハブ トリガーはすべて "*長いポーリング*" のトリガーです。起動するときにすべてのイベントを処理し、ご自身のイベント ハブにさらにイベントが表示されるまで 30 秒間待機します。
-> 30 秒以内にイベントを受信しなかった場合、トリガーの実行はスキップされます。 そうでない場合、トリガーはご自身のイベント ハブが空になるまでイベントの読み取りを続けます。
-> 次のトリガーのポーリングは、トリガーのプロパティで指定する繰り返し間隔に基づいて発生します。
 
 <a name="add-action"></a>
 
@@ -114,7 +112,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. Azure Portal または Visual Studio で、Logic Apps デザイナーでロジック アプリを開きます。 この例では、Azure Portal を使用します。
 
-1. トリガーまたはアクションで、 **[新しいステップ]** を選択します。
+1. トリガーまたはアクションで、**[新しいステップ]** を選択します。
 
    既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 
    表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
@@ -126,23 +124,23 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. 接続の詳細の入力を求められたら、[Event Hubs 接続をすぐに作成](#create-connection)します。 
 
-1. アクションでは、送信するイベントに関する情報を提供します。 その他のプロパティについては、 **[Add new parameter]** (新しいパラメーターを追加) 一覧を開いてください。 パラメーターを選択すると、そのプロパティがアクション カードに追加されます。
+1. アクションでは、送信するイベントに関する情報を提供します。 その他のプロパティについては、[**Add new parameter**] (新しいパラメーターを追加) 一覧を開いてください。 パラメーターを選択すると、そのプロパティがアクション カードに追加されます。
 
    ![イベント ハブ名を選択し、イベントの内容を入力する](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | プロパティ | 必須 | 説明 |
+   | プロパティ | 必須 | Description |
    |----------|----------|-------------|
-   | **イベント ハブ名** | はい | イベントの送信先となるイベント ハブを選択します |
-   | **コンテンツ** | いいえ | 送信するイベントのコンテンツ |
-   | **Properties** | いいえ | 送信するアプリのプロパティと値 |
-   | **パーティション キー** | いいえ | イベントを送信する[パーティション](../event-hubs/event-hubs-features.md#partitions) ID |
+   | **イベント ハブ名** | Yes | イベントの送信先となるイベント ハブを選択します |
+   | **コンテンツ** | No | 送信するイベントのコンテンツ |
+   | **Properties** | No | 送信するアプリのプロパティと値 |
+   | **パーティション キー** | No | イベントを送信する[パーティション](../event-hubs/event-hubs-features.md#partitions) ID |
    ||||
 
    たとえば、別のイベント ハブにイベント ハブのトリガーから出力を送信できます。
 
    ![イベントのサンプルを送信](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action-example.png)
 
-1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
+1. 操作が完了したら、デザイナーのツールバーで、**[保存]** を選択します。
 
 <a name="create-connection"></a>
 
@@ -155,14 +153,14 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **Connection Name** | はい | <*connection-name*> | 作成する接続の名前 |
-   | **イベント ハブの名前空間** | はい | <*event-hubs-namespace*> | 使用する場合は、Event Hubs 名前空間を選択します。 |
+   | **イベント ハブの名前空間** | Yes | <*event-hubs-namespace*> | 使用する場合は、Event Hubs 名前空間を選択します。 |
    |||||  
 
    次に例を示します。
 
    ![イベント ハブ接続を作成する](./media/connectors-create-api-azure-event-hubs/create-event-hubs-connection-1.png)
 
-   手動で接続文字列を入力する場合は、 **[接続情報を手動で入力する]** を選択します。 
+   手動で接続文字列を入力する場合は、**[接続情報を手動で入力する]** を選択します。 
    [接続文字列を検索する方法](#permissions-connection-string)に関するセクションを参照してください。
 
 2. 使用する Event Hubs ポリシーを選択します (選択されていない場合)。 **[作成]** を選択します。
@@ -176,7 +174,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/eventhubs/)を参照してください。
 
 > [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリでは、このコネクタの ISE のラベルがついたバージョンで [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が代わりに使用されます。
+> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 

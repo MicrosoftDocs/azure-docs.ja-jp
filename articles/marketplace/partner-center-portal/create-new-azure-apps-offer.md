@@ -3,14 +3,16 @@ title: Azure アプリケーション オファーを作成する - Microsoft �
 description: パートナー センターの商業マーケットプレース ポータルで、新しい Azure アプリケーション オファーを作成するための手順と考慮事項について学習します。 Azure Marketplace で、またはクラウド ソリューション プロバイダー (CSP) プログラムを使用して、Azure アプリケーション オファーを一覧表示したり、販売したりすることができます。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 06/17/2020
-ms.openlocfilehash: c5371b2d9379ca861addac07de50d7cdf9c34c8b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+author: AarathiN
+ms.author: aarathin
+ms.date: 07/14/2020
+ms.openlocfilehash: 071d3fc972e99d61a226492350b7eee146584df6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121974"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815669"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure アプリケーション オファーを作成する
 
@@ -65,14 +67,14 @@ Azure アプリケーション オファーを設計、構築、およびテス�
 
 Azure アプリケーションを管理するためのスクリプト環境として、次のいずれか一方または両方を選択します。
 
-* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 開発環境には次にツールを加えることを推奨します｡
 
-* [Azure 記憶域エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Visual Studio Code](https://code.visualstudio.com/) と次の拡張機能:
-    * 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    * 拡張機能: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
     * 拡張機能: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
@@ -101,7 +103,7 @@ Azure アプリケーション プランには、ソリューション テンプ
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
 >[!NOTE]
->オファーが公開された後にパートナー センターで編集した内容は、そのオファーを再公開するまでネットショップに表示されません。 変更後は必ずオファーを再公開してください。
+>オファーが公開された後にパートナー センターで編集した内容は、そのオファーを再公開するまでオンライン ストアに表示されません。 変更後は必ずオファーを再公開してください。
 
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 
@@ -240,19 +242,24 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 画像がぼやけていると、送信が拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、確実に、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされないようにしてください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-オファーのロゴの PNG ファイルを次の 3 つのピクセル サイズで提供します。
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**および**中**サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
 
-- **小** (48 x 48)
-- **中** (90 x 90)
-- **大** (216 x 216)
-- **ワイド** (255 x 115)
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **中** (90 x 90 px、省略可能)
+- **小** (48 x 48 px、省略可能)
 
-3 つすべてのロゴが必要であり、一覧のさまざまな場所で使用されます。
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>Screenshots (スクリーンショット)
 
@@ -280,7 +287,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 少なくとも 1 つの Azure サブスクリプション ID を、個別に (最大 10 個)、または CSV ファイルをアップロードすることによって (最大 100 個) 追加します。 これらのサブスクリプション ID を追加することで、オファーを一般公開する前にプレビューできるユーザーを定義します。 オファーが既に公開されている場合も、オファーの変更や更新をテストするために、プレビュー対象ユーザーを定義することができます。
 
 > [!NOTE]
-> プレビュー対象ユーザーはプライベート対象ユーザーとは異なります。 プレビュー対象ユーザーは、マーケットプレースで一般公開される "_前に_"、オファーにアクセスすることができます。 オファーがマーケットプレースに完全に公開された後でプライベート対象ユーザーだけが使用できるプランも含めて、すべてのプランを表示し、検証することができます。 プライベート対象ユーザーは ( **[価格と利用可否]** タブで定義します)、特定のプランに排他的にアクセスできます。
+> プレビュー対象ユーザーはプライベート対象ユーザーとは異なります。 プレビュー対象ユーザーは、マーケットプレースで一般公開される "*前に*"、オファーにアクセスすることができます。 オファーがマーケットプレースに完全に公開された後でプライベート対象ユーザーだけが使用できるプランも含めて、すべてのプランを表示し、検証することができます。 プライベート対象ユーザーは ( **[価格と利用可否]** タブで定義します)、特定のプランに排他的にアクセスできます。
 
 続行する前に、 **[下書きの保存]** を選択します。
 
@@ -308,7 +315,9 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 ## <a name="plan-overview"></a>プランの概要
 
-このタブでは、同じオファー内でさまざまなプラン オプションを提供することができます。 これらのプラン (Cloud パートナー ポータルでは SKU と呼ばれます) は、プランの種類 (ソリューション テンプレートとマネージド アプリケーション)、収益化、または対象ユーザーが異なっていてもかまいません。  オファーがマーケットプレースの一覧に表示されるためには、少なくとも 1 つのプランを構成します。
+このタブでは、同じオファー内でさまざまなプラン オプションを提供することができます。 これらのプラン (以前は SKU と呼ばれていました) は、プランの種類 (ソリューション テンプレートとマネージド アプリケーション)、収益化、または対象ユーザーに関して異なる場合があります。 オファーがマーケットプレースの一覧に表示されるためには、少なくとも 1 つのプランを構成します。
+
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 作成後、オファーの名前、ID、プランの種類、利用可否 (パブリックまたはプライベート)、現在の公開状態、使用可能なアクションが、このタブに表示されます。
 
@@ -332,7 +341,7 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 #### <a name="re-use-technical-configuration"></a>技術的な構成を再利用する
 
-同じ種類のプランが複数あり、それらの間でパッケージが同一である場合は、 **[this plan reuses packages from another plan]\(このプランで別のプランのパッケージを再利用する\)** を選択できます。  このオプションを選択すると、このオファーでパッケージを再利用するために、同じ種類の他のプランのいずれかを選択できるようになります。 
+同じ種類のプランが複数あり、それらの間でパッケージが同一である場合は、 **[this plan reuses packages from another plan]\(このプランで別のプランのパッケージを再利用する\)** を選択できます。  このオプションを選択すると、このオファーでパッケージを再利用するために、同じ種類の他のプランのいずれかを選択できるようになります。
 
 >[!Note]
 >別のプランのパッケージを再利用すると、[技術的な構成] タブ全体がこのプランに対して表示されなくなります。 今後行う更新も含めて、他のプランの技術的な構成の詳細が、このプランにも使用されます。<br><br>このプランが公開された後にこの設定を変更することはできません。
@@ -413,9 +422,9 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 このプランの月ごとの価格を指定します。  このソリューションによってデプロイされるリソースによって発生する Azure インフラストラクチャまたは従量課金制ソフトウェアのコストに、この価格が追加されます。
 
-月ごとの価格に加え、[従量制課金](./azure-app-metered-billing.md)を使用して、非標準ユニットの消費に対する価格を設定することもできます。  月ごとの価格を 0 に設定し、必要に応じて、従量制課金のみを使用して課金することができます。 
+月ごとの価格に加え、[従量制課金](./azure-app-metered-billing.md)を使用して、非標準ユニットの消費に対する価格を設定することもできます。  月ごとの価格を 0 に設定し、必要に応じて、従量制課金のみを使用して課金することができます。
 
-USD (USD = 米国ドル) で設定された価格は、保存時の最新の為替レートを使用して、選択されたすべての市場の現地通貨に変換されます。 これらの価格は公開前に検証してください。そのためには、価格スプレッドシートをエクスポートして各市場の価格を確認します。 個々の市場でカスタム価格を設定したい場合は、価格スプレッドシートを修正してインポートします。 
+USD (USD = 米国ドル) で設定された価格は、保存時の最新の為替レートを使用して、選択されたすべての市場の現地通貨に変換されます。 これらの価格は公開前に検証してください。そのためには、価格スプレッドシートをエクスポートして各市場の価格を確認します。 個々の市場でカスタム価格を設定したい場合は、価格スプレッドシートを修正してインポートします。
 
 >[!Note]
 >価格データのエクスポートを有効にするには、先に価格の変更を保存する必要があります。
@@ -439,8 +448,7 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 >[!Note]
 >プライベートオファーは、クラウド ソリューション プロバイダー プログラム (CSP) のリセラーを通じて確立された Azure サブスクリプションではサポートされていません。
 
-
-### <a name="technical-configuration"></a>技術的な構成 
+### <a name="technical-configuration"></a>技術的な構成
 
 このタブでは、顧客がプランをデプロイできるようにする展開パッケージをアップロードできます。
 
@@ -498,19 +506,19 @@ USD (USD = 米国ドル) で設定された価格は、保存時の最新の為�
 
 #### <a name="customize-allowed-customer-actions"></a>許可されている顧客アクションのカスタマイズ
 
-このオプションは、既定で使用できる "`*/read`" アクションに加えて、顧客がマネージド リソースに対してどのアクションを実行できるかを指定する場合に選択します。 
+このオプションは、既定で使用できる "`*/read`" アクションに加えて、顧客がマネージド リソースに対してどのアクションを実行できるかを指定する場合に選択します。
 
-ここでは、顧客が実行できるようにする追加のアクションを、セミコロンで区切って列挙します。  詳しくは、「[Azure リソースの拒否割り当ての概要](../../role-based-access-control/deny-assignments.md)」をご覧ください。  使用できるアクションについては、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。 たとえば、仮想マシンの再起動をコンシューマーに許可するには、許可されているアクションに `Microsoft.Compute/virtualMachines/restart/action` を追加します。
+ここでは、顧客が実行できるようにする追加のアクションを、セミコロンで区切って列挙します。  詳しくは、「[Azure リソースの拒否割り当ての概要](../../role-based-access-control/deny-assignments.md)」をご覧ください。 使用できるアクションについては、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。 たとえば、仮想マシンの再起動をコンシューマーに許可するには、許可されているアクションに `Microsoft.Compute/virtualMachines/restart/action` を追加します。
 
 #### <a name="global-azure--azure-government-cloud"></a>グローバル Azure/Azure Government クラウド
 
-サポートされている各クラウドで、このマネージド アプリケーションに対する管理アクセス権を持つユーザーを指定します。 管理対象リソース グループに対するアクセス許可を付与するユーザー、グループ、またはアプリケーションは、Azure Active Directory (AAD) の ID を使用して識別されます。
+サポートされている各クラウドで、このマネージド アプリケーションに対する管理アクセス権を持つユーザーを指定します。 管理対象リソース グループに対するアクセス許可を付与するユーザー、グループ、またはアプリケーションは、Azure Active Directory (AD) の ID を使用して識別されます。
 
-**Azure Active Directory テナント ID** – アクセス許可を付与するユーザー、グループ、またはアプリケーションの ID が含まれる AAD テナントの ID (ディレクトリ ID とも呼ばれる)。 AAD テナント ID は、Azure portal の [Azure Active Directory のプロパティ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)で確認できます。
+**Azure Active Directory テナント ID** – アクセス許可を付与するユーザー、グループ、またはアプリケーションの ID が含まれる Azure AD テナント ID (ディレクトリ ID とも呼ばれる)。 Azure AD テナント ID は、Azure portal の [Azure Active Directory のプロパティ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)で確認できます。
 
 **承認** – 管理対象リソース グループへのアクセス許可を付与するユーザー、グループ、アプリケーションの Azure Active Directory オブジェクト ID を追加します。 プリンシパル ID でユーザーを識別します。プリンシパル ID は、[Azure portal の Azure Active Directory ユーザー ブレード](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)にあります。
 
-プリンシパルごとに、一覧から Azure AD 組み込みロールのいずれかを選択します (所有者または共同作成者)。 選択したロールによって、顧客のサブスクリプションのリソースに対してプリンシパルが持つアクセス許可が記述されます。 詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。 ロールベースのアクセス制御 (RBAC) について詳しくは、[Azure portal での RBAC の概要](../../role-based-access-control/overview.md)に関する記事をご覧ください。
+プリンシパルごとに、一覧から Azure AD 組み込みロールのいずれかを選択します (所有者または共同作成者)。 選択したロールによって、顧客のサブスクリプションのリソースに対してプリンシパルが持つアクセス許可が記述されます。 詳細については、[Azure の組み込みロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。 ロールベースのアクセス制御 (RBAC) について詳しくは、[Azure portal での RBAC の概要](../../role-based-access-control/overview.md)に関する記事をご覧ください。
 
 >[!Note]
 >クラウドあたり最大 100 個の承認を追加できますが、一般には、Active Directory ユーザー グループを作成し、その ID を "プリンシパル ID" で指定する方が簡単です。 これにより、プランをデプロイした後で管理グループにより多くのユーザーを追加できるようになり、承認を追加するためだけにプランを更新する必要がなくなります。

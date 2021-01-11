@@ -2,13 +2,13 @@
 title: Azure Service Bus のよく寄せられる質問 (FAQ) | Microsoft Docs
 description: この記事では、Azure Service Bus に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 35721d174ec4b840185727efe5fb384015040b80
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/15/2020
+ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341455"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080815"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus - よく寄せられる質問 (FAQ)
 
@@ -18,7 +18,7 @@ ms.locfileid: "85341455"
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus に関する一般的な質問
 ### <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
-[Azure Service Bus](service-bus-messaging-overview.md) は、分離されたシステム間でデータを送信できるようにする非同期メッセージング クラウド プラットフォームです。 Microsoft では、この機能をサービスとして提供しています。つまり、この機能を使用するために独自にハードウェアをホストする必要はありません。
+[Azure Service Bus](service-bus-messaging-overview.md) は、分離されたシステム間でデータを送信できるようにする非同期メッセージング クラウド プラットフォームです。 Microsoft では、この機能がサービスとして提供されています。つまり、この機能を使用するために独自にハードウェアをホストする必要はありません。
 
 ### <a name="what-is-a-service-bus-namespace"></a>Service Bus 名前空間とは何ですか。
 [名前空間](service-bus-create-namespace-portal.md)は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。 Service Bus を使用するには名前空間を作成する必要があります。これは最初に実行する手順の 1 つです。
@@ -51,22 +51,22 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 | SBMP | 9350 から 9354 | 「[Connectivity mode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet)」 (接続モード) を参照してください。 |
 | HTTP、HTTPS | 80、443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイトリストに登録する必要がありますか。
-接続のためにホワイトリストに登録する必要がある適切な IP アドレスを検索するには、次の手順に従います。
+### <a name="what-ip-addresses-do-i-need-to-add-to-allow-list"></a>どのような IP アドレスを許可リストに追加する必要がありますか。
+接続の許可リストに追加する適切な IP アドレスを検索するには、次の手順を実行します。
 
 1. コマンド プロンプトで、次のコマンドを実行します。 
 
     ```
-    nslookup <YourNamespaceName>.cloudapp.net
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元した場合のみです。
+2. `Non-authoritative answer` で返された IP アドレスをメモします。 この IP アドレスは静的です。 これが変更されるのは、名前空間を別のクラスターに復元する場合のみです。
 
 名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
 
 1. まず、名前空間に対して nslookup を実行します。
 
     ```
-    nslookup <yournamespace>.cloudapp.net
+    nslookup <yournamespace>.servicebus.windows.net
     ```
 2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
 
@@ -77,6 +77,10 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     ```
 3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
 
+### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>名前空間との間でメッセージを送受信するクライアントの IP アドレスはどこで確認できますか。 
+名前空間との間でメッセージを送受信しているクライアントの IP アドレスはログに記録されません。 すべての既存クライアントの認証が失敗するようにキーを再生成し、ロールベースのアクセス制御 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) の設定を確認して、許可されているユーザーまたはアプリケーションのみが名前空間にアクセスできることを確認します。 
+
+**Premium** 名前空間を使用している場合は、名前空間へのアクセスを制限するには、[IP フィルタリング](service-bus-ip-filtering.md)、[仮想ネットワーク サービス エンドポイント](service-bus-service-endpoints.md)、[プライベート エンドポイント](private-link-service.md)を使用します。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Azure Service Bus のベスト プラクティスを教えてください。
@@ -100,18 +104,18 @@ Azure の全般的な価格情報については、[Azure サポートに関す�
 ### <a name="how-do-you-charge-for-service-bus"></a>Service Bus の課金方法を教えてください
 Service Bus の価格の詳細については、 [Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。 既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。
 
-### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください
+### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-isnt"></a>Service Bus でデータ転送の対象となる用途と 対象外の用途を教えてください。
 特定の Azure リージョン内でのデータ転送および受信データ転送はすべて無料です。 リージョン外でのデータ転送は、送信料金の対象になります。[こちら](https://azure.microsoft.com/pricing/details/bandwidth/)をご覧ください。
 
 ### <a name="does-service-bus-charge-for-storage"></a>Service Bus ではストレージに対して課金されますか
-いいえ、Service Bus ではストレージに対して課金されません。 ただし、キューまたはトピックごとに保持できる最大データ量を制限するクォータはあります。 次の FAQ を参照してください。
+いいえ。 Service Bus ではストレージに対して課金されません。 ただし、キューまたはトピックごとに保持できる最大データ量を制限するクォータはあります。 次の FAQ を参照してください。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>Service Bus Standard 名前空間があります。 リソースグループ ' $system ' に料金がされるのはなぜですか?
-Azure Service Bus は最近、課金コンポーネントをアップグレードしました。 このため、Service Bus Standard 名前空間がある場合は、リソース グループ ' $system ' の下に、リソース'/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system' の明細項目が表示されることがあります。
+Azure Service Bus は最近、課金コンポーネントをアップグレードしました。 この変更のため、Service Bus Standard 名前空間がある場合は、リソース グループ "$system" の下に、リソース "/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" の明細項目が表示されることがあります。
 
 これらの料金は、Service Bus Standard 名前空間をプロビジョニングした Azure サブスクリプションごとの基本料金を表します。 
 
-これらは新しい料金ではなく、以前の課金モデルにも存在していたことに注意する必要があります。 唯一の変更は、'$system' の下に一覧表示されるようになったことです。 これは、新しい課金システムの制約によって行われています。この制約により、特定のリソースに関連付けられていないサブスクリプション レベルの料金が "$system" リソース ID でグループ化されます。
+これらの料金は新しいものではなく、以前の課金モデルにも存在していたことに、注意する必要があります。 唯一の変更は、"$system" の下に一覧表示されるようになったことです。 これは、新しい課金システムの制約によって行われています。この制約により、特定のリソースに関連付けられていないサブスクリプション レベルの料金が "$system" リソース ID でグループ化されます。
 
 ## <a name="quotas"></a>Quotas (クォータ)
 

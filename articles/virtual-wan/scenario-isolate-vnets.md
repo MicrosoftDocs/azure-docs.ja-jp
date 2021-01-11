@@ -6,24 +6,51 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 06/29/2020
+ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: f43f17a0f3742831920836e448de3ef757f2dfa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 763a13cf2ecbe845619101bc9e325cc51564260a
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567655"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553395"
 ---
 # <a name="scenario-isolating-vnets"></a>シナリオ:VNet の分離
 
-Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 このシナリオでは、VNet が他方に到達できないようにすることを目標としています。 これは、VNet の分離と呼ばれます。 VNet 内のワークロードは分離されたままであり、Any-to-Any シナリオと同様に、他の VNet と通信することはできません。 ただし、すべてのブランチ (VPN、ER、User VPN) に接続するには、VNet が必要です。 このシナリオでは、すべての VPN 接続、ExpressRoute 接続、ユーザー VPN 接続は、同じ 1 つのルート テーブルに関連付けられます。 すべての VPN 接続、ExpressRoute 接続、ユーザー VPN 接続は、同じルート テーブルのセットにルートを伝達します。 仮想ハブ ルーティングの詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+Virtual WAN の仮想ハブ ルーティングを使用する場合、多くのシナリオを利用できます。 このシナリオでは、VNet が他方に到達できないようにすることを目標としています。 これは、VNet の分離と呼ばれます。 仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 
-## <a name="scenario-workflow"></a><a name="workflow"></a>シナリオのワークフロー
+## <a name="design"></a><a name="design"></a>設計
+
+このシナリオでは、特定の VNet 内のワークロードは分離されたままであり、他の VNet と通信することはできません。 ただし、すべてのブランチ (VPN、ER、User VPN) に接続するには、VNet が必要です。 必要なルート テーブルの数を確認するために、接続性のマトリックスを構築できます。 このシナリオでは、次の表のようになります。各セルは、ソース (行) が宛先 (列) と通信できるかどうかを表します。
+
+| ソース |   ターゲット |  *VNet* | *ブランチ* |
+| -------------- | -------- | ---------- | ---|
+| VNet     | &#8594;|           |     X    |
+| ブランチ   | &#8594;|    x     |     x    |
+
+前の表の各セルは、特定のトラフィック フローについて、仮想 WAN 接続 (フローの "ソース" 側、行ヘッダー) が宛先プレフィックス (フローの "ターゲット" 側、斜体の列ヘッダー) を学習するかどうかを説明しています。
+
+この接続性のマトリックスは、2 つのルート テーブルに変換される 2 種類の行パターンを提供しています。 仮想 WAN には既に既定のルート テーブルがあるため、別のルート テーブルが必要になります。 この例では、ルート テーブルに **[RT_VNET]** という名前を指定します。
+
+VNet は、この **[RT_VNET]** ルート テーブルに関連付けられます。 ブランチへの接続性が必要なため、ブランチが **[RT_VNET]** に伝達される必要があります (それ以外の場合、VNet はブランチのプレフィックスを学習しません)。 ブランチは常に既定のルート テーブルに関連付けられるため、VNet は既定のルート テーブルに伝達される必要があります。 その結果、最終的な設計は次のようになります。
+
+* 仮想ネットワーク:
+  * 関連付けられたルート テーブル: **[RT_VNET]**
+  * ルート テーブルへの伝達: **[Default]**
+* ブランチ:
+  * 関連付けられたルート テーブル: **[Default]**
+  * ルート テーブルへの伝達: **[RT_VNET]** と **[Default]**
+
+ブランチが伝達されるのはルート テーブル **[RT_VNET]** だけであり、これらが VNet が学習する唯一のプレフィックスとなります。他の VNet は該当しません。
+
+仮想ハブのルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+
+## <a name="workflow"></a><a name="workflow"></a>ワークフロー
 
 このシナリオを構成するには、次の手順を考慮してください。
 
-1. カスタム ルート テーブルを作成します。 この例では、ルート テーブルは **RT_VNet** です。 ルート テーブルを作成するには、「[仮想ハブ ルーティングを構成する方法](how-to-virtual-hub-routing.md)」を参照してください。 ルート テーブルの詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+1. 各ハブにカスタム ルート テーブルを作成します。 この例では、ルート テーブルは **RT_VNet** です。 ルート テーブルを作成するには、「[仮想ハブ ルーティングを構成する方法](how-to-virtual-hub-routing.md)」を参照してください。 ルート テーブルの詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
 2. **RT_VNet** ルート テーブルを作成する場合は、次の設定を構成します。
 
    * **Association**: 分離する VNet を選択します。
@@ -34,4 +61,4 @@ Virtual WAN の仮想ハブ ルーティングを使用する場合、多くの�
 ## <a name="next-steps"></a>次のステップ
 
 * Virtual WAN の詳細については、[FAQ](virtual-wan-faq.md) を参照してください。
-* 仮想ハブ ルーティングの詳細については、「[仮想ハブ ルーティングについて](about-virtual-hub-routing.md)」を参照してください。
+* 仮想ハブ ルーティングの詳細については、「[仮想ハブのルーティングについて](about-virtual-hub-routing.md)」を参照してください。

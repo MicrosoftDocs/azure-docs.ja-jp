@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 27e834e71f9e5cfdf3d72fb3b221c24edecab4e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 739cfdb4f930d384e180ffd0f3ce2311cd41c70a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258305"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207990"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
@@ -37,9 +37,6 @@ Azure Dev Spaces では、[AKS で現在サポートされている Kubernetes �
 * Helm Ｃhart では、*values.yaml* からの値として、イメージ タグの一部または全体を渡すことがサポートされている必要があります。
 * イングレスで何かを変更する場合は、Azure Dev Spaces によって提供されるイングレス ソリューションを使用するように Helm Ｃhart を更新することもできます。
 * [Azure Dev Spaces によって提供されるルーティング機能][dev-spaces-routing]を使用する場合は、個々のプロジェクトのすべてのサービスが単一の Kubernetes 名前空間に収まる必要があり、単純な名前 (たとえば *service-a*) でデプロイする必要があります。 標準の Helm Ｃhart では、*fullnameOverride* プロパティの値を指定することでこの名前を更新できます。
-
-独自の Dockerfile または Helm Ｃhart を Azure Dev Spaces で動作する既存のバージョンと比較するには、[quickstart][quickstart-cli] で生成されたファイルを確認します。
-
 
 ## <a name="can-i-modify-the-files-generated-by-azure-dev-spaces"></a>Azure Dev Spaces によって生成されたファイルを変更できますか。
 
@@ -115,7 +112,6 @@ Visual Studio では、Azure Dev Spaces を使用してデバッグするため�
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
 [istio]: https://istio.io/
 [linkerd]: https://linkerd.io/
-[quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces
 [windows-containers]: how-to/run-dev-spaces-windows-containers.md

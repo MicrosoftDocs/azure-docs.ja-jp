@@ -54,7 +54,7 @@ ARM テンプレートを使用するか、他のいずれかのコードとし�
 
 * **エクスポート可能なコード**:リソース グループの現在の状態をエクスポートするか、特定のデプロイに使用されたテンプレートを表示することで、既存のリソース グループのテンプレートを取得できます。 [エクスポートしたテンプレート](export-template-portal.md)を表示すると、テンプレートの構文について理解するのに役立ちます。
 
-* **作成ツール**:[Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) とテンプレート ツール拡張機能でテンプレートを作成できます。 Intellisense、構文の強調表示、インライン ヘルプ、その他の多くの言語機能が与えられます。 Visual Studio コードに加えて、[Visual Studio](create-visual-studio-deployment-project.md) を使用することもできます。
+* **作成ツール**:[Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md) とテンプレート ツール拡張機能でテンプレートを作成できます。 Intellisense、構文の強調表示、インライン ヘルプ、その他の多くの言語機能が与えられます。 Visual Studio Code に加えて、[Visual Studio](create-visual-studio-deployment-project.md) を使用することもできます。
 
 ## <a name="template-file"></a>テンプレート ファイル
 

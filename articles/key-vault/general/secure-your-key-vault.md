@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 1aea1f3b2401d7b9639c32927ffa7390727d25b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9995b82c1dc437cdaa2f9f987abba3e9681454a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85833640"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926758"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -59,13 +59,13 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 ## <a name="management-plane-and-rbac"></a>管理プレーンと RBAC
 
-管理プレーンでは、RBAC (ロールベースのアクセス制御) を使用して、呼び出し元が実行できる操作を承認します。 RBAC モデルでは、各 Azure サブスクリプションに Azure AD のインスタンスが用意されています。 このディレクトリからユーザー、グループ、アプリケーションにアクセス権を付与します。 Azure サブスクリプションに含まれていて Azure Resource Manager デプロイ モデルを使用しているリソースを管理するためのアクセス権が付与されます。 アクセス権を付与するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用します。
+管理プレーンでは、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、呼び出し元が実行できる操作を承認します。 RBAC モデルでは、各 Azure サブスクリプションに Azure AD のインスタンスが用意されています。 このディレクトリからユーザー、グループ、アプリケーションにアクセス権を付与します。 Azure サブスクリプションに含まれていて Azure Resource Manager デプロイ モデルを使用しているリソースを管理するためのアクセス権が付与されます。 アクセス権を付与するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/)、または [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx) を使用します。
 
-リソース グループ内にキー コンテナーを作成し、Azure AD を使用してアクセスを管理します。 リソース グループ内のキー コンテナーを管理する権限をユーザーまたはグループに付与します。 適切な RBAC ロールを割り当てることにより、特定のスコープ レベルでアクセス権を付与します。 キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みの `key vault Contributor` ロールを特定のスコープでそのユーザーに割り当てます。 RBAC ロールには、次のスコープ レベルを割り当てることができます。
+リソース グループ内にキー コンテナーを作成し、Azure AD を使用してアクセスを管理します。 リソース グループ内のキー コンテナーを管理する権限をユーザーまたはグループに付与します。 適切な Azure ロールを割り当てることにより、特定のスコープ レベルでアクセス権を付与します。 キー コンテナーを管理するためのアクセス権をユーザーに付与するには、定義済みの `key vault Contributor` ロールを特定のスコープでそのユーザーに割り当てます。 Azure ロールには以下のスコープ レベルを割り当てることができます。
 
-- **サブスクリプション**:サブスクリプション レベルで割り当てられた RBAC ロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。
-- **[リソース グループ]** :リソース グループ レベルで割り当てられた RBAC ロールは、そのリソース グループ内のすべてのリソースに適用されます。
-- **特定のリソース**: 特定のリソースに対して割り当てられた RBAC ロールは、そのリソースに適用されます。 この場合、リソースは特定のキー コンテナーです。
+- **サブスクリプション**:サブスクリプション レベルで割り当てられた Azure ロールは、そのサブスクリプション内のすべてのリソース グループとリソースに適用されます。
+- **[リソース グループ]** :リソース グループ レベルで割り当てられた Azure ロールは、そのリソース グループ内のすべてのリソースに適用されます。
+- **特定のリソース**: 特定のリソースに対して割り当てられた Azure ロールは、そのリソースに適用されます。 この場合、リソースは特定のキー コンテナーです。
 
 定義済みのロールが複数あります。 定義済みのロールがニーズに合わない場合は、独自のロールを定義できます。 詳細については、[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページをご覧ください。
 
@@ -82,7 +82,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 
 コンテナーとシークレットの操作の完全なリストを確認し、キー コンテナー アクセス ポリシーを構成するときに許可される操作を理解するには、次のリファレンスを参照してください。 [Key Vault 操作のリファレンス](https://docs.microsoft.com/rest/api/keyvault/#vault-operations)
 
-<a id="key-vault-access-policies"></a> Key Vault アクセス ポリシーでは、キー、シークレット、および証明書へのアクセス許可が個別に付与されます。 ユーザーに対してはキーへのアクセス権のみ付与でき、シークレットへのアクセス権は付与できません。 キー、シークレット、証明書へのアクセス許可は、コンテナー レベルになります。 Key Vault アクセス ポリシーでは、特定のキー、シークレット、証明書など、細かいオブジェクト レベルのアクセス許可はサポートされていません。 キー コンテナーのアクセス ポリシーを設定するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azureps-cmdlets-docs)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用します。
+<a id="key-vault-access-policies"></a> Key Vault アクセス ポリシーでは、キー、シークレット、および証明書へのアクセス許可が個別に付与されます。 ユーザーに対してはキーへのアクセス権のみ付与でき、シークレットへのアクセス権は付与できません。 キー、シークレット、証明書へのアクセス許可は、コンテナー レベルになります。 Key Vault アクセス ポリシーでは、特定のキー、シークレット、証明書など、細かいオブジェクト レベルのアクセス許可はサポートされていません。 キー コンテナーのアクセス ポリシーを設定するには、[Azure portal](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/)、または [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx) を使用します。
 
 > [!IMPORTANT]
 > Key Vault アクセス ポリシーはコンテナー レベルで適用されます。 キーを作成および削除するためのアクセス許可を付与されたユーザーは、そのキー コンテナー内のすべてのキーに対してそれらの操作を実行できます。
@@ -197,7 +197,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 ## <a name="resources"></a>リソース
 
-* [Azure AD RBAC](../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC](../../role-based-access-control/role-assignments-portal.md)
 
 * [RBAC:組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。
 

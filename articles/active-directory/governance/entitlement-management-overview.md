@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 08/25/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710c81c7b5c6abbf499f2cb43570db94df1a3db5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: contperfq1
+ms.openlocfilehash: dbcd8ab2f2825e18943436dcc1a9ca4ff38e2d8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034404"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871209"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理とは
 
@@ -54,7 +55,10 @@ Azure AD のエンタイトルメント管理は、これらの課題への対�
 - アクセス パッケージを作成する権限を、管理者以外の担当者に委任できます。 これらのアクセス パッケージには、ユーザーが要求できるリソースが含まれています。また、委任されたアクセス パッケージ マネージャーは、どのユーザーがアクセス権を要求できるかや、それらのアクセス権を誰が承認できるのか、さらには、アクセス権がいつ失効するのかについてのルールを使用して、ポリシーを定義することができます。
 - 接続先の組織を選択して、その組織のユーザーがアクセス権を要求できるようにすることができます。  ディレクトリにまだ存在しないユーザーがアクセス権を要求し、それが承認されると、そのユーザーは自動的にディレクトリに招待され、アクセス権を割り当てられます。  アクセス権の有効期限が切れ、かつ他のアクセス パッケージが割り当てられていない場合には、ディレクトリ内の B2B アカウントを自動的に削除できます。
 
-作業の開始にあたっては、[最初のアクセス パッケージを作成する方法のチュートリアル](entitlement-management-access-package-first.md)を参照すると便利です。 また、[一般的なシナリオ](entitlement-management-scenarios.md)や下記のビデオも参考にできます
+>[!NOTE]
+>エンタイトルメント管理を試す準備ができたら、まず、[最初のアクセス パッケージを作成する方法のチュートリアル](entitlement-management-access-package-first.md)を参照してください。
+
+また、[一般的なシナリオ](entitlement-management-scenarios.md)や下記のビデオも参考にできます
 
 - [組織で Azure AD エンタイトルメント管理をデプロイする方法](https://www.youtube.com/watch?v=zaaKvaaYwI4)
 - [Azure AD エンタイトルメント管理の使用を監視し、スケーリングする方法](https://www.youtube.com/watch?v=omtNJ7ySjS0)
@@ -68,7 +72,7 @@ Azure AD のエンタイトルメント管理は、これらの課題への対�
 
 - Azure AD セキュリティ グループのメンバーシップ
 - Microsoft 365 グループとチームのメンバーシップ
-- Azure AD エンタープライズ アプリケーションへの割り当て (これには、SaaS アプリケーションのほか、フェデレーション/シングル サインオン、プロビジョニングをサポートしたカスタム統合アプリケーションも含まれます)
+- Azure AD エンタープライズ アプリケーションへの割り当て (これには、SaaS アプリケーションのほか、フェデレーションやシングル サインオン、プロビジョニングをサポートしたカスタム統合アプリケーションも含まれます)
 - SharePoint Online サイトのメンバーシップ
 
 Azure AD セキュリティ グループまたは Microsoft 365 グループに依存するその他のリソースへのアクセスを制御することもできます。  次に例を示します。
@@ -99,7 +103,7 @@ Azure AD セキュリティ グループまたは Microsoft 365 グループに�
 
 ## <a name="when-should-i-use-access-packages"></a>アクセス パッケージはどのような場合に使用するのですか?
 
-アクセス パッケージは、アクセス権の割り当てに関する他のメカニズムに取って代わるものではありません。  アクセス パッケージは、次のような状況で使用するのに適しています。
+アクセス パッケージは、アクセス権の割り当てに関する他のメカニズムに取って代わるものではありません。  次のような状況で使用するのに適しています。
 
 - 特定のタスクのために、従業員に期限付きのアクセス権が必要な場合。  たとえば、グループベースのライセンスと動的グループを使用して、すべての従業員が Exchange Online メールボックスを使用できるようにしている場合、ある部署のリソースを別の部署から読み取るなど、追加のアクセス権が必要になった際に、アクセス パッケージを使用するといった使い方もできます。
 - アクセス権を、従業員のマネージャーや、その他の指定された個人に承認してもらう必要がある場合。
@@ -149,7 +153,7 @@ Azure AD Premium P2 ライセンスは、次のタスクでは必要**ありま�
 - カタログ作成者、カタログ所有者、アクセス パッケージ マネージャーなどの管理タスクを委任されたユーザーには、ライセンスは必要ありません。
 - アクセス パッケージを要求**できる**が、アクセス パッケージを要求**しない**ゲストには、ライセンスは必要ありません。
 
-メンバー ユーザー (従業員) に対して購入する有料の Azure AD Premium P2 ライセンスごとに、Azure AD B2B を使用して、最大 5 人のゲスト ユーザーを招待できます。 これらのゲスト ユーザーも Azure AD Premium P2 の機能を使用できます。 詳細については、[Azure AD B2B コラボレーションのライセンス ガイダンス](../b2b/licensing-guidance.md)を参照してください。
+メンバー ユーザー (従業員) に対して購入する有料の Azure AD Premium P2 ライセンスごとに、Azure AD B2B を使用して、最大 5 人のゲスト ユーザーを招待できます。 これらのゲスト ユーザーも Azure AD Premium P2 の機能を使用できます。 詳細については、[Azure AD B2B コラボレーションのライセンス ガイダンス](../external-identities/licensing-guidance.md)を参照してください。
 
 ライセンスの詳細については、[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)に関するページを参照してください。
 

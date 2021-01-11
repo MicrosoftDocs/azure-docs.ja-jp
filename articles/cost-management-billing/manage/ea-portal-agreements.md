@@ -3,16 +3,17 @@ title: Azure EA 契約と修正
 description: この記事では、Azure EA 契約と修正が Azure EA Portal の使用にどのように影響するかについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4d40ffb04882e9809fc818ab492a4c97260d1ff4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08cc6b7c6edb31d0a983943694ebb1dc55989bca
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537801"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689883"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正
 
@@ -20,7 +21,7 @@ ms.locfileid: "86537801"
 
 ## <a name="enrollment-provisioning-status"></a>登録のプロビジョニング状態
 
-新しい Azure 前払いの開始日は、リージョンのオペレーション センターでその処理が行われた日付によって定義されます。 Azure EA Portal での Azure 前払いの注文は UTC タイム ゾーンで処理されるため、Azure 前払いの注文書が別のリージョンで処理された場合は、遅延が発生する可能性があります。 https://www.explore.ms にある注文書の対象範囲の開始日は、Azure 前払いの開始を示しています。 対象範囲の開始日は、Azure EA Portal に Azure 前払いが表示された時点です。
+新しい Azure 前払いの開始日は、リージョンのオペレーション センターでその処理が行われた日付によって定義されます。 Azure EA Portal での Azure 前払いの注文は UTC タイム ゾーンで処理されるため、Azure 前払いの注文書が別のリージョンで処理された場合は、遅延が発生する可能性があります。 注文書の対象範囲の開始日は、Azure 前払いの開始を示しています。 対象範囲の開始日は、Azure EA Portal に Azure 前払いが表示された時点です。
 
 ## <a name="support-for-enterprise-customers"></a>企業顧客向けサポート
 
@@ -43,7 +44,7 @@ ms.locfileid: "86537801"
 
 **期限切れ** - EA 登録はエンタープライズ契約の終了日に達すると期限切れになります。 EA のお客様は、延長期間からオプトアウトされ、すべてのサービスが無効になります。
 
-2019 年 8 月 1 日の時点で、Azure の法人のお客様については、新しいオプトアウト フォームは受理されません。 代わりに、すべての登録が無期限の延長期間に入ります。 Azure サービスの使用を停止する場合は、[Azure portal](https://portal.azure.com) でサブスクリプションを閉じてください。 または、パートナーが https://www.explore.ms で終了要求を送信することもできます。 政府機関の契約タイプをお持ちのお客様には変更はありません。
+2019 年 8 月 1 日の時点で、Azure の法人のお客様については、新しいオプトアウト フォームは受理されません。 代わりに、すべての登録が無期限の延長期間に入ります。 Azure サービスの使用を停止する場合は、[Azure portal](https://portal.azure.com) でサブスクリプションを閉じてください。 または、パートナーが終了要求を送信することもできます。 政府機関の契約タイプをお持ちのお客様には変更はありません。
 
 **転送済み** - 転送済みの状態は、関連付けられているアカウントとサービスが新しい登録に転送されている登録に適用されます。 更新中に新しい登録番号が生成された場合、登録は自動的には転送されません。 自動的に転送されるようにするには、事前に生成された登録番号を、お客様の更新要求に含める必要があります。
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: eb5eb18351f6411a8049e962deed35e5d8f181d9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 62b60afb7dc4adb70a0963984ee7848ab056e823
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185247"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447832"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -226,7 +226,7 @@ Start-AzAutomationRunbook `
 
 1. Automation アカウントを作成して[共同作成者ロール](automation-role-based-access-control.md)を取得します。
 2. その[アカウントを Azure ワークスペースにリンク](../security-center/security-center-enable-data-collection.md)させます。
-3. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)、[Update Management](automation-update-management.md)、または別の Automation 機能を有効にします。 
+3. [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)、[Update Management](update-management/update-mgmt-overview.md)、または別の Automation 機能を有効にします。 
 4. Linux マシンを使用している場合、高い権限が必要です。 ログインして[署名のチェックをオフ](automation-linux-hrw-install.md#turn-off-signature-validation)にしてください。
 
 ## <a name="test-a-runbook"></a>Runbook をテストする

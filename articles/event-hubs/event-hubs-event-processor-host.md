@@ -3,12 +3,12 @@ title: イベント プロセッサ ホストを使用してイベントを受�
 description: この記事では、チェックポイント処理、リース、および並列でのイベントの読み込みの管理を簡素化する、Azure Event Hubs のイベント プロセッサ ホストについて説明します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 338b4e890d61aca0d48287db6f042f9dc088754b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41778425a0ec6ba1732c8e604dead2deb7c97f12
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85320640"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936182"
 ---
 # <a name="event-processor-host"></a>イベント プロセッサ ホスト
 > [!NOTE]
@@ -22,7 +22,7 @@ ms.locfileid: "85320640"
 
 Azure Event Hubs は、数百万件のイベントを低コストでストリーム配信するために使用できる、強力なテレメトリ インジェスト サービスです。 この記事では、チェックポイント処理、リース処理、および並列イベント リーダーの管理を簡素化するインテリジェントなコンシューマー エージェントである "*イベント プロセッサ ホスト*" (EPH) を使用して、取り込まれたイベントを使用する方法について説明します。  
 
-Event Hubs をスケーリングするための鍵となるのは、パーティション分割されたコンシューマーのアイデアです。 [競合コンシューマー](https://msdn.microsoft.com/library/dn568101.aspx) パターンとは対照的に、パーティション分割されたコンシューマー パターンは、競合のボトルネックを除去し、エンド ツー エンドの並列処理を容易にすることによって、高スケールを可能にします。
+Event Hubs をスケーリングするための鍵となるのは、パーティション分割されたコンシューマーのアイデアです。 [競合コンシューマー](/previous-versions/msp-n-p/dn568101(v=pandp.10)) パターンとは対照的に、パーティション分割されたコンシューマー パターンは、競合のボトルネックを除去し、エンド ツー エンドの並列処理を容易にすることによって、高スケールを可能にします。
 
 ## <a name="home-security-scenario"></a>ホーム セキュリティのシナリオ
 
@@ -162,7 +162,7 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 受信エポックのしくみは次のようになっています。
 
 ### <a name="with-epoch"></a>エポックあり
-エポックはパーティション/リースの所有権を適用する目的でサービスによって使用される一意の識別子 (エポック値) です。 [CreateEpochReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) メソッドを利用し、エポックベースのレシーバーを作成します。 このメソッドにより、エポックベースのレシーバーが作成されます。 指定のコンシューマー グループからの特定のイベント ハブ パーティションに対してレシーバーが作成されます。
+エポックはパーティション/リースの所有権を適用する目的でサービスによって使用される一意の識別子 (エポック値) です。 [CreateEpochReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createepochreceiver?view=azure-dotnet) メソッドを利用し、エポックベースのレシーバーを作成します。 このメソッドにより、エポックベースのレシーバーが作成されます。 指定のコンシューマー グループからの特定のイベント ハブ パーティションに対してレシーバーが作成されます。
 
 このエポック機能によって、ある時点においてコンシューマー グループにレシーバーが 1 つだけになることが保証されます。この機能では、次のルールが使用されます。
 
@@ -171,7 +171,7 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 - エポック値 e1 のレシーバーが存在し、エポック値 e2 で新しいレシーバーが作成されるとき、e1 > e2 であれば、e2 のレシーバーは作成できず、エポック e1 のレシーバーが既に存在するという旨のエラーが表示されます。
 
 ### <a name="no-epoch"></a>エポックなし
-[CreateReceiver](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) メソッドを利用し、エポックベースではないレシーバーを作成します。 
+[CreateReceiver](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createreceiver?view=azure-dotnet) メソッドを利用し、エポックベースではないレシーバーを作成します。 
 
 ストリーム処理では、1 つのコンシューマー グループで複数のレシーバーを作成することがあります。 このようなシナリオをサポートする目的で、エポックなしでレシーバーを作成できます。その場合、コンシューマー グループで最大 5 つの同時レシーバーが許可されます。
 
@@ -192,10 +192,10 @@ EventProcessorHost のインスタンスでイベント プロセッサ クラ�
 イベント プロセッサ ホストについて学習した後は、Event Hubs の詳細について次の記事を参照してください。
 
 - Event Hubs の使用
-    - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [Java](get-started-java-send-v2.md)
-    - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-node-send-v2.md)
+    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
+    - [Java](event-hubs-java-get-started-send.md)
+    - [Python](event-hubs-python-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

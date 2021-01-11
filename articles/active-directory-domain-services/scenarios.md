@@ -9,20 +9,70 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 08/14/2020
 ms.author: iainfou
-ms.openlocfilehash: ba4761a2b7893fd894f62b7e2252005d7afd1c91
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a27d97e7e030da216b2296f11b6876ccf28c8ad0
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039978"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722757"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の一般的なユースケースとシナリオ
 
 Azure Active Directory Domain Services (Azure AD DS) では、マネージド ドメイン サービス (ドメイン参加、グループ ポリシー、ライトウェイト ディレクトリ アクセス プロトコル (LDAP)、Kerberos/NTLM 認証など) が提供されます。 Azure AD DS は既存の Azure AD テナントと統合されるので、ユーザーは既存の資格情報を使用してサインインできるようになります。 これらのドメイン サービスを使用すれば、クラウド内でドメイン コントローラーのデプロイ、管理、および修正プログラムの適用を行う必要がなく、オンプレミスのリソースから Azure への円滑なリフトアンドシフトを実現できます。
 
 この記事では、Azure AD DS が価値を提供し、ビジネス ニーズを満たすいくつかの一般的なビジネス シナリオについて概説します。
+
+## <a name="common-ways-to-provide-identity-solutions-in-the-cloud"></a>クラウドで ID ソリューションを提供する一般的な方法
+
+既存のワークロードをクラウドに移行するとき、ディレクトリ対応アプリケーションでは、オンプレミスの AD DS ディレクトリへの読み取りまたは書き込みアクセスに LDAP が使用される場合があります。 Windows Server で実行されるアプリケーションは、通常、グループ ポリシーを使用して安全に管理できるように、ドメインに参加している仮想マシン (VM) にデプロイされます。 さらに、アプリケーションは、エンド ユーザーを認証するために、Windows 統合認証 (Kerberos 認証、NTLM 認証など) に依存する場合があります。
+
+IT 管理者は、多くの場合、次のいずれかのソリューションを使用して、Azure で実行されるアプリケーションに ID サービスを提供します。
+
+* Azure で実行されるワークロードとオンプレミスの AD DS 環境で実行されるワークロードの間でサイト間 VPN 接続を構成する。
+    * この場合、オンプレミスのドメイン コントローラーが VPN 接続経由で認証を提供します。
+* Azure 仮想マシン (VM) を使用してレプリカ ドメイン コントローラーを作成し、オンプレミスから AD DS ドメインまたはフォレストを拡張する。
+    * Azure VM 上で実行されるドメイン コントローラーが認証を提供し、オンプレミス AD DS 環境間でディレクトリ情報をレプリケートします。
+* Azure VM で実行されるドメイン コントローラーを使用して、Azure 内にスタンドアロンの AD DS 環境をデプロイする。
+    * Azure VM 上で実行されるドメイン コントローラーによって認証は提供されますが、オンプレミス AD DS 環境からレプリケートされるディレクトリ情報はありません。
+
+これらのアプローチでは、オンプレミスのディレクトリに VPN 接続するため、アプリケーションはネットワークの一時的な異常や停止の影響を受けやすくなります。 Azure 内の VM を使用してドメイン コントローラーをデプロイする場合、VM の管理、セキュリティ保護、パッチの適用、監視、バックアップ、トラブルシューティングは IT チームが行う必要があります。
+
+Azure AD DS では、ID サービスを提供するため、オンプレミスの AD DS 環境への VPN 接続を作成したり、Azure で VM を実行および管理したりする必要のない代替方法が提供されます。 マネージド サービスである Azure AD DS により、ハイブリッドとクラウド専用の両方の環境に使用できる統合された ID ソリューションを作成する複雑さが軽減されます。
+
+> [!div class="nextstepaction"]
+> [Azure AD DS を、Azure VM またはオンプレミスにおける Azure AD および自己管理型 AD DS と比較する][compare]
+
+## <a name="azure-ad-ds-for-hybrid-organizations"></a>ハイブリッド組織向けの Azure AD DS
+
+多くの組織は、クラウドとオンプレミスの両方のアプリケーション ワークロードを含むハイブリッド インフラストラクチャを運用しています。 リフト アンド シフト戦略の一環として Azure に移行されたレガシ アプリケーションでも、従来の LDAP 接続を使用して ID 情報を提供することができます。 このハイブリッド インフラストラクチャをサポートするために、オンプレミスの AD DS 環境からの ID 情報を Azure AD テナントに同期させることができます。 Azure AD DS では、Azure 内のこれらのレガシ アプリケーションに ID ソースを提供します。オンプレミスのディレクトリ サービスへのアプリケーション接続を構成して管理する必要はありません。
+
+オンプレミスと Azure の両方のリソースを実行するハイブリッド組織である Litware Corporation の例を見てみましょう。
+
+![オンプレミスの同期を含むハイブリッド組織向けの Azure Active Directory Domain Services](./media/overview/synced-tenant.png)
+
+* ドメイン サービスを必要とするアプリケーションおよびサーバー ワークロードは、Azure の仮想ネットワークにデプロイされています。
+    * これには、リフト アンド シフト戦略の一環として Azure に移行されたレガシ アプリケーションが含まれる場合があります。
+* ID 情報をオンプレミスのディレクトリから Azure AD テナントに同期するために、Litware Corporation は、[Azure AD Connect][azure-ad-connect]をデプロイしました。
+    * 同期される ID 情報には、ユーザー アカウントとグループ メンバーシップが含まれます。
+* Litware の IT チームは、この仮想ネットワークまたはピアリングされた仮想ネットワーク内の Azure AD テナントに対して Azure AD DS を有効にします。
+* Azure 仮想ネットワーク内にデプロイされたアプリケーションと VM は、ドメイン参加、LDAP 読み取り、LDAP バインド、NTLM 認証、Kerberos 認証、グループ ポリシーなどの Azure AD DS 機能を使用できます。
+
+> [!IMPORTANT]
+> Azure AD Connect は、オンプレミスの AD DS 環境との同期のためにのみインストールおよび構成する必要があります。 マネージド ドメインに Azure AD Connect をインストールして元の Azure AD にオブジェクトを同期することはサポートされていません。
+
+## <a name="azure-ad-ds-for-cloud-only-organizations"></a>クラウド専用組織向けの Azure AD DS
+
+クラウド専用 Azure AD テナントには、オンプレミスの ID ソースはありません。 たとえば、ユーザー アカウントとグループ メンバーシップは、Azure AD 内で直接作成および管理されます。
+
+ここで、ID に Azure AD を使用するクラウド専用組織である Contoso の例を見てみましょう。 ユーザー ID、ユーザーの資格情報、およびグループ メンバーシップはすべて Azure AD で作成および管理されます。 オンプレミスのディレクトリから ID 情報を同期するために Azure AD Connect を追加構成する必要はありません。
+
+![オンプレミスの同期を行わない、クラウド専用組織向けの Azure Active Directory Domain Services](./media/overview/cloud-only-tenant.png)
+
+* ドメイン サービスを必要とするアプリケーションおよびサーバー ワークロードは、Azure の仮想ネットワークにデプロイされています。
+* Contoso の IT チームは、この仮想ネットワークまたはピアリングされた仮想ネットワーク内の Azure AD テナントに対して Azure AD DS を有効にします。
+* Azure 仮想ネットワーク内にデプロイされたアプリケーションと VM は、ドメイン参加、LDAP 読み取り、LDAP バインド、NTLM 認証、Kerberos 認証、グループ ポリシーなどの Azure AD DS 機能を使用できます。
 
 ## <a name="secure-administration-of-azure-virtual-machines"></a>Azure 仮想マシンのセキュリティで保護された管理
 
@@ -112,11 +162,13 @@ Azure AD DS を使用して、Azure にデプロイされているリモート �
 作業を開始するには、[Azure Active Directory Domain Services マネージド ドメインの作成と構成][tutorial-create-instance]に関する記事をご覧ください。
 
 <!-- INTERNAL LINKS -->
-[hdinsight]: ../hdinsight/domain-joined/apache-domain-joined-configure.md
+[hdinsight]: ../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md
 [tutorial-create-instance]: tutorial-create-instance.md
 [custom-ou]: create-ou.md
 [create-gpo]: manage-group-policy.md
 [sspr]: ../active-directory/authentication/overview-authentication.md#self-service-password-reset
+[compare]: compare-identity-solutions.md
+[azure-ad-connect]: ../active-directory/hybrid/whatis-azure-ad-connect.md
 
 <!-- EXTERNAL LINKS -->
 [windows-rds]: /windows-server/remote/remote-desktop-services/rds-azure-adds

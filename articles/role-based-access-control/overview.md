@@ -14,12 +14,13 @@ ms.workload: identity
 ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 45601e820bc03b263fbf664a43ce34266dc4a488
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: azuread-video-2020
+ms.openlocfilehash: cb77bfb6173e94ea3cdaadf4456947de75676565
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171574"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761129"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure ロールベースのアクセス制御 (Azure RBAC) とは
 
@@ -42,7 +43,7 @@ Azure RBAC でできることの例を次に示します。
 
 ## <a name="how-azure-rbac-works"></a>Azure RBAC のしくみ
 
-Azure RBAC を使用してリソースへのアクセスを制御するには、ロールの割り当てを作成します。 これは理解する必要のある重要な概念です。これではアクセス許可を適用できます。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
+Azure RBAC を使用してリソースへのアクセスを制御するには、ロールの割り当てを作成します。 これは理解する必要のある重要な概念です。 これによってアクセス許可の設定が強制されているのです。 ロールの割り当ては、セキュリティ プリンシパル、ロールの定義、スコープの 3 つの要素で構成されています。
 
 ### <a name="security-principal"></a>セキュリティ プリンシパル
 
@@ -136,7 +137,6 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 
 ## <a name="next-steps"></a>次のステップ
 
-- [クイック スタート: Azure リソースに対するユーザーのアクセス権を表示する](check-access.md)
 - [Azure portal を使用して Azure ロールの割り当てを追加または削除する](role-assignments-portal.md)
 - [各種ロールについて](rbac-and-directory-admin-roles.md)
 - [クラウド導入フレームワーク:Azure でのリソース アクセス管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

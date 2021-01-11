@@ -1,18 +1,18 @@
 ---
-title: Azure API for FHIR 用にローカルのロールベースのアクセス制御 (RBAC) を構成する
+title: Azure API for FHIR 用にローカルのロールベースのアクセス制御 (ローカル RBAC) を構成する
 description: この記事では、データ プレーンに外部の Azure AD テナントを使用するように Azure API for FHIR を構成する方法について説明します
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
-ms.author: mihansen
-ms.openlocfilehash: a8c1b36d6a439297dfb0bbcb34efe059349fc5a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: c62593251cb0e19c91d1c4877d1b33fe407ebd06
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871162"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847008"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>FHIR 用にローカル RBAC を構成する 
 
@@ -69,4 +69,3 @@ Azure API for FHIR では、決定事項が最大 5 分間キャッシュされ�
  
 >[!div class="nextstepaction"]
 >[Azure API for FHIR の追加設定](azure-api-for-fhir-additional-settings.md)
-

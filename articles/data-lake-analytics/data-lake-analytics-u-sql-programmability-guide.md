@@ -3,18 +3,16 @@ title: Azure Data Lake の U-SQL プログラミング ガイド
 description: クラウドベースのビッグ データ プラットフォームを作成するための Azure Data Lake Analytics のサービスのセットについて説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
-author: saveenr
-ms.author: saveenr
-ms.reviewer: jasonwhowell
+ms.reviewer: jasonh
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
-ms.openlocfilehash: 2fb54c821c50ff8e1364a125cc5db181aedf0437
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110591"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288945"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -127,7 +125,7 @@ REFERENCE ASSEMBLY MyDB.[MyAssembly];
 
 
 ### <a name="use-assembly-versioning"></a>アセンブリのバージョン管理を使用する
-U-SQL では現在、.NET Framework 4.5 を使っています。 このため、独自のアセンブリがこのバージョンのランタイムと互換性があることをご確認ください。
+U-SQL では現在、.NET Framework 4.7.2 を使っています。 このため、独自のアセンブリがこのバージョンのランタイムと互換性があることをご確認ください。
 
 前に説明したとおり、U-SQL ではコードを 64 ビット (x64) 形式で実行します。 このため、コードは x64 形式で実行されるようにコンパイルしてください。 そうしないと、前に示したフォーマットの誤りに関するエラーが表示されます。
 
@@ -789,11 +787,7 @@ namespace USQL_Programmability
             }
 
             return new FiscalPeriod(FiscalQuarter, FiscalMonth);
-        }
-
-
-
-        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
+        }        [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
         public struct FiscalPeriod
         {
             public int Quarter { get; private set; }

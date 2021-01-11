@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute テンプレート:ExpressRoute 回線の作成
-description: ExpressRoute 回線を作成、プロビジョニング、削除、およびプロビジョニング解除します。
+description: Azure PowerShell を使用して、Azure Resource Manager テンプレートをデプロイすることで、Azure ExpressRoute 回線を作成する方法について説明します。
 services: expressroute
-author: charwen
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
-ms.author: charwen
-ms.openlocfilehash: 336337c0860ba19095665310d2c797cf10ba183f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 73efae90f4403d1fbab3319ce0288761d3867340
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736307"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396167"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ExpressRoute 回線を作成する
 
@@ -43,7 +43,7 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
 
 テンプレートをデプロイすることで、ExpressRoute 回線を作成するには:
 
-1. 次のコード ブロックの **[試してみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
+1. 次のコード ブロックの **[使ってみる]** を選択し、指示に従って Azure Cloud Shell にサインインします。
 
     ```azurepowershell-interactive
     $circuitName = Read-Host -Prompt "Enter a circuit name"

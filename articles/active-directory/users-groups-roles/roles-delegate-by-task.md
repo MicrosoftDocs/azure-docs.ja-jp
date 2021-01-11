@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc1546566e5bb79a207899fab7418480e5cfab0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 692b20bf301bbd7bf03ea1af5527e08d947b50da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117881"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798365"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -42,7 +42,7 @@ ms.locfileid: "85117881"
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
-Azure AD B2C のディレクトリを作成する | すべての非ゲスト ユーザー ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Azure AD B2C のディレクトリを作成する | すべての非ゲスト ユーザー ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 
 B2C アプリケーションを作成する | グローバル管理者 | 
 エンタープライズ アプリケーションを作成する | クラウド アプリケーション管理者 | アプリケーション管理者
 B2C のポリシーの作成、読み取り、更新、削除を実行する | B2C IEF ポリシー管理者 | 
@@ -54,7 +54,7 @@ ID プロバイダーの作成、読み取り、更新、削除を実行する |
 ユーザー属性の作成、読み取り、更新、削除を実行する | 外部 ID ユーザー フロー属性管理者 | 
 ユーザーの作成、読み取り、更新、削除を実行する | ユーザー管理者
 すべての構成を読み取る | グローバル閲覧者 | 
-B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメントを参照](../../active-directory-b2c/faq.md)) | 
 
 > [!NOTE]
 > Azure AD B2C のグローバル閲覧者には、Azure AD のグローバル管理者と同じアクセス許可はありません。 Azure AD B2C のグローバル管理者権限がある場合は、Azure Active Directory ディレクトリではなく Azure AD B2C ディレクトリにいることを確認してください。
@@ -64,7 +64,7 @@ B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメント�
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 会社のブランドの構成 | グローバル管理者 | 
-すべての構成を読み取る | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+すべての構成を読み取る | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md))
 
 ## <a name="company-properties"></a>会社のプロパティ
 
@@ -92,25 +92,25 @@ B2C 監査ログを読み取る | グローバル閲覧者 ([ドキュメント�
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
-サービスを追加または削除する | 所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-同期エラーに対する修正プログラムを適用する | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 所有者
-通知の構成 | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 所有者
-設定の構成 | 所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-同期の通知を構成する | 共同作成者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 所有者
+サービスを追加または削除する | 所有者 ([ドキュメントを参照](../hybrid/how-to-connect-health-operations.md)) | 
+同期エラーに対する修正プログラムを適用する | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 所有者
+通知の構成 | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 所有者
+設定の構成 | 所有者 ([ドキュメントを参照](../hybrid/how-to-connect-health-operations.md)) | 
+同期の通知を構成する | 共同作成者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 所有者
 ADFS セキュリティ レポートを読み取る | セキュリティ閲覧者 | 共同作成者、所有者
-すべての構成を読み取る | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
-同期エラーを読み取る | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
-同期サービスを読み取る | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
-メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
-メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
-同期サービスのメトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | 共同作成者、所有者
+すべての構成を読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 共同作成者、所有者
+同期エラーを読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 共同作成者、所有者
+同期サービスを読み取る | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 共同作成者、所有者
+メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 共同作成者、所有者
+メトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 共同作成者、所有者
+同期サービスのメトリックとアラートを表示する | 閲覧者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context)) | 共同作成者、所有者
 
 ## <a name="custom-domain-names"></a>カスタム ドメイン名
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 ドメインの管理 | グローバル管理者 | 
-すべての構成を読み取る | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+すべての構成を読み取る | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md))
 
 ## <a name="domain-services"></a>ドメイン サービス
 
@@ -126,7 +126,7 @@ Azure AD Domain Services の全タスクを実行する | Azure AD DC Administra
 ---- | --------------------- | ----------------
 デバイスを無効にする | クラウド デバイス管理者 | 
 デバイスを有効にする | クラウド デバイス管理者 | 
-基本構成を読み取る | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+基本構成を読み取る | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 
 BitLocker キーを読み取る | セキュリティ閲覧者 | パスワード管理者、セキュリティ管理者
 
 ## <a name="enterprise-applications"></a>エンタープライズ アプリケーション
@@ -136,18 +136,18 @@ BitLocker キーを読み取る | セキュリティ閲覧者 | パスワード�
 委任された任意のアクセス許可に同意する | クラウド アプリケーション管理者 | アプリケーション管理者
 アプリケーションのアクセス許可に同意する (Microsoft Graph を除く) | クラウド アプリケーション管理者 | アプリケーション管理者
 Microsoft Graph へのアプリケーションのアクセス許可に同意する | 特権ロール管理者 | 
-アプリケーションが自分のデータにアクセスすることに同意する | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+アプリケーションが自分のデータにアクセスすることに同意する | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 
 エンタープライズ アプリケーションを作成する | クラウド アプリケーション管理者 | アプリケーション管理者
 アプリケーション プロキシを管理する | アプリケーション管理者 | 
 ユーザー設定を管理する | グローバル管理者 | 
 グループまたはアプリのアクセス レビューを読み取る | セキュリティ閲覧者 | セキュリティ管理者、ユーザー管理者
-すべての構成を読み取る | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-エンタープライズ アプリケーションの割り当てを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | クラウド アプリケーション管理者、アプリケーション管理者
-エンタープライズ アプリケーション所有者を更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | クラウド アプリケーション管理者、アプリケーション管理者
-エンタープライズ アプリケーションのプロパティを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | クラウド アプリケーション管理者、アプリケーション管理者
-エンタープライズ アプリケーションのプロビジョニングを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | クラウド アプリケーション管理者、アプリケーション管理者
-エンタープライズ アプリケーションのセルフ サービスを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | クラウド アプリケーション管理者、アプリケーション管理者
-シングル サインオンのプロパティを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | クラウド アプリケーション管理者、アプリケーション管理者
+すべての構成を読み取る | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 
+エンタープライズ アプリケーションの割り当てを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | クラウド アプリケーション管理者、アプリケーション管理者
+エンタープライズ アプリケーション所有者を更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | クラウド アプリケーション管理者、アプリケーション管理者
+エンタープライズ アプリケーションのプロパティを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | クラウド アプリケーション管理者、アプリケーション管理者
+エンタープライズ アプリケーションのプロビジョニングを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | クラウド アプリケーション管理者、アプリケーション管理者
+エンタープライズ アプリケーションのセルフ サービスを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | クラウド アプリケーション管理者、アプリケーション管理者
+シングル サインオンのプロパティを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | クラウド アプリケーション管理者、アプリケーション管理者
 
 ## <a name="entitlement-management"></a>エンタイトルメント管理
 タスク | 最小特権ロール | その他のロール
@@ -165,13 +165,13 @@ Microsoft Graph へのアプリケーションのアクセス許可に同意す�
 グループまたはアプリのアクセス レビューを作成、更新、削除する | ユーザー管理者 | 
 グループの有効期限を管理する | ユーザー管理者 | 
 グループ設定の管理 | グループ管理者 | ユーザー管理者 | 
-すべての構成を読み取る (非表示のメンバーシップを除く) | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+すべての構成を読み取る (非表示のメンバーシップを除く) | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md))
 非表示のメンバーシップを読み取る | グループ メンバー | グループ所有者、パスワード管理者、Exchange 管理者、SharePoint 管理者、Teams 管理者、ユーザー管理者
 非表示のメンバーシップを含むグループのメンバーシップを読み取る | ヘルプデスク管理者 | ユーザー管理者、Teams 管理者
 ライセンスを取り消す | ライセンス管理者 | ユーザー管理者
-グループ メンバーシップを更新する | グループ所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | ユーザー管理者
-グループ所有者を更新する | グループ所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | ユーザー管理者
-グループのプロパティを更新する | グループ所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | ユーザー管理者
+グループ メンバーシップを更新する | グループ所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | ユーザー管理者
+グループ所有者を更新する | グループ所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | ユーザー管理者
+グループのプロパティを更新する | グループ所有者 ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | ユーザー管理者
 グループの削除 | グループ管理者 | ユーザー管理者
 
 ## <a name="identity-protection"></a>Identity Protection
@@ -194,7 +194,7 @@ MFA ポリシーを構成し、有効または無効にする| セキュリテ�
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 ライセンスの割り当て | ライセンス管理者 | ユーザー管理者
-すべての構成を読み取る | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+すべての構成を読み取る | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md))
 ライセンスを取り消す | ライセンス管理者 | ユーザー管理者
 サブスクリプションを試用または購入する | 課金管理者 | 
 
@@ -275,7 +275,7 @@ ID プロバイダーを管理する | 外部 ID プロバイダー管理者 |
 ---- | --------------------- | ----------------
 ロールの割り当てを管理する | 特権ロール管理者 | 
 Azure AD ロールのアクセス レビューを読み取る  | セキュリティ閲覧者 | セキュリティ管理者、特権ロール管理者
-すべての構成を読み取る | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+すべての構成を読み取る | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 
 
 ## <a name="security---authentication-methods"></a>セキュリティ - 認証方法
 
@@ -342,7 +342,7 @@ VPN 接続の証明書を削除する | 条件付きアクセス管理者 | セ�
 制限付き管理者の更新トークンを無効にする (ドキュメントを参照) | ユーザー管理者 | 
 非管理者の更新トークンを無効にする (ドキュメントを参照) | パスワード管理者 | ユーザー管理者
 特権管理者の更新トークンを無効にする (ドキュメントを参照) | 特権認証管理者 | 
-基本構成を読み取る | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+基本構成を読み取る | 既定のユーザー ロール ([ドキュメントを参照](../fundamentals/users-default-permissions.md)) | 
 制限付き管理者のパスワードをリセットする (ドキュメントを参照) | ユーザー管理者 | 
 非管理者のパスワードをリセットする (ドキュメントを参照) | パスワード管理者 | ユーザー管理者
 特権管理者のパスワードをリセットする | 特権認証管理者 | 

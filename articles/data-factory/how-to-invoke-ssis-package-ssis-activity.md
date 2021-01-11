@@ -12,14 +12,14 @@ ms.author: sawinark
 author: swinarko
 ms.reviewer: douglasl
 manager: mflasko
-ms.custom: seo-lt-2019
-ms.date: 07/09/2020
-ms.openlocfilehash: 172a2ae863714b54e052819df93f872385b9c77a
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: seo-lt-2019, devx-track-azurepowershell
+ms.date: 07/20/2020
+ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86183343"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077850"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 
@@ -57,7 +57,7 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
 
 [SSIS パッケージの実行] アクティビティの **[全般]** タブで、次の手順を実行します。
 
-   ![[一般] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+![[一般] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 
    1. **[名前]** には、[SSIS パッケージの実行] アクティビティの名前を入力します。
 
@@ -77,7 +77,7 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
 
 [SSIS パッケージの実行] アクティビティの **[設定]** タブで、次の手順を実行します。
 
-   ![[設定] タブでプロパティを設定する - 自動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
+![[設定] タブでプロパティを設定する - 自動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings.png)
 
    1. **[Azure-SSIS IR]** では、SSIS パッケージの実行アクティビティを実行する指定された Azure-SSIS IR を選択します。
 
@@ -97,19 +97,19 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
 
 Azure-SSIS IR が Azure SQL Database サーバー/Managed Instance でホストされている SSIS カタログ (SSISDB) を使用してプロビジョニングされている場合、パッケージの場所として **SSISDB** が自動的に選択されます。または、自分で選択することもできます。 選択されている場合は、次の手順を実行します。
 
-   1. Azure-SSIS IR の実行中に **[Manual entries]\(手動入力\)** チェック ボックスがオフの場合は、既存のフォルダー、プロジェクト、/パッケージ、および環境を SSISDB から参照します。 **[最新の情報に更新]** を選択して、SSISDB から新しく追加したフォルダー、プロジェクト、パッケージ、または環境を取り込み、それらを参照して選択できるようにします。 パッケージを実行するための環境を参照して選択するには、プロジェクトを事前に構成して、SSISDB の同じフォルダーからの参照としてこれらの環境を追加する必要があります。 詳細については、[SSIS 環境の作成とマップ](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)に関するページを参照してください。
+   1. Azure-SSIS IR の実行中に **[Manual entries]\(手動入力\)** チェック ボックスがオフの場合は、既存のフォルダー、プロジェクト、/パッケージ、および環境を SSISDB から参照します。 **[最新の情報に更新]** を選択して、SSISDB から新しく追加したフォルダー、プロジェクト、パッケージ、または環境を取り込み、それらを参照して選択できるようにします。 パッケージを実行するための環境を参照して選択するには、プロジェクトを事前に構成して、SSISDB の同じフォルダーからの参照としてこれらの環境を追加する必要があります。 詳細については、[SSIS 環境の作成とマップ](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages)に関するページを参照してください。
 
    1. **[ログ レベル]** で、パッケージ実行用のログの定義済みのスコープを選択します。 カスタマイズしたログ名を代わりに入力する場合は、 **[Customized]\(カスタマイズ\)** チェック ボックスをオンにします。 
 
    1. Azure-SSIS IR が実行されていない場合、または **[Manual entries]\(手動入力\)** チェック ボックスがオンになっている場合は、`<folder name>/<project name>/<package name>.dtsx` および `<folder name>/<environment name>` の形式で SSISDB からパッケージと環境のパスを直接入力します。
 
-   ![[設定] タブでプロパティを設定する - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
+      ![[設定] タブでプロパティを設定する - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings2.png)
 
 ##### <a name="package-location-file-system-package"></a>パッケージの場所:ファイル システム (パッケージ)
 
 Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パッケージの場所として **[ファイル システム (パッケージ)]** が自動的に選択されます。または、自分で選択することもできます。 選択されている場合は、次の手順を実行します。
 
-   ![[設定] タブでプロパティを設定する - ファイル システム (パッケージ)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
+![[設定] タブでプロパティを設定する - ファイル システム (パッケージ)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings3.png)
    
    1. **[パッケージ パス]** でパッケージ ファイル (`.dtsx` を含む) への汎用名前付け規則 (UNC) パスを指定して、実行するパッケージを指定します。 パッケージを参照して選択するには、 **[Browse file storage]\(ファイル ストレージを参照\)** を選択するか、パスを手動で入力します。 たとえば、Azure Files にパッケージを保存する場合、そのパスは `\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx` です。 
    
@@ -133,13 +133,13 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
    
    1. ログ フォルダーにアクセスするための資格情報を指定します。 以前にパッケージ アクセスの資格情報値を入力した場合は (上記を参照)、 **[Same as package access credentials]\(パッケージ アクセスの資格情報と同じ\)** チェック ボックスをオンにして再利用できます。 それ以外の場合は、 **[ドメイン]** 、 **[ユーザー名]** 、 **[パスワード]** ボックスに、ログイン アクセス資格情報の値を入力します。 たとえば、Azure Files にログを格納する場合、ドメインは `Azure`、ユーザー名は `<storage account name>`、パスワードは `<storage account key>` です。 または、お使いの Azure Key Vault に格納されているシークレットを値として使用することもできます (上記を参照)。
    
-   前述のすべての UNC パスでは、完全修飾ファイル名を 260 文字未満にする必要があります。 ディレクトリ名は 248 文字未満でなければなりません。
+前述のすべての UNC パスでは、完全修飾ファイル名を 260 文字未満にする必要があります。 ディレクトリ名は 248 文字未満でなければなりません。
 
 ##### <a name="package-location-file-system-project"></a>パッケージの場所:ファイル システム (プロジェクト)
 
 パッケージの場所として **[ファイル システム (プロジェクト)]** を選択した場合は、次の手順を実行します。
 
-   ![[設定] タブでプロパティを設定する - ファイル システム (プロジェクト)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
+![[設定] タブでプロパティを設定する - ファイル システム (プロジェクト)](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings4.png)
 
    1. 実行するパッケージを指定するには、 **[プロジェクト パス]** ボックスにプロジェクト ファイル (`.ispac` を含む) への UNC パス、 **[パッケージ名]** ボックスにプロジェクトのパッケージ ファイル (`.dtsx` を含む) を指定します。 プロジェクトを参照して選択するには、 **[Browse file storage]\(ファイル ストレージを参照\)** を選択するか、パスを手動で入力します。 たとえば、Azure Files にプロジェクトを保存する場合、そのパスは `\\<storage account name>.file.core.windows.net\<file share name>\<project name>.ispac` です。
 
@@ -161,19 +161,19 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
    
    1. ログ フォルダーにアクセスするための資格情報を指定します。 以前にパッケージ アクセスの資格情報値を入力した場合は (上記を参照)、 **[Same as package access credentials]\(パッケージ アクセスの資格情報と同じ\)** チェック ボックスをオンにして再利用できます。 それ以外の場合は、 **[ドメイン]** 、 **[ユーザー名]** 、 **[パスワード]** ボックスに、ログイン アクセス資格情報の値を入力します。 たとえば、Azure Files にログを格納する場合、ドメインは `Azure`、ユーザー名は `<storage account name>`、パスワードは `<storage account key>` です。 または、お使いの Azure Key Vault に格納されているシークレットを値として使用することもできます (上記を参照)。
    
-   前述のすべての UNC パスでは、完全修飾ファイル名を 260 文字未満にする必要があります。 ディレクトリ名は 248 文字未満でなければなりません。
+前述のすべての UNC パスでは、完全修飾ファイル名を 260 文字未満にする必要があります。 ディレクトリ名は 248 文字未満でなければなりません。
 
 ##### <a name="package-location-embedded-package"></a>パッケージの場所:埋め込みパッケージ
 
 パッケージの場所として **[埋め込みパッケージ]** を選択した場合は、次の手順を実行します。
 
-   ![[設定] タブでプロパティを設定する - 埋め込みパッケージ](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
+![[設定] タブでプロパティを設定する - 埋め込みパッケージ](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
 
-   1. パッケージをドラッグ アンド ドロップして実行するか、ファイル フォルダーから指定されたボックスに**アップロード**します。 パッケージは自動的に圧縮され、アクティビティ ペイロードに埋め込まれます。 埋め込みが完了すると、パッケージは後で編集用に**ダウンロード**できます。 また、埋め込みパッケージを複数のアクティビティで使用できるパイプライン パラメーターに割り当てることによって**パラメーター化する**ことで、パイプライン ペイロードのサイズを最適化することもできます。 
+   1. パッケージ ファイル (`.dtsx`) をドラッグ アンド ドロップするか、ファイル フォルダーから指定されたボックスに**アップロード**します。 パッケージは自動的に圧縮され、アクティビティ ペイロードに埋め込まれます。 埋め込みが完了すると、パッケージは後で編集用に**ダウンロード**できます。 また、埋め込みパッケージを複数のアクティビティで使用できるパイプライン パラメーターに割り当てることによって**パラメーター化する**ことで、パイプライン ペイロードのサイズを最適化することもできます。 現在、プロジェクト ファイル (`.ispac`) の埋め込みはサポートされていないため、埋め込みパッケージのプロジェクトレベルのスコープで SSIS パラメーター/接続マネージャーを使用することはできません。
    
-   1. 埋め込みパッケージがすべて暗号化されておらず、その内部でパッケージ実行タスクの使用が検出された場合は、 **[パッケージ実行タスク]** チェックボックスが自動的に選択され、ファイルシステム参照を含む関連する子パッケージが自動的に追加され、それらも埋め込まれます。 
+   1. 埋め込みパッケージがすべて暗号化されておらず、その内部でパッケージ実行タスク (EPT) の使用が検出された場合は、 **[パッケージ実行タスク]** チェック ボックスが自動的に選択され、ファイル システムのパスで参照されている子パッケージも、埋め込むことができるように自動的に追加されます。
    
-      パッケージ実行タスクの使用を検出できない場合は、 **[パッケージ実行タスク]** チェックボックスを手動で選択し、ファイルシステム参照を含む関連する子パッケージを 1 つずつ追加して、それらも埋め込むようにする必要があります。 子パッケージが SQL Server 参照を使用する場合は、SQL Server が Azure-SSIS IR によってアクセス可能であることを確認してください。  子パッケージのためのプロジェクト参照の使用は現在サポートされていません。
+      EPT の使用を検出できない場合は、 **[パッケージ実行タスク]** チェック ボックスを手動で選択し、ファイル システムのパスで参照されている子パッケージを埋め込むことができるように 1 つずつ追加する必要があります。 子パッケージが SQL Server database (MSDB) に格納されている場合は、それらを埋め込むことができないため、Azure-SSIS IR が SQL Server 参照を使用してフェッチする MSDB にアクセスできることを確認する必要があります。 現在、プロジェクト ファイル (`.ispac`) の埋め込みはサポートされていないため、子パッケージのプロジェクトベースの参照を使用することはできません。
    
    1. SSDT を使用してパッケージを作成するときに **EncryptAllWithPassword** または **EncryptSensitiveWithPassword** 保護レベルを使用した場合は、 **[暗号化用パスワード]** ボックスにパスワードの値を入力します。 
    
@@ -189,13 +189,13 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
    
    1. ログ フォルダーにアクセスするための資格情報を指定するには、 **[ドメイン]** 、 **[ユーザー名]** 、および **[パスワード]** ボックスに値を入力します。 たとえば、Azure Files にログを格納する場合、ドメインは `Azure`、ユーザー名は `<storage account name>`、パスワードは `<storage account key>` です。 または、お使いの Azure Key Vault に格納されているシークレットを値として使用することもできます (上記を参照)。
    
-   前述のすべての UNC パスでは、完全修飾ファイル名を 260 文字未満にする必要があります。 ディレクトリ名は 248 文字未満でなければなりません。
+前述のすべての UNC パスでは、完全修飾ファイル名を 260 文字未満にする必要があります。 ディレクトリ名は 248 文字未満でなければなりません。
 
 ##### <a name="package-location-package-store"></a>パッケージの場所:パッケージ ストア
 
 パッケージの場所として **[パッケージ ストア]** を選択した場合は、次の手順を実行します。
 
-   ![[設定] タブでプロパティを設定する - パッケージ ストア](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
+![[設定] タブでプロパティを設定する - パッケージ ストア](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings6.png)
    
    1. **[Package store name]\(パッケージ ストア名\)** には、Azure-SSIS IR に関連付けられている既存のパッケージ ストアを選択します。
 
@@ -221,49 +221,73 @@ Azure-SSIS IR が SSISDB なしでプロビジョニングされた場合、パ�
    
    1. ログ フォルダーにアクセスするための資格情報を指定するには、 **[ドメイン]** 、 **[ユーザー名]** 、および **[パスワード]** ボックスに値を入力します。 たとえば、Azure Files にログを格納する場合、ドメインは `Azure`、ユーザー名は `<storage account name>`、パスワードは `<storage account key>` です。 または、お使いの Azure Key Vault に格納されているシークレットを値として使用することもできます (上記を参照)。
    
-   前述のすべての UNC パスでは、完全修飾ファイル名を 260 文字未満にする必要があります。 ディレクトリ名は 248 文字未満でなければなりません。
+前述のすべての UNC パスでは、完全修飾ファイル名を 260 文字未満にする必要があります。 ディレクトリ名は 248 文字未満でなければなりません。
 
 #### <a name="ssis-parameters-tab"></a>[SSIS パラメーター] タブ
 
 [SSIS パッケージの実行] アクティビティの **[SSIS パラメーター]** タブで、次の手順を実行します。
 
-   ![[SSIS パラメーター] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
+![[SSIS パラメーター] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-ssis-parameters.png)
 
    1. Azure-SSIS IR の実行中にパッケージの場所として **[SSISDB]** が選択され、 **[設定]** タブの **[Manual entries]\(手動入力\)** チェック ボックスがオフの場合は、値を割り当てるパラメーターとして、SSISDB から選択したプロジェクトおよびパッケージ内の既存の SSIS パラメーターが表示されます。 それ以外の場合は、値を 1 つずつ入力して手動で値を割り当てることができます。 パッケージの実行が成功するためには、それらが存在し、正しく入力されていることを確認します。 
    
    1. SSDT でパッケージを作成するときに **EncryptSensitiveWithUserKey** 保護レベルを使用し、パッケージの場所として **[ファイル システム (パッケージ)]** 、 **[ファイル システム (プロジェクト)]** 、 **[埋め込みパッケージ]** 、または **[パッケージ ストア]** を選択する場合は、構成ファイルまたはこのタブで機密性の高いパラメーターを再入力して値を割り当てる必要もあります。 
    
-   パラメーターに値を割り当てるときに、式、関数、Data Factory システム変数、および Data Factory パイプライン パラメーターまたは変数を使用して動的コンテンツを追加できます。
+パラメーターに値を割り当てるときに、式、関数、Data Factory システム変数、および Data Factory パイプライン パラメーターまたは変数を使用して動的コンテンツを追加できます。
 
-   または、お使いの Azure Key Vault に格納されているシークレットを値として使用することもできます。 これを行うには、その横にある **[AZURE KEY VAULT]** チェック ボックスをオンにします。 既存のキー コンテナーのリンクされたサービスを選択または編集するか、新しいサービスを作成します。 次に、値に対するシークレットの名前またはバージョンを選択します。 キー コンテナーのリンクされたサービスを作成または編集するときに、既存のキー コンテナーを選択または編集したり、新しいキー コンテナーを作成したりできます。 まだ行っていない場合は、キー コンテナーへのアクセスを、Data Factory のマネージド ID に許可します。 `<key vault linked service name>/<secret name>/<secret version>` の形式でシークレットを直接入力することもできます。 
+または、お使いの Azure Key Vault に格納されているシークレットを値として使用することもできます。 これを行うには、その横にある **[AZURE KEY VAULT]** チェック ボックスをオンにします。 既存のキー コンテナーのリンクされたサービスを選択または編集するか、新しいサービスを作成します。 次に、値に対するシークレットの名前またはバージョンを選択します。 キー コンテナーのリンクされたサービスを作成または編集するときに、既存のキー コンテナーを選択または編集したり、新しいキー コンテナーを作成したりできます。 まだ行っていない場合は、キー コンテナーへのアクセスを、Data Factory のマネージド ID に許可します。 `<key vault linked service name>/<secret name>/<secret version>` の形式でシークレットを直接入力することもできます。 
 
 #### <a name="connection-managers-tab"></a>[接続マネージャー] タブ
 
 [SSIS パッケージの実行] アクティビティの **[接続マネージャー]** タブで、次の手順を実行します。
 
-   ![[接続マネージャー] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
+![[接続マネージャー] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers.png)
 
    1. Azure-SSIS IR の実行中にパッケージの場所として **[SSISDB]** が選択され、 **[設定]** タブの **[Manual entries]\(手動入力\)** チェック ボックスがオフの場合は、そのプロパティに値を割り当てるパラメーターとして、SSISDB から選択したプロジェクトおよびパッケージ内の既存の接続マネージャーが表示されます。 それ以外の場合は、値を 1 つずつ入力して手動でプロパティに値を割り当てることができます。 パッケージの実行が成功するためには、それらが存在し、正しく入力されていることを確認します。 
    
-   1. SSDT でパッケージを作成するときに **EncryptSensitiveWithUserKey** 保護レベルを使用し、パッケージの場所として **[ファイル システム (パッケージ)]** 、 **[ファイル システム (プロジェクト)]** 、 **[埋め込みパッケージ]** 、または **[パッケージ ストア]** を選択する場合は、構成ファイルまたはこのタブで機密性の高い接続マネージャー プロパティを再入力して値を割り当てる必要もあります。 
-   
-   接続マネージャーのプロパティに値を割り当てるときに、式、関数、Data Factory システム変数、および Data Factory パイプライン パラメーターまたは変数を使用して動的コンテンツを追加できます。 
+      接続マネージャーの正しい **SCOPE**、**NAME**、**PROPERTY** 名を取得するには、SSDT でその接続マネージャーが含まれているパッケージを開きます。 パッケージが開いたら、該当する接続マネージャーを選択して、SSDT の **[プロパティ]** ウィンドウで、そのすべてのプロパティの名前と値を表示します。 この情報を使用して、実行時に接続マネージャーのプロパティの値をオーバーライドできます。 
 
-   または、お使いの Azure Key Vault に格納されているシークレットを値として使用することもできます。 これを行うには、その横にある **[AZURE KEY VAULT]** チェック ボックスをオンにします。 既存のキー コンテナーのリンクされたサービスを選択または編集するか、新しいサービスを作成します。 次に、値に対するシークレットの名前またはバージョンを選択します。 キー コンテナーのリンクされたサービスを作成または編集するときに、既存のキー コンテナーを選択または編集したり、新しいキー コンテナーを作成したりできます。 まだ行っていない場合は、キー コンテナーへのアクセスを、Data Factory のマネージド ID に許可します。 `<key vault linked service name>/<secret name>/<secret version>` の形式でシークレットを直接入力することもできます。 
+      ![SSDT から接続マネージャーのプロパティを取得する](media/how-to-invoke-ssis-package-ssis-activity/ssdt-connection-manager-properties.png)
+
+      たとえば、SSDT で元のパッケージを変更せずに、SQL Server で実行されているオンプレミスからオンプレミスへのデータ フローを、ADF の SSIS IR 上で実行されているオンプレミスからクラウドへのデータ フローに変換できます。これを行うには、実行時に既存の接続マネージャーの **ConnectByProxy**、**ConnectionString**、および **ConnectUsingManagedIdentity** プロパティの値をオーバーライドします。
+      
+      このような実行時のオーバーライドにより、オンプレミスのデータにアクセスするときに SSIS IR のプロキシとしてセルフホステッド IR (SHIR) を有効にすることができます ([SHIR を SSIS IR のプロキシとして構成する](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)方法に関する記事を参照)。また、最新の MSOLEDBSQL ドライバーを使用して Azure SQL Database/マネージド インスタンスに接続することで、ADF マネージド ID による Azure Active Directory (AAD) 認証が有効になります ([OLEDB 接続のために ADF マネージド ID による AAD 認証を構成する](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)方法に関する記事を参照)。
+
+      ![SSDT の [接続マネージャー] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
+   
+   1. SSDT でパッケージを作成するときに **EncryptSensitiveWithUserKey** 保護レベルを使用し、パッケージの場所として **[ファイル システム (パッケージ)]** 、 **[ファイル システム (プロジェクト)]** 、 **[埋め込みパッケージ]** 、または **[パッケージ ストア]** を選択する場合は、構成ファイルまたはこのタブで機密性の高い接続マネージャー プロパティを再入力して値を割り当てる必要もあります。 
+
+接続マネージャーのプロパティに値を割り当てるときに、式、関数、Data Factory システム変数、および Data Factory パイプライン パラメーターまたは変数を使用して動的コンテンツを追加できます。 
+
+または、お使いの Azure Key Vault に格納されているシークレットを値として使用することもできます。 これを行うには、その横にある **[AZURE KEY VAULT]** チェック ボックスをオンにします。 既存のキー コンテナーのリンクされたサービスを選択または編集するか、新しいサービスを作成します。 次に、値に対するシークレットの名前またはバージョンを選択します。 キー コンテナーのリンクされたサービスを作成または編集するときに、既存のキー コンテナーを選択または編集したり、新しいキー コンテナーを作成したりできます。 まだ行っていない場合は、キー コンテナーへのアクセスを、Data Factory のマネージド ID に許可します。 `<key vault linked service name>/<secret name>/<secret version>` の形式でシークレットを直接入力することもできます。 
 
 #### <a name="property-overrides-tab"></a>[プロパティのオーバーライド] タブ
 
 [SSIS パッケージの実行] アクティビティの **[プロパティのオーバーライド]** タブで、次の手順を実行します。
 
-   ![[プロパティのオーバーライド] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
+![[プロパティのオーバーライド] タブでプロパティを設定する](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-property-overrides.png)
 
    1. 選択したパッケージの既存のプロパティのパスを 1 つずつ入力して、手動でそれらに値を割り当てます。 パッケージの実行が成功するためには、それらが存在し、正しく入力されていることを確認します。 たとえば、ユーザー変数の値をオーバーライドするには、`\Package.Variables[User::<variable name>].Value` の形式でパスを入力します。 
+
+      パッケージ プロパティの正しい **PROPERTY PATH** を取得するには、SSDT でそのプロパティが含まれているパッケージを開きます。 パッケージが開いたら、その制御フローを選択し、SSDT の **[プロパティ]** ウィンドウで **[構成]** プロパティを選択します。 次に、 **[構成]** プロパティの横にある省略記号 ( **...** ) ボタンを選択して、**パッケージ構成オーガナイザー**を開きます。これは、通常、[パッケージ配置モデルのパッケージ構成を作成する](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis#create-package-configurations)ために使用されます。 
+
+      ![SSDT からパッケージ プロパティを取得する - [構成] プロパティ](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties.png)
+
+      **[パッケージ構成オーガナイザー]** ダイアログ ボックスで、 **[パッケージの構成を有効にする]** チェック ボックスをオンにし、 **[追加...]** ボタンをクリックして**パッケージ構成ウィザード**を開きます。 
+      
+      **パッケージ構成ウィザード**で、 **[構成の種類]** ドロップダウン メニューの **[XML 構成ファイル]** 項目を選択し、 **[構成設定を直接指定する]** ボタンをクリックして構成ファイル名を入力し、 **[次へ >]** ボタンをクリックします。 
+
+      ![SSDT からパッケージ プロパティを取得する - 構成オーガナイザー](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties2.png)
+
+      最後に、必要なパスを含むパッケージ プロパティを選択して **[次へ >]** をクリックします。  これで、必要なパッケージ プロパティのパスを表示し、コピーして構成ファイルに貼り付け、保存することができます。 この情報を使用して、実行時にパッケージ プロパティの値をオーバーライドできます。 
+
+      ![SSDT からパッケージ プロパティを取得する - 構成ウィザード](media/how-to-invoke-ssis-package-ssis-activity/ssdt-package-properties3.png)
    
    1. SSDT でパッケージを作成するときに **EncryptSensitiveWithUserKey** 保護レベルを使用し、パッケージの場所として **[ファイル システム (パッケージ)]** 、 **[ファイル システム (プロジェクト)]** 、 **[埋め込みパッケージ]** 、または **[パッケージ ストア]** を選択する場合は、構成ファイルまたはこのタブで機密性の高いパッケージ プロパティを再入力して値を割り当てる必要もあります。 
    
-   パッケージ プロパティに値を割り当てるときに、式、関数、Data Factory システム変数、および Data Factory パイプライン パラメーターまたは変数を使用して動的コンテンツを追加できます。
+パッケージ プロパティに値を割り当てるときに、式、関数、Data Factory システム変数、および Data Factory パイプライン パラメーターまたは変数を使用して動的コンテンツを追加できます。
 
-   構成ファイルおよび **[SSIS パラメーター]** タブで割り当てられた値は、 **[接続マネージャー]** タブまたは **[プロパティ オーバーライド]** タブを使用してオーバーライドできます。 **[接続マネージャー]** タブで割り当てられた値は、 **[プロパティ オーバーライド]** タブでオーバーライドすることもできます。
+構成ファイルおよび **[SSIS パラメーター]** タブで割り当てられた値は、 **[接続マネージャー]** タブまたは **[プロパティ オーバーライド]** タブを使用してオーバーライドできます。 **[接続マネージャー]** タブで割り当てられた値は、 **[プロパティ オーバーライド]** タブでオーバーライドすることもできます。
 
 パイプラインの構成を検証するために、ツール バーの **[検証]** を選択します。 **[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じるには、 **[>>]** を選択します。
 

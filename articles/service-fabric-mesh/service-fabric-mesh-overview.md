@@ -5,12 +5,12 @@ author: dkkapur
 ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: e64cc158a18e604cbd022be5c91350c95258272c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257804"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927030"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Service Fabric Mesh とは
 
@@ -42,7 +42,7 @@ Service Fabric Mesh では、以下が可能です。
 
 - インフラストラクチャを明示的にプロビジョニングして管理することなく、アプリケーションのデプロイと管理を行う。  Service Fabric Mesh では、基盤となるインフラストラクチャのプロビジョニング、アップグレード、パッチ適用、メンテナンスが自動で行われます。
 - アプリケーションを簡単にパッケージ化してデプロイできる統合されたツールを使用して、継続的インテグレーションを設定する。
-- Azure Resource Manager リソースのすべての機能を活用する。 これらの機能の例には、監査証跡と[ロールベースのアクセス制御](../role-based-access-control/overview.md)が含まれます。 Azure で Service Fabric Mesh サービスにデプロイするすべてのリソースは Azure Resource Manager リソースです。 これらのリソースには、アプリケーション、サービス、シークレットなどが含まれます。
+- Azure Resource Manager リソースのすべての機能を活用する。 これらの機能の例には、監査証跡と [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) が含まれます。 Azure で Service Fabric Mesh サービスにデプロイするすべてのリソースは Azure Resource Manager リソースです。 これらのリソースには、アプリケーション、サービス、シークレットなどが含まれます。
 - [Azure portal](https://portal.azure.com)、Resource Manager テンプレート、または Azure CLI/PowerShell ライブラリを使用して、リソースのデプロイと管理を行う。
 - [Application Insights](/azure/application-insights/) (または好きなツール) を使用して操作の監視とアラートを設定し、プラットフォームから操作と診断のトレースを収集する。
 - [Application Insights](/azure/application-insights/) または好きなツールを使用して、アプリケーション モデルから出力されたアプリケーション診断情報にアクセスする。

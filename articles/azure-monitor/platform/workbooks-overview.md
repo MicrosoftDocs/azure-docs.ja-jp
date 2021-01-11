@@ -6,18 +6,22 @@ manager: carmonm
 services: azure-monitor
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: b06f39de9f977a9f777b21a53e93ca744fccdd93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d85f011289bfa27bcf1e94d8da8cd7a32092c2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85560157"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799567"
 ---
 # <a name="azure-monitor-workbooks"></a>Azure Monitor ブック
 
 ブックは、Azure portal 内でデータを分析し、高度な視覚的レポートを作成するための柔軟なキャンバスを提供します。 Azure 全体から複数のデータ ソースを活用し、それらを結合して、統合された対話型エクスペリエンスにすることができます。 
+
+ブックの作成に関するビデオ チュートリアルはこちらです。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4B4Ap]
 
 ## <a name="data-sources"></a>データ ソース
 
@@ -52,9 +56,9 @@ ms.locfileid: "85560157"
 
 ブックのエクスペリエンスを探索するには、最初に Azure Monitor サービスに移動します。 これを行うには、Azure portal の検索ボックスに「**Monitor**」と入力します。
 
-次に、 **[ブック (プレビュー)]** を選択します。
+次に、 **[ブック]** を選択します。
 
-![赤い枠で強調表示された [ブック (プレビュー)] ボタンのスクリーンショット](./media/workbooks-overview/workbooks-preview.png)
+![赤い枠で強調表示された [ブック] ボタンのスクリーンショット](./media/workbooks-overview/workbooks.png)
 
 ### <a name="gallery"></a>[ギャラリー]
 

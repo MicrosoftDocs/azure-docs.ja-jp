@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1e17421b27082a079d078f53c38d0c942db7ae71
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
+ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200538"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89320955"
 ---
 # <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
  
@@ -50,7 +50,7 @@ ms.locfileid: "86200538"
 
 先進認証を有効にするための最初の手順は、ディレクトリで先進認証がサポートされていることを確認することです。 2017 年 8 月 1 日以降に作成されたディレクトリに対して、先進認証は既定で有効になっています。 ディレクトリがこの日付の前に作成された場合は、次の手順を使用して、そのディレクトリに対して先進認証を手動で有効にする必要があります。
 
-1.  [Skype for Business Online の PowerShell モジュール](https://docs.microsoft.com/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)から `Get-CsOAuthConfiguration` を実行して、ディレクトリで既に先進認証がサポートされているかどうかを確認します。
+1.  [Skype for Business Online の PowerShell モジュール](/office365/enterprise/powershell/manage-skype-for-business-online-with-office-365-powershell)から `Get-CsOAuthConfiguration` を実行して、ディレクトリで既に先進認証がサポートされているかどうかを確認します。
 1. このコマンドから空の `OAuthServers` プロパティが返される場合は、先進認証が無効になっています。  `Set-CsOAuthConfiguration` を使用して、先進認証を有効にするように設定を更新します。  `OAuthServers` プロパティにエントリが含まれている場合は、準備ができています。
 
 先に進む前に、必ずこの手順を完了するようにしてください。 ディレクトリ構成によりすべての Office クライアントが使用するプロトコルが規定されるため、まず、その構成が変更されることが重要です。 先進認証をサポートする Office クライアントを使用している場合でも、ディレクトリで先進認証が無効になっていると、既定でレガシ プロトコルが使用されます。
@@ -59,7 +59,7 @@ ms.locfileid: "86200538"
 
 ディレクトリで先進認証を有効にしたら、Office クライアントの先進認証を有効にすることによってアプリケーションの更新を開始できます。 Office 2016 以降のクライアントは、既定で先進認証をサポートしています。 追加の手順は必要ありません。
 
-Office 2013 以前の Windows クライアントを使用している場合は、Office 2016 以降にアップグレードすることをお勧めします。 ディレクトリで先進認証を有効にする前の手順を完了した後でも、古い Office アプリケーションは引き続きレガシ認証プロトコルを使用します。 Office 2013 クライアントを使用しており、直ちに Office 2016 以降にアップグレードできない場合は、「 [Windows デバイスの Office 2013 の先進認証を有効にする](https://docs.microsoft.com/office365/admin/security-and-compliance/enable-modern-authentication)」の記事にある手順に従ってください。 レガシ認証を使用しているときのアカウントの保護に役立つように、ディレクトリ全体で強力なパスワードを使用することをお勧めします。 ディレクトリ全体で脆弱なパスワードを禁止するには、 [Azure AD のパスワード保護](../authentication/concept-password-ban-bad.md)に関するページを確認してください。 
+Office 2013 以前の Windows クライアントを使用している場合は、Office 2016 以降にアップグレードすることをお勧めします。 ディレクトリで先進認証を有効にする前の手順を完了した後でも、古い Office アプリケーションは引き続きレガシ認証プロトコルを使用します。 Office 2013 クライアントを使用しており、直ちに Office 2016 以降にアップグレードできない場合は、「 [Windows デバイスの Office 2013 の先進認証を有効にする](/office365/admin/security-and-compliance/enable-modern-authentication)」の記事にある手順に従ってください。 レガシ認証を使用しているときのアカウントの保護に役立つように、ディレクトリ全体で強力なパスワードを使用することをお勧めします。 ディレクトリ全体で脆弱なパスワードを禁止するには、 [Azure AD のパスワード保護](../authentication/concept-password-ban-bad.md)に関するページを確認してください。 
 
 Office 2010 は、先進認証をサポートしていません。 Office 2010 を使用しているすべてのユーザーを最新バージョンの Office にアップグレードする必要があります。 既定でレガシ認証がブロックされるため、Office 2016 以降にアップグレードすることをお勧めします。
 
@@ -69,13 +69,13 @@ macOS を使用している場合は、Office for Mac 2016 以降にアップグ
 
 Windows ベースの Outlook クライアントで先進認証を使用するには、Exchange Online でも先進認証が有効になっている必要があります。 Exchange Online に対して先進認証が無効になっている場合、先進認証をサポートする Windows ベースの Outlook クライアント (Outlook 2013 以降) は、基本認証を使用して Exchange Online メールボックスに接続します。
 
-SharePoint Online は、先進認証が既定で有効になっています。 2017 年 8 月 1 日の後に作成されたディレクトリの場合、先進認証は Exchange Online で既定で有効になっています。 ただし、以前に先進認証を無効にしたか、またはこの日付の前に作成されたディレクトリを使用している場合は、「 [Exchange Online で先進認証を有効にする](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)」の記事にある手順に従ってください。
+SharePoint Online は、先進認証が既定で有効になっています。 2017 年 8 月 1 日の後に作成されたディレクトリの場合、先進認証は Exchange Online で既定で有効になっています。 ただし、以前に先進認証を無効にしたか、またはこの日付の前に作成されたディレクトリを使用している場合は、「 [Exchange Online で先進認証を有効にする](/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)」の記事にある手順に従ってください。
 
 ### <a name="step-4-skype-for-business"></a>手順 4:Skype for Business
 
 Skype for Business によって行われるレガシ認証要求を防止するには、Skype for Business Online の先進認証を有効にする必要があります。 2017 年 8 月 1 日の後に作成されたディレクトリの場合、Skype for Business の先進認証は既定で有効になっています。
 
-既定で先進認証をサポートする Microsoft Teams に移行することをお勧めします。 ただし、現時点で移行できない場合は、Skype for Business クライアントが先進認証の使用を開始できるように、Skype for Business Online の先進認証を有効にする必要があります。 Skype for Business の先進認証を有効にするには、「 [先進認証でサポートされる Skype for Business トポロジ](https://docs.microsoft.com/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)」の記事にある手順に従ってください。
+既定で先進認証をサポートする Microsoft Teams に移行することをお勧めします。 ただし、現時点で移行できない場合は、Skype for Business クライアントが先進認証の使用を開始できるように、Skype for Business Online の先進認証を有効にする必要があります。 Skype for Business の先進認証を有効にするには、「 [先進認証でサポートされる Skype for Business トポロジ](/skypeforbusiness/plan-your-deployment/modern-authentication/topologies-supported)」の記事にある手順に従ってください。
 
 Skype for Business Online の先進認証の有効化に加えて、Skype for Business の先進認証を有効にするときに Exchange Online に対して先進認証を有効にすることをお勧めします。 このプロセスは Exchange Online と Skype for Business Online の先進認証の状態を同期するのに役立つと共に、Skype for Business クライアントに複数のサインイン プロンプトが表示されることを防止します。
 
@@ -93,11 +93,11 @@ Exchange Server と Skype for Business をオンプレミスで使用してい�
 
 先進認証を有効にする手順については、次の記事を参照してください。
 
-* [ハイブリッド先進認証を使用するようにオンプレミスで Exchange Server を構成する方法](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)に関するページ
-* [Skype for Business で先進認証 (ADAL) を使用する方法](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)に関するページ
+* [ハイブリッド先進認証を使用するようにオンプレミスで Exchange Server を構成する方法](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)に関するページ
+* [Skype for Business で先進認証 (ADAL) を使用する方法](/skypeforbusiness/manage/authentication/use-adal)に関するページ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ハイブリッド先進認証を使用するようにオンプレミスで Exchange Server を構成する方法](https://docs.microsoft.com/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)に関するページ
-- [Skype for Business で先進認証 (ADAL) を使用する方法](https://docs.microsoft.com/skypeforbusiness/manage/authentication/use-adal)に関するページ
+- [ハイブリッド先進認証を使用するようにオンプレミスで Exchange Server を構成する方法](/office365/enterprise/configure-exchange-server-for-hybrid-modern-authentication)に関するページ
+- [Skype for Business で先進認証 (ADAL) を使用する方法](/skypeforbusiness/manage/authentication/use-adal)に関するページ
 - [レガシ認証をブロックする](../conditional-access/block-legacy-authentication.md)

@@ -1,28 +1,24 @@
 ---
-title: チュートリアル:Azure Active Directory での SuccessFactors 受信プロビジョニングの構成 | Microsoft Docs
+title: チュートリアル:AD と Azure AD での SuccessFactors インバウンド プロビジョニングの構成 | Microsoft Docs
 description: SuccessFactors からの受信プロビジョニングを構成する方法について説明します
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: 1ff90231-1312-463e-8949-7d976e433fc3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c03459a86f521cafd792b9bf86b2b6b46bf3da9c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84702177"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534107"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>チュートリアル:SAP SuccessFactors から Active Directory へのユーザー プロビジョニング (プレビュー) を構成する
-このチュートリアルでは、SuccessFactors Employee Central から Active Directory (AD) と Azure AD にユーザーをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 この統合は、パブリック プレビュー中であり、SuccessFactors Employee Central から [70 を超えるユーザー属性](../app-provisioning/sap-successfactors-attribute-reference.md)を取得することをサポートしています。
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Active Directory へのユーザー プロビジョニングを構成する 
+このチュートリアルでは、SuccessFactors Employee Central から Active Directory (AD) と Azure AD にユーザーをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 
 
 >[!NOTE]
 >SuccessFactors からプロビジョニングするユーザーに、オンプレミス AD アカウントと、場合によって Azure AD アカウントも必要な場合は、このチュートリアルを使用します。 SuccessFactors のユーザーに Azure AD アカウント (クラウドのみのユーザー) のみが必要な場合は、[SAP SuccessFactors から Azure AD へのユーザー プロビジョニングを構成する](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)方法に関するチュートリアルを参照してください。 
@@ -82,7 +78,7 @@ SuccessFactors から AD へのクラウド人事駆動型のユーザー プロ
 * AD ユーザー プロビジョニング アプリにデプロイする SuccessFactors の数
 * 一致する ID、属性マッピング、変換、およびスコープ フィルター
 
-これらのトピックに関する包括的なガイドラインについては、[クラウド人事デプロイ計画](../app-provisioning/plan-cloud-hr-provision.md)に関するページを参照してください。 
+これらのトピックに関する包括的なガイドラインについては、[クラウド人事デプロイ計画](../app-provisioning/plan-cloud-hr-provision.md)に関するページを参照してください。 サポートされるエンティティや処理の詳細、さまざまな人事シナリオに向けて統合をカスタマイズする方法については、[SAP SuccessFactors の統合に関するリファレンス](../app-provisioning/sap-successfactors-integration-reference.md)を参照してください。 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>統合のための SuccessFactors の構成
 

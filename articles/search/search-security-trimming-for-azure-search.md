@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 443112628edddf9c60cd6469f046b1a9e066dc82
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496419"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928525"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Cognitive Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -109,13 +109,13 @@ api-key: [admin key]
 }
 ```
 
-セキュリティの追加または更新の詳細については、[セキュリティの編集](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
+セキュリティの追加または更新の詳細については、[セキュリティの編集](/rest/api/searchservice/addupdate-or-delete-documents)に関するページを参照してください。
    
 ## <a name="apply-the-security-filter"></a>セキュリティ フィルターを適用する
 
 `group_ids` のアクセス権に基づいてドキュメントをトリミングするには、`group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` フィルターを含む検索クエリを発行する必要があります (この "group_id1, group_id2,..." は、検索要求の発行元が属するグループです)。
 このフィルターは、指定された識別子のいずれかが `group_ids` フィールドに含まれるすべてのドキュメントと一致します。
-Azure Cognitive Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページを参照してください。
+Azure Cognitive Search を使用してドキュメントを検索する方法の詳細については、[ドキュメントの検索](/rest/api/searchservice/search-documents)に関するページを参照してください。
 このサンプルでは、POST 要求を使用してドキュメントを検索する方法について説明している点に注意してください。
 
 HTTP POST 要求を発行します。

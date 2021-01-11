@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a2c9500ecefed02b28c066de80137d8f0882fd5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64fc4e1192a1ec33b1d13c38d66e9aab5cbe256b
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731511"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705624"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory でのユーザーの一括作成
 
@@ -34,20 +34,24 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 ![アップロード用のスプレッドシートと、各行および列の目的と値を説明する吹き出し](./media/users-bulk-add/create-template-example.png)
 
+> [!WARNING]
+> CSV テンプレートを使用してエントリを 1 つだけ追加する場合は、行 3 を保持し、新しいエントリを行 4 に追加する必要があります。
+
 ### <a name="csv-template-structure"></a>CSV テンプレートの構造
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
-- **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Name [displayName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
+- **列見出し**:列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Name [displayName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
 - アップロード テンプレートの最初の 2 行を削除または変更することはできません。アップロードを処理することができなくなります。
-- 必須の列が最初に示されています。
-- テンプレートに新しい列を追加することはお勧めしません。 列を追加しても無視され、処理されません。
+- 必須の列は最初に表示されます。
+- テンプレートに新しい列を追加することはお勧めしません。 追加した列は無視され、処理されません。
 - できる限り、常に最新バージョンの CSV テンプレートをダウンロードすることをお勧めします。
+- フィールドの前後に意図しない空白がないか確認してください。 **ユーザー プリンシパル名**の場合、そのような空白があると、インポートに失敗します。
 
 ## <a name="to-create-users-in-bulk"></a>ユーザーを一括で作成する手順
 
@@ -59,7 +63,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 1. CSV ファイルを開いて、作成するユーザーごとに 1 行を追加します。 必須値は、 **[名前]** 、 **[ユーザー プリンシパル名]** 、 **[初期パスワード]** 、および **[サインインのブロック (はい/いいえ)]** のみです。 そのうえでファイルを保存します。
 
-   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
+   [![CSV ファイルには、作成するユーザーの名前と ID が含まれています。](media/users-bulk-add/add-csv-file.png)](media/users-bulk-add/add-csv-file.png#lightbox)
 
 1. **[ユーザーの一括作成]** ページの [CSV ファイルをアップロード] で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
 1. ファイルの内容が検証された後、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
@@ -72,7 +76,7 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 **[一括操作の結果]** ページでは、保留中のすべての一括要求の状態を確認できます。
 
-   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
+   [![[一括操作の結果] ページで作成の状態を確認する](media/users-bulk-add/bulk-center.png)](media/users-bulk-add/bulk-center.png#lightbox)
 
 次に、作成したユーザーが Azure AD 組織に存在するかどうかを、Azure portal または PowerShell を使用して確認します。
 

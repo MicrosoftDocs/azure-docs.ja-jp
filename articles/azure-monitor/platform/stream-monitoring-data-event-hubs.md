@@ -1,22 +1,22 @@
 ---
-title: イベント ハブへの Azure 監視データのストリーム配信
+title: イベント ハブと外部パートナーへの Azure 監視データのストリーム配信
 description: パートナー SIEM または分析ツールにデータを取り込むために Azure 監視データをイベント ハブにストリーム配信する方法について学習します。
-author: bwren
 services: azure-monitor
-ms.topic: conceptual
-ms.date: 11/15/2019
+author: bwren
 ms.author: bwren
+ms.topic: conceptual
+ms.date: 07/15/2020
 ms.subservice: ''
-ms.openlocfilehash: 8bfec756c365c451a4e2b8236814454980d1d563
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6272e3d976c7c3b04d5b1332e2d7b3410c3045c
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539314"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318880"
 ---
-# <a name="stream-azure-monitoring-data-to-an-event-hub"></a>イベント ハブへの Azure 監視データのストリーム配信
-Azure Monitor では、Azure や他のクラウド、オンプレミスのアプリケーションとサービスに対する包括的なフル スタック監視ソリューションが提供されます。 Azure Monitor を使用してデータを分析し、さまざまな監視シナリオに活用するだけでなく、環境内にある別の監視ツールにそれを送信することが必要な場合もあります。 ほとんどの場合、監視データを外部ツールにストリーム配信するうえで最も効率的なのは、[Azure Event Hubs](../../event-hubs/index.yml) を使用する方法です。 この記事では、各種ソースからイベント ハブに監視データをストリーム配信する方法について簡単に説明するほか、詳細なガイダンスへのリンクを紹介します。
+# <a name="stream-azure-monitoring-data-to-an-event-hub-or-external-partner"></a>イベント ハブまたは外部パートナーへの Azure 監視データのストリーム配信
 
+Azure Monitor では、Azure や他のクラウド、オンプレミスのアプリケーションとサービスに対する包括的なフル スタック監視ソリューションが提供されます。 Azure Monitor を使用してデータを分析し、さまざまな監視シナリオに活用するだけでなく、環境内にある別の監視ツールにそれを送信することが必要な場合もあります。 ほとんどの場合、監視データを外部ツールにストリーム配信するうえで最も効率的なのは、[Azure Event Hubs](../../event-hubs/index.yml) を使用する方法です。 この記事では、これを実行する方法について簡単に説明し、データを送信できる一部のパートナーを一覧表示します。 いくつかは、Azure Monitor との特別な統合があり、Azure でホストできます。  
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs 名前空間を作成します
 
@@ -38,7 +38,7 @@ Azure アプリケーションの各種データ階層とそれぞれで利用�
 | [Azure サブスクリプション](data-sources.md#azure-subscription) | [Azure Activity Log (Azure アクティビティ ログ)] | アクティビティ ログ イベントを Event Hubs にエクスポートするログ プロファイルを作成します。  詳細については、「[Azure プラットフォーム ログを Azure Event Hubs にストリーミングする](./resource-logs.md#send-to-azure-event-hubs)」を参照してください。 |
 | [Azure リソース](data-sources.md#azure-resources) | プラットフォームのメトリック<br> リソース ログ |どちらの種類のデータも、リソース診断設定を使用してイベント ハブに送信されます。 詳細については、[イベント ハブへの Azure リソース ログのストリーム配信](./resource-logs.md#send-to-azure-event-hubs)に関するページを参照してください。 |
 | [オペレーティング システム (ゲスト)](data-sources.md#operating-system-guest) | Azure の仮想マシン | Azure の Windows と Linux 仮想マシンに、[Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)をインストールします。 Windows VM の場合の詳細については「[Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する](diagnostics-extension-stream-event-hubs.md)」を、Linux VM の場合の詳細については「[Linux Diagnostic Extension を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)」を参照してください。 |
-| [アプリケーション コード](data-sources.md#application-code) | Application Insights | Application Insights には、イベント ハブにデータを直接ストリーム配信する方法は備わっていません。 ストレージ アカウントへの Application Insights データの[連続エクスポートを設定](../../azure-monitor/app/export-telemetry.md)してから、「[ロジック アプリを使用した手動ストリーム配信](#manual-streaming-with-logic-app)」の説明に従って、ロジック アプリを使用してデータをイベント ハブに送信できます。 |
+| [アプリケーション コード](data-sources.md#application-code) | Application Insights | Application Insights には、イベント ハブにデータを直接ストリーム配信する方法は備わっていません。 ストレージ アカウントへの Application Insights データの[連続エクスポートを設定](../app/export-telemetry.md)してから、「[ロジック アプリを使用した手動ストリーム配信](#manual-streaming-with-logic-app)」の説明に従って、ロジック アプリを使用してデータをイベント ハブに送信できます。 |
 
 ## <a name="manual-streaming-with-logic-app"></a>ロジック アプリを使用した手動ストリーム配信
 イベント ハブに直接ストリーム配信できないデータについては、Azure Storage に書き込んでから、時刻トリガー式のロジック アプリを使用し、[データを BLOB ストレージからプル](../../connectors/connectors-create-api-azureblobstorage.md#add-action)して[メッセージとしてイベント ハブにプッシュ](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)できます。 
@@ -58,8 +58,10 @@ Azure Monitor で監視データをイベント ハブにルーティングす�
 | LogRhythm | いいえ| LogRhythm を設定してイベント ハブからログを収集するための手順については、[こちら](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)を参照してください。 
 |Logz.io | はい | 詳細については、[Azure で実行される Java アプリ用の Logz.io を使用した監視とログ記録の概要](/azure/developer/java/fundamentals/java-get-started-with-logzio)に関するページを参照してください。
 
+他のパートナーも利用できる場合があります。 すべての Azure Monitor パートナーとその機能の詳細な一覧については、「[Azure Monitor パートナーとの統合](partners.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [ストレージ アカウントにアクティビティ ログをアーカイブする](./activity-log.md#legacy-collection-methods)
-* [Azure アクティビティ ログの概要を確認する](../../azure-monitor/platform/platform-logs-overview.md)
-* [アクティビティ ログ イベントに基づいてアラートを設定する](../../azure-monitor/platform/alerts-log-webhook.md)
+* [Azure アクティビティ ログの概要を確認する](./platform-logs-overview.md)
+* [アクティビティ ログ イベントに基づいてアラートを設定する](./alerts-log-webhook.md)
+

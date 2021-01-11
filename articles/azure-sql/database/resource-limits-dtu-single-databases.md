@@ -4,19 +4,19 @@ description: このページでは、Azure SQL Database の単一データベー
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: seo-lt-2019 sqldbrb=1
+ms.custom: references_regions, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 099094338deba63f678337b7ea13dd9ce9800084
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fa15a5f95c2163309ecfd9cc0130d1860eb3b634
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517690"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542689"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>DTU 購入モデルを使用した単一データベースのリソース制限 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -38,14 +38,14 @@ ms.locfileid: "86517690"
 | :--- | --: |
 | 最大 DTU 数 | 5 |
 | 付属ストレージ (GB) | 2 |
-| 選択可能な最大ストレージ容量 (GB) | 2 |
+| 最大ストレージ (GB) | 2 |
 | 最大インメモリ OLTP ストレージ容量 (GB) |該当なし |
 | 最大同時実行ワーカー (要求) 数 | 30 |
 | 最大同時セッション数 | 該当なし |
 |||
 
 > [!IMPORTANT]
-> Basic サービス レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。 
+> Basic サービス レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。
 >
 >データ ストレージに関しては、Basic サービス レベルは Standard ページ BLOB に配置されます。 Standard ページ BLOB は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発、テスト、その他のアクセス頻度の少ないワークロードに最適です。
 >
@@ -55,15 +55,17 @@ ms.locfileid: "86517690"
 | **コンピューティング サイズ** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | 最大 DTU 数 | 10 | 20 | 50 | 100 |
-| 付属ストレージ (GB) | 250 | 250 | 250 | 250 |
-| 選択可能な最大ストレージ容量 (GB) | 250 | 250 | 250 | 250、500、750、1024 |
+| 付属ストレージ (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
+| 最大ストレージ (GB) | 250 | 250 | 250 | 1024 |
 | 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし |
 | 最大同時実行ワーカー (要求) 数| 60 | 90 | 120 | 200 |
 | 最大同時セッション数 |600 | 900 | 1200 | 2400 |
 ||||||
 
+<sup>1</sup> 追加のストレージがプロビジョニングされたために発生する追加コストの詳細については、[SQL Database の価格オプション](https://azure.microsoft.com/pricing/details/sql-database/single/)に関するページを参照してください。
+
 > [!IMPORTANT]
-> Standard S0、S1、S2 レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。 
+> Standard S0、S1、S2 レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。
 >
 >データ ストレージに関しては、Standard S0 および S1 サービス レベルは Standard ページ BLOB に配置されます。 Standard ページ BLOB は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発、テスト、その他のアクセス頻度の少ないワークロードに最適です。
 >
@@ -73,29 +75,33 @@ ms.locfileid: "86517690"
 | **コンピューティング サイズ** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
-| 付属ストレージ (GB) | 250 | 250 | 250 | 250 | 250 |
-| 選択可能な最大ストレージ容量 (GB) | 250、500、750、1024 | 250、500、750、1024 | 250、500、750、1024 | 250、500、750、1024 | 250、500、750、1024 |
+| 付属ストレージ (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
+| 最大ストレージ (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 | 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし |該当なし |
 | 最大同時実行ワーカー (要求) 数| 400 | 800 | 1600 | 3200 |6000 |
 | 最大同時セッション数 |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
+
+<sup>1</sup> 追加のストレージがプロビジョニングされたために発生する追加コストの詳細については、[SQL Database の価格オプション](https://azure.microsoft.com/pricing/details/sql-database/single/)に関するページを参照してください。
 
 ### <a name="premium-service-tier"></a>Premium サービス レベル
 
 | **コンピューティング サイズ** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** |
 | :--- |---:|---:|---:|---:|---:|---:|
 | 最大 DTU 数 | 125 | 250 | 500 | 1000 | 1750 | 4000 |
-| 付属ストレージ (GB) | 500 | 500 | 500 | 500 | 4,096* | 4,096* |
-| 選択可能な最大ストレージ容量 (GB) | 500、750、1024 | 500、750、1024 | 500、750、1024 | 500、750、1024 | 4,096* | 4,096* |
+| 付属ストレージ (GB) <sup>1</sup> | 500 | 500 | 500 | 500 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
+| 最大ストレージ (GB) | 1024 | 1024 | 1024 | 1024 | 4096 <sup>2</sup> | 4096 <sup>2</sup> |
 | 最大インメモリ OLTP ストレージ容量 (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | 最大同時実行ワーカー (要求) 数| 200 | 400 | 800 | 1600 | 2800 | 6400 |
 | 最大同時セッション数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
-\* 1,024 GB から最大 4,096 GB (256 GB 単位)
+<sup>1</sup> 追加のストレージがプロビジョニングされたために発生する追加コストの詳細については、[SQL Database の価格オプション](https://azure.microsoft.com/pricing/details/sql-database/single/)に関するページを参照してください。
+
+<sup>2</sup> 1024 GB から最大 4096 GB (256 GB ずつ増分)。
 
 > [!IMPORTANT]
-> 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、米国中西部、US DoD の各リージョンと、US Gov 中部を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。  
+> 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。
 > [!NOTE]
 > `tempdb` の制限については、[tempdb の制限](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)に関する記事を参照してください。
 

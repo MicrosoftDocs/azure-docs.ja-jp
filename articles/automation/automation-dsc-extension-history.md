@@ -1,20 +1,17 @@
 ---
 title: Azure Desired State Configuration 拡張機能のバージョン履歴を使用する
 description: この記事では、Azure の Desired State Configuration (DSC) 拡張機能のバージョン履歴の使用方法について説明します。
-ms.date: 06/21/2018
+ms.date: 07/22/2020
 keywords: dsc, powershell, azure, 拡張機能
-author: mgoedtel
-ms.author: magoedte
 services: automation
-ms.service: automation
 ms.subservice: dsc
 ms.topic: conceptual
-ms.openlocfilehash: 0bb82ce92a151bd8e955c136751d8e7f307bbf1b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: b45512faf09cfe745023d29d32f89a4432cc3b2b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186420"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079759"
 ---
 # <a name="work-with-azure-desired-state-configuration-extension-version-history"></a>Azure Desired State Configuration 拡張機能のバージョン履歴を使用する
 
@@ -23,6 +20,29 @@ Azure、Windows Server、および Windows Management Framework (WMF) (Windows P
 この記事では、Azure DSC VM 拡張機能の各バージョンに関する情報、サポートする環境、新しい機能や変更に関するコメントや注意事項について説明します。
 
 ## <a name="latest-version"></a>最新バージョン
+
+### <a name="version-280"></a>バージョン 2.80
+
+- **リリース日:**
+  - 2019 年 9 月 26 日 (Azure) | 2020 年 7 月 6 日 (Azure China Vianet 21) | 2020 年 7月 20 日 (Azure Government)
+- **OS のサポート:**
+  - Windows Server 2019
+  - Windows Server 2016
+  - Windows Server 2012 R2
+  - Windows Server 2012
+  - Windows Server 2008 R2 SP1
+  - Windows クライアント 7/8.1/10
+  - Nano Server
+- **WMF のサポート:**
+  - WMF 5.1
+  - WMF 5.0 RTM
+  - WMF 4.0 Update
+  - WMF 4.0
+- **環境:**
+  - Azure
+  - Azure China Vianet 21
+  - Azure Government
+- **備考:** このリリースに含まれる新機能はありません。
 
 ### <a name="version-276"></a>バージョン 2.76
 

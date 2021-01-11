@@ -14,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d7dc3212007e9b9ec67d0d235135d4d46f20b950
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85248702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022125"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs の安全なプッシュ
 
@@ -122,7 +122,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 4. ここでは、受信通知を処理し、上記のメソッドを使用して表示するコンテンツを取得する必要があります。 最初に、プッシュ通知を受信するときに iOS アプリケーションがバックグラウンドで実行されるようにします。 **XCode** で、左側のパネルのアプリケーション プロジェクトを選択し、中央のウィンドウの **[ターゲット]** セクションでメイン アプリケーション ターゲットをクリックします。
 5. 次に、中央ウィンドウの上部で **[機能]** タブをクリックし、 **[リモート通知]** チェック ボックスをオンにします。
 
-    ![][IOS1]
+    ![アプリ プロジェクトが選択され、[機能] タブが開いている、XCode のスクリーンショット。 [リモート通知] チェック ボックスがオンになっている。][IOS1]
 
 6. `AppDelegate.m` で、次のメソッドを追加してプッシュ通知を処理します。
 

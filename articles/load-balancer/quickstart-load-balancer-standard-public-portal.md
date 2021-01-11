@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125192"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607212"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷を分散するロード バランサーを作成する
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷分散を行うパブリック ロード バランサーを作成する
 
 Azure portal を使用してパブリック ロード バランサーと 3 つの仮想マシンを作成することにより、Azure Load Balancer の使用を開始します。
 
@@ -36,14 +36,12 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[オプション 1 (既定): ロード バランサー (Standard SKU) を作成する](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
-
-パブリック ロード バランサーまたは内部ロード バランサーを作成できます。 
 
 パブリック ロード バランサーを作成するときは、ロード バランサーのフロントエンド (既定では **LoadBalancerFrontend** という名前) として構成される新しいパブリック IP アドレスを作成します。
 
@@ -76,7 +74,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 * ロード バランサーのバックエンド アドレス プールの設定。
 * 正常性プローブ。
-* ロード バランサー規則とアウトバウンド規則。
+* ロード バランサー規則。
 
 ### <a name="create-a-backend-pool"></a>バックエンド プールの作成
 
@@ -152,26 +150,60 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 * ロード バランサーのバックエンド プール用に 3 つの仮想マシンを作成します。
 * 仮想マシンに IIS をインストールし、ロード バランサーをテストします。
 
-## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
+## <a name="create-the-virtual-network"></a>仮想ネットワークの作成
 
-このセクションでは、各手順のパラメーターを以下の情報で置き換えます。
+このセクションでは、仮想ネットワークとサブネットを作成します。
 
-| パラメーター                   | 値                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | 西ヨーロッパ      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+1. 画面の左上で、 **[リソースの作成] > [ネットワーク] > [仮想ネットワーク]** の順に選択するか、検索ボックスで **Virtual network** を検索します。
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. **[仮想ネットワークの作成]** の **[基本]** タブで次の情報を入力または選択します。
+
+    | **設定**          | **Value**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **プロジェクトの詳細**  |                                                                 |
+    | サブスクリプション     | Azure サブスクリプションを選択します。                                  |
+    | リソース グループ   | **[myResourceGroupLB]** を選択します |
+    | **インスタンスの詳細** |                                                                 |
+    | 名前             | 「**myVNet**」と入力します                                    |
+    | リージョン           | **[西ヨーロッパ]** を選択します |
+
+3. **[IP アドレス]** タブを選択するか、ページの下部にある **[Next: IP Addresses]\(次へ: IP アドレス\)** ボタンを選択します。
+
+4. **[IP アドレス]** タブで、次の情報を入力します。
+
+    | 設定            | 値                      |
+    |--------------------|----------------------------|
+    | IPv4 アドレス空間 | 「**10.1.0.0/16**」と入力します。 |
+
+5. **[サブネット名]** で、 **[default]\(既定\)** という単語を選択します。
+
+6. **[サブネットの編集]** に次の情報を入力します。
+
+    | 設定            | 値                      |
+    |--------------------|----------------------------|
+    | サブネット名 | 「**myBackendSubnet**」と入力します |
+    | サブネットのアドレス範囲 | 「**10.1.0.0/24**」と入力します。 |
+
+7. **[保存]** を選択します。
+
+8. **[セキュリティ]** タブをクリックします。
+
+9. **[BastionHost]** で **[有効にする]** を選択します。 この情報を入力します。
+
+    | 設定            | 値                      |
+    |--------------------|----------------------------|
+    | 要塞名 | 「**myBastionHost**」と入力します |
+    | AzureBastionSubnet のアドレス空間 | 「**10.1.1.0/24**」と入力します |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 </br> **[名前]** に「**myBastionIP**」と入力します。 </br> **[OK]** を選択します。 |
+
+
+8. **[確認と作成]** タブを選択するか、 **[確認と作成]** ボタンを選択します。
+
+9. **［作成］** を選択します
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-パブリック IP の SKU とロード バランサーの SKU が一致している必要があります。 Standard ロード バランサーには、バックエンド プール内の Standard IP アドレスを持つ VM を使用します。 
-
-このセクションでは、3 つの異なるゾーン (**ゾーン 1**、**ゾーン 2**、および**ゾーン 3**) に、Standard パブリック IP アドレスを持つ 3 つの VM (**myVM1**、**myVM2**、および **myVM3**) を作成します。 
+このセクションでは、3 つの異なるゾーン (**Zone 1**、**Zone 2**、および **Zone 3**) に 3 つの VM (**myVM1**、**myVM2**、および **myVM3**) を作成します。 
 
 これらの VM を、前に作成したロード バランサーのバックエンド プールに追加します。
 
@@ -179,7 +211,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
    
 2. **[仮想マシンの作成]** の **[Basic]** タブに、値を入力するか選択します。
 
-    | 設定 | [値]                                          |
+    | 設定 | 値                                          |
     |-----------------------|----------------------------------|
     | **プロジェクトの詳細** |  |
     | サブスクリプション | Azure サブスクリプションを選択します。 |
@@ -196,17 +228,19 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | ユーザー名 | ユーザー名を入力します |
     | Password | [パスワード] を入力します |
     | [パスワードの確認入力] | パスワードを再入力します |
+    | **受信ポートの規則** |  |
+    | パブリック受信ポート | **[なし]** を選択します |
 
 3. **[ネットワーク]** タブまたは **[次へ: ディスク]** を選択してから **[次へ: ネットワーク]** を選択します。
   
 4. [ネットワーク] タブで、次を選択または入力します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **myVNet** |
     | Subnet | **myBackendSubnet** |
-    | パブリック IP | 既定値の **[myVM-ip]** をそのまま使用します。 </br> IP は自動的に、ゾーン 1 の Standard SKU IP になります。 |
+    | パブリック IP | **[なし]** を選択します。 |
     | NIC ネットワーク セキュリティ グループ | **[Advanced] \(詳細設定)** を選択します|
     | ネットワーク セキュリティ グループを構成する | **[新規作成]** を選択します。 </br> **[ネットワーク セキュリティ グループの作成]** で、 **[名前]** に「**myNSG**」と入力します。 </br> **[受信規則]** で、[ **+ 受信規則の追加]** を選択します。 </br> **[宛先ポート範囲]** で、「**80**」と入力します。 </br> **[優先度]** に「**100**」と入力します。 </br> **[名前]** に「**myHTTPRule**」と入力します </br> **[追加]** を選択します。 </br> **[OK]** を選択します。 |
     | **負荷分散**  |
@@ -220,7 +254,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 6. **[管理]** タブで、次を選択または入力します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     |-|-|
     | **Monitoring** |  |
     | ブート診断 | **[オフ]** を選択します |
@@ -250,10 +284,10 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 3. アウトバウンド規則の構成には、以下の値を使用します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
-    | Name (名前) | 「**myOutboundRule**」と入力します。 |
-    | フロントエンド IP アドレス | **[新規作成]** を選択します。 </br> **[名前]** に、「**LoadBalancerFrontEndOutbound**」と入力します。 </br> **[IP アドレス]** または **[IP プレフィックス]** を選択します。 </br> **[パブリック IP アドレス]** または **[パブリック IP プレフィックス]** で **[新規作成]** を選択します。 </br> [名前] に、「**myPublicIPOutbound**」または「**myPublicIPPrefixOutbound**」と入力します。 </br> **[OK]** を選択します。 </br> **[追加]** を選択します。|
+    | 名前 | 「**myOutboundRule**」と入力します。 |
+    | フロントエンド IP アドレス | **[新規作成]** を選択します。 </br> **[名前]** に、「**LoadBalancerFrontEndOutbound**」と入力します。 </br> **[IP アドレス]** または **[IP プレフィックス]** を選択します。 </br> **[パブリック IP アドレス]** または **[パブリック IP プレフィックス]** で **[新規作成]** を選択します。 </br> [名前] に、「**myPublicIPOutbound**」または「**myPublicIPPrefixOutbound**」と入力します。 </br> **[追加]** を選択します。|
     | アイドル タイムアウト (分) | スライダーを **15 分**に移動します。|
     | TCP リセット | **[Enabled]** を選択します。|
     | バックエンド プール | **[新規作成]** を選択します。 </br> **[名前]** に「**myBackendPoolOutbound**」と入力します。 </br> **[追加]** を選択します。 |
@@ -281,14 +315,12 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 8. **[保存]** を選択します。
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[オプション 2: ロード バランサー (Basic SKU) を作成する](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Basic SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
-
-パブリック ロード バランサーまたは内部ロード バランサーを作成できます。 
 
 パブリック ロード バランサーを作成するときは、ロード バランサーのフロントエンド (既定では **LoadBalancerFrontend** という名前) として構成される新しいパブリック IP アドレスを作成します。
 
@@ -296,7 +328,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。 
 
-    | 設定                 | [値]                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択し、テキスト ボックスに「**myResourceGroupLB**」と入力します。|
@@ -324,21 +356,56 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 * 正常性プローブ。
 * ロード バランサー規則。
 
-## <a name="virtual-network-and-parameters"></a>仮想ネットワークとパラメーター
+## <a name="create-the-virtual-network"></a>仮想ネットワークの作成
 
-このセクションでは、各手順のパラメーターを以下の情報で置き換えます。
+このセクションでは、仮想ネットワークとサブネットを作成します。
 
-| パラメーター                   | 値                |
-|-----------------------------|----------------------|
-| **\<resource-group-name>**  | myResourceGroupLB |
-| **\<virtual-network-name>** | myVNet          |
-| **\<region-name>**          | 西ヨーロッパ      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
-| **\<subnet-name>**          | myBackendSubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+1. 画面の左上で、 **[リソースの作成] > [ネットワーク] > [仮想ネットワーク]** の順に選択するか、検索ボックスで **Virtual network** を検索します。
 
-[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
+2. **[仮想ネットワークの作成]** の **[基本]** タブで次の情報を入力または選択します。
 
+    | **設定**          | **Value**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **プロジェクトの詳細**  |                                                                 |
+    | サブスクリプション     | Azure サブスクリプションを選択します。                                  |
+    | リソース グループ   | **[myResourceGroupLB]** を選択します |
+    | **インスタンスの詳細** |                                                                 |
+    | 名前             | 「**myVNet**」と入力します                                    |
+    | リージョン           | **[西ヨーロッパ]** を選択します |
+
+3. **[IP アドレス]** タブを選択するか、ページの下部にある **[Next: IP Addresses]\(次へ: IP アドレス\)** ボタンを選択します。
+
+4. **[IP アドレス]** タブで、次の情報を入力します。
+
+    | 設定            | 値                      |
+    |--------------------|----------------------------|
+    | IPv4 アドレス空間 | 「**10.1.0.0/16**」と入力します。 |
+
+5. **[サブネット名]** で、 **[default]\(既定\)** という単語を選択します。
+
+6. **[サブネットの編集]** に次の情報を入力します。
+
+    | 設定            | 値                      |
+    |--------------------|----------------------------|
+    | サブネット名 | 「**myBackendSubnet**」と入力します |
+    | サブネットのアドレス範囲 | 「**10.1.0.0/24**」と入力します。 |
+
+7. **[保存]** を選択します。
+
+8. **[セキュリティ]** タブをクリックします。
+
+9. **[BastionHost]** で **[有効にする]** を選択します。 この情報を入力します。
+
+    | 設定            | 値                      |
+    |--------------------|----------------------------|
+    | 要塞名 | 「**myBastionHost**」と入力します |
+    | AzureBastionSubnet のアドレス空間 | 「**10.1.1.0/24**」と入力します |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 </br> **[名前]** に「**myBastionIP**」と入力します。 </br> **[OK]** を選択します。 |
+
+
+8. **[確認と作成]** タブを選択するか、 **[確認と作成]** ボタンを選択します。
+
+9. **［作成］** を選択します
 ### <a name="create-a-backend-pool"></a>バックエンド プールの作成
 
 バックエンド アドレス プールには、ロード バランサーに接続された仮想 NIC の IP アドレスが含まれています。 
@@ -371,7 +438,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     
     | 設定 | 値 |
     | ------- | ----- |
-    | Name (名前) | 「**myHealthProbe**」と入力します。 |
+    | 名前 | 「**myHealthProbe**」と入力します。 |
     | Protocol | **[HTTP]** を選択します。 |
     | Port | 「**80**」と入力します。|
     | Path | 「 **/** 」と入力します。 |
@@ -420,8 +487,6 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-パブリック IP の SKU とロード バランサーの SKU が一致している必要があります。 Basic ロード バランサーには、バックエンド プール内の Basic IP アドレスを持つ VM を使用します。 
-
 このセクションでは、Basic パブリック IP アドレスを持つ 3 つの VM (**myVM1**、**myVM2**、および **myVM3**) を作成します。  
 
 3 つの VM は **myAvailabilitySet** という名前の可用性セットに追加します。
@@ -459,7 +524,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | **ネットワーク インターフェイス** |  |
     | 仮想ネットワーク | **[myVNet]** を選択します |
     | Subnet | **[myBackendSubnet]** を選択します |
-    | パブリック IP | **[新規作成]** を選択します </br> 名前として「**myVM-ip**」と入力します。 </br> **[OK]** を選択します。 |
+    | パブリック IP | **[なし]** を選択します |
     | NIC ネットワーク セキュリティ グループ | **[Advanced] \(詳細設定)** を選択します|
     | ネットワーク セキュリティ グループを構成する | **[新規作成]** を選択します。 </br> **[ネットワーク セキュリティ グループの作成]** で、 **[名前]** に「**myNSG**」と入力します。 </br> **[受信規則]** で、[ **+ 受信規則の追加]** を選択します。 </br> **[宛先ポート範囲]** で、「**80**」と入力します。 </br> **[優先度]** に「**100**」と入力します。 </br> **[名前]** に「**myHTTPRule**」と入力します </br> **[追加]** を選択します。 </br> **[OK]** を選択します。 |
     | **負荷分散**  |
@@ -468,8 +533,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 5. **[管理]** タブまたは **[次へ]**  >  **[管理]** を選択します。
 
 6. **[管理]** タブで、次を選択または入力します。
+    
     | 設定 | 値 |
-    |-|-|
+    |---|---|
     | **Monitoring** | |
     | ブート診断 | **[オフ]** を選択します |
 
@@ -485,21 +551,39 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | 可用性セット| **[myAvailabilitySet]** を選択します | **[myAvailabilitySet]** を選択します|
     | ネットワーク セキュリティ グループ | 既存の **[myNSG]** を選択します| 既存の **[myNSG]** を選択します|
 
+### <a name="add-virtual-machines-to-the-backend-pool"></a>仮想マシンをバックエンド プールに追加する
+
+前のステップで作成した VM を **myLoadBalancer** のバックエンドプールに追加する必要があります。
+
+1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myLoadBalancer]** を選択します。
+
+2. **[設定]** で、 **[バックエンド プール]** を選択し、**myBackendPool** を選択します。
+
+3. **[関連付け先]** で **[仮想マシン]** を選択します。
+
+4. **[仮想マシン]** セクションで、 **[+ 追加]** を選択します。
+
+5. **myVM1**、**myVM2**、**myVM3** の横にあるチェック ボックスをオンにします。
+
+6. **[追加]** を選択します。
+
+7. **[保存]** を選択します。
+
 ---
 
 ## <a name="install-iis"></a>IIS のインストール
 
 1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myResourceGroupLB]** リソース グループにある **[myVM1]** を選択します。
 
-2. **[概要]** ページで **[接続]** を選択し、VM の RDP ファイルをダウンロードします。
+2. **[概要]** ページで **[接続]** 、 **[要塞]** の順に選択します。
 
-3. RDP ファイルを開きます。
+4. VM 作成時に入力したユーザー名とパスワードを入力します。
 
-4. VM の作成中に指定した資格情報を使用して、この VM にログインします。
+5. **[接続]** を選択します。
 
-5. サーバーのデスクトップで、 **[Windows 管理ツール]** > **[Windows PowerShell]** の順に移動します。
+6. サーバーのデスクトップで、 **[Windows 管理ツール]**  >  **[Windows PowerShell]** の順に移動します。
 
-6. PowerShell ウィンドウで、次のコマンドを実行して以下の作業を行います。
+7. PowerShell ウィンドウで、次のコマンドを実行して以下の作業を行います。
 
     * IIS サーバーをインストールする
     * 既定の iisstart.htm ファイルを削除する
@@ -516,9 +600,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     # Add a new htm file that displays server name
      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
    ```
-7. **myVM1** で RDP セッションを閉じます。
+8. **myVM1** との Bastion セッションを閉じます。
 
-8. 手順 1. から 6. を繰り返して、IIS と更新済み iisstart.htm ファイルを **myVM2** と **myVM3** にインストールします。
+9. 手順 1. から 6. を繰り返して、IIS と更新済み iisstart.htm ファイルを **myVM2** と **myVM3** にインストールします。
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 

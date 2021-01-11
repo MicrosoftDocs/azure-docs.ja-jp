@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - mvc
 - mqtt
-ms.openlocfilehash: 26679a7111e11eaf48e948fa6d3622814327433a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252574"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89013947"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>チュートリアル:IoT ハブの手動フェールオーバーを実行する
 
@@ -30,6 +30,8 @@ ms.locfileid: "86252574"
 > * ハブがセカンダリ ロケーションで実行されていることを確認する。
 > * フェールバックを実行して、プライマリ ロケーションに IoT ハブの運用を戻す。 
 > * ハブが正しい場所で正しく実行されていることを確認する。
+
+IoT Hub での手動フェールオーバーと Microsoft によって開始されるフェールオーバーの詳細については、[リージョン間のディザスター リカバリー](iot-hub-ha-dr.md#cross-region-dr)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -83,7 +85,7 @@ ms.locfileid: "86252574"
 
    手動フェールオーバーの実行にかかる時間は、ハブに登録されているデバイスの数に比例します。 たとえば、デバイスが 10 万台の場合は 15 分ですが、500 万台の場合は 1 時間以上かかる可能性があります。
 
-   ![[手動フェールオーバー] ウィンドウを示すスクリーンショット](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
+   ![手動フェールオーバーの確認ペインを示すスクリーンショット](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
    手動フェールオーバー プロセスの実行中は、手動フェールオーバーが進行中であることを示すバナーが表示されます。 
 
@@ -104,7 +106,7 @@ ms.locfileid: "86252574"
 
 ## <a name="perform-a-failback"></a>フェールバックの実行 
 
-手動フェールオーバーを実行した後で、ハブのうン用を元のプライマリ リージョンに切り替えることができます。これをフェールバックと呼びます。 フェールオーバーを実行した直後の場合は、約 1 時間待ってからフェールバックを要求する必要があります。 それより前にフェールバックを実行しようとすると、エラー メッセージが表示されます。
+手動フェールオーバーを実行した後で、ハブの運用を元のプライマリ リージョンに切り替えることができます。これをフェールバックと呼びます。 フェールオーバーの実行後は、約 1 時間待ってからフェールバックを要求する必要があります。 それより前にフェールバックを実行しようとすると、エラー メッセージが表示されます。
 
 フェールバックは、手動フェールオーバーと同じように実行されます。 手順は次のとおりです。 
 

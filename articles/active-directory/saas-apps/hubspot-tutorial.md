@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と HubSpot の統合 | Microsoft Docs
 description: Azure Active Directory と HubSpot の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 57343ccd-53ea-4e62-9e54-dee2a9562ed5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b235426a7029abb9bb79ba56e582cccc3b14a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68944442"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551468"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル:Azure Active Directory と HubSpot の統合
 
@@ -106,9 +101,9 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
 1. **[基本的な SAML 構成]** ウィンドウで、*IDP 開始モード*を構成するために、次の手順を実行します。
 
-    1. **[識別子]** ボックスに、次のパターンの URL を入力します: https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<カスタマー ID\>。
+    1. **[識別子]** ボックスに、https:\//api.hubspot.com/login-api/v1/saml/login?portalId=\<CUSTOMER ID\> というパターンの URL を入力します。
 
-    1. **[応答 URL]** ボックスに、次のパターンの URL を入力します: https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<カスタマー ID\>。
+    1. **[応答 URL]** ボックスに、https:\//api.hubspot.com/login-api/v1/saml/acs?portalId=\<CUSTOMER ID\> というパターンの URL を入力します。
 
     ![HubSpot のドメインと URL のシングル サインオン情報](common/idp-intiated.png)
 
@@ -183,7 +178,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**brittasimon\@\<会社のドメイン>.\<拡張子\>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」です。
+    1. **[ユーザー名]** ボックスに「**brittasimon\@\<your-company-domain>.\<extension\>** 」と入力します。 たとえば、「**brittasimon\@contoso.com**」です。
 
     1. **[パスワードを表示]** チェック ボックスを選択します。 **[パスワード]** ボックスに表示された値を書き留めます。
 

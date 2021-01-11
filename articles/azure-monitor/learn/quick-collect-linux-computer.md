@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a1adf167bb23b3d66f6dcbd07794145f7c817105
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b856381e8d085c6839effd1de6d9867b214d24ee
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322161"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89020390"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用してハイブリッド環境の Linux コンピューターからデータを収集する
 
 [Azure Monitor](../overview.md) は、詳細な分析と相関のために、環境内の物理的または仮想的な Linux コンピューターから直接データを Log Analytics ワークスペースに収集することができます。 [Log Analytics エージェント](../platform/log-analytics-agent.md)をインストールすることにより、Azure Monitor でデータセンターまたは他のクラウド環境からデータを収集できるようになります。 このクイックスタートでは、いくつかの簡単な手順で、Linux サーバーを構成し、データを収集する方法を示します。 Azure Linux VM については、[Azure 仮想マシンに関するデータの収集](./quick-collect-azurevm.md)のページを参照してください。  
 
-サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](../platform/log-analytics-agent.md#supported-linux-operating-systems)」と「[ネットワーク ファイアウォールの構成](../platform/log-analytics-agent.md#network-requirements)」を参照してください。
+サポートされている構成を確認するには、「[サポートされているオペレーティング システム](../platform/agents-overview.md#supported-operating-systems)」と[ネットワーク ファイアウォールの構成](../platform/log-analytics-agent.md#network-requirements)に関するセクションを参照してください。
  
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

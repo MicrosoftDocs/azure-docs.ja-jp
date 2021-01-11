@@ -7,14 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 06/04/2020
+ms.date: 08/17/2020
 ms.author: tamram
-ms.openlocfilehash: 471a8018a608da818f5961973f23123874c63427
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434453"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520772"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 
@@ -77,20 +78,28 @@ az storage account create \
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、コンテナー内の BLOB のグループを整理できます。 BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。 
+BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、コンテナー内の BLOB のグループを整理できます。 BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container) コマンドで作成します。
 
-次の例では、Azure AD アカウントを使用して、コンテナーの作成操作を承認します。 コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 RBAC の役割の割り当ての詳細については、[Azure CLI を使用してアクセス用の RBAC の役割を割り当てる](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json)方法に関するページを参照してください。  
-
-ストレージ アカウント キーを使用して、コンテナーの作成操作を承認することもできます。 Azure CLI を使用したデータ操作の承認について詳しくは、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json)」を参照してください。
+次の例では、Azure AD アカウントを使用して、コンテナーの作成操作を承認します。 コンテナーを作成する前に、[ストレージ BLOB データ共同作成者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)ロールを自分に割り当てます。 自分がアカウント オーナーである場合でも、ストレージ アカウントに対してデータ操作を実行するための明示的なアクセス許可が必要となります。 Azure ロールの割り当ての詳細については、[Azure CLI を使用したアクセス用の Azure ロールの割り当て](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json)に関するページを参照してください。  
 
 山かっこ内のプレースホルダーをお客様独自の値に置き換えてください。
 
 ```azurecli
+az ad signed-in-user show --query objectId -o tsv | az role assignment create \
+    --role "Storage Blob Data Contributor" \
+    --assignee @- \
+    --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
+
 az storage container create \
     --account-name <storage-account> \
     --name <container> \
     --auth-mode login
 ```
+
+> [!IMPORTANT]
+> Azure ロールの割り当ての反映には数分かかることがあります。
+
+ストレージ アカウント キーを使用して、コンテナーの作成操作を承認することもできます。 Azure CLI を使用したデータ操作の承認について詳しくは、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json)」を参照してください。
 
 ## <a name="upload-a-blob"></a>BLOB をアップロードする
 

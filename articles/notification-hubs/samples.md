@@ -5,20 +5,19 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 08/06/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 03/28/2019
-ms.openlocfilehash: e9cba45da35d7ef2483256ab636d7e0798ea8b31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: be6845075c5f3fe5e5fd74e643550c61c6c85e43
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82594901"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901795"
 ---
 # <a name="azure-notification-hubs-samples"></a>Azure Notification Hubs のサンプル
 
@@ -30,7 +29,7 @@ ms.locfileid: "82594901"
 - [Android](https://github.com/Azure/azure-notificationhubs-android/)
 - [Apache Cordova](https://github.com/Azure/azure-notificationhubs-samples/tree/master/apache-cordova)
 - [Ionic](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Ionic)
-- [iOS](https://github.com/Azure/azure-notificationhubs-ios/tree/master/Samples)
+- [iOS](https://github.com/Azure/azure-notificationhubs-ios)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: MABS で Hyper-V 仮想マシンをバックアップする
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用した仮想マシンのバックアップと回復の手順について説明します。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dc135e74564d4104c61ffef6f1403eddc08586be
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514555"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892815"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Server を使用して Hyper-V 仮想マシンをバックアップする
 
@@ -149,7 +149,7 @@ Windows Server 2012 R2 以降で MABS が実行されている場合は、レプ
     - ネットワークを構成した場合は、 **[ハードウェア スナップショットを使用した SAN ベースの回復を有効にする]** を選択します。
     - 回復処理が完了したらメール通知を送信する場合は、 **[Send an e-mail when the recovery completes]\(回復が完了したらメールを送信する\)** を選択し、メール アドレスを指定します。
 
-6. [概要] 画面で、すべての詳細が正しいことを確認します。 詳細が正しくない場合、または変更する場合は、 **[戻る]** をクリックします。 設定に問題がなければ、 **[回復]** をクリックして回復プロセスを開始します。
+6. [概要] 画面で、すべての詳細が正しいことを確認します。 詳細が正しくない場合、または変更する場合は、 **[戻る]** をクリックします。 設定に問題がなければ、 **[復旧]** をクリックして復旧プロセスを開始します。
 
 7. **[回復状態]** 画面には、回復ジョブに関する情報が表示されます。
 

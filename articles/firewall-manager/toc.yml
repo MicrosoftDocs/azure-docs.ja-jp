@@ -46,6 +46,8 @@
       href: dns-settings.md
     - name: 複数のパブリック IP のデプロイ - PowerShell
       href: multiple-public-ip-powershell.md
+    - name: ルール階層の定義
+      href: rule-hierarchy.md
 - name: リファレンス
   items:
     - name: Azure CLI

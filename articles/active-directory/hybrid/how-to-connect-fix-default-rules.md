@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52083b2413f28b0c95b3a86be44c501e97cfd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd16dd5a20a677568c928f805c1aaa5f2c222f24
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359757"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279943"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Azure AD Connect の既定の規則に加えた変更の修正
 
@@ -89,7 +89,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 
 **[Join rules]\(結合規則\)** は空のままにします。 これは、この規則では標準の既定の規則で定義されている結合条件を使用することを意味します。 これは、標準の既定の規則を無効にしたり削除したりしてはならないもう 1 つの理由です。 結合条件がないと、属性はフローしません。 
 
-属性に対する適切な変換を追加します。 定数を割り当てて、定数値がターゲット属性にフローするようにできます。 ソース属性またはターゲット属性の間に直接マッピングを使用できます。 または、属性に対して式を使用することができます。 使用できるさまざまな[式関数](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-sync-functions-reference)は、こちらに掲載されています。
+属性に対する適切な変換を追加します。 定数を割り当てて、定数値がターゲット属性にフローするようにできます。 ソース属性またはターゲット属性の間に直接マッピングを使用できます。 または、属性に対して式を使用することができます。 使用できるさまざまな[式関数](./reference-connect-sync-functions-reference.md)は、こちらに掲載されています。
 
 #### <a name="add-an-outbound-sync-rule"></a>送信同期規則を追加する
 属性をターゲット ディレクトリにリンクするには、送信規則を作成する必要があります。 これは、ソースがメタバースであり、ターゲットが接続されたシステムであることを意味します。 送信規則を作成するには、**同期規則エディター**を起動し、 **[Direction]\(方向\)** を **[Outbound]\(送信\)** に変更して、 **[Add new rule]\(新しい規則の追加\)** を選択します。 
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD) Connect では、同期のために既定の�
 
 **[Scoping filter]\(スコープ フィルター\)** と **[Join rules]\(結合規則\)** は空のままにします。 変換を定数、直接、または式として入力します。 
 
-これで、ユーザー オブジェクトの新しい属性を Active Directory から Azure Active Directory にフローさせる方法がわかりました。 この手順を使用して、任意の属性を任意のオブジェクトからソースとターゲットにマッピングできます。 詳細については、[カスタム同期規則の作成](how-to-connect-create-custom-sync-rule.md)と[ユーザーをプロビジョニングする準備](https://docs.microsoft.com/office365/enterprise/prepare-for-directory-synchronization)に関する説明を参照してください。
+これで、ユーザー オブジェクトの新しい属性を Active Directory から Azure Active Directory にフローさせる方法がわかりました。 この手順を使用して、任意の属性を任意のオブジェクトからソースとターゲットにマッピングできます。 詳細については、[カスタム同期規則の作成](how-to-connect-create-custom-sync-rule.md)と[ユーザーをプロビジョニングする準備](/office365/enterprise/prepare-for-directory-synchronization)に関する説明を参照してください。
 
 ### <a name="override-the-value-of-an-existing-attribute"></a>既存の属性の値をオーバーライドする
 既にマップされている属性の値をオーバーライドすることがあります。 たとえば、常に Azure AD の属性に null 値を設定したい場合は、単に受信規則のみを作成します。 定数値 `AuthoritativeNull` がターゲットの属性にフローするようにします。 
@@ -194,6 +194,3 @@ Azure AD Connect によって構成された既定の結合条件を使用しま
 - [ハードウェアおよび前提条件](how-to-connect-install-prerequisites.md) 
 - [簡単設定](how-to-connect-install-express.md)
 - [カスタマイズした設定](how-to-connect-install-custom.md)
-
-
-

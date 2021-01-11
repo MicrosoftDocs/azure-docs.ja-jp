@@ -8,19 +8,19 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: 598a8383350cae98d61b8ab74f7687161d3d33e8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6a3916a41635a1c76bddbb092294f6d362fc6050
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245294"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88924713"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Cognitive Search のエンリッチメント パイプラインの AML スキル
 
 > [!IMPORTANT] 
 > このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現在、.NET SDK によるサポートはありません。
 
-**AML** スキルを使用すると、カスタム [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/overview-what-is-azure-ml) (AML) モデルを使用して AI エンリッチメントを拡張できます。 AML モデルが[トレーニングされてデプロイされる](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workflow)と、**AML** スキルによって AI エンリッチメントに統合されます。
+**AML** スキルを使用すると、カスタム [Azure Machine Learning](../machine-learning/overview-what-is-azure-ml.md) (AML) モデルを使用して AI エンリッチメントを拡張できます。 AML モデルが[トレーニングされてデプロイされる](../machine-learning/concept-azure-machine-learning-architecture.md#workspace)と、**AML** スキルによって AI エンリッチメントに統合されます。
 
 組み込みスキルと同様に、**AML** スキルには入力と出力があります。 入力は、デプロイされた AML サービスに JSON オブジェクトとして送信され、成功状態コードとともに JSON ペイロードを応答として出力します。 応答には、**AML** スキルによって指定された出力が含まれることが想定されます。 その他の応答はエラーと見なされ、エンリッチメントは実行されません。
 
@@ -31,9 +31,9 @@ ms.locfileid: "86245294"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [AML ワークスペース](https://docs.microsoft.com/azure/machine-learning/concept-workspace)
-* [デプロイ済みモデル](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service)がある、このワークスペース内の [Azure Kubernetes Service の AML コンピューティング先](https://docs.microsoft.com/azure/machine-learning/concept-compute-target)
-  * [コンピューティング先では、SSL が有効になっている必要があります](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service#deploy-on-aks-and-field-programmable-gate-array-fpga)。 Azure Cognitive Search は **https** エンドポイントへのアクセスのみを許可します
+* [AML ワークスペース](../machine-learning/concept-workspace.md)
+* [デプロイ済みモデル](../machine-learning/how-to-deploy-azure-kubernetes-service.md)がある、このワークスペース内の [Azure Kubernetes Service の AML コンピューティング先](../machine-learning/concept-compute-target.md)
+  * [コンピューティング先では、SSL が有効になっている必要があります](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga)。 Azure Cognitive Search は **https** エンドポイントへのアクセスのみを許可します
   * 自己署名証明書は使用できません。
 
 ## <a name="odatatype"></a>@odata.type  
@@ -45,8 +45,8 @@ Microsoft.Skills.Custom.AmlSkill
 
 | パラメーター名 | 説明 |
 |--------------------|-------------|
-| `uri` | ([認証なし、またはキー認証の場合に必要](#WhatSkillParametersToUse)) _JSON_ ペイロードが送信される [AML サービスのスコアリング URI](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。 **https** URI スキームのみが許可されます。 |
-| `key` | ([キー認証](#WhatSkillParametersToUse)の場合に必要) [AML サービスのキー](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service#authentication-with-keys)。 |
+| `uri` | ([認証なし、またはキー認証の場合に必要](#WhatSkillParametersToUse)) _JSON_ ペイロードが送信される [AML サービスのスコアリング URI](../machine-learning/how-to-consume-web-service.md)。 **https** URI スキームのみが許可されます。 |
+| `key` | ([キー認証](#WhatSkillParametersToUse)の場合に必要) [AML サービスのキー](../machine-learning/how-to-consume-web-service.md#authentication-with-keys)。 |
 | `resourceId` | ([トークン認証](#WhatSkillParametersToUse)の場合に必要)。 AML サービスの Azure Resource Manager リソース ID。 subscriptions/{guid}/resourceGroups/{resource-group-name}/Microsoft.MachineLearningServices/workspaces/{workspace-name}/services/{service_name} という形式にする必要があります。 |
 | `region` | ([トークン認証](#WhatSkillParametersToUse)の場合は省略可能)。 AML サービスがデプロイされている[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)。 |
 | `timeout` | (省略可能) 指定した場合は、API 呼び出しを行う http クライアントのタイムアウト値を示します。 XSD "dayTimeDuration" 値 ([ISO 8601 期間](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)値の制限されたサブセット) として書式設定する必要があります。 たとえば、60 秒の場合は `PT60S` とします。 設定しなかった場合は、既定値の 30 秒が選択されます。 タイムアウトは、最大で 230 秒、最小で 1 秒に設定できます。 |
@@ -58,9 +58,9 @@ Microsoft.Skills.Custom.AmlSkill
 
 必要な AML スキル パラメーターは、AML サービスが使用する認証 (存在する場合) に応じて異なります。 AML サービスでは、次の 3 つの認証オプションが提供されます。
 
-* [キーベースの認証](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication-for-web-service-deployment)。 AML スキルからのスコアリング要求を認証するために、静的なキーが提供されます。
+* [キーベースの認証](../machine-learning/concept-enterprise-security.md#authentication-for-web-service-deployment)。 AML スキルからのスコアリング要求を認証するために、静的なキーが提供されます。
   * _uri_ および _key_ パラメーターを使用します。
-* [トークンベースの認証](https://docs.microsoft.com/azure/machine-learning/concept-enterprise-security#authentication)。 AML サービスは、[トークン ベースの認証を使用してデプロイされます](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-azure-kubernetes-service#authentication-with-tokens)。 Azure Cognitive Search サービスの[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) には、AML サービスのワークスペースの[閲覧者ロール](https://docs.microsoft.com/azure/machine-learning/how-to-assign-roles)が付与されます。 その後、AML スキルは Azure Cognitive Search サービスのマネージド ID を使用して、AML サービスに対して認証を行います。静的なキーは必要ありません。
+* [トークンベースの認証](../machine-learning/concept-enterprise-security.md#authentication)。 AML サービスは、[トークン ベースの認証を使用してデプロイされます](../machine-learning/how-to-deploy-azure-kubernetes-service.md#authentication-with-tokens)。 Azure Cognitive Search サービスの[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) には、AML サービスのワークスペースの[閲覧者ロール](../machine-learning/how-to-assign-roles.md)が付与されます。 その後、AML スキルは Azure Cognitive Search サービスのマネージド ID を使用して、AML サービスに対して認証を行います。静的なキーは必要ありません。
   * _resourceId_ パラメーターを使用します。
   * Azure Cognitive Search サービスが AML ワークスペースとは異なるリージョンにある場合は、_region_ パラメーターを使用して、AML サービスがデプロイされたリージョンを設定します。
 * 認証なし。 AML サービスを使用するために認証を必要としません。
@@ -171,4 +171,4 @@ AML サービスが利用できないか、HTTP エラーが返された場合�
 ## <a name="see-also"></a>関連項目
 
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
-+ [AML Service のトラブルシューティング](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment)
++ [AML Service のトラブルシューティング](../machine-learning/how-to-troubleshoot-deployment.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: ec63d08b164a3ed767a7622a9829beaf73e65ef3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042315"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509962"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines への SAP HANA のインストール
 ## <a name="introduction"></a>はじめに
@@ -72,7 +72,7 @@ ms.locfileid: "87042315"
     -  [SAP サポート ノート #2382421 - HANA および OS レベルでのネットワーク構成の最適化](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. SAP HANA の Azure Storage の種類を選択します。 この手順では、SAP HANA インストールのストレージ レイアウトを決定する必要があります。 接続されている Azure ディスクまたはネイティブ Azure NFS 共有のいずれかを使用します。 サポートされている Azure Storage の種類、および使用できるさまざまな Azure Storage の種類の組み合わせについては、「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」で説明されています。 記載されている構成を開始点とします。 非運用環境システムでは、より低いスループットまたは IOPS を構成できる場合があります。 運用を目的とする場合は、もう少し多くのスループットと IOPS の構成が必要になる可能性があります。
-2. M シリーズや Mv2 シリーズの VM を使用している場合は、DBMS トランザクション ログや REDO ログを含むボリュームに対して [Azure 書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)を構成していることを確認します。 ドキュメントに記載されている書き込みアクセラレータの制限事項に注意してください。
+2. M シリーズや Mv2 シリーズの VM を使用している場合は、DBMS トランザクション ログや REDO ログを含むボリュームに対して [Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を構成していることを確認します。 ドキュメントに記載されている書き込みアクセラレータの制限事項に注意してください。
 2. デプロイされている VM で [Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)が有効になっているかどうか確認します。
 
 > [!NOTE]

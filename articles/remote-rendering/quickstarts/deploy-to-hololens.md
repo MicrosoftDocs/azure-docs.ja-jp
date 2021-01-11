@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: d6acc16780179654975d63ab2c0b04caf141510c
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557039"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796801"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>クイック スタート:Unity のサンプルを HoloLens にデプロイする
 
@@ -44,7 +44,7 @@ ms.locfileid: "85557039"
 1. 構成を **[リリース]** と **[ARM64]** に変更します
 1. デバッガー モードを **[リモート マシン]** \ に切り替えます。
     ![ソリューションの構成](media/unity-deploy-config.png)
-1. ソリューションをビルドします (F7)
+1. ソリューションをビルドする
 1. プロジェクト "Quickstart" で、 *[プロパティ] > [デバッグ]* の順に移動します
     1. *[リリース]* という構成がアクティブであることを確認します
     1. *[起動するデバッガー]* を **[リモート マシン]** に設定します

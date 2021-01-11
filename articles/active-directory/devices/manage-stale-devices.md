@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 292ba1d52b107acd164408767747e5a33cb0c67d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fc8f599860b6095e1bab90e8e29818d8079e89a9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85252697"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184943"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -57,7 +57,7 @@ Azure AD 内の古いデバイスは、組織内のデバイスの一般的な�
 
     ![アクティビティ タイムスタンプ](./media/manage-stale-devices/01.png)
 
-- [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) コマンドレット
+- [Get-AzureADDevice](/powershell/module/azuread/Get-AzureADDevice) コマンドレット
 
     ![アクティビティ タイムスタンプ](./media/manage-stale-devices/02.png)
 
@@ -89,7 +89,7 @@ Azure AD でデバイスを更新するには、次のいずれかのロール�
 
 ### <a name="system-managed-devices"></a>システム管理デバイス
 
-システム管理デバイスは削除しないでください。 これらは一般に、オートパイロットなどのデバイスです。 一度削除すると、これらのデバイスは再プロビジョニングできません。 新しい `get-msoldevice` コマンドレットは、システム管理デバイスを既定で除外します。 
+システム管理デバイスは削除しないでください。 これらは一般に、オートパイロットなどのデバイスです。 一度削除すると、これらのデバイスは再プロビジョニングできません。 新しい `Get-AzureADDevice` コマンドレットは、システム管理デバイスを既定で除外します。 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
 
@@ -129,26 +129,25 @@ Azure portal で古いデバイスをクリーンアップすることはでき�
 
 一般的なルーチンは次の手順で構成されます。
 
-1. [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) コマンドレットを使用して Azure Active Directory に接続する
+1. [Connect-AzureAD](/powershell/module/azuread/connect-azuread) コマンドレットを使用して Azure Active Directory に接続します
 1. デバイスの一覧を取得する
-1. [Disable-MsolDevice](/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを無効にします。 
+1. [Set-AzureADDevice](/powershell/module/azuread/Set-AzureADDevice) コマンドレットを使用してデバイスを無効にします (-AccountEnabled オプションを使用して無効にします)。 
 1. デバイスが削除されるまでの猶予期間として設けた日数が経過するのを待ちます。
-1. [Remove-MsolDevice](/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを削除します。
+1. [Remove-AzureADDevice](/powershell/module/azuread/Remove-AzureADDevice) コマンドレットを使用してデバイスを削除します。
 
 ### <a name="get-the-list-of-devices"></a>デバイスの一覧を取得する
 
 すべてのデバイスを取得し、返されたデータを CSV ファイルに保存するには:
 
 ```PowerShell
-Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, Approxi
-mateLastLogonTimestamp | export-csv devicelist-summary.csv
+Get-AzureADDevice -All:$true | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
 ディレクトリ内のデバイスが多い場合、タイムスタンプ フィルターを使用して返されたデバイスの数を絞り込みます。 タイムスタンプが特定の日付よりも古いすべてのデバイスを取得し、返されたデータを CSV ファイルに保存するには: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
-Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
+Get-AzureADDevice | Where {$_.ApproximateLastLogonTimeStamp -le $dt} | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
@@ -163,7 +162,7 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Windows Autopilot デバイスに気を付ける必要があるのはなぜですか?
 
-Azure AD デバイスが Windows Autopilot オブジェクトに関連付けられていた場合、デバイスが将来再利用される場合に、次の 3 つのシナリオが発生する可能性があります。
+Windows Autopilot オブジェクトに関連付けられていた Azure AD デバイスを削除した場合、デバイスが将来再利用される場合に、次の 3 つのシナリオが発生する可能性があります。
 - ホワイト グローブを使用しない Windows Autopilot のユーザー主導型のデプロイでは、新しい Azure AD デバイスが作成されますが、ZTDID にタグ付けされることはありません。
 - Windows Autopilot の自己デプロイ モードのデプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します  (これは、"なりすました" デバイスが資格情報なしで Azure AD への参加を試行しないようにするためのセキュリティ メカニズムです)。このエラーでは、ZTDID の不一致が示されます。
 - Windows Autopilot のホワイト グローブ デプロイでは、Azure AD デバイスの関連付けが見つからないため、これらのデプロイは失敗します (バックグラウンドでは、ホワイト グローブ デプロイで同じ自己デプロイ モード プロセスが使用されるため、同じセキュリティ メカニズムが適用されます)。

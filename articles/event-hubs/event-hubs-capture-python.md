@@ -1,189 +1,178 @@
 ---
-title: クイック スタート:Python アプリからキャプチャしたデータを読み取る - Azure Event Hubs
-description: クイック スタート:Azure Python SDK を用いて、Event Hubs Capture 機能を示すスクリプト。
+title: Python アプリから Azure Event Hubs でキャプチャされたデータを読み取る (最新)
+description: この記事では、イベント ハブに送信されたデータをキャプチャし、キャプチャされたイベント データを Azure Storage アカウントから読み取る Python コードを記述する方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 364ca789f560dc8fdae099b09c77946bc4ad5005
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cb7165565516136a8425c4c77748c2e13715edb7
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537226"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88927869"
 ---
-# <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>クイック スタート:Event Hubs Capture チュートリアル:Python (azure-eventhub バージョン 1)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Event Hubs データを Azure Storage にキャプチャし、Python を使用してそれを読み取る (azure-eventhub バージョン 5)
 
-Capture は Azure Event Hubs の機能です。 Capture を使用すると、任意の Azure Blob Storage アカウントに、イベント ハブ内のストリーミング データを自動的に配布できます。 この機能により、リアルタイムのストリーミング データを容易にバッチ処理することができます。 この記事では、Event Hubs Capture を Python で使用する方法について説明します。 Event Hubs Capture の詳細については、「[Azure Event Hubs で Azure Blob Storage または Azure Data Lake Storage にイベントをキャプチャする][Overview of Event Hubs Capture]」を参照してください。
+イベント ハブに送信されたデータが Azure ストレージ アカウントあるいは Azure Data Lake Storage Gen 1 または Gen 2 にキャプチャされるようにイベント ハブを構成できます。 この記事では、イベントをイベント ハブに送信し、キャプチャされたデータを **Azure Blob Storage** から読み取る Python コードを記述する方法を示します。 この機能の詳細については、[Event Hubs Capture 機能の概要](event-hubs-capture-overview.md)に関するページを参照してください。
 
-このチュートリアルでは、[Azure Python SDK](https://azure.microsoft.com/develop/python/) を使用して、Capture の機能を示します。 "*sender.py*" プログラムでは、シミュレートされた環境のテレメトリが JSON 形式で Event Hubs に送信されます。 イベント ハブで Capture 機能が使用され、このデータが数回に分けて Blob Storage に書き込まれます。 "*capturereader.py*" アプリでは、これらの BLOB を読み取り、各デバイスに追加ファイルを作成して、各デバイスの " *.csv*" ファイルにデータを書き込みます。
+このクイックスタートでは、[Azure Python SDK](https://azure.microsoft.com/develop/python/) を使用して、Capture の機能を試してみます。 *sender.py* アプリは、シミュレートされた環境のテレメトリを JSON 形式でイベント ハブに送信します。 イベント ハブは、Capture 機能を使用して、このデータを数回に分けて Blob Storage に書き込むように構成されています。 *capturereader.py* アプリは、こうした BLOB を読み取り、デバイスごとに追加ファイルを作成します。 その後、アプリはデータを CSV ファイルに書き込みます。
 
-> [!WARNING]
-> このクイックスタートでは、Azure Event Hubs Python SDK のバージョン 1 を使用します。 [バージョン 5 の Python SDK](get-started-capture-python-v2.md) にコードを[移行](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)することをお勧めします。
-
-このチュートリアルでは次を行います。 
+このクイック スタートでは次の作業を行います。 
 
 > [!div class="checklist"]
 > * Azure portal で Azure Blob Storage アカウントとコンテナーを作成します。
-> * Event Hubs Capture を有効にしてストレージ アカウントに送ります。
+> * Azure portal を使用して Event Hubs 名前空間を作成します。
+> * Capture 機能が有効になっているイベント ハブを作成し、それをストレージ アカウントに接続します。
 > * Python スクリプトを使用して、利用するイベント ハブへデータを送信します。
 > * 別の Python スクリプトを使用して、Event Hubs Capture からファイルを読み取り、処理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Python 3.4 以降 (`pip` がインストールおよび更新されている)。
-  
-- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-  
-- 次の手順に従って作成された、アクティブな Event Hubs 名前空間とイベント ハブ: 「[クイック スタート: Azure portal を使用したイベント ハブの作成](event-hubs-create.md)」。 このチュートリアルの後半で使用するため、名前空間とイベント ハブの名前をメモしておきます。 
-  
-  > [!NOTE]
-  > 使用するストレージ コンテナーが既にある場合は、Event Hub の作成時に Capture を有効にし、ストレージ コンテナーを選択することができます。 
-  > 
-  
-- Event Hubs 共有アクセス キー名と主キー値。 これらの値は、Event Hubs ページの **[共有アクセス ポリシー]** で検索または作成します。 既定のアクセス キー名は **RootManageSharedAccessKey** です。 このチュートリアルで後ほど使用するため、アクセス キー名と主キー値をコピーします。 
+- Python 2.7 および 3.5 以降 (PIP がインストールおよび更新されている)。  
+- Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。  
+- アクティブな Event Hubs 名前空間とイベント ハブ。
+[Event Hubs 名前空間を作成し、その名前空間内にイベント ハブを作成します](event-hubs-create.md)。 Event Hubs 名前空間の名前、イベント ハブの名前、および名前空間のプライマリ アクセス キーを記録しておいてください。 アクセス キーの取得については、「[Event Hubs の接続文字列の取得](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)」を参照してください。 既定のキー名は *RootManageSharedAccessKey* です。 このクイックスタートでは、プライマリ キーのみ必要となります。 接続文字列は必要ありません。  
+- Azure Storage アカウント、ストレージ アカウントの BLOB コンテナー、ストレージ アカウントへの接続文字列。 これらの項目がない場合は、次の手順を実行します。  
+    1. [Azure Storage アカウントを作成する](../storage/common/storage-account-create.md?tabs=azure-portal)  
+    1. [ストレージ アカウントに BLOB コンテナーを作成する](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
+    1. [ストレージ アカウントへの接続文字列を取得する](../storage/common/storage-configure-connection-string.md)
 
-## <a name="create-an-azure-blob-storage-account-and-container"></a>Azure Blob Storage アカウントとコンテナーを作成する
+    接続文字列とコンテナー名を記録しておいてください。後でこのクイックスタートの中で使用します。  
+- イベント ハブの Capture 機能の有効化。 [Azure portal を使用して Event Hubs Capture を有効にする方法](event-hubs-capture-enable-through-portal.md)に関するページの手順に従ってください。 前の手順で作成したストレージ アカウントと BLOB コンテナーを選択します。 この機能はまた、イベント ハブの作成時に有効にすることもできます。  
 
-キャプチャに使用するストレージ アカウントとコンテナーを作成します。 
-
-1. [Azure portal][Azure portal] にサインインします。
-2. 左側のナビゲーションで、 **[ストレージ アカウント]** を選択し、 **[ストレージ アカウント]** 画面で **[追加]** を選択します。
-3. ストレージ アカウントの作成画面で、サブスクリプションとリソース グループを選択し、ストレージ アカウントに名前を付けます。 他の選択は既定のままにしておくことができます。 **[確認および作成]** を選択し、設定を確認してから、 **[作成]** を選択します。 
-   
-   ![ストレージ アカウントの作成][1]
-   
-4. デプロイが完了したら、 **[リソースに移動]** を選択し、ストレージ アカウントの **[概要]** 画面で **[コンテナー]** を選択します。
-5. **[コンテナー]** 画面で、 **[+ コンテナー]** を選択します。 
-6. **[新しいコンテナー]** 画面で、コンテナーに名前を付け、 **[OK]** を選択します。 このチュートリアルで後ほど使用するため、コンテナー名をメモしておきます。 
-7. **[コンテナー]** 画面の左側のナビゲーションで、 **[アクセス キー]** を選択します。 このチュートリアルで後ほど使用するため、**ストレージ アカウント名**、**key1** の下の **キー** 値をコピーします。
- 
-## <a name="enable-event-hubs-capture"></a>Event Hubs Capture を有効にする
-
-1. Azure portal で、 **[すべてのリソース]** からその Event Hubs 名前空間を選択し、左側のナビゲーションで **[イベント ハブ]** を選択してから、ご自分のイベント ハブを選択して、イベント ハブに移動します。 
-2. イベント ハブの **[概要]** 画面で、 **[Capture events]\(イベントのキャプチャ\)** を選択します。
-3. **[キャプチャ]** 画面で、 **[オン]** を選択します。 次に、 **[Azure ストレージ コンテナー]** で、 **[コンテナーの選択]** を選択します。 
-4. **[コンテナー]** 画面で、使用するストレージ コンテナーを選択し、 **[選択]** を選択します。 
-5. **[キャプチャ]** 画面で、 **[変更の保存]** を選択します。 
-
-## <a name="create-a-python-script-to-send-events-to-event-hub"></a>イベントをイベント ハブに送信する Python スクリプトを作成する
-このスクリプトでは、200 のイベントをイベント ハブに送信します。 イベントは、JSON 形式で送信される単純な環境測定値です。
+## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>イベントをイベント ハブに送信する Python スクリプトを作成する
+このセクションでは、イベント ハブに 200 のイベント (10 デバイス * 20 イベント) を送信する Python スクリプトを作成します。 これらのイベントは、JSON 形式で送信されたサンプルの環境測定値です。 
 
 1. [Visual Studio Code][Visual Studio Code]など、お使いの Python エディターを開きます。
-2. "*sender.py*" という名前の新しいファイルを作成します。 
-3. 次のコードを "*sender.py*" に貼り付けます。 イベント ハブの \<namespace>、\<AccessKeyName>、\<primary key value>、\<eventhub> は、使用する実際の値で置き換えてください。
+2. *sender.py*という名前のスクリプトを作成します。 
+3. 次のコードを "*sender.py*" に貼り付けます。 
    
-   ```python
-   import uuid
-   import datetime
-   import random
-   import json
-   from azure.servicebus.control_client import ServiceBusService
+    ```python
+    import time
+    import os
+    import uuid
+    import datetime
+    import random
+    import json
+    
+    from azure.eventhub import EventHubProducerClient, EventData
+    
+    # This script simulates the production of events for 10 devices.
+    devices = []
+    for x in range(0, 10):
+        devices.append(str(uuid.uuid4()))
+    
+    # Create a producer client to produce and publish events to the event hub.
+    producer = EventHubProducerClient.from_connection_string(conn_str="EVENT HUBS NAMESAPCE CONNECTION STRING", eventhub_name="EVENT HUB NAME")
+    
+    for y in range(0,20):    # For each device, produce 20 events. 
+        event_data_batch = producer.create_batch() # Create a batch. You will add events to the batch later. 
+        for dev in devices:
+            # Create a dummy reading.
+            reading = {'id': dev, 'timestamp': str(datetime.datetime.utcnow()), 'uv': random.random(), 'temperature': random.randint(70, 100), 'humidity': random.randint(70, 100)}
+            s = json.dumps(reading) # Convert the reading into a JSON string.
+            event_data_batch.add(EventData(s)) # Add event data to the batch.
+        producer.send_batch(event_data_batch) # Send the batch of events to the event hub.
+    
+    # Close the producer.    
+    producer.close()
+    ```
+4. スクリプト内の次の値を置き換えます。  
+    * `EVENT HUBS NAMESPACE CONNECTION STRING` を Event Hubs 名前空間への接続文字列に置き換えます。  
+    * `EVENT HUB NAME` をイベント ハブの名前に置き換えます。  
+5. イベントをイベント ハブに送信するスクリプトを実行します。  
+6. Azure portal で、イベント ハブがメッセージを受信したことを確認できます。 **[メトリック]** セクションで **[メッセージ]** ビューに切り替えます。 ページを最新の情報に更新して、グラフを更新します。 メッセージが受信されたとページに表示されるまでに数秒かかることがあります。 
+
+    [![イベント ハブがメッセージを受信したことを確認する](./media/get-started-capture-python-v2/messages-portal.png)](./media/get-started-capture-python-v2/messages-portal.png#lightbox)
+
+## <a name="create-a-python-script-to-read-your-capture-files"></a>Capture ファイルを読み取る Python スクリプトを作成する
+この例では、キャプチャされたデータは Azure Blob Storage に格納されます。 このセクションのスクリプトは、Azure Storage アカウントからキャプチャ データ ファイルを読み取り、ユーザーが簡単に開いて確認できる CSV ファイルを生成します。 アプリケーションの現在の作業ディレクトリ内に 10 個のファイルが表示されます。 これらのファイルには、10 個のデバイスの環境測定値が含まれています。 
+
+1. Python エディターで、*capturereader.py* という名前のスクリプトを作成します。 このスクリプトはキャプチャされたファイルを読み取り、それぞれのデバイスにのみデータを書き込むようにデバイスごとのファイルを作成します。
+2. 次のコードを "*capturereader.py*" に貼り付けます。 
    
-   sbs = ServiceBusService(service_namespace='<namespace>', shared_access_key_name='<AccessKeyName>', shared_access_key_value='<primary key value>')
-   devices = []
-   for x in range(0, 10):
-       devices.append(str(uuid.uuid4()))
+    ```python
+    import os
+    import string
+    import json
+    import uuid
+    import avro.schema
+    
+    from azure.storage.blob import ContainerClient, BlobClient
+    from avro.datafile import DataFileReader, DataFileWriter
+    from avro.io import DatumReader, DatumWriter
+    
+    
+    def processBlob2(filename):
+        reader = DataFileReader(open(filename, 'rb'), DatumReader())
+        dict = {}
+        for reading in reader:
+            parsed_json = json.loads(reading["Body"])
+            if not 'id' in parsed_json:
+                return
+            if not parsed_json['id'] in dict:
+                list = []
+                dict[parsed_json['id']] = list
+            else:
+                list = dict[parsed_json['id']]
+                list.append(parsed_json)
+        reader.close()
+        for device in dict.keys():
+            filename = os.getcwd() + '\\' + str(device) + '.csv'
+            deviceFile = open(filename, "a")
+            for r in dict[device]:
+                deviceFile.write(", ".join([str(r[x]) for x in r.keys()])+'\n')
+    
+    def startProcessing():
+        print('Processor started using path: ' + os.getcwd())
+        # Create a blob container client.
+        container = ContainerClient.from_connection_string("AZURE STORAGE CONNECTION STRING", container_name="BLOB CONTAINER NAME")
+        blob_list = container.list_blobs() # List all the blobs in the container.
+        for blob in blob_list:
+            # Content_length == 508 is an empty file, so process only content_length > 508 (skip empty files).        
+            if blob.size > 508:
+                print('Downloaded a non empty blob: ' + blob.name)
+                # Create a blob client for the blob.
+                blob_client = ContainerClient.get_blob_client(container, blob=blob.name)
+                # Construct a file name based on the blob name.
+                cleanName = str.replace(blob.name, '/', '_')
+                cleanName = os.getcwd() + '\\' + cleanName 
+                with open(cleanName, "wb+") as my_file: # Open the file to write. Create it if it doesn't exist. 
+                    my_file.write(blob_client.download_blob().readall()) # Write blob contents into the file.
+                processBlob2(cleanName) # Convert the file into a CSV file.
+                os.remove(cleanName) # Remove the original downloaded file.
+                # Delete the blob from the container after it's read.
+                container.delete_blob(blob.name)
+    
+    startProcessing()    
+    ```
+3. `AZURE STORAGE CONNECTION STRING` を Azure Storage アカウントへの接続文字列に置き換えます。 このクイックスタートで作成したコンテナーの名前は *capture* です。 コンテナーに別の名前を使用した場合は、*capture* をストレージ アカウント内のコンテナーの名前に置き換えます。 
+
+## <a name="run-the-scripts"></a>スクリプトの実行
+1. Python をパス設定した状態でコマンド プロンプトを開き、これらのコマンドを実行してPython の前提条件となるパッケージをインストールします:
    
-   for y in range(0,20):
-       for dev in devices:
-           reading = {'id': dev, 'timestamp': str(datetime.datetime.utcnow()), 'uv': random.random(), 'temperature': random.randint(70, 100), 'humidity': random.randint(70, 100)}
-           s = json.dumps(reading)
-           sbs.send_event('<eventhub>', s)
-       print(y)
    ```
-4. ファイルを保存します。
-
-## <a name="create-a-python-script-to-read-capture-files"></a>Capture ファイルを読み取る Python スクリプトを作成する
-
-このスクリプトでは、キャプチャされたファイルを読み取り、デバイスごとに、そのデバイスのデータのみを書き込めるようにファイルを作成します。
-
-1. Python エディターで、"*capturereader.py*" という名前の新しいファイルを作成します。 
-2. 次のコードを "*capturereader.py*" に貼り付けます。 \<storageaccount>、\<storage account access key>、\<storagecontainer> は、保存した実際の値で置き換えてください。
-   
-   ```python
-   import os
-   import string
-   import json
-   import avro.schema
-   from avro.datafile import DataFileReader, DataFileWriter
-   from avro.io import DatumReader, DatumWriter
-   from azure.storage.blob import BlockBlobService
-   
-   def processBlob(filename):
-       reader = DataFileReader(open(filename, 'rb'), DatumReader())
-       dict = {}
-       for reading in reader:
-           parsed_json = json.loads(reading["Body"])
-           if not 'id' in parsed_json:
-               return
-           if not parsed_json['id'] in dict:
-               list = []
-               dict[parsed_json['id']] = list
-           else:
-               list = dict[parsed_json['id']]
-               list.append(parsed_json)
-       reader.close()
-       for device in dict.keys():
-           deviceFile = open(device + '.csv', "a")
-           for r in dict[device]:
-               deviceFile.write(", ".join([str(r[x]) for x in r.keys()])+'\n')
-   
-   def startProcessing(accountName, key, container):
-       print('Processor started using path: ' + os.getcwd())
-       block_blob_service = BlockBlobService(account_name=accountName, account_key=key)
-       generator = block_blob_service.list_blobs(container)
-       for blob in generator:
-           #content_length == 508 is an empty file, so only process content_length > 508 (skip empty files)
-           if blob.properties.content_length > 508:
-               print('Downloaded a non empty blob: ' + blob.name)
-               cleanName = str.replace(blob.name, '/', '_')
-               block_blob_service.get_blob_to_path(container, blob.name, cleanName)
-               processBlob(cleanName)
-               os.remove(cleanName)
-           block_blob_service.delete_blob(container, blob.name)
-   startProcessing('<storageaccount>', '<storage account access key>', '<storagecontainer>')
-   ```
-
-## <a name="run-the-python-scripts"></a>Python スクリプトを実行する
-
-1. Python をパス設定したコマンド プロンプトを開き、次のコマンドを実行して Python の前提条件となるパッケージをインストールします。
-   
-   ```cmd
-   pip install azure-storage
-   pip install azure-servicebus
+   pip install azure-storage-blob
+   pip install azure-eventhub
    pip install avro-python3
    ```
+2. *sender.py* と *capturereader.py* の保存先ディレクトリに移動して、次のコマンドを実行します。
    
-   以前のバージョンの `azure-storage` または `azure` をご利用の場合は、`--upgrade` オプションの使用が必要になることがあります。
-   
-   また、次のコマンドの実行が必要になる場合もあります。 ほとんどのシステムでは、このコマンドを実行する必要はありません。 
-   
-   ```cmd
-   pip install cryptography
+   ```
+   python sender.py
    ```
    
-2. "*sender.py*" と "*capturereader.py*" を保存したディレクトリから、次のコマンドを実行します。
+   このコマンドにより、新しい Python プロセスが起動して sender を実行します。
+3. capture が実行されるまで数分待って、元のコマンド ウィンドウに、次のコマンドを入力します。
    
-   ```cmd
-   start python sender.py
    ```
-   
-   このコマンドにより、新しい Python プロセスが起動して sender が実行されます。
-   
-3. キャプチャの実行が完了したら、次のコマンドを実行します。
-   
-   ```cmd
    python capturereader.py
    ```
 
-   キャプチャ プロセッサでは、ストレージ アカウント コンテナーから空ではないすべての BLOB がダウンロードされ、その結果が " *.csv*" ファイルとしてローカル ディレクトリに書き込まれます。 
+   このキャプチャ プロセッサでは、ローカル ディレクトリが使用され、ストレージ アカウントとコンテナーからすべての BLOB がダウンロードされます。 空ではないものがすべて処理され、結果が CSV ファイルとしてローカル ディレクトリに書き込まれます。
 
 ## <a name="next-steps"></a>次のステップ
+[GitHub の Python サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)をご覧ください。 
 
-Event Hubs の詳細については、以下を参照してください。 
-
-* [Event Hubs Capture の概要][Overview of Event Hubs Capture]
-* [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
-* [Event Hubs の概要][Event Hubs overview]
 
 [Azure portal]: https://portal.azure.com/
 [Overview of Event Hubs Capture]: event-hubs-capture-overview.md

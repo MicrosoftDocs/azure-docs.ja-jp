@@ -3,12 +3,12 @@ title: Azure Relay の認証と承認 | Microsoft Docs
 description: この記事では、Azure Relay サービスでの Shared Access Signature (SAS) 認証の概要について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 63e075bc9bf75005a92866f9fa0f90ddaba2f016
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4b0a5c7a092155a006419eedd170a63abed42bb3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316933"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033379"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay の認証と承認
 
@@ -20,7 +20,7 @@ ms.locfileid: "85316933"
 
 SAS のキーは Relay 名前空間で構成できます。 Service Bus メッセージングとは異なり、[Relay ハイブリッド接続](relay-hybrid-connections-protocol.md)では、許可されていない送信者や匿名の送信者がサポートされます。 ポータルの次のスクリーンショットに示すように、エンティティの作成時に、そのエンティティの匿名アクセスを有効にすることができます。
 
-![][0]
+![[ハイブリッド接続の作成] というタイトルのダイアログ ボックスには、[名前] テキスト ボックスと、[クライアント認証が必要] というラベルの付いたチェック ボックス (オンになっている) があります。][0]
 
 SAS を使用するには、Relay 名前空間で、次の要素で構成される [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトを構成します。
 

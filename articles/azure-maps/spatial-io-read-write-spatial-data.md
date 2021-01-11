@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a482b860ae13e817727ca0c3848a598fe3632136
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b094f63c075bdb8af225ff366343c60bc6818224
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277589"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816764"
 ---
 # <a name="read-and-write-spatial-data"></a>空間データの読み取りと書き込み
 
@@ -153,6 +153,12 @@ GML は、他の XML 仕様の拡張としてよく使用される、空間 XML 
 - `propertyTypes` オプション - このオプションはキー値の参照テーブルで、ここではキーがデータ セット内のプロパティの名前です。 値は、解析時に値をキャストするオブジェクトの種類です。 サポートされる型の値は `string`、`number`、`boolean`、`date` です。 プロパティが参照テーブルにない場合、または型が定義されていない場合、プロパティは文字列として解析されます。
 
 入力データが XML であるが、データが他のサポートされる空間 XML 形式の 1 つではないことが検出されると、`atlas.io.read` 関数が `atlas.io.core.GmlReader.read` 関数の既定になります。
+
+`GmlReader` は、次のいずれかの SRID を持つ座標を解析します。
+
+- EPSG:4326 (推奨)
+- EPSG:4269、EPSG:4283、EPSG:4258、EPSG:4308、EPSG:4230、EPSG:4272、EPSG:4271、EPSG:4267、EPSG:4608、EPSG:4674 (場合によっては、わずかな許容誤差があります)
+- EPSG:3857、EPSG:102100、EPSG:3785、EPSG:900913、EPSG:102113、EPSG:41001、EPSG:54004
 
 ## <a name="next-steps"></a>次のステップ
 

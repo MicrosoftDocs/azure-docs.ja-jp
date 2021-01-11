@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a43637071ec1a9962c8aa1b2262e07354293f12b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2918c5842d6470e634518ff9c12f6f04aefc920
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512430"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185385"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
@@ -128,6 +128,7 @@ Azure Import/Export サービスでは、すべての Azure Storage アカウン
 |米国中北部     |  オーストラリア南東部       | ブラジル南部        | 英国南部        |
 |米国中南部     | 西日本        |韓国中部         | ドイツ中部        |
 |米国中西部     |  東日本       | US Gov バージニア州        | ドイツ北東部        |
+|南アフリカ西部   |  南アフリカ北部 |
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 

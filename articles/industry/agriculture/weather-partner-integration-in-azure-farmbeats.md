@@ -114,7 +114,7 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
 このコンポーネントは、顧客が FarmBeats で Docker 登録を開始したときに実行される必要があります。 このプログラムに渡される引数 (arg1, arg2) は、次のとおりです。
 
 - FarmBeats API エンドポイント: API 要求の FarmBeats API エンドポイント: これは、FarmBeats デプロイに対して API 呼び出しを行うためのエンドポイントです。
-- Azure 関数 URL: これは、FarmBeats API のアクセス トークンが提供される、データ プロバイダー独自の個人用エンドポイントです。 この URL で GET を呼び出すだけで、応答でアクセス トークンがフェッチされます。
+- Azure Function URL: これは、FarmBeats API のアクセス トークンが提供される、データ プロバイダー独自の個人用エンドポイントです。 この URL で GET を呼び出すだけで、応答でアクセス トークンがフェッチされます。
 
 ブートストラップの責任は、ユーザーがジョブを実行して気象データを取得できるように、必要なメタデータを作成することです。 リファレンス実装については、[こちら](https://github.com/azurefarmbeats/noaa_docker)を参照してください。 bootstrap_manifest.json は、必要に応じて更新することができ、リファレンス ブートストラップ プログラムにより、必要なメタデータが自動的に作成されます。
 
@@ -136,8 +136,8 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
 
   WeatherDataModel | [説明] |
   --- | ---
-  名前  | 気象データ モデルの名前 |
-  説明  | そのモデルについてのわかりやすい説明を入力します。 |
+  Name  | 気象データ モデルの名前 |
+  Description  | そのモデルについてのわかりやすい説明を入力します。 |
   Properties  | データ プロバイダーによって定義される追加プロパティ。 |
   weatherMeasures > Name  | 気象メジャーの名前。 例: humidity_max |
   weatherMeasures > DataType  | Double または Enum。 Enum の場合、measureEnumDefinition は必須 |
@@ -148,7 +148,7 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
   weatherMeasures > Depth  | センサーの深さ (センチメートル単位)。 たとえば、地面より 10 cm 下の湿度。
   weatherMeasures > Description  | そのメジャーについてのわかりやすい説明を入力します。 |
   **JobType** | **説明** |
-  名前  | ジョブの名前 (例: Get_Daily_Forecast)。顧客が気象データを取得するために実行するジョブ|
+  Name  | ジョブの名前 (例: Get_Daily_Forecast)。顧客が気象データを取得するために実行するジョブ|
   pipelineDetails > parameters > name  | パラメーターの名前 |
   pipelineDetails > parameters > type | String、Int、Float、Bool、Array |
   pipelineDetails > parameters > isRequired | boolean、必須パラメーターの場合は true、それ以外の場合は false、既定は true |
@@ -159,8 +159,8 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
   **WeatherDataLocation** | **説明** |
   weatherDataModelId  | ブートストラップで作成された対応する WeatherDataModel の ID|
   location  | 緯度、経度、高度を表します |
-  名前 | オブジェクトの名前 |
-  説明 | 説明 |
+  Name | オブジェクトの名前 |
+  Description | 説明 |
   farmId | ファームの**オプションの** ID - ジョブ パラメーターの一部として顧客によって提供されます |
   Properties  | 製造元から提供されるその他のプロパティ。
 
@@ -180,7 +180,7 @@ Docker プログラムには、**ブートストラップ**と**ジョブ**の 2
 
 ## <a name="weather-data-telemetry-specifications"></a>気象データ (テレメトリ) の仕様
 
-気象データは、処理のために Azure イベント ハブにプッシュされる正規のメッセージにマップされます。 Azure EventHub は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) を取り込むことができるようにするサービスです。 気象データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成する必要があります。 テレメトリの送信の詳細については、[イベント ハブへのテレメトリの送信](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)に関するページを参照してください
+気象データは、処理のために Azure Event Hub にプッシュされる正規のメッセージにマップされます。 Azure Event Hub は、接続されているデバイスやアプリケーションからリアルタイムでデータ (テレメトリ) を取り込むことができるようにするサービスです。 気象データを FarmBeats に送信するには、FarmBeats のイベント ハブにメッセージを送信するクライアントを作成する必要があります。 テレメトリの送信の詳細については、[イベント ハブへのテレメトリの送信](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)に関するページを参照してください
 
 指定されたイベント ハブにクライアントとしてテレメトリを送信する Python コードの例を次に示します。
 

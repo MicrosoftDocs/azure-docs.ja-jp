@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 045c73e3efefb29aac6bb25a8661fd510e351926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a4ab403ebafbf078accd2ee2256c0c5bb69548e9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021128"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288272"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>SAP NetWeaver のための高可用性のアーキテクチャとシナリオ
 
@@ -95,7 +95,7 @@ ms.locfileid: "84021128"
 [sap-ha-bc-virtual-env-hyperv-vmware-white-paper]:https://scn.sap.com/docs/DOC-44415
 [sap-ha-partner-information]:https://scn.sap.com/docs/DOC-8541
 [azure-sla]:https://azure.microsoft.com/support/legal/sla/
-[azure-virtual-machines-manage-availability]:https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability
+[azure-virtual-machines-manage-availability]:../../windows/manage-availability.md
 [azure-storage-redundancy]:https://azure.microsoft.com/documentation/articles/storage-redundancy/
 [azure-storage-managed-disks-overview]:https://docs.microsoft.com/azure/storage/storage-managed-disks-overview
 
@@ -226,7 +226,7 @@ ms.locfileid: "84021128"
 
 [virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
-[virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
+[virtual-machines-manage-availability]:../../manage-availability.md
 
 
 ## <a name="terminology-definitions"></a>用語の定義
@@ -289,12 +289,12 @@ Windows 向けはありますが、Linux 向けの sapinst-integrated SAP 高可
 
 
 ### <a name="azure-availability-zones"></a>Azure 可用性ゾーン
-Azure では、[Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) の概念をさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)全体にロールアウトしています。 Availability Zones が提供される Azure リージョンには複数のデータ センターがあり、電源、冷却装置、ネットワークが独立しています。 1 つの Azure リージョン内で異なるゾーンを提供する理由は、2 つまたは 3 つの Availability Zones にまたがってアプリケーションをデプロイできるようにするためです。 電源やネットワークの問題により 1 つの可用性ゾーンのインフラストラクチャだけが影響を受けた場合でも、Azure リージョン内のアプリケーションのデプロイは完全に機能します。 最終的には、1 つのゾーンの VM がいくつか失われて、容量が若干減る可能性があります。 ただし、他の 2 つのゾーンの VM はまだ稼働しています。 ゾーンを提供する Azure リージョンの一覧は、[Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) に関するページにあります。
+Azure では、[Azure Availability Zones](../../../availability-zones/az-overview.md) の概念をさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)全体にロールアウトしています。 Availability Zones が提供される Azure リージョンには複数のデータ センターがあり、電源、冷却装置、ネットワークが独立しています。 1 つの Azure リージョン内で異なるゾーンを提供する理由は、2 つまたは 3 つの Availability Zones にまたがってアプリケーションをデプロイできるようにするためです。 電源やネットワークの問題により 1 つの可用性ゾーンのインフラストラクチャだけが影響を受けた場合でも、Azure リージョン内のアプリケーションのデプロイは完全に機能します。 最終的には、1 つのゾーンの VM がいくつか失われて、容量が若干減る可能性があります。 ただし、他の 2 つのゾーンの VM はまだ稼働しています。 ゾーンを提供する Azure リージョンの一覧は、[Azure Availability Zones](../../../availability-zones/az-overview.md) に関するページにあります。
 
 Availability Zones を使用する際には、考慮すべき点がいくつかあります。 考慮事項を次に示します。
 
 - 可用性ゾーン内に Azure 可用性セットをデプロイすることはできません。 可用性ゾーンまたは可用性セットのいずれかを VM のデプロイ フレームとして選択する必要があります。
-- [Basic Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) を使用して Windows フェールオーバー クラスター サービスまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用する必要があります
+- [Basic Load Balancer](../../../load-balancer/load-balancer-overview.md) を使用して Windows フェールオーバー クラスター サービスまたは Linux Pacemaker に基づくフェールオーバー クラスター ソリューションを作成することはできません。 代わりに、[Azure Standard Load Balancer SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) を使用する必要があります
 - Azure Availability Zones は、1 つのリージョン内のさまざまな異なる間の特定の距離を保証するものではありません
 - 異なる Azure リージョン内の異なる Azure Availability Zones 間のネットワーク待ち時間は、Azure リージョンごとに異なる可能性があります。 1 つのゾーンからアクティブな DBMS VM までのネットワーク待ち時間がビジネス プロセスへの影響から依然として許容できるようなケースでは、顧客が異なるゾーンをまたがってデプロイされた SAP アプリケーション レイヤーを合理的に実行できる場合があります。 一方、あるゾーン内のアクティブな DBMS VM と別のゾーンにある VM 内の SAP アプリケーション インスタンスとの間の待ち時間が過度に侵入的であり、SAP ビジネス プロセスにとって許容できない顧客シナリオがあります。 そのため、待ち時間が長すぎる場合は、デプロイ アーキテクチャをアプリケーションのアクティブ/アクティブ アーキテクチャまたはアクティブ/パッシブ アーキテクチャとは異なるものにする必要があります。
 - Azure Availability Zones にデプロイするには、[Azure マネージド ディスク](https://azure.microsoft.com/services/managed-disks/)の使用が必須です 
@@ -355,12 +355,12 @@ _**図 1:** 高可用性 SAP アプリケーション サーバー_"
 
 SAP アプリケーション サーバー インスタンスをホストするすべての仮想マシンを、同じ Azure 可用性セットに配置する必要があります。 Azure 可用性セットでは次のことが保証されます。
 
-* すべての仮想マシンは、同じ更新ドメインに含まれます。  
+* 一部の仮想マシンが同じ更新ドメインに含まれません。  
     更新ドメインでは、計画的メンテナンス ダウンタイムの間に仮想マシンが同時に更新されないことが保証されます。
 
     Azure スケール ユニット内のさまざまな更新ドメインと障害ドメインに組み込まれた基本的な機能については、「[更新ドメイン][planning-guide-3.2.2]」で既に紹介しました。
 
-* すべての仮想マシンは、同じ障害ドメインの一部になります。  
+* 一部の仮想マシンが同じ障害ドメインに含まれません。  
     障害ドメインでは、単一障害点によってすべての仮想マシンの可用性が影響を受けないように仮想マシンがデプロイされることが保証されます。
 
 Azure スケール ユニット内の Azure 可用性セットで使用できる更新ドメインと障害ドメインの数に制限はありません。 1 つの可用性セットに VM を追加し続ける場合、2 つ以上の VM は最終的に同じ障害ドメインまたは更新ドメインに含まれます。
@@ -391,7 +391,7 @@ WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを�
 
 * **ファイル共有を使用した SAP ASCS/SCS インスタンスのクラスタリング**: このアーキテクチャの詳細については、[ファイル共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスタリング][sap-high-availability-guide-wsfc-file-share]に関するページを参照してください。
 
-* **ANF SMB 共有を使用した SAP ASCS/SCS インスタンスのクラスタリング**:このアーキテクチャの詳細については、[ANF SMB 共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスタリング](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb)に関するページをご参照ください。
+* **ANF SMB 共有を使用した SAP ASCS/SCS インスタンスのクラスタリング**:このアーキテクチャの詳細については、[ANF SMB 共有を使用した Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスのクラスタリング](./high-availability-guide-windows-netapp-files-smb.md)に関するページをご参照ください。
 
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Linux での SAP ASCS/SCS インスタンスの高可用性アーキテクチャ
 
@@ -399,7 +399,7 @@ WSFC ソリューションを使用して、SAP ASCS/SCS インスタンスを�
 > 
 > SUSE クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングについて詳しくは、「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性][sap-suse-ascs-ha]」をご覧ください。 可用性の高い NFS が必要でない、SLES での代替 HA アーキテクチャについては、[SAP アプリケーション用に Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の SAP NetWeaver に関する高可用性ガイド][sap-suse-ascs-ha-anf]を参照してください。
 
-Red Hat クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングの詳細については、「[Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel)」を参照してください
+Red Hat クラスター フレームワークを使用した SAP ASCS/SCS インスタンスのクラスタリングの詳細については、「[Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](./high-availability-guide-rhel.md)」を参照してください
 
 
 ### <a name="sap-netweaver-multi-sid-configuration-for-a-clustered-sap-ascsscs-instance"></a>クラスター化された SAP ASCS/SCS インスタンスのための SAP NetWeaver マルチ SID の構成
@@ -419,8 +419,8 @@ Red Hat クラスター フレームワークを使用した SAP ASCS/SCS イン
 > マルチ SID クラスタリングは、SAP ASCS/Pacemaker の Linux クラスターでサポートされており、同じクラスター上で **5 つ** の SAP SID に制限されています。
 > Linux のマルチ SID 高可用性アーキテクチャについての詳細は、次をご覧ください。
 
-* [Azure VM での SAP NW の HA SLES for SAP アプリケーション のマルチ SID ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
-* [RHEL for SAP アプリケーション マルチ SID 上の Azure VM での SAP NW の HA ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [Azure VM での SAP NW の HA SLES for SAP アプリケーション のマルチ SID ガイド](./high-availability-guide-suse-multi-sid.md)
+* [RHEL for SAP アプリケーション マルチ SID 上の Azure VM での SAP NW の HA ガイド](./high-availability-guide-rhel-multi-sid.md)
 
 ### <a name="high-availability-dbms-instance"></a>高可用性の DBMS インスタンス
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c0008ab89f4599e2ada51b5637a9665a249bc1c4
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340832"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531814"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure ファイル共有の作成および管理 
 このガイドでは、PowerShell を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -88,7 +88,7 @@ SMB を使用してファイル共有をマウントするには、お使いの 
 - [Azure Functions](../../azure-functions/functions-overview.md) のようなサーバーレス リソースを利用している。 
 - 多数の Azure ファイル共有を対話的に操作する付加価値サービスを作成している (バックアップやウイルス対策スキャンの実行など)。
 
-次の例は、Azure PowerShell モジュールを使用してファイル REST プロトコルで Azure ファイル共有を操作する方法を示しています。 指定されたアクションをファイル共有に対して実行するためのストレージ アカウント キーは、`-Context` パラメーターを使用して取得します。 ストレージ アカウント キーを取得するには、ストレージ アカウントにおける `Owner` の RBAC 役割が必要です。
+次の例は、Azure PowerShell モジュールを使用してファイル REST プロトコルで Azure ファイル共有を操作する方法を示しています。 指定されたアクションをファイル共有に対して実行するためのストレージ アカウント キーは、`-Context` パラメーターを使用して取得します。 ストレージ アカウント キーを取得するには、ストレージ アカウントにおける `Owner` の Azure ロールが必要です。
 
 #### <a name="create-directory"></a>ディレクトリの作成
 Azure ファイル共有のルートで *myDirectory* という名前の新しいディレクトリを作成するには、[New-AzStorageDirectory](/powershell/module/az.storage/New-AzStorageDirectory) コマンドレットを使用します。

@@ -1,17 +1,17 @@
 ---
 title: チュートリアル:ハードウェアの初期化 - Azure FXT Edge Filer
-description: Azure FXT Edge Filer ノードに初期パスワードを設定する方法
+description: ハードウェア ノードに接続して、Azure FXT Edge Filer ノードに初期パスワードを設定する方法について説明します。
 author: ekpgh
 ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4fae7795cdd61e3eb465285163bcd6c0dd9f7db2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75550893"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184926"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>チュートリアル:ハードウェア パスワードを設定する
 

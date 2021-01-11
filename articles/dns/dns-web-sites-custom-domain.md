@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a250eaeb8ac4d0c8cacfb1748855700c9986bf5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76939092"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079452"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
@@ -48,7 +48,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Azure DNS 内でホストすることができ、テストに使用できるドメイン名が必要です。 このドメインに対するフル コントロールが必要となります。 フル コントロールには、このドメインのネーム サーバー (NS) レコードを設定する権限が含まれます。
-* [App Service アプリを作成する](../app-service/app-service-web-get-started-html.md)か、別のチュートリアルで作成したアプリを使用します。
+* [App Service アプリを作成する](../app-service/quickstart-html.md)か、別のチュートリアルで作成したアプリを使用します。
 
 * Azure DNS に DNS ゾーンを作成し、レジストラーのゾーンを Azure DNS に委任します。
 

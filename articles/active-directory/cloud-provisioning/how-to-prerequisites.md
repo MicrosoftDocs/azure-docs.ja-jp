@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7eb632405ef17ef4100503f30168c1207179f48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
+ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85373864"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89226898"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングの前提条件
 この記事では、ID ソリューションとして Azure Active Directory (Azure AD) クラウド プロビジョニングを選択して使用する方法に関するガイダンスを示します。
@@ -27,7 +27,7 @@ ms.locfileid: "85373864"
 Azure AD Connect クラウド プロビジョニングを使用するには、次のものが必要です。
     
 - ゲスト ユーザーではない、Azure AD テナントのハイブリッド ID 管理者アカウント。
-- Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー  このサーバーは、[Active Directory 管理層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。
+- Windows 2012 R2 以降を搭載した、プロビジョニング エージェント用のオンプレミス サーバー  このサーバーは、[Active Directory 管理層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)に基づいた階層 0 のサーバーである必要があります。
 - オンプレミスのファイアウォールの構成
 
 >[!NOTE]
@@ -37,12 +37,12 @@ Azure AD Connect クラウド プロビジョニングを使用するには、�
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センター
 
-1. Azure AD テナントで、クラウド専用のハイブリッド ID 管理者アカウントを作成します。 その方法を採用すると、オンプレミス サービスが利用できなくなった場合にテナントの構成を管理できます。 [クラウド専用のハイブリッド ID 管理者アカウントを追加する](../active-directory-users-create-azure-portal.md)方法について確認してください。 テナントからロックアウトされないようにするには、この手順を実行する必要があります。
-1. 1 つ以上の[カスタム ドメイン名](../active-directory-domains-add-azure-portal.md)を Azure AD テナントに追加します。 ユーザーは、このドメイン名のいずれかを使用してサインインできます。
+1. Azure AD テナントで、クラウド専用のハイブリッド ID 管理者アカウントを作成します。 その方法を採用すると、オンプレミス サービスが利用できなくなった場合にテナントの構成を管理できます。 [クラウド専用のハイブリッド ID 管理者アカウントを追加する](../fundamentals/add-users-azure-active-directory.md)方法について確認してください。 テナントからロックアウトされないようにするには、この手順を実行する必要があります。
+1. 1 つ以上の[カスタム ドメイン名](../fundamentals/add-custom-domain.md)を Azure AD テナントに追加します。 ユーザーは、このドメイン名のいずれかを使用してサインインできます。
 
 ### <a name="in-your-directory-in-active-directory"></a>Active Directory のディレクトリ内
 
-[IdFix ツール](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)を実行して、同期用にディレクトリ属性を準備します。
+[IdFix ツール](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)を実行して、同期用にディレクトリ属性を準備します。
 
 ### <a name="in-your-on-premises-environment"></a>オンプレミスの環境の場合
 
@@ -96,4 +96,3 @@ TLS 1.2 を有効にするには、次の手順に従います。
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)
-

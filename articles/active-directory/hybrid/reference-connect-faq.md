@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956014e3a950a729ef3993e10ca455ab8aae6f4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: fe4350a721b025858493739e78011458f89f33ee
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256681"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89276339"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -34,13 +34,13 @@ Microsoft では、Azure AD Connect サーバーを強化して、お客様の I
 
 詳細については、次を参照してください。 
 
-* [管理者グループのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
+* [管理者グループのセキュリティ保護](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 
-* [ビルトイン Administrator アカウントのセキュリティ保護](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
+* [ビルトイン Administrator アカウントのセキュリティ保護](/windows-server/identity/ad-ds/plan/security-best-practices/appendix-d--securing-built-in-administrator-accounts-in-active-directory)
 
-* [攻撃対象領域の縮小によるセキュリティの向上と維持](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
+* [攻撃対象領域の縮小によるセキュリティの向上と維持](/windows-server/identity/securing-privileged-access/securing-privileged-access#2-reduce-attack-surfaces )
 
-* [Active Directory の攻撃対象領域の縮小](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
+* [Active Directory の攻撃対象領域の縮小](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)
 
 **Q:Azure Active Directory (Azure AD) 全体管理者が 2 要素認証 (2FA) を有効にしている場合、インストールは機能しますか。**  
 2016 年 2 月のビルド時点で、このシナリオがサポートされています。
@@ -253,19 +253,19 @@ Office チームでは、Office ポータルに現在の製品名が反映され
 はい、ステージング モードの Azure AD Connect サーバーは自動アップグレードされます。
 
 **Q:自動アップグレードが失敗し、Azure AD Connect サーバーが起動しない場合には、どうすればよいのでしょうか。**  
-まれに、アップグレードの実行後、Azure AD Connect サービスが開始されないことがあります。 そのような場合は、サーバーを再起動してください。通常はこれで問題が解決します。 それでも Azure AD Connect サービスが開始されない場合は、サポート チケットを発行してください。 詳細については、[サービス要求を作成して Office 365 サポートに問い合わせる](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)方法に関する記事を参照してください。 
+まれに、アップグレードの実行後、Azure AD Connect サービスが開始されないことがあります。 そのような場合は、サーバーを再起動してください。通常はこれで問題が解決します。 それでも Azure AD Connect サービスが開始されない場合は、サポート チケットを発行してください。 詳細については、[サービス要求を作成して Office 365 サポートに問い合わせる](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)方法に関する記事を参照してください。 
 
 **Q:Azure AD Connect を新しいバージョンにアップグレードする際のリスクがよくわかりません。アップグレードについて電話で説明を受けることはできますか。**  
-新しいバージョンの Azure AD Connect にアップグレードする場合は、[サービス要求を作成して Office 365 サポートに問い合わせる](https://blogs.technet.microsoft.com/praveenkumar/2013/07/17/how-to-create-service-requests-to-contact-office-365-support/)方法に関する記事を参照してサポート チケットを開いてください。
+新しいバージョンの Azure AD Connect にアップグレードする場合は、[サービス要求を作成して Office 365 サポートに問い合わせる](/archive/blogs/praveenkumar/how-to-create-service-requests-to-contact-office-365-support)方法に関する記事を参照してサポート チケットを開いてください。
 
 ## <a name="operational-best-practice"></a>操作のベスト プラクティス    
 Windows Server Active Directory と Azure Active Directory 間で同期を行う場合に実行する必要があるベスト プラクティスを次に示します。
 
 **同期されるすべてのアカウントに Multi-Factor Authentication を適用する** Azure Multi-Factor Authentication は、ユーザーにとり代わらずに平易でありながら、データやアプリケーションへのアクセスを保護します。 第 2 の認証方式を要求することでセキュリティが向上し、使用が簡単なさまざまな認証方法によって強力な認証を実現しています。 ユーザーは、管理者が行う構成上の決定に基づいて、MFA で認証が行われる場合と行われない場合があります。 MFA の詳細は、こちら https://www.microsoft.com/security/business/identity/mfa?rtc=1 を参照してください。
 
-**Azure AD Connect サーバーのセキュリティ ガイドラインに従う** Azure AD Connect サーバーには、重要な ID データが格納されているため、[Active Directory 管理階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)の説明に従い、階層 0 のコンポーネントとして取り扱う必要があります。 こちらの[お使いの AADConnect サーバーを保護するガイドライン](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites#azure-ad-connect-server)の説明も参照してください。
+**Azure AD Connect サーバーのセキュリティ ガイドラインに従う** Azure AD Connect サーバーには、重要な ID データが格納されているため、[Active Directory 管理階層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)の説明に従い、階層 0 のコンポーネントとして取り扱う必要があります。 こちらの[お使いの AADConnect サーバーを保護するガイドライン](./how-to-connect-install-prerequisites.md#azure-ad-connect-server)の説明も参照してください。
 
-**資格情報の漏洩に対して PHS を有効にする** パスワード ハッシュの同期では、ご自分のハイブリッド アカウントの[漏洩資格情報検出](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks)も有効になります。 Microsoft はダーク Web の研究者や法執行機関と協力し、公で利用できるユーザー名とパスワードのペアを見つけています。 これらの任意のペアがご自分のユーザーのものと一致する場合、関連付けられているアカウントは高リスクに移されます。 
+**資格情報の漏洩に対して PHS を有効にする** パスワード ハッシュの同期では、ご自分のハイブリッド アカウントの[漏洩資格情報検出](../identity-protection/concept-identity-protection-risks.md)も有効になります。 Microsoft はダーク Web の研究者や法執行機関と協力し、公で利用できるユーザー名とパスワードのペアを見つけています。 これらの任意のペアがご自分のユーザーのものと一致する場合、関連付けられているアカウントは高リスクに移されます。 
 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -275,11 +275,11 @@ Windows Server Active Directory と Azure Active Directory 間で同期を行う
 
 * Azure AD Connect のサポートに関する一般的な破損時補償の技術的な解決策について、KB を検索してください。
 
-[Azure Active Directory に関する Microsoft Q&A 質問ページ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)
+[Azure Active Directory に関する Microsoft Q&A 質問ページ](/answers/topics/azure-active-directory.html)
 
-* [Azure AD コミュニティ](https://docs.microsoft.com/answers/topics/azure-active-directory.html)にアクセスして、技術的な質問と回答を探し、質問をすることができます。
+* [Azure AD コミュニティ](/answers/topics/azure-active-directory.html)にアクセスして、技術的な質問と回答を探し、質問をすることができます。
 
-[Azure AD のサポートを受ける](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+[Azure AD のサポートを受ける](../fundamentals/active-directory-troubleshooting-support-howto.md)
 
 **Q:同期ステップのエラーの後にイベント 6311 と 6401 が発生するのはなぜですか。**
 

@@ -4,12 +4,12 @@ description: この記事では、バックアップ エクスプローラーを
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: e891ee1ccfbe929aaa8ac35518b40f5514da714f
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715207"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824414"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>バックアップ エクスプローラーを使用してバックアップを監視する
 
@@ -94,8 +94,8 @@ ms.locfileid: "83715207"
 
 ## <a name="cross-tenant-views"></a>クロステナント ビュー
 
-複数のテナント環境にわたるサブスクリプションへの委任されたアクセス許可を持つ Azure Lighthouse ユーザーの場合は、既定のサブスクリプション フィルターを使用できます。 データを表示するサブスクリプションを表示するには、Azure portal の右上にある [フィルター] アイコンを選択します。 この機能を使用すると、バックアップ エクスプローラーは、選択したサブスクリプション全体のすべてのコンテナーに関する情報を集計します。 詳細については、「[Azure Lighthouse とは](https://docs.microsoft.com/azure/lighthouse/overview)」を参照してください。
+複数のテナント環境にわたるサブスクリプションへの委任されたアクセス許可を持つ Azure Lighthouse ユーザーの場合は、既定のサブスクリプション フィルターを使用できます。 データを表示するサブスクリプションを表示するには、Azure portal の右上にある [フィルター] アイコンを選択します。 この機能を使用すると、バックアップ エクスプローラーは、選択したサブスクリプション全体のすべてのコンテナーに関する情報を集計します。 詳細については、「[Azure Lighthouse とは](../lighthouse/overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Monitor を使用して、バックアップ データに関する分析情報を得る方法を学習する](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)
+[Azure Monitor を使用して、バックアップ データに関する分析情報を得る方法を学習する](./backup-azure-monitoring-use-azuremonitor.md)

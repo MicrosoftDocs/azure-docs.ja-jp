@@ -4,19 +4,19 @@ description: ダウンストリーム デバイスからの情報を処理でき
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/02/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 0155294777e1d732e5ff3874102b90049d9a123d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cf7147ca1295c9f2cef5d89c232f2c266075e362
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782587"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167404"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -93,15 +93,19 @@ IoT Edge がインストールされている Linux または Windows デバイ�
    * Windows: `Restart-Service iotedge`
    * Linux: `sudo systemctl restart iotedge`
 
-## <a name="deploy-edgehub-to-the-gateway"></a>edgeHub をゲートウェイにデプロイする
+## <a name="deploy-edgehub-and-route-messages"></a>edgeHub をデプロイしてメッセージをルーティングする
 
-デバイスに IoT Edge を初めてインストールするときには、1 つのシステム モジュール (IoT Edge エージェント) のみが自動的に起動します。 デバイスの最初のデプロイを作成すると、2 番目のシステム モジュール (IoT Edge ハブ) も起動されます。
+ダウンストリーム デバイスによって、テレメトリとメッセージがゲートウェイ デバイスに送信されます。ここで、IoT Edge ハブ モジュールは、他のモジュールまたは IoT Hub に情報をルーティングする役割を担います。 この機能のためにゲートウェイ デバイスを準備するには、次のことを確認してください。
 
-IoT Edge ハブは、ダウンストリームのデバイスからの受信メッセージを受信し、次の宛先にルーティングする役割を担います。 デバイス上で **edgeHub** モジュールが実行されていない場合は、デバイスの初期デプロイを作成します。 どのモジュールも追加していないため、デプロイが空のように見えますが、これにより、両方のシステム モジュールが実行されているのを確認されます。
+* IoT Edge ハブ モジュールがデバイスにデプロイされます。
 
-デバイスで実行されているモジュールを確認するには、Azure portal でデバイスの詳細を確認するか、Visual Studio または Visual Studio Code でデバイスの状態を表示するか、デバイス自体で `iotedge list` コマンドを実行します。
+  デバイスに IoT Edge を初めてインストールするときには、1 つのシステム モジュール (IoT Edge エージェント) のみが自動的に起動します。 デバイスの最初のデプロイを作成すると、2 番目のシステム モジュール (IoT Edge ハブ) も起動します。 デバイス上で **edgeHub** モジュールが実行されていない場合は、デバイスのデプロイを作成します。
 
-**edgeAgent** モジュールが、**edgeHub** モジュールなしで実行されている場合は、次の手順を使用します：
+* IoT Edge ハブ モジュールには、ダウンストリーム デバイスからの受信メッセージを処理するためのルートが設定されています。
+
+  ダウンストリーム デバイスからのメッセージを処理するためのルートがゲートウェイ デバイスに存在している必要があります。そうではない場合、メッセージは処理されません。 ゲートウェイ デバイスのモジュールに、または直接 IoT Hub にメッセージを送信することができます。
+
+IoT Edge ハブ モジュールをデプロイし、ダウンストリーム デバイスからの受信メッセージを処理するためのルートを使用して構成するには、次の手順に従います。
 
 1. Azure Portal で、お使いの IoT ハブに移動します。
 
@@ -109,13 +113,27 @@ IoT Edge ハブは、ダウンストリームのデバイスからの受信メ�
 
 3. **[Set Modules] \(モジュールの設定)** を選択します。
 
-4. **Next:次へ: ルート** を選択します。
+4. **[モジュール]** ページで、ゲートウェイ デバイスにデプロイするモジュールを追加できます。 この記事では、このページで明示的に設定する必要のない edgeHub モジュールの構成とデプロイに重点を置いて説明します。
 
-5. **[ルート]** ページには、モジュールまたはダウンストリーム デバイスから IoT Hub にすべてのメッセージを送信する既定のルートがあるはずです。 ない場合は、次の値を使用して新しいルートを追加し、 **[確認および作成]** を選択します。
-   * **名前**: `route`
-   * **値**: `FROM /messages/* INTO $upstream`
+5. **Next:次へ: ルート** を選択します。
 
-6. **[確認および作成]** ページで、 **[作成]** を選択します。
+6. **[ルート]** ページで、ダウンストリーム デバイスからのメッセージを処理するためのルートが存在することを確認します。 次に例を示します。
+
+   * モジュールやダウンストリーム デバイスからのすべてのメッセージを IoT Hub に送信するルート。
+       * **名前**: `allMessagesToHub`
+       * **値**: `FROM /messages/* INTO $upstream`
+
+   * すべてのダウンストリーム デバイスからのすべてのメッセージを IoT Hub に送信するルート。
+      * **名前**: `allDownstreamToHub`
+      * **値**: `FROM /messages/* WHERE NOT IS_DEFINED ($connectionModuleId) INTO $upstream`
+
+      IoT Edge モジュールからのメッセージとは異なり、ダウンストリーム デバイスからのメッセージにはモジュール ID が関連付けられていないため、このルートは機能します。 ルートの **WHERE** 句を使用すると、そのシステム プロパティが含まれるメッセージをフィルター処理で除外できます。
+
+      メッセージのルーティングについて詳しくは、[モジュールのデプロイとルートの確立](./module-composition.md#declare-routes)に関する記事をご覧ください。
+
+7. ルートが 1 つ以上作成されたら、 **[確認と作成]** を選択します。
+
+8. **[確認および作成]** ページで、 **[作成]** を選択します。
 
 ## <a name="open-ports-on-gateway-device"></a>ゲートウェイ デバイスで開いているポート
 
@@ -128,25 +146,6 @@ IoT Hub とのすべての通信は送信接続を介して行われるため、
 | 8883 | MQTT |
 | 5671 | AMQP |
 | 443 | HTTPS <br> MQTT+WS <br> AMQP+WS |
-
-## <a name="route-messages-from-downstream-devices"></a>ダウンストリーム デバイスからのメッセージのルーティング
-
-IoT Edge ランタイムでは、モジュールによって送信されたメッセージと同じように、ダウンストリーム デバイスから送信されたメッセージをルーティングできます。 この機能により、クラウドにデータを送信する前に、ゲートウェイで実行されているモジュールの分析を実行することができます。
-
-現時点では、ダウンストリーム デバイスによって送信されたメッセージをルーティングするには、モジュールによって送信されたメッセージからそれらを区別します。 モジュールによって送信されたすべてのメッセージには **connectionModuleId** という名前のシステム プロパティが含まれますが、ダウンストリーム デバイスによって送信されたメッセージには含まれません。 ルートの WHERE 句を使用して、そのシステム プロパティが含まれるメッセージを除外することができます。
-
-以下のルートは、任意のダウンストリーム デバイスから `ai_insights` という名前のモジュールにメッセージを送信し、次に `ai_insights` から IoT Hub へと送信する例です。
-
-```json
-{
-    "routes":{
-        "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")",
-        "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream"
-    }
-}
-```
-
-メッセージのルーティングについて詳しくは、[モジュールのデプロイとルートの確立](./module-composition.md#declare-routes)に関する記事をご覧ください。
 
 ## <a name="enable-extended-offline-operation"></a>拡張オフライン操作の有効化
 

@@ -2,7 +2,7 @@
 title: Azure Media Services v3 のダイナミック パッケージ
 titleSuffix: Azure Media Services
 description: この記事では、Azure Media Services でのダイナミック パッケージの概要について説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,17 +11,19 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: overview
-ms.date: 06/11/2020
-ms.author: juliako
-ms.openlocfilehash: f019ebd59b2d0b9d6bae8a5dc4904f1bcae0e6c1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: dfa87921bc6a5a6c34b4dec33f4aae1907507730
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090112"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89291621"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Microsoft Azure Media Services は、多くのメディア ソース ファイル形式をエンコードするために使用できます。 これは、コンテンツ保護の有無に関係なく、さまざまなストリーミング プロトコルを介して配信され、すべての主要なデバイス (iOS デバイスや Android デバイスなど) に到達します。 これらのクライアントは、さまざまなプロトコルを認識します。 たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスでは、HLS と MPEG DASH がサポートされます。
 
@@ -33,6 +35,8 @@ Media Services では、[ストリーミング エンドポイント](streaming-
 ## <a name="to-prepare-your-source-files-for-delivery"></a>ソース ファイルをデリバリー用に準備するには
 
 ダイナミック パッケージを活用するには、中間 (ソース) ファイルを一連の複数ビットレート MP4 (ISO Base Media 14496-12) ファイルに[エンコード](encoding-concept.md)する必要があります。 エンコードされた MP4 を含む[資産](assets-concept.md)と、Media Services のダイナミック パッケージで必要とされるストリーミング構成ファイルが必要です。 この一連の MP4 ファイルから、ダイナミック パッケージを使用することで、以下に説明するストリーミング メディア プロトコルを介してビデオを配信することができます。
+
+Azure Media Services のダイナミック パッケージでは、MP4 コンテナー形式のビデオおよびオーディオ ファイルのみがサポートされています。 Dolby などの代替コーデックを使用するときは、オーディオ ファイルを MP4 コンテナーにエンコードする必要もあります。  
 
 > [!TIP]
 > MP4 およびストリーミング構成ファイルを取得する方法の 1 つは、[Media Services を使用してお使いの中間ファイルをエンコードする](#encode-to-adaptive-bitrate-mp4s)ことです。 
@@ -78,8 +82,10 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 次の手順は、Azure Media Services の標準エンコーダーとダイナミック パッケージを併用した一般的な Media Services でのストリーミング ワークフローを示しています。
 
-1. QuickTime/MOV や MXF ファイルなどの入力ファイルをアップロードします。 このファイルは、中間ファイルやソース ファイルとも呼ばれます。 サポートされている形式の一覧については、[Standard Encoder でサポートされている形式](media-encoder-standard-formats.md)に関するページを参照してください。
+1. MP4、QuickTime/MOV、またはその他のサポートされているファイル形式の[入力ファイルをアップロード](job-input-from-http-how-to.md)します。 このファイルは、中間ファイルやソース ファイルとも呼ばれます。 サポートされている形式の一覧については、[Standard Encoder でサポートされている形式](media-encoder-standard-formats.md)に関するページを参照してください。
 1. 中間ファイルを H.264/AAC MP4 アダプティブ ビットレート セットに[エンコード](#encode-to-adaptive-bitrate-mp4s)します。
+
+    エンコードされたファイルが既にあり、ファイルをコピーしてストリーミングするだけであれば、[CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) および [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API を使用します。 結果として、ストリーミング マニフェスト (.ism ファイル) を含む新しい MP4 ファイルが作成されます。
 1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 [ストリーミング ロケーター](streaming-locators-concept.md)を作成して発行します。
 1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、*ストリーミング エンドポイント*が行います。
     
@@ -87,7 +93,7 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 ![ダイナミック パッケージを使用したオンデマンド ストリーミングのワークフローの図](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-上の画像のダウンロード パスは、"*ストリーミング エンドポイント*" (配信元) を通じて直接 MP4 ファイルをダウンロードできることを示すためにのみ存在します (ダウンロードできることを示す[ストリーミング ポリシー](streaming-policy-concept.md)は、ストリーミング ロケーターで指定します)。<br/>ダイナミック パッケージャーによってファイルが変更されることはありません。 
+上の画像のダウンロード パスは、"*ストリーミング エンドポイント*" (配信元) を通じて直接 MP4 ファイルをダウンロードできることを示すためにのみ存在します (ダウンロードできることを示す[ストリーミング ポリシー](streaming-policy-concept.md)は、ストリーミング ロケーターで指定します)。<br/>ダイナミック パッケージャーによってファイルが変更されることはありません。 "*ストリーミング エンドポイント*" (配信元) 機能をバイパスする必要がある場合は、Azure Blob Storage API を使用して、プログレッシブ ダウンロード用に MP4 に直接アクセスすることができます。 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>アダプティブ ビットレート MP4 へのエンコード
 
@@ -123,17 +129,17 @@ Media Services v3 のライブ ストリームの詳細については、[ライ
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>ダイナミック パッケージでサポートされているビデオ コーデック
 
-ダイナミック パッケージでは、[H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC または AVC1) または [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1、または hvc1) でエンコードされたビデオの MP4 ファイルがサポートされています。
+ダイナミック パッケージでは、MP4 コンテナー ファイル形式になっていて、[H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC または AVC1) または [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC、hev1、または hvc1) でエンコードされたビデオが格納されている、ビデオ ファイルがサポートされています。
 
 > [!NOTE]
 > "*ダイナミック パッケージ*" では、最大 4K の解像度および最大 60 フレーム/秒のフレーム レートをテスト済みです。 [Premium エンコーダー](../previous/media-services-encode-asset.md#media-encoder-premium-workflow)では、従来の v2 API を使用した H.265 へのエンコードがサポートされます。
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>ダイナミック パッケージによってサポートされているオーディオ コーデック
 
-ダイナミック パッケージでは、以下のプロトコルでエンコードされたオーディオがサポートされています。
+ダイナミック パッケージでは、次のいずれかのコーデックでエンコードされたオーディオ ストリームが含まれ、MP4 ファイル コンテナー形式で格納されているオーディオ ファイルもサポートされます。
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、HE-AAC v1、または HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 または E-AC3)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、HE-AAC v1、または HE-AAC v2)。 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 または E-AC3)。  ダイナミック パッケージを使用するには、エンコードされたオーディオが MP4 コンテナー形式で格納されている必要があります。
 * Dolby Atmos
 
    Dolby Atmos コンテンツのストリーミングは、CSF (Common Streaming Format) または CMAF (Common Media Application Format) フラグメント化 MP4 による MPEG-DASH プロトコルなどの標準でサポートされ、CMAF による HLS (HTTP ライブ ストリーミング) 経由でサポートされています。
@@ -146,6 +152,10 @@ Media Services v3 のライブ ストリームの詳細については、[ライ
     * DTS-HD Lossless (コアなし) (dtsl)
 
 ダイナミック パッケージでは、複数のコーデックと言語が使用された複数のオーディオ トラックがある資産のストリーム配信のために、DASH または HLS (バージョン 4 以降) を使用して複数のオーディオ トラックがサポートされます。
+
+上記のすべてのオーディオ コーデックで、ダイナミック パッケージを使用するには、エンコードされたオーディオが MP4 コンテナー形式で格納されている必要があります。 サービスでは、Blob Storage での生の基本ストリーム ファイル形式はサポートされていません (たとえば、.dts や .ac3 はサポートされていません)。 
+
+オーディオ パッケージでは、拡張子が .mp4 または .mp4a のファイルのみがサポートされています。 
 
 ### <a name="limitations"></a>制限事項
 

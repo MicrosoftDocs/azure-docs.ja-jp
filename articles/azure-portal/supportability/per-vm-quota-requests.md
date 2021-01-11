@@ -61,7 +61,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
    ![クォータを引き上げるサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -91,7 +91,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
       ![新しい vCPU 制限を選択する](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
 
    ![クォータの詳細で追加の場所を指定する](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 
@@ -120,13 +120,13 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
    ![クォータを引き上げるために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
 1. **[クォータの詳細]** で次の手順を実行します。
 
-   1. **[Deployment model]/(デプロイ モデル/)** で適切なモデルを選択し、 **[Locations]/(場所/)** で場所を選択します。
+   1. **[Deployment model]\(デプロイ モデル\)** で適切なモデルを選択し、 **[Locations]\(場所\)** で場所を選択します。
 
       ![クォータの詳細を入力する](./media/resource-manager-core-quotas-request/quota-details-deployment-rm-locations.png)
 
@@ -146,7 +146,7 @@ Spot VM vCPU の制限の引き上げの詳細については、「[スポット
 
       ![新しい vCPU 制限を選択する](./media/resource-manager-core-quotas-request/quota-details-standard-set-vcpu-limit.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。
 
    このステップでは、これ以前の場所であなたが選択した SKU シリーズがプリロードされます。 追加のシリーズに適用したいクォータ制限を入力します。
 

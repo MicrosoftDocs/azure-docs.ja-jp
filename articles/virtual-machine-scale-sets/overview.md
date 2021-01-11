@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f381afa69d1a445d2bdb14dd663341e4a18f8cd9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075538"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648668"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>仮想マシン スケール セットとは
 Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 仮想マシン スケール セットを使用すると、コンピューティング、ビッグ データ、コンテナー ワークロードなどの分野で大規模なサービスを構築できます。
@@ -40,7 +40,7 @@ Azure Virtual Machine Scale Sets は、多数の VM で実行されるアプリ�
 
 - **大規模に動作する**
     - スケール セットでは、最大 1,000 個の VM インスタンスがサポートされます。 独自のカスタム VM イメージを作成してアップロードする場合、上限は 600 個の VM インスタンスになります。
-    - 運用環境のワークロードで最高のパフォーマンスを実現するには、[Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) を使用してください。
+    - 運用環境のワークロードで最高のパフォーマンスを実現するには、[Azure Managed Disks](../virtual-machines/managed-disks-overview.md) を使用してください。
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>仮想マシンとスケール セットの違い
@@ -60,6 +60,10 @@ Azure Virtual Machine Scale Sets は、多数の VM で実行されるアプリ�
 シンプルなオンボーディング プロセスを備え、スケール セット内の VM から CPU、メモリ、ディスク、ネットワークの重要なパフォーマンス カウンターを自動的に収集する [Azure Monitor for VMs](../azure-monitor/insights/vminsights-overview.md) を使用します。 他にもさまざまな監視機能や定義済みの視覚化機能が備わっているため、スケール セットの可用性とパフォーマンスを重点的に監視することができます。
 
 ページ ビュー、アプリケーションの要求、例外など、アプリケーションに関する詳細情報を収集するには、Application Insights を使った[仮想マシン スケール セット アプリケーション](../azure-monitor/app/azure-vm-vmss-apps.md)の監視を有効します。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](../azure-monitor/app/monitor-web-app-availability.md)を構成します。
+
+## <a name="singapore-data-residency"></a>シンガポールのデータ所在地
+
+Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 まずは、Azure Portal で最初の仮想マシン スケール セットを作成します。

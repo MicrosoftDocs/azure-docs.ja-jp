@@ -1,19 +1,19 @@
 ---
 title: Azure Stack Edge の制限 | Microsoft Docs
-description: Azure Stack Edge のシステム制限および推奨サイズについて説明します。
+description: Azure Stack Edge をデプロイして操作する際の制限 (サービスの制限、デバイスの制限、記憶域の制限など) と推奨されるサイズについて説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 4f7800efb5d4382e8d73c819d950fdfafd10f296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: e21f5a89d9f1f21eb99071a141794f99c07a8dfa
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82568768"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079814"
 ---
 # <a name="azure-stack-edge-limits"></a>Azure Stack Edge の制限
 

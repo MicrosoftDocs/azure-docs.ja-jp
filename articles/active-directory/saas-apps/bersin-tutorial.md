@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Bersin の統合 | Microsoft Docs'
 description: Azure Active Directory と Bersin の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bbc9d229-69fb-4ab5-b6c3-5f3d790ea13e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6794baab00dbb59df89187c8ab91f1a42ab03e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6fb8117a3e834dec71b9dbc98b4a34512a43f646
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158890"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540769"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>チュートリアル: Azure Active Directory と Bersin の統合
 

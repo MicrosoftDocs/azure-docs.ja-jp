@@ -9,12 +9,12 @@ ms.author: mlearned
 description: この記事では、Azure Arc 対応 Kubernetes の概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー
 ms.custom: references_regions
-ms.openlocfilehash: 4f07c0e5e01648984514701cd4838f85478d86af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 885c96b83edb83cfb62fc117d9b4406792827056
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050056"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723726"
 ---
 # <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Azure Arc 対応 Kubernetes プレビューとは
 
@@ -26,6 +26,18 @@ Azure Arc 対応 Kubernetes では、転送中のデータをセキュリティ�
  
 > [!NOTE]
 > Azure Arc 対応 Kubernetes はプレビュー段階です。 運用環境のワークロード用にはお勧めしません。
+
+## <a name="supported-kubernetes-distributions"></a>サポートされている Kubernetes ディストリビューション
+
+Azure Arc 対応 Kubernetes は、Cloud Native Computing Foundation (CNCF) で認定されたすべての Kubernetes クラスター (Azure 上の AKS エンジン、Azure Stack Hub 上の AKS エンジン、GKE、EKS、VMware vSphere クラスターなど) で動作します。
+
+次のディストリビューションについて、Azure Arc 対応 Kubernetes の機能が Arc チームによってテストされています。
+* Red Hat OpenShift 4.3
+* Rancher RKE 1.0.8
+* Canonical Charmed Kubernetes 1.18
+* AKS Engine
+* Azure Stack Hub 上の AKS エンジン
+* クラスター API プロバイダー Azure
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ 
 
@@ -44,7 +56,7 @@ Azure Arc 対応 Kubernetes では、以下のシナリオがサポートされ�
 Azure Arc 対応 Kubernetes は、現在、以下のリージョンでサポートされています。 
 
 * 米国東部 
-* 西ヨーロッパ 
+* 西ヨーロッパ
 
 ## <a name="next-steps"></a>次のステップ
 

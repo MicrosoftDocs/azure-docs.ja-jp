@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73044643"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
@@ -95,7 +95,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 **sales_user1** と **marketing_user1** 用の Ranger ポリシーを作成します。
 
-1. **Ranger 管理 UI** を開きます。 **[HBase]** の下の **[\<ClusterName>_hbase]** をクリックします。
+1. **Ranger 管理 UI** を開きます。 **HBase** の下にある **[\<ClusterName>_hbase]** をクリックします。
 
    ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 

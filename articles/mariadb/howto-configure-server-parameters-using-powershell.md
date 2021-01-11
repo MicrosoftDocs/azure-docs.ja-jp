@@ -7,12 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 5/26/2020
-ms.openlocfilehash: 4ee0e5bd0d9d1fa941af245ecc6182ba1608eef0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: be9e61363beeb2f040aba44e67076c3d66997eee
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104964"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490117"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB のサーバー パラメーターを構成する
 

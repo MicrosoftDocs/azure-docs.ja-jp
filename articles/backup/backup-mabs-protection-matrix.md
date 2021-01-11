@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 description: この記事では、Azure Backup Server によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示したサポート マトリックスを示します。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cfcb8fbf9f793cfbe11d2c25b3d2caa7018d0fd4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 70d8b8cd26a40b0c7ec8b538bcb702d281f829e6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538736"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826839"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 
@@ -24,6 +24,9 @@ MABS v3 UR1 には次のマトリックスを使用します。
 
 * 保護と回復 – サポートされているストレージ コンテナーやサポートされているデプロイなどのワークロードに関する詳細情報を一覧表示します。
 
+>[!NOTE]
+>32 ビット保護エージェントのサポートは、MABS v3 UR1 では非推奨となっています。 「[32 ビット保護エージェントの廃止](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation)」を参照してください。
+
 ## <a name="protection-support-matrix"></a>保護のサポート マトリックス
 
 以降のセクションでは、MABS に対する保護のサポート マトリックスについて詳しく説明します。
@@ -37,8 +40,8 @@ MABS v3 UR1 には次のマトリックスを使用します。
 | **[ワークロード]**               | **Version**                                                  | **Azure Backup Server のインストール**                       | **サポートされる Azure Backup Server** | **保護と回復**                                  |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
 | クライアント コンピューター(64 ビット) | Windows 10                                                  | 物理サーバー  <br><br>    Hyper-V 仮想マシン   <br><br>   VMware 仮想マシン | V3 UR1                            | ボリューム、共有、フォルダー、ファイル、重複除去されたボリューム   <br><br>   保護されるボリュームは NTFS である必要があります。 FAT および FAT32 はサポートされていません。  <br><br>    ボリュームは少なくとも 1 GB である必要があります。 Azure Backup Server ではボリューム シャドウ コピー サービス (VSS) を使用してデータ スナップショットを取得します。また、そのスナップショットは、ボリュームが少なくとも 1 GB である場合にのみ機能します。 |
-| サーバー (64 ビット)          | Windows Server 2019、2016、2012 R2、2012                    | Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)  <br><br>    物理サーバー  <br><br>    Hyper-V 仮想マシン <br><br>     VMware 仮想マシン  <br><br>    Azure Stack | V3 UR1                            | ボリューム、共有、フォルダー、ファイル、重複除去されたボリューム (NTFS と ReFS)  <br><br>   システム状態とベア メタル (ワークロードが Azure 仮想マシンとして実行されている場合はサポートされません) |
-| サーバー (64 ビット)          | Windows Server 2008 R2 SP1、Windows Server 2008 SP2 ([Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をインストールする必要があります) | 物理サーバー  <br><br>    Hyper-V 仮想マシン  <br><br>      VMware 仮想マシン  <br><br>   Azure Stack | V3 UR1                            | ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル        |
+| サーバー (64 ビット)          | Windows Server 2019、2016、2012 R2、2012                    | Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)  <br><br>    物理サーバー  <br><br>    Hyper-V 仮想マシン <br><br>     VMware 仮想マシン  <br><br>    Azure Stack | V3 UR1                            | ボリューム、共有、フォルダー、ファイル <br><br>    重複除去されたボリューム (NTFS のみ)  <br><br>   システム状態とベア メタル (ワークロードが Azure 仮想マシンとして実行されている場合はサポートされません) |
+| サーバー (64 ビット)          | Windows Server 2008 R2 SP1、Windows Server 2008 SP2 ([Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) をインストールする必要があります) | 物理サーバー  <br><br>    Hyper-V 仮想マシン  <br><br>      VMware 仮想マシン  <br><br>   Azure Stack | V3 UR1                            | ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル        |
 | SQL Server                | SQL Server 2019、2017、2016 と[サポートされている SP](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016)、2014 とサポートされている [SP](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) | 物理サーバー  <br><br>     Hyper-V 仮想マシン   <br><br>     VMware 仮想マシン  <br><br>   Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)  <br><br>     Azure Stack | V3 UR1                            | すべてのデプロイ シナリオ: データベース       <br><br>  MABS v3 UR1 では、ReFS ボリュームを介した SQL データベースのバックアップがサポートされます                  |
 | Exchange                   | Exchange 2019、2016                                         | 物理サーバー   <br><br>   Hyper-V 仮想マシン  <br><br>      VMware 仮想マシン  <br><br>   Azure Stack  <br><br>    Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) | V3 UR1                            | 保護 (すべてのデプロイ シナリオ):スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) に属するデータベース  <br><br>    回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース    <br><br>  MABS v3 UR1 では、ReFS を介した Exchange のバックアップがサポートされます |
 | SharePoint                 | SharePoint 2019、2016 (最新の SP がインストールされていること)                       | 物理サーバー  <br><br>    Hyper-V 仮想マシン <br><br>    VMware 仮想マシン  <br><br>   Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)   <br><br>   Azure Stack | V3 UR1                            | 保護 (すべてのデプロイ シナリオ):ファーム、フロントエンド Web サーバーのコンテンツ  <br><br>    回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー  <br><br>    コンテンツ データベースに対して SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされません。 |
@@ -54,7 +57,7 @@ MABS v3 UR1 には次のマトリックスを使用します。
 
 | **[ワークロード]** | **Version**                               | **Azure Backup Server のインストール**                      | **サポートされる Azure Backup Server** | **保護と回復**                                 |
 | ------------ | ----------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
-| Linux        | Hyper-V または VMware ゲストとして実行されている Linux | 物理サーバー、オンプレミス Hyper-V 仮想マシン、VMWare での Windows VM | V3 UR1                             | Hyper-V は、Windows Server 2012 R2 または Windows Server 2016 で実行されている必要があります。 保護:仮想マシン全体   <br><br>   回復: 仮想マシン全体   <br><br>    ファイル整合性のあるスナップショットのみがサポートされます。    <br><br>   サポートされる Linux のディストリビューションとバージョンの完全なリストについては、[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)に関するページを参照してください。 |
+| Linux        | Hyper-V または VMware ゲストとして実行されている Linux | 物理サーバー、オンプレミス Hyper-V 仮想マシン、VMWare での Windows VM | V3 UR1                             | Hyper-V は、Windows Server 2012 R2、Windows Server 2016、または Windows Server 2019 で実行されている必要があります。 保護:仮想マシン全体   <br><br>   回復: 仮想マシン全体   <br><br>    ファイル整合性のあるスナップショットのみがサポートされます。    <br><br>   サポートされる Linux のディストリビューションとバージョンの完全なリストについては、[Azure で動作保証済みの Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)に関するページを参照してください。 |
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute のサポート
 

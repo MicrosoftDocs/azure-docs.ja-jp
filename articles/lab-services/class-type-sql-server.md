@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: a3601010eae614049b4af5aa2ddbcdc6acda21cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444881"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079024"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>SQL Server を使用して管理および開発するようにラボを設定する
 
@@ -86,7 +86,7 @@ SQL Database のデプロイが正常に完了したら、ラボを作成し、�
 
 Visual Studio には、SQL Server Data Tools (SSDT) を含む**データ ストレージと処理**ツール セットが含まれています。  SSDT の機能の詳細については、[SQL Server Data Tools の概要](https://docs.microsoft.com/sql/ssdt/sql-server-data-tools?view=sql-server-ver15)に関するページを参照してください。  クラスの共有 SQL Server への接続が正常に行われることを確認するには、「[データベースに接続し、既存のオブジェクトを参照する](https://docs.microsoft.com/sql/ssdt/how-to-connect-to-a-database-and-browse-existing-objects?view=sql-server-ver15)」を参照してください。 メッセージが表示されたら、テンプレート マシンの IP を、SQL Server インスタンスに接続できる、[許可されたコンピューターの一覧](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)に追加します。
 
-Visual Studio では、**Web とクラウド**および**デスクトップとモバイル** ワークロードを含め、いくつかのワークロードがサポートされています。  これらのワークロードはどちらも、データ ソースとして SQL Server をサポートしています。 SQL Server への ASP.NET Core の使用の詳細については、「[Azure App Service での ASP.NET Core および SQL Database アプリの作成](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)」チュートリアルを参照してください。  [System.Data.SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) ライブラリを使用して、[Xamarin](https://docs.microsoft.com/xamarin) アプリから SQL Database に接続します。
+Visual Studio では、**Web とクラウド**および**デスクトップとモバイル** ワークロードを含め、いくつかのワークロードがサポートされています。  これらのワークロードはどちらも、データ ソースとして SQL Server をサポートしています。 SQL Server への ASP.NET Core の使用の詳細については、「[Azure App Service での ASP.NET Core および SQL Database アプリの作成](https://docs.microsoft.com/azure/app-service/tutorial-dotnetcore-sqldb-app)」チュートリアルを参照してください。  [System.Data.SqlClient](https://docs.microsoft.com/dotnet/api/system.data.sqlclient) ライブラリを使用して、[Xamarin](https://docs.microsoft.com/xamarin) アプリから SQL Database に接続します。
 
 ## <a name="install-azure-data-studio"></a>Azure Data Studio をインストールする
 

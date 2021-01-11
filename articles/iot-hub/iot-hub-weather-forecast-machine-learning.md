@@ -37,7 +37,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
   - IoT Hub から取得した気温と湿度のデータを読み取る。
   - Web サービスを呼び出して降水確率を取得する。
   - Azure Blob Storage に結果を保存する。
-- Microsoft Azure ストレージ エクスプローラーを使用して、天気予報を表示する。
+- Microsoft Azure Storage Explorer を使用して、天気予報を表示する。
 
 ## <a name="what-you-need"></a>必要なもの
 
@@ -224,12 +224,12 @@ Stream Analytics ジョブで、 **[開始]**  >  **[現在]**  >  **[開始]** 
 
 ![Stream Analytics ジョブの実行](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
-## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Microsoft Azure ストレージ エクスプローラーを使用して、天気予報を表示する
+## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Microsoft Azure Storage Explorer を使用して、天気予報を表示する
 
-クライアント アプリケーションを実行して、IoT Hub に対する気温と湿度のデータの収集と送信を開始します。 IoT Hub が受信するメッセージごとに、Stream Analytics ジョブは天気予報の Web サービスを呼び出して降水確率を生成します。 結果は Azure Blob Storage に保存されます。 Azure ストレージ エクスプローラーを使用して、この結果を表示することができます。
+クライアント アプリケーションを実行して、IoT Hub に対する気温と湿度のデータの収集と送信を開始します。 IoT Hub が受信するメッセージごとに、Stream Analytics ジョブは天気予報の Web サービスを呼び出して降水確率を生成します。 結果は Azure Blob Storage に保存されます。 Azure Storage Explorer を使用して、この結果を表示することができます。
 
-1. [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールします](https://storageexplorer.com/)。
-1. Azure ストレージ エクスプローラーを開きます。
+1. [Microsoft Azure Storage Explorer をダウンロードしてインストールします](https://storageexplorer.com/)。
+1. Azure Storage Explorer を開きます。
 1. Azure アカウントにサインインします。
 1. サブスクリプションを選択します。
 1. Azure サブスクリプション > **[ストレージ アカウント]** > 自分のストレージ アカウント > **[BLOB コンテナー]** > 自分のコンテナーの順にクリックします。

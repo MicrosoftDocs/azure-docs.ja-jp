@@ -33,7 +33,7 @@ Azure CLI。 Azure CLI をインストールしていない場合、手順につ
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 
-1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
+1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[使ってみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
 
     ```azurecli-interactive
     az login

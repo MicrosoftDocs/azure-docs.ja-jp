@@ -5,12 +5,13 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: b8bf54f9909125030e067bc483ca2fb7e3dc68a7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4eb8dd98909459feab72f61e46834e60c5b07ebd
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253356"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89007759"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>アクター サービスでのサービス レベルの機能の実装
 

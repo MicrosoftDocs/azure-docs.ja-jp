@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773281"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835818"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure におけるコンフィデンシャル コンピューティング
 
@@ -52,7 +52,7 @@ TEE は、承認されたコードのみが実行されるよう強制する環�
 
 アプリケーションの開発時には、[ソフトウェア ツール](#oe-sdk)を使用して、エンクレーブ内に一部のコードとデータを隠蔽することができます。 信頼された環境の外からはだれもコードとデータを表示したり変更したりできないよう、これらのツールによって保護されます。 
 
-基本的に、エンクレーブはブラック ボックスと考えてください。 暗号化されたコードとデータは、箱の中に置くことになります。 箱の外からは何も見えません。 データを取り出す際は、まずデータの暗号化を解除するためのキーをエンクレーブに与えます。その後データは処理され、再び暗号化したうえで、エンクレーブから取り出されます。
+基本的に、エンクレーブはセキュリティで保護されたボックスと考えてください。 暗号化されたコードとデータは、箱の中に置くことになります。 箱の外からは何も見えません。 データを取り出す際は、まずデータの暗号化を解除するためのキーをエンクレーブに与えます。その後データは処理され、再び暗号化したうえで、エンクレーブから取り出されます。
 
 ### <a name="attestation"></a>構成証明
 

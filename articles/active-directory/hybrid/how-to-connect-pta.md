@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa763c875b06bd7e22be0e814838f2e79b24e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0b8f613cb7c75d9dd6af1fcf62f9d484398072c6
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358023"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279467"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
@@ -31,7 +31,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-この機能は、組織にクラウド認証を同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)の代わりです。 ただし、自身のオンプレミスの Active Directory のセキュリティとパスワード ポリシーを適用する必要がある特定の組織は、代わりにパススルー認証を使用することを選択できます。 Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)をご覧ください。
+この機能は、組織にクラウド認証を同じメリットをもたらす、[Azure AD のパスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)の代わりです。 ただし、自身のオンプレミスの Active Directory のセキュリティとパスワード ポリシーを適用する必要がある特定の組織は、代わりにパススルー認証を使用することを選択できます。 Azure AD の各種サインイン方法の比較および組織に合った適切なサインイン方法の選び方については、[こちらのガイド](./choose-ad-authn.md)をご覧ください。
 
 ![Azure AD パススルー認証](./media/how-to-connect-pta/pta1.png)
 
@@ -42,14 +42,14 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - *優れたユーザー エクスペリエンス*
   - ユーザーは、オンプレミスのアプリケーションとクラウド ベースのアプリケーションの両方に同じパスワードを使用してサインインできます。
   - パスワード関連の問題を解決するのに、ユーザーが IT ヘルプデスクと対話する時間が減ります。
-  - ユーザーはクラウドで[セルフ サービスによるパスワード管理](../authentication/active-directory-passwords-overview.md)ができます。
+  - ユーザーはクラウドで[セルフ サービスによるパスワード管理](../authentication/concept-sspr-howitworks.md)ができます。
 - *デプロイと管理が容易*
   - 簡単にオンプレミスにデプロイしてネットワーク構成できます。
   - オンプレミスには、軽量エージェントのみをインストールすれば済みます。
   - 管理のオーバーヘッドを排除できます。 エージェントは、機能強化とバグ修正を自動的に受け取ります。
 - *セキュリティ保護*
   - オンプレミス パスワードが何らかの形でクラウドに保存されることはありません。
-  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[レガシ認証のブロック](../conditional-access/concept-conditional-access-conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
+  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../conditional-access/overview.md)と[レガシ認証のブロック](../conditional-access/concept-conditional-access-conditions.md)、[フィルター処理によるブルート フォース パスワード攻撃の除外](../authentication/howto-password-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
   - エージェントは、ネットワーク内からの送信接続のみを行います。 そのため、DMZ とも呼ばれる、境界ネットワークにエージェントをインストールする必要がありません。
   - エージェントと Azure AD の間の通信は、証明書ベースの認証を使用して保護されます。 これらの証明書は、Azure AD によって数か月ごとに自動的に更新されます。
 - *高可用性*
@@ -59,8 +59,8 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 - ユーザーが[先進認証](https://aka.ms/modernauthga)を使用する、すべての Web ブラウザー ベースのアプリケーションおよび Microsoft Office クライアント アプリケーションにサインインすることがサポートされています。
 - サインイン ユーザー名には、オンプレミスの既定のユーザー名 (`userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID` と呼ばれます) を指定できます。
-- この機能は、多要素認証 (MFA) など、ユーザーをセキュリティで保護するのに役立つ[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)機能とシームレスに連携します。
-- クラウド ベースの[セルフサービスのパスワード管理](../authentication/active-directory-passwords-overview.md) (オンプレミスの Active Directory へのパスワード ライトバックや、よく使用されているパスワードの禁止によるパスワードの保護を含む) と統合されています。
+- この機能は、多要素認証 (MFA) など、ユーザーをセキュリティで保護するのに役立つ[条件付きアクセス](../conditional-access/overview.md)機能とシームレスに連携します。
+- クラウド ベースの[セルフサービスのパスワード管理](../authentication/concept-sspr-howitworks.md) (オンプレミスの Active Directory へのパスワード ライトバックや、よく使用されているパスワードの禁止によるパスワードの保護を含む) と統合されています。
 - ご使用の AD フォレスト間にフォレストの信頼があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境がサポートされます。
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - これは、[Azure AD Connect](whatis-hybrid-identity.md) を使用して有効にすることができます。

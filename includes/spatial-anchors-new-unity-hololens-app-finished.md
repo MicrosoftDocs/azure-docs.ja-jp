@@ -7,10 +7,10 @@ ms.topic: include
 ms.author: crtreasu
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: aed5b18a1241aa914f49e7613bd8a6f4a03eff2b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "87375336"
 ---
 ## <a name="putting-everything-together"></a>すべてをまとめる

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 479e580ee8821f0a6de054c631714c5386927e4f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: bd22d20703dc72e220f9b479b4a4005033f964ae
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083918"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649773"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Ubuntu Linux 仮想マシンを作成する
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-vm-simple-linux/azuredeploy.json" range="1-261" highlight="110-260":::
+:::code language="json" source="~/quickstart-templates/101-vm-simple-linux/azuredeploy.json":::
 
 
 このテンプレートでは、いくつかのリソースが定義されています。
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - **[DNS label prefix]\(DNS ラベルのプレフィックス\)** : DNS ラベルの一部として使用する一意の識別子を入力します。
     - **[Ubuntu OS version]\(Ubuntu OS のバージョン\)** : VM 上で稼働させるUbuntu のバージョンを選択します。
     - **[場所]** : 既定値は、リソース グループと同じ場所になります (ただし、リソース グループが存在する場合のみ)。
-    - **[VM サイズ]** : VM に使用する[サイズ](sizes.md)を選択します。
+    - **[VM サイズ]** : VM に使用する[サイズ](../sizes.md)を選択します。
     - **[仮想ネットワーク名]** : 仮想ネットワークに使用する名前。
     - **[サブネット名]** : VM が使用する必要があるサブネットの名前。
     - **[ネットワーク セキュリティ グループ名]** : NSG の名前。

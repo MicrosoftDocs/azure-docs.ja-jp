@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure 仮想マシン
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: aabf687fb1f21473c7239d3fab26819b2ea2bea6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2588ca87e2dc2209fbaa5eae411fe5895d5f5669
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079300"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889653"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>REST API を使用して Azure 仮想マシンを復元する
 
@@ -25,7 +25,7 @@ Azure Backup を使用した Azure 仮想マシンのバックアップが完了
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
-`{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)のように構成されています。 `{fabricName}` は "Azure" です。
+`{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)のように構成されています。 `{fabricName}` は "Azure" です。
 
 *GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません
 
@@ -115,57 +115,36 @@ X-Powered-By: ASP.NET
 
 復旧ポイントは、上記の応答の `{name}` フィールドで示されます。
 
-## <a name="restore-disks"></a>ディスクを復元する
+## <a name="restore-operations"></a>復元操作
 
-バックアップ データからの VM の作成をカスタマイズする必要がある場合は、選択したストレージ アカウントにディスクを復元し、要件に従ってこれらのディスクから VM を作成できます。 そのストレージ アカウントは、復旧サービスと同じリージョン内に存在し、ゾーン冗長ではない必要があります。 バックアップされた VM ("vmconfig.json") のディスクと構成は、特定のストレージ アカウントに格納されます。
+[関連する復元ポイント](#select-recovery-point)を選択したら、復元のトリガー操作に進みます。
 
-ディスクの復元のトリガーは、*POST* 要求です。 ディスクの復元操作について詳しくは、["復元のトリガー" REST API](/rest/api/backup/restores/trigger) に関するページをご覧ください。
+***バックアップ項目のすべての復元操作は同じ *POST* API を使用して実行されます。復元シナリオでは、要求本文のみが変更されます。***
+
+> [!IMPORTANT]
+> さまざまな復元オプションとその依存関係の詳細については [こちら](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)に記載されています。 確認してからこれらの操作のトリガーに進んでください。
+
+復元操作のトリガーは、*POST* 要求です。 API について詳しくは、["復元のトリガー" REST API](/rest/api/backup/restores/trigger) に関するページをご覧ください。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-`{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1)のように構成されています。 `{fabricName}` は "Azure" であり、`{recoveryPointId}` は[上](#example-response)で説明したように復旧ポイントの `{name}` フィールドです。
+`{containerName}` および `{protectedItemName}` は、[こちら](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)のように構成されています。 `{fabricName}` は "Azure" であり、`{recoveryPointId}` は[上](#example-response)で説明したように復旧ポイントの `{name}` フィールドです。
 
-### <a name="create-request-body"></a>要求本文を作成する
+復旧ポイントが取得されたら、関連する復元シナリオの要求本文を作成する必要があります。 次のセクションでは、各シナリオの要求本文の概要を示します。
 
-Azure VM バックアップからのディスクの復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
+- [ディスクの復元](#restore-disks)
+- [ディスクを交換する](#replace-disks-in-a-backed-up-virtual-machine)
+- [新しい仮想マシンとして復元する](#restore-as-another-virtual-machine)
 
-|名前  |Type  |説明  |
-|---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+### <a name="restore-response"></a>応答を復元する
 
-要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](/rest/api/backup/restores/trigger#request-body)をご覧ください。
-
-#### <a name="example-request"></a>要求の例
-
-次の要求本文では、ディスク復元のトリガーに必要なプロパティが定義されています。
-
-```json
-{
-  "properties": {
-    "objectType": "IaasVMRestoreRequest",
-    "recoveryPointId": "20982486783671",
-    "recoveryType": "RestoreDisks",
-    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
-    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
-    "region": "westus",
-    "createNewCloudService": false,
-    "originalStorageAccountOption": false,
-    "encryptionDetails": {
-      "encryptionEnabled": false
-    }
-  }
-}
-```
-
-### <a name="response"></a>Response
-
-ディスク復元のトリガーは、[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
+復元操作のトリガーは、[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
 これにより、2 つの応答が返されます。別の操作が作成されたときは 202 (Accepted)、その操作が完了したときは 200 (OK) です。
 
-|名前  |Type  |説明  |
+|名前  |種類  |説明  |
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
@@ -227,15 +206,90 @@ X-Powered-By: ASP.NET
 }
 ```
 
-バックアップ ジョブは実行時間の長い操作のため、[REST API を使用したジョブの監視に関するドキュメント](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明されているように追跡する必要があります。
+復元ジョブは実行時間の長い操作のため、[REST API を使用したジョブの監視に関するドキュメント](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明されているように追跡する必要があります。
 
-実行時間の長いジョブが完了すると、バックアップされていた仮想マシン ("VMConfig.json") のディスクと構成が、特定のストレージ アカウント内に存在しています。
+### <a name="restore-disks"></a>ディスクを復元する
 
-## <a name="restore-as-another-virtual-machine"></a>別の仮想マシンとして復元する
+バックアップ データからの VM の作成をカスタマイズする必要がある場合は、選択したストレージ アカウントにディスクを復元し、要件に従ってこれらのディスクから VM を作成できます。 そのストレージ アカウントは、Recovery Services コンテナーと同じリージョン内に存在し、ゾーン冗長ではない必要があります。 ディスクおよびバックアップされた VM ("vmconfig.json") の構成は、特定のストレージ アカウントに格納されます。 [上記で](#restore-operations)説明したように、復元ディスクに関連する要求本文を以下に示します。
 
-復旧ポイントからのデータで別の Azure 仮想マシンを作成するには、[復旧ポイントを選択](#select-recovery-point)し、以下で指定するように要求本文を作成します。
+#### <a name="create-request-body"></a>要求本文を作成する
 
-次の要求本文では、仮想マシン復元トリガーに必要なプロパティが定義されています。
+Azure VM バックアップからのディスクの復元をトリガーする場合、要求本文のコンポーネントは次のとおりです。
+
+|名前  |種類  |説明  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](/rest/api/backup/restores/trigger#request-body)をご覧ください。
+
+##### <a name="example-request"></a>要求の例
+
+次の要求本文では、ディスク復元のトリガーに必要なプロパティが定義されています。
+
+```json
+{
+  "properties": {
+    "objectType": "IaasVMRestoreRequest",
+    "recoveryPointId": "20982486783671",
+    "recoveryType": "RestoreDisks",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+    "region": "westus",
+    "createNewCloudService": false,
+    "originalStorageAccountOption": false,
+    "encryptionDetails": {
+      "encryptionEnabled": false
+    }
+  }
+}
+```
+
+[上記で](#responses)説明されているように応答を追跡し、実行時間の長いジョブが完了すると、バックアップされていた仮想マシン ("VMConfig.json") のディスクと構成が、特定のストレージ アカウント内に存在しています。
+
+### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>バックアップされた仮想マシンのディスクを交換する
+
+ディスクの復元では回復ポイントからディスクが作成されますが、ディスクの交換ではバックアップされた VM の現在のディスクが回復ポイントのディスクと置き換えられます。 [上記で](#restore-operations)説明したように、ディスクを交換するための関連する要求本文を以下に示します。
+
+#### <a name="create-request-body"></a>要求本文を作成する
+
+Azure VM バックアップからのディスク交換をトリガーする場合、要求本文のコンポーネントは次のとおりです。
+
+|名前  |種類  |説明  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+要求本文の定義の完全な一覧およびその他の詳細については、[復元トリガー REST API のドキュメント](/rest/api/backup/restores/trigger#request-body)をご覧ください。
+
+#### <a name="example-request"></a>要求の例
+
+次の要求本文では、ディスク復元のトリガーに必要なプロパティが定義されています。
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "OriginalLocation",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",  
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "affinityGroup": "",
+        "diskEncryptionSetId": null,
+        "subnetId": null,
+        "targetDomainNameId": null,
+        "targetResourceGroupId": null,
+        "targetVirtualMachineId": null,
+        "virtualNetworkId": null
+     }
+}
+
+```
+
+### <a name="restore-as-another-virtual-machine"></a>別の仮想マシンとして復元する
+
+[上記で](#restore-operations)説明したように、次の要求本文では、仮想マシン復元のトリガーに必要なプロパティが定義されています。
 
 ```json
 {
@@ -271,7 +325,7 @@ X-Powered-By: ASP.NET
 }
 ```
 
-[前に説明したディスクの復元](#response)と同じように、応答を処理する必要があります。
+[前に説明したディスクの復元](#responses)と同じように、応答を処理する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

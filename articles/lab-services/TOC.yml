@@ -24,6 +24,8 @@
       href: classroom-labs-fundamentals.md
     - name: 容量制限
       href: capacity-limits.md
+    - name: ラボのコスト管理
+      href: cost-management-guide.md
     - name: シナリオ
       items:
         - name: クラスを実施するためのラボ サービスの使用
@@ -66,7 +68,7 @@
           href: how-to-manage-lab-accounts.md
         - name: ラボ アカウントでラボを管理する
           href: manage-labs.md
-        - name: VM の自動シャットダウンを構成する
+        - name: ラボ アカウント用に VM の自動シャットダウンを構成する
           href: how-to-configure-lab-accounts.md
         - name: ラボ作成者を追加する
           href: add-lab-creator.md
@@ -86,8 +88,6 @@
           href: specify-marketplace-images.md
         - name: サポート情報を指定する (ラボ アカウント オーナー)
           href: lab-account-owner-support-information.md
-        - name: ラボのコスト管理
-          href: cost-management-guide.md
     - name: クラスルーム ラボを作成して構成する (教師)
       items:
         - name: クラスルーム ラボを作成して管理する
@@ -106,7 +106,7 @@
           href: how-to-use-shared-image-gallery.md
         - name: Linux のリモート デスクトップ接続を有効にする
           href: how-to-enable-remote-desktop-linux.md
-        - name: 切断時の自動シャットダウンを有効にする
+        - name: ラボの VM の自動シャットダウンを構成する
           href: how-to-enable-shutdown-disconnect.md
         - name: テンプレート VM で入れ子になった仮想化を有効にする
           items:

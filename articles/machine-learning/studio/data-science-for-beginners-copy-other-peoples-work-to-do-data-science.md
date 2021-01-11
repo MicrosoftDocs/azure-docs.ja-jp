@@ -1,6 +1,5 @@
 ---
-title: 他のユーザーのデータ サイエンスの例をコピーする
-titleSuffix: ML Studio (classic) - Azure
+title: データ サイエンス コピーの例 - ML Studio (クラシック) - Azure
 description: データ サイエンスの企業秘密:自分のために他のユーザーに作業してもらいます。 Azure AI ギャラリーから Machine Learning の例を取得します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,12 +9,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: 91f1f69db7f3faa9e1bbdae7966716c974a4dfa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 59343c500f50430530b24fbfb7d747108377efd8
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930286"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318778"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>他のユーザーの成果物をコピーしてデータ サイエンスを実行する
 ## <a name="video-5-data-science-for-beginners-series"></a>ビデオ 5: 初心者向けデータ サイエンス シリーズ

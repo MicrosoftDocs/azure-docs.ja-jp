@@ -4,7 +4,7 @@
   expanded: true
   items:
     - name: Cognitive Services とは
-      href: Welcome.md
+      href: what-are-cognitive-services.md
     - name: Cognitive Services ドキュメントの新着情報
       href: whats-new-docs.md
     - name: Cognitive Services と機械学習
@@ -19,16 +19,14 @@
       href: cognitive-services-apis-create-account.md
     - name: Azure CLI を使用して新しいリソースを作成する
       href: cognitive-services-apis-create-account-cli.md
+    - name: クライアント ライブラリを使用して新しいリソースを作成する
+      href: cognitive-services-apis-create-account-client-library.md
     - name: ARM テンプレートを使用して新しいリソースを作成する
       displayName: Resource Manager
       href: resource-manager-template.md
     - name: 診断ログ
       href: diagnostic-logging.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      href: ./policy-samples.md
-- name: セキュリティ
+- name: Security
   items:
     - name: Cognitive Services のセキュリティ
       href: cognitive-services-security.md
@@ -84,6 +82,11 @@
           href: ./big-data/recipes/anomaly-detection.md
         - name: 'レシピ:アート エクスプローラー'
           href: ./big-data/recipes/art-explorer.md
+- name: リファレンス
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

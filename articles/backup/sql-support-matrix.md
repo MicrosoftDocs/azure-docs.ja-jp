@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM 内の SQL Server
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4d197f8b3c1ed74ef45c1f7942ead52ccef0c14a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513185"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926452"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 内の SQL Server のバックアップに関するサポート マトリックス
 
@@ -25,21 +25,26 @@ Azure Backup を使用すると、Microsoft Azure クラウド プラットフ�
 **サポートされる SQL Server のバージョン** | SQL Server 2019、SQL Server 2017 (詳細は[「製品のライフサイクルの検索」ページ](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)を参照)、SQL Server 2016 および SP (詳細は[「製品のライフサイクルの検索」ページ](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)を参照)、SQL Server 2014、SQL Server 2012、SQL Server 2008 R2、SQL Server 2008 <br/><br/> Enterprise、Standard、Web、Developer、Express。
 **サポートされている .NET バージョン** | VM にインストールされている .NET Framework 4.5.2 以降
 
-## <a name="feature-consideration-and-limitations"></a>機能の考慮事項と制限事項
+## <a name="feature-considerations-and-limitations"></a>機能の考慮事項と制限事項
+
+|設定  |上限 |
+|---------|---------|
+|サーバー (およびコンテナー内) で保護できるデータベースの数    |   2000      |
+|サポートされているデータベース サイズ (これを超えると、パフォーマンスの問題が発生する可能性があります)   |   2 TB      |
+|データベースでサポートされているファイルの数    |   1000      |
+
+>[!NOTE]
+> VM リソース、帯域幅、バックアップ ポリシーに基づいて、サーバーごとに推奨される保護されたデータベースの概数を算出するために、[詳細なリソース プランナーをダウンロードします](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)。
 
 * SQL Server のバックアップは、Azure portal または **PowerShell** を使用して構成できます。 CLI はサポートされていません。
 * このソリューションは、Azure Resource Manager VM とクラシック VM のどちらの種類の[デプロイ](../azure-resource-manager/management/deployment-models.md)でもサポートされます。
-* SQL Server を稼働している VM では、Azure パブリック IP アドレスにアクセスするためにインターネット接続を必要とします。
-* SQL Server **フェールオーバー クラスター インスタンス (FCI)** はサポートされていません。
+* すべてのバックアップの種類 (完全、差分、ログ) と復旧モデル (簡易、完全、一括ログ) がサポートされています。
+* **読み取り専用**データベースについては、バックアップの種類として完全とコピーのみの完全をサポートしています。
+* SQL ネイティブの圧縮は、バックアップ ポリシーでユーザーが明示的に有効にした場合にサポートされます。 Azure Backup を使用すると、ユーザーが設定したこのコントロールの値に応じて、COMPRESSION または NO_COMPRESSION 句を使用してインスタンス レベルの既定値がオーバーライドされます。
+* TDE - 有効なデータベース バックアップがサポートされています。 TDE で暗号化されたデータベースを別の SQL Server に復元するには、まず[証明書を宛先サーバーに復元する](https://docs.microsoft.com/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)必要があります。 SQL Server 2016 以降のバージョンでは、TDE が有効になっているデータベースのバックアップの圧縮は使用できますが、[ここ](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)で説明されているように転送サイズは低くなります。
 * ミラー データベースおよびデータベース スナップショットのバックアップ操作および復元操作はサポートされていません。
-* スタンドアロンの SQL Server インスタンスまたは SQL Always On 可用性グループをバックアップするために複数のバックアップ ソリューションを使用すると、バックアップに失敗する可能性があるため、そうしないようにしてください。
-* また、可用性グループの 2 つのノードを、同じまたは異なるソリューションを使用して個別にバックアップすると、バックアップに失敗する可能性があります。
-* **読み取り専用**データベースについては、Azure Backup ではバックアップの種類として完全とコピーのみの完全だけをサポートしています。
-* 多数のファイルがあるデータベースは保護できません。 サポートされるファイルの最大数は**約 1,000 個**です。  
-* コンテナーあたり**約 2,000 個**の SQL Server データベースをバックアップできます。 データベースの数が多い場合、複数のコンテナーを作成できます。
-* 一度に最大 **50** 個のデータベースのバックアップを構成できます。この制限により、バックアップの負荷が最適化されます。
-* サポートされているデータベースの最大サイズは **2 TB** です。これを超えるサイズの場合は、パフォーマンスの問題が生じる可能性があります。
-* サーバーあたりいくつのデータベースを保護できるかを把握するには、帯域幅、VM のサイズ、バックアップの頻度、データベースのサイズなどの要因を考慮します。 VM リソースとバックアップ ポリシーに基づいて、サーバーごとに使用できるデータベースの概数を算出するためにリソース プランナーを[ダウンロード](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx)します。
+* SQL Server **フェールオーバー クラスター インスタンス (FCI)** はサポートされていません。
+* スタンドアロンの SQL Server インスタンスまたは SQL Always On 可用性グループをバックアップするために複数のバックアップ ソリューションを使用すると、バックアップに失敗する可能性があります。 そうしないようにしてください。 また、可用性グループの 2 つのノードを、同じまたは異なるソリューションを使用して個別にバックアップすると、バックアップに失敗する可能性があります。
 * 可用性グループが構成されている場合は、バックアップはいくつかの要因に基づいて異なるノードから作成されます。 可用性グループのバックアップ動作を以下にまとめています。
 
 ### <a name="back-up-behavior-with-always-on-availability-groups"></a>Always On 可用性グループでのバックアップ動作

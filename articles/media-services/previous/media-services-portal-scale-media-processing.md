@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 3001cd89b5dbb55728fc1f8411e0bb87e17044b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9e8ffb3173ed0d25599be446611ceca72c2ef82
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084451"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89266869"
 ---
 # <a name="change-the-reserved-unit-type"></a>予約ユニットの種類の変更
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [ポータル](media-services-portal-scale-media-processing.md)

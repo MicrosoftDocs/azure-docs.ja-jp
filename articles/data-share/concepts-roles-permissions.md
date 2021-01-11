@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share のロールと要件
 description: Azure Data Share を使用してデータを共有および受信するために必要なアクセス許可について説明します。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110999"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513767"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share のロールと要件 
 
@@ -90,7 +90,13 @@ REST API を使用してデータを共有する場合は、これらのロー�
 
 ## <a name="resource-provider-registration"></a>リソース プロバイダーの登録 
 
-ご自分の Azure テナントで Azure Data Share の招待を初めて表示する場合は、Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに手動で登録することが必要になる場合があります。 Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに登録するには、次の手順に従います。 リソース プロバイダーを登録するには、Azure サブスクリプションへの "*共同作成者*" アクセス権が必要です。
+次のシナリオでは、Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに手動で登録することが必要になる場合があります。 
+
+* 自分の Azure テナントで Azure Data Share の招待を初めて表示する
+* Azure Data Share リソースとは異なる Azure サブスクリプションで、Azure データ ストアからのデータを共有する
+* Azure Data Share リソースとは異なる Azure サブスクリプションで、Azure データ ストアへのデータを受信する
+
+Microsoft.DataShare リソース プロバイダーを Azure サブスクリプションに登録するには、次の手順に従います。 リソース プロバイダーを登録するには、Azure サブスクリプションへの "*共同作成者*" アクセス権が必要です。
 
 1. Azure portal で、 **[サブスクリプション]** に移動します。
 1. Azure Data Share に使っているサブスクリプションを選択します。

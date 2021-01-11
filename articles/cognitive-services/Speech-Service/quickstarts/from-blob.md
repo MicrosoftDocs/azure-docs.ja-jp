@@ -10,13 +10,14 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: trbye
+ms.custom: devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: 1469e02b675af9458b6cbdf9d05edca0185ab984
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 3c6ae5a7635222b48ce097c6c517cebb60f961aa
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391674"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88926145"
 ---
 # <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>クイック スタート:Blob Storage に格納された音声を認識する
 

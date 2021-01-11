@@ -3,15 +3,15 @@ title: Azure Relay と Azure Private Link サービスの統合
 description: Azure Relay を Azure Private Link サービスと統合する方法を説明します
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: a113e52b892a25fd2b12a18d73df443d9a9866f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5c35f9333378a5f0b87956e8a916491d51e3cb3
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317321"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719429"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Azure Relay と Azure Private Link (プレビュー) の統合
-Azure **Private Link サービス**を使用すると、仮想ネットワーク内のプライベート エンドポイントを介して、Azure サービス (Azure Relay、Azure Service Bus、Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナーのサービスにアクセスできます。 詳細については、「[Azure Private Link とは (プレビュー)](../private-link/private-link-overview.md)」を参照してください。
+Azure **Private Link サービス**を使用すると、自分の仮想ネットワーク内のプライベート エンドポイント経由で、Azure サービス (Azure Relay、Azure Service Bus、Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナーのサービスにアクセスできます。 詳細については、「[Azure Private Link とは (プレビュー)](../private-link/private-link-overview.md)」を参照してください。
 
 **プライベート エンドポイント**は、仮想ネットワークで実行されているワークロードが、**プライベート リンク リソース** (Relay 名前空間など) を持つサービスにプライベートで安全に接続できるようにするネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイントを介してルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute、VPN 接続、パブリック IP アドレスは不要です。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由するので、パブリック インターネットから公開されることがなくなります。 特定の Azure Relay 名前空間への接続を許可することにより、アクセスをきめ細かく制御できます。 
 
@@ -207,7 +207,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 3. 状態が **[接続解除済み]** に変更されていることを確認します。 さらに、エンドポイントがリストから消えていることがわかります。 
 
 ## <a name="validate-that-the-private-link-connection-works"></a>プライベート リンク接続が機能することを検証する
-プライベート エンドポイントの同じサブネット内のリソースが、プライベート IP アドレス経由で Azure Relay 名前空間に接続していることを検証する必要があります。
+プライベート エンドポイントの仮想ネットワーク内のリソースが、プライベート IP アドレス経由で Azure Relay 名前空間に接続していることを検証する必要があります。
 
 このテストのために、「[Azure portal で Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md)」の手順に従って仮想マシンを作成します。
 

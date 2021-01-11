@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "78252785"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル: Linux Service Fabric クラスター上にコンテナー イメージを作成する
@@ -98,7 +98,7 @@ Azure Container Registry をデプロイする場合、まず、リソース グ
 az group create --name <myResourceGroup> --location westus
 ```
 
-**az acr create** コマンドで Azure Container Registry を作成します。 \<acrName> は、お使いのサブスクリプション下に作成するコンテナー レジストリの名前に置き換える必要があります。 この名前は、英数字を使用して一意にする必要があります。
+**az acr create** コマンドで Azure Container Registry を作成します。 \<acrName> は、お使いのサブスクリプション下に作成するコンテナー レジストリの名前に置き換えます。 この名前は、英数字を使用して一意にする必要があります。
 
 ```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true

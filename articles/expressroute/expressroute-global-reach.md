@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: Global Reach を使用して Microsoft Cloud に接続する'
-description: この記事では、ExpressRoute Global Reach について説明します。
+description: Azure ExpressRoute Global Reach を使用すると、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築できます。その方法について説明します。
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.author: cherylmc
-ms.openlocfilehash: 5022efacf33a2c07f1388666b5de26ee86322739
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: 27061035048202e4bcf231045bd946dd08bb5472
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636735"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396507"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute は、複数のオンプレミス ネットワークを Microsoft Cloud に接続することができるプライベートで回復性がある方法です。 プライベート データ センターまたは企業ネットワークから、Azure や Office 365 などの多くの Microsoft クラウド サービスにアクセスできます。 たとえば、シリコン バレーに ExpressRoute 回線があるサンフランシスコのブランチ オフィスと、市内に ExpressRoute 回線があるロンドンのブランチ オフィスがあるとします。 どちらのブランチ オフィスも、米国西部と英国南部で Azure リソースへの高速の接続を利用できます。 ただし、ブランチ オフィスは相互にデータを直接交換することはできません。 言い換えれば、10.0.1.0/24 はデータを、10.0.3.0/24 と 10.0.4.0/24 には送信できますが、10.0.2.0/24 には送信できません。
@@ -32,7 +32,7 @@ ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を
 現在、ExpressRoute Global Reach は以下の場所でサポートされています。
 
 * オーストラリア
-* カナダ
+* Canada
 * フランス
 * ドイツ
 * 香港特別行政区
@@ -46,7 +46,7 @@ ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を
 * スウェーデン
 * スイス
 * イギリス
-* 米国
+* United States
 
 ExpressRoute 回線は、上記の国または地域の [ExpressRoute ピアリング拠点](expressroute-locations.md)に作成する必要があります。 [異なる地政学的地域](expressroute-locations.md)間で ExpressRoute Global Reach を有効にするには、Premium SKU の回線を使用する必要があります。
 

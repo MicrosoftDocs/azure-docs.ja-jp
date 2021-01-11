@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 4ad28bd65fe9bc240e963f103ca5bd658e90fdfd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 10fedaf5680976ae93984c9b2c607882f650019d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77529621"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213261"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Azure Cache for Redis インスタンスに予約割引が適用されるしくみについて
 
-Azure Cache for Redis の予約容量を購入すると、予約の属性や数量に合致するキャッシュ インスタンスに対して予約割引が自動的に適用されます。 予約購入分は、ご利用の Azure Cache for Redis の計算コストにのみ充当されます。 ストレージおよびネットワークについては、通常料金が適用されます。 予約容量は、[Premium レベル](/azure/azure-cache-for-redis/cache-premium-tier-intro)のキャッシュでのみ使用できます。
+Azure Cache for Redis の予約容量を購入すると、予約の属性や数量に合致するキャッシュ インスタンスに対して予約割引が自動的に適用されます。 予約購入分は、ご利用の Azure Cache for Redis の計算コストにのみ充当されます。 ストレージおよびネットワークについては、通常料金が適用されます。 予約容量は、[Premium レベル](/https://docs.microsoft.com/azure/azure-cache-for-redis/quickstart-create-redis)のキャッシュでのみ使用できます。
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 

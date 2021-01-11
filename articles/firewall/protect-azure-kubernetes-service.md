@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 81d65954197c0ebe0de77dc2fea63239d4c3f17b
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 602671f1052de2d9446f32946271cea2f9995044
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86056669"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87412951"
 ---
 # <a name="use-azure-firewall-to-protect-azure-kubernetes-service-aks-deployments"></a>Azure Firewall を使用して Azure Kubernetes Service (AKS) のデプロイを保護する
 
@@ -50,7 +50,9 @@ Azure Firewall では、構成を簡略化するための AKS FQDN タグが提�
       具体的には、* *.hcp.<location>.azmk8s.io* と次の表のアドレスを参照してください。
    - ネットワーク タイム プロトコル (NTP) の時刻同期 (Linux ノード) 用の UDP ポート 123。
    - API サーバーに直接アクセスするポッドがある場合は、DNS 用の UDP ポート 53 も必要です。
-- AzureMonitor タグと Storage Service タグを構成します。 Azure Monitor で Log Analytics データを受信します。 
+
+   詳細については、「[Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する](../aks/limit-egress-traffic.md)」を参照してください。
+- AzureMonitor タグと Storage Service タグを構成します。 Azure Monitor で Log Analytics データを受信します。
 
    お使いのワークスペース URL (`<worksapceguid>.ods.opinsights.azure.com` と `<worksapceguid>.oms.opinsights.azure.com`) を個別に許可することもできます。 これは、次の方法のいずれかの方法で対処できます。
 

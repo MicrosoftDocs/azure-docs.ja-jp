@@ -1,42 +1,42 @@
 ---
-title: Azure セキュリティ ベンチマーク用の Service Fabric セキュリティ ベースライン
+title: Service Fabric 用の Azure セキュリティ ベースライン
 description: Service Fabric セキュリティ ベースラインによって、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9d5d686c692c45acfff4fa811ed668c17f19861
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a3641994098834b47412598b25b3effb2be7d276
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528296"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836719"
 ---
-# <a name="service-fabric-security-baseline-for-azure-security-benchmark"></a>Azure セキュリティ ベンチマーク用の Service Fabric セキュリティ ベースライン
+# <a name="azure-security-baseline-for-service-fabric"></a>Service Fabric 用の Azure セキュリティ ベースライン
 
 Service Fabric 用の Azure セキュリティ ベースラインには、デプロイのセキュリティ体制を改善するために役立つ推奨事項が含まれています。
 
-このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview) に基づいて作成されています。
+このサービス用のベースラインは、ベスト プラクティス ガイダンスを使用して Azure 上のクラウド ソリューションをセキュリティで保護する方法について推奨事項を提供する [Azure セキュリティ ベンチマーク バージョン 1.0](../security/benchmarks/overview.md) に基づいて作成されています。
 
-詳細については、[Azure セキュリティ ベースラインの概要](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)に関するページを参照してください。
+詳細については、[Azure セキュリティ ベースラインの概要](../security/benchmarks/security-baselines-overview.md)に関するページを参照してください。
 
 
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](/azure/security/benchmarks/security-control-network-security)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ネットワークのセキュリティ](../security/benchmarks/security-control-network-security.md)」を参照してください。*
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1:仮想ネットワーク内の Azure リソースを保護する
 
 **ガイダンス**: すべての Virtual Network サブネット デプロイに、アプリケーションの信頼されたポートとソースに固有のネットワーク アクセス制御が適用されたネットワーク セキュリティ グループがあることを確認します。
 
-* [テンプレートを使用して Azure Firewall をデプロイする](https://docs.microsoft.com/azure/firewall/deploy-template)
+* [テンプレートを使用して Azure Firewall をデプロイする](../firewall/deploy-template.md)
 
-* [Azure ネットワーク セキュリティ グループ (NSG) を使用して境界ネットワークを作成する](https://docs.microsoft.com/azure/security/fundamentals/service-fabric-best-practices#use-network-isolation-and-security-with-azure-service-fabric)
+* [Azure ネットワーク セキュリティ グループ (NSG) を使用して境界ネットワークを作成する](../security/fundamentals/service-fabric-best-practices.md#use-network-isolation-and-security-with-azure-service-fabric)
 
-* [Azure Service Fabric クラスターを既存の仮想ネットワークと統合する方法](https://docs.microsoft.com/azure/service-fabric/service-fabric-patterns-networking)
+* [Azure Service Fabric クラスターを既存の仮想ネットワークと統合する方法](./service-fabric-patterns-networking.md)
 
 **Azure Security Center の監視**: はい
 
@@ -46,11 +46,11 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 **ガイダンス**: Azure Security Center を使用して、Azure Service Fabric クラスターをセキュリティで保護するために使用される仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループのネットワーク保護に関する推奨事項を修正します。 ネットワーク セキュリティ グループ (NSG) フロー ログを有効にし、トラフィック監査のためにログを Azure Storage アカウントに送信します。 また、NSG フロー ログを Azure Log Analytics ワークスペースに送信し、Azure Traffic Analytics を使用して Azure クラウド内のトラフィック フローに関する分析情報を提供することもできます。 Azure Traffic Analytics のいくつかの利点として、ネットワーク アクティビティを視覚化してホット スポットを特定したり、セキュリティの脅威を識別したり、トラフィック フロー パターンを把握したり、ネットワークの誤った構成の正確な場所を特定したりする機能が挙げられます。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Azure Traffic Analytics を有効にして使用する方法](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Azure Traffic Analytics を有効にして使用する方法](../network-watcher/traffic-analytics.md)
 
-* [Azure Security Center によって提供されるネットワークのセキュリティについて](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
+* [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
 **Azure Security Center の監視**: はい
 
@@ -62,11 +62,11 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 着信トラフィックをさらに検査するために、Azure Web アプリケーション ファイアウォール (WAF) を重要な Web アプリケーションの前にデプロイすることを検討してください。 WAF の診断設定を有効にし、ストレージ アカウント、イベント ハブ、または Log Analytics ワークスペースにログを取り込みます。
 
-* [Azure Service Fabric と API Management の概要](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview)
+* [Azure Service Fabric と API Management の概要](./service-fabric-api-management-overview.md)
 
-* [内部 VNET 内の API Management と Application Gateway の統合](https://docs.microsoft.com/azure/api-management/api-management-howto-integrate-internal-vnet-appgateway)
+* [内部 VNET 内の API Management と Application Gateway の統合](../api-management/api-management-howto-integrate-internal-vnet-appgateway.md)
 
-* [Azure WAF をデプロイする方法](https://docs.microsoft.com/azure/web-application-firewall/ag/create-waf-policy-ag)
+* [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -76,9 +76,9 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 **ガイダンス**: DDoS 攻撃からの保護のために、Azure Service Fabric クラスターがデプロイされている仮想ネットワーク上で Azure DDoS Standard Protection を有効にします。 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
-* [DDoS 保護を構成する方法](https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection)
+* [DDoS 保護を構成する方法](../virtual-network/manage-ddos-protection.md)
 
-* [Azure Security Center の統合された脅威インテリジェンスについて](https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer)
+* [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/threat-protection.md)
 
 **Azure Security Center の監視**: はい
 
@@ -88,11 +88,11 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 **ガイダンス**:Azure Service Fabric クラスターを保護するために使用されているサブネットに接続された ネットワーク セキュリティ グループ (NSG) 用に、NSG フロー ログを有効にします。 フロー レコードを生成するために、NSG フロー ログを Azure Storage アカウントに記録します。 異常なアクティビティを調査する必要がある場合は、Azure Network Watcher パケット キャプチャを有効にします。
 
-* [NSG フロー ログを有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+* [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
-* [Network Watcher を有効にする方法](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
+* [Network Watcher を有効にする方法](../network-watcher/network-watcher-create.md)
 
-* [Traffic Analytics を使用して NSG フロー ログを視覚化する](https://docs.microsoft.com/azure/network-watcher/traffic-analytics)
+* [Traffic Analytics を使用して NSG フロー ログを視覚化する](../network-watcher/traffic-analytics.md)
 
 **Azure Security Center の監視**: はい
 
@@ -106,9 +106,9 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 * [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/?term=Firewall)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートを構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートを構成する方法](../firewall/threat-intel.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -118,11 +118,11 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 **ガイダンス**: 信頼できる証明書に対して HTTPS/SSL を有効にした Web アプリケーションの Azure Application Gateway をデプロイします。
 
-* [Application Gateway をデプロイする方法](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)
+* [Application Gateway をデプロイする方法](../application-gateway/quick-create-portal.md)
 
-* [HTTPS を使用するように Application Gateway を構成する方法](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)
+* [HTTPS を使用するように Application Gateway を構成する方法](../application-gateway/create-ssl-portal.md)
 
-* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](https://docs.microsoft.com/azure/application-gateway/overview)
+* [Azure Web アプリケーション ゲートウェイを使用したレイヤー 7 負荷分散について](../application-gateway/overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -132,9 +132,9 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 **ガイダンス**: 仮想ネットワーク サービス タグを使用して、Azure Service Fabric クラスターがデプロイされているサブネットに接続されたネットワーク セキュリティ グループ (NSG) に対して、ネットワーク アクセス制御を定義します。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 規則の適切なソースまたは宛先フィールドにサービス タグ名 (ApiManagement など) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
 
-* [仮想ネットワーク サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+* [仮想ネットワーク サービス タグ](../virtual-network/service-tags-overview.md)
 
-* [Service Fabric のネットワークに関するベスト プラクティス](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-networking)
+* [Service Fabric のネットワークに関するベスト プラクティス](./service-fabric-best-practices-networking.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -146,11 +146,11 @@ Service Fabric 用の Azure セキュリティ ベースラインには、デプ
 
 Azure Blueprints を使用して、Azure Resource Manager テンプレート、RBAC コントロール、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することで、大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Blueprint を作成する方法](https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal)
+* [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -164,11 +164,11 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、R
 
 Azure PowerShell または Azure コマンド ライン インターフェイス (CLI) を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -178,9 +178,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Service Fabric のデプロイに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-* [Azure アクティビティ ログ イベントを表示して取得する方法](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
+* [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-* [Azure Monitor でアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -188,13 +188,13 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 ## <a name="logging-and-monitoring"></a>ログ記録と監視
 
-*詳細については、「[セキュリティ コントロール: ログ記録と監視](/azure/security/benchmarks/security-control-logging-monitoring)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ログ記録と監視](../security/benchmarks/security-control-logging-monitoring.md)」を参照してください。*
 
 ### <a name="21-use-approved-time-synchronization-sources"></a>2.1:承認された時刻同期ソースを使用する
 
 **ガイダンス**: Azure Service Fabric クラスター コンポーネントのタイム ソースは Microsoft によって管理されており、コンピューティング デプロイの時刻同期を更新することができます。
 
-* [Azure コンピューティング リソースの時刻同期を構成する方法](https://docs.microsoft.com/azure/virtual-machines/windows/time-sync)
+* [Azure コンピューティング リソースの時刻同期を構成する方法](../virtual-machines/windows/time-sync.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -204,11 +204,11 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: クラスターによって生成されたセキュリティ データを集計するために、Azure Monitor に Azure Service Fabric クラスターをオンボードできます。 Service Fabric での診断の問題と解決策の例を参照してください。
 
-* [Service Fabric との Azure Monitor ログの統合を構成する](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Service Fabric との Azure Monitor ログの統合を構成する](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Service Fabric でコンテナーを監視するために Azure Monitor ログを設定する](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Service Fabric でコンテナーを監視するために Azure Monitor ログを設定する](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [一般的な Service Fabric シナリオの診断](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-common-scenarios)
+* [一般的な Service Fabric シナリオの診断](./service-fabric-diagnostics-common-scenarios.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -218,13 +218,13 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Service Fabric クラスター用に Azure Monitor を有効にして、Log Analytics ワークスペースにダイレクトします。 これにより、すべての Azure Service Fabric クラスター ノードの関連するクラスター情報と OS メトリックがログに記録されます。
 
-* [Service Fabric との Azure Monitor ログの統合を構成する](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Service Fabric との Azure Monitor ログの統合を構成する](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Service Fabric でコンテナーを監視するために Azure Monitor ログを設定する](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Service Fabric でコンテナーを監視するために Azure Monitor ログを設定する](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Log Analytics エージェントをノードにデプロイする方法](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Log Analytics エージェントをノードにデプロイする方法](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics のログ検索](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics のログ検索](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -234,13 +234,13 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure Service Fabric クラスターを Azure Monitor にオンボードします。 使用される Log Analytics ワークスペースに、組織のコンプライアンス規則に従ったログの保有期間が設定されていることを確認します。
 
-* [Service Fabric との Azure Monitor ログの統合を構成する](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Service Fabric との Azure Monitor ログの統合を構成する](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Service Fabric でコンテナーを監視するために Azure Monitor ログを設定する](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Service Fabric でコンテナーを監視するために Azure Monitor ログを設定する](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Log Analytics エージェントをノードにデプロイする方法](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Log Analytics エージェントをノードにデプロイする方法](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics ワークスペースの保有期間を構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -250,13 +250,13 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure Service Fabric クラスターを Azure Monitor にオンボードします。 使用される Log Analytics ワークスペースに、組織のコンプライアンス規則に従ったログの保有期間が設定されていることを確認します。
 
-* [Service Fabric との Azure Monitor ログの統合を構成する](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup)
+* [Service Fabric との Azure Monitor ログの統合を構成する](./service-fabric-diagnostics-oms-setup.md)
 
-* [Azure Service Fabric でコンテナーを監視するために Azure Monitor ログを設定する](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-monitoring-wincontainers)
+* [Azure Service Fabric でコンテナーを監視するために Azure Monitor ログを設定する](./service-fabric-tutorial-monitoring-wincontainers.md)
 
-* [Log Analytics エージェントをノードにデプロイする方法](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent)
+* [Log Analytics エージェントをノードにデプロイする方法](./service-fabric-diagnostics-oms-agent.md)
 
-* [Log Analytics ワークスペースの保有期間を構成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)
+* [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -266,7 +266,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure Log Analytics ワークスペース クエリを使用して Azure Service Fabric ログに対してクエリを実行します。
 
-* [Log Analytics のログ検索](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)
+* [Log Analytics のログ検索](../azure-monitor/log-query/log-query-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -276,9 +276,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure Log Analytics ワークスペースを使用して、Azure Service Fabric クラスターに関連するセキュリティ ログやイベントでの異常なアクティビティを監視し、アラート通知を行います。
 
-* [Azure Security Center でアラートを管理する方法](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)
+* [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-* [Log Analytics のログ データに関するアラートを送信する方法](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
+* [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -288,7 +288,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Windows Server 2016 には、Windows Defender が既定でインストールされます。 Windows Defender を使用していない場合は、お使いのマルウェア対策のドキュメントを参照して構成ルールを確認してください。 Windows Defender は、Linux ではサポートされていません。
 
-* [詳しくは、Windows Server 2016 の Windows Defender ウイルス対策に関する記事をご覧ください](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [詳しくは、Windows Server 2016 の Windows Defender ウイルス対策に関する記事をご覧ください](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -312,7 +312,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 ## <a name="identity-and-access-control"></a>ID とアクセスの制御
 
-*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](/azure/security/benchmarks/security-control-identity-access-control)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: ID およびアクセス制御](../security/benchmarks/security-control-identity-access-control.md)」を参照してください。*
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
@@ -320,11 +320,11 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 さらに、Azure Security Center ID とアクセス管理の推奨事項を使用できます。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
-* [Azure Security Center を使用して ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center を使用して ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -334,7 +334,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: クラスターをプロビジョニングする場合、Azure では、Web ポータル用の新しいパスワードを作成する必要があります。 変更する既定のパスワードはありませんが、Web ポータル アクセスに対して異なるパスワードを指定できます。
 
-* [Azure portal で作成する](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
+* [Azure portal で作成する](./service-fabric-cluster-creation-via-portal.md)
 
 **Azure Security Center の監視**: はい
 
@@ -346,9 +346,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 さらに、Azure Security Center ID とアクセス管理の推奨事項を使用できます。
 
-* [Azure Active Directory クライアント認証を設定する](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-windows-cluster#set-up-azure-active-directory-client-authentication)
+* [Azure Active Directory クライアント認証を設定する](./service-fabric-tutorial-create-vnet-and-windows-cluster.md#set-up-azure-active-directory-client-authentication)
 
-* [Azure Security Center を使用して ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center を使用して ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: はい
 
@@ -358,7 +358,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:可能な限り、サービスごとに個別のスタンドアロン資格情報を構成するのではなく、Azure Active Directory SSO を使用します。 Azure Security Center ID とアクセス管理の推奨事項を使用してください。
 
-* [Azure AD を使用した SSO の概要](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+* [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -368,9 +368,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:Azure AD MFA を有効にして、Azure Security Center ID とアクセス管理の推奨事項に従います。
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
-* [Azure Security Center で ID とアクセスを監視する方法](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -380,9 +380,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: 多要素認証 (MFA) が構成された PAW (特権アクセス ワークステーション) を使用してログインし、Azure Service Fabric クラスターと関連リソースを構成します。
 
-* [特権アクセス ワークステーションについて](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [特権アクセス ワークステーションについて](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Azure で MFA を有効にする方法](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
+* [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -392,9 +392,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure Active Directory (AD) Privileged Identity Management (PIM) を使用して、環境内で疑わしいアクティビティまたは安全でないアクティビティが発生したときにログとアラートを生成します。 また、Azure AD のリスク検出を使用して、危険なユーザーの行動に関するアラートとレポートを表示します。
 
-* [Privileged Identity Management (PIM) をデプロイする方法](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+* [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Azure AD のリスク検出の概要](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events)
+* [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -404,7 +404,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: 条件付きアクセスのネームド ロケーションを使用して、IP アドレス範囲または国/地域の特定の論理グループからのアクセスのみを許可します。
 
-* [Azure でネームド ロケーションを構成する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
+* [Azure でネームド ロケーションを構成する方法](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -414,9 +414,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure Service Fabric クラスターの管理エンドポイントへのアクセスをセキュリティで保護するには、Azure Active Directory (AAD) を中央認証および認可システムとして使用します。 AAD でデータを保護するには、保存データと転送中のデータに強力な暗号化を使用します。 また、AAD では、ユーザーの資格情報がソルト化およびハッシュされ、安全に格納されます。
 
-* [AAD インスタンスを作成して構成する方法](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
+* [AAD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-* [Service Fabric クライアント認証用に Azure Active Directory を設定する](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
+* [Service Fabric クライアント認証用に Azure Active Directory を設定する](./service-fabric-cluster-creation-setup-aad.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -426,7 +426,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure Service Fabric クラスターで Azure Active Directory (AAD) の認証を使用します。 AAD には、古いアカウントの検出に役立つログが用意されています。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザーのアクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-* [Azure ID アクセス レビューの使用方法](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
+* [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -438,7 +438,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 このプロセスを効率化するには、AAD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Azure Log Analytics ワークスペースに送信します。 Azure Log Analytics ワークスペース内に目的のアラートを構成します。
 
-* [Azure アクティビティ ログを Azure Monitor に統合する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+* [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -448,11 +448,11 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: Azure AD のリスクおよび ID Protectoin 機能を使用して、ユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-* [Azure AD の危険なサインインを表示する方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+* [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Identity Protection のリスク ポリシーを構成して有効にする方法](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies)
+* [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
-* [Azure Sentinel をオンボードする方法](https://docs.microsoft.com/azure/sentinel/quickstart-onboard)
+* [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -462,7 +462,7 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**: 使用できません。Azure Service Fabric ではまだカスタマー ロックボックスがサポートされていません。
 
-* [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -470,13 +470,13 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 ## <a name="data-protection"></a>データ保護
 
-*詳細については、「[セキュリティ コントロール: データ保護](/azure/security/benchmarks/security-control-data-protection)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データ保護](../security/benchmarks/security-control-data-protection.md)」を参照してください。*
 
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 機密情報のインベントリを維持する
 
 **ガイダンス**:Azure Service Fabric クラスターのデプロイに関連するリソースに対してタグを使用すると、機密情報を格納または処理する Azure リソースの追跡に役立ちます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -486,19 +486,19 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 **ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 リソースは、VNet/サブネットで分割し、適切にタグを付け、NSG または Azure Firewall で保護する必要があります。 機密データを格納または処理するリソースは、十分に分離する必要があります。 機密データを格納または処理する仮想マシンでは、使用されていないときにはオフにするためのポリシーとプロシージャを実装します。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
-* [Azure Firewall をデプロイする方法l](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)
+* [Azure Firewall をデプロイする方法l](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Azure Firewall でアラートまたはアラートと拒否を構成する方法](https://docs.microsoft.com/azure/firewall/threat-intel)
+* [Azure Firewall でアラートまたはアラートと拒否を構成する方法](../firewall/threat-intel.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -510,9 +510,9 @@ Azure PowerShell または Azure コマンド ライン インターフェイス
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-capabilities.
+機能。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -524,9 +524,9 @@ capabilities.
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。
 
-* [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+* [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Service Fabric クラスターのセキュリティに関するシナリオ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)
+* [Service Fabric クラスターのセキュリティに関するシナリオ](./service-fabric-cluster-security.md)
 
 * [TLS 構成に関する Service Fabric のトラブルシューティング ガイド](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/TLS%20Configuration.md)
 
@@ -540,7 +540,7 @@ capabilities.
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -560,7 +560,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 Microsoft によって管理される基になるプラットフォームの場合、Microsoft は顧客のすべてのコンテンツを機密として扱い、顧客データを損失や漏洩から保護するためにあらゆる手段を尽くします。 Azure 内の顧客データが確実にセキュリティで保護されるように、Microsoft では一連の堅牢なデータ保護制御および機能を実装して管理しています。
 
-* [Azure での顧客データの保護について](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
+* [Azure での顧客データの保護について](../security/fundamentals/protection-customer-data.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -570,13 +570,13 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: すべての Azure リソースで保存時の暗号化を使用します。 Microsoft では、Azure に暗号化キーの管理を許可することをお勧めしていますが、一部のインスタンスでユーザーが自身のキーを管理するという選択肢もあります。
 
-* [Azure での保存時の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+* [Azure での保存時の暗号化の概要](../security/fundamentals/encryption-atrest.md)
 
-* [カスタマー マネージド暗号化キーを構成する方法](https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal)
+* [カスタマー マネージド暗号化キーを構成する方法](../storage/common/storage-encryption-keys-portal.md)
 
-* [Windows での Azure Service Fabric クラスター ノードのディスク暗号化の有効化](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-windows)
+* [Windows での Azure Service Fabric クラスター ノードのディスク暗号化の有効化](./service-fabric-enable-azure-disk-encryption-windows.md)
 
-* [Linux での Azure Service Fabric クラスター ノードのディスク暗号化の有効化](https://docs.microsoft.com/azure/service-fabric/service-fabric-enable-azure-disk-encryption-linux)
+* [Linux での Azure Service Fabric クラスター ノードのディスク暗号化の有効化](./service-fabric-enable-azure-disk-encryption-linux.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -586,7 +586,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、重要な Azure リソースに変更が加えられたときのアラートを作成します。
 
-* [Azure アクティビティ ログ イベントのアラートを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
+* [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -594,7 +594,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 ## <a name="vulnerability-management"></a>脆弱性の管理
 
-*詳細については、「[セキュリティ コントロール: 脆弱性の管理](/azure/security/benchmarks/security-control-vulnerability-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 脆弱性の管理](../security/benchmarks/security-control-vulnerability-management.md)」を参照してください。*
 
 ### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1:自動化された脆弱性スキャン ツールを実行する
 
@@ -604,11 +604,11 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 ネットワーク デバイスと Web アプリケーションで脆弱性評価を実行するためのサードパーティ ソリューションを使用します。 リモート スキャンを実施する場合は、1 つの永続的な管理者アカウントを使用しないでください。 スキャン アカウントには、JIT プロビジョニングの方法論を実装することを検討してください。 スキャン アカウントの資格情報は保護と監視の対象とし、脆弱性のスキャンのためにのみ使用する必要があります。
 
-* [Service Fabric Fault Analysis Service の概要](https://docs.microsoft.com/azure/service-fabric/service-fabric-testability-overview)
+* [Service Fabric Fault Analysis Service の概要](./service-fabric-testability-overview.md)
 
-* [Service Fabric クラスターでの制御された混乱の誘発](https://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)
+* [Service Fabric クラスターでの制御された混乱の誘発](./service-fabric-controlled-chaos.md)
 
-* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)
+* [Azure Security Center の脆弱性評価の推奨事項を実装する方法](../security-center/security-center-vulnerability-assessment-recommendations.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -620,13 +620,13 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 または、運用環境に移行する前に OS 修正プログラムをテストするには、スケール セットの OS イメージのアップグレードに手動トリガーを使用します。 手動トリガー オプションには、組み込みのロールバックが用意されていないことに注意してください。 Azure Automation の Update Management を使用して OS 修正プログラムを監視します。
 
-* [Service Fabric クラスター ノードの修正プログラム管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Service Fabric クラスター ノードの修正プログラム管理](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Azure 仮想マシン スケール セットでの OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Azure 仮想マシン スケール セットでの OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [最新のスケール セット モデルで VM を最新の状態にする方法](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
+* [最新のスケール セット モデルで VM を最新の状態にする方法](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure Automation の Update Management の概要](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure Automation の Update Management の概要](../automation/update-management/update-mgmt-overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -636,11 +636,11 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**:Azure Service Fabric クラスターの仮想マシン スケール セットで OS イメージの自動アップグレードを有効にします。 パッチ オーケストレーション アプリケーション (POA) は、Azure の外部でホストされている Service Fabric クラスターを対象とした別のソリューションです。 POA は Azure クラスターで使用できますが、追加のホスティング オーバーヘッドが伴います。
 
-* [Service Fabric クラスター ノードの修正プログラム管理](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
+* [Service Fabric クラスター ノードの修正プログラム管理](./service-fabric-best-practices-infrastructure-as-code.md#azure-virtual-machine-operating-system-automatic-upgrade-configuration)
 
-* [Azure 仮想マシン スケール セットでの OS イメージの自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)
+* [Azure 仮想マシン スケール セットでの OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)
 
-* [Service Fabric クラスターの OS 修正プログラム適用スケジュールを構成する方法](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application)
+* [Service Fabric クラスターの OS 修正プログラム適用スケジュールを構成する方法](./service-fabric-patch-orchestration-application.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -664,7 +664,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 ## <a name="inventory-and-asset-management"></a>インベントリと資産の管理
 
-*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](/azure/security/benchmarks/security-control-inventory-asset-management)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インベントリと資産の管理](../security/benchmarks/security-control-inventory-asset-management.md)」を参照してください。*
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1:自動化された資産検出ソリューションを使用する
 
@@ -672,11 +672,11 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 従来の Azure リソースは Resource Graph で検出できますが、今後は Azure Resource Manager リソースを作成して使用することを強くお勧めします。
 
-* [Azure Resource Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC について](../role-based-access-control/overview.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -686,7 +686,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -696,11 +696,11 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**:必要に応じて、タグ付け、管理グループ、および個別のサブスクリプションを使用して、資産の整理と追跡を行います。 定期的にインベントリを調整し、承認されていないリソースがサブスクリプションから適切なタイミングで削除されるようにします。
 
-* [追加の Azure サブスクリプションを作成する方法](https://docs.microsoft.com/azure/billing/billing-create-subscription)
+* [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
-* [管理グループを作成する方法](https://docs.microsoft.com/azure/governance/management-groups/create)
+* [管理グループを作成する方法](../governance/management-groups/create.md)
 
-* [タグを作成して使用する方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -724,9 +724,9 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 サブスクリプション内のリソースのクエリまたは検出を行うには、Azure Resource Graph を使用します。 環境に存在するすべての Azure リソースが承認されていることを確認します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -744,7 +744,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: Azure Resource Graph を使用して、Azure Service Fabric クラスターを含めて、サブスクリプション内のすべてのリソース (コンピューティング、ストレージ、ネットワーク、ポート、プロトコルなど) のクエリまたは検出を行います。 検出された承認されていない Azure リソースを削除します。 Azure Service Fabric クラスター ノードの場合は、承認されていないソフトウェアの削除またはアラート通知を行うためのサードパーティ ソリューションを実装します。
 
-* [Azure Graph を使用してクエリを作成する方法](https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal)
+* [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -762,9 +762,9 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: Azure Policy を使用して、環境内でプロビジョニングできるサービスを制限します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -782,7 +782,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: "Microsoft Azure Management" アプリに対して [アクセスのブロック] を構成することによって、Azure Resource Manager を操作するユーザーの機能を制限するには、Azure 条件付きアクセスを使用します。
 
-* [条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+* [条件付きアクセスを構成して Azure Resource Manager へのアクセスをブロックする方法](../role-based-access-control/conditional-access-azure-management.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -792,7 +792,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限します。
 
-* [たとえば、Windows 環境で PowerShell スクリプトの実行を制御する方法](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [たとえば、Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -802,9 +802,9 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: 業務に必要であっても、組織のリスクが高くなる可能性があるソフトウェアは、独自の仮想マシンや仮想ネットワーク内に隔離し、Azure Firewall またはネットワーク セキュリティ グループで十分に保護する必要があります。
 
-* [仮想ネットワークを作成する方法](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
-* [セキュリティ構成を使用して NSG を作成する方法](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
+* [セキュリティ構成を使用して NSG を作成する方法](../virtual-network/tutorial-filter-network-traffic.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -812,15 +812,15 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 ## <a name="secure-configuration"></a>セキュリティで保護された構成
 
-*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](/azure/security/benchmarks/security-control-secure-configuration)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: セキュリティで保護された構成](../security/benchmarks/security-control-secure-configuration.md)」を参照してください。*
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:すべての Azure リソースに対してセキュリティで保護された構成を確立する
 
 **ガイダンス**: Service Fabric クラスターのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ServiceFabric" 名前空間内で Azure Policy エイリアスを使用します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -838,9 +838,9 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: Azure Service Fabric クラスターと関連リソースにセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy の効果について](https://docs.microsoft.com/azure/governance/policy/concepts/effects)
+* [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -858,9 +858,9 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-* [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-* [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+* [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -870,11 +870,11 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: カスタム イメージを使用する場合は、RBAC を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。 コンテナー イメージの場合は、Azure Container Registry に保存し、RBAC を利用して、承認されたユーザーだけがイメージにアクセスできるようにします。
 
-* [Azure での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Azure での RBAC の概要](../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [コンテナー レジストリの RBAC を理解する](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
+* [コンテナー レジストリの RBAC を理解する](../container-registry/container-registry-roles.md)
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure で RBAC を構成する方法](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -884,7 +884,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: システム構成を警告処理、監査、適用するためのカスタム ポリシーを作成するには、"Microsoft.ServiceFabric" 名前空間で Azure Policy エイリアスを使用します。 さらに、ポリシー例外を管理するためのプロセスとパイプラインを作成します。
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -902,9 +902,9 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: Service Fabric クラスターの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ServiceFabric" 名前空間内で Azure Policy エイリアスを使用します。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
 
-* [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
+* [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -914,7 +914,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**:Azure Security Center を使用して、コンテナーの OS と Docker の設定のベースライン スキャンを実行します。
 
-* [Azure Security Center のコンテナーの推奨事項を理解する](https://docs.microsoft.com/azure/security-center/security-center-container-recommendations)
+* [Azure Security Center のコンテナーの推奨事項を理解する](../security-center/container-security.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -924,13 +924,13 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: マネージド サービス ID を Azure Key Vault と組み合わせて使用し、クラウド アプリケーションのシークレット管理を簡素化し、セキュリティで保護します。
 
-* [Service Fabric での Azure のマネージド ID の使用](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Service Fabric での Azure のマネージド ID の使用](./concepts-managed-identity.md)
 
-* [新しい Service Fabric クラスターのマネージド ID のサポートを構成する](https://docs.microsoft.com/azure/service-fabric/configure-new-azure-service-fabric-enable-managed-identity)
+* [新しい Service Fabric クラスターのマネージド ID のサポートを構成する](./configure-new-azure-service-fabric-enable-managed-identity.md)
 
-* [Service Fabric アプリケーションでマネージド ID を使用する](https://docs.microsoft.com/azure/service-fabric/how-to-managed-identity-service-fabric-app-code)
+* [Service Fabric アプリケーションでマネージド ID を使用する](./how-to-managed-identity-service-fabric-app-code.md)
 
-* [Service Fabric アプリケーションでの KeyVaultReference サポート](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)
+* [Service Fabric アプリケーションでの KeyVaultReference サポート](./service-fabric-keyvault-references.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -940,7 +940,7 @@ Azure 仮想マシンとコンテナー イメージに対して脆弱性評価�
 
 **ガイダンス**: マネージド ID は、Azure にデプロイされた Service Fabric クラスターや、Azure リソースとしてデプロイされたアプリケーションで使用できます。 マネージド ID を使用すると、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。
 
-* [Service Fabric での Azure のマネージド ID の使用](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
+* [Service Fabric での Azure のマネージド ID の使用](./concepts-managed-identity.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -954,7 +954,7 @@ Service Fabric クラスターの証明書を自動的にローテーション�
 
 * [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-* [Service Fabric クラスターでの証明書管理](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#certificate-rotation)
+* [Service Fabric クラスターでの証明書管理](./cluster-security-certificate-management.md#certificate-rotation)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -962,7 +962,7 @@ Service Fabric クラスターの証明書を自動的にローテーション�
 
 ## <a name="malware-defense"></a>マルウェアからの防御
 
-*詳細については、「[セキュリティ コントロール: マルウェアからの防御](/azure/security/benchmarks/security-control-malware-defense)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: マルウェアからの防御](../security/benchmarks/security-control-malware-defense.md)」を参照してください。*
 
 ### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1:一元管理されるマルウェア対策ソフトウェアを使用する
 
@@ -970,7 +970,7 @@ Service Fabric クラスターの証明書を自動的にローテーション�
 
 Windows Defender を使用していない場合は、お使いのマルウェア対策のドキュメントで構成ルールを参照してください。 Windows Defender は、Linux ではサポートされていません。
 
-* [Windows Server 2016 での Windows Defender ウイルス対策について](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
+* [Windows Server 2016 での Windows Defender ウイルス対策について](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -978,7 +978,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:非コンピューティング Azure リソースにアップロードするファイルを事前にスキャンする
 
-**ガイダンス**:適用できません。この推奨事項は、データを格納するように設計された非コンピューティング リソースを対象にしています。 Microsoft マルウェア対策は、Azure サービス (Service Fabric など) をサポートする、基になるホストで有効になっていますが、顧客のコンテンツに対しては実行されません。
+**ガイダンス**: 適用できません。この推奨事項は、データを格納するように設計された非コンピューティング リソースを対象にしています。 Microsoft マルウェア対策は、Azure サービス (Service Fabric など) をサポートする、基になるホストで有効になっていますが、顧客のコンテンツに対しては実行されません。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -994,13 +994,13 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 ## <a name="data-recovery"></a>データの復旧
 
-*詳細については、「[セキュリティ コントロール: データの復旧](/azure/security/benchmarks/security-control-data-recovery)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: データの復旧](../security/benchmarks/security-control-data-recovery.md)」を参照してください。*
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的に自動バックアップを行う
 
 **ガイダンス**: Service Fabric のバックアップと復元サービスを使用すると、ステートフル サービスに格納された情報を簡単かつ自動的にバックアップできます。 定期的にアプリケーション データをバックアップすることは、データが失われたりサービスを利用できなくなったりしないように保護するために不可欠です。 Service Fabric には、オプションで提供されるバックアップと復元サービスがあります。このサービスを使用すると、追加のコードを記述することなく、ステートフルな Reliable Services の定期的なバックアップを構成できます (Actor Services も対象になります)。 これまでに実行したバックアップも簡単に復元できます。
 
-* [Azure Service Fabric クラスターでの定期的なバックアップと復元](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Azure Service Fabric クラスターでの定期的なバックアップと復元](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1010,11 +1010,11 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 **ガイダンス**: Service Fabric クラスターでバックアップ復元サービスを有効にし、ステートフル サービスを定期的かつオンデマンドでバックアップするバックアップ ポリシーを作成します。 Azure Key Vault 内のカスタマー マネージド キーをバックアップします。
 
-* [Azure Service Fabric クラスターでの定期的なバックアップと復元](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)
+* [Azure Service Fabric クラスターでの定期的なバックアップと復元](./service-fabric-backuprestoreservice-quickstart-azurecluster.md)
 
-* [Azure Service Fabric の定期バックアップ構成を理解する](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Azure Service Fabric の定期バックアップ構成を理解する](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1024,11 +1024,11 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 **ガイダンス**:バックアップ構成情報と利用可能なバックアップを定期的に確認することにより、確実にバックアップ復元サービスから復元を実行できるようにします。 バックアップされたカスタマー マネージド キーの復元をテストします。
 
-* [Azure Service Fabric の定期バックアップ構成を理解する](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-configure-periodic-backup)
+* [Azure Service Fabric の定期バックアップ構成を理解する](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 
-* [Azure Service Fabric でのバックアップの復元](https://docs.microsoft.com/azure/service-fabric/service-fabric-backup-restore-service-trigger-restore)
+* [Azure Service Fabric でのバックアップの復元](./service-fabric-backup-restore-service-trigger-restore.md)
 
-* [Azure でキー コンテナーのキーを復元する方法](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1040,9 +1040,9 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 カスタマー マネージド キーを使用している場合は、キーを偶発的または悪意のある削除から保護するために、Key Vault の論理的な削除が有効であることを確認します。
 
-* [Azure Storage の保存時の暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+* [Azure Storage の保存時の暗号化](../storage/common/storage-service-encryption.md)
 
-* [Key Vault で論理的な削除を有効にする方法](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [Key Vault で論理的な削除を有効にする方法](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1050,7 +1050,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 ## <a name="incident-response"></a>インシデント対応
 
-*詳細については、「[セキュリティ コントロール: インシデント対応](/azure/security/benchmarks/security-control-incident-response)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: インシデント対応](../security/benchmarks/security-control-incident-response.md)」を参照してください。*
 
 ### <a name="101-create-an-incident-response-guide"></a>10.1:インシデント対応ガイドを作成する
 
@@ -1072,9 +1072,9 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 さらに、タグを使用してサブスクリプションをマークし、Azure リソース (特に、機密データを処理するもの) を識別して分類するための命名システムを作成します。 インシデントが発生した Azure リソースと環境の重要度に基づいてアラートの修復に優先順位を付けることは、お客様の責任です。
 
-* [Security alerts in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-overview)
+* [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-* [タグを使用した Azure リソースの整理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
+* [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1094,7 +1094,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 **ガイダンス**:セキュリティ インシデントの連絡先情報は、Microsoft Security Response Center (MSRC) でユーザーのデータが違法または権限のないユーザーによってアクセスされたことが検出された場合に、Microsoft からの連絡先として使用されます。 事後にインシデントをレビューして、問題が解決されていることを確認します。
 
-* [Azure Security Center のセキュリティ連絡先を設定する方法](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
+* [Azure Security Center のセキュリティ連絡先を設定する方法](../security-center/security-center-provide-security-contact-details.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -1104,9 +1104,9 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 **ガイダンス**:連続エクスポート機能を使用して Azure Security Center のアラートと推奨事項をエクスポートします。 連続エクスポートを使用すると、アラートと推奨事項を手動で、または継続した連続的な方法でエクスポートできます。 Azure Security Center データ コネクタを使用して、アラートの Sentinel のストリーミングを実行できます。
 
-* [連続エクスポートを構成する方法](https://docs.microsoft.com/azure/security-center/continuous-export)
+* [連続エクスポートを構成する方法](../security-center/continuous-export.md)
 
-* [Azure Sentinel にアラートをストリーミングする方法](https://docs.microsoft.com/azure/sentinel/connect-azure-security-center)
+* [Azure Sentinel にアラートをストリーミングする方法](../sentinel/connect-azure-security-center.md)
 
 **Azure Security Center の監視**: はい
 
@@ -1116,7 +1116,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 **ガイダンス**:セキュリティ アラートやセキュリティに関する推奨事項に対して "Logic Apps" 経由で応答を自動的にトリガーするには、Azure Security Center のワークフローの自動化機能を使用します。
 
-* [ワークフローの自動化と Logic Apps を構成する方法](https://docs.microsoft.com/azure/security-center/workflow-automation)
+* [ワークフローの自動化と Logic Apps を構成する方法](../security-center/workflow-automation.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1124,7 +1124,7 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>侵入テストとレッド チーム演習
 
-*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)」を参照してください。*
+*詳細については、「[セキュリティ コントロール: 侵入テストとレッド チーム演習](../security/benchmarks/security-control-penetration-tests-red-team-exercises.md)」を参照してください。*
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11.1:Azure リソースの通常の侵入テストを実施し、セキュリティに関する重大な調査結果がすべて、確実に修復されるようにする
 
@@ -1140,5 +1140,5 @@ Windows Defender を使用していない場合は、お使いのマルウェア
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク](/azure/security/benchmarks/overview)に関するページを参照する
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク](../security/benchmarks/overview.md)に関するページを参照する
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

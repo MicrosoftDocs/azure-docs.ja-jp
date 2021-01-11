@@ -1,18 +1,18 @@
 ---
 title: Dynamics 365 Business Central オファーを作成する - Microsoft コマーシャル マーケットプレース
-description: パートナー センターのコマーシャル マーケットプレース ポータルで、新しい Dynamics 365 Business Central オファーを作成するための手順と考慮事項について説明します。 Azure Marketplace で、またはクラウド ソリューション プロバイダー (CSP) プログラムを使用して、オファーを一覧表示したり、販売したりすることができます。
+description: パートナー センターの Microsoft コマーシャル マーケットプレースで、新しい Dynamics 365 Business Central オファーを作成するための手順と考慮事項について説明します。 Azure Marketplace で、またはクラウド ソリューション プロバイダー (CSP) プログラムを使用して、オファーを一覧表示したり、販売したりすることができます。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 456764ae2b08b9852e56b2ab3f7cd9238b540b58
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/07/2020
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121947"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817053"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central オファーの作成
 
@@ -29,7 +29,7 @@ ms.locfileid: "86121947"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ## <a name="new-offer"></a>新しいプラン
 
@@ -182,10 +182,16 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
-オファーのロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 オファーのロゴを 2 つのサイズでアップロードします。
+**大**サイズのロゴに PNG ファイルを指定します。 パートナー センターでは、これを使用して、**小**サイズのロゴを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
 
-* **小** (48 x 48 ピクセル)
-* **大** (216 x 216 ピクセル)
+- **大** (216 x 216 から 350 x 350 px、必須)
+- **小** (48 x 48 px、省略可能)
+
+これらのロゴは、リスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。

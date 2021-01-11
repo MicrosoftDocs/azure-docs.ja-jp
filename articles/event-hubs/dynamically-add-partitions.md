@@ -3,12 +3,12 @@ title: Azure Event Hubs でイベント ハブにパーティションを動的�
 description: この記事では、Azure Event Hubs でイベント ハブにパーティションを動的に追加する方法について説明します。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: ea0477dcc695c7a2fb936daadc3679c94bfac12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317940"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002541"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Azure Event Hubs でイベント ハブ (Apache Kafka トピック) にパーティションを動的に追加する
 Event Hubs は、パーティション化されたコンシューマー パターンを使用してメッセージ ストリーミングを実現します。このパターンでは、各コンシューマーはメッセージ ストリームの特定のサブセット (またはパーティション) のみを読み取ります。 このパターンでは、イベント処理能力を水平方向に拡張 (スケールアウト) することができ、キューおよびトピックでは利用できない、ストリームに重点を置いたその他の機能が利用できます。 パーティションは、イベント ハブで保持される順序付けされた一連のイベントです。 新しいイベントが到着すると、このシーケンスの末尾に追加されます。 パーティションの概要について詳しくは、「[パーティション](event-hubs-scalability.md#partitions)」を参照してください
@@ -33,7 +33,7 @@ Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespac
 ```
 
 ### <a name="cli"></a>CLI
-[az eventhubs eventhub update](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) CLI コマンドを使用して、イベント ハブのパーティションを更新します。 
+イベント ハブでパーティションを更新するには、[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) CLI コマンドを使用します。 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -64,7 +64,7 @@ Resource Manager テンプレートで `partitionCount` プロパティの値を
 ## <a name="event-hubs-clients"></a>Event Hubs クライアント
 イベント ハブでパーティション数が更新されたときに、Event Hubs クライアントがどのように動作するかを見てみましょう。 
 
-既存のハブにパーティションを追加すると、イベント ハブ クライアントがサービスから "MessagingException" を受け取ります。これは、エンティティ メタデータが変更されたことをクライアントに通知するものです (エンティティはイベント ハブで、メタデータはパーティション情報)。 クライアントは自動的に AMQP リンクを開き、変更されたメタデータ情報を取得します。 その後、クライアントは正常に動作します。
+既存のハブにパーティションを追加すると、イベント ハブ クライアントがサービスから `MessagingException` を受け取ります。これは、エンティティ メタデータが変更されたことをクライアントに通知するものです (エンティティはイベント ハブで、メタデータはパーティション情報)。 クライアントは自動的に AMQP リンクを開き、変更されたメタデータ情報を取得します。 その後、クライアントは正常に動作します。
 
 ### <a name="senderproducer-clients"></a>センダー/プロデューサー クライアント
 Event Hubs には、次の 3 つのセンダー オプションがあります。
@@ -84,7 +84,7 @@ Event Hubs にはダイレクト レシーバーがあり、[イベント プロ
 ## <a name="apache-kafka-clients"></a>Apache Kafka クライアント
 このセクションでは、イベント ハブのパーティション数が更新された際に、Azure Event Hubs の Kafka エンドポイントを使用する Apache Kafka クライアントがどのように動作するかについて説明します。 
 
-Apache Kafka プロトコル経由で Event Hubs を使用する Kafka クライアントでは、AMQP プロトコルを使用するイベント ハブ クライアントと動作が異なります。 Kafka クライアントは、`metadata.max.age.ms` ミリ秒ごとにメタデータを更新します。 この値は、クライアント構成で指定します。 `librdkafka` のライブラリでも、同じ構成が使用されます。 メタデータの更新時には、サービスの変更 (パーティション数の増加を含む) がクライアントに通知されます。 構成の一覧については、「[Event Hubs に対応した Apache Kafka の構成](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)」を参照してください
+Apache Kafka プロトコル経由で Event Hubs を使用する Kafka クライアントでは、AMQP プロトコルを使用するイベント ハブ クライアントと動作が異なります。 Kafka クライアントは、`metadata.max.age.ms` ミリ秒ごとにメタデータを更新します。 この値は、クライアント構成で指定します。 `librdkafka` のライブラリでも、同じ構成が使用されます。 メタデータの更新時には、サービスの変更 (パーティション数の増加を含む) がクライアントに通知されます。 構成の一覧については、「[Event Hubs に対応した Apache Kafka の構成](apache-kafka-configurations.md)」を参照してください。
 
 ### <a name="senderproducer-clients"></a>センダー/プロデューサー クライアント
 プロデューサーは、生成されたレコードのセットごとに、パーティション ターゲットを送信要求に含めることを常に指示します。 そのため、すべてのパーティション分割は、ブローカーのメタデータに対するプロデューサーのビューを使用して、クライアント側で行われます。 新しいパーティションがプロデューサーのメタデータ ビューに追加されると、それらはプロデューサー要求で使用できるようになります。
@@ -100,7 +100,7 @@ Apache Kafka プロトコル経由で Event Hubs を使用する Kafka クライ
     > 既存のデータの順序は維持されますが、パーティションの追加によってパーティション数が変更された後にハッシュされたメッセージについては、パーティション ハッシュは維持されません。
 - 次の場合は、既存のトピックまたはイベント ハブ インスタンスにパーティションを追加することをお勧めします。
     - ラウンド ロビン (既定) のイベント送信方法を使用する場合
-     - Kafka の既定のパーティション分割戦略 (例: StickyAssignor 戦略)
+     - Kafka の既定のパーティション分割戦略 (例: Sticky Assignor 戦略)
 
 
 ## <a name="next-steps"></a>次のステップ

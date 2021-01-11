@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522aed07d850dfdb2782ee8263f33bd3f42eb8c2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 39dd9604cf0e58eda94acf6528ab31eca26355d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258042"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936777"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -43,7 +43,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
 * **Query** - 開発者は、Query カテゴリを使用して、複数のリレーションシップにわたる[ツイングラフで一連の Digital Twins を検索できます](how-to-query-graph.md)。
 * **EventRoutes** - EventRoutes カテゴリには、システムを通してダウンストリーミング サービスに[データをルーティングする](concepts-route-events.md) API が含まれています。
 
-パブリック プレビューの最新のデータ プレーン API バージョンは、**2020-05-31-preview** です。__
+パブリック プレビューの最新のデータ プレーン API バージョンは、**2020-05-31-preview** です。__ データ プレーン操作に対する _2020-03-01-preview_ API バージョンは非推奨になりました。
 
 データ プレーン API を使用するには
 * API を直接呼び出すには、次の操作を実行します。
@@ -54,7 +54,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
    - GitHub で、サンプルのフォルダーを含む SDK ソース [Azure IoT Digital Twins client library for .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core) を探す。 
    - [SDK のリファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/digitaltwins?view=azure-dotnet-preview)を確認する。
    - 詳細な情報と使用例については、この記事の「[.NET (C#) SDK (データ プレーン)](#net-c-sdk-data-plane)」セクションを参照してください。
-* AutoRest を使用して、別の言語用の SDK を生成することができます。 「[How-to: Create custom SDKs for Azure Digital Twins with AutoRest](how-to-create-custom-sdks.md)」 (使用方法: AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する) に従ってください。
+* AutoRest を使用して、別の言語用の SDK を生成することができます。 ["*AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法*"](how-to-create-custom-sdks.md) の手順に従ってください。
 
 また、データ プレーン API の演習を行うには、[CLI](how-to-use-cli.md) を使用して Azure Digital Twins を操作します。
 
@@ -65,17 +65,17 @@ Azure Digital Twins .NET (C#) SDK は、Azure SDK for .Net に含まれていま
 > [!NOTE]
 > SDK の設計の詳細については、[Azure SDK の一般的な設計原則](https://azure.github.io/azure-sdk/general_introduction.html)と特定の [.NET 設計ガイドライン](https://azure.github.io/azure-sdk/dotnet_introduction.html)を参照してください。
 
-SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージも必要です。
+SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** をプロジェクトに含めます。 また、**Azure.Identity** パッケージの最新バージョンも必要です。
 
 * Visual Studio では、NuGet パッケージ マネージャーを使用してパッケージを追加できます。そのためには、[ツール] > [NuGet パッケージ マネージャー] > [ソリューションの NuGet パッケージの管理] の順に選択します。** 
 * .NET コマンド ライン ツールを使用して、次のコマンドを実行できます。
 
     ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.2
+    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
     dotnet add package Azure.identity
     ```
 
-実際の API の使用方法の詳細については、「[チュートリアル: クライアント アプリをコーディングする](tutorial-code.md)」を参照してください。 
+実際の API の使用方法の詳細については、["*クライアント アプリのコーディングに関するチュートリアル*"](tutorial-code.md) を参照してください。 
 
 ### <a name="net-sdk-usage-examples"></a>.NET SDK の使用例
 
@@ -137,13 +137,13 @@ await foreach (string twin in result)
 }
 ```
 
-このサンプル アプリ コードの使用方法については、「[チュートリアル: クライアント アプリをコーディングする](tutorial-code.md)」を参照してください。 
+このサンプル コード アプリの詳細については、["*クライアント アプリのコーディングに関するチュートリアル*"](tutorial-code.md) を参照してください。 
 
 その他のサンプルについては、[.NET (C#) SDK 用 GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core/samples)を参照してください。
 
 #### <a name="serialization-helpers"></a>シリアル化のヘルパー
 
-前述のように、コア SDK メソッドはツイン データを JSON として返します。 ただし、SDK にはシリアル化のためのヘルパー クラスも含まれています。 これらのヘルパー関数を使用すると、基本的な情報にアクセスするためのツイン データをすばやく作成したり、逆シリアル化したりすることができます。
+シリアル化のヘルパーは、基本情報にアクセスするためのツイン データを、迅速に作成または逆シリアル化するために SDK 内で使用できるヘルパー関数です。 コア SDK メソッドは、既定でツイン データを JSON として返すため、これらのヘルパー クラスを使用して、ツイン データをさらに分割するのに役立ちます。
 
 使用できるヘルパー クラスは次のとおりです。
 * `BasicDigitalTwin`:デジタル ツインのコアデータを表します。
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>リレーションシップを作成する
 
-`BasicDigitalTwin` クラスを使用すると、ツイン インスタンスでリレーションシップを作成するためのデータを準備できます。
+`BasicRelationship` クラスを使用すると、ツイン インスタンスでリレーションシップを作成するためのデータを準備できます。
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();
@@ -284,14 +284,14 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 portal のホームページで、Azure Digital Twins インスタンスを検索して詳細を取得します。 Azure Digital Twins インスタンスのメニューから **[メトリック]** オプションを選択して、 *[メトリック]* ページを表示します。
 
-:::image type="content" source="media/how-to-use-apis-sdks/metrics.png" alt-text="Azure portal の Azure Digital Twins インスタンスの [メトリック] ページ":::
+:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Azure Digital Twins の [メトリック] ページが示されているスクリーンショット":::
 
 ここから、インスタンスのメトリックを表示したり、カスタム ビューを作成したりできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-API を使用して Azure Digital Twins インスタンスを作成する方法を参照してください。
-* [Azure Digital Twins インスタンスを作成する](how-to-set-up-instance.md)
+API を使用して Azure Digital Twins インスタンスと認証を設定する方法を参照してください。
+* [*方法: インスタンスと認証を設定する*"](how-to-set-up-instance-scripted.md)
 
 または、次のチュートリアルで使用されているようなクライアント アプリの作成手順を実行します。
-* [チュートリアル:クライアント アプリをコーディングする](tutorial-code.md)
+* [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)

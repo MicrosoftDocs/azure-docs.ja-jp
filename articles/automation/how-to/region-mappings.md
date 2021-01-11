@@ -10,12 +10,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261190"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447858"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>リンクされた Log Analytics ワークスペースでサポートされるリージョン
 
@@ -78,11 +78,11 @@ Azure Automation では、お使いの VM で、Update Management、Change Track
 
 または、ワークスペース内の Automation アカウントからワークスペースのリンクを解除することもできます。
 
-1. ワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 
+1. ワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。
 2. [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* Update Management について、[Update Management の概要](../automation-update-management.md)に関する記事で学習する。
+* Update Management について、[Update Management の概要](../update-management/update-mgmt-overview.md)に関する記事で学習する。
 * Change Tracking とインベントリについて、「[変更履歴とインベントリの概要](../change-tracking.md)」で学習する。
 * Start/Stop VMs during off-hours について、[Start/Stop VMs during off-hours の概要](../automation-solution-vm-management.md)に関する記事で学習する。

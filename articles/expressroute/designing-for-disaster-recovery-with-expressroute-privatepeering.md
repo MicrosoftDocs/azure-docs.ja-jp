@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: ディザスター リカバリーの設計'
 description: このページでは、Azure ExpressRoute を使用する場合のディザスター リカバリーのアーキテクチャに関する推奨事項を示します。
 services: expressroute
-author: rambk
+author: duongau
 ms.service: expressroute
 ms.topic: article
 ms.date: 05/25/2019
-ms.author: rambala
-ms.openlocfilehash: 8adfb0ef0d9aa79d1b14127453f76223f035d62a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.author: duau
+ms.openlocfilehash: 0c85272989a362da77b01af7bb1fe968516e53b6
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081170"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89398003"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングを使用したディザスター リカバリーの設計
 

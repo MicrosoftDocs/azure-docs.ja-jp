@@ -8,18 +8,19 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 21f91c15adb5e950f5ed9cc20449387ddcf6504f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: 1e7f832faffc09cb7bbbcca73763b09f58cbb412
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080830"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89019795"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>検索トラフィック分析用のテレメトリ データを収集する
 
 検索トラフィックの分析とは、ユーザーが開始したクリック イベントやキーボード入力など、Azure Cognitive Search アプリケーションのユーザー操作に関するテレメトリ収集用のパターンのことです。 この情報を使用すると、頻度の高い検索用語、クリックスルー率、および 0 件の結果を生成するクエリ入力など、検索ソリューションの有効性を判定できます。
 
-このパターンでは、[Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) ([Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) の 1 つの機能) 上で依存関係を取得して、ユーザー データを収集します。 それには、この記事で説明されているように、クライアント コードにインストルメンテーションを追加する必要があります。 最後に、データを分析するためのレポート メカニズムが必要になります。 Power BI が推奨されますが、アプリケーション ダッシュボードや、Application Insights に接続される任意のツールを使用できます。
+このパターンでは、[Application Insights](../azure-monitor/app/app-insights-overview.md) ([Azure Monitor](../azure-monitor/index.yml) の 1 つの機能) 上で依存関係を取得して、ユーザー データを収集します。 それには、この記事で説明されているように、クライアント コードにインストルメンテーションを追加する必要があります。 最後に、データを分析するためのレポート メカニズムが必要になります。 Power BI が推奨されますが、アプリケーション ダッシュボードや、Application Insights に接続される任意のツールを使用できます。
 
 > [!NOTE]
 > この記事で説明するパターンは、高度なシナリオと、クライアントに追加するコードによって生成されるクリックストリーム データを対象としています。 その一方、サービス ログは設定が簡単で、さまざまなメトリックを提供できます。また、ポータルで実行可能で、コードは必要ありません。 すべてのシナリオでログ記録を有効にすることをお勧めします。 詳細については、[ログ データの収集と分析](search-monitor-logs.md)に関するページを参照してください。
@@ -42,9 +43,9 @@ Azure Cognitive Search サービスの[ポータル](https://portal.azure.com) �
 
 ## <a name="1---set-up-application-insights"></a>1 - Application Insights を設定する
 
-既存の Application Insights リソースを選択するか、まだない場合は[リソースを作成する](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)必要があります。 [検索トラフィックの分析] ページを使用する場合は、アプリケーションが Application Insights に接続するために必要なインストルメンテーション キーをコピーできます。
+既存の Application Insights リソースを選択するか、まだない場合は[リソースを作成する](../azure-monitor/app/create-new-resource.md)必要があります。 [検索トラフィックの分析] ページを使用する場合は、アプリケーションが Application Insights に接続するために必要なインストルメンテーション キーをコピーできます。
 
-Application Insights リソースがある場合は、[サポートされている言語とプラットフォームに関する指示](https://docs.microsoft.com/azure/azure-monitor/app/platforms)に従って、アプリを登録することができます。 登録では、単純に、インストルメンテーション キーを Application Insights からコードに追加します。これにより、関連付けが設定されます。 キーは、ポータルで、または既存のリソースを選択するときに [検索トラフィックの分析] ページから見つけることができます。
+Application Insights リソースがある場合は、[サポートされている言語とプラットフォームに関する指示](../azure-monitor/app/platforms.md)に従って、アプリを登録することができます。 登録では、単純に、インストルメンテーション キーを Application Insights からコードに追加します。これにより、関連付けが設定されます。 キーは、ポータルで、または既存のリソースを選択するときに [検索トラフィックの分析] ページから見つけることができます。
 
 Visual Studio プロジェクトの一部の種類に対して機能するショートカットは、以下の手順で反映されます。 数回クリックするだけで、リソースを作成してアプリを登録します。
 
@@ -54,7 +55,7 @@ Visual Studio プロジェクトの一部の種類に対して機能するショ
 
 1. Microsoft アカウント、Azure サブスクリプション、および Application Insights リソース (新しいリソースが既定値です) を指定することでアプリを登録します。 **[登録]** をクリックします。
 
-この時点で、アプリケーションはアプリケーション監視用に設定されます。これは、既定のメトリックを使用してすべてのページ読み込みが追跡されることを意味します。 前の手順の詳細については、「[Application Insights のサーバー側テレメトリを有効にする](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-application-insights-server-side-telemetry-visual-studio)」を参照してください。
+この時点で、アプリケーションはアプリケーション監視用に設定されます。これは、既定のメトリックを使用してすべてのページ読み込みが追跡されることを意味します。 前の手順の詳細については、「[Application Insights のサーバー側テレメトリを有効にする](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio)」を参照してください。
 
 ## <a name="2---add-instrumentation"></a>2 - インストルメンテーションを追加する
 
@@ -62,11 +63,11 @@ Visual Studio プロジェクトの一部の種類に対して機能するショ
 
 ### <a name="step-1-create-a-telemetry-client"></a>手順 1:テレメトリ クライアントを作成する
 
-Application Insights にイベントを送信するオブジェクトを作成します。 サーバー側のアプリケーション コードまたはブラウザーで実行されているクライアント側コードに、インストルメンテーションを追加できます。ここでは、C# および JavaScript のバリアントとして表現されています。その他の言語については、[サポートされているプラットフォームとフレームワーク](https://docs.microsoft.com/azure/application-insights/app-insights-platforms)の完全な一覧を参照してください。 必要な深さの情報が得られる方法を選択します。
+Application Insights にイベントを送信するオブジェクトを作成します。 サーバー側のアプリケーション コードまたはブラウザーで実行されているクライアント側コードに、インストルメンテーションを追加できます。ここでは、C# および JavaScript のバリアントとして表現されています。その他の言語については、[サポートされているプラットフォームとフレームワーク](../azure-monitor/app/platforms.md)の完全な一覧を参照してください。 必要な深さの情報が得られる方法を選択します。
 
 サーバー側のテレメトリでは、アプリケーション層 (クラウドで Web サービスとして実行されるアプリケーションや、企業ネットワーク上のオンプレミス アプリとして実行されるアプリケーションなど) でメトリックをキャプチャします。 サーバー側のテレメトリでは、検索とクリックのイベント、結果内のドキュメントの位置、およびクエリ情報がキャプチャされますが、データ コレクションのスコープは、そのレイヤーで入手可能なすべての情報となります。
 
-クライアントでは、クエリ入力の操作、ナビゲーションの追加、コンテキスト (クエリがホーム ページから開始されたか、製品ページから開始されたか、など) の付加を行うコードを追加できます。 お使いのソリューションがこれに該当する場合は、テレメトリに追加の詳細が反映されるように、クライアント側のインストルメンテーションも選択できます。 この追加の詳細情報を収集する方法は、このパターンの範囲を超えていますが、詳細な手順については、「[Web ページ向けの Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/javascript#explore-browserclient-side-data)」で確認できます。 
+クライアントでは、クエリ入力の操作、ナビゲーションの追加、コンテキスト (クエリがホーム ページから開始されたか、製品ページから開始されたか、など) の付加を行うコードを追加できます。 お使いのソリューションがこれに該当する場合は、テレメトリに追加の詳細が反映されるように、クライアント側のインストルメンテーションも選択できます。 この追加の詳細情報を収集する方法は、このパターンの範囲を超えていますが、詳細な手順については、「[Web ページ向けの Application Insights](../azure-monitor/app/javascript.md#explore-browserclient-side-data)」で確認できます。 
 
 **C# を使用する**
 
@@ -237,6 +238,6 @@ appInsights.trackEvent("Click", {
 
 検索アプリケーションをインストルメント化して、検索サービスに関する有益で洞察に富んだデータを取得します。
 
-[Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) では詳しい情報が見つかります。また、さまざまなサービス レベルについて詳しくは、[価格に関するページ](https://azure.microsoft.com/pricing/details/application-insights/)をご覧ください。
+[Application Insights](../azure-monitor/app/app-insights-overview.md) では詳しい情報が見つかります。また、さまざまなサービス レベルについて詳しくは、[価格に関するページ](https://azure.microsoft.com/pricing/details/application-insights/)をご覧ください。
 
-レポートの作成についての詳細。 「[Power BI Desktop の概要](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started)」を参照してください。
+レポートの作成についての詳細。 「[Power BI Desktop の概要](/power-bi/fundamentals/desktop-getting-started)」を参照してください。

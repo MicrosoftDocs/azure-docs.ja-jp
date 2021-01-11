@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/01/2020
-ms.openlocfilehash: 25bda7ed94eef20e22bcf717780d08a3ea5e6521
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/12/2020
+ms.openlocfilehash: 19e3f1a157ee2c042dfebfc96c9b51c3c4698ebc
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077220"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163732"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>HDInsight で Azure Monitor ログを使用してクラスターの可用性を監視する方法
 
@@ -30,6 +30,8 @@ Azure Monitor ログでは、HDInsight クラスターなどの複数のリソ�
 
 ![[HDInsight Operations Management Suite]](media/cluster-availability-monitor-logs/azure-portal-monitoring.png)
 
+既定では、これによって、エッジ ノードを除くすべてのクラスター ノードに OMS エージェントがインストールされます。 クラスター エッジ ノードには OMS エージェントがインストールされていないため、Log Analytics に既定で存在するエッジ ノードにはテレメトリがありません。
+
 ## <a name="query-metrics-and-logs-tables"></a>メトリックとログ テーブルにクエリを実行する
 
 Azure Monitor ログの統合が有効になったら (これには数分かかる場合があります)、 **[Log Analytics ワークスペース]** リソースに移動して、 **[ログ]** を選択します。
@@ -46,7 +48,7 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 | 利用できないコンピューター           | 過去 5 時間以内にハートビートを送信しなかったすべての既知のコンピューターを一覧表示する |
 | 可用性率               | 接続されている各コンピューターの可用性率を計算する                |
 
-例として、上記のスクリーンショットに示すように、**可用性率**のサンプル クエリ上の **[実行]** を選択して、そのクエリを実行します。 これにより、クラスター内にある各ノードの可用性率が割合として表示されます。 複数の HDInsight クラスターを有効にしてメトリックを同じ Log Analytics ワークスペースに送信した場合、表示されているそれらのクラスター内のすべてのノードに対する可用性率が表示されます。
+例として、上記のスクリーンショットに示すように、**可用性率**のサンプル クエリ上の **[実行]** を選択して、そのクエリを実行します。 これにより、クラスター内にある各ノードの可用性率が割合として表示されます。 複数の HDInsight クラスターを有効にしてメトリックを同じ Log Analytics ワークスペースに送信した場合、表示されているそれらのクラスター内のすべてのノード (エッジ ノードを除く) に対する可用性率が表示されます。
 
 ![Log Analytics ワークスペースにある [ログ] の '可用性率' サンプル クエリ](media/cluster-availability-monitor-logs/portal-availability-rate.png)
 
@@ -123,4 +125,4 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 ## <a name="next-steps"></a>次のステップ
 
 * [クラスターの可用性 - Apache Ambari](./hdinsight-cluster-availability.md)
-* [Azure モニター ログを使用する](hdinsight-hadoop-oms-log-analytics-tutorial.md)
+* [Azure Monitor ログを使用する](hdinsight-hadoop-oms-log-analytics-tutorial.md)

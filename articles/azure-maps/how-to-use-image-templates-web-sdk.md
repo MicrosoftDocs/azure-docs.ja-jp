@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Web SDK の画像テンプレート | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK で、HTML マーカーやさまざまなレイヤーとともに画像テンプレートを使用する方法について説明します。
+description: Azure Maps Web SDK を使用して、マップに画像アイコンと塗りつぶしパターンの多角形を追加する方法について学習します。 使用可能なイメージと塗りつぶしパターンのテンプレートを表示します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2942ae25e3ac84ae6f91ebbba08581eb87bcd169
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ae3fa4684e4e71115d2d4ddce3c34ccb4f1cb703
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285681"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004656"
 ---
 # <a name="how-to-use-image-templates"></a>イメージ テンプレートの使用方法
 

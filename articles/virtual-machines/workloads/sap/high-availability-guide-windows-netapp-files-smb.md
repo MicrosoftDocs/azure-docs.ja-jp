@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 08/12/2020
 ms.author: radeltch
-ms.openlocfilehash: b8b19b5bbb327c55b4f4103a133e77e73f0ae4bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088259"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853109"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性
 
@@ -101,7 +101,7 @@ SMB ファイル共有の前提条件:
 
 この参照アーキテクチャでの SAP セントラル サービスの共有は、Azure NetApp Files によって提供されます。
 
-![SMB 共有を使う SAP ASCS/SCS HA のアーキテクチャ](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-detail.png)
+![SMB 共有を使う SAP ASCS/SCS HA のアーキテクチャの詳細](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-detail.png)
 
 ## <a name="create-and-mount-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成およびマウントする
 
@@ -112,8 +112,8 @@ Azure NetApp Files を使用するための準備として、次のステップ�
 3. 「[容量プールを設定する](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md)」の指示に従って、容量プールを設定します
 4. Azure NetApp Files リソースは、委任されたサブネット内に存在する必要があります。 「[サブネットを Azure NetApp Files に委任する](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)」の指示に従って、委任されたサブネットを作成します。  
 
-> [!IMPORTANT]
-> SMB ボリュームを作成する前に Active Directory の接続を作成する必要があります。 [Active Directory コンポーネント要件](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)を確認します。  
+   > [!IMPORTANT]
+   > SMB ボリュームを作成する前に Active Directory の接続を作成する必要があります。 [Active Directory コンポーネント要件](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)を確認します。  
 
 5. 「[Active Directory 接続を作成する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)」の説明に従って、Active Directory 接続を作成します  
 6. 「[SMB ボリュームを追加する](../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md#add-an-smb-volume)」の指示に従って、SMB Azure NetApp Files の SMB ボリュームを作成します  
@@ -124,15 +124,11 @@ Azure NetApp Files を使用するための準備として、次のステップ�
 
 ## <a name="prepare-the-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster"></a>Windows フェールオーバー クラスターを使用して SAP HA 向けのインフラストラクチャを準備する 
 
-1. [必要な DNS IP アドレスを設定する](./sap-high-availability-infrastructure-wsfc-shared-disk.md#b22d7b3b-4343-40ff-a319-097e13f62f9e)  
-2. [SAP 仮想マシンの静的 IP アドレスを設定します](./sap-high-availability-infrastructure-wsfc-shared-disk.md#84c019fe-8c58-4dac-9e54-173efd4b2c30)。
-3. [Azure 内部ロード バランサーの静的 IP アドレスを設定します](./sap-high-availability-infrastructure-wsfc-shared-disk.md#7a8f3e9b-0624-4051-9e41-b73fff816a9e)。
-4. [Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を設定します](./sap-high-availability-infrastructure-wsfc-shared-disk.md#f19bd997-154d-4583-a46e-7f5a69d0153c)。
-5. [Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を変更します](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716)。
-6. [Windows 仮想マシンをドメインに追加します](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c)。
-7. [SAP ASCS/SCS インスタンスの両方のクラスター ノードにレジストリ エントリを追加する](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
-8. [SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー クラスターをセットアップする](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
-9. Windows Server 2016 を使用しているときは、[Azure クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)を構成することをお勧めします。
+1. [Azure 内部ロード バランサーの ASCS/SCS 負荷分散規則を設定します](./sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716)。
+2. [Windows 仮想マシンをドメインに追加します](./sap-high-availability-infrastructure-wsfc-shared-disk.md#e69e9a34-4601-47a3-a41c-d2e11c626c0c)。
+3. [SAP ASCS/SCS インスタンスの両方のクラスター ノードにレジストリ エントリを追加する](./sap-high-availability-infrastructure-wsfc-shared-disk.md#661035b2-4d0f-4d31-86f8-dc0a50d78158)
+4. [SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー クラスターをセットアップする](./sap-high-availability-infrastructure-wsfc-shared-disk.md#0d67f090-7928-43e0-8772-5ccbf8f59aab)
+5. Windows Server 2016 を使用しているときは、[Azure クラウド監視](/windows-server/failover-clustering/deploy-cloud-witness)を構成することをお勧めします。
 
 
 ## <a name="install-sap-ascs-instance-on-both-nodes"></a>両方のノードに SAP ASCS インスタンスをインストールする
@@ -149,14 +145,14 @@ SAP から、次のソフトウェアが必要です。
 
 1. SAP ASCS/SCS インスタンスを最初のクラスター ノードにインストールします。 SAP SWPM インストール ツールを起動し、次の場所に移動します。**製品** > **DBMS** > インストール > アプリケーション サーバー ABAP (または Java) > 高可用性システム > ASCS/SCS インスタンス > 最初のクラスター ノード。  
 
-2. SWPM でクラスター共有の構成として、 **[ファイル共有クラスター]** を選択します。  
-3. **[SAP システム クラスター パラメーター]** のステップでプロンプトが表示されたら、既に作成した Azure NetApp Files SMB 共有のホスト名を、 **[ファイル共有ホスト名]** として入力します。  この例では、SMB 共有ホスト名は **anfsmb-9562** です。 
+2. SWPM でクラスター共有の構成として、**[ファイル共有クラスター]** を選択します。  
+3. **[SAP システム クラスター パラメーター]** のステップでプロンプトが表示されたら、既に作成した Azure NetApp Files SMB 共有のホスト名を、**[ファイル共有ホスト名]** として入力します。  この例では、SMB 共有ホスト名は **anfsmb-9562** です。 
 
-> [!IMPORTANT]
-> 前提条件チェッカーによって、SWPM に継続的可用性機能の条件が満たされていないことが示された場合は、「[Windows に存在しない共有フォルダーにアクセスしようとしたときの遅延エラー メッセージ](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l)」に関する説明に従って対処できます。  
+   > [!IMPORTANT]
+   > 前提条件チェッカーによって、SWPM に継続的可用性機能の条件が満たされていないことが示された場合は、「[Windows に存在しない共有フォルダーにアクセスしようとしたときの遅延エラー メッセージ](https://support.microsoft.com/help/2820470/delayed-error-message-when-you-try-to-access-a-shared-folder-that-no-l)」に関する説明に従って対処できます。  
 
-> [!TIP]
-> 前提条件チェッカーによって、SWPM にスワップ サイズ条件が満たされていないことが示された場合は、[マイ コンピューター] > [システムのプロパティ] > [パフォーマンス設定] > [詳細] > [仮想メモリ] > [変化] の順に移動して SWAP サイズを調整できます。  
+   > [!TIP]
+   > 前提条件チェッカーによって、SWPM にスワップ サイズ条件が満たされていないことが示された場合は、[マイ コンピューター] > [システムのプロパティ] > [パフォーマンス設定] > [詳細] > [仮想メモリ] > [変化] の順に移動して SWAP サイズを調整できます。  
 
 4. PowerShell を使用して、SAP クラスター リソースの `SAP-SID-IP` プローブ ポートを構成します。 この構成は、「[プローブ ポートの構成](./sap-high-availability-installation-wsfc-shared-disk.md#10822f4f-32e7-4871-b63a-9b86c76ce761)」で説明したように、SAP ASCS/SCS クラスター ノードのいずれかで実行します。
 

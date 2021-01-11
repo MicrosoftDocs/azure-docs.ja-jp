@@ -1,18 +1,17 @@
 ---
-title: Azure Site Recovery を使用してオンプレミスのマシンを移行する
-description: この記事では、Azure Site Recovery を使用して、オンプレミスのマシンを Azure に移行する方法について説明します。
-author: rayne-wiselman
+title: Azure Migrate を使用してオンプレミスのマシンを移行する
+description: この記事では、オンプレミスのマシンを Azure に移行する方法について概説したうえで、Azure Migrate をお勧めします。
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: 3c421845d4e15ef13ce98d0de111270159f564fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285358"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847314"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -20,7 +19,7 @@ ms.locfileid: "87285358"
 
 ## <a name="migrate-with-azure-migrate"></a>Azure Migrate を使用した移行
 
-マシンは、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用して Azure に移行することをお勧めします。 Azure Migrate は、Azure Migrate、その他の Azure サービス、サードパーティ製のツールを使用する、オンプレミス マシンを Azure に移行する場合の評価を実行する一元的なハブです。
+マシンは、[Azure Migrate](../migrate/migrate-services-overview.md) サービスを使用して Azure に移行することをお勧めします。 Azure Migrate は、サーバーの移行専用に設計されています。 Azure Migrate は、オンプレミスのマシンの検出、評価、および Azure への移行を行うための中心的なハブを提供します。
 
 Azure Migrate で移行する場合は、次のリンクを参照してください。
 

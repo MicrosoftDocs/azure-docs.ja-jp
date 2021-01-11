@@ -1,6 +1,6 @@
 ---
-title: PIM での Azure AD ロール セキュリティ ウィザード - Azure Active Directory | Microsoft Docs
-description: Azure AD Privileged Identity Management (PIM) を使用して永続的な特権 Azure AD ロールの割り当てを対象的に変換するために使用できるセキュリティ ウィザードについて説明します。
+title: Privileged Identity Management での Azure AD ロールの検出と分析情報 (プレビュー) (以前のセキュリティ ウィザード) - Azure Active Directory
+description: 検出と分析情報 (以前のセキュリティ ウィザード) を使用すると、永続的な Azure AD ロールの割り当てを Privileged Identity Management を使用した Just-In-Time 割り当てに変換できます。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,65 +10,60 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/21/2020
+ms.date: 08/07/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cc7aed1cc79a8c08a7ff11382a1c7a51455d5c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef1de7e98a9cb57f83b87589ceddedc3cdd80927
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743662"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005946"
 ---
-# <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Privileged Identity Management での Azure AD ロール セキュリティ ウィザード
+# <a name="discovery-and-insights-preview-for-azure-ad-roles-formerly-security-wizard"></a>Azure AD ロールの検出と分析情報 (プレビュー) (以前のセキュリティ ウィザード)
 
-Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (PIM) を初めて実行するユーザーには、開始のためのウィザードが表示されます。 このウィザードを使用すると、特権 ID のセキュリティ リスクと、Privileged Identity Management を使用してそのリスクを軽減する方法がわかります。 既存のロール割り当てを後で変更する場合は、ウィザードで実行する必要はありません。
+Azure Active Directory (Azure AD) 組織内で Privileged Identity Management (PIM) を開始する場合は、 **[Discovery and insights (preview)]\(検出と分析情報 (プレビュー)\)** ページを使用して作業を開始できます。 この機能によって、組織内の特権ロールに割り当てられているユーザーと、PIM を使用して永続的なロールの割り当てを Just-In-Time 割り当てにすばやく変更する方法が示されます。 **[Discovery and insights (preview)]\(検出と分析情報 (プレビュー)\)** で、永続的な特権ロールの割り当てを表示したり、変更を加えたりすることができます。 これは分析ツールであり、アクション ツールです。
 
-> [!Important]
-> セキュリティ ウィザードは、一時的に利用できません。 ご不便をおかけして申し訳ございませんでした。
+## <a name="discovery-and-insights-preview"></a>検出と分析情報 (プレビュー)
 
-## <a name="wizard-overview"></a>ウィザードの概要
+組織で Privileged Identity Management の使用を開始する前に、すべてのロールの割り当てが永続になります。 ユーザーは特権を必要としない場合でも、常に割り当てられたロールに含まれます。 以前のセキュリティウィザードに代わる [Discovery and insights (preview)]\(検出と分析情報 (プレビュー)\) には、特権ロールの一覧と、それらのロールに現在存在しているユーザーの数が表示されます。 1 人または複数のロール割り当て済みユーザーが不明な場合に、その詳細を確認するには、ロールの割り当ての一覧を表示できます。
 
-組織で Privileged Identity Management の使用を開始する前の段階では、すべてのロール割り当ては永続的な割り当てになっています。そのため、ユーザーが現在その権限を必要としていない場合でも、常にロールは割り当てられている状態です。 ウィザードの最初の手順には、高い権限を持つロールの一覧と、それらのロールに割り当てられたユーザーの数が表示されます。 ロールの中によく知らないものがある場合は、そのロールの詳細を表示して、ユーザーを詳しく確認できます。
+:heavy_check_mark:Microsoft は、サインイン時に多要素認証を必要としないグローバル管理者ロールに永続的に割り当てられる、緊急用アカウントを 2 つ保持することを**お勧めします**。 これらは、どのような緊急時のシナリオでも、グローバル管理者ロールに誰も昇格できない場合であっても使用できます。
 
-ウィザードの 2 番目の手順では、管理者のロール割り当てを変更できます。  
+また、ユーザーに Microsoft アカウント (つまり、Skype、Outlook.com などの Microsoft サービスへのサインインに使用するアカウント) がある場合は、ロールの割り当ても永続的に維持してください。 このようなロールで多要素認証をアクティブにする必要がある場合、そのユーザーはロックアウトされます。
 
-> [!WARNING]
-> ここで重要なのは、グローバル管理者が少なくとも 1 人存在し、職場または学校アカウント (Microsoft アカウントではない) を持つ特権ロール管理者が複数存在していることです。 特権ロール管理者が 1 人しかいない場合、そのアカウントが削除されると、組織は Privileged Identity Management を管理できなくなります。
-> また、ユーザーに Microsoft アカウント (つまり、Skype、Outlook.com などの Microsoft サービスへのサインインに使用するアカウント) がある場合は、ロールの割り当てを永続的に維持してください。 そのロールのアクティブ化に多要素認証を要求すると、ユーザーはロックアウトされます。
-
-## <a name="run-the-wizard"></a>ウィザードの実行
+## <a name="open-discovery-and-insights-preview"></a>[Discovery and insights (preview)]\(検出と分析情報 (プレビュー)\) を開く
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure AD ロール]** を選択し、 **[ウィザード]** を選択します。
+1. **[Azure AD ロール]** を選択して、 **[Discovery and insights (preview)]\(検出と分析情報 (プレビュー)\)** を選択します。 ページを開くと、検出プロセスが開始され、関連するロールの割り当てが検索されます。
 
-    ![[Azure AD ロール] - ウィザードを実行するための 3 つの手順を示すウィザード ページ](./media/pim-security-wizard/wizard-start.png)
+    ![3 つのオプションを示している [Azure AD ロール] の検出と分析情報ページ](./media/pim-security-wizard/new-preview-link.png)
 
-1. **[1 特権ロールの検出]** を選択します。
+1. **[Reduce global administrators]\(グローバル管理者を減らす\)** を選択します。
 
-1. 特権ロールの一覧で、どのユーザーが永続的または対象的であるかを確認します。
+    ![グローバル管理者を減らす - すべてのメンバーを表示している [ロール] ウィンドウ](./media/pim-security-wizard/new-preview-page.png)
 
-    ![[特権ロールの検出] - 永続的メンバーと対象的メンバーを示すロール ウィンドウ](./media/pim-security-wizard/discover-privileged-roles-users.png)
+1. グローバル管理者ロールの割り当ての一覧を確認します。
 
-1. **[次へ]** を選択して、対象的にするユーザーまたはグループを選択します。
+    ![グローバル管理者を減らす - すべてのメンバーを表示している [ロール] ウィンドウ](./media/pim-security-wizard/new-global-administrator-list.png)
 
-    ![ロールの対象にするメンバーを選択するためのオプションがある [メンバーを対象的に変換] ページ](./media/pim-security-wizard/convert-members-eligible.png)
+1. **[次へ]** を選択し、対象とするユーザーまたはグループを選択してから、 **[対象化]** または **[割り当ての削除]** を選択します。
 
-1. ユーザーまたはグループを選択したら、 **[次へ]** を選択します。
+    ![ロールの対象にするメンバーを選択するためのオプションがある [メンバーを対象的に変換] ページ](./media/pim-security-wizard/new-global-administrator-buttons.png)
 
-    ![変換される永続ロールが割り当てられているメンバーを示す [変更の確認] ページ](./media/pim-security-wizard/review-changes.png)
+1. すべてのグローバル管理者に対して、自身のアクセス権をレビューするように要求することもできます。
 
-1. **[OK]** を選択して、永続的な割り当てを対象に変換します。
+    ![アクセス レビュー セクションを示す [グローバル管理者] ページ](./media/pim-security-wizard/new-global-administrator-access-review.png)
 
-    変換が完了したら、通知が表示されます。
+1. これらの変更のいずれかを選択すると、Azure の通知が表示されます。
 
-    ![変換の状態を示す通知](./media/pim-security-wizard/notification-completion.png)
+1. 次に、 **[Eliminate standing access]\(継続的なアクセスを排除する\)** または **[Review service principals]\(サービス プリンシパルを確認する\)** を選択して、他の特権ロールとサービス プリンシパルのロールの割り当てで上記の手順を繰り返します。 サービス プリンシパルのロールの割り当てでは、ロールの割り当てのみを削除できます。
 
-その他の特権ロールの割り当てを対象的に変換する必要がある場合は、もう一度ウィザードを実行できます。 ウィザードの代わりに Privileged Identity Management インターフェイスを使用する場合は、「[Privileged Identity Management で Azure AD ロールを割り当てる](pim-how-to-add-role-to-user.md)」を参照してください。
+    ![継続的なアクセスを排除し、サービス プリンシパルを確認するための追加の分析情報オプション ](./media/pim-security-wizard/new-preview-page-service-principals.png)
 
 ## <a name="next-steps"></a>次のステップ
 

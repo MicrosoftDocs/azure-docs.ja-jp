@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 628824a3d303184e199452b0974c7f99d99a4933
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81870470"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "86998954"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple ポータルからのプライベート クラウド vCenter 特権のエスカレート
 
 プライベート クラウド vCenter への管理者アクセスのために、CloudSimple 特権を一時的にエスカレートすることができます。  エスカレートした特権を使用して、VMware のソリューションのインストール、ID ソースの追加、およびユーザーの管理を行うことができます。
 
-vCenter SSO ドメインで新しいユーザーを作成し、vCenter へのアクセスを付与できます。  新しいユーザーを作成したら、vCenter にアクセスするために CloudSimple 組み込みグループに追加します。  詳細については、「[VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)」を参照してください。
+vCenter SSO ドメインで新しいユーザーを作成し、vCenter へのアクセスを付与できます。  新しいユーザーを作成したら、vCenter にアクセスするために CloudSimple 組み込みグループに追加します。  詳細については、「[VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル](./learn-private-cloud-permissions.md)」を参照してください。
 
 > [!CAUTION]
 > 管理コンポーネントの構成は変更しないでください。 特権がエスカレートされた状態でアクションを実行すると、システムに悪影響が出たり、システムが使用できなくなったりする可能性があります。
@@ -88,5 +88,5 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Active Directory を使用するための vCenter ID ソースの設定](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* [ワークロード仮想マシンのバックアップ](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)を行うためのバックアップ ソリューションのインストール
+* [Active Directory を使用するための vCenter ID ソースの設定](./set-vcenter-identity.md)
+* [ワークロード仮想マシンのバックアップ](./backup-workloads-veeam.md)を行うためのバックアップ ソリューションのインストール

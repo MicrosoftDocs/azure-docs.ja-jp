@@ -4,15 +4,16 @@ description: Azure Consumption API シリーズを使用して Azure リソー�
 author: bandersmsft
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: cost-management
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 4ee632d7c68612b3fd1ecd053bbb1cd5c4e3daa8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e2252d13dd39587e7730b141a6096afc0a34dbc1
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075159"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690019"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure Consumption API の概要
 

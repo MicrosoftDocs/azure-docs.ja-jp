@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 850f4e3754af790e6b9bab5c68c9bd10849bba37
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9fac5d3efabc5d9f796c91d688f35e01aeefdca3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965282"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092764"
 ---
 # <a name="rendering-using-azure"></a>Azure を使用したレンダリング
 
@@ -79,7 +79,7 @@ Azure Batch は複数の方法で使用できますが、そのすべての方�
 * API:
   * [REST](/rest/api/batchservice)、[.NET](/dotnet/api/overview/azure/batch)、[Python](/python/api/overview/azure/batch)、[Java](/java/api/overview/azure/batch)、またはその他のサポートされている API を使用してコードを記述します。  開発者は、クラウドかオンプレミス ベースかにかかわらず、既存のアプリケーションまたはワークフローに Azure Batch 機能を統合できます。  たとえば、[Autodesk Maya プラグイン](https://github.com/Azure/azure-batch-maya)では、Batch の呼び出しに Batch Python API が使用され、プールの作成と管理、ジョブおよびタスクの送信、ステータスの監視が行われます。
 * コマンドライン ツール:
-  * [Azure コマンド ライン](/cli/azure/)または[Azure PowerShell](/powershell/azure/overview) を使用すると、Batch の使用のスクリプトを作成できます。
+  * [Azure コマンド ライン](/cli/azure/)または[Azure PowerShell](/powershell/azure/) を使用すると、Batch の使用のスクリプトを作成できます。
   * 特に、Batch CLI テンプレートのサポートにより、プールの作成とジョブの送信が大幅に容易になります。
 * UI:
   * [Batch Explorer](https://github.com/Azure/BatchExplorer) は、Batch アカウントを管理および監視することもできるクロス プラットフォーム クライアント ツールですが、Azure portal の UI よりも充実した機能がいくつか用意されています。  サポートされている各アプリケーション用にカスタマイズされた一連のプールおよびジョブ テンプレートがあり、このようなテンプレートを使うことで、プールの作成やジョブの送信を容易に行うことができます。

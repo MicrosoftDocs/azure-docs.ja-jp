@@ -11,12 +11,12 @@ metadata:
   author: markingmyname
   ms.author: maghan
   ms.date: 10/02/2019
-  ms.openlocfilehash: fa9decd8a0b7424d040cab9dcd46b919bb4d7df5
-  ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+  ms.openlocfilehash: 8a9046a3f35401a279c4cd99ce5fee88bd67cb32
+  ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/20/2020
-  ms.locfileid: "85116232"
+  ms.lasthandoff: 09/04/2020
+  ms.locfileid: "89489274"
 landingContent:
 - title: Azure Data Factory について
   linkLists:
@@ -80,7 +80,7 @@ landingContent:
       url: /azure/data-factory/tutorial-incremental-copy-overview
     - text: ADLS Gen2 を読み込む
       url: /azure/data-factory/load-azure-data-lake-storage-gen2
-    - text: SQL DW を読み込む
+    - text: Azure Synapse Analytics を読み込む
       url: /azure/data-factory/load-azure-sql-data-warehouse
     - text: SAP BW を読み込む
       url: /azure/data-factory/load-sap-bw-data

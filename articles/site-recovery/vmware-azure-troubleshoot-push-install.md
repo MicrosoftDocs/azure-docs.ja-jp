@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133530"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816182"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Mobility Service のプッシュ インストールに関するトラブルシューティング
 
@@ -129,6 +129,28 @@ Linux (**エラー 95108**) の場合、Mobility Service エージェントの�
 ## <a name="connectivity-failure-errorid-95523"></a>接続エラー (ErrorID: 95523)
 
 このエラーは、ソース マシンが存在するネットワークが見つからない場合、削除された場合、または使用できなくなった場合に発生します。 このエラーを解決する唯一の方法は、ネットワークが存在することを確認することです。
+
+## <a name="check-access-for-network-shared-folders-on-source-machine-errorid-9510595523"></a>ソース マシンのネットワーク共有フォルダーのアクセスを確認する (ErrorID:95105、95523)
+
+指定された資格情報を使って、プロセス サーバー (PS) から仮想マシンのネットワーク共有フォルダーにリモートでアクセスできるかどうかを確認します。 アクセスを確認するには: 
+
+1. プロセス サーバー マシンにログインします。
+2. エクスプローラーを開きます。 アドレス バーに「`\\<SOURCE-MACHINE-IP>\C$`」と入力し、Enter キーを押します。
+
+    ![PS で開かれたフォルダー](./media/vmware-azure-troubleshoot-push-install/open-folder-process-server.PNG)
+
+3. ファイル エクスプローラーから、資格情報が求められます。 ユーザー名とパスワードを入力して、[OK] をクリックします。 <br><br/>
+
+    ![資格情報の入力](./media/vmware-azure-troubleshoot-push-install/provide-credentials.PNG)
+
+    >[!NOTE]
+    > ソース マシンがドメインに参加している場合は、`<domainName>\<username>` としてユーザー名と共にドメイン名を指定します。 ソース マシンがワーク グループ内にある場合は、ユーザー名のみを指定します。
+
+4. 接続に成功した場合、プロセス サーバーからソース マシンのフォルダーをリモートで表示できます。
+
+    ![ソース マシンから表示可能なフォルダー](./media/vmware-azure-troubleshoot-push-install/visible-folders-from-source.png)
+
+接続に失敗した場合は、すべての前提条件を満たしているかどうか確認してください。
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>ファイルとプリンターの共有サービス チェック (ErrorID: 95105 および 95106)
 
@@ -257,6 +279,10 @@ Site Recovery Mobility Service には多数のコンポーネントがありま�
 ## <a name="insufficient-space-errorid-95524"></a>空き領域不足 (ErrorID: 95524)
 
 ソース マシン上にモビリティ エージェントをコピーする場合は、少なくとも 100 MB の空き領域が必要です。 ソース マシンに必要な空き領域があることを確認してから、操作をやり直してください。
+
+## <a name="low-system-resources"></a>システム リソースが少ない
+
+この問題で発生する可能性のあるエラー ID は、95572 と 95573 です。 この問題は、システムで使用できるメモリが少なく、モビリティ サービスのインストールでメモリを割り当てることができないときに発生します。 インストールが進行し、正常に完了できるよう、確実に十分なメモリが解放されているようにします。
 
 ## <a name="vss-installation-failures"></a>VSS インストール エラー
 

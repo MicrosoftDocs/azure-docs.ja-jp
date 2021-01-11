@@ -35,11 +35,11 @@ IoT Hub では、組み込みの D2C 受信エンドポイントでコンシュ�
 
 保持期間は、[IoT Hub のリソース プロバイダー REST API](/rest/api/iothub/iothubresource) を使用してプログラムにより変更するか、[Azure portal](https://portal.azure.com) を使用して変更できます。
 
-IoT Hub は、**messages/events** 組み込みエンドポイントをバックエンド サービスに公開して、ハブで受信した D2C メッセージを読み取ります。 このエンドポイントには Event Hubs との互換性があり、Event Hubs のサービスがメッセージを読み取るためにサポートするすべてのメカニズムを使用できます。
+IoT Hub は、**messages/events** 組み込みエンドポイントをバックエンド サービスに公開して、Hub で受信した D2C メッセージを読み取ります。 このエンドポイントには Event Hubs との互換性があり、Event Hubs のサービスがメッセージを読み取るためにサポートするすべてのメカニズムを使用できます。
 
 ## <a name="read-from-the-built-in-endpoint"></a>組み込みエンドポイントから読み取る
 
-一部の製品統合と Event Hubs SDK は IoT Hub を認識するので、IoT ハブ サービスの接続文字列を使用して、組み込みのエンドポイントに接続できます。
+一部の製品統合と Event Hubs SDK は IoT Hub を認識するので、IoT Hub サービスの接続文字列を使用して、組み込みのエンドポイントに接続できます。
 
 IoT Hub を認識しない Event Hubs SDK や製品統合を使用している場合は、イベント ハブ互換エンドポイントとイベント ハブ互換名が必要です。 次のように、ポータルからこれらの値を取得できます。
 

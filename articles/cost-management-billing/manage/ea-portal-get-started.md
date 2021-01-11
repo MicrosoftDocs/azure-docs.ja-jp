@@ -3,16 +3,17 @@ title: Azure エンタープライズ ポータルを使い始める
 description: この記事では、Azure Enterprise Agreement (Azure EA) のお客様が Azure エンタープライズ ポータルを使用する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
+ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: e7f531c311e6967a489e9612cf7c118c5182fc1d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537835"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88687639"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure エンタープライズ ポータルを使い始める
 

@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と SmartHR の統合 | Microsoft Docs
 description: Azure Active Directory と SmartHR の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 340d2a77-2278-449a-a154-01673ba91cc8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a019ee6b0df52de70dfedca94feaede90e1f0d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f2c5cbf2df2e439af8ac95e5823a43b5d38f2001
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293673"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524937"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smarthr"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SmartHR の統合
 
@@ -90,7 +86,7 @@ SmartHR で Azure AD SSO を構成してテストするには、次の構成要�
     c. **[応答 URL]** ボックスに、`https://<SUBDOMAIN>.smarthr.jp/external_saml/acs` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[SmartHR クライアント サポート チーム](mailto:info@smarhr.jp)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[SmartHR クライアント サポート チーム](mailto:info@smarthr.jp)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -132,11 +128,11 @@ SmartHR で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-smarthr-sso"></a>SmartHR の SSO の構成
 
-**SmartHR** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [SmartHR サポート チーム](mailto:info@smarhr.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**SmartHR** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [SmartHR サポート チーム](mailto:info@smarthr.jp)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-smarthr-test-user"></a>SmartHR のテスト ユーザーの作成
 
-このセクションでは、SmartHR で B.Simon というユーザーを作成します。  [SmartHR サポート チーム](mailto:info@smarhr.jp)と連携して、SmartHR プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、SmartHR で B.Simon というユーザーを作成します。  [SmartHR サポート チーム](mailto:info@smarthr.jp)と連携して、SmartHR プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

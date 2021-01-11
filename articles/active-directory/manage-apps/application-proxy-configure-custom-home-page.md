@@ -16,16 +16,16 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e7e3a6666d467045b733b5401476fd83c93be19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764878"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642063"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する
 
-この記事では、ユーザーをカスタム ホーム ページに移動させるようにアプリを構成する方法について説明します。 アプリケーション プロキシを使用してアプリを発行するときに内部 URL を設定しますが、それが、最初にユーザーに対して表示すべきページでない場合があります。 ユーザーがアプリにアクセスしたときに適切なページが表示されるように、カスタム ホーム ページを設定します。 Azure Active Directory アクセス パネルからアプリにアクセスするか、Office 365 アプリ起動ツールからアクセスするかにかかわらず、ユーザーには、設定したカスタム ホーム ページが表示されます。
+この記事では、ユーザーをカスタム ホーム ページに移動させるようにアプリを構成する方法について説明します。 アプリケーション プロキシを使用してアプリを発行するときに内部 URL を設定しますが、それが、最初にユーザーに対して表示すべきページでない場合があります。 ユーザーがアプリにアクセスしたときに適切なページが表示されるように、カスタム ホーム ページを設定します。 Azure Active Directory マイ アプリからアプリにアクセスするか、Microsoft 365 アプリ起動ツールからアクセスするかにかかわらず、ユーザーには、設定したカスタム ホーム ページが表示されます。
 
 ユーザーはアプリを起動すると、既定で、発行されたアプリのルート ドメイン URL に案内されます。 通常、ランディング ページがホーム ページの URL として設定されます。 アプリ ユーザーに、アプリ内の特定のページを最初に訪問させたい場合は、Azure AD PowerShell モジュールを使用してカスタム ホーム ページの URL を定義します。
 
@@ -37,7 +37,7 @@ ms.locfileid: "84764878"
 - 代わりに `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` をホーム ページ URL として設定します。それにより、外部ユーザーに対しては最初にサインインページが表示されます。
 
 > [!NOTE]
-> 発行されたアプリにユーザーがアクセスできるようにすると、[Azure AD アクセス パネル](../user-help/my-apps-portal-end-user-access.md)と [Office 365 アプリ起動ツール](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)にアプリが表示されます。
+> 発行されたアプリにユーザーがアクセスできるようにすると、[マイ アプリ](../user-help/my-apps-portal-end-user-access.md)と [Office 365 アプリ起動ツール](https://www.microsoft.com/microsoft-365/blog/2016/09/27/introducing-the-new-office-365-app-launcher/)にアプリが表示されます。
 
 ## <a name="before-you-start"></a>開始する前に
 

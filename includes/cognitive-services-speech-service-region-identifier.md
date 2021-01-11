@@ -14,7 +14,7 @@ ms.locfileid: "77168168"
 | [地理的な場所] | リージョン | リージョン識別子 |
 | ----- | ----- | ----- |
 | アメリカ | 米国中部 | `centralus` |
-| アメリカ | 米国東部 | `eastus` |
+| アメリカ | East US | `eastus` |
 | アメリカ | 米国東部 2 | `eastus2` |
 | アメリカ | 米国中北部 | `northcentralus` |
 | アメリカ | 米国中南部 | `southcentralus` |

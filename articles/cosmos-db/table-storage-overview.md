@@ -28,7 +28,7 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
+* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 * [.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要](table-storage-how-to-use-dotnet.md)
 

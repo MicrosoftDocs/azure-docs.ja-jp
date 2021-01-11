@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop Web クライアントの接続 - Azure
-description: Web クライアントを使用して Windows Virtual Desktop に接続する方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (classic) Web クライアントの接続 - Azure
+description: Web クライアントを使用して Windows Virtual Desktop (classic) に接続する方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e95498498fd15d7a6e73630e218f9bdd1b892f09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c8a55e35ba89caefc362024fc871ac5eb800447b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85204797"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008425"
 ---
-# <a name="connect-with-the-web-client"></a>Web クライアントに接続する
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>Web クライアントを使用して Windows Virtual Desktop (classic) に接続する
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-web.md)を参照してください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトがサポートされていない Windows Virtual Desktop (classic) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../connect-web.md)を参照してください。
 
 Web クライアントを利用すると、時間のかかるインストール プロセスなしで Web ブラウザーから Windows Virtual Desktop リソースにアクセスできます。
 
@@ -42,7 +40,7 @@ Web クライアントを利用すると、時間のかかるインストール 
 ブラウザーで、Windows Virtual Desktop Web クライアント (<https://rdweb.wvd.microsoft.com/webclient>) に移動し、ユーザー アカウントを使用してサインインします。
 
 >[!NOTE]
->Azure Resource Manager 統合で Windows Virtual Desktop Spring 2020 リリースを使用している場合は、代わりにお使いのリソース (<https://rdweb.wvd.microsoft.com/arm/webclient>) に接続します。
+>Azure Resource Manager 統合で Windows Virtual Desktop を使用している場合は、代わりにお使いのリソース (<https://rdweb.wvd.microsoft.com/arm/webclient>) に接続します。
 
 >[!NOTE]
 >Windows Virtual Desktop に使用するアカウントとは別の Azure Active Directory アカウントで既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。

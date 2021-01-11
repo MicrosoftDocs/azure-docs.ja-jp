@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 74e0a63da87a79cbd582cd6da5992251fc256504
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505178"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135438"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -41,34 +41,24 @@ Azure のアクティビティ ログとリソース ログを含む Azure の[�
 
 
 ## <a name="destinations"></a>変換先
-
-プラットフォーム ログとメトリックは、次の表の送信先に送信できます。 その送信先にデータを送信する方法の詳細については、次の表の各リンクを参照してください。
+プラットフォーム ログとメトリックは、次の表の送信先に送信できます。 
 
 | 到着地 | 説明 |
 |:---|:---|
-| [Log Analytics ワークスペース](#log-analytics-workspace) | Log Analytics ワークスペースにログとメトリックを送信すると、強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 |
-| [Event Hubs](#event-hub) | Event Hubs にログとメトリックを送信すると、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。 |
-| [Azure Storage アカウント](#azure-storage) | Azure ストレージ アカウントにログとメトリックをアーカイブすると、監査、スタティック分析、またはバックアップに役立ちます。 Azure Monitor ログや Log Analytics ワークスペースと比較すると、Azure ストレージはコストが低く、ログを無期限に保持することができます。 |
+| [Log Analytics ワークスペース](design-logs-deployment.md) | Log Analytics ワークスペースにログとメトリックを送信すると、強力なログ クエリを使用して、Azure Monitor で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 |
+| [Event Hubs](/azure/event-hubs/) | Event Hubs にログとメトリックを送信すると、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータをストリーミングできます。  |
+| [Azure Storage アカウント](/azure/storage/blobs/) | Azure ストレージ アカウントにログとメトリックをアーカイブすると、監査、スタティック分析、またはバックアップに役立ちます。 Azure Monitor ログや Log Analytics ワークスペースと比較すると、Azure ストレージはコストが低く、ログを無期限に保持することができます。  |
 
 
-## <a name="prerequisites"></a>前提条件
-診断設定の送信先は、必要なアクセス許可を使用して作成する必要があります。 各送信先の前提条件については、以下のセクションを参照してください。
+### <a name="destination-requirements"></a>送信先の要件
 
-### <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
-ワークスペースがまだない場合は、[新しいワークスペースを作成します](../learn/quick-create-workspace.md)。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ワークスペースはログを送信するリソースと同じサブスクリプションに属している必要はありません。
+診断設定の送信先は、診断設定の作成前に作成する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、送信先はログを送信するリソースと同じサブスクリプションに属している必要はありません。 次の表では、リージョン制限など、送信先別の固有要件をまとめてあります。
 
-### <a name="event-hub"></a>イベント ハブ
-イベント ハブをまだ用意していない場合は、[イベント ハブを作成します](../../event-hubs/event-hubs-create.md)。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っており、さらに両方のサブスクリプションが同じ AAD テナントに入っている限り、Event Hubs 名前空間は、ログを出力するサブスクリプションと同じサブスクリプションに属している必要はありません。
-
-名前空間の共有アクセス ポリシーでは、ストリーミング メカニズムが保有するアクセス許可が定義されます。 Event Hubs にストリーミングするには、管理、送信、リッスンの各アクセス許可が必要です。 ご利用の Event Hubs 名前空間については、その共有アクセス ポリシーを Azure portal の [構成] タブで作成または変更できます。 ストリーミングを含めるように診断設定を更新するには、その Event Hubs の承認規則に対する ListKey アクセス許可が必要です。 
-
-
-### <a name="azure-storage"></a>Azure Storage
-[Azure ストレージ アカウント](../../storage/common/storage-account-create.md)をまだお持ちでない場合は作成します。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセス権を持っている限り、ストレージ アカウントはログを送信するリソースと同じサブスクリプションに属している必要はありません。
-
-データへのアクセスをより適切に制御できるように、他の非監視データが格納されている既存のストレージ アカウントは使用しないでください。 アクティビティ ログとリソース ログを一緒にアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じストレージ アカウントを使用できます。
-
-データを不変ストレージに送信するには、「[BLOB ストレージの不変ポリシーを設定および管理する](../../storage/blobs/storage-blob-immutability-policies-manage.md)」の説明に従って、ストレージ アカウントの不変ポリシーを設定します。 この記事のすべての手順に従う必要があります。これには、保護された追加 BLOB の書き込みの有効化が含まれます。
+| 到着地 | 要件 |
+|:---|:---|
+| Log Analytics ワークスペース | ワークスペースは、監視対象のリソースと同じリージョンにする必要がありません。|
+| Event Hubs | 名前空間の共有アクセス ポリシーでは、ストリーミング メカニズムが保有するアクセス許可が定義されます。 Event Hubs にストリーミングするには、管理、送信、リッスンの各アクセス許可が必要です。 ストリーミングを含めるように診断設定を更新するには、その Event Hubs の承認規則に対する ListKey アクセス許可が必要です。<br><br>イベント ハブ名前空間は、リソースがリージョン別の場合、監視対象のリソースと同じリソースにする必要があります。 |
+| Azure ストレージ アカウント | データへのアクセスをより適切に制御できるように、他の非監視データが格納されている既存のストレージ アカウントは使用しないでください。 アクティビティ ログとリソース ログを一緒にアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じストレージ アカウントを使用できます。<br><br>データを不変ストレージに送信するには、「[BLOB ストレージの不変ポリシーを設定および管理する](../../storage/blobs/storage-blob-immutability-policies-manage.md)」の説明に従って、ストレージ アカウントの不変ポリシーを設定します。 この記事のすべての手順に従う必要があります。これには、保護された追加 BLOB の書き込みの有効化が含まれます。<br><br>ストレージ アカウントは、リソースがリージョン別の場合、監視対象のリソースと同じリソースにする必要があります。 |
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2 アカウントは、Azure portal では有効なオプションとして表示されていますが、診断設定の送信先としては現在サポートされていません。
@@ -182,7 +172,7 @@ Resource Manager テンプレートを使用して診断設定を作成または
 [Azure Monitor REST API](/rest/api/monitor/) を使用して診断設定を作成または更新するには、「[診断設定](/rest/api/monitor/diagnosticsettings)」を参照してください。
 
 ## <a name="create-using-azure-policy"></a>Azure Policy を使用して作成する
-診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 詳細については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](deploy-scale.md)」を参照してください。
+診断設定は Azure リソースごとに作成する必要があるため、Azure Policy を使用して、各リソースの作成時に診断設定を自動的に作成することができます。 詳細については、「[Azure Policy を使用して大規模に Azure Monitor をデプロイする](../deploy-scale.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

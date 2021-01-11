@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b1f848b5e6fa053d81754d441fd4845c1a24ee5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 15ae1ca6902c27732812a591f492430150c84ecb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361491"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926180"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 
@@ -68,7 +68,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 
 ![Azure Portal の [アクセス制御 (IAM)]](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-このレベルのロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使って完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳しくは、「[ロールベースのアクセス制御](../role-based-access-control/overview.md)」をご覧ください。 
+このレベルのロールは、Portal で完了可能なタスクまたは Azure Resource Manager テンプレートを使って完了可能なタスクを実行する必要のあるユーザーまたはアカウントに適用します。 詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) に関する記事を参照してください。 
 
 ## <a name="database-roles"></a>データベース ロール
 
@@ -81,4 +81,4 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 [Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
 [サーバー管理者の管理](analysis-services-server-admins.md)  
-[ロールベースのアクセス制御](../role-based-access-control/overview.md)  
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md)  

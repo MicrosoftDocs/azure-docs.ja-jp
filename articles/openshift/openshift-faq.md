@@ -5,13 +5,13 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 05/29/2020
-ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 07/31/2020
+ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219232"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816237"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -65,25 +65,9 @@ Azure Red Hat OpenShift 4.x クラスターでは、インフラストラクチ�
 
 Azure Red Hat OpenShift 3.11 クラスターでは、インフラストラクチャ ノードが既定で含まれています。
 
-## <a name="upgrades"></a>アップグレード
+## <a name="how-do-i-handle-cluster-upgrades"></a>クラスターのアップグレードはどのように処理しますか?
 
-###  <a name="what-is-the-general-upgrade-process"></a>一般的なアップグレード プロセスとは何ですか?
-
-修正プログラムはクラスターに自動的に適用されます。 ご使用のクラスターで修正プログラムのアップグレードを受け取るために、何らかの操作を行う必要はありません。
-
-アップグレードの実行は、安全なプロセス実行であり、クラスター サービスは中断されないはずです。 Microsoft と Red Hat の合同チームは、新しいバージョンが利用可能になった場合や、共通脆弱性識別子 (CVE) が未解決の場合に、アップグレード プロセスをトリガーできます。 利用可能な更新プログラムは、ステージング環境でテストされてから運用クラスターに適用されます。 ベスト プラクティスに従うと、ダウンタイムが最小限からなしになるように確保することができます。
-
-計画メンテナンスは、顧客と共に事前にスケジュールされていません。 メンテナンスに関連する通知は、電子メールで送信される場合があります。
-
-### <a name="what-is-the-azure-red-hat-openshift-maintenance-process"></a>Azure Red Hat OpenShift のメンテナンス プロセスとはどのようなものですか?
-
-Azure Red Hat OpenShift のメンテナンスには、アップグレードとクラウド プロバイダーによって開始されるメンテナンスの 2 種類があります。
-- アップグレードには、ソフトウェアのアップグレードと、共通脆弱性識別子 (CVE) が含まれます。
-- クラウド プロバイダーによって開始されるメンテナンスには、ネットワーク、ストレージ、リージョンの障害が含まれます。 メンテナンスはクラウド プロバイダーに依存し、プロバイダーによって提供される更新プログラムに依存します。
-
-### <a name="what-about-emergency-vs-planned-maintenance-windows"></a>非常時と計画メンテナンス期間について
-
-Microsoft では、この 2 種類のメンテナンスを区別しません。 Microsoft チームは 24 時間年中無休で利用でき、従来のスケジュールされた "時間外" のメンテナンス期間を使用しません。
+アップグレード、メンテナンス、およびサポートされているバージョンの詳細については、[サポート ライフサイクル ガイド](support-lifecycle.md)を参照してください。
 
 ### <a name="how-will-the-host-operating-system-and-openshift-software-be-updated"></a>ホスト オペレーティング システムと OpenShift ソフトウェアはどのように更新されますか?
 
@@ -235,3 +219,7 @@ Azure Red Hat OpenShift 4 クラスターの場合、データは既定では暗
 4\.x クラスターの場合、Azure Disk (Premium_LRS) は既定のストレージ クラスとして構成されます。 追加のストレージ プロバイダー、および構成の詳細 (Azure File を含む) については、[永続ストレージ](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html)に関する Red Hat のドキュメントを参照してください。
 
 3\.11 クラスターの場合、Azure Disk (Premium_LRS) と Azure File の 2 つのストレージ クラスが既定で提供されます。
+
+## <a name="does-aro-store-any-customer-data-outside-of-the-clusters-region"></a>ARO では、クラスターのリージョン外に格納される顧客データがありますか?
+
+いいえ。 ARO クラスターで作成されたすべてのデータは、クラスターのリージョン内に維持されます。

@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d94904e580cefb53b2c71d21259bebfc07c1ad6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749691"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431289"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (仮想ネットワーク ゲートウェイ) を Virtual WAN に接続する
 
@@ -33,17 +33,19 @@ Azure Virtual Network
 
 * 仮想ネットワーク ゲートウェイのない仮想ネットワークを作成します。 オンプレミス ネットワークのどのサブネットも接続先の仮想ネットワークと重複していないことを確認してください。 Azure portal で仮想ネットワークを作成するには、[クイックスタート](../virtual-network/quick-create-portal.md)を参照してください。
 
-## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1.Azure 仮想ネットワーク ゲートウェイを作成する
+## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1.VPN Gateway 仮想ネットワーク ゲートウェイを作成する
 
-仮想ネットワークのために、アクティブ/アクティブ モードで仮想ネットワークの VPN Gateway 仮想ネットワーク ゲートウェイを作成します。 ゲートウェイを作成する際には、2 つのゲートウェイ インスタンスについて既存のパブリック IP アドレスを使用するか、新しいパブリック IP を作成するかを選ぶことができます。 これらのパブリック IP は、Virtual WAN サイトを設定するときに使用します。 アクティブ/アクティブ モードに関する詳細については、[アクティブ/アクティブ接続の構成](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)に関するページを参照してください。
+アクティブ/アクティブ モードで、仮想ネットワークのために **VPN Gateway** 仮想ネットワーク ゲートウェイを作成します。 ゲートウェイを作成する際には、2 つのゲートウェイ インスタンスについて既存のパブリック IP アドレスを使用するか、新しいパブリック IP を作成するかを選ぶことができます。 これらのパブリック IP は、Virtual WAN サイトを設定するときに使用します。 アクティブ/アクティブ VPN ゲートウェイと構成の手順に関する詳細については、[アクティブ/アクティブ VPN ゲートウェイの構成](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)に関する記事を参照してください。
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>アクティブ/アクティブ モードの設定
+
+仮想ネットワーク ゲートウェイの **[構成]** ページで、アクティブ/アクティブ モードを有効にします。
 
 ![アクティブ/アクティブ](./media/connect-virtual-network-gateway-vwan/active.png "アクティブ/アクティブ")
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP の設定
 
-BGP の ASN を 65515 にすることはできません。 66515 は、Azure Virtual WAN が使用します。
+仮想ネットワーク ゲートウェイの **[構成]** ページで  **[BGP ASN]** を構成できます。 BGP ASN に変更を加えます。 BGP の ASN を 65515 にすることはできません。 66515 は、Azure Virtual WAN が使用します。
 
 ![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
@@ -60,16 +62,16 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
 1. **[+ サイトの作成]** を選択します。
 2. **[VPN サイトを作成する]** ページで、次の値を入力します。
 
-   * **[リージョン]** - (Azure VPN Gateway 仮想ネットワーク ゲートウェイと同じリージョン)
-   * **[デバイス ベンダー]** - デバイスの製造元 (任意の名前) を入力します
-   * **[プライベート アドレス空間]** - (値を入力します。BGP が有効になっている場合には空欄にしてください)
-   * **[Border Gateway Protocol]** - (Azure VPN Gateway 仮想ネットワーク ゲートウェイで BGP を有効にしている場合には **[有効にする]** に設定します)
-   * **[Connect to Hubs]\(ハブに接続する\)** (ドロップダウンから、前提条件のところで作成したハブを選択します)
+   * **[リージョン]** - Azure VPN Gateway 仮想ネットワーク ゲートウェイと同じリージョン。
+   * **[デバイス ベンダー]** - デバイスの製造元 (任意の名前) を入力します。
+   * **[プライベート アドレス空間]** - 値を入力します。BGP が有効になっている場合は空白のままにします。
+   * **[Border Gateway Protocol]** - Azure VPN Gateway 仮想ネットワーク ゲートウェイで BGP が有効になっている場合には **[有効にする]** に設定します。
+   * **[Connect to Hubs] (ハブに接続する)** - ドロップダウンから、前提条件で作成したハブを選択します。 ハブが表示されない場合は、そのハブのためにサイト間 VPN ゲートウェイを作成したことを確認します。
 3. **[リンク]** で、次の値を入力します。
 
-   * **[プロバイダー名]** - リンク名とプロバイダー名 (任意の名前) を入力します
-   * **[速度]** - 速度 (任意の数字)
-   * **[IP アドレス]** - IP アドレスを入力します ( これは、(VPN Gateway) 仮想ネットワーク ゲートウェイのプロパティに表示されている 1 つ目のパブリック IP アドレスと同じ値です)
+   * **[プロバイダー名]** - リンク名とプロバイダー名 (任意の名前) を入力します。
+   * **[速度]** - 速度 (任意の数字)。
+   * **[IP アドレス]** - IP アドレスを入力します ((VPN Gateway) 仮想ネットワーク ゲートウェイのプロパティに表示されている 1 つ目のパブリック IP アドレスと同じもの)。
    * **[BGP アドレス]** と **[ASN]** - BGP アドレスと ASN です。 それぞれ、[手順 1](#vnetgw) で構成した VPN Gateway 仮想ネットワーク ゲートウェイの BGP ピア IP アドレスおよび ASN の値と同じにする必要があります (BGP ピア IP アドレスについては、いずれか 1 つを選択してください)。
 4. 見直しを終えたら **[確認]** を選択してサイトを作成します。
 5. ここまでの手順をもう一度繰り返して、VPN Gateway 仮想ネットワーク ゲートウェイの 2 つ目のインスタンスに対応するサイトを作成します。 使用する設定は同じですが、パブリック IP アドレスと BGP ピア IP アドレスについては、VPN Gateway の構成にあるもののうち、先ほどと異なる方を使用してください。
@@ -114,12 +116,12 @@ Virtual WAN VPN サイトを作成するには、仮想 WAN に移動し、 **[�
    * **[ローカル ネットワーク ゲートウェイ]:** この接続では、仮想ネットワーク ゲートウェイをローカル ネットワーク ゲートウェイに接続します。 前に作成したローカル ネットワーク ゲートウェイのいずれか 1 つを選択してください。
    * **共有キー:** 共有キーを入力します。
    * **[IKE プロトコル]:** IKE プロトコルを選択します。
-   * **[BGP]:** 接続が BGP 経由の場合には、 **[BGP を有効にする]** を選択します。
 3. **[OK]** をクリックして、接続を作成します。
 4. 仮想ネットワーク ゲートウェイの **[接続]** ページで接続を確認できます。
 
    ![接続](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
 5. 上記の手順をもう一度繰り返して、2 つ目の接続を作成します。 2 つ目の接続については、作成したローカル ネットワーク ゲートウェイのうち、先ほど選択しなかった方を選択します。
+6. BGP を介した接続の場合は、接続を作成した後、接続に移動して **[構成]** を選択します。 **[構成]** ページの **[BGP]** で **[有効]** を選択します。 その後、 **[保存]** をクリックします。 2 番目の接続に対して繰り返します。
 
 ## <a name="6-test-connections"></a><a name="test"></a>6.テスト接続
 

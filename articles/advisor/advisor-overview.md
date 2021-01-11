@@ -3,12 +3,12 @@ title: Azure Advisor の概要
 description: Azure Advisor を使用して、Azure のデプロイを最適化します。
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 0c6c79dd764f92475b3b0121ae46706c0dfc0bcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 27e49fa28e7b02b873ca145d514920784689b407
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117779"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654023"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -51,13 +51,13 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Advisor にアクセスするために必要なアクセス許可は?
  
-サブスクリプションの*所有者*、*共同作成者*、または*閲覧者*として Advisor の推奨事項にアクセスできます。
+サブスクリプション、リソース グループ、またはリソースの*所有者*、*共同作成者*、または*閲覧者*として Advisor の推奨事項にアクセスできます。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Advisor が推奨事項を提供するリソースは?
 
-Advisor では、Application Gateway、App Services、可用性セット、Azure Cache、Azure Data Factory、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure ExpressRoute、Azure Cosmos DB、Azure パブリック IP アドレス、SQL Data Warehouse、SQL サーバー、ストレージ アカウント、Traffic Manager プロファイル、および仮想マシンに対する推奨事項が提供されます。
+Advisor では、Application Gateway、App Services、可用性セット、Azure Cache、Azure Data Factory、Azure Database for MySQL、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure ExpressRoute、Azure Cosmos DB、Azure パブリック IP アドレス、Azure Synapse Analytics、SQL サーバー、ストレージ アカウント、Traffic Manager プロファイル、および仮想マシンに対する推奨事項が提供されます。
 
-Azure Advisor には、[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations) からの推奨事項も含まれ、別のリソースの種類に対する推奨事項が含まれる可能性があります。
+Azure Advisor には、[Azure Security Center](../security-center/security-center-recommendations.md) からの推奨事項も含まれ、別のリソースの種類に対する推奨事項が含まれる可能性があります。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>推奨事項は延期したり無視したりできるか?
 

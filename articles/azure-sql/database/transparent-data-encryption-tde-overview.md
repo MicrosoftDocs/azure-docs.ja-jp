@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 06/15/2020
-ms.openlocfilehash: 8bf1a19c8756e8c51b79ec63f10822efa7816d32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d9bc5e91d45b75c47cee31c45b937f7d3f0118b8
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84986960"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836685"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Database、SQL Managed Instance および Azure Synapse Analytics の透過的なデータ暗号化
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84986960"
 
 TDE では、ページ レベルでデータのリアルタイム I/O 暗号化と暗号化解除が実行されます。 各ページは、メモリに読み込まれるときに暗号化解除され、ディスクに書き込まれる前に暗号化されます。 TDE では、データベース暗号化キー (DEK) という対称キーを使用してデータベース全体のストレージが暗号化されます。 データベースの起動時に、DEK の暗号化は解除され、SQL Server データベース エンジン プロセスでデータベース ファイルの暗号化解除と再暗号化を行うために使用されます。 DEK は TDE 保護機能によって保護されます。 TDE 保護機能は、サービスによって管理される証明書 (サービスによって管理される透過的なデータ暗号化) または [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) に格納される非対称キー (顧客によって管理される透過的なデータ暗号化) のどちらかです。
 
-Azure SQL Database と Azure Synapse の場合、TDE 保護機能は[サーバー](logical-servers.md) レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 Azure SQL Managed Instance (プレビュー段階の BYOK 機能) の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンスのすべての暗号化されたデータベースによって継承されます。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
+Azure SQL Database と Azure Synapse の場合、TDE 保護機能は[サーバー](logical-servers.md) レベルで設定され、そのサーバーに関連付けられているすべてのデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
 
 > [!IMPORTANT]
 > SQL Database で新しく作成されたすべてのデータベースは、サービスによって管理される透過的なデータ暗号化を使用して既定で暗号化されます。 2017 年 5 月より前に作成された既存の SQL データベースと、復元、geo レプリケーション、データベース コピーによって作成された SQL データベースは、既定では暗号化されません。 2019 年 2 月より前に作成された既存の SQL Managed Instance データベースは、既定では暗号化されません。 復元によって作成された SQL Managed Instance データベースでは、ソースから暗号化の状態が継承されます。

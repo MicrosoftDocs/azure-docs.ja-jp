@@ -2,22 +2,21 @@
 title: PowerShell サンプル - すべてのアプリケーション プロキシ コネクタ グループの一覧表示
 description: ディレクトリ内のすべての Azure Active Directory (Azure AD) アプリケーション プロキシ コネクタ グループとコネクタを一覧表示する PowerShell の例。
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53af7f3f9049edc23ed4226f43e7fe67398c29f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7d665ddf7b1902275eebd74bcbf148426ac6ddd
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75475641"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506876"
 ---
 # <a name="get-all-connector-groups-and-connectors-in-the-directory"></a>ディレクトリ内のすべてのコネクタ グループとコネクタを取得する
 

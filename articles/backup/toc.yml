@@ -9,7 +9,7 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: VM のバックアップ - ポータル
+    - name: VM のバックアップ - Portal
       href: quick-backup-vm-portal.md
     - name: VM のバックアップ - PowerShell
       href: quick-backup-vm-powershell.md
@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: PowerShell を使用して Azure VM をバックアップする
       href: tutorial-backup-azure-vm.md
-    - name: ディスクの復元
+    - name: Azure CLI を使用した VM の復元
       href: tutorial-restore-disk.md
     - name: 個々のファイルの復元
       href: tutorial-restore-files.md
@@ -44,11 +44,6 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: バックアップされた SAP HANA データベースの管理 - CLI
           href: tutorial-sap-hana-manage-cli.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 概念
   items:
     - name: サポート マトリックス
@@ -129,7 +124,7 @@
           items:
             - name: Azure VM の復元について
               href: about-azure-vm-restore.md
-            - name: ポータルで Azure VM を復元する
+            - name: Portal で Azure VM を復元する
               href: backup-azure-arm-restore-vms.md
             - name: Azure VM のバックアップからのファイルの回復
               href: backup-azure-restore-files-from-vm.md
@@ -146,7 +141,11 @@
         - name: 概要
           href: backup-azure-sql-database.md
         - name: バックアップ
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: コンテナーから複数の SQL Server VM をバックアップする
+              href: backup-sql-server-database-azure-vms.md
+            - name: VM ペインから SQL Server VM をバックアップする
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: 復元
           href: restore-sql-database-azure-vm.md
         - name: 管理する
@@ -287,8 +286,10 @@
       items:
         - name: 概要
           href: offline-backup-overview.md
-        - name: Azure Data Box を使用したオフライン バックアップ
+        - name: Azure Data Box を使用したオフライン バックアップ (MARS)
           href: offline-backup-azure-data-box.md
+        - name: Azure Data Box を使用したオフライン バックアップ (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: Import/Export を使用したオフライン バックアップ (MARS)
           href: backup-azure-backup-import-export.md
         - name: Import/Export を使用したオフライン バックアップ (DPM/MABS)
@@ -299,7 +300,7 @@
       items:
         - name: バックアップ エクスプローラーの使用
           href: monitor-azure-backup-with-backup-explorer.md
-        - name: Azure ポータルの使用
+        - name: Azure Portal の使用
           href: backup-azure-monitoring-built-in-monitor.md
         - name: Azure Monitor の使用
           href: backup-azure-monitoring-use-azuremonitor.md
@@ -353,7 +354,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md
@@ -422,6 +423,9 @@
       href: /rest/api/recoveryservices/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: コンプライアンス

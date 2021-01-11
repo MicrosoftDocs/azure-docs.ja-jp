@@ -4,16 +4,16 @@ description: この記事では、azcopy commandコマンドに関する参照�
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 5da3a2e5d003a191bff66af6599cae4d34ab60c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18972e991f08db7fa9548454a5c5cdc3ff0f552f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038086"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285188"
 ---
 # <a name="azcopy"></a>azcopy
 
@@ -34,13 +34,15 @@ AzCopy は、Azure Storage との間でデータを移動するコマンドラ�
 
 ## <a name="options"></a>オプション
 
-**--cap-mbps uint32**   転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
+**--cap-mbps** (float)  転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。
 
-**-h, --help** azcopy のヘルプ コンテンツを表示します
+**--help** azcopy のヘルプ
       
-**--output-type** コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。 (既定値は "text")
+**--output-type**  (string) コマンドの出力の形式。 選択肢には、text、json などがあります。 既定値は `text` です。 (既定値は `text`)
 
-## <a name="see-also"></a>参照
+**--trusted-microsoft-suffixes** (string) Azure Active Directory ログイン トークンを送信できる追加のドメイン サフィックスを指定します。  既定値は " *.core.windows.net;* .core.chinacloudapi.cn; *.core.cloudapi.de;* .core.usgovcloudapi.net" です。 ここに記載されているすべてが既定値に追加されます。 セキュリティのために、Microsoft Azure のドメインのみをここに入力してください。 複数のエンティティは、セミコロンで区切ります。
+
+## <a name="see-also"></a>関連項目
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
 - [azcopy bench](storage-ref-azcopy-bench.md)

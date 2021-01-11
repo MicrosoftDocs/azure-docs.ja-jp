@@ -1,6 +1,6 @@
 ---
 title: Azure DevOps Starter の概要 | Microsoft Docs
-description: Azure DevOps Starter の価値について説明します
+description: Azure portal の単一のビューからアプリを起動、デプロイ、管理するのに、Azure DevOps Starter がどのように役立つかについて説明します。
 services: devops-project
 documentationcenter: ''
 author: mlearned
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 99a1fdb8caff9953041c996d0f5581318ce11c66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91e62cae242279e1923fc31970c233ec70bf7f11
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82233688"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461342"
 ---
 # <a name="overview-of-azure-devops-starter"></a>Azure DevOps Starter の概要
 

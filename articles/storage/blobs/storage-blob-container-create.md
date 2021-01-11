@@ -5,15 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/17/2019
+ms.date: 07/22/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24e754a583125c962e67f849edcec8f8609746a0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a17ab97dbfa1819154695f4c287b59db90f34334
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84464914"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018996"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET を使用して Azure Storage 内でコンテナーを作成または削除する
 
@@ -25,7 +26,7 @@ Azure Storage 内の BLOB はコンテナーにまとめられます。 BLOB を
 
 - コンテナー名の長さは 3 ～ 63 文字にする必要があります。
 - コンテナー名は英文字または数字で始まり、英小文字、数字、ダッシュ (-) 文字のみを含めることができます。
-- 2 つ以上の連続するダッシュ文字はコンテナー名では使用できません。
+- 2 つ以上の連続するダッシュ文字は、コンテナー名には使用できません。
 
 コンテナーの URI の形式は次のとおりです。
 
@@ -35,10 +36,20 @@ Azure Storage 内の BLOB はコンテナーにまとめられます。 BLOB を
 
 コンテナーを作成するには、次のいずれかのメソッドを呼び出します。
 
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+- [作成](/dotnet/api/azure.storage.blobs.blobcontainerclient.create)
+- [CreateAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createasync)
+- [CreateIfNotExists](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexists)
+- [CreateIfNotExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.createifnotexistsasync)
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
 - [作成](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.create)
 - [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync)
 - [CreateIfNotExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexists)
 - [CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync)
+---
 
 同じ名前のコンテナーが既に存在する場合、**Create** および **CreateAsync** メソッドは例外をスローします。
 
@@ -47,6 +58,12 @@ Azure Storage 内の BLOB はコンテナーにまとめられます。 BLOB を
 コンテナーは、ストレージ アカウントの直下に作成されます。 コンテナーを別のコンテナーの下に入れ子にすることはできません。
 
 次の例では、コンテナーが非同期的に作成されます。
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="CreateSampleContainerAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBlobClient blobClient)
@@ -78,6 +95,7 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
     return container;
 }
 ```
+---
 
 ## <a name="create-the-root-container"></a>ルート コンテナーを作成する
 
@@ -88,6 +106,12 @@ private static async Task<CloudBlobContainer> CreateSampleContainerAsync(CloudBl
 `https://myaccount.blob.core.windows.net/default.html`
 
 次の例では、ルート コンテナーが非同期的に作成されます。
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="CreateRootContainer":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static void CreateRootContainer(CloudBlobClient blobClient)
@@ -114,23 +138,40 @@ private static void CreateRootContainer(CloudBlobClient blobClient)
     }
 }
 ```
+---
 
 ## <a name="delete-a-container"></a>コンテナーを削除する
 
 .NET でコンテナーを削除するには、次のいずれかのメソッドを呼び出します。
 
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+- [削除](/dotnet/api/azure.storage.blobs.blobcontainerclient.delete)
+- [DeleteAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteasync)
+- [DeleteIfExists](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteifexists)
+- [DeleteIfExistsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.deleteifexistsasync)
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+
 - [削除](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteasync)
 - [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexists)
 - [DeleteIfExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.deleteifexistsasync)
+---
 
 **Delete** および **DeleteAsync** メソッドは、コンテナーが存在しない場合に例外をスローします。
 
 **DeleteIfExists** および **DeleteIfExistsAsync** メソッドは、コンテナーが削除されたかどうかを示すブール値を返します。 指定されたコンテナーが存在しない場合、これらのメソッドは、コンテナーが削除されなかったことを示す **False** を返します。
 
-コンテナーを削除した後、少なくとも 30 秒間は同じ名前のコンテナーを作成することはできません。 コンテナーの削除中に同じ名前のコンテナーを作成しようとすると、HTTP エラー コード 409 (Conflict) が返されて処理が失敗します。 コンテナーの削除中に、コンテナーまたはそれに含まれる BLOB に対して他の操作を実行しようとすると、HTTP エラー コード 404 (Not Found) が返されて処理が失敗します。
+コンテナーを削除した後、*少なくとも* 30 秒間は同じ名前のコンテナーを作成することはできません。 同じ名前のコンテナーを作成しようとすると、HTTP エラー コード 409 (Conflict) が返されて処理が失敗します。 コンテナーまたはそれに含まれる BLOB に対して他の操作を実行しようとすると、HTTP エラー コード 404 (Not Found) が返されて処理が失敗します。
 
 次の例では、指定されたコンテナーが削除され、コンテナーが存在しない場合には例外が処理されます。
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="DeleteSampleContainerAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient, string containerName)
@@ -152,8 +193,15 @@ private static async Task DeleteSampleContainerAsync(CloudBlobClient blobClient,
     }
 }
 ```
+---
 
-次の例は、指定したプレフィックスで始まるすべてのコンテナーを削除する方法を示しています。 この例では、コンテナーに既存のリースがある場合に、リースが中断されます。
+次の例は、指定したプレフィックスで始まるすべてのコンテナーを削除する方法を示しています。
+
+# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Containers.cs" id="DeleteContainersWithPrefixAsync":::
+
+# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
 ```csharp
 private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
@@ -164,11 +212,6 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
         foreach (var container in blobClient.ListContainers(prefix))
         {
             Console.WriteLine("\tContainer:" + container.Name);
-            if (container.Properties.LeaseState == LeaseState.Leased)
-            {
-                await container.BreakLeaseAsync(null);
-            }
-
             await container.DeleteAsync();
         }
 
@@ -182,10 +225,11 @@ private static async Task DeleteContainersWithPrefixAsync(CloudBlobClient blobCl
     }
 }
 ```
+---
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
 - [コンテナーの作成操作](/rest/api/storageservices/create-container)
 - [コンテナーの削除操作](/rest/api/storageservices/delete-container)

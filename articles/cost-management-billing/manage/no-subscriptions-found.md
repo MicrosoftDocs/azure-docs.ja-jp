@@ -1,28 +1,29 @@
 ---
-title: "\"サブスクリプションが見つかりません\" エラー - Azure portal へのサインイン"
+title: "\"サブスクリプションが見つかりません\" エラー - Azure Portal へのサインイン"
 description: Azure Portal または Azure アカウント センターにサインインしようとすると「サブスクリプションが見つかりません」エラーになるという問題の解決策を示します。
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
+ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b0a8b30120b53a02402b3f55b893ac7f5d097ac2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 70f479148cb2f5f3f2b13c431e0c4b80b1fb9543
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86102771"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684832"
 ---
-# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターにおける「サブスクリプションが見つかりません」のサインイン エラー
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure Portal または Azure アカウント センターにおける「サブスクリプションが見つかりません」のサインイン エラー
 
 [Azure Portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインしようとすると、「サブスクリプションが見つかりません」というエラー メッセージが表示されることがあります。 この記事では、この問題の解決策について説明します。
 
 ## <a name="symptom"></a>症状
 
-[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインしようとすると、「サブスクリプションが見つかりません」というエラー メッセージが表示されます。
+[Azure Portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインしようとすると、「サブスクリプションが見つかりません」というエラー メッセージが表示されます。
 
 ## <a name="cause"></a>原因
 
@@ -30,13 +31,13 @@ ms.locfileid: "86102771"
 
 ## <a name="solution"></a>解決策
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portal"></a>シナリオ 1:[Azure portal](https://portal.azure.com) でエラー メッセージが表示される
+### <a name="scenario-1-error-message-is-received-in-the-azure-portal"></a>シナリオ 1:[Azure Portal](https://portal.azure.com) でエラー メッセージが表示される
 
 この問題を解決するには、次の手順に従います。
 
 * 右上にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
 
-  ![Azure ポータルの右上にあるディレクトリを選択する](./media/no-subscriptions-found/directory-switch.png)
+  ![Azure Portal の右上にあるディレクトリを選択する](./media/no-subscriptions-found/directory-switch.png)
 * 適切な Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、[アカウントに所有者ロールを割り当て](../../role-based-access-control/role-assignments-portal.md)ます。
 
 ### <a name="scenario-2-error-message-is-received-in-the-azure-account-center"></a>シナリオ 2: [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)でエラー メッセージが表示される

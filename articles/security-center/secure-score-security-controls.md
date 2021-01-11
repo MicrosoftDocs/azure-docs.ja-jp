@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083992"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272282"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Security Center の強化されたセキュリティ スコア
 
@@ -140,7 +140,7 @@ Secure Scores API を使用して構築されたツールの例については�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">アクセスおよびアクセス許可の管理 (最大スコア 4)</p></strong>セキュリティ プログラムの中核となるのは、ユーザーがそのジョブを実行するために必要なアクセスを付与しても、それ以上の権利を付与しないことです。つまり、<a href="https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小限の特権モデル</a>に従う必要があります。<br>リソースへのアクセスを制御するには、<a href="https://docs.microsoft.com/azure/role-based-access-control/overview">ロールベースのアクセス制御 (RBAC)</a> を使用してロールの割り当てを作成します。 ロールの割り当ては、次の 3 つの要素で構成されます。<br>- <strong>セキュリティ プリンシパル</strong>: ユーザーがアクセスを要求するオブジェクト<br>- <strong>ロールの定義</strong>: ユーザーのアクセス許可<br>- <strong>スコープ</strong>: アクセス許可が適用される一連のリソース</td>
-    <td class="tg-lboi"; width=55%>- 非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 書き込みアクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 複数の所有者がサブスクリプションに割り当てられている必要があります<br>- Kubernetes サービスではロールベースのアクセス制御 (RBAC) を使用する必要があります (プレビュー)<br>- Service Fabric クラスターでは、クライアント認証に Azure Active Directory のみを使用する必要があります</td>
+    <td class="tg-lboi"; width=55%>- 非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 書き込みアクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 複数の所有者がサブスクリプションに割り当てられている必要があります<br>- Kubernetes サービスではロールベースのアクセス制御 (RBAC) を使用する必要があります (プレビュー)<br>- Service Fabric クラスターでは、クライアント認証に Azure Active Directory のみを使用する必要があります<br>-サブスクリプションを保護するには、管理証明書ではなくサービス プリンシパルを使用する必要があります</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">セキュリティ構成の修復 (最大スコア 4)</p></strong>正しく構成されていない IT 資産は、攻撃の対象となる危険性が高くなります。 資産を展開するときに基本的な強化アクションを忘れてしまいがちですが、期限を満たす必要があります。 インフラストラクチャでのセキュリティ構成の誤りは、オペレーティング システムやネットワーク アプライアンスからクラウド リソースまでどのレベルでも起こり得ることです。<br>Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 組織にとって重要な関連する "コンプライアンス パッケージ" (標準とベースライン) を構成した場合、何らかのギャップがあると、セキュリティの推奨事項が表示されます。これには、CCEID と、セキュリティへの潜在的な影響に関する説明が含まれます。<br>一般的に使用されるパッケージは、<a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure セキュリティ ベンチマーク</a>と <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure Foundations Benchmark バージョン 1.1.0</a> です</td>
@@ -169,6 +169,10 @@ Secure Scores API を使用して構築されたツールの例については�
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">監査とログ記録を有効にする (最大スコア 1)</p></strong>データのログにより、過去の問題に関する分析情報が提供され、潜在的な問題を防止し、アプリケーションのパフォーマンスを向上させ、他の場合には手動で行うアクションを自動化できます。<br>- <strong>ログの制御と管理</strong>では、<a href="https://docs.microsoft.com/azure/azure-resource-manager/management/overview">Azure Resource Manager</a> の動作に関する情報が提供されます。<br>- <strong>データ プレーン ログ</strong>は、Azure のリソース使用の一環として発生したイベントに関する情報を提供します。<br>- <strong>処理されたイベント</strong>では、処理されたイベントおよびアラートに関する分析情報が提供されます。</td>
     <td class="tg-lboi"; width=55%>- SQL Server の監査を有効にする必要があります<br>- App Services の診断ログを有効にする必要があります<br>- Azure Data Lake Store の診断ログを有効にする必要があります<br>- Azure Stream Analytics の診断ログを有効にする必要があります<br>- Batch アカウントの診断ログを有効にする必要があります<br>- Data Lake Analytics の診断ログを有効にする必要があります<br>- イベント ハブの診断ログを有効にする必要があります<br>- IoT Hub の診断ログを有効にする必要があります<br>- Key Vault の診断ログを有効にする必要があります<br>- Logic Apps の診断ログを有効にする必要があります<br>- Search Service の診断ログを有効にする必要があります<br>- Service Bus の診断ログを有効にする必要があります<br>- Virtual Machine Scale Sets の診断ログを有効にする必要があります<br>- Batch アカウントでメトリック アラート ルールを構成する必要があります<br>- - SQL 監査設定では、重要なアクティビティをキャプチャするように Action-Groups を構成しておく必要があります<br>- SQL Server では、監査保持期間を 90 日以上に構成する必要があります。</td>
+  </tr>
+  <tr>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Advanced Threat Protection を有効にする (最大スコア 0)</p></strong>Azure Security Center の脅威の防止によって、お使いの環境が包括的に保護されます。 Security Center は、ご自身の環境のいずれかの領域で脅威を検出すると、アラートを生成します。 これらのアラートでは、影響を受けるリソースや推奨される修復手順の詳細と、場合によっては、ロジック アプリを応答でトリガーするオプションが示されます。<br>脅威の防止バンドルは、それぞれが別個のオプション オファリングであり、このセキュリティ コントロールの関連する推奨事項を使用して有効にすることができます。<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">Security Center での脅威の防止についてさらに学習してください</a>。</td>
+    <td class="tg-lboi"; width=55%>- Azure SQL Database サーバーで Advanced Data Security を有効にする必要があります<br>- マシン上の SQL サーバーで Advanced Data Security を有効にする必要があります<br>- Virtual Machines で Advanced Threat Protection を有効にする必要があります<br>- Azure App Service プランで Advanced Threat Protection を有効にする必要があります<br>- Azure Storage アカウントで Advanced Threat Protection を有効にする必要があります<br>- Azure Kubernetes Service クラスターで Advanced Threat Protection を有効にする必要があります<br>- Azure Container Registry レジストリで Advanced Threat Protection を有効にする必要があります<br>- Azure Key Vault コンテナーで Advanced Threat Protection を有効にする必要があります</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">セキュリティのベストプラクティスを実装する (最大スコア 0)</p></strong>最新のセキュリティ対策では、ネットワーク境界の "侵害を想定" しています。 そのため、このコントロールの多くのベスト プラクティスでは、ID の管理が重視されています。<br>キーや資格情報の紛失は、よくある問題です。 <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure Key Vault</a> では、キー、.pfx ファイル、パスワードを暗号化することにより、キーとシークレットを保護します。<br>仮想プライベート ネットワーク (VPN) は、仮想マシンへのアクセスをセキュリティで保護します。 VPN を利用できない場合は、複雑なパスフレーズと <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure Multi-Factor Authentication</a> などの 2 要素認証を使用します。 2 要素認証は、ユーザー名とパスワードのみに依存することに伴う弱点を回避します。<br>強力な認証および承認プラットフォームの使用は、もう 1 つのベスト プラクティスです。 フェデレーション ID を使用すると、組織は、承認された ID の管理を委任できます。 これは、従業員が退職し、そのアクセス権を取り消す必要がある場合にも重要です。</td>

@@ -5,27 +5,24 @@ documentationcenter: android
 keywords: プッシュ通知,プッシュ通知,プッシュ メッセージ,Android プッシュ通知
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: daf3de1c-f6a9-43c4-8165-a76bfaa70893
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: android
 ms.devlang: java
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.custom: devx-track-java
-ms.openlocfilehash: 3f31c9786a8310779d71ab0c54bddc4687f765be
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f2d5d618fabbe7400ce825f984ace1622a524f05
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325238"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004030"
 ---
-# <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs でのセキュリティ保護されたプッシュ通知の送信
+# <a name="send-secure-push-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs でのセキュリティ保護されたプッシュ通知の送信
 
 > [!div class="op_single_selector"]
 > * [Windows ユニバーサル](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
@@ -43,28 +40,28 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
 
 大まかには、フローは次のようになります。
 
-1. アプリケーションのバックエンド:
-   * バックエンド データベースに安全なペイロードを格納します。
-   * この通知の ID を Android デバイスに送信します (安全でない情報は送信しません)。
-2. 通知を受け取ったときのデバイスのアプリケーション:
-   * Android デバイスは、安全なペイロードを要求するバックエンドにアクセスします。
-   * アプリケーションはデバイスに通知としてペイロードを表示できます。
+- アプリケーションのバックエンド:
+  * バックエンド データベースに安全なペイロードを格納します。
+  * この通知の ID を Android デバイスに送信します (安全でない情報は送信しません)。
+- 通知を受け取ったときのデバイスのアプリケーション:
+  * Android デバイスは、安全なペイロードを要求するバックエンドにアクセスします。
+  * アプリケーションはデバイスに通知としてペイロードを表示できます。
 
-前のフロー (およびこのチュートリアル) では、ユーザーがログインした後、デバイスが認証トークンをローカル ストレージに格納することを前提にしていることに注意する必要があります。 このアプローチにより、デバイスはこのトークンを使用して通知のセキュリティ保護されたペイロードを取得できるため、シームレスなエクスペリエンスが保証されます。 アプリケーションがデバイスに認証トークンを格納しない、またはそれらのトークンが期限切れの場合、デバイスのアプリは、プッシュ通知を受け取ったときにアプリの起動を促す一般的な通知を表示する必要があります。 その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
+前のフロー (およびこのチュートリアル) では、ユーザーがログインした後、デバイスが認証トークンをローカル ストレージに格納することを前提にしていることに注意する必要があります。 このアプローチにより、デバイスではこのトークンを使用して通知のセキュリティ保護されたペイロードを取得できるため、シームレスなエクスペリエンスが保証されます。 アプリケーションによってデバイスに認証トークンが格納されない、またはこれらのトークンの有効期限が切れている場合、デバイスのアプリでプッシュ通知を受け取ったときに、アプリの起動を促す一般的な通知を表示する必要があります。 その後、アプリケーションはユーザーを認証し、通知ペイロードを表示します。
 
-このチュートリアルでは、セキュリティ保護されたプッシュ通知を送信する方法について説明します。 このチュートリアルは、 [ユーザーへの通知](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) チュートリアルに基づいて記述されているため、先にそのチュートリアルでの手順を完了してください (まだ完了していない場合)。
+このチュートリアルでは、セキュリティ保護されたプッシュ通知を送信する方法について説明します。 これは[ユーザーへの通知](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)に関するチュートリアルに基づいて記述されているため、まずそのチュートリアルでの手順を完了する必要があります。
 
 > [!NOTE]
-> このチュートリアルでは、「 [Notification Hubs の使用 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md)」での説明に従って通知が作成され、構成されていると想定しています。
+> このチュートリアルでは、[Notification Hubs の使用の開始 (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md) に関するページで説明するように、通知ハブを作成して構成していると想定しています。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
 ## <a name="modify-the-android-project"></a>Android プロジェクトを変更する
 
-これで、プッシュ通知の *ID* のみを送信するようにアプリ バックエンドが変更されたので、その通知を処理し、バックエンドをコールバックして、表示されるセキュリティ保護されたメッセージを取得するように Android アプリを変更する必要があります。
+これで、プッシュ通知の ID のみを送信するようにアプリ バックエンドが変更されたので、その通知を処理し、バックエンドをコールバックして、表示されるセキュリティ保護されたメッセージを取得するように Android アプリを変更する必要があります。
 そのためには、お客様の Android アプリが、プッシュ通知を受け取ったときにバックエンドでそれ自体を認証する方法を知っていなければなりません。
 
-ここでは、認証ヘッダー値をアプリの共有設定に保存するために *login* フローを変更します。 類似のメカニズムを使用すると、ユーザー資格情報を要求せずにアプリが使用する必要がある任意の認証トークン (OAuth トークンなど) を格納できます。
+ここでは、認証ヘッダー値をアプリの共有設定に保存するために login フローを変更します。 類似のメカニズムを使用すると、ユーザー資格情報を要求せずにアプリが使用する必要がある任意の認証トークン (OAuth トークンなど) を格納できます。
 
 1. お客様の Android アプリ プロジェクトで、`MainActivity` クラスの先頭に次の定数を追加します。
 
@@ -72,6 +69,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
     public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
     public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
     ```
+
 2. `MainActivity` クラスでも、`getAuthorizationHeader()` メソッドを更新して、次のコードが含まれるようにします。
 
     ```java
@@ -87,6 +85,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
         return basicAuthHeader;
     }
     ```
+
 3. `MainActivity` ファイルの先頭に、次の `import` ステートメントを追加します。
 
     ```java
@@ -104,6 +103,7 @@ Microsoft Azure でプッシュ通知がサポートされたことで、マル�
         retrieveNotification(secureMessageId);
     }
     ```
+
 2. 次に、`retrieveNotification()` メソッドを追加して、プレースホルダー `{back-end endpoint}` をバックエンドのデプロイ時に取得したバックエンド エンドポイントに置き換えます。
 
     ```java

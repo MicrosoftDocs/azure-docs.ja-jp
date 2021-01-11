@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: 74210864332319dabb16eda865da9dc9793e3dbd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187683"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534347"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -240,6 +240,19 @@ Data Factory を使用すると、ソース データ ストアからシンク �
     }
 ]
 ```
+
+## <a name="auto-create-sink-tables"></a>シンク テーブルの自動作成
+
+SQL データベース/Azure Synapse Analytics にデータをコピーするときに、コピー先のテーブルが存在しない場合、コピー アクティビティではソース データに基づいてデータが自動的に作成されます。 これは、データの読み込みと SQL データベース/Azure Synapse Analytics の評価をすぐに開始できるようにすることを目的としています。 データ インジェストが完了したら、必要に応じて、シンク テーブル スキーマを確認して調整できます。
+
+この機能は、任意のソースから以下のシンク データ ストアにデータをコピーする際にサポートされます。 このオプションは、*ADF のオーサリング UI* – > *コピー アクティビティ シンク* – > *[テーブル] オプション* – > *[Auto create table]\(テーブルの自動作成\)* の順に選択するか、またはコピー アクティビティ シンク ペイロードの `tableOption` プロパティを使用して確認できます。
+
+- [Azure SQL Database](connector-azure-sql-database.md)
+- [Azure SQL Database マネージド インスタンス](connector-azure-sql-managed-instance.md)
+- [Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [SQL Server](connector-sql-server.md)
+
+![シンク テーブルの作成](media/copy-activity-overview/create-sink-table.png)
 
 ## <a name="fault-tolerance"></a>フォールト トレランス
 

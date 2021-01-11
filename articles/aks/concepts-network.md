@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) におけるネットワークにつ
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: edb195fae2e05a1f746c10482576f7e0b1bff7c9
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244652"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243906"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -73,6 +73,8 @@ AKS では、次の 2 つのネットワーク モデルのいずれかを使用
 
 Azure CNI を使用して、すべてのポッドでサブネットから IP アドレスを取得します。ポッドには直接アクセスできます。 これらの IP アドレスは、ネットワーク空間全体で一意である必要があり、事前に計画する必要があります。 各ノードには、サポートされるポッドの最大数に対する構成パラメーターがあります。 ノードごとにそれと同じ数の IP アドレスが、そのノードに対して事前に予約されます。 この方法では詳細な計画が必要であり、そうでない場合、IP アドレスが不足するか、アプリケーション需要の拡大に伴い、より大きなサブネットでのクラスターの再構築が必要になる可能性があります。
 
+kubenet とは異なり、同じ仮想ネットワーク内のエンドポイントへのトラフィックは、ノードのプライマリ IP に NAT 処理されません。 仮想ネットワーク内のトラフィックの発信元アドレスは、ポッド IP です。 仮想ネットワークの外部にあるトラフィックは、ノードのプライマリ IP に引き続き NAT 処理されます。
+
 ノードでは [Azure Container Networking Interface (CNI)][cni-networking] Kubernetes プラグインが使用されます。
 
 ![各ブリッジが 1 つの Azure VNet に接続している 2 つのノードを示す図][advanced-networking-diagram]
@@ -105,7 +107,7 @@ kubenet と Azure CNI には、次のような動作の違いが存在します�
 | ロード バランサー サービス、App Gateway、またはイングレス コントローラーを使用して、Kubernetes サービスを公開する | サポートされています | サポートされています |
 | 既定の Azure DNS およびプライベート ゾーン                                                          | サポートされています | サポートされています |
 
-DNS については、kubernet と Azure CNI のどちらのプラグインでも、CoreDNS (AKS で実行されるデーモン セット) によって DNS が提供されます。 Kubernetes の CoreDNS の詳細については、[DNS サービスのカスタマイズ](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)に関するページを参照してください。 CoreDNS は、既定では、不明なドメインをノードの DNS サーバー (つまり、AKS クラスターがデプロイされている Azure Virtual Network の DNS 機能) に転送するように構成されています。 そのため、Azure DNS およびプライベート ゾーンは、AKS で実行されるポッドに対して機能します。
+DNS については、kubernet と Azure CNI のどちらのプラグインでも、CoreDNS (AKS で実行されるデプロイ) によって、その独自の自動スケーリングで DNS が提供されます。 Kubernetes の CoreDNS の詳細については、[DNS サービスのカスタマイズ](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)に関するページを参照してください。 CoreDNS は、既定では、不明なドメインをノードの DNS サーバー (つまり、AKS クラスターがデプロイされている Azure Virtual Network の DNS 機能) に転送するように構成されています。 そのため、Azure DNS およびプライベート ゾーンは、AKS で実行されるポッドに対して機能します。
 
 ### <a name="support-scope-between-network-models"></a>ネットワーク モデル間のサポート範囲
 

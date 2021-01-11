@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: de7ead8acd059d957673b2f063dd3d330cf473f5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9aa0ca41f63da94e2dedaffe65ea518b8adff0dc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525502"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439469"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux イメージの概要
 
@@ -99,6 +99,9 @@ RHEL 7.x イメージの場合、いくつかの異なる種類のイメージ�
 |RedHat | RHEL | RHEL-SAP-HANA | RHEL マイナー バージョンと発行日の連結された値 (例: 7.3.2018051421) | SAP アプリケーション リポジトリと SAP HANA リポジトリが SAP リポジトリに結合されているため、これらのイメージは最新ではありません。 これらのイメージは RHEL for SAP HANA イメージです。 SAP HANA リポジトリとベース RHEL リポジトリにアクセスする権利があります。
 
 ## <a name="rhel-8-image-types"></a>RHEL 8 イメージの種類
+
+>[!NOTE]
+> Red Hat では、Grubby を使用し、RHEL 8+ のカーネル コマンド ライン パラメーターを構成することを推奨しています。 詳細は[こちら](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_monitoring_and_updating_the_kernel/configuring-kernel-command-line-parameters_managing-monitoring-and-updating-the-kernel)をご覧ください。
 
 次に、RHEL 8 イメージの種類の詳細を示します。
 

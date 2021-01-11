@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4d30cdb931d6523eba3aac003caeee38a8c024d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323997"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653530"
 ---
 # <a name="common-issues-during-vhd-creation"></a>VHD 作成における一般的な問題
 
@@ -20,7 +20,7 @@ ms.locfileid: "87323997"
 
 ## <a name="how-do-i-create-a-vm-from-the-azure-portal-using-a-vhd-in-premium-storage"></a>Premium Storage の VHD を使用して Azure portal から VM を作成するにはどうすればよいですか?
 
-Azure Marketplace は現在、マネージド ストレージ上のイメージまたは Azure Premium Storage からの VM オファーの作成をサポートしていません。 詳細については、「[Azure Managed Disks の概要](../../virtual-machines/windows/managed-disks-overview.md)」を参照してください。
+Azure Marketplace は現在、マネージド ストレージ上のイメージまたは Azure Premium Storage からの VM オファーの作成をサポートしていません。 詳細については、「[Azure Managed Disks の概要](../../virtual-machines/managed-disks-overview.md)」を参照してください。
 
 ## <a name="can-i-use-generation-2-vms-for-offers"></a>オファーに第 2 世代の VM を使用できますか?
 
@@ -34,8 +34,8 @@ Azure Marketplace は現在、マネージド ストレージ上のイメージ�
 
 次の記事で、Windows および Linux ベースの VM に対する RDS のリセットを実行する方法について説明しています。
 
-* [Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [VMAccess 拡張機能を使用して、Linux VM のパスワードまたは SSH キーをリセットし、SSH 構成を修正し、ディスクの整合性チェックを実行する方法](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [VMAccess 拡張機能を使用して、Linux VM のパスワードまたは SSH キーをリセットし、SSH 構成を修正し、ディスクの整合性チェックを実行する方法](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>新しい SSH 証明書を生成するにはどうすればよいですか?
 
@@ -59,7 +59,7 @@ Azure Resource Manager デプロイ モデルを使用している場合、3 つ
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>VM で、スタートアップ タスクのカスタム スクリプト拡張機能を管理するにはどうすればよいですか?
 
-Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法と、Windows システムでのトラブルシューティング手順の詳細については、「[Windows でのカスタムのスクリプト拡張機能](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)」を参照してください。
+Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用したカスタム スクリプト拡張機能の使用方法と、Windows システムでのトラブルシューティング手順の詳細については、「[Windows でのカスタムのスクリプト拡張機能](/azure/virtual-machines/extensions/custom-script-windows)」を参照してください。
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>32 ビットのアプリケーションやサービスは Azure Marketplace でサポートされていますか?
 

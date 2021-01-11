@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: ba0430461df5ce1a2d615b819dbe5e8a36ae52b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 29492ee6b7bce50c4807a36d0c252e18e6aadf87
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008952"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Azure Cache for Redis でのデータ損失のトラブルシューティング
 
@@ -119,6 +119,6 @@ Standard レベルと Premium レベルのキャッシュでは、レプリケ�
 ## <a name="additional-information"></a>関連情報
 
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
-- [Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [最適なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)
 - [Azure Cache for Redis を監視する方法](cache-how-to-monitor.md)
-- [Redis コマンドの実行方法](cache-faq.md#how-can-i-run-redis-commands)
+- [Redis コマンドの実行方法](cache-development-faq.md#how-can-i-run-redis-commands)

@@ -4,12 +4,12 @@ description: Azure でのアラートの概要です。 アラート、クラシ
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: 3c4432300319c02cd7b1e31dec566f6e65ea9580
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e0741a23d7e5ece0898d83c53782afc353d9a7e5
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539569"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371602"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -52,11 +52,11 @@ ms.locfileid: "86539569"
 - 重大度 3 = 情報
 - 重大度 4 = 詳細情報 
 
-**アクション**:アラートが発生したときに実行される特定のアクション。 詳細については、[アクション グループ](../../azure-monitor/platform/action-groups.md)に関する記事をご覧ください。
+**アクション**:アラートが発生したときに実行される特定のアクション。 詳細については、[アクション グループ](./action-groups.md)に関する記事をご覧ください。
 
 ## <a name="what-you-can-alert-on"></a>アラートできるもの
 
-[データ ソースの監視](../../azure-monitor/platform/data-sources.md)に関するページで説明されているように、メトリックとログについてアラートできます。 これらには次が含まれますが、これらに限定されるものではありません。
+[データ ソースの監視](./data-sources.md)に関するページで説明されているように、メトリックとログについてアラートできます。 これらには次が含まれますが、これらに限定されるものではありません。
 
 - メトリックの値
 - ログの検索クエリ
@@ -69,7 +69,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 | **モニター ソース** | **シグナルの種類**  | **説明** |
 |-------------|----------------|-------------|
 | サービス正常性 | アクティビティ ログ  | サポートされていません。 「[サービス通知のアクティビティ ログ アラートを作成する](../../service-health/alerts-activity-log-service-notifications-portal.md)」をご覧ください。  |
-| Application Insights | Web 可用性テスト | サポートされていません。 [Web テスト アラート](../../azure-monitor/app/monitor-web-app-availability.md)に関するページをご覧ください。 Application Insights にデータを送信するようにインストルメント化されたすべての Web サイトで使用できます。 Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
+| Application Insights | Web 可用性テスト | サポートされていません。 [Web テスト アラート](../app/monitor-web-app-availability.md)に関するページをご覧ください。 Application Insights にデータを送信するようにインストルメント化されたすべての Web サイトで使用できます。 Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
 
 ## <a name="manage-alerts"></a>Manage alerts
 アラートの状態を設定して、それが解決プロセス内のどこにあるかを指定できます。 アラート ルールで指定されている基準が満たされると、アラートが作成または生成されます。アラートの状態は "*新規*" です。 アラートを確認した場合や、アラートを終了した場合は、その状態を変更できます。 状態の変更はすべて、アラートの履歴に格納されます。
@@ -137,9 +137,9 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
  
 この簡素化された作成プロセスでは、ユーザーは Azure リソースを選択する前に、サポートされている監視ソースやシグナルを把握しておく必要はなくなります。 使用可能なシグナルの一覧は、ユーザーが選択したターゲット リソースに基づいて自動的にフィルター処理されます。 また、そのターゲットに基づき、アラート ルールのロジックの定義を自動的に案内されます。  
 
-アラート ルールを作成する方法の詳細については、「[Azure Monitor を使用してアラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
+アラート ルールを作成する方法の詳細については、「[Azure Monitor を使用してアラートを作成、表示、管理する](./alerts-metric.md)」を参照してください。
 
-アラートは複数の Azure 監視サービス全体で使用できます。 これらの各サービスを使用する方法およびタイミングについては、「[Azure のアプリケーションおよびリソースの監視](../../azure-monitor/overview.md)」を参照してください。 
+アラートは複数の Azure 監視サービス全体で使用できます。 これらの各サービスを使用する方法およびタイミングについては、「[Azure のアプリケーションおよびリソースの監視](../overview.md)」を参照してください。 
 
 
 ## <a name="all-alerts-page"></a>[すべてのアラート] ページ 
@@ -178,7 +178,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 ## <a name="role-based-access-control-rbac-for-your-alert-instances"></a>アラート インスタントのロールベースのアクセス制御 (RBAC)
 
-アラート インスタンスを使用および管理するには、ユーザーに[監視共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)または[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)のいずれかの組み込み RBAC ロールが必要です。 これらのロールは、サブスクリプション レベルからリソース レベルでの詳細な割り当てまで、Azure Resource Manager のすべてのスコープでサポートされています。 たとえば、ユーザーが仮想マシン `ContosoVM1` に対する "監視共同作成者" アクセス権のみを持っている場合は、`ContosoVM1` で生成されたアラートのみを使用および管理できます。
+アラート インスタンスを使用および管理するには、ユーザーに[監視共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)または[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)のいずれかの Azure 組み込みロールが必要です。 これらのロールは、サブスクリプション レベルからリソース レベルでの詳細な割り当てまで、Azure Resource Manager のすべてのスコープでサポートされています。 たとえば、ユーザーが仮想マシン `ContosoVM1` に対する "監視共同作成者" アクセス権のみを持っている場合は、`ContosoVM1` で生成されたアラートのみを使用および管理できます。
 
 ## <a name="manage-your-alert-instances-programmatically"></a>プログラムによるアラート インスタンスの管理
 
@@ -208,7 +208,7 @@ Azure Resource Graph Explorer を使用して、ポータルでこの Resource G
 ## <a name="next-steps"></a>次のステップ
 
 - [スマート グループの詳細](https://aka.ms/smart-groups)
-- [アクション グループの詳細](../../azure-monitor/platform/action-groups.md)
+- [アクション グループの詳細](./action-groups.md)
 - [Azure でのアラート インスタンスの管理](https://aka.ms/managing-alert-instances)
 - [スマート グループの管理](https://aka.ms/managing-smart-groups)
 - [Azure アラートの価格についての詳細](https://azure.microsoft.com/pricing/details/monitor/)

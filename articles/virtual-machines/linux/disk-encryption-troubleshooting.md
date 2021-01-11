@@ -4,16 +4,16 @@ description: この記事では、Linux VM の Microsoft Azure Disk Encryption �
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
-ms.topic: article
+ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: abd802f19917b048f6d006b8e3097b08efaf22e2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ca6431531f8cebf1205aa555c5545f4dc44abd3
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510482"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372214"
 ---
 # <a name="azure-disk-encryption-for-linux-vms-troubleshooting-guide"></a>Linux VM の Azure Disk Encryption のトラブルシューティング ガイド
 
@@ -70,30 +70,54 @@ Microsoft.OSTCExtensions.AzureDiskEncryptionForLinux 拡張機能は非推奨に
 
 Linux OS ディスクの暗号化シーケンスは、OS ドライブを一時的にマウント解除します。 その後、OS ディスク全体のブロック単位の暗号化を実行した後、OS ディスクを暗号化された状態で再マウントします。 Linux のディスク暗号化では、暗号化が行われている間、VM を同時に使用することはできません。 暗号化を完了するために必要な時間は、VM のパフォーマンス特性によって大幅に異なる可能性があります。 これらの特性には、ディスクのサイズとストレージ アカウントのストレージが Standard であるか Premium (SSD) であるかが含まれます。
 
-暗号化の状態を確認するには、[Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドから返される **ProgressMessage** フィールドをポーリングします。 OS ドライブが暗号化されている間、VM はメンテナンス状態に入り、進行中のプロセスの中断を防ぐため SSH を無効にします。 暗号化が進行している時間の大半は、**EncryptionInProgress** メッセージによって状況がレポートされます。 数時間後、**VMRestartPending** メッセージによって VM を再起動するように求められます。 次に例を示します。
-
+OS ドライブが暗号化されている間、VM はサービス状態に入り、進行中のプロセスの中断を防ぐため SSH を無効にします。  暗号化の状態を確認するには、Azure PowerShell の [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) コマンドを使用して **ProgressMessage** フィールドを確認します。 データおよび OS ディスクが暗号化される際に、**ProgressMessage** によって一連の状態が報告されます。
 
 ```azurepowershell
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings :
+ProgressMessage            : Transitioning
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for data volumes
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
+OsVolumeEncrypted          : EncryptionInProgress
+DataVolumesEncrypted       : EncryptionInProgress
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Provisioning succeeded
+
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
+
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
-
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
-OsVolumeEncrypted          : VMRestartPending
-DataVolumesEncrypted       : Encrypted
-OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
-ProgressMessage            : OS disk successfully encrypted, please reboot the VM
 ```
 
-VM を再起動するように求められた後と VM の再開後、再起動と最後の手順がターゲットで実行されるまで 2、3 分待つ必要があります。 暗号化が最終的に完了すると、状態メッセージが変更されます。 完了メッセージが表示されたら、暗号化された OS ドライブを使用する準備ができ、VM を再び使用する準備も整っています。
+**ProgressMessage** は、暗号化プロセスの大部分にわたって "**OS disk encryption started**" (OS ディスクの暗号化が開始されました) のままです。  暗号化が正常に完了すると、**ProgressMessage** は戻って次のようになります。
 
-以下に該当する場合は、暗号化の直前に作成したスナップショットまたはバックアップに VM を復元することお勧めします。
-   - 前述の再起動シーケンスが発生しない場合。
-   - ブート情報、進行状況メッセージ、またはその他のエラー インジケーターで、OS の暗号化がプロセスの途中で失敗したことが報告された場合。 メッセージの一例は、このガイドで説明した "マウント解除に失敗しました" エラーです。
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyResourceGroup" -VMName "myVM"
 
-次の試行の前に、VM の特性を再評価して、すべての前提条件が満たされていることを確認してください。
+OsVolumeEncrypted          : Encrypted
+DataVolumesEncrypted       : NotMounted
+OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
+ProgressMessage            : Encryption succeeded for all volumes
+```
+
+完了メッセージが表示されたら、暗号化された OS ドライブを使用する準備ができ、VM を再び使用する準備も整っています。
+
+ブート情報、進行状況のメッセージ、またはエラーによって、このプロセスの途中で OS 暗号化が失敗したことが報告される場合は、VM を暗号化の直前に作成されたスナップショットまたはバックアップに復元してください。 メッセージの一例は、このガイドで説明した "マウント解除に失敗しました" エラーです。
+
+暗号化を再試行する前に、VM の特性を再評価して、すべての前提条件が満たされていることを確認してください。
 
 ## <a name="troubleshooting-azure-disk-encryption-behind-a-firewall"></a>ファイアウォール内の Azure Disk Encryption のトラブルシューティング
 
@@ -101,11 +125,11 @@ VM を再起動するように求められた後と VM の再開後、再起動�
 
 ## <a name="troubleshooting-encryption-status"></a>暗号化の状態のトラブルシューティング 
 
-VM 内で非暗号化されたディスクが、ポータルで暗号化済みと表示される場合があります。  この状況は、高レベルの Azure Disk Encryption 管理コマンドを使用するのではなく、低レベルのコマンドを使用して VM 内から直接ディスクを非暗号化した場合に発生する可能性があります。  高レベルのコマンドでは、VM 内からディスクが非暗号化されるだけでなく、VM の外部で、重要なプラットフォーム レベルの暗号化の設定と VM に関連する拡張機能の設定が更新されます。  これらの設定が整合していないと、プラットフォームは暗号化の状態を報告できず、VM を適切にプロビジョニングすることもできません。   
+VM 内で非暗号化されたディスクが、ポータルで暗号化済みと表示される場合があります。  この状況は、高レベルの Azure Disk Encryption 管理コマンドを使用するのではなく、低レベルのコマンドを使用して VM 内から直接ディスクを非暗号化した場合に発生する可能性があります。  高レベルのコマンドでは、VM 内からディスクが非暗号化されるだけでなく、VM の外部で、重要なプラットフォーム レベルの暗号化の設定と VM に関連する拡張機能の設定が更新されます。  これらの設定が整合していないと、プラットフォームは暗号化の状態を報告できず、VM を適切にプロビジョニングすることもできません。
 
 PowerShell で Azure Disk Encryption を無効にするには、最初に [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption)、次に [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) を使用します。 暗号化を無効にする前に Remove-AzVMDiskEncryptionExtension を実行すると、失敗します。
 
-CLI で Azure Disk Encryption を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption) を使用します。 
+CLI で Azure Disk Encryption を無効にするには、[az vm encryption disable](/cli/azure/vm/encryption) を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

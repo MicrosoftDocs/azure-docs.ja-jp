@@ -1,24 +1,22 @@
 ---
-title: Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする - Azure
-description: Windows Virtual Desktop で Windows 7 仮想マシンを構成してデプロイする方法。
-services: virtual-desktop
+title: Windows Virtual Desktop (クラシック) で Windows 7 仮想マシンをデプロイする - Azure
+description: Windows Virtual Desktop (クラシック) で Windows 7 仮想マシンを構成してデプロイする方法。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 92ab8e006ab7fef3c7e856cc34467b4510055174
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 259e49fbdd6a0eb392ddf6a3cd3c318798cfabd0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86275888"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005068"
 ---
-# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
+# <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で Windows 7 仮想マシンをデプロイする
 
 >[!IMPORTANT]
->この記事の内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Fall 2019 リリースに適用されます。 Spring 2020 更新プログラムで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../deploy-windows-7-virtual-machine.md)を参照してください。
+>この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Windows Virtual Desktop の現在のバージョンで導入された Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../deploy-windows-7-virtual-machine.md)を参照してください。
 
 Windows Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイするプロセスは、新しいバージョンの Windows を実行している VM の場合とは若干異なります。 このガイドでは、Windows 7 をデプロイする方法について説明します。
 

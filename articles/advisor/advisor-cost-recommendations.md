@@ -3,12 +3,12 @@ title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284372"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654040"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -71,7 +71,7 @@ Advisor は、過去30日間の Azure Blob Storage と Azure Data Lake ストレ
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB、MySQL、および PostgreSQL の予約容量
 Advisor は、過去 30 日間の Azure Database for MariaDB、Azure Database for MySQL、Azure Database for PostgreSQL の使用パターンを分析します。 その後、コストを最適化するための予約容量の購入が推奨されます。 予約容量を使用すると、MariaDB、MySQL、および PostgreSQL の時間単位の使用量を事前に購入することで、現在のコストを削減できます。 予約容量は課金特典であり、新規および既存のデプロイに対して自動的に適用されます。 Advisor では、個々のサブスクリプションに対する削減の見積もりを計算するために、3 年分の予約価格と過去 30 日間に観察された使用パターンが使用されます。 予約容量の購入では、共有スコープの推奨事項を利用できるため、さらにコストを削減することができます。
 
-### <a name="synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Synapse Analytics (旧称 SQL Data Warehouse) の予約容量
+### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Azure Synapse Analytics (旧称 SQL Data Warehouse) の予約容量
 Advisor は過去 30 日間の Azure Synapse Analytics の使用パターンを分析し、コストを最適化する予約容量の購入を推奨します。 予約容量を使用すると、Synapse Analytics の時間単位の使用量を事前に購入することで、オンデマンドのコストを削減できます。 予約容量は課金特典であり、新規および既存のデプロイに対して自動的に適用されます。 Advisor では、個々のサブスクリプションに対する削減の見積もりを計算するために、3 年分の予約価格と過去 30 日間に観察された使用パターンが使用されます。 予約容量の購入では、共有スコープの推奨事項を利用できるため、さらにコストを削減することができます。
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>関連付けられていないパブリック IP アドレスのコスト節約のための削除
@@ -96,6 +96,8 @@ Advisor では、Azure Blob Storage のオブジェクト数、合計サイズ�
 
 短期の IaaS VM やワークロードがステートレスである VM にはエフェメラル OS ディスクを使用することが推奨されます。 Advisor は、エフェメラル OS ディスクのメリットを得られるリソースに関する推奨事項を提供します。
 
+## <a name="reduce-azure-data-explorer-table-cache-period-policy-for-cluster-cost-optimization-preview"></a>クラスターのコストを最適化するため、Azure Data Explorer のテーブルのキャッシュ期間 (ポリシー) を短くする (プレビュー)
+Advisor で、テーブル キャッシュ ポリシーを短くすることにより、CPU 使用率とメモリが低くキャッシュ サイズの構成が高い Azure Data Explorer クラスター ノードで解放できるリソースがあることが識別されました。
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Advisor のコストに関する推奨事項にアクセスする方法
 

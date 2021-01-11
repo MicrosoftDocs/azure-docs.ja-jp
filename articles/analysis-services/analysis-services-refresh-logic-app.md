@@ -2,17 +2,17 @@
 title: Logic Apps を使用した Azure Analysis Services モデルの更新 | Microsoft Docs
 description: この記事では、Azure Logic Apps を使用して Azure Analysis Services の非同期更新をコーディングする方法について説明します。
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025321"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552239"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps を使用した更新
 

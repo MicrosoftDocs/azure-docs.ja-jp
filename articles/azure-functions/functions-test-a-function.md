@@ -3,14 +3,15 @@ title: Azure Functions のテスト
 description: Visual Studio の C# 関数と VS Code の JavaScript 関数の自動化テストを作成する
 author: craigshoemaker
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 1f08d6b8a2ce2381c3bc85891a292ac05561cf34
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832561"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212900"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -40,13 +41,13 @@ ms.locfileid: "85832561"
 3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して **MyTimerTrigger** という名前を付けます。
 4. ソリューションで [xUnit テスト アプリを作成](https://xunit.github.io/docs/getting-started-dotnet-core)して **Functions.Tests** という名前を付けます。
 5. NuGet を使用して、テスト アプリから [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) への参照を追加します
-6. *Functions.Tests* アプリから [*Functions* アプリを参照](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
+6. *Functions.Tests* アプリから [*Functions* アプリを参照](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
 
 ### <a name="create-test-classes"></a>テスト クラスの作成
 
 これでプロジェクトが作成されたため、自動テストの実行に使用するクラスを作成できます。
 
-各関数は、[ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) のインスタンスを取得して、メッセージ ログを処理します。 テストによっては、メッセージをログに記録しないことも、ログの実装方法に対する懸念がないこともあります。 その他のテストは、テストを渡すかどうかを判断するために、ログに記録されたメッセージを評価する必要があります。
+各関数は、[ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) のインスタンスを取得して、メッセージ ログを処理します。 テストによっては、メッセージをログに記録しないことも、ログの実装方法に対する懸念がないこともあります。 その他のテストは、テストを渡すかどうかを判断するために、ログに記録されたメッセージを評価する必要があります。
 
 テストの間に評価するメッセージの内部リストを保持する `ListLogger` という名前の新しいクラスを作成します。 必要な `ILogger` インターフェイスを実装するには、クラスにスコープが必要です。 次のクラスでは、`ListLogger` クラスに渡すテスト ケースのスコープがモックされます。
 
@@ -192,7 +193,7 @@ namespace Functions.Tests
 
 `TestFactory` クラスは、次のメンバーを実装します。
 
-- **Data**:このプロパティは、サンプル データの [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) コレクションを返します。 キー値のペアは、クエリ文字列に渡される値を表します。
+- **Data**:このプロパティは、サンプル データの [IEnumerable](/dotnet/api/system.collections.ienumerable) コレクションを返します。 キー値のペアは、クエリ文字列に渡される値を表します。
 
 - **CreateDictionary**:このメソッドは、キー/値ペアを引数として受け取り、クエリ文字列値を表す `QueryCollection` を作成するために使用する新しい `Dictionary` を返します。
 

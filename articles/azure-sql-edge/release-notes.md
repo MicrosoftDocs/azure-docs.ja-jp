@@ -9,17 +9,28 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 06/05/2020
-ms.openlocfilehash: d5d60db2cc0c35b908454be3f00716db6d2da945
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/27/2020
+ms.openlocfilehash: 74e9772ada010d79e81ef36cae89ba586db73077
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361644"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553412"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge のリリース ノート 
 
 この記事では、Azure SQL Edge の新しいビルドごとに、新機能と変更点について説明します。
+
+## <a name="ctp-22"></a>CTP 2.2
+### <a name="sql-engine-build-number---15020001546"></a>SQL エンジンのビルド番号 - 15.0.2000.1546
+### <a name="fixes"></a>修正
+1. ルート以外のコンテナーのサポート 
+2. 使用状況と診断データの収集のサポート 
+3. T-SQL ストリーミングの更新
+   - ストリーム オブジェクト名の Unicode 文字のサポート
+   - プロセス クリーンアップの機能強化
+   - ログ記録と診断の機能強化
+4. データ インジェストのパフォーマンスの向上
 
 ## <a name="ctp-21"></a>CTP 2.1 
 ### <a name="sql-engine-build-number---15020001545"></a>SQL エンジンのビルド番号 - 15.0.2000.1545

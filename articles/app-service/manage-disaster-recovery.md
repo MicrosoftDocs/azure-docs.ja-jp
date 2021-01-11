@@ -4,12 +4,12 @@ description: Azure App Service によって、ビジネス継続性とディザ�
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 8c57cf5054bea898370cdccc7bea4243877d27b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1388dc11254324f74efcbaa55c97cac2ccd0c026
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84946979"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073747"
 ---
 # <a name="move-an-app-service-app-to-another-region"></a>App Service アプリを別のリージョンに移動する
 
@@ -43,7 +43,7 @@ App Service リソースはリージョン固有のものであり、リージ�
 
 1. [Azure portal](https://portal.azure.com) で、影響を受けたアプリの管理ページに移動します。 障害が発生した Azure リージョンでは、影響を受けたアプリに警告テキストが表示されます。 警告テキストをクリックします。
 
-    ![](media/manage-disaster-recovery/restore-start.png)
+    ![影響を受けたアプリのページのスクリーンショット。 状況について説明し、アプリ復元用のリンクが記載された警告通知が表示されます。](media/manage-disaster-recovery/restore-start.png)
 
 1. **[バックアップの復元]** ページで、次の表に従って復元操作を構成します。 完了したら、 **[OK]** をクリックします。
 
@@ -53,7 +53,7 @@ App Service リソースはリージョン固有のものであり、リージ�
    | **復元先** | **既存のアプリ** | **[Click here to change the restore destination app]\(復元先のアプリを変更するにはここをクリックします\)** という下の注意をクリックし、ターゲットアプリを選択します。 ディザスター シナリオでは、別の Azure リージョンのアプリにのみスナップショットを復元できます。 |
    | **サイト構成の復元** | **はい** | |
 
-    ![](media/manage-disaster-recovery/restore-configure.png)
+    ![[バックアップの復元] ページのスクリーンショット。 特定のスナップショット、前の表の一覧に示されたオプション、および [OK] ボタンが強調表示されています。](media/manage-disaster-recovery/restore-configure.png)
 
 3. 影響を受けたアプリをミラーリングするようにターゲット アプリ内の[他のすべて](#prepare)を構成し、構成を確認します。
 
@@ -65,7 +65,7 @@ App Service リソースはリージョン固有のものであり、リージ�
 
 1. [Azure portal](https://portal.azure.com) で、影響を受けたアプリの管理ページに移動し、 **[発行プロファイルの取得]** をクリックします。
 
-    ![](media/manage-disaster-recovery/get-publish-profile.png)
+    ![影響を受けたアプリのページのスクリーンショット。 警告通知は表示されますが、強調表示はされません。 その代わり、[発行プロファイルの取得] 項目が強調表示されています。](media/manage-disaster-recovery/get-publish-profile.png)
 
 1. ダウンロードしたファイルを開き、名前に `ReadOnly - FTP` を含む発行プロファイルを見つけます。 これがディザスター リカバリー プロファイルです。 次に例を示します。
 
@@ -84,7 +84,7 @@ App Service リソースはリージョン固有のものであり、リージ�
 
 1. 接続したら、 */site/wwwroot* フォルダー全体をダウンロードします。 次のスクリーンショットは、[FileZilla](https://filezilla-project.org/) でダウンロードする方法を示しています。
 
-    ![](media/manage-disaster-recovery/download-content.png)
+    ![FileZilla のファイル階層のスクリーンショット。 wwwroot フォルダーが強調表示されていて、ショートカット メニューが表示されています。 そのメニューの [ダウンロード] が強調表示されています。](media/manage-disaster-recovery/download-content.png)
 
 ## <a name="next-steps"></a>次のステップ
 [Azure でスナップショットからアプリケーションを復元する](app-service-web-restore-snapshots.md)

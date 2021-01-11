@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 10/21/2019
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 703c08cd5a884c8bfdd027b4ecf457c9e954a2dc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 371cfdc8bf2b09f703e1c7bd0153a433ff60ad16
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043408"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89298965"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API を使用して開発する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 開発者は、Media Services の [REST API](/rest/api/media/) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
 
@@ -86,7 +88,7 @@ Azure Resource Manager の名前付けの詳細については、[名前付け�
 
 Azure Media Services の [Swagger ファイル](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json)に `x-ms-long-running-operation` とマークされた操作は長期操作です。 
 
-非同期の Azure 操作を追跡する方法について詳しくは、[非同期操作](../../azure-resource-manager/management/async-operations.md#monitor-status-of-operation)に関するセクションを参照してください。
+非同期の Azure 操作を追跡する方法について詳しくは、[非同期操作](../../azure-resource-manager/management/async-operations.md)に関するセクションを参照してください。
 
 Media Services には、次のような長期操作があります。
 

@@ -8,17 +8,17 @@ manager: rkarlin
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
-ms.custom: mvc, seodec18
+ms.custom: mvc, seodec18, devx-track-azurepowershell
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/14/2020
 ms.author: johndaw
-ms.openlocfilehash: e7958a722f7010d63794cacc072289030a72ed99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fc67012dff5931fb86452ea95c2ea074a426953c
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512505"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89075673"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -40,7 +40,7 @@ Azure Dedicated HSM サービスでは、完全な管理制御と完全な管理
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Dedicated HSM は、現時点では Azure portal で使用できません。そのため、サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell で PowerShell を使用します。 PowerShell を使用するのが初めての場合は、こちらの [Azure PowerShell の開始](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページの開始手順に従います。
+Azure Dedicated HSM は、現時点では Azure portal で使用できません。そのため、サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell で PowerShell を使用します。 PowerShell を使用するのが初めての場合は、こちらの [Azure PowerShell の開始](/powershell/azure/get-started-azureps)に関するページの開始手順に従います。
 
 想定:
 

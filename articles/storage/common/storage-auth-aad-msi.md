@@ -1,7 +1,7 @@
 ---
 title: マネージド ID を使用してデータへのアクセスを認証する
 titleSuffix: Azure Storage
-description: Azure リソースのマネージド ID を使用して、Azure の仮想マシン、関数アプリ、仮想マシン スケール セット、およびその他で実行されているアプリケーションからの BLOB とキュー データへのアクセスを認証する方法について説明します。
+description: Azure リソースのマネージド ID を使用して、Azure VM や関数アプリなどで実行されているアプリケーションからの BLOB とキュー データへのアクセスを認証します。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,13 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 69e88aed1485d07bc4adc57abc0bda02a1def728
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 2087e5f8ec397123df504e9d30d351a0ba79b4a5
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808888"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89018758"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure リソースに対するマネージド ID を使用して BLOB およびキュー データへのアクセスを認証する
 
@@ -45,9 +46,9 @@ Azure ID クライアント ライブラリの利点は、アプリケーショ�
 
 .NET 用 Azure ID クライアント ライブラリの詳細については、「[.NET 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)」を参照してください。 Azure ID クライアント ライブラリのリファレンス ドキュメントについては、「[Azure.Identity 名前空間](/dotnet/api/azure.identity)」を参照してください。
 
-### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>データにアクセスするためのロールベースのアクセス制御 (RBAC) ロールを割り当てる
+### <a name="assign-azure-roles-for-access-to-data"></a>データにアクセスするための Azure ロールを割り当る
 
-Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での Blob またはキュー データへのアクセスを許可する RBAC ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して Azure Blob およびキューへのアクセスを承認します](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)」にある「**アクセス権に RBAC ロールを割り当てる**」というタイトルのセクションを参照してください。
+Azure AD セキュリティ プリンシパルが Blob またはキュー データにアクセスしようとする場合、そのセキュリティ プリンシパルはリソースへのアクセス許可を保持している必要があります。 セキュリティ プリンシパルが Azure 内のマネージド ID であるか、開発環境でコードを実行している Azure AD ユーザー アカウントであるかにかかわらず、Azure Storage での BLOB またはキュー データへのアクセスを許可する Azure ロールをセキュリティ プリンシパルに割り当てる必要があります。 RBAC 経由でのアクセス許可の割り当てについては、「[Azure Active Directory を使用して BLOB とキューへのアクセスを承認する](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights)」の「**アクセス権に Azure ロールを割り当てる**」というタイトルのセクションを参照してください。
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>開発環境でユーザーを認証する
 
@@ -61,7 +62,7 @@ Azure AD セキュリティ プリンシパルが Blob またはキュー デー
 
 #### <a name="create-the-service-principal"></a>サービス プリンシパルを作成する
 
-Azure CLI を使用してサービス プリンシパルを作成し、RBAC ロールを割り当てるには、[az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを呼び出します。 新しいサービス プリンシパルに割り当てる Azure Storage データ アクセス ロールを指定します。 さらに、ロール割り当て用のスコープを指定します。 Azure Storage 用に提供されている組み込みロールの詳細については、「[Azure リソースの組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
+Azure CLI を使用してサービス Azure ロールを割り当てるには、[az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを呼び出します。 新しいサービス プリンシパルに割り当てる Azure Storage データ アクセス ロールを指定します。 さらに、ロール割り当て用のスコープを指定します。 Azure Storage 用に提供されている組み込みロールの詳細については、「[Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
 サービス プリンシパルにロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者にロールの割り当ての実行を依頼しなければならない可能性があります。
 
@@ -87,7 +88,7 @@ az ad sp create-for-rbac \
 ```
 
 > [!IMPORTANT]
-> RBAC ロールの割り当ての反映には数分かかることがあります。
+> Azure ロールの割り当ての反映には数分かかることがあります。
 
 #### <a name="set-environment-variables"></a>環境変数の設定
 

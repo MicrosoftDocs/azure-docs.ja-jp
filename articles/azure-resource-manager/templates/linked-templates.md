@@ -2,13 +2,13 @@
 title: デプロイ用のテンプレートをリンクする
 description: Azure リソース マネージャー テンプレートでリンクされたテンプレートを使用して、モジュール構造のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
-ms.date: 06/26/2020
-ms.openlocfilehash: 6b28268a522dde4fe16ccf9d0d01738c3b6a9b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 07/21/2020
+ms.openlocfilehash: 40da2443828a07f2171922fcc6d8976d464d0ad4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170651"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086814"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -315,6 +315,11 @@ ms.locfileid: "86170651"
 > 次のように `_artifactsLocation` パラメーターを使用するなど、**http** または **https** を使用するものに最終的に 解決されるパラメーターを使用して、テンプレートを参照できます: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 Resource Manager は、テンプレートにアクセスできる必要があります。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。
+
+[テンプレート スペック](./template-specs.md) (現在はプライベート プレビュー) を使用すると、組織内の他のユーザーと ARM テンプレートを共有できます。 テンプレート スペックは、メイン テンプレートと、そのリンクされたテンプレートをパッケージ化するためにも使用できます。 詳細については、次を参照してください。
+
+- [チュートリアル:リンクされたテンプレートを使用してテンプレート スペックを作成する](./template-specs-create-linked.md)」を参照してください。
+- [チュートリアル:テンプレート スペックをリンクされたテンプレートとしてデプロイする](./template-specs-deploy-linked-template.md)」を参照してください。
 
 ### <a name="parameters-for-linked-template"></a>リンクされたテンプレートのパラメーター
 

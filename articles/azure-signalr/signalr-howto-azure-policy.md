@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: jixin
-ms.openlocfilehash: 1e0b6fbcacf13296d1d219da82d1b6f4c74ad7fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018033d3a6123948191a7261f5a1ee2ae526e25a
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85131981"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295023"
 ---
 # <a name="audit-compliance-of-azure-signalr-service-resources-using-azure-policy"></a>Azure Policy を使用した Azure SignalR Service リソースのコンプライアンスの監査
 
@@ -25,7 +25,7 @@ Azure Policy を使用するのに料金は一切かかりません。
 
 次の組み込みポリシー定義は Azure SignalR Service に固有のものです。
 
-[!INCLUDE [azure-policy-samples-policies-signalr](../../includes/policy/samples/bycat/policies-signalr.md)]
+[!INCLUDE [azure-policy-reference-policies-signalr](../../includes/policy/reference/bycat/policies-signalr.md)]
 
 ## <a name="assign-policy-definitions"></a>ポリシー定義を割り当てる
 

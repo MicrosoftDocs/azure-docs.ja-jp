@@ -12,41 +12,40 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9458c89922fab8450b7cb8e202491d4c47e250e8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b2e666419a702832243c69bdb059f4447b02d756
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540528"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89079457"
 ---
 # <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure BLOB ストレージから SQL データベースに安全にデータをコピーする
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 **このデータ ファクトリのパイプラインでは、[Azure Data Factory マネージド仮想ネットワーク](managed-virtual-network-private-endpoint.md)のプライベート エンドポイントを使用して、Azure BLOB ストレージから Azure SQL データベースに安全にデータをコピーします (どちらも、選択したネットワークへのアクセスのみを許可します)。** このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)に関する表を参照してください。
+このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 *このデータ ファクトリのパイプラインでは、[Azure Data Factory マネージド仮想ネットワーク](managed-virtual-network-private-endpoint.md)のプライベート エンドポイントを使用して、Azure Blob Storage から Azure SQL データベースに安全にデータをコピーします (どちらも、選択したネットワークへのアクセスのみを許可します)。* このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)」の表を参照してください。
 
 > [!NOTE]
->
-> - Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](https://docs.microsoft.com/azure/data-factory/introduction)」を参照してください。
+> Data Factory を初めて使用する場合は、「[Azure Data Factory の概要](https://docs.microsoft.com/azure/data-factory/introduction)」を参照してください。
 
-このチュートリアルでは、以下の手順を実行します。
+このチュートリアルでは、次の手順を実行します。
 
-> * Data Factory の作成
-> * コピー アクティビティを含むパイプラインを作成する
+* データ ファクトリを作成します。
+* コピー アクティビティを含むパイプラインを作成します。
 
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* **Azure ストレージ アカウント**。 Blob Storage を "*ソース*" データ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)に関するページを参照してください。 **ストレージ アカウントが、"選択したネットワーク" からのアクセスのみを許可していることを確認します。** 
-* **Azure SQL データベース**。 データベースを "*シンク*" データ ストアとして使用します。 Azure SQL データベースがない場合の作成手順については、[SQL データベースの作成](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)に関するページを参照してください。 **Azure SQL Database アカウントが、"選択したネットワーク" からのアクセスのみを許可していることを確認します。** 
+* **Azure ストレージ アカウント**。 Blob Storage を "*ソース*" データ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal)に関するページを参照してください。 *ストレージ アカウントで、選択したネットワーク からのアクセスのみが許可されていることを確認します。* 
+* **Azure SQL データベース**。 データベースを "*シンク*" データ ストアとして使用します。 Azure SQL データベースがない場合の作成手順については、[SQL データベースの作成](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)に関するページを参照してください。 *SQL Database アカウントで、選択したネットワーク からのアクセスのみが許可されていることを確認します。* 
 
 ### <a name="create-a-blob-and-a-sql-table"></a>BLOB と SQL テーブルを作成する
 
-ここからは、次の手順を実行して、チュートリアルで使用する Blob Storage と SQL データベースを準備します。
+ここからは、次の手順を実行して、チュートリアル用の Blob Storage と SQL データベースを準備します。
 
 #### <a name="create-a-source-blob"></a>ソース BLOB を作成する
 
-1. メモ帳を起動します。 次のテキストをコピーし、**emp.txt** ファイルとしてディスクに保存します。
+1. メモ帳を開きます。 次のテキストをコピーし、**emp.txt** ファイルとしてディスクに保存します。
 
     ```
     FirstName,LastName
@@ -72,52 +71,51 @@ ms.locfileid: "86540528"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Azure サービスに SQL Server へのアクセスを許可します。 Data Factory から SQL Server にデータを書き込むことができるように、SQL Server で **[Azure サービスへのアクセスを許可]** が**オン**になっていることを確認します。 この設定を確認して有効にするには、Azure SQL サーバーで [概要] > [サーバー ファイアウォールの設定] に移動し、 **[Azure サービスへのアクセスを許可]** を **[オン]** に設定します。
+1. Azure サービスに SQL Server へのアクセスを許可します。 Data Factory から SQL Server にデータを書き込むことができるように、SQL Server で **[Azure サービスへのアクセスを許可]** が**オン**になっていることを確認します。 この設定を確認してオンにするには、 **[Azure SQL Server]**  >  **[概要]**  >  **[サーバー ファイアウォールの設定]** に移動します。 **[Azure サービスへのアクセスを許可]** のオプションを **[オン]** に設定します。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 この手順では、データ ファクトリを作成するほか、Data Factory UI を起動してそのデータ ファクトリにパイプラインを作成します。
 
-1. **Microsoft Edge** または **Google Chrome** を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+1. Microsoft Edge または Google Chrome を開きます。 現在、Microsoft Edge と Google Chrome の Web ブラウザーのみが Data Factory の UI をサポートしています。
 
+1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
 
-2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
+1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
-3. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
+   Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください(yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](https://docs.microsoft.com/azure/data-factory/naming-rules)に関するページを参照してください。
 
-   Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](https://docs.microsoft.com/azure/data-factory/naming-rules)に関するページを参照してください。
+1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
 
-4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。
+1. **[リソース グループ]** で、次の手順のいずれかを行います。
 
-5. **[リソース グループ]** で、次の手順のいずれかを行います。
-
-    a. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
-
-    b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
-         
+    - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
+    - **[新規作成]** を選択し、リソース グループの名前を入力します。 
+     
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)に関するページを参照してください。 
 
-6. **[バージョン]** で、 **[V2]** を選択します。
+1. **[バージョン]** で、 **[V2]** を選択します。
 
-7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
+1. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
 
+1. **［作成］** を選択します
 
-8. **［作成］** を選択します
+1. 作成が完了すると、その旨が通知センターに表示されます。 **[リソースに移動]** を選択して、 **[Data Factory]** ページに移動します。
 
+1. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Data Factory (UI) を起動します。
 
-9. 作成が完了すると、その旨が通知センターに表示されます。 **[リソースに移動]** を選択して、Data factory ページに移動します。
+## <a name="create-an-azure-integration-runtime-in-data-factory-managed-virtual-network"></a>Data Factory マネージド仮想ネットワークに Azure 統合ランタイムを作成する
+この手順では、Azure 統合ランタイムを作成し、Data Factory マネージド仮想ネットワークを有効にします。
 
-10. **[Author & Monitor]\(作成と監視\)** を選択して、別のタブで Data Factory (UI) を起動します。
+1. Data Factory ポータルで、 **[管理]** に移動し、 **[新規]** を選択して新しい Azure 統合ランタイムを作成します。
 
-## <a name="create-an-azure-integration-runtime-in-adf-managed-virtual-network"></a>ADF マネージド仮想ネットワークに Azure 統合ランタイムを作成する
-この手順では、Azure 統合ランタイムを作成し、マネージド仮想ネットワークを有効にします。
+   ![新しい Azure 統合ランタイムの作成を示すスクリーンショット。](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
+1. **Azure** 統合ランタイムを作成することを選択します。
 
-1. ADF ポータルで、 **[Manage Hub]\(管理ハブ\)** に移動し、 **[新規]** をクリックして新しい Azure 統合ランタイムを作成します。
-   ![新しい Azure 統合ランタイムを作成する](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-2. Azure** 統合ランタイムを作成することを選択します。
-   ![新しい Azure 統合ランタイム](./media/tutorial-copy-data-portal-private/azure-ir.png)
-3. **仮想ネットワーク**を有効にします。
-   ![新しい Azure 統合ランタイム](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
-4. **［作成］** を選択します
+   ![新しい Azure 統合ランタイムを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/azure-ir.png)
+1. **[仮想ネットワークの構成 (プレビュー)]** で、 **[有効化]** を選択します。
+
+   ![新しい Azure 統合ランタイムの有効化を示すスクリーンショット。](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
+1. **［作成］** を選択します
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する
 この手順では、コピー アクティビティが含まれたパイプラインをデータ ファクトリに作成します。 コピー アクティビティによって、Blob Storage から SQL Database にデータがコピーされます。 [クイックスタート チュートリアル](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)では、次の手順でパイプラインを作成しました。
@@ -130,20 +128,21 @@ ms.locfileid: "86540528"
 
 1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
 
-   ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
-1. パイプラインの **[プロパティ]** ペインで、パイプラインの**名前**として「**CopyPipeline**」と入力します。
+   ![パイプラインの作成を示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
+1. パイプラインの [プロパティ] ペインで、パイプライン名として「**CopyPipeline**」と入力します。
 
-1. **[アクティビティ]** ツール ボックスで **[Move and Transform]\(移動と変換\)** カテゴリを展開し、ツール ボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグ アンド ドロップします。 **[名前]** に「**CopyFromBlobToSql**」と指定します。
+1. **[アクティビティ]** ツール ボックスで **[Move and Transform]\(移動と変換\)** カテゴリを展開し、ツール ボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグします。 名前に「**CopyFromBlobToSql**」と入力します。
 
-    ![コピー アクティビティ](./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png)
+    ![コピー アクティビティを示すスクリーン ショット。](./media/tutorial-copy-data-portal-private/drag-drop-copy-activity.png)
 
-### <a name="configure-source"></a>ソースの構成
+### <a name="configure-a-source"></a>ソースを構成する
 
 >[!TIP]
->このチュートリアルでは、ソース データ ストアの認証の種類として "*アカウント キー*" を使用しますが、サポートされている他の認証方法を選ぶこともできます。"*SAS URI*"、"*サービス プリンシパル*"、"*マネージド ID*" を必要に応じて使用してください。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)の対応するセクションを参照してください。
->さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)を参照してください。
+>このチュートリアルでは、ソース データ ストアの認証の種類として "**アカウント キー**" を使用します。 また、必要に応じて、**SAS URI**、**サービス プリンシパル**、**マネージド ID** など、サポートされている他の認証方法を選ぶこともできます。 詳細については、「[Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties)」の対応するセクションを参照してください。
+>
+>さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細な説明と図解については、「[Azure Key Vault への資格情報の格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)」を参照してください。
 
-#### <a name="create-source-dataset-and-linked-service"></a>ソース データセットおよびリンクされたサービスを作成する
+#### <a name="create-a-source-dataset-and-linked-service"></a>ソース データセットおよびリンクされたサービスを作成する
 
 1. **[ソース]** タブに移動します。 **[+ 新規]** を選択して、ソース データセットを作成します。
 
@@ -151,138 +150,141 @@ ms.locfileid: "86540528"
 
 1. **[形式の選択]** ダイアログ ボックスで、データの形式の種類を選択して、 **[続行]** を選択します。
 
-1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**SourceBlobDataset**」を入力します。 **[First row as header]\(先頭の行を見出しとして使用\)** のチェック ボックスをオンにします。 **[リンクされたサービス]** ボックスの下にある **[+ 新規]** を選択します。
+1. **[プロパティの設定]** ダイアログ ボックスで、 **[名前]** に「**SourceBlobDataset**」を入力します。 **[First row as header]\(先頭の行を見出しとして使用\)** のチェック ボックスをオンにします。 **[リンクされたサービス]** ボックスの下にある **[+ 新規]** を選択します。
 
-1. **[New Linked Service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログ ボックスで、名前として「**AzureStorageLinkedService**」と入力し、 **[ストレージ アカウント名]** の一覧からご自身のストレージ アカウントを選択します。 
+1. **[New linked service (Azure Blob Storage)]\(新しいリンクされたサービス (Azure Blob Storage)\)** ダイアログ ボックスで、 **[名前]** として「**AzureStorageLinkedService**」と入力し、 **[ストレージ アカウント名]** の一覧からご自身のストレージ アカウントを選択します。 
 
-1. **[Interactive Authoring]\(インタラクティブな作成\)** を必ず有効にしてください。 これは有効になるまでに 1 分程かかる場合があります。
+1. **[Interactive authoring]\(インタラクティブな作成\)** を必ず有効にしてください。 これは有効になるまでに 1 分程かかる場合があります。
 
-    ![インタラクティブな作成](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
+    ![インタラクティブな作成を示すスクリーンショット。](./media/tutorial-copy-data-portal-private/interactive-authoring.png)
 
-1. ストレージ アカウントで、"選択したネットワーク" からのアクセスのみが許可されるように、Azure Data Factory でプライベート エンドポイントを作成して、その使用前に承認を必要とする場合、 **[接続テスト]** を選択するとテストは失敗します。 エラー メッセージ内に、**プライベート エンドポイント**を作成するためのリンクが表示されます。それをたどることで、マネージド プライベート エンドポイントを作成できます。 "*代わりに、[管理] タブに直接移動し、[次のセクション](#create-a-managed-private-endpoint)の指示に従って、マネージド プライベート エンドポイントを作成する方法もあります。* "
-> [!NOTE]
-> データ ファクトリ インスタンスで、[管理] タブを使用できない場合があります。 表示されていない場合でも、 **[作成者]** タブ、 **[接続]** 、 **[プライベート エンドポイント]** の順に選択することで、プライベート エンドポイントにアクセスできます
-1. ダイアログ ボックスは開いたままにして、上で選択したストレージ アカウントに移動します。
+1. **[接続テスト]** を選択します。 これは、ストレージ アカウントが、**選択したネットワーク**からのアクセスのみを許可していて、Data Factory に、使用する前に承認が必要なプライベート エンドポイントの作成を要求する場合、失敗します。 エラー メッセージ内に、プライベート エンドポイントを作成するためのリンクが表示されます。それをたどることで、マネージド プライベート エンドポイントを作成できます。 代わりに、 **[管理]** タブに直接移動し、[次のセクション](#create-a-managed-private-endpoint)の指示に従って、マネージド プライベート エンドポイントを作成する方法もあります。
 
-1. [このセクション](#approval-of-a-private-link-in-storage-account)の手順に従って、プライベート リンクを承認します。
+   > [!NOTE]
+   > データ ファクトリ インスタンスでは、そのすべてで **[管理]** タブを使用できない場合があります。 表示されない場合は、 **[作成者]**  >  **[接続]**  >  **[プライベート エンドポイント]** を選択して、プライベート エンドポイントにアクセスできます。
+1. ダイアログ ボックスは開いたままにして、ストレージ アカウントに移動します。
 
-1. ダイアログ ボックスに戻ります。 もう一度**接続をテストし**、 **[作成]** を選択して、リンクされたサービスをデプロイします。
+1. [このセクション](#approval-of-a-private-link-in-a-storage-account)の手順に従って、プライベート リンクを承認します。
+
+1. ダイアログ ボックスに戻ります。 もう一度 **[接続テスト]** を選択し、 **[作成]** を選択して、リンクされたサービスをデプロイします。
 
 1. リンクされたサービスが作成されると、 **[プロパティの設定]** ページに戻ります。 **[ファイル パス]** の横にある **[参照]** を選択します。
 
-1. **adftutorial/input** フォルダーに移動し、**emp.txt** ファイルを選択して、 **[OK]** を選択します。
+1. **adftutorial/input** フォルダーに移動して **emp.txt** ファイルを選択し、 **[OK]** を選択します。
 
 1. **[OK]** を選択します。 自動的にパイプライン ページに移動します。 **[ソース]** タブで、 **[SourceBlobDataset]** が選択されていることを確認します。 このページのデータをプレビューするには、 **[データのプレビュー]** を選択します。
 
-    ![ソース データセット](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
+    ![ソース データセットを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/source-dataset-selected.png)
 
 #### <a name="create-a-managed-private-endpoint"></a>マネージド プライベート エンドポイントを作成する
 
-上記の接続をテストするときにハイパーリンクをクリックしなかった場合は、次のパスに従ってください。 次に、上で作成したリンクされたサービスに接続するマネージド プライベート エンドポイントを作成する必要があります。
+接続をテストした際にハイパーリンクを選択しなかった場合は、パスに従います。 次に、作成済みのリンクされたサービスに接続するマネージド プライベート エンドポイントを作成する必要があります。
 
-1. [管理] タブに移動します。
-> [!NOTE]
-> データ ファクトリ インスタンスで、[管理] タブを使用できない場合があります。 表示されていない場合でも、 **[作成者]** タブ、 **[接続]** 、 **[プライベート エンドポイント]** の順に選択することで、プライベート エンドポイントにアクセスできます
+1. **[管理]** タブに移動します。
 
-1. [Managed private endpoints]\(マネージド プライベート エンドポイント\) セクションに移動します。
+   > [!NOTE]
+   > Data Factory インスタンスでは、そのすべてで **[管理]** タブを使用できない場合があります。 表示されない場合は、 **[作成者]**  >  **[接続]**  >  **[プライベート エンドポイント]** を選択して、プライベート エンドポイントにアクセスできます。
 
-1. [Managed private endpoints]\(マネージド プライベート エンドポイント\) で、 **[+ 新規]** を選択します。
+1. **[マネージド プライベート エンドポイント]** セクションに移動します。
 
-    ![新しいマネージド プライベート エンドポイント](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+1. **[マネージド プライベート エンドポイント]** で、 **[+ 新規]** を選択します。
 
-1. 一覧から [Azure Blob Storage] タイルを選択し、 **[続行]** を選択します。
+    ![[マネージド プライベート エンドポイント] の [新規] ボタンを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
 
-1. 上で作成したストレージ アカウントの名前を入力します。
+1. 一覧から **[Azure Blob Storage]** タイルを選択し、 **[続行]** を選択します。
+
+1. 作成したストレージ アカウントの名前を入力します。
 
 1. **［作成］** を選択します
 
-1. 数秒待った後で、作成されたプライベート リンクに承認が必要であることが示されます。
+1. 数秒後に、作成されたプライベート リンクに承認が必要であることが表示されます。
 
-1. 上で作成したプライベート エンドポイントを選択します。 ストレージ アカウント レベルでプライベート エンドポイントを承認できるハイパーリンクが表示されます。
+1. 作成したプライベート エンドポイントを選択します。 ストレージ アカウント レベルでプライベート エンドポイントを承認できるハイパーリンクが表示されます。
 
-    ![マネージド プライベート エンドポイント](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png) 
+    ![[マネージド プライベート エンドポイント] ペインを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/manage-private-endpoint.png) 
 
-#### <a name="approval-of-a-private-link-in-storage-account"></a>ストレージ アカウントでのプライベート リンクの承認
-1. ストレージ アカウントで、[設定] セクションの **[プライベート エンドポイント接続]** に移動します。
+#### <a name="approval-of-a-private-link-in-a-storage-account"></a>ストレージ アカウントでプライベート リンクを承認する
+1. ストレージ アカウントで、 **[設定]** セクションの **[プライベート エンドポイント接続]** に移動します。
 
-1. 上で作成したプライベート エンドポイントを選択し、 **[承認]** を選択します。
+1. 作成したプライベート エンドポイントのチェック ボックスをオンにし、 **[承認]** を選択します。
 
-    ![プライベート エンドポイントを承認する](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
+    ![プライベート エンドポイントの [承認] ボタンを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/approve-private-endpoint.png)
 
-1. 説明を追加して、 **[はい]** をクリックします。
-1. Azure Data Factory の **[管理]** タブの **[Managed private endpoints]\(マネージド プライベート エンドポイント\)** セクションに戻ります。
-1. Azure Data Factory UI にプライベート エンドポイントの承認が反映されるまで、1 分から 2 分程度かかります。
+1. 説明を追加し、 **[はい]** を選択します。
+1. Data Factory の **[管理]** タブにある **[マネージド プライベート エンドポイント]** セクションに戻ります。
+1. 約 1 分から 2 分後に、Data Factory UI にプライベート エンドポイントの承認が表示されます。
 
 
-### <a name="configure-sink"></a>シンクの構成
+### <a name="configure-a-sink"></a>シンクを構成する
 >[!TIP]
->このチュートリアルでは、シンク データ ストアの認証の種類として "*SQL 認証*" を使用しますが、サポートされている他の認証方法を選ぶこともできます。必要に応じて、"*サービス プリンシパル*" と "*マネージド ID*" を使用できます。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)の対応するセクションを参照してください。
->さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細については、[この記事](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)を参照してください。
+>このチュートリアルでは、シンク データ ストアの認証の種類として **SQL 認証**を使用します。 また、必要に応じて、**サービス プリンシパル**、**マネージド ID** など、サポートされている他の認証方法を選ぶこともできます。 詳細については、「[Azure Data Factory を使用して Azure SQL Database のデータをコピーおよび変換する](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#linked-service-properties)」の対応するセクションを参照してください。
+>
+>さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細な説明と図解については、「[Azure Key Vault への資格情報の格納](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault)」を参照してください。
 
-#### <a name="create-sink-dataset-and-linked-service"></a>シンク データセットおよびリンクされたサービスを作成する
+#### <a name="create-a-sink-dataset-and-linked-service"></a>シンク データセットおよびリンクされたサービスを作成する
 1. **[シンク]** タブに移動し、 **[+ 新規]** を選択してシンク データセットを作成します。
 
-1. **[新しいデータセット]** ダイアログ ボックスで、検索ボックスに「SQL」と入力してコネクタをフィルター処理し、 **[Azure SQL Database]** を選択して、 **[続行]** を選択します。 このチュートリアルでは、SQL データベースにデータをコピーします。
+1. **[新しいデータセット]** ダイアログ ボックスで、検索ボックスに「**SQL**」と入力して、コネクタをフィルター処理します。 **[Azure SQL Database]** を選び、 **[続行]** を選びます。 このチュートリアルでは、SQL データベースにデータをコピーします。
 
-1. **[プロパティの設定]** ダイアログ ボックスで、[名前] に「**OutputSqlDataset**」を入力します。 **[リンクされたサービス]** ボックスの一覧から **[+ 新規]** を選択します。 データセットをリンクされたサービスに関連付ける必要があります。 リンクされたサービスには、Data Factory が実行時に SQL データベースに接続するために使用する接続文字列が含まれています。 データセットは、コンテナー、フォルダー、データのコピー先のファイル (オプション) を指定します。
+1. **[プロパティの設定]** ダイアログ ボックスで、 **[名前]** に「**OutputSqlDataset**」を入力します。 **[リンクされたサービス]** ドロップダウン リストから **[+ 新規]** を選択します。 データセットをリンクされたサービスに関連付ける必要があります。 リンクされたサービスには、Data Factory が実行時に SQL データベースに接続するために使用する接続文字列が含まれています。 データセットは、コンテナー、フォルダー、データのコピー先のファイル (オプション) を指定します。
 
 1. **[New Linked Service (Azure SQL Database)]\(新しいリンクされたサービス (Azure SQL Database)\)** ダイアログ ボックスで、次の手順を実行します。
 
     1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。
     1. **[サーバー名]** で、使用する SQL Server インスタンスを選択します。
-    1. **[Interactive Authoring]\(インタラクティブな作成\)** を必ず有効にしてください。
+    1. **[Interactive authoring]\(インタラクティブな作成\)** を必ず有効にしてください。
     1. **[データベース名]** で、使用する SQL データベースを選択します。
     1. **[ユーザー名]** に、ユーザーの名前を入力します。
     1. **[パスワード]** に、ユーザーのパスワードを入力します。
-    1. **[接続テスト]** を選択します。 これは失敗します。SQL サーバーで、"選択したネットワーク" からのアクセスのみが許可されるように、Azure Data Factory でプライベート エンドポイントを作成して、その使用前に承認する必要があるためです。 エラー メッセージ内に、**プライベート エンドポイント**を作成するためのリンクが表示されます。それをたどることで、マネージド プライベート エンドポイントを作成できます。 "*代わりに、[管理] タブに直接移動し、次のセクションの指示に従って、マネージド プライベート エンドポイントを作成する方法もあります。* "
-    1. ダイアログ ボックスは開いたままにして、上で選択した SQL サーバーに移動します。    
+    1. **[接続テスト]** を選択します。 これは失敗します。SQL サーバーが、**選択したネットワーク**からのアクセスのみを許可し、Data Factory に、使用する前に承認が必要なプライベート エンドポイントの作成を要求するためです。 エラー メッセージ内に、プライベート エンドポイントを作成するためのリンクが表示されます。それをたどることで、マネージド プライベート エンドポイントを作成できます。 代わりに、 **[管理]** タブに直接移動し、次のセクションの指示に従って、マネージド プライベート エンドポイントを作成する方法もあります。
+    1. ダイアログ ボックスは開いたままにして、選択した SQL サーバーに移動します。
     1. [このセクション](#approval-of-a-private-link-in-sql-server)の手順に従って、プライベート リンクを承認します。
-    1. ダイアログ ボックスに戻ります。 もう一度**接続をテストし**、 **[作成]** を選択して、リンクされたサービスをデプロイします。
+    1. ダイアログ ボックスに戻ります。 もう一度 **[接続テスト]** を選択し、 **[作成]** を選択して、リンクされたサービスをデプロイします。
 
 1. **[プロパティの設定]** ダイアログ ボックスに自動的に移動します。 **[テーブル]** で **[dbo].[emp]** を選択します。 **[OK]** をクリックします。
 
-1. パイプラインがあるタブに移動し、 **[Sink Dataset]\(シンク データセット\)** で **OutputSqlDataset** が選択されていることを確認します。
+1. パイプラインがあるタブに移動し、 **[シンク データセット]** で **OutputSqlDataset** が選択されていることを確認します。
 
-    ![パイプラインのタブ](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)       
+    ![[パイプライン] タブを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/pipeline-tab-2.png)
 
 必要に応じて「[コピー アクティビティでのスキーマ マッピング](https://docs.microsoft.com/azure/data-factory/copy-activity-schema-and-type-mapping)」に従い、コピー元のスキーマをコピー先の対応するスキーマにマッピングすることができます。
 
 #### <a name="create-a-managed-private-endpoint"></a>マネージド プライベート エンドポイントを作成する
 
-上記の接続をテストするときにハイパーリンクをクリックしなかった場合は、次のパスに従ってください。 次に、上で作成したリンクされたサービスに接続するマネージド プライベート エンドポイントを作成する必要があります。
+接続をテストした際にハイパーリンクを選択しなかった場合は、パスに従います。 次に、作成済みのリンクされたサービスに接続するマネージド プライベート エンドポイントを作成する必要があります。
 
-1. [管理] タブに移動します。
-1. [Managed private endpoints]\(マネージド プライベート エンドポイント\) セクションに移動します。
-1. [Managed private endpoints]\(マネージド プライベート エンドポイント\) で、 **[+ 新規]** を選択します。
+1. **[管理]** タブに移動します。
+1. **[マネージド プライベート エンドポイント]** セクションに移動します。
+1. **[マネージド プライベート エンドポイント]** で、 **[+ 新規]** を選択します。
 
-    ![新しいマネージド プライベート エンドポイント](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
+    ![[マネージド プライベート エンドポイント] の [新規] ボタンを示すスクリーンショット。](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png) 
 
-1. 一覧から [Azure SQL Database] タイルを選択し、 **[続行]** を選択します。
-1. 上で選択した SQL サーバーの名前を入力します。
+1. 一覧から **[Azure SQL Database]** タイルを選択し、 **[続行]** を選択します。
+1. 選択した SQL サーバーの名前を入力します。
 1. **［作成］** を選択します
-1. 数秒待った後で、作成されたプライベート リンクに承認が必要であることが示されます。
-1. 上で作成したプライベート エンドポイントを選択します。 SQL サーバー レベルでプライベート エンドポイントを承認できるハイパーリンクが表示されます。
+1. 数秒後に、作成されたプライベート リンクに承認が必要であることが表示されます。
+1. 作成したプライベート エンドポイントを選択します。 SQL サーバー レベルでプライベート エンドポイントを承認できるハイパーリンクが表示されます。
 
 
 #### <a name="approval-of-a-private-link-in-sql-server"></a>SQL サーバーでのプライベート リンクの承認
-1. SQL サーバーで、[設定] セクションの **[プライベート エンドポイント接続]** に移動します。
-1. 上で作成したプライベート エンドポイントを選択し、 **[承認]** を選択します。
-1. 説明を追加して、 **[はい]** をクリックします。
-1. Azure Data Factory の **[管理]** タブの **[Managed private endpoints]\(マネージド プライベート エンドポイント\)** セクションに戻ります。
-1. プライベート エンドポイントの承認が反映されるまで、1 分から 2 分程度かかります。
+1. SQL サーバーで、 **[設定]** セクションの **[プライベート エンドポイント接続]** に移動します。
+1. 作成したプライベート エンドポイントのチェック ボックスをオンにし、 **[承認]** を選択します。
+1. 説明を追加し、 **[はい]** を選択します。
+1. Data Factory の **[管理]** タブにある **[マネージド プライベート エンドポイント]** セクションに戻ります。
+1. プライベート エンドポイントの承認が表示されるまでに 1 分から 2 分かかります。
 
 #### <a name="debug-and-publish-the-pipeline"></a>パイプラインをデバッグして発行する
 
 Data Factory または独自の Azure Repos Git リポジトリにアーティファクト (リンクされたサービス、データセット、パイプライン) を発行する前に、パイプラインをデバッグできます。
 
 1. パイプラインをデバッグするには、ツール バーで **[デバッグ]** を選択します。 ウィンドウ下部の **[出力]** タブにパイプラインの実行の状態が表示されます。
-2. パイプラインを適切に実行できたら、上部のツール バーで **[すべて発行]** を選択します。 これにより、作成したエンティティ (データセットとパイプライン) が Data Factory に発行されます。
-3. **[正常に発行されました]** というメッセージが表示されるまで待機します。 通知メッセージを表示するには、右上にある **[通知の表示]** (ベル ボタン) をクリックします。
+1. パイプラインを適切に実行できたら、上部のツール バーで **[すべて発行]** を選択します。 これにより、作成したエンティティ (データセットとパイプライン) が Data Factory に発行されます。
+1. **[正常に発行されました]** というメッセージが表示されるまで待機します。 通知メッセージを表示するには、右上隅にある **[通知の表示]** (ベル ボタン) を選択 ます。
 
 
 #### <a name="summary"></a>まとめ
-このサンプルのパイプラインでは、マネージド仮想ネットワークのプライベート エンドポイントを使用して、BLOB ストレージから Azure SQL DB にデータをコピーします。 以下の方法を学習しました。
+このサンプルのパイプラインでは、Data Factory マネージド仮想ネットワークのプライベート エンドポイントを使用して、Blob Storage から SQL Database にデータをコピーします。 以下の方法を学習しました。
 
-> * Data Factory の作成
-> * コピー アクティビティを含むパイプラインを作成する
+* データ ファクトリを作成します。
+* コピー アクティビティを含むパイプラインを作成します。
 

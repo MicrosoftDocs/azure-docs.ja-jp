@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035062"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718902"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>チュートリアル:Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する
 
@@ -39,7 +39,7 @@ Azure Multi-Factor Authentication と条件付きアクセス ポリシーを使
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* Azure AD Premium または試用版ライセンスが有効になっていて、正常に動作している Azure AD テナント。
+* 少なくとも Azure AD Premium P1 または試用版ライセンスが有効になっている、動作している Azure AD テナント。
     * 必要に応じて、[無料で作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * "*グローバル管理者*" 特権を持つアカウント。
 * パスワードがわかっている管理者以外のユーザー (*testuser* など)。 このチュートリアルでは、このアカウントを使用してエンドユーザーの Azure Multi-Factor Authentication エクスペリエンスをテストします。
@@ -65,7 +65,7 @@ Azure Multi-Factor Authentication を有効にして使用する手段として�
 1. **[ユーザーとグループ]** のチェック ボックスをオンにし、 **[選択]** をクリックして、選択可能な Azure AD ユーザーとグループを参照します。
 1. 使用する Azure AD グループ (*MFA-Test-Group* など) を参照して選択し、 **[選択]** を選択します。
 
-    [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
+    [ ![条件付きアクセス ポリシーで使用する Azure AD グループを選択する](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png) ](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
 1. グループに対して条件付きアクセス ポリシーを適用するには、 **[完了]** を選択します。
 
@@ -133,4 +133,4 @@ Azure Multi-Factor Authentication を有効にして使用する手段として�
 > * ユーザーとして MFA プロセスをテストする
 
 > [!div class="nextstepaction"]
-> [セルフサービス パスワード リセット (SSPR) のパスワード ライトバックを有効にする](tutorial-enable-writeback.md)
+> [セルフサービス パスワード リセット (SSPR) のパスワード ライトバックを有効にする](./tutorial-enable-sspr-writeback.md)

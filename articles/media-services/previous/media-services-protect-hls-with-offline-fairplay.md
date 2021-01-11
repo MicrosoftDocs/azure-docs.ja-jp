@@ -15,21 +15,24 @@ ms.topic: article
 ms.date: 05/07/2020
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 618803e8e94f96a63e0c39c27b40a933acac7cb4
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5e003e17490c2e35ef3f8adfdef6de0377cda7d5
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995526"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259712"
 ---
-# <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
+# <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
 > * [Version 3](../latest/offline-fairplay-for-ios.md)
 > * [Version 2](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
 
 Azure Media Services では、次のものを対象にして、適切に設計された[コンテンツ保護サービス](https://azure.microsoft.com/services/media-services/content-protection/)のセットが提供されます。
 
@@ -54,7 +57,7 @@ iOS 10 以降のデバイスの FairPlay 用にオフライン DRM を実装す�
 * FairPlay のオンライン コンテンツ保護について理解します。 詳細については、次の記事とサンプルを参照してください。
 
     - [Apple FairPlay Streaming for Azure Media Services の一般公開](https://azure.microsoft.com/blog/apple-FairPlay-streaming-for-azure-media-services-generally-available/)
-    - [Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護](https://docs.microsoft.com/azure/media-services/media-services-protect-hls-with-FairPlay)
+    - [Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護](./media-services-protect-hls-with-fairplay.md)
     - [オンライン FPS ストリーミングのサンプル](https://azure.microsoft.com/resources/samples/media-services-dotnet-dynamic-encryption-with-FairPlay/)
 
 * Apple Developer Network から FPS SDK を入手します。 FPS SDK には、2 つのコンポーネントが含まれています。
@@ -211,7 +214,7 @@ FPS Server SDK のバージョン 3 またはバージョン 4 サンプルで�
 - **FPS オフライン モードの次の API で、最後のパラメーターは何を表していますか。** 
 `Microsoft.WindowsAzure.MediaServices.Client.FairPlay.FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration(objX509Certificate2, pfxPassword, pfxPasswordId, askId, iv, RentalAndLeaseKeyType.PersistentUnlimited, 0x9999);`
 
-    この API のドキュメントについては、「[FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration Method](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.mediaservices.client.FairPlay.FairPlayconfiguration.createserializedFairPlayoptionconfiguration?view=azure-dotnet)」(FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration メソッド) を参照してください。 このパラメーターはオフライン レンタルの期間を表します (単位は秒)。
+    この API のドキュメントについては、「[FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration Method](/dotnet/api/microsoft.windowsazure.mediaservices.client.fairplay.fairplayconfiguration.createserializedfairplayoptionconfiguration?view=azure-dotnet)」(FairPlayConfiguration.CreateSerializedFairPlayOptionConfiguration メソッド) を参照してください。 このパラメーターはオフライン レンタルの期間を表します (単位は秒)。
 - **iOS デバイスでのダウンロード済み/オフライン ファイルの構造はどのようなものですか。** iOS デバイスにダウンロードされたファイルは、次のスクリーンショットのような構造になっています。 `_keys` フォルダーには、ダウンロードされた FPS ライセンスが格納されます (ライセンス サービス ホストごとに 1 つのストア ファイル)。 `.movpkg` フォルダーには、オーディオとビデオのコンテンツが格納されます。 名前の末尾にダッシュと数字が付いている最初のフォルダーには、ビデオ コンテンツが格納されます。 数字はビデオ再生の PeakBandwidth です。 名前の末尾にダッシュと 0 が付いている 2 つ目のフォルダーには、オーディオ コンテンツが格納されます。 "Data" という名前の 3 番目のフォルダーには、FPS コンテンツのマスター再生リストが含まれます。 最後に、boot.xml には、`.movpkg` フォルダーの内容が完全に説明されています。 
 
 ![オフライン FairPlay の iOS サンプル アプリ ファイルの構造](media/media-services-protect-hls-with-offline-FairPlay/media-services-offline-FairPlay-file-structure.png)

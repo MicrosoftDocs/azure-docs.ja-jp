@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) 上で Azure ディスクを含む�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 06aad076836c0f6fdc59c4ed5d0116231080d15c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518013"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683608"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
@@ -40,7 +40,7 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
     
 既定のストレージ クラスの 1 つを使用している場合、ストレージ クラスの作成後、ボリューム サイズを更新することはできません。 ストレージ クラスの作成後にボリューム サイズを更新できるようにするには、既定のストレージ クラスの 1 つに行 `allowVolumeExpansion: true` を追加します。あるいは、独自のカスタム ストレージ クラスを作成できます。 (データの損失を防ぐための) PVC のサイズの縮小はサポートされていないことに注意してください。 `kubectl edit sc` コマンドを使用して既存のストレージ クラスを編集できます。 
 
-たとえば、サイズ 4 TiB のディスクを使用する場合、[サイズ 4 TiB 以上ではディスク キャッシュがサポートされない](../virtual-machines/windows/premium-storage-performance.md#disk-caching)ため、`cachingmode: None` を定義するストレージ クラスを作成する必要があります。
+たとえば、サイズ 4 TiB のディスクを使用する場合、[サイズ 4 TiB 以上ではディスク キャッシュがサポートされない](../virtual-machines/premium-storage-performance.md#disk-caching)ため、`cachingmode: None` を定義するストレージ クラスを作成する必要があります。
 
 ストレージ クラスと独自のストレージ クラスの作成の詳細については、[AKS でのアプリケーションのストレージ オプション][storage-class-concepts]に関するページを参照してください。
 
@@ -276,7 +276,7 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

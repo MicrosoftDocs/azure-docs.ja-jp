@@ -5,24 +5,26 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/10/2019
-ms.openlocfilehash: 6e351abeede6d1057a9b37ab1f1cfb9021ccd06e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/04/2020
+ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505092"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759735"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitor のビュー デザイナーを使用してカスタム ビューを作成する
 Azure Monitor のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
 
 > [!IMPORTANT]
-> Azure Monitor のビューは段階的に廃止され、追加機能を提供する[ブック](workbooks-overview.md)に置き換えられています。 既存のビューをブックに変換する方法の詳細については、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](view-designer-conversion-overview.md)」を参照してください。
+> Azure Monitor のビューは、追加の機能が提供される[ブック](workbooks-overview.md)に切り替えられました。 既存のビューをブックに変換する方法の詳細については、「[Azure Monitor ビュー デザイナーからブックへの移行ガイド](view-designer-conversion-overview.md)」を参照してください。
+ 
+
 
 ビュー デザイナーの詳細については、次を参照してください。
 
-* [タイルのリファレンス](view-designer-tiles.md): カスタム ビューで使用できる各タイルの設定に関するリファレンス ガイドです。
-* [視覚化パーツのリファレンス](view-designer-parts.md): カスタム ビューで使用可能な視覚化パーツの設定へのリファレンス ガイドを提供します。
+* [タイルのリファレンス](view-designer-tiles.md):カスタム ビューで使用できる各タイルの設定に関するリファレンス ガイドです。
+* [視覚化パーツのリファレンス](view-designer-parts.md):カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドを提供します。
 
 
 ## <a name="concepts"></a>概念
@@ -32,7 +34,7 @@ Azure portal の Azure Monitor **[概要]** ページにビューが表示され
 
 ビュー デザイナーで作成するビューには、次の表で説明する要素が含まれます。
 
-| 要素 | 説明 |
+| パーツ | 説明 |
 |:--- |:--- |
 | タイル | Azure Monitor **[概要]** ページに表示されます。 各タイルには、それが表しているカスタム ビューの視覚的な概要が表示されます。 各タイルの種類では、レコードのさまざまな視覚化が提供されます。 カスタム ビューを表示するにはタイルを選択します。 |
 | カスタム ビュー | タイルを選択すると表示されます。 各ビューには、1 つまたは複数の視覚化パーツが含まれます。 |
@@ -69,9 +71,9 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 新しいビューの作成または既存のビューの編集には、ビュー デザイナーを使います。 
 
 ビュー デザイナーには、3 つのウィンドがあります。 
-* **デザイン**: 作成または編集しているカスタム ビューが表示されます。 
-* **コントロール**: **デザイン** ウィンドウに追加するタイルとパーツが含まれています。 
-* **プロパティ**: タイルまたは選択したパーツのプロパティが表示されます。
+* **デザイン**:作成または編集しているカスタム ビューが表示されます。 
+* **コントロール**:**デザイン** ウィンドウに追加するタイルとパーツが含まれています。 
+* **[プロパティ]** :タイルまたは選択したパーツのプロパティが表示されます。
 
 ![ビュー デザイナー](media/view-designer/view-designer-screenshot.png)
 
@@ -100,7 +102,7 @@ Log Analytics ワークスペースのメニューで **[ビュー デザイナ�
 | 保存        | 変更を保存し、ビューを閉じます。 |
 | Cancel      | 変更を破棄し、ビューを閉じます。 |
 | ビューの削除 | ビューを削除します。 |
-| [エクスポート]      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
+| エクスポート      | 別のワークスペースにインポートできる [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)にビューをエクスポートします。 ファイルの名前はビューの名前であり、拡張子は *omsview* です。 |
 | [インポート]      | 別のワークスペースからエクスポートした *omsview* ファイルをインポートします。 これにより、既存のビューの構成が上書きされます。 |
 | 複製       | 新しいビューを作成して、ビュー デザイナーで開きます。 新しいビューの名前は、元の名前の末尾に "*コピー*" が追加されたものになります。 |
 

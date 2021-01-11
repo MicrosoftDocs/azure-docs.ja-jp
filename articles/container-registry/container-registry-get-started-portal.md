@@ -1,17 +1,17 @@
 ---
 title: クイックスタート - ポータルでのレジストリの作成
-description: Azure Container Registry で Azure portal を使用してプライベート Docker レジストリを作成する方法を簡単に説明します。
+description: Azure portal を使用してプライベート Azure コンテナー レジストリを作成する方法について簡単に説明します。
 ms.topic: quickstart
-ms.date: 06/11/2020
+ms.date: 08/04/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 82f9a6b02832b718d5b4e7b662c590f1992af595
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.openlocfilehash: ace1030923ea226376369941badafafa662d25ce
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752855"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031810"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用したプライベート コンテナー レジストリの作成
+# <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure コンテナー レジストリを作成する
 
 Azure Container Registry は、プライベート Docker コンテナー イメージと関連成果物を保存および管理する Azure のプライベート Docker レジストリです。 このクイックスタートでは、Azure Portal を使用してコンテナー レジストリを作成します。 次に、Docker コマンドを使用してコンテナー イメージをレジストリにプッシュし、最後にレジストリからイメージをプルして実行します。
 
@@ -41,14 +41,20 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 :::image type="content" source="media/container-registry-get-started-portal/qs-portal-05.png" alt-text="ポータルでのコンテナー レジストリの概要":::
 
-**ログイン サーバー**の値を書き留めておきます。 後続の手順で Docker でイメージをプッシュし、プルするとき、この値を使用します。
+レジストリ名と **[ログイン サーバー]** の値を書き留めておいてください。 後続の手順で Docker でイメージをプッシュし、プルするとき、これらの値を使用します。
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリ インスタンスにログインしておく必要があります。 ローカル コンピューターで [Azure CLI にサインイン][get-started-with-azure-cli]し、[az acr login][az-acr-login] コマンドを実行します。 (Azure CLI でログインする際は、レジストリ名のみを指定します。 "azurecr.io" サフィックスは含めないでください)
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリ インスタンスにログインしておく必要があります。 ローカル コンピューターで [Azure CLI にサインイン][get-started-with-azure-cli]し、[az acr login][az-acr-login] コマンドを実行します。 (Azure CLI でログインする際は、レジストリ名のみを指定します。 "azurecr.io" ドメイン サフィックスは含めないでください)
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+例:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 このコマンドは、完了すると `Login Succeeded` を返します。 

@@ -1,46 +1,58 @@
 ---
 title: VM 用 Azure Monitor とは?
-description: アプリケーション コンポーネントとその依存関係を自動的に検出およびマッピングするだけでなく、AzureVM の正常性とパフォーマンスを監視する機能を持つ Azure Monitor for VMs の概要。
+description: AzureVM の正常性とパフォーマンスを監視し、アプリケーション コンポーネントとその依存関係を自動的に検出およびマッピングする Azure Monitor for VMs の概要。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2020
-ms.openlocfilehash: f058ce1ae5b7328c6864684994a74f2fd118ca6e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/22/2020
+ms.openlocfilehash: 5c3cb13d0b2da9370f402083d82397679f2c9343
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506992"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022498"
 ---
 # <a name="what-is-azure-monitor-for-vms"></a>VM 用 Azure Monitor とは?
 
-Azure Monitor for VMs では、仮想マシン、仮想マシン スケール セット、Azure Arc マシンの大規模な監視が行われます。 これにより、ご利用の Windows VM および Linux VM のプロセスや、その他のリソースおよび外部プロセスとの依存関係を監視することにより、それらの VM のパフォーマンスおよび正常性が分析されます。 この場合は、オンプレミスまたは別のクラウド プロバイダーでホストされている VM について、パフォーマンスおよびアプリケーションの依存関係の監視もサポートされています。 次の主な機能によって、詳細な分析情報が提供されます。
+Azure Monitor for VMs では、実行中のプロセスや他のリソースへの依存関係など、仮想マシンと仮想マシン スケール セットのパフォーマンスと正常性が監視されます。 それは、パフォーマンスのボトルネックとネットワークの問題を識別することによって、重要なアプリケーションのパフォーマンスと可用性を予測するのに役立ち、問題が他の依存関係に関連しているかどうかを把握することにも役立つ可能性があります。
 
-- **事前に定義された、傾向を示すパフォーマンス グラフ**:ゲスト VM オペレーティング システムから主要なパフォーマンス メトリックが表示されます。
+Azure Monitor for VMs では、次で実行する Windows および Linux オペレーティング システムがサポートされます。
 
-- **依存関係マップ**: さまざまなリソース グループおよびサブスクリプションから、該当する VM と相互接続されているコンポーネントが表示されます。  
+- Azure の仮想マシン
+- Azure Virtual Machine Scale Sets
+- Azure Arc に接続されているハイブリッド仮想マシン
+- オンプレミスの仮想マシン
+- 別のクラウド環境でホストされている仮想マシン
+  
 
->[!NOTE]
->最近、Microsoft では、パブリック プレビューのお客様からのフィードバックに基づいて正常性機能に対して行っている[変更を発表](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
-)しました。 実施する変更の数を考慮して、新しいお客様への正常性機能の提供を停止する予定です。 既存のお客様は、引き続き正常性機能を使用できます。 詳細については、[一般提供の FAQ](vminsights-ga-release-faq.md) に関するページを参照してください。  
 
-Azure Monitor ログとの統合により、強力な集計とフィルター処理が実現し、Azure Monitor for VMs で時間の経過に伴うデータの傾向を分析できるようになります。 1 つの VM 内のこのデータをその仮想マシンから直接表示するか、または Azure Monitor を使用して複数の VM の集計ビューを提供できます。ここで、そのビューは Azure リソース コンテキストまたはワークスペース コンテキスト モードをサポートします。 詳細については、[アクセス モードの概要](../platform/design-logs-deployment.md#access-mode)に関するページを参照してください。
+
+Azure Monitor for VMs では、そのデータを Azure Monitor ログに格納するため、強力な集計とフィルター処理を実現し、時間の経過に伴うデータの傾向を分析できるようになります。 単一の VM 内のこのデータをその仮想マシンから直接表示することも、Azure Monitor を使用して、複数の VM の集計ビューを提供することもできます。
 
 ![Azure portal での仮想マシン分析情報のパースペクティブ](media/vminsights-overview/vminsights-azmon-directvm.png)
 
-Azure Monitor for VMs を使用すると、重要なアプリケーションのパフォーマンスおよび可用性を予測することができます。 パフォーマンスのボトルネックやネットワークの問題を特定し、問題が他の依存関係に関連しているかどうかを把握するのにも役立ちます。  
 
-## <a name="data-usage"></a>データ利用状況
+## <a name="pricing"></a>価格
+Azure Monitor for VMs には直接のコストがかかりませんが、Log Analytics ワークスペースでのアクティビティに対して課金されます。 「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページに公開されている価格に基づいて、Azure Monitor for VMs は以下に対して課金されます。
 
-Azure Monitor for VM をデプロイすると、ご利用の VM によって収集されたデータが取り込まれ、Azure Monitor に格納されます。 収集されたパフォーマンスおよび依存関係データは、Log Analytics ワークスペースに格納されます。 「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページに公開されている価格に基づいて、Azure Monitor for VMs は以下に対して課金されます。
+- エージェントから取り込まれ、ワークスペースに格納されるデータ。
+- ログと正常性データに基づく警告ルール。
+- 警告ルールから送信される通知。
 
-- 取り込まれ格納されるデータ。
-- 作成されるアラート ルール。
-- 送信される通知。 
+ログのサイズは、パフォーマンス カウンターの文字列の長さによって異なり、仮想マシンに割り当てられた論理ディスクおよびネットワーク アダプターの数に応じて大きくなる可能性があります。 Service Map を既に使用している場合、確認できる変更点は、Azure Monitor `InsightsMetrics` データ型に送信される追加のパフォーマンス データだけです。
 
-ログのサイズは、パフォーマンス カウンターの文字列の長さによって異なり、仮想マシンに割り当てられた論理ディスクおよびネットワーク アダプターの数に応じて大きくなる可能性があります。 ワークスペースを既にお持ちで、これらのカウンターを収集している場合、重複する課金は適用されません。 Service Map を既に使用している場合、確認できる変更点は、Azure Monitor に送信される追加の接続データだけです。
+
+## <a name="configuring-azure-monitor-for-vms"></a>Azure Monitor for VMs の構成
+Azure Monitor for VMs を構成する手順は次のとおりです。 各手順の詳細なガイダンスについては、各リンクに従ってください。
+
+- [Log Analytics ワークスペースを作成します。](vminsights-configure-workspace.md#create-log-analytics-workspace)
+- [VMInsights ソリューションをワークスペースに追加します。](vminsights-configure-workspace.md#add-vminsights-solution-to-workspace)
+- [監視する仮想マシンと仮想マシン スケールセットにエージェントをインストールします。](vminsights-enable-overview.md)
+
+
 
 ## <a name="next-steps"></a>次のステップ
 
-ご利用の仮想マシンを監視する上で役立つ要件と方法については、[Azure Monitor for VMs のデプロイ](vminsights-enable-overview.md)に関するページをご覧ください。
+- 仮想マシンの監視を有効にするための要件と方法については、[Azure Monitor for VMs のデプロイ](vminsights-enable-overview.md)に関するページを参照してください。
+

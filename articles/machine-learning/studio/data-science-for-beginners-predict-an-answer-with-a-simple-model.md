@@ -1,6 +1,5 @@
 ---
-title: 回帰モデルで回答を予測する
-titleSuffix: ML Studio (classic) - Azure
+title: 'ML Studio (classic): 回帰モデルで回答を予測する - Azure'
 description: 初心者向けデータ サイエン ビデオ 4 で、単純な回帰モデルを作成して価格を予測する方法。 線形回帰とターゲット データが含まれます。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,16 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ac9f4262d614b1e413f4283d3c459e60fc6634e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cfe617ab424fbb29e2866cd98d4b8c390f306c9
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82930235"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318744"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
+
+
 ## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4: 初心者向けデータ サイエンス シリーズ
 初心者向けデータ サイエン ビデオ 4 では、単純な回帰モデルを作成してダイヤモンドの価格を予測する方法について説明します。 ターゲット データを使用して回帰モデルを引き出します。
 

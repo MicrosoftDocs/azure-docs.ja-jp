@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: f334f501335e9e384cfcc35b356e61ab66efe7a8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a65e5e2b507f45fe51a8f6406edae4d96affe227
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243683"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056512"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -80,7 +80,11 @@ AKS には、サービス レベル目標 (SLO) とサービス レベル アグ
     - https://github.com/helm/helm/issues/4821
     - https://github.com/helm/helm/issues/3500
     - https://github.com/helm/helm/issues/4543
+- **[ノード間の内部トラフィックがブロックされていますか?](#im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout)**
 
+## <a name="im-receiving-tcp-timeouts-such-as-dial-tcp-node_ip10250-io-timeout"></a>`dial tcp <Node_IP>:10250: i/o timeout` などの `TCP timeouts` が発生します
+
+こうしたタイムアウトは、ノード間の内部トラフィックがブロックされている場合に発生します。 クラスターのノードのサブネットに適用されている[ネットワーク セキュリティ グループ](concepts-security.md#azure-network-security-groups)などによって、このトラフィックがブロックされていないことを確認します。
 
 ## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>既存のクラスターでロールベースのアクセス制御 (RBAC) を有効にしようとしています。 どうすればいいですか。
 
@@ -374,15 +378,15 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 多数の小さなファイルを処理する場合など、Azure ディスクと比較して Azure Files を使用すると待機時間が長くなることがあります。
 
-### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>ストレージアカウントの [Allow access from selected network]/(選択したネットワークからのアクセスを許可する/) 設定を有効にすると、エラーが発生する
+### <a name="error-when-enabling-allow-access-allow-access-from-selected-network-setting-on-storage-account"></a>ストレージアカウントの [Allow access from selected network]\(選択したネットワークからのアクセスを許可する\) 設定を有効にすると、エラーが発生する
 
-AKS で動的プロビジョニングに使用されるストレージ アカウントの *[Allow access from selected network]/(選択したネットワークからのアクセスを許可する/)* 設定を有効にすると、AKS がファイル共有を作成するときに次のエラーが表示されます。
+AKS で動的プロビジョニングに使用されるストレージ アカウントの *[Allow access from selected network]\(選択したネットワークからのアクセスを許可する\)* 設定を有効にすると、AKS がファイル共有を作成するときに次のエラーが表示されます。
 
 ```console
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
 ```
 
-このエラーは、 *[Allow access from selected network]/(選択したネットワークからのアクセスを許可する/)* の設定時に *Kubernetes persistentvolume-controller* が選択したネットワーク上に存在しないことが原因で発生します。
+このエラーは、 *[Allow access from selected network]\(選択したネットワークからのアクセスを許可する\)* の設定時に *Kubernetes persistentvolume-controller* が選択したネットワーク上に存在しないことが原因で発生します。
 
 [Azure Files で静的プロビジョニング](azure-files-volume.md)を使用することによって、この問題を軽減できます。
 

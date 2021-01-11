@@ -1,16 +1,18 @@
 ---
-title: コマーシャル マーケットプレース分析でのパートナー センターの [注文] ダッシュボード
-description: マーケットプレース オファーの注文に関するグラフィカルでダウンロード可能な形式の分析レポートにアクセスする方法について説明します。
+title: コマーシャル マーケットプレース分析、Microsoft AppSource、および Azure Marketplace におけるパートナーセンターの [注文] ダッシュボード
+description: コマーシャル マーケットプレース オファーの注文に関する、グラフィカルでダウンロード可能な形式の分析レポートにアクセスする方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 07/01/2020
-ms.openlocfilehash: fe1f64994d344ad9b23895823b846da62d895128
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/22/2020
+author: mingshen-ms
+ms.author: mingshen
+ms.openlocfilehash: d5adc1bfe19de48568d0e77bb488bea0e5a02818
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536132"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87327380"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析での [注文] ダッシュボード
 
@@ -32,6 +34,8 @@ ms.locfileid: "86536132"
 - [プランごとの注文数](#orders-by-plans)
 - [注文およびシートの傾向](#orders-and-seats-trend)
 - [注文詳細テーブル](#order-details-table)
+
+注文の作成からパートナー センターで報告されるまでの最大待ち時間は、48 時間です。
 
 ## <a name="order-dashboard-details"></a>[注文] ダッシュボードの詳細
 
@@ -82,7 +86,7 @@ ms.locfileid: "86536132"
 **[注文およびシートの傾向]** グラフには、注文数が最も多い上位 50 のオファーが表示されます。 これらはランキングに表示され、最大注文数と注文率で並べ替えられます。
 
 - **[プランごとの注文数]** – グラフ内の上位 5 つのプランに関する注文数の内訳を表示するには、オファーを選択します。
-- **[プランごとのシート数]** - 上位 5 つのプランに関するシート数の月ごとの傾向です。 選択したオファーがシートごとのオファーではない場合、この面グラフにデータは表示されません。
+- **[プランごとのシート数]** - 上位 5 つのプランに関するシート数の月ごとの傾向です。 選択したオファーがシートごとのオファーではない場合、ここにはデータが表示されません。
 
 ### <a name="canceled-orders-by-offers"></a>オファーごとのキャンセルされた注文
 
@@ -98,8 +102,8 @@ ms.locfileid: "86536132"
 - グリッドの各列で並べ替えることができます。
 - レコード数が 1000 未満の場合、TSV ファイルにデータを抽出できます。
 - レコード数が 1000 を超える場合、エクスポートされたデータは今後 30 日間、ダウンロード ページに非同期で配置されます。
-- **注文詳細テーブル**にフィルターを適用して、関心のあるデータのみを表示できます。 データに適用できるフィルターは、国および地域、Azure ライセンスの種類、Marketplace ライセンスの種類、プランの種類、注文の状態、無料評価版、マーケットプレース サブスクリプション ID、顧客 ID、および会社名です。
-- Azure Marketplace または AppSource から購入した SaaS プランは Azure サブスクリプションを必要としないため、Marketplace サブスクリプション ID は **[詳細な注文データ]** セクションに 00000000-0000-0000-0000-000000000000 と表示されます。
+- **注文詳細テーブル**にフィルターを適用して、関心のあるデータのみを表示します。 国および地域、Azure ライセンスの種類、コマーシャル マーケットプレース ライセンスの種類、オファーの種類、注文の状態、無料評価版、コマーシャル マーケットプレース サブスクリプション ID、顧客 ID、および会社名でフィルター処理します。
+- Azure Marketplace または AppSource から購入した SaaS オファーは Azure サブスクリプションを必要としないため、Marketplace サブスクリプション ID は **[詳細な注文データ]** セクションに 00000000-0000-0000-0000-000000000000 と表示されます。
 
 #### <a name="orders-page-filters"></a>注文ページ フィルター
 

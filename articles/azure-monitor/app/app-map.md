@@ -3,14 +3,14 @@ title: Azure Application Insights のアプリケーション マップ | Micros
 description: アプリケーション マップを使用した複雑なアプリケーション トポロジの監視
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.custom: devx-track-javascript
+ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d4067b23c4ff365857c37d7dfdce6dc42e129989
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367012"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936607"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -82,9 +82,12 @@ ms.locfileid: "87367012"
 
 ![Analytics エクスペリエンスのスクリーンショット](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>クラウド ロール名の設定
+## <a name="set-or-override-cloud-role-name"></a>クラウド ロール名を設定またはオーバーライドする
 
-アプリケーション マップでは、**クラウド ロール名**プロパティを使用して、マップ上のコンポーネントが識別されます。 Application Insights SDK では、コンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。 たとえば、SDK では、Web サイト名またはサービス ロール名がクラウド ロール名プロパティに追加されます。 ただし、既定値をオーバーライドする必要のある場合があります。 クラウド ロール名をオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
+アプリケーション マップでは、**クラウド ロール名**プロパティを使用して、マップ上のコンポーネントが識別されます。 クラウド ロール名を手動で設定またはオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
+
+> [!NOTE]
+> Application Insights SDK または Agent では、Azure App Service 環境のコンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。
 
 # <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
@@ -266,7 +269,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 3. C# で Azure Functions を使用している場合は、[Functions V2](../../azure-functions/functions-versions.md) にアップグレードします。
 
-4. [クラウド ロール名](#set-cloud-role-name)が正しく構成されていることを確認します。
+4. [クラウド ロール名](#set-or-override-cloud-role-name)が正しく構成されていることを確認します。
 
 5. 依存関係が欠落している場合は、[自動収集された依存関係](./auto-collect-dependencies.md)の一覧にあることを確認します。 ない場合でも、[TrackDependency 呼び出し](./api-custom-events-metrics.md#trackdependency)を使えば手動で追跡することができます。
 
@@ -282,7 +285,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 * 依存関係の種類は、依存関係の論理型を表す必要があります。 たとえば、一般的な依存関係の種類には、HTTP、SQL、Azure Blob などがあります。 一意の ID は含めないでください。
 
-* クラウド ロール名の目的については、[上記のセクション](#set-cloud-role-name)を参照してください。
+* クラウド ロール名の目的については、[上記のセクション](#set-or-override-cloud-role-name)を参照してください。
 
 ## <a name="portal-feedback"></a>ポータルのフィードバック
 

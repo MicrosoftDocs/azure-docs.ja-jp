@@ -71,7 +71,7 @@ Azure AD B2C では、ユーザーが入力した情報を使って、ユーザ�
 | TD | チャド | なし | 21 |
 | TH | タイ | なし | 20 |
 | TW | 台湾 | なし | 20 |
-| US | United States | 13 | 18 |
+| US | 米国 | 13 | 18 |
 
 ## <a name="age-gating-options"></a>年齢制限のオプション
 

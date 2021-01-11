@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/12/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4f44e9853182a8fcb222b8f895796cf5efc67def
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3dbafac99ebc1b7472bf884647ad5e8657f0de0b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389600"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87482857"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Azure AD B2C でリソース所有者のパスワード資格情報フロー を構成する
 
@@ -30,13 +30,14 @@ ms.locfileid: "85389600"
 
 1. Azure AD B2C テナントの全体管理者として、Azure portal にサインインします。
 2. Azure AD B2C テナントに切り替えるには、ポータルの右上隅で B2C ディレクトリを選択します。
-3. **[User Flows]** をクリックし、 **[新しいユーザー フロー]** を選択します。
-4. **[すべて]** タブをクリックして、 **[ROPC を使用してサインイン]** を選択します。
-5. *ROPC_Auth* など、ユーザー フローの名前を入力します。
-6. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
-7. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
-8. **[OK]** を選択し、 **[作成]** を選択します。
-9. **[ユーザー フローを実行します]** をクリックします。
+3. **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
+4. **[リソース所有者のパスワード資格情報 (ROPC) を使用してサインインする]** を選択します。
+5. **[バージョン]** で **[プレビュー]** が選択されていることを確認してから、 **[作成]** を選択します。
+7. *ROPC_Auth* など、ユーザー フローの名前を入力します。
+8. **[アプリケーション要求]** の **[さらに表示する]** をクリックします。
+9. [表示名]、[メール アドレス]、[ID プロバイダー] など、アプリケーションに必要なアプリケーション要求を選択します。
+10. **[OK]** を選択し、 **[作成]** を選択します。
+11. **[ユーザー フローを実行します]** をクリックします。
 
    次の例のようなエンドポイントが表示されます。
 
@@ -131,7 +132,3 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 Azure AD B2C の実装は、パブリック クライアント リソース所有者のパスワード認証情報に関する OAuth 2.0 標準を満たしており、ほとんどのクライアント SDK と互換性があります。 このフローは、AppAuth for iOS と AppAuth for Android を使用して、運用環境で幅広くテストしました。 最新情報については、[最新のベスト プラクティスを実装する OAuth 2.0 と OpenID Connect のネイティブ App SDK](https://appauth.io/) に関するページを参照してください。
 
 Azure AD B2C で使用するように構成された作業サンプル ([Android 用](https://aka.ms/aadb2cappauthropc)、[iOS 用](https://aka.ms/aadb2ciosappauthropc)) を GitHub からダウンロードしてください。
-
-
-
-

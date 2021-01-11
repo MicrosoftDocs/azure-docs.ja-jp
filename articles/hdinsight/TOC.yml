@@ -1,3 +1,5 @@
+- name: Azure HDInsight のドキュメント
+  href: index.yml
 - name: HDInsight サービス
   expanded: true
   items:
@@ -74,7 +76,7 @@
               href: overview-data-lake-storage-gen1.md
             - name: Azure Data Lake Storage Gen2 の概要
               href: overview-data-lake-storage-gen2.md
-    - name: 方法
+    - name: 操作方法ガイド
       items:
         - name: クラスターの作成
           items:
@@ -342,7 +344,7 @@
               href: ./spark/optimize-cluster-configuration.md
         - name: Spark 2.3 または 2.4 に移行する
           href: ./spark/migrate-versions.md
-    - name: 方法
+    - name: 操作方法ガイド
       items:
         - name: ツールの使用
           items:
@@ -354,6 +356,8 @@
               href: ./set-up-pyspark-interactive-environment.md
         - name: 開発
           items:
+            - name: SparkCruise を使用してクエリを最適化する
+              href: ./spark/spark-cruise.md
             - name: 対話型の Apache Spark シェルを使用する
               href: ./spark/apache-spark-shell.md
             - name: Apache Livy を使用したリモート ジョブ
@@ -471,7 +475,7 @@
           href: ./hdinsight-hadoop-create-linux-clusters-adf.md
         - name: Apache Hadoop ジョブを送信する
           href: ./hadoop/submit-apache-hadoop-jobs-programmatically.md
-    - name: 方法
+    - name: 操作方法ガイド
       items:
         - name: ツールの使用
           items:
@@ -529,6 +533,8 @@
               items:
                 - name: 空のエッジ ノードを使用する
                   href: ./hdinsight-apps-use-edge-node.md
+                - name: エッジ ノードを使用して HiveServer2 をスケーリングする
+                  href: ./hdinsight-apps-install-hiveserver2.md
         - name: トラブルシューティング
           items:
             - name: 一般的な問題
@@ -616,7 +622,7 @@
           href: ./kafka/apache-kafka-performance-tuning.md
         - name: Kafka に関する FAQ
           href: ./kafka/kafka-faq.md
-    - name: 方法
+    - name: 操作方法ガイド
       items:
         - name: 開発
           items:
@@ -667,7 +673,7 @@
       items:
         - name: HDInsight での Apache HBase の使用
           href: ./hbase/apache-hbase-tutorial-get-started-linux.md
-    - name: 方法
+    - name: 操作方法ガイド
       items:
         - name: 開発
           items:
@@ -746,7 +752,7 @@
           href: ./interactive-query/gateway-best-practices.md
         - name: サイズ変更のガイドライン
           href: ./interactive-query/sizing-guidelines.md
-    - name: 方法
+    - name: 操作方法ガイド
       items:
         - name: 開発
           items:
@@ -843,7 +849,7 @@
           href: ./r-server/ml-services-tutorial-spark-compute.md
         - name: R Tools for Visual Studio の使用
           href: ./r-server/r-server-submit-jobs-r-tools-vs.md
-    - name: 方法
+    - name: 操作方法ガイド
       items:
         - name: 開発
           items:
@@ -875,7 +881,7 @@
           href: ./storm/apache-storm-write-data-lake-store.md
         - name: Apache Kafka と Apache Storm (Java)
           href: ./hdinsight-apache-storm-with-kafka.md
-    - name: 方法
+    - name: 操作方法ガイド
       items:
         - name: Storm から Spark への移行
           href: ./storm/migrate-storm-to-spark.md
@@ -943,7 +949,9 @@
           href: ./disk-encryption.md
         - name: Ranger と Apache Ambari での LDAP 同期
           href: ./domain-joined/ldap-sync.md
-    - name: 方法
+        - name: 転送中の二重暗号化
+          href: ./domain-joined/encryption-in-transit.md
+    - name: 操作方法ガイド
       items:
         - name: 資格情報の管理に ID ブローカーを使用する
           href: ./domain-joined/identity-broker.md

@@ -3,12 +3,12 @@ title: ISO 27001 ASE/SQL ワークロード ブループリント サンプル�
 description: ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要とアーキテクチャ
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 71044ae1754cf4bdfc42be7b6585a1905dce426c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76177efcac8b32907c60cecac41404a3834d0fb8
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536835"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926095"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要。
 
@@ -28,7 +28,7 @@ ISO 27001 App Service Environment/SQL Database ワークロード ブループ�
 
 この環境は、ISO 27001 標準に基づいたセキュリティで保護された、完全に監視されたエンタープライズ対応のワークロード インフラストラクチャを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されます。
 
-- ブループリント サンプルによってデプロイされる [Azure App Service Environment](../../../../app-service/environment/intro.md) 内でリソースをデプロイおよび管理する権限を持つ DevOps という名前の[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) ロール
+- ブループリント サンプルによってデプロイされる [Azure App Service Environment](../../../../app-service/environment/intro.md) 内でリソースをデプロイおよび管理する権限を持つ DevOps という名前の [Azure ロール](../../../../role-based-access-control/overview.md)
 - 環境にデプロイできるサービスをロックダウンする [Azure ポリシー](../../../policy/overview.md)。任意のパブリック IP アドレス (PIP) リソースの作成を拒否します。
 - 1 つのサブネットを含む仮想ネットワーク。既存の[共有サービス](../iso27001-shared/index.md)環境にピアリングし直され、[共有サービス](../iso27001-shared/index.md)のファイアウォールによってすべてのトラフィックの通過が強制されます。 仮想ネットワークは、次のリソースをホストします。
   - [Azure App Service Environment](../../../../app-service/environment/intro.md)。1 つ以上の Web アプリケーション、Web API、または関数のホストに使用できます。

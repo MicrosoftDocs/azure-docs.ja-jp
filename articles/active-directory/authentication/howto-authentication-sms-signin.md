@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e64fad910aba25354d8d7829fc1189b744ca16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550491"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419565"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory を使用して SMS ベース認証 (プレビュー) 用にユーザーを構成して有効にする
 
@@ -65,7 +65,7 @@ SMS ベース認証のパブリック プレビュー期間中は、次の制限
 1. **Azure Active Directory** を検索して選択します。
 1. Azure Active Directory ウィンドウの左側にあるナビゲーション メニューから、 **[セキュリティ] > [認証方法] > [認証方法ポリシー (プレビュー)]** を選択します。
 
-    [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![Azure portal で [認証方法ポリシー (プレビュー)] ウィンドウを参照して選択します。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. 利用可能な認証方法の一覧から、 **[テキスト メッセージ]** を選択します。
 1. **[有効にする]** を *[はい]* に設定します。
@@ -81,7 +81,7 @@ Azure AD テナントで SMS ベース認証が有効になっている状態で
 1. テキスト メッセージ認証ポリシー ウィンドウで、 **[ターゲット]** を "*選択されたユーザー*" に設定します。
 1. **[ユーザーまたはグループの追加]** を選択して、"*Contoso ユーザー*" や "*Contoso SMS ユーザー*" などのテスト ユーザーまたはグループを選択します。
 
-    [![](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png "Choose users or groups to enable for SMS-based authentication in the Azure portal")](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
+    [![Azure portal で SMS ベースの認証を有効にするユーザーまたはグループを選択します。](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png)](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
 1. ユーザーまたはグループを選択したら、更新された認証方法ポリシーの **[選択]** 、 **[保存]**  を順に選びます。
 

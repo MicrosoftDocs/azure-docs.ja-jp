@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8559ba3bf78b6adc8e6ca3d3c628cd3c0b9fec0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 274f603fa0d7a48b99a7caed5d465d44bc68e9ca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359706"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019966"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -250,7 +250,7 @@ Office 365 に対してユーザーを認証するには、SAML 2.0 要求のア
 
 Azure AD Connect を使用して、オンプレミスの Active Directory から Azure AD ディレクトリ内のドメインにプリンシパルをプロビジョニングできます。 詳細については、「[オンプレミスのディレクトリと Azure Active Directory の統合](whatis-hybrid-identity.md)」を参照してください。
 
-Windows PowerShell は、新しいユーザーの Azure AD への追加を自動化し、オンプレミスのディレクトリの変更を同期するために使用することもできます。 Windows PowerShell コマンドレットを使用するには、[Azure Active Directory モジュール](https://docs.microsoft.com/powershell/azure/install-adv2?view=azureadps-2.0)をダウンロードする必要があります。
+Windows PowerShell は、新しいユーザーの Azure AD への追加を自動化し、オンプレミスのディレクトリの変更を同期するために使用することもできます。 Windows PowerShell コマンドレットを使用するには、[Azure Active Directory モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)をダウンロードする必要があります。
 
 次の手順は、Azure AD に 1 人のユーザーを追加する方法を示しています。
 

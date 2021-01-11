@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6bc07dc4a46327981c432cf8982f0c3a646fda0d
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639829"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89068917"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>サインイン レポートを使用して Azure Multi-Factor Authentication イベントを確認する
 
@@ -44,7 +45,7 @@ Azure Multi-Factor Authentication イベントを確認して理解するため�
 
     イベントの詳細の *[認証の詳細]* または *[条件付きアクセス]* タブには、状態コード、または MFA プロンプトをトリガーしたポリシーが表示されます。
 
-    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
+    [![Azure portal における Azure Active Directory サインイン レポート例のスクリーンショット](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 使用可能な場合は、テキスト メッセージ、Microsoft Authenticator アプリの通知、電話などの認証が表示されます。
 
@@ -90,7 +91,7 @@ Azure Multi-Factor Authentication イベントを確認して理解するため�
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>MFA に登録されているユーザーを PowerShell がレポート
 
-最初に、[MSOnline V1 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0)がインストールされていることを確認します。
+最初に、[MSOnline V1 PowerShell モジュール](/powershell/azure/active-directory/overview?view=azureadps-1.0)がインストールされていることを確認します。
 
 以下の PowerShell を使用して、MFA に登録しているユーザーを識別します。 この一連のコマンドでは、無効になっているユーザーは、Azure AD に対して認証を行うことができないため、除外されます。
 

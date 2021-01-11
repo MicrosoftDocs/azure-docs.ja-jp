@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: ec2aa5b1492534908adb55544623110242717609
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 07/13/2020
+ms.openlocfilehash: d83dcc5c86f2dfed5f588738e7799dd708333da1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81416669"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076789"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce Service Cloud をコピー元またはコピー先としてデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,7 +50,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 - 同時要求数が上限を超えると調整が発生し、ランダムにエラーが表示されます。
 - 要求数の合計が上限を超えると、Salesforce アカウントが 24 時間ブロックされます。
 
-また、どちらのシナリオでも、"REQUEST_LIMIT_EXCEEDED" エラー メッセージが表示されることがあります。 詳細については、[Salesforce Developer の制限](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits」(API 要求の制限) をご覧ください。
+また、どちらのシナリオでも、"REQUEST_LIMIT_EXCEEDED" エラー メッセージが表示されることがあります。 詳細については、[Salesforce Developer の制限](https://developer.salesforce.com/docs/atlas.en-us.218.0.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm)に関する資料の「API Request Limits」(API 要求の制限) をご覧ください。
 
 ## <a name="get-started"></a>はじめに
 
@@ -234,7 +234,7 @@ Salesforce Service Cloud にデータをコピーするために、コピー ア
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **SalesforceServiceCloudSink** に設定する必要があります。 | はい |
 | writeBehavior | 操作の書き込み動作。<br/>使用可能な値: **Insert** および **Upsert**。 | いいえ (既定値は Insert) |
-| externalIdFieldName | Upsert 操作の外部 ID フィールドの名前。 指定するフィールドは、Salesforce Service Cloud オブジェクトに "External Id Field" として定義されている必要があります。 対応する入力データに NULL 値を持つことはできません。 | "Upsert" の場合ははい |
+| externalIdFieldName | Upsert 操作の外部 ID フィールドの名前。 指定するフィールドは、Salesforce Service Cloud オブジェクトに "External ID Field" として定義されている必要があります。 対応する入力データに NULL 値を持つことはできません。 | "Upsert" の場合ははい |
 | writeBatchSize | 各バッチで Salesforce Service Cloud に書き込まれたデータの行数。 | いいえ (既定値は 5,000) |
 | ignoreNullValues | 書き込み操作時に入力データからの NULL 値を無視するかどうかを示します。<br/>使用可能な値: **true** および **false**。<br>- **True**:upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。<br/>- **False**:upsert または更新操作を行うときに、対象オブジェクト内のデータを NULL に更新します。 挿入操作を実行するときに、NULL 値を挿入します。 | いいえ (既定値は false) |
 
@@ -303,7 +303,7 @@ SOQL クエリまたは SQL クエリを指定する場合は、DateTime 形式�
 * **SOQL サンプル**: `SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL の例**: `SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
 
-### <a name="error-of-malformed_querytruncated"></a>MALFORMED_QUERY:Truncated のエラー
+### <a name="error-of-malformed_query-truncated"></a>MALFORMED_QUERY:Truncated のエラー
 
 "MALFORMED_QUERY:Truncated" のエラーが発生した場合、通常は、データ内に JunctionIdList 型の列があり、Salesforce において行数が多いデータなどのサポートに対して制限があることが原因です。 移行するには、JunctionIdList 列の除外か、またはコピーする行数の制限を試みます (パーティション分割して複数のコピー アクティビティの実行にすることが可能です)。
 
@@ -319,7 +319,7 @@ Salesforce Service Cloud からデータをコピーするとき、次の Salesf
 | Date |DateTime |
 | 日付/時刻 |DateTime |
 | Email |String |
-| Id |String |
+| id |String |
 | Lookup Relationship |String |
 | Multi-Select Picklist |String |
 | Number |Decimal |

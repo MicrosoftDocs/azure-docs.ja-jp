@@ -7,23 +7,23 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 0f19d63bd5f22dc7bc60ceb76ef5bdbeff717dbb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e7658e965931dd78a6db0e2c9fee36edffff98b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325731"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479814"
 ---
 # <a name="payout-summary-overview"></a>支払いの概要の概説
 
 [[支払いの概要]](./payout-summary.md) には、Microsoft で獲得した金額の詳細が表示されます。 また、支払いを受け取るタイミングと支払われる金額を確認することもできます。
 
-Azure Marketplace でオファリングを販売している場合は、[支払いの概要] に成功した支払いに関する情報も表示されます。 Azure Marketplace の支払いの詳細については、「[Microsoft Azure Marketplace 参加ポリシー](https://docs.microsoft.com/legal/marketplace/participation-policy)」と「[Microsoft Azure Marketplace 発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)」を参照してください。
+Azure Marketplace でオファリングを販売している場合は、[支払いの概要] に成功した支払いに関する情報も表示されます。 Azure Marketplace の支払いの詳細については、「[Microsoft Azure Marketplace 参加ポリシー](https://docs.microsoft.com/legal/marketplace/participation-policy)」と「[Microsoft Azure Marketplace 発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)」を参照してください。
 
 > [!NOTE]
-> 支払いの対象となるには、収益が $50 の[支払いしきい値](./payment-thresholds-methods-timeframes.md)に達している必要があります。 支払いしきい値の詳細については、「[Microsoft Azure Marketplace 発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)」を参照してください。
+> 支払いの対象となるには、収益が $50 の[支払いしきい値](./payment-thresholds-methods-timeframes.md)に達している必要があります。 支払いしきい値の詳細については、「[Microsoft Azure Marketplace 発行元契約](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)」を参照してください。
 
-取引の公開オプションに関するすべてのレポートと分析情報は、パートナー センターの [分析] セクションから入手できます。アクセスするには、ポータルの右上隅にある次のアイコンを使用します。
+支払いの詳細を表示するには、[パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインし、画面の右上隅にある [支払い] アイコンを選択します。
 
 ![パートナー センター ポータルの右上隅にある支払いアイコンを示しています。](./media/payout-overview.png)
 

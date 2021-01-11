@@ -36,9 +36,9 @@ Azure Functions を使用して、DevTest Labs で既にサポートされてい
 ## <a name="how-it-works"></a>しくみ
 ユーザーが DevTest Labs で **[社内サポート]** ページを選択すると、VM、ラボ所有者、およびサポート連絡先に関する情報が事前に入力されたページが表示されます。  
 
-**[Select here to refresh]\(更新するにはここを選択\)** ボタンを選択すると、ページから、1 番目の Azure 関数が呼び出されます。**UpdateInternalSupportPage**。 この関数では、DevTest Labs に情報が照会され、新しい情報で **[社内サポート]** ページが書き換えられます。
+**[Select here to refresh]\(更新するにはここを選択\)** ボタンを選択すると、ページから、1 番目の Azure Functions が呼び出されます。**UpdateInternalSupportPage**。 この関数では、DevTest Labs に情報が照会され、新しい情報で **[社内サポート]** ページが書き換えられます。
 
-Windows Update の成果物が最近適用されていない VM に対して実行できる追加のアクションがあります。VM に Windows 更新プログラムを適用するボタンがあります。 VM に対して * **[Windows Update の実行]** ボタンを選択すると、ページから、2 番目の Azure 関数が呼び出されます。**ApplyWindowsUpdateArtifact**。 この関数では、仮想マシンが実行されているかどうかを確認され、実行されている場合は、[Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates) の成果物が直接適用されます。
+Windows Update の成果物が最近適用されていない VM に対して実行できる追加のアクションがあります。VM に Windows 更新プログラムを適用するボタンがあります。 VM に対して * **[Windows Update の実行]** ボタンを選択すると、ページから、2 番目の Azure Functions が呼び出されます。**ApplyWindowsUpdateArtifact**。 この関数では、仮想マシンが実行されているかどうかを確認され、実行されている場合は、[Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates) の成果物が直接適用されます。
 
 ## <a name="step-by-step-walkthrough"></a>ステップバイステップのチュートリアル
 このセクションでは、 **[社内サポート]** ページの更新に必要な Azure リソースの設定を順を追って説明します。 このチュートリアルでは、DevTest Labs の拡張の例を示します。 このパターンは他のシナリオに使用できます。
@@ -58,7 +58,7 @@ Windows Update の成果物が最近適用されていない VM に対して実�
 1. ソリューションをビルドします。 **[ビルド]** 、 **[ソリューションのビルド]** メニュー項目の順に選択します。
 
 ### <a name="step-3-deploy-the-sample-to-azure"></a>手順 3:サンプルを Azure にデプロイする
-Visual Studio の**ソリューション エクスプローラー** ウィンドウで、**AzureFunctions** プロジェクトを右クリックし、 **[発行]** を選択します。 ウィザードに従って、新規または既存の Azure 関数アプリへの発行を完了します。 Visual studio を使用した Azure 関数の開発とデプロイの詳細については、[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)に関する記事を参照してください。
+Visual Studio の**ソリューション エクスプローラー** ウィンドウで、**AzureFunctions** プロジェクトを右クリックし、 **[発行]** を選択します。 ウィザードに従って、新規または既存の Azure Functions アプリへの発行を完了します。 Visual studio を使用した Azure Functions の開発とデプロイの詳細については、[Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)に関する記事を参照してください。
 
 ![[発行] ダイアログ](./media/extend-devtest-labs-azure-functions/publish-dialog.png)
 
@@ -72,13 +72,13 @@ Visual Studio の**ソリューション エクスプローラー** ウィンド
 1. 次の画像に示すように、 **[関数の URL の取得]** を選択します。 
 
     ![Azure 関数の URL](./media/extend-devtest-labs-azure-functions/function-url.png)
-4. URL をコピーして保存します。 他の Azure 関数についても同じ手順を繰り返します。 
+4. URL をコピーして保存します。 他の Azure Functions についても同じ手順を繰り返します。 
 
 アプリケーション ID、キー、テナント ID などのサービス プリンシパルに関する追加情報も必要になります。
 
 
 ### <a name="step-5--update-application-settings"></a>手順 5:アプリケーション設定を更新する
-Visual Studio で、Azure 関数を発行したら、 **[アクション]** で **[Azure App Service の設定を編集する]** を選択します。 次のアプリケーション設定 (リモート) を更新します。
+Visual Studio で、Azure Functions を発行したら、 **[アクション]** で **[Azure App Service の設定を編集する]** を選択します。 次のアプリケーション設定 (リモート) を更新します。
 
 - AzureFunctionUrl_ApplyUpdates
 - AzureFunctionUrl_UpdateSupportPage
@@ -89,8 +89,8 @@ Visual Studio で、Azure 関数を発行したら、 **[アクション]** で 
 
     ![アプリケーションの設定](./media/extend-devtest-labs-azure-functions/application-settings.png)
 
-### <a name="step-6-test-the-azure-function"></a>手順 6:Azure 関数をテストする
-このチュートリアルの最後の手順では、Azure 関数をテストします。  
+### <a name="step-6-test-the-azure-function"></a>手順 6:Azure Functions をテストする
+このチュートリアルの最後の手順では、Azure Functions をテストします。  
 
 1. 手順 3 で作成した関数アプリの **UpdateInternalSupportPage** 関数に移動します。 
 1. ページの右側にある **[テスト]** を選択します。 

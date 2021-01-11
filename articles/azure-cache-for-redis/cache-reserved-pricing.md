@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8af8db6b6853d6b8cbd4ba1105f05ebb9bcf771b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c4ea8db464c7cae57b80837ced9f8886a8b3cf4a
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84974842"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87093019"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>予約容量を使用した計算リソースの Azure Cache for RedisRedis を使用した前払い
 
@@ -32,7 +32,7 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 
 予約のサイズは、既存のまたはすぐにデプロイされる予定のキャッシュ (特定のリージョン内で同じサービス レベルを使用するもの) で使用されるメモリ サイズの合計に基づいて決める必要があります。
 
-たとえば、2 つのキャッシュを実行しているとします。13 GB で 1 つ、26 GB で 1 つです。 いずれも少なくとも 1 年は必要です。 さらに、季節需要に合わせるため、月あたり既存の 13 GB キャッシュを 26 GB にスケーリングし、その後、元に戻す計画を立てているとします。 この場合、1 年予約で 1 P1 キャッシュと 1 P2 キャッシュか 3 P1 キャッシュを購入することで最大限に節約できます。 キャッシュ間での配分に関係なく、予約したキャッシュ メモリの合計量に対して割引を受けられます。
+たとえば、2 つのキャッシュを実行しているとします。13 GB で 1 つ、26 GB で 1 つです。 いずれも少なくとも 1 年は必要です。 さらに、季節需要に合わせるため、月あたり既存の 13 GB キャッシュを 26 GB にスケーリングし、その後、元に戻す計画を立てているとします。 この場合は、1 年予約で 1 P2 キャッシュと 1 P3 キャッシュまたは 3 P2 キャッシュを購入することで、最大限に節約できます。 キャッシュ間での配分に関係なく、予約したキャッシュ メモリの合計量に対して割引を受けられます。
 
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>予約容量用に Azure Cache for Redis を購入する
@@ -55,7 +55,7 @@ Azure Cache for Redis の予約容量は [Azure portal](https://portal.azure.com
 | リージョン | Azure Cache for Redis 予約容量の予約の対象となる Azure リージョン。
 | Pricing tier | Azure Cache for Redis サーバーのサービス レベル。
 | 期間 | 1 年間または 3 年間
-| Quantity | Azure Cache for Redis の予約容量の予約内で購入される計算リソース数。 この数量は、予約し、請求時に割り引きを受ける、選択された Azure リージョンとパフォーマンス レベルに含まれるキャッシュの数です。 たとえば、米国東部リージョンで、合計キャッシュ容量を 26 GB とする Azure Cache for Redis サーバーを実行している場合、あるいは実行する予定の場合、すべてのキャッシュを最大限に活用するため、数量に 26 を指定します。
+| Quantity | Azure Cache for Redis の予約容量の予約内で購入される計算リソース数。 この数量は、予約し、請求時に割り引きを受ける、選択された Azure リージョンとパフォーマンス レベルに含まれるキャッシュの数です。 たとえば、米国東部リージョンで、合計キャッシュ容量を 26 GB とする Azure Cache for Redis サーバーを実行している、または実行する予定の場合、すべてのキャッシュを最大限に活用するため、同等の 26 GB になるような量を指定します。 そうなるのは、1 P3 キャッシュまたは 2 P2 キャッシュです。
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 

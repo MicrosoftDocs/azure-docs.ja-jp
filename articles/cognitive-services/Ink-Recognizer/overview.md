@@ -8,17 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448163"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051068"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Ink Recognizer API とは
 
+[!INCLUDE [ink-recognizer-deprecation](includes/deprecation-note.md)]
 
 Ink Recognizer Cognitive Service は、デジタルインク コンテンツ を分析および認識するためのクラウド ベースの REST API を提供します。 光学式文字認識 (OCR) を使用するサービスとは異なり、この API には入力としてデジタル インク ストローク データが必要になります。 デジタル インク ストロークは、デジタル ペンや指などの入力ツールの動きを表す 2D ポイント (X 座標、Y 座標) を時間順に並べたセットです。 入力から図形と手書きのコンテンツを認識し、認識されたすべてのエンティティを含む JSON 応答を返します。
 
@@ -43,7 +45,7 @@ Ink Recognizer API は RESTful Web サービスです。HTTP 要求を作成し�
 
 新規登録後:
 
-1. インク ストローク データを取得し、有効な JSON に[形式設定](concepts/send-ink-data.md#sending-ink-data)します。
+1. インク ストローク データを取得し、有効な JSON に[形式設定](concepts/send-ink-data.md#sending-ink-data)します。 この API は、1 回の要求につき最大 1,500 インク ストロークまで受け付けます。 
 1. ユーザーのデータとともに Ink Recognizer API に要求を送信します。
 1. 返された JSON メッセージを解析して API 応答を処理します。
 

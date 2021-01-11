@@ -1,6 +1,6 @@
 ---
 title: Azure 仮想マシンのネットワーク スループット | Microsoft Docs
-description: Azure 仮想マシンのネットワーク スループットについて説明します。
+description: 仮想マシンへの帯域幅の割り当て方法など、Azure 仮想マシンのネットワーク スループットについて説明します。
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4fed883c8fa92df77af432e1e4a4b3acca72a0d2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84696002"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87265116"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>仮想マシンのネットワーク帯域幅
 
@@ -56,8 +56,8 @@ VM の各サイズで想定される送信スループットとサポートさ�
 
 現在、Azure のネットワーク スタックは、CPU コアが 8 個を超える VM での良好なパフォーマンスには 250K 個の合計ネットワーク フロー、および CPU コアが 8 個未満の VM での良好なパフォーマンスには 100K 個の合計フローをサポートしています。 この制限を超えると、ネットワーク パフォーマンスは、ハード制限である 500K 個の合計フロー (250K 個の受信と 250K 個の送信) まで追加フローに対して適切に低下し、それ以降は追加フローが破棄されます。
 
-||CPU コアが 8 個未満の VM|CPU コアが 8 個を超える VM|
-|---|---|---|
+| パフォーマンス レベル | CPU コアが 8 個未満の VM | CPU コアが 8 個を超える VM |
+| ----------------- | --------------------- | --------------------- |
 |<b>良好なパフォーマンス</b>|100K 個のフロー |250K 個のフロー|
 |<b>パフォーマンスの低下</b>|100K 個を超えるフロー|250K 個を超えるフロー|
 |<b>フローの制限</b>|500K 個のフロー|500K 個のフロー|

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 007763d65021b0730c6e4e81ada33790d3cf4c02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025780"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268555"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル:ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) のデバイス管理を使用すると、お�
 
 このチュートリアルでは、次の事項を熟知していることを前提としています。
 
-* [Azure Active Directory のデバイス管理の概要](../device-management-introduction.md)
+* [Azure Active Directory のデバイス管理の概要](./overview.md)
 * [ハイブリッド Azure Active Directory 参加の実装の計画](hybrid-azuread-join-plan.md)
 * [デバイスのハイブリッド Azure AD 参加を制御する](hybrid-azuread-join-control.md)
 
@@ -59,6 +59,9 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 * `https://login.microsoftonline.com`
 * `https://device.login.microsoftonline.com`
 * 組織の STS (フェデレーション ドメインの場合)。これはユーザーのローカル イントラネット設定に含まれています。
+
+> [!WARNING]
+> データ損失防止や Azure AD テナントの制限などのシナリオで SSL トラフィックを傍受するプロキシ サーバーを組織で使用している場合は、'https://device.login.microsoftonline.com ' へのトラフィックが TLS の中断と検査から除外されていることを確認してください。 'https://device.login.microsoftonline.com ' を除外しないと、クライアント証明書の認証に干渉し、デバイス登録とデバイスベースの条件付きアクセスに問題が発生する可能性があります。
 
 組織でシームレス SSO の使用を計画している場合は、組織内のコンピューターから次の URL に到達できる必要があります。 これもユーザーのローカル イントラネット ゾーンに追加する必要があります。
 
@@ -91,7 +94,7 @@ Windows 10 1803 以降では、フェデレーション ドメイン内のデバ
 
 デバイスでは、登録中に Azure AD テナント情報を検出するために、サービス接続ポイント (SCP) オブジェクトを使用します。 オンプレミスの Active Directory インスタンスでは、ハイブリッド Azure AD 参加済みデバイスの SCP オブジェクトが、コンピューターのフォレストの構成名前付けコンテキストのパーティションに存在する必要があります。 各フォレストには、構成名前付けコンテキストが 1 つだけあります。 複数フォレストの Active Directory 構成では、ドメイン参加済みコンピューターが含まれているすべてのフォレストにサービス接続ポイントが存在している必要があります。
 
-フォレストの構成名前付けコンテキストを取得するには、[**Get-ADRootDSE**](https://technet.microsoft.com/library/ee617246.aspx) コマンドレットを使用することができます。  
+フォレストの構成名前付けコンテキストを取得するには、[**Get-ADRootDSE**](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617246(v=technet.10)) コマンドレットを使用することができます。  
 
 Active Directory ドメイン名が *fabrikam.com* であるフォレストの場合、構成名前付けコンテキストは次のようになります。
 
@@ -164,7 +167,7 @@ Windows Server 2008 以前のバージョンが実行されているドメイン
 
 上記のスクリプトの `$verifiedDomain = "contoso.com"` はプレースホルダーです。 これを、Azure AD の検証済みドメイン名のいずれかに置き換えます。 これを使用するには、ドメインを所有しておく必要があります。
 
-検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md)」を参照してください。
+検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../fundamentals/add-custom-domain.md)」を参照してください。
 
 確認済みの会社のドメインの一覧を取得するには、[Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) コマンドレットを使用できます。
 
@@ -323,7 +326,7 @@ AD FS を使用している場合は、次の WS-Trust エンドポイントを�
 
 上記の要求にある `<verified-domain-name>` はプレースホルダーです。 これを、Azure AD の検証済みドメイン名のいずれかに置き換えます。 たとえば、 `Value = "http://contoso.com/adfs/services/trust/"`を使用します。
 
-検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../active-directory-domains-add-azure-portal.md)」を参照してください。  
+検証済みドメイン名の詳細については、「[Azure Active Directory へのカスタム ドメイン名の追加](../fundamentals/add-custom-domain.md)」を参照してください。  
 
 確認済みの会社のドメインの一覧を取得するには、[Get-msoldomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) コマンドレットを使用できます。
 
@@ -611,7 +614,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 ドメイン参加済み Windows デバイスの Hybrid Azure AD Join を行うときに問題が発生した場合は、以下を参照してください。
 
-- [dsregcmd コマンドを使用したデバイスのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [dsregcmd コマンドを使用したデバイスのトラブルシューティング](./troubleshoot-device-dsregcmd.md)
 - [ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
 - [ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
 

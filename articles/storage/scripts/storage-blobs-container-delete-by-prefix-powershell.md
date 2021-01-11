@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell のサンプル スクリプト - プレフィックスでコンテナーを削除する | Microsoft Docs
-description: コンテナー名のプレフィックスに基づいて Azure Storage Blob コンテナーを削除します。
+description: Azure PowerShell を使用し、コンテナー名のプレフィックスに基づいて Azure Blob Storage を削除する例をご覧ください。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,13 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 6069c51b27d7f8f11155a72613c04566d1c7b64d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b95c5ab243fbd938e8a7eb1d3b9619b0d46fb046
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006094"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89072954"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>コンテナー名のプレフィックスに基づいたコンテナーの削除
 

@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: ce014fc338ebfad18b91ba65b614ca0a380a3f7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c51b5c4d9cd7362aeda0a0998d8031d0ba358ce1
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86243853"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89012349"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Azure Kubernetes Service のサポート ポリシー
 
@@ -20,7 +20,7 @@ ms.locfileid: "86243853"
 ## <a name="service-updates-and-releases"></a>サービスの更新とリリース
 
 * リリース情報については、[AKS のリリース ノート](https://github.com/Azure/AKS/releases)を参照してください。
-* プレビュー段階の機能については、「[AKS Preview Features and Related Projects](https://github.com/Azure/AKS/blob/master/previews.md)」(AKS のプレビュー機能と関連プロジェクト) を参照してください。
+* プレビュー段階の機能については、「[AKS Preview Features and Related Projects](https://awesomeopensource.com/projects/aks?categoryPage=11)」(AKS のプレビュー機能と関連プロジェクト) を参照してください。
 
 ## <a name="managed-features-in-aks"></a>AKS のマネージド機能
 
@@ -137,7 +137,7 @@ AKS の 1 つまたは複数のコンポーネントでセキュリティ上の�
 
 ## <a name="network-ports-access-and-nsgs"></a>ネットワーク ポート、アクセス、NSG
 
-マネージド サービスである AKS には、ネットワークと接続に関して固有の要件があります。 これらの要件は、通常の IaaS コンポーネントの要件ほど柔軟ではありません。 AKS では、NSG ルールのカスタマイズ、特定のポートのブロック (たとえば、送信ポート 443 をブロックするファイアウォール ルールの使用)、URL のホワイト リスト登録などの操作により、クラスターがサポートできない状態になる可能性があります。
+マネージド サービスである AKS には、ネットワークと接続に関して固有の要件があります。 これらの要件は、通常の IaaS コンポーネントの要件ほど柔軟ではありません。 AKS では、NSG ルールのカスタマイズ、特定のポートのブロック (たとえば、送信ポート 443 をブロックするファイアウォール ルールの使用)、URL の許可リスト追加などの操作により、クラスターがサポートできない状態になる可能性があります。
 
 > [!NOTE]
 > 現在、AKS では、クラスターからのエグレス トラフィックを完全にロックダウンすることはできません。 クラスターで送信トラフィックに使用できる URL とポートの一覧を制御するには、[エグレス トラフィックの制限](limit-egress-traffic.md)に関する記事を参照してください。
@@ -149,7 +149,7 @@ AKS では、アップストリームの Kubernetes プロジェクト内の安�
 アルファまたはベータの機能は、次の 2 つのシナリオで、一般的に利用可能になる前にロール アウトされる場合があります。
 
 * お客様が AKS の製品、サポート、またはエンジニアリング チームと会って、これらの新機能を試すことを要求した。
-* これらの機能が[機能フラグによって有効になっており](https://github.com/Azure/AKS/blob/master/previews.md)、 お客様がこれらの機能を使用することを明示的に選択する必要がある。
+* これらの機能が[機能フラグによって有効になっており](https://awesomeopensource.com/projects/aks?categoryPage=11)、 お客様がこれらの機能を使用することを明示的に選択する必要がある。
 
 ## <a name="preview-features-or-feature-flags"></a>プレビュー機能または機能フラグ
 

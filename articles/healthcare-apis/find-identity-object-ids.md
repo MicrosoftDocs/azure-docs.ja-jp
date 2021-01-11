@@ -2,18 +2,18 @@
 title: 認証のための ID オブジェクト ID を見つける - Azure API for FHIR
 description: この記事では、Azure API for FHIR の認証を構成するために必要な ID オブジェクト ID を見つける方法について説明します。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 8e1fdcbbdefb9c36d84b345d422d49f088077954
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: matjazl
+ms.openlocfilehash: 5b42d61d59a3c816c3b664297470cfbf91f17439
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133491"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851768"
 ---
 # <a name="find-identity-object-ids-for-authentication-configuration"></a>認証構成のための ID オブジェクト ID を見つける
 

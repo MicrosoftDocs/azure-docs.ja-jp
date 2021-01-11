@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: conceptual
-ms.date: 06/19/2020
-ms.openlocfilehash: 6563f3e263867387332940db58abff62e085cded
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.date: 07/23/2020
+ms.openlocfilehash: cccc45f182f3ae826440df8bc163080b82226c9f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187695"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87172083"
 ---
 # <a name="block-connections-created-by-connectors-in-azure-logic-apps"></a>Azure Logic Apps でコネクタによって作成された接続をブロックする
 
@@ -31,12 +31,12 @@ Azure Logic Apps で、制限されたリソースまたは未承認のリソー
 
 ブロックする必要がある接続が含まれたロジック アプリが既にある場合は、[Azure portal の手順](#connector-ID-portal)に従ってください。 それ以外の場合は、次の手順に従います。
 
-1. [Logic Apps コネクタの一覧](https://docs.microsoft.com/connectors/connector-reference/connector-reference-logicapps-connectors)を参照します。
+1. [Logic Apps コネクタの一覧](/connectors/connector-reference/connector-reference-logicapps-connectors)を参照します。
 
 1. ブロックするコネクタの参照ページを見つけます。
 
-   たとえば、Instagram コネクタをブロックする場合は、次のページにアクセスします。 
-   
+   たとえば、非推奨になっている Instagram コネクタをブロックする場合は、次のページにアクセスします。
+
    `https://docs.microsoft.com/connectors/instagram/`
 
 1. このページの URL から、末尾のコネクタ参照 ID をスラッシュ (`/`) を付けずにコピーして保存します。たとえば、`instagram` のようになります。
@@ -364,7 +364,7 @@ Azure Policy 定義の詳細については、次のトピックを参照して�
 メッセージには次の情報が含まれています。
 
 | 説明 | コンテンツ |
-|---|---|
+|-------------|---------|
 | エラーの原因 | `"Resource 'instagram' was disallowed by policy."` |
 | 割り当て名 | `"Block Instagram connections"` |
 | 割り当て ID | `"/subscriptions/xxxxxXXXXXxxxxxXXXXXxxxxxXXXXX/resourceGroups/MyLogicApp-RG/providers/Microsoft.Authorization/policyAssignments/4231890fc3bd4352acb0b673"` |

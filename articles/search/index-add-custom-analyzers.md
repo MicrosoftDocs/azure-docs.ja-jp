@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.openlocfilehash: 402fd8da8e29e8f3fec6747be5d9480ca176fc55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8a9f8b02d8821c76b2a7766f35244834934db1d0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511400"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935910"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドにカスタム アナライザーを追加する
 
@@ -53,7 +53,7 @@ ms.locfileid: "86511400"
 
  `tokenizer_name` はトークナイザーの名前、`token_filter_name_1` と `token_filter_name_2` はトークン フィルターの名前、`char_filter_name_1` と `char_filter_name_2` は文字フィルターの名前です (有効な値については、[トークナイザー](#Tokenizers)、[トークン フィルター](#TokenFilters)、文字フィルターの表をご覧ください)。
 
-アナライザーの定義は、より大きなインデックスの一部です。 インデックスの REST については、[Create Index API (インデックス作成 API)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関する記事をご覧ください。
+アナライザーの定義は、より大きなインデックスの一部です。 インデックスの REST については、[Create Index API (インデックス作成 API)](/rest/api/searchservice/create-index) に関する記事をご覧ください。
 
 ```
 "analyzers":(optional)[
@@ -133,7 +133,7 @@ ms.locfileid: "86511400"
 
 ## <a name="test-custom-analyzers"></a>カスタム アナライザーのテスト
 
-[REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) の**アナライザー テスト操作**を使用して、指定したテキストがアナライザーによってどのようにトークンに分割されるかを確認できます。
+[REST API](/rest/api/searchservice/test-analyzer) の**アナライザー テスト操作**を使用して、指定したテキストがアナライザーによってどのようにトークンに分割されるかを確認できます。
 
 **Request**
 ```
@@ -372,6 +372,6 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 
 
 ## <a name="see-also"></a>関連項目  
- [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)   
+ [Azure Cognitive Search REST API](/rest/api/searchservice/)   
  [Azure Cognitive Search でのアナライザーの例](search-analyzers.md#examples)    
- [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
+ [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index)

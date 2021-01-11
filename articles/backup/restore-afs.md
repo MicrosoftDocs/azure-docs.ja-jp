@@ -3,12 +3,12 @@ title: Azure ファイル共有を復元する
 description: Azure portal を使用して、Azure Backup によって作成された復元ポイントからファイル共有全体または特定のファイルを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: f0e232fcde12a0c035afa139e3043bfa52fbe714
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503644"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762825"
 ---
 # <a name="restore-azure-file-shares"></a>Azure ファイル共有を復元する
 
@@ -59,14 +59,14 @@ ms.locfileid: "86503644"
     ![復元ポイントの選択](./media/restore-afs/restore-point.png)
 
     >[!NOTE]
-    >既定では、 **[復元ポイントの選択]** ペインには、過去 30 日間の復元ポイントが一覧表示されます。 特定の期間に作成された復元ポイントを確認する場合は、適切な **[開始時刻]** と **[終了時刻]** を選択して範囲を指定し、 **[最新の情報に更新]** ボタンをクリックしてください。
+    >既定では、 **[復元ポイントの選択]** ペインには、過去 30 日間の復元ポイントが一覧表示されます。 特定の期間に作成された復元ポイントを確認する場合は、適切な **[開始時刻]** と **[終了時刻]** を選択して範囲を指定し、 **[最新の情報に更新]** ボタンをクリックします。
 
 1. 次の手順では、 **[復元の場所]** を選択します。 **[回復先]** セクションで、データの復元先または復元方法を指定します。 トグル ボタンを使用して、次の 2 つのオプションのいずれかを選択します。
 
     * **元の場所**:完全なファイル共有を元のソースと同じ場所に復元します。
     * **別の場所**:完全なファイル共有を別の場所に復元し、元のファイル共有をそのままにします。
 
-#### <a name="restore-to-the-original-location"></a>元の場所に復元
+#### <a name="restore-to-the-original-location-full-share-recovery"></a>元の場所に復元する (完全な共有の復元)
 
 1. **[回復先]** として **[元の場所]** を選択します。また、 **[In case of Conflicts]\(競合の場合\)** ドロップダウン リストから適切なオプションを選ぶことで、競合がある場合にスキップするか上書きするかを選択します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "86503644"
 
     ![[復元] を選択して開始する](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>別の場所に復元する
+#### <a name="restore-to-an-alternate-location-full-share-recovery"></a>別の場所に復元する (完全な共有の復元)
 
 1. **[回復先]** として **[別の場所]** を選択します。
 1. **[ストレージ アカウント]** ドロップダウン リストから、バックアップした内容を復元する宛先ストレージ アカウントを選択します。
@@ -106,7 +106,7 @@ ms.locfileid: "86503644"
     * **元の場所**:選択したファイルまたはフォルダーを元のソースと同じファイル共有に復元します。
     * **別の場所**:選択したファイルまたはフォルダーを別の場所に復元し、元のファイル共有のコンテンツをそのままにします。
 
-#### <a name="restore-to-the-original-location"></a>元の場所に復元
+#### <a name="restore-to-the-original-location-item-level-recovery"></a>元の場所に復元する (項目レベルの復元)
 
 1. **[回復先]** として **[元の場所]** を選択します。また、 **[In case of conflicts]\(競合の場合\)** ドロップダウン リストから適切なオプションを選ぶことで、競合がある場合にスキップするか上書きするかを選択します。
 
@@ -125,7 +125,7 @@ ms.locfileid: "86503644"
 
     ![[復元] を選択して開始する](./media/restore-afs/click-restore.png)
 
-#### <a name="restore-to-an-alternate-location"></a>別の場所に復元する
+#### <a name="restore-to-an-alternate-location-item-level-recovery"></a>別の場所に復元する (項目レベルの復元)
 
 1. **[回復先]** として **[別の場所]** を選択します。
 1. **[ストレージ アカウント]** ドロップダウン リストから、バックアップした内容を復元する宛先ストレージ アカウントを選択します。

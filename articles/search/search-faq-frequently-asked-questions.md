@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d3c5a998db5e76118b0c5a73b6df8bdedadc6dfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d6acdcf9487b2d1a5964d4ec686cd23666275b0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317222"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88923094"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Cognitive Search - よく寄せられる質問 (FAQ)
 
@@ -23,7 +23,7 @@ ms.locfileid: "85317222"
 
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Azure Cognitive Search と DBMS の全文検索の違いは何ですか?
 
-Azure Cognitive Search は、複数のデータ ソース、[多数の言語の言語分析](https://docs.microsoft.com/rest/api/searchservice/language-support)、[興味深く普通とは異なるデータ入力のカスタム分析](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)による検索ランク制御、ユーザー エクスペリエンス機能 (先行入力、検索結果の強調表示、ファセット ナビゲーションなど) をサポートしています。 また、シノニム、高度なクエリ構文などの機能も含まれていますが、一般的に特別な機能ではありません。
+Azure Cognitive Search は、複数のデータ ソース、[多数の言語の言語分析](/rest/api/searchservice/language-support)、[興味深く普通とは異なるデータ入力のカスタム分析](/rest/api/searchservice/custom-analyzers-in-azure-search)、[スコアリング プロファイル](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)による検索ランク制御、ユーザー エクスペリエンス機能 (先行入力、検索結果の強調表示、ファセット ナビゲーションなど) をサポートしています。 また、シノニム、高度なクエリ構文などの機能も含まれていますが、一般的に特別な機能ではありません。
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Azure Cognitive Search サービスを一時停止し、課金を停止することはできますか?
 
@@ -39,7 +39,7 @@ Azure Cognitive Search は、複数のデータ ソース、[多数の言語の�
 
 これらのことはすべて、こちらの [Azure Cognitive Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)にある **index-backup-restore** サンプル コードを使用して実行できます。 
 
-また、Azure Cognitive Search REST API を使用して、いつでも[インデックス定義を取得する](https://docs.microsoft.com/rest/api/searchservice/get-index)ことができます。
+また、Azure Cognitive Search REST API を使用して、いつでも[インデックス定義を取得する](/rest/api/searchservice/get-index)ことができます。
 
 現在、Azure portal には、組み込みのインデックスの抽出、スナップショット、バックアップおよび復元の機能はありません。 ただし、今後のリリースで、バックアップおよび復元の機能の追加を検討しています。 この機能への支持を表明するには、[User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) で投票してください。
 
@@ -53,7 +53,7 @@ Azure Cognitive Search は、複数のデータ ソース、[多数の言語の�
 
 別の方法として、こちらの [Azure Cognitive Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)の **index-backup-restore** サンプル コードを使用して、インデックス定義とインデックス スナップショットを一連の JSON ファイルにバックアップすることができます。 後で、必要に応じてツールとファイルを使用してインデックスを復元できます。  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>SQL Database レプリカからインデックスを作成することはできますか (対象: [Azure SQL Database インデクサー](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>SQL Database レプリカからインデックスを作成することはできますか (対象: [Azure SQL Database インデクサー](./search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md))
 
 最初からインデックスを構築するときに、データ ソースとしてのプライマリまたはセカンダリ レプリカの使用に制限はありません。 ただし、(レコードの変更に基づく) 増分更新によるインデックスの更新には、プライマリ レプリカが必要です。 この要件は SQL Database に由来するものです。SQL Database は変更追跡をプライマリ レプリカでのみ保証しています。 インデックス更新ワークロードにセカンダリ レプリカを使用しても、すべてのデータを取得する保証はありません。
 
@@ -65,17 +65,17 @@ Azure Cognitive Search は、複数のデータ ソース、[多数の言語の�
 
 ### <a name="can-i-restrict-search-index-access-by-user-identity"></a>ユーザー ID によって検索インデックス アクセスを制限できますか?
 
-`search.in()` フィルターを使用する[セキュリティ フィルター](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search)を実装できます。 このフィルターは [Azure Active Directory (AAD) などの ID 管理サービス](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad)に適切に構成でき、定義されたユーザー グループ メンバーシップに基づいて検索結果を絞り込むことができます。
+`search.in()` フィルターを使用する[セキュリティ フィルター](./search-security-trimming-for-azure-search.md)を実装できます。 このフィルターは [Azure Active Directory (AAD) などの ID 管理サービス](./search-security-trimming-for-azure-search-with-aad.md)に適切に構成でき、定義されたユーザー グループ メンバーシップに基づいて検索結果を絞り込むことができます。
 
 ### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>存在するとわかっている用語でも一致数が 0 件なのはなぜですか?
 
 よくある例は、クエリの種類ごとにサポートされる検索動作と言語分析のレベルが異なることを把握していない場合です。 主要なワークロードである全文検索には、用語を原形に分解する言語分析フェーズが含まれています。 トークン化された用語は、より多くの数の変形と一致するため、このようなクエリ分析はより広い網を一致候補にかけます。
 
-ただし、ワイルドカードを含むクエリ、あいまいなクエリ、正規表現のクエリの分析は、通常の用語やフレーズのクエリとは異なります。クエリが検索インデックス内の語の分析済みの形と一致しない場合は、再現率が低くなることがあります。 クエリの解析と分析について詳しくは、[クエリのアーキテクチャ](https://docs.microsoft.com/azure/search/search-lucene-query-architecture)に関する記事をご覧ください。
+ただし、ワイルドカードを含むクエリ、あいまいなクエリ、正規表現のクエリの分析は、通常の用語やフレーズのクエリとは異なります。クエリが検索インデックス内の語の分析済みの形と一致しない場合は、再現率が低くなることがあります。 クエリの解析と分析について詳しくは、[クエリのアーキテクチャ](./search-lucene-query-architecture.md)に関する記事をご覧ください。
 
 ### <a name="my-wildcard-searches-are-slow"></a>ワイルドカード検索に時間がかかります。
 
-ほとんどのワイルドカード検索クエリ (プレフィックス、あいまい、正規表現など) は、検索インデックス内の一致する用語を使用して内部で再作成されます。 このように検索インデックスをスキャンする追加の処理のために時間がかかります。 また、`a*` のような広範な検索クエリは、多数の用語を使用して再作成される可能性が高く、非常に遅くなることがあります。 ワイルドカード検索のパフォーマンスを向上させるには、[カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)の定義を検討してください。
+ほとんどのワイルドカード検索クエリ (プレフィックス、あいまい、正規表現など) は、検索インデックス内の一致する用語を使用して内部で再作成されます。 このように検索インデックスをスキャンする追加の処理のために時間がかかります。 また、`a*` のような広範な検索クエリは、多数の用語を使用して再作成される可能性が高く、非常に遅くなることがあります。 ワイルドカード検索のパフォーマンスを向上させるには、[カスタム アナライザー](/rest/api/searchservice/custom-analyzers-in-azure-search)の定義を検討してください。
 
 ### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>毎回、検索順位が 1.0 の定数または同じスコアなのはなぜですか?
 
@@ -95,7 +95,7 @@ Azure Cognitive Search は、複数のデータ ソース、[多数の言語の�
 
 ### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>ローカライズされた検索を実装するには、どのような方法が推奨されますか?
 
-多くのお客様は、同じインデックスで複数のロケール (言語) をサポートすることになったときに、コレクションよりも専用フィールドを選択しています。 ロケール固有のフィールドがあると、適切なアナライザーを割り当てることができます。 たとえば、フランス語の文字列を含むフィールドに Microsoft French Analyzer を割り当てることができます。 また、フィルター処理も簡単になります。 フランス語のページに対してクエリが開始されたことがわかっている場合は、検索結果をこのフィールドに制限することができます。 また、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)を作成して、フィールドにより多くの相対的な重み付けを与えます。 Azure Cognitive Search では、[50 を超える言語アナライザー](https://docs.microsoft.com/azure/search/search-language-support)を選ぶことができます。
+多くのお客様は、同じインデックスで複数のロケール (言語) をサポートすることになったときに、コレクションよりも専用フィールドを選択しています。 ロケール固有のフィールドがあると、適切なアナライザーを割り当てることができます。 たとえば、フランス語の文字列を含むフィールドに Microsoft French Analyzer を割り当てることができます。 また、フィルター処理も簡単になります。 フランス語のページに対してクエリが開始されたことがわかっている場合は、検索結果をこのフィールドに制限することができます。 また、[スコアリング プロファイル](/rest/api/searchservice/add-scoring-profiles-to-a-search-index)を作成して、フィールドにより多くの相対的な重み付けを与えます。 Azure Cognitive Search では、[50 を超える言語アナライザー](./search-language-support.md)を選ぶことができます。
 
 ## <a name="next-steps"></a>次のステップ
 

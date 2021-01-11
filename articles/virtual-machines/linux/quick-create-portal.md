@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5189a9dc8cd83877b4797fd828e9c9f6da8d1b93
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85392850"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499978"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure portal で Linux 仮想マシンを作成する
 
@@ -32,11 +32,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[仮想マシン]** ページで、 **[追加]** を選択します。 **[仮想マシンの作成]** ページが開きます。
 1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前 * として「*myResourceGroup*」と入力します。 
 
-    ![VM の新しいリソース グループを作成する](./media/quick-create-portal/project-details.png)
+    ![仮想マシンの Azure サブスクリプションとリソース グループを選択する場所が示されている [プロジェクトの詳細] セクションのスクリーンショット](./media/quick-create-portal/project-details.png)
 
 1. **[インスタンスの詳細]** で、 **[仮想マシン名]** として「*myVM*」と入力し、 **[リージョン]** として *[米国東部]* を選択し、 **[イメージ]** として *[Ubuntu 18.04 LTS]* を選択します。 他の既定値はそのままにします。
 
-    ![[Instance details] (インスタンスの詳細) セクション](./media/quick-create-portal/instance-details.png)
+    ![仮想マシンの名前を指定し、そのリージョン、イメージ、サイズを選択する [インスタンスの詳細] セクションのスクリーンショット](./media/quick-create-portal/instance-details.png)
 
 1. **[管理者アカウント]** で **[SSH 公開キー]** を選択します。
 
@@ -44,11 +44,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[SSH public key source]\(SSH 公開キー ソース\)** では、 **[新しいキー ペアの生成]** を既定値のまま残し、 **[Key pair name]\(キー ペアの名前\)** に「*myKey*」と入力します。
 
-    ![[Administrator account] (管理者アカウント)](./media/quick-create-portal/administrator-account.png)
+    ![認証の種類を選択し、管理者の資格情報を入力する、[管理者アカウント] セクションのスクリーンショット](./media/quick-create-portal/administrator-account.png)
 
 1. **[受信ポートの規則]**  >  **[Public inbound ports] (パブリック受信ポート)** で、 **[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[SSH (22)]** と **[HTTP (80)]** を選択します。 
 
-    ![RDP と HTTP のポートを開く](./media/quick-create-portal/inbound-port-rules.png)
+    ![受信接続が許可されるポートを選択する [受信ポートの規則] セクションのスクリーンショット](./media/quick-create-portal/inbound-port-rules.png)
 
 1. 残りの既定値はそのままにして、ページの一番下にある **[Review + create] (確認および作成)** ボタンを選択します。
 
@@ -61,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 新しい VM のページで、パブリック IP アドレスを選択し、それをクリップボードにコピーします。
 
 
-    ![パブリック IP アドレスをコピーする](./media/quick-create-portal/ip-address.png)
+    ![仮想マシンの IP アドレスのコピー方法を示すスクリーンショット](./media/quick-create-portal/ip-address.png)
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
@@ -94,7 +94,7 @@ sudo apt-get -y install nginx
 
 任意の Web ブラウザーを使用して、NGINX の既定のウェルカム ページを表示します。 Web アドレスとして、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、VM の概要ページで確認できるほか、先ほど使用した SSH 接続文字列にも含まれています。
 
-![NGINX の既定のサイト](./media/quick-create-portal/nginx.png)
+![ブラウザーでの NGINX の既定サイトを示すスクリーンショット](./media/quick-create-portal/nginx.png)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

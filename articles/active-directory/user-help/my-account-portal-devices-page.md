@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 9badda1663947587b078c6bb808f4efdf2e10579
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735958"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798212"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>接続されているデバイスを [デバイス] ページから管理する
 
@@ -27,7 +27,7 @@ ms.locfileid: "83735958"
 - 手放した、なくした、あるいは盗まれたデバイスがあれば、それを無効にします。
 
 >[!Important]
->この記事は、職場または学校アカウントに接続されているデバイス情報を更新しようとしているユーザーを対象としています。 従業員およびその他の用途のデバイス管理情報を探している管理者の場合は、[デバイス ID のドキュメント](https://docs.microsoft.com/azure/active-directory/devices/index)を参照してください。
+>この記事は、職場または学校アカウントに接続されているデバイス情報を更新しようとしているユーザーを対象としています。 従業員およびその他の用途のデバイス管理情報を探している管理者の場合は、[デバイス ID のドキュメント](../devices/index.yml)を参照してください。
 
 ## <a name="view-your-connected-devices"></a>接続されているデバイスを表示する
 
@@ -68,13 +68,15 @@ ms.locfileid: "83735958"
 
 接続されているデバイスを表示したら、次のことができます。
 
-- 自分の[セキュリティ情報](user-help-security-info-overview.md)の表示または管理を選択する。
+- 自分の[セキュリティ情報](./security-info-setup-signin.md)の表示または管理を選択する。
 
 - 自分の[組織](my-account-portal-organizations-page.md)を表示し、管理する。
 
 - [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示する。
 
 - 組織での[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示します。
+
+- [マイ アカウント ポータルの設定](my-account-portal-settings.md)を変更する
 
 ## <a name="related-office-content"></a>関連する Office コンテンツ
 

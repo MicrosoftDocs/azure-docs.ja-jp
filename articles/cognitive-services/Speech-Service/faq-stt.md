@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/4/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921031"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661522"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -75,7 +75,7 @@ ms.locfileid: "85921031"
 
 **Q:ユーザーの要求は調整されますか。**
 
-**A**: REST API では、要求を 5 秒で 25 に制限しています。 詳細は、[音声テキスト変換](speech-to-text.md)に関するページを参照してください。
+**A**: 「[Speech Services のクォータと制限](speech-services-quotas-and-limits.md)」を参照してください。
 
 **Q:デュアル チャネル オーディオの料金はどのように課金されますか。**
 
@@ -85,52 +85,14 @@ ms.locfileid: "85921031"
 > Custom Speech Service の使用について他にプライバシーに関する懸念がある場合は、いずれかのサポート チャネルにお問い合わせください。
 
 ## <a name="increasing-concurrency"></a>コンカレンシーの向上
+「[Speech Services のクォータと制限](speech-services-quotas-and-limits.md)」を参照してください。
 
-**Q:デプロイしたモデルに、ポータルで提供されているものより高いコンカレンシーが必要な場合はどうすればよいですか。**
-
-**A**: モデルは同時要求を 20 ずつ処理するようスケールアップできます。
-
-必要な情報を使用して、[Azure サポートポータル](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)でサポート リクエストを作成します。 [サポート ページ](support.md)に記載されているパブリック チャネル (GitHub、Stackoverflow など) に情報を投稿しないでください。
-
-***カスタム モデル***のコンカレンシーを向上させるには、次の情報が必要です。
-
-- モデルがデプロイされているリージョン。
-- デプロイされたモデルのエンドポイント ID。
-  - [Custom Speech ポータル](https://aka.ms/customspeech)にアクセスします。
-  - 必要に応じてサインインします。
-  - プロジェクトとデプロイを選択します。
-  - コンカレンシーを向上させる必要のあるエンドポイントを選択します。
-  - `Endpoint ID` をコピーします。
-
-***基本モデル***のコンカレンシーを向上させるには、次の情報が必要です。
-
-- お使いのサービスのリージョン。
-
-または
-
-- お使いのサブスクリプションでのアクセス トークン ([こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)を参照)。
-
-or
-
-- お使いのサブスクリプションでのリソース ID。
-  - [Azure portal](https://portal.azure.com) にアクセスします。
-  - 検索ボックス内で `Cognitive Services` を選択します。
-  - 表示されたサービスから、コンカレンシーを引き上げる音声サービスを選択します。
-  - このサービスの `Properties` を表示します。
-  - 完全な `Resource ID` をコピーします。
-  
-**Q:コンカレンシーの制限を引き上げるとコストが増加しますか?**
-
-**A**: いいえ、コストは使用量に基づいています。 コンカレンシーを引き上げてもコストは増えません。 コストの詳細については、Microsoft の[価格に関するページ](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)をご覧ください。 
-  
->[!NOTE]
->[コンテナー](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto)は、ホストされているハードウェアの CPU によってのみ制限されるため、コンテナーでコンカレンシーの制限を増やす必要はありません。
 
 ## <a name="importing-data"></a>データのインポート
 
 **Q:データセットのサイズの制限とは何ですか、なぜ制限するのですか。**
 
-**A**: データセットの現在の制限は 2 GB です。 この制限は、HTTP のアップロード用のファイルのサイズに対する制限が原因です。
+**A**: この制限は、HTTP のアップロード用のファイルのサイズに対する制限が原因です。 実際の制限については、「[Speech Services のクォータと制限](speech-services-quotas-and-limits.md)」を参照してください。
 
 **Q:テキスト ファイルを zip で圧縮すればさらに大きなテキスト ファイルをアップロードできるでしょうか。**
 
@@ -198,7 +160,7 @@ or
 
 **Q:テナント モデルでは、どのような音声エクスペリエンスが向上しますか。**
 
-**A:** テナント モデルを有効にし、作成して発行すると、音声サービスを使用して構築されたエンタープライズ アプリケーションの認識を改善するために使用されます。また、企業へのメンバーシップを示すユーザーの AAD トークンも渡されます。
+**A:** テナント モデルを有効にし、作成して発行すると、Speech サービスを使用して構築されたエンタープライズ アプリケーションの認識を改善するために使用されます。また、企業へのメンバーシップを示すユーザーの Azure AD トークンも渡されます。
 
 音声サービス アプリケーションのテナント モデルを作成しても、Office 365 に組み込まれている音声エクスペリエンス (ディクテーションや PowerPoint キャプションなど) は変更されません。
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/23/2019
-ms.openlocfilehash: 48a5c192051d8e715deb7e354827ff4cd4152bcd
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a696ba4f7bab85f2353e80d028220688531b3b69
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077883"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021767"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
 
@@ -123,4 +123,4 @@ Azure AD アプリケーションに[ロール](../role-based-access-control/bui
 
 * [Azure Portal で Azure Active Directory アプリケーションとサービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)。
 * [Azure Resource Manager でサービス プリンシパルを認証する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法を学習する。
-* [Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) について学習する。
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) について学習する。

@@ -1,5 +1,5 @@
 ---
-title: サンプル クライアント アプリを使用して基本事項を確認する
+title: チュートリアル:サンプル クライアント アプリを使用した基本事項の確認"
 titleSuffix: Azure Digital Twins
 description: サンプル コマンド ライン アプリケーションを使用して Azure Digital Twins SDK を試すためのチュートリアル
 author: baanders
@@ -7,23 +7,24 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: ce3f775b7a72239fba7eb7c1538ec4f0831f1c74
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a1dc42815167da308fd87b541c0f21d02b47329b
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124566"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89022515"
 ---
-# <a name="explore-azure-digital-twins-with-a-sample-client-app"></a>サンプル クライアント アプリを使用して Azure Digital Twins を試す
+# <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>チュートリアル:サンプル クライアント アプリを使用して Azure Digital Twins を試す
 
 このチュートリアルでは、Azure Digital Twins インスタンスとやり取りするためのコマンド ライン クライアント アプリケーションを実装したサンプル アプリケーションを紹介します。 このクライアント アプリは、"[*クライアント アプリのコーディングに関するチュートリアル*](tutorial-code.md)" で作成したアプリに似ています。
 
 このサンプルを使用して、モデルのアップロード、ツインの作成と変更、リレーションシップの作成など、基本的な Azure Digital Twins アクションを実行することができます。 サンプル コードを見て、Azure Digital Twins の API について学んだり、サンプル プロジェクトに自由に変更を加えながら、独自のコマンドを実装する練習をしたりすることもできます。
 
 このチュートリアルでは次のことを行います。
-1. Azure Digital Twins インスタンスを設定する
-2. そのインスタンスとやり取りするようにサンプル コマンド ライン アプリを構成する
-3. コマンド ライン アプリを使用して Azure Digital Twins を試す (**モデル**、**デジタル ツイン**、**リレーションシップ**、**クエリ**など)
+> [!div class="checklist"]
+> * Azure Digital Twins インスタンスを設定する
+> * そのインスタンスとやり取りするようにサンプル コマンド ライン アプリを構成する
+> * コマンド ライン アプリを使用して Azure Digital Twins を試す (**モデル**、**デジタル ツイン**、**リレーションシップ**、**クエリ**など)
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -78,7 +79,7 @@ _**AdtE2ESample**_ プロジェクトを開いた Visual Studio ウィンドウ�
 > 独自のモデルを作成してみたい場合は、*Room* モデルのコードを新しいファイルに貼り付けて、 *.json* という拡張子で *AdtSampleApp\SampleClientApp\Models* フォルダーに保存してください。 その後、望みのものを表現するために、自由にプロパティやリレーションシップを追加してみましょう。 このフォルダーにある他のサンプル モデルも参考にしてください。
 
 > [!TIP] 
-> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-use-parser.md)" に関するページを参照してください。
+> あらゆる言語に対応した [DTDL Validator サンプル](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)を利用してモデル ドキュメントをチェックし、DTDL が有効であることを確認できます。 これは DTDL パーサー ライブラリをベースに構築されています。詳細については、"[*モデルを解析および検証する方法*](how-to-parse-models.md)" に関するページを参照してください。
 
 ### <a name="get-started-with-the-command-line-app"></a>コマンド ライン アプリを使ってみる
 
@@ -288,24 +289,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 このチュートリアルのプロジェクトは、次のチュートリアル ("[*エンド ツー エンドのソリューションを接続する方法のチュートリアル*](tutorial-end-to-end.md)") の土台となっています。 次のチュートリアルに進む場合は、ここで設定したリソースを残しておいてください。この Azure Digital Twins インスタンスと構成済みのサンプル アプリを引き続き使用します。
 * この場合、サンプル アプリの `DeleteAllTwins` コマンドと `DeleteAllModels` コマンドをそれぞれ使用して、ツインとモデルをインスタンスから消去してください。 次のチュートリアルに備えて白紙の状態にすることができます。
 
-このチュートリアルで作成したリソースが不要であれば、次の手順に従って削除してください。
-
-[Azure Cloud Shell](https://shell.azure.com) から [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループと Azure Digital Twins インスタンスが削除されます。
-
-> [!IMPORTANT]
-> リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
-
-Azure Cloud Shell を開き、次のコマンドを実行すると、リソース グループとそこに含まれる内容がすべて削除されます。
-
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
-
-次に、クライアント アプリ用に作成した Azure Active Directory アプリの登録を次のコマンドで削除します。
-
-```azurecli
-az ad app delete --id <your-application-ID>
-```
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
 最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダーを削除します。
 
@@ -314,12 +298,5 @@ az ad app delete --id <your-application-ID>
 このチュートリアルでは、Azure Digital Twins インスタンスを設定し、そのインスタンスとやり取りするためのクライアント アプリケーションをセットアップして、その基本的な使い方を学びました。 クライアント アプリを使用して Azure Digital Twins に触れながら、モデルやデジタル ツイン、リレーションシップを作成しました。 また、環境についての質問への回答として、どのような類の情報を Azure Digital Twins から取得できるのかが、このソリューションにいくつかのクエリを実行することでイメージしていただけたかと思います。
 
 次のチュートリアルに進み、サンプル コマンド ライン アプリと他の Azure サービスとを組み合わせて、データ ドリブンのエンド ツー エンドのシナリオに取り組んでください。
-
 > [!div class="nextstepaction"]
 > [*チュートリアル:エンド ツー エンドのソリューションを接続する*](tutorial-end-to-end.md)"
-
-または、次のチュートリアルの概念ドキュメントを参照し、ここで扱った要素についてさらに理解を深めましょう。
-* "[*概念: カスタム モデル*](concepts-models.md)"
-
-また、次のハウツー記事を足がかりとして、このチュートリアルで学んだプロセスについてさらに詳しい知識を身に付けることもできます。
-* [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)"

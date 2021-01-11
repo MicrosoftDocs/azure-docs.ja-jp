@@ -7,12 +7,13 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: c8a5e1b1324ca49d8b540998a82ebf125b3c5364
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975862"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499434"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>プレビュー:PowerShell から Azure Image Builder を使用して Windows VM を作成する
 
@@ -25,7 +26,7 @@ ms.locfileid: "84975862"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)」を参照してください。
+ローカルで PowerShell を使用する場合は、Az PowerShell モジュールをインストールしたうえで、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して自分の Azure アカウントに接続する必要があります。 Az PowerShell モジュールのインストールの詳細については、「[Azure PowerShell のインストール](/powershell/azure/install-az-ps)」を参照してください。
 
 > [!IMPORTANT]
 > PowerShell モジュール **Az.ImageBuilder** と **Az.ManagedServiceIdentity** は、プレビュー段階にある間は、`Install-Module` コマンドレットに `AllowPrerelease` パラメーターを指定して別々にインストールする必要があります。 これらの PowerShell モジュールは、一般提供された段階で将来の Az PowerShell モジュール リリースの一部となり、Azure Cloud Shell 内からネイティブに使用できるようになります。
@@ -36,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプションを選択します。
+複数の Azure サブスクリプションをお持ちの場合は、リソースが課金の対象となる適切なサブスクリプションを選択してください。 [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用して、特定のサブスクリプションを選択します。
 
 ```azurepowershell-interactive
 Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
@@ -100,7 +101,7 @@ Write-Output $subscriptionID
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用して、[Azure リソース グループ](../../azure-resource-manager/management/overview.md)を作成します。 リソース グループとは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。
 
 次の例では、`$location` 変数に指定されたリージョンに、`$imageResourceGroup` 変数内の名前に基づいてリソース グループを作成します。 このリソース グループは、イメージ構成テンプレート成果物およびイメージを格納するために使用されます。
 
@@ -168,7 +169,7 @@ New-AzRoleAssignment @RoleAssignParams
 ```
 
 > [!NOTE]
-> エラー "_New-AzRoleDefinition: ロールの定義の制限を超えました。ロールの定義をこれ以上作成することはできません_" が表示された場合は、「[Azure RBAC のトラブルシューティング](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting)」を参照してください。
+> エラー "_New-AzRoleDefinition: ロールの定義の制限を超えました。ロールの定義をこれ以上作成することはできません_" が表示された場合は、「[Azure RBAC のトラブルシューティング](../../role-based-access-control/troubleshooting.md)」を参照してください。
 
 ## <a name="create-a-shared-image-gallery"></a>Shared Image Gallery を作成する
 
@@ -200,7 +201,7 @@ New-AzGalleryImageDefinition @GalleryParams
 
 ## <a name="create-an-image"></a>イメージを作成する
 
-Azure Image Builder のソース オブジェクトを作成します。 有効なパラメーター値については、[Azure PowerShell を使用して Azure Marketplace で Windows VM イメージを検索する](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage)方法に関するページを参照してください。
+Azure Image Builder のソース オブジェクトを作成します。 有効なパラメーター値については、[Azure PowerShell を使用して Azure Marketplace で Windows VM イメージを検索する](./cli-ps-findimage.md)方法に関するページを参照してください。
 
 ```azurepowershell-interactive
 $SrcObjParams = @{

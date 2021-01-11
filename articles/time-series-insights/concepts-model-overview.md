@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 98951dc29b7c8504cbf1654a810ebba933fef3a1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 18212bf92304e75c702c51ff12628cd670755bb0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495382"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855206"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-gen2"></a>Azure Time Series Insights Gen2 のタイム シリーズ モデル
 
@@ -24,7 +24,7 @@ ms.locfileid: "86495382"
 > [!TIP]
 >
 > * タイム シリーズ モデルのライブによる実例については、 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)環境を参照してください。
-> * Azure Time Series Insights Gen2 Explorer を使用して、[タイム シリーズ モデルを操作する方法](time-series-insights-update-how-to-tsm.md)について学習します。
+> * Azure Time Series Insights TSI Explorer を使用して、[タイム シリーズ モデルを操作する方法](/azure/time-series-insights/how-to-edit-your-model)について学習します。
 
 ## <a name="summary"></a>まとめ
 
@@ -75,7 +75,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 [![タイム シリーズ モデルの概要グラフ](media/v2-update-tsm/time-series-model-overview.png)](media/v2-update-tsm/time-series-model-overview.png#lightbox)
 
-タイム シリーズ モデルは、[Azure Time Series Insights Gen2 Explorer](time-series-insights-update-how-to-tsm.md) を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#model-settings-api) を使用して管理できます。
+タイム シリーズ モデルは、[Azure Time Series Insights TSI Explorer](/azure/time-series-insights/concepts-model-overview) を使用して作成および管理できます。 タイム シリーズ モデルの設定は、[モデルの設定 API](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis) を使用して管理できます。
 
 ## <a name="time-series-model-instances"></a>タイム シリーズ モデルのインスタンス
 
@@ -87,7 +87,7 @@ Contoso は初期データと視覚化ソリューションに満足していま
 
 *インスタンス フィールド*は、階層レベルの値、製造元、演算子などを含めることができる説明情報のコレクションです。
 
-Azure Time Series Insights Gen2 環境に対してイベント ソースが構成された後、インスタンスが自動的に検出され、タイム シリーズ モデルで作成されます。 インスタンスは、タイム シリーズ モデルのクエリを使用して Azure Time Series Insights Gen2 Explorer で作成または更新できます。
+Azure Time Series Insights Gen2 環境に対してイベント ソースが構成された後、インスタンスが自動的に検出され、タイム シリーズ モデルで作成されます。 インスタンスは、タイム シリーズ モデルのクエリを使用して Azure Time Series Insights TSI Explorer で作成または更新できます。
 
 [Contoso Wind Farm デモ](https://insights.timeseries.azure.com/preview/samples)には、いくつかのライブ インスタンスの例が用意されています。
 
@@ -129,7 +129,7 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
 ```
 
 > [!TIP]
-> インスタンス API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)に関する記事と、[インスタンス API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)を参照してください。
+> インスタンス API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis)に関する記事と、[インスタンス API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#instances-api)を参照してください。
 
 ## <a name="time-series-model-hierarchies"></a>タイム シリーズ モデルの階層
 
@@ -186,7 +186,7 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
 * `ManufactureDate` は親である `year` と子である `month` を持つ階層を定義します。 各 `ManufactureDate` は複数の `years` を持つことができ、それぞれさらに複数の `months` を持つことができます。
 
 > [!TIP]
-> 階層 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[階層 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)を参照してください。
+> 階層 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[階層 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#hierarchies-api)を参照してください。
 
 ### <a name="hierarchy-example"></a>階層の例
 
@@ -216,7 +216,7 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
 | ID4 | "building" = "1000"、"floor" = "10"  |
 | ID5 | "building"、"floor"、"room" のどれも設定されていない。 |
 
-タイム シリーズ **ID1** と **ID4** は、階層 **H1** の一部として、[Azure Time Series Insights Gen2 Explorer](time-series-insights-update-explorer.md) に表示されます。これは完全に定義され、適切に並べられた *building*、*floor*、*room* パラメーターがあるためです。
+タイム シリーズ **ID1** と **ID4** は、階層 **H1** の一部として [Azure Time Series Insights TSI Explorer](time-series-insights-update-explorer.md) に表示されます。それは完全に定義され、適切に並べられた *building*、*floor*、および *room* パラメーターを持つためです。
 
 他のものは、指定されたデータ階層に準拠していないため、*親が未設定のインスタンス*に分類されます。
 
@@ -231,7 +231,7 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
 [![タイム シリーズ モデルの種類の例](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> 型 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[型 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)を参照してください。
+> 型 API と作成、読み取り、更新、削除 (CRUD) のサポートについては、[データのクエリ](concepts-query-overview.md#time-series-model-query-tsm-q-apis)に関する記事と、[型 API REST に関するドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis#types-api)を参照してください。
 
 ### <a name="type-properties"></a>型のプロパティ
 
@@ -283,12 +283,13 @@ Azure Time Series Insights Gen2 環境に対してイベント ソースが構�
   ]
 }
 ```
+
 タイム シリーズ モデルの型には、イベントに対する式および計算ルールを指定する多数の変数を含めることができます。 タイム シリーズ モデル変数を定義する方法の詳細については、[こちら](./concepts-variables.md)を参照してください
 
 ## <a name="next-steps"></a>次のステップ
 
-- API を使用してモデルを編集する方法の詳細について、[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/preview-model)のリファレンス ドキュメントを参照します。
+* API を使用してモデルを編集する方法の詳細について、[タイム シリーズ モデル](https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis)のリファレンス ドキュメントを参照します。
 
-- [タイム シリーズ モデル変数](./concepts-variables.md)を使用して作成できる数式と計算を確認します
+* [タイム シリーズ モデル変数](./concepts-variables.md)を使用して作成できる数式と計算を確認します
 
-- Azure Time Series Insights Gen2 での[データのクエリ](concepts-query-overview.md)について学習します
+* Azure Time Series Insights Gen2 での[データのクエリ](concepts-query-overview.md)について学習します

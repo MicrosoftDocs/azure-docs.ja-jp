@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 017de2f66d6e57c9081e0d1ed53232a4634d4f4f
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 4c448b8ed50863457da69db3f74b959f04e26ec1
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740273"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131856"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>音声サービス: ドキュメントの最新情報
 
@@ -56,7 +56,7 @@ ms.locfileid: "84740273"
 
 ### <a name="github-issues-opened-in-may"></a>5 月にオープンされた GitHub イシュー
 
-以下のイシューは 6 月にオープンされました。 次の表に、イシューをオープンしたユーザー、オープンされた日、およびその状態を示します。  
+以下のイシューは 5 月にオープンされました。 次の表に、イシューをオープンしたユーザー、オープンされた日、およびその状態を示します。  
 
 この表は毎月更新されるため、5月にオープンされたイシューのみが反映されています。  
 

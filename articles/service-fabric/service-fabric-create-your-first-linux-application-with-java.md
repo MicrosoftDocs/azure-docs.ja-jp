@@ -176,7 +176,7 @@ public static void main(String[] args) throws Exception {
 ```
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
-Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、端末からアプリケーションをビルドすることができます。
+Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、ターミナルからアプリケーションをビルドすることができます。
 Service Fabric Java 依存関係は、Maven からフェッチされます。 Service Fabric Java アプリケーションをビルドして操作するには、JDK と Gradle がインストールされている必要があります。 まだインストールされていない場合は、[Linux による Service Fabric の概要](service-fabric-get-started-linux.md#set-up-java-development)に関するページを参照し、JDK と Gradle のインストール手順を確認してください。
 
 アプリケーションをビルドしてパッケージ化するには、次のコマンドを実行します。

@@ -4,12 +4,12 @@ description: この記事では、オンプレミスの Windows Server のシス
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513851"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824272"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -17,7 +17,7 @@ ms.locfileid: "86513851"
 
 ## <a name="basic-troubleshooting"></a>基本的なトラブルシューティング
 
-システム状態のバックアップのトラブルシューティングを開始する前に、以下の検証を実行することをお勧めします。
+システム状態のバックアップのトラブルシューティングを開始する前に、以下の検証ステップを実行することをお勧めします。
 
 - [Microsoft Azure Recovery Services (MARS) エージェントが最新であることを確認する](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -77,12 +77,12 @@ PowerShell を使用して Windows Server バックアップをインストー�
 3. サーバー プールからサーバーを選択し、 **[次へ]** をクリックします。 サーバーの役割で、既定の選択のままにし、 **[次へ]** をクリックします。
 4. **[機能]** タブで **[Windows Server バックアップ]** を選択し、 **[次へ]** をクリックします。
 
-    ![features](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![[機能の選択] ウィンドウ](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. **[確認]** タブで、 **[インストール]** をクリックして、インストール プロセスを開始します。
 6. **[結果]** タブに、Windows Server バックアップ機能が Windows Server に正常にインストールされていることが示されます。
 
-    ![結果](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![インストールの結果](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>システム ボリューム情報のアクセス許可
 
@@ -90,7 +90,7 @@ PowerShell を使用して Windows Server バックアップをインストー�
 
 ### <a name="dependent-services"></a>依存サービス
 
-以下のサービスが実行状態にあることを確認します。
+次のサービスが実行中の状態であることを確認します。
 
 **サービス名** | **スタートアップの種類**
 --- | ---

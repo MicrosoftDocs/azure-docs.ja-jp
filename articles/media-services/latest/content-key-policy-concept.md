@@ -3,27 +3,29 @@ title: Media Services のコンテンツ キー ポリシー - Azure | Microsoft
 description: この記事では、コンテンツ キー ポリシーとは何か、および Azure Media Services でそれらを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 07/26/2019
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dd19d0730b25685b008af16d1c1eac6537750612
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585992"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89297271"
 ---
 # <a name="content-key-policies"></a>コンテンツ キー ポリシー
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 
 
-ストリームで暗号化オプションを指定するには、[ストリーミング ポリシー](streaming-policy-concept.md)を作成し、それを[ストリーミング ロケーター](streaming-locators-concept.md)に関連付ける必要があります。 コンテンツ キー ([資産](assets-concept.md)へのアクセスをセキュリティで保護する) をエンド クライアントに届ける方法を構成するには、[コンテンツ キー ポリシー](https://docs.microsoft.com/rest/api/media/contentkeypolicies)を作成します。 構成が指定されたキーをクライアントに配信するために満たす必要がある要件 (制限) をコンテンツ キー ポリシーに設定する必要があります。 コンテンツ キー ポリシーは、クリアなストリーミングまたはダウンロードには必要ありません。 
+ストリームで暗号化オプションを指定するには、[ストリーミング ポリシー](streaming-policy-concept.md)を作成し、それを[ストリーミング ロケーター](streaming-locators-concept.md)に関連付ける必要があります。 コンテンツ キー ([資産](assets-concept.md)へのアクセスをセキュリティで保護する) をエンド クライアントに届ける方法を構成するには、[コンテンツ キー ポリシー](/rest/api/media/contentkeypolicies)を作成します。 構成が指定されたキーをクライアントに配信するために満たす必要がある要件 (制限) をコンテンツ キー ポリシーに設定する必要があります。 コンテンツ キー ポリシーは、クリアなストリーミングまたはダウンロードには必要ありません。 
 
 通常、コンテンツ キー ポリシーは、[ストリーミング ロケーター](streaming-locators-concept.md)に関連付けます。 または、[ストリーミング ポリシー](streaming-policy-concept.md)内部でコンテンツ キー ポリシーを指定できます (高度なシナリオ用にカスタム ストリーミング ポリシーを作成する場合)。 
 
@@ -43,7 +45,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 * 新しいポリシーを作成する必要がある場合は、資産に対して新しいストリーミング ロケーターを作成する必要があります。
 * Media Services にコンテンツ キーを自動生成させることをお勧めします。 
 
-   通常、存続期間の長いキーを使用し、[Get](https://docs.microsoft.com/rest/api/media/contentkeypolicies/get) でコンテンツ キー ポリシーの存在を確認します。 キーを取得するには、別のアクション メソッドを呼び出してシークレットまたは資格情報を取得する必要があります。次の例を参照してください。
+   通常、存続期間の長いキーを使用し、[Get](/rest/api/media/contentkeypolicies/get) でコンテンツ キー ポリシーの存在を確認します。 キーを取得するには、別のアクション メソッドを呼び出してシークレットまたは資格情報を取得する必要があります。次の例を参照してください。
 
 ## <a name="example"></a>例
 

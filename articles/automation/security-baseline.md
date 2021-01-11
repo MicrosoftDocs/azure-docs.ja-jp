@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 88f06bd30c97f857cd5a81068322a95c480a7b34
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e78f4133e7f722870f6c84de2ab7e784cd151d79
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187423"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562686"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -34,7 +34,7 @@ Runbook の分離性をさらに高めるために、Azure 仮想マシンで実
 
 または、特定の要件がある場合は、それを満たすために Azure Firewall を使用することもできます。
 
-* [Azure における仮想ネットワークと仮想マシン](../virtual-machines/windows/network-overview.md)
+* [Azure における仮想ネットワークと仮想マシン](../virtual-machines/network-overview.md)
 
 * [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
@@ -162,7 +162,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、R
 
 **ガイダンス**: ネットワークのセキュリティおよびトラフィック フローに関連する NSG およびその他のリソースにタグを使用します。 個々の NSG 規則については、[説明] フィールドを使用して、ネットワークとの間のトラフィックを許可する規則のビジネス ニーズや期間 (など) を指定します。
 
-すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ("タグとその値が必要" など) を使用します。
+すべてのリソースが確実にタグ付きで作成され、既存のタグ付けされていないリソースがユーザーに通知されるようにするには、タグ付けに関連したいずれかの組み込みの Azure Policy 定義 ([タグとその値が必要] など) を使用します。
 
 Azure PowerShell または Azure CLI を使用して、タグに基づいてリソースを検索したり、リソースに対するアクションを実行したりすることもできます。
 
@@ -220,7 +220,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 * [リンクされた Log Analytics ワークスペースでサポートされるリージョン](./how-to/region-mappings.md)
 
-* [Update Management ログにクエリを実行する](./automation-update-management-query-logs.md)
+* [Update Management ログにクエリを実行する](./update-management/update-mgmt-query-logs.md)
 
 **Azure Security Center の監視**: はい
 
@@ -646,9 +646,9 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Azure Update Management を使用して、仮想マシンの更新プログラムおよび修正プログラムを管理します。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ製ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure における Update Management](./automation-update-management.md)
+* [Azure における Update Management](./update-management/update-mgmt-overview.md)
 
-* [Azure VM の更新プログラムとパッチの管理](./automation-tutorial-update-management.md)
+* [VM の更新プログラムと修正プログラムの管理](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -660,9 +660,9 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合は、Azure Update Management を使用して、仮想マシンの更新プログラムおよび修正プログラムを管理できます。 Update Management は、サポート対象の Windows システムへの修正プログラムの適用を、ローカルに構成された更新リポジトリに依存しています。 System Center Updates Publisher (Updates Publisher) などのツールを使用して、カスタム更新プログラムを Windows Server Update Services (WSUS) に公開できます。 このシナリオでは、サード パーティ ソフトウェアで Configuration Manager を更新リポジトリとして使用するマシンに、Update Management で修正プログラムを適用できます。
 
-* [Azure の Update Management ソリューション](./automation-update-management.md)
+* [Azure の Update Management ソリューション](./update-management/update-mgmt-overview.md)
 
-* [Azure VM の更新プログラムとパッチの管理](./automation-tutorial-update-management.md)
+* [Azure VM の更新プログラムとパッチの管理](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -848,7 +848,7 @@ Azure Virtual Machines による Hybrid Runbook Worker を使用している場�
 
 **ガイダンス**: Azure 環境にデプロイされたリスクの高いアプリケーションは、仮想ネットワーク、サブネット、サブスクリプション、管理グループなどの構成体を使用する個別のネットワークおよびリソース コンテナーを使用して分離でき、Azure Firewall、Web アプリケーション ファイアウォール (WAF)、またはネットワーク セキュリティ グループ (NSG) を使用して十分に保護できます。
 
-* [Azure における仮想ネットワークと仮想マシン](../virtual-machines/windows/network-overview.md)
+* [Azure における仮想ネットワークと仮想マシン](../virtual-machines/network-overview.md)
 
 * [Azure Firewall の概要](../firewall/overview.md)
 
@@ -918,7 +918,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center の
 
 * [Azure Policy の効果について](../governance/policy/concepts/effects.md)
 
-* [Azure Resource Manager テンプレートを使用して Automation アカウントをデプロイする](./automation-create-account-template.md#deploy-the-template)
+* [Azure Resource Manager テンプレートを使用して Automation アカウントをデプロイする](./quickstart-create-automation-account-template.md#deploy-the-template)
 
 * [Azure Automation 用の Azure Policy サンプルの組み込み](./policy-samples.md)
 
@@ -1064,7 +1064,7 @@ Hybrid Runbook Worker 機能を使用する場合は、任意のクラウドま�
 
 **ガイダンス**: コード内で資格情報を特定する資格情報スキャナーを実装します。 また、資格情報スキャナーを使うと、検出された資格情報を、Azure Key Vault などのより安全な場所に移動しやすくなります。
 
-* [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.htm)
+* [資格情報スキャナーを設定する方法](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -1124,7 +1124,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 * [Azure Automation リソースの Azure Resource Manager テンプレートのリファレンス](/azure/templates/microsoft.automation/allversions)
 
-* [Azure Resource Manager テンプレートを使用して Automation アカウントを作成する](./automation-create-account-template.md)
+* [Azure Resource Manager テンプレートを使用して Automation アカウントを作成する](./quickstart-create-automation-account-template.md)
 
 * [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1150,7 +1150,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 * [Azure Automation リソースの Azure Resource Manager テンプレートのリファレンス](/azure/templates/microsoft.automation/allversions)
 
-* [Azure Resource Manager テンプレートを使用して Automation アカウントを作成する](./automation-create-account-template.md)
+* [Azure Resource Manager テンプレートを使用して Automation アカウントを作成する](./quickstart-create-automation-account-template.md)
 
 * [Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)
 
@@ -1232,7 +1232,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 ### <a name="103-test-security-response-procedures"></a>10.3:セキュリティ対応手順のテスト
 
-**ガイダンス**:ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
+**ガイダンス**: ご利用のシステムのインシデント対応機能を定期的にテストする演習を実施することで、ご利用の Azure リソースの保護を支援できます。 弱点やギャップを特定し、必要に応じて計画を見直します。
 
 * [NIST の出版物 - IT 計画と機能に関するテスト、トレーニング、および演習プログラムのガイド](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 

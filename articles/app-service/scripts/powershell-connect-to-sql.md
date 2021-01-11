@@ -5,13 +5,13 @@ tags: azure-service-management
 ms.assetid: 055440a9-fff1-49b2-b964-9c95b364e533
 ms.topic: sample
 ms.date: 03/20/2017
-ms.custom: mvc
-ms.openlocfilehash: 70859701029eccf66035ed57354783b4c94fbfe8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 3b355a830703b51264d2f4b819d5be7f2627b4e2
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083327"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89077791"
 ---
 # <a name="connect-an-app-service-app-to-sql-database"></a>App Service アプリを SQL Database に接続する
 

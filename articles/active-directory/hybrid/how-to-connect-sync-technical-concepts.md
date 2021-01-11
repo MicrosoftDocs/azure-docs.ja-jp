@@ -16,19 +16,19 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 251d156afbd367e83945397760a6afe98a1cfb98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 01e53b30a4c27296e30e031ffb771697afa8e1e9
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85356935"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87019677"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同期: 技術的概念
 この記事は、 [アーキテクチャの理解](how-to-connect-sync-technical-concepts.md)に関するトピックの概要です。
 
 Azure AD Connect Sync は、堅牢なメタディレクトリ同期プラットフォームを基盤としています。
 以下のセクションでは、メタディレクトリ同期の概念を説明します。
-Azure Active Directory Sync Services は、MIIS、ILM、FIM を基盤とし、データ ソースへの接続、データ ソース間でのデータの同期、ID のプロビジョニングとプロビジョニング解除のための次期型プラットフォームを提供します。
+Azure Active Directory Sync Services では、MIIS (Microsoft Identity Integration Server)、ILM (Identity Lifecycle Manager)、FIM (Forefront Identity Manager) を基盤とし、データ ソースへの接続、データ ソース間でのデータの同期、ID のプロビジョニングとプロビジョニング解除のための次期型プラットフォームを提供します。
 
 ![技術的概念](./media/how-to-connect-sync-technical-concepts/scenario.png)
 

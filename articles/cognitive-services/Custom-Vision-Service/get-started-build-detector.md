@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/14/2020
+ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: ba121400368f37c4a562a9c34e209c59d15b173c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404110"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549549"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>クイック スタート:Custom Vision を使用してオブジェクト検出器を構築する方法
 
 このクイックスタートでは、Custom Vision Web サイトをとおしてオブジェクト検出器を構築する方法について説明します。 検出器モデルを構築すると、オブジェクト検出のために Custom Vision Service を使用できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,9 +55,10 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
     |---|---|
     |__全般__| さまざまなオブジェクト検出タスク用に最適化されています。 他のドメインのいずれも適切でないか、どのドメインを選択すればよいか不確かな場合は、汎用ドメインを選択してください。 |
     |__ロゴ__|画像内のブランド ロゴを探すために最適化されています。|
+    |__棚の製品__|棚で製品を検出して分類するために最適化されています。|
     |__コンパクト ドメイン__| モバイル デバイス上でのリアルタイムのオブジェクト検出の制約に最適化されています。 コンパクト ドメインで生成されたモデルは、ローカルで実行するためにエクスポートできます。|
 
-1. 最後に、 __[プロジェクトの作成]__ を選択します。
+1. 最後に、__[プロジェクトの作成]__ を選択します。
 
 ## <a name="choose-training-images"></a>トレーニング画像を選択する
 
@@ -83,11 +84,11 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ## <a name="train-the-detector"></a>検出器をトレーニングする
 
-検出器モデルをトレーニングするには、 **[トレーニング]** ボタンを選択します。 検出器は、現在のすべての画像とタグを使用し、タグ付けされた各オブジェクトを識別するモデルを作成します。
+検出器モデルをトレーニングするには、**[トレーニング]** ボタンを選択します。 検出器は、現在のすべての画像とタグを使用し、タグ付けされた各オブジェクトを識別するモデルを作成します。
 
 ![Web ページのヘッダー ツールバーの右上にあるトレーニングのボタン](./media/getting-started-build-a-classifier/train01.png)
 
-トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、 **[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
+トレーニング プロセスの所要時間は、わずか数分間のはずです。 この時間の間、**[パフォーマンス]** タブにトレーニング プロセスに関する情報が表示されます。
 
 ![メイン セクションにトレーニング ダイアログが表示されたブラウザー ウィンドウ](./media/get-started-build-detector/training.png)
 
@@ -106,7 +107,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ## <a name="manage-training-iterations"></a>トレーニングのイテレーションを管理する
 
-検出器をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して、新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウにも **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
+検出器をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して、新しい_イテレーション_を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウにも **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
 
 トレーニング済みのモデルにプログラムでアクセスする方法については、「[Prediction API でモデルを使用する](./use-prediction-api.md)」を参照してください。
 

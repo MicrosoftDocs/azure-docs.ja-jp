@@ -1,5 +1,5 @@
 ---
-title: コンピューティング先とは
+title: コンピューティング ターゲットとは
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用してモデルをトレーニングまたはデプロイする場所を定義します。
 services: machine-learning
@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 06/26/2020
-ms.openlocfilehash: 95177282ad5b07a600f11f72789e0fc08f4b52c0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 07/27/2020
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199813"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141927"
 ---
-#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング先とは 
+#  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは 
 
 **コンピューティング ターゲット**とは、トレーニング スクリプトを実行したり、サービスのデプロイをホストしたりする、指定されたコンピューティング リソース/環境のことです。 この場所は、ローカル コンピューターでも、クラウドベースのコンピューティング リソースでもかまいません。 コンピューティング ターゲットを使用すると、コードを変更しなくても、後でコンピューティング環境を容易に変更できます。  
 
@@ -53,7 +53,7 @@ Azure Machine Learning コンピューティング インスタンスまたは�
 * Azure portal
 * Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) と [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) クラス
 * [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets) (プレビュー)
-* Resource Manager テンプレート
+* Resource Manager テンプレート。 テンプレートの例については、[Azure Machine Learning コンピューティング テンプレートの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-amlcompute)に関する記事を参照してください。
 * 機械学習の [Azure CLI 用拡張機能](reference-azure-machine-learning-cli.md#resource-management)。  
 
 作成されると、これらのコンピューティング リソースは、他の種類のコンピューティング ターゲットとは異なり、自動的にワークスペースの一部になります。
@@ -85,7 +85,9 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | D | なし |
 | Dv2 | なし |  
 | DSv2 | なし |  
-| FSv2 | なし |  
+| FSv2 | なし | 
+| HBv2 | 承認が必要 |  
+| HCS | 承認が必要 |  
 | M | 承認が必要 |
 | NC | なし |    
 | NCsv2 | 承認が必要 |

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
-ms.custom: tracking-python
-ms.openlocfilehash: 747878a4fa9e6ad43f7eeb507f0cd7a070c6d743
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: fccd3209d88ecd0f7e2baa06a55555a1370c4ec4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262907"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586309"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する方法
 
@@ -206,7 +206,10 @@ sproc_definition = {
     'id': 'spCreateToDoItems',
     'serverScript': file_contents,
 }
-sproc = client.CreateStoredProcedure(container_link, sproc_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+sproc = container.create_stored_procedure(container_link, sproc_definition)
 ```
 
 次のコードは、Python SDK を使用してストアド プロシージャを呼び出す方法を示しています。
@@ -219,7 +222,7 @@ new_item = [{
     'description':'Pick up strawberries',
     'isComplete': False
 }]
-client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
+container.execute_stored_procedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
 ## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>プリトリガーの実行方法
@@ -367,7 +370,10 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Pre,
     'triggerOperation': documents.TriggerOperation.Create
 }
-trigger = client.CreateTrigger(container_link, trigger_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+trigger = container.create_trigger(container_link, trigger_definition)
 ```
 
 次のコードは、Python SDK を使用してプリトリガーを呼び出す方法を示しています。
@@ -376,8 +382,8 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 container_link = 'dbs/myDatabase/colls/myContainer'
 item = {'category': 'Personal', 'name': 'Groceries',
         'description': 'Pick up strawberries', 'isComplete': False}
-client.CreateItem(container_link, item, {
-                  'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
+container.create_item(container_link, item, {
+                  'pre_trigger_include': 'trgPreValidateToDoItemTimestamp'})
 ```
 
 ## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>ポストトリガーの実行方法
@@ -514,7 +520,10 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Post,
     'triggerOperation': documents.TriggerOperation.Create
 }
-trigger = client.CreateTrigger(container_link, trigger_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+trigger = container.create_trigger(container_link, trigger_definition)
 ```
 
 次のコードは、Python SDK を使用してポストトリガーを呼び出す方法を示しています。
@@ -523,8 +532,8 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 container_link = 'dbs/myDatabase/colls/myContainer'
 item = {'name': 'artist_profile_1023', 'artist': 'The Band',
         'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-client.CreateItem(container_link, item, {
-                  'postTriggerInclude': 'trgPostUpdateMetadata'})
+container.create_item(container_link, item, {
+                  'post_trigger_include': 'trgPostUpdateMetadata'})
 ```
 
 ## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>ユーザー定義関数を操作する方法
@@ -656,14 +665,17 @@ udf_definition = {
     'id': 'Tax',
     'serverScript': file_contents,
 }
-udf = client.CreateUserDefinedFunction(container_link, udf_definition)
+client = cosmos_client.CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+udf = container.create_user_defined_function(container_link, udf_definition)
 ```
 
 次のコードは、Python SDK を使用してユーザー定義関数を呼び出す方法を示しています。
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(
+results = list(container.query_items(
     container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 

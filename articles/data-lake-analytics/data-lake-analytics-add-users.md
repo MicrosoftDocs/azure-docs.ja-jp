@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 09f866d7ed72e82770a7f3a0fe5da24bb864851f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7f9af576640e6d269ff5a44d7b0e2a529c20c505
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126076"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502938"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portal でユーザーを追加する
 
@@ -33,7 +33,7 @@ ms.locfileid: "87126076"
 1.  Azure Data Lake Storage Gen1 アカウントを見つけます。
 2.  **[ユーザー]** をクリックします。
 3. **[追加]** をクリックします。
-4.  このグループを割り当てる Azure RBAC ロールを選択します。
+4.  このグループを割り当てる Azure ロールを選択します。
 5.  閲覧者ロールを割り当てます。 このロールには、ADLSGen1 に格納されているデータの参照/管理に必要な最小限のアクセス許可が割り当てられています。 Azure サービスの管理を目的としていないグループの場合は、このロールに割り当てます。
 6.  グループの名前を入力します。
 7.  **[OK]** をクリックします。
@@ -54,4 +54,3 @@ ms.locfileid: "87126076"
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 * [Azure PowerShell を使用して Azure Data Lake Analytics を管理する](data-lake-analytics-manage-use-powershell.md)
-

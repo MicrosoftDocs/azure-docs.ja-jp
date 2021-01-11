@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
-ms.openlocfilehash: 87af7f0f9b446fb3a54a600f61409c2cfc1a2494
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 652c7cbfbe63ef2ae9a0d54e05407152ea300f1d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189365"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006995"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses"></a>複数のパブリック IP アドレスを持つ Azure Firewall をデプロイする
 
@@ -37,9 +37,9 @@ $fw = New-AzFirewall -Name <firewall name> -ResourceGroupName $rgName `
      -VirtualHubId $vHubId 
 ```
 
-### <a name="delete-a-public-ip-address"></a>パブリック IP アドレスの削除
+### <a name="update-a-public-ip-address"></a>パブリック IP アドレスを更新する
 
-Azure PowerShell を使用して、Azure Firewall からパブリック IP アドレスを削除できます。 次の例では、1 つのパブリック IP アドレスをファイアウォールから削除します。 3 つのパブリック IP アドレスで開始されています。
+Azure Firewall のパブリック IP アドレスは、Azure PowerShell を使用して更新できます。 次の例では、1 つのパブリック IP アドレスをファイアウォールから削除します。 3 つのパブリック IP アドレスで開始されています。
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <subscription ID>

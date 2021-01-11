@@ -1,6 +1,6 @@
 ---
 title: クラウド ソリューション プロバイダー プログラム用の StorSimple Virtual Array をデプロイする
-description: StorSimple と StorSimple パートナー向け CSP に関する概要。
+description: CSP パートナーが顧客を追加または新しいサブスクリプションを既存の顧客に追加し、CSP に StorSimple Virtual Array をデプロイするサービスを作成する方法について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77466911"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182223"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム用の StorSimple Virtual Array をデプロイする
 

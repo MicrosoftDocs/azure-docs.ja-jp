@@ -3,22 +3,25 @@ title: OptionsGroup UI 要素
 description: Azure Portal の Microsoft.Common.OptionsGroup UI 要素について説明します。 管理対象アプリケーションをデプロイするとき、利用できるオプションからユーザーが選択できるようにします。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 07/09/2020
 ms.author: tomfitz
-ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa73b4cbded98291a14792a7151df9fdfb885b53
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75649779"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87004194"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 要素
 
-使用可能なオプションの行を備えた選択コントロールです。
+OptionsGroup コントロールを使用して、ユーザーが 2 つ以上の選択肢から 1 つのオプションを選択できるようにします。 ユーザーは、オプションを 1 つだけ選択できます。
+
+> [!NOTE]
+> 以前は、このコントロールでは、オプションが水平方向に表示されていました。 現在、このコントロールでは、オプションはラジオ ボタンのように垂直に表示されます。
 
 ## <a name="ui-sample"></a>UI サンプル
 
-![Microsoft.Common.OptionsGroup](./media/managed-application-elements/microsoft.common.optionsgroup.png)
+:::image type="content" source="./media/managed-application-elements/microsoft-common-optionsgroup-2.png" alt-text="Microsoft.Common.OptionsGroup":::
 
 ## <a name="schema"></a>スキーマ
 

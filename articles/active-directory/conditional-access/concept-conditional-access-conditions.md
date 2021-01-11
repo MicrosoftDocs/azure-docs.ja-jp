@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121b3ced2e021f3907983623ea60185286797670
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024453"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042481"
 ---
 # <a name="conditional-access-conditions"></a>条件付きアクセス:条件
 
 管理者は条件付きアクセスポリシー内で、リスク、デバイス プラットフォーム、場所などの条件からのシグナルを利用して、ポリシーの決定を強化できます。 
 
-![条件付きアクセス ポリシーを定義し、条件を指定する](./media/concept-conditional-access-conditions/conditional-access-conditions.png)
+[ ![条件付きアクセス ポリシーを定義し、条件を指定する](./media/concept-conditional-access-conditions/conditional-access-conditions.png)](./media/concept-conditional-access-conditions/conditional-access-conditions.png#lightbox)
 
 複数の条件を組み合わせて、きめ細かで具体的な条件付きアクセス ポリシーを作成することができます。
 
@@ -60,18 +60,28 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 
 場所に関する詳細については、「[Azure Active Directory 条件付きアクセスの場所の条件の概要](location-condition.md)」の記事を参照してください。
 
-## <a name="client-apps-preview"></a>クライアント アプリ (プレビュー)
+## <a name="client-apps"></a>クライアント アプリ
 
-条件付きアクセス ポリシーは、既定では、ブラウザー ベースのアプリケーションと、最新の認証プロトコルを利用するアプリケーションに適用されます。 これらのアプリケーションに加えて、管理者は、Exchange ActiveSync クライアントと、レガシ プロトコルを利用する他のクライアントを含めることを選択できます。
+既定では、新しく作成されたすべての条件付きアクセス ポリシーは、クライアント アプリの条件が構成されていない場合でも、すべてのクライアント アプリの種類に適用されます。 
 
-- Browser
-   - これには、SAML、WS-Federation、OpenID Connect、OAuth 機密クライアントとして登録されているサービスなどのプロトコルを使用する Web ベースのアプリケーションが含まれます。
-- モバイル アプリとデスクトップ クライアント
-   - 先進認証クライアント
-      - このオプションには、Office デスクトップや Phone アプリケーションなどのアプリケーションが含まれます。
+> [!NOTE]
+> クライアント アプリの条件の動作は、2020 年 8 月に更新されました。 既存の条件付きアクセス ポリシーがある場合、それらは変更されません。 ただし、既存のポリシーをクリックすると、構成の切り替えが削除されており、ポリシーが適用されるクライアント アプリが選択されます。
+
+> [!IMPORTANT]
+> レガシ認証クライアントからのサインインでは MFA はサポートされず、デバイスの状態情報は Azure AD に渡されないため、条件付きアクセス許可制御によってブロックされます (MFA または準拠デバイスを求められるなど)。 レガシ認証を使用する必要があるアカウントがある場合は、それらのアカウントをポリシーから除外するか、先進認証クライアントにのみ適用するようにポリシーを構成する必要があります。
+
+**[構成]** は切り替え可能で、 **[はい]** に設定されている場合は、選択されている項目に適用され、 **[いいえ]** に設定されている場合は、レガシ認証クライアントと先進認証クライアントを含むすべてのクライアント アプリに適用されます。 この切り替えは、2020 年 8 月より前に作成されたポリシーには表示されません。
+
+- 先進認証クライアント
+   - Browser
+      - これには、SAML、WS-Federation、OpenID Connect、OAuth 機密クライアントとして登録されているサービスなどのプロトコルを使用する Web ベースのアプリケーションが含まれます。
+   - モバイル アプリとデスクトップ クライアント
+      -  このオプションには、Office デスクトップや Phone アプリケーションなどのアプリケーションが含まれます。
+- レガシ認証クライアント
    - Exchange ActiveSync クライアント
-      - 既定では、これには Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。 **[サポートされているプラットフォームにのみポリシーを適用する]** を選択すると、iOS、Android、Windows などのサポートされているプラットフォームに限定されます。
+      - これには Exchange ActiveSync (EAS) プロトコルのすべての使用が含まれます。
       - ポリシーによって Exchange ActiveSync の使用がブロックされると、影響を受けるユーザーには 1 通の検疫電子メールが送信されます。 この電子メールには、ブロックされた理由に関する情報が記載され、可能な場合は修復の手順が含められます。
+      - 管理者は、条件付きアクセス MS Graph API を使用して、サポートされているプラットフォーム (iOS、Android、Windows など) にのみポリシーを適用できます。
    - その他のクライアント
       - このオプションには、最新の認証をサポートしていない基本またはレガシ認証プロトコルを使用するクライアントが含まれます。
          - 認証済み SMTP - 電子メール メッセージを送信するために POP および IMAP クライアントで使用されます。

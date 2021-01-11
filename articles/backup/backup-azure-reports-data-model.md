@@ -3,12 +3,12 @@ title: Azure Backup 診断イベントのデータ モデル
 description: このデータ モデルは、Log Analytics (LA) に診断イベントを送信するリソース固有モードを参照しています。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 46d40694da4eb025afc11da0f14b28691bf13bb8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8cc671152485bc2781a80f96e48b81263dea221b
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538872"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88892526"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Azure Backup 診断イベントのデータ モデル
 
@@ -53,7 +53,7 @@ ms.locfileid: "86538872"
 | ProtectedContainerWorkloadType    | Text          | 保護されたコンテナーのバックアップの種類。 たとえば、IaaSVMContainer |
 | ProtectionGroupName               | Text          | 該当する場合、SC DPM、および MABS で、バックアップ項目が保護されている保護グループの名前 |
 | ResourceGroupName                 | Text          | 収集されるデータのリソースのリソース グループ (例: Recovery Services コンテナー) |
-| SchemaVersion                     | Text          | このフィールドは、スキーマの現在のバージョン (**V2**) を表します |
+| SchemaVersion                     | Text          | このフィールドは、スキーマの現在のバージョンを表します。 ここでは **V2** です |
 | SecondaryBackupProtectionState    | Text          | バックアップ項目の二次的な保護が有効になっているかどうか  |
 | State                             | Text          | バックアップ項目オブジェクトの状態。 たとえば、アクティブ、削除済み |
 | StorageReplicationType            | Text          | コンテナーのストレージ レプリケーションの種類。 例: GeoRedundant |
@@ -165,12 +165,12 @@ ms.locfileid: "86538872"
 | DiffBackupTime                  | Time           | Azure VM バックアップの SQL の差分バックアップの時刻     |
 | LogBackupFrequency              | 10 進数 | SQL のログ バックアップの頻度                            |
 | LogBackupRetentionDuration      | 10 進数 | Azure VM バックアップの SQL のログ バックアップのリテンション期間 |
-| MonthlyRetentionDaysOfTheMonth  | Text           | 毎月のリテンション期間が構成されたときの月の週  例: 最初、最後など |
+| MonthlyRetentionDaysOfTheMonth  | Text           | 毎月のリテンション期間が構成されたときの月の週  例: 最初、最後 |
 | MonthlyRetentionDaysOfTheWeek   | Text           | 毎月のリテンション期間に選択された曜日              |
 | MonthlyRetentionDuration        | Text           | 構成されたバックアップに使用される合計のリテンション期間 (月単位)    |
 | MonthlyRetentionFormat          | Text           | 毎月のリテンション期間に対する構成の種類。 例: 日単位の毎日、週単位の毎週 |
 | MonthlyRetentionTimes           | Text           | 毎月のリテンション期間が構成される日付と時刻           |
-| MonthlyRetentionWeeksOfTheMonth | Text           | 毎月のリテンション期間が構成されたときの月の週   例: 最初、最後など |
+| MonthlyRetentionWeeksOfTheMonth | Text           | 毎月のリテンション期間が構成されたときの月の週   例: 最初、最後 |
 | PolicyName                      | Text           | 定義されたポリシーの名前                                   |
 | PolicyUniqueId                  | Text           | ポリシーを識別する一意の ID                             |
 | PolicyTimeZone                  | Text           | ポリシー時間フィールドがログで指定されているタイムゾーン |

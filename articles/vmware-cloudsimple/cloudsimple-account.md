@@ -1,6 +1,6 @@
 ---
 title: CloudSimple アカウントの管理 - Azure
-description: CloudSimple アカウントの管理について説明します
+description: Cloudsimple サービスと一緒に作成され、Azure サブスクリプションに関連付けられる CloudSimple アカウントの管理について説明します。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a180e2ba6c1a610116271d5a9b6e3fdf562cecdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68ddea6c58bfff5e82643acc947ac1e7de76d699
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025114"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141042"
 ---
 # <a name="account-management-overview"></a>アカウント管理の概要
 

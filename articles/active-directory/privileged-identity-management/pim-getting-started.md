@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cad6c41b465e14b11d4fa7b8e7fa6037d49e8eae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bad5b0256ee445767689ea2752e918a1fbf5fae
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742914"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815999"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management の使用開始
 
@@ -38,9 +38,7 @@ Privileged Identity Management を使用するには、次のライセンスの�
 
 ## <a name="prepare-pim-for-azure-ad-roles"></a>Azure AD ロール用に PIM を準備する
 
-ディレクトリに対して Privileged Identity Management を有効にしたら、Azure AD ロールを管理するために Privileged Identity Management を準備できます。
-
-Azure AD ロールを準備するために推奨されるタスクは次のとおりです。
+Azure AD ロールを管理できるように Privileged Identity Management を準備する場合に推奨されるタスクを次に示します。
 
 1. [Azure AD ロールの設定を構成する](pim-how-to-change-default-settings.md)。
 1. [資格に応じて割り当てる](pim-how-to-add-role-to-user.md)。
@@ -48,9 +46,7 @@ Azure AD ロールを準備するために推奨されるタスクは次のと�
 
 ## <a name="prepare-pim-for-azure-roles"></a>Azure ロール用に PIM を準備する
 
-ディレクトリに対して Privileged Identity Management を有効にしたら、サブスクリプションの Azure リソース アクセス用の Azure ロールを管理するために Privileged Identity Management を準備できます。
-
-Azure ロールを準備するために推奨されるタスクは次のとおりです。
+サブスクリプション用の Azure ロールを管理できるように Privileged Identity Management を準備する場合に推奨されるタスクを次に示します。
 
 1. [Azure リソースを見つける](pim-resource-roles-discover-resources.md)
 1. [Azure ロールの設定を構成する](pim-resource-roles-configure-role-settings.md)。
@@ -82,15 +78,15 @@ Privileged Identity Management を簡単に開けるようにするには、Azur
 
     ![[すべてのサービス] でのAzure AD Privileged Identity Management](./media/pim-getting-started/pim-all-services-find.png)
 
-1. [Privileged Identity Management Quickstart]\(Privileged Identity Management のクイックスタート\) を選択します。
+1. Privileged Identity Management Quickstart の **[クイック スタート]** を選択します。
 
-1. [Privileged Identity Management Quickstart] (Privileged Identity Management のクイックスタート) ブレードをダッシュボードにピン留めするには、 **[ダッシュボードにブレードをピン留め]** をオンにします。
+1. Privileged Identity Management の **[クイックスタート]** ページをダッシュボードにピン留めするには、 **[ダッシュボードにブレードをピン留め]** を選択します。
 
-    ![[Privileged Identity Management] ブレードをダッシュボードにピン留めする画びょうアイコン](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![[Privileged Identity Management] ページをダッシュボードにピン留めする画びょうアイコン](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
     Azure ダッシュボードでは、タイルが次のように表示されます。
 
-    ![ダッシュボード上の [Privileged Identity Management Quickstart] (Privileged Identity Management のクイックスタート) タイル](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![ダッシュボード上の Privileged Identity Management Quickstart の [クイックスタート] タイル](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,5 +1,5 @@
 ---
-title: エンド ツー エンドのソリューションを接続する
+title: チュートリアル:エンド ツー エンドのソリューションを接続する"
 titleSuffix: Azure Digital Twins
 description: デバイス データによって駆動されるエンド ツー エンドの Azure Digital Twins ソリューションを構築するチュートリアル。
 author: baanders
@@ -7,22 +7,23 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b22505d5152b005a054d36fafb965006d04b201e
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131737"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401777"
 ---
-# <a name="build-out-an-end-to-end-solution"></a>エンド ツー エンドのソリューションを構築する
+# <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
 Azure Digital Twins インスタンスは、環境のライブ データによって駆動される完全なエンド ツー エンドのソリューションを設定するために、デバイスとデータの管理を目的とした他の Azure サービスに接続することができます。
 
 このチュートリアルでは次のことを行います。
-* Azure Digital Twins インスタンスを設定する
-* サンプル ビルディング シナリオを把握し、事前に作成されたコンポーネントをインスタンス化する
-* [Azure Functions](../azure-functions/functions-overview.md) アプリを使用して、[IoT Hub](../iot-hub/about-iot-hub.md) デバイスから、シミュレートしたテレメトリをデジタル ツインのプロパティにルーティングする
-* Azure Functions、エンドポイント、ルートを使用してデジタル ツインの通知を処理することにより、**ツイン グラフ**全体に変更を反映させる
+> [!div class="checklist"]
+> * Azure Digital Twins インスタンスを設定する
+> * サンプル ビルディング シナリオを把握し、事前に作成されたコンポーネントをインスタンス化する
+> * [Azure Functions](../azure-functions/functions-overview.md) アプリを使用して、[IoT Hub](../iot-hub/about-iot-hub.md) デバイスから、シミュレートしたテレメトリをデジタル ツインのプロパティにルーティングする
+> * Azure Functions、エンドポイント、ルートを使用してデジタル ツインの通知を処理することにより、**ツイン グラフ**全体に変更を反映させる
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
@@ -95,6 +96,20 @@ Query
 
 このセクションでは、事前に作成された関数アプリを発行し、Azure Active Directory (Azure AD) ID を割り当てることで、関数アプリから Azure Digital Twins に確実にアクセスできるようにします。 これらの手順が完了すると、このチュートリアルで以降、関数アプリに含まれている関数を使用できるようになります。 
 
+_**AdtE2ESample**_ プロジェクトが開かれた状態の Visual Studio ウィンドウに戻ります。関数アプリは、_**SampleFunctionsApp**_ プロジェクト ファイルにあります。 *[ソリューション エクスプローラー]* ペインに表示されています。
+
+### <a name="update-dependencies"></a>依存関係を更新する
+
+アプリを発行する前に、依存関係が最新であることを確認するようにお勧めします。含まれているすべてのパッケージが最新バージョンであることを確認してください。
+
+*[ソリューション エクスプローラー]* ペインで、 *[SampleFunctionsApp] > [依存関係]* の順に展開します。 *[パッケージ]* を右クリックし、 *[NuGet パッケージの管理]* を選択します。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp プロジェクトの [NuGet パッケージの管理]" border="false":::
+
+これで、NuGet パッケージ マネージャーが開かれます。 *[更新]* タブを選択し、更新するパッケージがある場合は、 *[すべてのパッケージを選択]* ボックスをオンにします。 次に、 *[更新]* をクリックします。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: NuGet パッケージ マネージャーですべてのパッケージを更新するように選択する":::
+
 ### <a name="publish-the-app"></a>アプリの発行
 
 _**AdtE2ESample**_ プロジェクトが開いた状態の Visual Studio ウィンドウに戻り、 *[ソリューション エクスプローラー]* ペインから _**[SampleFunctionsApp]**_ プロジェクト ファイルを右クリックして **[発行]** をクリックします。
@@ -134,19 +149,21 @@ Visual Studio のメイン ウィンドウに再度 *[発行]* ペインが表�
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Visual Studio で Azure 関数を発行する: 発行":::
 
 > [!NOTE]
-> 次のようなポップアップが表示されることがあります。:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio で Azure 関数を発行する: 資格情報" border="false":::
-> その場合は、 **[Attempt to retrieve credentials from Azure]\(Azure から資格情報の取得を試みる\)** を選択して **[保存]** を選択してください。
+> 次のようなポップアップが表示される場合は、以下のようにします。:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Visual Studio で Azure 関数を発行する: 資格情報" border="false":::
+> **[Attempt to retrieve credentials from Azure]\(Azure から資格情報の取得を試みる\)** 、 **[保存]** の順に選択します。
 >
-> 「*Functions ランタイムのバージョンが Azure で実行されているバージョンと一致しない*」という警告が表示された場合は、プロンプトに従って最新の Azure Functions ランタイム バージョンにアップグレードします。 この問題は、このチュートリアルの冒頭にある「*前提条件*」で推奨されているバージョンよりも古いバージョンの Visual Studio を使用している場合に発生する可能性があります。
+> "*Azure で関数のバージョンをアップグレード*" するようにという警告や、"*関数ランタイムのバージョンが Azure で実行されているバージョンと一致しない*" という警告が表示される場合は、次のようにしてください。
+>
+> 画面の指示に従って、最新の Azure Functions ランタイム バージョンにアップグレードします。 この問題は、このチュートリアルの冒頭にある「*前提条件*」で推奨されているバージョンよりも古いバージョンの Visual Studio を使用している場合に発生する可能性があります。
 
 ### <a name="assign-permissions-to-the-function-app"></a>関数アプリにアクセス許可を割り当てる
 
-次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*所有者*" アクセス許可を付与します。
+次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*Azure Digital Twins 所有者 (プレビュー)* " ロールを付与します。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。
 
-Azure Cloud Shell で次のコマンドを使用して、関数アプリがデジタル ツイン インスタンスを参照する目的で使用するアプリケーション設定を構成します。
+Azure Cloud Shell で次のコマンドを使用して、関数アプリが Azure Digital Twins インスタンスを参照する目的で使用するアプリケーション設定を構成します。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 次のコマンドを使用して、システムによって管理される ID を作成します。 出力の *principalId* フィールドを書き留めてください。
@@ -155,7 +172,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-その *principalId* 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*所有者*" ロールに割り当てます。
+出力からの *principalId* 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*Azure Digital Twins 所有者 (プレビュー)* " ロールに割り当てます。
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -339,7 +356,7 @@ az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-出力から `provisioningState` フィールドを探し、その値が "Succeeded" になっていることを確認します。
+出力から `provisioningState` フィールドを探し、その値が "Succeeded" になっていることを確認します。 また、エンドポイントがまだ作成されているという意味で、"Provisioning" と表示される場合もあります。 この場合は、数秒待ってからコマンドを再実行して、正常に完了したことを確認します。
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="エンドポイントの provisioningState が Succeeded であることを示すクエリの結果":::
 
@@ -349,11 +366,16 @@ Event Grid トピックと Azure Digital Twins エンドポイントに付けた
 
 次に、先ほど作成した Azure Digital Twins エンドポイントにイベントを送信する Azure Digital Twins ルートを作成します。
 
+[!INCLUDE [digital-twins-known-issue-cloud-shell](../../includes/digital-twins-known-issue-cloud-shell.md)]
+
 ```azurecli
 az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> --route-name <name-for-your-Azure-Digital-Twins-route>
 ```
 
 このコマンドからは、作成したルートについての情報が出力されます。
+
+>[!NOTE]
+>エンドポイント (前の手順のもの) は、それらを使用するイベント ルートをセットアップする前に、プロビジョニングを完了している必要があります。 エンドポイントの準備ができていないためにルートの作成が失敗する場合は、数分待ってからやり直してください。
 
 #### <a name="connect-the-function-to-event-grid"></a>Event Grid に関数を接続する
 
@@ -414,7 +436,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 このチュートリアルで作成したリソースが不要であれば、次の手順に従って削除してください。 
 
-Azure Cloud Shell から [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、両方の Azure Functions アプリが、ストレージなど、関連するリソースを含め、削除されます。
+[Azure Cloud Shell](https://shell.azure.com) から [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使用すると、リソース グループ内の Azure リソースをすべて削除できます。 これにより、リソース グループが削除され、Azure Digital Twins インスタンス、IoT ハブとハブ デバイスの登録、Event Grid トピックとそれに関連するサブスクリプション、Azure Functions アプリが、両方の機能やストレージなどの関連するリソースを含めて削除されます。
 
 > [!IMPORTANT]
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
@@ -429,14 +451,13 @@ az group delete --name <your-resource-group>
 az ad app delete --id <your-application-ID>
 ```
 
-最後に、ダウンロードしたプロジェクトのサンプル フォルダーをローカル コンピューターから削除します。
+最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダーを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、デバイスのライブ データによって駆動される Azure Digital Twins を紹介するエンド ツー エンドのシナリオを作成しました。
 
 今度は、次のチュートリアルの概念ドキュメントを参照し、ここで扱った要素についてさらに理解を深めましょう。
-* "[*概念: カスタム モデル*](concepts-models.md)"
 
-または、次のハウツー記事を足がかりとして、このチュートリアルで学んだプロセスについてさらに詳しい知識を身に付けることもできます。
-* [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
+> [!div class="nextstepaction"]
+> "[*概念: カスタム モデル*](concepts-models.md)"

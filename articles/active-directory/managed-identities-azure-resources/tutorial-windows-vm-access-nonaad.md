@@ -3,7 +3,7 @@ title: チュートリアル`:` マネージド ID を使用して Azure Key Vau
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: daveba
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/10/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7648f0c41731968c6cf8d2b2b2e55fffd9b5f53d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2890eb2211ac0a105363742a0e900e52a577ed27
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018776"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255827"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 
@@ -75,7 +75,7 @@ ms.locfileid: "87018776"
  
 ## <a name="access-data"></a>データにアクセスする  
 
-このセクションでは、VM ID を使用してアクセス トークンを取得し、それを使用して Key Vault からシークレットを取得する方法を説明します。 PowerShell 4.3.1 以上がインストールされていない場合、[最新バージョンをダウンロードしてインストールする](https://docs.microsoft.com/powershell/azure/)必要があります。
+このセクションでは、VM ID を使用してアクセス トークンを取得し、それを使用して Key Vault からシークレットを取得する方法を説明します。 PowerShell 4.3.1 以上がインストールされていない場合、[最新バージョンをダウンロードしてインストールする](/powershell/azure/)必要があります。
 
 最初に、VM のシステム割り当てマネージド ID を使用して、Key Vault に対して認証するためのアクセス トークンを取得します。
  
@@ -128,4 +128,4 @@ Key Vault からシークレットを取得した後は、名前とパスワー�
 このチュートリアルでは、Windows VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする方法について説明しました。  Azure Key Vault の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
->[Azure Key Vault](/azure/key-vault/key-vault-overview)
+>[Azure Key Vault](../../key-vault/general/overview.md)

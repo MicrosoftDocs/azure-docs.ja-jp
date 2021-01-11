@@ -1,6 +1,6 @@
 ---
 title: 例外管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs
-description: Threat Modeling Tool で公開されている脅威への対応
+description: Threat Modeling Tool での例外管理について説明します。 軽減策に関する情報とコード例をご覧ください。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 8f68bc5e4604f35f9c4c45cd3e38ddaf8d24cd03
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83650086"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89004461"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム: 例外管理 | 対応策 
+# <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム:例外管理 | 対応策 
 | 製品/サービス | [アーティクル] |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF- serviceDebug ノードを構成ファイルに含めない](#servicedebug)</li><li>[WCF- serviceMetadata ノードを構成ファイルに含めない](#servicemetadata)</li></ul> |
@@ -202,7 +203,7 @@ ASP.NET Web API での例外処理とモデルの検証の詳細については�
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [ASP.NET エラー ページ設定の編集ダイアログ ボックス](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **手順** | <p>ASP.NET アプリケーションでエラーが生じ、HTTP/1.x 500 内部サーバー エラーが発生した場合、または機能構成 (要求フィルターなど) が原因でページが表示されない場合、エラー メッセージが生成されます。 管理者は、アプリケーションでクライアントにわかりやすいメッセージを表示するか、クライアントに詳細なエラー メッセージを表示するか、localhost のみに詳細なエラー メッセージを表示するかを選択できます。 web.config 内の `<customErrors>` タグには 3 つのモードがあります。</p><ul><li>**On:** カスタム エラーが有効になるように指定します。 defaultRedirect 属性が指定されていない場合、ユーザーには一般的なエラーが表示されます。 リモート クライアントとローカル ホストにカスタム エラーが表示されます。</li><li>**Off**: カスタム エラーが無効になるように指定します。 リモート クライアントとローカル ホストに詳細な ASP.NET エラーが表示されます。</li><li>**RemoteOnly:** カスタム エラーがリモート クライアントにのみ表示されることと、ASP.NET エラーがローカル ホストにのみ表示されることを指定します。 これは、既定値です。</li></ul><p>アプリケーション/サイトの `web.config` ファイルを開き、タグに `<customErrors mode="RemoteOnly" />` または `<customErrors mode="On" />` が定義されていることを確認します。</p>|
+| **手順** | <p>ASP.NET アプリケーションでエラーが生じ、HTTP/1.x 500 内部サーバー エラーが発生した場合、または機能構成 (要求フィルターなど) が原因でページが表示されない場合、エラー メッセージが生成されます。 管理者は、アプリケーションでクライアントにわかりやすいメッセージを表示するか、クライアントに詳細なエラー メッセージを表示するか、localhost のみに詳細なエラー メッセージを表示するかを選択できます。 web.config 内の `<customErrors>` タグには 3 つのモードがあります。</p><ul><li>**On:** カスタム エラーが有効になるように指定します。 defaultRedirect 属性が指定されていない場合、ユーザーには一般的なエラーが表示されます。 リモート クライアントとローカル ホストにカスタム エラーが表示されます。</li><li>**Off:** カスタム エラーが無効になるように指定します。 リモート クライアントとローカル ホストに詳細な ASP.NET エラーが表示されます。</li><li>**RemoteOnly:** カスタム エラーがリモート クライアントにのみ表示されることと、ASP.NET エラーがローカル ホストにのみ表示されることを指定します。 これは、既定値です。</li></ul><p>アプリケーション/サイトの `web.config` ファイルを開き、タグに `<customErrors mode="RemoteOnly" />` または `<customErrors mode="On" />` が定義されていることを確認します。</p>|
 
 ## <a name="set-deployment-method-to-retail-in-iis"></a><a id="deployment"></a>IIS の deployment メソッドを retail に設定する
 

@@ -5,21 +5,21 @@ keywords: Azure Key Vault 認証 ローカル資格情報
 author: msmbaldwin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 06/30/2020
-ms.topic: conceptual
+ms.date: 08/08/2020
+ms.topic: how-to
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 83c4a48f8c177cf84078966bae32126102b45c3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: af7cb87f8caf0176505c8af864ae8d3cb0c312a0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521022"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585697"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
 > [!NOTE]
-> この記事に記載されている認証方法は、ベスト プラクティスと見なされなくなりました。 [Azure Key Vault に対する認証方法](authentication.md)の更新された認証方法を採用することをお勧めします。
+> **Microsoft.Azure.Services.AppAuthentication** は、新しい Key Vault SDK での使用には非推奨になりました。 これは、.NET、Java、TypeScript、Python 向けに提供されている新しい Azure ID ライブラリ **DefaultAzureCredentials** に置き換えられています。新規の開発ではすべて、これを使用する必要があります。 詳細については、こちらをご覧ください。[認証と Azure SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/)。
 
 Azure Key Vault に対する認証を行うには、Azure Active Directory (Azure AD) の資格情報として、共有シークレットまたは証明書のいずれかが必要です。
 

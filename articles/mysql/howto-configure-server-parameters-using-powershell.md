@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 4/29/2020
-ms.openlocfilehash: 8f21b4daff6f5e30fdbb109e683ad7a3e75c8ad6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: cb17c8631392972c429220b846720447be48cecf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86101615"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495813"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-using-powershell"></a>PowerShell を使用して Azure Database for MySQL のサーバー パラメーターを構成する
 

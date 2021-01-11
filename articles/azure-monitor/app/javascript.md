@@ -2,16 +2,14 @@
 title: JavaScript Web アプリのための Azure Application Insights
 description: ページ ビューとセッション数、Web クライアントのデータ、シングル ページ アプリケーション (SPA) を取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。
 ms.topic: conceptual
-author: Dawgfan
-ms.author: mmcc
-ms.date: 09/20/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371483"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224855"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -41,7 +39,8 @@ NPM を使用してインストールします。
 npm i --save @microsoft/applicationinsights-web
 ```
 
-> *注:* **typings はこのパッケージに含まれている**ため、typings パッケージを別途インストールする必要は**ありません**。
+> [!Note]
+> **typings はこのパッケージに含まれている**ため、typings パッケージを別途インストールする必要は**ありません**。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -108,10 +107,10 @@ SDK の読み込みに失敗する原因となるだけでなく、エラーの�
 | 名前 | Type | 説明
 |------|------|----------------
 | src | string **[必須]** | SDK の読み込み元の完全な URL。 この値は、動的に追加される &lt;script /&gt; タグの "src" 属性に使用されます。 パブリック CDN の場所を使用することも、プライベートにホストされている独自の場所を使用することもできます。
-| name | string *[省略可能]* | 初期化された SDK のグローバル名。既定値は appInsights です。 ```window.appInsights``` は、初期化されたインスタンスへの参照になります。 注: name 値を指定した場合や、(グローバル名 appInsightsSDK によって) 以前のインスタンスが割り当てられているように見える場合は、この name 値もグローバル名前空間で ```window.appInsightsSDK=<name value>``` として定義されます。これは、スニペットの正しいスケルトン メソッドとプロキシ メソッドを確実に初期化および更新できるように、SDK の初期化コードで必要となります。
+| name | string *[省略可能]* | 初期化された SDK のグローバル名。既定値は `appInsights` です。 ```window.appInsights``` は、初期化されたインスタンスへの参照になります。 注: name 値を指定した場合や、(グローバル名 appInsightsSDK によって) 以前のインスタンスが割り当てられているように見える場合は、この name 値もグローバル名前空間で ```window.appInsightsSDK=<name value>``` として定義されます。これは、スニペットの正しいスケルトン メソッドとプロキシ メソッドを確実に初期化および更新できるように、SDK の初期化コードで必要となります。
 | ld | ミリ秒単位の数値 *[省略可能]* | SDK の読み込みを試行するまで待機する読み込み遅延を定義します。 既定値は 0ms です。負の値を指定すると、スクリプト タグがページの &lt;head&gt; 領域に即座に追加され、スクリプトが読み込まれる (または失敗する) までページ読み込みイベントがブロックされます。
 | useXhr | ブール値 *[省略可能]* | この設定は、SDK 読み込みエラーのレポートにのみ使用されます。 レポートでは、まず fetch() の使用を試みてから (使用可能な場合)、XHR にフォールバックします。この値を true に設定すると、フェッチ チェックがバイパスされます。 この値を使用する必要があるのは、フェッチが失敗したときにエラー イベントを送信する環境でアプリケーションが使用されている場合だけです。
-| crossOrigin | string *[省略可能]* | この設定を含めると、SDK をダウンロードするために追加されたスクリプト タグに、この文字列値が設定された crossOrigin 属性が含まれるようになります。 定義されていない場合 (既定値)、crossOrigin 属性は追加されません。 推奨値は未定義 (既定値) を表す ""、または "anonymous" です (すべての有効な値については、ドキュメント「[HTML crossorigin 属性](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)」をご覧ください)。
+| crossOrigin | string *[省略可能]* | この設定を含めると、SDK をダウンロードするために追加されたスクリプト タグに、この文字列値が設定された crossOrigin 属性が含まれるようになります。 定義されていない場合 (既定値)、crossOrigin 属性は追加されません。 推奨値は未定義 (既定値) を表す ""、または "anonymous" です (すべての有効な値については、[HTML 属性: `crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) のドキュメントをご覧ください)。
 | cfg | object **[必須]** | 初期化中に Application Insights SDK に渡される構成。
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>テレメトリを Azure portal に送信する
@@ -196,9 +195,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableResponseHeaderTracking | false | true の場合、AJAX と Fetch の要求の応答ヘッダーが追跡されます。既定値は false です。
 | distributedTracingMode | `DistributedTracingModes.AI` | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。 [こちら](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)の例を参照してください。
 | enableAjaxErrorStatusText | false | 既定値は false です。 true の場合、失敗した AJAX 要求の依存関係イベントに応答エラー データ テキストを含めます。
-| enableAjaxPerfTracking | false | 既定値は false です。 ブラウザーの window.performance の追加のタイミングを検索し、レポートされる ajax (XHR および fetch) のレポートされるメトリックに含めることを可能にするフラグを設定します。
+| enableAjaxPerfTracking | false | 既定値は false です。 ブラウザーの window.performance の追加のタイミングを検索し、レポートされる `ajax` (XHR および fetch) のレポートされるメトリックに含めることを可能にするフラグを設定します。
 | maxAjaxPerfLookupAttempts | 3 | 既定値は 3 です。 window.performance のタイミング (使用可能な場合) を検索する最大回数。すべてのブラウザーが、XHR 要求の終了をレポートする前に window.performance を設定するわけではないため、これは必須です。fetch 要求の場合、これは要求の完了後に追加されます。
-| ajaxPerfLookupDelay | 25 | 既定値は 25 ミリ秒です。 ajax 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。
+| ajaxPerfLookupDelay | 25 | 既定値は 25 ミリ秒です。 `ajax` 要求で windows.performance のタイミングの検索を再試行するまでの待ち時間。時間はミリ秒単位であり、setTimeout() に直接渡されます。
 | enableUnhandledPromiseRejectionTracking | false | true の場合、未処理の Promise 拒否が自動収集され、JavaScript エラーとしてレポートされます。 disableExceptionTracking が true (例外を追跡しない) の場合、この構成値は無視され、未処理の Promise 拒否はレポートされません。
 
 ## <a name="single-page-applications"></a>シングル ページ アプリケーション
@@ -218,8 +217,40 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 | 拡張機能 |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
+
+## <a name="correlation"></a>相関関係
+
+クライアントからサーバー側への相関関係は、次に対してサポートされます。
+
+- XHR/AJAX 要求 
+- フェッチ要求 
+
+クライアントからサーバー側への相関関係は、`GET` および `POST` 要求に対しては**サポートされません**。
+
+### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>クライアント AJAX とサーバー要求の間でコンポーネント間の相関関係を有効にする
+
+`CORS` の相関関係を有効にするには、クライアントは 2 つの追加の要求ヘッダー `Request-Id` と `Request-Context` を送信する必要があり、サーバー側では、これらのヘッダーがある接続を受け入れられる必要があります。 これらのヘッダーの送信は、JavaScript SDK 構成内に `enableCorsCorrelation: true` を設定することによって有効になります。 
+
+サーバー側の `Access-Control-Allow-Headers` 構成によっては、`Request-Id` と `Request-Context` を手動で追加してサーバー側の一覧を拡張することが必要になることがよくあります。
+
+Access-Control-Allow-Headers: `Request-Id`、`Request-Context`、`<your header>`
+
+クライアントが通信するサードパーティのサーバーが `Request-Id` と `Request-Context` ヘッダーを受け入れられず、構成を更新できない場合は、`correlationHeaderExcludeDomains` 構成プロパティを使用してそれらを除外リストに入れる必要があります。 このプロパティでは、ワイルドカードがサポートされています。
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    enableCorsCorrelation: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
 
 ## <a name="explore-browserclient-side-data"></a>ブラウザー/クライアント側データの参照
 
@@ -342,7 +373,9 @@ SDK として、顧客が使用するブラウザーを制御できない多数�
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
-Application Insights JavaScript SDK はオープンソースです。ソース コードを表示したり、プロジェクトに参加したりするには、[GitHub の公式リポジトリ](https://github.com/Microsoft/ApplicationInsights-JS)にアクセスしてください。
+Application Insights JavaScript SDK はオープンソースです。ソース コードを表示したり、プロジェクトに参加したりするには、[GitHub の公式リポジトリ](https://github.com/Microsoft/ApplicationInsights-JS)にアクセスしてください。 
+
+最新の更新プログラムとバグ修正については、[リリース ノートを参照してください](./release-notes.md)。
 
 ## <a name="next-steps"></a><a name="next"></a> 次のステップ
 * [利用状況を追跡する](usage-overview.md)

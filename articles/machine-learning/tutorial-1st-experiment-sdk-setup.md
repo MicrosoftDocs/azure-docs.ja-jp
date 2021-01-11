@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 8ba6141bddd60c2bdc2fdf17845e8f470dd6ef55
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-python
+ms.openlocfilehash: ff23a42d9b96b8411d8b2f82ab8303e2a8a69953
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520529"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852720"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>チュートリアル:Python SDK で初めての ML 実験を作成する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,7 +97,7 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
         + 名前の先頭は文字である必要があります (数字やダッシュは使用できません)。
         + ダッシュが使用されている場合は、その後に少なくとも 1 文字を続ける必要があります。 例:Test-、test-0、test-01 は無効であり、test-a0、test-0a は有効な例です。
 
-    1.  利用可能な選択肢から仮想マシンのサイズを選択します。
+    1.  利用可能な選択肢から仮想マシンのサイズを選択します。 このチュートリアルでは、既定の VM を選択するのが適切です。
 
     1. **[作成]** を選択します。 VM の設定には約 5 分かかる可能性があります。
 

@@ -3,12 +3,13 @@ title: SAP HANA バックアップのサポート マトリックス
 description: この記事では、Azure Backup を使用して Azure VM 上の SAP HANA データベースをバックアップするときにサポートされるシナリオと制限事項について説明します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 19d62fac6a7072018508808b1c9695eb8b260b15
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: references_regions
+ms.openlocfilehash: 5b0d1b603e8a9c06e210083863e0ca6bfbee2399
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170617"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826465"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure VM 上の SAP HANA データベースのバックアップに関するサポート マトリックス
 
@@ -23,7 +24,7 @@ Azure Backup では、Azure への SAP HANA データベースのバックアッ
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **トポロジ**               | Azure Linux VM 実行されている SAP HANA のみ                    | HANA ラージ インスタンス (HLI)                                   |
 | **リージョン**                   | **一般公開:**<br> **アメリカ** – 米国中部、米国東部 2、米国東部、米国中北部、米国中南部、米国西部 2、米国中西部、米国西部、カナダ中部、カナダ東部、ブラジル南部 <br> **アジア太平洋** – オーストラリア中部、オーストラリア中部 2、オーストラリア東部、オーストラリア南東部、東日本、西日本、韓国中部、韓国南部、東アジア、東南アジア、インド中部、インド南部、インド西部、中国東部、中国北部、中国東部 2、中国北部 2 <br> **ヨーロッパ** – 西ヨーロッパ、北ヨーロッパ、フランス中部、英国南部、英国西部、ドイツ北部、ドイツ中西部、スイス北部、スイス西部、中央スイス北部、ノルウェー東部、ノルウェー西部 <br> **アフリカ/中東** – 南アフリカ北部、南アフリカ西部、アラブ首長国連邦北部、アラブ首長国連邦中部  <BR>  **Azure Government リージョン** | フランス南部、ドイツ中部、ドイツ北東部、US Gov アイオワ |
-| **OS のバージョン**            | SLES 12 SP2、SP3、または SP4。SLES 15 SP0 および SP1 <br><br>   **プレビュー** - RHEL 7.4、7.6、7.7、8.1  <br>     RHEL (7.4、7.6、7.7、および 8.1) の SAP HANA バックアップ プレビューの[使用を開始](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db)します。 その他のご質問については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) にお問い合わせください。                |                                             |
+| **OS のバージョン**            | SLES 12 SP2、SP3、または SP4。SLES 15 SP0 および SP1 <br><br>  2020 年 8 月 1 日の時点で、RHEL (7.4、7.6、7.7、8.1) 用の SAP HANA バックアップは一般提供されています。                |                                             |
 | **HANA のバージョン**          | HANA 1.x の場合は SDC、HANA 2.x の SPS04 Rev 48、SPS05 以下の場合は MDC (暗号化が有効なシナリオではまだ検証されていません)      |                                                            |
 | **HANA のデプロイメント**       | 単一の Azure VM 上の SAP HANA - スケールアップのみ。 <br><br> 高可用性のデプロイでは、2 つの異なるマシン上の両方のノードが、個別のデータ チェーンを持つ個々のノードとして扱われます。               | スケールアウト <br><br> 高可用性のデプロイでは、バックアップはセカンダリ ノードに自動的にフェールオーバーされません。 バックアップの構成は、ノードごとに個別に行う必要があります。                                           |
 | **HANA インスタンス**         | 単一の Azure VM 上の単一の SAP HANA インスタンス – スケールアップのみ | 単一の VM 上の複数の SAP HANA インスタンス                  |
@@ -41,13 +42,12 @@ Azure Backup では、Azure への SAP HANA データベースのバックアッ
 >
 >必要に応じて手動でポリシーを変更してください。
 
-
 > [!NOTE]
-> Azure portal で、HANA ネイティブ クライアント (SAP HANA Studio /コックピット/ DBA コックピット) からトリガーされたバックアップの[監視と (同じマシンへの) ジョブの復元](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal)ができるようになりました。
+> Azure portal で、HANA ネイティブ クライアント (SAP HANA Studio、コックピット、DBA コックピット) からトリガーされた[バックアップ ジョブと (同じマシンへの) 復元ジョブを監視](./sap-hana-db-manage.md#monitor-manual-backup-jobs-in-the-portal)できるようになりました。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure VM で稼働している SAP HANA データベースをバックアップする](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)方法を学習する
-* [Azure VM で稼働している SAP HANA データベースを復元する](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)方法を学習する
+* [Azure VM で稼働している SAP HANA データベースをバックアップする](./backup-azure-sap-hana-database.md)方法を学習する
+* [Azure VM で稼働している SAP HANA データベースを復元する](./sap-hana-db-restore.md)方法を学習する
 * [Azure Backup を使用してバックアップされた SAP HANA データベースを管理する](sap-hana-db-manage.md)方法を学習する
-* [SAP HANA データベースのバックアップ時に発生する一般的な問題をトラブルシューティングする](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot)方法を学習する
+* [SAP HANA データベースのバックアップ時に発生する一般的な問題をトラブルシューティングする](./backup-azure-sap-hana-database-troubleshoot.md)方法を学習する

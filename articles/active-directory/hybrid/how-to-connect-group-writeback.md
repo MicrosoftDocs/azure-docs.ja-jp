@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2a41dcf9c224e9e4a9a280078432e0b57e16c2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e49516647a4783fb27bf1be1cee60a3274fc040
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359417"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279849"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect のグループの書き戻し
 
@@ -40,7 +40,7 @@ ms.locfileid: "85359417"
 6. **[書き戻し] ページ**で、Office 365 からオンプレミスの組織に同期されるオブジェクトを格納する Active Directory 組織単位 (OU) を選択し、 **[次へ]** をクリックします。
 7. **[構成の準備完了]** ページで、 **[構成]** をクリックします。
 8. ウィザードが完了したら、[構成が完了しました] ページで **[終了]** をクリックします。
-9. Azure Active Directory Connect サーバーで Windows PowerShell を開き、次のコマンドを実行します。
+9. Azure Active Directory Connect サーバーで管理者として Windows PowerShell を開き、次のコマンドを実行します。
 
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>
@@ -48,7 +48,7 @@ Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\AdSyncC
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN $AzureADConnectSWritebackAccountDN
 ```
 
-Office 365 グループの構成の詳細については、「[オンプレミスの Exchange ハイブリッドを使用して Microsoft 365 グループを構成する](https://docs.microsoft.com/exchange/hybrid-deployment/set-up-office-365-groups#enable-group-writeback-in-azure-ad-connect)」を参照してください。
+Office 365 グループの構成の詳細については、「[オンプレミスの Exchange ハイブリッドを使用して Microsoft 365 グループを構成する](/exchange/hybrid-deployment/set-up-microsoft-365-groups#enable-group-writeback-in-azure-ad-connect)」を参照してください。
 
 ## <a name="disabling-group-writeback"></a>グループの書き戻しを無効にする
 グループの書き戻しを無効にするには、次の手順を使用します。 
@@ -65,7 +65,7 @@ Office 365 グループの構成の詳細については、「[オンプレミ�
 4. **[構成]** をクリックします。
 
  >[!NOTE]
- > グループの書き戻しを無効にすると、Azure Active Directory コネクタでフル インポートおよび完全同期のフラグが "true" に設定されます。これにより、次回の同期サイクルで規則の変更が反映され、以前に Active Directory に書き戻されたグループが削除されます。
+ > グループの書き戻しを無効にすると、Azure Active Directory コネクタでフル インポートおよび完全同期のフラグが 'true' に設定されます。これにより、次回の同期サイクルで規則の変更が反映され、以前に Active Directory に書き戻されたグループが削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

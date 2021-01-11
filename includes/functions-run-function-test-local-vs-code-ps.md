@@ -4,20 +4,20 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ca8da227c97a44abe14354a5c530d508ce357884
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78191049"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88702982"
 ---
-## <a name="run-the-function-locally"></a>関数をローカルで実行する
+## <a name="run-the-function-locally"></a>Functions をローカルで実行する
 
 Azure Functions プロジェクトをローカルで実行してデバッグするために、Azure Functions Core Tools は Visual Studio Code と統合されています。 Visual Studio Code をデバッグする方法の詳細については、「[PowerShell Azure Functions をローカル環境でデバッグする](../articles/azure-functions/functions-debug-powershell-local.md)」を参照してください。 
 
-1. F5 キーを押して関数アプリ プロジェクトを起動します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
+1. F5 キーを押して Functions アプリ プロジェクトを起動します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
 
-1. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。
+1. **ターミナル** パネルで、HTTP によってトリガーされる Functions の URL エンドポイントをコピーします。
 
     ![Azure のローカル出力](./media/functions-run-function-test-local-vs-code-ps/functions-vscode-f5.png)
 
@@ -30,9 +30,9 @@ Azure Functions プロジェクトをローカルで実行してデバッグす�
 
     ブラウザーから次の URL で GET 要求を実行することもできます。
 
-    <http://localhost:7071/api/HttpExample?name=PowerShell>
+    `http://localhost:7071/api/HttpExample?name=PowerShell`
 
-    クエリ パラメーターとして、または本文で `name` パラメーターを渡さずに HttpTrigger エンドポイントを呼び出すと、関数は `BadRequest` エラーを返します。 run.ps1 でコードを確認すると、このエラーが仕様によって発生することがわかります。
+    クエリ パラメーターとして、または本文で `name` パラメーターを渡さずに HttpTrigger エンドポイントを呼び出すと、Functions は `BadRequest` エラーを返します。 run.ps1 でコードを確認すると、このエラーが仕様によって発生することがわかります。
 
 1. 要求に関する情報が **[ターミナル]** パネルに表示されます。
 
@@ -40,4 +40,4 @@ Azure Functions プロジェクトをローカルで実行してデバッグす�
 
 1. 完了したら、**Ctrl + C** キーを押して Core Tools を停止します。
 
-関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
+Functions がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。

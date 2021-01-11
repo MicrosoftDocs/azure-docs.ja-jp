@@ -56,7 +56,7 @@ ms.locfileid: "84870872"
 |CorrelationId|String| 関連付け ID
 |FhirResourceType|String|操作が実行されたリソースの種類
 |LogCategory|String|ログのカテゴリ (現在、‘AuditLogs’ LogCategory を返しています)
-|場所|String|要求を処理したサーバーの場所 (例: 米国中南部)
+|Location|String|要求を処理したサーバーの場所 (例: 米国中南部)
 |OperationDuration|int|この要求の完了にかかった時間 (秒)
 |OperationName|String| 操作の種類 (update、search-type など) を記述します
 |RequestUri|String|要求 URI 

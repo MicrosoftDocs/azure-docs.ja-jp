@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4581b7e93cde9d6ba9a20d46ee263a879c05402
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770683"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88961875"
 ---
 # <a name="deployment-best-practices"></a>デプロイのベスト プラクティス
 
@@ -69,7 +69,7 @@ App Service には、デプロイ センターを介して、コンテナーの[
 
 ### <a name="use-github-actions"></a>GitHub Actions を使用する
 
-[GitHub Actions](containers/deploy-container-github-action.md) を使用して、コンテナーのデプロイを自動化することもできます。  次のワークフロー ファイルは、コミット ID を使ってコンテナーをビルドしてタグ付けし、それをコンテナー レジストリにプッシュし、指定したサイト スロットを新しいイメージ タグで更新します。
+[GitHub Actions](deploy-container-github-action.md) を使用して、コンテナーのデプロイを自動化することもできます。  次のワークフロー ファイルは、コミット ID を使ってコンテナーをビルドしてタグ付けし、それをコンテナー レジストリにプッシュし、指定したサイト スロットを新しいイメージ タグで更新します。
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps
@@ -127,7 +127,7 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="java"></a>Java
 
-JAR アプリケーションのデプロイには Kudu [zipdeploy/](deploy-zip.md) API を使用し、WAR アプリには [wardeploy/](deploy-zip.md#deploy-war-file) を使用してください。 Jenkins を使用している場合は、デプロイ フェーズでこれらの API を直接使用できます。 詳細については、 [こちらの記事](../jenkins/execute-cli-jenkins-pipeline.md)を参照してください。
+JAR アプリケーションのデプロイには Kudu [zipdeploy/](deploy-zip.md) API を使用し、WAR アプリには [wardeploy/](deploy-zip.md#deploy-war-file) を使用してください。 Jenkins を使用している場合は、デプロイ フェーズでこれらの API を直接使用できます。 詳細については、 [こちらの記事](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)を参照してください。
 
 ### <a name="node"></a>Node
 
@@ -149,7 +149,7 @@ Azure App Service のコンテンツは Azure Storage に保存され、コン�
 
 App Service プランで、使用可能な CPU またはメモリの 90% 以上が使用されている場合、基になる仮想マシンでのデプロイの処理に問題が発生する可能性があります。 これが発生している場合は、デプロイを実行するためにインスタンス数を一時的にスケールアップしてください。 デプロイが完了したら、インスタンス数を前の値に戻すことができます。
 
-ベスト プラクティスの詳細については、[App Service 診断](https://docs.microsoft.com/azure/app-service/overview-diagnostics)にアクセスして、リソース専用の実行可能なベスト プラクティスを確認してください。
+ベスト プラクティスの詳細については、[App Service 診断](./overview-diagnostics.md)にアクセスして、リソース専用の実行可能なベスト プラクティスを確認してください。
 
 - [Azure portal](https://portal.azure.com) で Web App に移動します。
 - 左側のナビゲーションで **[問題の診断と解決]** をクリックすると、App Service 診断が開きます。

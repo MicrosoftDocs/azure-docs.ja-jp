@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84416005"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798994"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび回復する
 
@@ -100,7 +100,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
     :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Authenticator がワンタイム パスワードを確認コードとして提示する" border="true":::
 
 >[!NOTE]
->QR コードとその取得方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)に関するページまたは [Authenticator アプリを使用するためのセキュリティ情報の設定](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)に関するページを参照してください。
+>QR コードとその取得方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、[Microsoft Authenticator アプリの概要](./user-help-auth-app-download-install.md)に関するページまたは [Authenticator アプリを使用するためのセキュリティ情報の設定](./security-info-setup-auth-app.md)に関するページを参照してください。
 >
 >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
@@ -130,4 +130,4 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 - [Microsoft Authenticator アプリに関する FAQ](user-help-auth-app-faq.md)
 
-- [Multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)
+- [Multi-factor Authentication](/azure/multi-factor-authentication/)

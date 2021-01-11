@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 11/11/2019
-ms.custom: tracking-python
-ms.openlocfilehash: c53f6ff7fdcc861bc11fb54838f1e634fc944c6c
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 07/31/2020
+ms.custom: devx-track-python
+ms.openlocfilehash: 079341fe1b22db83ded4b11941d8bdf809adfb8d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205272"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845537"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML で機械学習パイプラインを定義する
 

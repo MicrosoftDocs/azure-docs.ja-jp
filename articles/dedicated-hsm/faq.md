@@ -1,6 +1,6 @@
 ---
 title: よく寄せられる質問 - Azure 専用 HSM | Microsoft Docs
-description: Azure 専用 HSM に関するさまざまなトピックに対応したよく寄せられる質問
+description: 基本情報、相互運用性、高可用性、サポートなど、Azure 専用ハードウェア セキュリティ モジュールについてよく寄せられる質問の答えが見つかります。
 services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84310387"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189871"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 

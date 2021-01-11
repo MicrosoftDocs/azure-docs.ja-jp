@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: d394f0bb72f353e65c48a564fa7187364eae8121
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: f8ed7dc2caf3ad471ea7d4bb2fc8213114aad109
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970809"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089704"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Microsoft Defender Advanced Threat Protection と Azure Security Center
 
@@ -59,8 +59,9 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 
 サーバーを Security Center にオンボードするには、Microsoft Defender ATP サーバーのオンボードから **[Azure Security Center に移動]** をクリックしてサーバーをオンボードします。
 
-1. **[オンボード]** 領域で、データを保存するワークスペースを選択または作成します。 <br>
-2. すべてのワークスペースが表示されない場合は、アクセス許可が不足している可能性があります。ワークスペースが Azure Security Standard レベルに設定されていることを確認してください。 詳細については、「[Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化](security-center-pricing.md)」を参照してください。
+1. **[オンボード]** 領域で、データを保存するワークスペースを選択または作成します。
+
+2. すべてのワークスペースが表示されない場合は、アクセス許可が不足している可能性があります。ワークスペースが Azure Security の Standard 価格レベルに設定されていることを確認してください。 詳細については、「[Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化](security-center-pricing.md)」を参照してください。
     
 3. **[サーバーの追加]** を選択すると、Log Analytics エージェントをインストールする手順が表示されます。 
 
@@ -70,7 +71,7 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 
 ## <a name="enable-microsoft-defender-atp-integration"></a>Microsoft Defender ATP の統合を有効にする
 
-Microsoft Defender ATP の統合が有効になっているかどうかを確認するには、 **[Security Center]\(セキュリティ センター\)**  >  **[Pricing & settings]\(価格と設定\)** を選択し、ご利用のサブスクリプションをクリックします。
+Microsoft Defender ATP の統合が有効になっているかどうかを確認するには、 **[セキュリティ センター]**  >  **[Pricing & settings]\(価格と設定\)** を選択し、ご利用のサブスクリプションをクリックします。
 ここでは、現在有効になっている統合を確認できます。
 
   ![Microsoft Defender ATP の統合が有効になっている Azure Security Center の脅威検出設定ページ](media/security-center-wdatp/enable-integrations.png)
@@ -115,5 +116,5 @@ Microsoft Defender ATP で無害なテスト アラートを生成するには:
 
 - [Azure Security Center でサポートされている機能とプラットフォーム](security-center-os-coverage.md)
 - [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md):Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
-- [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md):推奨事項を Azure リソースの保護に活かす方法について説明します。
+- [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md):推奨事項を Azure リソースの保護に活かす方法について説明します。
 - [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md):Azure リソースの正常性を監視する方法について説明しています。

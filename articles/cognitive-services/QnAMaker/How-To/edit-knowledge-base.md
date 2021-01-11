@@ -2,13 +2,13 @@
 title: ナレッジ ベースの編集 - QnA Maker
 description: QnA Maker では、使いやすい編集環境で、ナレッジ ベースのコンテンツを管理することができます。
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 66adf9e1fe227f11514276147de32e8691db7fab
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.date: 07/16/2020
+ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993577"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054013"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>ナレッジベースで QnA ペアを編集する
 
@@ -111,6 +111,10 @@ QnA ペアのリンクは、[フォローアップ プロンプト](multiturn-co
 ## <a name="add-metadata"></a>メタデータの追加
 
 最初に **[表示オプション]** を選択してから、 **[メタデータの表示]** を選択して、メタデータのペアを追加します。 これにより、メタデータの列が表示されます。 次に、 **+** 記号を選択して、メタデータのペアを追加します。 このペアは、1 つのキーと 1 つの値で構成されます。
+
+メタデータに関する QnA Maker ポータルのクイックスタートで、メタデータの詳細について確認します。
+* [作成 - QnA ペアにメタデータを追加する](../quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)
+* [クエリ予測 - メタデータを使用して回答のフィルター処理を行う](../quickstarts/get-answer-from-knowledge-base-using-url-tool.md)
 
 ## <a name="save-changes-to-the-qna-pairs"></a>変更を QnA ペアに保存する
 

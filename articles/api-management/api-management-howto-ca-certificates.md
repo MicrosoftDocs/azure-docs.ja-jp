@@ -1,6 +1,6 @@
 ---
 title: カスタム CA 証明書を追加する - Azure API Management | Microsoft Docs
-description: Azure API Management でカスタム CA 証明書を追加する方法について説明します。
+description: Azure API Management でカスタム CA 証明書を追加する方法について説明します。 証明書を削除する手順についても確認できます。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 21d5869f2bcdfb6383b6ef89869d8098135ea7ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42e976e57dd69ffcbd9065cfb3aaf3af9c4b972
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70073605"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852074"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Azure API Management でカスタム CA 証明書を追加する方法
 
@@ -54,7 +54,7 @@ Azure API Management を使用すると、信頼できるルート証明書ス�
 > [!NOTE]
 > `New-AzApiManagementSystemCertificate` Powershell コマンドを使用して CA 証明書をアップロードできます。
 
-## <a name="delete-a-client-certificate"></a><a name="step1a"></a>クライアント証明書の削除
+## <a name="delete-a-client-certificate"></a>クライアント証明書の削除<a name="step1a"> </a>
 
 証明書を削除するには、コンテキスト メニューの **[...]** をクリックし、証明書の横にある **[削除]** を選択します。
 

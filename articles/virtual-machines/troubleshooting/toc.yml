@@ -56,7 +56,7 @@
     - name: VM の起動が停止しています
       href: troubleshoot-vm-boot-configure-update.md
     - name: VM のライフサイクルと状態
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: VM が起動しない
   items:
     - name: Linux
@@ -99,10 +99,16 @@
           href: troubleshoot-guide-windows-boot-manager-menu.md
         - name: 更新が原因で VM が応答しない
           href: unresponsive-vm-apply-windows-update.md
+        - name: 監査構成ポリシーの適用時に VM が応答しない
+          href: vm-unresponsive-applying-audit-configuration-policy.md
         - name: グループ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-group-policy.md
         - name: セキュリティ ポリシーの適用時に VM が応答しない
           href: unresponsive-vm-apply-security-policy.md
+        - name: Windows ブート マネージャー エラー - 無効なイメージ ハッシュ状態
+          href: windows-boot-error-invalid-image-hash.md
+        - name: Windows STOP エラー - 無効なシステム構成情報
+          href: windows-stop-error-bad-system-config-info.md
         - name: Windows STOP エラー - メモリなし状態
           href: troubleshoot-windows-stop-error.md
 - name: VM に接続できない
@@ -193,9 +199,9 @@
 - name: 仮想ディスクの管理の問題
   items:
     - name: 概要
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: よく寄せられる質問
-      href: ../windows/faq-for-disks.md
+      href: ../faq-for-disks.md
     - name: ストレージ リソースの削除時のエラー
       href: storage-resource-deletion-errors.md
     - name: クラシック ストレージ リソースの削除時のエラー
@@ -232,6 +238,8 @@
       href: ../extensions/troubleshoot.md
     - name: Windows VM エージェントのオフライン インストール
       href: install-vm-agent-offline.md
+    - name: Windows VM エージェントのトラブルシューティング
+      href: windows-azure-guest-agent.md
 - name: バックアップと復元
   items:
     - name: Azure VM でのバックアップ エラーのトラブルシューティング

@@ -1,5 +1,5 @@
 ---
-title: 検索インデックス作成のための Azure SQL マネージド インスタンスの接続
+title: 検索インデックス作成のための Azure SQL Managed Instance の接続
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search 上のインデクサーから SQL マネージド インスタンスへの接続を許可するために、パブリック エンドポイントを有効にします。
 manager: nitinme
@@ -8,23 +8,23 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1304ad05e05285aa75167ec21519ec90d157662
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964891"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88922890"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search インデクサーから SQL マネージド インスタンスへの接続を構成する
 
 [インデクサーを使用した Azure Cognitive Search への Azure SQL Database の接続](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq)に関するページに示されているように、**SQL マネージド インスタンス**に対するインデクサーの作成は、Azure Cognitive Search によってパブリック エンドポイント経由でサポートされています。
 
-## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>パブリック エンドポイントを使用して Azure SQL マネージド インスタンスを作成する
+## <a name="create-azure-sql-managed-instance-with-public-endpoint"></a>パブリック エンドポイントを使用して Azure SQL Managed Instance を作成する
 **[パブリック エンドポイントの有効化]** オプションが選択された状態で SQL マネージド インスタンスを作成します。
 
    ![パブリック エンドポイントを有効にする](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/enable-public-endpoint.png "パブリック エンドポイントの有効化")
 
-## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Azure SQL マネージド インスタンスのパブリック エンドポイントを有効にする
+## <a name="enable-azure-sql-managed-instance-public-endpoint"></a>Azure SQL Managed Instance のパブリック エンドポイントを有効にする
 **[セキュリティ]**  >  **[仮想ネットワーク]**  >  **[パブリック エンドポイント]**  >  **[有効化]** によって、既存の SQL マネージド インスタンスでパブリック エンドポイントを有効にすることもできます。
 
    ![パブリック エンドポイントを有効にする](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/mi-vnet.png "パブリック エンドポイントの有効化")
@@ -38,7 +38,7 @@ ms.locfileid: "76964891"
 > インデクサーでは、データを読み取るために、パブリック エンドポイントを使用して SQL マネージド インスタンスを構成することが引き続き必要となります。
 > ただし、現在の規則 (`public_endpoint_inbound`) を次の 2 つの規則に置き換えることによって、そのパブリック エンドポイントへの受信アクセスを制限することもできます。
 >
-> * `AzureCognitiveSearch` [サービス タグ](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`、"NAME" = `cognitive_search_inbound`) からの受信アクセスを許可する
+> * `AzureCognitiveSearch` [サービス タグ](../virtual-network/service-tags-overview.md#available-service-tags) ("SOURCE" = `AzureCognitiveSearch`、"NAME" = `cognitive_search_inbound`) からの受信アクセスを許可する
 >
 > * 検索サービスの IP アドレスからの受信アクセスを許可します。これは、完全修飾ドメイン名 (`<your-search-service-name>.search.windows.net` など) を ping することで取得できます。 ("SOURCE" = `IP address`、"NAME" = `search_service_inbound`)
 >

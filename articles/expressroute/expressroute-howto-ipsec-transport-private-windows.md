@@ -2,18 +2,18 @@
 title: Azure ExpressRoute プライベート ピアリング:IPsec トランスポート モードを構成する - Windows ホスト
 description: GPO と OU を使用して、ExpressRoute プライベート ピアリング経由で Azure Windows VM とオンプレミス Windows ホストの間の IPsec トランスポート モードを有効にする方法。
 services: expressroute
-author: fabferri
+author: duongau
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/17/2018
-ms.author: fabferri
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 32ad4f643ff0b217460403245cbb4e99f139aef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 026b7ee6cf8061c7cff25b4f9f8d46b6ec3e6a8d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737259"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89396490"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute プライベート ピアリング用の IPsec トランスポート モードを構成する
 

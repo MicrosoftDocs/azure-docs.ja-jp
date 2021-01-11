@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: 8049897cf7a08eeac79e4a217f4ecc3ec636eab9
-  ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+  ms.openlocfilehash: a6348b967e814a49c766388540a594987af2231e
+  ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86143894"
+  ms.lasthandoff: 09/02/2020
+  ms.locfileid: "89296940"
 landingContent:
 - title: Load Balancer について
   linkLists:
@@ -29,15 +29,17 @@ landingContent:
     - text: Load Balancer のコンポーネント
       url: components.md
     - text: 新機能
-      url: whats-new.md
+      url: https://azure.microsoft.com/updates/?category=networking&query=load%20balancer
     - text: Load Balancer の SKU
       url: skus.md
 - title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
-    - text: VM の負荷を分散する Load Balancer を作成する
+    - text: VM の負荷を分散するパブリック ロード バランサーを作成する
       url: quickstart-load-balancer-standard-public-portal.md
+    - text: VM の負荷を分散する内部ロード バランサーを作成する
+      url: quickstart-load-balancer-standard-internal-portal.md
   - linkListType: tutorial
     links:
     - text: VM へのインターネット トラフィックの負荷分散を行う

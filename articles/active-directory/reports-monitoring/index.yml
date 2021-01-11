@@ -12,12 +12,12 @@ metadata:
   ms.author: markvi
   ms.date: 08/29/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 28f65417053d136983611cfa07ebedb7de93e25a
-  ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+  ms.openlocfilehash: d7b75dfae53884bcea5f721d6d9c15b1e80e655d
+  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/29/2020
-  ms.locfileid: "84168626"
+  ms.lasthandoff: 09/01/2020
+  ms.locfileid: "89226847"
 landingContent:
 - title: Azure Active Directory のレポートと監視について
   linkLists:
@@ -34,9 +34,9 @@ landingContent:
     - text: サインイン ログ
       url: concept-sign-ins.md
     - text: リスクの高いサインイン ログ
-      url: concept-risky-sign-ins.md
+      url: ../identity-protection/overview-identity-protection.md
     - text: リスクのフラグ付きユーザー ログ
-      url: concept-user-at-risk.md
+      url: ../identity-protection/overview-identity-protection.md
     - text: プロビジョニング ログ
       url: concept-provisioning-logs.md
 - title: Azure AD でのレポートの使用

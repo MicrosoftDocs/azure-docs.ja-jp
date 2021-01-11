@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
+ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343765"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89485803"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "84343765"
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>Azure Portal でロード バランサーを作成する
 
-次の手順では、[Azure portal でのロード バランサー](../windows/availability-group-load-balancer-portal-configure.md)に関する記事の「[Azure portal でのロード バランサーの作成と構成](../windows/availability-group-load-balancer-portal-configure.md#create-and-configure-the-load-balancer-in-the-azure-portal)」セクションの手順 1 から 4 を実行します。
+次の手順では、[Azure portal でのロード バランサー](../windows/availability-group-load-balancer-portal-configure.md)に関する記事の「[Azure portal でのロード バランサーの作成と構成](../windows/availability-group-load-balancer-portal-configure.md#create--configure-load-balancer)」セクションの手順 1 から 4 を実行します。
 
 ### <a name="create-the-load-balancer"></a>ロード バランサーを作成する
 

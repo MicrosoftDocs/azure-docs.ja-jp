@@ -3,12 +3,12 @@ title: Azure Backup Server で Modern Backup Storage を使用する
 description: Azure Backup Server の新機能について説明します。 この記事では、Backup Server インストールをアップグレードする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 997b2052751473d095b6534ef0bcbe3ed6a099ad
+ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513712"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89378238"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Azure Backup Server へのストレージの追加
 
@@ -18,7 +18,7 @@ Azure Backup Server V2 以降では、ストレージを 50% 削減でき、バ�
 > Modern Backup Storage を使用するには、Backup Server V2 または V3 を Windows Server 2016 上で実行するか、または V3 を Windows Server 2019 上で実行する必要があります。
 > Backup Server V2 を以前のバージョンの Windows Server で実行した場合は、Azure Backup Server は Modern Backup Storage を利用できません。 代わりに、Backup Server V1 の場合と同様に、ワークロードを保護します。 詳細については、Backup Server のバージョンの[保護マトリックス](backup-mabs-protection-matrix.md)をご覧ください。
 >
-> 強化されたバックアップ パフォーマンスを実現するため、Windows Server 2019 上で階層化ストレージを使用して MABS v3 をデプロイすることをお勧めします。 階層化ストレージを構成するステップについては、「[階層化ストレージを使用した MBS のセットアップ](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」に関する DPM の記事を参照してください。
+> 強化されたバックアップ パフォーマンスを実現するため、Windows Server 2019 上で階層化ストレージを使用して MABS v3 をデプロイすることをお勧めします。 階層化ストレージを構成するステップについては、DPM の記事「[階層化ストレージを使用した MBS のセットアップ](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」を参照してください。
 
 ## <a name="volumes-in-backup-server"></a>Backup Server のボリューム
 
@@ -105,7 +105,7 @@ Modern Backup Storage を使用するように保護グループを更新する�
 
    ![メンバーの保護の停止](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. **[グループから削除]** ダイアログ ボックスで、記憶域プールの使用済みディスク領域と利用可能な空き領域を確認します。 既定では、ディスク上の復旧ポイントをそのままにし、関連付けられている保有ポリシーごとの有効期限が切れるようにします。 **[OK]** をクリックします。
+2. **[グループから削除]** ダイアログ ボックスで、記憶域プールの使用済みディスク領域と利用可能な空き領域を確認します。 既定では、ディスク上の復旧ポイントをそのままにし、関連付けられている保有ポリシーごとの有効期限が切れるようにします。 **[OK]** を選択します。
 
    空き記憶域プールに使用済みディスク領域をすぐに返す場合は、 **[ディスク上のレプリカを削除]** チェック ボックスを選択し、そのメンバーに関連付けられているバックアップ データ (および復旧ポイント) を削除します。
 

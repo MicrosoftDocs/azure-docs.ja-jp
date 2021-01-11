@@ -5,23 +5,23 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 07/31/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 71b3027d86400d6921895f86e257ddff2961f91f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8ff431c27dd53e82f9003b658c82ceb3efb5d320
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77615148"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810022"
 ---
 # <a name="tutorial-sharing-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>チュートリアル:Azure Cosmos DB バックエンドを使用してセッションやデバイス間で Azure Spatial Anchors を共有する
 
-このチュートリアルは、「[セッションやデバイス間での Azure Spatial Anchors の共有](../../../articles/spatial-anchors/tutorials/tutorial-share-anchors-across-devices.md)」の続きです。 ここでは、セッションとデバイス間で Azure Spatial Anchors を共有しながら、Azure Cosmos DB をバックエンド ストレージとして機能させるための、いくつかの機能を追加するプロセスについて説明します。
+このチュートリアルは、「[セッションやデバイス間での Azure Spatial Anchors の共有](../../../articles/spatial-anchors/tutorials/tutorial-share-anchors-across-devices.md)」の続きです。 ここでは、複数のセッションとデバイス間で Azure Spatial Anchors を共有しながら、Azure Cosmos DB をバックエンド ストレージとして機能させるための、いくつかの機能を追加するプロセスについて説明します。
 
 ![オブジェクトの永続性を示す GIF](./media/persistence.gif)
 
-このチュートリアルでは Unity と Azure Cosmos DB を使用しますが、これは Spatial Anchors 識別子を複数デバイス間で共有する方法の例を示すことのみを目的としています。 同じ目的を実現するために、他の言語やバックエンド テクノロジを使用することもできます。 また、このチュートリアルで使用する ASP.NET Core Web アプリは .NET Core 2.2 SDK を必要とします。 このアプリは、Windows 用 Web Apps では正常に動作しますが、Linux 用 Web Apps では現在実行できません。
+このチュートリアルでは Unity と Azure Cosmos DB を使用しますが、これは Spatial Anchors 識別子を複数デバイス間で共有する方法の例を示すことのみを目的としています。 同じ目的を実現するために、他の言語やバックエンド テクノロジを使用することもできます。
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -43,17 +43,9 @@ ms.locfileid: "77615148"
 
 共有サービスを再度発行し、サンプル アプリを実行できます。
 
-## <a name="troubleshooting"></a>トラブルシューティング
-
-### <a name="unity-20193"></a>Unity 2019.3
-
-破壊的変更のため、Unity 2019.3 は現在、サポートされていません。 Unity 2019.1 または 2019.2 を使用してください。
-
-[!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
-
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Cosmos DB を使用して、デバイス間でアンカーの識別子を共有しました。 新しい Unity HoloLens アプリで Azure Spatial Anchors を使用する方法をさらに学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [新しい Unity HoloLens アプリを開始する](./tutorial-new-unity-hololens-app.md)
+> [新しい Unity HoloLens アプリの開始](./tutorial-new-unity-hololens-app.md)

@@ -7,12 +7,13 @@ ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
-ms.openlocfilehash: e678a7713dc2c9114a0c8f6d37f37cdc2dc71d6b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 53c5e53dc61d6e7012521fdae8f6b1eb599c433d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537396"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499043"
 ---
 # <a name="azure-cli-examples-for-azure-dns"></a>Azure DNS に関する Azure CLI の例
 

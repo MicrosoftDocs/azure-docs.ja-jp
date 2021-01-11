@@ -3,12 +3,12 @@ title: Azure Service Fabric の運用環境の準備状況チェックリスト
 description: ベスト プラクティスに従って、Service Fabric アプリケーションとクラスターの運用準備をします。
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: 7011860b8e1162b35cbfee3a9e796163710b7fdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a03df40a8ce213c5de9ed7017d47713c4de3449d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610032"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835869"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 
@@ -22,7 +22,7 @@ ms.locfileid: "85610032"
 1. プライマリ ノード タイプには D2v2 または上位の SKU を使用します。 少なくとも 50 GB のハード ディスク容量を持つ SKU を選択することをお勧めします。
 1. 運用環境クラスターは、[セキュリティで保護されている](service-fabric-cluster-security.md)必要があります。 セキュリティで保護されたクラスターの設定例については、この[クラスター テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)を参照してください。 証明書の共通名を使用します。自己署名証明書は使用しないでください。
 1. [コンテナーとサービスのリソース制約](service-fabric-resource-governance.md)を追加して、ノード リソースの消費が 75% を超えないようにします。 
-1. [持続性レベル](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)を理解して設定します。 ステートフル ワークロードを実行しているノード タイプには、シルバー以上の持続性レベルを設定することをお勧めします。 プライマリ ノード タイプには、持続性レベルをシルバー以上に設定する必要があります。
+1. [持続性レベル](service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)を理解して設定します。 ステートフル ワークロードを実行しているノード タイプには、シルバー以上の持続性レベルを設定することをお勧めします。
 1. ノード タイプの[信頼性レベル](service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster)を理解して選択します。 シルバー以上の信頼性をお勧めします。
 1. クラスターの[容量の要件](service-fabric-cluster-capacity.md)を特定するため、ワークロードのロード テストとスケール テストを実行します。 
 1. アラートを使用して、サービスとアプリケーションが監視され、アプリケーション ログが生成され、格納されています。 例については、「[Service Fabric アプリケーションにログ記録を追加する](service-fabric-how-to-diagnostics-log.md)」と「[Monitor containers with Azure Monitor logs (Azure Monitor ログによるコンテナーの監視)](service-fabric-diagnostics-oms-containers.md)」を参照してください。
@@ -35,7 +35,7 @@ ms.locfileid: "85610032"
 1. サービスの目標復旧時点 (RPO) を確立し、[ディザスター リカバリー プロセス](service-fabric-disaster-recovery.md)を設定してそれをテストします。
 1. クラスターの手動またはプログラムを使用した[スケーリング](service-fabric-cluster-scaling.md)を計画します。
 1. クラスター ノードへの[修正プログラムの適用](service-fabric-patch-orchestration-application.md)を計画します。 
-1. 最新の変更が継続的にテストされるように、CI/CD パイプラインを確立します。 たとえば、[Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) または [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) を使用して
+1. 最新の変更が継続的にテストされるように、CI/CD パイプラインを確立します。 たとえば、[Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) または [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) を使用して
 1. [Fault Analysis Service](service-fabric-testability-overview.md) と制御された[混乱](service-fabric-controlled-chaos.md)の誘発を使用して、負荷の下で開発クラスターとステージング クラスターをテストします。 
 1. アプリケーションの[スケーリング](service-fabric-concepts-scalability.md)を計画します。 
 

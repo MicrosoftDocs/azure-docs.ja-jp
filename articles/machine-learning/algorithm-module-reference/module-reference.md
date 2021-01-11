@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 1996f607d05cb84a80acbb105504ce0b5d3bb0c1
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: a588c58c74ab9632f3c3c61e223dd37704103714
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856907"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87048103"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナーのアルゴリズムとモジュールのリファレンス (プレビュー)
 
@@ -43,7 +43,7 @@ ms.locfileid: "85856907"
 
 | 機能 | 説明 | Module |
 | --- |--- | --- |
-| 回帰 | 値を予測します。 | [ブースト デシジョン ツリー回帰](boosted-decision-tree-regression.md) <br/> [デシジョン フォレスト回帰](decision-forest-regression.md) <br/> [線形回帰](linear-regression.md)  <br/> [ニューラル ネットワーク回帰](neural-network-regression.md)  <br/> |
+| 回帰 | 値を予測します。 | [ブースト デシジョン ツリー回帰](boosted-decision-tree-regression.md) <br/> [デシジョン フォレスト回帰](decision-forest-regression.md) <br/> [高速フォレスト分位点回帰](fast-forest-quantile-regression.md)  <br/> [線形回帰](linear-regression.md)  <br/> [ニューラル ネットワーク回帰](neural-network-regression.md)  <br/> [ポワソン回帰](poisson-regression.md)  <br/>|
 | クラスタリング | データをグループ化します。| [K-Means クラスタリング](k-means-clustering.md)
 | 分類 | クラスを予測します。  バイナリ (2 クラス) または多クラスのアルゴリズムを選択します。| [多クラスの増幅デシジョン ツリー](multiclass-boosted-decision-tree.md) <br/> [多クラス デシジョン フォレスト](multiclass-decision-forest.md) <br/> [多クラス ロジスティック回帰](multiclass-logistic-regression.md)  <br/> [多クラス ニューラル ネットワーク](multiclass-neural-network.md) <br/> [1 対全多クラス](one-vs-all-multiclass.md) <br/> [2 クラス平均化パーセプトロン](two-class-averaged-perceptron.md) <br/>  [2 クラス ブースト デシジョン ツリー](two-class-boosted-decision-tree.md)  <br/> [2 クラス デシジョン フォレスト](two-class-decision-forest.md) <br/>  [2 クラス ロジスティック回帰](two-class-logistic-regression.md) <br/> [2 クラス ニューラル ネットワーク](two-class-neural-network.md) <br/> [2 クラス サポート ベクター マシン](two-class-support-vector-machine.md) | 
 

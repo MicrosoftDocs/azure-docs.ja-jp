@@ -1,23 +1,24 @@
 ---
-title: 'クイックスタート: アプリケーションの HA のためのプロファイルを作成する - Azure CLI - Azure Traffic Manager'
+title: クイック スタート:アプリケーションの HA のためのプロファイルを作成する - Azure CLI - Azure Traffic Manager
 description: このクイック スタート記事では、高可用性 Web アプリケーションを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
-author: rohinkoul
-mnager: twooley
+author: duongau
+mnager: kumud
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/29/2019
-ms.author: rohink
-ms.openlocfilehash: e19850243498fc24c9a726f4603590df15f3a046
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 08/26/2020
+ms.author: duau
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 429d107a68c8631983bf791108f5091f31a480c3
+ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79531517"
+ms.lasthandoff: 08/31/2020
+ms.locfileid: "89178084"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Web アプリケーションの高可用性を実現する Traffic Manager プロファイルを作成する
 
@@ -116,7 +117,7 @@ az webapp create \
 
 プライマリ エンドポイントが使用できない場合、トラフィックは自動的にフェールオーバー エンドポイントにルーティングされます。
 
-次の例で、 **<app1name_eastus>** と **<app2name_westeurope>** を前のセクションで各リージョン用に作成したアプリ名に置き換え、 **<appspname_eastus>** と **<appspname_westeurope>** を前のセクションでの App Service プランの作成に使用した名前に置き換えます。さらに、 **<profile_name>** を前のセクションで使用したプロファイル名に置き換えます。 
+次の例の **<app1name_eastus>** と **<app2name_westeurope>** は、前セクションでリージョンごとに作成したアプリ名に置き換えてください。 さらに、 **<profile_name>** は、前セクションで使用したプロファイル名に置き換えます。 
 
 **米国東部エンドポイント**
 
@@ -173,7 +174,7 @@ az network traffic-manager endpoint create \
 
 このセクションでは、Traffic Manager プロファイルのドメイン名を確認します。 また、プライマリ エンドポイントを使用できないように構成します。 最後に、Web アプリがまだ使用できることを確認します。 これは、Traffic Manager によってトラフィックがフェールオーバー エンドポイントへと送信されるためです。
 
-次の例で、 **<app1name_eastus>** と **<app2name_westeurope>** を前のセクションで各リージョン用に作成したアプリ名に置き換え、 **<appspname_eastus>** と **<appspname_westeurope>** を前のセクションでの App Service プランの作成に使用した名前に置き換えます。さらに、 **<profile_name>** を前のセクションで使用したプロファイル名に置き換えます。
+次の例の **<app1name_eastus>** と **<app2name_westeurope>** は、前セクションでリージョンごとに作成したアプリ名に置き換えてください。 さらに、 **<profile_name>** は、前セクションで使用したプロファイル名に置き換えます。
 
 ### <a name="determine-the-dns-name"></a>DNS 名の決定
 

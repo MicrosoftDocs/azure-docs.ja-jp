@@ -13,6 +13,8 @@
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: VM トラフィック フィルターに関する問題を診断する - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
+    - name: ARM テンプレートを使用して NSG フロー ログを構成する
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: チュートリアル
   items:
     - name: VM のルーティングに関する問題を診断する
@@ -47,10 +49,24 @@
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
+    - name: データの保存場所
+      href: data-residency.md
 - name: 操作方法ガイド
   items:
     - name: Network Watcher を構成する
       href: network-watcher-create.md
+    - name: 接続モニターを作成する (プレビュー)
+      items:
+        - name: Azure Portal の使用
+          href: connection-monitor-preview-create-using-portal.md
+        - name: ARMClient の使用
+          href: connection-monitor-preview-create-using-arm-client.md
+    - name: 接続モニターへの移行 (プレビュー)
+      items:
+        - name: Network Performance Monitor から
+          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+        - name: 接続モニターから
+          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: VM ネットワークに関する問題を診断する
       items:
         - name: VM 拡張機能をインストールする

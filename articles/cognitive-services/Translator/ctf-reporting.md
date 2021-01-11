@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 68b0de40940fa75dd4eb4e1572405f31ce1c22b8
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584673"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934380"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
@@ -96,9 +97,9 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | フィールド | 説明 |
 |:---|:---|
 | Count| 取得される結果の数|
-| From | ソース言語|
+| ソース | ソース言語|
 | Rating| AddTranslation() メソッド呼び出しで送信者により適用される評価|
-| To| 対象言語|
+| ターゲット| 対象言語|
 | Uri| AddTranslation() メソッド呼び出しで適用される URI|
 | User| ユーザー名|
 
@@ -113,7 +114,7 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 > [!NOTE]
 > クォータは、サービスのすべてのユーザー間での公平性を確保するように調整されます。
 
-**GitHib のコード例の表示**
+**GitHub でコード例を表示する**
 * [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
@@ -167,10 +168,10 @@ CTF Reporting API のエンドポイントは https://api.microsofttranslator.co
 | フィールド | 説明 |
 |:---|:---|
 | CreatedDateUtc| AddTranslation() を使用したエントリの作成日|
-| From| ソース言語|
+| ソース| ソース言語|
 | OriginalText| 要求を送信するときに使用されるソース言語のテキスト|
 |Rating |AddTranslation() メソッド呼び出しで送信者により適用される評価|
-|To|    対象言語|
+|ターゲット|    対象言語|
 |TranslatedText|    AddTranslation() メソッド呼び出しで送信される翻訳|
 |Uri|   AddTranslation() メソッド呼び出しで適用される URI|
 |User   |ユーザー名|

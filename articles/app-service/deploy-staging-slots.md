@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073866"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962164"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -62,7 +62,7 @@ ms.locfileid: "87073866"
 
 6. スロットのリソース ページで、アプリの URL を選択します。 デプロイ スロットは独自のホスト名を持ち、ライブ アプリでもあります。 デプロイ スロットへのパブリック アクセスを制限するには、[Azure App Service の IP 制限](app-service-ip-restrictions.md)に関するページをご覧ください。
 
-別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](app-service-deploy-local-git.md)ことができます。 スロットには、異なるリポジトリ分岐、または異なるリポジトリからデプロイできます。
+別のスロットから設定を複製した場合でも、新しいデプロイ スロットには内容がありません。 たとえば、[Git を使用してこのスロットに発行する](./deploy-local-git.md)ことができます。 スロットには、異なるリポジトリブランチ、または異なるリポジトリからデプロイできます。
 
 <a name="AboutConfiguration"></a>
 
@@ -83,7 +83,7 @@ ms.locfileid: "87073866"
 
 1. [ローカル キャッシュ](overview-local-cache.md)が有効になっている場合は、ソース スロットの各インスタンスのアプリケーション ルート ("/") に対して HTTP 要求を行うことで、ローカル キャッシュの初期化をトリガーします。 各インスタンスが何らかの HTTP 応答を返すまで待機します。 ローカル キャッシュの初期化により、各インスタンスでもう一度再起動が発生します。
 
-1. [カスタム ウォームアップ](#Warm-up)によって[自動スワップ](#Auto-Swap)が有効になっている場合は、ソース スロットの各インスタンスのアプリケーション ルート ("/") に対して HTTP 要求を行うことで、[アプリケーションの初期化](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)をトリガーします。
+1. [カスタム ウォームアップ](#Warm-up)によって[自動スワップ](#Auto-Swap)が有効になっている場合は、ソース スロットの各インスタンスのアプリケーション ルート ("/") に対して HTTP 要求を行うことで、[アプリケーションの初期化](/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization)をトリガーします。
 
     `applicationInitialization` が指定されていない場合は、各インスタンスのソース スロットのアプリケーション ルートへの HTTP 要求をトリガーします。 
     
@@ -222,7 +222,7 @@ ms.locfileid: "87073866"
 
 ## <a name="monitor-a-swap"></a>スワップを監視する
 
-[スワップ操作](#AboutConfiguration)が完了するまで長い時間がかかる場合、[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)でスワップ操作に関する情報を取得できます。
+[スワップ操作](#AboutConfiguration)が完了するまで長い時間がかかる場合、[アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)でスワップ操作に関する情報を取得できます。
 
 ポータルのアプリのリソース ページで、左側のウィンドウの **[アクティビティ ログ]** を選択します。
 
@@ -335,7 +335,7 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Resource Manager テンプレートで自動化する
 
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 Resource Manager テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
+[Azure Resource Manager テンプレート](../azure-resource-manager/templates/overview.md)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 Resource Manager テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
 
 - `buildVersion`: これは、スロットにデプロイされているアプリの現在のバージョンを表す文字列プロパティです。 たとえば、"v1"、"1.0.0.1"、または "2019-09-20T11:53:25.2887393-07:00" のようになります。
 - `targetBuildVersion`: これは、スロットに必要な `buildVersion` を指定する文字列プロパティです。 targetBuildVersion が現在の `buildVersion` と等しくない場合は、指定された `buildVersion` を持つスロットを検索することによってスワップ操作がトリガーされます。
@@ -423,7 +423,6 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
       ...
     </conditions>
     ```
-- 一部の [IP 制限ルール](app-service-ip-restrictions.md)により、スワップ操作でのアプリへの HTTP 要求の送信が妨げられる可能性があります。 `10.` および `100.` で始まる IPv4 アドレスの範囲は、デプロイに対して内側です。 これらにアプリへの接続を許可する必要があります。
 
 - スロットをスワップした後、アプリが予期せず再起動する可能性があります。 これは、スワップ後にホスト名のバインド構成の同期が切れ、単体では再起動を行うことができないためです。 ただし、基盤となる特定のストレージ イベント (記憶域ボリュームのフェールオーバーなど) によってこれらの不一致が検出され、すべてのワーカー プロセスが強制的に再起動される可能性があります。 このような再起動を最小限に抑えるには、*すべてのスロット*で[`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`アプリ設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)を設定します。 ただし、このアプリケーション設定は Windows Communication Foundation (WCF) アプリでは動作*しません*。
 

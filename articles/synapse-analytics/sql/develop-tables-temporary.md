@@ -1,5 +1,5 @@
 ---
-title: Synapse SQL で一時テーブルを使用する
+title: Synapse SQL の一時テーブルを使用する
 description: Synapse SQL の一時テーブルの基本的な利用方法について説明します。
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426687"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503210"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL の一時テーブル
 
@@ -23,7 +23,7 @@ ms.locfileid: "81426687"
 
 SQL プールと SQL オンデマンド (プレビュー) の両方のリソースで、一時テーブルを利用できます。 SQL オンデマンドにはいくつかの制限事項があり、それについては、この記事の最後で説明しています。 
 
-## <a name="what-are-temporary-tables"></a>一時テーブルとは
+## <a name="temporary-tables"></a>一時テーブル
 
 特に、中間結果が一時的なものである変換中にデータを処理する場合に、一時テーブルが役立ちます。 Synapse SQL では、一時テーブルはセッション レベルで存在します。  一時テーブルは、それが作成されたセッションにのみ表示されます。 そのため、そのセッションがログオフされたときに自動的に削除されます。 
 
@@ -98,7 +98,7 @@ GROUP BY
 > 
 > 
 
-### <a name="dropping-temporary-tables"></a>一時テーブルを削除する
+### <a name="drop-temporary-tables"></a>一時テーブルを削除する
 新しいセッションが作成されたとき、一時テーブルは存在しません。  ただし、同じ名前で一時テーブルを作成する同じストアド プロシージャを呼び出す場合、`CREATE TABLE` ステートメントを正常に実行するために、`DROP` による簡単な既存チェックを使用します。 
 
 ```sql
@@ -116,7 +116,7 @@ END
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularizing-code"></a>コードのモジュール化
+### <a name="modularize-code"></a>コードをモジュール化する
 一時テーブルはユーザー セッション内のどこでも使用できます。 この機能を利用して、アプリケーション コードをモジュール化することができます。  試してみるには、次のストアド プロシージャで、データベース内のすべての統計を統計名で更新する DDL を生成します。
 
 ```sql

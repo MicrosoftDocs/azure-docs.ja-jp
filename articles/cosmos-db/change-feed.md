@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 223514e8e873d36f8551e18956aafc0a54243990
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4cd0ad1553f04a781349a4664fbb408108015632
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119377"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510285"
 ---
 # <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
 
@@ -56,7 +56,7 @@ Azure Cosmos DB の変更フィードのサポートは、Azure Cosmos コンテ
 
 ### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>変更フィードと _etag、_lsn、_ts
 
-_etag は内部形式であり、いつでも変更され得るため、これに依存することはできません。 _ts は、変更または作成のタイムスタンプです。 _ts は時系列比較に利用できます。 _lsn は変更フィードに対してのみ追加されるバッチ ID であり、トランザクション ID を表します。 多数の項目に同じ _lsn が付くことがあります。 FeedResponse の ETag は、項目にある _etag とは異なります。 _etag は内部識別子であり、コンカレンシー制御に使用され、項目のバージョンを伝えますが、ETag はフィードのシーケンス処理に使用されます。
+_etag は内部形式であり、いつでも変更され得るため、これに依存することはできません。 _ts は、変更または作成のタイムスタンプです。 _ts は時系列比較に利用できます。 _lsn は変更フィードに対してのみ追加されるバッチ ID であり、トランザクション ID を表します。 多数の項目に同じ _lsn が付くことがあります。 FeedResponse の ETag は、項目にある _etag とは異なります。 _etag は内部識別子であり、同時実行管理に使用されます。 _etag プロパティは、項目のバージョンを示します。一方、ETag プロパティはフィードの優先順位を設定するために使用します。
 
 ## <a name="working-with-change-feed"></a>変更フィードの操作
 

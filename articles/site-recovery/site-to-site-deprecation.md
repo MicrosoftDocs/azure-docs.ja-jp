@@ -2,18 +2,18 @@
 title: Azure Site Recovery を使用したカスタマー マネージド サイト間での (VMM による) ディザスター リカバリーの廃止 | Microsoft Docs
 description: Hyper-V を使用しているお客様所有のサイト間の DR と SCVMM によって Azure で管理されているサイト間の DR の廃止予定と代替オプションの詳細
 services: site-recovery
-author: rajani-janaki-ram
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: rajanaki
-ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135218"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421843"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>Azure Site Recovery を使用したカスタマー マネージド サイト間での (VMM による) ディザスター リカバリーの廃止
 

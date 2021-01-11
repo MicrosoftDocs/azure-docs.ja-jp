@@ -13,12 +13,12 @@ metadata:
   ms.date: 07/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 084dd49726dec837fc4135f272802b1023ba5aac
-  ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+  ms.openlocfilehash: 5f6ba56347f76cc707bea2b30fab16e46f8be963
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87324065"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88651507"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -495,8 +495,8 @@ productDirectory:
     - compute
     - databases
     url: https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json
-  - title: 静的 Web アプリ
-    summary: 完全なスタック Web アプリをビルドして GitHub リポジトリから Azure にデプロイする
+  - title: Static Web Apps (Preview)
+    summary: フルスタック Web アプリをビルドして GitHub リポジトリから Azure にデプロイする
     imageSrc: ./media/index/static-apps.svg
     azureCategories:
     - compute
@@ -604,7 +604,7 @@ productDirectory:
     - hybrid
     - databases
     url: azure-sql/index.yml
-  - title: Azure SQL データベース
+  - title: Azure SQL Database
     summary: クラウド内の管理されたインテリジェントな SQL
     imageSrc: https://static.docs.com/ui/media/product/azure/sql-database.svg
     azureCategories:
@@ -1218,7 +1218,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/disk-storage.svg
     azureCategories:
     - storage
-    url: virtual-machines/windows/managed-disks-overview.md
+    url: virtual-machines/managed-disks-overview.md
   - title: Azure Files
     summary: 標準の SMB 3.0 プロトコルを使用するファイル共有
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-azure-files.svg
@@ -1230,7 +1230,7 @@ productDirectory:
     imageSrc: https://static.docs.com/ui/media/product/azure/disk.svg
     azureCategories:
     - storage
-    url: virtual-machines/windows/managed-disks-overview.md
+    url: virtual-machines/managed-disks-overview.md
   - title: Queue Storage
     summary: トラフィックに応じてアプリを効率的にスケーリング
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
@@ -1243,7 +1243,7 @@ productDirectory:
     azureCategories:
     - storage
     url: storage/index.yml
-  - title: ストレージ エクスプローラー
+  - title: Storage Explorer
     summary: Azure Storage リソースの表示と操作
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-explorer.svg
     azureCategories:

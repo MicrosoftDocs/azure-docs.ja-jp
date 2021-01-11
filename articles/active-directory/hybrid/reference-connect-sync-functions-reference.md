@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327d365cd1b110a6b57b11f92e70d221d3712cfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550182"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279773"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同期: 関数参照
 Azure AD Connect では、同期時の属性値を操作するために関数を使用します。  
@@ -660,7 +660,7 @@ FormatDateTime 関数は、DateTime を指定した形式の文字列に設定�
 * format: 変換する形式を表す文字列。
 
 **備考:**  
-形式で有効な値については、「[Custom date and time formats for the FORMAT function](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)」(FORMAT 関数用のカスタム日付/時刻形式) を参照してください。
+形式で有効な値については、「[Custom date and time formats for the FORMAT function](/dax/custom-date-and-time-formats-for-the-format-function)」(FORMAT 関数用のカスタム日付/時刻形式) を参照してください。
 
 **例:**  
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 71fbd56c2566f008a096482755abbcdb174a987e
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306113"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89001639"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 
@@ -101,7 +101,7 @@ Azure に未対応 |  この VM は Azure では起動しません。 たとえ�
 --- | --- | ---
 **ブートの種類** | BIOS がサポートされています。 UEFI はサポートされていません。 | ブートの種類が UEFI の場合は条件付きで対応します。
 **コア** | マシンのコア数が、Azure VM でサポートされる最大コア数 (128) 以下。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているコアの数が考慮されます。<br/>アセスメント設定で快適性係数が指定されている場合、使用されているコアの数に快適性係数が乗算されます。<br/><br/> パフォーマンス履歴がない場合は、快適性係数を適用せずに、割り当てられているコアの数が使用されます。 | 制限以下の場合は対応します。
-**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](../virtual-machines/windows/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
+**[メモリ]** | マシンのメモリ サイズが、Azure VM の最大メモリ (Azure M シリーズ Standard_M128m&nbsp;<sup>2</sup> で 3,892 GB) 以下。 [詳細については、こちらを参照してください](../virtual-machines/sizes.md)。<br/><br/> パフォーマンス履歴が使用可能な場合、Azure Migrate では、使用されているメモリの数が考慮されます。<br/><br/>快適性係数が指定されている場合、使用されているメモリに快適性係数が乗算されます。<br/><br/> 履歴がない場合は、快適性係数は適用されず、割り当てられているメモリが使用されます。<br/><br/> | 制限内であれば対応します。
 **ストレージ ディスク** | ディスクの割り当てサイズは、4 TB (4,096 GB) 以下である必要があります。<br/><br/> マシンに接続されているディスクの数は、OS ディスクを含めて 65 個以下である必要があります。 | 制限内であれば対応します。
 **ネットワーク** | マシンに接続されている NIC の数は、32 個以下である必要があります。 | 制限内であれば対応します。
 
@@ -238,7 +238,7 @@ Windows マシンにエージェントをインストールするには、次の
 4. **[エージェントのセットアップ オプション]** で、 **[Azure Log Analytics]**  >  **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
-エージェントは、コマンド ラインからインストールするか、Configuration Manager などの自動化された方法を使用してインストールすることができます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)のページを参照してください。
+エージェントは、コマンド ラインからインストールするか、Configuration Manager などの自動化された方法を使用してインストールすることができます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](../azure-monitor/platform/log-analytics-agent.md#installation-options)のページを参照してください。
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Linux マシンに MMA エージェントをインストールする
 
@@ -249,7 +249,7 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
-MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)をご覧ください。
+MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](../azure-monitor/platform/agents-overview.md#supported-operating-systems)をご覧ください。
 
 ### <a name="install-the-mma-agent-on-a-machine-monitored-by-operations-manager"></a>Operations Manager による監視対象マシンに MMA エージェントをインストールする
 
@@ -263,7 +263,7 @@ System Center Operations Manager 2012 R2 以降によって監視されている
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - Windows および Linux オペレーティング システムの[依存関係エージェントのサポート](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)に関する詳細を確認してください。
-- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)をご覧ください。
+- スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)をご覧ください。
 
 >[!NOTE]
 > システムの前提条件や Dependency Agent のデプロイ方法についての概要を紹介するために引用されている Azure Monitor for VMs の記事は、Service Map ソリューションにも当てはまります。

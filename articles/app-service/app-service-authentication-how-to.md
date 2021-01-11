@@ -4,12 +4,12 @@ description: App Service でさまざまなシナリオに合わせて認証お�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2fa2e3463e057062ba743c2f6989aa571c85c983
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205573"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962470"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -17,8 +17,7 @@ ms.locfileid: "86205573"
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
-* [チュートリアル:Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](app-service-web-tutorial-auth-aad.md)
-* [チュートリアル:Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および認可する](containers/tutorial-auth-aad.md)
+* [チュートリアル:Azure App Service でユーザーをエンド ツー エンドで認証および承認する](tutorial-auth-aad.md)
 * [Azure Active Directory ログインを使用するようにアプリを構成する方法](configure-authentication-provider-aad.md)
 * [Facebook ログインを使用するようにアプリを構成する方法](configure-authentication-provider-facebook.md)
 * [Google ログインを使用するようにアプリを構成する方法](configure-authentication-provider-google.md)
@@ -147,7 +146,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 任意の言語またはフレームワークで記述されたコードで、これらのヘッダーから必要な情報を取得できます。 ASP.NET 4.6 アプリの場合は、 **ClaimsPrincipal** が自動的に適切な値に設定されます。 ただし、ASP.NET Core では、App Service のユーザー要求と統合する認証ミドルウェアが提供されません。 回避策については、「[MaximeRouiller.Azure.AppService.EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)」を参照してください。
 
-アプリケーションでは、`/.auth/me` を呼び出して認証されたユーザーの追加の詳細を取得することもできます。 Mobile Apps サーバー SDK には、このデータを操作するためのヘルパー メソッドが用意されています。 詳細については、「[Azure Mobile Apps Node.js SDK の使用方法](../app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#howto-tables-getidentity)」と「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](../app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#user-info)」を参照してください。
+アプリで[トークン ストア](overview-authentication-authorization.md#token-store)が有効になっている場合は、`/.auth/me` を呼び出して認証されたユーザーの追加の詳細を取得することもできます。 Mobile Apps サーバー SDK には、このデータを操作するためのヘルパー メソッドが用意されています。 詳細については、「[Azure Mobile Apps Node.js SDK の使用方法](/previous-versions/azure/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk#howto-tables-getidentity)」と「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](/previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#user-info)」を参照してください。
 
 ## <a name="retrieve-tokens-in-app-code"></a>アプリ コードでのトークンの取得
 
@@ -162,14 +161,14 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 | Twitter | `X-MS-TOKEN-TWITTER-ACCESS-TOKEN` <br/> `X-MS-TOKEN-TWITTER-ACCESS-TOKEN-SECRET` |
 |||
 
-クライアント コード (モバイル アプリやブラウザー内の JavaScript など) から、HTTP `GET` 要求を `/.auth/me` に送信します。 返される JSON にはプロバイダー固有のトークンがあります。
+クライアント コード (モバイル アプリやブラウザー内の JavaScript など) から、HTTP `GET` 要求を `/.auth/me` に送信します ([トークン ストア](overview-authentication-authorization.md#token-store)を有効にする必要があります)。 返される JSON にはプロバイダー固有のトークンがあります。
 
 > [!NOTE]
 > アクセス トークンはプロバイダー リソースへのアクセス用であるため、クライアント シークレットを使用してプロバイダーを構成する場合にのみ存在します。 更新トークンを取得する方法を確認するには、「更新アクセス トークン」を参照してください。
 
 ## <a name="refresh-identity-provider-tokens"></a>ID プロバイダー トークンの更新
 
-プロバイダーのアクセス トークン ([セッション トークン](#extend-session-token-expiration-grace-period)ではなく) が期限切れになった場合は、そのトークンを再度使用する前に、ユーザーを再認証する必要があります。 アプリケーションの `/.auth/refresh` エンドポイントに `GET` 呼び出しを行って、トークンの期限切れを回避することができます。 呼び出されると、App Service は認証されたユーザーのトークン ストア内のアクセス トークンを自動的に更新します。 アプリ コードによる後続のトークン要求で、更新トークンを取得します。 ただし、トークンの更新が動作するためには、トークン ストアにプロバイダーの[更新トークン](https://auth0.com/learn/refresh-tokens/)が含まれている必要があります。 更新トークンの取得方法は各プロバイダーによって文書化されていますが、次の一覧に概要を示します。
+プロバイダーのアクセス トークン ([セッション トークン](#extend-session-token-expiration-grace-period)ではなく) が期限切れになった場合は、そのトークンを再度使用する前に、ユーザーを再認証する必要があります。 アプリケーションの `/.auth/refresh` エンドポイントに `GET` 呼び出しを行って、トークンの期限切れを回避することができます。 呼び出されると、App Service は認証されたユーザーの[トークン ストア](overview-authentication-authorization.md#token-store)内のアクセス トークンを自動的に更新します。 アプリ コードによる後続のトークン要求で、更新トークンを取得します。 ただし、トークンの更新が動作するためには、トークン ストアにプロバイダーの[更新トークン](https://auth0.com/learn/refresh-tokens/)が含まれている必要があります。 更新トークンの取得方法は各プロバイダーによって文書化されていますが、次の一覧に概要を示します。
 
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
@@ -299,6 +298,9 @@ ID プロバイダーによって特定のターンキー承認が提供され�
     2.  `isAuthFromFile` を "true" に設定します
     3.  `authFilePath` をファイルの名前に設定します ("auth.json" など)
 
+> [!NOTE]
+> `authFilePath` の形式は、プラットフォームによって異なります。 Windows では、相対パスと絶対パスの両方がサポートされます。 相対パスを使用することをお勧めします。 Linux では、絶対パスのみが現在サポートされているため、設定の値は "/home/site/wwwroot/auth.json" または同様の値にする必要があります。
+
 この構成の更新を行うと、ファイルの内容を使用して、そのサイトでの App Service の認証または承認の動作が定義されます。 Azure Resource Manager 構成に戻りたい場合、`isAuthFromFile` を "false" に設定し直せば戻ることができます。
 
 ### <a name="configuration-file-reference"></a>構成ファイル リファレンス
@@ -413,7 +415,8 @@ ID プロバイダーによって特定のターンキー承認が提供され�
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "loginScopes": [
+                    "scope": [
+                        "openid",
                         "profile",
                         "email"
                     ],
@@ -468,8 +471,68 @@ ID プロバイダーによって特定のターンキー承認が提供され�
 }
 ```
 
+## <a name="pin-your-app-to-a-specific-authentication-runtime-version"></a>特定の認証ランタイム バージョンにアプリをピン留めする
+
+認証/承認を有効にすると、[機能の概要](overview-authentication-authorization.md#how-it-works)で説明されているように、プラットフォーム ミドルウェアが HTTP 要求パイプラインに挿入されます。 このプラットフォーム ミドルウェアは、定期的なプラットフォームの更新の一環として、新機能と機能強化で定期的に更新されます。 既定では、Web アプリまたは関数アプリは、このプラットフォーム ミドルウェアの最新バージョンで実行されます。 これらの自動更新は、常に下位互換性があります。 ただし、まれに、この自動更新によって Web アプリまたは関数アプリにランタイムの問題が発生することがあります。その場合は、以前のミドルウェア バージョンに一時的にロールバックすることができます。 この記事では、特定のバージョンの認証ミドルウェアにアプリを一時的にピン留めする方法について説明します。
+
+### <a name="automatic-and-manual-version-updates"></a>自動および手動でのバージョンの更新 
+
+アプリの `runtimeVersion` 設定を設定することで、プラットフォーム ミドルウェアの特定のバージョンにアプリをピン留めすることができます。 特定のバージョンに明示的にピン留めし直さない限り、アプリは常に最新バージョンで実行されます。 一度にサポートされるバージョンはいくつかあります。 サポートされなくなった無効なバージョンにピン留めすると、アプリでは代わりに最新バージョンが使用されます。 常に最新バージョンを実行するには、`runtimeVersion` を ~1 に設定します。 
+
+### <a name="view-and-update-the-current-runtime-version"></a>現在のランタイム バージョンの表示と更新
+
+アプリで使用されるランタイム バージョンを変更できます。 新しいランタイム バージョンは、アプリを再起動した後に有効になります。 
+
+#### <a name="view-the-current-runtime-version"></a>現在のランタイム バージョンの表示
+
+プラットフォーム認証ミドルウェアの現在のバージョンを表示するには、Azure CLI を使用するか、アプリ内にある組み込みバージョン HTTP エンドポイントのいずれか 1 つを経由します。
+
+##### <a name="from-the-azure-cli"></a>Azure CLI から
+
+Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
+
+```azurecli-interactive
+az webapp auth show --name <my_app_name> \
+--resource-group <my_resource_group>
+```
+
+このコードでは、`<my_app_name>` をアプリの名前に置き換えます。 また、`<my_resource_group>` をアプリのリソース グループの名前に置き換えます。
+
+CLI 出力に `runtimeVersion` フィールドが表示されます。 次の出力例のようになります。ここでは、わかりやすくするために抜粋されています。 
+```output
+{
+  "additionalLoginParams": null,
+  "allowedAudiences": null,
+    ...
+  "runtimeVersion": "1.3.2",
+    ...
+}
+```
+
+##### <a name="from-the-version-endpoint"></a>バージョン エンドポイントから
+
+アプリで /.auth/version エンドポイントをクリックして、アプリが実行されている現在のミドルウェア バージョンを表示することもできます。 次の出力例のようになります。
+```output
+{
+"version": "1.3.2"
+}
+```
+
+#### <a name="update-the-current-runtime-version"></a>現在のランタイム バージョンの更新
+
+Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
+
+```azurecli-interactive
+az webapp auth update --name <my_app_name> \
+--resource-group <my_resource_group> \
+--runtime-version <version>
+```
+
+`<my_app_name>` をご自分のアプリの名前に置き換えます。 また、`<my_resource_group>` をアプリのリソース グループの名前に置き換えます。 また、`<version>` を 1.x ランタイムの有効なバージョン、または最新バージョンの `~1` に置き換えます。 さまざまなランタイム バージョンのリリース ノートを [こちら] (https://github.com/Azure/app-service-announcements) ) で検索して、ピン留め先となるバージョンを特定することができます。
+
+このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
+
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:ユーザーをエンド ツー エンドで認証および承認する (Windows)](app-service-web-tutorial-auth-aad.md)
-> [チュートリアル: ユーザーをエンド ツー エンドで認証および承認する (Linux)](containers/tutorial-auth-aad.md)
+> [チュートリアル:エンドツーエンドでのユーザーの認証と承認](tutorial-auth-aad.md)

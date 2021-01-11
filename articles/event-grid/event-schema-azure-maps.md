@@ -3,16 +3,16 @@ title: Event Grid ソースとしての Azure Maps
 description: Azure Event Grid で Azure Maps のイベント用に提供されているプロパティとスキーマについて説明します
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 8aa29d003483536ef33a32616af1553e1bbe8204
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4203bdf5222278b698d656835afebd9769557303
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106690"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461988"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Maps
 
-この記事では、Azure Maps のイベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](https://docs.microsoft.com/azure/event-grid/event-schema)」を参照してください。 また、Azure Maps をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
+この記事では、Azure Maps のイベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](./event-schema.md)」を参照してください。 また、Azure Maps をイベント ソースとして使用するためのクイック スタートとチュートリアルの一覧も示されています。
 
 ## <a name="event-grid-event-schema"></a>Event Grid イベント スキーマ
 

@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: keferna
   ms.author: keferna
-  ms.date: 04/02/2020
-  ms.openlocfilehash: a79d3de89399e9ed89598c5f08efb756291246ca
-  ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+  ms.date: 09/02/2020
+  ms.openlocfilehash: 39d0f00bd59663da8ec5529e9a7be185d93e4de0
+  ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/28/2020
-  ms.locfileid: "87287864"
+  ms.lasthandoff: 09/03/2020
+  ms.locfileid: "89421681"
 landingContent:
 - title: コマーシャル マーケットプレースでの作業
   linkLists:
@@ -37,8 +37,6 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: 新しい SaaS オファーを作成する
-      url: ./partner-center-portal/create-new-saas-offer.md
     - text: マーケティングのベスト プラクティス
       url: ./gtm-marketing-best-practices.md
     - text: クラウド ソリューション プロバイダー
@@ -77,12 +75,12 @@ landingContent:
       url: ./partner-center-portal/downloads-dashboard.md
     - text: '[評価とレビュー] ダッシュボード'
       url: ./partner-center-portal/ratings-reviews.md
-- title: オファーを管理する
+- title: オファーの作成
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: SaaS オファー
-      url: ./partner-center-portal/create-new-saas-offer.md
+      url: plan-saas-offer.md
     - text: 仮想マシンのオファー
       url: ./marketplace-virtual-machines.md
     - text: Azure アプリケーション プラン

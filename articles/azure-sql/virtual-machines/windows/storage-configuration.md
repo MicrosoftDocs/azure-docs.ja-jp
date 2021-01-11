@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 21609e38625d0911476c85a9d6e518f5ff7e9e61
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: de0402febe94e50877367dc37d448a4a13893f93
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84667371"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653343"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Azure で SQL Server 仮想マシン (VM) イメージを構成するとき、Az
 
 * [SQL Server ギャラリー イメージ](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)でプロビジョニングされている。
 * [Resource Manager デプロイ モデル](../../../azure-resource-manager/management/deployment-models.md)を使用している。
-* [premium SSD](../../../virtual-machines/windows/disks-types.md) を使用している。
+* [premium SSD](../../../virtual-machines/disks-types.md) を使用している。
 
 ## <a name="new-vms"></a>新しい VM
 
@@ -115,7 +115,7 @@ SQL Server VM の作成プロセス中に構成されたドライブのディス
 このセクションでは、Azure portal での SQL Server VM のプロビジョニングまたは構成時に自動的に行われる、ストレージ構成の変更に関するリファレンス情報を提供します。
 
 * Azure では、VM から選択されたストレージから記憶域プールが構成されます。 このトピックの次のセクションでは、記憶域プールの構成について詳しく説明します。
-* 自動ストレージ構成では、必ず [Premium SSD](../../../virtual-machines/windows/disks-types.md) P30 データ ディスクが使用されます。 結果として、選択したテラバイト数と、VM に接続されているデータ ディスク数は 1 対 1 で対応しています。
+* 自動ストレージ構成では、必ず [Premium SSD](../../../virtual-machines/disks-types.md) P30 データ ディスクが使用されます。 結果として、選択したテラバイト数と、VM に接続されているデータ ディスク数は 1 対 1 で対応しています。
 
 料金情報については、 [Storage 料金](https://azure.microsoft.com/pricing/details/storage) ページの「 **Disk Storage** 」タブを参照してください。
 

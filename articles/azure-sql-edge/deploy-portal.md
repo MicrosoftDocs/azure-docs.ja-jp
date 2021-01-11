@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233238"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816866"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) をデプロイする 
 
@@ -114,9 +114,114 @@ Azure Marketplace は、アプリケーションとサービスのオンライ�
 12. **[次へ]** をクリックします。
 13. **[送信]** をクリックします。
 
-このクイックスタートでは、SQL Edge モジュールを IoT Edge デバイスにデプロイしました。
+## <a name="connect-to-azure-sql-edge"></a>Azure SQL Edge に接続する
+
+次の手順では Azure SQL Edge に接続するためにコンテナー内で Azure SQL Edge コマンド ライン ツールである **sqlcmd** を使用します。
+
+> [!NOTE]
+> sqlcmd ツールは、ARM64 バージョンの SQL Edge コンテナー内では使用できません。
+
+1. 実行中のコンテナー内で対話型の Bash シェルを開始するには、`docker exec -it` コマンドを使用します。 次の例の `azuresqledge` は、ユーザーの IoT Edge モジュールの `Name` パラメーターによって指定された名前です。
+
+   ```bash
+   sudo docker exec -it azuresqledge "bash"
+   ```
+
+2. コンテナー内では sqlcmd とローカル接続してください。 既定では sqlcmd はパスにないため、完全なパスを指定する必要があります。
+
+   ```bash
+   /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+   ```
+
+   > [!TIP]
+   > コマンド ラインでパスワードを省略すると、入力を求められます。
+
+3. 成功すると、**sqlcmd** コマンド プロンプト `1>` が表示されます。
+
+## <a name="create-and-query-data"></a>データの作成とクエリ
+
+以下のセクションでは、**sqlcmd** と Transact-SQL を使用して新しいデータベースを作成し、データを追加して簡単なクエリを実行します。
+
+### <a name="create-a-new-database"></a>新しいデータベースの作成
+
+次の手順では、`TestDB` という名前の新しいデータベースを作成します。
+
+1. **sqlcmd** のコマンド プロンプトに次の Transact-SQL コマンドを貼り付け、テスト データベースを作成します。
+
+   ```sql
+   CREATE DATABASE TestDB
+   Go
+   ```
+
+2. 次の行に、サーバー上のすべてのデータベースの名前を返すクエリを記述します。
+
+   ```sql
+   SELECT Name from sys.Databases
+   Go
+   ```
+
+### <a name="insert-data"></a>データの挿入
+
+次に、新しいテーブル `Inventory` を作成し、2 つの新しい行を挿入します。
+
+1. **sqlcmd** のコマンド プロンプトで、コンテキストを新しい `TestDB` データベースに切り替えます。
+
+   ```sql
+   USE TestDB
+   ```
+
+2. `Inventory` という名前の新しいテーブルを作成します。
+
+   ```sql
+   CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+   ```
+
+3. 新しいテーブルにデータを挿入します。
+
+   ```sql
+   INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
+   ```
+
+4. 「`GO`」と入力して前のコマンドを実行します。
+
+   ```sql
+   GO
+   ```
+
+### <a name="select-data"></a>データの選択
+
+ここで、`Inventory` テーブルからデータを返すクエリを実行します。
+
+1. **sqlcmd** のコマンド プロンプトで、数量が 152 より大きい`Inventory` テーブルから行を返すクエリを入力します。
+
+   ```sql
+   SELECT * FROM Inventory WHERE quantity > 152;
+   ```
+
+2. 次のコマンドを実行します。
+
+   ```sql
+   GO
+   ```
+
+### <a name="exit-the-sqlcmd-command-prompt"></a>sqlcmd コマンド プロンプトの終了
+
+1. **sqlcmd** セッションを終了するには、「`QUIT`」と入力します。
+
+   ```sql
+   QUIT
+   ```
+
+2. コンテナー内で対話型のコマンド プロンプトを終了するには、`exit` と入力します。 コンテナーは、対話型の Bash シェルを終了した後も引き続き実行されます。
+
+## <a name="connect-from-outside-the-container"></a> コンテナーの外からの接続
+
+SQL 接続をサポートしている外部の Linux、Windows、または macOS ツールから、Azure SQL Edge インスタンスに対して SQL クエリを接続して実行することができます。 外部から SQL Edge コンテナーに接続する方法の詳細については、[Azure SQL Edge の接続とクエリ](https://docs.microsoft.com/azure/azure-sql-edge/connect)に関する記事を参照してください。
+
+このクイックスタートでは、SQL Edge モジュールを IoT Edge デバイスにデプロイしました。 
 
 ## <a name="next-steps"></a>次の手順
 
 - [SQL Edge での ONNX を使用した機械学習と人工知能](onnx-overview.md)。
 - [IoT Edge を使用して SQL Edge でエンド ツー エンドの IoT ソリューションを構築する](tutorial-deploy-azure-resources.md)。
+- [Azure SQL Edge でのデータ ストリーミング](stream-data.md)

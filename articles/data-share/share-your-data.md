@@ -1,17 +1,17 @@
 ---
 title: チュートリアル:組織の外部と共有する - Azure Data Share
 description: チュートリアル - Azure Data Share を使用して顧客やパートナーとデータを共有する
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/10/2019
-ms.openlocfilehash: a8265680f74b2d5679d1ebfbb2873dd096f498a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 08/28/2020
+ms.openlocfilehash: 4f3c9d739f959670700182baf80c4a08e53d8587
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77083051"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89259066"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
 
@@ -73,7 +73,7 @@ ms.locfileid: "77083051"
 
 Azure リソース グループに Azure Data Share リソースを作成します。
 
-1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。
+1. ポータルの左上隅にあるメニュー ボタンを選択し、 **[リソースの作成]** (+) を選択します。
 
 1. *Data Share* を検索します。
 
@@ -83,17 +83,17 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | 名前 | *datashareacount* | Data Share アカウントの名前を指定します。 |
     | サブスクリプション | 該当するサブスクリプション | Data Share アカウントに使う Azure サブスクリプションを選択します。|
-    | Resource group | *test-resource-group* | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
+    | リソース グループ | *test-resource-group* | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
     | 場所 | *米国東部 2* | Data Share アカウントのリージョンを選択します。
+    | 名前 | *datashareaccount* | Data Share アカウントの名前を指定します。 |
     | | |
 
-1. **[作成]** を選択して、Data Share アカウントをプロビジョニングします。 通常、新しい Data Share アカウントのプロビジョニングにかかる時間は約 2 分以下です。 
+1. **[Review + create]\(レビュー + 作成\)** を選択し、 **[作成]** を選択して Data Share アカウントをプロビジョニングします。 通常、新しい Data Share アカウントのプロビジョニングにかかる時間は約 2 分以下です。 
 
 1. デプロイが完了したら、 **[リソースに移動]** を選択します。
 
-## <a name="create-a-data-share"></a>データ共有を作成する
+## <a name="create-a-share"></a>共有を作成する
 
 1. Data Share の [概要] ページに移動します。
 
@@ -103,15 +103,15 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. **［作成］** を選択します   
 
-1. ご自分のデータ共有の詳細を入力します。 名前、共有の種類、共有の内容の説明、利用規約 (省略可能) を指定します。 
+1. 共有の詳細を入力します。 名前、共有の種類、共有の内容の説明、利用規約 (省略可能) を指定します。 
 
     ![EnterShareDetails](./media/enter-share-details.png "共有の詳細を入力する") 
 
-1. **[続行]** を選択します
+1. **[続行]** をクリックします。
 
-1. データ共有にデータセットを追加するには、 **[Add Datasets]\(データセットの追加\)** を選択します。 
+1. 共有にデータセットを追加するには、 **[データセットの追加]** を選択します。 
 
-    ![データセット](./media/datasets.png "データセット")
+    ![共有にデータセットを追加する](./media/datasets.png "データセット")
 
 1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 Azure SQL Database または Azure SQL Data Warehouse から共有する場合は、いくつかの SQL 資格情報を入力するように求められます。 前提条件の中で作成したユーザーを使用して、認証します。
 
@@ -125,7 +125,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
     ![AddRecipients](./media/add-recipient.png "受信者の追加") 
 
-1. **[続行]** を選択します
+1. **[続行]** をクリックします。
 
 1. スナップショット共有タイプを選択した場合は、データの更新をデータ コンシューマーに提供するスナップショット スケジュールを構成できます。 
 
@@ -133,9 +133,9 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
 1. 開始時刻と繰り返しの間隔を選択します。 
 
-1. **[続行]** を選択します
+1. **[続行]** をクリックします。
 
-1. [Review + Create]\(レビュー + 作成\) タブで、パッケージの内容、設定、受信者、および同期の設定を確認します。 **[作成]**
+1. [Review + Create]\(レビュー + 作成\) タブで、パッケージの内容、設定、受信者、および同期の設定を確認します。 **［作成］** を選択します
 
 ご自分の Azure データ共有が作成され、データ共有の受信者が招待を受け取れる状態になりました。 
 

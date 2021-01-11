@@ -17,24 +17,24 @@ ms.date: 12/17/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed71e53a8cedc2907ac06dd75f11f9c762a78772
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12073a75cd248c9226c7ce5ecc21b64617823b32
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85357207"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279637"
 ---
 # <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同期: AD のごみ箱の有効化
 Azure AD に同期される、オンプレミスの Active Directory 向けの AD ごみ箱機能を有効にすることをお勧めします。 
 
-オンプレミスの AD ユーザー オブジェクトを誤って削除し、この機能を使って復元した場合、Azure AD により対応する Azure AD ユーザー オブジェクトが復元されます。  AD のごみ箱機能について詳しくは、「[Scenario Overview for Restoring Deleted Active Directory Objects (削除された Active Directory オブジェクトの復元シナリオの概要)](https://technet.microsoft.com/library/dd379542.aspx)」をご覧ください。
+オンプレミスの AD ユーザー オブジェクトを誤って削除し、この機能を使って復元した場合、Azure AD により対応する Azure AD ユーザー オブジェクトが復元されます。  AD のごみ箱機能について詳しくは、「[Scenario Overview for Restoring Deleted Active Directory Objects (削除された Active Directory オブジェクトの復元シナリオの概要)](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd379542(v=ws.10))」をご覧ください。
 
 ## <a name="benefits-of-enabling-the-ad-recycle-bin"></a>AD のごみ箱を有効にする利点
 この機能を使用すると、Azure AD ユーザー オブジェクトを復元できます。これを行うには、次の操作を実行します。
 
 * オンプレミスの AD ユーザー オブジェクトを誤って削除した場合、対応する Azure AD ユーザー オブジェクトは次回の同期サイクルで削除されます。 既定では、Azure AD は論理削除済み状態で 30 日間、削除された Azure AD ユーザー オブジェクトを保持します。
 
-* オンプレミスの AD ごみ箱機能を有効にしていれば、そのソース アンカーの値を変更することなく、削除されたオンプレミスの AD ユーザー オブジェクトを復元できます。 回復したオンプレミスの AD ユーザー オブジェクトが Azure AD と同期されたときに、Azure AD により対応する論理削除された Azure AD ユーザー オブジェクトが復元されます。 ソース アンカー属性について詳しくは、「[Azure AD Connect: 設計概念](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#sourceanchor)」をご覧ください。
+* オンプレミスの AD ごみ箱機能を有効にしていれば、そのソース アンカーの値を変更することなく、削除されたオンプレミスの AD ユーザー オブジェクトを復元できます。 回復したオンプレミスの AD ユーザー オブジェクトが Azure AD と同期されたときに、Azure AD により対応する論理削除された Azure AD ユーザー オブジェクトが復元されます。 ソース アンカー属性について詳しくは、「[Azure AD Connect: 設計概念](./plan-connect-design-concepts.md#sourceanchor)」をご覧ください。
 
 * オンプレミスの AD ごみ箱機能を有効にしていない場合、AD ユーザー オブジェクトを作成して、削除されたオブジェクトを置き換える必要があります。 ソース アンカー属性について、システムで生成される AD 属性 (ObjectGuid など) を使用するように Azure AD Connect 同期サービスを構成した場合、新しく作成される AD ユーザー オブジェクトのソース アンカー値は、削除された AD ユーザー オブジェクトの値とは同じになりません。 新たに作成した AD ユーザー オブジェクトが Azure AD と同期されると、削除された Azure AD ユーザー オブジェクトが復元されるのではなく、新しい Azure AD ユーザー オブジェクトが自動的に作成されます。
 

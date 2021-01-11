@@ -1,25 +1,24 @@
 ---
 title: Azure VPN Gateway について
-description: VPN ゲートウェイとは何か、および VPN ゲートウェイを使用して Azure 仮想ネットワークに接続する方法について説明します。 これには、IPsec/IKE サイト間クロスプレミスおよび VNet 間 VNet ソリューション、およびポイント対サイト VPN が含まれます。
+description: VPN Gateway とは何か、また VPN Gateway を使用して、サイト間、VNet 対 VNet、およびポイント対サイトの IPsec IKE VPN 仮想ネットワークに接続する方法について説明します。
 services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 06/01/2020
+ms.date: 08/27/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4ec008fa97c75f5ae7c79e2b98efc9005df1014f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.custom: contperfq1
+ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300049"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89015392"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 
 VPN ゲートウェイは、特定の種類の仮想ネットワーク ゲートウェイで、パブリック インターネットを介して Azure 仮想ネットワークとオンプレミスの場所の間で暗号化されたトラフィックを送信するために使用されます。 VPN ゲートウェイを使用すると、Microsoft ネットワークを経由して Azure 仮想ネットワーク間で暗号化されたトラフィックを送信することもできます。 各仮想ネットワークには VPN ゲートウェイを 1 つだけ作成できます。 ただし、同一の VPN ゲートウェイに対して複数の接続を作成することができます。 同一の VPN ゲートウェイへの複数の接続を作成する場合、利用できるゲートウェイ帯域幅はすべての VPN トンネルによって共有されます。
-
-VPN ゲートウェイを Azure Availability Zones にデプロイすることができます。 これにより、仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、高可用性が提供されます。 Azure Availability Zones にゲートウェイをデプロイすると、オンプレミス ネットワークの Azure への接続をゾーン レベルの障害から保護しながら、ゲートウェイを 1 つのリージョン内に物理的かつ論理的に分離できます。 「[Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて](about-zone-redundant-vnet-gateways.md)」を参照してください。
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>仮想ネットワーク ゲートウェイとは
 
@@ -33,9 +32,15 @@ VPN ゲートウェイを Azure Availability Zones にデプロイすること�
 
 VPN ゲートウェイ接続は、特定の設定で構成された複数のリソースに依存します。 ほとんどのリソースは個別に構成できますが、一部のリソースは特定の順序で構成する必要があります。
 
-### <a name="design-connection-topology-diagrams"></a><a name="diagrams"></a>設計:接続トポロジの図
+### <a name="design"></a><a name="diagrams"></a>デザイン
 
-VPN ゲートウェイ接続ではさまざまな構成が利用できることを理解しておくことが重要です。 また、どの構成が自分のニーズに最適かを判断する必要があります。 たとえば、ポイント対サイト、サイト間、および共存する ExpressRoute/サイト間接続にはすべて、それぞれ異なる指示と構成要件があります。 設計および接続トポロジ ダイアグラムの詳細については、[設計](design.md)に関する記事を参照してください。
+VPN ゲートウェイ接続ではさまざまな構成が利用できることを理解しておくことが重要です。 また、どの構成が自分のニーズに最適かを判断する必要があります。 たとえば、ポイント対サイト、サイト間、および共存する ExpressRoute/サイト間接続にはすべて、それぞれ異なる指示と構成要件があります。 設計および接続トポロジ ダイアグラムの詳細については、[設計](design.md)に関するページを参照してください。
+
+### <a name="planning-table"></a><a name="planningtable"></a>計画表
+
+次の表は、ソリューションに最適な接続オプションを決定するのに役立ちます。
+
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ### <a name="settings"></a><a name="settings"></a>設定
 
@@ -44,12 +49,6 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 ### <a name="deployment-tools"></a><a name="tools"></a>デプロイ ツール
 
 Azure Portal などの構成ツールをどれか 1 つ使用して、リソースの作成と構成を開始できます。 その後、追加のリソースを構成したり、適用できる場合に既存のリソースを変更したりするために、PowerShell などの別のツールに切り替えることができます。 現時点では、すべてのリソースとリソースの設定を Azure Portal で構成することはできません。 各接続トポロジの記事の手順では、特定の構成ツールが必要な場合が指定されています。
-
-### <a name="planning-table"></a><a name="planningtable"></a>計画表
-
-次の表は、ソリューションに最適な接続オプションを決定するのに役立ちます。
-
-[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gateway-skus"></a><a name="gwsku"></a>ゲートウェイの SKU
 
@@ -62,6 +61,10 @@ Azure Portal などの構成ツールをどれか 1 つ使用して、リソー�
 
 [!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
+## <a name="availability-zones"></a><a name="availability"></a>可用性ゾーン
+
+VPN ゲートウェイを Azure Availability Zones にデプロイすることができます。 これにより、仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、高可用性が提供されます。 Azure Availability Zones にゲートウェイをデプロイすると、オンプレミス ネットワークの Azure への接続をゾーン レベルの障害から保護しながら、ゲートウェイを 1 つのリージョン内に物理的かつ論理的に分離できます。 「[Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて](about-zone-redundant-vnet-gateways.md)」を参照してください。
+
 ## <a name="pricing"></a><a name="pricing"></a>価格
 
 [!INCLUDE [vpn-gateway-about-pricing-include](../../includes/vpn-gateway-about-pricing-include.md)]
@@ -71,6 +74,10 @@ VPN ゲートウェイの SKU の詳細については、「[ゲートウェイ�
 ## <a name="faq"></a><a name="faq"></a>FAQ
 
 VPN Gateway に関してよく寄せられる質問については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」を参照してください。
+
+## <a name="whats-new"></a><a name="new"></a>新機能
+
+RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/updates/?category=networking&query=VPN%20Gateway)ページで、最新の VPN Gateway 機能の更新を確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290662"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501203"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -87,7 +87,7 @@ ms.locfileid: "87290662"
 1. VMware vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
 2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択し、 **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** ウィザードを起動します。
 
-     ![OVF テンプレート](./media/vmware-azure-tutorial/vcenter-wizard.png)
+     ![VMWare vSphere Client の [Deploy OVF Template]\(OVF テンプレートのデプロイ\) コマンドのスクリーンショット。](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
 3. **[Select source]\(ソースの選択\)** で、ダウンロードした OVF の場所を入力します。
 4. **[Review details]\(詳細の確認\)** で、 **[Next]\(次へ\)** を選択します。
@@ -153,7 +153,7 @@ ms.locfileid: "87290662"
 1. **[インフラストラクチャの準備]**  >  **[ターゲット]** の順に選択します。 使用する Azure サブスクリプションを選択します。 リソース マネージャー モデルを使用しています。
 2. Site Recovery によって、仮想ネットワークが 1 つ以上あることが確認されます。 これらは、このシリーズのチュートリアルの[最初のチュートリアル](tutorial-prepare-azure.md)で、Azure のコンポーネントをセットアップしたときには存在している必要があります。
 
-   ![[ターゲット] タブ](./media/vmware-azure-tutorial/storage-network.png)
+   ![[インフラストラクチャの準備] > [ターゲット] のオプションのスクリーンショット。](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
 
@@ -165,7 +165,7 @@ ms.locfileid: "87290662"
 6. **[復旧ポイントのリテンション期間]** で、各復旧ポイントがどれだけ長く保持されるかを指定します。 このチュートリアルでは 72 時間を使用しています。 レプリケートされた VM は、リテンション期間内の任意の時点に復旧できます。
 7. **[アプリ整合性スナップショットの頻度]** で、アプリケーション整合性スナップショットの作成頻度を指定します。 既定の 60 分を使用しています。 **[OK]** を選択してポリシーを作成します。
 
-   ![レプリケーション ポリシーの作成](./media/vmware-azure-tutorial/replication-policy.png)
+   ![[レプリケーション ポリシーの作成] のオプションのスクリーンショット。](./media/vmware-azure-tutorial/replication-policy.png)
 
 - このポリシーは自動的に構成サーバーに関連付けられます。
 - 既定でフェールバックの照合ポリシーが自動的に作成されます。 たとえば、レプリケーション ポリシーが **rep-policy** の場合、フェールバック ポリシーは **rep-policy-failback** になります。 このポリシーは、Azure からフェールバックを開始するまで使用されません。

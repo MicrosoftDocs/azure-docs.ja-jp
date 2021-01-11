@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: caf73ffbc18a603ace22acfbd0da490048da698a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2fe1b8bdc80a5265add22bd3602050034471fe2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71058119"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87036439"
 ---
 # <a name="troubleshoot-application-connectivity-issues-on-virtual-machines-in-azure"></a>Azure 上の仮想マシンにおけるアプリケーション接続に関する問題のトラブルシューティング
 
@@ -117,7 +117,7 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
   
   * VM のエンドポイント構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうかを確認します。
   * エンドポイント上のアクセス制御リスト (ACL) によって、インターネットからの着信トラフィックが遮断されていないかどうかを確認します。
-  * 詳細については、[仮想マシンに対してエンドポイントを設定する方法](../windows/classic/setup-endpoints.md)に関するページを参照してください。
+  * 詳細については、[仮想マシンに対してエンドポイントを設定する方法](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints)に関するページを参照してください。
 * Resource Manager デプロイ モデルを使用して作成された VM:
   
   * VM の受信 NAT 規則構成で、着信トラフィック (特にプロトコル (TCP または UDP) とパブリックおよびプライベート ポート番号) が許可されているかどうかを確認します。
@@ -138,11 +138,9 @@ Windows ベースの仮想マシンについては、セキュリティ強化機
 
 ## <a name="step-4-if-you-cannot-access-the-application-use-ip-verify-to-check-the-settings"></a>手順 4: アプリケーションにアクセスできない場合は、IP 検証を使用して設定を確認します。 
 
-詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
+詳細については、「[Azure のネットワーク監視の概要](../../network-watcher/network-watcher-monitoring-overview.md)」を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 [Windows ベースの Azure 仮想マシンへのリモート デスクトップ接続のトラブルシューティング](troubleshoot-rdp-connection.md)
 
 [Linux ベースの Azure 仮想マシンに対する Secure Shell (SSH) 接続のトラブルシューティング](troubleshoot-ssh-connection.md)
-
-

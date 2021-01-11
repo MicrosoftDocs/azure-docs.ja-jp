@@ -3,16 +3,17 @@ title: カスタムのイベントとメトリックのための Application Ins
 description: デバイスまたはデスクトップ アプリケーション、Web ページ、またはサービスに数行のコードを追加して、使用状況の追跡や問題の診断を行います。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: ae96609446818802b70cab9c31f6527264046eb9
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: devx-track-javascript, devx-track-csharp
+ms.openlocfilehash: f60fdf9164d09b10d12ada7481edb503cd57a411
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115661"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936573"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
-アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。 デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) コア テレメトリ API を使用すると、カスタムのイベントやメトリック、独自バージョンの標準テレメトリを送信できます。 この API は、Application Insights の標準のデータ コレクターで使用される API と同じものです。
+アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。 デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。 [Azure Application Insights](./app-insights-overview.md) コア テレメトリ API を使用すると、カスタムのイベントやメトリック、独自バージョンの標準テレメトリを送信できます。 この API は、Application Insights の標準のデータ コレクターで使用される API と同じものです。
 
 ## <a name="api-summary"></a>API の概要
 
@@ -37,11 +38,11 @@ Application Insights SDK の参照がまだない場合:
 
 * Application Insights SDK をプロジェクトに追加します。
 
-  * [ASP.NET プロジェクト](../../azure-monitor/app/asp-net.md)
-  * [ASP.NET Core プロジェクト](../../azure-monitor/app/asp-net-core.md)
-  * [Java プロジェクト](../../azure-monitor/app/java-get-started.md)
-  * [Node.js プロジェクト](../../azure-monitor/app/nodejs.md)
-  * [各 Web ページの JavaScript](../../azure-monitor/app/javascript.md) 
+  * [ASP.NET プロジェクト](./asp-net.md)
+  * [ASP.NET Core プロジェクト](./asp-net-core.md)
+  * [Java プロジェクト](./java-get-started.md)
+  * [Node.js プロジェクト](./nodejs.md)
+  * [各 Web ページの JavaScript](./javascript.md) 
 * デバイスまたは Web サーバー コードに次を追加します。
 
     *C#:* `using Microsoft.ApplicationInsights;`
@@ -107,7 +108,7 @@ Node.js のプロジェクトでは、`new applicationInsights.TelemetryClient(i
 
 ## <a name="trackevent"></a>TrackEvent
 
-Application Insights の*カスタム イベント*はデータ ポイントであり、[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)では集計カウントとして、[診断検索](../../azure-monitor/app/diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
+Application Insights の*カスタム イベント*はデータ ポイントであり、[メトリックス エクスプローラー](../platform/metrics-charts.md)では集計カウントとして、[診断検索](./diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
 
 さまざまなイベントをカウントするために、`TrackEvent` 呼び出しを挿入します。 これによって、ユーザーが特定の機能を使用する頻度や、特定の目標を達成する頻度、特定の種類の間違いを起こす頻度をカウントできます。
 
@@ -145,13 +146,13 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics でのカスタム イベント
 
-テレメトリは、[Application Insights Analytics](analytics.md) の `customEvents` テーブルにあります。 各行は、アプリでの `trackEvent(..)` に対する呼び出しを表します。
+テレメトリは、[Application Insights Analytics](../log-query/log-query-overview.md) の `customEvents` テーブルにあります。 各行は、アプリでの `trackEvent(..)` に対する呼び出しを表します。
 
-[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、したがって `customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
+[サンプリング](./sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、したがって `customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 ## <a name="getmetric"></a>GetMetric
 
-GetMetric() 呼び出しを効果的に使用し、.NET および .NET Core アプリケーション用にローカルで事前集計されたメトリックをキャプチャする方法については、[GetMetric](../../azure-monitor/app/get-metric.md) のドキュメントにアクセスしてください。
+GetMetric() 呼び出しを効果的に使用し、.NET および .NET Core アプリケーション用にローカルで事前集計されたメトリックをキャプチャする方法については、[GetMetric](./get-metric.md) のドキュメントにアクセスしてください。
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -201,7 +202,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Analytics でのカスタム メトリック
 
-テレメトリは、[Application Insights Analytics](analytics.md) の `customMetrics` テーブルにあります。 各行は、アプリでの `trackMetric(..)` に対する呼び出しを表します。
+テレメトリは、[Application Insights Analytics](../log-query/log-query-overview.md) の `customMetrics` テーブルにあります。 各行は、アプリでの `trackMetric(..)` に対する呼び出しを表します。
 
 * `valueSum`: これは測定値の合計です。 平均値を取得するには、`valueCount` で除算します。
 * `valueCount`: この `trackMetric(..)` 呼び出しで集計された測定値の数。
@@ -271,7 +272,7 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 
 ### <a name="page-telemetry-in-analytics"></a>Analytics でのページ テレメトリ
 
-[Analytics](analytics.md) では、2 つのテーブルに、ブラウザー操作からのデータが表示されます。
+[Analytics](../log-query/log-query-overview.md) では、2 つのテーブルに、ブラウザー操作からのデータが表示されます。
 
 * `pageViews` テーブルには、URL とページ タイトルに関するデータが含まれます。
 * `browserTimings` テーブルには、受信データの処理にかかった時間などのクライアントのパフォーマンスに関するデータが含まれます。
@@ -307,9 +308,9 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 ## <a name="operation-context"></a>操作コンテキスト
 
-テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [検索](../../azure-monitor/app/diagnostic-search.md)と[分析](analytics.md)では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
+テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [検索](./diagnostic-search.md)と[分析](../log-query/log-query-overview.md)では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
 
-相関の詳細については、「[Application Insights におけるテレメトリの相関付け](../../azure-monitor/app/correlation.md)」を参照してください。
+相関の詳細については、「[Application Insights におけるテレメトリの相関付け](./correlation.md)」を参照してください。
 
 手動でテレメトリを追跡している場合、テレメトリの相関付けを確実に行うための最も簡単な方法として、次のパターンを使用できます。
 
@@ -341,13 +342,13 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 ![関連項目](./media/api-custom-events-metrics/21.png)
 
-カスタム操作の追跡の詳細については、「[Application Insights .NET SDK でカスタム操作を追跡する](../../azure-monitor/app/custom-operations-tracking.md)」をご覧ください。
+カスタム操作の追跡の詳細については、「[Application Insights .NET SDK でカスタム操作を追跡する](./custom-operations-tracking.md)」をご覧ください。
 
 ### <a name="requests-in-analytics"></a>Analytics での要求
 
-[Application Insights Analytics](analytics.md) で、要求は `requests` テーブルに表示されます。
+[Application Insights Analytics](../log-query/log-query-overview.md) で、要求は `requests` テーブルに表示されます。
 
-[サンプリング](../../azure-monitor/app/sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackRequest() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 要求の正しい数と要求名別にセグメント化された平均所要時間を取得するには、次のようなコードを使用します。
+[サンプリング](./sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackRequest() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 要求の正しい数と要求名別にセグメント化された平均所要時間を取得するには、次のようなコードを使用します。
 
 ```kusto
 requests
@@ -358,8 +359,8 @@ requests
 
 次の目的で例外を Application Insights に送信します。
 
-* 問題の頻度の指標として[例外の件数](../../azure-monitor/platform/metrics-charts.md)を数える。
-* [個々の発生を確認する](../../azure-monitor/app/diagnostic-search.md)。
+* 問題の頻度の指標として[例外の件数](../platform/metrics-charts.md)を数える。
+* [個々の発生を確認する](./diagnostic-search.md)。
 
 レポートにはスタック トレースが含まれます。
 
@@ -414,8 +415,8 @@ catch (ex)
 
 SDK が多数の例外を自動的にキャッチするため、常に TrackException を明示的に呼び出す必要はありません。
 
-* ASP.NET:[例外をキャッチするコードを記述します](../../azure-monitor/app/asp-net-exceptions.md)。
-* Java EE:[例外は自動的にキャッチされます](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
+* ASP.NET:[例外をキャッチするコードを記述します](./asp-net-exceptions.md)。
+* Java EE:[例外は自動的にキャッチされます](./java-get-started.md#exceptions-and-request-failures)。
 * JavaScript:例外は自動的にキャッチされます。 自動コレクションを無効にする場合は、Web ページに挿入するコード スニペットに次の行を追加します。
 
 ```javascript
@@ -427,9 +428,9 @@ SDK が多数の例外を自動的にキャッチするため、常に TrackExce
 
 ### <a name="exceptions-in-analytics"></a>Analyticsでの例外
 
-[Application Insights Analytics](analytics.md) で、例外は `exceptions` テーブルに表示されます。
+[Application Insights Analytics](../log-query/log-query-overview.md) で、例外は `exceptions` テーブルに表示されます。
 
-[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、`itemCount` プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackException() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 例外の種類別にセグメント化された例外の正しい数を取得するには、次のようなコードを使用します。
+[サンプリング](./sampling.md)が実行中の場合は、`itemCount` プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackException() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 例外の種類別にセグメント化された例外の正しい数を取得するには、次のようなコードを使用します。
 
 ```kusto
 exceptions
@@ -452,11 +453,11 @@ exceptions
 
 ## <a name="tracktrace"></a>TrackTrace
 
-TrackTrace を使用すると、Application Insights に "階層リンクの追跡" を送信して問題を診断できます。 診断データのチャンクを送信し、[診断検索](../../azure-monitor/app/diagnostic-search.md)で検査できます。
+TrackTrace を使用すると、Application Insights に "階層リンクの追跡" を送信して問題を診断できます。 診断データのチャンクを送信し、[診断検索](./diagnostic-search.md)で検査できます。
 
-.NET [ログ アダプター](../../azure-monitor/app/asp-net-trace-logs.md)では、この API を使用してポータルにサードパーティのログを送信します。
+.NET [ログ アダプター](./asp-net-trace-logs.md)では、この API を使用してポータルにサードパーティのログを送信します。
 
-Java の [Log4J や Logback などの標準ロガー](../../azure-monitor/app/java-trace-logs.md)では、Application Insights Log4j または Logback アペンダーを使用してポータルにサードパーティのログを送信します。
+Java の [Log4J や Logback などの標準ロガー](./java-trace-logs.md)では、Application Insights Log4j または Logback アペンダーを使用してポータルにサードパーティのログを送信します。
 
 *C#*
 
@@ -491,7 +492,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
  パラメーター | 説明
 ---|---
 `message` | 診断データ。 名前よりはるかに長くなることがあります。
-`properties` | 文字列と文字列のマップ:ポータルで、[例外のフィルター](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)に使用される追加のデータ。 既定値は空です。
+`properties` | 文字列と文字列のマップ:ポータルで、[例外のフィルター](#properties)に使用される追加のデータ。 既定値は空です。
 `severityLevel` | サポートされる値:[SeverityLevel.ts](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/shared/AppInsightsCommon/src/Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 メッセージ コンテンツで検索できますが、(プロパティ値とは異なり) フィルター処理はできません。
@@ -518,13 +519,13 @@ properties.put("Database", db.ID);
 telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties);
 ```
 
-この後に [Search](../../azure-monitor/app/diagnostic-search.md) で、特定のデータベースに関連し特定の重大度レベルを持つすべてのメッセージを簡単に抽出することができます。
+この後に [Search](./diagnostic-search.md) で、特定のデータベースに関連し特定の重大度レベルを持つすべてのメッセージを簡単に抽出することができます。
 
 ### <a name="traces-in-analytics"></a>Analytics でのトレース
 
-[Application Insights Analytics](analytics.md) で、TrackTrace への呼び出しは `traces` テーブルに表示されます。
+[Application Insights Analytics](../log-query/log-query-overview.md) で、TrackTrace への呼び出しは `traces` テーブルに表示されます。
 
-[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば、itemCount==10 は、サンプリング プロセスで転送されたのは `trackTrace()` への 10 回の呼び出しのうち 1 回だけであることを意味します。 トレース呼び出しの正確な数を取得するには、`traces | summarize sum(itemCount)` などのコードを使用する必要があります。
+[サンプリング](./sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば、itemCount==10 は、サンプリング プロセスで転送されたのは `trackTrace()` への 10 回の呼び出しのうち 1 回だけであることを意味します。 トレース呼び出しの正確な数を取得するには、`traces | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 ## <a name="trackdependency"></a>TrackDependency
 
@@ -591,19 +592,19 @@ finally
 }
 ```
 
-サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](../../azure-monitor/app/asp-net-dependencies.md)が含まれています。 このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。 
+サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](./asp-net-dependencies.md)が含まれています。 このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。 
 
-Java では、[Java エージェント](../../azure-monitor/app/java-agent.md)を使用して、特定の依存関係呼び出しを自動的に追跡できます。
+Java では、[Java エージェント](./java-agent.md)を使用して、特定の依存関係呼び出しを自動的に追跡できます。
 
 この呼び出しは、自動追跡ではキャッチされない呼び出しを追跡する場合、またはエージェントをインストールしない場合に使用します。
 
-C# の標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) を編集し、`DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。 Java では、標準の依存関係を自動的に収集したくない場合は Java エージェントをインストールしないでください。
+C# の標準の依存関係追跡モジュールを無効にするには、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) を編集し、`DependencyCollector.DependencyTrackingTelemetryModule` への参照を削除します。 Java では、標準の依存関係を自動的に収集したくない場合は Java エージェントをインストールしないでください。
 
 ### <a name="dependencies-in-analytics"></a>Analytics での依存関係
 
-[Application Insights Analytics](analytics.md) で、trackDependency 呼び出しは `dependencies` テーブルに表示されます。
+[Application Insights Analytics](../log-query/log-query-overview.md) で、trackDependency 呼び出しは `dependencies` テーブルに表示されます。
 
-[サンプリング](../../azure-monitor/app/sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackDependency() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 ターゲット コンポーネント別にセグメント化された依存関係の正しい数を取得するには、次のようなコードを使用します。
+[サンプリング](./sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackDependency() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 ターゲット コンポーネント別にセグメント化された依存関係の正しい数を取得するには、次のようなコードを使用します。
 
 ```kusto
 dependencies
@@ -649,7 +650,7 @@ telemetry.flush();
 
 ## <a name="authenticated-users"></a>認証されたユーザー
 
-Web アプリでは、ユーザーは (既定では) [Cookie により識別](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)されます。 ユーザーは、別のコンピューターまたはブラウザーからアプリにアクセスしたり、Cookie を削除した場合、複数回カウントされることがあります。
+Web アプリでは、ユーザーは (既定では) [Cookie により識別](./usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)されます。 ユーザーは、別のコンピューターまたはブラウザーからアプリにアクセスしたり、Cookie を削除した場合、複数回カウントされることがあります。
 
 ユーザーがアプリにサインインしていれば、認証されたユーザーの ID をブラウザー コードに設定して、より正確な数値を取得できます。
 
@@ -689,9 +690,9 @@ ASP.NET Web MVC アプリケーションでの例:
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-charts.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント**をカウントするグラフを作成できます。
+[メトリックス エクスプローラー](../platform/metrics-charts.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント**をカウントするグラフを作成できます。
 
-また、特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索する](../../azure-monitor/app/diagnostic-search.md)こともできます。
+また、特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索する](./diagnostic-search.md)こともできます。
 
 ## <a name="filtering-searching-and-segmenting-your-data-by-using-properties"></a><a name="properties"></a>プロパティを使用したデータのフィルタリング、検索、セグメント化
 
@@ -810,7 +811,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Analytics でのカスタム測定とプロパティ
 
-[Analytics](analytics.md) で、カスタム メトリックとプロパティは、各テレメトリ レコードの `customMeasurements` および `customDimensions` 属性に表示されます。
+[Analytics](../log-query/log-query-overview.md) で、カスタム メトリックとプロパティは、各テレメトリ レコードの `customMeasurements` および `customDimensions` 属性に表示されます。
 
 たとえば、要求テレメトリに "game" というプロパティを追加した場合、このクエリは "game" のさまざまな値の出現数をカウントし、カスタム メトリック "score" の平均を表示します。
 
@@ -822,7 +823,7 @@ requests
 次のことに注意してください。
 
 * customDimensions または customMeasurements JSON から値を抽出する場合、これは動的な型を持つため、`tostring` または `todouble` にキャストする必要があります。
-* [サンプリング](../../azure-monitor/app/sampling.md)の可能性について考慮するには、`count()` ではなく、`sum(itemCount)` を使用する必要があります。
+* [サンプリング](./sampling.md)の可能性について考慮するには、`count()` ではなく、`sum(itemCount)` を使用する必要があります。
 
 ## <a name="timing-events"></a><a name="timed"></a> タイミング イベント
 
@@ -919,19 +920,19 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 *JavaScript Web クライアントの場合*、JavaScript テレメトリ初期化子を使用します。
 
-標準コレクション モジュールのデータなど、*すべてのテレメトリにプロパティを追加する*には、[`ITelemetryInitializer` を実装します](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
+標準コレクション モジュールのデータなど、*すべてのテレメトリにプロパティを追加する*には、[`ITelemetryInitializer` を実装します](./api-filtering-sampling.md#add-properties)。
 
 ## <a name="sampling-filtering-and-processing-telemetry"></a>テレメトリのサンプリング、フィルタリング、および処理
 
 テレメトリを SDK からの送信前に処理するコードを記述することができます。 この処理では、HTTP 要求のコレクションや依存関係のコレクションなど、標準的なテレメトリ モジュールから送信されるデータも対象となります。
 
-テレメトリに[プロパティを追加する](../../azure-monitor/app/api-filtering-sampling.md#add-properties)には、`ITelemetryInitializer` を実装します。 たとえば、バージョン番号や、他のプロパティから算出された値を追加できます。
+テレメトリに[プロパティを追加する](./api-filtering-sampling.md#add-properties)には、`ITelemetryInitializer` を実装します。 たとえば、バージョン番号や、他のプロパティから算出された値を追加できます。
 
-`ITelemetryProcessor` を実装すると、テレメトリが SDK から送信される前に[フィルタリング](../../azure-monitor/app/api-filtering-sampling.md#filtering)によってテレメトリを変更または破棄することができます。 送信対象や破棄対象を指定できますが、メトリックへの影響を考慮する必要があります。 項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
+`ITelemetryProcessor` を実装すると、テレメトリが SDK から送信される前に[フィルタリング](./api-filtering-sampling.md#filtering)によってテレメトリを変更または破棄することができます。 送信対象や破棄対象を指定できますが、メトリックへの影響を考慮する必要があります。 項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
 
-[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)は、アプリからポータルに送信されるデータの量を減らすためのパッケージ化ソリューションです。 これにより、表示されるメトリックに影響をあたえることなくデータ量を削減できます。 また、サンプリングを行った場合でも、変わらずに例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断できます。
+[サンプリング](./api-filtering-sampling.md)は、アプリからポータルに送信されるデータの量を減らすためのパッケージ化ソリューションです。 これにより、表示されるメトリックに影響をあたえることなくデータ量を削減できます。 また、サンプリングを行った場合でも、変わらずに例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断できます。
 
-[詳細については、こちらを参照してください](../../azure-monitor/app/api-filtering-sampling.md)。
+[詳細については、こちらを参照してください](./api-filtering-sampling.md)。
 
 ## <a name="disabling-telemetry"></a>テレメトリの無効化
 
@@ -951,7 +952,7 @@ TelemetryConfiguration.Active.DisableTelemetry = true;
 telemetry.getConfiguration().setTrackingDisabled(true);
 ```
 
-*選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
+*選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 *Node.js*
 
@@ -1012,7 +1013,7 @@ telemetry.InstrumentationKey = "---my key---";
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-開発、テスト、運用の各環境のテレメトリが混じらないようにするために、環境に応じて[個別の Application Insights リソースを作成](../../azure-monitor/app/create-new-resource.md )し、それぞれのキーを変更できます。
+開発、テスト、運用の各環境のテレメトリが混じらないようにするために、環境に応じて[個別の Application Insights リソースを作成](./create-new-resource.md)し、それぞれのキーを変更できます。
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
@@ -1068,7 +1069,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 telemetry.Context.Operation.Name = "MyOperationName";
 ```
 
-いずれかの値を自分で設定した場合は、その値と標準の値が混同されないように、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) から該当する行を削除することを検討します。
+いずれかの値を自分で設定した場合は、その値と標準の値が混同されないように、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) から該当する行を削除することを検討します。
 
 * **Component**:アプリそのバージョン。
 * **Device**:アプリが実行されているデバイスに関するデータ (Web アプリでは、テレメトリを送信するサーバーまたはクライアント デバイスのデータ)。
@@ -1086,14 +1087,14 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 [!INCLUDE [application-insights-limits](../../../includes/application-insights-limits.md)]
 
-データ速度の上限に達するのを回避するには、[サンプリング](../../azure-monitor/app/sampling.md)を使用します。
+データ速度の上限に達するのを回避するには、[サンプリング](./sampling.md)を使用します。
 
-データの保持期間を確認する方法については、[データの保持とプライバシー](../../azure-monitor/app/data-retention-privacy.md)に関するページを参照してください。
+データの保持期間を確認する方法については、[データの保持とプライバシー](./data-retention-privacy.md)に関するページを参照してください。
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [ASP.NET リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [Java リファレンス](https://docs.microsoft.com/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET リファレンス](/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Java リファレンス](/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK コード
@@ -1112,9 +1113,10 @@ telemetry.Context.Operation.Name = "MyOperationName";
     [なし] : try catch 句で例外をラップする必要はありません。 SDK で問題が発生すると、デバッグ コンソール出力のメッセージが記録されます。メッセージがスルーされる場合は、診断検索にも記録されます。
 * *ポータルからデータを取得する REST API はありますか。*
 
-    はい、[データ アクセス API](https://dev.applicationinsights.io/) があります。 データを抽出する別の方法としては、[Analytics から Power BI へのエクスポート](../../azure-monitor/app/export-power-bi.md )や[連続エクスポート](../../azure-monitor/app/export-telemetry.md)などがあります。
+    はい、[データ アクセス API](https://dev.applicationinsights.io/) があります。 データを抽出する別の方法としては、[Analytics から Power BI へのエクスポート](./export-power-bi.md)や[連続エクスポート](./export-telemetry.md)などがあります。
 
 ## <a name="next-steps"></a><a name="next"></a>次のステップ
 
-* [イベントおよびログを検索する](../../azure-monitor/app/diagnostic-search.md)
-* [トラブルシューティング](../../azure-monitor/app/troubleshoot-faq.md)
+* [イベントおよびログを検索する](./diagnostic-search.md)
+* [トラブルシューティング](../faq.md)
+

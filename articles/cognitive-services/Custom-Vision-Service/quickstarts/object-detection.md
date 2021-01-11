@@ -1,20 +1,20 @@
 ---
-title: クイック スタート:Custom Vision SDK を使用して物体検出を作成する
-description: クイック スタート:Custom Vision SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
+title: クイック スタート:Custom Vision クライアント ライブラリを使用して物体検出を作成する
+description: クイック スタート:Custom Vision クライアント ライブラリを使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
 author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.date: 08/17/2020
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 1a8541e0ac1f819bf8189e677a532244a0900789
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 404e76ec8fe4d874695c77ee18542c7db6665796
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610051"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88919337"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk"></a>クイック スタート:Custom Vision SDK を使用して物体検出プロジェクトを作成する
 

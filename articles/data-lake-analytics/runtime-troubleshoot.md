@@ -7,12 +7,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 54524b0528f94ca9386c2d0d45ba4393c965fa88
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128813"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475262"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>実行時の変更による U-SQL ランタイム エラーをトラブルシューティングする方法について説明します。
 
@@ -46,11 +46,6 @@ release_YYYYMMDD_adl_buildno[_modifier]
 
 たとえば、release_20190318_adl_3394512_2 は、2019 年 3 月 18 日のランタイム リリースのビルド 3394512 の 2 番目のバージョンを意味し、release_20190318_adl_3394512_private は同じリリースのプライベート ビルドを意味します。 注:この日付は、そのリリースの最終チェックインの実行日に関連付けられており、必ずしも正式なリリース日ではありません。
 
-次に示すのは、現在使用可能なランタイム バージョンです。
-
-- release_20190318_adl_3394512
-- release_20190318_adl_5832669 (現在の既定)
-- release_20190703_adl_4713356
 
 ## <a name="troubleshooting-u-sql-runtime-version-issues"></a>U-SQL ランタイム バージョンの問題のトラブルシューティング
 

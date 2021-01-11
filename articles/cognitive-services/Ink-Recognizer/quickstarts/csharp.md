@@ -1,23 +1,26 @@
 ---
 title: クイック スタート:Ink Recognizer REST API および C# を使用したデジタル インクの認識
 titleSuffix: Azure Cognitive Services
-description: このクイックスタートでは、Ink Recognizer API を使用して、デジタル インク ストロークの認識を開始します。
+description: このクイックスタートでは、Ink Recognizer API と C# を使用して、デジタル インク ストロークの認識を開始します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: quickstart
-ms.date: 06/30/2020
+ms.date: 08/24/2020
 ms.author: aahi
-ms.openlocfilehash: f61566c3d5efa7f973141253353fde7e4893bc6e
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-csharp
+ms.openlocfilehash: a4bb02f11c7a9a75ddc96e0ee8e9f4b868f8ade5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986076"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89051595"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>クイック スタート:Ink Recognizer REST API および C# を使用したデジタル インクの認識
+
+[!INCLUDE [ink-recognizer-deprecation](../includes/deprecation-note.md)]
 
 このクイックスタートを使用して、Ink Recognizer API へのデジタル インク ストロークの送信を開始します。 この C# アプリケーションは、JSON 形式のインク ストローク データを含む API 要求を送信し、応答を取得します。
 

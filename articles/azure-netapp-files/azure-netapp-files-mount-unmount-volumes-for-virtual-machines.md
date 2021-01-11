@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045656"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533089"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する 
 
@@ -43,9 +43,12 @@ ms.locfileid: "86045656"
     a. まず、ボリュームを Unix または Linux VM にマウントします。  
     b. ボリュームに対して `chmod 777` または `chmod 775` コマンドを実行します。  
     c. Windows 上の NFS クライアントを使用してボリュームをマウントします。
+    
+5. NFS Kerberos ボリュームをマウントする場合の詳細については、[NFSv4.1 Kerberos 暗号化の構成](configure-kerberos-encryption.md)に関する記事を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS に関する FAQ](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [ネットワーク ファイル システムの概要](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [NFS Kerberos ボリュームをマウントする](configure-kerberos-encryption.md#kerberos_mount)

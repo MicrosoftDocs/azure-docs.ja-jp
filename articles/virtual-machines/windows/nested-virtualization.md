@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f448174842ffd3b7ba14104c30319933c680127d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232323"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074258"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -22,7 +22,7 @@ ms.locfileid: "86232323"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>入れ子対応の Azure VM を作成する
 
-新しい Windows Server 2016 Azure VM を作成します。 入れ子をサポートしている仮想マシンのサイズの完全な一覧については、「[Azure コンピューティング ユニット (ACU)](acu.md)」をご覧ください。
+新しい Windows Server 2016 Azure VM を作成します。 入れ子をサポートしている仮想マシンのサイズの完全な一覧については、「[Azure コンピューティング ユニット (ACU)](../acu.md)」をご覧ください。
 
 必ずゲスト仮想マシンの要求をサポートするのに十分な大きさの VM サイズを選択してください。 この例では、D3_v3 サイズの Azure VM を使用しています。 
 
@@ -30,7 +30,7 @@ Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状�
 
 >[!NOTE]
 >
->新しい仮想マシンを作成する手順の詳細については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)」を参照してください。
+>新しい仮想マシンを作成する手順の詳細については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](./tutorial-manage-vm.md)」を参照してください。
     
 ## <a name="connect-to-your-azure-vm"></a>Azure VM に接続する
 
@@ -181,4 +181,4 @@ IP アドレスがゲスト仮想マシンに動的に割り当てられるよ�
 ゲスト仮想マシンで、ブラウザーを開いて Web ページに移動します。
     ![GuestVM](./media/virtual-machines-nested-virtualization/guest-virtual-machine.png)
 
-ゲスト VM と Azure VM との間で透過的接続を有効にする手順については、[こちらのドキュメント](https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)を参照してください。
+ゲスト VM と Azure VM との間で透過的接続を有効にする手順については、[こちらのドキュメント](/virtualization/hyper-v-on-windows/user-guide/nested-virtualization)を参照してください。

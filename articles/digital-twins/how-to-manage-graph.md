@@ -7,20 +7,20 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6d51abab46cd8450dd3a09e5e5ef47e6267b990d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7f7239e0c13478af712d8e8d9dad8fda23fe42c7
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86258097"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125534"
 ---
 # <a name="manage-a-graph-of-digital-twins-using-relationships"></a>リレーションシップを使ってデジタル ツインのグラフを管理する
 
 Azure Digital Twins の中核は、環境全体を表す[ツイン グラフ](concepts-twins-graph.md)です。 ツイン グラフは、**リレーションシップ**を介して接続された個々のデジタル ツインで構成されています。
 
-機能する [Azure Digital Twins インスタンス](how-to-set-up-instance.md)があり、クライアント アプリの[認証](how-to-authenticate-client.md)を設定すると、[**DigitalTwins API**](how-to-use-apis-sdks.md) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
+機能する [Azure Digital Twins インスタンス](how-to-set-up-instance-scripted.md)があり、クライアント アプリで[認証](how-to-authenticate-client.md)コードを設定すると、[**DigitalTwins API**](how-to-use-apis-sdks.md) を使用して Azure Digital Twins インスタンス内のデジタル ツインとそのリレーションシップを作成、変更、削除することができます。 [.NET (C#) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用することもできます。
 
-この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインを操作については、[「デジタル ツインを管理する」方法](how-to-manage-twin.md)を参照してください。
+この記事では、リレーションシップとグラフ全体の管理に焦点を当てます。個々のデジタル ツインの操作については、[ *「デジタル ツインを管理する」方法*](how-to-manage-twin.md)を参照してください。
 
 [!INCLUDE [visualizing with Azure Digital Twins explorer](../../includes/digital-twins-visualization.md)]
 
@@ -62,7 +62,7 @@ public async static Task CreateRelationship(DigitalTwinsClient client, string sr
 }
 ```
 
-ヘルパー クラス `BasicRelationship` の詳細については、[「Azure Digital Twins の API および SDK を使用する」方法](how-to-use-apis-sdks.md)を参照してください。
+ヘルパー クラス `BasicRelationship` の詳細については、[ *「Azure Digital Twins の API および SDK を使用する」方法*](how-to-use-apis-sdks.md)を参照してください。
 
 ## <a name="list-relationships"></a>リレーションシップの一覧表示
 
@@ -108,7 +108,7 @@ Azure Digital Twins には、特定のツインとのすべての受信リレー
 
 前のコード サンプルでは、発信リレーションシップの検索に重点を置いていました。 次の例は似ていますが、代わりに受信リレーションシップを検索します。 また、これらは検出後に削除されます。
 
-IncomingRelationship の呼び出しからは、完全なものが返されないことに注意してください
+`IncomingRelationship` の呼び出しからは、リレーションシップ全体が返されないことに注意してください。
 
 ```csharp
 async Task<List<IncomingRelationship>> FindIncomingRelationshipsAsync(string dtId)
@@ -301,10 +301,10 @@ foreach (JsonElement row in data.RootElement.EnumerateArray())
 ```
 ## <a name="manage-relationships-with-cli"></a>CLI を使用してリレーションシップを管理する
 
-ツインとそのリレーションシップは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、[「Azure Digital Twins CLI を使用する」方法](how-to-use-cli.md)を参照してください。
+ツインとそのリレーションシップは、Azure Digital Twins CLI を使用して管理することもできます。 コマンドについては、[ *「Azure Digital Twins CLI を使用する」方法*](how-to-use-cli.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins ツイン グラフのクエリについて確認します。
-* [概念:クエリ言語](concepts-query-language.md)
-* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)
+* "[*概念: クエリ言語*](concepts-query-language.md)
+* [*方法: ツイン グラフにクエリを実行する*](how-to-query-graph.md)

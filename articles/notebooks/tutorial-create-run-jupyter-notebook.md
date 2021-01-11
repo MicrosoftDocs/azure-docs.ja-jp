@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Jupyter ノートブックを作成して実行する - Azure Notebooks プレビュー
-description: データ サイエンスの線形回帰のプロセスを示す Jupyter ノートブックを Azure Notebooks で作成して実行する方法を説明します。
+title: チュートリアル - Jupyter Notebook を作成して実行する - Azure Notebooks プレビュー
+description: データ サイエンスの線形回帰のプロセスを示す Jupyter Notebook プレビューを Azure Notebooks で作成して実行する方法を説明します。
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.custom: tracking-python
-ms.openlocfilehash: fd7fc324894595a991074c6d83ffc0f9fa3cff75
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85834133"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589260"
 ---
-# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
+# <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python を使用して Jupyter Notebook を作成して実行する
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-このチュートリアルでは、Azure Notebooks を使用して単純な線形回帰を示す完全な Jupyter ノートブックを作成するプロセスについて説明します。 このチュートリアルでは、異なるセルの作成、セルの実行、スライド ショーとしてのノートブックの提示など、Jupyter Notebook の UI について理解します。
+このチュートリアルでは、Azure Notebooks を使用して単純な線形回帰を示す完全な Jupyter Notebook を作成するプロセスについて説明します。 このチュートリアルでは、異なるセルの作成、セルの実行、スライド ショーとしてのノートブックの提示など、Jupyter Notebook の UI について理解します。
 
 完成したノートブックは、[GitHub の Azure Notebook サンプル](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)にありあます。 ただし、このチュートリアルでは、新しいプロジェクトと空のノートブックで始めるので、作成する手順を経験できます。
 
@@ -417,9 +417,9 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 幸いにも、ノートブックの *.ipynb* ファイルをダウンロードし、Python 拡張機能を使用して Visual Studio Code で開くことができます。 この拡張機能は、コメント内に Markdown セルを保持する 1 つのコード ファイルとして、ノートブックを直接インポートします。 ノートブックをインポートした後、Visual Studio Code のデバッガーを使用して、コードのステップ実行、ブレークポイントの設定、状態の確認などを行うことができます。 次のコードを修正したら、Visual Studio Code から *.ipynb* ファイルをエクスポートして、Azure Notebooks に再度アップロードします。
 
-詳しくは、Visual Studio Code のドキュメントの [Jupyter ノートブックのデバッグ](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)に関するページをご覧ください。
+詳細については、Visual Studio Code のドキュメントで、「[Jupyter Notebook をデバッグする](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)」のセクションを参照してください。
 
-また、[Visual Studio Code の Jupyter サポート](https://code.visualstudio.com/docs/python/jupyter-support)に関するページで、Jupyter ノートブック用の Visual Studio Code の追加機能についてもご覧ください。
+また、Jupyter Notebook 用の Visual Studio Code の追加機能については、[Visual Studio Code の Jupyter サポート](https://code.visualstudio.com/docs/python/jupyter-support)に関するページも参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,19 +1,19 @@
 ---
 title: Azure ポイント対サイト接続の問題のトラブルシューティング
 titleSuffix: Azure VPN Gateway
-description: ポイント対サイト接続の問題のトラブルシューティング方法について説明します。
+description: ポイント対サイト接続に関する一般的な問題と、その他の仮想プライベート ネットワークのエラーおよび問題のトラブルシューティングと解決方法について学習します。
 services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: b997942fd8d8a90b4bd395c2afa7d99b64a97ad8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: dbf0d096827ec1af16e6d38d405709e48175ae89
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037751"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035951"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 

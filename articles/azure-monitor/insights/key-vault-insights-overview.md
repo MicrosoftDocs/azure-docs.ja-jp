@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/13/2019
-ms.openlocfilehash: 7b52a1ee67c22fb3bded49a80d35305bdf612f10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c669946ab76fcaeaaa6fd681f521408643c5a63c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498955"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531261"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault-preview"></a>Azure Monitor for Key Vault (プレビュー) によるキー コンテナーの監視
 Azure Monitor Key Vault (プレビュー) では、Key Vault の要求、パフォーマンス、エラー、待機時間の統合ビューが用意され、キー コンテナーを包括的に監視できます。
@@ -45,7 +45,7 @@ Azure Monitor for Key Vault では、ログとメトリックの組み合わせ�
 
 Azure Monitor では、ご利用のサブスクリプション内の複数のキー コンテナーの要求、待機時間、エラーの詳細を表示でき、パフォーマンスの問題やスロットリング シナリオを特定するのに役立ちます。
 
-所有するすべてのサブスクリプションのストレージ アカウントの使用状況と操作を確認するには、次の手順を実行します。
+所有するすべてのサブスクリプションのキー コンテナーの使用状況と操作を確認するには、次の手順を実行します。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 

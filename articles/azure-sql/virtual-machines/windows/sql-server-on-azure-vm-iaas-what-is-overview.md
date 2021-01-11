@@ -1,6 +1,6 @@
 ---
 title: Azure Windows 仮想マシンでの SQL Server の概要 | Microsoft Docs
-description: Azure Virtual Machines で各 SQL Server エディションを実行する方法について説明します。
+description: クラウド内の Azure Virtual Machines 上の SQL Server の全エディションを、オンプレミスのハードウェアを一切管理することなく実行する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f1786123808371601467926c2a114c676e898330
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84668629"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236371"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -111,7 +111,7 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 ![Azure SQL を検索する](./media/sql-server-on-azure-vm-iaas-what-is-overview/search-for-azure-sql.png)
 
 > [!NOTE]
-> Azure SQL には、すべての Azure SQL データベース、エラスティック プール、論理サーバー、マネージド インスタンス、および仮想マシンにすばやく簡単にアクセスできる方法が用意されています。 Azure SQL はサービスでもリソースでもありません。 
+> Azure SQL には、すべての Azure SQL Database、エラスティック プール、論理サーバー、マネージド インスタンス、および仮想マシンにすばやく簡単にアクセスできる方法が用意されています。 Azure SQL はサービスでもリソースでもありません。 
 
 既存のリソースを管理するには、一覧から目的の項目を選択します。 新しい Azure SQL リソースを作成するには、 **[+ 追加]** を選択します。 
 
@@ -132,7 +132,7 @@ Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソ
 Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](frequently-asked-questions-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
-既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://docs.microsoft.com/sql/getting-started/microsoft-sql-server-privacy-statement)」を参照してください。
+既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://docs.microsoft.com/sql/sql-server/sql-server-privacy)」を参照してください。
 
 ## <a name="related-products-and-services"></a>関連製品およびサービス
 ### <a name="windows-virtual-machines"></a>Windows Virtual Machines

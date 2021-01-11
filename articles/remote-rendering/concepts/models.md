@@ -5,12 +5,13 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7832f999de2f6f16cfe816c061925e371f90662e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 9fd18195c0276999f445e0990838e293a5081131
+ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83758692"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "89021886"
 ---
 # <a name="models"></a>モデル
 

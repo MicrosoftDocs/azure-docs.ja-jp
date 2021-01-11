@@ -1,6 +1,6 @@
 ---
 title: Azure での顧客データの保護
-description: この記事では、Azure で顧客データを保護する方法を示します。
+description: データの分離、データの冗長性、データの破壊によって Azure が顧客データを保護する方法について説明します。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: d723e60afe543808c88b1ae040e2979412ff324c
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86273474"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543794"
 ---
 # <a name="azure-customer-data-protection"></a>Azure での顧客データの保護   
 Microsoft の運用担当者が顧客データに定期的にアクセスする操作は、既定で拒否される設定になっています。 サポート ケースに関連するデータへのアクセスが許可されるとき、Microsoft のコンプライアンス ポリシーとプライバシー ポリシーに照らして監査され、調査されるポリシーを使用した Just-In-Time (JIT) モデルの使用のみが許可されます。  アクセス制御の要件は、次のような Azure セキュリティ ポリシーによって確立されています。

@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308577"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119792"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>JavaScript 用 Microsoft Authentication Library を使用して Azure AD B2C と連携する
 
@@ -44,7 +44,7 @@ MSAL.js for Node は現在開発中です。 詳細については、GitHub 上�
 
 ### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 
-Azure AD B2C を使用して Web API を保護するには、まずそれを登録する必要があります。 詳細な手順については、[Register your application (アプリケーションの登録)](../../active-directory-b2c/add-web-application.md) に関する記事をご覧ください。
+Azure AD B2C を使用して Web API を保護するには、まずそれを登録する必要があります。 詳細な手順については、[Register your application (アプリケーションの登録)](../../active-directory-b2c/add-web-api-application.md) に関する記事をご覧ください。
 
 ### <a name="step-2-download-the-sample-application"></a>手順 2:サンプル アプリケーションのダウンロード
 

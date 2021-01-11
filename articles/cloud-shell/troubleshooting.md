@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189464"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543454"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -142,26 +142,6 @@ Cloud Shell は対話型のユース ケースを想定しています。 その
 
 現時点では、.NET Standard ベースのモジュールのプレビュー バージョンである `AzureAD.Standard.Preview` を入手できます。 このモジュールは、`AzureAD` と同じ機能を提供します。
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer` モジュールの機能
-
-Cloud Shell に含まれている `SqlServer` モジュールには、PowerShell Core に対するプレリリース サポートしかありません。 特に、`Invoke-SqlCmd` はまだ使用できません。
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>Azure ドライブから作成された場合の既定のファイルの場所
-
-ユーザーは、PowerShell コマンドレットを使用して Azure ドライブにファイルを作成することができません。 ユーザーが vim や nano などの他のツールを使用して新しいファイルを作成すると、これらのファイルは、既定では `$HOME` に保存されます。
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>タブ補完によって PSReadline 例外がスローされることがある
-
-ユーザーの PSReadline EditMode が Emacs に設定されており、そのユーザーがタブ補完ですべての可能性を表示しようとしたが、ウィンドウ サイズが小さすぎてすべての可能性を表示できない場合、PSReadline はハンドルされない例外をスローします。
-
-### <a name="large-gap-after-displaying-progress-bar"></a>進行状況バーを表示した後に大きなギャップができる
-
-コマンドまたはユーザー アクション (`Azure:` ドライブ内にある状態でのタブ補完など) によって進行状況バーが表示される場合は、カーソルが正しく設定されていないために、前に進行状況バーがあった場所にギャップが現れることがあります。
-
-### <a name="random-characters-appear-inline"></a>ランダムな文字がインラインで表示される
-
-ユーザー入力にカーソル位置のシーケンス コード (`5;13R` など) が表示される場合があります。 これらの文字は手動で削除できます。
-
 ## <a name="personal-data-in-cloud-shell"></a>Cloud Shell での個人データ
 
 Azure Cloud Shell は、ユーザーの個人データを慎重に取り扱います。Azure Cloud Shell サービスによって取得および格納されたデータは、最近使用されたシェル、推奨されるフォント サイズ、推奨されるフォントの種類、クラウド ドライブの基盤となるファイル共有の詳細などの、ユーザー エクスペリエンスのための既定値を提供するために使用されます。 このデータをエクスポートまたは削除したい場合は、以下の手順に従ってください。
@@ -171,7 +151,8 @@ Azure Cloud Shell は、ユーザーの個人データを慎重に取り扱い�
 ### <a name="export"></a>エクスポート
 選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**エクスポート**するには、次のコマンドを実行します。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![[Azure Cloud Shell の起動] というラベルが付いたボタンを示すイメージ。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Bash または PowerShell で次のコマンドを実行します。
 
 Bash:
@@ -194,7 +175,8 @@ PowerShell:
 >[!Note]
 > ユーザー設定を削除しても、実際の Azure Files 共有は削除されません。 Azure Files に移動して、そのアクションを完了します。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![[Azure Cloud Shell の起動] というラベルが付いたボタンを示すイメージ。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. Bash または PowerShell で次のコマンドを実行します。
 
 Bash:

@@ -11,18 +11,19 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: c8e2372e22c9db3aa5ea8b0bd953f18a2c01fbe2
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077982"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761027"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>クイック スタート:通知ハブのプッシュ通知を設定する
 
 Azure Notification Hubs には、使いやすくスケールアウトにも対応したプッシュ エンジンが用意されています。Notification Hubs を使用すると、あらゆるプラットフォーム (iOS、Android、Windows、Baidu) にあらゆるバックエンド (クラウドまたはオンプレミス) から通知を送信することができます。 詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
 
-このクイック スタートでは、Notification Hubs におけるプラットフォーム通知システム (PNS) の設定を使用して、複数のプラットフォームに対するプッシュ通知を設定します。 このクイック スタートでは、Azure portal での手順を紹介します。  Azure CLI を使用した場合の手順については、「[Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm)」に記載されています。
+このクイック スタートでは、Notification Hubs におけるプラットフォーム通知システム (PNS) の設定を使用して、複数のプラットフォームに対するプッシュ通知を設定します。 このクイック スタートでは、Azure portal での手順を紹介します。 Azure CLI を使用した場合の手順については、「[Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm)」に記載されています。
 
 通知ハブを作成していない場合は、ここで作成します。 詳細については、「[Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)」または「[Azure CLI を使用して Azure 通知ハブを作成する](create-notification-hub-azure-cli.md)」を参照してください。
 
@@ -108,9 +109,7 @@ Google FCM のプッシュ通知を設定するには、次の手順に従いま
 
 その他のプラットフォーム向けの Azure CLI リファレンスは、[az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) コマンドで入手してください。
 
----
-
-Android アプリケーションにプッシュ通知を送信する方法の詳細については、「[Firebase を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。
+Android アプリケーションへの通知の送信に関する詳細については、「[Firebase を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を参照してください。
 
 ## <a name="windows-push-notification-service"></a>Windows プッシュ通知サービス
 

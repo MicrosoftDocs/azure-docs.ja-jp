@@ -14,12 +14,12 @@ ms.author: blazem
 ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 465338bb793ad7b4fc406e9d1c073b9dc0dc06c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d632d078db55696dad7bb05e72368b13610b5978
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091421"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Azure での Stretch Database に対する Transparent Data Encryption (TDE) の有効化
 > [!div class="op_single_selector"]
@@ -37,9 +37,9 @@ Stretch 対応 SQL Server データベースから移行したデータを格納
 
 1. [Azure ポータル](https://portal.azure.com)
 2. データベース ブレードで **[設定]** ボタンをクリックします。
-3. **[透過的なデータ暗号化]** オプションを選択します ![][1]
-4. **[オン]** 、 **[保存]** の順に選択します。
-   ![][2]
+3. **[透過的なデータ暗号化]** オプションを選択します。![[設定] ブレードが表示された Azure portal のスクリーンショット。 [General]\(全般\) セクションでは、[透過的なデータ暗号化] が強調表示されています。][1]
+4. **[On]\(オン\)** 設定を選択して、 **[保存]** を選択します。
+   ![[透過的なデータ暗号化] ブレードが表示された Azure portal のスクリーンショット。 データの暗号化が有効で、[保存] ボタンが強調表示されています。][2]
 
 ## <a name="disabling-encryption"></a>暗号化の無効化
 Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの TDE を無効にするには、次の操作を行います。

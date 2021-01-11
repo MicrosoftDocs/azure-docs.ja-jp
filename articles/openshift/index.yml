@@ -10,12 +10,12 @@ metadata:
   author: jimzim
   ms.author: jzim
   ms.date: 03/06/2020
-  ms.openlocfilehash: ec28a8734b48dadad5e7abdbd6e6cba689e41045
-  ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+  ms.openlocfilehash: c92ce909abd9a36f2515eefeb60ff0066221a4e1
+  ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/21/2020
-  ms.locfileid: "83773473"
+  ms.lasthandoff: 09/04/2020
+  ms.locfileid: "89468966"
 landingContent:
 - title: Azure Red Hat OpenShift について
   linkLists:
@@ -38,7 +38,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: プライベート Azure Red Hat OpenShift 4 クラスターを作成する
-      url: howto-create-private-cluster.md
+      url: ./howto-create-private-cluster-3x.md
     - text: Azure Red Hat OpenShift 4 クラスターの DNS 転送を構成する
       url: dns-forwarding.md
 - title: リファレンス

@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2020
-ms.openlocfilehash: 072f8fd44fa45648afd15cb40cba26bb427c7b56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 07/27/2020
+ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539620"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824768"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Azure Monitor for VMs の有効化の概要
 
@@ -67,41 +67,35 @@ Azure Monitor for VMs は、次のリージョンで Log Analytics ワークス�
 >
 
 Log Analytics ワークスペースがない場合は、次のいずれかのリソースを使用して作成できます。
-* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Azure CLI](../learn/quick-create-workspace-cli.md)
 * [PowerShell](../platform/powershell-workspace-configuration.md)
-* [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
-* [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
+* [Azure Portal](../learn/quick-create-workspace.md)
+* [Azure Resource Manager](../platform/template-workspace-configuration.md)
 
-Azure portal で単一の Azure VM または仮想マシン スケール セットに対する監視を有効にしているときにも、ワークスペースを作成できます。
+- Azure 仮想マシン
+- Azure 仮想マシン スケール セット
+- Azure Arc に接続されているハイブリッド仮想マシン
 
-Azure Policy テンプレート、Azure PowerShell テンプレート、または Azure Resource Manager テンプレートを使用した大規模なシナリオを設定するには、*VMInsights* をインストールする必要があります。 これは、次のいずれか方法で実行できます。
-
-* [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace) を使用します。
-* Azure Monitor for VMs の [ **[ポリシー対象範囲]** ](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) ページで、 **[ワークスペースの構成]** を選択します。 
-
-### <a name="azure-arc-machines"></a>Azure Arc マシン
-Azure Monitor for VMs は、Arc 拡張サービスが利用可能なリージョンの Azure Arc 対応サーバーで使用できます。 Arc 対応サーバーで Azure Monitor for VMs を有効にするには、ユーザーが Arc エージェントのバージョン 0.9 以降を実行している必要があります。
-
-### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 次の表は、Azure Monitor for VMs でサポートされている Windows および Linux オペレーティング システムの一覧です。 メジャーおよびマイナーの Linux OS リリースとサポートされているカーネルのバージョンの詳細な一覧は、このセクションの後の方にあります。
 
 |OS バージョン |パフォーマンス |マップ |
 |-----------|------------|-----|
-|Windows Server 2019 | X | X |
-|Windows Server 2016 1803 | X | X |
-|Windows Server 2016 | X | X |
-|Windows Server 2012 R2 | X | X |
-|Windows Server 2012 | X | X |
-|Windows Server 2008 R2 | X | X|
-|Windows 10 1803 | X | X |
-|Windows 8.1 | X | X |
-|Windows 8 | X | X |
-|Windows 7 SP1 | X | X |
-|Red Hat Enterprise Linux (RHEL) 6、7| X | X| 
-|Ubuntu 18.04、16.04 | X | X |
-|CentOS Linux 7、6 | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X |
+|Windows Server 2019 | x | x |
+|Windows Server 2016 1803 | x | x |
+|Windows Server 2016 | X | x |
+|Windows Server 2012 R2 | X | x |
+|Windows Server 2012 | X | x |
+|Windows Server 2008 R2 | X | x|
+|Windows 10 1803 | X | x |
+|Windows 8.1 | X | x |
+|Windows 8 | X | x |
+|Windows 7 SP1 | X | x |
+|Red Hat Enterprise Linux (RHEL) 6、7| X | x| 
+|Ubuntu 18.04、16.04 | X | x |
+|CentOS Linux 7、6 | X | x |
+|SUSE Linux Enterprise Server (SLES) 12 | X | x |
 |Debian 9.4、8 | X<sup>1</sup> | |
 
 <sup>1</sup> Azure Monitor for VMs のパフォーマンス機能は、Azure Monitor からのみ使用できます。 Azure VM の左側のウィンドウから直接使用することはできません。
@@ -158,54 +152,40 @@ Azure Monitor for VMs は、Arc 拡張サービスが利用可能なリージョ
 |:--|:--|
 | 9 | 4.9 | 
 
-### <a name="the-microsoft-dependency-agent"></a>Microsoft Dependency Agent
-
-Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent からデータが取得されます。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 そのため、お使いのシステムに Log Analytics エージェントをインストールし、Dependency Agent を使用して構成する必要があります。
-
-単一の Azure VM に対して Azure Monitor for VMs を有効にするか、または大規模なデプロイ方法を使用するかにかかわらず、[Windows](../../virtual-machines/extensions/agent-dependency-windows.md) または [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) 用 Azure VM Dependency Agent 拡張機能を使用し、エクスペリエンスの一部としてエージェントをインストールします。
-
->[!NOTE]
->このセクションで説明する次の情報は、[Service Map ソリューション](service-map.md)にも適用できます。  
-
-ハイブリッド環境では、手動または自動化された方法で Dependency Agent をダウンロードしてインストールできます。
-
-次の表では、ハイブリッド環境でマップ機能がサポートしている接続先ソースについて説明します。
+## <a name="supported-azure-arc-machines"></a>サポートされている Azure Arc マシン
+Azure Monitor for VMs は、Arc 拡張サービスが利用可能なリージョンの Azure Arc 対応サーバーで使用できます。 Arc エージェントのバージョン 0.9 以降を実行している必要があります。
 
 | 接続先ソース | サポートされています | 説明 |
 |:--|:--|:--|
-| Windows エージェント | はい | Windows エージェントには、[Windows の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
-| Linux エージェント | はい | Linux エージェントには、[Linux の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
+| Windows エージェント | はい | Windows エージェントには、[Windows の Log Analytics エージェント](../platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
+| Linux エージェント | はい | Linux エージェントには、[Linux の Log Analytics エージェント](../platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
 | System Center Operations Manager 管理グループ | いいえ | |
 
-Dependency Agent は、以下の場所からダウンロードできます。
+## <a name="agents"></a>エージェント
+Azure Monitor for VMs では、監視する各仮想マシンまたは仮想マシン スケール セットに、次の 2 つのエージェントをインストールする必要があります。 これらのエージェントをインストールしてワークスペースに接続することは、リソースをオンボードするための唯一の要件です。
 
-| ファイル | OS | Version | SHA-256 |
-|:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
+- [Log Analytics エージェント](../platform/log-analytics-agent.md)。 仮想マシンまたは仮想マシン スケール セットからイベントおよびパフォーマンス データを収集し、Log Analytics ワークスペースに配信します。 Azure リソース上の Log Analytics エージェントのデプロイ方法では、[Windows](../../virtual-machines/extensions/oms-windows.md) および [Linux](../../virtual-machines/extensions/oms-linux.md) 用の VM 拡張機能を使用します。
+- Dependency Agent。 仮想マシンで実行されているプロセス、および外部プロセスの依存関係に関する検出データを収集します。これは、[Azure Monitor for VMs のマップの機能](vminsights-maps.md)で使用されます。 Dependency Agent は、Azure Monitor へのデータの配信に関して Log Analytics エージェントに依存しています。 Azure リソース上の Dependency Agent のデプロイ方法では、[Windows](../../virtual-machines/extensions/agent-dependency-windows.md) および [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) 用の VM 拡張機能を使用します。
 
-## <a name="role-based-access-control"></a>ロールベースのアクセス制御
+> [!NOTE]
+> Log Analytics エージェントは、System Center Operations Manager に使用されているのと同じエージェントです。 Azure Monitor for VMs では、直接接続されている場合に、Operations Manager によっても監視されているエージェントを監視できます。これらに Dependency Agent をインストールします。 [管理グループ接続](../tform/../platform/om-agents.md)を介して Azure Monitor に接続されているエージェントは、Azure Monitor for VMs では監視できません。
 
-Azure Monitor for VMs の機能を有効にしてアクセスするには、"*Log Analytics 共同作成者*" ロールが必要です。 パフォーマンス、正常性、およびマップのデータを表示するには、Azure VM に対する "*監視閲覧者*" ロールが必要です。 Azure Monitor for VMs 用に Log Analytics ワークスペースを構成する必要があります。
+これらのエージェントをデプロイするための複数の方法を次に示します。 
 
-Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../../azure-monitor/platform/manage-access.md)」を参照してください。
+| メソッド | 説明 |
+|:---|:---|
+| [Azure Portal](./vminsights-enable-portal.md) | Azure Arc に接続されている 1 つの仮想マシン、仮想マシン スケール セット、またはハイブリッド仮想マシンに両方のエージェントをインストールします。 |
+| [Resource Manager テンプレート](vminsights-enable-powershell.md) | CLI と PowerShell を含む Resource Manager テンプレートをデプロイするために、サポートされているいずれかの方法を使用して両方のエージェントをインストールします。 |
+| [Azure Policy](./vminsights-enable-policy.md) | 仮想マシンまたは仮想マシン スケール セットの作成時にエージェントを自動的にインストールするように、Azure Policy イニシアチブを割り当てます。 |
+| [手動インストール](./vminsights-enable-hybrid.md) | データセンターや他のクラウド環境など、Azure の外部でホストされているコンピューター上のゲスト オペレーティング システムにエージェントをインストールします。 |
 
-## <a name="how-to-enable-azure-monitor-for-vms"></a>Azure Monitor for VMs を有効にする方法
 
-この表で説明されているいずれかの方法で、Azure Monitor for VMs を有効にします。
 
-| デプロイの状態 | Method | 説明 |
-|------------------|--------|-------------|
-| 単一の Azure VM、Azure VMSS、または Azure Arc マシン | [ポータルから有効にする](vminsights-enable-single-vm.md) | Azure portal のメニューから直接 **[Insights]** を選択します。 |
-| 複数の Azure VM、Azure VMSS、または Azure Arc マシン | [Azure Policy を介して有効にする](vminsights-enable-at-scale-policy.md) | Azure Policy を使用して、VM または VMSS の作成時に自動的に有効にします。 |
-| | [Azure PowerShell または Azure Resource Manager テンプレートを介して有効にする](vminsights-enable-at-scale-powershell.md) | Azure PowerShell テンプレートまたは Azure Resource Manager テンプレートを使用して、指定されたサブスクリプションまたはリソース グループにわたって、複数の Azure VM、Azure Arc VM、または Azure VMSS を有効にします。 |
-| ハイブリッド クラウド | [ハイブリッド環境用に有効にする](vminsights-enable-hybrid-cloud.md) | ご自身のデータセンターやその他のクラウド環境でホストされている VM または物理コンピューターにデプロイできます。 |
 
 ## <a name="management-packs"></a>管理パック
+Log Analytics ワークスペースが Azure Monitor for VMs 用に構成されている場合、そのワークスペースに接続されているすべての Windows コンピューターに 2 つの管理パックが転送されます。 これらの管理パックの名前は *Microsoft.IntelligencePacks.ApplicationDependencyMonitor* と *Microsoft.IntelligencePacks.VMInsights* で、*%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\* に書き込まれています。 
 
-Azure Monitor for VMs が有効になっていて、Log Analytics ワークスペースで構成されている場合、管理パックはそのワークスペースに対してレポートを行うすべての Windows コンピューターに転送されます。 Log Analytics ワークスペースと [System Center Operations Manager 管理グループを統合](../../azure-monitor/platform/om-agents.md)している場合は、Service Map 管理パックが、管理グループから、管理グループにレポートを行う Windows コンピューターにデプロイされます。  
-
-この管理パックは、*Microsoft.IntelligencePacks.ApplicationDependencyMonitor* という名前で、 `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` フォルダーに書き込まれます。 管理パックで使用されるデータ ソースは、`%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll` です。
+*ApplicationDependencyMonitor* 管理パックで使用されるデータ ソースは、 *%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll* です。 *VMInsights* 管理パックによって使用されるデータ ソースは、 *%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\ Microsoft.VirtualMachineMonitoringModule.dll* です。
 
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 
@@ -216,8 +196,6 @@ Microsoft は、お客様による Azure Monitor サービスの使用を通し�
 データの収集と使用の詳細については、「[Microsoft オンライン サービスのプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=512132)」を参照してください。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
-
-VM の監視が有効になったので、Azure Monitor for VMs での分析に監視情報を使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 

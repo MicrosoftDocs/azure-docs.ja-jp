@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 019ae80020dafb54f2c06dd504797f21069914ae
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507065"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475194"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>サポートされている `kubectl` バージョン
+
+*kube-apiserver* バージョンに対して 1 つ新しいまたは古い `kubectl` のマイナー バージョンを使用します。これは、[kubectl の Kubernetes サポート ポリシー](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl)に一致しています。
+
+たとえば、*kube-apiserver* が *1.17* の場合は、その *kube-apiserver* と共に `kubectl` の *1.16* から *1.18* を使用できます。
+
+`kubectl` のバージョンをインストールまたは更新するには、`az aks install-cli` を実行します。
+
 ## <a name="release-and-deprecation-process"></a>リリースと非推奨のプロセス
 
 今後のバージョンのリリースと非推奨は、「[AKS Kubernetes リリース予定表](#aks-kubernetes-release-calendar)」で参照できます。
@@ -120,7 +128,6 @@ AKS は、バグまたはセキュリティの問題に影響を与える 1 つ�
 ```azurecli-interactive
 az aks get-versions --location eastus --output table
 ```
-
 
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes リリース予定表
 
@@ -162,13 +169,13 @@ AKS でサポートされていないマイナー バージョンの場合、ス
 
 コントロール プレーンは、すべてのノード プールのバージョンの期間内になければなりません。 コントロール プレーンまたはノード プールのアップグレードの詳細については、[ノード プールのアップグレード](use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools)に関するドキュメントを参照してください。
 
-**アップグレード時にバージョンをスキップすることはできますか。**
+**クラスターのアップグレード中に複数の AKS バージョンをスキップできますか。**
 
-いいえ。kubernetes のベスト プラクティスに従い、AKS では、直後の修正プログラムまたはサポートされているマイナー バージョンへのアップグレードのみ許可されます。 Azure portal には、アップグレード可能なバージョンのみが表示されます。CLI で `az aks get-upgrades -n MyAKSCluster -g MyResourceGroup` を実行すると、現在のバージョンで使用可能なアップグレードを確認することができます。
+サポートされている AKS クラスターをアップグレードする場合は、Kubernetes マイナー バージョンをスキップすることはできません。 たとえば、*1.12.x* -> *1.13.x* または *1.13.x* -> *1.14.x* の間のアップグレードは許可されていますが、*1.12.x* -> *1.14.x* は許可されていません。
 
-**使用しているバージョンが、サポートされている最新バージョンよりも複数のバージョン分遅れている場合、サポートされているバージョンにアップグレードするにはどうすればよいですか。**
+*1.12.x* -> *1.14.x* にアップグレードするには、まず *1.12.x* -> *1.13.x* にアップグレードしてから、*1.13.x* -> *1.14.x* にアップグレードします。
 
-サポート対象内にとどまるためには、現在のサポート対象のリストから複数のバージョン分遅れを取ることは避ける必要があります。ただし、このような状況に陥った場合、AKS ではサポートされている最小のバージョンへのアップグレードを常に許可しています。
+複数のバージョンのスキップは、サポートされていないバージョンからサポートされているバージョンにアップグレードする場合にのみ可能です。 たとえば、サポートされていない *1.10.x* からサポートされている *1.15.x* へのアップグレードは実行することができます。
 
 ## <a name="next-steps"></a>次のステップ
 

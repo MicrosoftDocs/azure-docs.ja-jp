@@ -296,12 +296,12 @@
       href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Azure File Sync のリリース ノート
       href: storage-files-release-notes.md
-    - name: Azure Storage フォーラム
-      href: 'https://docs.microsoft.com/answers/products/azure?product=storage'
+    - name: Microsoft Q&A の Azure Storage
+      href: 'https://docs.microsoft.com/answers/topics/azure-files.html'
     - name: Stack Overflow の Azure Storage
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Azure Storage の価格
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Azure Files の価格
+      href: 'https://azure.microsoft.com/pricing/details/storage/files/'
     - name: Azure 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: ビデオ

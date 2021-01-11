@@ -63,7 +63,7 @@ Azure Machine Learning のサンプルのノートブックを使用する場合
 テンプレートを発行すると、ラボに登録されている各学生に対して、テンプレート VM とテンプレートに設定したすべてのローカル ツールとノートブックのコピーが提供されます。
 
 ## <a name="how-students-connect-to-jupyter-notebooks"></a>学生が Jupyter Notebook に接続する方法
-テンプレートが発行された後、各学生は、Jupyter ノートブックを含めて、クラス向けに事前に構成されたすべてのものを備えた VM にアクセスできるようになります。 次のセクションで、学生が Jupyter Notebook に接続するためのさまざまな方法を示します。 
+テンプレートが発行された後、各学生は、Jupyter Notebook を含めて、クラス向けに事前に構成されたすべてのものを備えた VM にアクセスできるようになります。 次のセクションで、学生が Jupyter Notebook に接続するためのさまざまな方法を示します。 
 
 ### <a name="for-windows-vms"></a>Windows VM の場合
 Windows VM を提供している場合、学生は各自の VM に接続し、そこでローカルで使用できる Jupyter Notebook を使用する必要があります。 
@@ -76,7 +76,7 @@ Mac または Chromebook を使用する学生は、次の記事の手順に従�
 - [Chromebook から RDP を使用して VM に接続する](connect-virtual-machine-chromebook-remote-desktop.md)
 
 ### <a name="for-linux-vms"></a>Linux VM の場合
-学生に Linux VM を提供している場合、学生が VM 内の Jupyter ノートブックに接続するために使用できるオプションは複数あります。
+学生に Linux VM を提供している場合、学生が VM 内の Jupyter Notebook に接続するために使用できるオプションは複数あります。
 
 - VM に接続した後、Jupyter Notebook にローカルでアクセスする。
     - ターミナル セッション用の VM への SSH 接続
@@ -156,7 +156,7 @@ Mac または Chromebook を使用する学生は、次の記事の手順に従�
     ```bash
      http://localhost:8888/?token=8c09ecfc93e6a8cbedf9c66dffdae19670a64acc1d37
      ```
-8. この URL をローカル コンピューターのブラウザーに貼り付けて、Jupyter ノートブックに接続して操作します。 
+8. この URL をローカル コンピューターのブラウザーに貼り付けて、Jupyter Notebook に接続して操作します。 
 
     > [!NOTE]
     > Visual Studio Code でも、優れた [Jupyter Notebook の編集エクスペリエンス](https://code.visualstudio.com/docs/python/jupyter-support)が可能です。 [リモート Jupyter サーバーに接続する方法](https://code.visualstudio.com/docs/python/jupyter-support#_connect-to-a-remote-jupyter-server)の指示に従って、前の手順と同じ URL を使用して、ブラウザーからではなく VS Code から接続できます。 

@@ -3,25 +3,28 @@ title: Azure CLI のサンプル スクリプト - ジョブの作成と送信 |
 description: このトピックの Azure CLI スクリプトは、HTTPs URL を使用して、単純なエンコード変換にジョブを送信する方法を示しています。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: how-to
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/01/2019
-ms.author: juliako
-ms.openlocfilehash: b9d9f66b638eba2503f1650ba64fcd6b4652dc24
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0f2e1d901e674c3fecf957bd10314e51195f8b84
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023418"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89295990"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI の例: ジョブの作成と送信
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services v3 では、ビデオを処理するジョブを送信するときに、入力ビデオを検索する場所を Media Services に指示する必要があります。 選択肢の 1 つは、(この記事で示すように) HTTPS URL をジョブの入力として指定することです。 
 

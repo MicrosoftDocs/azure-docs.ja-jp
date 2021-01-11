@@ -1,7 +1,7 @@
 ---
 title: Azure Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 description: ストレージ アカウント キーは、Azure Key Vault と Azure Storage アカウントへのキー ベースのアクセス間をシームレスに統合します。
-ms.topic: conceptual
+ms.topic: tutorial
 services: key-vault
 ms.service: key-vault
 ms.subservice: secrets
@@ -9,12 +9,13 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 58f41742519effc3959a3868345ed77c64db6341
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 20418dbc7432000116dcbe73a64987d83f38419d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85508505"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585068"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 
@@ -70,7 +71,7 @@ az login
 
 Azure CLI の [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest) コマンドを使用して、ストレージ アカウントへのアクセスを Key Vault に付与します。 コマンドで次のパラメーター値を設定します。
 
-- `--role`:"ストレージ アカウント キー オペレーターのサービス ロール" の RBAC ロールを渡します。 このロールは、アクセス スコープをお使いのストレージ アカウントに制限します。 従来のストレージ アカウントには、"従来のストレージ アカウント キー オペレーターのサービス ロール" を渡します。
+- `--role`:"Storage Account Key Operator Service Role" の Azure ロールを渡します。 このロールは、アクセス スコープをお使いのストレージ アカウントに制限します。 従来のストレージ アカウントには、"従来のストレージ アカウント キー オペレーターのサービス ロール" を渡します。
 - `--assignee`:値 "https://vault.azure.net" を渡します。これは Azure パブリック クラウドのキー コンテナーの URL です。 (Azure Goverment クラウドの場合、"--asingee-object-id" を代わりに使用します。「[サービス プリンシパルのアプリケーション ID](#service-principal-application-id)」を参照してください)
 - `--scope`:ストレージ アカウントのリソース ID を渡します。これは `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>` という形式で指定します。 サブスクリプション ID を検索するには、Azure CLI の [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) コマンドを使用します。ストレージ アカウント名とストレージ アカウント リソース グループを検索するには、Azure CLI の [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) コマンドを使用します。
 
@@ -90,7 +91,7 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage
 ストレージ アカウントのアクセス許可は、Azure portal のストレージ アカウントの [アクセス ポリシー] ページで使用できないことに注意してください。
 ### <a name="create-a-key-vault-managed-storage-account"></a>Key Vault のマネージド ストレージ アカウントを作成する
 
- Azure CLI の [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) コマンドを使用して、Key Vault マネージド ストレージ アカウントを作成します。 90 日間の再生成期間を設定します。 90 日後、Key Vault は `key1` を再生成し、アクティブ キーを `key2` から `key1` に交換します。 そして、`key1` がアクティブ キーとしてマークされます。 コマンドで次のパラメーター値を設定します。
+ Azure CLI の [az keyvault storage](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) コマンドを使用して、Key Vault マネージド ストレージ アカウントを作成します。 90 日間の再生成期間を設定します。 交換時期になると、Key Vault はアクティブでないキーを再生成し、新しく作成されたキーをアクティブとして設定します。 SAS トークンを発行するために使用されるキーは常に 1 つだけで、これがアクティブなキーです。 コマンドで次のパラメーター値を設定します。
 
 - `--vault-name`:キー コンテナーの名前を渡します。 キー コンテナーの名前を検索するには、Azure CLI の [az keyvault list](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) コマンドを使用します。
 - `-n`:ストレージ アカウントの名前を渡します。 ストレージ アカウントの名前を確認するには、Azure CLI の [az storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) コマンドを使用します。

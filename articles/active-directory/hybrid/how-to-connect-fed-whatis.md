@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7730efd29e24f99bce3937a9ce5cc2caf4e1400f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18853699ae45cbc36ade1d31b7e372b4343b475d
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359502"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89279892"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect とフェデレーション
 Azure Active Directory (Azure AD) Connect を使用すると、オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD でフェデレーションを構成できます。 フェデレーション サインインでは、ユーザーはオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインインできます。また、企業ネットワーク上では、パスワードを再度入力する必要はありません。 AD FS によるフェデレーション オプションを使用すると、AD FS の新しいインストールをデプロイすることも、Windows Server 2012 R2 ファームの既存のインストールを指定することもできます。
@@ -53,5 +53,5 @@ Azure Active Directory (Azure AD) Connect を使用すると、オンプレミ�
 
 ## <a name="additional-resources"></a>その他のリソース
 * [2 つの Azure AD と単一の AD FS とのフェデレーション](how-to-connect-fed-single-adfs-multitenant-federation.md)
-* [Azure への AD FS のデプロイ](how-to-connect-fed-azure-adfs.md)
-* [Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ](../active-directory-adfs-in-azure-with-azure-traffic-manager.md)
+* [Azure への AD FS のデプロイ](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [Azure Traffic Manager を使用した Azure への可用性に優れた地域間 AD FS デプロイ](/windows-server/identity/ad-fs/deployment/active-directory-adfs-in-azure-with-azure-traffic-manager)

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74792382"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832741"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack でデータ形式間の XML 変換マップを作成する
 
@@ -36,13 +36,13 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
 
 前提条件が整ったら、ロジック アプリの作成を開始します。  
 
-1. ロジック アプリを作成し、マップが含まれている[統合アカウントにリンク](../logic-apps/logic-apps-enterprise-integration-accounts.md "ロジック アプリに統合アカウントをリンクする方法を学習する")します。
+1. ロジック アプリを作成し、マップが含まれている[統合アカウントにリンク](./logic-apps-enterprise-integration-create-integration-account.md "ロジック アプリに統合アカウントをリンクする方法を学習する")します。
 2. ロジック アプリに **Request** トリガーを追加します  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
+   ![Request トリガーが選択されている "Microsoft のマネージド API を表示" ドロップダウンのスクリーンショット。 このドロップダウンは Visual Studio Enterprise Integration SDK を使用して作成されたロジック アプリにあります。](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. まず **[アクションの追加]**  を選択し、 **[XML の変換]** アクションを追加します。  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
+   !["アクションの追加" ボタンのスクリーンショット。Request トリガー画面で選択されています。](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
 4. 検索ボックスに「*transform*」と入力し、すべてのアクションから使用するアクションだけをフィルター処理します  
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
+   ![Request トリガーに追加できるよう、"Microsoft のマネージド API を表示" で XML 変換アクションを検索する方法を示すスクリーンショット。](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. **[XML の変換]** アクションを選択します。   
 6. 変換する XML **コンテンツ** を追加します。 HTTP 要求で受信する XML データは、すべて **コンテンツ**として使用することができます。 この例では、ロジック アプリをトリガーした HTTP 要求の本文を選択します。
 
@@ -51,9 +51,9 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
  
 
 7. 変換を実行するのに使用する **マップ** の名前を選択します。 マップが既に統合アカウント内に存在している必要があります。 前の手順で、既にロジック アプリには、マップが含まれる統合アカウントへのアクセス権が付与されています。      
-   ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
+   ![Request トリガーの [XML の変換] 画面のコンテンツ フィールドとマップ フィールドを示すスクリーンショット。](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. 作業内容を保存します。  
-    ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
+    ![Logic Apps デザイナーの [保存] ボタンを示すスクリーンショット。](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
 この時点で、マップの設定が終了します。 実際のアプリケーションでは、変換されたデータを SalesForce などの LOB アプリケーション内に格納する必要がある場合があります。 変換の出力は、アクションとして Salesforce に簡単に送信することができます。 
 
@@ -136,4 +136,3 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
 ## <a name="learn-more"></a>詳細情報
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")  
 * [マップについての詳細情報](../logic-apps/logic-apps-enterprise-integration-maps.md "Enterprise Integration マップについて学習する")  
-

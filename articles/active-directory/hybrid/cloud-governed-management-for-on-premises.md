@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec74b9391c780cf673fe47bd82cc6d92534eb56d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fdd26307dfdf75717a48eda034efeedd7465a63a
+ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84234063"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89277478"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法
 
@@ -59,9 +59,9 @@ Azure AD では、これらのアプリケーションへのセキュリティ�
 
 * **オンプレミスのアプリケーションへのセキュリティで保護されたリモート アクセスと条件付きアクセス**
 
-多くの組織にとって、オンプレミスの AD 統合 Web およびリモート デスクトップベースのアプリケーションでクラウドからのアクセスを管理する最初の手順は、それらのアプリケーションの前に[アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy)を配置し、セキュリティで保護されたリモート アクセスを提供することです。
+多くの組織にとって、オンプレミスの AD 統合 Web およびリモート デスクトップベースのアプリケーションでクラウドからのアクセスを管理する最初の手順は、それらのアプリケーションの前に[アプリケーション プロキシ](../manage-apps/application-proxy.md)を配置し、セキュリティで保護されたリモート アクセスを提供することです。
 
-Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部のアプリケーション ポータルから、クラウド アプリケーションとオンプレミス アプリケーションの両方にアクセスできます。 たとえば、アプリケーション プロキシは、リモート デスクトップ、SharePoint だけでなく、Tableau、Qlik、基幹業務 (LOB) アプリケーションなどのアプリへのリモート アクセスとシングル サインオンを提供します。 さらに、条件付きアクセス ポリシーには、[使用条件](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou)の表示と、アプリケーションにアクセスできるようになる前に[ユーザーがこれらの条件に同意していることの確認](https://docs.microsoft.com/azure/active-directory/conditional-access/require-tou)を含めることができます。
+Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部のアプリケーション ポータルから、クラウド アプリケーションとオンプレミス アプリケーションの両方にアクセスできます。 たとえば、アプリケーション プロキシは、リモート デスクトップ、SharePoint だけでなく、Tableau、Qlik、基幹業務 (LOB) アプリケーションなどのアプリへのリモート アクセスとシングル サインオンを提供します。 さらに、条件付きアクセス ポリシーには、[使用条件](../conditional-access/terms-of-use.md)の表示と、アプリケーションにアクセスできるようになる前に[ユーザーがこれらの条件に同意していることの確認](../conditional-access/require-tou.md)を含めることができます。
 
 ![アプリ プロキシのアーキテクチャ](media/cloud-governed-management-for-on-premises/image2.png)
 
@@ -69,21 +69,21 @@ Azure AD にシングル サインオンした後、ユーザーは、外部の 
 
 ID ガバナンスにより、組織は、"*生産性*" (従業員が組織に加わったときなどに、必要なリソースへのアクセスできるようになるまでの時間) と "*セキュリティ*" (従業員の雇用形態の変更などによって、時間の経過に伴いアクセス権をどのように変更すべきか) とのバランスを取ることができます。 ID ライフサイクル管理は ID 管理の基盤であり、大規模な効果的な管理には、アプリケーションの ID ライフサイクル管理インフラストラクチャの近代化が必要です。
 
-多くの組織では、従業員の ID ライフサイクルは、ヒューマン キャピタル マネジメント (HCM) システムでのそのユーザーの表示に関連付けられています。 HCM システムとして Workday を使用している組織の場合、Azure AD によって、AD のユーザー アカウントが確実に [Workday のワーカーに対して自動的にプロビジョニングおよびプロビジョニング解除される](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)ようにすることができます。 その結果、ユーザーが役割を変更したり組織を離れたりしたときにアプリケーションのアクセスが確実に自動的に更新されるようになり、生得権アカウントの自動化によってユーザーの生産性が向上し、リスクが管理されるようになります。 Workday 主導のユーザー プロビジョニング [デプロイ計画](https://aka.ms/WorkdayDeploymentPlan)は、Workday から Active Directory へのユーザー プロビジョニング ソリューションのベスト プラクティス実装を 5 段階のプロセスで説明する手順ガイドです。
+多くの組織では、従業員の ID ライフサイクルは、ヒューマン キャピタル マネジメント (HCM) システムでのそのユーザーの表示に関連付けられています。 HCM システムとして Workday を使用している組織の場合、Azure AD によって、AD のユーザー アカウントが確実に [Workday のワーカーに対して自動的にプロビジョニングおよびプロビジョニング解除される](../saas-apps/workday-inbound-tutorial.md)ようにすることができます。 その結果、ユーザーが役割を変更したり組織を離れたりしたときにアプリケーションのアクセスが確実に自動的に更新されるようになり、生得権アカウントの自動化によってユーザーの生産性が向上し、リスクが管理されるようになります。 Workday 主導のユーザー プロビジョニング [デプロイ計画](https://aka.ms/WorkdayDeploymentPlan)は、Workday から Active Directory へのユーザー プロビジョニング ソリューションのベスト プラクティス実装を 5 段階のプロセスで説明する手順ガイドです。
 
 Azure AD Premium には Microsoft Identity Manager も含まれていて、SAP、Oracle eBusiness、Oracle PeopleSoft などの他のオンプレミスの HCM システムからレコードをインポートすることができます。
 
-企業間のコラボレーションには、組織外のユーザーにアクセスを許可することがますます必要になっています。 組織が [Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/) コラボレーションを使用すると、独自の社内データに対するコントロールを維持した状態で、アプリケーションとサービスをゲスト ユーザーや外部パートナーと安全に共有することができます。
+企業間のコラボレーションには、組織外のユーザーにアクセスを許可することがますます必要になっています。 組織が [Azure AD B2B](/azure/active-directory/b2b/) コラボレーションを使用すると、独自の社内データに対するコントロールを維持した状態で、アプリケーションとサービスをゲスト ユーザーや外部パートナーと安全に共有することができます。
 
-Azure AD では、必要に応じて[ゲスト ユーザー用のアカウントを自動的に AD に作成](https://docs.microsoft.com/azure/active-directory/b2b/hybrid-cloud-to-on-premises)し、ビジネス ゲストが別のパスワードを必要とせずにオンプレミスの AD 統合アプリケーションにアクセスできるようにすることができます。 組織は[ゲスト ユーザーの多要素認証 (MFA) ポリシー](https://docs.microsoft.com/azure/active-directory/b2b/conditional-access)を設定できるので、MFA チェックはアプリケーション プロキシ認証中に行われます。 また、クラウド B2B ユーザーに対して行われた[アクセスのレビュー](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)は、オンプレミス ユーザーにも適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、オンプレミス ユーザーも削除されます。
+Azure AD では、必要に応じて[ゲスト ユーザー用のアカウントを自動的に AD に作成](../external-identities/hybrid-cloud-to-on-premises.md)し、ビジネス ゲストが別のパスワードを必要とせずにオンプレミスの AD 統合アプリケーションにアクセスできるようにすることができます。 組織は[ゲスト ユーザーの多要素認証 (MFA) ポリシー](../external-identities/conditional-access.md)を設定できるので、MFA チェックはアプリケーション プロキシ認証中に行われます。 また、クラウド B2B ユーザーに対して行われた[アクセスのレビュー](../governance/manage-guest-access-with-access-reviews.md)は、オンプレミス ユーザーにも適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、オンプレミス ユーザーも削除されます。
 
-**Active Directory アカウントの資格情報管理** Azure AD のセルフサービス パスワード リセットにより、パスワードを忘れたユーザーは再認証され、変更されたパスワードが[オンプレミスの Active Directory に書き込まれます](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback)。 パスワードのリセット プロセスは、オンプレミス Active Directory のパスワード ポリシーも使用できます。ユーザーが自分のパスワードをリセットするとき、パスワードがオンプレミスの Active Directory ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。 セルフサービス パスワード リセットの[デプロイ計画](https://aka.ms/deploymentplans/sspr)では、Web および Windows 統合エクスペリエンスを介してセルフサービス パスワード リセットをユーザーにロールアウトするためのベスト プラクティスの概要を示します。
+**Active Directory アカウントの資格情報管理** Azure AD のセルフサービス パスワード リセットにより、パスワードを忘れたユーザーは再認証され、変更されたパスワードが[オンプレミスの Active Directory に書き込まれます](../authentication/concept-sspr-writeback.md)。 パスワードのリセット プロセスは、オンプレミス Active Directory のパスワード ポリシーも使用できます。ユーザーが自分のパスワードをリセットするとき、パスワードがオンプレミスの Active Directory ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。 セルフサービス パスワード リセットの[デプロイ計画](https://aka.ms/deploymentplans/sspr)では、Web および Windows 統合エクスペリエンスを介してセルフサービス パスワード リセットをユーザーにロールアウトするためのベスト プラクティスの概要を示します。
 
 ![Azure AD SSPR のアーキテクチャ](media/cloud-governed-management-for-on-premises/image3.png)
 
-最後に、ユーザーが AD で自分のパスワードを変更することを許可する組織の場合、[Azure AD パスワード保護機能](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) (現在プレビュー段階) を使用して、組織が Azure AD で使用しているのと同じパスワード ポリシーを使用するように構成できます。
+最後に、ユーザーが AD で自分のパスワードを変更することを許可する組織の場合、[Azure AD パスワード保護機能](../authentication/concept-password-ban-bad-on-premises.md) (現在プレビュー段階) を使用して、組織が Azure AD で使用しているのと同じパスワード ポリシーを使用するように構成できます。
 
-組織が、アプリケーションをホストしているオペレーティング システムを Azure に移動して AD 統合アプリケーションをクラウドに移動する準備ができたら、[Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) によって AD 互換ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証など) が提供されます。 Azure AD Domain Services は組織の既存の Azure AD テナントと統合されるので、ユーザーは企業の資格情報を使用してサインインできるようになります。 さらに、既存のグループおよびユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。このため、'リフト アンド シフト' 方式でオンプレミスのリソースを Azure インフラストラクチャ サービスに滑らかに移行することができます。
+組織が、アプリケーションをホストしているオペレーティング システムを Azure に移動して AD 統合アプリケーションをクラウドに移動する準備ができたら、[Azure AD Domain Services](../../active-directory-domain-services/overview.md) によって AD 互換ドメイン サービス (ドメイン参加、グループ ポリシー、LDAP、Kerberos/NTLM 認証など) が提供されます。 Azure AD Domain Services は組織の既存の Azure AD テナントと統合されるので、ユーザーは企業の資格情報を使用してサインインできるようになります。 さらに、既存のグループおよびユーザー アカウントを使用してリソースへのアクセスをセキュリティで保護することができます。このため、'リフト アンド シフト' 方式でオンプレミスのリソースを Azure インフラストラクチャ サービスに滑らかに移行することができます。
 
 ![Azure AD Domain Services](media/cloud-governed-management-for-on-premises/image4.png)
 
@@ -107,7 +107,7 @@ Azure AD では、必要に応じて[ゲスト ユーザー用のアカウント
 
 通常、IT 部門は、アクセス承認の決定を管理職意思決定者に委任します。 さらに、ユーザー自身が IT 部門に関与していることがあります。 たとえば、ヨーロッパで会社のマーケティング アプリケーションで顧客の機密データにアクセスするユーザーは、会社のポリシーを把握している必要があります。 また、ゲスト ユーザーは、招待されている組織のデータの処理要件を理解していない可能性もあります。
 
-組織では、[動的グループ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)などのテクノロジを [SaaS アプリケーション](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)や、[System for Cross-Domain Identity Management (SCIM) 標準を使用して統合されたアプリケーション](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)へのユーザー プロビジョニングと組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。 また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/b2b/hybrid-cloud-to-on-premises)を制御することもできます。 それにより、[Azure AD アクセス レビュー](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。
+組織では、[動的グループ](../users-groups-roles/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリケーション](../saas-apps/tutorial-list.md)や、[System for Cross-Domain Identity Management (SCIM) 標準を使用して統合されたアプリケーション](../app-provisioning/use-scim-to-provision-users-and-groups.md)へのユーザー プロビジョニングと組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。 また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../external-identities/hybrid-cloud-to-on-premises.md)を制御することもできます。 それにより、[Azure AD アクセス レビュー](../governance/access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。
 
 ## <a name="future-directions"></a>今後の方向性
 

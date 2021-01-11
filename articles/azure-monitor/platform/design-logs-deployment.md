@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317286"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551324"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -127,17 +127,25 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
 
 ## <a name="ingestion-volume-rate-limit"></a>取り込みボリュームと取り込み率の制限
 
-Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 インジェスト率の既定のしきい値は、ワークスペースあたり **6 GB/分**に設定されています。 これは概算値であり、実際のサイズはログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 この上限は、エージェントまたは[データ コレクター API](data-collector-api.md) から送信されるデータには適用されません。
+Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ボリューム レート制限は、マルチテナント環境における突然のインジェスト スパイクから Azure Monitor の顧客を隔離するためのものです。 ワークスペースでは、既定のインジェスト ボリューム レートのしきい値である 500 MB (圧縮) が定義されており、これは約 **6 GB/分** (非圧縮) に変換されます。実際のサイズは、ログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 ボリューム レート制限は、[診断設定](diagnostic-settings.md)、[Data Collector API](data-collector-api.md) またはエージェントを使用して Azure リソースから送信されたかどうかにかかわらず、すべてのインジェスト データに適用されます。
 
-1 つのワークスペースに高い比率でデータを送信すると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの*操作*テーブルにイベントが送信されます。 インジェスト ボリュームがインジェスト率の制限を超えている場合、または間もなくそれに達すると予測される場合は、LAIngestionRate@microsoft.com にメールを送信するかサポート リクエストを開いて、ワークスペースの増加を要求できます。
- 
-ワークスペース内でのそのようなイベントの通知を受け取るには、ゼロより大きい結果数のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。
+ワークスペースに構成されているしきい値の 80% を超えるボリューム レートでワークスペースにデータを送信すると、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超えると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超え続けている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開いて、その引き上げをリクエストできます。 
 
-``` Kusto
+ワークスペースでインジェスト ボリューム レート制限に近づいたときまたは達したときに通知を受けるには、ゼロより大きい結果数、5 分の評価期間、5 分の頻度のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。
+
+インジェストボリューム レートがしきい値の 80% に到達:
+```Kusto
 Operation
 |where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+```
+
+インジェストボリューム レートがしきい値に到達:
+```Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The data ingestion volume rate crossed the threshold"
+```
 
 
 ## <a name="recommendations"></a>推奨事項

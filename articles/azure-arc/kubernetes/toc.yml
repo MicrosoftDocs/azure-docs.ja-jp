@@ -1,0 +1,35 @@
+- name: Azure Arc 対応 Kubernetes のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Arc 対応 Kubernetes について
+      href: overview.md
+- name: 操作方法ガイド
+  items:
+    - name: Azure Arc への接続
+      items:
+        - name: クラスターの接続
+          href: connect-cluster.md
+        - name: サービス プリンシパルのオンボード
+          href: create-onboarding-service-principal.md
+    - name: 管理する
+      items:
+        - name: GitOps を使用して構成をデプロイする
+          href: use-gitops-connected-cluster.md
+        - name: GitOps を使用して Helm グラフをデプロイする
+          href: use-gitops-with-helm.md
+        - name: Azure Policy を使用して GitOps を適用する
+          href: use-azure-policy.md
+        - name: Azure Monitor を使用してコンテナーを監視する
+          href: ../../azure-monitor/insights/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.yml
+        - name: Azure Policy を使用した受付制御ポリシー
+          href: ../../governance/policy/concepts/policy-for-kubernetes.md?toc=/azure/azure-arc/kubernetes/toc.yml
+        - name: IoT ワークロードをデプロイする
+          href: deploy-azure-iot-edge-workloads.md
+    - name: トラブルシューティング
+      href: Troubleshooting.md
+- name: リファレンス
+  items:
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: policy-reference.md

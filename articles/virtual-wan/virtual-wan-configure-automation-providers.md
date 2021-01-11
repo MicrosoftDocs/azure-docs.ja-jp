@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual WAN パートナー向けの自動化のガイドライン | Microsoft Docs
-description: パートナーは、この記事を参考にして、Azure Virtual WAN 自動化を設定できます。
+description: Azure Virtual WAN 用にオンプレミスの VPN または SD-WAN CPE (ブランチ デバイス) を接続して構成するための自動化環境を設定します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 816e8843467588cbfaeb5eb6e531d2221d28656b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0029f3fbcf96036a247356042e4c39d59f86a224
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85565953"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208352"
 ---
 # <a name="automation-guidelines-for-virtual-wan-partners"></a>Virtual WAN パートナー向けの自動化のガイドライン
 

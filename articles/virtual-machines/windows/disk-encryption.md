@@ -8,18 +8,18 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0bb0fb268d18ddc152dae45014e2154686762976
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259827"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815591"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>PowerShell 用 Azure Disk Storage のサーバー側暗号化
 
 サーバー側暗号化 (SSE) によってデータが保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 SSE では、Azure マネージド ディスク (OS およびデータ ディスク) に格納されているお使いのデータをクラウドに永続化するときに、既定で暗号化します。 
 
-Azure マネージド ディスク内のデータは、利用できる最も強力なブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使って透過的に暗号化され、FIPS 140-2 に準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:次世代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)」を参照してください。
+Azure マネージド ディスク内のデータは、利用できる最も強力なブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使って透過的に暗号化され、FIPS 140-2 に準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:次世代](/windows/desktop/seccng/cng-portal)」を参照してください。
 
 サーバー側での暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 
 
@@ -34,7 +34,7 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 
 ### <a name="platform-managed-keys"></a>プラットフォーム マネージド キー
 
-既定では、マネージド ディスクはプラットフォーム マネージド暗号化キーを使用します。 2017 年 6 月 10 日をもって、新しいすべてのマネージド ディスク、スナップショット、イメージ、および既存のマネージド ディスクに書き込まれる新しいデータは、プラットフォーム マネージド キーで保存時に自動的に暗号化されます。
+既定では、マネージド ディスクはプラットフォーム マネージド暗号化キーを使用します。 すべてのマネージド ディスク、スナップショット、イメージ、および既存のマネージド ディスクに書き込まれるデータは、保存時に、プラットフォーム マネージド キーを使用して自動的に暗号化されます。
 
 ### <a name="customer-managed-keys"></a>カスタマー マネージド キー
 
@@ -50,9 +50,9 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 
 ## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>ホストでの暗号化 - ご自分の VM データのエンドツーエンド暗号化
 
-エンドツーエンド暗号化は、VM ホスト (お使いの VM が割り当てられている Azure サーバー) から開始します。 お使いの一時ディスクと OS およびデータ ディスクのキャッシュ上のデータは、その VM ホストに格納されます。 エンドツーエンド暗号化を有効にした場合、このデータはすべて保存時に暗号化され、暗号化された状態で永続化されているストレージ サービスに送られます。 エンドツーエンド暗号化では、お使いの VM の CPU が使用されないため、お使いの VM のパフォーマンスには影響しません。 
+エンドツーエンド暗号化は、VM ホスト (お使いの VM が割り当てられている Azure サーバー) から開始します。 お使いの一時ディスク、エフェメラル OS ディスク、永続化された OS およびデータ ディスクのキャッシュ上のデータは、その VM ホストに格納されます。 エンドツーエンド暗号化を有効にした場合、このデータはすべて保存時に暗号化され、暗号化された状態で永続化されているストレージ サービスに送られます。 エンドツーエンド暗号化では、お使いの VM の CPU が使用されないため、お使いの VM のパフォーマンスには影響しません。 
 
-エンドツーエンド暗号化を有効にすると、一時ディスクは保存時に、プラットフォーム マネージド キーを使用して暗号化されます。 OS とデータ ディスクのキャッシュは、暗号化の種類に応じて、カスタマー マネージド キーまたはプラットフォーム マネージド キーのいずれかを使用して保存時に暗号化されます。 たとえば、ディスクがカスタマー マネージド キーで暗号化されている場合、そのディスクのキャッシュはカスタマー マネージド キーで暗号化されます。ディスクがプラットフォーム マネージド キーで暗号化されている場合、そのディスクのキャッシュはプラットフォーム マネージド キーで暗号化されます。
+エンドツーエンド暗号化を有効にすると、一時ディスクとエフェメラル OS ディスクは保存時に、プラットフォーム マネージド キーを使用して暗号化されます。 OS とデータ ディスクのキャッシュは、暗号化の種類に応じて、カスタマー マネージド キーまたはプラットフォーム マネージド キーのいずれかを使用して保存時に暗号化されます。 たとえば、ディスクがカスタマー マネージド キーで暗号化されている場合、そのディスクのキャッシュはカスタマー マネージド キーで暗号化されます。ディスクがプラットフォーム マネージド キーで暗号化されている場合、そのディスクのキャッシュはプラットフォーム マネージド キーで暗号化されます。
 
 ### <a name="restrictions"></a>制限
 
@@ -68,7 +68,7 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 
 ## <a name="double-encryption-at-rest"></a>保存時の二重暗号化
 
-特定の暗号化アルゴリズム、実装、または侵害されたキーに関連するリスクを懸念しているセキュリティを重視しているお客様が、プラットフォーム マネージド キーを使用した別の暗号化アルゴリズムおよびモードをインフラストラクチャ レイヤーで使用し、追加レイヤーでの暗号化を使用することを選択できるようになりました。 この新しいレイヤーは、二重暗号化を使用して保存時に暗号化する、ディスク、スナップショット、イメージに適用できます。
+特定の暗号化アルゴリズム、実装、または侵害されたキーに関連するリスクを懸念しているセキュリティを重視しているお客様が、プラットフォーム マネージド キーを使用した別の暗号化アルゴリズムおよびモードをインフラストラクチャ レイヤーで使用し、追加レイヤーでの暗号化を使用することを選択できるようになりました。 この新しいレイヤーは、二重暗号化を使用して保存時に暗号化される、永続化された OS およびデータ ディスク、スナップショット、イメージのすべてに適用できます。
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 
@@ -76,7 +76,7 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>サーバー側の暗号化と Azure ディスク暗号化の比較
 
-[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) では、Windows の [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) 機能を利用して、ゲスト VM 内のカスタマー マネージド キーを使用してマネージド ディスクを暗号化します。  カスタマー マネージド キーを使用したサーバー側の暗号化では、ストレージ サービス内のデータを暗号化することで、VM に対して任意の OS の種類とイメージを使用できるため、ADE がさらに向上します。
+[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) では、Windows の [BitLocker](/windows/security/information-protection/bitlocker/bitlocker-overview) 機能を利用して、ゲスト VM 内のカスタマー マネージド キーを使用してマネージド ディスクを暗号化します。 カスタマー マネージド キーを使用したサーバー側の暗号化では、ストレージ サービス内のデータを暗号化することで、VM に対して任意の OS の種類とイメージを使用できるため、ADE がさらに向上します。
 
 > [!IMPORTANT]
 > カスタマー マネージド キーは、Azure Active Directory (Azure AD) の 1 つの機能である Azure リソース用マネージド ID に依存します。 カスタマー マネージド キーを構成すると、内部でマネージド ID がリソースに自動的に割り当てられます。 その後、サブスクリプション、リソース グループ、またはマネージド ディスクを 1 つの Azure AD ディレクトリから別のディレクトリに移動した場合、そのマネージド ディスクに関連付けられているマネージド ID は新しいテナントに転送されないため、カスタマー マネージド キーが機能しなくなることがあります。 詳細については、「[Azure AD ディレクトリ間のサブスクリプションの転送](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)」を参照してください。
@@ -84,9 +84,8 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ホストで暗号化を使用してエンドツーエンド暗号化を有効にする - PowerShell](disks-enable-host-based-encryption-powershell.md)
-- [お使いのマネージド ディスクで保存時の二重暗号化を有効にする - PowerShell](disks-enable-double-encryption-at-rest-powershell.md)
-- [お使いのマネージド ディスクでカスタマー マネージド キーを有効にする - PowerShell](disks-enable-customer-managed-keys-powershell.md)
-- [お使いのマネージド ディスクでカスタマー マネージド キーを有効にする - Portal](disks-enable-customer-managed-keys-portal.md)
+- [PowerShell](disks-enable-host-based-encryption-powershell.md) または [Azure portal](../disks-enable-host-based-encryption-portal.md) のいずれかで、ホストでの暗号化を使用してエンドツーエンドの暗号化を有効にします。
+- [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) または [Azure portal](../disks-enable-double-encryption-at-rest-portal.md) のいずれかを使用して、マネージド ディスクの保存時の二重暗号化を有効にします。
+- [PowerShell](disks-enable-customer-managed-keys-powershell.md) または [Azure portal](../disks-enable-customer-managed-keys-portal.md) のいずれかを使用して、マネージド ディスクのカスタマー マネージド キーを有効にします。
 - [カスタマー マネージド キーで暗号化されたディスクを作成するための Azure Resource Manager テンプレートを探索する](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Azure Key Vault とは](../../key-vault/general/overview.md)

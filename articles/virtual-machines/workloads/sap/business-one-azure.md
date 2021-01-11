@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f119acc06883dc077218c56accd31c805092db85
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088293"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654652"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -118,7 +118,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 
 原則として、次を行う必要があります。
 
-- Standard HDD よりも Premium SSD を使用する。 使用できるディスクの種類の詳細については、[ディスクの種類の選択](../../windows/disks-types.md)に関する記事を参照してください。
+- Standard HDD よりも Premium SSD を使用する。 使用できるディスクの種類の詳細については、[ディスクの種類の選択](../../disks-types.md)に関する記事を参照してください。
 - アンマネージド ディスクよりも Azure Managed Disks を使用する
 - ディスク構成に十分な IOPS と I/O スループットが構成されていることを確認する
 - コスト効率に優れたストレージ構成を確保するため /hana/data と /hana/log volume を組み合わせる
@@ -149,7 +149,7 @@ SAP HANA のバックアップと復元の戦略については、「[Azure Virt
 ### <a name="business-one-client-server"></a>Business One クライアント サーバー
 これらのコンポーネントについては、ストレージに関する考慮事項は大きな問題ではありません。 しかし、信頼性の高いプラットフォームは必要です。 したがって、ベース VHD の場合でも、この VM に Azure Premium Storage を使用する必要があります。 「[SAP Business One Hardware Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf)」 (SAP Business One のハードウェア要件ガイド) で指定されているデータを使用して、VM をサイズ設定します。 Azure については、このドキュメントのチャプター 2.4 に記載されている要件を使用して、計算する必要があります。 最適な VM を見つけるため、要件を計算するときに、それらを次のドキュメントと比較する必要があります。
 
-- [Azure の Windows 仮想マシンのサイズ](../../windows/sizes.md)
+- [Azure の Windows 仮想マシンのサイズ](../../sizes.md)
 - [SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533)
 
 必要な CPU とメモリの数を Microsoft のドキュメントに記載されている数と比較します。 VM を選択する際には、ネットワーク スループットにも注意してください。

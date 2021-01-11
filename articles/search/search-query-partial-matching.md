@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: d562931b7578935a4544dfd953ff2de74a5350a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260986"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935774"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分的な用語検索と特殊文字を含むパターン (ワイルドカード、正規表現、パターン)
 
@@ -51,7 +51,7 @@ Azure Cognitive Search では、インデックス内のトークン化された
 + インデックスを構築してテストする
 
 > [!TIP]
-> アナライザーの評価は、インデックスの再構築を頻繁に行う必要がある反復的なプロセスです。 [インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)、[インデックスの削除](https://docs.microsoft.com/rest/api/searchservice/delete-index)、[ドキュメントの読み込み](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)、および[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)の REST API である Postman を使用することで、これらの手順を簡単に行うことができます。 ドキュメントの読み込みの場合、要求本文には、テストする代表的な小さいデータセットが含まれている必要があります (たとえば、電話番号や製品コードを含むフィールドなど)。 同じ Postman コレクション内のこれらの API を使用すると、これらの手順を迅速に実行できます。
+> アナライザーの評価は、インデックスの再構築を頻繁に行う必要がある反復的なプロセスです。 [インデックスの作成](/rest/api/searchservice/create-index)、[インデックスの削除](/rest/api/searchservice/delete-index)、[ドキュメントの読み込み](/rest/api/searchservice/addupdate-or-delete-documents)、および[ドキュメントの検索](/rest/api/searchservice/search-documents)の REST API である Postman を使用することで、これらの手順を簡単に行うことができます。 ドキュメントの読み込みの場合、要求本文には、テストする代表的な小さいデータセットが含まれている必要があります (たとえば、電話番号や製品コードを含むフィールドなど)。 同じ Postman コレクション内のこれらの API を使用すると、これらの手順を迅速に実行できます。
 
 ## <a name="duplicate-fields-for-different-scenarios"></a>さまざまなシナリオでフィールドを複製する
 
@@ -85,7 +85,7 @@ Azure Cognitive Search では、インデックス内のトークン化された
 | [whitespace](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | 空白文字のみを区切ります。 ダッシュまたはその他の文字を含む用語は、1 つのトークンとして扱われます。 |
 | [カスタム アナライザー](index-add-custom-analyzers.md) | (推薦) カスタム アナライザーを作成すると、トークナイザーとトークン フィルターの両方を指定できます。 前述のアナライザーはそのまま使用する必要があります。 カスタム アナライザーでは、使用するトークナイザーとトークン フィルターを選択できます。 <br><br>推奨される組み合わせは、[小文字のトークン フィルター](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)と[キーワード トークナイザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)です。 定義済みの[キーワード アナライザー](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)単体では大文字のテキストを小文字に変換できないため、クエリが失敗する可能性があります。 カスタム アナライザーには、小文字のトークン フィルターを追加するためのメカニズムが用意されています。 |
 
-Postman のような Web API テスト ツールを使用している場合は、[テスト アナライザーの REST 呼び出し](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)を追加して、トークン化された出力を検査できます。
+Postman のような Web API テスト ツールを使用している場合は、[テスト アナライザーの REST 呼び出し](/rest/api/searchservice/test-analyzer)を追加して、トークン化された出力を検査できます。
 
 操作するには、設定されたインデックスが必要です。 既存のインデックスと、ダッシュまたは用語の一部を含むフィールドが指定されている場合は、特定の用語に対してさまざまなアナライザーを試して、どのトークンが生成されるかを確認できます。  
 
@@ -160,7 +160,7 @@ Postman のような Web API テスト ツールを使用している場合は�
 
 組み込みまたは定義済みのアナライザーは、フィールド定義の `analyzer` プロパティに名前を使用して指定できます。インデックスに追加の構成は必要ありません。 次の例では、フィールドに `whitespace` アナライザーを設定する方法を示します。 
 
-他のシナリオと、他の組み込みアナライザーの詳細については、[定義済みアナライザー リスト](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)に関するページを参照してください。 
+他のシナリオと、他の組み込みアナライザーの詳細については、[定義済みアナライザー リスト](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)に関するページを参照してください。 
 
 ```json
     {
@@ -222,15 +222,15 @@ Postman のような Web API テスト ツールを使用している場合は�
 
 前のセクションではロジックについて説明しました。 このセクションでは、ソリューションをテストする際に呼び出す必要がある各 API について説明します。 前述のように、Postman など対話型の Web テストツールを使用すると、これらのタスクを迅速に実行できます。
 
-+ [[インデックスの削除]](https://docs.microsoft.com/rest/api/searchservice/delete-index) では、同じ名前の既存のインデックスが削除されるため、再び作成できるようになります。
++ [[インデックスの削除]](/rest/api/searchservice/delete-index) では、同じ名前の既存のインデックスが削除されるため、再び作成できるようになります。
 
-+ [[インデックスの作成]](https://docs.microsoft.com/rest/api/searchservice/create-index) では、アナライザーの定義やアナライザーの仕様を含むフィールドなど、検索サービスでインデックス構造が作成されます。
++ [[インデックスの作成]](/rest/api/searchservice/create-index) では、アナライザーの定義やアナライザーの仕様を含むフィールドなど、検索サービスでインデックス構造が作成されます。
 
-+ [[ドキュメントの読み込み]](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) では、インデックスと同じ構造のドキュメントおよび検索可能なコンテンツをインポートします。 この手順の後、インデックスはクエリやテストを実行できるようになります。
++ [[ドキュメントの読み込み]](/rest/api/searchservice/addupdate-or-delete-documents) では、インデックスと同じ構造のドキュメントおよび検索可能なコンテンツをインポートします。 この手順の後、インデックスはクエリやテストを実行できるようになります。
 
-+ [テスト アナライザー](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)については「[アナライザーの選択](#choose-an-analyzer)」で紹介しました。 さまざまなアナライザーを使用して、インデックスの一部の文字列をテストし、用語のトークン化方法を理解します。
++ [テスト アナライザー](/rest/api/searchservice/test-analyzer)については「[アナライザーの選択](#choose-an-analyzer)」で紹介しました。 さまざまなアナライザーを使用して、インデックスの一部の文字列をテストし、用語のトークン化方法を理解します。
 
-+ [[ドキュメントの検索]](https://docs.microsoft.com/rest/api/searchservice/search-documents) では、ワイルドカードと正規表現について[単純な構文](query-simple-syntax.md)または[完全な Lucene 構文](query-lucene-syntax.md)のいずれかを使用してクエリ要求を作成する方法を説明します。
++ [[ドキュメントの検索]](/rest/api/searchservice/search-documents) では、ワイルドカードと正規表現について[単純な構文](query-simple-syntax.md)または[完全な Lucene 構文](query-lucene-syntax.md)のいずれかを使用してクエリ要求を作成する方法を説明します。
 
   "+1 (425) 703-6214" に対して "3-6214" のクエリを実行して一致を検索するなど、部分的な用語クエリの場合は、単純な構文 (`search=3-6214&queryType=simple`) を使用できます。
 
@@ -287,5 +287,5 @@ Keyword_v2 トークナイザーと小文字のトークン フィルターを�
 
 + [言語アナライザー](search-language-support.md)
 + [Azure Cognitive Search でのテキスト処理のためのアナライザー](search-analyzers.md)
-+ [Text API の分析 (REST)](https://docs.microsoft.com/rest/api/searchservice/test-analyzer)
++ [Text API の分析 (REST)](/rest/api/searchservice/test-analyzer)
 + [フルテキスト検索のしくみ (クエリ アーキテクチャ)](search-lucene-query-architecture.md)

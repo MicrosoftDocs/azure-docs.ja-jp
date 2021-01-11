@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: データ処理速度を最適化するためのベスト プラクティスと、大規模なデータ処理のために Azure Machine Learning でサポートされる統合について説明します。
 services: machine-learning
 ms.service: machine-learning
-author: sgilley
 ms.author: sgilley
+author: sdgilley
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: 09e48bd5c27dc4835ba0261ccd929f858fdb58b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c73a5c5339403ecd91d45968405682c59f2f23b4
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481886"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719276"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータ処理の最適化
 
@@ -47,6 +47,16 @@ CSV ファイルは、Excel での編集や読み取りが簡単であるため�
 
 複数の仮想 CPU (vCPU) では、各 vCPU がマシン上で持つことのできる RAM に収まるように、パーティションを 1 つずつ配置する必要があることに注意してください。 つまり、16 GB RAM で 4 つの仮想 CPU を使用している場合は、各 vCPU につき約 2 GB のデータフレームとする必要があります。
 
+### <a name="local-vs-remote"></a>ローカルとリモートの比較
+
+特定の Pandas データフレーム コマンドの実行が、ローカル PC で作業した場合に、Azure Machine Learning でプロビジョニングしたリモート VM と比べて速くなることがあります。 ローカル PC では通常、ページ ファイルが有効になっているため、物理メモリの容量を超えて読み込むことができます。つまり、ハードドライブが RAM の拡張として使用されます。 現時点では、Azure Machine Learning の VM はページ ファイルなしで実行されるため、使用可能な物理 RAM に収まるだけのデータを読み込むことができます。 
+
+コンピューティング負荷の高いジョブの場合は、処理速度を向上させるために、より大きな VM を選択することをお勧めします。
+
+Azure Machine Learning で[使用可能な VM シリーズとサイズ](concept-compute-target.md#supported-vm-series-and-sizes)の詳細に関する記事を参照してください。 
+
+RAM 仕様については、[Dv2-Dsv2 シリーズ](../virtual-machines/dv2-dsv2-series-memory.md)や [NC シリーズ](../virtual-machines/nc-series.md)など、対応する VM シリーズのページを参照してください。
+
 ### <a name="minimize-cpu-workloads"></a>CPU の負荷を最小限に抑える
 
 マシンに RAM を追加できない場合は、CPU の負荷を最小限に抑えて処理時間を最適化するために、次の手法を適用できます。 これらの推奨事項は、単一システムと分散システムの両方に適用されます。
@@ -65,7 +75,6 @@ CSV ファイルは、Excel での編集や読み取りが簡単であるため�
 
 * 分散フレームワークを使用してクラスターにスケールアウトします。 このオプションでは、データ処理の負荷は、並列で動作する複数の CPU に分割されて処理され、最終的な結果は最後に集約されます。
 
-
 ### <a name="recommended-distributed-frameworks"></a>推奨される分散フレームワーク
 
 次の表は、コードの選択またはデータ サイズに基づいて推奨される、Azure Machine Learning と統合された分散フレームワークを示しています。
@@ -82,4 +91,4 @@ CSV ファイルは、Excel での編集や読み取りが簡単であるため�
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Machine Learning を使用したデータ インジェスト オプション](concept-data-ingestion.md)。
-* [Azure Data Factory を使用したデータ インジェスト](how-to-data-ingest-adf.md)。
+* [データセットを作成して登録する](how-to-create-register-datasets.md)。

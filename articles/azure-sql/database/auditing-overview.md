@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/28/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 4f5ad6fd0444c40d95bf4c2f1105959bde07245d
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 24c3ec1ee16123cef0c4e2bd230bfdb66915fc9f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276313"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040585"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -79,6 +79,9 @@ SQL Database 監査を使用して、以下を行うことができます。
 Azure SQL Database および Azure Synapse の監査では、監査レコードの文字フィールドに 4,000 文字のデータを格納します。 監査可能なアクションから返された、**statement** または **data_sensitivity_information** 値に 4,000 を超える文字が含まれる場合、最初の 4,000 文字以降のすべてのデータは、**切り捨てられ、監査されません**。
 以下のセクションでは、Azure Portal を使用した監査の構成について説明します。
 
+  > [!NOTE]
+  > 一時停止している Synapse SQL プールで監査を有効にすることはできません。 監査を有効にするには、Synapse SQL プールの一時停止を解除します。 [Synapse SQL プール](https://docs.microsoft.com/azure/synapse-analytics/sql/best-practices-sql-pool)の詳細を確認してください。
+
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[SQL データベース]** ウィンドウまたは **[SQL サーバー]** ウィンドウの [セキュリティ] 見出しの下にある **[監査]** に移動します。
 3. サーバーの監査ポリシーを設定する場合は、データベース監査ページの **[サーバー設定を表示]** リンクを選択できます。 そうすると、サーバー監査設定を表示または修正することができます。 サーバー監視ポリシーは、このサーバー上にある既存のデータベースと新規作成されたデータベースのすべてに適用されます。
@@ -119,10 +122,6 @@ Log Analytics ワークスペースへの監査ログの書き込みを構成す
 Azure Monitor ログ ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](https://docs.microsoft.com/azure/azure-monitor/platform/design-logs-deployment)」を参照してください。
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>イベント ハブ保存先への監査
-
-> [!WARNING]
-> SQL Database プールが存在するサーバーで監査を有効にすると、**SQL Database プールが再開された後に再度一時停止され**、課金が発生する可能性があります。
-> 一時停止している SQL Database プールで監査を有効にすることはできません。 有効にするには、SQL Database プールの一時停止を解除します。
 
 イベント ハブへの監査ログの書き込みを構成するには、 **[イベント ハブ (プレビュー)]** を選択し、 **[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、 **[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
 

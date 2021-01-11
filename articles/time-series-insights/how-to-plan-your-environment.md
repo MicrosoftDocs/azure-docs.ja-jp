@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: a0a17f28f2a87ae42b552bfa07732b8b8232ef5e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 76e49393b1d26e6db85146a204911ba164d3ffc0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528059"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289888"
 ---
 # <a name="plan-your-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 環境の計画
 
@@ -78,7 +78,7 @@ Azure Time Series Insights Gen2 環境をプロビジョニングするときは
 
 Azure Time Series Insights 環境の時系列モデルを構成できるようになりました。 新しいモデルにより、IoT データの検索と分析が簡単になります。 時系列データのキュレーション、メンテナンス、およびエンリッチメントが可能になり、コンシューマー対応データ セットの準備に役立ちます。 モデルでは、タイム シリーズ ID が使われ、これは、型と呼ばれる変数と階層に一意のリソースを関連付けるインスタンスにマップされます。 詳細については、[時系列モデル](./concepts-model-overview.md)の概要に関する記事を参照してください。
 
-モデルは動的であるため、いつでも構築できます。 すばやく開始するには、データを Azure Time Series Insights にプッシュする前に、モデルを構築してアップロードします。 モデルを構築するには、[タイム シリーズ モデルの使用](./time-series-insights-update-how-to-tsm.md)に関するページを参照してください。
+モデルは動的であるため、いつでも構築できます。 すばやく開始するには、データを Azure Time Series Insights にプッシュする前に、モデルを構築してアップロードします。 モデルを構築するには、[タイム シリーズ モデルの使用](/azure/time-series-insights/concepts-model-overview)に関するページを参照してください。
 
 多くのお客様で、タイム シリーズ モデルは既存の資産モデルや既に設置されている ERP システムにマップされます。 既存のモデルがない場合は、迅速に開始できるように、事前構築済みのユーザー エクスペリエンスが[提供されて](https://github.com/Microsoft/tsiclient)います。 モデルがどのように役立つかを考えるため、[サンプル デモ環境](https://insights.timeseries.azure.com/preview/demo)を参照してください。
 

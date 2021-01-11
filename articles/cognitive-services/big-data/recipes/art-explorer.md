@@ -10,13 +10,13 @@ ms.subservice: text-analytics
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.custom: tracking-python
-ms.openlocfilehash: e1f17cad784137af927b9ec80d07bd3be092b82d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-python
+ms.openlocfilehash: 0a94c66eb51298db226ceec5da5c86666576052a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189353"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850493"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>レシピ: ビッグ データの Cognitive Services を使用したインテリジェントなアートの探索
 

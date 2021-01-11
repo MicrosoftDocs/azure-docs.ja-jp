@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 7023d29bcb559f4edf11b374b9bfb959e968f626
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86208860"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142113"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>チュートリアル:Azure Data Box を返送する (プレビュー)
-
 
 このチュートリアルでは、Azure Data Box を返送する方法について説明します。デバイスが Azure データに届くと、データは消去されます。
 
 このチュートリアルでは、次のようなトピックについて説明します。
 
 > [!div class="checklist"]
+>
 > * 前提条件
 > * 発送の準備をする
 > * Data Box を Microsoft に送付する
@@ -34,8 +34,8 @@ ms.locfileid: "86208860"
 
 開始する前に次の点を確認します。
 
-- 「[チュートリアル: Azure Data Box からデータをコピーする](data-box-deploy-export-copy-data.md)」を完了していること。 
-- コピージョブが完了していること。 コピージョブが進行中の場合、発送準備を行うことはできません。
+* 「[チュートリアル: Azure Data Box からデータをコピーする](data-box-deploy-export-copy-data.md)」を完了していること。
+* コピージョブが完了していること。 コピージョブが進行中の場合、発送準備を行うことはできません。
 
 ## <a name="prepare-to-ship"></a>発送の準備をする
 
@@ -47,7 +47,7 @@ ms.locfileid: "86208860"
 
 デバイスからのデータ コピーを確実に完了しさせ、 **[発送の準備をする]** の実行を正常終了させます。 デバイスを発送する地域によっては、手順が異なります。
 
-## <a name="in-us-canada-europe"></a>[米国、カナダ、ヨーロッパ](#tab/in-us-canada-europe)
+## <a name="us-canada-europe"></a>[米国、カナダ、ヨーロッパ](#tab/in-us-canada-europe)
 
 米国、カナダ、またはヨーロッパでデバイスを返送する場合は、次の手順を行います。
 
@@ -63,11 +63,9 @@ ms.locfileid: "86208860"
     集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box を持ち込むこともできます。
 4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
 
-
-## <a name="in-australia"></a>[オーストラリア](#tab/in-australia)
+## <a name="australia"></a>[オーストラリア](#tab/in-australia)
 
 オーストラリアの Azure データセンターには、追加のセキュリティ通知があります。 すべての国内配送には事前通知が必要です。 オーストラリアで発送するには、次の手順を行います。
-
 
 1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
 2. デバイスへのデータ コピーが完了し、 **[発送準備]** の実行が正常終了することを確認します。
@@ -75,7 +73,7 @@ ms.locfileid: "86208860"
 4. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
 5. [DHL のリンク](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)からオンラインで集荷を予約します。
 
-## <a name="in-japan"></a>[日本](#tab/in-japan) 
+## <a name="japan"></a>[日本](#tab/in-japan)
 
 1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。
@@ -83,8 +81,8 @@ ms.locfileid: "86208860"
 4. 伝票に送信元の情報としてお客様の会社名と住所の情報を記入します。
 5. 次のメール テンプレートを使用して Quantium Solutions にメールを送信します。
 
-    - 日本郵便の着払伝票が含まれていなかった場合、または紛失した場合は、このメールにそのことを記載します。 Quantium Solutions Japan が日本郵便に集荷を依頼し、集荷時に伝票を持って行くように伝えます。
-    - 複数の注文がある場合は、必ず個別に集荷するようにメールを送信します。
+    * 日本郵便の着払伝票が含まれていなかった場合、または紛失した場合は、このメールにそのことを記載します。 Quantium Solutions Japan が日本郵便に集荷を依頼し、集荷時に伝票を持って行くように伝えます。
+    * 複数の注文がある場合は、必ず個別に集荷するようにメールを送信します。
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
@@ -98,25 +96,24 @@ ms.locfileid: "86208860"
     d. 17：00-19：00 
     ```
 
-3. 集荷を予約した後、Quantium Solutions からメールの確認を受信します。 確認のメールには、着払伝票に関する情報も含まれています。
+6. 集荷を予約した後、Quantium Solutions からメールの確認を受信します。 確認のメールには、着払伝票に関する情報も含まれています。
 
 必要に応じて、次の情報で Quantium Solutions のサポート (日本語) にお問い合わせください。 
 
-- メール: Customerservice.JP@quantiumsolutions.com 
-- 電話: 03-5755-0150 
+* メール: Customerservice.JP@quantiumsolutions.com
+* 電話: 03-5755-0150
 
-
-## <a name="in-singapore"></a>[シンガポール](#tab/in-singapore) 
+## <a name="singapore"></a>[シンガポール](#tab/in-singapore)
 
 1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
-2. 追跡番号 (Data Box のローカル Web UI の [発送準備] ページに参照番号として表示されます) をメモしておきます。 これは、発送準備の手順が正常に完了した後に確認できるようになります。 このページから配送先住所ラベルをダウンロードし、梱包箱に貼り付けます。 
+2. 追跡番号 (Data Box のローカル Web UI の [発送準備] ページに参照番号として表示されます) をメモしておきます。 これは、発送準備の手順が正常に完了した後に確認できるようになります。 このページから配送先住所ラベルをダウンロードし、梱包箱に貼り付けます。
 3. デバイスの電源をオフにして、ケーブルを取り外します。
 4. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。 
 5. 次の電子メール テンプレートと追跡番号を使用して、SingPost のカスタマー サービスに電子メールを送信します。
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - OrderName 
+    Subject: Microsoft Azure Pickup - OrderName 
     Body: 
         1. Requestor name  
         2. Requestor contact number
@@ -126,13 +123,60 @@ ms.locfileid: "86208860"
 
    > [!NOTE]
    > 営業日に受信した予約の取り扱い:
-   > - 午後 3 時より前に受信した場合、集荷は翌営業日の午前 9 時から午後 1 時の間になります。
-   > - 午後 3 時より後に受信した場合、集荷は翌営業日の午後 2 時から午後 6 時の間になります。  
+   >
+   > * 午後 3 時より前に受信した場合、集荷は翌営業日の午前 9 時から午後 1 時の間になります。
+   > * 午後 3 時より後に受信した場合、集荷は翌営業日の午後 2 時から午後 6 時の間になります。  
 
+## <a name="south-africa"></a>[南アフリカ](#tab/in-sa)
 
-## <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged) 
+1. 返送の際にデバイスを梱包するために使用する元の箱を保管しておきます。
+2. デバイスのローカル Web UI に表示されている参照番号 (貨物運送状番号) を書き留めておきます。 この数値は、 **[発送準備] の実行**が成功した後に表示されます。
+3. デバイスのローカル Web UI で入手できる配送先住所ラベルをダウンロードして印刷し、出荷パッケージに貼り付けます。
+4. DHL での集荷を予約するには、以下のいずれかのオプションを選択します。
 
-日本、シンガポール、韓国、西ヨーロッパで Data Box を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。 
+    * 午後 2:00 前にカスタマー サービスのコンタクト センター ( **+27(0) 11 9213600**) に電話し、オプション 1 を選択して、貨物運送状番号を指定します。
+    * 次のテンプレートを使用して、電子メールを [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に送信します。
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject: Pickup request for Microsoft Azure
+    Body: Need pick up for the below shipment
+      *  DHL tracking number (reference number/waybill number)
+      *  Requested pickup date: yyyy/mm/dd;time:HH MM
+    ```
+
+    * または、最寄りの DHL サービス ポイントにパッケージを持ち込むこともできます。
+
+5. 問題が発生した場合は、[Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) に電子メールを送り、発生した問題の詳細を説明し、件名に貨物運送状番号を含めます。 +27(0)119213902 に電話することもできます。
+
+## <a name="hong-kong"></a>[香港特別行政区](#tab/in-hk)
+
+1. 返送するデバイスを元の箱に梱包します。
+2. デバイスのローカル Web UI に表示されている参照番号 (返品用の追跡番号) を書き留めておきます。 この数値は、 **[発送準備] の実行**が成功した後に表示されます。
+3. デバイスのローカル Web UI で入手できる配送先住所ラベルをダウンロードして印刷し、出荷パッケージに貼り付けます。
+4. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
+5. **Quantium Solutions** ホットライン ( **(852) 2318 1213**) に、営業時間中 (月曜日から金曜日の午前 9 時から午後 6 時まで) に電話をかけます。  
+6. "Microsoft Azure の集荷" であることと、返送ラベルの参照番号および追跡番号 (バー コードの上) を伝え、集荷を手配します。
+7. 口頭で集荷スケジュールが確認されます。 配送業者が集荷に来ない場合は、Quantium Solutions ホットラインに別の手配を依頼します。
+8. Quantium に集荷を予約したら、次のテンプレートを使用して、確定内容を [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) にも連絡します。
+
+    ```output
+    To: adbo@microsoft.com
+    Subject: Microsoft Data Box Job: [order name] has completed copy
+    Body:
+    We have confirmed the pickup details with Quantium.
+
+       * Requestor name:
+       * Requestor contact number:
+       * Pickup Date:  
+       * Pickup time:
+    ```
+
+問題が発生した場合は、Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com)) に電子メールで連絡してください。件名ヘッダーにジョブ名を指定し、発生した問題をお知らせください。
+
+## <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
+
+日本、シンガポール、韓国、インド、南アフリカ、または西ヨーロッパで Data Box を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
 
 1. この手順が正常に完了したら、Data Box のローカル Web UI の [発送準備] ページに表示される承認コードをメモしておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
@@ -146,6 +190,7 @@ ms.locfileid: "86208860"
         2. Authorization code available after Prepare to Ship has completed [Yes/No]  
         3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
     ```
+
 ---
 
 ## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する

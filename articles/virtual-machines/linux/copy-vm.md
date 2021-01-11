@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: legacy
-ms.openlocfilehash: ec8fd91dc768b44b027c96efead6924782eb0f75
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c7d93ee928653cc1656e3e9a7cdb0d2fd6d7094b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368610"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654414"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Azure CLI と Managed Disks を使用して Linux VM のコピーを作成する
 
@@ -43,7 +43,7 @@ az vm deallocate \
 
 VM をコピーするには、基となる仮想ハード ディスクのコピーを作成します。 このプロセスでは、ソース VM と同じ構成および設定が含まれるマネージド ディスクとして、特殊な仮想ハード ディスク (VHD) を作成します。
 
-Azure Managed Disks の詳細については、「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」をご覧ください。 
+Azure Managed Disks の詳細については、「[Azure Managed Disks の概要](../managed-disks-overview.md)」をご覧ください。 
 
 1.  [az vm list](/cli/azure/vm#az-vm-list) で、各 VM とその OS ディスクの名前を一覧表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれているすべての VM の一覧を表示します。
     

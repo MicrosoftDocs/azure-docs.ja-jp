@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 31aaa0134ffe34d0424868221f01b68b64e4b088
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 5977aced8354694a631cce05bf6d6b913ea79118
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371160"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121597"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>チュートリアル:Java Spring アプリで Key Vault 参照を使用する
 
@@ -102,7 +102,7 @@ App Configuration に格納されているその他のキーの場合と同様�
 
     この操作では、一連のキーと値のペアが返されます。
 
-    ```console
+    ```json
     {
     "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
     "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
@@ -118,31 +118,51 @@ App Configuration に格納されているその他のキーの場合と同様�
 
 1. 次のコマンドを実行して、サービス プリンシパルがキー コンテナーにアクセスできるようにします。
 
-    ```console
+    ```azurecli
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
 1. 次のコマンドを実行して object-id を取得し、それを App Configuration に追加します。
 
-    ```console
+    ```azurecli
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. 前の手順で表示されたサービス プリンシパルの値を使用して次の環境変数を作成します。
+1. **AZURE_CLIENT_ID**、**AZURE_CLIENT_SECRET**、および **AZURE_TENANT_ID** 環境変数を作成します。 前の手順で表示されたサービス プリンシパルの値を使用します。 コマンド ラインで次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
-    * **AZURE_CLIENT_ID**: *clientId*
-    * **AZURE_CLIENT_SECRET**: *clientSecret*
-    * **AZURE_TENANT_ID**: *tenantId*
+    ```cmd
+    setx AZURE_CLIENT_ID "clientId"
+    setx AZURE_CLIENT_SECRET "clientSecret"
+    setx AZURE_TENANT_ID "tenantId"
+    ```
+
+    Windows PowerShell を使用する場合は、次のコマンドを実行します。
+
+    ```azurepowershell
+    $Env:AZURE_CLIENT_ID = "clientId"
+    $Env:AZURE_CLIENT_SECRET = "clientSecret"
+    $Env:AZURE_TENANT_ID = "tenantId"
+    ```
+
+    macOS または Linux を使用する場合は、次のコマンドを実行します。
+
+    ```cmd
+    export AZURE_CLIENT_ID ='clientId'
+    export AZURE_CLIENT_SECRET ='clientSecret'
+    export AZURE_TENANT_ID ='tenantId'
+    ```
+
 
 > [!NOTE]
 > これらの Key Vault 資格情報は、お使いのアプリケーション内でのみ使用されます。  アプリケーションの認証は、App Configuration サービスを必要とせず、これらの資格情報を使用して Key Vault に対して直接行われます。  Key Vault は、キーを共有したり公開したりすることなく、アプリケーションと App Configuration サービスの両方の認証を提供します。
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Key Vault 参照を使用するようコードを更新する
 
-1. **APP_CONFIGURATION_ENDPOINT** という環境変数を作成します。 その値を App Configuration ストアのエンドポイントに設定します。 エンドポイントは、Azure portal の **[アクセス キー]** ブレードで確認できます。
+1. **APP_CONFIGURATION_ENDPOINT** という環境変数を作成します。 その値を App Configuration ストアのエンドポイントに設定します。 エンドポイントは、Azure portal の **[アクセス キー]** ブレードで確認できます。 変更を有効にするために、コマンド プロンプトを再起動します。 
 
-1. *resources* フォルダー内の *bootstrap.properties* を開きます。 接続文字列ではなく App Configuration エンドポイントを使用するようにこのファイルを更新します。
+
+1. *resources* フォルダー内の *bootstrap.properties* を開きます。 **APP_CONFIGURATION_ENDPOINT** 値を使用するようにこのファイルを更新します。 このファイル内の接続文字列への参照をすべて削除します。 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}

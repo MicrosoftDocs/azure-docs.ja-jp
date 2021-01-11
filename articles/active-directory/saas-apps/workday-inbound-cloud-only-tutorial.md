@@ -3,23 +3,19 @@ title: チュートリアル:Azure Active Directory に Workday 受信プロビ�
 description: Workday から Azure AD への受信プロビジョニングを構成する方法について説明します
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: fac4f61e-d942-4429-a297-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026503"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540968"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>チュートリアル:Azure AD ユーザー プロビジョニングに対して Workday を構成する
 このチュートリアルの目的は、Workday のワーカー データを Azure Active Directory にプロビジョニングするために実行する必要がある手順を示すことです。 

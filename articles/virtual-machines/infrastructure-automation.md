@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292374"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830548"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 
@@ -34,9 +34,9 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 具体的には、次の方法を学習します。
 
-- [Azure で使用するために Linux で Ansible をインストールおよび構成する](../ansible/ansible-install-configure.md)。
-- [Linux 仮想マシンを作成する](../ansible/ansible-create-vm.md)。
-- [Linux 仮想マシンを管理する](../ansible/ansible-manage-linux-vm.md)。
+- [Azure で使用するために Linux で Ansible をインストールおよび構成する](/azure/developer/ansible/install-on-linux-vm)。
+- [Linux 仮想マシンを作成する](/azure/developer/ansible/vm-configure)。
+- [Linux 仮想マシンを管理する](/azure/developer/ansible/vm-manage)。
 
 
 ## <a name="chef"></a>Chef
@@ -45,7 +45,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 具体的には、次の方法を学習します。
 
 - [Azure Marketplace から Chef Automate をデプロイする](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)。
-- [Windows に Chef をインストールし、Azure VM を作成する](../chef/chef-automation.md)。
+- [Windows に Chef をインストールし、Azure VM を作成する](/azure/developer/chef/windows-vm-configure)。
 
 
 ## <a name="puppet"></a>Puppet
@@ -81,7 +81,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 
 ## <a name="azure-custom-script-extension"></a>Azure カスタム スクリプト拡張機能
-[Linux](./linux/extensions-customscript.md) または [Windows](./windows/extensions-customscript.md) 用の Azure カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードして実行します。 拡張機能は、VM を作成するときや、VM の使用中にいつでも使用できます。
+[Linux](./extensions/custom-script-linux.md) または [Windows](./extensions/custom-script-windows.md) 用の Azure カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードして実行します。 拡張機能は、VM を作成するときや、VM の使用中にいつでも使用できます。
 
 スクリプトは、Azure Storage または GitHub リポジトリなどの公開されている場所からダウンロードできます。 カスタム スクリプト拡張機能を使用すると、ソース VM で実行されるスクリプトを任意の言語で作成できます。 これらのスクリプトを使用して、アプリケーションをインストールしたり、必要に応じて VM を構成したりすることができます。 資格情報をセキュリティで保護するために、パスワードなどの機密情報を保護された構成に格納することができます。 これらの資格情報は、VM 内でのみ復号化されます。
 
@@ -116,7 +116,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 具体的には、次の方法を学習します。
 
-- [PowerShell Runbook を作成する](../automation/automation-first-runbook-textual-powershell.md)。
+- [PowerShell Runbook を作成する](../automation/learn/automation-tutorial-runbook-textual-powershell.md)。
 - [Hybrid Runbook Worker を使用して、オンプレミスのリソースを管理する](../automation/automation-hybrid-runbook-worker.md)。
 - [Azure Automation DSC を使用する](../automation/automation-dsc-getting-started.md)。
 
@@ -126,7 +126,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 各項目の詳細情報
 
-- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts)。
+- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts)。
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -134,7 +134,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 具体的には、次の方法を学習します。
 
-- [Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する](../jenkins/tutorial-jenkins-github-docker-cicd.md)。
+- [Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する](/azure/developer/jenkins/pipeline-with-github-and-docker)。
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
@@ -149,4 +149,3 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 ## <a name="next-steps"></a>次のステップ
 Azure でインフラストラクチャ自動化ツールを使用する方法はたくさんあります。 ニーズや環境に最適なソリューションを自由に使用できます。 Azure に組み込まれているいくつかのツールを使用したり、試したりするには、[Linux](./linux/tutorial-automate-vm-deployment.md) または [Windows](./windows/tutorial-automate-vm-deployment.md) VM のカスタマイズを自動化する方法を参照してください。
-

@@ -1,17 +1,17 @@
 ---
-title: Azure DevOps を使用して、関数アプリ コードを継続的に更新する
+title: Azure DevOps を使用して、Function App コードを継続的に更新する
 description: Azure Functions をターゲットとする、Azure DevOps パイプラインを設定する方法について学習します。
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: 0e47078e9f7620e72524ccf91e942d4e15a6b5bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
+ms.openlocfilehash: d503d71cf44446f93fab3d292d4c26d9b7b0941d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559116"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210222"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -28,7 +28,7 @@ YAML ベースのパイプラインを作成するには、まずアプリをビ
 
 ### <a name="build-your-app"></a>アプリの構築
 
-Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure で関数アプリをデプロイするために使用されます。
+Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure でFunction App をデプロイするために使用されます。
 
 # <a name="c"></a>[C\#](#tab/csharp)
 
@@ -91,7 +91,7 @@ steps:
 
 # <a name="python"></a>[Python](#tab/python)
 
-次のサンプルのいずれかを使用して、特定の Python バージョン用のアプリをビルドする YAML ファイルを作成できます。 Python は、Linux で実行されている関数アプリでのみサポートされています。
+次のサンプルのいずれかを使用して、特定の Python バージョン用のアプリをビルドする YAML ファイルを作成できます。 Python は、Linux で実行されている Function App でのみサポートされています。
 
 **バージョン 3.7**
 
@@ -177,9 +177,9 @@ steps:
 
 ホストしている OS によっては、YAML ファイルに次の YAML サンプルのいずれかを含める必要があります。
 
-#### <a name="windows-function-app"></a>Windows 関数アプリ
+#### <a name="windows-function-app"></a>Windows Function App
 
-Windows 関数アプリをデプロイするには、次のスニペットを使用します。
+Windows Function App をデプロイするには、次のスニペットを使用します。
 
 ```yaml
 steps:
@@ -194,9 +194,9 @@ steps:
     #slotName: '<Slot name>'
 ```
 
-#### <a name="linux-function-app"></a>Linux 関数アプリ
+#### <a name="linux-function-app"></a>Linux Function App
 
-Linux 関数アプリをデプロイするには、次のスニペットを使用します。
+Linux Function App をデプロイするには、次のスニペットを使用します。
 
 ```yaml
 steps:
@@ -218,7 +218,7 @@ Azure DevOps ではテンプレートは、アプリをビルドまたはデプ�
 
 ### <a name="build-your-app"></a>アプリの構築
 
-Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure で関数アプリを更新するために使用されます。
+Azure Pipelines でアプリをビルドする方法は、アプリのプログラミング言語によって異なります。 言語ごとにデプロイ成果物を作成するための固有のビルド ステップがあります。 デプロイ成果物は、Azure でFunction App を更新するために使用されます。
 
 新しいビルド パイプラインを作成するときに、組み込みのビルド テンプレートを使用するには、 **[従来のエディターを使用する]** を選択して、デザイナー テンプレートを使用してパイプラインを作成します。
 

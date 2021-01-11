@@ -3,12 +3,13 @@ title: クイック スタート:カスタム イベントを Event Hubs に送�
 description: クイック スタート:Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 イベント ハブは、エンドポイントで使用されます。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0965963e6527e625d0684821b977b05cb9f28657
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104097"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497357"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>クイック スタート:Azure CLI と Event Grid を使用してカスタム イベントを Azure Event Hubs にルーティングする
 
@@ -97,8 +98,8 @@ done
 
 通常は、イベント ハブからイベントを取得するアプリケーションを作成します。 イベント ハブからメッセージを取得するアプリケーションを作成するには、以下を参照してください。
 
-* .[NET Standard で イベント プロセッサ ホストを使用したメッセージ受信を開始する](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Java を使用して Azure Event Hubs からイベントを受信する](../event-hubs/event-hubs-java-get-started-receive-eph.md)
+* .[NET Standard で イベント プロセッサ ホストを使用したメッセージ受信を開始する](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [Java を使用して Azure Event Hubs からイベントを受信する](../event-hubs/event-hubs-java-get-started-send.md)
 * [Apache Storm を使用して Azure Event Hubs からイベントを受信する](../event-hubs/event-hubs-storm-getstarted-receive.md)
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

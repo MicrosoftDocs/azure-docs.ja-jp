@@ -3,7 +3,7 @@ title: チュートリアル`:` マネージド ID を使用して Azure SQL Dat
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure SQL Database にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 ms.service: active-directory
 ms.subservice: msi
@@ -12,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/14/2020
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13be33843172f505ed8f12293137c0808e9bd2a0
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: d576fb4f5dea10a2adf0d7488aa422e1397fd6d1
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920384"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89255751"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure SQL にアクセスする
 
@@ -44,7 +44,7 @@ ms.locfileid: "85920384"
 
 ## <a name="grant-access"></a>アクセス権の付与
 
-Azure SQL Database 内のデータベースに対するアクセス権を VM に付与する際は、既存の[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)を使用する方法と、論理 SQL サーバーを新しく作成する方法とがあります。 Azure ポータルを使用して新しいサーバーとデータベースを作成するには、[Azure SQL のクイック スタート](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)に従います。 [Azure SQL のドキュメント](https://docs.microsoft.com/azure/sql-database/)に、Azure CLI と Azure PowerShell を使用するクイックスタートも用意されています。
+Azure SQL Database 内のデータベースに対するアクセス権を VM に付与する際は、既存の[論理 SQL サーバー](../../azure-sql/database/logical-servers.md)を使用する方法と、論理 SQL サーバーを新しく作成する方法とがあります。 Azure ポータルを使用して新しいサーバーとデータベースを作成するには、[Azure SQL のクイック スタート](../../azure-sql/database/single-database-create-quickstart.md)に従います。 [Azure SQL のドキュメント](/azure/sql-database/)に、Azure CLI と Azure PowerShell を使用するクイックスタートも用意されています。
 
 VM にデータベースへのアクセス権を付与するには次の 2 つの手順があります。
 
@@ -53,7 +53,7 @@ VM にデータベースへのアクセス権を付与するには次の 2 つ�
 
 ### <a name="enable-azure-ad-authentication"></a>Azure AD 認証を有効にする
 
-**[Azure AD 認証を構成するには](/azure/sql-database/sql-database-aad-authentication-configure):**
+**[Azure AD 認証を構成するには](../../azure-sql/database/authentication-aad-configure.md):**
 
 1. Azure ポータルで、左側のナビゲーションから **[SQL サーバー]** を選択します。
 2. Azure AD 認証で有効にする SQL サーバーをクリックします。
@@ -64,10 +64,10 @@ VM にデータベースへのアクセス権を付与するには次の 2 つ�
 
 ### <a name="create-contained-user"></a>包含ユーザーを作成する
 
-このセクションでは、VM のシステム割り当て ID を表す包含ユーザーをデータベースに作成する方法を説明します。 このステップでは、[Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) が必要になります。 始める前に、Azure AD 統合の背景について次の記事で確認しておくことも有益です。
+このセクションでは、VM のシステム割り当て ID を表す包含ユーザーをデータベースに作成する方法を説明します。 このステップでは、[Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) が必要になります。 始める前に、Azure AD 統合の背景について次の記事で確認しておくことも有益です。
 
-- [SQL Database と Azure Synapse Analytics を使用したユニバーサル認証 (SSMS での MFA のサポート)](/azure/sql-database/sql-database-ssms-mfa-authentication)
-- [SQL Database または Azure Synapse Analytics を使用した Azure Active Directory 認証の構成と管理](/azure/sql-database/sql-database-aad-authentication-configure)
+- [SQL Database と Azure Synapse Analytics を使用したユニバーサル認証 (SSMS での MFA のサポート)](../../azure-sql/database/authentication-mfa-ssms-overview.md)
+- [SQL Database または Azure Synapse Analytics を使用した Azure Active Directory 認証の構成と管理](../../azure-sql/database/authentication-aad-configure.md)
 
 SQL DB では、一意の AAD 表示名が必要です。 このため、ユーザー、グループ、サービス プリンシパル (アプリケーション)、およびマネージド ID 用に有効化された VM 名などの AAD アカウントの表示名は、AAD 内で一意に定義する必要があります。 SQL DB では、このようなユーザーの T-SQL の作成時に AAD 表示名がチェックされ、一意でない場合には、指定したアカウントに一意の AAD 表示名を指定するように要求するコマンドが失敗します。
 
@@ -208,4 +208,4 @@ if (accessToken != null) {
 このチュートリアルでは、システム割り当てマネージド ID を使用して Azure SQL Database にアクセスする方法について説明しました。 Azure SQL Database の詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure SQL Database](/azure/sql-database/sql-database-technical-overview)
+> [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md)

@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 40f820a32c7848b5370cb664d706e9f20928bc5c
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608027"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89296483"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>クイック スタート:シンプルな Azure CLI コマンド az mysql up (プレビュー) を使用して Azure Database for MySQL を作成する
 
@@ -75,7 +75,7 @@ admin-password | システム生成 | 管理者ユーザーのパスワード。
 
 サーバーが作成されると、設定は次のようになります。
 
-- "devbox" というファイアウォール規則が作成されます。 Azure CLI では、`az mysql up` コマンドの実行元となるマシンの IP アドレスの検出が試行され、その IP アドレスがホワイトリストに登録されます。
+- "devbox" というファイアウォール規則が作成されます。 Azure CLI では、`az mysql up` コマンドの実行元となるマシンの IP アドレスの検出が試行され、その IP アドレスが許可されます。
 - [Azure サービスへのアクセスを許可] が [オン] に設定されます。 この設定により、サブスクリプションにはないリソースを含む、すべての Azure リソースからの接続を受け入れるようにサーバーのファイアウォールが構成されます。
 - `wait_timeout` パラメーターは 8 時間に設定されています。
 - "sampledb" という名前の空のデータベースが作成されます

@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 41fed622b14c10d3fbc7dfedca7ebc53a8efbc66
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a34544eb29f0a1417d10955bba755fb4f9965320
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799345"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136041"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Azure Cosmos DB のデータ モデリング
 
@@ -329,7 +329,7 @@ Joining documents:
 
 ```json
 Author documents:
-{"id": "a1", "name": "Thomas Andersen", "books": ["b1, "b2", "b3"]}
+{"id": "a1", "name": "Thomas Andersen", "books": ["b1", "b2", "b3"]}
 {"id": "a2", "name": "William Wakefield", "books": ["b1", "b4"]}
 
 Book documents:

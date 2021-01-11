@@ -5,7 +5,7 @@
   items:
     - name: Machine Learning Studio (クラシック)
       displayName: overview
-      href: what-is-ml-studio.md
+      href: studio-classic-overview.md
     - name: Microsoft の ML 製品の比較
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context
 - name: クイックスタート
@@ -140,9 +140,6 @@
         - name: Gallery データ
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-        - name: ノートブックのダウンロード
-          displayName: export
-          href: download-notebooks-data.md
 - name: リファレンス
   items:
     - name: アルゴリズムとモジュールのリファレンス
@@ -165,5 +162,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
-    - name: 'カスタム ニューラル ネットワーク (Net#)'
+    - name: カスタム ニューラル ネットワーク (Net#)
       href: azure-ml-netsharp-reference-guide.md

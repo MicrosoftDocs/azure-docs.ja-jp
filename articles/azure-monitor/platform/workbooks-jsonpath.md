@@ -9,16 +9,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
-ms.openlocfilehash: 58a2657f6b9aee101384146c4ebb43023953bfcb
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: efa54933ac7d57ec0dcff9ae11b6fb5c2c87a897
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891828"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081391"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>JSONPath を使用してブック内の JSON データを変換する方法
 
-ブックでは、多くのソースからデータのクエリを実行できます。 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) やカスタム エンドポイントなどの一部のエンドポイントは、JSON で結果を返すことができます。 クエリを実行したエンドポイントによって返される JSON データが必要な形式で構成されていない場合は、JSONPath を使用して結果を変換できます。
+ブックでは、多くのソースからデータのクエリを実行できます。 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) やカスタム エンドポイントなどの一部のエンドポイントは、JSON で結果を返すことができます。 クエリを実行したエンドポイントによって返される JSON データが必要な形式で構成されていない場合は、JSONPath を使用して結果を変換できます。
 
 JSONPath は、XML 用の XPath に似た JSON 用のクエリ言語です。 XPath と同様に、JSONPath を使用すると、JSON 構造からデータの抽出とフィルター処理を行うことができます。
 

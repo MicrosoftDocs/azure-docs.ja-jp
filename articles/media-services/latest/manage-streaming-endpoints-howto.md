@@ -3,7 +3,7 @@ title: Azure Media Services v3 でストリーミング エンドポイントを
 description: この記事では、Azure Media Services v3 を使用してストリーミング エンドポイントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 writer: juliako
 manager: femila
 editor: ''
@@ -11,21 +11,24 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/11/2020
-ms.author: juliako
-ms.openlocfilehash: 75ba2ad87eabd7ff6b0625ad95ab24a8ae58dd0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: how-to
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-azurecli, devx-track-csharp
+ms.openlocfilehash: 8d3835d78ec55f120f6b9439aea9c29434e6bd47
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79461046"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89289479"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 でストリーミング エンドポイントを管理する
 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
+
 Media Services アカウントの作成時に、**既定**の[ストリーミング エンドポイント](streaming-endpoint-concept.md)が**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と[動的暗号化](content-protection-overview.md)を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
 
-この記事では、さまざまな手法を利用し、ストリーミング エンドポイントで [start](https://docs.microsoft.com/rest/api/media/streamingendpoints/start) コマンドを実行する方法について説明します。 
+この記事では、さまざまな手法を利用し、ストリーミング エンドポイントで [start](/rest/api/media/streamingendpoints/start) コマンドを実行する方法について説明します。 
  
 > [!NOTE]
 > ストリーミング エンドポイントが実行状態の場合のみ課金されます。
@@ -46,7 +49,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 詳細については、次を参照してください。 
 
-* 「[StreamingEndpoint - 開始](https://docs.microsoft.com/rest/api/media/streamingendpoints/start)」参照ドキュメント。
+* 「[StreamingEndpoint - 開始](/rest/api/media/streamingendpoints/start)」参照ドキュメント。
 * ストリーミング エンドポイントの開始は非同期操作です。 
 
     長時間実行される操作を監視する方法については、「[長時間にわたって実行される操作](media-services-apis-overview.md)」を参照してください。
@@ -70,7 +73,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-詳細については、「[az ams streaming-endpoint start](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)」を参照してください。
+詳細については、「[az ams streaming-endpoint start](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)」を参照してください。
 
 ## <a name="use-sdks"></a>SDK の使用
 
@@ -106,4 +109,4 @@ if (streamingEndpoint != null)
 ## <a name="next-steps"></a>次のステップ
 
 * [Media Services v3 OpenAPI の仕様 (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [ストリーミング エンドポイント操作](https://docs.microsoft.com/rest/api/media/streamingendpoints)
+* [ストリーミング エンドポイント操作](/rest/api/media/streamingendpoints)

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3ea1c42234267bdbc5f8a7d35f0fd73bbb59b33c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: afc9f8e29cf27734787da9cab3e3456e5414d9ac
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85553433"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88918028"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Cognitive Search で簡単なクエリを作成する
 
 Azure Cognitive Search では、[単純なクエリ構文](query-simple-syntax.md)で既定のクエリ パーサーが呼び出されて、インデックスに対してフルテキスト検索クエリが実行されます。 このパーサーは高速で、フルテキスト検索、フィルター検索、ファセット検索、地理検索などの一般的なシナリオに対応します。 
 
-この記事では、例を使用して、単純な構文を説明し、[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)操作の `search=` パラメーターを設定します。
+この記事では、例を使用して、単純な構文を説明し、[ドキュメントの検索](/rest/api/searchservice/search-documents)操作の `search=` パラメーターを設定します。
 
 代替のクエリ構文には[完全な Lucene](query-lucene-syntax.md) 構文があります。この構文は、あいまい検索、ワイルドカード検索などのより複雑なクエリ構造をサポートし、処理に時間がかかります。 完全な構文の詳細と例については、[完全な Lucene 構文の使用](search-query-lucene-examples.md)に関するページを参照してください。
 
@@ -103,7 +103,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 ## <a name="example-2-look-up-by-id"></a>例 2:ID による参照
 
-この例は少し特殊ですが、検索動作を評価する際、検索結果から除外されている理由や検索結果に含まれている理由を理解するために、特定のドキュメントの内容全体を調べることが必要になる場合があります。 1 つのドキュメントを全部返すには、[参照操作](https://docs.microsoft.com/rest/api/searchservice/lookup-document)を使用してドキュメント ID を渡します。
+この例は少し特殊ですが、検索動作を評価する際、検索結果から除外されている理由や検索結果に含まれている理由を理解するために、特定のドキュメントの内容全体を調べることが必要になる場合があります。 1 つのドキュメントを全部返すには、[参照操作](/rest/api/searchservice/lookup-document)を使用してドキュメント ID を渡します。
 
 すべてのドキュメントは一意の識別子を持ちます。 参照クエリの構文を試す場合、使用する ID を見つけるために、最初にドキュメント ID の一覧を返します。 NYC ジョブの場合、識別子は `id` フィールドに格納されます。
 
@@ -119,7 +119,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 
 ## <a name="example-3-filter-queries"></a>例 3: フィルター クエリ
 
-[フィルター構文](https://docs.microsoft.com/azure/search/search-query-odata-filter) は、**search** と一緒に使用することも、単独で使用することもできる OData 式です。 search パラメーターがないスタンドアロン フィルターは、関心があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析なし、スコア付けなし (すべて 1 にスコア付け)、および優先度付けなしになります。 検索文字列が空である点に注目してください。
+[フィルター構文](./search-query-odata-filter.md) は、**search** と一緒に使用することも、単独で使用することもできる OData 式です。 search パラメーターがないスタンドアロン フィルターは、関心があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析なし、スコア付けなし (すべて 1 にスコア付け)、および優先度付けなしになります。 検索文字列が空である点に注目してください。
 
 ```http
 POST /indexes/nycjobs/docs/search?api-version=2020-06-30
@@ -147,7 +147,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
-この関数の詳細については、[「フィルターの例」の search.ismatch](https://docs.microsoft.com/azure/search/search-query-odata-full-text-search-functions#examples) を参照してください。
+この関数の詳細については、[「フィルターの例」の search.ismatch](./search-query-odata-full-text-search-functions.md#examples) を参照してください。
 
 ## <a name="example-4-range-filters"></a>例 4: 範囲フィルター
 
@@ -198,7 +198,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 ## <a name="example-5-geo-search"></a>例 5:地理空間検索
 
-サンプル インデックスには、緯度と経度の座標を持つ geo_location フィールドが含まれています。 この例では、[geo.distance 関数](https://docs.microsoft.com/azure/search/search-query-odata-geo-spatial-functions#examples)を使用して、開始点を中心に、指定された距離 (キロメートル単位) に収まるドキュメントをフィルター処理します。 クエリの最後の値 (4) を調整して、クエリのサーフェス領域を拡大または縮小できます。
+サンプル インデックスには、緯度と経度の座標を持つ geo_location フィールドが含まれています。 この例では、[geo.distance 関数](./search-query-odata-geo-spatial-functions.md#examples)を使用して、開始点を中心に、指定された距離 (キロメートル単位) に収まるドキュメントをフィルター処理します。 クエリの最後の値 (4) を調整して、クエリのサーフェス領域を拡大または縮小できます。
 
 次の例は、読みやすくするために POST 形式になっています。
 
@@ -288,13 +288,13 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 ## <a name="next-steps"></a>次のステップ
 コードでクエリを指定してみてください。 次のリンクでは、既定の単純な構文を使用して .NET と REST API の両方の検索クエリを設定する方法について説明しています。
 
-* [.NET SDK を使用したインデックスのクエリ実行](search-query-dotnet.md)
-* [REST API を使用したインデックスのクエリ実行](search-create-index-rest-api.md)
+* [.NET SDK を使用したインデックスのクエリ実行](./search-get-started-dotnet.md)
+* [REST API を使用したインデックスのクエリ実行](./search-get-started-powershell.md)
 
 追加の構文リファレンス、クエリ アーキテクチャ、およびサンプルについては、次のリンク先を参照してください。
 
 + [高度なクエリを作成するための Lucene 構文のクエリの例](search-query-lucene-examples.md)
 + [Azure Cognitive Search でのフルテキスト検索のしくみ](search-lucene-query-architecture.md)
-+ [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
-+ [完全な Lucene クエリ](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [フィルター構文と並べ替え構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
++ [単純なクエリ構文](/rest/api/searchservice/simple-query-syntax-in-azure-search)
++ [完全な Lucene クエリ](/rest/api/searchservice/lucene-query-syntax-in-azure-search)
++ [フィルター構文と並べ替え構文](/rest/api/searchservice/odata-expression-syntax-for-azure-search)

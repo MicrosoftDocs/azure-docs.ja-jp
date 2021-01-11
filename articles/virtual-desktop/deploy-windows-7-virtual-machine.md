@@ -1,33 +1,28 @@
 ---
 title: Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする - Azure
 description: Windows Virtual Desktop で Windows 7 仮想マシンを構成してデプロイする方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 542d0bcea6cfae2af2918d699952d4c054bd68cb
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86277607"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007575"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
 
 >[!IMPORTANT]
->このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Spring 2020 更新プログラムに適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[記事](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)を参照してください。
 
 Windows Virtual Desktop で Windows 7 仮想マシン (VM) をデプロイするプロセスは、新しいバージョンの Windows を実行している VM の場合とは若干異なります。 このガイドでは、Windows 7 をデプロイする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、「[Create a host pool with PowerShell](create-host-pools-powershell.md)」 (PowerShell を使用してホスト プールを作成する) の手順に従って、ホスト プールを作成します。 ポータルを使用している場合、「[Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」の手順 1 から 9 までの指示に従ってください。 その後、 **[確認と作成]** を選択し、空のホスト プールを作成します。 
+開始する前に、「[Create a host pool with PowerShell](create-host-pools-powershell.md)」 (PowerShell を使用してホスト プールを作成する) の手順に従って、ホスト プールを作成します。 ポータルを使用している場合、「[Azure portal を使用してホスト プールを作成する](create-host-pools-azure-marketplace.md)」の手順 1 から 9 までの指示に従ってください。 その後、 **[確認と作成]** を選択し、空のホスト プールを作成します。
 
 ## <a name="configure-a-windows-7-virtual-machine"></a>Windows 7 仮想マシンを構成する
 
@@ -52,9 +47,9 @@ Windows Virtual Desktop で Windows 7 VM を設定するには、次のように
      ```
 
 12. [こちら](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0)の指示に従って、登録トークンを取得します。
-      
+
       - 代わりに Azure portal を使用する場合、VM を追加するホスト プールの [概要] ページに進み、そこでトークンを作成することもできます。
-  
+
 13. [Windows 7 用 Windows Virtual Desktop エージェントをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm)。
 14. [Windows 7 用 Windows Virtual Desktop エージェント マネージャーをダウンロードします](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)。
 15. Windows Virtual Desktop エージェント インストーラーを開き、指示に従います。 メッセージが表示されたら、手順 12 で作成した登録キーを指定します。

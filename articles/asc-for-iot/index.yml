@@ -11,12 +11,12 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 07/15/2020
-  ms.openlocfilehash: 6ffdfab3f5c29a21fb504fb8d7e5004dab1f57b1
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 6047b647641033af415be86d8534bda9c857b608
+  ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87046000"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88067309"
 landingContent:
 - title: Azure Security Center for IoT について
   linkLists:
@@ -58,6 +58,8 @@ landingContent:
       url: quickstart-create-security-twin.md
     - text: カスタムのセキュリティのアラートを作成する
       url: quickstart-create-custom-alerts.md
+    - text: セキュリティ アラートについて調査する
+      url: quickstart-investigate-security-alerts.md
 - title: ソリューションをカスタマイズする
   linkLists:
   - linkListType: how-to-guide

@@ -22,18 +22,13 @@
       href: data-lake-store-get-started-powershell.md
     - name: Azure CLI の使用
       href: data-lake-store-get-started-cli-2.0.md
-- name: サンプル
-  items:
-    - name: Azure Policy の組み込み
-      displayName: 'samples, policies, definitions'
-      href: ./policy-samples.md
 - name: 方法
   items:
     - name: データの読み込みと移動
       items:
         - name: Azure Data Factory の使用
           href: ../data-factory/load-azure-data-lake-store.md
-        - name: ストレージ エクスプローラーの使用
+        - name: Storage Explorer の使用
           href: data-lake-store-in-storage-explorer.md
         - name: AdlCopy を使用
           href: data-lake-store-copy-data-azure-storage-blob.md
@@ -143,7 +138,7 @@
           href: data-lake-store-power-bi.md
         - name: Data Catalog で使用する
           href: data-lake-store-with-data-catalog.md
-        - name: SQL Data Warehouse で PolyBase を使用する
+        - name: Azure Synapse Analytics で PolyBase と共に使用する
           href: ../sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md
         - name: SQL Server Integration Services と共に使用する
           href: 'https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager'
@@ -177,6 +172,9 @@
       href: /azure/templates/microsoft.datalakestore/allversions
     - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dls'
+    - name: Azure Policy の組み込み
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: リソース
   items:
     - name: Azure のロードマップ

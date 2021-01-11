@@ -27,20 +27,16 @@
       href: azure-portal-dashboards-create-programmatically.md
 - name: 操作方法ガイド
   items:
-    - name: Azure portal の基本設定を設定する
+    - name: Azure portal の設定を管理する
       href: set-preferences.md
-    - name: すべてのユーザーの非アクティブ タイムアウト設定を設定する
-      href: admin-timeout.md
-    - name: ハイコントラストの有効化またはテーマの変更
-      href: azure-portal-change-theme-high-contrast.md
     - name: お気に入りの追加、削除、並べ替え
       href: azure-portal-add-remove-sort-favorites.md
-    - name: Azure ダッシュボードの作成と共有
-      href: azure-portal-dashboards.md
-    - name: カスタムのマークダウン タイルを使用する
-      href: azure-portal-markdown-tile.md
-    - name: ユーザー設定のエクスポートまたは削除
-      href: azure-portal-export-delete-settings.md
+    - name: Azure ダッシュボードを作成する
+      items:
+        - name: Azure ダッシュボードの作成と共有
+          href: azure-portal-dashboards.md
+        - name: カスタムのマークダウン タイルを使用する
+          href: azure-portal-markdown-tile.md
     - name: Azure portal の使い方に関するビデオ シリーズ
       href: azure-portal-video-series.md
     - name: サポート リクエストの作成と管理

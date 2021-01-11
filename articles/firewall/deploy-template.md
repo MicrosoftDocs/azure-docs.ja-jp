@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:可用性ゾーンを使用して Azure Firewall を作成する - Resource Manager テンプレート
-description: テンプレートを使用して Azure Firewall をデプロイします。 仮想ネットワークには、3 つのサブネットを含む 1 つの VNet があります。 ジャンプ ボックスおよびサーバーとして、2 つの Windows Server 仮想マシンをデプロイします。
+description: このクイックスタートでは、テンプレートを使用して Azure Firewall をデプロイします。 仮想ネットワークには、3 つのサブネットを含む 1 つの VNet があります。 ジャンプ ボックスおよびサーバーとして、2 つの Windows Server 仮想マシンをデプロイします。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.date: 04/30/2020
+ms.date: 08/28/2020
 ms.author: victorh
-ms.openlocfilehash: cec7ff020ce7e5894d4909263b5ab1aa2275caac
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c8b4102968e4b6b633216e29d5e993a1c98fa1c6
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260627"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071722"
 ---
 # <a name="quickstart-deploy-azure-firewall-with-availability-zones---arm-template"></a>クイック スタート:可用性ゾーンを使用して Azure Firewall をデプロイする - ARM テンプレート
 
@@ -43,7 +43,7 @@ Azure Firewall の詳細については、[Azure portal を使用した Azure Fi
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurefirewall-with-zones-sandbox)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json" range="001-444" highlight="369-442":::
+:::code language="json" source="~/quickstart-templates/101-azurefirewall-with-zones-sandbox/azuredeploy.json":::
 
 このテンプレートには、次の複数の Azure リソースが定義されています。
 

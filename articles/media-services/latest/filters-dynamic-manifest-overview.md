@@ -4,24 +4,26 @@ titleSuffix: Azure Media Services
 description: Dynamic Packager を使用してフィルターを作成し、マニフェストをフィルター処理して選択的にストリーミングする方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 07/11/2019
-ms.author: juliako
-ms.openlocfilehash: cb7a399258dcab679468d2b8f699487b1ec5406b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84705204"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299033"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Dynamic Packager を使用してマニフェストをフィルター処理する
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 アダプティブ ビットレート ストリーミング コンテンツをデバイスに配信するときは、特定のデバイス機能または利用可能なネットワーク帯域幅をターゲットにするために、マニフェストの複数のバージョンを公開することが必要な場合があります。 [Dynamic Packager](dynamic-packaging-overview.md) を使用すると、特定のコーデック、解像度、ビットレート、およびオーディオ トラックの組み合わせをその場で除外できるフィルターを指定できます。 このフィルターを使用すると、複数のコピーを作成する必要がなくなります。 必要なのは、ターゲット デバイス (iOS、Android、SmartTV、またはブラウザー) とネットワーク機能 (高帯域幅、モバイル、または低帯域幅の各シナリオ) に合わせて構成されたフィルターの特定のセットを含む新しい URL を発行することだけです。 この場合、クライアントはクエリ文字列によって (利用可能な[アセット フィルターまたはアカウント フィルター](filters-concept.md)を指定して) コンテンツのストリーミングを操作したり、フィルターを使用してストリームの特定のセクションをストリーミングしたりできます。
 

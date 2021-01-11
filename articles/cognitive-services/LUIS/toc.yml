@@ -22,11 +22,7 @@
     - name: ブラウザーの使用
       href: luis-get-started-get-intent-from-browser.md
     - name: SDK の使用
-      items:
-        - name: 作成アプリ
-          href: sdk-authoring.md
-        - name: 予測エンドポイントに対するクエリの実行
-          href: sdk-query-prediction-endpoint.md
+      href: azure-sdk-quickstart.md
     - name: REST API の使用
       items:
         - name: 意図の取得

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 52569f3cec26432970606b31fe831bb6459839d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226412"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010960"
 ---
 共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンで任意の操作を実行しているときに問題が発生した場合は、デバッグ モードでエラー コマンドを再実行します。 CLI では `--debug` スイッチ、PowerShell では `-Debug` スイッチを渡すことで、デバッグ モードがアクティブ化されます。 エラーの場所を特定したら、このドキュメントに従ってエラーをトラブルシューティングします。
 
@@ -76,7 +76,7 @@ ms.locfileid: "86226412"
 
 "*VM または仮想マシン スケール セットの作成を試行しているユーザーが、イメージ バージョンへの読み取りアクセス権を保持していない。* "
 
-サブスクリプションの所有者に連絡して、[ロール ベース アクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) 経由でイメージ バージョンまたは親リソース (共有イメージ ギャラリーまたはイメージ定義など) への読み取りアクセス権の付与を依頼します。 
+サブスクリプションの所有者に連絡して、[Azure ロールベース アクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Azure RBAC) 経由でイメージ バージョンまたは親リソース (共有イメージ ギャラリーまたはイメージ定義など) への読み取りアクセス権の付与を依頼します。 
 
 "*イメージ バージョンが見つからない。* "
 
@@ -88,7 +88,7 @@ VM または仮想マシン スケール セットの作成を試行している
 
 ## <a name="unable-to-share-resources"></a>リソースを共有できない
 
-サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) を使用して有効化されています。 
+サブスクリプション全体での共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースの共有が、[Azure ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (Azure RBAC) を使用して有効化されています。 
 
 ## <a name="replication-is-slow"></a>レプリケーションが遅い
 
@@ -97,6 +97,3 @@ VM または仮想マシン スケール セットの作成を試行している
 ## <a name="azure-limits-and-quotas"></a>Azure の制限とクォータ 
 
 [Azure の制限とクォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)は、すべての共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンのリソースに適用されます。 お使いのサブスクリプションの制限内であることを確認してください。 
-
-
-

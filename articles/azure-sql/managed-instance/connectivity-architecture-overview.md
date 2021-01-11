@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 115cf589c6aa0786026f68eff839a7a2ad6aa9ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 059828336288eeadc0567fed060db07e323f885c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84706207"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761867"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance の接続アーキテクチャ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -89,7 +89,12 @@ SQL Managed Instance の内部から接続が開始される場合 (バックア
 
 サービス支援サブネット構成では、ユーザーがデータ (TDS) トラフィックを完全に制御しますが、SQL Managed Instance は、SLA を満たすために、管理トラフィックのフローが中断されないことを保証する役割を担います。
 
-サービス支援サブネット構成は、仮想ネットワーク [サブネット委任](../../virtual-network/subnet-delegation-overview.md)機能の上に構築されます。これにより、ネットワーク構成の自動管理を提供し、サービス エンドポイントを有効にすることができます。 サービス エンドポイントを使用することで、バックアップおよび監査ログを保持するストレージ アカウントの仮想ネットワーク ファイアウォール規則を構成することができます。
+サービス支援サブネット構成は、仮想ネットワーク [サブネット委任](../../virtual-network/subnet-delegation-overview.md)機能の上に構築されます。これにより、ネットワーク構成の自動管理を提供し、サービス エンドポイントを有効にすることができます。 
+
+サービス エンドポイントを使用することで、バックアップおよび監査ログを保持するストレージ アカウントの仮想ネットワーク ファイアウォール規則を構成することができます。 サービス エンドポイントが有効になっている場合でも、サービス エンドポイント経由でセキュリティを追加する[プライベート リンク](../../private-link/private-link-overview.md)を使用することをお客様にお勧めしています。
+
+> [!IMPORTANT]
+> コントロール プレーン構成の特性に起因し、サービス支援サブネット構成では、国内のクラウドでサービス エンドポイントが有効になりません。 
 
 ### <a name="network-requirements"></a>ネットワークの要件
 

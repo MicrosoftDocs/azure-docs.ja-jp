@@ -4,12 +4,12 @@ description: Azure Backup を使用した Azure VM 上での SQL Server デー�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d69a2aff900dc3185aafbcb2d655a29d2fff06e3
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090979"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890557"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -30,7 +30,7 @@ ms.locfileid: "87090979"
 - 復元中にデータベースを上書きすることを選択した場合は、次のログ/差分バックアップが失敗し、代わりに完全バックアップがトリガーされます。
 - データベース復旧モデルの変更のために、完全バックアップでログ チェーンをリセットする必要がある場合は、次のスケジュールで完全バックアップが自動的にトリガーされます。
 
-機能としての自動回復は、すべてのユーザーに対して既定で有効になります。ただし、これを無効にすることを選択した場合は、次のことを実行してください。
+機能としての自動回復は、すべてのユーザーに対して既定で有効になります。 ただし、これを無効にすることを選択した場合は、次の手順を実行してください。
 
 - SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーで **ExtensionSettingsOverrides.json** ファイルを作成または編集します。
 - **ExtensionSettingsOverrides.json** で、 *{"EnableAutoHealer": false}* を設定します。
@@ -52,11 +52,11 @@ DefaultBackupTasksThreshold の既定値は **20** です。
  バックアップ アプリケーションで多くのリソース量を消費している場合はこの方法が役立つ一方で、SQL Server の [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) では、受信するアプリケーション要求で使用できる CPU、物理 IO、およびメモリの量に対して、より汎用的なやり方で制限を指定できます。
 
 > [!NOTE]
-> UX では、引き続き先に進みいつでも、いくつでもバックアップをスケジュールできますが、それらは上の例に従った値 (たとえば、5) のスライディング ウィンドウで処理されます。
+> UX では、いつでも、引き続き先に進みいくつでもバックアップをスケジュールできます。 ただし、それらは上の例に従った値 (たとえば、5) のスライディング ウィンドウで処理されます。
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>セカンダリ レプリカから完全バックアップを実行できますか?
 
-SQL の制限に従って、セカンダリ レプリカにおいてコピーのみの完全バックアップを実行できます。ただし、完全バックアップは許可されていません。
+SQL の制限に従って、セカンダリ レプリカにおいてコピーのみの完全バックアップを実行できます。 ただし、完全バックアップは許可されていません。
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>オンプレミスの可用性グループを保護できますか?
 

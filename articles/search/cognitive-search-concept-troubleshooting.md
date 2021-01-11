@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 92c054b42a83d9753e2fcc9c02646c381da795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8347ca5a33790d0b35176be47a0fa4811a19e3f1
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510860"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88935468"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
@@ -54,7 +54,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 ## <a name="tip-4-use-debug-sessions-to-identify-and-resolve-issues-with-your-skillset"></a>ヒント 4: デバッグ セッションを使用して、スキルセットの問題を特定し、解決する 
 
-デバッグ セッションは、Azure portal の既存のスキルセットと連動するビジュアル エディターです。 デバッグ セッション内では、エラーを特定して解決し、変更を確認し、AI エンリッチメント パイプラインで運用スキルセットに対して変更を行うことができます。 これは、プレビュー機能です。[こちらのドキュメントをお読みください](https://docs.microsoft.com/azure/search/cognitive-search-debug-session)。 概念の詳細と概要については、[デバッグ セッション](https://docs.microsoft.com/azure/search/cognitive-search-tutorial-debug-sessions)に関する記事を参照してください。
+デバッグ セッションは、Azure portal の既存のスキルセットと連動するビジュアル エディターです。 デバッグ セッション内では、エラーを特定して解決し、変更を確認し、AI エンリッチメント パイプラインで運用スキルセットに対して変更を行うことができます。 これは、プレビュー機能です。[こちらのドキュメントをお読みください](./cognitive-search-debug-session.md)。 概念の詳細と概要については、[デバッグ セッション](./cognitive-search-tutorial-debug-sessions.md)に関する記事を参照してください。
 
 1 つのドキュメントでのデバッグ セッションの作業は、より複雑なエンリッチメント パイプラインを反復的にビルドするための優れた方法です。
 

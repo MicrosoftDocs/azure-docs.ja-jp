@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4a128d46ca1b3f84981f9732f86ff49f72cc18
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025831"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89268419"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -70,9 +70,12 @@ Azure AD Connect で、ハイブリッド Azure AD 参加済みにするデバ�
 - `https://device.login.microsoftonline.com`
 - `https://autologon.microsoftazuread-sso.com` (シームレス SSO を使用しているか、使用する予定の場合)
 
-組織がアウトバウンド プロキシ経由でのインターネットへのアクセスを必要とする場合は、Windows 10 コンピューターを Azure AD にデバイス登録できるように、[Web プロキシ自動発見 (WPAD) を実装](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10))することができます。 WPAD の構成と管理の問題に対処するには、「[自動検出のトラブルシューティング](/previous-versions/tn-archive/cc302643(v=technet.10))」を参照してください。 更新プログラム 1709 より前の Windows 10 デバイスでは、Hybrid Azure AD Join と連携するようにプロキシを構成するためのオプションとして WPAD のみを選択できます。 
+> [!WARNING]
+> データ損失防止や Azure AD テナントの制限などのシナリオで SSL トラフィックを傍受するプロキシ サーバーを組織で使用している場合は、'https://device.login.microsoftonline.com ' へのトラフィックが TLS の中断と検査から除外されていることを確認してください。 'https://device.login.microsoftonline.com ' を除外しないと、クライアント証明書の認証に干渉し、デバイス登録とデバイスベースの条件付きアクセスに問題が発生する可能性があります。
 
-WPAD を使用しない場合は、Windows 10 1709 以降のコンピューター上で WinHTTP プロキシ設定を構成できます。 詳細については、「[GPO によってデプロイされる WinHTTP プロキシ設定](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)」を参照してください。
+組織がアウトバウンド プロキシ経由でのインターネットへのアクセスを必要とする場合は、Windows 10 コンピューターを Azure AD にデバイス登録できるように、[Web プロキシ自動発見 (WPAD) を実装](/previous-versions/tn-archive/cc995261(v=technet.10))することができます。 WPAD の構成と管理の問題に対処するには、「[自動検出のトラブルシューティング](/previous-versions/tn-archive/cc302643(v=technet.10))」を参照してください。 更新プログラム 1709 より前の Windows 10 デバイスでは、Hybrid Azure AD Join と連携するようにプロキシを構成するためのオプションとして WPAD のみを選択できます。 
+
+WPAD を使用しない場合は、Windows 10 1709 以降のコンピューター上で WinHTTP プロキシ設定を構成できます。 詳細については、「[GPO によってデプロイされる WinHTTP プロキシ設定](/archive/blogs/netgeeks/winhttp-proxy-settings-deployed-by-gpo)」を参照してください。
 
 > [!NOTE]
 > WinHTTP 設定を使用して自分のコンピューター上でプロキシ設定を構成すると、構成されたプロキシに接続できないコンピューターは、インターネットに接続できなくなります。
@@ -171,7 +174,7 @@ Azure AD クラウド認証方法として[パスワード ハッシュ同期](.
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
 1. [直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用して、デバイス ページに移動します。
-2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](https://docs.microsoft.com/azure/active-directory/devices/device-management-azure-portal#locate-devices)に関するページをご覧ください。
+2. デバイスを特定する方法については、[Azure portal を使用してデバイス ID を管理する方法](./device-management-azure-portal.md)に関するページをご覧ください。
 3. **[登録済み]** 列に **[保留中]** と表示されている場合、Hybrid Azure AD Join は完了していません。
 4. **[登録済み]** 列に**日付/時刻**が含まれている場合、Hybrid Azure AD Join は完了しています。
 
@@ -221,7 +224,7 @@ Get-MsolDevice -All -IncludeSystemManagedDevices | where {($_.DeviceTrustType -e
 
 ドメイン参加済み Windows デバイスの Hybrid Azure AD Join を行うときに問題が発生した場合は、以下を参照してください。
 
-- [dsregcmd コマンドを使用したデバイスのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/devices/troubleshoot-device-dsregcmd)
+- [dsregcmd コマンドを使用したデバイスのトラブルシューティング](./troubleshoot-device-dsregcmd.md)
 - [ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-current.md)
 - [ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング](troubleshoot-hybrid-join-windows-legacy.md)
 

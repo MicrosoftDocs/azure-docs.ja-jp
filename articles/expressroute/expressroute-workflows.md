@@ -1,55 +1,120 @@
 ---
 title: 'Azure ExpressRoute: 回線構成のワークフロー'
-description: このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて説明します。
+description: このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて説明します
 services: expressroute
-author: cherylmc
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2018
-ms.author: cherylmc
-ms.openlocfilehash: 58914709838c72246678ce92005de5ac18695a1f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/24/2020
+ms.author: duau
+ms.custom: contperfq1
+ms.openlocfilehash: 14a61d33ef2e4d4fc80770f5c86e33d34ec860cd
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86204159"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401437"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
-このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。
 
-![回線のワークフロー](./media/expressroute-workflows/expressroute-circuit-workflow.png)
+この記事では、サービス プロビジョニングおよびルーティング構成のワークフローの概要について説明します。 以下のセクションでは、ExpressRoute 回線をエンド ツー エンドでプロビジョニングするためのタスクの概要を示します。
 
-次の図および対応する手順では、ExpressRoute 回線をエンド ツー エンドでプロビジョニングするためのタスクの概要を示します。 
+## <a name="workflow-steps"></a>ワークフローのステップ
 
-1. PowerShell を利用し、ExpressRoute 回線を構成します。 詳細については、 [ExpressRoute 回線の作成](expressroute-howto-circuit-classic.md) に関する記事を参照してください。
-2. サービス プロバイダーに接続を要求します。 このプロセスはさまざまです。 接続の要求方法に関する詳細については、接続プロバイダーにお問い合わせください。
-3. PowerShell で ExpressRoute のプロビジョニング状態を確認することで、回線が正常にプロビジョニングされていることを確認します。 
-4. ルーティング ドメインを構成します。 接続プロバイダーがレイヤー 3 構成を管理する場合、接続プロバイダーが回線のルーティングを構成します。 接続プロバイダーがレイヤー 2 サービスのみを提供する場合、[ルーティング要件](expressroute-routing.md)ページと[ルーティング構成](expressroute-howto-routing-classic.md)ページのガイドラインに従い、自分でルーティングを構成する必要があります。
-   
-   * Azure プライベート ピアリングを有効にする - 仮想ネットワーク内にデプロイされている VM / クラウドに接続するには、このピアリングを有効にします。
+### <a name="1-prerequisites"></a>1.前提条件
 
-   * Microsoft ピアリングを有効にする - Office 365 などのオンライン サービスにアクセスするにはこれを有効にします。 すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。
-     
-     > [!IMPORTANT]
-     > Microsoft に接続するには、インターネットに使用しているプロキシ/エッジとは別のプロキシ/エッジを使用する必要があります。 ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
-     > 
-     > 
-     
-     ![ワークフローのルーティング](./media/expressroute-workflows/routing-workflow.png)
-5. ExpressRoute 回線に仮想ネットワークをリンクする - 仮想ネットワークを ExpressRoute 回線にリンクできます。 指示に従い、回線に [VNet をリンク](expressroute-howto-linkvnet-arm.md) してください。 VNet は ExpressRoute 回線と同じ Azure サブスクリプションに配置するか、別のサブスクリプションに配置できます。
+前提条件が満たされていることを確認します。 完全な一覧については、[前提条件とチェックリスト](expressroute-prerequisites.md)に関する記事を参照してください。
 
-## <a name="expressroute-circuit-provisioning-states"></a>ExpressRoute 回線のプロビジョニング状態
-各 ExpressRoute 回線には 2 つの状態があります。
+* Azure サブスクリプションが作成されている。
+* 物理接続が、ExpressRoute パートナーを使用して確立されているか、ExpressRoute Direct を介して構成されている。 場所を確認し、「[場所とパートナー](expressroute-locations-providers.md#partners)」を参照して、ExpressRoute パートナーと、ピアリングの場所の間の ExpressRoute Direct 接続を確認してください。
 
-* サービス プロバイダーのプロビジョニング状態
-* Status
+### <a name="2-order-connectivity-or-configure-expressroute-direct"></a>2.接続の注文または ExpressRoute Direct の構成
 
-状態は Microsoft のプロビジョニングの状態を表します。 Expressroute 回線を作成したとき、このプロパティは "有効" に設定されます。
+サービス プロバイダーに接続を注文するか、ExpressRoute Direct を構成します。
 
-接続プロバイダーのプロビジョニング状態は接続プロバイダー側の状態を表します。 これは「*プロビジョニングされていません*」、「*プロビジョニングしています*」、「*プロビジョニング済み*」のいずれかになります。 ピアリングを構成するためには、ExpressRoute 回線がプロビジョニング状態になっている必要があります。
+#### <a name="expressroute-partner-model"></a>ExpressRoute パートナー モデル
+
+サービス プロバイダーに接続を要求します。 このプロセスはさまざまです。 接続の要求方法に関する詳細については、接続プロバイダーにお問い合わせください。
+
+* ExpressRoute パートナーを選択します
+* ピアリングの場所を選択します
+* 帯域幅を選択します
+* 課金モデルを選択します
+* Standard または Premium アドオンを選択します
+
+#### <a name="expressroute-direct-model"></a>ExpressRoute Direct モデル
+
+* ピアリングの場所全体で使用可能な ExpressRoute Direct 容量を表示します。
+* お使いの Azure サブスクリプションに ExpressRoute Direct リソースを作成して、ポートを予約します。
+* 承認状を要求して受け取り、ピアリングの場所のプロバイダーに物理的な交差接続を注文します。
+* 管理状態を有効にし、[Azure Monitor](expressroute-monitoring-metrics-alerts.md#expressroute-direct-metrics) を使用して、ライト レベルと物理リンクを表示します。
+
+### <a name="3-create-an-expressroute-circuit"></a>3.ExpressRoute 回線の作成
+
+#### <a name="expressroute-partner-model"></a>ExpressRoute パートナー モデル
+
+ExpressRoute パートナーが接続をプロビジョニングする準備ができていることを確認します。 ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 [ExpressRoute 回線の作成](expressroute-howto-circuit-portal-resource-manager.md)の手順を使用して、回線を作成します。
+
+#### <a name="expressroute-direct-model"></a>ExpressRoute Direct モデル
+
+物理リンクと管理状態が両方のリンクの間で有効になっていることを確認します。 ガイダンスについては、[ExpressRoute Direct の構成方法](how-to-expressroute-direct-portal.md)に関する記事を参照してください。 ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 [ExpressRoute 回線の作成](expressroute-howto-circuit-portal-resource-manager.md)の手順を使用して、回線を作成します。
+
+### <a name="4-service-provider-provisions-connectivity"></a>4.サービス プロバイダーが接続をプロビジョニングする
+
+このセクションは、ExpressRoute パートナー接続モデルにのみ関連します。
+
+* サービス キー (s キー) を接続プロバイダーに提供します。
+* 接続プロバイダーが必要とする追加情報 (VPN ID など) を提供します。
+* プロバイダーがルーティング構成を管理する場合は、必要な詳細を提供します。
+
+PowerShell、Azure portal、または CLI を使用して ExpressRoute 回線のプロビジョニング状態を確認することで、回線が正常にプロビジョニングされていることを確認できます。
+
+### <a name="5-configure-routing-domains"></a>5.ルーティング ドメインを構成する
+
+ルーティング ドメインを構成します。 接続プロバイダーがレイヤー 3 構成を管理する場合、接続プロバイダーが回線のルーティングを構成します。 接続プロバイダーがレイヤー 2 サービスのみを提供する場合、またはお客様が ExpressRoute Direct を使用している場合は、[ルーティングの要件](expressroute-routing.md)および[ルーティング構成](expressroute-howto-routing-classic.md)に関する記事に記載されているガイドラインに従い、自分でルーティングを構成する必要があります。
+
+#### <a name="for-azure-private-peering"></a>Azure プライベート ピアリングの場合
+
+Azure 仮想ネットワーク内にデプロイされている VM およびクラウド サービスに接続するには、プライベート ピアリングを有効にします。
+
+* パス 1 のピアリング サブネット (/30)
+* パス 2 のピアリング サブネット (/30)
+* ピアリングの VLAN ID
+* ピアリングの AS 番号
+* ExpressRoute の AS 番号 = 12076
+* MD5 ハッシュ (省略可能)
+
+#### <a name="for-microsoft-peering"></a>Microsoft ピアリングの場合
+
+Office 365 などの Microsoft オンライン サービスにアクセスするには、これを有効にします。 さらに、すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。 Microsoft への接続には、インターネットに使用しているものとは別のプロキシ/エッジを必ず使用する必要があります。 ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。
+
+* パス 1 のピアリング サブネット (/30) - パブリック IP である必要があります
+* パス 2 のピアリング サブネット (/30) - パブリック IP である必要があります
+* ピアリングの VLAN ID
+* ピアリングの AS 番号
+* アドバタイズされたプレフィックス - パブリック IP プレフィックスである必要があります
+* 顧客の AS 番号 (ピアリングの AS 番号と異なる場合は省略可能)
+* IP および AS 番号検証の RIR/IRR
+* ExpressRoute の AS 番号 = 12076
+* MD5 ハッシュ (省略可能)
+
+### <a name="6-start-using-the-expressroute-circuit"></a>6.ExpressRoute 回線の使用を開始する
+
+* Azure 仮想ネットワークを ExpressRoute 回線にリンクして、オンプレミスから Azure 仮想ネットワークへの接続を有効にすることができます。 ガイダンスについては、[回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)に関する記事を参照してください。 VNet は ExpressRoute 回線と同じ Azure サブスクリプションに配置するか、別のサブスクリプションに配置できます。
+* Microsoft ピアリングを使用して、Azure サービスと Microsoft クラウド サービスに接続します。
+
+##  <a name="expressroute-partner-circuit-provisioning-states"></a><a name="expressroute-circuit-provisioning-states"></a>ExpressRoute パートナー回線のプロビジョニング状態
+
+次のセクションでは、ExpressRoute パートナー接続モデルのさまざまな ExpressRoute 回線の状態について説明します。
+各 ExpressRoute パートナー回線には次の 2 つの状態があります。
+
+* **ServiceProviderProvisioningState** は接続プロバイダー側の状態を表します。 これは「*プロビジョニングされていません*」、「*プロビジョニングしています*」、「*プロビジョニング済み*」のいずれかになります。 ピアリングを構成するためには、ExpressRoute 回線がプロビジョニング済み状態になっている必要があります。 **この状態は、ExpressRoute パートナー回線にのみ関連しており、ExpressRoute Direct 回線のプロパティには表示されません**。
+
+* **Status** は Microsoft のプロビジョニングの状態を表します。 ExpressRoute 回線を作成したとき、このプロパティは Enabled (有効) に設定されます
 
 ### <a name="possible-states-of-an-expressroute-circuit"></a>ExpressRoute 回線の状態
-このセクションでは、ExpressRoute 回線の状態を一覧にまとめています。
+
+次のセクションでは、ExpressRoute パートナー接続モデルのもとで作成された ExpressRoute 回線の予想される状態について説明します。
 
 **作成時**
 
@@ -60,7 +125,7 @@ ServiceProviderProvisioningState : NotProvisioned
 Status                           : Enabled
 ```
 
-**接続プロバイダーが回線にプロビジョニングしているとき**
+**接続プロバイダーが回線をプロビジョニングしているとき**
 
 ExpressRoute 回線は、接続プロバイダーが回線のプロビジョニングを処理している間に次の状態を報告します。
 
@@ -69,7 +134,7 @@ ServiceProviderProvisioningState : Provisioning
 Status                           : Enabled
 ```
 
-**接続プロバイダーがプロビジョニングを完了したとき**
+**接続プロバイダーがプロビジョニング プロセスを完了したとき**
 
 ExpressRoute 回線では、接続プロバイダーによって回線が正常にプロビジョニングされると、次の状態が報告されます。
 
@@ -78,7 +143,7 @@ ServiceProviderProvisioningState : Provisioned
 Status                           : Enabled
 ```
 
-**接続プロバイダーが回線をプロビジョニング解除しているとき**
+**接続プロバイダーが回線のプロビジョニングを解除しているとき**
 
 ExpressRoute 回線をプロビジョニング解除する必要がある場合、サービス プロバイダーがプロビジョニング解除プロセスを完了したときに、回線は次の状態を報告します。
 
@@ -94,11 +159,12 @@ Status                           : Enabled
 > 
 
 ## <a name="routing-session-configuration-state"></a>ルーティング セッション構成の状態
+
 BGP プロビジョニング状態は、Microsoft エッジで BGP セッションが有効になっているかどうかを報告します。 プライベートまたは Microsoft ピアリングを使用するには、状態を有効にする必要があります。
 
 特に Microsoft ピアリングの場合、BGP セッションの状態を確認することが重要です。 BGP プロビジョニング状態に加え、「 *アドバタイズされたパブリック プレフィックス*」と呼ばれているもう 1 つの状態があります。 BGP セッションを開始し、ルーティングをエンド ツー エンドで動作させるには、「アドバタイズされたパブリック プレフィックス」状態を「*構成済み*」にする必要があります。 
 
-「アドバタイズされたパブリック プレフィックス」状態が「*検証必須*」に設定されている場合、BGP セッションは無効になっています。アドバタイズされたプレフィックスがルーティング レジストリの AS 番号に一致しなかったためです。 
+「アドバタイズされたパブリック プレフィックス」状態が「*検証必須*」に設定されている場合、BGP セッションは無効になっています。アドバタイズされたプレフィックスがルーティング レジストリの AS 番号に一致しなかったためです。
 
 > [!IMPORTANT]
 > 「アドバタイズされたパブリック プレフィックス」状態が「*手動検証*」の場合、[Microsoft サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)でサポート チケットを開き、関連自律システム番号と共にアドバタイズされた IP アドレスを所有している証拠を提出する必要があります。
@@ -106,9 +172,9 @@ BGP プロビジョニング状態は、Microsoft エッジで BGP セッショ�
 > 
 
 ## <a name="next-steps"></a>次のステップ
+
 * ExpressRoute 接続を構成します。
   
   * [ExpressRoute 回線の作成](expressroute-howto-circuit-arm.md)
   * [ルーティングの構成](expressroute-howto-routing-arm.md)
   * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)
-

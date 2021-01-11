@@ -4,12 +4,12 @@ description: この記事では、REST API を使用して Azure VM Backup の�
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 595291549b4d181967ea168d0dc71bc7e2237a67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db5e6cc460d320971a4005889dc2c9aa9925a18d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514205"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890333"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -23,7 +23,7 @@ ms.locfileid: "86514205"
 
 ### <a name="discover-unprotected-azure-vms"></a>保護されていない Azure VM を検出する
 
-最初に、コンテナーが Azure VM を識別できるようにする必要があります。 これは、[refresh 操作](/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは、現在のサブスクリプション内で保護されていない全ての VM の最新の一覧を取得し、それらが "キャッシュ" されるようにする非同期の *POST* 操作です。 VM が "キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
+最初に、コンテナーが Azure VM を識別できるようにする必要があります。 これは、[refresh 操作](/rest/api/backup/protectioncontainers/refresh)を使用してトリガーされます。 これは非同期の *POST* 操作であり、これにより、コンテナーが現在のサブスクリプション内で保護されていない全ての VM の最新の一覧を取得して、それらを "キャッシュ" することが確実に実行されます。 VM が "キャッシュ" されると、Recovery Services は VM にアクセスし、それを保護できるようになります。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{vaultresourceGroupname}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers?api-version=2016-12-01
@@ -35,7 +35,7 @@ POST URI には、パラメーターとして `{subscriptionId}`、`{vaultName}`
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Responses
+#### <a name="responses-to-refresh-operation"></a>更新操作に対する応答
 
 "refresh" 操作は[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
@@ -46,7 +46,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 |204 No Content     |         |  OK で、返されたコンテンツはありません      |
 |202 Accepted     |         |     承認済み    |
 
-##### <a name="example-responses"></a>応答の例
+##### <a name="example-responses-to-refresh-operation"></a>更新操作に対する応答の例
 
 *POST* 要求が送信されると、202 (Accepted) 応答が返されます。
 
@@ -92,7 +92,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="selecting-the-relevant-azure-vm"></a>関連する Azure VM の選択
 
- サブスクリプションの下で[保護可能なすべての項目を一覧表示](/rest/api/backup/backupprotectableitems/list)し、応答内で目的の VM を見つけることで、"キャッシュ処理" が行われることを確認できます。 [この操作の応答](#example-responses-1)には、Recovery Services が VM を識別する方法に関する情報も示されます。  このパターンに精通したら、この手順をスキップし、[保護の有効化](#enabling-protection-for-the-azure-vm)に直接進むことができます。
+ サブスクリプションの下で[保護可能なすべての項目を一覧表示](/rest/api/backup/backupprotectableitems/list)し、応答内で目的の VM を見つけることで、"キャッシュ処理" が行われることを確認できます。 [この操作の応答](#example-responses-to-get-operation)には、Recovery Services が VM を識別する方法に関する情報も示されます。  このパターンに精通したら、この手順をスキップし、[保護の有効化](#enabling-protection-for-the-azure-vm)に直接進むことができます。
 
 この操作は *GET* 操作です。
 
@@ -102,13 +102,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 *GET* URI には、すべての必須パラメーターが含まれます。 追加の要求本文は必要ありません。
 
-#### <a name="responses"></a><a name="responses-1"></a>応答
+#### <a name="responses-to-get-operation"></a>取得操作に対する応答
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
 |200 OK     | [WorkloadProtectableItemResourceList](/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       [OK] |
 
-#### <a name="example-responses"></a><a name="example-responses-1"></a>応答の例
+#### <a name="example-responses-to-get-operation"></a>取得操作に対する応答の例
 
 *GET* 要求を送信すると、200 (OK) 応答が返されます。
 
@@ -162,7 +162,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM の保護の有効化
 
-適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 下の例では "DefaultPolicy" が選択されています。
+適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 以下の例では "DefaultPolicy" が選択されています。
 
 保護を有効にすることは、"保護された項目" を作成する非同期の *PUT* 操作です。
 
@@ -200,9 +200,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 }
 ```
 
-`{sourceResourceId}` は、上述の、[保護可能な項目の一覧表示の応答](#example-responses-1)からの `{virtualMachineId}` です。
+`{sourceResourceId}` は、上述の、[保護可能な項目の一覧表示の応答](#example-responses-to-get-operation)からの `{virtualMachineId}` です。
 
-#### <a name="responses"></a>Responses
+#### <a name="responses-to-create-protected-item-operation"></a>保護された項目の作成操作に対する応答
 
 保護された項目の作成は、[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
@@ -213,7 +213,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 |200 OK     |    [ProtectedItemResource](/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  [OK]       |
 |202 Accepted     |         |     承認済み    |
 
-##### <a name="example-responses"></a>応答の例
+##### <a name="example-responses-to-create-protected-item-operation"></a>保護された項目の作成操作に対する応答の例
 
 保護された項目の作成または更新のための *PUT* 要求を送信したときの最初の応答は、場所のヘッダーまたは Azure-async-header を含む 202 (Accepted) です。
 
@@ -284,13 +284,13 @@ Azure VM のバックアップの構成が済むと、ポリシーのスケジ�
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/backup?api-version=2016-12-01
 ```
 
-`{containerName}` と `{protectedItemName}` は、[上](#responses-1)のように作成されます。 `{fabricName}` は "Azure" です。 この例では、これを次のように変えます。
+`{containerName}` と `{protectedItemName}` は、[上](#responses-to-get-operation)のように作成されます。 `{fabricName}` は "Azure" です。 この例では、これを次のように変えます。
 
 ```http
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM/backup?api-version=2016-12-01
 ```
 
-### <a name="create-the-request-body"></a>要求本文を作成する
+### <a name="create-the-request-body-for-on-demand-backup"></a>オンデマンド バックアップの要求本文を作成する
 
 オンデマンド バックアップをトリガーする場合、要求本文のコンポーネントは次のようになります。
 
@@ -300,7 +300,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 要求本文の定義の完全な一覧およびその他の詳細については、[保護された項目のバックアップをトリガーすることに関する REST API ドキュメント](/rest/api/backup/backups/trigger#request-body)を参照してください。
 
-#### <a name="example-request-body"></a>要求本文の例
+#### <a name="example-request-body-for-on-demand-backup"></a>オンデマンド バックアップの要求本文の例
 
 次の要求本文では、保護された項目のバックアップをトリガーするのに必要なプロパティを定義しています。 保持期間が指定されていない場合は、バックアップ ジョブをトリガーしたときから 30 日間保持されます。
 
@@ -313,7 +313,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 }
 ```
 
-### <a name="responses"></a>Responses
+### <a name="responses-for-on-demand-backup"></a>オンデマンドバックアップの応答
 
 オンデマンド バックアップのトリガーは[非同期操作](../azure-resource-manager/management/async-operations.md)として扱われます。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
@@ -323,7 +323,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 |---------|---------|---------|
 |202 Accepted     |         |     承認済み    |
 
-#### <a name="example-responses"></a><a name="example-responses-3"></a>応答の例
+#### <a name="example-responses-for-on-demand-backup"></a>オンデマンドバックアップの応答の例
 
 オンデマンド バックアップの *POST* 要求を送信したときの最初の応答は、場所のヘッダーまたは Azure-async-header を含む 202 (Accepted) です。
 
@@ -399,7 +399,7 @@ VM の保護に使用されているポリシーを変更するために、[保�
 }
 ```
 
-応答は、[保護を有効にする場合](#responses-2)に説明したのと同じ書式に従ったものになります
+応答は、[保護を有効にする場合](#responses-to-create-protected-item-operation)に説明したのと同じ書式に従ったものになります
 
 ### <a name="stop-protection-but-retain-existing-data"></a>保護を停止するが既存のデータを保持する
 
@@ -415,7 +415,7 @@ VM の保護に使用されているポリシーを変更するために、[保�
 }
 ```
 
-応答は、[オンデマンド バックアップをトリガーする場合](#example-responses-3)に説明したのと同じ書式に従ったものになります。 結果のジョブは、[REST API を使用してジョブを監視することに関するドキュメント](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明したように追跡する必要があります。
+応答は、[オンデマンド バックアップをトリガーする場合](#example-responses-for-on-demand-backup)に説明したのと同じ書式に従ったものになります。 結果のジョブは、[REST API を使用してジョブを監視することに関するドキュメント](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明したように追跡する必要があります。
 
 ### <a name="stop-protection-and-delete-data"></a>保護を停止してデータを削除する
 
@@ -427,13 +427,13 @@ VM の保護に使用されているポリシーを変更するために、[保�
 DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}?api-version=2019-05-13
 ```
 
-`{containerName}` と `{protectedItemName}` は、[上](#responses-1)のように作成されます。 `{fabricName}` は "Azure" です。 この例では、これを次のように変えます。
+`{containerName}` と `{protectedItemName}` は、[上](#responses-to-get-operation)のように作成されます。 `{fabricName}` は "Azure" です。 この例では、これを次のように変えます。
 
 ```http
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-#### <a name="responses"></a><a name="responses-2"></a>応答
+#### <a name="responses-for-delete-protection"></a>保護の削除の応答
 
 保護の *DELETE* は[非同期操作](../azure-resource-manager/management/async-operations.md)です。 つまり、この操作では、個別に追跡する必要がある別の操作が作成されます。
 
@@ -445,9 +445,9 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 |202 Accepted     |         |     承認済み    |
 
 > [!IMPORTANT]
-> 誤った削除のシナリオから保護するために、Recovery Services コンテナーに対して[使用できる論理的な削除機能](use-restapi-update-vault-properties.md#soft-delete-state)があります。 コンテナーの論理的な削除の状態が [有効] に設定されている場合、削除操作では、データは直ちに削除されません。 14 日間保持された後に、完全に消去されます。 この 14 日間は、お客様はストレージに対して課金されません。 削除操作を元に戻すには、[削除の取り消しに関するセクション](#undo-the-stop-protection-and-delete-data)を参照してください。
+> 誤った削除のシナリオから保護するために、Recovery Services コンテナーに対して[使用できる論理的な削除機能](use-restapi-update-vault-properties.md#soft-delete-state)があります。 コンテナーの論理的な削除の状態が [有効] に設定されている場合、削除操作では、データは直ちに削除されません。 14 日間保持された後に、完全に消去されます。 この 14 日間は、ストレージに対して課金されません。 削除操作を元に戻すには、[削除の取り消しに関するセクション](#undo-the-deletion)を参照してください。
 
-### <a name="undo-the-stop-protection-and-delete-data"></a>保護の停止とデータの削除を取り消す
+### <a name="undo-the-deletion"></a>削除を元に戻す
 
 誤削除の取り消しは、バックアップ項目の作成と似ています。 削除を取り消すと、その項目は保持されますが、以降のバックアップはトリガーされません。
 
@@ -464,7 +464,7 @@ DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-00000
 }
 ```
 
-応答は、[オンデマンド バックアップをトリガーする場合](#example-responses-3)に説明したのと同じ書式に従ったものになります。 結果のジョブは、[REST API を使用してジョブを監視することに関するドキュメント](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明したように追跡する必要があります。
+応答は、[オンデマンド バックアップをトリガーする場合](#example-responses-for-on-demand-backup)に説明したのと同じ書式に従ったものになります。 結果のジョブは、[REST API を使用してジョブを監視することに関するドキュメント](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)で説明したように追跡する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

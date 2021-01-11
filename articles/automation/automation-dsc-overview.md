@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 06/22/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6a1c6bb39e743a96ad110a60e41cc59306e7a2ae
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186386"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87079742"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -73,7 +73,7 @@ Windows を実行しているノードの場合は、次のバージョンがサ
 >[!NOTE]
 >[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) スタンドアロン製品 SKU には、DSC の実装は含まれていません。 したがって、PowerShell DSC または Azure Automation State Configuration で管理することはできません。
 
-Linux が実行されているノードの場合、DSC Linux 拡張機能では、「[サポートされている Linux ディストリビューション](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)」の一覧で示されている Linux ディストリビューションがすべてサポートされます。
+Linux が実行されているノードの場合、DSC Linux 拡張機能では、[PowerShell DSC に関するドキュメント](/powershell/scripting/dsc/getting-started/lnxgettingstarted)に示されている Linux ディストリビューションがすべてサポートされます。
 
 ### <a name="dsc-requirements"></a>DSC 要件
 

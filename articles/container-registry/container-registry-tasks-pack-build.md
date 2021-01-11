@@ -4,12 +4,12 @@ description: az acr pack build コマンドを使用して、アプリからコ�
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 1892f4c20eb75e5e95140c829c49a708a81c2184
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: f99175165e01a9287a66c59957fc7a239b00393a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408018"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077222"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpacks を使用して、アプリからイメージをビルドしてプッシュする
 
@@ -96,7 +96,7 @@ docker run --rm -p 8080:8080 myregistry.azurecr.io/java-app:runid
 
 ## <a name="next-steps"></a>次のステップ
 
-`az acr pack build` を使用してコンテナー イメージをビルドし、プッシュした後は、任意のイメージを任意のターゲットにデプロイできます。 Azure のデプロイ オプションには、[App Service](../app-service/containers/tutorial-custom-docker-image.md) や [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md) などでの実行が含まれます。
+`az acr pack build` を使用してコンテナー イメージをビルドし、プッシュした後は、任意のイメージを任意のターゲットにデプロイできます。 Azure のデプロイ オプションには、[App Service](../app-service/tutorial-custom-container.md) や [Azure Kubernetes Service](../aks/tutorial-kubernetes-deploy-cluster.md) などでの実行が含まれます。
 
 ACR タスクの機能の詳細については、「[ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する](container-registry-tasks-overview.md)」を参照してください。
 

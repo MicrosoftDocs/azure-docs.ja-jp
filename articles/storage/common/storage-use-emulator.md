@@ -1,26 +1,29 @@
 ---
-title: Azure ストレージ エミュレーターを使用した開発とテスト | Microsoft Docs
-description: Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。
+title: 開発とテストに Azure ストレージ エミュレーターを使用する
+description: Azure ストレージ エミュレーターを使用すると、Azure Storage アプリケーションを開発してテストするのための無料のローカル開発環境が提供されます。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/21/2019
+ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: eb13dbb7e4cfbbb1b2ea42ea1753e7615df03a7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 959a58a38861075c6509fe57136d8991eeb98ce6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512172"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588196"
 ---
-# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
+# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>開発とテストに Azure ストレージ エミュレーターを使用する
 
-Microsoft Azure ストレージ エミュレーターは、ローカル開発のために Azure の Blob service、Queue service、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
+Microsoft Azure ストレージ エミュレーターは、ローカル開発のために Azure の Blob service、Queue サービス、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
 
-## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターの取得
+> [!IMPORTANT]
+> Azure Storage エミュレーターは現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage エミュレーターよりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
 
-ストレージ エミュレーターは、 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/)に付属しています。 また、[スタンドアロンのインストーラー](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (直接ダウンロード) を使用して、ストレージ エミュレーターをインストールすることも可能です。 ストレージ エミュレーターをインストールするには、お使いのコンピューターに対する管理者特権が必要です。
+## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターを入手する
+
+ストレージ エミュレーターは、[Microsoft Azure SDK](https://azure.microsoft.com/downloads/) に付属しています。 また、[スタンドアロンのインストーラー](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (直接ダウンロード) を使用して、ストレージ エミュレーターをインストールすることも可能です。 ストレージ エミュレーターをインストールするには、お使いのコンピューターに対する管理者特権が必要です。
 
 ストレージ エミュレーターは、現在、Windows でのみ実行されます。 Linux 用のストレージ エミュレーターが必要な場合のオプションの 1 つは、コミュニティで管理されているオープンソースのストレージ エミュレーター [Azurite](https://github.com/azure/azurite) です。
 
@@ -33,7 +36,7 @@ Microsoft Azure ストレージ エミュレーターは、ローカル開発の
 
 ストレージ エミュレーターでは、ローカルの Microsoft SQL Server 2012 Express LocalDB インスタンスを使用して、Azure ストレージ サービスがエミュレートされます。 LocalDB インスタンスではなく、SQL Server のローカル インスタンスにアクセスするようにストレージ エミュレーターを構成することもできます。 詳細については、この記事で後述する「[ストレージ エミュレーターの起動と初期化](#start-and-initialize-the-storage-emulator)」セクションを参照してください。
 
-ストレージ エミュレーターは、Windows 認証を使用して SQL Server または LocalDB に接続します。
+ストレージ エミュレーターによる SQL Server または LocalDB への接続には、Windows 認証が使用されます。
 
 ストレージ エミュレーターと Azure のストレージ サービスには、いくつかの機能上の違いがあります。 これらの違いの詳細については、この記事で後述する「[ストレージ エミュレーターと Azure ストレージとの違い](#differences-between-the-storage-emulator-and-azure-storage)」を参照してください。
 
@@ -59,7 +62,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 ストレージ エミュレーターは既定では `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator` にインストールされます。
 
 > [!TIP]
-> [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)を使用して、ローカル ストレージ エミュレーター リソースを操作できます。 ストレージ エミュレーターをインストールして起動した後、ストレージ エクスプローラーのリソース ツリーの [Local & Attached]\(ローカルで接続済み\) の下で、"(エミュレーター - 既定のポート (キー))" を探します。
+> [Microsoft Azure Storage Explorer](https://storageexplorer.com) を使用して、ローカル ストレージ エミュレーター リソースを操作できます。 ストレージ エミュレーターをインストールして起動した後、Storage Explorer のリソース ツリーの [ローカルで接続済み] の下で、[(エミュレーター - 既定のポート (キー))] を探します。
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>別の SQL データベースを使用するための、ストレージ エミュレーターの初期化
@@ -75,7 +78,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 
    `AzureStorageEmulator.exe init /server .`
 
-   または、データベースを既定の LocalDB インスタンスに再初期化する次のコマンドを使うこともできます。
+   または、データベースを既定の LocalDB インスタンスに初期化する次のコマンドを使うこともできます。
 
    `AzureStorageEmulator.exe init /forceCreate`
 
@@ -98,7 +101,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Xamarin ライブラリなど、一部の Azure ストレージ クライアント ライブラリでは、共有アクセス署名 (SAS) トークンでの認証だけがサポートされています。 SAS トークンは、[ストレージ エクスプローラー](https://storageexplorer.com/)や、共有キー認証がサポートされている別のアプリケーションを使用して作成できます。
+Xamarin ライブラリなど、一部の Azure ストレージ クライアント ライブラリでは、共有アクセス署名 (SAS) トークンでの認証だけがサポートされています。 SAS トークンは、[Storage Explorer](https://storageexplorer.com/) や、共有キー認証がサポートされている別のアプリケーションを使用して作成できます。
 
 また、Azure PowerShell を使用して SAS トークンを生成することもできます。 次の例では、BLOB コンテナーに対するフル アクセス許可を持つ SAS トークンが生成されます。
 
@@ -153,7 +156,7 @@ Azure ストレージ アカウントのリソースをアドレス指定する�
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>RA-GRS を使用した、アカウントのセカンダリ拠点のアドレス指定
 
-Version 3.1 以降では、ストレージ エミュレーターで読み取りアクセスの geo 冗長レプリケーション (RA-GRS) がサポートされます。 アカウント名に -secondary を付加すると、2 次拠点にアクセスできます。 たとえば、ストレージ エミュレーターで読み取り専用の 2 次拠点を使用して BLOB にアクセスするには、次のアドレスを使用します。
+バージョン 3.1 以降では、ストレージ エミュレーターで読み取りアクセスの geo 冗長レプリケーション (RA-GRS) がサポートされます。 アカウント名に -secondary を付加すると、2 次拠点にアクセスできます。 たとえば、ストレージ エミュレーターで読み取り専用のセカンダリを使用して BLOB にアクセスするには、次のアドレスを使用します。
 
 `http://127.0.0.1:10000/myaccount-secondary/mycontainer/myblob.txt`
 
@@ -179,11 +182,11 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 オプションの一覧を表示するには、コマンド プロンプトで「 `/help` 」と入力します。
 
-| オプション | 説明 | command | 引数 |
+| オプション | 説明 | コマンド | 引数 |
 | --- | --- | --- | --- |
 | **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
-| **状態** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
+| **Status** |ストレージ エミュレーターの状態を出力します。 |`AzureStorageEmulator.exe status` | |
 | **Clear** |コマンド ラインで指定されたすべてのサービス内のデータを消去します。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*:BLOB データを消去します。 <br/>*queue*:キュー データを消去します。 <br/>*table*:テーブル データを消去します。 <br/>*all*:すべてのサービスのすべてのデータを消去します。 |
 | **Init** |エミュレーターを設定するために、1 回限りの初期化を行います。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*:SQL インスタンスをホストしているサーバーを指定します。 <br/>*-sqlinstance instanceName*:既定のサーバー インスタンスで使用される SQL インスタンスの名前を指定します。 <br/>*-forcecreate*:SQL データベースが既に存在していても、強制的に作成します。 <br/>*-skipcreate*:SQL データベースの作成をスキップします。 これは -forcecreate に優先します。<br/>*-reserveports*:サービスに関連付けられている HTTP ポートの予約を試行します。<br/>*-unreserveports*:サービスに関連付けられている HTTP ポートの予約の削除を試行します。 これは -reserveports に優先します。<br/>*-inprocess*:新しいプロセスを生成せずに、現在のプロセスで初期化を行います。 ポートの予約を変更する場合は、管理者特権のアクセス許可で現在のプロセスを起動する必要があります。 |
 
@@ -193,8 +196,8 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 * ストレージ エミュレーターでは、単一の固定アカウントと既知の認証キーのみがサポートされます。
 * ストレージ エミュレーターはスケーラブルなストレージ サービスではなく、多数の同時クライアントはサポートされません。
-* 「 [ストレージ エミュレーターでのリソースのアドレス指定](#addressing-resources-in-the-storage-emulator)」で説明したように、ストレージ エミュレーターでは、リソースは Azure ストレージ アカウントとは異なる方法でアドレス指定されます。 その違いは、ドメイン名解決がクラウドでは使用できるが、ローカル コンピューターでは使用できないことが原因です。
-* Version 3.1 以降では、ストレージ エミュレーター アカウントで読み取りアクセスの geo 冗長レプリケーション (RA-GRS) がサポートされます。 エミュレーターでは、すべてのアカウントで RA-GRS が有効になっていて、プライマリ レプリカとセカンダリ レプリカの間に時間差が生じることはありません。 Get Blob Service Stats、Get Queue Service Stats、および Get Table Service Stats 操作は、アカウントのセカンダリ拠点でサポートされており、常に `LastSyncTime` 応答要素の値を、基になる SQL データベースに準じた現在時刻として返します。
+* 「[ストレージ エミュレーターでのリソースのアドレス指定](#addressing-resources-in-the-storage-emulator)」で説明したように、ストレージ エミュレーターでは、リソースは Azure ストレージ アカウントとは異なる方法でアドレス指定されます。 その違いは、ドメイン名解決がクラウドでは使用できるが、ローカル コンピューターでは使用できないことが原因です。
+* バージョン 3.1 以降では、ストレージ エミュレーター アカウントで読み取りアクセスの geo 冗長レプリケーション (RA-GRS) がサポートされます。 エミュレーターでは、すべてのアカウントで RA-GRS が有効になっていて、プライマリ レプリカとセカンダリ レプリカの間に時間差が生じることはありません。 Get Blob Service Stats、Get Queue Service Stats、および Get Table Service Stats 操作は、アカウントのセカンダリ拠点でサポートされており、常に `LastSyncTime` 応答要素の値を、基になる SQL データベースに準じた現在時刻として返します。
 * File サービス エンドポイントと SMB プロトコル サービス エンドポイントは、ストレージ エミュレーターでは現在サポートされていません。
 * エミュレーターでサポートされていないバージョンのストレージ サービスを使用した場合、エミュレーターから VersionNotSupportedByEmulator エラー (HTTP 状態コード 400 - Bad Request) が返されます。
 
@@ -216,7 +219,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 * ストレージ エミュレーターの Table service での日付プロパティでは、SQL Server 2005 でサポートされている範囲だけがサポートされます (1753 年 1 月 1 日より後である必要があります)。 1753 年 1 月 1 日より前のすべての日付は、この値に変更されます。 日付の精度は、SQL Server 2005 の精度までに制限されます。つまり、日付の精度は 1/300 秒です。
 * ストレージ エミュレーターでは、それぞれ 512 バイト未満のパーティション キーと行キーのプロパティ値がサポートされます。 アカウント名、テーブル名、およびキー プロパティ名の合計サイズが 900 バイトを超えることはできません。
 * ストレージ エミュレーターのテーブル内の行の合計サイズは、1 MB 未満に制限されます。
-* ストレージ エミュレーターで、データ型 `Edm.Guid` または `Edm.Binary` のプロパティは、クエリ フィルター文字列で `Equal (eq)` および `NotEqual (ne)` 比較演算子だけをサポートします。
+* ストレージ エミュレーターのデータ型 `Edm.Guid` または `Edm.Binary` のプロパティでのクエリ フィルター文字列では、`Equal (eq)` および `NotEqual (ne)` の比較演算子だけがサポートされます。
 
 ### <a name="differences-for-queue-storage"></a>キュー ストレージに対する相違点
 
@@ -268,8 +271,8 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ### <a name="version-50"></a>バージョン 5.0
 
-* ストレージ エミュレーターのインストーラーが既存の MSSQL や .NET Framework のインストールをチェックしなくなりました。
-* ストレージ エミュレーターのインストーラーがインストールの一部としてデータベースを作成しなくなりました。 データベースはスタートアップの一部として必要な場合は作成されます。
+* ストレージ エミュレーターのインストーラーで、既存の MSSQL や .NET Framework のインストールがチェックされなくなりました。
+* ストレージ エミュレーターのインストーラーで、インストールの一部としてデータベースが作成されなくなりました。 データベースはスタートアップの一部として必要な場合は作成されます。
 * データベースの作成に管理者特権が不要になりました。
 * スタートアップでポートの予約が不要になりました。
 * `init` に `-reserveports` (管理者特権が必要)、`-unreserveports` (管理者特権が必要)、`-skipcreate` のオプションを追加しました。
@@ -307,7 +310,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ### <a name="version-40"></a>Version 4.0
 
-* ストレージ エミュレーターの実行可能ファイルの名前が *AzureStorageEmulator.exe*に変更されました。
+* ストレージ エミュレーターの実行可能ファイルの名前が *AzureStorageEmulator.exe* に変更されました。
 
 ### <a name="version-32"></a>Version 3.2
 
@@ -327,4 +330,8 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 * コミュニティで管理されているオープンソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/azure/azurite) を評価します。 
 * 「[.NET を使用した Azure Storage サンプル](../storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。
-* [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。
+* [Microsoft Azure Storage Explorer](https://storageexplorer.com) を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。
+
+## <a name="see-also"></a>参照
+
+* [Azurite、Azure SDK、Azure Storage Explorer によるローカル Azure Storage の開発](https://blog.jongallant.com/2020/04/local-azure-storage-development-with-azurite-azuresdks-storage-explorer/)

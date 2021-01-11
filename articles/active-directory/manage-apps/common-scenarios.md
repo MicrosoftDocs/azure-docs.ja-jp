@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b81e792d3b3bf491b281e09c00f48a7ad56fa47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ce3819ff1f9b0c61f7738f90ff17c2798fe888b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763637"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642114"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD を使用したアプリケーション管理の一元化
 
@@ -43,7 +43,7 @@ ms.locfileid: "84763637"
 |特徴量  | 説明 | 推奨 |
 |---------|---------|---------|
 |SSO|信頼の業界標準の標準ベースのフェデレーション SSO。|お使いのアプリケーションでサポートしている場合は、常に [SAML / OIDC](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-choose-multi-tenant-federation) を使用して SSO を有効にします。|
-|アクセス パネル|すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、アプリやグループへのアクセスを要求したり、他のユーザーに代わってリソースへのアクセスを管理したりするなどのセルフサービス機能を使用して生産性を向上できるようにします。| SSO 用にお使いのアプリに Azure AD を統合したら、ご自分の組織に[アクセス パネル](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan)を展開します。|
+|マイ アプリ|すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、アプリやグループへのアクセスを要求したり、他のユーザーに代わってリソースへのアクセスを管理したりするなどのセルフサービス機能を使用して生産性を向上できるようにします。| SSO 用にアプリを Azure AD と統合したら、組織に[マイ アプリ](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-deployment-plan)を展開します。|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>シナリオ 2: プロビジョニングとプロビジョニング解除の自動化 
 

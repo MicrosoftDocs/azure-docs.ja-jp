@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 07/14/2020
-ms.openlocfilehash: d49f9df9fdc7dd8d2fb53b9ad6eb6eae64965fb7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 09/02/2020
+ms.openlocfilehash: fe8024c60e204a4ec72002c878f7753ae35aa00d
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87271724"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89393821"
 ---
 # <a name="pricing-for-virtual-machine-offers"></a>仮想マシン プランの価格
 
@@ -98,7 +98,7 @@ ms.locfileid: "87271724"
 
 ## <a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日に追加された新しいコア サイズ
 
-2019 年 7 月 2 日に、(コア数に基づく) 新しい Azure 仮想マシン サイズに対する新しい料金の追加が VM の発行元に通知されました。  新しい料金は、コア サイズが 10、44、48、60、120、208、416 に対するものです。  既存の VM の場合、これらのコア サイズの新しい価格は、現在の価格に基づいて自動的に計算されます。  発行元は、2019 年 8 月 1 日までに追加料金を確認し、必要な変更を行う必要があります。  この日を過ぎて、発行元がまだ再パブリッシュを行っていない場合、これらの新しいコア サイズに対して自動的に計算された価格が有効になります。
+2019 年 7 月 2 日に、(コア数に基づく) 新しい Azure 仮想マシン サイズに対する新しい料金の追加が VM の発行元に通知されました。  新しい料金は、コア サイズが 10、44、48、60、120、208、416 に対するものです。  既存の VM の場合、これらのコア サイズの新しい価格は、現在の価格に基づいて自動的に計算されます。 発行元は、2019 年 8 月 1 日までに追加料金を確認し、必要な変更を行う必要があります。  この日を過ぎて、発行元がまだ再パブリッシュを行っていない場合、これらの新しいコア サイズに対して自動的に計算された価格が有効になります。
 
 ## <a name="regions"></a>リージョン
 
@@ -121,7 +121,7 @@ ms.locfileid: "87271724"
 | CR         | コスタリカ           | CRC               |
 | HR         | クロアチア              | HRK               |
 | CY         | キプロス               | EUR               |
-| CZ         | チェコ共和国       | CZK               |
+| CZ         | チェコ       | CZK               |
 | DK         | デンマーク              | DKK               |
 | DO         | ドミニカ共和国   | USD               |
 | EC         | エクアドル              | USD               |
@@ -151,7 +151,6 @@ ms.locfileid: "87271724"
 | LI         | リヒテンシュタイン        | CHF               |
 | LT         | リトアニア            | EUR               |
 | LU         | ルクセンブルク           | EUR               |
-| MK         | 北マケドニア      | MKD               |
 | MY         | マレーシア             | MYR               |
 | MT         | マルタ                | EUR               |
 | MX         | メキシコ               | MXN               |
@@ -160,6 +159,7 @@ ms.locfileid: "87271724"
 | NL         | オランダ          | EUR               |
 | NZ         | ニュージーランド          | NZD               |
 | NG         | ナイジェリア              | NGN               |
+| MK         | 北マケドニア      | MKD               |
 | NO         | ノルウェー               | NOK               |
 | OM         | オマーン                 | OMR               |
 | PK         | パキスタン             | PKR               |

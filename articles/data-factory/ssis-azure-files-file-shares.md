@@ -43,7 +43,7 @@ ms.locfileid: "82628914"
 
 ローカル ファイル システムを使うパッケージを Azure の SSIS にリフト アンド シフトするときに、**Azure Files** を使うには、次のようにします。
 
-1. ローカル ファイル システムから Azure Files にファイルを転送します。 詳しくは、「[Azure ファイル](https://azure.microsoft.com/services/storage/files/)」をご覧ください。
+1. ローカル ファイル システムから Azure Files にファイルを転送します。 詳しくは、「[Azure Files](https://azure.microsoft.com/services/storage/files/)」をご覧ください。
 
 2. Windows 認証を使うアクセス資格情報を設定することにより、Azure Files に Azure SSIS IR を接続します。 詳細については、「[Windows 認証でデータとファイル共有に接続する](ssis-azure-connect-with-windows-auth.md)」を参照してください。
 

@@ -1,5 +1,5 @@
 ---
-title: Oracle WebLogic Server Azure アプリケーション | Microsoft Docs
+title: Azure の Oracle WebLogic Server とは
 description: Microsoft Azure で Oracle WebLogic Server を実行する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,40 +13,42 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2020
 ms.author: edburns
-ms.openlocfilehash: 9ba4e3a66ae8ef71b39aa26fd54048381237c2fa
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fe247e75040f658beb94a66176f802993268a7d8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664050"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851862"
 ---
-# <a name="oracle-weblogic-server-azure-applications"></a>Oracle WebLogic Server Azure アプリケーション
+# <a name="what-is-oracle-weblogic-server-on-azure"></a>Azure の Oracle WebLogic Server とは
 
-## <a name="oracle-weblogic-server-is-a-scalable-enterprise-ready-java-ee-application-server"></a>Oracle WebLogic Server は、スケーラブルなエンタープライズ対応の Java EE アプリケーション サーバーです。
+このページでは、Azure Virtual Machines で WebLogic Server (WLS) を実行するためのソリューションについて説明します。  これらのソリューションは、Oracle と Microsoft が共同で開発しています。
 
-Oracle WebLogic Server は、多層分散型エンタープライズ アプリケーションを開発してデプロイするための、世界初のクラウド ネイティブのエンタープライズ Java プラットフォーム アプリケーション サーバーです。 Azure WebLogic Server オファーは、クラウド コンピューティングを最小限の労力で導入して最大限の効果を得られるように、Java EE アプリケーションから Azure Cloud へのリフトアンドシフトを含め、WebLogic 移行の際の選択肢を増やし、柔軟性を高めます。 これらのオファーは、仮想ネットワーク、ストレージ、Linux リソースのプロビジョニング、WebLogic Server のインストール、ネットワーク セキュリティ グループを使用したセキュリティの設定、Azure App Gateway による負荷分散、Azure Active Directory による認証、データベース接続の簡易化を自動的に行うため、ビジネス アプリケーションを迅速に開始できます。
+Oracle WebLogic Server は、多層分散型エンタープライズ アプリケーションを開発してデプロイするための、世界初のクラウド ネイティブのエンタープライズ Java プラットフォーム アプリケーション サーバーです。 Azure WebLogic Server のオファーにより、クラウド コンピューティングを導入することができます。  Java EE アプリケーションの Azure Cloud へのリフト アンド シフトなど、WebLogic 移行の選択肢が増え、柔軟性が向上します。   Azure 上の WLS は、わずかな労力で大きな影響をもたらすことができます。 このオファーにより、基幹業務 (LOB) アプリケーションを迅速に開始できます。  各オファーでは、仮想ネットワーク、ストレージ、および Linux のリソースが自動的にプロビジョニングされます。  手間を一切かけることなく、WebLogic Server がインストールされます。  Azure 上の WLS では、ネットワーク セキュリティ グループを使用してセキュリティを設定し、Azure App Gateway によって負荷分散を行い、Azure Active Directory で認証を行い、既存のデータベースに自動的に接続します。
 
-さまざまなシナリオに対応できるように 4 つのオファーが用意されています (管理サーバーがある単一ノード、管理サーバーがない単一ノード、クラスター、動的クラスター)。  これらのオファーは無料で提供されており、自由にお試しいただけます。
+:::image type="content" source="media/oracle-weblogic/wls-on-azure.gif" alt-text="Azure portal を使用して、WebLogic Server を Azure にデプロイできる":::
 
-_これらのオファーはライセンス持ち込み型です_。 Oracle ですでに適切なライセンスを調達していること、Microsoft Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
+さまざまなシナリオに対応できるよう、管理サーバーがある単一ノード、管理サーバーがない単一ノード、クラスター、動的クラスターの 4 つのオファーが用意されています。  このオファーをぜひお試しください。これらは、無料でご利用いただけます。
 
-_オファーを開発しているエンジニアリング チームと密接に連携しながら移行シナリオに取り組みたい場合は、_ [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) で [[連絡する]](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) ボタンをクリックしてください。 プログラム マネージャー、アーキテクト、エンジニアからすぐに連絡があり、コラボレーションが開始されます。
+_これらのオファーはライセンス持ち込み型です_。 ここでは、Oracle ですでに適切なライセンスを取得していること、および Microsoft Azure でオファーを実行するための適切なライセンスをお持ちであることを前提としています。
 
-### <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server Single Node
+_オファーを開発しているエンジニアリング チームと密接に連携しながら移行シナリオに取り組みたい場合は、_ [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) の [[CONTACT ME]\(お問い合わせ\)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oracle.oraclelinux-wls-cluster?tab=Overview) ボタンを選択してください。 プログラム マネージャー、アーキテクト、エンジニアからすぐに連絡があり、コラボレーションが開始されます。
 
-このオファーでは、単一の仮想マシンがプロビジョニングされ、そこに Oracle WebLogic Server がインストールされます。 ドメインの作成や管理サーバーの起動は行われません。 これは、高度にカスタマイズしたドメイン構成を使用するシナリオで役立ちます。
+## <a name="oracle-weblogic-server-single-node"></a>Oracle WebLogic Server Single Node
 
-### <a name="oracle-weblogic-server-with-admin-server"></a>Oracle WebLogic Server with Admin Server
+このオファーでは、単一の仮想マシンがプロビジョニングされ、そこに WLS がインストールされます。 ドメインの作成や管理サーバーの起動は行われません。 単一ノードは、高度にカスタマイズしたドメイン構成を使用するシナリオで役立ちます。
 
-このオファーでは、単一の仮想マシンがプロビジョニングされ、そこに Oracle WebLogic Server がインストールされます。 さらに、ドメインが作成され、管理サーバーが起動されて、ドメインの管理が可能になります。
+## <a name="oracle-weblogic-server-with-admin-server"></a>Oracle WebLogic Server with Admin Server
 
-### <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server Cluster
+このオファーでは、単一の仮想マシンがプロビジョニングされ、そこに WLS がインストールされます。 さらに、ドメインが作成され、管理サーバーが起動されて、ドメインの管理が可能になります。
 
-このオファーでは、WebLogic Server 仮想マシンの高可用性クラスターが作成されます。 管理サーバーとすべてのマネージド サーバーが既定で起動されて、ドメインの管理が可能になります。
+## <a name="oracle-weblogic-server-cluster"></a>Oracle WebLogic Server Cluster
 
-### <a name="oracle-weblogic-server-dynamic-cluster"></a>Oracle WebLogic Server Dynamic Cluster
+このオファーでは、WLS 仮想マシンの高可用性クラスターが作成されます。 管理サーバーとすべてのマネージド サーバーが既定で起動されて、ドメインの管理が可能になります。
 
-このオファーでは、可用性が高くスケーラブルな、WebLogic Server 仮想マシンの動的クラスターが作成されます。 管理サーバーとすべてのマネージド サーバーが既定で起動されて、ドメインの管理が可能になります。
+## <a name="oracle-weblogic-server-dynamic-cluster"></a>Oracle WebLogic Server Dynamic Cluster
+
+このオファーでは、可用性が高くてスケーラブルな、WLS 仮想マシンの動的クラスターが作成されます。 管理サーバーとすべてのマネージド サーバーが既定で起動されて、ドメインの管理が可能になります。
 
 ## <a name="next-steps"></a>次のステップ
 

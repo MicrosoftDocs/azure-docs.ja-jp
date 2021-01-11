@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34cc8154660db8afcd5859d45ccfd622bc7ca88f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86039825"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88948863"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する
 
@@ -25,7 +25,7 @@ ms.locfileid: "86039825"
 - ToU を構成する簡単な方法
 - 条件付きアクセス ポリシーを介して使用条件に同意を要求するオプション  
 
-このクイック スタートでは、環境内で選択したクラウド アプリに対して ToU への同意を必要とする [Azure AD の条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)を構成する方法について説明します。
+このクイック スタートでは、環境内で選択したクラウド アプリに対して ToU への同意を必要とする [Azure AD の条件付きアクセス ポリシー](./overview.md)を構成する方法について説明します。
 
 ![ポリシーの作成](./media/require-tou/5555.png)
 
@@ -209,4 +209,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [特定のアプリで MFA を必須にする](app-based-mfa.md)
+> [特定のアプリで MFA を必須にする](../authentication/tutorial-enable-azure-mfa.md)

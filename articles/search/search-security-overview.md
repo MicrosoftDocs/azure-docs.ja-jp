@@ -7,19 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: cc02890cb5293e48a8065b63f4f9c799c5dda7f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/01/2020
+ms.custom: references_regions
+ms.openlocfilehash: c9f0f496bfdb31e0c7cb45a07c87ea238d031e34
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081038"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88928770"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Cognitive Search のセキュリティ - 概要
 
-この記事では、コンテンツと運用を保護できる Azure Cognitive Search の主要なセキュリティ機能について説明します。 
+この記事では、コンテンツと運用を保護できる Azure Cognitive Search の主要なセキュリティ機能について説明します。
 
-+ ストレージ層では、保存時の暗号化はプラットフォーム レベルで提供されますが、Cognitive Search では、ユーザー所有と Microsoft が管理するキーの両方を二重に保護する必要があるお客様に対して "二重暗号化" オプションも提供されています。
++ ストレージ層に、インデックス、シノニム マップ、インデクサー、データ ソース、およびスキルセットの定義を含む、ディスクに保存されるすべてのサービス マネージド コンテンツに対する保存時の暗号化が組み込まれています。 Azure Cognitive Search によって、インデックス付きコンテンツを追加で暗号化するカスタマー マネージド キー (CMK) も追加サポートされています。 インデックス付きコンテンツを完全に二重に暗号化する CMK での暗号化は、2020 年 8 月 1 日以降に作成されたサービスでは、一時ディスク上のデータにも拡張されています。
 
 + 受信セキュリティでは、要求に対する API キーから、ファイアウォールの受信ルール、さらにはパブリック インターネットからサービスを完全に保護するプライベート エンドポイントに至るまで、高度化するセキュリティ レベルで検索サービス エンドポイントが保護されます。
 
@@ -29,29 +30,41 @@ ms.locfileid: "85081038"
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
+<a name="encryption"></a>
+
 ## <a name="encrypted-transmissions-and-storage"></a>伝送とストレージの暗号化
 
-暗号化は、接続と転送から、ディスクへのコンテンツの格納に至るまで、Azure Cognitive Search で広く使用されています。 パブリック インターネット上の検索サービスでは、Azure Cognitive Search によって HTTPS ポート 443 がリッスンされます。 すべてのクライアントとサービスの間の接続では、TLS 1.2 暗号化が使用されます。 これより前のバージョン (1.0 または 1.1) はサポートされていません。
+Azure Cognitive Search での暗号化は、接続時および転送時に開始され、ディスクに格納されたコンテンツにまでおよびます。 パブリック インターネット上の検索サービスでは、Azure Cognitive Search によって HTTPS ポート 443 がリッスンされます。 すべてのクライアントとサービスの間の接続では、TLS 1.2 暗号化が使用されます。 これより前のバージョン (1.0 または 1.1) はサポートされていません。
 
-### <a name="data-encryption-at-rest"></a>保存時のデータ暗号化
+検索サービスによって内部で処理されるデータについて、次の表で[データ暗号化モデル](../security/fundamentals/encryption-models.md)を説明しています。 ナレッジ ストア、インクリメンタル エンリッチメント、インデクサー ベースのインデックス作成などの一部の機能は、他の Azure サービスのデータ構造から読み書きされます。 これらのサービスには、Azure Cognitive Search とは別の独自レベルの暗号化があります。
 
-Azure Cognitive Search には、インデックスの定義とコンテンツ、データ ソースの定義、インデクサーの定義、スキルセットの定義、シノニム マップが格納されます。
+| モデル | キー&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 必要条件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 制限 | 適用対象 |
+|------------------|-------|-------------|--------------|------------|
+| サーバー側暗号化 | Microsoft のマネージド キー | なし (組み込み) | なし。2018 年 1 月 24 日以降に作成されたコンテンツに対し、すべてのリージョンのすべてのレベルで使用できます。 | コンテンツ (インデックスとシノニム マップ) と定義 (インデクサー、データ ソース、スキルセット) |
+| サーバー側暗号化 | カスタマー マネージド キー | Azure Key Vault | 2019 年 1 月以降に作成されたコンテンツに対し、すべてのリージョンのすべての請求対象レベルで使用できます。 | データ ディスク上のコンテンツ (インデックスとシノニム マップ) |
+| サーバー側二重暗号化 | カスタマー マネージド キー | Azure Key Vault | 2020 年 8 月 1 日以降の検索サービスに対し、選択したリージョンの請求対象レベルで使用できます。 | データ ディスクおよび一時ディスク上のコンテンツ (インデックスとシノニム マップ) |
 
-ストレージ層全体で、Microsoft が管理するキーを使用してディスク上でデータが暗号化されます。 暗号化のオンとオフを切り替えたり、ポータルまたはプログラムで暗号化設定を表示したりすることはできません。 暗号化は完全に組み込み済みで、完了までの時間やインデックス サイズにはほぼ影響しません。 完全に暗号化されていないインデックス (2018 年 1 月より前に作成されたインデックス) の増分更新を含め、すべてのインデックス作成で自動的に行われます。
+### <a name="service-managed-keys"></a>サービス マネージド キー
 
-内部的には、暗号化は [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) に基づいており、[256 ビットの AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使用しています。
+サービス マネージド暗号化とは、256 ビットの [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使用する、[Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) に基づいた、Microsoft の内部処理です。 (2018 年 1 月より前に作成された) 完全に暗号化されていないインデックスに対する増分更新を含む、すべてのインデックス作成で自動的に行われます。
 
-> [!NOTE]
-> 保存時の暗号化は、2018 年 1 月 24 日に発表され、すべてのリージョンで、全リージョンの Free レベルを含むすべてのサービス層に適用されています。 完全な暗号化を行うには、この日付より前に作成されたインデックスを削除し、再構築する必要があります。 そうしないと、1 月 24 日の後に追加された新しいデータのみが暗号化されます。
+### <a name="customer-managed-keys-cmk"></a>カスタマー マネージド キー (CMK)
 
-### <a name="customer-managed-key-cmk-encryption"></a>カスタマー マネージド キー (CMK) の暗号化
+カスタマー マネージド キーには、Azure Key Vault という請求対象のサービスが追加で必要です。これのリージョンは別であってもかまいませんが、Azure Cognitive Search と同じサブスクリプションのものである必要があります。 CMK での暗号化を有効にすると、インデックスのサイズが増加し、クエリのパフォーマンスが低下します。 日付を見ると、クエリ時間が 30 ～ 60% 増加することが予想されますが、実際のパフォーマンスは、インデックスの定義やクエリの種類によって変化します。 こうしたパフォーマンスの影響のため、この機能をインデックスに対して有効にするのは、実際に必要な場合のみにすることをお勧めします。 詳細については、[Azure Cognitive Search でのカスタマー マネージド暗号化キーの構成](search-security-manage-encryption-keys.md)に関するページを参照してください。
 
-追加のストレージ保護を希望するお客様は、データやオブジェクトをディスクに保存して暗号化する前に、暗号化することができます。 このアプローチは、Microsoft とは無関係に、Azure Key Vault によって管理および格納されるユーザー所有のキーに基づいています。 ディスクで暗号化される前のコンテンツの暗号化は、"二重暗号化" と呼ばれます。 現時点では、インデックスとシノニム マップに対して選択的に二重暗号化を行うことができます。 詳細については、[Azure Cognitive Search でのカスタマー マネージドの暗号化キー](search-security-manage-encryption-keys.md)に関するページを参照してください。
+<a name="double-encryption"></a>
 
-> [!NOTE]
-> CMK 暗号化は、2019 年 1 月以降に作成された検索サービスで一般公開されています。 これは、無料 (共有) サービスではサポートされていません。 
->
->この機能を有効にすると、インデックスのサイズが増加し、クエリのパフォーマンスが低下します。 日付を見ると、クエリ時間が 30 ～ 60% 増加することが予想されますが、実際のパフォーマンスは、インデックスの定義やクエリの種類によって変化します。 こうしたパフォーマンスの影響のため、この機能をインデックスに対して有効にするのは、実際に必要な場合のみにすることをお勧めします。
+### <a name="double-encryption"></a>二重暗号化
+
+Azure Cognitive Search における二重暗号化は、CMK の拡張機能です。 これは、(1 回目は CMK、次はサービス マネージド キーによって) 二重に暗号化される、データ ディスクに書き込まれる長期的な保存と一時ディスクに書き込まれる短期的な保存におよぶ、広範囲にわたる暗号化です。 2020 年 8 月 1 日より前と後の CMK では、さらに一時ディスクに保存されているデータも暗号化されるようになったことが異なり、これが Azure Cognitive Search の二重暗号化機能となっています。
+
+二重暗号化は、8 月 1 日より後に作成された、次のリージョンの新しいサービスで使用できます。
+
++ 米国西部 2
++ 米国東部
++ 米国中南部
++ US Gov バージニア州
++ US Gov アリゾナ
 
 <a name="service-access-and-authentication"></a>
 
@@ -61,7 +74,7 @@ Azure Cognitive Search には、インデックスの定義とコンテンツ、
 
 ### <a name="public-access-using-api-keys"></a>API キーを使用したパブリック アクセス
 
-既定で検索サービスは、検索サービス エンドポイントへの管理者アクセスまたはクエリ アクセス用のキーベースの認証を使用して、パブリック クラウドを介してアクセスされます。 API キーは、ランダムに生成された数字と文字から成る文字列です。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 
+既定で検索サービスは、検索サービス エンドポイントへの管理者アクセスまたはクエリ アクセス用のキーベースの認証を使用して、パブリック クラウドを介してアクセスされます。 API キーは、ランダムに生成された数字と文字から成る文字列です。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。
 
 検索サービスへのアクセスには 2 つのレベルがあり、次の API キーによって有効になります。
 
@@ -79,15 +92,15 @@ Azure Cognitive Search には、インデックスの定義とコンテンツ、
 
 検索サービスへのアクセスをさらに制御するために、特定の IP アドレスまたは IP アドレス範囲へのアクセスを許可する受信ファイアウォール規則を作成できます。 すべてのクライアント接続は、許可された IP アドレスを使用して行う必要があります。それ以外の場合、接続は拒否されます。
 
-[受信アクセスを構成](service-configure-firewall.md)するには、ポータルを使用します。 
+[受信アクセスを構成](service-configure-firewall.md)するには、ポータルを使用します。
 
-または、管理 REST API を使用します。 [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) パラメーターを指定した API バージョン 2020-03-13 では、検索サービスへのアクセスを付与する IP アドレスを個別に、あるいは範囲で特定することで、サービスへのアクセスを制限できます。 
+または、管理 REST API を使用します。 [IpRule](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) パラメーターを指定した API バージョン 2020-03-13 では、検索サービスへのアクセスを付与する IP アドレスを個別に、あるいは範囲で特定することで、サービスへのアクセスを制限できます。
 
 ### <a name="private-endpoint-no-internet-traffic"></a>プライベート エンドポイント (インターネット トラフィックなし)
 
-Azure Cognitive Search の[プライベート エンドポイント](../private-link/private-endpoint-overview.md)では、[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできます。 
+Azure Cognitive Search の[プライベート エンドポイント](../private-link/private-endpoint-overview.md)では、[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)上のクライアントが[プライベート リンク](../private-link/private-link-overview.md)を介して、検索インデックス内のデータに安全にアクセスできます。
 
-プライベート エンドポイントでは、検索サービスに接続するために仮想ネットワークのアドレス空間の IP アドレスが使用されます。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 VNET によって、オンプレミス ネットワークやインターネットを利用したリソース間の安全な通信が可能になります。 
+プライベート エンドポイントでは、検索サービスに接続するために仮想ネットワークのアドレス空間の IP アドレスが使用されます。 クライアントと検索サービス間のネットワーク　トラフィックは、仮想ネットワークおよび Microsoft バックボーン ネットワーク上のプライベートリンクを経由することで、パブリック インターネット上での露出を排除します。 VNET によって、オンプレミス ネットワークやインターネットを利用したリソース間の安全な通信が可能になります。
 
 このソリューションは最も安全ですが、追加のサービスを使用すると、追加のコストがかかります。そのため、使用の前に利点の詳細を明確に理解しておく必要があります。 コストの詳細については、[価格](https://azure.microsoft.com/pricing/details/private-link/)に関するページを参照してください。 これらのコンポーネントを連携させる方法の詳細については、この記事の上部にあるビデオをご覧ください。 プライベート エンドポイント オプションの説明は、ビデオの 5:48 から始まります。 エンドポイントを設定する方法については、[Azure Cognitive Search でのプライベート エンドポイントの作成](service-create-private-endpoint.md)に関するページを参照してください。
 
@@ -114,7 +127,7 @@ Azure Cognitive Search では、個別のインデックスはセキュリティ
 
 ## <a name="administrative-rights"></a>管理者権限
 
-[ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) は、Azure リソースをプロビジョニングするために [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムです。 Azure Cognitive Search では、Resource Manager を使用して、サービスの作成または削除、API キーの管理、サービスのスケーリングが行われます。 そのため、RBAC ロールの割り当てによって、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) のいずれを使用しているかにかかわらず、これらのタスクを実行できるユーザーが決定されます。
+[Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) は、Azure リソースをプロビジョニングするために [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムです。 Azure Cognitive Search では、Resource Manager を使用して、サービスの作成または削除、API キーの管理、サービスのスケーリングが行われます。 そのため、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](/rest/api/searchmanagement/search-howto-management-rest-api) のどれを使用しているかにかかわらず、Azure で割り当てられているロールによって、これらのタスクを実行できるユーザーが決定されます。
 
 これに対して、サービスでホストされているコンテンツに対する管理者権限 (インデックスを作成または削除する機能など) は、[前のセクション](#index-access)で説明されているように、API キーによって付与されます。
 
@@ -124,6 +137,12 @@ Azure Cognitive Search では、個別のインデックスはセキュリティ
 ## <a name="certifications-and-compliance"></a>認定資格とコンプライアンス
 
 Azure Cognitive Search は、パブリック クラウドと Azure Government の両方について、グローバル、地域、および業界固有の複数の標準への準拠が認定されています。 完全な一覧については、公式の監査レポート ページから [**Microsoft Azure Compliance Offerings** ホワイトペーパー](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)をダウンロードしてください。
+
+コンプライアンスのため、[Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)の安全性の高いベスト プラクティスを、[Azure Policy](../governance/policy/overview.md) を使用して実装できます。 Azure セキュリティ ベンチマークは、サービスやデータに対する脅威を軽減するために実行する必要のある主要なアクションにマップされる、セキュリティ コントロールに体系化された、セキュリティに関する推奨事項を集めたものです。 現在は、[ネットワーク セキュリティ](../security/benchmarks/security-control-network-security.md)、[ログ記録および監視](../security/benchmarks/security-control-logging-monitoring.md)および[データ保護](../security/benchmarks/security-control-data-protection.md)などの数例を含む 11 のセキュリティ コントロールがあります。
+
+Azure Policy は、Azure セキュリティ ベンチマークの標準を含む複数の標準に対するコンプライアンスの管理に役立つ、Azure に組み込まれた機能です。 広く知られたベンチマークについては、コンプライアンス非対応の場合に使用できる、基準と実施可能な対応の両方の組み込みの定義が、Azure Policy によって提供されています。
+
+Azure Cognitive Search には、現在 1 つの定義が組み込まれています。 それは診断ログ用です。 これの組み込みにより、診断ログが欠落している検索サービスを識別するポリシーを割り当てて、有効にすることができます。 詳細については、「[Azure Cognitive Search 用の Azure Policy 規制コンプライアンス コントロール](security-controls-policy.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883228"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166435"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
@@ -134,7 +134,7 @@ ROPC フローでユーザー名とパスワードを使用すると、次のよ
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Azure AD B2C で ROPC フローを構成する
 
-お使いの Azure AD B2C テナントで、新しいユーザー フローを作成し、 **[ROPC を使用してサインイン]** を選択して、ユーザー フローで ROPC を有効にします。 詳しくは、[リソース所有者のパスワード資格情報フローの構成](/azure/active-directory-b2c/configure-ropc)に関する記事をご覧ください。
+お使いの Azure AD B2C テナントで、新しいユーザー フローを作成し、 **[ROPC を使用してサインイン]** を選択して、ユーザー フローで ROPC を有効にします。 詳しくは、[リソース所有者のパスワード資格情報フローの構成](../../active-directory-b2c/configure-ropc.md)に関する記事をご覧ください。
 
 `IPublicClientApplication` には `AcquireTokenByUsernamePassword` メソッドが含まれています。
 
@@ -182,7 +182,7 @@ Azure AD B2C シナリオでは、これらの両方の要求が欠落する可�
 
 推奨される回避策は、前に説明した[ポリシーによるキャッシュ](#acquire-a-token-to-apply-a-policy)を使用することです。
 
-また、Azure AD B2C で[カスタム ポリシー](../../active-directory-b2c/custom-policy-get-started.md)を使用している場合は、`tid` 要求を使用することもできます。 カスタム ポリシーは、[要求の変換](/azure/active-directory-b2c/claims-transformation-technical-profile)を使用して、アプリケーションに追加の要求を返すことができます。
+また、Azure AD B2C で[カスタム ポリシー](../../active-directory-b2c/custom-policy-get-started.md)を使用している場合は、`tid` 要求を使用することもできます。 カスタム ポリシーは、[要求の変換](../../active-directory-b2c/claims-transformation-technical-profile.md)を使用して、アプリケーションに追加の要求を返すことができます。
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>"トークンの応答にありません" の軽減策
 

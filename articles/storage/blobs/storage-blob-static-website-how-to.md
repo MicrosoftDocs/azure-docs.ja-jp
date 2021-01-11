@@ -7,12 +7,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: bac476cfbe78ad6fcf73b6a2319581cc60524a57
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609932"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432570"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Azure Storage で静的 Web サイトをホストする
 
@@ -132,7 +133,7 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-次の手順では、Azure portal に表示される Storage Explorer のバージョンを使用してファイルをアップロードする方法について説明します。 ただし、Azure portal の外部で実行される [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のバージョンを使用することもできます。 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI、またはお使いのアカウントの **$web** コンテナーにファイルをアップロードできる任意のカスタムアプリケーションを使用できます。 Visual Studio コードを使用してファイルをアップロードする詳細なチュートリアルについては、[ チュートリアルを参照してください。Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
+次の手順では、Azure portal に表示される Storage Explorer のバージョンを使用してファイルをアップロードする方法について説明します。 ただし、Azure portal の外部で実行される [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のバージョンを使用することもできます。 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI、またはお使いのアカウントの **$web** コンテナーにファイルをアップロードできる任意のカスタムアプリケーションを使用できます。 Visual Studio Code を使用してファイルをアップロードする詳細なチュートリアルについては、[ チュートリアルを参照してください。Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
 
 1. **ストレージ エクスプローラー (プレビュー)** を選択します。
 

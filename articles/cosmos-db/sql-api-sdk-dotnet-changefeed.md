@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: 679f3113cddbfe13370483f2678154f4dd1f8ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6d25eb2965e31211c0d30ec8d5e3e376176147c0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392065"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590049"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
 
@@ -27,11 +27,14 @@ ms.locfileid: "85392065"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api
 > * [REST リソース プロバイダー](/rest/api
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
@@ -48,7 +51,14 @@ ms.locfileid: "85392065"
 
 ### <a name="v2-builds"></a>v2 のビルド
 
-### <a name="230"></a><a name="2.3.0"></a>2.3.0
+### <a name="232"></a><a name="2.3.2"/>2.3.2
+* [V3 SDK](sql-api-sdk-dotnet-standard.md) とのリース ストアの互換性が追加されました。これにより、ホット移行パスが有効になります。 アプリケーションを V3 SDK に移行し、状態を失うことなく Change Feed Processor ライブラリに再び移行することができます。
+
+### <a name="231"></a><a name="2.3.1"/>2.3.1
+* パーティションが見つからない場合、またはターゲット レプリカが読み取りセッションで最新の状態になっていない場合、`FeedProcessing.ChangeFeedObserverCloseReason.Unknown` の閉じる理由が `FeedProcessing.IChangeFeedObserver.CloseAsync` に送信される問題を修正しました。 このような場合、`FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` と `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` の閉じる理由が使用されるようになりました。
+* ターゲット レプリカが読み取りセッションで最新の状態になっていない場合に、変更フィード オブザーバーを閉じるために送信される新しい閉じる理由 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` を追加しました。
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
 * 新しいメソッド `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` と対応するパブリック インターフェイス `ICheckpointPartitionProcessorFactory` が追加されました。 これにより、`IPartitionProcessor` インターフェイスの実装に組み込みのチェックポイント メカニズムを使用できるようになります。 新しいファクトリは既存の `IPartitionProcessorFactory` に似ていますが、`Create` メソッドは `ILeaseCheckpointer` パラメーターも受け取る点が異なります。
 * 同じ `ChangeFeedProcessorBuilder` インスタンスに使用できるのは、`ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` または `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` という 2 つのメソッドのいずれかのみです。
 
@@ -178,16 +188,17 @@ ms.locfileid: "85392065"
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
-新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。 
-
-提供終了の SDK を使用した Cosmos DB への要求は、サービスによって拒否されます。
+> [!WARNING]
+> 2022 年 8 月 31 日以降、Azure Cosmos DB .NET または .NET Core SDK for SQL API のバージョン 1.x に対するバグ修正、新機能の追加、サポートの提供は行われません。 アップグレードしない場合でも、SDK バージョン 1.x から送信される要求は、引き続き Azure Cosmos DB サービスによって処理されます。
 
 <br/>
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |2020 年 8 月 11 日 |--- |
+| [2.3.1](#2.3.1) |2020 年 7 月 30 日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
 | [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |

@@ -6,13 +6,14 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: quickstart
-ms.openlocfilehash: 95a999f38104e0bb3cfd6a510bd8f9e3d5440562
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.topic: how-to
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521090"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585833"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 
@@ -233,6 +234,38 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-key-vault-name>.vault.azure.net
           <your-key-vault-name>.privatelink.vaultcore.azure.net
 ```
+
+## <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+
+* プライベート エンドポイントが承認済みの状態であることを確認します。 
+    1. これの確認と修正は Azure portal で行うことができます。 Key Vault リソースを開き、[ネットワーク] オプションをクリックします。 
+    2. 次に、[プライベート エンドポイント接続] タブを選択します。 
+    3. 接続状態が承認済みで、プロビジョニングの状態が成功であることを確認します。 
+    4. また、プライベート エンドポイント リソースに移動し、そこで同じプロパティを確認して、仮想ネットワークが使用しているものと一致することを再確認することもできます。
+
+* プライベート DNS ゾーン リソースがあることを調べて確認します。 
+    1. プライベート DNS ゾーン リソースの名前は、正確に privatelink.vaultcore.azure.net である必要があります。 
+    2. これを設定する方法については、次のリンクを参照してください。 [プライベート DNS ゾーン](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    
+* プライベート DNS ゾーンが仮想ネットワークにリンクされていないことを確認します。 パブリック IP アドレスがまだ返される場合は、これが問題である可能性があります。 
+    1. プライベート DNS ゾーンが仮想ネットワークにリンクされていない場合、仮想ネットワークから送信された DNS クエリでは、キー コンテナーのパブリック IP アドレスが返されます。 
+    2. Azure portal でプライベート DNS ゾーン リソースに移動し、仮想ネットワーク リンクのオプションをクリックします。 
+    4. キー コンテナーへの呼び出しを実行する仮想ネットワークが、一覧に表示されている必要があります。 
+    5. ない場合は追加します。 
+    6. 詳細な手順については、[プライベート DNS ゾーンへの仮想ネットワークのリンク](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network)に関するドキュメントを参照してください
+
+* キー コンテナーの A レコードがプライベート DNS ゾーンから欠落していないことを確認します。 
+    1. [プライベート DNS ゾーン] ページに移動します。 
+    2. [概要] をクリックし、キー コンテナーの簡易名 (fabrikam など) の A レコードがあることを確認します。 サフィックスは指定しないでください。
+    3. スペルを確認し、A レコードを作成または修正します。 TTL には 3600 (1 時間) を使用できます。 
+    4. 指定したプライベート IP アドレスが正しいことを確認します。 
+    
+* A レコードの IP アドレスが正しいことを確認します。 
+    1. Azure portal でプライベート エンドポイント リソースを開くことにより、IP アドレスを確認できます 
+    2. (Key Vault リソースではなく) Azure portal で、Microsoft.Network/privateEndpoints リソースに移動します
+    3. [概要] ページで [ネットワーク インターフェイス] を探し、そのリンクをクリックします。 
+    4. このリンクでは NIC リソースの概要が表示され、それにはプライベート IP アドレスのプロパティが含まれます。 
+    5. これが、A レコードで指定されている正しい IP アドレスであることを確認します。
 
 ## <a name="limitations-and-design-considerations"></a>制限事項と設計に関する考慮事項
 

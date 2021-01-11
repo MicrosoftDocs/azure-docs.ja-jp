@@ -13,13 +13,13 @@ ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 0cf711f9a295abaf20cd284e819cf062c462c668
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 8dcd2b55d177c533336842293b2aedaef6b4222c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558685"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119914"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python 用の ADAL から MSAL への移行に関するガイド
 
@@ -38,19 +38,19 @@ ADAL は、Azure Active Directory (Azure AD) v1.0 エンドポイントで動作
   - OAuth v2.0
   - OpenID Connect (OIDC)
 
-詳細については、[Microsoft ID プラットフォーム (v2.0) エンドポイントについての違い](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)に関するページを参照してください。
+詳細については、[Microsoft ID プラットフォーム (v2.0) エンドポイントについての違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページを参照してください。
 
 ### <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-ADAL Python ではリソースのトークンが取得されますが、MSAL Python ではスコープのトークンが取得されます。 MSAL Python の API サーフェスには、リソース パラメーターがなくなりました。 要求される必要なアクセス許可とリソースを宣言する文字列のリストとして、スコープを指定する必要があります。 スコープの例については、[Microsoft Graph のスコープ](https://docs.microsoft.com/graph/permissions-reference)に関するページを参照してください。
+ADAL Python ではリソースのトークンが取得されますが、MSAL Python ではスコープのトークンが取得されます。 MSAL Python の API サーフェスには、リソース パラメーターがなくなりました。 要求される必要なアクセス許可とリソースを宣言する文字列のリストとして、スコープを指定する必要があります。 スコープの例については、[Microsoft Graph のスコープ](/graph/permissions-reference)に関するページを参照してください。
 
 `/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム エンドポイント (MSAL) するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
 
-さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)に関する記事および「[v1.0 トークンを受け入れる Web API のスコープ](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)」の記事を参照してください。
+さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](./v2-permissions-and-consent.md)に関する記事および「[v1.0 トークンを受け入れる Web API のスコープ](./msal-v1-app-scopes.md)」の記事を参照してください。
 
 ### <a name="error-handling"></a>エラー処理
 
-Python 用 Azure Active Directory 認証ライブラリ (ADAL) では、例外 `AdalError` を使用して問題が発生したことを示します。 Python 用 MSAL では通常、代わりにエラー コードを使用します。 詳細については、[Python 用 MSAL のエラー処理](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python)に関するページを参照してください。
+Python 用 Azure Active Directory 認証ライブラリ (ADAL) では、例外 `AdalError` を使用して問題が発生したことを示します。 Python 用 MSAL では通常、代わりにエラー コードを使用します。 詳細については、[Python 用 MSAL のエラー処理](./msal-handling-exceptions.md?tabs=python)に関するページを参照してください。
 
 ### <a name="api-changes"></a>API の変更
 
@@ -122,4 +122,4 @@ print("Migration completed")
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、[v1.0 と v2.0 の比較](active-directory-v2-compare.md)に関するページを参照してください。
+詳細については、[v1.0 と v2.0 の比較](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページを参照してください。

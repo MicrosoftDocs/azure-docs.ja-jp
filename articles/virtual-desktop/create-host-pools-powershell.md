@@ -1,27 +1,22 @@
 ---
 title: PowerShell を使用して Windows Virtual Desktop のホスト プールを作成する - Azure
 description: PowerShell コマンドレットを使用して Windows Virtual Desktop にホスト プールを作成する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6b064c6e4107da5695e2a9945240e4276ac795b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85211852"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121155"
 ---
-# <a name="create-a-host-pool-with-powershell"></a>PowerShell を使用してホスト プールを作成する
+# <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>PowerShell を使用した Windows Virtual Desktop のホスト プールの作成
 
 >[!IMPORTANT]
->このコンテンツは、Spring 2020 更新プログラムと Azure Resource Manager Windows Virtual Desktop オブジェクトの組み合わせを対象としています。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop Fall 2019 リリースを使用している場合は、[この記事](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)を参照してください。
->
-> Windows Virtual Desktop Spring 2020 更新プログラムは現在、パブリック プレビュー段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されており、運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>このコンテンツは、Azure Resource Manager Windows Virtual Desktop オブジェクトを含む Windows Virtual Desktop に適用されます。 Azure Resource Manager オブジェクトなしで Windows Virtual Desktop (classic) を使用している場合は、[この記事](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)を参照してください。
 
 ホスト プールは、Windows Virtual Desktop テナント環境内にある 1 つまたは複数の同一の仮想マシンをコレクションとしてまとめたものです。 各ホスト プールは、複数の RemoteApp グループ、1 つのデスクトップ アプリ グループ、および複数のセッション ホストに関連付けることができます。
 
@@ -63,7 +58,7 @@ New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtuali
 次のコマンドレットを実行して、Azure Active Directory ユーザー グループをホスト プールの既定のデスクトップ アプリ グループに追加します。
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+“-DAG”> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 次のコマンドレットを実行して、登録トークンを変数にエクスポートします。これは後で [Windows Virtual Desktop ホスト プールに仮想マシンを登録](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)するときに使用します。
@@ -121,6 +116,32 @@ Windows Virtual Desktop エージェントを登録するには、各仮想マ�
 
 >[!IMPORTANT]
 >Azure で Windows Virtual Desktop 環境のセキュリティを保護できるようにするには、ご利用の VM 上の受信ポート 3389 を開かないことをお勧めします。 Windows Virtual Desktop では、ユーザーがホスト プールの VM にアクセスするために、受信ポート 3389 を開く必要はありません。 トラブルシューティングの目的でポート 3389 を開く必要がある場合は、[Just-In-Time VM アクセス](../security-center/security-center-just-in-time.md)を使用することをお勧めします。 また、パブリック IP に VM を割り当てないことをお勧めします。
+
+## <a name="update-the-agent"></a>エージェントを更新する
+
+次のいずれかの状況に該当する場合は、エージェントを更新する必要があります。
+
+- 以前に登録されたセッションを新しいホスト プールに移行する必要がある
+- 更新後にセッション ホストがホスト プールに表示されない
+
+エージェントを更新するには、次の操作を実行します。
+
+1. 管理者として VM にサインインします。
+2. **[サービス]** に移動して、**Rdagent** プロセス、**Remote Desktop Agent Loader** プロセスの順に停止します。
+3. 次に、エージェント MSI とブートローダー MSI を見つけます。 これらは、**C:\DeployAgent** フォルダー、またはインストール時に保存した場所のいずれかに配置されています。
+4. 次のファイルを見つけて、アンインストールします。
+     
+     - Microsoft.RDInfra.RDAgent.Installer-x64-verx.x.x
+     - Microsoft.RDInfra.RDAgentBootLoader.Installer-x64
+
+   これらのファイルをアンインストールするには、各ファイル名を右クリックし、 **[アンインストール]** を選択します。
+5. 必要に応じて、次のレジストリ設定を削除することもできます。
+     
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. これらの項目をアンインストールすると、古いホスト プールとの関連付けがすべて削除されます。 このホストをサービスに再登録する場合は、「[Windows Virtual Desktop ホスト プールに仮想マシンを登録する](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)」の手順に従います。
+
 
 ## <a name="next-steps"></a>次のステップ
 

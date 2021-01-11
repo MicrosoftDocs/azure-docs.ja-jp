@@ -9,19 +9,19 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 06/12/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 0cb266f512875f588c5bf95e31b207b9c49e4e96
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: devx-track-python
+ms.openlocfilehash: 39891b69cdb8e7f392657514d255f5f85b3eba60
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85552606"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88936029"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>チュートリアル:Python と AI を使用して Azure Blob から検索可能なコンテンツを生成する
 
 Azure Blob Storage に非構造化テキストまたは画像がある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)で情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 パイプラインでは画像を処理できますが、この Python チュートリアルではテキストに焦点を当て、言語検出と自然言語処理を適用して、クエリ、ファセット、フィルターで活用できる新しいフィールドを作成します。
 
-このチュートリアルでは、Python と [Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して次のタスクを実行します。
+このチュートリアルでは、Python と [Search REST API](/rest/api/searchservice/) を使用して次のタスクを実行します。
 
 > [!div class="checklist"]
 > * まずは、Azure Blob Storage で、PDF、HTML、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。
@@ -163,7 +163,7 @@ Azure Cognitive Search では、AI 処理はインデックス作成 (または�
 
 ### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
-[データ ソース オブジェクト](https://docs.microsoft.com/rest/api/searchservice/create-data-source)は、ファイルが格納されている BLOB コンテナーへの接続文字列を提供します。
+[データ ソース オブジェクト](/rest/api/searchservice/create-data-source)は、ファイルが格納されている BLOB コンテナーへの接続文字列を提供します。
 
 次のスクリプトで、YOUR-BLOB-RESOURCE-CONNECTION-STRING というプレースホルダーを、前の手順で作成した BLOB 用の接続文字列に置き換えます。 コンテナーのプレースホルダー テキストを置き換えます。 次に、スクリプトを実行して、`cogsrch-py-datasource` という名前のデータ ソースを作成します。
 
@@ -375,11 +375,11 @@ print(r.status_code)
 
 この要求に対し、成功を確認する状態コード 201 が返されます。
 
-インデックスの定義の詳細については、[インデックスの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページを参照してください。
+インデックスの定義の詳細については、[インデックスの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/create-index) に関するページを参照してください。
 
 ### <a name="step-4-create-and-run-an-indexer"></a>手順 4:インデクサーの作成と実行
 
-[インデクサー](https://docs.microsoft.com/rest/api/searchservice/create-indexer)は、パイプラインを駆動するものです。 これまでに作成した 3 つのコンポーネント (データ ソース、スキルセット、インデックス) は、インデクサーへの入力です。 Azure Cognitive Search でのインデクサーの作成は、パイプライン全体の動作を引き起こすイベントです。 
+[インデクサー](/rest/api/searchservice/create-indexer)は、パイプラインを駆動するものです。 これまでに作成した 3 つのコンポーネント (データ ソース、スキルセット、インデックス) は、インデクサーへの入力です。 Azure Cognitive Search でのインデクサーの作成は、パイプライン全体の動作を引き起こすイベントです。 
 
 これらのオブジェクトをまとめてインデクサーに結び付けるには、フィールド マッピングを定義する必要があります。
 
@@ -512,7 +512,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 その他のフィールド (この演習では、`content`、`languageCode`、`keyPhrases`、`organizations`) でも同様に繰り返します。 コンマ区切りリストを使用して、`$select` を介して複数のフィールドを返すことができます。
 
-クエリ文字列の複雑さと長さによっては、GET や POST を使用できます。 詳細については、[REST API を使用したクエリ](https://docs.microsoft.com/rest/api/searchservice/search-documents)に関するページをご覧ください。
+クエリ文字列の複雑さと長さによっては、GET や POST を使用できます。 詳細については、[REST API を使用したクエリ](/rest/api/searchservice/search-documents)に関するページをご覧ください。
 
 <a name="reset"></a>
 

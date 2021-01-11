@@ -4,23 +4,25 @@ titleSuffix: Azure Media Services
 description: この記事では、Azure Media Services を使用したビデオとオーディオのエンコードについて説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
-ms.topic: article
-ms.date: 04/29/2020
-ms.author: juliako
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 04706de4b1cc18a4f3146f75442de84340319cef
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 8533c99011232385e31f4e698743bbb1c6c00bc5
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220159"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89300206"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Media Services を使用したビデオとオーディオのエンコード
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Media Services では、エンコードという用語は、デジタル ビデオやデジタル オーディオを含むファイルをある標準形式から別の標準形式に変換するプロセスを表します。変換の目的は、(a) ファイルのサイズを減らしたり、(b) 広範なデバイスやアプリと互換性のある形式を生成したりすることにあります。 このプロセスは、ビデオ圧縮やコード変換とも呼ばれます。 この概念の詳細については、「[Data compression (データ圧縮)](https://en.wikipedia.org/wiki/Data_compression)」と「[What Is Encoding and Transcoding? (エンコードとコード変換とは)](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx)」を参照してください。
 
@@ -29,7 +31,7 @@ Media Services では、エンコードという用語は、デジタル ビデ�
 > [!IMPORTANT]
 > Media Services では、取り消されたジョブまたはエラーのあるジョブに対する課金は行われません。 たとえば、進行状況が 50% で取り消されたジョブが、ジョブの分数の 50% に対して課金されることはありません。 完了したジョブに対してのみ課金されます。
 
-* プログレッシブ ダウンロードによって配信する場合、Azure Media Services を使用してデジタル メディア ファイル (中間ファイル) を [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) ファイルに変換できます。MP4 には、[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) コーデックでエンコードされているビデオと、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) コーデックでエンコードされているオーディオが含まれています。 この MP4 ファイルは、ご使用のストレージ アカウントの資産に書き込まれます。 Azure Storage API または SDK ([Storage REST API](../../storage/common/storage-rest-api-auth.md)、[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md) など) を使用して、ファイルを直接ダウンロードできます。 ストレージで特定のコンテナー名を使用して出力資産を作成した場合は、その場所を使用してください。 それ以外の場合は、Media Services を使用して、[資産コンテナーの URL を一覧表示](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)できます。 
+* プログレッシブ ダウンロードによって配信する場合、Azure Media Services を使用してデジタル メディア ファイル (中間ファイル) を [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) ファイルに変換できます。MP4 には、[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) コーデックでエンコードされているビデオと、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) コーデックでエンコードされているオーディオが含まれています。 この MP4 ファイルは、ご使用のストレージ アカウントの資産に書き込まれます。 Azure Storage API または SDK ([Storage REST API](../../storage/common/storage-rest-api-auth.md)、[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md) など) を使用して、ファイルを直接ダウンロードできます。 ストレージで特定のコンテナー名を使用して出力資産を作成した場合は、その場所を使用してください。 それ以外の場合は、Media Services を使用して、[資産コンテナーの URL を一覧表示](/rest/api/media/assets/listcontainersas)できます。 
 * アダプティブ ビットレート ストリーミングによって配信するコンテンツを準備するには、中間ファイルを複数のビット レート (高から低) でエンコードする必要があります。 品質を適切に推移させるために、ビットレートが低下するとビデオの解像度が低下します。 これにより、解像度とビットレートの表である、いわゆるエンコード ラダーが生成されます ([自動生成されたアダプティブ ビットレート ラダー](autogen-bitrate-ladder.md)に関するページを参照)。 Media Services を使用して、中間ファイルを複数のビットレートでエンコードできます。 これにより、一連の MP4 ファイルと、それらに関連付けられたストリーミング構成ファイルが得られ、ご利用のストレージ アカウント内のアセットに書き込まれます。 次に、Media Services の[ダイナミック パッケージ](dynamic-packaging-overview.md)機能を使用して、[MPEG DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) や [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) などのストリーミング プロトコルを介して動画を配信します。 そのためには、[ストリーミング ロケーター](streaming-locators-concept.md)を作成し、サポートされているプロトコルに対応するストリーミング URL を構築します。次に、これらは機能に基づいてデバイスやアプリに渡すことができます。
 
 次の図は、ダイナミック パッケージを使用した、オンデマンド エンコードのワークフローを示しています。
@@ -40,7 +42,7 @@ Media Services では、エンコードという用語は、デジタル ビデ�
 
 ## <a name="transforms-and-jobs"></a>変換およびジョブ
 
-Media Services v3 でエンコードするには、[変換](https://docs.microsoft.com/rest/api/media/transforms)と[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)を作成する必要があります。 変換では、エンコード設定と出力のレシピを定義します。ジョブはレシピのインスタンスです。 詳しくは、「[Transform と Job](transforms-jobs-concept.md)」をご覧ください。
+Media Services v3 でエンコードするには、[変換](/rest/api/media/transforms)と[ジョブ](/rest/api/media/jobs)を作成する必要があります。 変換では、エンコード設定と出力のレシピを定義します。ジョブはレシピのインスタンスです。 詳しくは、「[Transform と Job](transforms-jobs-concept.md)」をご覧ください。
 
 Media Services でエンコードする場合、プリセットを使用してエンコーダーに入力メディア ファイルの処理方法を指示します。 Media Services v3 では、Standard Encoder を使用してファイルをエンコードします。 たとえば、エンコードされたコンテンツに必要なビデオ解像度やオーディオ チャンネルの数を指定できます。
 
@@ -72,9 +74,9 @@ Media Services でエンコードする場合、プリセットを使用して�
 
 ### <a name="creating-job-input-with-subclipping"></a>サブクリップを使用したジョブ入力の作成
 
-ビデオをエンコードする際に、ソース ファイルをトリミングまたはクリッピングして、入力ビデオの目的の部分のみが含まれる出力を生成するように指定することもできます。 この機能は、[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築された[変換](https://docs.microsoft.com/rest/api/media/transforms)で動作します。
+ビデオをエンコードする際に、ソース ファイルをトリミングまたはクリッピングして、入力ビデオの目的の部分のみが含まれる出力を生成するように指定することもできます。 この機能は、[BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) プリセットまたは [StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) プリセットを使用して構築された[変換](/rest/api/media/transforms)で動作します。
 
-オンデマンドまたはライブ アーカイブ (記録されたイベント) のビデオの単一のクリップを使用して[ジョブ](https://docs.microsoft.com/rest/api/media/jobs/create)を作成するように指定できます。 資産または HTTPS URL をジョブ入力にすることができます。
+オンデマンドまたはライブ アーカイブ (記録されたイベント) のビデオの単一のクリップを使用して[ジョブ](/rest/api/media/jobs/create)を作成するように指定できます。 資産または HTTPS URL をジョブ入力にすることができます。
 
 > [!TIP]
 > ビデオの再エンコードなしでビデオのサブクリップをストリーミングする場合は、[Dynamic Packager によるマニフェストの事前フィルター処理](filters-dynamic-manifest-overview.md)の使用を検討します。
@@ -92,7 +94,7 @@ Media Services は、次の組み込みのエンコード プリセットをサ�
 
 ### <a name="builtinstandardencoderpreset"></a>BuiltInStandardEncoderPreset
 
-[BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) は、Standard Encoder で入力ビデオをエンコードする組み込みのプリセットの設定に使用されます。
+[BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) は、Standard Encoder で入力ビデオをエンコードする組み込みのプリセットの設定に使用されます。
 
 現在サポートされているプリセットは次のとおりです。
 
@@ -109,13 +111,13 @@ Media Services は、次の組み込みのエンコード プリセットをサ�
 - **EncoderNamedPreset.H264SingleBitrate720p**: ビデオが 4,500 kbps の H.264 コーデックと 720 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 64 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
 - **EncoderNamedPreset.H264SingleBitrateSD**: ビデオが 2,200 kbps の H.264 コーデックと 480 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 64 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
 
-最新のプリセットの一覧を見るには、[ビデオのエンコードに使用される組み込みのプリセット](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)に関する記事をご覧ください。
+最新のプリセットの一覧を見るには、[ビデオのエンコードに使用される組み込みのプリセット](/rest/api/media/transforms/createorupdate#encodernamedpreset)に関する記事をご覧ください。
 
 プリセットがどのように使われるかについては、[ファイルのアップロード、エンコード、ストリーミング](stream-files-tutorial-with-api.md)に関する記事を参照してください。
 
 ### <a name="standardencoderpreset"></a>BuiltInStandardEncoderPreset
 
-[StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) には、Standard Encoder を使用して入力ビデオをエンコードするときに使用する設定を記述します。 変換プリセットをカスタマイズする場合は、このプリセットを使用します。
+[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) には、Standard Encoder を使用して入力ビデオをエンコードするときに使用する設定を記述します。 変換プリセットをカスタマイズする場合は、このプリセットを使用します。
 
 #### <a name="considerations"></a>考慮事項
 
@@ -136,7 +138,7 @@ Media Services では、特定のエンコーディング ニーズと要件を�
 
 ## <a name="preset-schema"></a>プリセット スキーマ
 
-Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 (**StandardEncoderPreset** など) は、[REST API](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (またはその他の Media Services v3 SDK のリファレンス ドキュメント) でも確認できます。
+Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 (**StandardEncoderPreset** など) は、[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet) (またはその他の Media Services v3 SDK のリファレンス ドキュメント) でも確認できます。
 
 ## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
 

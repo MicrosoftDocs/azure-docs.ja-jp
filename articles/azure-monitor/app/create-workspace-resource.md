@@ -4,13 +4,13 @@ description: 新しい Azure Monitor Application Insights のワークスペー�
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/24/2020
+ms.openlocfilehash: d6d6731ae087604e0a53a6721bb76dfba5fbf40c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323113"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783843"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>ワークスペース ベースの Application Insights リソース (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "87323113"
 これにより、リソース全体で一般的なロールベースのアクセス制御 (RBAC) を使えるようになり、アプリ間またはワークスペース間のクエリが不要になります。
 
 > [!NOTE]
-> ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている Log Analytics ワークスペースを通じて課金されます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights)してください。
+> ワークスペース ベースの Application Insights リソースのデータ インジェストとリテンション期間は、データが保管されている Log Analytics ワークスペースを通じて課金されます。 ワークスペース ベースの Application Insights リソースの課金に関する[詳細を参照]( ./pricing.md#workspace-based-application-insights)してください。
 
 新しいエクスペリエンスをテストするには、[Azure portal](https://portal.azure.com)にサインインし、Application Insights リソースを作成します。
 
@@ -27,7 +27,7 @@ ms.locfileid: "87323113"
 
 既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](../learn/quick-create-workspace.md)を参照してください。
 
-パブリック プレビューについては、**ワークスペース ベースのリソースは現在、米国西部 2、米国東部、および米国中南部に制限されています。**
+**ワークスペース ベースのリソースは、現在、すべての商業地域および Azure Government でご利用いただけます。**
 
 リソースが作成されると、 **[概要]** ウィンドウに対応するワークスペース情報が表示されます。
 
@@ -185,6 +185,14 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 ```
 
+## <a name="new-capabilities"></a>新機能
+
+ワークスペース ベースの Application Insights を使用すると、次を含む Azure Monitor の最新の機能をすべて活用できます。
+
+* [カスタマー マネージド キー (CMK)](../platform/customer-managed-keys.md) は、あなたのみがアクセスできる暗号化キーで、保存されているお使いのデータを暗号化します。
+* [Azure Private Link](../platform/private-link-security.md) を使用すると、プライベート エンドポイントを使用して Azure PaaS サービスを仮想ネットワークに安全に接続できます。
+* [Profiler およびスナップショット デバッガー向けの Bring Your Own Storage (BYOS)](./profiler-bring-your-own-storage.md) では、保存時の暗号化ポリシー、有効期間管理ポリシー、および Application Insights Profiler およびスナップショット デバッガーに関連付けられているすべてのデータのネットワーク アクセスを完全に制御できます。 
+
 ## <a name="modifying-the-associated-workspace"></a>関連付けられているワークスペースの変更
 
 ワークスペース ベースの Application Insights リソースが作成されたら、関連付けられている Log Analytics ワークスペースを変更できます。
@@ -204,4 +212,3 @@ Application Insights リソース ウィンドウで **[プロパティ]**  >  *
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../platform/metrics-charts.md
 [start]: ./app-insights-overview.md
-

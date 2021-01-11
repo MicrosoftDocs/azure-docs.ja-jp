@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Getabstract の統合 | Microsoft Docs'
 description: Azure Active Directory と Getabstract の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2b63d048-b529-4fad-9e90-f244323409dd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: ad338ce3758c9c8387cc74cc55f9a905b1e5cd73
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e95dadd81cd021d0d54d77e70251495b1bd5b6a5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73155269"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550849"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>チュートリアル: Azure Active Directory と Getabstract の統合
 
@@ -40,6 +36,9 @@ Getabstract と Azure AD の統合を構成するには、次のものが必要�
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * Getabstract でのシングル サインオンが有効なサブスクリプション
+
+> [!NOTE]
+> この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -68,7 +67,7 @@ Azure AD への Getabstract の統合を構成するには、管理対象の Saa
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Getabstract**」と入力し、結果パネルで **[Getabstract]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Getabstract**」と入力し、結果パネルで **[Getabstract]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Getabstract](common/search-new-app.png)
 
@@ -92,7 +91,7 @@ Getabstract で Azure AD のシングル サインオンを構成してテスト
 
 Getabstract で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Getabstract** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Getabstract** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -108,7 +107,7 @@ Getabstract で Azure AD シングル サインオンを構成するには、次
 
     ![[Getabstract のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** テキスト ボックスに次の URL を入力します。
+    a. **[識別子]** テキスト ボックスに、 という URL を入力します。
 
     ステージ/pre_production の場合: `https://int.getabstract.com`
 
@@ -124,7 +123,7 @@ Getabstract で Azure AD シングル サインオンを構成するには、次
 
     ![[Getabstract のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
     
-    **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    **[サインオン URL]** ボックスに、 のパターンを使用して URL を入力します。
 
     ステージ/pre_production の場合: `https://int.getabstract.com/portal/<org_username>`
     
@@ -133,7 +132,7 @@ Getabstract で Azure AD シングル サインオンを構成するには、次
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Getabstract クライアント サポート チーム](https://www.getabstract.com/en/contact)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -180,7 +179,7 @@ Getabstract で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon に Getabstract へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[Getabstract]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Getabstract]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

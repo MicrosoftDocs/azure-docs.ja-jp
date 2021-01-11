@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 4a96f74418536a60c1501f7bd593ab2f5b9f82ae
-  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+  ms.openlocfilehash: 320895ac02293f46f1e6c03718b50800cc405be8
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/29/2020
-  ms.locfileid: "87386471"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88262893"
 landingContent:
 - title: '[キー]'
   linkLists:
@@ -44,6 +44,18 @@ landingContent:
     links:
     - text: HSM で保護されたキーをインポートする (概要)
       url: hsm-protected-keys.md
+- title: Key Vault キー用クライアント ライブラリ
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET クライアント ライブラリ
+      url: /dotnet/api/azure.security.keyvault.keys?view=azure-dotnet
+    - text: Python クライアント ライブラリ
+      url: /python/api/overview/azure/keyvault-keys-readme?view=azure-python
+    - text: Java クライアント ライブラリ
+      url: https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html
+    - text: Node.js クライアント ライブラリ
+      url: /javascript/api/@azure/keyvault-keys/?view=azure-node-latest
 - title: Key Vault の詳細
   linkLists:
   - linkListType: overview

@@ -38,11 +38,11 @@ Storage サービスにアクセスできるようにアプリケーションを
 
 ### <a name="shared-access-signatures-sas"></a>Shared Access Signatures (SAS)
 モバイル アプリケーションの場合、Azure Storage サービスに対するクライアントからの要求を認証する際には、Shared Access Signature (SAS) を使用することをお勧めします。 SAS を使用すると、期間およびアクセス許可セットを指定して、リソースへのクライアント アクセスを許可することができます。
-ストレージ アカウント所有者は、モバイル クライアントが使用する SAS を生成する必要があります。 SAS を生成するには、クライアントに配布する SAS を生成する別のサービスを記述することが必要になります。 テスト目的で、[Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)または [Azure Portal](https://portal.azure.com) を使用して SAS を生成できます。 SAS の作成時には、SAS の有効期間と、SAS がクライアントに付与するアクセス許可を指定できます。
+ストレージ アカウント所有者は、モバイル クライアントが使用する SAS を生成する必要があります。 SAS を生成するには、クライアントに配布する SAS を生成する別のサービスを記述することが必要になります。 テスト目的で、[Microsoft Azure Storage Explorer](https://storageexplorer.com)または [Azure Portal](https://portal.azure.com) を使用して SAS を生成できます。 SAS の作成時には、SAS の有効期間と、SAS がクライアントに付与するアクセス許可を指定できます。
 
-次に示すのは、Microsoft Azure ストレージ エクスプローラーを使用して SAS を生成する方法の例です。
+次に示すのは、Microsoft Azure Storage Explorer を使用して SAS を生成する方法の例です。
 
-1. まだインストールしていない場合は、 [Microsoft Azure ストレージ エクスプローラーをインストール](https://storageexplorer.com)
+1. まだインストールしていない場合は、 [Microsoft Azure Storage Explorer をインストール](https://storageexplorer.com)
 2. サブスクリプションに接続します。
 3. ストレージ アカウントをクリックし、左下の [アクション] タブをクリックします。 [Get Shared Access Signature] \(Shared Access Signature の取得) をクリックすると、SAS の "接続文字列" が生成されます。
 4. 次に示すのは、ストレージ アカウントの BLOB サービスに対するサービス、コンテナー、およびオブジェクト レベルの読み取りおよび書き込みのアクセス許可を付与する SAS 接続文字列の例です。

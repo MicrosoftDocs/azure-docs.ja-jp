@@ -5,14 +5,15 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
+ms.custom: devx-track-csharp
 ms.date: 04/20/2019
 ms.author: zhshang
-ms.openlocfilehash: ec5b7a75bced4b7cd81a120925558b8c1be57818
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8797d17ac439882415a9f5360fded28cb55484d5
+ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74158178"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89050541"
 ---
 # <a name="quickstart-create-a-chat-room-with-aspnet-and-signalr-service"></a>クイック スタート:ASP.NET と SignalR Service を使ってチャット ルームを作成する
 
@@ -30,15 +31,21 @@ ASP.NET SignalR と ASP.NET Core SignalR の機能の比較の完全なリスト
 * [.NET 4.6.1](https://www.microsoft.com/net/download/windows)
 * [ASP.NET SignalR 2.4.1](https://www.nuget.org/packages/Microsoft.AspNet.SignalR/)
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
 *Serverless* モードは、ASP.NET SignalR アプリケーションではサポートされていません。 Azure SignalR Service インスタンスの場合、必ず *Default* または *Classic* を使用してください。
 
 [「SignalR Service の作成」にあるスクリプト](scripts/signalr-cli-create-service.md)を使用して、このクイック スタートで使用されている Azure リソースを作成することもできます。
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
@@ -51,6 +58,8 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
 
 ## <a name="configure-and-run-chat-room-web-app"></a>チャット ルーム Web アプリの構成と実行
 
@@ -96,6 +105,8 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 1. **F5** を押し、プロジェクトをデバッグ モードで実行します。 アプリケーションがローカルで実行されます。 アプリケーションそのものが SignalR ランタイムをホストする代わりに、Azure SignalR Service に接続するようになります。
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
 
@@ -114,9 +125,14 @@ Azure アカウントで [Azure Portal](https://portal.azure.com/) にサイン�
 
 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+
 ## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、新しい Azure SignalR Service リソースを作成して、ASP.NET Web アプリと共に使用しました。 次に、Azure SignalR Service を ASP.NET Core と共に使用して、リアルタイム アプリケーションを開発する方法について学びます。
 
 > [!div class="nextstepaction"]
 > [Azure SignalR Service を ASP.NET Core と共に使用する](./signalr-quickstart-dotnet-core.md)
+
+[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsnet)
+

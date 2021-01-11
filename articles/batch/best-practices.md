@@ -1,14 +1,14 @@
 ---
 title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 07/14/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497779"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191808"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -56,6 +56,14 @@ ms.locfileid: "86497779"
 Batch プールでは、Azure のダウンタイム イベントが発生する可能性があります。 Batch のシナリオまたはワークフローの計画および開発時には、この点に留意してください。
 
 ノードで障害が発生した場合、Batch は自動的にそれらの計算ノードを回復しようとします。 これにより、回復されたノードで実行中のタスクの再スケジュールがトリガーされることがあります。 中断されたタスクの詳細については、[再試行のための設計](#design-for-retries-and-re-execution)に関するセクションを参照してください。
+
+### <a name="custom-image-pools"></a>カスタム イメージ プール
+
+仮想マシンの構成を使用して Azure Batch プールを作成するときは、プールの各コンピューティング ノードにオペレーティング システムを提供する VM イメージを指定します。 サポートされている Azure Marketplace イメージを使用してプールを作成したり、[Shared Image Gallery のイメージを使用してカスタム イメージを作成したり](batch-sig-images.md)できます。 [マネージド イメージ](batch-custom-images.md)を使用してカスタム イメージ プールを作成することもできますが、可能であれば、Shared Image Gallery を使用してカスタム イメージを作成することをお勧めします。 Shared Image Gallery を使用すると、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりできます。
+
+### <a name="third-party-images"></a>サード パーティのイメージ
+
+プールは、Azure Marketplace に発行されたサード パーティのイメージを使用して作成できます。 ユーザー サブスクリプション モードの Batch アカウントを使用すると、特定のサード パーティのイメージでプールを作成する場合、"Marketplace での購入資格の確認のため、割り当てに失敗しました" というエラーが表示されることがあります。 このエラーを解決するには、イメージの発行者によって設定された条項に同意します。 これを行うには、[Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0) または [Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest) を使用します。
 
 ### <a name="azure-region-dependency"></a>Azure リージョンの依存関係
 

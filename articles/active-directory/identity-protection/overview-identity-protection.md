@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f6ec9c1fb5ae359ca88b48dea97c6a00c0f2b40
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019613"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815183"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
+# <a name="what-is-identity-protection"></a>Identity Protection とは
 
 Identity Protection は、組織が次の 3 つの主要なタスクを実行できるツールです。
 
@@ -52,8 +53,9 @@ Identity Protection は、次の分類のリスクを識別します。
 | 匿名 IP アドレス | 匿名の IP アドレスからのサインイン (例:Tor Browser、Anonymizer VPN)。 |
 | 通常とは異なるサインイン プロパティ | 指定されたユーザーで最近観察されていないプロパティを使用したサインイン。 |
 | マルウェアにリンクした IP アドレス | マルウェアにリンクした IP アドレスからのサインイン |
-| 資格情報の漏洩 | このリスク検出は、ユーザーの有効な資格情報が漏洩したことを示します |
-| Azure AD 脅威インテリジェンス | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました |
+| 資格情報の漏洩 | このリスク検出は、ユーザーの有効な資格情報が漏洩したことを示します。 |
+| パスワード スプレー | ブルート フォースを束ねた手法で、複数のユーザー名が共通のパスワードを使用して攻撃されていることを示します。 |
+| Azure AD 脅威インテリジェンス | Microsoft の内部および外部の脅威インテリジェンス ソースが既知の攻撃パターンを特定しました。 |
 
 これらのリスクとその計算方法の詳細については、「[リスクとは](concept-identity-protection-risks.md)」を説明する記事を参照してください。
 
@@ -69,6 +71,12 @@ Identity Protection は、次の分類のリスクを識別します。
 
 詳細については以下に関する記事を参照してください。[リスクを調査する方法](howto-identity-protection-investigate-risk.md)。
 
+### <a name="risk-levels"></a>リスク レベル
+
+Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 
+
+Microsoft ではリスクの計算方法に関する具体的な詳細を公開していませんが、各レベルごとに、ユーザーまたはサインインが侵害されたという信頼度は高くなります。 たとえば、見慣れないサインイン プロパティのインスタンスが 1 つあるといったことは、資格情報の漏洩ほど脅威的ではない可能性があります。
+
 ## <a name="exporting-risk-data"></a>リスク データのエクスポート
 
 Identity Protection からのデータを他のツールにエクスポートしてアーカイブしたり、さらに調査したり、関連付けしたりすることができます。 Microsoft Graph ベースの API を使用すると、組織はこのデータを収集して、SIEM などのツールでさらに処理することができます。 Identity Protection API へのアクセス方法の詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](howto-identity-protection-graph-api.md)」を参照してください
@@ -79,7 +87,7 @@ Identity Protection の情報と Azure Sentinel の統合に関する情報に�
 
 Identity Protection にユーザーがにアクセスするためには、セキュリティ閲覧者、セキュリティ オペレーター、セキュリティ管理者、グローバル閲覧者、またはグローバル管理者である必要があります。
 
-| Role | できること | できないこと |
+| ロール | できること | できないこと |
 | --- | --- | --- |
 | 全体管理者 | Identity Protection へのフル アクセス |   |
 | セキュリティ管理者 | Identity Protection へのフル アクセス | ユーザーのパスワードをリセットする |

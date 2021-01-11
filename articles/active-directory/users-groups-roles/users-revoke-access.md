@@ -10,15 +10,15 @@ author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 06/26/2020
+ms.date: 07/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5ca5f7c6032a69286da72d8ef3640f64038eb3a
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 1cc4a29c9d4b5ae93df81de5b77cb6355947813d
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027190"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798416"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory でユーザー アクセスを取り消す
 
@@ -38,7 +38,7 @@ ms.locfileid: "86027190"
 
 その後、Azure AD によってその承認ポリシーが再評価されます。 ユーザーがまだ承認されている場合、Azure AD によって新しいアクセス トークンと更新トークンが発行されます。
 
-アクセス トークンは、トークンの有効期間 (通常は約 1 時間) より短い時間内にアクセスを取り消す必要がある場合に、セキュリティ上の問題になることがあります。 このため、Microsoft は、Office 365 アプリケーションに[継続的アクセス評価](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation)を行うために積極的に取り組んでいます。これにより、アクセス トークンをほぼリアルタイムで確実に無効化できます。  
+アクセス トークンは、トークンの有効期間 (通常は約 1 時間) より短い時間内にアクセスを取り消す必要がある場合に、セキュリティ上の問題になることがあります。 このため、Microsoft は、Office 365 アプリケーションに[継続的アクセス評価](../fundamentals/concept-fundamentals-continuous-access-evaluation.md)を行うために積極的に取り組んでいます。これにより、アクセス トークンをほぼリアルタイムで確実に無効化できます。  
 
 ## <a name="session-tokens-cookies"></a>セッション トークン (Cookie)
 
@@ -60,13 +60,13 @@ ms.locfileid: "86027190"
 
 Active Directory の管理者として、オンプレミス ネットワークに接続し、PowerShell を開き、次の操作を実行します。
 
-1. Active Directory でユーザーを無効にします。 「[Disable-ADAccount](https://docs.microsoft.com/powershell/module/addsadministration/disable-adaccount?view=win10-ps)」を参照してください。
+1. Active Directory でユーザーを無効にします。 「[Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps)」を参照してください。
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. Active Directory でユーザーのパスワードを 2 回リセットします。 「[Set-ADAccountPassword](https://docs.microsoft.com/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)」を参照してください。
+1. Active Directory でユーザーのパスワードを 2 回リセットします。 「[Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)」を参照してください。
 
     > [!NOTE]
     > ユーザーのパスワードを 2 回変更する理由は、特にオンプレミスのパスワード レプリケーションで遅延が発生した場合に、Pass-the-Hash のリスクを軽減するためです。 このアカウントが侵害されていないと想定できる場合は、パスワードのリセットを 1 回だけにすることができます。
@@ -83,18 +83,18 @@ Active Directory の管理者として、オンプレミス ネットワーク�
 
 Azure Active Directory の管理者として、PowerShell を開き、``Connect-AzureAD`` を実行して、次の操作を実行します。
 
-1. Azure AD でユーザーを無効にします。 「[Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)」を参照してください。
+1. Azure AD でユーザーを無効にします。 「[Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)」を参照してください。
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. ユーザーの Azure AD 更新トークンを取り消します。 「[Revoke-AzureADUserAllRefreshToken](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)」を参照してください。
+1. ユーザーの Azure AD 更新トークンを取り消します。 「[Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)」を参照してください。
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. ユーザーのデバイスを無効にします。 「[Get-AzureADUserRegisteredDevice](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)」を参照してください。
+1. ユーザーのデバイスを無効にします。 「[Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)」を参照してください。
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false
@@ -102,9 +102,9 @@ Azure Active Directory の管理者として、PowerShell を開き、``Connect-
 
 ## <a name="optional-steps"></a>省略可能な手順
 
-- [Intune で管理されたアプリケーションから会社のデータをワイプする](https://docs.microsoft.com/mem/intune/apps/apps-selective-wipe)。
+- [Intune で管理されたアプリケーションから会社のデータをワイプする](/mem/intune/apps/apps-selective-wipe)。
 
-- [会社所有のデバイスをワイプして、デバイスを出荷時の設定にリセットする](https://docs.microsoft.com/mem/intune/remote-actions/devices-wipe)。
+- [会社所有のデバイスをワイプして、デバイスを出荷時の設定にリセットする](/mem/intune/remote-actions/devices-wipe)。
 
 > [!NOTE]
 > ワイプ後にデバイス上のデータを復元することはできません。

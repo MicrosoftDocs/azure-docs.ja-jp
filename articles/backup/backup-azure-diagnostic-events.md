@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの診断設定を使用する
 description: この記事では、Azure Backup の新旧の診断イベントの使用方法を説明します。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7dbc6d97cd923c75a25eadccef2c2292b10deb41
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e5f666886dca0959b0f06b799088cadf4593ec39
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514146"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826669"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services コンテナーの診断設定を使用する
 
@@ -29,7 +29,7 @@ Azure Backup には、次の診断機能が用意されています。 各イベ
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-AzureBackupReport [レガシ イベント](#legacy-event)を使用している場合は、できるだけ早く上のイベントを使用するように切り替えることをお勧めします。
+まだ[レガシ イベント](#legacy-event)の AzureBackupReport を使用している場合は、上記のイベントを使用するように切り替えることをお勧めします。
 
 詳細については、「[Azure Backup 診断イベントのデータ モデル](./backup-azure-reports-data-model.md)」を参照してください。
 
@@ -82,7 +82,7 @@ Azure Backup を使用して、コンテナー診断データをバックアッ�
         | where TimeGenerated >= RangeStart | where OperationName == "Vault"
         | summarize arg_max(TimeGenerated, *) by ResourceId
         | project ResourceId, Category};
-        // Some Workspaces will not have AzureDiagnostics Table, hence you need to use isFuzzy
+        // Some Workspaces will not have AzureDiagnostics Table, so you need to use isFuzzy
     let CombinedVaultTable = (){
         union isfuzzy = true
         (VaultUnderAzureDiagnostics() ),

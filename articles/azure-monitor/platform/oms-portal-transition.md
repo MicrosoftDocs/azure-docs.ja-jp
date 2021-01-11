@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: b33bd5ba20e21d757e412e9dac7c474308c4561d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c4e9676208a5d2cfa8c0c04a97675a3c634e3d5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077164"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446789"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
@@ -32,7 +32,7 @@ OMS ポータルが非推奨となるのに伴い、次の変更が発表され�
 - [OMS モバイル アプリ](#oms-mobile-app)は廃止予定です。 
 - [NSG ソリューションは、Traffic Analytics ソリューションを通じて入手できる拡張機能に置き換えられます](#azure-network-security-group-analytics)。
 - System Center Operations Manager から Log Analytics への新しい接続では、[更新された管理パック](#system-center-operations-manager)が必要です。
-- [Update Management](../../automation/automation-update-management.md) への移行については、「[OMS の更新プログラムの展開を Azure に移行する](../../automation/migrate-oms-update-deployments.md)」を参照してください。
+- [Update Management](../../automation/update-management/update-mgmt-overview.md) への移行については、「[OMS の更新プログラムの展開を Azure に移行する](../../automation/migrate-oms-update-deployments.md)」を参照してください。
 
 
 ## <a name="what-should-i-do-now"></a>現時点で何をすべきか

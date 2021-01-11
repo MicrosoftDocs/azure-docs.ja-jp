@@ -3,39 +3,39 @@ title: Docker on Azure のドキュメント
 summary: Docker は人気のあるコンテナー管理およびイメージング プラットフォームで、Linux および Windows 上のコンテナーを簡単に操作できます。 Docker on Azure の利用方法について説明します。
 metadata:
   title: Docker on Azure のドキュメント
-  description: Docker は人気のあるコンテナー管理およびイメージング プラットフォームで、Linux および Windows 上のコンテナーを簡単に操作できます。 Docker on Azure の利用方法について説明します。
+  description: Docker は人気のあるコンテナー管理およびイメージング プラットフォームで、Linux および Windows 上のコンテナーを簡単に操作できます。
   services: multiple
   ms.service: multiple
   ms.topic: landing-page
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: daff334cbbe118d6fdbc42a5497313f9671fd7f1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 700c5b1e113de32b80b3d716db915836049128ec
+  ms.sourcegitcommit: 4feb198becb7a6ff9e6b42be9185e07539022f17
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78944022"
+  ms.lasthandoff: 09/04/2020
+  ms.locfileid: "89470121"
 landingContent:
 - title: Docker on Azure のデプロイ
   linkLists:
   - linkListType: overview
     links:
-    - text: Ubuntu 上に Docker をデプロイするクイックスタート テンプレート
+    - text: Ubuntu 上に Docker をデプロイするクイック スタート テンプレート
       url: https://azure.microsoft.com/resources/templates/docker-simple-on-ubuntu/
-- title: はじめに
+- title: 作業開始
   linkLists:
   - linkListType: tutorial
     links:
     - text: Azure App Service で PostgreSQL を使用して Python (Django) Web アプリを実行する
-      url: ../app-service/containers/tutorial-python-postgresql-app.md
+      url: ../app-service/tutorial-python-postgresql-app.md
     - text: Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する
-      url: ../jenkins/tutorial-jenkins-github-docker-cicd.md
+      url: /azure/developer/jenkins/pipeline-with-github-and-docker
 - title: リソース
   linkLists:
   - linkListType: reference
     links:
-    - text: Docker の Azure サイト
+    - text: Docker for Azure サイト
       url: https://docs.docker.com/docker-for-azure/why/
     - text: Docker の Azure ドライバー
       url: https://docs.docker.com/machine/drivers/azure/

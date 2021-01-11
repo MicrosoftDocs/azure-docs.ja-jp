@@ -4,12 +4,12 @@ description: この記事では、REST API を使用してコンテナーの構�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3ee2d57b5589daa756020ebb787a5400ed244506
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513117"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890044"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーの構成を更新する
 
@@ -103,7 +103,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 }
 ```
 
-#### <a name="responses"></a>Responses
+#### <a name="responses-for-the-patch-operation"></a>PATCH 操作の応答
 
 'PATCH' 操作に対する正常な応答は次のようになります。
 
@@ -111,7 +111,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | [OK]        |
 
-##### <a name="example-response"></a>応答の例
+##### <a name="example-response-for-the-patch-operation"></a>PATCH 操作の応答例
 
 'PATCH' 要求を送信すると、200 (successful) 応答が返されます。
 

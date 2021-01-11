@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory を使ったアプリケーションの管理 | Microsoft Docs
+title: Azure Active Directory でのアプリケーション管理とは
 description: クラウドとオンプレミス アプリケーションの Identity and Access Management (IAM) システムとして Azure Active Directory (AD) を使用する方法の概要です。
 services: active-directory
 author: kenwith
@@ -12,12 +12,12 @@ ms.date: 07/01/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28b04828bc778a2b9076c9ea1970ce80f231fbe3
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 293aa80336b259a760a835e3ece56d50287f06ed
+ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386012"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89299883"
 ---
 # <a name="what-is-application-management"></a>アプリケーション管理とは
 
@@ -93,6 +93,6 @@ Azure AD に移行することで、コストを節約し、オンプレミス �
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure AD でのアプリ管理のクイックスタート シリーズ](view-applications-portal.md)
+- [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
 - [アプリケーション統合の概要](plan-an-application-integration.md)
 - [プロビジョニングを自動化する方法](../app-provisioning/user-provisioning.md)

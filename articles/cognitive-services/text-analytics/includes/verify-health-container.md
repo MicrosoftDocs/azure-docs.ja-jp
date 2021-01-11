@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 5c598807f36000a18211e32eba53220bfbeea2f7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1a8ce0bc94c61a0cfe6cdad11375763ba954957d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108714"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88122416"
 ---
 ### <a name="verify-that-a-container-is-running"></a>コンテナーが実行中であることを確認する
 
@@ -37,4 +37,4 @@ ms.locfileid: "86108714"
 |`http://localhost:5000/swagger`|この URL を通じて、コンテナーからエンドポイントの完全なドキュメント一式と `Try it now` 機能が提供されます。 この機能を使用すると、コードを一切記述することなく、お客様の設定を Web ベースの HTML フォームに入力したりクエリを実行したりできます。 クエリから戻った後、HTTP ヘッダーと HTTP 本文の必要な形式を示すサンプル CURL コマンドが得られます。 |
 |`http://localhost:5000/demo`| ブラウザーを通じてこの機能を要求すると、入力テキスト サンプルのクエリや指定したクエリの結果を対話形式で視覚化できます。  |
 
-コンテナーにクエリを送信するには、この要求 URL (`http://localhost:5000/text/analytics/v3.0-preview.1/domains/health`) を使用します。
+コンテナーにクエリを送信するには、この要求 URL (`http://localhost:5000/text/analytics/v3.2-preview.1/entities/health`) を使用します。

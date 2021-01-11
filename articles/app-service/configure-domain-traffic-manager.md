@@ -5,21 +5,21 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e8d5fa14678a2a26234dfcd73f4a50af62ca7aa
+ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610243"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88962878"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Traffic Manager 統合を使用して Azure App Service 内のカスタム ドメイン名を構成する
 
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
 
 > [!NOTE]
-> Cloud Services については、「[Azure クラウド サービスのカスタム ドメイン名の構成](../cloud-services/cloud-services-custom-domain-name.md)」を参照してください。
+> Cloud Services については、「[Azure クラウド サービスのカスタム ドメイン名の構成](../cloud-services/cloud-services-custom-domain-name-portal.md)」を参照してください。
 
-[Azure Traffic Manager](/azure/traffic-manager/) を使用してトラフィックを [Azure App Service](overview.md) に負荷分散する場合、App Service アプリには **\<traffic-manager-endpoint>.trafficmanager.net** を使用してアクセスできます。 ユーザーにわかりやすいドメイン名を付けるために、www\.contoso.com のようなカスタム ドメイン名を App Service に割り当てることができます。
+[Azure Traffic Manager](../traffic-manager/index.yml) を使用してトラフィックを [Azure App Service](overview.md) に負荷分散する場合、App Service アプリには **\<traffic-manager-endpoint>.trafficmanager.net** を使用してアクセスできます。 ユーザーにわかりやすいドメイン名を付けるために、www\.contoso.com のようなカスタム ドメイン名を App Service に割り当てることができます。
 
 この記事では、[Traffic Manager](../traffic-manager/traffic-manager-overview.md)と統合された App Service アプリを使用してカスタム ドメイン名を構成する方法について説明します。
 
@@ -55,7 +55,7 @@ Azure Traffic Manager に統合されたアプリにカスタム DNS 名をマ�
 
 ## <a name="create-traffic-manager-endpoint"></a>Traffic Manager エンドポイントの作成
 
-「 [エンドポイントの追加と削除](../traffic-manager/traffic-manager-endpoints.md) 」の手順に従って、App Service アプリをお使いの Traffic Manager プロファイルのエンドポイントとして追加します。
+「 [エンドポイントの追加と削除](../traffic-manager/traffic-manager-manage-endpoints.md) 」の手順に従って、App Service アプリをお使いの Traffic Manager プロファイルのエンドポイントとして追加します。
 
 App Service アプリがサポートされている価格レベルになると、エンドポイントを追加するときに、使用可能な App Service ターゲットのリストが表示されます。 アプリのリストが表示されない場合は、[お使いのアプリの価格レベルを確認します](#prepare-the-app)。
 

@@ -1,17 +1,17 @@
 ---
 title: BLOB パスを既定値から変更する
-description: BLOB ファイル パス名を変更するように Azure 関数を設定する方法について説明します
+description: 既定の BLOB ファイル パス名を変更するように Azure 関数を設定して、BLOB を別の場所に移動する方法について説明します。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 92925fcf13f91364619262455579392a7457f6b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0a7dab1129eb88d7e58bab8a827d745596bc218d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504833"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183719"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>BLOB パスを既定のパスから変更する
 

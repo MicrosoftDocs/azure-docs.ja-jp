@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386947"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798399"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 
@@ -55,11 +55,11 @@ Azure AD では、あらゆる種類のパスワード シングル サインオ
 
 アカウントの共有を有効にする Azure AD の機能は、次のとおりです。
 
-* [パスワード シングル サインオン](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [パスワード シングル サインオン](../manage-apps/sso-options.md#password-based-sso)
 * パスワード シングル サインオン エージェント
 * [グループの割り当て](groups-self-service-management.md)
 * カスタム パスワード アプリケーション
-* [アプリケーションの使用状況に関するダッシュボード/レポート](../active-directory-passwords-get-insights.md)
+* [アプリケーションの使用状況に関するダッシュボード/レポート](../authentication/howto-sspr-reporting.md)
 * エンド ユーザー アクセス ポータル
 * [アプリケーション プロキシ](../manage-apps/application-proxy.md)
 * [Active Directory マーケットプレース](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -72,10 +72,10 @@ Azure AD を使ってアカウントを共有するには、次の操作が必�
 * パスワード シングル サインオン (SSO) に対応するようにアプリケーションを構成する
 * [グループ ベースの割り当て](groups-saasapps.md)を使い、共有資格情報を入力するオプションを選ぶ
 
-Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](../authentication/concept-mfa-whichversion.md)」を参照) すると共に、[Azure AD のセルフ サービス](groups-self-service-management.md) グループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
+Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](../authentication/concept-mfa-howitworks.md)」を参照) すると共に、[Azure AD のセルフ サービス](groups-self-service-management.md) グループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Active Directory のアプリケーション管理](../manage-apps/what-is-application-management.md)
-* [条件付きアクセスを使用したアプリケーションの保護](../active-directory-conditional-access-azure-portal.md)
+* [条件付きアクセスを使用したアプリケーションの保護](../conditional-access/overview.md)
 * [セルフサービス グループの管理/SSAA](groups-self-service-management.md)

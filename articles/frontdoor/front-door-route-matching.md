@@ -3,20 +3,20 @@ title: Azure Front Door - ルーティング規則照合の監視 | Microsoft Do
 description: この記事は、着信要求の照合において、Azure Front Door がどのルーティング規則を使用するかを理解するためのものです。
 services: front-door
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.author: duau
+ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878597"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89401573"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door が要求をルーティング規則と照合する方法
 

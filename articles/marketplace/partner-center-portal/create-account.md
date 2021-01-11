@@ -3,21 +3,26 @@ title: パートナー センターでコマーシャル マーケットプレ�
 description: パートナー センターで Microsoft コマーシャル マーケットプレースアカウントを作成する方法を説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: guide
-ms.date: 04/14/2020
-ms.openlocfilehash: 4a178feb4bdf0bc361185e21e47ccdceac3a7f21
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.topic: article
+ms.date: 07/01/2020
+author: parthpandyaMSFT
+ms.author: parthp
+ms.openlocfilehash: 862922ff3d0e09d1d1fdc864886852aed910c7df
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110013"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87326649"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターでコマーシャル マーケットプレース アカウントを作成する
 
 [Azure Marketplace](https://azuremarketplace.microsoft.com/) または [Microsoft AppSource](https://appsource.microsoft.com/) にオファーを発行するには、パートナー センターでコマーシャル マーケットプレース プログラムのアカウントを作成する必要があります。 この記事では、パートナー センター アカウントを作成する方法およびコマーシャル マーケットプレース プログラムに新しい発行元を追加する方法について説明します。
 
 >[!IMPORTANT]
->[Cloud パートナー ポータル](https://cloudpartner.azure.com)のアカウントをパートナー センターに移行済みの場合は、新しいアカウントを作成する必要はありません。 詳細については、「[Cloud パートナー ポータルから移行しているパブリッシャーの場合](#for-publishers-who-are-moving-from-the-cloud-partner-portal)」を参照してください。
+>コマーシャル マーケットプレースでオファーを発行するには、会社または組織に関連付けられている職場アカウントを使用する必要があります。 個人アカウントはサポートされていません。
+
+>[!IMPORTANT]
+>Cloud パートナー ポータル (CPP) のアカウントをお持ちだった場合、これをパートナー センターに移行してあるため、新しいアカウントを作成する必要はありません。 詳細については、「[Cloud パートナー ポータルから移行した発行元の場合](#for-publishers-who-moved-from-the-cloud-partner-portal)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -43,7 +48,7 @@ ms.locfileid: "86110013"
 - [発行元プロファイルを提供する](#provide-your-publisher-profile)
 
 >[!IMPORTANT]
->[Cloud パートナー ポータル](https://cloudpartner.azure.com)のアカウントをパートナー センターに移行済みの場合は、新しいアカウントを作成する必要はありません。 詳細については、「[Cloud パートナー ポータルから移行しているパブリッシャーの場合](#for-publishers-who-are-moving-from-the-cloud-partner-portal)」を参照してください。
+>Cloud パートナー ポータルのアカウントをお持ちだった場合、これをパートナー センターに移行してあるため、新しいアカウントを作成する必要はありません。 詳細については、「[Cloud パートナー ポータルから移行した発行元の場合](#for-publishers-who-moved-from-the-cloud-partner-portal)」を参照してください。
 
 ### <a name="register-on-the-partner-center-enrollment-page"></a>パートナー センターの登録ページで登録する
 
@@ -94,7 +99,7 @@ Microsoft パートナー センターで既に登録を行っている場合は
 アカウントの情報が手元にあることをご確認ください。
 
 >[!IMPORTANT]
->[Cloud パートナー ポータル](https://cloudpartner.azure.com/)のアカウントをパートナー センターに移行済みの場合は、新しいアカウントを作成する必要はありません。 詳細については、「[Cloud パートナー ポータルから移行しているパブリッシャーの場合](#for-publishers-who-are-moving-from-the-cloud-partner-portal)」を参照してください。
+>Cloud パートナー ポータルのアカウントをお持ちだった場合、これをパートナー センターに移行してあるため、新しいアカウントを作成する必要はありません。 詳細については、「[Cloud パートナー ポータルから移行した発行元の場合](#for-publishers-who-moved-from-the-cloud-partner-portal)」を参照してください。
 
 ### <a name="what-if-im-already-enrolled-in-the-microsoft-partner-network"></a>Microsoft Partner Network に既に登録されている場合
 
@@ -154,15 +159,13 @@ Microsoft パートナー センター アカウントを使用して[パート�
 
 これで、パートナー センターでコマーシャル マーケットプレース アカウントが作成されました。 詳細については、[コマーシャル マーケットプレースの概要](./commercial-marketplace-overview.md)に関するページを参照してください。 発行元の追加について詳しくは、「[商業マーケットプレース プログラムに新しい発行元を追加する](#add-new-publishers-to-the-commercial-marketplace-program)」を参照してください。
 
-## <a name="for-publishers-who-are-moving-from-the-cloud-partner-portal"></a>Cloud パートナー ポータルから移行しているパブリッシャーの場合
+## <a name="for-publishers-who-moved-from-the-cloud-partner-portal"></a>Cloud パートナー ポータルから移行した発行元の場合
 
-アカウントを [Cloud パートナー ポータル](https://cloudpartner.azure.com) から移行済みの場合は、新しいパートナー センター アカウントを作成する必要はありません。 既存の Cloud パートナー ポータル アカウントにサインインすると、新しいパートナー センター アカウントへのカスタマイズされたリンクがメールとバナー通知の両方に送られます。
+Cloud パートナー ポータルのアカウントをお持ちだった場合は、パートナー センターに移行してあります。 新しいパートナー センター アカウントを作成する必要はありません。 既存の Cloud パートナー ポータル アカウントにサインインすると、新しいパートナー センター アカウントへのカスタマイズされたリンクがメールとバナー通知の両方に送られます。
 
 カスタマイズされたリンクを選択して新しいパートナー センター アカウントを有効にしたら、パートナー センターの[コマーシャル マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)に移動して、ご自分のアカウントに戻ることができます。
 
-発行への同意と会社のプロファイル情報は、以前に設定したとアカウント支払いプロファイル情報、ユーザー アカウントとアクセス許可、Cloud パートナー ポータル アカウントに関連付けられているアクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。
-
-アカウント情報を Cloud パートナー ポータルからパートナー センターに移行した後は、アカウントの更新や、ユーザー、アクセス許可、および課金の管理のために Cloud パートナー ポータルを使用することはなくなります。 パートナー センターで行ったアカウントの更新は、期間限定で、最終的にサポートが終了するまで、読み取り専用の Cloud パートナー ポータル アカウントで自動的に更新されます。
+発行への同意と会社のプロファイル情報は、以前に設定したアカウント支払いプロファイル情報、ユーザー アカウントとアクセス許可、Cloud パートナー ポータル アカウントに関連付けられているアクティブなオファーと共に、新しいパートナー センター アカウントに移行されます。
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>コマーシャル マーケットプレース プログラムに新しい発行元を追加する
 
@@ -187,4 +190,4 @@ Microsoft パートナー センター アカウントを使用して[パート�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パートナー センターで Commercial Marketplace アカウントを管理する](./manage-account.md)
+- [パートナー センターでコマーシャル マーケットプレース アカウントを管理する](./manage-account.md)

@@ -10,13 +10,13 @@ ms.tgt_pltfrm: azure-pipelines
 ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
-ms.custom: devops
-ms.openlocfilehash: 8aa53d4b08a4a0bdaa4e1f12169811ae88edbd2f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devops, devx-track-javascript
+ms.openlocfilehash: c83a67f7d524a062485f2c68e0adb7fdd2855a84
+ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501876"
+ms.lasthandoff: 09/04/2020
+ms.locfileid: "89462175"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>チュートリアル:Azure DevOps Services と Azure Pipelines を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -84,9 +84,10 @@ https://github.com/azure-devops/fabrikam-node
 
 #### <a name="java"></a>[Java](#tab/java)
 
-- Java Spring Boot および Spring Cloud に基づくアプリをデプロイする場合は、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804)のテンプレートを使用して、Azure に Linux VM を作成します。このテンプレートでは、完全にサポートされている OpenJDK ベースのランタイムが提供されます。
-- Tomcat サーバーに Java サーブレットをデプロイする場合は、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804)の Azure テンプレートを使用して Java 8 で Linux VM を作成し、[サービスとして Tomcat 9.x を構成](https://tomcat.apache.org/tomcat-9.0-doc/setup.html)します。
-- Java EE ベースのアプリをデプロイする場合は、Azure テンプレートを使用して、[Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90)、[Linux VM + Java + WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin)、または [Linux VM + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu8-ubuntu-1804) + WildFly/JBoss 14 を作成します 
+- Java Spring Boot および Spring Cloud に基づくアプリをデプロイする場合は、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004)のテンプレートを使用して、Azure に Linux VM を作成します。このテンプレートでは、完全にサポートされている OpenJDK ベースのランタイムが提供されます。
+- Tomcat サーバーに Java サーブレットをデプロイする場合は、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004)の Azure テンプレートを使用して Java 8 で Linux VM を作成し、[サービスとして Tomcat 9.x を構成](https://tomcat.apache.org/tomcat-9.0-doc/setup.html)します。
+- Java EE ベースのアプリをデプロイする場合は、Azure テンプレートを使用して、[Linux VM + Java + WebSphere 9.x](https://azuremarketplace.microsoft.com/marketplace/apps/midvision.websphere-application-server-nde-90)、[Linux VM + Java + WebLogic 12.x](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.20191009-arm-oraclelinux-wls-admin)、または [Linux VM + Java](https://azuremarketplace.microsoft.com/marketplace/apps/azul.azul-zulu13-ubuntu-2004) + WildFly/JBoss 14 を作成します 
+
 
 #### <a name="javascript"></a>[JavaScript](#tab/java-script)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9090ca5b8057179b0cbef1d0a87ae563303ed2c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
+ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85130434"
+ms.lasthandoff: 08/27/2020
+ms.locfileid: "88950393"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 
@@ -29,7 +29,7 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 
 ## <a name="users-at-risk-detected-email"></a>危険な状態のユーザーが検出された電子メール
 
-危険な状態のアカウントが検出されると、Azure AD Identity Protection は **[Users at risk detected]\(危険な状態のユーザーが検出されました\)** という件名のアラート メールを生成します。 このメールには、 **[リスクのフラグ付きユーザー](../reports-monitoring/concept-user-at-risk.md)** レポートへのリンクが含まれます。 ベスト プラクティスとして、危険な状態のユーザーをすぐに調べる必要があります。
+危険な状態のアカウントが検出されると、Azure AD Identity Protection は **[Users at risk detected]\(危険な状態のユーザーが検出されました\)** という件名のアラート メールを生成します。 このメールには、 **[リスクのフラグ付きユーザー](./overview-identity-protection.md)** レポートへのリンクが含まれます。 ベスト プラクティスとして、危険な状態のユーザーをすぐに調べる必要があります。
 
 このアラートを構成すると、アラートを生成するユーザー リスク レベルを指定できます。 ユーザーのリスク レベルが、指定されたものに達するとメールが生成されます。 たとえば、ユーザー リスクが中になったら警告を出すようにポリシーを設定していて、ユーザー John のユーザー リスクのスコアが、リアルタイム サインイン リスクが原因で中リスクに移行した場合は、危険な状態のユーザーが検出されたというメールを受信します。 このユーザーに対して後続のリスク検出が行われ、それによってユーザー リスク レベルの計算が、指定されたリスク レベル (またはそれ以上) になった場合は、ユーザー リスク スコアが再計算されたときに、危険な状態のユーザーが検出されたという追加のメールを受け取ります。 たとえば、ユーザーが 1 月 1 日に中リスクに移行すると、中リスクのときに警告を出すように設定されている場合は、メール通知を受け取ります。 次に、同じユーザーに対して 1 月 5 日に新たなリスク検出が行われて、それも中リスクであり、ユーザー リスク スコアが再計算され、それでもまだ中だった場合は、新たなメール通知を受け取ります。 
 
@@ -70,4 +70,4 @@ Azure AD Identity Protection では、ユーザーのリスクとリスク検出
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)
+- [Azure Active Directory Identity Protection](./overview-identity-protection.md)

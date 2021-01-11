@@ -96,7 +96,7 @@ Data Box Gateway サービスは、次のシナリオの個人情報を収集し
 
 共有にアクセスできる、または削除できるユーザーの一覧を表示するには、[Data Box Gateway での共有の管理](data-box-gateway-manage-shares.md)に関するページにある手順に従ってください。
 
-詳細については、[Security Center](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
+詳細については、[トラスト センター](https://www.microsoft.com/trustcenter)で Microsoft のプライバシー ポリシーを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: service-bus
 ms.date: 07/02/2020
 ms.author: alvidela
-ms.openlocfilehash: cf21030fbf1aaa9f36e4d34aac918c4604066ec2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 373629c86f2d842ad2e02dd2b66739f3963bf7ed
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071633"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064555"
 ---
 # <a name="how-to-integrate-rabbitmq-with-azure-service-bus"></a>RabbitMQ を Azure Service Bus と統合する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "87071633"
 
 これらの機能は、次のようなシナリオで利用できます。
 
-- **エッジ セットアップ**:RabbitMQ にメッセージを送信しているエッジ セットアップがありますが、これらのメッセージをさらに処理するために [Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview) に転送して、[Azure ビッグ データ機能](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/big-data)の多くを利用できるようにしたいと考えています。
+- **エッジ セットアップ**:RabbitMQ にメッセージを送信しているエッジ セットアップがありますが、これらのメッセージをさらに処理するために [Azure Service Bus](./service-bus-messaging-overview.md) に転送して、[Azure ビッグ データ機能](/azure/architecture/guide/architecture-styles/big-data)の多くを利用できるようにしたいと考えています。
 - **ハイブリッド クラウド**:あなたの会社が最近買収したサード パーティは、メッセージングのニーズに RabbitMQ を使用しています。 彼らは別のクラウドを使用しています。 RabbitMQ から Azure Service Bus にブリッジすることで、Azure への移行と同時にデータの共有を開始できます。
 - **サード パーティの統合**:RabbitMQ をブローカーとして使用している組織外のサード パーティからデータを受け取る必要があります。 彼らに SAS キーを提供し、Azure Service Bus キューの限られたセットへのアクセスを許可することで、そこにメッセージを転送してもらうことができます。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87071633"
 
 最初に、[ここ](https://azure.microsoft.com/free/)でサインアップして、無料の Azure アカウントを作成する必要があります。
 
-アカウントにサインインしたら、[Azure portal](https://portal.azure.com/) にアクセスし、新しい Azure Service Bus [名前空間](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)を作成します。 名前空間は、キューやトピックなどのメッセージング コンポーネントが存在するスコープ コンテナーです。
+アカウントにサインインしたら、[Azure portal](https://portal.azure.com/) にアクセスし、新しい Azure Service Bus [名前空間](./service-bus-create-namespace-portal.md)を作成します。 名前空間は、キューやトピックなどのメッセージング コンポーネントが存在するスコープ コンテナーです。
 
 ## <a name="adding-a-new-azure-service-bus-namespace"></a>新しい Azure Service Bus 名前空間を追加する
 
@@ -40,7 +40,7 @@ Azure portal で、大きいプラス ボタンをクリックして新しいリ
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/integration.png" alt-text="[Azure Service Bus] の選択":::
 
-名前空間の情報を入力するように求められます。 使用する Azure サブスクリプションを選択します。 [リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal)がない場合は、新しいものを作成できます。
+名前空間の情報を入力するように求められます。 使用する Azure サブスクリプションを選択します。 [リソース グループ](../azure-resource-manager/management/manage-resource-groups-portal.md)がない場合は、新しいものを作成できます。
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-namespace.png" alt-text="名前空間の作成":::
 
@@ -76,7 +76,7 @@ rabbitmq-plugins enable rabbitmq_shovel_management
 
 ## <a name="connecting-rabbitmq-to-azure-service-bus"></a>RabbitMQ を Azure Service Bus に接続する
 
-キューの[共有アクセス ポリシー](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) (SAS) を作成する必要があります。これにより、RabbitMQ がメッセージをそのキューに発行できるようになります。 SAS ポリシーでは、外部パーティに対して実行を許可する、リソースでの操作を指定できます。 たとえば、RabbitMQ に対してメッセージの送信を許可し、キューのリッスンや管理は許可しないといった指定が可能です。
+キューの[共有アクセス ポリシー](../storage/common/storage-sas-overview.md) (SAS) を作成する必要があります。これにより、RabbitMQ がメッセージをそのキューに発行できるようになります。 SAS ポリシーでは、外部パーティに対して実行を許可する、リソースでの操作を指定できます。 たとえば、RabbitMQ に対してメッセージの送信を許可し、キューのリッスンや管理は許可しないといった指定が可能です。
 
 :::image type="content" source="./media/service-bus-integrate-with-rabbitmq/create-sas-policy.png" alt-text="SAS ポリシーの追加":::
 

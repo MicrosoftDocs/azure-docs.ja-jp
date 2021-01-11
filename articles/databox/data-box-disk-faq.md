@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a0b3a91d9af119191717aa63a2dedf0797159fd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f2231b74034ba6cea672a7bbf68f506fce423d45
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745791"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826142"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
@@ -56,8 +56,25 @@ A.  Data Box Disk が現在使用できる場所については、「[利用可�
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
 A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
-### <a name="q-will-my-data-box-disk-cross-countryregion-borders-during-shipping"></a>Q. Data Box Disk は配送中に国/地域の境界を越えますか?
-A. Data Box Disk は宛先と同じ国内から出荷され、国/地域の境界を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国/地域からもディスクを配送できます。
+### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
+A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
+
+### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Q. ある国/地域の場所にあるソース データを別の国の Azure リージョンにインポートする方法はありますか?
+A. Data Box Disk は配送先と同じ国/地域内でのデータ インジェストのみをサポートし、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国/地域からも Data Box Disks を配送できます。
+
+たとえばカナダの場所にあるデータを Azure 米国西部ストレージ アカウントに移行する場合、次のようにして実現できます。
+
+### <a name="option-1"></a>オプション 1:  
+
+データを含む[サポートされているディスク](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements?toc=/azure/storage/blobs/toc.json#supported-disks)を、[Azure Import/Export サービス](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)を使用して、カナダのソースの場所から Azure 米国西部のデータセンターに発送します。
+
+### <a name="option-2"></a>オプション 2:
+
+1. たとえばカナダ中部でストレージ アカウントを選択することによって、カナダで Data Box Disk を注文します。 SSD ディスクは、カナダ中部の Azure データセンターから、注文の作成時に指定された (カナダの) 出荷先住所に出荷されます。
+
+2. オンプレミス サーバーからのデータをディスクにコピーした後、Microsoft から提供されている返却ラベルを使用して、カナダの Azure データセンターに返します。 Data Box Disk に存在するデータは、注文の作成時に選択したカナダの Azure リージョンの移行先のストレージ アカウントにアップロードされます。
+
+3. その後、AzCopy などのツールを使用して、米国西部のストレージ アカウントにデータをコピーできます。 この手順では、Data Box Disk の課金に含まれていない [Standard Storage](https://azure.microsoft.com/pricing/details/storage/) と [帯域幅の料金](https://azure.microsoft.com/pricing/details/bandwidth/)が発生します。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft サポートに問い合わせ](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)てください。

@@ -3,29 +3,29 @@ title: Azure portal を使用して Azure サービスの通知でアクティ�
 description: Azure サービスが発生したときに、SMS、電子メール、または Webhook で通知を受け取ります。
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: a8723698cddfb519687525820475517b93219a4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b90940c4532370e7742f736708625ddec283aab1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85567649"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499277"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications-using-the-azure-portal"></a>Azure portal を使用してサービスの通知でアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
 
 この記事では、Azure portal を使用してサービスの正常性通知を行うためのアクティビティ ログ アラートを Azure portal を使用して設定する方法について説明します。  
 
-サービス正常性通知は、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に保存されます。アクティビティ ログには大量の情報が保存される可能性があるため、サービス正常性通知のアラートの表示と設定を容易にするための別のユーザー インターフェイスがあります。 
+サービス正常性通知は、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に格納されます。 アクティビティ ログに格納されている大量の情報を考慮し、サービス正常性通知に関するアラートを表示および設定しやすくするための個別のユーザー インターフェイスがあります。 
 
 Azure でサービス正常性通知を Azure サブスクリプションに送信するときに、アラートを受け取ることができます。 次の情報に基づくアラートを構成できます。
 
-- サービス正常性通知のクラス (サービスに関する問題、計画済みメンテナンス、正常性の勧告)。
+- サービス正常性通知のクラス (サービスに関する問題、計画メンテナンス、正常性の勧告、セキュリティに関する勧告)。
 - 影響を受けたサブスクリプション。
 - 影響を受けたサービス。
 - 影響を受けたリージョン。
 
 > [!NOTE]
-> サービス正常性通知では、リソース正常性イベントに関するアラートは送信されません。
+> サービス正常性通知では、リソース正常性イベントのアラートは送信されません。
 
 次の方法でアラートを送信するユーザーを構成することもできます。
 
@@ -40,7 +40,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="alert-and-new-action-group-using-azure-portal"></a>Azure portal を使用するアラートと新しいアクション グループ
+## <a name="create-service-health-alert-using-azure-portal"></a>Azure portal を使用して Service Health アラートを作成する
 1. [ポータル](https://portal.azure.com)で、 **[サービス正常性]** を選択します。
 
     ![[サービス正常性] サービス](media/alerts-activity-log-service-notifications/home-servicehealth.png)
@@ -49,54 +49,31 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
     ![[正常性アラート] タブ](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. **[サービス正常性アラートの作成]** を選択し、フィールドに入力します。
+1. **[サービス正常性アラートの追加]** を選択し、フィールドに入力します。
 
     ![[サービス正常性アラートの作成] コマンド](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. アラートを受け取る **[サブスクリプション]** 、 **[サービス]** 、 **[リージョン]** を選択します。
+1. アラートの対象となる **[サブスクリプション]** 、 **[サービス]** 、 **[リージョン]** を選択します。
 
-    ![[アクティビティ ログ アラートの追加] ダイアログ ボックス](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
+    [![[アクティビティ ログ アラートの追加] ダイアログ ボックス](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)](./media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png#lightbox)
 
-    > [!NOTE]
-    > このサブスクリプションは、アクティビティ ログ アラートの保存に使用されます。 アラート リソースはこのサブスクリプションにデプロイされ、アクティビティ ログのイベントを監視します。
+> [!NOTE]
+>このサブスクリプションは、アクティビティ ログ アラートの保存に使用されます。 アラート リソースはこのサブスクリプションにデプロイされ、アクティビティ ログのイベントを監視します。
 
-1. アラートを受け取りたい**イベントの種類**を選択します。*サービスの問題*、*計画済みメンテナンス*、および*正常性の勧告*のいずれかです 
+5. アラートを受け取りたい**イベントの種類**を選択します。これは、 *[サービスの問題]* 、 *[計画メンテナンス]* 、 *[正常性の勧告]* 、および *[セキュリティに関する勧告]* のいずれかです。
 
-1. **[アラート ルール名]** と **[説明]** を入力してアラートの詳細を定義します。
+6. **[アクション グループの選択]** をクリックして、既存のアクション グループを選択するか、新しいアクション グループを作成します。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)」を参照してください。
 
-1. アラートを保存する **[リソース グループ]** を選択します。
 
-1. **[新しいアクション グループ]** を選択して新しいアクション グループを作成します。 **[アクション グループ名]** ボックスおよび **[短い名前]** ボックスに名前を入力します。 短い名前は、このアラートが発生したときに送信される通知で参照されます。
+7. **[アラート ルール名]** と **[説明]** を入力してアラートの詳細を定義します。
 
-    ![新しいアクション グループを作成する](media/alerts-activity-log-service-notifications/action-group-creation.png)
+8. アラートを保存する **[リソース グループ]** を選択します。
 
-1. 受信者についての次の情報を入力して、受信者の一覧を定義します。
 
-    a. **Name**:受信者の名前、エイリアス、または識別子を入力します。
-
-    b. **アクションの種類**:SMS、メール、webhook、Azure アプリなどを選択します。
-
-    c. **[詳細]** :選択したアクションの種類に基づいて、電話番号、メール アドレス、Webhook の URI などを入力します。
-
-1. **[OK]** を選択してアクション グループを選択し、 **[アラート ルールの作成]** を選択してアラートを完成させます。
 
 数分以内にアラートがアクティブになり、作成時に指定した条件に基づいてトリガーが開始されます。
 
 [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。 アクティビティ ログ アラートの webhook スキーマの詳細については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
-
->[!NOTE]
->上記の手順で定義されたアクション グループは、今後すべてのアラート定義で既存のアクション グループとして再利用できます。
->
-
-## <a name="alert-with-existing-action-group-using-azure-portal"></a>Azure portal を使用する既存のアクション グループでのアラート
-
-1. 前のセクションの手順 1 から 6 に従って、サービス正常性通知を作成します。 
-
-1. **[Define action group]\(アクション グループの定義\)** で、 **[アクション グループの選択]** ボタンをクリックします。 適切なアクション グループを選択します。
-
-1. **[追加]** を選択してアクション グループを追加し、 **[アラート ルールの作成]** を選択してアラートを完成させます。
-
-数分以内にアラートがアクティブになり、作成時に指定した条件に基づいてトリガーが開始されます。
 
 
 ## <a name="next-steps"></a>次のステップ

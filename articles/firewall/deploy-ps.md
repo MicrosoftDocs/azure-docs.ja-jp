@@ -4,15 +4,15 @@ description: この記事では、Azure PowerShell を使用して Azure Firewal
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 4/10/2019
+ms.date: 08/28/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 50d870590fa6b8351838af9cb91b7be39b8d30db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c720d7c261421ade9dfce01f0b116123dcab1e55
+ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85610661"
+ms.lasthandoff: 08/28/2020
+ms.locfileid: "89071705"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う
 
@@ -35,13 +35,13 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * テスト ネットワーク環境を設定する
-> * ファイアウォールをデプロイする
-> * 既定のルートを作成する
-> * www.google.com へのアクセスを許可するようにアプリケーションを構成する
-> * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
-> * ファイアウォールをテストする
+
+* テスト ネットワーク環境を設定する
+* ファイアウォールをデプロイする
+* 既定のルートを作成する
+* www.google.com へのアクセスを許可するようにアプリケーションを構成する
+* 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
+* ファイアウォールをテストする
 
 好みに応じて、[Azure portal](tutorial-firewall-deploy-portal.md) を使ってこの手順を行うこともできます。
 

@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 07/15/2020
-ms.openlocfilehash: 2fda9c41efd4c6765681d98011d8fb890b09d19f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fb3282666362e3ef592f253405cff01a52941203
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502055"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655192"
 ---
 Azure 予約 VM インスタンスにコミットすると、コストを削減できます。 予約割引は、予約スコープと属性に一致する実行中の仮想マシン数に対して自動的に適用されます。 割引を取得するために、仮想マシンに予約を割り当てる必要はありません。 予約インスタンスの購入では、VM 使用量のコンピューティング部分のみが対象となります。 Windows VM の場合、使用量メーターは 2 つの異なるメーターに分割されます。 Linux メーターと同じであるコンピューティング メーターと、Windows IP メーターがあります。 購入時に表示される料金は、コンピューティング コストの分のみです。 料金には、Windows ソフトウェアのコストは含まれません。 ソフトウェアのコストの詳細については、「[Azure Reserved VM Instances に含まれないソフトウェアのコスト](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)」を参照してください。
 
@@ -53,7 +53,7 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 
 使用量データで *ConsumedService* の値を確認して、その使用量が予約割引の対象であるかどうかを判断してください。
 
-インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+インスタンス サイズの柔軟性の詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../articles/virtual-machines/reserved-vm-instance-size-flexibility.md)」を参照してください。
 
 ### <a name="analyze-your-usage-information"></a>利用状況の情報を分析する
 
@@ -100,7 +100,7 @@ EA 契約を結んでいる場合、 **[Add more option]\(さらにオプショ�
 |Scope       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>**単一のリソース グループのスコープ** - 選択されたリソース グループ内の一致するリソースにのみ、予約割引を適用します。</li><li>**単一サブスクリプション** - 選択されたサブスクリプションの一致するリソースに予約割引を適用します。</li><li>**共有スコープ** - 課金コンテキスト内にある有効なサブスクリプションの一致するリソースに予約割引を適用します。 EA の顧客の場合、課金コンテキストは課金です。 従量課金制料金の個々のサブスクリプションの場合、課金スコープはアカウント管理者によって作成されるすべての有効なサブスクリプションです。</li></ul>|
 |リージョン    |予約の対象となる Azure リージョン。|    
 |[VM サイズ]     |VM インスタンスのサイズ|
-|最適化の対象     |VM インスタンス サイズの柔軟性は既定で選択されています。 インスタンス サイズの柔軟性の値を変更して、同じ [VM サイズグループ](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md)の他の VM に予約割引を適用するには、 **[詳細設定]** をクリックします。 容量の優先度では、デプロイ用のデータ センターの容量が優先されます。 それにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。 容量の優先順位は、予約のスコープが単一サブスクリプションに設定されている場合にのみ使用できます。 |
+|最適化の対象     |VM インスタンス サイズの柔軟性は既定で選択されています。 インスタンス サイズの柔軟性の値を変更して、同じ [VM サイズグループ](../articles/virtual-machines/reserved-vm-instance-size-flexibility.md)の他の VM に予約割引を適用するには、 **[詳細設定]** をクリックします。 容量の優先度では、デプロイ用のデータ センターの容量が優先されます。 それにより、必要なときに VM インスタンスを起動する能力に対する信頼が高まります。 容量の優先順位は、予約のスコープが単一サブスクリプションに設定されている場合にのみ使用できます。 |
 |期間        |1 年間または 3 年間。 また、HBv2 VM に対してのみ使用できる 5 年間の期間もあります。|
 |Quantity    |予約内で購入しているインスタンス数。 数量は、課金の割引を受けられる実行中の VM インスタンス数です。 たとえば、米国東部で Standard_D2 VM を 10 個実行している場合、実行中のすべての VM のメリットを最大限に利用するには、数量を 10 と指定します。 |
 

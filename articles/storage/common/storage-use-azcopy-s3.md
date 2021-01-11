@@ -1,19 +1,19 @@
 ---
 title: AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする | Microsoft Docs
-description: AzCopy と Amazon S3 バケットでデータを転送する
+description: AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーします。 AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2020
+ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: e917c261392da6044391efc98a81c8f90b619514
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513764"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037118"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
@@ -50,9 +50,6 @@ AWS アクセス キーとシークレット アクセス キーを収集して�
 
 AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/rest/api/storageservices/put-block-from-url) API が使用されます。そのため、データは AWS S3 とストレージ サーバー間で直接コピーされます。 これらのコピー操作では、コンピューターのネットワーク帯域幅が使用されません。
 
-> [!IMPORTANT]
-> 現在、この機能はプレビュー段階にあります。 コピー操作後に S3 バケットからデータを削除する場合は、データを削除する前に、データがストレージ アカウントに適切にコピーされたことを確認します。
-
 > [!TIP]
 > このセクションの例では、単一引用符 ('') でパス引数を囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
@@ -84,6 +81,19 @@ AzCopy では、[URL からブロックの配置](https://docs.microsoft.com/res
 | **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 | **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+
+> [!NOTE]
+> この例では、`--recursive` フラグを追加して、すべてのサブディレクトリ内のファイルをコピーします。
+
+### <a name="copy-the-contents-of-a-directory"></a>ディレクトリの内容をコピーする
+
+ワイルドカード記号 (*) を使用することで、ディレクトリ自体をコピーせずにディレクトリの内容をコピーできます。
+
+|    |     |
+|--------|-----------|
+| **構文** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
+| **例** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **例** (階層型名前空間)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>バケットをコピーする
 
@@ -127,7 +137,7 @@ AzCopy は、発生する可能性のある最も一般的な 2 つの問題を�
 
 AWS S3 と Azure では、オブジェクト キーの名前にさまざまな文字セットを使用できます。 AWS S3 で使用する文字の詳細については、[こちら](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)をご覧ください。 Azure 側では、BLOB オブジェクト キーは [C# 識別子](https://docs.microsoft.com/dotnet/csharp/language-reference/)の名前付け規則に従います。
 
-AzCopy の `copy` コマンドの一部として、オプションの `s2s-invalid-metadata-handle` フラグの値を指定することができます。これは、ファイルのメタデータに互換性のないキー名が含まれているファイルを処理する方法を指定します。 次の表は、それぞれのフラグ値の説明です。
+AzCopy の `copy` コマンドの一部として、オプションの `s2s-handle-invalid-metadata` フラグの値を指定することができます。これは、ファイルのメタデータに互換性のないキー名が含まれているファイルを処理する方法を指定します。 次の表は、それぞれのフラグ値の説明です。
 
 | フラグ値 | 説明  |
 |--------|-----------|

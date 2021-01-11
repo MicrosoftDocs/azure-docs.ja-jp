@@ -1,6 +1,6 @@
 ---
 title: Azure VMware Solution by CloudSimple での VLAN とサブネット
-description: CloudSimple プライベート クラウドでの VLAN とサブネットについて説明します。
+description: CloudSimple プライベート クラウドの VLAN とサブネットについて説明し、CloudSimple サービスがデプロイされる、CloudSimple によって提供されるネットワークについて説明します。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3235b394f739e8af846f30dfe51705d0926c843
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024893"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140668"
 ---
 # <a name="vlans-and-subnets-overview"></a>VLAN とサブネットの概要
 

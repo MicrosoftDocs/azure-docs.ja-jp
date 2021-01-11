@@ -3,14 +3,14 @@ title: クイック スタート:SDK を使用してナレッジ ベースを作
 description: このクイックスタートでは、クライアント SDK を使用してナレッジ ベースを作成および管理する方法について説明します。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.custom: tracking-python
+ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: f158fd0f9bfa6b2580e36b6588626afa05d1c19f
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 60ba7d18e9da791373914fef7962e32396a489f0
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114541"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88934176"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>クイック スタート:QnA Maker クライアント ライブラリ
 

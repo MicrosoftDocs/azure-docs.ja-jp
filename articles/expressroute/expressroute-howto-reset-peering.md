@@ -1,18 +1,18 @@
 ---
 title: 'Azure ExpressRoute: 回線のピアリングをリセットする'
-description: ExpressRoute 回線のピアリングを無効および有効にする方法です。
+description: Azure PowerShell を使用して Azure ExpressRoute 回線のピアリングを無効および有効にする方法について説明します。 ピアリングを構成するとき、ピアリングは既定で有効になっています。
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/13/2018
-ms.author: charwen
-ms.openlocfilehash: cc4266a92d510ac84118922f7db09c99234045b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: duau
+ms.openlocfilehash: f3b34966aa46ca8d663f83ab2aceafa4b0dda2eb
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735253"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89395742"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute 回線のピアリングをリセットする
 

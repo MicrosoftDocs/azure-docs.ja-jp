@@ -1,18 +1,18 @@
 ---
 title: FAQ - Avere vFXT for Azure
-description: Avere vFXT for Azure に関してよく寄せられる質問です
+description: これらのよく寄せられる質問を使用して、Avere vFXT for Azure が自分のニーズに合っているかどうかを判断します。 Avere vFXT for Azure と他の Azure コンポーネントとの連携のしくみについて説明します。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: 55423119e55401d5176e228eba784f2eb498bfef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84196348"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272693"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
 

@@ -5,14 +5,14 @@ author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 8/12/2020
 ms.author: shants
-ms.openlocfilehash: f7d9912686be8ba6076278f148067575a40f32f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e2eb1c2b6ecb98c60b117d004a97cd4e5f07a55
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510040"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182170"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>計画メンテナンスの通知の処理
 
@@ -107,7 +107,8 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 **A:** VM のメンテナンス情報が表示されない理由はいくつかあります。
 1.  Microsoft 社内としてマークされたサブスクリプションを使用している。
 2.  VM のメンテナンスがスケジュールされていない。 メンテナンス ウェーブが終了しているか、取り消しまたは変更が行われたため、VM が影響を受けなくなっていると考えられます。
-3.  VM リスト ビューに **[メンテナンス]** 列が追加されていない。 この列は既定のビューに追加されていますが、既定以外の列を表示するように構成しているお客様は、VM リスト ビューに **[メンテナンス]** 列を手動で追加する必要があります。
+3. あなたは VM の割り当てを解除し、その後、VM を起動しました。 それを行うと、メンテナンス ウェーブを計画していない場所に VM が移動する可能性があります。 そのため、VM にはメンテナンス情報が表示されません。 
+4.  VM リスト ビューに **[メンテナンス]** 列が追加されていない。 この列は既定のビューに追加されていますが、既定以外の列を表示するように構成しているお客様は、VM リスト ビューに **[メンテナンス]** 列を手動で追加する必要があります。
 
 **Q:VM の 2 回目のメンテナンスがスケジュールされています。なぜですか?**
 

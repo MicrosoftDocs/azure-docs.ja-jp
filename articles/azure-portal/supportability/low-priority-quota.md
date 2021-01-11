@@ -56,7 +56,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
    ![クォータを引き上げるサブスクリプションを選択する](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
@@ -66,7 +66,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
 1. **[クォータの詳細]** で次の手順を実行します。
 
-   1. **[Deployment model]/(デプロイ モデル/)** で適切なモデルを選択し、 **[Locations]/(場所/)** で場所を選択します。
+   1. **[Deployment model]\(デプロイ モデル\)** で適切なモデルを選択し、 **[Locations]\(場所\)** で場所を選択します。
 
       ![追加のクォータの詳細を指定する](./media/resource-manager-core-quotas-request/quota-details-deployment-locations.png)
 
@@ -82,7 +82,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
       ![スポット VM の新しいクォータを選択する](./media/resource-manager-core-quotas-request/spot-set-new-quota.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
 
    ![クォータの詳細で追加の場所を指定する](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 
@@ -111,13 +111,13 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
    ![クォータを引き上げるために選択する](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]/(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ/)** を選択します。
+1. **[クォータの種類]** で、 **[Compute-VM (cores-vCPUs) subscription limit increases]\(Compute-VM (cores-vCPU) サブスクリプションの制限の引き上げ\)** を選択します。
 
    ![クォータの種類を選択する](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
 1. **ソリューション** を選択して **問題の詳細** を開きます。 **[詳細の指定]** を選択して、追加情報を入力します。 **[クォータの詳細]** で次の情報を入力します。
 
-   1. **[Deployment model]/(デプロイ モデル/)** で適切なモデルを選択し、 **[Locations]/(場所/)** で場所を選択します。
+   1. **[Deployment model]\(デプロイ モデル\)** で適切なモデルを選択し、 **[Locations]\(場所\)** で場所を選択します。
 
       ![クォータの詳細を入力する](./media/resource-manager-core-quotas-request/quota-details-deployment-locations.png)
 
@@ -131,7 +131,7 @@ Azure Resource Manager は、仮想マシンの次の 2 種類の vCPU クォー
 
       ![vCPU 制限の新しい値を入力する](./media/resource-manager-core-quotas-request/spot-set-new-quota.png)
 
-1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]/(場所/)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
+1. 複数の場所のクォータの引き上げを要求するには、 **[Locations]\(場所\)** で追加の場所を選択してから、適切な VM の種類を選択します。 その後に、追加の場所に適用する制限を入力できます。
 
    ![クォータの詳細で追加の場所を選択する](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 

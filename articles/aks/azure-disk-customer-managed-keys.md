@@ -3,20 +3,17 @@ title: Azure Kubernetes Service (AKS) でカスタマーマネージド キー�
 description: 独自のキー (BYOK) を使用して AKS OS ディスクとデータ ディスクを暗号化します。
 services: container-service
 ms.topic: article
-ms.date: 01/12/2020
-ms.openlocfilehash: 6452facc999456c35aa5d1c3bfe6b2f59141b7c5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 07/17/2020
+ms.openlocfilehash: 5725bc9a4d16b93ba36ac800d25e3c30f090c2df
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252047"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796886"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の Azure ディスクに独自のキー (BYOK) を使用する
 
 Azure Storage は、保存されているストレージ アカウント内のすべてのデータを暗号化します。 規定では、データは Microsoft のマネージド キーで暗号化されます。 暗号化キーの制御を強化するために、AKS クラスターの OS ディスクとデータ ディスクの両方の暗号化に使用する目的で[カスタマーマネージド キー][customer-managed-keys]を提供できます。
-
-> [!NOTE]
-> BYOK Linux および Windows ベースの AKS クラスターは、Azure マネージド ディスクのサーバー側暗号化をサポートする [Azure リージョン][supported-regions]で使用できます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -26,11 +23,7 @@ Azure Storage は、保存されているストレージ アカウント内の�
 
 * Azure CLI バージョン 2.0.79 以降および aks-preview 0.4.26 拡張機能が必要です
 
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー](support-policies.md)
-> * [Azure サポートに関する FAQ](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>最新の AKS CLI プレビュー拡張機能をインストールする
 
@@ -99,7 +92,7 @@ az keyvault set-policy -n myKeyVaultName -g myResourceGroup --object-id $desIden
 
 ```azurecli-interactive
 # Retrieve the DiskEncryptionSet value and set a variable
-diskEncryptionSetId=$(az resource show -n mydiskEncryptionSetName -g myResourceGroup --resource-type "Microsoft.Compute/diskEncryptionSets" --query [id] -o tsv)
+diskEncryptionSetId=$(az disk-encryption-set show -n mydiskEncryptionSetName -g myResourceGroup --query [id] -o tsv)
 
 # Create a resource group for the AKS cluster
 az group create -n myResourceGroup -l myAzureRegionName
@@ -164,9 +157,7 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>制限事項
 
-* BYOK は現在、特定の [Azure リージョン][supported-regions]で GA およびプレビューとして提供されています
-* データ ディスクの暗号化は、Kubernetes バージョン 1.17 以降でサポートされます   
-* BYOK がサポートされているリージョンでのみ使用できます
+* データ ディスクの暗号化は、Kubernetes バージョン 1.17 以降でサポートされます
 * カスタマーマネージド キーによる暗号化は、現在、新しい AKS クラスターのみを対象としています。既存のクラスターはアップグレードできません
 
 ## <a name="next-steps"></a>次のステップ

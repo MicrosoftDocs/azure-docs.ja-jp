@@ -9,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 8252c9bf899811163193c9ed21f1f81c9fd0502f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b4f3733806eb810cff7722e6432bb274b6d46a37
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080807"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854823"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R での Azure Machine Learning Studio (classic) の使用を開始する
+
+**適用対象:** ![はい](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![いいえ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+
 
 <!-- Stephen F Elston, Ph.D. -->
 このチュートリアルでは、ML Studio (classic) を使用して R コードを作成、テスト、実行する方法について説明します。 最終的には、予測ソリューションが完成します。  
@@ -222,7 +225,7 @@ load("src/yourData.rdata") # Reads a zipped R data file
 
 データセットの読み込みについては、既に「[データセットの読み込み](#loading)」で説明しました。 前のセクションで示した R スクリプトを作成してテストした後は、次の作業を行います。
 
-1. R スクリプトを .R ファイルに保存します。 このスクリプト ファイルの名前を "simpleplot.R" にします。 内容は次のとおりです。
+1. R スクリプトを .R ファイルに保存します。 このスクリプト ファイルの名前を "simpleplot.R" にします。 ファイルの内容は次のとおりです。
 
    ```r
    ## Only one of the following two lines should be used
@@ -1133,7 +1136,7 @@ lines(cadairytrain$Time, predict(milk.lm, cadairytrain), lty = 2, col = 2)
 
 傾向モデルの作成を続行し、季節的影響を含める必要があります。 線形モデルのダミー変数として 1 年の中の月を使用し、月ごとの影響を取得します。 因子変数をモデルに導入する際に、切片を計算してはならないことに注意してください。 そうしないと、数式が互いに矛盾する条件を含んだ状態になり、R は必要な因子の 1 つを除去し、切片項を保持します。
 
-満足のいく傾向モデルがあるため、 `update()` 関数を使用して、新しい項を既存のモデルに追加できます。 update 式の -1 は、切片項を除去します。 しばらく、RStudio での処理が続きます。
+満足のいく傾向モデルがあるため、`update()` 関数を使用して、新しい項を既存のモデルに追加できます。 update 式の -1 は、切片項を除去します。 しばらく、RStudio での処理が続きます。
 
 ```r
 milk.lm2 <- update(milk.lm, . ~ . + Month - 1)
@@ -1335,7 +1338,7 @@ RStudio はドキュメントが非常に整っているため、 ここでは�
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio (クラシック) で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
 * Emmanuel Paradis による『[R for Beginners](https://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)』は入門書として適しています。  
-* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. N. Venables 他による ) では、もう少し詳しく説明されています。
+* 『[An Introduction to R](https://cran.r-project.org/doc/manuals/R-intro.html)』(W. Venables ほか) では、もう少し詳しく説明されています。
 
 R の使用を開始するのに役立つ書籍は、多数存在します。 役に立つものをいくつか紹介します。
 
@@ -1352,7 +1355,8 @@ Paul Cowpertwait と Andrew Metcalfe による書籍『**Introductory Time Serie
 役に立つインターネット リソースをいくつか紹介します。
 
 * DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。 最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。 無料の[対話型 R チュートリアル](https://www.datacamp.com/courses/introduction-to-r)をご利用ください。
-* Programiz が提供している「[Learn R Programming, The Definitive Guide (R プログラミング完全ガイド)](https://www.programiz.com/r-programming)」。
+* DataMentor が提供している「[Learn R Programming, The Definitive Guide](https://www.datamentor.io/r-programming/)」
+* [R CODER](https://r-coder.com/)。 詳細な R のチュートリアルと初心者向けの無料の R のコース。
 * クラークソン大学の Kelly Black による手軽な「[R Tutorial (R チュートリアル)](https://www.cyclismo.org/tutorial/R/)」。
 * 「[Top R language resources to improve your data skills (データ スキルを向上させる R 言語の主要なリソース)](https://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)」には、60 を超える R のリソースが掲載されています。
 

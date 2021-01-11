@@ -3,7 +3,7 @@ title: Azure portal を使用してマネージド ID を構成する - Azure AD
 description: Azure portal を使用して、Azure VM で Azure リソースのマネージド ID を構成するための詳細な手順について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: barclayn
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
-ms.author: markvi
+ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da8b6abe343a3f8bf7231d4b8f23a5e10f614e58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ed19b9dae179c3e4fe89a9ce28df4ad0cd080af
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609155"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89263214"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Azure portal を使用して Azure VM で Azure リソースのマネージド ID を構成する
 
@@ -41,7 +41,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>VM の作成中にシステム割り当てマネージド ID を有効にする
 
-VM の作成中に VM でシステム割り当てマネージド ID を有効にするには、アカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
+VM の作成中に VM でシステム割り当てマネージド ID を有効にするには、アカウントに[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 - **[管理]** タブの **[ID]** セクションで、 **[マネージド サービス ID]** を **[オン]** に切り替えます。  
 
@@ -55,7 +55,7 @@ VM を作成するには、次のクイック スタートを参照してくだ�
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>既存の VM でシステム割り当てマネージド ID を有効にする
 
-もともとシステム割り当てマネージド ID をプロビジョニングされていなかった VM でシステム割り当てマネージド ID を有効にするには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
+もともとシステム割り当てマネージド ID をプロビジョニングされていなかった VM でシステム割り当てマネージド ID を有効にするには、お使いのアカウントに[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -67,7 +67,7 @@ VM を作成するには、次のクイック スタートを参照してくだ�
 
 ### <a name="remove-system-assigned-managed-identity-from-a-vm"></a>VM からシステム割り当てマネージド ID を削除する
 
-VM からシステム割り当てマネージド ID を削除するには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
+VM からシステム割り当てマネージド ID を削除するには、お使いのアカウントに[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 仮想マシンでシステム割り当てマネージド ID が不要になった場合:
 
@@ -85,7 +85,7 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
 ### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>VM の作成中にユーザー割り当て ID を割り当てる
 
-ユーザー割り当て ID を VM に割り当てるには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールと[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
+ユーザー割り当て ID を VM に割り当てるには、お使いのアカウントに[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロールと[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 現在 Azure portal では、VM 作成中のユーザー割り当てマネージド ID の割り当てはサポートされていません。 代わりに、VM の作成に関する次のいずれかのクイック スタート記事を参照して、まず VM を作成してください。そして、その VM にユーザー割り当てマネージド ID を割り当てる方法について詳しく説明している、次のセクションに進んでください。
 
@@ -94,7 +94,7 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-vm"></a>ユーザー割り当てマネージド ID を既存の VM に割り当てる
 
-ユーザー割り当て ID を VM に割り当てるには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールと[マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator) ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
+ユーザー割り当て ID を VM に割り当てるには、お使いのアカウントに[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロールと[マネージド ID オペレーター](../../role-based-access-control/built-in-roles.md#managed-identity-operator) ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
 2. 目的の VM に移動して、 **[ID]** 、 **[ユーザー割り当て済み]** 、 **\+[追加]** の順にクリックします。
@@ -107,7 +107,7 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
 ### <a name="remove-a-user-assigned-managed-identity-from-a-vm"></a>VM からユーザー割り当てマネージド ID を削除する
 
-VM からユーザー割り当て ID を削除するには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
+VM からユーザー割り当て ID を削除するには、お使いのアカウントに[仮想マシン共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロールの割り当てが必要です。 Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
 1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。
 2. 目的の VM に移動します。次に、 **[ID]** 、 **[ユーザー割り当て済み]** 、削除したいユーザー割り当てマネージド ID の名前を順にクリックしてから、 **[削除]** をクリックします (確認ウィンドウで **[はい]** をクリックします)。
@@ -117,4 +117,3 @@ VM からユーザー割り当て ID を削除するには、お使いのアカ�
 ## <a name="next-steps"></a>次のステップ
 
 - Azure portal を使用して、Azure VM のマネージド ID に[別の Azure リソースへのアクセス](howto-assign-access-portal.md)を許可します。
-

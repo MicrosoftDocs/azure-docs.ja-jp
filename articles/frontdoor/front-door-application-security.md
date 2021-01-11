@@ -3,23 +3,23 @@ title: Azure Front Door - アプリケーション層セキュリティ | Micros
 description: この記事は、Azure Front Door を使用することで、アプリケーション バックエンドをどのように安全に保護できるかを理解するのに役立ちます
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: duongau
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: sharadag
-ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: duau
+ms.openlocfilehash: 4ee50b4c7da27df3630c1b4d263f076da44189bc
+ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471797"
+ms.lasthandoff: 09/02/2020
+ms.locfileid: "89399941"
 ---
 # <a name="application-layer-security-with-front-door"></a>Front Door によるアプリケーション層セキュリティ
-Azure Front Door では Wet アプリケーションの保護機能が提供されます。この機能を使用することで、SQL インジェクションやクロス サイト スクリプティング (XSS) のようなネットワーク攻撃および一般的な Web の脆弱性の悪用からご利用の Web アプリケーションを保護できます。 http(s) フロント エンドに対して有効にすることで、Front Door のアプリケーション層セキュリティがグローバルに分散され、常時接続となり、バックエンドから遠く離れた場所にある、Azure のネットワーク エッジで悪意のある攻撃を防ぐことができます。 セキュリティの強化とパフォーマンスの最適化により、Front Door ではエンド ユーザーに高速かつ安全な Web エクスペリエンスが提供されます。
+Azure Front Door では Web アプリケーションの保護機能が提供されます。この機能を使用することで、SQL インジェクションやクロス サイト スクリプティング (XSS) のようなネットワーク攻撃および一般的な Web の脆弱性の悪用からご利用の Web アプリケーションを保護できます。 http(s) フロント エンドに対して有効にすることで、Front Door のアプリケーション層セキュリティがグローバルに分散され、常時接続となり、バックエンドから遠く離れた場所にある、Azure のネットワーク エッジで悪意のある攻撃を防ぐことができます。 セキュリティの強化とパフォーマンスの最適化により、Front Door ではエンド ユーザーに高速かつ安全な Web エクスペリエンスが提供されます。
 
 ## <a name="application-protection"></a>アプリケーション保護
 Front Door のアプリケーション保護は、アプリケーションに応じて、世界中の各エッジ環境で構成され、http(s) 以外のトラフィックが Web アプリケーションに到達しないように自動的にブロックします。 マルチテナント分散アーキテクチャでは、パフォーマンスを犠牲にすることなく、大規模なグローバル保護を行うことができます。 http(s) ワークロードでは、Front Door の Web アプリケーション保護サービスにより、カスタム ルール用の豊富なルール エンジン、一般的な攻撃に対する構成済みのルールセット、およびルールに一致するすべての要求の詳細なログが提供されます。 許可、ブロック、ログのみなどのフレキシブルなアクションがサポートされます。

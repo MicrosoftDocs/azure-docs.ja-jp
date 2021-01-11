@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: 9e8d1c012ae07fc458a324315e2635f04c3dbd78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3aa4a1917711f8997c282ba577c33e7a7f94472b
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496510"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88932884"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Azure Cognitive Search で基本検索インデックスを作成する
 
@@ -26,10 +26,10 @@ Azure Cognitive Search では、フルテキストクエリおよびフィルタ
 次のツールと API を使用してインデックスを作成できます。
 
 * Azure portal で **[インデックスの追加]** または **[データのインポート]** ウィザードを使用します。
-* [Create Index (REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) の使用
-* [.NET SDK](search-create-index-dotnet.md) の使用
+* [Create Index (REST API)](/rest/api/searchservice/create-index) の使用
+* [.NET SDK](./search-get-started-dotnet.md) の使用
 
-ポータル ツールを使用すると、簡単に学習できます。 ポータルでは、数値フィールドに対してフルテキスト検索機能を許可しないなど、特定のデータ型に対して要件とスキーマ ルールが適用されます。 実行可能なインデックスができたら、[Get Index (REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index) を使用してサービスから JSON 定義を取得し、それをソリューションに追加することにより、コードへ移行することができます。
+ポータル ツールを使用すると、簡単に学習できます。 ポータルでは、数値フィールドに対してフルテキスト検索機能を許可しないなど、特定のデータ型に対して要件とスキーマ ルールが適用されます。 実行可能なインデックスができたら、[Get Index (REST API)](/rest/api/searchservice/get-index) を使用してサービスから JSON 定義を取得し、それをソリューションに追加することにより、コードへ移行することができます。
 
 ## <a name="recommended-workflow"></a>推奨されるワークフロー
 
@@ -59,7 +59,7 @@ Azure Cognitive Search では、フルテキストクエリおよびフィルタ
 
    ![データ型別に属性を示すインデックス ページを追加する](media/search-what-is-an-index//field-definitions.png "データ型別に属性を示すインデックス ページを追加する")
 
-1. [Get Index REST API](https://docs.microsoft.com/rest/api/searchservice/get-index) や、[Postman](search-get-started-postman.md) などの Web テスト ツールを使用してインデックス スキーマをダウンロードします。 これで、コードに対して適応できるインデックスの JSON 表現ができました。
+1. [Get Index REST API](/rest/api/searchservice/get-index) や、[Postman](search-get-started-postman.md) などの Web テスト ツールを使用してインデックス スキーマをダウンロードします。 これで、コードに対して適応できるインデックスの JSON 表現ができました。
 
 1. [インデックスにデータを読み込みます](search-what-is-data-import.md)。 Azure Cognitive Search によって JSON ドキュメントが受け入れられます。 プログラムによってデータを読み込むために、Postman を使用し、要求ペイロードに JSON ドキュメントを含めることができます。 データを JSON で表現することが簡単でない場合、この手順に最も多くの労力がかかります。 
 
@@ -180,7 +180,7 @@ Azure Cognitive Search では、フルテキストクエリおよびフィルタ
 | Edm.DateTimeOffset |OData V4 形式で表された日時の値です (例: `yyyy-MM-ddTHH:mm:ss.fffZ` または `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`)。 |
 | Edm.GeographyPoint |地球上の地理的な場所を表すポイントです。 |
 
-詳細については、[サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types)に関するページを参照してください。
+詳細については、[サポートされているデータ型](/rest/api/searchservice/Supported-data-types)に関するページを参照してください。
 
 <a name="index-attributes"></a>
 
@@ -195,14 +195,14 @@ Azure Cognitive Search では、フルテキストクエリおよびフィルタ
 |"検索可能" |フルテキスト検索可能であり、インデックス作成中の単語分割などの字句解析に従います。 検索可能フィールドを "sunny day" などの値に設定した場合、その値は内部的に個別のトークン "sunny" と "day" に分割されます。 詳細については、「[フルテキスト検索のしくみ](search-lucene-query-architecture.md)」を参照してください。|  
 |"フィルター可能" |$filter クエリで参照されます。 型 `Edm.String` または `Collection(Edm.String)` のフィルター可能フィールドは単語分割されないため、比較は完全に一致するかどうかだけになります。 たとえば、このようなフィールドを "sunny day" に設定した場合、`$filter=f eq 'sunny'` では一致が見つかりませんが、`$filter=f eq 'sunny day'` では見つかります。 |  
 |"並べ替え可能" |既定では、システムは結果をスコアで並べ替えますが、ドキュメント内のフィールドに基づいて並べ替えを構成できます。 型 `Collection(Edm.String)` のフィールドを "並べ替え可能" にすることはできません。 |  
-|"ファセット可能" |通常、カテゴリ (たとえば、特定の市にあるホテル) ごとのヒット カウントを含む検索結果のプレゼンテーションで使用されます。 このオプションは、 `Edm.GeographyPoint`型のフィールドでは使用できません。 "フィルター可能"、"並べ替え可能"、または "ファセット可能" である型 `Edm.String` のフィールドの長さは、最大 32 キロバイトです。 詳細については、「[Create Index (REST API) (インデックスの作成 (REST API))](https://docs.microsoft.com/rest/api/searchservice/create-index)」を参照してください。|  
+|"ファセット可能" |通常、カテゴリ (たとえば、特定の市にあるホテル) ごとのヒット カウントを含む検索結果のプレゼンテーションで使用されます。 このオプションは、 `Edm.GeographyPoint`型のフィールドでは使用できません。 "フィルター可能"、"並べ替え可能"、または "ファセット可能" である型 `Edm.String` のフィールドの長さは、最大 32 キロバイトです。 詳細については、「[Create Index (REST API) (インデックスの作成 (REST API))](/rest/api/searchservice/create-index)」を参照してください。|  
 |"キー" |インデックス内のドキュメントの一意識別子。 キー フィールドとして正確に 1 つのフィールドを選択する必要があり、それは型 `Edm.String` である必要があります。|  
 |"取得可能" |検索結果でこのフィールドを返すことができるかどうかを決定します。 これは、あるフィールド (*利幅* など) をフィルター、並べ替え、またはスコア付けのメカニズムとして使用するが、このフィールドをエンド ユーザーには表示したくない場合に役立ちます。 `true` for `key` である必要があります。|  
 
 いつでも新しいフィールドを追加できますが、既存のフィールド定義はインデックスの有効期間の間ロックされます。 このため、開発者は通常、単純なインデックスを作成したり、アイデアをテストしたり、ポータル ページを使用して設定を検索したりするためのポータルを使用します。 インデックスを容易に再構築できるようにコード ベースのアプローチに従う場合は、インデックス設計を頻繁に反復する方がより効率的です。
 
 > [!NOTE]
-> インデックスの作成に使用する API には、さまざまな既定の動作があります。 [REST API](https://docs.microsoft.com/rest/api/searchservice/Create-Index) の場合、ほとんどの属性は既定で有効であり (たとえば、文字列フィールドの "searchable" および "retrievable" は true です)、無効にする場合は、単にそれらを設定するだけです。 .NET SDK の場合は、逆のことが言えます。 明示的に設定していないプロパティの場合、既定では、特に有効にしない限り、対応する検索動作は無効にされています。
+> インデックスの作成に使用する API には、さまざまな既定の動作があります。 [REST API](/rest/api/searchservice/Create-Index) の場合、ほとんどの属性は既定で有効であり (たとえば、文字列フィールドの "searchable" および "retrievable" は true です)、無効にする場合は、単にそれらを設定するだけです。 .NET SDK の場合は、逆のことが言えます。 明示的に設定していないプロパティの場合、既定では、特に有効にしない限り、対応する検索動作は無効にされています。
 
 ## `analyzers`
 
@@ -210,7 +210,7 @@ Azure Cognitive Search では、フルテキストクエリおよびフィルタ
 
 ## `suggesters`
 
-suggester は、検索においてオートコンプリートまたは先行入力クエリをサポートするために使用されるインデックス内のフィールドが定義されている、スキーマのセクションです。 通常、ユーザーが検索クエリを入力している間に部分的な検索文字列が [Suggestions (REST API)](https://docs.microsoft.com/rest/api/searchservice/suggestions) に送信されて、API から検索候補のドキュメントまたは語句のセットが返されます。 
+suggester は、検索においてオートコンプリートまたは先行入力クエリをサポートするために使用されるインデックス内のフィールドが定義されている、スキーマのセクションです。 通常、ユーザーが検索クエリを入力している間に部分的な検索文字列が [Suggestions (REST API)](/rest/api/searchservice/suggestions) に送信されて、API から検索候補のドキュメントまたは語句のセットが返されます。 
 
 サジェスターに追加されるフィールドは、先行入力検索語句の構築に使用されます。 すべての検索語句はインデックス作成時に作成され、個別に格納されます。 サジェスター構造の作成の詳細については、[サジェスターの追加](index-add-suggesters.md)に関する記事を参照してください。
 

@@ -3,12 +3,12 @@ title: ISO 27001 共有サービス ブループリント サンプルの概要
 description: ISO 27001 共有サービスのブルー プリント サンプルの概要とアーキテクチャ。 このブループリント サンプルは、お客様が特定の ISO 27001 コントロールを評価するのに役立ちます。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: 0ef39a4e409320d08529904239dc17fc563c2044
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 09309fe05200cf8c7a958324f3412967296a8dc9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072865"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927353"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルの概要
 
@@ -25,7 +25,7 @@ VDC は、Microsoft がその最大規模のエンタープライズのお客様
 
 この環境は、ISO 27001 標準に基づいた、完全に監視された安全なエンタープライズ対応の共有サービス インフラストラクチャを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されます。
 
-- [ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) ロール。コントロール プレーンの観点から義務の分離のために使用します。 すべてのインフラストラクチャのデプロイの前に、3 つのロールが定義されています。
+- [Azure ロール](../../../../role-based-access-control/overview.md)。コントロール プレーンの観点から義務の分離のために使用します。 すべてのインフラストラクチャのデプロイの前に、3 つのロールが定義されています。
   - NetOps ロールには、ファイアウォール設定、NSG 設定、ルーティング、その他のネットワーク機能を含むネットワーク環境を管理する権限があります。
   - SecOps ロールには、[Azure Security Center](../../../../security-center/security-center-intro.md) をデプロイ、管理し、[Azure ポリシー](../../../policy/overview.md)を定義するのに必要な権限、およびその他のセキュリティ関連の権限があります。
   - SysOps ロールには、サブスクリプション内で [Azure ポリシー](../../../policy/overview.md)を定義し、環境全体のその他の運用権限の中で [Log Analytics](../../../../azure-monitor/overview.md) を管理するのに必要な権限があります。

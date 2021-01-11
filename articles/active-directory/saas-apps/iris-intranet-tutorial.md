@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Iris Intranet の統合 | Microsoft Docs
 description: Azure Active Directory と Iris Intranet の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a97cb2c6-a2a1-48f9-bf0f-d8434c0e0e0e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b57222d2857110817ff62d3a455690a662073cc6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 25068c57cd7a39aa1d4893b1526875be9a16a6b9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67099698"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iris-intranet"></a>チュートリアル:Azure Active Directory と Iris Intranet の統合
 

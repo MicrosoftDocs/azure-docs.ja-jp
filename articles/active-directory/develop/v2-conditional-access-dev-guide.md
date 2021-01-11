@@ -14,12 +14,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: 6b31a03a6367c9c6f2025c1544b59c95b3f69175
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: b1bfefb3b72c151e7a61068b3c0ad9f3e2bc4a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83771079"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120628"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) の条件付きアクセス機能では、ア�
 
 Azure AD のアプリをビルドしている開発者のために、この記事では、条件付きアクセスを使用する方法について示し、条件付きアクセス ポリシーが適用される可能性のある制御不能なリソースにアクセスした場合の影響についても学習します。 この記事では、On-Behalf-Of フロー、Web アプリ、Microsoft Graph へのアクセス、API の呼び出しに対し条件付きアクセスが与える影響についても説明します。
 
-[シングル](quickstart-register-app.md)および[マルチテナント](howto-convert-app-to-be-multi-tenant.md) アプリおよび[一般的な認証パターン](authentication-scenarios.md)の知識を持っているユーザーを対象とします。
+[シングル](quickstart-register-app.md)および[マルチテナント](howto-convert-app-to-be-multi-tenant.md) アプリおよび[一般的な認証パターン](./authentication-vs-authorization.md)の知識を持っているユーザーを対象とします。
 
 > [!NOTE]
 > この機能を使用するには、Azure AD Premium P1 ライセンスが必要です。 要件に対する適切なライセンスを確認するには、「[Free、Basic、および Premium エディションの一般公開されている機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
@@ -52,7 +52,7 @@ Azure AD のアプリをビルドしている開発者のために、この記�
 * MSAL.js を使用するシングルページ アプリ
 * リソースを呼び出す Web Apps
 
-条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーを構成する方法の詳細については、「[クイック スタート: Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../conditional-access/app-based-mfa.md)」を参照してください。
+条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーを構成する方法の詳細については、「[クイック スタート: Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../authentication/tutorial-enable-azure-mfa.md)」を参照してください。
 
 シナリオによっては、エンタープライズのお客様は、条件付きアクセス ポリシーをいつでも適用および削除することができます。 新しいポリシーが適用されたときにアプリの機能を継続するためには、"チャレンジ" 処理を実装する必要があります。 チャレンジ処理の例は次のとおりです。
 
@@ -93,7 +93,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) に含まれている機能です。 [Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。
+Azure AD の条件付きアクセスは、[Azure AD Premium](../fundamentals/active-directory-whatis.md) に含まれている機能です。 [Microsoft 365 Business ライセンス](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)をお持ちのお客様も、条件付きアクセス機能にアクセスできます。
 
 ### <a name="considerations-for-specific-scenarios"></a>特定のシナリオの考慮事項
 
@@ -180,7 +180,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 ## <a name="see-also"></a>関連項目
 
-* 機能について詳しくは、「[Azure Active Directory の条件付きアクセス](/azure/active-directory/conditional-access/overview)」をご覧ください。
+* 機能について詳しくは、「[Azure Active Directory の条件付きアクセス](../conditional-access/overview.md)」をご覧ください。
 * その他の Azure AD コード サンプルについては、[サンプル](sample-v2-code.md)のページを参照してください。
 * MSAL SDK の詳細とリファレンス ドキュメントについては、[Microsoft Authentication ライブラリの概要](msal-overview.md)に関する記事を参照してください。
 * マルチテナント シナリオの詳細については、[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](howto-convert-app-to-be-multi-tenant.md)を参照してください。

@@ -9,13 +9,13 @@ metadata:
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.custom: azure-migrate-seo
-  ms.openlocfilehash: e2cee85efd6c4aea51f41d2cd8a7c41f4c881114
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.custom: seo-azure-migrate
+  ms.openlocfilehash: 05780a5628f920b8fb4f0c73794046f23e895c58
+  ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87090724"
+  ms.lasthandoff: 08/31/2020
+  ms.locfileid: "89182243"
 landingContent:
 - title: Azure Database Migration Service について
   linkLists:

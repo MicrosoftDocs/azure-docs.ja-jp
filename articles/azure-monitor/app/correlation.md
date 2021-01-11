@@ -6,13 +6,13 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.custom: tracking-python
-ms.openlocfilehash: ca186fa62605953bfb90c1a4669fc8283eb78469
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python, devx-track-csharp
+ms.openlocfilehash: b48b02d20ed3d0b731f04d2c6568274bc0262e2e
+ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84559775"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88933360"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -302,15 +302,15 @@ logger.warning('After the span')
 ```
 スパン内にあるログ メッセージには、`spanId` が存在することがわかります。 これは、`hello` という名前のスパンに属するものと同じ `spanId` です。
 
-`AzureLogHandler` を使用して、ログ データをエクスポートできます。 詳細については、 [こちらの記事](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python#logs)を参照してください。
+`AzureLogHandler` を使用して、ログ データをエクスポートできます。 詳細については、 [こちらの記事](./opencensus-python.md#logs)を参照してください。
 
 ## <a name="telemetry-correlation-in-net"></a>.NET におけるテレメトリの相関付け
 
 .NET では、時間をかけて、テレメトリと診断ログを関連付けるためのいくつかの方法を定義してきました。
 
-- `System.Diagnostics.CorrelationManager`では、[LogicalOperationStack および ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx) を追跡できます。
-- `System.Diagnostics.Tracing.EventSource` および Windows イベント トレーシング (ETW) では、[SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) メソッドが定義されています。
-- `ILogger` では、[ログ スコープ](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)を使用します。
+- `System.Diagnostics.CorrelationManager`では、[LogicalOperationStack および ActivityId](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1) を追跡できます。
+- `System.Diagnostics.Tracing.EventSource` および Windows イベント トレーシング (ETW) では、[SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) メソッドが定義されています。
+- `ILogger` では、[ログ スコープ](/aspnet/core/fundamentals/logging#log-scopes)を使用します。
 - Windows Communication Foundation (WCF) および HTTP では、"現在の" コンテキストの伝達が接続されます。
 
 しかし、それらの方法では、自動分散トレースがサポートされていませんでした。 `DiagnosticSource` では、マシン間の自動的な関連付けをサポートします。 .NET ライブラリは `DiagnosticSource` をサポートしており、HTTP などのトランスポート経由で、関連付けのコンテキストをマシン間で自動的に伝達できます。
@@ -328,7 +328,7 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Java におけるテレメトリの相関付け
 
-[Java エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)および [Java SDK](../../azure-monitor/app/java-get-started.md) バージョン 2.0.0 以降では、テレメトリの自動関連付けがサポートされています。 要求のスコープ内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) に対して `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](../../azure-monitor/app/java-agent.md)が構成されている場合は、HTTP 経由でのサービス間呼び出しのための関連付けヘッダー (前述) が伝達されます。
+[Java エージェント](./java-in-process-agent.md)および [Java SDK](../../azure-monitor/app/java-get-started.md) バージョン 2.0.0 以降では、テレメトリの自動関連付けがサポートされています。 要求のスコープ内で発行されたすべてのテレメトリ (トレース、例外、カスタム イベントなど) に対して `operation_id` が自動的に設定されます。 また、[Java SDK エージェント](../../azure-monitor/app/java-agent.md)が構成されている場合は、HTTP 経由でのサービス間呼び出しのための関連付けヘッダー (前述) が伝達されます。
 
 > [!NOTE]
 > Application Insights Java エージェントでは、JMS、Kafka、Netty/Webflux などの要求と依存関係が自動収集されます。 Java SDK については、関連付け機能では、Apache HttpClient を使用して行われた呼び出しのみがサポートされます。 SDK では、メッセージング テクノロジ (Kafka、RabbitMQ、Azure Service Bus など) 間でのコンテキストの自動伝達はサポートされていません。 
@@ -374,8 +374,8 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 
 - [カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md)を記述します。
 - ASP.NET Core と ASP.NET の高度な相関シナリオについては、[カスタム操作の追跡](custom-operations-tracking.md)に関する記事を参照してください。
-- 他の SDK における [cloud_RoleName の設定](../../azure-monitor/app/app-map.md#set-cloud-role-name)について、詳細を確認します。
-- Application Insights でマイクロサービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォーム](../../azure-monitor/app/platforms.md)を調べます。
-- [データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照して、Application Insights の種類を確認します。
-- [テレメトリの拡張とフィルター処理](../../azure-monitor/app/api-filtering-sampling.md)を行う方法を確認します。
+- 他の SDK における [cloud_RoleName の設定](./app-map.md#set-or-override-cloud-role-name)について、詳細を確認します。
+- Application Insights でマイクロサービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォーム](./platforms.md)を調べます。
+- [データ モデル](./data-model.md)に関するページを参照して、Application Insights の種類を確認します。
+- [テレメトリの拡張とフィルター処理](./api-filtering-sampling.md)を行う方法を確認します。
 - [Application Insights の構成リファレンス](configuration-with-applicationinsights-config.md)に関するページを確認します。

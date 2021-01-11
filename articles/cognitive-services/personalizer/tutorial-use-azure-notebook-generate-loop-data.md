@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
-ms.custom: tracking-python
-ms.openlocfilehash: 62e9140a1bab44d913e164304af13204f375f461
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-python
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131975"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509911"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
 
@@ -34,10 +34,10 @@ Personalizer が時間の経過と共に学習できるよう、この "_シス�
 
 |コーヒー - アクションの特徴|temperature の種類|原産地|焙煎の種類|オーガニック|
 |--|--|--|--|--|
-|カプチーノ|ホット|ケニア|ダーク|オーガニック|
+|カプチーノ|ホット|ケニア|深煎り|オーガニック|
 |コールド ブリュー|アイス|ブラジル|浅煎り|オーガニック|
 |アイス モカ|アイス|エチオピア|浅煎り|オーガニックでない|
-|ラテ|ホット|ブラジル|ダーク|オーガニックでない|
+|ラテ|ホット|ブラジル|深煎り|オーガニックでない|
 
 Personalizer ループの**目的**は、できるだけ多くの場合にユーザーと最も相性の良いコーヒーを見つけることです。
 
@@ -623,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>新しい学習ポリシーを確認する
 
-Azure ノートブックに戻り、同じループ (ただし、反復処理は 2,000 回のみ) を実行して続行します。 Azure portal のメトリック グラフを定期的に更新して、サービスに対する呼び出しの合計を確認します。 約 4,000 万件の呼び出し (ループを反復するたびにランクと報酬の呼び出しが 1 回) がある場合は、反復処理が行われます。
+Azure Notebooks ファイルに戻り、同じループ (ただし、反復処理は 2,000 回のみ) を実行して続行します。 Azure portal のメトリック グラフを定期的に更新して、サービスに対する呼び出しの合計を確認します。 約 4,000 万件の呼び出し (ループを反復するたびにランクと報酬の呼び出しが 1 回) がある場合は、反復処理が行われます。
 
 ```python
 # max iterations

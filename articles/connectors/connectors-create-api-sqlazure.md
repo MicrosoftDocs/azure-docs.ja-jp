@@ -7,26 +7,26 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/06/2020
 tags: connectors
-ms.openlocfilehash: ba8a6e5b53634850670a7d6b2fb55ef0e7b18d09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e500f678d2066d24de12a04f28ccbdb3f76eda3a
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85255502"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288178"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SQL データベースのワークフローを自動化する
 
-この記事では、SQL Server コネクタを使用してロジック アプリの中から SQL データベースのデータにアクセスする方法を示します。 ロジック アプリを作成することによって、SQL データとリソースを管理するタスク、プロセス、ワークフローを自動化できます。 SQL Server コネクタは、[SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) だけでなく、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) と [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) でも機能します。
+この記事では、SQL Server コネクタを使用してロジック アプリの中から SQL データベースのデータにアクセスする方法を示します。 ロジック アプリを作成することによって、SQL データとリソースを管理するタスク、プロセス、ワークフローを自動化できます。 SQL Server コネクタは、[SQL Server](/sql/sql-server/sql-server-technical-documentation) だけでなく、[Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) と [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) でも機能します。
 
 SQL データベースや Dynamics CRM Online などの他のシステム内のイベントによってトリガーされたときに実行されるロジック アプリを作成できます。 ロジック アプリは、データの取得、挿入、削除のほか、SQL クエリやストアド プロシージャを実行することもできます。 たとえば、Dynamics CRM Online の新しいレコードを自動的に確認し、新しいレコード用の項目を SQL データベースに追加した後、追加した項目に関する電子メール アラートを送信するロジック アプリをビルドできます。
 
-ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 コネクタ固有の技術情報、制限事項、既知の問題については、[SQL Server コネクタ リファレンスのページ](https://docs.microsoft.com/connectors/sql/)をご覧ください。
+ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 コネクタ固有の技術情報、制限事項、既知の問題については、[SQL Server コネクタ リファレンスのページ](/connectors/sql/)をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* [SQL Server データベース](https://docs.microsoft.com/sql/relational-databases/databases/create-a-database)、[Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)、または [Azure SQL Managed Instance](../azure-sql/managed-instance/instance-create-quickstart.md)。
+* [SQL Server データベース](/sql/relational-databases/databases/create-a-database)、[Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md)、または [Azure SQL Managed Instance](../azure-sql/managed-instance/instance-create-quickstart.md)。
 
   テーブルには、ロジック アプリが操作を呼び出したときに結果を返すことができるように、データが含まれている必要があります。 Azure SQL Database を使用する場合は、用意されているサンプル データベースを使用できます。
 
@@ -74,7 +74,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    | 認証 | 説明 |
    |----------------|-------------|
    | [**Azure AD 統合**](../azure-sql/database/authentication-aad-overview.md) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- Azure Active Directory (Azure AD) でデータベースへのアクセス権を持つ有効な ID が必要です。 <p>詳細については、以下のトピックを参照してください。 <p>- [Azure SQL セキュリティの概要 - 認証](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL へのデータベース アクセスを承認する - 認証と承認](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL - Azure AD 統合認証](../azure-sql/database/authentication-aad-overview.md) |
-   | [**SQL Server 認証**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- 作成されてデータベースに格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、以下のトピックを参照してください。 <p>- [Azure SQL セキュリティの概要 - 認証](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL へのデータベース アクセスを承認する - 認証と承認](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | [**SQL Server 認証**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- 作成されてデータベースに格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、以下のトピックを参照してください。 <p>- [Azure SQL セキュリティの概要 - 認証](../azure-sql/database/security-overview.md#authentication) <br>- [Azure SQL へのデータベース アクセスを承認する - 認証と承認](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
    |||
 
    この例では、**Azure AD 統合**を使用します。
@@ -117,8 +117,8 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
    | 認証 | 説明 |
    |----------------|-------------|
-   | [**Windows 認証**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | - ISE ではない SQL Server コネクタのみがサポートされます。これには、マルチテナント Azure と ISE のどちらを使用しているかに関係なく、接続のために Azure で以前に作成したデータ ゲートウェイ リソースが必要です。 <p><p>- Windows アカウントを使用して ID を確認するには、有効な Windows ユーザー名とパスワードが必要です。 <p>詳細については、[Windows 認証](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication)に関する記事を参照してください |
-   | [**SQL Server 認証**](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- SQL Server で作成されて格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、[SQL Server 認証](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)に関する記事を参照してください。 |
+   | [**Windows 認証**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication) | - ISE ではない SQL Server コネクタのみがサポートされます。これには、マルチテナント Azure と ISE のどちらを使用しているかに関係なく、接続のために Azure で以前に作成したデータ ゲートウェイ リソースが必要です。 <p><p>- Windows アカウントを使用して ID を確認するには、有効な Windows ユーザー名とパスワードが必要です。 <p>詳細については、[Windows 認証](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-windows-authentication)に関する記事を参照してください |
+   | [**SQL Server 認証**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | - 非 ISE と ISE 両方の SQL Server コネクタをサポートします。 <p><p>- SQL Server で作成されて格納されている有効なユーザー名と強力なパスワードが必要です。 <p>詳細については、[SQL Server 認証](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)に関する記事を参照してください。 |
    |||
 
    この例では、**Windows 認証**を使用します。
@@ -134,7 +134,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
    | **ユーザー名** | はい | SQL サーバーおよびデータベースのユーザー名 |
    | **パスワード** | はい | SQL サーバーおよびデータベースのパスワード |
    | **サブスクリプション** |  はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの Azure サブスクリプション |
-   | **接続ゲートウェイ** | はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの名前 <p><p>**ヒント**:ゲートウェイが一覧に表示されない場合は、正しく[ゲートウェイを設定](https://docs.microsoft.com/azure/logic-apps/logic-apps-gateway-connection)していることを確認します。 |
+   | **接続ゲートウェイ** | はい (Windows 認証の場合) | Azure で前に作成したデータ ゲートウェイ リソースの名前 <p><p>**ヒント**:ゲートウェイが一覧に表示されない場合は、正しく[ゲートウェイを設定](../logic-apps/logic-apps-gateway-connection.md)していることを確認します。 |
    |||
 
    > [!TIP]
@@ -171,7 +171,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
    このトリガーでは、選択したテーブルから 1 行のみが返され、それ以外には何も返されません。 他のタスクを実行するには、ロジック アプリ ワークフローで必要な次のタスクを実行する [SQL コネクタ アクション](#add-sql-action)または[別のアクション](../connectors/apis-list.md)を追加することで続けます。
    
-   たとえば、この行のデータを表示するには、返された行のフィールドを含むファイルを作成する他のアクションを追加し、電子メール通知を送信します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/sql/)を参照してください。
+   たとえば、この行のデータを表示するには、返された行のフィールドを含むファイルを作成する他のアクションを追加し、電子メール通知を送信します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](/connectors/sql/)を参照してください。
 
 1. デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -201,7 +201,7 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
    ![テーブル名を選択し、行 ID を指定する](./media/connectors-create-api-sqlazure/specify-table-row-id.png)
 
-   このアクションでは、選択したテーブルから 1 行のみが返され、それ以外は何も行われません。 そこで、この行のデータを表示するには、返される行のフィールドが含まれるファイルを作成し、そのファイルをクラウド ストレージ アカウントに格納するその他のアクションを追加します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/sql/)を参照してください。
+   このアクションでは、選択したテーブルから 1 行のみが返され、それ以外は何も行われません。 そこで、この行のデータを表示するには、返される行のフィールドが含まれるファイルを作成し、そのファイルをクラウド ストレージ アカウントに格納するその他のアクションを追加します。 このコネクタで使用できるその他のアクションの詳細については、[コネクタのリファレンス ページ](/connectors/sql/)を参照してください。
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
@@ -217,13 +217,13 @@ SQL データベースや Dynamics CRM Online などの他のシステム内の�
 
   複数の行を取得または挿入する場合、ロジック アプリは、こちらの[制限](../logic-apps/logic-apps-limits-and-config.md)の中で "[*until ループ*](../logic-apps/logic-apps-control-flow-loops.md#until-loop)" を使用することで、行を反復処理できます。 ただし、ロジック アプリは、数千から数百万の行がある非常に大きなレコード セットを処理する場合があります。このような場合は、データベースへの呼び出しコストを最小限にする必要があります。
 
-  代わりに、SQL インスタンスで実行され、**SELECT - ORDER BY**ステートメントを使用して、望みどおりの方法で結果を整理する "[*ストアド プロシージャ*](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine)" を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。
+  代わりに、SQL インスタンスで実行され、**SELECT - ORDER BY**ステートメントを使用して、望みどおりの方法で結果を整理する "[*ストアド プロシージャ*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine)" を作成できます。 このソリューションでは、結果のサイズと構造を詳細に制御できます。 ロジック アプリは、SQL Server コネクタの **［ストアド プロシージャの実行］** アクションを使用して、ストアド プロシージャを呼び出します。
 
   ソリューションの詳細については、次の記事を参照してください。
 
   * [Logic Apps での一括データ転送に対する SQL の改ページ処理](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
-  * [SELECT - ORDER BY Clause](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+  * [SELECT - ORDER BY Clause](/sql/t-sql/queries/select-order-by-clause-transact-sql)
 
 ### <a name="handle-dynamic-bulk-data"></a>動的な一括データを処理する
 
@@ -250,8 +250,9 @@ SQL Server コネクタを使用してストアド プロシージャを呼び�
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 
-このコネクタのトリガー、アクション、制限に関する技術情報については、Swagger の説明から生成される[コネクタのリファレンス ページ](https://docs.microsoft.com/connectors/sql/)を参照してください。
+このコネクタのトリガー、アクション、制限に関する技術情報については、Swagger の説明から生成される[コネクタのリファレンス ページ](/connectors/sql/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps の他のコネクタ](../connectors/apis-list.md)の詳細情報
+

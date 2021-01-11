@@ -2,13 +2,13 @@
 title: Service Fabric とコンテナーの概要
 description: Service Fabric に関する説明と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法の概要を示します。 この記事では、コンテナーの使い方と、Service Fabric で利用可能な機能の概要について説明しています。
 ms.topic: conceptual
-ms.date: 8/8/2018
-ms.openlocfilehash: 7c92910a92c8fa3061a1a0d53611734cf681484f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 7/9/2020
+ms.openlocfilehash: cd0ec7dd2247fdd791df362fa34542178c17df4d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259231"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87091659"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 
@@ -53,7 +53,7 @@ Linux ベースのチュートリアルについては、「[Linux で初めて�
 
 #### <a name="windows-server-containers"></a>Windows Server コンテナー
 
-Windows Server 2016 には、分離レベルの異なる 2 種類のコンテナーが用意されています。 Windows Server コンテナーと Docker コンテナーは、名前空間とファイル システムは分離されていますが、それが実行されているホストとカーネルを共有するという点で似ています。 Linux では、cgroups や名前空間によって分離を行うのが通例でした。Windows Server コンテナーも同様に動作します。
+Windows Server 2016 以降には、分離レベルの異なる 2 種類のコンテナーが用意されています。 Windows Server コンテナーと Docker コンテナーは、名前空間とファイル システムは分離されていますが、それが実行されているホストとカーネルを共有するという点で似ています。 Linux では、cgroups や名前空間によって分離を行うのが通例でした。Windows Server コンテナーも同様に動作します。
 
 Hyper-V をサポートする Windows コンテナーでは、各コンテナーがオペレーティング システム カーネルを他のコンテナーまたはホストと共有しないため、より多くの分離とセキュリティが提供されます。 この高度なセキュリティの分離により、Hyper-V コンテナーは、潜在的に敵対するマルチテナント シナリオで効果を発揮します。
 Windows ベースのチュートリアルについては、「[Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-get-started-containers.md)」を参照してください。
@@ -73,7 +73,10 @@ Windows ベースのチュートリアルについては、「[Windows で初め
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric によるコンテナーのサポート
 
-Service Fabric では、Linux での Docker コンテナーのデプロイと、Windows Server 2016 での Windows Server コンテナーのデプロイをサポートしています。また、Hyper-V の分離モードもサポートしています。 
+Service Fabric では、Linux での Docker コンテナーのデプロイと、Windows Server 2016 以降での Windows Server コンテナーのデプロイをサポートしています。また、Hyper-V の分離モードもサポートしています。
+
+> [!NOTE]
+> コンテナーは、ローカルの単一ノード Service Fabric クラスターではサポートされていません (OneBox の Linux クラスター、およびローカル Service Fabric インストールの Windows クラスターの両方でサポートされません)。
 
 Service Fabric は、[アプリケーション モデル](service-fabric-application-model.md)を提供します。このモデルでは、コンテナーは、複数のレプリカがその中に配置されるアプリケーション ホストを表わします。 Service Fabric は、[ゲスト実行可能ファイル シナリオ](service-fabric-guest-executables-introduction.md)もサポートします。このシナリオでは、組み込みの Service Fabric プログラミング モデルではなく、任意の言語またはフレームワークを使用して記述されている既存のアプリケーションをコンテナー内にパッケージ化します。 このシナリオは、コンテナーの一般的なユースケースです。
 

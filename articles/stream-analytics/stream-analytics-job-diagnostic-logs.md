@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 06/18/2020
-ms.openlocfilehash: 2fb1f22fd555e8ddbdc04842906cddb990956fb5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 6d0a778dee31d93244479c08c7bb7b6f37cf49cb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044517"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87319356"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>リソース ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -59,7 +59,7 @@ Stream Analytics には 2 種類のログがあります。
 
 リソース ログをオンにして Azure Monitor ログに送信することを、強くお勧めします。 既定では、**オフ**になっています。 オンにするには、次の手順を完了します。
 
-1.  [Log Analytics ワークスペースを作成します](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace) (まだ作成していない場合)。 対象の Stream Analytics ジョブと同じリージョン内に Log Analytics ワークスペースを用意することをお勧めします。
+1.  Log Analytics ワークスペースを作成します (まだ作成していない場合)。 対象の Stream Analytics ジョブと同じリージョン内に Log Analytics ワークスペースを用意することをお勧めします。
 
 2.  Azure portal にサインインして、Stream Analytics ジョブに移動します。 **[監視]** の下の **[診断ログ]** を選択します。 次に、 **[診断を有効にする]** を選択します。
 
@@ -138,12 +138,9 @@ Data | エラーの原因を正確に特定するうえで役に立つデータ�
 エラー | (省略可能) エラー情報。 使用できる場合は通常、例外情報です。
 Message| ログ メッセージ。
 Type | メッセージの種類。 エラーの内部カテゴリにマップされます。 たとえば、**JobValidationError** または **BlobOutputAdapterInitializationFailure**。
-関連付け ID | ジョブの実行を一意に識別する [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ**関連付け ID** の値が付けられます。
+関連付け ID | ジョブの実行を一意に識別する GUID。 ジョブが開始されてから停止するまでに生成された実行ログ エントリすべてに、同じ**関連付け ID** の値が付けられます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
-* [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
-* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Stream Analytics データ エラー](https://docs.microsoft.com/azure/stream-analytics/data-errors)
+* [Stream Analytics クエリ言語リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 18b1b4cb959603f5898e7c725102f35d7abc90cf
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848990"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042502"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>Azure Security Center の脅威の防止からのアラートを抑制する
 
@@ -21,11 +21,15 @@ ms.locfileid: "85848990"
 
 ## <a name="availability"></a>可用性
 
-- リリース状態:**プレビュー**
-- 必要なロール:**セキュリティ管理者**および**所有者**は、ルールを作成および削除できます。 **セキュリティ閲覧者**および**閲覧者**は、ルールを表示できます。
-- クラウド: 
-    - ✔ 商用クラウド
-    - ✔ ナショナル/ソブリン (US Gov、China Gov、その他の Gov)
+|側面|詳細|
+|----|:----|
+|リリース状態:|プレビュー|
+|価格:|Free レベル<br>(ほとんどのセキュリティ アラートは Standard レベルのみを対象とします)|
+|必要なロールとアクセス許可:|**セキュリティ管理者**および**所有者**は、ルールを作成および削除できます。<br>**セキュリティ閲覧者**および**閲覧者**は、ルールを表示できます。|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|||
+
+
 
 
 ## <a name="what-are-suppression-rules"></a>抑制ルールとは

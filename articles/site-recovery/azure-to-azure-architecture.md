@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135853"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498618"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -34,7 +34,7 @@ Azure VM のディザスター リカバリーに関連するコンポーネン�
 **キャッシュ ストレージ アカウント** | ソース ネットワークにはキャッシュ ストレージ アカウントが必要です。 レプリケーション中に、VM の変更は、ターゲット ストレージに送信される前に、キャッシュに格納されます。  キャッシュ ストレージ アカウントは Standard である必要があります。<br/><br/> キャッシュを使用することにより、VM で実行されている運用アプリケーションへの影響を最小限に抑えられます。<br/><br/> キャッシュ ストレージの要件について詳しくは、[こちらをご覧ください](azure-to-azure-support-matrix.md#cache-storage)。 
 **ターゲット リソース** | ターゲット リソースは、レプリケーション中およびフェールオーバーの発生時に使用されます。 ターゲット リソースは、Site Recovery によって既定で設定することも、作成/カスタマイズすることもできます。<br/><br/> ターゲット リージョンでは、VM を作成できること、および必要な VM サイズをサポートするのに十分なリソースがサブスクリプションにあることを確認します。 
 
-![ソースとターゲットのレプリケーション](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![ソースとターゲットのレプリケーションを示す図。](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>ターゲット リソース
 
@@ -116,7 +116,7 @@ Azure VM でレプリケーションを有効にすると、次のことが行�
 4. キャッシュ内のデータは Site Recovery によって処理され、ターゲット ストレージ アカウントまたはレプリカ マネージド ディスクに送信されます。
 5. データが処理された後、クラッシュ整合性復旧ポイントが 5 分ごとに生成されます。 アプリ整合性復旧ポイントは、レプリケーション ポリシーで指定された設定に従って生成されます。
 
-![レプリケーション プロセスの有効化、手順 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![レプリケーション プロセス (手順 2) を示す図。](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **レプリケーション プロセス**
 
@@ -128,19 +128,19 @@ Azure VM でレプリケーションを有効にすると、次のことが行�
 
 VM の送信アクセスが URL で制御されている場合は、次の URL を許可します。
 
-| **URL** | **詳細** |
-| ------- | ----------- |
-| *.blob.core.windows.net | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
-| login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証を提供します。 |
-| *.hypervrecoverymanager.windowsazure.com | VM と Site Recovery サービスの通信を許可します。 |
-| *.servicebus.windows.net | VM による Site Recovery の監視および診断データの書き込みを許可します。 |
-| *.vault.azure.net | ADE が有効な仮想マシンのレプリケーションをポータルを介して有効にするためのアクセスを許可します
-| *.automation.ext.azure.com | レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にすることを許可します
+| **名前**                  | **商用**                               | **政府**                                 | **説明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| ストレージ                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | ソース リージョンのキャッシュ ストレージ アカウントに、VM からデータが書き込まれるよう許可します。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery サービス URL に対する承認と認証を提供します。 |
+| レプリケーション               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | VM と Site Recovery サービスの通信を許可します。 |
+| Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM による Site Recovery の監視および診断データの書き込みを許可します。 |
+| Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | ADE が有効な仮想マシンのレプリケーションをポータルを介して有効にするためのアクセスを許可します |
+| Azure Automation          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | レプリケートされる項目に対してモビリティ エージェントの自動アップグレードをポータルを介して有効にすることを許可します |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP アドレス範囲に対する送信接続
 
 IP アドレスを使用して VM の送信接続を制御するには、次のアドレスを許可します。
-ネットワーク接続要件の詳細は[ネットワークに関するホワイトペーパー](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)に記載されていることに注意してください 
+ネットワーク接続要件の詳細については、[ネットワークに関するホワイト ペーパー](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)を参照してください。 
 
 #### <a name="source-region-rules"></a>ソース リージョンのルール
 
@@ -191,7 +191,7 @@ HTTPS の送信を許可する: ポート 443 | Azure Automation コントロー
 
 フェールオーバーの開始時、VM は、ターゲット リソース グループ、ターゲット仮想ネットワーク、ターゲット サブネット、およびターゲット可用性セットに作成されます。 フェールオーバー中は、任意の復旧ポイントを使用できます。
 
-![フェールオーバー プロセス](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![ソース環境とターゲット環境を含むフェールオーバー プロセスを示す図。](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>次のステップ
 

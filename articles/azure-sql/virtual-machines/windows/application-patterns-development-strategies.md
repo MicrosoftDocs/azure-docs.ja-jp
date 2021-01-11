@@ -59,7 +59,7 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 * SQL Server と完全な互換性が必要で、既存のアプリケーションをそのまま Azure に移行する。
 * Azure 環境の機能を活用したいが、Azure SQL Database ではアプリケーションに必要なすべての機能をサポートしていない。 これには、次のような点が関係します。
   
-  * **データベースのサイズ**: この記事の更新時点では、SQL Database は最大で 1 TB のデータのデータベースをサポートしています。 アプリケーションで 1 TB を超すデータが必要で、カスタム シャーディング ソリューションを実装したくない場合は、Azure の仮想マシン内の SQL Server を使用することをお勧めします。 最新情報については、[Azure SQL データベースのスケール アウト](https://msdn.microsoft.com/library/azure/dn495641.aspx)、[DTU ベースの購入モデル](../../database/service-tiers-dtu.md)、および[仮想コアベースの購入モデル](../../database/service-tiers-vcore.md) (プレビュー) に関する記事を参照してください。
+  * **データベースのサイズ**: この記事の更新時点では、SQL Database は最大で 1 TB のデータのデータベースをサポートしています。 アプリケーションで 1 TB を超すデータが必要で、カスタム シャーディング ソリューションを実装したくない場合は、Azure の仮想マシン内の SQL Server を使用することをお勧めします。 最新情報については、[Azure SQL Database のスケール アウト](https://msdn.microsoft.com/library/azure/dn495641.aspx)、[DTU ベースの購入モデル](../../database/service-tiers-dtu.md)、および[仮想コアベースの購入モデル](../../database/service-tiers-vcore.md) (プレビュー) に関する記事を参照してください。
   * **HIPAA のコンプライアンス**: Azure Virtual Machines 上の SQL Server は HIPAA Business Associate Agreement (BAA) の対象になっているため、医療関係のお客様や独立系ソフトウェア ベンダー (ISV) は、[Azure SQL Database](../../database/sql-database-paas-overview.md) の代わりに、[Azure Virtual Machines 上の SQL Server](sql-server-on-azure-vm-iaas-what-is-overview.md) を選択することをお勧めします。 コンプライアンスについては、「[Microsoft Azure セキュリティ センター: コンプライアンス](https://azure.microsoft.com/support/trust-center/compliance/)」を参照してください。
   * **インスタンス レベルの機能**: 現時点で、SQL Database では、データベース外部の機能 (リンク サーバー、エージェント ジョブ、FileStream、Service Broker など) をサポートしていません。 詳細については、「 [Azure SQL Database のガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ff394102.aspx)」を参照してください。
 

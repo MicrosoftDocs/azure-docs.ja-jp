@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: a2074b1ecd37fd18a9a0ac9091f05e734765e40b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 181f0d62f160a6644e0423be052012521752525f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86199983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87012945"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) とは 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -115,25 +115,6 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 発行されたパイプラインは、各モジュールのパイプライン ドラフトで定義されているコンピューティング リソース上で実行されます。
 
 デザイナーでは、SDK と同じ [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) オブジェクトが作成されます。
-
-
-## <a name="moving-from-the-visual-interface-to-the-designer"></a>ビジュアル インターフェイスからデザイナーへの移行
-
-ビジュアル インターフェイス (プレビュー) が更新され、Azure Machine Learning デザイナー (プレビュー) になりました。 デザイナーは、Azure Machine Learning の他の機能と完全に統合された、パイプラインベースのバックエンドを使用するように再設計されています。 
-
-これらの更新の結果として、ビジュアル インターフェイスのいくつかの概念と用語が変更されたり、名前が変更されたりしています。 最も重要な概念の変更については、次の表を参照してください。 
-
-| デザイナーの概念 | ビジュアル インターフェイスでの従来の概念 |
-| ---- |:----:|
-| パイプラインのドラフト | 実験 |
-| リアルタイム エンドポイント | Web サービス |
-
-### <a name="migrating-to-the-designer"></a>デザイナーへの移行
-
-デザイナーでは、既存のビジュアル インターフェイス実験と Web サービスをパイプラインとリアルタイム エンドポイントに変換することができます。 ビジュアル インターフェイスのアセットを移行するには、次の手順を使用します。
-
-[!INCLUDE [migrate from the visual interface](../../includes/aml-vi-designer-migration.md)]
-
 
 ## <a name="next-steps"></a>次のステップ
 

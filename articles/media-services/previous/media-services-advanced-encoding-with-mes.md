@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 8142ef5e2aaaf5831c01215d28eecf8d06e1d8ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 4288e2e955f8205f3b6551c83a5c883eecf02501
+ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87071927"
+ms.lasthandoff: 09/01/2020
+ms.locfileid: "89264812"
 ---
-# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES プリセットをカスタマイズして高度なエンコードを実行する 
+# <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>MES プリセットをカスタマイズして高度なエンコードを実行する
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 ## <a name="overview"></a>概要
 
@@ -50,7 +53,7 @@ XML プリセットを使用する場合、下で示す XML サンプルのよ�
 <Height>100%</Height>
 ```
 
-## <a name="generate-thumbnails"></a><a id="thumbnails"></a>サムネイルを生成する
+## <a name="generate-thumbnails"></a>サムネイルを生成する
 
 このセクションでは、サムネイルを生成するプリセットをカスタマイズする方法を紹介します。 下に定義されているプリセットには、ファイルとサムネイルの生成に必要な情報をエンコードする方法に関する情報が含まれています。 [こちら](media-services-mes-presets-overview.md)のセクションに記載されている MES プリセットを使用し、サムネイルを生成するコードを追加できます。  
 
@@ -63,7 +66,7 @@ XML プリセットを使用する場合、下で示す XML サンプルのよ�
 
 必ず「 [考慮事項](#considerations) 」セクションを確認してください。
 
-### <a name="json-preset"></a><a id="json"></a>JSON プリセット
+### <a name="json-preset"></a>JSON プリセット
 
 ```json
 {
@@ -165,7 +168,7 @@ XML プリセットを使用する場合、下で示す XML サンプルのよ�
 }
 ```
 
-### <a name="xml-preset"></a><a id="xml"></a>XML プリセット
+### <a name="xml-preset"></a>XML プリセット
 
 ```xml
 <?xml version="1.0" encoding="utf-16"?>

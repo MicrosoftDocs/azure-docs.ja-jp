@@ -21,7 +21,7 @@ Azure Stream Analytics CI/CD npm パッケージを使って、Stream Analytics 
 
 PowerShell を使用したデプロイの詳細については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)」を参照してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](https://docs.microsoft.com/azure/architecture/building-blocks/extending-templates/objects-as-parameters)方法を詳しく確認することもできます。
 
-## <a name="build-the-vs-code-project"></a>VS コード プロジェクトをビルドする
+## <a name="build-the-vs-code-project"></a>VS Code プロジェクトをビルドする
 
 **asa-streamanalytics-cicd** npm パッケージを使用して、Azure Stream Analytics ジョブのための継続的インテグレーションと継続的なデプロイを有効にすることができます。 npm パッケージは、[Stream Analytics の Visual Studio Code プロジェクト](quick-create-vs-code.md)の Azure Resource Manager テンプレートを生成するためのツールを提供します。 Visual Studio Code をインストールしなくても、Windows、macOS、Linux で使用できます。
 

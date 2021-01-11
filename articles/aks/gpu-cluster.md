@@ -3,13 +3,15 @@ title: Azure Kubernetes Service (AKS) での GPU の使用
 description: Azure Kubernetes Service (AKS) で高パフォーマンス コンピューティングやグラフィックを集中的に使用するワークロードに GPU を使用する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 03/27/2020
-ms.openlocfilehash: 30cbac0984236717581c994700483b85829c4571
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/21/2020
+ms.author: jpalma
+author: palma21
+ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244295"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757644"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 
@@ -52,7 +54,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>NVIDIA ドライバーをインストールする
+## <a name="install-nvidia-device-plugin"></a>NVIDIA デバイス プラグインをインストールする
 
 ノード内の GPU を使用するには、NVIDIA デバイス プラグイン用の DaemonSet をデプロイしておく必要があります。 この DaemonSet により、各ノードでポッドが実行され、GPU に必要なドライバーが提供されます。
 
@@ -117,6 +119,71 @@ $ kubectl apply -f nvidia-device-plugin-ds.yaml
 
 daemonset "nvidia-device-plugin" created
 ```
+
+## <a name="use-the-aks-specialized-gpu-image-preview"></a>AKS 専用 GPU イメージ (プレビュー) を使用する
+
+これらの手順の代わりとして、AKS からは、[Kubernetes 向け NVIDIA デバイス プラグイン][nvidia-github]が既に含まれる、完全構成済みの AKS イメージが提供されます。
+
+> [!WARNING]
+> 新しい AKS 専用 GPU イメージを使用し、クラスター向け NVIDIA デバイス プラグイン デーモン セットを手動インストールしないでください。
+
+
+`GPUDedicatedVHDPreview` 機能を登録します。
+
+```azurecli
+az feature register --name GPUDedicatedVHDPreview --namespace Microsoft.ContainerService
+```
+
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/GPUDedicatedVHDPreview')].{Name:name,State:properties.state}"
+```
+
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+aks-preview CLI 拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
+
+```azurecli
+az extension add --name aks-preview
+```
+
+aks-preview CLI 拡張機能を更新するには、次の Azure CLI コマンドを使用します。
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>新しいクラスターで AKS 専用 GPU イメージ (プレビュー) を使用する    
+
+クラスターの作成時に、AKS 専用 GPU イメージを使用するようにクラスターを構成します。 AKS 専用 GPU イメージを使用するため、新しいクラスターで GPU エージェント ノードの `--aks-custom-headers` フラグを使用します。
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+通常の AKS イメージを使用してクラスターを作成する場合、カスタムの `--aks-custom-headers` タグを省略すると、そうすることができます。 下のように、もっと特化した GPU ノード プールの追加を選択することもできます。
+
+
+### <a name="use-the-aks-specialized-gpu-image-on-existing-clusters-preview"></a>既存のクラスターで AKS 専用 GPU イメージ (プレビュー) を使用する
+
+AKS 専用 GPU イメージを使用するように新しいノード プールを構成します。 AKS 専用 GPU イメージを使用するため、新しいノード プールで GPU エージェント ノードの `--aks-custom-headers` フラグを使用します。
+
+```azure-cli
+az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+```
+
+通常の AKS イメージを使用してノード プールを作成する場合、カスタムの `--aks-custom-headers` タグを省略すると、そうすることができます。 
+
+> [!NOTE]
+> GPU SKU に第 2 世代仮想マシンが必要な場合、次のように作成できます。
+> ```azure-cli
+> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
+> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>GPU がスケジュール可能であることを確認する
 

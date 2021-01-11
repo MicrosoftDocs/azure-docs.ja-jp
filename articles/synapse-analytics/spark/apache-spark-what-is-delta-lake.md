@@ -9,16 +9,18 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 244cdf5329e26fc7d928998b734a539f086051ad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 374b8bb094a93c6c608d6bf95d2b074f661c4a6a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85193381"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384737"
 ---
 # <a name="what-is-delta-lake"></a>Delta Lake とは
 
 Azure Synapse Analytics は、Linux Foundation Delta Lake と互換性があります。 Delta Lake は、ACID (原子性、一貫性、分離性、持続性) トランザクションを Apache Spark とビッグ データ ワークロードに導入するオープンソースのストレージ レイヤーです。
+
+Azure Synapse に付属している Delta Lake の現在のバージョンは、Scala、PySpark、.NET の言語サポートを提供しています。 ページの下部には、より詳細な例とドキュメントへのリンクがあります。
 
 ## <a name="key-features"></a>主要な機能
 
@@ -32,12 +34,12 @@ Azure Synapse Analytics は、Linux Foundation Delta Lake と互換性があり�
 | **スキーマの適用** | スキーマの適用によって、データ型が正しく、必要な列が存在することが保証されるため、不正なデータによってデータの不整合が発生することを防止できます。 詳細については、「[Delta Lake の詳細: スキーマの適用と展開](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html)」を参照してください |
 | **スキーマの展開** | Delta Lake によって、移行 DDL を記述しなくても、自動的に適用できるテーブル スキーマの変更を行うことができます。 詳細については、「[Delta Lake の詳細: スキーマの適用と展開](https://databricks.com/blog/2019/09/24/diving-into-delta-lake-schema-enforcement-evolution.html)」を参照してください |
 | **監査履歴** | Delta Lake トランザクション ログでは、データに加えられたすべての変更の詳細が記録され、変更の完全な監査証跡が得られます。 |
-| **更新と削除** | Delta Lake では、さまざまな機能のために、Scala、Java、Python、および SQL API がサポートされています。 マージ、更新、削除操作のサポートにより、コンプライアンス要件を満たすために役立ちます。 詳細については、「[Delta Lake 0.4.0 リリースの発表](https://delta.io/news/delta-lake-0-4-0-released/)」と、「[Python API を使用した Delta Lake テーブルのシンプルで信頼性の高い upsert と削除](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html)」を参照してください。これには、マージ、更新、削除 DML コマンドのコード スニペットが記載されています。 |
+| **更新と削除** | Delta Lake では、さまざまな機能のために、Scala、Java、Python、および SQL API がサポートされています。 マージ、更新、削除操作のサポートにより、コンプライアンス要件を満たすために役立ちます。 詳細については、「[Delta Lake 0.6.1 リリースの発表](https://delta.io/news/delta-lake-0-6-1-released/)」、「[Delta Lake 0.7 リリースの発表](https://delta.io/news/delta-lake-0-7-0-released/)」、「[Python API を使用した Delta Lake テーブルのシンプルで信頼性の高い upsert と削除](https://databricks.com/blog/2019/10/03/simple-reliable-upserts-and-deletes-on-delta-lake-tables-using-python-apis.html)」を参照してください。これには、マージ、更新、削除 DML コマンドのコード スニペットが記載されています。 |
 | **Apache Spark API との 100% の互換性** | Delta Lake は既存の Spark 実装と完全に互換性があるため、開発者は、最小限の変更によって、既存のデータパイプラインで Delta Lake を使用できます。 |
 
 完全なドキュメントについては、[Delta Lake のドキュメント ページ](https://docs.delta.io/latest/delta-intro.html)を参照してください
 
-詳細については、[Delta Lake プロジェクト](https://lfprojects.org)を参照してください。
+詳細については、[Delta Lake プロジェクト](https://github.com/delta-io/delta)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -4,14 +4,14 @@ description: Azure リージョン間で移動できる Azure リソースの種
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 05/31/2020
+ms.date: 07/21/2020
 ms.author: raynew
-ms.openlocfilehash: 0510df504c8de70cfb6a486f394db6da65dbfce2
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 70f981f2763dd36f0f417faec6c81e168e9856e7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86057689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87040957"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>リージョン間の Azure リソースの移動のサポート
 
@@ -543,14 +543,14 @@ ms.locfileid: "86057689"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | servers | サービスが geo 冗長バックアップ ストレージを使用してプロビジョニングされている場合、geo リストアを使用して他のリージョンで復元できます。 [詳細情報](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)
+> | servers | リージョン間の読み取りレプリカを使用して、既存のサーバーを移動できます。 [詳細については、こちらを参照してください](../../postgresql/howto-move-regions-portal.md)。<br/><br/> サービスが geo 冗長バックアップ ストレージを使用してプロビジョニングされている場合、geo リストアを使用して他のリージョンで復元できます。 [詳細については、こちらを参照してください](../../mariadb/concepts-business-continuity.md#recover-from-an-azure-regional-data-center-outage)。
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | servers | いいえ |  
+> | servers | リージョン間の読み取りレプリカを使用して、既存のサーバーを移動できます。 [詳細については、こちらを参照してください](../../mysql/howto-move-regions-portal.md)。
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
@@ -558,7 +558,7 @@ ms.locfileid: "86057689"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | servergroups | いいえ | 
-> | servers | いいえ |  
+> | servers | リージョン間の読み取りレプリカを使用して、既存のサーバーを移動できます。 [詳細については、こちらを参照してください](../../postgresql/howto-move-regions-portal.md)。
 > | serversv2 | いいえ | 
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager

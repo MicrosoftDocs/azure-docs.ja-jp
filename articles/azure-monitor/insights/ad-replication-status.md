@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
-ms.openlocfilehash: 65ced5021305dce15236ded59cf79a6578e7372a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86516789"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318081"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
 
@@ -34,13 +34,13 @@ AD レプリケーションの状態ソリューションは、レプリケー�
 
 
 ### <a name="install-agents-on-domain-controllers"></a>ドメイン コントローラーにエージェントをインストールする
-評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを Azure Monitor に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを Azure Monitor に接続する方法について詳しくは、[Azure Monitor への Windows コンピューターの接続](../../azure-monitor/platform/agent-windows.md)に関する記事をご覧ください。 ドメイン コントローラーが、Azure Monitor に接続する既存の System Center Operations Manager 環境の一部である場合は、[Azure Monitor への Operations Manager の接続](../../azure-monitor/platform/om-agents.md)に関する記事をご覧ください。
+評価されるドメインのメンバーであるドメイン コントローラーに、エージェントをインストールする必要があります。 または、メンバー サーバーにエージェントをインストールし、AD レプリケーションのデータを Azure Monitor に送信するように、そのエージェントを構成する必要があります。 Windows コンピューターを Azure Monitor に接続する方法について詳しくは、[Azure Monitor への Windows コンピューターの接続](../platform/agent-windows.md)に関する記事をご覧ください。 ドメイン コントローラーが、Azure Monitor に接続する既存の System Center Operations Manager 環境の一部である場合は、[Azure Monitor への Operations Manager の接続](../platform/om-agents.md)に関する記事をご覧ください。
 
 ### <a name="enable-non-domain-controller"></a>非ドメイン コントローラーを有効にする
 いずれのドメイン コントローラーも直接 Azure Monitor に接続しない場合、Azure Monitor に接続されているドメイン内の他の任意のコンピューターを使用して AD Replication Status ソリューション パック用にデータを収集し、そのデータを送信させることができます。
 
 1. コンピューターが、AD レプリケーションの状態ソリューションを使用して監視するドメインのメンバーであることを確認します。
-2. まだ接続されていない場合は、[Windows コンピューターを Azure Monitor に接続する](../../azure-monitor/platform/om-agents.md)か、[既存の Operations Manager 環境を使用してそれを Azure Monitor に接続します](../../azure-monitor/platform/om-agents.md)。
+2. まだ接続されていない場合は、[Windows コンピューターを Azure Monitor に接続する](../platform/om-agents.md)か、[既存の Operations Manager 環境を使用してそれを Azure Monitor に接続します](../platform/om-agents.md)。
 3. そのコンピューターで、次のレジストリ キーを設定します。<br>キー:**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>値:**IsTarget**<br>値のデータ: **true**
 
    > [!NOTE]
@@ -110,7 +110,7 @@ AD Replication Status タイルには、現在発生しているレプリケー�
 
 ![クエリ結果内の AD レプリケーションの状態エラー](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-ここで、さらにフィルタリングを行い、ログ クエリなどの修正を行います。 Azure Monitor でのログ クエリの使用について詳しくは、「[Azure Monitor でログ データを分析する](../../azure-monitor/log-query/log-query-overview.md)」をご覧ください。
+ここで、さらにフィルタリングを行い、ログ クエリなどの修正を行います。 Azure Monitor でのログ クエリの使用について詳しくは、「[Azure Monitor でログ データを分析する](../log-query/log-query-overview.md)」をご覧ください。
 
 **[HelpLink]** フィールドには、その特定のエラーの追加情報を含む TechNet ページの URL が表示されます。 このエラーをトラブルシューティングして修正するには、このリンクをブラウザー ウィンドウにコピーして貼り付け、情報を確認します。
 
@@ -150,9 +150,10 @@ A:Active Directory への標準のアクセス許可で十分です。
 ## <a name="troubleshoot-data-collection-problems"></a>データの収集の問題のトラブルシューティング
 AD レプリケーションの状態ソリューション パックでデータを収集する場合、Log Analytics ワークスペースには少なくとも 1 つのドメイン コントローラーが接続されている必要があります。 ドメイン コントローラーに接続するまで、**データをまだ収集している**ことを示すメッセージが表示されます。
 
-1 つのドメイン コントローラーの接続に支援が必要な場合は、[Azure Monitor への Windows コンピューターの接続](../../azure-monitor/platform/om-agents.md)に関する記事をご覧ください。 または、ドメイン コントローラーが既存の System Center Operations Manager 環境に接続されている場合は、[Azure Monitor への System Center Operations Manager の接続](../../azure-monitor/platform/om-agents.md)に関する記事をご覧ください。
+1 つのドメイン コントローラーの接続に支援が必要な場合は、[Azure Monitor への Windows コンピューターの接続](../platform/om-agents.md)に関する記事をご覧ください。 または、ドメイン コントローラーが既存の System Center Operations Manager 環境に接続されている場合は、[Azure Monitor への System Center Operations Manager の接続](../platform/om-agents.md)に関する記事をご覧ください。
 
 ドメイン コントローラーを Azure Monitor または System Center Operations Manager に直接接続しない場合は、「[非ドメイン コントローラーを有効にする](#enable-non-domain-controller)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* Active Directory のレプリケーション状態の詳細データを見るには、[Azure Monitor のログ クエリ](../../azure-monitor/log-query/log-query-overview.md)を使用します。
+* Active Directory のレプリケーション状態の詳細データを見るには、[Azure Monitor のログ クエリ](../log-query/log-query-overview.md)を使用します。
+
