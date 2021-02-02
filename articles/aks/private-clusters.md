@@ -66,7 +66,7 @@ az aks create \
 > [!NOTE]
 > Docker ブリッジ アドレス CIDR (172.17.0.1/16) がサブネット CIDR と競合する場合は、Docker ブリッジ アドレスを適切に変更します。
 
-### <a name="configure-private-dns-zone"></a>プライベート DNS ゾーンを構成する
+## <a name="configure-private-dns-zone"></a>プライベート DNS ゾーンを構成する
 
 次のパラメーターを使用してプライベート DNS ゾーンを構成できます。
 
