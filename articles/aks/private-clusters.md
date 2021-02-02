@@ -74,12 +74,12 @@ az aks create \
 2. "None" は、AKS によってプライベート DNS ゾーンが作成されないことを意味します。  この場合、独自の DNS サーバーを使用し、プライベート FQDN の DNS 解決を構成する必要があります。  DNS 解決を構成しない場合、エージェント ノード内でのみ DNS の解決が可能になり、デプロイ後にクラスターの問題が発生します。
 3. "Custom private dns zone name" は、Azure グローバル クラウドの形式 (`privatelink.<region>.azmk8s.io`) である必要があります。 ユーザー割り当て ID またはサービス プリンシパルには、少なくともカスタム プライベート DNS ゾーンに対する `private dns zone contributor` ロールを付与する必要があります。
 
-## <a name="no-private-dns-zone-prerequisites"></a>プライベート DNS ゾーンには前提条件が ない
+### <a name="private-dns-zone-prerequisites"></a>前提条件
 
 * Azure CLI バージョン 0.4.71 以降
 * API バージョン 2020-11-01 以降
 
-## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
+### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
