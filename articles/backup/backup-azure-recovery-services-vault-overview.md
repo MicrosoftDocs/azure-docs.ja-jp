@@ -3,12 +3,12 @@ title: Recovery Services コンテナーの概要
 description: Recovery Services コンテナーの概要です。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017323"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755127"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
@@ -22,7 +22,7 @@ ms.locfileid: "96017323"
 
 - **論理的な削除**:論理的な削除を使用すると、悪意のあるアクターによってバックアップが削除 (またはバックアップ データが誤って削除) された場合でも、バックアップ データは追加で 14 日間保持されるので、データを失うことなくバックアップ項目を回復できます。 バックアップ データが "論理的な削除" 状態にあるこの追加の 14 日間のリテンション期間中は、お客様にコストは発生しません。 [詳細については、こちらを参照してください](backup-azure-security-feature-cloud.md)。
 
-- **リージョンをまたがる復元**:リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン (Azure のペアになっているリージョン) に復元できます。 プライマリ リージョンで障害が発生したと Azure で宣言された場合、当該環境のプライマリ リージョンにおける実際のダウンタイム障害を軽減するため、セカンダリ リージョンでレプリケートされたデータを、セカンダリ リージョンでの復元のために使用できます。 [詳細については、こちらを参照してください](backup-azure-arm-restore-vms.md#cross-region-restore)。
+- **リージョンをまたがる復元**:リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン (Azure のペアになっているリージョン) に復元できます。 [コンテナー レベル](backup-create-rs-vault.md#set-cross-region-restore)でこの機能を有効にすることで、レプリケートされたデータを、選択したときにいつでもセカンダリ リージョンに復元できます。 これにより、停止シナリオにおいて、(コンテナーの GRS 設定と異なり) Azure が障害を宣言するのを待たずに、監査コンプライアンスのためにセカンダリ リージョン データを復元できます。 [詳細については、こちらを参照してください](backup-azure-arm-restore-vms.md#cross-region-restore)。
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Recovery Services コンテナーのストレージ設定
 

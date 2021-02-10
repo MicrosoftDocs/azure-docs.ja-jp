@@ -34,7 +34,7 @@ Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制
 
 | 環境 | [アーティクル] |
 |--------|-----------|
-|Azure ストレージ エクスプローラー |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md#managing-access)|
+|Azure Storage Explorer |[Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-explorer.md#managing-access)|
 |.NET |[.NET を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-dotnet.md#manage-access-control-lists-acls)|
 |Java|[Java を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
 |Python|[Python を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|

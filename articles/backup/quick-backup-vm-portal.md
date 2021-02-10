@@ -1,6 +1,6 @@
 ---
-title: クイックスタート - Azure portal で VM をバックアップする
-description: このクイック スタートでは、Azure portal を使用して、Recovery Services コンテナーを作成し、Azure VM 上で保護を有効にし、VM をバックアップする方法について説明します。
+title: クイックスタート - Azure Portal で VM をバックアップする
+description: このクイック スタートでは、Azure Portal を使用して、Recovery Services コンテナーを作成し、Azure VM 上で保護を有効にし、VM をバックアップする方法について説明します。
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/12/2020
@@ -14,13 +14,13 @@ ms.locfileid: "91328779"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Azure で仮想マシンをバックアップする
 
-Azure ポータルで Azure のバックアップを作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスで Azure のバックアップを作成し、すべての関連リソースを構成できます。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure ポータルを使用して仮想マシン (VM) をバックアップする方法を説明します。
+Azure Portal で Azure のバックアップを作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスで Azure のバックアップを作成し、すべての関連リソースを構成できます。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure Portal を使用して仮想マシン (VM) をバックアップする方法を説明します。
 
-このクイック スタートでは、既存の Azure VM のバックアップを実行できます。 VM を作成する必要がある場合は、[Azure ポータルを使用して VM を作成](../virtual-machines/windows/quick-create-portal.md)できます。
+このクイック スタートでは、既存の Azure VM のバックアップを実行できます。 VM を作成する必要がある場合は、[Azure Portal を使用して VM を作成](../virtual-machines/windows/quick-create-portal.md)できます。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="select-a-vm-to-back-up"></a>バックアップする VM を選択する
 
@@ -34,10 +34,10 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 
 Recovery Services コンテナーは、Azure VM などの保護された各リソースのバックアップ データを格納する論理コンテナーです。 保護されたリソースのバックアップ ジョブを実行すると、Recovery Services コンテナー内に復元ポイントが作成されます。 この復元ポイントのいずれかを使用して、データを特定の時点に復元できます。
 
-1. **[新規作成]** を選択し、新しいコンテナーの名前を指定します (*myRecoveryServicesVault*など)。
+1. **[新規作成]** を選択し、新しいコンテナーの名前を指定します (*myRecoveryServicesVault* など)。
 2. まだ選択していない場合は、 **[Use existing]\(既存を使用\)** を選択し、ドロップ ダウン メニューから VM のリソース グループを選択します。
 
-    ![Azure ポータルで VM のバックアップを有効にする](./media/quick-backup-vm-portal/enable-backup.png)
+    ![Azure Portal で VM のバックアップを有効にする](./media/quick-backup-vm-portal/enable-backup.png)
 
     既定では、コンテナーは geo 冗長ストレージ用に設定されています。 さらにデータを保護するために、このストレージの冗長性レベルでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンにバックアップ データがレプリケートされます。
 
@@ -53,7 +53,7 @@ Recovery Services コンテナーが作成されるまでしばらく待ちま�
 
 1. 目的の VM の **[バックアップ]** ウィンドウで、 **[今すぐバックアップ]** を選択します。
 
-    ![Azure ポータルで即時 VM バックアップを実行する](./media/quick-backup-vm-portal/backup-now.png)
+    ![Azure Portal で即時 VM バックアップを実行する](./media/quick-backup-vm-portal/backup-now.png)
 
 2. 30 日間のバックアップの保持ポリシーを受け入れるには、 **[バックアップの保持期間]** の既定の日数のままにします。 ジョブを開始するには、 **[バックアップ]** を選択します。
 
@@ -71,11 +71,11 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 
 2. **[バックアップの停止]** を選択します。
 
-    ![Azure ポータルから VM のバックアップを停止する](./media/quick-backup-vm-portal/stop-backup.png)
+    ![Azure Portal から VM のバックアップを停止する](./media/quick-backup-vm-portal/stop-backup.png)
 
 3. ドロップ ダウン メニューから **[バックアップ データを削除]** を選択します。
 
-4. **[Type the name of the Backup item]\(バックアップ項目の名前を入力してください\)** ダイアログで、VM 名を入力します (*myVM*など)。 **[バックアップの停止]** を選択します。
+4. **[Type the name of the Backup item]\(バックアップ項目の名前を入力してください\)** ダイアログで、VM 名を入力します (*myVM* など)。 **[バックアップの停止]** を選択します。
 
     VM のバックアップが停止し、復元ポイントが削除された後リソース グループを削除できます。 既存の VM を使用していた場合は、リソース グループと VM はそのまま残します。
 
@@ -83,7 +83,7 @@ VM のデータを復元する方法を説明するバックアップ チュー�
 6. 一覧からリソース グループを選択します。 サンプルの VM クイック スタート コマンドを使用していた場合、リソース グループの名前は *myResourceGroup* です。
 7. **[リソース グループの削除]** を選択します。 確認のために、リソース グループ名を入力し、 **[削除]** を選択します。
 
-    ![Azure ポータルでリソース グループを削除する](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
+    ![Azure Portal でリソース グループを削除する](./media/quick-backup-vm-portal/delete-resource-group-from-portal.png)
 
 ## <a name="next-steps"></a>次のステップ
 

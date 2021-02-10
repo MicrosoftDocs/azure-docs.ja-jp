@@ -3,16 +3,15 @@ title: Azure HDInsight の Hive Warehouse Connector でサポートされる Apa
 description: Azure HDInsight での Hive Warehouse Connector のさまざまな機能について説明します。
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/22/2020
-ms.openlocfilehash: ed3dbe4cb5b9d8b50c028a68feeded170130bfb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20567a1e38686b5d452a5353bc459e7e1125f499
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085839"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941302"
 ---
 # <a name="apache-spark-operations-supported-by-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight の Hive Warehouse Connector でサポートされる Apache Spark の操作
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8af64f2189625bcff5271855d6c0102551d1a535
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 24c7aaf08b4d22706bee8f37025b12a656ceaff5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185961"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895902"
 ---
 # <a name="handle-errors-in-graphical-runbooks"></a>グラフィック Runbook でのエラー処理
 
@@ -47,7 +47,7 @@ Runbook 実行中に発生する可能性がある PowerShell のエラーの種
 1. この問題に関する通知を送信する。
 2. 代わりの新しい VM を自動的にプロビジョニングする別の Runbook を開始する。
 
-解決策の 1 つは、手順 1. を処理するアクティビティを指し示すエラー リンクを Runbook 内に作成することです。 たとえば、Runbook は、`Write-Warning` コマンドレットを、[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) コマンドレットなどの手順 2 のアクティビティに接続できます。
+解決策の 1 つは、手順 1. を処理するアクティビティを指し示すエラー リンクを Runbook 内に作成することです。 たとえば、Runbook は、`Write-Warning` コマンドレットを、[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) コマンドレットなどの手順 2 のアクティビティに接続できます。
 
 この動作は、多くの Runbook で使用するために、これら 2 つのアクティビティを別個のエラー処理用 Runbook に分けることで、汎用化することもできます。 元の Runbook からこのエラー処理 Runbook を呼び出す前に、データからカスタム メッセージを作成し、それをパラメーターとしてエラー処理 Runbook に渡すことができます。
 
@@ -59,7 +59,7 @@ Runbook 内の各アクティビティには、例外を強制終了にならな
 
 次の例では、VM のコンピューター名を格納している変数が、Runbook によって取得されます。 その後、次のアクティビティで VM の起動が試みられます。<br><br> ![Automation Runbook のエラー処理の例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-`Get-AutomationVariable` アクティビティと [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) コマンドレットは、例外をエラーに変換するように構成されています。 変数の取得や VM の起動で問題がある場合は、コードによってエラーが生成されます。<br><br> ![Automation Runbook のエラー処理アクティビティの設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
+`Get-AutomationVariable` アクティビティと [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM) コマンドレットは、例外をエラーに変換するように構成されています。 変数の取得や VM の起動で問題がある場合は、コードによってエラーが生成されます。<br><br> ![Automation Runbook のエラー処理アクティビティの設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)。
 
 エラー リンクは、これらのアクティビティから 1 つの `error management` コード アクティビティにフローします。 このアクティビティは、`throw` キーワードを使用して処理を停止し、`$Error.Exception.Message` で現在の例外を説明するメッセージを取得する単純な PowerShell 式で構成されています。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 

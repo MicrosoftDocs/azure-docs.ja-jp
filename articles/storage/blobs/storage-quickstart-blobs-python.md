@@ -1,19 +1,19 @@
 ---
-title: クイック スタート:Azure Blob Storage ライブラリ v12 - Python
+title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - Python'
 description: このクイックスタートでは、Python 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/28/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: dbac832165c57e14e737372e12c4f4b2f3039c0d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e315f0f4f7bfff03a659de430e6fe182037f1b8a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995261"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096408"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>クイック スタート:Python v12 SDK で BLOB を管理する
 
@@ -54,7 +54,7 @@ ms.locfileid: "95995261"
     cd blob-quickstart-v12
     ```
 
-1. *blob-quickstart-v12* ディレクトリ内に、*data* という別のディレクトリを作成します。 BLOB データ ファイルは、ここに作成され格納されます。
+1. *blob-quickstart-v12* ディレクトリ内に、*data* という別のディレクトリを作成します。 BLOB データ ファイルは、このディレクトリに作成され格納されます。
 
     ```console
     mkdir data
@@ -80,17 +80,7 @@ pip install azure-storage-blob
 
     コードは次のとおりです。
 
-    ```python
-    import os, uuid
-    from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient, __version__
-
-    try:
-        print("Azure Blob storage v" + __version__ + " - Python quickstart sample")
-        # Quick start code goes here
-    except Exception as ex:
-        print('Exception:')
-        print(ex)
-    ```
+    :::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/app_framework.py":::
 
 1. *blob-quickstart-v12* ディレクトリに新しいファイルを *blob-quickstart-v12.py* として保存する
 
@@ -116,7 +106,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 ## <a name="code-examples"></a>コード例
 
-以下のサンプル コード スニペットは、Python 用 Azure Blob Storage クライアント ライブラリを使用して以下を実行する方法を示します。
+以下のサンプル コード スニペットは、Python 用 Azure Blob Storage クライアント ライブラリを使用して以下のタスクを実行する方法を示します。
 
 * [接続文字列を取得する](#get-the-connection-string)
 * [コンテナーの作成](#create-a-container)
@@ -127,19 +117,11 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
-以下のコードでは、「[ストレージ接続文字列の構成](#configure-your-storage-connection-string)」セクションで作成した環境変数から、ストレージ アカウントに対する接続文字列を取得します。
+以下のコードでは、「[ストレージ接続文字列の構成](#configure-your-storage-connection-string)」セクションで作成した環境変数から、ストレージ アカウントの接続文字列を取得します。
 
 このコードを `try` ブロック内に追加します。
 
-```python
-# Retrieve the connection string for use with the application. The storage
-# connection string is stored in an environment variable on the machine
-# running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable is
-# created after the application is launched in a console or with Visual Studio,
-# the shell or application needs to be closed and reloaded to take the
-# environment variable into account.
-connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_ConnectionString":::
 
 ### <a name="create-a-container"></a>コンテナーを作成する
 
@@ -152,47 +134,20 @@ connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 
 `try` ブロックの末尾に、次のコードを追加します。
 
-```python
-# Create the BlobServiceClient object which will be used to create a container client
-blob_service_client = BlobServiceClient.from_connection_string(connect_str)
-
-# Create a unique name for the container
-container_name = "quickstart" + str(uuid.uuid4())
-
-# Create the container
-container_client = blob_service_client.create_container(container_name)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_CreateContainer":::
 
 ### <a name="upload-blobs-to-a-container"></a>コンテナーに BLOB をアップロードする
 
 次のコード スニペット:
 
+1. データ ファイルを格納するためのローカル ディレクトリを作成します。
 1. ローカル ディレクトリにテキスト ファイルを作成します。
 1. 「[コンテナーを作成する](#create-a-container)」セクションからの [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient) の [get_blob_client](/python/api/azure-storage-blob/azure.storage.blob.containerclient#get-blob-client-blob--snapshot-none-) メソッドを呼び出すことで、[BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient) オブジェクトへの参照を取得します。
 1. [upload_blob](/python/api/azure-storage-blob/azure.storage.blob.blobclient#upload-blob-data--blob-type--blobtype-blockblob---blockblob----length-none--metadata-none----kwargs-) メソッドを呼び出して、ローカル テキスト ファイルを BLOB にアップロードします。
 
 `try` ブロックの末尾に、次のコードを追加します。
 
-```python
-# Create a file in local data directory to upload and download
-local_path = "./data"
-local_file_name = "quickstart" + str(uuid.uuid4()) + ".txt"
-upload_file_path = os.path.join(local_path, local_file_name)
-
-# Write text to the file
-file = open(upload_file_path, 'w')
-file.write("Hello, World!")
-file.close()
-
-# Create a blob client using the local file name as the name for the blob
-blob_client = blob_service_client.get_blob_client(container=container_name, blob=local_file_name)
-
-print("\nUploading to Azure Storage as blob:\n\t" + local_file_name)
-
-# Upload the created file
-with open(upload_file_path, "rb") as data:
-    blob_client.upload_blob(data)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_UploadBlobs":::
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
@@ -200,14 +155,7 @@ with open(upload_file_path, "rb") as data:
 
 `try` ブロックの末尾に、次のコードを追加します。
 
-```python
-print("\nListing blobs...")
-
-# List the blobs in the container
-blob_list = container_client.list_blobs()
-for blob in blob_list:
-    print("\t" + blob.name)
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_ListBlobs":::
 
 ### <a name="download-blobs"></a>BLOB をダウンロードする
 
@@ -215,42 +163,21 @@ for blob in blob_list:
 
 `try` ブロックの末尾に、次のコードを追加します。
 
-```python
-# Download the blob to a local file
-# Add 'DOWNLOAD' before the .txt extension so you can see both files in the data directory
-download_file_path = os.path.join(local_path, str.replace(local_file_name ,'.txt', 'DOWNLOAD.txt'))
-print("\nDownloading blob to \n\t" + download_file_path)
-
-with open(download_file_path, "wb") as download_file:
-    download_file.write(blob_client.download_blob().readall())
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_DownloadBlobs":::
 
 ### <a name="delete-a-container"></a>コンテナーを削除する
 
 次のコードでは、[delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) メソッドを使用して、コンテナー全体を削除することによって、アプリが作成したリソースがクリーンアップされます。 必要に応じてローカル ファイルを削除することもできます。
 
-アプリでは、BLOB、コンテナー、およびローカル ファイルを削除する前に、`input()` を呼び出すことで、ユーザーの入力を一時停止します。 このとき、リソースが削除される前に、正しく作成されたことを確認できます。
+アプリでは、BLOB、コンテナー、およびローカル ファイルを削除する前に、`input()` を呼び出すことで、ユーザーの入力を一時停止します。 リソースが正しく作成されたことを確認してから、それらを削除してください。
 
 `try` ブロックの末尾に、次のコードを追加します。
 
-```python
-# Clean up
-print("\nPress the Enter key to begin clean up")
-input()
-
-print("Deleting blob container...")
-container_client.delete_container()
-
-print("Deleting the local source and downloaded files...")
-os.remove(upload_file_path)
-os.remove(download_file_path)
-
-print("Done")
-```
+:::code language="python" source="~/azure-storage-snippets/blobs/quickstarts/python/V12/blob-quickstart-v12.py" id="Snippet_CleanUp":::
 
 ## <a name="run-the-code"></a>コードの実行
 
-このアプリでは、ローカル フォルダーにテスト ファイルが作成され、BLOB ストレージにアップロードされます。 次に、コンテナー内の BLOB を一覧表示し、ファイルを新しい名前でダウンロードして、古いファイルと新しいファイルを比較できるようにします。
+このアプリでは、ローカル フォルダーにテスト ファイルが作成され、Azure Blob Storage にアップロードされます。 さらに、この例では、コンテナー内の BLOB を一覧表示し、新しい名前でファイルをダウンロードします。 古いファイルと新しいファイルを比較できます。
 
 *blob-quickstart-v12.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
 
@@ -261,7 +188,7 @@ python blob-quickstart-v12.py
 アプリの出力は、次の例のようになります。
 
 ```output
-Azure Blob storage v12 - Python quickstart sample
+Azure Blob Storage v12 - Python quickstart sample
 
 Uploading to Azure Storage as blob:
         quickstartcf275796-2188-4057-b6fb-038352e35038.txt
@@ -290,7 +217,7 @@ Done
 BLOB ストレージのサンプル アプリを確認するには、以下に進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure BLOB ストレージ SDK v12 の Python サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
+> [Azure Blob Storage SDK v12 Python サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
 * 詳細については、「[Python 用 Azure Storage クライアント ライブラリ](/azure/developer/python/sdk/storage/overview)」を参照してください。
 * チュートリアル、サンプル、クイックスタートなどのドキュメントについては、「[Python 開発者向けの Azure](/azure/python/)」を参照してください。

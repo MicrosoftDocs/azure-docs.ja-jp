@@ -11,14 +11,14 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da80af9fe598186fa25d59601c9fa4faccb4286a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87447043"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681957"
 ---
-# <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>Azure AD Connect 構成設定のインポートとエクスポート (パブリック プレビュー)
+# <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Azure AD Connect 構成設定をインポートおよびエクスポートする 
 
 Azure Active Directory (Azure AD) Connect のデプロイは、1 つのフォレストの簡易モード インストールから、カスタム同期ルールを使用して複数のフォレスト間で同期する複雑なデプロイまでさまざまです。 構成オプションとメカニズムの数が多いため、どの設定が有効であるかを理解し、同じ構成を使用してサーバーを迅速にデプロイできることが重要です。 この機能により、特定の同期サーバーの構成をカタログ化し、その設定を新しいデプロイにインポートできるようになります。 異なる同期設定のスナップショットを比較して、2 つのサーバー間の違いや、同じサーバーの経時的変化を簡単に視覚化することができます。
 
@@ -71,16 +71,16 @@ Azure AD Connect ウィザードから構成が変更されるたびに、新し
 ### <a name="migration-process"></a>移行プロセス 
 設定を移行するには:
 
-1. 新しいステージング サーバーで **AzureADConnect.msi** を開始し、Azure AD Connect の**ウェルカム** ページで停止します。
+1. 新しいステージング サーバーで **AzureADConnect.msi** を開始し、Azure AD Connect の **ウェルカム** ページで停止します。
 
 1. **MigrateSettings.ps1** を、Microsoft Azure AD Connect\Tools ディレクトリから既存のサーバー上の場所にコピーします。 例は C:\setup になっています。この setup は既存のサーバー上に作成されたディレクトリです。
 
    ![Azure AD Connect ディレクトリを示すスクリーンショット。](media/how-to-connect-import-export-config/migrate1.png)
 
-1. ここに示されているようにスクリプトを実行し、下位レベルのサーバー構成ディレクトリ全体を保存します。 このディレクトリを新しいステージング サーバーにコピーします。 **Exported-ServerConfiguration-** * フォルダー全体を新しいサーバーにコピーする必要があります。
+1. ここに示されているようにスクリプトを実行し、下位レベルのサーバー構成ディレクトリ全体を保存します。 このディレクトリを新しいステージング サーバーにコピーします。 **Exported-ServerConfiguration-** _ フォルダー全体を新しいサーバーにコピーする必要があります。
 
    ![Windows PowerShell でスクリプトが示されているスクリーンショット。](media/how-to-connect-import-export-config/migrate2.png)
-   ![Exported-ServerConfiguration-* フォルダーをコピーしているところを示しているスクリーンショット。](media/how-to-connect-import-export-config/migrate3.png)
+   ![Exported-ServerConfiguration-_ フォルダーをコピーしているところを示しているスクリーンショット。](media/how-to-connect-import-export-config/migrate3.png)
 
 1. デスクトップのアイコンをダブル クリックして **Azure AD Connect** を起動します。 Microsoft ソフトウェア ライセンス条項に同意し、次のページで **[カスタマイズ]** を選択します。
 1. **[同期設定をインポート]** チェック ボックスをオンにします。 **[参照]** を選択して、コピーした Exported-ServerConfiguration-* フォルダーを参照します。 MigratedPolicy.json を選択して、移行した設定をインポートします。
@@ -91,7 +91,7 @@ Azure AD Connect ウィザードから構成が変更されるたびに、新し
 
 新しくデプロイされたサーバーの最初にインポートされた設定ファイルを、エクスポートされた設定ファイルと比較することは、意図していたデプロイと結果のデプロイとの違いを理解するうえで不可欠な手順です。 お気に入りの横並びのテキスト比較アプリケーションを使用すると、必要な変更または偶発的な変更をすばやく強調表示する瞬時の視覚化が得られます。
 
-以前は手動だった多くの構成手順が廃止されましたが、引き続き、組織の認定プロセスに従って、追加の構成が不要であることを確実にします。 この構成は、設定管理のパブリック プレビュー リリースで現在キャプチャされていない詳細設定を使用した場合に発生する可能性があります。
+以前は手動だった多くの構成手順が廃止されましたが、引き続き、組織の認定プロセスに従って、追加の構成が不要であることを確実にします。 この構成は、このリリースの設定管理には現在取り込まれていない詳細設定を使用した場合に発生する可能性があります。
 
 既知の制限事項を次に示します。
 - **同期規則**:Microsoft の標準ルールとの競合を避けるために、カスタム ルールの優先順位は予約済みの 0 から 99 の範囲にする必要があります。 予約済みの範囲外にカスタム ルールを配置すると、標準ルールが構成に追加されるときに、カスタム ルールが移動される可能性があります。 構成に変更された標準ルールが含まれている場合も、同様の問題が発生します。 標準ルールを変更することは避けてください。ルールの配置が正しくなくなる可能性があります。

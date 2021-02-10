@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: e19bf5b4ee5b6c48f002ca79711646cca7b0ec5f
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b8711b3995c322614c547434850d7c031abfadd5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729153"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094945"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -71,7 +71,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Azure AD 管理者 (SQL Managed Instance) をプロビジョニングする
 
 > [!IMPORTANT]
-> 次の手順は、Azure SQL Managed Instance をプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者か、特権ロール管理者だけが実行できます。
+> 次の手順は、Azure SQL Managed Instance をプロビジョニングする場合にのみに実行します。 この操作は、Azure AD の全体管理者または特権ロール管理者だけが実行できます。
 >
 > **パブリック プレビュー** では、Azure AD 内のグループに **ディレクトリ閲覧者** ロールを割り当てることができます。 その後、グループの所有者が、このグループのメンバーとしてマネージ インスタンス ID を追加すると、その SQL Managed Instance に Azure AD 管理者をプロビジョニングできるようになります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
@@ -79,7 +79,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portal を使用して SQL Managed Instance に Azure AD の読み取りアクセス許可を付与するには、Azure AD で全体管理者または社内管理者としてログインし、次の手順のようにします。
+Azure portal を使用して SQL Managed Instance に Azure AD の読み取りアクセス許可を付与するには、Azure AD で全体管理者としてログインし、次の手順のようにします。
 
 1. [Azure portal](https://portal.azure.com) の右上隅にある使用可能な Active Directory のドロップダウン リストから、お使いの接続を選択します。
 
@@ -126,7 +126,7 @@ PowerShell を使用して SQL Managed Instance に Azure AD の読み取りア�
 
 ```powershell
 # Gives Azure Active Directory read permission to a Service Principal representing the SQL Managed Instance.
-# Can be executed only by a "Company Administrator", "Global Administrator", or "Privileged Role Administrator" type of user.
+# Can be executed only by a "Global Administrator" or "Privileged Role Administrator" type of user.
 
 $aadTenant = "<YourTenantId>" # Enter your tenant ID
 $managedInstanceName = "MyManagedInstance"

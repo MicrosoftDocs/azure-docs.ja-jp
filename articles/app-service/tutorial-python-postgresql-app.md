@@ -3,7 +3,7 @@ title: チュートリアル:Postgres を使用した Python Django アプリを
 description: PostgreSQL データベースを使用する Python Web アプリを作成し、Azure にデプロイします。 このチュートリアルは Django フレームワークを使用しており、アプリは Azure App Service on Linux でホストされています。
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 02/02/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 05bdbd6c9d5dc3862c3191e4564a79e7a44bc0b8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97898591"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494058"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -39,7 +39,7 @@ ms.locfileid: "97898591"
 
 1. アクティブなサブスクリプションが含まれる Azure アカウントを用意します。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 1. <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 以降</a>をインストールします。
-1. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 以降をインストールします。それを任意のシェルから使用してコマンドを実行することで、Azure リソースのプロビジョニングと構成を行います。
+1. <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 以降をインストールします。これを任意のシェルで使用してコマンドを実行し、Azure リソースのプロビジョニングと構成を行います。
 
 ターミナル ウィンドウを開き、Python のバージョンが 3.6 以降であることを確認します。
 
@@ -63,11 +63,13 @@ py -3 --version
 
 ---
 
-Azure CLI のバージョンが 2.0.80 以降であることを確認します。
+Azure CLI のバージョンが 2.18.0 以降であることを確認します。
 
 ```azurecli
 az --version
 ```
+
+アップグレードする必要がある場合は、`az upgrade` コマンド (バージョン 2.11 以降が必要) を試すか、「<a href="/cli/azure/install-azure-cli" target="_blank"> Azure CLI のインストール</a>」をご覧ください。
 
 次に CLI から Azure にサインインします。
 
@@ -79,7 +81,7 @@ az login
 
 サインイン後は、Azure CLI を使用して Azure コマンドを実行して、サブスクリプション内のリソースを操作することができます。
 
-問題がある場合は、 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
+問題がありますか。 [お知らせください](https://aka.ms/DjangoCLITutorialHelp)。
 
 ## <a name="2-clone-or-download-the-sample-app"></a>2.サンプル アプリをクローンまたはダウンロードする
 
@@ -229,7 +231,7 @@ Django データベースの移行によって、Azure データベース上の 
 
     `<app-name>` は、先ほど `az webapp up` コマンドで使用した名前に置き換えます。
 
-    macOS と Linux では、[`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) コマンドを使用して SSH セッションに接続することもできます。
+    [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) コマンドを使用して SSH セッションに接続することもできます。 Windows では、このコマンドには Azure CLI 2.18.0 以降が必要です。
 
     SSH セッションに接続できない場合は、アプリ自体が起動に失敗しています。 詳細については、[診断ログを確認](#6-stream-diagnostic-logs)してください。 たとえば、前のセクションで必要なアプリ設定を作成していない場合、ログには `KeyError: 'DBNAME'` と示されます。
 
@@ -239,8 +241,11 @@ Django データベースの移行によって、Azure データベース上の 
     # Change to the app folder
     cd $APP_PATH
     
-    # Activate the venv (requirements.txt is installed automatically)
+    # Activate the venv
     source /antenv/bin/activate
+
+    # Install requirements
+    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -398,6 +403,7 @@ az webapp up
 ```
 cd $APP_PATH
 source /antenv/bin/activate
+pip instal -r requirements.txt
 python manage.py migrate
 ```
 

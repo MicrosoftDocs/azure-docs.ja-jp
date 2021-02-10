@@ -2,6 +2,8 @@
   href: index.yml
 - name: 概要
   href: overview.md
+- name: Azure Sentinel の新着情報
+  href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -94,8 +96,14 @@
               href: connect-windows-security-events.md
         - name: 外部ソリューションの接続
           items:
+            - name: Agari のフィッシング対策とブランド保護
+              href: connect-agari-phishing-defense.md
             - name: Alcide kAudit
               href: connect-alcide-kaudit.md
+            - name: Active Directory 用の Alsid
+              href: connect-alsid-active-directory.md
+            - name: Apache HTTP Server
+              href: connect-apache-http-server.md
             - name: Barracuda WAF
               href: connect-barracuda.md
             - name: Barracuda CloudGen Firewall
@@ -104,6 +112,8 @@
               href: connect-better-mtd.md
             - name: Beyond Security beSECURE
               href: connect-besecure.md
+            - name: Cisco Umbrella
+              href: connect-cisco-umbrella.md
             - name: Cisco Unified Computing System
               href: connect-cisco-ucs.md
             - name: Citrix Analytics (セキュリティ)
@@ -162,6 +172,8 @@
                   items:
                     - name: AI Vectra 検出
                       href: connect-ai-vectra-detect.md
+                    - name: Akamai セキュリティ イベント
+                      href: connect-akamai-security-events.md
                     - name: Check Point
                       href: connect-checkpoint.md
                     - name: Cisco ASA
@@ -180,6 +192,8 @@
                       href: connect-fortinet.md
                     - name: Illusive Networks AMS
                       href: connect-illusive-attack-management-system.md
+                    - name: Imperva WAF Gateway
+                      href: connect-imperva-waf-gateway.md
                     - name: One Identity Safeguard
                       href: connect-one-identity.md
                     - name: Palo Alto Networks

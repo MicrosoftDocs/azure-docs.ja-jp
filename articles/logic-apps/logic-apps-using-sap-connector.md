@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: 93e705eea39443ffc15fbdd079e1376ec46cb51c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786692"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252612"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -528,6 +528,18 @@ SAP コネクタを使用してロジック アプリの非同期要求-応答�
 完全なエラー メッセージについては、SAP アダプターの拡張ログを確認します。 また、[SAP コネクタの拡張ログ ファイルを有効にする](#extended-sap-logging-in-on-premises-data-gateway)こともできます。
 
 2020 年 6 月以降のオンプレミス データ ゲートウェイ リリースでは、[アプリ設定でゲートウェイ ログを有効にする](/data-integration/gateway/service-gateway-tshoot#collect-logs-from-the-on-premises-data-gateway-app)ことができます。 
+
+* 既定のログ レベルは **[警告]** です。
+
+* オンプレミス データ ゲートウェイ アプリの **[診断]** 設定で **[追加のログ記録]** を有効にすると、ログ記録レベルが **[情報]** に上がります。
+
+* ログ記録レベルを **[詳細]** に上げるには、構成ファイルで次の設定を更新します。 通常、構成ファイルは `C:\Program Files\On-premises data gateway\Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config` にあります。
+
+```json
+<setting name="SapTraceLevel" serializeAs="String">
+   <value>Verbose</value>
+</setting>
+```
 
 2020 年 4 月以前のオンプレミス データ ゲートウェイ リリースでは、ログは既定で無効になっています。
 

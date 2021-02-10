@@ -3,16 +3,13 @@ title: Azure HDInsight クラスターにログインできない
 description: Azure HDInsight で Apache Hadoop クラスターにログインできない理由のトラブルシューティング
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: 222c48ab2b9b718bc373e710f37f906e68bd31d4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 03657606f7e24436ff5a851fe7eef1e0c4d5dc24
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289016"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944310"
 ---
 # <a name="scenario-unable-to-log-into-azure-hdinsight-cluster"></a>シナリオ:Azure HDInsight クラスターにログインできない
 

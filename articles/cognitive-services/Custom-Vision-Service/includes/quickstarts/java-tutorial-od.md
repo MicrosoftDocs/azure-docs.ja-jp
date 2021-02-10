@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: ad4ec34dcf790ddadedb12e0039f3df2c5fcf9c4
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: a5e2089682b0f9b886c16369bdd7565024690188
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256210"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500440"
 ---
 Java 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築してみましょう。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -25,7 +25,7 @@ Java 用 Custom Vision クライアント ライブラリを使用すると、�
 * 現在のイテレーションを公開する
 * 予測エンドポイントをテストする
 
-[リファレンス ドキュメント](/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable) | ライブラリのソース コード [(トレーニング)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(予測)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| 成果物 (Maven) [(トレーニング)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) [(予測)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar) | 
+[リファレンス ドキュメント](/java/api/overview/azure/cognitiveservices/client/customvision) | ライブラリのソース コード [(トレーニング)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-training) [(予測)](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-customvision-prediction)| 成果物 (Maven) [(トレーニング)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-training/1.1.0-preview.2/jar) [(予測)](https://search.maven.org/artifact/com.azure/azure-cognitiveservices-customvision-prediction/1.1.0-preview.2/jar) | 
 [サンプル](/samples/browse/?products=azure&terms=custom%20vision)
 
 
@@ -114,9 +114,9 @@ mkdir -p src/main/java
 
 |名前|説明|
 |---|---|
-|[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient?view=azure-java-stable) | このクラスでは、モデルの作成、トレーニング、および公開を処理します。 |
-|[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient?view=azure-java-stable)| このクラスでは、物体検出予測のために、モデルに対するクエリ実行を処理します。|
-|[ImagePrediction](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction?view=azure-java-stable)| このクラスでは、単一の画像に対して単一の物体予測を定義します。 これには、オブジェクト ID と名前、オブジェクトの境界ボックスの位置、および信頼度スコアのプロパティが含まれます。|
+|[CustomVisionTrainingClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | このクラスでは、モデルの作成、トレーニング、および公開を処理します。 |
+|[CustomVisionPredictionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| このクラスでは、物体検出予測のために、モデルに対するクエリ実行を処理します。|
+|[ImagePrediction](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.prediction.models.imageprediction)| このクラスでは、単一の画像に対して単一の物体予測を定義します。 これには、オブジェクト ID と名前、オブジェクトの境界ボックスの位置、および信頼度スコアのプロパティが含まれます。|
 
 ## <a name="code-examples"></a>コード例
 
@@ -138,7 +138,7 @@ mkdir -p src/main/java
 
 ## <a name="create-a-new-custom-vision-project"></a>新しい Custom Vision プロジェクトを作成する
 
-次のメソッドは、物体検出プロジェクトを作成します。 作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject?view=azure-java-stable#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) メソッドのオーバーロードを参照してください ([検出器の構築](../../get-started-build-detector.md)に関する Web ポータル ガイドで説明されています)。
+次のメソッドは、物体検出プロジェクトを作成します。 作成したプロジェクトは、先ほどアクセスした [Custom Vision Web サイト](https://customvision.ai/)に表示されます。 プロジェクトを作成するときに他のオプションを指定するには、[CreateProject](/java/api/com.microsoft.azure.cognitiveservices.vision.customvision.training.trainings.createproject#com_microsoft_azure_cognitiveservices_vision_customvision_training_Trainings_createProject_String_CreateProjectOptionalParameter_&preserve-view=true) メソッドのオーバーロードを参照してください ([検出器の構築](../../get-started-build-detector.md)に関する Web ポータル ガイドで説明されています)。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_create_od)]
 
@@ -153,7 +153,7 @@ mkdir -p src/main/java
 最初に、このプロジェクト用のサンプル画像をダウンロードします。 [サンプル画像フォルダー](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ObjectDetection/Images)の内容をお使いのローカル デバイスに保存します。
 
 > [!NOTE]
-> Trove (Microsoft Garage プロジェクト) を使用すると、トレーニング目的で画像のセットを収集して購入することができます。 画像を収集したら、それらをダウンロードした後、通常の方法で Custom Vision プロジェクトにインポートできます。 詳細については、[Trove ページ](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)を参照してください。
+> トレーニングを完了するために、より広範なイメージのセットが必要ですか。 Trove (Microsoft Garage プロジェクト) を使用すると、トレーニング目的で画像のセットを収集して購入することができます。 画像を収集したら、それらをダウンロードした後、通常の方法で Custom Vision プロジェクトにインポートできます。 詳細については、[Trove ページ](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)を参照してください。
 
 物体検出プロジェクトで画像にタグを付ける際は、タグ付けする各物体の領域を正規化座標を使用して指定する必要があります。 次のコードは、それぞれのサンプル画像とそのタグ付け領域とを関連付けるものです。
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
-ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77111765"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915949"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>ACR タスクで Azure マネージド ID を使用する 
 
@@ -58,19 +58,19 @@ ACR タスクを作成するときに、ユーザー割り当て ID、システ�
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false \
     --assign-identity
 ```
 
-ユーザー割り当て ID を有効にするには、ID の*リソース ID* の値を指定して `--assign-identity` を渡します。 次のコマンドの例は、`hello-world` イメージをビルドしてからユーザー割り当てマネージド ID を有効にする Linux タスクをパブリック GitHub リポジトリから作成します。
+ユーザー割り当て ID を有効にするには、ID の *リソース ID* の値を指定して `--assign-identity` を渡します。 次のコマンドの例は、`hello-world` イメージをビルドしてからユーザー割り当てマネージド ID を有効にする Linux タスクをパブリック GitHub リポジトリから作成します。
 
 ```azurecli
 az acr task create \
     --image hello-world:{{.Run.ID}} \
     --name hello-world --registry MyRegistry \
-    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git \
+    --context https://github.com/Azure-Samples/acr-build-helloworld-node.git#main \
     --file Dockerfile \
     --commit-trigger-enabled false
     --assign-identity <resourceID>
@@ -91,7 +91,7 @@ az acr task create \
 
 [Azure CLI](../role-based-access-control/role-assignments-cli.md) またはその他の Azure ツールを使用して、リソースへのロールベースのアクセスを管理します。 たとえば、[az role assignment create][az-role-assignment-create] コマンドを実行して、リソースへのロールを ID に割り当てます。 
 
-次の例では、コンテナー レジストリからプルできるアクセス許可をマネージド ID に割り当てています。 このコマンドでは、タスク ID の*プリンシパル ID* とターゲット レジストリの*リソース ID* を指定しています。
+次の例では、コンテナー レジストリからプルできるアクセス許可をマネージド ID に割り当てています。 このコマンドでは、タスク ID の *プリンシパル ID* とターゲット レジストリの *リソース ID* を指定しています。
 
 
 ```azurecli
@@ -115,7 +115,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-ユーザー割り当て ID の資格情報を追加して、レジストリ *targetregistry* で認証を行うには、ID の*クライアント ID* の値を指定して `use-identity` を渡します。 次に例を示します。
+ユーザー割り当て ID の資格情報を追加して、レジストリ *targetregistry* で認証を行うには、ID の *クライアント ID* の値を指定して `use-identity` を渡します。 次に例を示します。
 
 ```azurecli
 az acr task credential add \

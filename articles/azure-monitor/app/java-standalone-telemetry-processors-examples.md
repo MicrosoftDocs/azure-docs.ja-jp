@@ -6,12 +6,12 @@ ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: b9ad5347e146fc94b513180c591b00c4f449619f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146420"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696314"
 ---
 # <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>テレメトリ プロセッサの例 - Azure Monitor Application Insights for Java
 
@@ -330,7 +330,7 @@ exclude プロパティと一致し、プロセッサ アクションが適用�
 ### <a name="extract"></a>Extract
 
 次の例は、正規表現を使用し、別の属性の値に基づいて新しい属性を作成する方法を示します。
-たとえば、http.url = http://example.com/path?queryParam1=value1,queryParam2=value2 を指定すると、次の属性が挿入されます。
+たとえば、http.url = 'http://example.com/path?queryParam1=value1,queryParam2=value2' を指定すると、次の属性が挿入されます。
 * httpProtocol: http
 * httpDomain: example.com
 * httpPath: path

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a937528e3bfd8bea16912d614133988763748bab
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86129855"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632961"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Azure VM 起動時に Windows が "CRITICAL SERVICE FAILED" をブルー スクリーンに表示する
 この記事では、Microsoft Azure で Windows 仮想マシン (VM) を起動するときに発生する可能性のある "CRITICAL SERVICE FAILED" エラーについて説明します。 また、この問題の解決するためのトラブルシューティング手順について説明します。 
@@ -38,6 +38,9 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 - アプリケーションがメモリの禁止されたセクターにアクセスしている
 
 ## <a name="solution"></a>解決策 
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 この問題を解決するには、[サポートに連絡し、ダンプ ファイルを送信してください](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file) (このダンプ ファイルは迅速に問題を診断するのに役立ちます)。または、次のセルフヘルプ ソリューションをお試しください。
 
@@ -96,7 +99,7 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 
 2. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](troubleshoot-recovery-disks-portal-windows.md)。 VM がセーフ モードで起動します。 依然としてエラーが発生する場合は、省略可能な手順を実行します。
 3. **[実行]** ボックスを開き、**verifier** を実行して、ドライバーの検証マネージャー ツールを起動します。
-4. **[署名されていないドライバーを自動的に選択する]** を選択し、 **[次へ]** をクリックします。
+4. **[署名されていないドライバーを自動的に選択する]** を選択し、**[次へ]** をクリックします。
 5. 署名されていないドライバー ファイルの一覧が表示されます。 ファイル名を覚えます。
 6. これらのファイルの同じバージョンを作業用 VM からコピーし、これらの署名されていないファイルを置き換えます。 
 
@@ -108,7 +111,7 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 
 8.  VM を再起動します。 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>省略可能: ダンプ クラッシュ モードでのダンプ ログの分析
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>オプション: ダンプ クラッシュ モードでのダンプ ログの分析
 
 ダンプ ログを自分で分析するには、次の手順に従います。
 
@@ -142,7 +145,7 @@ Windows VM が起動しません。 [[ブート診断]](./boot-diagnostics.md) �
 9. [OS ディスクを切断し、影響を受ける VM に OS ディスクを接続し直します](troubleshoot-recovery-disks-portal-windows.md)。
 10. VM を起動し、ダンプの分析が表示されないことを確認します。 読み込みに失敗したファイルを見つけます。 作業用 VM のファイルでこのファイルを置き換える必要があります。 
 
-    ダンプ分析の例を次に示します。 filecrypt.sys に **FAILURE** が付加されていることを確認できます。"FAILURE_BUCKET_ID:0x5A_c0000428_IMAGE_filecrypt.sys".
+    ダンプ分析の例を次に示します。 filecrypt.sys に **FAILURE** が表示されます ("FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys")。
 
     ```
     kd> !analyze -v 

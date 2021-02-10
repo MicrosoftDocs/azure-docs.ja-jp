@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072158"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622797"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>チュートリアル:独自のデータを使用する (4 部構成中の第 4 部)
 
@@ -99,6 +99,20 @@ tutorial
 ```
 
 前のチュートリアルで `train.py` をローカルで実行しなかった場合、`data/` ディレクトリは含まれません。 この場合は、`train.py` スクリプト内で `download=True` を使用して `torchvision.datasets.CIFAR10` メソッドをローカルで実行します。
+
+また、ローカルで実行するには、必ずチュートリアル環境を終了し、新しい conda 環境をアクティブ化してください。
+
+```bash
+conda deactivate                # If you are still using the tutorial environment, exit it
+```
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+```
+
+```bash
+conda activate pytorch-aml-env          # activate new conda environment
+```
 
 変更したトレーニング スクリプトをローカルで実行するには、次のように呼び出します。
 

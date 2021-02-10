@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 55dcd65e901a5ce8665ef8d3a2a29d7943581df9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 145d58013b259bf14c26d0840b8cd4299cfe85f0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200721"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632624"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>Windows Update の適用時に、Azure VM が C01A001D エラー でて応答しません。
 
@@ -38,6 +38,9 @@ VM のスクリーンショットを見るために [ブート診断](./boot-dia
 ## <a name="resolution"></a>解像度
 
 ### <a name="process-overview"></a>プロセスの概要
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 1. [修復 VM](#create-and-access-a-repair-vm)を作成してアクセスします。
 2. [ハードディスクの空き領域を増やします](#free-up-space-on-the-hard-disk)。

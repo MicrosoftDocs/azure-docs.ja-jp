@@ -4,14 +4,13 @@ description: この記事では、Update Management を使用して Azure およ
 services: automation
 ms.subservice: update-management
 ms.topic: conceptual
-ms.date: 07/28/2020
-ms.custom: mvc
-ms.openlocfilehash: 24dcb501872aabf9fac3da0cccc2a1af9c9b06ff
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.date: 01/27/2021
+ms.openlocfilehash: c86c9049bc0afc81f5dfd8553d2aa98cfd4b1a46
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221871"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915984"
 ---
 # <a name="manage-updates-and-patches-for-your-vms"></a>VM の更新プログラムとパッチを管理する
 
@@ -35,11 +34,13 @@ Update Management では、ワークスペース内のスコープ構成を使�
 
 ソフトウェア更新プログラムをマシンに展開する前に、有効化されたマシンに対する更新プログラムのコンプライアンス評価の結果を確認します。 各ソフトウェア更新プログラムのコンプライアンスの状態は記録され、評価が完了した後に収集されて一括で Azure Monitor ログに転送されます。
 
-Windows マシンでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。 このスケジュール化されたスキャンに加えて、Windows 用の Log Analytics エージェントの再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムのコンプライアンスを確認するためのスキャンが開始されます。 また、Update Management を使用して [Windows Update クライアントを構成する](configure-wuagent.md)方法に関する推奨事項を確認し、これが適切に管理されるのを妨げる問題を回避することも重要です。
+Windows マシンでは、コンプライアンス スキャンは既定で 12 時間ごとに実行され、Windows 用の Log Analytics エージェントが再起動されてから 15 分以内に開始されます。 その後、評価データがワークスペースに転送され、**Updates** テーブルが更新されます。 更新プログラムのインストールの前後に、更新プログラムのコンプライアンス スキャンが実行されて、不足している更新プログラムが識別されますが、その結果はテーブル内の評価データを更新するために使用されません。
+
+Update Management を使用して [Windows Update クライアントを構成する](configure-wuagent.md)方法に関する推奨事項を確認して、それが適切に管理されるのを妨げる問題を回避することが重要です。
 
 Linux マシンでは、コンプライアンス スキャンは既定で 1 時間ごとに実行されます。 Linux 用 Log Analytics エージェントを再起動した場合、コンプライアンス スキャンは 15 分以内に開始されます。
 
-コンプライアンスの結果は、評価した各マシンごとに Update Management に表示されます。 管理のために有効化された新しいマシンでは、ダッシュボードに更新されたデータが表示されるまでに最大で 30 分かかることがあります。
+コンプライアンスの結果は、評価した各マシンごとに Update Management に表示されます。 管理が有効になった新しいマシンからの更新されたデータがダッシュボードに表示されるまでには、最大で 30 分かかることがあります。
 
 コンプライアンスの結果を表示する方法については、[ソフトウェア更新プログラムの監視](view-update-assessments.md)に関する記事を参照してください。
 

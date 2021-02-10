@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: e4f33f0974462197382ea6ac5d2b68d61909f73b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5bf4d0ed2173d048d968f60dea72a1a0c25ab05
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079243"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429787"
 ---
 # <a name="using-azure-batch-rendering"></a>Azure Batch レンダリングを使用する
 
@@ -52,16 +52,7 @@ VM イメージをレンダリングする Marketplace 上に存在するすべ�
 
 Batch Explorer の [データ] セクションでは、ローカル ファイル システムと Azure Storage アカウント間でファイルをコピーできます。
 
-## <a name="client-application-plug-ins"></a>クライアント アプリケーションのプラグイン
-
-一部のクライアント アプリケーションにはプラグインが用意されています。  プラグインを使用すると、アプリケーションから直接プールやジョブを作成または Batch Explorer を呼び出すことができます。
-
-* [Blender 2.79](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
-* [Blender 2.8 以降](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender28)
-* [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
-* [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Batch レンダリングの例については、次の 2 つのチュートリアルをお試しください。
 

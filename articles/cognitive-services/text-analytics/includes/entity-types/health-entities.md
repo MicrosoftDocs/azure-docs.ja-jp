@@ -9,15 +9,13 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 10/02/2020
 ms.author: aahi
-ms.openlocfilehash: 00c1c8ddab9214bf7698c21b05c24afa36ec20d9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 614d0fe69cee88791559758d5e08dda66672669b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147349"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097304"
 ---
-## <a name="text-analytics-for-health-categories-entities-and-attributes"></a>Text Analytics for Health のカテゴリ、エンティティ、属性
-
 [Text Analytics for Health](../../how-tos/text-analytics-for-health.md) を使用すると、次のカテゴリの医療概念が検出されます。  (このコンテナー プレビューでは英語のテキストのみがサポートされており、各コンテナー イメージには 1 つのモデル バージョンのみが用意されていることにご注意ください。)
 
 

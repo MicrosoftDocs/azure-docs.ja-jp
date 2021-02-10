@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734541"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226054"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -61,7 +61,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 |---------|---------|
 | 操作 ID | 上記の表の操作識別子。|
 | enabled | ブール値: true または false。|
-| VIDEO_URL| カメラ デバイスの RTSP URL (例: `rtsp://username:password@url`)。 空間分析では、RTSP、http、または mp4 を使用して H.264 でエンコードされたストリームをサポートしています。 Video_URL は、AES 暗号化を使用して難読化された base64 文字列値として指定できます。ビデオの URL が難読化されている場合は、環境変数として `KEY_ENV` と `IV_ENV` を指定する必要があります。 キーと暗号化を生成するためのサンプル ユーティリティについては、[こちら](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0)を参照してください。 |
+| VIDEO_URL| カメラ デバイスの RTSP URL (例: `rtsp://username:password@url`)。 空間分析では、RTSP、http、または mp4 を使用して H.264 でエンコードされたストリームをサポートしています。 Video_URL は、AES 暗号化を使用して難読化された base64 文字列値として指定できます。ビデオの URL が難読化されている場合は、環境変数として `KEY_ENV` と `IV_ENV` を指定する必要があります。 キーと暗号化を生成するためのサンプル ユーティリティについては、[こちら](/dotnet/api/system.security.cryptography.aesmanaged)を参照してください。 |
 | VIDEO_SOURCE_ID | カメラ デバイスまたはビデオ ストリームのフレンドリ名。 これは、イベントの JSON 出力と共に返されます。|
 | VIDEO_IS_LIVE| カメラ デバイスの場合は true、録画されたビデオの場合は false。|
 | VIDEO_DECODE_GPU_INDEX| ビデオ フレームをデコードする GPU。 既定では 0 です。 `VICA_NODE_CONFIG`、`DETECTOR_NODE_CONFIG` などの他のノード構成の `gpu_index` と同じである必要があります。|
@@ -130,7 +130,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `threshold` | float| AI モデルの信頼度がこの値以上の場合に、イベントが送信されます。 |
 | `type` | string| **cognitiveservices.vision.spatialanalysis-personcount** の場合、これは `count` である必要があります。|
 | `trigger` | string| イベントを送信するためのトリガーの種類。 サポートされている値は、`event` (カウントが変わったときにイベントを送信する場合)、または `interval` (カウントが変わったかどうかに関係なく、イベントを定期的に送信する場合) です。
-| `interval` | string| イベントが発生する前に人数が集計される時間 (秒単位)。 操作では、一定の頻度でシーンの分析が続行され、その間隔内で最も一般的な人数が返されます。 集計間隔は、`event` と `interval` の両方に適用できます。|
+| `output_frequency` | INT | イベントが送信される頻度。 `output_frequency` = X の場合、X おきにイベントが送信されます。たとえば、 `output_frequency` = 2 は、1 つおきにイベントが送信されることを意味します。 `output_frequency` は、`event` と `interval` の両方に適用されます。 |
 | `focus` | string| イベントの計算に使用される人の境界ボックス内のポイントの場所。 フォーカスの値は、`footprint` (人の占有領域)、`bottom_center` (人の境界ボックスの下部中央)、`center` (人の境界ボックスの中央) にすることができます。|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>cognitiveservices.vision.spatialanalysis-personcrossingline のライン構成
@@ -167,7 +167,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `lines` | list| ラインのリスト。|
 | `name` | string| このラインのフレンドリ名。|
@@ -213,7 +213,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -247,7 +247,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 }
 ```
 
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
@@ -255,8 +255,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `threshold` | float| AI モデルの信頼度がこの値以上の場合に、イベントが送信されます。 |
 | `type` | string| **cognitiveservices.vision.spatialanalysis-persondistance** の場合、これは `people_distance` である必要があります。|
 | `trigger` | string| イベントを送信するためのトリガーの種類。 サポートされている値は、`event` (カウントが変わったときにイベントを送信する場合)、または `interval` (カウントが変わったかどうかに関係なく、イベントを定期的に送信する場合) です。
-| `interval` | string | イベントが発生する前に違反数が集計される時間 (秒単位)。 集計間隔は、`event` と `interval` の両方に適用できます。|
-| `output_frequency` | INT | イベントが送信される頻度。 `output_frequency` = X の場合、X おきにイベントが送信されます。たとえば、 `output_frequency` = 2 は、1 つおきにイベントが送信されることを意味します。 output_frequency は、`event` と `interval` の両方に適用できます。|
+| `output_frequency` | INT | イベントが送信される頻度。 `output_frequency` = X の場合、X おきにイベントが送信されます。たとえば、 `output_frequency` = 2 は、1 つおきにイベントが送信されることを意味します。 `output_frequency` は、`event` と `interval` の両方に適用されます。|
 | `minimum_distance_threshold` | float| 人と人との距離がその距離よりも近いときに "TooClose" イベントをトリガーする距離 (フィート単位)。|
 | `maximum_distance_threshold` | float| 人と人との距離がその距離よりも離れているときに "TooFar" イベントをトリガーする距離 (フィート単位)。|
 | `focus` | string| イベントの計算に使用される人の境界ボックス内のポイントの場所。 フォーカスの値は、`footprint` (人の占有領域)、`bottom_center` (人の境界ボックスの下部中央)、`center` (人の境界ボックスの中央) にすることができます。|
@@ -964,7 +963,7 @@ GPU のパフォーマンスと使用率を最大限に引き出すには、グ�
       }
   }
   ```
-| 名前 | 型| 説明|
+| 名前 | Type| 説明|
 |---------|---------|---------|
 | `batch_size` | INT | 操作で使用されるカメラの数を示します。 |
 

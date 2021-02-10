@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 212a6b0786b371bfb92f2e193e67d9accd432bf8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c0c7a6b25c15be2e521e0985c315baf819650aa5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657245"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491758"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -214,7 +214,7 @@ or
 ```
 
 > [!NOTE]
-> バックエンド エンティティは、管理 [API](/rest/api/apimanagement/2019-12-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます。
+> バックエンド エンティティは、[Azure portal](how-to-configure-service-fabric-backend.md)、管理[ API](/rest/api/apimanagement)、および [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます。
 
 ### <a name="example"></a>例
 
@@ -269,7 +269,7 @@ or
 |名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |base-url|バックエンド サービスの新しいベース URL。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
-|backend-id|ルーティング先のバックエンドの識別子。 (バックエンド エンティティは、[API](/rest/api/apimanagement/2019-12-01/backend) と [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理できます)。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
+|backend-id|ルーティング先のバックエンドの識別子。 (バックエンド エンティティは、[Azure portal](how-to-configure-service-fabric-backend.md)、[API](/rest/api/apimanagement)、および [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) を使用して管理されます)。|`base-url` または `backend-id` のいずれかが存在しなければなりません。|該当なし|
 |sf-partition-key|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 名前解決サービスからの特定のパーティションを解決するために使います。|いいえ|該当なし|
 |sf-replica-type|バックエンドが Service Fabric サービスで、'backend-id' を使って指定されている場合にのみ適用されます。 要求をパーティションのプライマリ レプリカとセカンダリ レプリカのどちらに送信する必要があるかを制御します。 |いいえ|該当なし|
 |sf-resolve-condition|バックエンドが Service Fabric サービスの場合にのみ適用されます。 Service Fabric バックエンドへの呼び出しを新しい解決で繰り返す必要があるかどうかを識別する条件です。|いいえ|該当なし|

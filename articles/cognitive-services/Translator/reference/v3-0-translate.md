@@ -3,19 +3,19 @@ title: Translator の Translate メソッド
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services のテキストを翻訳するための Translator の Translate メソッド用のパラメーター、ヘッダー、および本文のメッセージを理解します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016549"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895443"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0:Translate
 

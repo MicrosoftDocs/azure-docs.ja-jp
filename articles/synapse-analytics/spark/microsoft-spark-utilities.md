@@ -10,12 +10,12 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: d2e9e306e979f569819568650b25d49278997ede
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d36086052f4e5719fd17989e3326a4b5728ee3ca
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878529"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954295"
 ---
 # <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark Utilities の概要
 
@@ -39,10 +39,6 @@ Synapse Spark を使用して ADLS Gen2 のデータにアクセスするには�
 
 <code>abfss://<container_name>@<storage_account_name>.dfs.core.windows.net/<path></code>
 
-<!-- ### Configure access to Azure Blob Storage  -->
-
-:::zone pivot = "programming-language-python"
-
 ### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob Storage へのアクセスを構成する  
 
 Synapse は、**Shared Access Signature (SAS)** を利用して Azure Blob Storage にアクセスします。 コードの SAS キーが公開されないようにするには、Synapse ワークスペースで、アクセスしたい Azure Blob Storage アカウントにリンクされたサービスを新しく作成することをお勧めします。
@@ -62,6 +58,8 @@ Synapse Spark を使用して Azure Blob Storage のデータにアクセスす�
 <code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
 
 コード例はこちらです。
+
+:::zone pivot = "programming-language-python"
 
 ```python
 from pyspark.sql import SparkSession
@@ -86,26 +84,6 @@ print('Remote blob path: ' + wasb_path)
 
 :::zone pivot = "programming-language-scala"
 
-### <a name="configure-access-to-azure-blob-storage"></a>Azure Blob Storage へのアクセスを構成する  
-
-Synapse は、**Shared Access Signature (SAS)** を利用して Azure Blob Storage にアクセスします。 コードの SAS キーが公開されないようにするには、Synapse ワークスペースで、アクセスしたい Azure Blob Storage アカウントにリンクされたサービスを新しく作成することをお勧めします。
-
-Azure Blob Storage アカウントにリンクされたサービスを新しく追加するには、次の手順に従います。
-
-1. [Azure Synapse Studio](https://web.azuresynapse.net/) を開く
-2. 左側のパネルで **[管理]** を選択し、 **[外部接続]** の下にある **[リンクされたサービス]** を選択します。
-3. 右側にある **[新しいリンクされたサービス]** パネルで **Azure Blob Storage** を検索します。
-4. **[続行]** をクリックします。
-5. リンクされたサービス名にアクセスして構成するには、Azure Blob Storage アカウントを選択します。 **[認証方法]** には、 **[アカウント キー]** を使用することをお勧めします。
-6. **[テスト接続]** を選択して設定が正しいことを検証します。
-7. 最初に **[作成]** を選択し、 **[すべて公開]** をクリックして、変更を保存します。 
-
-Synapse Spark を使用して Azure Blob Storage のデータにアクセスするには、次の URL を使用します。
-
-<code>wasb[s]://<container_name>@<storage_account_name>.blob.core.windows.net/<path></code>
-
-コード例はこちらです。
-
 ```scala
 val blob_account_name = "" // replace with your blob name
 val blob_container_name = "" //replace with your container name
@@ -122,13 +100,24 @@ spark.conf.set(f"fs.azure.sas.$blob_container_name.$blob_account_name.blob.core.
 
 ::: zone-end
 
-<!-- :::zone pivot = "programming-language-csharp"
+:::zone pivot = "programming-language-csharp"
 
 ```csharp
+var blob_account_name = "";  // replace with your blob name
+var blob_container_name = "";     // replace with your container name
+var blob_relative_path = "";  // replace with your relative folder path
+var linked_service_name = "";    // replace with your linked service name
+var blob_sas_token = Credentials.GetConnectionStringOrCreds(linked_service_name);
+
+spark.SparkContext.GetConf().Set($"fs.azure.sas.{blob_container_name}.{blob_account_name}.blob.core.windows.net", blob_sas_token);
+
+var wasbs_path = $"wasbs://{blob_container_name}@{blob_account_name}.blob.core.windows.net/{blob_relative_path}";
+
+Console.WriteLine(wasbs_path);
 
 ```
 
-::: zone-end -->
+::: zone-end 
  
 ###  <a name="configure-access-to-azure-key-vault"></a>Azure Key Vault へのアクセスを構成する
 

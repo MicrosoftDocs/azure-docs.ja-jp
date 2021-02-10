@@ -136,7 +136,7 @@ Azure PowerShell モジュールを使用して、静的な Web サイトのホ�
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-次の手順では、Azure portal に表示される Storage Explorer のバージョンを使用してファイルをアップロードする方法について説明します。 ただし、Azure portal の外部で実行される [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のバージョンを使用することもできます。 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI、またはお使いのアカウントの **$web** コンテナーにファイルをアップロードできる任意のカスタムアプリケーションを使用できます。 Visual Studio コードを使用してファイルをアップロードする詳細なチュートリアルについては、[ チュートリアルを参照してください。Host a static website on Blob Storage](./storage-blob-static-website-host.md)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
+次の手順では、Azure portal に表示される Storage Explorer のバージョンを使用してファイルをアップロードする方法について説明します。 ただし、Azure portal の外部で実行される [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) のバージョンを使用することもできます。 [AzCopy](../common/storage-use-azcopy-v10.md)、PowerShell、CLI、またはお使いのアカウントの **$web** コンテナーにファイルをアップロードできる任意のカスタムアプリケーションを使用できます。 Visual Studio Code を使用してファイルをアップロードする詳細なチュートリアルについては、[ チュートリアルを参照してください。Host a static website on Blob Storage](./storage-blob-static-website-host.md)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。
 
 1. **ストレージ エクスプローラー (プレビュー)** を選択します。
 

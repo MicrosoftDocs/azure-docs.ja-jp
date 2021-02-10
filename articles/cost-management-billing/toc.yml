@@ -63,7 +63,7 @@
             - name: Azure 予約割引の適用方法
               href: reservations/reservation-discount-application.md?toc=/azure/cost-management-billing/toc.json
             - name: App Service
-              href: reservations/reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+              href: reservations/reservation-discount-app-service.md?toc=/azure/cost-management-billing/toc.json
             - name: Azure Cache for Redis
               href: reservations/understand-azure-cache-for-redis-reservation-charges.md?toc=/azure/cost-management-billing/toc.json
             - name: Cosmos DB
@@ -303,7 +303,7 @@
             - name: Azure の予約の購入
               href: reservations/prepare-buy-reservation.md?toc=/azure/cost-management-billing/toc.json
             - name: App Service
-              href: reservations/prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/toc.json
+              href: reservations/prepay-app-service.md?toc=/azure/cost-management-billing/toc.json
             - name: Azure Cache for Redis の予約
               href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/toc.json
             - name: Cosmos DB

@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912735"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762868"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -93,28 +93,36 @@ L2 ネットワークの拡張だけを計画している場合でも、環境�
 - オンプレミスからネットワークを拡張する予定の場合、これらのネットワークはオンプレミスの VMware 環境内の [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) に接続する必要があります。  
 - 拡張したいネットワークが [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) 上で機能している場合、それらは拡張できません。
 
-## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure VMware Solution を接続するための Azure Virtual Network
+## <a name="attach-virtual-network-to-azure-vmware-solution"></a>仮想ネットワークを Azure VMware Solution に接続する
 
-Azure VMware Solution プライベート クラウドにアクセスするには、Azure VMware Solution に付随する ExpressRoute 回線を、Azure Virtual Network に接続する必要があります。  デプロイ時には、新しい仮想ネットワークを定義すること、または既存のものを選択することが可能です。
+この手順では、ExpressRoute 仮想ネットワーク ゲートウェイと、Azure VMware Solution の ExpressRoute 回線の接続に使用されるサポートする Azure 仮想ネットワークを特定します。  ExpressRoute 回路により、Azure VMware Solution プライベート クラウドと他の Azure サービス、Azure リソース、オンプレミス環境との間の接続が容易になります。
 
-Azure VMware Solution からの ExpressRoute 回線は、この手順で定義する Azure Virtual Network の ExpressRoute ゲートウェイに接続します。  
-
->[!IMPORTANT]
->仮想ネットワークあたり 4 つの ExpressRoute 回路という上限を超えない限り、既存の ExpressRoute ゲートウェイを使用して Azure VMware Solution に接続できます。  ただし、オンプレミスから ExpressRoute 経由で Azure VMware Solution にアクセスするには、ExpressRoute Global Reach が必要です。これは、ExpressRoute ゲートウェイでは、それに接続されている回路との間で推移的なルーティングが提供されないためです。  
-
-Azure VMware Solution からの ExpressRoute 回線を既存の ExpressRoute ゲートウェイに接続する場合は、デプロイ後に実行できます。  
-
-そのため、Azure VMware Solution を既存の ExpressRoute ゲートウェイに接続するか、というのがまとめの質問です。  
-
-* **する** = デプロイ時に使用されない仮想ネットワークを特定します。
-* **しない** = 既存の仮想ネットワークを選択するか、デプロイ時に新しく作成します。
-
-どちらの方法でも、この手順で行うことを文書化しておきます。
-
->[!NOTE]
->この仮想ネットワークは、オンプレミス環境と Azure VMware Solution から認識されるため、この仮想ネットワークで使用する IP セグメントとサブネットが重複しないようにしてください。
+使用する ExpressRoute 仮想ネットワーク ゲートウェイは、"*既存の*" ものでも "*新しい*" ものでもかまいません。
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="特定する - Azure VMware Solution を接続するための Azure Virtual Network" border="false":::
+
+### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>既存の ExpressRoute 仮想ネットワーク ゲートウェイを使用する
+
+"*既存の*" ExpressRoute 仮想ネットワーク ゲートウェイを使用する場合は、プライベート クラウドをデプロイした後に、Azure VMware Solution の ExpressRoute 回線が確立されます。 この場合、 **[仮想ネットワーク]** フィールドは空白のままにしておきます。  
+
+使用する ExpressRoute 仮想ネットワーク ゲートウェイをメモしておき、次の手順に進みます。
+
+### <a name="create-a-new-expressroute-virtual-network-gateway"></a>新しい ExpressRoute 仮想ネットワーク ゲートウェイを作成する
+
+"*新しい*" ExpressRoute 仮想ネットワーク ゲートウェイを作成するときは、既存の Azure 仮想ネットワークを使用することも、新しく作成することもできます。  
+
+- 既存の Azure 仮想ネットワークの場合:
+   1. 仮想ネットワークに既存の ExpressRoute 仮想ネットワーク ゲートウェイがないことを確認します。 
+   1. **[仮想ネットワーク]** の一覧から、既存の Azure 仮想ネットワークを選択します。
+
+- 新しい Azure 仮想ネットワークの場合、事前に作成することも、デプロイ時に作成することもできます。 **[仮想ネットワーク]** の一覧の下にある **[新規作成]** リンクを選択します。
+
+次の画像は、 **[仮想ネットワーク]** フィールドが強調表示された **[プライベート クラウドを作成する]** デプロイ画面を示しています。
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="[仮想ネットワーク] フィールドが強調表示された Azure VMware Solution のデプロイ画面のスクリーンショット。":::
+
+>[!NOTE]
+>使用または作成される仮想ネットワークは、オンプレミス環境と Azure VMware Solution から認識される可能性があるため、この仮想ネットワークで使用する IP セグメントとサブネットが重複しないようにしてください。
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX のネットワーク セグメント
 

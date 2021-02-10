@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.date: 01/29/2021
+ms.openlocfilehash: 01c448165e6d1f4d6103c61387298f2d9eb40254
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858588"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222951"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -161,7 +161,7 @@ Azure SQL Database には、"ソース" パーティション分割と呼ばれ�
 
 #### <a name="isolation-level"></a>分離レベル
 
-Azure SQL ソース システムでの読み取りの分離レベルは、パフォーマンスに影響します。 [コミットされていないものを読み取り] を選択すると、パフォーマンスが最速になり、データベース ロックが防止されます。 SQL 分離レベルの詳細については、「[分離レベルについて](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels)」を参照してください。
+Azure SQL ソース システムでの読み取りの分離レベルは、パフォーマンスに影響します。 [コミットされていないものを読み取り] を選択すると、パフォーマンスが最速になり、データベース ロックが防止されます。 SQL 分離レベルの詳細については、「[分離レベルについて](/sql/connect/jdbc/understanding-isolation-levels)」を参照してください。
 
 #### <a name="read-using-query"></a>クエリを使用した読み取り
 
@@ -208,7 +208,7 @@ SQL データベースで読み込み前にインデックスを無効にする�
 ![インデックスの無効化](media/data-flow/disable-indexes-sql.png "インデックスの無効化")
 
 > [!WARNING]
-> インデックスを無効にすると、実質的にデータ フローでデータベースが制御されますが、クエリはこの時点では成功しない可能性があります。 その結果、この競合を回避するために、多くの ETL ジョブが夜間にトリガーされます。 詳細については、[インデックス無効化の制約](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints)に関するページを参照してください
+> インデックスを無効にすると、実質的にデータ フローでデータベースが制御されますが、クエリはこの時点では成功しない可能性があります。 その結果、この競合を回避するために、多くの ETL ジョブが夜間にトリガーされます。 詳細については、[インデックス無効化の制約](/sql/relational-databases/indexes/disable-indexes-and-constraints)に関するページを参照してください
 
 #### <a name="scaling-up-your-database"></a>データベースのスケールアップ
 
@@ -216,7 +216,7 @@ DTU の制限に達したら、ソースとシンクの Azure SQL DB と DW の�
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure Synapse Analytics のシンク
 
-Azure Synapse Analytics に書き込むときは、 **[Enable staging]\(ステージングの有効化\)** が true に設定されていることを確認してください。 これにより、ADF で [SQL Copy Command](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) を使用して書き込むことができ、データを一括で効率的に読み込むことができます。 ステージングを使用する場合は、データのステージングのために Azure Data Lake Storage gen2 または Azure Blob Storage アカウントを参照する必要があります。
+Azure Synapse Analytics に書き込むときは、 **[Enable staging]\(ステージングの有効化\)** が true に設定されていることを確認してください。 これにより、ADF で [SQL Copy Command](/sql/t-sql/statements/copy-into-transact-sql) を使用して書き込むことができ、データを一括で効率的に読み込むことができます。 ステージングを使用する場合は、データのステージングのために Azure Data Lake Storage gen2 または Azure Blob Storage アカウントを参照する必要があります。
 
 ステージング以外でも、Azure Synapse Analytics に Azure SQL Database と同じベスト プラクティスが適用されます。
 
@@ -244,11 +244,11 @@ Azure Synapse Analytics に書き込むときは、 **[Enable staging]\(ステ�
 
 CosmosDB に書き込む場合、データ フローの実行中にスループットとバッチ サイズを変更すると、パフォーマンスが向上する可能性があります。 これらの変更はデータ フロー アクティビティの実行中にのみ有効になり、終了後に元のコレクション設定に戻ります。 
 
-**バッチ サイズ:** データの行のおおよそのサイズを計算し、行サイズ * バッチ サイズが 200 万未満であることを確認します。 その場合は、バッチ サイズを増やしてスループットを向上させます。
+**バッチ サイズ:** 通常、既定のバッチ サイズで開始するだけで十分です。 この値をさらに調整するには、データの大まかなオブジェクト サイズを計算し、オブジェクト サイズ * バッチ サイズが 2 MB 未満であることを確認します。 その場合は、バッチ サイズを増やしてスループットを向上できます。
 
 **スループット**: ここでより高いスループットを設定して、CosmosDB にドキュメントを高速で書き込むことができるようにします。 高いスループットの設定に基づいて、RU コストが高くなることに注意してください。
 
-**書き込みスループット予算:** 1 分あたりの RU の合計よりも小さい値を使用してください。 多数の Spark パーティションが含まれるデータ フローがある場合、予算のスループットを設定すると、これらのパーティション間でより均等にバランスを取ることができます。
+**Write throughput budget (書き込みスループット予算)** : 1 分あたりの RU の合計よりも小さい値を使用してください。 多数の Spark パーティションが含まれるデータ フローがある場合、予算のスループットを設定すると、これらのパーティション間でより均等にバランスを取ることができます。
 
 ## <a name="optimizing-transformations"></a>変換の最適化
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alzam
-ms.openlocfilehash: 8fcc79991918aecfc26933f2ef5b6e80ea7fa88c
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e25ef7f55492be4ee491b9ebbbef4aa1eb03c80b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043434"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898089"
 ---
 # <a name="create-an-azure-active-directory-ad-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory (AD) テナントを作成する
 
@@ -131,11 +131,19 @@ VPN プロファイルを使用してクライアントを構成します。
 
 #### <a name="to-diagnose-connection-issues"></a><a name="diagnose"></a>接続の問題を診断するには
 
-1. 接続の問題を診断するには、 **診断** ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
+1. 接続の問題を診断するには、**診断** ツールを使用します。 診断する VPN 接続の横にある省略記号 (...) を選択して、メニューを表示します。 次に、 **[診断]** を選択します。
 
     ![メニューで [診断] が選択されていることを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose1.jpg)
 
 2. **[接続プロパティ]** ページで、 **[Run Diagnosis]\(診断の実行\)** を選択します。
+
+    ![接続の [Run Diagnosis]\(診断の実行\) ボタンを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
+
+3. 自分の資格情報でサインインします。
+
+    ![診断 3](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose3.jpg)
+
+4. 診断結果を確認します。
 
     ![接続の [Run Diagnosis]\(診断の実行\) ボタンを示すスクリーンショット。](./media/openvpn-azure-ad-tenant-multi-app/diagnose/diagnose2.jpg)
 

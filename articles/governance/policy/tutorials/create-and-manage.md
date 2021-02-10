@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:コンプライアンスを強制するポリシーを作成する
 description: このチュートリアルでは、標準の強制、コストの制御、セキュリティの維持、および企業全体の設計原則の適用を行うポリシーを使用します。
-ms.date: 10/05/2020
+ms.date: 01/29/2021
 ms.topic: tutorial
-ms.openlocfilehash: bf3da82abcdcada1fc38df29efc988a1805c3020
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a643e7ccede4966719972694ea29eeb77789595e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005437"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221195"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>チュートリアル:コンプライアンスを強制するポリシーの作成と管理
 
@@ -71,6 +71,10 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 1. **[修復タスクを作成する]** のチェックをオフのままにします。 このボックスを利用すると、新規または更新されたリソースだけでなく、既存のリソースを変更するタスクを作成できます。 詳細については、[修復リソース](../how-to/remediate-resources.md)に関する記事をご覧ください。
 
 1. このポリシー定義では [modify](../concepts/effects.md#modify) 効果を使用しているため、 **[マネージド ID を作成します]** のチェックが自動的にオンになります。 **[アクセス許可]** は、自動的にポリシー定義に基づく "_共同作成者_" に設定されます。 詳しくは、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) および[修復セキュリティのしくみ](../how-to/remediate-resources.md#how-remediation-security-works)に関するページをご覧ください。
+
+1. ウィザードの上部にある **[Non-compliance messages]\(コンプライアンス違反メッセージ\)** タブを選択します。
+
+1. **[Non-compliance message]\(コンプライアンス違反メッセージ\)** を _[This resource doesn't have the required tag]\(このリソースには必要なタグがありません\)_ に設定します。 このカスタム メッセージは、リソースが拒否されたときに表示されるほか、コンプライアンス違反のリソースについては、通常の評価時に表示されます。
 
 1. ウィザードの上部にある **[Review + create]\(確認と作成\)** タブを選択します。
 

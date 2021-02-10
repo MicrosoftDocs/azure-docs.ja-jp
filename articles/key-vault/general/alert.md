@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1b447e907bca3f8d21f522d888632aa687fd0f91
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934596"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070663"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault の監視とアラート
 
@@ -203,12 +203,13 @@ ms.locfileid: "97934596"
 
 7. アラートを作成する 
 
+### <a name="example-email-alert"></a>電子メール アラートの例 
+
+> [!div class="mx-imgBorder"]
+> ![電子メール アラートを構成するために必要な情報が強調表示されているスクリーンショット。](../media/alert-20.png)
 
 ## <a name="next-steps"></a>次のステップ
 
 これで、監視ダッシュボードが正常に作成され、キー コンテナーのアラートが構成されました。 上記のすべての手順を実行すると、構成したアラート条件をキー コンテナーが満たした場合に電子メール アラートが届きます。 次に例を示します。 この記事で設定したツールを使用して、キー コンテナーの正常性をアクティブに監視します。 
 
-### <a name="example-email-alert"></a>電子メール アラートの例 
 
-> [!div class="mx-imgBorder"]
-> ![電子メール アラートを構成するために必要な情報が強調表示されているスクリーンショット。](../media/alert-20.png)

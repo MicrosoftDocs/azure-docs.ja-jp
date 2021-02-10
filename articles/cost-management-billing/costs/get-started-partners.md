@@ -3,18 +3,18 @@ title: パートナー向け Azure Cost Management の利用を開始する
 description: この記事では、パートナーが Azure Cost Management の機能を使用する方法と、パートナーの顧客のために Cost Management アクセスを有効にする方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 40c683d98a13bf4810ec4575af3fba5ae64961f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602181"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946993"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
@@ -22,7 +22,7 @@ Azure Cost Management は、お客様を Microsoft 顧客契約にオンボー�
 
 直接パートナーおよび間接プロバイダーの場合、全体管理者と管理者エージェントが、パートナー テナントの Cost Management にアクセスして請求価格のコストを管理できます。
 
-リセラーと顧客は、顧客テナントで Cost Management にアクセスし、サブスクリプションのコストを確認でき、コストは小売料金で計算されて表示されます。 ただし、コストを表示するためには、顧客テナントのサブスクリプションに対する Azure RBAC アクセス権が必要です。 顧客テナントのプロバイダーによって、コスト可視性ポリシーが有効になっている必要があります。
+リセラーと顧客は、顧客テナントで Cost Management にアクセスし、サブスクリプションの消費コストを確認でき、コストは小売料金で計算されて表示されます。 ただし、コストを表示するためには、顧客テナントのサブスクリプションに対する Azure RBAC アクセス権が必要です。 顧客テナントのプロバイダーによって、コスト可視性ポリシーが有効になっている必要があります。
 
 顧客は、CSP パートナーによって有効化された場合、Cost Management の機能を使用できます。
 
@@ -56,6 +56,8 @@ Azure Cost Management には、課金アカウントまたはサブスクリプ�
 課金アカウントでの Azure Cost Management へのアクセスの有効化と割り当ての詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。 **全体管理者** ロールと **管理エージェント** ロールは、課金アカウントのコストを管理できます。
 
 サブスクリプション スコープで Azure Cost Management にアクセスする場合、サブスクリプションに対して Azure RBAC アクセス権を持つユーザーは、小売 (従量課金制) レートでコストを表示できます。 ただし、[顧客テナントのコスト可視性ポリシー](#enable-the-policy-to-view-azure-usage-charges)が有効になっている必要があります。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management のデータを理解する](understand-cost-mgt-data.md)」を参照してください。
+
+既存の課金契約を新しいパートナーに転送する際、コスト管理機能は、そのパートナーとの現在の課金リレーションシップについてのみ利用できます。 新しいパートナーへの転送前に生じた過去のコストが、新しい課金アカウントに移動することはありません。 ただしコスト履歴は、関連する元の課金アカウントと共に残ります。
 
 ## <a name="how-cost-management-uses-scopes"></a>Cost Management でのスコープの使用方法
 

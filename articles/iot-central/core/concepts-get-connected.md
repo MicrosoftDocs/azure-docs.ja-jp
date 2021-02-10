@@ -3,7 +3,7 @@ title: Azure IoT Central のデバイス接続機能 | Microsoft Docs
 description: この記事では、Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/22/2020
+ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033182"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062680"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -234,6 +234,7 @@ Azure Device SDK では、デバイス コードを最も簡単に実装する�
 IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接続オプションを使用します。
 
 - [デバイスからクラウドへのメッセージ](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [cloud-to-device メッセージング](../../iot-hub/iot-hub-devguide-messages-c2d.md)
 - [デバイス ツイン](../../iot-hub/iot-hub-devguide-device-twins.md)
 
 次の表では、Azure IoT Central デバイスの機能が IoT Hub の機能にどのように対応しているかをまとめたものです。
@@ -241,9 +242,10 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
 | テレメトリ | デバイスからクラウドへのメッセージ |
+| オフライン コマンド | クラウドからデバイスへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| command | ダイレクト メソッド |
+| コマンド | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 

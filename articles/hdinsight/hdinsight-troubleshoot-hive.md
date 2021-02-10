@@ -3,17 +3,14 @@ title: Azure HDInsight を使用した Hive のトラブルシューティング
 description: Apache Hive と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
 keywords: Azure HDInsight、Hive、よくある質問、トラブルシューティング ガイド、一般的な質問
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288962"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931436"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hive のトラブルシューティング
 
@@ -49,7 +46,7 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
 
 ### <a name="resolution-steps"></a>解決手順
 
-1. SSH を使用して HDInsight クラスターに接続します。 詳細については、「 **その他の情報** 」をご覧ください。
+1. SSH を使用して HDInsight クラスターに接続します。 詳細については、「**その他の情報**」をご覧ください。
 
 2. Hive クライアント ログを表示するには、次のコマンドを使用します。
 
@@ -120,17 +117,17 @@ Apache Ambari で Apache Hive ペイロードを操作するときに発生す�
    サンプル プログラムを最初の引数として指定する必要があります。
 
    有効なプログラム名は次のとおりです。
-    - **ContainerReuseAnalyzer** : DAG のコンテナーの再利用の詳細を出力します。
-    - **CriticalPath** : DAG のクリティカル パスを特定します。
-    - **LocalityAnalyzer** : DAG の局所性の詳細を出力します。
-    - **ShuffleTimeAnalyzer** : DAG のシャッフル時間の詳細を分析します。
-    - **SkewAnalyzer** : DAG の傾きの詳細を分析します。
-    - **SlowNodeAnalyzer** : DAG のノードの詳細を出力します。
-    - **SlowTaskIdentifier** : DAG の遅いタスクの詳細を出力します。
-    - **SlowestVertexAnalyzer** : DAG の最も遅い頂点の詳細を出力します。
-    - **SpillAnalyzer** : DAG の書き込みの詳細を出力します。
-    - **TaskConcurrencyAnalyzer** : DAG のタスク コンカレンシーの詳細を出力します。
-    - **VertexLevelCriticalPathAnalyzer** : DAG のクリティカル パスを頂点レベルで特定します。
+    - **ContainerReuseAnalyzer**: DAG のコンテナーの再利用の詳細を出力します。
+    - **CriticalPath**: DAG のクリティカル パスを特定します。
+    - **LocalityAnalyzer**: DAG の局所性の詳細を出力します。
+    - **ShuffleTimeAnalyzer**: DAG のシャッフル時間の詳細を分析します。
+    - **SkewAnalyzer**: DAG の傾きの詳細を分析します。
+    - **SlowNodeAnalyzer**: DAG のノードの詳細を出力します。
+    - **SlowTaskIdentifier**: DAG の遅いタスクの詳細を出力します。
+    - **SlowestVertexAnalyzer**: DAG の最も遅い頂点の詳細を出力します。
+    - **SpillAnalyzer**: DAG の書き込みの詳細を出力します。
+    - **TaskConcurrencyAnalyzer**: DAG のタスク コンカレンシーの詳細を出力します。
+    - **VertexLevelCriticalPathAnalyzer**: DAG のクリティカル パスを頂点レベルで特定します。
 
 ### <a name="additional-reading"></a>その他の情報
 

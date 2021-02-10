@@ -4,7 +4,7 @@ description: アプリケーションに同意する処理の最中に発生す�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 558c6dc24f6d0d17c9a82bbc79f39649f63dc7f4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9f829672f88ea848e4611000b54d9cc200bc166d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658487"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259979"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>アプリケーションに同意すると、予期しないエラーが発生する
 
@@ -35,7 +35,7 @@ Azure Active Directory と統合する多くのアプリケーションが機能
 * **AADSTS90093:** &lt;clientAppDisplayName&gt; が、付与するように許可されていない 1 つまたは複数のアクセス許可を要求しています。 あなたの代わりにこのアプリケーションに同意できる管理者に問い合わせてください。
 * **AADSTS90094:** &lt;clientAppDisplayName&gt; には、組織内のリソースへのアクセス許可が必要です。このアクセス許可を付与できるのは管理者のみです。 アプリケーションを使用するには、まず管理者に依頼してこのアプリにアクセス許可を付与してください。
 
-このエラーは、管理者のみが付与できるアクセス許可を要求するアプリケーションを、会社の管理者ではないユーザーが使用しようとしたときに発生します。 このエラーは、組織を代表してアプリケーションにアクセス許可を付与できる管理者が解決できます。
+このエラーは、全体管理者のみが付与できるアクセス許可を要求するアプリケーションを、会社の管理者ではないユーザーが使用しようとしたときに発生します。 このエラーは、組織を代表してアプリケーションにアクセス許可を付与できる管理者が解決できます。
 
 このエラーは、要求を許可すると危険であることを Microsoft が検出したために、ユーザーがアプリケーションに同意できない場合にも、発生する可能性があります。 この場合、"ApplicationManagement" というカテゴリ、"Consent to application" (アプリケーションへの同意) というアクティビティの種類、"Risky application detected" (危険なアプリケーションの検出) という状態の理由で、監査イベントもログに記録されます。
 
@@ -44,7 +44,7 @@ Azure Active Directory と統合する多くのアプリケーションが機能
 ## <a name="policy-prevents-granting-permissions-error"></a>ポリシーがアクセス許可の付与を妨げるエラー
 * **AADSTS90093:** 管理者 &lt;tenantDisplayName&gt; がアクセス許可を要求している&lt;アプリの名前&gt;を付与するのを妨げるポリシーを設定しています。 あなたの代わりにこのアプリケーションに同意できる管理者 &lt;tenantDisplayName&gt; に問い合わせてください。
 
-このエラーは、ユーザーがアプリケーションに同意する機能を、会社の管理者がオフにしており、管理者以外のユーザーが同意を必要とするアプリケーションを使用しようとした場合に発生します。 このエラーは、組織を代表してアプリケーションにアクセス許可を付与できる管理者が解決できます。
+このエラーは、ユーザーがアプリケーションに同意する機能を、全体管理者がオフにしており、管理者以外のユーザーが同意を必要とするアプリケーションを使用しようとした場合に発生します。 このエラーは、組織を代表してアプリケーションにアクセス許可を付与できる管理者が解決できます。
 
 ## <a name="intermittent-problem-error"></a>一時的な問題によるエラー
 * **AADSTS90090:** &lt;clientAppDisplayName&gt; に付与しようとしたアクセス許可を記録するときに、サインイン プロセスで一時的な問題が発生したと考えられます。 後でもう一度やり直してください。

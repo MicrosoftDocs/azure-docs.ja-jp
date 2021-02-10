@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/06/2020
 ms.author: aahi
-ms.openlocfilehash: 8c0715b3570bf60205c83390ab93b272e49e8733
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 1c3ed6cc97c6fc77083baa915fac2f5530922eac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371541"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947986"
 ---
 Go 用 Bing Autosuggest クライアント ライブラリの使用を開始します。 以下の手順に従って、ライブラリをインストールし、基本タスクの例を試してみましょう。
 
@@ -76,9 +76,9 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 コンソール ウィンドウ (cmd、PowerShell、ターミナル、Bash) で、Go プロジェクト用に新しいワークスペースを作成し、そこに移動します。 ワークスペースには次の 3 つのフォルダーが格納されます。
 
-* **src** :このディレクトリには、ソース コードとパッケージが格納されます。 `go get` コマンドを使用してインストールされるパッケージはすべてここに存在します。
-* **pkg** : このディレクトリには、コンパイル済みの Go パッケージ オブジェクトが格納されます。 これらのファイルにはいずれも `.a` という拡張子が付きます。
-* **bin** : このディレクトリには、`go install` を実行するときに作成されたバイナリ実行可能ファイルが格納されます。
+* **src**:このディレクトリには、ソース コードとパッケージが格納されます。 `go get` コマンドを使用してインストールされるパッケージはすべてここに存在します。
+* **pkg**: このディレクトリには、コンパイル済みの Go パッケージ オブジェクトが格納されます。 これらのファイルにはいずれも `.a` という拡張子が付きます。
+* **bin**: このディレクトリには、`go install` を実行するときに作成されたバイナリ実行可能ファイルが格納されます。
 
 > [!TIP]
 > [Go ワークスペース](https://golang.org/doc/code.html#Workspaces)の構造についての詳細情報をご覧いただけます。 このガイドには、`$GOPATH` と `$GOROOT` の設定に関する情報が記載されています。
@@ -171,7 +171,7 @@ client.Endpoint = endpoint
 
 ### <a name="send-an-api-request"></a>API 要求を送信する
 
-同じメソッド内でクライアントの [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) メソッドを使用して、クエリを Bing に送信します。 次に、[Suggestions](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions?view=azure-dotnet) 応答を反復処理し、最初の候補を出力します。
+同じメソッド内でクライアントの [AutoSuggestMethodAsync](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.autosuggestclientextensions.autosuggestmethodasync#Microsoft_Azure_CognitiveServices_Search_AutoSuggest_AutoSuggestClientExtensions_AutoSuggestMethodAsync_Microsoft_Azure_CognitiveServices_Search_AutoSuggest_IAutoSuggestClient_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_IList_System_String__System_Threading_CancellationToken_) メソッドを使用して、クエリを Bing に送信します。 次に、[Suggestions](/dotnet/api/microsoft.azure.cognitiveservices.search.autosuggest.models.suggestions) 応答を反復処理し、最初の候補を出力します。
 
 ```Go
 // This should return the query suggestion "xbox."

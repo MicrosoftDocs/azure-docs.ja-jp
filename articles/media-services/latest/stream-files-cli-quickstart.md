@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services と Azure CLI を使用して動画ファイルをストリーム配信する
+title: Azure Media Services CLI を使用して動画ファイルをストリーム配信する
 description: このチュートリアルの手順に従って Azure CLI を使用し、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: f4a71509c29555da2fdbc1e7eed2fd985237d6a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c78205d7e2b41628de9e8b92c9fa5506e82158cb
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268776"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954498"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - Azure CLI
 
@@ -85,7 +85,7 @@ az ams account create --n amsaccount -g amsResourceGroup --storage-account amsst
 
 ## <a name="start-the-streaming-endpoint"></a>ストリーミング エンドポイントを開始する
 
-次の Azure CLI コマンドは、既定の**ストリーミング エンドポイント**を開始します。
+次の Azure CLI コマンドは、既定の **ストリーミング エンドポイント** を開始します。
 
 ```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -128,7 +128,7 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 
 ## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>アダプティブ ビットレート エンコードのための変換を作成する
 
-**変換**を作成して、ビデオのエンコードや分析を行うための一般的なタスクを構成します。 この例では、アダプティブ ビットレート エンコードを実行します。 その後、作成した変換でジョブを送信します。 ジョブは、特定のビデオまたはオーディオ コンテンツの入力に変換を適用する、Media Services への要求です。
+**変換** を作成して、ビデオのエンコードや分析を行うための一般的なタスクを構成します。 この例では、アダプティブ ビットレート エンコードを実行します。 その後、作成した変換でジョブを送信します。 ジョブは、特定のビデオまたはオーディオ コンテンツの入力に変換を適用する、Media Services への要求です。
 
 ```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
@@ -160,7 +160,7 @@ az ams transform create --name testEncodingTransform --preset AdaptiveStreaming 
 
 ## <a name="create-an-output-asset"></a>出力アセットを作成する
 
-エンコード ジョブの出力として使用する出力**アセット**を作成します。
+エンコード ジョブの出力として使用する出力 **アセット** を作成します。
 
 ```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
@@ -237,7 +237,7 @@ az ams job start --name testJob001 --transform-name testEncodingTransform --base
 
 ### <a name="check-status"></a>状態の確認
 
-5 分後、ジョブの状態を確認してください。 "Finished" になっている必要があります。 完了していない場合は、数分後にもう一度確認します。 完了したら、次の手順に進み、**ストリーミング ロケーター**を作成します。
+5 分後、ジョブの状態を確認してください。 "Finished" になっている必要があります。 完了していない場合は、数分後にもう一度確認します。 完了したら、次の手順に進み、**ストリーミング ロケーター** を作成します。
 
 ```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001

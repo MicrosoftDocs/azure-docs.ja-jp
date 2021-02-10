@@ -4,16 +4,16 @@ description: Azure Marketplace ソリューションの顧客の使用状況を�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: vikrambmsft
-ms.author: vikramb
+author: cpercy737
+ms.author: camper
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 989e50ec03dae5d00961d572b70d524a56b3d64c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436693"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062207"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 

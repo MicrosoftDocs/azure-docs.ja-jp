@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight の高可用性ソリューション アーキテクチャのケース スタディ
 description: この記事は、考えられる Azure HDInsight の高可用性ソリューション アーキテクチャの架空のケース スタディです。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855040"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945358"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Azure HDInsight の高可用性ソリューション アーキテクチャのケース スタディ
 
@@ -68,13 +65,13 @@ Azure Pipelines に統合されたバージョン管理システムは、Azure �
 
 次の図に、Contoso Retail の高可用性ディザスター リカバリー アーキテクチャを示します。
 
-:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso Retail のアーキテクチャ":::
+:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Contoso のソリューション":::
 
 **Kafka** では、[アクティブ/パッシブ](hdinsight-business-continuity-architecture.md#apache-kafka) レプリケーションを使用して、プライマリ リージョンからセカンダリ リージョンに Kafka トピックがミラー化されます。 Kafka のレプリケーションに対する代替手段として、両方のリージョンに Kafka を生成することができます。
 
-**Hive と Spark** では、平常時は[アクティブ プライマリ/オンデマンド セカンダリ](hdinsight-business-continuity-architecture.md#apache-spark) レプリケーション モデルが使用されます。 Hive レプリケーション プロセスが定期的に実行され、Hive Azure SQL メタストアと Hive ストレージ アカウントのレプリケーションが同時に実行されます。 ADF DistCP を使用して、Spark ストレージ アカウントが定期的にレプリケートされます。 これらのクラスターの一時的な性質は、コストを最適化するのに役立ちます。 RPO に到達するためにレプリケーションは 4 時間ごとにスケジュールされ、5 時間という要件に十分対応します。
+**Hive と Spark** では、平常時は [アクティブ プライマリ/オンデマンド セカンダリ](hdinsight-business-continuity-architecture.md#apache-spark) レプリケーション モデルが使用されます。 Hive レプリケーション プロセスが定期的に実行され、Hive Azure SQL メタストアと Hive ストレージ アカウントのレプリケーションが同時に実行されます。 ADF DistCP を使用して、Spark ストレージ アカウントが定期的にレプリケートされます。 これらのクラスターの一時的な性質は、コストを最適化するのに役立ちます。 RPO に到達するためにレプリケーションは 4 時間ごとにスケジュールされ、5 時間という要件に十分対応します。
 
-**HBase** レプリケーションでは、平常時は[リーダー/フォロワー](hdinsight-business-continuity-architecture.md#apache-hbase) モデルを使用して、リージョンと RPO がゼロであることに関係なく、データが常に確実に提供されます。
+**HBase** レプリケーションでは、平常時は [リーダー/フォロワー](hdinsight-business-continuity-architecture.md#apache-hbase) モデルを使用して、リージョンと RPO がゼロであることに関係なく、データが常に確実に提供されます。
 
 プライマリ リージョンでリージョン障害が発生した場合、ある程度古くなった 5 時間前の Web ページとバックエンドのコンテンツがセカンダリ リージョンから提供されます。 Azure サービス正常性ダッシュボードに、5 時間のリカバリ ETA が示されない場合、Contoso Retail では、セカンダリ リージョンに Hive および Spark 変換レイヤーを作成した後、すべてのアップストリーム データ ソースをセカンダリ リージョンに向けます。 セカンダリ リージョンを書き込み可能にすると、プライマリへのレプリケーションを伴うフェールバック プロセスが発生します。
 

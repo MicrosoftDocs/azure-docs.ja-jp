@@ -1,5 +1,5 @@
 ---
-title: Media Services とビデオ オン デマンド(VOD) を使用した高可用性
+title: Media Services とビデオ オン デマンドを使用した高可用性
 description: この記事では、VOD アプリケーションの高可用性を実現するために使用できる Azure サービスの概要について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 15a23ab5b05ad1093069b4297ad1d292beeb3a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494955"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955853"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services とビデオ オン デマンド(VOD) を使用した高可用性
 

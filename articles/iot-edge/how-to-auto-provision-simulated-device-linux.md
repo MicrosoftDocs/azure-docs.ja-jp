@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c69e919c76c0aecb6cf8a3ee5e9b7e5d286c168a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fccd1bd6f808fad11946c6f0b0dff1f453b61d66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046045"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430630"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux で TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -65,7 +65,7 @@ ms.locfileid: "92046045"
 
 2. 再度 Hyper-V マネージャーの **[操作]** メニューで、 **[操作]**  >  **[新規]**  >  **[仮想マシン]** の順に選択します。
 
-3. **新しい仮想マシン ウィザード**を、次の構成で完了します。
+3. **新しい仮想マシン ウィザード** を、次の構成で完了します。
 
    1. **世代の指定**: **[第 2 世代]** を選択します。 第 2 世代の仮想マシンでは、入れ子になった仮想化が有効になっており、これは仮想マシンで IoT Edge を実行するのに必要です。
    2. **ネットワークの構成**: **[接続]** の値を、前のセクションで作成した仮想スイッチに設定します。
@@ -91,7 +91,7 @@ VM が作成されたら、その設定を開いて、デバイスの自動プ�
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>仮想マシンを起動し、TPM データを収集する
 
-仮想マシンで、デバイスの**登録 ID** と**保証キー**を取得するために使用できるツールをビルドします。
+仮想マシンで、デバイスの **登録 ID** と **保証キー** を取得するために使用できるツールをビルドします。
 
 1. Hyper-V マネージャーで、VM を起動して接続します。
 
@@ -112,7 +112,7 @@ VM が作成されたら、その設定を開いて、デバイスの自動プ�
    sudo ./tpm_device_provision
    ```
 
-1. 出力ウィンドウに、デバイスの**登録 ID** と**保障キー**が表示されます。 後でデバイスの個別登録を作成する際に使用できるように、これらの値をコピーします。
+1. 出力ウィンドウに、デバイスの **登録 ID** と **保障キー** が表示されます。 後でデバイスの個別登録を作成する際に使用できるように、これらの値をコピーします。
 
 登録 ID と保証キーを取得したら、「[Azure IoT Hub Device Provisioning Service を設定する](#set-up-the-iot-hub-device-provisioning-service)」セクションに進みます
 
@@ -132,7 +132,7 @@ VM ではなく物理 IoT Edge デバイスを使用している場合は、デ�
    sudo ./tpm_device_provision
    ```
 
-1. **登録 ID** と**保証キー**の値をコピーします。 これらの値を使用して、DPS でのデバイスの個別登録を作成します。
+1. **登録 ID** と **保証キー** の値をコピーします。 これらの値を使用して、DPS でのデバイスの個別登録を作成します。
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を設定する
 
@@ -144,10 +144,10 @@ Device Provisioning Service を実行した後、概要ページから **[ID ス
 
 仮想マシンからプロビジョニング情報を取得し、それを使用して Device Provisioning Service 内に個別登録を作成します。
 
-DPS 内に登録を作成するときに、**デバイス ツインの初期状態**を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
+DPS 内に登録を作成するときに、**デバイス ツインの初期状態** を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
 
 > [!TIP]
-> Azure CLI では、[登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)を作成し、**Edge 対応**フラグを使用して、デバイスが IoT Edge デバイスであることを指定できます。
+> Azure CLI では、[登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)を作成し、**Edge 対応** フラグを使用して、デバイスが IoT Edge デバイスであることを指定できます。
 
 1. [Azure portal](https://portal.azure.com) で、IoT Hub Device Provisioning Service のインスタンスに移動します。
 
@@ -157,10 +157,10 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
    1. **[メカニズム]** で **[TPM]** を選択します。
 
-   2. 仮想マシンからコピーした**保証キー**と**登録 ID** を指定します。
+   2. 仮想マシンからコピーした **保証キー** と **登録 ID** を指定します。
 
       > [!TIP]
-      > 物理 TPM デバイスを使用している場合は、各 TPM チップに固有であり、それに関連付けられている TPM チップの製造元から取得される**保証キー**を判断する必要があります。 たとえば保証キーの SHA-256 ハッシュを作成することによって、TPM デバイスの一意の**登録 ID** を派生させることができます。
+      > 物理 TPM デバイスを使用している場合は、各 TPM チップに固有であり、それに関連付けられている TPM チップの製造元から取得される **保証キー** を判断する必要があります。 たとえば保証キーの SHA-256 ハッシュを作成することによって、TPM デバイスの一意の **登録 ID** を派生させることができます。
 
    3. 必要に応じて、デバイス ID を指定します。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
 
@@ -184,7 +184,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 ランタイムがデバイスにインストールされたら、デバイス プロビジョニング サービスと IoT Hub に接続するために使用される情報でデバイスを構成します。
 
-1. 前のセクションで集めた DPS **ID スコープ**とデバイスの**登録 ID** を把握しておきます。
+1. 前のセクションで集めた DPS **ID スコープ** とデバイスの **登録 ID** を把握しておきます。
 
 1. IoT Edge デバイスで構成ファイルを開きます。
 
@@ -205,7 +205,11 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
      attestation:
        method: "tpm"
        registration_id: "<REGISTRATION_ID>"
+   # always_reprovision_on_startup: true
+   # dynamic_reprovisioning: false
    ```
+
+   必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
 
 1. `scope_id` と `registration_id` の値を DPS およびデバイス情報で更新します。
 
@@ -306,7 +310,7 @@ journalctl -u iotedge --no-pager --no-full
 iotedge list
 ```
 
-Device Provisioning Service で作成した個々の登録が使用されたことを確認できます。 Azure portal で Device Provisioning Service インスタンスに移動します。 作成した個々の登録の詳細を開きます。 登録の状態が**割り当て**られており、デバイス ID が表示されています。
+Device Provisioning Service で作成した個々の登録が使用されたことを確認できます。 Azure portal で Device Provisioning Service インスタンスに移動します。 作成した個々の登録の詳細を開きます。 登録の状態が **割り当て** られており、デバイス ID が表示されています。
 
 ## <a name="next-steps"></a>次のステップ
 

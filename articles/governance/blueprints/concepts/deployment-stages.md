@@ -1,14 +1,14 @@
 ---
 title: ブループリント デプロイのステージ
 description: ブループリント割り当ての作成時に Azure Blueprints サービスで行われるセキュリティとアーティファクト関連の手順について説明します。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 73d5d67cf77d4ccc48517c895630b8299081e2e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e686dec1c9d79e42dafee17d8a937284aac4fdd6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049776"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918553"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>ブループリント デプロイのステージ
 
@@ -19,15 +19,15 @@ ms.locfileid: "89049776"
 > [!div class="checklist"]
 > - Azure Blueprints に所有者権限が与えられる
 > - ブループリント割り当てオブジェクトが作成される
-> - 省略可能 - Azure Blueprints によって、**システム割り当て**マネージド ID が作成される
+> - 省略可能 - Azure Blueprints によって、**システム割り当て** マネージド ID が作成される
 > - マネージド ID によってブループリント アーティファクトがデプロイされる
-> - Azure Blueprints サービスと**システム割り当て**マネージド ID の権限が取り消される
+> - Azure Blueprints サービスと **システム割り当て** マネージド ID の権限が取り消される
 
 ## <a name="azure-blueprints-granted-owner-rights"></a>Azure Blueprints に所有者権限が与えられる
 
-[システム割り当てマネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) マネージド ID が使用されるとき、Azure Blueprints サービス プリンシパルには、割り当てられた 1 つまたは複数のサブスクリプションに対する所有者権限が付与されます。 付与されたロールにより、Azure Blueprints では**システム割り当て**マネージド ID を作成し、その後、取り消すことができます。 **ユーザー割り当て**マネージド ID を使用している場合、Azure Blueprints サービス プリンシパルはサブスクリプションに対する所有者権限を取得せず、またその必要もありません。
+[システム割り当てマネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) マネージド ID が使用されるとき、Azure Blueprints サービス プリンシパルには、割り当てられた 1 つまたは複数のサブスクリプションに対する所有者権限が付与されます。 付与されたロールにより、Azure Blueprints では **システム割り当て** マネージド ID を作成し、その後、取り消すことができます。 **ユーザー割り当て** マネージド ID を使用している場合、Azure Blueprints サービス プリンシパルはサブスクリプションに対する所有者権限を取得せず、またその必要もありません。
 
-割り当てがポータル経由で行われる場合、権限は自動的に付与されます。 ただし、割り当てが REST API 経由で行われる場合、権限付与は個別の API 呼び出しによって行う必要があります。 Azure Blueprints AppId は `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ですが、サービス プリンシパルはテナントによって異なります。 [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) と REST エンドポイント [servicePrincipals](/graph/api/resources/serviceprincipal) を使用し、サービス プリンシパルを取得します。 次に、Azure Blueprints に "_所有者_" ロールを[ポータル](../../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、[Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、[REST API](../../../role-based-access-control/role-assignments-rest.md)、または [Azure Resource Manager テンプレート](../../../role-based-access-control/role-assignments-template.md)経由で付与します。
+割り当てがポータル経由で行われる場合、権限は自動的に付与されます。 ただし、割り当てが REST API 経由で行われる場合、権限付与は個別の API 呼び出しによって行う必要があります。 Azure Blueprints AppId は `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ですが、サービス プリンシパルはテナントによって異なります。 [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) と REST エンドポイント [servicePrincipals](/graph/api/resources/serviceprincipal) を使用し、サービス プリンシパルを取得します。 次に、Azure Blueprints に "_所有者_" ロールを [ポータル](../../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、[Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、[REST API](../../../role-based-access-control/role-assignments-rest.md)、または [Azure Resource Manager テンプレート](../../../role-based-access-control/role-assignments-template.md)経由で付与します。
 
 Azure Blueprints サービスによって、直接リソースがデプロイされることはありません。
 
@@ -35,7 +35,7 @@ Azure Blueprints サービスによって、直接リソースがデプロイさ
 
 ユーザー、グループ、サービス プリンシパルによってブループリントがサブスクリプションに割り当てられます。 割り当てオブジェクトは、ブループリントが割り当てられたサブスクリプション レベルで存在します。 デプロイによるリソースの作成は、エンティティのデプロイというコンテキストでは行われません。
 
-ブループリント割り当てを作成するとき、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) の種類が選択されます。 初期値は**システム割り当て**のマネージド ID です。 **ユーザー割り当て**のマネージド ID を選択できます。 **ユーザー割り当て**マネージド ID を使用するとき、ブループリント割り当ての作成前にアクセス許可を定義し、付与する必要があります。 [所有者](../../../role-based-access-control/built-in-roles.md#owner)および[ブループリント オペレーター](../../../role-based-access-control/built-in-roles.md#blueprint-operator)組み込みロールはどちらも、**ユーザー割り当て**マネージド ID を使用する、割り当てを作成するために必要な `blueprintAssignment/write` アクセス許可を持っています。
+ブループリント割り当てを作成するとき、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) の種類が選択されます。 初期値は **システム割り当て** のマネージド ID です。 **ユーザー割り当て** のマネージド ID を選択できます。 **ユーザー割り当て** マネージド ID を使用するとき、ブループリント割り当ての作成前にアクセス許可を定義し、付与する必要があります。 [所有者](../../../role-based-access-control/built-in-roles.md#owner)および [ブループリント オペレーター](../../../role-based-access-control/built-in-roles.md#blueprint-operator)組み込みロールはどちらも、**ユーザー割り当て** マネージド ID を使用する、割り当てを作成するために必要な `blueprintAssignment/write` アクセス許可を持っています。
 
 ## <a name="optional---azure-blueprints-creates-system-assigned-managed-identity"></a>省略可能 - Azure Blueprints によって、システム割り当てマネージド ID が作成される
 
@@ -48,11 +48,11 @@ Azure Blueprints サービスによって、直接リソースがデプロイさ
 
 マネージド ID によってその後、定義されている[シーケンス順序](./sequencing-order.md)で、ブループリント内でアーティファクトの Resource Manager デプロイがトリガーされます。 他のアーティファクトに依存するアーティファクトが正しい順序でデプロイされるように順序を調整できます。
 
-デプロイでアクセスできない原因は、多くの場合、マネージド ID に与えられたアクセス レベルにあります。 Azure Blueprints サービスによって、**システム割り当て**マネージド ID のセキュリティ ライフサイクルが管理されます。 しかしながら、**ユーザー割り当て**マネージド ID の権限とライフサイクルを管理するのはユーザーの役目となります。
+デプロイでアクセスできない原因は、多くの場合、マネージド ID に与えられたアクセス レベルにあります。 Azure Blueprints サービスによって、**システム割り当て** マネージド ID のセキュリティ ライフサイクルが管理されます。 しかしながら、**ユーザー割り当て** マネージド ID の権限とライフサイクルを管理するのはユーザーの役目となります。
 
 ## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>ブループリント サービスとシステム割り当てのマネージド ID の権限が取り消される
 
-デプロイが完了すると、Azure Blueprints によって、サブスクリプションから**システム割り当て**マネージド ID の権限が取り消されます。 その後、Azure Blueprints サービスによって、その権限がサブスクリプションから取り消されます。 権限を取り消すことで、Azure Blueprints がサブスクリプションの永久所有者になることを防ぎます。
+デプロイが完了すると、Azure Blueprints によって、サブスクリプションから **システム割り当て** マネージド ID の権限が取り消されます。 その後、Azure Blueprints サービスによって、その権限がサブスクリプションから取り消されます。 権限を取り消すことで、Azure Blueprints がサブスクリプションの永久所有者になることを防ぎます。
 
 ## <a name="next-steps"></a>次のステップ
 

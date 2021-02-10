@@ -1,25 +1,9 @@
 ---
-title: AES-128 によるビデオの暗号化
-titleSuffix: Azure Media Services
-description: Azure Media Service で AES 128 ビット暗号化によりビデオを暗号化し、キー配信サービスを使用する方法を説明します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 5347479d32dc9f4909483dc63891e8057fd7ff86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289338"
+title:AES-128 によるビデオの暗号化:Azure Media Services の説明:Azure Media Service で AES 128 ビット暗号化によりビデオを暗号化し、キー配信サービスを使用する方法を説明します。
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date:08/31/2020 ms.author: inhenkel
+
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>チュートリアル:AES-128 でビデオを暗号化し、キー配信サービスを使用する
 
@@ -113,7 +97,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 ## <a name="create-a-content-key-policy"></a>コンテンツ キー ポリシーを作成する
 
-コンテンツ キーにより、アセットに安全にアクセスすることができます。 エンド クライアントにコンテンツ キーを配信する方法を構成する**コンテンツ キー ポリシー**を作成する必要があります。 コンテンツ キーは、**ストリーミング ロケーター**に関連付けられます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。
+コンテンツ キーにより、アセットに安全にアクセスすることができます。 エンド クライアントにコンテンツ キーを配信する方法を構成する **コンテンツ キー ポリシー** を作成する必要があります。 コンテンツ キーは、**ストリーミング ロケーター** に関連付けられます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。
 
 プレーヤーがストリームを要求すると、Media Services は、指定されたキーを使用してコンテンツを動的に暗号化します (この場合は AES 暗号化を使用します)。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーによるキーの取得が承認されているかどうかを判断するために、キーに指定されたコンテンツ キー ポリシーがサービスにより評価されます。
 
@@ -126,7 +110,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 1. [ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成します。
 2. クライアントが使用できるストリーミング URL を作成します。
 
-**ストリーミング ロケーター**を作成するプロセスは、発行と呼ばれます。 既定では、API 呼び出しを行った直後に**ストリーミング ロケーター**が有効になります。 オプションの開始時間と終了時間を構成しない限り、その状態は削除されるまで継続されます。
+**ストリーミング ロケーター** を作成するプロセスは、発行と呼ばれます。 既定では、API 呼び出しを行った直後に **ストリーミング ロケーター** が有効になります。 オプションの開始時間と終了時間を構成しない限り、その状態は削除されるまで継続されます。
 
 [ストリーミング ロケーター](/rest/api/media/streaminglocators)を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 このチュートリアルでは、PredefinedStreamingPolicies の 1 つを使用します。これは、ストリーミングのためにコンテンツを発行する方法を Azure Media Services に指示します。 この例では、AES エンベロープ暗号化が適用されます (DRM ライセンスではなく HTTPS 経由でキーが再生クライアントに配信されるため、この暗号化は ClearKey 暗号化とも呼ばれます)。
 
@@ -145,7 +129,7 @@ ContentKeyIdentifierClaim は **ContentKeyPolicy** 内で使用されます。�
 
 ## <a name="build-a-dash-streaming-url"></a>DASH ストリーミング URL を作成する
 
-[ストリーミング ロケーター](/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、*既定の* **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の* **ストリーミング エンドポイント** は停止状態になっているので、 **Start** を呼び出す必要があります。
+[ストリーミング ロケーター](/rest/api/media/streaminglocators)が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](/rest/api/media/streamingendpoints) のホスト名と **ストリーミング ロケーター** のパスを連結する必要があります。 このサンプルでは、*既定の* **ストリーミング エンドポイント** を使っています。 最初に Media Service アカウントを作成したとき、この *既定の* **ストリーミング エンドポイント** は停止状態になっているので、 **Start** を呼び出す必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#GetMPEGStreamingUrl)]
 

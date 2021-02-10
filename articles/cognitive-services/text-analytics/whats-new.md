@@ -8,19 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/27/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 625fe5f53318ebc641d102e679ef7fd0607ef683
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652847"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220702"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+* [固有表現認識](how-tos/text-analytics-how-to-entity-linking.md) v3.x の `2021-01-15` モデル バージョンでは、次のものが提供されます。 
+  * [いくつかの一般的なエンティティ カテゴリ](named-entity-types.md)の言語サポートが拡張されました。 
+  * サポートされているすべての v3 言語の一般的なエンティティ カテゴリの AI 品質が向上しました。 
+
+* [言語検出](how-tos/text-analytics-how-to-language-detection.md)の `2021-01-05` モデル バージョンでは、追加の[言語サポート](language-support.md?tabs=language-detection)が提供されています。
+
+これらのモデル バージョンは、現在、米国東部リージョンでは使用できません。 
+
+> [!div class="nextstepaction"]
+> [NER の新しいモデルについて確認する](https://azure.microsoft.com/updates/text-analytics-ner-improved-ai-quality)。
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -66,7 +79,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 ### <a name="text-analytics-for-health-container-updates"></a>Text Analytics for Health コンテナーの更新
 
 次の更新は、Text Analytics for Health コンテナーの 9 月リリースのみに固有のものです。
-* 新しいモデル バージョン `2020-09-03` を含む、タグ `1.1.013530001-amd64-preview` が付いた新しいコンテナー イメージが containerpreview リポジトリにリリースされました。 
+* 新しいモデル バージョン `2020-09-03` を含む、タグ `1.1.013530001-amd64-preview` が付いた新しいコンテナー イメージが、コンテナー プレビュー リポジトリにリリースされました。 
 * このモデル バージョンでは、エンティティ認識、省略形の検出、および待ち時間の改善に関する機能強化が行われています。
 
 > [!div class="nextstepaction"]

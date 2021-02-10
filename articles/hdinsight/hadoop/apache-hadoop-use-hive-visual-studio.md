@@ -1,19 +1,16 @@
 ---
 title: Apache Hive と Data Lake Tools for Visual Studio - Azure HDInsight
 description: Data Lake Tools for Visual Studio を使って Azure HDInsight 上の Apache Hadoop で Apache Hive クエリを実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: c8645ae9cb901b9fc95f00665d73e223a24fda63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e54991f6afd2ace19bf7b70e57bda6f551f7780
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076455"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943165"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Apache Hive クエリを実行する
 
@@ -98,7 +95,7 @@ Hive アプリケーションを作成して Hive クエリを実行するには
         > [!NOTE]  
         > 基になるデータが、MapReduce ジョブや Azure サービスなどの外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。
         >
-        > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
+        > 外部テーブルを削除しても、データは削除 **されません**。テーブル定義のみが削除されます。
 
     * `ROW FORMAT`:データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
 
@@ -120,7 +117,7 @@ Hive アプリケーションを作成して Hive クエリを実行するには
 
 次の例では、前の手順「[Hive アプリケーションを作成する](#create-a-hive-application)」で作成した `log4jLogs` テーブルを使用します。
 
-1. **サーバー エクスプローラー**から、クラスターを右クリックして **[Hive クエリの作成]** を選択します。
+1. **サーバー エクスプローラー** から、クラスターを右クリックして **[Hive クエリの作成]** を選択します。
 
 2. 次の Hive クエリを入力します。
 
@@ -143,7 +140,7 @@ Hive アプリケーションを作成して Hive クエリを実行するには
 
 3. 必要に応じて **[対話型]** を **[バッチ]** に変更し、 **[送信]** を選択します。
 
-4. ジョブによってテーブルが作成されたことを確認するには、**サーバー エクスプローラー**に移動し、 **[Azure]**  >  **[HDInsight]** を展開します。 HDInsight クラスターを展開し、 **[Hive データベース]**  >  **[既定値]** を展開します。 **errorLogs** テーブルと **log4jLogs** テーブルが表示されます。
+4. ジョブによってテーブルが作成されたことを確認するには、**サーバー エクスプローラー** に移動し、 **[Azure]**  >  **[HDInsight]** を展開します。 HDInsight クラスターを展開し、 **[Hive データベース]**  >  **[既定値]** を展開します。 **errorLogs** テーブルと **log4jLogs** テーブルが表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

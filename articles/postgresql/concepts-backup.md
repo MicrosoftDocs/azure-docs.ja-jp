@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: c712af41fdc191cab4fd08c9d8175a849d4f286a
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.date: 01/29/2021
+ms.openlocfilehash: e74c96e0c03d75f34a16d95d0bed642c1900f558
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706772"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219725"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元
 
@@ -82,6 +82,16 @@ Azure Database for PostgreSQL で復元を実行すると、元のサーバー�
 
 現時点から遡って 5 分前より後の時点に復元するには、次のトランザクション ログのバックアップが作成されるのを待たなければならない可能性があります。
 
+削除されたテーブルを復元する場合、 
+1. ポイントインタイムの手法でソース サーバーを復元します。
+2. 復元されたサーバーから `pg_dump` を利用してテーブルをダンプします。
+3. 元のサーバーでソース テーブルの名前を変更します。
+4. 元のサーバーで psql コマンド ラインを使用してテーブルをインポートします。
+5. 必要に応じて、復元されたサーバーを削除できます。
+
+>[!Note]
+> 同じサーバーに対して複数の復元を同時に行うことは推奨されません。 
+
 ### <a name="geo-restore"></a>geo リストア
 
 geo 冗長バックアップ用にサーバーを構成した場合は、サービスを使用できる別の Azure リージョンにサーバーを復元できます。 最大 4 TB のストレージをサポートするサーバーは、geo ペアリージョンに、または 最大 16 TB のストレージをサポートする任意のリージョンに、復元することができます。 最大 16 TB のストレージをサポートするサーバーでは、16 TB のサーバーをサポートするリージョンにも、geo バックアップを復元できます。 サポートされているリージョンの一覧については、[Azure Database for PostgreSQL の価格レベル](concepts-pricing-tiers.md)に関するページをご確認ください。
@@ -97,7 +107,7 @@ geo リストア中に変更できるサーバー構成は、コンピューテ�
 
 いずれかの復旧メカニズムで復元した後、ユーザーとアプリケーションを元に戻して実行するには、次のタスクを実行する必要があります。
 
-- 元のサーバーを新しいサーバーで置き換える場合は、クライアントとクライアント アプリケーションを新しいサーバーにリダイレクトする
+- 元のサーバーを新しいサーバーで置き換える場合は、クライアントとクライアント アプリケーションを新しいサーバーにリダイレクトします。 また、ユーザー名を `username@new-restored-server-name` に変更します。
 - ユーザーが接続できるように、適切なサーバー レベルのファイアウォールと VNet ルールが適用されていることを確認します。 これらのルールは配信元のサーバーからはコピーされません。
 - 適切なログインとデータベース レベルのアクセス許可が適切に指定されていることを確認する
 - 必要に応じて、アラートを構成する

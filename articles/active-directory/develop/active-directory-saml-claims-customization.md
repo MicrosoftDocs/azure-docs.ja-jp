@@ -13,12 +13,12 @@ ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 9fb5e229882532fed076f2e0d800f32acfcdbf4c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0ded249a55e5a59bdcad7407694cbd5ed4cf2352
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013789"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756072"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -50,7 +50,7 @@ NameID (名前識別子の値) を編集するには:
 
 特定の形式の NameIDPolicy 要素が SAML 要求に含まれている場合、その要求の形式が Microsoft ID プラットフォームで使用されます。
 
-SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した形式の NameID がMicrosoft ID プラットフォームによって発行されます。 形式を指定しないと、選択した要求ソースに関連付けられている既定のソース形式が使用されます。
+SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した形式の NameID がMicrosoft ID プラットフォームによって発行されます。 形式を指定しないと、Microsoft ID プラットフォームでは、選択した要求ソースに関連付けられている既定のソース形式が使用されます。
 
 **[名前識別子の形式の選択]** ドロップダウンで、次のオプションのいずれかを選択できます。
 
@@ -168,9 +168,9 @@ SAML 要求に NameIDPolicy 要素が含まれていない場合、指定した�
 
 条件を追加する順序は重要です。 Azure AD では、条件を上から下に評価し、要求に出力する値を決定しています。 式と一致する最後の値が要求に出力されます。
 
-たとえば、Britta Simon は Contoso テナントのゲスト ユーザーです。 彼女は、同様に Azure AD を使用する別の組織に属しています。 Fabrikam アプリケーションが次のように構成されている場合、Britta が Fabrikam にサインインしようとすると、Microsoft ID プラットフォームで次のように条件が評価されます。
+たとえば、Britta Simon は Contoso テナントのゲスト ユーザーです。 彼女は、同様に Azure AD を使用する別の組織に属しています。 Fabrikam アプリケーションが下のように構成されている場合、Britta が Fabrikam にサインインしようとすると、Microsoft ID プラットフォームで次のように条件が評価されます。
 
-まず、Britta のユーザーの種類が `All guests` かどうかを確認します。 これに当てはまるので、要求のソースが `user.extensionattribute1` に割り当てられます。 次に、Britta のユーザーの種類が `AAD guests` かどうかを確認します。これも当てはまるので、要求のソースが `user.mail` に割り当てられます。 最後に、Britta の値 `user.mail` を使用して要求が出力されます。
+最初に、Microsoft ID プラットフォームにより、Britta のユーザーの種類が `All guests` かどうかが確認されます。 これに当てはまるため、要求のソースが `user.extensionattribute1` に割り当てられます。 次に、Britta のユーザーの種類が `AAD guests` かどうかが確認されます。これも当てはまるため、要求のソースが `user.mail` に割り当てられます。 最後に、Britta の値 `user.mail` を使用して要求が出力されます。
 
 ![要求の条件付き構成](./media/active-directory-saml-claims-customization/sso-saml-user-conditional-claims.png)
 

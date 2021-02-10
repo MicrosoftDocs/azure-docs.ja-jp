@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache Hive のゲートウェイの詳細とベスト プラクティス
 description: Azure HDInsight ゲートウェイで Hive クエリを実行する場合のベスト プラクティスを進める方法について説明します
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 63484d882d8ccd387257c6f246c2048a09c77bc8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011491"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933112"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive のゲートウェイの詳細とベスト プラクティス
 

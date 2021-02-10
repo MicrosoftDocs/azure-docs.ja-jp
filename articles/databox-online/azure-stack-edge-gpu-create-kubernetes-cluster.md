@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 6f6d2b126cd9a0acbbbdb8d17ce7345bbf17b556
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf73640c1a4014b61809f407e1873686c229273f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635910"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954633"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで kubectl を使用して Kubernetes クラスターに接続して管理する
 
@@ -165,9 +165,9 @@ Kubernetes クラスターが作成されたら、コマンドラインから *k
 
 ## <a name="remove-kubernetes-cluster"></a>Kubernetes クラスターを削除する
 
-Kubernetes クラスターを削除するには、コンピューティング構成を削除する必要があります。
+Kubernetes クラスターを削除するには、IoT Edge 構成を削除する必要があります。
 
-詳細な手順については、「[コンピューティング構成の削除](azure-stack-edge-j-series-manage-compute.md#remove-compute-configuration)」を参照してください。
+詳細な手順については、[IoT Edge 構成の削除](azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service)に関するページを照してください。
    
 
 ## <a name="next-steps"></a>次のステップ

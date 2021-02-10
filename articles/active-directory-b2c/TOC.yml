@@ -432,6 +432,9 @@
     - name: API Management API のセキュリティ保護
       href: secure-api-management.md
       displayName: 'apim, api management, migrate, b2clogin.com'
+    - name: 電話ベースの MFA をセキュリティで保護する
+      href: phone-based-mfa.md
+      displayName: 'multi-factor authentication, Azure Monitor, Log Analytics'
     - name: ログと監視
       items:
         - name: 監査ログ
@@ -478,6 +481,18 @@
       href: page-layout.md
     - name: 利用可能なリージョンとデータの保存場所
       href: data-residency.md
+    - name: 回復性のための構築
+      items:
+        - name: 回復性に関する Azure AD B2C の概要
+          href: ../active-directory/fundamentals/resilience-b2c.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: エンド ユーザー エクスペリエンス
+          href: ../active-directory/fundamentals/resilient-end-user-experience.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: 外部プロセスとのインターフェイス
+          href: ../active-directory/fundamentals/resilient-external-processes.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: Azure AD B2C 開発者のベスト プラクティス
+          href: ../active-directory/fundamentals/resilience-b2c-developer-best-practices.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
+        - name: 監視と分析
+          href: ../active-directory/fundamentals/resilience-with-monitoring-alerting.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
     - name: 脅威管理
       href: threat-management.md
       displayName: security
@@ -504,7 +519,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: サポート
-      href: support-options.md
+      href: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md?bc=%2fazure%2factive-directory-b2c%2fbread%2ftoc.json&toc=%2fazure%2factive-directory-b2c%2fTOC.json
       displayName: technical
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'

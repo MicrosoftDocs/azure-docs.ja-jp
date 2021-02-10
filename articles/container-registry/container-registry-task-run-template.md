@@ -3,12 +3,12 @@ title: テンプレートを使用したクイック タスクの実行
 description: Azure Resource Manager テンプレートを使用して、イメージをビルドする ACR タスクの実行をキューに登録します
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82927770"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916067"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して ACR タスクを実行する
 
@@ -58,7 +58,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 上記のコマンドでは、コマンド ラインでパラメーターを渡しています。 必要に応じて、[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)内で渡します。
@@ -204,7 +204,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.io
 ```

@@ -1,19 +1,16 @@
 ---
 title: クラスター管理のベスト プラクティス - Azure HDInsight
 description: HDInsight クラスターを管理するためのベストプラクティスを学習する。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 27f390c3634887dd616c62dbbd4ad85209efde46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659490"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933702"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight クラスター管理のベスト プラクティス
 

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 01/27/2021
 ms.author: apimpm
-ms.openlocfilehash: 44ebd2d3084ab8df63f2c941e6e924e6f2a86d65
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 22d2960801cac2222f868c384a55b4bf436bc75b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071287"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492605"
 ---
 # <a name="api-management-authentication-policies"></a>API Management の認証ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -67,7 +67,10 @@ ms.locfileid: "92071287"
 -   **ポリシー スコープ:** すべてのスコープ
 
 ##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> クライアント証明書による認証
- `authentication-certificate` ポリシーを使用し、クライアント証明書を使用してバックエンド サービスで認証します。 証明書は最初に [API Management にインストール](./api-management-howto-mutual-certificates.md)する必要があります。サムプリントによって識別されます。
+ `authentication-certificate` ポリシーを使用し、クライアント証明書を使用してバックエンド サービスで認証します。 証明書は最初に [API Management にインストール](./api-management-howto-mutual-certificates.md)する必要があります。サムプリントまたは証明書 ID (リソース名) によって識別されます。 
+
+> [!CAUTION]
+> 証明書が Azure Key Vault に格納されている証明書を参照している場合は、証明書 ID を使用して識別します。 キー コンテナー証明書がローテーションされると、API Management のサムプリントが変更され、サムプリントによって識別された場合、新しい証明書はポリシーによって解決されません。
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
@@ -77,18 +80,17 @@ ms.locfileid: "92071287"
 
 ### <a name="examples"></a>例
 
-この例では、クライアント証明書はサムプリントによって識別されます。
-
-```xml
-<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
-```
-
-この例では、クライアント証明書はリソース名によって識別されます。
+この例では、クライアント証明書は証明書 ID によって識別されます。
 
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ``` 
 
+この例では、クライアント証明書はサムプリントによって識別されます。
+
+```xml
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
+```
 この例では、クライアント証明書は、組み込みの証明書ストアから取得されるのではなく、ポリシーで設定されています。
 
 ```xml

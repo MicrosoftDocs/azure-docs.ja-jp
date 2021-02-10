@@ -3,12 +3,12 @@ title: Azure Service Bus - メッセージングの例外 | Microsoft Docs
 description: この記事では、Azure Service Bus メッセージングの例外と、例外が発生したときに実行する推奨アクションの一覧を示します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ac18538492b80abadfd1284c125e4be8f3228490
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 3b56aff2635593d6cb49adbcf3784ddd5cb4fa39
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630970"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219147"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外
 この記事では、.NET Framework API によって生成される .NET 例外を一覧表示します。 
@@ -16,21 +16,21 @@ ms.locfileid: "98630970"
 ## <a name="exception-categories"></a>例外のカテゴリ
 メッセージング API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。 例外の意味と原因は、メッセージング エンティティの種類によって異なる場合があります。
 
-1. ユーザー コードのエラー ([System.ArgumentException](/dotnet/api/system.argumentexception&preserve-view=true)、[System.InvalidOperationException](/dotnet/api/system.invalidoperationexception&preserve-view=true)、[System.OperationCanceledException](/dotnet/api/system.operationcanceledexception&preserve-view=true)、[System.Runtime.Serialization.SerializationException](/dotnet/api/system.runtime.serialization.serializationexception&preserve-view=true))。 一般アクション: 処理を実行する前にコードの修正を試みます。
-2. セットアップ/構成エラー ([Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception&preserve-view=true))。 一般アクション: 構成を確認し、必要に応じて変更します。
+1. ユーザー コードのエラー ([System.ArgumentException](/dotnet/api/system.argumentexception)、[System.InvalidOperationException](/dotnet/api/system.invalidoperationexception)、[System.OperationCanceledException](/dotnet/api/system.operationcanceledexception)、[System.Runtime.Serialization.SerializationException](/dotnet/api/system.runtime.serialization.serializationexception))。 一般アクション: 処理を実行する前にコードの修正を試みます。
+2. セットアップ/構成エラー ([Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception))。 一般アクション: 構成を確認し、必要に応じて変更します。
 3. 一時的な例外 ([Microsoft.ServiceBus.Messaging.MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception)、[Microsoft.ServiceBus.Messaging.ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception)、[Microsoft.ServiceBus.Messaging.MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception))。 一般アクション: 操作をやり直すか、ユーザーに通知します。 クライアント SDK の `RetryPolicy` クラスは、再試行を自動的に処理するように構成できます。 詳細については、[再試行のガイダンス](/azure/architecture/best-practices/retry-service-specific#service-bus)を参照してください。
-4. その他の例外 ([System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception&preserve-view=true)、[System.TimeoutException](/dotnet/api/system.timeoutexception&preserve-view=true)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception))。 全般的なアクション: 例外の種類に固有。次のセクションの表を参照してください。 
+4. その他の例外 ([System.Transactions.TransactionException](/dotnet/api/system.transactions.transactionexception)、[System.TimeoutException](/dotnet/api/system.timeoutexception)、[Microsoft.ServiceBus.Messaging.MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception)、[Microsoft.ServiceBus.Messaging.SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception))。 全般的なアクション: 例外の種類に固有。次のセクションの表を参照してください。 
 
 ## <a name="exception-types"></a>例外の種類
 次の表は、メッセージングの例外の種類および原因と実行できる推奨アクションを示したものです。
 
 | **例外の種類** | **説明/原因/例** | **推奨アクション** | **自動/即時再試行に関する注意** |
 | --- | --- | --- | --- |
-| [TimeoutException](/dotnet/api/system.timeoutexception&preserve-view=true) |サーバーは、[OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) によって制御される指定された時間内に、要求された操作に対して応答しませんでした。 サーバーで、要求された操作が完了した可能性があります。 これは、ネットワークや他のインフラストラクチャの遅延が原因で発生することがあります。 |システム状態の整合性をチェックして、必要な場合は再試行してください。 「 [TimeoutException](#timeoutexception)」を参照してください。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
-| [InvalidOperationException](/dotnet/api/system.invalidoperationexception&preserve-view=true) |要求されたユーザー操作は、サーバーまたはサービス内で許可されていません。 詳細については、例外メッセージを参照してください。 たとえば、[Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) は、[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでメッセージを受信した場合に、この例外を生成します。 |コードとドキュメントを確認します。 要求した操作が有効なことを確かめてください。 |再試行は役に立ちません。 |
-| [OperationCanceledException](/dotnet/api/system.operationcanceledexception&preserve-view=true) |既に終了、中止、または破棄されたオブジェクトに対して操作を呼び出そうとしました。 まれに、アンビエント トランザクションが既に破棄されている場合があります。 |コードを確認し、破棄されたオブジェクトに対して操作を呼び出していないことを確認します。 |再試行は役に立ちません。 |
-| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception&preserve-view=true) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 |トークン プロバイダーが正しい値を使用して作成されていることを確認します。 Access Control Service の構成を確認します。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
-| [ArgumentException](/dotnet/api/system.argumentexception&preserve-view=true)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception&preserve-view=true)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception&preserve-view=true) |メソッドに指定された 1 つまたは複数の引数が無効です。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI にパス セグメントが含まれています。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行は役に立ちません。 |
+| [TimeoutException](/dotnet/api/system.timeoutexception) |サーバーは、[OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) によって制御される指定された時間内に、要求された操作に対して応答しませんでした。 サーバーで、要求された操作が完了した可能性があります。 これは、ネットワークや他のインフラストラクチャの遅延が原因で発生することがあります。 |システム状態の整合性をチェックして、必要な場合は再試行してください。 「 [TimeoutException](#timeoutexception)」を参照してください。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
+| [InvalidOperationException](/dotnet/api/system.invalidoperationexception) |要求されたユーザー操作は、サーバーまたはサービス内で許可されていません。 詳細については、例外メッセージを参照してください。 たとえば、[Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) は、[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode) モードでメッセージを受信した場合に、この例外を生成します。 |コードとドキュメントを確認します。 要求した操作が有効なことを確かめてください。 |再試行は役に立ちません。 |
+| [OperationCanceledException](/dotnet/api/system.operationcanceledexception) |既に終了、中止、または破棄されたオブジェクトに対して操作を呼び出そうとしました。 まれに、アンビエント トランザクションが既に破棄されている場合があります。 |コードを確認し、破棄されたオブジェクトに対して操作を呼び出していないことを確認します。 |再試行は役に立ちません。 |
+| [UnauthorizedAccessException](/dotnet/api/system.unauthorizedaccessexception) |[TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) オブジェクトはトークンを取得できませんでした。トークンが無効です。または、操作の実行に必要な要求がトークンに含まれていません。 |トークン プロバイダーが正しい値を使用して作成されていることを確認します。 Access Control Service の構成を確認します。 |再試行によって解決する場合があります。再試行ロジックをコードに追加してください。 |
+| [ArgumentException](/dotnet/api/system.argumentexception)<br /> [ArgumentNullException](/dotnet/api/system.argumentnullexception)<br />[ArgumentOutOfRangeException](/dotnet/api/system.argumentoutofrangeexception) |メソッドに指定された 1 つまたは複数の引数が無効です。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI にパス セグメントが含まれています。<br /> [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) または [Create](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) に指定された URI スキームが無効です。 <br />プロパティ値が 32 KB を超えています。 |呼び出し元のコードを確認し、引数が正しいことを確かめます。 |再試行は役に立ちません。 |
 | [MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception) |操作に関連付けられているエンティティが存在しないか、削除されました。 |エンティティが存在することを確認します。 |再試行は役に立ちません。 |
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |特定のシーケンス番号を持つメッセージを受信しようとしました。 このメッセージが見つかりません。 |メッセージがまだ受信されていないことを確認します。 配信不能キューを確認し、メッセージが配信不能になっているかどうかを確かめます。 |再試行は役に立ちません。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |クライアントは Service Bus への接続を確立できません。 |指定されたホスト名が正しく、ホストが到達可能なことを確認してください。 <p>ファイアウォール/プロキシを使用している環境でコードを実行する場合は、Service Bus のドメイン/IP アドレスとポートへのトラフィックがブロックされていないことを確認します。</p>|断続的な接続の問題がある場合は、再試行によって解決することがあります。 |
@@ -83,9 +83,9 @@ ConnectionsQuotaExceeded for namespace xxx.
 2. **受信者が停止しました**。 受信者によるキューまたはサブスクリプションからのメッセージの受信が停止されています。 これを特定するには、メッセージの完全な詳細情報を表示する [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) プロパティを確認します。 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) プロパティ値が大きいか増えている場合は、メッセージが読み取られる速度が書き込まれる速度に追いついていません。
 
 ## <a name="timeoutexception"></a>TimeoutException
-[TimeoutException](/dotnet/api/system.timeoutexception&preserve-view=true) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。 
+[TimeoutException](/dotnet/api/system.timeoutexception) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。 
 
-[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit&preserve-view=true) プロパティの値を確認する必要があります。この制限に達した場合も、[TimeoutException](/dotnet/api/system.timeoutexception&preserve-view=true) が発生する可能性があります。
+[ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit) プロパティの値を確認する必要があります。この制限に達した場合も、[TimeoutException](/dotnet/api/system.timeoutexception) が発生する可能性があります。
 
 タイムアウトは、サービスを実行するリソースに対する Service Bus サービスの更新、(または) OS の更新など、メンテナンス操作中またはその間に発生することが予想されます。 OS の更新中は、エンティティが移動され、ノードが更新または再起動されるため、タイムアウトが発生する可能性があります。 Azure Service Bus サービスのサービス レベル アグリーメント (SLA) の詳細については、「[Service Bus の SLA](https://azure.microsoft.com/support/legal/sla/service-bus/)」を参照してください。
 

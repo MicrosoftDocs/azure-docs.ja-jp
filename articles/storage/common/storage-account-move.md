@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 76482266f0bbb1f80c1699c736048c705b90b4dc
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "92792992"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986922"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -35,7 +35,7 @@ ms.locfileid: "92792992"
 
 - お使いのアカウントで使用されるサービスと機能が、ターゲット リージョンでサポートされていることを確認してください。
 
-- プレビュー機能については、お使いのサブスクリプションがターゲット リージョンのホワイトリストに登録されていることを確認してください。
+- プレビュー機能については、お使いのサブスクリプションがターゲット リージョンの許可リストに登録されていることを確認してください。
 
 <a id="prepare"></a>
 

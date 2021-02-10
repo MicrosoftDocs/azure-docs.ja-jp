@@ -4,12 +4,12 @@ description: プライベート エンドポイントを使用して、Azure Bat
 ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 38d92d787a8d01dd3f87e1cdcacd336982c8c910
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: d2e9d36e9e964f2e9f9a5a986fbf55d19b3069d8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579557"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920005"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch アカウントでプライベート エンドポイントを使用する
 
@@ -20,7 +20,7 @@ ms.locfileid: "94579557"
 Private Link を使用すると、ユーザーは、仮想ネットワーク内から、またはピアリングされた任意の仮想ネットワークから、Azure Batch アカウントにアクセスできます。 Private Link にマップされたリソースは、プライベート ピアリングを使用して、VPN または [Azure ExpressRoute](../expressroute/expressroute-introduction.md) 経由でオンプレミスからアクセスすることもできます。 [自動または手動の承認方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)により、Private Link を使用して構成された Azure Batch アカウントに接続できます。
 
 > [!IMPORTANT]
-> 現在、Azure Batch でのプライベート接続は、ドイツ中部とドイツ北東部を除くすべてのパブリック リージョンでサポートされています。
+> 現在、Azure Batch でのプライベート接続は、ドイツ中部、ドイツ北東部、中国東部、中国東部 2、中国北部、中国北部 2 を除くすべてのリージョンでサポートされています。
 
 この記事では、プライベート Batch アカウントを作成し、プライベート エンドポイントを使用してそれにアクセスする手順について説明します。
 

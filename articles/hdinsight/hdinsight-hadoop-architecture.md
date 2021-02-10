@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop のアーキテクチャ - Azure HDInsight
 description: Azure HDInsight クラスター上の Apache Hadoop ストレージおよび処理について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/07/2020
-ms.openlocfilehash: 389aee77ac56407f3a116d42ad62fbd94de1bb4e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6f291e5aa440a3e6e45a1dcdb872e18c8d4557ce
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541946"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945905"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>HDInsight の Apache Hadoop アーキテクチャ
 
@@ -37,7 +34,7 @@ MapReduce アプリケーションがクラスター上で実行されると、R
 
 ResourceManager はまた、アプリケーションの状態を監視するために使用できる Web ユーザー インターフェイスを提供する Web サーバー プロセスも実行します。
 
-ユーザーがクラスター上で実行される MapReduce アプリケーションを送信すると、そのアプリケーションは ResourceManager に送信されます。 ResourceManager は次に、使用可能な NodeManager ノード上のコンテナーを割り当てます。 NodeManager ノードは、そのアプリケーションが実際に実行される場所です。 最初に割り当てられたコンテナーは、ApplicationMaster と呼ばれる特殊なアプリケーションを実行します。 この ApplicationMaster は、送信されたアプリケーションの実行に必要なリソースを (以降のコンテナーの形式で) 取得することに責任を負います。 ApplicationMaster は、アプリケーションの段階 (Map 段階、Reduce 段階など) や、処理する必要があるデータ量の要因を検証します。 ApplicationMaster はその後、アプリケーションの代わりに ResourceManager にリソースを要求 ( *ネゴシエート* ) します。 ResourceManager は次に、クラスター内の NodeManagers からのリソースを、アプリケーションの実行に使用できるように ApplicationMaster に付与します。
+ユーザーがクラスター上で実行される MapReduce アプリケーションを送信すると、そのアプリケーションは ResourceManager に送信されます。 ResourceManager は次に、使用可能な NodeManager ノード上のコンテナーを割り当てます。 NodeManager ノードは、そのアプリケーションが実際に実行される場所です。 最初に割り当てられたコンテナーは、ApplicationMaster と呼ばれる特殊なアプリケーションを実行します。 この ApplicationMaster は、送信されたアプリケーションの実行に必要なリソースを (以降のコンテナーの形式で) 取得することに責任を負います。 ApplicationMaster は、アプリケーションの段階 (Map 段階、Reduce 段階など) や、処理する必要があるデータ量の要因を検証します。 ApplicationMaster はその後、アプリケーションの代わりに ResourceManager にリソースを要求 (*ネゴシエート*) します。 ResourceManager は次に、クラスター内の NodeManagers からのリソースを、アプリケーションの実行に使用できるように ApplicationMaster に付与します。
 
 NodeManagers は、アプリケーションを構成するタスクを実行した後、それらの進行状況と状態を元の ApplicationMaster に報告します。 ApplicationMaster は次に、アプリケーションの状態を元の ResourceManager に報告します。 ResourceManager は、結果をすべてクライアントに返します。
 
@@ -66,7 +63,7 @@ NodeManagers は、アプリケーションを構成するタスクを実行し�
 
 ## <a name="trash-purging"></a>ごみ箱の消去
 
-ローカル ファイル システムにはデータを格納できないため、 **[HDFS]** > **[Advanced core-site]\(高度なコアサイト\)** の `fs.trash.interval` プロパティは既定値の `0` のままにしておく必要があります。 この値はリモート ストレージ アカウント (WASB、ADLS GEN1、ABFS) には影響しません
+ローカル ファイル システムにはデータを格納できないため、**[HDFS]** > **[Advanced core-site]\(高度なコアサイト\)** の `fs.trash.interval` プロパティは既定値の `0` のままにしておく必要があります。 この値はリモート ストレージ アカウント (WASB、ADLS GEN1、ABFS) には影響しません
 
 ## <a name="next-steps"></a>次のステップ
 

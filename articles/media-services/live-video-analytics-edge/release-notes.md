@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge リリース ノート - Azure
 description: このトピックでは、Live Video Analytics on IoT Edge のリリース、機能強化、バグ修正、および既知の問題に関するリリース ノートを提供します。
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f130b93b8d799c371a640f2b29c22c0d77834cba
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121245"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954397"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Live Video Analytics on IoT Edge リリース ノート
 
@@ -35,7 +35,7 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 > クイックスタートおよびチュートリアルでは、配置マニフェストで 2 のタグ (live-video-analytics:2) を使用します。 そのため、このようなマニフェストを再配置するだけで、エッジとデバイスでモジュールが更新されます。
 ### <a name="bug-fixes"></a>バグの修正 
 
-* シグナル ゲート プロセッサの `ActivationSignalOffset`、`MinimumActivationTime`、`MaximumActivationTime` フィールドが間違って必須のプロパティとして設定されました。 これらは現在、**任意** のプロパティです。
+* シグナル ゲート プロセッサの `ActivationSignalOffset`、`MinimumActivationTime`、`MaximumActivationTime` のフィールドが誤って必須のプロパティとして設定されました。 これらは現在、**任意** のプロパティです。
 * 一部のリージョンにデプロイされたとき、IoT Edge モジュールで Live Video Analytics をクラッシュさせる使用バグを修正しました。
 
 <hr width=100%>
@@ -48,12 +48,15 @@ mcr.microsoft.com/media/live-video-analytics:2.0.1
 ```
 ### <a name="module-updates"></a>モジュールの更新
 * 複数の HTTP 拡張プロセッサおよび gRPC 拡張機能プロセッサをグラフトポロジごとに使用するためのサポートが追加されました。
-* シンク ノードのディスク領域管理のサポートが追加されました。
+* [シンク ノードのディスク領域管理](upgrading-lva-module.md#disk-space-management-with-sink-nodes)のサポートが追加されました。
 * `MediaGraphGrpcExtension` ノードで、1 つの gRPC サーバー内で複数の AI モデルを使用するための [extensionConfiguration](grpc-extension-protocol.md) プロパティがサポートされるようになりました。
 * [Prometheus 形式](https://prometheus.io/docs/practices/naming/)で Live Video Analytics モジュール メトリックを収集できるようになりました。 [Azure Monitor でメトリックを収集し、表示する方法の詳細はこちらで](monitoring-logging.md#azure-monitor-collection-via-telegraf)ご覧ください。 
+* 出力の選択をフィルター処理する機能が追加されました。 `outputSelectors` を使用して、任意のグラフ ノードに **オーディオのみ**、**ビデオのみ**、または **オーディオとビデオの両方** を渡すことができます。 
 * フレーム レート フィルター プロセッサは、**非推奨** となります。  
     * グラフ拡張機能のプロセッサ ノード自体でフレーム レート管理を使用できるようになりました。
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code 拡張機能
+* [Live Video Analytics on IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) - LVA メディア グラフの管理に役立つ Visual Studio Code 拡張機能がリリースされました。 この拡張機能は **LVA 2.0 モジュール** と連携し、滑らかに操作できる使いやすいグラフィカル インターフェイスでメディア グラフを編集および管理できます。
 ## <a name="september-22-2020"></a>2020 年 9 月 22 日
 
 このリリース タグは、モジュールの 2020 年 9 月の更新用です:
@@ -90,9 +93,9 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="module-updates"></a>モジュールの更新
 
-* gRPC フレームワークを使用して、IoT Edge の Live Video Analytics とカスタム拡張機能間でデータ コンテンツ転送のパフォーマンスを向上させることができるようになりました。 [ここ](analyze-live-video-use-your-grpc-model-quickstart.md)を参照して開始します。
+* gRPC フレームワークを使用して、IoT Edge の Live Video Analytics とカスタム拡張機能間でデータ コンテンツ転送のパフォーマンスを向上させることができるようになりました。 [クイックスタート](analyze-live-video-use-your-grpc-model-quickstart.md)を参照して使用を開始してください。
 * Live Video Analytics のリージョン デプロイの範囲が広くなり、クラウド サービスのみが更新されました。  
-* Live Video Analytics を世界中の 25 の追加リージョンで使用できるようになりました。 使用可能なすべてのリージョンの[一覧](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)を次に示します。  
+* Live Video Analytics を世界各地の 25 の追加リージョンで使用できるようになりました。 使用可能なすべてのリージョンの[一覧](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)を次に示します。  
 * クイック スタートの[セットアップ](https://aka.ms/lva-edge/setup-resources-for-samples)でも、新しいリージョンがサポートされるように更新されました。
     * 既にリソースをセットアップしているユーザーには、アクションが呼び出されません。
 
@@ -115,7 +118,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.2
 
 ### <a name="module-updates"></a>モジュールの更新
 
-* シグナル ゲート プロセッサ ノードの下流に資産シンク ノードとファイル シンク ノードを持つグラフ トポロジを作成できるようになりました。 例については、[こちら](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files)をご覧ください。
+* シグナル ゲート プロセッサ ノードの下流に資産シンク ノードとファイル シンク ノードを持つグラフ トポロジを作成できるようになりました。 例については、[トポロジ](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-motion-assets-files)に関する記事を参照してください。
 
 ### <a name="bug-fixes"></a>バグの修正
 

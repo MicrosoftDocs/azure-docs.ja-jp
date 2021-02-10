@@ -5,12 +5,12 @@ author: aagup
 ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7986c8cd8d0714215c7b4dc57170be346e627ed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247899"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928047"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Azure Service Fabric でのオンデマンド バックアップ
 
@@ -21,11 +21,16 @@ Azure Service Fabric には、[データの定期的なバックアップ](servi
 オンデマンド バックアップ機能は、サービスまたはサービス環境の操作が手動でトリガーされる前に、サービスの状態をキャプチャする場合に役立ちます。 たとえば、サービスをアップグレードまたはダウングレードするときにサービス バイナリに変更を加える場合があります。 このような場合、オンデマンド バックアップは、アプリケーション コードのバグによる破損からデータを保護するために役立ちます。
 ## <a name="prerequisites"></a>前提条件
 
-- 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
+- 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール (プレビュー) をインストールします。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> PowerShellGet のバージョンが 1.6.0 未満の場合、更新して *-AllowPrerelease* フラグのサポートを追加する必要があります。
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 - Microsoft.ServiceFabric.Powershell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
 
@@ -149,7 +154,7 @@ $backupResponse
   LsnOfLastBackupRecord   : 0
   FailureError            :
   ```
-- **成功**、**失敗**、または**タイムアウト**:要求されたオンデマンド バックアップは、次の状態のいずれかで完了する可能性があります。
+- **成功**、**失敗**、または **タイムアウト**:要求されたオンデマンド バックアップは、次の状態のいずれかで完了する可能性があります。
   - **成功**:"_成功_" バックアップ状態は、パーティションの状態が正常にバックアップされたことを示します。 応答では、パーティションの _BackupEpoch_ および _BackupLSN_ と UTC 時刻が提供されます。
     ```
     BackupState             : Success

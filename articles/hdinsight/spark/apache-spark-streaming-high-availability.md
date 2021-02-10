@@ -1,19 +1,16 @@
 ---
 title: YARN の高可用性 Spark Streaming ジョブ - Azure HDInsight
 description: Azure HDInsight での高可用性シナリオ用に Apache Spark Streaming を設定する方法
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 2ec0bf460a73f95e18e2e9221e8cbd8d4e14ff77
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086213"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929701"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN で高可用性 Apache Spark Streaming ジョブを作成する
 
@@ -67,7 +64,7 @@ HDInsight では、クラスターの処理は *Yet Another Resource Negotiator*
 
 **Executor** で障害が発生した場合、そのタスクとレシーバーは Spark によって自動的に再起動されるため、構成変更は必要ありません。
 
-一方、**ドライバー**で障害が発生した場合は、それに関連付けられたすべての Executor が失敗し、受信したすべてのブロックと計算結果が失われます。 ドライバーの障害から復旧するには、*DStream のチェックポイント処理*を使用します。詳細については、[イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)を参照してください。 DStream のチェックポイント処理は、DStream の "*有向非巡回グラフ*" (DAG) を、Azure Storage などのフォールト トレラント ストレージに定期的に保存します。  チェックポイント処理を使うと、Spark Structured Streaming は、障害が発生したドライバーをチェックポイント情報から再起動できます。  このドライバーの再起動により、新しい Executor が起動し、レシーバーも再起動します。
+一方、**ドライバー** で障害が発生した場合は、それに関連付けられたすべての Executor が失敗し、受信したすべてのブロックと計算結果が失われます。 ドライバーの障害から復旧するには、*DStream のチェックポイント処理* を使用します。詳細については、[イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成](apache-spark-streaming-exactly-once.md#use-checkpoints-for-drivers)を参照してください。 DStream のチェックポイント処理は、DStream の "*有向非巡回グラフ*" (DAG) を、Azure Storage などのフォールト トレラント ストレージに定期的に保存します。  チェックポイント処理を使うと、Spark Structured Streaming は、障害が発生したドライバーをチェックポイント情報から再起動できます。  このドライバーの再起動により、新しい Executor が起動し、レシーバーも再起動します。
 
 DStream チェックポイント処理でドライバーを復旧するには:
 

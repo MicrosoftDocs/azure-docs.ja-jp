@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:PowerShell を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と PowerShell を使用して、成果物を作成、定義、デプロイします。
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 339cd4628cda5f469a783db02c10f86259c93941
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 65d573d0aec7d5f292bc985483e1f12c350ae03a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89051493"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918281"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>クイック スタート:PowerShell で Azure Blueprint を定義して割り当てる
 
@@ -16,9 +16,9 @@ ms.locfileid: "89051493"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
-
-まだインストールされていない場合は、「[Az.Blueprint モジュールを追加する](./how-to/manage-assignments-ps.md#add-the-azblueprint-module)」の手順に従って、PowerShell ギャラリーから **Az.Blueprint** モジュールをインストールして検証します。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
+- まだインストールされていない場合は、「[Az.Blueprint モジュールを追加する](./how-to/manage-assignments-ps.md#add-the-azblueprint-module)」の手順に従って、PowerShell ギャラリーから **Az.Blueprint** モジュールをインストールして検証します。
+- 過去に Azure Blueprints を使用したことがない場合は、Azure PowerShell から `Register-AzResourceProvider -ProviderNamespace Microsoft.Blueprint` を使用してリソース プロバイダーを登録してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -270,7 +270,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
      New-AzBlueprintArtifact -Blueprint $blueprint -Type TemplateArtifact -Name 'templateStorage' -TemplateFile .\artifacts\templateStorage.json -TemplateParameterFile .\artifacts\templateStorageParams.json -ResourceGroupName storageRG
      ```
 
-1. リソース グループにロールの割り当てを追加します。 前のロール割り当てエントリと同様に、次の例では、**所有者**ロールに対する定義識別子を使用し、ブループリントとは異なるパラメーターを提供します。 この例では、GUID が `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` の "_所有者_" 組み込みロールを使用しています。
+1. リソース グループにロールの割り当てを追加します。 前のロール割り当てエントリと同様に、次の例では、**所有者** ロールに対する定義識別子を使用し、ブループリントとは異なるパラメーターを提供します。 この例では、GUID が `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` の "_所有者_" 組み込みロールを使用しています。
 
    - JSON ファイル - \artifacts\roleOwner.json
 

@@ -7,18 +7,18 @@ ms.date: 9/12/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 500fa45db7e0e6bffb587d9d352ee1ab49f14703
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b30e08a2739000d2a7ec14a95742f2654e1d2ea1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91712274"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916236"
 ---
 # <a name="harden-your-docker-hosts"></a>Docker ホストのセキュリティを強化する
 
 Azure Security Center では、IaaS Linux VM 上、または Docker コンテナーを実行している他の Linux マシン上でホストされているアンマネージド コンテナーが識別されます。 Security Center によって、こうしたコンテナーの構成が継続的に評価されます。 その後、[Center for Internet Security (CIS) Docker Benchmark](https://www.cisecurity.org/benchmark/docker/) と比較されます。
 
-Security Center には CIS Docker Benchmark のルールセット全体が含まれており、コンテナーがいずれかのコントロールを満たしていない場合は警告が表示されます。 不適切な構成が検出されると、Security Center によってセキュリティの推奨事項が生成されます。 Security Center の**推奨事項ページ**を使用して、推奨事項を表示したり、問題を修復したりします。
+Security Center には CIS Docker Benchmark のルールセット全体が含まれており、コンテナーがいずれかのコントロールを満たしていない場合は警告が表示されます。 不適切な構成が検出されると、Security Center によってセキュリティの推奨事項が生成されます。 Security Center の **推奨事項ページ** を使用して、推奨事項を表示したり、問題を修復したりします。
 
 脆弱性が見つかった場合、1 つの推奨事項内にグループ化されます。
 
@@ -31,7 +31,7 @@ Security Center には CIS Docker Benchmark のルールセット全体が含ま
 |----|:----|
 |リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
-|必要なロールとアクセス許可:|ホストが接続するワークスペースの**閲覧者**|
+|必要なロールとアクセス許可:|ホストが接続するワークスペースの **閲覧者**|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
 |||
 
@@ -50,11 +50,11 @@ Security Center には CIS Docker Benchmark のルールセット全体が含ま
     > [!TIP]
     > [資産インベントリ] ページで開始し、そこからこの推奨事項に到達した場合は、[推奨事項] ページの **[アクションの実行]** ボタンを選択します。
     >
-    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="コンテナーのセキュリティ構成の脆弱性を修復するための推奨事項":::
+    > :::image type="content" source="./media/monitor-container-security/host-security-take-action-button.png" alt-text="Log Analytics を起動する [アクションの実行] ボタン":::
 
     実行の準備が整ったカスタム操作を示した Log Analytics が開きます。 既定のカスタム クエリには、問題を解決するためのガイドラインと共に評価済みの失敗したルールの全一覧が含まれています。
 
-    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="コンテナーのセキュリティ構成の脆弱性を修復するための推奨事項":::
+    :::image type="content" source="./media/monitor-container-security/docker-host-vulnerabilities-in-query.png" alt-text="失敗したすべての CIS コントロールを表示するクエリを含む Log Analytics ページ":::
 
 1. 必要に応じて、クエリ パラメーターを調整します。
 

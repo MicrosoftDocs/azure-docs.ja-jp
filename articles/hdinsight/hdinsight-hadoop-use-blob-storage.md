@@ -1,19 +1,16 @@
 ---
 title: HDFS と互換性のある Azure Storage のデータのクエリ - Azure HDInsight
 description: Azure Storage と Azure Data Lake Storage からのデータに対してクエリを実行し、分析結果を格納する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547437"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945434"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -44,23 +41,23 @@ Apache Hadoop は、既定のファイル システムの概念をサポート�
 
 ## <a name="access-files-from-within-cluster"></a>クラスター内からファイルにアクセスする
 
-複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。 この URI スキームは、暗号化なしのアクセス ( *wasb:* プレフィックス) と TLS で暗号化されたアクセス ( *wasbs* ) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
+複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。 この URI スキームは、暗号化なしのアクセス (*wasb:* プレフィックス) と TLS で暗号化されたアクセス (*wasbs*) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、できる限り *wasbs* を使用することをお勧めします。
 
-* **完全修飾名の使用** 。 この方法により、アクセスするファイルへの完全パスを指定します。
+* **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
 
     ```
     wasb://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     wasbs://<containername>@<accountname>.blob.core.windows.net/<file.path>/
     ```
 
-* **短縮されたパスの使用** 。 この方法により、クラスター ルートへのパスを次に置き換えます。
+* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
 
     ```
     wasb:///<file.path>/
     wasbs:///<file.path>/
     ```
 
-* **相対パスの使用** 。 この方法により、アクセスするファイルへの相対パスのみを指定します。
+* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
 
     ```
     /<file.path>/

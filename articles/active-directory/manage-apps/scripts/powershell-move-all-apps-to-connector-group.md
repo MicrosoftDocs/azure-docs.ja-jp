@@ -3,7 +3,7 @@ title: PowerShell サンプル - アプリケーション プロキシ アプリ
 description: Azure Active Directory (Azure AD) アプリケーション プロキシの PowerShell の例は、現在コネクタグループに割り当てられているすべてのアプリケーションを別のコネクタグループに移動するために使用されます。
 services: active-directory
 author: kenwith
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: a2215b3de6c6ad1286570dbbf168d93a7ed62b94
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 9a3338c01a6e665706ff7733be8fdc9f904c5a56
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861580"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253641"
 ---
 # <a name="move-all-apps-assigned-to-a-connector-group-to-another-connector-group"></a>コネクタ グループに割り当てられているすべてのアプリを、別のコネクタ グループに移動する
 

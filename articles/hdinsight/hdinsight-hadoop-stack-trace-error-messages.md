@@ -1,19 +1,16 @@
 ---
 title: Hadoop スタック トレース エラー メッセージ - Azure HDInsight
 description: Azure HDInsight での Hadoop スタック トレース エラー メッセージのインデックス。 一覧のエラーに対応するトラブルシューティング情報を確認します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 3987a2d208bb96120d443300068ea739acbb4131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980c98b6b222ca4a0bb5d2ba2ae53f38de12c931
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75680249"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945446"
 ---
 # <a name="index-of-apache-hadoop-in-hdinsight-troubleshooting-articles"></a>HDInsight での Apache Hadoop のトラブルシューティングに関する記事のインデックス
 

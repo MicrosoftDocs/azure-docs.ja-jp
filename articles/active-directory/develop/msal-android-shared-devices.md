@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562170"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754885"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Android デバイスの共有デバイス モード
 
@@ -40,7 +40,7 @@ ms.locfileid: "94562170"
 
 ## <a name="single-vs-multiple-account-applications"></a>単一アカウント アプリケーションと複数アカウント アプリケーションの選択
 
-Microsoft Authentication Library SDK (MSAL) を使用して記述されたアプリケーションは、単一のアカウントまたは複数のアカウントを管理できます。 詳細については、[単一アカウント モードまたは複数アカウント モード](single-multi-account.md)に関するページを参照してください。 アプリで使用できる Microsoft ID プラットフォーム機能は、アプリケーションが単一アカウント モードまたは複数アカウント モードのどちらで実行されているかによって異なります。
+Microsoft Authentication Library SDK (MSAL) を使用して記述されたアプリケーションは、単一のアカウントまたは複数のアカウントを管理できます。 詳細については、[単一アカウント モードまたは複数アカウント モード](single-multi-account.md)に関するページを参照してください。 お使いのアプリで使用できる Microsoft ID プラットフォーム機能は、アプリケーションが単一アカウント モードと複数アカウント モードのどちらで実行されているかによって異なります。
 
 **共有デバイス モード アプリは、単一アカウント モードでのみ動作します**。
 

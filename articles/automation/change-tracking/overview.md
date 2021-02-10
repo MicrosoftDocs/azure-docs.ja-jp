@@ -3,14 +3,14 @@ title: Azure Automation の変更履歴とインベントリの概要
 description: この記事では、環境内のソフトウェアや Microsoft サービスの変更を特定するのに役立つ、Change Tracking とインベントリの機能について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/10/2020
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 0ef821634669739ff5aed58e4404d7c21b8d8222
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445423"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896631"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "94445423"
 - Microsoft サービス
 - Linux デーモン
 
-変更履歴とインベントリに含まれる機能をすべて有効にすると、追加料金が発生する可能性があります。 続行する前に、[Automation の価格](https://azure.microsoft.com/pricing/details/automation/)と [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)を確認してください。 
+変更履歴とインベントリに含まれる機能をすべて有効にすると、追加料金が発生する可能性があります。 続行する前に、[Automation の価格](https://azure.microsoft.com/pricing/details/automation/)と [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)を確認してください。
 
 変更履歴とインベントリでは、Azure Monitor ログにデータが転送され、収集されたデータが Log Analytics ワークスペースに格納されます。 ファイルの整合性の監視 (FIM) 機能は、**Azure Defender for servers** が有効な場合にのみ使用できます。 詳細については、Azure Security Center の[価格](../../security-center/security-center-pricing.md)を参照してください。 FIM では、変更履歴とインベントリのデータを格納するために作成されたものと同じ Log Analytics ワークスペースにデータがアップロードされます。 正確な使用量を把握するために、リンクされた Log Analytics ワークスペースを監視することが推奨されています。 Azure Monitor ログのデータ使用量を分析する方法の詳細については、[使用量とコストの管理](../../azure-monitor/platform/manage-cost-storage.md)に関するページを参照してください。
 
@@ -74,16 +74,7 @@ python2 実行可能ファイルに *python* という別名を付ける必要�
 
 ## <a name="network-requirements"></a>ネットワークの要件
 
-変更履歴とインベントリには、次のアドレスが明示的に必要です。 このアドレスへの通信は、ポート 443 を使用して行われます。
-
-|Azure Public  |Azure Government  |
-|---------|---------|
-|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net | *.blob.core.usgovcloudapi.net|
-|*.azure-automation.net | *.azure-automation.us|
-
-ネットワーク グループのセキュリティ規則を作成する場合、または Automation サービスと Log Analytics ワークスペースへのトラフィックを許可するように Azure Firewall を構成する場合は、[サービス タグ](../../virtual-network/service-tags-overview.md#available-service-tags)の **GuestAndHybridManagement** と **AzureMonitor** を使用します。 これにより、ネットワーク セキュリティ規則の継続的な管理が簡単になります。 Azure VM から安全かつプライベートに Automation サービスに接続するには、[Azure Private Link の使用](../how-to/private-link-security.md)に関するページを確認してください。 現在のサービス タグと範囲情報を、オンプレミスのファイアウォール構成の一部として取得して含めるには、[ダウンロード可能な JSON ファイル](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)に関するページを参照してください。
+変更履歴とインベントリに必要なポート、URL、およびその他のネットワークの詳細については、[Azure Automation のネットワーク構成](../automation-network-configuration.md#update-management-and-change-tracking-and-inventory)を確認してください。
 
 ## <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 

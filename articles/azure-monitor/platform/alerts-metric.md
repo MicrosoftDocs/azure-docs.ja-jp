@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 0518d3a2e1b67b33b9cb6bceb9754df302710f70
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6919040308dcd3a80c3c0b05ec729744099b6d8f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071036"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944490"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
@@ -91,7 +91,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 ## <a name="with-azure-cli"></a>Azure CLI の場合
 
-前のセクションでは、Azure portal を使用してメトリック アラート ルールを作成、表示、および管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest) を使用することです。 この記事では、Cloud Shell を使用します。
+前のセクションでは、Azure portal を使用してメトリック アラート ルールを作成、表示、および管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](/cli/azure/get-started-with-azure-cli) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](../../cloud-shell/overview.md) を使用することです。 この記事では、Cloud Shell を使用します。
 
 1. Azure portal に移動して、 **[Cloud Shell]** をクリックします。
 

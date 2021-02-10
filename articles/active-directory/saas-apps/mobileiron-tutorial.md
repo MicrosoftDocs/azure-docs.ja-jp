@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 01/12/2021
 ms.author: jeedes
-ms.openlocfilehash: 7965edd5dc54155f03b9211d5c2b21d451018bd1
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5561a4cdeef725eba7e48d7767aa0ee5d3c6d9cf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514454"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>チュートリアル: Azure Active Directory と MobileIron の統合
 
-このチュートリアルでは、MobileIron と Azure Active Directory (Azure AD) を統合する方法について説明します。
-MobileIron と Azure AD の統合には、次の利点があります。
+ このチュートリアルでは、MobileIron と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と MobileIron を統合すると、次のことができます。
 
-* MobileIron にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで MobileIron に自動的にサインイン (シングル サインオン) するように設定できます。
+* MobileIron にアクセスする Azure AD ユーザーを制御する。
+* ユーザーが自分の Azure AD アカウントを使用して MobileIron に自動的にサインインできるように設定する。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,75 +37,51 @@ MobileIron と Azure AD の統合を構成するには、次のものが必要�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* MobileIron では、 **SP と IDP** によって開始される SSO がサポートされます
+* MobileIron では、**SP と IDP** によって開始される SSO がサポートされます
 
-## <a name="adding-mobileiron-from-the-gallery"></a>ギャラリーから MobileIron を追加する
+## <a name="add-mobileiron-from-the-gallery"></a>ギャラリーからの MobileIron の追加
 
 Azure AD への MobileIron の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に MobileIron を追加する必要があります。
 
-**ギャラリーから MobileIron を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左側のペインで、 **[Azure Active Directory]** を選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**MobileIron**」と入力します。
+1. 結果から **[MobileIron]** を選択し、そのアプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+## <a name="configure-and-test-azure-ad-sso-for-mobileiron"></a>MobileIron の Azure AD SSO の構成とテスト
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+**B.Simon** というテスト ユーザーを使用して、MobileIron に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと MobileIron の関連ユーザーとの間に、リンクされた関係を確立する必要があります。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+MobileIron に対する Azure AD SSO を構成してテストするには、次の手順を行います。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+2. **[MobileIron の SSO の構成](#configure-mobileiron-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[MobileIron のテスト ユーザーの作成](#create-mobileiron-test-user)** - MobileIron で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
-
-4. 検索ボックスに **「MobileIron」** と入力し、結果パネルで **[MobileIron]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
-
-     ![結果リストの MobileIron](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、MobileIron で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと MobileIron 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
-
-MobileIron で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[MobileIron のシングル サインオンの構成](#configure-mobileiron-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[MobileIron のテスト ユーザーの作成](#create-mobileiron-test-user)** - MobileIron で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-MobileIron で Azure AD シングル サインオンを構成するには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com/) の **MobileIron** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+このセクションでは、Azure portal で Azure AD の SSO を有効にします。
+ 
+1. Azure portal の **MobileIron** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンを選択して設定を編集します。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、 **IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
+    a. **[識別子]** ボックスに、`https://www.MobileIron.com/<key>` の形式で URL を入力します。
 
-    a. **[識別子]** ボックスに、`https://www.mobileiron.com/<key>` の形式で URL を入力します。
-
-    b. **[応答 URL]** ボックスに、`https://<host>.mobileiron.com/saml/SSO/alias/<key>` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://<host>.MobileIron.com/saml/SSO/alias/<key>` のパターンを使用して URL を入力します
 
     c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
-
-    **[サインオン URL]** ボックスに、`https://<host>.mobileiron.com/user/login.html` という形式で URL を入力します。
+     **[サインオン URL]** ボックスに、`https://<host>.MobileIron.com/user/login.html` という形式で URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 このチュートリアルで後ほど説明する MobileIron の管理ポータルからキーとホストの値を取得します。
@@ -118,74 +90,48 @@ MobileIron で Azure AD シングル サインオンを構成するには、次�
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-### <a name="configure-mobileiron-single-sign-on"></a>MobileIron のシングル サインオンの構成
-
-1. 別の Web ブラウザー ウィンドウで、MobileIron 企業サイトに管理者としてログインします。
-
-2. **[Admin]\(管理\)** > **[Identity]\(ID\)** に移動し、 **[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドの **[AAD]** オプションを選択します。
-
-    ![スクリーンショットは、[Identity]\(ID\) が選択された MobileIron サイトの [Admin]\(管理\) タブを示しています。](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
-
-3. **キー** と **ホスト** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションに貼り付けて URL を完成させます。
-
-    ![スクリーンショットは、キーとホストの値を含む、[Setting Up SAML]\(SAML の設定\) オプションを示しています。](./media/mobileiron-tutorial/key.png)
-
-4. **[Export metadata file from AAD and import to MobileIron Cloud Field]\(AAD からメタデータ ファイルをエクスポートして MobileIron Cloud Field にインポートする\)** で、 **[ファイルの選択]** をクリックして、Azure Portal からダウンロードしたメタデータをアップロードします。 アップロードしたら、 **[完了]** をクリックします。
-
-    ![[シングル サインオン管理者メタデータの構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
 
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
-  
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[Show password]\(パスワードの表示\)** チェック ボックスをオンにし、パスワードを書き留めます。
+   1. **［作成］** を選択します
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に MobileIron へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、B.Simon に MobileIron へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択してから、 **[MobileIron]** を選択します。
+1. Azure portal で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
+1. アプリケーションの一覧で **[MobileIron]** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択します。 次に、 **[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[B.Simon]** を選択します。 次に、画面の下部にある **[選択]** を選択します。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログ ボックスで **[割り当て]** を選びます。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+## <a name="configure-mobileiron-sso"></a>MobileIron の SSO の構成
 
-2. アプリケーションの一覧で、「 **MobileIron** 」と入力して選択します。
+1. 別の Web ブラウザー ウィンドウで、MobileIron 企業サイトに管理者としてログインします。
 
-    ![アプリケーションの一覧の [MobileIron] リンク](common/all-applications.png)
+2. **[Admin]\(管理\)** > **[Identity]\(ID\)** に移動し、**[Info on Cloud IDP Setup]\(Cloud IDP セットアップの情報\)** フィールドの **[AAD]** オプションを選択します。
 
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
+    ![スクリーンショットは、[Identity]\(ID\) が選択された MobileIron サイトの [Admin]\(管理\) タブを示しています。](./media/MobileIron-tutorial/tutorial_MobileIron_admin.png)
 
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+3. **キー** と **ホスト** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションに貼り付けて URL を完成させます。
 
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+    ![スクリーンショットは、キーとホストの値を含む、[Setting Up SAML]\(SAML の設定\) オプションを示しています。](./media/MobileIron-tutorial/key.png)
 
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
+4. **[Export metadata file from AAD and import to MobileIron Cloud Field]\(AAD からメタデータ ファイルをエクスポートして MobileIron Cloud Field にインポートする\)** で、 **[ファイルの選択]** をクリックして、Azure Portal からダウンロードしたメタデータをアップロードします。 アップロードしたら、 **[完了]** をクリックします。
 
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+    ![[シングル サインオン管理者メタデータの構成] ボタン](./media/MobileIron-tutorial/tutorial_MobileIron_adminmetadata.png)
 
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
 
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
-
-### <a name="create-mobileiron-test-user"></a>MobileIron のテスト ユーザーの作成
+##  <a name="create-mobileiron-test-user"></a>MobileIron のテスト ユーザーの作成
 
 Azure AD ユーザーが MobileIron にログインできるようにするには、ユーザーを MobileIron にプロビジョニングする必要があります。  
 MobileIron の場合、プロビジョニングは手動で行います。
@@ -196,11 +142,11 @@ MobileIron の場合、プロビジョニングは手動で行います。
 
 1. **[ユーザー]** に移動して、 **[追加]**  >  **[単一ユーザー]** とクリックします。
 
-    ![[シングル サインオン ユーザーの構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_user.png)
+    ![[シングル サインオン ユーザーの構成] ボタン](./media/MobileIron-tutorial/tutorial_MobileIron_user.png)
 
 1. **[単一ユーザー]** ダイアログ ページで、次の手順を実行します。
 
-    ![[シングル サインオン ユーザー追加の構成] ボタン](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
+    ![[シングル サインオン ユーザー追加の構成] ボタン](./media/MobileIron-tutorial/tutorial_MobileIron_useradd.png)
 
     a. **[電子メール アドレス]** ボックスに、ユーザーの電子メール アドレスを入力します (この例では brittasimon@contoso.com)。
 
@@ -210,16 +156,22 @@ MobileIron の場合、プロビジョニングは手動で行います。
 
     d. **[Done]** をクリックします。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+## <a name="test-sso"></a>SSO のテスト
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+## <a name="sp-initiated"></a>SP Initiated:
 
-アクセス パネル上で [MobileIron] タイルをクリックすると、SSO を設定した MobileIron に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる MobileIron のサインオン URL にリダイレクトされます。  
 
-## <a name="additional-resources"></a>その他のリソース
+* MobileIron のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+##  <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した MobileIron に自動的にサインインされます。
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [MobileIron] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した MobileIron に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+
+
+## <a name="next-steps"></a>次のステップ
+
+MobileIron を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

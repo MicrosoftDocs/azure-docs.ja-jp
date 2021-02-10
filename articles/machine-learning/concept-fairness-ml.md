@@ -1,5 +1,5 @@
 ---
-title: 機械学習モデルでの公平性を軽減する (プレビュー)
+title: 機械学習モデルでの不公平性を軽減する (プレビュー)
 titleSuffix: Azure Machine Learning
 description: 機械学習モデルでの公平性と、Fairlearn Python パッケージを使用してより公平なモデルを構築する方法について説明します。
 services: machine-learning
@@ -8,18 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 08/05/2020
+ms.date: 01/26/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 29e29e73aa1094a2941592655af78a24d95c53b5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6daa03728a5f323f6f8b749975d31fbca24d5602
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223093"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871504"
 ---
-# <a name="mitigate-fairness-in-machine-learning-models-preview"></a>機械学習モデルでの公平性を軽減する (プレビュー)
+# <a name="mitigate-unfairness-in-machine-learning-models-preview"></a>機械学習モデルでの不公平性を軽減する (プレビュー)
 
-機械学習での公平性と、[Fairlearn](https://fairlearn.github.io/) オープンソース Python パッケージを使用して、機械学習モデルでの公平性の問題を軽減する方法について説明します。 機械学習モデルを構築するとき、公平性の問題を理解し公平性を評価するよう努力しなかった場合、不公平な結果を生成するモデルが構築されることがあります。
+機械学習での公平性と、[Fairlearn](https://fairlearn.github.io/) オープンソース Python パッケージを使用して、機械学習モデルでの不公平性の問題を軽減する方法について説明します。 機械学習モデルを構築するとき、公平性の問題を理解し公平性を評価するよう努力しなかった場合、不公平な結果を生成するモデルが構築されることがあります。
 
 以下に示す Fairlearn オープンソース パッケージの[ユーザー ガイド](https://fairlearn.github.io/master/user_guide/index.html)の要約には、これを使用して、構築する AI システムの公平性を評価する方法が記載されています。  また、Fairlearn オープンソース パッケージには、観察される公平性の問題を軽減したり、削減したりするのに役立つオプションも用意されています。  Azure Machine Learning でのトレーニング中に AI システムの公平性の評価を有効にするには、[操作方法](how-to-machine-learning-fairness-aml.md)と[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)に関するページを参照してください。
 
@@ -41,7 +41,7 @@ AI システムの不公平な動作を減らすには、これらの害を評�
 
 ## <a name="fairness-assessment-and-mitigation-with-fairlearn"></a>Fairlearn を使用した公平性の評価と軽減
 
-Fairlearn はオープンソースの Python パッケージであり、機械学習システムの開発者は、それを使用して、システムの公平性を評価し、公平性に関する問題を軽減できます。
+Fairlearn はオープンソースの Python パッケージです。機械学習システムの開発者は、これを使用して、システムの公平性を評価し、不公平性を軽減できます。
 
 Fairlearn オープンソース パッケージには、次の 2 つのコンポーネントがあります。
 

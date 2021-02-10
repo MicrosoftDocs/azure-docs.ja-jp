@@ -1,29 +1,11 @@
 ---
-title: Azure Media Services v3 の概要
-titleSuffix: Azure Media Services
-description: Azure Media Services v3 の概要と、クイック スタート、チュートリアル、コード サンプルへのリンク。
-services: media-services
-documentationcenter: na
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-tags: ''
-keywords: Azure Media Services, ストリーム, ブロードキャスト, ライブ, オフライン
-ms.service: media-services
-ms.devlang: multiple
-ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: media
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: mvc
-ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308969"
+title:Azure Media Services v3 の概要:Azure Media Services の説明:Azure Media Services v3 の概要と、クイック スタート、チュートリアル、コード サンプルへのリンク。
+services: media-services documentationcenter: na author:IngridAtMicrosoft manager: femila editor: '' tags: '' keywords: Azure Media Services, ストリーム, ブロードキャスト, ライブ, オフライン
+
+ms.service: media-services ms.devlang: multiple ms.topic: overview ms.tgt_pltfrm: multiple ms.workload: media ms.date:08/31/2020 ms.author: inhenkel ms.custom: mvc
+#<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>顧客の意図: 開発者またはコンテンツ プロバイダーとして、ユーザーがさまざまなブラウザーおよびデバイスでコンテンツを閲覧し、記録されているコンテンツから有益な分析情報が得られるよう、メディア コンテンツをエンコード、ストリーミング (オンデマンドまたはライブ)、分析する必要があります。
 ---
+
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 の概要
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

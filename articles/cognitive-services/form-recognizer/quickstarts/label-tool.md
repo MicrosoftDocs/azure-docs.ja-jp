@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: ドキュメントの処理
-ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845537"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221093"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>サンプル ラベル付けツールを使用したラベルによる Form Recognizer モデルのトレーニング
 
@@ -202,7 +202,7 @@ Form Recognizer サービスを試すには、Azure サブスクリプション 
    1. **+** をクリックして、新しいタグを作成します。
    1. タグ名を入力します。
    1. Enter キーを押して、タグを保存します。
-1. メインのエディターで、強調表示されたテキスト要素から単語を選択します。 _v2.1 preview.2_ では、キーと値のペアとして、オプション ボタンやチェック ボックスに似た "_選択マーク_" をクリックして選択することもできます。 選択マークの値が "選択済み" と "未選択" のどちらであるかが Form Recognizer によって識別されます。
+1. メインのエディターで、強調表示されたテキスト要素から単語を選択します。 _v2.1 preview.2_ API では、キーと値のペアとして、オプション ボタンやチェック ボックスに似た "_選択マーク_" をクリックして選択することもできます。 選択マークの値が "選択済み" と "未選択" のどちらであるかが Form Recognizer によって識別されます。
 1. 適用するタグをクリックするか、対応するキーボード キーを押します。 数字キーは、最初の 10 個のタグのホットキーとして割り当てられます。 タグの順序は、タグ エディター ペインの上矢印と下矢印のアイコンを使用して変更できます。
     > [!Tip]
     > フォームにラベルを付けるときは、次のヒントに留意してください。

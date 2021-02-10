@@ -1,6 +1,6 @@
 ---
-title: Azure portal でアラートと通知を設定する
-description: Azure portal を使用してアラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
+title: Azure Portal でアラートと通知を設定する
+description: Azure Portal を使用してアラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -24,7 +24,7 @@ ms.locfileid: "96500973"
 
 ## <a name="overview"></a>概要
 
-この記事では、Azure portal を使用して、Azure SQL Database と Azure Synapse Analytics のデータベースのアラートを設定する方法について説明します。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。
+この記事では、Azure Portal を使用して、Azure SQL Database と Azure Synapse Analytics のデータベースのアラートを設定する方法について説明します。 あるメトリック (データベース サイズや CPU 使用率など) がしきい値に達したら、アラートはユーザーに電子メールを送信するか、または Web フックを呼び出すことができます。
 
 > [!NOTE]
 > Azure SQL Managed Instance 固有の手順については、[Azure SQL Managed Instance のアラートを作成する](../managed-instance/alerts-create.md)方法に関するページを参照してください。
@@ -42,12 +42,12 @@ ms.locfileid: "96500973"
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します
 
-* [Azure ポータル](../../azure-monitor/platform/alerts-classic-portal.md)
+* [Azure Portal](../../azure-monitor/platform/alerts-classic-portal.md)
 * [PowerShell](../../azure-monitor/platform/alerts-classic-portal.md)
 * [コマンド ライン インターフェイス (CLI)](../../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 監視 REST API](/rest/api/monitor/alertrules)
 
-## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure ポータルでメトリックにアラート ルールを作成する
+## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Azure Portal でメトリックにアラート ルールを作成する
 
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
 2. [監視] セクションで、 **[アラート]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  

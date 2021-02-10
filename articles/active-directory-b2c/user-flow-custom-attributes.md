@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9759c1109c7be279520fa187bd3366bcac505d46
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503745"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661206"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム属性を定義する
 
@@ -31,7 +31,7 @@ Azure AD B2C ディレクトリには、[組み込みの属性セット](user-pr
 * ID プロバイダーが、保存する必要がある一意のユーザー識別子 (**uniqueUserGUID**) を保持している。
 * カスタム ユーザー体験で、他のロジックを運用するために必要な、ユーザーの状態 (**migrationStatus**) を保持する必要がある。
 
-Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 また、[Microsoft Graph API](manage-user-accounts-graph-api.md) を使用してこれらの属性を読み書きすることもできます。
+Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 また、[Microsoft Graph API](microsoft-graph-operations.md) を使用してこれらの属性を読み書きすることもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -135,7 +135,7 @@ Microsoft Graph API では、拡張属性を使用したユーザーの作成と
 |名前     |使用される場所 |
 |---------|---------|
 |`extension_loyaltyId`  | カスタム ポリシー|
-|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
+|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](microsoft-graph-operations.md)|
 
 次の例は、Azure AD B2C カスタム ポリシーの要求定義でカスタム属性を使用する方法を示したものです。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0c0ec45eee86031e1533b97ccf352de0ecf70e38
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635707"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633156"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>OS の起動に関するトラブルシューティングを行う - Windows Update のインストール容量
 
@@ -38,6 +38,9 @@ ms.locfileid: "94635707"
 ## <a name="solution"></a>解決策
 
 ### <a name="process-overview"></a>プロセスの概要:
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 1. 修復 VM を作成してアクセスします。
 1. ディスク上の領域を解放します。

@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: d45ab771f90c0174f24d5f0d39921f93f72be850
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b875936e13edfe0eff12f253836b093796951308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451062"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876328"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -32,9 +32,9 @@ ms.locfileid: "96451062"
 
 **仮想ネットワーク:** ご自分の Azure サブスクリプションに仮想ネットワークを関連付けることができます。
 
-**サブネット:** 仮想ネットワークには **サブネット** が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
+**サブネット:** 仮想ネットワークには **サブネット** が含まれます。 VNet 内の任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 サブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for PostgreSQL サービスと MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネットの Azure SQL Database、Azure Database for PostgreSQL、および Azure Database for MySQL のすべてのサーバーに対してサービス エンドポイント トラフィックが構成されることに注意することが重要です。 
+**仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。 このサービス タグは、Azure Database for PostgreSQL サービスと MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネットの Azure データベース サービス (SQL Database、Azure Synapse Analytics、Azure Database for PostgreSQL、および Azure Database for MySQL サーバー) に対してサービス エンドポイント トラフィックが構成されることに注意することが重要です。 
 
 **仮想ネットワーク規則:** Azure Database for PostgreSQL サーバーの仮想ネットワーク規則は、Azure Database for PostgreSQL サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 Azure Database for PostgreSQL の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
@@ -44,13 +44,13 @@ ms.locfileid: "96451062"
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>仮想ネットワーク規則の利点
 
-操作を実行するまで、サブネット上の VM は Azure Database for PostgreSQL と通信できません。 通信を確立するアクションの 1 つは、仮想ネットワーク規則の作成です。 VNet ルールの方法を選択する根拠については、ファイアウォールで提供される競合するセキュリティ オプションと比較対照して考察する必要があります。
+操作を実行するまで、サブネット上の VM は Azure Database for PostgreSQL サーバーと通信できません。 通信を確立するアクションの 1 つは、仮想ネットワーク規則の作成です。 VNet ルールの方法を選択する根拠については、ファイアウォールで提供される競合するセキュリティ オプションと比較対照して考察する必要があります。
 
-### <a name="a-allow-access-to-azure-services"></a>A. Azure サービスへのアクセス許可
+### <a name="allow-access-to-azure-services"></a>Azure サービスへのアクセス許可
 
 接続のセキュリティ ペインには、 **[Azure サービスへのアクセスを許可]** とラベル付けされた **[オン/オフ]** ボタンがあります。 **[オン]** 設定は、すべての Azure IP アドレスと Azure サブネットからの通信を許可します。 これらの Azure IP またはサブネットは、ユーザーが所有していない場合もあります。 この **[オン]** 設定は、おそらくは Azure Database for PostgreSQL Database に期待する範囲を超えて開かれています。 仮想ネットワーク規則機能によって、さらにきめ細かい制御が提供されます。
 
-### <a name="b-ip-rules"></a>B. IP 規則
+### <a name="ip-rules"></a>IP 規則
 
 Azure Database for PostgreSQL のファイアウォールでは、Azure Database for PostgreSQL Database への通信が許可される IP アドレス範囲を指定できます。 この方法は、Azure プライベート ネットワークの外部にある安定した IP アドレスに適しています。 しかし、Azure プライベート ネットワーク内にある多数のノードは、*動的* IP アドレスで構成されています。 動的 IP アドレスは、VM が再起動されたときなどに変更される場合があります。 運用環境では、ファイアウォール規則に動的 IP アドレスを指定することは、賢明ではありません。
 
@@ -86,7 +86,7 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 
 ネットワーク管理およびデータベース管理のロールには、仮想ネットワーク規則の管理に必要とされる機能以外もあります。 それらの機能のうち 1 つのサブネットだけが必要になります。
 
-必要な機能のサブセットのみを保持する単一のカスタム ロールを作成するために、Azure の [Azure ロールベースのアクセス制御 (Azure RBAC)][rbac-what-is-813s] を使用するオプションがあります。 ネットワーク管理またはデータベース管理に関連付ける代わりに、カスタム ロールを使用できます。カスタム ロールにユーザーを追加する場合と、他の 2 つの主要な管理者ロールにユーザーを追加する場合では、前者の方がセキュリティ脅威にさらされる領域が少なくなります。
+必要な機能のサブセットのみを保持する単一のカスタム ロールを作成するために、Azure には [Azure ロールベースのアクセス制御 (Azure RBAC)][rbac-what-is-813s] を使用するオプションがあります。 ネットワーク管理またはデータベース管理に関連付ける代わりに、カスタム ロールを使用できます。カスタム ロールにユーザーを追加する場合と、他の 2 つの主要な管理者ロールにユーザーを追加する場合では、前者の方がセキュリティ脅威にさらされる領域が少なくなります。
 
 > [!NOTE]
 > Azure Database for PostgreSQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。

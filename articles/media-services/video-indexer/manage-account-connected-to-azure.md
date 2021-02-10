@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/16/2019
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25025efe5254442c4862563ce329cfae69e7d033
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79499671"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898445"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを管理する
 
@@ -28,7 +28,7 @@ ms.locfileid: "79499671"
 
 [Azure への接続](connect-to-azure.md)に関するページを参照して、自分の Video Indexer アカウントで Azure に接続します。
 
-この記事の「[前提条件](connect-to-azure.md#prerequisites)」に従い、「[考慮事項](connect-to-azure.md#considerations)」を確認してください。
+この記事の「[前提条件](connect-to-azure.md#prerequisites-for-connecting-to-azure)」に従い、「[考慮事項](connect-to-azure.md#azure-media-services-considerations)」を確認してください。
 
 ## <a name="examine-account-settings"></a>アカウント設定の調査
 
@@ -79,7 +79,7 @@ Videos Indexer アカウントが Azure に接続されている場合は、次�
 
 * ストリーミング エンドポイント
 
-    基になる Media Services アカウントに既定の**ストリーミング エンドポイント**があり、開始状態になっていることを確認します。 そうなっていない場合は、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
+    基になる Media Services アカウントに既定の **ストリーミング エンドポイント** があり、開始状態になっていることを確認します。 そうなっていない場合は、この Media Services アカウントから、または Video Indexer でビデオを視聴できません。
 
 * メディア占有ユニット
 

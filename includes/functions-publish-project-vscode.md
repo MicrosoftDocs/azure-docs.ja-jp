@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: glenga
-ms.openlocfilehash: a525d1e14e642a64235c263ba29bf7a181bf9e30
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2517f132578b5de6b062b38ce94581f118327a13
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008200"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493594"
 ---
 ## <a name="publish-the-project-to-azure"></a>Azure にプロジェクトを発行する
 
@@ -21,7 +21,7 @@ ms.locfileid: "96008200"
 
 1. アクティビティ バーの Azure アイコンを選択し、 **[Azure: Functions]** 領域で、 **[Deploy to function app]\(関数アプリにデプロイ\)** ボタンを選択します。
 
-    ![プロジェクトを Azure に発行する](media/functions-publish-project-vscode/function-app-publish-project.png)
+    ![プロジェクトを Azure に発行する](./media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. プロンプトで、次の情報を入力します。
 
@@ -35,16 +35,18 @@ ms.locfileid: "96008200"
     
     - **Select a location for new resources (新しいリソースの場所を選択してください)** : パフォーマンスを向上させるために、お近くの [リージョン](https://azure.microsoft.com/regions/)を選択してください。 
     
+    この拡張機能は、Azure に作成されている個々のリソースの状態を通知領域に表示します。
+
+    :::image type="content" source="media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure リソース作成の通知":::
+    
 1.  完了すると、関数アプリ名に基づく名前を使用して、次の Azure リソースがサブスクリプションに作成されます。
     
-    - リソース グループ。関連リソースの論理コンテナーです。
-    - Standard Azure ストレージ アカウント。プロジェクトについての状態とその他の情報を保持します。
-    - 従量課金プラン。サーバーレス関数アプリの実行環境となるホストを定義します。 
-    - 関数アプリ。関数コードを実行するための環境となります。 関数アプリを使用すると、同じホスティング プランに含まれるリソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
-    - 関数アプリに接続された Application Insights インスタンス。サーバーレス関数の使用を追跡します。
+    [!INCLUDE [functions-vs-code-created-resources](functions-vs-code-created-resources.md)]
 
     関数アプリが作成され、展開パッケージが適用されると、通知が表示されます。 
-    
-1. この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。 通知を見逃した場合は、右下隅にあるベル アイコンを選択して、再度確認します。
+
+    [!INCLUDE [functions-vs-code-create-tip](functions-vs-code-create-tip.md)]
+
+4. この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。 通知を見逃した場合は、右下隅にあるベル アイコンを選択して、再度確認します。
 
     ![作成完了通知](media/functions-publish-project-vscode/function-create-notifications.png)

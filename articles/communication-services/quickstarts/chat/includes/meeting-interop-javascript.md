@@ -5,12 +5,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0c41771af81989ff965098a762338216db54fd27
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 780ef2bbb7851d8bef5fc52a51421a7938043ecb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578045"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932297"
 ---
 ## <a name="join-the-meeting-chat"></a>会議チャットに参加する 
 
@@ -21,7 +21,7 @@ Teams の相互運用性が有効になると、Communication Services ユーザ
 まず、会議チャット スレッドの `ChatThreadClient` のインスタンスを作成します。 会議リンクを解析するか、Graph API と会議 ID を使用して、スレッド ID を取得します。 
 
 - Teams の会議リンクは、`https://teams.microsoft.com/l/meetup-join/meeting_chat_thread_id/1606337455313?context=some_context_here` のようになっています。 スレッド ID は、このリンクの `meeting_chat_thread_id` の部分です。 
-- 会議 ID を保持している場合は、[Graph API](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) を使用してスレッド ID を取得できます。 [GET API](https://docs.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-beta&tabs=http%22%20%5C) 応答には、`threadID` を含む `chatInfo` オブジェクトがあります。 
+- 会議 ID を保持している場合は、[Graph API](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) を使用してスレッド ID を取得できます。 [GET API](/graph/api/onlinemeeting-get?tabs=http%22+%5c&view=graph-rest-beta) 応答には、`threadID` を含む `chatInfo` オブジェクトがあります。 
 
 チャット スレッド ID を取得したら、JavaScript チャット クライアント ライブラリを使用してチャット スレッド クライアントを取得できます。 
 
@@ -44,4 +44,3 @@ console.log(`Chat Thread client for threadId:${chatThreadClient.threadId}`);
 
 **注** - 現在、Teams との相互運用性のシナリオでは、メッセージの送受信のみがサポートされています。 入力インジケーターや、Communication Services ユーザーが Teams 会議に他のユーザーを追加または削除するなどの機能は、まだサポートされていません。  
 
- 

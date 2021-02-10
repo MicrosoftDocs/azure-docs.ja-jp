@@ -1,29 +1,28 @@
 ---
 title: Azure Security Center のすべての推奨事項の参照テーブル
-description: この記事では、お使いのリソースを保護するのに役立つ Azure Security Center のセキュリティに関する推奨事項の一覧を示します。
+description: この記事では、お使いのリソースを堅牢化および保護するのに役立つ Azure Security Center のセキュリティに関する推奨事項の一覧を示します。
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/12/2021
+ms.date: 01/26/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 11d4830908b4e86da12cd5e40cc26b1c1b1aecbd
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f6d881036b0ebaa79d1052e41b8ec649bb1e8d6d
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133049"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797175"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
 この記事では、Azure Security Center に表示される可能性のある推奨事項の一覧を示します。 お使いの環境に示される推奨事項は、保護しているリソースとご自分でカスタマイズした構成によって異なります。
 
-Security Center の推奨事項は、ベスト プラクティスに基づいています。 一部は **Azure セキュリティ ベンチマーク** に沿っています。これは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。
-[Azure セキュリティ ベンチマークの詳細を確認してください](../security/benchmarks/introduction.md)。
+Security Center の推奨事項は、[Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)に基づいています。 Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
 
 これらの推奨事項に対応する方法については、[Azure Security Center での推奨事項の修復](security-center-remediate-recommendations.md)に関するページを参照してください。
 
-ご自身のセキュア スコアは、完了した Security Center の推奨事項の数に基づきます。 最初に解決すべき推奨事項を決定するには、それぞれの重大度と、セキュリティ スコアに対する潜在的な影響を確認します。
+ご自身のセキュア スコアは、完了した Security Center の推奨事項の数に基づきます。 最初に解決すべき推奨事項を決定するには、それぞれの重大度と、セキュア スコアに対する潜在的な影響を確認します。
 
 > [!TIP]
 > 推奨事項の説明に "関連ポリシーなし" と表示されている場合、その理由は通常、その推奨事項が別の推奨事項と _その_ ポリシーに依存しているためです。 たとえば、「…で Endpoint Protection の正常性エラーを修復する必要があります」という推奨事項は、エンドポイント保護ソリューションが _インストール済み_ であるかどうかを確認する推奨事項 (「エンドポイント保護ソリューションを...インストールする必要がある」) に依存しています。 基になる推奨事項にはポリシーが _存在します_。

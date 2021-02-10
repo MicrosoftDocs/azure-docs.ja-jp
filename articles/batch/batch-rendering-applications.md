@@ -1,14 +1,14 @@
 ---
 title: アプリケーションをレンダリングする
 description: Azure Batch では任意のレンダリング アプリケーションを使用できます。 ただし、Azure Marketplace の VM イメージは、事前インストールされている一般的なアプリケーションで使用します。
-ms.date: 09/19/2019
+ms.date: 02/01/2021
 ms.topic: how-to
-ms.openlocfilehash: d4eefa287575d68acccb2697e1d262c7e48dab62
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4eeb87c866858f2f1733b81e3e2154f4521e94bc
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234411"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430030"
 ---
 # <a name="pre-installed-applications-on-batch-rendering-vm-images"></a>VM イメージを Batch レンダリングするために事前インストールされているアプリケーション
 
@@ -18,7 +18,7 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 
 一部のアプリケーションは Windows でのみサポートされますが、ほとんどは Windows と Linux の両方でサポートされます。
 
-## <a name="applications-on-centos-7-rendering-images"></a>CentOS 7 レンダリング イメージのアプリケーション
+## <a name="applications-on-centos-7-rendering-image"></a>CentOS 7 レンダリング イメージのアプリケーション
 
 次の一覧は、CentOS 7.6、バージョン 1.1.6 のレンダリング イメージに適用されます。
 
@@ -33,7 +33,26 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 * Blender (2.68)
 * Blender (2.8)
 
-## <a name="applications-on-latest-windows-server-2016-rendering-images"></a>最新の Windows Server 2016 レンダリング イメージのアプリケーション
+## <a name="applications-on-latest-windows-server-rendering-image"></a>最新の Windows Server レンダリング イメージのアプリケーション
+
+次の一覧は、Windows Server レンダリング イメージ (バージョン 1.5.0) に適用されます。
+
+* Autodesk Maya I/O 2020 Update 4.4
+* Autodesk 3ds Max I/O 2021 Update 3
+* Autodesk Arnold for Maya 2020 (Arnold バージョン 6.1.0.1) MtoA-4.1.1.1-2020
+* Autodesk Arnold for 3ds Max 2021 (Arnold バージョン 6.1.0.1) MAXtoA-4.2.2.20-2021
+* Chaos Group V-Ray for Maya 2020 (バージョン 5.00.21)
+* Chaos Group V-Ray for 3ds Max 2021 (バージョン 5.00.05)
+* Blender (2.79)
+* Blender (2.80)
+* AZ 10
+
+> [!IMPORTANT]
+> V-Ray with Maya を [Azure Batch 拡張機能テンプレート](https://github.com/Azure/batch-extension-templates)の外で実行するには、レンダリングの前に `vrayses.exe` を開始します。 テンプレートの外で vrayses を開始するには、次のコマンドを使用します: `%MAYA_2020%\vray\bin\vrayses.exe"`。
+>
+> 例については、GitHub にある [Maya および V-Ray テンプレート](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json)の開始タスクを参照してください。
+
+## <a name="applications-on-previous-windows-server-rendering-images"></a>以前の Windows Server レンダリング イメージのアプリケーション
 
 次の一覧は、Windows Server 2016、バージョン 1.3.8 レンダリング イメージに適用されます。
 
@@ -58,13 +77,6 @@ Azure Batch では任意のレンダリング アプリケーションを使用�
 * Blender (2.79)
 * Blender (2.80)
 * AZ 10
-
-> [!IMPORTANT]
-> V-Ray with Maya を [Azure Batch 拡張機能テンプレート](https://github.com/Azure/batch-extension-templates)の外で実行するには、レンダリングの前に `vrayses.exe` を開始します。 テンプレートの外で vrayses を開始するには、次のコマンドを使用します: `%MAYA_2017%\vray\bin\vrayses.exe"`。
->
-> 例については、GitHub にある [Maya および V-Ray テンプレート](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json)の開始タスクを参照してください。
-
-## <a name="applications-on-previous-windows-server-2016-rendering-images"></a>以前の Windows Server 2016 レンダリング イメージのアプリケーション
 
 次の一覧は、Windows Server 2016、バージョン 1.3.7 レンダリング イメージに適用されます。
 

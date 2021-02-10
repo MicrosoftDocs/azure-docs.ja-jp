@@ -6,29 +6,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 01/20/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 805ee7f5b210a09335b2177b83777c5caa805858
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 6e71d9b4006d0353b094306424ba0fe99c581279
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98147460"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090730"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-[v3.1 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews) | [v3.1 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3) | [v3.1 サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3.1 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview) | [v3.1 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3.1 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3) | [v3.1 サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
 
-[v3 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v3 リファレンス ドキュメント](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet) | [v3 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics) | [v3 パッケージ (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics) | [v3 サンプル](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
 
-[v2 リファレンス ドキュメント](/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet) | [v2 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2 パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2 サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2 リファレンス ドキュメント](/dotnet/api/overview/azure/cognitiveservices/client) | [v2 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics) | [v2 パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/) | [v2 サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
@@ -812,8 +812,7 @@ Key phrases:
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-> [!CAUTION]
-> 分析操作を使用するには、Azure リソースが Standard 価格レベルを使用していることを確認します。
+[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
 前に作成したクライアントを受け取る `AnalyzeOperationExample()` という新しい関数を作成し、その `StartAnalyzeOperationBatch()` 関数を呼び出します。 返された `AnalyzeOperation` オブジェクトには、`AnalyzeOperationResult` の `Operation` インターフェイス オブジェクトが格納されます。 実行時間の長い操作であるため、更新する値の `operation.WaitForCompletionAsync()` に `await` します。 `WaitForCompletionAsync()` が完了したら、`operation.Value` でコレクションを更新する必要があります。 エラーが発生した場合は、`RequestFailedException` がスローされます。
 

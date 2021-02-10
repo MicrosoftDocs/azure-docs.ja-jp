@@ -6,12 +6,12 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: d86c6d8b67546aede86a3fc3c905f6feb40d92db
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 856aeb4dabc64edc2ade2869fddc3d14cb21a81b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403417"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942170"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Azure Monitor のアラートの問題のトラブルシューティング
 
@@ -245,7 +245,7 @@ Azure portal に従って意図どおりにアラートが始動しても適切�
 
 1. **アクション ルールのパラメーターを確認したか?**  
 
-    [アクション ルールのドキュメント](alerts-action-rules.md)、または[アクション ルールの PowerShell Set-AzActionRule ](/powershell/module/az.alertsmanagement/set-azactionrule?view=azps-3.5.0)コマンドを確認してください。 
+    [アクション ルールのドキュメント](alerts-action-rules.md)、または[アクション ルールの PowerShell Set-AzActionRule ](/powershell/module/az.alertsmanagement/set-azactionrule)コマンドを確認してください。 
 
 
 ## <a name="next-steps"></a>次のステップ

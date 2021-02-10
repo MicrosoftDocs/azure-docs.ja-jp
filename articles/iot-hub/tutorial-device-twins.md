@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub のデバイス状態を同期する | Microsoft Docs
-description: デバイス ツインを使用してクラウドからデバイスを構成し、デバイスから状態およびコンプライアンス データを受信する方法について説明します。
+title: チュートリアル - Azure IoT Hub のデバイス状態を同期する | Microsoft Docs
+description: チュートリアル - デバイス ツインを使用してクラウドからデバイスを構成し、デバイスから状態およびコンプライアンス データを受信する方法について説明します。
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572526"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733302"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -73,11 +73,11 @@ az extension add --name azure-iot
 # Create a resource group:
 az group create --name tutorial-iot-hub-rg --location $location
 
-# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription:
-az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
+# Create your free-tier IoT Hub. You can only have one free IoT Hub per subscription.
+az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --partition-count 2 --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --name $hubname --policy-name service -o table
+az iot hub connection-string show --name $hubname --policy-name service -o table
 
 ```
 
@@ -91,7 +91,7 @@ hubname=tutorial-iot-hub
 az iot hub device-identity create --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg
 
 # Retrieve the device connection string, you need this later:
-az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
+az iot hub device-identity connection-string show --device-id MyTwinDevice --hub-name $hubname --resource-group tutorial-iot-hub-rg -o table
 
 ```
 
@@ -118,7 +118,7 @@ az iot hub device-identity show-connection-string --device-id MyTwinDevice --hub
 
 ### <a name="sample-desired-properties"></a>必要なプロパティのサンプル
 
-アプリケーションに適した方法で必要なプロパティを構成することができます。 この例では、**fanOn** という 1 つの最上位プロパティを使用し、その他のプロパティを個別の **コンポーネント** にグループ化します。 次の JSON スニペットは、このチュートリアルで使用する必要なプロパティの構造を示しています。
+アプリケーションに適した方法で必要なプロパティを構成することができます。 この例では、**fanOn** という 1 つの最上位プロパティを使用し、その他のプロパティを個別の **コンポーネント** にグループ化します。 次の JSON スニペットは、このチュートリアルで使用する必要なプロパティの構造を示しています。 JSON は、desired.json ファイルにあります。
 
 [!code[Sample desired properties](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/desired.json "Sample desired properties")]
 

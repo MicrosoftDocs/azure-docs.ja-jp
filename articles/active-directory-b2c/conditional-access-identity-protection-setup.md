@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 654206bccd25bf09fcdc5c3e7ee72ba97c75af2a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949770"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785483"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Azure AD B2C で Identity Protection と条件付きアクセスを設定する
 
@@ -94,9 +94,7 @@ Identity Protection のリスク検出に基づいて条件付きアクセス �
 
 1. **[セキュリティ]** で、 **[条件付きアクセス (プレビュー)]** を選択します。 **[条件付きアクセス ポリシー]** ページが開きます。 
 
-1. **[新しいポリシー]** を選択し、Azure AD 条件付きアクセスのドキュメントに従って新しいポリシーを作成します。 次に例を示します。
-
-   - [サインイン リスクベースの条件付きアクセス: 条件付きアクセス ポリシーを有効にする](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
+1. **[新しいポリシー]** を選択し、Azure AD 条件付きアクセスのドキュメントに従って新しいポリシーを作成します。 リスクベースのポリシーでは、条件として使用するリスクの種類により[ユーザー リスク](../active-directory/conditional-access/howto-conditional-access-policy-risk-user.md#enable-with-conditional-access-policy)または[サインイン リスク](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)に基づいて別個のポリシーを構成する必要があります。 1 つのポリシーに両方のリスク タイプを使用するのはお勧めしません。
 
    > [!IMPORTANT]
    > ポリシーを適用するユーザーを選択する際に、 **[すべてのユーザー]** を単独で選択しないでください。選択すると、自分がサインインできなくなる可能性があります。

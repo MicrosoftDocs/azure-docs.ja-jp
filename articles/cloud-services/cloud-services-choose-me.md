@@ -1,20 +1,25 @@
 ---
-title: Azure Cloud Services とは| Microsoft Docs
+title: Azure Cloud Services (クラシック) とは | Microsoft Docs
 description: Azure Cloud Services の概要について、特にスケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されていることについて説明します。
-services: cloud-services
-author: tgore03
-ms.service: multiple
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 0013a3a29bae9d2dde7896b3ae23d0d358946f2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: cbb9aae57b952c05aa722f81309158a11aef826b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88224290"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742813"
 ---
-# <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
+# <a name="overview-of-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) の概要
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
 
 ![Azure Cloud Services の図](./media/cloud-services-choose-me/diagram.png)

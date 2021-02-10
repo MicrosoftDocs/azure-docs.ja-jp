@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
 ms.date: 12/15/2020
-ms.openlocfilehash: 61eb7d06773428074940d153b01d23b13468795d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 661af89ad223978abbefd71dd8008577475c5875
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788826"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221383"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Azure Cognitive Services のコストを計画および管理する
 
@@ -64,6 +64,32 @@ QnA Maker リソースの削除後、次のリソースが引き続き存在す�
 
 Cognitive Services の料金は、Azure 前払い (旧称: 年額コミットメント) のクレジットを使用して支払うことができます。 ただし、Azure 前払いのクレジットを使用して、サードパーティの製品やサービス (Azure Marketplace からのものを含む) の料金を支払うことはできません。
 
+## <a name="monitor-costs"></a>コストを監視する
+
+<!-- Note to Azure service writer: Modify the following as needed for your service. Replace example screenshots with ones taken for your service. If you need assistance capturing screenshots, ask banders for help. -->
+
+Cognitive Services で Azure リソースを使用と、コストが発生します。 Azure リソース使用のユニット コストは、期間 (秒、分、時間、日数) やユニット使用量 (バイト、メガバイトなど) によって異なります。 Cognitive Services を使い始めるとすぐにコストが発生し、[コスト分析](../cost-management/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)でコストを確認できます。
+
+コスト分析を使用すると、さまざまな期間について、Cognitive Services のコストをグラフや表で表示できます。 たとえば、日単位、現在の月、以前の月、年単位などがあります。 予算や予想コストを基準としてコストを表示することもできます。 時間経過を示す、より長い期間のビューに切り替えると、支出の傾向を特定するのに役立ちます。 超過出費が発生した可能性のある時期を確認できます。 予算を作成したら、それを超えた場所も簡単に確認できます。
+
+コスト分析で Cognitive Services のコストを表示するには:
+
+1. Azure portal にサインインします。
+2. Azure portal でスコープを開き、メニューから **[コスト分析]** を選択します。 たとえば、 **[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 コスト分析で別のスコープに切り替えるには、 **[スコープ]** を選択します。
+3. 既定では、最初のドーナツ グラフにサービスのコストが表示されます。 グラフで [Cognitive Services] というラベルが付いた領域を選択します。
+
+最初にコスト分析を開いたときに、実際の月額コストが表示されます。 月単位のすべての使用コストを示す例を次に示します。
+
+:::image type="content" source="./media/cost-management/all-costs.png" alt-text="サブスクリプションの累積コストを示す例":::
+
+- Cognitive Services などの 1 つのサービスのコストに絞り込むには、 **[フィルターの追加]** を選択してから、 **[サービス名]** を選択します。 次に、 **[Cognitive Services]** を選択します。
+
+Cognitive Services のみのコストを表示する例を次に示します。
+
+:::image type="content" source="./media/cost-management/cognitive-services-costs.png" alt-text="Cognitive Services の累積コストを示す例":::
+
+前の例では、サービスの現在のコストが表示されます。 Azure リージョン (場所) 別およびリソース グループ別の Cognitive Services のコストも表示されます。 ここでは、コストを自分で調べることができます。
+
 ## <a name="create-budgets"></a>予算を作成する
 
 [予算](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成して、コストを管理し、異常な支出や浪費のリスクについて、関係者に自動的に通知する[アラート](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)を作成できます。 アラートは、予算とコストのしきい値と比較した支出に基づきます。 予算とアラートは、Azure サブスクリプションとリソース グループに対して作成されるため、全体的なコスト監視戦略の一環として役立ちます。 
@@ -73,13 +99,6 @@ Cognitive Services の料金は、Azure 前払い (旧称: 年額コミットメ
 ## <a name="export-cost-data"></a>コスト データのエクスポート
 
 また、ストレージ アカウントに[コスト データをエクスポート](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)することもできます。 これは、自分や他のユーザーがコストに関する追加のデータ分析を行う必要がある場合に便利です。 たとえば、財務チームは、Excel や Power BI を使用してデータを分析できます。 日単位、週単位、または月単位のスケジュールでコストをエクスポートし、カスタムの日付範囲を設定することができます。 コスト データのエクスポートは、推奨されるコスト データセット取得方法です。
-
-<!--
-## Other ways to manage and reduce costs for Cognitive Services
-
-Work with Dean to complete this section in 2021.
-
--->
 
 ## <a name="next-steps"></a>次のステップ
 

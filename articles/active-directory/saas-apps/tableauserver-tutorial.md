@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/27/2020
+ms.date: 01/25/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c9d79ef4fd73adbe3ba376f1723693ea8e85197
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 7ee22121fd023f3942eed64bd605bf87b961d893
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736509"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429839"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Tableau Server の統合
 
@@ -40,7 +40,7 @@ ms.locfileid: "98736509"
 
 * Tableau Server では、**SP** によって開始される SSO がサポートされます
 
-## <a name="adding-tableau-server-from-the-gallery"></a>ギャラリーから Tableau Server を追加する
+## <a name="add-tableau-server-from-the-gallery"></a>ギャラリーから Tableau Server を追加する
 
 Azure AD への Tableau Server の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Tableau Server を追加する必要があります。
 
@@ -83,7 +83,7 @@ Tableau Server に対する Azure AD SSO を構成してテストするには、
     c. **[応答 URL]** ボックスに、`https://azure.<domain name>.link/wg/saml/SSO/index.html` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > 上記の値は、実際の値ではありません。 [Tableau Server Configiuration]\(Tableau Server の構成) ページから入手した実際の URL と識別子で値を更新します。これについてはこのチュートリアルで後ほど説明します。
+    > 上記の値は、実際の値ではありません。 [Tableau Server Configiuration]\(Tableau Server の構成\) ページから入手した実際のサインオン URL、識別子、および応答 URL で、これらの値を更新します。これについてはこのチュートリアルで後ほど説明します。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -123,27 +123,27 @@ Tableau Server に対する Azure AD SSO を構成してテストするには、
 
 2. **[構成]** タブで、 **[User Identity & Access]\(ユーザー ID とアクセス\)** を選択し、 **[Authentication Method]\(認証方法\)** タブを選択します。
 
-    ![[User Identity & Access]\(ユーザー ID とアクセス\) から [認証] が選択された画面のスクリーンショット。](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![[User Identity & Access]\(ユーザー ID とアクセス\) から [認証] が選択された画面のスクリーンショット。](./media/tableauserver-tutorial/auth.png)
 
 3. **[CONFIGURATION]\(構成\)** ページで、次の手順を実行します。
 
-    ![[Configuration]\(構成\) ページを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![[Configuration]\(構成\) ページを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/tableauserver-tutorial/config.png)
 
     a. **[Authentication Method]\(認証方法\)** として SAML を選択します。
 
     b. **[Enable SAML Authentication for the server]\(サーバーの SAML 認証を有効にする\)** のチェック ボックスをオンにします。
 
-    c. [Tableau Server return URL]\(Tableau Server の戻り先 URL\): Tableau Server ユーザーがアクセスする URL (`http://tableau_server` など)。 `http://localhost` の使用は推奨されません。 末尾にスラッシュが付いている URL (例: `http://tableau_server/`) はサポートされていません。 **Tableau Server の戻り先 URL** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます
+    c. [Tableau Server return URL]\(Tableau Server の戻り先 URL\): Tableau Server ユーザーがアクセスする URL (`http://tableau_server` など)。 `http://localhost` の使用は推奨されません。 末尾にスラッシュが付いている URL (例: `http://tableau_server/`) はサポートされていません。 **[Tableau Server return URL]\(Tableau Server の戻り先 URL\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
-    d. SAML entity ID: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。 必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。 **SAML エンティティ ID** をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます
+    d. SAML entity ID: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。 必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。 **[SAML entity ID]\(SAML エンティティ ID\)** の値をコピーし、Azure portal の **[基本的な SAML 構成]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    e. **[Download XML Metadata File]\(XML メタデータ ファイルのダウンロード\)** をクリックし、テキスト エディター アプリケーションで開きます。 Http Post で Index 0 の [Assertion Consumer Service URL] を探し、URL をコピーします。 これを、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます
+    e. **[Download XML Metadata File]\(XML メタデータ ファイルのダウンロード\)** をクリックし、テキスト エディター アプリケーションで開きます。 Http Post で Index 0 の [Assertion Consumer Service URL] を探し、URL をコピーします。 これを、Azure portal の **[基本的な SAML 構成]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
     f. Azure Portal からダウンロードしたフェデレーション メタデータ ファイルを検索し、 **[SAML Idp metadata file]\(SAML Idp メタデータ ファイル\)** でアップロードします。
 
     g. ユーザー名、表示名、メール アドレスを IdP が保持するために使用する属性の名前を入力します。
 
-    h. **[保存]**
+    h. **[保存]** をクリックします。
 
     > [!NOTE]
     > ユーザーは、.crt 拡張子の付いた PEM でエンコードされた x509 証明書ファイルに加え、証明書キー ファイルとして .key 拡張子の付いた RSA または DSA 秘密キー ファイルをアップロードする必要があります。 証明書ファイルと証明書キー ファイルの詳細については、[こちら](https://help.tableau.com/current/server/en-us/saml_requ.htm)のドキュメントを参照してください。 Tableau Server での SAML の構成についてサポートが必要な場合は、こちらの[サーバー全体の SAML の構成](https://help.tableau.com/current/server/en-us/config_saml.htm)に関する記事を参照してください。
@@ -165,9 +165,8 @@ Tableau Server に対する Azure AD SSO を構成してテストするには、
 
 * Tableau Server のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Tableau Server] タイルをクリックすると、Tableau Server のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
-
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Tableau Server] タイルをクリックすると、Tableau Server のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Tableau Server を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+Tableau Server を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

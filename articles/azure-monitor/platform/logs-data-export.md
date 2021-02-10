@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797113"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895970"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
 
 ## <a name="overview"></a>概要
-Log Analytics ワークスペースのデータ エクスポートを構成すると、ワークスペースで選択されたテーブルに送信された新しいデータはすべて、自動的に、1 時間ごとにストレージ アカウントにエクスポートされるか、ほぼリアルタイムで対象のイベント ハブにエクスポートされます。
+Log Analytics ワークスペースのデータ エクスポートを構成すると、ワークスペースで選択されたテーブルに送信された新しいデータはすべて、1 時間ごとの追加 BLOB でストレージ アカウントに自動的にエクスポートされるか、ほぼリアルタイムで対象のイベント ハブにエクスポートされます。
 
 ![データ エクスポートの概要](media/logs-data-export/data-export-overview.png)
 
@@ -33,15 +33,18 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 - PowerShell スクリプトを使用したローカル コンピューターへのワンタイム エクスポート。 「[Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport)」を参照してください。
 
 
-## <a name="current-limitations"></a>現在の制限
+## <a name="limitations"></a>制限事項
 
-- 構成は、現在、CLI または REST 要求を使用してのみ行うことができます。 Azure portal または PowerShell を使用することはできません。
+- 構成は、現在、CLI または REST 要求を使用して行うことができます。 Azure portal または PowerShell はまだサポートされていません。
 - CLI と REST の ```--export-all-tables``` オプションはサポートされていないため、削除されます。 エクスポート ルールでテーブルの一覧を明示的に指定する必要があります。
-- 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションに記載されているものに限定されています。 サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはエクスポートされません。 存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace.``` エラーで失敗します。
+- 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションに記載されているものに限定されています。 
+- サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはテーブルがサポートされるまでエクスポートされません。 
+- 存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace``` エラーで失敗します。
 - Log Analytics ワークスペースは、以下を除くすべてのリージョンに配置できます。
   - スイス北部
   - スイス西部
   - Azure Government リージョン
+- 1 つのワークスペースで 2 つのエクスポート ルールを作成できます。イベント ハブに対して 1 つのルール、ストレージ アカウントに対して 1 つのルールです。
 - エクスポート先のストレージ アカウントまたはイベント ハブは、Log Analytics ワークスペースと同じリージョンに配置されている必要があります。
 - エクスポートするテーブルの名前は、ストレージ アカウントでは 60 文字以内、イベント ハブでは 47 文字以内にする必要があります。 これよりも長い名前のテーブルはエクスポートされません。
 
@@ -64,7 +67,7 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 ## <a name="export-destinations"></a>エクスポート先
 
 ### <a name="storage-account"></a>ストレージ アカウント
-データは、1 時間ごとにストレージ アカウントに送信されます。 このデータ エクスポート構成により、ストレージ アカウント内の各テーブルにコンテナーが作成されます。これには、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
+データは、Azure Monitor に到達し、1 時間ごとの追加 BLOB に格納されると、ストレージ アカウントに送信されます。 このデータ エクスポート構成により、ストレージ アカウント内の各テーブルにコンテナーが作成されます。これには、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のコンテナーに送信されます。
 
 ストレージ アカウントの BLOB パスは、*WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json* です。 追加 BLOB はストレージへの書き込みが 50K に制限されているため、追加の数が多い場合はエクスポートされる BLOB の数が増える可能性があります。 このような場合の BLOB の名前付けパターンは PT1H_#.json となり、# は増分の BLOB 数です。
 
@@ -115,7 +118,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 
 ### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
-データ エクスポート ルールでは、あるテーブル セットについて 1 つのエクスポート先にエクスポートするデータを定義します。 ルールはエクスポート先ごとに作成できます。
+データ エクスポート ルールでは、あるテーブル セットについて 1 つのエクスポート先にエクスポートするデータを定義します。 エクスポート先ごとに単一のルールを作成できます。
 
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
@@ -481,7 +484,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

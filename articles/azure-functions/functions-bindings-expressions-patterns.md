@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 161e3e7fbc5b343ee73142f0e968367c3cbfaa6b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 7245b0c0fb1e96959ef5dca4992cf52a38accb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927415"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920292"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 
-[トリガーとバインド](./functions-triggers-bindings.md)の最も強力な機能の 1 つは、" *バインド式* " です。 *function.json* ファイルおよび関数パラメーターとコードでは、さまざまなソースの値に解決される式を使用できます。
+[トリガーとバインド](./functions-triggers-bindings.md)の最も強力な機能の 1 つは、"*バインド式*" です。 *function.json* ファイルおよび関数パラメーターとコードでは、さまざまなソースの値に解決される式を使用できます。
 
 ほとんどの式は、それを中かっこで囲むことによって識別されます。 たとえば、キュー トリガー関数では、`{queueTrigger}` はキュー メッセージ テキストに解決されます。 BLOB 出力バインディングの `path` プロパティが `container/{queueTrigger}` であり、その関数がキュー メッセージ `HelloWorld` によってトリガーされる場合は、`HelloWorld` という名前の BLOB が作成されます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "92927415"
 
 ## <a name="binding-expressions---app-settings"></a>バインディング式 - アプリ設定
 
-ベスト プラクティスとしては、シークレットや接続文字列は、構成ファイルではなくアプリ設定を使用して管理する必要があります。 これにより、これらのシークレットへのアクセスが制限され、 *function.json* などのファイルをパブリックなソース管理リポジトリに格納することが安全になります。
+ベスト プラクティスとしては、シークレットや接続文字列は、構成ファイルではなくアプリ設定を使用して管理する必要があります。 これにより、これらのシークレットへのアクセスが制限され、*function.json* などのファイルをパブリックなソース管理リポジトリに格納することが安全になります。
 
 環境に基づいて構成を変更するときには、アプリ設定も常に役立ちます。 たとえば、テスト環境で、別のキューや Blob Storage コンテナーを監視することもできます。
 
@@ -161,9 +161,10 @@ public static void Run(
 * NextVisibleTime
 * PopReceipt
 
-これらのメタデータ値は、 *function.json* ファイルのプロパティでアクセスできます。 たとえば、キュー トリガーを使用していて、読み取る BLOB の名前がキュー メッセージに含まれているとします。 次の例に示すように、 *function.json* ファイルで、BLOB `path` プロパティの `queueTrigger` メタデータ プロパティを使用できます。
+これらのメタデータ値は、*function.json* ファイルのプロパティでアクセスできます。 たとえば、キュー トリガーを使用していて、読み取る BLOB の名前がキュー メッセージに含まれているとします。 次の例に示すように、*function.json* ファイルで、BLOB `path` プロパティの `queueTrigger` メタデータ プロパティを使用できます。
 
 ```json
+{
   "bindings": [
     {
       "name": "myQueueItem",
@@ -179,6 +180,7 @@ public static void Run(
       "connection": "MyStorageConnection"
     }
   ]
+}
 ```
 
 各トリガーのメタデータ プロパティの詳細については、対応するリファレンス記事を参照してください。 例については、[キュー トリガー メタデータ](functions-bindings-storage-queue-trigger.md#message-metadata)に関するセクションを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  
@@ -292,7 +294,7 @@ public class BlobName
 
 ## <a name="create-guids"></a>GUID の作成
 
-`{rand-guid}` バインド式は GUID を作成します。 `function.json` ファイル内の次の BLOB パスは、 *50710cb5-84b9-4d87-9d83-a03d6976a682.txt* などの名前を持つ BLOB を作成します。
+`{rand-guid}` バインド式は GUID を作成します。 `function.json` ファイル内の次の BLOB パスは、*50710cb5-84b9-4d87-9d83-a03d6976a682.txt* などの名前を持つ BLOB を作成します。
 
 ```json
 {
@@ -305,7 +307,7 @@ public class BlobName
 
 ## <a name="current-time"></a>現在の時刻
 
-バインド式 `DateTime` は `DateTime.UtcNow` に解決されます。 `function.json` ファイル内の次の BLOB パスは、 *2018-02-16T17-59-55Z.txt* などの名前を持つ BLOB を作成します。
+バインド式 `DateTime` は `DateTime.UtcNow` に解決されます。 `function.json` ファイル内の次の BLOB パスは、*2018-02-16T17-59-55Z.txt* などの名前を持つ BLOB を作成します。
 
 ```json
 {
@@ -317,7 +319,7 @@ public class BlobName
 ```
 ## <a name="binding-at-runtime"></a>実行時のバインド
 
-C# やその他の .NET 言語では、 *function.json* の宣言型のバインドと属性ではなく、命令型のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 詳細については、[C# 開発者向けリファレンス](functions-dotnet-class-library.md#binding-at-runtime)または[C# スクリプト開発者向けリファレンス](functions-reference-csharp.md#binding-at-runtime)を参照してください。
+C# やその他の .NET 言語では、*function.json* の宣言型のバインドと属性ではなく、命令型のバインド パターンを使用できます。 命令型のバインドは、設計時ではなくランタイム時にバインド パラメーターを計算する必要がある場合に便利です。 詳細については、[C# 開発者向けリファレンス](functions-dotnet-class-library.md#binding-at-runtime)または[C# スクリプト開発者向けリファレンス](functions-reference-csharp.md#binding-at-runtime)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

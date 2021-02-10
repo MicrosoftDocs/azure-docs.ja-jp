@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 8/15/2018
+ms.date: 01/20/2021
 ms.author: victorh
-ms.openlocfilehash: 413ae2ee19f0b8e427de9167b52971e413cdf573
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f0c06a94498f4d2481a6e953b959d766c60415fb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397214"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622182"
 ---
 # <a name="renew-application-gateway-certificates"></a>Application Gateway の証明書を更新する
 
@@ -22,11 +22,11 @@ Azure portal、Azure PowerShell、または Azure CLI を使って、リスナ�
 
 ## <a name="azure-portal"></a>Azure portal
 
-ポータルからリスナー証明書を更新するには、アプリケーション ゲートウェイ リスナーに移動します。 更新が必要な証明書のあるリスナーをクリックして、 **[選択した証明書の更新または編集]** をクリックします。
+ポータルからリスナー証明書を更新するには、アプリケーション ゲートウェイ リスナーに移動します。 更新が必要な証明書のあるリスナーを選択して、 **[選択した証明書の更新または編集]** を選択します。
 
-![証明書の更新](media/renew-certificate/ssl-cert.png)
+:::image type="content" source="media/renew-certificate/ssl-cert.png" alt-text="証明書の更新":::
 
-新しい PFX 証明書をアップロードし、名前を指定し、パスワードを入力してから、 **[保存]** をクリックします。
+新しい PFX 証明書をアップロードし、名前を指定し、パスワードを入力してから、 **[保存]** を選択します。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

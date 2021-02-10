@@ -3,7 +3,7 @@ title: Microsoft Azure Active Directory シングル サインオンのデプロ
 description: 組織内での SSO を計画、デプロイ、管理できるようにガイドします。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 14520c7c448231045b36e025c2c92332f9daac53
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 89f234ece2f7437e4a9d4092334e3dd3690e288d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658725"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258101"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
@@ -62,7 +62,7 @@ Azure Marketplace には、SSO 接続を事前に統合したアプリケーシ�
 
 パスワード ベースの SSO で Azure AD を使用するには、安全に資格情報を取得し、ログイン フォームに入力するブラウザー拡張機能をデプロイする必要があります。 [サポートされているブラウザー](../user-help/my-apps-portal-end-user-access.md)を使用して、拡張機能を大規模にデプロイするためのメカニズムを定義します。 次のオプションがあります。
 
-- [Internet Explorer のグループ ポリシー](./access-panel-deployment-plan.md)
+- [Internet Explorer のグループ ポリシー](my-apps-deployment-plan.md)
 - [Internet Explorer 用の Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [Chrome、Firefox、Microsoft Edge、IE 用のユーザー主導のダウンロードおよび構成](../user-help/my-apps-portal-end-user-access.md)
 

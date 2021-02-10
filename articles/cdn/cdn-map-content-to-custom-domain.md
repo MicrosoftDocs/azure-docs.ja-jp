@@ -7,15 +7,15 @@ author: asudbring
 manager: KumudD
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 11/06/2020
+ms.date: 02/04/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 03ed47ee97f52aca708118f202fad583753549bf
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: b0e8f2b14d506eb408660b939a7c925a33215cca
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331233"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537748"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-endpoint"></a>チュートリアル:カスタム ドメインをエンドポイントに追加する
 
@@ -83,7 +83,7 @@ Azure CDN エンドポイントのエイリアス レコードを追加するに
 
 4. **[レコード セットの追加]** で、次の情報を入力または選択します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前  | CDN エンドポイントに使用したいエイリアスを入力します。 たとえば **www** にします。 |
     | 型  | **[CNAME]** を選択します。 |
@@ -163,6 +163,10 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
 カスタム ドメインを登録したら、それを CDN エンドポイントに追加できます。 
 
+
+---
+# <a name="azure-portal"></a>[**Azure portal**](#tab/azure-portal)
+
 1. [Azure portal](https://portal.azure.com/) にサインインし、カスタム ドメインにマップするエンドポイントを含む CDN プロファイルを参照します。
     
 2. **[CDN のプロファイル]** ページで、カスタム ドメインに関連付ける CDN エンドポイントを選択します。
@@ -189,7 +193,43 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
     - **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
     - **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 10 分で完了します。   
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell)
 
+1. Azure PowerShell にサインインします。
+
+```azurepowershell-interactive
+    Connect-AzAccount
+
+```
+2. [New-AzCdnCustomDomain](/powershell/module/az.cdn/new-azcdncustomdomain) を使用して、カスタム ドメインを CDN エンドポイントにマップします。 
+
+    * **myendpoint8675.azureedge.net** をエンドポイント URL に置き換えます。
+    * **myendpoint8675** を CDN エンドポイント名に置き換えます。
+    * **www.contoso.com** をカスタム ドメイン名に置き換えます。
+    * **myCDN** を CDN プロファイル名に置き換えます。
+    * **myResourceGroupCDN** をリソース グループ名に置き換えます。
+
+```azurepowershell-interactive
+    $parameters = @{
+        Hostname = 'myendpoint8675.azureedge.net'
+        EndPointName = 'myendpoint8675'
+        CustomDomainName = 'www.contoso.com'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    New-AzCdnCustomDomain @parameters
+```
+
+入力したカスタム ドメイン名に対する CNAME レコードが存在するかどうかが Azure によって確認されます。 CNAME が正しければ、カスタム ドメインが検証されます。 
+
+   新しいカスタム ドメインの設定がすべての CDN エッジ ノードに反映されるまでに、少し時間がかかる場合があります。 
+
+- **Azure CDN Standard from Microsoft** プロファイルの場合、通常、反映は 10 分以内で完了します。 
+- **Azure CDN Standard from Akamai** プロファイルの場合、通常、反映は 1 分以内で完了します。 
+- **Azure CDN Standard from Verizon** プロファイルおよび **Azure CDN Premium from Verizon** プロファイルの場合、通常、反映は 10 分で完了します。   
+
+
+---
 ## <a name="verify-the-custom-domain"></a>カスタム ドメインを確認する
 
 カスタム ドメインの登録を完了した後は、カスタム ドメインが CDN エンドポイントを参照することを確認してください。
@@ -200,6 +240,9 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
+---
+# <a name="azure-portal"></a>[**Azure portal**](#tab/azure-portal-cleanup)
+
 エンドポイントをカスタム ドメインに関連付けておく必要がない場合は、次の手順を実行してカスタム ドメインを削除してください。
  
 1. CDN プロファイルで、削除するカスタム ドメインがあるエンドポイントを選択します。
@@ -208,6 +251,29 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
    カスタム ドメインとエンドポイントの関連付けが解除されます。
 
+# <a name="powershell"></a>[**PowerShell**](#tab/azure-powershell-cleanup)
+
+エンドポイントをカスタム ドメインに関連付けておく必要がない場合は、次の手順を実行してカスタム ドメインを削除してください。
+
+1. [Remove-AzCdnCustomDomain](/powershell/module/az.cdn/remove-azcdncustomdomain) を使用して、エンドポイントからカスタム ドメインを削除します。
+
+    * **myendpoint8675** を CDN エンドポイント名に置き換えます。
+    * **www.contoso.com** をカスタム ドメイン名に置き換えます。
+    * **myCDN** を CDN プロファイル名に置き換えます。
+    * **myResourceGroupCDN** をリソース グループ名に置き換えます。
+
+
+```azurepowershell-interactive
+    $parameters = @{
+        CustomDomainName = 'www.contoso.com'
+        EndPointName = 'myendpoint8675'
+        ProfileName = 'myCDN'
+        ResourceGroupName = 'myResourceGroupCDN'
+    }
+    Remove-AzCdnCustomDomain @parameters
+```
+
+---
 ## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。

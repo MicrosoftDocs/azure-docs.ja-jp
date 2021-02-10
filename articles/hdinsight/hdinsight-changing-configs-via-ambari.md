@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight で Apache Ambari を使用してクラスターを最適化する
 description: Apache Ambari Web UI を使用して、Azure HDInsight クラスターを構成および最適化します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 05/04/2020
-ms.openlocfilehash: 52eb1b6c89ff02cb44fe731c2463ab02c284f26c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14268e58296554cedc9488e48b41719421797a57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086451"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933289"
 ---
 # <a name="optimize-clusters-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用してクラスターを最適化する
 
@@ -43,7 +40,7 @@ NameNode の Java ヒープ サイズを変更するには、次の手順を実�
 
     ![Apache Ambari の HDFS 構成](./media/hdinsight-changing-configs-via-ambari/ambari-apache-hdfs-config.png)
 
-1. **[NameNode Java heap size]\(NameNode の Java ヒープ サイズ\)** 設定を見つけます。 **フィルター** テキスト ボックスに特定の設定を入力して検索することもできます。 設定名の横の**ペン** アイコンをクリックします。
+1. **[NameNode Java heap size]\(NameNode の Java ヒープ サイズ\)** 設定を見つけます。 **フィルター** テキスト ボックスに特定の設定を入力して検索することもできます。 設定名の横の **ペン** アイコンをクリックします。
 
     ![Apache Ambari の NameNode の Java ヒープ サイズ](./media/hdinsight-changing-configs-via-ambari/ambari-java-heap-size.png)
 

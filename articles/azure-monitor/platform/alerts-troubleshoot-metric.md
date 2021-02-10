@@ -4,14 +4,14 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/11/2021
+ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: f7425e1cf34348b7742b739ef5440a5cb0355077
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070731"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942106"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -24,8 +24,9 @@ Azure Monitor のアラートは、監視データで重要な状態が見つか
 メトリック警告が発生するはずなのに発生せず、Azure portal で見つからない場合は、次の手順を試してください。
 
 1. **構成** - メトリック警告ルールの構成を調べて、適切に構成されていることを確認します。
-    - **[集計の種類]** 、 **[集約粒度 (期間)]** 、および **[しきい値]** または **[秘密度]** が、意図したとおりに構成されていることを確認します
-    - 動的しきい値が使用されている警告ルールの場合は、詳細設定が構成されているかどうかを確認します。 **[違反の数]** によって警告がフィルター処理され、 **[次よりも前のデータを無視します]** によってしきい値の計算方法が影響を受けることがあります
+    - **[集計の種類]** と **[Aggregation granularity (period)]\(集計の細分性\(期間\)\)** が、意図したとおりに構成されていることを確認します。 **[集計の種類]** では、メトリック値の集計方法を確認できます (詳細については [こちら](./metrics-aggregation-explained.md#aggregation-types)を参照してください)。また、 **[Aggregation granularity (period)]\(集計の細分性\(期間\)\)** では、警告ルールの実行ごとに行うメトリック値の集計を何回前の評価にまで遡って行うかを確認できます。
+    -  **[しきい値]** または **[秘密度]** が、意図したとおりに構成されていることを確認します。
+    - 動的しきい値が使用されている警告ルールの場合は、詳細設定が構成されているかどうかを確認します。 **[違反の数]** によって警告がフィルター処理され、 **[次よりも前のデータを無視します]** によってしきい値の計算方法が影響を受けることがあります。
 
        > [!NOTE] 
        > 動的しきい値がアクティブになるためには、少なくとも 3 日の期間と、30 個のメトリック サンプルが必要です。
@@ -106,7 +107,7 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>条件が満たされるたびにメトリック警告が発生するようにする
 
-メトリック警告は既定ではステートフルです。そのため、特定の時系列に対して既に警告が発生している場合、追加の警告は発生しません。 特定のメトリック警告ルールをステートレスにして、警告の条件が満たされるすべての評価で警告を受け取る場合は、プログラムで ([Resource Manager](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest) を使用するなどして) 警告ルールを作成し、*autoMitigate* プロパティを "False" に設定すします。
+メトリック警告は既定ではステートフルです。そのため、特定の時系列に対して既に警告が発生している場合、追加の警告は発生しません。 特定のメトリック警告ルールをステートレスにして、警告の条件が満たされるすべての評価で警告を受け取る場合は、プログラムで ([Resource Manager](./alerts-metric-create-templates.md)、[PowerShell](/powershell/module/az.monitor/)、[REST](/rest/api/monitor/metricalerts/createorupdate)、[CLI](/cli/azure/monitor/metrics/alert) を使用するなどして) 警告ルールを作成し、*autoMitigate* プロパティを "False" に設定すします。
 
 > [!NOTE] 
 > メトリック警告ルールをステートレスにすると、発生した警告は解決されません。そのため、条件が満たされなくなっても、発生した警告は 30 日の保有期間まで発生状態のままになります。
@@ -174,9 +175,9 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 
 ### <a name="from-api"></a>API から
 
-- PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- PowerShell - [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST API - [サブスクリプションごとの一覧](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- Azure CLI - [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Resource Manager テンプレート、REST API、PowerShell、または Azure CLI を使用して警告ルールを管理する
 
@@ -195,14 +196,14 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 
 メトリック アラートに適切な PowerShell コマンドレットを使用していることを確認します。
 
-- メトリック アラート用の PowerShell コマンドレットは [Az. Monitor モジュール](/powershell/module/az.monitor/?view=azps-3.6.1)で使用できます
-- 新しい (クラシックではない) メトリック警告については、必ず V2 で終了するコマンドレットを使用してください ([Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1) など)
+- メトリック アラート用の PowerShell コマンドレットは [Az. Monitor モジュール](/powershell/module/az.monitor/)で使用できます
+- 新しい (クラシックではない) メトリック警告については、必ず V2 で終了するコマンドレットを使用してください ([Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2) など)
 
 ### <a name="azure-cli"></a>Azure CLI
 
 メトリック アラートに適切な CLI コマンドを使用していることを確認します。
 
-- メトリック アラートの CLI コマンドは `az monitor metrics alert` で始まります。 構文については、 [Azure CLI リファレンス](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)を参照してください。
+- メトリック アラートの CLI コマンドは `az monitor metrics alert` で始まります。 構文については、 [Azure CLI リファレンス](/cli/azure/monitor/metrics/alert)を参照してください。
 - [メトリック アラート CLI の使用方法を示すサンプル](./alerts-metric.md#with-azure-cli)をご覧いただけます
 - カスタム メトリックに対してアラートを作成するには、メトリック名の前に、関連するメトリック名前空間を付ける必要があります。NAMESPACE.METRIC
 

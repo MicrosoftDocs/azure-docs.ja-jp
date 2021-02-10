@@ -1,19 +1,16 @@
 ---
 title: テンプレートを使用して Apache Hadoop クラスターを作成する - Azure HDInsight
 description: Resource Manager テンプレートを使用して HDInsight 用のクラスターを作成する方法について説明します
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/07/2020
-ms.openlocfilehash: aa42e9691eac223e7e72da0d792d14262470e15c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c36cee8ce7076093499a76ec0952ad37bd7511a7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748762"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945869"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する
 

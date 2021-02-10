@@ -111,6 +111,8 @@
         - name: マネージド ID と Media Services
           displayName: content protection
           href: concept-managed-identities.md
+        - name: 信頼されたストレージ
+          href: concept-trusted-storage.md
         - name: 顧客管理キー
           href: concept-use-customer-managed-keys-byok.md
     - name: アセット

@@ -10,12 +10,12 @@ ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c3c126a96c0eb2214f63a56120d0966b9a97efed
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232065"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895392"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 
@@ -27,6 +27,9 @@ ms.locfileid: "98232065"
 
 > [!TIP]
 > パスワードやシークレットはパラメーター化しないようにすることをお勧めします。 接続文字列はすべて Azure Key Vault 内に格納し、*シークレット名* をパラメーター化するようにしてください。
+
+> [!Note]
+> パラメーター名に "-" を使用する未解決のバグがあります。バグが解決されるまでは、"-" を含まない名前を使用することをお勧めします。
 
 この機能の概要とデモンストレーションについては、以下の 7 分間の動画を視聴してください。
 
@@ -43,7 +46,7 @@ ms.locfileid: "98232065"
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Key Vault
-- Azure SQL Database
+- Azure SQL Database 
 - Azure SQL Managed Instance
 - Azure Synapse Analytics 
 - MySQL

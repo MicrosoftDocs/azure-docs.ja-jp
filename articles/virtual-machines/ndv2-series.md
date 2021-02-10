@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dcfbacb788225d936b236c901e9477a9bbb23b94
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 97eb134a22bbf2304c39fe7c55457e394467f1d2
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585294"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095276"
 ---
 # <a name="updated-ndv2-series"></a>更新された NDv2 シリーズ
 
@@ -38,6 +38,8 @@ NDv2 インスタンスは、CUDA GPU 最適化計算カーネルと、GPU ア�
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md): 第 2 世代<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 InfiniBand: サポートされています<br>
 Nvidia NVLink Interconnect:サポートされています<br>
 <br>

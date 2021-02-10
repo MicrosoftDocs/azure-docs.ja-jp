@@ -1,19 +1,16 @@
 ---
 title: HDInsight 上の Apache Hadoop で MapReduce と Curl を使用する - Azure
 description: HDInsight 上の Apache Hadoop で Curl を使用して MapReduce ジョブをリモートで実行する方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
-ms.openlocfilehash: 407db727f521ea7731f0cbdbdd05c4338c9f452e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e90dc2c7220caf5bd72b7086adc275934652e150
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207716"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939692"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>HDInsight 上の Apache Hadoop で REST を使用して MapReduce ジョブを実行する
 
@@ -85,7 +82,7 @@ HDInsight クラスター上の Apache Hadoop で Apache Hive WebHCat REST API �
 
     このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します: `job_1415651640909_0026`。
 
-1. ジョブのステータスを確認するには、次のコマンドを使用します。 `JOBID` の値を、前の手順で返された**実際の**値に置き換えます。 必要に応じて **jq** の場所を変更します。
+1. ジョブのステータスを確認するには、次のコマンドを使用します。 `JOBID` の値を、前の手順で返された **実際の** 値に置き換えます。 必要に応じて **jq** の場所を変更します。
 
     ```cmd
     set JOBID=job_1415651640909_0026

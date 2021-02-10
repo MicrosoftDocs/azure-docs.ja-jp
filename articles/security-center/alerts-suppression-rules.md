@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 12cc2de6cd1a8e9ddf40b358c94b720b8b2cf594
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751990"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920445"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制
 
@@ -23,7 +23,7 @@ ms.locfileid: "96751990"
 
 |側面|詳細|
 |----|:----|
-|リリース状態:| 一般公開 |
+|リリース状態:|一般提供 (GA)|
 |価格:|Free<br>(セキュリティ アラートのほとんどが Azure Defender でのみ使用できます)|
 |必要なロールとアクセス許可:|**セキュリティ管理者** および **所有者** は、ルールを作成および削除できます。<br>**セキュリティ閲覧者** および **閲覧者** は、ルールを表示できます。|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|

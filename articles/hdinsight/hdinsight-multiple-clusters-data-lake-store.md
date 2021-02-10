@@ -1,19 +1,16 @@
 ---
 title: 複数の HDInsight クラスターと 1 つの Azure Data Lake Storage アカウント
 description: 1 つの Data Lake Storage アカウントで複数の HDInsight クラスターを使用する方法を学習する
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: df28374d0f124ceb46d2f97d55218d428275deca
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6e220592f53103320c3bdb586fcbd0106219bfed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533089"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939548"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Azure Data Lake Storage アカウントで複数の HDInsight クラスターを使用する
 
@@ -48,9 +45,9 @@ AAD アプリケーション (これはサービス プリンシパルも作成�
 
 いくつかの考慮すべき重要な点。
 
-- クラスターに対してストレージ アカウントを使用する **前に** 、2 つのレベルのフォルダー構造 ( **/clusters/finance/** ) が Data Lake Storage 管理者によって適切なアクセス許可で作成およびプロビジョニングされている必要があります。 この構造は、クラスターの作成中に自動的に作成されるわけではありません。
+- クラスターに対してストレージ アカウントを使用する **前に**、2 つのレベルのフォルダー構造 ( **/clusters/finance/** ) が Data Lake Storage 管理者によって適切なアクセス許可で作成およびプロビジョニングされている必要があります。 この構造は、クラスターの作成中に自動的に作成されるわけではありません。
 - 上の例では、 **/clusters/finance** の所有グループを **FINGRP** として設定し、FINGRP にルートから始まるフォルダー階層全体への **r-x** アクセス権を許可することを推奨しています。 これにより、FINGRP のメンバーはルートから始まるフォルダー構造内を移動できることが保証されます。
-- 別の AAD サービス プリンシパルが **/clusters/finance** の下にクラスターを作成できる場合は、スティッキー ビット ( **finance** フォルダーに設定されている場合) により、あるサービス プリンシパルによって作成されたフォルダーを他のサービス プリンシパルは削除できないことが保証されます。
+- 別の AAD サービス プリンシパルが **/clusters/finance** の下にクラスターを作成できる場合は、スティッキー ビット (**finance** フォルダーに設定されている場合) により、あるサービス プリンシパルによって作成されたフォルダーを他のサービス プリンシパルは削除できないことが保証されます。
 - フォルダー構造とアクセス許可が適切に設定されていると、HDInsight クラスターの作成プロセスによってクラスター固有の保存場所が **/clusters/finance/** の下に作成されます。 たとえば、fincluster01 という名前を持つクラスターのストレージは **/clusters/finance/fincluster01** になります。 次の表に、HDInsight クラスターによって作成されたフォルダーの所有権とアクセス許可を示します。
 
     |Folder  |アクセス許可  |所有ユーザー  |所有グループ  | 名前付きユーザー | 名前付きユーザーのアクセス許可 | 名前付きグループ | 名前付きグループのアクセス許可 |
@@ -87,7 +84,7 @@ Resource XXXX is not publicly accessible and as such cannot be part of the publi
 
 #### <a name="workaround"></a>回避策
 
-階層を通して (たとえば、上の表に示すように **/** 、 **/clusters** 、および **/clusters/finance** にある) **その他** に対して読み取り/実行のアクセス許可を設定します。
+階層を通して (たとえば、上の表に示すように **/** 、 **/clusters**、および **/clusters/finance** にある) **その他** に対して読み取り/実行のアクセス許可を設定します。
 
 ## <a name="see-also"></a>関連項目
 

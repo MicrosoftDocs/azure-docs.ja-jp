@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: ae268534a18a921cca012881fa172261c7ba1063
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0dc68bd7dacf0cd7f4be9732d45831e2dbb712c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186403"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897005"
 ---
 # <a name="enable-azure-automation-state-configuration"></a>Azure Automation State Configuration を有効にする
 
@@ -73,7 +73,7 @@ State Configuration に対して VM を有効化するには、PowerShell の [R
    Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
    ```
 
-1. PowerShell DSC メタ構成をリモートで適用できない場合は、有効化するマシンに **metaconfigurations** フォルダーをコピーします。 次に、マシンでローカルに [Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager?view=powershell-5.1) を呼び出すコードを追加します。
+1. PowerShell DSC メタ構成をリモートで適用できない場合は、有効化するマシンに **metaconfigurations** フォルダーをコピーします。 次に、マシンでローカルに [Set-DscLocalConfigurationManager](/powershell/module/psdesiredstateconfiguration/set-dsclocalconfigurationmanager) を呼び出すコードを追加します。
 1. Azure portal またはコマンドレットを使用して、マシンが Azure Automation アカウントで登録されている State Configuration ノードとして表示されることを確認します。
 
 ## <a name="enable-physicalvirtual-linux-machines"></a>物理または仮想 Linux マシンの有効化
@@ -123,7 +123,7 @@ State Configuration に対して VM を有効化するには、PowerShell の [R
 > [!NOTE]
 > DSC メタ構成には Automation アカウントにマシンを有効化するために必要な管理用の機密データが含まれています。 作成した DSC メタ構成は適切に保護し、使用後は削除してください。
 
-メタ構成のプロキシ サポートは、Windows PowerShell DSC エンジンである[ローカル構成マネージャー](/powershell/scripting/dsc/managing-nodes/metaconfig?view=powershell-7)によって制御されます。 LCM はすべてのターゲット ノードで実行され、DSC メタ構成スクリプトに含まれている構成リソースを呼び出す役割を果たします。 必要に応じて `ConfigurationRepositoryWeb`、`ResourceRepositoryWeb`、`ReportServerWeb` ブロックに `ProxyURL` と `ProxyCredential` プロパティの定義を追加することによって、メタ構成にプロキシ サポートを含めることができます。 URL 設定例は、`ProxyURL = "http://172.16.3.6:3128";` です。 「[Azure Automation で資格情報を管理する](shared-resources/credentials.md)」の説明に従い、`ProxyCredential` プロパティは `PSCredential` オブジェクトに設定されます。 
+メタ構成のプロキシ サポートは、Windows PowerShell DSC エンジンである[ローカル構成マネージャー](/powershell/scripting/dsc/managing-nodes/metaconfig)によって制御されます。 LCM はすべてのターゲット ノードで実行され、DSC メタ構成スクリプトに含まれている構成リソースを呼び出す役割を果たします。 必要に応じて `ConfigurationRepositoryWeb`、`ResourceRepositoryWeb`、`ReportServerWeb` ブロックに `ProxyURL` と `ProxyCredential` プロパティの定義を追加することによって、メタ構成にプロキシ サポートを含めることができます。 URL 設定例は、`ProxyURL = "http://172.16.3.6:3128";` です。 「[Azure Automation で資格情報を管理する](shared-resources/credentials.md)」の説明に従い、`ProxyCredential` プロパティは `PSCredential` オブジェクトに設定されます。 
 
 ### <a name="generate-dsc-metaconfigurations-using-a-dsc-configuration"></a>DSC 構成を使用して DSC メタ構成を生成する
 
@@ -260,7 +260,7 @@ State Configuration に対して VM を有効化するには、PowerShell の [R
 PowerShell DSC LCM の既定値がユース ケースに一致し、Azure Automation State Configuration からのプルとそこへの報告の両方を行うようにマシンを有効化する場合は、Azure Automation コマンドレットを使用して、必要な DSC メタ構成をより簡単に生成できます。
 
 1. ローカル環境内のマシンで、管理者として PowerShell コンソールまたは VSCode を開きます。
-2. [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) を使用して、Azure Resource Manager に接続します。
+2. [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) を使用して、Azure Resource Manager に接続します。
 3. ノードを設定している Automation アカウントから、有効化するマシンの PowerShell DSC メタ構成をダウンロードします。
 
    ```powershell
@@ -325,7 +325,7 @@ Azure VM Desired State Configuration 拡張機能の状態を表示するには:
 
 - 使用を開始するには、「[Azure Automation State Configuration の使用を開始する](automation-dsc-getting-started.md)」をご覧ください。
 - DSC 構成をコンパイルしてターゲット ノードに割り当てる方法の詳細については、「[Azure Automation State Configuration で DSC 構成をコンパイルする](automation-dsc-compile.md)」をご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 - 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Chocolatey を使用して継続的配置を設定する](automation-dsc-cd-chocolatey.md)」をご覧ください。
 - トラブルシューティングの詳細については、[Azure Automation State Configuration のトラブルシューティング](./troubleshoot/desired-state-configuration.md)に関する記事を参照してください。

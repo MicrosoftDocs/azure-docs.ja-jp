@@ -1,5 +1,5 @@
 ---
-title: CLI:アプリのバックアップ
+title: CLI:アプリをバックアップする
 description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、アプリをバックアップする方法を紹介しています。
 author: msangapu-msft
 tags: azure-service-management
@@ -9,12 +9,12 @@ ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: cca0f927c6824642f11254743f3bdf275ca7e5d9
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4f87e610c1f3315b21a9c157f127e713ff5444f2
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97006856"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747544"
 ---
 # <a name="back-up-an-app-using-cli"></a>CLI を使用してアプリをバックアップする
 

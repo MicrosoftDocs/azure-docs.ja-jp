@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6466647056535635b67cd53012d051f11e9b484c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e64f8cded851427636a19e16cccd78932dd6baac
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323313"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054959"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions の HTTP トリガー
 
@@ -43,11 +43,15 @@ public static async Task<IActionResult> Run(
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -100,11 +104,15 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -440,7 +448,7 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
         {
             "type": "http",
             "direction": "out",
-            "name": "res"
+            "name": "$return"
         }
     ]
 }
@@ -741,6 +749,10 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 }
 ```
 
+ルート パラメーターを使用すると、関数に対して `invoke_URL_template` が自動的に作成されます。 クライアントは、URL を使って関数を呼び出すときにその URL に渡す必要があるパラメーターについて、URL テンプレートを使用して理解することができます。 [Azure portal](https://portal.azure.com) で HTTP によってトリガーされる関数のいずれかに移動し、 **[関数の URL の取得]** を選択します。
+
+[List 関数](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions)または [Get 関数](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction)に対して Azure Resource Manager API を使用して、`invoke_URL_template` にプログラムでアクセスすることができます。
+
 ## <a name="working-with-client-identities"></a>クライアント ID の操作
 
 関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)として使用できます。
@@ -838,11 +850,17 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 ## <a name="obtaining-keys"></a>キーを入手する
 
-キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示には、新しい値を作成したり、新しい値にキーをロールしたり、[Azure ポータル](https://portal.azure.com)で HTTP トリガー機能に移動して、**管理**を選択します。
+キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示したり、新しいものを作成したり、新しい値にキーをロールしたりするには、[Azure portal](https://portal.azure.com) で HTTP によってトリガーされる関数のいずれかに移動して、 **[関数キー]** を選択します。
 
-![ポータルでのファンクション キーを管理します。](./media/functions-bindings-http-webhook/manage-function-keys.png)
+ホスト キーを管理することもできます。 [Azure portal](https://portal.azure.com) で関数アプリに移動し、[**アプリ キー]** を選択します。
 
-[Key Management API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) を使用して、関数キーをプログラムで取得することができます。
+関数およびホスト キーは、Azure Resource Manager API を使用してプログラムで取得できます。 [List 関数キー](/rest/api/appservice/webapps/listfunctionkeys)と [List ホスト キー](/rest/api/appservice/webapps/listhostkeys)への API があります。デプロイ スロットを使用する場合の同等の API は、[List 関数キー スロット](/rest/api/appservice/webapps/listfunctionkeysslot)と [List ホスト キー スロット](/rest/api/appservice/webapps/listhostkeysslot)です。
+
+また、[関数シークレットの作成または更新](/rest/api/appservice/webapps/createorupdatefunctionsecret)、[関数シークレット スロットの作成または更新](/rest/api/appservice/webapps/createorupdatefunctionsecretslot)、[ホスト シークレットの作成または更新](/rest/api/appservice/webapps/createorupdatehostsecret)および[ホスト シークレット スロットの作成または更新](/rest/api/appservice/webapps/createorupdatehostsecretslot) API を使用して、プログラムで新しい関数およびホスト キーを作成することもできます。
+
+関数およびホスト キーは、[関数シークレットの削除](/rest/api/appservice/webapps/deletefunctionsecret)、[関数シークレット スロットの削除](/rest/api/appservice/webapps/deletefunctionsecretslot)、[ホスト シークレットの削除](/rest/api/appservice/webapps/deletehostsecret)、および[ホスト シークレット スロットの削除](/rest/api/appservice/webapps/deletehostsecretslot) API を使用して、プログラムで削除できます。
+
+[従来のキー管理 API を使用して関数キーを取得する](https://github.com/Azure/azure-functions-host/wiki/Key-management-API)こともできますが、代わりに Azure Resource Manager API を使用することをお勧めします。
 
 ## <a name="api-key-authorization"></a>API キーの承認
 

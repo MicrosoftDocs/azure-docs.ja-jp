@@ -1,18 +1,18 @@
 ---
 title: パートナー ID をリンクして、委任されたリソースに対する影響を追跡する
 description: パートナー ID を関連付けて、Azure Lighthouse を通じて管理している顧客のリソースでパートナー獲得クレジット (PEC) を受け取る方法について説明します。
-ms.date: 10/30/2020
+ms.date: 01/28/2021
 ms.topic: how-to
-ms.openlocfilehash: fcbcc70e380116b8e9f9b1c1e365dee1adb87a99
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 46338b925b1ad44019c9cc95e4b7f8c0963c07c4
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080279"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985973"
 ---
 # <a name="link-your-partner-id-to-track-your-impact-on-delegated-resources"></a>パートナー ID をリンクして、委任されたリソースに対する影響を追跡する 
 
-[Microsoft Partner Network](https://partner.microsoft.com/) のメンバーは、自分のパートナー ID と、委任された顧客リソースの管理に使用されている資格情報を、リンクすることができます。 パートナー管理リンク (PAL) を使用することで、Microsoft は、Azure の利用者を成功に導いているパートナーを特定、評価することができます。 また、このリンクにより、[CSP (Cloud Solution Provider)](/partner-center/csp-overview) パートナーは、[Microsoft 顧客契約 (MCA) に署名](/partner-center/confirm-customer-agreement)して [Azure プランに加入](/partner-center/azure-plan-get-started)している顧客について、[管理サービスに対するパートナー獲得クレジット (PEC)](/partner-center/partner-earned-credit) を受け取ることができます。
+[Microsoft Partner Network](https://partner.microsoft.com/) のメンバーは、自分のパートナー ID と、委任された顧客リソースの管理に使用される資格情報をリンクできます。これにより、Microsoft は、Azure の利用者を成功に導いているパートナーを特定し、評価できます。 また、このリンクにより、[CSP (Cloud Solution Provider)](/partner-center/csp-overview) パートナーは、[Microsoft 顧客契約 (MCA) に署名](/partner-center/confirm-customer-agreement)して [Azure プランに加入](/partner-center/azure-plan-get-started)している顧客について、[管理サービスに対するパートナー獲得クレジット (PEC)](/partner-center/partner-earned-credit) を受け取ることができます。
 
 [Azure Marketplace の管理サービス オファーに顧客をオンボードした](publish-managed-services-offers.md)場合、オファーの発行に使用されたパートナー センター アカウントに関連付けられている MPN ID を使用して自動的にリンクされます。 これらの顧客に対する影響を追跡するために、これ以上の操作は必要ありません。
 
@@ -22,7 +22,7 @@ ms.locfileid: "93080279"
 
 Azure Resource Manager テンプレート (ARM テンプレート) を使用して顧客をオンボードするときに、次のプロセスを使用してパートナー ID をリンクします (該当する場合は、パートナー獲得クレジットが有効になります)。 これらの手順を完了するには、自分の [MPN パートナー ID](/partner-center/partner-center-account-setup#locate-your-mpn-id) を把握しておく必要があります。 パートナー プロファイルに表示されている **関連付けられている MPN ID** を必ず使用してください。
 
-わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して **関連付けられている MPN ID** にリンクし、 [PEC の対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。
+わかりやすくするために、テナントにサービス プリンシパル アカウントを作成して **関連付けられている MPN ID** にリンクし、[PEC の対象となる Azure の組み込みロール](/partner-center/azure-roles-perms-pec)を使用してオンボードするすべての顧客へのアクセス権を付与することをお勧めします。
 
 1. 管理しているテナント内に[サービス プリンシパル アカウントを作成](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)します。 この例では、このサービス プリンシパルに *"プロバイダー オートメーション アカウント"* という名前を使用します。
 1. そのサービス プリンシパル アカウントを使用して、管理しているテナント内の[関連付けられている MPN ID にリンク](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id)します。 これを行う必要があるのは 1 回だけです。
@@ -30,11 +30,11 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 この手順のようにすると、管理しているすべての顧客テナントがパートナー ID に関連付けられます。 プロバイダー オートメーション アカウントを使用して、顧客テナントでの認証や操作を行う必要はありません。
 
-:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="Azure Lighthouse を使用した PAL プロセスを示す図。":::
+:::image type="content" source="../media/lighthouse-pal.jpg" alt-text="Azure Lighthouse を使用したパートナー ID のリンク プロセスを示す図。":::
 
 ## <a name="add-your-partner-id-to-previously-onboarded-customers"></a>以前にオンボードされた顧客にパートナー ID を追加する
 
-既に顧客をオンボードしている場合、プロバイダー オートメーション アカウントのサービス プリンシパルを追加するために、別のデプロイを実行する必要はありません。 代わりに、その顧客のテナントで作業するためのアクセス権が既に与えられているユーザー アカウントに、 **関連付けられている MPN ID** をリンクすることができます。 [PEC の資格がある Azure 組み込みロール](/partner-center/azure-roles-perms-pec)がアカウントに付与されていることを確認してください。
+既に顧客をオンボードしている場合、プロバイダー オートメーション アカウントのサービス プリンシパルを追加するために、別のデプロイを実行する必要はありません。 代わりに、その顧客のテナントで作業するためのアクセス権が既に与えられているユーザー アカウントに、**関連付けられている MPN ID** をリンクすることができます。 [PEC の資格がある Azure 組み込みロール](/partner-center/azure-roles-perms-pec)がアカウントに付与されていることを確認してください。
 
 アカウントが、管理しているテナント内の[関連付けられている MPN ID にリンク](../../cost-management-billing/manage/link-partner-id.md#link-to-a-partner-id)されると、その顧客への影響に対する表彰を追跡できるようになります。
 

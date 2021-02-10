@@ -2,18 +2,18 @@
 title: Azure の FHIR サービスについての FAQ - Azure API for FHIR
 description: FHIR API におけるデータの保存場所やバージョン サポートなど、Azure API for FHIR についてよく寄せられる質問とその回答を示します。
 services: healthcare-apis
-author: matjazl
+author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 08/03/2020
-ms.author: matjazl
-ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 1/21/2021
+ms.author: cavoeg
+ms.openlocfilehash: 4d071af6f72bfe6136296185e65007d2413ed2c4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452940"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746715"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Azure API for FHIR についてよく寄せられる質問
 
@@ -105,6 +105,12 @@ Azure API for FHIR で、[コンパートメント検索](https://www.hl7.org/fh
 ### <a name="what-is-the-default-sort-when-searching-for-resources-in-azure-api-for-fhir"></a>Azure API for FHIR でリソースを検索するときの既定の並べ替えは何ですか?
 
 最終更新日での並べ替えをサポートしています (_sort=_lastUpdated)。 サポートされているその他の検索パラメーターの詳細については、[サポートされている機能のページ](./fhir-features-supported.md#search)を確認してください。
+
+### <a name="does-the-azure-api-for-fhir-support-everything"></a>Azure API for FHIR で $everything はサポートされていますか? 
+
+いいえ。 現時点では、$everything はサポートされていません。 ただし、2 つの API 呼び出しで実現できます。 たとえば、Patient$everything を取得するには、最初に /Patient/[ID] を使用して患者レコードを取得し、2 回目の呼び出しで /Patient/[ID]/* を使用してすべての患者データを取得します。
+
+詳細については、こちらの[コミュニティの投稿](https://chat.fhir.org/#narrow/stream/179166-implementers/topic/.24everything.20with.20_type)を参照してください。 
 
 ### <a name="how-does-export-work"></a>$export はどのように動作しますか?
 

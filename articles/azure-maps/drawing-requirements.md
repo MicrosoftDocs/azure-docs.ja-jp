@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 2a37e716b7804b11ab396909f746af84294bb4e3
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044783"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895273"
 ---
 # <a name="drawing-package-requirements"></a>Drawing パッケージの要件
 
@@ -106,7 +106,7 @@ Exterior レイヤーにあるエンティティ図面の数に関係なく、[�
 * 外装は、多角形、ポリライン (閉)、円、または 楕円 (閉) として描画する必要があります。
 * 外装は重ねることができますが、1 つのジオメトリに分解されます。
 * 結果として得られるレベル地物は、4 平方メートル以上である必要があります。
-* 結果として得られるレベル地物は、400 平方メートル以下である必要があります。
+* 結果として得られるレベル地物は、400,000 平方メートル以下である必要があります。
 
 レイヤーに複数の重なり合うポリラインが含まれている場合、ポリラインは 1 つのレベル地物に分解されます。 または、レイヤーに複数の重ならないポリラインが含まれている場合、結果のレベル地物は複数の多角形で表現されます。
 

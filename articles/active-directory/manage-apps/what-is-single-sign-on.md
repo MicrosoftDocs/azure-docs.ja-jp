@@ -3,7 +3,7 @@ title: Azure シングル サインオン (SSO) とは
 description: シングル サインオン (SSO) が Azure Active Directory でどのように機能するかについて説明します。 SSO を使用すると、ユーザーはすべてのアプリケーションのパスワードを記憶する必要がなくなります。 また、SSO を使用すると、アカウント管理の方法が簡略化されます。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 4e27266688e39eadc8ae1f3d9afd84c42e1b524e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 36025a5a68e4c3d0de1d6b11a13df656c72745d4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031659"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260199"
 ---
 # <a name="what-is-single-sign-on-sso"></a>シングル サインオン (SSO) とは
 

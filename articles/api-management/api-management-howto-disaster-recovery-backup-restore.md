@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779585"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762406"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -221,8 +221,8 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 ## <a name="what-is-not-backed-up"></a>バックアップされないもの
 -   分析レポートの生成に使用される **使用状況データ** は、バックアップに **含まれません**。 [Azure API Management REST API][azure api management rest api] を使用して、分析レポートを保管用に定期的に取り出します。
--   [カスタム ドメインの TLS/SSL](configure-custom-domain.md) 証明書
--   お客様によってアップロードされた中間またはルートの証明書を含む[カスタム CA 証明書](api-management-howto-ca-certificates.md)
+-   [カスタム ドメインの TLS/SSL](configure-custom-domain.md) 証明書。
+-   お客様によってアップロードされた中間またはルートの証明書を含む[カスタム CA 証明書](api-management-howto-ca-certificates.md)。
 -   [仮想ネットワーク](api-management-using-with-vnet.md)の統合設定
 -   [マネージド ID](api-management-howto-use-managed-service-identity.md) の構成
 -   [Azure Monitor 診断ログ](api-management-howto-use-azure-monitor.md)の構成

@@ -1,19 +1,16 @@
 ---
 title: .NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する - Azure
 description: HDInsight .NET SDK を使用して、HDInsight で Apache Hadoop クラスターの管理タスクを実行する方法について説明します。
-ms.reviewer: jasonh
-author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: 367b47e8dbe0e1ee56fea620d97109631ba87a06
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 86e279fef9561397343b3e6cb55ac335a5b39542
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484884"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942839"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 
@@ -25,7 +22,7 @@ ms.locfileid: "92484884"
 
 この記事を読み始める前に、次の項目を用意する必要があります。
 
-* **Azure サブスクリプション** 。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
 ## <a name="connect-to-azure-hdinsight"></a>Azure HDInsight への接続
 

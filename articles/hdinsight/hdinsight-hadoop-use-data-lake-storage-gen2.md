@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 description: Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する方法について学習します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/24/2020
-ms.openlocfilehash: cc17cd23ae197db25fed440eb249f2cf069d4859
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2bbfbd2d953ea663453f0092ff366e95f6dd5ea7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744588"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945379"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -66,19 +63,19 @@ Azure サービスには、システム割り当てとユーザー割り当て�
 
 複数の方法で、HDInsight クラスターから Data Lake Storage Gen2 のファイルにアクセスできます。
 
-* **完全修飾名の使用** 。 この方法により、アクセスするファイルへの完全パスを指定します。
+* **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
 
     ```
     abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
     ```
 
-* **短縮されたパスの使用** 。 この方法により、クラスター ルートへのパスを次に置き換えます。
+* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
 
     ```
     abfs:///<file.path>/
     ```
 
-* **相対パスの使用** 。 この方法により、アクセスするファイルへの相対パスのみを指定します。
+* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
 
     ```
     /<file.path>/

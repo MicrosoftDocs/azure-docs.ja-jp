@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1876ab86e6f4c46edc23361dd884d8b32328f36c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411203"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919070"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
 
@@ -24,6 +24,7 @@ ms.locfileid: "94411203"
 > * 仮想 WAN を作成する
 > * P2S の構成を作成する
 > * 仮想ハブを作成する
+> * クライアント アドレス プールを選択する
 > * DNS サーバーの指定
 > * VPN クライアント プロファイル構成パッケージを生成する
 > * VPN クライアントの構成
@@ -49,6 +50,11 @@ ms.locfileid: "94411203"
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
 
+
+## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a>P2S クライアント アドレス プールを選択する
+
+[!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
+
 ## <a name="specify-dns-server"></a><a name="dns"></a>DNS サーバーを指定する
 
 この設定はハブの作成時に構成するか、後で変更することができます。 変更するには、仮想ハブを見つけます。 **[ユーザー VPN (ポイントからサイトへ)]** で **[構成]** を選択し、 **[Custom DNS Servers]\(カスタム DNS サーバー\)** ボックスに DNS サーバーの IP アドレスを入力します。 最大 5 個の DNS サーバーを指定することができます。
@@ -73,6 +79,8 @@ VPN クライアント プロファイル パッケージを生成してダウ�
 1. 仮想 WAN に移動します。
 1. **[概要]** ページで、マップ上の各ポイントはハブを表します。
 1. **[ハブと接続]** セクションでは、ハブの状態、サイト、リージョン、VPN 接続の状態、入出力バイト数を確認できます。
+
+
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 

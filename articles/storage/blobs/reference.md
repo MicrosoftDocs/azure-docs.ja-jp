@@ -1,6 +1,6 @@
 ---
 title: Azure Blob Storage リファレンス
-description: Azure Blob Storage API リファレンス、readme ファイル、クライアント ライブラリ パッケージが見つかります。
+description: Azure Blob Storage API リファレンス、readme ファイル、クライアント ライブラリ パッケージを示します。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 09/10/2020
@@ -8,25 +8,25 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 04eca391fd02e18d4faed5e4f435e44e5675c4bd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70178a955fe4afcfc0c695d34e3c1466773d802d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912282"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054078"
 ---
 # <a name="azure-blob-storage-reference"></a>Azure Blob Storage リファレンス
 
-Azure Blob Storage API リファレンス、ライブラリ パッケージ、readme ファイル、概要記事が見つかります。
+Azure Blob Storage API リファレンス、ライブラリ パッケージ、readme ファイル、概要記事を示します。
 
 ## <a name="net-client-libraries"></a>.NET クライアント ライブラリ
 
-次の表は、Azure Blob Storage .NET API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Blob Storage .NET API のリファレンスとサンプル ドキュメントの一覧です。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
-| 12.x | [.NET 用 Azure Blob Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage.blobs-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [クイック スタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12](./storage-quickstart-blobs-dotnet.md) |
-| 11.x | [Microsoft.Azure.Storage.Blob 名前空間](/dotnet/api/microsoft.azure.storage.blob) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [クイック スタート: .NET 用 Azure Blob Storage クライアント ライブラリ v11](./storage-quickstart-blobs-dotnet-legacy.md) |
+| 12.x | [.NET 用 Azure Blob Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage.blobs-readme) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [クイックスタート:.NET 用 Azure Blob Storage クライアント ライブラリ v12](./storage-quickstart-blobs-dotnet.md) |
+| 11.x | [Microsoft.Azure.Storage.Blob 名前空間](/dotnet/api/microsoft.azure.storage.blob) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [クイックスタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11](./storage-quickstart-blobs-dotnet-legacy.md) |
 
 ### <a name="storage-management"></a>記憶域の管理
 
@@ -46,7 +46,7 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ## <a name="java-client-libraries"></a>Java クライアント ライブラリ
 
-次の表は、Azure Blob Storage Java API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Blob Storage Java API のリファレンスとサンプル ドキュメントの一覧です。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -63,7 +63,7 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ## <a name="python-client-libraries"></a>Python クライアント ライブラリ
 
-次の表は、Azure Blob Storage Python API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Blob Storage Python API のリファレンスとサンプル ドキュメントの一覧です。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -72,7 +72,7 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ## <a name="javascript-client-libraries"></a>JavaScript クライアント ライブラリ
 
-次の表は、Azure Blob Storage JavaScript API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Blob Storage JavaScript API のリファレンスとサンプル ドキュメントの一覧です。
 
 |  Version  | リファレンス ドキュメント | Package | クイック スタート |
 | :-------: | ----------------------- | ------- | ---------- |
@@ -81,7 +81,7 @@ Azure Blob Storage API リファレンス、ライブラリ パッケージ、re
 
 ## <a name="rest-apis"></a>REST API
 
-次の表は、Azure Blob Storage REST API のリファレンスおよびサンプル ドキュメントをまとめたものです。
+次の表は、Azure Blob Storage REST API のリファレンスとサンプル ドキュメントの一覧です。
 
 | リファレンス ドキュメント | 概要 |
 | ----------------------- | -------- |

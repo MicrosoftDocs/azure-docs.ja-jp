@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce916336ea47cd223c10a8f664b2dc9806ed0a17
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998568"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221028"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>ポータルを使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -160,7 +160,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |ターゲット サブリソース |*[mysqlServer]* を選択します|
     |||
 7. **[Next:構成]** を選択します。
-8. **[Create a private endpoint - Configuration]\(プライベート エンドポイントの作成 - 構成\)** で次の情報を入力または選択します。
+8. **[Create a private endpoint - Configuration]/(プライベート エンドポイントの作成 - 構成/)** で次の情報を入力または選択します。
 
     | 設定 | 値 |
     | ------- | ----- |
@@ -223,6 +223,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
     ```
+    > [!NOTE]
+    > Azure Database for MySQL - 単一サーバーのファイアウォール設定でパブリック アクセスが無効になっている場合。 これらの ping および telnet テストは、ファイアウォールの設定に関係なく正常に実行されます。 これらのテストによって、ネットワーク接続が確認されます。
 
 3. 利用可能な任意のクライアントを使用して、MySQL サーバーのプライベート リンク接続をテストします。 次の例では、[MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) を使用して操作を行いました。
 

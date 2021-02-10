@@ -3,7 +3,7 @@ title: Microsoft Cloud App Security によるアプリの可視性と制御
 description: アプリのリスク レベルを識別し、侵害と漏洩をリアルタイムで阻止し、アプリ コネクタを使用して、可視性とガバナンスのためのプロバイダー API を活用する方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/03/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e3e0c10a7ec6b42420db30955ae4911bca27cc0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 682549b5b99169060437c8c91d465121002edc6e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651228"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259606"
 ---
 # <a name="cloud-app-visibility-and-control"></a>クラウド アプリの可視性と制御
 

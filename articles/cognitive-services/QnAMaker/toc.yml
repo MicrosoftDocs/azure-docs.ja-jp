@@ -103,6 +103,8 @@
       href: How-To/change-default-answer.md
     - name: サービス構成
       href: reference-app-service.md
+    - name: コンテンツ形式のガイドライン
+      href: reference-document-format-guidelines.md
     - name: コンテンツとデータの形式
       items:
         - name: コンテンツ形式のガイドライン

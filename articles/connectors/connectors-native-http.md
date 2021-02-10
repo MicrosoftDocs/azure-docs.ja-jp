@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/14/2020
 tags: connectors
-ms.openlocfilehash: f005bdfa5643ea187fb2973cac065563c4cc2ee6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f2835bda8ac7242b7a3ea4ea63401f26b9c8e426
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91292457"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062997"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps から HTTP または HTTPS でサービス エンドポイントを呼び出す
 
@@ -20,7 +20,7 @@ ms.locfileid: "91292457"
 
 たとえば、Web サイトのサービス エンドポイントは、そのエンドポイントを特定のスケジュールで確認することによって監視できます。 Web サイトの停止など、そのエンドポイントで指定されたイベントが発生すると、そのイベントによってロジック アプリのワークフローがトリガーされ、そのワークフロー内のアクションが実行されます。
 
-* 定期的なスケジュールでエンドポイントを調べる、つまり "*ポーリング*" するには、ワークフローの最初のステップとして [HTTP トリガーを追加](#http-trigger)します。 トリガーによるエンドポイントの調査ごとに、トリガーからそのエンドポイントに対して、呼び出しまたは*要求*の送信が行われます。 エンドポイントの応答によって、ロジック アプリのワークフローが実行されるかどうかが決定します。 エンドポイントの応答からの任意のコンテンツが、トリガーによってロジック アプリのアクションに渡されます。
+* 定期的なスケジュールでエンドポイントを調べる、つまり "*ポーリング*" するには、ワークフローの最初のステップとして [HTTP トリガーを追加](#http-trigger)します。 トリガーによるエンドポイントの調査ごとに、トリガーからそのエンドポイントに対して、呼び出しまたは *要求* の送信が行われます。 エンドポイントの応答によって、ロジック アプリのワークフローが実行されるかどうかが決定します。 エンドポイントの応答からの任意のコンテンツが、トリガーによってロジック アプリのアクションに渡されます。
 
 * ワークフロー内のどこか他の場所からエンドポイントを呼び出すには、[HTTP アクションを追加します](#http-action)。 エンドポイントの応答によって、ワークフローの以降のアクションの実行方法が決まります。
 
@@ -182,7 +182,7 @@ HTTP 要求の本文に form-urlencoded データを提供するには、デー�
 
 既定では、Azure Logic Apps での HTTP ベースのすべてのアクションは、標準的な[非同期操作パターン](/azure/architecture/patterns/async-request-reply)に従います。 このパターンでは、HTTP アクションがエンドポイント、サービス、システム、または API に対して要求を呼び出す、または送信した後、受信側が直ちに ["202 ACCEPTED"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3) 応答を返すよう規定されます。 このコードは、受信側が要求を受け入れたが、処理が完了していないことを確認します。 応答には、受信側が処理を停止して ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) 成功応答またはその他の 202 以外の応答が返されるまで、呼び出し元が非同期要求の状態をポーリングまたは確認するために使用できる URL およびリフレッシュ ID を指定する `location` ヘッダーを含めることができます。 ただし、呼び出し元は要求の処理が完了するまで待機する必要はなく、次のアクションの実行を継続できます。 詳細については、[マイクロサービスの非同期統合によるマイクロサービスの自律性の強制](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging)に関するページを参照してください。
 
-* ロジック アプリ デザイナーでは、HTTP アクション (トリガーではありません) に**非同期パターン**設定があります。これは既定で有効になっています。 この設定では、呼び出し元は処理が終了するのを待たずに次のアクションに進むことができますが、処理が停止するまで状態のチェックは継続されます。 無効にした場合、この設定では次のアクションに進む前に、呼び出し元が処理の終了を待機するように指定されます。
+* ロジック アプリ デザイナーでは、HTTP アクション (トリガーではありません) に **非同期パターン** 設定があります。これは既定で有効になっています。 この設定では、呼び出し元は処理が終了するのを待たずに次のアクションに進むことができますが、処理が停止するまで状態のチェックは継続されます。 無効にした場合、この設定では次のアクションに進む前に、呼び出し元が処理の終了を待機するように指定されます。
 
   この設定を見つけるには、次の手順を実行します。
 
@@ -205,7 +205,7 @@ HTTP 要求の本文に form-urlencoded データを提供するには、デー�
 
 <a name="turn-off-asynchronous-pattern-setting"></a>
 
-### <a name="turn-off-asynchronous-pattern-setting"></a>**非同期パターン**設定をオフにする
+### <a name="turn-off-asynchronous-pattern-setting"></a>**非同期パターン** 設定をオフにする
 
 1. ロジック アプリ デザイナーの HTTP アクションのタイトル バーで、省略記号 ( **...** ) ボタンを選択します。これにより、アクションの設定が開きます。
 
@@ -249,7 +249,7 @@ HTTP トリガーまたはアクションにこれらのヘッダーが含まれ
 
 * `Accept-*` ヘッダー (`Accept-version` を除く)
 * `Allow`
-* `Content-*` (`Content-Disposition`、`Content-Encoding`、および `Content-Type` は例外です)
+* `Content-Disposition`、`Content-Encoding`、および `Content-Type` を除く `Content-*` ヘッダー (POST と PUT 操作を使用する場合。ただし GET 操作については含まれない)
 * `Cookie`
 * `Expires`
 * `Host`

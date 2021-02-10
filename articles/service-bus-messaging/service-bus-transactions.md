@@ -4,16 +4,19 @@ description: この記事では、Azure Service Bus のトランザクション�
 ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9a95a200b57d348109884a319b5433f0ffd5dde1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023603"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684793"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus のトランザクション処理の概要
 
 この記事では、Microsoft Azure Service Bus のトランザクション機能について説明します。 説明の多くは、[Service Bus を使用した AMQP トランザクションのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)に示されています。 この記事はトランザクション処理の概要と Service Bus の "*経由送信*" 機能に限定されていますが、アトミック トランザクションのサンプルの範囲はこれよりも広く複雑です。
+
+> [!NOTE]
+> Service Bus の Basic レベルでは、トランザクションはサポートされません。 Standard と Premium レベルでは、トランザクションはサポートされます。 これらのレベルの違いについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
 ## <a name="transactions-in-service-bus"></a>Service Bus でのトランザクション
 

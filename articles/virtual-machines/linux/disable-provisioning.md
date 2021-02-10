@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86494515"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675806"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>VM とイメージの Linux エージェントを無効化または削除する
 
@@ -31,9 +31,9 @@ Azure プラットフォームでは、VM の構成、監視、セキュリテ�
 
 ## <a name="disabling-extension-processing"></a>拡張機能の処理の無効化
 
-必要に応じて拡張機能の処理を無効にする方法がいくつか用意されていますが、続行する前に、VM に展開されているすべての拡張機能を削除する**必要があります**。たとえば、AZ CLI を使用すると、[一覧を表示](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list)して[削除](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete)できます。
+必要に応じて拡張機能の処理を無効にする方法がいくつか用意されていますが、続行する前に、VM に展開されているすべての拡張機能を削除する **必要があります**。たとえば、Azure CLI を使用すると、[一覧を表示](/cli/azure/vm/extension#az-vm-extension-list)して[削除](/cli/azure/vm/extension#az-vm-extension-delete)できます。
 
-```bash
+```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
@@ -43,14 +43,14 @@ az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ### <a name="disable-at-the-control-plane"></a>コントロール プレーンを無効にする
 今後も拡張機能が必要になるかどうか不明な場合は、Linux エージェントを VM にインストールしたままにしておいて、プラットフォームから拡張機能の処理機能を無効にすることができます。 このオプションは `Microsoft.Compute` API バージョン `2018-06-01` 以降で使用でき、インストールされている Linux エージェントのバージョンに依存しません。
 
-```bash
+```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
 上記のコマンドで "true" を設定すると、プラットフォームからこの拡張機能の処理を簡単に再び有効にすることができます。
 
 ## <a name="remove-the-linux-agent-from-a-running-vm"></a>実行中の VM から Linux エージェントを削除する
 
-上記の手順に従って、VM から既存のすべての拡張機能を前もって**削除**していることを確認します。
+上記の手順に従って、VM から既存のすべての拡張機能を前もって **削除** していることを確認します。
 
 ### <a name="step-1-remove-the-azure-linux-agent"></a>手順 1:Azure Linux エージェントを削除する
 
@@ -132,7 +132,7 @@ Linux エージェントには、"waagent -deprovision+user" のステップを�
 
 
 **通常のマネージド イメージを作成する**
-```bash
+```azurecli
 az vm deallocate -g <resource_group> -n <vm_name>
 az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
@@ -140,7 +140,7 @@ az image create -g <resource_group> -n <image_name> --source <vm_name>
 
 **Shared Image Gallery にイメージのバージョンを作成する**
 
-```bash
+```azurecli
 az sig image-version create \
     -g $sigResourceGroup 
     --gallery-name $sigName 
@@ -157,7 +157,7 @@ Linux エージェントが含まれていないイメージから VM を作成�
 
 拡張機能が無効になっている VM をデプロイする場合は、[--enable-agent](/cli/azure/vm#az-vm-create) を指定して Azure CLI を実行できます。
 
-```bash
+```azurecli
 az vm create \
     --resource-group $resourceGroup \
     --name $prodVmName \

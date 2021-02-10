@@ -3,16 +3,16 @@ title: Azure Image Builder サービスの DevOps タスク
 description: アプリケーションと OS をインストールして構成できるように、ビルド成果物を VM イメージに挿入する Azure DevOps タスク。
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: df97ecd1668dcc0e21408b7d39b0973e8f0d8fbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684544"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934274"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure Image Builder サービスの DevOps タスク
 
@@ -154,6 +154,12 @@ Windows のみの場合、このタスクではカスタマイズの最後に Wi
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
+   複数のスクリプトを参照することも、コマンドをさらに追加することもできます。次に例を示します。
+
+       ```PowerShell
+       & 'c:\buildArtifacts\webapp\webconfig.ps1'
+       & 'c:\buildArtifacts\webapp\installAgent.ps1'
+       ```
 * Linux - Linux システムでは、ビルド成果物は `/tmp` ディレクトリに格納されます。 ただし、多くの Linux OS では、再起動時に /tmp ディレクトリの内容が削除されます。 成果物がイメージ内に存在するようにする場合は、別のディレクトリを作成してそれらをコピーする必要があります。  次に例を示します。
 
     ```bash
@@ -335,4 +341,4 @@ template name:  t_1556938436xxx
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については、[Azure Image Builder の概要](../image-builder-overview.md)に関する記事をご覧ください。
+詳細については、[Azure Image Builder の概要](../image-builder-overview.md)に関する記事を参照してください。

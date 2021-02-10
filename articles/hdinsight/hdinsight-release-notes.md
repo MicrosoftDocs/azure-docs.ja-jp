@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight のリリース ノート
 description: Azure HDInsight の最新のリリース ノート。 Hadoop、Spark、Microsoft R Server、Hive などの開発に関するヒントや詳細を紹介します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786353"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092236"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -52,6 +49,9 @@ HDInsight では、ネットワーク セキュリティ グループ (NSG) と�
 
 ## <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。
+
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>.NET for Apache Spark 1.0.0 の破壊的変更
+HDInsight では、次のリリースで .NET for Apache Spark の最初の公式なメジャー リリースが導入されます。 これにより、他の機能と併せて、Spark 2.4. x と Spark 3.0. x 用の完全な DataFrame API が提供されます。 このメジャー バージョンでは破壊的変更が行われます。コードとパイプラインの更新に必要な手順を理解するには、[こちらの移行ガイド](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10)を参照してください。 [こちら](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)をご覧ください。
 
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>クラスターの既定の VM サイズが Ev3 ファミリに変更される
 次のリリース (1 月末) 以降、クラスターの既定の VM サイズが D ファミリから Ev3 ファミリに変更されます。 この変更は、ヘッド ノードとワーカー ノードに適用されます。 この変更を回避するには、使用する VM サイズを ARM テンプレートで指定します。

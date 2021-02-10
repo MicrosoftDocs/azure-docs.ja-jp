@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 074df0e79313a570e83ea72239394c1aa4946fc0
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 521f6c39a10259b09d741a61dcd8e81d8a0c35b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956503"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948267"
 ---
-[リファレンス ドキュメント](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [パッケージ (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
+[リファレンス ドキュメント](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [パッケージ (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
 ## <a name="python-prerequisites"></a>Python の前提条件
 
@@ -100,7 +100,7 @@ python <your-script-name>.py
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Management SDK のリファレンス ドキュメント](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python)
+* [Azure Management SDK のリファレンス ドキュメント](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices)
 * [Azure Cognitive Services とは](../../what-are-cognitive-services.md)
 * [Azure Cognitive Services に対する要求の認証](../../authentication.md)
 * [Azure portal を使用して新しいリソースを作成する](../../cognitive-services-apis-create-account.md)

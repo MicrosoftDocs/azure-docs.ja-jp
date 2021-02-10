@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight での大規模なストリーミング
 description: Azure HDInsight のスケーラブルな Apache クラスターでデータ ストリーミングを使用する方法。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: a04ce77c7e81a3a73b87eaf5790b383dece35d86
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b2dfe9da55548f2648f847a9d7c2cb3478e6bad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022719"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931710"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight での大規模なストリーミング
 

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Azure IoT Edge ワークロードをデプロイする
 keywords: Kubernetes, Arc, Azure, K8s, コンテナー
-ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88c480f93bfe28a424441a1c5857c623efb4e1d3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103978"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091649"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge ワークロードをデプロイする (プレビュー)
 
@@ -29,7 +29,7 @@ Azure Arc と Azure IoT Edge は互いの機能を十分に補完するもので
 
 * [Kubernetes 向けの IoT Edge のサポート](https://aka.ms/edgek8sdoc)を利用し、Azure Arc の Flux オペレーター経由でデプロイします。
 
-* IoT Edge Helm グラフの [**values.yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) ファイルをダウンロードし、ファイルの終わりにある **deviceConnectionString** プレースホルダーを手順 1 で書き留めておいた値に変更します。 サポートされている他のグラフ インストール オプションは、必要に応じて設定できます。 IoT Edge ワークロードの名前空間を作成し、その中にシークレットを作成します。
+* IoT Edge Helm グラフの [**values.yaml**](https://github.com/Azure/iotedge/blob/preview/iiot/kubernetes/charts/edge-kubernetes/values.yaml) ファイルをダウンロードし、ファイルの終わりにある **deviceConnectionString** プレースホルダーを手順 1 で書き留めておいた値に変更します。 サポートされている他のグラフ インストール オプションは、必要に応じて設定できます。 IoT Edge ワークロードの名前空間を作成し、その中にシークレットを作成します。
 
     ```
     $ kubectl create ns iotedge

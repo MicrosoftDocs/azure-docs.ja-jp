@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895547"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051653"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Azure Maps Route Service のベスト プラクティス
 
@@ -59,10 +59,10 @@ Route Directions と Matrix API のいくつかの機能を示す比較を次に
 
 | Azure Maps API | 要求内のクエリの最大数 | 回避区域 | トラックと電気自動車のルート指定 | ウェイポイントと巡回セールスマンの最適化 | サポート ポイント |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Get Route Directions | 1 | | X | X | |
-| Post Route Directions | 1 | X | X | X | X |
-| Post Route Directions Batch | 700 | | X | X | |
-| Post Route Matrix | 700 | | X | | |
+| Get Route Directions | 1 | | ✔ | ✔ | |
+| Post Route Directions | 1 | ✔ | ✔ | ✔ | ✔ |
+| Post Route Directions Batch | 700 | | ✔ | ✔ | |
+| Post Route Matrix | 700 | | ✔ | | |
 
 電気自動車のルート指定機能の詳細については、[Python で Azure Notebooks を使用して電気自動車をルート指定する](tutorial-ev-routing.md)方法に関するチュートリアルを参照してください。
 
@@ -90,7 +90,7 @@ Route Directions と Matrix API のいくつかの機能を示す比較を次に
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=51.368752,-0.118332:51.385426,-0.128929&travelMode=car&traffic=true&departAt=2025-03-29T08:00:20&computeTravelTimeFor=all
 ```
 
-応答には、次のような summary 要素が含まれます。 出発時刻が未来に設定されているため、 **trafficDelayInSeconds** 値は 0 になります。 **travelTimeInSeconds** 値は時間に依存する履歴の交通情報データを使用して計算される推定移動時間です。 そのため、この場合の **travelTimeInSeconds** 値は **historicTrafficTravelTimeInSeconds** 値と等しくなります。
+応答には、次のような summary 要素が含まれます。 出発時刻が未来に設定されているため、**trafficDelayInSeconds** 値は 0 になります。 **travelTimeInSeconds** 値は時間に依存する履歴の交通情報データを使用して計算される推定移動時間です。 そのため、この場合の **travelTimeInSeconds** 値は **historicTrafficTravelTimeInSeconds** 値と等しくなります。
 
 ```json
 "summary": {
@@ -113,7 +113,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-応答には、次のような summary が含まれています。 渋滞のため、 **trafficDelaysInSeconds** 値は 0 より大きくなっています。 また、 **historicTrafficTravelTimeInSeconds** よりも大きくなっています。
+応答には、次のような summary が含まれています。 渋滞のため、**trafficDelaysInSeconds** 値は 0 より大きくなっています。 また、**historicTrafficTravelTimeInSeconds** よりも大きくなっています。
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 ![展開された points 要素](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-Route Directions API では、 **instructionsType** パラメーターを指定して使用できるさまざまな形式の指示がサポートされています。 コンピューター処理を容易にするように指示の書式を設定するには、 **instructionsType=coded** を使用します。 指示をテキストとしてユーザーに表示するには、 **instructionsType=tagged** を使用します。 また、指示の一部の要素がマークされているテキストとして指示の書式を設定することができ、指示は特殊な書式設定で表示されます。 詳細については、[サポートされている指示の種類の一覧](/rest/api/maps/route/postroutedirections#routeinstructionstype)に関するページを参照してください。
+Route Directions API では、**instructionsType** パラメーターを指定して使用できるさまざまな形式の指示がサポートされています。 コンピューター処理を容易にするように指示の書式を設定するには、**instructionsType=coded** を使用します。 指示をテキストとしてユーザーに表示するには、**instructionsType=tagged** を使用します。 また、指示の一部の要素がマークされているテキストとして指示の書式を設定することができ、指示は特殊な書式設定で表示されます。 詳細については、[サポートされている指示の種類の一覧](/rest/api/maps/route/postroutedirections#routeinstructionstype)に関するページを参照してください。
 
 指示が要求されると、応答は `guidance` という名前の新しい要素を返します。 `guidance` 要素には、道案内による道順とターンバイターンの方向と概要の指示という 2 つの情報が格納されます。
 
@@ -214,7 +214,7 @@ https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-M
 
 複数の中継地があるルート指定の場合、1 つのルート要求で最大 150 のウェイポイントを指定できます。 周遊の場合と同じように、開始と終了の座標位置を同じにすることができます。 ただし、ルートの計算を行うには、少なくとも 1 つの追加ウェイポイントを指定する必要があります。 ウェイポイントは、出発地と到着地の座標の途中でクエリに追加できます。
 
-特定のウェイポイントを訪問する最適な順序を最適化する場合は、 **computeBestOrder=true** を指定する必要があります。 このシナリオは、巡回セールスマン最適化問題としても知られています。
+特定のウェイポイントを訪問する最適な順序を最適化する場合は、**computeBestOrder=true** を指定する必要があります。 このシナリオは、巡回セールスマン最適化問題としても知られています。
 
 ### <a name="sample-query"></a>サンプル クエリ
 

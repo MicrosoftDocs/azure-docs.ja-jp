@@ -3,12 +3,12 @@ title: 概念 - ハブ アンド スポークのアーキテクチャで Azure V
 description: Azure のハブ アンド スポーク アーキテクチャで Azure VMware Solution のデプロイを統合する方法について説明します。
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 0d511c8d6a96ffb6fa666bcb7c989764f398bdc9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: bfc442e569572349b1323500fbd0b2f912ebbc62
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901387"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062747"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>ハブ アンド スポークのアーキテクチャで Azure VMware Solution を統合する
 
@@ -103,7 +103,7 @@ Azure VMware Solution ネットワークと接続の概念の詳細について�
 
 Azure Application Gateway V1 および V2 は、Azure VMware Solution VM 上でバックエンド プールとして実行される Web アプリでテストされています。 現在、Application Gateway は、Azure VMware Solution VM で実行されている Web アプリをインターネットに公開する、唯一のサポートされている方法です。 また、アプリを内部ユーザーに安全に公開することもできます。
 
-詳細と要件については、[Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) に関する Azure VMware Solution 特集記事をご確認ください。
+詳細については、[Application Gateway](./protect-azure-vmware-solution-with-application-gateway.md) に関する Azure VMware Solution 特集記事をご確認ください。
 
 :::image type="content" source="media/hub-spoke/azure-vmware-solution-second-level-traffic-segmentation.png" alt-text="ネットワーク セキュリティ グループを使用する 2 番目のレベルのトラフィック セグメント" border="false":::
 

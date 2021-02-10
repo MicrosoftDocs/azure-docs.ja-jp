@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 963405f0874e23553a118081b080a0f30e1942eb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e7714dcc3e14e3659ca1943507d55d20dfb28fa6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135614"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214604"
 ---
 MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 
@@ -28,7 +28,7 @@ MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 
 :::row:::
     :::column span="3":::
-        macOS Cocoアポストロフィ d パッケージは、 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (またはそれ以降) <span class="docon docon-navigate-external x-hidden-focus"></span></a>統合開発環境 (IDE) と共にダウンロードして使用することができます。 <a href="https://aka.ms/csspeech/macosbinary" target="_blank">まず、バイナリ Cocoアポストロフィ <span class="docon docon-navigate-external x-hidden-focus"></span></a>をダウンロードします。 使用目的に合わせて同じディレクトリ内のポッドを抽出し、 *Podfile* を作成して、`pod`を `target`として一覧表示します。
+        macOS Cocoアポストロフィ d パッケージは、 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (またはそれ以降) <span class="docon docon-navigate-external x-hidden-focus"></span></a>統合開発環境 (IDE) と共にダウンロードして使用することができます。 <a href="https://aka.ms/csspeech/macosbinary" target="_blank">まず、バイナリ Cocoアポストロフィ <span class="docon docon-navigate-external x-hidden-focus"></span></a>をダウンロードします。 使用目的に合わせて同じディレクトリ内のポッドを抽出し、*Podfile* を作成して、`pod`を `target`として一覧表示します。
     :::column-end:::
     :::column:::
         <br>
@@ -43,7 +43,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.14.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.15.0'
 end
 ```
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: d59826ba0e53c4b4146c13b354a85a124ac29b23
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738103"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490879"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
@@ -30,6 +30,12 @@ ms.locfileid: "98738103"
 * 人物がマスクなどの顔を保護するものを装着しているかどうかを検出するように[空間分析操作](spatial-analysis-operations.md)を構成できるようになりました。 
     * マスク分類子は、`ENABLE_FACE_MASK_CLASSIFIER` パラメーターを構成することで、`personcount`、`personcrossingline`、および `personcrossingpolygon` 操作に対して有効にすることができます。
     * ビデオ ストリームで検出された人物それぞれの信頼度スコアと共に、`face_mask` および `face_noMask` 属性がメタデータとして返されます
+* *personcrossingpolygon* 操作が拡張され、人がゾーン内で費やした滞在時間を計算できるようになりました。 この操作のゾーンの構成で `type` パラメーターを `zonedwelltime` に設定できます。これにより、*personZoneDwellTimeEvent* 型の新しいイベントに、人がゾーン内で費やした時間 (ミリ秒単位) が設定された `durationMs` フィールドが含まれるようになります。
+* **破壊的変更**:*personZoneEvent* イベントの名前が *personZoneEnterExitEvent* に変更されました。 人がゾーンに出入りするときに *personcrossingpolygon* イベントが発生し、交差したゾーンの番号付き側に方向情報を提供します。
+* ビデオの URL を、すべての操作で "Private Parameter/obfuscated" として指定できます。 難読化はオプションになり、`KEY` および `IV` が環境変数として指定されている場合にのみ機能します。
+* 既定では、すべての操作で較正が有効になっています。 無効にするには、`do_calibration: false` を設定します。
+* `enable_recalibration` パラメーターによる自動再較正 (既定では無効) のサポートを追加しました。詳細については、「[空間分析操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations)」参照してください
+* カメラ較正のパラメーターを `DETECTOR_NODE_CONFIG` にします。 詳細については、「[空間分析操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations)」を参照してください。
 
 
 ## <a name="october-2020"></a>2020 年 10 月

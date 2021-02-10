@@ -5,16 +5,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/28/2019
-ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 11/30/2020
+ms.openlocfilehash: ec19396d782bf34e85001892159c0ce785487f09
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008975"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918891"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの Microsoft Endpoint Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
+
+> [!IMPORTANT]
+> Configuration Manager バージョン 2010 以降では、この機能は非推奨とされます。<!-- 8269855 --> 詳しくは、「[Configuration Manager から削除された機能と非推奨の機能](/mem/configmgr/core/plan-design/changes/deprecated/removed-and-deprecated-cmfeatures)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

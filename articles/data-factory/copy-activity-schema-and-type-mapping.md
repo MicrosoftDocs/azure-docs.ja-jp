@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: afcc7ad34807b74fa0b1ddaaa29223d8a6e25584
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968876"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702221"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマとデータ型のマッピング
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -185,6 +185,9 @@ Data Factory 作成 UI -> コピー アクティビティ -> [マッピング] �
 2. データの反復処理と抽出を行う配列を選択します。 **コレクション参照** として自動的に設定されます。 この操作では、1 つの配列のみがサポートされることにご注意ください。
 
 3. 必要なフィールドをシンクにマップします。 Data Factory によって、階層側の対応する JSON パスが自動的に決定されます。
+
+> [!NOTE]
+> コレクション参照としてマークされた配列が空で、チェック ボックスがオンになっているレコードの場合、レコード全体がスキップされます。
 
 ![UI を使用して階層構造から表形式にマップする](media/copy-activity-schema-and-type-mapping/map-hierarchical-to-tabular-ui.png)
 

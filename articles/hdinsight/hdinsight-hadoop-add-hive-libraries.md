@@ -1,19 +1,16 @@
 ---
 title: クラスター作成時の Apache Hive ライブラリ - Azure HDInsight
 description: クラスターの作成中に Apache Hive ライブラリ (jar ファイル) を HDInsight クラスターに追加する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
-ms.openlocfilehash: c678372fbd54e528a8a16eacc601e815cfd32e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6695e5e985a30d6f912095225c4899e1c910e34
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86082235"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945948"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する
 
@@ -35,11 +32,11 @@ HDInsight で [Apache Hive](https://hive.apache.org/) ライブラリを事前�
 
 ### <a name="requirements"></a>必要条件
 
-* このスクリプトは、**ヘッド ノード**と**ワーカー ノード**の両方に適用する必要があります。
+* このスクリプトは、**ヘッド ノード** と **ワーカー ノード** の両方に適用する必要があります。
 
-* インストールする jar は、Azure Blob Storage の **単一のコンテナー**に格納する必要があります。
+* インストールする jar は、Azure Blob Storage の **単一のコンテナー** に格納する必要があります。
 
-* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする**必要があります**。 これは既定のストレージ アカウントか、または __ストレージ アカウントの設定__ によって追加されたアカウントのどちらかである必要があります。
+* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする **必要があります**。 これは既定のストレージ アカウントか、または __ストレージ アカウントの設定__ によって追加されたアカウントのどちらかである必要があります。
 
 * コンテナーへの WASB パスは、スクリプト アクションのパラメーターとして指定する必要があります。 たとえば、jar が **mystorage** という名前のストレージ アカウント上の **libs** という名前のコンテナーに格納されている場合、パラメーターは `wasbs://libs@mystorage.blob.core.windows.net/` になります。
 

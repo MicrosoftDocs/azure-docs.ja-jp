@@ -1,19 +1,16 @@
 ---
 title: Apache Storm Java トポロジの例 - Azure HDInsight
 description: ワード カウント トポロジの例を作成して、Java で Apache Storm トポロジを作成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545499"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929121"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -43,7 +40,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Maven プロジェクトを作成する
 
-次のコマンドを使用して、 **WordCount** という名前の Maven プロジェクトを作成します。
+次のコマンドを使用して、**WordCount** という名前の Maven プロジェクトを作成します。
 
 ```cmd
 mvn archetype:generate -DarchetypeArtifactId=maven-archetype-quickstart -DgroupId=com.microsoft.example -DartifactId=WordCount -DinteractiveMode=false
@@ -237,11 +234,11 @@ resources セクションには、トポロジ内のコンポーネントに必�
 
 Java ベースの Apache Storm トポロジは、作成か依存関係として参照する必要のある 3 つのコンポーネントで構成されます。
 
-* **スパウト** :外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
+* **スパウト**:外部ソースからデータを読み取り、データのストリームをトポロジに出力します。
 
-* **ボルト** :スパウトや他のボルトから出力されたストリームの処理を行い、1 つ以上のストリームを出力します。
+* **ボルト**:スパウトや他のボルトから出力されたストリームの処理を行い、1 つ以上のストリームを出力します。
 
-* **トポロジ** :スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
+* **トポロジ**:スパウトとボルトの配置方法を定義し、トポロジのエントリ ポイントを提供します。
 
 ### <a name="create-the-spout"></a>スパウトを作成する
 
@@ -327,9 +324,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 ボルトは、データの処理を扱います。 ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、あらゆる操作が可能です。 このトポロジでは、次の 2 つのボルトを使用します。
 
-* **SplitSentence** : **RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
+* **SplitSentence**:**RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
 
-* **WordCount** :各単語が発生した回数をカウントします。
+* **WordCount**:各単語が発生した回数をカウントします。
 
 #### <a name="splitsentence"></a>SplitSentence
 

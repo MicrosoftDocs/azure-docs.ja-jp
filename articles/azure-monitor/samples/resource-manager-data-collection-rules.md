@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 12e6aa85f7d8c2c4aebe80efc92f771917e6a1d5
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bff13c24e0b5818b352e76df1d8ecd8251a5f12c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746014"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430228"
 ---
 # <a name="resource-manager-template-samples-for-data-collection-rules-in-azure-monitor"></a>Azure Monitor のデータ収集ルールのための Resource Manager テンプレート サンプル
 この記事には、Azure Monitor で仮想マシンに対して [Log Analytics エージェント](../platform/log-analytics-agent.md)と[診断拡張機能](../platform/diagnostics-extension-overview.md)をデプロイして構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
@@ -21,7 +21,7 @@ ms.locfileid: "96746014"
 
 ## <a name="create-association-with-azure-vm"></a>Azure VM との関連付けを作成する
 
-次のサンプルでは、Microsoft Azure 仮想マシンに Azure Monitor エージェントをインストールします。 関連付けは、Azure 仮想マシンとデータ収集ルールとの間で作成されます。
+次のサンプルによって、Azure 仮想マシンとデータ収集ルールとの間に関連付けが作成されます。
 
 ### <a name="template-file"></a>テンプレート ファイル
 
@@ -80,7 +80,7 @@ ms.locfileid: "96746014"
 }
 ```
 
-## <a name="create-association-ith-azure-arc"></a>Azure Arc との関連付けを作成する
+## <a name="create-association-with-azure-arc"></a>Azure Arc との関連付けを作成する
 
 次のサンプルでは、Microsoft Azure 仮想マシンに Azure Monitor エージェントをインストールします。 関連付けは、Azure Arc 対応サーバー マシンとデータ収集ルールとの間で作成されます。
 

@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/23/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 32685207f8d6e81d03c90d01b186337ce79f843a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763705"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802985"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
-この記事では、Azure PowerShell を使用して、Azure Stack Edge Pro デバイスに VM を作成し、管理する方法について説明します。 この記事は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、Azure Stack Edge Mini R デバイスに適用されます。
+この記事では、Azure PowerShell を使用して、Azure Stack Edge Pro デバイスに VM を作成し、管理する方法について説明します。 この記事は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、および Azure Stack Edge Mini R デバイスに適用されます。
 
 ## <a name="vm-deployment-workflow"></a>VM デプロイのワークフロー
 
@@ -32,7 +32,7 @@ ms.locfileid: "97763705"
 
 ## <a name="query-for-built-in-subscription-on-the-device"></a>デバイスで組み込みサブスクリプションに対するクエリを実行する
 
-Azure Resource Manager では、ユーザーが表示できる固定サブスクリプションが 1 つだけサポートされています。 このサブスクリプションはデバイスごとに一意であり、このサブスクリプション名またはサブスクリプション ID は変更できません。
+Azure Resource Manager では、ユーザーが表示できる固定サブスクリプションが 1 つだけサポートされています。 このサブスクリプションはデバイスごとに一意であり、サブスクリプション名もサブスクリプション ID も変更できません。
 
 このサブスクリプションには、VM の作成に必要なすべてのリソースが含まれています。 
 
@@ -118,7 +118,7 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-前の手順で作成したリソース グループを使用して、新しいストレージ アカウントを作成します。 これは、VM の仮想ディスク イメージのアップロードに使用される **ローカル ストレージ アカウント** です。
+前の手順で作成したリソース グループを使用して、新しいストレージ アカウントを作成します。 このアカウントは、VM の仮想ディスク イメージのアップロードに使用される **ローカル ストレージ アカウント** です。
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -177,7 +177,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-blob-uri-to-hosts-file"></a>hosts ファイルに BLOB の URI を追加する
 
-「[エンドポイントの名前解決のためにホスト ファイルを変更する](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)」で、BLOB ストレージへの接続に使用しているクライアントのホスト ファイルに、BLOB の URI を既に追加しました。 これは、BLOB の URI のエントリでした。
+「[エンドポイントの名前解決のためにホスト ファイルを変更する](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution)」セクションで、BLOB ストレージへの接続に使用しているクライアントのホスト ファイルに、BLOB の URI を既に追加しました。 このエントリは、BLOB URI を追加するために使用されました。
 
 \<Azure consistent network services VIP \> \<storage name\>.blob.\<appliance name\>.\<dnsdomain\>
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-サンプル出力を次に示します。 このコマンドレットの詳細については、「[New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0)」を参照してください。
+サンプル出力を次に示します。 このコマンドレットの詳細については、「[New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-サンプル出力を次に示します。 このコマンドレットの詳細については、「[New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0)」を参照してください。
+サンプル出力を次に示します。 このコマンドレットの詳細については、「[New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -319,8 +319,8 @@ VM を作成してデプロイする前に、1 つの仮想ネットワークを
 > [!IMPORTANT]
 > 仮想ネットワークと仮想ネットワーク インターフェイスを作成するときは、次の規則が適用されます。
 > - (リソース グループ間の場合も) 1 つの VNet のみを作成でき、これは、アドレス空間に関して論理ネットワークと正確に一致する必要があります。
-> -   VNet で許可されるサブネットは 1 つだけです。 サブネットは、VNet と完全に同じアドレス空間である必要があります。
-> -   VNIC の作成時には静的割り当て方法のみが許可され、ユーザーはプライベート IP アドレスを指定する必要があります。
+> - VNet で許可されるサブネットは 1 つだけです。 サブネットは、VNet と完全に同じアドレス空間である必要があります。
+> - VNIC の作成時には静的割り当て方法のみが許可され、ユーザーはプライベート IP アドレスを指定する必要があります。
 
  
 **自動的に作成された Vnet のクエリを実行する**
@@ -498,7 +498,7 @@ Azure Stack Edge Pro デバイスで実行されているすべての VM の一�
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-このコマンドレットの詳細については、「[Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0)」を参照してください。
+このコマンドレットの詳細については、「[Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
 ### <a name="suspend-or-shut-down-the-vm"></a>VM を中断またはシャットダウンする
 
@@ -510,7 +510,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-このコマンドレットの詳細については、「[Stop-AzureRmVM コマンドレット](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0)」を参照してください。
+このコマンドレットの詳細については、「[Stop-AzureRmVM コマンドレット](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
 ### <a name="add-a-data-disk"></a>データ ディスクの追加
 
@@ -530,10 +530,10 @@ Update-AzureRmVM -ResourceGroupName "<Resource Group Name string>" -VM $VirtualM
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-このコマンドレットの詳細については、「[Remove-AzureRmVm コマンドレット](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0)」を参照してください。
+このコマンドレットの詳細については、「[Remove-AzureRmVm コマンドレット](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Resource Manager コマンドレット](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager コマンドレット](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

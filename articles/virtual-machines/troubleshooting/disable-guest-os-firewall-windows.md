@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d06d3d4aaa0d76b80257d2148fb62f71c3fdb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009766"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093197"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にする
 
@@ -47,7 +47,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 >   ```
 > * Active Directory ポリシーを介してファイアウォールを設定すると、一時的なアクセスに対して次のスクリプトの実行を使用できます。 
 >   ```
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
@@ -88,9 +88,9 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 #### <a name="mitigation-4-remote-registry"></a>軽減策 4: リモート レジストリ 
 
-次の手順に従って[リモート レジストリ](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)を使用します。
+次の手順に従って[リモート レジストリ](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837)を使用します。
 
-1.  トラブルシューティング用の VM では、レジストリ エディターを起動し、**ファイル** > **ネットワーク レジストリへの接続**に移動します。
+1.  トラブルシューティング用の VM では、レジストリ エディターを起動し、**ファイル** > **ネットワーク レジストリへの接続** に移動します。
 
 2.  "*ターゲット マシン*"\SYSTEM 分岐を開き、次の値を指定します。
 
@@ -108,7 +108,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 6.  **[Connect to another computer]\(別のコンピューターに接続\)** を選択します。
 
-7.  問題の VM の**プライベート IP アドレス (DIP)** を入力します。
+7.  問題の VM の **プライベート IP アドレス (DIP)** を入力します。
 
 8.  ローカルのファイアウォール ポリシーを再起動します。
 
@@ -126,7 +126,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 4.  変更を行う前に、変更のロールバックが必要な場合に備えて、\windows\system32\config フォルダーのコピーを作成します。
 
-5.  トラブルシューティング用の VM で、レジストリ エディター (regedit.exe) を起動します。 
+5.  トラブルシューティング用の VM で、レジストリ エディター (regedit.exe) を起動します。 
 
 6.  このトラブルシューティングの手順で BROKENSYSTEM と BROKENSOFTWARE ハイブをマウントします。
 

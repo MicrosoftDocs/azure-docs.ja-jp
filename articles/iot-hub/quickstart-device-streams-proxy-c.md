@@ -1,20 +1,20 @@
 ---
-title: SSH および RDP 用の Azure IoT Hub デバイス ストリームの C クイックスタート
+title: クイックスタート - SSH および RDP 用の Azure IoT Hub デバイス ストリームの C クイックスタート
 description: このクイックスタートでは、IoT Hub デバイス ストリームを介した SSH および RDP シナリオを有効にするためにプロキシとして機能するサンプル C アプリケーションを実行します。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 037ff64f4811515e7ce64d66a36e08e71de54058
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2305a87b91160b5de90f4cbfbc9418adc50bb92a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831992"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624407"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -25,6 +25,22 @@ Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/su
 [IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 設定の概要については、[ローカル プロキシのサンプルに関するページ](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。
 
 このクイックスタートでは、デバイス ストリームを通じて Secure Shell (SSH) トラフィック (ポート 22 を使用) をトンネリングするための設定について説明します。 リモート デスクトップ プロトコル (RDP) トラフィック用の設定も同様ですが、簡単な構成変更が必要です。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、このクイックスタートを他の種類のアプリケーション トラフィックに対応するように変更できます。
+
+## <a name="prerequisites"></a>前提条件
+
+* デバイス ストリームのプレビューは現在、以下のリージョンで作成された IoT ハブに対してのみサポートされています。
+
+  * 米国中部
+  * 米国中部 EUAP
+  * 北ヨーロッパ
+  * 東南アジア
+
+* [C++ によるデスクトップ開発](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)ワークロードを有効にした [Visual Studio 2019](https://www.visualstudio.com/vs/) をインストールします。
+* 最新バージョンの [Git](https://git-scm.com/download/) をインストールします。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="how-it-works"></a>しくみ
 
@@ -47,22 +63,6 @@ Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/su
 > デバイス ストリームを介して送信される SSH トラフィックは、サービスとデバイスの間で直接送信されるのではなく、IoT ハブのストリーミング エンドポイントを介してトンネリングされます。 詳細については、[IoT Hub デバイス ストリームを使用する利点](iot-hub-device-streams-overview.md#benefits)に関するページを参照してください。 さらに、図ではデバイスローカルのプロキシと同じデバイス (またはマシン) 上で実行されている SSH デーモンが示されています。 このクイックスタートでは、SSH デーモンの IP アドレスを指定することで、デバイスローカルのプロキシとデーモンを異なるマシン上で実行することもできます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>前提条件
-
-* デバイス ストリームのプレビューは現在、以下のリージョンで作成された IoT ハブに対してのみサポートされています。
-
-  * 米国中部
-  * 米国中部 EUAP
-  * 北ヨーロッパ
-  * 東南アジア
-
-* [C++ によるデスクトップ開発](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/)ワークロードを有効にした [Visual Studio 2019](https://www.visualstudio.com/vs/) をインストールします。
-* 最新バージョンの [Git](https://git-scm.com/download/) をインストールします。
-
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
@@ -120,7 +120,7 @@ Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/su
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、[IoT 拡張機能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、[IoT 拡張機能](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 
@@ -138,7 +138,7 @@ Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/su
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。

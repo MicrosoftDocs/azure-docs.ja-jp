@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 483d4c16f1b77bf7328857eb25e1571a741d144e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186004"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896920"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>Azure Automation の PowerShell ワークフローについて
 
@@ -290,7 +290,7 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。 サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合は、これらのコマンドレットを使用する必要ありません。
+> 非グラフィカル PowerShell Runbook の場合、`Add-AzAccount` と `Add-AzureRMAccount` は [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) のエイリアスです。 これらのコマンドレットを使用するか、Automation アカウントの[モジュール最新バージョンに更新](automation-update-azure-modules.md)することができます。 Automation アカウントを作成したばかりのときでも、モジュールを更新する必要がある場合があります。 サービス プリンシパルで構成された実行アカウントを使用して認証を行う場合は、これらのコマンドレットを使用する必要ありません。
 
 チェックポイントの詳細については、「[スクリプト ワークフローへのチェックポイントの追加](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj574114(v=ws.11))」を参照してください。
 

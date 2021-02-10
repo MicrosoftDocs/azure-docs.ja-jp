@@ -1,21 +1,21 @@
 ---
 title: クイック スタート:REST API を使用した新しいポリシー割り当て
 description: このクイックスタートでは、REST API を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 10/14/2020
+ms.date: 01/29/2021
 ms.topic: quickstart
-ms.openlocfilehash: ab05079c5bb319f0808a743a1d668649df51b1b3
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 438d8004cd50e6e2ef7586c51adc63257f37978b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074007"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219979"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>クイック スタート:REST API を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
 このクイックスタートでは、ポリシーの割り当てを作成して、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
-このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに " _準拠していません_ "。
+このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
 
 REST API を使用して、Azure リソースを作成および管理します。 このガイドでは、REST API を使用してポリシー割り当てを作成し、Azure 環境内の準拠していないリソースを特定します。
 
@@ -29,7 +29,7 @@ REST API を使用して、Azure リソースを作成および管理します�
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
-このクイックスタートでは、ポリシー割り当てを作成し、 **マネージド ディスクを使用しない監査 VM** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
+このクイックスタートでは、ポリシー割り当てを作成し、**マネージド ディスクを使用しない監査 VM** (`06a78e20-9358-41c9-923c-fb736d382a4d`) 定義を割り当てます。 このポリシー定義では、ポリシー定義で設定されている条件に準拠していないリソースが識別されます。
 
 ポリシーの割り当てを作成するには、次のコマンドを実行します。
 
@@ -47,6 +47,11 @@ REST API を使用して、Azure リソースを作成および管理します�
          "displayName": "Audit VMs without managed disks Assignment",
          "description": "Shows all virtual machines not using managed disks",
          "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d",
+         "nonComplianceMessages": [
+             {
+                 "message": "Virtual machines should use a managed disk"
+             }
+         ]
        }
      }
      ```
@@ -59,12 +64,13 @@ REST API URI:
   - サブスクリプション: `/subscriptions/{subscriptionId}`
   - リソース グループ: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
   - リソース: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
-- **Name** - 割り当ての実際の名前。 この例では、 _audit-vm-manageddisks_ が使用されました。
+- **Name** - 割り当ての実際の名前。 この例では、_audit-vm-manageddisks_ が使用されました。
 
 要求本文: 
-- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、" _Audit VMs without managed disks Assignment_ " を使用します。
+- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"_Audit VMs without managed disks Assignment_" を使用します。
 - **Description** - ポリシーの機能またはこのスコープに割り当てる理由の詳細な説明。
-- **policyDefinitionId** - 割り当てを作成する際に基礎として使用するポリシー定義 ID。 ここでは、" _Managed Disks を使用していない VM の監査_ " というポリシー定義の ID です。
+- **policyDefinitionId** - 割り当てを作成する際に基礎として使用するポリシー定義 ID。 ここでは、"_Managed Disks を使用していない VM の監査_" というポリシー定義の ID です。
+- **nonComplianceMessages** - コンプライアンス違反の (非準拠と評価される) ためにリソースが拒否されたときに表示されるメッセージを設定します。 詳細については、[割り当てのコンプライアンス違反メッセージ](./concepts/assignment-structure.md#non-compliance-messages)に関するセクションを参照してください。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
 

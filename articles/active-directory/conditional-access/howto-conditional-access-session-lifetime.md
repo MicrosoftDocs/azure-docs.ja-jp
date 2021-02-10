@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 205136437fa1a2a33b3b337f5cc9f2dde283faef
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837466"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491942"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -88,7 +88,7 @@ Azure AD 参加済み、ハイブリッド Azure AD 参加済み、または Azu
 条件付きアクセスは Azure AD Premium の機能であり、Premium ライセンスが必要です。 条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセスの概要](overview.md#license-requirements)に関するページを参照してください。
 
 > [!WARNING]
-> 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 Microsoft は、2021 年 1 月 30 日に更新およびセッション トークン有効期間の構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換える予定です。  
+> 現在、パブリック プレビューで[構成可能なトークン有効期間](../develop/active-directory-configurable-token-lifetimes.md)機能を使用している場合、同一のユーザーまたはアプリの組み合わせに対し、異なる 2 つのポリシー (1 つはこの機能で、もう 1 つは構成可能なトークン有効期間機能で使用) を作成することはサポートしていないことに注意してください。 Microsoft は、2021 年 1 月 30 日に更新およびセッション トークン有効期間の構成可能なトークン有効期間機能を廃止し、条件付きアクセス認証セッション管理機能に置き換えました。  
 >
 > [サインインの頻度] を有効にする前に、テナントで他の再認証設定が無効になっていることを確認してください。 [信頼されたデバイスで MFA を記憶する] が有効になっている場合は、[サインインの頻度] を使用する前に必ず無効にしてください。この 2 つの設定を一緒に使用すると、ユーザーに予期せずにメッセージが表示される可能性があります。 再認証のプロンプトとセッションの有効期間の詳細については、「[再認証プロンプトを最適化し、Azure AD Multi-Factor Authentication のセッションの有効期間を理解する](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md)」の記事を参照してください。
 

@@ -7,15 +7,15 @@ ms.service: automation
 ms.subservice: dsc
 author: mgoedtel
 ms.author: magoedte
-ms.date: 06/22/2020
+ms.date: 01/26/2021
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 437a917e0f9b6e7a7370e828c8e3ee95218cea3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 752d7f86941967c218b3a57fa163698b9f502057
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079742"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897022"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -37,7 +37,7 @@ Azure Automation State Configuration を使用して、さまざまなマシン�
 
 Azure Automation State Configuration には、Azure の外部で DSC を使用する際にいくつかの利点があります。 このサービスを使用すると、セキュリティで保護された中央の場所から、数千台のマシンにまたがるスケーラビリティを迅速かつ容易に実現できます。 マシンの有効化、それらへの宣言型構成の割り当て、さらに指定した望ましい状態への各マシンの準拠を示すレポートの表示を容易に行うことができます。
 
-Azure Automation State Configuration サービスは、Azure Automation Runbook が PowerShell スクリプトに対応する DSC に対応します。 つまり、Azure Automation を使用して、PowerShell スクリプトを管理するのと同様に DSC 構成も管理できます。 
+Azure Automation State Configuration サービスは、Azure Automation Runbook が PowerShell スクリプトに対応する DSC に対応します。 つまり、Azure Automation を使用して、PowerShell スクリプトを管理するのと同様に DSC 構成も管理できます。
 
 ### <a name="built-in-pull-server"></a>組み込みのプル サーバー
 
@@ -83,20 +83,11 @@ Azure で実行されているすべての Linux ノードで、マシンが有�
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>プライベート ネットワークの構成
 
-ノードがプライベート ネットワークに配置されている場合は、次のポートと URL が必要です。 これらのリソースにより、マネージド ノードに対するネットワーク接続が提供され、DSC で Azure Automation と通信できます。
-
-* ポート: 送信インターネット アクセスには TCP 443 のみが必要です
-* グローバル URL: * **.azure-automation.net**
-* US Gov バージニアのグローバル URL: * **.azure automation.us**
-* エージェント サービス: **https://\<workspaceId\>.agentsvc.azure-automation.net**
-
-ノード間で通信する DSC リソース ([WaitFor * リソース](/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)など) を使用している場合、ノード間のトラフィックを許可する必要もあります。 これらのネットワーク要件を理解するには、各 DSC リソースのドキュメントを参照してください。
-
-TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)」のセクションを参照してください。
+プライベート ネットワーク上のノードに必要なポート、URL、およびその他のネットワークの詳細については、[Azure Automation のネットワーク構成](automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration)を確認してください。
 
 #### <a name="proxy-support"></a>プロキシのサポート
 
-DSC エージェントのプロキシは、Windows バージョン 1809 以降でサポートされます。 このオプションを有効にするには、ノードの登録に使用される[メタ構成スクリプト](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)で `ProxyURL` および `ProxyCredential` プロパティの値を設定します。 
+DSC エージェントのプロキシは、Windows バージョン 1809 以降でサポートされます。 このオプションを有効にするには、ノードの登録に使用される[メタ構成スクリプト](automation-dsc-onboarding.md#generate-dsc-metaconfigurations)で `ProxyURL` および `ProxyCredential` プロパティの値を設定します。
 
 >[!NOTE]
 >Azure Automation State Configuration では、以前のバージョンの Windows に対する DSC プロキシ サポートは提供されません。
@@ -114,4 +105,4 @@ Linux ノードでは、DSC エージェントによってプロキシがサポ�
 - DSC 構成をコンパイルしてターゲット ノードに割り当てる方法の詳細については、「[Azure Automation State Configuration で DSC 構成をコンパイルする](automation-dsc-compile.md)」を参照してください。
 - 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Chocolatey を使用して継続的配置を設定する](automation-dsc-cd-chocolatey.md)」を参照してください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

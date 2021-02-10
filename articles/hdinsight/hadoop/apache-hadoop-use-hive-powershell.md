@@ -1,19 +1,16 @@
 ---
 title: PowerShell を使用して HDInsight 上で Apache Hive を使用する - Azure
 description: PowerShell を使用して、Azure HDInsight の Apache Hadoop で Apache Hive クエリを実行します
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 013eb8215064173e002aea23043bc2e9ba92b525
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 43cac81717027b39210d6cd9cb9ad0baa596f50d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545244"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943182"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell を使用して Apache Hive クエリを実行する
 
@@ -37,8 +34,8 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
 リモート HDInsight クラスターで Hive クエリを実行するときに次のコマンドレットを使用します。
 
 * `Connect-AzAccount`: Azure サブスクリプションに対して Azure PowerShell を認証します。
-* `New-AzHDInsightHiveJobDefinition`: 指定された HiveQL ステートメントを使用して、" *ジョブ定義* " を作成します。
-* `Start-AzHDInsightJob`: ジョブ定義を HDInsight に送信し、ジョブを開始します。 " *ジョブ* " オブジェクトが返されます。
+* `New-AzHDInsightHiveJobDefinition`: 指定された HiveQL ステートメントを使用して、"*ジョブ定義*" を作成します。
+* `Start-AzHDInsightJob`: ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。
 * `Wait-AzHDInsightJob`: ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。
 * `Get-AzHDInsightJobOutput`: ジョブの出力を取得する場合に使用します。
 * `Invoke-AzHDInsightHiveJob`: HiveQL ステートメントを実行する場合に使用します。 このコマンドレットはクエリの完了をブロックし、その結果を返します。

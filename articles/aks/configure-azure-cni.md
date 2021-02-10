@@ -4,12 +4,12 @@ description: Azure Kubernetes サービス (AKS) で Azure CNI (高度な) ネ�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 58c2c597c7a75c801af91cd735561071250bda2c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: afb98acf903f90ead137c9b372d33ce82b89f7b5
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000574"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062219"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -63,7 +63,7 @@ AKS クラスターのノードごとの最大ポッド数は 250 です。 ノ�
 | -- | :--: | :--: | -- |
 | Azure CLI | 110 | 30 | はい (最大 250) |
 | Resource Manager テンプレート | 110 | 30 | はい (最大 250) |
-| ポータル | 110 | 30 | いいえ |
+| ポータル | 110 | 110 ([ノード プール] タブで構成済み) | いいえ |
 
 ### <a name="configure-maximum---new-clusters"></a>最大値の構成 - 新しいクラスター
 
@@ -96,6 +96,8 @@ AKS クラスターを作成するときに、Azure CNI ネットワーク用に
 **仮想ネットワーク**:Kubernetes クラスターをデプロイする仮想ネットワーク。 クラスターに新しい仮想ネットワークを作成する場合は、 *[新規作成]* を選択し、 *[仮想ネットワークの作成]* セクションの手順に従います。 Azure 仮想ネットワークの制限とクォータについては、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」を参照してください。
 
 **サブネット**:クラスターをデプロイする仮想ネットワーク内のサブネット。 クラスターの仮想ネットワークに新しいサブネットを作成する場合は、 *[新規作成]* を選択し、 *[サブネットの作成]* セクションの手順に従います。 ハイブリッド接続する場合、ご使用の環境のその他の仮想ネットワークのアドレス範囲と重複しないようにする必要があります。
+
+**Azure ネットワーク プラグイン**:Azure ネットワーク プラグインが使用されている場合、"externalTrafficPolicy = Local" の内部 LoadBalancer サービスには、AKS クラスターに属さない clusterCIDR の IP で VM からアクセスすることはできません。
 
 **Kubernetes サービスのアドレス範囲**:これは、Kubernetes によってクラスターの内部 [サービス][services]に割り当てられる仮想 IP のセットです。 次の要件を満たす任意のプライベート アドレス範囲を使用できます。
 

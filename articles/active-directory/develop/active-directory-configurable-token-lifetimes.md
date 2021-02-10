@@ -1,7 +1,7 @@
 ---
 title: 構成可能なトークンの有効期間
 titleSuffix: Microsoft identity platform
-description: Microsoft ID プラットフォームによって発行されたアクセス トークン、SAML トークン、および ID トークンの有効期間を設定する方法について説明します。
+description: Microsoft ID プラットフォームによって発行されるアクセス、SAML、ID トークンの有効期間を設定する方法について説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 1bd60a60aa5f6fffcc459f0e14d550740e48496d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232405"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428151"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
+# <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
-Microsoft ID プラットフォームによって発行されたアクセス トークン、ID トークン、または SAML トークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 ただし、現時点では、[マネージド ID サービス プリンシパル](../managed-identities-azure-resources/overview.md)のトークン有効期間の構成はサポートされていません。
+Microsoft ID プラットフォームによって発行されるアクセス、ID、または SAML トークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 ただし、現時点では、[マネージド ID サービス プリンシパル](../managed-identities-azure-resources/overview.md)のトークン有効期間の構成はサポートされていません。
 
 Azure AD では、ポリシー オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
@@ -50,7 +50,7 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 
 ### <a name="saml-tokens"></a>SAML トークン
 
-SAML トークンは、Web ベースの SAAS アプリケーションの多くで使用され、Azure Active Directory の SAML2 プロトコル エンドポイントを使用して取得されます。 また、WS-Federation を使用するアプリケーションでも使用されます。 トークンの既定の有効期間は 1 時間です。 アプリケーションの観点からは、トークンの有効期間は、そのトークン内の `<conditions …>` 要素の NotOnOrAfter 値によって指定されます。 トークンの有効期間が終了したら、クライアントは新しい認証要求を開始する必要があります。これは多くの場合、シングル サインオン (SSO) セッション トークンの結果として、対話型サインインなしで満たされます。
+SAML トークンは、Web ベースの SaaS アプリケーションの多くで使用され、Azure Active Directory の SAML2 プロトコル エンドポイントを使用して取得されます。 また、WS-Federation を使用するアプリケーションでも使用されます。 トークンの既定の有効期間は 1 時間です。 アプリケーションの観点からは、トークンの有効期間は、そのトークン内の `<conditions …>` 要素の NotOnOrAfter 値によって指定されます。 トークンの有効期間が終了したら、クライアントは新しい認証要求を開始する必要があります。これは多くの場合、シングル サインオン (SSO) セッション トークンの結果として、対話型サインインなしで満たされます。
 
 NotOnOrAfter の値は、`TokenLifetimePolicy` 内の `AccessTokenLifetime` パラメーターを使用して変更できます。 この値は、ポリシーで構成されている有効期間に設定され (構成されている場合)、クロック スキュー係数が 5 分になります。
 
@@ -58,7 +58,7 @@ NotOnOrAfter の値は、`TokenLifetimePolicy` 内の `AccessTokenLifetime` パ�
 
 ### <a name="id-tokens"></a>ID トークン
 
-ID トークンは、Web サイトとネイティブ クライアントに渡されます。 ID トークンは、ユーザーに関するプロファイル情報を格納します。 ID トークンは、ユーザーとクライアントの特定の組み合わせにバインドされます。 ID トークンは、それらの有効期限まで有効とみなされます。 通常、Web アプリケーションは、アプリケーションにおけるユーザーのセッションの有効期間と、ユーザーに対して発行された ID トークンの有効期間を照合します。 ID トークンの有効期間を調整して、Web アプリケーションでアプリケーション セッションが期限切れになる頻度、および Microsoft ID プラットフォームでユーザーの再認証 (自動的にまたは対話形式で) が要求される頻度を制御できます。
+ID トークンは、Web サイトとネイティブ クライアントに渡されます。 ID トークンは、ユーザーに関するプロファイル情報を格納します。 ID トークンは、ユーザーとクライアントの特定の組み合わせにバインドされます。 ID トークンは、それらの有効期限まで有効とみなされます。 通常、Web アプリケーションは、アプリケーションにおけるユーザーのセッションの有効期間と、ユーザーに対して発行された ID トークンの有効期間を照合します。 ID トークンの有効期間を調整して、Web アプリケーションでアプリケーション セッションが期限切れになる頻度、および Microsoft ID プラットフォームでユーザーの再認証 (自動または対話形式) が要求される頻度を制御できます。
 
 ### <a name="token-lifetime-policy-properties"></a>トークンの有効期間ポリシーのプロパティ
 
@@ -77,14 +77,14 @@ Access Token Lifetime プロパティを減らすと、悪意のあるアクタ�
 
 ## <a name="token-lifetime-policies-for-refresh-tokens-and-session-tokens"></a>更新トークンとセッション トークンのトークン有効期間ポリシー
 
-更新トークンおよびセッション トークンにトークン有効期間ポリシーを設定できます。
+更新トークンとセッション トークンに対してトークン有効期間ポリシーを設定することはできません。
 
 > [!IMPORTANT]
-> 2020 年 5 月時点で、新しいテナントでは更新トークンとセッション トークンの有効期間を構成できません。  既に構成されているテナントでは、2021 年 1 月 30 日まで、更新トークンとセッション トークンのポリシーを変更できます。   2021 年 1 月 30 日以降は、Azure Active Directory でポリシー内の既存の更新とセッション トークンの構成が考慮されなくなります。 廃止後も、アクセス トークン、SAML トークン、ID トークンの有効期間を構成することはできます。
+> 2021 年 1 月 30 日の時点で、更新およびセッション トークンの有効期間は構成できません。 Azure Active Directory では、既存のポリシーの更新およびセッション トークンの構成が考慮されなくなくなりました。  既存のトークンの有効期限が切れた後に発行される新しいトークンは、[既定の構成](#configurable-token-lifetime-properties-after-the-retirement)に設定されるようになりました。 更新およびセッション トークンの構成の廃止後も、アクセス、SAML、ID の各トークンの有効期間を構成することはできます。
 >
-> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)」をお読みください。
+> 既存のトークンの有効期間は変更されません。 有効期限が切れると、既定値に基づいて新しいトークンが発行されます。
 >
-> 廃止後に条件付きアクセスを使用しない場合、更新トークンとセッション トークンは廃止日の[既定の構成](#configurable-token-lifetime-properties-after-the-retirement)に設定され、有効期間を変更することはできなくなります。
+> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](../conditional-access/howto-conditional-access-session-lifetime.md)」をお読みください。
 
 :::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="廃止に関する情報":::
 

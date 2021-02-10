@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して TypeScript 関数を作成する - Azu
 description: Visual Studio Code の Azure Functions 拡張機能を使用して TypeScript 関数を作成し、ローカル Node.js プロジェクトを Azure Functions のサーバーレス ホスティングに発行する方法について説明します。
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 48295aab80b8a15a313ce7fa7acf94606357930b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4470741c8c7f2f6c9832ea73aa9c6207764bc903
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424970"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493540"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-typescript-using-visual-studio-code"></a>クイックスタート: Visual Studio Code と TypeScript を使用して Azure に関数を作成する
 
@@ -74,7 +74,7 @@ ms.locfileid: "93424970"
 
 1. アクティビティ バーの Azure アイコンを選択し、 **[Azure: Functions]** 領域で、 **[Deploy to function app]\(関数アプリにデプロイ\)** ボタンを選択します。
 
-    ![プロジェクトを Azure に発行する](media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![プロジェクトを Azure に発行する](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. プロンプトで、次の情報を入力します。
 
@@ -90,17 +90,19 @@ ms.locfileid: "93424970"
 
     + **Select a location for new resources (新しいリソースの場所を選択してください)** : パフォーマンスを向上させるために、お近くの [リージョン](https://azure.microsoft.com/regions/)を選択してください。
 
+    この拡張機能は、Azure に作成されている個々のリソースの状態を通知領域に表示します。
+
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure リソース作成の通知":::
+
 1. 完了すると、関数アプリ名に基づく名前を使用して、次の Azure リソースがサブスクリプションに作成されます。
 
-    + リソース グループ。関連リソースの論理コンテナーです。
-    + Standard Azure ストレージ アカウント。プロジェクトについての状態とその他の情報を保持します。
-    + 従量課金プラン。サーバーレス関数アプリの実行環境となるホストを定義します。 
-    + 関数アプリ。関数コードを実行するための環境となります。 関数アプリを使用すると、同じホスティング プランに含まれるリソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
-    + 関数アプリに接続された Application Insights インスタンス。サーバーレス関数の使用を追跡します。
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     関数アプリが作成され、展開パッケージが適用されると、通知が表示されます。 
 
-1. この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。 通知を見逃した場合は、右下隅にあるベル アイコンを選択して、再度確認します。
+    [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
+
+4. この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。 通知を見逃した場合は、右下隅にあるベル アイコンを選択して、再度確認します。
 
     ![作成完了通知](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -110,7 +112,7 @@ ms.locfileid: "93424970"
 
 ## <a name="next-steps"></a>次のステップ
 
-Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、出力バインディングを追加してその関数を拡張します。 このバインディングでは、HTTP 要求の文字列が Azure Queue Storage キュー内のメッセージに書き込まれます。 
+[Visual Studio Code](functions-develop-vs-code.md?tabs=javascript) を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、Azure Storage に接続することによってその関数を拡張します。 他の Azure サービスへの接続について詳しくは、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md?tabs=typescript)」を参照してください。   
 
 > [!div class="nextstepaction"]
 > [Azure Storage キューに接続する](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-typescript)

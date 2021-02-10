@@ -2,19 +2,16 @@
 title: Visual Studio と C# を使った Apache Storm トポロジ - Azure HDInsight
 description: C# で Storm トポロジを作成する方法について説明します。 Hadoop Tools for Visual Studio を使用して、Visual Studio でワード カウント トポロジを作成します。
 ROBOTS: NOINDEX
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/31/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 271f62625433a6651ba0e3230a62be51e5147f3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a81f2b21545a5362168482f3f0a65fbbbf381c10
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000194"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929156"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -59,30 +56,30 @@ using System;
 using System.IO;
 namespace ConsoleApplication2
 {
-   class Program
-   {
-       static void Main(string[] args)
-       {
-           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
-           if (!string.IsNullOrEmpty(javaHome))
-           {
-               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
-               if (File.Exists(jarExe))
-               {
-                   Console.WriteLine("JAVA Is Installed properly");
-                    return;
-               }
-               else
-               {
-                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
-               }
-           }
-           else
-           {
-             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
-           }
-       }  
-   }
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           string javaHome = Environment.GetEnvironmentVariable("JAVA_HOME");
+           if (!string.IsNullOrEmpty(javaHome))
+           {
+               string jarExe = Path.Combine(javaHome + @"\bin", "jar.exe");
+               if (File.Exists(jarExe))
+               {
+                   Console.WriteLine("JAVA Is Installed properly");
+                    return;
+               }
+               else
+               {
+                   Console.WriteLine("A valid JAVA JDK is not found. Looks like JRE is installed instead of JDK.");
+               }
+           }
+           else
+           {
+             Console.WriteLine("A valid JAVA JDK is not found. JAVA_HOME environment variable is not set.");
+           }
+       }  
+   }
 }
 ```
 
@@ -135,7 +132,7 @@ Visual Studio で C# トポロジ プロジェクトを作成するには:
 
 プロジェクトの作成が済むと、次のファイルが生成されます。
 
-* *Program.cs*プロジェクトのトポロジ定義。 既定では、スパウトとボルト 1 つずつで構成される既定のトポロジが作成されます。
+* *Program.cs* プロジェクトのトポロジ定義。 既定では、スパウトとボルト 1 つずつで構成される既定のトポロジが作成されます。
 
 * *Spout.cs*:乱数を出力するスパウトの例です。
 
@@ -147,7 +144,7 @@ Visual Studio で C# トポロジ プロジェクトを作成するには:
 
 次に、スパウトのコードを追加します。これは、トポロジ内のデータを外部ソースから読み取るために使用されます。 このスパウトは、トポロジにセンテンスをランダムに出力します。
 
-1. *Spout.cs*を開きます。 スパウトの主なコンポーネントは次のとおりです。
+1. *Spout.cs* を開きます。 スパウトの主なコンポーネントは次のとおりです。
 
    * `NextTuple`:スパウトが新しいタプルの出力を許可されると、Storm によって呼び出されます。
 
@@ -221,7 +218,7 @@ Visual Studio で C# トポロジ プロジェクトを作成するには:
 
 1. プロジェクトから既存の *Bolt.cs* ファイルを削除します。
 
-2. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[追加]**  >  **[新しいアイテム]** の順に選択します。 一覧から **[Storm Bolt]** を選び、名前として「*Splitter.cs*」と入力します。 新しいファイルのコードで、名前空間の名前を `WordCount` に変更します。 その後、この操作を繰り返して、*Counter.cs* という名前の 2 つ目のボルトを作成します。
+2. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[追加]**  >  **[新しいアイテム]** の順に選択します。 一覧から **[Storm Bolt]** を選び、名前として「*Splitter.cs*」と入力します。 新しいファイルのコードで、名前空間の名前を `WordCount` に変更します。 その後、この操作を繰り返して、*Counter.cs* という名前の 2 つ目のボルトを作成します。
 
    * *Splitter.cs*:文を個別の単語に分割し、単語の新しいストリームを出力するボルトが実装されています。
 
@@ -230,7 +227,7 @@ Visual Studio で C# トポロジ プロジェクトを作成するには:
      > [!NOTE]  
      > これらのボルトはストリームに読み書きしますが、ボルトを使用してデータベースやサービスなどのソースとやりとりすることもできます。
 
-3. *Splitter.cs*を開きます。 既定では、メソッドは次の 1 つだけです: `Execute`。 `Execute` メソッドは、ボルトが処理のタプルを受信したときに呼び出されます。 ここで、受信したタプルを読み取って処理し、送信タプルを出力できます。
+3. *Splitter.cs* を開きます。 既定では、メソッドは次の 1 つだけです: `Execute`。 `Execute` メソッドは、ボルトが処理のタプルを受信したときに呼び出されます。 ここで、受信したタプルを読み取って処理し、送信タプルを出力できます。
 
 4. `Splitter` クラスの内容を、次のコードに置き換えます。
 
@@ -410,7 +407,7 @@ return topologyBuilder;
 
 1. **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択して、サインイン処理を完了します。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
 
 1. **[トポロジの送信]** ダイアログボックスの **[Storm クラスター]** ドロップダウン リストで、お使いの Storm on HDInsight クラスターを選択し、 **[送信]** を選択します。 送信が成功したかどうかは、 **[出力]** ペインを表示して確認できます。
 
@@ -419,7 +416,7 @@ return topologyBuilder;
     ![[Storm Topology ビュー] ウィンドウ、HDInsight クラスター、Visual Studio](./media/apache-storm-develop-csharp-visual-studio-topology/storm-topology-view.png)
 
     > [!NOTE]  
-    > また、**サーバー エクスプローラー**から **Storm トポロジ**を表示することもできます。 その場合、 **[Azure]**  >  **[HDInsight]** の順に展開し、Storm on HDInsight クラスターを右クリックして、 **[Storm トポロジの表示]** を選択します。
+    > また、**サーバー エクスプローラー** から **Storm トポロジ** を表示することもできます。 その場合、 **[Azure]**  >  **[HDInsight]** の順に展開し、Storm on HDInsight クラスターを右クリックして、 **[Storm トポロジの表示]** を選択します。
 
     トポロジ内のコンポーネントに関する情報を表示するには、ダイアグラム内のコンポーネントを選択します。
 
@@ -454,11 +451,11 @@ return topologyBuilder;
 
 ハイブリッド トポロジの例として、プロジェクトを作成して **[Storm ハイブリッド サンプル]** を選択します。 このサンプルの種類は、次の概念を示します。
 
-* **Java スパウト**と **C# ボルト**:`HybridTopology_javaSpout_csharpBolt` クラスで定義されています。
+* **Java スパウト** と **C# ボルト**:`HybridTopology_javaSpout_csharpBolt` クラスで定義されています。
 
   トランザクション バージョンは、`HybridTopologyTx_javaSpout_csharpBolt` クラスで定義されています。
 
-* **C# スパウト**と **Java ボルト**:`HybridTopology_csharpSpout_javaBolt` クラスで定義されています。
+* **C# スパウト** と **Java ボルト**:`HybridTopology_csharpSpout_javaBolt` クラスで定義されています。
 
   トランザクション バージョンは、`HybridTopologyTx_csharpSpout_javaBolt` クラスで定義されています。
 
@@ -531,14 +528,14 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 SCP.NET の最新リリースでは、NuGet からパッケージをアップグレードできます。 新しい更新プログラムが利用できる場合、アップグレードの通知が表示されます。 手動でアップグレードを確認するには、次の手順に従います。
 
-1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選びます。
+1. **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選びます。
 
 2. パッケージ マネージャーから **[更新プログラム]** を選択します。 SCP.NET サポート パッケージの更新が利用可能な場合は、そのパッケージが一覧表示されます。 パッケージの **[更新]** を選択し、 **[変更のプレビュー]** ダイアログ ボックスで **[OK]** を選択してインストールします。
 
 > [!IMPORTANT]  
 > NuGet を使用しない以前のバージョンの SCP.NET を利用してプロジェクトが作成された場合、次の手順で新しいバージョンに更新する必要があります。
 >
-> 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選びます。
+> 1. **ソリューション エクスプローラー** でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選びます。
 > 2. **[検索]** フィールドを使用して `Microsoft.SCP.Net.SDK` を検索し、プロジェクトに追加します。
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>トポロジの一般的な問題のトラブルシューティング
@@ -568,14 +565,14 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 > [!WARNING]  
 > ローカル テストは、基本的な C# のみトポロジの場合にだけ機能します。 ハイブリッド トポロジまたは複数のストリームを使用するトポロジには、ローカル テストは使用できません。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[プロパティ]** を選びます。 プロジェクトのプロパティで、 **[出力の種類]** を **[コンソール アプリケーション]** に変更します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして **[プロパティ]** を選びます。 プロジェクトのプロパティで、 **[出力の種類]** を **[コンソール アプリケーション]** に変更します。
 
    ![HDInsight Storm プリケーション、プロジェクトのプロパティ、出力の種類](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > トポロジをクラスターにデプロイする前に、必ず **[出力の種類]** を **[クラス ライブラリ]** に戻すようにしてください。
 
-1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして、 **[追加]**  >  **[新しいアイテム]** の順に選択します。 **[クラス]** を選んで、クラス名として「*LocalTest.cs*」と入力します。 最後に、 **[追加]** を選択します。
+1. **ソリューション エクスプローラー** で、プロジェクトを右クリックして、 **[追加]**  >  **[新しいアイテム]** の順に選択します。 **[クラス]** を選んで、クラス名として「*LocalTest.cs*」と入力します。 最後に、 **[追加]** を選択します。
 
 1. *LocalTest.cs* を開いて、先頭に次の `using` ステートメントを追加します。
 
@@ -687,7 +684,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 1. 変更を保存した後、**F5** キーを押すか、 **[デバッグ]**  >  **[デバッグの開始]** を選択して、プロジェクトを開始します。 コンソール ウィンドウが表示され、テストの進行に合わせてステータスを記録します。 `Tests finished` が表示されたら、任意のキーを押してウィンドウを閉じます。
 
-1. **Windows エクスプローラー**を使って、プロジェクトが含まれるディレクトリを見つけます (例: *C:\\Users\\\<your_user_name>\\source\\repos\\WordCount\\WordCount*)。次に、このディレクトリで *Bin* を開き、 *[デバッグ]* を選択します。 テストの実行時に生成された、*sentences.txt*、*counter.txt*、*splitter.txt* というテキスト ファイルが表示されます。 それぞれのテキスト ファイルを開いてデータを確認します。
+1. **Windows エクスプローラー** を使って、プロジェクトが含まれるディレクトリを見つけます (例: *C:\\Users\\\<your_user_name>\\source\\repos\\WordCount\\WordCount*)。次に、このディレクトリで *Bin* を開き、 *[デバッグ]* を選択します。 テストの実行時に生成された、*sentences.txt*、*counter.txt*、*splitter.txt* というテキスト ファイルが表示されます。 それぞれのテキスト ファイルを開いてデータを確認します。
 
    > [!NOTE]  
    > これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。 たとえば、**splitter.txt** ファイルの `[[97,103,111]]` は、*ago* という単語を表します。
@@ -701,7 +698,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 `Context.Logger.Info("Component started");`
 
-記録された情報は、**サーバー エクスプローラー**で **[Hadoop Service Log]** を探して閲覧できます。 HDInsight クラスターの Storm のエントリを展開して、 **[Hadoop Service Log]** を展開します。 最後に、閲覧するログ ファイルを選択します。
+記録された情報は、**サーバー エクスプローラー** で **[Hadoop Service Log]** を探して閲覧できます。 HDInsight クラスターの Storm のエントリを展開して、 **[Hadoop Service Log]** を展開します。 最後に、閲覧するログ ファイルを選択します。
 
 > [!NOTE]  
 > ログは、クラスターで使用する Azure ストレージ アカウントに保存されます。 Visual Studio でログを表示するには、ストレージ アカウントを所有する Azure サブスクリプションにサインインする必要があります。
@@ -710,9 +707,9 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 トポロジの実行中に発生したエラーを表示するには、次の手順に従います。
 
-1. **サーバー エクスプローラー**で、Storm on HDInsight クラスターを右クリックして、 **[Storm トポロジの表示]** を選択します。
+1. **サーバー エクスプローラー** で、Storm on HDInsight クラスターを右クリックして、 **[Storm トポロジの表示]** を選択します。
 
-   **スパウト**と**ボルト**については、 **[最新のエラー]** の列に直近のエラーの情報が表示されます。
+   **スパウト** と **ボルト** については、 **[最新のエラー]** の列に直近のエラーの情報が表示されます。
 
 2. エラーの一覧にあるコンポーネントの **[Spout ID]** または **[Bolt ID]** を選びます。 詳細ページの下部の **[エラー]** セクションに、追加のエラー情報が表示されます。
 

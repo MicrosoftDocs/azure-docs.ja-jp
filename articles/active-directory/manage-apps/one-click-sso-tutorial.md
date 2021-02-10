@@ -4,7 +4,7 @@ description: Azure Marketplace のアプリケーションの SSO をワンク�
 services: active-directory
 documentationCenter: na
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.reviewer: kenwith
 ms.assetid: e0416991-4b5d-4b18-89bb-91b6070ed3ba
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe4e981782878ce4f86dd7dcb8ae635a60b2405a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 50f705e587010d956c29a71127e97dd85cb517ea
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658708"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258254"
 ---
 # <a name="one-click-app-configuration-of-single-sign-on"></a>アプリの One Click シングル サインオンの構成
 

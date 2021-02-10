@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 32d906bf96a0ad5cf798f68bf83f2d6af1064361
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 249afa361946e85a8c8ff241f07d7aae608949ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98231742"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745702"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション
 
@@ -34,11 +34,11 @@ Java のコード不要のアプリケーション監視は、シンプルさが
 >
 > ファイル名自体がすべて小文字になったのに加えて、JSON 構造体が完全に変更されたため、すべての[構成オプション](./java-standalone-config.md)を注意深く確認してください。
 
-[applicationinsights-agent-3.0.1.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.1/applicationinsights-agent-3.0.1.jar) をダウンロードします
+[applicationinsights-agent-3.0.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.2/applicationinsights-agent-3.0.2.jar) をダウンロードします
 
 **2.JVM をエージェントにポイントする**
 
-アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.1.jar` を追加します
+アプリケーションの JVM 引数に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加します
 
 一般的な JVM 引数には、`-Xmx512m` と `-XX:+UseG1GC` があります。 これらの引数の追加先がわかれば、これの追加先もわかります。
 
@@ -54,7 +54,7 @@ Application Insights リソースをまだ持っていない場合は、[リソ�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=...
 ```
 
-または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.1.jar` と同じディレクトリに配置します。
+または、次の内容で、`applicationinsights.json` という名前の構成ファイルを作成し、`applicationinsights-agent-3.0.2.jar` と同じディレクトリに配置します。
 
 ```json
 {
@@ -255,7 +255,7 @@ try {
 ### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>2\.x SDK を使用して要求カスタム ディメンションを追加する
 
 > [!NOTE]
-> この機能は、3.0.1 以降にのみ存在します
+> この機能は、3.0.2 以降にのみ存在します
 
 アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
@@ -279,7 +279,7 @@ requestTelemetry.getProperties().put("mydimension", "myvalue");
 ### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>2\.x SDK を使用して要求テレメトリ user_Id 設定する
 
 > [!NOTE]
-> この機能は、3.0.1 以降にのみ存在します
+> この機能は、3.0.2 以降にのみ存在します
 
 アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
@@ -303,7 +303,7 @@ requestTelemetry.getContext().getUser().setId("myuser");
 ### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>2\.x SDK を使用して要求テレメトリ名をオーバーライドする
 
 > [!NOTE]
-> この機能は、3.0.1 以降にのみ存在します
+> この機能は、3.0.2 以降にのみ存在します
 
 アプリケーションに `applicationinsights-web-2.6.2.jar` を追加します (すべての 2.x バージョンは Application Insights Java 3.0 でサポートされていますが、選択が可能な場合は、最新のバージョンを使用することをお勧めします)。
 
@@ -323,8 +323,3 @@ import com.microsoft.applicationinsights.web.internal.ThreadContext;
 RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
 requestTelemetry.setName("myname");
 ```
-
-> [!NOTE]
-> 上記で説明した操作以外の `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` から取得された `RequestTelemetry` に対する他のすべての操作は、すぐに失敗し、3.0 エージェントで未定義の動作であることを知らせる例外がスローされます。
->
-> `RequestTelemetry` に対して他の方法で相互運用が必要な場合は、問題 https://github.com/microsoft/ApplicationInsights-Java/issues を開いてお知らせください。

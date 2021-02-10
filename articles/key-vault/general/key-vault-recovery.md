@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250793"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790386"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>論理的な削除と消去保護を使用した Azure Key Vault の回復の管理
 
@@ -26,10 +26,15 @@ Key Vault の詳細については、以下を参照してください。
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/dotnet)
-* [PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+* [PowerShell モジュール](/powershell/azure/install-az-ps)。
 * [Azure CLI](/cli/azure/install-azure-cli)
 * キー コンテナー - [Azure portal](../general/quick-create-portal.md)、[Azure CLI](../general/quick-create-cli.md)、または [Azure PowerShell](../general/quick-create-powershell.md) を使用して作成できます
-* 論理的に削除されたコンテナーに対して操作を実行するには、(サブスクリプション レベルで) 次のアクセス許可がユーザーに必要です。|Microsoft.KeyVault/locations/deletedVaults/read|論理的に削除されたキー コンテナーのプロパティを表示する| |Microsoft.KeyVault/locations/deletedVaults/purge/action|論理的に削除されたキー コンテナーを消去する|
+* 論理的に削除されたコンテナーに対して操作を実行するには、ユーザーには次のアクセス許可 (サブスクリプション レベル) が必要です。
+
+  | 権限 | 説明 |
+  |---|---|
+  |Microsoft.KeyVault/locations/deletedVaults/read|論理的に削除された Key Vault のプロパティを表示します。|
+  |Microsoft.KeyVault/locations/deletedVaults/purge/action|論理的に削除された Key Vault を消去します。|
 
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>論理的な削除および消去保護とは
@@ -390,8 +395,8 @@ Key Vault の詳細については、以下を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Key Vault の PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.keyvault)
-- [Key Vault の Azure CLI コマンド](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault の PowerShell コマンドレット](/powershell/module/az.keyvault)
+- [Key Vault の Azure CLI コマンド](/cli/azure/keyvault)
 - [Azure Key Vault のバックアップ](backup.md)
 - [Key Vault のログ記録を有効にする方法](howto-logging.md)
 - [キー コンテナーへのアクセスをセキュリティで保護する](secure-your-key-vault.md)

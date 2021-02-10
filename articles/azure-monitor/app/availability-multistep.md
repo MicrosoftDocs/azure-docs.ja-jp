@@ -3,12 +3,12 @@ title: 複数ステップ Web テストを使用した監視 - Azure Application
 description: 複数手順の Web テストを設定して、Azure Application Insights で Web アプリケーションを監視します
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: 2df8b7450423c901665090608da83f68b43b30e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0031971dc2ccd2a9e681220dd835f46d33e36dbb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024778"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934862"
 ---
 # <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
@@ -17,7 +17,7 @@ ms.locfileid: "87024778"
 > [!NOTE]
 > 複数ステップ Web テストは、Visual Studio の Web テスト ファイルに依存します。 Visual Studio 2019 が Web テスト機能を備えた最後のバージョンとなることが[発表](https://devblogs.microsoft.com/devops/cloud-based-load-testing-service-eol/)されました。 新しい機能は追加されませんが、Visual Studio 2019 の Web テスト機能は現在もサポートされており、製品のサポート ライフサイクルの間は引き続きサポートされることを理解しておくことが重要です。 Azure Monitor 製品チームでは、複数ステップ可用性テストの今後に関するご質問に対して、[こちら](https://github.com/MicrosoftDocs/azure-docs/issues/26050#issuecomment-468814101)で回答しています。  
 > </br>
-> [Azure Government](../../azure-government/index.yml) クラウドでは、複数ステップ Web テストは**サポートされていません**。
+> [Azure Government](../../azure-government/index.yml) クラウドでは、複数ステップ Web テストは **サポートされていません**。
 
 
 ## <a name="pre-requisites"></a>前提条件
@@ -37,7 +37,7 @@ ms.locfileid: "87024778"
 > [!WARNING]
 > マルチステップ レコーダーの使用は推奨されなくなりました。 このレコーダーは、基本的な対話機能を備えた静的な HTML ページ用に開発されており、最新の web ページでは機能しません。
 
-Visual Studio Web テストの作成に関するガイダンスについては、[公式の Visual Studio 2019 ドキュメント](/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)を参照してください。
+Visual Studio Web テストの作成に関するガイダンスについては、[公式の Visual Studio 2019 ドキュメント](/visualstudio/test/how-to-create-a-web-service-test)を参照してください。
 
 ## <a name="upload-the-web-test"></a>Web テストをアップロードする
 

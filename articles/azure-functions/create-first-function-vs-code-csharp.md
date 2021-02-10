@@ -4,12 +4,12 @@ description: Visual Studio Code の Azure Functions 拡張機能を使用して 
 ms.topic: quickstart
 ms.date: 11/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 791416a54fa75091facf1f7bc2aadf6fccf54b05
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0068a9cbf99117a0a2432a02c9be934eb749f19a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968621"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493687"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure に C# 関数を作成する
 
@@ -78,7 +78,7 @@ ms.locfileid: "97968621"
 
 ## <a name="next-steps"></a>次のステップ
 
-Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、出力バインディングを追加してその関数を拡張します。 このバインディングでは、HTTP 要求の文字列が Azure Queue Storage キュー内のメッセージに書き込まれます。 
+[Visual Studio Code](functions-develop-vs-code.md?tabs=csharp) を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、Azure Storage に接続することによってその関数を拡張します。 他の Azure サービスへの接続について詳しくは、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md?tabs=csharp)」を参照してください。 
 
 > [!div class="nextstepaction"]
 > [Azure Storage キューに接続する](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-csharp)

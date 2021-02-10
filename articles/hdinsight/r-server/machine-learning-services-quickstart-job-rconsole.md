@@ -1,19 +1,16 @@
 ---
 title: クイック スタート:ML サービスと R コンソールでの R スクリプト - Azure HDInsight
 description: このクイックスタートでは、R コンソールを使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行します。
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 06/19/2019
-ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eac6fd14acfe12a0f505419a229bb78e423706d1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "73241598"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935734"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>クイック スタート:R コンソールを使用して Azure HDInsight で ML サービス クラスターに対して R スクリプトを実行する
 
@@ -111,7 +108,7 @@ Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark
      formula = "ARR_DEL15 ~ ORIGIN + DAY_OF_WEEK + DEP_TIME + DEST"
     ```
 
-1. **ローカル**のコンピューティング テキストを使用して、データに対してロジスティック回帰を実行します。 R コンソールに次のコードを入力します。
+1. **ローカル** のコンピューティング テキストを使用して、データに対してロジスティック回帰を実行します。 R コンソールに次のコードを入力します。
 
     ```R
     # Set a local compute context
@@ -150,7 +147,7 @@ Azure HDInsight 上の ML Services により、R スクリプトで Apache Spark
     
       ---
     
-      Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+      Signif. codes:  0 ‘**_’ 0.001 ‘_*’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
     
       Condition number of final variance-covariance matrix: 11904202
       Number of iterations: 7

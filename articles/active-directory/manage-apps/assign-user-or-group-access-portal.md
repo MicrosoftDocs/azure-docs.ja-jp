@@ -3,7 +3,7 @@ title: Azure Active Directory のアプリに対するユーザー割り当て�
 description: ID 管理のために Azure Active Directory を使用して、アプリに対してユーザーとグループの割り当ておよび割り当て解除を行う方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 50dcde478b708cd53d8229d70a9ddf4b1ff271be
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861679"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259736"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Azure Active Directory のアプリに対するユーザー割り当ての管理
 
@@ -148,7 +148,7 @@ Graph API を使用して、アプリのユーザーとグループを割り当�
 ## <a name="related-articles"></a>関連記事
 
 - [エンドユーザーによるアプリケーションへのアクセスに関する詳細情報](end-user-experiences.md)
-- [Azure AD マイ アプリのデプロイを計画する](access-panel-deployment-plan.md)
+- [Azure AD マイ アプリのデプロイを計画する](my-apps-deployment-plan.md)
 - [アプリへのアクセスの管理](what-is-access-management.md)
  
 ## <a name="next-steps"></a>次のステップ

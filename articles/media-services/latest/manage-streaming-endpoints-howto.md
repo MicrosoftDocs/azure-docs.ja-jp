@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 でストリーミング エンドポイントを管理する
+title: ストリーミング エンドポイントを管理する
 description: この記事では、Azure Media Services v3 を使用してストリーミング エンドポイントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 8d3835d78ec55f120f6b9439aea9c29434e6bd47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d656ce23cf68a1eec23421b769d5847f9b661bb4
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289479"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955904"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 でストリーミング エンドポイントを管理する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Media Services アカウントの作成時に、**既定**の[ストリーミング エンドポイント](streaming-endpoint-concept.md)が**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と[動的暗号化](content-protection-overview.md)を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
+Media Services アカウントの作成時に、**既定** の [ストリーミング エンドポイント](streaming-endpoint-concept.md)が **停止** 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と [動的暗号化](content-protection-overview.md)を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。
 
 この記事では、さまざまな手法を利用し、ストリーミング エンドポイントで [start](/rest/api/media/streamingendpoints/start) コマンドを実行する方法について説明します。 
  

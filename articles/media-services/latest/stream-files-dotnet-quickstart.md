@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services で動画ファイルをストリーム配信する - .NET | Microsoft Docs
+title: Azure Media Services で動画ファイルをストリーム配信する - .NET
 description: このチュートリアルの手順に従って .NET を使用し、新しい Azure Media Services アカウントを作成し、ファイルをエンコードして、Azure Media Player にストリーム配信します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 530089b9c6b9544201b0f07368cac3d1a695a4f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc6b240a2d97e0b4aa313f858b3965f241dd0b08
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268691"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898191"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---net"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - .NET
 
@@ -53,12 +53,12 @@ ms.locfileid: "91268691"
 
 サンプルは、次のアクションを実行します。
 
-1. **変換**を作成します (最初に、指定された変換が存在するかどうかを確認します)。 
-2. エンコード **ジョブ**の出力として使用される**出力**アセットを作成します。
-3. HTTPS の URL に基づいて**ジョブ**の入力を作成します。
-4. 前に作成された入力と出力を使用してエンコード **ジョブ**を送信します。
+1. **変換** を作成します (最初に、指定された変換が存在するかどうかを確認します)。 
+2. エンコード **ジョブ** の出力として使用される **出力** アセットを作成します。
+3. HTTPS の URL に基づいて **ジョブ** の入力を作成します。
+4. 前に作成された入力と出力を使用してエンコード **ジョブ** を送信します。
 5. ジョブの状態を確認します。
-6. **ストリーミング ロケーター**を作成します。
+6. **ストリーミング ロケーター** を作成します。
 7. ストリーミング URL を作成します。
 
 サンプル内の各関数の機能について詳しくは、[このソース ファイル](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)のコードを調べて、コメントを参照してください。

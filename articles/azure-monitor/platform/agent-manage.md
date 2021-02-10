@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 15d01a8ac21264bf57ee7e65147e3989cd631b15
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011882"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095558"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -243,7 +243,7 @@ Linux コンピューターがプロキシ サーバーまたは Log Analytics �
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 
-2. 管理者特権でのコマンド プロンプトからエージェント インストール ファイルを抽出するには、`extract MMASetup-<platform>.exe` を実行します。ファイルの抽出先のパスを指定するように求められます。 `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` 引数を渡すことでパスを指定することもできます。 IExpress がサポートするコマンドライン スイッチの詳細について、[IExpress のコマンド ライン スイッチ](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages)に関する記事を参照し、ニーズに合うようにコード例を更新してください。
+2. 管理者特権でのコマンド プロンプトからエージェント インストール ファイルを抽出するには、`extract MMASetup-<platform>.exe` を実行します。ファイルの抽出先のパスを指定するように求められます。 `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` 引数を渡すことでパスを指定することもできます。 IExpress がサポートするコマンドライン スイッチの詳細について、[IExpress のコマンド ライン スイッチ](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/197147)に関する記事を参照し、ニーズに合うようにコード例を更新してください。
 
 3. プロンプトで、`%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` を入力します。
 

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169275"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428033"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -95,6 +95,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50000 | TokenIssuanceError - サインイン サービスに問題があります。 この問題を解決するには、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
 | AADSTS50001 | InvalidResource - リソースが無効になっているか、存在しません。 アプリのコードをチェックして、アクセスしようとしているリソースの正確なリソース URL を指定していることを確認します。  |
 | AADSTS50002 | NotAllowedTenant - テナントでプロキシ アクセスが制限されているため、サインインが失敗しました。 自分が所有するテナント ポリシーの場合は、制限されたテナント設定を変更して、この問題を解決できます。 |
+| AADSTS500021 | '{tenant}' テナントへのアクセスが拒否されました。 AADSTS500021 は、テナント制限機能が構成されており、ユーザーが、ヘッダー `Restrict-Access-To-Tenant` で指定されている許可されたテナントの一覧にないテナントにアクセスしようとしていることを示します。 詳細については、「[テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](/azure/active-directory/manage-apps/tenant-restrictions)」を参照してください。|
 | AADSTS50003 | MissingSigningKey - 署名キーまたは証明書がないために、サインインが失敗しました。 アプリで署名キーが構成されていない可能性があります。 [../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured) で概要が説明されている解決策を確認してください。 問題が引き続き発生する場合は、アプリの所有者またはアプリ管理者に問い合わせてください。 |
 | AADSTS50005 | DevicePolicyError - ユーザーが、条件付きアクセス ポリシーで現在サポートされていないプラットフォームからデバイスにログインしようとしました。 |
 | AADSTS50006 | InvalidSignature - 無効な署名のため、署名の検証が失敗しました。 |

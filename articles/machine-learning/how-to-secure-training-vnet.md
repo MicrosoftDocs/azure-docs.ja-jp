@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029568"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493839"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -62,16 +62,19 @@ ms.locfileid: "97029568"
 > * 仮想ネットワークでワークスペースの Azure Storage アカウントもセキュリティで保護される場合、それらは Azure Machine Learning コンピューティング インスタンスまたはクラスターと同じ仮想ネットワークに存在する必要があります。 
 > * コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信が無効になっていないことを確認してください。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。 
 > * コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、仮想ネットワーク内からのみアクセスできます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して `<instance-name>.<region>.instances.azureml.ms` のエントリを追加してください。 詳細については、[カスタム DNS](./how-to-custom-dns.md)に関する記事をご覧ください。
+> * コンピューティング クラスターやインスタンスをデプロイするために使用されるサブネットを、ACI などの他のサービスには委任しないでください。
+> * 仮想ネットワーク サービス エンドポイント ポリシーは、コンピューティング クラスターやインスタンスのシステム ストレージ アカウントに対して機能しません。
+
     
 > [!TIP]
 > Machine Learning コンピューティング インスタンスまたはクラスターにより、__仮想ネットワークが含まれているリソース グループ__ に追加のネットワーク リソースが自動的に割り当てられます。 サービスにより、各コンピューティング インスタンスまたはクラスターについて次のリソースが割り当てられます。
 > 
 > * 1 つのネットワーク セキュリティ グループ
-> * 1 つのパブリック IP アドレス
+> * 1 つのパブリック IP アドレス。 Azure Policy によってパブリック IP の作成が禁止されている場合、クラスターやインスタンスのデプロイが失敗します。
 > * 1 つのロード バランサー
 > 
 > クラスターの場合、クラスターが 0 ノードにスケールダウンするたびに、これらのリソースは削除 (および再作成) されます。しかし、インスタンスの場合は、インスタンスが完全に削除されるまで、リソースは保持されます (停止してもリソースは削除されません)。 
-> これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。
+> これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 仮想ネットワーク リソース グループがロックされている場合、コンピューティング クラスターやインスタンスの削除が失敗します。 コンピューティング クラスターやインスタンスが削除されるまで、ロード バランサーを削除することはできません。
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a>必須ポート

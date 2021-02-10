@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: a7341362183aee4a23556a164677bc320babdfec
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 674ba1cf03f48eb1c746b115d981740b5b938aab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900831"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919529"
 ---
 # <a name="automate-responses-to-security-center-triggers"></a>Security Center のトリガーへの応答を自動化する
 
@@ -49,7 +49,7 @@ ms.locfileid: "92900831"
     1. この自動ワークフローを開始するトリガー。 たとえば、"SQL" を含むセキュリティ警告が生成されたときにロジック アプリを実行することができます。
 
         > [!NOTE]
-        > たとえば、 **SQL データベースの脆弱性評価の結果を修復する必要がある** ことを示す "サブの推奨事項" という推奨事項がトリガーに含まれている場合は、セキュリティに関する新しい結果が得られるたびにロジック アプリがトリガーされることはありません。親の推奨事項の状態が変更された場合のみトリガーされます。
+        > たとえば、**SQL データベースの脆弱性評価の結果を修復する必要がある** ことを示す "サブの推奨事項" という推奨事項がトリガーに含まれている場合は、セキュリティに関する新しい結果が得られるたびにロジック アプリがトリガーされることはありません。親の推奨事項の状態が変更された場合のみトリガーされます。
 
     1. トリガー条件が満たされたときに実行されるロジック アプリ。 
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232303"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785127"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -451,7 +451,7 @@ MSAL.NET では、次を使用する必要があります。
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-通常、必要なパラメーターは 1 つだけです (`scopes`)。 Windows 管理者によるポリシーの設定方法に応じて、Windows マシン上のアプリケーションではサインインしているユーザーの検索が許可されない場合があります。 その場合は、2 番目のメソッドである `.WithUsername()` を使用して、サインインしているユーザーのユーザー名を UPN 形式で渡します (例: `joe@contoso.com`)。 .NET Core では、ユーザー名を受け取るオーバーロードだけを使用できます。これは、.NET Core プラットフォームで OS に対してユーザー名を問い合わせることができないためです。
+通常、必要なパラメーターは 1 つだけです (`scopes`)。 Windows 管理者によるポリシーの設定方法に応じて、Windows マシン上のアプリケーションではサインインしているユーザーの検索が許可されない場合があります。 その場合は、2 番目のメソッドである `.WithUsername()` を使用して、サインインしているユーザーのユーザー名を UPN 形式で渡します (例: `joe@contoso.com`)。
 
 次のサンプルは、最新のケース (および取得可能な例外の種類の説明とその軽減策) を示しています。
 
@@ -1181,7 +1181,7 @@ ADAL.NET 3.x、ADAL.NET 5.x、および MSAL.NET の間で SSO 状態を共有�
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>トークン キャッシュの単純なシリアル化 (MSAL のみ)
 
-次の例では、デスクトップ アプリケーション用のトークン キャッシュについて、カスタムのシリアル化の単純な実装を示します。 ここでは、ユーザーのトークン キャッシュは、アプリケーションと同じフォルダー内のファイルに格納されているか、アプリが[パッケージ化されたデスクトップ アプリケーション](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)である場合はユーザー別にアプリ フォルダーごとに存在します。 完全なコードについては、「[active-directory-dotnet-desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)」のサンプルを参照してください。
+次の例では、デスクトップ アプリケーション用のトークン キャッシュについて、カスタムのシリアル化の単純な実装を示します。 ここでは、ユーザーのトークン キャッシュは、アプリケーションと同じフォルダー内のファイルに格納されているか、アプリが[パッケージ化されたデスクトップ アプリケーション](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes)である場合はユーザー別にアプリ フォルダーごとに存在します。 完全なコードについては、「[active-directory-dotnet-desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2)」のサンプルを参照してください。
 
 アプリケーションをビルドした後、``TokenCacheHelper.EnableSerialization()`` を呼び出し、アプリケーションに `UserTokenCache` を渡すことで、シリアル化を有効にします。
 

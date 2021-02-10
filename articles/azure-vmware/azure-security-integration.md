@@ -3,12 +3,12 @@ title: Azure Security Center 統合を使用して Azure VMware Solution VM を�
 description: Azure Security Center の 1 つのダッシュボードから Azure のネイティブ セキュリティ ツールを使用して Azure VMware Solution VM を保護する方法について説明します。
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937340"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061466"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Security Center 統合を使用して Azure VMware Solution VM を保護する
 
@@ -45,7 +45,7 @@ Log Analytics ワークスペースによってログが収集されたら、Azu
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 
-さまざまなソースからデータを収集するには、Log Analytics ワークスペースが必要になります。 [Azure portal から Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)ことに関するページの手順を参照してください。 
+さまざまなソースからデータを収集するには、Log Analytics ワークスペースが必要になります。 詳細については、[Azure portal での Log Analytics ワークスペースの作成](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Security Center をデプロイして Azure VMware Solution VM を構成する
 

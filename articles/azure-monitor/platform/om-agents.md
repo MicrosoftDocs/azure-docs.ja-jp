@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
-ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 571dcd41da9be578e69d9a8ad40ed05784ae26a8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975576"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941985"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Operations Manager と Log Analytics ワークスペースを統合することで、[System Center Operations Manager](/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Azure Monitor で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら、Azure Monitor のログを利用することができます。
+Operations Manager と Log Analytics ワークスペースを統合することで、[System Center Operations Manager](/system-center/scom/key-concepts) への既存の投資を維持しながら、Azure Monitor で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら、Azure Monitor のログを利用することができます。
 
 * Operations Manager で IT サービスの正常性を監視する
 * インシデントおよび問題の管理をサポートする ITSM ソリューションとの統合を維持する

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 619f2c2670d8e376ad0bca7cf8b93b971be067a0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880727"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092052"
 ---
 # <a name="security-control-v2-privileged-access"></a>セキュリティ コントロール V2:特権アクセス
 
@@ -26,7 +26,7 @@ ms.locfileid: "98880727"
 
 高い特権を持つユーザー アカウントの数を制限し、これらのアカウントを昇格されたレベルで保護します。 Azure AD で最も重要な組み込みロールは、全体管理者と特権ロール管理者です。それは、これら 2 つのロールが割り当てられたユーザーが、管理者ロールを委任できるからです。 これらの特権を使用すると、ユーザーは Azure 環境内のすべてのリソースを直接または間接に読み取り、変更できます。
 
-- 全体管理者または会社の管理者:このロールが割り当てられたユーザーは、Azure AD のすべての管理機能に加え、Azure AD ID を使用するサービスにもアクセスできます。
+- グローバル管理者:このロールが割り当てられたユーザーは、Azure AD のすべての管理機能に加え、Azure AD ID を使用するサービスにもアクセスできます。
 
 - 特権ロール管理者:このロールが割り当てられたユーザーは、Azure AD と Azure AD Privileged Identity Management (PIM) 内でロールの割り当てを管理できます。 さらに、このロールは、PIM と管理単位のすべての側面を管理できます。
 

@@ -3,16 +3,16 @@ title: Azure Service Bus サブスクリプション ルール SQL フィルタ�
 description: この記事では、SQL フィルターの文法について詳しく説明します。 SQL フィルターでは、SQL-92 標準のサブセットがサポートされます。
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498678"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742983"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>サブスクリプション ルールの SQL フィルター構文
 
-"*SQL フィルター*" は、Service Bus トピック サブスクリプションで使用できるフィルターの種類の 1 つです。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 フィルター式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の 'sqlFilter' プロパティの `sqlExpression` 要素、Azure CLI `az servicebus topic subscription rule create` コマンドの [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数と共に使用されます。
+"*SQL フィルター*" は、Service Bus トピック サブスクリプションで使用できるフィルターの種類の 1 つです。 これは、SQL-92 標準のサブセットに基づくテキスト式です。 フィルター式は、[Azure Resource Manager テンプレート](service-bus-resource-manager-namespace-topic-with-rule.md)内の Service Bus `Rule` の 'sqlFilter' プロパティの `sqlExpression` 要素、Azure CLI `az servicebus topic subscription rule create` コマンドの [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create) 引数、およびサブスクリプション ルールの管理を可能にするいくつかの SDK 関数と共に使用されます。
 
 Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ セレクター構文](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html)もサポートされています。
 
@@ -270,62 +270,13 @@ Service Bus Premium では、JMS 2.0 API を介して [JMS SQL メッセージ �
 -   算術演算子 (`+`、`-`、`*`、`/`、`%` など) は、データ型の上位変換および暗黙的な変換で C# 演算子の結合と同じセマンティクスに従います。
 
 
-## <a name="examples"></a>例
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
 
-### <a name="set-rule-action-for-a-sql-filter"></a>SQL フィルターのルール アクションの設定
-
-```csharp
-// instantiate the ManagementClient
-this.mgmtClient = new ManagementClient(connectionString);
-
-// create the SQL filter
-var sqlFilter = new SqlFilter("source = @stringParam");
-
-// assign value for the parameter
-sqlFilter.Parameters.Add("@stringParam", "orders");
-
-// instantiate the Rule = Filter + Action
-var filterActionRule = new RuleDescription
-{
-    Name = "filterActionRule",
-    Filter = sqlFilter,
-    Action = new SqlRuleAction("SET source='routedOrders'")
-};
-
-// create the rule on Service Bus
-await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
-```
-
-### <a name="sql-filter-on-a-system-property"></a>システム プロパティでの SQL フィルター
-
-```csharp
-sys.Label LIKE '%bus%'`
-```
-
-### <a name="using-or"></a>OR の使用 
-
-```csharp
- sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
-```
-
-### <a name="using-in-and-not-in"></a>IN と NOT IN の使用
-
-```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
-
-sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
-
-sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
-```
-
-C# のサンプルについては、[GitHub のトピック フィルターのサンプル](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters)を参照してください。
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [SQLFilter クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
 - [SQLFilter クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
 - [SqlFilter クラス (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
 - [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
-- [az servicebus topic subscription rule](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

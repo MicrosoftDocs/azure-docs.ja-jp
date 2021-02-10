@@ -4,12 +4,12 @@ description: Azure コンテナー レジストリの保存時の暗号化、お
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: fb30610457e539250c33d7d9726fe10f9c0f8c5a
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620448"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062730"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを暗号化する
 
@@ -566,21 +566,31 @@ Key Vault ファイアウォールを使用して構成されたキー コンテ
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-### <a name="removing-user-assigned-identity"></a>ユーザー割り当て ID を削除する
+### <a name="removing-managed-identity"></a>マネージド ID の削除
 
-暗号化に使用されるユーザー割り当て ID をレジストリから削除しようとすると、次のようなエラー メッセージが表示されることがあります。
+
+暗号化の構成に使用されるユーザー割り当てまたはシステム割り当てのマネージド ID をレジストリから削除しようとすると、次のようなエラー メッセージが表示されることがあります。
  
 ```
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-暗号化キーを変更 (ローテーション) することもできません。 この問題が発生した場合、まず、エラー メッセージに表示されている GUID を使用して ID の再割り当てを行ってください。 次に例を示します。
+暗号化キーを変更 (ローテーション) することもできません。 解決手順は、暗号化に使用される ID の種類によって異なります。
+
+**ユーザー割り当て ID**
+
+ユーザー割り当て ID でこの問題が発生した場合、まず、エラー メッセージに表示されている GUID を使用して ID の再割り当てを行ってください。 次に例を示します。
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 ```
         
 その後、キーを変更して異なる ID を割り当てれば、元のユーザー割り当て ID を削除することができます。
+
+**システム割り当て ID**
+
+システム割り当て ID でこの問題が発生した場合は、[Azure サポート チケットを作成](https://azure.microsoft.com/support/create-ticket/)して ID の復元の支援を求めてください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

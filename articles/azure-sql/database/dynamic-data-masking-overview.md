@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/04/2020
+ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: f8d352dac98f953f7f6d8033d0d9e1376c4da313
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532246"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918082"
 ---
 # <a name="dynamic-data-masking"></a>動的データ マスク 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,15 +26,11 @@ Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse Analyt
 
 動的データ マスクでは、公開するデリケートなデータの量を指定することで、デリケートなデータに対する未承認のアクセスを防ぎ、アプリケーション レイヤーへの影響は最小限に抑えられます。 これはポリシー ベースのセキュリティ機能です。これにより、データベース内のデータはそのままで、指定されたデータベース フィールドに対するクエリの結果セットで機微なデータを非表示にすることができます。
 
-たとえば、コール センターのサポート担当者は、クレジット カード番号の一部の数字から電話の相手を特定できますが、このようなデータ項目をサポート担当者にすべて公開してはなりません。 クエリの結果セットのクレジット カード番号の末尾 4 桁を除くすべての数字をマスクするマスク ルールを定義できます。 別の例として、開発者は、適切なデータ マスクを定義し、個人データを保護し、法令遵守規定に違反することなくトラブルシューティングの目的で運用環境に対して照会を行うことができます。
+たとえば、コール センターのサービス担当者は、メール アドレスのいくつかの文字を確認することによって発信者を識別できます。ただし、完全なメール アドレスをサービス担当者に開示すべきではありません。 クエリの結果セット内のすべての電子メール アドレスをマスクするマスク ルールを定義できます。 別の例として、開発者は、適切なデータ マスクを定義し、個人データを保護し、法令遵守規定に違反することなくトラブルシューティングの目的で運用環境に対して照会を行うことができます。
 
 ## <a name="dynamic-data-masking-basics"></a>動的データ マスキングの基礎
 
 Azure portal で動的データ マスキング ポリシーを設定するには、SQL Database 構成ペインの **[セキュリティ]** の下にある **[動的データ マスキング]** ブレードを選択します。 この機能は、ポータルを使用して SQL Managed Instance に設定することはできません (PowerShell または REST API を使用してください)。 詳細については、「 [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking)」を参照してください。
-
-### <a name="dynamic-data-masking-permissions"></a>動的データ マスクのアクセス許可
-
-動的データ マスクを構成できるのは、Azure SQL Database 管理者、サーバー管理者、または [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)の各ロールです。
 
 ### <a name="dynamic-data-masking-policy"></a>動的データ マスク ポリシー
 
@@ -83,3 +79,11 @@ REST API を使用して、データ マスク ポリシーおよびルールを
 
 - [作成または更新](/rest/api/sql/datamaskingrules/createorupdate):データベース データ マスク ルールを作成または更新します。
 - [データベース別の一覧表示](/rest/api/sql/datamaskingrules/listbydatabase):データベース データ マスク ルールの一覧を取得します。
+
+## <a name="permissions"></a>アクセス許可
+
+動的データ マスクを構成できるのは、Azure SQL Database 管理者、サーバー管理者、またはロールベースのアクセス制御 (RBAC) の [SQL セキュリティ管理者](../../role-based-access-control/built-in-roles.md#sql-security-manager)の各ロールです。
+
+## <a name="next-steps"></a>次のステップ
+
+[動的なデータ マスキング](/sql/relational-databases/security/dynamic-data-masking)

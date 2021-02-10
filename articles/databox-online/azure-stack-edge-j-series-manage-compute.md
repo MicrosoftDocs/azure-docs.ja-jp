@@ -6,26 +6,26 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/27/2021
 ms.author: alkohli
-ms.openlocfilehash: 1d4d0c591640a3528b7aeec5254f2a634ee008aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c4fbef807d31e03a79f80db7fd29580074fb8bd
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743677"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955456"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU でコンピューティングを管理する
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-この記事では、Azure Stack Edge Pro でコンピューティングを管理する方法について説明します。 コンピューティングの管理は、Azure portal またはローカル Web UI から行うことができます。 Azure portal を使用してモジュール、トリガー、およびコンピューティング構成を管理し、ローカル Web UI を使用してコンピューティング設定を管理します。
+この記事では、Azure Stack Edge Pro GPU デバイス上の IoT Edge サービスを介してコンピューティングを管理する方法について説明します。 コンピューティングの管理は、Azure portal またはローカル Web UI から行うことができます。 Azure portal を使用してモジュール、トリガー、IoT Edge 構成を管理し、ローカル Web UI を使用してコンピューティング ネットワーク設定を管理します。
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * トリガーの管理
-> * コンピューティング構成の管理
+> * IoT Edge 構成の管理
 
 
 ## <a name="manage-triggers"></a>トリガーの管理
@@ -40,7 +40,7 @@ ms.locfileid: "91743677"
 
 トリガーを作成するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Edge コンピューティング] > [トリガー]** に移動します。 コマンド バーの **[+ トリガーの追加]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[IoT Edge]** に移動します。 **[トリガー]** に移動し、コマンド バーで **[+ トリガーの追加]** を選択します。
 
     ![[トリガーの追加] の選択](media/azure-stack-edge-j-series-manage-compute/add-trigger-1m.png)
 
@@ -82,32 +82,32 @@ ms.locfileid: "91743677"
 
 トリガーの一覧が更新され、削除が反映されます。
 
-## <a name="manage-compute-configuration"></a>コンピューティング構成の管理
+## <a name="manage-iot-edge-configuration"></a>IoT Edge 構成の管理
 
 Azure portal を使用して、Azure Stack Edge Pro のコンピューティング構成の表示、既存のコンピューティング構成の削除、または IoT デバイスと IoT Edge デバイスのアクセス キーと同期するようコンピューティング構成の更新を行います。
 
-### <a name="view-compute-configuration"></a>コンピューティング構成の表示
+### <a name="view-iot-edge-configuration"></a>IoT Edge 構成の表示
 
-デバイスのコンピューティング構成を表示するには、Azure portal で次の手順を実行します。
+デバイスの IoT Edge 構成を表示するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Edge コンピューティング] > [モジュール]** に移動します。 コマンド バーの **[View compute]\(コンピューティングの表示\)** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[IoT Edge]** に移動します。 デバイスで IoT Edge サービスが有効になると、概要ページで IoT Edge サービスが正常に実行されていることが示されます。
 
     ![[View compute]\(コンピューティングの表示\) の選択](media/azure-stack-edge-j-series-manage-compute/view-compute-1.png)
 
-2. デバイスのコンピューティング構成をメモします。 コンピューティングを構成したときに、IoT Hub リソースを作成しました。 その IoT Hub リソースの下に、IoT デバイスと IoT Edge デバイスが構成されています。 IoT Edge デバイスでの実行がサポートされているのは Linux モジュールのみです。
+2. **[プロパティ]** に移動して、デバイスの IoT Edge 構成を表示します。 コンピューティングを構成したときに、IoT Hub リソースを作成しました。 その IoT Hub リソースの下に、IoT デバイスと IoT Edge デバイスが構成されています。 IoT Edge デバイスでの実行がサポートされているのは Linux モジュールのみです。
 
     ![構成の表示](media/azure-stack-edge-j-series-manage-compute/view-compute-2.png)
 
 
-### <a name="remove-compute-configuration"></a>コンピューティング構成の削除
+### <a name="remove-iot-edge-service"></a>IoT Edge サービスの削除
 
-デバイスの既存の Edge コンピューティング構成を削除するには、Azure portal で次の手順を実行します。
+デバイスの既存の IoT Edge 構成を削除するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Edge コンピューティング] > [開始する]** に移動します。 コマンド バーの **[Remove compute]\(コンピューティングの削除\)** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[IoT Edge]** に移動します。 **[概要]** に移動し、コマンド バーで **[削除]** を選択します。
 
     ![[Remove compute]\(コンピューティングの削除\) の選択](media/azure-stack-edge-j-series-manage-compute/remove-compute-1.png)
 
-2. コンピューティング構成を削除した場合、コンピューティングをもう一度使用するときはデバイスを再構成する必要があります。 確認を求められたら、 **[はい]** を選択します。
+2. IoT Edge サービスを削除した場合、その操作は元に戻すことや取り消すことができません。 作成したモジュールとトリガーも削除されます。 IoT Edge を再使用する必要がある場合は、デバイスを再構成する必要があります。 確認を求められたら、 **[OK]** を選択します。
 
     ![[Remove compute]\(コンピューティングの削除\) の選択 2](media/azure-stack-edge-j-series-manage-compute/remove-compute-2.png)
 
@@ -121,11 +121,11 @@ IoT デバイスと IoT Edge デバイスのキーをローテーションした
 
 デバイスのアクセス キーを同期するには、Azure portal で次の手順を実行します。
 
-1. Azure portal で Azure Stack Edge リソースに移動し、 **[Edge コンピューティング] > [開始する]** に移動します。 コマンド バーの **[構成の更新]** を選択します。
+1. Azure portal で Azure Stack Edge リソースに移動し、 **[IoT Edge コンピューティング]** に移動します。 **[概要]** に移動し、コマンド バーで **[構成の更新]** を選択します。
 
     ![[構成の更新] を選択](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-1.png)
 
-2. 確認を求められたら、**[はい]** を選択します。
+2. 確認を求められたら、 **[はい]** を選択します。
 
     ![確認を求められたら [はい] を選択](media/azure-stack-edge-j-series-manage-compute/refresh-configuration-2.png)
 

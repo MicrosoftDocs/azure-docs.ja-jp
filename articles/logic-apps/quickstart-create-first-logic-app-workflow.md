@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d90b9e38158d951990fffc21a43317c688da12c9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455063"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052044"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>クイックスタート: 初めての Logic Apps ワークフローを作成する - Azure portal
 
@@ -30,11 +30,14 @@ ms.locfileid: "96455063"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 お持ちでない場合は、[無料の Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
+* Azure アカウントとサブスクリプション。 お持ちでない場合は、[無料の Azure アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
+
 * Logic Apps によってサポートされているサービス (Office 365 Outlook、Outlook.com など) の電子メール アカウント。 サポートされているその他の電子メール プロバイダーについては、[コネクタの一覧を確認](/connectors/)してください。
 
     > [!IMPORTANT]
     > [Gmail コネクタ](/connectors/gmail/)を使用している場合、Logic Apps で制限なしにこのコネクタを使用できるのは G Suite アカウントのみであることに注意してください。 コンシューマー Gmail アカウントを持っている場合は、[Gmail コネクタでの認証に使用する Google クライアント アプリを作成](/connectors/gmail/#authentication-and-bring-your-own-application)しない限り、Google によって承認された特定のサービスでのみこのコネクタを使用できます。 詳細については、「[Azure Logic Apps での Google コネクタのデータ セキュリティとプライバシー ポリシー](../connectors/connectors-google-data-security-privacy-policy.md)」を参照してください。
+
+* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の[マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
 
 <a name="create-logic-app"></a>
 
@@ -51,7 +54,7 @@ ms.locfileid: "96455063"
    ![Azure portal の Logic Apps サービス ページのスクリーンショット。ロジック アプリの一覧と選択された [追加] ボタンが示されています。](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
 
 1. **[Logic App]** ペインで、ご自分のロジック アプリの基本的な詳細と設定を入力します。 このサンプル ロジック アプリ用に、新しい[リソース グループ](../azure-resource-manager/management/overview.md#terminology)を作成します。
-    
+
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **名前** | <*ロジック アプリ名*> | ロジック アプリの名前。リージョン全体で一意である必要があります。 名前に含めることができるのは、文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、ピリオド (`.`) のみです。 この例では、"My-First-Logic-App" を使用します。 |

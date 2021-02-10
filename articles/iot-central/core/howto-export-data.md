@@ -8,12 +8,12 @@ ms.date: 11/05/2020
 ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperf-fy21q1, contperf-fy21q3
-ms.openlocfilehash: 3079b8384a24642322d6f6eb86e2ca7f0927db15
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 350cd7c14a4f1ee5058a60ccf60c1205ce97916a
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065390"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226064"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする
 
@@ -35,6 +35,8 @@ ms.locfileid: "98065390"
 ## <a name="prerequisites"></a>前提条件
 
 データ エクスポート機能を使用するには、[V3 アプリケーション](howto-get-app-info.md)が必要です。また、[データ エクスポート](howto-manage-users-roles.md)のアクセス許可が必要です。
+
+V2 アプリケーションをご使用の場合は、[V3 への V2 IoT Central アプリケーションの移行](howto-migrate.md)に関する記事を参照してください。
 
 ## <a name="set-up-export-destination"></a>エクスポート先の設定
 
@@ -164,7 +166,7 @@ ms.locfileid: "98065390"
 
 1. エクスポートの設定が完了したら、 **[保存]** を選択します。 数分後に、エクスポート先にデータが表示されます。
 
-## <a name="export-contents-and-format"></a>エクスポートの内容と形式
+## <a name="destinations"></a>変換先
 
 ### <a name="azure-blob-storage-destination"></a>Azure Blob Storage の宛先
 
@@ -185,7 +187,7 @@ Azure portal でエクスポートされたファイルを参照するには、�
 
 Webhook が宛先の場合も、データはほぼリアルタイムでエクスポートされます。 メッセージ本文のデータは、Event Hubs および Service Bus と同じ形式です。
 
-### <a name="telemetry-format"></a>テレメトリ形式
+## <a name="telemetry-format"></a>テレメトリ形式
 
 エクスポートされた各メッセージには、メッセージ本文でデバイスから送信された、完全なメッセージが正規化された形式で含まれます。 メッセージは JSON 形式で、UTF-8 としてエンコードされます。 各メッセージに含まれる情報は次のとおりです。
 
@@ -229,6 +231,102 @@ Blob Storage の場合、メッセージはバッチ処理され、1 分に 1 �
     "messageProperties": {
       "messageProp": "value"
     }
+}
+```
+
+### <a name="message-properties"></a>メッセージのプロパティ
+
+テレメトリ メッセージには、テレメトリ ペイロードに加え、メタデータのプロパティが含まれています。 前のスニペットは、`deviceId` や `enqueuedTime` など、システム メッセージの例を示しています。 システム メッセージ プロパティの詳細については、「[D2C IoT Hub メッセージのシステム プロパティ](../../iot-hub/iot-hub-devguide-messages-construct.md#system-properties-of-d2c-iot-hub-messages)」を参照してください。
+
+テレメトリ メッセージにカスタム メタデータを追加する必要がある場合、テレメトリ メッセージにプロパティを追加できます。 たとえば、デバイスでメッセージが作成されるとき、タイムスタンプを追加する必要があります。
+
+次のコード スニペットは、デバイス上でメッセージを作成するとき、それに `iothub-creation-time-utc` プロパティを追加する方法を示しています。
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.properties.add("iothub-creation-time-utc", new Date().toISOString());
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
+}
+```
+
+# <a name="java"></a>[Java](#tab/java)
+
+```java
+private static void sendTemperatureTelemetry() {
+  String telemetryName = "temperature";
+  String telemetryPayload = String.format("{\"%s\": %f}", telemetryName, temperature);
+
+  Message message = new Message(telemetryPayload);
+  message.setContentEncoding(StandardCharsets.UTF_8.name());
+  message.setContentTypeFinal("application/json");
+  message.setProperty("iothub-creation-time-utc", Instant.now().toString());
+
+  deviceClient.sendEventAsync(message, new MessageIotHubEventCallback(), message);
+  log.debug("My Telemetry: Sent - {\"{}\": {}°C} with message Id {}.", telemetryName, temperature, message.getMessageId());
+  temperatureReadings.put(new Date(), temperature);
+}
+```
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+```csharp
+private async Task SendTemperatureTelemetryAsync()
+{
+  const string telemetryName = "temperature";
+
+  string telemetryPayload = $"{{ \"{telemetryName}\": {_temperature} }}";
+  using var message = new Message(Encoding.UTF8.GetBytes(telemetryPayload))
+  {
+      ContentEncoding = "utf-8",
+      ContentType = "application/json",
+  };
+  message.Properties.Add("iothub-creation-time-utc", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+  await _deviceClient.SendEventAsync(message);
+  _logger.LogDebug($"Telemetry: Sent - {{ \"{telemetryName}\": {_temperature}°C }}.");
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```python
+async def send_telemetry_from_thermostat(device_client, telemetry_msg):
+    msg = Message(json.dumps(telemetry_msg))
+    msg.custom_properties["iothub-creation-time-utc"] = datetime.now(timezone.utc).isoformat()
+    msg.content_encoding = "utf-8"
+    msg.content_type = "application/json"
+    print("Sent message")
+    await device_client.send_message(msg)
+```
+
+---
+
+次のスニペットは、BLOB ストレージにエクスポートされたメッセージにおけるこのプロパティを示しています。
+
+```json
+{
+  "applicationId":"5782ed70-b703-4f13-bda3-1f5f0f5c678e",
+  "messageSource":"telemetry",
+  "deviceId":"sample-device-01",
+  "schema":"default@v1",
+  "templateId":"urn:modelDefinition:mkuyqxzgea:e14m1ukpn",
+  "enqueuedTime":"2021-01-29T16:45:39.143Z",
+  "telemetry":{
+    "temperature":8.341033560421833
+  },
+  "messageProperties":{
+    "iothub-creation-time-utc":"2021-01-29T16:45:39.021Z"
+  },
+  "enrichments":{}
 }
 ```
 

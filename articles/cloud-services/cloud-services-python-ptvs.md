@@ -1,23 +1,24 @@
 ---
-title: Python と Azure Cloud Services を使ってみる | Microsoft Docs
+title: Python と Azure Cloud Services (クラシック) を使ってみる | Microsoft Docs
 description: Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要
-services: cloud-services
-documentationcenter: python
-author: tgore03
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: python
-ms.topic: conceptual
-ms.date: 07/18/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: 955498c663560351c01f1894fb348b89f72d549b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16aa6918c0f4b0df5ebf23f28268f8cbe5223fce
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079243"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743289"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 この記事では、[Python Tools for Visual Studio][Python Tools for Visual Studio] で Python Web ロールと Python worker ロールを扱う方法について概説します。 Python を使用する基本的なクラウド サービスを、Visual Studio を使用して作成およびデプロイする方法を学習します。
 
@@ -32,7 +33,7 @@ ms.locfileid: "92079243"
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Python Web ロールと Python worker ロールについて
-Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という 3 つのコンピューティング モデルが用意されています。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)* " を提供します。 クラウド サービス内で、Web ロールは、フロント エンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。worker ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
+Azure には、アプリケーションの実行用として、[Azure App Service の Web Apps 機能][execution model-web sites]、[Azure Virtual Machines][execution model-vms]、[Azure Cloud Services][execution model-cloud services] という 3 つのコンピューティング モデルが用意されています。 これら 3 つのモデルはすべて、Python をサポートしています。 Cloud Services には、Web ロールと worker ロールが含まれ、"*サービスとしてのプラットフォーム (PaaS)*" を提供します。 クラウド サービス内で、Web ロールは、フロント エンド Web アプリケーションのホスト専用のインターネット インフォメーション サービス (IIS) Web サーバーを提供します。worker ロールは、ユーザーの操作や入力とは関係なく、長期間または恒久的な非同期タスクを実行できます。
 
 詳細については、「[クラウド サービスとは]」を参照してください。
 
@@ -44,7 +45,7 @@ Azure には、アプリケーションの実行用として、[Azure App Servic
 > 
 
 ## <a name="project-creation"></a>プロジェクトの作成
-Visual Studio で、 **[新しいプロジェクト]** ダイアログ ボックスの **[Python]** から **[Azure クラウド サービス]** を選択します。
+Visual Studio で、**[新しいプロジェクト]** ダイアログ ボックスの **[Python]** から **[Azure クラウド サービス]** を選択します。
 
 ![[新しいプロジェクト] ダイアログ](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
@@ -304,18 +305,18 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 PTVS (Python Tools for Visual Studio) はエミュレーターでの起動をサポートしていますが、デバッグ操作 (ブレークポイントなど) は機能しません。
 
-Web ロールまたは worker ロールをデバッグするには、対象となるロール プロジェクトをスタートアップ プロジェクトに設定したうえで、デバッグするようにしてください。  複数のスタートアップ プロジェクトを設定することもできます。  ソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
+Web ロールまたは worker ロールをデバッグするには、対象となるロール プロジェクトをスタートアップ プロジェクトに設定したうえで、デバッグするようにしてください。  複数のスタートアップ プロジェクトを設定することもできます。  ソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** を選択します。
 
 ![ソリューション スタートアップ プロジェクト プロパティ](./media/cloud-services-python-ptvs/startup.png)
 
 ## <a name="publish-to-azure"></a>Azure に発行する
-クラウド サービス プロジェクトを発行するには、対象のクラウド サービス プロジェクトをソリューション内で右クリックし、 **[発行]** を選択します。
+クラウド サービス プロジェクトを発行するには、対象のクラウド サービス プロジェクトをソリューション内で右クリックし、**[発行]** を選択します。
 
 ![Microsoft Azure 発行サインイン](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
 ウィザードに従って操作します。 必要に応じて、リモート デスクトップを有効にします。 リモート デスクトップは、デバッグの必要があるときに便利です。
 
-設定が済んだら、 **[発行]** をクリックします。
+設定が済んだら、**[発行]** をクリックします。
 
 出力ウィンドウにいくつかの進行状況が表示された後、[Microsoft Azure のアクティビティ ログ] ウィンドウが表示されます。
 

@@ -9,14 +9,14 @@ ms.date: 01/13/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a51a158700df52ced5288cf2c2f82ebcdf3de54d
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 546ed24b5f9e7892f40c9d425b668f60ad705f8f
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98254023"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493890"
 ---
-# <a name="create-azure-subscriptions-programatically"></a>Azure サブスクリプションをプログラムから作成する
+# <a name="create-azure-subscriptions-programmatically"></a>Azure サブスクリプションをプログラムから作成する
 
 この記事では、Azure サブスクリプションをプログラムから作成する際に利用できる選択肢について説明しています。
 

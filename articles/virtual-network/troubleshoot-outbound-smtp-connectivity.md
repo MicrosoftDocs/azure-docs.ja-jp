@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 518b8e33ac9adfdd1aa121e0cb8d1558545980e7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883114"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054856"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング
 
@@ -27,7 +27,7 @@ ms.locfileid: "97883114"
 
 ## <a name="recommended-method-of-sending-email"></a>メール送信の推奨される方法
 
-Azure VM から、または Azure App Service からメールを送信する場合は、認証済み SMTP リレー サービスを使用することをお勧めします。 (これらのリレー サービスは、通常は TCP ポート 587 または 443 を介して接続されますが、他のポートもサポートされます)。これらのサービスは、IP またはドメインの評価を維持して、サード パーティのメール プロバイダーでメッセージが拒否される可能性を最小限に抑えるために使用されます。 [SendGrid](https://sendgrid.com/partners/azure/) は、このような SMTP リレー サービスの 1 つですが、他にもあります。 オンプレミスで実行される安全な SMTP リレー サービスを使用できる場合もあります。
+Azure VM から、または Azure App Service からメールを送信する場合は、認証済み SMTP リレー サービスを使用することをお勧めします。 (これらのリレー サービスは、通常は TCP ポート 587 を介して接続されますが、他のポートもサポートされます)。これらのサービスは、IP またはドメインの評価を維持して、サード パーティのメール プロバイダーでメッセージが拒否される可能性を最小限に抑えるために使用されます。 [SendGrid](https://sendgrid.com/partners/azure/) は、このような SMTP リレー サービスの 1 つですが、他にもあります。 オンプレミスで実行される安全な SMTP リレー サービスを使用できる場合もあります。
 
 サブスクリプションの種類に関係なく、Azure ではこれらのメール配信サービスの使用は制限されません。
 

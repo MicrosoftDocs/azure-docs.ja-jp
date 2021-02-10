@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 52cb701312f598b1b8492226709a7d2767db9600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5c5166785ad8c82c114fb7193cd49716536b408
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187270"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896598"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Automation で Runbook を開始する
 
@@ -77,7 +77,7 @@ Smith
 
 パラメーターが [array] や [string[]] などの配列の場合、 *[Value1, Value2, Value3]* という JSON 形式を使用して値の一覧を送信できます。 これらの値は単純型にする必要があります。
 
-*user*というパラメーターを受け入れる次のテスト Runbook について考慮してください。
+*user* というパラメーターを受け入れる次のテスト Runbook について考慮してください。
 
 ```powershell
 Workflow Test-Parameters
@@ -145,13 +145,13 @@ jsmith
 
 ## <a name="start-a-runbook-with-powershell"></a>PowerShell で Runbook を開始する
 
-[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) を使用して、Windows PowerShell で Runbook を開始できます。 次のサンプル コードは、**Test-Runbook** という Runbook を開始します。
+[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) を使用して、Windows PowerShell で Runbook を開始できます。 次のサンプル コードは、**Test-Runbook** という Runbook を開始します。
 
 ```azurepowershell-interactive
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook` は、Runbook の開始後に状態を追跡するために使用できるジョブ オブジェクトを返します。 次に、このジョブ オブジェクトを [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) で使用してジョブの状態を判断し、[Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) で使用してその出力を取得できます。 次の例は、**Test-Runbook** という Runbook を開始し、完了するまで待ってからその出力を表示します。
+`Start-AzAutomationRunbook` は、Runbook の開始後に状態を追跡するために使用できるジョブ オブジェクトを返します。 次に、このジョブ オブジェクトを [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob) で使用してジョブの状態を判断し、[Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) で使用してその出力を取得できます。 次の例は、**Test-Runbook** という Runbook を開始し、完了するまで待ってからその出力を表示します。
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"

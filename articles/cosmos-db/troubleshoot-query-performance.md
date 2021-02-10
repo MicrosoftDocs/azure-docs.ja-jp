@@ -4,16 +4,16 @@ description: Azure Cosmos DB の SQL クエリに関する問題を特定、診�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 10/12/2020
+ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905113"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475728"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -62,6 +62,8 @@ Azure Cosmos DB でクエリを最適化する場合、最初の手順は常に�
 - [インデックス作成ポリシーに必要なパスを含める。](#include-necessary-paths-in-the-indexing-policy)
 
 - [インデックスを使用するシステム関数について理解する。](#understand-which-system-functions-use-the-index)
+
+- [文字列システム関数の実行を改善する。](#improve-string-system-function-execution)
 
 - [インデックスを使用する集計クエリについて理解する。](#understand-which-aggregate-queries-use-the-index)
 
@@ -198,10 +200,11 @@ WHERE c.description = "Malabar spinach, cooked"
 
 ほとんどのシステム関数では、インデックスが使用されます。 インデックスを使用する一般的な文字列関数の一覧を次に示します。
 
-- STARTSWITH(str_expr1, str_expr2, bool_expr)  
-- CONTAINS(str_expr, str_expr, bool_expr)
-- LEFT(str_expr, num_expr) = str_expr
-- SUBSTRING(str_expr, num_expr, num_expr) = str_expr (ただし、最初の num_expr が 0 の場合のみ)
+- StartsWith
+- Contains
+- RegexMatch
+- Left
+- Substring - ただし、最初の num_expr が 0 の場合のみ
 
 インデックスを使用せず、各ドキュメントを読み込む必要がある一般的なシステム関数は、次のとおりです。
 
@@ -210,11 +213,21 @@ WHERE c.description = "Malabar spinach, cooked"
 | UPPER/LOWER                             | システム関数を使用して比較のためにデータを正規化する代わりに、挿入時に大文字と小文字を正規化します。 ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` のようなクエリが、```SELECT * FROM c WHERE c.name = 'BOB'``` になります。 |
 | 数学関数 (非集計) | クエリで値を頻繁に計算する必要がある場合は、JSON ドキュメントのプロパティとして値を格納することを検討します。 |
 
-------
+### <a name="improve-string-system-function-execution"></a>文字列システム関数の実行を改善する
 
-システム関数でインデックスが使用されている上で、まだ RU 料金が高い場合は、クエリに `ORDER BY` を追加してみてください。 場合によっては、`ORDER BY` を追加すると、特にクエリが長時間実行されている場合や複数のページにまたがる場合に、システム関数のインデックス使用率が向上します。
+インデックスを使用するシステム関数の中には、クエリに `ORDER BY` 句を追加することによって、クエリの実行を改善できるものもあります。 
 
-たとえば、次のような `CONTAINS` が含まれる SQL クエリについて考えます。 `CONTAINS` ではインデックスを使用する必要がありますが、関連するインデックスを追加した後も、次のクエリを実行すると非常に高い RU 料金が発生したとします。
+具体的には、プロパティのカーディナリティが増加するにつれて RU 料金が増加するすべてのシステム関数は、クエリに `ORDER BY` を含めることでメリットが得られる可能性があります。 これらのクエリではインデックス スキャンが実行されるため、クエリ結果を並べ替えることにより、クエリの効率を高めることができます。
+
+この最適化により、次のシステム関数の実行が向上します。
+
+- StartsWith (大文字と小文字を区別しない = true)
+- StringEquals (大文字と小文字を区別しない = true)
+- Contains
+- RegexMatch
+- EndsWith
+
+たとえば、次のような `CONTAINS` が含まれる SQL クエリについて考えます。 `CONTAINS` ではインデックスが使用されますが、関連するインデックスを追加した後でも、次のクエリを実行すると非常に高い RU 料金が発生する場合があります。
 
 元のクエリ:
 
@@ -224,13 +237,32 @@ FROM c
 WHERE CONTAINS(c.town, "Sea")
 ```
 
-`ORDER BY` を追加して更新されたクエリ:
+`ORDER BY` を追加することで、クエリの実行を改善させることができます。
 
 ```sql
 SELECT *
 FROM c
 WHERE CONTAINS(c.town, "Sea")
 ORDER BY c.town
+```
+
+同じ最適化は、フィルターを追加したクエリにも役立ちます。 この場合、`ORDER BY` 句に等値フィルターを含むプロパティも追加することをお勧めします。
+
+元のクエリ:
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+```
+
+`ORDER BY` と (c.name, c.town) の[複合インデックス](index-policy.md#composite-indexes)を追加することで、クエリの実行を改善することができます。
+
+```sql
+SELECT *
+FROM c
+WHERE c.name = "Samer" AND CONTAINS(c.town, "Sea")
+ORDER BY c.name, c.town
 ```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>インデックスを使用する集計クエリについて理解する

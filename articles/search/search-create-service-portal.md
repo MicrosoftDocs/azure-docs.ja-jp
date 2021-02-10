@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/14/2020
-ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/23/2021
+ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249756"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746698"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
-Azure Cognitive Search は、カスタム アプリに検索エクスペリエンスを追加するために使用されるスタンドアロンのリソースです。 Cognitive Search は、他の Azure サービス、ネットワーク サーバー上のアプリ、または他のクラウド プラットフォーム上で実行されているソフトウェアと簡単に統合できます。
+[Azure Cognitive Search](search-what-is-azure-search.md) は、カスタム アプリにフルテキスト検索エクスペリエンスを追加する際に使用される Azure リソースです。 データや二次的な処理を提供する他の Azure サービス、ネットワーク サーバー上のアプリ、他のクラウド プラットフォーム上で実行されているソフトウェアと簡単に統合できます。
 
-この記事では、[Azure portal](https://portal.azure.com/) 内でリソースを作成する方法を説明します。
+この記事では、[Azure portal](https://portal.azure.com/) 内で検索サービスを作成する方法を説明します。
 
 [![アニメーション GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -31,7 +31,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 * サービス名は URL エンドポイントの一部になります (有用なサービス名については、[ヒントを再確認](#name-the-service)してください)。
 * [サービス レベル](search-sku-tier.md)によって料金が変わり、容量の上限が設定されます。 一部の機能は、Free レベルでは使用できません。
-* サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 [高セキュリティ機能](search-security-overview.md)または [AI エンリッチメント](cognitive-search-concept-intro.md)が必要な場合は、Azure Cognitive Search を他のサービスと同じリージョンに配置するか、対象の機能が提供されているリージョンに配置する必要があります。 
+* サービス リージョンによって、特定のシナリオの可用性が決まる場合があります。 [高セキュリティ機能](search-security-overview.md)または [AI エンリッチメント](cognitive-search-concept-intro.md)が必要な場合は、Azure Cognitive Search を他のサービスと同じリージョンに作成するか、対象の機能が提供されているリージョンに作成する必要があります。 
 
 ## <a name="subscribe-free-or-paid"></a>サブスクリプション (無料または有料)
 
@@ -43,7 +43,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-1. 左上隅のプラス記号 ([+ リソースの作成]) をクリックします。
+1. 左上隅のプラス記号 ( **[+ リソースの作成]** ) をクリックします。
 
 1. 検索バーを使用して "Azure Cognitive Search" を検索するか、 **[Web]**  >  **[Azure Cognitive Search]** を選択してリソースに移動します。
 

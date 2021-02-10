@@ -713,8 +713,6 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: クラスター ノード VM へのリモート接続
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-                - name: マネージド ディスクを使用するためにクラスター ノードをアップグレードする
-                  href: upgrade-managed-disks.md
         - name: スタンドアロンのクラスター
           items:
             - name: 作成

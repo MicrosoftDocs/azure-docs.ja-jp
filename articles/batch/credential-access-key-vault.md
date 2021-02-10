@@ -1,17 +1,17 @@
 ---
-title: Batch で Key Vault に安全にアクセスする
+title: Batch で証明書を使用して Azure Key Vault に安全にアクセスする
 description: Azure Batch を使用して、プログラムで Key Vault の資格情報にアクセスする方法について説明します。
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eaaeaa05caca7897eb649b56504b643038f08d53
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350689"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260131"
 ---
-# <a name="securely-access-key-vault-with-batch"></a>Batch で Key Vault に安全にアクセスする
+# <a name="use-certificates-and-securely-access-azure-key-vault-with-batch"></a>Batch で証明書を使用して Azure Key Vault に安全にアクセスする
 
 この記事では、[Azure Key Vault](../key-vault/general/overview.md) に格納されている資格情報に安全にアクセスできるように、Batch ノードを設定する方法について説明します。 管理者の資格情報を Key Vault に配置する一方で、スクリプトから Key Vault にアクセスするために資格情報をハードコーディングすることは無意味です。 これを解決するには、Key Vault へのアクセス権を Batch ノードに付与する証明書を使用します。
 

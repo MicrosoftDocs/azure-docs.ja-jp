@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 5d06c251ce16aff56a3645f5032cce4e27d5fc9e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 412556f3bd517539fc8ccad94c4de52226f16597
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216903"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946220"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>ネットワーク セキュリティ グループのリソース ログ
 
@@ -93,7 +93,7 @@ Set-AzDiagnosticSetting `
 
 ### <a name="azure-cli"></a>Azure CLI
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから Azure CLI を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 コンピューターから CLI を実行する場合は、バージョン 2.0.38 以降が必要です。 コンピューターで `az --version` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。 CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にサインインする必要もあります。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから Azure CLI を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 コンピューターから CLI を実行する場合は、バージョン 2.0.38 以降が必要です。 コンピューターで `az --version` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 CLI をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `az login` を実行して Azure にサインインする必要もあります。
 
 リソース ログを有効にするには、既存の NSG の ID が必要です。 既存の NSG がない場合は、[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) を使用して作成できます。
 

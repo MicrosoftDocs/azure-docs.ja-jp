@@ -4,12 +4,12 @@ description: この記事では、コンテナー用 Azure Monitor で kubectl �
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050784"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943860"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) クラスターから、コンテナー用 Azure 
 
 - Kubernetes RBAC 認証なしの AKS が有効
 - Kubernetes RBAC 認証を使って AKS が有効
-    - クラスタロールのバインディング **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true)** で構成された AKS
+    - クラスタロールのバインディング **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials)** で構成された AKS
 - Azure Active Directory (AD) SAML ベースのシングル サインオンを使って AKS が有効
 
 これらの手順では、Kubernetes クラスターへの管理アクセスと、Azure Active Directory (AD) への管理アクセス (ユーザー認証に Azure AD を使用するように構成する場合) が必要です。

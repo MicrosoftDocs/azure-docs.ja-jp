@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063078"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753633"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API を呼び出すモバイル アプリ トークンを取得する
 
@@ -243,7 +243,7 @@ Android では、`PublicClientApplicationBuilder` を使用してアプリの作
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-複数のリソースに対してユーザーの事前の同意を求める高度なシナリオでは、`WithExtraScopeToConsent` 修飾子を使用します。 この修飾子は、MSAL.NET または Microsoft ID プラットフォーム 2.0 で通常使用される増分同意を使用しない場合に使用できます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)」を参照してください。
+複数のリソースに対してユーザーの事前の同意を求める高度なシナリオでは、`WithExtraScopeToConsent` 修飾子を使用します。 この修飾子は、MSAL.NET または Microsoft ID プラットフォームで通常使用される増分同意を使用しない場合に使用できます。 詳細については、「[複数のリソースでユーザーの同意を事前に取得する](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)」を参照してください。
 
 次にコード例を示します。
 

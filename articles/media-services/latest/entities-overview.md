@@ -1,5 +1,5 @@
 ---
-title: Media Services エンティティのフィルター処理、順序付け、およびページング
+title: エンティティのフィルター処理、順序付け、ページング
 description: Azure Media Services v3 エンティティのフィルター処理、順序付け、およびページングについて説明します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 50f562927fcbcf66ca7006ac2d100520311ac917
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 19febc833f087afdfecde3274a1044598d082521
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897885"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955311"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、およびページング
 

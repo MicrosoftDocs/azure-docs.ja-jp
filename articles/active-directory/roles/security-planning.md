@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12f262347938720a9d5a95e070d792a83ac9188c
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 6ae8dbf6ffd2d827bbcd0fd723f63255d71d47a5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740807"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090792"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -40,7 +40,7 @@ ms.locfileid: "98740807"
 重要な Microsoft サービスで管理および報告されている方法で、特権アクセスを保護します。 オンプレミスの管理者アカウントがある場合は、「[特権アクセスの保護](/windows-server/identity/securing-privileged-access/securing-privileged-access)」で、Active Directory でのオンプレミスおよびハイブリッドの特権アクセスに関するガイダンスをご覧ください。
 
 > [!NOTE]
-> この記事のガイダンスでは、Azure Active Directory Premium プラン P1 と P2 に含まれている Azure Active Directory の主な機能を参照します。 Azure Active Directory Premium P2 は、EMS E5 スイートおよび Microsoft 365 E5 スイートに含まれています。 このガイダンスでは、組織がユーザー用に Azure AD Premium P2 ライセンスを既に購入していることを想定しています。 これらのライセンスがない場合、ガイダンスの一部は組織に適用されないことがあります。 また、この記事全体を通して、グローバル管理者 (または全体管理者) という用語は "社内管理者" または "テナント管理者" と同義です。
+> この記事のガイダンスでは、Azure Active Directory Premium プラン P1 と P2 に含まれている Azure Active Directory の主な機能を参照します。 Azure Active Directory Premium P2 は、EMS E5 スイートおよび Microsoft 365 E5 スイートに含まれています。 このガイダンスでは、組織がユーザー用に Azure AD Premium P2 ライセンスを既に購入していることを想定しています。 これらのライセンスがない場合、ガイダンスの一部は組織に適用されないことがあります。 また、この記事全体を通して、全体管理者という用語は "社内管理者" または "テナント管理者" と同義です。
 
 ## <a name="develop-a-roadmap"></a>ロードマップの作成
 
@@ -74,7 +74,7 @@ Azure AD Privileged Identity Management は、Azure AD Premium P2 または EMS 
 
 Azure AD Privileged Identity Management を有効にしたら、次のようにします。
 
-1. Azure AD 運用組織のグローバル管理者であるアカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
+1. Azure AD 運用組織の全体管理者であるアカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
 2. Privileged Identity Management を使用する Azure AD 組織を選択するには、Azure portal の右上隅でユーザー名を選択します。
 
@@ -110,7 +110,7 @@ Azure AD Privileged Identity Management が組織内にない場合は、[PowerS
 
 緊急アクセス アカウントは、Azure AD 組織内の特権アクセスを制限するのに役立ちます。 このようなアカウントは高い特権を持っており、特定のユーザーには割り当てられません。 緊急アクセス用アカウントは、通常の管理者アカウントを使うことができない "緊急事態" シナリオに制限されます。 緊急時アカウントの使用を管理し、必要な時のみに限定すようにします。
 
-グローバル管理者ロールが割り当てられているか、その対象であるアカウントを評価します。 \*.onmicrosoft.com ドメイン ("非常時" の緊急アクセス用) を使用しているクラウド専用アカウントが見当たらない場合は、それらを作成します。 詳しくは、「[Azure AD で緊急アクセス用管理者アカウントを管理する](security-emergency-access.md)」をご覧ください。
+全体管理者ロールが割り当てられているか、その対象であるアカウントを評価します。 \*.onmicrosoft.com ドメイン ("非常時" の緊急アクセス用) を使用しているクラウド専用アカウントが見当たらない場合は、それらを作成します。 詳しくは、「[Azure AD で緊急アクセス用管理者アカウントを管理する](security-emergency-access.md)」をご覧ください。
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>多要素認証を有効にし、その他のすべての高度な特権を持つシングル ユーザー非フェデレーション管理者アカウントを登録します。
 
@@ -143,13 +143,14 @@ Azure AD Privileged Identity Management が組織内にない場合は、[PowerS
 
 最初の全体管理者が Azure AD の使用を開始するときに既存の Microsoft アカウント資格情報を再利用する場合は、Microsoft アカウントを個々のクラウドベースまたは同期済みアカウントに置き換えます。
 
-#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>グローバル管理者アカウントのユーザー アカウントとメール転送を分離する
+#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>全体管理者アカウントのユーザー アカウントとメール転送を分離する
 
 個人用電子メール アカウントはサイバー攻撃者によって定常的にフィッシングされるリスクがあるため、全体管理者アカウントで個人用電子メール アドレスを使用することは許容されません。 インターネット上のリスクを管理者特権から分離するために、管理者特権を持つユーザーごとに専用のアカウントを作成します。
 
-* グローバル管理タスクを実行するユーザーには、必ず別のアカウントを作成します
-* 全体管理者が誤って電子メールを開いたり、管理者アカウントでプログラムを実行したりしないようにします
-* これらのアカウントでは電子メールを作業用のメールボックスに転送するようにします
+* 全体管理者タスクを実行するユーザーには、必ず別のアカウントを作成します。
+* 全体管理者が誤って電子メールを開いたり、管理者アカウントでプログラムを実行したりしないようにします。
+* これらのアカウントが電子メールを作業用のメールボックスに転送することを確認します。
+* 全体管理者 (およびその他の特権グループ) アカウントは、オンプレミスの Active Directory に結び付けられていないクラウド専用アカウントである必要があります。
 
 #### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>管理者アカウントのパスワードが最近変更されたことを確認する
 
@@ -229,7 +230,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 
 #### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>管理者ロールに属するユーザーのアクセス レビューを実行する
 
-クラウド サービス経由で特権アクセス権を得る企業ユーザーの増加は、管理されないアクセスにつながる可能性があります。 今日のユーザーは、SaaS アプリを介して、Microsoft 365 の全体管理者や Azure サブスクリプション管理者になったり、VM への管理者アクセス権を持ったりすることができます。
+クラウド サービス経由で特権アクセス権を得る企業ユーザーの増加は、管理されないアクセスにつながる可能性があります。 今日のユーザーは、Microsoft 365 の全体管理者や Azure サブスクリプション管理者になったり、VM や SaaS アプリの管理者アクセス権を持ったりすることができます。
 
 組織では、すべての従業員が通常のビジネス トランザクションを特権のないユーザーとして処理し、必要な場合にのみ管理者権限を付与する必要があります。 アクセス レビューを完了して、管理者特権をアクティブ化する資格のあるユーザーを特定し、確認します。
 
@@ -430,7 +431,7 @@ Microsoft Office 365 がセキュリティ インシデントを処理する方�
 
 **質問:** セキュリティで保護されたアクセス コンポーネントをまだ実装していない場合はどうすればよいですか?
 
-**回答:** 少なくとも 2 つの非常用アカウントを定義し、特権管理者アカウントに MFA を割り当て、ユーザー アカウントをグローバル管理者アカウントから分離します。
+**回答:** 少なくとも 2 つの非常用アカウントを定義し、特権管理者アカウントに MFA を割り当て、ユーザー アカウントを全体管理者アカウントから分離します。
 
 **質問:** セキュリティ侵害の後、最初に対処する必要がある最上位の問題は何ですか?
 
@@ -438,9 +439,9 @@ Microsoft Office 365 がセキュリティ インシデントを処理する方�
 
 **質問:** 特権管理者が非アクティブ化されている場合はどうしますか?
 
-**回答:** 常に最新の状態に保たれているグローバル管理者アカウントを作成します。
+**回答:** 常に最新の状態に保たれている全体管理者アカウントを作成します。
 
-**質問:** 全体管理者が 1 人しか残っておらず、連絡を取ることができない場合はどうしますか?
+**Q:** 全体管理者が 1 人しか残っておらず、連絡を取ることができない場合はどうしますか?
 
 **回答:** 非常用アカウントの 1 つを使用して、即時特権アクセス権を取得します。
 

@@ -1,19 +1,16 @@
 ---
 title: Web ブラウザーを使用して Apache Hadoop クラスターを作成する - Azure HDInsight
 description: HDInsight 上での Apache Hadoop、Apache HBase、Apache Storm、または Apache Spark クラスターの作成について説明します。 Web ブラウザーと Azure portal を使用します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
-ms.openlocfilehash: ebfd5c456d3658c6339e5174c9c4ab33f6c52d4d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c68d342cf21d69fa97ba3d5171ba596662fd845f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541708"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945817"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portal を使用して HDInsight で Linux ベースのクラスターを作成する
 
@@ -74,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[選択方法]** については、 **[一覧から選択する]** または **[アクセス キーを使用する]** を選択します。
     * **[一覧から選択する]** では、ドロップダウン リストからお使いの **プライマリ ストレージ アカウント** を選択するか、 **[新規作成]** を選択します。
-    * **[アクセス キーを使用する]** では、お使いの **ストレージ アカウント名** を入力します。 次に、 **アクセス キー** を指定します。
+    * **[アクセス キーを使用する]** では、お使いの **ストレージ アカウント名** を入力します。 次に、**アクセス キー** を指定します。
 
 1. **[コンテナー]** では、既定値をそのまま使用するか、新しい値を入力します。
 
@@ -87,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 省略可能:既存の SQL Database を指定して、クラスターの外部に Apache Hive、Apache Oozie、または Apache Ambari メタデータを保存します。 メタストアに使用される Azure SQL データベースでは、Azure HDInsight を含む他の Azure サービスに接続できる必要があります。 メタストアを作成するとき、データベース名にダッシュやハイフンを使用しないでください。 これらの文字が含まれると、クラスター作成プロセスが失敗する可能性があります。
 
 > [!IMPORTANT]
-> メタストアをサポートするクラスター図形の場合、既定のメタストアでは、 **DTU 上限が Basic レベルの 5 (アップグレード不可能)** である Azure SQL Database が提供されます。 基本的なテスト目的に適しています。 より大きなワークロードや運用環境のワークロードの場合は、外部のメタストアに移行することをお勧めします。
+> メタストアをサポートするクラスター図形の場合、既定のメタストアでは、**DTU 上限が Basic レベルの 5 (アップグレード不可能)** である Azure SQL Database が提供されます。 基本的なテスト目的に適しています。 より大きなワークロードや運用環境のワークロードの場合は、外部のメタストアに移行することをお勧めします。
 
 **セキュリティとネットワーク >>** を選択して、次のタブに進みます。
 
@@ -99,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |プロパティ |説明 |
 |---|---|
-|Enterprise セキュリティ パッケージ|省略可能: **Enterprise セキュリティ パッケージ** を使用するには、このチェックボックスをオンにします。 詳細については、[Azure Active Directory Domain Services を使用した HDInsight クラスターの Enterprise セキュリティ パッケージを含む構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。|
+|Enterprise セキュリティ パッケージ|省略可能:**Enterprise セキュリティ パッケージ** を使用するには、このチェックボックスをオンにします。 詳細については、[Azure Active Directory Domain Services を使用した HDInsight クラスターの Enterprise セキュリティ パッケージを含む構成](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)に関する記事を参照してください。|
 |TLS|省略可能:ドロップダウン リストから TLS バージョンを選択します。 詳細については、「[トランスポート層セキュリティ](./transport-layer-security.md)」を参照してください。|
 |仮想ネットワーク|省略可能:ドロップダウン リストから既存の仮想ネットワークとサブネットを選択します。 詳細については、[Azure HDInsight クラスター用の仮想ネットワークのデプロイ計画](hdinsight-plan-virtual-network-deployment.md)に関する記事を参照してください。 その記事には、仮想ネットワークの具体的な構成要件が含まれます。|
 |ディスク暗号化設定|省略可能:暗号化を使用するには、このチェックボックスをオンにします。 詳細については、「[お客様が管理するキー ディスクの暗号化](./disk-encryption.md)」を参照してください。|

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2ddb0143bb9cba0dc2fc48ff9b9df94dc55c29c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: e7a6b6d3e753352820cdcb910dcbfa9362793493
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579455"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050772"
 ---
 # <a name="use-source-control-integration"></a>ソース管理の統合を使用する
 
@@ -29,7 +29,7 @@ Azure Automation は、次の 3 種類のソース管理をサポートしてい
 ## <a name="prerequisites"></a>前提条件
 
 * ソース管理リポジトリ (GitHub または Azure Repos)
-* [実行アカウント](manage-runas-account.md)
+* [実行アカウント](automation-security-overview.md#run-as-accounts)
 * `Az.Accounts` モジュール (`AzureRM.Profile` と同等の Az モジュール) を含む、Automation アカウントの[最新の Azure モジュール](automation-update-azure-modules.md)
 
 > [!NOTE]
@@ -209,4 +209,4 @@ New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Automation におけるソース管理の統合については、[Azure Automation: Azure Automation でのソース管理の統合](https://azure.microsoft.com/blog/azure-automation-source-control-13/)に関する記事を参照してください。  
-* Runbook のソース管理を Visual Studio Online と統合する方法については、[Azure Automation: Visual Studio Online を使用した Runbook ソース管理の統合](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/)に関する記事を参照してください。
+* Visual Studio Codespaces を使用した Runbook ソース管理の統合方法については、次の記事を参照してください。[Azure Automation:

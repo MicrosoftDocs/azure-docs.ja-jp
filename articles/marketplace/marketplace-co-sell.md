@@ -3,16 +3,16 @@ title: 共同販売のパートナー エンゲージメント - Microsoft 商�
 description: Microsoft パートナー センターのパートナー向け共同販売プログラムを利用すると、巨大な顧客ベースを対象にして、新しい売上を生み出すことができます。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/2/2020
-ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/29/2021
+ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880289"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063081"
 ---
 # <a name="co-sell-partner-engagement"></a>共同販売のパートナー エンゲージメント
 
@@ -22,7 +22,7 @@ ms.locfileid: "98880289"
 
 - **共同販売の準備完了** プランは、Microsoft の現場販売者に公開されます。 Microsoft 販売者と連携し、共同販売プログラムを利用すると、Microsoft が管理する顧客の広大なコミュニティにリーチし、ビジネスの成長を加速する営業案件について協力するために役立ちます。
 
-    ![Microsoft が管理する顧客に対して、見込み客が共有、承認、獲得されたときの共同販売のしくみを示す図。](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
+    :::image type="content" source="./media/marketplace-publishers-guide/marketplace-co-sell-v2.png" alt-text="Microsoft が管理する顧客に対して、見込み客が共有、承認、獲得されたときの共同販売のしくみを示す図。":::
 
 - **共同販売インセンティブ対象** IP プランが Microsoft セールス チームと共同で販売されると、下に示すマーケットプレースのベネフィットに加えて、Microsoft の現場販売者にインセンティブを与えることができます。</li></ul>
 
@@ -63,7 +63,7 @@ ms.locfileid: "98880289"
 
 1. 左側のメニューで、 **[Microsoft と共同販売する]** を選択します。
 
-    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="この図は、[Microsoft と共同販売する] タブの場所を示しています。":::
+    [![この図は、[Microsoft と共同販売する] タブの場所を示しています。](media/co-sell/co-sell-with-microsoft-tab.png)](media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
 
 1. **[Listing]\(登録情報\)** セクションに、Microsoft の販売者がプランをすばやく並べ替えて見つけるのに役立つ、基本的な登録情報の詳細を提供します。 (*必須: すべてのフィールド。* )
 
@@ -71,29 +71,20 @@ ms.locfileid: "98880289"
 
 1. プランの詳細を入力し、 **[ドキュメント]** セクションに記載されている資料をアップロードします。 Microsoft の販売者は、この情報を使用してお客様のオファーを推薦および販売します。 *(必須:ソリューション/オファーを 1 ページにまとめた文書およびソリューション/オファーのピッチ デッキ。Azure IP 共同販売インセンティブ対象の状態を確立するために必要:参照アーキテクチャ図。)*
 
-    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="この図は、共同販売タブの [ドキュメント] セクションを示しています。":::
+    [![この図は、共同販売タブの [ドキュメント] セクションを示しています。](media/co-sell/co-sell-documents-section.png)](media/co-sell/co-sell-documents-section.png#lightbox)
 
 1. 営業担当者の情報を **[連絡先]** セクションにアップロードします。 Microsoft の販売者は、これらの連絡先に問い合わせて、オファーに関する追加情報を依頼することがあります。 (*必須: プランが使用可能になる地理的な場所ごとの連絡先。* )
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="この図は、共同販売タブの [連絡先] セクションを示しています。":::
+    [![この図は、共同販売タブの [連絡先] セクションを示しています。](media/co-sell/co-sell-contacts-section.png)](media/co-sell/co-sell-contacts-section.png#lightbox)
 
 1. 続行する前に、下書きを保存します。
 1. オファーの必須セクションをすべて完了したら、レビューと発行のためにそれを送信することができます。 右上にある **[レビューと公開]** を選択します。 オファーの詳細を確認してから、 **[公開]** を選択します。
-1. [目標とする共同販売の状態の条件](#co-sell-publishing-steps-and-requirements)を満たしていることを確認した後、以下のガイダンスに従って共同販売のオファーを申請してください。
-    1. **Microsoft Partner Manager (PDM など) がいる場合:** Partner Manager にサポートを依頼してください。 共同販売の準備ができた状態と、Azure IP の共同販売または Business Applications の共同販売のインセンティブ (該当する場合) の申請プロセスについて説明を受けることができます。
-
-    1. **Microsoft Partner Manager (PDM など) がいない場合**: [Cloud Enablement Desk (CED) を使用してご自分で申請してください](https://aka.ms/cednominate)。 [Desired CED Services]\(希望する CED サービス\) ドロップダウンで [Becoming co-sell ready]\(共同販売の準備を完了する\) を選択します。
-
-        :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="この画像は、共同販売のレビューを依頼する CED のドロップダウンを示しています。":::
-
-    このプロセスを完了するには、CED にお問い合わせください。
 
 ## <a name="see-your-offers-co-sell-status"></a>オファーの共同販売の状態を確認する
 
 [コマーシャル マーケットプレースでの共同販売オプション](commercial-marketplace-co-sell.md)を使用しているオファーの場合、[オファー概要] ページでオファーの現在の共同販売の状態を確認できます。
 
- :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="この画像は、オファーの現在の共同販売の状態を示しています。":::
-
+[![この画像は、オファーの現在の共同販売の状態を示しています。](media/co-sell/co-sell-status.png)](media/co-sell/co-sell-status.png#lightbox)
 
 ## <a name="next-steps"></a>次のステップ
 

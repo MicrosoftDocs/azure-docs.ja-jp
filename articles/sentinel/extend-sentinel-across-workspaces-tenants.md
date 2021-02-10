@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95483915"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757121"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>ワークスペースおよびテナント全体での Azure Sentinel の拡張
 
@@ -94,18 +94,18 @@ Azure Sentinel では、[1 つのクエリでの複数のワークスペース](
 
 その後、`unionSecurityEvent | where ...` で始めることにより、両方のワークスペースに対するクエリを作成できます。
 
-#### <a name="scheduled-alerts"></a>スケジュールされたアラート
+#### <a name="cross-workspace-analytics-rules"></a>クロスワークスペース分析ルール<a name="scheduled-alerts"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
+クロスワークスペース クエリをスケジュールされた分析ルールに含めることができるようになりました。ただし、次の制限事項があります。
 
-クロスワークスペース クエリを分析ルールのスケジュールされたアラートに含めることができるようになりました。ただし、次の制限事項があります。
-
-- 1 つのクエリに含めることができるワークスペースは、最大 10 個です。
+- 1 つのクエリに含めることができるワークスペースは、最大 15 個です。
 - クエリで参照されているすべてのワークスペースに、Azure Sentinel をデプロイする必要があります。
 
 > [!NOTE] 
 > 同じクエリ内で複数のワークスペースに対してクエリを実行すると、パフォーマンスに影響する可能性があるので、ロジックでこの機能が必要なときにのみ推奨されます。
 
-### <a name="using-cross-workspace-workbooks"></a>クロスワークスペースのブックの使用
-
+#### <a name="cross-workspace-workbooks"></a>クロスワークスペース ブック<a name="using-cross-workspace-workbooks"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
 [ブック](./overview.md#workbooks)では、 Azure Sentinel にダッシュボードとアプリが提供されます。 複数のワークスペースを使用する場合、ワークスペース間の監視とアクションが提供されます。
 
 ブックでは、3 つの方法のいずれかでクロスワークスペース クエリを提供できます。各方法は、異なるレベルのエンド ユーザーの専門知識に対応します。
@@ -117,7 +117,7 @@ Azure Sentinel では、[1 つのクエリでの複数のワークスペース](
 | ブックを対話形式で編集する | 既存のブックを変更する高度なユーザーは、その中のクエリを編集し、エディターのワークスペース セレクターを使用して対象のワークスペースを選択できます。 | このオプションを使用すると、パワー ユーザーは既存のブックを簡単に変更して、複数のワークスペースで作業できます。 |
 |
 
-### <a name="cross-workspace-hunting"></a>クロスワークスペースの検出
+#### <a name="cross-workspace-hunting"></a>クロスワークスペースの検出
 
 Azure Sentinel には事前に読み込まれたクエリ例が用意されており、初めて使用するときや、テーブルとクエリ言語に不慣れなときに役立ちます。 これらの組み込み検出クエリは、Microsoft セキュリティ研究員が新しいクエリを追加し、既存のクエリを微調整しながら継続的に開発しているもので、新しい検出を探し、セキュリティ ツールによって検出されていない侵入の兆候を特定するためのエントリ ポイントが提供されます。  
 

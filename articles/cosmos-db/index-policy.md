@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 79791bf2db888912d5c1f016f4bf357e76bddcba
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019178"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475102"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,14 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 > Azure Cosmos DB では、Lazy インデックス作成モードもサポートされます。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に **一貫性がなくなったり、不完全になったり** します。 Cosmos コンテナーに対してクエリを実行する場合は、Lazy インデックス作成を選択しないでください。 新しいコンテナーでは、Lazy インデックス作成を選択できません。 [Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に連絡して、除外を要求することができます (Lazy インデックス作成をサポートしない[サーバーレス](serverless.md) モードで Azure Cosmos アカウントを使用している場合を除きます)。
 
 既定では、インデックス作成ポリシーは `automatic` に設定されます。 これはインデックス作成ポリシーの `automatic` プロパティを `true` に設定することで行います。 このプロパティを `true` に設定すると、Azure Cosmos DB で、ドキュメントが書き込まれたときに自動的にインデックスを作成できます。
+
+## <a name="index-size"></a><a id="index-size"></a>インデックス サイズ
+
+Azure Cosmos DB の合計使用ストレージは、データ サイズとインデックス サイズ両方の組み合わせです。 インデックス サイズのいくつかの機能を次に示します。
+
+* インデックス サイズは、インデックス作成ポリシーによって異なります。 すべてのプロパティのインデックスが作成されている場合、インデックス サイズはデータ サイズよりも大きくなることがあります。
+* データが削除されると、インデックスはほぼ連続して圧縮されます。 ただし、少量のデータを削除する場合は、インデックス サイズの減少をすぐに確認できないことがあります。
+* 物理パーティションが分割されると、インデックス サイズが一時的に増大する可能性があります。 インデックス領域は、パーティション分割が完了した後に解放されます。
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> プロパティ パスを含める/除外する
 
@@ -175,33 +183,35 @@ Azure Cosmos DB の含まれるパスと除外されるパスの優先順位に�
 
 クエリに 2 つ以上のプロパティに対するフィルターが含まれている場合は、これらのプロパティの複合インデックスを作成すると便利な場合があります。
 
-たとえば、2 つのプロパティに対する等値フィルターが含まれている次のクエリについて考えてみます。
+たとえば、等値および範囲の両方のフィルターが含まれる次のクエリについて考えてみます。
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age = 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18
 ```
 
-このクエリは、(name ASC, age ASC) の複合インデックスを利用できる場合、時間が短縮され、RU の消費が少なくなり、より効率的に実行できます。
+このクエリは、`(name ASC, age ASC)` の複合インデックスを利用できる場合、時間が短縮され、RU の消費が少なくなるため、より効率的に実行できます。
 
-範囲フィルターが含まれるクエリを複合インデックスを使用して最適化することもできます。 ただし、クエリに含めることができる範囲フィルターは 1 つのみです。 範囲フィルターは、`>`、`<`、`<=`、`>=`、`!=` です。 範囲フィルターは、複合インデックス内で最後に定義する必要があります。
+範囲フィルターが複数含まれるクエリを複合インデックスを使用して最適化することもできます。 ただし、個々の複合インデックスで最適化できる範囲フィルターはそれぞれ 1 つだけです。 範囲フィルターは、`>`、`<`、`<=`、`>=`、`!=` です。 範囲フィルターは、複合インデックス内で最後に定義する必要があります。
 
-等値フィルターと範囲フィルターの両方が含まれる次のクエリについて考えてみます。
+等値フィルターが 1 つと範囲フィルターが 2 つ含まれる次のクエリについて考えてみます。
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" AND c.age > 18
+SELECT *
+FROM c
+WHERE c.name = "John" AND c.age > 18 AND c._ts > 1612212188
 ```
 
-このクエリは、(name ASC, age ASC) の複合インデックスを使用すると、より効率的に実行できます。 ただし、等値フィルターは複合インデックス内で最初に定義する必要があるため、クエリでは (age ASC, name ASC) の複合インデックスが使用されません。
+このクエリは、`(name ASC, age ASC)` と `(name ASC, _ts ASC)` の複合インデックスを使用すると、より効率的に実行できます。 ただし、等値フィルターが含まれるプロパティを複合インデックス内で最初に定義する必要があるため、クエリでは `(age ASC, name ASC)` の複合インデックスが使用されません。 各複合インデックスで最適化できる範囲フィルターは 1 つだけであるため、`(name ASC, age ASC, _ts ASC)` の複合インデックスを 1 つだけではなく、個別の複合インデックスを 2 つ必要とします。
 
 複数のプロパティに対するフィルターが含まれるクエリ用に複合インデックスを作成する場合は、次の考慮事項を確認します。
 
+- フィルター式では、複数の複合インデックスを使用できます。
 - クエリのフィルター内のプロパティは、複合インデックス内のプロパティと一致している必要があります。 複合インデックスにプロパティが含まれていても、クエリにフィルターとして含まれていない場合、このクエリでは複合インデックスは使用されません。
 - 複合インデックスで定義されていない追加のプロパティがフィルターに含まれているクエリの場合は、複合インデックスと範囲インデックスの組み合わせを使用してクエリが評価されます。 この場合、範囲インデックスのみ使用する場合よりも、必要な RU が少なくなります。
-- プロパティに範囲フィルター (`>`、`<`、`<=`、`>=`、または `!=`) が含まれている場合、このプロパティは複合インデックス内で最後に定義する必要があります。 クエリに複数の範囲フィルターが含まれている場合、複合インデックスは使用されません。
+- プロパティに範囲フィルター (`>`、`<`、`<=`、`>=`、または `!=`) が含まれている場合、このプロパティは複合インデックス内で最後に定義する必要があります。 クエリに複数の範囲フィルターが含まれている場合、複数の複合インデックスを利用すると効果的になる可能性があります。
 - 複数のフィルターが含まれるクエリを最適化するために複合インデックスを作成する場合、複合インデックスの `ORDER` は結果に影響しません。 このプロパティは省略可能です。
-- 複数のプロパティに対するフィルターが含まれるクエリに対して複合インデックスを定義しなかった場合でも、クエリは成功します。 しかし、複合インデックスを使用すると、クエリの RU コストを削減できます。
-- 両方の集計が含まれるクエリ (COUNT や SUM など) とフィルターにも、複合インデックスを活用できます。
-- フィルター式では、複数の複合インデックスを使用できます。
 
 複合インデックスがプロパティ name、age、および timestamp に対して定義されている次の例を考えてみます。
 
@@ -216,43 +226,76 @@ SELECT * FROM c WHERE c.name = "John" AND c.age > 18
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
 | ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
-### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>フィルターおよび ORDER BY 句が含まれるクエリ
+### <a name="queries-with-a-filter-and-order-by"></a>フィルターと ORDER BY を使用したクエリ
 
 クエリで 1 つ以上のプロパティがフィルター処理され、ORDER BY 句に異なるプロパティが含まれている場合は、フィルター内のプロパティを `ORDER BY` 句に追加すると便利な場合があります。
 
-たとえば、フィルター内のプロパティを ORDER BY 句に追加すると、複合インデックスを利用するために次のクエリを書き直すことができます。
+たとえば、フィルター内のプロパティを `ORDER BY` 句に追加すると、複合インデックスを利用するために次のクエリを書き直すことができます。
 
 範囲インデックスを使用するクエリ:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
+SELECT *
+FROM c 
+WHERE c.name = "John" 
+ORDER BY c.timestamp
 ```
 
 複合インデックスを使用するクエリ:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John"
+ORDER BY c.name, c.timestamp
 ```
 
-複数の等値フィルターが含まれるクエリに対して、同じパターンおよびクエリの最適化を一般化できます。
+フィルターを使用した任意の `ORDER BY` クエリに対しても同じクエリ最適化を一般化できます。このとき、個々の複合インデックスでサポートできる範囲フィルターは最大で 1 つだけであることに注意してください。
 
 範囲インデックスを使用するクエリ:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.timestamp
 ```
 
 複合インデックスを使用するクエリ:
 
 ```sql
-SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
+SELECT * 
+FROM c 
+WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 1611947901 
+ORDER BY c.name, c.age, c.timestamp
+```
+
+さらに、複合インデックスを使用して、システム関数と ORDER BY を含むクエリを最適化することができます。
+
+範囲インデックスを使用するクエリ:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.lastName
+```
+
+複合インデックスを使用するクエリ:
+
+```sql
+SELECT * 
+FROM c 
+WHERE c.firstName = "John" AND Contains(c.lastName, "Smith", true) 
+ORDER BY c.firstName, c.lastName
 ```
 
 フィルターと `ORDER BY` 句が含まれるクエリを最適化するために複合インデックスを作成する場合は、次の考慮事項を確認します。
 
-* クエリでプロパティをフィルター処理する場合は、最初に `ORDER BY` 句に含める必要があります。
-* クエリで複数のプロパティをフィルター処理する場合は、等値フィルターが `ORDER BY` 句の最初のプロパティとなる必要があります。
 * 1 つのプロパティに対するフィルターと、異なるプロパティを使用する別の `ORDER BY` 句が含まれるクエリに対して複合インデックスを定義しなかった場合でも、クエリは成功します。 しかし、複合インデックスを使用すると、特に `ORDER BY` 句内のプロパティのカーディナリティが高い場合、クエリの RU コストを削減できます。
+* クエリでプロパティをフィルター処理する場合は、最初に `ORDER BY` 句に含める必要があります。
+* クエリで複数のプロパティをフィルター処理する場合は、等値フィルターを `ORDER BY` 句内で最初のプロパティとする必要があります。
+* クエリで複数のプロパティをフィルター処理する場合、複合インデックスごとに使用できる範囲フィルターまたはシステム関数の数は最大で 1 つとなります。 範囲フィルターまたはシステム関数で使用するプロパティは、複合インデックス内で最後に定義する必要があります。
 * 複合インデックスを、複数のプロパティが含まれる `ORDER BY` クエリ、および複数のプロパティに対するフィルターが含まれるクエリに対して作成する際の考慮事項もすべて、適用されます。
 
 
@@ -265,6 +308,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 | ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
 | ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
 
 ## <a name="modifying-the-indexing-policy"></a>インデックス作成ポリシーの変更
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 2ca8a814fbaf2d8c257d094f81d17a5c871793b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919965"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878937"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -345,7 +345,9 @@ Web SDK を含むすべての SDK には、"信頼できるトランスポート
 
 geo ロケーション属性の検索後、クライアント Web アドレスの **すべて** のオクテットは常に 0 に設定されます。
 
-### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Web ページのソースに自分のインストルメンテーション キーが表示されます。 
+[Application Insights JavaScript SDK](app/javascript.md) には、既定では、オートコンプリートに個人データは含まれていません。 ただし、アプリケーションで使用されている個人データの一部が SDK によって取得される場合があります (たとえば、`window.title` の完全名や、XHR URL クエリ パラメーターのアカウント ID など)。 カスタム個人データ マスキングの場合は、[テレメトリ初期化子](app/api-filtering-sampling.md#javascript-web-applications)を追加します。
+
+### <a name="my-instrumentation-key-is-visible-in-my-web-page-source"></a>Web ページのソースに自分のインストルメンテーション キーが表示されます。
 
 * 監視ソリューションにおいてはよくあることです。
 * iKey を使用してデータを盗むことはできません。
@@ -378,6 +380,12 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 * クライアント側のスクリプトがない場合は、[サーバーで Cookie を設定](https://apmtips.com/posts/2016-07-09-tracking-users-in-api-apps/)できます。
 * 1 人の実在するユーザーが、複数の異なるブラウザーや、プライベート/シークレット ブラウズ、または複数のコンピューターでサイトを利用した場合、それらは複数のユーザーとしてカウントされます。
 * 複数のコンピューターやブラウザー間でログイン済みのユーザーを識別するには、[setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) の呼び出しを追加します。
+
+### <a name="how-does-application-insights-generate-device-information-browser-os-language-model"></a>Application Insights では、デバイス情報 (ブラウザー、OS、言語、モデル) はどのように生成されるのですか?
+
+ブラウザーによって、要求の HTTP ヘッダーでユーザー エージェント文字列が渡されます。Application Insights インジェスト サービスでは、[UA パーサー](https://github.com/ua-parser/uap-core)を使用して、データ テーブルとエクスペリエンスに表示されるフィールドが生成されます。 その結果、Application Insights ユーザーはこれらのフィールドを変更できなくなります。
+
+ユーザーまたはエンタープライズがブラウザーの設定でユーザー エージェントの送信を無効にした場合、このデータが失われたり不正確になったりすることがあります。 また、[UA パーサーの正規表現](https://github.com/ua-parser/uap-core/blob/master/regexes.yaml)にすべてのデバイス情報が含まれていない場合や Application Insights で最新の更新プログラムが適用されていない場合があります。
 
 ### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Application Insights の機能をすべて有効にしているでしょうか?
 | 表示内容 | 表示方法 | 用途 |

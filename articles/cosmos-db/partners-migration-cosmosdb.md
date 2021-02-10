@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: a105df6b27be943b14a29bb25fd048bfd294c867
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7fe0817abfac3070f77303bb0d2d662d18010862
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097432"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090505"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 | [Capgemini](https://www.capgemini.com/) | 小売り (在庫目録)、IoT、運用分析 (Spark)、アプリ開発 | 米国、フランス、英国、オランダ、フィンランド  |
 | [Cognizant](https://www.cognizant.com/) | IoT、パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発 |米国、カナダ、英国、デンマーク、オランダ、スイス、オーストラリア、日本 |
 |[Infosys](https://www.infosys.com/)     | アプリケーション開発      |    米国    |  
-| [Lagash Systems](https://www.lagash.com/) | IoT、サーバーレス アーキテクチャ、アプリ開発 | アルゼンチン、チリ、コロンビア、メキシコ|
+| [Lagash Systems](https://www.devex.com/organizations/lagash-systems-131346) | IoT、サーバーレス アーキテクチャ、アプリ開発 | アルゼンチン、チリ、コロンビア、メキシコ|
 | [Lambda3 Informatics](https://www.lambda3.com.br/) | リアルタイム パーソナル化、小売在庫目録、アプリ開発 | ブラジル|
 |[Neal Analytics](https://www.nealanalytics.com/)    |     パーソナル化、小売り (在庫目録)、運用分析 (Spark)、アプリ開発  |    米国     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL の移行      |   米国      |

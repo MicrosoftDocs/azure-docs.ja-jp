@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:初めての Go クエリ
 description: このクイックスタートでは、手順に従って、Go 用の Resource Graph パッケージを有効にし、初めてのクエリを実行します。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: e09bbb63b56fd30eb3aa9e7e527acdd8691d3ee6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4949801b3dc97904680d09e685fd225812a0e14d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655800"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920064"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>クイック スタート:Go を使用して初めての Resource Graph クエリを実行する
 

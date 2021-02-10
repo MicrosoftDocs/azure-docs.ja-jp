@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: f560a01c4ec00649157a9c43aedf0ed6cfc2e050
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 440dd561beddc9696ec703142fe82655b69fbb48
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83871925"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474949"
 ---
 # <a name="copy-data-from-sharepoint-online-list-by-using-azure-data-factory"></a>Azure Data Factory を使用して SharePoint Online リストからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ SharePoint Online リストから、任意のサポートされているシン�
 具体的には、この SharePoint List Online コネクタでは、サービス プリンシパル認証を使用して OData プロトコルを介してデータが取得されます。
 
 > [!TIP]
-> このコネクタは、ファイルではなく、SharePoint Online **リスト**からのデータのコピーをサポートしています。 「[SharePoint Online からのファイルをコピーする](#copy-file-from-sharepoint-online)」セクションからファイルをコピーする方法を参照してください。
+> このコネクタは、ファイルではなく、SharePoint Online **リスト** からのデータのコピーをサポートしています。 「[SharePoint Online からのファイルをコピーする](#copy-file-from-sharepoint-online)」セクションからファイルをコピーする方法を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -183,6 +183,9 @@ SharePoint Online リストからデータをコピーするために、以下�
 ]
 ```
 
+> [!NOTE]
+> Azure Data Factory では、SharePoint Online リストのソースに対して複数の *選択* データ型を選択することはできません。
+
 ## <a name="data-type-mapping-for-sharepoint-online-list"></a>SharePoint Online リストのデータ型マッピング
 
 SharePoint Online リストからデータをコピーすると、SharePoint Online リストのデータ型と Azure Data Factory の中間データ型の間で次のマッピングが使用されます。 
@@ -207,13 +210,13 @@ SharePoint Online リストからデータをコピーすると、SharePoint Onl
 
 ## <a name="copy-file-from-sharepoint-online"></a>SharePoint Online からのファイルをコピーする
 
-SharePoint Online からファイルをコピーするには、**Web アクティビティ**を使用して認証し、SPO からアクセス トークンを取得し、後続の**コピー アクティビティ**に渡し、**HTTP コネクタをソースとして**使用してデータをコピーします。
+SharePoint Online からファイルをコピーするには、**Web アクティビティ** を使用して認証し、SPO からアクセス トークンを取得し、後続の **コピー アクティビティ** に渡し、**HTTP コネクタをソースとして** 使用してデータをコピーします。
 
 ![sharepoint のファイルのコピー フロー](media/connector-sharepoint-online-list/sharepoint-online-copy-file-flow.png)
 
 1. 「[前提条件](#prerequisites)」セクションに従って AAD アプリケーションを作成し、SharePoint Online にアクセス許可を付与します。 
 
-2. **Web アクティビティ**を作成し、SharePoint Online からアクセス トークンを取得します。
+2. **Web アクティビティ** を作成し、SharePoint Online からアクセス トークンを取得します。
 
     - **URL**: `https://accounts.accesscontrol.windows.net/[Tenant-ID]/tokens/OAuth/2`。 テナント ID は置き換えてください。
     - **メソッド**: POST
@@ -224,7 +227,7 @@ SharePoint Online からファイルをコピーするには、**Web アクテ�
     > [!CAUTION]
     > トークン値がプレーン テキストでログに記録されないようにするには、Web アクティビティで [セキュリティで保護された出力] オプションを true に設定します。 この値を使用するその他のアクティビティでは、[セキュリティで保護された入力] オプションが true に設定されている必要があります。
 
-3. **コピー アクティビティ**を、SharePoint Online ファイルのコンテンツをコピーするソースとして HTTP コネクタとチェーンします。
+3. **コピー アクティビティ** を、SharePoint Online ファイルのコンテンツをコピーするソースとして HTTP コネクタとチェーンします。
 
     - HTTP のリンクされたサービス:
         - **ベース URL**: `https://[site-url]/_api/web/GetFileByServerRelativeUrl('[relative-path-to-file]')/$value`。 サイト URL とファイルの相対パスを置き換えてください。 ファイルの相対パス例: `/sites/site2/Shared Documents/TestBook.xlsx`。

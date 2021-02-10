@@ -1,19 +1,16 @@
 ---
 title: クイック スタート:Azure portal を使用して HDInsight に Apache Kafka を設定する
 description: このクイックス タートでは、Azure portal を使って Azure HDInsight に Apache Kafka クラスターを作成する方法を説明します。 Kafka のトピック、サブスクライバー、およびコンシューマーについても説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/29/2020
-ms.openlocfilehash: 3f0b3da7d225e4b2adca3f2d4b08cff9b56e2520
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9bb981b5a1d6ecb9e0c20748983a36ef3acfa001
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534602"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932904"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -59,9 +56,9 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
 
    ![Azure portal でのクラスター作成の基本](./media/apache-kafka-get-started/azure-portal-cluster-basics.png)
 
-    各 Azure リージョン (場所) は " _障害ドメイン_ " を提供します。 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
+    各 Azure リージョン (場所) は "_障害ドメイン_" を提供します。 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
 
-    データの高可用性を実現するために、 __3 つの障害ドメイン__ を含むリージョン (場所) を選択します。 リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
+    データの高可用性を実現するために、__3 つの障害ドメイン__ を含むリージョン (場所) を選択します。 リージョン内の障害ドメインの数については、[Linux 仮想マシンの可用性](../../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するトピックを参照してください。
 
     ページの下部にある **[次へ: ストレージ >>]** タブを選択して、ストレージの設定に進みます。
 
@@ -88,7 +85,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
 
 1. HDInsight 上の Apache Kafka の可用性を確保するため、 **[ワーカー ノード]** の __[ノード数]__ エントリを 3 以上に設定する必要があります。 既定値は 4 ですが、
 
-    **[Standard disks per worker node]\(ワーカー ノードごとの標準ディスク数\)** は、HDInsight における Apache Kafka のスケーラビリティを構成する項目です。 HDInsight 上の Apache Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Apache Kafka は I/O が多いため、[Azure Managed Disks](../../virtual-machines/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 マネージド ディスクの種類は、 __Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Apache Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。
+    **[Standard disks per worker node]\(ワーカー ノードごとの標準ディスク数\)** は、HDInsight における Apache Kafka のスケーラビリティを構成する項目です。 HDInsight 上の Apache Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Apache Kafka は I/O が多いため、[Azure Managed Disks](../../virtual-machines/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Apache Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。
 
    ![Apache Kafka のクラスター サイズの設定](./media/apache-kafka-get-started/azure-portal-cluster-configuration-pricing-kafka.png)
 
@@ -134,7 +131,7 @@ HDInsight で Apache Kafka クラスターを作成するには、次の手順�
 
 ## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Apache Zookeeper およびブローカーのホスト情報を取得する
 
-Kafka を使うときは、 *Apache Zookeeper* ホストと " *ブローカー* " ホストについて理解しておく必要があります。 これらのホストは、Apache Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
+Kafka を使うときは、*Apache Zookeeper* ホストと "*ブローカー*" ホストについて理解しておく必要があります。 これらのホストは、Apache Kafka の API や、Kafka に付属するユーティリティの多くで使用されます。
 
 このセクションでは、クラスターで Apache Ambari REST API からホスト情報を取得します。
 
@@ -200,15 +197,15 @@ Kafka を使うときは、 *Apache Zookeeper* ホストと " *ブローカー* 
 
 ## <a name="manage-apache-kafka-topics"></a>Apache Kafka トピックの管理
 
-Kafka は、" *トピック* " にデータのストリームを格納します。 `kafka-topics.sh` ユーティリティを使って、トピックを管理できます。
+Kafka は、"*トピック*" にデータのストリームを格納します。 `kafka-topics.sh` ユーティリティを使って、トピックを管理できます。
 
-* **トピックを作成するには** 、SSH 接続で次のコマンドを使います。
+* **トピックを作成するには**、SSH 接続で次のコマンドを使います。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic test --zookeeper $KAFKAZKHOSTS
     ```
 
-    このコマンドを使用すると、`$KAFKAZKHOSTS` に格納されているホスト情報を使用して Zookeeper に接続されます。 次に、 **test** という名前の Apache Kafka トピックが作成されます。
+    このコマンドを使用すると、`$KAFKAZKHOSTS` に格納されているホスト情報を使用して Zookeeper に接続されます。 次に、**test** という名前の Apache Kafka トピックが作成されます。
 
     * このトピックに格納されるデータは、8 つのパーティションに分割されます。
 
@@ -230,7 +227,7 @@ Kafka は、" *トピック* " にデータのストリームを格納します�
 
             * クラスターのスケールアップ
 
-* **トピックの一覧を表示するには** 、次のコマンドを使います。
+* **トピックの一覧を表示するには**、次のコマンドを使います。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $KAFKAZKHOSTS
@@ -238,7 +235,7 @@ Kafka は、" *トピック* " にデータのストリームを格納します�
 
     このコマンドは、Apache Kafka クラスターで使用可能なトピックの一覧を表示します。
 
-* **トピックを削除するには** 、次のコマンドを使います。
+* **トピックを削除するには**、次のコマンドを使います。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --topic topicname --zookeeper $KAFKAZKHOSTS
@@ -257,7 +254,7 @@ Kafka は、" *トピック* " にデータのストリームを格納します�
 
 ## <a name="produce-and-consume-records"></a>レコードの生成および消費
 
-Kafka では、トピック内に *レコード* が格納されます。 レコードは、 *プロデューサー* によって生成され、 *コンシューマー* によって消費されます。 プロデューサーとコンシューマーは " *Kafka ブローカー* " サービスと通信します。 HDInsight クラスターの各ワーカー ノードが、Apache Kafka ブローカー ホストです。
+Kafka では、トピック内に *レコード* が格納されます。 レコードは、*プロデューサー* によって生成され、*コンシューマー* によって消費されます。 プロデューサーとコンシューマーは "*Kafka ブローカー*" サービスと通信します。 HDInsight クラスターの各ワーカー ノードが、Apache Kafka ブローカー ホストです。
 
 先ほど作成した test トピックにレコードを格納し、コンシューマーを使用してそれらを読み取るには、次の手順に従います。
 
@@ -269,7 +266,7 @@ Kafka では、トピック内に *レコード* が格納されます。 レコ
 
     このコマンドの後ろには空の行があります。
 
-2. 空の行にテキスト メッセージを入力して、Enter キーを押します。 このようにメッセージをいくつか入力してから、 **Ctrl + C** キーを使用して通常のプロンプトに戻ります。 各行が、個別のレコードとして Apache Kafka トピックに送信されます。
+2. 空の行にテキスト メッセージを入力して、Enter キーを押します。 このようにメッセージをいくつか入力してから、**Ctrl + C** キーを使用して通常のプロンプトに戻ります。 各行が、個別のレコードとして Apache Kafka トピックに送信されます。
 
 3. トピックからレコードを読み取るには、SSH 接続から `kafka-console-consumer.sh` ユーティリティを使用します。
 

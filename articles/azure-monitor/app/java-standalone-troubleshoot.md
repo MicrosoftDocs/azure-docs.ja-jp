@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights の Java エージェントの�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232218"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881138"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>トラブルシューティング ガイド:Azure Monitor Application Insights for Java
 
@@ -17,7 +17,7 @@ ms.locfileid: "98232218"
 
 ## <a name="check-the-self-diagnostic-log-file"></a>自己診断ログ ファイルを確認する
 
-既定では、Application Insights の Java 3.0 エージェントにより、`applicationinsights-agent-3.0.1.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
+既定では、Application Insights の Java 3.0 エージェントにより、`applicationinsights-agent-3.0.2.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
 
 このログ ファイルは、発生している問題に関するヒントを得るために最初に確認する場所です。
 
@@ -49,36 +49,66 @@ Java 3.0 Preview エージェントからアップグレードする場合は、
 
 ## <a name="import-ssl-certificates"></a>SSL 証明書をインポートする
 
-既定の Java キーストアを使用している場合は、すべての CA ルート証明書が既に存在します。 追加の SSL 証明書をインポートする必要はありません。
+このセクションは、Java エージェント使用時に、SSL 証明書に関連する例外をトラブルシューティングし、できる限り修正する場合に役立ちます。
 
-カスタム Java キーストアを使用している場合は、Application Insights エンドポイントの SSL 証明書をインポートすることが必要になる場合があります。
+この問題のトラブルシューティングには、2 種類のパスがあります。
 
-### <a name="key-terminology"></a>主要な用語
-*キーストア* は、証明書、公開キー、および秘密キーのリポジトリです。 通常、Java Development Kit ディストリビューションには、それらを管理するための実行可能ファイル (`keytool`) があります。
+### <a name="if-using-a-default-java-keystore"></a>既定の Java キーストアを使用する場合:
 
-次の例は、キーストアに SSL 証明書をインポートする単純なコマンドです。
+通常、既定の Java キーストアには、すべての CA ルート証明書が既にあります。 ただし、インジェスト エンドポイントの証明書が別のルート証明書によって署名されているなど、いくつかの例外が発生する可能性があります。 この問題を解決するために、次の 3 つの手順をお勧めします。
 
-`keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+1.  Application Insights エンドポイントに署名するために使用されたルート証明書が、既定のキーストアに既に存在するかどうかを確認します。 既定では、信頼された CA 証明書は `$JAVA_HOME/jre/lib/security/cacerts` に格納されます。 Java キーストア内の証明書を一覧表示するには、次のコマンドを使用します。
+    > `keytool -list -v -keystore $PATH_TO_KEYSTORE_FILE`
+ 
+    このような一時ファイルに出力をリダイレクトできます (後で簡単に検索できます)
+    > `keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts > temp.txt`
 
-### <a name="steps-to-download-and-add-an-ssl-certificate"></a>SSL 証明書をダウンロードして追加する手順
+2. 証明書の一覧を取得したら、これらの[手順](#steps-to-download-ssl-certificate)に従って、Application Insights エンドポイントへの署名に使用されたルート証明書をダウンロードします。
+
+    証明書をダウンロードしたら、下のコマンドを使用して、証明書で SHA-1 ハッシュを生成します。
+    > `keytool -printcert -v -file "your_downloaded_root_certificate.cer"`
+ 
+    SHA-1 値をコピーし、前に保存した "temp.txt" ファイルにこの値があるかどうかを確認します。  一時ファイルに SHA-1 値が見つからない場合は、ダウンロードしたルート証明書が既定の Java キーストアに存在しないことを示しています。
+
+
+3. 次のコマンドを使用して、ルート証明書を既定の Java キーストアにインポートします。
+    >   `keytool -import -file "the cert file" -alias "some meaningful name" -keystore "path to cacerts file"`
+ 
+    この例の場合、次のようになります
+ 
+    > `keytool -import -file "your downloaded root cert file" -alias "some meaningful name" $JAVA_HOME/jre/lib/security/cacerts`
+
+
+### <a name="if-using-a-custom-java-keystore"></a>カスタム Java キーストアを使用している場合:
+
+カスタム Java キーストアを使用している場合、Application Insights エンドポイントのルート SSL 証明書をそのキーストアにインポートする必要がある場合があります。
+この問題を解決するために、次の 2 つの手順をお勧めします。
+1. これらの[手順](#steps-to-download-ssl-certificate)に従って、Application Insights エンドポイントからルート証明書をダウンロードします。
+2. 次のコマンドを使用して、ルート SSL 証明書をカスタム Java キーストアにインポートします。
+    > `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name.cer" -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+
+### <a name="steps-to-download-ssl-certificate"></a>SSL 証明書をダウンロードする手順
 
 1.  任意のブラウザーを開き、アプリケーションのインストルメント化に使用する接続文字列に含まれる `IngestionEndpoint` URL にアクセスします。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Application Insights の接続文字列を示したスクリーンショット。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png" alt-text="Application Insights の接続文字列を示したスクリーンショット。" lightbox="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png":::
 
 2.  ブラウザーの **[サイト情報を表示]** (鍵) アイコンを選択し、 **[証明書]** オプションを選択します。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="サイト情報の証明書オプションのスクリーンショット。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="サイト情報の証明書オプションのスクリーンショット。" lightbox="media/java-ipa/troubleshooting/certificate-icon-capture.png":::
 
-3.  **[詳細]** タブにアクセスし、 **[ファイルへコピー]** を選択します。
-4.  **[次へ]** ボタンをクリックし、"**Base-64 encoded X.509 (.CER)** " 形式を選択してから **[次へ]** を選択します。
+3.  "リーフ" 証明書をダウンロードするのではなく、下のように "ルート" 証明書をダウンロードする必要があります。 後で、[証明書パス] をクリックし、ルート証明書を選択し、[証明書の表示] をクリックする必要があります。 これにより、[新しい証明書] メニューがポップアップ表示され、[新規] メニューから証明書をダウンロードできます。
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="形式が選択された、証明書のエクスポート ウィザードのスクリーンショット。":::
+    :::image type="content" source="media/java-ipa/troubleshooting/root-certificate-selection.png" alt-text="ルート証明書を選択する方法のスクリーンショット。" lightbox="media/java-ipa/troubleshooting/root-certificate-selection.png":::
 
-5.  SSL 証明書の保存先ファイルを指定します。 次に、 **[次へ]**  >  **[完了]** の順に選択します。 "エクスポートに成功しました" というメッセージが表示されます。
-6.  証明書を取得できたら、次は Java キーストアに証明書をインポートします。 [上記のコマンド](#key-terminology)を使用して、証明書をインポートします。
+4.  **[詳細]** タブにアクセスし、 **[ファイルへコピー]** を選択します。
+5.  **[次へ]** ボタンをクリックし、"**Base-64 encoded X.509 (.CER)** " 形式を選択してから **[次へ]** を選択します。
+
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="形式が選択された、証明書のエクスポート ウィザードのスクリーンショット。" lightbox="media/java-ipa/troubleshooting/certificate-export-wizard.png":::
+
+6.  SSL 証明書の保存先ファイルを指定します。 次に、 **[次へ]**  >  **[完了]** の順に選択します。 "エクスポートに成功しました" というメッセージが表示されます。
 
 > [!WARNING]
 > 現在の証明書の有効期限が切れる前に新しい証明書を取得するには、これらの手順を繰り返す必要があります。 有効期限の情報は、 **[証明書]** ダイアログ ボックスの **[詳細]** タブで確認できます。
 >
-> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="SSL 証明書の詳細を示すスクリーンショット。":::
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="SSL 証明書の詳細を示すスクリーンショット。" lightbox="media/java-ipa/troubleshooting/certificate-details.png":::

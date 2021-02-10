@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/22/2021
 ms.locfileid: "98695460"
 ---
-# <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure portal を使用して Media Services アカウントを作成する
+# <a name="create-a-media-services-account-using-the-azure-portal"></a>Azure Portal を使用して Media Services アカウントを作成する
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
@@ -32,7 +32,7 @@ Azure Portal には、Azure Media Services (AMS) アカウントをすばやく�
 
 Media Services アカウントおよび関連するすべてのストレージ アカウントは、同じ Azure サブスクリプションに存在する必要があります。 待ち時間やデータ エグレス コストが増加することを回避するために、ストレージ アカウントを Media Services アカウントと同じ場所で使用することを強くお勧めします。
 
-この記事では、Azure portal を使用して Media Services アカウントを作成する方法について説明します。
+この記事では、Azure Portal を使用して Media Services アカウントを作成する方法について説明します。
 
 > [!NOTE]
 > 異なるリージョンにおける Azure Media Services 機能の可用性については、[リージョン全体における AMS 機能](availability-regions-v-2.md)に関するページを参照してください。

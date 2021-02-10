@@ -1,19 +1,16 @@
 ---
 title: Apache Spark とは - Azure HDInsight
 description: この記事では、HDInsight での Spark の概要と、HDInsight で Spark クラスターを使用できるさまざまなシナリオについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: e75661b54ce9a74013938d11ca7f13d9c3698c76
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: fdc3a94c081d8a02725f145fc6b20ace4c1731ce
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822048"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090555"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Apache Spark とは - Azure HDInsight
 
@@ -53,7 +50,7 @@ HDInsight の Apache Spark クラスターには、クラスターで使用で�
 * [Jupyter Notebook](https://jupyter.org)
 * [Apache Zeppelin Notebook](http://zeppelin-project.org/)
 
-HDInsight の Spark クラスターには、Microsoft Power BI などの BI ツールからの接続を可能にする [ODBC ドライバー](https://go.microsoft.com/fwlink/?LinkId=616229)が用意されています。
+HDInsight の Spark クラスターには、Microsoft Power BI などの BI ツールからの接続を可能にする [ODBC ドライバー](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15)が用意されています。
 
 ## <a name="spark-cluster-architecture"></a>Spark クラスターのアーキテクチャ
 

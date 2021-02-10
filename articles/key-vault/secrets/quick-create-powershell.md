@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:PowerShell を使用して Key Vault との間でシークレットの設定と取得を行う
+title: クイックスタート - PowerShell を使用して Key Vault との間でシークレットの設定と取得を行う
 description: このクイックスタートでは、Azure PowerShell を使用して Azure キー コンテナーからシークレットを作成、取得、および削除する方法について説明します
 services: key-vault
 author: msmbaldwin
@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
-ms.date: 09/30/2020
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: d1fa63da035cba35538d13ffe4c3897458364a65
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f3b770a5790d5e9554c7bf5d7d24f1eeccff7662
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936653"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072221"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -33,38 +33,18 @@ Connect-AzAccount
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[!INCLUDE [Create a resource group](../../../includes/key-vault-powershell-rg-creation.md)]
 
-```azurepowershell-interactive
-New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
-```
+## <a name="create-a-key-vault"></a>Key Vault を作成します
 
-## <a name="create-a-key-vault"></a>Key Vault の作成
-
-次に、Key Vault を作成します。 この手順を実行するときは、いくつかの情報が必要になります。
-
-このクイックスタート全体でキー コンテナーの名前として "Contoso KeyVault2" を使用していますが、一意の名前を使用する必要があります。
-
-- **コンテナー名**: Contoso-Vault2。
-- **リソース グループ名**: ContosoResourceGroup。
-- **場所**: 米国東部。
-
-```azurepowershell-interactive
-New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
-```
-
-このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
-
-* **Vault Name**:この例では、これは **Contoso-Vault2** です。 この名前を他の Key Vault コマンドレットに使用できます。
-* **Vault URI (コンテナー URI)** :この例では、これは https://Contoso-Vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
-
-資格情報コンテナーを作成した後は、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
+[!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
 ## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Key Vault でシークレットを管理するアクセス許可をユーザー アカウントに付与する
 
 Azure PowerShell の Set-AzKeyVaultAccessPolicy コマンドレットを使用して、Key Vault アクセス ポリシーを更新し、シークレットのアクセス許可をユーザー アカウントに付与します。
+
 ```azurepowershell-interactive
-Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@domain.com' -PermissionsToSecrets get,set,delete
+Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -UserPrincipalName "user@domain.com" -PermissionsToSecrets get,set,delete
 ```
 
 ## <a name="adding-a-secret-to-key-vault"></a>Key Vault へのシークレットの追加
@@ -74,14 +54,14 @@ Set-AzKeyVaultAccessPolicy -VaultName 'Contoso-Vault2' -UserPrincipalName 'user@
 最初に、次のように入力して、**hVFkk965BuUv** の値をセキュリティで保護された文字列に変換します。
 
 ```azurepowershell-interactive
-$secretvalue = ConvertTo-SecureString 'hVFkk965BuUv' -AsPlainText -Force
+$secretvalue = ConvertTo-SecureString "hVFkk965BuUv" -AsPlainText -Force
 ```
 
 その後、次の PowerShell コマンドを入力して、Key Vault に **ExamplePassword** というシークレットを作成します。その値は、**hVFkk965BuUv** にします。
 
 
 ```azurepowershell-interactive
-$secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword' -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName "<your-unique-keyvault-name>" -Name "ExamplePassword" -SecretValue $secretvalue
 ```
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Key Vault からシークレットを取得する
@@ -89,7 +69,7 @@ $secret = Set-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePasswor
 シークレットに格納されている値をプレーンテキストとして表示するには:
 
 ```azurepowershell-interactive
-$secret = Get-AzKeyVaultSecret -VaultName 'Contoso-Vault2' -Name 'ExamplePassword'
+$secret = Get-AzKeyVaultSecret -VaultName "<your-unique-keyvault-name>" -Name "ExamplePassword"
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
 try {
    $secretValueText = [System.Runtime.InteropServices.Marshal]::PtrToStringBSTR($ssPtr)

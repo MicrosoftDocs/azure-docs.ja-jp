@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 46098b2b7ebbf219a3c17b4fa40e1fd52344f683
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796110"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879799"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する
 
@@ -103,7 +103,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
 使用するデータセットを把握するために、データを視覚化することができます。
 
-1. **[Automobile price data (Raw)]** を右クリックし、 **[視覚化]** を選択します。
+1. **[Automobile price data (Raw)]** を右クリックし、 **[視覚化]**  >  **[Dataset output]\(データセットの出力\)** の順に選択します。
 
 1. データ ウィンドウで別の列を選択して、それぞれの情報を表示します。
 
@@ -284,7 +284,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
 実行が完了したら、パイプラインの実行結果を確認できます。 まず、回帰モデルによって生成された予測に注目します。
 
-1. **[Score Model]** モジュールを右クリックし、 **[視覚化]** を選択してその出力を表示します。
+1. **[Score Model]\(モデルのスコアリング\)** モジュールを右クリックし、 **[視覚化]**  >  **[Scored dataset]\(スコアリング済みデータセット\)** の順に選択してその出力を表示します。
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
@@ -294,7 +294,7 @@ Azure Machine Learning パイプラインを作成するには、Azure Machine L
 
 テスト データセットに対してトレーニング済みのモデルがどの程度の精度で実行されたかを **[Evaluate Model]\(モデルの評価\)** を使用して確認します。
 
-1. **[Evaluate Model]** モジュールを右クリックし、 **[視覚化]** を選択してその出力を表示します。
+1. **[Evaluate Model]\(モデルの評価\)** モジュールを右クリックし、 **[視覚化]**  >  **[評価結果]** の順に選択してその出力を表示します。
 
 作成したモデルに対して、以下の統計値が表示されます。
 

@@ -3,16 +3,13 @@ title: Azure HDInsight クラスター上のローカル HDFS がセーフ モ�
 description: Azure HDInsight の Apache クラスター上でセーフ モードでスタックするローカル Apache HDFS のトラブルシューティング
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 0f4a7702c4f85c162b0485e06cabc99b963ff210
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d34bf8d82aee14f5ba835f68a061555d24ee2621
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014705"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944439"
 ---
 # <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>シナリオ:Azure HDInsight クラスター上のローカル HDFS がセーフ モードでスタックする
 

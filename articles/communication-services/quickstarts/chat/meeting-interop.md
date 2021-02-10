@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 59e259df5d9e564e11dbebd416569727c3857632
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251925"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932312"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>クイックスタート: チャット アプリを Teams の会議に参加させる
 
@@ -22,7 +22,7 @@ Azure Communication Services の入門として、JavaScript クライアント 
 
 ## <a name="prerequisites"></a>前提条件 
 
-1.  [Teams のデプロイ](https://docs.microsoft.com/deployoffice/teams-install)。 
+1.  [Teams のデプロイ](/deployoffice/teams-install)。 
 2. 実際に動作する[チャット アプリ](./get-started.md)。 
 
 ## <a name="enable-teams-interoperability"></a>Teams の相互運用性を有効にする 

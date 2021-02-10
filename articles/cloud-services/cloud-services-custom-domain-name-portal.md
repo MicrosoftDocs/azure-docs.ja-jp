@@ -1,24 +1,28 @@
 ---
-title: Cloud Services のカスタム ドメイン名を構成する | Microsoft Docs
+title: Cloud Services (クラシック) のカスタム ドメイン名を構成する | Microsoft Docs
 description: DNS 設定を構成して、カスタム ドメインで Azure のアプリケーションやデータをインターネットに公開する方法について説明します。  これらの例では、Azure ポータルを使用します。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: bced2345473dbcbb5b9adf0269de0bef0549e862
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069927"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742371"
 ---
-# <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
-クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは `http://contoso.cloudapp.net` のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
+# <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service-classic"></a>Azure クラウド サービス (クラシック) のカスタム ドメイン名の構成
 
-ただし、 **contoso.com**のような独自のドメイン名を使用してアプリケーションを公開することもできます。 この記事では、クラウド サービス Web ロールのカスタム ドメイン名を予約または構成する方法について説明します
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
+クラウド サービスを作成するときに、Azure は **cloudapp.net** のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは `http://contoso.cloudapp.net` のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
+
+ただし、 **contoso.com** のような独自のドメイン名を使用してアプリケーションを公開することもできます。 この記事では、クラウド サービス Web ロールのカスタム ドメイン名を予約または構成する方法について説明します
 
 CNAME レコードと A レコードについてすでに理解している場合は、 [説明を読まずに次に進みます](#add-a-cname-record-for-your-custom-domain)。
 
@@ -38,13 +42,13 @@ CNAME レコードと A レコードについてすでに理解している場�
 CNAME レコード (またはエイリアス レコード) および A レコードはどちらもドメイン名を特定のサーバー (この場合、またはサービス) に関連付けることができますが、機能は異なります。 また、Azure のクラウド サービスで A レコードを使用する場合には固有の考慮事項もいくつかあるため、どちらのレコードを使用するかを決定する前に、これらの点を検討しておく必要があります。
 
 ### <a name="cname-or-alias-record"></a>CNAME レコードまたはエイリアス レコード
-CNAME レコードは、**contoso.com** や **www\.contoso.com** などの "*特定の*" ドメインを正規のドメイン名にマップします。 この場合、正規のドメイン名は Azure ホステッド アプリケーションの **[myapp].cloudapp.net** ドメイン名です。 作成すると、CNAME は **[myapp].cloudapp.net**のエイリアスを作成します。 CNAME エントリは **[myapp].cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても、特別な対応をする必要はありません。
+CNAME レコードは、**contoso.com** や **www\.contoso.com** などの "*特定の*" ドメインを正規のドメイン名にマップします。 この場合、正規のドメイン名は Azure ホステッド アプリケーションの **[myapp].cloudapp.net** ドメイン名です。 作成すると、CNAME は **[myapp].cloudapp.net** のエイリアスを作成します。 CNAME エントリは **[myapp].cloudapp.net** サービスの IP アドレスを自動的に解決するため、クラウド サービスの IP アドレスが変更されても、特別な対応をする必要はありません。
 
 > [!NOTE]
 > 一部のドメイン レジストラーでは、CNAME レコードを使用する場合に、ルート名 (contoso.com など) ではなく、サブドメイン (www\.contoso.com など) のみをマップできます。 CNAME レコードの詳細については、レジストラーが提供するドキュメント、[CNAME レコードに関するウィキペディアの項目](https://en.wikipedia.org/wiki/CNAME_record)、または [IETF ドメイン名 - 実装と仕様書](https://tools.ietf.org/html/rfc1035)を参照してください。
 
 ### <a name="a-record"></a>A レコード
-*A* レコードは、ドメイン (**contoso.com**、**www\.contoso.com** など) または "*ワイルドカード ドメイン*" ( **\*contoso.com** など) を IP アドレスにマップします。 Azure のクラウド サービスの場合は、サービスの仮想 IP です。 CNAME レコードと比較したときの A レコードの主な利点は、エントリにワイルドカードを使用できる (\* **.contoso.com** など) ため、複数のサブドメイン (**mail.contoso.com**、**login.contoso.com**、**www\.contso.com** など) の要求を処理できることです。
+*A* レコードは、ドメイン (**contoso.com**、**www\.contoso.com** など) または "*ワイルドカード ドメイン*" ( **\*contoso.com** など) を IP アドレスにマップします。 Azure のクラウド サービスの場合は、サービスの仮想 IP です。 そのため、A レコードの CNAME レコードと比較した場合の主な利点は、ワイルドカード (たとえば、**mail.contoso.com**、**login.contoso.com**、**www\.contso.com** などの複数のサブドメインへの要求を処理する \**_.contoso.com_*) を使用する 1 つのエントリにすることができる点です。
 
 > [!NOTE]
 > A レコードは静的 IP にマップされるため、変更をクラウド サービスの IP アドレスに自動的に解決することはできません。 クラウド サービスによって使用される IP アドレスは、空のスロット (運用またはステージング) に初めてデプロイしたときに割り当てられます。スロットのデプロイを削除すると、IP アドレスは Azure によって解放され、そのスロットへの今後のデプロイは新しい IP アドレスに与えられます。
@@ -84,7 +88,7 @@ CNAME レコードを作成するには、レジストラーから提供され�
 > [!NOTE]
 > **www\.contoso.com** の訪問者が本当のホスト (contoso.cloudapp.net) を識別することはないため、転送プロセスはエンド ユーザーから見えなくなります。
 > 
-> 上の例は、 **www** サブドメインのトラフィックのみに該当します。 CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。 トラフィックをサブドメイン (*.contoso.com など) から cloudapp.net アドレスに転送するには、DNS 設定の **URL リダイレクト** エントリまたは **URL 転送**エントリを構成するか、または A レコードを作成します。
+> 上の例は、 **www** サブドメインのトラフィックのみに該当します。 CNAME レコードにはワイルドカードを使用できないため、各ドメインおよびサブドメインに 1 つの CNAME を作成する必要があります。 トラフィックをサブドメイン (*.contoso.com など) から cloudapp.net アドレスに転送するには、DNS 設定の **URL リダイレクト** エントリまたは **URL 転送** エントリを構成するか、または A レコードを作成します。
 
 ## <a name="add-an-a-record-for-your-custom-domain"></a>カスタム ドメインの A レコードの追加
 A レコードを作成するには、まず、クラウド サービスの仮想 IP アドレスを見つける必要があります。 次に、レジストラーから提供されるツールを使用して、カスタム ドメイン用の DNS テーブルに新しいエントリを追加します。 それぞれのレジストラーでは A レコードを指定するための同様の (多少異なる) 手段が用意されていますが、その概念は同じです。

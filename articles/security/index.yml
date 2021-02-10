@@ -13,13 +13,13 @@ metadata:
   author: TerryLanfear
   ms.author: terrylan
   manager: rkarlin
-  ms.date: 08/29/2019
-  ms.openlocfilehash: a96ff0e329fb00888645949f2eab5652d15cb941
-  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+  ms.date: 02/05/2021
+  ms.openlocfilehash: 2e50e273841b93d2ecc742f26069c0e3017b3692
+  ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/02/2020
-  ms.locfileid: "96489685"
+  ms.lasthandoff: 02/07/2021
+  ms.locfileid: "99807786"
 highlightedContent:
   items:
   - title: Azure のセキュリティの概要
@@ -52,9 +52,9 @@ conceptualContent:
     - url: ./develop/secure-dev-overview.md
       itemType: overview
       text: 安全な開発のベスト プラクティス
-    - url: /previous-versions/azure/security/develop/secure-web-app
+    - url: ./develop/secure-develop.md
       itemType: tutorial
-      text: セキュリティで保護された Web アプリを開発する
+      text: セキュリティで保護されたアプリケーションの開発
     - url: ./develop/threat-modeling-tool.md
       itemType: concept
       text: Microsoft Threat Modeling Tool
@@ -163,10 +163,10 @@ conceptualContent:
       text: Azure Security Center のセキュリティ アラート
     - url: ../storage/common/azure-defender-storage-configure.md
       itemType: concept
-      text: Advanced Threat Protection for Azure Storage
+      text: Azure Defender for Storage
     - url: ../azure-sql/database/threat-detection-overview.md
       itemType: concept
-      text: Azure SQL Database の Advanced Threat Protection
+      text: Azure Defender for SQL
     footerLink:
       url: ./fundamentals/threat-detection.md
       text: 詳細情報

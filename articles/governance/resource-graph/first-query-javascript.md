@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:初めての JavaScript クエリ
 description: このクイックスタートでは、手順に従って、JavaScript 用の Resource Graph ライブラリを有効にし、初めてのクエリを実行します。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 194097594340e2f34433c07185c6132f8a13c845
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 97cbd9ddf65a4135f55304f6dd67c704c6fcac5d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057418"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917523"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-javascript"></a>クイック スタート:JavaScript を使用して初めての Resource Graph クエリを実行する
 
@@ -19,7 +19,7 @@ ms.locfileid: "92057418"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 - **Node.js**:[Node.js](https://nodejs.org/) バージョン 12 以降が必須です。
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bfb808c634ba946e1a4825d7828db6df8963352c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202948"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951245"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>チュートリアル:REST API を使用する
 
@@ -92,7 +92,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[アクセスの割り当て先]** は、既定値の **[User, group, or service principal]\(ユーザー、グループ、またはサービス プリンシパル\)** のままにします
 
-1. **[選択]** で、割り当てたいサービス プリンシパル、Azure Active Directory グループ、ユーザーの名前を入力し、その名前を結果ペインでクリックします。
+1. **[選択]** で、以前に作成した割り当てたいサービス プリンシパルの名前を入力し、その名前を結果ペインでクリックします。
 
 1. [設定] メニューの **[保存]**
 

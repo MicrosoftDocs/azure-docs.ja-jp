@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 18a3216855516156792524dc577ecef725d3119d
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516095"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218776"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -44,7 +44,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 - カスタム ポリシーとキー/シークレット管理の構成言語について理解を深める。 詳細については、「[TrustFrameworkPolicy](trustframeworkpolicy.md)」を参照してください。
 - シナリオおよびカスタム統合の主導権を得る。 ご自分の作業内容を文書化し、ライブ サイト組織に通知します。
 - シナリオの体系的なテストを実行する。
-- ソフトウェアの開発とステージングのベスト プラクティスに従い、少なくとも 1 つの開発/テスト環境と 1 つの運用環境を用意する。
+- ソフトウェア開発とステージングのベスト プラクティスに従ってください。 少なくとも 1 つの開発およびテスト環境が推奨されます。
 - ID プロバイダーによる新しい開発と、統合するサービスに関する情報を常に入手する。 たとえば、シークレットの変更や、サービスの予定された変更と予定外の変更を把握します。
 - アクティブな監視を設定し、運用環境の応答性を監視する。 Application Insights との統合の詳細については、[Azure Active Directory B2C: ログの収集](analytics-with-application-insights.md)に関するページを参照してください。
 - Azure サブスクリプションの連絡先のメール アドレスを最新に保ち、Microsoft のライブ サイト チームのメールに対応できるようにしておく。
@@ -58,7 +58,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ## <a name="features-by-stage-and-known-issues"></a>段階別の機能と既知の問題
 
-カスタム ポリシー/Identity Experience Framework 機能は、継続的かつ迅速に開発されています。 次の表は、機能およびコンポーネントの可用性のインデックスです。
+カスタム ポリシー機能は、継続的に開発されています。 次の表は、機能およびコンポーネントの可用性のインデックスです。
 
 
 ### <a name="protocols-and-authorization-flows"></a>プロトコルと承認フロー
@@ -144,7 +144,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | Azure Portal - IEF UX |  |  | X |  |
 | ポリシーのアップロード |  |  | X |  |
 | [Application Insights のユーザー体験ログ](troubleshoot-with-application-insights.md) |  | X |  | 開発中のトラブルシューティングに使用される。  |
-| [Application Insights のイベント ログ](application-insights-technical-profile.md) |  | X |  | 運用環境内でユーザー フローを監視するために使用される。 |
+| [Application Insights のイベント ログ](analytics-with-application-insights.md) |  | X |  | 運用環境内でユーザー フローを監視するために使用される。 |
 
 
 ## <a name="next-steps"></a>次のステップ

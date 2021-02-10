@@ -1,15 +1,15 @@
 ---
 title: Azure Service Fabric 用の組み込みポリシー定義
 description: Azure Service Fabric 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 97b29be8d0062b4f2956d1bf121e64171350d60d
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 8d44c34fe72196134a5516607acaa9beac8c2639
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805066"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093886"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-service-fabric"></a>Azure Service Fabric 用の Azure Policy 組み込み定義
 

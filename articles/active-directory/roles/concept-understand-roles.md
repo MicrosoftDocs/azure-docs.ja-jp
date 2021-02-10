@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b46262e34f57b3ff9aeb6bd4ea671ec611b99df
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 3101cf3650fcfb7f9313b13c1c07a03dd734e9dd
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740348"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089226"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Azure Active Directory のロールについて
 
@@ -61,7 +61,7 @@ Azure AD 組み込みロールには、使用される場所によってさま�
 カテゴリ | Role
 ---- | ----
 Azure AD 固有のロール | アプリケーション管理者<br>アプリケーション開発者<br>認証管理者<br>B2C IEF キーセット管理者<br>B2C IEF ポリシー管理者<br>クラウド アプリケーション管理者<br>クラウド デバイス管理者<br>条件付きアクセス管理者<br>デバイス管理者<br>ディレクトリ リーダー<br>ディレクトリ同期アカウント<br>ディレクトリ ライター<br>外部 ID ユーザー フロー管理者<br>外部 ID ユーザー フロー属性管理者<br>外部 ID プロバイダー管理者<br>グループ管理者<br>ゲスト招待元<br>ヘルプデスク管理者<br>ハイブリッド ID の管理者<br>ライセンス管理者<br>パートナー レベル 1 のサポート<br>パートナー レベル 2 のサポート<br>パスワード管理者<br>特権認証管理者<br>特権ロール管理者<br>レポート閲覧者<br>ユーザー アカウント管理者
-サービス間のロール | 会社の管理者<br>コンプライアンス管理者<br>コンプライアンス データ管理者<br>グローバル閲覧者<br>セキュリティ管理者<br>セキュリティ オペレーター<br>セキュリティ閲覧者<br>サービス サポート管理者
+サービス間のロール | グローバル管理者<br>コンプライアンス管理者<br>コンプライアンス データ管理者<br>グローバル閲覧者<br>セキュリティ管理者<br>セキュリティ オペレーター<br>セキュリティ閲覧者<br>サービス サポート管理者
 サービス固有のロール | Azure DevOps 管理者<br>Azure Information Protection 管理者<br>課金管理者<br>CRM サービス管理者<br>カスタマー ロックボックスのアクセス承認者<br>デスクトップ Analytics 管理者<br>Exchange サービス管理者<br>Insights 管理者<br>Insights ビジネス リーダー<br>Intune サービス管理者<br>Kaizala 管理者<br>Lync サービス管理者<br>メッセージ センターのプライバシー閲覧者<br>メッセージ センター閲覧者<br>Modern Commerce ユーザー<br>ネットワーク管理者<br>Office アプリ管理者<br>Power BI サービス管理者<br>Power Platform 管理者<br>プリンター管理者<br>プリンター技術者<br>Search 管理者<br>Search エディター<br>SharePoint サービス管理者<br>Teams 通信管理者<br>Teams 通信サポート エンジニア<br>Teams 通信サポート スペシャリスト<br>Teams デバイス管理者<br>Teams サービス管理者
 
 ## <a name="next-steps"></a>次のステップ

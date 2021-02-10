@@ -4,15 +4,15 @@ description: Azure Analysis Services の表形式 1200 以上のデータ モデ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/21/2020
+ms.date: 02/02/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 61efc7719b071ff4e8e5c0e07534b72a2883aff1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458862"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493822"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -22,7 +22,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 
 |データ ソース  |メモリ内  |DirectQuery  |Notes |
 |---------|---------|---------|---------|
-|Azure SQL Database      |   はい      |    はい      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
+|Azure SQL データベース      |   はい      |    はい      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
 |Azure Synapse Analytics (SQL DW)      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup>|
@@ -118,9 +118,19 @@ Visual Studio で [テーブルのインポート ウィザード] を使用す�
 
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
 
+## <a name="service-principal-authentication"></a>サービス プリンシパル認証
+
+"*プロバイダー*" データ ソースとして指定されている場合、Azure Analysis Services では、Azure SQL Database と Azure Synapse データ ソースの [MSOLEDBSQL](/sql/connect/oledb/release-notes-for-oledb-driver-for-sql-server) Azure Active Directory サービス プリンシパル認証がサポートされます。
+
+`
+Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authentication=ActiveDirectoryServicePrincipal;User ID=[Application (client) ID];Password=[Application (client) secret];Use Encryption for Data=true
+`
+
 ## <a name="oauth-credentials"></a>OAuth 資格情報
 
-インメモリ モードを使用する 1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、Power Query を使用して資格情報を設定します。
+"*インメモリ*" モードを使用する 1,400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure Synapse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 有効なトークンを生成するには、Power Query を使用して資格情報を設定します。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 
+> [!NOTE]
+> ゲートウェイ経由でアクセスされるデータ ソースでは、マネージド トークンの更新がサポートされていません。 たとえば、1 つまたは複数のマッシュアップ クエリ データ ソースがゲートウェイ経由でアクセスされたり、[ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md) プロパティが **true** に設定されたりします。 
 
 直接クエリモードは OAuth 資格情報ではサポートされていません。
 

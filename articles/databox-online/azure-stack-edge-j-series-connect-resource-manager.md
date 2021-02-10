@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763219"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805797"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの Azure Resource Manager に接続する
 
@@ -138,9 +138,9 @@ Windows クライアントが、次の前提条件を満たしている必要が
 
     **メジャー** バージョンを比較し、それが確実に 5.0 以降であるようにします。
 
-    バージョンが古い場合は、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)」をご覧ください。
+    バージョンが古い場合は、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell)」をご覧ください。
 
-    PowerShell 5.0 をお持ちでない場合は、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)」に従います。
+    PowerShell 5.0 をお持ちでない場合は、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true)」に従います。
 
     サンプル出力を次に示します。
 
@@ -156,7 +156,7 @@ Windows クライアントが、次の前提条件を満たしている必要が
     
 2. PowerShell ギャラリーにアクセスできる。
 
-    PowerShell を管理者として実行します。 PSGallery がリポジトリとして登録されているかどうかを確認します。
+    PowerShell を管理者として実行します。 `PSGallery` がリポジトリとして登録されているかどうかを確認します。
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -175,7 +175,7 @@ Windows クライアントが、次の前提条件を満たしている必要が
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-リポジトリが信頼されていない場合、または詳細情報が必要な場合は、「[PowerShell ギャラリーにアクセスできるか検証する](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)」を参照してください。
+リポジトリが信頼されていない場合、または詳細情報が必要な場合は、「[PowerShell ギャラリーにアクセスできるか検証する](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908&preserve-view=true&preserve-view=true#2-validate-the-powershell-gallery-accessibility)」を参照してください。
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>手順 4:クライアントで Azure PowerShell を設定する 
 
@@ -327,7 +327,7 @@ Azure Resource Manager 環境を設定し、Azure Resource Manager を使用し�
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    詳細については 「[Set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)」を参照してください。
+    詳細については 「[Set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
     - 実行するすべてのコマンドレットに対して、環境をインラインで定義します。 これにより、すべての API 呼び出しが確実に正しい環境を経由するようになります。 既定では、呼び出しは Azure パブリックを経由しますが、Azure Stack Edge Pro デバイス用に設定した環境を経由する必要があります。
 

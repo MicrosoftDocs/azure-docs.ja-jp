@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: e8a392f72af1ae5a3da8d8e3306f05cdec390591
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c6eac316a8d1849e193add2d74e81f8652c7a676
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735897"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090589"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-navex-one"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と NAVEX One の統合
 
@@ -76,10 +76,32 @@ NAVEX One に対する Azure AD SSO を構成してテストするには、次�
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    **[サインオン URL]** ボックスに、`https://<CLIENT_KEY>.navexglobal.com` という形式で URL を入力します。
+    a. **[サインオン URL]** テキスト ボックスに、次のいずれかのパターンを使用して URL を入力します。
+
+    | [サインオン URL] |
+    |--------------|
+    | `https://<CLIENT_KEY>.navexglobal.com` |
+    | `https://<CLIENT_KEY>.navexglobal.eu` |
+    |
+
+    b. **[識別子]** ボックスに、次のいずれかの URL を入力します。
+
+    | 識別子 |
+    |--------------|
+    | `https://doorman.navexglobal.com/Shibboleth` |
+    | `https://doorman.navexglobal.eu/Shibboleth` |
+    |
+
+    c. **[応答 URL]** ボックスに、次のいずれかの URL を入力します。
+
+    | [応答 URL] |
+    |--------------|
+    | `https://doorman.navexglobal.com/Shibboleth.sso/SAML2/POST` |
+    | `https://doorman.navexglobal.eu/Shibboleth.sso/SAML2/POST` |
+    |
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[NAVEX One クライアント サポート チーム](mailto:ethicspoint@navexglobal.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[NAVEX One クライアント サポート チーム](mailto:ethicspoint@navexglobal.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
 

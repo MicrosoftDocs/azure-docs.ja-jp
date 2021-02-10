@@ -3,12 +3,12 @@ title: Azure Backup Server を使用してワークロードをバックアッ�
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用してワークロードを保護およびバックアップするように環境を準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056703"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987024"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -126,7 +126,7 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     **[何をバックアップしますか?]** ドロップダウン メニューで、Azure Backup Server を使用して保護するワークロードを選択し、 **[OK]** を選択します。
 
-    **バックアップ作業の開始**ウィザードが、Azure にワークロードを保護するための **[インフラストラクチャの準備]** オプションに切り替わります。
+    **バックアップ作業の開始** ウィザードが、Azure にワークロードを保護するための **[インフラストラクチャの準備]** オプションに切り替わります。
 
    > [!NOTE]
    > ファイルとフォルダーだけをバックアップする場合は、Azure Backup エージェントを使用すること、および[ファイルとフォルダーのバックアップ](./backup-windows-with-mars-agent.md)に関する記事のガイダンスに従って操作することをお勧めします。 ファイルやフォルダー以外を保護する場合、または将来的に保護のニーズを拡張する場合は、そのワークロードを選択します。
@@ -282,7 +282,7 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 
 11. Azure Backup に接続するには、`DPMSYNC -SYNC` を実行します
 
-    DPM 記憶域プールに古いディスクを移動するのではなく、**新しい**ディスクを追加した場合は、`DPMSYNC -Reallocatereplica` を実行します。
+    DPM 記憶域プールに古いディスクを移動するのではなく、**新しい** ディスクを追加した場合は、`DPMSYNC -Reallocatereplica` を実行します。
 
 ## <a name="network-connectivity"></a>ネットワーク接続
 
@@ -303,13 +303,18 @@ Azure への接続と Azure サブスクリプションの状態がわかれば�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>接続の切断からの回復
 
-ファイアウォールまたはプロキシにより Azure へのアクセスが妨げられている場合、ファイアウォール/プロキシのプロファイルで以下のドメイン アドレスを許可する必要があります。
+マシンのインターネットへのアクセスが制限されている場合、マシンまたはプロキシのファイアウォール設定によって次の URL と IP アドレスが許可されていることを確保してください。
 
-* `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP アドレス
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 ExpressRoute Microsoft ピアリングを使用している場合、次のサービスまたはリージョンを選択します。
 

@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/29/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像認識アプリ、Custom Vision
-ms.openlocfilehash: d644c323cb60e5ef9a89670cd9b828e3e9676299
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: d25b226f5dfff34aa572b40d1e4de142cf8e0b7b
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131697"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221246"
 ---
 # <a name="quickstart-build-a-classifier-with-the-custom-vision-website"></a>クイックスタート: Custom Vision Web サイトで分類子を構築する
 
@@ -71,7 +71,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 このセクションでは、分類子のトレーニングに役立つように、画像をアップロードして手動でタグ付けします。 
 
-1. 画像を追加するには、__画像の追加__ ボタンをクリックし、__ローカル画像の参照__ を選択します。 __[開く]__ を選択し、タグ付けに移動します。 タグの選択は、アップロードすることを選択した画像のグループ全体に適用されます。そのため、必要なタグに従って別個のグループで画像をアップロードする方が簡単です。 アップロード後に個々の画像のタグを変更することもできます。
+1. 画像を追加するには、 __[画像の追加]__ を選択し、 __[ローカル ファイルの参照]__ を選択します。 __[開く]__ を選択し、タグ付けに移動します。 タグの選択は、アップロードすることを選択した画像のグループ全体に適用されます。そのため、適用されたタグに従って別個のグループで画像をアップロードする方が簡単です。 アップロード後に個々の画像のタグを変更することもできます。
 
     ![[Add Images]\(画像の追加) コントロールは左上に表示され、下部中央にもボタンとして表示されます。](./media/getting-started-build-a-classifier/add-images01.png)
 

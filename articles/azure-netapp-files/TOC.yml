@@ -63,6 +63,8 @@
       href: azure-netapp-files-faqs.md
     - name: Azure アプリケーション整合性スナップショット ツールとは
       href: azacsnap-introduction.md
+    - name: ボリュームのハード クォータを変更する意味
+      href: volume-hard-quota-guidelines.md
 - name: 操作方法ガイド
   items:
     - name: Azure NetApp Files に登録する

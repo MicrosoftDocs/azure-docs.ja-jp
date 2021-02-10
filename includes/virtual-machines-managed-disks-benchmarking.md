@@ -5,102 +5,70 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/11/2019
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 358e92d8e43473c168e24be9f4af504e6ffcc37a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 25404837d5bc66ff415be8d8670eb6650475c30f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026358"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094630"
 ---
-*キャッシュのウォームアップ*  
-ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された 1 つのディスクから追加の IOPS が得られます。
+## <a name="warm-up-the-cache"></a>キャッシュのウォーム アップ
+
+ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された 1 つのディスクからさらに IOPS が得られます。
 
 > [!IMPORTANT]
 > VM を再起動するたびに、キャッシュをウォームアップしてからベンチマークを実行する必要があります。
 
-## <a name="iometer"></a>Iometer
+## <a name="diskspd"></a>DISKSPD
 
-[Iometer ツールをダウンロード](http://sourceforge.net/projects/iometer/files/iometer-stable/1.1.0/iometer-1.1.0-win64.x86_64-bin.zip/download) します。
+VM に [DISKSP ツールをダウンロード](https://github.com/Microsoft/diskspd)します。 DISKSPD は、独自の統合ワークロードを作成するためにカスタマイズできるツールです。 ここで説明したのと同じセットアップを使用して、ベンチマークテストを実行します。 さまざまなワークロードをテストするように仕様を変更できます。
 
-### <a name="test-file"></a>テスト ファイル
+この例では、次のベースライン パラメーターのセットを使用します。
 
-Iometer では、ベンチマーク テストを実行するボリュームに格納されたテスト ファイルを使用します。 Iometer は、このテスト ファイルでの読み取りと書き込みを促進して、ディスクの IOPS とスループットを測定します。 このテスト ファイルを用意していない場合は、Iometer によって作成されます。 CacheReads ボリュームと NoCacheWrites ボリュームに iobw.tst という名前の 200 GB のテスト ファイルを作成します。
+- -c200G:テストで使用されるサンプル ファイルを作成 (または再作成) します。 これは、バイト、KiB、MiB、GiB、またはブロックで設定できます。 この場合、メモリのキャッシュを最小限に抑えるために、200-GiB ターゲット ファイルの大きなファイルが使用されます。
+- -w100:操作における書き込み要求の割合を指定します (-w0 は 100% 読み取りに相当します)。
+- -b4K:ブロック サイズをバイト、KiB、MiB、または GiB で示します。 ここでは、ランダム I/O テストをシミュレートするために 4K ブロック サイズが使用されます。
+- -F4:4 つのスレッドの合計を設定します。
+- -r:ランダム I/O テストを示します (-s パラメーターはオーバーライドされます)。
+- -o128:スレッドごとのターゲットあたりの未処理 I/O 要求の数を示します。 これは、キューの深さとも呼ばれます。 この場合、CPU の負荷を計算するために 128 が使用されます。
+- -W7200:測定が開始されるまでのウォームアップ時間の長さを指定します。
+- -d30:ウォームアップを含まない、テストの期間を指定します。
+- -Sh:ソフトウェアおよびハードウェアの書き込みキャッシュを無効にします (-Suw に相当します)。
 
-### <a name="access-specifications"></a>アクセス仕様
+パラメーターの完全な一覧については、[GitHub リポジトリ](https://github.com/Microsoft/diskspd/wiki/Command-line-and-parameters)を参照してください。
 
-IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各仕様は、Iometer の [Access Specifications] タブを使用して構成します。 以下に示すシナリオごとにアクセス仕様を作成します。 アクセス仕様を作成したら、適切な名前 (例: RandomWrites\_8K、RandomReads\_8K) を付けて保存します。 テスト シナリオを実行するときに、対応する仕様を選択します。
+### <a name="maximum-write-iops"></a>最大書き込み IOPS
+書き込み操作の実行に、高いキューの深さ 128、小さなブロック サイズ 8 KB、4 つのワーカー スレッドを使用します。 書き込みワーカーは、キャッシュが "None" に設定された 3 個のディスクを含む "NoCacheWrites" ボリュームのトラフィックを促進します。
 
-最大書き込み IOPS シナリオのアクセス仕様の例を次に示します。  
-    ![最大書き込み IOPS のアクセス仕様の例](../articles/virtual-machines/linux/media/premium-storage-performance/image8.png)
+次のコマンドを実行して、30 秒のウォームアップと 30 秒の測定を実行します。
 
-### <a name="maximum-iops-test-specifications"></a>最大 IOPS テストの仕様
+`diskspd -c200G -w100 -b8K -F4 -r -o128 -W30 -d30 -Sh testfile.dat`
 
-最大 IOPS に達するように、小さな要求サイズを使用します。 8K の要求サイズを使用し、ランダム書き込み/読み取りの仕様を作成します。
+結果として、Standard_D8ds_v4 VM が最大書き込み IOPS の上限である 12,800 を提供していることがわかります。
 
-| アクセス仕様 | 要求サイズ | ランダム % | 読み取り % |
-| --- | --- | --- | --- |
-| RandomWrites\_8 K |8 K |100 |0 |
-| RandomReads\_8 K |8 K |100 |100 |
+:::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/disks-benchmarks-diskspd-max-write-io-per-second.png" alt-text="合計バイト数 3208642560 の場合は、最大合計 I/O が 391680、合計 101.97 MiB/秒、および 1 秒あたり I/O の合計が 13052.65 です。":::
 
-### <a name="maximum-throughput-test-specifications"></a>最大スループット テストの仕様
+### <a name="maximum-read-iops"></a>最大読み取り IOPS
 
-最大スループットに達するように、大きな要求サイズを使用します。 64 K の要求サイズを使用し、ランダム書き込み/読み取りの仕様を作成します。
+読み取り操作の実行に、高いキューの深さ 128、小さなブロック サイズ 4 KB、4 つのワーカー スレッドを使用します。 読み取りワーカーは、キャッシュが "ReadOnly" に設定された 1 つのディスクを含む "CacheReads" ボリュームのトラフィックを促進します。
 
-| アクセス仕様 | 要求サイズ | ランダム % | 読み取り % |
-| --- | --- | --- | --- |
-| RandomWrites\_64 K |64 K |100 |0 |
-| RandomReads\_64 K |64 K |100 |100 |
+次のコマンドを実行して、2 時間のウォームアップと 30 秒の測定を実行します。
 
-### <a name="run-the-iometer-test"></a>Iometer テストの実行
+`diskspd -c200G -b4K -F4 -r -o128 -W7200 -d30 -Sh testfile.dat`
 
-次の手順を実行して、キャッシュをウォームアップします。
+結果として、Standard_D8ds_v4 VM が最大読み取り IOPS の上限である 77,000 を提供していることがわかります。
 
-1. 次に示す値を使用して、2 つのアクセス仕様を作成します。
+:::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/disks-benchmarks-diskspd-max-read-io-per-second.png" alt-text="合計バイト数が 9652785152 の場合、合計 I/O が 2356637、合計 MiB/秒 306.72、および 1 秒あたり I/O の合計が 78521.23 でした。":::
 
-   | Name | 要求サイズ | ランダム % | 読み取り % |
-   | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1 MB |100 |0 |
-   | RandomReads\_1 MB |1 MB |100 |100 |
-1. 次のパラメーターを使用して、キャッシュ ディスクの初期化の Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup]\(テストの設定\) タブでテストの [Run time]\(実行時間\) を 2 時間に設定します。
+### <a name="maximum-throughput"></a>最大スループット
 
-   | シナリオ | ターゲット ボリューム | Name | Duration |
-   | --- | --- | --- | --- |
-   | キャッシュ ディスクの初期化 |CacheReads |RandomWrites\_1 MB |2 時間 |
-1. 次のパラメーターを使用して、キャッシュ ディスクのウォームアップの Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup]\(テストの設定\) タブでテストの [Run time]\(実行時間\) を 2 時間に設定します。
-
-   | シナリオ | ターゲット ボリューム | Name | Duration |
-   | --- | --- | --- | --- |
-   | キャッシュ ディスクのウォームアップ |CacheReads |RandomReads\_1 MB |2 時間 |
-
-キャッシュ ディスクをウォームアップしたら、下記のテスト シナリオを実行します。 Iometer テストを実行するために、ターゲット ボリューム **ごとに** 3 つ以上のワーカー スレッドを使用します。 次の表に従って、ワーカー スレッドごとに、ターゲット ボリュームを選択してキューの深さを設定し、保存済みのテストの仕様のいずれかを選択して、対応するテスト シナリオを実行します。 表では、各テストを実行したときの IOPS とスループットの予想される結果も示しています。 すべてのシナリオで、8 KB の小さな IO サイズと 128 の大きなキューの深さが使用されます。
-
-| テスト シナリオ | ターゲット ボリューム | Name | 結果 |
-| --- | --- | --- | --- |
-| 最大 読み取り IOPS |CacheReads |RandomWrites\_8 K |50,000 IOPS |
-| 最大 書き込み IOPS |NoCacheWrites |RandomReads\_8 K |64,000 IOPS |
-| 最大 合計 IOPS |CacheReads |RandomWrites\_8 K |100,000 IOPS |
-| NoCacheWrites |RandomReads\_8 K | &nbsp; | &nbsp; |
-| 最大 読み取り MB/秒 |CacheReads |RandomWrites\_64 K |524 MB/秒 |
-| 最大 書き込み MB/秒 |NoCacheWrites |RandomReads\_64 K |524 MB/秒 |
-| 合計 MB/秒 |CacheReads |RandomWrites\_64 K |1000 MB/秒 |
-| NoCacheWrites |RandomReads\_64 K | &nbsp; | &nbsp; |
-
-次のスクリーンショットは、合計 IOPS と合計スループットのシナリオでの Iometer テストの結果を示しています。
-
-### <a name="combined-reads-and-writes-maximum-iops"></a>読み取りと書き込みの合計最大 IOPS
-
-![読み取りと書き込みの合計最大 IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image9.png)
-
-### <a name="combined-reads-and-writes-maximum-throughput"></a>読み取りと書き込みの合計最大スループット
-
-![読み取りと書き込みの合計最大スループット](../articles/virtual-machines/linux/media/premium-storage-performance/image10.png)
-
+読み取りと書き込みのスループットを最大限にするには、サイズが 64 KB の大きなブロック サイズに変更できます。
 ## <a name="fio"></a>fio
 
-FIO は、Linux VM でストレージのベンチマークを実行する一般的なツールです。 FIO では、さまざまな IO サイズ、順次読み取り/書き込み、ランダム読み取り/書き込みを柔軟に選択できます。 FIO は、ワーカー スレッドまたはワーカー プロセスを起動して、指定された I/O 操作を実行します。 各ワーカー スレッドがジョブ ファイルを使用して実行する必要がある I/O 操作の種類を指定できます。 以下の例に示すシナリオごとに、ジョブ ファイルを 1 つ作成しました。 これらのジョブ ファイルで仕様を変更して、Premium Storage で実行されるさまざまなワークロードのベンチマークを実行できます。 各例では、 **Ubuntu** を実行する Standard DS 14 VM を使用しています。 ベンチマークに関するセクションの最初に記載されている設定を使用し、ベンチマーク テストを実行する前にキャッシュをウォームアップします。
+FIO は、Linux VM でストレージのベンチマークを実行する一般的なツールです。 FIO では、さまざまな IO サイズ、順次読み取り/書き込み、ランダム読み取り/書き込みを柔軟に選択できます。 FIO は、ワーカー スレッドまたはワーカー プロセスを起動して、指定された I/O 操作を実行します。 各ワーカー スレッドがジョブ ファイルを使用して実行する必要がある I/O 操作の種類を指定できます。 以下の例に示すシナリオごとに、ジョブ ファイルを 1 つ作成しました。 これらのジョブ ファイルで仕様を変更して、Premium Storage で実行されるさまざまなワークロードのベンチマークを実行できます。 各例では、**Ubuntu** を実行する Standard_D8ds_v4 を使用しています。 ベンチマークに関するセクションの最初に記載されている設定を使用し、ベンチマーク テストを実行する前にキャッシュをウォームアップします。
 
 開始する前に、 [FIO をダウンロード](https://github.com/axboe/fio) し、仮想マシンにインストールします。
 
@@ -110,7 +78,7 @@ Ubuntu に対して次のコマンドを実行します。
 apt-get install fio
 ```
 
-ディスクでの書き込み操作を促進するための 4 つのワーカー スレッドと、読み取り操作を促進するための 4 つのワーカー スレッドを使用します。 書き込みワーカーは、キャッシュが "None" に設定された 10 個のディスクを含む "nocache" ボリュームのトラフィックを促進します。 読み取りワーカーは、キャッシュが "ReadOnly" に設定された 1 つのディスクを含む "readcache" ボリュームのトラフィックを促進します。
+ディスクでの書き込み操作を促進するための 4 つのワーカー スレッドと、読み取り操作を促進するための 4 つのワーカー スレッドを使用します。 書き込みワーカーは、キャッシュが "None" に設定された 3 個のディスクを含む "nocache" ボリュームのトラフィックを促進します。 読み取りワーカーは、キャッシュが "ReadOnly" に設定された 1 つのディスクを含む "readcache" ボリュームのトラフィックを促進します。
 
 ### <a name="maximum-write-iops"></a>最大書き込み IOPS
 
@@ -122,7 +90,7 @@ size=30g
 direct=1
 iodepth=256
 ioengine=libaio
-bs=8k
+bs=4k
 numjobs=4
 
 [writer1]
@@ -133,7 +101,7 @@ directory=/mnt/nocache
 これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。 IOPS を最大限に高めるために、これらの仕様が不可欠となります。  
 
 * 256 の大きなキューの深さ。  
-* 8 KB の小さなブロック サイズ。  
+* 4 KB の小さなブロック サイズ。  
 * ランダム書き込みを実行する複数のスレッド。
 
 次のコマンドを実行して、FIO テストを 30 秒間実行します。  
@@ -142,8 +110,8 @@ directory=/mnt/nocache
 sudo fio --runtime 30 fiowrite.ini
 ```
 
-テストの実行中、VM と Premium ディスクが提供している書き込み IOPS の数を確認できます。 次のサンプルに示すように、DS14 VM は書き込み IOPS の上限である 50,000 IOPS を実現しています。  
-    ![VM と Premium ディスクが提供している書き込み IOPS の数。](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+テストの実行中、VM と Premium ディスクが提供している書き込み IOPS の数を確認できます。 次のサンプルに示すように、Standard_D8ds_v4 VM は書き込み IOPS の上限である 12,800 IOPS を実現しています。  
+    :::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/fio-uncached-writes-1.jpg" alt-text="書き込み IOPS VM と Premium SSD が提供する数は、書き込みが 13.1k IOPS であることを示しています。":::
 
 ### <a name="maximum-read-iops"></a>最大読み取り IOPS
 
@@ -155,7 +123,7 @@ size=30g
 direct=1
 iodepth=256
 ioengine=libaio
-bs=8k
+bs=4k
 numjobs=4
 
 [reader1]
@@ -166,7 +134,7 @@ directory=/mnt/readcache
 これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。 IOPS を最大限に高めるために、これらの仕様が不可欠となります。
 
 * 256 の大きなキューの深さ。  
-* 8 KB の小さなブロック サイズ。  
+* 4 KB の小さなブロック サイズ。  
 * ランダム書き込みを実行する複数のスレッド。
 
 次のコマンドを実行して、FIO テストを 30 秒間実行します。
@@ -175,8 +143,8 @@ directory=/mnt/readcache
 sudo fio --runtime 30 fioread.ini
 ```
 
-テストの実行中、VM と Premium ディスクが提供している読み取り IOPS の数を確認できます。 次のサンプルに示すように、DS14 VM は 64,000 を超える読み取り IOPS を実現しています。 これは、ディスクとキャッシュのパフォーマンスの合計です。  
-    ![VM と Premium ディスクが提供している書き込み IOPS の数のスクリーンショット。](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+テストの実行中、VM と Premium ディスクが提供している読み取り IOPS の数を確認できます。 次のサンプルに示すように、Standard_D8ds_v4 VM は 77,000 を超える読み取り IOPS を実現しています。 これは、ディスクとキャッシュのパフォーマンスの合計です。  
+    :::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/fio-cached-reads-1.jpg" alt-text="書き込み IOPS VM と Premium SSD が提供する数が、読み取りが 78.6k であることを示しているスクリーンショット。":::
 
 ### <a name="maximum-read-and-write-iops"></a>最大読み取り/書き込み IOPS
 
@@ -198,7 +166,7 @@ directory=/mnt/readcache
 [writer1]
 rw=randwrite
 directory=/mnt/nocache
-rate_iops=12500
+rate_iops=3200
 ```
 
 これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。 IOPS を最大限に高めるために、これらの仕様が不可欠となります。
@@ -213,8 +181,8 @@ rate_iops=12500
 sudo fio --runtime 30 fioreadwrite.ini
 ```
 
-テストの実行中、VM と Premium ディスクが提供している読み取りと書き込みの合計 IOPS を確認できます。 次のサンプルに示すように、DS14 VM は 100,000 を超える読み取りと書き込みの合計 IOPS を実現しています。 これは、ディスクとキャッシュのパフォーマンスの合計です。  
-    ![合計読み取り/書き込み IOPS](../articles/virtual-machines/linux/media/premium-storage-performance/image13.png)
+テストの実行中、VM と Premium ディスクが提供している読み取りと書き込みの合計 IOPS を確認できます。 次のサンプルに示すように、Standard_D8ds_v4 VM は 90,000 を超える読み取りと書き込みの合計 IOPS を実現しています。 これは、ディスクとキャッシュのパフォーマンスの合計です。  
+    :::image type="content" source="../articles/virtual-machines/linux/media/premium-storage-performance/fio-both-1.jpg" alt-text="読み取りと書き込みの合計 IOPS は、読み取りが 78.3k で書き込みが 12.6k IOPS であることを示しています。":::
 
 ### <a name="maximum-combined-throughput"></a>最大スループットの合計
 

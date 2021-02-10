@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92526133"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612908"
 ---
 | リソース | 制限 | Note |
 | --- | --- | --- |
@@ -32,6 +32,9 @@ ms.locfileid: "92526133"
 | 各リスナーあたりの URL のマップの数 |1 | |
 | URL マップあたりのパスベース ルールの最大数|100||
 | リダイレクトの構成 |100<sup>1</sup>| |
+| 書き換えルール セットの数 |400| |
+| 書き換えルール セットごとのヘッダーまたは URL 構成の数|40| |
+| 書き換えルール セットごとの条件の数|40| |
 | コンカレント WebSocket 接続 |中規模のゲートウェイ 20k<br> 大規模のゲートウェイ 50k| |
 | URL の最大長|32KB| |
 | HTTP/2 向けヘッダーの最大サイズ |4KB| |

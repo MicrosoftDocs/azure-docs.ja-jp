@@ -3,17 +3,16 @@ title: Apache Oozie ワークフローとエンタープライズ セキュリ�
 description: Azure HDInsight Enterprise セキュリティ パッケージを使用して Apache Oozie ワークフローをセキュリティで保護します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 71432dc2dd09381d39ca646d45c7f2bdd96012c6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 559779e3979ab2ada2191f55cfc06ceb2470bd7d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653437"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933484"
 ---
 # <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する Azure HDInsight クラスターで Apache Oozie を実行する
 

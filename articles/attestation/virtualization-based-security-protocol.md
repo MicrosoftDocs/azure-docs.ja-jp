@@ -7,16 +7,18 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e5cc3b5fb7ca38df196119de12d346f5d0346b58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53052b35a50899d6f9e761301f31b9ffd20a4b91
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91340089"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610014"
 ---
-# <a name="virtualization-based-security-vbs-attestation-protocol"></a>仮想化ベースのセキュリティ (VBS) の構成証明プロトコル 
+# <a name="trusted-platform-module-tpm-and-virtualization-based-securityvbs-enclave-attestation-protocol"></a>トラステッド プラットフォーム モジュール (TPM) と仮想化ベースのセキュリティ (VBS) エンクレーブ構成証明プロトコル 
 
-Microsoft Azure Attestation で、報告されるデータが本物であるという強力なセキュリティ保証を提供するには、ファームウェアからハイパーバイザーおよびセキュア カーネルの起動までの信頼チェーンを構築する必要があります。 このためには、セキュリティで保護されたエンクレーブ内で信頼を確立する前に、Azure Attestation でマシンのブート状態を証明する必要があります。 オペレーティング システム、ハイパーバイザー、およびセキュア カーネル バイナリは、正しい公式の Microsoft 機関によって署名され、安全な方法で構成されている必要があります。 トラステッド プラットフォーム モジュール (TPM) とハイパーバイザーの正常性との間で信頼をバインドしたら、メジャー ブート ログで提供される VBS IDKS を信頼できます。 これにより、キーの組がエンクレーブによって生成されたことを検証し、構成証明レポートを作成できます。このレポートは、そのキーの信頼をバインドし、セキュリティ レベルやブート構成証明のプロパティなどの他の要求を含みます。
+強力なセキュリティ保証を提供するための Microsoft Azure Attestation は、信頼のチェーンが信頼のルート (TPM) からハイパーバイザーおよびセキュア カーネルの起動まで保持されることを検証することに依存します。 このためには、セキュリティで保護されたエンクレーブ内で信頼を確立する前に、Azure Attestation でマシンのブート状態を証明する必要があります。 オペレーティング システム、ハイパーバイザー、およびセキュア カーネル バイナリは、正しい公式の Microsoft 機関によって署名され、安全な方法で構成されている必要があります。 トラステッド プラットフォーム モジュール (TPM) とハイパーバイザーの正常性との間で信頼をバインドしたら、測定されたブート ログで提供される仮想化ベースのセキュリティ (VBS) エンクレーブ IDK を信頼できます。これにより、キーの組がエンクレーブによって生成されたことを確認し、構成証明レポートを作成できます。このレポートは、そのキーの信頼をバインドし、セキュリティ レベルやブート構成証明のプロパティなどの他の要求を含みます。 
+
+VBS エンクレーブでは、セキュリティ基盤を確認する測定値を提供するために TPM が必要です。 VBS エンクレーブは、プロトコルの要求オブジェクトに追加された TPM エンドポイントによって証明されます。 
 
 ## <a name="protocol-messages"></a>プロトコル メッセージ
 
@@ -29,9 +31,9 @@ Microsoft Azure Attestation で、報告されるデータが本物であると�
 #### <a name="payload"></a>ペイロード
 
 ```
-{
-  "type": "aikcert"
-}
+{ 
+  "type": "aikcert" 
+} 
 ```
 
 "type" (ASCII 文字列): 要求された構成証明の種類を表します。 現時点でサポートされているのは、"aikcert" のみです。
@@ -45,18 +47,15 @@ Azure Attestation -> クライアント
 #### <a name="payload"></a>ペイロード
 
 ```
-{
-
-  "challenge": "<BASE64URL(CHALLENGE)>",
-  
-  "service_context": "<BASE64URL(SERVICECONTEXT)>"
-  
-}
+{ 
+  "challenge": "<BASE64URL(CHALLENGE)>", 
+  "service_context": "<BASE64URL(SERVICECONTEXT)>" 
+} 
 ```
 
 **challenge** (BASE64URL(オクテット)):サービスによって発行されたランダムな値です。
 
-**service_context** (BASE64URL(オクテット)):サービスによって作成される暗号化された不透明コンテキストです。これには、チャレンジとそのチャレンジの有効期限などが含まれます。
+**service_context** (BASE64URL(オクテット)):サービスによって作成される暗号化された不透明なコンテキストです。これには、チャレンジとそのチャレンジの有効期限などが含まれます。 
 
 
 ### <a name="request-message"></a>要求メッセージ
@@ -69,9 +68,7 @@ Azure Attestation -> クライアント
 
 ```
 {
-
   "request": "<JWS>"
-  
 }
 ```
 
@@ -95,103 +92,112 @@ BASE64URL(JWS Signature)
 
 ##### <a name="jws-payload"></a>JWS Payload
 
-JWS ペイロードの種類には、basic または VBS を指定できます。 basic は、構成証明の証拠に VBS データが含まれていない場合に使用されます。
+JWS ペイロードの種類には、basic または VBS を指定できます。 basic は、構成証明の証拠に VBS データが含まれていない場合に使用されます。 
 
-基本的な例
+TPM のみのサンプル: 
 
 ``` 
-{
-  "att_type": "basic",
-  "att_data": {
-    "rp_id": "<URL>",
-    "rp_data": "<BASE64URL(RPCUSTOMDATA)>",
-    "challenge": "<BASE64URL(CHALLENGE)>",
-    "tpm_att_data": {
-      "srtm_boot_log": "<BASE64URL(SRTMBOOTLOG)>",
-      "srtm_resume_log": "<BASE64URL(SRTMRESUMELOG)>",
-      "drtm_boot_log": "<BASE64URL(DRTMBOOTLOG)>",
-      "drtm_resume_log": "<BASE64URL(DRTMRESUMELOG)>",
-      "aik_cert": "<BASE64URL(AIKCERTIFICATE)>",
-      // aik_pub is represented as a JSON Web Key (JWK) object (RFC 7517).
-      "aik_pub": {
-        "kty": "RSA",
-        "n": "<Base64urlUInt(MODULUS)>",
-        "e": "<Base64urlUInt(EXPONENT)>"
-      },
-      "current_claim": "<BASE64URL(CURRENTCLAIM)>",
-      "boot_claim": "<BASE64URL(BOOTCLAIM)>"
-    },
-    // attest_key is represented as a JSON Web Key (JWK) object (RFC 7517).
-    "attest_key": {
-      "kty": "RSA",
-      "n": "<Base64urlUInt(MODULUS)>",
-      "e": "<Base64urlUInt(EXPONENT)>"
-    },
-    "custom_claims": [
-      {
-        "name": "<name>",
-        "value": "<value>",
-        "value_type": "<value_type>"
-      },
-      {
-        "name": "<name>",
-        "value": "<value>",
-        "value_type": "<value_type>"
-      }
-    ],
-    "service_context": "<BASE64URL(SERVICECONTEXT)>"
-  }
-}
+{ 
+  "att_type": "basic", 
+  "att_data": { 
+    "rp_id": "<URL>", 
+    "rp_data": "<BASE64URL(RPCUSTOMDATA)>", 
+    "challenge": "<BASE64URL(CHALLENGE)>", 
+
+    "tpm_att_data": { 
+      "srtm_boot_log": "<BASE64URL(SRTMBOOTLOG)>", 
+      "srtm_resume_log": "<BASE64URL(SRTMRESUMELOG)>", 
+      "drtm_boot_log": "<BASE64URL(DRTMBOOTLOG)>", 
+      "drtm_resume_log": "<BASE64URL(DRTMRESUMELOG)>", 
+      "aik_cert": "<BASE64URL(AIKCERTIFICATE)>", 
+
+      // aik_pub is represented as a JSON Web Key (JWK) object (RFC 7517). 
+
+      "aik_pub": { 
+        "kty": "RSA", 
+        "n": "<Base64urlUInt(MODULUS)>", 
+        "e": "<Base64urlUInt(EXPONENT)>" 
+      }, 
+      "current_claim": "<BASE64URL(CURRENTCLAIM)>", 
+      "boot_claim": "<BASE64URL(BOOTCLAIM)>" 
+    }, 
+
+    // attest_key is represented as a JSON Web Key (JWK) object (RFC 7517). 
+
+    "attest_key": { 
+      "kty": "RSA", 
+      "n": "<Base64urlUInt(MODULUS)>", 
+      "e": "<Base64urlUInt(EXPONENT)>" 
+    }, 
+    "custom_claims": [ 
+      { 
+        "name": "<name>", 
+        "value": "<value>", 
+        "value_type": "<value_type>" 
+      }, 
+      { 
+        "name": "<name>", 
+        "value": "<value>", 
+        "value_type": "<value_type>" 
+      } 
+    ], 
+    "service_context": "<BASE64URL(SERVICECONTEXT)>" 
+  } 
+} 
 ```
 
-VBS の例
+TPM と VBS エンクレーブのサンプル: 
 
 ``` 
-{
-  "att_type": "vbs",
-  "att_data": {
-    "report_signed": {
-      "rp_id": "<URL>",
-      "rp_data": "<BASE64URL(RPCUSTOMDATA)>",
-      "challenge": "<BASE64URL(CHALLENGE)>",
-      "tpm_att_data": {
-        "srtm_boot_log": "<BASE64URL(SRTMBOOTLOG)>",
-        "srtm_resume_log": "<BASE64URL(SRTMRESUMELOG)>",
-        "drtm_boot_log": "<BASE64URL(DRTMBOOTLOG)>",
-        "drtm_resume_log": "<BASE64URL(DRTMRESUMELOG)>",
-        "aik_cert": "<BASE64URL(AIKCERTIFICATE)>",
-        // aik_pub is represented as a JSON Web Key (JWK) object (RFC 7517).
-        "aik_pub": {
-          "kty": "RSA",
-          "n": "<Base64urlUInt(MODULUS)>",
-          "e": "<Base64urlUInt(EXPONENT)>"
-        },
-        "current_claim": "<BASE64URL(CURRENTCLAIM)>",
-        "boot_claim": "<BASE64URL(BOOTCLAIM)>"
-      },
-      // attest_key is represented as a JSON Web Key (JWK) object (RFC 7517).
-      "attest_key": {
-        "kty": "RSA",
-        "n": "<Base64urlUInt(MODULUS)>",
-        "e": "<Base64urlUInt(EXPONENT)>"
-      },
-      "custom_claims": [
-        {
-          "name": "<name>",
-          "value": "<value>",
-          "value_type": "<value_type>"
-        },
-        {
-          "name": "<name>",
-          "value": "<value>",
-          "value_type": "<value_type>"
-        }
-      ],
-      "service_context": "<BASE64URL(SERVICECONTEXT)>"
-    },
-    "vbs_report": "<BASE64URL(REPORT)>"
-  }
-}
+{ 
+  "att_type": "vbs", 
+  "att_data": { 
+    "report_signed": { 
+      "rp_id": "<URL>", 
+      "rp_data": "<BASE64URL(RPCUSTOMDATA)>", 
+      "challenge": "<BASE64URL(CHALLENGE)>", 
+      "tpm_att_data": { 
+        "srtm_boot_log": "<BASE64URL(SRTMBOOTLOG)>", 
+        "srtm_resume_log": "<BASE64URL(SRTMRESUMELOG)>", 
+        "drtm_boot_log": "<BASE64URL(DRTMBOOTLOG)>", 
+        "drtm_resume_log": "<BASE64URL(DRTMRESUMELOG)>", 
+        "aik_cert": "<BASE64URL(AIKCERTIFICATE)>", 
+
+        // aik_pub is represented as a JSON Web Key (JWK) object (RFC 7517). 
+
+        "aik_pub": { 
+          "kty": "RSA", 
+          "n": "<Base64urlUInt(MODULUS)>", 
+          "e": "<Base64urlUInt(EXPONENT)>" 
+        }, 
+        "current_claim": "<BASE64URL(CURRENTCLAIM)>", 
+        "boot_claim": "<BASE64URL(BOOTCLAIM)>" 
+      }, 
+
+      // attest_key is represented as a JSON Web Key (JWK) object (RFC 7517). 
+
+      "attest_key": { 
+        "kty": "RSA", 
+        "n": "<Base64urlUInt(MODULUS)>", 
+        "e": "<Base64urlUInt(EXPONENT)>" 
+      }, 
+      "custom_claims": [ 
+        { 
+          "name": "<name>", 
+          "value": "<value>", 
+          "value_type": "<value_type>" 
+        }, 
+        { 
+          "name": "<name>", 
+          "value": "<value>", 
+          "value_type": "<value_type>" 
+        } 
+      ], 
+      "service_context": "<BASE64URL(SERVICECONTEXT)>" 
+    }, 
+    "vsm_report": "<BASE64URL(REPORT)>" 
+  } 
+} 
 ``` 
 
 **rp_id** (文字列または URI):証明書利用者の識別子です。 マシン ID 要求の評価においてサービスによって使用されます
@@ -218,7 +224,7 @@ VBS の例
 
 - **boot_claim (BASE64URL(オクテット))** :関数 NCryptCreateClaim (dwClaimType = NCRYPT_CLAIM_PLATFORM と、すべての PCR を含むように設定したパラメーター NCRYPTBUFFER_TPM_PLATFORM_CLAIM_PCR_MASK を指定) から返される、ブート時の PCR 状態についての構成証明要求
 
-**vbs_report** (BASE64URL(オクテット)):関数 EnclaveGetAttestationReport から返される VBS エンクレーブ構成証明レポート。 EnclaveData パラメーターは、report_signed の値 (左中かっこと右中かっこを含む) の SHA-512 ハッシュである必要があります。 ハッシュ関数の入力は UTF8(report_signed) です
+**vsm_report** (BASE64URL(オクテット)):関数 EnclaveGetAttestationReport から返される VBS エンクレーブ構成証明レポート。 EnclaveData パラメーターは、report_signed の値 (左中かっこと右中かっこを含む) の SHA-512 ハッシュである必要があります。 ハッシュ関数の入力は UTF8(report_signed) です
 
 **attest_key**:JSON Web Key (JWK) オブジェクト(RFC 7517) として表されるエンクレーブ キーの公開部分
 
@@ -247,3 +253,7 @@ Azure Attestation -> クライアント
 ```
 
 **report** (JWT):JSON Web Token (JWT) 形式 (RFC 7519) の構成証明レポート。
+
+## <a name="next-steps"></a>次のステップ
+
+- [Azure Attestation ワークフロー](workflow.md)

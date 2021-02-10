@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: f635a4c4c6e0b1dcb4d4842d3cddb337d2b26407
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 74009c7e7f2ad28655c9c5322a063a17da96e0c5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735162"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493924"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Meraki Dashboard の統合
 
@@ -103,7 +103,7 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
 
     ![SAML 署名証明書の編集](common/edit-certificate.png)
 
-1. **[SAML 署名証明書]** セクションで **[Thumbprint Value]\(拇印の値\)** をコピーし、お使いのコンピューターに保存します。
+1. **[SAML 署名証明書]** セクションで **[Thumbprint Value]\(拇印の値\)** をコピーし、お使いのコンピューターに保存します。 この値にはコロンを含めることで、Meraki Dashboard で認識されるように変換する必要があります。 たとえば、Azure の拇印が `C2569F50A4AAEDBB8E` の場合、後で Meraki Dashboard で使用できるようにするには `C2:56:9F:50:A4:AA:ED:BB:8E` に変更する必要があります。
 
     ![[Thumbprint]\(拇印\) の値をコピーする](common/copy-thumbprint.png)
 
@@ -165,7 +165,7 @@ Meraki Dashboard に対して Azure AD SSO を構成してテストするには�
 
     ![Meraki Dashboard の [Add a SAML IdP]\(SAML IdP の追加\)](./media/meraki-dashboard-tutorial/configure-3.png)
 
-1. Azure portal からコピーした **[拇印]** の値を **[X.590 cert SHA1 fingerprint]\(X.590 証明書 SHA1 のフィンガープリント\)** ボックスに貼り付けます。 **[保存]** をクリックします。 保存すると、コンシューマー URL が表示されます。 [Consumer URL]\(コンシューマー URL\) の値をコピーして、Azure portal の **[基本的な SAML 構成] セクション** の **[応答 URL]** ボックスに貼り付けます。
+1. 前のセクションの手順 9. で説明したように、Azure portal からコピーして、指定した形式に変換した **拇印** の値を、 **[X.590 cert SHA1 fingerprint]\(590 証明書 SHA1 拇印\)** テキストボックスに貼り付けます。 **[保存]** をクリックします。 保存すると、コンシューマー URL が表示されます。 [Consumer URL]\(コンシューマー URL\) の値をコピーして、Azure portal の **[基本的な SAML 構成] セクション** の **[応答 URL]** ボックスに貼り付けます。
 
     ![Meraki Dashboard の構成](./media/meraki-dashboard-tutorial/configure-4.png)
 

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 12/17/2020
+ms.date: 01/22/2021
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 3f62ab20359273aec6743c27ab46b33027e82b55
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 893bf37a5a4c8a314e5182bf2ac4bc28502b98d9
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598400"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98699442"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Cognitive Search とは
 
@@ -22,9 +22,9 @@ Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) �
 
 検索サービスには次のコンポーネントがあります。
 
-+ インデックス作成とクエリの実行に使用される検索エンジン
-+ ユーザーが所有する検索インデックスの永続的ストレージ
-+ 単純なものから複雑なものまでさまざまなクエリを作成するための照会言語
++ フルテキスト検索の検索エンジン
++ ユーザーが所有するインデックス付けされたコンテンツの永続的ストレージ
++ インデックス作成とクエリのための API
 + (省略可能) [AI ベースのエンリッチメント](cognitive-search-concept-intro.md) (画像、生のテキスト、アプリケーション ファイルから検索可能なコンテンツを作成する)
 + (省略可能) データ、機械学習 (AI)、セキュリティを目的とした他の Azure サービスとの統合
 
@@ -32,15 +32,19 @@ Azure Cognitive Search ([旧称 Azure Search](whats-new.md#new-service-name)) �
 
 ![Azure Cognitive Search のアーキテクチャ](media/search-what-is-azure-search/azure-search-diagram.svg "Azure Cognitive Search のアーキテクチャ")
 
-検索は、表面的には他の Azure サービスと統合できます。これには、Azure データ ソースからのデータのインジェストと取得を自動化する "*インデクサー*" という形式があるほか、Cognitive Services で提供されている AI (画像やテキストの分析など) や、Azure Machine Learning 内で作成したり Azure Functions 内にラップしたりするカスタム AI を組み込んだ "*スキルセット*" という形式があります。
+検索は、対外的に他の Azure サービスと統合できます。これには、Azure データ ソースからのデータのインジェストと取得を自動化する "*インデクサー*" という形式があるほか、Cognitive Services で提供されている AI (画像やテキストの分析など) や、Azure Machine Learning 内で作成したり Azure Functions 内にラップしたりするカスタム AI を組み込んだ "*スキルセット*" という形式があります。
+
+## <a name="inside-a-search-service"></a>検索サービスの内部
 
 検索サービス自体は、"*インデックスの作成*" と "*クエリの実行*" の 2 つが主なワークロードとなります。 
 
-+ インデックスを作成すると、テキストが検索サービスに取り込まれて検索可能になります。 内部では、受信テキストはトークンへと処理され、高速スキャンできるように逆インデックスに格納されます。 JSON ドキュメント形式であればどのようなコンテンツでもアップロードできます。
++ [インデックス作成](search-what-is-an-index.md)は、取り込みのプロセスです。コンテンツを検索サービスに読み込んで検索可能にします。 内部では、受信テキストはトークンへと処理され、高速スキャンできるように逆インデックスに格納されます。 JSON ドキュメント形式であればどのようなテキストでもアップロードできます。
 
-  インデックス作成には、[コグニティブ スキル](cognitive-search-working-with-skillsets.md) (Microsoft が提供する事前定義済みのもの、またはお客様が作成したカスタム スキル) を通じて "*AI エンリッチメント*" を追加することもできます。 その後の分析と変換によって、以前は存在していなかった新しい情報と構造が生成されるため、さまざまな検索およびナレッジ マイニング シナリオに対応した高度な実用性が実現します。
+  加えて、コンテンツに雑多なファイルが含まれている場合は、[コグニティブ スキル](cognitive-search-working-with-skillsets.md)を通じて "*AI エンリッチメント*" を追加するという選択肢があります。 AI エンリッチメントは、アプリケーション ファイルに埋め込まれているテキストを抽出できるほか、非テキスト ファイルから、そのコンテンツを分析することによってテキストと構造を推測することもできます。 
 
-+ インデックスに検索可能なデータが設定されると、クライアント アプリは検索サービスにクエリ要求を送信して、応答を処理できるようになります。 すべてのクエリは、お客様のサービス内で作成、所有、保存する検索インデックスに対して実行されます。 クライアント アプリでの検索エクスペリエンスは Azure Cognitive Search の API を使用して定義され、関連性のチューニング、オートコンプリート、シノニムの一致、あいまい一致、パターン マッチング、フィルター、および並べ替えを含めることができます。
+  分析機能を備えたスキルは、Microsoft によってあらかじめ定義されているものと、ユーザーによって作成されるカスタム スキルとがあります。 その後の分析と変換によって、以前は存在していなかった新しい情報と構造が生成されるため、さまざまな検索およびナレッジ マイニング シナリオに対応した高度な実用性が実現します。
+
++ [クエリ](search-query-overview.md)が実行できるようになるのは、検索可能なテキストがインデックスに投入された後です。クライアント アプリが検索サービスにクエリ要求を送信して応答を処理します。 すべてのクエリは、お客様のサービス内で作成、所有、保存する検索インデックスに対して実行されます。 クライアント アプリでの検索エクスペリエンスは Azure Cognitive Search の API を使用して定義され、関連性のチューニング、オートコンプリート、シノニムの一致、あいまい一致、パターン マッチング、フィルター、および並べ替えを含めることができます。
 
 機能は、情報の検索に固有の複雑さを感じさせないシンプルな [REST API](/rest/api/searchservice/) または [.NET SDK](search-howto-dotnet-sdk.md) を使って公開されます。 また、Azure portal を使用して、サービスの管理とコンテンツの管理を行うこともできます。インデックスとスキルセットのプロトタイプ作成やクエリを実行するためのツールが用意されています。 サービスはクラウドで実行されるため、インフラストラクチャと可用性は Microsoft によって管理されます。
 
@@ -62,7 +66,7 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 
 次の 4 つのステップにより、主要な検索機能をエンド ツー エンドで試すことができます。
 
-1. 共有される Free レベルの [**検索サービスを作成**](search-create-service-portal.md)します。または[課金対象レベル](https://azure.microsoft.com/pricing/details/search/)を選択して、自分のサービスでのみ使用される専用リソースを確保することもできます。 すべてのクイックスタートとチュートリアルの作業は、共有サービスで完結できます。
+1. 共有される Free レベルの [**検索サービスを作成**](search-create-service-portal.md)します。または [課金対象レベル](https://azure.microsoft.com/pricing/details/search/)を選択して、自分のサービスでのみ使用される専用リソースを確保することもできます。 すべてのクイックスタートとチュートリアルの作業は、共有サービスで完結できます。
 
 1. ポータル、[REST API](/rest/api/searchservice/create-index)、[.NET SDK](search-howto-dotnet-sdk.md)、または他の SDK を使用して [**検索インデックスを作成**](search-what-is-an-index.md)します。 検索可能なコンテンツの構造は、インデックス スキーマによって定義されます。
 
@@ -73,7 +77,7 @@ Azure Cognitive Search は、次のアプリケーション シナリオに適�
 > [!TIP]
 > [**データ インポート ウィザード**](search-get-started-portal.md)と Azure データ ソースの使用から始めることによって手順を最小限に抑え、インデックスの作成、読み込み、照会を数分で行うことができます。
 
-## <a name="how-it-compares"></a>他のソリューションとの比較
+## <a name="compare-search-options"></a>検索オプションの比較
 
 お客様から、Azure Cognitive Search が他の検索に関連するソリューションと比較してどうなのかよくお問い合わせいただきます。 主な相違点を次の表に示します。
 

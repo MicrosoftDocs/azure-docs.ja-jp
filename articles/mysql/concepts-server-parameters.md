@@ -1,17 +1,17 @@
 ---
 title: サーバー パラメーター - Azure Database for MySQL
 description: このトピックでは、Azure Database for MySQL でのサーバー パラメーターの構成に関するガイドラインを示します。
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 6/25/2020
-ms.openlocfilehash: 0fddc1e8f80e257548d0dda91758273eb8c8ac78
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/26/2021
+ms.openlocfilehash: 9485d346384344bd7c35d0577245419ca1f56574
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534910"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951312"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
 
@@ -261,6 +261,18 @@ Lower_case_table_name は既定で 1 に設定されます。MySQL 5.6 および
 |メモリ最適化|8|16777216|1024|536870912|
 |メモリ最適化|16|16777216|1024|1073741824|
 |メモリ最適化|32|16777216|1024|1073741824|
+
+### <a name="innodb-buffer-pool-warmup"></a>InnoDB バッファー プールのウォームアップ
+Azure Database for MySQL サーバーを再起動した後、テーブルに対してクエリを実行すると、ディスクに存在するデータ ページが読み込まれます。 これにより、クエリを最初に実行したときの待機時間が長くなり、パフォーマンスが低下します。 これは、待機時間の影響を受けやすいワークロードでは許容できない場合があります。 InnoDB バッファー プールのウォームアップを利用すると、DML または SELECT の操作が対応する行にアクセスするのを待機するのではなく、再起動の前にバッファー プール内にあったディスク ページを再読み込みするため、ウォームアップ期間を短縮できます。
+
+Azure Database for MySQL サーバーを再起動した後のウォームアップ期間を短縮できます。これは、[InnoDB バッファー プール サーバー パラメーター](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html)を構成すると得られるパフォーマンス上の利点です。 InnoDB は、サーバーのシャットダウン時に各バッファー プールで最近使用されたページを一定の割合で保存し、サーバーの起動時にこれらのページを復元します。
+
+また、パフォーマンスの向上は、サーバーの起動時間が長くなるという代償を伴うことに注意してください。 このパラメーターを有効にすると、サーバーにプロビジョニングされている IOPS に応じて、サーバーの起動と再起動にかかる時間が長くなることが予想されます。 その間はサーバーを利用できないため、再起動時間をテストし監視して、起動/再起動のパフォーマンスが許容可能なものであることを確認することをお勧めします。 プロビジョニングされた IOPS が 1000 未満の場合 (つまり、プロビジョニングされたストレージが 335 GB 未満の場合) は、このパラメーターを使用しないことをお勧めします。
+
+サーバーのシャットダウン時にバッファー プールの状態を保存するには、サーバー パラメーター `innodb_buffer_pool_dump_at_shutdown` を `ON` に設定します。 同様に、サーバー起動時にバッファー プールの状態を復元するには、サーバー パラメーター `innodb_buffer_pool_load_at_startup` を `ON` に設定します。 サーバー パラメーター `innodb_buffer_pool_dump_pct` の値を下げて微調整すると、起動/再起動時間への影響を制御できます。既定では、このパラメーターは `25` に設定されています。
+
+> [!Note]
+> InnoDB バッファー プールのウォームアップ パラメーターは、最大 16 TB のストレージを持つ汎用ストレージ サーバーでのみサポートされています。 Azure Database for MySQL のストレージ オプションの詳細については、[こちら](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)を参照してください。
 
 ### <a name="time_zone"></a>time_zone
 

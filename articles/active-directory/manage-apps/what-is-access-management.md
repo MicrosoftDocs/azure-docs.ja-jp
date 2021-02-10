@@ -3,19 +3,19 @@ title: Azure AD を使用したアプリへのアクセスの管理
 description: Azure Active Directory により、組織が各ユーザーがアクセスするアプリをどのように指定できるかついて説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: kenwith
-ms.openlocfilehash: c73a5ccd9e16fb5efd9fefca6253701f942c3202
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5afc6aa8f52011eba6d7cfdfaa09b0ab995183e8
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367790"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257425"
 ---
 # <a name="managing-access-to-apps"></a>アプリへのアクセスの管理
 
@@ -45,7 +45,7 @@ Azure AD のアプリケーション割り当ては、次の 2 つの主要な�
 * Azure Active Directory 事前認証を使用するアプリケーション プロキシのアプリケーション
 * ユーザーまたは管理者がそのアプリケーションに同意した後に OAuth 2.0 または OpenID Connect 認証を使用する Azure AD アプリケーション プラットフォームに構築されたアプリケーション。特定の企業アプリケーションでは、サインインが許可される人に対する制御がさらに追加されます。
 
-ユーザー割り当てが " *要求されない* " 場合、割り当てられていないユーザーには、そのマイ アプリでアプリが表示されませんが、アプリケーション自体にはサインインできます (SP が開始するサインオンとも呼ばれています)。あるいは、アプリケーションの **[プロパティ]** ページで **[ユーザー アクセス URL]** を使用できます (IDP 開始サインオンとも呼ばれています)。
+ユーザー割り当てが "*要求されない*" 場合、割り当てられていないユーザーには、そのマイ アプリでアプリが表示されませんが、アプリケーション自体にはサインインできます (SP が開始するサインオンとも呼ばれています)。あるいは、アプリケーションの **[プロパティ]** ページで **[ユーザー アクセス URL]** を使用できます (IDP 開始サインオンとも呼ばれています)。
 
 一部のアプリケーションでは、アプリケーションのプロパティにユーザー割り当てを要求するオプションがありません。 そのような場合、PowerShell を利用し、サービス プリンシパルで appRoleAssignmentRequired プロパティを設定できます。
 
@@ -82,7 +82,7 @@ Microsoft アプリケーション (Exchange、SharePoint、Yammer など) の�
 
 Microsoft が公開したアプリケーションにユーザーがアクセスする方法は、主に 3 つあります。
 
-- Microsoft 365 またはその他の有料のスイートのアプリケーションでは、 **ライセンスの割り当て** によってユーザーにアクセス権が付与されます。ライセンスの割り当ては、ユーザー アカウントに直接、またはグループ ベースのライセンス割り当て機能を使用してグループを通じて行われます。
+- Microsoft 365 またはその他の有料のスイートのアプリケーションでは、**ライセンスの割り当て** によってユーザーにアクセス権が付与されます。ライセンスの割り当ては、ユーザー アカウントに直接、またはグループ ベースのライセンス割り当て機能を使用してグループを通じて行われます。
 - Microsoft またはサード パーティが誰でも使用できるように無料で公開するアプリケーションでは、[ユーザーの同意](configure-user-consent.md)によってユーザーにアクセス権が付与されます。 つまり、ユーザーは自分の Azure AD 職場または学校アカウントでアプリケーションにサインインし、そのアカウントの限定されたデータ セットにアクセスすることが許可されます。
 - Microsoft またはサード パーティがだれでも使用できるよう無料で公開するアプリケーションでは、[管理者の同意](manage-consent-requests.md)によってユーザーにアクセス権を付与することもできます。 つまり、管理者は組織の全員がそのアプリケーションを使用する可能性があると判断しているため、グローバル管理者アカウントを使用してアプリケーションにサインインし、組織の全員にアクセス権を付与します。
 

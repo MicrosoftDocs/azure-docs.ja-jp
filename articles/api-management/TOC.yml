@@ -68,6 +68,8 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+    - name: バックエンド
+      href: backends.md
     - name: サブスクリプション
       href: api-management-subscriptions.md
     - name: バージョン
@@ -104,10 +106,10 @@
           href: import-function-app-as-api.md
         - name: ロジック アプリのインポート
           href: import-logic-app-as-api.md
-        - name: Service Fabric アプリのインポート
-          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
         - name: API の編集
           href: edit-api.md
+        - name: Service Fabric バックエンドを構成する
+          href: how-to-configure-service-fabric-backend.md
     - name: プロビジョニングとスケーリング
       items:
         - name: 容量メトリック

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: a6a01b3a71a7e391c680e6c9547ccd9649dc0e89
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 4ad619fa5f0fb8f8e87333f2681727dabedda42b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605173"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427415"
 ---
 ここでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
 
@@ -35,17 +35,17 @@ ms.locfileid: "98605173"
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Azure portal でハブを作成する](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png" alt-text="Azure portal でハブを作成する。":::
 
 1. **Next:Networking\(次へ: ネットワーク\)** を選択して、ハブの作成を続けます。
 
    IoT Hub に接続できるエンドポイントを選択します。 既定の設定である **[パブリック エンドポイント (すべてのネットワーク)]** を選択できるほか、 **[Public endpoint (selected IP ranges)]\(パブリック エンドポイント (選択された IP 範囲)\)** または **[プライベート エンドポイント]** を選択できます。 この例では、既定の設定をそのまま使用しています。
 
-   ![接続できるエンドポイントを選択する](./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-network-screen.png" alt-text="接続できるエンドポイントを選択する。":::
 
 1. **Next:Management\(次へ: 管理\)** を選択して、ハブの作成を続けます。
 
-    ![Azure portal を使用して新しいハブのサイズとスケールを設定する](./media/iot-hub-include-create-hub/iot-hub-management-screen.png)
+   :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-management-screen.png" alt-text="Azure portal を使用して新しいハブのサイズとスケールを設定する。":::
 
     ここでは、既定の設定をそのまま使用できます。 必要に応じて、次のフィールドに変更を加えることができます。
 
@@ -60,14 +60,14 @@ ms.locfileid: "98605173"
 
     - **[詳細設定]**  >  **[Device-to-cloud パーティション]** : このプロパティでは、device-to-cloud メッセージがそのメッセージの同時閲覧者数に関連付けられます。 ほとんどのハブでは、4 つのパーティションのみが必要となります。
 
-1.  **次へ:[Next]\(次へ\)** を選択して、次の画面に進みます。
+1. **次へ:[Next]\(次へ\)** を選択して、次の画面に進みます。
 
     タグは、名前と値の組です。 複数のリソースおよびリソース グループに同じタグを割り当てることで、リソースを分類したり、課金情報を統合したりすることができます。 詳細については、[タグを使用した Azure リソースの整理](../articles/azure-resource-manager/management/tag-resources.md)に関するページを参照してください。
 
-    ![Azure portal を使用してハブにタグを割り当てる](./media/iot-hub-include-create-hub/iot-hub-create-tags.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-create-tags.png" alt-text="Azure portal を使用してハブにタグを割り当てる。":::
 
-1.  **次へ:次へ: レビューと作成** をクリックして、選択内容を確認します。 次の画面のようになります。ただし、表示されるのはハブの作成時に選択した値です。 
+1. **次へ:次へ: レビューと作成** をクリックして、選択内容を確認します。 次の画面のようになります。ただし、表示されるのはハブの作成時に選択した値です。
 
-    ![新しいハブを作成するための情報を確認する](./media/iot-hub-include-create-hub/iot-hub-review-and-create.png)
+    :::image type="content" source="./media/iot-hub-include-create-hub/iot-hub-review-and-create.png" alt-text="新しいハブを作成するための情報を確認する。":::
 
-1.  **[作成]** を選択して、新しいハブを作成します。 ハブの作成には数分かかります。
+1. **[作成]** を選択して、新しいハブを作成します。 ハブの作成には数分かかります。

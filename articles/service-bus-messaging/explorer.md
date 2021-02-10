@@ -2,13 +2,13 @@
 title: Azure Service Bus Explorer を使用して Service Bus に対してデータ操作を実行する (プレビュー)
 description: この記事では、ポータルベースの Azure Service Bus Explorer を使用して Azure Service Bus データにアクセスする方法について説明します。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 01/20/2020
+ms.openlocfilehash: 06bc2ffffc6b467aa730e16599099bc95117dac9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295602"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092219"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Service Bus Explorer を使用して Service Bus に対してデータ操作を実行する (プレビュー)
 
@@ -25,25 +25,28 @@ Azure Service Bus Explorer では、管理操作以外にまでポータル機�
 > [!NOTE]
 > この記事では、Azure portal 上の Azure Service Bus Explorer の機能について説明します。
 >
-> Azure Service Bus Explorer ツールは、コミュニティが所有する OSS ツールの [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) "***ではありません***"。
+> Azure Service Bus Explorer ツールは、コミュニティが所有する OSS ツールの [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) では "***ありません** _"。
 >
 
 ## <a name="prerequisites"></a>前提条件
 
-Service Bus Explorer ツールを使用するには、Azure Service Bus 名前空間をプロビジョニングする必要があります。 
+Service Bus Explorer ツールを使用するには、次のタスクを実行する必要があります。 
 
-Service Bus 名前空間がプロビジョニングされたら、キューを作成してメッセージを送受信したり、サブスクリプションを使用するトピックで機能をテストしたりする必要があります。
-
-キュー、トピック、およびサブスクリプションの作成方法の詳細については、以下のリンクを参照してください
-   * [クイックスタート - キューを作成する](service-bus-quickstart-portal.md)
-   * [クイックスタート - トピックを作成する](service-bus-quickstart-topics-subscriptions-portal.md)
+- Azure Service Bus 名前空間をプロビジョニングします。
+- メッセージを送受信するためのキューや、機能をテストするためのトピックとサブスクリプションを作成します。 キュー、トピック、およびサブスクリプションを作成する方法については、次の記事を参照してください。 
+    - [クイックスタート - キューを作成する](service-bus-quickstart-portal.md)
+    - [クイックスタート - トピックを作成する](service-bus-quickstart-topics-subscriptions-portal.md)
+- 名前空間で次のいずれかのロールのメンバーであることを確認します。 
+    - [Service Bus データ所有者](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) 
+    - [Contributor](/azure/role-based-access-control/built-in-roles#contributor) 
+    - [所有者](/azure/role-based-access-control/built-in-roles#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Service Bus Explorer の使用
 
 Azure Service Bus Explorer を使用するには、送信、ピーク、および受信操作を実行する Service Bus 名前空間に移動する必要があります。
 
-キューに対して操作を実行する場合は、ナビゲーション メニューから **[キュー]** を選択します。 トピック (とそれに関連するサブスクリプション) に対して操作を実行する場合は、 **[トピック]** を選択します。 
+キューに対して操作を実行する場合は、ナビゲーション メニューから _ *[キュー]* * を選択します。 トピック (とそれに関連するサブスクリプション) に対して操作を実行する場合は、 **[トピック]** を選択します。 
 
 :::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="エンティティの選択":::
 
@@ -51,134 +54,134 @@ Azure Service Bus Explorer を使用するには、送信、ピーク、およ�
 
 左側のナビゲーション メニューから **[Service Bus Explorer (プレビュー)]** を選択します
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="エンティティの選択":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="SB Explorer の左側のナビゲーション メニュー":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>キューまたはトピックに対するメッセージの送信
 
-メッセージを**キュー**または**トピック**に送信するには、Service Bus Explorer の ***[送信]*** タブをクリックします。
+メッセージを **キュー** または **トピック** に送信するには、Service Bus Explorer の "**_[送信]_* _" タブをクリックします。
 
 ここでメッセージを作成するには、次の手順を実行します。 
 
-1. **[コンテンツの種類]** として、'Text/Plain'、'Application/Xml'、'Application/Json' のいずれかを選択します。
+1. _ *[コンテンツの種類]* * として、'Text/Plain'、'Application/Xml'、'Application/Json' のいずれかを選択します。
 2. メッセージの **[コンテンツ]** を追加します。 設定した **[コンテンツの種類]** と一致していることを確認します。
 3. **[詳細プロパティ]** (省略可能) を設定します。[相関 ID]、[メッセージ ID]、[ラベル]、[ReplyTo]、[Time to Live (TTL)]、[スケジュールされたエンキュー時刻] (スケジュールされたメッセージの場合) などがあります。
 4. **[カスタム プロパティ]** を設定します。ディクショナリ キーに対して設定された任意のユーザー プロパティを指定できます。
 
 メッセージの作成が完了したら、[送信] をクリックします。
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="エンティティの選択":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="メッセージを作成する":::
 
 送信操作が正常に完了したら、次のようにします。 
 
 * キューに送信すると、 **[Active Messages]\(アクティブなメッセージ\)** メトリック カウンターが増えます。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
 * トピックに送信すると、メッセージがルーティングされた先のサブスクリプションの **[Active Messages]\(アクティブなメッセージ\)** メトリック カウンターが増えます。
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="TopicAfterSendMetrics":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>キューからのメッセージの受信
 
 Service Bus Explorer の受信機能では、一度に 1 つのメッセージを受信できます。 受信操作は、**ReceiveAndDelete** モードを使用して実行されます。
 
 > [!IMPORTANT]
-> Service Bus Explorer によって実行される受信操作は、"***破壊的受信***" であることに注意してください。つまり、メッセージが Service Bus Explorer ツールに表示されると、キューから削除されます。
+> Service Bus Explorer によって実行される受信操作は、"**_破壊的受信_* _" であることに注意してください。つまり、メッセージは Service Bus Explorer ツールに表示されると、キューから削除されます。
 >
-> キューからメッセージを削除せずにメッセージを参照するには、"***ピーク***" 機能の使用を検討します。
+> キューから削除せずにメッセージを参照するには、"_*_ピーク_*_" 機能の使用を検討します。
 >
 
 キュー (またはその配信不能サブキュー) からメッセージを受信するには 
 
-1. Service Bus Explorer の ***[受信]*** タブをクリックします。
-2. メトリックをチェックして、 **[Active Messages]\(アクティブなメッセージ\)** または **[Dead-lettered Messages]\(配信不能メッセージ\)** を受信しているかどうかを確認します。
+1. Service Bus Explorer の "_*_[受信]_*_" タブをクリックします。
+2. メトリックをチェックして、受信する _ *[Active Messages]\(アクティブなメッセージ\)* * または **[Dead-lettered Messages]\(配信不能メッセージ\)** があるかどうかを確認します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. ***[キュー]*** または ***[Deadletter]\(配信不能\)*** サブキューから選択します。
+3. "**_[キュー]_* _" または "_*_[Deadletter]\(配信不能\)_*_" サブキューから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. ***[受信]*** ボタンをクリックし、***[はい]*** をクリックして、'受信して削除する' 操作を確定します。
+4. "_*_[受信]_*_" ボタン、次に "_*_[はい]_*_" をクリックして、'受信して削除する' 操作を確定します。
 
 
 受信操作が成功すると、次のようにメッセージの詳細がグリッドに表示されます。 グリッドからメッセージを選択すると、その詳細が表示されます。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="エンティティの選択":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Azure Service Bus Explorer の [キュー] ウィンドウのスクリーンショット。キュー内で選択されているアクティブ メッセージのメッセージ詳細が表示されています。":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>キューからのメッセージのピーク
 
 ピーク機能を使用すると、Service Bus Explorer を使用してキューまたは配信不能キューの上位 32 個のメッセージを表示できます。
 
-1. キューのメッセージをピークするには、Service Bus Explorer の ***[ピーク]*** タブをクリックします。
+1. キューのメッセージをピークするには、Service Bus Explorer の "_*_[ピーク]_*_" タブをクリックします。
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="PeekTab":::
 
-2. メトリックをチェックして、 **[Active Messages]\(アクティブなメッセージ\)** または **[Dead-lettered Messages]\(配信不能メッセージ\)** をピークしているかどうかを確認します。
+2. メトリックをチェックして、ピークする _ *[Active Messages]\(アクティブなメッセージ\)* * または **[Dead-lettered Messages]\(配信不能メッセージ\)** があるかどうかを確認します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="QueueAfterSendMetrics":::
 
-3. ***[キュー]*** または ***[Deadletter]\(配信不能\)*** サブキューから選択します。
+3. 次に、"**_[キュー]_* _" または "_*_[配信不能]_*_" サブキューのいずれかを選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="QueueOrDeadletter":::
 
-4. ***[ピーク]*** ボタンをクリックします。 
+4. "_*_[ピーク]_*_" ボタンをクリックします。 
 
 ピーク操作が完了すると、次のように最大 32 個のメッセージがグリッドに表示されます。 特定のメッセージの詳細を表示するには、グリッドから選択します。 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="エンティティの選択":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="PeekMessageFromQueue":::
 
 > [!NOTE]
 >
-> ピークは破壊的な操作ではないため、メッセージはキューから削除 "**されません**"。
+> ピークは破壊的な操作ではないため、メッセージはキューから削除_ *されません**。
 >
 
 ### <a name="receiving-a-message-from-a-subscription"></a>サブスクリプションからのメッセージの受信
 
-キューの場合と同様に、***[受信]*** 操作はサブスクリプション (またはその配信不能エンティティ) に対して実行できます。 ただし、サブスクリプションはトピックのコンテキスト内に存在するため、受信操作は、Service Bus Explorer に移動して特定のトピックに対して実行されます。
+キューの場合と同様に、"**_受信_* _" 操作をサブスクリプション (またはその配信不能エンティティ) に対して実行できます。 ただし、サブスクリプションはトピックのコンテキスト内に存在するため、受信操作は、Service Bus Explorer に移動して特定のトピックに対して実行されます。
 
 > [!IMPORTANT]
-> Service Bus Explorer によって実行される受信操作は、"***破壊的受信***" であることに注意してください。つまり、メッセージが Service Bus Explorer ツールに表示されると、キューから削除されます。
+> Service Bus Explorer によって実行される受信操作は、"_*_破壊的受信_*_" であることに注意してください。つまり、メッセージは Service Bus Explorer ツールに表示されると、キューから削除されます。
 >
-> キューからメッセージを削除せずにメッセージを参照するには、"***ピーク***" 機能の使用を検討します。
+> キューから削除せずにメッセージを参照するには、"_*_ピーク_*_" 機能の使用を検討します。
 >
 
-1. ***[受信]*** タブをクリックし、ドロップダウン セレクターから特定の ***[サブスクリプション]*** を選択します。
+1. "_*_[受信]_*_" タブをクリックし、ドロップダウン セレクターから特定の "_*_サブスクリプション_*_" を選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="ReceiveTabSelected":::
 
-2. ***[サブスクリプション]*** または ***[Deadletter]\(配信不能\)*** サブエンティティから選択します。
+2. "_*_[サブスクリプション]_*_" または "_*_[DeadLetter]\(配信不能\)_*_" サブエンティティから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-3. ***[受信]*** ボタンをクリックし、***[はい]*** をクリックして、'受信して削除する' 操作を確定します。
+3. "_*_[受信]_*_" ボタン、次に "_*_[はい]_*_" をクリックして、'受信して削除する' 操作を確定します。
 
 受信操作が成功すると、受信したメッセージが次のようにグリッドに表示されます。 メッセージの詳細を表示するには、メッセージをクリックします。
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="エンティティの選択":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Azure Service Bus Explorer の [受信] タブのスクリーンショット。受信されているアクティブ メッセージのメッセージ詳細が表示されています。":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>サブスクリプションからのメッセージのピーク
 
-サブスクリプションまたは配信不能サブエンティティのメッセージを簡単に閲覧するには、サブスクリプションに対して***ピーク***機能を利用する方法もあります。
+サブスクリプションまたは配信不能サブエンティティのメッセージを単に閲覧するには、サブスクリプションで "_*_ピーク_*_" 機能を利用できます。
 
-1. ***[ピーク]*** タブをクリックし、ドロップダウン セレクターから特定の ***[サブスクリプション]*** を選択します。
+1. "_*_[ピーク]_*_" タブをクリックし、ドロップダウン セレクターから特定の "_*_サブスクリプション_*_" を選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="PeekTabSelected":::
 
-2. ***[サブスクリプション]*** または ***[Deadletter]\(配信不能\)*** サブエンティティから選択します。
+2. "_*_[サブスクリプション]_*_" または "_*_[DeadLetter]\(配信不能\)_*_" サブエンティティから選択します。
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="エンティティの選択":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="SubscriptionOrDeadletter":::
 
-3. ***[ピーク]*** ボタンをクリックします。
+3. "_*_[ピーク]_*_" ボタンをクリックします。
 
 ピーク操作が完了すると、次のように最大 32 個のメッセージがグリッドに表示されます。 特定のメッセージの詳細を表示するには、グリッドから選択します。 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="エンティティの選択":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="PeekMessageFromSubscription":::
 
 > [!NOTE]
 >
-> ピークは破壊的な操作ではないため、メッセージはキューから削除 "**されません**"。
+> ピークは破壊的な操作ではないため、メッセージはキューから削除_ *されません**。
 >
 
 ## <a name="next-steps"></a>次の手順

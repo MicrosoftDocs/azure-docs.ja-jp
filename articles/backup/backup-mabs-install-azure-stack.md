@@ -3,12 +3,12 @@ title: Azure Stack への Azure Backup Server のインストール
 description: この記事では、Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12dfd15c2bd43816dd361fdf45995bcbcd6fba56
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970238"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987007"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -64,7 +64,7 @@ Azure Stack ワークロードで使用されるすべての仮想マシンは�
 Azure Backup Server は、運用の復旧のために、仮想マシンに接続された Azure ディスクにバックアップ データを保存します。 ディスクと記憶域スペースが仮想マシンに接続されると、記憶域は Azure Backup Server で管理されます。 バックアップ データ記憶域のサイズは、各 [Azure Stack 仮想マシン](/azure-stack/user/azure-stack-storage-overview)に接続されているディスクの数とサイズによって変わります。 Azure Stack VM の各サイズには、仮想マシンに接続できるディスクの最大数があります。 たとえば、A2 は 4 ディスクです。 A3 は 8 ディスクです。 A4 は 16 ディスクです。 ここでも、ディスクのサイズと数によってバックアップ ストレージ プール全体が決まります。
 
 > [!IMPORTANT]
-> Azure Backup Server に接続されたディスク上に、5 日間を超える運用の復旧 (バックアップ) データを保持することは推奨**されません**。
+> Azure Backup Server に接続されたディスク上に、5 日間を超える運用の復旧 (バックアップ) データを保持することは推奨 **されません**。
 >
 
 バックアップ データを Azure に保存すると、Azure Stack 上のバックアップ インフラストラクチャが減ります。 5 日間を超えるデータの場合は、Azure に保存するようにしてください。
@@ -277,7 +277,7 @@ Azure Backup Server は Data Protection Manager とコードを共有します�
 
     ![エージェントのインストールが正常に完了しました](./media/backup-mabs-install-azure-stack/mabs-install-wizard-complete-16.png)
 
-    インストーラーが **[サーバーの登録] ウィザード**を起動します。
+    インストーラーが **[サーバーの登録] ウィザード** を起動します。
 
 12. Azure サブスクリプションと Recovery Services コンテナーに切り替えます。 **[インフラストラクチャの準備]** メニューで、 **[ダウンロード]** を選択して資格情報コンテナーの資格情報をダウンロードします。 手順 2 の **[ダウンロード]** ボタンがアクティブでない場合は、 **[Already downloaded or using the latest Azure Backup Server installation]** \(ダウンロード済みまたは Azure Backup Server の最新インストールを使用する\) を選択してボタンをアクティブにします。 資格情報コンテナーの資格情報は、ダウンロードを格納する場所にダウンロードします。 次の手順に必要であるため、この場所を把握しておいてください。
 
@@ -335,13 +335,19 @@ Azure への接続と Azure サブスクリプションの状態がわかれば�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>接続の切断からの回復
 
-ファイアウォールまたはプロキシにより Azure へのアクセスが妨げられている場合、ファイアウォール/プロキシのプロファイルの許可リストに以下のドメイン アドレスを追加します。
+マシンのインターネットへのアクセスが制限されている場合、マシンまたはプロキシのファイアウォール設定によって次の URL と IP アドレスが許可されていることを確保してください。
 
-- `http://www.msftncsi.com/ncsi.txt`
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+* URL
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP アドレス
+  * 20.190.128.0/18
+  * 40.126.0.0/18
+
 
 Azure Backup Server が Azure に接続できるようになると、Azure サブスクリプションの状態に応じて実行可能な操作が決まります。 サーバーが **[接続済み]** になったら、「[ネットワーク接続](backup-mabs-install-azure-stack.md#network-connectivity)」の表を使用して実行可能な操作を確認します。
 

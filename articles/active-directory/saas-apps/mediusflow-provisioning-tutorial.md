@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: a49258208f7a5945ac71c8f17db56fccfdcd6515
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607883"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662002"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために MediusFlow を構成する
 
@@ -155,17 +155,25 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から MediusFlow に同期されるユーザー属性を確認します。 **Matching** プロパティとして選択されている属性は、更新処理で MediusFlow のユーザー アカウントとの照合に使用されます。 [一致する対象の属性](../app-provisioning/customize-application-attributes.md)を変更する場合は、その属性に基づいたユーザーのフィルター処理が確実に MediusFlow API でサポートされているようにする必要があります。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |属性|Type|
-   |---|---|
-   |userName|String|
+   |属性|Type|フィルター処理のサポート|
+   |---|---|---|
+   |userName|String|&check;|
    |emails[type eq "work"].value|String|
    |name.displayName|String|
    |active|Boolean|
    |name.givenName|String|
    |name.familyName|String|
    |name.formatted|String|
-   |externalID|String|
+   |externalId|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:configurationFilter|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:identityProvider|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:nameIdentifier|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText1|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText2|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText3|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText4|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText5|String|
 
 
 10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to MediusFlow]\(Azure Active Directory グループを MediusFlow に同期する\)** を選択します。
@@ -200,6 +208,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。
+
+## <a name="change-log"></a>ログの変更
+
+* 2021 年 1 月 21 日 - カスタム拡張属性 **configurationFilter**、**identityProvider**、**nameIdentifier**、**customFieldText1**、**customFieldText2**、**customFieldText3**、**customFieldText3**、**customFieldText5** を追加しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

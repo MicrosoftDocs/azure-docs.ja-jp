@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 01/18/2021
+ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: f94076f06fb13bae2a26e8ab6003d7574a2dacfd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 73216b1b089444c1dc92bbe73ed07895de3711b2
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98674239"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98951532"
 ---
 ## <a name="configure-the-relying-party-policy"></a>証明書利用者ポリシーを構成する
 
@@ -33,11 +33,5 @@ ms.locfileid: "98674239"
 1. **[ポリシー]** で **[Identity Experience Framework]** を選択します。
 1. **[カスタム ポリシーのアップロード]** を選択し、変更した 2 つのポリシー ファイルを拡張ポリシー (`TrustFrameworkExtensions.xml` など)、証明書利用者ポリシー (`SignUpSignIn.xml`など) の順序でアップロードします。
 
-## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
-1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します
-1. **[アプリケーション]** には、前に登録した Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[今すぐ実行]** ボタンを選択します。
-
-サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 

@@ -1,5 +1,5 @@
 ---
-title: ストリーミング ロケーターの作成と URL の構築 - Azure Media Services
+title: ストリーミング ロケーターの作成と URL の構築
 description: この記事では、ストリーミング ロケーターを作成し、URL を構築する方法を例示します。
 services: media-services
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 916defd652ff9f4b3f372c609055d2a974126916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecbc42237326cb895c47e96eda13bbddcdeb558f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295718"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956125"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>ストリーミング ロケーターの作成と URL の構築
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure Media Services では、最初に[ストリーミング ロケーター](streaming-locators-concept.md)を作成する必要があります。 その後、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)のホスト名と**ストリーミング ロケーター**のパスを連結します。 このサンプルでは、*既定の* **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成するとき、この "*既定の*" **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出してストリーミングを開始する必要があります。
+Azure Media Services では、最初に[ストリーミング ロケーター](streaming-locators-concept.md)を作成する必要があります。 その後、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)のホスト名と **ストリーミング ロケーター** のパスを連結します。 このサンプルでは、*既定の* **ストリーミング エンドポイント** を使っています。 最初に Media Service アカウントを作成するとき、この "*既定の*" **ストリーミング エンドポイント** は停止状態になっているので、**Start** を呼び出してストリーミングを開始する必要があります。
 
 この記事では、Java と .NET SDK を使用して、ストリーミング ロケーターを作成し、ストリーミング URL を構築する方法を例示します。
 

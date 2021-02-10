@@ -11,18 +11,21 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 491549933817a127a92180b0e4b455e461e4d3a2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976505"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492248"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
 ページ レイアウト パッケージは定期的に更新され、ページ要素に修正と機能強化が加えられます。 次の変更ログは、各バージョンで導入された変更を示しています。
 
 ## <a name="self-asserted-page-selfasserted"></a>セルフアサート ページ (selfasserted)
+
+**2.1.2**
+- スペイン語やフランス語などの言語のローカライズ エンコードの問題を修正しました。
 
 **2.1.1**
 
@@ -70,6 +73,10 @@ ms.locfileid: "97976505"
 - 最初のリリース
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>パスワード リセット リンクがある統合されたサインアップまたはサインイン ページ (unifiedssp)
+
+**2.1.2**
+- スペイン語やフランス語などの言語のローカライズ エンコードの問題を修正しました。
+- [パスワードを忘れた場合] リンクを、ソーシャル IDP などの要求交換として使用できるようにします。
 
 **2.1.1**
 - ページにタイトルとして表示するために、`intro` に加えて、UXString `heading` が追加されました。 これは既定では非表示です。

@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785597"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221110"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Storage Analytics ログを使用した待ち時間のトラブルシューティング
 
@@ -27,7 +27,7 @@ Azure アプリケーションの分散型の性質により、エラーやパ�
 
 ## <a name="recommended-steps"></a>推奨される手順
 
-1. [Storage Analytics のログ](./storage-analytics-logging.md#download-storage-logging-log-data)をダウンロードします。
+1. [Storage Analytics のログ](./manage-storage-analytics-logs.md#download-storage-logging-log-data)をダウンロードします。
 
 2. 次の PowerShell スクリプトを使用して、未加工の形式のログを表形式に変換します。
 

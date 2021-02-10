@@ -3,12 +3,12 @@ title: Azure ディスク バックアップでのバックアップ エラー�
 description: Azure ディスク バックアップでのバックアップ エラーをトラブルシューティングする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 0a2ef1ea20ee8d6b7a3f32e244d3e00f3add80a2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557095"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737729"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Azure ディスク バックアップでのバックアップ エラーのトラブルシューティング (プレビュー)
 
@@ -115,7 +115,7 @@ ms.locfileid: "98557095"
 
 エラー メッセージ:Operation has failed as the Disk quota maximum limit has been reached on the subscription. (サブスクリプションのディスク クォータの上限に達したため、操作が失敗しました。)
 
-推奨される操作:[Azure サブスクリプション、サービスの制限、クォータのドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)を参照するか、Microsoft サポートに連絡して詳しいガイダンスを受けてください。
+推奨される操作:[Azure サブスクリプション、サービスの制限、クォータのドキュメント](../azure-resource-manager/management/azure-subscription-service-limits.md)を参照するか、Microsoft サポートに連絡して詳しいガイダンスを受けてください。
 
 ### <a name="error-code-usererrordiskbackuprestorergormsipermissionsnotpresent"></a>Error Code:UserErrorDiskBackupRestoreRGOrMSIPermissionsNotPresent
 
@@ -153,11 +153,29 @@ ms.locfileid: "98557095"
 
 推奨される操作:別の復旧ポイントを使用して復元することを検討してください。 詳細については、[復元に関するドキュメント](restore-managed-disks.md)を参照してください。
 
+### <a name="error-code-backupagentpluginhostvalidateprotectionerror"></a>Error Code:BackupAgentPluginHostValidateProtectionError
+
+エラー メッセージ:Disk Backup is not yet available in the region of the Backup Vault under which Configure Protection is being tried. (ディスクのバックアップは、保護の構成が試行されているバックアップ コンテナーのリージョンではまだ使用できません。)
+
+推奨される操作:バックアップ コ ンテナーは、プレビューがサポートされているリージョンに存在しなければなりません。 利用可能なリージョンについては、[サポート マトリックス](disk-backup-support-matrix.md)に関するページを参照してください。
+
+### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Error Code:UserErrorDppDatasourceAlreadyHasBackupInstance
+
+エラー メッセージ:The disk you are trying to configure backup is already being protected. (バックアップを構成しようとしているディスクは既に保護されています。) Disk is already associated with a backup instance in a Backup vault. (ディスクは、バックアップ コンテナー内のバックアップ インスタンスに既に関連付けられています。)
+
+推奨される操作:このディスクは、バックアップ コンテナー内のバックアップ インスタンスに既に関連付けられています。 このディスクを保護し直す場合は、バックアップ インスタンスを、それが現在保護されているバックアップ コンテナーから削除し、他のコンテナー内でディスクの保護をやり直します。
+
+### <a name="error-code-usererrordppdatasourcealreadyprotected"></a>Error Code:UserErrorDppDatasourceAlreadyProtected
+
+エラー メッセージ:The disk you are trying to configure backup is already being protected. (バックアップを構成しようとしているディスクは既に保護されています。) Disk is already associated with a backup instance in a Backup vault. (ディスクは、バックアップ コンテナー内のバックアップ インスタンスに既に関連付けられています。)
+
+推奨される操作:このディスクは、バックアップ コンテナー内のバックアップ インスタンスに既に関連付けられています。 このディスクを保護し直す場合は、バックアップ インスタンスを、それが現在保護されているバックアップ コンテナーから削除し、他のコンテナー内でディスクの保護をやり直します。
+
 ### <a name="error-code-usererrormaxconcurrentoperationlimitreached"></a>Error Code:UserErrorMaxConcurrentOperationLimitReached
 
-エラー メッセージ:この操作の種類に対して許可されている同時操作の最高数に達したため、操作を開始できません。
+エラー メッセージ:Unable to start the operation as maximum number of allowed concurrent backups has reached. (許可されている同時バックアップの最大数に達したため、操作を開始できません。)
 
-推奨される操作:前の操作が完了するまで待機してください。
+推奨される操作:先に実行中のバックアップが完了するまで待ちます。
 
 ## <a name="next-steps"></a>次の手順
 

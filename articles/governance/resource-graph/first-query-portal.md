@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:初めてのポータル クエリ
 description: このクイックスタートでは、手順に従って、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行します。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: b5f5203b3842ebc3edbd97bca1ca3c101f47e397
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: cb62a1ae3a29a7aae793fcee6fd896fe0260dc10
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057384"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920100"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -94,7 +94,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 - [Resource Graph エクスプローラー - サンプル ダッシュボード 2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="サンプル ダッシュボード 1 の画像の例" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="サンプル ダッシュボード 2 の画像の例" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > 上の例に示したダッシュボードのスクリーンショットにあるカウントとグラフは、ご利用の Azure 環境によって異なります。

@@ -1,17 +1,17 @@
 ---
-title: Azure portal を使用して Media Services でカスタマー マネージド キーまたは BYOK を使用する
+title: カスタマー マネージド キーまたは BYOK を使用する - ポータル
 description: このチュートリアルでは、Azure portal を使用して、カスタマー マネージド キーまたは Bring Your Own Key (BYOK) を Azure Media Services ストレージ アカウントで使用できるようにします。
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 003b8e066a6161baedbc70e9becbca23566813ef
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e34649162c7a30d4ab43aa068d2c864b5c2d90e0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96013255"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955702"
 ---
 # <a name="tutorial-use-the-azure-portal-to-use-customer-managed-keys-or-byok-with-media-services"></a>チュートリアル:Azure portal を使用して Media Services でカスタマー マネージド キーまたは BYOK を使用する
 

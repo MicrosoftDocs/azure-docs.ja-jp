@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - 仮想ネットワークに Azure Spring Cloud をデプロイする
+title: 仮想ネットワークに Azure Spring Cloud をデプロイする
 description: 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)。
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587725"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880603"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>チュートリアル:仮想ネットワークに Azure Spring Cloud をデプロイする
+# <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>仮想ネットワークに Azure Spring Cloud をデプロイする
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
@@ -25,6 +25,9 @@ ms.locfileid: "97587725"
 * 企業ネットワークでの Azure Spring Cloud アプリとサービス ランタイムのインターネットからの分離。
 * オンプレミスのデータ センター内のシステムや、他の仮想ネットワーク内の Azure サービスとの Azure Spring Cloud の対話。
 * Azure Spring Cloud の送受信ネットワーク通信を制御するための顧客への権限付与。
+
+> [!Note]
+> Azure 仮想ネットワークは、新しい Azure Spring Cloud のサービス インスタンスを作成する時点に限り選択できます。 Azure Spring Cloud を作成した後で、別の仮想ネットワークを使用するように変更することはできません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,7 +62,7 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 
 1. **[仮想ネットワークの作成]** ダイアログ ボックスで、次の情報を入力または選択します。
 
-    |設定          |値                                             |
+    |設定          |Value                                             |
     |-----------------|--------------------------------------------------|
     |サブスクリプション     |サブスクリプションを選択します。                         |
     |Resource group   |リソース グループを選択するか、新しく作成します。  |
@@ -77,6 +80,7 @@ Azure Spring Cloud インスタンスをホストする仮想ネットワーク�
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 残りは既定値のままにして、 **[作成]** を選択します。
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>仮想ネットワークにサービス アクセス許可を付与する
+仮想ネットワーク上の専用かつ動的なサービス プリンシパルにさらに高度なデプロイやメンテナンスの権限を付与するには、Azure Spring Cloud に仮想ネットワークの **所有者** としてのアクセス許可が必要です。
 
 前に作成した仮想ネットワーク **azure-spring-cloud-vnet** を選択します。
 
@@ -160,9 +164,9 @@ az role assignment create \
    > [!Important]
    > リソース グループは、Azure Spring Cloud サービスによって完全に管理されています。 内部のリソースを手動で削除または変更 "*しない*" でください。
 
-## <a name="limitations"></a>制限事項
+## <a name="using-smaller-subnet-ranges"></a>使用するサブネット範囲を小さくする
 
-サブネット範囲が小さいと IP アドレスが節約されますが、Azure Spring Cloud インスタンスが保持できるアプリ インスタンスの最大数に制限が生じます。
+この表は、使用するサブネット範囲を小さくしていった場合に Azure Spring Cloud がサポートするアプリ インスタンスの最大数を示したものです。
 
 | アプリ サブネットの CIDR | IP 総数 | 使用可能な IP 数 | 最大アプリ インスタンス                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |

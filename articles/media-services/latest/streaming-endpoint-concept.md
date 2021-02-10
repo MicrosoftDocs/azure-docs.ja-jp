@@ -1,24 +1,10 @@
 ---
-title: ストリーミング エンドポイント (配信元)
-titleSuffix: Azure Media Services
-description: コンテンツをクライアント プレーヤー アプリまたは CDN (Content Delivery Network) に直接配信するダイナミック パッケージおよびストリーミング サービスであるストリーミング エンドポイント (配信元) について説明します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 02/13/2020
-ms.author: inhenkel
-ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882876"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必須フィールドです。 詳細については、aka.ms/skyeye/meta を参照してください。
+title:ストリーミング エンドポイント (配信元) :Azure Media Services の説明:コンテンツをクライアント プレーヤー アプリまたは CDN (Content Delivery Network) に直接配信するダイナミック パッケージおよびストリーミング サービスであるストリーミング エンドポイント (配信元) について説明します。 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: conceptual ms.date:02/13/2020 ms.author: inhenkel
 ---
+
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services のストリーミング エンドポイント (配信元)
 
 Microsoft Azure Media Services では、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント** は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。 

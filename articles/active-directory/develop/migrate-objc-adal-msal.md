@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107922"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754934"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>アプリケーションを iOS および macOS 用の MSAL に移行する
 
@@ -38,14 +38,14 @@ Microsoft ID プラットフォームには、Azure Active Directory v1.0 と大
 
 ### <a name="standards-compliance"></a>標準へのコンプライアンス
 
-* Microsoft ID プラットフォーム エンドポイントでは、OAuth 2.0 標準と OpenId Connect 標準に従っています。
+* Microsoft ID プラットフォームは、OAuth 2.0 および OpenId Connect 標準に従っています。
 
 ### <a name="incremental-and-dynamic-consent"></a>増分および動的な同意
 
 * Azure Active Directory v1.0 エンドポイントでは、アプリケーションの登録時にすべてのアクセス許可を事前に宣言する必要があります。 これは、これらのアクセス許可が静的であることを意味します。
 * Microsoft ID プラットフォームを使用すると、アクセス許可を動的に要求できます。 アプリでは必要な場合にのみアクセス許可を要求でき、アプリで必要な場合にはさらに要求できます。
 
-Azure Active Directory v1.0 と Microsoft ID プラットフォームの相違点の詳細については、「[Microsoft ID プラットフォーム (v2.0) に更新する理由](../azuread-dev/azure-ad-endpoint-comparison.md)」を参照してください。
+Azure Active Directory v1.0 と Microsoft ID プラットフォームの相違点の詳細については、「[Microsoft ID プラットフォームに更新する理由](../azuread-dev/azure-ad-endpoint-comparison.md)」を参照してください。
 
 ## <a name="adal-and-msal-library-differences"></a>ADAL と MSAL ライブラリの相違点
 

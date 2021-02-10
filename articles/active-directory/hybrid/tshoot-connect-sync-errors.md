@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a668fa9bf0ef4fd3b5451ff4c815b676fe237e51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 88fda4ec810d0b410dcd75ac9c6be69bd54b16d9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410625"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092651"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -29,12 +29,12 @@ ms.locfileid: "94410625"
 
 Azure AD Connect の最新バージョン \(2016 年 8 月以降\) では、同期エラーのレポートは [Azure portal](https://aka.ms/aadconnecthealth) で Azure AD Connect Health for sync の一部として提供されます。
 
-2016 年 9 月 1 日以降、 [Azure Active Directory Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) 機能がすべての " *新しい* " Azure Active Directory テナントに対して既定で有効になります。 この機能は既存のテナントについても数か月のうちに自動的に有効になります。
+2016 年 9 月 1 日以降、[Azure Active Directory Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) 機能がすべての "*新しい*" Azure Active Directory テナントに対して既定で有効になります。 この機能は既存のテナントについても数か月のうちに自動的に有効になります。
 
 Azure AD Connect は、同期を保つディレクトリに対して 3 種類の操作 (インポート、同期、エクスポート) を実行します。 エラーは、どの操作でも発生する可能性があります。 この記事では、主に、Azure AD へのエクスポート中のエラーについて説明します。
 
 ## <a name="errors-during-export-to-azure-ad"></a>Azure AD へのエクスポート中のエラー
-この後のセクションで、Azure AD コネクタを使用した Azure AD へのエクスポート操作中に発生するさまざまな種類の同期エラーについて説明します。 このコネクタは、"contoso. *onmicrosoft.com* " という形式の名前で識別されます。
+この後のセクションで、Azure AD コネクタを使用した Azure AD へのエクスポート操作中に発生するさまざまな種類の同期エラーについて説明します。 このコネクタは、"contoso.*onmicrosoft.com*" という形式の名前で識別されます。
 Azure AD へのエクスポート中のエラーは、Azure AD Connect \(同期エンジン\) が Azure Active Directory に対して試行した操作 \(追加、更新、削除など\) が失敗したことを意味します。
 
 ![エクスポート エラーの概要](./media/tshoot-connect-sync-errors/Export_Errors_Overview_01.png)
@@ -42,9 +42,9 @@ Azure AD へのエクスポート中のエラーは、Azure AD Connect \(同期�
 ## <a name="data-mismatch-errors"></a>データの不一致エラー
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
 #### <a name="description"></a>説明
-* Azure AD Connect \(同期エンジン\) がオブジェクトの追加または更新を Azure Active Directory に指示すると、Azure AD は、受け取るオブジェクトの **sourceAnchor** 属性を使用して、Azure AD 内のオブジェクトの **immutableId** 属性と照合します。 このように照合されたものは、 **完全一致** と呼ばれます。
-* Azure AD で受け取るオブジェクトの **sourceAnchor** 属性と **immutableId** 属性が一致するオブジェクトが **見つからない** 場合、新しいオブジェクトをプロビジョニングする前に、代替策として ProxyAddresses 属性と UserPrincipalName 属性を使用して一致するものを見つけようとします。 このように照合されたものは、 **あいまい一致** と呼ばれます。 あいまい一致の目的は、既に Azure AD に存在するオブジェクト (Azure AD に元から存在する) と、同期中に追加または更新される新しいオブジェクト(オンプレミスで同じエンティティ (ユーザー、グループ) を表す) を一致させることです。
-* **InvalidSoftMatch** エラーが発生するのは、完全一致で一致するオブジェクトが見つからない場合 **かつ** 、あいまい一致によって一致するオブジェクトが見つかるが、そのオブジェクトの *immutableId* の値が受け取るオブジェクトの *SourceAnchor* と異なる場合です。このエラーは、一致するオブジェクトが、オンプレミス Active Directory の別のオブジェクトと同期されたことを示します。
+* Azure AD Connect \(同期エンジン\) がオブジェクトの追加または更新を Azure Active Directory に指示すると、Azure AD は、受け取るオブジェクトの **sourceAnchor** 属性を使用して、Azure AD 内のオブジェクトの **immutableId** 属性と照合します。 このように照合されたものは、**完全一致** と呼ばれます。
+* Azure AD で受け取るオブジェクトの **sourceAnchor** 属性と **immutableId** 属性が一致するオブジェクトが **見つからない** 場合、新しいオブジェクトをプロビジョニングする前に、代替策として ProxyAddresses 属性と UserPrincipalName 属性を使用して一致するものを見つけようとします。 このように照合されたものは、**あいまい一致** と呼ばれます。 あいまい一致の目的は、既に Azure AD に存在するオブジェクト (Azure AD に元から存在する) と、同期中に追加または更新される新しいオブジェクト(オンプレミスで同じエンティティ (ユーザー、グループ) を表す) を一致させることです。
+* **InvalidSoftMatch** エラーが発生するのは、完全一致で一致するオブジェクトが見つからない場合 **かつ**、あいまい一致によって一致するオブジェクトが見つかるが、そのオブジェクトの *immutableId* の値が受け取るオブジェクトの *SourceAnchor* と異なる場合です。このエラーは、一致するオブジェクトが、オンプレミス Active Directory の別のオブジェクトと同期されたことを示します。
 
 つまり、あいまい一致が機能するためには、あいまい一致の対象となるオブジェクトに *immutableId* の値があってはなりません。 *immutableId* に値が設定されているオブジェクトで完全一致が行われないが、あいまい一致の基準を満たす場合は、操作が InvalidSoftMatch 同期エラーで終了します。
 
@@ -71,10 +71,10 @@ Azure Active Directory スキーマでは、次の属性について複数のオ
 7. Azure AD Connect がアンインストールされ、再インストールされました。 再インストール時に、別の属性が SourceAnchor として選択されました。 以前同期されていたすべてのオブジェクトは、InvalidSoftMatch エラーにより同期を停止しました。
 
 #### <a name="example-case"></a>事例:
-1. **Bob Smith** は、オンプレミス Active Directory ( *contoso.com* ) と同期されている、Azure Active Directory のユーザーです。
+1. **Bob Smith** は、オンプレミス Active Directory (*contoso.com*) と同期されている、Azure Active Directory のユーザーです。
 2. Bob Smith の **UserPrincipalName** は **bobs\@contoso.com** として設定されています。
-3. **"abcdefghijklmnopqrstuv=="** は **SourceAnchor** です。これは、オンプレミス Active Directory の Bob Smith の **objectGUID** (すなわち Azure Active Directory の Bob Smith の **immutableId** ) を使用して Azure AD Connect によって計算されます。
-4. Bob には、 **proxyAddresses** 属性に次の値もあります。
+3. **"abcdefghijklmnopqrstuv=="** は **SourceAnchor** です。これは、オンプレミス Active Directory の Bob Smith の **objectGUID** (すなわち Azure Active Directory の Bob Smith の **immutableId**) を使用して Azure AD Connect によって計算されます。
+4. Bob には、**proxyAddresses** 属性に次の値もあります。
    * smtp: bobs@contoso.com
    * smtp: bob.smith@contoso.com
    * **smtp: bob\@contoso.com**
@@ -88,7 +88,7 @@ Azure Active Directory スキーマでは、次の属性について複数のオ
 9. 同期中に、Azure AD Connect はオンプレミス Active Directory への Bob Taylor の追加を認識し、同じ変更を行うように Azure AD に依頼します。
 10. Azure AD は、最初に完全一致を実行します。 つまり、immutableId が "abcdefghijkl0123456789==" と等しいオブジェクトがないかどうか検索します。 Azure AD の他のオブジェクトにはその immutableId がないため、完全一致は失敗します。
 11. 次に、Azure AD は、Bob Taylor のあいまい一致を試みます。 つまり、proxyAddresses が smtp: bob@contoso.com など 3 つの値と等しいオブジェクトがないか検索します。
-12. Azure AD は、あいまい一致条件を満たす Bob Smith のオブジェクトを見つけます。 このオブジェクトの immutableId の値は "abcdefghijklmnopqrstuv==" です。 これは、このオブジェクトがオンプレミスの Active Directory の別のオブジェクトから同期されたことを示します。 したがって、Azure AD はこれらのオブジェクトのあいまい一致を行うことができず、 **InvalidSoftMatch** 同期エラーが発生します。
+12. Azure AD は、あいまい一致条件を満たす Bob Smith のオブジェクトを見つけます。 このオブジェクトの immutableId の値は "abcdefghijklmnopqrstuv==" です。 これは、このオブジェクトがオンプレミスの Active Directory の別のオブジェクトから同期されたことを示します。 したがって、Azure AD はこれらのオブジェクトのあいまい一致を行うことができず、**InvalidSoftMatch** 同期エラーが発生します。
 
 #### <a name="how-to-fix-invalidsoftmatch-error"></a>InvalidSoftMatch エラーを修正する方法
 InvalidSoftMatch エラーの最も一般的な理由は、2 つのオブジェクトの異なる SourceAnchor \(immutableId\) の ProxyAddresses 属性または UserPrincipalName 属性 (あるいは両方) の値が同じであることです。これらの属性が、Azure AD でのあいまい一致プロセスで使用されます。 無効なあいまい一致を修正するには、次の手順に従います。
@@ -116,7 +116,7 @@ Azure AD が 2 つのオブジェクトのあいまい一致を試行すると�
 * メール対応セキュリティ グループが Microsoft 365 で作成されます。 管理者は、ProxyAddresses 属性の値が Microsoft 365 グループと同じ新しいユーザーまたは連絡先をオンプレミス AD に追加します (まだ Azure AD に同期されません)。
 
 #### <a name="example-case"></a>事例
-1. 管理者が、税部門のために新しいメール対応セキュリティ グループを Microsoft 365 に作成し、電子メール アドレスを tax@contoso.com と設定します。 このグループには、 **smtp: tax\@contoso.com** の ProxyAddresses 属性値が割り当てられています。
+1. 管理者が、税部門のために新しいメール対応セキュリティ グループを Microsoft 365 に作成し、電子メール アドレスを tax@contoso.com と設定します。 このグループには、**smtp: tax\@contoso.com** の ProxyAddresses 属性値が割り当てられています。
 2. 新しいユーザーが Contoso.com に加わり、そのユーザーのアカウントが proxyAddress を **smtp: tax\@contoso.com** としてオンプレミスに作成されます。
 3. Azure AD Connect が新しいユーザー アカウントを同期するとき、"ObjectTypeMismatch" エラーが生成されます。
 
@@ -144,13 +144,13 @@ Azure AD Connect が新しいオブジェクトの追加または既存のオブ
 #### <a name="example-case"></a>事例:
 1. **Bob Smith** は、オンプレミス Active Directory (contoso.com) と同期されている、Azure Active Directory のユーザーです。
 2. Bob Smith のオンプレミスでの **UserPrincipalName** は **bobs\@contoso.com** として設定されています。
-3. Bob には、 **proxyAddresses** 属性に次の値もあります。
+3. Bob には、**proxyAddresses** 属性に次の値もあります。
    * smtp: bobs@contoso.com
    * smtp: bob.smith@contoso.com
    * **smtp: bob\@contoso.com**
 4. 新しいユーザー **Bob Taylor** がオンプレミス Active Directory に追加されます。
 5. Bob Taylor の **UserPrincipalName** は **bobt\@contoso.com** として設定されています。
-6. **Bob Taylor** には、 **ProxyAddresses** 属性に次の値もあります。i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
+6. **Bob Taylor** には、**ProxyAddresses** 属性に次の値もあります。i. smtp: bobt@contoso.com ii. smtp: bob.taylor@contoso.com
 7. Bob Taylor のオブジェクトは Azure AD と正常に同期されます。
 8. 管理者は Bob Taylor の **ProxyAddresses** 属性を次の値で更新することにしました。i. **smtp: bob\@contoso.com**
 9. Azure AD は、Bob Taylor の Azure AD 内のオブジェクトを上記の値で更新しようとしますが、この ProxyAddresses 値は既に Bob Smith に割り当てられているため、操作は "AttributeValueMustBeUnique" エラーで失敗します。
@@ -186,7 +186,7 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 これにより、ユーザーの UserPrincipalName のサフィックスがあるフェデレーション ドメインから別のフェデレーション ドメインに変更された場合に **"FederatedDomainChangeError"** 同期エラーが発生することになります。
 
 #### <a name="scenarios"></a>シナリオ
-同期されたユーザーで、オンプレミスの UserPrincipalName のサフィックスが、あるフェデレーション ドメインから別のフェデレーション ドメインに変更されました。 たとえば、 *UserPrincipalName = bob\@contoso.com* が *UserPrincipalName = bob\@fabrikam.com* に変更されました。
+同期されたユーザーで、オンプレミスの UserPrincipalName のサフィックスが、あるフェデレーション ドメインから別のフェデレーション ドメインに変更されました。 たとえば、*UserPrincipalName = bob\@contoso.com* が *UserPrincipalName = bob\@fabrikam.com* に変更されました。
 
 #### <a name="example"></a>例
 1. Contoso.com のアカウントである Bob Smith が、新しいユーザーとして UserPrincipalName bob@contoso.com で Active Directory に追加されます。
@@ -195,13 +195,13 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 4. Bob の userPrincipalName は更新されず、"FederatedDomainChangeError" 同期エラーが発生します。
 
 #### <a name="how-to-fix"></a>修正方法
-ユーザーの UserPrincipalName サフィックスが bob@ **contoso.com** から bob\@**fabrikam.com** に更新され、 **contoso.com** と **fabrikam.com** のどちらも **フェデレーション ドメイン** の場合、次の手順に従って同期エラーを修正します。
+ユーザーの UserPrincipalName サフィックスが bob@**contoso.com** から bob\@**fabrikam.com** に更新され、**contoso.com** と **fabrikam.com** のどちらも **フェデレーション ドメイン** の場合、次の手順に従って同期エラーを修正します。
 
 1. Azure AD 内のユーザーの UserPrincipalName を bob@contoso.com から bob@contoso.onmicrosoft.com に更新します。 次の PowerShell コマンドを Azure AD PowerShell Module で使用できます。`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. 次の同期サイクルで同期の試行を許可します。 このとき、同期が成功して、Bob の UserPrincipalName が予期したとおり bob@fabrikam.com に更新されます。
 
 #### <a name="related-articles"></a>関連記事
-* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+* [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](/azure/active-directory/hybrid/howto-troubleshoot-upn-changes)
 
 ## <a name="largeobject"></a>LargeObject
 ### <a name="description"></a>説明

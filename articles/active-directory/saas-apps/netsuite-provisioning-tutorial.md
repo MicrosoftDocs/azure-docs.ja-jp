@@ -10,21 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359137"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696491"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>チュートリアル:NetSuite を構成し、ユーザーが自動的にプロビジョニングされるようにする
 
 このチュートリアルでは、Azure AD から NetSuite OneWorld にユーザー アカウントが自動的にプロビジョニング/プロビジョニング解除されるために NetSuite と Azure AD で実行する必要がある手順について説明します。
 
-> [!NOTE]
-> 現在この統合は、基本認証 (ユーザー名とパスワード) を使用して認証されています。 NetSuite では、この統合の使用に多要素認証の要件を実装しているため、この要件が免除されている場合を除いて、顧客はこの要件を満たさないとこの統合を使用することはできません。 マイクロソフトは NetSuite と協力し、免除されていない顧客も再度使用できるように、この統合を新しい認証方法に更新しようとしています。 利用できるようになった場合、このドキュメントを ETA と共に更新します。
-
-推奨される操作:この統合の認証動作に対する更新プログラムがリリースされるまでお待ちいただくか、または NetSuite のサポートに、多要素認証要件の免除についてお問い合わせてください。
+> [!WARNING]
+> このプロビジョニング統合は、Microsoft がユーザーを NetSuite にプロビジョニングするために使用している NetSuite API の変更により、2020 年 2 月をもって正常に機能しなくなります。 結果的に、NetSuite アプリケーションのプロビジョニング機能は、間もなく Azure Active Directory エンタープライズ アプリ ギャラリーから削除されます。 アプリケーションの SSO 機能はそのまま維持されます。 Microsoft は NetSuite と連携して、最新式のプロビジョニング統合を構築するために取り組んでいますが、現在ではその実現時期は未定です。
 
 ## <a name="prerequisites"></a>前提条件
 

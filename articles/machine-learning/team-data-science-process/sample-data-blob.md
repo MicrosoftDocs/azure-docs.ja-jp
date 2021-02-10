@@ -1,6 +1,6 @@
 ---
-title: Azure Blob ストレージのデータをサンプリングする - Team Data Science Process
-description: Azure Blob Storage に格納されたデータをサンプリングするには、プログラムでデータをダウンロードしてから、Python で記述されたプロシージャを使用してサンプリングします。
+title: Azure Blob Storage のデータをサンプリングする - Team Data Science Process
+description: プログラムでダウンロードした後、Python で記述されたプロシージャを使用してサンプリングすることによって、Azure Blob Storage に格納されているデータをサンプリングします。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c5827a0e07e537b66684f852d8f3e1500cd9febb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321894"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788843"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure BLOB ストレージのデータをサンプリングする
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Azure Blob Storage のデータをサンプリングする
 
-この記事では、Azure Blob Storage に格納されたデータのサンプリングについて説明します。プログラムからデータをダウンロードし、Python で記述されたプロシージャを使ってそのデータをサンプリングします。
+この記事では、プログラムでダウンロードした後、Python で記述されたプロシージャを使用してサンプリングすることによって、Azure Blob Storage に格納されているデータをサンプリングする方法について説明します。
 
 **データをサンプリングする理由**
 分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。 サンプリングすると、データの理解、探索、および特徴エンジニアリングが容易になります。 Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
@@ -28,7 +28,7 @@ ms.locfileid: "93321894"
 このサンプリング タスクは、 [Team Data Science Process (TDSP)](./index.yml)の 1 ステップです。
 
 ## <a name="download-and-down-sample-data"></a>データのダウンロードとダウン サンプリング
-1. 次の Python のサンプル コードから、Blob service を使用して Azure BLOB ストレージからデータをダウンロードします。 
+1. 次の Python のサンプル コードから、Blob service を使用して Azure Blob Storage からデータをダウンロードします。 
 
     ```python
     from azure.storage.blob import BlobService

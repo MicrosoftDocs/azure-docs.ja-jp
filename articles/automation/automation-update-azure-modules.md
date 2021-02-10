@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f05c3247ecdd77fe4cf02db70c7ba4b2c534f959
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185774"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055350"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell モジュールの更新
 
@@ -23,7 +23,7 @@ ms.locfileid: "86185774"
 
 Runbook やそれにより自動化されるプロセスに影響を与えないようにするため、更新前にテストと検証を必ず行ってください。 その目的のための専用の Automation アカウントがない場合は、アカウントの作成を検討してください。アカウントを作成すると、Runbook の開発中の多数のさまざまなシナリオについてテストを行うことができます。 このテストで、PowerShell モジュールの更新など、反復的な変更を行ってください。
 
-お使いの Automation アカウントに [Azure 実行アカウント資格情報](manage-runas-account.md)が作成されていることを確認します。
+お使いの Automation アカウントに [Azure 実行アカウント](automation-security-overview.md#run-as-accounts)が作成されていることを確認します。
 
 スクリプトをローカルで開発する場合、テスト時に確実に同じ結果が得られるようにするために、Automation アカウントに置いているものと同じバージョンのモジュールをローカルに用意することをお勧めします。 結果を検証し、必要な変更を適用した後、変更を運用環境に移行してください。
 
@@ -38,7 +38,7 @@ Automation アカウントの Azure モジュールを更新するには、オ�
 
 ## <a name="use-update-runbook-code-as-a-regular-powershell-script"></a>更新の Runbook コードを通常の PowerShell スクリプトとして使用する
 
-Runbook のコードは、Runbook としてではなく、通常の PowerShell スクリプトとして使用することができます。 そのためには、まず [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) コマンドレットを使用して Azure にサインインし、スクリプトに `-Login $false` を渡します。
+Runbook のコードは、Runbook としてではなく、通常の PowerShell スクリプトとして使用することができます。 そのためには、まず [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure にサインインし、スクリプトに `-Login $false` を渡します。
 
 ## <a name="use-the-update-runbook-on-sovereign-clouds"></a>更新の Runbook をソブリン クラウドで使用する
 

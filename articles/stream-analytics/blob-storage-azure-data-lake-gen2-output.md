@@ -5,13 +5,13 @@ author: enkrumah
 ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: 5484d13a70d8eaf905d3c8a51d575f177427019b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 01/27/2021
+ms.openlocfilehash: 3ce22837da2ca30249b399a297b6188d950b1ea4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882163"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935144"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの BLOB ストレージと Azure Data Lake Gen2 出力
 
@@ -44,7 +44,7 @@ Azure Blob Storage を使用すると、大量の非構造化データをクラ�
 出力として Blob Storage を使用しているときに、BLOB に新しいファイルが作成されるのは、次の場合です。
 
 * ファイルが許可されるブロックの最大数 (現在は 50,000) を超えている場合。 BLOB の最大許容サイズに到達することなく、ブロックの最大許容数に到達する場合があります。 たとえば、出力レートが高い場合は、表示されるブロックあたりのバイト数が増え、ファイルのサイズが増加します。 出力レートが低い場合は、各ブロックのデータが少なくなり、ファイルのサイズも小さくなります。
-* 出力のスキーマが変更されている場合、および出力形式で固定スキーマが必要な場合 (CSV および Avro)。
+* 出力のスキーマが変更されている場合、および出力形式で固定スキーマが必要な場合 (CSV、Avro、Parquet)。
 * ジョブを停止し起動するユーザーが外部からジョブを再起動した場合、またはシステム メンテナンスやエラーの復旧のために内部的にジョブを再起動した場合。
 * クエリが完全にパーティション分割されており、新しいファイルが出力パーティションごとに作成される場合。
 * ストレージ アカウントのファイルまたはコンテナーがユーザーによって削除された場合。

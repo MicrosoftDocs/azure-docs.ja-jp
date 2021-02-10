@@ -3,20 +3,19 @@ title: 詳細なロール ベースのアクセスの Azure HDInsight クラス�
 description: HDInsight クラスター構成の詳細なロールベースのアクセスを移行の一環として求める変更について説明します。
 author: tylerfox
 ms.author: tyfox
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: d2e9c1fe89866511f8eae0b900563471cd6e52e9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 08be42f4f0801fc700b3e0fc645c1bbc1b747e91
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533310"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944097"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
-機密情報を取得するための、よりきめ細かいロールベースのアクセスのサポートに対して、いくつかの重要な変更が導入されています。 [影響を受けるエンティティまたはシナリオ](#am-i-affected-by-these-changes)のいずれかを使用している場合は、これらの変更の一環として、 **2019 年 9 月 3 日までに** 何らかのアクションが必要になる場合があります。
+機密情報を取得するための、よりきめ細かいロールベースのアクセスのサポートに対して、いくつかの重要な変更が導入されています。 [影響を受けるエンティティまたはシナリオ](#am-i-affected-by-these-changes)のいずれかを使用している場合は、これらの変更の一環として、**2019 年 9 月 3 日までに** 何らかのアクションが必要になる場合があります。
 
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
@@ -98,7 +97,7 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 [バージョン 2.1.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/2.1.0) の HDInsight SDK for .NET に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
-- `ClusterOperationsExtensions.GetClusterConfigurations` では、ストレージ キー (コア サイト) または HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります** 。
+- `ClusterOperationsExtensions.GetClusterConfigurations` では、ストレージ キー (コア サイト) または HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります**。
     - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は `ClusterOperationsExtensions.ListConfigurations` を使います。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。
     - HTTP ゲートウェイ資格情報だけを取得するには、`ClusterOperationsExtensions.GetGatewaySettings` を使います。
 
@@ -112,7 +111,7 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 [バージョン 5.0.0](https://www.nuget.org/packages/Microsoft.Azure.Management.HDInsight/5.0.0) の HDInsight SDK for .NET に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
-- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります** 。
+- [`ConfigurationOperationsExtensions.Get`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.get?view=azure-dotnet&preserve-view=true) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります**。
     - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationOperationsExtensions.List`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.list?view=azure-dotnet&preserve-view=true) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
     - HTTP ゲートウェイ資格情報だけを取得するには、[`ClusterOperationsExtensions.GetGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.getgatewaysettings?view=azure-dotnet&preserve-view=true) を使用します。 
 - [`ConfigurationsOperationsExtensions.Update`](/dotnet/api/microsoft.azure.management.hdinsight.configurationsoperationsextensions.update?view=azure-dotnet&preserve-view=true) は非推奨になり、[`ClusterOperationsExtensions.UpdateGatewaySettings`](/dotnet/api/microsoft.azure.management.hdinsight.clustersoperationsextensions.updategatewaysettings?view=azure-dotnet&preserve-view=true) に置き換えられています。 
@@ -122,7 +121,7 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 [バージョン 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/) の HDInsight SDK for Python に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
-- [`ConfigurationsOperations.get`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります** 。
+- [`ConfigurationsOperations.get`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#get-resource-group-name--cluster-name--configuration-name--custom-headers-none--raw-false----operation-config-) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります**。
     - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationsOperations.list`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#list-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
     - HTTP ゲートウェイ資格情報だけを取得するには、[`ClusterOperations.get_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#get-gateway-settings-resource-group-name--cluster-name--custom-headers-none--raw-false----operation-config-) を使用します。
 - [`ConfigurationsOperations.update`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.configurationsoperations#update-resource-group-name--cluster-name--configuration-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) は非推奨になり、[`ClusterOperations.update_gateway_settings`](/python/api/azure-mgmt-hdinsight/azure.mgmt.hdinsight.operations.clustersoperations#update-gateway-settings-resource-group-name--cluster-name--parameters--custom-headers-none--raw-false--polling-true----operation-config-) に置き換えられています。
@@ -131,14 +130,14 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 [バージョン 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) の HDInsight SDK for Java に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
-- `ConfigurationsInner.get` では、ストレージ キー (コア サイト) または HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります** 。
+- `ConfigurationsInner.get` では、ストレージ キー (コア サイト) または HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります**。
 - `ConfigurationsInner.update` は非推奨となりました。
 
 ### <a name="sdk-for-go"></a>Go 用 SDK
 
 [バージョン 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight) の HDInsight SDK for Go に更新してください。 以下の変更に影響されるメソッドを使用している場合、最小限のコード変更が必要になる可能性があります。
 
-- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.Get) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります** 。
+- [`ConfigurationsClient.get`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.Get) では、ストレージ キー (コア サイト) や HTTP 資格情報 (ゲートウェイ) などの **機密性の高いパラメーターが返されなくなります**。
     - 機密性の高いパラメーターを含むすべての構成を取得するには、今後は [`ConfigurationsClient.list`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.List) を使用します。  "閲覧者" ロールを持つユーザーはこのメソッドを使用できないことに注意してください。 これにより、クラスターの機密情報にアクセスできるユーザーをきめ細かく制御できます。 
     - HTTP ゲートウェイ資格情報だけを取得するには、[`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ClustersClient.GetGatewaySettings) を使用します。
 - [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ConfigurationsClient.Update) は非推奨になり、[`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2015-03-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings) に置き換えられています。

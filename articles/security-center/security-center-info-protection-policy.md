@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
-ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34d2e8116b7b914803d1bb68b350c9aadd78439f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013787"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792067"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure Security Center 上の SQL 情報保護ポリシー
  
@@ -58,7 +58,7 @@ Security Center 内の情報保護ポリシー オプションには、ラベル
 Security Center の **[価格と設定]** ページで、 **[SQL information protection]** を選択します。
 
 > [!NOTE]
-> このオプションは、テナントレベルのアクセス許可を持つユーザーに対してのみ表示されます。 
+> このオプションは、テナントレベルのアクセス許可を持つユーザーに対してのみ表示されます。 [テナント全体のアクセス許可を自分に付与します](https://docs.microsoft.com/azure/security-center/security-center-management-groups#grant-tenant-wide-permissions-to-yourself)。
 
 :::image type="content" source="./media/security-center-info-protection-policy/pricing-settings-link-to-information-protection.png" alt-text="Azure Security Center の [価格と設定] ページから SQL 情報保護ポリシーへのアクセス":::
 
@@ -124,6 +124,7 @@ Security Center の推奨事項である "SQL データベースの機密デー�
 
 1. 変更を適用するには、メインの **[ラベル]** ページで **[保存]** を選択します。
  
+
 ## <a name="exporting-and-importing-a-policy"></a>ポリシーのエクスポートおよびインポート
 
 定義されているラベルと情報の種類が含まれる JSON ファイルをダウンロードし、任意のエディターでファイルを編集して、更新されたファイルをインポートすることができます。 

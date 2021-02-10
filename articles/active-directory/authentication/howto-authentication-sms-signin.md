@@ -1,31 +1,28 @@
 ---
 title: Azure Active Directory 用の SMS ベースのユーザー サインイン
-description: SMS を使用して Azure Active Directory にサインインする (プレビュー) ようにユーザーを構成して有効にする方法について説明します。
+description: SMS を使用して Azure Active Directory にサインインするようにユーザーを構成して有効にする方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 01/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10bac65fa8b1ed192e2ece1682f22e7feb528431
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d9430066ad92b4d0b69bd07c763e3f7b5d6e889a
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743345"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693538"
 ---
-# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory を使用して SMS ベース認証 (プレビュー) 用にユーザーを構成して有効にする
+# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Azure Active Directory を使用して SMS ベース認証用にユーザーを構成して有効にする 
 
-ユーザーがアプリケーションやサービスにサインインする際の複雑さとセキュリティ上のリスクを軽減するために、Azure Active Directory (Azure AD) には複数の認証オプションが用意されています。 現在プレビュー段階にある SMS ベースの認証では、ユーザーは、ユーザー名とパスワードを入力せずに、それらを知らせることなくサインインできます。 ID 管理者によってアカウントが作成された後、サインイン プロンプトで電話番号を入力して、テキスト メッセージ経由で送信された認証コードを指定できます。 この認証方法を使用すると、特に第一線で働くユーザーにとっては、アプリケーションやサービスへのアクセスが簡単になります。
+アプリケーションやサービスへのサインインを簡素化してセキュリティで保護するために、Azure Active Directory (Azure AD) には複数の認証オプションが用意されています。 SMS ベースの認証を使用すると、サインイン時にユーザーは自分のユーザー名とパスワードを指定する必要がなく、覚えておく必要すらありません。 ユーザーは、ID 管理者によってアカウントが作成された後、サインイン プロンプトで電話番号を入力できます。 ユーザーは、テキスト メッセージを介して、サインインを完了するために指定できる認証コードを受け取ります。 この認証方法を使用すると、特に第一線で働くユーザーにとっては、アプリケーションやサービスへのアクセスが簡単になります。
 
 この記事では、Azure AD で選択されたユーザーまたはグループに対して SMS ベースの認証を有効にする方法について説明します。
-
-> [!NOTE]
-> ユーザー用の SMS ベース認証は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -43,10 +40,10 @@ ms.locfileid: "96743345"
 
 ## <a name="limitations"></a>制限事項
 
-SMS ベース認証のパブリック プレビュー期間中は、次の制限事項が適用されます。
+SMS ベースの認証には、次の制限事項が適用されます。
 
 * 現在、SMS ベース認証には Azure AD Multi-Factor Authentication との互換性はありません。
-* Teams を除き、SMS ベース認証には現在、ネイティブな Office アプリケーションとの互換性はありません。
+* Teams を除き、SMS ベース認証には、ネイティブな Office アプリケーションとの互換性はありません。
 * B2B アカウントの場合、SMS ベース認証はお勧めしません。
 * フェデレーション ユーザーは、ホーム テナントでは認証されません。 クラウドでのみ認証されます。
 
@@ -57,15 +54,15 @@ SMS ベース認証のパブリック プレビュー期間中は、次の制限
 * 認証方法ポリシーを有効にする。
 * SMS ベースの認証方法を使用できるユーザーまたはグループを選択する。
 * 各ユーザー アカウントに電話番号を割り当てる。
-    * この電話番号は、Azure portal (この記事で示されている) と *[マイ スタッフ]* または *[マイ プロファイル]* で割り当てることができます。
+    * この電話番号は、Azure portal (この記事で示されている) と *[マイ スタッフ]* または *[マイ アカウント]* で割り当てることができます。
 
 まず、Azure AD テナントの SMS ベース認証を有効にしましょう。
 
 1. [Azure portal][azure-portal] に "*全体管理者*" としてサインインします。
 1. **Azure Active Directory** を検索して選択します。
-1. Azure Active Directory ウィンドウの左側にあるナビゲーション メニューから、 **[セキュリティ] > [認証方法] > [認証方法ポリシー (プレビュー)]** を選択します。
+1. Azure Active Directory ウィンドウの左側にあるナビゲーション メニューから、 **[セキュリティ] > [認証方法] > [認証方法ポリシー]** を選択します。
 
-    [![Azure portal で [認証方法ポリシー (プレビュー)] ウィンドウを参照して選択します。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
+    [![Azure portal で [認証方法ポリシー] ウィンドウを参照して選択します。](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png)](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
 1. 利用可能な認証方法の一覧から、 **[テキスト メッセージ]** を選択します。
 1. **[有効にする]** を *[はい]* に設定します。
@@ -89,7 +86,7 @@ Azure AD テナントで SMS ベース認証が有効になっている状態で
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>ユーザー アカウントに電話番号を設定する
 
-これで、SMS ベース認証に対してユーザーが有効になりましたが、サインインするには、事前にユーザーの電話番号が Azure AD 上でユーザー プロファイルに関連付けられている必要があります。 ユーザーは " *[マイ プロファイル]* " で [この電話番号を自分で設定](../user-help/sms-sign-in-explainer.md)することができます。または、管理者が Azure portal を使用して電話番号を割り当ててもかまいません。 電話番号は、"*全体管理者*"、"*authentication admins (認証管理者)* "、または "*privileged authentication admins (特権認証管理者)* " によって設定できます。
+これで、SMS ベース認証に対してユーザーが有効になりましたが、サインインするには、事前にユーザーの電話番号が Azure AD 上でユーザー プロファイルに関連付けられている必要があります。 ユーザーは " *[マイ アカウント]* " で[この電話番号を自分で設定](../user-help/sms-sign-in-explainer.md)することができます。または、管理者が Azure portal を使用して電話番号を割り当ててもかまいません。 電話番号は、"*全体管理者*"、"*authentication admins (認証管理者)* "、または "*privileged authentication admins (特権認証管理者)* " によって設定できます。
 
 電話番号が SMS サインイン用に設定されている場合は、[Azure AD Multi-Factor Authentication][tutorial-azure-mfa] および[セルフサービス パスワード リセット][tutorial-sspr]にその電話番号を使用することもできます。
 
@@ -136,13 +133,13 @@ SMS ベースのサインインが有効になったユーザー アカウント
 
 アカウントに電話番号が既に設定されているユーザーには、 **[マイ プロファイル]** ページ上に " *[Enable for SMS sign-in]\(SMS サインインを有効化する\)* " ボタンが表示されます。 このボタンを選択すると、アカウントが SMS ベースのサインインでの使用と、以前の Azure AD Multi-Factor Authentication または SSPR 登録に対して有効化されます。
 
-エンドユーザー エクスペリエンスの詳細については、[電話番号での SMS サインイン ユーザー エクスペリエンス (プレビュー) ](../user-help/sms-sign-in-explainer.md)に関する記事を参照してください。
+エンドユーザー エクスペリエンスの詳細については、[電話番号での SMS サインイン ユーザー エクスペリエンス](../user-help/sms-sign-in-explainer.md)に関する記事を参照してください。
 
 ### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>ユーザーのアカウントに電話番号を設定しようとするとエラーが発生する
 
 Azure portal でユーザーのアカウントに電話番号を設定しようとするとエラーが発生する場合は、次のトラブルシューティング手順を確認してください。
 
-1. SMS ベースのサインイン (プレビュー) に対してご自身が有効になっていることを確認します。
+1. SMS ベースのサインインに対してご自身が有効になっていることを確認します。
 1. *テキスト メッセージ* 認証方法ポリシーで該当のユーザー アカウントが有効になっていることを確認します。
 1. Azure portal 上で検証されるように、電話番号を適切な形式で設定していることを確認します ( *+1 4251234567* など)。
 1. 電話番号がテナント内の他の場所に使用されていないことを確認します。

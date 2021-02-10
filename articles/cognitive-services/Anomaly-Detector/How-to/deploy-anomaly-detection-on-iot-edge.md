@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 12/03/2020
 ms.author: mbullwin
-ms.openlocfilehash: 370883b90902dad5a6e222897e68e1d3e9dd2acf
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b4153b07b153a9ee0b16dc032ab5e7810e236d7d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738025"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936266"
 ---
 # <a name="deploy-an-anomaly-detector-module-to-iot-edge"></a>Anomaly Detector モジュールを IoT Edge にデプロイします
 
@@ -24,7 +24,7 @@ Cognitive Services [Anomaly Detector](../anomaly-detector-container-howto.md) �
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションを使用してください。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。
+* [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * [IoT Hub](../../../iot-hub/iot-hub-create-through-portal.md) と [IoT Edge](../../../iot-edge/quickstart-linux.md) デバイス。
 
 [!INCLUDE [Create a Cognitive Services Anomaly Detector resource](../includes/create-anomaly-detector-resource.md)]

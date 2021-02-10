@@ -14,7 +14,7 @@ ms.lasthandoff: 01/23/2021
 ms.locfileid: "98728861"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
-このドキュメントでは、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
+このドキュメントでは、[Azure トラスト センター](https://www.microsoft.com/en-us/trust-center?rtc=1)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
 
 この記事は、Log Analytics によるデータの収集、処理、および保護の方法について説明します。 エージェントを使用して Web サービスに接続し、System Center Operations Manager を使用して運用データを収集し、Azure Diagnostics からデータを取得して Log Analytics に使用することができます。 
 
@@ -109,7 +109,7 @@ Log Analytics には、すべての Microsoft サービスが準拠するイン�
 Microsoft のセキュリティ インシデントへの対応の詳細については、「[Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf) (クラウドでの Microsoft Azure のセキュリティ対応)」を参照してください。
 
 ## <a name="compliance"></a>コンプライアンス
-Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
+Log Analytics ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure トラスト センター](https://azure.microsoft.com/support/trust-center/)と [Microsoft トラスト センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)で説明されている規定を順守しています。 そこでは、Log Analytics によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
 
 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
 
@@ -130,7 +130,7 @@ Azure Log Analytics は、次の要件を満たしています。
 * [HIPAA および HITECH](/compliance/regulatory/offering-hipaa-hitech) (HIPAA Business Associate Agreement を締結している企業向け)
 * Windows の一般的なエンジニアリング条件
 * Microsoft の信頼できるコンピューティング
-* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
+* Azure のサービスとしては、Log Analytics で使用されるコンポーネントは、Azure の準拠要件に従います。 詳細については、[Microsoft トラスト センターのコンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)を参照してください。
 
 > [!NOTE]
 > Log Analytics は、一部の認定および認証において、以前の名前である *Operational Insights* として表示されています。

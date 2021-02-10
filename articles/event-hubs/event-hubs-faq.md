@@ -2,13 +2,13 @@
 title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955418"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696110"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -55,8 +55,8 @@ Event Hubs Standard レベルは現在、最大 7 日間の保有期間をサポ
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Event Hubs を監視するにはどうしたらよいですか。
 Event Hubs は、リソースの状態を示す網羅的なメトリックを [Azure Monitor](../azure-monitor/overview.md) に出力します。 また、Event Hubs サービスの全体的な正常性を名前空間レベルだけでなく、エンティティ レベルでも評価することができます。 どのような監視が提供されるかについては、[Azure Event Hubs](event-hubs-metrics-azure-monitor.md) に関するページを参照してください。
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs では顧客データはどこに格納されますか。
-Azure Event Hubs では顧客データが格納されます。 このデータは、Event Hubs によって 1 つのリージョンに自動的に格納されるため、このサービスによって、[トラスト センター](https://azuredatacentermap.azurewebsites.net/)に指定されているものも含めて、リージョンのデータ保存場所の要件が自動的に満たされます。
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs ではデータはどこに格納されますか。
+Azure Event Hubs の Standard および Dedicated レベルでは、選択されたリージョンにメタデータとデータが格納されます。 Azure Event Hubs 名前空間に対して geo ディザスター リカバリーを設定すると、メタデータは、選択されたセカンダリ リージョンにコピーされます。 したがって、このサービスによって、[トラスト センター](https://azuredatacentermap.azurewebsites.net/)に指定されているものも含めて、リージョンのデータ所在地の要件が自動的に満たされます。
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 

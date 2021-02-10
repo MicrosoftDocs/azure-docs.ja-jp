@@ -4,20 +4,20 @@ description: Windows PowerShell for StorSimple を使用して StorSimple デバ
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
-ms.date: 01/09/2018
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 65e9657c3948d8ce5883cd33ca8720f501352105
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e41d2e531a051738a31325b4ea33961bfb39e7f9
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995431"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808030"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Windows PowerShell for StorSimple を使用してデバイスを管理する
 
 ## <a name="overview"></a>概要
 
-Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイスを管理するために使用できるコマンドライン インターフェイスです。 名前が示すように、これは制約付き実行空間に組み込まれている Windows PowerShell ベースのコマンド ライン インターフェイスです。 コマンド ラインを使用するユーザーの観点から見ると、制約付き実行空間は、Windows PowerShell の制限付きバージョンとして表示されます。 このインターフェイスは、Windows PowerShell の基本機能の一部を維持するとともに、Microsoft Azure StorSimple デバイスの管理に適合するように調整された専用のコマンドレットを持っています。
+Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイスを管理するために使用できるコマンドライン インターフェイスです。 名前が示すように、これは制約付き実行空間に組み込まれている Windows PowerShell ベースのコマンド ライン インターフェイスです。 コマンド ラインを使用するユーザーの観点から見ると、制約付き実行空間は、Windows PowerShell の制限付きバージョンとして表示されます。 このインターフェイスでは、Windows PowerShell の基本機能の一部が維持されていますが、Microsoft Azure StorSimple デバイスの管理に適合するように調整された別の専用コマンドレットを使用できます。
 
 この記事では、Windows PowerShell for StorSimple の機能について説明します。説明には、このインターフェイスへの接続方法と、このインターフェイスを使用して実行できるワークフローや詳細な手順を示すリンクが含まれています。 ワークフローには、デバイスの登録方法、デバイスでのネットワーク インターフェイスの構成方法、デバイスをメンテナンス モードにする必要がある更新プログラムのインストール方法、デバイスの状態の変更方法、および発生する可能性がある問題のトラブルシューティングの実行方法があります。
 
@@ -28,8 +28,8 @@ Windows PowerShell for StorSimple は、Microsoft Azure StorSimple デバイス�
 * Windows PowerShell for StorSimple のヘルプを取得する。
 
 > [!NOTE]
-> * Windows PowerShell for StorSimple コマンドレットを使用すると、シリアル コンソールから、または Windows PowerShell リモート処理経由で StorSimple デバイスを管理できます。 このインターフェイスで使用できる個々のコマンドレットの詳細については、「 [Windows PowerShell for StorSimple コマンドレット リファレンス](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps)」を参照してください。
-> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure)」を参照してください。
+> * Windows PowerShell for StorSimple コマンドレットを使用すると、シリアル コンソールから、または Windows PowerShell リモート処理経由で StorSimple デバイスを管理できます。 このインターフェイスで使用できる個々のコマンドレットの詳細については、「 [Windows PowerShell for StorSimple コマンドレット リファレンス](/powershell/module/hcs/?viewFallbackFrom=winserverr2-ps&preserve-view=true)」を参照してください。
+> * Azure PowerShell StorSimple コマンドレットは、StorSimple サービス レベルのタスクと移行タスクをコマンド ラインから自動化できるコレクションです。 StorSimple に対する Azure PowerShell コマンドレットの詳細については、「 [Azure StorSimple コマンドレット リファレンス](/powershell/module/servicemanagement/azure.service/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0&preserve-view=true#azure)」を参照してください。
 
 
 Windows PowerShell for StorSimple には、次のいずれかの方法でアクセスできます。
@@ -48,7 +48,7 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
 #### <a name="to-configure-putty"></a>PuTTY を構成するには
 
 1. PuTTY の **[Reconfiguration]** ダイアログ ボックスで、 **[Category]** パネルの **[Keyboard]** を選択します。
-2. 次のオプションが選択されていることを確認します (これらは新しいセッションを開始したときの既定の設定です)。
+2. 次のオプション (新しいセッションを開始したときの既定の設定) が選択されていることを確認します。
    
    | キーボードの項目 | Select |
    | --- | --- |
@@ -89,12 +89,15 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
 
 次の設定から選択できます。
 
-1. **Log in with full access**。このオプションでは、(適切な資格情報を使用して) ローカル コント ローラーの **SSAdminConsole** に接続できます (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。 オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。 詳細については、「 [サポート セッションを開始する](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。
+1. **Log in with full access。**
+   このオプションを選択すると、(適切な資格情報を使って) ローカル コントローラー上の **SSAdminConsole** 実行空間に接続できます。 (ローカル コント ローラーとは、StorSimple デバイスのシリアル コンソール経由でアクセス中のコントローラーのことです)。このオプションは、デバイスの問題をトラブルシューティングするために無制限実行空間にアクセスすること (サポート セッション) を Microsoft サポートに許可するために使用することもできます。 オプション 1 を使用してログオンした後、特定のコマンドレットを実行することで、無制限実行空間へのアクセスを Microsoft サポート エンジニアに許可できます。 詳細については、「 [サポート セッションを開始する](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple)」を参照してください。
    
-2. **Log in to peer controller with full access**。このオプションはオプション 1 と同じですが、接続先が異なり、ピア コントローラーの **SSAdminConsole** 実行空間に接続できます (適切な資格情報を使用します)。 StorSimple デバイスはアクティブ/パッシブ構成された 2 つのコントローラーを持つ可用性の高いデバイスであるため、ピア コントローラーとは、シリアル コンソールからアクセス中のデバイスのもう一方のコントローラーを指します。
+2. **Log in to peer controller with full access。**
+   このオプションは、(適切な資格情報を使って) ピア コントローラー上の **SSAdminConsole** 実行空間に接続できるという点を除けば、オプション 1 と同じです。 StorSimple デバイスはアクティブ/パッシブ構成された 2 つのコントローラーを持つ可用性の高いデバイスであるため、ピア コントローラーとは、シリアル コンソールからアクセス中のデバイスのもう一方のコントローラーを指します。
    オプション 1 と同じように、このオプションも、ピア コントローラーの無制限実行空間にアクセスすることを Microsoft サポートに許可するために使用できます。
 
-3. **Connect with limited access**。このオプションは、Windows PowerShell インターフェイスに制限モードでアクセスするために使用します。 アクセス資格情報の入力は必要ありません。 このオプションでは、オプション 1 とオプション 2 に比べて、さらに制限された制限付き実行空間に接続します。  オプション 1 では利用できるがこの実行空間では "*利用できない*" タスクの一部を次に示します。
+3. **Connect with limited access。**
+   このオプションは、Windows PowerShell インターフェイスに制限モードでアクセスするために使用します。 アクセス資格情報の入力は必要ありません。 このオプションでは、オプション 1 とオプション 2 に比べて、さらに制限された制限付き実行空間に接続します。  オプション 1 では利用できるがこの実行空間では "*実行できない*" タスクの一部を次に示します。
    
    * 工場出荷時設定をリセットする
    * パスワードを変更する
@@ -105,7 +108,8 @@ Windows PowerShell for StorSimple に接続するには、 [PuTTY をダウン�
      > [!NOTE]
      > これは、デバイス管理者パスワードを忘れてしまい、オプション 1 またはオプション 2 を使用して接続できない場合に推奨するオプションです。
 
-4. **Change language**。このオプションでは、Windows PowerShell インターフェイスでの表示言語を変更できます。 サポートされている言語は、英語、日本語、ロシア語、フランス語、韓国語、スペイン語、イタリア語、ドイツ語、中国語、およびポルトガル語です。
+4. **Change language。**
+   このオプションでは、Windows PowerShell インターフェイスでの表示言語を変更できます。 サポートされている言語は、英語、日本語、ロシア語、フランス語、韓国語、スペイン語、イタリア語、ドイツ語、中国語、およびポルトガル語です。
 
 ## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Windows PowerShell for StorSimple を使用して StorSimple にリモート接続する
 
@@ -124,10 +128,10 @@ HTTP または HTTPS を使用して Windows PowerShell リモート処理経由
 
 ## <a name="connection-security-considerations"></a>接続のセキュリティに関する考慮事項
 
-Windows PowerShell for StorSimple に接続する方法を決定するときは、次の点を考慮してください。
+Windows PowerShell for StorSimple に接続する方法を決定するときは、次の要因を考慮してください。
 
 * デバイスのシリアル コンソールへの直接接続はセキュリティで保護されていますが、ネットワーク スイッチ経由での接続は保護されていません。 ネットワーク スイッチ経由でデバイスのシリアル コンソールに接続するときは、セキュリティ上のリスクに注意してください。
-* HTTP セッション経由での接続は、ネットワーク経由でシリアル コンソールに接続するよりもセキュリティが高くなる可能性があります。 これは最も安全な方法ではありませんが、信頼されたネットワークでは容認できます。
+* HTTP セッション経由での接続は、ネットワーク経由でシリアル コンソールに接続するよりもセキュリティが高くなる可能性があります。 HTTP セッションは最も安全な接続方法ではありませんが、信頼されたネットワークでは許容されます。
 * HTTPS セッション経由での接続は、最も安全であり、推奨されるオプションです。
 
 ## <a name="administer-your-storsimple-device-using-windows-powershell-for-storsimple"></a>Windows PowerShell for StorSimple を使用して StorSimple デバイスを管理する
@@ -151,9 +155,9 @@ Windows PowerShell for StorSimple に接続する方法を決定するときは�
 
 Windows PowerShell for StorSimple では、コマンドレット ヘルプを利用できます。 このヘルプのオンラインの最新バージョンも利用できます。これを使用して、システム上のヘルプを更新できます。
 
-このインターフェイスでのヘルプの取得は、Windows PowerShell での操作に似ています。また、ほとんどのヘルプ関連コマンドレットで機能します。 Windows PowerShell のヘルプは、次の場所でオンライン検索できます。[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/)
+このインターフェイスでのヘルプの取得は、Windows PowerShell でのヘルプの取得に似ています。また、ほとんどのヘルプ関連コマンドレットで機能します。 Windows PowerShell のヘルプは、次の場所でオンライン検索できます。[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/)
 
-Windows PowerShell インターフェイスで取得できるヘルプの種類の簡単な説明を、ヘルプの更新方法も含めて次に示します。
+<!--The following is a brief description of the types of Help for this Windows PowerShell interface, including how to update the Help. - OK to remove? Transition not needed.-->
 
 ### <a name="to-get-help-for-a-cmdlet"></a>コマンドレットのヘルプを取得するには
 
@@ -169,7 +173,7 @@ Windows PowerShell インターフェイスのヘルプは簡単に更新でき�
 1. Windows PowerShell を **[管理者として実行]** オプションを指定して起動します。
 2. コマンド プロンプトに「`Update-Help`」と入力します。
 3. 更新されたヘルプ ファイルがインストールされます。
-4. ヘルプ ファイルがインストールされた後、「 `Get-Help Get-Command`」と入力します。 これにより、ヘルプを利用できるコマンドレットの一覧が表示されます。
+4. ヘルプ ファイルがインストールされた後、`Get-Help Get-Command` と入力すると、ヘルプを利用できるコマンドレットの一覧が表示されます。
 
 > [!NOTE]
 > 実行空間で利用できるすべてのコマンドレットの一覧を取得するには、該当するメニュー オプションにログインし、`Get-Command` コマンドレットを実行します。

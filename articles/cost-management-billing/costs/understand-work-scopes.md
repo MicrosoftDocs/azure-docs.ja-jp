@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 61a8dbbdde87af792bb4337660d4d3c34f7cf802
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 729444b1d1ccf55f34e54a4b59508131458c472b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132297"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054806"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -71,7 +71,7 @@ Cost Management 共同作成者は、最低限の特権を持つ推奨ロール�
 - **リソースの使用状況をレポートする** – Azure Cost Management では、コストが Azure portal に表示されます。 これには、すべての使用パターンのコストに関連する使用状況が含まれます。 このレポートには、API とダウンロード料金も表示されますが、さらに理解を深めるために、Azure Monitor の詳細な使用状況メトリックを表示する必要がある場合もあります。 詳細な使用状況メトリックもレポートする必要がある場合は、スコープで[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader)を付与することを検討してください。
 - **予算を超過したときに対応する** – Cost Management 共同作成者は、予算超過に自動的に対応するために、アクション グループを作成および管理するアクセス権も必要です。 予算のしきい値を超えたときに使用するアクション グループを含むリソース グループに対して、[監視の共同作成者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)を付与することを検討してください。 特定のアクションを自動化するには、使用する特定のサービス (Automation や Azure Functions など) の追加のロールが必要です。
 - **コスト データのエクスポートをスケジュールする** – Cost Management 共同作成者は、ストレージ アカウントにデータをコピーするエクスポートをスケジュールするために、ストレージ アカウントを管理するアクセス権も必要です。 コスト データのエクスポート先となるストレージ アカウントを含むリソース グループに対して、[ストレージ アカウントの共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)を付与することを検討してください。
-- **コスト削減の推奨事項を表示する** – Cost Management 閲覧者と Cost Management 共同作成者は、コストの推奨事項を*表示する*ためのアクセス権を既定で所有しています。 ただし、コストの推奨事項に従って操作するためのアクセスでは、個々のリソースに対するアクセス権が必要です。 コストの推奨事項に従って操作したい場合は、[サービス固有のロール](../../role-based-access-control/built-in-roles.md#all)の付与を検討してください。
+- **コスト削減の推奨事項を表示する** – Cost Management 閲覧者と Cost Management 共同作成者は、コストの推奨事項を *表示する* ためのアクセス権を既定で所有しています。 ただし、コストの推奨事項に従って操作するためのアクセスでは、個々のリソースに対するアクセス権が必要です。 コストの推奨事項に従って操作したい場合は、[サービス固有のロール](../../role-based-access-control/built-in-roles.md#all)の付与を検討してください。
 
 管理グループは、Enterprise Agreement (EA)、従量課金制 (PAYG)、または Microsoft 社内サブスクリプションが含まれている場合にのみサポートされます。 Microsoft 顧客契約または Azure Active Directory サブスクリプションなど、その他のサブスクリプションの種類が含まれる管理グループでは、コストを表示することができません。 サブスクリプションが混在している場合は、サポートされていないサブスクリプションを管理グループ階層の別の ARM に移動させ、サポートされているサブスクリプションの Cost Management を有効にします。 例として、ルート管理グループの下に **Azure AD** および **My Org** という 2 つの管理グループを作成します。Azure AD サブスクリプションを **Azure AD** 管理グループに移動させ、**My Org** 管理グループを使用してコストを表示および管理します。
 
@@ -79,7 +79,7 @@ Cost Management 共同作成者は、最低限の特権を持つ推奨ロール�
 
 Enterprise Agreement (EA) の課金アカウント (加入契約とも呼ばれます) には、次のスコープがあります。
 
-- [**課金アカウント**](../manage/view-all-accounts.md) -EA 加入契約を表します。 請求書はこのスコープで生成されます。 使用量ベースではない購入 (Marketplace や予約など) は、このスコープでのみ表示されます。 これらは、部門や登録アカウントでは表示されません。 予約の使用量は、他すべての使用量と共に、個々のリソースに適用されます。 使用量は、課金アカウント内のサブスクリプションまでロールアップされます。 各リソースに分類された予約コストを確認するには、コスト分析で**償却コスト**の表示に切り替えます。
+- [**課金アカウント**](../manage/view-all-accounts.md) -EA 加入契約を表します。 請求書はこのスコープで生成されます。 使用量ベースではない購入 (Marketplace や予約など) は、このスコープでのみ表示されます。 これらは、部門や登録アカウントでは表示されません。 予約の使用量は、他すべての使用量と共に、個々のリソースに適用されます。 使用量は、課金アカウント内のサブスクリプションまでロールアップされます。 各リソースに分類された予約コストを確認するには、コスト分析で **償却コスト** の表示に切り替えます。
 
     リソースの種類: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **部門** - 任意の登録アカウントをグループ化したものです。
@@ -114,7 +114,7 @@ Azure サブスクリプションは、加入契約アカウントの下に入�
 
     リソースの種類:適用なし
 
-個々の Azure サブスクリプションのアカウント管理者は、[Azure アカウント センター](https://account.azure.com/subscriptions)から、請求や支払いなどの課金データを表示し、管理することができます。 しかし、Azure portal でコスト データを表示したり、リソースを管理したりすることはできません。 アカウント管理者にアクセス権を付与するには、前述の Cost Management のロールを使用します。
+個々の Azure サブスクリプションのアカウント管理者は、[Azure portal](https://portal.azure.com) の **[サブスクリプション]** からサブスクリプションを選択して、請求や支払いなどの課金データを表示し、管理することができます。
 
 EA とは異なり、個々の Azure サブスクリプションのアカウント管理者は、Azure portal で請求書を表示できます。 Cost Management 閲覧者と Cost Management 共同作成者のロールでは、請求書にアクセスできないことに注意してください。 詳細については、[請求書へのアクセス権を付与する方法](../manage/manage-billing-access.md#give-read-only-access-to-billing)に関する記事をご覧ください。
 
@@ -178,7 +178,7 @@ AWS 統合が完了した後、「[AWS のコストと使用状況レポート�
 
 - **顧客** - パートナーによって Microsoft 顧客契約にオンボードされる特定の顧客に関連付けられたサブスクリプションのグループを表します。
 
-*グローバル管理者*および*管理エージェント*のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
+*グローバル管理者* および *管理エージェント* のロールを持つユーザーのみが、パートナーの Azure テナントで直接、課金アカウント、課金プロファイル、顧客のコストを管理および表示できます。 パートナー センターのロールの詳細については、「[ユーザー ロールとアクセス許可の割り当て](/partner-center/permissions-overview)」を参照してください。
 
 Azure Cost Management は、顧客が Microsoft 顧客契約を保持している場合には、CSP パートナーの顧客をサポートします。 Microsoft 顧客契約をまだ結んでいない CSP サポート顧客ついては、[パートナー センター](/azure/cloud-solution-provider/overview/partner-center-overview)に関するページを参照してください。
 

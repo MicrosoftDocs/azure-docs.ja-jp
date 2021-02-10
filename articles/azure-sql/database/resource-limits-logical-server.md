@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 1/14/2021
-ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/02/2021
+ms.openlocfilehash: e8f18f56c746f0d12f43cc2fb6ce9088a9b82b45
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222226"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492384"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Azure SQL Database と Azure Synapse Analytics サーバーのリソース制限
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -70,6 +70,7 @@ ms.locfileid: "98222226"
 - データベースまたはエラスティック プールの最大サイズを増やすか、より多くの記憶域を追加します。 [シングルトンのリソースの拡大縮小に関する記事](single-database-scale.md)と、[エラスティック プールのリソースの拡大縮小に関する記事](elastic-pool-scale.md)を参照してください。
 - データベースがエラスティック プール内にある場合は、もう 1 つの方法として、データベースをプールの外に移動し、ストレージ領域が他のデータベースと共有されないようにすることもできます。
 - 未使用領域を再利用できるようにデータベースを縮小します。 詳細については、「[Manage file space in Azure SQL Database](file-space-manage.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
+- 高い領域使用率が、永続的なバージョン ストア (PVS) のサイズの急増によるものかどうかを確認します。 PVS は各データベースの一部であり、[高速データベース復旧](../accelerated-database-recovery.md)を実装するために使用されます。 現在の PVS サイズを確認するには、[PVS のトラブルシューティング](https://docs.microsoft.com/sql/relational-databases/accelerated-database-recovery-management#troubleshooting)に関する記事を参照してください。 PVS サイズが大きい一般的な理由は、長時間 (数時間) にわたって開いているトランザクションにより、PVS での古いバージョンのクリーンアップが妨げられているためです。
 
 ### <a name="sessions-and-workers-requests"></a>セッションとワーカー (要求)
 

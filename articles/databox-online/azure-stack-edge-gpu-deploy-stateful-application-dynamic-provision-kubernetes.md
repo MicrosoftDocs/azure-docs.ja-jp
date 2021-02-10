@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 81a52b26c5291f788ac81caeb2ca5416a2f58d36
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e009369f6223e171984d1142419101fdd82879b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448878"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804911"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>kubectl を使用し、Azure Stack Edge Pro GPU デバイスで StorageClass を使用して Kubernetes ステートフル アプリケーションを実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "96448878"
 
 ## <a name="prerequisites"></a>前提条件
 
-ステートフル アプリケーションを展開する前に、デバイスとデバイスにアクセスするために使用するクライアントで、次の前提条件が満たされていることを確認してください。
+ステートフル アプリケーションをデプロイする前に、デバイスとデバイスにアクセスするために使用するクライアントで、次の前提条件を完了してください。
 
 ### <a name="for-device"></a>デバイスでは
 
@@ -35,7 +35,7 @@ ms.locfileid: "96448878"
 ### <a name="for-client-accessing-the-device"></a>デバイスにアクセスするクライアントでは
 
 - Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
-    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
+    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)」を参照してください。
     
     - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
@@ -157,7 +157,7 @@ Kubernetes デプロイを作成し、PersistentVolumeClaim (PVC) を使用し�
     persistentvolumeclaim/mysql-pv-claim-sc created
     C:\Users\user>
     ```
-   作成された PVC の名前を確認してください。ここでは `mysql-pv-claim-sc` です。 これは後の手順で使用します。 
+   作成された PVC の名前を確認してください。この例では `mysql-pv-claim-sc` です。 これは後の手順で使用します。
 
 4. `mysql-deployment.yml` ファイルの内容をデプロイします。
 

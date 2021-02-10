@@ -2,19 +2,15 @@
 title: Azure Automation での Windows Update エージェントに関する問題のトラブルシューティング
 description: この記事では、Update Management の使用時に Windows Update エージェントに関する問題をトラブルシューティングして解決する方法について説明します。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 01/16/2020
-ms.topic: conceptual
-ms.service: automation
+ms.date: 01/25/2020
+ms.topic: troubleshooting
 ms.subservice: update-management
-manager: carmonm
-ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4fbc566cb82eb3b728b37aa1f1cc20ff92f4fca
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187134"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896242"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Windows Update エージェントの問題をトラブルシューティングする
 
@@ -27,10 +23,10 @@ Update Management のデプロイ時にマシンが準備完了 (正常) と表�
 > [!NOTE]
 > Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
 
-この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。 
+この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
 
 > [!NOTE]
-> トラブルシューティング スクリプトには、Windows Server Update Services (WSUS) のチェック、およびキーの自動ダウンロードとインストールのキーのチェックが新しく組み込まれました。 
+> トラブルシューティング スクリプトには、Windows Server Update Services (WSUS) のチェック、およびキーの自動ダウンロードとインストールのキーのチェックが新しく組み込まれました。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
@@ -110,7 +106,7 @@ Windows 用の Log Analytics エージェントを再インストールする場
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
-スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 PowerShell ギャラリーから次のスクリプトを入手します。[Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)。 このスクリプトを実行するには、WMF 4.0 以降をインストールしておく必要があります。 最新バージョンの PowerShell をダウンロードするには、「[PowerShell のさまざまなバージョンのインストール](/powershell/scripting/install/installing-powershell)」を参照してください。
+スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 GitHub から次のスクリプトを入手します。[UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1)。 このスクリプトを実行するには、WMF 4.0 以降をインストールしておく必要があります。 最新バージョンの PowerShell をダウンロードするには、「[PowerShell のさまざまなバージョンのインストール](/powershell/scripting/install/installing-powershell)」を参照してください。
 
 このスクリプトの出力は次の例のようになります。
 

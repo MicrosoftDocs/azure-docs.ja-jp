@@ -28,8 +28,6 @@
       href: convert-to-dataset.md
     - name: インジケーター値への変換
       href: convert-to-indicator-values.md
-    - name: 見つからないデータのクリーンアップ
-      href: clean-missing-data.md
     - name: メタデータの編集
       href: edit-metadata.md
     - name: データをビンにグループ化する

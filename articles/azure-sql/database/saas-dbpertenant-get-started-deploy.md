@@ -48,7 +48,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 このセクションの手順では、リソースの名前がグローバルに一意であることを確認するために使用する、ユーザー値を指定します。 また、アプリのデプロイメントによって作成されるすべてのリソースが含まれる、リソース グループの名前も指定します。 たとえば、架空の名前が Ann Finley である場合、次のような名前にすることをお勧めします。
 
-- **ユーザー** : *af1* は Ann Finley の頭文字と 1 桁の数字で構成されます。 アプリをもう一度デプロイする場合は、別の値を使用します (例: af2)。
+- **ユーザー**: *af1* は Ann Finley の頭文字と 1 桁の数字で構成されます。 アプリをもう一度デプロイする場合は、別の値を使用します (例: af2)。
 - **リソース グループ:** *wingtip-dpt-af1* は、これがテナント単位データベース アプリであることを示します。 ユーザー名 af1 の追加によって、リソース グループ名とリソースを含む名前が関連付けられます。
 
 名前を選択し、書き留めておきます。
@@ -86,10 +86,10 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 > zip ファイルを外部ソースからダウンロードして抽出すると、実行可能なコンテンツ (スクリプトと DLL) が Windows によってブロックされる場合があります。 スクリプトを展開する前に、手順に従って .zip ファイルのブロックを解除してください。 ブロック解除により、スクリプトの実行が許可されます。
 
 1. [WingtipTicketsSaaS-DbPerTenant GitHub リポジトリ][github-wingtip-dpt]を参照します。
-1. **[複製またはダウンロード]** を選択します。
+1. **[クローンまたはダウンロード]** を選択します。
 1. **[Download ZIP]/(ZIP をダウンロード/)** を選択し、ファイルを保存します。
-1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、 **[プロパティ]** を選択します。
-1. **[全般]** タブで **[ブロックの解除]**  >  **[適用]** と選択します。
+1. **WingtipTicketsSaaS-DbPerTenant-master.zip** ファイルを右クリックし、 **[Properties]\(プロパティ\)** を選択します。
+1. **[General]\(全般\)** タブで **[Unblock]\(ブロックの解除\)**  >  **[Apply]\(適用\)** と選択します。
 1. **[OK]** を選択し、ファイルを展開します。
 
 スクリプトは、...\\WingtipTicketsSaaS-DbPerTenant-master\\Learning Modules フォルダーにあります。
@@ -122,7 +122,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
 ### <a name="azure-traffic-manager"></a>Azure の Traffic Manager
 
-Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md) を使用して受信要求の分散を制御します。 特定のテナントのイベント ページにアクセスする URL では、次の形式を使用します。
+Wingtip アプリケーションでは、[*Azure Traffic Manager*](../../traffic-manager/traffic-manager-overview.md) を使用して受信要求の分散を制御します。 特定のテナントのイベント ページにアクセスする URL では、次の形式を使用します。
 
 - http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
@@ -130,8 +130,8 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../../traffi
 
     | URL の部分        | 説明       |
     | :-------------- | :---------------- |
-    | events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の " *テナント単位データベース* " の実装が他の実装と区別されます。 たとえば、テナントごとの " *単一* " アプリ ( *-sa* ) の実装や " *マルチテナント データベース* " ( *-mt* ) の実装です。 |
-    | . *&lt;ユーザー&gt;* | この例では *af1* 。 |
+    | events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の "*テナント単位データベース*" の実装が他の実装と区別されます。 たとえば、テナントごとの "*単一*" アプリ ( *-sa*) の実装や "*マルチテナント データベース*" ( *-mt*) の実装です。 |
+    | . *&lt;user&gt;* | この例では *af1*。 |
     | .trafficmanager.net/ | Traffic Manager、ベース URL。 |
     | fabrikamjazzclub | Fabrikam Jazz Club という名前のテナントを識別します。 |
     | &nbsp; | &nbsp; |
@@ -139,10 +139,10 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../../traffi
 - イベント アプリによって URL からテナント名が解析されます。
 - テナント名を使用してキーが作成されます。
 - テナントのデータベースの場所を取得するために、このキーを使用してカタログにアクセスします。
-  - カタログは、" *シャード マップ管理* " を使用して実装されています。
+  - カタログは、"*シャード マップ管理*" を使用して実装されています。
 - Events Hub は、カタログ内の拡張メタデータを使用して、各テナントのイベント ページの URL の一覧を作成します。
 
-運用環境では、通常は、Traffic Manager DNS 名に対して、" [*会社のインターネット ドメインを指す*](../../traffic-manager/traffic-manager-point-internet-domain.md)" CNAME DNS レコードを作成します。
+運用環境では、通常は、Traffic Manager DNS 名に対して、"[*会社のインターネット ドメインを指す*](../../traffic-manager/traffic-manager-point-internet-domain.md)" CNAME DNS レコードを作成します。
 
 > [!NOTE]
 > このチュートリアルでは、トラフィック マネージャーの用途がすぐには明らにされない場合があります。 この一連のチュートリアルの目的は、複雑な運用環境のスケールを処理できるパターンを示すことです。 そのような場合、たとえば、複数の Web アプリが世界中に分散されていて、データベースと併置されていると、これらのインスタンス間でルーティングを行うためにトラフィック マネージャーが必要になります。
@@ -170,7 +170,7 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../../traffi
 
 ### <a name="demo-loadgeneratorps1-actions"></a>Demo-LoadGenerator.ps1 のアクション
 
-*Demo-LoadGenerator.ps1* は、顧客トランザクションのアクティブなワークロードを模倣します。 次の手順は、 *Demo-LoadGenerator.ps1* で開始される一連のアクションを示しています。
+*Demo-LoadGenerator.ps1* は、顧客トランザクションのアクティブなワークロードを模倣します。 次の手順は、*Demo-LoadGenerator.ps1* で開始される一連のアクションを示しています。
 
 1. *Demo-LoadGenerator.ps1* は、フォアグラウンドで *LoadGenerator.ps1* を起動します。
 
@@ -181,9 +181,9 @@ Wingtip アプリケーションでは、 [*Azure Traffic Manager*](../../traffi
 3. *LoadGenerator.ps1* は、各テナント データベースに対して PowerShell のバックグラウンド ジョブを開始します。
 
     - 既定では、バックグラウンド ジョブは 120 分間実行されます。
-    - 各ジョブでは、 *sp_CpuLoadGenerator* の実行によって、1 つのテナント データベースで CPU ベースの負荷が発生します。 負荷の強度と期間は、`$DemoScenario` によって異なります。
+    - 各ジョブでは、*sp_CpuLoadGenerator* の実行によって、1 つのテナント データベースで CPU ベースの負荷が発生します。 負荷の強度と期間は、`$DemoScenario` によって異なります。
     - *sp_CpuLoadGenerator* は、高い CPU 負荷を発生させる SQL SELECT ステートメントでループします。 SELECT の発行間隔は、制御可能な CPU の負荷を作成するパラメーター値によって決まります。 負荷のレベルと間隔は、現実的な負荷をシミュレートするためにランダム化されます。
-    - この .sql ファイルは、 *WingtipTenantDB\\dbo\\StoredProcedures\\* に格納されています。
+    - この .sql ファイルは、*WingtipTenantDB\\dbo\\StoredProcedures\\* に格納されています。
 
 4. `$OneTime = $false` の場合、ロード ジェネレーターはバックグラウンド ジョブを開始し、そのまま実行されます。 10 秒ごとにプロビジョニングされた新しいテナントを監視します。 `$OneTime = $true` を設定した場合、ロード ジェネレーターは、バックグラウンド ジョブを開始した後、フォア グラウンドでの実行を停止します。 このチュートリアルでは、`$OneTime = $false` のままにしてください。
 
@@ -222,7 +222,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 ここまでで、テナントのコレクションに対する負荷の実行を開始しました。次は、デプロイされたリソースをいくつか見てみましょう。
 
-1. [Azure Portal](https://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、 **catalog-dpt-&lt;User&gt;** サーバーを展開します。
+1. [Azure Portal](https://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、**catalog-dpt-&lt;User&gt;** サーバーを展開します。
     - カタログ サーバーには 2 つのデータベース **tenantcatalog** と **basetenantdb** (新しいテナントを作成するためにコピーされたテンプレート データベース) が含まれます。
 
    ![2 つのデータベースが表示されたカタログ サーバーの概要ページを示すスクリーンショット。](./media/saas-dbpertenant-get-started-deploy/databases.png)
@@ -242,7 +242,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 *LoadGenerator.ps1* を数分間実行したら、十分な量のデータが生成されています。このデータを使って、一部の監視機能を見てみましょう。 これらの機能は、プールとデータベースに組み込まれています。
 
-**tenants1-dpt-&lt;ユーザー&gt;** サーバーを参照し、 **Pool1** をクリックして、プールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
+**tenants1-dpt-&lt;user&gt;** サーバーを参照し、**Pool1** をクリックして、プールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
 
    ![プールの監視](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

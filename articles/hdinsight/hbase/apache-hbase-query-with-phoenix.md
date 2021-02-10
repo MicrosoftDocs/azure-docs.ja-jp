@@ -1,19 +1,16 @@
 ---
 title: クイック スタート:Apache HBase と Apache Phoenix - Azure HDInsight
 description: このクイックスタートでは、HDInsight 内で Apache Phoenix を使用する方法を説明します。 また、コンピューターに SQLLine をインストールして設定し、HDInsight の HBase クラスターに接続する方法を説明します。
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 1c400e41c4c10023d2595bde8c0d62e26184cf05
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6b9196d9ad5cf07cd210726bc1af7121c08094a8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79370323"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935989"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-apache-phoenix"></a>クイック スタート:Apache Phoenix を使用して Azure HDInsight で Apache HBase にクエリを実行する
 

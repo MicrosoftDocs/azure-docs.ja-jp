@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1b5c236c147f060ca1c05e8ed9de12e7e88cf68
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448553"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061811"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU のアクセス、電源、接続モードを管理する
 
@@ -54,7 +54,7 @@ Azure Stack Edge Pro デバイスへのアクセスは、デバイスのパス�
 
 1. Azure portal で、 **[概要] > [管理パスワードのリセット]** に移動します。
 
-    ![スクリーンショットに、[デバイスのパスワードをリセットします] が選択されているデバイスが表示されています。](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![スクリーンショットに、[デバイスのパスワードをリセットします] が選択されているデバイスが表示されています。](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. 新しいパスワードを入力し、それを確認します。 指定するパスワードは 8 ～ 16 文字にする必要があります。 パスワードには、大文字、小文字、数字、および特殊文字のうち 3 種類の文字を使用する必要があります。 **[リセット]** を選択します。

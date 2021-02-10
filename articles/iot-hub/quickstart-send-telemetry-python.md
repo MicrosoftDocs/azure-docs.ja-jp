@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub へのテレメトリの送信に関するクイック スタート (Python) | Microsoft Docs
+title: クイックスタート - Azure IoT Hub へのテレメトリの送信に関するクイックスタート (Python) | Microsoft Docs
 description: このクイック スタートでは、サンプルの Python アプリケーションを実行して、IoT Hub にシミュレートされたテレメトリを送信し、IoT Hub からテレメトリを読み取ります。
 author: wesmc7777
 manager: philmea
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/16/2020
-ms.openlocfilehash: 71d91ceba48158d2abc688af572dabfc258a2e94
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: c1ea343a2674346e1028f8bb1f3d8ee61cb7e20e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121438"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624877"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Python)
 

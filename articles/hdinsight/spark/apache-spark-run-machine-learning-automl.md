@@ -1,18 +1,15 @@
 ---
 title: HDInsight の Apache Spark 上で Azure Machine Learning ワークロードを実行する
 description: Azure HDInsight の Apache Spark 上で 自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 4087341a9a96ae56c00972f886ce3cc8891750a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821249"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929727"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight の Apache Spark 上で自動化された機械学習を使用して Azure Machine Learning ワークロードを実行する
 

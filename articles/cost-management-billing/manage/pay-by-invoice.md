@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a5c95ca2e1fbe00f410c0a5015f8ce695783b27b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 0afaa9a577432741da44317a9d13e288cdea0d0d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538210"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052483"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -108,4 +108,4 @@ Azure サブスクリプションを請求書支払い (小切手/電信送金) 
 
 ## <a name="next-steps"></a>次のステップ
 
-* 必要に応じて、[Azure アカウント センター](https://account.azure.com/Profile)で請求先連絡先情報を更新します。
+* 必要に応じて、[Azure portal](https://portal.azure.com) で請求先連絡先情報を更新します。

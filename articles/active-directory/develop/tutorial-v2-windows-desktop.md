@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 5bfdf90ddbd500fd9d1c504bd37ed4ac35d8bf70
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178349"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752756"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>チュートリアル:Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
@@ -47,7 +47,7 @@ ms.locfileid: "98178349"
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>保護された Web API にアクセスするためのトークン取得処理
 
-ユーザーが認証されると、サンプル アプリケーションは、開発者用の Microsoft ID プラットフォームによって保護されている Microsoft Graph API または Web API のクエリに使用できるトークンを受け取ります。
+ユーザーが認証されると、サンプル アプリケーションは、Microsoft Graph API または Microsoft ID プラットフォームによって保護されている Web API でのクエリに使用できるトークンを受け取ります。
 
 Microsoft Graph などの API では、特定のリソースへのアクセスを許可するためにトークンが必要になります。 たとえば、トークンは、ユーザーのプロファイルの読み取り、ユーザーの予定表へのアクセス、メールの送信などに必要です。 アプリケーションでは、MSAL を使用してアクセス トークンを要求し、API スコープを指定することによってこれらのリソースにアクセスできます。 このアクセス トークンは、保護されたリソースに対するすべての呼び出しで HTTP Authorization ヘッダーに追加されます。
 

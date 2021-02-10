@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/27/2021
 ms.author: aahi
-ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 8fa10164ae2d697f68156777f224b92f0562475f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97034022"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940053"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
@@ -340,9 +340,6 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
    > 「/31」や「/32」のプレフィックス サイズを使用した小さなアドレス範囲はサポートされていません。 これらの範囲は、個々の IP アドレス ルールを使用して構成する必要があります。
 
 IP ネットワーク ルールは、**パブリック インターネット** の IP アドレスに対してのみ許可されます。 プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。 プライベート ネットワークには、`10.*`、`172.16.*` - `172.31.*`、および `192.168.*` で始まるアドレスが含まれます。
-
-   > [!NOTE]
-   > IP ネットワーク ルールは、Cognitive Services リソースと同じ Azure リージョンから送信された要求には影響ありません。 同じリージョンの要求を許可するには、[仮想ネットワーク規則](#grant-access-from-a-virtual-network)を使用します。
 
 現時点でサポートされているのは、IPv4 アドレスのみです。 各 Cognitive Services リソースでは最大 100 個の IP ネットワーク ルールがサポートされ、それを[仮想ネットワーク規則](#grant-access-from-a-virtual-network)と組み合わせることができます。
 

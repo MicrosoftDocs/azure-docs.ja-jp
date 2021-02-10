@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: f80fbd803cbe4ae5c4ac381c8cdb2f72d0ede316
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 196f49a72932906e0a21b3c6c534c79d291a845f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86132935"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632995"
 ---
 # <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Azure VM の起動時に "ファイル システムをチェックしています" と表示される
 
@@ -36,6 +36,9 @@ Windows VM が起動しません。 [[ブート診断]](boot-diagnostics.md) で
 ファイル システムで NTFS エラーが検出された場合、Windows では次回の再起動時にディスクの整合性がチェックされ、修復されます。 通常、予期しない再起動が VM に発生した場合、または VM シャットダウン プロセスが突然中断された場合にこのようなことが発生します。
 
 ## <a name="solution"></a>解決策 
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
 
 チェック ディスク処理が完了すると、Windows は正常に起動します。 VM がチェック ディスク プロセスで停止している場合は、VM 上のチェック ディスクをオフラインで実行してみてください。
 1. バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。

@@ -3,7 +3,7 @@ title: Workday 属性のリファレンス
 description: XPATH クエリを使用して Workday からフェッチできる属性について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266566"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255476"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性のリファレンス
 
@@ -25,7 +25,7 @@ ms.locfileid: "91266566"
 ## <a name="xpath-values-for-workday-web-services-wws-api-v211"></a>Workday Web Services (WWS) API v21.1 の XPATH 値
 
 
-下の表は、Workday 受信プロビジョニング アプリ コネクタに付属する Workday 属性とそれに対応する XPATH 式を一覧にしたものです。 *接続 URL にバージョン情報が指定されていない場合、またはバージョンが v21.1 に設定されている場合*は、これらの XPATH 値が使用されます。 
+下の表は、Workday 受信プロビジョニング アプリ コネクタに付属する Workday 属性とそれに対応する XPATH 式を一覧にしたものです。 *接続 URL にバージョン情報が指定されていない場合、またはバージョンが v21.1 に設定されている場合* は、これらの XPATH 値が使用されます。 
 
 :::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-no-version-info.png" alt-text="Workday バージョン情報なし":::
 
@@ -117,7 +117,7 @@ ms.locfileid: "91266566"
 
 次に示すように、接続 URL で WWS API v30.0 以上を使用している場合:
 
-:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday バージョン情報なし":::
+:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday バージョン情報":::
 
 この場合、プロビジョニング ジョブを有効にする前に、 **[属性マッピング] -> [詳細オプション] -> [Edit attribute list for Workday]\(Workday の属性リストの編集\)** の **[XPATH API expressions]\(XPATH API 式\)** を更新して、表の値を使用するようにしてください。 
 

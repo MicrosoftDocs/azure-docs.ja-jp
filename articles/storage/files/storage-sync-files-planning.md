@@ -4,16 +4,16 @@ description: Azure File Sync を使用したデプロイを計画します。こ
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 65293df5fae523bff36240273afb93c4dd8485df
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880577"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219478"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -186,7 +186,7 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 
 ### <a name="data-deduplication"></a>データ重複除去
 **Windows Server 2016 および Windows Server 2019**   
-データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
+データ重複除去は、Windows Server 2016 と Windows Server 2019 のボリューム上の 1 つまたは複数のサーバー エンドポイントでクラウドを使った階層化が有効になっているか無効になっているかに関係なく、サポートされています。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
 
 クラウドを使った階層化が有効なボリュームでデータ重複除去が有効になっている場合、サーバー エンドポイントの場所にある重複除去最適化ファイルは、クラウドを使った階層化のポリシー設定に基づいて、通常のファイルと同様に階層化されます。 重複除去最適化ファイルが階層化された後、データ重複除去ガベージ コレクション ジョブが自動的に実行され、ボリューム上の他のファイルから参照されなくなった不要なチャンクを削除することによって、ディスク領域が解放されます。
 
@@ -302,48 +302,16 @@ Azure ストレージ アカウントには、転送中の暗号化を要求す�
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="azure-file-sync-region-availability"></a>Azure File Sync の利用可能なリージョン
-Azure File Sync は、次のリージョンで利用できます。
 
-| Azure cloud | 地理的リージョン | Azure リージョン | リージョン コード |
-|-------------|-------------------|--------------|-------------|
-| パブリック | アジア | 東アジア | `eastasia` |
-| パブリック | アジア | 東南アジア | `southeastasia` |
-| パブリック | オーストラリア | オーストラリア東部 | `australiaeast` |
-| パブリック | オーストラリア | オーストラリア南東部 | `australiasoutheast` |
-| パブリック | ブラジル | ブラジル南部 | `brazilsouth` |
-| パブリック | Canada | カナダ中部 | `canadacentral` |
-| パブリック | Canada | カナダ東部 | `canadaeast` |
-| パブリック | ヨーロッパ | 北ヨーロッパ | `northeurope` |
-| パブリック | ヨーロッパ | 西ヨーロッパ | `westeurope` |
-| パブリック | フランス | フランス中部 | `francecentral` |
-| パブリック | フランス | フランス南部* | `francesouth` |
-| パブリック | インド | インド中部 | `centralindia` |
-| パブリック | インド | インド南部 | `southindia` |
-| パブリック | 日本 | 東日本 | `japaneast` |
-| パブリック | 日本 | 西日本 | `japanwest` |
-| パブリック | 韓国 | 韓国中部 | `koreacentral` |
-| パブリック | 韓国 | 韓国南部 | `koreasouth` |
-| パブリック | 南アフリカ | 南アフリカ北部 | `southafricanorth` |
-| パブリック | 南アフリカ | 南アフリカ西部* | `southafricawest` |
-| パブリック | UAE | アラブ首長国連邦中部* | `uaecentral` |
-| パブリック | UAE | アラブ首長国連邦北部 | `uaenorth` |
-| パブリック | 英国 | 英国南部 | `uksouth` |
-| パブリック | 英国 | 英国西部 | `ukwest` |
-| パブリック | US | 米国中部 | `centralus` |
-| パブリック | US | 米国東部 | `eastus` |
-| パブリック | US | 米国東部 2 | `eastus2` |
-| パブリック | US | 米国中北部 | `northcentralus` |
-| パブリック | US | 米国中南部 | `southcentralus` |
-| パブリック | US | 米国中西部 | `westcentralus` |
-| パブリック | US | 米国西部 | `westus` |
-| パブリック | US | 米国西部 2 | `westus2` |
-| US Gov | US | US Gov アリゾナ | `usgovarizona` |
-| US Gov | US | US Gov テキサス | `usgovtexas` |
-| US Gov | US | US Gov バージニア州 | `usgovvirginia` |
+リージョン別の提供状況については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)」を参照してください。
 
-Azure File Sync は、ストレージ同期サービスと同じリージョンの Azure ファイル共有との同期のみをサポートしています。
+次のリージョンでは、Azure File Sync を使用する前に、Azure Storage へのアクセス権を要求する必要があります。
 
-アスタリスクが付いているリージョンでは、Azure サポートに連絡して、これらのリージョンの Azure Storage へのアクセス権を要求する必要があります。 このプロセスについては、[このドキュメント](https://azure.microsoft.com/global-infrastructure/geographies/)で概説されています。
+- フランス南部
+- 南アフリカ西部
+- アラブ首長国連邦中部
+
+これらのリージョンへのアクセス権を要求するには、[このドキュメント](https://azure.microsoft.com/global-infrastructure/geographies/)の手順に従ってください。
 
 ## <a name="redundancy"></a>冗長性
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]

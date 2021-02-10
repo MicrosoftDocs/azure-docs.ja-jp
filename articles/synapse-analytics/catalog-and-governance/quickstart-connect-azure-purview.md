@@ -8,17 +8,15 @@ ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f85a76a7ce01c11255f54c6b956088f9328dfc9f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 55f0d2e8df36cc11f26c5ff6259ebe2215aaffc6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918470"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880544"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>クイック スタート:  Azure Purview アカウントを Synapse ワークスペースに接続する 
 
-> [!IMPORTANT]
-> Azure Synapse Analytics と Azure Purview の統合は現在、プレビュー段階です。 Synapse で Azure Purview を試したい場合は、Microsoft の営業担当者にお問い合わせください。
 
 このクイックスタートでは、Azure Purview アカウントを Synapse ワークスペースに登録します。 この接続により、Azure Purview の資産を検出し、Synapse 機能を使用してそれらを操作できるようになります。 
 
@@ -34,11 +32,11 @@ Synapse では、次のタスクを実行できます。
 
 ## <a name="signin-toa-synapse-workspace"></a>Synapse ワークスペースにサインインする 
 
-https://web.azuresynapse.net にアクセスし、自分のワークスペースにサインインします。 
+ [https://web.azuresynapse.net](https://web.azuresynapse.net) にアクセスし、自分のワークスペースにサインインします。 
 
 ## <a name="permissions-for-connecting-an-azure-purview-account"></a>Azure Purview アカウントを接続するためのアクセス許可 
 
-- Azure Purview アカウントを Synapse ワークスペースに接続するには、Azure portal IAM からの Synapse ワークスペースの **共同作成者** ロールが必要です。また、その Azure Purview アカウントにアクセスできる必要があります。
+- Azure Purview アカウントを Synapse ワークスペースに接続するには、Azure portal IAM からの Synapse ワークスペースの **共同作成者** ロールが必要です。また、その Azure Purview アカウントにアクセスできる必要があります。 詳細については、[Azure Purview のアクセス許可](../../purview/catalog-permissions.md)に関するページを参照してください。
 
 ## <a name="connect-an-azure-purview-account"></a>Azure Purview アカウントの接続  
 

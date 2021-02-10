@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608590"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745735"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。
@@ -21,10 +21,6 @@ ms.locfileid: "96608590"
 
 > [!NOTE]
 > この手順は、StorSimple Cloud Appliance では使用できません。 詳細については、クラウド アプライアンスのホスト サーバーを構成する方法を参照してください。
-
-> [!NOTE]
-> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
-
 
 ## <a name="about-multipathing"></a>マルチパスについて
 マルチパス機能を使用すると、ホスト サーバーとストレージ デバイス間に複数の I/O パスを構成することができます。 これらの I/O パスは、別個のケーブル、スイッチ、ネットワーク インターフェイス、コントローラーを使用することができる物理 SAN 接続です。 マルチパスは I/O パスを集約して、集約済みのすべてのパスに関連付けられた新しいデバイスを構成します。
@@ -54,7 +50,7 @@ multipath.conf には次の 5 つのセクションがあります。
 
 - **システム レベルの既定値** *(defaults)* : システム レベルの既定値をオーバーライドすることができます。
 - **ブラックリストに載っているデバイス** *(blacklist)* : device-mapper で制御してはいけないデバイスの一覧を指定することができます。
-- **ブラックリストの例外** *(blacklist_exceptions)* : ブラックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
+- **ブラックリストの例外** *(blacklist_exceptions)* : ブロックリストに載っている場合でもマルチパス デバイスとして扱う特定のデバイスを指定することができます。
 - **記憶域コントローラー固有の設定** *(devices)* : 仕入先および製品の情報を持つデバイスに適用する構成設定を指定することができます。
 - **デバイス固有の設定** *(multipaths)* : このセクションは、個々の LUN の構成設定を微調整するために使用することができます。
 
@@ -215,12 +211,12 @@ StorSimple デバイスに必要なものは次のとおりです。
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>手順 2:マルチパスを StorSimple ボリューム用に構成する
-既定では、すべてのデバイスが multipath.conf ファイルのブラック リストに記載されており、バイパスされます。 ブラックリストの例外を作成して、StorSimple デバイスのボリュームのマルチパスを許可する必要があります。
+既定では、すべてのデバイスが multipath.conf ファイルのブロックリストに記載されており、バイパスされます。 ブロックリストの例外を作成して、StorSimple デバイスのボリュームのマルチパスを許可する必要があります。
 
 1. `/etc/mulitpath.conf` ファイルを編集します。 型:
    
     `vi /etc/multipath.conf`
-1. multipath.conf ファイルの blacklist_exceptions セクションを見つけます。 StorSimple デバイスを、ブラックリストの例外としてこのセクションに記載する必要があります。 このファイル内の関連する行のコメントを解除して、次のように変更することができます (使用するデバイスの特定のモデルのみを使用します)。
+1. multipath.conf ファイルの blacklist_exceptions セクションを見つけます。 StorSimple デバイスを、ブロックリストの例外としてこのセクションに記載する必要があります。 このファイル内の関連する行のコメントを解除して、次のように変更することができます (使用するデバイスの特定のモデルのみを使用します)。
    
     ```config
     blacklist_exceptions {

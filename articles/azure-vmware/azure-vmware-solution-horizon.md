@@ -3,12 +3,12 @@ title: Azure VMware Solution 上に Horizon をデプロイする
 description: Azure VMware Solution 上に VMware Horizon をデプロイする方法について説明します。
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 2cf6fc5cb7662188650365cb019774d6c778d405
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537443"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684877"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Azure VMware Solution 上に Horizon をデプロイする 
 
@@ -130,15 +130,35 @@ Azure VMware Solution で実行されているホスト上の Horizon のサイ�
 
 ### <a name="sizing-tables"></a>サイズ設定表
 
-この表は、Login VSI のナレッジ ワーカー ワークロードとパワー ワーカー ワークロードの一般的なワークロードを示しています。
+Horizon 仮想デスクトップの具体的な vCPU と vRAM 要件は、お客様固有のワークロード プロファイルによって決まります。   MSFT と VMware の営業チームと協力して、仮想デスクトップの vCPU および vRAM 要件を判断してください。 
 
-#### <a name="knowledge-worker-workloads"></a>ナレッジ ワーカー ワークロード
+| VM 1 台あたりの vCPU | VM 1 台あたりの vRAM (GB) | インスタンス | VM 100 台 | VM 200 台 | VM 300 台 | VM 400 台 | VM 500 台 | VM 600 台 | VM 700 台 | VM 800 台 | VM 900 台 | VM 1,000 台 | VM 2,000 台 | VM 3,000 台 | VM 4,000 台 | VM 5,000 台 | VM 6,000 台 | VM 6,400 台 |
+|:-----------:|:----------------:|:--------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|:--------:|
+|      2      |        3.5       |    AVS   |    3    |    3    |    4    |    4    |    5    |    6    |    6    |    7    |    8    |     9    |    17    |    25    |    33    |    41    |    49    |    53    |
+|      2      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    6    |    7    |    8    |    9    |     9    |    18    |    26    |    34    |    42    |    51    |    54    |
+|      2      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      2      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      2      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      2      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      4      |        3.5       |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         4        |    AVS   |    3    |    3    |    4    |    5    |    6    |    7    |    8    |    9    |    10   |    11    |    22    |    33    |    44    |    55    |    66    |    70    |
+|      4      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    12   |    13    |    26    |    38    |    51    |    62    |    75    |    79    |
+|      4      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      4      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      4      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      6      |        3.5       |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         4        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         6        |    AVS   |    3    |    4    |    5    |    6    |    7    |    9    |    10   |    11   |    13   |    14    |    27    |    41    |    54    |    68    |    81    |    86    |
+|      6      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      6      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      6      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
+|      8      |        3.5       |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         4        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         6        |    AVS   |    3    |    4    |    6    |    7    |    9    |    10   |    12   |    14   |    15   |    17    |    33    |    49    |    66    |    82    |    98    |    105   |
+|      8      |         8        |    AVS   |    3    |    5    |    6    |    8    |    9    |    11   |    12   |    14   |    16   |    18    |    34    |    51    |    67    |    84    |    100   |    106   |
+|      8      |        12        |    AVS   |    4    |    6    |    9    |    11   |    13   |    16   |    19   |    21   |    23   |    26    |    51    |    75    |    100   |    124   |    149   |    158   |
+|      8      |        16        |    AVS   |    5    |    8    |    11   |    14   |    18   |    21   |    24   |    27   |    30   |    34    |    67    |    100   |    133   |    165   |    198   |    211   |
 
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="VMware Horizon の Login VSI のナレッジ ワーカー ワークロードの一般的な VDI プロファイルの表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
-
-#### <a name="power-worker-workloads"></a>パワー ワーカー ワークロード
-
-:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="VMware Horizon の Login VSI のパワー ワーカー ワークロードの一般的な VDI プロファイルの表" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="horizon-sizing-inputs"></a>Horizon のサイズ設定の入力
 
@@ -189,24 +209,9 @@ Azure VMware Solution とオンプレミスにデプロイする場合は、デ�
 
 VMware EUC 営業チームと協力して、ニーズに応じた Horizon ライセンス コストを判断します。
 
-### <a name="cost-of-the-horizon-infrastructure-vms-on-azure-virtual-network"></a>Azure Virtual Network 上の Horizon インフラストラクチャ VM のコスト
+### <a name="azure-instance-types"></a>Azure インスタンスの種類
 
-Horizon インフラストラクチャ VM は、標準のデプロイ アーキテクチャに基づいて、接続サーバー、UAG、App Volume Manager で構成されています。 それらは顧客の Azure Virtual Network にデプロイされます。 Azure で高可用性 (HA)、Microsoft SQL、または Microsoft Active Directory (AD) サービスをサポートするには、追加の Azure ネイティブ インスタンスが必要です。 次の表に、2,000 デスクトップ デプロイの例に基づく Azure インスタンスを一覧します。 
-
->[!NOTE]
->エラーを処理できるようにするには、接続数に必要な数よりも 1 つ多いサーバーをデプロイしてください (n+1)。 接続サーバー、UAG、および App Volumes Manager の最小推奨インスタンス数は 2 であり、必要な数は環境でサポートされるユーザーの量に基づいて増加します。  1 つの接続サーバーでサポートされるセッションの最大数は 4,000 ですが、ベスト プラクティスとして 2,000 をお勧めします。 ポッドあたり最大 7 つの接続サーバーがサポートされており、推奨されるポッドあたりの合計アクティブ セッション数は 12,000 です。 最新の数値については、[VMware Horizon 7 のサイズ制限と推奨事項に関する VMware サポート技術情報の記事](https://kb.vmware.com/s/article/2150348)を参照してください。
-
-| Horizon インフラストラクチャ コンポーネント | Azure インスタンス | 必要なインスタンスの数 (2,000 デスクトップの場合)    | 解説  |
-|----------------------------------|----------------|----------------------------------------------------|----------|
-| 接続サーバー                | D4sv3          | 2       | *上記の「注」を参照*                         |    
-| UAG                              | F2sv2          | 2       | *上記の「注」を参照*                         |
-| App Volume Manager              | D4sv3          | 2       | *上記の「注」を参照*                         |
-| クラウド コネクタ                  | D4sv3          | 1       |                                          |
-| AD コントローラー                    | D4sv3          | 2       | *Azure で MSFT AD サービスを使用するオプション* |
-| MS-SQL Database                  | D4sv3          | 2       | *Azure で SQL サービスを使用するオプション*     |
-| Windows ファイル共有               | D4sv3          |         | *省略可能*                               |
-
-インフラストラクチャ VM のコストは、上記の例の 2,000 デスクトップ デプロイでは、ユーザー単位で 1 か月ごとに \$0.36 になります。 この例では、2020 年 6 月の米国東部での Azure インスタンスの価格が使用されています。 価格は、リージョン、選択したオプション、およびタイミングによって異なる場合があります。
+Horizon インフラストラクチャに必要な Azure 仮想マシンのサイズを把握するには、[こちら](https://techzone.vmware.com/resource/horizon-on-azure-vmware-solution-configuration#horizon-installation-on-azure-vmware-solution)にある VMware のガイドラインを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure VMware Solution 上の VMware Horizon の詳細については、[VMware Horizon に関する FAQ](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf) を参照してください。

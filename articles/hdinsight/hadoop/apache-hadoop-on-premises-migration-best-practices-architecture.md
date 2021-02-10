@@ -1,19 +1,17 @@
 ---
 title: アーキテクチャ:オンプレミスの Apache Hadoop から Azure HDInsight
 description: オンプレミスの Hadoop クラスターを Azure HDInsight に移行する場合のアーキテクチャのベスト プラクティスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: af9b1f42140c5656c5f55a98c2d635d59e130db5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb01f2fabb89c6928dc4919987efa27df36a8a7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533735"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946448"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
 

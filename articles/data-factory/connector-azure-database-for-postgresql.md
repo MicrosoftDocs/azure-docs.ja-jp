@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/08/2020
-ms.openlocfilehash: 2537167783f3e68c52c665dafa9378193852acb4
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.date: 02/01/2021
+ms.openlocfilehash: 8b1177278583bdb46f17119eb59235e70c58e806
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930400"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223095"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して、Azure Database for PostgreSQL のデータをコピーして変換する
 
@@ -175,8 +175,9 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
 |:--- |:--- |:--- |
 | type | コピー アクティビティのシンクの type プロパティは **AzurePostgreSQLSink** に設定する必要があります | はい |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Azure Database for PostgreSQL に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |
-| writeBatchSize | バッファー サイズが writeBatchSize に達したら、Azure Database for PostgreSQL テーブルにデータを挿入します。<br>許可される値は行数を表す整数です。 | いいえ (既定値は 10,000) |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br>Timespan 文字列を値として使用できます。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ (既定値は 00:00:30) |
+| writeMethod | Azure Database for PostgreSQL にデータを書き込むために使用するメソッド。<br>使用できる値は、以下のとおりです。**CopyCommand** (プレビューであり、パフォーマンスがより高い)、**BulkInsert** (既定)。 | いいえ |
+| writeBatchSize | バッチごとに Azure Database for PostgreSQL に読み込まれる行の数。<br>許可される値は行数を表す整数です。 | いいえ (既定値は 1,000,000) |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br>Timespan 文字列を値として使用できます。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ (既定値は 00:30:00) |
 
 **例**:
 
@@ -204,7 +205,8 @@ Azure Database for PostgreSQL からデータをコピーするには、コピ�
             "sink": {
                 "type": "AzurePostgreSQLSink",
                 "preCopyScript": "<custom SQL script>",
-                "writeBatchSize": 100000
+                "writeMethod": "CopyCommand",
+                "writeBatchSize": 1000000
             }
         }
     }

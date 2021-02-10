@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c806e5d1d9c9242b6ba57496327c672d7fed0654
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500029"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704492"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
 
@@ -300,7 +300,4 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myBackendNSG --
 > * ネットワーク トラフィックのセキュリティ保護
 > * バックエンド VM の作成
 
-次のチュートリアルに進み、仮想マシンのデータを Azure Backup で保護する方法を学習してください。 
-
-> [!div class="nextstepaction"]
-> [Azure での Linux 仮想マシンのバックアップ](./tutorial-backup-vms.md)
+VM ディスクの保護の詳細については、[ディスクのバックアップとディザスター リカバリー](backup-and-disaster-recovery-for-azure-iaas-disks.md)に関するページをご覧ください。

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2f141b896ef11fecdf156d062a78252ce6f7ffb3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929193"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734985"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -37,7 +37,6 @@ ms.locfileid: "96929193"
 ## <a name="set-up-feature-management"></a>機能管理を設定する
 
 .NET Core 機能マネージャーを利用するには、`Microsoft.FeatureManagement.AspNetCore` および `Microsoft.FeatureManagement` の NuGet パッケージへの参照を追加します。
-    
 .NET Core 機能マネージャー `IFeatureManager` は、フレームワークのネイティブ構成システムから機能フラグを取得します。 その結果、.NET Core がサポートする任意の構成ソース (ローカルの *appsettings.json* ファイルや環境変数など) を使用して、アプリケーションの機能フラグを定義できます。 `IFeatureManager` は、.NET Core の依存関係の挿入に依存します。 機能管理サービスは、標準の規則を使用して登録できます。
 
 ```csharp
@@ -106,16 +105,23 @@ App Configuration に ASP.NET Core アプリケーションを接続する最も
               .UseStartup<Startup>();
    ```
 
-2. *Startup.cs* を開き、`Configure` メソッドを更新して、`UseAzureAppConfiguration` と呼ばれる組み込みのミドルウェアを追加します。 このミドルウェアを使用すると、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できます。
+2. *Startup.cs* を開き、`Configure` および `ConfigureServices` メソッドを更新して、`UseAzureAppConfiguration` と呼ばれる組み込みのミドルウェアを追加します。 このミドルウェアを使用すると、ASP.NET Core Web アプリで要求の受信が続けられている間、定期的に機能フラグの値を更新できます。
 
    ```csharp
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        app.UseAzureAppConfiguration();
        app.UseMvc();
    }
    ```
 
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddAzureAppConfiguration();
+   }
+   ```
+   
 機能フラグの値は、時間の経過とともに変化することが予想されます。 既定では、機能フラグの値は 30 秒間キャッシュされるため、ミドルウェアで要求が受け取られるときにトリガーされる更新操作では、キャッシュされた値の有効期限が切れるまで、値は更新されません。 次のコードは、`options.UseFeatureFlags()` 呼び出しでキャッシュの有効期間またはポーリング間隔を 5 分に変更する方法を示しています。
 
 ```csharp
@@ -189,6 +195,8 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 ASP.NET Core MVC では、依存関係の挿入を介して機能マネージャー `IFeatureManager` にアクセスできます。
 
 ```csharp
+using Microsoft.FeatureManagement;
+
 public class HomeController : Controller
 {
     private readonly IFeatureManager _featureManager;

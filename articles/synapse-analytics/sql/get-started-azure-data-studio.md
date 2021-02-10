@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: cfd0476d3462fc902acb7238fcc1947c85af041f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: f82a1279a69bf91f37400d5614e8f7b121e72f47
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98676181"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258899"
 ---
 # <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Azure Data Studio を使用して Synapse SQL に接続する
 

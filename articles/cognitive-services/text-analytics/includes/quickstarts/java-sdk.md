@@ -6,26 +6,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 01/20/2021
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: e68a46070f03154092d148552fffbb99ae82bcfd
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 9c719d222e8c38030556214d42f6519768d99f0a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612631"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090748"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.3) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme?preserve-view=true&view=azure-java-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.3) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[リファレンス ドキュメント](/java/api/overview/azure/ai-textanalytics-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics) | [パッケージ](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.0.0) | [サンプル](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.0.0/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-21"></a>[バージョン 2.1](#tab/version-2)
 
@@ -606,8 +606,7 @@ veterinarian
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-> [!CAUTION]
-> 分析操作を使用するには、Standard (S) 価格レベルの Text Analytics リソースを使用する必要があります。  
+[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
 `beginAnalyzeTasks()` 関数を呼び出す `analyzeOperationExample()` という名前の新しい関数を作成します。 この操作の実行には時間がかかり、結果に対してポーリングされます。
 

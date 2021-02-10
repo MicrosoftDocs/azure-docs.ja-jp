@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1747af77468ebe41f59892dea4bb49ce24757f37
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836819"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803576"
 ---
 # <a name="enhance-port-and-vlan-name-resolution"></a>ポートと VLAN の名前解決を強化する
 
@@ -84,7 +84,8 @@ VLAN を構成するには:
 
 ## <a name="next-steps"></a>次のステップ
 
-デバイス インベントリとデータ マイニングのレポートにエンリッチされたデバイス情報を表示します。
+増強されたデバイス情報をさまざまなレポートで表示する:
 
 - [デバイス インベントリのセンサー検出を調査する](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-- [レポートの生成](how-to-generate-reports.md)
+- [センサーの傾向と統計のレポート](how-to-create-trends-and-statistics-reports.md)
+- [センサーのデータ マイニング クエリ](how-to-create-data-mining-queries.md)

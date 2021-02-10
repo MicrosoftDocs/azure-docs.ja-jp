@@ -1,24 +1,25 @@
 ---
-title: Azure Diagnostics で Cloud Services アプリケーションのフローをトレースする
-titleSuffix: Azure Cloud Services
+title: Azure Diagnostics で Cloud Services (クラシック) アプリケーションのフローをトレースする
 description: トレース メッセージを Azure アプリケーションに追加することにより、デバッグ、パフォーマンス測定、監視、トラフィック分析などを容易に行えるようになります。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-dotnet
 ms.topic: article
-ms.date: 02/20/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 8270766413729454181c461d469d49e418a1aa67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: b00bb28128cfe9a2e701647ad174ea2c9dd458e4
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932306"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742127"
 ---
-# <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Azure Diagnostics で Cloud Services アプリケーションのフローをトレースする
+# <a name="trace-the-flow-of-a-cloud-services-classic-application-with-azure-diagnostics"></a>Azure Diagnostics で Cloud Services (クラシック) アプリケーションのフローをトレースする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 トレースは、アプリケーションの稼働中にアプリケーションの実行を監視する手段です。 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace)、[System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug)、および [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) の各クラスを使用すると、エラーとアプリケーションの実行に関する情報をログ、テキスト ファイル、またはその他のデバイスに記録して、後で分析することができます。 トレースの詳細については、「 [アプリケーションのトレースとインストルメント](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)」を参照してください。
 
 ## <a name="use-trace-statements-and-trace-switches"></a>トレース ステートメントとトレース スイッチを使用する

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 を使用できるクラウドとリージョン
+title: Azure Media Services v3 のクラウドとリージョン
 description: この記事では、リージョンのエンドポイントとコードに使用される URL について説明します。
 services: media-services
 author: IngridAtMicrosoft
@@ -8,18 +8,18 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 10/28/2020
 ms.author: inhenkel
-ms.openlocfilehash: c17eeda91af46c4159f7c4b1747416298f24c703
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 74f30ebb766ea34603c0a30455837c47222967c0
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319636"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954329"
 ---
 # <a name="regional-code-names-and-endpoints"></a>リージョンのコード名とエンドポイント
 
 ### <a name="region-code-name"></a>リージョン コード名
 
-**location** パラメーターがコマンドまたは要求で使用される場合は、 **location** 値としてリージョンのコード名を指定する必要があります。 お使いのアカウントが存在し、呼び出しがルーティングされるリージョンのコード名を取得するには、次の行を Azure CLI で実行できます。
+**location** パラメーターがコマンドまたは要求で使用される場合は、**location** 値としてリージョンのコード名を指定する必要があります。 お使いのアカウントが存在し、呼び出しがルーティングされるリージョンのコード名を取得するには、次の行を Azure CLI で実行できます。
 
 ```azurecli-interactive
 az account list-locations

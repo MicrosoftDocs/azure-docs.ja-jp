@@ -7,12 +7,12 @@ author: cynthn
 ms.service: virtual-machines
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 7c3e779c152a967452f86b55f06d38076102085c
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9c220814ae1f714e9eac0c0c11a50d9cf68a621d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594870"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897410"
 ---
 # <a name="tagging-a-vm-using-the-portal"></a>ポータルを使用して VM にタグを付ける
 
@@ -28,9 +28,7 @@ ms.locfileid: "94594870"
 
     :::image type="content" source="media/tag/key-value.png" alt-text="キーと値のペアをタグとして追加するためのページのスクリーンショット。":::
 
-
-
-**次の手順**
+### <a name="next-steps"></a>次のステップ
 
 - Azure リソースへのタグ付けについて詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」と「[タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)」をご覧ください。
-- タグが Azure リソースの使用の管理にどのように役立つかを確認するには、[Azure の課金内容の確認](../cost-management-billing/understand/review-individual-bill.md)に関するページと「[Microsoft Azure リソースの消費を把握する](../cost-management-billing/manage/usage-rate-card-overview.md)」を参照してください。
+- Azure リソースの使用を管理するときにタグを役立てる方法については、「[Azure の課金内容の確認」](../cost-management-billing/understand/review-individual-bill.md)を参照してください。

@@ -4,12 +4,12 @@ description: Azure ストレージ アカウントを使用して転送パイプ
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932602"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935350"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -65,7 +65,7 @@ ms.locfileid: "91932602"
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** - ExportPipeline リソースまたは ImportPipeline リソースを呼び出すために使用されるリソース。  
   * ExportPipeline を手動で実行するには、PipelineRun リソースを作成し、エクスポートする成果物を指定します。  
   * インポート トリガーが有効になっている場合、ImportPipeline は自動的に実行されます。 また、PipelineRun を使用して手動で実行することもできます。 
-  * 現時点では、PipelineRun ごとに最大 **50 個の成果物**を転送できます。
+  * 現時点では、PipelineRun ごとに最大 **50 個の成果物** を転送できます。
 
 ### <a name="things-to-know"></a>注意事項
 * ExportPipeline と ImportPipeline は、通常、ソース クラウドとターゲット クラウドに関連付けられている異なる Active Directory テナントにあります。 このシナリオでは、リソースのエクスポートとインポート用に個別のマネージド ID とキー コンテナーが必要です。 テスト目的では、これらのリソースを同じクラウドに配置し、ID を共有することができます。
@@ -312,7 +312,7 @@ az storage blob list \
 
 ## <a name="transfer-blob-optional"></a>BLOB を転送する (オプション) 
 
-AzCopy ツールまたはその他の方法を使用して、ソース ストレージ アカウントからターゲット ストレージ アカウントに [BLOB データを転送](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts)します。
+AzCopy ツールまたはその他の方法を使用して、ソース ストレージ アカウントからターゲット ストレージ アカウントに [BLOB データを転送](../storage/common/storage-use-azcopy-v10.md#transfer-data)します。
 
 たとえば、次の [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md) コマンドでは、ソース アカウントの *transfer* コンテナーからターゲット アカウントの *transfer* コンテナーに myblob がコピーされます。 BLOB がターゲット アカウントに存在する場合は上書きされます。 認証では、ソース コンテナーとターゲット コンテナーに対する適切なアクセス許可を持つ SAS トークンが使用されます (トークンを作成する手順については説明しません)。
 
@@ -377,7 +377,7 @@ az acr repository list --name <target-registry-name>
 
 ## <a name="redeploy-pipelinerun-resource"></a>PipelineRun リソースを再デプロイする
 
-*同じプロパティ*を使用して PipelineRun リソースを再デプロイする場合は、**forceUpdateTag** プロパティを使用する必要があります。 このプロパティは、構成が変更されていない場合でも、PipelineRun リソースを再作成する必要があることを示します。 PipelineRun リソースを再デプロイするたびに、forceUpdateTag が異なることを確認してください。 次の例では、エクスポートの PipelineRun を再作成しています。 forceUpdateTag を設定するために、現在の日時を使用します。これにより、このプロパティは常に一意になります。
+*同じプロパティ* を使用して PipelineRun リソースを再デプロイする場合は、**forceUpdateTag** プロパティを使用する必要があります。 このプロパティは、構成が変更されていない場合でも、PipelineRun リソースを再作成する必要があることを示します。 PipelineRun リソースを再デプロイするたびに、forceUpdateTag が異なることを確認してください。 次の例では、エクスポートの PipelineRun を再作成しています。 forceUpdateTag を設定するために、現在の日時を使用します。これにより、このプロパティは常に一意になります。
 
 ```console
 CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`

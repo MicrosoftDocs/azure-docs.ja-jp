@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 03/18/2020
-ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/01/2021
+ms.openlocfilehash: 74c0dbaaa511e2fd2f20a3c245a561a177dd2b9a
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325198"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223442"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -185,11 +185,9 @@ SQL Database のバックアップ回復の詳細については、[SQL Database
 
 ## <a name="high-availability-with-customer-managed-tde"></a>カスタマー マネージド TDE による高可用性
 
-サーバーに geo 冗長が構成されていない場合でも、同じキー マテリアルで、2 つの異なるリージョンの 2 つの異なるキー コンテナーを使用するようにサーバーを構成することを強くお勧めします。 これを実現するには、サーバーと同じリージョンに併置されたプライマリ キー コンテナーを使用して TDE 保護機能を作成し、別の Azure リージョンのキー コンテナーにキーを複製します。これにより、データベースの稼働中にプライマリ キー コンテナーが停止した場合に、サーバーはもう 1 つのキー コンテナーにアクセスできます。
+サーバーに geo 冗長が構成されていない場合でも、同じキー マテリアルで、2 つの異なるリージョンの 2 つの異なるキー コンテナーを使用するようにサーバーを構成することを強くお勧めします。 他のリージョンのセカンダリ キー コンテナー内のキーは、TDE 保護機能としてマークすることはできず、許可もされません。 プライマリ キー コンテナーに影響する障害が発生したときに初めて、システムにより、セカンダリ キー コンテナー内に同じ拇印を持つ他のリンクされたキーに自動的に切り替えられます (存在する場合)。 ただし、アクセス権が取り消されたか、キーまたはキー コンテナーが削除されたため TDE プロテクターにアクセスできない場合、これはサーバーがキーにアクセスするのを制限するという顧客の意図を示している可能性があるため、この切り替えは発生しません。異なるリージョンの 2 つのキー コンテナーに同じキー マテリアルを提供するには、キー コンテナーの外側にキーを作成し、それらを両方のキー コンテナーにインポートします。 
 
-Backup-AzKeyVaultKey コマンドレットを使用して、プライマリ キー コンテナーから暗号化された形式のキーを取得し、Restore-AzKeyVaultKey コマンドレットを使用して、キーを複製する 2 つ目のリージョンのキー コンテナーを指定します。 または、Azure portal を使用して、キーのバックアップと復元を行います。 他のリージョンのセカンダリ キー コンテナー内のキーは、TDE 保護機能としてマークすることはできず、許可もされません。
-
-プライマリ キー コンテナーに影響する障害が発生したときに初めて、システムにより、セカンダリ キー コンテナー内に同じ拇印を持つ他のリンクされたキーに自動的に切り替えられます (存在する場合)。 アクセス権の取り消しにより、あるいはキーまたはキー コンテナーが削除されたことにより TDE 保護機能にアクセスできない場合、切り替えは行われないことに注意してください。顧客がサーバーからキーへのアクセスを意図的に制限することを望む場合があるためです。
+または、サーバーと同じリージョンに併置されているプライマリ キー コンテナーを使用してキーを生成し、別の Azure リージョンのキー コンテナーにキーを複製する方法もあります。 [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/Backup-AzKeyVaultKey) コマンドレットを使用して、プライマリ キー コンテナーから暗号化された形式のキーを取得し、[Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey) コマンドレットを使用して、キーを複製する 2 つ目のリージョンのキー コンテナーを指定します。 または、Azure portal を使用して、キーのバックアップと復元を行います。 キーのバックアップ/復元操作は、同じ Azure サブスクリプションおよび [Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)内のキー コンテナー間でのみ許可されます。  
 
 ![単一サーバーの HA](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bdbb4307f46566d1cac259cbdc4c81d1dfba5c7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006629"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927778"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Azure Monitor にログ データを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Azure Monitor に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -66,7 +66,7 @@ Azure Monitor HTTP データ コレクター API への要求には、Authorizat
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* は、Log Analytics ワークスペースの一意識別子です。 *Signature* は、要求で構築されてから、[SHA256 アルゴリズム](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1)を使用して計算される [ハッシュベース メッセージ認証コード (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1) です。 このコードを Base64 エンコーディングを使用してエンコードします。
+*WorkspaceID* は、Log Analytics ワークスペースの一意識別子です。 *Signature* は、要求で構築されてから、[SHA256 アルゴリズム](/dotnet/api/system.security.cryptography.sha256)を使用して計算される [ハッシュベース メッセージ認証コード (HMAC)](/dotnet/api/system.security.cryptography.hmacsha256) です。 このコードを Base64 エンコーディングを使用してエンコードします。
 
 **SharedKey** 署名文字列をエンコードするには、次の形式を使用します。
 

@@ -2,164 +2,274 @@
 title: Azure CLI を使用して Azure プライベート リンク サービスを作成する
 description: Azure CLI を使用して Azure プライベート リンク サービスを作成する方法について説明します
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 09/16/2019
+ms.date: 01/22/2021
 ms.author: allensu
-ms.openlocfilehash: cfffafaab2e2d4ef6b165ef03beb827342c94608
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 567ed736c52e8b3cbb03edeb19b3c0e2364e4112
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96018054"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757342"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Azure CLI を使用してプライベート リンク サービスを作成する
-この記事では、Azure CLI を使用して Azure 上でプライベート リンク サービスを作成する方法を示します。
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+自分のサービスを参照する Private Link サービスを作成してみましょう。  Private Link には、Azure Standard Load Balancer の背後にデプロイされたサービスやリソースへのアクセス権を付与することができます。  サービスのユーザーは、各自の仮想ネットワークからプライベートにアクセスすることができます
 
-- この記事には、Azure CLI の最新バージョンが必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-private-link-service"></a>Private Link サービスを作成する
-### <a name="create-a-resource-group"></a>リソース グループを作成する
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
-仮想ネットワークを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループを場所 *westcentralus* に作成します。
+- このクイックスタートには、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-```azurecli-interactive
-az group create --name myResourceGroup --location westcentralus
-```
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して仮想ネットワークを作成します。 この例では、*mySubnet* という名前のサブネットを使って、*myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-```azurecli-interactive
-az network vnet create --resource-group myResourceGroup --name myVirtualNetwork --address-prefix 10.0.0.0/16  
-```
-### <a name="create-a-subnet"></a>サブネットの作成
-[az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) を使って、仮想ネットワーク用のサブネットを作成します。 この例では、*myVirtualNetwork* 仮想ネットワークに *mySubnet* という名前のサブネットを作成します。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+
+[az group create](/cli/azure/group#az_group_create) を使用して、次のようにリソース グループを作成します。
+
+* 名前は **CreatePrivLinkService-rg** にします。 
+* 場所は **eastus** にします。
 
 ```azurecli-interactive
-az network vnet subnet create --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --address-prefixes 10.0.0.0/24    
+  az group create \
+    --name CreatePrivLinkService-rg \
+    --location eastus2
+
 ```
-### <a name="create-a-internal-load-balancer"></a>内部ロード バランサーを作成する 
-[az network lb create](/cli/azure/network/lb#az-network-lb-create) を使って、内部ロード バランサーを作成します。 この例では、*myResourceGroup* という名前のリソース グループに、*myILB* という名前の内部ロード バランサーを作成します。 
+
+## <a name="create-an-internal-load-balancer"></a>内部ロード バランサーを作成します。
+
+このセクションでは、仮想ネットワークと内部 Azure Load Balancer を作成します。
+
+### <a name="virtual-network"></a>仮想ネットワーク
+
+このセクションでは、Private Link サービスにアクセスするロード バランサーのホストとなる仮想ネットワークとサブネットを作成します。
+
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、次のように仮想ネットワークを作成します。
+
+* 名前は **myVNet** にします。
+* アドレス プレフィックスは **10.1.0.0/16** にします。
+* サブネットの名前は **mySubnet** にします。
+* サブネット プレフィックスは **10.1.0.0/24** にします。
+* **CreatePrivLinkService-rg** リソース グループ内に作成します。
+* 場所は **eastus2** にします。
+* サブネット上の Private Link サービスのネットワーク ポリシーを無効にします。
 
 ```azurecli-interactive
-az network lb create --resource-group myResourceGroup --name myILB --sku standard --vnet-name MyVirtualNetwork --subnet mySubnet --frontend-ip-name myFrontEnd --backend-pool-name myBackEndPool
+  az network vnet create \
+    --resource-group CreatePrivLinkService-rg \
+    --location eastus2 \
+    --name myVNet \
+    --address-prefixes 10.1.0.0/16 \
+    --subnet-name mySubnet \
+    --subnet-prefixes 10.1.0.0/24
+
 ```
 
-### <a name="create-a-load-balancer-health-probe"></a>ロード バランサーの正常性プローブの作成
+Private Link サービスのネットワーク ポリシーを無効にするようにサブネットを更新するには、[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用します。
 
-正常性プローブは、ネットワーク トラフィックを受信できるように、すべての仮想マシン インスタンスを確認します。 プローブのチェックで失敗した仮想マシン インスタンスは、オンラインに戻り、プローブ チェックにより正常と判定されるまで、ロード バランサーから削除されます。 [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest) を使用して正常性プローブを作成し、仮想マシンの正常性を監視します。 
+```azurecli-interactive
+az network vnet subnet update \
+    --name mySubnet \
+    --resource-group CreatePrivLinkService-rg \
+    --vnet-name myVNet \
+    --disable-private-link-service-network-policies true
+```
+
+### <a name="create-standard-load-balancer"></a>Standard ロード バランサーを作成する
+
+このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
+
+  * ロード バランサーの着信ネットワーク トラフィックを受け取るフロントエンド IP プール。
+  * フロントエンド プールから負荷分散されたネットワーク トラフィックが送信されるバックエンド IP プール。
+  * バックエンド VM インスタンスの正常性を判断する正常性プローブ。
+  * VM に対するトラフィックの分散方法を定義するロード バランサー規則。
+
+### <a name="create-the-load-balancer-resource"></a>ロード バランサーのリソースを作成する
+
+[az network lb create](/cli/azure/network/lb#az-network-lb-create) を使用して、次のようにパブリック ロード バランサーを作成します。
+
+* 名前は **myLoadBalancer** にします。
+* フロントエンド プールの名前は **myFrontEnd** にします。
+* バックエンド プールの名前は **myBackEndPool** にします。
+* 仮想ネットワーク **myVNet** に関連付けます。
+* バックエンド サブネット **mySubnet** に関連付けます。
+
+```azurecli-interactive
+  az network lb create \
+    --resource-group CreatePrivLinkService-rg \
+    --name myLoadBalancer \
+    --sku Standard \
+    --vnet-name myVnet \
+    --subnet mySubnet \
+    --frontend-ip-name myFrontEnd \
+    --backend-pool-name myBackEndPool
+```
+
+### <a name="create-the-health-probe"></a>正常性プローブを作成する
+
+正常性プローブは、すべての仮想マシン インスタンスを調べて、ネットワーク トラ	フィックを送信できるかどうかを確認します。 
+
+プローブ チェックが失敗した仮想マシンは、ロード バランサーから削除されます。 障害が解決されると、仮想マシンがロード バランサーに再び追加されます。
+
+[az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) を使用して、次のように正常性プローブを作成します。
+
+* 仮想マシンの正常性を監視します。
+* 名前は **myHealthProbe** にします。
+* プロトコルは **TCP** にします。
+* **ポート 80** を監視します。
 
 ```azurecli-interactive
   az network lb probe create \
-    --resource-group myResourceGroup \
-    --lb-name myILB \
+    --resource-group CreatePrivLinkService-rg \
+    --lb-name myLoadBalancer \
     --name myHealthProbe \
     --protocol tcp \
-    --port 80   
+    --port 80
 ```
 
-### <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
+### <a name="create-the-load-balancer-rule"></a>ロード バランサー規則を作成する
 
-ロード バランサー規則は、着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest) を使用してロード バランサー規則 *myHTTPRule* を作成します。この規則では、フロントエンド プール *myFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
+ロード バランサー規則は、以下のものを定義します。
+
+* 着信トラフィック用のフロントエンド IP 構成。
+* トラフィックを受信するためのバックエンド IP プール。
+* 必要な発信元ポートと宛先ポート。 
+
+[az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) を使用して、次のようにロード バランサー規則を作成します。
+
+* 名前は **myHTTPRule** にします
+* フロントエンド プール **myFrontEnd** で **ポート 80** をリッスンします。
+* **ポート 80** を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール **myBackEndPool** に送信します。 
+* 正常性プローブ **myHealthProbe** を使用します。
+* プロトコルは **TCP** にします。
+* アイドル タイムアウトは **15 分** とします。
+* TCP リセットを有効にします。
 
 ```azurecli-interactive
   az network lb rule create \
-    --resource-group myResourceGroup \
-    --lb-name myILB \
+    --resource-group CreatePrivLinkService-rg \
+    --lb-name myLoadBalancer \
     --name myHTTPRule \
     --protocol tcp \
     --frontend-port 80 \
     --backend-port 80 \
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool \
-    --probe-name myHealthProbe  
+    --probe-name myHealthProbe \
+    --idle-timeout 15 \
+    --enable-tcp-reset true
 ```
-### <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
-この例では、仮想マシンの作成については説明しません。 「[クイックスタート: Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する](../load-balancer/quickstart-load-balancer-standard-internal-cli.md)」の手順に従って、ロード バランサー用のバックエンド サーバーとして使用される 2 つの仮想マシンを作成できます。 
+## <a name="create-a-private-link-service"></a>プライベート リンク サービスを作成する
 
+このセクションでは、前の手順で作成された Azure Load Balancer を使用する Private Link サービスを作成します。
 
-### <a name="disable-private-link-service-network-policies-on-subnet"></a>サブネット上で Private Link サービス ネットワーク ポリシーを無効にする 
-プライベート リンク サービスでは、仮想ネットワーク内の任意のサブネットからの IP が必要になります。 現時点では、これらの IP 上でのネットワーク ポリシーはサポートされていません。  そのため、サブネット上のネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使って、サブネットを更新して Private Link サービス ネットワーク ポリシーを無効にします。
+[az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) を使用し、Standard Load Balancer フロントエンド IP 構成を使用して Private Link サービスを作成します。
 
-```azurecli-interactive
-az network vnet subnet update --resource-group myResourceGroup --vnet-name myVirtualNetwork --name mySubnet --disable-private-link-service-network-policies true 
-```
- 
-## <a name="create-a-private-link-service-using-standard-load-balancer"></a>Standard Load Balancer を使用して Private Link サービスを作成する 
- 
-[az network private-link-service create](/cli/azure/network/private-link-service#az-network-private-link-service-create) を使って、Standard Load Balancer フロントエンド IP 構成を使用してプライベート リンク サービスを作成します。 この例では、*myResourceGroup* という名前のリソース グループ内で *myLoadBalancer* という名前の Standard Load Balancer を使用して、*myPLS* という名前のプライベート リンク サービスを作成します。 
+* 名前は **myPrivateLinkService** にします。
+* 仮想ネットワークは **myVNet** にします。
+* Standard Load Balancer **myLoadBalancer** とフロントエンド構成 **myFrontEnd** に関連付けます。
+* 場所は **eastus2** にします。
  
 ```azurecli-interactive
 az network private-link-service create \
---resource-group myResourceGroup \
---name myPLS \
---vnet-name myVirtualNetwork \
---subnet mySubnet \
---lb-name myILB \
---lb-frontend-ip-configs myFrontEnd \
---location westcentralus 
+    --resource-group CreatePrivLinkService-rg \
+    --name myPrivateLinkService \
+    --vnet-name myVNet \
+    --subnet mySubnet \
+    --lb-name myLoadBalancer \
+    --lb-frontend-ip-configs myFrontEnd \
+    --location eastus2
 ```
-作成したら、そのプライベート リンクのサービス ID を書き留めておきます。 このサービスへの接続を要求するために、後で必要になります。  
- 
-この段階で、プライベート リンク サービスが正常に作成され、トラフィックを受信する準備が整いました。 上記の例は、Azure CLI を使用したプライベート リンク サービスの作成を示すことのみを目的としていることに注意してください。  ロード バランサーのバックエンド プールまたはバックエンド プール上のアプリケーションは、トラフィックをリッスンするようには構成されていません。 エンドツーエンドのトラフィック フローを確認する予定なら、お使いの Standard Load Balancer の背後にアプリケーションを構成することを強くお勧めします。  
- 
-次に、Azure CLI を使用して、異なる 仮想ネットワーク内でプライベート エンドポイントにこのサービスをマップする方法について説明します。 例ではやはり、プライベート エンドポイントを作成すること、また、Azure CLI を使用して上記で作成したプライベート リンク サービスへ接続することに的を絞っています。 さらに、仮想ネットワーク内に仮想マシンを作成して、プライベート エンドポイントに対してトラフィックを送受信することができます。        
- 
-## <a name="private-endpoints"></a>プライベート エンドポイント
 
-### <a name="create-the-virtual-network"></a>仮想ネットワークの作成 
- [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使って、仮想ネットワークを作成します。 この例では、*myResourcegroup* という名前のリソース グループ内に  *myPEVNet*  という名前の仮想ネットワークを作成します。 
+Private Link サービスが作成され、トラフィックを受信できるようになります。 トラフィック フローを確認する場合は、アプリケーションを Standard Load Balancer の背後に構成します。
+
+
+## <a name="create-private-endpoint"></a>プライベート エンドポイントの作成
+
+このセクションでは、Private Link サービスをプライベート エンドポイントにマップします。 仮想ネットワークには、Private Link サービスのプライベート エンドポイントが含まれています。 この仮想ネットワークには、Private Link サービスにアクセスするリソースが含まれています。
+
+### <a name="create-private-endpoint-virtual-network"></a>プライベート エンドポイントの仮想ネットワークを作成する
+
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して、次のように仮想ネットワークを作成します。
+
+* 名前は **myVNetPE** にします。
+* アドレス プレフィックスは **11.1.0.0/16** にします。
+* サブネットの名前は **mySubnetPE** にします。
+* サブネット プレフィックスは **11.1.0.0/24** にします。
+* **CreatePrivLinkService-rg** リソース グループ内に作成します。
+* 場所は **eastus2** にします。
+
 ```azurecli-interactive
-az network vnet create \
---resource-group myResourceGroup \
---name myPEVnet \
---address-prefix 10.0.0.0/16  
+  az network vnet create \
+    --resource-group CreatePrivLinkService-rg \
+    --location eastus2 \
+    --name myVNetPE \
+    --address-prefixes 11.1.0.0/16 \
+    --subnet-name mySubnetPE \
+    --subnet-prefixes 11.1.0.0/24
 ```
-### <a name="create-the-subnet"></a>サブネットを作成する 
- [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) を使って、仮想ネットワーク内にサブネットを作成します。 この例では、*myResourcegroup* という名前のリソース グループ内で *myPEVnet* という名前の仮想ネットワークに、 *mySubnet*  という名前のサブネットを作成します。 
 
-```azurecli-interactive 
-az network vnet subnet create \
---resource-group myResourceGroup \
---vnet-name myPEVnet \
---name myPESubnet \
---address-prefixes 10.0.0.0/24 
-```   
-## <a name="disable-private-endpoint-network-policies-on-subnet"></a>サブネット上でプライベート エンドポイントのネットワーク ポリシーを無効にする 
-プライベート エンドポイントは、仮想ネットワークにある任意のサブネット内に作成できます。 現時点では、プライベート エンドポイント上でのネットワーク ポリシーはサポートされていません。  そのため、サブネット上のネットワーク ポリシーを無効にする必要があります。 [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使って、サブネットを更新して、プライベート エンドポイント ネットワーク ポリシーを無効にします。 
+プライベート エンドポイントのネットワーク ポリシーを無効にするようにサブネットを更新するには、[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用します。
 
 ```azurecli-interactive
 az network vnet subnet update \
---resource-group myResourceGroup \
---vnet-name myPEVnet \
---name myPESubnet \
---disable-private-endpoint-network-policies true 
+    --name mySubnetPE \
+    --resource-group CreatePrivLinkService-rg \
+    --vnet-name myVNetPE \
+    --disable-private-endpoint-network-policies true
 ```
-## <a name="create-private-endpoint-and-connect-to-private-link-service"></a>プライベート エンドポイントを作成してプライベート リンクサービスに接続する 
-上記で作成したプライベート リンク サービスを使用するためのプライベート エンドポイントを仮想ネットワーク内に作成します。
-  
+
+### <a name="create-endpoint-and-connection"></a>エンドポイントと接続を作成する
+
+* [az network private-link-service show](/cli/azure/network/private-link-service#az_network_private_link_service_show) を使用して Private Link サービスのリソース ID を取得します。 このコマンドでは、後で使用するためにリソース ID を変数に格納します。
+
+* [az network private-endpoint create](/cli/azure/network/private-endpoint#az_network_private_endpoint_create) を使用して、前に作成した仮想ネットワーク内にプライベート エンドポイントを作成します。
+
+* 名前は **MyPrivateEndpoint** にします。
+* **CreatePrivLinkService-rg** リソース グループ内に作成します。
+* 接続名は **myPEconnectiontoPLS** にします。
+* 場所は **eastus2** にします。
+* 仮想ネットワーク **myVNetPE** とサブネット **mySubnetPE** 内に作成します。
+
 ```azurecli-interactive
-az network private-endpoint create \
---resource-group myResourceGroup \
---name myPE \
---vnet-name myPEVnet \
---subnet myPESubnet \
---private-connection-resource-id {PLS_resourceURI} \
---connection-name myPEConnectingPLS \
---location westcentralus 
+  export resourceid=$(az network private-link-service show \
+    --name myPrivateLinkService \
+    --resource-group CreatePrivLinkService-rg \
+    --query id \
+    --output tsv)
+
+  az network private-endpoint create \
+    --connection-name myPEconnectiontoPLS \
+    --name myPrivateEndpoint \
+    --private-connection-resource-id $resourceid \
+    --resource-group CreatePrivLinkService-rg \
+    --subnet mySubnetPE \
+    --manual-request false \
+    --vnet-name myVNetPE 
+
 ```
-プライベート リンク サービスに対して `az network private-link-service show` を使って、*private-connection-resource-id* を取得できます。 ID は次のようになります。   
-/subscriptions/subID/resourceGroups/*resourcegroupname*/providers/Microsoft.Network/privateLinkServices/**privatelinkservicename** 
- 
-## <a name="show-private-link-service-connections"></a>プライベート リンク サービスの接続を表示する 
- 
-[az network private-link-service show](/cli/azure/network/private-link-service#az-network-private-link-service-show) を使って、ご自身のプライベート リンク サービスでの接続要求を確認します。    
-```azurecli-interactive 
-az network private-link-service show --resource-group myResourceGroup --name myPLS 
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+必要なくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、Private Link サービス、ロード バランサー、すべての関連リソースを削除します。
+
+```azurecli-interactive
+  az group delete \
+    --name CreatePrivLinkService-rg 
 ```
+
 ## <a name="next-steps"></a>次のステップ
-- [Azure Private Link サービス](private-link-service-overview.md)についてさらに学習する
+
+このクイック スタートでは次の作業を行います。
+
+* 仮想ネットワークと内部 Azure Load Balancer を作成しました。
+* Private Link サービスを作成しました。
+
+Azure プライベート エンドポイントについてさらに学習するには、次の記事に進んでください。
+> [!div class="nextstepaction"]
+> [クイックスタート: Azure CLI を使用してプライベート エンドポイントを作成する](create-private-endpoint-cli.md)

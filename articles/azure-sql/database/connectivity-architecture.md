@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
-ms.date: 06/26/2020
-ms.openlocfilehash: 74dd3a6b19d241fdf05e6438226227147ba4afbd
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.date: 01/25/2021
+ms.openlocfilehash: da21fd2b6f8d427369cee89e0ad93d63e8608784
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165945"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808264"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-connectivity-architecture"></a>Azure SQL Database と Azure Synapse Analytics の接続アーキテクチャ
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -66,7 +66,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 ![TCP セッションを Azure SQL Database ゲートウェイ経由で確立し、すべての後続パケットをゲートウェイ経由で送信する方法を示す図。](./media/connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> [DAC による接続](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)を有効にするには、追加で TCP ポート 1434、14000 から 14999 を開きます
+> [DAC による接続](/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators#connecting-with-dac)を有効にするには、追加で TCP ポート 1434、14000 から 14999 を開きます
 
 ## <a name="gateway-ip-addresses"></a>ゲートウェイ IP アドレス
 
@@ -83,7 +83,7 @@ Azure 外から接続する場合、接続には既定で `Proxy` の接続ポ�
 | ブラジル南部         | 104.41.11.5、191.233.200.14、191.234.144.16、191.234.152.3 |
 | カナダ中部       | 40.85.224.249、52.246.152.0、20.38.144.1 |
 | カナダ東部          | 40.86.226.166、52.242.30.154、40.69.105.9、40.69.105.10 |
-| 米国中部           | 13.67.215.62、52.182.137.15、23.99.160.139、104.208.16.96、104.208.21.1 |
+| 米国中部           | 13.67.215.62、52.182.137.15、23.99.160.139、104.208.16.96、104.208.21.1、13.89.169.20 |
 | 中国東部           | 139.219.130.35     |
 | 中国東部 2         | 40.73.82.1         |
 | 中国北部          | 139.219.15.17      |

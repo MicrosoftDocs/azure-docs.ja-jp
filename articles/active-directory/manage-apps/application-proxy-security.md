@@ -4,7 +4,7 @@ description: Azure AD アプリケーション プロキシを使用する場合
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794c4e1a0859fc8a36b0abf4fcc9d5243c8bd308
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3c98bce0be2b456220815a359aae1ee697f3ca2c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649570"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254967"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
@@ -108,7 +108,7 @@ Azure AD アプリケーション プロキシは、以下の 2 つで構成さ�
 コネクタの初回セットアップ時に、次のフロー イベントが発生します。
 
 1. サービスへのコネクタの登録は、コネクタのインストールの一環として発生します。 ユーザーは、Azure AD 管理者の資格情報の入力を求められます。  この認証から取得されたトークンが、Azure AD アプリケーション プロキシ サービスに提示されます。
-2. アプリケーション プロキシ サービスがトークンを評価します。 ユーザーがテナントの会社管理者であるかどうかを確認します。  ユーザーが管理者でない場合、このプロセスは終了します。
+2. アプリケーション プロキシ サービスがトークンを評価します。 ユーザーがテナントの全体管理者であるかどうかを確認します。  ユーザーが管理者でない場合、このプロセスは終了します。
 3. コネクタは、クライアント証明書要求を生成し、トークンと共にアプリケーション プロキシ サービスに渡します。 次に、サービスがトークンを検証し、クライアント証明書要求に署名します。
 4. コネクタはアプリケーション プロキシ サービスとのその後の通信の際に、このクライアント証明書を使用します。
 5. コネクタはクライアント証明書を使用して、サービスからのシステム構成データの初回の収集を実行します。これで要求を受け入れる準備が完了します。

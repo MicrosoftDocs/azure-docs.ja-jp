@@ -223,6 +223,8 @@
           href: source-control.md
         - name: 継続的インテグレーションと配信
           href: continuous-integration-deployment.md
+        - name: 自動発行
+          href: continuous-integration-deployment-improvements.md
     - name: Connectors
       items:
         - name: コネクタの概要
@@ -716,6 +718,10 @@
               href: data-migration-guidance-hdfs-azure-storage.md
             - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
               href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Azure Machine Learning
+          items:
+            - name: データ インジェスト
+              href: ../machine-learning/how-to-data-ingest-adf.md?toc=/azure/data-factory/toc.json&bc=/azure/data-factory/breadcrumb/toc.json
         - name: マッピング データ フローを使用した変換
           items:
             - name: 固定幅のテキスト ファイルを処理する
@@ -754,6 +760,10 @@
           href: solution-template-databricks-notebook.md
     - name: 価格について
       items:
+        - name: データ フロー予約容量の概要
+          href: data-flow-reserved-capacity-overview.md
+        - name: データ フローの予約料金について
+          href: data-flow-understand-reservation-charges.md
         - name: コストの計画と管理
           href: plan-manage-costs.md
         - name: 価格の例

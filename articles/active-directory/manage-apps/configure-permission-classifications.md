@@ -3,7 +3,7 @@ title: Azure AD を使用してアクセス許可の分類を構成する
 description: 委任されたアクセス許可の分類を管理する方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c1f46e3aed1309e51bf1ea8607a9db8a71550ce5
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b2d851f0f4476cd4b24b6ba30c237f9a42252726
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033206"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255222"
 ---
 # <a name="configure-permission-classifications"></a>アクセス許可の分類を構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "97033206"
 
 次の手順で Azure portal を使用し、アクセス許可を分類します。
 
-1. [グローバル管理者](../roles/permissions-reference.md#global-administrator--company-administrator)、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)、または[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします
+1. [グローバル管理者](../roles/permissions-reference.md#global-administrator)、[アプリケーション管理者](../roles/permissions-reference.md#application-administrator)、または[クラウド アプリケーション管理者](../roles/permissions-reference.md#cloud-application-administrator)として、[Azure portal](https://portal.azure.com) にサインインします
 1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[同意とアクセス許可]**  >  **[Permission classifications]\(アクセス許可の分類\)** を選択します。
 1. **[アクセス許可の追加]** を選択して、別のアクセス許可を "低影響" として分類します。
 1. API を選択し、委任されたアクセス許可を選択します。
@@ -126,4 +126,4 @@ ms.locfileid: "97033206"
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
-* [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Microsoft Q&A の Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

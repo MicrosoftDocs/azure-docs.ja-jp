@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub デバイス ストリームを使用して Node.js でデバイス アプリと通信する
+title: クイックスタート - Azure IoT Hub デバイス ストリームを使用して Node.js でデバイス アプリと通信する
 description: このクイックスタートでは、デバイス ストリームを介して IoT デバイスと通信する Node.js サービス側アプリケーションを実行します。
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 335014f032162866e4780bf1294ddcd108b4fd03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832009"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624390"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して Node.js でデバイス アプリケーションと通信する (プレビュー)
 
@@ -79,7 +79,7 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
     **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+    az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
     ```
 
     このクイックスタートの後の方で使用できるように、返されたサービス接続文字列を書き留めておきます。 次の例のようになります。
@@ -154,4 +154,4 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
 以下のリンクを使用して、デバイス ストリームについてさらに詳しく学習します。
 
 > [!div class="nextstepaction"]
-> [デバイス ストリームの概要](./iot-hub-device-streams-overview.md) 
+> [デバイス ストリームの概要](./iot-hub-device-streams-overview.md)

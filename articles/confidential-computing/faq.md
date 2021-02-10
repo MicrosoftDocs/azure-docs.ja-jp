@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564108"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872334"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure Confidential Computing についてよく寄せられる質問
 
@@ -44,6 +44,14 @@ VM の横に付いている情報バブルに基づき、さまざまなアク�
 **ポータルのサイズ セレクターで見つけようとしても、DCsv2 仮想マシンが表示されません**
 
 [利用できるリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)を選択していることを確認してください。 また、サイズ セレクターでは必ず "すべてのフィルターをクリア" を選択してください。 
+
+**Azure Confidential Computing で高速ネットワークを有効にできますか?**
+
+ いいえ。 高速ネットワークは、DC シリーズおよび DCsv2 シリーズの仮想マシンではサポートされていません。 Confidential Computing 仮想マシンのデプロイ、および Confidential Computing で実行されている Azure Kubernetes Service クラスターのデプロイでは、高速ネットワークは有効にできません。
+
+**これらのマシンで Azure Dedicated Host を使用できますか?**
+
+はい。 Azure Dedicated Host は、DCsv2 シリーズの仮想マシンをサポートします。 Azure Dedicated Host は、仮想マシンを実行するためのシングル テナントの物理サーバーを提供します。 ユーザーは通常、物理的なセキュリティ、データの整合性、監視に関するコンプライアンス要件に対応するために、Azure Dedicated Host を使用します。 
 
 **Azure Resource Manager テンプレートのデプロイ失敗エラー "Operation could not be completed as it results in exceeding approved standard DcsV2 Family Cores Quota (操作結果が、承認されている Standard DcsV2 ファミリのコア クォータを超えるため、操作を完了できませんでした)"** が表示されます
 

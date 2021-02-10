@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 930c7e7881a00cd0cb1f4abc6b219c0fbdeebac5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2020
+ms.openlocfilehash: ca8fad59e581ef3f5a3ebf585356564d539f0bbd
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533412"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430732"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) からデータをコピーする方法の概要を説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -38,7 +39,7 @@ SAP Business Warehouse のデータは、オープン ハブを介して、サ�
 
 具体的には、この SAP Business Warehouse オープン ハブ コネクタは以下をサポートします。
 
-- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)** 。 このコネクタでは、SAP BW4/HANA はサポートされていません。
+- SAP Business Warehouse **バージョン 7.01 以上 (2015 年以後にリリースされた最近の SAP サポート パッケージ スタックの場合)** 。 このコネクタでは、SAP BW/4HANA はサポートされていません。
 - オープン ハブ宛先の、DSO、InfoCube、MultiProvider、DataSource などがその下にある可能性があるローカル テーブルを介したデータのコピー。
 - 基本認証を使用したデータのコピー。
 - SAP アプリケーション サーバーまたは SAP メッセージ サーバーへの接続。
@@ -90,7 +91,7 @@ ADF SAP BW オープン ハブ コネクタでは、次の 2 つの省略可能�
     - RFC と SAP BW の認可。 
     - 認可オブジェクト "S_SDSAUTH" の "実行" アクティビティに対するアクセス許可。
 
-- SAP オープン ハブ宛先の種類は、[Technical Key] (テクニカル キー) オプションをオンにして、**データベース テーブル**として作成します。  また、必須ではありませんが、[Deleting Data from Table] (テーブルからデータを削除する) はオンにしないままにすることをお勧めします。 DTP を利用して (直接実行するか、既存のプロセス チェーンに統合する)、選択したソース オブジェクト (キューブなど) のデータをオープン ハブ宛先テーブルに取り込みます。
+- SAP オープン ハブ宛先の種類は、[Technical Key] (テクニカル キー) オプションをオンにして、**データベース テーブル** として作成します。  また、必須ではありませんが、[Deleting Data from Table] (テーブルからデータを削除する) はオンにしないままにすることをお勧めします。 DTP を利用して (直接実行するか、既存のプロセス チェーンに統合する)、選択したソース オブジェクト (キューブなど) のデータをオープン ハブ宛先テーブルに取り込みます。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -190,7 +191,7 @@ SAP BW Open Hub からデータをコピーするために、コピー アクテ
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティは **SapOpenHubSource** に設定する必要があります | はい |
 | excludeLastRequest | 最後の要求のレコードを除外するかどうか。 | いいえ (既定値は **true**)。 |
-| baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値**より大きい**データのみが取得されます。  | いいえ |
+| baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値 **より大きい** データのみが取得されます。  | いいえ |
 
 >[!TIP]
 >オープン ハブ テーブルには、1 つの要求 ID によって生成されたデータのみが含まれています。たとえば、常に完全な読み込みを行い、テーブル内の既存のデータを上書きする場合や、DTP はテストのために 1 回のみ実行する場合は、データを外へコピーするため、忘れずに "excludeLastRequest" オプションをオフにします。

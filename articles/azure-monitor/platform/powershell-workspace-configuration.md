@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: d0bbde0ee4fd0eaf7387abaf6d548dc563e5b715
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ece92e4603c0c74190003745d55be0aea5cdb0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86515446"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941755"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>PowerShell を使用して Azure Monitor の Log Analytics ワークスペースを作成および構成する
 この記事では、Azure Monitor で Log Analytics ワークスペースを作成および構成する方法を示す 2 つのコード サンプルについて説明します。  
@@ -193,7 +193,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ```
 
 > [!NOTE]
-> カスタム ログの構成を定義する **CustomLogRawJson** パラメーターの形式が複雑になる可能性があります。 [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.2.0) を使用して、既存のカスタム ログの構成を取得します。 **Properties** プロパティは、**CustomLogRawJson** パラメーターに必須の構成です。
+> カスタム ログの構成を定義する **CustomLogRawJson** パラメーターの形式が複雑になる可能性があります。 [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource) を使用して、既存のカスタム ログの構成を取得します。 **Properties** プロパティは、**CustomLogRawJson** パラメーターに必須の構成です。
 
 前述の例では、regexDelimiter は改行のために "\\n" と定義されていました。 ログの区切り記号はタイムスタンプにすることもできます。  サポートされる形式は次のとおりです。
 
@@ -214,7 +214,7 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 ## <a name="troubleshooting"></a>トラブルシューティング
 過去 14 日間に削除され、[論理的な削除状態](./delete-workspace.md#soft-delete-behavior)になっているワークスペースを作成した場合は、ワークスペースの構成に応じて、操作の結果が異なる可能性があります。
 1. 削除されたワークスペースと同じワークスペース名、リソース グループ、サブスクリプション、リージョンを指定した場合は、データ、構成、および接続されたエージェントを含むワークスペースが復旧されます。
-2. 同じワークスペース名を使用していて、リソース グループ、サブスクリプション、またはリージョンが異なる場合は、*ワークスペース名 'workspace-name' が一意ではない*、または*競合している*というエラーが表示されます。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
+2. 同じワークスペース名を使用していて、リソース グループ、サブスクリプション、またはリージョンが異なる場合は、*ワークスペース名 'workspace-name' が一意ではない*、または *競合している* というエラーが表示されます。 ご自分のワークスペースの論理的な削除をオーバーライドし、完全に削除して同じ名前の新しいワークスペースを作成するには、次の手順に従って、最初にワークスペースを回復してから、完全な削除を実行します。
    * ワークスペースを[回復します](./delete-workspace.md#recover-workspace)
    * ワークスペースを[完全に削除](./delete-workspace.md#permanent-workspace-delete)します
    * 同じワークスペース名を使用して新しいワークスペースを作成します

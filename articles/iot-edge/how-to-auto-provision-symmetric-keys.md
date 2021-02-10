@@ -9,12 +9,12 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 10ed546e8f05f4a93e4523c7870f79d41aa1f622
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: bfb61a5434089fffab9d8ceb9c7b0fbca528cac5
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045994"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430613"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -51,7 +51,7 @@ Device Provisioning Service を実行した後、概要ページから **[ID ス
 
 デバイスの登録 ID を使用して、DPS で個別登録を作成します。
 
-DPS 内に登録を作成するときに、**デバイス ツインの初期状態**を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
+DPS 内に登録を作成するときに、**デバイス ツインの初期状態** を宣言する機会があります。 デバイス ツインでは、ソリューションで必要な任意のメトリック (リージョン、環境、場所、デバイスの種類など) によってデバイスをグループ化するためのタグを設定できます。 これらのタグは、[自動展開](how-to-deploy-at-scale.md)を作成するために使用されます。
 
 > [!TIP]
 > 対称キーの構成証明を使用する場合、グループの登録も可能です。その場合は、個別の登録と同じ決定を行います。
@@ -66,20 +66,20 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
    1. **[キーの自動生成]** チェック ボックスをオンにします。
 
-   1. デバイス用に作成した**登録 ID** を指定します。
+   1. デバイス用に作成した **登録 ID** を指定します。
 
    1. 必要に応じて、**IoT Hub のデバイス ID** を指定します。 デバイス ID を使用して、個々のデバイスをモジュール展開のターゲットにすることができます。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
 
    1. **[True]** を選択して、その登録が IoT Edge デバイス用のものであることを宣言します。 グループ登録の場合、すべてのデバイスを IoT Edge デバイスにする必要があります。そうしない場合、いずれも IoT Edge デバイスにすることはできません。
 
    > [!TIP]
-   > Azure CLI では、[登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)または[登録グループ](/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応**フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
+   > Azure CLI では、[登録](/cli/azure/ext/azure-iot/iot/dps/enrollment)または [登録グループ](/cli/azure/ext/azure-iot/iot/dps/enrollment-group)を作成し、**Edge 対応** フラグを使用して、デバイスまたはデバイスのグループが IoT Edge デバイスであることを指定できます。
 
-   1. **デバイスをハブに割り当てる方法**について、Device Provisioning Service の割り当てポリシーの既定値をそのまま使用するか、その登録に固有の別の値を選択します。
+   1. **デバイスをハブに割り当てる方法** について、Device Provisioning Service の割り当てポリシーの既定値をそのまま使用するか、その登録に固有の別の値を選択します。
 
    1. デバイスの接続先になるリンクされた **IoT Hub** を選択します。 複数のハブを選択でき、デバイスは、選択した割り当てポリシーに従ってそれらのハブの 1 つに割り当てられます。
 
-   1. デバイスが初回以降にプロビジョニングを要求したときのために、**再プロビジョニング時のデバイス データの処理方法**を選択します。
+   1. デバイスが初回以降にプロビジョニングを要求したときのために、**再プロビジョニング時のデバイス データの処理方法** を選択します。
 
    1. 必要に応じて、 **[デバイス ツインの初期状態]** にタグ値を追加します。 タグを使用して、デバイス グループをモジュール展開のターゲットにすることができます。 次に例を示します。
 
@@ -98,7 +98,7 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
    1. **[保存]** を選択します。
 
-これで、このデバイスの登録が存在しているので、IoT Edge ランタイムによってインストール時にデバイスを自動的にプロビジョニングできます。 IoT Edge ランタイムのインストール時や、グループ登録に使用するデバイス キーを作成する場合に使用できるよう、登録の**プライマリ キー**の値をコピーしておいてください。
+これで、このデバイスの登録が存在しているので、IoT Edge ランタイムによってインストール時にデバイスを自動的にプロビジョニングできます。 IoT Edge ランタイムのインストール時や、グループ登録に使用するデバイス キーを作成する場合に使用できるよう、登録の **プライマリ キー** の値をコピーしておいてください。
 
 ## <a name="derive-a-device-key"></a>デバイス キーを派生させる
 
@@ -113,7 +113,7 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
 Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
 
-**KEY** の値を、前に書き留めた**主キー**で置き換えます。
+**KEY** の値を、前に書き留めた **主キー** で置き換えます。
 
 **REG_ID** の値をデバイスの登録 ID に置き換えます。
 
@@ -133,7 +133,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
 
-**KEY** の値を、前に書き留めた**主キー**で置き換えます。
+**KEY** の値を、前に書き留めた **主キー** で置き換えます。
 
 **REG_ID** の値をデバイスの登録 ID に置き換えます。
 
@@ -164,9 +164,9 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 次の情報を用意しておきます。
 
-* DPS の **ID スコープ**値
-* 作成したデバイス**登録 ID**
-* DPS の登録からコピーした**プライマリ キー**
+* DPS の **ID スコープ** 値
+* 作成したデバイス **登録 ID**
+* DPS の登録からコピーした **プライマリ キー**
 
 > [!TIP]
 > グループ登録の場合、DPS の登録キーではなく、各デバイスの[派生キー](#derive-a-device-key)が必要となります。
@@ -193,7 +193,11 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
        method: "symmetric_key"
        registration_id: "<REGISTRATION_ID>"
        symmetric_key: "<SYMMETRIC_KEY>"
+   #  always_reprovision_on_startup: true
+   #  dynamic_reprovisioning: false
    ```
+
+   必要に応じて、`always_reprovision_on_startup` または `dynamic_reprovisioning` の行を使用して、デバイスの再プロビジョニング動作を構成します。 起動時に再プロビジョニングするようにデバイスが設定されている場合、常に最初に DPS を使用してプロビジョニングが試行され、失敗した場合はプロビジョニングのバックアップにフォールバックします。 動的に再プロビジョニングするようにデバイスが設定されている場合、再プロビジョニング イベントが検出されると、IoT Edge が再起動し、再プロビジョニングされます。 詳細については、「[IoT Hub デバイスの再プロビジョニングの概念](../iot-dps/concepts-device-reprovision.md)」を参照してください。
 
 1. `scope_id`、`registration_id`、`symmetric_key` の値を DPS およびデバイス情報で更新します。
 
@@ -262,7 +266,7 @@ Get-Service iotedge
 iotedge list
 ```
 
-Device Provisioning Service で作成した個々の登録が使用されたことを確認できます。 Azure portal で Device Provisioning Service インスタンスに移動します。 作成した個々の登録の詳細を開きます。 登録の状態が**割り当て**られており、デバイス ID が表示されています。
+Device Provisioning Service で作成した個々の登録が使用されたことを確認できます。 Azure portal で Device Provisioning Service インスタンスに移動します。 作成した個々の登録の詳細を開きます。 登録の状態が **割り当て** られており、デバイス ID が表示されています。
 
 ## <a name="next-steps"></a>次のステップ
 

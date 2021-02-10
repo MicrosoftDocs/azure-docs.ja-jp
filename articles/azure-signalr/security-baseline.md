@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b750d4cc911dc72b60974171dd884b373921fad5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3e123ab6d5b9d801908112239cf3e9cb72b4abbb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734598"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093967"
 ---
 # <a name="azure-security-baseline-for-azure-signalr-service"></a>Azure SignalR Service 用の Azure セキュリティ ベースライン
 
@@ -220,7 +220,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 **ガイダンス**:Azure Active Directory (Azure AD) で最も重要な組み込みロールは、全体管理者と特権ロール管理者です。それは、これら 2 つのロールが割り当てられたユーザーが、管理者ロールを委任できるためです。
 
-- 全体管理者または会社の管理者:このロールが割り当てられたユーザーは、Azure AD のすべての管理機能に加え、Azure AD ID を使用するサービスにもアクセスできます。
+- グローバル管理者:このロールが割り当てられたユーザーは、Azure AD のすべての管理機能に加え、Azure AD ID を使用するサービスにもアクセスできます。
 
 - 特権ロール管理者:このロールが割り当てられたユーザーは、Azure Active Directory (Azure AD) と Azure AD Privileged Identity Management (PIM) 内でロールの割り当てを管理できます。 さらに、このロールは、PIM と管理単位のすべての側面を管理できます。
 

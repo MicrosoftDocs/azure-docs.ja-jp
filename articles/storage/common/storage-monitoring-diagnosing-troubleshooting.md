@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 50d78e83bbbeb4b0252c83f9f52e94599ea6946c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763270"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787962"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -767,7 +767,7 @@ WireShark は、 **[packetlist]** ウィンドウに存在するエラーをす�
 >
 
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>付録 4: Excel を使用したメトリックおよびログ データの表示
-さまざまなツールを使用して、Excel に簡単に読み込んで表示したり分析したりできる区切り形式で、ストレージ メトリック データを Azure Table Storage からダウンロードすることができます。 Azure Blob Storage のストレージ ログ データは、既に、Excel に読み込み可能な区切り形式のデータです。 しかし、「[Storage Analytics のログの形式](/rest/api/storageservices/Storage-Analytics-Log-Format)」および「[Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)」の情報にある該当する列見出しを追加する必要があるでしょう。
+さまざまなツールを使用して、Excel に簡単に読み込んで表示したり分析したりできる区切り形式で、ストレージ メトリック データを Azure Table Storage からダウンロードすることができます。 Azure Blob Storage のストレージ ログ データは、既に、Excel に読み込み可能な区切り形式になっています。 しかし、「[Storage Analytics のログの形式](/rest/api/storageservices/Storage-Analytics-Log-Format)」および「[Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)」の情報にある該当する列見出しを追加する必要があるでしょう。
 
 BLOB ストレージからダウンロードしたストレージ ログ データを Excel にインポートするには、以下の手順に従います。
 

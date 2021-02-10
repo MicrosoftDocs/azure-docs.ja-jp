@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
-ms.openlocfilehash: bde091b4a4559c3574ee122d74574d1f9477f3fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6cb3467fec99bd12810ed058a61de1be7b39cdd0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977050"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629591"
 ---
 # <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Windows がシステムの構成を完了できなかったことをトラブルシューティングする
 
@@ -39,5 +39,8 @@ ms.locfileid: "91977050"
 このエラーは、オペレーティング システム (OS) が [Sysprep プロセス](/windows-hardware/manufacture/desktop/sysprep-process-overview)を完了できない場合に発生します。 このエラーは、一般化された VM を最初に起動しようとしたときに発生します。 この問題が発生した場合、イメージが展開不可能な状態にあり、回復できないため、一般化されたイメージを再作成します。
 
 ## <a name="solution"></a>解決策
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
 
 この問題を解決するには、[イメージの準備やキャプチャに関する Azure のガイダンス](../windows/upload-generalized-managed.md)の記事に従い、一般化された新しいイメージを準備します。

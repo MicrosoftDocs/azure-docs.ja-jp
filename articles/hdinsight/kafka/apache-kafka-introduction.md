@@ -1,19 +1,16 @@
 ---
 title: HDInsight での Apache Kafka の概要 - Azure
 description: HDInsight での Apache Kafka について説明します。その機能と役割について説明し、例と概要情報の入手先を紹介します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
-ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: fbe4041b74f90b2ef8a9ef4384e83c7aa2d56461
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449549"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939276"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka の概要
 
@@ -51,7 +48,7 @@ ms.locfileid: "91449549"
 
 Apache ZooKeeper は Kafka クラスターの状態を管理します。 Zookeeper は同時、耐障害性、および待機時間の短いトランザクション用に作成されています。
 
-Kafka では、**トピック**にレコード (データ) が格納されます。 レコードは、**プロデューサー**によって生成され、**コンシューマー**によって消費されます。 プロデューサーは Kafka **ブローカー**にレコードを送信します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。
+Kafka では、**トピック** にレコード (データ) が格納されます。 レコードは、**プロデューサー** によって生成され、**コンシューマー** によって消費されます。 プロデューサーは Kafka **ブローカー** にレコードを送信します。 HDInsight クラスターの各ワーカー ノードが、Kafka のブローカーです。
 
 トピックは、ブローカー間でレコードを分割します。 レコードの使用時に、パーティションあたり最大 1 つのコンシューマーを使用して、データの並列処理を実現できます。
 

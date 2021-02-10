@@ -14,12 +14,12 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: marsma, rayluo, nacanuma
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 213184409c9f5ee21ac9f61be1ad138fbbaa3590
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 42ffc7ffba20868b23675fd8613fd3ef11b0924a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107857"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755051"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Python 用の ADAL から MSAL への移行に関するガイド
 
@@ -38,13 +38,13 @@ ADAL は、Azure Active Directory (Azure AD) v1.0 エンドポイントで動作
   - OAuth v2.0
   - OpenID Connect (OIDC)
 
-詳細については、[Microsoft ID プラットフォーム (v2.0) エンドポイントについての違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページを参照してください。
+詳細については、[Microsoft ID プラットフォームの違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関する記事を参照してください。
 
 ### <a name="scopes-not-resources"></a>リソースではなくスコープ
 
 ADAL Python ではリソースのトークンが取得されますが、MSAL Python ではスコープのトークンが取得されます。 MSAL Python の API サーフェスには、リソース パラメーターがなくなりました。 要求される必要なアクセス許可とリソースを宣言する文字列のリストとして、スコープを指定する必要があります。 スコープの例については、[Microsoft Graph のスコープ](/graph/permissions-reference)に関するページを参照してください。
 
-`/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム エンドポイント (MSAL) するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
+`/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム (MSAL) に移行するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
 
 さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](./v2-permissions-and-consent.md)に関する記事および「[v1.0 トークンを受け入れる Web API のスコープ](./msal-v1-app-scopes.md)」の記事を参照してください。
 
@@ -92,7 +92,7 @@ def get_preexisting_rt_and_their_scopes_from_elsewhere():
     # You may be able to append "/.default" to your v1 resource to form a scope
     # See https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#the-default-scope
 
-    # Or maybe you have an app already talking to Microsoft identity platform v2,
+    # Or maybe you have an app already talking to the Microsoft identity platform,
     # powered by some 3rd-party auth library, and persist its tokens somehow.
 
     # Either way, you need to extract RTs from there, and return them like this.

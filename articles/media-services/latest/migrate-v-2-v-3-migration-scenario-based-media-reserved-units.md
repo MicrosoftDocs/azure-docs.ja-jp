@@ -1,5 +1,5 @@
 ---
-title: メディア占有ユニット (MRU) シナリオベースの移行ガイダンス | Microsoft Docs
+title: メディア占有ユニット (MRU) の移行ガイダンス
 description: この記事では、Azure Media Services V2 から V3 への移行に役立つ MRU シナリオ ベースのガイダンスを示します。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 1a6bcf5d75d5331875e38e473f115f32737e42a4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ca01bcea348b866c0f40f82ebe90dc31d032739
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689491"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927069"
 ---
 # <a name="media-reserved-units-mrus-scenario-based-migration-guidance"></a>メディア占有ユニット (MRU) シナリオベースの移行ガイダンス
 

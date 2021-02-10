@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e718f4a70b4d8311c57eb3e83ac7088c129b6207
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9dce61817bdd6b42223028a624cd6e237be28bfe
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663514"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953820"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-saml-protocol-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で SAML プロトコルを使用して Salesforce SAML プロバイダーでのサインインを設定する
 
@@ -37,11 +37,11 @@ ms.locfileid: "97663514"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 「[Azure Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
+[!INCLUDE [active-directory-b2c-customization-prerequisites-custom-policy](../../includes/active-directory-b2c-customization-prerequisites-custom-policy.md)]
 - まだ行っていない場合は、[無料の Developer Edition アカウント](https://developer.salesforce.com/signup)にサインアップします。 この記事では、[Salesforce Lightning Experience](https://developer.salesforce.com/page/Lightning_Experience_FAQ) を使用します。
 - Salesforce 組織用の ["私のドメイン" のセットアップ](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0)。
 
-### <a name="set-up-salesforce-as-an-identity-provider"></a>ID プロバイダーとしての Salesforce のセットアップ
+## <a name="set-up-salesforce-as-an-identity-provider"></a>ID プロバイダーとしての Salesforce のセットアップ
 
 1. [Salesforce にサインインします](https://login.salesforce.com/)。
 2. 左側のメニューで、 **[設定]** の下の **[ID]** を展開し、 **[ID プロバイダー]** を選択します。
@@ -77,23 +77,9 @@ ms.locfileid: "97663514"
 1. 接続されたアプリの **[Manage]\(管理\)** ページで、 **[Manage Profiles]\(プロファイルの管理\)** をクリックします。
 2. Azure AD B2C とフェデレーションするプロファイル (またはユーザーのグループ) を選択します。 システム管理者は、Salesforce アカウントを使用してフェデレーションを行うことができるように、 **[システム管理者]** のチェック ボックスをオンにします。
 
-## <a name="generate-a-signing-certificate"></a>署名証明書を生成する
+## <a name="create-a-self-signed-certificate"></a>自己署名証明書を作成する
 
-Salesforce に送信された要求は、Azure AD B2C で署名する必要があります。 署名証明書を生成するには、Azure PowerShell を開き、次のコマンドを実行します。
-
-> [!NOTE]
-> 先頭の 2 行のテナント名およびパスワードを必ず更新してください。
-
-```powershell
-$tenantName = "<YOUR TENANT NAME>.onmicrosoft.com"
-$pwdText = "<YOUR PASSWORD HERE>"
-
-$Cert = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName "SamlIdp.$tenantName" -Subject "B2C SAML Signing Cert" -HashAlgorithm SHA256 -KeySpec Signature -KeyLength 2048
-
-$pwd = ConvertTo-SecureString -String $pwdText -Force -AsPlainText
-
-Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
-```
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
 ## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
@@ -122,10 +108,10 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 
     ```xml
     <ClaimsProvider>
-      <Domain>salesforce</Domain>
+      <Domain>salesforce.com</Domain>
       <DisplayName>Salesforce</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="salesforce">
+        <TechnicalProfile Id="Salesforce-SAML2">
           <DisplayName>Salesforce</DisplayName>
           <Description>Login with your Salesforce account</Description>
           <Protocol Name="SAML2"/>
@@ -144,7 +130,7 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
             <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="username"/>
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication"/>
-            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="SAMLIdp" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="salesforce.com" />
           </OutputClaims>
           <OutputClaimsTransformations>
             <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName"/>
@@ -179,59 +165,27 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
     ```
 1. ファイルを保存します。
 
-### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-ここまでで、Azure AD B2C が Salesforce アカウントと通信する方法を認識できるようにポリシーを構成しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
-
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
-2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
-3. **[アップロード]** をクリックします。
-
-## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
-
-この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、Salesforce ID プロバイダーも含まれるようにそれを変更します。
-
-1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
-3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
-4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
-5. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInSalesforce` 」のように入力します。
-
-### <a name="display-the-button"></a>ボタンを表示する
-
-**ClaimsProviderSelection** 要素は、サインアップまたはサインイン画面の ID プロバイダーのボタンに類似しています。 LinkedIn アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
-
-1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`SalesforceExchange` など) に設定します。
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="SalesforceExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="Salesforce-SAML2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 ここでのアクションは、Azure AD B2C が Salesforce アカウントと通信してトークンを受信するためのアクションです。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-2. 次の **ClaimsExchange** 要素を追加します。**ID** には、**TargetClaimsExchangeId** に使用したものと同じ値を使用します。
-
-    ```xml
-    <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
-    ```
-
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **ID** に更新します。 たとえば、`salesforce` または `LinkedIn-OAUTH` です。
-
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
-
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
-
-作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
-
-1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、*SignUpSignInSalesforce.xml* に名前を変更します。
-2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInSalesforce` 」のように入力します。
-3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_salesforce` にします。
-4. **DefaultUserJourney** の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignInSalesforce) と一致するように更新します。
-5. 変更を保存し、ファイルをアップロードし、一覧から新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end

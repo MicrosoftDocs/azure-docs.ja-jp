@@ -3,14 +3,14 @@ title: バックアップ センターを使用してアクションを実行す
 description: この記事では、バックアップ センターを使用してアクションを実行する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06229eb0b8cb76482035d3dfe1949c3ab8354f17
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854428"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894577"
 ---
-# <a name="perform-actions-using-backup-center"></a>バックアップ センターを使用してアクションを実行する
+# <a name="perform-actions-using-backup-center-preview"></a>バックアップ センター (プレビュー) を使用してアクションを実行する
 
 バックアップ センターを使用すると、個々のコンテナーに移動することなく、中央のインターフェイスからバックアップ関連の主要なアクションを実行できます。 バックアップ センターから実行できるいくつかのアクションを次に示します。
 
@@ -23,26 +23,28 @@ ms.locfileid: "91854428"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-* バックアップ センターは現在、Azure VM バックアップと Azure Database for PostgreSQL サーバーのバックアップでサポートされています。
+* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、および Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
 * サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 
 ## <a name="configure-backup"></a>バックアップの構成
 
+Azure AM、Azure VM 内の SQL、Azure VM 内の SAP HANA、または Azure Files をバックアップする場合は、Recovery Services コンテナーを使用する必要があります。 Azure Database for PostgreSQL サーバーをバックアップする場合は、バックアップ コンテナーを使用する必要があります。 
+
 バックアップするデータソースの種類に応じて、以下で説明されている適切な手順に従ってください。
 
-### <a name="configure-backup-for-azure-virtual-machines"></a>Azure 仮想マシンのバックアップを構成する
+### <a name="configure-backup-to-a-recovery-services-vault"></a>Recovery Services コンテナーへのバックアップを構成する
 
 1. バックアップ センターに移動し、 **[概要]** タブの上部にある **[+ バックアップ]** を選択します。
 
     ![バックアップ センターの概要](./media/backup-center-actions/backup-center-overview-configure-backup.png)
 
-2. バックアップするデータソースの種類 (この場合は Azure 仮想マシン) を選択します。
+2. バックアップするデータソースの種類を選択します。
 
     ![VM バックアップを構成するためのデータソースを選択する](./media/backup-center-actions/backup-select-datasource-vm.png)
 
 3. Recovery Services コンテナーを選択し、 **[続行]** を選択します。 これにより、Recovery Services コンテナーから到達できるものと同じバックアップの構成エクスペリエンスに移動します。 Recovery Services コンテナーで Azure 仮想マシンのバックアップを構成する方法の詳細については、[ここ](tutorial-backup-vm-at-scale.md)を参照してください。
 
-### <a name="configure-backup-for-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーのバックアップを構成する
+### <a name="configure-backup-to-a-backup-vault"></a>バックアップ コンテナーへのバックアップを構成する
 
 1. バックアップ センターに移動し、 **[概要]** タブの上部にある **[+ バックアップ]** を選択します。
 2. バックアップするデータソースの種類 (この場合は Azure Database for PostgreSQL サーバー) を選択します。
@@ -55,19 +57,19 @@ ms.locfileid: "91854428"
 
 復元するデータソースの種類に応じて、以下で説明されている適切な手順に従ってください。
 
-### <a name="if-youre-restoring-an-azure-virtual-machine"></a>Azure 仮想マシンを復元する場合
+### <a name="if-youre-restoring-from-a-recovery-services-vault"></a>Recovery Services コンテナーから復元する場合
 
 1. バックアップ センターに移動し、 **[概要]** タブの上部にある **[復元]** を選択します。
 
     ![VM を復元するためのバックアップ センターの概要](./media/backup-center-actions/backup-center-overview-restore.png)
 
-2. 復元するデータソースの種類 (この場合は Azure 仮想マシン) を選択します。
+2. 復元するデータソースの種類を選択します。
 
     ![VM の復元のためのデータソースを選択する](./media/backup-center-actions/restore-select-datasource-vm.png)
 
 3. バックアップ インスタンスを選択し、 **[続行]** を選択します。 これにより、Recovery Services コンテナーから到達できるものと同じ設定の復元エクスペリエンスに移動します。 Recovery Services コンテナーで Azure 仮想マシンを復元する方法の詳細については、[ここ](backup-azure-arm-restore-vms.md#before-you-start)を参照してください。
 
-### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーを復元する場合
+### <a name="if-youre-restoring-from-a-backup-vault"></a>バックアップ コンテナーから復元する場合
 
 1. バックアップ センターに移動し、 **[概要]** タブの上部にある **[復元]** を選択します。
 2. 復元するデータソースの種類 (この場合は Azure Database for PostgreSQL サーバー) を選択します。
@@ -89,19 +91,19 @@ ms.locfileid: "91854428"
 
 バックアップするデータソースの種類に応じて、以下で説明されている適切な手順に従ってください。
 
-### <a name="if-youre-backing-up-an-azure-virtual-machine"></a>Azure 仮想マシンをバックアップする場合
+### <a name="if-youre-backing-up-to-a-recovery-services-vault"></a>Recovery Services コンテナーにバックアップする場合
 
 1. バックアップ センターに移動し、 **[概要]** タブの上部にある **[+ ポリシー]** を選択します。
 
     ![バックアップ ポリシーのためのバックアップ センターの概要](./media/backup-center-actions/backup-center-overview-policy.png)
 
-2. バックアップするデータソースの種類 (この場合は Azure 仮想マシン) を選択します。
+2. バックアップするデータソースの種類を選択します。
 
     ![VM バックアップのポリシーのためのデータソースを選択する](./media/backup-center-actions/policy-select-datasource-vm.png)
 
 3. Recovery Services コンテナーを選択し、 **[続行]** を選択します。 これにより、Recovery Services コンテナーから到達できるものと同じポリシーの作成エクスペリエンスに移動します。 Recovery Services コンテナーで Azure 仮想マシンの新しいバックアップ ポリシーを作成する方法の詳細については、[ここ](backup-azure-arm-vms-prepare.md#create-a-custom-policy)を参照してください。
 
-### <a name="if-youre-backing-up-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーをバックアップする場合
+### <a name="if-youre-backing-up-to-a-backup-vault"></a>バックアップ コンテナーにバックアップする場合
 
 1. バックアップ センターに移動し、 **[概要]** タブの上部にある **[+ ポリシー]** を選択します。
 2. バックアップするデータソースの種類 (この場合は Azure Database for PostgreSQL サーバー) を選択します。

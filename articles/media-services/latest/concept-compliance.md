@@ -1,6 +1,5 @@
 ---
 title: Azure Media Services の規制コンプライアンス
-titleSuffix: Azure Media Services
 description: Azure Media Services は Azure Government に準拠しています。
 services: media-services
 documentationcenter: ''
@@ -12,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 884b1b85da5b52101ae5a0053003d47260a1134d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 978af4754e6e083e8bf5375ade84891019abccca
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015823"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897056"
 ---
 # <a name="media-services-regulatory-compliance"></a>Azure Media Services の規制コンプライアンス
 

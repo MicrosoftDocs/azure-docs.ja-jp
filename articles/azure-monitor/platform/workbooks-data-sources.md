@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3d94aca51d3d305b70c8c555e2b41e3d0ab857b3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927908"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061970"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor ブックのデータ ソース
 
@@ -59,7 +59,7 @@ Azure リソースは、ブックを介してアクセスできる[メトリッ�
 
 ## <a name="azure-data-explorer"></a>Azure Data Explorer
 
-強力な [Kusto](/azure/kusto/query/index) クエリ言語を使用できる [Azure Data Explorer](/azure/data-explorer/) クラスターからのクエリがブックでサポートされるようになりました。   
+強力な [Kusto](/azure/kusto/query/index) クエリ言語を使用できる [Azure Data Explorer](/azure/data-explorer/) クラスターからのクエリがブックでサポートされるようになりました。
 
 ![Kusto クエリ ウィンドウのスクリーンショット](./media/workbooks-overview/data-explorer.png)
 
@@ -79,9 +79,43 @@ Azure Monitor には、Windows または Linux ゲスト オペレーティン�
 
 ![正常性フィルターの一覧を表示するアラート クエリのスクリーンショット。](./media/workbooks-overview/resource-health.png)
 
+## <a name="change-analysis-preview"></a>変更分析 (プレビュー)
+
+クエリ コントロールでデータ ソースとして [アプリケーション変更分析](../app/change-analysis.md)を使用するには、 *[データ ソース]* ドロップダウンを使用して、 *[変更分析 (プレビュー)]* を選択し、1 つのリソースを選択します。 最大で過去 14 日間の変更を表示できます。 *[レベル]* ドロップダウンを使用して、"Important (重要)"、"Normal (標準)"、"Noisy (ノイズ)" の変更をフィルター処理できます。このドロップダウンでは、[ドロップダウン](workbooks-dropdowns.md)の種類のブックのパラメーターがサポートされています。
+
+> [!div class="mx-imgBorder"]
+> ![変更分析のブックのスクリーンショット](./media/workbooks-data-sources/change-analysis-data-source.png)
+
+## <a name="merge-data-from-different-sources"></a>別のソースからのデータをマージする
+
+分析情報エクスペリエンスを強化するために、さまざまなソースからのデータを組み合わせることが必要な場合がよくあります。 たとえば、関連するメトリック データを使用してアクティブなアラート情報を補強することが挙げられます。 これにより、ユーザーは効果 (アクティブなアラート) だけでなく、可能性のある原因 (CPU 使用率が高くなっているなど) を確認することができます。 監視ドメインには、トリアージと診断ワークフローにとって非常に重要になることがよくある相関データ ソースが多数あります。
+
+ブックを使用すると、さまざまなデータ ソースのクエリを実行できるだけでなく、データをマージまたは結合して豊富な分析情報を得ることができるシンプルなコントロールも提供されます。 これを実現するための方法が `merge` コントロールです。
+
+下の例では、アラート データとログ分析 VM パフォーマンス データを組み合わせて、豊富な分析情報グリッドを取得しています。
+
+> [!div class="mx-imgBorder"]
+> ![アラートとログ分析データを結合する merge コントロールを使用したブックのスクリーンショット](./media/workbooks-data-sources/merge-control.png)
+
+ブックでは、さまざまなマージがサポートされています。
+
+* 内部一意結合
+* 完全内部結合
+* 完全外部結合
+* 左外部結合
+* 右外部結合
+* 左半結合
+* 右半結合
+* 左反結合
+* 右反結合
+* 和集合
+* 重複テーブル
+
 ## <a name="json"></a>JSON
 
 JSON プロバイダーを使用すると、静的な JSON コンテンツからクエリ結果を作成できます。 これは、静的な値のドロップダウン パラメーターを作成するために、パラメーターで最もよく使用されます。 単純な JSON 配列または JSON オブジェクトは、自動的にグリッドの行と列に変換されます。  具体的な動作については、[結果] タブと JSONPath の設定を使用して、列を構成できます。
+
+このプロバイダーは [JSONPath](workbooks-jsonpath.md) をサポートしています。
 
 ## <a name="alerts-preview"></a>アラート (プレビュー)
 
@@ -102,10 +136,12 @@ JSON プロバイダーを使用すると、静的な JSON コンテンツから
 
 クエリ コントロールでこのデータ ソースを使用するには、 _[データ ソース]_ ドロップダウンを使用して、 _[カスタム エンドポイント]_ を選択します。 `Http method`、`url`、`headers`、`url parameters`、`body` などの適切なパラメーターを指定します。 データ ソースが [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) をサポートしていることを確認してください。サポートしていない場合、要求は失敗します。
 
-テンプレートを使用するときに信頼されていないホストを自動的に呼び出すのを避けるには、ユーザーは使用しているホストを信頼済みとしてマークする必要があります。 これを行うには、 _[信頼済みとして追加]_ ボタンをクリックするか、ブックの設定で信頼されたホストとして追加します。 これらの設定は、Web ワーカーを使用して IndexDb をサポートするブラウザーに保存されます。詳細については、[こちら](https://caniuse.com/#feat=indexeddb)を参照してください。
+テンプレートを使用するときに信頼されていないホストを自動的に呼び出すのを避けるには、ユーザーは使用しているホストを信頼済みとしてマークする必要があります。 これを行うには、 _[信頼済みとして追加]_ ボタンをクリックするか、ブックの設定で信頼されたホストとして追加します。 これらの設定は、[Web ワーカーを使用して IndexDb をサポートするブラウザー](https://caniuse.com/#feat=indexeddb)に保存されます。
 
 > [!NOTE]
 > すべてのブック ユーザーに表示されるため、フィールド (`headers`、`parameters`、`body`、`url`) にはシークレットを書き込まないでください。
+
+このプロバイダーは [JSONPath](workbooks-jsonpath.md) をサポートしています。
 
 ## <a name="next-steps"></a>次のステップ
 

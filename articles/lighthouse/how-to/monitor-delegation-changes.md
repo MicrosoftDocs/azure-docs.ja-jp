@@ -1,14 +1,14 @@
 ---
 title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
-ms.date: 12/11/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: f65ffda642e67ec6e2c7694a823c2ba6845a7af4
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9fdf47df4ac37fec44cf53b565b7fe1411540793
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936109"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089421"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -16,10 +16,12 @@ ms.locfileid: "97936109"
 
 管理テナントでは、[Azure アクティビ ティログ](../../azure-monitor/platform/platform-logs-overview.md)によって委任アクティビティがテナント レベルで追跡されます。 このログに記録されるアクティビティには、すべての顧客テナントに対する委任の追加または削除が含まれます。
 
-このトピックでは、お客様のテナント (お客様のすべての顧客を対象とする) への委任アクティビティを監視するために必要なアクセス許可と、それを行う上でのベスト プラクティスについて説明します。 また、このデータに対してクエリを実行してレポートするための方法の 1 つを示すサンプル スクリプトも示します。
+このトピックでは、お客様のテナント (お客様のすべての顧客を対象とする) への委任アクティビティを監視するために必要なアクセス許可について説明します。 また、このデータに対してクエリを実行してレポートするための方法の 1 つを示すサンプル スクリプトも示します。
 
 > [!IMPORTANT]
 > これらの手順はすべて、顧客のテナントではなく、お客様の管理テナントで実行する必要があります。
+>
+> このトピックではサービス プロバイダーと顧客の場合について説明していますが、[複数のテナントを管理するエンタープライズ](../concepts/enterprise.md)も同じプロセスを使用できます。
 
 ## <a name="enable-access-to-tenant-level-data"></a>テナントレベルのデータへのアクセスを有効にする
 
@@ -33,24 +35,12 @@ ms.locfileid: "97936109"
 
 自分のアクセス権を昇格させると、Azure でルート スコープでのユーザー アクセス管理者ロールがご利用のアカウントに付与されます。 このロールが割り当てられると、すべてのリソースを表示することおよびディレクトリ内の任意のサブスクリプションまたは管理グループでアクセス権を割り当てることに加えて、ルート スコープでロールを割り当てることができます。
 
-### <a name="create-a-new-service-principal-account-to-access-tenant-level-data"></a>テナントレベルのデータにアクセスするための新しいサービス プリンシパル アカウントを作成する
+### <a name="assign-the-monitoring-reader-role-at-root-scope"></a>ルート スコープで監視閲覧者ロールを割り当てる
 
 自分のアクセス権を昇格させたら、テナントレベルのアクティビティ ログ データに対してクエリを実行できるように、適切なアクセス許可をアカウントに割り当てることができます。 このアカウントには、ご利用の管理テナントのルート スコープで[監視閲覧者](../../role-based-access-control/built-in-roles.md#monitoring-reader) Azure 組み込みロールを割り当てる必要があります。
 
 > [!IMPORTANT]
-> ルート スコープでのロール割り当てを許可すると、テナント内のすべてのリソースに同じアクセス許可が適用されることになります。
-
-これは広範なアクセス レベルであるため、個々のユーザーまたはグループに対してではなく、サービス プリンシパル アカウントにこのロールを割り当てることをお勧めします。
-
- さらに、推奨するベスト プラクティスを次に示します。
-
-- この機能に対してのみ使用する[新しいサービス プリンシパル アカウントを作成](../../active-directory/develop/howto-create-service-principal-portal.md)し、他の自動化に使用する既存のサービス プリンシパルにこのロールを割り当てることはしません。
-- このサービス プリンシパルに、委任された顧客リソースへのアクセス権がないことを確認してください。
-- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/security-overview.md)。
-- サービス プリンシパルの代理として機能するアクセス権を持つユーザーを制限します。
-
-> [!NOTE]
-> また、監視閲覧者 Azure 組み込みロールをルート スコープで、個々のユーザーまたはユーザー グループに割り当てることもできます。 これは、ユーザーが [Azure portal で直接委任情報を表示](#view-delegation-changes-in-the-azure-portal)できるようにする場合に役立ちます。 これを行う場合、これが広範囲にわたるアクセス レベルであり、可能な限り少数のユーザーに制限する必要があることに留意してください。
+> ルート スコープでのロール割り当てを許可すると、テナント内のすべてのリソースに同じアクセス許可が適用されることになります。 これは広範なアクセス レベルであるため、[このロールをサービス プリンシパル アカウントに割り当てて、そのアカウントを使用してデータをクエリする](#use-a-service-principal-account-to-query-the-activity-log)ことができます。 [Azure portal で委任情報を直接表示](#view-delegation-changes-in-the-azure-portal)できるよう、ルート スコープの監視閲覧者ロールを個々のユーザーまたはユーザー グループに割り当てることもできます。 これを行う場合、これが広範囲にわたるアクセス レベルであり、可能な限り少数のユーザーに制限する必要があることに留意してください。
 
 次のいずれかの方法を使用して、ルート スコープの割り当てを行います。
 
@@ -59,7 +49,7 @@ ms.locfileid: "97936109"
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
 
-New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ApplicationId $servicePrincipal.ApplicationId 
+New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName "Monitoring Reader"  -ObjectId <objectId> 
 ```
 
 #### <a name="azure-cli"></a>Azure CLI
@@ -72,9 +62,32 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>全体管理者アカウントの昇格されたアクセス権を削除する
 
-サービス プリンシパル アカウントを作成し、監視閲覧者ロールをルート スコープで割り当てたら、必ず全体管理者アカウントの[昇格されたアクセス権を削除](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access)します。このレベルのアクセス権はもはや不要だからです。
+ルート スコープの監視閲覧者ロールを目的のアカウントに割り当てたら、必ず全体管理者アカウントの[昇格されたアクセス権を削除](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access)します。このレベルのアクセス権はもはや不要だからです。
 
-## <a name="query-the-activity-log"></a>アクティビティ ログに対してクエリを実行する
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Azure portal で委任変更を表示する
+
+ルート スコープで監視閲覧者ロールが割り当てられているユーザーは、Azure portal で直接、委任変更を表示できます。
+
+1. **[マイ カスタマー]** ページに移動し、左側のナビゲーション メニューから **[アクティビティ ログ]** を選択します。
+1. 画面の上部付近にあるフィルターで **[ディレクトリ アクティビティ]** が選択されていることを確認します。
+
+委任変更の一覧が表示されます。 **[列の編集]** を選択して、 **[状態]** 、 **[イベント カテゴリ]** 、 **[時刻]** 、 **[タイム スタンプ]** 、 **[サブスクリプション]** 、 **[イベント開始者]** 、 **[リソース グループ]** 、 **[リソース タイプ]** 、 **[リソース]** の値を表示または非表示にすることができます。
+
+:::image type="content" source="../media/delegation-activity-portal.jpg" alt-text="Azure portal での委任変更のスクリーンショット":::
+
+## <a name="use-a-service-principal-account-to-query-the-activity-log"></a>サービス プリンシパル アカウントを使用してアクティビティ ログをクエリする
+
+ルート スコープの監視閲覧者ロールは広範なアクセス レベルであるため、このロールをサービス プリンシパル アカウントに割り当てて、そのアカウントと次のスクリプトを使用してデータをクエリすることができます。
+
+> [!IMPORTANT]
+> 現在、大量の委任アクティビティがあるテナントでは、このデータをクエリするとエラーが発生する場合があります。
+
+サービス プリンシパル アカウントを使用してアクティビティ ログをクエリするときは、以下のベスト プラクティスに従うことをお勧めします。
+
+- この機能に対してのみ使用する[新しいサービス プリンシパル アカウントを作成](../../active-directory/develop/howto-create-service-principal-portal.md)し、他の自動化に使用する既存のサービス プリンシパルにこのロールを割り当てることはしません。
+- このサービス プリンシパルに、委任された顧客リソースへのアクセス権がないことを確認してください。
+- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/security-overview.md)。
+- サービス プリンシパルの代理として機能するアクセス権を持つユーザーを制限します。
 
 ご利用の管理テナントのルート スコープに対して監視閲覧者アクセス権を持つ新しいサービス プリンシパル アカウントを作成したら、それを使用して、ご利用のテナント内の委任アクティビティのクエリとレポートを行うことができます。
 
@@ -164,18 +177,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-> [!TIP]
-> このトピックではサービス プロバイダーと顧客の場合について説明していますが、[複数のテナントを管理するエンタープライズ](../concepts/enterprise.md)も同じプロセスを使用できます。
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Azure portal で委任変更を表示する
-
-ルート スコープで監視閲覧者 Azure 組み込みロールが割り当てられているユーザーは、Azure portal で直接、委任変更を表示できます。
-
-1. **[マイ カスタマー]** ページに移動し、左側のナビゲーション メニューから **[アクティビティ ログ]** を選択します。
-1. 画面の上部付近にあるフィルターで **[ディレクトリ アクティビティ]** が選択されていることを確認します。
-
-委任変更の一覧が表示されます。 **[列の編集]** を選択して、 **[状態]** 、 **[イベント カテゴリ]** 、 **[時刻]** 、 **[タイム スタンプ]** 、 **[サブスクリプション]** 、 **[イベント開始者]** 、 **[リソース グループ]** 、 **[リソース タイプ]** 、 **[リソース]** の値を表示または非表示にすることができます。
 
 ## <a name="next-steps"></a>次のステップ
 

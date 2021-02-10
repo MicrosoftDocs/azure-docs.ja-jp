@@ -3,12 +3,12 @@ title: Azure Monitor Application Insights のクラシック リソースをワ�
 description: Azure Monitor Application Insights のクラシック リソースを新しいワークスペースベースのモデルにアップグレードするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 709cff1326bb6393a14c594ea434a6c16fb80860
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5316bf5b919fe8b24ea1dd601214df62aa034f37
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536525"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945113"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>ワークスペースベースの Application Insights リソースに移行する
 
@@ -114,7 +114,7 @@ az monitor app-insights component update --app
 az monitor app-insights component update --app your-app-insights-resource-name -g your_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-このコマンドについての完全な Azure CLI ドキュメントについては、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-update)を参照してください。
+このコマンドについての完全な Azure CLI ドキュメントについては、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-update)を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

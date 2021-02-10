@@ -1,25 +1,24 @@
 ---
-title: Visual Studio を使用してロールのリモート デスクトップを有効にする (Azure Cloud Services)
+title: Visual Studio を使用してロールのリモート デスクトップを有効にする (Azure Cloud Services クラシック)
 description: Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法
-services: cloud-services
-author: ghogen
-manager: jillfra
-ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
-ms.custom: vs-azure
-ms.topic: conceptual
-ms.workload: azure-vs
-ms.date: 03/06/2018
-ms.author: ghogen
-ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: article
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ad95cefbdf839c28b0979b051e217a1dfec76eea
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80294387"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743238"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Visual Studio を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-visual-studio"></a>Visual Studio を使用して、Azure Cloud Services (クラシック) でロールのリモート デスクトップ接続を有効にする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -36,30 +35,30 @@ Visual Studio によってクラウド サービス向けに提供される発�
 
 Visual Studio 2017 バージョン 15.4 以前を使用しているとき、発行ウィザードの **[すべてのロールに対してリモート デスクトップを有効にする]** オプションを使用できます。 このウィザードは Visual Studio 2017 バージョン 15.5 以降で引き続き使用できますが、リモート デスクトップ オプションは使用しないでください。
 
-1. Visual Studio のソリューション エクスプローラーでクラウド サービス プロジェクトを右クリックし、 **[発行]** を選択し、発行ウィザードを開始します。
+1. Visual Studio のソリューション エクスプローラーでクラウド サービス プロジェクトを右クリックし、**[発行]** を選択し、発行ウィザードを開始します。
 
-2. 必要に応じて Azure サブスクリプションにサインインし、 **[次へ]** を選択します。
+2. 必要に応じて Azure サブスクリプションにサインインし、**[次へ]** を選択します。
 
-3. **[設定]** ページで **[すべてのロールに対してリモート デスクトップを有効にする]** を選択し、 **[設定]** リンクを設定して **[リモート デスクトップ構成]** ダイアログ ボックスを開きます。
+3. **[設定]** ページで **[すべてのロールに対してリモート デスクトップを有効にする]** を選択し、**[設定]** リンクを設定して **[リモート デスクトップ構成]** ダイアログ ボックスを開きます。
 
 4. ダイアログ ボックスの一番下にある **[その他のオプション]** を選択します。 これで証明書を作成または選択できるドロップダウン リストが表示されます。リモート デスクトップを使用して接続するときに資格情報を暗号化できます。
 
    > [!Note]
    > リモート デスクトップ接続に必要な証明書は、他の Azure 操作で使用する証明書とは異なります。 リモート アクセス証明書には、秘密キーが必要です。
 
-5. 一覧から証明書を選択するか、 **&lt;[作成]&gt;** を選択します。 新しい証明書を作成する場合、入力を求められたら新しい証明書にわかりやすい名前を付け、 **[OK]** を選択します。 ドロップダウン リスト ボックスに新しい証明書が表示されます。
+5. 一覧から証明書を選択するか、 **&lt;[作成]&gt;** を選択します。 新しい証明書を作成する場合、入力を求められたら新しい証明書にわかりやすい名前を付け、**[OK]** を選択します。 ドロップダウン リスト ボックスに新しい証明書が表示されます。
 
 6. ユーザー名とパスワードを入力します。 既存のアカウントを使用することはできません。 新しいアカウントのユーザー名として "Administrator" を使用しないでください。
 
 7. アカウントが期限切れになり、以後リモート デスクトップ接続がブロックされる日付を選択します。
 
-8. 必要な情報をすべて入力したら、 **[OK]** を選択します。 Visual Studio により、リモート デスクトップ設定がプロジェクトの `.cscfg` ファイルと `.csdef` ファイルに追加されます。選択した証明書を使用して暗号化されるパスワードが含まれています。
+8. 必要な情報をすべて入力したら、**[OK]** を選択します。 Visual Studio により、リモート デスクトップ設定がプロジェクトの `.cscfg` ファイルと `.csdef` ファイルに追加されます。選択した証明書を使用して暗号化されるパスワードが含まれています。
 
-9. **[次へ]** ボタンを使用して残りの手順を完了し、クラウド サービスを発行する準備ができたら、 **[発行]** を選択します。 発行する準備ができていない場合、 **[キャンセル]** を選択し、変更内容の保存を求められたら **[はい]** で回答します。 後で、保存した設定でクラウド サービスを発行できます。
+9. **[次へ]** ボタンを使用して残りの手順を完了し、クラウド サービスを発行する準備ができたら、**[発行]** を選択します。 発行する準備ができていない場合、**[キャンセル]** を選択し、変更内容の保存を求められたら **[はい]** で回答します。 後で、保存した設定でクラウド サービスを発行できます。
 
 ## <a name="configure-remote-desktop-when-using-visual-studio-2017-version-155-and-later"></a>Visual Studio 2017 バージョン 15.5 以降でリモート デスクトップを構成する
 
-Visual Studio 2017 バージョン 15.5 以降でも引き続き、クラウド サービス プロジェクトで発行ウィザードを使用できます。 単独開発者としてのみ作業している場合、 **[すべてのロールに対してリモート デスクトップを有効にする]** オプションも使用できます。
+Visual Studio 2017 バージョン 15.5 以降でも引き続き、クラウド サービス プロジェクトで発行ウィザードを使用できます。 単独開発者としてのみ作業している場合、**[すべてのロールに対してリモート デスクトップを有効にする]** オプションも使用できます。
 
 チームの一員として作業している場合、代わりに、[Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md) か [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) を使用し、Azure クラウド サービスでリモート デスクトップを有効にしてください。
 
@@ -95,9 +94,9 @@ Azure DevOps Services の RDP 拡張を使用するには、ビルド パイプ�
 
 1. ビルド手順の後で、「**Azure Cloud Service の配置**」手順を追加し、そのプロパティを設定します。
 
-1. デプロイ手順の後に、**Azure Powershell** の手順を追加し、その **[表示名]** プロパティを "Azure デプロイ: RDP 拡張を有効にする"(または別の適切な名前) に設定して、適切な Azure サブスクリプションを選択します。
+1. 配置手順の後、「**Azure Powershell**」手順を追加し、その **[表示名]** プロパティを "Azure Deployment: Enable RDP Extension" (あるいは別の適切な名前) に設定し、適切な Azure サブスクリプションを選択します。
 
-1. **[スクリプトの種類]** を "インライン" に設定し、下のコードを **[インライン スクリプト]** フィールドに貼り付けます。 (このスクリプトでプロジェクトに `.ps1` ファイルを作成し、 **[スクリプトの種類]** を "スクリプト ファイル パス" に設定し、ファイルを指すように **[スクリプト パス]** を設定することもできます。)
+1. **[スクリプトの種類]** を "インライン" に設定し、下のコードを **[インライン スクリプト]** フィールドに貼り付けます。 (このスクリプトでプロジェクトに `.ps1` ファイルを作成し、**[スクリプトの種類]** を "スクリプト ファイル パス" に設定し、ファイルを指すように **[スクリプト パス]** を設定することもできます。)
 
     ```ps
     Param(
@@ -142,7 +141,7 @@ Azure でクラウド サービスを発行し、リモート デスクトップ
 
 1. サーバー エクスプローラーで、 **[Azure]** ノードを展開し、いずれかのクラウド サービスのノードとそのロールを 1 つ展開して、インスタンスの一覧を表示します。
 
-2. インスタンス ノードを右クリックし、 **[Connect Using Remote Desktop]\(リモート デスクトップを使用して接続\)** を選択します。
+2. インスタンス ノードを右クリックし、**[Connect Using Remote Desktop]\(リモート デスクトップを使用して接続\)** を選択します。
 
 3. 以前作成したユーザー名とパスワードを入力します。 これでリモート セッションにログインした状態になります。
 

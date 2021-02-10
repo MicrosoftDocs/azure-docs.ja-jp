@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出すデーモン アプリを運用環境に移行する - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出すデーモン アプリを運用環境へ移行する | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出すデーモン アプリを運用環境へ移行する方法 について学ぶ
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 72e6d0a8677f7a8175223b80541c99026a9eb16f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04ee4ccc3b0553d6532869d6403000fdedd93b5f
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119166"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062713"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデーモン アプリ - 運用環境への移行
 
@@ -31,20 +32,17 @@ ms.locfileid: "88119166"
 
 顧客に対しては、これらの操作の実行方法を説明する必要があります。 詳しくは、「[テナント全体の同意を要求する](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)」をご覧ください。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="next-steps"></a>次のステップ
-
-詳細については、次のリンクを参照してください。
+## <a name="code-samples"></a>コード サンプル
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-- クイック スタート:[トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](./quickstart-v2-netcore-daemon.md)。
 - 以下に関するリファレンス ドキュメント:
   - [ConfidentialClientApplication](/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) のインスタンス化
   - [AcquireTokenForClient](/dotnet/api/microsoft.identity.client.acquiretokenforclientparameterbuilder) の呼び出し
 - 他のサンプル/チュートリアル:
-  - [microsoft-identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) では、Microsoft Graph を照会しているテナントのユーザーを表示するシンプルな .NET Core デーモン コンソール アプリケーションを取り上げています。
+  - [microsoft-identity-platform-console-daemon](https://github.com/Azure-Samples/microsoft-identity-platform-console-daemon) では、Microsoft Graph へのクエリを実行するテナントのユーザーを表示する小さい .NET Core デーモン コンソール アプリケーションを取り上げています。
 
     ![サンプル デーモン アプリのトポロジ](media/scenario-daemon-app/daemon-app-sample.svg)
 
@@ -56,12 +54,18 @@ ms.locfileid: "88119166"
 
     ![トポロジ](media/scenario-daemon-app/damon-app-sample-web.svg)
 
+---
+
+## <a name="next-steps"></a>次のステップ
+
+詳細については、次のリンクを参照してください。
+
 # <a name="python"></a>[Python](#tab/python)
 
 クイックスタート「[トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](./quickstart-v2-python-daemon.md)」をお試しください。
 
 # <a name="java"></a>[Java](#tab/java)
 
-MSAL Java は現在、パブリック プレビュー段階にあります。 詳細については、[MSAL Java dev サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)を参照してください。
+クイックスタート「[トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](./quickstart-v2-java-daemon.md)」をお試しください。
 
 ---

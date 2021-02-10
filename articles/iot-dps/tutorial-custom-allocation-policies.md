@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 4cab1765a387bbae61c9c242a8e7a1ca881ea1f5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 42098786bb92e98b89b1dbfba01a2e071398f460
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966668"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258543"
 ---
 # <a name="tutorial-use-custom-allocation-policies-with-device-provisioning-service-dps"></a>チュートリアル:Device Provisioning Service (DPS) でカスタム割り当てポリシーを使用する
 
@@ -59,7 +59,7 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 ご自分のホーム ページから **[+ リソースの作成]** を選択します。
 
-2. *[Marketplace を検索]* 検索ボックスで、「関数アプリ」と入力します。 ドロップダウン リストから **[関数アプリ]** を選択し、**[作成]** を選択します。
+2. *[Marketplace を検索]* 検索ボックスで、「関数アプリ」と入力します。 ドロップダウン リストから **[関数アプリ]** を選択し、 **[作成]** を選択します。
 
 3. **関数アプリ** の作成ページの **[基本]** タブで、新しい関数アプリに次の設定を入力し、**[確認と作成]** を選択します。
 
@@ -76,11 +76,11 @@ Device Provisioning Service で提供されるポリシーがご自身のシナ�
     **[リージョン]** :ご自分のリソース グループと同じリージョンを選択します。 この例では **米国西部** を使用します。
 
     > [!NOTE]
-    > 既定では、Application Insights が有効になっています。 この記事では Application Insights は必要ありませんが、カスタム割り当てで発生する問題を理解し、調査するのに役立つ場合があります。 必要に応じて、**[監視]** タブを選択し、**[Application Insights を有効にする]** を **[いいえ]** に選択することで、Application Insights を無効にすることができます。
+    > 既定では、Application Insights が有効になっています。 この記事では Application Insights は必要ありませんが、カスタム割り当てで発生する問題を理解し、調査するのに役立つ場合があります。 必要に応じて、 **[監視]** タブを選択し、 **[Application Insights を有効にする]** を **[いいえ]** に選択することで、Application Insights を無効にすることができます。
 
     ![カスタム割り当て関数をホストする Azure 関数アプリを作成する](./media/tutorial-custom-allocation-policies/create-function-app.png)
 
-4. **[概要]** ページで、**[作成]** を選択して関数アプリを作成します。 デプロイには数分かかることがあります。 完了したら、**[リソースに移動]** を選択します。
+4. **[概要]** ページで、 **[作成]** を選択して関数アプリを作成します。 デプロイには数分かかることがあります。 完了したら、**[リソースに移動]** を選択します。
 
 5. 左側のウィンドウで、 **[関数]** の下にある **[関数]** をクリックしてから、 **[+ 追加]** をクリックして新しい関数を追加します。
 
@@ -347,7 +347,7 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. `main()` 関数で、`Prov_Device_Register_Device()` の呼び出しを見つけます。 その呼び出しの直前に、[`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) を使用する次のコード行を追加し、プロビジョニング中にカスタム JSON ペイロードを渡します。 カスタム割り当て関数に与える情報を増やすためにこれを利用できます。 登録 ID を調べる代わりに、デバイスの種類を渡す目的でこれを使用することもできます。
+6. `main()` 関数で、`Prov_Device_Register_Device()` の呼び出しを見つけます。 その呼び出しの直前に、[`Prov_Device_Set_Provisioning_Payload()`](/azure/iot-hub/iot-c-sdk-ref/prov-device-client-h/prov-device-set-provisioning-payload) を使用する次のコード行を追加し、プロビジョニング中にカスタム JSON ペイロードを渡します。 カスタム割り当て関数に与える情報を増やすためにこれを利用できます。 登録 ID を調べる代わりに、デバイスの種類を渡す目的でこれを使用することもできます。 DPS を使用したカスタム データ ペイロードの送受信の詳細については、「[デバイスと DPS の間でペイロードを転送する方法](how-to-send-additional-data.md)」を参照してください。
 
     ```c
     // An example custom payload
@@ -477,9 +477,9 @@ contoso-heatpump-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
 
 2. **[名前でフィルター]** テキスト ボックスに、リソースが含まれているリソース グループの名前 **contoso-us-resource-group** を入力します。 
 
-3. 結果一覧のリソース グループの右側で、**[...]**、**[リソース グループの削除]** の順に選択します。
+3. 結果一覧のリソース グループの右側で、 **[...]** 、 **[リソース グループの削除]** の順に選択します。
 
-4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにもう一度リソース グループの名前を入力し、**[削除]** を選択します。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
+4. リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにもう一度リソース グループの名前を入力し、 **[削除]** を選択します。 しばらくすると、リソース グループとそこに含まれているすべてのリソースが削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

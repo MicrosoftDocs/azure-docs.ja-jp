@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: b451e2509ee618ac0996fd91191a7d59dcfd9fc9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612689"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500418"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure Virtual WAN は GA ですか。
 
@@ -141,6 +141,10 @@ Virtual WAN パートナーによって、Azure VPN エンドポイントへの 
 
 ブランチまたは VPN デバイスから Azure Virtual WAN への接続は、仮想ハブ内の VPN サイトと Azure VPN Gateway を仮想的に接続する VPN 接続にすぎません。
 
+### <a name="what-happens-if-the-on-premise-vpn-device-only-has-1-tunnel-to-a-azure-virtual-wan-vpn-gateway"></a>オンプレミスの VPN デバイスに、Azure Virtual WAN VPN ゲートウェイへのトンネルが 1 つしかなかった場合はどうなりますか。
+
+Azure Virtual WAN 接続は、2 つのトンネルから成ります。 Virtual WAN VPN ゲートウェイは、アクティブ/アクティブ モードで仮想ハブにデプロイされます。つまり、オンプレミス デバイスから各インスタンスを終点とするトンネルが別々に存在します。すべてのユーザーには、これが推奨されます。 ただし、Virtual WAN VPN ゲートウェイ インスタンス 1 つに対してユーザーがトンネルを 1 つしか確保していない場合、なんらかの理由 (メンテナンス、パッチなど) でゲートウェイ インスタンスがオフラインになると、トンネルはセカンダリ アクティブ インスタンスに移動され、再接続が生じることがあります。 また、BGP セッションはインスタンス間で移動されないことに注意してください。
+
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>オンプレミスの VPN デバイスは、複数のハブに接続できますか。
 
 はい。 開始時のトラフィック フローは、オンプレミス デバイスから、最も近い Microsoft ネットワーク エッジへ、次に仮想ハブへとなります。
@@ -199,6 +203,9 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 
 ハブの VPN スループットの合計は、VPN ゲートウェイの選択されたスケール ユニットに基づき、最大で 20 Gbps となります。 スループットはすべての既存の接続によって共有されます。 接続内の各トンネルは最大 1 Gbps をサポートできます。
 
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>VPN 接続で NAT-T を使用できますか。
+はい。NAT トラバーサル (NAT-T) がサポートされています。 Virtual WAN VPN Gateway によって、NAT に類似する機能が、内部パケットで IPsec トンネルに対して実行されることはありません。 この構成では、オンプレミスのデバイスによって IPSec トンネルが開始されるようにします。
+
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>仮想ハブの 20 Gbps の設定がポータルに表示されません。 どのように構成すればよいですか。
 
 ポータルでハブ内の VPN ゲートウェイに移動し、スケール ユニットをクリックして適切な設定に変更します。
@@ -221,7 +228,7 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>接続 (VPN、ExpressRoute、または Virtual Network) の既定のルート (0.0.0.0/0) を有効にするにはどうすればよいですか。
 
-仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。
+仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。 既定のルートはハブ間で伝達されません。
 
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Virtual WAN 内の仮想ハブは、どのようにして複数のハブからのルートに最適なパスを選択するのですか
 

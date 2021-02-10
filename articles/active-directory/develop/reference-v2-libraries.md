@@ -1,150 +1,140 @@
 ---
-title: Microsoft ID プラットフォームの認証ライブラリ
-description: Microsoft ID プラットフォーム エンドポイントに使用される互換性のあるクライアント ライブラリとサーバー ミドルウェア ライブラリ、および関連するライブラリ、ソース、サンプル リンク。
+title: Microsoft ID プラットフォームの認証ライブラリ | Azure
+description: Microsoft ID プラットフォームと互換性のあるクライアント ライブラリとミドルウェアの一覧。 これらのライブラリを使用して、ユーザーのサインイン (認証) と保護された Web API アクセス (認可) のサポートをアプリケーションに追加します。
 services: active-directory
-author: negoe
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/25/2019
-ms.author: negoe
+ms.date: 01/29/2021
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a7792e989444c87ba80088f8a850cacb4aa0dc3c
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9549ebab687400e32bbc68a2c76cf8efc8c106c8
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064571"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218286"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft ID プラットフォームの認証ライブラリ
 
-[Microsoft ID プラットフォーム エンドポイント](../azuread-dev/azure-ad-endpoint-comparison.md)では、業界標準のプロトコルである OAuth 2.0 と OpenID Connect 1.0 がサポートされています。 Microsoft Authentication Library (MSAL) は Microsoft ID プラットフォーム エンドポイントと連動するように設計されています。 OAuth 2.0 と OpenID Connect 1.0 がサポートされているオープンソース ライブラリを使用することもできます。
+次の表は、いくつかのアプリケーションの種類に対する Microsoft 認証ライブラリのサポートを示しています。 これには、ライブラリ ソース コードへのリンク、アプリのプロジェクトのパッケージを取得する場所、ライブラリでユーザーのサインイン (認証)、保護された Web API へのアクセス (認可)、またはその両方がサポートされるかどうかが含まれます。
 
-Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL) の手法を採用するプロトコル ドメインの専門家が記述したライブラリを使用することをお勧めします。 たとえば、[Microsoft が従っている][Microsoft-SDL]方法などです。 プロトコル用に手作業でコーディングする場合は、Microsoft SDL などの手法に従う必要があります。 各プロトコルの標準仕様におけるセキュリティの考慮事項に十分注意してください。
+Microsoft ID プラットフォームは、[認定 OpenID プロバイダ](https://openid.net/certification/)として OpenID Foundation に認定されています。 Microsoft Authentication Library (MSAL) や Microsoft がサポートしている別のライブラリではないライブラリを使用する場合は、[認定 OpenID Connect 実装](https://openid.net/developers/certified/)のものを選択します。
 
-> [!NOTE]
-> Azure Active Directory 認証ライブラリ (ADAL) をお探しですか。 [ADAL ライブラリ ガイド](../azuread-dev/active-directory-authentication-libraries.md)を確認してください。
+[OAuth 2.0 または OpenID Connect 1.0](active-directory-v2-protocols.md) の独自のプロトコルレベル実装を手作業でコーディングする場合は、各標準の仕様におけるセキュリティの考慮事項に細心の注意を払い、[Microsoft SDL][Microsoft-SDL] などのソフトウェア開発ライフサイクル (SDL) 手法に従ってください。
 
-## <a name="types-of-libraries"></a>ライブラリの種類
+## <a name="single-page-application-spa"></a>シングルページ アプリケーション (SPA)
 
-Microsoft ID プラットフォーム エンドポイントは、次の 2 種類のライブラリに対応します。
+シングルページ アプリケーションは、ブラウザー画面上で完全に実行され、ページ データ (HTML、CSS、JavaScript) を動的に、またはアプリケーションの読み込み時にフェッチします。 Web API を呼び出して、バックエンド データ ソースとやり取りできます。
 
-* **クライアント ライブラリ**:ネイティブ クライアントとサーバーでは、クライアント ライブラリを使用して、Microsoft Graph などのリソースを呼び出すためのアクセス トークンが取得されます。
-* **サーバー ミドルウェア ライブラリ**:Web アプリは、ユーザーのサインインにサーバー ミドルウェア ライブラリを使用します。 Web API は、サーバー ミドルウェア ライブラリを使用して、ネイティブ クライアントまたは他のサーバーによって送信されるトークンを検証します。
+SPA のコードは完全にブラウザーで実行されるため、シークレットを安全に格納できない *パブリック クライアント* と見なされます。
 
-## <a name="library-support"></a>ライブラリのサポート
+| 言語/フレームワーク | プロジェクト<br/>GitHub                                                                                                    | Package                                                                      | 取得<br/>started                             | ユーザーのサインイン                                         | Web API へのアクセス                                                 | 一般提供 (GA) *または*<br/>パブリック プレビュー<sup>1</sup> |
+|----------------------|--------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|:-----------------------------------------------:|:-----------------------------------------------------:|:---------------------------------------------------------------:|:------------------------------------------------------------:|
+| Angular              | [MSAL Angular 2.0](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)         | [@azure/msal-angular](https://www.npmjs.com/package/@azure/msal-angular)     | —                                               | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | パブリック プレビュー                                               |
+| Angular              | [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/msal-angular-v1/lib/msal-angular) | [@azure/msal-angular](https://www.npmjs.com/package/@azure/msal-angular)     | [チュートリアル](tutorial-v2-angular.md)              | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| AngularJS            | [MSAL AngularJS](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angularjs)         | [@azure/msal-angularjs](https://www.npmjs.com/package/@azure/msal-angularjs) | —                                               | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | パブリック プレビュー                                               |
+| JavaScript           | [MSAL.js 2.0](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)              | [@azure/msal-browser](https://www.npmjs.com/package/@azure/msal-browser)     | [チュートリアル](tutorial-v2-javascript-auth-code.md) | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| React                | [MSAL React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)                 | [@azure/msal-react](https://www.npmjs.com/package/@azure/msal-react)         | —                                               | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | パブリック プレビュー                                               |
+<!--
+| Vue | [Vue MSAL]( https://github.com/mvertopoulos/vue-msal) | [vue-msal]( https://www.npmjs.com/package/vue-msal) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+-->
 
-ライブラリには、次の 2 種類のサポート カテゴリがあります:
+<sup>1</sup>「[Microsoft Azure プレビューの追加利用規約][preview-tos]」は、*パブリック プレビュー* のライブラリにも適用されます。
 
-* **Microsoft によるサポート**:Microsoft は、これらのライブラリの修正プログラムを提供するほか、これらのライブラリに対する SDL の適正評価を行っています。
-* **互換性**:Microsoft では、基本的なシナリオでこれらのライブラリがテストされ、Microsoft ID プラットフォーム エンドポイントで動作することが確認されています。 Microsoft では、これらのライブラリの修正プログラムは提供されていません。また、Microsoft では、これらのライブラリのレビューも実施されていません。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。
+## <a name="web-application"></a>Web アプリケーション
 
-Microsoft ID プラットフォーム エンドポイントで動作するライブラリの一覧については、以下のセクションを参照してください。
+Web アプリケーションでは、HTML、CSS、および JavaScript を生成し、ユーザーの Web ブラウザーに送信してレンダリングするサーバーでコードを実行します。 ユーザーの ID は、ユーザーのブラウザー (フロントエンド) と Web サーバー (バックエンド) の間のセッションとして保持されます。
 
-## <a name="microsoft-supported-client-libraries"></a>Microsoft がサポートするクライアント ライブラリ
+Web アプリケーションのコードは Web サーバー上で実行されるため、シークレットを安全に格納できる *機密クライアント* と見なされます。
 
-保護された Web API を呼び出すためのトークンを取得するには、クライアント認証ライブラリを使用します。
+| 言語/フレームワーク | プロジェクト<br/>GitHub                                                                                     | Package                                                                                                    | 取得<br/>started                               | ユーザーのサインイン                                            | Web API へのアクセス                                                    | 一般提供 (GA) *または*<br/>パブリック プレビュー<sup>1</sup> |
+|----------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|:-------------------------------------------------:|:--------------------------------------------------------:|:------------------------------------------------------------------:|:------------------------------------------------------------:|
+| .NET                 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)                        | [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)                      | —                                                 | ![ライブラリでは、ユーザー サインインの ID トークンを要求できません。][n] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y]    | GA                                                           |
+| ASP.NET Core         | [ASP.NET のセキュリティ](/aspnet/core/security/)                                                                | [Microsoft.AspNetCore.Authentication](https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication/) | —                                                 | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y]    | ![ライブラリでは、保護された Web API のアクセス トークンを要求できません。][n] | GA                                                           |
+| ASP.NET Core         | [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-identity-web)                               | [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web)                            | —                                                 | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y]    | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y]    | GA                                                           |
+| Java                 | [MSAL4J](https://github.com/AzureAD/microsoft-authentication-library-for-java)                            | [msal4j](https://search.maven.org/artifact/com.microsoft.azure/msal4j)                                     | [クイックスタート](quickstart-v2-java-webapp.md)        | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y]    | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y]    | GA                                                           |
+| Node.js              | [MSAL Node.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node) | [msal-node](https://www.npmjs.com/package/@azure/msal-node)                                                | [クイックスタート](quickstart-v2-nodejs-webapp-msal.md) | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y]    | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y]    | パブリック プレビュー                                               |
+| Node.js              | [Azure AD Passport](https://github.com/AzureAD/passport-azure-ad)                                         | [passport-azure-ad](https://www.npmjs.com/package/passport-azure-ad)                                       | [クイックスタート](quickstart-v2-nodejs-webapp.md)      | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y]    | ![ライブラリでは、保護された Web API のアクセス トークンを要求できません。][n] | GA                                                           |
+| Python               | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)                     | [msal](https://pypi.org/project/msal)                                                                      | [クイックスタート](quickstart-v2-python-webapp.md)      | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y]    | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y]    | GA                                                           |
+<!--
+| Java | [ScribeJava](https://github.com/scribejava/scribejava) | [ScribeJava 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | ![X indicating no.][n] | ![X indicating no.][n] | ![Green check mark.][y] | -- |
+| Java | [Gluu oxAuth](https://github.com/GluuFederation/oxAuth) | [oxAuth 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+| Node.js | [openid-client](https://github.com/panva/node-openid-client/) | [openid-client 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+| PHP | [PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [oauth2-client 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | ![X indicating no.][n] | ![X indicating no.][n] | ![Green check mark.][y] | -- |
+| Ruby | [OmniAuth](https://github.com/omniauth/omniauth) | [omniauth 1.3.1](https://github.com/omniauth/omniauth/releases/tag/v1.3.1)<br/>[omniauth-oauth2 1.4.0](https://github.com/intridea/omniauth-oauth2) | ![X indicating no.][n] | ![X indicating no.][n] | ![Green check mark.][y] | -- |
+-->
 
-| プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス | 概念に関するドキュメント | ロードマップ |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [シングルページ アプリ](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [リファレンス](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [概念に関するドキュメント](msal-overview.md)| [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-![Angular](media/sample-v2-code/logo_angular.png) | MSAL Angular | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Angular SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [リファレンス](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [概念に関するドキュメント](msal-overview.md) | [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [デスクトップ アプリ](/windows/apps/desktop/) | [MSAL.NET](/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview&preserve-view=true) |[概念に関するドキュメント](msal-overview.md) | [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
-| ![.NET Core アイコン](media/sample-v2-code/logo_NETCore.png) | Microsoft Identity Web  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Web) |[GitHub](https://github.com/AzureAD/microsoft-identity-web) | [サンプル](https://aka.ms/ms-id-web/samples) | [Microsoft.Identity.Web](/dotnet/api/microsoft.identity.web?view=azure-dotnet-preview&preserve-view=true) |[概念に関するドキュメント](https://aka.ms/ms-id-web/conceptual-doc) | [ロードマップ](https://github.com/AzureAD/microsoft-identity-web/wiki#roadmap)
-| ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
-| ![Java](media/sample-v2-code/logo_java.png) | MSAL Java | [Maven](https://search.maven.org/artifact/com.microsoft.azure/msal4j) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [リファレンス](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Wiki](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
-| iOS と macOS | iOS および macOS 用の MSAL | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [iOS アプリ](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)、[macOS アプリ](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [リファレンス](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [概念に関するドキュメント](msal-overview.md) | |
-|![Android/Java](media/sample-v2-code/logo_Android.png) | MSAL Android | [中央リポジトリ](https://repo1.maven.org/maven2/com/microsoft/identity/client/msal/) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android) | [Android アプリ](quickstart-v2-android.md) | [JavaDocs](https://javadoc.io/doc/com.microsoft.identity.client/msal) | [概念に関するドキュメント](msal-overview.md) |[ロードマップ](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Roadmap)
+<sup>1</sup>「[Microsoft Azure プレビューの追加利用規約][preview-tos]」は、*パブリック プレビュー* のライブラリにも適用されます。
 
-## <a name="microsoft-supported-server-middleware-libraries"></a>Microsoft がサポートするサーバー ミドルウェア ライブラリ
+## <a name="desktop-application"></a>デスクトップ アプリケーション
 
-Web アプリケーションと Web API を保護するには、ミドルウェア ライブラリを使用します。 ASP.NET または ASP.NET Core で記述された Web アプリまたは Web API では、ミドルウェア ライブラリが使用されています。
+デスクトップ アプリケーションは、通常、ユーザー インターフェイスを表面に出し、ユーザーのデスクトップで実行されることを意図した、バイナリ (コンパイル済み) コードです。
 
-| プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス
-| --- | --- | --- | --- | --- | --- |
-| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET のセキュリティ |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC アプリ](quickstart-v2-aspnet-webapp.md) |[ASP.NET API リファレンス](/dotnet/api/?view=aspnetcore-2.0&preserve-view=true) |
-| ![.NET](media/sample-v2-code/logo_NET.png)| IdentityModel Extensions for .NET| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC アプリ](quickstart-v2-aspnet-webapp.md) |[リファレンス](/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet&preserve-view=true) |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web アプリ](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
+デスクトップ アプリケーションはユーザーのデスクトップで実行されるため、シークレットを安全に保存できない *パブリック クライアント* と見なされます。
 
-## <a name="microsoft-supported-libraries-by-os--language"></a>OS/言語別で Microsoft がサポートするライブラリ
+| 言語/フレームワーク | プロジェクト<br/>GitHub                                                                                     | Package                                                                               | 取得<br/>started                        | ユーザーのサインイン                                         | Web API へのアクセス                                                 | 一般提供 (GA) *または*<br/>パブリック プレビュー<sup>1</sup> |
+|----------------------|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|:------------------------------------------:|:-----------------------------------------------------:|:---------------------------------------------------------------:|:------------------------------------------------------------:|
+| Electron             | [MSAL Node.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node) | [@azure/msal-node](https://www.npmjs.com/package/@azure/msal-node)                    | —                                          | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | パブリック プレビュー                                               |
+| Java                 | [MSAL4J](https://github.com/AzureAD/microsoft-authentication-library-for-java)                            | [msal4j](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j)               | —                                          | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| macOS (Swift/Obj-C)  | [iOS および macOS 用の MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)            | [MSAL](https://cocoapods.org/pods/MSAL)                                               | [チュートリアル](tutorial-v2-ios.md)             | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| UWP                  | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)                        | [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) | [チュートリアル](tutorial-v2-windows-uwp.md)     | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| WPF                  | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)                        | [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) | [チュートリアル](tutorial-v2-windows-desktop.md) | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+<!--
+| Java | Scribe | [Scribe Java](https://mvnrepository.com/artifact/org.scribe/scribe) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+| React Native | [React Native App Auth](https://github.com/FormidableLabs/react-native-app-auth/blob/main/docs/config-examples/azure-active-directory.md) | [react-native-app-auth](https://www.npmjs.com/package/react-native-app-auth) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+-->
 
-サポートされているオペレーティング システムと言語の対照表は次のようになります。
+<sup>1</sup>「[Microsoft Azure プレビューの追加利用規約][preview-tos]」は、*パブリック プレビュー* のライブラリにも適用されます。
 
-| プラットフォーム    | Windows    | Linux      | macOS      | iOS | Android    |
-|-------------|------------|------------|------------|------------|------------|
-| ![JavaScript](media/sample-v2-code/logo_js.png)  |  MSAL.js | MSAL.js | MSAL.js | MSAL.js |  MSAL.js |
-| <img alt="C#" src="../../cognitive-services/speech-service/media/index/logo_csharp.svg" width="64px" height="64px" /> | ASP.NET、ASP.NET Core、MSAL.Net (.NET FW、Core、UWP)| ASP.NET Core、MSAL.Net (.NET Core) | ASP.NET Core、MSAL.Net (macOS)       | MSAL.Net (Xamarin.iOS) | MSAL.Net (Xamarin.Android)|
-| Swift <br> Objective-C |            |            | [iOS および macOS 用の MSAL](msal-overview.md) | [iOS および macOS 用の MSAL](msal-overview.md) |            |
-| ![Java](media/sample-v2-code/logo_java.png) Java | msal4j | msal4j | msal4j | | MSAL Android |
-| ![Python](media/sample-v2-code/logo_python.png) Python | MSAL Python | MSAL Python | MSAL Python |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) Node.js | Passport.node | Passport.node | Passport.node |
+## <a name="mobile-application"></a>モバイル アプリケーション
 
-[シナリオとサポートされているプラットフォームと言語](authentication-flows-app-scenarios.md#scenarios-and-supported-platforms-and-languages)も参照してください。
+モバイル アプリケーションは、通常、ユーザー インターフェイスを表面に出し、ユーザーのモバイル デバイスで実行されることを意図した、バイナリ (コンパイル済み) コードです。
 
-## <a name="compatible-client-libraries"></a>互換性のあるクライアント ライブラリ
+モバイル アプリケーションはユーザーのモバイル デバイスで実行されるため、シークレットを安全に保存できない *パブリック クライアント* と見なされます。
 
-| プラットフォーム | ライブラリ名 | テスト済みのバージョン | ソース コード | サンプル |
-|:---:|:---:|:---:|:---:|:---:|
-|![JavaScript](media/sample-v2-code/logo_js.png)|[Hello.js](https://adodson.com/hello.js/) | バージョン 1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
-|![Vue](media/sample-v2-code/logo_vue.png)|[Vue MSAL](https://github.com/mvertopoulos/vue-msal) | バージョン 3.0.3 |[vue-msal](https://github.com/mvertopoulos/vue-msal) | |
-| ![Java](media/sample-v2-code/logo_java.png) | [Scribe Java](https://github.com/scribejava/scribejava) | [バージョン 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
-| ![Java](media/sample-v2-code/logo_java.png) | [Gluu OpenID Connect ライブラリ](https://github.com/GluuFederation/oxAuth) | [バージョン 3.0.2](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Gluu OpenID Connect ライブラリ](https://github.com/GluuFederation/oxAuth) | |
-| ![Python](media/sample-v2-code/logo_python.png) | [Requests-OAuthlib](https://github.com/requests/requests-oauthlib) | [バージョン 1.2.0](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Requests-OAuthlib](https://github.com/requests/requests-oauthlib) | |
-| ![Node.js](media/sample-v2-code/logo_nodejs.png) | [openid-client](https://github.com/panva/node-openid-client) | [バージョン 2.4.5](https://github.com/panva/node-openid-client/releases/tag/v2.4.5) | [openid-client](https://github.com/panva/node-openid-client) | |
-| ![PHP](media/sample-v2-code/logo_php.png) | [PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [バージョン 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/) | |
-| ![Ruby](media/sample-v2-code/logo_ruby.png) |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth: 1.3.1<br />omniauth-oauth2: 1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)<br />[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
-| iOS、macOS、Android  | [React Native App 認証](https://github.com/FormidableLabs/react-native-app-auth) | [バージョン 4.2.0](https://github.com/FormidableLabs/react-native-app-auth/releases/tag/v4.2.0) | [React Native App 認証](https://github.com/FormidableLabs/react-native-app-auth) | |
+| プラットフォーム          | プロジェクト<br/>GitHub                                                                          | Package                                                                               | 取得<br/>started                    | ユーザーのサインイン                                         | Web API へのアクセス                                                 | 一般提供 (GA) *または*<br/>パブリック プレビュー<sup>1</sup> |
+|-------------------|------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|:--------------------------------------:|:-----------------------------------------------------:|:---------------------------------------------------------------:|:------------------------------------------------------------:|
+| Android (Java)    | [MSAL Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)        | [MSAL](https://mvnrepository.com/artifact/com.microsoft.identity.client/msal)         | [クイックスタート](quickstart-v2-android.md) | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| Android (Kotlin)  | [MSAL Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)        | [MSAL](https://mvnrepository.com/artifact/com.microsoft.identity.client/msal)         | —                                      | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| iOS (Swift/Obj-C) | [iOS および macOS 用の MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [MSAL](https://cocoapods.org/pods/MSAL)                                               | [チュートリアル](tutorial-v2-ios.md)         | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| Xamarin (.NET)    | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)             | [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) | —                                      | ![ライブラリでは、ユーザー サインインの ID トークンを要求できます。][y] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+<!--
+| React Native |[React Native App Auth](https://github.com/FormidableLabs/react-native-app-auth/blob/main/docs/config-examples/azure-active-directory.md) | [react-native-app-auth](https://www.npmjs.com/package/react-native-app-auth) | ![X indicating no.][n] | ![Green check mark.][y] | ![Green check mark.][y] | -- |
+-->
 
-標準に準拠しているライブラリの場合は、Microsoft ID プラットフォーム エンドポイントを使用できます。 サポートの入手先を知っておくことが重要です。
+<sup>1</sup>「[Microsoft Azure プレビューの追加利用規約][preview-tos]」は、*パブリック プレビュー* のライブラリにも適用されます。
 
-* ライブラリ コードの問題と新機能に関する要望については、ライブラリ所有者にお問い合わせください。
-* サービス側のプロトコルの実装の問題と新機能に関する要望については、Microsoft にお問い合わせください。
-* プロトコルに追加機能を求める場合、[機能要求を提出](https://feedback.azure.com/forums/169401-azure-active-directory)してください。
-* Microsoft ID プラットフォーム エンドポイントが OAuth 2.0 や OpenID Connect 1.0 に準拠しない問題があれば、[サポート依頼を作成](../../azure-portal/supportability/how-to-create-azure-support-request.md)してください。
+## <a name="service--daemon"></a>サービス/デーモン
 
-## <a name="related-content"></a>関連コンテンツ
+サービスとデーモンは、サーバー間およびその他の無人 (*ヘッドレス* とも呼ばれます) 通信でよく使用されます。 キーボードの前にユーザーがいて資格情報を入力したりリソースへのアクセスを同意したりすることがないため、これらのアプリケーションでは、Web API のリソースへの認可済みアクセスを要求するときに、ユーザーではなくそれ自身として認証されます。
 
-Microsoft ID プラットフォーム エンドポイントの詳細については、「[Microsoft ID プラットフォームの概要][AAD-App-Model-V2-Overview]」を参照してください。
+サーバーで実行されるサービスまたはデーモンは、シークレットを安全に格納できる *機密クライアント* と見なされます。
+
+| 言語/フレームワーク | プロジェクト<br/>GitHub                                                                 | Package                                                                                | 取得<br/>started                           | ユーザーのサインイン                                            | Web API へのアクセス                                                 | 一般提供 (GA) *または*<br/>パブリック プレビュー<sup>1</sup> |
+|----------------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------|:---------------------------------------------:|:--------------------------------------------------------:|:---------------------------------------------------------------:|:------------------------------------------------------------:|
+| .NET                 | [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)    | [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) | [クイックスタート](quickstart-v2-netcore-daemon.md) | ![ライブラリでは、ユーザー サインインの ID トークンを要求できません。][n] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| Java                 | [MSAL4J](https://github.com/AzureAD/microsoft-authentication-library-for-java)        | [msal4j](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html)          | —                                             | ![ライブラリでは、ユーザー サインインの ID トークンを要求できません。][n] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+| Python               | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [msal-python](https://github.com/AzureAD/microsoft-authentication-library-for-python)  | [クイックスタート](quickstart-v2-python-daemon.md)  | ![ライブラリでは、ユーザー サインインの ID トークンを要求できません。][n] | ![ライブラリでは、保護された Web API のアクセス トークンを要求できます。][y] | GA                                                           |
+<!--
+|PHP| [The PHP League oauth2-client](https://oauth2-client.thephpleague.com/usage/) | [League\OAuth2](https://oauth2-client.thephpleague.com/) | ![Green check mark.][n] | ![X indicating no.][n] | ![Green check mark.][y] | -- |
+-->
+
+<sup>1</sup>「[Microsoft Azure プレビューの追加利用規約][preview-tos]」は、*パブリック プレビュー* のライブラリにも適用されます。
+
+## <a name="next-steps"></a>次のステップ
+
+Microsoft Authentication Library の詳細については、「[Microsoft Authentication Library (MSAL)の概要](msal-overview.md)」を参照してください。
 
 <!--Image references-->
+[y]: ./media/common/yes.png
+[n]: ./media/common/no.png
 
-<!--Reference style links -->
+<!--Reference-style links -->
 [AAD-App-Model-V2-Overview]: v2-overview.md
-[ClientLib-NET-Lib]: https://www.nuget.org/packages/Microsoft.Identity.Client
-[ClientLib-NET-Repo]: https://github.com/AzureAD/microsoft-authentication-library-for-dotnet
-[ClientLib-NET-Sample]: ./tutorial-v2-windows-desktop.md
-[ClientLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
-[ClientLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad
-[ClientLib-Node-Sample]:/
-[ClientLib-Iosmac-Lib]:/
-[ClientLib-Iosmac-Repo]:/
-[ClientLib-Iosmac-Sample]:/
-[ClientLib-Android-Lib]:/
-[ClientLib-Android-Repo]:/
-[ClientLib-Android-Sample]:/
-[ClientLib-Js-Lib]:/
-[ClientLib-Js-Repo]:/
-[ClientLib-Js-Sample]:/
-
-[Microsoft-SDL]: https://www.microsoft.com/sdl/default.aspx
-[ServerLib-Net4-Owin-Oidc-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/
-[ServerLib-Net4-Owin-Oidc-Repo]: https://katanaproject.codeplex.com/
-[ServerLib-Net4-Owin-Oidc-Sample]: ./tutorial-v2-asp-webapp.md
-[ServerLib-Net4-Owin-Oauth-Lib]: https://www.nuget.org/packages/Microsoft.Owin.Security.OAuth/
-[ServerLib-Net4-Owin-Oauth-Repo]: https://katanaproject.codeplex.com/
-[ServerLib-Net4-Owin-Oauth-Sample]: https://azure.microsoft.com/documentation/articles/active-directory-v2-devquickstarts-dotnet-api/
-[ServerLib-Net-Jwt-Lib]: https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt
-[ServerLib-Net-Jwt-Repo]: https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet
-[ServerLib-Net-Jwt-Sample]:/
-[ServerLib-NetCore-Owin-Oidc-Lib]: https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.OpenIdConnect/
-[ServerLib-NetCore-Owin-Oidc-Repo]: https://github.com/aspnet/Security
-[ServerLib-NetCore-Owin-Oidc-Sample]: https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-v2
-[ServerLib-NetCore-Owin-Oauth-Lib]: https://www.nuget.org/packages/Microsoft.AspNetCore.Authentication.OAuth/
-[ServerLib-NetCore-Owin-Oauth-Repo]: https://github.com/aspnet/Security
-[ServerLib-NetCore-Owin-Oauth-Sample]:/
-[ServerLib-Node-Lib]: https://www.npmjs.com/package/passport-azure-ad
-[ServerLib-Node-Repo]: https://github.com/AzureAD/passport-azure-ad/
-[ServerLib-Node-Sample]: https://azure.microsoft.com/documentation/articles/active-directory-v2-devquickstarts-node-web/
+[Microsoft-SDL]: https://www.microsoft.com/securityengineering/sdl/
+[preview-tos]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

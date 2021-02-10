@@ -7,17 +7,16 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b239f44311424db2e80c59e2aba639ae3c0000
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296248"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797446"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure Media Player のフル セットアップ #
 
 Azure Media Player は簡単にセットアップできます。 Azure Media Services アカウントから直接メディア コンテンツの基本的な再生を行うのにほとんど時間はかかりません。 リリースのサンプル ディレクトリに[サンプル](https://github.com/Azure-Samples/azure-media-player-samples)も用意されています。
-
 
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>手順 1:ページの先頭に JavaScript と CSS ファイルを配置する ##
 
@@ -34,7 +33,7 @@ Azure Media Player では、CDN ホスト バージョンからスクリプト�
 ```
 
 > [!IMPORTANT]
-> `latest` バージョンは、必要に応じて変更されることがあるため、運用環境では使用**しない**でください。 `latest` を Azure Media Player のバージョンに置き換えます。 たとえば、`latest` を `2.1.1` に置き換えます。 Azure Media Player のバージョンは、[こちら](azure-media-player-changelog.md)から照会できます。
+> `latest` バージョンは、必要に応じて変更されることがあるため、運用環境では使用 **しない** でください。 `latest` を Azure Media Player のバージョンに置き換えます。 たとえば、`latest` を `2.1.1` に置き換えます。 Azure Media Player のバージョンは、[こちら](azure-media-player-changelog.md)から照会できます。
 
 > [!NOTE]
 > `1.2.0` のリリース以降、フォールバック テクノロジに場所を含める必要がなくなりました (場所は、azuremediaplayer.min.js ファイルの相対パスから自動的に取得されます)。 フォールバック テクノロジの場所は、上記のスクリプトの後の `<head>` に次のスクリプトを追加することで変更できます。
@@ -61,7 +60,7 @@ Azure Media Player では、HTML5 ビデオ タグを使用してビデオを埋
 1. `<source>` には、次の 2 つの必須属性が含まれます
     - `src` には、Azure Media Services から追加される * *.ism/manifest* ファイルを含めることができます。Azure Media Player は、DASH、SMOOTH、HLS の URL をプレーヤーに自動的に追加します
     - `type` 属性は必須で、ストリームの MIME の種類です。 *".ism/manifest"* に関連付けられた MIME の種類は、 *"application/vnd.ms-sstr+xml"* です
-1. `<source>` の*省略可能な* `<data-setup>` 属性は、Azure Media Player に対して、Azure Media Player からのストリーム固有の配信ポリシーがあるかどうかを伝えます。たとえば、暗号化の種類 (AES または PlayReady、Widevine、または FairPlay) やトークンなどがありますが、この限りではありません。
+1. `<source>` の *省略可能な* `<data-setup>` 属性は、Azure Media Player に対して、Azure Media Player からのストリーム固有の配信ポリシーがあるかどうかを伝えます。たとえば、暗号化の種類 (AES または PlayReady、Widevine、または FairPlay) やトークンなどがありますが、この限りではありません。
 
 HTML5 ビデオの場合と同様に、属性、設定、ソース、トラックを含めるか、または除外します。
 

@@ -1,16 +1,16 @@
 ---
-title: Azure Functions の既存の関数にバインドを追加する
-description: Azure Functions プロジェクト内の既存の関数にバインドを追加する方法について説明します。
+title: 関数を他の Azure サービスに接続する
+description: 他の Azure サービスに接続するバインドを、ご利用の Azure Functions プロジェクト内の既存の関数に追加する方法について説明します。
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 23b7b05f9a9f9da5a48511ee555e3b6184a74179
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d1c6f5bb8ca5fcf995b8a8d326abbec96f1d2e35
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91654057"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258203"
 ---
-# <a name="add-bindings-to-an-existing-function-in-azure-functions"></a>Azure Functions の既存の関数にバインドを追加する
+# <a name="connect-functions-to-azure-services-using-bindings"></a>バインドを使用して関数を Azure サービスに接続する
 
 関数を作成するときには、一連のトリガー テンプレートから、言語固有のトリガー コードがプロジェクトに追加されます。 入力または出力のバインドを使用して関数を他のサービスに接続する場合は、その関数に特定のバインド定義を追加する必要があります。 バインドの詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 

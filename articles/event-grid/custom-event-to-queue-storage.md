@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:カスタム イベントをストレージ キューに送信する - Event Grid、Azure CLI
 description: クイック スタート:Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。 ストレージ キューはエンドポイントに対して使われます。
-ms.date: 07/07/2020
+ms.date: 02/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4de7aa1c111b5b21a27b155474ae10f78feba083
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 00808e7eca13824833673ef820d39b70bf618dd2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566318"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493262"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>クイック スタート:Azure CLI と Event Grid を使ってカスタム イベントを Azure Queue Storage にルーティングする
 
@@ -116,6 +116,11 @@ done
 ポータルでキュー ストレージに移動し、イベント グリッドがキューにこれら 3 つのイベントを送信したことを確認します。
 
 ![メッセージを表示する](./media/custom-event-to-queue-storage/messages.png)
+
+> [!NOTE]
+> Event Grid からメッセージを受信するキューに、[Azure Functions の Azure Queue storage トリガー](../azure-functions/functions-bindings-storage-queue-trigger.md)を使用した場合、関数の実行時に、"`The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`" というエラー メッセージが表示されることがあります。
+> 
+> [Azure Queue storage トリガー](../azure-functions/functions-bindings-storage-queue-trigger.md)が使用されているときに Azure Functions が想定するのは **Base64 エンコード文字列** ですが、Event Grid からストレージ キューに送信されるメッセージはプレーンテキスト形式であることが、その理由です。 現時点では、プレーンテキストを Azure Functions が受け入れるようにキュー トリガーを構成することはできません。 
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

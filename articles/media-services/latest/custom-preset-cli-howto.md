@@ -1,5 +1,5 @@
 ---
-title: Media Services v3 Azure CLI を使用するカスタム変換のエンコード | Microsoft Docs
+title: カスタム変換をエンコードする - CLI
 description: このトピックでは、Azure Media Services v3 で Azure CLI を使用してカスタム変換をエンコードする方法を示します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: c61ac8c7cf85b1fae4c9b531f16b951dd2b80876
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91ee605035dbc81c2302aa0350763e68dc73ecb3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295787"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956108"
 ---
 # <a name="how-to-encode-with-a-custom-transform---azure-cli"></a>カスタム変換を使用してエンコードする方法 - Azure CLI
 
@@ -128,7 +128,7 @@ Azure Media Services でエンコードする場合、クイック スタート�
 
 ## <a name="create-a-new-transform"></a>新しい変換を作成する  
 
-この例では、先ほど定義したカスタム プリセットに基づく**変換**を作成します。 変換を作成するときは、すでに存在している変換があるかどうか確認する必要があります。 変換が存在する場合はそれを再利用します。 次の `show` コマンドは、変換が存在する場合、`customTransformName` を返します。
+この例では、先ほど定義したカスタム プリセットに基づく **変換** を作成します。 変換を作成するときは、すでに存在している変換があるかどうか確認する必要があります。 変換が存在する場合はそれを再利用します。 次の `show` コマンドは、変換が存在する場合、`customTransformName` を返します。
 
 ```azurecli-interactive
 az ams transform show -a amsaccount -g amsResourceGroup -n customTransformName

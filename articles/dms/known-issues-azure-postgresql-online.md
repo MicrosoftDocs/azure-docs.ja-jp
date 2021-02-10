@@ -14,12 +14,12 @@ ms.custom:
 - seo-dt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 8c3c1d28a7fbb3e3c9c449feb03a75d48178b718
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fdefcabdda64402610f115832976ec9f7af81b80
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609039"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258831"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql"></a>PostgreSQL から Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -123,3 +123,4 @@ AWS RDS PostgreSQL から Azure Database for PostgreSQL へのオンライン移
 - 名前が同じで大文字/小文字が異なる複数のテーブル (例: table1、TABLE1、Table1) の移行は、予期しない動作が発生する原因となるためサポートされていません。
 - [CREATE | ALTER | DROP | TRUNCATE] テーブル DDL の変更処理はサポートされていません。
 - Azure Database Migration Service では、1 つの移行アクティビティで最大 4 つのデータベースにのみ対応できます。
+- pg_largeobject テーブルの移行はサポートされていません。 

@@ -2,19 +2,19 @@
 title: Custom Translator とは
 titleSuffix: Azure Cognitive Services
 description: Custom Translator は、統計的機械翻訳 (SMT) に対して Microsoft Translator Hub が提供するのと同様の機能を提供しますが、ニューラル機械翻訳 (NMT) システム専用です。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 12/09/2019
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 6a7301fd878eb65e4c1dd540275611bcf9348afc
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241745"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890715"
 ---
 # <a name="what-is-custom-translator"></a>Custom Translator とは
 
@@ -28,7 +28,7 @@ Custom Translator は、36 を超える言語をサポートし、NMT で利用�
 
 Custom Translator は、カスタム翻訳システムを構築し、その後そのシステムにアクセスするための各種機能を提供します。
 
-|特徴量  |説明  |
+|機能  |説明  |
 |---------|---------|
 |[ニューラル機械翻訳テクノロジを活用](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Custom Translator によって提供されるニューラル機械翻訳 (NMT) を活用して翻訳を改善します。       |
 |[ビジネス用語を理解するシステムを構築](what-are-parallel-documents.md)     |  お客様のビジネスや業界で使用されている用語が反映されている対訳ドキュメントを使用して、翻訳システムをカスタマイズおよび構築します。       |

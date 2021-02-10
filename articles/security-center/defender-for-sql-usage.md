@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: c9d11f1ddc3e1dd2239bdfce9c41f58fe9e20497
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: d741aad2e97b211e42dc6c8b6176f102703acc5b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539960"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916491"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender for SQL servers on machines 
 

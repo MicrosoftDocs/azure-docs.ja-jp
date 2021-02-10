@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2578b47d27ef062d83ba8621a49e9a8f439897c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016004"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919027"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>リファレンス - 通信プロトコルの選択
 
@@ -42,7 +42,7 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 
 デバイス側の通信用プロトコルを選択する場合、次の点を考慮してください。
 
-* **C2D のパターン**。 HTTPS には、サーバー プッシュを実装する効率的な方法がありません。 そのため、HTTPS を使うと、デバイスは IoT Hub に対して C2D メッセージのポーリングを行います。 この方法は、デバイスと IoT Hub の両方で非効率的です。 現在の HTTPS ガイドラインでは、各デバイスによるメッセージのポーリングの間隔は 25 分以上となっています。 MQTT と AMQP では、C2D メッセージを受信する場合のサーバー プッシュがサポートされています。 IoT Hub からデバイスへのメッセージも即座にプッシュできます。 配信の待機時間が問題となる場合は、MQTT または AMQP が使用に最適なプロトコルです。 頻繁に接続されないデバイスの場合は、HTTPS でも対応できます。
+* **C2D のパターン**。 HTTPS には、サーバー プッシュを実装する効率的な方法がありません。 そのため、HTTPS を使うと、デバイスは IoT Hub に対して C2D メッセージのポーリングを行います。 この方法は、デバイスと IoT Hub の両方で非効率的です。 現在の HTTPS ガイドラインでは、各デバイスによるメッセージのポーリングの間隔は 25 分以上となっています。 HTTPS 受信の発行が多くなれば、IoT Hub で要求が調整されます。 MQTT と AMQP では、C2D メッセージを受信する場合のサーバー プッシュがサポートされています。 IoT Hub からデバイスへのメッセージも即座にプッシュできます。 配信の待機時間が問題となる場合は、MQTT または AMQP が使用に最適なプロトコルです。 頻繁に接続されないデバイスの場合は、HTTPS でも対応できます。
 
 * **フィールド ゲートウェイ**。 MQTT と HTTPS でサポートされるデバイス ID (デバイス ID と資格情報) は、TLS 接続ごとに 1 つだけです。 このような理由から、IoT Hub への単一のアップストリーム接続またはそのプール全体で複数のデバイス ID を使用したメッセージの多重化を必要とする[フィールド ゲートウェイのシナリオ](iot-hub-devguide-endpoints.md#field-gateways)では、これらのプロトコルがサポートされません。 そのようなゲートウェイでは、アップストリーム トラフィックの接続ごとに複数のデバイス ID をサポートするプロトコル (AMQP など) を使用してください。
 

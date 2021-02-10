@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c302e10a169a190d11f016620ec048cc58e3ac28
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762936"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220166"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
-Microsoft ID プラットフォーム (v2.0) エンドポイントは、さまざまなモダン アプリケーション アーキテクチャのための認証をサポートしています。 アーキテクチャはいずれも、業界標準のプロトコル [OAuth 2.0 and OpenID Connect](active-directory-v2-protocols.md) に基づいています。 アプリケーションでは、[Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)を使用して ID が認証され、保護された API にアクセスするためのトークンが取得されます。
+Microsoft ID プラットフォームは、さまざまなモダン アプリケーション アーキテクチャのための認証をサポートしています。 アーキテクチャはいずれも、業界標準のプロトコル [OAuth 2.0 and OpenID Connect](active-directory-v2-protocols.md) に基づいています。 アプリケーションでは、[Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)を使用して ID が認証され、保護された API にアクセスするためのトークンが取得されます。
 
 この記事では、認証フローと、アプリケーションでそれらを使用するシナリオについて説明します。
 
@@ -42,8 +42,8 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントは、さま�
 
 認証シナリオには、次の 2 つのアクティビティが含まれます。
 
-- **保護された Web API のセキュリティ トークンの取得**:トークンの取得には、[Microsoft がサポートするクライアント ライブラリ](reference-v2-libraries.md#microsoft-supported-client-libraries)の使用をお勧めします。 特に、Microsoft 認証ライブラリ (MSAL) ファミリが推奨されます。
-- **Web API (または Web アプリ) の保護**:これらのリソースの保護に関する課題の 1 つに、セキュリティ トークンの検証があります。 Microsoft では、一部のプラットフォームについて[ミドルウェア ライブラリ](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)を提供しています。
+- **保護された Web API のセキュリティ トークンの取得**:Microsoft が開発し、サポートしている [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) の使用をお勧めします。
+- **Web API (または Web アプリ) の保護**:これらのリソースの保護に関する課題の 1 つに、セキュリティ トークンの検証があります。 Microsoft では、一部のプラットフォームについて[ミドルウェア ライブラリ](reference-v2-libraries.md)を提供しています。
 
 ### <a name="with-users-or-without-users"></a>ユーザーありまたはユーザーなし
 
@@ -65,7 +65,7 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントは、さま�
   - サインイン ユーザーの代わりに Web API を呼び出すデスクトップ アプリケーション
   - モバイル アプリ
   - ブラウザーがインストールされていないデバイス (IoT 上で運用されているデバイスなど) で稼働しているアプリ
-  
+
 - **機密クライアント アプリケーション**:このカテゴリには、次のようなアプリが該当します。
   - Web API を呼び出す Web アプリ
   - Web API を呼び出す Web API
@@ -79,7 +79,7 @@ Microsoft ID プラットフォーム (v2.0) エンドポイントは、さま�
 
 ## <a name="application-scenarios"></a>アプリケーションのシナリオ
 
-Microsoft ID プラットフォーム エンドポイントは、これらのアプリ アーキテクチャのための認証をサポートしています。
+Microsoft ID プラットフォームでは、これらのアプリ アーキテクチャのための認証がサポートされています。
 
 - シングルページ アプリ
 - Web Apps
@@ -95,7 +95,7 @@ Microsoft ID プラットフォーム エンドポイントは、これらのア
 
 最新の Web アプリの多くは、クライアント側のシングル ページ アプリケーションとして構築されています。 これらのアプリケーションでは、JavaScript またはフレームワーク (Angular、Vue、React など) が使用されています。 このようなアプリケーションは、Web ブラウザー内で稼働します。
 
-シングルページ アプリケーションは、認証の特性の点で、従来からあるサーバー側の Web アプリとは異なります。 Microsoft ID プラットフォームを使うと、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするためのトークンを取得することができます。 Microsoft ID プラットフォームは、JavaScript アプリケーション用の次の 2 つの付与タイプを提供しています。 
+シングルページ アプリケーションは、認証の特性の点で、従来からあるサーバー側の Web アプリとは異なります。 Microsoft ID プラットフォームを使うと、シングルページ アプリケーションでユーザーをサインインさせ、バックエンド サービスまたは Web API にアクセスするためのトークンを取得することができます。 Microsoft ID プラットフォームでは、JavaScript アプリケーション用の 2 つの付与タイプが提供されています。
 
 | MSAL.js (2.x) | MSAL.js (1.x) |
 |---|---|
@@ -309,7 +309,7 @@ Microsoft の認証ライブラリは、さまざまなプラットフォーム�
 | [デーモン アプリ](scenario-daemon-overview.md) <br/> [![デーモン アプリ](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 | [Web API を呼び出す Web API](scenario-web-api-call-api-overview.md) <br/><br/> [![Web API を呼び出す Web API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 
-詳細については、「[OS/言語別で Microsoft がサポートするライブラリ](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)」を参照してください。
+詳細については、「[Microsoft ID プラットフォームの認証ライブラリ](reference-v2-libraries.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

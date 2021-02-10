@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178944"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660269"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Azure AD B2C でカスタム ポリシーを使用した電話のサインアップとサインインを設定する
 
@@ -39,12 +39,12 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 >
 > *&lt;挿入: プライバシーに関する声明へのリンク&gt;*<br/>*&lt;挿入: サービス利用規約へのリンク&gt;*
 
-独自の同意情報を追加するには、次のサンプルをカスタマイズし、表示コントロール ([電話でのサインアップとサインインのスターター パック][starter-pack-phone]内の *Phone_Email_Base.xml* ファイル) を使用してセルフアサートされたページで使用される ContentDefinition の LocalizedResources に含めます。
+独自の同意情報を追加するには、次のサンプルをカスタマイズしてください。 表示コントロールを備えたセルフアサート ページで使用される ContentDefinition の場合に、これを `LocalizedResources` に含めます ([電話のサインアップおよびサインインのスターター パック][starter-pack-phone]に含まれる *Phone_Email_Base.xml* ファイル)。
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ Azure Active Directory B2C (Azure AD B2C) での電話のサインアップと�
 
 ![ユーザーが電話のサインアップ時にコードを確認する](media/phone-authentication/phone-signup-verify-code.png)
 
- ユーザーは、サインアップ ページで要求されたその他の情報、たとえば **[表示名]** 、 **[名]** 、 **[姓]** などを入力します (国と電話番号は入力されたままになっています)。 ユーザーが別の電話番号を使用する場合は、 **[番号の変更]** を選択して、サインアップを再開することができます。 完了したら、ユーザーは **[続行]** を選択します。
+ユーザーは、サインアップ ページで要求されたその他の情報を入力します。 たとえば、**表示名**、**名**、**姓** などです (国と電話番号は設定されたままです)。 ユーザーが別の電話番号を使用する場合は、 **[番号の変更]** を選択して、サインアップを再開することができます。 完了したら、ユーザーは **[続行]** を選択します。
 
 ![ユーザーが追加情報を入力する](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -100,8 +100,6 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 まず、電話でのサインアップとサインインのためのカスタム ポリシー ファイルを更新して、Azure AD B2C テナントと連携させます。
 
-次の手順では、[前提条件](#prerequisites)を完了し、[カスタム ポリシー スターター パック][starter-pack] リポジトリをローカル コンピューターに既に複製済みであることを前提としています。
-
 1. [電話のサインアップとサインインのカスタム ポリシー ファイル][starter-pack-phone]をローカルにあるスターター パック リポジトリの複製で検索するか、直接ダウンロードします。 XML ポリシー ファイルは次のディレクトリにあります。
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
@@ -136,9 +134,9 @@ OTP を設定する前に、次のリソースを用意しておく必要があ�
 
 ## <a name="get-user-account-by-phone-number"></a>電話番号でユーザー アカウントを取得する
 
-電話番号でサインアップするが、回復メール アドレスを提供しないユーザーは、サインイン名として電話番号を使用して Azure AD B2C ディレクトリに記録されます。 その後、ユーザーが電話番号の変更を希望する場合は、まずヘルプ デスクまたはサポート チームが彼らのアカウントを見つけて、次にその電話番号を更新する必要があります。
+サインアップに電話番号を使用し、回復メール アドレスを使用しないユーザーは、サインイン名として電話番号を使用して Azure AD B2C ディレクトリに記録されます。 この電話番号を変更するには、まずヘルプ デスクまたはサポート チームが彼らのアカウントを見つけて、次にその電話番号を更新する必要があります。
 
-[Microsoft Graph](manage-user-accounts-graph-api.md) を使用すれば、電話番号 (サインイン名) でユーザーを検索することができます。
+[Microsoft Graph](microsoft-graph-operations.md) を使用すれば、電話番号 (サインイン名) でユーザーを検索することができます。
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')

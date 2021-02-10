@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: c889498d6341875682055e9d67b8d2b958bac70a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/20/2021
+ms.openlocfilehash: a74868beea6e5903b6b17a7bc0c82cc822fcd36f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251065"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055180"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -866,7 +866,7 @@ TLS/SSL 自己署名証明書に関する情報を次に示します。
 
 * ロジック アプリの IP アドレスからのアクセスを制限する。
 
-  ロジック アプリからエンドポイントへの呼び出しはすべて、ロジック アプリのリージョンに基づいて指定される特定の IP アドレスが起点となります。 これらの IP アドレスからのみ要求を受け入れるフィルターを追加できます。 これらの IP アドレスを取得するには、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#configuration)に関するページを参照してください。
+  ロジック アプリからエンドポイントへの呼び出しはすべて、ロジック アプリのリージョンに基づいて指定される特定の IP アドレスが起点となります。 これらの IP アドレスからのみ要求を受け入れるフィルターを追加できます。 これらの IP アドレスを取得するには、[Azure Logic Apps の制限と構成](logic-apps-limits-and-config.md#firewall-ip-configuration)に関するページを参照してください。
 
 * オンプレミス システムへの接続のセキュリティを強化する。
 
@@ -966,7 +966,7 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | 使用する認証の種類。 [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) で証明書を管理できます。 <p></p>**注**:カスタム コネクタでは、受信と送信両方の呼び出しに対して証明書ベースの認証はサポートされていません。 |
-| **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
+| **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` <p><p>**トラブルシューティング**: `cert mmc/PowerShell` コマンドを使用すると、次のエラーが表示される場合があります。 <p><p>`Could not load the certificate private key. Please check the authentication certificate password is correct and try again.` <p><p>このエラーを解決するには、`openssl` コマンドを使用して PFX ファイルを PEM ファイルに変換し、それからもう一度元に戻します。 <p><p>`openssl pkcs12 -in certificate.pfx -out certificate.pem` <br>`openssl pkcs12 -in certificate.pem -export -out certificate2.pfx` <p><p>その後は、証明書の新しく変換された PFX ファイルに対して base64 でエンコードされた文字列を取得すると、文字列は Azure Logic Apps で機能するようになります。 |
 | **パスワード** | `password`| いいえ | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
 |||||
 

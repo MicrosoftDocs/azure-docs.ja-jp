@@ -7,16 +7,20 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 4fc799c1c6dcaaa3ed4bc41c93bd6b786f51591c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208439"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429247"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Attestation を設定する
 
 [Azure CLI を使用して Azure Attestation](/cli/azure/ext/attestation/attestation?view=azure-cli-latest) を導入します。
+
+## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="get-started"></a>はじめに
 

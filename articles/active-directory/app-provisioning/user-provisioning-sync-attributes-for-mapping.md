@@ -3,19 +3,19 @@ title: マッピングのために Azure AD に属性を同期する
 description: オンプレミスの Active Directory から Azure AD に属性を同期する方法を説明します。 SaaS アプリへのユーザー プロビジョニングを構成する際は、ディレクトリの拡張機能を使用して、既定では同期されないソース属性を追加します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 05/13/2019
 ms.author: kenwith
-ms.openlocfilehash: cecdda27139aa1dd0733b50898db9db70aa34dc3
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 62d035b85850f8ac455a85fd93e4d081bbd386e1
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040988"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256087"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>アプリケーションにプロビジョニングするためにオンプレミスの Active Directory から Azure AD に属性を同期する
 
@@ -50,7 +50,7 @@ Azure AD から SaaS アプリにユーザー アカウントをプロビジョ�
    ![Azure Active Directory Connect ウィザードの [ディレクトリ拡張機能] 選択ページ](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 
 > [!NOTE]
-> オンプレミスの AD から参照属性 ( **managedby** や **DN/DistinguishedName** など) をプロビジョニングする機能は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで、この機能の要求をお送りください。 
+> オンプレミスの AD から参照属性 (**managedby** や **DN/DistinguishedName** など) をプロビジョニングする機能は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで、この機能の要求をお送りください。 
 
 ## <a name="next-steps"></a>次のステップ
 

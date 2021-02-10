@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 02/01/2021
+ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936126"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430799"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概要:Azure Logic Apps プレビュー
 
@@ -139,6 +139,8 @@ Azure Logic Apps プレビューには、現在および追加の機能が多数
 
 * Azure サブスクリプションとロジック アプリの設定でサポートされている場合は、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用してロジック アプリに対して診断ログとトレース機能を有効にします。
 
+* **Logic Apps (プレビュー)** リソースの個々のワークフローで使用されるマネージド接続のアクセス キーを再生成します。 このタスクでは、[**Logic Apps** リソースに対して同じ手順を実行しますが、ロジック アプリのリソース レベルではなく、個々のワークフロー レベルで実行します](logic-apps-securing-a-logic-app.md#regenerate-access-keys)。
+
 > [!NOTE]
 > 現在の既知の問題の詳細については、[GitHub の Logic Apps パブリック プレビューでの既知の問題に関するページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)を参照してください。
 
@@ -166,6 +168,8 @@ Azure portal で新しいロジック アプリの種類を作成するか、Vis
 ## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>変更された、制限付き、使用できない、またはサポートされていない機能
 
 Azure Logic Apps プレビューでは、これらの機能が変更されているか、現在制限されているか、使用できないか、またはサポートされていません。
+
+* **OS のサポート**: 現在、Visual Studio Code のデザイナーは Linux OS で動作しませんが、Logic Apps Preview ランタイムを使用するロジック アプリを Linux ベースの仮想マシンにデプロイすることはできます。 現在のところ、Windows または macOS の Visual Studio Code でロジック アプリを構築してから、Linux ベースの仮想マシンにデプロイすることができます。
 
 * **トリガーとアクション**: スライディング ウィンドウやバッチなど、一部の組み込みトリガーは使用できません。 ワークフローを開始するには、[組み込みの Recurrence、Request、HTTP、HTTP Webhook、Event Hubs、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 組み込みのトリガーとアクションは、Azure Logic Apps プレビュー ランタイムでネイティブに実行されますが、マネージド コネクタは Azure にデプロイされます。 デザイナーでは、組み込みのトリガーとアクションは **[組み込み]** タブに表示されますが、マネージド コネクタのトリガーとアクションは **[Azure]** タブに表示されます。
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024774"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939865"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Windows の音声アシスタントの実装
 
@@ -30,7 +30,7 @@ ms.locfileid: "95024774"
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>マイクが使用可能かつアクセス可能であることを確認し、その状態を監視する
 
-MVA が音声によるアクティブ化を検出するには、マイクが存在し、アクセス可能である必要があります。 [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362)、[DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362)、[MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362) の各クラスを使用して、それぞれマイクのプライバシー アクセス、デバイスの存在、デバイスの状態 (音量、ミュートなど) を確認します。
+MVA が音声によるアクティブ化を検出するには、マイクが存在し、アクセス可能である必要があります。 [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability)、[DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher)、[MediaCapture](/uwp/api/windows.media.capture.mediacapture) の各クラスを使用して、それぞれマイクのプライバシー アクセス、デバイスの存在、デバイスの状態 (音量、ミュートなど) を確認します。
 
 ### <a name="register-the-application-with-the-background-service"></a>バックグラウンド サービスにアプリケーションを登録する
 
@@ -38,7 +38,7 @@ MVA がバックグラウンドでアプリケーションを起動するには�
 
 ### <a name="unlock-the-limited-access-feature"></a>制限付きアクセス機能のロックを解除する
 
-Microsoft によって提供される制限付きアクセス機能キーを使用して、音声アシスタント機能のロックを解除します。 これを行うには、Windows SDK の [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362) クラスを使用します。
+Microsoft によって提供される制限付きアクセス機能キーを使用して、音声アシスタント機能のロックを解除します。 これを行うには、Windows SDK の [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures) クラスを使用します。
 
 ### <a name="register-the-keyword-for-the-application"></a>アプリケーションにキーワードを登録する
 
@@ -86,7 +86,7 @@ Windows で次の 2 つのいずれかの方法でキーワードが検出され
 
 ### <a name="retrieve-activation-audio"></a>アクティブ化オーディオを取得する
 
-[AudioGraph](/uwp/api/windows.media.audio.audiograph) を作成し、`ConversationalAgentSession` の `CreateAudioDeviceInputNodeAsync` に渡します。 これにより、"*キーワードが検出された約 3 秒前に開始する*" オーディオがグラフのオーディオ バッファーに読み込まれます。 この先頭のオーディオは、幅広いキーワード長とスピーカー速度に対応するために追加されています。 次に、オーディオ グラフから [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362) イベントを処理して、オーディオ データを取得します。
+[AudioGraph](/uwp/api/windows.media.audio.audiograph) を作成し、`ConversationalAgentSession` の `CreateAudioDeviceInputNodeAsync` に渡します。 これにより、"*キーワードが検出された約 3 秒前に開始する*" オーディオがグラフのオーディオ バッファーに読み込まれます。 この先頭のオーディオは、幅広いキーワード長とスピーカー速度に対応するために追加されています。 次に、オーディオ グラフから [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted) イベントを処理して、オーディオ データを取得します。
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);

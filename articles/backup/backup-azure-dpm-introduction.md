@@ -3,12 +3,12 @@ title: DPM サーバーを準備してワークロードをバックアップす
 description: この記事では、Azure Backup サービスを使用して、Azure への System Center Data Protection Manager (DPM) バックアップを準備する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 823b23d99959df5f2eed20cf4136254e1702fe89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002863"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985633"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 
@@ -48,7 +48,7 @@ VMware VM 上の DPM | System Center 2012 R2 の更新プログラムのロー�
 サポートされていないファイルの種類 | <li>大文字と小文字を区別するファイル システムのサーバー<li> ハード リンク (スキップされる)<li> 再解析ポイント (スキップされる)<li> 暗号化されている圧縮ファイル (スキップされる)<li> 暗号化されているスパース ファイル (スキップされる)<li> 圧縮ストリーム<li> 解析ストリーム
 ローカル ストレージ | バックアップする各マシンには、バックアップするデータのサイズの 5% 以上の空きローカル ストレージが必要です。 たとえば、100 GB のデータをバックアップするには、スクラッチ場所に少なくとも 5 GB の空き領域が必要です。
 コンテナー ストレージ | Azure Backup コンテナーにバックアップできるデータ量に制限はありませんが、データ ソース (仮想マシンやデータベースなど) のサイズは 54,400 GB を超えないようにする必要があります。
-Azure ExpressRoute | パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。<br/><br/> **パブリック ピアリングを使用する場合**:次のドメインまたはアドレスへのアクセスを確保します。<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Microsoft ピアリングを使用する場合** は、サービス、リージョン、関連するコミュニティについて以下の値を選択します。<br/><br/>- Azure Active Directory (12076:5060)<br/><br/>- Microsoft Azure リージョン (Recovery Services コンテナーの場所による)<br/><br/>- Azure Storage (Recovery Services コンテナーの場所による)<br/><br/>詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。<br/><br/>**注**:パブリック ピアリングは、新しい回線では非推奨です。
+Azure ExpressRoute | パブリック ピアリング (古い回線で使用可能) と Microsoft ピアリングを使用して、Azure ExpressRoute 経由でデータをバックアップできます。 プライベート ピアリング経由のバックアップはサポートされていません。<br/><br/> **パブリック ピアリングを使用する場合**:次のドメインまたはアドレスへのアクセスを確保します。<br/><br/> URL:<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>IP アドレス<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/>**Microsoft ピアリングを使用する場合** は、サービス、リージョン、関連するコミュニティについて以下の値を選択します。<br/><br/>- Azure Active Directory (12076:5060)<br/><br/>- Microsoft Azure リージョン (Recovery Services コンテナーの場所による)<br/><br/>- Azure Storage (Recovery Services コンテナーの場所による)<br/><br/>詳細については、「[ExpressRoute ルーティングの要件](../expressroute/expressroute-routing.md)」を参照してください。<br/><br/>**注**:パブリック ピアリングは、新しい回線では非推奨です。
 Azure Backup エージェント | DPM が System Center 2012 SP1 で実行されている場合、DPM SP1 のロールアップ 2 以降をインストールします。 これはエージェントのインストールに必要です。<br/><br/> この記事では、Microsoft Azure Recovery Service (MARS) エージェントとも呼ばれる、Azure Backup エージェントの最新バージョンをデプロイする方法について説明します。 以前のバージョンがデプロイされている場合、最新バージョンに更新し、バックアップが期待どおりに動作するようにしてください。
 
 開始する前に、Azure Backup 機能が有効になっている Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 [Azure Backup の料金](https://azure.microsoft.com/pricing/details/backup/)を参照してください。

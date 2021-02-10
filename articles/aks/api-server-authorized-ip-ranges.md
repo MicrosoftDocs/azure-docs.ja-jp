@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で API サーバーへのアクセ�
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 9828682fa71d023356b174d528c2137ed29f368d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ca6e1c06b3ad90ef12c9bf375bae50d46c5f7c37
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682504"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890640"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -130,6 +130,23 @@ az aks update \
     --api-server-authorized-ip-ranges ""
 ```
 
+## <a name="find-existing-authorized-ip-ranges"></a>既存の許可された IP 範囲を検索する
+
+許可された IP 範囲を検索するには、[az aks show][az-aks-show] を使用し、クラスターの名前とリソース グループを指定します。 例:
+
+```azurecli-interactive
+az aks show \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --query apiServerAccessProfile.authorizedIpRanges'
+```
+
+## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Azure portal を使用して、許可された IP 範囲の更新、無効化、検索を行う
+
+前述の許可された IP 範囲の追加、更新、検索、無効化の各操作は、Azure portal でも実行できます。 アクセスするには、クラスター リソースのメニュー ブレードの **[設定]** の下にある **[ネットワーク]** に移動します。
+
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="ブラウザーに、クラスター リソースのネットワーク設定 Azure portal ページが表示されています。'指定された IP 範囲の設定' と '指定された IP 範囲' のオプションが強調表示されています。":::
+
 ## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>`--api-server-authorized-ip-ranges` に含める IP を見つける方法
 
 そこから API サーバーにアクセスするには、許可された IP 範囲の AKS クラスター リストに、開発用コンピューター、ツール、またはオートメーションの IP アドレスを追加する必要があります。 
@@ -170,6 +187,7 @@ Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
 [az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-show]: /cli/azure/aks#az_aks_show
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md

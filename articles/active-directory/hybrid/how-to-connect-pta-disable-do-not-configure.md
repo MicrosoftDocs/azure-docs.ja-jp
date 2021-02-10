@@ -11,16 +11,21 @@ ms.date: 04/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5db99f5e8ed2ea5844acba5500bc94d8fb0db2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26112b1e799cbde3145e7137c686b4b336db4bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85358346"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919937"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>Azure AD Connect の [構成しない] を使用して PTA を無効にする
+# <a name="disable-pta-when-using-azure-ad-connect"></a>Azure AD Connect を使用して PTA を無効にする
 
-Azure AD Connect でパススルー認証 (PTA) を使用していて、それを [構成しない] に設定している場合は、無効にすることができます。 PTA の無効化は、次のコマンドレットを使用して行うことができます。 
+Azure AD Connect でパススルー認証を使用していて、それを **[構成しない]** に設定している場合は、それを無効にできます。 
+
+>[!NOTE]
+>PHS が既に有効になっている場合、PTA を無効にすると、テナントのフォールバックが PHS になります。
+
+PTA の無効化は、次のコマンドレットを使用して行うことができます。 
 
 ## <a name="prerequisites"></a>前提条件
 以下の前提条件が必要です。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: f6fffadd3c53f67af2e4c833a6a1d442c18efa0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 58b7b67842e9ba385b34ea4d8fdbcac190076218
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91398188"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428168"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する
 
@@ -150,4 +150,4 @@ StorSimple 移行ツールは、StorSimple 5000-7000 シリーズのデータを
   
 
 ## <a name="next-steps"></a>次のステップ
-[StorSimple 5000-7000 シリーズのデータを 8000 シリーズのデバイスに移行する方法](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)の手順をダウンロードします。
+[StorSimple 5000-7000 シリーズのデータを 8000 シリーズのデバイスに移行する方法](https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_Migration_Guide_20171115.pdf)の手順をダウンロードします。

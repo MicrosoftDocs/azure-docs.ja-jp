@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006440"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526977"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>チュートリアル:Azure AD から SAP SuccessFactors への属性の書き戻しを構成する
 このチュートリアルの目的は、Azure AD から SAP SuccessFactors Employee Central に属性を書き戻すための手順を説明することです。 
@@ -282,7 +282,7 @@ SAP SuccessFactors では、"*候補リスト*" は、ユーザーが選択で�
    | 3 | 8448 | emailType | この定数値は、勤務先のメールに関連付けられている SuccessFactors ID の値です。 SuccessFactors の環境に合わせてこの値を更新します。 この値を設定する手順については、「[emailType の定数値を取得する](#retrieve-constant-value-for-emailtype)」セクションを参照してください。 |
    | 4 | true | emailIsPrimary | SuccessFactors のプライマリとして勤務先のメールを設定するには、この属性を使用します。 勤務先のメールがプライマリでない場合は、このフラグを false に設定します。 |
    | 5 | userPrincipalName | [custom01 – custom15] | **[新しいマッピングの追加]** を使用すると、必要に応じて、SuccessFactors の User オブジェクトで使用可能なカスタム属性に、userPrincipalName または任意の Azure AD 属性を書き込むことができます。  |
-   | 6 | on-prem-samAccountName | username | **[新しいマッピングの追加]** を使用すると、必要に応じてオンプレミスの samAccountName を SuccessFactors の username 属性にマップできます。 |
+   | 6 | On Prem SamAccountName | username | **[新しいマッピングの追加]** を使用すると、必要に応じてオンプレミスの samAccountName を SuccessFactors の username 属性にマップできます。 [Azure AD Connect 同期: ディレクトリ拡張機能](../hybrid/how-to-connect-sync-feature-directory-extensions.md)を使用して、samAccountName を Azure AD に同期します。 これは、ソース ドロップダウンに *extension_yourTenantGUID_samAccountName* として表示されます。 |
    | 7 | SSO | loginMethod | SuccessFactors テナントが[部分的な SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766) に対してセットアップされている場合、[新しいマッピングの追加] を使用すると、必要に応じて loginMethod を "SSO" または "PWD" の定数値に設定できます。 |
    | 8 | telephoneNumber | businessPhoneNumber | *telephoneNumber* を Azure AD から SuccessFactors の勤務先または職場の電話番号に転送するには、このマッピングを使用します。 |
    | 9 | 10605 | businessPhoneType | この定数値は、勤務先の電話に関連付けられている SuccessFactors ID の値です。 SuccessFactors の環境に合わせてこの値を更新します。 この値を設定する手順については、「[phoneType の定数値を取得する](#retrieve-constant-value-for-phonetype)」セクションを参照してください。 |

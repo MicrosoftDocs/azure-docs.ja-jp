@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c23259a9cb1f3c409ad437a1e91151b5f401129
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221767"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946300"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -326,7 +326,7 @@ sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-sh
 
 *myVmPublic* VM への SSH セッションを終了します。
 
-お使いのコンピューターから、[az storage share list](/cli/azure/storage/share?view=azure-cli-latest) を使って、ストレージ アカウントの共有の表示を試みます。 `<account-name>` をストレージ アカウント名に置き換え、`<account-key>` を「[ストレージ アカウントの作成](#create-a-storage-account)」で取得したキーに置き換えます。
+お使いのコンピューターから、[az storage share list](/cli/azure/storage/share) を使って、ストレージ アカウントの共有の表示を試みます。 `<account-name>` をストレージ アカウント名に置き換え、`<account-key>` を「[ストレージ アカウントの作成](#create-a-storage-account)」で取得したキーに置き換えます。
 
 ```azurecli-interactive
 az storage share list \

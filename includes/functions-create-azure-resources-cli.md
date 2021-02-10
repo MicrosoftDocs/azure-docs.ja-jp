@@ -4,19 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 99ae35aca485ac928f7c5ef9f98295eed4bc1245
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025730"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500099"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>関数用の関連 Azure リソースを作成する
 
 関数コードを Azure にデプロイする前に、3 つのリソースを作成する必要があります。
 
-- リソース グループ。関連リソースの論理コンテナーです。
-- ストレージ アカウント。プロジェクトについての状態とその他の情報を保持します。
+- [リソース グループ](../articles/azure-resource-manager/management/overview.md)。関連リソースの論理コンテナーです。
+- [ストレージ アカウント](../articles/storage/common/storage-account-create.md)。関数についての情報 (状態など) を維持する目的で使用されます。
 - 関数アプリ。関数コードを実行するための環境となります。 関数アプリは、ローカルの関数プロジェクトと対応関係にあります。これを使用すると、リソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
 
 以下のコマンドを使用してこれらの項目を作成します。 Azure CLI と PowerShell の両方がサポートされます。

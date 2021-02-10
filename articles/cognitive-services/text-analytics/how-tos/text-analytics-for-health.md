@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 01/21/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: d7f71afd1cf47ab1a94d984090e8fb52ee69c6b4
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683532"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99088940"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
 
@@ -26,8 +26,8 @@ ms.locfileid: "97683532"
 
 Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストからの、関連する医療情報の抽出とラベル付けが行われる、Text Analytics API サービスの機能です。  このサービスを利用するには、次の 2 つの方法があります。 
 
-* Web ベースの API (非同期) 
-* Docker コンテナー (同期)   
+* [Web ベースの API (非同期)](#structure-the-api-request-for-the-hosted-asynchronous-web-api)
+* [Docker コンテナー (同期)](#hosted-asynchronous-web-api-response)   
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 

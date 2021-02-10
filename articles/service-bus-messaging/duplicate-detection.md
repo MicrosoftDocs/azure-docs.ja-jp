@@ -3,12 +3,12 @@ title: Azure Service Bus の重複メッセージの検出 | Microsoft Docs
 description: この記事では、Azure Service Bus メッセージの重複を検出する方法について説明します。 重複したメッセージは無視して、破棄することができます。
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184681"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684810"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -17,6 +17,9 @@ ms.locfileid: "98184681"
 また、直前にクライアントまたはネットワーク レベルでエラーが発生し、送信されたメッセージがキューにコミットされ、クライアントに受信確認が正常に返されない場合もあります。 このシナリオでは、送信操作の結果についてクライアントは確認が取れないままになります。
 
 重複メッセージの検出機能は、送信側が同じメッセージを再送信する一方でキューまたはトピックで重複メッセージを削除できるようにすることで、このような状況から不確実性を排除します。
+
+> [!NOTE]
+> Service Bus の Basic レベルでは、重複検出はサポートされません。 Standard と Premium レベルでは、重複検出はサポートされます。 これらのレベルの違いについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
 ## <a name="how-it-works"></a>動作のしくみ 
 重複メッセージ検出を有効にすることにより、アプリケーションによって制御され、指定した時間枠内のキューまたはトピックに送信されたすべてのメッセージの *MessageId* を追跡できます。 その時間枠内にログに記録された *MessageId* が付いた新しいメッセージが送信されると、メッセージは受信済み (送信操作成功) としてレポートされ、新しく送信されたメッセージは瞬時に無視され破棄されます。 メッセージの *MessageId* 以外の部分は考慮されません。

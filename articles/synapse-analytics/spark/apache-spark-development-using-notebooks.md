@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120956"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898496"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio ノートブックを作成、開発、管理する
 
@@ -303,6 +303,8 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 # <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
 ```%run <notebook path>``` マジック コマンドを使用して、現在のノートブックのコンテキスト内で別のノートブックを参照することができます。 参照ノートブックで定義されているすべての変数を、現在のノートブックで使用できます。 ```%run``` マジック コマンドでは、入れ子になった呼び出しはサポートされますが、再帰呼び出しはサポートされません。 ステートメントの深さが 5 を超えると、例外が発生します。 現在 ```%run``` コマンドでは、ノートブック パスをパラメーターとして渡すことのみが可能です。 
+
+例: ``` %run /path/notebookA ```.
 
 ---
 

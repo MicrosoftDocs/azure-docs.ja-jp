@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: af840a7becb0fb2c23e01153828458ee1cfa51a1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: ddd41448820984497ae96142ca409774af7c7bf9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654236"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98954057"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して WeChat アカウントでのサインアップおよびサインインを設定する
 
@@ -33,7 +33,7 @@ ms.locfileid: "97654236"
 
 ## <a name="create-a-wechat-application"></a>WeChat アプリケーションを作成する
 
-Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして WeChat アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ WeChat アカウントを持っていない場合は、[https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) で情報を取得できます。
+Azure Active Directory B2C (Azure AD B2C) で WeChat アカウントを持つユーザーのサインインを有効にするために、[WeChat 管理センター](https://open.weixin.qq.com/)でアプリケーションを作成する必要があります。 まだ WeChat アカウントを持っていない場合は、[https://kf.qq.com](https://kf.qq.com/faq/161220Brem2Q161220uUjERB.html) で情報を取得できます。
 
 ### <a name="register-a-wechat-application"></a>WeChat アプリケーションを登録する
 
@@ -41,11 +41,11 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして WeC
 1. **[管理中心 (管理センター)]** を選択します。
 1. 新しいアプリケーションを登録するための手順に従います。
 1. **[授权回调域 (コールバック URL)]** に、「`https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、テナント名が contoso の場合、URL を`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`に設定します。
-1. **アプリ ID** と **アプリ キー** をコピーします。 ID プロバイダーをテナントに追加するには、これらが必要です。
+1. **アプリ ID** と **アプリ キー** をコピーします。 テナントに対する ID プロバイダーを構成するために、この両方が必要です。
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして WeChat を構成する
+## <a name="configure-wechat-as-an-identity-provider"></a>WeChat を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
@@ -55,6 +55,16 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして WeC
 1. **[クライアント ID]** には、前に作成した WeChat アプリケーションのアプリ ID を入力します。
 1. **[クライアント シークレット]** には、記録したアプリ キーを入力します。
 1. **[保存]** を選択します。
+
+## <a name="add-wechat-identity-provider-to-a-user-flow"></a>ユーザー フローに WeChat ID プロバイダーを追加する 
+
+1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
+1. WeChat ID プロバイダーを追加するユーザー フローをクリックします。
+1. **[ソーシャル ID プロバイダー]** から、 **[WeChat]** を選択します。
+1. **[保存]** を選択します。
+1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
+1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[ユーザー フローを実行します]** をクリックします
 
 ::: zone-end
 
@@ -75,9 +85,9 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 9. **[キー使用法]** として [`Signature`] を選択します。
 10. **Create** をクリックしてください。
 
-## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
+## <a name="configure-wechat-as-an-identity-provider"></a>WeChat を ID プロバイダーとして構成する
 
-ユーザーに WeChat アカウントを使用してサインインさせるには、そのアカウントを、Azure AD B2C がエンドポイント経由で通信できるクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
+ユーザーが WeChat アカウントを使用してサインインできるようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 Google アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
@@ -90,7 +100,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
       <Domain>wechat.com</Domain>
       <DisplayName>WeChat (Preview)</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="WeChat-OAUTH">
+        <TechnicalProfile Id="WeChat-OAuth2">
           <DisplayName>WeChat</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -132,79 +142,28 @@ Google アカウントをクレーム プロバイダーとして定義するに
 4. **client_id** を、アプリケーションの登録で取得したアプリケーション ID に設定します。
 5. ファイルを保存します。
 
-### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-ここまでで、Azure AD B2C によって WeChat アカウントとの通信方法が認識されるようにポリシーを構成しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
-2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
-3. **[アップロード]** をクリックします。
-
-## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
-
-この時点では、ID プロバイダーはセットアップされていますが、サインアップ/サインイン画面で使用することはできません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、それを WeChat ID プロバイダーも含まれるように変更します。
-
-1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
-3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
-4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
-5. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInWeChat` 」のように入力します。
-
-### <a name="display-the-button"></a>ボタンを表示する
-
-**ClaimsProviderSelection** 要素は、サインアップおよびサインイン画面の ID プロバイダー ボタンに類似しています。 WeChat アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
-
-1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`WeChatExchange` など) に設定します。
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="WeChatExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="WeChatExchange" TechnicalProfileReferenceId="WeChat-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が WeChat アカウントと通信してトークンを受信します。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-2. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した ID と同じ値を必ずご使用ください。
-
-    ```xml
-    <ClaimsExchange Id="WeChatExchange" TechnicalProfileReferenceId="WeChat-OAuth" />
-    ```
-
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの ID に更新します。 たとえば、「 `WeChat-OAuth` 」のように入力します。
-
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-wechat-identity-provider-to-a-user-flow"></a>ユーザー フローに WeChat ID プロバイダーを追加する 
-
-1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
-1. WeChat ID プロバイダーを追加するユーザー フローをクリックします。
-1. **[ソーシャル ID プロバイダー]** から、 **[WeChat]** を選択します。
-1. **[保存]** を選択します。
-1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
-1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
-
-作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
-
-1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、その名前を *SignUpSignInWeChat.xml* に変更します。
-1. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInWeChat` 」のように入力します。
-1. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_WeChat` にします。
-1. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignWeChat) に一致するように更新します。
-1. 変更内容を保存し、ファイルをアップロードします。
-1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
-1. **[アプリケーションの選択]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[今すぐ実行]** を選択し、WeChat を選択して WeChat でサインインし、カスタム ポリシーをテストします。
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end

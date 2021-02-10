@@ -2,17 +2,17 @@
 title: ジョブのサイズ超過エラー
 description: ジョブのサイズまたはテンプレートが大きすぎる場合のエラーをトラブルシューティングする方法について説明します。
 ms.topic: troubleshooting
-ms.date: 10/07/2020
-ms.openlocfilehash: 638bdef246fc908ab997bfb99e7526febdb3792e
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.date: 01/19/2021
+ms.openlocfilehash: 1fde4918aff6e3bf494876f83c5b4313b3c5f3d2
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91822152"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610405"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>ジョブのサイズ超過に関するエラーを解決する
 
-この記事では、**JobSizeExceededException** エラーと **DeploymentSizeExceededException** エラーを解決する方法について説明します。
+この記事では、**JobSizeExceededException** エラーと **DeploymentJobSizeExceededException** エラーを解決する方法について説明します。
 
 ## <a name="symptom"></a>症状
 
@@ -20,9 +20,12 @@ ms.locfileid: "91822152"
 
 ## <a name="cause"></a>原因
 
-テンプレートのサイズが 4 MB を超えると、このエラーが発生することがあります。 4 MB の制限は、[copy](copy-resources.md) を使用して多数のインスタンスを作成するリソースの定義で拡張された後のテンプレートの最終的な状態に適用されます。 最後の状態には、変数およびパラメーターの解決済みの値も含まれます。
+このエラーは、許可されている制限の 1 つをデプロイが超えたときに発生します。 通常、このエラーは、テンプレートまたはデプロイを実行するジョブのいずれかが大きすぎる場合に表示されます。
 
-デプロイ ジョブには、要求に関するメタデータも含まれます。 大きいテンプレートの場合、メタデータとテンプレートが組み合わされると、ジョブで許容されるサイズを超える可能性があります。
+デプロイ ジョブは 1 MB を超えてはなりません。 このジョブには、要求に関するメタデータも含まれます。 大きいテンプレートの場合、メタデータとテンプレートが組み合わされると、ジョブで許容されるサイズを超える可能性があります。
+
+
+テンプレートは 4 MB を超えてはなりません。 4 MB の制限は、[copy](copy-resources.md) を使用して多数のインスタンスを作成するリソースの定義で拡張された後のテンプレートの最終的な状態に適用されます。 最後の状態には、変数およびパラメーターの解決済みの値も含まれます。
 
 テンプレートのその他の制限は次のとおりです。
 
@@ -44,4 +47,4 @@ ms.locfileid: "91822152"
 
 ## <a name="solution-3---use-serial-copy"></a>解決策 3 - シリアル コピーを使用する
 
-2 つ目のオプションは、コピー ループを[並列処理からシリアル処理に変更する](copy-resources.md#serial-or-parallel)方法です。 このオプションは、コピーによって多数のリソースをデプロイしたことが原因でエラーが発生したと思われる場合にのみ使用してください。 この変更により、リソースが並行してデプロイされないため、デプロイ時間が大幅に長くなる可能性があります。
+コピー ループを[並列処理からシリアル処理に](copy-resources.md#serial-or-parallel)変更することを検討してください。 このオプションは、コピーによって多数のリソースをデプロイしたことが原因でエラーが発生したと思われる場合にのみ使用してください。 この変更により、リソースが並行してデプロイされないため、デプロイ時間が大幅に長くなる可能性があります。

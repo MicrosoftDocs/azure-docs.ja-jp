@@ -1,27 +1,27 @@
 ---
-title: Azure Migrate による大規模な移行プロジェクトの管理
+title: Azure Lighthouse による大規模な Azure Migrate プロジェクトの管理
 description: 委任された顧客リソースで Azure Migrate を効果的に使用する方法を学習します。
-ms.date: 12/4/2020
+ms.date: 01/29/2021
 ms.topic: how-to
-ms.openlocfilehash: 53f7c390d9f16dcbccbb1d09f46e63fec13eee2d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 8e8ba21881ea5dad36ae640632b6307cd9a22a73
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788945"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093610"
 ---
-# <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Azure Migrate による大規模な移行プロジェクトの管理
+# <a name="manage-azure-migrate-projects-at-scale-with-azure-lighthouse"></a>Azure Lighthouse による大規模な Azure Migrate プロジェクトの管理
 
-サービス プロバイダーは、[Azure Lighthouse](../overview.md) に複数の顧客テナントをオンボードしている場合があります。 Azure Lighthouse を使用すると、サービス プロバイダーは一度に複数の Azure Active Directory (Azure AD) テナントにわたって大規模に操作を実行できるため、管理タスクがより効率的になります。
+このトピックでは、[Azure Lighthouse](../overview.md) を利用して、複数の Azure Active Directory (Azure AD) テナントにわたってスケーラブルな方法で [Azure Migrate](../../migrate/migrate-services-overview.md) を使用する方法の概要について説明します。
 
-[Azure Migrate](../../migrate/migrate-services-overview.md) では、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データを評価し、Azure への移行を行うための一元化されたハブが提供されます。 通常、複数の顧客に対して大規模な評価と移行を実行するパートナーは、[CSP (クラウド ソリューション プロバイダー) サブスクリプション モデル](/partner-center/customers-revoke-admin-privileges)を使用するか、[顧客テナントでゲスト ユーザーを作成する](../../active-directory/external-identities/what-is-b2b.md)ことによって、各顧客サブスクリプションに個別にアクセスする必要があります。
+Azure Lighthouse を使用すると、サービス プロバイダーは一度に複数のテナントにわたって大規模に操作を実行できるため、管理タスクがより効率的になります。
+
+Azure Migrate では、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データを評価し、Azure への移行を行うための一元化されたハブが提供されます。 通常、複数の顧客に対して大規模な評価と移行を実行するパートナーは、[CSP (クラウド ソリューション プロバイダー) サブスクリプション モデル](/partner-center/customers-revoke-admin-privileges)を使用するか、[顧客テナントでゲスト ユーザーを作成する](../../active-directory/external-identities/what-is-b2b.md)ことによって、各顧客サブスクリプションに個別にアクセスする必要があります。
 
 Azure Lighthouse と Azure Migrate の統合により、サービス プロバイダーは、さまざまな顧客のワークロードを大規模に検出、評価、移行でき、顧客は自分の環境を完全に可視化し、制御することができます。 Azure の委任されたリソース管理により、サービス プロバイダーは複数の顧客テナントにわたって管理するすべての Azure Migrate プロジェクトを 1 つのビューで表示できます。
 
 > [!NOTE]
 > パートナーは Azure Lighthouse を使用して、オンプレミスの VMware VM、Hyper-V VM、物理サーバー、AWS/GCP インスタンスの検出、評価、移行を実行できます。 [VMware VM の移行](../../migrate/server-migrate-overview.md)には 2 つのオプションがあります。 現在、委任された顧客サブスクリプションの移行プロジェクトで作業する場合は、エージェントベースの移行方法のみを使用できます。顧客のスコープへの委任されたアクセスによる、エージェントレス レプリケーションを使用した移行は現在サポートされていません。
-
-このトピックでは、[Azure Migrate](../../migrate/migrate-services-overview.md) をスケーラブルに使用する方法の概要について説明します。
 
 > [!TIP]
 > このトピックではサービスのプロバイダーと顧客について触れますが、このガイドラインは、[Azure Lighthouse を使用して複数のテナントを管理する企業](../concepts/enterprise.md)にも当てはまります。
@@ -72,11 +72,11 @@ Azure Lighthouse を使用する場合の 1 つのオプションは、Azure Mig
 
 ## <a name="partner-recognition-for-customer-migrations"></a>顧客移行についてのパートナー認識
 
-[Microsoft Partner Network](https://partner.microsoft.com) のメンバーとして、ユーザーは自分のパートナー ID と、委任された顧客リソースの管理に使用されている資格情報をリンクすることができます。 Microsoft はパートナー管理リンク (PAL) を使用して、Azure 使用による収益や効果に貢献している組織を、顧客に対して実行している移行プロジェクトなどのタスクに基づいて把握できます。
+[Microsoft Partner Network](https://partner.microsoft.com) のメンバーとして、ユーザーは自分のパートナー ID と、委任された顧客リソースの管理に使用されている資格情報をリンクすることができます。 こうすると、Microsoft は、Azure 使用による収益や効果に貢献している組織を、顧客に対して実行している移行プロジェクトなどのタスクに基づいて把握できます。
 
 詳細については、「[パートナー ID をリンクして、委任されたリソースで影響を追跡する](partner-earned-credit.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Migrate](../../migrate/migrate-services-overview.md) について学習します。
-- [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
+- [Azure Migrate](../../migrate/migrate-services-overview.md) に関する詳細情報をご覧ください。
+- Azure Lighthouse でサポートされているその他の[テナント間管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)に関する詳細情報をご覧ください。

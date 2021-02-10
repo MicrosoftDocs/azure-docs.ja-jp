@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 130fcaacedc8aaea7790f6aa9ca7463b4e378e02
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: cf3a3d3fdfcd03f068224c93643d364cd2646290
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070713"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895630"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware 移行オプションを選択する
 
@@ -43,7 +43,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 **タスク** | **詳細** |**エージェントレス** | **エージェント ベース**
 --- | --- | --- | ---
 **Azure Migrate アプライアンスをデプロイする** | VMware VM 上で実行される軽量のアプライアンス。<br/><br/> アプライアンスは、マシンを検出して評価し、エージェントレスの移行を使用してマシンを移行するために使用されます。 | 必須。<br/><br/> 既にアプライアンスを評価用に設定してある場合は、同じアプライアンスをエージェントレスの移行に使用できます。 | 不要。<br/><br/> アプライアンスを評価用に設定してある場合は、そのままにしておくことも、評価が済んだら削除することもできます。
-**Server Assessment ツールを使用する** | Azure Migrate:Server Assessment ツールを使用してマシンを評価します。 | 移行前にマシンを評価できますが、必須ではありません。 | 評価はオプションです。
+**Server Assessment ツールを使用する** | Azure Migrate:Server Assessment ツールを使用してマシンを評価します。 | 評価はオプションです。 | 評価はオプションです。
 **Server Migration ツールを使用する** | Azure Migrate プロジェクトで Azure Migrate Server Migration ツールを追加します。 | 必須 | 必須
 **VMware の移行を準備する** | VMware サーバーと VM で設定を構成します。 | 必須 | 必須
 **VM 上にモビリティ サービスをインストールする** | Mobility Service は、レプリケートする各 VM 上で実行されます | 必要なし | 必須

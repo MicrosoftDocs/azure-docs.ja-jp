@@ -92,7 +92,7 @@
       href: concept-feature-management.md
     - name: イベント処理
       href: concept-app-configuration-event.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: カスタマー マネージド キーの暗号化
           href: concept-customer-managed-keys.md
@@ -122,7 +122,7 @@
       href: howto-import-export-data.md
     - name: キー値に JSON コンテンツ タイプを使用する
       href: howto-leverage-json-content-type.md
-    - name: カスタム エンドポイントへのイベントのルーティング
+    - name: データ変更通知に Event Grid を使用する
       href: howto-app-configuration-event.md
     - name: 構成ストアの自動バックアップ
       href: howto-backup-config-store.md

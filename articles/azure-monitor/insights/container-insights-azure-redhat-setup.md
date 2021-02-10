@@ -3,12 +3,12 @@ title: Azure Monitor for containers を使用して Azure Red Hat OpenShift v3.x
 description: この記事では、Azure Red Hat OpenShift バージョン 3 以降でホストされている Azure Monitor を使用して Kubernetes クラスターの監視を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 5141ef3a96d39f16a2a9f005dd580b952046e7bf
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: f21a338a06d4a0947e2623854d828c720fb2d4bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695668"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944555"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Azure Red Hat OpenShift v3 を構成する
 
@@ -30,7 +30,7 @@ Azure Monitor for containers は、Azure Kubernetes Service (AKS) と AKS エン
 次のサポートされている方法を使用して、新規または 1 つ以上の既存の Azure Red Hat OpenShift のデプロイに対して Azure Monitor for containers を有効にできます。
 
 - Azure portal または Azure Resource Manager テンプレートを使用した既存のクラスター向け。
-- Azure Resource Manager テンプレートを使用している新しいクラスター向け、または [Azure CLI](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) を使用して新しいクラスターを作成する場合。
+- Azure Resource Manager テンプレートを使用している新しいクラスター向け、または [Azure CLI](/cli/azure/openshift#az-openshift-create) を使用して新しいクラスターを作成する場合。
 
 ## <a name="supported-and-unsupported-features"></a>サポートされている機能とサポートされていない機能
 

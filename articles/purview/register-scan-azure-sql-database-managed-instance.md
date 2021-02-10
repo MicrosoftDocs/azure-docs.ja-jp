@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 2391a36c02e0bdfe0ea98be7f19fc64f1fbb676f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f9791fa8932792398efdea39fe0d39a967420596
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879934"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491725"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance の登録とスキャン
 
@@ -105,25 +105,11 @@ Purview でサービス プリンシパルを使用して Azure SQL Database Man
 1. 自分のキー コンテナーが Purview にまだ接続されていない場合は、[新しいキー コンテナーの接続を作成](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account)する必要があります
 1. 最後に、サービス プリンシパルを使用して[新しい資格情報を作成](manage-credentials.md#create-a-new-credential)し、スキャンを設定します
 
-### <a name="firewall-settings"></a>ファイアウォールの設定
-
-データベース サーバーで Azure 接続の有効化を許可する必要があります。 これにより、Azure Purview はサーバーにアクセスして接続できるようになります。 [Azure 内からの接続](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)については、ハウツー ガイドに従ってください。
-
-1. データベース アカウントに移動します
-1. **[概要]** ページでサーバー名を選択します
-1. **[セキュリティ]、[ファイアウォールと仮想ネットワーク]** の順に選択します
-1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で **[はい]** を選択します
-
-    :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="ソースの登録のオプション" border="true":::
-    
-> [!Note]
-> 現在、Azure Purview では VNET 構成はサポートされていません。 そのため、IP ベースのファイアウォール設定を行うことはできません。
-
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>Azure SQL Database Managed Instance データ ソースの登録
 
 1. 自分の Purview アカウントに移動します
 
-1. 左側のナビゲーションで **[ソース]** を選択します
+1. 左側のナビゲーションで **[ソース]** を選択します。
 
 1. **[登録]** を選択します
 

@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 06/27/2019
 ms.author: pafarley
-ms.openlocfilehash: b3d24ce4dd42ea8122610943379160ca93406c21
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7cf3d86eeea9d1b0f5fcbb757d3597e21cbcc369
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548177"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901047"
 ---
 Form Recognizer は、次の要件を満たす入力ドキュメントを処理します。
 
@@ -25,8 +25,3 @@ Form Recognizer は、次の要件を満たす入力ドキュメントを処理�
 * テキストでは、ラテン アルファベット (英語の文字) を使用する必要があります。
 * 教師なし学習 (ラベル付けされたデータ不使用) の場合、データには、キーと値を含める必要があります。
 * 教師なし学習 (ラベル付けされたデータ不使用) の場合、キーは、値の上または左に配置する必要があります。下や右に配置されていてはいけません。
-
-Form Recognizer は現在、次の種類の入力データをサポートしていません。
-
-* 複雑なテーブル (入れ子になったテーブル、マージされたヘッダーまたはセルなど)。
-* チェックボックスまたはラジオ ボタン。

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/07/2020
-ms.openlocfilehash: 102b1946021aff7f8ab5491ed70fbc6cf772e3a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1690b8d143b86e5caa691f5f8f479f715f57f0c8
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842262"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054655"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用して承認ベースの自動化されたワークフローを作成する
 
@@ -44,6 +44,8 @@ ms.locfileid: "91842262"
 
 * 承認ワークフローに対応した Office 365 Outlook または Outlook.com のメール アカウント。 このチュートリアルでは、Office 365 Outlook を使用します。 別のメール アカウントを使う場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。
 
+* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の[マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
+
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。 Azure ホーム ページで、 **[リソースの作成]** を選択します。
@@ -56,13 +58,13 @@ ms.locfileid: "91842262"
 
    ![ロジック アプリの作成ペインと新しいロジック アプリに設定する情報を示すスクリーンショット。](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | 値 | [説明] |
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプション名。 この例では、`Pay-As-You-Go` を使用します。 |
    | **リソース グループ** | LA-MailingList-RG | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。関連するリソースの整理に使用します。 この例では、`LA-MailingList-RG` という名前の新しいリソース グループを作成します。 |
    | **名前** | LA-MailingList | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、`LA-MailingList` を使用します。 |
    | **場所** | 米国西部 | ロジック アプリの情報の保存先となるリージョン。 この例では、`West US` を使用します。 |
-   | **Log Analytics** | Off | 診断ログの場合は、この設定を**オフ**のままにしてください。 |
+   | **Log Analytics** | Off | 診断ログの場合は、この設定を **オフ** のままにしてください。 |
    ||||
 
 1. 完了したら、 **[確認および作成]** を選択します。 Azure によってロジック アプリに関する情報が検証されたら、 **[作成]** を選択します。
@@ -79,7 +81,7 @@ ms.locfileid: "91842262"
 
 ## <a name="add-trigger-to-monitor-emails"></a>メールを監視するトリガーを追加する
 
-1. Logic Apps デザイナーの検索ボックスに「`when email arrives`」と入力し、**新しい電子メールが届いたとき**という名前のトリガーを選択します。
+1. Logic Apps デザイナーの検索ボックスに「`when email arrives`」と入力し、**新しい電子メールが届いたとき** という名前のトリガーを選択します。
 
    * Azure の職場または学校アカウントには、**Office 365 Outlook** を選択します。
    * 個人用 Microsoft アカウントには、**Outlook.com** を選択します。
@@ -152,7 +154,7 @@ ms.locfileid: "91842262"
 
    ![[組み込み] が選択された状態で [操作を選択してください] の検索ボックスに検索語句「check」が入力され、かつ [条件] アクションが選択された状態のスクリーンショット。](./media/tutorial-process-mailing-list-subscriptions-workflow/select-condition-action.png)
 
-1. **[条件]** のタイトル バーにある**省略記号** ( **...** ) ボタンを押し、 **[名前の変更]** を選択します。 条件の名前をわかりやすく「`If request approved`」に変更します。
+1. **[条件]** のタイトル バーにある **省略記号** ( **...** ) ボタンを押し、 **[名前の変更]** を選択します。 条件の名前をわかりやすく「`If request approved`」に変更します。
 
    ![省略記号ボタンが押され、[設定] リストが開き、[名前の変更] コマンドが選択された状態のスクリーンショット。](./media/tutorial-process-mailing-list-subscriptions-workflow/rename-condition-description.png)
 

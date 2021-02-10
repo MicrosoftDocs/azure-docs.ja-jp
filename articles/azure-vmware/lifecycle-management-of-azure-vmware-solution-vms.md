@@ -3,12 +3,12 @@ title: Azure VMware Solution VM のライフサイクル管理
 description: Microsoft Azure ネイティブ ツールを使用して、Azure VMware Solution VM のライフサイクルのあらゆる側面を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326813"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062898"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理
 
@@ -81,13 +81,13 @@ Azure Security Center はデプロイを必要としません。 詳細につい
 
 Azure Arc によって、Azure VMware Solution、オンプレミス、またはその他のクラウド プラットフォームを含む、あらゆるインフラストラクチャに Azure の管理が拡張されます。
 
-- 複数の Windows または Linux の VM に対して Azure Arc 対応サーバーを有効にするには、「[ハイブリッド マシンを大規模に Azure に接続する](../azure-arc/servers/onboard-service-principal.md)」を参照してください。
+- 複数の Windows または Linux の VM に対して Azure Arc 対応サーバーを有効にすることの詳細については、「[ハイブリッド マシンを大規模に Azure に接続する](../azure-arc/servers/onboard-service-principal.md)」を参照してください。
 
 ### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Arc 対応 Kubernetes を使用したハイブリッド Kubernetes クラスターのオンボード
 
 Azure Arc 対応 Kubernetes を使用して、Azure VMware Solution 環境でホストされている Kubernetes クラスターをアタッチできます。 
 
-- 「[Azure Arc 対応オンボード サービス プリンシパルを作成します](../azure-arc/kubernetes/create-onboarding-service-principal.md)」を参照してください。
+- 詳細については、「[Azure Arc 対応オンボード サービス プリンシパルの作成](../azure-arc/kubernetes/create-onboarding-service-principal.md)」を参照してください。
 
 ### <a name="deploy-the-log-analytics-agent"></a>Log Analytics エージェントのデプロイ
 

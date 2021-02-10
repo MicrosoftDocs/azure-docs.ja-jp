@@ -1,15 +1,15 @@
 ---
 title: Azure Resource Manager 用の組み込みポリシー定義
 description: Azure Resource Manager 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ee66f9641d63af604d592c8b0436675b612e1b56
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 43080208a43ae1c517188b8b841e6e88480ee285
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98808280"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220872"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-resource-manager"></a>Azure Resource Manager 用の Azure Policy 組み込み定義
 

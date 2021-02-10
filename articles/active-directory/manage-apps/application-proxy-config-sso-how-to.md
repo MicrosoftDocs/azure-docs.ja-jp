@@ -3,7 +3,7 @@ title: アプリケーション プロキシを使用したオンプレミス �
 description: アプリケーション プロキシを使用したオンプレミス アプリでのシングル サインオンについて説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: kenwith
 ms.reviewer: japere, asteen
-ms.openlocfilehash: e7df16a797fe0d7a0fd9a0b3857b1b1c32ba07ed
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 10b722edbe8d70c92e617c78db3d2fb1d46da3a5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656294"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254106"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションに対するシングル サインオンを構成する方法
 

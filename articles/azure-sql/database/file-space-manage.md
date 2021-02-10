@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 12/22/2020
-ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233595"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096493"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Azure SQL Database でデータベースのファイル領域を管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,7 +123,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 |**データの最大サイズ**|エラスティック プールのすべてのデータベースに使用できるデータ領域の最大量。|エラスティック プールに割り当てられた領域は、エラスティック プールの最大サイズを超えないようにする必要があります。  最大サイズを超えた場合は、割り当て済みで未使用の領域を、データベースのデータ ファイルを縮小して再利用できます。|
 
 > [!NOTE]
-> "エラスティック プールの記憶域が上限に達しました" というエラー メッセージは、データベース オブジェクトがエラスティック プールの記憶域の上限に達するほどの領域を割り当てられていることを示していますが、データ領域の割り当てに未使用の領域が存在する場合があります。 エラスティック プールの記憶域の上限を引き上げるか、短期的な解決策として、以下の「[**未使用の割り当て済み領域を再利用する**](#reclaim-unused-allocated-space)」セクションを使用してデータ領域を解放することを検討してください。 また、データベース ファイルの縮小によってパフォーマンスが低下するおそれがあることにも注意する必要があります。下の「[**インデックスの再構築** ](#rebuild-indexes)」セクションを参照してください。
+> "エラスティック プールの記憶域が上限に達しました" というエラー メッセージは、データベース オブジェクトがエラスティック プールの記憶域の上限に達するほどの領域を割り当てられていることを示していますが、データ領域の割り当てに未使用の領域が存在する場合があります。 エラスティック プールの記憶域の上限を引き上げるか、短期的な解決策として、以下の「[**未使用の割り当て済み領域を再利用する**](#reclaim-unused-allocated-space)」セクションを使用してデータ領域を解放することを検討してください。 また、データベース ファイルの縮小によってパフォーマンスが低下するおそれがあることにも注意する必要があります。下の「[**インデックスの再構築**](#rebuild-indexes)」セクションを参照してください。
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>記憶域スペースの情報についてエラスティック プールのクエリを実行する
 
@@ -217,9 +217,9 @@ DBCC SHRINKDATABASE (N'db1');
 
 縮小コマンドは、実行中のデータベース パフォーマンスに影響を及ぼすため、可能であれば、使用率が低い期間中に実行してください。  
 
-また、データベース ファイルの縮小によってパフォーマンスが低下するおそれがあることにも注意する必要があります。下の「[**インデックスの再構築** ](#rebuild-indexes)」セクションを参照してください。
+また、データベース ファイルの縮小によってパフォーマンスが低下するおそれがあることにも注意する必要があります。下の「[**インデックスの再構築**](#rebuild-indexes)」セクションを参照してください。
 
-このコマンドの詳細については、[SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md) を参照してください。
+このコマンドの詳細については、[SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。
 
 ### <a name="auto-shrink"></a>自動圧縮
 

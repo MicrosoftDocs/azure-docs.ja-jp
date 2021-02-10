@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight における Storm の SCP.NET プログラミング ガイド
 description: SCP.NET を使用して、Azure HDInsight で実行されている Storm で使用するための .NET ベースの Storm トポロジを作成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: d54a06c457451fc5323ae37b34b53411cdd6abda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000143"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932641"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight における Apache Storm の SCP プログラミング ガイド
 
@@ -258,7 +255,7 @@ public abstract void Emit(string streamId, List<object> values);
 public abstract void Emit(string streamId, List<object> values, long seqId);  
 ```
 
-受信確認をサポートする非トランザクション ボルトでは、受け取ったタプルを使用して **Ack** または**Fail** を明示的に呼び出す必要があります。 新しいタプルを出力する場合は、ボルトでタプルのアンカーも指定する必要があります。 次のメソッドが提供されています。
+受信確認をサポートする非トランザクション ボルトでは、受け取ったタプルを使用して **Ack** または **Fail** を明示的に呼び出す必要があります。 新しいタプルを出力する場合は、ボルトでタプルのアンカーも指定する必要があります。 次のメソッドが提供されています。
 
 ```csharp
 public abstract void Emit(string streamId, IEnumerable<SCPTuple> anchors, List<object> values);

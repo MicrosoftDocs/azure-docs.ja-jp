@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 842b0a92ba4a2cb6b3ceb54675ef95f9c8275311
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209185"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052619"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Runbook で変更履歴とインベントリを有効にする
 
@@ -21,7 +21,7 @@ ms.locfileid: "92209185"
 
 この方法では、次の 2 つの Runbook を使用します。
 
-* **Enable-MultipleSolution** - 構成情報の入力を求め、指定された VM に対してクエリを実行し、その他の検証チェックを実行してから、 **Enable-AutomationSolution** Runbook を呼び出して、指定されたリソース グループ内の各 VM に対して変更履歴とインベントリを構成するプライマリ Runbook です。
+* **Enable-MultipleSolution** - 構成情報の入力を求め、指定された VM に対してクエリを実行し、その他の検証チェックを実行してから、**Enable-AutomationSolution** Runbook を呼び出して、指定されたリソース グループ内の各 VM に対して変更履歴とインベントリを構成するプライマリ Runbook です。
 * **Enable-AutomationSolution** - ターゲット リソース グループに指定された 1 つ以上の VM に対して変更履歴とインベントリ を有効にします。 前提条件が満たされていることが確認され、Log Analytics VM 拡張機能がインストールされていることが確認され、見つからない場合はインストールされ、Automation アカウントにリンクされている指定された Log Analytics ワークスペースのスコープ構成に VM が追加されます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -31,8 +31,8 @@ ms.locfileid: "92209185"
 * [Log Analytics ワークスペース](../../azure-monitor/platform/design-logs-deployment.md)
 * [仮想マシン](../../virtual-machines/windows/quick-create-portal.md)。
 * **Enable-AutomationSolution** Runbook によって使用される 2 つの Automation 資産。 この Runbook が Automation アカウントにまだ存在しない場合、最初の実行時に **Enable-MultipleSolution** Runbook によって自動的にインポートされます。
-    * *LASolutionSubscriptionId* :Log Analytics ワークスペースが配置されているサブスクリプション ID。
-    * *LASolutionWorkspaceId* :Automation アカウントにリンクされている Log Analytics ワークスペースのワークスペース ID。
+    * *LASolutionSubscriptionId*:Log Analytics ワークスペースが配置されているサブスクリプション ID。
+    * *LASolutionWorkspaceId*:Automation アカウントにリンクされている Log Analytics ワークスペースのワークスペース ID。
 
     これらの変数は、オンボード VM のワークスペースを構成するために使用されます。 これらが指定されていない場合、最初にサブスクリプションによって変更履歴とインベントリにオンボードされている VM、次に Automation アカウントが含まれているサブスクリプション、次にユーザー アカウントがアクセスできる他のすべてのサブスクリプションがスクリプトによって検索されます。 適切に構成されていない場合、マシンがランダムな Log Analytics ワークスペースにオンボードされる可能性があります。
 
@@ -99,7 +99,7 @@ Runbook を使用する VM の Update Management を正常に有効にするに�
 
    ![設定用の Runbook のインポート](media/enable-from-runbook/import-from-gallery.png)
 
-6. **[Runbook]** ページで、 **Enable-MultipleSolution** Runbook を選択し、 **[編集]** をクリックします。 テキスト エディターで **[発行]** を選択します。
+6. **[Runbook]** ページで、**Enable-MultipleSolution** Runbook を選択し、 **[編集]** をクリックします。 テキスト エディターで **[発行]** を選択します。
 
 7. 確認を求めるメッセージが表示されたら、 **[はい]** をクリックして Runbook を発行します。
 
@@ -118,7 +118,7 @@ Azure VM でこの Runbook を起動するには、[変更履歴とインベン�
    * **SUBSCRIPTIONID** - 有効にする新しい VM のサブスクリプション ID。 ワークスペースのサブスクリプションを使用するには、このフィールドを空白のままにします。 別のサブスクリプション ID を使用する場合は、ご自分の Automation アカウントの実行アカウントをサブスクリプションの共同作成者として追加してください。
    * **ALREADYONBOARDEDVM** - 既に更新が手動で有効にされている VM の名前。
    * **ALREADYONBOARDEDVMRESOURCEGROUP** - VM が属しているリソース グループの名前。
-   * **SOLUTIONTYPE** - 「 **ChangeTracking** 」と入力します。
+   * **SOLUTIONTYPE** - 「**ChangeTracking**」と入力します。
 
    ![Enable-MultipleSolution Runbook パラメーター](media/enable-from-runbook/runbook-parameters.png)
 

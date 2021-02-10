@@ -72,6 +72,8 @@
       href: my-account-portal-sign-ins-page.md
     - name: ポータル設定を変更する
       href: my-account-portal-settings.md
+    - name: アカウント管理者を確認する
+      href: my-account-find-administrator.md
     - name: 組織の切り替え
       href: cross-tenant-switcher.md
 - name: セキュリティ情報のヘルプ

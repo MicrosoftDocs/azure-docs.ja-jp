@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600846"
+ms.locfileid: "98611119"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection Standard のよくあるご質問
 
@@ -79,4 +79,7 @@ DDoS Protection を有効にするには、サービスのパブリック エン
 
 ## <a name="how-long-does-it-take-for-the-metrics-to-load-on-portal"></a>メトリックがポータルに読み込まれるまでにどれくらいの時間がかかりますか?
 メトリックは、5 分以内にポータルに表示されるはずです。 リソースが攻撃を受けている場合、他のメトリックはポータルに表示され始めるまでに 5 分から 7 分かかります。 
+
+## <a name="does-the-service-store-customer-data"></a>サービスによって顧客データは保存されますか?
+いいえ、Azure DDoS Protection によって顧客データが保存されることはありません。
     

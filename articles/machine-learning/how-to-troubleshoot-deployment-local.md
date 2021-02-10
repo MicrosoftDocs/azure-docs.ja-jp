@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 473b2e4ac3443d204b39331d9cefaa6c71122439
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 225cb8d7bc35491ceefe444664afe175c7f7ea01
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881671"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954937"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>ローカルでのモデル デプロイを使用したトラブルシューティング
 
@@ -25,12 +25,14 @@ Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) への�
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
-* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
-* [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
-* ローカルでデバッグするには、モデルを [Azure Machine Learning コンピューティング インスタンス](./how-to-deploy-local-container-notebook-vm.md)にデプロイするか、ローカル システム上に機能する Docker をインストールします。
-
-    Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
+* オプション A (**推奨**) - Azure Machine Learning コンピューティング インスタンスでローカルにデバッグする
+   * [コンピューティング インスタンス](how-to-deploy-local-container-notebook-vm.md)が実行されている Azure Machine Learning ワークスペース
+* オプション B - お使いのコンピューティングでローカルにデバッグする
+   * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+   * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+   * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
+   * ローカル システムで動作する Docker インストールを使用します。 
+   * Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
 
 ## <a name="debug-locally"></a>ローカル デバッグ
 

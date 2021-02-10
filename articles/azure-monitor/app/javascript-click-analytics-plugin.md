@@ -8,16 +8,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
-ms.openlocfilehash: e69d5cc76f8f4b14ab87e13546c98859bb801418
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: b2e9c267b0a3723c9ac7b3edd49e23b95741962f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234627"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660455"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 用のクリック分析自動収集プラグイン
 
-Application Insights JavaScript SDK 用のクリック分析自動収集プラグインによって、`data-*`meta タグに基づいた Web ページ上のクリック イベントの自動追跡が可能になります。 このプラグインでは、`data-*` グローバル属性を使用してクリック イベントをキャプチャしたり、テレメトリ データを設定したりします。
+このプラグインを使用すると、Web ページのクリック イベントが自動的に追跡され、HTML 要素の data-* 属性を使用してイベント テレメトリにデータが設定されます。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -69,7 +69,7 @@ appInsights.loadAppInsights();
     2. 効率を向上させるために、このプラグインではこのタグをフラグとして使用し、これを検出すると、DOM (ドキュメント オブジェクト モデル) のそれ以上の上向きの処理を停止します。
     
     > [!CAUTION]
-    > `parentDataTag` が使用されていると、それを使用した HTML 要素だけではなく、そのアプリケーション全体にわたって永続的な影響があります。
+    > `parentDataTag` が使用されると、SDK により、使用した HTML 要素だけでなく、アプリケーション全体で親タグの検索が開始されます。
 4. ユーザーによって指定される `customDataPrefix` は、常に `data-` (`data-sample-` など) で始まる必要があります。 HTML では、`data-*` グローバル属性によって、カスタム データ属性と呼ばれる属性のクラスが形成されます。これにより、HTML と、スクリプトによるその DOM 表現の間で機密情報を交換できるようになります。 以前のブラウザー (Internet Explorer、Safari) では、`data-` で始まっていない限り、認識できない属性を削除します。
 
     `data-*` の `*` は、[XML 名の生成規則](https://www.w3.org/TR/REC-xml/#NT-Name)に従った任意の名前で置き換えることができます。ただし、次の制限があります。
@@ -101,19 +101,19 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| 名前                      | Type    | Default   | 説明                                                                                       |
-|---------------------------|---------|-----------|---------------------------------------------------------------------------------------------------|
-| useDefaultContentNameOrId | boolean | false     | 特定の要素が既定の customDataPrefix でタグ付けされていないか、または customDataPrefix がユーザーによって指定されていない場合、このフラグは、contentName の標準の HTML 属性を収集するために使用されます。 |
-| customDataPrefix          | string  | `data-`   | 指定されたプレフィックスでタグ付けされている要素のコンテンツ名と値を自動キャプチャします。       |
-| aiBlobAttributeTag        | string  | `ai-blob` | プラグインでは、個々の `data-*` 属性ではなく、JSON BLOB コンテンツ メタ データのタグ付けがサポートされます。 |
-| metaDataPrefix            | string  | null      | 指定されたプレフィックスを持つ HTML 見出しのメタ要素名とコンテンツを自動キャプチャします。 |
-| captureAllMetaDataContent | string  | null      | すべての HTML 見出しのメタ要素名とコンテンツを自動キャプチャします。 既定値は false です。 有効になっている場合は、指定された metaDataPrefix がオーバーライドされます。 |
-| parentDataTag             | string  | null      | このタグが検出されると、要素のコンテンツ名と値をキャプチャするための DOM の走査を停止します。|
-| dntDataTag                | string  | `ai-dnt`  | この属性を含む HTML 要素は、テレメトリ データをキャプチャするためにこのプラグインによって無視されます。|
+| 名前                      | Type    | Default   | HTML で使用する既定のタグ |   説明                                                                                |
+|---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
+| useDefaultContentNameOrId | boolean | false     | 該当なし         |特定の要素が既定の customDataPrefix でタグ付けされていない場合、または customDataPrefix がユーザーによって指定されていない場合、contentName の標準の HTML 属性を収集します。 |
+| customDataPrefix          | string  | `data-`   | `data-*`| 指定されたプレフィックスでタグ付けされている要素のコンテンツ名と値を自動キャプチャします。 たとえば、HTML タグ内で `data-*-id`、`data-<yourcustomattribute>` を使用できます。   |
+| aiBlobAttributeTag        | string  | `ai-blob` |  `data-ai-blob`| プラグインでは、個々の `data-*` 属性ではなく JSON BLOB 属性がサポートされています。 |
+| metaDataPrefix            | string  | null      | N/A  | キャプチャ時に指定されたプレフィックスを持つ HTML 見出しのメタ要素名とコンテンツを自動キャプチャします。 たとえば、HTML メタ タグ内で `custom-` を使用できます。 |
+| captureAllMetaDataContent | boolean | false     | 該当なし   | すべての HTML 見出しのメタ要素名とコンテンツを自動キャプチャします。 既定値は false です。 有効になっている場合は、指定された metaDataPrefix がオーバーライドされます。 |
+| parentDataTag             | string  | null      |  N/A  | このタグが検出されると、要素のコンテンツ名と値をキャプチャするための DOM の走査を停止します。 たとえば、HTML タグ内で `data-<yourparentDataTag>` を使用できます。|
+| dntDataTag                | string  | `ai-dnt`  |  `data-ai-dnt`| この属性を含む HTML 要素は、テレメトリ データをキャプチャするためにこのプラグインによって無視されます。|
 
 ### <a name="behaviorvalidator"></a>behaviorValidator
 
-behaviorValidator 関数は、コード内のタグ付けされた動作が、企業の中の既知の分類や許容される分類の定義済み一覧に従うようにする自動チェックによってデータの一貫性を確保したい場合に使用することができます。 Azure Monitor のほとんどの顧客がこれを使用することは求められておらず、それは予測されていませんが、これは高度なシナリオに使用できます。 この拡張機能の一部として公開されている behaviorValidator のコールバック関数には 3 種類あります。 ただし、公開されている関数によって要件が解決されない場合、ユーザーは独自のコールバック関数を使用できます。 その意図はユーザー独自の動作のデータ構造を定義することにあり、このプラグインでは、データ タグから動作を抽出するときにこの検証関数を使用します。
+behaviorValidator 関数を使用すると、コード内のタグ付けされた動作が、事前に定義された一覧に準拠しているかどうかを自動的に確認できます。 これにより、タグ付けされた動作を、企業が設定した分類と確実に一致させることができます。 Azure Monitor のほとんどの顧客がこれを使用することは求められておらず、それは予測されていませんが、これは高度なシナリオに使用できます。 この拡張機能の一部として公開されている behaviorValidator のコールバック関数には 3 種類あります。 ただし、公開されている関数によって要件が解決されない場合、ユーザーは独自のコールバック関数を使用できます。 その意図はユーザー独自の動作のデータ構造を定義することにあり、このプラグインでは、データ タグから動作を抽出するときにこの検証関数を使用します。
 
 | 名前                   | [説明]                                                                        |
 | ---------------------- | -----------------------------------------------------------------------------------|
@@ -312,6 +312,7 @@ appInsights.loadAppInsights();
 
 ## <a name="next-steps"></a>次の手順
 
+- クリック分析自動収集プラグインについては、[GitHub リポジトリ](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-clickanalytics-js)と [NPM パッケージ](https://www.npmjs.com/package/@microsoft/applicationinsights-clickanalytics-js)を参照してください。
 - [使用法エクスペリエンスでのイベントの分析](usage-segmentation.md)を使用して上位のクリックを分析し、使用可能なディメンションでスライスします。
-- [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query) の CustomEvents テーブルの customDimensions 属性内のコンテンツ フィールドでクリック データを見つけます。
+- [Log Analytics](../log-query/log-analytics-tutorial.md#write-a-query) の CustomEvents テーブルの customDimensions 属性内のコンテンツ フィールドでクリック データを見つけます。 その他のガイダンスについては、[サンプル アプリ](https://go.microsoft.com/fwlink/?linkid=2152871)に関するページを参照してください。
 - クリック データのカスタム視覚化を作成するための[ブック](../platform/workbooks-overview.md)を作成します。

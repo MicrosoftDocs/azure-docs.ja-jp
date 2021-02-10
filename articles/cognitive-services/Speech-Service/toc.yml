@@ -14,8 +14,6 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: クォータと制限
       href: speech-services-quotas-and-limits.md
-    - name: ドキュメントの最新情報
-      href: whats-new.md
 - name: 音声テキスト変換
   items:
     - name: 音声テキスト変換のドキュメント
@@ -113,22 +111,10 @@
           href: long-audio-api.md
     - name: カスタマイズ
       items:
-        - name: 責任のあるデプロイ
-          items:
-            - name: Custom Voice のゲーティング
-              href: concepts-gating-overview.md
-            - name: 合成テクノロジのデプロイ
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: ボイス タレント向けの開示
-              href: /legal/cognitive-services/speech-service/disclosure-voice-talent
-            - name: 開示設計のガイドライン
-              href: concepts-disclosure-guidelines.md
-            - name: 設計パターンを開示する
-              href: concepts-disclosure-patterns.md
-            - name: 倫理規定
-              href: /legal/cognitive-services/speech-service/tts-code-of-conduct
         - name: Custom Voice ポータル
           items:
+            - name: カスタム ニューラル音声とは
+              href: custom-neural-voice.md
             - name: Custom Voice の概要
               displayName: 'custom voice, neural voice'
               href: how-to-custom-voice.md
@@ -142,6 +128,32 @@
           items:
             - name: Audio Content Creation
               href: how-to-audio-content-creation.md
+    - name: AI の責任ある使用
+      items:
+        - name: カスタム ニューラル音声
+          items:
+            - name: わかりやすさに関するメモ
+              items:
+                - name: カスタム ニューラル音声のユース ケース
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/transparency-note-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: 特性と制限
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/characteristics-and-limitations-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+            - name: 統合と責任ある使用
+              items:
+                - name: 制限付きアクセス
+                  href: /legal/cognitive-services/speech-service/custom-neural-voice/limited-access-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
+                - name: 合成音声の責任あるデプロイ
+                  href: concepts-guidelines-responsible-deployment-synthetic.md
+                - name: ボイス タレント向けの開示
+                  href: /legal/cognitive-services/speech-service/disclosure-voice-talent?context=/azure/cognitive-services/speech-service/context/context
+                - name: 開示設計のガイドライン
+                  href: concepts-disclosure-guidelines.md
+                - name: 設計パターンを開示する
+                  href: concepts-disclosure-patterns.md
+                - name: 倫理規定
+                  href: /legal/cognitive-services/speech-service/tts-code-of-conduct?context=/azure/cognitive-services/speech-service/context/context
+            - name: データ、プライバシー、セキュリティ
+              href: /legal/cognitive-services/speech-service/custom-neural-voice/data-privacy-security-custom-neural-voice?context=/azure/cognitive-services/speech-service/context/context
     - name: リファレンス
       items:
         - name: C++

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: fe63f9d5a9d215a31a56d7214170d86f46a4e4a2
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: a8f39b5a1994574fa3d1472a2b53a3b080f82952
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91653657"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089243"
 ---
 # <a name="m-series"></a>M シリーズ
 
@@ -22,11 +22,13 @@ M シリーズの VM は、Intel&reg; ハイパー スレッディング テク�
 
 [ACU](acu.md):160-180<br>
 [Premium Storage](premium-storage-performance.md):サポートされています<br>
-[Premium Storage キャッシュ](premium-storage-performance.md):サポートされています<br>
-[ライブ マイグレーション](maintenance-and-updates.md):サポートされていません<br>
-[メモリ保持更新](maintenance-and-updates.md):サポートされていません<br>
-[VM 世代サポート](generation-2.md):第 1 世代と第 2 世代<br>
-[書き込みアクセラレータ](./how-to-enable-write-accelerator.md):サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+[書き込みアクセラレータ](./how-to-enable-write-accelerator.md): サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
@@ -46,7 +48,7 @@ M シリーズの VM は、Intel&reg; ハイパー スレッディング テク�
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> 64 個を超える vCPU では、Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 が付属する Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3 の、サポートされているゲスト OS のいずれかが必要です。
+<sup>1</sup> vCPU が 64 個を超える場合、次のサポートされているゲスト バージョンのいずれかが必要です。Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 が付属する Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3 の、サポートされているゲスト OS のいずれかが必要です。
 
 <sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 

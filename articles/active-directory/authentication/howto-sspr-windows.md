@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fa2d910c017d3cc626f737bdab50315aef8d1e77
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741492"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491387"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Windows のサインイン画面で Azure Active Directory のセルフサービス パスワード リセットを有効にする
 
@@ -40,7 +40,7 @@ Windows のサインイン画面から SSPR を使用する場合は、次の制
 - ハイブリッド Azure AD 参加済みコンピューターでは、新しいパスワードの使用とキャッシュされた資格情報の更新を行うために、ドメイン コントローラーへの ネットワーク接続経路が必要です。 これは、デバイスを組織の内部ネットワークに配置するか、オンプレミスのドメイン コントローラーにネットワーク アクセスできる VPN に配置する必要があることを意味します。
 - イメージを使用する場合は、sysprep を実行する前に、CopyProfile 手順の実行に先立ってビルトイン Administrator に対する Web キャッシュがクリアされることを確認してください。 この手順の詳細については、[カスタムの既定のユーザー プロファイルを使用した場合のパフォーマンスの低下](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)に関するサポート記事を参照してください。
 - Windows 10 デバイスでは、以下の設定によって、パスワードの使用とリセットを行う機能が干渉されることがわかっています。
-    - v1909 より前のバージョンの Windows 10 のポリシーで Ctrl + Alt + Del が求められる場合、**パスワードのリセット** は機能しません。
+    - Windows 10 のポリシーで Ctrl + Alt + Del が求められる場合、**パスワードのリセット** は機能しません。
     - ロック画面の通知がオフになっている場合、**パスワードのリセット** は機能しません。
     - *HideFastUserSwitching* が有効または 1 に設定されている
     - *DontDisplayLastUserName* が有効または 1 に設定されている
@@ -51,6 +51,10 @@ Windows のサインイン画面から SSPR を使用する場合は、次の制
     - 対話型ログオン:CTRL + ALT + DEL を必要としない = Disabled
     - *DisableLockScreenAppNotifications* = 1 または Enabled
     - Windows SKU が Home または Professional エディションではない
+
+> [!NOTE]
+> これらの制限は、デバイスのロック画面からの Windows Hello for Business の PIN のリセットにも適用されます。
+>
 
 ## <a name="windows-10-password-reset"></a>Windows 10 でのパスワードのリセット
 

@@ -2,14 +2,14 @@
 title: サービスのクォータと制限
 description: 既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します
 ms.topic: conceptual
-ms.date: 12/29/2020
+ms.date: 01/28/2021
 ms.custom: seodec18
-ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 433272c76b9ff27d9cad542cf65a8ec0d8fc0378
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814637"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052382"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -33,19 +33,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch サービス モードでのコア クォータ
 
-専用コア クォータの適用が強化されました。変更は各ステージで使用可能になり、2021 年 1 月の終わりまでにすべての Batch アカウントに対してこの措置が完了します。
-
-コア クォータは、Batch でサポートされる各 VM シリーズに存在し、ポータルの **クォータ** ページに表示されます。 次に説明するように、VM シリーズのクォータ制限はサポート要求で更新できます。
-
-既存のメカニズムが段階的に廃止されると、VM シリーズのクォータ制限はチェックされず、アカウントの合計クォータ制限のみが適用されます。 つまり、VM シリーズのクォータで示されているよりも多くのコアを、アカウントの合計クォータ制限まで、VM シリーズに割り当てることができます。
-
-更新されたメカニズムにより、アカウントの合計クォータに加えて、VM シリーズのクォータが適用されます。 新しいメカニズムへの移行の一環として、割り当てエラーを防ぐために、VM シリーズのクォータ値が更新される可能性があります。最近の数か月間に使用されたすべての VM シリーズでは、アカウントの合計クォータに一致するように VM シリーズのクォータが更新されます。 この変更によって、既に使用可能な容量を超えて使用できるようになることはありません。
-
-次を確認することで、Batch アカウントに対して VM シリーズのクォータの適用が有効になっているかどうかを確認できます。
-
-* Batch アカウント [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API プロパティ。
-
-* ポータルの Batch アカウント **クォータ** ページのテキスト。
+コア クォータは、Batch でサポートされる各 VM シリーズに存在し、ポータルの **クォータ** ページに表示されます。 次に説明するように、VM シリーズのクォータ制限はサポート要求で更新できます。 専用ノードの場合、Batch では、各 VM シリーズに対してコア クォータ制限が適用されます。また、Batch アカウント全体に対して合計のコア クォータ制限も適用されます。 優先順位の低いノードの場合、Batch では、異なる VM シリーズを区別せずに、Batch アカウントに対して合計のコア クォータのみ適用されます。
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのコア クォータ
 

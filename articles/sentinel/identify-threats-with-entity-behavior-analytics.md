@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900894"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784797"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
 > [!IMPORTANT]
 >
-> - UEBA およびエンティティ ページ機能は、次の Azure Sentinel の地域とリージョンで **一般提供** になりました。
->    - 米国地域
->    - 西ヨーロッパ リージョン
->    - オーストラリア地域
->
-> - 他のすべての地域およびリージョンでは、これらの機能は当分の間、**プレビュー** 段階のままです。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[**Microsoft Azure プレビューの追加使用条件**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> - UEBA およびエンティティ ページ機能は、Azure Sentinel の "*_すべて_*" の地域とリージョンで **一般提供** になりました。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>ユーザーとエンティティの行動分析 (UEBA) の概要
 
@@ -50,7 +45,7 @@ Azure Sentinel は、接続されているすべてのデータ ソースから�
 
 UEBA ソリューションに対する Gartner のパラダイムから着想を得て、Azure Sentinel は、次の 3 つの参照フレームに基づいた "アウトサイドイン" アプローチを提供します。
 
-- **ユース ケース:** さまざまなエンティティを被害者、加害者、またはピボット ポイントとしてキル チェーン内に配置する、戦術、テクニック、サブテクニックの MITRE ATT&CK フレームワークに対応したセキュリティ調査に基づいて、関連する攻撃ベクトルとシナリオに優先順位を付けることにより、Azure Sentinel は特に、各データ ソースが提供できる最も重要なログに焦点を置いています。
+- *ユース ケース:* さまざまなエンティティを被害者、加害者、またはピボット ポイントとしてキル チェーン内に配置する、戦術、テクニック、サブテクニックの MITRE ATT&CK フレームワークに対応したセキュリティ調査に基づいて、関連する攻撃ベクトルとシナリオに優先順位を付けることにより、Azure Sentinel は特に、各データ ソースが提供できる最も重要なログに焦点を置いています。
 
 - **データ ソース:** まず何よりも Azure データ ソースをサポートしていますが、Azure Sentinel は、脅威シナリオに一致するデータを提供するためにサード パーティのデータ ソースを慎重に選択します。
 

@@ -49,7 +49,7 @@ HSM で保護されたキー (HSM キーとも呼ばれます) は、HSM (ハー
 
 これらのキーは、シングルテナントの HSM プールで保護されます。 RSA、EC、および対称キーのインポートを、ソフト形式で、またはサポートされている HSM デバイスからのエクスポートにより、行うことができます。 HSM プールでキーを生成することもできます。 [BYOK (Bring Your Own Key) の仕様](../keys/byok-specification.md)で説明されている方法を使用して HSM キーをインポートすると、Managed HSM プールへの安全なトランスポート キー マテリアルが有効になります。 
 
-地理的境界について詳しくは、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/privacy/)をご覧ください。
+地理的境界について詳しくは、[Microsoft Azure トラスト センター](https://azure.microsoft.com/support/trust-center/privacy/)をご覧ください。
 
 ## <a name="key-types-and-protection-methods"></a>キーの種類と保護方法
 

@@ -11,15 +11,16 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 02/02/2021
+ms.openlocfilehash: 63816a40aa710d26dc036dfe82018883e917beb6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638178"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428489"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Microsoft Dynamics 365 および Microsoft Dynamics CRM をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -56,10 +57,10 @@ Dynamics のバージョンおよび製品でサポートされている認証�
 
 このコネクタでは、Finance、Operations、Talent など、上記以外のアプリケーションの種類はサポートされていません。
 
-この Dynamics コネクタは [Dynamics XRM ツール](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)に基づいて構築されています。
-
 >[!TIP]
 >Dynamics 365 Finance and Operations からデータをコピーするには、[Dynamics AX コネクタ](connector-dynamics-ax.md)を使用できます。
+
+この Dynamics コネクタは [Dynamics XRM ツール](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools)に基づいて構築されています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -88,7 +89,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 | servicePrincipalCredential | サービス プリンシパルの資格情報。 <br/><br/>資格情報の種類として "ServicePrincipalKey" を使用する場合、`servicePrincipalCredential` には、リンクされたサービスの展開時に Azure Data Factory によって暗号化される文字列を設定できます。 または、Azure Key Vault 内のシークレットへの参照を設定できます。 <br/><br/>資格情報として "ServicePrincipalCert" を使用する場合、`servicePrincipalCredential` は Azure Key Vault 内の証明書への参照である必要があります。 | はい (認証が "AADServicePrincipal" の場合) |
 | username | Dynamics に接続するためのユーザー名。 | はい (認証が "Office365" の場合) |
 | password | username として指定したユーザー アカウントのパスワード。 このフィールドを "SecureString" でマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい (認証が "Office365" の場合) |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 値を指定しない場合、プロパティでは既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」 (ソースにリンクされたサービスに統合ランタイムがない場合) |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 値を指定しない場合、プロパティでは既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 >[!NOTE]
 >以前の Dynamics コネクタでは、省略可能な **organizationName** プロパティを使用してオンラインの Dynamics CRM または Dynamics 365 インスタンスを識別していました。 そのプロパティはまだ機能しますが、代わりに新しい **serviceUri** プロパティを指定して、インスタンス検出のパフォーマンスを向上させることをお勧めします。
@@ -172,7 +173,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>IFD 対応 Dynamics 365 および Dynamics CRM (オンプレミス)
 
-オンライン Dyanmics と比べた場合に追加されたプロパティは、 **hostName** と **port** です。
+オンライン Dyanmics と比べた場合に追加されたプロパティは、**hostName** と **port** です。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -184,7 +185,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 | authenticationType | Dynamics サーバーに接続する認証の種類。 IFD 対応オンプレミス Dynamics の場合、"Ifd" を指定します。 | はい。 |
 | username | Dynamics に接続するためのユーザー名。 | はい。 |
 | password | username に指定したユーザー アカウントのパスワード。 このフィールドを "SecureString" でマークして、Data Factory に安全に格納することができます。 または、Key Vault にパスワードを格納して、データ コピーの実行時にコピー アクティビティがそこからプルするようにできます。 詳しくは、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 | はい。 |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 値を指定しない場合、プロパティでは既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」。 |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 値を指定しない場合、プロパティでは既定の Azure 統合ランタイムが使用されます。 | いいえ |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>例:IFD 認証を使用する IFD 対応オンプレミス Dynamics
 
@@ -326,12 +327,12 @@ Dynamics にデータをコピーするために、コピー アクティビテ�
 | writeBehavior | 操作の書き込み動作。 この値は "Upsert" にする必要があります。 | はい |
 | alternateKeyName | upsert を実行するためにエンティティに定義されている代替キー名。 | いいえ。 |
 | writeBatchSize | 各バッチで Dynamics に書き込まれたデータの行数。 | いいえ。 既定値は 10 です。 |
-| ignoreNullValues | 書き込み操作時に、キー フィールド以外の入力データからの null 値を無視するかどうか。<br/><br/>有効な値は **TRUE** と **FALSE** です。<ul><li>**TRUE** : upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。</li><li>**FALSE** : upsert または更新操作を行うときに、対象オブジェクト内のデータを null 値に更新します。 挿入操作を実行するときに、null 値を挿入します。</li></ul> | いいえ。 既定値は **FALSE** です。 |
+| ignoreNullValues | 書き込み操作時に、キー フィールド以外の入力データからの null 値を無視するかどうか。<br/><br/>有効な値は **TRUE** と **FALSE** です。<ul><li>**TRUE**: upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。</li><li>**FALSE**: upsert または更新操作を行うときに、対象オブジェクト内のデータを null 値に更新します。 挿入操作を実行するときに、null 値を挿入します。</li></ul> | いいえ。 既定値は **FALSE** です。 |
 
 >[!NOTE]
 >Dynamics シンクでのシンク **writeBatchSize** とコピー アクティビティ **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** のどちらでも、既定値は 10 です。 そのため、既定で 100 個のレコードが同時に Dynamics に送信されます。
 
-Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](/previous-versions/dynamicscrm-2016/developers-guide/jj863631(v=crm.8)#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 例外がスローされます。 このような同時呼び出しの帯域幅調整を避けるには、 **writeBatchSize** を 10 以下に保ちます。
+Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び出し数が 2](/previous-versions/dynamicscrm-2016/developers-guide/jj863631(v=crm.8)#Run-time%20limitations) という制限があります。 この制限を超えた場合、最初の要求が実行される前に "サーバー ビジー" 例外がスローされます。 このような同時呼び出しの帯域幅調整を避けるには、**writeBatchSize** を 10 以下に保ちます。
 
 **writeBatchSize** と **parallelCopies** の最適な組み合わせは、エンティティのスキーマによって異なります。 スキーマの要素には、列の数や行のサイズに加えて、これらの呼び出しにフックされるプラグイン、ワークフロー、またはワークフロー アクティビティの数が含まれます。 **writeBatchSize** (10) &times; **parallelCopies** (10) の既定の設定は、Dynamics サービスによる推奨設定です。 この値は、ほとんどの Dynamics エンティティに対して機能しますが、最高のパフォーマンスをもたらすとは限りません。 コピー アクティビティ設定の組み合わせを調整することで、パフォーマンスを調整できます。
 
@@ -397,7 +398,7 @@ Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び�
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> Dynamics データ型の **AttributeType.CalendarRules** 、 **AttributeType.MultiSelectPicklist** 、 **AttributeType.PartyList** はサポートされていません。
+> Dynamics データ型の **AttributeType.CalendarRules**、**AttributeType.MultiSelectPicklist**、**AttributeType.PartyList** はサポートされていません。
 
 ## <a name="writing-data-to-a-lookup-field"></a>ルックアップ フィールドへのデータの書き込み
 
@@ -416,7 +417,7 @@ Customer や Owner のように、複数のターゲットがあるルックア�
 - **GUID** 型の **CustomerField** 列。これは、Dynamics のターゲット エンティティの主キー値です。
 - **String** 型の **Target** 列。これは、ターゲット エンティティの論理名です。
 
-また、そのようなデータを、シンク Dynamics のエンティティ フィールド **CustomerField** ( **Customer** 型) にコピーするとします。
+また、そのようなデータを、シンク Dynamics のエンティティ フィールド **CustomerField** (**Customer** 型) にコピーするとします。
 
 コピー アクティビティの列マッピングで、次のように 2 つの列をマップします。
 

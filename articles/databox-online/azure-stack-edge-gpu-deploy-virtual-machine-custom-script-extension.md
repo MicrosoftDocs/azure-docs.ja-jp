@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955554"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804857"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスで実行されている VM にカスタム スクリプト拡張機能をデプロイする
 
@@ -62,13 +62,13 @@ If your script is on a local server, then you may still need additional firewall
 
 ## <a name="prerequisites"></a>[前提条件]
 
-1. クライアント コンピューターに [VM テンプレートとパラメーター ファイルをダウンロード](https://aka.ms/ase-vm-templates)します。 それを、作業ディレクトリとして使用するディレクトリに解凍します。
+1. クライアント コンピューターに [VM テンプレートとパラメーター ファイルをダウンロード](https://aka.ms/ase-vm-templates)します。 作業ディレクトリとして使用するディレクトリにダウンロードしたものを解凍します。
 
 1. デバイス上に VM を作成してデプロイする必要があります。 VM を作成するには、[テンプレートを使用して Azure Stack Edge Pro に VM をデプロイする方法](azure-stack-edge-gpu-deploy-virtual-machine-templates.md)に関するページのすべての手順に従います。
 
     外部 (GitHub や Azure Storage など) からスクリプトをダウンロードし、コンピューティング ネットワークを構成する必要がある場合は、インターネットに接続されているポートをコンピューティング用に有効化してください。 これにより、スクリプトをダウンロードできます。
 
-    次の例では、ポート 2 がインターネットに接続され、コンピューティング ネットワークを有効にするために使用されています。 前の手順で Kubernetes が不要であることがわかっている場合は、Kubernetes ノード IP と外部サービス IP の割り当てをスキップできます。    
+    次の例では、ポート 2 がインターネットに接続され、コンピューティング ネットワークを有効にするために使用されています。 前の手順で Kubernetes が不要であることがわかっている場合は、Kubernetes ノード IP と外部サービス IP の割り当てをスキップできます。
 
     ![インターネットに接続されているポートでのコンピューティング設定の有効化](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
@@ -115,7 +115,7 @@ VM のオペレーティング システムに応じて、Windows 用または L
 ```
 VM 名、拡張機能の名前、実行するコマンドを指定します。
 
-この記事で使用したパラメーター ファイルのサンプルを次に示します。 
+この記事で使用したパラメーター ファイルのサンプルを次に示します。
 
 ```powershell
 {
@@ -396,4 +396,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Resource Manager コマンドレット](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager コマンドレット](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

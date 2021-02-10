@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935200"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901038"
 ---
 Azure Functions を使用すると、事前構築済みのエントリ ポイントを使用して、構成のみのレプリケーション タスクを作成できます。 [Azure Functions の構成ベース レプリケーションのサンプル](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config)では、独自のコードで[事前構築済みのヘルパー](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication)を活用したり、コード全体を処理せずに構成を使用したりする方法について説明しています。
 
@@ -218,13 +218,12 @@ Service Bus トピックにイベントを転送する場合は、"bindings" 内
 
 ### <a name="retry-policy"></a>再試行ポリシー
 
-再試行ポリシーを構成するには、[再試行に関する Azure Functions ドキュメント](/azure/azure-functions/functions-bindings-error-pages)を参照してください。 このリポジトリ内のプロジェクト全体で選択されたポリシー設定によって、データ損失を回避するために、5 秒から 5 分の再試行間隔で再試行回数が無限であるエクスポネンシャル バックオフ戦略が構成されます。
+再試行ポリシーを構成するには、[再試行に関する Azure Functions ドキュメント](../articles/azure-functions/functions-bindings-error-pages.md)を参照してください。 このリポジトリ内のプロジェクト全体で選択されたポリシー設定によって、データ損失を回避するために、5 秒から 5 分の再試行間隔で再試行回数が無限であるエクスポネンシャル バックオフ戦略が構成されます。
 
-Service Bus については、「[トリガーの回復性に加えて再試行サポートを使用する](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience)」セクションを参照して、トリガーの相互作用と、キューに対して定義されている最大配信回数を理解してください。
+Service Bus については、「[トリガーの回復性に加えて再試行サポートを使用する](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience)」セクションを参照して、トリガーの相互作用と、キューに対して定義されている最大配信回数を理解してください。
 
 ### <a name="build-deploy-and-configure"></a>構築、デプロイ、および構成
 
 構成に焦点を当てる場合でも、タスクではデプロイ可能なアプリケーションを構築し、特定のエンドポイントに接続するために必要なすべての情報が含まれるように Azure Functions ホストを構成する必要があります。 
 
 これについては、再利用可能なスクリプトと共に、[Azure Functions の構成ベース レプリケーションのサンプル](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config)で説明されています。
-

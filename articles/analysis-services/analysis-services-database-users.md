@@ -8,12 +8,12 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 56f98d41fc73cdd2be0923de66a5af09c875a050
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013595"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054095"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -28,7 +28,9 @@ model データベース レベルでは、すべてのユーザーがロール�
 
 表形式のモデル プロジェクトを作成する場合、Analysis Services プロジェクトを使って Visual Studio 内でロール マネージャーを使用して、ロールを作成し、これらのロールにユーザーまたはグループを追加します。 サーバーにデプロイするとき、SQL Server Management Studio (SSMS)、[Analysis Services PowerShell コマンドレット](/analysis-services/powershell/analysis-services-powershell-reference)、または [Tabular Model Scripting Language](/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) を使用して、ロールおよびユーザーのメンバーを追加または削除します。
 
-**セキュリティ グループ**を追加するときは、`obj:groupid@tenantid` を使用します。
+**セキュリティ グループ** を追加するときは、`obj:groupid@tenantid` を使用します。
+
+**サービス プリンシパル** を追加するときは、`app:appid@tenantid` を使用します。
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio でロールおよびユーザーを追加または管理する方法  
   

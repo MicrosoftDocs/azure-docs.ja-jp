@@ -103,28 +103,16 @@
       href: ./linux/tutorial-elasticsearch.md
     - name: FreeBSD のパケット フィルター
       href: ./linux/freebsd-pf-nat.md
+    - name: メインフレームのホスト変更
+      href: ./workloads/mainframe-rehosting/overview.md
     - name: データベース
       items:
-        - name: MySQL on SUSE
-          href: ./linux/mysql-on-opensuse.md
         - name: MongoDB
-          items:
-            - name: Linux
-              href: ./linux/install-mongodb.md
-            - name: Windows
-              href: ./windows/install-mongodb.md
-        - name: PostgreSQL
-          href: ./linux/postgresql-install.md
         - name: Linux 上の MS SQL
           href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: ハイ パフォーマンス コンピューティング (HPC)
       href: /azure/architecture/topics/high-performance-computing/
     - name: Containers
-      items:
-        - name: Docker マシンの使用
-          href: ./linux/docker-machine.md
-        - name: Docker Compose の使用
-          href: ./linux/docker-compose-quickstart.md
     - name: "Visual\_Studio"
       href: ./windows/using-visual-studio-vm.md
 - name: インスタンス
@@ -977,10 +965,18 @@
       href: disks-scalability-targets.md
     - name: バックアップとデータ保護
       items:
-        - name: ディスクのバックアップとディザスター リカバリー
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 増分スナップショットを有効にする
           href: disks-incremental-snapshots.md
+        - name: Azure ディスク バックアップ
+          items:
+            - name: 概要
+              href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
+            - name: Azure ディスク バックアップの構成
+              href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
+            - name: Azure ディスク バックアップによるディスクの復元
+              href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
+        - name: ディスクのバックアップとディザスター リカバリー
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: ディスクのスナップショットの作成 - CLI
           href: ./linux/snapshot-copy-managed-disk.md
         - name: ディスクのスナップショットの作成 - PowerShell
@@ -1279,8 +1275,6 @@
       href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
     - name: VM の監視
       items:
-        - name: Linux
-          href: ./linux/tutorial-monitor.md
         - name: Windows
           href: ./windows/tutorial-monitor.md
     - name: エージェント
@@ -1295,8 +1289,10 @@
               href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
             - name: Linux Diagnostics 拡張機能
               items:
-                - name: 概要
+                - name: Version 4.0
                   href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
+                - name: Version 3.0
+                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: Telegraf を使用したメトリックの収集
                   href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
                   displayname: diagnostics extension
@@ -1448,6 +1444,8 @@
               href: ./linux/move-vm.md
             - name: PowerShell
               href: ./windows/move-vm.md
+            - name: Marketplace VM のサブスクリプションを変更する
+              href: azure-cli-change-subscription-marketplace.md
         - name: VM を別のリージョンに移行する
           href: ../site-recovery/azure-to-azure-tutorial-migrate.md
         - name: 可用性ゾーンに移動する
@@ -1472,34 +1470,15 @@
     - name: カスタム データ
       href: custom-data.md
     - name: Ansible
-      items:
-        - name: インストールと構成
-          href: /azure/developer/ansible/install-on-linux-vm
-        - name: Linux VM の作成
-          href: /azure/developer/ansible/vm-configure
-        - name: Linux VM の管理
-          href: /azure/developer/ansible/vm-manage
+      href: 'https://docs.microsoft.com/azure/developer/ansible/'
     - name: Terraform
-      items:
-        - name: インストールと構成
-          href: /azure/developer/terraform/install-configure
-        - name: 完全な VM の作成
-          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+      href: 'https://docs.microsoft.com/azure/developer/terraform/'
     - name: Jenkins
-      href: /azure/developer/jenkins/overview
-      items:
-        - name: Jenkins サーバーを作成する
-          href: /azure/developer/jenkins/configure-on-linux-vm
-        - name: Azure VM エージェントでスケーリングする
-          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
-        - name: アーティファクトをストレージに発行する
-          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
-        - name: Jenkins をセキュリティ保護する
-          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+      href: 'https://docs.microsoft.com/en-us/azure/developer/jenkins/'
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: トラブルシューティング
-  href: ./troubleshooting/index.yml
+  href: 'https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines'
 - name: リソース
   items:
     - name: クラウド導入フレームワーク

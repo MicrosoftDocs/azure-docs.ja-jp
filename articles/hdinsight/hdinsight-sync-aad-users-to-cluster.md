@@ -1,23 +1,21 @@
 ---
 title: Azure Active Directory ユーザーを HDInsight クラスターに同期する
 description: Azure Active Directory の認証されたユーザーを HDInsight クラスターに同期します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 19466174faeef20b8ac29882b047d74ad2adc5ff
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a3307c5d677028c17717c0d591790f0373f131d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535180"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931633"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
-[Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター](./domain-joined/hdinsight-security-overview.md)は、Azure Active Directory (Azure AD) ユーザーに強力な認証を使用したり、" *Azure ロールベースのアクセス制御 (Azure RBAC)* " ポリシーを使用したりすることができます。 Azure AD にユーザーやグループを追加するとき、アクセスが必要なユーザーをクラスターに同期できます。
+[Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター](./domain-joined/hdinsight-security-overview.md)は、Azure Active Directory (Azure AD) ユーザーに強力な認証を使用したり、"*Azure ロールベースのアクセス制御 (Azure RBAC)* " ポリシーを使用したりすることができます。 Azure AD にユーザーやグループを追加するとき、アクセスが必要なユーザーをクラスターに同期できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -129,7 +127,7 @@ ms.locfileid: "92535180"
 
 新しい Azure AD ユーザーが追加されたことを確認するには、[Apache Ambari Web UI](hdinsight-hadoop-manage-ambari.md) を開きます。 **`https://CLUSTERNAME.azurehdinsight.net`** を参照することによって、Ambari Web UI にアクセスします。 クラスター管理者のユーザー名とパスワードを入力します。
 
-1. Ambari ダッシュボードから、 **[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
+1. Ambari ダッシュボードから、**[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
 
     ![Apache Ambari ダッシュボードの Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 

@@ -3,7 +3,7 @@ title: アプリケーションの同意の管理と Azure Active Directory の�
 description: ユーザーの同意が無効または制限されている場合に同意要求を管理する方法、および Azure Active Directory でアプリケーションに対するテナント全体の管理者の同意要求を評価する方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/27/2019
 ms.author: kenwith
 ms.reviewer: phsignor
-ms.openlocfilehash: 4664bdd515c815dbd742c0d4e05f1e5c03978526
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 189a89276d922665dd1ad0fbacc77ba499137048
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649194"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253104"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>アプリケーションの同意の管理と同意要求の評価
 

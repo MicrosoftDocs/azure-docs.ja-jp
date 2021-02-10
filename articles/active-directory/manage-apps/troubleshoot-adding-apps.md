@@ -3,19 +3,19 @@ title: Azure Active Directory へのアプリケーションの追加または�
 description: Azure Active Directory にアプリを追加または削除するときに直面する一般的な問題のトラブルシューティングを行います。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: dbfc90f01bdd9cc0a831160d06efa1c3952884a2
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108417"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257671"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング
 この記事は、Azure Active Directory にアプリを追加または削除するときに直面する一般的な問題について理解するのに役立ちます。

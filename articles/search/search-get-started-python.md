@@ -1,32 +1,32 @@
 ---
 title: 'クイックスタート: Python で検索インデックスを作成する'
 titleSuffix: Azure Cognitive Search
-description: Python、ノートブック、および Azure.Documents.Search ライブラリを使用して、インデックスの作成、データの読み込み、クエリの実行を行う方法について説明します。
+description: Python、Jupyter Notebook、Python 用 Azure.Documents.Search クライアント ライブラリを使用して検索インデックスを作成し、データを読み込んでクエリを実行する方法について説明します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/19/2020
+ms.date: 01/29/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 126fc69678148d4d478c96ff8d05f194c7e3d1b3
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: eb5de33fd41d3a454f4d0b8d44325ed30f9c5d47
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861869"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071632"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>クイックスタート: Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebook"></a>クイックスタート: Jupyter Notebook を使用して Python で Azure Cognitive Search インデックスを作成する
 
 > [!div class="op_single_selector"]
 > * [Python](search-get-started-python.md)
-> * [PowerShell (REST)](./search-get-started-powershell.md)
-> * [C#](./search-get-started-dotnet.md)
+> * [PowerShell (REST)](search-get-started-powershell.md)
+> * [C#](search-get-started-dotnet.md)
 > * [REST](search-get-started-rest.md)
 > * [ポータル](search-get-started-portal.md)
 >
 
-Python と Azure SDK for Python の [azure-search-documents ライブラリ](/python/api/overview/azure/search-documents-readme)を使用して、Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う Jupyter ノートブックを作成します。 この記事では、ノートブックを作成する方法を順番に説明します。 または、[完成した Jupyter Python ノートブックをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-python-samples)こともできます。
+Python と Azure SDK for Python の [azure-search-documents ライブラリ](/python/api/overview/azure/search-documents-readme)を使用して、Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行うノートブックを作成します。 この記事では、ノートブックを作成する方法を順番に説明します。 または、[完成した Jupyter Python ノートブックをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-python-samples)こともできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [azure-search-documents パッケージ](https://pypi.org/project/azure-search-documents/)
 
-* [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、Free レベルを使用できます。 
+* [検索サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 このクイック スタート用には、Free レベルを使用できます。 
 
 ## <a name="copy-a-key-and-url"></a>キーと URL をコピーする
 
@@ -48,7 +48,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-rest/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+   ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-rest/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -63,7 +63,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
    ```python
     !pip install azure-search-documents --pre
     !pip show azure-search-documents
-
+    
     import os
     from azure.core.credentials import AzureKeyCredential
     from azure.search.documents.indexes import SearchIndexClient 
@@ -82,17 +82,17 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. 2 番目のセルでは、どの要求でも定数となる要求要素を入力します。 前の手順でコピーした検索サービス名、管理 API キー、およびクエリ API キーを指定します。 このセルでは、特定の操作に使用するクライアントも設定します。[SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) を使用してインデックスを作成し、[SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) を使用してインデックスを照会します。
 
    ```python
-    service_name = ["SEARCH_ENDPOINT - do not include search.windows.net"]
-    admin_key = ["Cognitive Search Admin API Key"]
-
+    service_name = "YOUR-SEARCH-SERIVCE-NAME"
+    admin_key = "YOUR-SEARCH-SERVICE-ADMIN-API-KEY"
+    
     index_name = "hotels-quickstart"
-
+    
     # Create an SDK client
     endpoint = "https://{}.search.windows.net/".format(service_name)
     admin_client = SearchIndexClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
-
+    
     search_client = SearchClient(endpoint=endpoint,
                           index_name=index_name,
                           credential=AzureKeyCredential(admin_key))
@@ -121,6 +121,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. 次のセルでは、スキーマを指定するセルに次の例を貼り付けます。
 
     ```python
+    # Specify the index schema
     name = index_name
     fields = [
             SimpleField(name="HotelId", type=SearchFieldDataType.String, key=True),
@@ -128,13 +129,13 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
             SearchableField(name="Description", type=SearchFieldDataType.String, analyzer_name="en.lucene"),
             SearchableField(name="Description_fr", type=SearchFieldDataType.String, analyzer_name="fr.lucene"),
             SearchableField(name="Category", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
-
+        
             SearchableField(name="Tags", collection=True, type=SearchFieldDataType.String, facetable=True, filterable=True),
-
+    
             SimpleField(name="ParkingIncluded", type=SearchFieldDataType.Boolean, facetable=True, filterable=True, sortable=True),
             SimpleField(name="LastRenovationDate", type=SearchFieldDataType.DateTimeOffset, facetable=True, filterable=True, sortable=True),
             SimpleField(name="Rating", type=SearchFieldDataType.Double, facetable=True, filterable=True, sortable=True),
-
+    
             ComplexField(name="Address", fields=[
                 SearchableField(name="StreetAddress", type=SearchFieldDataType.String),
                 SearchableField(name="City", type=SearchFieldDataType.String, facetable=True, filterable=True, sortable=True),
@@ -150,20 +151,20 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. 別のセルで、要求を作成します。 この create_index 要求では、ご利用の検索サービスのインデックス コレクションがターゲットとされ、前のセルで指定したインデックス スキーマに基づいて [SearchIndex](/python/api/azure-search-documents/azure.search.documents.indexes.models.searchindex) が作成されます。
 
-   ```python
+    ```python
     index = SearchIndex(
         name=name,
         fields=fields,
         scoring_profiles=scoring_profiles,
         suggesters = suggester,
         cors_options=cors_options)
-
+    
     try:
         result = admin_client.create_index(index)
         print ('Index', result.name, 'created')
     except Exception as ex:
         print (ex)
-   ```
+    ```
 
 1. 各手順を行います。
 
@@ -176,8 +177,7 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 1. 新しいセルでは、インデックス スキーマに準拠する 4 つのドキュメントを指定します。 ドキュメントごとにアップロード アクションを指定します。
 
     ```python
-    documents = {
-        "value": [
+    documents = [
         {
         "@search.action": "upload",
         "HotelId": "1",
@@ -255,98 +255,96 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
             }
         }
     ]
-    }
     ```  
 
 1. 別のセルで、要求を作成します。 この upload_documents 要求では、hotels-quickstart インデックスのドキュメント コレクションがターゲットとされ、前の手順で指定したドキュメントが Cognitive Search インデックスにプッシュされます。
 
-
-   ```python
+    ```python
     try:
         result = search_client.upload_documents(documents=documents)
         print("Upload of new document succeeded: {}".format(result[0].succeeded))
     except Exception as ex:
         print (ex.message)
-   ```
+    ```
 
 1. 各手順を行って、ご利用の検索サービス内のインデックスにドキュメントをプッシュします。
 
 ## <a name="3---search-an-index"></a>3 - インデックスの検索
 
-この手順では、[Search Documents REST API](/rest/api/searchservice/search-documents) を使用してインデックスのクエリを実行する方法を示します。
+この手順では、[Search Documents (REST)](/rest/api/searchservice/search-documents) を使用してインデックスのクエリを実行する方法を示します。
 
 1. この操作には、search_client を使用します。 このクエリでは、空の検索が実行され (`search=*`)、任意のドキュメントのランクなしの一覧 (search score = 1.0) が返されます。 条件がないため、すべてのドキュメントが結果に含まれます。 このクエリでは、各ドキュメントのフィールドのうち 2 つだけを出力します。 さらに、`include_total_count=True` を追加して、結果に含まれるすべてのドキュメントの数 (4) を取得します。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", include_total_count=True)
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. 次のクエリでは、検索式に完全な用語を追加しています ("wifi")。 このクエリでは、`select` ステートメント内のフィールドのみが結果に含まれることを指定しています。 返されるフィールドを制限すると、ネットワーク経由で返されるデータの量が最小限に抑えられ、検索の待ち時間が短縮されます。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="wifi", include_total_count=True, select='HotelId,HotelName,Tags')
-
+    
     print ('Total Documents Matching Query:', results.get_count())
     for result in results:
         print("{}: {}: {}".format(result["HotelId"], result["HotelName"], result["Tags"]))
-   ```
+    ```
 
 1. 次に、評価が 4 を超えるホテルのみを降順に並べ替えて返す filter 式を適用します。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="hotels", select='HotelId,HotelName,Rating', filter='Rating gt 4', order_by='Rating desc')
-
+    
     for result in results:
         print("{}: {} - {} rating".format(result["HotelId"], result["HotelName"], result["Rating"]))
-   ```
+    ```
 
 1. `search_fields` を追加して、単一のフィールドに一致するようクエリにスコープを設定します。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="sublime", search_fields='HotelName', select='HotelId,HotelName')
-
+    
     for result in results:
         print("{}: {}".format(result["HotelId"], result["HotelName"]))
-   ```
+    ```
 
 1. facets は、ファセット ナビゲーション構造を構成するために使用できるラベルです。 このクエリでは、Category のファセットとカウントが返されます。
 
-   ```python
+    ```python
     results =  search_client.search(search_text="*", facets=["Category"])
-
+    
     facets = results.get_facets()
-
+    
     for facet in facets["Category"]:
         print("    {}".format(facet))
-   ```
+    ```
 
 1. この例では、特定のドキュメントをそのキーに基づいて検索しています。 通常は、ユーザーが検索結果内のドキュメントをクリックしたときにドキュメントを返します。
 
-   ```python
+    ```python
     result = search_client.get_document(key="3")
-
+    
     print("Details for hotel '3' are:")
-    print("        Name: {}".format(result["HotelName"]))
-    print("      Rating: {}".format(result["Rating"]))
-    print("    Category: {}".format(result["Category"]))
-   ```
+    print("Name: {}".format(result["HotelName"]))
+    print("Rating: {}".format(result["Rating"]))
+    print("Category: {}".format(result["Category"]))
+    ```
 
 1. この例では、autocomplete 関数を使用します。 これは、通常、ユーザーが検索ボックスに入力したときに一致する可能性のあるものをオートコンプリートするために、検索ボックスで使用されます。
 
    インデックスが作成されると、"sg" という名前の suggester も要求の一部として作成されます。 suggester の定義では、suggester の要求に一致する可能性のあるフィールドを見つけるために使用できるフィールドを指定します。 この例では、"Tags"、"Address/City"、"Address/Country" のフィールドが該当します。 オートコンプリートをシミュレートするには、文字 "sa" を部分文字列として渡します。 [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) の autocomplete メソッドにより、一致する可能性のある用語が返されます。
 
-   ```python
+    ```python
     search_suggestion = 'sa'
     results = search_client.autocomplete(search_text=search_suggestion, suggester_name="sg", mode='twoTerms')
-
+    
     print("Autocomplete for:", search_suggestion)
     for result in results:
         print (result['text'])
-   ```
+    ```
 
 ## <a name="clean-up"></a>クリーンアップ
 

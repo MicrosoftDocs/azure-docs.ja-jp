@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70bcf5bce1c8c07633baf070149a9bb80c331d9c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075673"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742575"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>TLS 1.2 をサポートしていないアプリケーションのトラブルシューティング
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 この記事では、古い TLS プロトコル (TLS 1.0 および 1.1) を有効にする方法と、Windows Server 2019 クラウド サービスの Web ロールと worker ロールで追加のプロトコルをサポートするためのレガシの暗号スイートの適用方法について説明します。 
 
 TLS 1.0 と TLS 1.1 を非推奨にするステップを実行しますが、お客様が廃止を計画するまで、古いプロトコルと暗号スイートをサポートする必要があることを理解しています。  これらのレガシの値を再度有効にすることはお勧めしませんが、Microsoft はお客様を支援するためのガイダンスを提供しています。 この記事に記載されている変更を実装する前に、回帰のリスクを評価することをお勧めします。 
@@ -49,7 +53,7 @@ Windows Server 2019 クラウド サーバー イメージは、TLS 1.0 と TLS 
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>手順 1:TLS 1.0 および TLS 1.1 を有効にする PowerShell スクリプトを作成する 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>手順 1: TLS 1.0 および TLS 1.1 を有効にする PowerShell スクリプトを作成する 
 
 次のコードを例として使用し、古いプロトコルと暗号スイートを有効にするスクリプトを作成します。 このドキュメントでは、このスクリプトの名前は次のようになります: **TLSsettings.ps1**。 このスクリプトは、後の手順で簡単にアクセスできるように、ローカル デスクトップに保存します。 
 
@@ -298,7 +302,7 @@ EXIT /B %ERRORLEVEL%
 
 ```
 
-## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>手順 3:ロールのサービス定義 (csdef) にスタートアップ タスクを追加する 
+## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>手順 3: ロールのサービス定義 (csdef) にスタートアップ タスクを追加する 
 
 次のスニペットを既存のサービス定義ファイルに追加します。 
 

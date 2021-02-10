@@ -6,12 +6,12 @@ ms.author: harshacs
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/14/2020
-ms.openlocfilehash: f23efa8d0439422fef685480ed270dce6e78a204
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7f10654e1c96f1756e5864d20fa2a6817385e994
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92366855"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629795"
 ---
 # <a name="replicate-on-premises-machines-by-using-private-endpoints"></a>プライベート エンドポイントを使用してオンプレミス マシンをレプリケートする
 
@@ -26,7 +26,7 @@ Azure Site Recovery では、オンプレミス マシンを Azure の仮想ネ�
 - 仮想ネットワーク内のコンテナーのプライベート エンドポイントを作成して承認します。
 - ストレージ アカウントのプライベート エンドポイントを作成します。 必要に応じて、ストレージへのパブリック アクセスまたはファイアウォールで保護されたアクセスを引き続き許可できます。 Azure Site Recovery では、ストレージにアクセスするためのプライベート エンドポイントを作成する必要はありません。
   
-次の図は、プライベート エンドポイントを使用したハイブリッド ディザスター リカバリーのレプリケーション ワークフローを示しています。 プライベート エンドポイントをオンプレミス ネットワーク内に作成することはできません。 プライベート リンクを使用するには、Azure 仮想ネットワーク (この記事では " *バイパス ネットワーク* " と呼ばれる) を作成し、オンプレミスとバイパス ネットワークの間にプライベート接続を確立してから、バイパス ネットワーク内にプライベート エンドポイントを作成する必要があります。 任意の形式のプライベート接続を選択できます。
+次の図は、プライベート エンドポイントを使用したハイブリッド ディザスター リカバリーのレプリケーション ワークフローを示しています。 プライベート エンドポイントをオンプレミス ネットワーク内に作成することはできません。 プライベート リンクを使用するには、Azure 仮想ネットワーク (この記事では "*バイパス ネットワーク*" と呼ばれる) を作成し、オンプレミスとバイパス ネットワークの間にプライベート接続を確立してから、バイパス ネットワーク内にプライベート エンドポイントを作成する必要があります。 任意の形式のプライベート接続を選択できます。
 
 :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/architecture.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
 
@@ -57,7 +57,7 @@ Recovery Services コンテナーには、マシンのレプリケーション�
 
 1. Recovery Services コンテナーに移動します。 **[設定]** にある **[ID]** を選択します。
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/enable-managed-identity-in-vault.png" alt-text="ID 設定ページを示すスクリーンショット。":::
 
 1. **[状態]** を **[On]** に変更し、 **[保存]** を選択します。
 
@@ -69,23 +69,23 @@ Recovery Services コンテナーには、マシンのレプリケーション�
 
 1. Azure portal の検索ボックスで、「private link」を検索します。 **[Private Link]** を選択して、プライベート リンク センターに移動します。
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-links.png" alt-text="Azure portal でのプライベート リンク センターの検索を示すスクリーンショット。":::
 
 1. 左ペインで、 **[プライベート エンドポイント]** を選択します。 **[プライベート エンドポイント]** ページで、 **[追加]** を選択して、コンテナーのプライベート エンドポイントの作成を開始します。
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints.png" alt-text="プライベート リンク センターでのプライベート エンドポイントの作成方法を示すスクリーンショット。":::
 
 1. **[Create a private endpoint]\(プライベート エンドポイントの作成\)** ページで、プライベート エンドポイント接続を作成するための詳細を指定します。
 
-   1. **基本** 。 プライベート エンドポイントの基本的な詳細を指定します。 バイパス ネットワークに使用したリージョンを使用します。
+   1. **基本**。 プライベート エンドポイントの基本的な詳細を指定します。 バイパス ネットワークに使用したリージョンを使用します。
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-basic-tab.png" alt-text="プライベート エンドポイントを作成するための [基本] タブを示すスクリーンショット。":::
 
-   1. **リソース** 。 このタブでは、接続を作成する対象となるサービスとしてのプラットフォームのリソースを指定する必要があります。 選択したサブスクリプションの **[リソースの種類]** で、 **[Microsoft.RecoveryServices/vaults]** を選択します。 **[リソース]** で Recovery Services コンテナーの名前を選びます。 **[ターゲット サブリソース]** として、 **[Azure Site Recovery]** を選択します。
+   1. **リソース**。 このタブでは、接続を作成する対象となるサービスとしてのプラットフォームのリソースを指定する必要があります。 選択したサブスクリプションの **[リソースの種類]** で、 **[Microsoft.RecoveryServices/vaults]** を選択します。 **[リソース]** で Recovery Services コンテナーの名前を選びます。 **[ターゲット サブリソース]** として、 **[Azure Site Recovery]** を選択します。
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-resource-tab.png" alt-text="プライベート エンドポイントにリンクするための [リソース] タブを示すスクリーンショット。":::
 
-   1. **構成** 。 このタブでは、プライベート エンドポイントを作成するバイパス ネットワークとサブネットを指定します。 
+   1. **構成**。 このタブでは、プライベート エンドポイントを作成するバイパス ネットワークとサブネットを指定します。 
 
       **[はい]** を選択して、プライベート DNS ゾーンとの統合を有効にします。
       既存の DNS ゾーンを選ぶか、新たに作成します。 **[はい]** を選択すると、ゾーンが自動的にバイパス ネットワークにリンクされます。 また、このアクションにより、プライベート エンドポイント用に作成された新しい IP と完全修飾ドメイン名の DNS 解決に必要な DNS レコードが追加されます。
@@ -96,11 +96,11 @@ Recovery Services コンテナーには、マシンのレプリケーション�
 
       プライベート DNS ゾーンを手動で作成するには、[「プライベート DNS ゾーンを作成し、DNS レコードを手動で追加する](#create-private-dns-zones-and-add-dns-records-manually)」の手順に従います。
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-endpoints-configuration-tab.png" alt-text="プライベート エンドポイントの構成のための [構成] タブを示すスクリーンショット。":::
 
-   1. **タグ** 。 必要に応じて、プライベート エンドポイントにタグを追加できます。
+   1. **タグ**。 必要に応じて、プライベート エンドポイントにタグを追加できます。
 
-   1. **レビュー \+ 作成** 。 確認が完了したら、 **[作成]** を選択してプライベート エンドポイントを作成します。
+   1. **レビュー \+ 作成**。 確認が完了したら、 **[作成]** を選択してプライベート エンドポイントを作成します。
 
 プライベート エンドポイントが作成されると、5 つの完全修飾ドメイン名 (FQDN) がプライベート エンドポイントに追加されます。 これらのリンクを使用すると、オンプレミス ネットワーク内のマシンから、コンテナーのコンテキストで必要なすべての Site Recovery マイクロサービスに、バイパス ネットワーク経由でアクセスできるようになります。 バイパス ネットワークとピアリングされたすべてのネットワーク内のすべての Azure マシンの保護に、同じプライベート エンドポイントを使用することができます。
 
@@ -114,11 +114,14 @@ Recovery Services コンテナーには、マシンのレプリケーション�
 
 続行する前に、プライベート エンドポイント リソースに移動して、接続の状態を確認することができます。
 
-:::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+:::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/vault-private-endpoint-connections.png" alt-text="コンテナーの [プライベート エンドポイント接続] ページと接続の一覧を示すスクリーンショット。":::
 
 ### <a name="optional-create-private-endpoints-for-the-cache-storage-account"></a><a name="create-private-endpoints-for-the-cache-storage-account"></a>(省略可能) キャッシュ ストレージ アカウントのプライベート エンドポイントを作成する
 
 Azure Storage へのプライベート エンドポイントを使用できます。 ストレージ アクセス用のプライベート エンドポイントの作成は、Azure Site Recovery レプリケーションでは省略可能です。 ストレージ用のプライベート エンドポイントを作成する場合は、バイパス仮想ネットワーク内にキャッシュまたはログ ストレージ アカウント用のプライベート エンドポイントが必要です。
+
+> [!NOTE]
+> ストレージ アカウントでプライベート エンドポイントが有効になっていない場合でも、保護は正常に実行されます。 ただし、レプリケーション トラフィックはインターネット経由で Azure Site Recovery のパブリック エンドポイントに転送されます。 レプリケーション トラフィックが確実にプライベート リンクを経由するようにするには、ストレージ アカウントでプライベート エンドポイントを有効にする必要があります。
 
 > [!NOTE]
 > ストレージ用のプライベート エンドポイントは、General Purpose v2 ストレージ アカウントでのみ作成できます。 価格情報については、「[Azure ページ BLOB の価格](https://azure.microsoft.com/pricing/details/storage/page-blobs/)」を参照してください。
@@ -147,11 +150,11 @@ Azure Storage へのプライベート エンドポイントを使用できま�
 
 1. **[ロールの割り当てを追加する]** セクションで、 **[追加]** を選択します。
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment.png" alt-text="ストレージ アカウントの [アクセス制御 (IAM)] ページを示すスクリーンショット。":::
 
 1. **[ロールの割り当てを追加する]** ページの **[ロール]** 一覧では、このセクションの冒頭にある一覧のロールを選択します。 コンテナーの名前を入力してから、 **[保存]** を選択します。
 
-   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+   :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/storage-role-assignment-select-role.png" alt-text="[ロールの割り当てを追加する] ページを示すスクリーンショット。":::
 
 これらのアクセス許可を追加した後、Microsoft の信頼されたサービスへのアクセスを許可する必要があります。 **[ファイアウォールと仮想ネットワーク]** に移動し、 **[例外]** で **[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]** を選択します。
 
@@ -174,13 +177,13 @@ Azure Storage へのプライベート エンドポイントを使用できま�
 
    1. **[すべてのサービス]** 検索ボックスで「プライベート DNS ゾーン」を検索してから、結果で **[プライベート DNS ゾーン]** を選択します。
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/search-private-dns-zone.png" alt-text="Azure portal の新しいリソース ページでのプライベート DNS ゾーンの検索を示すスクリーンショット。":::
 
    1. **[プライベート DNS ゾーン]** ページで、 **[追加]** ボタンを選択して新しいゾーンの作成を開始します。
 
-   1. **[プライベート DNS ゾーンの作成]** ページで、必要な詳細を入力します。 プライベート DNS ゾーンの名前として、「 **privatelink.siterecovery.windowsazure.com** 」と入力します。 任意のリソース グループと任意のサブスクリプションを選択できます。
+   1. **[プライベート DNS ゾーンの作成]** ページで、必要な詳細を入力します。 プライベート DNS ゾーンの名前として、「**privatelink.siterecovery.windowsazure.com**」と入力します。 任意のリソース グループと任意のサブスクリプションを選択できます。
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/create-private-dns-zone.png" alt-text="[プライベート DNS ゾーンの作成] ページの [基本] タブを示すスクリーンショット。":::
 
    1. **[確認と作成]** タブに進み、DNS ゾーンを確認して作成します。
 
@@ -192,7 +195,7 @@ Azure Storage へのプライベート エンドポイントを使用できま�
 
    1. 必要な詳細を入力します。 **[サブスクリプション]** と **[仮想ネットワーク]** の一覧で、バイパス ネットワークに対応する詳細を選択します。 他のフィールドは既定値のままとします。
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-virtual-network-link.png" alt-text="[仮想ネットワーク リンクの追加] ページを示すスクリーンショット。":::
 
 1. DNS レコードを追加します。
 
@@ -209,7 +212,7 @@ Azure Storage へのプライベート エンドポイントを使用できま�
 
       これらの完全修飾ドメイン名は、この `{Vault-ID}-asr-pod01-{type}-.{target-geo-code}.siterecovery.windowsazure.com` というパターンに一致します
 
-      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="Azure Site Recovery とプライベート エンドポイントのアーキテクチャを示す図。":::
+      :::image type="content" source="./media/hybrid-how-to-enable-replication-private-endpoints/add-record-set.png" alt-text="[レコードセットの追加] ページを示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次の手順
 

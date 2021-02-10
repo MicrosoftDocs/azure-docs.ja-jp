@@ -1,6 +1,6 @@
 ---
 title: Microsoft ID プラットフォームの管理者の同意のプロトコル
-description: スコープ、アクセス許可、同意など、Microsoft ID プラットフォーム エンドポイントでの承認の説明。
+description: スコープ、アクセス許可、同意など、Microsoft ID プラットフォームでの承認の説明。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 353c349ebe348addac60c5f9f7b1bf0fbb1fc425
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 13cff9f3a6037a16d7c3b9cf233d26c6e9518bc1
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97703317"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756113"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームの管理者の同意
 

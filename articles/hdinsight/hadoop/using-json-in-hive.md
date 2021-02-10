@@ -1,19 +1,16 @@
 ---
 title: Apache Hive を使用した JSON の分析と処理 - Azure HDInsight
 description: JSON ドキュメントの使用方法および Azure HDInsight での Apache Hive による分析方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 9a7d3992ecd2c74947eaa1071b97b2032000c749
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547607"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943056"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -90,7 +87,7 @@ SELECT * FROM StudentsOneLine
 
 **StudentsOneLine** Hive テーブルは、 **/json/students/** パスの下にある HDInsight の既定のファイル システムにデータを保存します。
 
-**INSERT** ステートメントは、 **StudentOneLine** テーブルにフラット化された JSON データを取り込みます。
+**INSERT** ステートメントは、**StudentOneLine** テーブルにフラット化された JSON データを取り込みます。
 
 **SELECT** ステートメントは 1 行のみを返します。
 
@@ -146,7 +143,7 @@ Hive コンソールにおけるこのスクリプトの出力:
 
 ![Apache Hive の JSON クエリ結果](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
-`json_tuple` UDF では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これにより、json\_tuple は、元のテーブルの各行に UDT 関数を適用することによって仮想テーブルを作成できます。 複雑な JSON では **LATERAL VIEW** が繰り返し使用されるため、処理が難しくなります。 また、 **JSON_TUPLE** では入れ子になった JSON を処理できません。
+`json_tuple` UDF では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これにより、json\_tuple は、元のテーブルの各行に UDT 関数を適用することによって仮想テーブルを作成できます。 複雑な JSON では **LATERAL VIEW** が繰り返し使用されるため、処理が難しくなります。 また、**JSON_TUPLE** では入れ子になった JSON を処理できません。
 
 ### <a name="use-a-custom-serde"></a>カスタム SerDe を使用する
 
@@ -154,7 +151,7 @@ SerDe は、入れ子になった JSON ドキュメントの解析に最適な�
 
 ## <a name="summary"></a>まとめ
 
-選択する Hive の JSON 演算子の種類は、シナリオによって異なります。 単純な JSON ドキュメントで 1 つのフィールドを検索する場合は、Hive UDF の **get_json_object** を選択します。 検索対象のキーが複数ある場合には、 **json_tuple** を使用できます。 入れ子になったドキュメントの場合は、 **JSON SerDe** を使用します。
+選択する Hive の JSON 演算子の種類は、シナリオによって異なります。 単純な JSON ドキュメントで 1 つのフィールドを検索する場合は、Hive UDF の **get_json_object** を選択します。 検索対象のキーが複数ある場合には、**json_tuple** を使用できます。 入れ子になったドキュメントの場合は、**JSON SerDe** を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

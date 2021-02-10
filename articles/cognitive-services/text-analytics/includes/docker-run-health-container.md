@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689862"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947578"
 ---
 ## <a name="install-the-container"></a>コンテナーをインストールする
 
@@ -112,7 +112,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 Azure コンテナー インスタンス (ACI) を使用して、デプロイを容易にすることもできます。 ACI は、サーバーレスなマネージド Azure 環境内で Docker コンテナーをオンデマンドで実行できるリソースです。 
 
-Azure portal を使用して ACI リソースをデプロイする手順については、[Azure Container Instances の使用方法](../how-tos/text-analytics-how-to-use-container-instances.md)に関する記事を参照してください。 また、Azure CLI を使用して次の PowerShell スクリプトを実行し、コンテナー イメージを使用してサブスクリプションに ACI を作成することもできます。  スクリプトが完了するまで (約 25 から 30 分) 待ってから、最初の要求を送信します。  ACI リソースあたりの CPU の最大数に制限があるため、要求あたり 5 個を超える大きいドキュメント (それぞれ約 5000 文字) を送信することが予想される場合は、このオプションを選択しないでください。
+Azure portal を使用して ACI リソースをデプロイする手順については、[Azure Container Instances の使用方法](../../containers/azure-container-instance-recipe.md)に関する記事を参照してください。 また、Azure CLI を使用して次の PowerShell スクリプトを実行し、コンテナー イメージを使用してサブスクリプションに ACI を作成することもできます。  スクリプトが完了するまで (約 25 から 30 分) 待ってから、最初の要求を送信します。  ACI リソースあたりの CPU の最大数に制限があるため、要求あたり 5 個を超える大きいドキュメント (それぞれ約 5000 文字) を送信することが予想される場合は、このオプションを選択しないでください。
 可用性の情報については、[ACI リージョンのサポート](../../../container-instances/container-instances-region-availability.md)に関する記事を参照してください。 
 
 > [!NOTE] 
@@ -213,4 +213,3 @@ docker-compose up
 ```
 
 詳細については、[NGINX SSL 終端](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/)に関する NGINX のドキュメントを参照してください。
-

@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
-description: Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
+title: チュートリアル - Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
+description: チュートリアル - Azure Resource Manager テンプレートを使用して Azure IoT Hub のメッセージ ルーティングを構成する
 author: robinsh
 manager: philmeagit st
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: e5ae5948c8baf1573393c73026c84d0f62e8693e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 53217340b0d91f3de77e5e0d8c0a82e30599d6ed
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480107"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621430"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure Resource Manager テンプレートを使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "92480107"
 
 このチュートリアルのパート 2 では、IoT ハブにメッセージを送信する Visual Studio アプリケーションをダウンロードして実行します。 このダウンロード内のフォルダーには、Azure Resource Manager テンプレートとパラメーター ファイルのほか、Azure CLI と PowerShell のスクリプトが含まれています。
 
-早速、[Azure IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードしましょう。 master.zip ファイルを解凍します。 Resource Manager テンプレートとパラメーター ファイルは、 **template_iothub.json** および **template_iothub_parameters.json** という名前で、/iot-hub/Tutorials/Routing/SimulatedDevice/resources/ にあります。
+早速、[Azure IoT C# サンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)をダウンロードしましょう。 master.zip ファイルを解凍します。 Resource Manager テンプレートとパラメーター ファイルは、**template_iothub.json** および **template_iothub_parameters.json** という名前で、/iot-hub/Tutorials/Routing/SimulatedDevice/resources/ にあります。
 
 ## <a name="create-your-resources"></a>リソースの作成
 
@@ -44,51 +44,51 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 ### <a name="parameters"></a>パラメーター
 
-これらのパラメーターのほとんどには既定値があります。 末尾が **_in** のものは、 *randomValue* と連結されてグローバルに一意になります。 
+これらのパラメーターのほとんどには既定値があります。 末尾が **_in** のものは、*randomValue* と連結されてグローバルに一意になります。 
 
-**randomValue** : この値は、テンプレートをデプロイした時点の最新の日付および時刻から生成されます。 このフィールドは、テンプレート自体で生成されるため、パラメーター ファイルには存在しません。
+**randomValue**: この値は、テンプレートをデプロイした時点の最新の日付および時刻から生成されます。 このフィールドは、テンプレート自体で生成されるため、パラメーター ファイルには存在しません。
 
-**subscriptionId** : このフィールドは、テンプレートのデプロイ先となるサブスクリプションに自動的に設定されます。 このフィールドは自動的に設定されるため、パラメーター ファイルには存在しません。
+**subscriptionId**: このフィールドは、テンプレートのデプロイ先となるサブスクリプションに自動的に設定されます。 このフィールドは自動的に設定されるため、パラメーター ファイルには存在しません。
 
-**IoTHubName_in** : このフィールドは、IoT ハブのベース名です。これが randomValue と連結されてグローバルに一意になります。
+**IoTHubName_in**: このフィールドは、IoT ハブのベース名です。これが randomValue と連結されてグローバルに一意になります。
 
-**location** :このフィールドは、デプロイ先となる Azure リージョンです ("westus" など)。
+**location**:このフィールドは、デプロイ先となる Azure リージョンです ("westus" など)。
 
-**consumer_group** : このフィールドは、ルーティング エンドポイントを通じて受信されるメッセージに対して設定されるコンシューマー グループです。 Azure Stream Analytics で結果をフィルター処理するために使用されます。 たとえば、ストリーム全体からすべてのデータを受け取る場合や、 **Contoso** に設定された consumer_group を通じてデータを受信する場合、Azure Stream Analytics ストリーム (と Power BI レポート) を設定して、それらのエントリだけを表示できます。 このフィールドは、このチュートリアルのパート 2 で使用されます。
+**consumer_group**: このフィールドは、ルーティング エンドポイントを通じて受信されるメッセージに対して設定されるコンシューマー グループです。 Azure Stream Analytics で結果をフィルター処理するために使用されます。 たとえば、ストリーム全体からすべてのデータを受け取る場合や、**Contoso** に設定された consumer_group を通じてデータを受信する場合、Azure Stream Analytics ストリーム (と Power BI レポート) を設定して、それらのエントリだけを表示できます。 このフィールドは、このチュートリアルのパート 2 で使用されます。
 
-**sku_name** : このフィールドは、IoT ハブのスケーリングです。 この値は S1 以上にする必要があります。Free レベルは、複数のエンドポイントが許容されていないため、このチュートリアルには使用できません。
+**sku_name**: このフィールドは、IoT ハブのスケーリングです。 この値は S1 以上にする必要があります。Free レベルは、複数のエンドポイントが許容されていないため、このチュートリアルには使用できません。
 
-**sku_units** : このフィールドは、使用できる IoT Hub ユニットの数であり、 **sku_name** と対で使用します。
+**sku_units**: このフィールドは、使用できる IoT Hub ユニットの数であり、**sku_name** と対で使用します。
 
-**d2c_partitions** : このフィールドは、イベント ストリームに使用されるパーティションの数です。
+**d2c_partitions**: このフィールドは、イベント ストリームに使用されるパーティションの数です。
 
-**storageAccountName_in** : このフィールドは、作成されるストレージ アカウントの名前です。 メッセージは、ストレージ アカウント内のコンテナーにルーティングされます。 このフィールドが randomValue と連結されて、グローバルに一意になります。
+**storageAccountName_in**: このフィールドは、作成されるストレージ アカウントの名前です。 メッセージは、ストレージ アカウント内のコンテナーにルーティングされます。 このフィールドが randomValue と連結されて、グローバルに一意になります。
 
-**storageContainerName** : このフィールドは、ストレージ アカウントにルーティングされたメッセージの格納先となるコンテナーの名前です。
+**storageContainerName**: このフィールドは、ストレージ アカウントにルーティングされたメッセージの格納先となるコンテナーの名前です。
 
-**storage_endpoint** : このフィールドは、メッセージ ルーティングによって使用されるストレージ アカウント エンドポイントの名前です。
+**storage_endpoint**: このフィールドは、メッセージ ルーティングによって使用されるストレージ アカウント エンドポイントの名前です。
 
-**service_bus_namespace_in** : このフィールドは、作成される Service Bus 名前空間の名前です。 この値が randomValue と連結されて、グローバルに一意になります。
+**service_bus_namespace_in**: このフィールドは、作成される Service Bus 名前空間の名前です。 この値が randomValue と連結されて、グローバルに一意になります。
 
-**service_bus_queue_in** : このフィールドは、メッセージのルーティングに使用される Service Bus キューの名前です。 この値が randomValue と連結されて、グローバルに一意になります。
+**service_bus_queue_in**: このフィールドは、メッセージのルーティングに使用される Service Bus キューの名前です。 この値が randomValue と連結されて、グローバルに一意になります。
 
-**AuthRules_sb_queue** : このフィールドは、Service Bus キューの承認規則です。キューの接続文字列を取得するために使用されます。
+**AuthRules_sb_queue**: このフィールドは、Service Bus キューの承認規則です。キューの接続文字列を取得するために使用されます。
 
 ### <a name="variables"></a>変数
 
 これらの値はテンプレート内で使用され、大半はパラメーターから得られます。
 
-**queueAuthorizationRuleResourceId** : このフィールドは、Service Bus キュー用の承認規則の ResourceId です。 そして ResourceId は、キューの接続文字列を取得するために使用されます。
+**queueAuthorizationRuleResourceId**: このフィールドは、Service Bus キュー用の承認規則の ResourceId です。 そして ResourceId は、キューの接続文字列を取得するために使用されます。
 
-**iotHubName** : このフィールドは、randomValue が連結された後の IoT ハブの名前です。 
+**iotHubName**: このフィールドは、randomValue が連結された後の IoT ハブの名前です。 
 
-**storageAccountName** :このフィールドは、randomValue が連結された後のストレージ アカウントの名前です。 
+**storageAccountName**:このフィールドは、randomValue が連結された後のストレージ アカウントの名前です。 
 
-**service_bus_namespace** : このフィールドは、randomValue が連結された後の名前空間です。
+**service_bus_namespace**: このフィールドは、randomValue が連結された後の名前空間です。
 
-**service_bus_queue** : このフィールドは、randomValue が連結された後の Service Bus キュー名です。
+**service_bus_queue**: このフィールドは、randomValue が連結された後の Service Bus キュー名です。
 
-**sbVersion** : 使用する Service Bus API のバージョンです。 このケースでは "2017-04-01" です。
+**sbVersion**: 使用する Service Bus API のバージョンです。 このケースでは "2017-04-01" です。
 
 ### <a name="resources-storage-account-and-container"></a>リソース: ストレージ アカウントとコンテナー
 
@@ -364,7 +364,7 @@ Service Bus キューの承認規則は、Service Bus キューの接続文字�
 
 ファイルのアップロード後、次の画像のような結果のダイアログが表示されます。
 
-![[ファイルのアップロード/ダウンロード] が強調表示された Cloud Shell のメニュー バー](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
+![結果のアップロードとダウンロードが強調表示された Cloud Shell のメニュー バー](media/tutorial-routing-config-message-routing-RM-template/CloudShell_upload_results.png)
 
 Cloud Shell インスタンスによって使用される共有にファイルがアップロードされます。 
 

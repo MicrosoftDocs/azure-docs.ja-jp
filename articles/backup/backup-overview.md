@@ -4,12 +4,12 @@ description: Azure Backup サービスの概要を紹介し、このサービス
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 805fa81362b9f90c1d6ba468caaf4b6745e42c62
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 6a30e31dd1462e427faf64966a38c94f9fa56df6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746116"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624474"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Azure Backup サービスとは
 
@@ -21,6 +21,7 @@ Azure Backup サービスは、データをバックアップし、それを Mic
 
 - **オンプレミス** - [Microsoft Azure Recovery Services (MARS) エージェント](backup-support-matrix-mars-agent.md)を使用して、ファイル、フォルダー、システム状態をバックアップします。 または、DPM または Azure Backup Server (MABS) エージェントを使用して、オンプレミスの VM ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) と [VMware](backup-azure-backup-server-vmware.md)) のほか、[オンプレミスのワークロード](backup-mabs-protection-matrix.md)を保護します。
 - **Azure VM** - [Windows VM または Linux VM](backup-azure-vms-introduction.md) 全体を (バックアップ拡張機能を使用して) バックアップするか、[MARS エージェント](backup-azure-manage-mars.md)を使用してファイル、フォルダー、システム状態をバックアップします。
+- **Azure Managed Disks** - [Azure Managed Disks のバックアップ (プレビュー)](backup-managed-disks.md)
 - **Azure Files 共有** - [Azure File 共有はストレージ アカウントにバックアップします](backup-afs.md)。
 - **Azure VM 内の SQL Server** -  [Azure VM 上で動作する SQL Server データベースをバックアップします](backup-azure-sql-database.md)。
 - **Azure VM 内の SAP HANA データベース** - [Azure VM 上で動作する SAP HANA データベースをバックアップします](backup-azure-sap-hana-database.md)。

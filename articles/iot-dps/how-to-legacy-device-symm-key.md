@@ -3,17 +3,17 @@ title: 対称キーを使用してデバイスをプロビジョニングする 
 description: デバイス プロビジョニング サービス (DPS) インスタンスで対称キーを使用してデバイスをプロビジョニングする方法
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/13/2020
+ms.date: 01/28/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: eliotga
-ms.openlocfilehash: dc33dcd2c80b2a6d4a1cc27778e49dc06ac48b34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+manager: lizross
+ms.openlocfilehash: a4c16347d1883e1522fda18c2382f2d67b8ace80
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967314"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051111"
 ---
 # <a name="how-to-provision-devices-using-symmetric-key-enrollment-groups"></a>対称キー登録グループを使用してデバイスをプロビジョニングする方法
 
@@ -21,9 +21,7 @@ ms.locfileid: "94967314"
 
 一部のデバイスには、デバイスを安全に識別するために使用できる証明書、TPM、またはその他のセキュリティ機能がない場合があります。 Device Provisioning Service には、[対称キーの構成証明](concepts-symmetric-key-attestation.md)が含まれています。 対称キーの構成証明は、MAC アドレスやシリアル番号などの固有の情報に基づいてデバイスを識別するために使用できます。
 
-[ハードウェア セキュリティ モジュール (HSM)](concepts-service.md#hardware-security-module) と証明書を簡単にインストールできる場合は、その方法の方が、デバイスを識別およびプロビジョニングするアプローチとして優れている可能性があります。 このアプローチでは、すべてのデバイスにデプロイされているコードの更新を省略でき、デバイス イメージに秘密キーが埋め込まれていないからです。
-
-この記事では、HSM と証明書のどちらも有効なオプションではないことを前提としています。 ただし、Device Provisioning Service を使用してこれらのデバイスをプロビジョニングするよう、デバイス コードを更新するいくつかの方法があることを前提としています。 
+[ハードウェア セキュリティ モジュール (HSM)](concepts-service.md#hardware-security-module) と証明書を簡単にインストールできる場合は、その方法の方が、デバイスを識別およびプロビジョニングするアプローチとして優れている可能性があります。 HSM を使用すると、すべてのデバイスにデプロイされているコードの更新を省略でき、デバイス イメージに秘密キーは埋め込まれません。 この記事では、HSM と証明書のどちらも有効なオプションではないことを前提としています。 ただし、Device Provisioning Service を使用してこれらのデバイスをプロビジョニングするよう、デバイス コードを更新するいくつかの方法があることを前提としています。 
 
 また、この記事では、マスター グループ キーまたは派生デバイス キーへの未承認のアクセスを防ぐために、セキュリティで保護された環境でデバイスの更新が実行されることも想定されています。
 
@@ -142,39 +140,18 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-デバイスの一意の登録 ID を作成します。 有効な文字は、小文字の英字、数字、ダッシュ ('-') です。
+デバイスごとに一意の登録 ID を作成します。 有効な文字は、小文字の英字、数字、ダッシュ ('-') です。
 
 
 ## <a name="derive-a-device-key"></a>デバイス キーを派生させる 
 
-デバイス キーを生成するには、グループのマスター キーを使用してデバイスに対する一意の登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算し、結果を Base64 形式に変換します。
+デバイス キーを生成するには、登録グループのマスター キーを使用して、各デバイスの登録 ID の [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) を計算します。 結果は、デバイスごとに Base64 形式に変換されます。
 
 > [!WARNING]
-> デバイス コードには、個々のデバイスの派生デバイス キーのみが含まれている必要があります。 デバイス コードにはグループのマスター キーを含めないでください。 マスター キーが盗まれた場合、それで認証されるすべてのデバイスのセキュリティが危険にさらされる可能性があります。
+> 各デバイスのデバイス コードには、そのデバイスの対応する派生デバイス キーのみ含める必要があります。 デバイス コードにはグループのマスター キーを含めないでください。 マスター キーが盗まれた場合、それで認証されるすべてのデバイスのセキュリティが危険にさらされる可能性があります。
 
 
-#### <a name="linux-workstations"></a>Linux ワークステーション
-
-Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
-
-**KEY** の値を、前に書き留めた **主キー** で置き換えます。
-
-**REG_ID** の値を登録 ID に置き換えます。
-
-```bash
-KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
-REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
-```
-
-```bash
-Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
-```
-
-
-#### <a name="windows-based-workstations"></a>Windows ベースのワークステーション
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Windows ベースのワークステーションを使用している場合は、次の例に示すように、PowerShell を使用して派生デバイス キーを生成することができます。
 
@@ -197,8 +174,29 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
+# <a name="linux"></a>[Linux](#tab/linux)
 
-デバイスでは、プロビジョニングの間に、派生デバイス キーと一意の登録 ID を使用して、登録グループで対称キーの構成証明が実行されます。
+Linux ワークステーションを使用している場合は、次の例に示すように、openssl を使用して派生デバイス キーを生成することができます。
+
+**KEY** の値を、前に書き留めた **主キー** で置き換えます。
+
+**REG_ID** の値を登録 ID に置き換えます。
+
+```bash
+KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
+REG_ID=sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
+
+keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+echo -n $REG_ID | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64
+```
+
+```bash
+Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
+```
+
+---
+
+各デバイスのプロビジョニング時に、派生デバイス キーと一意の登録 ID を使用して、登録グループで対称キーの構成証明が実行されます。
 
 
 
@@ -206,7 +204,7 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 このセクションでは、前にセットアップした Azure IoT C SDK にある **prov\_dev\_client\_sample** という名前のプロビジョニング サンプルを更新します。 
 
-このサンプル コードでは、Device Provisioning Service のインスタンスにプロビジョニング要求を送信するデバイス ブート シーケンスがシミュレートされます。 ブート シーケンスにより、デバイスが認識され、登録グループで構成した IoT ハブに割り当てられます。
+このサンプル コードでは、Device Provisioning Service のインスタンスにプロビジョニング要求を送信するデバイス ブート シーケンスがシミュレートされます。 ブート シーケンスにより、デバイスが認識され、登録グループで構成した IoT ハブに割り当てられます。 これは、登録グループを使用してプロビジョニングされるデバイスごとに実行されます。
 
 1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
 
@@ -280,13 +278,10 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 
 ## <a name="security-concerns"></a>セキュリティに関する考慮事項
 
-派生デバイス キーがイメージの一部として含まれたままになることに注意してください。この状況は、推奨されるセキュリティのベスト プラクティスではありません。 これは、セキュリティと使いやすさが両立しがたい理由の 1 つです。 
+派生デバイス キーが各デバイスのイメージの一部として含まれたままになることに注意してください。この状況は、推奨されるセキュリティのベスト プラクティスではありません。 これは、セキュリティと使いやすさが両立しないことが多い理由の 1 つです。 独自の要件に基づいて、デバイスのセキュリティを徹底的に確認する必要があります。
 
 
-
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
 * [クイック スタート: 対称キーを使用してシミュレートされたデバイスをプロビジョニングする](quick-create-simulated-device-symm-key.md)

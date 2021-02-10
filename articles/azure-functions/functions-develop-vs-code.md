@@ -4,12 +4,12 @@ description: Visual Studio Code 用 Azure Functions 拡張機能を使用して�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: 33adcb853099778c4b06a9cd428f480f6138ee8b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936976"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493950"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -49,10 +49,55 @@ Azure Functions 拡張機能には、次のような利点があります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Azure Storage アカウントなどのその他の必要なリソースは、[Visual Studio Code を使って発行](#publish-to-azure)するときに、お使いのサブスクリプションに作成されます。
+Azure Storage アカウントなどのその他の必要なリソースは、[Visual Studio Code を使って発行](#publish-to-azure)するときに、お使いのサブスクリプションに作成されます。 
 
-> [!IMPORTANT]
-> 関数をローカルで開発し、それらをローカルで開始して実行することなく、Azure に発行できます。 関数をローカルで実行するには、Azure Functions Core Tools の自動ダウンロードなどの追加要件を満たす必要があります。 詳細については、[プロジェクトをローカルで実行するための追加の要件](#additional-requirements-for-running-a-project-locally)に関する記事を参照してください。
+### <a name="run-local-requirements"></a>ローカルで実行するための要件
+
+これらの前提条件は、[関数をローカルで実行およびデバッグする](#run-functions-locally)ためにのみ必要です。 プロジェクトの作成、または Azure Functions への発行には必要ありません。
+
+# <a name="c"></a>[C\#](#tab/csharp)
+
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) バージョン 2.x 以降。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
+
++ Visual Studio Code 用の [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)。 
+
++ [.NET Core CLI ツール](/dotnet/core/tools/?tabs=netcore2x)。  
+
+# <a name="java"></a>[Java](#tab/java)
+
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) バージョン 2.x 以降。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
+
++ [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)。
+
++ [Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) を推奨。 他のサポートされているバージョンについては、「[Java のバージョン](functions-reference-java.md#java-versions)」を参照してください。
+
++ [Maven 3 以降](https://maven.apache.org/)
+
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
+
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) バージョン 2.x 以降。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
+
++ [Node.js](https://nodejs.org/)。アクティブ LTS およびメンテナンス LTS バージョン (10.14.1 を推奨)。 `node --version` コマンドを使用して、現在のバージョンを確認してください。 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) バージョン 2.x 以降。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
+
++ [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows) を推奨。 バージョン情報については、「[PowerShell のバージョン](functions-reference-powershell.md#powershell-versions)」を参照してください。
+
++ [.NET Core 3.1 ランタイム](https://www.microsoft.com/net/download)と [.NET Core 2.1 ランタイム](https://dotnet.microsoft.com/download/dotnet-core/2.1)の両方  
+
++ [Visual Studio Code 用 PowerShell 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)。  
+
+# <a name="python"></a>[Python](#tab/python)
+
++ [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) バージョン 2.x 以降。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
+
++ [Python 3.x](https://www.python.org/downloads/)。 バージョン情報については、Azure Functions ランタイム別の「[Python バージョン](functions-reference-python.md#python-version)」を参照してください。
+
++ Visual Studio Code 用 の [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)。
+
+---
 
 [!INCLUDE [functions-install-vs-code-extension](../../includes/functions-install-vs-code-extension.md)]
 
@@ -65,8 +110,6 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
     ![関数を作成する](./media/functions-develop-vs-code/create-function.png)
 
 1. 関数アプリ プロジェクト用のフォルダーを選択し、次に **関数プロジェクト用の言語を選択します**。
-
-1. Core Tools をまだインストールしていない場合は、インストールする Core Tools の **バージョンを選択** するよう求められます。 バージョン 2.x またはそれ以降のバージョンを選択します。 
 
 1. **HTTP トリガー** 関数テンプレートを選択するか、 **[Skip for now]\(今はしない\)** を選択して、関数なしでプロジェクトを作成できます。 後でいつでも、[プロジェクトに関数を追加](#add-a-function-to-your-project)できます。
 
@@ -97,7 +140,11 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 * 関数を実装する [HttpExample.cs クラス ライブラリ ファイル](functions-dotnet-class-library.md#functions-class-library-project)。
 
-この時点で、[パラメーターを C# クラス ライブラリ関数に追加する](#add-input-and-output-bindings)ことにより、関数に入出力バインドを追加できます。
+# <a name="java"></a>[Java](#tab/java)
+
++ ルート フォルダー内の pom.xml ファイル。プロジェクトの依存関係や [Java のバージョン](functions-reference-java.md#java-versions)など、プロジェクトおよびデプロイのパラメーターを定義します。 pom.xml には、デプロイ中に作成される Azure リソースに関する情報も含まれます。   
+
++ src パス内の [Functions.java ファイル](functions-reference-java.md#triggers-and-annotations)。関数を実装します。
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
@@ -105,21 +152,19 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 * [function.json 定義ファイル](functions-reference-node.md#folder-structure)と [index.js ファイル](functions-reference-node.md#exporting-a-function) (関数コードを含む Node.js ファイル) の格納先となる HttpExample フォルダー。
 
-この時点で、[function.json ファイルを変更する](#add-input-and-output-bindings)ことで、入出力バインディングを関数に追加できます。
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-<!-- # [PowerShell](#tab/powershell)
-
-* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the run.ps1 file, which contains the function code.
+* [function.json 定義ファイル](functions-reference-powershell.md#folder-structure)と、関数コードを含む run.ps1 ファイルを含む HttpExample フォルダー。
  
-# [Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
     
-* A project-level requirements.txt file that lists packages required by Functions.
+* Functions に必要なパッケージをリストするプロジェクトレベルの requirements.txt ファイル。
     
-* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
-     -->
+* [function.json 定義ファイル](functions-reference-python.md#folder-structure)と、関数コードを含む \_\_init\_\_.py ファイルの格納先となる HttpExample フォルダー。
+
 ---
 
-また、[新しい関数をプロジェクトに追加する](#add-a-function-to-your-project)こともできます。
+この時点で、[入力および出力バインド](#add-input-and-output-bindings)を関数に追加できます。 また、[新しい関数をプロジェクトに追加する](#add-a-function-to-your-project)こともできます。
 
 ## <a name="install-binding-extensions"></a>バインディング拡張機能をインストールする
 
@@ -133,7 +178,19 @@ HTTP トリガーとタイマー トリガーを除き、バインドは拡張�
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+
+# <a name="python"></a>[Python](#tab/python)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -149,15 +206,27 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 新しい C# クラス ライブラリ (.cs) ファイルがプロジェクトに追加されます。
 
+# <a name="java"></a>[Java](#tab/java)
+
+新しい Java (.java) ファイルがプロジェクトに追加されます。
+
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 プロジェクト内に新しいフォルダーが作成されます。 そのフォルダーには、新しい function.json ファイルと新しい JavaScript コード ファイルが含まれています。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+プロジェクト内に新しいフォルダーが作成されます。 このフォルダーには、新しい function.json ファイルと新しい PowerShell コード ファイルが含まれます。
+
+# <a name="python"></a>[Python](#tab/python)
+
+プロジェクト内に新しいフォルダーが作成されます。 このフォルダーには、新しい function.json ファイルと新しい Python コード ファイルが含まれます。
+
 ---
 
-## <a name="add-input-and-output-bindings"></a>入出力バインドを追加する
+## <a name="connect-to-services"></a><a name="add-input-and-output-bindings"></a>サービスへの接続
 
-入出力バインドを追加することで、関数を拡張できます。 バインドを追加するプロセスは、プロジェクトの言語によって異なります。 バインドの詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
+入力および出力バインドを追加すると、関数を他の Azure サービスに接続できます。 バインドを使用すると、接続コードを作成する必要なく、関数を他のサービスに接続できます。 バインドを追加するプロセスは、プロジェクトの言語によって異なります。 バインドの詳細については、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」を参照してください。
 
 次の例では、`outqueue` という名前のストレージ キューに接続します。ここで、ストレージ アカウントの接続文字列は、local.settings.json の `MyStorageConnection` アプリケーション設定に指定されています。
 
@@ -165,61 +234,69 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 次のパラメーターを `Run` メソッド定義に追加する関数メソッドを更新します。
 
-```cs
-[Queue("outqueue"),StorageAccount("MyStorageConnection")] ICollector<string> msg
-```
+:::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 
-このコードでは、次の `using` ステートメントを追加する必要があります。
+`msg` パラメーターは `ICollector<T>` 型です。これは、関数の完了時に出力バインドに書き込まれるメッセージのコレクションを表します。 次のコードは、メッセージをコレクションに追加します。
 
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
+:::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="30-31":::
 
-`msg` パラメーターは `ICollector<T>` 型です。これは、関数の完了時に出力バインドに書き込まれるメッセージのコレクションを表します。 1 つ以上のメッセージをコレクションに追加します。 これらのメッセージは、関数の完了時にキューに送信されます。
+ メッセージは、関数が完了したときにキューに送信されます。
 
-詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue-output.md)に関するドキュメントをご覧ください。
+詳細については、[Queue Storage の出力バインドに関する参照記事](functions-bindings-storage-queue-output.md?tabs=csharp)のドキュメントを参照してください。 関数に追加可能なバインドの一般的な詳細情報については、[Azure Functions の既存の関数へのバインドの追加](add-bindings-existing-function.md?tabs=csharp)に関するページを参照してください。 
+
+# <a name="java"></a>[Java](#tab/java)
+
+次のパラメーターを `Run` メソッド定義に追加する関数メソッドを更新します。
+
+:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="20-21":::
+
+`msg` パラメーターは、`OutputBinding<T>` 型です。ここで、`T` は、関数の完了時に出力バインドに書き込まれる文字列です。 次のコードでは、出力バインド内のメッセージを設定します。
+
+:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java" range="33-34":::
+
+このメッセージは、関数が完了したときにキューに送信されます。
+
+詳細については、[Queue Storage の出力バインドに関する参照記事](functions-bindings-storage-queue-output.md?tabs=java)のドキュメントを参照してください。 関数に追加可能なバインドの一般的な詳細情報については、[Azure Functions の既存の関数へのバインドの追加](add-bindings-existing-function.md?tabs=java)に関するページを参照してください。 
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
-Visual Studio Code では、便利な一連のプロンプトに従って、function.json ファイルにバインドを追加できます。 バインドを作成するには、関数フォルダー内の **function.json** ファイルを右クリック (macOS では Ctrl を押しながらクリック) して **[バインドの追加]** を選択します。
-
-![既存の JavaScript 関数にバインドを追加する ](media/functions-develop-vs-code/function-add-binding.png)
-
-以下は、新しいストレージ出力バインドを定義するためのプロンプト例です。
-
-| Prompt | 値 | 説明 |
-| -------- | ----- | ----------- |
-| **Select binding direction (バインド方向を選択する)** | `out` | バインドは出力バインドです。 |
-| **Select binding with direction (方向を使用してバインドを選択する)** | `Azure Queue Storage` | バインドは Azure Storage キュー バインドです。 |
-| **コードでこのバインドの特定に使用する名前** | `msg` | コードで参照されているバインド パラメーターを識別する名前。 |
-| **The queue to which the message will be sent (メッセージの送信先のキュー)** | `outqueue` | バインドが書き込むキューの名前。 *queueName* が存在しない場合は、バインドによって最初に使用されるときに作成されます。 |
-| **Select setting from "local.settings.json" ("local.settings.json" から設定を選択する)** | `MyStorageConnection` | ストレージ アカウントの接続文字列を含むアプリケーション設定の名前。 `AzureWebJobsStorage` 設定には、関数アプリで作成したストレージ アカウントの接続文字列が含まれています。 |
-
-この例では、次のバインドが function.json ファイルの `bindings` 配列に追加されます。
-
-```javascript
-{
-    "type": "queue",
-    "direction": "out",
-    "name": "msg",
-    "queueName": "outqueue",
-    "connection": "MyStorageConnection"
-}
-```
-
-また、同じバインド定義を function.json に直接追加することもできます。
+[!INCLUDE [functions-add-output-binding-vs-code](../../includes/functions-add-output-binding-vs-code.md)]
 
 関数コードで、`msg` バインドは次の例のように `context` からアクセスされます。
 
-```javascript
-context.bindings.msg = "Name passed to the function: " req.query.name;
-```
+:::code language="javascript" range="5-7" source="~/functions-docs-javascript/functions-add-output-binding-storage-queue-cli/HttpExample/index.js":::
 
-詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue-output.md)の参照をご覧ください。
+このメッセージは、関数が完了したときにキューに送信されます。
+
+詳細については、[Queue Storage の出力バインドに関する参照記事](functions-bindings-storage-queue-output.md?tabs=javascript)のドキュメントを参照してください。 関数に追加可能なバインドの一般的な詳細情報については、[Azure Functions の既存の関数へのバインドの追加](add-bindings-existing-function.md?tabs=javascript)に関するページを参照してください。 
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+[!INCLUDE [functions-add-output-binding-vs-code](../../includes/functions-add-output-binding-vs-code.md)]
+
+:::code language="powershell" range="18-19" source="~/functions-docs-powershell/functions-add-output-binding-storage-queue-cli/HttpExample/run.ps1":::
+
+このメッセージは、関数が完了したときにキューに送信されます。
+
+詳細については、[Queue Storage の出力バインドに関する参照記事](functions-bindings-storage-queue-output.md?tabs=powershell)のドキュメントを参照してください。 関数に追加可能なバインドの一般的な詳細情報については、[Azure Functions の既存の関数へのバインドの追加](add-bindings-existing-function.md?tabs=powershell)に関するページを参照してください。 
+
+# <a name="python"></a>[Python](#tab/python)
+
+[!INCLUDE [functions-add-output-binding-vs-code](../../includes/functions-add-output-binding-vs-code.md)]
+
+定義が次の例のようになるように、`Main` 定義を更新して、出力パラメーター `msg: func.Out[func.QueueMessage]` を追加します。
+
+:::code language="python" range="6" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
+
+次のコードでは、要求の文字列データを出力キューに追加します。
+
+:::code language="python" range="18" source="~/functions-docs-python/functions-add-output-binding-storage-queue-cli/HttpExample/__init__.py":::
+
+このメッセージは、関数が完了したときにキューに送信されます。
+
+詳細については、[Queue Storage の出力バインドに関する参照記事](functions-bindings-storage-queue-output.md?tabs=python)のドキュメントを参照してください。 関数に追加可能なバインドの一般的な詳細情報については、[Azure Functions の既存の関数へのバインドの追加](add-bindings-existing-function.md?tabs=python)に関するページを参照してください。 
 
 ---
-
-[!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
@@ -227,7 +304,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 Visual Studio Code を使用すると、Functions プロジェクトを Azure に直接発行できます。 このプロセスでは、Azure サブスクリプションに関数アプリと関連リソースを作成します。 関数アプリは、関数の実行コンテキストを提供します。 プロジェクトがパッケージ化され、Azure サブスクリプション内の新しい関数アプリにデプロイされます。
 
-Visual Studio Code から Azure の新しい関数アプリに発行すると、関数アプリのクイック作成パスと高度なパスの両方が提供されます。 
+Visual Studio Code から Azure の新しい関数アプリに発行する場合、既定値を使用した関数アプリのクイック作成パス、または作成されるリモート リソースをより細かく制御できる高度なパスのいずれかを選択できます。 
 
 Visual Studio Code から発行するときには、[ZIP デプロイ](functions-deployment-technologies.md#zip-deploy) テクノロジを利用できます。 
 
@@ -241,9 +318,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 次の手順では、高度な作成オプションを使用して作成された新しい関数アプリにプロジェクトを発行します。
 
-1. **[Azure: Functions]** 領域で、 **[Deploy to Function App]\(関数アプリにデプロイ\)** アイコンを選択します。
-
-    ![Function App の設定](./media/functions-develop-vs-code/function-app-publish-project.png)
+1. コマンド パレットで、「**Azure Functions: Deploy to function app**。
 
 1. サインしていない場合は、**Azure にサインイン** するよう求められます。 **無料の Azure アカウントを作成** することもできます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。
 
@@ -263,18 +338,9 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
     関数アプリが作成され、展開パッケージが適用されると、通知が表示されます。 この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。
 
-## <a name="republish-project-files"></a>プロジェクト ファイルを再発行する
+### <a name="get-the-url-of-an-http-triggered-function-in-azure"></a><a name="get-the-url-of-the-deployed-function"></a>Azure で HTTP によってトリガーされる関数の URL を取得する
 
-[継続的なデプロイ](functions-continuous-deployment.md)をセットアップすると、接続されているソースの場所でソース ファイルが更新されると必ず Azure の関数アプリが更新されます。 継続的デプロイが推奨されますが、Visual Studio Code からプロジェクト ファイルの更新を再発行することもできます。
-
-> [!IMPORTANT]
-> 既存の関数アプリに発行すると、Azure のそのアプリのコンテンツが上書きされます。
-
-[!INCLUDE [functions-republish-vscode](../../includes/functions-republish-vscode.md)]
-
-## <a name="get-the-url-of-the-deployed-function"></a>デプロイされた関数の URL を取得する
-
-HTTP によってトリガーされる関数を呼び出すには、関数アプリにデプロイされたときの関数の URL が必要です。 この URL には、必要なすべての[関数キー](functions-bindings-http-webhook-trigger.md#authorization-keys)が含まれています。 デプロイした関数のこれらの URL を取得するには、拡張機能を使用できます。
+HTTP によってトリガーされる関数をクライアントから呼び出すには、関数アプリにデプロイされたときの関数の URL が必要です。 この URL には、必要なすべての関数キーが含まれています。 デプロイした関数のこれらの URL を取得するには、拡張機能を使用できます。 Azure でリモート関数を実行するだけの場合は、拡張機能の [[Execute function now]\(今すぐ関数を実行\) 機能を使用](#run-functions-in-azure)します。
 
 1. F1 キーを選択してコマンド パレットを開き、次のコマンドを検索して実行します: **Azure Functions: Copy Function URL**。
 
@@ -282,28 +348,44 @@ HTTP によってトリガーされる関数を呼び出すには、関数アプ
 
 `code` クエリ パラメーターで渡された必要なキーとともに、関数の URL がクリップボードにコピーされます。 HTTP ツールを使って POST 要求を送信するか、ブラウザーを使って GET 要求をリモート関数に送信します。  
 
-## <a name="run-functions-locally"></a>関数をローカルで実行する
+Azure で関数の URL を取得する場合、拡張機能により、Azure アカウントを使用して、関数を開始するために必要なキーが自動的に取得されます。 [関数のアクセス キーの詳細を参照してください](security-concepts.md#function-access-keys)。 HTTP によってトリガーされない関数を開始するには、管理キーを使用する必要があります。
 
-Azure Functions 拡張機能を使用すると、ローカルの開発用コンピューターで Functions プロジェクトを実行できます。 ローカル ランタイムは、Azure で関数アプリをホストしているのと同じランタイムです。 ローカル設定は、[local.settings.json ファイル](#local-settings-file)から読み取られます。
+## <a name="republish-project-files"></a>プロジェクト ファイルを再発行する
 
-### <a name="additional-requirements-for-running-a-project-locally"></a>プロジェクトをローカルで実行するための追加の要件
+[継続的デプロイ](functions-continuous-deployment.md)を設定した場合、接続されているソースの場所にあるソース ファイルを更新すると、Azure 内の関数アプリが更新されます。 継続的デプロイが推奨されますが、Visual Studio Code からプロジェクト ファイルの更新を再発行することもできます。
 
-Functions プロジェクトをローカルで実行するには、これらの追加要件を満たす必要があります。
+> [!IMPORTANT]
+> 既存の関数アプリに発行すると、Azure のそのアプリのコンテンツが上書きされます。
 
-* [Azure Functions Core Tools](functions-run-local.md#v2) のバージョン 2.x 以降をインストールします。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
+[!INCLUDE [functions-republish-vscode](../../includes/functions-republish-vscode.md)]
 
-* 選択した言語に固有の要件をインストールします。
+## <a name="run-functions"></a>関数を実行する
 
-    | Language | 要件 |
-    | -------- | --------- |
-    | **C#** | [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)<br/>[.NET Core CLI ツール](/dotnet/core/tools/?tabs=netcore2x)   |
-    | **Java** | [Debugger for Java 拡張機能](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](/azure/developer/java/fundamentals/java-jdk-long-term-support)<br/>[Maven 3 以降](https://maven.apache.org/) |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
-    | **Python** | [Python の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>[Python 3.6.8](https://www.python.org/downloads/) 推奨|
+Azure Functions 拡張機能を使用すると、ローカルの開発用コンピューター上のプロジェクト内、または Azure サブスクリプション内で個々の関数を実行できます。 
 
-    <sup>*</sup>アクティブ LTS およびメンテナンス LTS のバージョン (8.11.1 および 10.14.1 を推奨)。
+HTTP トリガー関数の場合、拡張機能により、HTTP エンドポイントが呼び出されます。 その他の種類のトリガーの場合は、管理者 API が呼び出されて関数が開始されます。 関数に送信される要求のメッセージ本文は、トリガーの種類によって異なります。 トリガーにテスト データが必要な場合、データを特定の JSON 形式で入力するように求められます。
 
-### <a name="configure-the-project-to-run-locally"></a>ローカルで実行するようにプロジェクトを構成する
+### <a name="run-functions-in-azure"></a>Azure で関数を実行する
+
+Visual Studio Code から Azure 内で関数を実行する場合。 
+
+1. コマンド パレットで、「**Azure Functions: Execute function now**」と入力し、Azure サブスクリプションを選択します。 
+
+1. 一覧から Azure 内の関数アプリを選択します。 ご使用の関数アプリが表示されない場合、適正なサブスクリプションにサインインしていることを確認してください。 
+
+1. 実行する関数を一覧から選択して、 **[Enter request body]\(要求本文を入力してください\)** に要求のメッセージ本文を入力します。 Enter キーを押して、この要求メッセージを関数に送信します。 **[Enter request body]\(要求本文を入力してください\)** 内の既定のテキストは、本文の形式を示します。 関数アプリに関数が含まれていない場合、このエラーと共に通知エラーが表示されます。 
+
+1. Azure で関数を実行し、応答が返されると、Visual Studio Code で通知が発生します。
+ 
+また、**Azure: Functions** 領域から関数を実行することもできます。このためには、Azure サブスクリプション内の関数アプリから実行する関数を右クリックし (Mac では Ctrl キーを押しながら)、 **[Execute function now]\(今すぐ関数を実行\)** を選択します。
+
+Azure で関数を実行する場合、拡張機能により、Azure アカウントを使用して、関数を開始するために必要なキーが自動的に取得されます。 [関数のアクセス キーの詳細を参照してください](security-concepts.md#function-access-keys)。 HTTP によってトリガーされない関数を開始するには、管理キーを使用する必要があります。
+
+### <a name="run-functions-locally"></a>関数をローカルで実行する
+
+ローカル ランタイムは、Azure で関数アプリをホストしているのと同じランタイムです。 ローカル設定は、[local.settings.json ファイル](#local-settings-file)から読み取られます。 Functions プロジェクトをローカルで実行するには、[追加要件](#run-local-requirements)を満たす必要があります。
+
+#### <a name="configure-the-project-to-run-locally"></a>ローカルで実行するようにプロジェクトを構成する
 
 Functions ランタイムは、HTTP と Webhook を除くすべてのトリガーの種類に対して内部で Azure Storage アカウントを使用します。 したがって、**Values.AzureWebJobsStorage** キーを、有効な Azure Storage アカウントの接続文字列に設定する必要があります。
 
@@ -319,15 +401,19 @@ Functions ランタイムは、HTTP と Webhook を除くすべてのトリガ�
 
 詳細については、「[ローカル設定ファイル](#local-settings-file)」を参照してください。
 
-### <a name="debugging-functions-locally"></a>関数をローカルでデバッグする  
+#### <a name="debug-functions-locally"></a><a name="debugging-functions-locally"></a>関数をローカルでデバッグする  
 
 関数をデバッグするには、F5 キーを選択します。 [Core Tools][Azure Functions Core Tools] をまだダウンロードしていない場合は、そうするよう求められます。 Core Tools がインストールされて実行されると、ターミナルに出力が表示されます。 これは、`func host start` Core Tools コマンドをターミナルから実行するのと同じですが、追加のビルド タスクと、接続されたデバッガーが含まれます。  
 
-プロジェクトが実行されているときは、プロジェクトを Azure にデプロイしたときと同様に関数をトリガーすることができます。 プロジェクトがデバッグ モードで実行されている場合は、予期したとおりに Visual Studio Code でブレークポイントがヒットします。
+プロジェクトが実行されている場合、プロジェクトが Azure にデプロイされている場合と同様に、拡張機能の **[Execute function now]\(今すぐ関数を実行\)** 機能を使用して関数をトリガーできます。 プロジェクトがデバッグ モードで実行されている場合は、予期したとおりに Visual Studio Code でブレークポイントがヒットします。 
 
-HTTP トリガーの要求 URL がターミナルの出力に表示されます。 プロジェクトがローカルで実行されているときは、HTTP トリガーの関数キーは使用されません。 詳細については、「[Azure Functions のコードをテストするための戦略](functions-test-a-function.md)」を参照してください。  
+1. コマンド パレットで、「**Azure Functions: Execute function now**」と入力し、 **[ローカル プロジェクト]** を選択します。 
 
-詳細については、「[Azure Functions Core Tools の操作][Azure Functions Core Tools]」を参照してください。
+1. プロジェクトで実行する関数を選択して、 **[Enter request body]\(要求本文を入力してください\)** に要求のメッセージ本文を入力します。 Enter キーを押して、この要求メッセージを関数に送信します。 **[Enter request body]\(要求本文を入力してください\)** 内の既定のテキストは、本文の形式を示します。 関数アプリに関数が含まれていない場合、このエラーと共に通知エラーが表示されます。 
+
+1. 関数をローカルで実行する場合、応答を受け取ると、Visual Studio Code で通知が発生します。 関数の実行に関する情報は、 **[ターミナル]** パネルに表示されます。
+
+ローカルで関数を実行するために、キーを使用する必要はありません。 
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
@@ -341,6 +427,8 @@ HTTP トリガーの要求 URL がターミナルの出力に表示されます�
 * [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
+* [PowerShell](functions-reference-powershell.md#environment-variables)
+* [Python](functions-reference-python.md#environment-variables)
 
 ## <a name="application-settings-in-azure"></a>Azure のアプリケーション設定
 
@@ -424,7 +512,7 @@ Azure Functions 拡張機能には、Azure の関数アプリと対話するた�
 | **Download Remote Settings** | Azure の選択した関数アプリから local.settings.json ファイルに設定をダウンロードします。 ローカル ファイルが暗号化されている場合は、復号化され、更新されて、再び暗号化されます。 2 つの場所で値が競合する設定がある場合は、続行する方法を選択するように求められます。 このコマンドを実行する前に local.settings.json ファイルに変更を必ず保存してください。 |
 | **Edit settings** | Azure の既存の関数アプリ設定の値を変更します。 このコマンドは、local.settings.json ファイルの設定に影響を与えません。  |
 | **Encrypt settings** | [ローカル設定](#local-settings-file)で `Values` 配列の個別の項目を暗号化します。 このファイルでは、`IsEncrypted` も `true` に設定されます。これは、ローカル ランタイムが設定を使用する前に復号化することを指定します。 貴重な情報が漏洩するリスクを減らすために、ローカル設定を暗号化します。 Azure では、アプリケーション設定は常に、暗号化されて格納されます。 |
-| **Execute Function Now** | Azure で[タイマーによってトリガーされる関数](functions-bindings-timer.md)を手動で開始します。 このコマンドはテストに使用されます。 Azure での HTTP 以外の関数のトリガーついては、「[HTTP によってトリガーされない関数を手動で実行する](functions-manually-run-non-http.md)」をご覧ください。 |
+| **Execute Function Now** | 管理 API を使用して関数を手動で開始します。 このコマンドは、デバッグ中のローカルでのテスト、および Azure で実行されている関数に対するテストの両方に使用されます。 Azure で関数をトリガーすると、まず、拡張機能により、管理キーが自動的に取得されます。これは、Azure で関数を開始するリモート管理 API を呼び出すために使用されます。 API に送信されるメッセージの本文は、トリガーの種類によって異なります。 タイマー トリガーでは、データを渡す必要はありません。 |
 | **Initialize Project for Use with VS Code** | 必要な Visual Studio Code プロジェクト ファイルを既存の Functions プロジェクトに追加します。 このコマンドは、Core Tools を使用して作成したプロジェクトを操作するために使用します。 |
 | **Install or Update Azure Functions Core Tools** | ローカルで関数を実行するために使用される [Azure Functions Core Tools] をインストールまたは更新します。 |
 | **Redeploy**  | 接続された Git リポジトリから Azure の特定のデプロイにプロジェクト ファイルを再デプロイできます。 Visual Studio Code からローカル更新を再発行するには、[プロジェクトを再発行](#republish-project-files)します。 |

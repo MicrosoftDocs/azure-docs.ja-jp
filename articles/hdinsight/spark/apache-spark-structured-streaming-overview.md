@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight での Spark Structured Streaming
 description: HDInsight Spark クラスターで Spark Structured Streaming アプリケーションを使用する方法。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 46a65720c9998a7a56d0ca269c344f85c5955546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f92007c271da5b6d2cb8db6c3904a62b114e7c2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086145"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929505"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Apache Spark Structured Streaming の概要
 
@@ -30,11 +27,11 @@ Structured Streaming は、入力データに選択、プロジェクション�
 
 ## <a name="streams-as-tables"></a>テーブルとしてのストリーム
 
-Spark Structured Streaming は、データのストリームを深さが無限のテーブルとして表します。つまり、このテーブルは新しいデータが到着するたびに増大し続けます。 この*入力テーブル*は実行時間の長いクエリによって継続的に処理され、その結果が*出力テーブル*に送信されます。
+Spark Structured Streaming は、データのストリームを深さが無限のテーブルとして表します。つまり、このテーブルは新しいデータが到着するたびに増大し続けます。 この *入力テーブル* は実行時間の長いクエリによって継続的に処理され、その結果が *出力テーブル* に送信されます。
 
 ![Structured Streaming の概念](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
 
-Structured Streaming では、データがシステムに到着すると、直ちに入力テーブルに取り込まれます。 この入力テーブルに対して操作を実行するクエリを (データフレームおよびデータセット API を使用して) 記述します。 このクエリの出力により、別のテーブルである*結果テーブル*が生成されます。 結果テーブルにはクエリの結果が含まれており、そこから、データをリレーショナル データベースなどの外部のデータストアに取り出します。 入力テーブルのデータが処理されるタイミングは、*トリガー間隔*によって制御されます。 既定では、トリガー間隔は 0 であるため、Structured Streaming はデータが到着するとすぐに処理しようとします。 これは、実際には、Structured Streaming が前のクエリの処理を完了するとすぐに、新しく受信したデータに対する別の処理を開始することを示します。 ストリーミング データが時間ベースのバッチで処理されるように、トリガーを一定の間隔で実行されるように構成することができます。
+Structured Streaming では、データがシステムに到着すると、直ちに入力テーブルに取り込まれます。 この入力テーブルに対して操作を実行するクエリを (データフレームおよびデータセット API を使用して) 記述します。 このクエリの出力により、別のテーブルである *結果テーブル* が生成されます。 結果テーブルにはクエリの結果が含まれており、そこから、データをリレーショナル データベースなどの外部のデータストアに取り出します。 入力テーブルのデータが処理されるタイミングは、*トリガー間隔* によって制御されます。 既定では、トリガー間隔は 0 であるため、Structured Streaming はデータが到着するとすぐに処理しようとします。 これは、実際には、Structured Streaming が前のクエリの処理を完了するとすぐに、新しく受信したデータに対する別の処理を開始することを示します。 ストリーミング データが時間ベースのバッチで処理されるように、トリガーを一定の間隔で実行されるように構成することができます。
 
 結果テーブル内のデータに、最後にクエリが処理されてからの新しいデータのみを含めることも (*追加モード*)、新しいデータが到着するたびにテーブルを更新して、そのテーブルにストリーミング クエリが開始されてからのすべての出力データが含まれるようにすることもできます (*完全モード*)。
 
@@ -138,7 +135,7 @@ Spark Structured Stream API と、それがサポートする入力データ ソ
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>チェックポイント機能と先書きログ
 
-回復性とフォールト トレランスを実現するために、Structured Streaming は*チェックポイント機能*を使用して、ノード障害が発生した場合でもストリーム処理を中断なく続行できるようにします。 HDInsight では、Spark はチェックポイントを持続性のあるストレージ (Azure Storage または Data Lake Storage のどちらか) に作成します。 これらのチェックポイントでは、ストリーミング クエリに関する進行状況の情報を格納します。 さらに、Structured Streaming では*先書きログ* (WAL) も使用します。 WAL は、受信されたが、まだクエリによって処理されていない取り込まれたデータをキャプチャします。 障害が発生し、WAL から処理が再開された場合でも、ソースから受信されたどのイベントも失われません。
+回復性とフォールト トレランスを実現するために、Structured Streaming は *チェックポイント機能* を使用して、ノード障害が発生した場合でもストリーム処理を中断なく続行できるようにします。 HDInsight では、Spark はチェックポイントを持続性のあるストレージ (Azure Storage または Data Lake Storage のどちらか) に作成します。 これらのチェックポイントでは、ストリーミング クエリに関する進行状況の情報を格納します。 さらに、Structured Streaming では *先書きログ* (WAL) も使用します。 WAL は、受信されたが、まだクエリによって処理されていない取り込まれたデータをキャプチャします。 障害が発生し、WAL から処理が再開された場合でも、ソースから受信されたどのイベントも失われません。
 
 ## <a name="deploying-spark-streaming-applications"></a>Spark ストリーミング アプリケーションのデプロイ
 

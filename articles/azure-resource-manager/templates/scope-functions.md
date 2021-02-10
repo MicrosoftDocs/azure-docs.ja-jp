@@ -3,12 +3,12 @@ title: スコープが指定されたデプロイにおけるテンプレート�
 description: スコープが指定されたデプロイにおけるテンプレート関数の解決方法について説明します。 スコープには、テナント、管理グループ、サブスクリプション、リソース グループが含まれます。
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: cb02a3dc808604a80fd9943138c1cd0d8648904e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f128448380612bc9b8d9114226e8a3036feeead8
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681355"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492095"
 ---
 # <a name="arm-template-functions-in-deployment-scopes"></a>デプロイ スコープにおける ARM テンプレートの関数
 
@@ -18,9 +18,9 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用す�
 
 異なるスコープにデプロイする場合に考慮する必要がある事項を以下に示します。
 
-* [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、リソース グループへのデプロイ用に **サポートされています** 。
-* [subscription()](template-functions-resource.md#subscription) 関数は、リソース グループへのデプロイとサブスクリプションへのデプロイ用に **サポートされています** 。
-* [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) の各関数は、すべてのスコープ用に **サポートされています** 。
+* [resourceGroup ()](template-functions-resource.md#resourcegroup) 関数は、リソース グループへのデプロイ用に **サポートされています**。
+* [subscription()](template-functions-resource.md#subscription) 関数は、リソース グループへのデプロイとサブスクリプションへのデプロイ用に **サポートされています**。
+* [reference()](template-functions-resource.md#reference) および [list()](template-functions-resource.md#list) の各関数は、すべてのスコープ用に **サポートされています**。
 * リソース グループにデプロイされたリソースの ID を取得するには、[resourceId ()](template-functions-resource.md#resourceid) を使用します。
 
   ```json
@@ -40,15 +40,15 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用す�
 * 管理グループの拡張機能として実装されているリソースに対しては、[extensionResourceId](template-functions-resource.md#extensionresourceid) 関数を使用します。 管理グループにデプロイされているカスタム ポリシー定義は、管理グループの拡張機能です。
 
   管理グループ レベルでカスタム ポリシー定義のリソース ID を取得するには、次を使用します。
-  
+
   ```json
   "policyDefinitionId": "[extensionResourceId(variables('mgScope'), 'Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
 
-* テナントにデプロイされているリソースの ID を取得するには、[tenantResourceId](template-functions-resource.md#tenantresourceid) 関数を使用します。 組み込みのポリシー定義は、テナント レベルのリソースです。 組み込みポリシーを管理グループ レベルで割り当てる場合は、tenantResourceId 関数を使用します。
+* テナントにデプロイされているリソースの ID を取得するには、[tenantResourceId()](template-functions-resource.md#tenantresourceid) 関数を使用します。 組み込みのポリシー定義は、テナント レベルのリソースです。 組み込みポリシーを管理グループ レベルで割り当てる場合は、tenantResourceId 関数を使用します。
 
   組み込みのポリシー定義のリソース ID を取得するには、次を使用します。
-  
+
   ```json
   "policyDefinitionId": "[tenantResourceId('Microsoft.Authorization/policyDefinitions', parameters('policyDefinitionID'))]"
   ```
@@ -140,4 +140,4 @@ az deployment group create \
 
 * テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
 * 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](common-deployment-errors.md)」を参照してください。
-* SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](secure-template-with-sas-token.md)」を参照してください。
+* SAS トークンを必要とするテンプレートをデプロイする方法については、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](secure-template-with-sas-token.md)」を参照してください。

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 05/15/2020
-ms.openlocfilehash: a36b9d20fa20df56ec53e090976ea86e689ac74b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 799e879b4d9fd54367d54c17b3d275acfc5f34c1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322514"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054773"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -138,9 +138,15 @@ ms.locfileid: "91322514"
 
 1. 次に、[ゲートウェイ インストール用の Azure リソースを作成します](../logic-apps/logic-apps-gateway-connection.md)。
 
+<a name="communication-settings"></a>
+
 ## <a name="check-or-adjust-communication-settings"></a>通信の設定を確認または調整する
 
-オンプレミス データ ゲートウェイでは、[Azure Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)に依存してクラウドへの接続が行われ、ゲートウェイに関連付けられている Azure リージョンへの対応する送信接続が確立されます。 お使いの作業環境で、インターネットにアクセスするためにそのトラフィックがプロキシまたはファイアウォールを経由する必要がある場合は、この制限によって、オンプレミス データ ゲートウェイがゲートウェイ クラウド サービスおよび Azure Service Bus メッセージングに接続できない場合があります。 ゲートウェイにはいくつかの通信設定があり、これを調整できます。 詳細については、以下のトピックを参照してください。
+オンプレミス データ ゲートウェイでは、[Azure Service Bus メッセージング](../service-bus-messaging/service-bus-messaging-overview.md)に依存してクラウドへの接続が行われ、ゲートウェイに関連付けられている Azure リージョンへの対応する送信接続が確立されます。 お使いの作業環境で、インターネットにアクセスするためにそのトラフィックがプロキシまたはファイアウォールを経由する必要がある場合は、この制限によって、オンプレミス データ ゲートウェイがゲートウェイ クラウド サービスおよび Azure Service Bus メッセージングに接続できない場合があります。 ゲートウェイにはいくつかの通信設定があり、これを調整できます。
+
+シナリオ例として、Azure でオンプレミスのデータ ゲートウェイ リソースを使用して、オンプレミスのリソースにアクセスするカスタム コネクタを使用する場合があります。 また、特定の IP アドレスへのトラフィックを制限するファイアウォールもある場合は、対応する *マネージド コネクタ[送信 IP アドレス](logic-apps-limits-and-config.md#outbound)* にアクセスできるようにゲートウェイのインストールをセットアップする必要があります。 同じリージョン内の *すべての* ロジック アプリは、同じ IP アドレス範囲を使用します。
+
+詳細については、以下のトピックを参照してください。
 
 * [オンプレミス データ ゲートウェイの通信設定を調整する](/data-integration/gateway/service-gateway-communication)
 * [オンプレミス データ ゲートウェイのプロキシ設定を構成する](/data-integration/gateway/service-gateway-proxy)

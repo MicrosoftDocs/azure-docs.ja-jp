@@ -2,18 +2,15 @@
 title: HDInsight の ML Services 向けの Azure storage ソリューション - Azure
 description: HDInsight の ML Services で利用できるさまざまなストレージ オプションについて説明します
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/02/2020
-ms.openlocfilehash: 1b684fde9123d3c12d5d69c1daec1c53c6519c44
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ddc48025de164ff68fb539a293e06bae09171742
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855295"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943908"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure storage ソリューション
 
@@ -48,7 +45,7 @@ HDInsight で Apache Hadoop クラスターを作成するときに、**Azure Bl
     hadoop fs –copyFromLocal mycsv.scv /share
     ```
 
-3. R Studio または別の R コンソールに切り替えて、R コードを記述して、名前ノードを**既定**に設定し、アクセスするファイルの場所を設定します。  
+3. R Studio または別の R コンソールに切り替えて、R コードを記述して、名前ノードを **既定** に設定し、アクセスするファイルの場所を設定します。  
 
     ```R
     myNameNode <- "default"
@@ -70,7 +67,7 @@ HDInsight で Apache Hadoop クラスターを作成するときに、**Azure Bl
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
     ```
 
-ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasbs://container1@storage1.blob.core.windows.net` を指しています。 これは、HDInsight クラスターに関連付けられる**既定のストレージ アカウント**です。
+ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasbs://container1@storage1.blob.core.windows.net` を指しています。 これは、HDInsight クラスターに関連付けられる **既定のストレージ アカウント** です。
 
 ### <a name="use-the-additional-storage-with-ml-services-on-hdinsight"></a>HDInsight で ML Services を使って追加のストレージを使用する
 
@@ -98,7 +95,7 @@ hdfsFS <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 inputFile <-file.path(bigDataDirRoot,"mysamplefile1.csv")
 ```
 
-ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasbs://container2@storage2.blob.core.windows.net` を指しています。 これは、先ほど指定した**名前ノード**です。
+ここでは、ディレクトリとファイルの参照はすべて、ストレージ アカウント `wasbs://container2@storage2.blob.core.windows.net` を指しています。 これは、先ほど指定した **名前ノード** です。
 
 次のように、**storage2** で `/user/RevoShare/<SSH username>` ディレクトリを構成します。
 

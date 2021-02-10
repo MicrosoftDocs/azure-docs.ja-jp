@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:REST API を使用してブループリントを作成する
 description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: aa25a65b20b295045b52a49c8c47fb8849c3cba3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056976"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915626"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
@@ -29,7 +29,7 @@ Azure Blueprints の仕様については、[Azure Blueprints REST API](/rest/ap
 
 ### <a name="rest-api-and-powershell"></a>REST API と PowerShell
 
-REST API の呼び出しを行うためのツールがまだない場合は、PowerShell を使うことを検討してください。 Azure で認証を行うためのヘッダーのサンプルを次に示します。 認証ヘッダー (**ベアラー トークン**と呼ばれることもあります) を生成し、パラメーターまたは**要求本文**で接続する REST API の URI を提供します。
+REST API の呼び出しを行うためのツールがまだない場合は、PowerShell を使うことを検討してください。 Azure で認証を行うためのヘッダーのサンプルを次に示します。 認証ヘッダー (**ベアラー トークン** と呼ばれることもあります) を生成し、パラメーターまたは **要求本文** で接続する REST API の URI を提供します。
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if not using Cloud Shell
@@ -48,7 +48,7 @@ $restUri = 'https://management.azure.com/subscriptions/{subscriptionId}?api-vers
 $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 ```
 
-上の **$restUri** 変数の `{subscriptionId}` を置き換えて、サブスクリプションに関する情報を取得します。 $response 変数には `Invoke-RestMethod` コマンドレットの結果が保持されており、[ConvertFrom-json](/powershell/module/microsoft.powershell.utility/convertfrom-json) などのコマンドレットで解析できます。 REST API サービス エンドポイントで**要求本文**が必要な場合は、JSON 形式の変数を `Invoke-RestMethod` の `-Body` パラメーターに提供します。
+上の **$restUri** 変数の `{subscriptionId}` を置き換えて、サブスクリプションに関する情報を取得します。 $response 変数には `Invoke-RestMethod` コマンドレットの結果が保持されており、[ConvertFrom-json](/powershell/module/microsoft.powershell.utility/convertfrom-json) などのコマンドレットで解析できます。 REST API サービス エンドポイントで **要求本文** が必要な場合は、JSON 形式の変数を `Invoke-RestMethod` の `-Body` パラメーターに提供します。
 
 ## <a name="create-a-blueprint"></a>ブループリントを作成する
 
@@ -65,7 +65,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 > [!NOTE]
 > ブループリントはサブスクリプション レベルで作成することもできます。 例については、[サブスクリプションでのブループリントの作成例](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)を参照してください。
 
-1. 初期 "_ブループリント_" オブジェクトを作成します。 **要求本文**には、ブループリントに関するプロパティ、作成するリソース グループ、ブループリント レベルのすべてのパラメーターが含まれています。 これらのパラメーターは、割り当ての間に設定されて、後のステップで追加される成果物によって使用されます。
+1. 初期 "_ブループリント_" オブジェクトを作成します。 **要求本文** には、ブループリントに関するプロパティ、作成するリソース グループ、ブループリント レベルのすべてのパラメーターが含まれています。 これらのパラメーターは、割り当ての間に設定されて、後のステップで追加される成果物によって使用されます。
 
    - REST API URI
 
@@ -124,7 +124,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. サブスクリプションでロールの割り当てを追加します。 **要求本文**では成果物の "_種類_" が定義されていて、プロパティはロール定義の識別子と整合しており、プリンシパルの ID は値の配列として渡されます。 次の例では、指定されたロールを付与されたプリンシパル ID が、ブループリントの割り当て中に設定されるパラメーターに対して構成されます。 この例では、GUID が `b24988ac-6180-42a0-ab88-20f7382dd24c` の "_共同作成者_" 組み込みロールを使用しています。
+1. サブスクリプションでロールの割り当てを追加します。 **要求本文** では成果物の "_種類_" が定義されていて、プロパティはロール定義の識別子と整合しており、プリンシパルの ID は値の配列として渡されます。 次の例では、指定されたロールを付与されたプリンシパル ID が、ブループリントの割り当て中に設定されるパラメーターに対して構成されます。 この例では、GUID が `b24988ac-6180-42a0-ab88-20f7382dd24c` の "_共同作成者_" 組み込みロールを使用しています。
 
    - REST API URI
 
@@ -144,7 +144,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. サブスクリプションでポリシーの割り当てを追加します。 **要求本文**では成果物の "_種類_" が定義されていて、プロパティはポリシーまたはイニシアティブの定義と整合しており、ブループリントの割り当て中に構成される定義済みのブループリント パラメーターを使用するようにポリシー割り当てを構成します。 この例では、GUID が `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` の "_タグとその既定値のリソース グループへの適用_" 組み込みポリシーを使用しています。
+1. サブスクリプションでポリシーの割り当てを追加します。 **要求本文** では成果物の "_種類_" が定義されていて、プロパティはポリシーまたはイニシアティブの定義と整合しており、ブループリントの割り当て中に構成される定義済みのブループリント パラメーターを使用するようにポリシー割り当てを構成します。 この例では、GUID が `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` の "_タグとその既定値のリソース グループへの適用_" 組み込みポリシーを使用しています。
 
    - REST API URI
 
@@ -200,7 +200,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. リソース グループにテンプレートを追加します。 ARM テンプレートの**要求本文**では、テンプレートの通常の JSON コンポーネントが含まれ、**properties.resourceGroup** でターゲット リソース グループが定義されます。 また、このテンプレートでは、ブループリントの **storageAccountType**、**tagName**、**tagValue** の各パラメーターをテンプレートに渡すことによって再利用しています。 ブループリント パラメーターは **properties.parameters** を定義するとテンプレートから利用することができ、テンプレート JSON 内ではそのキーと値のペアを使用して値を挿入します。 ブループリントとテンプレート パラメーターの名前は同じでもかまいませんが、それぞれがブループリントからテンプレート成果物に渡す方法を示すために別のものにしてあります。
+1. リソース グループにテンプレートを追加します。 ARM テンプレートの **要求本文** では、テンプレートの通常の JSON コンポーネントが含まれ、**properties.resourceGroup** でターゲット リソース グループが定義されます。 また、このテンプレートでは、ブループリントの **storageAccountType**、**tagName**、**tagValue** の各パラメーターをテンプレートに渡すことによって再利用しています。 ブループリント パラメーターは **properties.parameters** を定義するとテンプレートから利用することができ、テンプレート JSON 内ではそのキーと値のペアを使用して値を挿入します。 ブループリントとテンプレート パラメーターの名前は同じでもかまいませんが、それぞれがブループリントからテンプレート成果物に渡す方法を示すために別のものにしてあります。
 
    - REST API URI
 
@@ -286,7 +286,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
      }
      ```
 
-1. リソース グループにロールの割り当てを追加します。 前のロール割り当てエントリと同様に、次の例では、**所有者**ロールに対する定義識別子を使用し、ブループリントとは異なるパラメーターを提供します。 この例では、GUID が `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` の "_所有者_" 組み込みロールを使用しています。
+1. リソース グループにロールの割り当てを追加します。 前のロール割り当てエントリと同様に、次の例では、**所有者** ロールに対する定義識別子を使用し、ブループリントとは異なるパラメーターを提供します。 この例では、GUID が `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` の "_所有者_" 組み込みロールを使用しています。
 
    - REST API URI
 
@@ -321,7 +321,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 ## <a name="assign-a-blueprint"></a>ブループリントを割り当てる
 
-REST API を使用してブループリントを発行した後は、それをサブスクリプションに割り当てることができます。 作成したブループリントを、管理グループ階層下のいずれかのサブスクリプションに割り当てます。 ブループリントは、サブスクリプションに保存された場合、そのサブスクリプションに対してのみ割り当てることができます。 **要求本文**では、割り当てるブループリントを指定し、ブループリント定義内のリソース グループに対する名前と場所を提供し、ブループリントで定義されていて 1 つ以上の接続された成果物で使用されるすべてのパラメーターを提供します。
+REST API を使用してブループリントを発行した後は、それをサブスクリプションに割り当てることができます。 作成したブループリントを、管理グループ階層下のいずれかのサブスクリプションに割り当てます。 ブループリントは、サブスクリプションに保存された場合、そのサブスクリプションに対してのみ割り当てることができます。 **要求本文** では、割り当てるブループリントを指定し、ブループリント定義内のリソース グループに対する名前と場所を提供し、ブループリントで定義されていて 1 つ以上の接続された成果物で使用されるすべてのパラメーターを提供します。
 
 各 REST API URI には、独自の値で置き換える必要のある変数があります。
 
@@ -329,7 +329,7 @@ REST API を使用してブループリントを発行した後は、それを�
 - `{YourMG}` - 実際の管理グループの ID に置き換えます
 - `{subscriptionId}` - サブスクリプション ID で置き換えます
 
-1. Azure Blueprint のサービス プリンシパルに、ターゲット サブスクリプションでの**所有者**ロールを提供します。 AppId は静的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`) ですが、サービス プリンシパル ID はテナントによって異なります。 次の REST API を使用して、テナントに詳細を要求できます。 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) が使用されますが、承認は異なります。
+1. Azure Blueprint のサービス プリンシパルに、ターゲット サブスクリプションでの **所有者** ロールを提供します。 AppId は静的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`) ですが、サービス プリンシパル ID はテナントによって異なります。 次の REST API を使用して、テナントに詳細を要求できます。 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) が使用されますが、承認は異なります。
 
    - REST API URI
 
@@ -337,7 +337,7 @@ REST API を使用してブループリントを発行した後は、それを�
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. サブスクリプションに割り当てることにより、ブループリントのデプロイを実行します。 **contributors** および **owners** パラメーターにはロールの割り当てを付与するプリンシパルの objectId の配列が必要なので、[Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) を使用して、独自のユーザー、グループ、またはサービス プリンシパルに対する**要求本文**で使用するための objectId を収集します。
+1. サブスクリプションに割り当てることにより、ブループリントのデプロイを実行します。 **contributors** および **owners** パラメーターにはロールの割り当てを付与するプリンシパルの objectId の配列が必要なので、[Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) を使用して、独自のユーザー、グループ、またはサービス プリンシパルに対する **要求本文** で使用するための objectId を収集します。
 
    - REST API URI
 

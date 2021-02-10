@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eccd4010d796e541e4a0a2c0b0c485b5f18f0366
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008822"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943722"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics 拡張機能のスキーマ
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure コンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 仮想マシンおよびその他のコンピューティング リソースで Diagnostics 拡張機能を構成するために使用するスキーマについて詳細に説明します。
@@ -157,7 +157,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|[EventSource クラス](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)から生成されたイベントの収集を構成します。 必須属性:<br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
+|**EtwEventSourceProviderConfiguration**|[EventSource クラス](/dotnet/api/system.diagnostics.tracing.eventsource)から生成されたイベントの収集を構成します。 必須属性:<br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 |**EtwManifestProviderConfiguration**|必須属性:<br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](https://www.w3schools.com/xml/schema_dtypes_date.asp) です。 |  
 
 
@@ -165,7 +165,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
 
- [EventSource クラス](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)から生成されたイベントの収集を構成します。  
+ [EventSource クラス](/dotnet/api/system.diagnostics.tracing.eventsource)から生成されたイベントの収集を構成します。  
 
 |子要素|説明|  
 |--------------------|-----------------|  
@@ -208,7 +208,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
 |子要素|説明|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time` 」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。 値は、[UnitType クラス](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet)で使用できます。 |
+|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time` 」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。 値は、[UnitType クラス](/dotnet/api/microsoft.azure.management.sql.models.unittype)で使用できます。 |
 |**sinks** | 1\.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Azure Monitor や Event Hubs です。 なお、Event Hubs にアップロードするイベントにリソース ID を含めるには、*Metrics* 要素の下に *resourceId* プロパティを追加します。|    
 
 

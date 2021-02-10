@@ -11,26 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134417"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610303"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自動機械学習でのデータの特徴量化
 
-
-
-Azure Machine Learning でのデータの特徴量化設定と、[自動 ML の実験](concept-automated-ml.md)に合わせてこれらの特徴をカスタマイズする方法について説明します。
+Azure Machine Learning でのデータの特徴量化設定と、[自動機械学習の実験](concept-automated-ml.md)に合わせてこれらの特徴をカスタマイズする方法について説明します。
 
 ## <a name="feature-engineering-and-featurization"></a>特徴エンジニアリングと特徴量化
 
-"*特徴エンジニアリング*" は、データに関するドメインの知識を使用して、機械学習 (ML) アルゴリズムの学習を支援する特徴を作成するプロセスです。 Azure Machine Learning では、特徴エンジニアリングを容易にするために、データのスケーリングと正規化の手法が適用されます。 自動機械学習 (*autoML*) の実験では、これらの手法と特徴エンジニアリングが、まとめて "*特徴量化*" と呼ばれています。
+トレーニング データは行と列で構成されています。 各行は観測またはレコードで、各行の列は各レコードを表す特徴です。 通常は、予測モデルを作成するために選択されるのは、データ内のパターンを最もよく特徴付ける特徴です。
+
+生のデータ フィールドの多くはモデルのトレーニングに直接使用できますが、多くの場合、データ内のパターンをより適切に識別する情報を提供する追加の (エンジニアリングされた) 特徴を作成する必要があります。 このプロセスは **特徴エンジニアリング** と呼ばれます。データのドメイン知識を活用して特徴を作成し、次にそれが、機械学習アルゴリズムの学習向上に寄与します。 
+
+Azure Machine Learning では、特徴エンジニアリングを容易にするために、データのスケーリングと正規化の手法が適用されます。 自動 ML の実験では、これらの手法と特徴エンジニアリングをまとめて "**特徴量化**" と呼んでいます。
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事は、AutoML の実験を構成する方法についての知識が既にある読者を対象としています。 構成については、次の記事を参照してください。
+この記事は、自動 ML の実験を構成する方法についての知識が既にある読者を対象としています。 構成については、次の記事を参照してください。
 
 - コード ファーストのエクスペリエンスについて: [Python 用 Azure Machine Learning SDK を使用して自動 ML の実験を構成する](how-to-configure-auto-train.md)。
 - 少量のコードまたはコードなしのエクスペリエンスについて: [Azure Machine Learning Studio を使用して自動機械学習モデルを作成、確認、デプロイする](how-to-use-automated-ml-for-ml-models.md)。
@@ -59,7 +61,7 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 以下の表は、データに対して自動的に適用される手法の一覧です。 これらの手法は、SDK またはスタジオを使用して構成された実験に適用されます。 この動作を無効にするには、`AutoMLConfig` オブジェクトで `"featurization": 'off'` を設定します。
 
 > [!NOTE]
-> AutoML で作成されたモデルを [ONNX モデル](concept-onnx.md)にエクスポートする予定がある場合、アスタリスク ("*") で示された特徴量化オプションのみが ONNX 形式でサポートされます。 [モデルの ONNX への変換](concept-automated-ml.md#use-with-onnx)の詳細についてご確認ください。
+> AutoML で作成されたモデルを [ONNX モデル](concept-onnx.md)にエクスポートする予定がある場合、アスタリスク ("*") で示された特徴量化オプションのみが ONNX 形式でサポートされます。 [モデルの ONNX への変換](how-to-use-automl-onnx-model-dotnet.md)の詳細についてご確認ください。
 
 |特徴量化&nbsp;ステップ| 説明 |
 | ------------- | ------------- |

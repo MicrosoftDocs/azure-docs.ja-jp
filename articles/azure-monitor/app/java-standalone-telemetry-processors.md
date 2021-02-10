@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165792"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632582"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>テレメトリ プロセッサ (プレビュー) - Azure Monitor Application Insights for Java
 
@@ -241,7 +241,7 @@ Application Insights 用の Java 3.0 エージェントには現在、データ�
 ### `extract`
 
 > [!NOTE]
-> この機能は、3.0.1 以降にのみ存在します
+> この機能は、3.0.2 以降にのみ存在します
 
 正規表現規則を使用して、入力キーから規則で指定されたターゲット キーに値を抽出します。 ターゲット キーが既に存在する場合は、上書きされます。 これは、既存の属性がソースとして設定されている[スパン プロセッサ](#extract-attributes-from-span-name) `toAttributes` 設定と同様に動作します。
 

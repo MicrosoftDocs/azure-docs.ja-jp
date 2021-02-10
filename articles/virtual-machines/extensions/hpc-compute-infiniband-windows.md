@@ -11,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/20/2020
+ms.date: 02/01/2021
 ms.author: amverma
-ms.openlocfilehash: c0ec18ae4a7d6020299660adbeba6f993cd4eeca
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 767d6da7701261836b367ccad121bf3569b43b72
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966022"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260165"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>Windows 用の InfiniBand ドライバー拡張機能
 
@@ -30,15 +30,15 @@ ms.locfileid: "94966022"
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-この拡張機能では、特定の OS バージョンのドライバー サポートに応じて、次の OS ディストリビューションをサポートしています。
+この拡張機能では、特定の OS バージョンのドライバー サポートに応じて、次の OS ディストリビューションをサポートしています。 H および N シリーズで目的の VM サイズに適した InfiniBand NIC に注意してください。
 
-| Distribution | Version |
+| Distribution | InfiniBand NIC ドライバー |
 |---|---|
-| Windows 10 | コア |
-| Windows Server 2019 | コア |
-| Windows Server 2016 | コア |
-| Windows Server 2012 R2 | コア |
-| Windows Server 2012 | コア |
+| Windows 10 | CX5、CX6 |
+| Windows Server 2019 | CX5、CX6 |
+| Windows Server 2016 | CX3-Pro、CX5、CX6 |
+| Windows Server 2012 R2 | CX3-Pro、CX5、CX6 |
+| Windows Server 2012 | CX3-Pro、CX5、CX6 |
 
 ### <a name="internet-connectivity"></a>インターネット接続
 

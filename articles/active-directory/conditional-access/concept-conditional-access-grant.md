@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c065b7a7269c8da42493ede50466f44f7dd2658
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5f0a84af0c7a4105327405cfb809f5101ab42931
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219948"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938393"
 ---
 # <a name="conditional-access-grant"></a>条件付きアクセス:Grant
 
@@ -121,7 +121,9 @@ Microsoft Intune をデプロイしている組織では、デバイスから返
 
 この許可の制御を活用するために、条件付きアクセスでは、ブローカー アプリを使用する必要がある Azure Active Directory にデバイスを登録する必要があります。 ブローカー アプリには、iOS 用の Microsoft Authenticator か、Android デバイス用の Microsoft ポータル サイトのいずれかを使用できます。 ユーザーが認証を試みたときにブローカー アプリがデバイスにインストールされていない場合、ユーザーはブローカー アプリをインストールするために、App Store にリダイレクトされます。
 
-この設定は、以下のクライアント アプリに適用されます。
+アプリケーションには **Policy Assurance** が実装された **Intune SDK** が必要であり、この設定をサポートするための他の特定の要件を満たす必要があります。 Intune SDK を使用してアプリケーションを実装する開発者は、これらの要件について SDK ドキュメントで詳細を確認できます。
+
+次のクライアン トアプリは、この設定をサポートすることが確認されています。
 
 - Microsoft Cortana
 - Microsoft Edge

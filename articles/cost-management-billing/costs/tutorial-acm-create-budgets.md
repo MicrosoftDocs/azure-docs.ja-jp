@@ -3,18 +3,18 @@ title: チュートリアル - Azure の予算を作成して管理する
 description: このチュートリアルでは、使用する Azure サービスのコストの計画とアカウントについて説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 12/16/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c8b0265a72911688f08e0f8c4a39fa657f034472
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5659f3b2d020a97ed2460c55283bb41f2f7606cc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630141"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943729"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -22,7 +22,7 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 コストと使用状況データは通常 8 時間から 24 時間以内に利用できるようになり、予算は 24 時間ごとにこれらのコストに対して評価されます。 [コストと使用状況データの更新](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)の詳細を把握するようにしてください。 予算のしきい値が満たされたとき、通常、評価後、1 時間以内に電子メールの通知が届きます。
 
-将来の有効期限日を選択した場合、期間 (月、四半期、または年) の最後に、予算は自動的に同じ予算金額にリセットされます。 同じ予算金額でリセットされるため、予算を計上される通貨金額が将来の期間では異なる場合は、別の予算を作成する必要があります。
+将来の有効期限日を選択した場合、期間 (月、四半期、または年) の最後に、予算は自動的に同じ予算金額にリセットされます。 同じ予算金額でリセットされるため、予算を計上される通貨金額が将来の期間では異なる場合は、別の予算を作成する必要があります。 予算は有効期限が切れると自動的に削除されます。
 
 このチュートリアルの例では、Azure Enterprise Agreement (EA) サブスクリプションの予算を作成および編集する手順を説明します。
 

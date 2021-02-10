@@ -2,19 +2,16 @@
 title: クイック スタート:Azure HDInsight で Apache HBase にクエリを実行する - HBase シェル
 description: このクイックスタートでは、Apache HBase シェルを使用して Apache HBase クエリを実行する方法について説明します。
 keywords: hdinsight、hadoop、HBase
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 572262cbece26171f9a67bf073906fa2dfd4d8e1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 358e058667cb1750a6fc97dffebcbfb2c6e06f84
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "79371071"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942936"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>クイック スタート:HBase を使用して Azure HDInsight で Apache HBase を実行する
 

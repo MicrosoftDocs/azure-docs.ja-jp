@@ -3,23 +3,25 @@ title: チュートリアル - カスタム ハードウェア セキュリテ�
 description: このチュートリアルでは、登録グループを使用します。 このチュートリアルでは、カスタムのハードウェア セキュリティ モジュール (HSM) と Azure IoT Hub Device Provisioning Service (DPS) 向け C デバイス SDK を使用して X.509 デバイスをプロビジョニングする方法を説明します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/18/2020
+ms.date: 01/28/2021
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 64064a584681d84eb6ba023c4777c0fdc4e6ec3d
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: b178aa4a524cb7fcc85c7fc68ac5f772747787a3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791932"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052365"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>チュートリアル:登録グループを使って複数の X.509 デバイスをプロビジョニングする
 
-このチュートリアルでは、認証に X.509 証明書を使用する一連の IoT デバイスをまとめてプロビジョニングする方法を説明します。 開発用マシンの IoT デバイスとしてのプロビジョニングには、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のサンプル コードを使用します。 
+このチュートリアルでは、認証に X.509 証明書を使用する一連の IoT デバイスをまとめてプロビジョニングする方法を説明します。 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) のサンプル デバイス コードは、X.509 デバイスのプロビジョニングをシミュレートするために開発用マシンで実行されます。 実際のデバイスでは、デバイス コードはデプロイされて IoT デバイスから実行されます。
 
-Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
+このチュートリアルの以降の内容に進む前に、少なくとも [Azure portal での IoT Hub Device Provisioning Service の設定](quick-setup-auto-provision.md)に関するページの手順を済ませておいてください。 さらに、自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 
+
+Azure IoT Device Provisioning Service では、デバイスのプロビジョニングについて 2 種類の登録をサポートしています。
 
 * [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
 * [個々の登録](concepts-service.md#individual-enrollment):単一デバイスを登録するために使用します。
@@ -27,8 +29,6 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 このチュートリアルは、登録グループを使用してデバイスのセットをプロビジョニングする方法を示した、これより前のチュートリアルに似ています。 ただし、このチュートリアルでは、対称キーの代わりに X.509 証明書を使用します。 [対称キー](./concepts-symmetric-key-attestation.md)を使用したシンプルなアプローチについては、このセクション内のこれよりも前のチュートリアルを確認してください。
 
 このチュートリアルでは、ハードウェアベースの安全なストレージとのインターフェイスとしての役割を果たすスタブを実装した[カスタム HSM サンプル](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example)をお見せします。 [ハードウェア セキュリティ モジュール (HSM)](./concepts-service.md#hardware-security-module) は、ハードウェアベースの安全なストレージとしてデバイス シークレットを保管する用途に使用します。 対称キー、X.509 証明書、または TPM の構成証明と HSM を併用すると、シークレットの安全なストレージを実現できます。 デバイス シークレットのハードウェアベースのストレージは、必須ではありませんが、デバイス証明書の秘密キーなどの機密情報を保護するために強くお勧めします。
-
-自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](about-iot-dps.md#provisioning-process)の概要を確認してください。 また、このチュートリアルの以降の内容に進む前に、[Azure portal での IoT Hub Device Provisioning Service の設定](quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
 
 このチュートリアルの目標は次のとおりです。
@@ -44,9 +44,11 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 ## <a name="prerequisites"></a>前提条件
 
-Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
+デバイスをシミュレートするために使用される Windows 開発環境の前提条件は次のとおりです。 Linux または macOS については、SDK ドキュメントの「[開発環境を準備する](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)」の該当するセクションを参照してください。
 
-* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。
+* [C++ によるデスクトップ開発](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development)ワークロードを有効にした [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019。 Visual Studio 2015 と Visual Studio 2017 もサポートされています。 
+
+    この記事では、IoT デバイスにデプロイされるデバイス サンプル コードをビルドするために Visual Studio を使用します。  これは、デバイス自体に Visual Studio が必要であるという意味ではありません。
 
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
@@ -106,7 +108,7 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 ## <a name="create-an-x509-certificate-chain"></a>X.509 証明書チェーンを作成する
 
-このセクションでは、このチュートリアルでのテストのために 3 つの証明書から成る X.509 証明書チェーンを生成します。 証明書の階層は次のとおりです。
+このセクションでは、このチュートリアルでの各デバイスのテストのために 3 つの証明書から成る X.509 証明書チェーンを生成します。 証明書の階層は次のとおりです。
 
 ![チュートリアルのデバイスの証明書チェーン](./media/tutorial-custom-hsm-enrollment-group-x509/example-device-cert-chain.png#lightbox)
 
@@ -114,15 +116,17 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
 
 [中間証明書](concepts-x509-attestation.md#intermediate-certificate):中間証明書は、製品ラインや会社の部門などを基準としてデバイスを論理的にグループ化する用途に使用するのが一般的です。 このチュートリアルでは、中間証明書が 1 つ含まれる証明書チェーンを使用します。 中間証明書の署名には、ルート証明書を使用します。 この証明書は、DPS で作成した登録グループ上でデバイスを論理的にグループ化する用途にも使用します。 この構成を使うと、同じ中間証明書によって署名されているデバイス証明書があるデバイスのグループ全体をまとめて管理できます。 登録グループを作成すると、デバイスをグループ単位で有効または無効にすることができます。 デバイスをグループ単位で無効にすることに関する詳細については、「[登録グループを使用して、X.509 中間証明書またはルート CA 証明書を禁止する](how-to-revoke-device-access-portal.md#disallow-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group)」を参照してください。
 
-[デバイス証明書](concepts-x509-attestation.md#end-entity-leaf-certificate):デバイス (リーフ) 証明書は、中間証明書により署名され、秘密キーと一緒にデバイスに保存されます。 プロビジョニングの試行時には、デバイスによりこの証明書と秘密キーが、証明書チェーンと共に提示されます。 
+[デバイス証明書](concepts-x509-attestation.md#end-entity-leaf-certificate): デバイス (リーフ) 証明書は、中間証明書によって署名され、秘密キーと一緒にデバイスに保存されます。 これらの機密項目は、HSM を使用して安全に保存されるのが理想的です。 プロビジョニングの試行時には、各デバイスによって、この証明書と秘密キーが証明書チェーンと共に提示されます。 
 
-証明書チェーンを作成するには:
+#### <a name="create-root-and-intermediate-certificates"></a>ルートおよび中間証明書を作成する
+
+証明書チェーンのルートおよび中間部分を作成するには:
 
 1. Git Bash のコマンド プロンプトを開きます。 「[サンプルおよびチュートリアル用のテスト CA 証明書を管理する](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md#managing-test-ca-certificates-for-samples-and-tutorials)」の手順 1 および 2 のうち、Bash シェルを使用する部分を完了します。
 
-    この手順では、証明書スクリプトのための作業ディレクトリを作成し、OpenSSL を使って証明書チェーンで使用するサンプルのルート証明書と中間証明書を生成します。 
-
-    出力で自己署名ルート証明書の場所が表示されていることに注目してください。 後ほど、この証明書に[所有証明](how-to-verify-certificates.md)を実施し、所有権を検証します。
+    ここでは、証明書スクリプトのための作業ディレクトリを作成し、OpenSSL を使って証明書チェーン用のサンプルのルートおよび中間証明書を生成します。 
+    
+2. 出力で自己署名ルート証明書の場所が表示されていることに注目してください。 後ほど、この証明書に[所有証明](how-to-verify-certificates.md)を実施し、所有権を検証します。
 
     ```output
     Creating the Root CA Certificate
@@ -142,8 +146,8 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
                 Not After : Nov 22 21:30:30 2020 GMT
             Subject: CN=Azure IoT Hub CA Cert Test Only
     ```        
-
-    出力で、先ほどのルート証明書により署名および発行されている中間証明書の場所が表示されていることに注目してください。 この証明書は、後で作成する登録グループに使用します。
+    
+3. 出力で、先ほどのルート証明書により署名および発行されている中間証明書の場所が表示されていることに注目してください。 この証明書は、後で作成する登録グループに使用します。
 
     ```output
     Intermediate CA Certificate Generated At:
@@ -161,8 +165,12 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
                 Not After : Nov 22 21:30:33 2020 GMT
             Subject: CN=Azure IoT Hub Intermediate Cert Test Only
     ```    
+    
+#### <a name="create-device-certificates"></a>デバイス証明書を作成する
 
-2. 続いて次のコマンドを実行し、新しいデバイス (リーフ) 証明書を作成します。このとき、パラメーターとしてサブジェクト名を指定してください。 サブジェクト名は、このチュートリアルのために用意したサンプルの `custom-hsm-device-01` を使用します。 このサブジェクト名が、IoT デバイスのデバイス ID になります。 
+チェーンで中間証明書によって署名されるデバイス証明書を作成するには:
+
+1. 次のコマンドを実行し、新しいデバイス (リーフ) 証明書を作成します。このとき、パラメーターとしてサブジェクト名を指定してください。 サブジェクト名は、このチュートリアルのために用意したサンプルの `custom-hsm-device-01` を使用します。 このサブジェクト名が、IoT デバイスのデバイス ID になります。 
 
     > [!WARNING]
     > サブジェクト名にはスペースを使用しないでください。 このサブジェクト名は、プロビジョニングする IoT デバイスのデバイス ID となります。 デバイス ID の規則に従う必要があります。 詳細については、「[デバイス ID のプロパティ](../iot-hub/iot-hub-devguide-identity-registry.md#device-identity-properties)」を参照してください。
@@ -192,13 +200,13 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
             Subject: CN=custom-hsm-device-01
     ```    
     
-3. 次のコマンドを実行し、新しいデバイス証明書も含めた証明書チェーン全体の .pem ファイルを作成します。
+2. 次のコマンドを実行し、新しいデバイス証明書も含めた証明書チェーン全体の .pem ファイルを `custom-hsm-device-01` 用に作成します。
 
     ```Bash
-    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem && cd ..
+    cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-01-full-chain.cert.pem && cd ..
     ```
 
-    テキスト エディターを使用して、証明書チェーン ファイル *./certs/new-device-full-chain.cert.pem* を開きます。 証明書チェーンのテキストには、証明書を 3 つすべて使った完全なチェーンが記載されています。 このチュートリアルでは、後ほど HSM コードと共に、このテキストを証明書チェーンとして使用します。
+    テキスト エディターを使用して、証明書チェーン ファイル *./certs/new-device-01-full-chain.cert.pem* を開きます。 証明書チェーンのテキストには、証明書を 3 つすべて使った完全なチェーンが記載されています。 このチュートリアルでは、後ほど HSM デバイス コードと共に、このテキストを証明書チェーンとして `custom-hsm-device-01` に使用します。
 
     チェーン テキストの全文は次のような形式になっています。
  
@@ -214,115 +222,25 @@ Windows 開発環境の前提条件は次のとおりです。 Linux または m
     -----END CERTIFICATE-----
     ```
 
-5. 新しいデバイス証明書の秘密キーが *./private/new-device.key.pem* に書き込まれていることに注目してください。 このキーのテキストは、プロビジョニング中にデバイスで必要になります。 このテキストは、後ほどカスタム HSM の例に追加します。
+3. 新しいデバイス証明書の秘密キーが *./private/new-device.key.pem* に書き込まれていることに注目してください。 このキー ファイルの名前を `custom-hsm-device-01` デバイス用に *./private/new-device-01.key.pem* に変更します。 このキーのテキストは、プロビジョニング中にデバイスで必要になります。 このテキストは、後ほどカスタム HSM の例に追加します。
+
+    ```bash
+    $ mv private/new-device.key.pem private/new-device-01.key.pem
+    ```
 
     > [!WARNING]
     > 証明書のテキストには、公開キーの情報のみが含まれます。 
     >
     > しかし、デバイスはデバイス証明書の秘密キーにもアクセスできる必要があります。 その理由は、プロビジョニングの試行時に、デバイスでそのキーを使って検証を実施する必要があるからです。 このキーの機密性こそ、現実の HSM 内のハードウェアベースのストレージを使用して秘密キーを保護することが推奨される主な理由の 1 つです。
 
+4. デバイス ID が `custom-hsm-device-02` である 2 つ目のデバイスについて、手順 1 から 3 を繰り返します。 このデバイスには次の値を使用します。
 
-
-## <a name="configure-the-custom-hsm-stub-code"></a>カスタム HSM スタブ コードを構成する
-
-実際のハードウェアベースのストレージとやり取りする際の詳細は、ハードウェアに応じて異なります。 そのため、このチュートリアルのデバイスで使用される証明書チェーンを、カスタム HSM スタブ コードにハードコードします。 実際には、機密情報のセキュリティを強化するために、実際の HSM ハードウェアに証明書チェーンが格納されます。 そのうえで、このサンプルで示したスタブ メソッドとよく似たメソッドを実装し、ハードウェアベースのストレージからシークレットを読み取れるようにします。 
-
-HSM ハードウェアは必須ではありませんが、証明書の秘密キーなどの機密情報をソース コードにチェックインすることはお勧めしません。 これにより、コードを表示できるすべてのユーザーに対してキーが公開されます。 これは、学習を支援するために、この記事でのみ行います。
-
-このチュートリアルのカスタム HSM スタブ コードを更新するには:
-
-1. Visual Studio を起動し、Git リポジトリ azure-iot-sdk-c のルートに作成した `cmake` ディレクトリに作成された新しいソリューション ファイルを開きます。 ソリューション ファイルの名前は `azure_iot_sdks.sln` です。
-
-2. Visual Studio のソリューション エクスプローラーで **[Provisioning_Samples] > [custom_hsm_example] > [ソース ファイル]** の順に移動し、*custom_hsm_example.c* を開きます。
-
-3. `COMMON_NAME` 文字列定数の文字列値を、デバイス証明書の生成時に使用した共通名に更新します。
-
-    ```c
-    static const char* const COMMON_NAME = "custom-hsm-device-01";
-    ```
-
-4. 同じファイル内で、証明書の生成後に *./certs/new-device-full-chain.cert.pem* に保存した証明書チェーンのテキストを使用して、`CERTIFICATE` 定数文字列の文字列値を更新する必要があります。
-
-    証明書のテキストの構文は、次のパターンに従う必要があります。Visual Studio によって余分なスペースが追加されたり、解析が実行されたりしないようにしてください。
-
-    ```c
-    // <Device/leaf cert>
-    // <intermediates>
-    // <root>
-    static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
-        ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
-    "-----END CERTIFICATE-----\n"
-    "-----BEGIN CERTIFICATE-----\n"
-    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
-        ...
-    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
-    "-----END CERTIFICATE-----\n"
-    "-----BEGIN CERTIFICATE-----\n"
-    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
-        ...
-    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
-    "-----END CERTIFICATE-----";        
-    ```
-
-    この手順でこの文字列値を正しく更新するのは非常に面倒であり、エラーが発生する可能性があります。 Git Bash プロンプトで適切な構文を生成するには、次の Bash シェル コマンドをコピーして Git Bash コマンド プロンプトに貼り付け、**Enter** キーを押します。 これらのコマンドにより、`CERTIFICATE` 文字列定数値の構文が生成されます。
-
-    ```Bash
-    input="./certs/new-device-full-chain.cert.pem"
-    bContinue=true
-    prev=
-    while $bContinue; do
-        if read -r next; then
-          if [ -n "$prev" ]; then   
-            echo "\"$prev\\n\""
-          fi
-          prev=$next  
-        else
-          echo "\"$prev\";"
-          bContinue=false
-        fi  
-    done < "$input"
-    ```
-
-    新しい定数値の証明書の出力テキストをコピーして貼り付けます。 
-
-
-5. 同じファイルで、`PRIVATE_KEY` 定数の文字列値も、デバイス証明書の秘密キーで更新する必要があります。
-
-    秘密キーのテキストの構文は、次のパターンに従う必要があります。Visual Studio によって余分なスペースが追加されたり、解析が実行されたりしないようにしてください。
-
-    ```c
-    static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
-    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
-        ...
-    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
-    "-----END RSA PRIVATE KEY-----";
-    ```
-
-    この手順でも、この文字列値を正しく更新するのは非常に面倒であり、エラーが発生する可能性があります。 Git Bash プロンプトで適切な構文を生成するには、次の Bash シェル コマンドをコピーして貼り付け、**Enter** キーを押します。 これらのコマンドにより、`PRIVATE_KEY` 文字列定数値の構文が生成されます。
-
-    ```Bash
-    input="./private/new-device.key.pem"
-    bContinue=true
-    prev=
-    while $bContinue; do
-        if read -r next; then
-          if [ -n "$prev" ]; then   
-            echo "\"$prev\\n\""
-          fi
-          prev=$next  
-        else
-          echo "\"$prev\";"
-          bContinue=false
-        fi  
-    done < "$input"
-    ```
-
-    新しい定数値のプライベート キーの出力テキストをコピーして貼り付けます。 
-
-6. *custom_hsm_example.c* を保存します。
-
+    |   説明                 |  値  |
+    | :---------------------------- | :--------- |
+    | サブジェクト名                  | `custom-hsm-device-02` |
+    | 完全な証明書チェーン ファイル   | *./certs/new-device-02-full-chain.cert.pem* |
+    | 秘密キーのファイル名          | *private/new-device-02.key.pem* |
+    
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>ルート証明書の所有権を検証する
 
@@ -352,6 +270,9 @@ HSM ハードウェアは必須ではありませんが、証明書の秘密キ�
 Windows 以外のデバイスでは、証明書チェーンをコードから証明書ストアとして渡すことができます。
 
 Windows ベースのデバイスでは、Windows の[証明書ストア](/windows/win32/secauthn/certificate-stores)に署名証明書 (ルートと中間) を追加する必要があります。 そうしないと、トランスポート層セキュリティ (TLS) を使用した安全なチャネルで署名証明書が DPS に転送されなくなります。
+
+> [!TIP]
+> C SDK でセキュリティ保護されたチャネル (Schannel) を使用するのではなく、OpenSSL を使用することもできます。 OpenSSL の使用の詳細については、「[SDK での OpenSSL の使用](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#using-openssl-in-the-sdk)」を参照してください。
 
 Windows ベースのデバイスの証明書ストアに署名証明書を追加するには:
 
@@ -408,21 +329,23 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
 
 ## <a name="configure-the-provisioning-device-code"></a>デバイスのプロビジョニング コードを構成する
 
-このセクションでは、Device Provisioning Service インスタンスを使ってデバイスをプロビジョニングできるよう、サンプル コードを更新します。 デバイスが認証されると、そのデバイスが Device Provisioning Service インスタンスにリンクされている IoT ハブに割り当てられます。
+このセクションでは、Device Provisioning Service インスタンス情報を使用してサンプル コードを更新します。 デバイスは認証されると、このセクションで構成された Device Provisioning Service インスタンスにリンクされている IoT ハブに割り当てられます。
 
 1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、**[_ID スコープ_]** の値をメモします。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Visual Studio のソリューション エクスプローラーで **[Provisioning_Samples] > [prov_dev_client_sample] > [ソース ファイル]** の順に移動し、*prov_dev_client_sample.c* を開きます。
+2. Visual Studio を起動し、Git リポジトリ azure-iot-sdk-c のルートに作成した `cmake` ディレクトリに作成された新しいソリューション ファイルを開きます。 ソリューション ファイルの名前は `azure_iot_sdks.sln` です。
 
-3. 定数 `id_scope` を探し、以前にコピーした **ID スコープ** の値で置き換えます。 
+3. Visual Studio のソリューション エクスプローラーで **[Provisioning_Samples] > [prov_dev_client_sample] > [ソース ファイル]** の順に移動し、*prov_dev_client_sample.c* を開きます。
+
+4. 定数 `id_scope` を探し、以前にコピーした **ID スコープ** の値で置き換えます。 
 
     ```c
     static const char* id_scope = "0ne00000A0A";
     ```
 
-4. 同じファイル内で `main()` 関数の定義を探します。 以下に示すように `hsm_type` 変数が `SECURE_DEVICE_TYPE_X509` に設定されていることを確認します。
+5. 同じファイル内で `main()` 関数の定義を探します。 以下に示すように `hsm_type` 変数が `SECURE_DEVICE_TYPE_X509` に設定されていることを確認します。
 
     ```c
     SECURE_DEVICE_TYPE hsm_type;
@@ -431,11 +354,110 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
     //hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-5. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
+6. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
+
+
+## <a name="configure-the-custom-hsm-stub-code"></a>カスタム HSM スタブ コードを構成する
+
+実際のハードウェアベースのストレージとやり取りする際の詳細は、ハードウェアに応じて異なります。 そのため、このチュートリアルのシミュレートされたデバイスで使用される証明書チェーンを、カスタム HSM スタブ コードにハードコードします。 実際には、機密情報のセキュリティを強化するために、実際の HSM ハードウェアに証明書チェーンが格納されます。 そのうえで、このサンプルで使用されたスタブ メソッドとよく似たメソッドを実装し、ハードウェアベースのストレージからシークレットを読み取れるようにします。 
+
+HSM ハードウェアは必須ではありませんが、証明書の秘密キーなど、機密情報を保護するために推奨されます。 実際の HSM がサンプルによって呼び出されると、秘密キーはソース コードに現れません。 キーをソース コードに含めると、コードを表示できるすべてのユーザーに対してキーが公開されます。 これは、学習を支援するために、この記事でのみ行います。
+
+ID `custom-hsm-device-01` でデバイスの ID をシミュレートするようにカスタム HSM スタブ コードを更新するには、次の手順を実行します。
+
+1. Visual Studio のソリューション エクスプローラーで **[Provisioning_Samples] > [custom_hsm_example] > [ソース ファイル]** の順に移動し、*custom_hsm_example.c* を開きます。
+
+2. `COMMON_NAME` 文字列定数の文字列値を、デバイス証明書の生成時に使用した共通名に更新します。
+
+    ```c
+    static const char* const COMMON_NAME = "custom-hsm-device-01";
+    ```
+
+3. 同じファイル内で、証明書の生成後に *./certs/new-device-01-full-chain.cert.pem* に保存した証明書チェーンのテキストを使用して、`CERTIFICATE` 定数文字列の文字列値を更新する必要があります。
+
+    証明書のテキストの構文は、次のパターンに従う必要があります。Visual Studio によって余分なスペースが追加されたり、解析が実行されたりしないようにしてください。
+
+    ```c
+    // <Device/leaf cert>
+    // <intermediates>
+    // <root>
+    static const char* const CERTIFICATE = "-----BEGIN CERTIFICATE-----\n"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
+        ...
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----\n"
+    "-----BEGIN CERTIFICATE-----\n"
+    "MIIFPDCCAySgAwIBAgIBATANBgkqhkiG9w0BAQsFADAqMSgwJgYDVQQDDB9BenVy\n"
+        ...
+    "MTEyMjIxMzAzM1owNDEyMDAGA1UEAwwpQXp1cmUgSW9UIEh1YiBJbnRlcm1lZGlh\n"
+    "-----END CERTIFICATE-----\n"
+    "-----BEGIN CERTIFICATE-----\n"
+    "MIIFOjCCAyKgAwIBAgIJAPzMa6s7mj7+MA0GCSqGSIb3DQEBCwUAMCoxKDAmBgNV\n"
+        ...
+    "MDMwWhcNMjAxMTIyMjEzMDMwWjAqMSgwJgYDVQQDDB9BenVyZSBJb1QgSHViIENB\n"
+    "-----END CERTIFICATE-----";        
+    ```
+
+    この手順でこの文字列値を正しく更新するのは非常に面倒であり、エラーが発生する可能性があります。 Git Bash プロンプトで適切な構文を生成するには、次の Bash シェル コマンドをコピーして Git Bash コマンド プロンプトに貼り付け、**Enter** キーを押します。 これらのコマンドにより、`CERTIFICATE` 文字列定数値の構文が生成されます。
+
+    ```Bash
+    input="./certs/new-device-01-full-chain.cert.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    新しい定数値の証明書の出力テキストをコピーして貼り付けます。 
+
+
+4. 同じファイルで、`PRIVATE_KEY` 定数の文字列値も、デバイス証明書の秘密キーで更新する必要があります。
+
+    秘密キーのテキストの構文は、次のパターンに従う必要があります。Visual Studio によって余分なスペースが追加されたり、解析が実行されたりしないようにしてください。
+
+    ```c
+    static const char* const PRIVATE_KEY = "-----BEGIN RSA PRIVATE KEY-----\n"
+    "MIIJJwIBAAKCAgEAtjvKQjIhp0EE1PoADL1rfF/W6v4vlAzOSifKSQsaPeebqg8U\n"
+        ...
+    "X7fi9OZ26QpnkS5QjjPTYI/wwn0J9YAwNfKSlNeXTJDfJ+KpjXBcvaLxeBQbQhij\n"
+    "-----END RSA PRIVATE KEY-----";
+    ```
+
+    この手順でも、この文字列値を正しく更新するのは非常に面倒であり、エラーが発生する可能性があります。 Git Bash プロンプトで適切な構文を生成するには、次の Bash シェル コマンドをコピーして貼り付け、**Enter** キーを押します。 これらのコマンドにより、`PRIVATE_KEY` 文字列定数値の構文が生成されます。
+
+    ```Bash
+    input="./private/new-device-01.key.pem"
+    bContinue=true
+    prev=
+    while $bContinue; do
+        if read -r next; then
+          if [ -n "$prev" ]; then   
+            echo "\"$prev\\n\""
+          fi
+          prev=$next  
+        else
+          echo "\"$prev\";"
+          bContinue=false
+        fi  
+    done < "$input"
+    ```
+
+    新しい定数値のプライベート キーの出力テキストをコピーして貼り付けます。 
+
+5. *custom_hsm_example.c* を保存します。
 
 6. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** を選択して、プロジェクトをリビルドしてから実行します。
 
-    次の出力は、プロビジョニング デバイス クライアントのサンプルが正常に起動し、Provisioning Service インスタンスに接続した場合の例です。 デバイスは IoT ハブに割り当てられ、登録されています。
+    次の出力は、シミュレートされたデバイス `custom-hsm-device-01` が正常に起動し、プロビジョニング サービスに接続した場合の例です。 デバイスは IoT ハブに割り当てられ、登録されています。
 
     ```cmd
     Provisioning API Version: 1.3.9
@@ -452,6 +474,29 @@ Windows ベースのデバイスの証明書ストアに署名証明書を追加
 7. ポータルで、Provisioning Service にリンクされた IoT ハブに移動し、 **[IoT デバイス]** タブを選択します。X.509 デバイスをハブにプロビジョニングすると、そのデバイスの ID が **[IoT デバイス]** ブレードに表示されます。このとき、 *[状態]* は **[有効]** となります。 場合によっては、一番上にある **[最新の情報に更新]** を押す必要があります。 
 
     ![IoT ハブにカスタム HSM デバイスが登録されたところ](./media/tutorial-custom-hsm-enrollment-group-x509/hub-provisioned-custom-hsm-x509-device.png) 
+
+8. デバイス ID が `custom-hsm-device-02` である 2 つ目のデバイスについて、手順 1 から 7 を繰り返します。 このデバイスには次の値を使用します。
+
+    |   説明                 |  値  |
+    | :---------------------------- | :--------- |
+    | `COMMON_NAME`                 | `"custom-hsm-device-02"` |
+    | 完全な証明書チェーン        | `input="./certs/new-device-02-full-chain.cert.pem"` を使用してテキストを生成します |
+    | 秘密キー                   | `input="./private/new-device-02.key.pem"` を使用してテキストを生成します |
+
+    次の出力は、シミュレートされたデバイス `custom-hsm-device-02` が正常に起動し、プロビジョニング サービスに接続した場合の例です。 デバイスは IoT ハブに割り当てられ、登録されています。
+
+    ```cmd
+    Provisioning API Version: 1.3.9
+    
+    Registering Device
+    
+    Provisioning Status: PROV_DEVICE_REG_STATUS_CONNECTED
+    Provisioning Status: PROV_DEVICE_REG_STATUS_ASSIGNING
+    
+    Registration Information received from service: test-docs-hub.azure-devices.net, deviceId: custom-hsm-device-02
+    Press enter key to exit:
+    ```
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

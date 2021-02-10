@@ -1,19 +1,16 @@
 ---
 title: HDInsight クラスターのログを管理する - Azure HDInsight
 description: HDInsight アクティビティ ログ ファイルの種類、サイズ、およびリテンション期間ポリシーを決定します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546026"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945269"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -111,7 +108,7 @@ log4j.logger.alerts=DEBUG,alerts
 
 HDInsight では、クラスター ファイル システムと Azure Storage の両方にログ ファイルが格納されます。 クラスター内のログ ファイルは、クラスターへの [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) 接続を開いてファイル システムを参照するか、リモート ヘッド ノード サーバー上の Hadoop YARN Status ポータルを使うことで確認できます。 Azure Storage のログ ファイルは、Azure Storage にアクセスしてデータをダウンロードできるツールを使って確認できます。 たとえば、[AzCopy](../storage/common/storage-use-azcopy-v10.md)、[CloudXplorer](https://clumsyleaf.com/products/cloudxplorer)、Visual Studio サーバー エクスプローラーなどがあります。 また、PowerShell と Azure Storage クライアント ライブラリ、または Azure .NET SDK を使って、Azure Blob Storage 内のデータにアクセスすることもできます。
 
-Hadoop は、クラスターのさまざまなノードでジョブの作業を " *タスク試行* " として実行します。 HDInsight は、予測タスク試行を開始して、最初に完了していない他のすべてのタスク試行を終了することがあります。 これにより、コントローラー、stderr、syslog のログ ファイルに即座に記録される大量のアクティビティが生成されます。 さらに、複数のタスク試行が同時に実行しますが、ログ ファイルでは結果を順番にしか表示できません。
+Hadoop は、クラスターのさまざまなノードでジョブの作業を "*タスク試行*" として実行します。 HDInsight は、予測タスク試行を開始して、最初に完了していない他のすべてのタスク試行を終了することがあります。 これにより、コントローラー、stderr、syslog のログ ファイルに即座に記録される大量のアクティビティが生成されます。 さらに、複数のタスク試行が同時に実行しますが、ログ ファイルでは結果を順番にしか表示できません。
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>Azure Blob Storage に書き込まれる HDInsight ログ
 
@@ -158,7 +155,7 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 削除できるログ ファイルを決定した後は、さまざまな Hadoop サービスのログ パラメーターを調整して、指定期間後にログ ファイルを自動的に削除できます。
 
-一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure portal で **[アクティビティ ログ]** リンクを選んで、Resource Manager ログのアーカイブを設定します。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。
+一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure portal で **[アクティビティ ログ]** リンクを選んで、Resource Manager ログのアーカイブを設定します。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、**[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。
 
 ![Azure portal の [アクティビティ ログのエクスポート] (プレビュー)](./media/hdinsight-log-management/hdi-export-log-files.png)
 

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 09d793f3d8ed544a386a362677f24be6d18673d7
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 27a97ceb2ca9a7b58df7200930e4e47d89c9ae89
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748733"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762178"
 ---
 # <a name="workflow"></a>ワークフロー
 
@@ -38,6 +38,18 @@ Azure Attestation を使用した標準的な SGX エンクレーブ構成証明
 
 > [!Note]
 > [2018-09-01-preview](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/attestation/data-plane/Microsoft.Attestation/stable/2018-09-01-preview) API バージョンで構成証明要求を送信する場合、クライアントは Azure AD アクセス トークンと共に証拠を Azure Attestation に送信する必要があります。
+
+## <a name="trusted-platform-module-tpm-enclave-validation-work-flow"></a>トラステッド プラットフォーム モジュール (TPM) のエンクレーブ検証ワークフロー
+
+Azure Attestation を使用した標準的な TPM エンクレーブ構成証明ワークフローの大まかなステップは次のとおりです。
+
+1.  デバイスまたはプラットフォームのブート時に、TPM によって裏付けられたイベントが各種のブート ローダーとブート サービスによって測定され、安全に格納されます (TCG ログ)。
+2.  クライアントが、構成証明の証拠の役割を果たす TPM のクォートとデバイスから TCG ログを収集します。
+3.  クライアントは、Azure Attestation のインスタンスを参照する URI を把握しています。 クライアントは Azure Attestation に証拠を送信します。 プロバイダーに送信される厳密な情報はプラットフォームによって異なります。
+4.  Azure Attestation が、送信された情報を検証し、それを構成済みのポリシーに照らして評価します。 検証に成功した場合、Azure Attestation が構成証明トークンを発行してクライアントに返します。 このステップに失敗した場合、Azure Attestation からクライアントにエラーがレポートされます。 クライアントと構成証明サービスとの間の通信は、Azure Attestation の TPM プロトコルによって規定されます。
+5.  その後、クライアントが証明書利用者に構成証明トークンを送信します。 証明書利用者が Azure Attestation の公開キー メタデータ エンドポイントを呼び出して署名証明書を取得します。 その後、証明書利用者は、構成証明トークンの署名を検証してプラットフォームの信頼性を保証します。
+
+![TPM 検証フロー](./media/tpm-validation-flow.png)
 
 ## <a name="next-steps"></a>次のステップ
 - [構成証明ポリシーを作成して署名する方法](author-sign-policy.md)

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 51b548beae57ce1da32006b61dfd222b0a4e6218
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d790b466f669ed067863b6643c8f59662eb628a7
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015863"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226440"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>チュートリアル:ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
@@ -45,7 +45,7 @@ ms.locfileid: "98015863"
 
 ![このチュートリアルで生成されたサンプル アプリの動作の紹介](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-このガイドで作成したサンプル アプリケーションにより、JavaScript SPA で、Microsoft Graph API、または Microsoft ID プラットフォーム エンドポイントのトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 このトークンは、**MS Graph API** からユーザーのプロファイルとメールを取得する際に使用します。
+このガイドで作成したサンプル アプリケーションにより、JavaScript SPA で、Microsoft Graph API、または Microsoft ID プラットフォームのトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、Authorization ヘッダーを介して HTTP 要求に追加されます。 このトークンは、**MS Graph API** からユーザーのプロファイルとメールを取得する際に使用します。
 
 トークンの取得と更新は、[Microsoft Authentication Library (MSAL) for JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js) で処理されます。
 
@@ -275,7 +275,7 @@ ms.locfileid: "98015863"
 1. **[登録]** を選択します。
 1. 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
 1. **[管理]** で、 **[認証]** を選択します。
-1. **[暗黙的な許可]** セクションで、 **[ID トークン]** と **[アクセス トークン]** を選択します。 このアプリではユーザーのサインインを実行して API を呼び出す必要があるため、ID トークンとアクセス トークンが必要です。
+1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[ID トークン]** と **[アクセス トークン]** を選択します。 このアプリではユーザーのサインインを実行して API を呼び出す必要があるため、ID トークンとアクセス トークンが必要です。
 1. **[保存]** を選択します。
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Node.js でリダイレクト URL を設定する
@@ -413,13 +413,13 @@ ms.locfileid: "98015863"
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-最初のサインインの後、リソースにアクセスするためのトークンを要求するたびにユーザーに再認証を求めるのは、あまり好ましくありません。 そこで、ほとんどの場合は、*acquireTokenSilent* を使用してトークンを取得することをお勧めします。 ただし、ユーザーに Microsoft ID プラットフォーム エンドポイントとのやり取りを強制しなければならない場合があります。 たとえば、次のようになります。
+最初のサインインの後、リソースにアクセスするためのトークンを要求するたびにユーザーに再認証を求めるのは、あまり好ましくありません。 そこで、ほとんどの場合は、*acquireTokenSilent* を使用してトークンを取得することをお勧めします。 ただし、ユーザーに Microsoft ID プラットフォームとのやり取りを強制しなければならない場合があります。 たとえば、次のようになります。
 
 - パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある。
 - アプリケーションがリソースへのアクセスを要求し、ユーザーの同意が必要である。
 - 2 要素認証が必須である。
 
-*acquireTokenPopup* を呼び出すとポップアップ ウィンドウが開きます (または *acquireTokenRedirect* によって Microsoft ID プラットフォーム エンドポイントにユーザーがリダイレクトされます)。 ユーザーはそのウィンドウ内で、自分の資格情報の確認、必要なリソースへの同意、2 要素認証の完了のいずれかの方法で操作を行う必要があります。
+*acquireTokenPopup* を呼び出すとポップアップ ウィンドウが開きます (または *acquireTokenRedirect* によって Microsoft ID プラットフォームにユーザーがリダイレクトされます)。 ユーザーはそのウィンドウ内で、自分の資格情報の確認、必要なリソースへの同意、2 要素認証の完了のいずれかの方法で操作を行う必要があります。
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
@@ -483,7 +483,7 @@ ms.locfileid: "98015863"
    ```
 1. ブラウザーに「 **http://localhost:3000** 」または「 **http://localhost:{port}** 」と入力します。*port* には、実際の Web サーバーのリッスン ポートを指定してください。 *index.html* ファイルの内容と **[サインイン]** ボタンが表示されるはずです。
 
-ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォーム エンドポイントにサインインするように求められます。
+ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォームにサインインするように求められます。
 
 ![JavaScript SPA アカウント サインイン ウィンドウ](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

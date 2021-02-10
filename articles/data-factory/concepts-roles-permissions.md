@@ -10,12 +10,12 @@ ms.workload: data-services
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 70be8d8be48f2b1e1cc275c06e4abff09e3e62f6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 30e07b645701cf560534b152ae42559213daf838
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498576"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053773"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -56,6 +56,12 @@ Azure Repos や GitHub に対するアクセス許可は、Data Factory のア�
 
 > [!IMPORTANT]
 > **Data Factory 共同作成者** ロールで Resource Manager テンプレートをデプロイする場合にアクセス許可が昇格されることはありません。 たとえば、Azure 仮想マシンを作成するテンプレートをデプロイするときに、仮想マシンを作成するアクセス許可がない場合、デプロイは認可エラーで失敗します。
+
+> [!IMPORTANT]
+> 発行コンテキスト内では、両方のモードでアクセス許可 **Microsoft.DataFactory/factories/write** が必要です。
+
+- このアクセス許可は、顧客がグローバル パラメーターを変更するときにライブ モードでのみ必要になります。
+- このアクセス許可は、顧客が発行を行うたびに、Git モードで常に必要になります。これは、最新のコミット ID を持つファクトリ オブジェクトが更新されるためです。
 
 ### <a name="custom-scenarios-and-custom-roles"></a>カスタム シナリオとカスタム ロール
 

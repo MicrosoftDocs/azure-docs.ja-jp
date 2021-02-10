@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af448d5d28c5add39176500b988824b17f85b9fb
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 2027f713baf2b8039187e933ffc7bb0b68b5cc5f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861971"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631963"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API の概要
 
@@ -49,8 +49,10 @@ Azure AD レポートに Microsoft Graph API を使用すると、一連の REST
 
 監査ログ用の Microsoft Graph API エンドポイントは `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits` であり、サインイン用の Microsoft Graph API エンドポイントは `https://graph.microsoft.com/v1.0/auditLogs/signIns` です。 詳細については、[監査 API リファレンス](/graph/api/resources/directoryaudit)と[サインイン API リファレンス](/graph/api/resources/signIn)のページを参照してください。
 
-また、[Identity Protection リスク検出 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスすることもできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/howto-identity-protection-graph-api.md)」を参照してください。 
+[Identity Protection リスク検出 API](/graph/api/resources/identityriskevent?view=graph-rest-beta) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/howto-identity-protection-graph-api.md)」を参照してください。 
   
+また、[プロビジョニング ログ API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) を使用して、テナント内のプロビジョニング イベントにプログラムからアクセスすることもできます。 
+
 ## <a name="apis-with-microsoft-graph-explorer"></a>Microsoft Graph Explorer を使用する API
 
 [Microsoft Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)を使用してサインインを確認し、API データを監査できます。 Graph エクスプローラーの UI で、両方のサインイン ボタンを使用してアカウントにサインインし、次に示すようにテナントの **AuditLog.Read.All** および **Directory.ReadAll** のアクセス許可を設定します。   

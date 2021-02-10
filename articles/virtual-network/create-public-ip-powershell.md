@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 5b79a777ba8f7e615e4637f94311cba39e8a7f6c
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ff768bceaba57c119aa88d5d4d99b11608917695
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223705"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492027"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してパブリック IP アドレスを作成する
 
@@ -51,7 +51,7 @@ New-AzResourceGroup -Name $rg -Location $loc
 # <a name="standard-sku---using-zones"></a>[**Standard SKU - ゾーンの使用**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)に関するページを参照してください。
+>次のコマンドは、Az.Network モジュール バージョン 4.5.0 以降で動作します。  現在使用されている Powershell モジュールの詳細については、[PowerShellGet のドキュメント](https://docs.microsoft.com/powershell/module/powershellget/?view=powershell-7.1)を参照してください。
 
 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardZRPublicIP** という名前の Standard ゾーン冗長パブリック IP アドレスを作成します。
 
@@ -67,7 +67,7 @@ $zone = 1,2,3
 New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -AllocationMethod $alloc -SKU $sku -zone $zone
 ```
 > [!IMPORTANT]
-> 2020-08-01 より前の API のバージョンでは、ゾーン冗長 IP アドレスを作成する際、ゾーン パラメーターを指定せずに上記のコマンドを実行します。 
+> 4\.5.0 より前の Az.Network モジュールに対しては、ゾーン パラメーターを指定せずに上記のコマンドを実行して、ゾーン冗長 IP アドレスを作成します。 
 >
 
 **myResourceGroup** で **myStandardZonalPublicIP** という名前の Standard ゾーン ベースのパブリック IP アドレスをゾーン 2 に作成するには、次のコマンドを使用します。
@@ -89,7 +89,7 @@ New-AzPublicIpAddress -ResourceGroupName $rg -Name $pubIP -Location $loc -Alloca
 # <a name="standard-sku---no-zones"></a>[**Standard SKU - ゾーンなし**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)に関するページを参照してください。
+>次のコマンドは、Az.Network モジュール バージョン 4.5.0 以降で動作します。  現在使用されている Powershell モジュールの詳細については、[PowerShellGet のドキュメント](https://docs.microsoft.com/powershell/module/powershellget/?view=powershell-7.1)を参照してください。
 
 [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) を使用して、**myResourceGroup** に **myStandardPublicIP** という名前の Standard パブリック IP アドレスを非ゾーン リソースとして作成します。
 

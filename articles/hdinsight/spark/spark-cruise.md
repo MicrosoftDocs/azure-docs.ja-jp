@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight で SparkCruise を使用して Apache Spark クエリを高速化する
 description: SparkCruise 最適化プラットフォームを使用して Apache Spark クエリの効率を向上させる方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f07ea3007d2e72c179abe38cca56178b564bc231
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88649059"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928284"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight での SparkCruise
 

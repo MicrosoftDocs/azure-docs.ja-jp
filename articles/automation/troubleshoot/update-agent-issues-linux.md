@@ -2,19 +2,15 @@
 title: Azure Automation での Linux Update エージェントに関する問題のトラブルシューティング
 description: この記事では、Update Management で Linux Windows Update エージェントの問題を解決する方法について説明します。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 12/03/2019
-ms.topic: conceptual
-ms.service: automation
+ms.date: 01/25/2021
+ms.topic: troubleshooting
 ms.subservice: update-management
-manager: carmonm
-ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2fd92d79a3322b17f528194b9d39c26bf4c93b0c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83680858"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896259"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Linux Update エージェントに関する問題のトラブルシューティング
 
@@ -27,7 +23,7 @@ Update Management にマシンが準備完了 (正常) と表示されない理�
 > [!NOTE]
 > Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
 
-この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。 
+この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
 
 > [!NOTE]
 > このトラブルシューティング スクリプトでは現在、プロキシ サーバーが構成されている場合、プロキシ サーバー経由でトラフィックがルーティングされません。
@@ -90,7 +86,6 @@ Update Management によって操作のエンドポイントから Hybrid Runboo
 
 このチェックでは、Hybrid Runbook Worker がマシンで実行されていることが確認されます。 Hybrid Runbook Worker が正しく実行されている場合は、下の例のプロセスが存在する必要があります。
 
-
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
 nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
@@ -129,7 +124,7 @@ Hybrid Runbook Worker エージェントが Job Runtime Data Service と通信�
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>オフライン トラブルシューティング
 
-スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 Python スクリプト [update_mgmt_health_check.py](https://gallery.technet.microsoft.com/scriptcenter/Troubleshooting-utility-3bcbefe6) は、スクリプト センターにあります。 このスクリプトの出力例を次に示します。
+スクリプトをローカルに実行することで、Hybrid Runbook Worker のトラブルシューティング ツールをオフラインで使用できます。 Python スクリプト [UM_Linux_Troubleshooter_Offline.py](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py) は GitHub にあります。 このスクリプトの出力例を次に示します。
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

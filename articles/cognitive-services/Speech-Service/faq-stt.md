@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072175"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226558"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>音声テキスト変換についてよく寄せられる質問
 
@@ -83,7 +83,7 @@ ms.locfileid: "98072175"
 
 **Q:個人の要求はログに記録されますか。**
 
-**A**: 既定では、要求は (音声と文字起こしのどちらにも) ログに記録されません。 必要であれば、[カスタム エンドポイントを作成する](./how-to-custom-speech-train-model.md)ときに、 *[Log content from this endpoint]\(このエンドポイントからコンテンツをログに記録する\)* オプションを選択できます。 また、カスタム エンドポイントを作成せずに、[Speech SDK](speech-sdk.md) で、要求ごとにオーディオ ログを有効にすることもできます。 どちらの場合も、要求のオーディオと認識の結果は、セキュリティで保護されたストレージに格納されます。 Microsoft が所有するストレージを使用するサブスクリプションでは、30 日間使用できます。
+**A**: 既定では、要求は (音声と文字起こしのどちらにも) ログに記録されません。 必要であれば、[カスタム エンドポイントを作成する](how-to-custom-speech-train-model.md#deploy-a-custom-model)ときに、 *[Log content from this endpoint]\(このエンドポイントからコンテンツをログに記録する\)* オプションを選択できます。 また、カスタム エンドポイントを作成せずに、[Speech SDK](how-to-use-logging.md) で、要求ごとにオーディオ ログを有効にすることもできます。 どちらの場合も、要求のオーディオと認識の結果は、セキュリティで保護されたストレージに格納されます。 Microsoft が所有するストレージを使用するサブスクリプションでは、30 日間使用できます。
 
 *[Log content from this endpoint]\(このエンドポイントからコンテンツをログに記録する\)* が有効になっているカスタム エンドポイントを使用している場合は、Speech Studio のデプロイ ページでログのファイルをエクスポートできます。 SDK を介してオーディオ ログが有効になっている場合は、[API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) を呼び出してファイルにアクセスします。
 

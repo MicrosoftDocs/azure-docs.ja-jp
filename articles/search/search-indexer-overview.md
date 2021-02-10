@@ -1,5 +1,5 @@
 ---
-title: インポート時にデータをクロールするためのインデクサー
+title: インデクサーの概要
 titleSuffix: Azure Cognitive Search
 description: Azure SQL Database、SQL Managed Instance、Azure Cosmos DB、または Azure ストレージをクロールして検索可能なデータを抽出し、Azure Cognitive Search インデックスを作成します。
 manager: nitinme
@@ -7,48 +7,32 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/11/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 5861e79054bed0d9d75258dfa9cb39b198f0f93d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/29/2021
+ms.openlocfilehash: df393f54e7dfa83c8fc0feab3dbf42a156b296b7
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216446"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430464"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
-Azure Cognitive Search の "*インデクサー*" は、検索可能なデータとメタデータを Azure 外部データ ソースから抽出し、データ ソースとインデックス間のフィールドのマッピングを検索インデックスに設定するクローラーです。 この方法は、インデックスにデータを追加するコードを記述することなく、サービスがデータをプルするため、「プル モデル」と呼ばれることもあります。
+Azure Cognitive Search の "*インデクサー*" は、検索可能なテキストとメタデータを Azure 外部データ ソースから抽出し、データ ソースとインデックス間のフィールドのマッピングを検索インデックスに設定するクローラーです。 この方法は、インデックスにデータを追加するコードを記述することなく、サービスがデータをプルするため、「プル モデル」と呼ばれることもあります。 また、インデクサーにより Cognitive Search の [AI エンリッチメント](cognitive-search-concept-intro.md)機能が促進され、ルートのコンテンツの外部処理がインデックスに統合されます。
 
 インデクサーは Azure 専用であり、[Azure SQL](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)、[Azure Cosmos DB](search-howto-index-cosmosdb.md)、[Azure Table Storage](search-howto-indexing-azure-tables.md)、[Blob Storage](search-howto-indexing-azure-blob-storage.md) 用にそれぞれ個別のインデクサーを使用します。 インデクサーを構成するときは、データ ソース (抽出元) とインデックス (ターゲット) を指定します。 Blob Storage など、いくつかのソースには、そのコンテンツの種類に固有の追加の構成プロパティがあります。
 
-インデクサーは、オンデマンドで実行することも、5 分ごとに実行される定期的なデータ更新スケジュールで実行することもできます。 より頻繁に更新するには、Azure Cognitive Search と外部データ ソースの両方のデータを同時に更新するプッシュ モデルが必要です。
+インデクサーは、オンデマンドで実行することも、5 分ごとに実行される定期的なデータ更新スケジュールで実行することもできます。 より頻繁に更新するには、Azure Cognitive Search と外部データ ソースの両方のデータを同時に更新する "[プッシュ モデル](search-what-is-data-import.md)" が必要です。
 
 ## <a name="usage-scenarios"></a>使用シナリオ
 
-データ インジェストの唯一の手段としてインデクサーを使用することも、インデックス内のフィールドの一部だけを読み込み、その後必要に応じてコンテンツを変換またはエンリッチするという操作を含む、手法の組み合わせを使用することもできます。 次の表に主なシナリオをまとめています。
+インデクサーは、データ インジェストの唯一の手段として使用することも、コンテンツを読み込み必要に応じて変換またはエンリッチする手法の組み合わせの一部として使用することもできます。 次の表に主なシナリオをまとめています。
 
 | シナリオ |戦略 |
 |----------|---------|
-| 単一のソース | このパターンは最も単純です。1 つのデータ ソースが検索インデックス用の唯一のコンテンツ プロバイダーです。 そのソースから、検索インデックスのドキュメント キーとして機能する一意の値を含む 1 つのフィールドを識別します。 その一意の値が識別子として使用されます。 他のすべてのソース フィールドは、インデックス内の対応するフィールドに暗黙的または明示的にマップされます。 </br></br>重要なポイントは、ドキュメント キーの値がソース データから生成されることです。 検索サービスでは、キー値は生成されません。 以降の実行では、新しいキーを持つ着信ドキュメントが追加されます。それに対し、既存のキーを持つ着信ドキュメントは、インデックス フィールドが null であるかデータが設定済みかに応じて、マージまたは上書きされます。 |
-| 複数のソース| インデックスでは、複数のソースからコンテンツを受け入れることができます。この場合、実行のたびに、異なるソースから新しいコンテンツが取り込まれます。 </br></br>1 つの結果として、インデックスではインデクサーのそれぞれの実行後にドキュメントが取得され、各ソースからのドキュメントがすべて生成されます。 たとえば、ドキュメント 1-100 は Blob Storage からのものであり、ドキュメント 101-200 は Azure SQL からのものである、というようになります。 このシナリオの課題は、すべての着信データに対して機能するインデックス スキーマと、検索インデックスで一様なドキュメント キーの構造を設計することです。 本来、ドキュメントを一意に識別する値は、BLOB コンテナーでは metadata_storage_path、SQL テーブルでは主キーです。 コンテンツの抽出元に関係なく、共通の形式でキー値を提供するには、一方または両方のソースを修正する必要があると想定できます。 このシナリオでは、データを均一化して 1 つのインデックスにプルできるように、ある程度の前処理を実行することを想定する必要があります。</br></br>考えられる別の結果としては、最初の実行時に検索ドキュメントに部分的にデータが設定され、その後、後続の実行によってさらにデータが設定され、他のソースから値が取り込まれます。 たとえば、フィールド 1-10 は Blob Storage からのものであり、11-20 は Azure SQL からのものである、というようになります。 このパターンの課題は、インデックス作成のそれぞれの実行で同じドキュメントがターゲットになるようにすることです。 フィールドを既存のドキュメントにマージするには、ドキュメント キーが一致している必要があります。 このシナリオのデモについては、[チュートリアル:複数のデータ ソースからのインデックス作成](tutorial-multiple-data-sources.md)に関する記事のソース コード。 |
-| コンテンツの変換 | Cognitive Search では、イメージ分析と自然言語処理を追加して新しい検索可能なコンテンツと構造を作成する、オプションの [AI エンリッチメント](cognitive-search-concept-intro.md)の動作がサポートされます。 AI エンリッチメントは、アタッチされている[スキルセット](cognitive-search-working-with-skillsets.md)を使用してインデクサーによって駆動されます。 AI エンリッチメントを実行する場合、インデクサーではやはりインデックスとデータ ソースが必要になりますが、このシナリオではインデクサーの実行にスキルセット処理が追加されます。 |
-
-## <a name="approaches-for-creating-and-managing-indexers"></a>インデクサーの作成と管理の方法
-
-インデクサーの作成と管理は、次の方法で行うことができます。
-
-+ [Portal のデータのインポート ウィザード](search-import-data-portal.md)
-+ [Service REST API](/rest/api/searchservice/Indexer-operations)
-+ [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer)
-
-SDK を使用している場合は、インデクサー、データ ソース、スキルセットで機能するように [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient) を作成します。 上記のリンクは .NET SDK 用ですが、すべての SDK で、SearchIndexerClient および同様の API が提供されます。
-
-当初、新しいデータ ソースはプレビュー機能として発表され、REST 専用です。 一般提供に向けてレベルが向上すると、ポータルとさまざまな SDK に完全サポートが組み込まれ、それぞれ独自のリリース スケジュールに従います。
-
-## <a name="permissions"></a>アクセス許可
-
-インデクサーに関連するすべての操作 (状態や定義の GET 要求を含む) には、[管理者 API キー](search-security-api-keys.md)が必要です。
+| 単一のデータ ソース | このパターンは最も単純です。1 つのデータ ソースが検索インデックス用の唯一のコンテンツ プロバイダーです。 そのソースから、検索インデックスのドキュメント キーとして機能する一意の値を含む 1 つのフィールドを識別します。 その一意の値が識別子として使用されます。 他のすべてのソース フィールドは、インデックス内の対応するフィールドに暗黙的または明示的にマップされます。 </br></br>重要なポイントは、ドキュメント キーの値がソース データから生成されることです。 検索サービスでは、キー値は生成されません。 以降の実行では、新しいキーを持つ着信ドキュメントが追加されます。それに対し、既存のキーを持つ着信ドキュメントは、インデックス フィールドが null であるかデータが設定済みかに応じて、マージまたは上書きされます。 |
+| 複数のデータ ソース | インデックスでは、複数のソースからコンテンツを受け入れることができます。この場合、実行のたびに、異なるソースから新しいコンテンツが取り込まれます。 </br></br>1 つの結果として、インデックスではインデクサーのそれぞれの実行後にドキュメントが取得され、各ソースからのドキュメントがすべて生成されます。 たとえば、ドキュメント 1-100 は Blob Storage からのものであり、ドキュメント 101-200 は Azure SQL からのものである、というようになります。 このシナリオの課題は、すべての着信データに対して機能するインデックス スキーマと、検索インデックスで一様なドキュメント キーの構造を設計することです。 本来、ドキュメントを一意に識別する値は、BLOB コンテナーでは metadata_storage_path、SQL テーブルでは主キーです。 コンテンツの抽出元に関係なく、共通の形式でキー値を提供するには、一方または両方のソースを修正する必要があると想定できます。 このシナリオでは、データを均一化して 1 つのインデックスにプルできるように、ある程度の前処理を実行することを想定する必要があります。 </br></br>考えられる別の結果としては、最初の実行時に検索ドキュメントに部分的にデータが設定され、その後、後続の実行によってさらにデータが設定され、他のソースから値が取り込まれます。 たとえば、フィールド 1-10 は Blob Storage からのものであり、11-20 は Azure SQL からのものである、というようになります。 このパターンの課題は、インデックス作成のそれぞれの実行で同じドキュメントがターゲットになるようにすることです。 フィールドを既存のドキュメントにマージするには、ドキュメント キーが一致している必要があります。 このシナリオのデモについては、[チュートリアル:複数のデータ ソースからのインデックス作成](tutorial-multiple-data-sources.md)に関する記事のソース コード。 |
+| 複数のインデクサー | 複数のデータ ソースを使用していて、実行時のパラメーター、スケジュール、またはフィールド マッピングを変更する必要がある場合、複数のインデクサーが必要になることがあります。 インデクサーとデータ ソースの複数のセットで同じインデックスをターゲットにすることはできますが、インデックスの既存の値を上書きできるインデクサーの実行にご注意ください。 2 番目のインデクサーとデータ ソースで同じドキュメントとフィールドがターゲットになっている場合、最初の実行の値がすべて上書きされます。 フィールドの値は完全に置き換えられます。インデクサーで、複数の実行の値を同じフィールドにマージすることはできません。</br></br>複数のインデクサーのもう 1 つのユース ケースは、[Cognitive Search のリージョン間のスケールアウト](search-performance-optimization.md#use-indexers-for-updating-content-on-multiple-services)です。 同じ検索インデックスのコピーが異なるリージョンに存在する場合があります。 検索インデックスの内容を同期するには、同じデータ ソースからプルする複数のインデクサーを作成できます。この場合、各インデクサーのターゲットは異なる検索インデックスです。</br></br>非常に大きなデータ セットの[並列インデックス付け](search-howto-large-index.md#parallel-indexing)には、複数インデクサーの戦略も必要です。 各インデクサーのターゲットは、データのサブセットです。 |
+| コンテンツの変換 | Cognitive Search では、イメージ分析と自然言語処理を追加して新しい検索可能なコンテンツと構造を作成する、オプションの [AI エンリッチメント](cognitive-search-concept-intro.md)の動作がサポートされます。 AI エンリッチメントは、アタッチされている[スキルセット](cognitive-search-working-with-skillsets.md)を使用してインデクサーによって駆動されます。 AI エンリッチメントを実行する場合も、やはりインデクサーにインデックスと Azure データ ソースが必要ですが、このシナリオでは、インデクサーの実行にスキルセットの処理が追加されます。 |
 
 <a name="supported-data-sources"></a>
 
@@ -64,11 +48,13 @@ SDK を使用している場合は、インデクサー、データ ソース、
 + [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 + [Azure Virtual Machines における SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 
+クライアント アプリに Azure 仮想ネットワークを使用するときは、標準のインターネット接続 (パブリック) または暗号化されたプライベート接続を使用して、リモート データ ソースへのインデクサーの接続を行うことができます。 また、信頼されたサービス ID を使用して認証を行うように、接続を設定することもできます。 セキュリティで保護された接続の詳細については、「[プライベート エンドポイントを介してアクセスを許可する](search-indexer-securing-resources.md#granting-access-via-private-endpoints)」および[マネージド ID を使用したデータ ソースへの接続](search-howto-managed-identities-data-sources.md)に関するページを参照してください。
+
 ## <a name="stages-of-indexing"></a>インデックス作成のステージ
 
 最初の実行時に、インデックスが空の場合、テーブルまたはコンテナーで提供されるすべてのデータがインデクサーによって読み取られます。 その後の実行では、通常、変更されたデータのみがインデクサーによって検出され取得されます。 BLOB データの場合、変更の検出は自動で行われます。 Azure SQL や Cosmos DB などの他のデータ ソースで、変更の検出を有効にする必要があります。
 
-インデクサーは、それによって取り込まれたドキュメントのそれぞれについて、ドキュメントの検索からインデックス作成のための最終的な検索エンジンの "ハンドオフ" にいたるまでの複数のステップを実装または調整します。 必要に応じて、インデクサーは、スキルセットが定義されていると想定して、スキルセットの実行と出力を促進するのにも役立ちます。
+受信したドキュメントごとに、インデクサーによって、ドキュメントの取得からインデックス付けのための最終的な検索エンジンの "ハンドオフ" までの、複数のステップが実装または調整されます。 必要に応じて、インデクサーは、スキルセットが定義されていると想定して、スキルセットの実行と出力を促進するのにも役立ちます。
 
 :::image type="content" source="media/search-indexer-overview/indexer-stages.png" alt-text="インデクサーのステージ" border="false":::
 
@@ -84,15 +70,19 @@ SDK を使用している場合は、インデクサー、データ ソース、
 
 ### <a name="stage-2-field-mappings"></a>ステージ 2:フィールド マッピング 
 
-インデクサーによって、ソース フィールドからテキストが抽出され、インデックスまたはナレッジ ストアの送信先フィールドにそれが送信されます。 フィールド名と型が一致すると、パスは明確になります。 ただし、出力には異なる名前または型が必要な場合があります。その場合は、フィールドをマップする方法をインデクサーに指示する必要があります。 このステップは、ドキュメント解析の後、変換前に、インデクサーがソース ドキュメントから読み取るときに発生します。 [フィールド マッピング](search-indexer-field-mappings.md)を定義するときに、ソース フィールドの値は変更されずにそのまま送信先フィールドに送信されます。 フィールド マッピングは省略可能です。
+インデクサーによって、ソース フィールドからテキストが抽出され、インデックスまたはナレッジ ストアの送信先フィールドにそれが送信されます。 フィールド名と型が一致すると、パスは明確になります。 ただし、出力には異なる名前または型が必要な場合があります。その場合は、フィールドをマップする方法をインデクサーに指示する必要があります。 
+
+このステップは、ドキュメント解析の後、変換前に、インデクサーがソース ドキュメントから読み取るときに発生します。 [フィールド マッピング](search-indexer-field-mappings.md)を定義するときに、ソース フィールドの値は変更されずにそのまま送信先フィールドに送信されます。 
 
 ### <a name="stage-3-skillset-execution"></a>ステージ 3:スキルセットの実行
 
-スキルセットの実行は、組み込みまたはカスタムの AI 処理を呼び出す省略可能なステップです。 これは画像分析の形式で光学式文字認識 (OCR) に必要になる場合や、言語翻訳が必要な場合があります。 変換が何であれ、スキルセットの実行は、エンリッチメントが発生する場所です。 インデクサーがパイプラインの場合、[スキルセット](cognitive-search-defining-skillset.md)を "パイプライン内のパイプライン" として考えることができます。 スキルセットには、スキルと呼ばれる独自のステップのシーケンスがあります。
+スキルセットの実行は、組み込みまたはカスタムの AI 処理を呼び出す省略可能なステップです。 これは、ソース データがバイナリ画像の場合に画像分析の形式で光学式文字認識 (OCR) を行うときや、異なる言語のコンテンツを翻訳するときに、必要になる場合があります。 
+
+変換が何であれ、スキルセットの実行は、エンリッチメントが発生する場所です。 インデクサーがパイプラインの場合、[スキルセット](cognitive-search-defining-skillset.md)を "パイプライン内のパイプライン" として考えることができます。
 
 ### <a name="stage-4-output-field-mappings"></a>ステージ 4: 出力フィールド マッピング
 
-スキルセットを含める場合、通常は出力フィールド マッピングを含める必要があります。 スキルセットの出力は、実際にはエンリッチされたドキュメントと呼ばれる情報のツリーです。 出力フィールド マッピングを使用すると、このツリーの部分を選択してインデックス内のフィールドにマップすることができます。 [出力フィールド マッピングを定義する](cognitive-search-output-field-mapping.md)方法について学習します。
+スキルセットを含める場合、通常は出力フィールド マッピングを含める必要があります。 スキルセットの出力は、実際には "*エンリッチされたドキュメント*" と呼ばれる情報のツリーです。 出力フィールド マッピングを使用すると、このツリーの部分を選択してインデックス内のフィールドにマップすることができます。 [出力フィールド マッピングを定義する](cognitive-search-output-field-mapping.md)方法について学習します。
 
 フィールド マッピングではデータ ソースからターゲット フィールドに逐語的な値が関連付けられるのに対し、出力フィールド マッピングでは、エンリッチされたドキュメント内の変換された値をインデックス内のターゲット フィールドに関連付ける方法がインデクサーに伝えられます。 省略可能と見なされるフィールド マッピングとは異なり、インデックスに存在する必要がある変換されたコンテンツに対しては、出力フィールド マッピングを常に定義する必要があります。
 
@@ -100,93 +90,34 @@ SDK を使用している場合は、インデクサー、データ ソース、
 
 :::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="デバッグ セッションのサンプル" lightbox="media/search-indexer-overview/sample-debug-session.png":::
 
-## <a name="basic-configuration-steps"></a>基本的な構成手順
+## <a name="basic-workflow"></a>基本的なワークフロー
 
 インデクサーで実行できる機能は、データ ソースごとに異なります。 そのためインデクサーやデータ ソースの構成には、インデクサーの種類ごとに異なる点があります。 しかし基本的な成り立ちと要件は、すべてのインデクサーに共通です。 以降、すべてのインデクサーに共通の手順について取り上げます。
 
 ### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する
 
-インデクサーは、*データ ソース* オブジェクトからデータ ソース接続を取得します。 データ ソース定義では、接続文字列と、場合によっては資格情報が提供されます。 [データ ソースの作成](/rest/api/searchservice/create-data-source) REST API または [SearchIndexerDataSourceConnection クラス](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)を呼び出して、リソースを作成します。
+インデクサーには、接続文字列と必要に応じて資格情報を提供する、"*データ ソース*" オブジェクトが必要です。 リソースを作成するには、[データ ソースの作成 (REST)](/rest/api/searchservice/create-data-source) または [SearchIndexerDataSourceConnection クラス](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourceconnection)を呼び出します。
 
 データ ソースは、それを使用するインデクサーとは別に構成および管理されます。これは、1 つのデータ ソースを複数のインデクサーで使用して、一度に複数のインデックスを読み込めることを意味します。
 
 ### <a name="step-2-create-an-index"></a>手順 2:インデックスを作成する
 
-インデクサーは、データ インジェストに関連したいくつかのタスクを自動化しますが通常、そこにはインデックスの作成は含まれていません。 前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。 各フィールドでは、名前とデータ型が一致する必要があります。 インデックス構築の詳細については、「[インデックスの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Index)」または「[SearchIndex クラス](/dotnet/api/azure.search.documents.indexes.models.searchindex)」を参照してください。 フィールドの関連付けについては、[Azure Cognitive Search インデクサーのフィールド マッピング](search-indexer-field-mappings.md)に関する記事を参照してください。
+インデクサーは、データ インジェストに関連したいくつかのタスクを自動化しますが通常、そこにはインデックスの作成は含まれていません。 前提条件として、定義済みのインデックスが必要です。加えてそのフィールドは、外部データ ソース内のフィールドと一致している必要があります。 各フィールドでは、名前とデータ型が一致する必要があります。 そうでない場合は、[フィールド マッピングを定義](search-indexer-field-mappings.md)して関連付けを確立できます。 インデックス構築の詳細については、[インデックスの作成 (REST)](/rest/api/searchservice/Create-Index) に関するページまたは「[SearchIndex クラス](/dotnet/api/azure.search.documents.indexes.models.searchindex)」を参照してください。
 
 > [!Tip]
 > インデクサーで自動的にインデックスを生成することはできませんが、ポータルにある **データのインポート** ウィザードを活用することができます。 ほとんどの場合、ウィザードで、ソース内の既存のメタデータからインデックス スキーマを推測し、仮のインデックス スキーマを得ることができます。ウィザードがアクティブである間は、このスキーマをインライン編集することが可能です。 サービスのインデックスが作成された後にポータルで行う編集は、主に新しいフィールドの追加に限定されます。 ウィザードは、あくまでインデックスの作成にご使用ください。インデックスの修正には適していません。 実践的なスキルを身に付けるには、[ポータルのチュートリアル](search-get-started-portal.md)をご覧ください。
 
-### <a name="step-3-create-and-schedule-the-indexer"></a>手順 3:インデクサーを作成してスケジュールを設定する
+### <a name="step-3-create-and-run-or-schedule-the-indexer"></a>手順 3: インデクサーを作成して実行 (またはスケジュールを設定) する
 
-インデクサー定義は、データの取り込みに関連するすべての要素をまとめたコンストラクトです。 必要な要素には、データ ソースとインデックスが含まれます。 省略可能な要素には、スケジュールとフィールド マッピングが含まれます。 フィールド マッピングは、ソース フィールドとインデックス フィールドが明らかに対応している場合にのみ、省略可能となります。 インデクサー構築の詳細については、「[インデクサーの作成 (Azure Cognitive Search REST API)](/rest/api/searchservice/Create-Indexer)」を参照してください。
+インデクサーは、検索サービスで初めて[インデクサーを作成した](/rest/api/searchservice/Create-Indexer)ときに実行されます。 データ ソースにアクセスできるかどうか、またはスキルセットが有効かどうかがわかるのは、インデクサーを作成または実行したときだけです。 最初の実行後は、[インデクサーの実行](/rest/api/searchservice/run-indexer)を使用して必要に応じて再実行したり、[定期的なスケジュールを定義](search-howto-schedule-indexers.md)したりできます。 
 
-<a id="RunIndexer"></a>
-
-## <a name="run-indexers-on-demand"></a>インデクサーのオンデマンド実行
-
-インデックス作成はスケジュール設定するのが普通ですが、[Run コマンド](/rest/api/searchservice/run-indexer)を使用して、インデクサーをオンデマンドで呼び出すことも可能です。
-
-```http
-POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2020-06-30
-api-key: [Search service admin key]
-```
-
-> [!NOTE]
-> API の実行で成功コードが返された場合、インデクサーの呼び出しはスケジュール済みですが、実際の処理は非同期的に実行されます。 
-
-インデクサーの状態は、ポータルか [Get Indexer Status API](/rest/api/searchservice/get-indexer-status) を使用して監視できます。 
-
-<a name="GetIndexerStatus"></a>
-
-## <a name="get-indexer-status"></a>インデクサーの状態の取得
-
-インデクサーの現在の状態と実行の履歴は、[インデクサー状態の取得](/rest/api/searchservice/get-indexer-status)コマンドを使用して取得できます。
-
-```http
-GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2020-06-30
-api-key: [Search service admin key]
-```
-
-応答には、全体的なインデクサーの状態、最後の (または実行中の) インデクサー呼び出し、およびインデクサー呼び出しの最近の履歴が含まれています。
-
-```output
-{
-    "status":"running",
-    "lastResult": {
-        "status":"success",
-        "errorMessage":null,
-        "startTime":"2018-11-26T03:37:18.853Z",
-        "endTime":"2018-11-26T03:37:19.012Z",
-        "errors":[],
-        "itemsProcessed":11,
-        "itemsFailed":0,
-        "initialTrackingState":null,
-        "finalTrackingState":null
-     },
-    "executionHistory":[ {
-        "status":"success",
-         "errorMessage":null,
-        "startTime":"2018-11-26T03:37:18.853Z",
-        "endTime":"2018-11-26T03:37:19.012Z",
-        "errors":[],
-        "itemsProcessed":11,
-        "itemsFailed":0,
-        "initialTrackingState":null,
-        "finalTrackingState":null
-    }]
-}
-```
-
-実行履歴には、最近完了した 50 件の実行内容が含まれ、時系列の逆の順に並べられます (そのため、最近の実行内容が応答の最初に表示されます)。
+インデクサーの状態は、ポータルか [Get Indexer Status API](/rest/api/searchservice/get-indexer-status) を使用して監視できます。 また、[インデックスのクエリを実行](search-query-create.md)し、期待した結果が得られるかどうかを確認する必要もあります。
 
 ## <a name="next-steps"></a>次のステップ
 
-基本的な概念の説明は以上です。次のステップとしてデータ ソースの種類ごとの要件とタスクを確認してください。
+概要がわかったので、次に、インデクサーのプロパティとパラメーター、スケジュール、およびインデクサーの監視について確認します。 また、[サポートされているデータ ソース](#supported-data-sources)の一覧に戻り、特定のソースの詳細を確認することもできます。
 
-+ [Azure SQL Database、SQL Managed Instance、または Azure 仮想マシン上の SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-+ [Azure Cosmos DB](search-howto-index-cosmosdb.md)
-+ [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
-+ [Azure Table Storage](search-howto-indexing-azure-tables.md)
-+ [Azure Cognitive Search BLOB インデクサーを使用した CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)
-+ [Azure Cognitive Search BLOB インデクサーを使用した JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)
++ [インデクサーを作成する](search-howto-create-indexers.md)
++ [インデクサーのスケジュール設定](search-howto-schedule-indexers.md)
++ [フィールド マッピングの定義](search-indexer-field-mappings.md)
++ [インデクサーの状態を監視する](search-howto-monitor-indexers.md)

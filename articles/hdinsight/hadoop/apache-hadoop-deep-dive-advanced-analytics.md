@@ -1,19 +1,16 @@
 ---
 title: 詳細情報 - 高度な分析 - Azure HDInsight
 description: 高度な分析において、Azure HDInsight でどのようにアルゴリズムを使用してビッグ データを処理するのかについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 4b57eddafbf9a5615dc42e9a3c5a49c5f90781e2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821504"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946661"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 

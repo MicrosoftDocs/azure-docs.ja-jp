@@ -3,16 +3,13 @@ title: Azure HDInsight でのリージョン エラーにおいて十分な障�
 description: Azure HDInsight のリージョンに十分な障害ドメインがないため、クラスターの作成に失敗した
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: 070ba5ecb6f151099c13082eee650c5720e63b2a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3f7d866d1c9b8c8437bc0f84acca47e0b8631895
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532596"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939045"
 ---
 # <a name="scenario-cluster-creation-failed-due-to-not-sufficient-fault-domains-in-region-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での `not sufficient fault domains in region` のために、クラスターの作成に失敗した
 

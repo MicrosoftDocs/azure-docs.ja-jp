@@ -10,12 +10,12 @@ ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e7fa6b1ee7c92f82c3e15335991f5a240c7acc52
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178978"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762875"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -88,7 +88,9 @@ ms.locfileid: "98178978"
 
 また、レプリケーション ルールの一部として 1 つ以上のフィルターを指定して、ブロック BLOB をプレフィックスでフィルター処理することもできます。 プレフィックスを指定すると、ソース コンテナー内のそのプレフィックスと一致する BLOB のみが宛先コンテナーにコピーされます。
 
-ルールでソースと宛先のコンテナーを指定する前に、それらの両方が存在している必要があります。 レプリケーション ポリシーを作成すると、宛先コンテナーは読み取り専用になります。 宛先コンテナーへの書き込みを試みると、エラー コード 409 (競合) で失敗します。 ただし、宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動することはできます。 アーカイブ層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
+ルールでソースと宛先のコンテナーを指定する前に、それらの両方が存在している必要があります。 レプリケーション ポリシーを作成した後、宛先コンテナーへの書き込み操作は許可されません。 宛先コンテナーへの書き込みを試みると、エラー コード 409 (競合) で失敗します。 レプリケーション ルールが構成されている宛先コンテナーに書き込むには、そのコンテナーに対して構成されているルールを削除するか、レプリケーション ポリシーを削除する必要があります。 レプリケーション ポリシーがアクティブになっている場合、宛先コンテナーに対する読み取りおよび削除操作は許可されます。
+
+宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動できます。 アーカイブ層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
 
 ## <a name="replication-status"></a>レプリケーションの状態
 

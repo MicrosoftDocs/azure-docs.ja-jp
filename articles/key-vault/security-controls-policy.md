@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Key Vault に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 5dc305e6b582812072747c2ef090d498c6dace98
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: fd1d45878777eea5d662ef108c710d73dcdf5fb8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797415"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092179"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-key-vault"></a>Azure Key Vault 用の Azure Policy 規制コンプライアンス コントロール
 

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 01/29/2020
+ms.openlocfilehash: 8071b0fb08f6456b4eb59a3dae875ab0c90ab64d
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005431"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223502"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Synapse Analytics へのデータの読み込み
 
@@ -126,7 +126,7 @@ Azure Data Factory には、Azure Synapse Analytics にデータを読み込む�
 
     b. **[New Linked Service]\(新しいリンクされたサービス\)** ページで、ストレージ アカウントを選択し、 **[作成]** を選択してリンクされたサービスをデプロイします。
 
-    c. **[詳細設定]** セクションで **[Use type default]\(型の既定を使用する\)** オプションをオフにして、 **[次へ]** を選択します。
+    c. **[使用型の既定]** オプションを選択解除し、 **[次へ]** を選択します。
 
     ![PolyBase の構成](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 

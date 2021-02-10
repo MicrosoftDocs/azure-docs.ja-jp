@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight で Apache HBase にクエリを実行するための REST API
 description: この記事では、Azure HDInsight クラスターで Apache HBase コンポーネントを操作する際のトラブルシューティングの手順について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/08/2020
-ms.openlocfilehash: 1091366ac4d0445a465bc75913baf0f812e6a635
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 636f84c4c6aa097288dc2fb5481dcedd6863409d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629291"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942872"
 ---
 # <a name="rest-api-to-query-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight で Apache HBase にクエリを実行するための REST API
 

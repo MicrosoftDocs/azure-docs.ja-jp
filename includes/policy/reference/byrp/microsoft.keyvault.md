@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 50b47e5f1a5ba0b663b585b88156d596e5765b66
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bb1a4618fad4ef9ff852374aae74790258ba2a72
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98806635"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097406"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "98806635"
 |[指定された日数より長くキーをアクティブにすることはできない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc26e4b24-cf98-4c67-b48b-5a25c4c69eb9) |キーをアクティブにする日数を指定します。 長期間にわたって使用されるキーによって、攻撃者がキーを侵害する確率が高くなります。 適切なセキュリティ プラクティスとして、2 年を超えてキーがアクティブになっていないことを確認してください。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_ActivePeriod.json) |
 |[楕円曲線暗号を使用するキーに曲線名を指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fff25f3c8-b739-4538-9d07-3d6d25cfb255) |楕円曲線暗号によってサポートされるキーには、さまざまな曲線名を指定できます。 一部のアプリケーションは、特定の楕円曲線キーとのみ互換性があります。 環境内での作成が許可されている楕円曲線キーの種類を適用してください。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_EC_AllowedCurveNames.json) |
 |[RSA 暗号を使用するキーにキーの最小サイズを指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82067dbb-e53b-4e06-b631-546d197452d9) |キー コンテナーで使用するキーの最小許容サイズを設定します。 小さいキー サイズの RSA キーを使用することは安全なプラクティスではなく、多くの業界認定要件を満たしません。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_RSA_MinimumKeySize.json) |
-|[Key Vault 用にプライベート エンドポイントを構成する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |プライベート リンクを使用すると、パブリック インターネット経由でトラフィックを送信せずに、Key Vault を Azure リソースに接続できます。 プライベート リンクにより、データ流出に対する徹底的な防御が提供されます。 |Audit、Disabled |[1.0.2-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |
+|[Key Vault 用にプライベート エンドポイントを構成する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0bc445-3935-4915-9981-011aa2b46147) |プライベート リンクを使用すると、パブリック インターネット経由でトラフィックを送信せずに、Key Vault を Azure リソースに接続できます。 プライベート リンクにより、データ流出に対する徹底的な防御が提供されます。 |Audit、Deny、Disabled |[1.1.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultPrivateEndpointEnabled_Audit.json) |
 |[シークレットにはコンテンツの種類を設定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F75262d3e-ba4a-4f43-85f8-9f72c090e5e3) |コンテンツの種類のタグは、シークレットの種類 (パスワードや接続文字列など) を識別するのに役立ちます。シークレットが異なれば、ローテーションの要件も異なります。 コンテンツの種類のタグは、シークレットに設定する必要があります。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ContentTypeSet.json) |
 |[シークレットの有効期限は、指定された日数より先の日付を指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb0eb591a-5e70-4534-a8bf-04b9c489584a) |シークレットの有効期限が近すぎると、シークレットをローテーションする組織での遅延によって障害が発生するおそれがあります。 シークレットは、エラーに対処するための十分な時間を確保するために、有効期限よりも指定された日数だけ前にローテーションされる必要があります。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_Expiry_ByDays.json) |
 |[シークレットには最長有効期間を指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F342e8053-e12e-4c44-be01-c3c2f318400f) |キー コンテナー内でのシークレットの最長有効期間を日単位で指定して、組織のコンプライアンス要件を管理します。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ValidityPeriod.json) |

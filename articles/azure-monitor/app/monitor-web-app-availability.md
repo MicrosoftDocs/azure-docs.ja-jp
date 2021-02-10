@@ -4,12 +4,12 @@ description: Application Insights で Web テストを設定します。 Web サ
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198664"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937416"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
@@ -23,12 +23,12 @@ ms.locfileid: "98198664"
 
 * [URL の Ping テスト](#create-a-url-ping-test): Azure Portal で作成できる簡単なテストです。
 * [複数ステップ Web テスト](availability-multistep.md):一連の Web 要求の記録であり、さらに複雑なシナリオをテストするために再生できます。 複数ステップ Web テストは Visual Studio Enterprise で作成され、ポータルにアップロードされて実行されます。
-* [カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet):可用性テストを実行するカスタム アプリケーションを作成する場合は、`TrackAvailability()` メソッドを使用して Application Insights に結果を送信できます。
+* [カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability):可用性テストを実行するカスタム アプリケーションを作成する場合は、`TrackAvailability()` メソッドを使用して Application Insights に結果を送信できます。
 
 **Application Insights リソースごとに最大 100 個の可用性テストを作成できます。**
 
 > [!IMPORTANT]
-> [URL の ping テスト](#create-a-url-ping-test)と[複数ステップ Web テスト](availability-multistep.md)ではどちらも、パブリック インターネット DNS インフラストラクチャを使用して、テストされたエンドポイントのドメイン名を解決します。 つまり、プライベート DNS を使用する場合は、自分のテストのドメイン名もすべてパブリック ドメイン ネーム サーバーによって解決できることを確実にするか、それが可能でない場合は、代わりに[カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet)を使用できるようにする必要があります。
+> [URL の ping テスト](#create-a-url-ping-test)と[複数ステップ Web テスト](availability-multistep.md)ではどちらも、パブリック インターネット DNS インフラストラクチャを使用して、テストされたエンドポイントのドメイン名を解決します。 つまり、プライベート DNS を使用する場合は、自分のテストのドメイン名もすべてパブリック ドメイン ネーム サーバーによって解決できることを確実にするか、それが可能でない場合は、代わりに[カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)を使用できるようにする必要があります。
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 

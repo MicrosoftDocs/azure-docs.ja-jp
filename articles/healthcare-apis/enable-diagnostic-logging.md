@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
-ms.date: 11/01/2019
-ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/03/2021
+ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905176"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575443"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Azure API for FHIR で診断ログを有効にする
 
@@ -35,9 +35,9 @@ ms.locfileid: "95905176"
     2. サード パーティのサービスやカスタム分析ソリューションで取り込むために、**イベント ハブにストリーム配信** します。 この手順を構成する前に、イベント ハブの名前空間とイベント ハブのポリシーを作成する必要があります。
     3. Azure Monitor の **Log Analytics ワークスペースにストリーム配信** します。 このオプションを選択する前に、Log Analytics ワークスペースを作成する必要があります。
 
-6. **AuditLogs** と、キャプチャするすべてのメトリックを選択します。 Azure IoT Connector for FHIR を使用している場合は、メトリックの **[エラー]、[トラフィック]、[待機時間]** を必ず選択してください。 
+6. **AuditLogs** または **AllMetrics**、あるいはその両方を選択します。 メトリックには、サービス名、可用性、データ サイズ、合計待機時間、合計要求数、合計エラー数、およびタイムスタンプが含まれます。
 
-   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT Connector2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHIR 診断設定。AuditLogs または AllMetrics、あるいはその両方を選択します。" lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
 7. **[保存]** を選びます。
 

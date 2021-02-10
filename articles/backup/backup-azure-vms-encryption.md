@@ -3,12 +3,12 @@ title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: db06b64fba203fb3d2ed54d34235504ac6aa4e2d
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547153"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223459"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>暗号化された Azure 仮想マシンのバックアップと復元
 
@@ -44,11 +44,11 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 ### <a name="limitations"></a>制限事項
 
-- 同じサブスクリプションとリージョン内で暗号化された VM をバックアップして復元することができます。
+- 同じサブスクリプションとリージョン内で ADE により暗号化された VM をバックアップして復元することができます。
 - Azure Backup では、スタンドアロン キーを使用して暗号化された VM がサポートされます。 VM を暗号化するために使用された証明書の一部であるキーは、現在サポートされていません。
-- Recovery Services のバックアップ コンテナーとして、同じサブスクリプションとリージョン内で暗号化された VM をバックアップして復元することができます。
-- 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 ファイルとフォルダーを復元するには、VM 全体を復旧する必要があります。
-- VM を復元する場合、暗号化された VM に[既存の VM を置き換える](backup-azure-arm-restore-vms.md#restore-options)オプションを使用することはできません。 このオプションは、暗号化されていないマネージド ディスクに対してのみサポートされています。
+- Recovery Services のバックアップ コンテナーとして、同じサブスクリプションとリージョン内で ADE により暗号化された VM をバックアップして復元することができます。
+- ADE で暗号化された VM は、ファイルまたはフォルダー レベルで復旧することはできません。 ファイルとフォルダーを復元するには、VM 全体を復旧する必要があります。
+- VM を復元する場合、ADE で暗号化された VM に[既存の VM を置き換える](backup-azure-arm-restore-vms.md#restore-options)オプションを使用することはできません。 このオプションは、暗号化されていないマネージド ディスクに対してのみサポートされています。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -125,6 +125,17 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 
 1. Azure portal で **[すべてのサービス]** を選択して、**キー コンテナー** を検索します。
 1. バックアップをしている暗号化された VM と関連付けられたキー コンテナーを選択します。
+
+    >[!TIP]
+    >VM と関連付けられたキー コンテナーを特定するには、次の PowerShell コマンドを使用します。 リソース グループ名と VM 名を置き換えます。
+    >
+    >`Get-AzVm -ResourceGroupName "MyResourceGroup001" -VMName "VM001" -Status`
+    >
+    > 次の行でキー コンテナー名を探します。
+    >
+    >`SecretUrl            : https://<keyVaultName>.vault.azure.net`
+    >
+
 1. **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加]** の順に選択します。
 
     ![アクセス ポリシーの追加](./media/backup-azure-vms-encryption/add-access-policy.png)
@@ -148,7 +159,7 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 暗号化された VM を次のように復元します。
 
 1. [VM ディスクを復元します](backup-azure-arm-restore-vms.md#restore-disks)。
-2. 以下のいずれかを行って、仮想マシン インスタンスを再作成します。
+2. 以下のいずれかのアクションを実行して、仮想マシン インスタンスを再作成します。
     1. 復元操作の間に生成されるテンプレートを使用して VM の設定をカスタマイズし、VM のデプロイをトリガーします。 [詳細については、こちらを参照してください](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
     2. PowerShell を使用して、復元されたディスクから新しい VM を作成します。 [詳細については、こちらを参照してください](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
 3. Linux VM の場合は、データ ディスクが開かれてマウントされるように、ADE 拡張機能を再インストールします。

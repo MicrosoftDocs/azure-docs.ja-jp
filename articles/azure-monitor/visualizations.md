@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: f9f95a5e85ec4eebf82cca707476750595331d73
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 01/25/2021
+ms.openlocfilehash: bc59c639856de6a5ce5adda1f78266eb7e4d5dd3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522670"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881233"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -46,9 +46,9 @@ ms.locfileid: "95522670"
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
 ### <a name="advantages"></a>長所
-- Azure との緊密な統合。 視覚化は、メトリックス エクスプローラー、Log Analytics、Application Insights など、複数の Azure ページからダッシュボードにピン留めできます。
+- Azure との緊密な統合。 視覚化は、[メトリックス エクスプローラー](platform/metrics-charts.md)、[Log Analytics](log-query/log-analytics-overview.md)、[Application Insights](app/app-insights-overview.md) など、複数の Azure ページからダッシュボードにピン留めできます。
 - メトリックとログの両方をサポート。
-- [メトリックス エクスプローラー](platform/metrics-charts.md)、[ログ クエリ](log-query/log-query-overview.md)、Application Insights の[マップ](app/app-map.md)と可用性からの出力など、複数のソースからのデータを結合します。
+- [メトリックス エクスプローラー](platform/metrics-charts.md)、[ログ クエリ](log-query/log-query-overview.md)、[Application Insights](app/app-insights-overview.md) の[マップ](app/app-map.md)と可用性からの出力など、複数のソースからのデータを結合します。
 - 個人または共有のダッシュボードのオプション。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と統合。
 - 自動更新。 メトリックの更新は、最短 5 分の時間範囲に依存します。 特定の視覚エフェクトの [更新] アイコンをクリックするか、ダッシュボード全体を更新することにより、オンデマンドで手動更新オプションを使って 1 時間ごとに更新をログに記録します。
 - タイムスタンプとカスタム パラメーターでパラメーター化されたメトリック ダッシュボード。
@@ -57,7 +57,7 @@ ms.locfileid: "95522670"
 
 
 ### <a name="limitations"></a>制限事項
-- ログの視覚化に対する制御が限定的であり、データ テーブルはサポートされません。 データ系列の合計数は 10 に制限されていて、それ以上のデータ系列は _その他_ のバケットの下にグループ化されます。
+- ログの視覚化に対する制御が限定的であり、データ テーブルはサポートされません。 データ系列の合計数は 50 に制限されていて、それ以上のデータ系列は "_その他_" のバケットの下にグループ化されます。
 - ログのグラフに対するカスタム パラメーターのサポートはありません。
 - ログのグラフは、過去 30 日間に制限されます。
 - ログのグラフは、共有ダッシュボードにのみピン留めできます。
@@ -140,8 +140,9 @@ Azure Monitor のメトリック データとログ データには、その API
 ## <a name="next-steps"></a>次のステップ
 - [Azure Monitor によって収集されたデータ](platform/data-platform.md)について学習します。
 - [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)について学習します。
-- [Azure Monitor のビュー](platform/view-designer.md)について学習します。
+- [メトリックス エクスプローラー](platform/metrics-getting-started.md)について学習します。
 - [Workbooks](./platform/workbooks-overview.md) について学習します。
 - [ログ データの Power BI へのインポート](./platform/powerbi.md)について学習します。
 - [Grafana Azure Monitor データ ソース プラグイン](./platform/grafana-plugin.md)について学習します。
+- [Azure Monitor のビュー](platform/view-designer.md)について学習します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 7a15248300150c9b79c4678701f81fac923d56a3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c90234249f3cf7eb6ed4793110d61e1f8190ed60
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353612"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092635"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceNow の統合
 
@@ -36,7 +36,7 @@ ms.locfileid: "96353612"
 * ServiceNow でのシングル サインオン (SSO) が有効なサブスクリプション。
 * ServiceNow では、Calgary\(カルガリー\)、Kingston\(キングストン\)、London\(ロンドン\)、Madrid\(マドリッド\)、New York\(ニューヨーク\)、Orlando\(オーランド\)、Paris\(パリ\) バージョン以降が ServiceNow のインスタンスまたはテナントでサポートされています。
 * ServiceNow Express の場合は、Helsinki バージョン以降の ServiceNow Express のインスタンス。
-* ServiceNow のテナントで [Multiple Provider Single Sign On プラグイン](https://wiki.servicenow.com/index.php?title=Multiple_Provider_Single_Sign-On#gsc.tab=0)が有効になっている必要があります。
+* ServiceNow のテナントで [Multiple Provider Single Sign On プラグイン](https://old.wiki/index.php/Multiple_Provider_Single_Sign-On#gsc.tab=0)が有効になっている必要があります。
 * 自動構成のために、ServiceNow の Multi-Provider プラグインを有効にします。
 * ServiceNow Classic (モバイル) アプリケーションをインストールするには、適切なストアに移動して ServiceNow Classic アプリケーションを検索します。 その後、ダウンロードします。
 

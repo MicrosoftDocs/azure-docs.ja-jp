@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562745"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917834"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor のカスタマー マネージド キー 
 
@@ -30,9 +30,6 @@ Azure Monitor により、Microsoft マネージド キー (MMK) を使用して
 過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 このデータは、カスタマー マネージド キーの構成に関係なく、Microsoft キーで暗号化されたままになりますが、SSD データに対する制御は[キーの失効](#key-revocation)に従います。 2021 年の前半には、カスタマー マネージド キーを使用して SSD データを暗号化できるように準備しています。
 
 Log Analytics 専用クラスターには、1000 GB/日以上の容量予約[価格モデル](../log-query/logs-dedicated-clusters.md#cluster-pricing-model)を使用します。
-
-> [!IMPORTANT]
-> 一時的な容量の制約があるため、クラスターを作成する前に事前登録する必要があります。 Microsoft に連絡するか、サポート要求を開いてサブスクリプション ID を登録してください。
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Azure Monitor でのカスタマー マネージド キーの動作
 
@@ -68,7 +65,6 @@ Azure Monitor は、マネージド ID を使用して Azure Key Vault にアク
 
 ### <a name="customer-managed-key-provisioning-steps"></a>カスタマー マネージド キーのプロビジョニング手順
 
-1. サブスクリプションを登録してクラスターを作成できるようにする
 1. Azure Key Vault の作成とキーの格納
 1. クラスターの作成
 1. Key Vault へのアクセス許可の付与
@@ -108,10 +104,6 @@ Authorization: Bearer <token>
 
 ---
 
-### <a name="allowing-subscription"></a>サブスクリプションを許可する
-
-Microsoft への連絡先を使用するか、Log Analytics でサポート リクエストを開いて、サブスクリプション ID を伝えます。
-
 ## <a name="storing-encryption-key-kek"></a>暗号化キー (KEK) の格納
 
 Azure Key Vault を作成するか既存のものを使用して、データの暗号化に使用するキーを生成またはインポートします。 キーを保護し、Azure Monitor のデータへのアクセスを保護するには、Azure Key Vault を回復可能として構成する必要があります。 この構成は Key Vault のプロパティで確認できます。 *[論理的な削除]* と *[Purge protection]\(消去保護\)* の両方を有効にしてください。
@@ -125,11 +117,33 @@ Azure Key Vault を作成するか既存のものを使用して、データの�
 
 ## <a name="create-cluster"></a>クラスターの作成
 
-> [!NOTE]
-> クラスターは、2 つの[マネージド ID の種類](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)(システム割り当てとユーザー割り当て) をサポートしており、それぞれ実際のシナリオに基づいて使用できます。 システム割り当てマネージド ID の方がシンプルで、ID の `type` が "*SystemAssigned*" に設定されている場合に、クラスターの作成時に自動的に作成されます。この ID を後で使用して、クラスターに Key Vault へのアクセス権を付与できます。 クラスター作成時にカスタマー マネージド キーを定義し、クラスターを作成する場合は、事前に Key Vault でキーを定義し、ユーザー割り当て ID を付与します。その後に、これらの設定 (ID の `type` として "*UserAssigned*"、ID のリソース ID が設定された `UserAssignedIdentities`、キーの詳細が設定された `keyVaultProperties`) を使用してクラスターを作成します。
+クラスターでは、システム割り当てとユーザー割り当ての 2 つの[マネージド ID の種類](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)がサポートされていますが、シナリオに応じて単一の ID をクラスターで定義できます。 
+- システム割り当てマネージド ID の方がシンプルで、ID の `type` が "*SystemAssigned*" に設定されている場合、クラスターの作成時に自動的に作成されます。 後でこの ID を使用して、ラップおよびラップ解除操作に必要な Key Vault へのストレージ アクセス権を付与できます。 
+  
+  システム割り当てマネージド ID に関するクラスターの ID 設定
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned"
+      }
+  }
+  ```
+
+- クラスターの作成時にカスタマー マネージド キーを定義する場合は、事前に Key Vault でキーを作成し、ユーザー割り当て ID を付与します。その後、これらの設定 (ID の `type` として "*UserAssigned*"、ID の *リソース ID* が設定された `UserAssignedIdentities`) を使用してクラスターを作成します。
+
+  ユーザー割り当てマネージド ID に関するクラスターの ID 設定
+  ```json
+  {
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      }
+  }
+  ```
 
 > [!IMPORTANT]
-> 現時点では、Key Vault がプライベート リンク (vNet) に配置されている場合は、ユーザー割り当てマネージド ID を持つカスタマー マネージド キーは定義できませせん。この場合、システム割り当てマネージド ID を使用できます。
+> Key Vault がプライベート リンク (VNet) に配置されている場合は、ユーザー割り当てマネージド ID を使用できません。 このシナリオでは、システム割り当てマネージド ID を使用できます。
 
 [専用クラスターに関する記事](../log-query/logs-dedicated-clusters.md#creating-a-cluster)で示されている手順に従います。 
 
@@ -243,15 +257,13 @@ Content-type: application/json
 
 ## <a name="key-revocation"></a>キーの失効
 
-キーを無効にするか、キー コンテナーでクラスターのアクセス ポリシーを削除することによって、データへのアクセスを失効させることができます。 
-
 > [!IMPORTANT]
-> - クラスターにユーザー割り当てマネージド ID が設定されている場合、`UserAssignedIdentities` を `None` に設定すると、クラスターが中断され、データにアクセスできなくなりますが、サポート リクエストを開かずに、失効を元に戻して、クラスターをアクティブ化することはできません。 この制限は、システム割り当てマネージド ID には適用されません。
-> - 推奨されるキー失効アクションは、Key Vault でキーを無効にすることです。
+> - データへのアクセスを失効させる方法としては、キーを無効にするか、Key Vault でアクセス ポリシーを削除することをお勧めします。
+> - クラスターの `identity` `type` を "None" に設定すると、データへのアクセスが失効しますが、クラスターで `identity` を再設定するときにサポート リクエストを開かないと失効を取り消すことができないため、この方法はお勧めできません。
 
 クラスター ストレージは常に 1 時間以内にキーのアクセス許可の変更に対応し、ストレージは使用できなくなります。 クラスターにリンクされているワークスペースに取り込まれた新しいデータは、すべて削除されて復旧できなくなり、データにはアクセスできず、これらのワークスペースへのクエリは失敗します。 クラスターおよびワークスペースが削除されていない限り、以前に取り込まれたデータはストレージに残ります。 アクセスできないデータは、データ保持ポリシーによって管理され、リテンション期間に達すると削除されます。 過去 14 日間に取り込まれたデータも、効率的なクエリ エンジン操作のためにホットキャッシュ (SSD ベース) で保持されます。 これはキーの失効操作で削除され、アクセスできなくなります。
 
-クラスターのストレージは、Key Vault を定期的にポーリングして暗号化キーのラップを解除しようとします。アクセス後、データ インジェストとクエリが 30 分以内に再開されます。
+クラスターのストレージでは、Key Vault を定期的にチェックして暗号化キーのラップを解除しようとします。アクセス後、データ インジェストとクエリが 30 分以内に再開されます。
 
 ## <a name="key-rotation"></a>キーの交換
 
@@ -259,7 +271,7 @@ Content-type: application/json
 
 アカウント暗号化キー (AEK) は新しいキー暗号化キー (KEK) バージョンによって Key Vault で暗号化されるようになりますが、データは常に AEK によって暗号化されているため、キー ローテーション操作後も、すべてのデータにアクセスできます。
 
-## <a name="customer-managed-key-for-queries"></a>クエリ用のカスタマー マネージド キー
+## <a name="customer-managed-key-for-saved-queries"></a>保存されたクエリ用のカスタマー マネージド キー
 
 Log Analytics で使用されるクエリ言語は表現力が豊かで、クエリに追加するコメントまたはクエリ構文に機密情報を含めることができます。 組織によっては、このような情報をカスタマー マネージド キー ポリシーによって保護する必要があり、キーで暗号化された状態でクエリを保存する必要があります。 Azure Monitor では、独自のキーを使用して暗号化された "*保存された検索条件*" および "*ログ アラート*" のクエリを、ワークスペースに接続したときに独自のストレージ アカウントに保存しておくことができます。 
 
@@ -283,7 +295,7 @@ Bring Your Own Storage (BYOS) を使用して、それをワークスペース�
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-N/A
+該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -386,15 +398,11 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
 ## <a name="limitations-and-constraints"></a>制限と制約
 
-- カスタマー マネージド キーは専用の Log Analytics クラスターでサポートされ、1 日あたり 1 TB 以上を送信するお客様に適しています。
-
 - リージョンおよびサブスクリプションごとのクラスターの最大数は 2 です
 
-- クラスターにリンクされたワークスペースの最大数は 1000 です
+- クラスターにリンクできるワークスペースの最大数は 1000 です
 
 - クラスターにワークスペースをリンクし、その後、リンクを解除することができます。 特定のワークスペースでのワークスペース リンク操作の回数は、30 日間に 2 回に制限されています
-
-- クラスターへのワークスペースのリンクは、Log Analytics クラスターのプロビジョニングが完了したことを確認した後でのみ、実行する必要があります。 完了前にワークスペースに送信されたデータは削除され、復旧できなくなります。
 
 - カスタマー マネージド キーの暗号化は、構成後に新しく取り込まれたデータに適用されます。 構成より前に取り込まれたデータは、Microsoft キーで暗号化されたままになります。 カスタマー マネージド キーの構成の前後に取り込まれたデータのクエリは、シームレスに実行できます。
 
@@ -404,19 +412,17 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
 - クラスターの別のリソース グループまたはサブスクリプションへの移動は、現時点ではサポートされていません。
 
-- お使いの Azure キー コンテナー、クラスター、およびリンクされたワークスペースは、同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在している必要がありますが、サブスクリプションは異なっていてもかまいません。
-
-- 別のクラスターにリンクされている場合、クラスターへのワークスペースのリンクは失敗します。
+- お使いの Azure Key Vault、クラスター、ワークスペースは、同じリージョンで同じ Azure Active Directory (Azure AD) テナント内に存在している必要がありますが、サブスクリプションは異なっていてもかまいません。
 
 - ロックボックスは、現在、中国では使用できません。 
 
-- [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、サポートされているリージョンで 2020 年 10 月以降に作成されたクラスターに対して自動的に構成されます。 クラスターが二重暗号化されるように構成されているかどうかを確認するには、クラスターに対して GET 要求を行い、`"isDoubleEncryptionEnabled"` プロパティの値を検査します。二重暗号化が有効になっているクラスターの場合は `true` です。 
-  - クラスターを作成したときに、「<リージョン名> ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、二重暗号化なしでクラスターを作成できます。 REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` プロパティを追加します。
+- [二重暗号化](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)は、サポートされているリージョンで 2020 年 10 月以降に作成されたクラスターに対して自動的に構成されます。 クラスターが二重暗号化されるように構成されているかどうかを確認するには、クラスターに対して GET 要求を送信し、二重暗号化が有効になっているクラスターの `isDoubleEncryptionEnabled` の値が `true` かどうかを検査します。 
+  - クラスターを作成したときに、「<リージョン名> ではクラスターの二重暗号化がサポートされていません」というエラーが表示された場合でも、REST 要求本文に `"properties": {"isDoubleEncryptionEnabled": false}` を追加すると、二重暗号化なしでクラスターを作成できます。
   - クラスターの作成後に、二重暗号化の設定を変更することはできません。
 
   - クラスターにユーザー割り当てマネージド ID が設定されている場合、`UserAssignedIdentities` を `None` に設定すると、クラスターが中断され、データにアクセスできなくなりますが、サポート リクエストを開かずに、失効を元に戻して、クラスターをアクティブ化することはできません。 この制限は、システム割り当てマネージド ID には適用されません。
 
-  - 現時点では、Key Vault がプライベート リンク (vNet) に配置されている場合は、ユーザー割り当てマネージド ID を持つカスタマー マネージド キーは定義できませせん。この場合、システム割り当てマネージド ID を使用できます。
+  - Key Vault がプライベート リンク (VNet) に配置されている場合は、ユーザー割り当てマネージド ID を持つカスタマー マネージド キーを使用できません。 このシナリオでは、システム割り当てマネージド ID を使用できます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -429,13 +435,15 @@ Azure Monitor を使用すると、Log Analytics 専用クラスターにリン�
 
   - Key Vault へのアクセス レート - 折り返し操作と折り返しの解除操作のために Azure Monitor Storage が Key Vault にアクセスする頻度は、6 秒から 60 秒です。
 
-- システム ID がクラスターに割り当てられるまでアクセス ポリシーを定義できないため、クラスターを作成して KeyVaultProperties をすぐに指定すると、操作が失敗するおそれがあります。
-
-- KeyVaultProperties で既存のクラスターを更新し、Key Vault に "Get" キーのアクセス ポリシーがない場合、操作は失敗します。
+- クラスターがプロビジョニング中または更新中の状態のときにクラスターを更新すると、更新は失敗します。
 
 - クラスターを作成するときに競合エラーが発生する場合は、過去 14 日以内にクラスターを削除し、それが論理的な削除の期間内にある可能性があります。 クラスター名は、論理的な削除の期間中は予約されたままであり、その名前で新しいクラスターを作成することはできません。 この名前は、論理的な削除の期間の後、クラスターが完全に削除されたときに解放されます。
 
-- 操作の実行中にクラスターを更新すると、操作は失敗します。
+- 別のクラスターにリンクされている場合、クラスターへのワークスペースのリンクは失敗します。
+
+- システム ID がクラスターに割り当てられるまでアクセス ポリシーを定義できないため、クラスターを作成して KeyVaultProperties をすぐに指定すると、操作が失敗するおそれがあります。
+
+- KeyVaultProperties で既存のクラスターを更新し、Key Vault に "Get" キーのアクセス ポリシーがない場合、操作は失敗します。
 
 - クラスターのデプロイに失敗した場合は、Azure Key Vault、クラスター、およびリンクされている Log Analytics ワークスペースが同じリージョンにあることを確認してください。 サブスクリプションは異なっていてもかまいません。
 

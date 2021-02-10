@@ -1,18 +1,15 @@
 ---
 title: HDInsight で Azure Monitor ログを使用してクラスターの可用性を監視する方法
 description: Azure Monitor ログを使用してクラスターの正常性と可用性を監視する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.openlocfilehash: f86b2166ea9bd2a547a29a777d6b709877036161
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d52cb1c5f3b1dd1b23adb39f2f65d0e66968e482
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542541"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946952"
 ---
 # <a name="how-to-monitor-cluster-availability-with-azure-monitor-logs-in-hdinsight"></a>HDInsight で Azure Monitor ログを使用してクラスターの可用性を監視する方法
 

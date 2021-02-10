@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0a462c7d713ea9285096db48b4a3bb5c5b0d9874
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796297"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737389"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -168,7 +168,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
     - SQL Managed Instance からデータベースをエクスポートし、同じ Azure AD ドメイン内の SQL Database にインポートする。 
     - SQL Database からデータベースをエクスポートし、同じ Azure AD ドメイン内の SQL Managed Instance にインポートする。
     - SQL Managed Instance からデータベースをエクスポートし、SQL Server (バージョン 2012 以降) にインポートする。
-      - この構成では、すべての Azure AD ユーザーが、ログインしていない SQL Server データベース プリンシパル (ユーザー) として作成されます。 ユーザーの種類は、`SQL` として表示され、sys.database_principals では `SQL_USER` として表示されます)。 これらのアクセス許可とロールは SQL Server データベースのメタデータに残り、権限の借用に使用できます。 ただし、これらの資格情報を使用して SQL Server にアクセスしてログインすることはできません。
+      - この構成では、すべての Azure AD ユーザーが、ログインなしの SQL Server データベース プリンシパル (ユーザー) として作成されます。 ユーザーの種類は `SQL` として表示され、sys.database_principals では `SQL_USER` として表示されます。 これらのアクセス許可とロールは SQL Server データベースのメタデータに残り、権限の借用に使用できます。 ただし、これらの資格情報を使用して SQL Server にアクセスしてログインすることはできません。
 
 - SQL Managed Instance のプロビジョニング プロセスによって作成されるサーバーレベル プリンシパル ログイン、`securityadmin` や `sysadmin` などのサーバー ロールのメンバー、あるいはサーバー レベルの ALTER ANY LOGIN アクセス許可を持つその他のログインのみが、SQL Managed Instance のマスター データベースに Azure AD サーバー プリンシパル (ログイン) を作成できます。
 - ログインが SQL プリンシパルの場合、作成コマンドを使用して Azure AD アカウントのログインを作成できるのは、`sysadmin` ロールに属しているログインのみです。
@@ -277,6 +277,8 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 - `SINGLE_USER`
 - `WITNESS`
 
+一部の `ALTER DATABASE` ステートメント (たとえば、[SET CONTAINMENT](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) は、データベースの自動バックアップ中やデータベースの作成直後などに一時的に失敗することがあります。 この場合、`ALTER DATABASE` ステートメントを再試行する必要があります。 関連するエラー メッセージの詳細については、「[解説](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2)」セクションを参照してください。
+
 詳細については、[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options) に関する記事をご覧ください。
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント
@@ -303,7 +305,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
   - アラートはまだサポートされていません。
   - プロキシはサポートされていません。
 - EventLog はサポートされていません。
-- SQL Agent ジョブを作成、変更、実行するために、ユーザーは Azure AD サーバー プリンシパル (ログイン) に直接マップされる必要があります。 直接マップされていないユーザー (SQL Agent ジョブを作成、変更、実行する権利を持つ Azure AD グループに属しているユーザーなど) は、これらの操作を有効に実行できません。 これは、Managed Instance の借用と [EXECUTE AS の制限事項](#logins-and-users)のためです。
+- SQL Agent ジョブを作成、変更、実行するために、ユーザーは Azure AD サーバー プリンシパル (ログイン) に直接マップされる必要があります。 直接マップされていないユーザー (たとえば、SQL Agent ジョブを作成、変更、または実行する権利を持つ Azure AD グループに属しているユーザー) は、これらの操作を実質的に実行できません。 これは、Managed Instance の借用と [EXECUTE AS の制限事項](#logins-and-users)のためです。
 
 現在、次の SQL エージェント機能はサポートされていません。
 
@@ -398,12 +400,12 @@ In-Database R および Python 外部ライブラリは、限られたパブリ�
 SQL Managed Instance のリンク サーバーがサポートするターゲットの数は限られています。
 
 - サポートされているターゲットは、SQL Managed Instance、SQL Database、Azure Synapse SQL の[サーバーレス](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)と専用プール、および SQL Server インスタンスです。 
-- リンク サーバーは、分散型の書き込み可能なトランザクション (MS DTC) をサポートしていません。
+- 分散書き込み可能なトランザクションは、マネージド インスタンス間でのみ可能です。 詳細については、[分散トランザクション](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)に関する記事を参照してください。 ただし、MS DTC はサポートされていません。
 - サポートされていないターゲットは、ファイル、Analysis Services、他の RDBMS です。 ファイル インポートの代わりに `BULK INSERT` または `OPENROWSET` を使用して Azure Blob Storage からネイティブ CSV インポートを使用するか、[Azure Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)を使用してファイルの読み込みを試行します。
 
 操作: 
 
-- クロス インスタンス書き込みトランザクションはサポートされていません。
+- [インスタンス間](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview)書き込みトランザクションは、マネージド インスタンスでのみサポートされています。
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンスでのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 これらは、マネージド、オンプレミス、仮想マシンのいずれかで配置できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` です。 [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
@@ -411,7 +413,7 @@ SQL Managed Instance のリンク サーバーがサポートするターゲッ�
 
 ### <a name="polybase"></a>PolyBase
 
-Azure SQL Database、Azure SQL Managed Instance、および Azure Synapse プールに対して唯一使用可能な外部ソースの種類は RDBMS (パブリック プレビュー段階) です。 Azure Storage から直接読み取る Polybase 外部テーブルの回避策として、[Synapse Analytics 内のサーバーレス SQL プールを参照する外部テーブル](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)を使用できます。 Azure SQL Managed Instance では、[Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)や SQL Server へのリンク サーバーを使用して、Azure Storage のデータを読み取ることができます。
+Azure SQL データベース、Azure SQL マネージド インスタンス、および Azure Synapse プールに対して唯一使用可能な外部ソースの種類は RDBMS (パブリック プレビュー段階) です。 Azure Storage から直接読み取る Polybase 外部テーブルの回避策として、[Synapse Analytics 内のサーバーレス SQL プールを参照する外部テーブル](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/)を使用できます。 Azure SQL Managed Instance では、[Synapse Analytics 内のサーバーレス SQL プール](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)や SQL Server へのリンク サーバーを使用して、Azure Storage のデータを読み取ることができます。
 PolyBase については、[PolyBase](/sql/relational-databases/polybase/polybase-guide) に関する記事をご覧ください。
 
 ### <a name="replication"></a>レプリケーション
@@ -506,15 +508,14 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 
 ### <a name="subnet"></a>Subnet
 -  SQL Managed Instance をデプロイしたサブネットに他のリソース (たとえば仮想マシン) を配置することはできません。 別のサブネットを使用してこれらのリソースをデプロイしてください。
-- サブネットには、十分な数の利用可能な [IP アドレス](connectivity-architecture-overview.md#network-requirements)が含まれている必要があります。 最小値は 16 ですが、サブネットに少なくとも 32 個の IP アドレスを含めることをお勧めします。
-- [SQL Managed Instance のサブネットにサービス エンドポイントを関連付けることはできません](connectivity-architecture-overview.md#network-requirements)。 仮想ネットワークの作成時に、サービス エンドポイント オプションが無効になっていることを確認してください。
+- サブネットには、十分な数の利用可能な [IP アドレス](connectivity-architecture-overview.md#network-requirements)が含まれている必要があります。 最小で、サブネットに少なくとも 32 個の IP アドレスを設定します。
 - リージョンでデプロイできるインスタンスの仮想コア数と種類には、いくつかの[制約と制限](resource-limits.md#regional-resource-limitations)があります。
-- [サブネットで適用される必要があるセキュリティ規則](connectivity-architecture-overview.md#network-requirements)があります。
+- サブネットに適用する必要がある[ネットワーク構成](connectivity-architecture-overview.md#network-requirements)があります。
 
 ### <a name="vnet"></a>VNet
 - VNet はリソース モデルを使用してデプロイできます。VNet のクラシック モードはサポートされていません。
 - SQL Managed Instance の作成後の SQL Managed Instance または VNet の別のリソース グループまたはサブスクリプションへの移動はサポートされていません。
-- VNet が[グローバル ピアリング](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)を使用して接続されている場合、App Service Environment、ロジック アプリ、SQL Managed Instance (geo レプリケーション、トランザクション レプリケーション、またはリンクされたサーバー経由で使用) など、一部のサービスでは、さまざまなリージョンにある SQL Managed Instance にアクセスできません。 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
+- 2020 年 9 月 22 日より前に作成された仮想クラスターでホストされる SQL マネージド インスタンスでは、[グローバル ピアリング](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)がサポートされません。 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
 
 ### <a name="failover-groups"></a>フェールオーバー グループ
 システム データベースは、フェールオーバー グループのセカンダリ インスタンスにはレプリケートされません。 そのため、オブジェクトがセカンダリに手動で作成されていない限り、セカンダリ インスタンスではシステム データベースのオブジェクトに依存するシナリオは実現できません。

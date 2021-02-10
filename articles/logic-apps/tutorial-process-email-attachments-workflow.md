@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 7e58dcf8206ae9feab4d8a09517bf9efda244dd5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 95cc13a79f39888a5be10e423bda4c7cd7c84cb3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451577"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054790"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -36,7 +36,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * Logic Apps がサポートするメール プロバイダー (Office 365 Outlook、Outlook.com、Gmail など) のメール アカウント。 その他のプロバイダーについては、[こちらのコネクタ一覧を参照](/connectors/)してください。
 
@@ -47,6 +47,8 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 * [無料の Microsoft Azure Storage Explorer](https://storageexplorer.com/) のダウンロードとインストール。 ストレージ コンテナーが正しく設定されているかどうかをこのツールでチェックすることができます。
 
+* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の[マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
+
 ## <a name="set-up-storage-to-save-attachments"></a>添付ファイルの保存先ストレージを設定する
 
 受信したメールと添付ファイルは、[Azure Storage コンテナー](../storage/common/storage-introduction.md)に BLOB として保存することができます。
@@ -55,7 +57,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
 1. ストレージ コンテナーを作成する前に、Azure portal の **[基本]** タブで次の設定の [ストレージ アカウントを作成](../storage/common/storage-account-create.md)します。
 
-   | 設定 | 値 | 説明 |
+   | 設定 | 値 | [説明] |
    |---------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |  
    | **リソース グループ** | <*Azure-resource-group*> | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 この例では、"LA-Tutorial-RG" を使用します。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 |
@@ -86,7 +88,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
       ![ストレージ アカウントの名前とキーをコピーして保存](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   ストレージ アカウントのアクセス キーは、[Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) または [Azure CLI](/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) を使用して取得することもできます。
+   ストレージ アカウントのアクセス キーは、[Azure PowerShell](/powershell/module/az.storage/get-azstorageaccountkey) または [Azure CLI](/cli/azure/storage/account/keys.md#az-storage-account-keys-list) を使用して取得することもできます。
 
 1. メールの添付ファイル用の Blob Storage コンテナーを作成します。
 
@@ -102,7 +104,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
       ![完成したストレージ コンテナー](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   ストレージ コンテナーは、[Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) を使用して作成することもできます。
+   ストレージ コンテナーは、[Azure PowerShell](/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](/cli/azure/storage/container#az-storage-container-create) を使用して作成することもできます。
 
 次に、このストレージ アカウントに Storage Explorer を接続します。
 
@@ -236,7 +238,7 @@ Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを�
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | 設定 | 値 | 説明 |
+   | 設定 | 値 | [説明] |
    | ------- | ----- | ----------- |
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション |
    | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |

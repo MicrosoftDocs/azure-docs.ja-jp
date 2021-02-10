@@ -1,19 +1,16 @@
 ---
 title: Apache Hadoop で MapReduce と PowerShell を使用する - Azure HDInsight
 description: PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブをリモートで実行する方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
-ms.openlocfilehash: 8b5f5a9fb8ddd25f750b19044bac7253bbff2f98
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 16c6c5e317591b70c3a1300453093fc715e213fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545210"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939675"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>PowerShell を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブを実行する
 
@@ -36,8 +33,8 @@ Azure PowerShell では、HDInsight で MapReduce ジョブをリモートで実
 |コマンドレット | 説明 |
 |---|---|
 |Connect-AzAccount|Azure サブスクリプションに対して Azure PowerShell を認証します。|
-|New-AzHDInsightMapReduceJobDefinition|指定された MapReduce 情報を使用して、新しい " *ジョブ定義* " を作成します。|
-|Start-AzHDInsightJob|ジョブ定義を HDInsight に送信し、ジョブを開始します。 " *ジョブ* " オブジェクトが返されます。|
+|New-AzHDInsightMapReduceJobDefinition|指定された MapReduce 情報を使用して、新しい "*ジョブ定義*" を作成します。|
+|Start-AzHDInsightJob|ジョブ定義を HDInsight に送信し、ジョブを開始します。 "*ジョブ*" オブジェクトが返されます。|
 |Wait-AzHDInsightJob|ジョブ オブジェクトを使用して、ジョブの状態を確認します。 ジョブの完了を待機するか、待機時間が上限に達します。|
 |Get-AzHDInsightJobOutput|ジョブの出力を取得するために使用します。|
 

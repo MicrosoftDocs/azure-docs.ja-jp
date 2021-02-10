@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 8d24ed014dd66235383b58cbcb7404aaf00f863e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 217872586d09531926b43a13d826efe559c70597
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308958"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796754"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory (AD) シングル サインオン (SSO) と F5 の統合
 
@@ -175,7 +175,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
      ![SAML サービス プロバイダーを示すスクリーンショット。](./media/advance-kerbf5-tutorial/configure09.png)
  
  
-1. **[Add New Row]\(新しい行の追加\)** をクリックし、前の手順で作成した**外部 IdP コネクタ**を選択します。
+1. **[Add New Row]\(新しい行の追加\)** をクリックし、前の手順で作成した **外部 IdP コネクタ** を選択します。
 
     ![[Add New Row]\(新しい行の追加\) ボタンが強調表示されているスクリーンショット。](./media/advance-kerbf5-tutorial/configure10.png)
  
@@ -314,7 +314,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
 ### <a name="create-f5-test-user"></a>F5 テスト ユーザーの作成
 
-このセクションでは、F5 で B.Simon というユーザーを作成します。  [F5 クライアント サポート チーム](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)と連携し、F5 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、F5 で B.Simon というユーザーを作成します。 [F5 クライアント サポート チーム](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45)と連携して、F5 プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -335,3 +335,9 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 - [ヘッダー ベースのアプリケーション用に F5 シングル サインオンを構成する](headerf5-tutorial.md)
 
 - [Kerberos アプリケーション用に F5 シングル サインオンを構成する](kerbf5-tutorial.md)
+
+- [F5 BIG-IP APM と Azure AD の統合による安全なハイブリッド アクセス](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition VM を Azure IaaS にデプロイするチュートリアル](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [パスワードレス VPN 用の Azure Active Directory シングル サインオンと F5 BIG-IP の統合](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 01/20/2021
 ms.author: jeedes
-ms.openlocfilehash: cedea9eb4ec47af445b2ae31225a697f3c51b46e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e4f9d05a4b76e440f986a9003c20a48b22c516a8
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318920"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259893"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>チュートリアル:AirWatch を Azure Active Directory と統合する
 
@@ -26,50 +26,50 @@ ms.locfileid: "92318920"
 * ユーザーが自分の Azure AD アカウントを使用して AirWatch に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
 開始するには、次が必要です。
-
-* Azure AD サブスクリプション。 サブスクリプションをお持ちでない場合は、[ここ](https://azure.microsoft.com/pricing/free-trial/)から 1 か月間の無料試用版を入手できます。
-* AirWatch でのシングル サインオン (SSO) が有効なサブスクリプション
+ 
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* AirWatch でのシングル サインオン (SSO) が有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 AirWatch では、**SP** によって開始される SSO がサポートされます。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 
 
-## <a name="adding-airwatch-from-the-gallery"></a>ギャラリーから AirWatch を追加する
+* AirWatch では、**SP** によって開始される SSO がサポートされます。
+
+## <a name="add-airwatch-from-the-gallery"></a>ギャラリーからの AirWatch の追加
 
 Azure AD への AirWatch の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に AirWatch を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**AirWatch**」と入力します。
 1. 結果のパネルから **[AirWatch]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-airwatch"></a>AirWatch の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、AirWatch に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと AirWatch の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-AirWatch に対する Azure AD SSO を構成してテストするには、次の構成要素を完了します。
+AirWatch に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[AirWatch SSO の構成](#configure-airwatch-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[AirWatch のテスト ユーザーの作成](#create-airwatch-test-user)** - AirWatch で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-5. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[AirWatch SSO の構成](#configure-airwatch-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[AirWatch のテスト ユーザーの作成](#create-airwatch-test-user)** - AirWatch で Britta Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **AirWatch** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
+1. Azure portal の **AirWatch** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -86,7 +86,7 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
     ![image](common/edit-attribute.png)
 
-1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン**を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+1. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
     | 名前 |  ソース属性|
     |---------------|----------------|
@@ -115,70 +115,6 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
    ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-### <a name="configure-airwatch-sso"></a>AirWatch SSO の構成
-
-1. 別の Web ブラウザーのウィンドウで、管理者として AirWatch 企業サイトにサインインします。
-
-1. 設定ページで、 **[Settings]\(設定\) > [Enterprise Integration]\(エンタープライズ統合\) > [Directory Services]\(ディレクトリ サービス\)** を選択します。
-
-   ![設定](./media/airwatch-tutorial/ic791921.png "設定")
-
-1. **[ユーザー]** タブをクリックし、 **[ベース DN]** テキストボックスにドメイン名を入力してから **[保存]** をクリックします。
-
-   ![[ベース DN] テキスト ボックスが強調表示されているスクリーンショット。](./media/airwatch-tutorial/ic791922.png "User")
-
-1. **[Server]** タブをクリックします。
-
-   ![[サーバー]](./media/airwatch-tutorial/ic791923.png "サーバー")
-
-1. **[LDAP]** セクションで次の手順を実行します。
-
-    ![[LDAP] セクションに加える必要のある変更点を示すスクリーンショット。](./media/airwatch-tutorial/ic791924.png "LDAP")   
-
-    a. **[Directory Type]** として **[None]** を選択します。
-
-    b. **[Use SAML For Authentication]** を選択します。
-
-1. **[SAML 2.0]** セクションで、ダウンロードした証明書をアップロードするには、 **[Upload]\(アップロード\)** をクリックします。
-
-    ![アップロード](./media/airwatch-tutorial/ic791932.png "アップロード")
-
-1. **[Request]** セクションで、次の手順に従います。
-
-    ![Request](./media/airwatch-tutorial/ic791925.png "Request")  
-
-    a. **[Request Binding Type]** として **[POST]** を選択します。
-
-    b. Azure portal の **[AirWatch でのシングル サインオンの構成]** ダイアログ ページで、 **[ログイン URL]** の値をコピーし、 **[ID プロバイダー シングル サインオン URL]** テキスト ボックスに貼り付けます。
-
-    c. **[NameID Format]** として **[Email Address]** を選択します。
-
-    d. **[Authentication Request Security]\(認証要求のセキュリティ\)** として **[None]\(なし\)** を選択します。
-
-    e. **[保存]** をクリックします。
-
-1. **[User]** タブをもう一度クリックします。
-
-    ![User](./media/airwatch-tutorial/ic791926.png "User")
-
-1. **[Attribute]** セクションで、次の手順に従います。
-
-    ![属性](./media/airwatch-tutorial/ic791927.png "属性")
-
-    a. **[オブジェクト識別子]** ボックスに「`http://schemas.microsoft.com/identity/claims/objectidentifier`」と入力します。
-
-    b. **[ユーザー名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
-
-    c. **[表示名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
-
-    d. **[名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
-
-    e. **[姓]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
-
-    f. **[電子メール]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
-
-    g. **[保存]** をクリックします。
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -198,16 +134,74 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[AirWatch]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+### <a name="configure-airwatch-sso"></a>AirWatch SSO の構成
+
+1. 別の Web ブラウザーのウィンドウで、管理者として AirWatch 企業サイトにサインインします。
+
+1. 設定ページで、 **[Settings]\(設定\) > [Enterprise Integration]\(エンタープライズ統合\) > [Directory Services]\(ディレクトリ サービス\)** を選択します。
+
+   ![設定](./media/airwatch-tutorial/services.png "設定")
+
+1. **[ユーザー]** タブをクリックし、 **[ベース DN]** テキストボックスにドメイン名を入力してから **[保存]** をクリックします。
+
+   ![[ベース DN] テキスト ボックスが強調表示されているスクリーンショット。](./media/airwatch-tutorial/user.png "User")
+
+1. **[Server]** タブをクリックします。
+
+   ![[サーバー]](./media/airwatch-tutorial/directory.png "サーバー")
+
+1. **[LDAP]** セクションで次の手順を実行します。
+
+    ![[LDAP] セクションに加える必要のある変更点を示すスクリーンショット。](./media/airwatch-tutorial/ldap.png "LDAP")   
+
+    a. **[Directory Type]** として **[None]** を選択します。
+
+    b. **[Use SAML For Authentication]** を選択します。
+
+1. **[SAML 2.0]** セクションで、ダウンロードした証明書をアップロードするには、 **[Upload]\(アップロード\)** をクリックします。
+
+    ![アップロード](./media/airwatch-tutorial/uploads.png "アップロード")
+
+1. **[Request]** セクションで、次の手順に従います。
+
+    ![[Request]\(要求\) セクション](./media/airwatch-tutorial/request.png "Request")  
+
+    a. **[Request Binding Type]** として **[POST]** を選択します。
+
+    b. Azure portal の **[AirWatch でのシングル サインオンの構成]** ダイアログ ページで、 **[ログイン URL]** の値をコピーし、 **[ID プロバイダー シングル サインオン URL]** テキスト ボックスに貼り付けます。
+
+    c. **[NameID Format]** として **[Email Address]** を選択します。
+
+    d. **[Authentication Request Security]\(認証要求のセキュリティ\)** として **[None]\(なし\)** を選択します。
+
+    e. **[保存]** をクリックします。
+
+1. **[User]** タブをもう一度クリックします。
+
+    ![User](./media/airwatch-tutorial/users.png "User")
+
+1. **[Attribute]** セクションで、次の手順に従います。
+
+    ![属性](./media/airwatch-tutorial/attributes.png "属性")
+
+    a. **[オブジェクト識別子]** ボックスに「`http://schemas.microsoft.com/identity/claims/objectidentifier`」と入力します。
+
+    b. **[ユーザー名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+
+    c. **[表示名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
+
+    d. **[名]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
+
+    e. **[姓]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
+
+    f. **[電子メール]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
+
+    g. **[保存]** をクリックします。
 
 ### <a name="create-airwatch-test-user"></a>AirWatch のテスト ユーザーを作成する
 
@@ -219,15 +213,15 @@ Azure AD ユーザーが AirWatch にサインインできるようにするに�
 
 2. 左側のナビゲーション ウィンドウで、 **[Accounts]** 、 **[Users]** の順にクリックします。
   
-   ![ユーザー](./media/airwatch-tutorial/ic791929.png "ユーザー")
+   ![ユーザー](./media/airwatch-tutorial/accounts.png "ユーザー")
 
 3. **Users\(ユーザー\)** メニューで、**List View\(リスト ビュー\)** 、**Add\(追加\) > Add User\(ユーザーの追加\)** の順にクリックします。
   
-   ![[Add]\(追加\) および [Add User]\(ユーザーの追加\) ボタンが強調表示されているスクリーンショット。](./media/airwatch-tutorial/ic791930.png "ユーザーの追加")
+   ![[Add]\(追加\) および [Add User]\(ユーザーの追加\) ボタンが強調表示されているスクリーンショット。](./media/airwatch-tutorial/add.png "ユーザーの追加")
 
 4. **[Add / Edit User]** ダイアログで、次の手順を実行します。
 
-   ![ユーザーの追加](./media/airwatch-tutorial/ic791931.png "ユーザーの追加")
+   ![ユーザーの追加](./media/airwatch-tutorial/save.png "ユーザーの追加")
 
    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **[Username]** 、 **[Password]** 、 **[Confirm Password]** 、 **[First Name]** 、 **[Last Name]** 、 **[Email Address]** を入力します。
 
@@ -238,12 +232,14 @@ Azure AD ユーザーが AirWatch にサインインできるようにするに�
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネル上で [AirWatch] タイルを選択すると、SSO を設定した AirWatch に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる AirWatch のサインオン URL にリダイレクトされます。 
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* AirWatch のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [AirWatch] タイルをクリックすると、AirWatch のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+## <a name="next-steps"></a>次のステップ
+
+AirWatch を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。

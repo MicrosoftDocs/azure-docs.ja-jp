@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0466105ab99d191b5dd9beab1d5d5b61f4b3225e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790886"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932524"
 ---
 # <a name="devops-practices-for-luis"></a>LUIS の DevOps プラクティス
 
@@ -18,7 +18,7 @@ Language Understanding (LUIS) アプリを開発するソフトウェア エン�
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>LUIS のソース管理およびブランチ戦略
 
-DevOps が成功するための要因の 1 つは、[ソース管理](/azure/devops/user-guide/source-control?view=azure-devops)です。 ソース管理システムを使用すると、開発者はコードで共同作業したり、変更を追跡したりできます。 ブランチを使用すると、開発者は異なるバージョンのコード ベースを切り替えることができ、チームの他のメンバーとは独立して作業を行うことができます。 開発者が [pull request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) を生成して 1 つのブランチから別のブランチへの更新を提案したとき、または変更がマージされたときに、それらを[自動ビルド](luis-concept-devops-automation.md)のトリガーにして、コードのビルドや継続的テストを実行できます。
+DevOps が成功するための要因の 1 つは、[ソース管理](/azure/devops/user-guide/source-control)です。 ソース管理システムを使用すると、開発者はコードで共同作業したり、変更を追跡したりできます。 ブランチを使用すると、開発者は異なるバージョンのコード ベースを切り替えることができ、チームの他のメンバーとは独立して作業を行うことができます。 開発者が [pull request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) を生成して 1 つのブランチから別のブランチへの更新を提案したとき、または変更がマージされたときに、それらを[自動ビルド](luis-concept-devops-automation.md)のトリガーにして、コードのビルドや継続的テストを実行できます。
 
 このドキュメントで説明されている概念とガイダンスを使用することにより、ソース管理システムの変更を追跡しながら LUIS アプリを開発し、次のソフトウェア エンジニアリングのベスト プラクティスに従うことができます。
 
@@ -42,7 +42,7 @@ DevOps が成功するための要因の 1 つは、[ソース管理](/azure/dev
 
 ## <a name="source-control"></a>ソース管理
 
-LUIS アプリの[アプリ スキーマ定義](./app-schema-definition.md)をソース コード管理システムで維持するには、アプリの [LUDown 形式 (`.lu`)](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0) 表現を使用します。 人間が判読できるので、`.lu` 形式は `.json` 形式より好まれます。これにより、PR で変更を行ってレビューするのが容易になります。
+LUIS アプリの[アプリ スキーマ定義](./app-schema-definition.md)をソース コード管理システムで維持するには、アプリの [LUDown 形式 (`.lu`)](/azure/bot-service/file-format/bot-builder-lu-file-format) 表現を使用します。 人間が判読できるので、`.lu` 形式は `.json` 形式より好まれます。これにより、PR で変更を行ってレビューするのが容易になります。
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>LUDown 形式を使用して LUIS アプリを保存する
 
@@ -81,7 +81,7 @@ LUIS アプリケーションの次の種類のファイルを、ソース管理
 - LUIS のオーサリング キーと予測キー
 - LUIS のオーサリング エンドポイントと予測エンドポイント
 - Azure サブスクリプション キー
-- アクセス トークン (自動化認証に使用される Azure [サービス プリンシパル](/cli/azure/ad/sp?view=azure-cli-latest)用のトークンなど)
+- アクセス トークン (自動化認証に使用される Azure [サービス プリンシパル](/cli/azure/ad/sp)用のトークンなど)
 
 #### <a name="strategies-for-securely-managing-secrets"></a>シークレットを安全に管理するための戦略
 
@@ -183,7 +183,7 @@ LUDown 形式の LUIS アプリは人間が判読できるものであり、レ�
 
 ## <a name="versioning"></a>バージョン管理
 
-アプリケーションは複数のコンポーネントで構成され、[Azure Bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) で実行されるボット、[QnA Maker](https://www.qnamaker.ai/)、[Azure Speech Service](../speech-service/overview.md) などが含まれる場合があります。 疎結合アプリケーションの目標を達成するには、アプリケーションの各コンポーネントが個別にバージョン管理されるように、[バージョン コントロール](/azure/devops/learn/git/what-is-version-control)を使用します。このようにすると、開発者はバージョン番号を見るだけで、破壊的変更や更新を検出できます。 独自のリポジトリで管理している場合は、他のコンポーネントから独立して LUIS アプリを簡単にバージョン管理できます。
+アプリケーションは複数のコンポーネントで構成され、[Azure Bot Service](/azure/bot-service/bot-service-overview-introduction) で実行されるボット、[QnA Maker](https://www.qnamaker.ai/)、[Azure Speech Service](../speech-service/overview.md) などが含まれる場合があります。 疎結合アプリケーションの目標を達成するには、アプリケーションの各コンポーネントが個別にバージョン管理されるように、[バージョン コントロール](/azure/devops/learn/git/what-is-version-control)を使用します。このようにすると、開発者はバージョン番号を見るだけで、破壊的変更や更新を検出できます。 独自のリポジトリで管理している場合は、他のコンポーネントから独立して LUIS アプリを簡単にバージョン管理できます。
 
 メイン ブランチの LUIS アプリには、バージョン管理スキームを適用する必要があります。 LUIS アプリの `.lu` に対する更新をメインにマージするときは、メイン ブランチ用の LUIS アプリの新しいバージョンに、その更新されたソースをインポートします。
 

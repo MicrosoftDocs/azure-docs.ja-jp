@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services ジョブの (エンコードおよび分析) エラー コード | Microsoft Docs
+title: ジョブ (エンコードおよび分析) のエラー コード
 description: この記事では、ジョブ エラー コードの参照トピックへのリンクを掲載し、関連トピックへの便利なリンクを提供しています。
 author: IngridAtMicrosoft
 manager: femila
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 272f32ebdba04009a67bf03d5e830ad8f9e649f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed57252a112aad8dd7d94dda95219867424dbb8f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289564"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954159"
 ---
 # <a name="media-services-job-error-codes"></a>Media Services ジョブのエラー コード
 

@@ -62,7 +62,7 @@
       items:
         - name: 変換
           href: how-to-transformation.md
-        - name: MS Graph API を使用した受信同期
+        - name: MS Graph API を使用してクラウドの同期をプログラムで構成する
           href: how-to-inbound-synch-ms-graph.md
         - name: Azure AD の同期 API
           href: /graph/api/resources/synchronization-overview

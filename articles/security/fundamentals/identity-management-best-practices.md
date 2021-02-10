@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b609d8389504eb10dd35a5ab74b0c198d3da57a6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197593"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090494"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -102,7 +102,7 @@ Active Directory フェデレーション サービス (AD FS) または他の I
 > 重要なアカウントが存在するディレクトリ、および使用される管理者ワークステーションを新しいクラウド サービスまたは既存のプロセスのどちらで管理するかを、選択する必要があります。 既存の管理および ID プロビジョニング プロセスを使用すると、一部のリスクを軽減できますが、攻撃者がオンプレミスのアカウントを侵害してクラウドにピボットするリスクが発生する可能性もあります。 異なるロールには異なる戦略を使用する場合もあります (たとえば、IT 管理者と部署管理者など)。 この場合、2 つの選択肢があります。 1 番目のオプションは、オンプレミスの Active Directory インスタンスと同期されない Azure AD アカウントを作成することです。 管理ワークステーションを Azure AD に参加させると、Microsoft Intune を使用して管理や修正プログラムの適用を行うことができます。 2 番目のオプションは、オンプレミスの Active Directory インスタンスに同期することによって、既存の管理者アカウントを使用することです。 管理とセキュリティに Active Directory ドメインの既存のワークステーションを使用します。
 
 ## <a name="manage-connected-tenants"></a>接続済みテナントを管理する
-セキュリティ組織では、リスクを評価し、組織のポリシーおよび規制の要件に従っているかどうかを判断するための、可視性が必要です。 セキュリティ組織が、運用環境とネットワークに ([Azure ExpressRoute](../../expressroute/expressroute-introduction.md) または[サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) 介して) 接続されているすべてのサブスクリプションに対する可視化を備えていることを、確認する必要があります。 Azure AD の[グローバル管理者/社内管理者](../../active-directory/roles/permissions-reference.md#company-administrator-permissions)は、自分のアクセス権を[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールに昇格させて、環境に接続されているすべてのサブスクリプションとマネージド グループを見ることができます。
+セキュリティ組織では、リスクを評価し、組織のポリシーおよび規制の要件に従っているかどうかを判断するための、可視性が必要です。 セキュリティ組織が、運用環境とネットワークに ([Azure ExpressRoute](../../expressroute/expressroute-introduction.md) または[サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) 介して) 接続されているすべてのサブスクリプションに対する可視化を備えていることを、確認する必要があります。 Azure AD の[全体管理者](../../active-directory/roles/permissions-reference.md#global-administrator-permissions)は、自分のアクセス権を[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールに昇格させて、環境に接続されているすべてのサブスクリプションとマネージド グループを見ることができます。
 
 自分および自分のセキュリティ グループが、環境に接続されたすべてのサブスクリプションまたは管理グループを表示できることを確認するには、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](../../role-based-access-control/elevate-access-global-admin.md)」をご覧ください。 リスクの評価が済んだら、この昇格されたアクセス権を削除する必要があります。
 

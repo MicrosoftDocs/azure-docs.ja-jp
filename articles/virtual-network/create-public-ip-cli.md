@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2c469324db11d2e65f8eb958e68f77fd77020865
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223535"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491049"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>クイック スタート:Azure CLI を使用してパブリック IP アドレスを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "98223535"
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) を使用して、**myResourceGroup** という名前のリソース グループを場所 **eastus2** に作成します。
+[az group create](/cli/azure/group#az-group-create) を使用して、**myResourceGroup** という名前のリソース グループを場所 **eastus2** に作成します。
 
 ```azurecli-interactive
   az group create \
@@ -46,14 +46,14 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 >[!NOTE]
 >次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)に関するページを参照してください。
 
-**myResourceGroup** に **myStandardZRPublicIP** という Standard ゾーン冗長パブリック IP アドレスを作成するには、[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用します。
+**myResourceGroup** に **myStandardZRPublicIP** という Standard ゾーン冗長パブリック IP アドレスを作成するには、[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用します。
 
 ```azurecli-interactive
   az network public-ip create \
     --resource-group myResourceGroup \
     --name myStandardZRPublicIP \
     --sku Standard
-    --zone 1,2,3
+    --zone 1 2 3
 ```
 > [!IMPORTANT]
 > 2020-08-01 より前の API のバージョンでは、ゾーン冗長 IP アドレスを作成する際、ゾーン パラメーターを指定せずに上記のコマンドを実行します。 
@@ -76,7 +76,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 >[!NOTE]
 >次のコマンドは、API バージョン 2020-08-01 以降で動作します。  現在使用されている API バージョンの詳細については、[リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)に関するページを参照してください。
 
-[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用して、**myResourceGroup** に **myStandardPublicIP** という名前の Standard パブリック IP アドレスを非ゾーン リソースとして作成します。
+[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用して、**myResourceGroup** に **myStandardPublicIP** という名前の Standard パブリック IP アドレスを非ゾーン リソースとして作成します。
 
 ```azurecli-interactive
   az network public-ip create \
@@ -88,7 +88,7 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 # <a name="basic-sku"></a>[**Basic SKU**](#tab/option-create-public-ip-basic)
 
-**myResourceGroup** に **myBasicPublicIP** という Basic パブリック IP アドレスを作成するには、[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) を使用します。  Basic パブリック IP には、可用性ゾーンという概念はありません。
+**myResourceGroup** に **myBasicPublicIP** という Basic パブリック IP アドレスを作成するには、[az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用します。  Basic パブリック IP には、可用性ゾーンという概念はありません。
 
 ```azurecli-interactive
   az network public-ip create \

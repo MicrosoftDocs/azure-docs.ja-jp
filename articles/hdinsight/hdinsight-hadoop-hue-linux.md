@@ -1,19 +1,16 @@
 ---
 title: Linux ベースの HDInsight クラスターの Hadoop で Hue を使用する - Azure
 description: HDInsight クラスターに Hue をインストールし、トンネリングを利用して Hue に要求を送信する方法について学習します。 Hue を使用して、ストレージを参照したり Hive または Pig を実行したりします。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 03/31/2020
-ms.openlocfilehash: e80df5d1c3d2b2195e76622964406cc65c933a63
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d4663aac6af4abb8d9855d2f972965e997d9c92
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546196"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945681"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
@@ -125,7 +122,7 @@ Hue は Apache Hadoop クラスターとの情報のやりとりに使用され�
 
    これは既知の問題によるものです。 この問題を回避するには、アクティブな Resource Manager もプライマリ ヘッドノードで実行されるように Ambari を変更します。
 
-1. HDInsight クラスターが `wasbs://` で Azure Storage を使用するとき、Hue は WebHDFS を認識します。 そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。 そのため、Hue ポータルに HDFS と表示されている場合でも ( **ファイル ブラウザー** の上にマウスを移動したときなど)、WASB として解釈するべきです。
+1. HDInsight クラスターが `wasbs://` で Azure Storage を使用するとき、Hue は WebHDFS を認識します。 そのため、スクリプト アクションで使用されるカスタム スクリプトは WebWasb をインストールします。これは WASB と通信するための WebHDFS 互換サービスです。 そのため、Hue ポータルに HDFS と表示されている場合でも (**ファイル ブラウザー** の上にマウスを移動したときなど)、WASB として解釈するべきです。
 
 ## <a name="next-steps"></a>次のステップ
 

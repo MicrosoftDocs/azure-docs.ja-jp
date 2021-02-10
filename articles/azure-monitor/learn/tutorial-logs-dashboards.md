@@ -87,7 +87,7 @@ Perf
 ![構成が完了したサンプル ダッシュボード](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
 ## <a name="next-steps"></a>次のステップ
-このチュートリアルでは、Azure portal でダッシュボードを作成して、ログ クエリを追加する方法について学習しました。  次のチュートリアルに進んで、ログ クエリの結果に基づいて実装できる異なる応答について学習します。  
+このチュートリアルでは、Azure Portal でダッシュボードを作成して、ログ クエリを追加する方法について学習しました。  次のチュートリアルに進んで、ログ クエリの結果に基づいて実装できる異なる応答について学習します。  
 
 > [!div class="nextstepaction"]
 > [Log Analytics のアラートを使用してイベントに応答する](tutorial-response.md)

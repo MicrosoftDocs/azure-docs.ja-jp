@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3a7e75641f6bb84b490231fcd06e04c3cbad06d3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631951"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063469"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>チュートリアル:Azure プライベート エンドポイントを使用して Azure Cosmos アカウントに接続する
 
@@ -218,19 +218,19 @@ bastion ホストは、プライベート エンドポイントをテストす�
 
 1. 左側のナビゲーション ペインで **[リソース グループ]** を選択します。
 
-2. **[myResourceGroup]** を選択します。
+1. **[myResourceGroup]** を選択します。
 
-3. **[myVM]** を選択します。
+1. **[myVM]** を選択します。
 
-4. **myVM** の [概要] ページで **[接続]** 、 **[Bastion]** の順に選択します。
+1. **myVM** の [概要] ページで **[接続]** 、 **[Bastion]** の順に選択します。
 
-5. 青色の **[Bastion を使用する]** ボタンを選択します。
+1. 青色の **[Bastion を使用する]** ボタンを選択します。
 
-6. 仮想マシンの作成時に入力したユーザー名とパスワードを入力します。
+1. 仮想マシンの作成時に入力したユーザー名とパスワードを入力します。
 
-7. 接続後にサーバーで Windows PowerShell を開きます。
+1. 接続後にサーバーで Windows PowerShell を開きます。
 
-8. 「`nslookup <cosmosdb-account-name>.documents.azure.com`」と入力します。 **\<cosmosdb-account-name>** は、前の手順で作成した Cosmos DB アカウントの名前で置き換えます。 
+1. 「`nslookup <cosmosdb-account-name>.documents.azure.com`」と入力し、名前解決を検証します。 **\<cosmosdb-account-name>** は、前の手順で作成した Cosmos DB アカウントの名前で置き換えます。 
 
     ```powershell
     Server:  UnKnown
@@ -241,28 +241,31 @@ bastion ホストは、プライベート エンドポイントをテストす�
     Address:  10.1.0.5
     Aliases:  mycosmosdb8675.documents.azure.com
     ```
-
     Cosmos DB アカウント名に対応する **10.1.0.5** というプライベート IP アドレスが返されます。  このアドレスは、先ほど作成した仮想ネットワークのサブネット内に存在します。
+    
+1. ポータルから Azure Cosmos DB プライマリ接続文字列を取得します。 有効な接続文字列は、次の形式になっています。
+   
+   SQL API アカウントの場合: `https://<accountName>.documents.azure.com:443/;AccountKey=<accountKey>;` MongoDB 用 Azure Cosmos DB API の場合: `mongodb://<accountName>:<accountKey>@cdbmongo36.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false`
 
-9. 仮想マシンに [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) をインストールします。
+1. 仮想マシンに [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) をインストールします。
 
-10. **Microsoft Azure Storage Explorer** のインストール後、 **[完了]** を選択します。  アプリケーションを開くため、チェック ボックスはオンのままにしてください。
+1. **Microsoft Azure Storage Explorer** のインストール後、 **[完了]** を選択します。  アプリケーションを開くため、チェック ボックスはオンのままにしてください。
 
-11. **[Azure Storage へ接続]** 画面で、 **[キャンセル]** を選択します。
+1. **[Azure Storage へ接続]** 画面で、 **[キャンセル]** を選択します。
 
-12. Storage Explorer で、 **[Cosmos DB アカウント]** を右クリックし、 **[Cosmos DB に接続]** を選択します。
+1. Storage Explorer で、 **[Cosmos DB アカウント]** を右クリックし、 **[Cosmos DB に接続]** を選択します。
 
-13. **[API の選択]** の下は、既定値の **[SQL]** のままにします。
+1. **[API の選択]** の下は、既定値の **[SQL]** のままにします。
 
-14. **[接続文字列]** の下のボックスに、前の手順でコピーした Cosmos DB アカウントの接続文字列を貼り付けます。
+1. **[接続文字列]** の下のボックスに、前の手順でコピーした Cosmos DB アカウントの接続文字列を貼り付けます。
 
-15. **[次へ]** を選択します。
+1. **[次へ]** を選択します。
 
-16. **[接続の概要]** で、設定が正しいことを確認します。  
+1. **[接続の概要]** で、設定が正しいことを確認します。  
 
-17. **[接続]** を選択します。
+1. **[接続]** を選択します。
 
-18. **myVM** への接続を閉じます。
+1. **myVM** への接続を閉じます。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: overview
-ms.date: 07/13/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f85b78480e7258780f8dd396431edeb968189e4c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c6f4659b9ee809cc1f1caeb1cb9c0d626b1b3a3b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741254"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725656"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Azure Active Directory 認証とは
 
@@ -27,6 +27,10 @@ ID プラットフォームの主な機能の 1 つとして、ユーザーが�
 * パスワードの変更をオンプレミス環境に書き戻すためのハイブリッド統合
 * パスワード保護ポリシーをオンプレミス環境に適用するためのハイブリッド統合
 * パスワードレスの認証
+
+これらの認証コンポーネントの詳細については、こちらのショート ビデオをご覧ください。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4KVJA]
 
 ## <a name="improve-the-end-user-experience"></a>エンドユーザーのエクスペリエンスを向上させる
 

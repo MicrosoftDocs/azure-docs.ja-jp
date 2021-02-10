@@ -2,19 +2,16 @@
 title: Azure HDInsight における Hive メモリ不足エラーの解決
 description: HDInsight における Hive メモリ不足エラーを解決する方法について説明します。 ユーザーのシナリオは、多数の大きなテーブルに対するクエリです。
 keywords: メモリ不足エラー、OOM、Hive 設定
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: d91da1aa6f7079069541ac955fce8331591a3bc6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c0810d33f3ac939b9382bf321448ed72b6d87474
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546179"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945714"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Apache Hive メモリ不足エラーの解決
 
@@ -109,7 +106,7 @@ Java ヒープ領域のメモリ不足エラーの原因は、おそらく Map J
 
 ![Tez コンテナー メモリ図: Hive のメモリ不足エラー](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
-ブログの投稿で提案したように、 **hive.tez.container.size** と **hive.tez.java.opts** という 2 つのメモリ設定で、ヒープのコンテナー メモリを定義しています。 経験から判断すると、メモリ不足例外の原因は、コンテナー サイズが小さすぎることではありません。 Java ヒープ サイズ (hive.tez.java.opts) が小さすぎることが原因です。 そのため、メモリ不足エラーが発生する場合は、 **hive.tez.java.opts** を増やしてみてください。 必要に応じて、 **hive.tez.container.size** も増やす必要があります。 **java.opts** 設定は、 **container.size** の約 80% にすることをお勧めします。
+ブログの投稿で提案したように、**hive.tez.container.size** と **hive.tez.java.opts** という 2 つのメモリ設定で、ヒープのコンテナー メモリを定義しています。 経験から判断すると、メモリ不足例外の原因は、コンテナー サイズが小さすぎることではありません。 Java ヒープ サイズ (hive.tez.java.opts) が小さすぎることが原因です。 そのため、メモリ不足エラーが発生する場合は、**hive.tez.java.opts** を増やしてみてください。 必要に応じて、 **hive.tez.container.size** も増やす必要があります。 **java.opts** 設定は、**container.size** の約 80% にすることをお勧めします。
 
 > [!NOTE]  
 > **hive.tez.java.opts** は、常に **hive.tez.container.size** よりも小さく設定する必要があります。

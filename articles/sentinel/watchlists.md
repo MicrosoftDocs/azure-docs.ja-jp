@@ -10,14 +10,17 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e31128687cfcc1f4e32879328ad3227182efb9ce
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651364"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797351"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Azure Sentinel ウォッチリストを使用する
+
+> [!IMPORTANT]
+> ウォッチリスト機能は現在 **プレビュー** 段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 Azure Sentinel ウォッチリストを使用すると、Azure Sentinel 環境内のイベントと関連付けるために、外部データ ソースからのデータ収集が可能になります。 ウォッチリストを作成すると、検索、検出規則、脅威ハンティング、および応答プレイブックで使用できます。 ウォッチリストは、名前と値のペアとして Azure Sentinel ワークスペースに格納され、最適なクエリ パフォーマンスと待ち時間の短縮のためにキャッシュされます。
 
@@ -73,11 +76,43 @@ Azure Sentinel ウォッチリストを使用すると、Azure Sentinel 環境�
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-fields.png" alt-text="ウォッチリストのフィールドを使用したクエリ" lightbox="./media/watchlists/sentinel-watchlist-queries-fields.png":::
     
+1. ウォッチリストを結合または検索のテーブルとして扱うことで、あるテーブルに含まれるデータがウォッチリストのデータにないか照合できます。
+
+    ```kusto
+    Heartbeat
+    | lookup kind=leftouter _GetWatchlist('IPlist') 
+     on $left.ComputerIP == $right.IPAddress
+    ```
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-join.png" alt-text="検索としてウォッチリストに対して実行するクエリ":::
+
 ## <a name="use-watchlists-in-analytics-rules"></a>分析ルールでウォッチリストを使用する
 
 分析ルールでウォッチリストを使用するには、Azure portal で **[Azure Sentinel]**  >  **[構成]**  >  **[分析]** の順に移動し、クエリで `_GetWatchlist('<watchlist>')` 関数を使用してルールを作成します。
 
-:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="分析ルールでのウォッチリストの使用" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
+1. この例では、"ipwatchlist" という名前のウォッチリストを次の値で作成します。
+
+    :::image type="content" source="./media/watchlists/create-watchlist.png" alt-text="ウォッチリストの 4 項目の一覧":::
+
+    :::image type="content" source="./media/watchlists/sentinel-watchlist-new-2.png" alt-text="項目が 4 つあるウォッチリストを作成する":::
+
+1. 次に、分析ルールを作成します。  この例では、ウォッチリストに IP アドレスからのイベントのみを含めます。
+
+    ```kusto
+    //Watchlist as a variable
+    let watchlist = (_GetWatchlist('ipwatchlist') | project IPAddress);
+    Heartbeat
+    | where ComputerIP in (watchlist)
+    ```
+    ```kusto
+    //Watchlist inline with the query
+    Heartbeat
+    | where ComputerIP in ( 
+        (_GetWatchlist('ipwatchlist')
+        | project IPAddress)
+    )
+    ```
+
+:::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule-2.png" alt-text="分析ルールでのウォッチリストの使用":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>ウォッチリスト エイリアスの一覧を表示する
 

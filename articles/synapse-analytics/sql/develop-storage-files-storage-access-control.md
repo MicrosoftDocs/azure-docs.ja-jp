@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e693bd15e5255fda135a7a1dc416dd67f24f7f25
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: b493ee7d77fc45018dbf8d2bac748b03e3d74b8a
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120412"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430211"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -94,6 +94,9 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 ファイアウォールで保護されているストレージにアクセスする場合に、**ユーザー ID** または **マネージド ID** を使用できます。
 
+> [!NOTE]
+> ストレージに対するファイアウォール機能はパブリック プレビュー段階であり、すべてのパブリック クラウド リージョンで利用できます。 
+
 #### <a name="user-identity"></a>ユーザー ID
 
 ファイアウォールで保護されているストレージにユーザー ID を使用してアクセスするには、PowerShell モジュール Az.Storage を使用します。
@@ -102,12 +105,13 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 ストレージ アカウントのファイアウォールを構成し、Synapse ワークスペースの例外を追加するには、次の手順に従います。
 
 1. Powershell を開くか [PowerShell をインストール](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)します
-2. 更新された Az. Storage モジュールをインストールします 
+2. Az.Storage 3.0.1 モジュールと Az.Synapse 0.7.0 をインストールします。 
     ```powershell
     Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > バージョン 3.0.1 以降を使用していることを確認してください。 次のコマンドを実行して、Az.Storage のバージョンを確認できます。  
+    > **バージョン 3.0.1** を使用していることを確認してください。 次のコマンドを実行して、Az.Storage のバージョンを確認できます。  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```
@@ -121,16 +125,23 @@ SAS トークンを使用したアクセスを有効にするには、データ�
     - リソース グループ名 - これは、Azure portal の Synapse ワークスペースの概要で確認できます。
     - アカウント名 - ファイアウォール規則によって保護されているストレージ アカウントの名前。
     - テナント ID - Azure portal で Azure Active Directory のテナント情報できます。
-    - リソース ID - これは、Azure portal の Synapse ワークスペースの概要で確認できます。
+    - ワークスペース名 - Synapse ワークスペースの名前。
 
     ```powershell
         $resourceGroupName = "<resource group name>"
         $accountName = "<storage account name>"
         $tenantId = "<tenant id>"
-        $resourceId = "<Synapse workspace resource id>"
+        $workspaceName = "<synapse workspace name>"
+        
+        $workspace = Get-AzSynapseWorkspace -Name $workspaceName
+        $resourceId = $workspace.Id
+        $index = $resourceId.IndexOf("/resourceGroups/", 0)
+        # Replace G with g - /resourceGroups/ to /resourcegroups/
+        $resourceId = $resourceId.Substring(0,$index) + "/resourcegroups/" + $resourceId.Substring($index + "/resourceGroups/".Length)
+        $resourceId
     ```
     > [!IMPORTANT]
-    > リソース ID がこのテンプレートと一致していることを確認してください。
+    > resourceId 変数の出力で、リソース ID がこのテンプレートと一致していることを確認してください。
     >
     > **resourcegroups** を小文字で記述することが重要です。
     > 1 つのリソース ID の例: 
@@ -145,7 +156,14 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 6. ストレージ アカウントに規則が適用されていることを確認します 
     ```powershell
         $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
-        $rule.ResourceAccessRules
+        $rule.ResourceAccessRules | ForEach-Object { 
+        if ($_.ResourceId -cmatch "\/subscriptions\/(\w\-*)+\/resourcegroups\/(.)+") { 
+            Write-Host "Storage account network rule is successfully configured." -ForegroundColor Green
+            $rule.ResourceAccessRules
+        } else {
+            Write-Host "Storage account network rule is not configured correctly. Remove this rule and follow the steps in detail." -ForegroundColor Red
+            $rule.ResourceAccessRules
+        }
     ```
 
 #### <a name="managed-identity"></a>マネージド ID

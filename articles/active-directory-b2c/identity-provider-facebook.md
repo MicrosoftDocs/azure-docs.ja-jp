@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598876"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952676"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -84,6 +84,21 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="create-a-policy-key"></a>ポリシー キーを作成する
+
+Azure AD B2C テナントで前に記録したアプリ シークレットを格納する必要があります。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+6. **オプション** については、`Manual`を選択します。
+7. ポリシー キーの **名前** を入力します。 たとえば、「 `FacebookSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+8. **[シークレット]** に、前に記録したアプリ シークレットを入力します。
+9. **[キー使用法]** として [`Signature`] を選択します。
+10. **Create** をクリックしてください。
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>ID プロバイダーとして Facebook アカウントを構成する
 

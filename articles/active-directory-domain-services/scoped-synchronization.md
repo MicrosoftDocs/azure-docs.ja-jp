@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e65b47b2a1fd71c69ecb350f60df1fedff66b74
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 34692f5e563e4931a27ea59db84d9c88f27817da
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618911"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660900"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure portal を使用して、Azure AD から Azure Active Directory Domain Services への範囲指定された同期を構成する
 
@@ -43,15 +43,14 @@ Azure Active Directory Domain Services (Azure AD DS) は、認証サービスを
 
 既定では、Azure AD ディレクトリのすべてのユーザーとグループがマネージド ドメインに同期されます。 マネージド ドメインにアクセスする必要のあるユーザーが少数しかいない場合は、それらのユーザー アカウントのみを同期することができます。 この範囲指定された同期はグループベースです。 グループベースの範囲指定された同期を構成した場合、指定したグループに属するユーザー アカウントのみがマネージド ドメインに同期されます。 入れ子になったグループは同期されず、選択した特定のグループのみが同期されます。
 
-同期スコープは、マネージド ドメインを作成するとき、またはデプロイした後に変更できます。 また、既存のマネージド ドメイン上の同期のスコープを、再作成せず、変更することもできるようになりました。
+同期スコープは、マネージド ドメインを作成する前または後に変更できます。 同期のスコープは、アプリケーション識別子 2565bd9d-da50-47d4-8b85-4c97f669dc36 を使用してサービス プリンシパルによって定義されます。 スコープが失われないようにするには、サービス プリンシパルを削除または変更しないでください。 誤って削除された場合、同期スコープを復旧できません。 
+
+同期スコープを変更する場合は、次の点に注意してください。
+
+- 完全同期が行われます。
+- マネージド ドメインで不要になったオブジェクトは削除されます。 新しいオブジェクトは、マネージド ドメインに作成されます。
 
 同期プロセスの詳細については、[Azure AD Domain Services での同期の理解][concepts-sync]に関する記事を参照してください。
-
-> [!WARNING]
-> 同期のスコープを変更すると、マネージド ドメインですべてのデータが再同期されます。 次の考慮事項が適用されます。
->
->  * マネージド ドメインの同期スコープを変更すると、完全な再同期が発生します。
->  * マネージド ドメインで不要になったオブジェクトは削除されます。 新しいオブジェクトは、マネージド ドメインに作成されます。
 
 ## <a name="enable-scoped-synchronization"></a>範囲指定された同期を有効にする
 

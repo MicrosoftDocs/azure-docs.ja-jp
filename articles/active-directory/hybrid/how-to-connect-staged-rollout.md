@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d348b8c2325c7bc2cdaa28356151647a9430684f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 10fe3b895ea5084247822f1c35275e68d80b73fa
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247048"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762980"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
@@ -61,7 +61,10 @@ ms.locfileid: "98247048"
 - Azure AD Connect を使用して、Azure AD にプロビジョニングされているユーザー。 「クラウドのみ」のユーザーには適用されません。
 
 - ブラウザーおよび *最新の認証* クライアント上でのユーザー サインイン トラフィック。 レガシ認証を使用するアプリケーションまたはクラウド サービスは、フェデレーション認証のフローにフォールバックします。 例としては、最新の認証が無効になっている Exchange オンラインや、最新の認証をサポートしていない Outlook 2010 があります。
+
 - グループ サイズは現在 50,000 ユーザーに制限されています。  50,000 ユーザーよりも大きいグループがある場合は、このグループを複数のグループに分割して、段階的なロールアウトを行うことをお勧めします。
+
+- Windows 10 バージョン 1903 以降の、フェデレーション サーバーへの通信経路を使用しない Windows 10 ハイブリッド参加または Azure AD 参加のプライマリ更新トークンの取得 (ユーザーの UPN がルーティング可能であり、ドメイン サフィックスが Azure AD で検証されている場合)。
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
@@ -87,6 +90,10 @@ ms.locfileid: "98247048"
 - 段階的なロールアウトで、セキュリティ グループを初めて追加する時点では、UX タイムアウトを回避するために、200 ユーザーに制限されます。グループを追加した後、必要に応じて、そのグループにさらにユーザーを直接追加できます。
 
 - ユーザーが段階的にロールアウトしている間、EnforceCloudPasswordPolicyForPasswordSyncedUsers が有効な場合、パスワードの有効期限ポリシーは 90 日に設定され、これをカスタマイズするオプションはありません。 
+
+- 1903 より前の Windows 10 バージョンの、Windows 10 ハイブリッド参加または Azure AD 参加のプライマリ更新トークンの取得。 このシナリオは、ユーザーのサインインが段階的なロールアウトのスコープ内にある場合でも、フェデレーション サーバーの WS-Trust エンドポイントにフォールバックします。
+
+- すべてのバージョンの Windows 10 ハイブリッド参加または Azure AD 参加のプライマリ更新トークンの取得 (ユーザーのオンプレミス UPN がルーティング可能でない場合)。 このシナリオは、段階的なロールアウトのモードでは WS-Trust エンドポイントにフォールバックしますが、段階的な移行が完了し、ユーザーのサインオンがフェデレーション サーバーに依存しなくなったときに機能しなくなります。
 
 
 ## <a name="get-started-with-staged-rollout"></a>段階的なロールアウトを使ってみる

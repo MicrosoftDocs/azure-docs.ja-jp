@@ -1,20 +1,25 @@
 ---
-title: Azure Cloud Services でのスタートアップ タスクの実行 | Microsoft Docs
+title: Azure Cloud Services (クラシック) のスタートアップ タスクの実行 | Microsoft Docs
 description: スタートアップ タスクを使用すると、アプリ用にクラウド サービス環境を準備できます。 スタートアップ タスクの動作のしくみおよびそれらを作成する方法について説明します
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 25190075bdd13bd4b75dd82c97ee06ee60f4c26c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020706"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743187"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
+# <a name="how-to-configure-and-run-startup-tasks-for-an-azure-cloud-service-classic"></a>Azure クラウド サービス (クラシック) のスタートアップ タスクを構成して実行する方法
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。
 
 > [!NOTE]
@@ -39,8 +44,8 @@ Azure でのロールのスタートアップ手順を次に示します。
 1. インスタンスは **開始中** とマークされ、トラフィックを受け取りません。
 2. **taskType** 属性に従って、すべてのスタートアップ タスクが実行されます。
    
-   * **単純な** タスクは、一度に 1 つずつ同期的に実行されます。
-   * **background** タスクと **foreground** タスクは、スタートアップ タスクと並列に非同期的に開始されます。  
+   * **単純** タスクは、1 つずつ同期的に実行されます。
+   * **バックグラウンド** および **フォアグラウンド** タスクは、スタートアップ タスクと並列して非同期的に開始されます。  
      
      > [!WARNING]
      > IIS はスタートアップ プロセスのスタートアップ タスク ステージの間に完全に構成されない場合があるので、ロール固有のデータを使用できないことがあります。 ロール固有のデータが必要なスタートアップ タスクは、 [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))を使用する必要があります。
@@ -81,7 +86,7 @@ EXIT /B 0
 > 
 
 ## <a name="description-of-task-attributes"></a>タスクの属性の説明
-次に、 **ServiceDefinition.csdef** ファイルの [ServiceDefinition.csdef] 要素の属性について説明します。
+次に、 **ServiceDefinition.csdef** ファイルの [Task] 要素の属性について説明します。
 
 **commandLine** -スタートアップ タスクのコマンド ラインを指定します。
 
@@ -93,9 +98,9 @@ EXIT /B 0
 **executionContext** -スタートアップ タスクの特権レベルを指定します。 指定できる特権レベルは limited または elevated です。
 
 * **limited**  
-  スタートアップ タスクは、ロールと同じ特権で実行します。 [Runtime] 要素の **executionContext** 属性も **limited** である場合は、ユーザー特権が使用されます。
+   スタートアップ タスクは、ロールと同じ特権で実行します。 [Runtime] 要素の **executionContext** 属性も **limited** である場合は、ユーザー特権が使用されます。
 * **elevated**  
-  スタートアップ タスクは、管理者特権で実行します。 これにより、ロール自体の特権レベルを上げることなく、プログラムのインストール、IIS の構成の変更、レジストリの変更、その他の管理者レベル タスクを実行できます。  
+   スタートアップ タスクは、管理者特権で実行します。 これにより、ロール自体の特権レベルを上げることなく、プログラムのインストール、IIS の構成の変更、レジストリの変更、その他の管理者レベル タスクを実行できます。  
 
 > [!NOTE]
 > スタートアップ タスクの特権レベルは、ロール自体と同じでなくてもかまいません。
@@ -116,16 +121,16 @@ EXIT /B 0
 * **background**  
   タスクは、ロールのスタートアップと並行して、非同期的に実行されます。
 * **フォアグラウンド**  
-  タスクは、ロールのスタートアップと並行して、非同期的に実行されます。 **foreground** タスクと **background** タスクの重要な違いは、**foreground** タスクではタスクが終了するまでロールがリサイクルまたはシャットダウンされなくなることです。 **background** タスクにはこのような制限はありません。
+   タスクは、ロールのスタートアップと並行して、非同期的に実行されます。 **foreground** タスクと **background** タスクの重要な違いは、**foreground** タスクではタスクが終了するまでロールがリサイクルまたはシャットダウンされなくなることです。 **background** タスクにはこのような制限はありません。
 
 ## <a name="environment-variables"></a>環境変数
 環境変数は、スタートアップ タスクに情報を渡すための手段です。 たとえば、インストールするプログラムを含む BLOB へのパス、ロールで使用するポート番号、スタートアップ タスクの機能を制御する設定などを設定できます。
 
 スタートアップ タスクの環境変数には、静的環境変数と、 [RoleEnvironment] クラスのメンバーに基づく環境変数の 2 種類があります。 どちらも [ServiceDefinition.csdef] ファイルの [Environment] セクションにあり、[Variable] 要素と **name** 属性を使用します。
 
-静的環境変数は、 **Variable** 要素の [Variable] 属性を使用します。 上の例では、**MyVersionNumber** という名前の環境変数を作成し、静的な値 "**1.0.0.0**" を設定しています。 もう 1 つの例として、**StagingOrProduction** という名前の環境変数を作成し、手動で値 "**staging**" または "**production**" を設定して、**StagingOrProduction** 環境変数の値に基づいて異なるスタートアップ アクションを実行できます。
+静的環境変数は、 **Variable** 要素の [value] 属性を使用します。 上の例では、**MyVersionNumber** という名前の環境変数を作成し、静的な値 "**1.0.0.0**" を設定しています。 もう 1 つの例として、**StagingOrProduction** という名前の環境変数を作成し、手動で値 "**staging**" または "**production**" を設定して、**StagingOrProduction** 環境変数の値に基づいて異なるスタートアップ アクションを実行できます。
 
-RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素の [Variable] 属性は使用しません。 代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。 さまざまな [RoleEnvironment] の値にアクセスするための **XPath** 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
+RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素の [value] 属性は使用しません。 代わりに [RoleInstanceValue] 子要素と適切な **xPath** 属性値を使用して、[RoleEnvironment] クラスの特定のメンバーに基づいて環境変数を作成します。 さまざまな [RoleEnvironment] の値にアクセスするための **XPath** 属性の値については、[こちら](cloud-services-role-config-xpath.md)を参照してください。
 
 たとえば、インスタンスがコンピューティング エミュレーターで実行しているときは "**true**"、クラウドで実行しているときは "**false**" になる環境変数を作成するには、次の [Variable] 要素と [RoleInstanceValue] 要素を使用します。
 
@@ -154,7 +159,7 @@ Cloud Service で [一般的なスタートアップ タスク](cloud-services-s
 [パッケージ化](cloud-services-model-and-package.md) します。  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
+[Task]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
 [Startup]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
 [Runtime]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
 [Environment]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment

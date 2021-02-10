@@ -3,12 +3,12 @@ title: Azure Service Fabric での定期的なバックアップと復元
 description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
 ms.topic: conceptual
 ms.date: 5/24/2019
-ms.openlocfilehash: 18d10b365cb2e4f4b4e3592233d5f467714bd5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2d167b261f9b5915a970b4c219113f0765c039cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91538672"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927981"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターでの定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -48,11 +48,16 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得または作成する方法については、[こちらの記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
 * Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 .NET Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
 * アプリケーションのバックアップを保存するための Azure ストレージ アカウントを作成します。
-* 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール [プレビュー] をインストールします。
+* 構成の呼び出しを行うため、Microsoft.ServiceFabric.Powershell.Http モジュール (プレビュー) をインストールします。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
+
+> [!NOTE]
+> PowerShellGet のバージョンが 1.6.0 未満の場合、更新して *-AllowPrerelease* フラグのサポートを追加する必要があります。
+>
+> `Install-Module -Name PowerShellGet -Force`
 
 * Microsoft.ServiceFabric.Powershell.Http モジュールを使用して、任意の構成要求を行う前に、`Connect-SFCluster` コマンドを使用してクラスターが接続されていることを確認します。
 

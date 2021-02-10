@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight クラスターを自動的にスケール調整する
 description: 自動スケーリング機能を使用して、スケジュールまたはパフォーマンス メトリックに基づいて、Azure HDInsight クラスターを自動的にスケーリングします。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: contperf-fy21q1, contperf-fy21q2
 ms.date: 12/14/2020
-ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 130a5a58fc7dab6f94c011cf9764743f9114e48a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629257"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942639"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 

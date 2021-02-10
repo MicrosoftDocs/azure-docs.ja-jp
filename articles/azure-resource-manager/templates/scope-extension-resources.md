@@ -3,12 +3,12 @@ title: 拡張リソースの種類のスコープ
 description: 拡張リソースの種類を展開するときに scope プロパティを使用する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ce08ca951e24c1c0a5450052cf814a68888837c2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179981"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492163"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>ARM テンプレートで拡張リソースのスコープを設定する
 
@@ -87,4 +87,4 @@ New-AzSubscriptionDeployment `
 
 * テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](template-syntax.md)」を参照してください。
 * 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](common-deployment-errors.md)」を参照してください。
-* SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](secure-template-with-sas-token.md)」を参照してください。
+* SAS トークンを必要とするテンプレートをデプロイする方法については、「[SAS トークンを使用してプライベート ARM テンプレートをデプロイする](secure-template-with-sas-token.md)」を参照してください。

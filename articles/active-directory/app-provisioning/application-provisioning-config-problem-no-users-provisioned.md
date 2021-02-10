@@ -3,7 +3,7 @@ title: 使用しているアプリケーションでユーザーがプロビジ�
 description: Azure AD でユーザー プロビジョニングのために構成した Azure AD ギャラリー アプリケーションにユーザーが表示されない場合に発生する一般的な問題をトラブルシューティングする方法
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 89a5838524daa1959ecf6b4fe3c17d6175ca8553
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 429f993764273d6b6eb23d75d0132b374d5d0ca0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571778"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256356"
 ---
 # <a name="no-users-are-being-provisioned"></a>ユーザーがプロビジョニングされていない 
 >[!NOTE]

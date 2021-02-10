@@ -3,16 +3,13 @@ title: Azure HDInsight で Data Lake ストレージ ファイルにアクセス
 description: Azure HDInsight で Data Lake ストレージ ファイルにアクセスできない
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 8bac53cd08629e8b0a9cb91e596856c0ae6b5a2f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f4c5a23b604334952730fcc4cf1fcb3fcbed6237
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289115"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944397"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Azure HDInsight で Data Lake ストレージ ファイルにアクセスできない
 

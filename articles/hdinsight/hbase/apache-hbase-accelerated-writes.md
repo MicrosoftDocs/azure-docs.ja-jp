@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 description: Premium マネージド ディスクを使用して Apache HBase のログ先行書き込みのパフォーマンスを向上させる、Azure HDInsight の書き込みアクセラレータ機能の概要を示します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 27b0485fdd7b3c352a85fe7eb39fba33c53bf727
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 1f5a9f05b94f43db9e1d883ef5e86f8621f39251
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519214"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943034"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 

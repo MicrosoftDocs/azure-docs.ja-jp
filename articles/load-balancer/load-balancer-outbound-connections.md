@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: d30998e0d99ba7b1eeb55bdc47cd5cc54690156f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d1632c66791dd5e697b95a2c5aaaddea81629abf
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032917"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052824"
 ---
 # <a name="using-snat-for-outbound-connections"></a>アウトバウンド接続での SNAT の使用
 
@@ -80,7 +80,7 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
 
  | Associations | Method | IP プロトコル |
  | ------------ | ------ | ------------ |
- | パブリック ロード バランサー | [SNAT](#snat) 用のロード バランサー フロントエンド IP の使用。| TCP </br> UDP |
+ | Standard パブリック Load Balancer | [SNAT](#snat) 用のロード バランサー フロントエンド IP の使用。| TCP </br> UDP |
 
 
  #### <a name="description"></a>説明
@@ -103,8 +103,18 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
 
  ここでは、SNAT で使用されるエフェメラル ポートを SNAT ポートと呼びます。 [アウトバウンド規則](./outbound-rules.md)を明示的に構成することを強くお勧めします。 負荷分散規則に従って既定の SNAT を使用している場合は、[既定の SNAT ポート割り当てテーブル](#snatporttable)に記載されているように、SNAT ポートが事前に割り当てられます。
 
+ ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-standard-internal-load-balancer"></a><a name="scenario3"></a>シナリオ 3:パブリック IP を持たず Standard 内部 Load Balancer の背後にある仮想マシン
 
- ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>シナリオ 3:パブリック IP を持たず Basic Load Balancer の背後にある仮想マシン
+
+ | Associations | Method | IP プロトコル |
+ | ------------ | ------ | ------------ |
+ | Standard 内部 Load Balancer | インターネット接続なし。| なし |
+
+ #### <a name="description"></a>説明
+ 
+Standard 内部 Load Balancer を使用する場合、SNAT のために一時 IP アドレスは使用されません。 これは、既定でセキュリティをサポートするため、リソースで使用されるすべての IP アドレスを構成および予約できるようにするためです。 Standard 内部 Load Balancer の使用時にインターネットへのアウトバウンド接続を実現するには、インスタンス レベルのパブリック IP アドレスを構成して、(シナリオ 1) [#scenario1] の動作に従います。または、内部 Load Balancer に加えて、アウトバウンド規則が構成された Standard パブリック Load Balancer にバックエンド インスタンスを追加して、(シナリオ 2)[#scenario2] の動作に従います。 
+
+ ### <a name="scenario-4-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario4"></a>シナリオ 4:パブリック IP を持たず Basic Load Balancer の背後にある仮想マシン
 
 
  | Associations | Method | IP プロトコル |
@@ -126,7 +136,6 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
 
 
  許可リストに IP を追加するためにこのシナリオを使用しないでください。 アウトバウンド動作を明示的に宣言するシナリオ 1 または 2 を使用してください。 [SNAT](#snat) ポートは、[既定の SNAT ポート割り当て表](#snatporttable)の説明のとおり事前に割り当てられます。
-
 
 ## <a name="exhausting-ports"></a><a name="scenarios"></a> ポートの枯渇
 

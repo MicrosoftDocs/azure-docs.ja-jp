@@ -3,7 +3,7 @@ title: アクティビティ レポートを使用して AD FS アプリを Azur
 description: Active Directory フェデレーション サービス (AD FS) のアプリケーション アクティビティ レポートを使用すると、AD FS から Azure Active Directory (Azure AD) にアプリケーションをすばやく移行できます。 AD FS 用のこの移行ツールでは、Azure AD との互換性を識別して、移行に関するガイダンスを得られます。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: how-to
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 3665c5b82095004ddf7dc1f503b54f5164d49c7f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573886"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260064"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>AD FS アプリケーション アクティビティ レポート (プレビュー) を使用してアプリケーションを Azure AD に移行する
 

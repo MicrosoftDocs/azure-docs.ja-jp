@@ -167,7 +167,7 @@
               href: vpn-profile-intune.md
         - name: OpenVPN
           items:
-            - name: ポイント対サイト接続用に OpenVPN を構成する
+            - name: OpenVPN トンネルの種類を構成する
               href: vpn-gateway-howto-openvpn.md
             - name: OpenVPN クライアントを構成する
               href: vpn-gateway-howto-openvpn-clients.md

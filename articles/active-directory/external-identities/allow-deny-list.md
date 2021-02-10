@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87650f364f8ccfd3a531d710bfbdc4715f0ac5a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0cc336781e9a55bbcb6c51677b01bfc402126f4a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442186"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071902"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>B2B ユーザーに対する特定組織からの招待を許可またはブロックする
 
@@ -126,7 +126,7 @@ PowerShell を使用して許可リストまたは拒否リストを設定する
 
 ### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>AzureADPolicy コマンドレットを使用してポリシーを構成する
 
-許可リストまたは拒否リストを作成するには、[New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次の例は、"live.com" ドメインをブロックする拒否リストの設定方法を示しています。
+許可リストまたは拒否リストを作成するには、[New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用します。 次の例は、"live.com" ドメインをブロックする拒否リストの設定方法を示しています。
 
 ```powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -140,19 +140,19 @@ New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Typ
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-許可リストまたは拒否リストのポリシーを設定するには、[Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次に例を示します。
+許可リストまたは拒否リストのポリシーを設定するには、[Set-AzureADPolicy](/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用します。 次に例を示します。
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-ポリシーを取得するには、[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次に例を示します。
+ポリシーを取得するには、[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用します。 次に例を示します。
 
 ```powershell
-$currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
+$currentpolicy = Get-AzureADPolicy -All $true | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-ポリシーを削除するには、[Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) コマンドレットを使用します。 次に例を示します。
+ポリシーを削除するには、[Remove-AzureADPolicy](/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを使用します。 次に例を示します。
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 

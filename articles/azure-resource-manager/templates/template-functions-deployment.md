@@ -2,13 +2,13 @@
 title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレート (ARM テンプレート) で、デプロイ情報を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/27/2021
+ms.openlocfilehash: 438afc947b07ac7425de365a2d63c427cf53e2ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920521"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943479"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM テンプレートのデプロイ関数
 
@@ -33,6 +33,7 @@ Resource Manager には、Azure Resource Manager テンプレート (ARM テン�
 
 この関数は、デプロイ中に渡されたオブジェクトを返します。 返されたオブジェクトのプロパティは、以下に該当するかどうかによって異なります。
 
+* テンプレートまたはテンプレート スペックをデプロイする。
 * ローカル ファイルであるテンプレートをデプロイするか、URI を使用してアクセスされるリモート ファイルであるテンプレートをデプロイする。
 * リソース グループにデプロイするか、他のいずれかのスコープ ([Azure サブスクリプション](deploy-to-subscription.md)、[管理グループ](deploy-to-management-group.md)、または[テナント](deploy-to-tenant.md)) にデプロイする。
 
@@ -66,6 +67,31 @@ Resource Manager には、Azure Resource Manager テンプレート (ARM テン�
   "properties": {
     "templateLink": {
       "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
+}
+```
+
+テンプレート スペックをリソース グループにデプロイする場合は、関数から次の形式が返されます。
+
+```json
+{
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "id": ""
     },
     "template": {
       "$schema": "",

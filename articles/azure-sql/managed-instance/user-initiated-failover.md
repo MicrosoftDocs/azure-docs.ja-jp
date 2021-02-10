@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 12/16/2020
-ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/26/2021
+ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825911"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806088"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance でユーザーによって開始される手動フェールオーバー
 
@@ -125,7 +125,7 @@ API 応答は、次の 2 つのいずれかになります。
 
 ## <a name="monitor-the-failover"></a>フェールオーバーを監視する
 
-ユーザーが開始した手動フェールオーバーの進行状況を監視するには、任意のクライアント (SSMS など) で SQL Managed Instance に対して次の T-SQL クエリを実行します。 システム ビュー dm_hadr_fabric_replica_states が読み取られて、インスタンスで使用可能なレプリカがレポートされます。 手動フェールオーバーを開始した後、同じクエリを更新します。
+BC インスタンスに関するユーザーが開始したフェールオーバーの進行状況を監視するには、任意のクライアント (SSMS など) で SQL Managed Instance に対して次の T-SQL クエリを実行します。 システム ビュー dm_hadr_fabric_replica_states が読み取られて、インスタンスで使用可能なレプリカがレポートされます。 手動フェールオーバーを開始した後、同じクエリを更新します。
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -133,7 +133,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 フェールオーバーを開始する前の出力では、AlwaysOn 可用性グループ内の 1 つのプライマリと 3 つのセカンダリを含む BC サービス レベルの現在のプライマリ レプリカが示されています。 フェールオーバーを実行して、このクエリをもう一度実行すると、プライマリ ノードの変更が示される必要があります。
 
-GP サービス レベルでは、上記の BC で示されているものと同じ出力を表示することはできません。 これは、GP サービス レベルは 1 つのノードのみに基づいているためです。 GP サービス レベルに対する T-SQL クエリの出力では、フェールオーバーの前後で 1 つのノードのみが表示されます。 フェールオーバー中にクライアントからの接続が失われた場合 (通常は 1 分未満)、フェールオーバーが実行されていることを示します。
+GP サービス レベルでは、上記の BC で示されているものと同じ出力を表示することはできません。 これは、GP サービス レベルは 1 つのノードのみに基づいているためです。 GP サービス レベル インスタンスのノードで SQL プロセスが開始された時刻を示す、次の代わりの T-SQL クエリを使用できます。
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+フェールオーバー中にクライアントからの接続が短時間 (通常は 1 分未満) 失われる場合は、サービス レベルに関係なくフェールオーバーが実行されていることを示します。
 
 > [!NOTE]
 > (実際の短い使用不可ではなく) フェールオーバー プロセスが完了するには、**高負荷** のワークロードで一度に数分かかることがあります。 これは、フェールオーバーが行われる前に、インスタンス エンジンによって、プライマリ上のすべての現在のトランザクションが処理され、セカンダリ ノードでキャッチアップされるためです。
@@ -143,6 +149,7 @@ GP サービス レベルでは、上記の BC で示されているものと同
 > - 同じ Managed Instance 上では、**15 分** ごとに 1 つのフェールオーバーを開始できます。
 > - BC インスタンスの場合、フェールオーバー要求が受け入れられるには、レプリカのクォーラムが存在している必要があります。
 > - BC インスタンスの場合、フェールオーバーを開始する読み取り可能セカンダリ レプリカを指定することはできません。
+> - フェールオーバーは、新しいデータベースの最初の完全バックアップが自動バックアップ システムによって完了されるまで許可されません。
 
 ## <a name="next-steps"></a>次のステップ
 

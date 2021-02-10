@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 74861df30ba2854c9299e1f779d0cee59abbc5a8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: b2b3ebdf61349d88d088ebeff5443a9c3e947d73
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911207"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943618"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>顔データを別の Face サブスクリプションに移行する
 
@@ -42,7 +42,7 @@ ms.locfileid: "92911207"
 
 ## <a name="create-face-clients"></a>顔クライアントを作成する
 
-*Program.cs* の **Main** メソッドで、ソース サブスクリプション用とターゲット サブスクリプション用の 2 つの [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) インスタンスを作成します。 この例では、東アジア リージョンの Face サブスクリプションをソースとして使用し、米国西部サブスクリプションをターゲットとして使用します。 この例で、Azure リージョン間でデータを移行する方法について説明します。 
+*Program.cs* の **Main** メソッドで、ソース サブスクリプション用とターゲット サブスクリプション用の 2 つの [FaceClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient) インスタンスを作成します。 この例では、東アジア リージョンの Face サブスクリプションをソースとして使用し、米国西部サブスクリプションをターゲットとして使用します。 この例で、Azure リージョン間でデータを移行する方法について説明します。 
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -63,7 +63,7 @@ var FaceClientWestUS = new FaceClient(new ApiKeyServiceClientCredentials("<West 
 
 ## <a name="prepare-a-persongroup-for-migration"></a>移行のために PersonGroup を準備する
 
-ターゲット サブスクリプションに移行するには、ソース サブスクリプションの PersonGroup の ID が必要です。 PersonGroup オブジェクトの一覧を取得するには、[PersonGroupOperationsExtensions.ListAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) メソッドを使用します。 次に、[PersonGroup.PersonGroupId](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) プロパティを取得します。 このプロセスは、実際の PersonGroup オブジェクトによって変わります。 このガイドでは、ソースの PersonGroup ID は `personGroupId` に格納されます。
+ターゲット サブスクリプションに移行するには、ソース サブスクリプションの PersonGroup の ID が必要です。 PersonGroup オブジェクトの一覧を取得するには、[PersonGroupOperationsExtensions.ListAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync) メソッドを使用します。 次に、[PersonGroup.PersonGroupId](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) プロパティを取得します。 このプロセスは、実際の PersonGroup オブジェクトによって変わります。 このガイドでは、ソースの PersonGroup ID は `personGroupId` に格納されます。
 
 > [!NOTE]
 > [サンプル コード](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)は、移行する新しい PersonGroup を作成してトレーニングします。 ほとんどの場合は、使用する PersonGroup が既に存在するはずです。
@@ -72,7 +72,7 @@ var FaceClientWestUS = new FaceClient(new ApiKeyServiceClientCredentials("<West 
 
 スナップショットは、特定の Face データ型のための一時的なリモート ストレージです。 これは、あるサブスクリプションから別のサブスクリプションにデータをコピーするための一種のクリップボードとして機能します。 最初に、ソース サブスクリプション内のデータのスナップショットを作成します。 次に、これをターゲット サブスクリプション内の新しいデータ オブジェクトに適用します。
 
-ソース サブスクリプションの FaceClient インスタンスを使用して、PersonGroup のスナップショットを作成します。 PersonGroup ID とターゲット サブスクリプションの ID を指定して [TakeAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync?view=azure-dotnet) を使用します。 複数のターゲット サブスクリプションがある場合は、それらを 3 つ目のパラメーターで配列エントリとして追加します。
+ソース サブスクリプションの FaceClient インスタンスを使用して、PersonGroup のスナップショットを作成します。 PersonGroup ID とターゲット サブスクリプションの ID を指定して [TakeAsync](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperationsextensions.takeasync) を使用します。 複数のターゲット サブスクリプションがある場合は、それらを 3 つ目のパラメーターで配列エントリとして追加します。
 
 ```csharp
 var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
@@ -82,7 +82,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> スナップショットを作成して適用するプロセスで、ソースまたはターゲットの PersonGroup または FaceList への通常の呼び出しが中断されることはありません。 ソース オブジェクトを変更する複数の呼び出し (たとえば、[FaceList 管理の呼び出し](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)や [PersonGroup トレーニング](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)の呼び出しなど) を同時に行わないでください。 スナップショット操作がそれらの操作の前または後に実行されたり、エラーが発生したりする可能性があります。
+> スナップショットを作成して適用するプロセスで、ソースまたはターゲットの PersonGroup または FaceList への通常の呼び出しが中断されることはありません。 ソース オブジェクトを変更する複数の呼び出し (たとえば、[FaceList 管理の呼び出し](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations)や [PersonGroup トレーニング](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations)の呼び出しなど) を同時に行わないでください。 スナップショット操作がそれらの操作の前または後に実行されたり、エラーが発生したりする可能性があります。
 
 ## <a name="retrieve-the-snapshot-id"></a>スナップショット ID を取得する
 
@@ -233,7 +233,7 @@ await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 
 次に、関連する API リファレンス ドキュメントを参照するか、スナップショット機能を使用するサンプル アプリを調べるか、またはハウツー ガイドに従って、ここで説明されているその他の API 操作の使用を開始してください。
 
-- [スナップショット リファレンス ドキュメント (.NET SDK)](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
+- [スナップショット リファレンス ドキュメント (.NET SDK)](/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations)
 - [Face のスナップショット サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)
 - [顔を追加する](how-to-add-faces.md)
 - [画像内の顔を検出する](HowtoDetectFacesinImage.md)

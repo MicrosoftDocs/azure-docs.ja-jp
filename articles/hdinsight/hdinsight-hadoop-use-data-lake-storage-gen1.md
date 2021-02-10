@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight の Hadoop で Data Lake Storage Gen1 を使用する
 description: Azure Data Lake Storage Gen1 のデータに対してクエリを実行し、分析結果を格納する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 35941f585a0ae5c0d3915c769db5b18737b299f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539838"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945403"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する
 
@@ -137,19 +134,19 @@ HDInsight クラスターから Azure Data Lake Storage Gen1 へのアクセス�
 
 複数の方法で、HDInsight クラスターから Data Lake Storage のファイルにアクセスできます。
 
-* **完全修飾名の使用** 。 この方法により、アクセスするファイルへの完全パスを指定します。
+* **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
 
     ```
     adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
     ```
 
-* **短縮されたパスの使用** 。 この方法により、クラスター ルートへのパスを次に置き換えます。
+* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
 
     ```
     adl:///<file path>
     ```
 
-* **相対パスの使用** 。 この方法により、アクセスするファイルへの相対パスのみを指定します。
+* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
 
     ```
     /<file.path>/

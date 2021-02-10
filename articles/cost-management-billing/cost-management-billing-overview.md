@@ -4,17 +4,17 @@ description: Azure Cost Management と Billing の機能を使用して、請求
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/28/2021
 ms.topic: overview
 ms.service: cost-management-billing
 ms.subservice: common
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 34034a99641d75e44783cb5b87af8948b4db1628
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: a070b2329777accab6f62b767f74dbc28e5d2623
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029942"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051095"
 ---
 # <a name="what-is-azure-cost-management--billing"></a>Azure Cost Management と Billing とは
 
@@ -43,11 +43,11 @@ Azure を使用するためにサインアップすると、課金アカウン�
 
 現在、Azure portal では、次の種類の課金アカウントがサポートされています。
 
-- **Microsoft Online Services Program**: Azure Web サイトから Azure にサインアップすると、Microsoft Online Services Program の個別の課金アカウントが作成されます。 たとえば、Azure 無料アカウントまたは従量課金制料金のアカウントにサインアップした場合や、Visual Studio サブスクライバーとしてサインアップした場合です。
+- **Microsoft Online Services Program**: Azure Web サイトから Azure にサインアップすると、Microsoft Online Services Program の個別の課金アカウントが作成されます。 たとえば、[Azure 無料アカウント](./manage/create-free-services.md)または従量課金制料金のアカウントにサインアップした場合や、Visual Studio サブスクライバーとしてサインアップした場合です。
 
 - **マイクロソフト エンタープライズ契約**:組織が Azure を使用するために Enterprise Agreement (EA) を締結すると、Enterprise Agreement の課金アカウントが作成されます。
 
-- **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから従量課金制料金のアカウントにサインアップしたお客様や、Azure 無料アカウントをアップグレードしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。
+- **Microsoft Customer Agreement**: 組織が Microsoft 担当者と連携して Microsoft Customer Agreement を締結すると、Microsoft Customer Agreement の課金アカウントが作成されます。 一部のリージョンでは、Azure Web サイトから従量課金制料金のアカウントにサインアップしたお客様や、[Azure 無料アカウント](./manage/create-free-services.md)をアップグレードしたお客様にも、Microsoft Customer Agreement の課金アカウントが作成される場合があります。
 
 ### <a name="scopes-for-billing-accounts"></a>課金アカウントのスコープ
 スコープとは、請求の表示および管理に使用する、課金アカウント内のノードです。 ユーザーが課金データ、支払い、請求書を管理し、アカウントの全般的な管理を行う場所です。

@@ -25,15 +25,15 @@ ms.locfileid: "92780327"
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Wingtip Tickets SaaS スクリプトのダウンロードとブロック解除
 
-実行可能なコンテンツ (スクリプト、dll) は、zip ファイルが外部ソースからダウンロードされ、抽出されると、Windows によってブロックされる場合があります。 zip ファイルからスクリプトを抽出するとき、 **以下の手順に従って、.zip ファイルをブロック解除してから抽出します** 。 これにより、スクリプトの実行が許可されます。
+実行可能なコンテンツ (スクリプト、dll) は、zip ファイルが外部ソースからダウンロードされ、抽出されると、Windows によってブロックされる場合があります。 zip ファイルからスクリプトを抽出するとき、**以下の手順に従って、.zip ファイルをブロック解除してから抽出します**。 これにより、スクリプトの実行が許可されます。
 
 1. Wingtip Tickets SaaS GitHub リポジトリで、探索するデータベース テナント パターンを参照します。
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
-2. **[複製またはダウンロード]** をクリックします。
+2. **[クローンまたはダウンロード]** をクリックします。
 3. **[Download zip]** をクリックして、ファイルを保存します。
-4. zip ファイルを右クリックし、 **[プロパティ]** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例: _WingtipTicketsSaaS-DbPerTenant-master.zip_ )
+4. zip ファイルを右クリックし、 **[プロパティ]** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例: _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. **[全般]** タブで **[ブロックの解除]** を選択します。
 6. **[OK]** をクリックします。
 7. ファイルを解凍します。
@@ -57,7 +57,7 @@ ms.locfileid: "92780327"
 
 ### <a name="execute-the-scripts-by-pressing-f5"></a>F5 キーを押してスクリプトを実行する
 
-複数のスクリプトでは *$PSScriptRoot* を使用してフォルダー間を移動します。 *$PSScriptRoot* が評価されるのは、 **F5** キーを押してスクリプトが実行される場合のみです。    選択項目を強調表示して実行する ( **F8** キー) とエラーが発生するため、スクリプトの実行時には **F5** キーを押してください。
+複数のスクリプトでは *$PSScriptRoot* を使用してフォルダー間を移動します。 *$PSScriptRoot* が評価されるのは、**F5** キーを押してスクリプトが実行される場合のみです。    選択項目を強調表示して実行する (**F8** キー) とエラーが発生するため、スクリプトの実行時には **F5** キーを押してください。
 
 ### <a name="step-through-the-scripts-to-examine-the-implementation"></a>スクリプトをステップスルーして実装を確認する
 
@@ -66,7 +66,7 @@ ms.locfileid: "92780327"
 PowerShell スクリプトの調査およびステップ実行に関するヒント
 
 - PowerShell ISE で **Demo-** スクリプトを開きます。
-- **F5** キーを使って実行または続行します ( *$PSScriptRoot* は選択したスクリプトの実行時に評価されないため、 **F8** キーの使用はお勧めできません)。
+- **F5** キーを使って実行または続行します ( *$PSScriptRoot* は選択したスクリプトの実行時に評価されないため、**F8** キーの使用はお勧めできません)。
 - 行をクリックまたは選択して **F9** キーを押し、ブレークポイントを設定します。
 - **F10** キーを使用して、関数またはスクリプトの呼び出しをステップ オーバーします。
 - **F11** キーを使用して、関数またはスクリプトの呼び出しにステップ インします。
@@ -87,16 +87,16 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
 
 1. *SSMS* を開き、テナントに接続します。 サーバーの名前は、選択したデータベース テナント パターンに依存します (詳細については以下を参照してください)。
-    - **スタンドアロン アプリケーション:** 個々のテナントのサーバー (例: *contosoconcerthall-&lt;ユーザー&gt;.database.windows.net* )
+    - **スタンドアロン アプリケーション:** 個々のテナントのサーバー (例: *contosoconcerthall-&lt;ユーザー&gt;.database.windows.net*)
     - **テナントごとのデータベース:** *tenants1-dpt-&lt;ユーザー&gt;.database.windows.net*
     - **マルチテナント データベース:** *tenants1-mt-&lt;ユーザー&gt;.database.windows.net*
 2. **[接続]**  >  **[データベース エンジン...]** をクリックします。
 
    ![カタログ サーバー](./media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. デモの資格情報は次のとおりです。ログイン = *developer* 、パスワード = *P\@ssword1*
+3. デモの資格情報は次のとおりです。ログイン = *developer*、パスワード = *P\@ssword1*
 
-    次の図では、" *テナントごとのデータベース* " パターンのログインを示します。
+    次の図では、"*テナントごとのデータベース*" パターンのログインを示します。
     ![connection](./media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
 
 
@@ -109,7 +109,7 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
 接続に成功すると、すべてのサーバーが表示されます。 データベースの一覧は、プロビジョニングしたテナントに応じて異なる場合があります。
 
-次の図では、" *テナントごとのデータベース* " パターンのログインを示します。
+次の図では、"*テナントごとのデータベース*" パターンのログインを示します。
 
 ![オブジェクト エクスプローラー](./media/saas-tenancy-wingtip-app-guidance-tips/object-explorer.png)
 

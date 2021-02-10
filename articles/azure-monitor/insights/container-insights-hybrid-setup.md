@@ -3,12 +3,12 @@ title: ハイブリッド Kubernetes クラスターに Azure Monitor for contai
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890464"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936417"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
@@ -21,7 +21,7 @@ Azure Monitor for containers では、次の構成が公式にサポートされ
 - 環境:
 
     - オンプレミスの Kubernetes
-    - Azure と Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true)に関するページを参照してください
+    - Azure と Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)に関するページを参照してください
     - [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) バージョン 4 以降、オンプレミスまたはその他のクラウド環境。
 
 - Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。
@@ -44,9 +44,9 @@ Azure Monitor for containers では、次の構成が公式にサポートされ
     >同一の Log Analytics ワークスペースに名称が同じクラスターが複数ある場合には、そのワークスペースに対してクラスターの監視を有効にすることはできません。 クラスター名は一意になっている必要があります。
     >
 
-- コンテナーの監視を有効にするために、 **Log Analytics 共同作成者ロール** のメンバーである必要があります。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、[ワークスペースとログ データに対するアクセスの管理](../platform/manage-access.md)に関するページを参照してください。
+- コンテナーの監視を有効にするために、**Log Analytics 共同作成者ロール** のメンバーである必要があります。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、[ワークスペースとログ データに対するアクセスの管理](../platform/manage-access.md)に関するページを参照してください。
 
-- 監視データを表示するには、Azure Monitor for containers で構成された Log Analytics ワークスペースの " [*Log Analytics 閲覧者*](../platform/manage-access.md#manage-access-using-azure-permissions)" ロールを持っている必要があります。
+- 監視データを表示するには、Azure Monitor for containers で構成された Log Analytics ワークスペースの "[*Log Analytics 閲覧者*](../platform/manage-access.md#manage-access-using-azure-permissions)" ロールを持っている必要があります。
 
 - [HELM クライアント](https://helm.sh/docs/using_helm/)。これは、特定の Kubernetes クラスターに Azure Monitor for containers のチャートをオンボードするために使用します。
 
@@ -202,7 +202,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
     }
     ```
 
-7. 値を編集します。 **workspaceResourceId** には手順 3 でコピーした値を使用し、 **workspaceRegion** には Azure CLI コマンド [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true) を実行して得られる **リージョン** の値をコピーします。
+7. 値を編集します。**workspaceResourceId** には手順 3 でコピーした値を使用し、**workspaceRegion** には Azure CLI コマンド [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true) を実行して得られる **リージョン** の値をコピーします。
 
 8. このファイルを containerSolutionParams.json という名前でローカル フォルダーに保存します。
 
@@ -258,13 +258,13 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    出力で、 **name** フィールドの下のワークスペース名を見つけ、 **customerID** フィールドの下にあるその Log Analytics ワークスペースのワークスペース ID をコピーします。
+    出力で、**name** フィールドの下のワークスペース名を見つけ、**customerID** フィールドの下にあるその Log Analytics ワークスペースのワークスペース ID をコピーします。
 
 2. 次のコマンドを実行して、ワークスペースの主キーを特定します。
 
     `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
 
-    出力で、 **primarySharedKey** フィールドの下の主キーを見つけ、その値をコピーします。
+    出力で、**primarySharedKey** フィールドの下の主キーを見つけ、その値をコピーします。
 
 >[!NOTE]
 >次のコマンドは、Helm バージョン 2 にのみ適用できます。 `--name` パラメーターの使用は、Helm バージョン 3 には適用されません。 
@@ -303,7 +303,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 
 AKS エンジン クラスター仕様の JSON ファイル (API モデルとも呼ばれます) で、アドオンを指定できます。 このアドオンでは、収集した監視データが格納される Log Analytics ワークスペースの、base64 でエンコードされたバージョンの `WorkspaceGUID` と `WorkspaceKey` を指定します。 `WorkspaceGUID` と `WorkspaceKey` は、前のセクションの手順 1 と 2 を使用して検出できます。
 
-Azure Stack Hub クラスターに対してサポートされる API 定義については、[kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json) の例をご覧ください。 具体的には、 **kubernetesConfig** の **addons** プロパティを探します。
+Azure Stack Hub クラスターに対してサポートされる API 定義については、[kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json) の例をご覧ください。 具体的には、**kubernetesConfig** の **addons** プロパティを探します。
 
 ```json
 "orchestratorType": "Kubernetes",

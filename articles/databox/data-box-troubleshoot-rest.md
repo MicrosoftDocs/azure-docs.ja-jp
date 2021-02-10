@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: troubleshooting
-ms.date: 04/19/2019
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558558"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796052"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Azure Data Box BLOB ストレージに関連する問題のトラブルシューティング
 
@@ -65,6 +65,7 @@ ms.locfileid: "85558558"
 |エラー メッセージ  |推奨される操作 |
 |---------|---------|
 |The connection times out. (接続がタイムアウトになりました。) |Data Box デバイスにサインインし、デバイスがロック解除されていることを確認します。 デバイスは再起動される度に、ユーザーがサインインするまでロックされた状態になります。|
+|REST API 認証が次のエラーで失敗します。サーバーが要求を認証できませんでした。 認証ヘッダーの値が、署名を含め正しく形成されていることを確認してください。 ErrorCode:AuthenticationFailed. |これが発生する理由の 1 つは、デバイスの時刻が Azure の時刻と同期されていない場合です。 時間のずれが大きい場合、REST API 経由で Data Box にデータをコピーしようとすると、REST API 認証が中断されます。 この状況では、送信 UDP 123 ポートを開き、`time.windows.com` へのアクセスを許可することができます。 デバイスの時刻が Azure の時刻と同期されると、認証は成功するはずです。 |
 
 ## <a name="next-steps"></a>次のステップ
 

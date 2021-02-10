@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 38054d983b0a9f01f396b7379fec37de452d03b7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222991"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051874"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Load Balancer に関してよく寄せられる質問
 
@@ -48,6 +48,10 @@ nslookup コマンドを使用することで、名前 myip.opendns.com に関�
  
 ## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>同じ可用性セットから Load Balancer の異なるバックエンド プールに VM を追加することはできますか?
 いいえ、それはできません。
+
+## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>Azure Load Balancer で実現できる最大データ スループットはどのくらいですか?
+Azure LB はパススルー ネットワーク ロード バランサーであるため、スループットの制限は、バックエンド プールで使用される仮想マシンの種類によって決まります。 その他のネットワーク スループットに関連する情報については、「[仮想マシンのネットワーク スループット](../virtual-network/virtual-machine-network-throughput.md)」を参照してください。
+
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>同じリージョン内の Azure Storage への接続はどのように機能しますか?
 上記のシナリオでの送信接続の使用では、VM と同じリージョン内の Storage に接続する必要はありません。 これを望まない場合は、前述のようにネットワーク セキュリティ グループ (NSG) を使用します。 他のリージョン内の Storage への接続では、送信接続が必要です。 同じリージョン内の VM から Storage に接続する場合、Storage 診断ログ内のソース IP アドレスは、VM のパブリック IP アドレスではなく、内部プロバイダー アドレスになることに注意してください。 お使いの Storage アカウントへのアクセスを、同じリージョン内の 1 つ以上の仮想ネットワーク サブネット内の VM に制限する場合は、ストレージ アカウントのファイアウォールを構成するときに、パブリック IP アドレスではなく、[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を使用します。 サービス エンドポイントを構成すると、診断ログには、内部プロバイダー アドレスではなく、お使いの仮想ネットワークのプライベート IP アドレスが表示されます。

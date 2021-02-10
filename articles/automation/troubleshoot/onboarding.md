@@ -2,15 +2,15 @@
 title: Azure Automation 機能のデプロイに関する問題のトラブルシューティング
 description: この記事では、Azure Automation 機能をデプロイするときに発生する問題のトラブルシューティングと解決方法について説明します。
 services: automation
+ms.subservice: ''
 ms.date: 06/30/2020
-ms.topic: conceptual
-ms.service: automation
-ms.openlocfilehash: a6b8384193e821e6c41a0d4d979cda51f6c65b3a
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.topic: troubleshooting
+ms.openlocfilehash: 6668fe3c30bd5187016ac2e0c766e7e78d5b3e8c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92070488"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896513"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>機能のデプロイに関する問題のトラブルシューティング
 

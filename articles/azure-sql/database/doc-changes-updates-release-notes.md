@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93391995"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703769"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -78,7 +78,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 ### <a name="sql-managed-instance-h2-2019-updates"></a>2019 年下期の SQL Managed Instance の更新プログラム
 
 - [サービス支援サブネット構成](https://azure.microsoft.com/updates/service-aided-subnet-configuration-for-managed-instance-in-azure-sql-database-available/)は、ユーザーがデータ トラフィックを制御しながら、SQL Managed Instance によって管理トラフィックのフローが中断されないことが保証される、サブネット構成を管理するためのセキュリティで保護された便利な方法です。
-- [Bring Your Own Key (BYOK) による Transparent Data Encryption (TDE)](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) により、保存時のデータ保護に Bring Your Own Key (BYOK) シナリオが可能になり、組織がキーとデータの管理における職務を分離できるようになります。
+- [Bring Your Own Key (BYOK) による Transparent Data Encryption (TDE)](https://azure.microsoft.com/updates/general-avilability-transparent-data-encryption-with-customer-managed-keys-for-azure-sql-database-managed-instance/) により、保存時のデータ保護として Bring Your Own Key (BYOK) シナリオが可能になり、組織はキーとデータに関する管理の職務を分離できるようになります。
 - [自動フェールオーバー グループ](https://azure.microsoft.com/updates/azure-sql-database-auto-failover-groups-feature-now-available-in-all-regions/)では、プライマリ インスタンスから別のリージョンにあるセカンダリ インスタンスへの、すべてのデータベースのレプリケートが有効になります。
 - [グローバル トレース フラグ](https://azure.microsoft.com/updates/global-trace-flags-are-now-available-in-azure-sql-database-managed-instance/)を使用すると、SQL Managed Instance の動作を構成できます。
 
@@ -92,12 +92,13 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
   - より優れたネットワーク パフォーマンスと、<a href="https://aka.ms/four-cores-sql-mi-update">Gen5 ハードウェア世代における 4 仮想コア</a>またはポイントインタイム リストアのための<a href="/azure/azure-sql/database/automated-backups-overview">最大 35 日間のバックアップ リテンション期間の構成</a>を得るために、[パブリック エンドポイント](../managed-instance/public-endpoint-configure.md)と [Proxy Override](connectivity-architecture.md#connection-policy) 接続を使用するように、SQL Managed Instance を構成します。 [長期のバックアップ リテンション期間](long-term-retention-overview.md#sql-managed-instance-support) (最長 10 年間) は、現在、制限付きパブリック プレビュー段階です。  
   - 新しい機能を利用すると、<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">PowerShell を使用してお使いのデータベースを別のデータ センターに geo リストアして</a>、[データベース名を変更し](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[仮想クラスターを削除する](../managed-instance/virtual-cluster-delete.md)ことができます。
   - 新しい組み込みの[インスタンス共同作成者ロール](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)を使用すると、セキュリティ原則による職務の分離 (SoD) のコンプライアンスとエンタープライズ標準によるコンプライアンスを有効にできます。
-  - SQL Managed Instance は、中国北部 2 および中国東部 2 と、GA (US Gov テキサス、US Gov アリゾナ) の Azure Government リージョン内で利用できます。 また、次のパブリック リージョンでも利用できます。オーストラリア中部、オーストラリア中部 2、ブラジル南部、フランス南部、アラブ首長国連邦中部、アラブ首長国連邦北部、南アフリカ北部、南アフリカ西部です。
+  - SQL Managed Instance は、次の Azure Government リージョン (US Gov テキサス、US Gov アリゾナ) で GA として、さらに中国北部 2 と中国東部 2 で使用できます。 また、次のパブリック リージョンでも利用できます。オーストラリア中部、オーストラリア中部 2、ブラジル南部、フランス南部、アラブ首長国連邦中部、アラブ首長国連邦北部、南アフリカ北部、南アフリカ西部です。
 
 ## <a name="known-issues"></a>既知の問題
 
 |問題  |検出した日  |Status  |解決した日  |
 |---------|---------|---------|---------|
+|[@query パラメーターの使用時、プロシージャ sp_send_dbmail が一時的に失敗する可能性がある](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|回避策あり||
 |[サーバー信頼グループからマネージド インスタンスを削除した後、分散トランザクションを実行できる](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|回避策あり||
 |[マネージド インスタンスのスケーリング操作の後、分散トランザクションを実行できない](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|回避策あり||
 |Azure SQL の [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15)、およびマネージド インスタンスの `BACKUP`/`RESTORE` ステートメントで、Azure AD の Manage Identity を使用して Azure Storage に対する認証を実行できない|2020 年 9 月|回避策あり||
@@ -115,7 +116,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |[Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|2019 年 9 月|回避策あり||
 |[サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要がある](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|2019 年 8 月|回避策あり||
 |[Azure AD ログイン タイプの偽装がサポートされない](#impersonation-of-azure-ad-login-types-is-not-supported)|2019 年 7 月|回避策なし||
-|[sp_send_db_mail の @query パラメーターはサポートされない](#-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|回避策なし||
+|[sp_send_db_mail の @query パラメーターはサポートされない](#query-parameter-not-supported-in-sp_send_db_mail)|2019 年 4 月|解決済み|2021 年 1 月|
 |[geo フェールオーバー後、トランザクション レプリケーションを再構成する必要がある](#transactional-replication-must-be-reconfigured-after-geo-failover)|2019 年 3 月|回避策なし||
 |[一時的なデータベースが RESTORE 操作中に使用される](#temporary-database-is-used-during-restore-operation)||回避策あり||
 |[TEMPDB の構造と内容は再作成される](#tempdb-structure-and-content-is-re-created)||回避策なし||
@@ -128,6 +129,29 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |ソース データベースにインメモリ OLTP オブジェクトが含まれている場合、Business Critical レベルから General Purpose レベルへの組み込みのポイントインタイム データベース復元は成功しません。||解決済み|2019 年 10 月|
 |セキュリティで保護された接続を使用する外部 (Azure 以外) メール サーバーのデータベース メール機能||解決済み|2019 年 10 月|
 |包含データベースは、SQL Managed Instance 内でサポートされている||解決済み|2019 年 8 月|
+
+### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>@query パラメーターの使用時、プロシージャ sp_send_dbmail が一時的に失敗する可能性がある
+
+`@query` パラメーターが使用されているとき、プロシージャ sp_send_dbmail が一時的に失敗する可能性があります。 この問題が発生した場合は、プロシージャ sp_send_dbmail の実行が 2 回に 1 回、エラー `Msg 22050, Level 16, State 1` とメッセージ `Failed to initialize sqlcmd library with error number -2147467259` で失敗します。 このエラーを正しく確認できるようにするには、パラメーター `@exclude_query_output` を既定値 0 にしてこのプロシージャを呼び出す必要があります。そうしないと、このエラーは伝達されません。
+この問題は、sp_send_dbmail での権限借用と接続プールの使用方法に関連した既知のバグが原因で発生します。
+この問題を回避するには、電子メールを送信するためのコードを、出力パラメーター `@mailitem_id` に依存する再試行ロジックにラップします。 実行が失敗した場合は、このパラメーター値が NULL になり、電子メールを正常に送信するには sp_send_dbmail をもう 1 回呼び出す必要があることを示します。 この再試行ロジックの例を次に示します。
+```sql
+CREATE PROCEDURE send_dbmail_with_retry AS
+BEGIN
+    DECLARE @miid INT
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+        @mailitem_id = @miid OUTPUT
+
+    -- If sp_send_dbmail returned NULL @mailidem_id then retry sending email.
+    --
+    IF (@miid is NULL)
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+END
+```
 
 ### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>サーバー信頼グループからマネージド インスタンスを削除した後、分散トランザクションを実行できる
 
@@ -156,7 +180,7 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 場合によっては、Azure AD および Azure Key Vault (AKV) サービスへのアクセスに使用されるサービス プリンシパルに問題が存在することがあります。 そのため、この問題は SQL Managed Instance での Azure AD 認証および Transparent Database Encryption (TDE) の使用に影響します。 これは、断続的な接続の問題として発生する可能性があります。または、CREATE LOGIN/USER FROM EXTERNAL PROVIDER または EXECUTE AS LOGIN/USER などのステートメントを実行できない場合に発生する可能性があります。 新しい Azure SQL Managed Instance 上でカスタマー マネージド キーを使用して TDE を設定しても、状況によっては機能しないことがあります。
 
-**回避策**:更新コマンドを実行する前に、ご利用の SQL Managed Instance 上でこの問題が発生しないようにするには、または更新コマンドの実行後にこの問題が既に発生している場合は、Azure portal に移動し、SQL Managed Instance の [[Active Directory 管理者]](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal) ブレード にアクセスします。 "Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします" というエラー メッセージが表示されるかどうかを確認します。 このエラーメッセージが表示された場合は、それをクリックし、このエラーが解決されるまで、示されるステップ バイ ステップの手順に従います。
+**回避策**:更新コマンドを実行する前に、ご利用の SQL Managed Instance 上でこの問題が発生しないようにするには、または更新コマンドの実行後にこの問題が既に発生している場合は、Azure portal に移動し、SQL Managed Instance の [[Active Directory 管理者]](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal) ブレード にアクセスします。 "Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします" というエラー メッセージが表示されるかどうかを確認します。 このエラー メッセージが表示された場合は、それをクリックし、このエラーが解決されるまで、示されるステップ バイ ステップの手順に従います。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある
 
@@ -216,7 +240,7 @@ SQL Server と SQL Managed Instance では、[ユーザーは空でないファ�
 
 進行中の `RESTORE` ステートメント、データ移行サービスの移行プロセス、組み込みのポイントインタイム リストアでは、復元プロセスが完了するまで、サービス レベルの更新や既存のインスタンスのサイズ変更、新しいインスタンスの作成がブロックされます。 
 
-復元プロセスでは、復元プロセスが実行されているのと同じサブネット内のマネージド インスタンスとインスタンス プールでこれらの操作がブロックされます。 インスタンス プール内のインスタンスは影響を受けません。 サービス レベルを作成または変更する操作が失敗したり、タイムアウトしたりすることはありません。復元プロセスが完了するかキャンセルされると、処理が続行されます。
+復元プロセスでは、復元プロセスが実行されているのと同じサブネット内のマネージド インスタンスとインスタンス プールでこれらの操作がブロックされます。 インスタンス プール内のインスタンスは影響を受けません。 サービス レベルの作成または変更操作は失敗したり、タイムアウトになったりしません。復元プロセスが完了するかキャンセルされると、処理が続行されます。
 
 **回避策**:サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
 

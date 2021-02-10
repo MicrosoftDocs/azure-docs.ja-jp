@@ -2,13 +2,13 @@
 title: Azure VMware Solution 向け vRealize Operations の設定
 description: Azure VMware Solution のプライベート クラウド向けに vRealize Operations を設定する方法について説明します。
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 25469089cf1fef076711bfaf1492fad43edbcf33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/26/2021
+ms.openlocfilehash: c2470ecde0874b46da1236ca6e99e6b0b3eb990d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371785"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880693"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware Solution 向け vRealize Operations の設定
 
@@ -27,8 +27,8 @@ vRealize Operations Manager は、VMware インフラストラクチャ管理者
 * Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開オプションでは、必要に応じて、[vRealize Operations Remote Controller](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) の製品ドキュメントを確認します。 
 
 
-
 ## <a name="prerequisites"></a>前提条件
+* [vRealize Operations Manager](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) がインストールされている。
 * オンプレミスと Azure VMware Solution SDDC の間で構成されている VPN または Azure ExpressRoute。
 * Azure VMware Solution のプライベート クラウドが Azure にデプロイされていること。
 
@@ -50,12 +50,13 @@ vRealize Operations 機能を Azure VMware Solution プライベート クラウ
 
 もう 1 つのオプションは、vRealize Operations Manager のインスタンスを、プライベート クラウド内の vSphere クラスターにデプロイする方法です。 
 
+>[!IMPORTANT]
+>現在、このオプションは VMware ではサポートされていません。
+
 :::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Azure VMware Solution で動作する vRealize Operations" border="false":::
 
 インスタンスがデプロイされたら、vCenter、ESXi、NSX-T、vSAN、HCX からデータを収集するように vRealize Operations を構成できます。 
 
-> [!TIP]
-> vRealize Operations Manager をインストールするためのステップ バイ ステップ ガイドについては、[VMware のドキュメント](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html)を参照してください。
 
 
 ## <a name="known-limitations"></a>既知の制限事項

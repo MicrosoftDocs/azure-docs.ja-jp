@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Portal のドキュメント
-summary: Azure portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。 Azure portal を使用して、ご自分の Azure サブスクリプションを管理できます。 簡単な Web アプリから複雑なクラウド デプロイまで、すべてを構築、管理、監視することができます。 リソースを整理して表示するカスタム ダッシュボードを作成したり、最適なエクスペリエンスを提供するアクセシビリティ オプションを構成したりできます。
+summary: Azure Portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。 Azure Portal を使用して、ご自分の Azure サブスクリプションを管理できます。 簡単な Web アプリから複雑なクラウド デプロイまで、すべてを構築、管理、監視することができます。 リソースを整理して表示するカスタム ダッシュボードを作成したり、最適なエクスペリエンスを提供するアクセシビリティ オプションを構成したりできます。
 metadata:
   title: Azure Portal のドキュメント
-  description: Azure portal の Web ベース コンソールを使用して自分の Azure サブスクリプションとリソースを管理する方法について説明します。 Azure portal は、コマンドライン ツールの代わりに使用できます。
+  description: Azure Portal の Web ベース コンソールを使用して自分の Azure サブスクリプションとリソースを管理する方法について説明します。 Azure Portal は、コマンドライン ツールの代わりに使用できます。
   services: Azure portal
   ms.topic: landing-page
   ms.collection: collection
@@ -15,15 +15,15 @@ metadata:
   ms.lasthandoff: 12/07/2020
   ms.locfileid: "96749013"
 landingContent:
-- title: Azure portal について
+- title: Azure Portal について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure portal とは
+    - text: Azure Portal とは
       url: azure-portal-overview.md
     - text: サポートされているブラウザーとデバイス
       url: azure-portal-supported-browsers-devices.md
-- title: Azure portal のカスタマイズ
+- title: Azure Portal のカスタマイズ
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -33,11 +33,11 @@ landingContent:
       url: azure-portal-dashboards.md
     - text: ご自分のお気に入りの管理
       url: azure-portal-add-remove-sort-favorites.md
-- title: Azure portal へのアクセスの管理
+- title: Azure Portal へのアクセスの管理
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure portal の URL をセーフリストに追加する
+    - text: Azure Portal の URL をセーフリストに追加する
       url: azure-portal-safelist-urls.md
     - text: ダッシュボードの Azure ロールベースのアクセス制御
       url: azure-portal-dashboard-share-access.md
@@ -55,7 +55,7 @@ landingContent:
       url: azure-portal-quickstart-center.md
   - linkListType: how-to-guide
     links:
-    - text: Azure portal の使い方に関するビデオ シリーズ
+    - text: Azure Portal の使い方に関するビデオ シリーズ
       url: azure-portal-video-series.md
   - linkListType: learn
     links:

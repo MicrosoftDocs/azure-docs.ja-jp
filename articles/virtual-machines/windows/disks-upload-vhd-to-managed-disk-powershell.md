@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 1655c48eeb9227bf934c7fd9bb37610327b2b98c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: c766c78705a1c1e40a9385360d35ac06a3db3a5d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736273"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252239"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure PowerShell
 
@@ -49,14 +49,14 @@ GUI を使用してディスクをアップロードする場合は、Azure Stor
 `<yourdiskname>`、`<yourresourcegroupname>`、`<yourregion>` を置き換え、次のコマンドを実行します。
 
 > [!TIP]
-> OS ディスクを作成する場合は、-HyperVGeneration '<yourGeneration>' を `New-AzDiskConfig` に追加します。
+> OS ディスクを作成する場合は、`-HyperVGeneration '<yourGeneration>'` を `New-AzDiskConfig` に追加します。
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
 
 $diskconfig = New-AzDiskConfig -SkuName 'Standard_LRS' -OsType 'Windows' -UploadSizeInBytes $vhdSizeBytes -Location '<yourregion>' -CreateOption 'Upload'
 
-New-AzDisk -ResourceGroupName '<yourresourcegroupname' -DiskName '<yourdiskname>' -Disk $diskconfig
+New-AzDisk -ResourceGroupName '<yourresourcegroupname>' -DiskName '<yourdiskname>' -Disk $diskconfig
 ```
 
 Premium SSD または Standard SSD をアップロードする場合は、**Standard_LRS** を **Premium_LRS** または **StandardSSD_LRS** のいずれかに置き換えます。 Ultra Disks はまだサポートされていません。

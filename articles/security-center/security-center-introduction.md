@@ -12,18 +12,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709089"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806184"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure Security Center は、データ センターのセキュリティ体制を強化する統合インフラストラクチャ セキュリティ管理システムです。Azure 内かどうかにかかわらずクラウド内とオンプレミス上のハイブリッド ワークロード全体を保護する高度な脅威防止機能があります。
 
@@ -74,7 +72,7 @@ Security Center を使用すると、**シャドウ IT のサブスクリプシ�
 
 ### <a name="continuous-assessments"></a>継続的な評価
 
-Security Center では、ワークロード全体に展開されている新しいリソースが継続的に検出され、セキュリティのベスト プラクティスに従って構成されているかどうかが評価され、そうでない場合はフラグが立てられます。また、マシンを保護するために必要な修正点について、優先順位が付けられた推奨事項一覧が表示されます。
+Security Center では、ワークロード全体に展開されている新しいリソースが継続的に検出され、セキュリティのベスト プラクティスに従って構成されているかどうかが評価され、そうでない場合はフラグが立てられます。また、マシンを保護するために必要な修正点について、優先順位が付けられた推奨事項一覧が表示されます。 この推奨事項一覧を可能にし、サポートしているのは、[Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)という、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Microsoft 製の Azure 固有の一連のガイドラインです。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
 
 Security Center では、全体的なセキュリティ体制に対する各推奨事項の重要度が理解しやすいよう、推奨事項がセキュリティ コントロールにグループ化され、各コントロールには **セキュア スコア** 値が追加されます。 これは、**セキュリティ作業の優先度付け** を可能にするうえで重要です。
 
@@ -107,9 +105,8 @@ Security Center の脅威の防止機能には、サイバー キルチェーン
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Microsoft Defender for Endpoint との統合
 
-Security Center には、Microsoft Defender for Endpoint との、自動的でネイティブな統合機能が備わっています。 つまり、Windows マシンと Linux マシンは、構成を行うことなく Security Center の推奨事項および評価と完全に統合されます。
+Azure Defender for servers には、Microsoft Defender for Endpoint との、自動的でネイティブな統合機能が備わっています。 詳細については、「[Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint](security-center-wdatp.md)」を参照してください。
 
-さらに、Security Center では、サーバー環境のアプリケーション制御ポリシーを自動化することができます。 Security Center の適応型アプリケーション制御を使用すると、Windows サーバー全体の包括的なアプリの承認リストを作成できます。 ルールを作成して違反を確認する必要はありません。すべて自動的に行われます。
 
 ### <a name="protect-paas"></a>PaaS の保護
 

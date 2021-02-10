@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 9b9e42d55a982aeb55d7c9e26f7b1a6cbca32e0a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734829"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052806"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Automation で資格情報を管理する
 
@@ -115,7 +115,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-資格情報を使用して [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) で Azure を認証することもできます。 ほとんどの状況下では、[[実行アカウント]](../manage-runas-account.md) を使用して、[Get-AzAutomationConnection](../automation-connections.md) との接続を取得する必要があります。
+資格情報を使用して [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) で Azure を認証することもできます。 ほとんどの状況下では、[[実行アカウント]](../automation-security-overview.md#run-as-accounts) を使用して、[Get-AzAutomationConnection](../automation-connections.md) との接続を取得する必要があります。
 
 ```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'

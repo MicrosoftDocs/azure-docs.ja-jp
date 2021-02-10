@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure Blob Storage ライブラリ v12 - Xamarin
+title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - Xamarin'
 description: このクイックスタートでは、Xamarin で Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、モバイル デバイスに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
 author: codemillmatt
 ms.author: masoucou
@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004740"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802362"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイック スタート:Azure Blob Storage クライアント ライブラリ v12 と Xamarin
+# <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>クイックスタート: Azure Blob Storage クライアント ライブラリ v12 と Xamarin
 
 Xamarin で Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
 

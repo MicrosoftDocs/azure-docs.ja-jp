@@ -1,5 +1,5 @@
 ---
-title: Pandas を使用して Azure BLOB ストレージのデータを探索する - Team Data Science Process
+title: Pandas を使用して Azure Blob Storage のデータを探索する - Team Data Science Process
 description: Pandas Python パッケージを使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3d80ff9f5f96bbc642aed6598c86cb682d606695
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410676"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805671"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure BLOB ストレージのデータを探索する
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure Blob Storage のデータを探索する
 
 この記事では、[Pandas](https://pandas.pydata.org/) Python パッケージを使用して Azure BLOB コンテナーに格納されているデータを探索する方法について説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "94410676"
 この記事では、以下のことを前提としています。
 
 * Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../../storage/common/storage-account-create.md)」をご覧ください。
-* Azure BLOB ストレージ アカウントにデータが格納されている。 手順については、「 [Azure Storage との間でのデータの移動](../../storage/common/storage-choose-data-transfer-solution.md)
+* Azure Blob Storage アカウントにデータが格納されている。 手順については、「 [Azure Storage との間でのデータの移動](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Pandas データ フレームにデータを読み込む
 データセットを探索および操作するには、先にデータを BLOB ソースからローカル ファイルにダウンロードしておく必要があります。このローカル ファイルを、Pandas データ フレームに読み込むことができます。 この手順に必要な操作は次のとおりです。

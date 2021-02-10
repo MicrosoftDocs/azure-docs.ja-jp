@@ -1,5 +1,6 @@
 ---
-title: ユーザーをサインインまたはサインアウトさせる Web アプリを作成する - Microsoft ID プラットフォーム | Azure
+title: ユーザーをサインインまたはサインアウトさせる Web アプリを作成する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーをサインインまたはサインアウトさせる Web アプリを作成する方法について説明します。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443553"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937839"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>ユーザーをサインインさせる Web アプリ:サインインとサインアウト
 
@@ -213,7 +214,7 @@ def _get_token_from_cache(scope=None):
 Web アプリからのサインアウトに必要なのは、サインインしたアカウントに関する情報を Web アプリの状態から削除することだけではありません。
 サインアウトするには、Web アプリによってユーザーが Microsoft ID プラットフォーム `logout` エンドポイントにリダイレクトされる必要もあります。
 
-Web アプリによってユーザーが `logout` エンドポイントにリダイレクトされると、このエンドポイントでは、ユーザーのセッションがブラウザーから消去されます。 アプリが `logout` エンドポイントに移動しなかった場合、ユーザーは資格情報を再入力しなくてもアプリに再認証されます。 理由は、Microsoft ID プラットフォーム エンドポイントとの有効なシングル サインイン セッションがあるからです。
+Web アプリによってユーザーが `logout` エンドポイントにリダイレクトされると、このエンドポイントでは、ユーザーのセッションがブラウザーから消去されます。 アプリが `logout` エンドポイントに移動しなかった場合、ユーザーは資格情報を再入力しなくてもアプリに再認証されます。 理由は、Microsoft ID プラットフォームとの有効なシングル サインイン セッションがあるからです。
 
 詳細については、「[Microsoft ID プラットフォームと OpenID Connect プロトコル](v2-protocols-oidc.md)」ドキュメントの「[サインアウト要求を送信する](v2-protocols-oidc.md#send-a-sign-out-request)」セクションを参照してください。
 
@@ -221,19 +222,19 @@ Web アプリによってユーザーが `logout` エンドポイントにリダ
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-アプリケーションの登録中に、ログアウト後の URI を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `https://localhost:44321/signout-oidc` と登録しました。 詳細については、「[webApp アプリを登録する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp)」を参照してください。
+アプリケーションの登録時に、フロントチャネル ログアウト URL を登録します。 このチュートリアルでは、 **[認証]** ページの **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** フィールドに `https://localhost:44321/signout-oidc` と登録しました。 詳細については、「[webApp アプリを登録する](scenario-web-app-sign-user-app-registration.md#register-an-app-by-using-the-azure-portal)」を参照してください。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-アプリケーションの登録中に、ログアウト後の URI を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `https://localhost:44308/Account/EndSession` と登録しました。 詳細については、「[webApp アプリを登録する](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet)」を参照してください。
+アプリケーションの登録時に、追加のフロントチャネル ログアウト URL を登録する必要はありません。 アプリはそのメイン URL でコールバックされます。 
 
 # <a name="java"></a>[Java](#tab/java)
 
-アプリケーションの登録中に、ログアウト後の URI を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `http://localhost:8080/msal4jsample/sign_out` と登録しました。
+アプリケーションの登録で、フロントチャネル ログアウト URL は必要ありません。
 
 # <a name="python"></a>[Python](#tab/python)
 
-アプリケーションの登録中に、追加のログアウト URL を登録する必要はありません。 アプリはそのメイン URL でコールバックされます。
+アプリケーションの登録時に、追加のフロントチャネル ログアウト URL を登録する必要はありません。 アプリはそのメイン URL でコールバックされます。
 
 ---
 
@@ -335,7 +336,7 @@ Python のクイックスタートでは、サインアウト ボタンは [temp
 - OpenID Connect ミドルウェアで Microsoft ID プラットフォームの `logout` エンドポイントに連絡できるようにする `Signout()` を呼び出します。 その後、エンドポイントは次のことを行います。
 
   - ブラウザーからセッション Cookie を消去します。
-  - ログアウト URL をコールバックします。 既定では、ログアウト URL は、サインアウト済みビューのページ [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs) を表示します。 このページは、MIcrosoft.Identity.Web の一部としても提供されています。
+  - ログアウト後のリダイレクト URI をコールバックします。 既定では、ログアウト後のリダイレクト URI によって、サインアウト済みビューのページ [SignedOut.cshtml.cs](https://github.com/AzureAD/microsoft-identity-web/blob/master/src/Microsoft.Identity.Web.UI/Areas/MicrosoftIdentity/Pages/Account/SignedOut.cshtml.cs) が表示されます。 このページは、Microsoft.Identity.Web の一部としても提供されています。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

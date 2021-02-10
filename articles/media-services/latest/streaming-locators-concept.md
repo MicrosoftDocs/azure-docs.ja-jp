@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services のストリーミング ロケーター | Microsoft Docs
+title: Azure Media Services のストリーミング ロケーター
 description: この記事では、ストリーミング ロケーターとは何か、および Azure Media Services でそれらを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 68df5256949db44b2b347002570c64d1aa0d55ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b711b9a6923a1923562a282dcaffe7cecb0c58b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297962"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898140"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
@@ -25,7 +25,7 @@ ms.locfileid: "89297962"
 
 **ストリーミング ロケーター** を作成するプロセスは発行と呼ばれます。 既定では、**ストリーミング ロケーター** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
-**ストリーミング ロケーター**を作成するときに、**アセット**名と**ストリーミング ポリシー**名を指定する必要があります。 詳細については、次のトピックを参照してください。
+**ストリーミング ロケーター** を作成するときに、**アセット** 名と **ストリーミング ポリシー** 名を指定する必要があります。 詳細については、次のトピックを参照してください。
 
 * [アセット](assets-concept.md)
 * [ストリーミング ポリシー](streaming-policy-concept.md)
@@ -35,8 +35,8 @@ ms.locfileid: "89297962"
 
 ## <a name="considerations"></a>考慮事項
 
-* **ストリーミング ロケーター**は更新できません。 
-* Datetime 型の**ストリーミング ロケーター**のプロパティは、常に UTC 形式です。
+* **ストリーミング ロケーター** は更新できません。 
+* Datetime 型の **ストリーミング ロケーター** のプロパティは、常に UTC 形式です。
 * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints.md)に関するトピックを参照してください。
 
 ## <a name="create-streaming-locators"></a>ストリーミング ロケーターの作成  

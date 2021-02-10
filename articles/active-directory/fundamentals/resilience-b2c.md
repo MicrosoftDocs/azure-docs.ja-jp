@@ -13,16 +13,16 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba7b8ff2555fd7014cf16f66745721c6425ff868
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: b40918db03c260f899c36d306c892b787cc6371c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029525"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724893"
 ---
 # <a name="build-resilience-in-your-customer-identity-and-access-management-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して顧客 ID およびアクセス管理で回復性を強化する
 
-[Azure Active Directory (AD) B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview) は、顧客向けの重要なアプリケーションを正常に起動できるように設計された顧客 ID およびアクセス管理 (CIAM) プラットフォームです。 お客様のニーズに合わせてサービスをスケーリングし、潜在的停止状況に直面したときに回復性を向上させるように設計された、[回復性](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/)のための多くの組み込み機能を備えています。 さらに、ミッション クリティカルなアプリケーションを起動するときは、アプリケーションのさまざまな設計と構成の要素、および停止や障害シナリオに応じて回復性のある動作を確保するために、Azure AD B2C 内でのアプリケーションの構成方法についても考慮することが重要です。 この記事では、回復性の向上に役立ついくつかのベスト プラクティスについて説明します。
+[Azure Active Directory (AD) B2C](../../active-directory-b2c/overview.md) は、顧客向けの重要なアプリケーションを正常に起動できるように設計された顧客 ID およびアクセス管理 (CIAM) プラットフォームです。 お客様のニーズに合わせてサービスをスケーリングし、潜在的停止状況に直面したときに回復性を向上させるように設計された、[回復性](https://azure.microsoft.com/blog/advancing-azure-active-directory-availability/)のための多くの組み込み機能を備えています。 さらに、ミッション クリティカルなアプリケーションを起動するときは、アプリケーションのさまざまな設計と構成の要素、および停止や障害シナリオに応じて回復性のある動作を確保するために、Azure AD B2C 内でのアプリケーションの構成方法についても考慮することが重要です。 この記事では、回復性の向上に役立ついくつかのベスト プラクティスについて説明します。
 
 回復性があるサービスとは、中断が発生しても機能し続けるものです。 サービスの回復性は、次のようにして向上させることができます。
 
@@ -49,3 +49,6 @@ ms.locfileid: "96029525"
 - [認証インフラストラクチャで回復性を強化する](resilience-in-infrastructure.md)
 
 - [アプリケーションで認証と認可の回復性を向上させる](resilience-app-development-overview.md)
+
+Azure AD B2C を使用して回復性があるスケーラブルなフローを構築する方法については、こちらのビデオをご覧ください。
+>[!Video https://www.youtube.com/embed/8f_Ozpw9yTs]

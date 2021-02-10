@@ -1,30 +1,30 @@
 ---
 title: Azure サブスクリプション オファーの変更
-description: Azure アカウント センターを使用して Azure サブスクリプションを変更し、別のオファーに切り替える方法について説明します。
+description: Azure サブスクリプションを変更し、別のプランに切り替える方法について説明します。
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/20/2021
 ms.author: banders
-ms.openlocfilehash: e62ea7052420e2d0c20b99935659a5443540a942
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dd8040effc5972d86e620793e437f5b185e12603
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686821"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685465"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure サブスクリプションを別のオファーに変更する
 
-[従量課金制料金の個別サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)のお客様は、[アカウント センター](https://account.windowsazure.com/Subscriptions)で Azure サブスクリプションを別のオファーに切り替えることができます。 たとえば、この機能を使えば、[Visual Studio サブスクライバー向けの月単位のクレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効活用できます。
+[従量課金制サブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)をご利用のお客様は、Azure portal で、ご利用の Azure サブスクリプションを別のプランに切り替えることができます。 たとえば、この機能を使えば、[Visual Studio サブスクライバー向けの月単位のクレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効活用できます。
 
 **無料試用版からアップグレードしたいだけの場合:** [サブスクリプションのアップグレード](upgrade-azure-subscription.md)に関するページを参照してください。
 
 ## <a name="whats-supported"></a>サポート対象:
 
-従量課金制料金の個別サブスクリプションを以下に切り替えることができます。
+従量課金制サブスクリプションを次のプランに切り替えることができます。
 
 - [開発テスト用の従量課金制プラン](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
@@ -35,43 +35,31 @@ ms.locfileid: "88686821"
 
 > [!NOTE]
 > その他のプランの変更については、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
->
->
 
 ## <a name="switch-subscription-offer"></a>サブスクリプション オファーの切り替え
 
-> [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Switch-to-a-different-Azure-offer/player]
->
->
-
-1. [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
-1. 従量課金制料金の個別サブスクリプションを選択します。
-1. **[別のプランに切り替える]** をクリックします。 このオプションは、従量課金制料金の個別サブスクリプションで、最初の請求期間が完了している場合にのみ使用できます。
-
-   ![ページの右側にあるプランの切り替えボタンに注目](./media/switch-azure-offer/switchbutton.png)
-1. 現在のサブスクリプションから移行可能なオファーの一覧から、**目的のオファーを選択します**。 この一覧の内容はアカウントが関連付けられているメンバーシップに基づいて決まります。 何も表示されない場合は、[移行可能なプランの一覧](#whats-supported)をチェックして、適切なメンバーシップを持っていることを確認してください。
-
-   ![切り替え先のプランの選択](./media/switch-azure-offer/selectoffer.png)
-1. 切り替え先のプランによっては、切り替えによって生じる影響について注意が表示される場合があります。 続行する前にその一覧をよく確認し、その指示に従ってください。
-
-   ![注意事項の確認](./media/switch-azure-offer/thingstonote.png)
-1. サブスクリプションの名前を変更できます。 既定では、これは新しいプラン名に設定されます。 **[プランの切り替え]** をクリックしてプロセスを完了します。
-
-   ![緑色のボタンをクリック](./media/switch-azure-offer/confirmpage.png)
-1. Success! これでサブスクリプションは新しいオファーに切り替わりました。
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. **[サブスクリプション]** に移動して、従量課金制サブスクリプションを選択します。
+1. ページの上部で、 **[プランの切り替え]** を選択します。 このオプションは、従量課金制サブスクリプションをご利用の場合で、なおかつ最初の請求期間が完了している場合にのみ選択できます。  
+    :::image type="content" source="./media/switch-azure-offer/switch-offer.png" alt-text="サブスクリプションの詳細と [プランの切り替え] オプション テキストを表示する ALT 画像" lightbox="./media/switch-azure-offer/switch-offer.png" :::
+1. 現在のサブスクリプションから移行可能なプランの一覧から、目的のプランを選択します。 この一覧の内容はアカウントが関連付けられているメンバーシップに基づいて決まります。 何も表示されない場合は、[移行可能なプランの一覧](#whats-supported)をチェックして、適切なメンバーシップを持っていることを確認してください。 **[次へ]** を選択します。
+    :::image type="content" source="./media/switch-azure-offer/select-offer.png" alt-text="切り替え先のプランの選択" lightbox="./media/switch-azure-offer/select-offer.png" :::
+    切り替え先のプランによっては、切り替えによって生じる影響について注意が表示される場合があります。 続行する前にその一覧をよく確認し、その指示に従ってください。 また、電話番号を確認する必要があります。
+1. 注意事項や電話番号を確認したら、 **[プランの切り替え]** を選択します。
+1. これでサブスクリプションは新しいオファーに切り替わりました。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 次のセクションでは、よく寄せられる質問に回答します。
 
 ### <a name="what-is-an-azure-offer"></a>Azure プランとは
 
-Azure オファーとは、ご利用の Azure サブスクリプションの*種類*です。 たとえば、[従量課金制のサブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure イン オープン プラン](https://azure.microsoft.com/offers/ms-azr-0111p/)、および [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) はすべて Azure プランです。 各サービスは異なる[使用条件](https://azure.microsoft.com/support/legal/offer-details/)を有し、特別な利点を持っています。 ご利用のサブスクリプションのオファーは、アカウント センターのサブスクリプション ページで確認できます。 プラン名をクリックすると、詳細が表示されます。
+Azure オファーとは、ご利用の Azure サブスクリプションの *種類* です。 たとえば、[従量課金制のサブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)、[Azure イン オープン プラン](https://azure.microsoft.com/offers/ms-azr-0111p/)、および [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) はすべて Azure プランです。 各サービスは異なる[使用条件](https://azure.microsoft.com/support/legal/offer-details/)を有し、特別な利点を持っています。 ご利用のサブスクリプションのプランは、サブスクリプションの詳細ページに表示されます。
 
-   ![アカウント センターでプランのリンクをクリックして、詳細を確認する](./media/switch-azure-offer/offerlink01.png)
+:::image type="content" source="./media/switch-azure-offer/subscription-details.png" alt-text="プランの種類を表示するサブスクリプションの詳細ページ" lightbox="./media/switch-azure-offer/subscription-details.png" :::
 
 ### <a name="why-dont-i-see-the-button"></a>ボタンが表示されないのはなぜですか。
 
-次の場合、 **[別のプランに切り替える]** オプションは表示されません。
+次の場合、 **[プランの切り替え]** オプションは表示されません。
 
 * [従量課金制料金のサブスクリプション](https://azure.microsoft.com/offers/ms-azr-0003p/)を持たない場合。 現時点では、別のプランに切り替えられるのは従量課金制料金のサブスクリプションのみです。
   * [無料試用版](https://azure.microsoft.com/free/)をご利用の場合は、[従量課金制にアップグレードする](upgrade-azure-subscription.md)方法を確認してください。
@@ -85,7 +73,7 @@ Azure オファーとは、ご利用の Azure サブスクリプションの*種
 
 ### <a name="what-does-switching-azure-offers-do-to-my-service-and-billing"></a>Azure のプランを切り替えると、サービスと請求はどうなりますか?
 
-以下で、アカウント センターで Azure のプランを切り替えるとどうなるかを詳しく説明します。
+Azure のプランを切り替えるとどうなるかを以下で詳しく説明します。
 
 #### <a name="no-service-downtime"></a>サービスのダウンタイムは発生しない
 
@@ -102,7 +90,7 @@ Azure オファーとは、ご利用の Azure サブスクリプションの*種
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>従量課金制料金のサブスクリプションからクラウド ソリューション プロバイダー (CSP) またはマイクロソフト エンタープライズ契約 (EA) に移行することはできますか?
 
 * CSP に移行するには、「[サブスクライバーと CSP の間で Azure サブスクリプションを譲渡する](transfer-subscriptions-subscribers-csp.md)」を参照してください。
-* EA に移行するには、登録管理者に依頼してアカウントを EA に追加してもらう必要があります。 登録案内メールの指示に従って、サブスクリプションを EA 加入契約に移行します。 詳細については、EA ポータルの「[既存のアカウントの関連付け](https://ea.azure.com/helpdocs/associateExistingAccount)」を参照してください。
+* EA に移行するには、登録管理者に依頼してアカウントを EA に追加してもらう必要があります。 登録案内メールの指示に従って、サブスクリプションを EA 加入契約に移行します。
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>データとサービスを新しいサブスクリプションに移行できますか?
 

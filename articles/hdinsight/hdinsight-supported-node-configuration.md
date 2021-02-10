@@ -2,19 +2,16 @@
 title: Azure HDInsight でサポートされるノード構成
 description: HDInsight クラスター ノードの最小構成と推奨構成について説明します。
 keywords: VM のサイズ、クラスターのサイズ、クラスター構成
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/14/2020
-ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d41ee2554d30a56bc2e025bbe2c93aee143d75e8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83646621"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931650"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight の既定および推奨のノード構成
 
@@ -38,7 +35,7 @@ ms.locfileid: "83646621"
 | Standard_D12_v2   | 4         | 28          | 200            | 12000/187/93                                         | 16 / 16x500                         | 4/3,000                     |
 | Standard_D13_v2   | 8         | 56          | 400            | 24000/375/187                                        | 32 / 32x500                       | 8/6,000                     |
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 64 / 64x500                       | 8/12,000          |
-| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2 / 2x500               | 2/250                 |
+| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2 / 2x500               | 2/250                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000/40/20                                           | 4 / 4x500               | 2/500                 |
 | Standard_A4_v2  | 4         | 8           | 40             | 4000/80/40                                           | 8 / 8x500               | 4/1,000                     |
 

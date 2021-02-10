@@ -1,14 +1,14 @@
 ---
 title: Azure Resource Manager テンプレートを使用して VM 拡張機能を有効にする
 description: この記事では、Azure Resource Manager テンプレートを使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 11/06/2020
+ms.date: 02/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: d5c7f5055f3e41a91fa00e1e3ad08e7686145b9e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cfba14ac30553178bd509d0b0e7ba9c60332d299
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353868"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493330"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM テンプレートを使用して VM 拡張機能を有効にする
 
@@ -698,6 +698,90 @@ Azure Monitor 依存関係エージェント拡張機能を使用するため、
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
+```
+
+## <a name="deploy-the-azure-defender-integrated-scanner"></a>Azure Defender 統合スキャナーのデプロイ
+
+Azure Defender 統合スキャナー拡張機能を使用するため、Windows および Linux で実行する次のサンプルが提供されています。 統合スキャナーに詳しくない場合は、ハイブリッド マシン向けの [Azure Defender の脆弱性評価ソリューションの概要](../../security-center/deploy-vulnerability-assessment-vm.md)に関するページを参照してください。
+
+### <a name="template-file-for-windows"></a>Windows 用テンプレート ファイル
+
+```json
+{
+  "properties": {
+    "mode": "Incremental",
+    "template": {
+      "contentVersion": "1.0.0.0",
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "parameters": {
+        "vmName": {
+          "type": "string"
+        },
+        "apiVersionByEnv": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "type": "resourceType/providers/WindowsAgent.AzureSecurityCenter",
+          "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
+          "apiVersion": "[parameters('apiVersionByEnv')]"
+        }
+      ]
+    },
+    "parameters": {
+      "vmName": {
+        "value": "resourceName"
+      },
+      "apiVersionByEnv": {
+        "value": "2015-06-01-preview"
+      }
+    }
+  }
+}
+```
+
+### <a name="template-file-for-linux"></a>Linux 用テンプレート ファイル
+
+```json
+{
+  "properties": {
+    "mode": "Incremental",
+    "template": {
+      "contentVersion": "1.0.0.0",
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "parameters": {
+        "vmName": {
+          "type": "string"
+        },
+        "apiVersionByEnv": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "type": "resourceType/providers/LinuxAgent.AzureSecurityCenter",
+          "name": "[concat(parameters('vmName'), '/Microsoft.Security/default')]",
+          "apiVersion": "[parameters('apiVersionByEnv')]"
+        }
+      ]
+    },
+    "parameters": {
+      "vmName": {
+        "value": "resourceName"
+      },
+      "apiVersionByEnv": {
+        "value": "2015-06-01-preview"
+      }
+    }
+  }
+}
+```
+
+テンプレート ファイルをディスクに保存します。 その後、次のコマンドを使用して、リソース グループ内の接続されているすべてのマシンに拡張機能をインストールできます。
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\AzureDefenderScanner.json"
 ```
 
 ## <a name="next-steps"></a>次のステップ

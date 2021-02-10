@@ -2,25 +2,22 @@
 title: Apache Pig を使用する
 titleSuffix: Azure HDInsight
 description: HDInsight 上の Apache Hadoop で Pig を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
-ms.openlocfilehash: 9474a1845898e3fda0c810314f41f6f4deabc96b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7b74a41f7d6b636dddce0388d5ee0e0a12658d52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538733"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944614"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Pig で Apache Pig を使用する
 
 HDInsight で [Apache Pig](https://pig.apache.org/) を使用する方法について説明します。
 
-Apache Pig は、 *Pig Latin* として知られている手続き型言語を使用して Apache Hadoop 用のプログラムを作成するためのプラットフォームです。 Pig は、 *MapReduce* ソリューションを作成するために Java の代わりに使用され、Azure HDInsight に含まれています。 HDInsight で Pig を使用するさまざまな方法を次の表に示します。
+Apache Pig は、*Pig Latin* として知られている手続き型言語を使用して Apache Hadoop 用のプログラムを作成するためのプラットフォームです。 Pig は、 *MapReduce* ソリューションを作成するために Java の代わりに使用され、Azure HDInsight に含まれています。 HDInsight で Pig を使用するさまざまな方法を次の表に示します。
 
 ## <a name="why-use-apache-pig"></a><a id="why"></a>Apache Pig を使用する理由
 
@@ -30,11 +27,11 @@ Pig では、データ フローに使用される一連の変換として処理
 
 Pig Latin 言語では、生の入力から 1 つ以上の変換を介して目的の出力を生成するデータ フローを記述できます。 Pig Latin プログラムはこの一般的なパターンに従います。
 
-* **load** :操作対象のデータをファイル システムから読み取ります。
+* **load**:操作対象のデータをファイル システムから読み取ります。
 
-* **transform** :データを操作します。
+* **transform**:データを操作します。
 
-* **dump または store** :データを画面に出力します。または、処理できるように保存します。
+* **dump または store**:データを画面に出力します。または、処理できるように保存します。
 
 ### <a name="user-defined-functions"></a>ユーザー定義関数
 

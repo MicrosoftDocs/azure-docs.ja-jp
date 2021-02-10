@@ -2,13 +2,13 @@
 title: Batch アカウントおよび Azure Storage アカウント
 description: Azure Batch アカウントについて、およびそれらがどのように使用されるかについて、開発の観点から説明します。
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: 20a2a28d0eaa2c7997ea93e66d07ecb99bf297a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/26/2021
+ms.openlocfilehash: 83108a265f91c9feef2fab424f1819939c2d58c9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83790909"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896750"
 ---
 # <a name="batch-accounts-and-azure-storage-accounts"></a>Batch アカウントおよび Azure Storage アカウント
 
@@ -20,9 +20,10 @@ Azure Batch アカウントは、Batch サービス内で一意に識別され�
 
 1 つの Batch アカウントでは、複数の Batch ワークロードを実行できます。 また、同じサブスクリプション内の異なる Azure リージョンに所在するお使いの複数の Batch アカウント間で、ワークロードを分散することもできます。
 
+Batch アカウントは、[Azure portal](batch-account-create-portal.md) またはプログラム ([Batch Management .NET ライブラリ](batch-management-dotnet.md)など) を使用して作成できます。 アカウントを作成する際に、ジョブに関する入出力データまたはアプリケーションの格納に使用する、Azure ストレージ アカウントを関連付けることができます。
+
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-Batch アカウントは、[Azure portal](batch-account-create-portal.md) またはプログラム ([Batch Management .NET ライブラリ](batch-management-dotnet.md)など) を使用して作成できます。 アカウントを作成する際に、ジョブに関する入出力データまたはアプリケーションの格納に使用する、Azure ストレージ アカウントを関連付けることができます。
 
 ## <a name="azure-storage-accounts"></a>Azure Storage アカウント
 
@@ -41,4 +42,5 @@ Batch では、次の Azure ストレージ アカウントの種類がサポー
 ## <a name="next-steps"></a>次のステップ
 
 - [ノードとプール](nodes-and-pools.md)について学習します。
-- [Azure portal](batch-account-create-portal.md) を使用して Batch アカウントを作成する方法について学習します。
+- [Azure portal](batch-account-create-portal.md) または [Batch Management .NET](batch-management-dotnet.md) を使用して Batch アカウントを作成して管理する方法について理解します。
+- Azure Batch アカウントで[プライベート エンドポイント](private-connectivity.md)を使用する方法について理解します。

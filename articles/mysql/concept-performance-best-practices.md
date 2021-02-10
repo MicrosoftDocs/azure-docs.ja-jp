@@ -1,21 +1,21 @@
 ---
 title: パフォーマンスのベスト プラクティス - Azure Database for MySQL
-description: この記事では、Azure Database for MySQL のパフォーマンスを監視して調整するためのベスト プラクティスについて説明します。
-author: mksuni
-ms.author: sumuth
+description: この記事では、Azure Database for MySQL のパフォーマンスを監視して調整するための推奨事項について説明します。
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/23/2020
-ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/28/2021
+ms.openlocfilehash: 46c7952247babd528b230dfa0e70b0eb47878912
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880408"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99217756"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Azure Database for MySQL のパフォーマンスを最適化するためのベスト プラクティス - 単一サーバー
 
-Azure Database for MySQL の使用時に最高のパフォーマンスを得るためのベスト プラクティスについて説明します (単一サーバー)。 Microsoft は、プラットフォームに新しい機能を追加していく中で、このセクションで詳しく説明するベスト プラクティスを改善していきます。
+Azure Database for MySQL の使用時に最高のパフォーマンスを得る方法について説明します (単一サーバー)。 Microsoft は、プラットフォームに新しい機能を追加していく中で、このセクションで詳しく説明する推奨事項を改善していきます。
 
 ## <a name="physical-proximity"></a>物理的な近接
 
@@ -49,6 +49,23 @@ Azure Database for MySQL のパフォーマンスのベスト プラクティス
 - [MySQL サーバーのメトリック](./concepts-monitoring.md)を使用して、メモリの使用率が[制限](./concepts-pricing-tiers.md)に達しているかどうかを確認します。 
 - このような数値に対してアラートを設定して、サーバーが制限に達したときに迅速に対処して修正できるようにします。 定義されている制限に基づいて、データベースの SKU をスケールアップして、より大きいコンピューティング サイズにするか、またはより適切な価格レベルにすることで、パフォーマンスが大幅に向上するかどうかを確認します。 
 - スケーリング操作の後に、パフォーマンスの数値が大幅に低下しなくなるまでスケールアップします。 DB インスタンスのメトリックの監視の詳細については、[MySQL DB のメトリック](./concepts-monitoring.md#metrics)に関する記事を参照してください。
+ 
+## <a name="use-innodb-buffer-pool-warmup"></a>InnoDB バッファー プールのウォームアップの使用
+
+Azure Database for MySQL サーバーを再起動すると、テーブルがクエリされるときにストレージ内にあるデータ ページが読み込まれるため、クエリの初回実行時の待機時間が長くなり、パフォーマンスが低下します。 これは、待機時間の影響を受けやすいワークロードでは許容できない可能性があります。 
+
+InnoDB バッファー プールのウォームアップを利用すると、DML または SELECT 操作が対応する行にアクセスするのを待機するのではなく、再起動の前にバッファー プール内にあったディスク ページを再読み込みするので、ウォームアップ期間を短縮できます。
+
+Azure Database for MySQL サーバーを再起動した後のウォームアップ期間を短縮できます。これは、[InnoDB バッファー プール サーバー パラメーター](https://dev.mysql.com/doc/refman/8.0/en/innodb-preload-buffer-pool.html)を構成すると得られるパフォーマンス上の利点です。 InnoDB は、サーバーのシャットダウン時に各バッファー プールで最近使用されたページを一定の割合で保存し、サーバーの起動時にこれらのページを復元します。
+
+また、サーバーの起動時間が長くなる代償として、パフォーマンスが向上することにも注意する必要があります。 このパラメーターを有効にすると、サーバーにプロビジョニングされている IOPS に応じて、サーバーの起動と再起動にかかる時間が長くなることが予想されます。 
+
+その間はサーバーが利用できないため、起動/再起動のパフォーマンスが許容できるように、再起動時間をテストし監視することをお勧めします。 プロビジョニングされた IOPS が 1000 未満である場合 (つまり、プロビジョニングされたストレージが 335 GB 未満の場合) は、このパラメーターを使用しないことをお勧めします。
+
+サーバーのシャットダウン時にバッファー プールの状態を保存するには、サーバー パラメーター `innodb_buffer_pool_dump_at_shutdown` を `ON` に設定します。 同様に、サーバー起動時にバッファー プールの状態を復元するには、サーバー パラメーター `innodb_buffer_pool_load_at_startup` を `ON` に設定します。 サーバー パラメーター `innodb_buffer_pool_dump_pct` の値を下げて微調整すると、起動/再起動時間への影響を制御できます。 既定では、このパラメーターは `25` に設定されます。
+
+> [!Note]
+> InnoDB バッファー プールのウォームアップ パラメーターは、最大 16 TB のストレージを持つ汎用ストレージ サーバーでのみサポートされています。 [Azure Database for MySQL コンピューティングとストレージ](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage)に関する詳細情報をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

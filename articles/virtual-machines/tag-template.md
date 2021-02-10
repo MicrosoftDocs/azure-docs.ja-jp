@@ -7,15 +7,14 @@ ms.workload: infrastructure-services
 ms.author: cynthn
 author: cynthn
 ms.date: 10/26/2018
-ms.openlocfilehash: d1acbe82a086574a102e7897bbd3b99683c1185e
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e7dd75a025b76773a0bf1e3b4f752b5a77db6786
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594873"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897376"
 ---
 # <a name="tagging-a-vm-using-a-template"></a>テンプレートを使用して VM にタグを付ける
-
 
 この記事では、Resource Manager テンプレートを使用して Azure の VM にタグを付ける方法について説明します。 タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。 現在、Azure では、1 つのリソースまたはリソース グループにつき最大 50 個のタグがサポートされます。 タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。
 
@@ -46,8 +45,7 @@ ms.locfileid: "94594873"
 
 **[作成]** をクリックして、タグの値が指定されたこのテンプレートをデプロイします。
 
-
-**次の手順**
+### <a name="next-steps"></a>次のステップ
 
 - Azure リソースへのタグ付けについて詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」と「[タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)」をご覧ください。
-- タグが Azure リソースの使用の管理にどのように役立つかを確認するには、[Azure の課金内容の確認](../cost-management-billing/understand/review-individual-bill.md)に関するページと「[Microsoft Azure リソースの消費を把握する](../cost-management-billing/manage/usage-rate-card-overview.md)」を参照してください。
+- Azure リソースの使用を管理するときにタグを役立てる方法については、「[Azure の課金内容の確認」](../cost-management-billing/understand/review-individual-bill.md)を参照してください。

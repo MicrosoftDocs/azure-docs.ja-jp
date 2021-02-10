@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664046"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071717"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>デジタル ツインとツイン グラフについて理解する
 
-Azure Digital Twins ソリューションでは、環境内のエンティティは Azure **デジタル ツイン** で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを **リレーションシップ** によって他のデジタル ツインに接続して、**ツイン グラフ** を形成できます。このツイン グラフは、環境全体を表しています。
+Azure Digital Twins ソリューションでは、環境内のエンティティは **デジタル ツイン** で表されます。 デジタル ツインは、カスタム定義[モデル](concepts-models.md)のいずれかのインスタンスです。 それを **リレーションシップ** によって他のデジタル ツインに接続して、**ツイン グラフ** を形成できます。このツイン グラフは、環境全体を表しています。
 
 > [!TIP]
 > "Azure Digital Twins" は、この Azure サービス全体を指します。 "デジタル ツイン" または単に "ツイン" は、サービスのインスタンス内の個々のツイン ノードを指します。

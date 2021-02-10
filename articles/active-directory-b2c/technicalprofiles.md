@@ -11,28 +11,28 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 66172fc9e258ae99e8ed263342025f5c33f7a168
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861862"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219674"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-技術プロファイルでは、Azure Active Directory B2C (Azure AD B2C) でカスタム ポリシーを使用して、さまざまな種類の利用者と通信するためのメカニズムが組み込まれたフレームワークを提供します。 技術プロファイルは、ユーザーの作成やユーザー プロファイルの読み取りを行うために、ご利用の Azure AD B2C テナントとの通信に使用されます。 ユーザーとの相互作用を有効にするには、技術プロファイルをセルフアサートすることができます。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセット ページをレンダリングします。
+技術プロファイルにより、さまざまな種類のパーティーと通信するためのメカニズムが組み込まれたフレームワークが提供されます。 技術プロファイルは、ユーザーの作成やユーザー プロファイルの読み取りを行うために、ご利用の Azure AD B2C テナントとの通信に使用されます。 ユーザーとの相互作用を有効にするには、技術プロファイルをセルフアサートすることができます。 たとえば、ユーザーの資格情報を収集してサインインし、サインアップ ページまたはパスワードのリセット ページをレンダリングします。
 
 ## <a name="type-of-technical-profiles"></a>技術プロファイルの種類
 
 技術プロファイルでは、これらの種類のシナリオを有効にします。
 
-- [Application Insights](application-insights-technical-profile.md) - イベント データを [Application Insights](../azure-monitor/app/app-insights-overview.md)に送信します。
+- [Application Insights](analytics-with-application-insights.md) - イベント データを [Application Insights](../azure-monitor/app/app-insights-overview.md)に送信します。
 - [Azure Active Directory](active-directory-technical-profile.md) - Azure Active Directory B2C ユーザー管理をサポートします。
 - [Azure AD Multi-Factor Authentication](multi-factor-auth-technical-profile.md) - Azure AD Multi-Factor Authentication (MFA) を使用して電話番号を確認するためのサポートを提供します。 
 - [要求変換](claims-transformation-technical-profile.md) - 出力要求変換を呼び出して、要求の値を操作したり、要求を検証したり、一連の出力要求の既定値を設定したりすることができます。
-- [ID トークン ヒント](id-token-hint.md) - `id_token_hint` JWT トークンの署名、発行者名、トークン対象ユーザーを検証し、受信トークンから要求を抽出します。
+- [ID トークン ヒント](id-token-hint.md) - `id_token_hint` JWT トークンの署名、発行者名、トークン対象ユーザーが検証され、受信トークンから要求が抽出されます。
 - [JWT トークン発行者](jwt-issuer-technical-profile.md) - 証明書利用者アプリケーションに戻された JWT トークンを発行します。
 - [OAuth1](oauth1-technical-profile.md) - 任意の OAuth 1.0 プロトコル ID プロバイダーとのフェデレーション。
 - [OAuth2](oauth2-technical-profile.md) - 任意の OAuth 2.0 プロトコル ID プロバイダーとのフェデレーション。
@@ -47,12 +47,12 @@ ms.locfileid: "97861862"
 
 ## <a name="technical-profile-flow"></a>技術プロファイルのフロー
 
-技術プロファイルのすべての種類で同じ概念を共有します。 入力要求を送信し、要求変換を実行し、ID プロバイダー、REST API、Azure AD ディレクトリ サービスなど、構成されたパーティと通信します。 プロセスが完了すると、技術プロファイルによって出力要求が戻され、出力要求変換が実行される場合があります。 次の図は、技術プロファイルで参照される変換とマッピングがどのように処理されるかを示しています。 技術プロファイルでやりとりするパーティに関係なく、すべての要求変換が実行された後、技術プロファイルからの出力要求が要求バッグにすぐに格納されます。
+技術プロファイルのすべての種類で同じ概念を共有します。 最初に、入力要求を読み取り、要求の変換を実行します。 次に、ID プロバイダー、REST API、Azure AD ディレクトリ サービスなど、構成されているパーティーと通信します。 プロセスが完了すると、技術プロファイルによって出力要求が戻され、出力要求変換が実行される場合があります。 次の図は、技術プロファイルで参照される変換とマッピングがどのように処理されるかを示しています。 要求の変換が実行された後、出力要求が要求バッグにすぐに格納されます。 技術プロファイルで対話の対象になっているパーティーは関係ありません。
 
 ![技術プロファイルのフローを示している図](./media/technical-profiles/technical-profile-flow.png)
 
 1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのセッション状態を復元します。
-1. **入力要求変換** - 技術プロファイルが開始される前に、Azure AD B2C によって入力[要求変換](claimstransformations.md)が実行されます。
+1. **入力要求変換** - 技術プロファイルが開始される前に、Azure AD B2C によって入力 [要求変換](claimstransformations.md)が実行されます。
 1. **入力要求** - 要求バッグから要求がピックアップされ、技術プロファイルに使用されます。
 1. **技術プロファイルの実行** - 技術プロファイルでは、その要求を構成されたパーティと交換します。 次に例を示します。
     - ユーザーを ID プロバイダーにリダイレクトして、サインインを完了します。 サインインが成功したら、ユーザーが返され、技術プロファイルの実行が続行されます。
@@ -64,7 +64,7 @@ ms.locfileid: "97861862"
 1. **出力要求変換** - 技術プロファイルの完了後、Azure AD B2C によって出力 [要求変換](claimstransformations.md)が実行されます。 
 1. **シングル サインオン (SSO) セッション管理** - [SSO セッション管理](custom-policy-reference-sso.md)を使用して、技術プロファイルのデータをセッションに永続化します。
 
-**TechnicalProfiles** 要素には、クレーム プロバイダーによってサポートされる一連の技術プロファイルが含まれています。 どのクレーム プロバイダーも、そのクレーム プロバイダーと通信するために必要なエンドポイントとプロトコルを特定する技術プロファイルを 1 つ以上持っている必要があります。 1 つのクレーム プロバイダーが複数の技術プロファイルを持つことができます。
+**TechnicalProfiles** 要素には、クレーム プロバイダーによってサポートされる一連の技術プロファイルが含まれています。 すべてのクレーム プロバイダーには、1 つ以上の技術プロファイルが必要です。 技術プロファイルにより、そのクレーム プロバイダーと通信するために必要なエンドポイントとプロトコルが決定されます。 1 つのクレーム プロバイダーが複数の技術プロファイルを持つことができます。
 
 ```xml
 <ClaimsProvider>
@@ -96,14 +96,14 @@ ms.locfileid: "97861862"
 | DisplayName | 1:1 | 技術プロファイルの表示名。 |
 | Description | 0:1 | 技術プロファイルの説明。 |
 | Protocol | 1:1 | 他の利用者との通信に使用されるプロトコル。 |
-| Metadata | 0:1 | トランザクション中にエンドポイントと通信するためにプロトコルによって利用されるキー/値ペアのコレクション。 |
+| Metadata | 0:1 | 技術プロファイルの動作を制御するキーと値のコレクション。 |
 | InputTokenFormat | 0:1 | 入力トークンの形式。 指定できる値: `JSON`、`JWT`、`SAML11`、または `SAML2`。 `JWT` 値は、IETF 仕様に従って JSON Web トークンを表します。 `SAML11` 値は、OASIS 仕様に従って SAML 1.1 セキュリティ トークンを表します。  `SAML2` 値は、OASIS 仕様に従って SAML 2.0 セキュリティ トークンを表します。 |
 | OutputTokenFormat | 0:1 | 出力トークンの形式。 指定できる値: `JSON`、`JWT`、`SAML11`、または `SAML2`。 |
 | CryptographicKeys | 0:1 | 技術プロファイルで使用される暗号化キーの一覧。 |
 | InputClaimsTransformations | 0:1 | 要求がクレーム プロバイダーまたは証明書利用者に送信される前に実行する必要がある、要求変換に対する定義済みの参照の一覧。 |
 | InputClaims | 0:1 | 技術プロファイルで入力として取得される、要求の種類に対する定義済みの参照の一覧。 |
-| PersistedClaims | 0:1 | 技術プロファイルに関連するクレーム プロバイダーによって保持される、要求の種類に対する定義済みの参照の一覧。 |
-| DisplayClaims | 0:1 | [セルフアサ―ト技術プロファイル](self-asserted-technical-profile.md)に関連するクレーム プロバイダーによって提供される、要求の種類に対する定義済みの参照の一覧。 現在、DisplayClaims 機能は **プレビュー** 段階です。 |
+| PersistedClaims | 0:1 | 技術プロファイルによって保持される、要求の種類に対して以前に定義された参照の一覧。 |
+| DisplayClaims | 0:1 | [セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって提示される、要求の種類に対して以前に定義された参照の一覧。 現在、DisplayClaims 機能は **プレビュー** 段階です。 |
 | OutputClaims | 0:1 | 技術プロファイルで出力として取得される、要求の種類に対する定義済みの参照の一覧。 |
 | OutputClaimsTransformations | 0:1 | クレーム プロバイダーから要求を受け取った後に実行する必要がある、要求変換に対する定義済みの参照の一覧。 |
 | ValidationTechnicalProfiles | 0:n | 技術プロファイルが検証目的で使用する、他の技術プロファイルへの参照の一覧。 詳細については、「[検証技術プロファイル](validation-technical-profile.md)」を参照してください。|
@@ -121,7 +121,7 @@ ms.locfileid: "97861862"
 | 属性 | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | 名前 | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OAuth1`、`OAuth2`、`SAML2`、`OpenIdConnect`、`Proprietary` または `None`。 |
-| Handler | いいえ | プロトコル名が `Proprietary` に設定されている場合は、Azure AD B2C がプロトコル ハンドラーを決定するために使用するアセンブリの完全修飾名を指定します。 |
+| Handler | いいえ | プロトコル名が `Proprietary` に設定されている場合は、プロトコル ハンドラーを決定するために Azure AD B2C によって使用されるアセンブリの名前を指定します。 |
 
 ## <a name="metadata"></a>Metadata
 
@@ -129,7 +129,7 @@ ms.locfileid: "97861862"
 
 | 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
-| Item | 0:n | 技術プロファイルに関連するメタデータ。 技術プロファイルの種類ごとに、異なるメタデータ項目のセットがあります。 詳細については、技術プロファイルの種類に関するセクションを参照してください。 |
+| Item | 0:n | 技術プロファイルに関連するメタデータ。 技術プロファイルの種類ごとに、異なるメタデータ項目のセットがあります。 詳細については、技術プロファイルの種類に関するセクションを参照してください。  |
 
 ### <a name="item"></a>Item
 
@@ -173,7 +173,7 @@ ms.locfileid: "97861862"
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
-Azure AD B2C により、シークレットと証明書が[ポリシー キー](policy-keys-overview.md)の形式で保存されて、統合対象のサービスとの信頼が確立されます。 技術プロファイルの実行中、Azure AD B2C によって Azure AD B2C ポリシー キーから暗号化キーが取得され、そのキーを使用して信頼の確立、トークンの暗号化または署名が行われます。 これらの信頼は次のもので構成されます。
+統合対象のサービスとの信頼を確立するため、Azure AD B2C により、シークレットと証明書が[ポリシー キー](policy-keys-overview.md)の形式で保存されます。 技術プロファイルの実行中、Azure AD B2C によって Azure AD B2C ポリシー キーから暗号化キーが取得されます。 その後、そのキーを使用して信頼の確立、トークンの暗号化、または署名が行われます。 これらの信頼は次のもので構成されます。
 
 - [OAuth1](oauth1-technical-profile.md#cryptographic-keys)、[OAuth2](oauth2-technical-profile.md#cryptographic-keys)、および [SAML](saml-identity-provider-technical-profile.md#cryptographic-keys) ID プロバイダーとのフェデレーション
 - [REST API サービス](secure-rest-api.md)との接続のセキュリティ保護
@@ -198,7 +198,7 @@ Azure AD B2C により、シークレットと証明書が[ポリシー キー](
 
 **InputClaimsTransformations** 要素には、入力要求を変更したり新しいものを生成するために使用される、入力要求変換の要素のコレクションを含めることができます。 
 
-要求変換コレクション内の以前の要求変換の出力要求は、後続の入力要求変換の入力要求である場合があり、相互に依存する一連の要求変換を行うことができます。
+要求変換コレクション内の以前の要求変換の出力要求を、後続の入力要求変換の入力要求として使用し、相互に依存する一連の要求変換を行うことができます。
 
 **InputClaimsTransformations** 要素には、次の要素が含まれています。
 
@@ -251,13 +251,13 @@ Azure AD B2C により、シークレットと証明書が[ポリシー キー](
 
 | 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
-| ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
+| ClaimTypeReferenceId | はい | 要求の種類の識別子。 要求は、ポリシー ファイルまたは親ポリシー ファイルの要求スキーマ セクションで、既に定義されています。 |
 | DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
 | PartnerClaimType | いいえ | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ## <a name="display-claims"></a>表示要求
 
-**DisplayClaims** 要素には、ユーザーからデータを収集するために画面に提示される、[セルフアサート技術プロファイル](self-asserted-technical-profile.md)によって定義される要求の一覧が含まれています。 表示要求コレクションに、[要求の種類](claimsschema.md) (作成した [DisplayControl](display-controls.md)) への参照を含めることができます。 
+**DisplayClaims** 要素には、ユーザーからデータを収集するために画面に表示される要求の一覧が含まれます。 表示要求コレクションに、[要求の種類](claimsschema.md) (作成した [DisplayControl](display-controls.md)) への参照を含めることができます。 
 
 - 要求の種類は、画面に表示される要求への参照です。 
   - 特定の要求に対する値の指定をユーザーに強制するには、**DisplayClaim** 要素の **Required** 属性を `true` に設定します。
@@ -326,7 +326,7 @@ Azure AD B2C により、シークレットと証明書が[ポリシー キー](
 | 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
-| DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
+| DefaultValue | いいえ | 要求が存在しない場合に要求を作成するために使用される既定値。 |
 | PartnerClaimType | いいえ | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 次の例では、新しいローカル アカウントを作成する **AAD-UserWriteUsingLogonEmail** 技術プロファイル ([スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts)) によって以下の要求が保持されます。
@@ -357,13 +357,13 @@ Azure AD B2C により、シークレットと証明書が[ポリシー キー](
 | 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシーファイルまたは親ポリシーファイルの　ClaimsSchema セクションで定義済みの要求の種類の識別子。 |
-| DefaultValue | いいえ | ClaimTypeReferenceId で示された要求が存在しない場合に、要求を作成するために使用する既定値。これにより、作成された要求を技術プロファイルで InputClaim として使用できます。 |
+| DefaultValue | いいえ | 要求が存在しない場合に要求を作成するために使用される既定値。 |
 |AlwaysUseDefaultValue |いいえ |既定値の使用を強制します。  |
-| PartnerClaimType | いいえ | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 PartnerClaimType 属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナーの要求の種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
+| PartnerClaimType | いいえ | 指定されたポリシーの要求の種類のマップ先となる外部パートナーの要求の種類の識別子。 パートナー要求種類属性が指定されていない場合は、指定されたポリシーの要求の種類が、同じ名前のパートナー要求種類にマップされます。 このプロパティは、要求の種類の名前が他の利用者と異なる場合に使用します。 たとえば、最初の要求の名前が 'givenName' で、パートナーが 'first_name' という要求を使用する場合です。 |
 
 ## <a name="output-claims-transformations"></a>出力要求変換
 
-**OutputClaimsTransformations** 要素には、出力要求を修正したり新しい要求を生成するために使用される、**OutputClaimsTransformation** 要素のコレクションが含まれている場合があります。 実行後、出力要求は要求バッグに戻されます。 次のオーケストレーションの手順でこれらの要求を使用できます。
+**OutputClaimsTransformations** 要素には、**OutputClaimsTransformation** 要素のコレクションが含まれる場合があります。 出力要求変換は、出力要求を変更したり、新しく生成したりするために使用されます。 実行後、出力要求は要求バッグに戻されます。 次のオーケストレーションの手順でこれらの要求を使用できます。
 
 要求変換コレクション内の以前の要求変換の出力要求は、後続の入力要求変換の入力要求である場合があり、相互に依存する一連の要求変換を行うことができます。
 
@@ -404,7 +404,7 @@ Azure AD B2C により、シークレットと証明書が[ポリシー キー](
 
 ## <a name="validation-technical-profiles"></a>検証技術プロファイル
 
-検証技術プロファイルは、[セルフアサート技術プロファイル](self-asserted-technical-profile.md#validation-technical-profiles)内の参照の出力要求の一部またはすべてを検証するために使用されます。 検証技術プロファイルは、[Azure Active Directory](active-directory-technical-profile.md) や [REST API](restful-technical-profile.md) などの、あらゆるプロトコルの通常の技術プロファイルです。 検証技術プロファイルによって、出力要求が返されるか、またはエラー コードが返されます。 画面上でエラー メッセージがユーザーに表示され、ユーザーは再試行することができます。
+検証技術プロファイルは、[セルフアサート技術プロファイル](self-asserted-technical-profile.md#validation-technical-profiles)内の出力要求を検証するために使用されます。 検証技術プロファイルは、[Azure Active Directory](active-directory-technical-profile.md) や [REST API](restful-technical-profile.md) などの、あらゆるプロトコルの通常の技術プロファイルです。 検証技術プロファイルによって、出力要求が返されるか、またはエラー コードが返されます。 画面上でエラー メッセージがユーザーに表示され、ユーザーは再試行することができます。
 
 次の図は、Azure AD B2C で検証技術プロファイルを使用してユーザーの資格情報を検証する方法を示しています。
 
@@ -434,7 +434,9 @@ Azure AD B2C により、シークレットと証明書が[ポリシー キー](
 
 ## <a name="include-technical-profile"></a>包含技術プロファイル
 
-技術プロファイルには、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルを含めることができます。 **IncludeTechnicalProfile** 要素は、技術プロファイルの派生元の共通技術プロファイルへの参照です。 ポリシー要素の冗長性と複雑さを軽減するには、コア要素を共有する複数の技術プロファイルがある場合に包含を使用します。 共通技術プロファイルを含む特定のタスク技術プロファイルと共に、共通構成セットを含む共通技術プロファイルを使用します。 たとえば、さまざまなシナリオでさまざまな要求セットを送信する必要がある 1 つのエンドポイントを含む、[REST API 技術プロファイル](restful-technical-profile.md)があるとします。 REST API エンドポイント URI、メタデータ、認証の種類、暗号化キーなどの共有機能を備えた共通技術プロファイルを作成します。 次に、共通技術プロファイルを含む特定のタスク技術プロファイルを作成し、入力要求や出力要求を追加するか、またはその技術プロファイルに関連する REST API エンドポイント URI を上書きします。
+技術プロファイルには、設定を変更したり、新しい機能を追加したりするために、別の技術プロファイルを含めることができます。 **IncludeTechnicalProfile** 要素は、技術プロファイルの派生元の共通技術プロファイルへの参照です。 ポリシー要素の冗長性と複雑さを軽減するには、コア要素を共有する複数の技術プロファイルがある場合に包含を使用します。 共通技術プロファイルを含む特定のタスク技術プロファイルと共に、共通構成セットを含む共通技術プロファイルを使用します。 
+
+さまざまなシナリオでさまざまな要求セットを送信するために必要な 1 つのエンドポイントが含まれる [REST API 技術プロファイル](restful-technical-profile.md)があるとします。 REST API エンドポイント URI、メタデータ、認証の種類、暗号化キーなどの共有機能を使用して共通技術プロファイルを作成します。 共通技術プロファイルが含まれる特定のタスク技術プロファイルを作成します。 それから、入力要求や出力要求を追加するか、またはその技術プロファイルに関連する REST API エンドポイント URI を上書きします。
 
 **IncludeTechnicalProfile** 要素には、次の属性が含まれています。
 
@@ -561,7 +563,10 @@ Azure AD B2C により、シークレットと証明書が[ポリシー キー](
 - **OnItemExistenceInStringCollectionClaim**、 文字列コレクション要求に項目が存在する場合にのみ実行します。
 - **OnItemAbsenceInStringCollectionClaim**、文字列コレクション要求に項目が存在しない場合にのみ実行します。
 
-**OnClaimsExistence**、**OnItemExistenceInStringCollectionClaim** または **OnItemAbsenceInStringCollectionClaim** を使用して、以下のメタデータを指定する必要があります。**ClaimTypeOnWhichToEnable** は評価される要求の種類を指定します、**ClaimValueOnWhichToEnable** は比較される値を指定します。
+**OnClaimsExistence**、**OnItemExistenceInStringCollectionClaim**、または **OnItemAbsenceInStringCollectionClaim** を使用するには、以下のメタデータを指定する必要があります。 
+
+- **ClaimTypeOnWhichToEnable** - 評価対象の要求の種類を指定します。
+- **ClaimValueOnWhichToEnable** - 比較対象の値を指定します。
 
 次の技術プロファイルは、**identityProviders** 文字列コレクションに `facebook.com` という値が含まれている場合にのみ実行されます。
 

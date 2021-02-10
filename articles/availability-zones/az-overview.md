@@ -1,18 +1,19 @@
 ---
 title: Azure のリージョンと Availability Zones
 description: 技術要件および規制要件を満たすために、Azure のリージョンと Availability Zones について説明します。
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
-ms.date: 08/27/2020
-ms.author: cynthn
+ms.topic: conceptual
+ms.date: 01/26/2021
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: dae5319e6c8b87d6a9eef98875ad7e8da623e65c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97678538"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955802"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure のリージョンと Availability Zones
 
@@ -86,102 +87,74 @@ Azure サービスは、基本サービス、メインストリーム サービ�
 前述のように、Azure のサービスは、基本サービス、メインストリーム サービス、および専用サービスという 3 つのカテゴリに分類されています。 サービス カテゴリは、一般提供の際に割り当てられます。 多くの場合、サービスのライフサイクルは専用サービスから始まり、その需要や使用率が増加すると、メインストリーム サービスまたは基本サービスに昇格される可能性があります。 次の表では、サービスを基本、メインストリーム、または専用のカテゴリでリストしています。 表については、次の点に注意してください。
 
 - 一部のサービスはリージョンに依存しません。 リージョンに依存しないサービスの詳細と一覧については、[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)に関するページを参照してください。
-- 旧世代の仮想マシンは表示されていません。 詳しくは、「[旧世代の仮想マシンのサイズ](../virtual-machines/sizes-previous-gen.md)」に関するドキュメントをご覧ください。
+- 旧世代の仮想マシンは表示されていません。 詳しくは、「[旧世代の仮想マシンのサイズ](../virtual-machines/sizes-previous-gen.md)」をご覧ください
+- 一般公開 (GA) になるまでは、サービスにカテゴリは割り当てられません。 プレビュー サービスの詳細と一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」を参照してください。 
 
 > [!div class="mx-tableFixed"]
-> | 基本 | メインストリーム | 専用イメージ |
-> | --- | --- | --- |
-> | Account Storage | API Management | FHIR 用の Azure API |
-> | Application Gateway | App Configuration | Azure Analysis Services |
-> | Azure Backup | App Service | Azure Blockchain サービス |
-> | Azure Cosmos DB | オートメーション | Azure Blueprints |
-> | Azure Data Lake Storage Gen2 | Azure Active Directory Domain Services | Azure Database for MariaDB |
-> | Azure ExpressRoute | Azure Bastion | Azure の専用 HSM |
-> | Azure SQL データベース | Azure Cache for Redis | Azure Dev Spaces |
-> | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
-> | クラウド サービス:Av2 シリーズ | Azure Data Explorer | Azure Lab Services |
-> | クラウド サービス:Dv2 シリーズ | Azure Data Share | Azure NetApp Files |
-> | クラウド サービス:Dv3 シリーズ | Azure Database for MySQL | Azure Quantum |
-> | クラウド サービス:Ev3 シリーズ | Azure Database for PostgreSQL | Azure Spring Cloud Service |
-> | クラウド サービス:インスタンス レベル IP | Azure Database Migration Service | Azure Time Series Insights |
-> | クラウド サービス:予約済み IP | Azure Databricks | Azure VMware Solution by CloudSimple |
-> | Disk Storage | Azure DDoS Protection | クラウド サービス:G シリーズ |
-> | Event Hubs | Azure DevTest Labs | クラウド サービス:H シリーズ |
-> | Key Vault | Azure Firewall | Cognitive Services :Custom Vision |
-> | Load Balancer | Azure Firewall Manager | Cognitive Services :Speaker Recognition |
-> | Service Bus | Azure Functions | Data Box Heavy |
-> | Service Fabric | Azure HPC Cache | Data Catalog |
-> | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory:Data Factory V1 |
-> | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
-> | Virtual Machines: Av2 シリーズ | Azure Machine Learning | Azure Machine Learning Studio (クラシック)|
-> | Virtual Machines: Bs シリーズ | Azure Private Link | Microsoft Genomics |
-> | Virtual Machines: DSv2 シリーズ | Azure Red Hat OpenShift | Remote Rendering |
-> | Virtual Machines: DSv3 シリーズ | Azure SignalR Service | Spatial Anchors |
-> | Virtual Machines: Dv2 シリーズ | Azure Site Recovery | StorSimple |
-> | Virtual Machines: Dv3 シリーズ | Azure Stack Hub | Video Indexer |
-> | Virtual Machines: ESv3 シリーズ | Azure Stream Analytics | Virtual Machines: DASv4 シリーズ |
-> | Virtual Machines: Ev3 シリーズ | Azure Synapse Analytics | Virtual Machines: DAv4 シリーズ |
-> | Virtual Machines: F シリーズ | Batch | Virtual Machines: DCsv2 シリーズ |
-> | Virtual Machines: FS シリーズ | クラウド サービス:M シリーズ | Virtual Machines: EASv4 シリーズ |
-> | Virtual Machines: インスタンス レベル IP | Cognitive Services | Virtual Machines: EAv4 シリーズ |
-> | Virtual Machines: 予約済み IP | Cognitive Services:Computer Vision | Virtual Machines: G シリーズ |
-> | Virtual Network | Cognitive Services:Content Moderator | Virtual Machines: GS シリーズ |
-> | VPN Gateway | Cognitive Services:Face | Virtual Machines: HBv1 シリーズ |
-> |  | Cognitive Services:Form Recognizer | Virtual Machines: HBv2 シリーズ |
-> |  | Cognitive Services:Language Understanding | Virtual Machines: HCv1 シリーズ |
-> |  | Cognitive Services:QnA Maker | Virtual Machines: H シリーズ |
-> |  | Cognitive Services:Speech Services | Virtual Machines: LS シリーズ |
-> |  | Container Instances | Virtual Machines: LSv2 シリーズ |
-> |  | Container Registry | Virtual Machines: Mv2 シリーズ |
-> |  | Data Factory | Virtual Machines: NC シリーズ |
-> |  | Event Grid | Virtual Machines: NCv2 シリーズ |
-> |  | HDInsight | Virtual Machines: NCv3 シリーズ |
-> |  | Logic Apps | Virtual Machines: ND シリーズ |
-> |  | Media Services | Virtual Machines: NDv2 シリーズ |
-> |  | Network Watcher | Virtual Machines: NV シリーズ |
-> |  | Notification Hubs | Virtual Machines: NVv3 シリーズ |
-> |  | Power BI Embedded | Virtual Machines: NVv4 シリーズ |
-> |  | Premium Blob Storage | Virtual Machines: SAP HANA on Azure Large Instances |
-> |  | Premium File Storage | Visual Studio App Center |
-> |  | ストレージ:Archive Storage |  |
-> |  | Ultra Disk Storage |  |
-> |  | Virtual Machines: Ddsv4 シリーズ |  |
-> |  | Virtual Machines: Ddv4 シリーズ |  |
-> |  | Virtual Machines: Dsv4 シリーズ |  |
-> |  | Virtual Machines: Dv4 シリーズ |  |
-> |  | Virtual Machines: Edsv4 シリーズ |  |
-> |  | Virtual Machines: Edv4 シリーズ |  |
-> |  | Virtual Machines: Esv4 シリーズ |  |
-> |  | Virtual Machines: Ev4 シリーズ |  |
-> |  | Virtual Machines: Fsv2 シリーズ |  |
-> |  | Virtual Machines: M シリーズ |  |
-> |  | Virtual WAN |  |
+> | 基本                          | メインストリーム                                        | 専用イメージ                                          |
+> |---------------------------------------|---------------------------------------------------|------------------------------------------------------|
+> | ストレージ アカウント                      | API Management                                    | FHIR 用の Azure API                                   |
+> | Application Gateway                   | App Configuration                                 | Azure Analysis Services                              |
+> | Azure Backup                          | App Service                                       | Azure Cognitive Services: Anomaly Detector           |
+> | Azure Cosmos DB                       | オートメーション                                        | Azure Cognitive Services: Custom Vision              |
+> | Azure Data Lake Storage Gen2          | Azure Active Directory Domain Services            | Azure Cognitive Services: Form Recognizer            |
+> | Azure ExpressRoute                    | Azure Bastion                                     | Azure Cognitive Services: Personalizer               |
+> | Azure パブリック IP                       | Azure Cache for Redis                             | Azure Cognitive Services: QnA Maker                  |
+> | Azure SQL データベース                    | Azure Cognitive Search                            | Azure Database for MariaDB                           |
+> | Azure SQL: マネージド インスタンス          | Azure Cognitive Services                          | Azure Database Migration Service                     |
+> | Cloud Services                        | Azure Cognitive Services: Computer Vision         | Azure の専用 HSM                                  |
+> | クラウド サービス:Av2 シリーズ            | Azure Cognitive Services: Content Moderator       | Azure Digital Twins                                  |
+> | クラウド サービス:Dv2 シリーズ            | Azure Cognitive Services: Face                    | Azure Health Bot                                     |
+> | クラウド サービス:Dv3 シリーズ            | Azure Cognitive Services: Immersive Reader        | Azure HPC Cache                                      |
+> | クラウド サービス:Ev3 シリーズ            | Azure Cognitive Services: Language Understanding  | Azure Lab Services                                   |
+> | クラウド サービス:インスタンス レベル IP    | Azure Cognitive Services: Speech Services         | Azure NetApp Files                                   |
+> | クラウド サービス:予約済み IP           | Azure Cognitive Services: Text Analytics          | Azure SignalR Service                                |
+> | Disk Storage                          | Azure Cognitive Services: Translator              | Azure Spring Cloud Service                           |
+> | Event Hubs                            | Azure Data Explorer                               | Azure Time Series Insights                           |
+> | Key Vault                             | Azure Data Share                                  | Azure VMware Solution                                |
+> | Load Balancer                         | Azure Database for MySQL                          | Azure VMware Solution by CloudSimple                 |
+> | Service Bus                           | Azure Database for PostgreSQL                     | クラウド サービス:H シリーズ                             |
+> | Service Fabric                        | Azure Databricks                                  | Data Catalog                                         |
+> | ストレージ:ホット/クール BLOB ストレージ レベル  | Azure DDoS Protection                             | Data Lake Analytics                                  |
+> | ストレージ:Managed Disks                | Azure DevTest Labs                                | Azure Machine Learning Studio (クラシック)              |
+> | Virtual Machine Scale Sets            | Azure Firewall                                    | Spatial Anchors                                      |
+> | Virtual Machines                      | Azure Firewall Manager                            | ストレージ:Archive Storage                             |
+> | Virtual Machines: Av2 シリーズ          | Azure Functions                                   | StorSimple                                           |
+> | Virtual Machines: Bs シリーズ           | Azure IoT Hub                                     | Ultra Disk Storage                                   |
+> | Virtual Machines: DSv2 シリーズ         | Azure Kubernetes Service (AKS)                    | Video Indexer                                        |
+> | Virtual Machines: DSv3 シリーズ         | Azure Machine Learning                            | Virtual Machines: DASv4 シリーズ                       |
+> | Virtual Machines: Dv2 シリーズ          | Azure Monitor:Application Insights               | Virtual Machines: DAv4 シリーズ                        |
+> | Virtual Machines: Dv3 シリーズ          | Azure Monitor:Log Analytics                      | Virtual Machines: DCsv2 シリーズ                       |
+> | Virtual Machines: ESv3 シリーズ         | Azure Private Link                                | Virtual Machines: EASv4 シリーズ                       |
+> | Virtual Machines: Ev3 シリーズ          | Azure Red Hat OpenShift                           | Virtual Machines: EAv4 シリーズ                        |
+> | Virtual Machines: インスタンス レベル IP  | Azure Site Recovery                               | Virtual Machines: HBv1 シリーズ                        |
+> | Virtual Machines: 予約済み IP         | Azure Stream Analytics                            | Virtual Machines: HBv2 シリーズ                        |
+> | Virtual Network                       | Azure Synapse Analytics                           | Virtual Machines: HCv1 シリーズ                        |
+> | VPN Gateway                           | Batch                                             | Virtual Machines: H シリーズ                           |
+> |                                       | クラウド サービス:M シリーズ                          | Virtual Machines: LSv2 シリーズ                        |
+> |                                       | Container Instances                               | Virtual Machines: Mv2 シリーズ                         |
+> |                                       | Container Registry                                | Virtual Machines: NCv3 シリーズ                        |
+> |                                       | Data Factory                                      | Virtual Machines: NDv2 シリーズ                        |
+> |                                       | Event Grid                                        | Virtual Machines: NVv3 シリーズ                        |
+> |                                       | HDInsight                                         | Virtual Machines: NVv4 シリーズ                        |> 
+> |                                       | Logic Apps                                        | Virtual Machines: SAP HANA on Azure Large Instances  |
+> |                                       | Media Services                                    |                                                      |
+> |                                       | Network Watcher                                   |                                                      |
+> |                                       | Notification Hubs                                 |                                                      |
+> |                                       | Premium Blob Storage                              |                                                      |
+> |                                       | Premium File Storage                             |                                                      |
+> |                                       | Virtual Machines: Ddsv4 シリーズ                    |                                                      |
+> |                                       | Virtual Machines: Ddv4 シリーズ                     |                                                      |
+> |                                       | Virtual Machines: Dsv4 シリーズ                     |                                                      |
+> |                                       | Virtual Machines: Dv4 シリーズ                      |                                                      |
+> |                                       | Virtual Machines: Edsv4 シリーズ                    |                                                      |
+> |                                       | Virtual Machines: Edv4 シリーズ                     |                                                      |
+> |                                       | Virtual Machines: Esv4 シリーズ                     |                                                      |
+> |                                       | Virtual Machines: Ev4 シリーズ                      |                                                      |
+> |                                       | Virtual Machines: Fsv2 シリーズ                     |                                                      |
+> |                                       | Virtual Machines: M シリーズ                        |                                                      |
+> |                                       | Virtual WAN                                       |                                                      |
 
-###  <a name="services-resiliency"></a>サービスの回復性
-
-すべての Azure 管理サービスは、リージョン レベルの障害から回復できるように設計されています。 障害にはさまざまなものがありますが、可用性ゾーンの障害は、リージョン内で 1 つ以上発生しても、リージョン全体の障害と比べて、障害の範囲は狭くなります。 Azure では、リージョン内または別の Azure リージョン内で発生した管理サービスのゾーン レベルの障害から復旧できます。 Azure では、リージョン内で 1 度に 1 つのゾーンで重要なメンテナンスが実行されます。これは、何らかの障害が発生した場合でも、リージョン内の可用性ゾーン全体にデプロイされたお客様のリソースに影響が及ばないようにするためです。
-
-### <a name="pricing-for-vms-in-availability-zones"></a>Availability Zones の VM の料金
-
-Availability Zones にデプロイされる仮想マシンに追加のコストは発生しません。 2 つ以上の VM が 1 つの Azure リージョン内の 2 つ以上の可用性ゾーンにデプロイされている場合、99.99% VM アップタイム SLA が実現されます。 可用性ゾーン VM 間データ転送の追加料金がかかります。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
-
-### <a name="get-started-with-availability-zones"></a>Availability Zones の使用を開始する
-
-- [仮想マシンの作成](../virtual-machines/windows/create-portal-availability-zone.md)
-- [PowerShell を使った管理ディスクの追加](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [ゾーン冗長仮想マシン スケール セットの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [ゾーン冗長フロントエンドによる Standard Load Balancer を使用したゾーン間での VM の負荷分散](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [ゾーン フロントエンドによる Standard Load Balancer を使用した単一のゾーン内での VM の負荷分散](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
-- [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md)
-- [SQL Database General Purpose レベル](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
-- [Event Hubs の geo ディザスター リカバリー](../event-hubs/event-hubs-geo-dr.md#availability-zones)
-- [Service Bus の geo ディザスター リカバリー](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)
-- [ゾーン冗長仮想ネットワーク ゲートウェイの作成](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
-- [Azure Cosmos DB のゾーン冗長リージョンの追加](../cosmos-db/high-availability.md#availability-zone-support)
-- [Azure Cache for Redis Availability Zones の概要](https://aka.ms/redis/az/getstarted)
-- [Azure Active Directory Domain Services インスタンスの作成](../active-directory-domain-services/tutorial-create-instance.md)
-- [可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する](../aks/availability-zones.md)
-- [Azure Container Registry でゾーン冗長を有効にする](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>次のステップ
 

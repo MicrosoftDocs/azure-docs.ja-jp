@@ -4,12 +4,12 @@ description: この記事では、Shared Access Signature を使用して Event 
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff141fc1bb681e2356a4471dfdc808d622fd76b5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510092"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986497"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Shared Access Signature (SAS) を使用して Event Hubs リソースへのアクセスを認証する
 Shared Access Signature (SAS) を使用すると、共有アクセス署名を持つクライアントに付与するアクセス許可の種類をきめ細かく制御することができます。 SAS で設定できる制御をいくつかを以下に示します。 
@@ -203,7 +203,7 @@ private static string createToken(string resourceUri, string keyName, string key
 
 
 > [!NOTE]
-> お勧めはしませんが、イベント ハブまたは名前空間へのアクセスを許可するトークンをデバイスに割り当てることができます。 このトークンを保持するデバイスでは、そのイベント ハブにメッセージを直接送信できます。 さらに、Event Hub への送信を禁止するブラックリストの対象にすることはできません。
+> お勧めはしませんが、イベント ハブまたは名前空間へのアクセスを許可するトークンをデバイスに割り当てることができます。 このトークンを保持するデバイスでは、そのイベント ハブにメッセージを直接送信できます。 さらに、Event Hub への送信を禁止するブロックリストの対象にすることはできません。
 > 
 > 常に、特定の詳細なスコープを指定することをお勧めします。
 

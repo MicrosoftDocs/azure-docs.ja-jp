@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight でネットワーク仮想アプライアンスを構成する
 description: Azure HDInsight でネットワーク仮想アプライアンスに関するいくつかの追加機能を構成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 557f0a6a37747d3a461ced8de16fd1fcf0d1abab
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7fe266c3c7b75762133fca4645e0675845c28972
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524115"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943981"
 ---
 # <a name="configure-network-virtual-appliance-in-azure-hdinsight"></a>Azure HDInsight でネットワーク仮想アプライアンスを構成する
 

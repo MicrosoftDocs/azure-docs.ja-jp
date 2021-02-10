@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289499"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254361"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault 証明書のインポートに関する FAQ
 
@@ -62,6 +62,10 @@ ms.locfileid: "93289499"
 このエラーは次の 2 つの理由により発生する場合があります。    
 * 証明書のサブジェクト名は、200 文字までに制限されています。
 * 証明書のパスワードは、200 文字までに制限されています。
+
+
+### <a name="error-the-specified-pem-x509-certificate-content-is-in-an-unexpected-format-please-check-if-certificate-is-in-valid-pem-format"></a>エラー "指定された PEM X.509 証明書の内容は、予期しない形式です。 証明書が有効な PEM 形式かどうかをご確認ください"。
+PEM ファイルのコンテンツが UNIX スタイルの行区切り記号 `(\n)` を使用していることを確認してください。
 
 ### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>有効期限が切れた証明書を Azure Key Vault にインポートできますか?
     

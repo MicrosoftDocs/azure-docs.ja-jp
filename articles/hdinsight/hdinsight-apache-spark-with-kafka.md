@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka に対する Apache Spark ストリーミング - Azure HDInsight
 description: Apache Spark を使用して、Apache Kafka に対して DStreams によるデータの送信または受信ストリーミングを行う方法について説明します。 この例では、Jupyter Notebook を使用して HDInsight 上で Spark からデータをストリーミングします。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 88a62b2d1ebee3bf933729ab82bc9e37a3db066b
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: d14b96843b489b28fc7d83348e39638272c06da5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821181"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942760"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 

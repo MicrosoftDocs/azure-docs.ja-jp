@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e1565d4f7792dca5242965d11c58faa90e2222d3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210985"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920377"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>メンテナンス スケジュールを使用してサービスの更新とメンテナンスを管理する
 
@@ -38,7 +38,7 @@ Service Health 通知とリソース ヘルス チェック モニターとの�
 すべてのメンテナンス イベントの 24 時間前に事前通知が発行されますが、DWC400c と下位層はその対象ではありません。
 
 > [!NOTE]
-> 時間が重要な更新プログラムをデプロイする必要がある場合、高度な通知の時間が大幅に短縮されることがあります。
+> 時間が重要な更新プログラムをデプロイする必要がある場合、高度な通知の時間が大幅に短縮されることがあります。 これは、更新プログラムの重大な特質により、指定のメンテナンス期間外に行われる場合があります。
 
 メンテナンスが行われるという事前通知を受けても、通知にある期間中にメンテナンスを実行できない場合、キャンセル通知が届きます。 メンテナンスは、次の定期メンテナンス期間中に再開されます。
 

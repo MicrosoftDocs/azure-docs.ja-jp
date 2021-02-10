@@ -1,21 +1,25 @@
 ---
-title: Cloud Services と管理証明書 | Microsoft Docs
+title: Cloud Services (クラシック) と管理証明書 | Microsoft Docs
 description: クラウド サービスと、Azure における管理 API による認証のために証明書を作成し、デプロイする方法について説明します。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 8650b8670c61cab15b26163dd5108145b8509434
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c73f9812f344eecf4e51f43405b48693ddfa191b
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072426"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739736"
 ---
-# <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
+# <a name="certificates-overview-for-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) の証明書の概要
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure にデプロイする方法について説明します。
 
 Azure で使用される証明書は x.509 v3 証明書であり、別の信頼された証明書によって署名することも、自己署名することもできます。 自己署名証明書は、作成者自身が署名するため、既定では信頼されません。 ほとんどのブラウザーではこの問題を無視できます。 自己署名証明書は、クラウド サービスを開発し、テストする際にのみ使用することをお勧めします。 
@@ -28,7 +32,7 @@ Azure が使用する証明書には、公開キーを含めることができ�
 ## <a name="what-are-service-certificates"></a>サービス証明書とは何でしょうか。
 サービス証明書はクラウド サービスに付属して、サービスとの間のセキュリティで保護された通信を有効にします。 次の例では、Web ロールをデプロイして、公開されている HTTPS エンドポイントを認証できる証明書を指定します。 サービス定義で定義されているサービス証明書は、ロールのインスタンスを実行している仮想マシンに自動的にデプロイされます。 
 
-Azure Portal または Azure クラシック デプロイ モデルを使って、サービス証明書を Azure にアップロードすることができます。 サービス証明書は特定のクラウド サービスに関連付けられ、 サービス定義ファイルのデプロイメントに割り当てられています。
+Azure Portal または Azure クラシック デプロイ モデルを使って、サービス証明書を Azure にアップロードすることができます。 サービス証明書は、特定のクラウド サービスに関連付けられます。 サービス定義ファイルのデプロイメントに割り当てられています。
 
 サービス証明書は、サービスとは別に管理することができ、別の人が管理する場合があります。 たとえば、開発者が IT 管理者が 以前 Azure にアップロードした証明書を参照するサービス パッケージをアップロードする場合があります。 IT 管理者は、新しいサービス パッケージをアップロードすることなくサービスの構成を変更する証明書を管理および更新できます。 論理名、ストアの名前、証明書の場所がサービス定義ファイルにあり、証明書の拇印はサービス構成ファイルで指定されているため、新しいサービス パッケージなしで更新することは可能です。 証明書を更新するには、サービス構成ファイルに新しい証明書をアップロードし、拇印値を変更するだけです。
 

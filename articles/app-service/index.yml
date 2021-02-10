@@ -7,12 +7,12 @@ metadata:
   ms.topic: landing-page
   ms.service: app-service
   ms.date: 08/06/2020
-  ms.openlocfilehash: 8ace1c6bb530fcc93d06f48bcef0d1ccfdf82306
-  ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+  ms.openlocfilehash: 2344c7a1507feb6ca3938fe0c53cf618b015f0f4
+  ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/22/2020
-  ms.locfileid: "97724427"
+  ms.lasthandoff: 02/06/2021
+  ms.locfileid: "99627319"
 landingContent:
 - title: App Service について
   linkLists:
@@ -60,46 +60,10 @@ landingContent:
       url: scenario-secure-app-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Traffic Manager で診断ログを有効にする
-      url: troubleshoot-diagnostic-logs.md
     - text: SSH 経由で Linux コンテナーに接続する
       url: configure-linux-open-ssh-session.md
     - text: アクティブなドメイン名を App Service に移行する
       url: manage-custom-dns-migrate-domain.md
-- title: データベースを使用した CRUD アプリ
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: SQL Database を使用した ASP.NET アプリ
-      url: app-service-web-tutorial-dotnet-sqldatabase.md
-    - text: ASP.NET Core アプリと SQL Database
-      url: tutorial-dotnetcore-sqldb-app.md
-    - text: Azure MySQL を使用する PHP (Laravel) アプリ
-      url: tutorial-php-mysql-app.md
-    - text: MongoDB を使用する Node.js (MEAN.js) アプリ
-      url: tutorial-nodejs-mongodb-app.md
-    - text: Cosmos DB を使用する Java (Spring Boot) アプリ
-      url: tutorial-java-spring-cosmosdb.md
-    - text: PostgreSQL を使用する Python (Django) アプリ
-      url: tutorial-python-postgresql-app.md
-    - text: PostgreSQL を使用する Ruby (Rails) アプリ
-      url: tutorial-ruby-postgres-app.md
-- title: コードまたはコンテンツをアップロードする
-  linkLists:
-  - linkListType: deploy
-    links:
-    - text: FTP を使用してコンテンツをアップロードする
-      url: deploy-ftp.md
-    - text: Zip パッケージとしてコンテンツをアップロードする
-      url: deploy-zip.md
-    - text: ローカル コンピューターからの Git プッシュ
-      url: deploy-local-git.md
-    - text: OneDrive または Dropbox とのコンテンツの同期
-      url: deploy-content-sync.md
-    - text: GitHub、BitBucket などを使用した CI/CD
-      url: deploy-continuous-deployment.md
-    - text: パッケージから実行
-      url: deploy-run-package.md
 - title: カスタム コンテナーを実行する
   linkLists:
   - linkListType: quickstart
@@ -120,6 +84,24 @@ landingContent:
       url: configure-connect-to-azure-storage.md
     - text: GitHub Actions を使用したデプロイ
       url: deploy-container-github-action.md
+- title: データベースを使用した CRUD アプリ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: SQL Database を使用した ASP.NET アプリ
+      url: app-service-web-tutorial-dotnet-sqldatabase.md
+    - text: ASP.NET Core アプリと SQL Database
+      url: tutorial-dotnetcore-sqldb-app.md
+    - text: Azure MySQL を使用する PHP (Laravel) アプリ
+      url: tutorial-php-mysql-app.md
+    - text: MongoDB を使用する Node.js (MEAN.js) アプリ
+      url: tutorial-nodejs-mongodb-app.md
+    - text: Cosmos DB を使用する Java (Spring Boot) アプリ
+      url: tutorial-java-spring-cosmosdb.md
+    - text: PostgreSQL を使用する Python (Django) アプリ
+      url: tutorial-python-postgresql-app.md
+    - text: PostgreSQL を使用する Ruby (Rails) アプリ
+      url: tutorial-ruby-postgres-app.md
 - title: 管理と統合
   linkLists:
   - linkListType: concept
@@ -146,6 +128,46 @@ landingContent:
       url: configure-domain-traffic-manager.md
     - text: Storage BLOB へのアプリのバックアップ
       url: manage-backup.md
+- title: コードまたはコンテンツをアップロードする
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: FTP を使用してコンテンツをアップロードする
+      url: deploy-ftp.md
+    - text: Zip パッケージとしてコンテンツをアップロードする
+      url: deploy-zip.md
+    - text: ローカル コンピューターからの Git プッシュ
+      url: deploy-local-git.md
+    - text: OneDrive または Dropbox とのコンテンツの同期
+      url: deploy-content-sync.md
+    - text: GitHub、BitBucket などを使用した CI/CD
+      url: deploy-continuous-deployment.md
+    - text: パッケージから実行
+      url: deploy-run-package.md
+- title: アプリを監視する
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: App Service と Azure Monitor の統合 (プレビュー)
+      url: https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html
+    - text: Azure Monitor の統合のログの種類 (プレビュー)
+      url: https://azure.github.io/AppService/2020/06/25/New-Logs-Available-for-Azure-Monitor-Integration.html
+  - linkListType: tutorial
+    links:
+    - text: Azure Monitor を使用したエラーのトラブルシューティング (プレビュー)
+      url: tutorial-troubleshoot-monitor.md
+  - linkListType: how-to-guide
+    links:
+    - text: Traffic Manager で診断ログを有効にする
+      url: troubleshoot-diagnostic-logs.md
+    - text: リソース イベントの取得
+      url: get-resource-events.md
+    - text: 正常性チェック
+      url: monitor-instances-health-check.md
+  - linkListType: reference
+    links:
+    - text: クォータとアラート
+      url: web-sites-monitor.md
 - title: その他のリソース
   linkLists:
   - linkListType: video

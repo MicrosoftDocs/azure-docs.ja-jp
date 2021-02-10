@@ -3,12 +3,12 @@ title: Azure Relay のセキュリティ コントロール
 description: この記事は、Azure Relay を評価するための組み込みのセキュリティ コントロールのチェックリストを提供します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 5d55026bfb6e3d6fe955a540b7596a85707398d6
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ce5053366ac1d3536a152610d8ed7f76fad62b84
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133346"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919580"
 ---
 # <a name="security-controls-for-azure-relay"></a>Azure Relay のセキュリティ コントロール
 
@@ -20,8 +20,8 @@ ms.locfileid: "98133346"
 
 | セキュリティ コントロール | はい/いいえ | Notes | ドキュメント |
 |---|---|--|--|
-| プライベート エンドポイントのサポート| いいえ |  |   |
-| ネットワークの分離とファイアウォールのサポート| いいえ |  |   |
+| プライベート エンドポイントのサポート| はい |  |   |
+| ネットワークの分離とファイアウォールのサポート| はい |  |   |
 | 強制トンネリングのサポート| 該当なし | Relay は TLS トンネルです  |   |
 
 ## <a name="monitoring--logging"></a>監視およびログ記録

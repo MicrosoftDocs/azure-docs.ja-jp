@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: efc4f6293623278314df3ac55b2fecae2e28f7d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a2b5350e1aebeff3cc9dc3996f7e0a92c424ecf3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968351"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219996"
 ---
 # <a name="ibm-workloads-on-azure"></a>Azure 上での IBM ワークロード
 
@@ -41,4 +41,4 @@ IBM メインフレーム システムを Azure へ移行するために、充�
 - [メインフレームの移行: 通説と事実](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上に IBM zD&T 開発/テスト環境をインストールする](./install-ibm-z-environment.md)
 - [IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する](./demo.md)
-- [Azure 上の IBM DB2 pureScale](../../../linux/ibm-db2-purescale-azure.md)
+- [Azure 上の IBM DB2 pureScale](ibm-db2-purescale-azure.md)

@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 85585b771d9c0ed7c6fcdba9cfef7b589a987c8c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98610150"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429264"
 ---
-# <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (プレビュー)
+# <a name="microsoft-azure-attestation"></a>Microsoft Azure Attestation 
 
-Microsoft Azure Attestation (プレビュー) は、プラットフォームの信頼性とその内部で実行されているバイナリの整合性をリモートで検証するための統合ソリューションです。 このサービスでは、[Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) エンクレーブや[仮想化ベースのセキュリティ](/windows-hardware/design/device-experiences/oem-vbs) (VBS) エンクレーブなどの高信頼実行環境 (TEE) の状態を証明する機能と共に、トラステッド プラットフォーム モジュール (TPM) によって裏付けられたプラットフォームの構成証明がサポートされています。 
+Microsoft Azure Attestation は、プラットフォームの信頼性とその内部で実行されているバイナリの整合性をリモートで検証するための統合ソリューションです。 このサービスでは、[Intel® Software Guard Extensions](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) エンクレーブや[仮想化ベースのセキュリティ](/windows-hardware/design/device-experiences/oem-vbs) (VBS) エンクレーブなどの高信頼実行環境 (TEE) の状態を証明する機能と共に、トラステッド プラットフォーム モジュール (TPM) によって裏付けられたプラットフォームの構成証明がサポートされています。 
 
 構成証明は、ソフトウェア バイナリが信頼できるプラットフォームで適切にインスタンス化されたことを示すためのプロセスです。 リモートの証明書利用者は、信頼できるハードウェアで上で実行されているのがこのような意図されたソフトウェアのみであるという確信を得ることができます。 Azure Attestation は、構成証明を目的とした、統合された顧客向けのサービスとフレームワークです。
 
@@ -67,7 +67,7 @@ Azure Attestation には以下のベネフィットがあるため、TEE を証�
 
 - TPM、SGX エンクレーブ、VBS エンクレーブなどの複数の環境を証明するための統合フレームワーク 
 - カスタム構成証明プロバイダーとポリシーを構成してトークンの生成を制限できるマルチテナント サービス
-- ユーザーによる構成なしで証明できる既定のプロバイダーを提供
+- ユーザーによる構成なしで証明できる、リージョンの共有プロバイダーを提供
 - SGX エンクレーブ内での実装により、使用中のデータを保護
 - 高可用性サービス 
 

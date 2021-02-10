@@ -1,7 +1,7 @@
 ---
 title: ワークスペースで Jupyter Notebooks を実行する方法
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning スタジオのワークスペースから離れずに Jupyter ノートブックを実行する方法について説明します。
+description: Azure Machine Learning スタジオのワークスペースから離れずに Jupyter Notebooks を実行する方法について説明します。
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -11,15 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 46e0687056d697afc2d4355bdf900af138273eaf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599311"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061836"
 ---
+# <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>ワークスペースで Jupyter Notebooks を実行する方法
 
-Azure Machine Learning スタジオのワークスペースで Jupyter ノートブックを直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
+Azure Machine Learning スタジオのワークスペースで Jupyter Notebooks を直接実行する方法について説明します。 [Jupyter](https://jupyter.org/) または [JupyterLab](https://jupyterlab.readthedocs.io) を起動できますが、ワークスペースから離れずにノートブックを編集して実行することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +40,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="[新しいファイルの作成]":::
 
 1. ファイルに名前を付けます。 
-1. Jupyter ノートブック ファイルの場合は、ファイルの種類として **[ノートブック]** を選択します。
+1. Jupyter Notebooks  ファイルの場合は、ファイルの種類として **[ノートブック]** を選択します。
 1. ファイル ディレクトリを選択します。
 1. **［作成］** を選択します
 
@@ -151,7 +152,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
 **ユーザー ファイル** ノートブックは、次のいずれかの方法で削除 "*できます*"。
 
 * Studio で、フォルダーまたはファイルの末尾にある **[...]** を選択します。  必ずサポートされているブラウザー (Microsoft Edge、Chrome、または Firefox) を使用してください。
-* 任意のノートブック ツールバーから [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
+* 任意のノートブック ツールバーから [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択して、コンピューティング インスタンスのターミナル ウィンドウにアクセスします。
 * Jupyter または JupyterLab で付属のツールを使用します。
 
 ## <a name="run-a-notebook-or-python-script"></a>ノートブックまたは Python スクリプトを実行する
@@ -169,7 +170,7 @@ Azure Machine Learning ワークスペースで、新しい Jupyter Notebooks �
 
 [ノートブック ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、実行の進行状況とログを表示します。 ウィジェットは非同期であり、トレーニングが終了するまで更新情報が表示されます。 Azure Machine Learning ウィジェットは、Jupyter および JupterLab でもサポートされています。
 
-:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="スクリーンショット: Jupyter ノートブック ウィジェット ":::
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="スクリーンショット: Jupyter Notebooks  ウィジェット ":::
 
 ## <a name="explore-variables-in-the-notebook"></a>ノートブックの変数を調べる
 
@@ -212,7 +213,7 @@ Notebook ツールバーの **変数エクスプローラー** ツールを使�
 
 ノートブックによって、接続されたコンピューティング インスタンスにインストールされているすべての Jupyter カーネルが自動的に検出されます。  コンピューティング インスタンスにカーネルを追加するには:
 
-1. ノートブックのツールバーで [ **[Open terminal]\(ターミナルを開く\)** ](#terminal) を選択します。
+1. ノートブックのツールバーで [ **[Open terminal]\(ターミナルを開く\)**](#terminal) を選択します。
 1. ターミナル ウィンドウを使用して、新しい環境を作成します。  たとえば、次のコードでは `newenv` が作成されます。
     ```shell
     conda create -y --name newenv
@@ -229,6 +230,7 @@ Notebook ツールバーの **変数エクスプローラー** ツールを使�
     conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+1. カーネルをインストールしたら、ページを最新の情報に更新してノートブックを開いてください。 カーネルの一覧に新しいカーネルが表示されます。
 
 > [!NOTE]
 > Notebook 内のパッケージ管理については、すべてのパッケージ (現在実行されているカーネルの外部のパッケージを含む) を参照する **!pip** または **!conda** ではなく、 **%pip** または **%conda** マジック関数を使用して、**現在実行中のカーネル** にパッケージを自動的にインストールします
@@ -254,94 +256,18 @@ Notebook ツールバーの **変数エクスプローラー** ツールを使�
 |  [緑] |カーネル接続済み、アイドル、ビジー|
 |  グレー |カーネルが接続されていません |
 
-## <a name="shortcut-keys"></a>ショートカット キー
-Jupyter Notebook と同様に、Azure Machine Learning Studio ノートブックにはモーダル ユーザー インターフェイスがあります。 キーボードの動作は、ノートブック セルのモードによって異なります。 Azure Machine Learning Studio ノートブックでは、特定のコード セルに対して、コマンド モードと編集モードという 2 つのモードがサポートされています。
-
-### <a name="command-mode-shortcuts"></a>コマンド モードのショートカット
-
-入力を求めるテキスト カーソルがない場合、セルはコマンド モードになります。 セルがコマンド モードの場合、ノートブックを全体として編集できますが、個々のセルに入力することはできません。 `ESC` キーを押すか、マウスを使用してセルのエディター領域の外側を選択し、コマンド モードに入ります。  アクティブなセルの左側の境界線は青い実線で、 **[実行]** ボタンは青です。
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="コマンド モードのノートブック セル ":::
-
-| ショートカット                      | 説明                          |
-| ----------------------------- | ------------------------------------|
-| Enter                         | 編集モードを開始する             |        
-| Shift + Enter                 | セルを実行し、下のものを選択する         |     
-| Ctrl/Command + Enter       | セルの実行                            |
-| Alt + Enter                   | セルを実行し、下にコード セルを挿入する    |
-| Ctrl/Command + Alt + Enter | セルを実行し、下にマークダウン セルを挿入する|
-| Alt + R                       | [すべて実行]      |                       
-| Y                             | セルをコードに変換する    |                         
-| M                             | セルをマークダウンに変換する  |                       
-| ↑/K                          | 上のセルを選択する    |               
-| ↓/J                        | 下のセルを選択する    |               
-| A                             | 上にコード セルを挿入する  |            
-| B                             | 下にコード セルを挿入する   |           
-| Ctrl/Command + Shift + A   | 上にマークダウン セルを挿入する    |      
-| Ctrl/Command + Shift + B   | 下にマークダウン セルを挿入する   |       
-| X                             | 選択したセルを切り取る    |               
-| C                             | 選択したセルをコピーする   |               
-| Shift + V                     | 選択したセルを上に貼り付ける           |
-| V                             | 選択したセルを下に貼り付ける    |       
-| D D                           | 選択したセルを削除する|                
-| O                             | TextWriter         |              
-| Shift + O                     | 出力のスクロールを切り替える   |          
-| I I                           | カーネルを中断する |                   
-| 0 0                           | カーネルを再開する |                     
-| Shift + Space                 | 上にスクロール  |                         
-| Space                         | 下にスクロール|
-| タブ                           | フォーカスを次のフォーカス可能な項目に移動する (タブ トラップが無効になっている場合)|
-| Ctrl/Command + S           | ノートブックを保存する |                      
-| 1                             | h1 に変更する|                       
-| 2                             | h2 に変更する|                        
-| 3                             | h3 に変更する|                        
-| 4                             | h4 に変更する |                       
-| 5                             | h5 に変更する |                       
-| 6                             | h6 に変更する |                       
-
-### <a name="edit-mode-shortcuts"></a>編集モードのショートカット
-
-編集モードは、エディター領域への入力を求めるテキスト カーソルによって示されます。 セルが編集モードの場合、セルに入力することができます。 `Enter` キーを押すか、マウスを使用してセルのエディター領域を選択し、編集モードに入ります。 アクティブなセルの左側の境界線は緑のハッチで、 **[実行]** ボタンは緑です。 また、編集モードではセルにカーソル プロンプトが表示されます。
-
-   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="編集モードのノートブック セル":::
-
-次のキーストローク ショートカットを使用すると、編集モードのときに Azure Machine Learning ノートブックのコードをより簡単に移動して実行できます。
-
-| ショートカット                      | 説明|                                     
-| ----------------------------- | ----------------------------------------------- |
-| エスケープ                        | コマンド モードを開始する|  
-| Ctrl/Command + Space       | IntelliSense をアクティブにする |
-| Shift + Enter                 | セルを実行し、下のものを選択する |                         
-| Ctrl/Command + Enter       | セルの実行  |                                      
-| Alt + Enter                   | セルを実行し、下にコード セルを挿入する  |              
-| Ctrl/Command + Alt + Enter | セルを実行し、下にマークダウン セルを挿入する  |          
-| Alt + R                       | すべてのセルを実行する     |                              
-| ［上へ］                            | カーソルを上または前のセルに移動する    |             
-| [下へ]                          | カーソルを下または次のセルに移動する |                  
-| Ctrl/Command + S           | ノートブックを保存する   |                                
-| Ctrl/Command + ↑          | セルの先頭に移動する   |                             
-| Ctrl/Command + ↓        | セルの末尾に移動する |                                 
-| タブ                           | コード補完またはインデント (タブ トラップが有効になっている場合) |
-| Ctrl/Command + M           | タブ トラップを有効または無効にする  |                       
-| Ctrl/Command + ]           | インデントする |                                         
-| Ctrl/Command + [           | インデントを解除する  |                                        
-| Ctrl/Command + A           | すべて選択する|                                      
-| Ctrl/Command + Z           | 元に戻す |                                           
-| Ctrl/Command + Shift + Z   | やり直す |                                           
-| Ctrl/Command + Y           | やり直す |                                           
-| Ctrl/Command + Home        | セルの先頭に移動する|                                
-| Ctrl/Command + End         | セルの末尾に移動する   |                               
-| Ctrl/Command + 左        | 1 単語左に移動する |                               
-| Ctrl/Command + →       | 1 単語右に移動する |                              
-| Ctrl/Command + Backspace   | 前の単語を削除する |                             
-| Ctrl/Command + Delete      | 後の単語を削除する |                              
-| Ctrl/Command + /           | cu でコメントを切り替える
-
 ## <a name="find-compute-details"></a>コンピューティングの詳細を確認する
 
 コンピューティング インスタンスの詳細については、[Studio](https://ml.azure.com) の **コンピューティング** に関するページを参照してください。
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+* ノートブックに接続できない場合は、Web ソケット通信が無効になって **いない** ことを確認してください。 コンピューティング インスタンスの Jupyter 機能を動作させるには、Web ソケット通信を有効にする必要があります。 お使いのネットワークで、*. instances.azureml.net と *. instances.azureml.ms への websocket 接続が許可されていることを確認してください。 
+
+* コンピューティング インスタンスがプライベート リンク ワークスペースにデプロイされている場合は、仮想ネットワーク内からのみアクセスできます。 カスタム DNS またはホスト ファイルを使用している場合は、ワークスペースのプライベート エンドポイントのプライベート IP アドレスを使用して <instance-name>.<region>.instances.azureml.ms のエントリを追加してください。 詳細については、[カスタム DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli)に関する記事をご覧ください。
+    
 ## <a name="next-steps"></a>次のステップ
 
 * [最初の実験を実行する](tutorial-1st-experiment-sdk-train.md)
 * [スナップショットを使用してファイル ストレージをバックアップする](../storage/files/storage-snapshots-files.md)
+* [セキュリティで保護された環境での作業](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)

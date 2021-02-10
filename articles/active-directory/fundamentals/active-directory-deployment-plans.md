@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672383"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051432"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -39,7 +39,7 @@ ms.locfileid: "97672383"
 | 機能 | 説明|
 | -| - |
 | [シングル サインオン](../manage-apps/plan-sso-deployment.md)| シングル サインオンは、ユーザーが 1 回サインインするだけで作業に必要なアプリとリソースにアクセスできる機能です。 サインインすると、資格情報をもう一度入力する必要なしに、Microsoft Office から SalesForce、Box、さらには内部アプリケーションにアクセスできるようになります。 |
-| [アクセス パネル](../manage-apps/access-panel-deployment-plan.md)| すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、アプリやグループへのアクセスを要求したり、他のユーザーに代わってリソースへのアクセスを管理したりするなどのセルフサービス機能を使用して生産性を向上できるようにします。 |
+| [マイ アプリ](../manage-apps/my-apps-deployment-plan.md)| すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、アプリやグループへのアクセスを要求したり、他のユーザーに代わってリソースへのアクセスを管理したりするなどのセルフサービス機能を使用して生産性を向上できるようにします。 |
 | [デバイス](../devices/plan-device-deployment.md) | この記事は、デバイスを Azure AD と統合する方法を評価し、実装計画を選択するのに役立ちます。また、サポートされているデバイス管理ツールへの主要なリンクを提供します。 |
 
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: c9afb5a078d5359ed236b44c0a6712985bf8c305
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860628"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257187"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 
@@ -78,7 +78,8 @@ ID プロバイダーの設定でメタデータ URL を指定した場合、署
 取引先組織との直接フェデレーションが確立すると、その組織に属する新しいゲスト ユーザーに対して、電子メールのワンタイム パスコード認証よりも直接フェデレーションが優先されます。 直接フェデレーションを設定する前に、ゲスト ユーザーがワンタイム パスコード認証を使用して招待を利用した場合、それらのゲスト ユーザーは引き続きワンタイム パスコード認証を使用することになります。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>直接フェデレーションは、部分的に同期されたテナントに起因するサインインの問題に対応していますか。
 いいえ。このシナリオでは、[電子メールのワンタイム パスコード](one-time-passcode.md)機能を使用する必要があります。 "部分的に同期されたテナント" とは、オンプレミスのユーザー ID がクラウドに完全には同期されていないパートナーの Azure AD テナントのことです。 クラウド上に ID がまだ存在していないゲストが、B2B の招待を利用しようとした場合、そのゲストはサインインできません。 ワンタイム パスコード機能であれば、このゲストをサインインさせることができます。 直接フェデレーション機能は、IdP によって管理される独自の組織アカウントをゲストが持っているが、その組織に Azure AD の存在がまったくないというシナリオに対応しています。
-
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>組織で直接フェデレーションを構成した場合、各ゲストに個別の招待を送り、ゲストはその招待を利用する必要がありますか。
+直接フェデレーションを設定しても、ご自身からの招待を既に利用済みのゲスト ユーザーに対する認証方法は変更されません。 ご自身のディレクトリからゲスト ユーザー アカウントを削除してから再招待することで、ゲスト ユーザーの認証方法を更新できます。
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>手順 1:取引先組織の ID プロバイダーを構成する
 最初に、取引先組織において、必須の要求と証明書利用者信頼を指定して ID プロバイダーを構成する必要があります。 
 

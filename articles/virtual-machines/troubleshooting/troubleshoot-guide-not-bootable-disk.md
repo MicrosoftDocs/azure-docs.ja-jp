@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da41815e177ece64c72ac27a7cb126e69fdc62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509037"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633190"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>ブート エラー This is not a bootable disk (これは起動可能なディスクではありません)
 
@@ -41,6 +41,9 @@ ms.locfileid: "86509037"
 
 ### <a name="process-overview"></a>プロセスの概要
 
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
+
 1. 修復 VM を作成してアクセスします。
 2. パーティションの状態を Active に設定します。
 3. ディスク パーティションを修正します。
@@ -50,7 +53,7 @@ ms.locfileid: "86509037"
    > [!NOTE]
    > このブート エラーが発生する場合、ゲスト OS は動作しなくなります。 この問題を解決するには、オフライン モードでトラブルシューティングを行います。
 
-### <a name="create-and-access-a-repair-vm"></a>修復 VM の作成とアクセス
+### <a name="create-and-access-a-repair-vm"></a>修復 VM を作成してアクセスする
 
 1. [仮想マシンの修復コマンド](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md)に関する説明の手順 1 から 3 に従い、修復 VM を準備します。
 2. リモート デスクトップ接続を使用し、修復 VM に接続します。
@@ -60,7 +63,7 @@ ms.locfileid: "86509037"
 第 1 世代の VM を使用している場合は、BCD ストアを保持している OS パーティションが "*アクティブ*" とマークされていることを確認する必要があります。 第 2 世代の VM を使用している場合は、「[ディスク パーティションの修正](#fix-the-disk-partition)」に進んでください。これは、後の世代では *Status* フラグが非推奨となっているためです。
 
 1. 管理者特権でコマンド プロンプト *(cmd.exe)* を開きます。
-2. *diskpart* と入力して、Diskpart ツールを起動します。
+2. 「*diskpart*」と入力して、DISKPART ツールを起動します。
 3. *list disk* と入力して、システム ディスクの一覧を表示し、接続されている OS VHD を特定します。
 4. 接続された OS VHD が見つかったら、*sel disk #* と入力して、ディスクを選択します。  接続されている OS VHD が Disk 1 である図 2 を確認してください。
 
@@ -79,13 +82,13 @@ ms.locfileid: "86509037"
 
    図 4
 
-   ![図 4 は、Partition 1 が *Active: No* に設定されているときの *detail partition* のコマンド出力を示す *DISKPART* ウィンドウを示します。](media/troubleshoot-guide-not-bootable-disk/4.jpg)
+   ![図 4 は、Partition 1 が *Active: No* に設定されているときの *detail partition* のコマンド出力を示す *DISKPART* ウィンドウを示します。いいえ*](media/troubleshoot-guide-not-bootable-disk/4.jpg)
 
    図 5
 
    ![図 5 の *detail partition* のコマンド出力を示す *DISKPART* ウィンドウ。Partition 1 は *Active:Yes* に設定されています。](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. パーティションが**アクティブでない**場合、*active* と入力して *Active* フラグを変更します。
+8. パーティションが **アクティブでない** 場合、*active* と入力して *Active* フラグを変更します。
 9. *detail partition* と入力して、状態が正しく変更されたことを確認します。
 
    図 6
@@ -101,9 +104,9 @@ ms.locfileid: "86509037"
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   '/f' コマンド オプションを追加すると、ディスク上のすべてのエラーが修正されます。 <DRIVE LETTER> は、接続されている OS VHD の文字に置き換えてください。
+   '/f' コマンド オプションを追加すると、ディスク上のすべてのエラーが修正されます。 <DRIVE LETTER> は、接続されている OS VHD の文字に置き換えます。
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>推奨:VM を再構築する前に、シリアル コンソールとメモリ ダンプの収集を有効にします。
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>推奨:VM を再構築する前に、シリアル コンソールとメモリ ダンプの収集を有効にする
 
 メモリ ダンプ コレクションとシリアル コンソールを有効にするには、次のスクリプトを実行します。
 
@@ -116,13 +119,13 @@ ms.locfileid: "86509037"
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-3. OS ディスクの空き領域が、VM 上のメモリ サイズ (RAM) の容量と同じであることを確認します。
+3. OS ディスクの空き領域が、VM のメモリ サイズ (RAM) の容量と同じであることを確認します。
 
-   OS ディスク上に十分な領域がない場合、メモリ ダンプ ファイルが作成される場所を変更し、それを十分な空き領域がある VM に接続された任意のデータ ディスクに参照させます。 場所を変更するには、"%SystemRoot%" を次のコマンドでデータ ディスクのドライブ文字 (たとえば、"F:") に置き換えます。
+   OS ディスクに十分な領域がない場合、メモリ ダンプ ファイルが作成される場所を変更し、その場所で十分な空き領域がある VM に接続された任意のデータ ディスクを参照する必要があります。 場所を変更するには、"%SystemRoot%" を次のコマンドでデータ ディスクのドライブ文字 (たとえば、"F:") に置き換えます。
 
 #### <a name="suggested-configuration-to-enable-os-dump"></a>OS ダンプを有効にするための推奨構成
 
-**破損した OS ディスクのロード**:
+**破損した OS ディスクのロード:**
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -142,10 +145,10 @@ ms.locfileid: "86509037"
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**破損した OS ディスクのアンロード**:
+**破損した OS ディスクのアンロード:**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>元の VM の再構築
+### <a name="rebuild-the-original-vm"></a>元の VM を再構築する
 
-[仮想マシンの修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) の説明に従って、VM を再構成します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構成します。

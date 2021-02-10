@@ -1,19 +1,16 @@
 ---
 title: Open Database Connectivity (ODBC) ドライバーを使用した Excel と Apache Hadoop - Azure HDInsight
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: e9b74cc3bff23848bf63859e7e38bb06599956a3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2c528859ea5abc6267c10a2ede9c2ca99f84e22f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540773"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946808"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -68,11 +65,11 @@ Microsoft Power Query for Excel アドインを使用して、HDInsight クラ�
 
     ![DSN 詳細構成オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "DSN 詳細構成オプション")
 
-1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に " **成功!** " と表示されます
+1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に "**成功!** " と表示されます
 
 1. **[OK]** を選択して、[テスト] ウィンドウを閉じます。  
 
-1. **[OK]** を選択して、 **Microsoft Hive ODBC Driver DSN セットアップ**  ウィンドウを閉じます。  
+1. **[OK]** を選択して、**Microsoft Hive ODBC Driver DSN セットアップ**  ウィンドウを閉じます。  
 
 1. **[OK]** を選択して、 **[ODBC データ ソース アドミニストレーター]** ウィンドウを閉じます。  
 

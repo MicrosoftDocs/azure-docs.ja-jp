@@ -3,17 +3,17 @@ title: IoT プラグ アンド プレイ ブリッジ | Microsoft Docs
 description: IoT プラグ アンド プレイ ブリッジについて、およびそれを使用して Windows または Linux ゲートウェイに接続されている既存のデバイスを IoT プラグ アンド プレイ デバイスとして接続する方法について説明します。
 author: usivagna
 ms.author: ugans
-ms.date: 09/22/2020
+ms.date: 1/20/2021
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: a45efd90043ecb4d457db7ed39651f1a9b5bbd4d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672782"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890609"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT プラグ アンド プレイ ブリッジ
 
@@ -36,7 +36,7 @@ IoT プラグ アンド プレイ ブリッジでは、次の種類の周辺機�
 |[SerialPnP アダプター](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md)で、シリアル接続を介して通信するデバイスを接続します。               |はい|はい|
 |[Windows USB 周辺機器](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md)では、アダプターでサポートされているデバイス インターフェイス クラスの一覧を使用して、特定のハードウェア ID を持つデバイスを接続します。  |はい|適用しない|
 
-IoT プラグ アンド プレイ ブリッジを拡張して追加のデバイス プロトコルをサポートする方法については、「[IoT プラグ アンド プレイ ブリッジをビルド、デプロイ、拡張する](howto-build-deploy-extend-pnp-bridge.md)」をご覧ください。
+IoT プラグ アンド プレイ ブリッジを拡張して追加のデバイス プロトコルをサポートする方法については、「[IoT プラグ アンド プレイ ブリッジの拡張](howto-author-pnp-bridge-adapter.md)」をご覧ください。 IoT プラグ アンド プレイ ブリッジをビルドしてデプロイする方法については、「[IoT プラグ アンド プレイ ブリッジをビルドおよびデプロイする](howto-build-deploy-extend-pnp-bridge.md)」を参照してください。
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>IoT プラグ アンド プレイ ブリッジのアーキテクチャ
 
@@ -148,6 +148,7 @@ IoT プラグ アンド プレイ ブリッジは、次の内容を指定する 
 
 ここでは、IoT プラグ アンド プレイ ブリッジのアーキテクチャの概要を示しました。次の手順では以下の詳細を参照してください。
 
-- [IoT プラグ アンド プレイ ブリッジの使用方法](./howto-use-iot-pnp-bridge.md)
-- [IoT プラグ アンド プレイ ブリッジをビルド、デプロイ、拡張する](howto-build-deploy-extend-pnp-bridge.md)
+- [Linux または Windows 上で実行されている IoT プラグ アンド プレイ ブリッジのサンプルを IoT Hub に接続する方法](./howto-use-iot-pnp-bridge.md)
+- [IoT プラグ アンド プレイ ブリッジのビルドとデプロイ](howto-build-deploy-extend-pnp-bridge.md)
+- [IoT プラグ アンド プレイ ブリッジの拡張](howto-author-pnp-bridge-adapter.md)
 - [GitHub の IoT プラグ アンド プレイ ブリッジ](https://github.com/Azure/iot-plug-and-play-bridge)

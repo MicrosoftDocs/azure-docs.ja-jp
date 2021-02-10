@@ -10,12 +10,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d754f27a1510d9db0837eabb96b3a7cf75f76fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f62cb6d5277ae202e8ea864aa99a3e19c3beef22
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87835529"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220753"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト
 
@@ -70,7 +70,7 @@ Azure 上のエミュレーション環境では、Application Developers Contro
 
 IBM DB2 pureScale 環境は、Azure 向けデータベース クラスターを提供します。 これは元の環境と同一ではないものの、Parallel Sysplex 設定で動作する IBM DB2 for z/OS と同程度の可用性とスケーラビリティを実現します。
 
-開始するには、「[Azure 上の IBM DB2 pureScale](../../linux/ibm-db2-purescale-azure.md)」を参照してください。
+開始するには、「[Azure 上の IBM DB2 pureScale](.//ibm/ibm-db2-purescale-azure.md)」を参照してください。
 
 ## <a name="considerations"></a>考慮事項
 

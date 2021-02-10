@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854827"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762678"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -74,7 +74,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
 
     AD サイトとサービスに関する「[サイト トポロジの設計](/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。 
     
-* SMB ボリュームの AES 暗号化を有効にするには、[[Active Directory に参加する]](#create-an-active-directory-connection) ウィンドウの **[AES の暗号化]** ボックスをオンにします。 Azure NetApp Files では、暗号化の種類として DES、Kerberos AES 128、および Kerberos AES 256 がサポートされています (安全性の最も低いものから安全性の最も高いものまで)。 AES の暗号化を有効にする場合、Active Directory に参加するのに使用するユーザー資格情報では、ご利用の Active Directory で有効になっている機能と一致するアカウント オプションの中で最上位のものが有効になっている必要があります。    
+* AD 認証の AES 暗号化を有効にするには、[[Active Directory に参加する]](#create-an-active-directory-connection) ウィンドウの **[AES の暗号化]** ボックスをオンにします。 Azure NetApp Files では、暗号化の種類として DES、Kerberos AES 128、および Kerberos AES 256 がサポートされています (安全性の最も低いものから安全性の最も高いものまで)。 AES の暗号化を有効にする場合、Active Directory に参加するのに使用するユーザー資格情報では、ご利用の Active Directory で有効になっている機能と一致するアカウント オプションの中で最上位のものが有効になっている必要があります。    
 
     たとえば、ご利用の Active Directory に AES-128 機能のみが含まれている場合は、ユーザー資格情報に対して AES-128 アカウント オプションを有効にする必要があります。 ご利用の Active Directory に AES-256 機能が含まれている場合は、AES-256 アカウント オプション (AES-128 もサポートしている) を有効にする必要があります。 Active Directory に Kerberos 暗号化機能が含まれていない場合、Azure NetApp Files では既定で DES が使用されます。  
 

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 72735dad6a52fffd6e6e94ad4fb0fb7a9558b4c4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700603"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430081"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
@@ -82,6 +82,7 @@ ms.locfileid: "98700603"
 | [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated) |
 | [Microsoft.Purview](#microsoftpurview) |
 | [Microsoft.StreamAnalytics](#microsoftstreamanalytics) |
+| [Microsoft.Synapse](#microsoftsynapse) |
 | **ブロックチェーン** |
 | [Microsoft.Blockchain](#microsoftblockchain) |
 | **AI + 機械学習** |
@@ -4765,6 +4766,169 @@ Azure サービス:[Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Delete | Stream Analytics ジョブ変換を削除します。 |
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Read | Stream Analytics ジョブ変換を読み取ります。 |
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Write | Stream Analytics ジョブ変換を書き込みます。 |
+
+### <a name="microsoftsynapse"></a>Microsoft.Synapse
+
+Azure サービス:[Synapse Analytics](../synapse-analytics/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | アクション | 説明 |
+> | --- | --- |
+> | Microsoft.Synapse/checkNameAvailability/action | ワークスペース名を使用できるかどうかを調べます。 |
+> | Microsoft.Synapse/register/action | Azure Synapse Analytics (ワークスペース) のリソース プロバイダーを登録し、ワークスペースを作成できるようにします。 |
+> | Microsoft.Synapse/unregister/action | Azure Synapse Analytics (ワークスペース) のリソース プロバイダーの登録を解除し、ワークスペースを作成できないようにします。 |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/read | 統合ランタイムを取得します。 |
+> | Microsoft.Synapse/workspaces/integrationruntimes/write | 統合ランタイムを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/delete | 統合ランタイムを削除します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/getStatus/action | 統合ランタイムの状態を取得します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/createExpressSHIRInstallLink/action | 統合ランタイムのインストール リンクを作成します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/start/action | 統合ランタイムを開始します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/stop/action | 統合ランタイムを停止します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/getConnectionInfo/action | 統合ランタイムの接続情報を取得します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/regenerateAuthKey/action | 統合ランタイムの認証キーを再生成します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/listAuthKeys/action | 統合ランタイムの認証キーの一覧を表示します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/removeNode/action | 統合ランタイムのノードを削除します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/monitoringData/action | 統合ランタイムの監視データを取得します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/syncCredentials/action | 統合ランタイムの資格情報を同期します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/upgrade/action | 統合ランタイムをアップグレードします |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/removeLinks/action | 統合ランタイムのリンクを削除します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/enableInteractiveQuery/action | 統合ランタイムでの対話型クエリを有効にします |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/disableInteractiveQuery/action | 統合ランタイムでの対話型クエリを無効にします |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/refreshObjectMetadata/action | 統合ランタイムでオブジェクト メタデータを更新します |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/getObjectMetadata/action | 統合ランタイムでオブジェクト メタデータを取得します |
+> | Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings/write | ワークスペースでマネージド ID の SQL コントロールの設定を更新します |
+> | Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings/read | マネージド ID の SQL コントロールの設定を取得します |
+> | Microsoft.Synapse/workspaces/scopePools/write | スコープ プールを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/scopePools/read | スコープ プールを読み取ります。 |
+> | Microsoft.Synapse/workspaces/scopePools/delete | スコープ プールを削除します。 |
+> | Microsoft.Synapse/operations/read | Azure Synapse Analytics リソース プロバイダーから使用可能な操作を読み取ります。 |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/nodes/read | 統合ランタイム ノードを取得します。 |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/nodes/delete | 統合ランタイム ノードを削除します。 |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/nodes/write | 統合ランタイム ノードにパッチを適用します。 |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/nodes/ipAddress/action | 統合ランタイムの IP アドレスを取得します |
+> | Microsoft.Synapse/workspaces/firewallRules/write | IP ファイアウォール規則を作成または更新します。 |
+> | Microsoft.Synapse/workspaces/firewallRules/read | IP ファイアウォール規則を読み取ります |
+> | Microsoft.Synapse/workspaces/firewallRules/delete | IP ファイアウォール規則を削除します。 |
+> | Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action | ワークスペースのすべての IP ファイアウォール規則を置き換えます。 |
+> | Microsoft.Synapse/workspaces/write | ワークスペースを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/read | ワークスペースを読み取ります。 |
+> | Microsoft.Synapse/workspaces/delete | ワークスペースを削除します。 |
+> | Microsoft.Synapse/workspaces/checkDefaultStorageAccountStatus/action | 既定のストレージ アカウントの状態を調べます。 |
+> | Microsoft.Synapse/workspaces/sqlPools/write | SQL Analytics プールを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/read | SQL Analytics プールを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/delete | SQL Analytics プールを削除します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/pause/action | SQL Analytics プールを一時停止します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/resume/action | SQL Analytics プールを再開します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/restorePoints/action | SQL Analytics プールの復元ポイントを作成します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/move/action | SQL Analytics プールの名前を変更します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/dataWarehouseQueries/read | SQL Analytics プールのクエリを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/geoBackupPolicies/read | SQL Analytics プールの geo バックアップ ポリシーを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/dataWarehouseUserActivities/read | SQL Analytics プールのユーザー アクティビティを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/restorePoints/read | SQL Analytics プールの復元ポイントを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/restorePoints/delete | 復元ポイントを削除します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/dataWarehouseQueries/dataWarehouseQuerySteps/read | SQL Analytics プールのクエリ手順を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/maintenanceWindows/read | SQL Analytics プールのメンテナンス期間を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/maintenanceWindows/write | SQL Analytics プールのメンテナンス期間を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/maintenanceWindowOptions/read | SQL Analytics プールのメンテナンス期間のオプションを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/replicationLinks/read | SQL Analytics プールのレプリケーション リンクを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption/read | SQL Analytics プールの Transparent Data Encryption の構成を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption/write | SQL Analytics プールの Transparent Data Encryption の構成を作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption/operationResults/read | SQL Analytics プールの Transparent Data Encryption の構成操作の結果を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/auditingSettings/read | SQL Analytics プールの監査設定を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/auditingSettings/write | SQL Analytics プールの監査設定を作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/operations/read | SQL Analytics プールの操作を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/usages/read | SQL Analytics プールの使用状況を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/currentSensitivityLabels/read | SQL Analytics プールの現在の秘密度ラベルを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/currentSensitivityLabels/write | 現在の秘密度ラベルをバッチ更新します |
+> | Microsoft.Synapse/workspaces/sqlPools/recommendedSensitivityLabels/read | SQL Analytics プールの推奨される秘密度ラベルを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/recommendedSensitivityLabels/write | 推薦される機密ラベルをバッチ更新します |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/read | SQL Analytics プールのスキーマを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/read | SQL Analytics プールのスキーマ テーブルを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/read | SQL Analytics プールのスキーマ テーブルの列を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/connectionPolicies/read | SQL Analytics プールの接続ポリシーを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/read | SQL Analytics プールの脆弱性評価を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/write | SQL プールの脆弱性評価を作成または更新します |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/delete | SQL Analytics プールの脆弱性評価を削除します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/scans/read | SQL Analytics プールの脆弱性評価スキャン レコードを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/scans/initiateScan/action | SQL Analytics プールの脆弱性評価スキャン レコードを開始します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/scans/export/action | SQL Analytics プールの脆弱性評価スキャン レコードをエクスポートします。 |
+> | Microsoft.Synapse/workspaces/sqlPools/securityAlertPolicies/read | SQL Analytics プールの脅威検出ポリシーを読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/securityAlertPolicies/write | SQL Analytics プールの脅威検出ポリシーを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/read | 指定した列の秘密度ラベルを取得します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/enable/action | SQL Analytics プールの秘密度ラベルを有効にします。 |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/disable/action | SQL Analytics プールの秘密度ラベルを無効にします。 |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/write | SQL Analytics プールの秘密度ラベルを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/delete | SQL Analytics プールの秘密度ラベルを削除します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/rules/baselines/read | SQL Analytics プールの脆弱性評価ルールのベースラインを取得します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/rules/baselines/write | SQL Analytics プールの脆弱性評価ルールのベースラインを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/rules/baselines/delete | SQL Analytics プールの脆弱性評価ルールのベースラインを削除します。 |
+> | Microsoft.Synapse/workspaces/operationStatuses/read | 非同期操作の状態を読み取ります。 |
+> | Microsoft.Synapse/workspaces/operationResults/read | 非同期操作の結果を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/operationResults/read | 非同期操作の結果を読み取ります。 |
+> | Microsoft.Synapse/workspaces/bigDataPools/write | Spark プールを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/bigDataPools/read | Spark プールを読み取ります。 |
+> | Microsoft.Synapse/workspaces/bigDataPools/delete | Spark プールを削除します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/metadataSync/write | SQL Analytics プールのメタデータ同期の構成を作成または更新します |
+> | Microsoft.Synapse/workspaces/sqlPools/metadataSync/read | SQL Analytics プールのメタデータ同期の構成を読み取ります |
+> | Microsoft.Synapse/workspaces/recoverableSqlpools/read | SQL Analytics プールの geo バックアップを表すリソースである、復旧可能な SQL Analytics プールを取得します |
+> | Microsoft.Synapse/workspaces/administrators/write | ワークスペースに Active Directory 管理者を設定します |
+> | Microsoft.Synapse/workspaces/administrators/read | ワークスペース Active Directory 管理者を取得します |
+> | Microsoft.Synapse/workspaces/administrators/delete | ワークスペース Active Directory 管理者を削除します |
+> | Microsoft.Synapse/workspaces/privateEndpointConnections/write | プライベート エンドポイント接続を作成または更新します |
+> | Microsoft.Synapse/workspaces/privateEndpointConnections/read | プライベート エンドポイント接続を読み取ります |
+> | Microsoft.Synapse/workspaces/privateEndpointConnections/delete | プライベート エンドポイント接続を削除します |
+> | Microsoft.Synapse/workspaces/privateLinkResources/read | Private Link リソースの一覧を取得します |
+> | Microsoft.Synapse/workspaces/sqlPools/extensions/read | SQL Analytics プールの拡張機能を取得します |
+> | Microsoft.Synapse/workspaces/sqlPools/extensions/write | 指定した SQL Analytics プールの拡張機能を変更します |
+> | Microsoft.Synapse/privateLinkHubs/write | PrivateLinkHubs を作成します。 |
+> | Microsoft.Synapse/privateLinkHubs/read | PrivateLinkHubs を読み取ります。 |
+> | Microsoft.Synapse/privateLinkHubs/delete | PrivateLinkHubs を削除します。 |
+> | Microsoft.Synapse/locations/operationStatuses/read | 非同期操作の状態を読み取ります。 |
+> | Microsoft.Synapse/locations/operationResults/read | 非同期操作の結果を読み取ります。 |
+> | Microsoft.Synapse/privateLinkHubs/privateLinkResources/read | Private Link リソースの一覧を取得します |
+> | Microsoft.Synapse/privateLinkHubs/privateEndpointConnections/write | PrivateLinkHub のプライベート エンドポイント接続を作成または更新します |
+> | Microsoft.Synapse/privateLinkHubs/privateEndpointConnections/read | PrivateLinkHub のプライベート エンドポイント接続を読み取ります |
+> | Microsoft.Synapse/privateLinkHubs/privateEndpointConnections/delete | PrivateLinkHub のプライベート エンドポイント接続を削除します |
+> | Microsoft.Synapse/workspaces/sqlPools/operationStatuses/read | 非同期操作の結果を読み取ります。 |
+> | Microsoft.Synapse/workspaces/keys/write | ワークスペース キーを作成または更新します |
+> | Microsoft.Synapse/workspaces/keys/read | ワークスペース キーの定義を読み取ります。 |
+> | Microsoft.Synapse/workspaces/keys/delete | ワークスペース キーを削除します。 |
+> | Microsoft.Synapse/workspaces/libraries/read | ライブラリ成果物を読み取ります |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/read | 選択した SQL プールのワークロード グループの一覧を表示します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/write | 特定のワークロード グループのプロパティを設定します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/delete | 特定のワークロード グループをドロップします。 |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/read | 選択した SQL Analytics プールのワークロード分類子の一覧を表示します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/write | 特定のワークロード分類子のプロパティを設定します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/delete | 特定のワークロード分類子をドロップします。 |
+> | Microsoft.Synapse/workspaces/sqlPools/extendedAuditingSettings/read | SQL Analytics プールの拡張監査設定を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/extendedAuditingSettings/write | SQL Analytics プールの拡張監査設定を作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/dataMaskingPolicies/read | SQL Analytics プールのデータ マスキング ポリシーの一覧を取得します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/dataMaskingPolicies/write | SQL Analytics プールのデータ マスキング ポリシーを作成または更新します |
+> | Microsoft.Synapse/workspaces/sqlPools/dataMaskingPolicies/rules/read | SQL Analytics プールのデータ マスキング ルールの一覧を取得します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/dataMaskingPolicies/rules/write | SQL Analytics プールのデータ マスキング ルールを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/columns/read | SQL Analytics プールの列の一覧を取得します |
+> | Microsoft.Synapse/workspaces/sqlPools/sensitivityLabels/read | 指定した列の秘密度ラベルを取得します。 |
+> | Microsoft.Synapse/workspaces/sqlPools/auditRecords/read | SQL プールの BLOB 監査レコードを取得します |
+> | Microsoft.Synapse/resourceGroups/operationStatuses/read | 非同期操作の状態を読み取ります。 |
+> | Microsoft.Synapse/workspaces/extendedAuditingSettings/write | SQL サーバーの拡張監査設定を作成または更新します。 |
+> | Microsoft.Synapse/workspaces/extendedAuditingSettings/read | 既定の SQL サーバーの拡張監査設定を読み取ります。 |
+> | Microsoft.Synapse/workspaces/auditingSettings/write | SQL サーバーの監査設定を作成または更新します。 |
+> | Microsoft.Synapse/workspaces/auditingSettings/read | 既定の SQL サーバーの監査設定を読み取ります。 |
+> | Microsoft.Synapse/workspaces/securityAlertPolicies/write | SQL サーバーのセキュリティ アラート ポリシーを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/securityAlertPolicies/read | 既定の SQL サーバーのセキュリティ アラート ポリシーを読み取ります。 |
+> | Microsoft.Synapse/workspaces/vulnerabilityAssessments/write | SQL サーバーの脆弱性評価レポートを作成または更新します。 |
+> | Microsoft.Synapse/workspaces/vulnerabilityAssessments/read | 既定の SQL Server の脆弱性評価レポートを読み取ります。 |
+> | Microsoft.Synapse/workspaces/vulnerabilityAssessments/delete | SQL Server の脆弱性評価レポートを削除します。 |
+> | Microsoft.Synapse/workspaces/restorableDroppedSqlPools/read | 復元可能な削除された SQL プールを取得します |
+> | Microsoft.Synapse/workspaces/sqlPools/dataWarehouseQueries/Steps/read | SQL Analytics プールのクエリ手順を読み取ります。 |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/operationStatuses/read | SQL Analytics プールのワークロード グループの操作状態 |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/operationStatuses/read | SQL Analytics プールのワークロード分類子の操作状態 |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/operationResults/read | SQL Analytics プールのワークロード分類子の操作結果 |
+> | Microsoft.Synapse/workspaces/sqlUsages/read | SQL Analytics プールで使用可能な使用制限を取得します |
+> | Microsoft.Synapse/workspaces/auditingSettings/operationResults/read | SQL サーバーの監査設定 |
+> | Microsoft.Synapse/workspaces/sqlAdministrators/write | ワークスペースに Active Directory 管理者を設定します |
+> | Microsoft.Synapse/workspaces/sqlAdministrators/read | ワークスペース Active Directory 管理者を取得します |
+> | Microsoft.Synapse/workspaces/sqlAdministrators/delete | ワークスペース Active Directory 管理者を削除します |
 
 ## <a name="blockchain"></a>ブロックチェーン
 

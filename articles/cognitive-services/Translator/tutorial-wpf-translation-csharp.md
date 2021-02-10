@@ -3,24 +3,24 @@ title: チュートリアル:WPF (C#) を使って翻訳アプリを作成する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、単一のサブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックを実行するための WPF アプリを作成します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023618"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927480"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 
-このチュートリアルでは、単一サブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックに Azure Cognitive Service API を利用する [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) アプリを作成します。 具体的には、アプリから Translator と [Bing Spell Check](https://azure.microsoft.com/services/cognitive-services/spell-check/) の API を呼び出します。
+このチュートリアルでは、単一サブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックに Azure Cognitive Service API を利用する [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf) アプリを作成します。 具体的には、アプリから Translator と [Bing Spell Check](https://azure.microsoft.com/services/cognitive-services/spell-check/) の API を呼び出します。
 
 WPF とは デスクトップ クライアント アプリを作成する UI フレームワークです。 WPF 開発プラットフォームでは、アプリ モデル、リソース、コントロール、グラフィックス、レイアウト、データ バインディング、ドキュメント、セキュリティなど、広範なアプリ開発機能がサポートされています。 .NET Framework のサブセットなので、以前に ASP.NET または Windows フォームを使って .NET Framework でアプリを作成したことがある場合、そのプログラミングの経験を活かすことができます。 WPF では、Extensible Application Markup Language (XAML) を使って、アプリ プログラミングの宣言型モデルを提供します。これについては、後のセクションで確認します。
 
@@ -90,7 +90,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 1. これらの参照をプロジェクトに追加したら、 **[OK]** をクリックして、 **[参照マネージャー]** を閉じることができます。
 
 > [!NOTE]
-> アセンブリ参照の詳細については、「[方法:参照マネージャーを使用して参照を追加または削除する](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)」を参照してください。
+> アセンブリ参照の詳細については、「[方法:参照マネージャーを使用して参照を追加または削除する](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager)」を参照してください。
 
 ### <a name="install-newtonsoftjson"></a>NewtonSoft.Json をインストールする
 

@@ -3,19 +3,19 @@ title: Translator Transliterate メソッド
 titleSuffix: Azure Cognitive Services
 description: Translator Transliterate メソッドを利用し、ある言語のテキストをあるスクリプトから別のスクリプトに変換します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 4b985d7b2eb07ca8bbd3556a237fbcaba5392fe5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 0d5a7f8df0c722ca52780ba254e9af9608f26b54
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016472"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895426"
 ---
 # <a name="translator-30-transliterate"></a>Translator 3.0:Transliterate
 

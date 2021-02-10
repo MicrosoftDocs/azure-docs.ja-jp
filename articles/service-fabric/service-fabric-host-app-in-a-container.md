@@ -3,12 +3,12 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 8be9de495fa6bc5689a2dba5384f5df3112cbb38
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7930651a0faa5f37336c15557e2a0f068d613011
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485537"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936715"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -27,11 +27,12 @@ ms.locfileid: "96485537"
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成します。
-2. Windows 10 でコンテナーを実行できるように、[Docker CE for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) をインストールします。
-3. [Service Fabric ランタイムのバージョン 6.2 以降](service-fabric-get-started.md)と、[Service Fabric SDK のバージョン 3.1](service-fabric-get-started.md) 以降をインストールします。
-4. [Visual Studio 2019 のバージョン 16.1](https://www.visualstudio.com/) 以降をインストールし、**Azure の開発** ワークロードと **ASP.NET と Web 開発** ワークロードをインストールします。
-5. [Azure PowerShell][link-azure-powershell-install] をインストールする
+1. Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+2. Windows の **Hyper-V** および **Containers** 機能を有効にします。
+3. Windows 10 でコンテナーを実行できるように、[Docker Desktop for Windows](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description) をインストールします。
+4. [Service Fabric ランタイムのバージョン 6.2 以降](service-fabric-get-started.md)と、[Service Fabric SDK のバージョン 3.1](service-fabric-get-started.md) 以降をインストールします。
+5. [Visual Studio 2019 のバージョン 16.1](https://www.visualstudio.com/) 以降をインストールし、**Azure の開発** ワークロードと **ASP.NET と Web 開発** ワークロードをインストールします。
+6. [Azure PowerShell][link-azure-powershell-install] をインストールする
 
 ## <a name="download-and-run-fabrikam-fiber-callcenter"></a>Fabrikam Fiber CallCenter をダウンロードして実行する
 
@@ -40,16 +41,6 @@ ms.locfileid: "96485537"
 2. Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題なく実行できていることを確認します。  Visual Studio を **管理者** として起動し、[FabrikamFiber.CallCenter.sln][link-fabrikam-github] ファイルを開きます。  F5 キーを押して、アプリケーションをデバッグおよび実行します。
 
    ![ローカル ホストで実行されている Fabrikam Fiber CallCenter アプリケーション ホーム ページのスクリーンショット。 このページには、サポート コールの一覧が含まれるダッシュボードが表示されます。][fabrikam-web-page]
-
-## <a name="containerize-the-application"></a>アプリケーションのコンテナー格納
-
-1. **FabrikamFiber.Web** プロジェクトを右クリックし、 **[追加]**  >  **[コンテナー オーケストレーター サポート]** の順に選択します。  コンテナー オーケストレーターとして **[Service Fabric]** を選択し、 **[OK]** をクリックします。
-
-2. メッセージが表示されたら、 **[はい]** をクリックして Docker を Windows コンテナーに切り替えます。
-
-   ソリューションに、新しい Service Fabric アプリケーション プロジェクト **FabrikamFiber.CallCenterApplication** が作成されます。  既存の **FabrikamFiber.Web** プロジェクトに Docker ファイルが追加されます。  **FabrikamFiber.Web** プロジェクトには、ほかにも **PackageRoot** ディレクトリが追加されます。このディレクトリには、新しい FabrikamFiber.Web サービスのサービス マニフェストと各種の設定が格納されています。
-
-   これで、コンテナーを Service Fabric アプリケーションにビルドしてパッケージ化する準備ができました。 コンピューター上にコンテナー イメージをビルドすると、コンテナー レジストリにプッシュしたり、ホストにプルして実行したりできるようになります。
 
 ## <a name="create-an-azure-sql-db"></a>Azure SQL DB を作成する
 
@@ -120,9 +111,42 @@ Write-Host "Server name is $servername"
 >[!NOTE]
 >ローカル デバッグには、ホストからアクセスできる範囲であれば好きな SQL Server を使用できます。 ただし、**localdb** は `container -> host` 通信をサポートしていません。 Web アプリケーションのリリース ビルドを作成するときに別の SQL データベースを使用する場合は、*web.release.config* ファイルに別の接続文字列を追加します。
 
+## <a name="containerize-the-application"></a>アプリケーションのコンテナー格納
+
+1. **FabrikamFiber.Web** プロジェクトを右クリックし、 **[追加]**  >  **[コンテナー オーケストレーター サポート]** の順に選択します。  コンテナー オーケストレーターとして **[Service Fabric]** を選択し、 **[OK]** をクリックします。
+
+2. メッセージが表示されたら、 **[はい]** をクリックして Docker を Windows コンテナーに切り替えます。
+
+   ソリューションに、新しい Service Fabric アプリケーション プロジェクト **FabrikamFiber.CallCenterApplication** が作成されます。  既存の **FabrikamFiber.Web** プロジェクトに Docker ファイルが追加されます。  **FabrikamFiber.Web** プロジェクトには、ほかにも **PackageRoot** ディレクトリが追加されます。このディレクトリには、新しい FabrikamFiber.Web サービスのサービス マニフェストと各種の設定が格納されています。
+
+   これで、コンテナーを Service Fabric アプリケーションにビルドしてパッケージ化する準備ができました。 コンピューター上にコンテナー イメージをビルドすると、コンテナー レジストリにプッシュしたり、ホストにプルして実行したりできるようになります。
+
 ## <a name="run-the-containerized-application-locally"></a>コンテナーに格納されたアプリケーションをローカルで実行する
 
 **F5** キーを押し、ローカルの Service Fabric 開発クラスターのコンテナーの中にあるアプリケーションを実行およびデバッグします。 'ServiceFabricAllowedUsers' グループに Visual Studio プロジェクト ディレクトリの読み取りおよび実行アクセス許可を付与するように求めるメッセージ ボックスが表示された場合は、 **[はい]** をクリックします。
+
+F5 キーによる実行で次のような例外がスローされた場合は、Azure データベース ファイアウォールに正しい IP が追加されていません。
+
+```text
+System.Data.SqlClient.SqlException
+HResult=0x80131904
+Message=Cannot open server 'fab-fiber-751718376' requested by the login. Client with IP address '123.456.789.012' is not allowed to access the server.  To enable access, use the Windows Azure Management Portal or run sp_set_firewall_rule on the master database to create a firewall rule for this IP address or address range.  It may take up to five minutes for this change to take effect.
+Source=.Net SqlClient Data Provider
+StackTrace:
+<Cannot evaluate the exception stack trace>
+```
+
+Azure データベース ファイアウォールに適切な IP を追加するには、次のコマンドを実行します。
+
+```powershell
+# The IP address of your development computer that accesses the SQL DB.
+$clientIPNew = "<client IP from the Error Message>"
+
+# Create the firewall rule to allow your development computer to access the server.
+New-AzSqlServerFirewallRule -ResourceGroupName $dbresourcegroupname `
+    -ServerName $servername `
+    -FirewallRuleName "AllowClientNew" -StartIpAddress $clientIPNew -EndIpAddress $clientIPNew
+```
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
@@ -166,6 +190,9 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 
     c. **[証明書]** タブを選択します。このタブでは、クラスターの証明書をセキュリティで保護するために使用されるパスワードを入力します。 この証明書は、クラスターのセキュリティ保護に役立ちます。 また、証明書を保存したい場所にパスを変更することもできます。 アプリケーションをクラスターに発行するうえで必要な手順であるため、Visual Studio では証明書を自動でインポートすることもできます。
 
+    >[!NOTE]
+    >この証明書がインポートされているフォルダー パスをメモしておきます。 クラスター作成後の次の手順として、この証明書をインポートします。
+
     d. **[VM の詳細]** タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。
 
     > [!IMPORTANT]
@@ -176,6 +203,12 @@ Service Fabric アプリケーションは、ネットワークに接続され�
     f. 設定の変更が完了したら、 **[作成]** ボタンを選択します。
 
 5. 作成の完了には数分かかります。クラスターが完全に作成されると、出力ウィンドウにその旨が表示されます。
+
+## <a name="install-the-imported-certificate"></a>インポートされた証明書をインストールする
+
+クラスター作成手順の一部としてインポートされた証明書を **現在のユーザー** ストアの場所にインストールし、指定した秘密キーのパスワードを入力します。
+
+インストールを確認するには、コントロール パネルで **[ユーザー証明書の管理]** を開き、 **[証明書 - 現在のユーザー]**  ->  **[個人]**  ->  **[証明書]** で、証明書がインストールされていることを確認します。 証明書は、 *[クラスター名]* . *[クラスターの場所]* .cloudapp.azure.com のようになります (例: *fabrikamfibercallcenter.southcentralus.cloudapp.azure.com*)。 
 
 ## <a name="allow-your-application-running-in-azure-to-access-sql-database"></a>Azure で実行しているアプリケーションに SQL Database へのアクセスを許可する
 
@@ -233,9 +266,11 @@ $vnetRuleObject1 = New-AzSqlServerVirtualNetworkRule `
 
 ![アプリケーションの発行][publish-app]
 
-出力ウィンドウでデプロイの進行状況を確認します。 アプリケーションのデプロイが終わったらブラウザーを開き、クラスターのアドレスとアプリケーション ポートを入力します。 たとえば、「 `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/` 」のように入力します。
+出力ウィンドウでデプロイの進行状況を確認します。 アプリケーションのデプロイが終わったらブラウザーを開き、クラスターのアドレスとアプリケーション ポートを入力します。 たとえば、「 `http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/` 」のように入力します。
 
 ![azure.com で実行されている Fabrikam Fiber CallCenter アプリケーション ホーム ページのスクリーンショット。 このページには、サポート コールの一覧が含まれるダッシュボードが表示されます。][fabrikam-web-page-deployed]
+
+ページの読み込みに失敗した場合や、証明書の入力を求められなかった場合は、エクスプローラーのパス (例: `https://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:19080/Explorer`) を開いて、新しくインストールされた証明書を選択してください。
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Service Fabric クラスターを使用した継続的インテグレーションとデプロイ (CI/CD) の設定
 

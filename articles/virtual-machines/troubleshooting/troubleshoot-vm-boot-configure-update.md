@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e4d51b4d41fa0dc23e9b12ac0251c14215de5c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079844"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633012"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される (Azure 内)
 
@@ -28,7 +28,7 @@ ms.locfileid: "87079844"
 
 ## <a name="symptoms"></a>現象
 
-Windows VM が起動しません。 **起動診断**を利用して VM のスクリーンショットを取得すると、VM に "準備しています" または "Windows の準備をしています" というメッセージが表示されることがあります。
+Windows VM が起動しません。 **起動診断** を利用して VM のスクリーンショットを取得すると、VM に "準備しています" または "Windows の準備をしています" というメッセージが表示されることがあります。
 
 ![Windows Server 2012 R2 でのメッセージの例](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -39,6 +39,9 @@ Windows VM が起動しません。 **起動診断**を利用して VM のスク
 この問題は通常、構成の変更後にサーバーが最終リブートを行っている場合に発生します。 構成の変更は、Windows Update またはサーバーのロール/機能に関する変更によって初期化される可能性があります。 Windows Update では、更新のサイズが大きかった場合、オペレーティング システムが変更を再構成するまでに必要な時間が長くなります。
 
 ## <a name="collect-an-os-memory-dump"></a>OS のメモリ ダンプの収集
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
 
 変更が処理されるまで待っても問題が解決されないときは、場合によっては、メモリ ダンプ ファイルを収集し、サポートに問い合わせる必要があります。 ダンプ ファイルを収集するには、次の手順を実行します。
 

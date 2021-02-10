@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0dccd8ac4f852688bf7e59e7ed96c4458c08d18b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425781"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784730"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel でのユーザーとエンティティの動作分析の有効化 (UEBA) 
 
 > [!IMPORTANT]
 >
-> - UEBA およびエンティティ ページ機能は、次の Azure Sentinel の地域とリージョンで **一般提供** になりました。
->    - 米国地域
->    - 西ヨーロッパ リージョン
->    - オーストラリア地域
->
-> - 他のすべての地域およびリージョンでは、これらの機能は当面は **プレビュー** 段階のままです。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> - UEBA およびエンティティ ページ機能は、Azure Sentinel の "*_すべて_*" の地域とリージョンで **一般提供** になりました。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +33,7 @@ ms.locfileid: "94425781"
 
 - ユーザーは、ゲスト ユーザーではなく、組織の Azure Active Directory のメンバーである必要があります。
 
-- ユーザーには、Azure AD の **全体管理者** または **セキュリティ管理者** のロールを割り当てる必要があります。
+- ユーザーには、Azure AD の "*グローバル管理者*" または **セキュリティ管理者** のロールを割り当てる必要があります。
 
 - ユーザーには、次の **Azure ロール** の少なくとも 1 つが割り当てられている必要があります ([Azure RBAC に関する詳細](roles.md))。
     - ワークスペースまたはリソース グループ レベルの **Azure Sentinel 共同作成者**

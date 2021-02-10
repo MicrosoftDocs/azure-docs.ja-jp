@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 5e0c2541c398f2e135b8763cc753ec8c20c3967d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882453"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953752"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure Digital Twins インスタンスと認証を設定する (ポータル)
 
@@ -40,7 +40,7 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure Digital Twins サービスのページから [作成] を選択する":::
 
-以下の *[リソースの作成]* ページで、次に示した値を入力します。
+以下の **[リソースの作成]** ページで、次に示した値を入力します。
 * **サブスクリプション**:使用している Azure サブスクリプション
   - **[リソース グループ]** :インスタンスのデプロイ先にするリソース グループ。 検討できる既存のリソース グループがまだない場合は、 *[新規作成]* リンクを選択して新しいリソース グループの名前を入力することで、ここで作成することができます
 * **[場所]** :デプロイする Azure Digital Twins 対応のリージョン。 リージョンのサポートに関する詳細については、"[*リージョン別の利用可能な Azure 製品 (Azure Digital Twins)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins)" に関するページを参照してください。
@@ -48,11 +48,21 @@ Azure portal に入ったら、Azure サービスのホーム ページ メニ�
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="説明に示された値を入力して Azure Digital Twins リソースを作成する":::
 
-終わったら、 _[確認と作成]_ を選択します。 これにより、[概要] ページへ遷移します。ここでは、入力したインスタンスの詳細を確認して、 _[作成]_ を押します。 
+操作を完了し、インスタンスの設定をこれ以上構成しない場合は、 **[確認と作成]** を選択できます。 これにより、[概要] ページに移動し、入力したインスタンスの詳細を確認して **[作成]** で完了できます。 
 
-### <a name="verify-success-and-collect-important-values"></a>成功を確認して重要な値を収集する
+インスタンスの詳細をさらに構成する場合は、次のセクションに残りの設定タブの説明があります。
 
-*[作成]* を押した後は、ポータル アイコン バーの Azure 通知にインスタンスのデプロイの状態が表示されます。 この通知はデプロイが成功した時点で示され、作成したインスタンスを表示するための _[リソースに移動]_ ボタンを選択できるようになります。
+### <a name="additional-setup-options"></a>その他の設定オプション
+
+ここでは、 **[リソースの作成]** プロセスで他のタブを使用して、設定中に構成できる追加のオプションを示します。
+
+* **ネットワーク**:このタブでは、[Azure Private Link](../private-link/private-link-overview.md) でプライベート エンドポイントを有効にして、インスタンスがパブリック ネットワークに露出されないようにすることができます。 手順については、[*方法: Private Link を使用してプライベート アクセスを有効にする (プレビュー)* ](how-to-enable-private-link.md#add-a-private-endpoint-during-instance-creation)」を参照してください。
+* **[詳細設定]** :このタブでは、[エンドポイント](concepts-route-events.md)にイベントを転送するときに使用できる、インスタンスの[システムマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にすることができます。 手順については、[*方法: イベントをルーティングするためにマネージド ID を有効にする (プレビュー)* ](how-to-enable-managed-identities.md#add-a-system-managed-identity-during-instance-creation)」を参照してください。
+* **タグ**:このタブでは、Azure リソース間での整理に役立てるために、インスタンスにタグを追加できます。 Azure リソース タグの詳細については、[*論理的な組織化のためのリソース、リソース グループ、およびサブスクリプションへのタグ付け*](../azure-resource-manager/management/tag-resources.md)に関する記事を参照してください。
+
+### <a name="verify-success-and-collect-important-values"></a>正常に実行されたことを確認して重要な値を収集する
+
+**[作成]** を選択してインスタンスの設定を終了すると、ポータル アイコン バーの Azure 通知にインスタンスのデプロイの状態が表示されます。 この通知はデプロイが成功した時点で示され、作成したインスタンスを表示するための _[リソースに移動]_ ボタンを選択できるようになります。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="デプロイの成功の表示と [リソースに移動] ボタンの強調表示がある Azure 通知のビュー":::
 

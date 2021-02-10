@@ -11,13 +11,13 @@ metadata:
   author: TerryLanfear
   ms.author: terrylan
   manager: rkarlin
-  ms.date: 10/28/2019
-  ms.openlocfilehash: 95136ee22ec6799a4e35b9b4619d62994d708fc1
-  ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+  ms.date: 02/03/2021
+  ms.openlocfilehash: 87584400894b97f0ef0522d8f7c421100a673cba
+  ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/10/2020
-  ms.locfileid: "94410081"
+  ms.lasthandoff: 02/04/2021
+  ms.locfileid: "99550304"
 landingContent:
 - title: Azure のセキュリティについて
   linkLists:
@@ -51,7 +51,7 @@ landingContent:
     links:
     - text: 管理と監視
       url: management-monitoring-overview.md
-    - text: 高度な脅威検出
+    - text: 脅威の防止
       url: threat-detection.md
 - title: クラウド ソリューションをセキュリティで保護するためのベスト プラクティス
   linkLists:

@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554017"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880205"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでデータを変換する
 
@@ -52,11 +52,7 @@ ms.locfileid: "94554017"
 
 1. **[Adult Census Income Binary classification]\(国勢調査の成人収入に関する二項分類\)** データセットをキャンバスにドラッグ アンド ドロップします。
 
-1. **[Adult Census Income]** データセット モジュールを選択します。
-
-1. キャンバスの右側に表示される詳細ウィンドウで **[出力]** を選択します。
-
-1. 視覚化アイコンを選択します ![視覚化アイコン](media/how-to-designer-transform-data/visualize-icon.png)。
+1. **[Adult Census Income]\(国勢調査の成人収入\)** データセット モジュールを右クリックし、 **[視覚化]**  >  **[データセットの出力]** を選択します。
 
 1. データ プレビュー ウィンドウを使用して、データセットを探索します。 "native-country" 列の値に特に留意してください。
 
@@ -95,7 +91,7 @@ ms.locfileid: "94554017"
 
     パイプラインは次のようになります。
 
-    ![Export Data モジュールの接続方法を示すスクリーンショット](media/how-to-designer-transform-data/export-data-pipeline.png)。
+    ![Export Data モジュールの接続方法を示すスクリーンショット](media/how-to-designer-transform-data/export-data-pipeline.png).
 
 1. **[Split Data]** モジュールの最も "*左*" のポートに接続されている **[Export Data]** モジュールを選択します。
 
@@ -134,7 +130,7 @@ ms.locfileid: "94554017"
 
     パイプラインと設定は、次のようになります。
     
-    ![Export Data モジュールの構成方法を示すスクリーンショット](media/how-to-designer-transform-data/us-income-export-data.png)。
+    ![Export Data モジュールの構成方法を示すスクリーンショット](media/how-to-designer-transform-data/us-income-export-data.png).
 
 ### <a name="submit-the-run"></a>実行の送信
 

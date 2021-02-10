@@ -3,12 +3,12 @@ title: 概念 - プライベート クラウドとクラスター
 description: Azure VMware Solution ソフトウェアによるデータ センターと vSphere クラスターの主な機能について説明します。
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f8508abed3446c58a683454bc49ec7dbb49d051
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 234e705ad3b39a575c6f8c475bede4b81efa4b96
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825068"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474915"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution のプライベート クラウドとクラスターの概念
 
@@ -66,7 +66,10 @@ Microsoft は、NSX-T Manager や NSX-T Edge などの NSX-T アプライアン�
 
 ## <a name="next-steps"></a>次のステップ
 
-次のステップでは、[ネットワークと相互接続性の概念](concepts-networking.md)について学習します。
+Azure VMware Solution プライベート クラウドに関する以上の概念を理解したら、次の事項の学習に進むことができます。 
+
+- [Azure VMware Solution におけるネットワークと相互接続性の概念](concepts-networking.md)
+- [Azure VMware Solution のストレージの概念](concepts-storage.md)
 
 <!-- LINKS - internal -->
 

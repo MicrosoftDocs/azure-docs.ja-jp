@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6e738152e542617046834980d3e7c58e497093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005907"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664683"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows STOP エラー - メモリなし状態
 
@@ -27,7 +27,7 @@ ms.locfileid: "87005907"
 
 ## <a name="symptom"></a>症状
 
-[ブート診断](./boot-diagnostics.md)を使用して仮想マシン (VM) のスクリーンショットを表示したときに、スクリーンショットにエラー コード `0xC0000017` が表示されていることがわかります。 実行している Windows のバージョンに応じて、**Windows ブート マネージャー**または**回復画面**にこのコードが表示されることがあります。
+[ブート診断](./boot-diagnostics.md)を使用して仮想マシン (VM) のスクリーンショットを表示したときに、スクリーンショットにエラー コード `0xC0000017` が表示されていることがわかります。 実行している Windows のバージョンに応じて、**Windows ブート マネージャー** または **回復画面** にこのコードが表示されることがあります。
 
    **Windows ブート マネージャー**
 
@@ -44,6 +44,9 @@ ms.locfileid: "87005907"
 ## <a name="solution"></a>解決策
 
 ### <a name="process-overview"></a>プロセスの概要:
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
 
 1. 修復 VM を作成してアクセスする
 1. ディスクの空き領域を増やす
@@ -64,9 +67,9 @@ ms.locfileid: "87005907"
 
 第 2 世代 VM を使用している場合、アタッチされているディスクの EFI パーティションに文字が割り当てられていない可能性があります。 このトラブルシューティング ガイドに進む前に、次の手順に従って、このパーティションに文字を割り当てる必要があります。
 
-1. Windows Search で「`diskmgmt`」と入力し、**ディスクの管理コンソール**を開きます。
+1. Windows Search で「`diskmgmt`」と入力し、**ディスクの管理コンソール** を開きます。
 1. 修復 VM にアタッチされている破損したディスクを特定します。 通常、このディスクはコンソールの最後に表示され、最も大きな数値になっています。
-1. そのディスクに、文字値 (*F:* ドライブなど) が割り当てられていない **EFI システム パーティション**を保持するパーティションがあるかどうかを確認します。 すべてのパーティションが割り当てられている場合は、ディスクの空き領域を増やす手順に進んでかまいません。 それ以外の場合は、引き続きこのディスクに文字を割り当てます。
+1. そのディスクに、文字値 (*F:* ドライブなど) が割り当てられていない **EFI システム パーティション** を保持するパーティションがあるかどうかを確認します。 すべてのパーティションが割り当てられている場合は、ディスクの空き領域を増やす手順に進んでかまいません。 それ以外の場合は、引き続きこのディスクに文字を割り当てます。
 
    ![アタッチされているディスク "ディスク 2" と、"EFI システム パーティション" である 100 MB の未割り当てのパーティションが表示されたディスクの管理コンソール。](./media/troubleshoot-windows-stop-error/3.png)
 
@@ -94,7 +97,7 @@ ms.locfileid: "87005907"
 破損したディスクが修復 VM にアタッチされたら、そのディスクの OS に、正しく機能するための十分な空き領域があることを確認する必要があります。 
 
 1. アタッチされているディスクのドライブを右クリックし、 **[プロパティ]** を選択して、ディスクがいっぱいになっていないかどうかを確認します。
-1. ディスクの**空き領域が 300 MB 未満**の場合は、[PowerShell を使用して最大 1 TB まで拡張](../windows/expand-os-disk.md)します。
+1. ディスクの **空き領域が 300 MB 未満** の場合は、[PowerShell を使用して最大 1 TB まで拡張](../windows/expand-os-disk.md)します。
 1. ディスク サイズが **1 TB** になったら、ディスク クリーンアップを実行する必要があります。 [ディスク クリーンアップ ツール](https://support.microsoft.com/help/4026616/windows-10-disk-cleanup)を使用して、空き領域を増やすことができます。
 1. 管理者特権でのコマンド プロンプト (管理者として実行) インスタンスを開き、ドライブのデフラグを実行します。
 
@@ -174,7 +177,7 @@ ms.locfileid: "87005907"
       ``
    
    - コマンドの `<LETTER OF THE EFI SYSTEM PARTITION>` を、EFI システム パーティションの文字に置き換えます。
-   - ディスクの管理コンソールを起動して、**EFI システム パーティション**というラベルが付いた適切なシステム パーティションを特定すると役立つ場合があります。
+   - ディスクの管理コンソールを起動して、**EFI システム パーティション** というラベルが付いた適切なシステム パーティションを特定すると役立つ場合があります。
    - 識別子は一意の GUID の場合もあれば、既定の **bootmgr** の場合もあります。
 
 1. 次のコマンドを実行して、シリアル コンソールを有効にします。
@@ -223,4 +226,4 @@ ms.locfileid: "87005907"
    
 ### <a name="rebuild-the-vm"></a>VM を再構築する
 
-[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) を使用して、VM を再構築します。
+[VM 修復コマンドの手順 5](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) に従って VM を再構築します。

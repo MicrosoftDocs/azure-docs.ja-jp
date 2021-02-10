@@ -4,15 +4,13 @@ ms.service: multiple
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
-ms.openlocfilehash: 3590b8fdb67b25e0d4389e814aefcc4d18b1193c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc00f4de95d22eec71f9b1b2504b00f506232dc
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015429"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99213746"
 ---
-Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で利用できます。 毎月 25,000 通の無料電子メールにより、高度なレポートおよび分析と [すべての API][all APIs] (Web、SMTP、イベント、解析など) を利用できるようになります。 SendGrid の提供するその他のサービスについては、[SendGrid のソリューション][SendGrid Solutions]に関するページにアクセスしてください。
-
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>SendGrid アカウントにサインアップするには
 1. [Azure portal][Azure portal] にサインインする
 2. Azure portal メニューまたは [ホーム] ページで、 **[リソースの作成]** を選択します。
@@ -30,7 +28,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 8. 新しい **リソース グループ** を作成するか、既存のリソース グループを使用します。
 9. **[価格レベル]** セクションで、サインアップする SendGrid プランを選択します。
 
-    ![[価格レベルの選択] セクションが開き、[Free] 価格レベルが選択されている [新しい SendGrid アカウントの作成] ダイアログのスクリーンショット。][sendgrid-pricing]
+    ![[価格レベルの選択] セクションが開いている、[新しい SendGrid アカウントの作成] ダイアログのスクリーンショット][sendgrid-pricing]
 10. 所有している場合は、**プロモーション コード** を入力します。
 11. **連絡先情報** を入力します。
 12. **法律条項** を確認し、同意します。

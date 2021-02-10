@@ -1,6 +1,6 @@
 ---
-title: Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
-description: Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成します。 メッセージ内のプロパティに応じて、ストレージ アカウントまたは Service Bus キューのどちらかにルーティングします。
+title: チュートリアル - Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
+description: チュートリアル - Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成します。 メッセージ内のプロパティに応じて、ストレージ アカウントまたは Service Bus キューのどちらかにルーティングします。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 239d8f2bcc1422a1098fb8f6cb3fba6706d671f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25c3ff7582ed408776c0ae6904e4bacddd89e40b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500199"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624173"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -147,7 +147,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-ルーティング エンドポイントを作成するには、[az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create) を使用します。 そのエンドポイントに対するメッセージ ルートを作成するには、[az iot hub route create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create) を使用します。
+ルーティング エンドポイントを作成するには、[az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create&preserve-view=true) を使用します。 そのエンドポイントに対するメッセージ ルートを作成するには、[az iot hub route create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create&preserve-view=true) を使用します。
 
 ### <a name="route-to-a-storage-account"></a>ストレージ アカウントへのルーティング
 

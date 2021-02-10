@@ -4,18 +4,16 @@ description: このクイックスタートでは、独自の HTTP モデルを�
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 8e3f0a5cb6a97ce55d848c2d3311ebab5151e186
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d3ba937abcc7bbfd9bb2afe7b15aec28ebb57446
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494989"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508513"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-http-model"></a>クイック スタート:独自の HTTP モデルを使用してライブ ビデオを分析する
 
 このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。 コンピューター ビジョン モデルを適用して、オブジェクトを検出する方法を確認します。 ライブ ビデオ フィード内のフレームのサブセットが、推論サービスに送信されます。 その結果が IoT Edge Hub に送信されます。 
-
-このクイックスタートでは、IoT Edge デバイスとして Azure VM を使用し、シミュレートされたライブ ビデオ ストリームも使用します。 これは、C# で記述されたサンプル コードに基づいており、クイックスタート「[モーションの検出とイベントの生成](detect-motion-emit-events-quickstart.md)」を基に構築されています。 
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [header](includes/analyze-live-video-your-http-model-quickstart/csharp/header.md)]

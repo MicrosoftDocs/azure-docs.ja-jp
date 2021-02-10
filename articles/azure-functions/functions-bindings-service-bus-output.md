@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040939"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788572"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions における Azure Service Bus の出力バインド
 
@@ -38,7 +38,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
-次の例は、 *function.json* ファイルの Service Bus 出力バインドと、そのバインドを使用する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、タイマー トリガーを使用して、15 秒ごとにキュー メッセージを送信します。
+次の例は、*function.json* ファイルの Service Bus 出力バインドと、そのバインドを使用する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、タイマー トリガーを使用して、15 秒ごとにキュー メッセージを送信します。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -87,9 +87,44 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+次の例は、HTTP 要求によってトリガーされたときに Service Bus キュー `myqueue` にメッセージを送信する Java 関数を示しています。
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ [Java 関数ランタイム ライブラリ ](/java/api/overview/azure/functions/runtime) で、その値が Service Bus キューに書き込まれる関数のパラメーターに関する `@QueueOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
+
+Java 関数は、Service Bus トピックにも書き込むことができます。 次の例では、出力バインディングの構成を記述する`@ServiceBusTopicOutput`注釈を使用します。 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-次の例は、 *function.json* ファイルの Service Bus 出力バインドと、そのバインドを使用する [JavaScript スクリプト関数](functions-reference-node.md)を示しています。 この関数は、タイマー トリガーを使用して、15 秒ごとにキュー メッセージを送信します。
+次の例は、*function.json* ファイルの Service Bus 出力バインドと、そのバインドを使用する [JavaScript スクリプト関数](functions-reference-node.md)を示しています。 この関数は、タイマー トリガーを使用して、15 秒ごとにキュー メッセージを送信します。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -137,6 +172,39 @@ module.exports = function (context, myTimer) {
     context.bindings.outputSbQueue.push("2 " + message);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、*function.json* ファイル内の Service Bus 出力バインディングと、そのバインディングを使用する [PowerShell 関数](functions-reference-powershell.md)を示しています。 
+
+*function.json* ファイルのバインディング データを次に示します。
+
+```json
+{
+  "bindings": [
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "outputSbMsg",
+      "queueName": "outqueue",
+      "topicName": "outtopic"
+    }
+  ]
+}
+```
+
+関数の出力としてメッセージを作成する PowerShell を次に示します。
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name outputSbMsg -Value @{ 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -189,41 +257,6 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-次の例は、HTTP 要求によってトリガーされたときに Service Bus キュー `myqueue` にメッセージを送信する Java 関数を示しています。
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- [Java 関数ランタイム ライブラリ ](/java/api/overview/azure/functions/runtime) で、その値が Service Bus キューに書き込まれる関数のパラメーターに関する `@QueueOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
-
-Java 関数は、Service Bus トピックにも書き込むことができます。 次の例では、出力バインディングの構成を記述する`@ServiceBusTopicOutput`注釈を使用します。 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>属性と注釈
@@ -262,23 +295,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 属性は、C# スクリプトではサポートされていません。
 
+# <a name="java"></a>[Java](#tab/java)
+
+`ServiceBusQueueOutput` と `ServiceBusTopicOutput` 注釈を使用して、関数の出力としてメッセージを書き込むことができます。 これらの注釈で修飾されたパラメーターは `OutputBinding<T>` として宣言されている必要があります。ここで、`T` はメッセージの型に対応する型です。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
 
 # <a name="python"></a>[Python](#tab/python)
 
 属性は、Python ではサポートされていません。
 
-# <a name="java"></a>[Java](#tab/java)
-
-`ServiceBusQueueOutput` と `ServiceBusTopicOutput` 注釈を使用して、関数の出力としてメッセージを書き込むことができます。 これらの注釈で修飾されたパラメーターは `OutputBinding<T>` として宣言されている必要があります。ここで、`T` はメッセージの型に対応する型です。
-
 ---
 
 ## <a name="configuration"></a>構成
 
-次の表は、 *function.json* ファイルと `ServiceBus` 属性で設定したバインド構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `ServiceBus` 属性で設定したバインド構成のプロパティを説明しています。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
@@ -330,15 +367,19 @@ C# 関数を使用する場合:
 
 * セッション ID にアクセスするには、 [`Message`](/dotnet/api/microsoft.azure.servicebus.message) 型にバインドし、`sessionId` プロパティを使用します。
 
+# <a name="java"></a>[Java](#tab/java)
+
+組み込みの出力バインドではなく、[Azure Service Bus SDK](../service-bus-messaging/index.yml) を使用します。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `context.bindings.<name from function.json>` を使用して、キューまたはトピックにアクセスします。 文字列、バイト配列、または (JSON に逆シリアル化された) JavaScript オブジェクトを `context.binding.<name>` に割り当てることができます。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Service Bus への出力は `Push-OutputBinding` コマンドレット経由で取得できます。ここでは、*function.json* ファイル内のバインディングの name パラメーターで指定された名前に一致する引数を渡します。
+
 # <a name="python"></a>[Python](#tab/python)
-
-組み込みの出力バインドではなく、[Azure Service Bus SDK](../service-bus-messaging/index.yml) を使用します。
-
-# <a name="java"></a>[Java](#tab/java)
 
 組み込みの出力バインドではなく、[Azure Service Bus SDK](../service-bus-messaging/index.yml) を使用します。
 
@@ -388,7 +429,7 @@ C# 関数を使用する場合:
 |---------|---------|---------|
 |prefetchCount|0|メッセージの受信者が同時に要求できるメッセージ数を取得または設定します。|
 |maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
-|autoComplete|true|トリガーが処理後に自動的に complete を呼び出す必要があるか、または関数コードで complete を手動で呼び出すかどうか。<br><br>`false` に設定することは、C# でのみサポートされています。<br><br>`true` に設定した場合、関数の実行が正常に完了するとトリガーによって自動的にメッセージが完了され、それ以外の場合はメッセージが破棄されます。<br><br>`false` に設定する場合は、[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet) を呼び出し、メッセージを完了、破棄、または配信不能にする必要があります。 例外がスローされた場合 (かつ `MessageReceiver` メソッドが呼び出されなかった場合)、ロックは維持されます。 ロックが期限切れになると、メッセージはキューに再登録されて `DeliveryCount` はインクリメントされ、ロックは自動的に更新されます。<br><br>C# 以外の関数では、関数で例外が発生すると、ランタイムによってバックグラウンドで `abandonAsync` が呼び出されます。 例外が発生しなかった場合は、バックグラウンドで `completeAsync` が呼び出されます。 |
+|autoComplete|true|トリガーが処理後に自動的に complete を呼び出す必要があるか、または関数コードで complete を手動で呼び出すかどうか。<br><br>`false` に設定することは、C# でのみサポートされています。<br><br>`true` に設定した場合、関数の実行が正常に完了するとトリガーによって自動的にメッセージが完了され、それ以外の場合はメッセージが破棄されます。<br><br>`false` に設定する場合は、[MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true) を呼び出し、メッセージを完了、破棄、または配信不能にする必要があります。 例外がスローされた場合 (かつ `MessageReceiver` メソッドが呼び出されなかった場合)、ロックは維持されます。 ロックが期限切れになると、メッセージはキューに再登録されて `DeliveryCount` はインクリメントされ、ロックは自動的に更新されます。<br><br>C# 以外の関数では、関数で例外が発生すると、ランタイムによってバックグラウンドで `abandonAsync` が呼び出されます。 例外が発生しなかった場合は、バックグラウンドで `completeAsync` が呼び出されます。 |
 |maxConcurrentCalls|16|スケーリングされたインスタンスごとにメッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数。 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。|
 |maxConcurrentSessions|2000|スケーリングされたインスタンスごとに同時に処理できるセッションの最大数。|
 

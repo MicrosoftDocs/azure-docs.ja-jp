@@ -1,19 +1,16 @@
 ---
 title: Spark を使用した Application Insights ログの分析 - Azure HDInsight
 description: Application Insight のログを BLOB ストレージにエクスポートし、HDInsight 上の Spark を使用してこのログを分析する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
-ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbca4b23b6fc414727ea1b5a4012d2847d6b8d78
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078801"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940474"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight 上の Apache Spark で Application Insights テレメトリ ログを分析する
 
@@ -74,7 +71,7 @@ HDInsight クラスターを作成している場合は、クラスターの作�
 
 2. Jupyter のページの右上隅にある **[New]** をクリックし、 **[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
 
-3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
+3. ページの 1 番目のフィールド (**セル** と呼びます) に、次のテキストを入力します。
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
@@ -225,7 +222,7 @@ HDInsight クラスターを作成している場合は、クラスターの作�
 
 2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、 **[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
 
-3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
+3. ページの 1 番目のフィールド (**セル** と呼びます) に、次のテキストを入力します。
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")

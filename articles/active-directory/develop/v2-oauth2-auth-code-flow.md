@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 580ec0761c997a0ee7611f7104aa48650c8573e7
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 5b3f7f8016d9b5da70d76322aead551613b8d9c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107414"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090223"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
@@ -26,7 +26,7 @@ ms.locfileid: "98107414"
 
 この記事では、任意の言語を使用して、アプリケーションでプロトコルに対して直接プログラミングする方法について説明します。  可能な場合は、[トークンを取得してセキュリティで保護された Web API を呼び出す](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)代わりに、サポートされている Microsoft 認証ライブラリ (MSAL) を使用することをお勧めします。  また、[MSAL を使用するサンプル アプリ](sample-v2-code.md)も参照してください。
 
-OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](https://tools.ietf.org/html/rfc6749)で規定されています。 これは、[シングル ページ アプリ](v2-app-types.md#single-page-apps-javascript)、[Web アプリ](v2-app-types.md#web-apps)、[ネイティブにインストールされるアプリ](v2-app-types.md#mobile-and-native-apps)など、大半のアプリ タイプで認証と承認を行う際に使用されます。 このフローにより、アプリは、Microsoft ID プラットフォーム エンドポイントによって保護されたリソースにアクセスするために使用できる access_token を安全に取得することができ、また、追加の access_token を取得するための更新トークンや、サインインしたユーザーの ID トークンも取得することができます。
+OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.1](https://tools.ietf.org/html/rfc6749)で規定されています。 これは、[シングル ページ アプリ](v2-app-types.md#single-page-apps-javascript)、[Web アプリ](v2-app-types.md#web-apps)、[ネイティブにインストールされるアプリ](v2-app-types.md#mobile-and-native-apps)など、大半のアプリ タイプで認証と承認を行う際に使用されます。 このフローにより、アプリは、Microsoft ID プラットフォームによって保護されたリソースにアクセスするために使用できる access_token を安全に取得でき、また、追加の access_token を取得するための更新トークンや、サインインしたユーザーの ID トークンも安全に取得できます。
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 
@@ -48,7 +48,7 @@ OAuth 2.0 承認コード フローは、 [OAuth 2.0 仕様のセクション 4.
 
 ## <a name="request-an-authorization-code"></a>承認コードを要求する
 
-承認コード フローは、クライアントがユーザーを `/authorize` エンドポイントにリダイレクトさせることから始まります。 この要求では、クライアントは、ユーザーからの `openid`、`offline_access`、および `https://graph.microsoft.com/mail.read ` のアクセス許可を要求します。  `Directory.ReadWrite.All` を使用した組織のディレクトリへのデータの書き込みなど、一部のアクセス許可は管理者によって制限されます。 アプリケーションが組織のユーザーにこれらのアクセス許可のいずれかへのアクセスを要求すると、ユーザーは、アプリのアクセス許可に同意する権限がないという内容のエラー メッセージを受け取ります。 管理者によって制限されるスコープへのアクセスを要求するには、社内管理者から直接要求する必要があります。  詳細については、「[管理者によって制限されるアクセス許可](v2-permissions-and-consent.md#admin-restricted-permissions)」を参照してください。
+承認コード フローは、クライアントがユーザーを `/authorize` エンドポイントにリダイレクトさせることから始まります。 この要求では、クライアントは、ユーザーからの `openid`、`offline_access`、および `https://graph.microsoft.com/mail.read ` のアクセス許可を要求します。  `Directory.ReadWrite.All` を使用した組織のディレクトリへのデータの書き込みなど、一部のアクセス許可は管理者によって制限されます。 アプリケーションが組織のユーザーにこれらのアクセス許可のいずれかへのアクセスを要求すると、ユーザーは、アプリのアクセス許可に同意する権限がないという内容のエラー メッセージを受け取ります。 管理者によって制限されるスコープへのアクセスを要求するには、全体管理者から直接要求する必要があります。  詳細については、「[管理者によって制限されるアクセス許可](v2-permissions-and-consent.md#admin-restricted-permissions)」を参照してください。
 
 ```
 // Line breaks for legibility only
@@ -77,16 +77,16 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`  | required    | ユーザーに同意を求める [スコープ](v2-permissions-and-consent.md) の、スペースで区切られたリスト。  要求の `/authorize` の段階では、これに複数のリソースを含めることができ、ご利用のアプリが呼び出す必要がある複数の Web API に対して同意を取得することを許可します。 |
 | `response_mode`   | 推奨 | 結果として得られたトークンをアプリに返す際に使用するメソッドを指定します。 以下のいずれかを指定できます。<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` はリダイレクト URI でクエリ文字列パラメーターとしてコードを提供します。 暗黙的フローを使って ID トークンを要求する場合、[OpenID 仕様](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)で規定された `query` を使用することはできません。コードのみを要求する場合は、`query`、`fragment`、`form_post` のいずれかを使用できます。 `form_post` は、リダイレクト URI に対するコードを含んだ POST を実行します。 |
 | `state`                 | 推奨 | 要求に含まれ、かつトークンの応答として返される値。 任意の文字列を指定することができます。 [クロスサイト リクエスト フォージェリ攻撃を防ぐ](https://tools.ietf.org/html/rfc6749#section-10.12)ために通常、ランダムに生成された一意の値が使用されます。 この値を使用すると、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードすることもできます。 |
-| `prompt`  | 省略可能    | ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は `login`、`none`、`consent` だけです。<br/><br/>- `prompt=login` は、その要求でユーザーに資格情報の入力を強制し、シングル サインオンを無効にします。<br/>- `prompt=none` はその反対であり、ユーザーにどのような対話型プロンプトも表示されないようにします。 シングル サインオンで確認なしで要求を完了できない場合は、Microsoft ID プラットフォーム エンドポイントから `interaction_required` エラーが返されます。<br/>- `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。<br/>- `prompt=select_account` では、シングル サインオンに割り込み、まったく別のアカウントの使用を選択するためのオプションとして、セッション内または記憶されているアカウント内のいずれかにある全アカウントを一覧表示するアカウント選択エクスペリエンスを提供します。<br/> |
+| `prompt`  | 省略可能    | ユーザーとの必要な対話の種類を指定します。 現時点で有効な値は `login`、`none`、`consent` だけです。<br/><br/>- `prompt=login` は、その要求でユーザーに資格情報の入力を強制し、シングル サインオンを無効にします。<br/>- `prompt=none` はその反対であり、ユーザーにどのような対話型プロンプトも表示されないようにします。 シングル サインオンで確認なしで要求を完了できない場合は、Microsoft ID プラットフォームから `interaction_required` エラーが返されます。<br/>- `prompt=consent` では、ユーザーがサインインした後で OAuth 同意ダイアログが表示され、アプリへのアクセス許可の付与をユーザーに求めます。<br/>- `prompt=select_account` では、シングル サインオンに割り込み、まったく別のアカウントの使用を選択するためのオプションとして、セッション内または記憶されているアカウント内のいずれかにある全アカウントを一覧表示するアカウント選択エクスペリエンスを提供します。<br/> |
 | `login_hint`  | 省略可能    | ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 アプリはしばしば前回のサインインから `preferred_username` 要求を抽出して再認証時にこのパラメーターを使用します。   |
 | `domain_hint`  | 省略可能    | これが含まれていると、ユーザーがサインイン ページで実行する電子メール ベースの検出プロセスがスキップされ、多少効率化されたユーザー エクスペリエンスが提供されます (たとえば、フェデレーション ID プロバイダーへの送信など)。 多くの場合、アプリでは、前回のサインインから `tid` を抽出することで再認証時にこのパラメーターを使用します。 `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用する必要があります。 それ以外の場合は、 `domain_hint=organizations`を指定します。  |
 | `code_challenge`  | 推奨/必須 | PKCE (Proof Key for Code Exchange) を使用して承認コード付与をセキュリティ保護するために使用されます。 `code_challenge_method` が含まれている場合は必須です。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、すべての種類のアプリケーション (ネイティブ アプリ、SPA、Web アプリなどの機密クライアント) で推奨されるようになりました。 |
 | `code_challenge_method` | 推奨/必須 | `code_challenge` パラメーターの `code_verifier` をエンコードするために使用されるメソッド。 これは `S256` である *べき* ですが、何らかの理由によってクライアントで SHA256 がサポートされない場合、仕様では `plain` の使用が許可されています。 <br/><br/>除外されていると、`code_challenge` が含まれている場合、`code_challenge` はプレーンテキストであると見なされます。 Microsoft ID プラットフォームは `plain` と `S256` の両方をサポートします。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、[承認コード フローを使用するシングル ページ アプリ](reference-third-party-cookies-spas.md)には必須です。|
 
 
-現時点では、ユーザーに資格情報の入力と認証が求められます。 Microsoft ID プラットフォーム エンドポイントではまた、ユーザーが `scope` クエリ パラメーターに示されたアクセス許可に同意していることも確認されます。 いずれのアクセス許可にもユーザーが同意しなかった場合、必要なアクセス許可に同意するようユーザーに求めます。 アクセス許可、同意、マルチテナント アプリの詳細については、 [こちら](v2-permissions-and-consent.md)を参照してください。
+現時点では、ユーザーに資格情報の入力と認証が求められます。 また、Microsoft ID プラットフォームでは、ユーザーが `scope` クエリ パラメーターに示されたアクセス許可に同意していることも確認されます。 いずれのアクセス許可にもユーザーが同意しなかった場合、必要なアクセス許可に同意するようユーザーに求めます。 アクセス許可、同意、マルチテナント アプリの詳細については、 [こちら](v2-permissions-and-consent.md)を参照してください。
 
-ユーザー本人であることを証明書し、同意の許可を与えると、Microsoft ID プラットフォーム エンドポイントは `response_mode` パラメーターで指定された方法を使用して、指定された `redirect_uri` でアプリに応答を返します。
+ユーザーが認証され、同意すると、Microsoft ID プラットフォームは `response_mode` パラメーターで指定された方法を使用して、指定された `redirect_uri` でアプリに応答を返します。
 
 #### <a name="successful-response"></a>成功応答
 
@@ -333,7 +333,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`        | required     | 要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。 使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。 詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。   |
 | `client_id`     | required    | [Azure portal の [アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) エクスペリエンスでアプリに割り当てられた **アプリケーション (クライアント) ID**。 |
 | `grant_type`    | required    | この段階の承認コード フローでは `refresh_token` を指定する必要があります。 |
-| `scope`         | required    | スコープのスペース区切りリスト。 この段階で要求するスコープは、最初の承認コード要求段階で要求したスコープと同じか、またはそのサブセットである必要があります。 この要求で指定したスコープが複数のリソース サーバーにまたがる場合、Microsoft ID プラットフォーム エンドポイントからは、最初のスコープで指定したリソースのトークンが返されます。 スコープの詳細については、 [アクセス許可、同意、スコープ](v2-permissions-and-consent.md)に関するページを参照してください。 |
+| `scope`         | required    | スコープのスペース区切りリスト。 この段階で要求するスコープは、最初の承認コード要求段階で要求したスコープと同じか、またはそのサブセットである必要があります。 この要求で指定したスコープが複数のリソース サーバーにまたがる場合、Microsoft ID プラットフォームからは、最初のスコープで指定したリソースのトークンが返されます。 スコープの詳細については、 [アクセス許可、同意、スコープ](v2-permissions-and-consent.md)に関するページを参照してください。 |
 | `refresh_token` | required    | フローの第 2 段階で取得した refresh_token。 |
 | `client_secret` | Web アプリの場合は必須 | アプリ登録ポータルで作成した、アプリケーションのシークレット。 ネイティブ アプリでは使用しないでください。デバイスに client_secret を確実に保存することができません。 Web アプリや Web API では client_secret をサーバー側で安全に保存する機能が備わっており、必ず指定する必要があります。 このシークレットは URL エンコードする必要があります。 詳細については、[URI の一般構文の仕様](https://tools.ietf.org/html/rfc3986#page-12)に関する記事を参照してください。 |
 

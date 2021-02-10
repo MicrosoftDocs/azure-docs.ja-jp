@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight クラスターで使用するストレージ オプションを比較する
 description: ストレージの種類と、それらが Azure HDInsight でどのように動作するかの概要を提供します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 34eeeed2b3c44336cd4aa1219d54b1811c6988f5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b6dd0fd95280a65615d38ab11a2f9814f58586f5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952320"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945858"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 

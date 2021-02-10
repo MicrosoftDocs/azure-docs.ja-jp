@@ -2,17 +2,17 @@
 author: memildin
 ms.service: security-center
 ms.topic: include
-ms.date: 01/12/2021
+ms.date: 01-26-2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 7b915a8ac22ab3b9393531c5130fd466e378e94c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 7487262faa8af74af26ac2123686a8e202254e76
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133085"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797168"
 ---
-このカテゴリには **15 個** の推奨事項があります。
+このカテゴリには **21 個** の推奨事項があります。
 
 |推奨 |Description |重大度 |
 |---|---|---|
@@ -24,9 +24,15 @@ ms.locfileid: "98133085"
 |所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |所有者アクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff8456c1c-aa66-4dfb-861a-25d127b775c9)) |高 |
 |読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |読み取りアクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f76cf89-fbf2-47fd-a3f4-b891fa780b60)) |高 |
 |書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある |書き込みアクセス許可を持つ、ドメイン名が異なるアカウント (外部アカウント) は、サブスクリプションから削除する必要があります。 これにより、監視されていないアクセスを防止できます。 これらのアカウントは、気付かれずにデータにアクセスする方法を見つけようとしている攻撃者の標的になるおそれがあります。<br />(関連ポリシー:[書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5c607a2e-c700-4744-8254-d77e7c9eb5e4)) |高 |
+|キー コンテナーでファイアウォールを有効にする必要がある |キー コンテナーのファイアウォールを使用すると、承認されていないトラフィックはご使用のキー コンテナーに到達できなくなり、シークレットを保護するためのレイヤーが追加されます。 このファイアウォールを有効にして、許可されたネットワークからのトラフィックのみがキー コンテナーにアクセスできるようにします。<br />(関連ポリシー:[キー コンテナーでファイアウォールを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f55615ac9-af46-4a59-874e-391cc3dfb490) |Medium |
+|Key Vault キーには有効期限が必要である |暗号化キーには有効期限を定義する必要があり、永続的なものにしてはいけません。 無期限に有効なキーを使用すると、攻撃者がキーを侵害できる時間がそれだけ長くなります。 セキュリティ プラクティスとして、暗号化キーには有効期限を設定することをお勧めします。<br />(関連ポリシー:[Key Vault キーには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0)) |高 |
+|Key Vault シークレットには有効期限が必要である |シークレットには有効期限を定義する必要があり、永続的なものにしてはいけません。 シークレットを無期限に有効にすると、潜在的な攻撃者にそれを侵害する時間を多く与えることになります。 セキュリティ プラクティスとして、シークレットには有効期限を設定することをお勧めします。<br />(関連ポリシー:[Key Vault シークレットには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f98728c90-32c7-4049-8429-847dc0f4fe37)) |高 |
+|キー コンテナーで消去保護が有効になっている必要がある |悪意でキー コンテナーが削除されると、データが完全に失われる可能性があります。 組織内の悪意のある内部関係者が、キー コンテナーの削除と消去を実行できるおそれがあります。 消去保護では、論理的に削除されたキー コンテナーに必須の保有期間を適用することによって、内部関係者の攻撃から組織を保護します。 組織や Microsoft の内部にいるどのユーザーも、論理的な削除の保有期間中にキー コンテナーを消去することはできなくなります。<br />(関連ポリシー:[キー コンテナーで消去保護が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0b60c0b2-2dc2-4e1c-b5c9-abbed971de53)) |Medium |
+|キー コンテナーで論理的な削除が有効になっている必要がある |論理的な削除が有効になっていない状態でキー コンテナーを削除すると、キー コンテナーに格納されているすべてのシークレット、キー、証明書が完全に削除されます。 誤ってキー コンテナーが削除されると、データが完全に失われる可能性があります。 論理的な削除を使用すると、構成可能な保有期間の間は、誤って削除されたキー コンテナーを復旧できます。<br />(関連ポリシー:[キー コンテナーで論理的な削除が有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d)) |高 |
 |サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある |アカウントまたはリソースに対する侵害を防止するために、所有者としてのアクセス許可を持つすべてのサブスクリプション アカウントで多要素認証 (MFA) を有効にする必要があります。<br />(関連ポリシー:[サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faa633080-8b72-40c4-a2d7-d00c03e80bed)) |高 |
 |サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある |アカウントまたはリソースの侵害を防止するために、読み取り権限を持つすべてのサブスクリプション アカウントで多要素認証 (MFA) を有効にする必要があります。<br />(関連ポリシー:[サブスクリプションに対する読み取りアクセス許可を持つアカウントに対して MFA を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fe3576e28-8b17-4677-84c3-db2990658d64)) |高 |
 |サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある |アカウントまたはリソースに対する侵害を防止するために、書き込み権限を持つすべてのサブスクリプション アカウントに対して 多要素認証 (MFA) を有効にする必要があります。<br />(関連ポリシー:[サブスクリプションに対する書き込みアクセス許可を持つアカウントに対して MFA を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f9297c21d-2ed6-4474-b48f-163f75654ce3)) |高 |
+|Key Vault 用にプライベート エンドポイントを構成する必要がある |プライベート リンクを使用すると、パブリック インターネット経由でトラフィックを送信せずに、Key Vault を Azure リソースに接続できます。 プライベート リンクにより、データ流出に対する徹底的な防御が提供されます。<br />(関連ポリシー:[キー コンテナー用にプライベート エンドポイントを構成する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f5f0bc445-3935-4915-9981-011aa2b46147)) |Medium |
 |管理証明書の代わりにサブスクリプションを保護するために、サービス プリンシパルを使用する必要がある |管理証明書を使用すると、それを使用して認証するすべてのユーザーが、証明書に関連付けられているサブスクリプションを管理できます。 サブスクリプションをより安全に管理するには、証明書が侵害された場合に損害が及ぶ範囲を限定するため、Resource Manager でサービス プリンシパルを使用することをお勧めします。 これによってリソース管理も自動化されます。 <br />(関連ポリシー:[サブスクリプションを保護するために、管理証明書の代わりにサービス プリンシパルを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6646a0bd-e110-40ca-bb97-84fcee63c414)) |中 |
 |ストレージ アカウントのパブリック アクセスを禁止する必要がある |Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取りアクセスは、データを共有するための便利な方法ですが、セキュリティ上のリスクが生じる場合があります。 好ましくない匿名アクセスによるデータ侵害を防ぐために、Microsoft では、シナリオで必要でない限り、ストレージ アカウントへのパブリック アクセスを禁止することをお勧めします。<br />(関連ポリシー:[ストレージ アカウントのパブリック アクセスを禁止する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fmicrosoft.authorization%2fpolicyDefinitions%2f4fa4b6c0-31ca-4c0d-b10d-24b96f62a751)) |中 |
 |複数の所有者がサブスクリプションに割り当てられている必要がある |管理者アクセスの冗長性を確保するために、複数のサブスクリプション所有者を指定します。<br />(関連ポリシー:[サブスクリプションに複数の所有者が割り当てられている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f09024ccc-0c5f-475e-9457-b7c0d9ed487b)) |高 |

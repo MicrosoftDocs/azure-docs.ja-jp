@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131340"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222185"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes ワークロードを保護する
 
@@ -27,7 +27,7 @@ Azure Defender を有効にすると、Security Center でより多くのコン�
 - [Azure Defender for Kubernetes](defender-for-kubernetes-introduction.md) を使用して、K8s クラスターのリアルタイムの脅威検出アラートを取得する
 
 > [!TIP]
-> 表示される可能性がある、Kubernetes クラスターおよびノードに関する "*すべての*" セキュリティの推奨事項の一覧については、推奨事項リファレンス表の[コンピューティング セクション](recommendations-reference.md#recs-compute)をご覧ください。
+> 表示される可能性がある、Kubernetes クラスターおよびノードに関する "*すべての*" セキュリティの推奨事項の一覧については、推奨事項リファレンス表の [コンピューティング セクション](recommendations-reference.md#recs-compute)をご覧ください。
 
 
 

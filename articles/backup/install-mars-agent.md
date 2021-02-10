@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services (MARS) エージェントをインス�
 description: Windows マシンをバックアップする目的で Microsoft Azure Recovery Services (MARS) エージェントをインストールする方法について説明します。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975303"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986872"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Backup MARS エージェントをインストールする
 
@@ -88,6 +88,9 @@ Azure Backup では、オンプレミスのマシンや Azure VM からファイ
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
 * `.windows.net`
+* IP アドレス
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Microsoft ピアリングを使用するには、次のサービス、リージョン、関連するコミュニティの値を選択します。
 

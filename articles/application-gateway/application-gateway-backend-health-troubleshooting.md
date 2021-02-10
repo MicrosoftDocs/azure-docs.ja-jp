@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934902"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746106"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -21,9 +21,6 @@ ms.locfileid: "97934902"
 --------
 
 既定では、Azure Application Gateway は、バックエンド サーバーに対して probe を実行して、その正常性状態を確認すると共に、バックエンド サーバーが要求を処理する準備ができているかどうかを確認します。 ユーザーは、カスタム probe を作成して、ホスト名、probe の対象となるパス、および正常として受け入れられる状態コードを指定することもできます。 どちらのケースでも、バックエンド サーバーが正常に応答しない場合、Application Gateway はそのサーバーを "異常" とマークし、サーバーへの要求の転送を停止します。 サーバーが正常に応答し始めると、Application Gateway は要求の転送を再開します。
-
-> [!NOTE]
-> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ### <a name="how-to-check-backend-health"></a>バックエンドの正常性を確認する方法
 
@@ -245,7 +242,7 @@ Application Gateway で信頼されるルート証明書を抽出してアップ
 
 #### <a name="trusted-root-certificate-mismatch"></a>信頼されたルート証明書の不一致
 
-**メッセージ:** The root certificate of the server certificate used by the backend does not match the trusted root certificate added to the application gateway. (バックエンドによって使用されるサーバー証明書のルート証明書が、アプリケーション ゲートウェイに追加されている信頼されたルート証明書と一致しません。) Ensure that you add the correct root certificate to whitelist the backend (バックエンドをホワイトリストに登録するために適切なルート証明書を追加していることを確認してください)
+**メッセージ:** The root certificate of the server certificate used by the backend does not match the trusted root certificate added to the application gateway. (バックエンドによって使用されるサーバー証明書のルート証明書が、アプリケーション ゲートウェイに追加されている信頼されたルート証明書と一致しません。) Ensure that you add the correct root certificate to allowlist the backend. (バックエンドを許可リストに登録するために適切なルート証明書を追加していることを確認してください)
 
 **原因:** Application Gateway v2 でのエンドツーエンド SSL を使用するには、サーバーが正常であると判断するためにバックエンド サーバーの証明書を検証する必要があります。
 TLS または SSL 証明書を信頼するには、そのバックエンド サーバーの証明書が、Application Gateway の信頼されたストアに含まれる CA によって発行されている必要があります。 証明書が信頼された CA によって発行されていない場合 (自己署名証明書が使用された場合など)、ユーザーは、発行者の証明書を Application Gateway にアップロードする必要があります。

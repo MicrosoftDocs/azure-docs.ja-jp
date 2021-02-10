@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: d5dbb7b71e2d67ed5b3f624c93c3c143d6c98e5d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 6da1d285440daa5d1d5a230905a77057728d4ae6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618537"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256544"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -213,6 +213,12 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
 
 エラーの一般的な原因としては、ドメイン名が正しくない、証明書の暗号化アルゴリズムが *TripleDES-SHA1* ではない、または証明書が間もなく期限切れになるか、既に期限切れになっている、などがあります。 有効なパラメーターで証明書を再作成し、その更新済みの証明書を使用して、Secure LDAP を有効にしてください。
 
+## <a name="change-an-expiring-certificate"></a>期限切れが近づいている証明書を更新する
+
+1. 交換用の Secure LDAP 証明書を作成するには、「[Secure LDAP 用の証明書を作成する](#create-a-certificate-for-secure-ldap)」の手順を実行してください。
+1. 交換用の証明書を Azure AD DS に適用するには、Azure portal の Azure AD DS の左側にあるメニューで、 **[Secure LDAP]** を選択し、 **[証明書の変更]** を選択します。
+1. Secure LDAP を使用して接続するすべてのクライアントに証明書を配布します。 
+
 ## <a name="lock-down-secure-ldap-access-over-the-internet"></a>インターネット経由での Secure LDAP アクセスをロック ダウンする
 
 マネージド ドメインに対するインターネット経由での Secure LDAP アクセスを有効にすると、セキュリティ上の脅威が形成されます。 マネージド ドメインには、インターネットから TCP ポート 636 で到達できます。 マネージド ドメインへのアクセスは、ご利用の環境で使用されている特定の既知の IP アドレスに制限することをお勧めします。 Secure LDAP へのアクセスは、Azure ネットワーク セキュリティ グループの規則を使用して制限できます。
@@ -229,7 +235,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
     | source                            | IP アドレス |
     | ソース IP アドレス/CIDR 範囲 | 実際の環境の有効な IP アドレスまたはその範囲 |
     | Source port ranges                | *            |
-    | 到着地                       | Any          |
+    | 宛先                       | Any          |
     | 宛先ポート範囲           | 636          |
     | Protocol                          | TCP          |
     | アクション                            | Allow        |

@@ -1,14 +1,14 @@
 ---
 title: Azure portal から VM 拡張機能を有効にする
 description: この記事では、Azure portal からハイブリッド クラウド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 11/06/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359087"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728953"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure portal から Azure VM 拡張機能を有効にする
 
@@ -39,6 +39,18 @@ Azure portal を使用して、Arc for server で管理されているマシン�
 
 >[!NOTE]
 >複数の拡張機能をまとめてバッチ処理することができますが、順番にインストールされます。 最初の拡張機能のインストールが完了すると、次の拡張機能のインストールが試行されます。
+
+## <a name="list-extensions-installed"></a>インストールされている拡張機能を一覧表示する
+
+Arc 対応サーバー上の VM 拡張機能の一覧を Azure portal から取得できます。 それらを表示するには、次の手順を実行します。
+
+1. お使いのブラウザーで [Azure portal](https://portal.azure.com) に移動します。
+
+2. ポータルで **[サーバー - Azure Arc]** に移動し、一覧からハイブリッド マシンを選択します。
+
+3. **[拡張機能]** を選択すると、インストールされている拡張機能の一覧が返されます。
+
+    ![選択されたマシンにデプロイされた VM 拡張機能を一覧表示する](./media/manage-vm-extensions/list-vm-extensions.png)
 
 ## <a name="uninstall-extension"></a>拡張機能をアンインストールする
 

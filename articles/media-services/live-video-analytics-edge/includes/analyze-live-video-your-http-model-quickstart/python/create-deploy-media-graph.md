@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 6aeded077c20e59b3f9b3863a9956596382d3a82
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7cbb9a09a6f8eae6a9325f060664d50c5725e09f
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531939"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508529"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>サンプル ファイルを調べて編集する
 
@@ -16,16 +16,13 @@ ms.locfileid: "97531939"
 
 1. *src/cloud-to-device-console-app* フォルダーに移動します。 ここには、*appsettings.json* ファイルと、他にいくつかのファイルがあります。
 
-    * ***c2d-console-app.csproj** - Visual Studio Code のプロジェクト ファイルです。
-    _ ***operations.json** _ - プログラムで実行する操作のリストです。
-    _ ***Program.cs** _ - サンプル プログラム コードです。 このコードによって以下が行われます。
+    * operations.json - プログラムで実行する操作のリストです。
+    * main.py - サンプル プログラム コードです。 このコードによって以下が行われます。
 
-        _ アプリ設定を読み込みます。
-        * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 このモジュールを使用し、その[ダイレクト メソッド](../../../direct-methods.md)を呼び出すことで、ライブ ビデオ ストリームを分析できます。
+        * アプリ設定を読み込みます。
+        * Live Video Analytics on IoT Edge モジュールによって公開されているダイレクト メソッドを呼び出します。 このモジュールを使用し、そのダイレクト メソッドを呼び出すことで、ライブ ビデオ ストリームを分析できます。
         * プログラムの出力を **[ターミナル]** ウィンドウで調べたり、モジュールによって生成されたイベントを **[出力]** ウィンドウで調べたりできるように、一時停止します。
-        * ダイレクト メソッドを呼び出して、リソースをクリーンアップします。
-
-
+        * ダイレクト メソッドを呼び出して、リソースをクリーンアップします。  
 1. *operations.json* ファイルを編集します。
     * グラフ トポロジへのリンクを変更します。
 
@@ -53,6 +50,12 @@ ms.locfileid: "97531939"
     
     ![IoT Hub 接続文字列を設定する](../../../media/quickstarts/set-iotconnection-string.png)
 
+> [!NOTE]
+> IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. *src/edge/config/deployment.yolov3.amd64.json* を右クリックし、 **[Create Deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。 
 
     ![単一デバイスのデプロイを作成する](../../../media/quickstarts/create-deployment-single-device.png)
@@ -62,6 +65,15 @@ ms.locfileid: "97531939"
 
     * **lvaEdge** という名前の Live Video Analytics モジュール
     * **rtspsim** モジュール。RTSP サーバーをシミュレートし、ライブ ビデオ フィードのソースとして機能します
+        > [!NOTE]
+        > 上記の手順は、セットアップ スクリプトによって作成された仮想マシンの使用を前提としています。 独自のエッジ デバイスを使用している場合は、エッジ デバイスにアクセスし、**管理者権限** で次のコマンドを実行して、このクイックスタートで使用するサンプル ビデオ ファイルをプルして保存します。  
+        
+        ```
+        mkdir /home/lvaadmin/samples
+        mkdir /home/lvaadmin/samples/input    
+        curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+        chown -R lvaadmin /home/lvaadmin/samples/  
+        ```
     * **yolov3** モジュール。これは、コンピューター ビジョンを画像に適用し、オブジェクトの種類のクラスを複数返す YOLOv3 オブジェクト検出モデルです
  
       ![エッジ デバイスにデプロイされているモジュール](../../../media/quickstarts/yolov3.png)

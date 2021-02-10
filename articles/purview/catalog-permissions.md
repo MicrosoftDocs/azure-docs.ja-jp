@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e87c9efc910d08307d40d42e58f8272a01902a41
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550772"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610371"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Azure Purview のデータ プレーンでのロールベースのアクセス制御
 
@@ -77,8 +77,8 @@ Azure Purview アカウントへのアクセス権を付与され、そのスタ
 |サービス プリンシパルまたは他のプログラムの ID を有効にして、Azure Purview でのスキャンを設定し、監視する必要がある (プログラムの ID にはカタログ情報へのアクセスを許可しない) |Purview データ ソース管理者ロール|
 |Azure Purview のロールにユーザーを割り当てる必要がある | 所有者またはユーザー アクセス管理者 |
 
-次の記事に進んで、セキュリティ プリンシパルをロールに追加する方法を確認してください。
+セキュリティ プリンシパルをロールに追加する方法の詳細については、[クイックスタートのAzure Purview アカウントの作成](create-catalog-portal.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート: Azure Purview アカウントの作成](create-catalog-portal.md)
+* [データの分析情報](concept-insights.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454747"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622493"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>チュートリアル:Displayr と Azure Active Directory との統合
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Displayr では、 **SP** によって開始される SSO がサポートされます
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Displayr では、**SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-displayr-from-the-gallery"></a>ギャラリーからの Displayr の追加
 
@@ -47,7 +47,7 @@ Azure AD への Displayr の統合を構成するには、ギャラリーから�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに " **Displayr** " と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに "**Displayr**" と入力します。
 1. 結果のパネルから **[Displayr]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
@@ -78,6 +78,10 @@ Displayr で Azure AD SSO を構成してテストするには、次の構成要
     a. **[サインオン URL]** ボックスに、`https://<YOURDOMAIN>.displayr.com` という形式で URL を入力します。
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`<YOURDOMAIN>.displayr.com`
+    
+    c. **[応答 URL]** ボックスに、「`https://app.displayr.com/Login/ProcessSamlResponse`」と入力します。
+    
+    d. **[保存]** をクリックします。
 
     >[!NOTE]
     >これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Displayr クライアント サポート チーム](mailto:support@displayr.com)に問い合わせてください。 Azure portal の [基本的な SAML 構成] セクションに示されているパターンを参照することもできます。
@@ -88,25 +92,23 @@ Displayr で Azure AD SSO を構成してテストするには、次の構成要
 
 1. Displayr アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
-    ![[編集] アイコンが強調表示されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
+   ![[編集] アイコンが強調表示されている [ユーザー属性] セクションを示すスクリーンショット。](common/edit-attribute.png)
 
 1. その他に、Displayr アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
-    a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある **ペン** をクリックします。
+   a. **[グループ要求を追加する]** をクリックします。
 
-    ![[ユーザー属性とクレーム] セクションを示すスクリーンショット。[Groups returned in claim]\(クレームで返されるグループ\) の横に [ペン] アイコンが表示されています。](./media/displayr-tutorial/config04.png)
+      ![各設定が選択されている [グループ要求 (プレビュー)] ウィンドウを示すスクリーンショット。](./media/displayr-tutorial/config05.png)
 
-    ![各設定が選択されている [グループ要求 (プレビュー)] ウィンドウを示すスクリーンショット。](./media/displayr-tutorial/config05.png)
+   b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
 
-    b. ラジオ ボタンのリストから **[すべてのグループ]** を選択します。
+   c. **[グループ ID]** の **[ソース属性]** を選択します。
 
-    c. **[グループ ID]** の **[ソース属性]** を選択します。
+   d. **[グループ要求の名前をカスタマイズする]** をオンにします。
 
-    d. **[グループ要求の名前をカスタマイズする]** をオンにします。
+   e. **[グループをロール要求として生成する]** をオンにします。
 
-    e. **[グループをロール要求として生成する]** をオンにします。
-
-    f. **[保存]** をクリックします。
+   f. **[保存]** をクリックします。
 
 1. **[Displayr の設定]** セクションで、要件どおりの適切な URL をコピーします。
 
@@ -200,7 +202,7 @@ Azure AD ユーザーが Displayr にサインインできるようにするに�
 
     ![Displayr の構成](./media/displayr-tutorial/config06.png)
 
-    a. **[名前]** ボックスに、ユーザーの名前を入力します (例: **Brittasimon** )。
+    a. **[名前]** ボックスに、ユーザーの名前を入力します (例: **Brittasimon**)。
 
     b. **[電子メール]** ボックスに、ユーザーのメール アドレスを入力します (例: `Brittasimon@contoso.com`)。
 

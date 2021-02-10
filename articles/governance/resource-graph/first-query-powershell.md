@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:初めての PowerShell クエリ
 description: このクイックスタートでは、手順に従って、Azure PowerShell の Resource Graph 拡モジュールを有効にし、最初のクエリを実行します。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: b810f4af319d3a5212d35e3387ab35b9fa40aafa
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 131bed4fe60035682a317e186f11561bc005b298
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057435"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917675"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -54,7 +54,7 @@ PowerShell の Resource Graph モジュールは、**Az.ResourceGraph** です�
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-Azure PowerShell モジュールが選択した環境に追加されたので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの**名前**と**リソースの種類**を使用して、最初の 5 つの Azure リソースが返されます。
+Azure PowerShell モジュールが選択した環境に追加されたので、簡単な Resource Graph クエリを試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
 
 1. `Search-AzGraph` コマンドレットを使用して最初の Resource Graph クエリを実行します。
 
@@ -68,7 +68,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
    > [!NOTE]
    > このクエリは`order by`などの並べ替え修飾子を示しませんので、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。
 
-1. `order by`**名前**プロパティに対するクエリを更新します。
+1. `order by`**名前** プロパティに対するクエリを更新します。
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -78,7 +78,7 @@ Azure PowerShell モジュールが選択した環境に追加されたので、
    > [!NOTE]
    > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 このコマンドの順序によって、まずクエリ結果が制限され、次にその結果が並べ替えられます。
 
-1. 最初に**名前**プロパティで並べ替え (`order by`) を行ってから結果を上位 5 件に制限 (`limit`) するようにクエリを更新します。
+1. 最初に **名前** プロパティで並べ替え (`order by`) を行ってから結果を上位 5 件に制限 (`limit`) するようにクエリを更新します。
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`

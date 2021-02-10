@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight で Apache Ambari を使用して Apache HBase を最適化する
 description: Apache Ambari Web UI を使用して、Apache HBase を構成および最適化します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.date: 05/04/2020
-ms.openlocfilehash: b262e07bd07320e4b10b12a2f2cf07b97e58c61e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/01/2021
+ms.openlocfilehash: 60c9916bc7d7b3b380a332f41924ee744002fd66
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91821694"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428202"
 ---
 # <a name="optimize-apache-hbase-with-apache-ambari-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari を使用して Apache HBase を最適化する
 
@@ -21,6 +18,9 @@ Apache Ambari は、HDInsight クラスターを管理および監視するた�
 Apache HBase の構成は、**HBase の [Configs]\(構成\)** タブから変更されます。以下のセクションでは、HBase のパフォーマンスに影響する重要な構成設定について説明します。
 
 ## <a name="set-hbase_heapsize"></a>HBASE_HEAPSIZE を設定する
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "*マスター*" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 HBase のヒープ サイズは、"*リージョン*" サーバーと "*マスター*" サーバーが使用するヒープの最大量 (メガバイト単位) を示します。 既定値は 1,000 MB です。 クラスター ワークロードに合わせて、この値を調整する必要があります。
 

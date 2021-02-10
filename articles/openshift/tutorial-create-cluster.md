@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 10/26/2020
-ms.openlocfilehash: 7b0aead6ada87ca259c838f3f56e68f1030302a2
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e6be2b659223fb110d7e13b14d732561df9ad408
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675710"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072238"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを作成する
 
@@ -88,11 +88,11 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
 
 * OpenShift コンソールは、組み込みのドメイン (`https://console-openshift-console.apps.<random>.<location>.aroapp.io`) ではなく、`https://console-openshift-console.apps.example.com` のような URL で使用できるようになります。
 
-* OpenShift では、既定で、`*.apps.example.com` カスタム ドメインに作成されたすべてのルートに自己署名証明書が使用されます。  クラスターに接続した後でカスタム DNS を使用する場合は、OpenShift のドキュメントに従って、[イングレス コントローラー用のカスタム CA](https://docs.openshift.com/aro/4/authentication/certificates/replacing-default-ingress-certificate.html) と、[API サーバー用のカスタム CA を構成する](https://docs.openshift.com/aro/4/authentication/certificates/api-server.html)必要があります。
+* OpenShift では、既定で、`*.apps.example.com` カスタム ドメインに作成されたすべてのルートに自己署名証明書が使用されます。  クラスターに接続した後でカスタム DNS を使用する場合は、OpenShift のドキュメントに従って、[イングレス コントローラー用のカスタム CA](https://docs.openshift.com/container-platform/4.6/security/certificates/replacing-default-ingress-certificate.html) と、[API サーバー用のカスタム CA を構成する](https://docs.openshift.com/container-platform/4.6/security/certificates/api-server.html)必要があります。
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>2 つの空のサブネットを含む仮想ネットワークを作成する
 
-次に、2 つの空のサブネットを含む仮想ネットワークを作成します。
+次に、2 つの空のサブネットを含む仮想ネットワークを作成します。 要件を満たす仮想ネットワークが既にある場合は、この手順を省略できます。
 
 1. **`az` コマンドを実行するシェル環境で、次の変数を設定します。**
 
@@ -131,7 +131,7 @@ Red Hat プル シークレットを使用すると、クラスターは追加�
 
 2. **仮想ネットワークを作成します。**
 
-   OpenShift 4 を実行する Azure Red Hat OpenShift クラスターでは、マスター ノードとワーカー ノード用の 2 つの空のサブネットを持つ仮想ネットワークが必要です。
+   OpenShift 4 を実行する Azure Red Hat OpenShift クラスターでは、マスター ノードとワーカー ノード用の 2 つの空のサブネットを持つ仮想ネットワークが必要です。 これのために新しい仮想ネットワークを作成することも、既存の仮想ネットワークを使用することもできます。
 
    先ほど作成したのと同じリソース グループ内に新しい仮想ネットワークを作成します。
 

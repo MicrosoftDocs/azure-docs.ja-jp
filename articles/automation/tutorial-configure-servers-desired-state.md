@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 55c7522ad1dc6c7f91fae608a777dab3cd67d2ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f16db3f55ebd0f09e4d7b75750fa319daf03977e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86183172"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053569"
 ---
 # <a name="configure-machines-to-a-desired-state"></a>望ましい状態にサーバーを構成する
 
@@ -27,7 +27,7 @@ Azure Automation State Configuration を使うと、サーバーの構成を指�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](./manage-runas-account.md)に関するページをご覧ください。
+- Azure Automation アカウント。 Automation アカウントとその要件の詳細については、「[Automation アカウントの認証の概要](./automation-security-overview.md)」を参照してください。
 - Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、[Azure portal での最初の Windows 仮想マシンの作成](../virtual-machines/windows/quick-create-portal.md)に関するページを参照してください。
 - Azure PowerShell モジュール バージョン 3.6 以降。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
 - Desired State Configuration (DSC) に関する知識。 DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
@@ -42,14 +42,13 @@ Azure Automation State Configuration では[部分構成](/powershell/scripting/
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-[Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0) コマンドレットを使用して Azure サブスクリプションにログインし、画面上の指示に従います。
+[Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) コマンドレットを使用して Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
 Connect-AzAccount
 ```
 
 ## <a name="create-and-upload-a-configuration-to-azure-automation"></a>構成を作成して Azure Automation にアップロードする
-
 
 テキスト エディターで次のように入力し、**TestConfig.ps1** としてローカルに保存します。
 
@@ -68,7 +67,7 @@ configuration TestConfig {
 > [!NOTE]
 > DSC リソースを提供するモジュールを複数インポートする必要があるより高度なシナリオでは、ご自分の構成にモジュールごとに `Import-DscResource` 行があることを確認してください。
 
-[Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration?view=azps-3.7.0) コマンドレットを呼び出して、構成を Automation アカウントにアップロードします。
+[Import-AzAutomationDscConfiguration](/powershell/module/Az.Automation/Import-AzAutomationDscConfiguration) コマンドレットを呼び出して、構成を Automation アカウントにアップロードします。
 
 ```powershell
  Import-AzAutomationDscConfiguration -SourcePath 'C:\DscConfigs\TestConfig.ps1' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -Published
@@ -78,7 +77,7 @@ configuration TestConfig {
 
 ノードに DSC 構成を割り当てるには、先に DSC 構成をノードの構成としてコンパイルする必要があります。 「[DSC 構成](/powershell/scripting/dsc/configurations/configurations)」を参照してください。
 
-[Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob?view=azps-3.7.0) コマンドレットを呼び出して、`TestConfig` 構成を、Automation アカウントの `TestConfig.WebServer` というノード構成に コンパイルします。
+[Start-AzAutomationDscCompilationJob](/powershell/module/Az.Automation/Start-AzAutomationDscCompilationJob) コマンドレットを呼び出して、`TestConfig` 構成を、Automation アカウントの `TestConfig.WebServer` というノード構成に コンパイルします。
 
 ```powershell
 Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount'
@@ -88,7 +87,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName 'TestConfig' -ResourceGro
 
 Azure Automation State Configuration を使用すると、Azure VM (クラシックと Resource Manager の両方)、オンプレミスの VM、Linux マシン、AWS VM、オンプレミスの物理マシンを管理できます。 このトピックでは、Azure Resource Manager VM を登録する方法のみを説明します。 他の種類のマシンの登録について詳しくは、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。
 
-[Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode?view=azps-3.7.0) コマンドレットを呼び出して、VM を管理対象ノードとして Azure Automation State Configuration に登録します。 
+[Register-AzAutomationDscNode](/powershell/module/Az.Automation/Register-AzAutomationDscNode) コマンドレットを呼び出して、VM を管理対象ノードとして Azure Automation State Configuration に登録します。 
 
 ```powershell
 Register-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'myAutomationAccount' -AzureVMName 'DscVm'
@@ -125,7 +124,7 @@ Set-AzAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAccountN
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>管理対象ノードの準拠状態を確認する
 
-[Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport?view=azps-3.7.0) コマンドレットを使用して、管理対象ノードの準拠状態に関するレポートを取得できます。
+[Get-AzAutomationDscNodeReport](/powershell/module/Az.Automation/Get-AzAutomationDscNodeReport) コマンドレットを使用して、管理対象ノードの準拠状態に関するレポートを取得できます。
 
 ```powershell
 # Get the ID of the DSC node
@@ -146,7 +145,7 @@ Azure Automation State Configuration にノードを追加すると、Local Conf
 > [!NOTE]
 > サービスからノードを登録解除しても、Local Configuration Manager 設定のみが設定されるため、ノードはサービスに接続しなくなります。
 > これは、現在ノードに適用されている構成には影響しません。
-> 現在の構成を削除するには、[PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) を使用するか、ローカル構成ファイルを削除します (これが Linux ノードの唯一のオプションです)。
+> 現在の構成を削除するには、[PowerShell](/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument) を使用するか、ローカル構成ファイルを削除します (これが Linux ノードの唯一のオプションです)。
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -157,7 +156,7 @@ Azure Automation から、目次の **[State configuration (DSC)]\(状態の構�
 
 ### <a name="powershell"></a>PowerShell
 
-PowerShell を使用して Azure Automation State Configuration サービスからノードを登録解除するには、コマンドレット [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0) のドキュメントに従ってください。
+PowerShell を使用して Azure Automation State Configuration サービスからノードを登録解除するには、コマンドレット [Unregister-AzAutomationDscNode](/powershell/module/az.automation/unregister-azautomationdscnode) のドキュメントに従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -166,4 +165,4 @@ PowerShell を使用して Azure Automation State Configuration サービスか�
 - DSC 構成をコンパイルしてターゲット ノードに割り当てる方法の詳細については、「[Azure Automation State Configuration で DSC 構成をコンパイルする](automation-dsc-compile.md)」を参照してください。
 - 継続的なデプロイ パイプラインで Azure Automation State Configuration を使う例については、「[Chocolatey を使用して継続的配置を設定する](automation-dsc-cd-chocolatey.md)」を参照してください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

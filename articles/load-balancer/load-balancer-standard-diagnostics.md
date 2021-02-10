@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2019
+ms.date: 01/25/2021
 ms.author: allensu
-ms.openlocfilehash: 386e0051a64f73b18c1ff76ed33af5f9eebe8aa0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 43d83d994c9a4ee3cf89b584f6c3835a62fa2cfe
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121415"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805996"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
@@ -26,7 +26,6 @@ Azure Standard Load Balancer では、次の診断機能が公開されていま
 * **多次元メトリックおよびアラート**: Standard Load Balancer 構成用に、[Azure Monitor](../azure-monitor/overview.md) を介して多次元診断機能が提供されています。 ご利用の Standard Load Balancer リソースの監視、管理、トラブルシューティングを行うことができます。
 
 * **[リソース正常性]** :Load Balancer の Resource Health の状態は、[監視] にある [Resource Health] ページで確認できます。 この自動チェックによって、Load Balancer リソースの現在の可用性が通知されます。
-
 この記事では、これらの機能の概要、および Standard Load Balancer でこれらの機能を使う方法について説明します。 
 
 ## <a name="multi-dimensional-metrics"></a><a name = "MultiDimensionalMetrics"></a>多次元メトリック
@@ -73,7 +72,7 @@ Standard Load Balancer リソースのメトリックを表示するには:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>API を使用してプログラムで多次元メトリックを取得する
 
-多次元メトリックの定義と値を取得するための API のガイダンスについては、「[Azure 監視 REST API のチュートリアル](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)」をご覧ください。 これらのメトリックは、"すべてのメトリック" オプションのみを使用してストレージ アカウントに書き込むことができます。 
+多次元メトリックの定義と値を取得するための API のガイダンスについては、「[Azure 監視 REST API のチュートリアル](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-definitions-multi-dimensional-api)」をご覧ください。 これらのメトリックは、"すべてのメトリック" カテゴリに[診断設定](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings)を追加することでストレージ アカウントに書き込むことができます。 
 
 ### <a name="configure-alerts-for-multi-dimensional-metrics"></a>多次元メトリックのアラートを構成する ###
 
@@ -85,9 +84,6 @@ Azure Standard Load Balancer では、多次元メトリックの簡単に構成
     1.  アラートの条件を構成します。
     1.  (省略可能) 自動修復のアクション グループを追加します。
     1.  アラートの重大度、名前、直感的な反応を可能にする説明を割り当てます。
-
-  >[!NOTE]
-  >アラートの条件の構成ウィンドウには、シグナル履歴の時系列が表示されます。 この時系列をバックエンド IP などのディメンションでフィルター処理するためのオプションがあります。 これにより、アラート自体 **ではなく**、時系列グラフがフィルター処理されます。 アラートを特定のバックエンド IP アドレスに対して構成することはできません。
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>一般的な診断シナリオと推奨されるビュー
 
@@ -147,7 +143,7 @@ SNAT 接続メトリックは、([送信フロー](./load-balancer-outbound-conn
 
 SNAT 接続の統計情報を取得するには:
 1. トリックの種類として **[SNAT Connections]\(SNAT 接続\)** を、集計として **[合計]** を選択します。 
-2. 異なる行に表示されている SNAT 接続の成功と失敗をカウントするには、 **[接続の状態]** でグループ化します。 
+2. SNAT 接続の成功と失敗のカウントを異なる行に表示するには、 **[接続の状態]** でグループ化します。 
 
 ![SNAT 接続](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
@@ -186,7 +182,7 @@ SNAT ポートの使用状況と割り当てを確認するには:
   <summary>expand</summary>
 SYN パケット メトリックは、特定のフロントエンドに関連付けられている、到着した TCP SYN パケットまたは送信された TCP SYN パケット ([送信フロー](./load-balancer-outbound-connections.md)の場合) の量を示します。 このメトリックを使用して、サービスへの TCP 接続の試行を把握できます。
 
-ほとんどのシナリオでは、集計として **合計** を使います。
+ほとんどのシナリオでは、集計として **Sum** を使用します。
 
 ![SYN 接続](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
@@ -199,10 +195,10 @@ SYN パケット メトリックは、特定のフロントエンドに関連付
   <summary>expand</summary>
 バイト カウンターおよびパケット カウンターのメトリックは、フロントエンドごとにサービスによって送信または受信されたバイトおよびパケットの量を示します。
 
-ほとんどのシナリオでは、集計として **合計** を使います。
+ほとんどのシナリオでは、集計として **Sum** を使用します。
 
 バイト数またはパケット数の統計情報を取得するには:
-1. メトリックの種類として **[Bytes Count]\(バイト数\)** および **[Packet Count]\(パケット数\)** 、またはその両方を、集計として **[平均]** を選択します。 
+1. メトリックの種類として **[Bytes Count]\(バイト数\)** および **[Packet Count]\(パケット数\)** 、またはその両方を、集計として **[Sum]** を選択します。 
 2. 以下のいずれかを実行します。
    * 特定のフロントエンド IP、フロントエンド ポート、バックエンド IP、またはバックエンド ポートにフィルターを適用します。
    * フィルターを適用せずにロード バランサー リソースの全体的な統計情報を取得します。
@@ -267,6 +263,7 @@ Standard Load Balancer リソースの正常性状態は、 **[Monitor]\(監視\
 
 ## <a name="next-steps"></a>次のステップ
 
+- お使いの Load Balancer に事前構成されているこれらのメトリックを表示するには、[分析情報](https://docs.microsoft.com/azure/load-balancer/load-balancer-insights)の使用方法を確認してください。
 - [Standard Load Balancer](./load-balancer-overview.md) の詳細を確認する。
 - [ロード バランサーの送信接続](./load-balancer-outbound-connections.md)の詳細を確認します。
 - [Azure Monitor](../azure-monitor/overview.md) について学習する。

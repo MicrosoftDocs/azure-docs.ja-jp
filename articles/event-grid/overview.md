@@ -2,13 +2,13 @@
 title: Azure Event Grid とは
 description: Azure Event Grid を使用してソースからハンドラーにイベント データを送信します。 イベント ベースのアプリケーションを構築し、Azure サービスと統合します。
 ms.topic: overview
-ms.date: 09/24/2020
-ms.openlocfilehash: a4f614a22fdfa7d2272c70751f56f19145a10fa6
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 01/28/2021
+ms.openlocfilehash: e53665c88c3860d37b3512c6498ab626b02a6400
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576684"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055138"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -20,7 +20,7 @@ Azure Event Grid は、すべてのリージョンの複数の障害ドメイン
 
 この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 
 
-:::image type="content" source="./media/overview/functional-model.png" alt-text="ソースとハンドラーの Event Grid モデル" lightbox="./media/overview/functional-model.png":::
+:::image type="content" source="./media/overview/functional-model.png" alt-text="ソースとハンドラーの Event Grid モデル" lightbox="./media/overview/functional-model-big.png":::
 
 この図は、Event Grid によってソースとハンドラーが接続されるようすを示すもので、サポートされる統合の包括的な一覧ではありません。
 
@@ -42,6 +42,7 @@ Azure Event Grid は、すべてのリージョンの複数の障害ドメイン
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure サブスクリプション](event-schema-subscriptions.md)
+- [Azure Cache for Redis](event-schema-azure-cache.md)
 
 ## <a name="event-handlers"></a>イベント ハンドラー
 

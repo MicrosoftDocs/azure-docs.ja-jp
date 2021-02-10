@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/15/2021
+ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98762901"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071649"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -185,6 +185,17 @@ az storage blob restore \
     --account-name <storage-account> \
     --time-to-restore 2021-01-14T06:31:22Z \
     --no-wait
+```
+
+復元操作のプロパティを確認するには、[az storage account show](/cli/azure/storage/account#az_storage_account_show) を呼び出し、**blobRestoreStatus** プロパティを展開します。 次の例は、**status** プロパティを確認する方法を示しています。
+
+```azurecli
+az storage account show \
+    --name <storage-account> \
+    --resource-group <resource_group> \ 
+    --expand blobRestoreStatus \
+    --query blobRestoreStatus.status \
+    --output tsv
 ```
 
 **az storage blob restore** コマンドを同期的に実行し、復元操作が完了するまで実行時にブロックするには、`--no-wait` パラメーターを省略します。

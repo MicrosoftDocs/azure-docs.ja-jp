@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/13/2020
 keywords: 移行、aro、OpenShift、Red Hat
-ms.openlocfilehash: 322c0cf5ece2a9c950e71b947e2aa6088a165cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f9bfc924581d5dbe33c7c2683a0f6083cb2abc23
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469747"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071037"
 ---
 # <a name="migrate-from-azure-red-hat-openshift-311-to-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 3.11 から Azure Red Hat OpenShift 4 への移行
 
@@ -75,11 +75,11 @@ az aro create \
 
 Azure Red Hat OpenShift を操作するユーザーは、まずクラスターに対して認証を行う必要があります。 認証レイヤーにより、Azure Red Hat OpenShift API への要求に関連付けられているユーザーが識別されます。 その後、認証レイヤーでは、要求元のユーザーに関する情報を使用して、要求が許可されているかどうかが判断されます。
 
-Azure Red Hat OpenShift 4 クラスターが作成されると、一時的な管理ユーザーが作成されます。 [クラスターに接続](tutorial-connect-cluster.md)し、ユーザーとグループを追加して、両方に[適切なアクセス許可を構成](https://docs.openshift.com/aro/4/authentication/understanding-authentication.html)します。
+Azure Red Hat OpenShift 4 クラスターが作成されると、一時的な管理ユーザーが作成されます。 [クラスターに接続](tutorial-connect-cluster.md)し、ユーザーとグループを追加して、両方に[適切なアクセス許可を構成](https://docs.openshift.com/container-platform/4.6/authentication/understanding-authentication.html)します。
 
 ### <a name="networking"></a>ネットワーク
 
-Azure Red Hat OpenShift 4 では、クラスター内にネットワークを設定するために、いくつかの異なる演算子が使用されています。[Cluster Network Operator](https://docs.openshift.com/aro/4/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator)、[DNS Operator](https://docs.openshift.com/aro/4/networking/dns-operator.html)、[Ingress Operator](https://docs.openshift.com/aro/4/networking/ingress-operator.html)。 Azure Red Hat OpenShift 4 クラスターでネットワークを設定する方法の詳細については、[ネットワーク図](concepts-networking.md)と「[Understanding Networking](https://docs.openshift.com/aro/4/networking/understanding-networking.html)」 (ネットワークについて) を参照してください。
+Azure Red Hat OpenShift 4 では、クラスター内にネットワークを設定するために、いくつかの異なる演算子が使用されています。[Cluster Network Operator](https://docs.openshift.com/container-platform/4.6/networking/cluster-network-operator.html#nw-cluster-network-operator_cluster-network-operator)、[DNS Operator](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html)、[Ingress Operator](https://docs.openshift.com/container-platform/4.6/networking/ingress-operator.html)。 Azure Red Hat OpenShift 4 クラスターでネットワークを設定する方法の詳細については、[ネットワーク図](concepts-networking.md)と「[Understanding Networking](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html)」 (ネットワークについて) を参照してください。
 
 ### <a name="storage"></a>ストレージ
 Azure Red Hat OpenShift 4 では、次の PersistentVolume プラグインがサポートされています。
@@ -98,13 +98,13 @@ Azure Red Hat OpenShift 4 では、次の PersistentVolume プラグインがサ
 
 ### <a name="registry"></a>レジストリ
 
-Azure Red Hat OpenShift 4 では、ソース コードからイメージをビルドし、デプロイし、ライフサイクルを管理できます。 これを可能にするために、Azure Red Hat OpenShift 4 では、お使いの Azure Red Hat OpenShift 環境にデプロイしてイメージをローカルで管理できる、[内部の統合されたコンテナー イメージ レジストリ](https://docs.openshift.com/aro/4/registry/registry-options.html)が提供されています。
+Azure Red Hat OpenShift 4 では、ソース コードからイメージをビルドし、デプロイし、ライフサイクルを管理できます。 これを可能にするために、Azure Red Hat OpenShift 4 では、お使いの Azure Red Hat OpenShift 環境にデプロイしてイメージをローカルで管理できる、[内部の統合されたコンテナー イメージ レジストリ](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html)が提供されています。
 
-[Azure Container Registry](../container-registry/index.yml)、[Red Hat Quay レジストリ](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-quay-overview_registry-options)、[認証が有効になっている Red Hat レジストリ](https://docs.openshift.com/aro/4/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)などの外部レジストリを使用している場合は、手順に従って、クラスターに資格情報を提供してクラスターがリポジトリにアクセスできるようにします。
+[Azure Container Registry](../container-registry/index.yml)、[Red Hat Quay レジストリ](ttps://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-quay-overview_registry-options)、[認証が有効になっている Red Hat レジストリ](https://docs.openshift.com/container-platform/4.6/registry/registry-options.html#registry-authentication-enabled-registry-overview_registry-options)などの外部レジストリを使用している場合は、手順に従って、クラスターに資格情報を提供してクラスターがリポジトリにアクセスできるようにします。
 
 ### <a name="monitoring"></a>監視
 
-Azure Red Hat OpenShift には、Prometheus オープン ソース プロジェクトとその広範なエコシステムに基づく、事前に構成され、事前にインストールされた、自己更新型の監視スタックが含まれています。 これによりクラスター コンポーネントの監視機能が提供されます。またこれには、発生している問題についてクラスター管理者に直ちに通知する一連のアラートと、一連の Grafana ダッシュボードが含まれています。 クラスター監視スタックは、Azure Red Hat OpenShift クラスターの監視でのみサポートされています。 詳細については、[Azure Red Hat OpenShift のクラスターの監視](https://docs.openshift.com/aro/4/monitoring/cluster_monitoring/about-cluster-monitoring.html)に関するページを参照してください。
+Azure Red Hat OpenShift には、Prometheus オープン ソース プロジェクトとその広範なエコシステムに基づく、事前に構成され、事前にインストールされた、自己更新型の監視スタックが含まれています。 これによりクラスター コンポーネントの監視機能が提供されます。またこれには、発生している問題についてクラスター管理者に直ちに通知する一連のアラートと、一連の Grafana ダッシュボードが含まれています。 クラスター監視スタックは、Azure Red Hat OpenShift クラスターの監視でのみサポートされています。 詳細については、[Azure Red Hat OpenShift のクラスターの監視](https://docs.openshift.com/container-platform/4.6/monitoring/understanding-the-monitoring-stack.html)に関するページを参照してください。
 
 [Azure Red Hat OpenShift 3.11 に対して Azure Monitor for Containers](../azure-monitor/insights/container-insights-azure-redhat-setup.md) を使用している場合は、[Azure Red Hat OpenShift 4 クラスター](../azure-monitor/insights/container-insights-azure-redhat4-setup.md)に対しても Azure Monitor for Containers を有効にして、同じ Log Analytics ワークスペースを使用し続けることができます。
 
@@ -127,4 +127,4 @@ az openshift delete --name $CLUSTER_NAME
                     [--yes]
 ```
 ## <a name="next-steps"></a>次のステップ
-Red Hat から提供されている Azure Red Hat OpenShift のドキュメントについては、[こちら](https://docs.openshift.com/aro/4/welcome/index.html)をご覧ください。
+Red Hat OpenShift のドキュメントを[ここ](https://docs.openshift.com/container-platform/4.6/welcome/index.html)から覧ください。

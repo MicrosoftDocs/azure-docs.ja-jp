@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222889"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096391"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
 
@@ -87,7 +87,7 @@ ms.locfileid: "98222889"
 詳細については、「[サービス チェイニング](./virtual-network-peering-overview.md#service-chaining)」を参照してください。
 
 > [!Note]
-> NVA の設定に関するヘルプが必要な場合は、[NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+> NVA の設定に関するヘルプが必要な場合は、[NVA のベンダーにお問い合わせください](https://mskb.pkisolutions.com/kb/2984655)。
 
 NVA デバイスの設定とルーティングのトラブルシューティングに関するヘルプについては、「[Azure でのネットワーク仮想アプライアンスの問題](./virtual-network-troubleshoot-nva.md)」を参照してください。
 
@@ -190,7 +190,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 ハブ ネットワークに NVA がある必要があります。 NVA が次ホップとして設定されているスポークで UDR を構成し、ハブ仮想ネットワークで **[転送されたトラフィックを許可する]** を有効にします。
 
-詳細については、「[サービス チェイニング](./virtual-network-peering-overview.md#service-chaining)」を参照し、選択した [NVA ベンダー](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)とこれらの要件について相談してください。
+詳細については、「[サービス チェイニング](./virtual-network-peering-overview.md#service-chaining)」を参照し、選択した [NVA ベンダー](https://mskb.pkisolutions.com/kb/2984655)とこれらの要件について相談してください。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>異なるリージョンのスポーク仮想ネットワーク間のハブスポーク ネットワーク接続に関する問題のトラブルシューティング
 

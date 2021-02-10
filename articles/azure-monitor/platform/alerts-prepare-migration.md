@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9df5d702019063ffba6d79cc63370cd25a7242fd
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 60a721af9acf980e88ad60504e75d2488c8a4d81
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358783"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944477"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>クラシック アラート ルールの移行のためにロジック アプリと Runbook を準備する
 
@@ -30,7 +30,7 @@ ms.locfileid: "91358783"
 | デプロイ スクリプトの種類 | クラシック アラート | 新しいメトリック アラート |
 | ---------------------- | -------------- | ----------------- |
 |REST API     | [microsoft.insights/alertrules](/rest/api/monitor/alertrules)         | [microsoft.insights/metricalerts](/rest/api/monitor/metricalerts)       |
-|Azure CLI     | [az monitor alert](/cli/azure/monitor/alert?view=azure-cli-latest)        | [az monitor metrics alert](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
+|Azure CLI     | [az monitor alert](/cli/azure/monitor/alert)        | [az monitor metrics alert](/cli/azure/monitor/metrics/alert)        |
 |PowerShell      | [リファレンス](/powershell/module/az.monitor/add-azmetricalertrule)       |  [リファレンス](/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Azure Resource Manager テンプレート | [クラシック アラート用](./alerts-enable-template.md)|[新しいメトリック アラート用](./alerts-metric-create-templates.md)|
 
@@ -74,7 +74,7 @@ ms.locfileid: "91358783"
 
 1. 新しいロジック アプリを作成します。
 
-1. テンプレート "Azure Monitor - Metrics Alert Handler" を使用します。 このテンプレートには、定義された適切なスキーマでトリガーされる **HTTP 要求**があります。
+1. テンプレート "Azure Monitor - Metrics Alert Handler" を使用します。 このテンプレートには、定義された適切なスキーマでトリガーされる **HTTP 要求** があります。
 
     ![[空のロジック アプリ] と [Azure Monitor – Metrics Alert Handler] の 2 つのボタンを示すスクリーンショット。](media/alerts-migration/logic-app-template.png "メトリック アラート テンプレート")
 

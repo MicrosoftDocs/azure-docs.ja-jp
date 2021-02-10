@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e2ca5f42120661b887d07e697596f41cb7a7fce4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697171"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745769"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>チュートリアル:.NET SDK を使用して Azure SQL データにインデックスを付ける
 
@@ -107,14 +107,14 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
 
 1. ソリューション エクスプローラーで **appsettings.json** を開き、接続情報を指定します。
 
-1. 完全な URL が "https://my-demo-service.search.windows.net" である場合、`searchServiceName` に指定するサービス名は "my-demo-service" です。
+1. `SearchServiceEndPoint` については、サービスの概要ページの完全な URL が "https://my-demo-service.search.windows.net" である場合は、指定する値はその URL となります。
 
 1. `AzureSqlConnectionString` には、次のような文字列形式を指定します: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
-      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
-      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
+      "SearchServiceEndPoint": "<placeholder-search-url>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-search-service>",
       "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
@@ -130,11 +130,12 @@ API 呼び出しには、サービス URL とアクセス キーが必要です�
 
 ### <a name="in-hotelcs"></a>hotel.cs の内容
 
-インデックス スキーマは、フィールドのコレクションを定義します。この定義には、次の HotelName のフィールドの定義に見られるように、フィールドがフルテキスト検索可能かどうか、フィルター処理可能かどうか、並べ替え可能かどうかなど、許可される操作を指定する属性も含まれています。 
+インデックス スキーマは、フィールドのコレクションを定義します。この定義には、次の HotelName のフィールドの定義に見られるように、フィールドがフルテキスト検索可能かどうか、フィルター処理可能かどうか、並べ替え可能かどうかなど、許可される操作を指定する属性も含まれています。 [SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield) は、定義によるフルテキスト検索が可能です。 その他の属性は明示的に割り当てます。
 
 ```csharp
 . . . 
-[IsSearchable, IsFilterable, IsSortable]
+[SearchableField(IsFilterable = true, IsSortable = true)]
+[JsonPropertyName("hotelName")]
 public string HotelName { get; set; }
 . . .
 ```
@@ -143,59 +144,73 @@ public string HotelName { get; set; }
 
 ### <a name="in-programcs"></a>Program.cs の内容
 
-メイン プログラムには、クライアント、インデックス、データ ソース、インデクサーを作成するためのロジックが含まれます。 このコードは、読者がこのプログラムを繰り返し実行する可能性を考慮し、同じ名前のリソースが既に存在しているかどうかを調べて、削除します。
+メイン プログラムには、[インデクサー クライアント](/dotnet/api/azure.search.documents.indexes.models.searchindexer)、インデックス、データ ソース、インデクサーを作成するためのロジックが含まれます。 このコードは、読者がこのプログラムを繰り返し実行する可能性を考慮し、同じ名前のリソースが既に存在しているかどうかを調べて、削除します。
 
-データ ソース オブジェクトの構成には、Azure SQL に組み込まれている[変更検出機能](/sql/relational-databases/track-changes/about-change-tracking-sql-server)を活用するために、[部分インデックス作成または増分インデックス作成](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)を含め、Azure SQL Database リソースに固有の設定が使用されます。 Azure SQL にあるデモ hotels データベースには、**IsDeleted** という名前の "論理的な削除" 列があります。 データベースでこの列を true に設定すると、インデクサーによって、Azure Cognitive Search インデックスから対応するドキュメントが削除されます。
+データ ソース オブジェクトの構成には、Azure SQL に組み込まれている[変更検出機能](/sql/relational-databases/track-changes/about-change-tracking-sql-server)を活用するために、[部分インデックス作成または増分インデックス作成](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows)を含め、Azure SQL Database リソースに固有の設定が使用されます。 Azure SQL にあるソースのデモ hotels データベースには、**IsDeleted** という名前の "論理的な削除" 列があります。 データベースでこの列を true に設定すると、インデクサーによって、Azure Cognitive Search インデックスから対応するドキュメントが削除されます。
 
-  ```csharp
-  Console.WriteLine("Creating data source...");
+```csharp
+Console.WriteLine("Creating data source...");
 
-  DataSource dataSource = DataSource.AzureSql(
-      name: "azure-sql",
-      sqlConnectionString: configuration["AzureSQLConnectionString"],
-      tableOrViewName: "hotels",
-      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-          softDeleteColumnName: "IsDeleted",
-          softDeleteMarkerValue: "true"));
-  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+var dataSource =
+      new SearchIndexerDataSourceConnection(
+         "hotels-sql-ds",
+         SearchIndexerDataSourceType.AzureSql,
+         configuration["AzureSQLConnectionString"],
+         new SearchIndexerDataContainer("hotels"));
 
-  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
-  ```
+indexerClient.CreateOrUpdateDataSourceConnection(dataSource);
+```
 
-インデクサー オブジェクトはプラットフォームに依存しません。構成、スケジュール、起動は、ソースに関係なく同じです。 この例のインデクサーには、スケジュールのほか、インデクサーの履歴を消去するリセット オプション、インデクサーを直ちに作成して実行するためのメソッドの呼び出しが含まれています。
+インデクサー オブジェクトはプラットフォームに依存しません。構成、スケジュール、起動は、ソースに関係なく同じです。 この例のインデクサーには、スケジュールのほか、インデクサーの履歴を消去するリセット オプション、インデクサーを直ちに作成して実行するためのメソッドの呼び出しが含まれています。 インデクサーを作成または更新するには、[CreateOrUpdateIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.createorupdateindexerasync) を使用します。
 
-  ```csharp
-  Console.WriteLine("Creating Azure SQL indexer...");
-  Indexer indexer = new Indexer(
-      name: "azure-sql-indexer",
-      dataSourceName: dataSource.Name,
-      targetIndexName: index.Name,
-      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-  // Indexers contain metadata about how much they have already indexed
-  // If we already ran the sample, the indexer will remember that it already
-  // indexed the sample data and not run again
-  // To avoid this, reset the indexer if it exists
-  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
-  if (exists)
-  {
-      await searchService.Indexers.ResetAsync(indexer.Name);
-  }
+```csharp
+Console.WriteLine("Creating Azure SQL indexer...");
 
-  await searchService.Indexers.CreateOrUpdateAsync(indexer);
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+      StartTime = DateTimeOffset.Now
+};
 
-  // We created the indexer with a schedule, but we also
-  // want to run it immediately
-  Console.WriteLine("Running Azure SQL indexer...");
+var parameters = new IndexingParameters()
+{
+      BatchSize = 100,
+      MaxFailedItems = 0,
+      MaxFailedItemsPerBatch = 0
+};
 
-  try
-  {
-      await searchService.Indexers.RunAsync(indexer.Name);
-  }
-  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-  {
+// Indexer declarations require a data source and search index.
+// Common optional properties include a schedule, parameters, and field mappings
+// The field mappings below are redundant due to how the Hotel class is defined, but 
+// we included them anyway to show the syntax 
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+      Description = "Data indexer",
+      Schedule = schedule,
+      Parameters = parameters,
+      FieldMappings =
+      {
+         new FieldMapping("_id") {TargetFieldName = "HotelId"},
+         new FieldMapping("Amenities") {TargetFieldName = "Tags"}
+      }
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
+```
+
+通常、インデクサーの実行はスケジュール設定されますが、開発時には [RunIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync) を使用してすぐにインデクサーを実行することもできます。
+
+```csharp
+Console.WriteLine("Running Azure SQL indexer...");
+
+try
+{
+      await indexerClient.RunIndexerAsync(indexer.Name);
+}
+catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+{
       Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-  }
-  ```
+}
+```
 
 ## <a name="4---build-the-solution"></a>4 - ソリューションをビルドする
 
@@ -205,9 +220,9 @@ F5 キーを押して、ソリューションをビルドおよび実行しま�
 
 コードは Visual Studio でローカルに実行され、Azure 上の検索サービスに接続されます。次に、それが Azure SQL Database に接続され、データセットが取得されます。 このように多くの操作が伴うため、障害が発生し得るポイントがいくつも存在します。 エラーが発生した場合は、まず次の条件を確認してください。
 
-+ 指定する Search サービスの接続情報は、このチュートリアルのサービス名に限定されます。 完全な URL を入力した場合、インデックスの作成時に接続エラーで操作が停止します。
++ 指定する検索サービスの接続情報は完全な URL です。 サービス名のみを入力した場合、インデックスの作成時に接続エラーが発生して操作が停止します。
 
-+ **appsettings.json** のデータベース接続情報。 これは、ポータルから取得した ADO.NET 接続文字列に、実際のデータベースの有効なユーザー名とパスワードを反映したものであることが必要です。 ユーザー アカウントには、データを取得するためのアクセス許可が必要です。 ローカル クライアントの IP アドレスに、アクセス権が付与されている必要があります。
++ **appsettings.json** のデータベース接続情報。 これは、ポータルから取得した ADO.NET 接続文字列に、実際のデータベースの有効なユーザー名とパスワードを反映したものであることが必要です。 ユーザー アカウントには、データを取得するためのアクセス許可が必要です。 ローカル クライアントの IP アドレスには、ファイアウォールを介したインバウンド アクセスが許可されている必要があります。
 
 + リソース制限。 既に述べたように、Free レベルは、インデックス、インデクサー、データ ソースがいずれも 3 つまでに制限されています。 上限に達した場合、新しいオブジェクトを作成できなくなります。
 

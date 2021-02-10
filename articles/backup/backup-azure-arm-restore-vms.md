@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 4be107a1647ac1aa95aea9c1c68e6f024be82b1c
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 56bd41aaa607a3bc0f319f46ce5d0c3f8c78d27a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746407"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919606"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -24,7 +24,8 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
 **新しい VM を作成する** | 基本的な VM を復元ポイントからすばやく作成し、起動して実行します。<br/><br/> VM の名前を指定し、配置先のリソース グループと仮想ネットワーク (VNet) を選択して、復元された VM のストレージ アカウントを指定することができます。 新しい VM は、ソース VM と同じリージョンに作成する必要があります。<br><br>Azure の指定リージョンで Azure VM SKU が使用できなかったか、それ以外の問題があったために VM の復元に失敗した場合でも、Azure Backup では指定されたリソース グループ内のディスクが復元されます。
 **ディスクを復元する** | 新しい VM を作成するために使用できる VM ディスクを復元します。<br/><br/> Azure Backup は、VM のカスタマイズと作成に役立つテンプレートを提供します。 <br/><br> 復元ジョブによって生成されるテンプレートをダウンロードして使用することで、カスタム VM 設定を指定したり、VM を作成したりできます。<br/><br/> ディスクは、指定したリソース グループにコピーされます。<br/><br/> または、ディスクを既存の VM に接続することや、PowerShell を使用して新しい VM を作成することもできます。<br/><br/> このオプションは、VM をカスタマイズする場合や、バックアップの時点では存在していなかった構成設定を追加する場合や、テンプレートまたは PowerShell を使用して構成する必要がある設定を追加する場合に役立ちます。
 **既存のものを置き換える** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> ディスクを交換する前に、Azure Backup によって既存の VM のスナップショットが取得され、指定したステージングの場所に格納されます。 VM に接続されている既存のディスクが、選択した復元ポイントを使用して置き換えられます。<br/><br/> スナップショットはコンテナーにコピーされ、アイテム保持ポリシーに従って保持されます。 <br/><br/> ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。 <br/><br/>[既存のものを置き換える] は、暗号化されていない管理 VM ([カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM など) でサポートされます。 クラシック VM ではサポートされていません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。<br><br> 既存のものの置き換えは、[ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) や [Key Vault](../key-vault/general/overview.md) など、リンクされたリソースを持つ VM でもサポートされます。
-**リージョンをまたがる (セカンダリ リージョン)** | リージョンをまたがる復元を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md#what-are-paired-regions)) に復元できます。<br><br> セカンダリ リージョンにバックアップが実行されている場合は、選択されている回復ポイントのすべての Azure VM を復元できます。<br><br> この機能は、次のオプションで使用できます。<br> <li> [VM を作成します](#create-a-vm) <br> <li> [ディスクを復元する](#restore-disks) <br><br> 現時点では、[[既存のディスクの置き換え]](#replace-existing-disks) オプションはサポートされていません。<br><br> アクセス許可<br> セカンダリ リージョンでの復元操作は、バックアップ管理者とアプリ管理者が実行できます。
+**リージョンをまたがる (セカンダリ リージョン)** | リージョンをまたがる復元を使用すると、Azure VM をセカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md#what-are-paired-regions)) に復元できます。<br><br> セカンダリ リージョンにバックアップが実行されている場合は、選択されている回復ポイントのすべての Azure VM を復元できます。<br><br> バックアップ中、スナップショットはセカンダリ リージョンにレプリケートされません。 コンテナーに格納されているデータのみがレプリケートされます。 そのため、セカンダリ リージョンの復元は[コンテナー階層](about-azure-vm-restore.md#concepts)の復元だけです。 セカンダリ リージョンの復元時間は、プライマリ リージョンのコンテナー階層の復元時間とほぼ同じになります。  <br><br> この機能は、次のオプションで使用できます。<br> <li> [VM を作成します](#create-a-vm) <br> <li> [ディスクを復元する](#restore-disks) <br><br> 現時点では、[[既存のディスクの置き換え]](#replace-existing-disks) オプションはサポートされていません。<br><br> アクセス許可<br> セカンダリ リージョンでの復元操作は、バックアップ管理者とアプリ管理者が実行できます。
+**クロスゾーン復元** | クロスゾーン復元を使用すると、同じリージョンの任意の[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)で [Azure ゾーン固定 VM](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) を復元できます。 <br> <br> この機能のリリース後にバックアップされた、選択した回復ポイントのすべての Azure ゾーン固定 VM を、任意のゾーンに復元できます。 既定では、バックアップ時と同じゾーンに復元されます。 <br> <br> これは、ディザスター リカバリーのシナリオで、VM の固定ゾーンが使用不可になった場合に使用できます。
 
 > [!NOTE]
 > Azure VM 上の特定のファイルとフォルダーを復旧することもできます。 [詳細については、こちらを参照してください](backup-azure-restore-files-from-vm.md)。
@@ -138,7 +139,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 [復元オプション](#restore-options)の 1 つである、リージョンをまたがる復元 (CRR) を使用すると、Azure VM をセカンダリ リージョン (Azure のペアになっているリージョン) に復元できます。
 
-プレビュー期間中にこの機能にオンボードするには、「[作業を開始する前に](./backup-create-rs-vault.md#set-cross-region-restore)」セクションをお読みください。
+この機能の使用を開始するには、「[開始する前に](./backup-create-rs-vault.md#set-cross-region-restore)」セクションを参照してください。
 
 CRR が有効になっているかどうかを確認するには、「[リージョンをまたがる復元の構成](backup-create-rs-vault.md#configure-cross-region-restore)」の手順に従ってください。
 
@@ -160,6 +161,8 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 
 セカンダリ リージョンに復元するユーザー エクスペリエンスは、プライマリ リージョンに復元するユーザー エクスペリエンスに似ています。 [復元の構成] ペインで復元の詳細を構成するときに、セカンダリ リージョンのパラメーターのみを指定するように求められます。
 
+現在、[読み取りアクセス geo 冗長ストレージ (RA GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#redundancy-in-a-secondary-region) のレプリケーションは 15 分ですが、セカンダリ リージョンの [RPO](azure-backup-glossary.md#rpo-recovery-point-objective) は、プライマリ リージョンから最大 12 時間です。
+
 ![復元する VM の選択](./media/backup-azure-arm-restore-vms/sec-restore.png)
 
 ![復元ポイントの選択](./media/backup-azure-arm-restore-vms/sec-rp.png)
@@ -176,6 +179,14 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 >- 復元がトリガーされた後、データ転送フェーズでは、復元ジョブを取り消すことができません。
 >- リージョンをまたがる復元機能では、CMK (カスタマー マネージド キー) が有効になっている Azure VM が、セカンダリ リージョンにおける CMK が有効になっていない VM として復元されます。これらの VM は、CMK が有効になっている Recovery Services コンテナーにはバックアップされません。
 >- セカンダリ リージョンに復元するために必要な Azure ロールは、プライマリ リージョンにおけるものと同じです。
+
+## <a name="cross-zonal-restore"></a>クロスゾーン復元
+
+クロスゾーン復元を使用すると、同じリージョンの任意の[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)で [Azure ゾーン固定 VM](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) を復元できます。
+
+復元プロセスでは、 **[可用性ゾーン]** オプションが表示されます。 既定のゾーンが最初に表示されます。 別のゾーンを選択するには、任意のゾーンの番号を選択します。 既定の可用性ゾーンが停止のために使用できない場合、または他の理由で別のゾーンに復元することを選択する場合は、別のゾーンを選択します。
+
+![可用性ゾーンを選択する](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>セカンダリ リージョンの復元ジョブの監視
 

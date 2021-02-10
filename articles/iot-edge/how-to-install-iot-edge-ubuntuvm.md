@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: pdecarlo
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d14ef742c19556a9df2bd193a54bfaa1672d5964
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 0e044e8102308fce4145d4aa6c887cefaa99be34
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92044226"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629964"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu 仮想マシン上で Azure IoT Edge を実行する
 
@@ -50,13 +50,13 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 
     **管理ユーザー名**: ユーザー名。デプロイ時にルート権限が与えられます。
 
-    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの [デバイス接続文字列](./how-to-manual-provision-symmetric-key.md)。
+    **[デバイス接続文字列]** :目的の [IoT Hub](../iot-hub/about-iot-hub.md) 内に作成された、デバイス向けの[デバイス接続文字列](./how-to-register-device.md)。
 
-    **[VM サイズ]** :デプロイする仮想マシンの[サイズ](../cloud-services/cloud-services-sizes-specs.md)
+    **[VM サイズ]** :デプロイする仮想マシンの [サイズ](../cloud-services/cloud-services-sizes-specs.md)
 
     **[Ubuntu OS バージョン]** :ベース仮想マシンにインストールする Ubuntu OS のバージョン。
 
-    **[場所]** :仮想マシンをデプロイする[地理的リージョン](https://azure.microsoft.com/global-infrastructure/locations/)。選択したリソース グループの場所が規定値となります。
+    **[場所]** :仮想マシンをデプロイする [地理的リージョン](https://azure.microsoft.com/global-infrastructure/locations/)。選択したリソース グループの場所が規定値となります。
 
     **[認証タイプ]** :**sshPublicKey** または **パスワード** のどちらか好きな方を選択します。
 
@@ -64,7 +64,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 
     すべてのフィールドへの入力を終えたら、ページの下部にあるチェックボックスをオンにして使用条件に同意し、 **[購入]** を選択してデプロイを開始します。
 
-1. デプロイが正常に完了したことを確認します。  仮想マシン リソースが、選択したリソース グループにデプロイされている必要があります。  マシン名をメモしておきます。この名前は `vm-0000000000000` の形式である必要があります。 また、関連付けられている **DNS 名**をメモしておきます。この名前は `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com の形式である必要があります。
+1. デプロイが正常に完了したことを確認します。  仮想マシン リソースが、選択したリソース グループにデプロイされている必要があります。  マシン名をメモしておきます。この名前は `vm-0000000000000` の形式である必要があります。 また、関連付けられている **DNS 名** をメモしておきます。この名前は `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com の形式である必要があります。
 
     **DNS 名** は、Azure portal 内に新しく展開された仮想マシンの **概要** セクションから取得できます。
 
@@ -139,7 +139,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
     --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
     ```
 
-1. デプロイが正常に完了したことを確認します。  仮想マシン リソースが、選択したリソース グループにデプロイされている必要があります。  マシン名をメモしておきます。この名前は `vm-0000000000000` の形式である必要があります。 また、関連付けられている **DNS 名**をメモしておきます。この名前は `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com の形式である必要があります。
+1. デプロイが正常に完了したことを確認します。  仮想マシン リソースが、選択したリソース グループにデプロイされている必要があります。  マシン名をメモしておきます。この名前は `vm-0000000000000` の形式である必要があります。 また、関連付けられている **DNS 名** をメモしておきます。この名前は `<dnsLabelPrefix>`.`<location>`.cloudapp.azure.com の形式である必要があります。
 
     **DNS 名** は、前の手順の JSON 形式の出力から取得できます。具体的には、 **[パブリック SSH]** エントリの一部をなす **[出力]** セクション内から。  このエントリの値を使用して、新しくデプロイされたマシンに SSH できます。
 
@@ -152,7 +152,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
     }
     ```
 
-    **DNS 名**は、Azure portal 内に新しくデプロイされた仮想マシンの **[概要]** セクションから取得できます。
+    **DNS 名** は、Azure portal 内に新しくデプロイされた仮想マシンの **[概要]** セクションから取得できます。
 
     > [!div class="mx-imgBorder"]
     > [![Iotedge VM の DNS 名を示すスクリーンショット](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)

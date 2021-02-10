@@ -4,15 +4,15 @@ description: Automation 用の Azure セキュリティ ベースライン
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 01/07/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 79282e99894bccad4f3c265cdffe4bee2e465950
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737254"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052755"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -336,11 +336,11 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 **ガイダンス**: 明示的な割り当てとクエリの実行が可能である Azure Active Directory 組み込みの管理者ロールを使用します。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。 Automation アカウントの実行アカウントを Runbook に使用する場合は常に、これらのサービス プリンシパルもインベントリ内で追跡されるようにします。多くの場合、それらは管理者特権のアクセス許可を持つためです。 未使用の実行アカウントを削除して、攻撃にさらされる領域を最小限にします。
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [実行アカウントまたはクラシック実行アカウントの削除](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [実行アカウントまたはクラシック実行アカウントの削除](./delete-run-as-account.md)
 
 * [Azure Automation の実行アカウントを管理する](./manage-runas-account.md)
 
@@ -364,7 +364,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
-* [実行アカウントまたはクラシック実行アカウントの削除](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [実行アカウントまたはクラシック実行アカウントの削除](./delete-run-as-account.md)
 
 * [Azure Automation の実行アカウントを管理する](./manage-runas-account.md)
 
@@ -454,7 +454,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center で
 
 * [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-* [実行アカウントまたはクラシック実行アカウントの削除](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [実行アカウントまたはクラシック実行アカウントの削除](./delete-run-as-account.md)
 
 * [Azure Automation の実行アカウントを管理する](./manage-runas-account.md)
 
@@ -696,7 +696,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 * [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 * [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -724,7 +724,7 @@ Azure 仮想マシンによる Hybrid Runbook Worker を使用している場合
 
 * [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
-* [実行アカウントまたはクラシック実行アカウントの削除](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [実行アカウントまたはクラシック実行アカウントの削除](./delete-run-as-account.md)
 
 * [Azure Automation の実行アカウントを管理する](./manage-runas-account.md)
 
@@ -836,7 +836,7 @@ Azure Virtual Machines による Hybrid Runbook Worker を使用している場�
 
 **ガイダンス**: Hybrid Runbook Worker 機能を使用する場合は、スクリプトの種類に基づき、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限できます。 また、Azure Security Center の適応型アプリケーション制御を利用して、Azure Virtual Machines 上で承認されたソフトウェアのみを実行し、すべての承認されていないソフトウェアが実行されないようにすることもできます。
 
-* [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Azure Security Center の適応型アプリケーション制御を使用する方法](../security-center/security-center-adaptive-application.md)
 
@@ -878,7 +878,7 @@ Azure Virtual Machines による Hybrid Runbook Worker を使用している場�
 
 また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からの推奨事項を使用することもできます。
 
-* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 * [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)
 
@@ -942,7 +942,7 @@ Hybrid Runbook Worker 機能を使用する場合は、デプロイ用に Azure 
 
 * [Resource Manager テンプレートの作成に関する情報](../virtual-machines/windows/ps-template.md)
 
-* [カスタム VM VHD を Azure にアップロードする方法](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [カスタム VM VHD を Azure にアップロードする方法](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -952,7 +952,7 @@ Hybrid Runbook Worker 機能を使用する場合は、デプロイ用に Azure 
 
 **ガイダンス**: カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするために、アクセス許可の付与または拒否を、特定のユーザー、組み込みのセキュリティ グループ、または Azure Active Directory (Azure DevOps に統合されている場合) あるいは Active Directory (TFS に統合されている場合) で定義されたグループに対して行えます。 ソース管理の統合機能を使用して、ソース管理リポジトリ内のスクリプトで Automation アカウントの Runbook を最新の状態に維持します。
 
-* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
 * [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 
@@ -1134,7 +1134,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 * [Azure Automation の概要](./automation-intro.md)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1160,7 +1160,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 * [Azure Automation の概要](./automation-intro.md)
 
-* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1176,7 +1176,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 * [ARM テンプレートと Azure portal でリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 * [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1190,7 +1190,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure 向けの Microsoft
 
 ソース管理の統合機能を使用して、ソース管理リポジトリ内のスクリプトで Automation アカウントの Runbook を最新の状態に維持します。
 
-* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
 * [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 

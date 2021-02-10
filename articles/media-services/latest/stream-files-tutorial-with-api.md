@@ -1,25 +1,10 @@
 ---
-title: Media Services v3 を使用してアップロード、エンコード、ストリーム配信する
-titleSuffix: Azure Media Services
-description: Azure Media Services v3 を使用してファイルをアップロードし、ビデオをエンコードし、コンテンツをストリーム配信する方法を示すチュートリアルです。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256771"
+title:Media Services v3 を使用してアップロード、エンコード、ストリーム配信する:Azure Media Services の説明:Azure Media Services v3 を使用してファイルをアップロードし、ビデオをエンコードし、コンテンツをストリーム配信する方法を示すチュートリアルです。
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date:08/31/2020 ms.author: inhenkel
 ---
+
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>チュートリアル:Media Services v3 を使用してビデオをアップロード、エンコード、ストリーム配信する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -66,12 +51,12 @@ Azure Media Services を使うと、さまざまなブラウザーやデバイ�
 
 サンプルは、次のアクションを実行します。
 
-1. 新しい**変換**を作成します (最初に、指定された変換が存在するかどうかを確認します)。
-2. エンコード **ジョブ**の出力として使用される出力**アセット**を作成します。
-3. 入力**アセット**を作成し、指定されたローカル ビデオ ファイルをそこにアップロードします。 アセットは、ジョブの入力として使用されます。
+1. 新しい **変換** を作成します (最初に、指定された変換が存在するかどうかを確認します)。
+2. エンコード **ジョブ** の出力として使用される出力 **アセット** を作成します。
+3. 入力 **アセット** を作成し、指定されたローカル ビデオ ファイルをそこにアップロードします。 アセットは、ジョブの入力として使用されます。
 4. 作成された入力と出力を使用してエンコード ジョブを送信します。
 5. ジョブの状態を確認します。
-6. **ストリーミング ロケーター**を作成します。
+6. **ストリーミング ロケーター** を作成します。
 7. ストリーミング URL を作成します。
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
@@ -82,13 +67,13 @@ Azure Media Services を使うと、さまざまなブラウザーやデバイ�
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>入力アセットを作成し、ローカル ファイルをそれにアップロードする
 
-**CreateInputAsset** 関数は、新しい入力[アセット](/rest/api/media/assets)を作成し、指定されたローカル ビデオ ファイルをそこにアップロードします。 この**アセット**は、エンコード ジョブへの入力として使われます。 Media Services v3 では、**ジョブ**への入力としては、**アセット**を使うか、または HTTPS URL 経由で Media Services アカウントから使用できるようにされたコンテンツを使うことができます。 HTTPS URL からのエンコード方法については、[こちら](job-input-from-http-how-to.md)の記事を参照してください。
+**CreateInputAsset** 関数は、新しい入力 [アセット](/rest/api/media/assets)を作成し、指定されたローカル ビデオ ファイルをそこにアップロードします。 この **アセット** は、エンコード ジョブへの入力として使われます。 Media Services v3 では、**ジョブ** への入力としては、**アセット** を使うか、または HTTPS URL 経由で Media Services アカウントから使用できるようにされたコンテンツを使うことができます。 HTTPS URL からのエンコード方法については、[こちら](job-input-from-http-how-to.md)の記事を参照してください。
 
 Media Services v3 では、Azure Storage API を使ってファイルをアップロードします。 次の .NET スニペットはその方法を示したものです。
 
 後で示す関数は、次の処理を実行します。
 
-* **アセット**を作成する。
+* **アセット** を作成する。
 * 書き込み可能な [SAS URL](../../storage/common/storage-sas-overview.md) を資産の[ストレージ内のコンテナー](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)に取得する。
 
     資産の [ListContainerSas](/rest/api/media/assets/listcontainersas) 関数を使用して SAS URL を取得する場合、複数の SAS URL が返されることに注意してください。これは、ストレージ アカウント キーがストレージ アカウントごとに 2 つ存在するためです。 ストレージ アカウントにキーが 2 つあるのは、ストレージ アカウント キーのシームレスなローテーションを可能にするためです (一方のキーを使用しながらもう一方のキーを変更した後、新しいキーの使用を開始し、その後もう一方のキーをローテーションするなど)。 1 つ目の SAS URL はストレージ キー 1 を、2 つ目の SAS URL はストレージ キー 2 を表します。
@@ -104,7 +89,7 @@ Media Services v3 では、Azure Storage API を使ってファイルをアッ�
 
 ### <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>アップロードされたファイルをエンコードする変換とジョブを作成する
 
-Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ**を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは**変換**と呼ばれます。 詳しくは、「[Transform と Job](./transforms-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。
+Media Services でコンテンツをエンコードまたは処理するときは、レシピとしてエンコード設定をセットアップするのが一般的なパターンです。 その後、**ジョブ** を送信してビデオにレシピを適用します。 新しいビデオごとに新しいジョブを送信することで、ライブラリ内のすべてのビデオにレシピを適用します。 Media Services でのレシピは **変換** と呼ばれます。 詳しくは、「[Transform と Job](./transforms-jobs-concept.md)」をご覧ください。 このチュートリアルで説明するサンプルでは、さまざまな iOS および Android デバイスにストリーム配信するために、ビデオをエンコードするレシピが定義されています。
 
 #### <a name="transform"></a>変換
 
@@ -157,10 +142,10 @@ Event Grid は、高可用性、一貫したパフォーマンス、および動
 
 ### <a name="get-streaming-urls"></a>ストリーミング URL を取得する
 
-[ストリーミング ロケーター](/rest/api/media/streaminglocators)が作成されたので、**GetStreamingURLs** で示されているように、ストリーミング URL を取得できます。 URL を作成するには、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)のホスト名と**ストリーミング ロケーター** パスを連結する必要があります。 このサンプルでは、*既定の* **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の* **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
+[ストリーミング ロケーター](/rest/api/media/streaminglocators)が作成されたので、**GetStreamingURLs** で示されているように、ストリーミング URL を取得できます。 URL を作成するには、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)のホスト名と **ストリーミング ロケーター** パスを連結する必要があります。 このサンプルでは、*既定の* **ストリーミング エンドポイント** を使っています。 最初に Media Service アカウントを作成したとき、この *既定の* **ストリーミング エンドポイント** は停止状態になっているので、**Start** を呼び出す必要があります。
 
 > [!NOTE]
-> このメソッドでは、出力アセットの**ストリーミング ロケーター**を作成するときに使った locatorName が必要です。
+> このメソッドでは、出力アセットの **ストリーミング ロケーター** を作成するときに使った locatorName が必要です。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 

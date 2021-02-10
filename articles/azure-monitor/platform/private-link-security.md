@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 637e66956eadf57199d2e5191368d6355e2cd118
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734968"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941895"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -217,13 +217,13 @@ Azure Portal にアクセスします。 Azure Monitor Application Insights コ�
 
 前に説明したプロセスは、Azure Resource Manager テンプレート、REST、コマンド ライン インターフェイスを使用して自動化できます。
 
-プライベート リンク スコープを作成して管理するには、[REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) または [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest) を使用します。
+プライベート リンク スコープを作成して管理するには、[REST API](/rest/api/monitor/private%20link%20scopes%20(preview)) または [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope) を使用します。
 
-ネットワーク アクセスを管理するには、[Log Analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest)または [Application Insights コンポーネント](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)でフラグ `[--ingestion-access {Disabled, Enabled}]` と `[--query-access {Disabled, Enabled}]` を使用します。
+ネットワーク アクセスを管理するには、[Log Analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace)または [Application Insights コンポーネント](/cli/azure/ext/application-insights/monitor/app-insights/component)でフラグ `[--ingestion-access {Disabled, Enabled}]` と `[--query-access {Disabled, Enabled}]` を使用します。
 
 ## <a name="collect-custom-logs-over-private-link"></a>Private Link 経由でカスタム ログを収集する
 
-ストレージ アカウントは、カスタム ログの取り込みプロセスで使用されます。 既定では、サービスで管理されるストレージ アカウントが使用されます。 ただし、プライベート リンクにカスタム ログを取り込むには、独自のストレージ アカウントを使用して、それらを Log Analytics ワークスペースに関連付ける必要があります。 [コマンド ライン](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest)を使用してこのようなアカウントをセットアップする方法の詳細について参照してください。
+ストレージ アカウントは、カスタム ログの取り込みプロセスで使用されます。 既定では、サービスで管理されるストレージ アカウントが使用されます。 ただし、プライベート リンクにカスタム ログを取り込むには、独自のストレージ アカウントを使用して、それらを Log Analytics ワークスペースに関連付ける必要があります。 [コマンド ライン](/cli/azure/monitor/log-analytics/workspace/linked-storage)を使用してこのようなアカウントをセットアップする方法の詳細について参照してください。
 
 独自のストレージ アカウントを使用する方法の詳細については、「[ログ取り込み用の顧客所有のストレージ アカウント](private-storage.md)」を参照してください。
 
@@ -252,7 +252,7 @@ Application Insights や Log Analytics などの Azure Monitor ポータル エ�
 
 ### <a name="programmatic-access"></a>プログラムによるアクセス
 
-REST API、[CLI](/cli/azure/monitor?view=azure-cli-latest) または PowerShell をプライベート ネットワーク上の Azure Monitor で使用するには、[サービスタグ](../../virtual-network/service-tags-overview.md) **AzureActiveDirectory** と **AzureResourceManager** をファイアウォールに追加します。
+REST API、[CLI](/cli/azure/monitor) または PowerShell をプライベート ネットワーク上の Azure Monitor で使用するには、[サービスタグ](../../virtual-network/service-tags-overview.md) **AzureActiveDirectory** と **AzureResourceManager** をファイアウォールに追加します。
 
 これらのタグを追加すると、ログ データのクエリ、Log Analytics ワークスペースや AI コンポーネントの作成と管理などの操作を実行できます。
 

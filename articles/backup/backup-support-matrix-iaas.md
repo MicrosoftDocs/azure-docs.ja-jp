@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM をバックア�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: ade92e445897e36139e74353fa703ddf50d3f9b3
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 3d1238bffd785a47b6e0ffab70366a15dfff0ef3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562728"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218113"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -81,6 +81,7 @@ Azure VM Linux のバックアップでは、Azure Backup は、[Azure で承認
 - Azure Backup は 32 ビットのオペレーティング システムをサポートしていません。
 - 他の個人所有の Linux ディストリビューションは、VM 上で [Linux 用の Azure VM エージェント](../virtual-machines/extensions/agent-linux.md)が動作し、かつ Python がサポートされていれば使用できます。
 - Azure Backup は、プロキシが構成された Linux VM を、Python バージョン 2.7 がインストールされていない場合はサポートしていません。
+- Azure Backup では、ストレージまたはその他の NFS サーバーから Linux または Windows コンピューターにマウントされた NFS ファイルのバックアップはサポートされません。 VM にローカルに接続されているディスクのみがバックアップされます。
 
 ## <a name="backup-frequency-and-retention"></a>バックアップの頻度とリテンション期間
 
@@ -144,10 +145,12 @@ VM サイズ |少なくとも 2 つの CPU コアと 1 GB の RAM を備えた�
 Azure に移行済みの VM をバックアップする| サポートされています。<br/><br/> VM をバックアップするには、移行済みマシンに VM エージェントをインストールする必要があります。
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でのデータとアプリケーションの整合性は提供されません。
 [[診断設定]](../azure-monitor/platform/platform-logs-overview.md) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
-ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、ゾーンが使用できない場合、復元は失敗します。
+ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、障害が原因でゾーンが使用できない場合、復元は失敗します。
 Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) のバックアップと復元がサポートされます。 これらの VM は、復旧ポイントから復元される場合、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) として復元されます。
 ロックされた Azure VM のバックアップ | アンマネージド VM では、サポートされていません。 <br><br> マネージド VM ではサポートされています。
 [スポット VM](../virtual-machines/spot-vms.md) | サポートされていません。 Azure Backup では、Spot VM が通常の Azure VM として復元されます。
+[Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | サポートされています
+スタンドアロン Azure VM の Windows 記憶域スペース構成 | サポートされています 
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
@@ -165,6 +168,7 @@ Azure VM のデータ ディスク数 | 最大 32 のディスクを使用した
 共有ストレージ| クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバーを使用した VM のバックアップはサポートされていません。 バックアップ中に CSV ライターが失敗する可能性があります。 また、復元時に CSV ボリュームを含むディスクが起動しない可能性があります。
 [共有ディスク](../virtual-machines/disks-shared-enable.md) | サポートされていません。
 Ultra SSD ディスク | サポートされていません。 詳細については、こちらの[制限](selective-disk-backup-restore.md#limitations)を参照してください。
+[一時ディスク](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | 一時ディスクは Azure Backup ではバックアップされません。
 
 ## <a name="vm-network-support"></a>VM ネットワークのサポート
 

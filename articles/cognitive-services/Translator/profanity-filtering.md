@@ -3,19 +3,19 @@ title: 不適切な表現のフィルター - Translator
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Translator で不適切な表現のフィルターを使用して、翻訳テキストの不適切な表現のレベルを判断します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: lajanuar
+ms.openlocfilehash: 9f389d669e69dbfa6ec6d4d0b4716d2367443f17
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83996161"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896801"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>Translator で不適切な表現のフィルターを追加する
 

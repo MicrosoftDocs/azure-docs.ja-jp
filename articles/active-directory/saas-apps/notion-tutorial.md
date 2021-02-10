@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 512436c9d72e0318ec14bf7551a2fde76c6ef3d8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 520eb25bcb138c96b24166816d3374255fb7c3b2
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735912"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493991"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-notion"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Notion の統合
 
@@ -40,7 +40,7 @@ ms.locfileid: "98735912"
 * Notion では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 * Notion では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 > [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できる Notion ワークスペースは 1 つだけです。
 
 
 ## <a name="adding-notion-from-the-gallery"></a>ギャラリーからの Notion の追加
@@ -80,14 +80,14 @@ Notion に対する Azure AD SSO を構成してテストするには、次の�
 
 1. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次のフィールドの値を入力します。
 
-    **[応答 URL]** ボックスに、`https://www.notion.so/sso/saml/<CUSTOM_ID>` のパターンを使用して URL を入力します
+    **[応答 URL]** ボックスに、`https://www.notion.so/sso/saml/<CUSTOM_ID>` のパターンを使用して URL を入力します。URL は、Notion ワークスペースの **[Settings & Members]\(設定 & メンバー\)** > **[Security & identity]\(セキュリティ & ID\)** > **[Single sign-on URL]\(シングル サインオン URL\)** から取得できます。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    **[サインオン URL]** ボックスに、`https://www.notion.so/sso/saml/<CUSTOM_ID>` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、URL (`https://www.notion.so/login`) を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[Notion クライアント サポート チーム](mailto:team@makenotion.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. Notion アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -102,7 +102,7 @@ Notion に対する Azure AD SSO を構成してテストするには、次の�
     | lastName | User.surname |
 
 
-1. **[Set up single sign-on with SAML]\(SAML でシングル サインオンをセットアップします\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーします。 **Notion** ワークスペースの **[Settings & Members]\(設定 & メンバー\)**  >  **[Security & identity]\(セキュリティ & ID\)** に移動し、コピーした値を **[IDP metadata URL]\(IDP メタデータ URL\)** フィールドに貼り付けます。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
@@ -132,7 +132,13 @@ Notion に対する Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-notion-sso"></a>Notion の SSO の構成
 
-**Notion** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [Notion サポート チーム](mailto:team@makenotion.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Notion** ワークスペースの **[Settings & Members]\(設定 & メンバー\)**  >  **[Security & identity]\(セキュリティ & ID\)** に移動し、 **[アプリのフェデレーション メタデータ URL]** でコピーした値を **[IDP metadata URL]\(IDP メタデータ URL\)** フィールドに貼り付けます。
+
+同じ設定ページで、 **[Email domains]\(メール ドメイン\)** の **[Contact support]\(サポートへの問い合わせ\)** をクリックして、組織のメール ドメインを追加します。
+
+メール ドメインが承認され、追加されたら、 **[Enable SAML]\(SAML を有効にする\)** トグルを使用して SAML SSO を有効にします。
+
+テストが成功したら、 **[Enforce SAML]\(SAML を適用する\)** トグルを使用して SAML SSO を適用できます。 Notion ワークスペース管理者は電子メールでログインする機能を保持しますが、他のすべてのメンバーは、SAML SSO を使用して Notion にログインする必要があることに注意してください。
 
 ### <a name="create-notion-test-user"></a>Notion のテスト ユーザーの作成
 

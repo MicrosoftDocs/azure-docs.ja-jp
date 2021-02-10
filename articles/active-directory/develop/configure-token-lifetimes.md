@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 4d6a7150c854ba89c3cd8eacd6b553c4b8e97343
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 3ec94543a53e3e5b7709801de8f4cf1dde3fc3d9
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97963351"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428117"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>トークンの有効期間ポリシーを構成する (プレビュー)
 Microsoft ID プラットフォームによって発行されたアクセス トークン、SAML トークン、または ID トークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。 詳細については、[構成可能なトークンの有効期間](active-directory-configurable-token-lifetimes.md)に関する記事を参照してください。
@@ -38,7 +38,7 @@ Microsoft ID プラットフォームによって発行されたアクセス ト
 1. 組織で作成されたすべてのポリシーを表示するには、[Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを実行します。  上記の既定値と異なる定義されたプロパティ値が含まれる結果は、廃止の範囲内にあります。
 
     ```powershell
-    Get-AzureADPolicy -All
+    Get-AzureADPolicy -All $true
     ```
 
 1. 特定のポリシーにリンクされているアプリとサービス プリンシパルを確認するには、**1a37dad8-5da7-4cc8-87c7-efbc0326cf20** を独自のポリシー ID に置き換えて、次の [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) コマンドレットを実行します。 その後、条件付きアクセスのサインイン頻度を構成するか、Azure AD の既定値をそのまま使用するかを決定できます。
@@ -85,11 +85,11 @@ Microsoft ID プラットフォームによって発行されたアクセス ト
 
 ## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>更新トークンとセッション トークンのトークン有効期間ポリシーの作成
 > [!IMPORTANT]
-> 2020 年 5 月時点で、新しいテナントでは更新トークンとセッション トークンの有効期間を構成できません。  既に構成されているテナントでは、2021 年 1 月 30 日まで、更新トークンとセッション トークンのポリシーを変更できます。  2021 年 1 月 30 日以降は、Azure Active Directory でポリシー内の既存の更新とセッション トークンの構成が考慮されなくなります。 廃止後も、アクセス トークン、SAML トークン、ID トークンの有効期間を構成することはできます。
+> 2021 年 1 月 30 日の時点で、更新およびセッション トークンの有効期間は構成できません。 Azure Active Directory では、既存のポリシーの更新およびセッション トークンの構成が考慮されなくなくなりました。  既存のトークンの有効期限が切れた後に発行された新しいトークンは、[既定の構成](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)に設定されるようになりました。 更新およびセッション トークンの構成の廃止後も、アクセス、SAML、ID の各トークンの有効期間を構成することはできます。
 >
-> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)」をお読みください。
+> 既存のトークンの有効期間は変更されません。 有効期限が切れると、既定値に基づいて新しいトークンが発行されます。
 >
-> 廃止後に条件付きアクセスを使用しない場合、更新トークンとセッション トークンは廃止日の[既定の構成](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement)に設定され、有効期間を変更することはできなくなります。
+> ユーザーが再度サインインするように求められるまでの時間を定義し続ける必要がある場合は、条件付きアクセスでサインインの頻度を構成します。 条件付きアクセスの詳細については、「[条件付きアクセスを使用して認証セッション管理を構成する](../conditional-access/howto-conditional-access-session-lifetime.md)」をお読みください。
 
 ### <a name="manage-an-organizations-default-policy"></a>組織の既定のポリシーを管理する
 この例では、組織全体でユーザーがサインインする頻度を少なくするポリシーを作成します。 そのためには、組織全体に適用される単一要素の更新トークンに対してトークンの有効期間ポリシーを作成します。 このポリシーは、組織内のすべてのアプリケーションと、ポリシーがまだ設定されていない各サービス プリンシパルに適用されます。

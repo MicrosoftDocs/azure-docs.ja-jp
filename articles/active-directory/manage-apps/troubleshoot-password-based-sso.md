@@ -2,7 +2,7 @@
 title: Azure Active Directory でのパスワードベースのシングル サインオンをトラブルシューティングする
 description: パスワードベースのシングル サインオン用に構成された Azure AD アプリの問題をトラブルシューティングします。
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: fdbbc6c53e43d3ecc9fd4ecb563bd7ec798f8888
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618078"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257581"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Azure AD でのパスワードベースのシングル サインオンのトラブルシューティング
 
 マイ アプリでパスワードベースのシングルサインオン (SSO) を使用するには、ブラウザー拡張機能をインストールする必要があります。 この拡張機能は、パスワード ベースの SSO 用に構成されているアプリを選ぶと、自動的にダウンロードされます。 エンドユーザーの視点からマイ アプリを使用する方法については、[マイ アプリ ポータルのヘルプ](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="my-apps-browser-extension-not-installed"></a>マイ アプリのブラウザー拡張機能がインストールされていない
-ブラウザー拡張機能がインストールされていることを確認します。 詳細については、「[Azure Active Directory マイ アプリのデプロイを計画する](access-panel-deployment-plan.md)」を参照してください。 
+ブラウザー拡張機能がインストールされていることを確認します。 詳細については、「[Azure Active Directory マイ アプリのデプロイを計画する](my-apps-deployment-plan.md)」を参照してください。 
 
 ## <a name="single-sign-on-not-configured"></a>シングル サインオンが構成されていない
 パスワードベースのシングル サインオンが構成されていることを確認します。 詳細については、「[パスワードベースのシングル サインオンの構成](configure-password-single-sign-on-non-gallery-applications.md)」を参照してください。
@@ -247,4 +247,4 @@ SSO を設定してユーザーを割り当てるときにエラー メッセー
 
 ## <a name="next-steps"></a>次のステップ
 * [アプリケーション管理のクイックスタート シリーズ](view-applications-portal.md)
-* [マイ アプリのデプロイの計画](access-panel-deployment-plan.md)
+* [マイ アプリのデプロイの計画](my-apps-deployment-plan.md)

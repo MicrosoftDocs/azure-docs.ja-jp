@@ -1,6 +1,6 @@
 ---
 title: Azure Sentinel に Windows セキュリティ イベント データを接続する | Microsoft Docs
-description: セキュリティ イベント コネクタを使用して、Windows システムから Azure Sentinel ワークスペースにあらゆるセキュリティ イベントをストリーム配信する方法について説明します。 
+description: セキュリティ イベント コネクタを使用して、Windows システムから Azure Sentinel ワークスペースにあらゆるセキュリティ イベントをストリーム配信する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883715"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632048"
 ---
 # <a name="connect-windows-security-events"></a>Windows セキュリティ イベントの接続 
 
@@ -29,7 +29,7 @@ ms.locfileid: "90883715"
 - **すべてのイベント** - すべての Windows セキュリティ イベントおよび AppLocker イベント。
 - **一般** - 監査の目的で使用する標準的なイベント セット。 このセットには、完全なユーザー監査証跡が含まれます。 たとえば、ユーザー サインインとユーザー サインアウトの両方のイベント (イベント ID 4624、4634) が含まれています。 また、セキュリティ グループの変更などの監査アクションや、ドメイン コントローラーの主要な Kerberos 操作、確立されているベスト プラクティスに沿った各種のイベントもあります。
 
-    **一般**のイベント セットには、あまり一般的ではない種類のイベントも一部含まれている場合があります。  完全な監査証跡機能を保ちながらも、より扱いやすいレベルにまでイベントの量を減らすことが、**一般**セットの重要なポイントであるためです。
+    **一般** のイベント セットには、あまり一般的ではない種類のイベントも一部含まれている場合があります。  完全な監査証跡機能を保ちながらも、より扱いやすいレベルにまでイベントの量を減らすことが、**一般** セットの重要なポイントであるためです。
 
 - **最小** - 潜在的な脅威を示す可能性がある小さいイベント セット。 このセットには、完全な監査証跡は含まれません。 侵害が成功したことを示す可能性があるイベントなど、発生率がきわめて低い重要イベントのみが対象となります。 たとえば、ユーザーの成功したログオンと失敗したログオン (イベント ID 4624、4625) が含まれますが、監査には重要であっても侵害の検出には重要ではない、比較的ボリュームの大きいサインアウト情報 (4634) は含まれません。 このセットのデータ量のほとんどは、サインイン イベントとプロセス作成イベント (イベント ID 4688) から成ります。
 
@@ -54,7 +54,7 @@ Windows セキュリティ イベントを Azure Sentinel で収集するには�
 
 1. Azure Sentinel のナビゲーション メニューから、 **[Data connectors]\(データ コネクタ\)** を選択します。 コネクタの一覧で **[セキュリティ イベント]** をクリックし、右下にある **[Open connector page]\(コネクタ ページを開く\)** ボタンをクリックします。 その後、 **[Instructions]\(手順\)** タブで画面の指示に従い、このセクションの残りの作業を行います。
 
-1. **前提条件**に記載された適切なアクセス許可があることを確認します。
+1. コネクタ ページの **[前提条件]** セクションに記載された適切なアクセス許可があることを確認します。
 
 1. Azure Sentinel にストリーム配信するセキュリティ イベントの発生元となるマシンに、[Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md) (旧称 Microsoft Monitoring Agent または MMA) をダウンロードしてインストールします。
 
@@ -71,11 +71,11 @@ Windows セキュリティ イベントを Azure Sentinel で収集するには�
 
     > [!NOTE]
     >
-    > 必要なインターネット接続を備えていない Windows システムでも、Azure Sentinel にイベントをストリーム配信できるようにしたい場合は、プロキシとして機能する **OMS ゲートウェイ**を、右下のリンクから個々のマシンにダウンロードしてインストールしてください。  その場合でも、イベントを収集する個々の Windows システムに Log Analytics エージェントをインストールする必要があります。
+    > 必要なインターネット接続を備えていない Windows システムでも、Azure Sentinel にイベントをストリーム配信できるようにしたい場合は、プロキシとして機能する **OMS ゲートウェイ** を、右下のリンクから個々のマシンにダウンロードしてインストールしてください。  その場合でも、イベントを収集する個々の Windows システムに Log Analytics エージェントをインストールする必要があります。
     >
-    > このシナリオの詳細については、[**Log Analytics ゲートウェイ**のドキュメント](../azure-monitor/platform/gateway.md)を参照してください。
+    > このシナリオの詳細については、[**Log Analytics ゲートウェイ** のドキュメント](../azure-monitor/platform/gateway.md)を参照してください。
 
-    その他のインストール オプションとさらに詳しい情報については、[**Log Analytics エージェント**のドキュメント](../azure-monitor/platform/agent-windows.md)を参照してください。
+    その他のインストール オプションとさらに詳しい情報については、[**Log Analytics エージェント** のドキュメント](../azure-monitor/platform/agent-windows.md)を参照してください。
 
 1. ストリーム配信するイベント セット ([すべて、一般、最小](#event-sets)) を選択します。
 

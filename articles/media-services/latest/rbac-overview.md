@@ -1,5 +1,5 @@
 ---
-title: Media Services アカウント用の Azure ロールベースのアクセス制御 - Azure | Microsoft Docs
+title: Media Services アカウント用のロールベースのアクセス制御
 description: この記事では、Azure Media Services アカウント用の Azure ロールベースのアクセス制御 (RBAC) について説明します。
 services: media-services
 documentationcenter: ''
@@ -12,22 +12,22 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7c9edce71e0d0565de80153bfd5b3d5f1edb2e8f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426806"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955158"
 ---
 # <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Media Services アカウント用の Azure ロールベースのアクセス制御 (Azure RBAC)
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-現在、Azure Media Services では、サービスに固有のカスタム ロールは定義されていません。 Media Services アカウントへのフル アクセスを取得する場合、お客様は、組み込みロールである **所有者** または **共同作成者** を使用します。 これらのロールの主な違いとして、 **所有者** はリソースにアクセスできるユーザーを制御できますが、 **共同作成者** はできません。 組み込みの **閲覧者** ロールも使用できますが、ユーザーまたはアプリケーションには Media Services API への読み取りアクセス許可が与えられるだけです。 
+現在、Azure Media Services では、サービスに固有のカスタム ロールは定義されていません。 Media Services アカウントへのフル アクセスを取得する場合、お客様は、組み込みロールである **所有者** または **共同作成者** を使用します。 これらのロールの主な違いとして、**所有者** はリソースにアクセスできるユーザーを制御できますが、**共同作成者** はできません。 組み込みの **閲覧者** ロールも使用できますが、ユーザーまたはアプリケーションには Media Services API への読み取りアクセス許可が与えられるだけです。 
 
 ## <a name="design-principles"></a>設計原則
 
-v3 API の主要な設計原則の 1 つは、API の安全性の向上です。 v3 API シリーズは、 **Get** または **List** 操作でシークレットまたは資格情報を返しません。 キーは常に、null または空であるか、応答から削除されます。 ユーザーがシークレットまたは資格情報を取得するには、別のアクション メソッドを呼び出す必要があります。 **閲覧者** ロールでは、Asset.ListContainerSas、StreamingLocator.ListContentKeys、ContentKeyPolicies.GetPolicyPropertiesWithSecrets などの操作を呼び出すことはできません。 別々のアクションを使用することで、必要に応じてカスタム ロールにより詳細な Azure RBAC セキュリティ アクセス許可を設定できます。
+v3 API の主要な設計原則の 1 つは、API の安全性の向上です。 v3 API シリーズは、**Get** または **List** 操作でシークレットまたは資格情報を返しません。 キーは常に、null または空であるか、応答から削除されます。 ユーザーがシークレットまたは資格情報を取得するには、別のアクション メソッドを呼び出す必要があります。 **閲覧者** ロールでは、Asset.ListContainerSas、StreamingLocator.ListContentKeys、ContentKeyPolicies.GetPolicyPropertiesWithSecrets などの操作を呼び出すことはできません。 別々のアクションを使用することで、必要に応じてカスタム ロールにより詳細な Azure RBAC セキュリティ アクセス許可を設定できます。
 
 Media Services でサポートされている操作を一覧表示するには、次を実行します。
 

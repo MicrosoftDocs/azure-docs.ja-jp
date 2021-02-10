@@ -1,6 +1,5 @@
 ---
 title: Media Services v3 動的暗号化を使用してコンテンツを保護する
-titleSuffix: Azure Media Services
 description: Azure Media Services での動的暗号化によるコンテンツ保護、ストリーミング プロトコル、および暗号化の種類について説明します。
 services: media-services
 documentationcenter: ''
@@ -15,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: edea46e86475f1731ecfae465f969ca45d63f0a2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95971175"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897630"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 

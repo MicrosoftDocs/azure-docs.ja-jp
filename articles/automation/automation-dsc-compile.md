@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b45aad71e04418c7c7dda4fc3f0c84a5fe99ecdf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186539"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896344"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration で DSC 構成をコンパイルする
 
@@ -120,7 +120,7 @@ Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -Automa
 
 ### <a name="compile-configurations-containing-composite-resources-in-azure-automation"></a>Azure Automation で複合リソースを含む構成をコンパイルする
 
-**複合リソース**機能によって、構成の内側で、入れ子のリソースとして DSC 構成を使用できます。 この機能により、1 つのリソースに複数の構成を適用できます。 「[Composite resources: Using a DSC configuration as a resource](/powershell/scripting/dsc/resources/authoringresourcecomposite)」 (複合リソース: リソースとしての DSC 構成の使用) を参照して、複合リソースの詳細について確認してください。
+**複合リソース** 機能によって、構成の内側で、入れ子のリソースとして DSC 構成を使用できます。 この機能により、1 つのリソースに複数の構成を適用できます。 「[Composite resources: Using a DSC configuration as a resource](/powershell/scripting/dsc/resources/authoringresourcecomposite)」 (複合リソース: リソースとしての DSC 構成の使用) を参照して、複合リソースの詳細について確認してください。
 
 > [!NOTE]
 > 複合リソースを含む構成が正しくコンパイルされるように、その複合リソースが依存するすべての DSC リソースを、まず Azure Automation にインポートする必要があります。 DSC 複合リソースの追加は、Azure Automation に任意の PowerShell モジュールを追加するのと同じです。 このプロセスは、「[Azure Automation でモジュールを管理する](./shared-resources/modules.md)」に記載されています。
@@ -278,6 +278,6 @@ Import-AzAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomationAcco
 
 - 使用を開始するには、「[Azure Automation State Configuration の使用を開始する](automation-dsc-getting-started.md)」をご覧ください。
 - DSC 構成をコンパイルしてターゲット ノードに割り当てる方法の詳細については、「[Azure Automation State Configuration で DSC 構成をコンパイルする](automation-dsc-compile.md)」をご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 - 継続的なデプロイ パイプラインで State Configuration を使う例については、「[Chocolatey を使用して継続的配置を設定する](automation-dsc-cd-chocolatey.md)」をご覧ください。

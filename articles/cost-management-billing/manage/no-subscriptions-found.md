@@ -1,5 +1,5 @@
 ---
-title: "\"サブスクリプションが見つかりません\" エラー - Azure Portal へのサインイン"
+title: "\"サブスクリプションが見つかりません\" エラー - Azure portal へのサインイン"
 description: Azure Portal または Azure アカウント センターにサインインしようとすると「サブスクリプションが見つかりません」エラーになるという問題の解決策を示します。
 author: genlin
 ms.reviewer: dcscontentpm
@@ -17,13 +17,13 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/20/2020
 ms.locfileid: "88684832"
 ---
-# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure Portal または Azure アカウント センターにおける「サブスクリプションが見つかりません」のサインイン エラー
+# <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターにおける「サブスクリプションが見つかりません」のサインイン エラー
 
 [Azure Portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインしようとすると、「サブスクリプションが見つかりません」というエラー メッセージが表示されることがあります。 この記事では、この問題の解決策について説明します。
 
 ## <a name="symptom"></a>症状
 
-[Azure Portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインしようとすると、「サブスクリプションが見つかりません」というエラー メッセージが表示されます。
+[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインしようとすると、「サブスクリプションが見つかりません」というエラー メッセージが表示されます。
 
 ## <a name="cause"></a>原因
 
@@ -31,13 +31,13 @@ ms.locfileid: "88684832"
 
 ## <a name="solution"></a>解決策
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portal"></a>シナリオ 1:[Azure Portal](https://portal.azure.com) でエラー メッセージが表示される
+### <a name="scenario-1-error-message-is-received-in-the-azure-portal"></a>シナリオ 1:[Azure portal](https://portal.azure.com) でエラー メッセージが表示される
 
 この問題を解決するには、次の手順に従います。
 
 * 右上にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
 
-  ![Azure Portal の右上にあるディレクトリを選択する](./media/no-subscriptions-found/directory-switch.png)
+  ![Azure ポータルの右上にあるディレクトリを選択する](./media/no-subscriptions-found/directory-switch.png)
 * 適切な Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、[アカウントに所有者ロールを割り当て](../../role-based-access-control/role-assignments-portal.md)ます。
 
 ### <a name="scenario-2-error-message-is-received-in-the-azure-account-center"></a>シナリオ 2: [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)でエラー メッセージが表示される

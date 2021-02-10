@@ -3,16 +3,13 @@ title: Apache Hive ビューにエラー メッセージが表示されない - 
 description: Azure HDInsight クラスターの Apache Hive ビューで詳細情報が表示されずに、クエリが失敗します。
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: 7aadef0d4c70f748b4f7a7c7f9fc16c38216fa7a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c60e06e8f37e7aed0d0a0df661690a2b1f32dbd5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288951"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930994"
 ---
 # <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>シナリオ:Azure HDInsight の Apache Hive ビューにクエリのエラー メッセージが表示されない
 

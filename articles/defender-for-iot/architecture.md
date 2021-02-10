@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201479"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621099"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT のアーキテクチャ
 
@@ -81,7 +81,7 @@ Defender for IoT センサーを SPAN ポートまたはネットワーク TAP �
 - Azure ポータル
 
 ### <a name="sensor-console"></a>センサー コンソール
-センサー検出はセンサー コンソールに表示され、それらをネットワーク マップ、資産インベントリ、およびさまざまなレポート (リスク評価レポート、データ マイニング クエリ、攻撃ベクトルなど) で表示、調査、分析することができます。 また、コンソールを使用して、センサー エンジンによって検出された脅威を表示および処理したり、情報をパートナー システムに転送したり、ユーザーを管理したりすることもできます。
+センサー検出はセンサー コンソールに表示され、それらをネットワーク マップ、デバイス インベントリ、およびさまざまなレポート (リスク評価レポート、データ マイニング クエリ、攻撃ベクトルなど) で表示、調査、分析することができます。 また、コンソールを使用して、センサー エンジンによって検出された脅威を表示および処理したり、情報をパートナー システムに転送したり、ユーザーを管理したりすることもできます。
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender for IoT のセンサー コンソール":::
 
@@ -96,7 +96,7 @@ Defender for IoT センサーを SPAN ポートまたはネットワーク TAP �
 
 SOC ワークフローと Runbook に緊密に統合されているため、軽減アクティビティの優先順位付けと脅威のクロスサイト関連付けを簡単に行うことができます。
 
-- 包括的 - 資産管理、リスクと脆弱性の管理、および脅威監視とインシデント対応のための単一の統合プラットフォームにより、複雑さを軽減します。
+- 包括的 - デバイス管理、リスクと脆弱性の管理、および脅威監視とインシデント対応のための単一の統合プラットフォームにより、複雑さを軽減します。
 
 - 集計と関連付け - すべてのサイトから収集されたデータとアラートを表示、集計、および分析します。
 

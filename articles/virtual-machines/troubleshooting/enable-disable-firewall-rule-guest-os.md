@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee27f429dbfd1e550a45bbc26413a1c259c4fbe
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87058761"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092370"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Azure VM のゲスト OS 上のファイアウォール規則を有効または無効にする
 
@@ -95,9 +95,9 @@ VM がオンラインで、同じ仮想ネットワーク上の別の VM でア�
 
 #### <a name="mitigation-4-remote-registry"></a>軽減策 4: リモート レジストリ
 
-VM がオンラインにあり、同じ仮想ネットワーク上の別の VM でアクセスできる場合、他の VM 上の[リモート レジストリ](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)を使用できます。
+VM がオンラインにあり、同じ仮想ネットワーク上の別の VM でアクセスできる場合、他の VM 上の[リモート レジストリ](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837)を使用できます。
 
-1.  トラブルシューティング用 VM で、レジストリ エディター (regedit.exe) を起動し、**ファイル** > **ネットワーク レジストリへの接続**を選択します。
+1.  トラブルシューティング用 VM で、レジストリ エディター (regedit.exe) を起動し、**ファイル** > **ネットワーク レジストリへの接続** を選択します。
 
 2.  *ターゲット マシン*\SYSTEM 分岐を開き、次の値を指定します:
 
@@ -105,7 +105,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
     
         *ターゲット マシン*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
     
-        次に、文字列で**Active = FALSE**を**Active = TRUE**に変更します：
+        次に、文字列で **Active = FALSE** を **Active = TRUE** に変更します：
 
         `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
     
@@ -113,7 +113,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
     
         *ターゲット マシン*\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        次に、**Active = TRUE**を**Active = FALSE**に変更:
+        次に、**Active = TRUE** を **Active = FALSE** に変更:
         
         `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
@@ -146,13 +146,13 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 8.  BROKENSYSTEM ブランチでは、次の変更を加えます：
 
-    1.  どの**ControlSet**レジストリ キーから VM が開始するかを確認します。 HKLM\BROKENSYSTEM\Select\Current でキー番号が表示されます。
+    1.  どの **ControlSet** レジストリ キーから VM が開始するかを確認します。 HKLM\BROKENSYSTEM\Select\Current でキー番号が表示されます。
 
     2.  ルールを有効にするには、次のレジストリ値を開きます：
     
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
         
-        次に、**Active = FALSE**を**Active = True**に変更します。
+        次に、**Active = FALSE** を **Active = True** に変更します。
         
         `v2.22|Action=Allow|Active=TRUE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 
@@ -160,7 +160,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
         HKLM\BROKENSYSTEM\ControlSet00X\Services\SharedAccess\Parameters\FirewallPolicy\FirewallRules\RemoteDesktop-UserMode-In-TCP
 
-        次に、**Active = True**を**Active = FALSE**に変更します。
+        次に、**Active = True** を **Active = FALSE** に変更します。
         
         `v2.22|Action=Allow|Active=FALSE|Dir=In|Protocol=6|Profile=Domain|Profile=Private|Profile=Public|LPort=3389|App=%SystemRoot%\system32\svchost.exe|Svc=termservice|Name=\@FirewallAPI.dll,-28775|Desc=\@FirewallAPI.dll,-28756|EmbedCtxt=\@FirewallAPI.dll,-28752|`
 

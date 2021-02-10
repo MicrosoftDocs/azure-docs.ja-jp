@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: ce48d87c6e04e6c349b681e953647feb5e7ddda5
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 7b59e0ae2fbb73f341d5254fd2804d50ad141a19
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570118"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953803"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Active Directory へのユーザー プロビジョニングを構成する 
 このチュートリアルでは、SuccessFactors Employee Central から Active Directory (AD) と Azure AD にユーザーをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 
@@ -186,7 +186,7 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 オンプレミスの Active Directory にプロビジョニングするには、目的の Active Directory ドメインへのネットワーク アクセスを備えたドメイン参加済みのサーバーに、プロビジョニング エージェントがインストールされている必要があります。
 
-ダウンロードしたエージェント インストーラーをサーバー ホストに転送し、[エージェントのインストールに関するセクション](../cloud-provisioning/how-to-install.md)の手順に従ってエージェントの構成を完了します。
+ダウンロードしたエージェント インストーラーをサーバー ホストに転送し、[エージェントのインストールに関するセクション](../cloud-sync/how-to-install.md)の手順に従ってエージェントの構成を完了します。
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>パート 3: プロビジョニング アプリで、SuccessFactors と Active Directory の接続を構成します。
 この手順では、Azure portal で SuccessFactors と Active Directory の接続を確立します。 
@@ -209,12 +209,12 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
         > この設定が適用されるのは、属性のマッピングで *parentDistinguishedName* 属性が構成されていない場合のユーザー アカウント作成のみです。 この設定は、ユーザーの検索や更新の操作には使用されません。 ドメインのサブツリー全体が、検索操作の範囲内になります。
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
-    > [!NOTE]
-    > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](../app-provisioning/application-provisioning-quarantine-status.md)状態になった場合にメール通知を送信します。
+     > [!NOTE]
+     > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](../app-provisioning/application-provisioning-quarantine-status.md)状態になった場合にメール通知を送信します。
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗する場合は、エージェントのセットアップで構成された SuccessFactors 資格情報と AD 資格情報が有効であることを再確認します。
-    >[!div class="mx-imgBorder"]
-    >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
+     >[!div class="mx-imgBorder"]
+     >![Azure Portal](./media/sap-successfactors-inbound-provisioning/sf2ad-provisioning-creds.png)
 
    * 資格情報が正常に保存されると、 **[マッピング]** セクションに既定のマッピング **[Synchronize SuccessFactors Users to On Premises Active Directory]\(SuccessFactors のユーザーをオンプレミスの Active Directory に同期する\)** が表示されます
 
@@ -250,9 +250,8 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 1. **[属性マッピング]** セクションでは、個別の SuccessFactors 属性を Active Directory の属性にマッピングする方法を定義できます。
 
-  >[!NOTE]
-  >アプリケーションでサポートされている SuccessFactors 属性の完全な一覧については、[SuccessFactors 属性のリファレンス](../app-provisioning/sap-successfactors-attribute-reference.md)に関するページを参照してください。
-
+     >[!NOTE]
+     >アプリケーションでサポートされている SuccessFactors 属性の完全な一覧については、[SuccessFactors 属性のリファレンス](../app-provisioning/sap-successfactors-attribute-reference.md)に関するページを参照してください。
 
 1. 既存の属性マッピングをクリックして更新するか、または画面の下部にある **[新しいマッピングの追加]** をクリックして、新しいマッピングを追加します。 個々の属性マッピングは、次のプロパティをサポートしています。
 

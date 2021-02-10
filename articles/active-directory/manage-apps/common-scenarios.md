@@ -3,7 +3,7 @@ title: Azure Active Directory の一般的なアプリケーション管理シ�
 description: Azure AD を使用したアプリケーション管理の一元化
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b78562bc3590bdf5b15e4061ba23e1284b07c16
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6372407a5deebefab60e09a9d0c01d977157357b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835494"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259572"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Azure AD を使用したアプリケーション管理の一元化
 
@@ -43,7 +43,7 @@ ms.locfileid: "94835494"
 |機能  | 説明 | 推奨 |
 |---------|---------|---------|
 |SSO|信頼の業界標準の標準ベースのフェデレーション SSO。|お使いのアプリケーションでサポートしている場合は、常に [SAML / OIDC](../develop/v2-howto-app-gallery-listing.md) を使用して SSO を有効にします。|
-|マイ アプリ|すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、アプリやグループへのアクセスを要求したり、他のユーザーに代わってリソースへのアクセスを管理したりするなどのセルフサービス機能を使用して生産性を向上できるようにします。| SSO 用にアプリを Azure AD と統合したら、組織に[マイ アプリ](./access-panel-deployment-plan.md)を展開します。|
+|マイ アプリ|すべてのアプリケーションを検出し、それにアクセスするための単純なハブをユーザーに提供します。 ユーザーが、アプリやグループへのアクセスを要求したり、他のユーザーに代わってリソースへのアクセスを管理したりするなどのセルフサービス機能を使用して生産性を向上できるようにします。| SSO 用にアプリを Azure AD と統合したら、組織に[マイ アプリ](my-apps-deployment-plan.md)を展開します。|
 
 ## <a name="scenario-2-automate-provisioning-and-deprovisioning"></a>シナリオ 2: プロビジョニングとプロビジョニング解除の自動化 
 

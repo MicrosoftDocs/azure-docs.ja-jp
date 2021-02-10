@@ -1,21 +1,24 @@
 ---
-title: Azure Cloud Services でパフォーマンス カウンターを収集する | Microsoft Docs
+title: Azure Cloud Services (クラシック) でパフォーマンス カウンターを収集する | Microsoft Docs
 description: Azure Diagnostics および Application Insights を使用して、Cloud Services でパフォーマンス カウンターを検出、使用、作成する方法について説明します。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 02/02/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078597"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739838"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Azure クラウド サービス (クラシック) のパフォーマンス カウンターを収集する
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 パフォーマンス カウンターを使用すると、アプリケーションとホストがどの程度動作しているかを追跡できます。 Windows Server には、ハードウェア、アプリケーション、オペレーティング システムなどに関連したさまざまなパフォーマンス カウンターが多数用意されています。 パフォーマンス カウンターを収集して Azure に送信することにより、この情報を分析してより適切な決定を下すことができます。 
 
@@ -115,7 +118,7 @@ Application Insights は自動的に次のパフォーマンス カウンター�
 ### <a name="azure-diagnostics"></a>Azure Diagnostics
 
 > [!IMPORTANT]
-> これらすべてのデータがストレージ アカウントに集計されますが、データのグラフを作成するポータル固有の方法は用意されて**いません**。 Application Insights などの他の診断サービスをアプリケーションに統合することを強くお勧めします。
+> これらすべてのデータがストレージ アカウントに集計されますが、データのグラフを作成するポータル固有の方法は用意されて **いません**。 Application Insights などの他の診断サービスをアプリケーションに統合することを強くお勧めします。
 
 Cloud Services 用の Azure Diagnostics 拡張機能では、収集するパフォーマンス カウンターを指定できます。 Azure Diagnostics を設定するには、[クラウド サービスの監視の概要](cloud-services-how-to-monitor.md#setup-diagnostics-extension)に関するページを参照してください。
 
@@ -125,7 +128,7 @@ Cloud Services 用の Azure Diagnostics 拡張機能では、収集するパフ�
 
 `sampleRate` 属性で定義された期間は、XML 期間データ型を使用して、パフォーマンス カウンターのポーリング頻度を示します。 下の例では、頻度が `PT3M` に設定されています。これは、`[P]eriod[T]ime[3][M]inutes` (3 分ごと) を意味します。
 
-`sampleRate` と `scheduledTransferPeriod` の定義方法の詳細については、[W3 の XML の日付データ型と時刻データ型](https://www.w3schools.com/XML/schema_dtypes_date.asp)に関するチュートリアルの**期間データ型**に関するセクションを参照してください。
+`sampleRate` と `scheduledTransferPeriod` の定義方法の詳細については、[W3 の XML の日付データ型と時刻データ型](https://www.w3schools.com/XML/schema_dtypes_date.asp)に関するチュートリアルの **期間データ型** に関するセクションを参照してください。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

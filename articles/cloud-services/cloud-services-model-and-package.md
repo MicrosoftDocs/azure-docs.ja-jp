@@ -1,21 +1,26 @@
 ---
-title: クラウド サービス モデルとパッケージ | Microsoft Docs
+title: クラウド サービス (クラシック) モデルとパッケージの概要 | Microsoft Docs
 description: Azure でのクラウド サービス モデル (.csdef、.cscfg) と パッケージ (.cspkg) について説明します。
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 180295599082a762fc525c4740079ceefc0954a1
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 1cf8e966b80e005a0cb2cf7ea46f355e38cb0011
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077186"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741538"
 ---
-# <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>クラウド サービス モデルとそのパッケージ化について
-クラウド サービスは、サービス定義 *(.csdef)* 、サービスの構成 *(.cscfg)* 、サービス パッケージ *(.cspkg)* の 3 つのコンポーネントから作成されます。 **ServiceDefinition.csdef** ファイルと **ServiceConfig.cscfg** ファイルはどちらも XML をベースとし、クラウド サービスの構造と構成方法について記述したファイルであり、まとめてモデルと呼ばれています。 **ServicePackage.cspkg** は、**ServiceDefinition.csdef** とその他のものから生成される zip ファイルで、必要なすべてのバイナリベースの依存関係が含まれます。 Azure では、**ServicePackage.cspkg** と **ServiceConfig.cscfg** の両方からクラウド サービスが作成されます。
+# <a name="what-is-the-cloud-service-classic-model-and-how-do-i-package-it"></a>クラウド サービス (クラシック) モデルとそれをパッケージ化する方法
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
+クラウド サービスは、サービス定義 *(.csdef)*、サービスの構成 *(.cscfg)*、サービス パッケージ *(.cspkg)* の 3 つのコンポーネントから作成されます。 **ServiceDefinition.csdef** ファイルと **ServiceConfig.cscfg** ファイルはどちらも XML をベースとし、クラウド サービスの構造と構成方法について記述したファイルであり、まとめてモデルと呼ばれています。 **ServicePackage.cspkg** は、**ServiceDefinition.csdef** とその他のものから生成される zip ファイルで、必要なすべてのバイナリベースの依存関係が含まれます。 Azure では、**ServicePackage.cspkg** と **ServiceConfig.cscfg** の両方からクラウド サービスが作成されます。
 
 Azure でクラウド サービスが実行されている場合は、 **ServiceConfig.cscfg** ファイルを使用して再構成することはできますが、定義後は変更できません。
 
@@ -89,22 +94,22 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 には、IIS7 でホストされている Web サイトか Web アプリケーションの定義が含まれています。
 
 **InputEndpoints**  
-には、クラウド サービスにアクセスするために使用されるエンドポイントの定義が含まれています。
+ には、クラウド サービスにアクセスするために使用されるエンドポイントの定義が含まれています。
 
 **InternalEndpoints**  
-には、互いに通信するために、ロール インスタンスが使用されるエンドポイントの定義が含まれています。
+ には、互いに通信するために、ロール インスタンスが使用されるエンドポイントの定義が含まれています。
 
 **ConfigurationSettings**  
-には、特定のロールの機能に対する設定の定義が含まれています。
+ には、特定のロールの機能に対する設定の定義が含まれています。
 
 **証明書**  
 には、ロールに必要な証明書の定義が含まれています。 上記のコード例は、Azure Connect の構成に使用される証明書を示します。
 
 **LocalResources**  
-には、ローカル ストレージ リソースの定義が含まれています。 ローカル ストレージ リソースは、ロールのインスタンスが実行されている仮想マシンのファイル システム内の予約されたディレクトリです。
+ には、ローカル ストレージ リソースの定義が含まれています。 ローカル ストレージ リソースは、ロールのインスタンスが実行されている仮想マシンのファイル システム内の予約されたディレクトリです。
 
-**Imports**  
-には、インポートされたモジュールの定義が含まれています。 上記のコード例は、リモート デスクトップ接続と Azure Connect のモジュールを示します。
+**インポートする**  
+ には、インポートされたモジュールの定義が含まれています。 上記のコード例は、リモート デスクトップ接続と Azure Connect のモジュールを示します。
 
 **Startup**  
 には、ロールの開始時に実行されるタスクが含まれています。 タスクは、.cmd ファイルか実行可能ファイルで定義されます。
@@ -140,7 +145,7 @@ Azure でクラウド サービスが実行されている場合は、 **Service
 は、ロールの実行するインスタンスの数を設定します。 アップグレード中にクラウド サービスが利用できなくなるのを避けるために、Web に接続されたロールのインスタンスは複数デプロイすることをお勧めします。 複数のインスタンスをデプロイすることにより、サービスに 2 つ以上のロール インスタンスがデプロイされている場合、インターネットに接続されたロールの 99.95% の外部接続を保証する [Azure Compute サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/) ガイドラインに従っていることになります。
 
 **ConfigurationSettings**  
-は、ロールの実行中のインスタンスの設定を構成します。 `<Setting>` 要素の名前は、サービス定義ファイルの設定の定義と一致する必要があります。
+ は、ロールの実行中のインスタンスの設定を構成します。 `<Setting>` 要素の名前は、サービス定義ファイルの設定の定義と一致する必要があります。
 
 **証明書**  
 は、サービスによって使用される証明書を構成します。 上記のコード例は、RemoteAccess モジュールの証明書を定義する方法を示します。 *サムプリント* 属性の値は、使用する証明書のサムプリントに設定する必要があります。
@@ -194,11 +199,11 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
 クラウド サービスは、Azure で実行中に、サービスをオフラインにせずに更新できます。 構成情報を変更するには、新しい構成ファイルをアップロードするか、構成ファイルを編集して、実行中のサービスに適用します。 次の変更がサービスの構成に適用されます。
 
 * **構成設定の値を変更する**  
-  構成設定を変更すると、ロール インスタンスはインスタンスのオンライン中に変更を適用するか、インスタンスを適切に再利用し、インスタンスのオフライン中に変更を適用するかを選択できます。
+   構成設定を変更すると、ロール インスタンスはインスタンスのオンライン中に変更を適用するか、インスタンスを適切に再利用し、インスタンスのオフライン中に変更を適用するかを選択できます。
 * **ロール インスタンスのサービス トポロジを変更する**  
   トポロジの変更は、インスタンスが削除される場合を除いて、実行中のインスタンスには影響ありません。 残りのすべてのインスタンスは、通常はリサイクルの必要はありません。ただし、トポロジの変更に応じてロール インスタンスをリサイクルできます。
 * **証明書の拇印を変更する**  
-  ロール インスタンスがオフラインのときのみ、証明書を更新できます。 ロール インスタンスがオンラインの間に、証明書が追加、削除、変更されると、Azure はインスタンスを正常にオフラインにし、証明書を更新し、変更の完了後にオンラインに戻します。
+   ロール インスタンスがオフラインのときのみ、証明書を更新できます。 ロール インスタンスがオンラインの間に、証明書が追加、削除、変更されると、Azure はインスタンスを正常にオフラインにし、証明書を更新し、変更の完了後にオンラインに戻します。
 
 ### <a name="handling-configuration-changes-with-service-runtime-events"></a>サービス ランタイム イベントを使用して構成変更を処理する
 [Azure ランタイム ライブラリ](/previous-versions/azure/reference/mt419365(v=azure.100))には、ロールから Azure 環境と対話するクラスを提供する [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee741722(v=azure.100)) 名前空間が含まれています。 [RoleEnvironment](/previous-versions/azure/reference/ee773173(v=azure.100)) クラスは、構成の変更の前後に発生する次のイベントを定義します。
@@ -206,7 +211,7 @@ Azure では、Web ロールに 1 つのエントリ ポイントのみを使用
 * **[Changing](/previous-versions/azure/reference/ee758134(v=azure.100)) イベント**  
   これは、指定したロール インスタンスに構成の変更が適用される前に、必要な場合にロール インスタンスを停止する機会を提供します。
 * **[Changed](/previous-versions/azure/reference/ee758129(v=azure.100)) イベント**  
-  指定したロール インスタンスに構成の変更が適用された後に発生します。
+   指定したロール インスタンスに構成の変更が適用された後に発生します。
 
 > [!NOTE]
 > 証明書の変更は、常にロール インスタンスをオフラインにするため、RoleEnvironment.Changing や RoleEnvironment.Changed イベントは発生しません。
@@ -236,7 +241,7 @@ Azure のクラウド サービスとしてアプリケーションをデプロ�
 <p />
 
 > [!TIP]
-> **Microsoft Azure コンピューティング エミュレーター**でクラウド サービスをローカルで実行し、 **/copyonly** オプションを使用します。 このオプションは、アプリケーションのバイナリ ファイルをディレクトリ レイアウトにコピーします。コンピューティング エミュレーターでは、そのディレクトリ レイアウトからファイルを実行できます。
+> **Microsoft Azure コンピューティング エミュレーター** でクラウド サービスをローカルで実行し、**/copyonly** オプションを使用します。 このオプションは、アプリケーションのバイナリ ファイルをディレクトリ レイアウトにコピーします。コンピューティング エミュレーターでは、そのディレクトリ レイアウトからファイルを実行できます。
 > 
 > 
 

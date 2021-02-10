@@ -4,12 +4,12 @@ description: Azure Backup を使用した Azure VM 上での SQL Server デー�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734115"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787622"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -101,14 +101,17 @@ Azure Backup Recovery Services コンテナーは、そのコンテナーと同�
 [自動保護されたインスタンスに追加した](backup-sql-server-database-azure-vms.md#enable-auto-protection)データベースは、保護された項目にすぐには表示されない可能性があります。 これは、検出が通常は 8 時間ごとに実行されるためです。 ただし、次の図に示すように、 **[DB の再検出]** を選択することによって検出を手動で実行した場合は、新しいデータベースを直ちに検出して保護できます。
 
   ![新しく追加されたデータベースを手動で検出する](./media/backup-azure-sql-database/view-newly-added-database.png)
-  
+
+## <a name="can-i-protect-databases-on-virtual-machines-that-have-azure-disk-encryption-ade-enabled"></a>Azure Disk Encryption (ADE) が有効になっている仮想マシン上のデータベースを保護できますか?
+はい、Azure Disk Encryption (ADE) が有効になっている仮想マシン上のデータベースを保護できます。
+
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>TDE (Transparent Data Encryption) が有効になっているデータベースを保護し、バックアップ プロセス全体を通してデータベースを暗号化したままにすることはできますか?
 
 はい、Azure Backup では、TDE が有効になった SQL Server データベースまたはサーバーのバックアップがサポートされます。 キーが Azure によって管理される [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) と、キーがユーザーによって管理される (BYOK) TDE がサポートされます。  バックアップでは、バックアップ プロセスの一環として SQL 暗号化は実行されないため、バックアップ時にデータベースが暗号化されたままになります。
 
 ## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Azure Backup では、データ ストリームに対してチェックサム操作が実行されますか?
 
-データ ストリームに対してチェックサム操作は実行されます。 ただし、これを [SQL チェックサム](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)と混同しないようにしてください。
+データ ストリームに対してチェックサム操作は実行されます。 ただし、これを [SQL チェックサム](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)と混同しないようにしてください。
 Azure ワークロード バックアップでは、データ ストリームに対してチェックサムが計算され、バックアップ操作中に明示的に格納されます。 次に、このチェックサム ストリームが参照として取得され、データの整合性を確保するために復元操作中にデータ ストリームのチェックサムとクロス検証されます。
 
 ## <a name="next-steps"></a>次のステップ

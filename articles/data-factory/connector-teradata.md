@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2020
+ms.date: 01/22/2021
 ms.author: jingwang
-ms.openlocfilehash: a48ac86e8f9814adef9be2360b2446335d368447
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 430b9a1e567d9a79093f50ae388b4b69119c057d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296558"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695875"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata Vantage からデータをコピーする
 
@@ -72,6 +72,7 @@ Teradata のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 既定値 |
 |:--- |:--- |:--- |
+| TdmstPortNumber | Teradata データベースへのアクセスに使用するポート番号。<br>サポート チームから指示されていない限り、この値を変更しないでください。 | 1025 |
 | UseDataEncryption | Teradata データベースとのすべての通信を暗号化するかどうかを指定します。 使用可能な値は 0 または 1 です。<br><br/>- **0 (無効、既定値)** :認証情報のみを暗号化します。<br/>- **1 (有効)** :ドライバーとデータベースの間で渡されるすべてのデータを暗号化します。 | `0` |
 | CharacterSet | セッションに使用する文字セット。 例: `CharacterSet=UTF16`。<br><br/>この値には、ユーザー定義の文字セットのほか、次のいずれかの定義済みの文字セットを指定できます。 <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS (Windows、DOS 互換、KANJISJIS_0S)<br/>- EUC (Unix 互換、KANJIEC_0U)<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | `ASCII` |
 | MaxRespSize |SQL 要求の応答バッファーの最大サイズ。単位はキロバイト (KB) です。 例: `MaxRespSize=‭10485760‬`。<br/><br/>Teradata Database バージョン 16.00 以降では、7361536 が最大値となります。 それより前のバージョンを使用する接続の場合、最大値は 1048576 です。 | `65536` |

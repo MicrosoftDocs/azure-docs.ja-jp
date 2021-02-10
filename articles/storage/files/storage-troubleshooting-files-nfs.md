@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f684aff58f441fb0642779e54de39dff941e818c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878495"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430664"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS ファイル共有に関するトラブルシューティング
 
@@ -67,7 +67,6 @@ NFS は、次の構成のストレージ アカウントでのみ使用できま
 
 - レベル - Premium
 - アカウントの種類 - FileStorage
-- 冗長性 - LRS
 - リージョン - [サポートされているリージョンの一覧](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>解決策
@@ -150,6 +149,17 @@ NFS プロトコルは、ポート 2049 経由でそのサーバーと通信し�
 #### <a name="solution"></a>解決策
 
 次のコマンドを実行して、ポート 2049 がご使用のクライアントで開いていることを確認します: `telnet <storageaccountnamehere>.file.core.windows.net 2049`。 ポートが開いていない場合は開きます。
+
+## <a name="ls-list-files-shows-incorrectinconsistent-results"></a>ls (list files) の結果が正しくない、または一貫性がない
+
+### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>原因:ファイル ハンドルが開いているときのキャッシュ値とサーバー ファイル メタデータ値の間に不整合がある
+"list files" コマンドにより、想定どおりにゼロではないサイズが表示され、そのすぐ後に実行した list files コマンドでは、代わりにサイズ 0 または非常に古いタイム スタンプが表示される場合があります。 これは、ファイルが開いている間、ファイル メタデータ値のキャッシュに一貫性がないために発生する既知の問題です。 これを解決するには、次の回避策のいずれかを使用できます。
+
+#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>対処法 1:ファイル サイズをフェッチする場合は、ls -l ではなく wc -c を使用する
+wc -c を使用すると、常にサーバーから最新の値がフェッチされ、不整合が発生することはありません。
+
+#### <a name="workaround-2-use-noac-mount-flag"></a>対処法 2:"noac" マウント フラグを使用する
+mount コマンドで "noac" フラグを使用して、ファイル システムを再マウントします。 これにより、常にサーバーからすべてのメタデータ値がフェッチされます。 この回避策を使用すると、すべてのメタデータ操作に関するわずかなパフォーマンス オーバーヘッドが発生する可能性があります。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

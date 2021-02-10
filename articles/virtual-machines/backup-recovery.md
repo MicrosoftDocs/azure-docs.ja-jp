@@ -1,19 +1,19 @@
 ---
-title: Linux VM のバックアップ オプションの概要
-description: Linux Azure 仮想マシンのバックアップ オプションの概要について説明します。
+title: VM のバックアップ オプションの概要
+description: Azure 仮想マシンのバックアップ オプションの概要について説明します。
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a093de0a27c8379cb6eff9c2bc3867dfdc20db5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972358"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787809"
 ---
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンのバックアップと復元のオプション
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure での仮想マシンのバックアップと復元のオプション
 
 データは、定期的にバックアップすることで保護することができます。 ユースケースに応じて、複数のバックアップ オプションを VM に使うことができます。
 
@@ -21,7 +21,7 @@ ms.locfileid: "91972358"
 
 実稼働ワークロードを実行している Azure VM のバックアップには、Azure Backup をご利用ください。 Azure Backup では、Windows VM と Linux VM のアプリケーション整合性バックアップをサポートしています。 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体を復元するか、特定のファイルだけを復元することができます。 
 
-Azure VM のための Azure Backup の簡単で、実践的な紹介については、[Linux](./linux/tutorial-backup-vms.md) または [Windows](./windows/tutorial-backup-vms.md) 用の「Back up Azure virtual machines (Azure 仮想マシンのバックアップ)」チュートリアルを参照してください。
+Azure VM 用の Azure Backup の簡単で実践的な紹介については、[Azure Backup のクイックスタート](../backup/quick-backup-vm-portal.md)に関する記事を参照してください。
 
 Azure Backup のしくみの詳細については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](../backup/backup-azure-vms-introduction.md)」を参照してください。
 
@@ -46,4 +46,4 @@ Azure Site Recovery を使えば、大きな自然災害や広範囲にわたる
 
 
 ## <a name="next-steps"></a>次のステップ
-Windows 仮想マシンのバックアップに関するチュートリアル ([Linux](./linux/tutorial-backup-vms.md) 用または [Windows](./windows/tutorial-backup-vms.md) 用) に従って、Azure Backup を試してみてください。
+[Azure Backup のクイックスタート](../backup/quick-backup-vm-portal.md)に関する記事に従って、Azure Backup を試すことができます。

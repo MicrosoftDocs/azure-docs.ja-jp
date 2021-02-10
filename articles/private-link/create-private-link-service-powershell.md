@@ -1,178 +1,317 @@
 ---
-title: Azure PowerShell を使用して Azure プライベート リンク サービスを作成する | Microsoft Docs
+title: 'クイックスタート: Azure PowerShell を使用して Azure プライベート リンク サービスを作成する'
 description: Azure PowerShell を使用して Azure プライベート リンク サービスを作成する方法について説明します。
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 09/16/2019
+ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 3c808623269b8fabc32134a165b964a3b0747d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d48903a05a4e9b530dcd3e83e0c14c37dcc74797
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88505634"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757527"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell を使用してプライベート リンク サービスを作成する
-この記事では、Azure PowerShell を使用して Azure でプライベート リンク サービスを作成する方法について説明します。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+自分のサービスを参照する Private Link サービスを作成してみましょう。  Private Link には、Azure Standard Load Balancer の背後にデプロイされたサービスやリソースへのアクセス権を付与することができます。  サービスのユーザーは、各自の仮想ネットワークからプライベートにアクセスすることができます
 
-PowerShell をローカルにインストールして使用することを選択する場合、この記事では最新の Azure PowerShell モジュール バージョンが必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- ローカルにインストールされた Azure PowerShell または Azure Cloud Shell
+
+PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-プライベート リンクを作成する前に、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成する必要があります。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *WestCentralUS* に作成します。
+Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-```azurepowershell
-$location = "westcentralus"
-$rgName = "myResourceGroup"
-New-AzResourceGroup `
-  -ResourceGroupName $rgName `
-  -Location $location
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、次のようにリソース グループを作成します。
+
+```azurepowershell-interactive
+New-AzResourceGroup -Name 'CreatePrivLinkService-rg' -Location 'eastus2'
+
 ```
-## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用してプライベート リンク用の仮想ネットワークを作成します。 次の例では、フロントエンド (*frontendSubnet*)、バックエンド (*backendSubnet*)、プライベート リンク (*otherSubnet*) 用のサブネットを含む、*myvnet* という名前の仮想ネットワークを作成します。
 
-```azurepowershell
-$virtualNetworkName = "myvnet"
+## <a name="create-an-internal-load-balancer"></a>内部ロード バランサーを作成します。
 
+このセクションでは、仮想ネットワークと内部 Azure Load Balancer を作成します。
 
-# Create subnet config
+### <a name="virtual-network"></a>仮想ネットワーク
 
-$frontendSubnet = New-AzVirtualNetworkSubnetConfig `
--Name frontendSubnet `
--AddressPrefix "10.0.1.0/24"
+このセクションでは、Private Link サービスにアクセスするロード バランサーのホストとなる仮想ネットワークとサブネットを作成します。
 
-$backendSubnet = New-AzVirtualNetworkSubnetConfig `
--Name backendSubnet `
--AddressPrefix "10.0.2.0/24"
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。
 
-$otherSubnet = New-AzVirtualNetworkSubnetConfig `
--Name otherSubnet `
--AddressPrefix "10.0.3.0/24" `
--PrivateLinkServiceNetworkPolicies "Disabled"
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnet'
+    AddressPrefix = '10.1.0.0/24'
+    PrivateLinkServiceNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
 
-# Create the virtual network
-$vnet = New-AzVirtualNetwork `
--Name $virtualNetworkName `
--ResourceGroupName $rgName `
--Location $location `
--AddressPrefix "10.0.0.0/16" `
--Subnet $frontendSubnet,$backendSubnet,$otherSubnet
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNet'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '10.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnet = New-AzVirtualNetwork @net
+
 ```
-## <a name="create-internal-load-balancer"></a>内部ロード バランサーを作成する
-[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、内部 Standard Load Balancer を作成します。 次の例では、前の手順で作成したフロントエンド IP 構成、プローブ、ルール、およびバックエンド プールを使用して 内部 Standard Load Balancer を作成します。
 
-```azurepowershell
+### <a name="create-standard-load-balancer"></a>Standard ロード バランサーを作成する
 
-$lbBackendName = "LB-backend"
-$lbFrontName = "LB-frontend"
-$lbName = "lb"
+このセクションでは、ロード バランサーの以下のコンポーネントを作成および構成する方法について説明します。
 
-#Create Internal Load Balancer
-$frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $lbFrontName -PrivateIpAddress 10.0.1.5 -SubnetId $vnet.subnets[0].Id
-$beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $lbBackendName
-$probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
-  -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
-$rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beaddresspool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
-$NRPLB = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $probe -LoadBalancingRule $rule -Sku Standard
+* フロントエンド IP プールに対し、[New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) を使用して、次のようにフロントエンド IP を作成します。 ロード バランサーでは、この IP で受信トラフィックを受け取ります。
+
+* ロード バランサーのフロントエンドから送信されるトラフィック用に、[New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) でバックエンド アドレス プールを作成します。 このプールが、バックエンド仮想マシンのデプロイ先となります。
+
+* バックエンド VM インスタンスの正常性を調べる正常性プローブを [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) で作成します。
+
+* 複数の VM に対してどのようにトラフィックを分散させるかを定義するロード バランサー規則を [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) で作成します。
+
+* [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) を使用して、次のようにパブリック ロード バランサーを作成します。
+
+
+```azurepowershell-interactive
+## Place virtual network created in previous step into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreatePrivLinkService-rg'
+
+## Create load balancer frontend configuration and place in variable. ##
+$lbip = @{
+    Name = 'myFrontEnd'
+    PrivateIpAddress = '10.1.0.4'
+    SubnetId = $vnet.subnets[0].Id
+}
+$feip = New-AzLoadBalancerFrontendIpConfig @lbip
+
+## Create backend address pool configuration and place in variable. ##
+$bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
+
+## Create the health probe and place in variable. ##
+$probe = @{
+    Name = 'myHealthProbe'
+    Protocol = 'http'
+    Port = '80'
+    IntervalInSeconds = '360'
+    ProbeCount = '5'
+    RequestPath = '/'
+}
+$healthprobe = New-AzLoadBalancerProbeConfig @probe
+
+## Create the load balancer rule and place in variable. ##
+$lbrule = @{
+    Name = 'myHTTPRule'
+    Protocol = 'tcp'
+    FrontendPort = '80'
+    BackendPort = '80'
+    IdleTimeoutInMinutes = '15'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+}
+$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset
+
+## Create the load balancer resource. ##
+$loadbalancer = @{
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Name = 'myLoadBalancer'
+    Location = 'eastus2'
+    Sku = 'Standard'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+    LoadBalancingRule = $rule
+    Probe = $healthprobe
+}
+New-AzLoadBalancer @loadbalancer
+
 ```
+
 ## <a name="create-a-private-link-service"></a>プライベート リンク サービスを作成する
-[AzPrivateLinkService](/powershell/module/az.network/new-azloadbalancer) を使用してプライベート リンク サービスを作成します。  この例では、*myResourceGroup* という名前のリソース グループ内で Standard Load Balancer を使用して、*myPLS* という名前のプライベート リンク サービスを作成します。
+
+このセクションでは、前の手順で作成した Standard Azure Load Balancer を使用するプライベート リンク サービスを作成します。
+
+* [New-AzPrivateLinkServiceIpConfig](/powershell/module/az.network/new-azprivatelinkserviceipconfig) を使用してプライベート リンク サービスの IP 構成を作成します。
+
+* [New-AzPrivateLinkService](/powershell/module/az.network/new-azprivatelinkservice) を使用してプライベート リンク サービスを作成します。
+
 ```azurepowershell
+## Place the virtual network into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreatePrivLinkService-rg'
 
-$plsIpConfigName = "PLS-ipconfig"
-$plsName = "pls"
-$peName = "pe"
- 
-$IPConfig = New-AzPrivateLinkServiceIpConfig `
--Name $plsIpConfigName `
--Subnet $vnet.subnets[2] `
--PrivateIpAddress 10.0.3.5
+## Create the IP configuration for the private link service. ##
+$ipsettings = @{
+    Name = 'myIPconfig'
+    PrivateIpAddress = '10.1.0.5'
+    Subnet = $vnet.subnets[0]
+}
+$ipconfig = New-AzPrivateLinkServiceIpConfig @ipsettings
 
-$fe = Get-AzLoadBalancer -Name $lbName | Get-AzLoadBalancerFrontendIpConfig
+## Place the load balancer frontend configuration into a variable. ##
+$par = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$fe = Get-AzLoadBalancer @par | Get-AzLoadBalancerFrontendIpConfig
 
-$privateLinkService = New-AzPrivateLinkService `
--ServiceName $plsName `
--ResourceGroupName $rgName `
--Location $location `
--LoadBalancerFrontendIpConfiguration $frontendIP `
--IpConfiguration $IPConfig
+## Create the private link service for the load balancer. ##
+$privlinksettings = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    LoadBalancerFrontendIpConfiguration = $fe
+    IpConfiguration = $ipconfig
+}
+New-AzPrivateLinkService @privlinksettings
+
 ```
 
-### <a name="get-private-link-service"></a>プライベート リンク サービスを取得する
-次のように [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) を使用してプライベート リンク サービスの詳細を取得します。
+プライベート リンク サービスが作成され、トラフィックを受信できるようになります。 トラフィック フローを確認する場合は、ご利用のアプリケーションを Standard ロード バランサーの背後に構成します。
 
-```azurepowershell
-$pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
+## <a name="create-private-endpoint"></a>プライベート エンドポイントの作成
+
+このセクションでは、プライベート リンク サービスをプライベート エンドポイントにマップします。 仮想ネットワークには、プライベート リンク サービス用のプライベート エンドポイントが含まれています。 この仮想ネットワークには、ご利用のプライベート リンク サービスにアクセスするリソースが含まれています。
+
+### <a name="create-private-endpoint-virtual-network"></a>プライベート エンドポイント仮想ネットワークを作成する
+
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して仮想ネットワークを作成します。
+
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnetPE'
+    AddressPrefix = '11.1.0.0/24'
+    PrivateEndpointNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
+
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '11.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnetpe = New-AzVirtualNetwork @net
+
 ```
 
-この段階で、プライベート リンク サービスが正常に作成され、トラフィックを受信する準備が整いました。 上の例では、PowerShell を使用したプライベート リンク サービスの作成を示すことのみを目的としていることに注意してください。  ロード バランサーのバックエンド プールまたはバックエンド プール上のアプリケーションは、トラフィックをリッスンするようには構成されていません。 エンド ツー エンドのトラフィック フローを確認する予定なら、お使いの Standard Load Balancer の背後にアプリケーションを構成することを強くお勧めします。
+### <a name="create-endpoint-and-connection"></a>エンドポイントと接続を作成する
 
-次に、PowerShell を使用して、異なる VNet のプライベート エンドポイントにこのサービスをマップする方法について説明します。 ここでも、例は、プライベート エンドポイントの作成と上記で作成したプライベート リンク サービスへの接続のみを示しています。 シナリオを構築するために、仮想ネットワークに仮想マシンを作成して、プライベート エンドポイントに対してトラフィックを送受信できます。
+* 前に作成したプライベート リンク サービスの構成を後で使用できるように変数に配置するには、[Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) を使用します。
 
-## <a name="create-a-private-endpoint"></a>プライベート エンドポイントを作成する
-### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用してプライベート エンドポイント用の仮想ネットワークを作成します。 この例では、*myResourceGroup*という名前のリソース グループ内に  *vnetPE*  という名前の仮想ネットワークを作成します。
+* 接続構成を作成するには、[New-AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) を使用します。
 
-```azurepowershell
-$virtualNetworkNamePE = "vnetPE"
+* エンドポイントを作成するには、[New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) を使用します。
 
-# Create VNet for private endpoint
-$peSubnet = New-AzVirtualNetworkSubnetConfig `
--Name peSubnet `
--AddressPrefix "11.0.1.0/24" `
--PrivateEndpointNetworkPolicies "Disabled"
 
-$vnetPE = New-AzVirtualNetwork `
--Name $virtualNetworkNamePE `
--ResourceGroupName $rgName `
--Location $location `
--AddressPrefix "11.0.0.0/16" `
--Subnet $peSubnet
-```
 
-### <a name="create-a-private-endpoint"></a>プライベート エンドポイントの作成
-上記で作成したプライベート リンク サービスを使用するためのプライベート エンドポイントを仮想ネットワーク内に作成します。
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
 
-```azurepowershell
+## Create the private link configuration and place in variable. ##
+$par2 = @{
+    Name = 'myPrivateLinkConnection'
+    PrivateLinkServiceId = $pls.Id
+}
+$plsConnection = New-AzPrivateLinkServiceConnection @par2
 
-$plsConnection= New-AzPrivateLinkServiceConnection `
--Name plsConnection `
--PrivateLinkServiceId  $privateLinkService.Id
+## Place the virtual network into a variable. ##
+$par3 = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$vnetpe = Get-AzVirtualNetwork @par3
 
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
-```
-
-### <a name="get-private-endpoint"></a>プライベート エンドポイントを取得する
-次のように、`Get-AzPrivateEndpoint` を使用して、プライベート エンドポイントの IP アドレスを取得します。
-
-```azurepowershell
-# Get Private Endpoint and its IP Address
-$pe =  Get-AzPrivateEndpoint `
--Name $peName `
--ResourceGroupName $rgName  `
--ExpandResource networkinterfaces
-
-$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
-
+## Create private endpoint ##
+$par4 = @{
+    Name = 'MyPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    Subnet = $vnetpe.subnets[0]
+    PrivateLinkServiceConnection = $plsConnection
+}
+New-AzPrivateEndpoint @par4 -ByManualRequest
 ```
 
 ### <a name="approve-the-private-endpoint-connection"></a>プライベート エンドポイント接続を承認する
-Approve-AzPrivateEndpointConnection を使用してプライベート リンク サービスへのプライベート エンドポイント接続を承認します。
 
-```azurepowershell
+このセクションでは、前の手順で作成した接続を承認します。
 
-$pls = Get-AzPrivateLinkService `
--Name $plsName `
--ResourceGroupName $rgName
+* 接続を承認するには、[Approve-AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnection) を使用します。
 
-Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[0].Id -Description "Approved"
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+$par2 = @{
+    Name = $pls.PrivateEndpointConnections[0].Name
+    ServiceName = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Description = 'Approved'
+}
+Approve-AzPrivateEndpointConnection @par2
 
 ```
 
+### <a name="ip-address-of-private-endpoint"></a>プライベート エンドポイントの IP アドレス
+
+このセクションでは、ロード バランサーとプライベート リンク サービスに対応するプライベート エンドポイントの IP アドレスについて説明します。
+
+* IP アドレスを取得するには、[Get-AzPrivateEndpoint](/powershell/module/az.network/get-azprivateendpoint) を使用します。
+
+```azurepowershell-interactive
+## Get private endpoint and the IP address and place in a variable for display. ##
+$par1 = @{
+    Name = 'myPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    ExpandResource = 'networkinterfaces'
+}
+$pe = Get-AzPrivateEndpoint @par1
+
+## Display the IP address by expanding the variable. ##
+$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+```
+
+```bash
+❯ $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+11.1.0.4
+```
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+必要がなくなれば、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使用して、リソース グループやロード バランサー、その他のリソースを削除できます。
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name 'CreatePrivLinkService-rg'
+```
+
 ## <a name="next-steps"></a>次のステップ
-- [Azure Private Link](private-link-overview.md) の詳細
+
+このクイック スタートでは次の作業を行います。
+
+* 仮想ネットワークと内部 Azure Load Balancer を作成しました。
+* Private Link サービスを作成しました。
+
+Azure プライベート エンドポイントについてさらに学習するには、次の記事に進んでください。
+> [!div class="nextstepaction"]
+> [クイックスタート: Azure PowerShell を使用してプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 8af8d7695c48c6ac682109bb38935e98921fa9e4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: fc3bd5d2590e969db07e9dffa61b4902ea4604c3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681909"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632548"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>ローカル セッション マネージャー サービスの待機中には VM が応答しない
 
@@ -35,6 +35,9 @@ ms.locfileid: "94681909"
 
 ## <a name="solution"></a>解決策
 
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
+
 プロセスが終了するのを待つだけで問題が解消する場合もあります。 VM が応答せず、1 時間を超えても待機画面のままである場合は、メモリ ダンプを収集した後、Microsoft サポートに連絡してください。
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>新しい修復 VM に OS ディスクを接続する
@@ -45,7 +48,7 @@ ms.locfileid: "94681909"
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
 
 1. 修復 VM で、接続されている OS ディスクの Windows フォルダーに移動します。 たとえば、接続されている OS ディスクに割り当てられたドライブ文字のラベルが *F* である場合は、`F:\Windows` に移動します。
-1. *memory.dmp* ファイルを見つけてから、メモリ ダンプ ファイルを添付して[サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
+1. *memory.dmp* ファイルを見つけてから、メモリ ダンプ ファイルを添付して [サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
 1. *memory.dmp* ファイルが見つからない場合は、ガイドに従って、[マスク不可能割り込み (NMI) 呼び出しを使用してクラッシュ ダンプ ファイルを生成](/windows/client-management/generate-kernel-or-complete-crash-dump)します。
 
 NMI 呼び出しの詳細については、[Azure シリアル コンソールでの NMI 呼び出し](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)に関するユーザー ガイドを参照してください。

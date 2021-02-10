@@ -3,25 +3,27 @@ title: チュートリアル - オンプレミス アプリの追加 - Azure AD 
 description: Azure Active Directory (Azure AD) のアプリケーション プロキシ サービスを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 このチュートリアルでは、アプリケーション プロキシで使用できるように環境を準備する方法について説明します。 次に、Azure portal を使用して、自分の Azure AD テナントにオンプレミス アプリケーションを追加します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 04b3dd51aab9686d102b6b94324f89396a268e7d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587555"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260081"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
 Azure Active Directory (Azure AD) のアプリケーション プロキシ サービスを使用すると、ユーザーは Azure AD アカウントでサインインして、オンプレミスのアプリケーションにアクセスできます。 このチュートリアルでは、アプリケーション プロキシで使用できるように環境を準備します。 環境の準備ができたら、Azure portal を使用して Azure AD テナントにオンプレミス アプリケーションを追加します。
+
+:::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="アプリケーション プロキシの概要図" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 
 コネクタはアプリケーション プロキシの重要な一部です。 コネクタの詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-connectors.md)」を参照してください。
 
@@ -54,7 +56,8 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 > ```
 > Windows Registry Editor Version 5.00
 > 
-> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 Value: 0
+> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp]
+> "EnableDefaultHTTP2"=dword:00000000
 > ```
 >
 > キーは、PowerShell で次のコマンドを使用して設定できます。
@@ -95,7 +98,7 @@ TLS 1.2 を有効にするには、次の手順に従います。
 1. サーバーを再起動します。
 
 > [!Note]
-> Microsoft では、異なるルート証明機関 (CA) のセットからの TLS 証明書を使用するように、Azure サービスが更新されています。 この変更は、現在の CA 証明書が CA/ブラウザー フォーラムのベースライン要件の 1 つに準拠していないため行われています。 詳細については、「[Azure TLS 証明書の変更](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes)」を参照してください。
+> Microsoft では、異なるルート証明機関 (CA) のセットからの TLS 証明書を使用するように、Azure サービスが更新されています。 この変更は、現在の CA 証明書が CA/ブラウザー フォーラムのベースライン要件の 1 つに準拠していないため行われています。 詳細については、「[Azure TLS 証明書の変更](../../security/fundamentals/tls-certificate-changes.md)」を参照してください。
 
 ## <a name="prepare-your-on-premises-environment"></a>オンプレミスの環境を準備する
 
@@ -126,7 +129,11 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |コネクタでは、登録プロセスの間にこれらの URL が使用されます。 |
 | ctldl.windowsupdate.com | 80/HTTP |コネクタでは、登録プロセスの間にこの URL が使用されます。 |
 
-ファイアウォールまたはプロキシで DNS 許可リストを構成できる場合は、上記の &ast;.msappproxy.net、&ast;.servicebus.windows.net などの URL への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
+ファイアウォールまたはプロキシでドメインのサフィックスに基づいてアクセス規則を構成できる場合は、上記の &ast;.msappproxy.net、&ast;.servicebus.windows.net などの URL への接続を許可できます。 そうでない場合は、[Azure IP ranges and Service Tags - Public Cloud (Azure IP 範囲とサービス タグ - パブリック クラウド)](https://www.microsoft.com/download/details.aspx?id=56519) へのアクセスを許可する必要があります。 これらの IP 範囲は毎週更新されます。
+
+### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>Azure AD アプリケーション プロキシ エンドポイントの DNS 名前解決
+
+Azure AD アプリケーション プロキシ エンドポイントのパブリック DNS レコードは、A レコードを指すチェーン CNAME レコードです。 これにより、フォールト トレランスと柔軟性が確保されます。 Azure AD アプリケーション プロキシ コネクタは、ドメイン サフィックス _*.msappproxy.net_ または _*.servicebus.windows.net_ が付いているホスト名に常にアクセスすることが保証されています。 ただし、名前解決の際に、CNAME レコードには、異なるホスト名やサフィックスが付いた DNS レコードが含まれている場合があります。  このため、デバイス (設定に応じて、コネクタ サーバー、ファイアウォール、アウトバウンド プロキシ) がチェーン内のすべてのレコードを解決し、解決された IP アドレスに確実に接続できるようにする必要があります。 チェーン内の DNS レコードは随時変更される可能性があるため、DNS レコードの一覧をご提供することはできません。
 
 ## <a name="install-and-register-a-connector"></a>コネクタのインストールと登録
 

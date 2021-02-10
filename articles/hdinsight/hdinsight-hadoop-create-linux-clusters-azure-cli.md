@@ -1,19 +1,16 @@
 ---
 title: Azure CLI を使用して Apache Hadoop クラスターを作成する - Azure HDInsight
 description: クロス プラットフォーム Azure CLI を使用して Azure HDInsight クラスターを作成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 4d378151b72ab09e8b51467ce09ec9d43c517813
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a2b39f25aa2a8847697df8a5097f5ffdc9cbd212
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657960"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945881"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
 
@@ -29,7 +26,7 @@ ms.locfileid: "94657960"
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 
-1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
+1. Azure サブスクリプションにログインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[使ってみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
 
     ```azurecli-interactive
     az login

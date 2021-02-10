@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 965795b96deda03531504952fc8afbea0acb41bf
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 506e568f44d8dd5354ed7bd3ec20d0c71d484b85
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221954"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475186"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -58,7 +58,7 @@ ms.locfileid: "98221954"
 | **AzureBotService** | Azure Bot Service。 | 送信 | いいえ | いいえ |
 | **AzureCloud** | すべての[データセンター パブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=56519)。 | 送信 | はい | はい |
 | **AzureCognitiveSearch** | Azure Cognitive Search。 <br/><br/>このタグまたはこのタグによってカバーされる IP アドレスは、データ ソースへのセキュリティで保護されたアクセスをインデクサーに付与するために使用できます。 詳細については、[インデクサーの接続に関するドキュメント](../search/search-indexer-troubleshooting.md#connection-errors)を参照してください。 <br/><br/> *注*:検索サービスの IP アドレスは、このサービス タグの IP 範囲の一覧に含まれておらず、またデータ ソースの IP ファイアウォール **にも追加される必要があります**。 | 受信 | いいえ | いいえ |
-| **AzureConnectors** | プローブ/バックエンド接続用の Azure Logic Apps コネクタ。 | 受信 | はい | はい |
+| **AzureConnectors** | このタグは、Azure Logic Apps サービスへの受信 Webhook コールバックと、Azure Storage や Azure Event Hubs などの各サービスへの送信呼び出しを行う、マネージド コネクタに使用される IP アドレスを表します。 | 受信/送信 | はい | はい |
 | **AzureContainerRegistry** | Azure Container Registry。 | 送信 | はい | はい |
 | **AzureCosmosDB** | Azure Cosmos DB。 | 送信 | はい | はい |
 | **AzureDatabricks** | Azure Databricks。 | 両方 | いいえ | いいえ |
@@ -97,6 +97,7 @@ ms.locfileid: "98221954"
 | **LogicAppsManagement** | Logic Apps の管理トラフィック。 | 受信 | いいえ | いいえ |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security。 | 送信 | いいえ | いいえ |
 | **MicrosoftContainerRegistry** | Microsoft コンテナー イメージ用のコンテナー レジストリ。 <br/><br/>*注:* このタグは **AzureFrontDoor.FirstParty** タグに依存します。 | 送信 | はい | はい |
+| **PowerBI** | PowerBI。 *注: 現在、このタグは Azure portal で構成することはできません。* | 両方 | いいえ | いいえ|
 | **PowerQueryOnline** | Power Query Online。 | 両方 | いいえ | いいえ |
 | **ServiceBus** | Premium サービス レベルを使用する Azure Service Bus トラフィック。 | 送信 | はい | はい |
 | **ServiceFabric** | Azure Service Fabric。<br/><br/>*注:* このタグは、リージョンごとのコントロール プレーンの Service Fabric サービス エンドポイントを表します。 これにより、顧客は VNET から Service Fabric クラスターに対する管理操作を実行できるようになります (エンドポイントの例: https://westus.servicefabric.azure.com) | 両方 | いいえ | いいえ |
@@ -129,8 +130,8 @@ ms.locfileid: "98221954"
 サービス タグの現在の一覧を IP アドレス範囲の詳細と共にプログラムで取得できます。
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
-- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
-- [Azure CLI](/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
+- [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag?viewFallbackFrom=azps-2.3.2)
+- [Azure CLI](/cli/azure/network#az-network-list-service-tags)
 
 > [!NOTE]
 > パブリック プレビューの段階であるため、Discovery API によって返される情報は、JSON のダウンロードによって返される情報よりも新しくない場合があります (次のセクションを参照してください)。

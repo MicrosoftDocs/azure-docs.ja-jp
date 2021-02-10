@@ -1,20 +1,24 @@
 ---
-title: ポータルでのクラウド サービスの自動スケール | Microsoft Docs
+title: ポータルでのクラウド サービス (クラシック) の自動スケール | Microsoft Docs
 description: ポータルを使用して、Azure でクラウド サービスの Web ロールおよび worker ロールの自動スケール ルールを構成する方法について説明します。
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 06a0209c2bbd0982054d33c199685d016f405b0c
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a3e7f72dbe16c51280b922da2b5fc6550dee1d34
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165487"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743357"
 ---
-# <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
+# <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>ポータルでクラウド サービス (クラシック) の自動スケールを構成する方法
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 スケールインまたはスケールアウトをトリガーするクラウド サービス worker ロールに対して条件を設定することができます。 ロールの条件は、CPU、ディスク、またはロールのネットワークの負荷に基づいて設定できます。 条件はまた、メッセージ キューに基づいて、またはサブスクリプションに関連付けられているその他の Azure リソースのメトリックに基づいて設定することができます。
 
@@ -41,7 +45,7 @@ ms.locfileid: "92165487"
 クラウド サービスを選択したら、該当するクラウド サービス ブレードを表示状態にします。
 
 1. クラウド サービス ブレードの **[ロールとインスタンス]** タイルで、クラウド サービスの名前を選択します。   
-   **重要** :ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
+   **重要**:ロールの下にあるロール インスタンスではなく、クラウド サービス ロールを必ずクリックしてください。
 
     ![[ロールとインスタンス] タイルのスクリーンショット。WorkerRoleWithSBQueue 1 オプションが赤で囲まれています。](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. **[スケール]** タイルを選択します。
@@ -49,11 +53,11 @@ ms.locfileid: "92165487"
     ![[操作] ページのスクリーンショット。[スケール] タイルが赤で囲まれています。](./media/cloud-services-how-to-scale-portal/scale-tile.png)
 
 ## <a name="automatic-scale"></a>自動スケール
-ロールのスケール設定を構成する際は、 **手動** または **自動** のいずれかのモードを使用できます。 手動モードでは想定通りにスケールが行われるので、インスタンスの絶対数を設定します。 ただし、自動モードでは、スケールの方法とスケールの程度を制御するルールを設定できます。
+ロールのスケール設定を構成する際は、**手動** または **自動** のいずれかのモードを使用できます。 手動モードでは想定通りにスケールが行われるので、インスタンスの絶対数を設定します。 ただし、自動モードでは、スケールの方法とスケールの程度を制御するルールを設定できます。
 
 **[スケールの基準]** オプションを **[スケジュールおよびパフォーマンス ルール]** に設定します。
 
-![[スケジュールおよびパフォーマンス ルール] オプションを示すスクリーンショット。](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
+![プロファイルとルールを使用したクラウド サービスのスケール設定の画像](./media/cloud-services-how-to-scale-portal/schedule-basics.png)
 
 1. 既存のプロファイルです。
 2. 親プロファイルのルールを追加します。

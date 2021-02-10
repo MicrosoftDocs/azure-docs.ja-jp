@@ -179,7 +179,7 @@
         - name: Terraform を使用した AKS のデプロイ
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Azure Portal Kubernetes リソース ビュー
+        - name: Azure portal の Kubernetes リソース ビュー
           href: kubernetes-portal.md
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
@@ -338,6 +338,8 @@
         - name: MySQL を使用したアプリのビルド
           href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
+        - name: Open Liberty または WebSphere Liberty アプリのデプロイ
+          href: howto-deploy-java-liberty-app.md
         - name: Azure API Management の使用
           href: ../api-management/api-management-kubernetes.md
           maintainContext: true

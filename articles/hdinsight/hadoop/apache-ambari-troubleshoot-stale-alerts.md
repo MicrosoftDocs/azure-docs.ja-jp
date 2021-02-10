@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache Ambari の古いアラート
 description: HDInsight での Apache Ambari の古いアラートについて、考えられる原因と解決策を説明し、分析します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533837"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946718"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>シナリオ:Azure HDInsight での Apache Ambari の古いアラート
 

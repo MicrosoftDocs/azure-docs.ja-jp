@@ -1,19 +1,16 @@
 ---
 title: Apache Spark History Server の拡張機能を使用してアプリをデバッグする - Azure HDInsight
 description: Apache Spark History Server の拡張機能を使用して Spark アプリケーションのデバッグと診断を行う - Azure HDInsight。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: d8dd9aaeaadf13fa48577cf2853e7bcf58badb41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1d53d9e9ee2a7fa6588ea0993b3bebdb2a287351
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079294"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941050"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Apache Spark History Server の拡張機能を使用して Spark アプリケーションのデバッグと診断を行う
 
@@ -26,7 +23,7 @@ Spark History Server は、完了して実行中の Spark アプリケーショ�
 ### <a name="open-the-spark-history-server-web-ui-from-the-azure-portal"></a>Spark History Server Web UI を Azure portal から開く
 
 1. [Azure Portal](https://portal.azure.com/) で Spark クラスターを開きます。 詳細については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。
-2. **クラスター ダッシュボード**上で **[Spark History Server]** を選択します。 入力を求められたら、Spark クラスターの管理者資格情報を入力します。
+2. **クラスター ダッシュボード** 上で **[Spark History Server]** を選択します。 入力を求められたら、Spark クラスターの管理者資格情報を入力します。
 
     ![Spark History Server を Azure portal から起動する。 ](./media/apache-azure-spark-history-server/azure-portal-dashboard-spark-history.png "Spark History Server")
 
@@ -124,8 +121,8 @@ Spark History Server は、完了して実行中の Spark アプリケーショ�
     ![[Spark アプリケーション & ジョブグラフ] ページのヒントを表示する。](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + [Spark アプリケーション & ジョブグラフ] ページでは、タスクが次の条件を満たしている場合、ステージにヒントと小さいアイコンが表示されます。
-  + [Data Skew]\(データ スキュー\):データの読み取りサイズ > このステージ内のすべてのタスクの平均データ読み取りサイズ * 2 *かつ*データ読み取りサイズ > 10 MB。
-  + [Time Skew]\(時間のずれ\):実行時間 > このステージ内のすべてのタスクの平均実行時間 * 2 *かつ*実行時間 > 2 分。
+  + [Data Skew]\(データ スキュー\):データの読み取りサイズ > このステージ内のすべてのタスクの平均データ読み取りサイズ * 2 *かつ* データ読み取りサイズ > 10 MB。
+  + [Time Skew]\(時間のずれ\):実行時間 > このステージ内のすべてのタスクの平均実行時間 * 2 *かつ* 実行時間 > 2 分。
 
     ![[Spark アプリケーションとジョブ グラフ] ページ上の偏りのあるタスクのアイコン。](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
@@ -221,7 +218,7 @@ Spark History Server は、完了して実行中の Spark アプリケーショ�
 
     ![Apache Ambari の概要ビュー。](./media/apache-azure-spark-history-server/apache-spark-restart1.png)
 
-1. Spark History Server を再起動するには **Spark2 History Server**の右側にある **[開始]** ボタンを選択し、ドロップダウン メニューから **[再起動]** を選択します。
+1. Spark History Server を再起動するには **Spark2 History Server** の右側にある **[開始]** ボタンを選択し、ドロップダウン メニューから **[再起動]** を選択します。
 
     ![Apache Ambari で Spark History Server を再起動します。](./media/apache-azure-spark-history-server/apache-spark-restart2.png)  
 

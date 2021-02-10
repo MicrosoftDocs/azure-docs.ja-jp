@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 1341d0e64a01ff428fe42735d198c5e6b74b0ce8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725788"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093310"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database のブロックの問題の概要と解決策
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -371,7 +371,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure SQL Database と Azure SQL Managed Instance での監視とパフォーマンス チューニング](/monitor-tune-overview.md)
+* [Azure SQL Database と Azure SQL Managed Instance での監視とパフォーマンス チューニング](/azure/azure-sql/database/monitor-tune-overview)
 * [クエリ ストアを使用したパフォーマンスの監視](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 * [トランザクションのロックおよび行のバージョン管理ガイド](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)
 * [SET TRANSACTION ISOLATION LEVEL](/sql/t-sql/statements/set-transaction-isolation-level-transact-sql)

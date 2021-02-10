@@ -3,12 +3,12 @@ title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569421"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762378"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -19,25 +19,25 @@ Azure Backup は常に改善が行われ、Azure でのデータの保護を強�
 ## <a name="updates-summary"></a>更新の概要
 
 - 2021 年 1 月
-  - [Azure ディスク バックアップ (プレビュー)](disk-backup-overview.md)
-  - [カスタマー マネージド キーを使用した保存時の暗号化の一般提供が開始されました](encryption-at-rest-with-cmk.md)
+  - [Azure ディスク バックアップ (プレビュー)](#azure-disk-backup-in-preview)
+  - [カスタマー マネージド キーを使用した保存時の暗号化 (一般提供)](#encryption-at-rest-using-customer-managed-keys)
 - 2020 年 11 月
   - [Azure ファイル共有 (AFS) バックアップ用の Azure Resource Manager テンプレート](#azure-resource-manager-template-for-afs-backup)
-  - [Azure VM 上の SAP HANA データベースの増分バックアップ](#incremental-backups-for-sap-hana-databases)
+  - [Azure VM 上の SAP HANA データベースの増分バックアップ (プレビュー段階)](#incremental-backups-for-sap-hana-databases-in-preview)
 - 2020 年 9 月
-  - [バックアップ センター](#backup-center)
-  - [Azure Database for PostgreSQL のバックアップ](#backup-azure-database-for-postgresql)
+  - [バックアップ センター (プレビュー段階)](#backup-center-in-preview)
+  - [Azure Database for PostgreSQL のバックアップ (プレビュー段階)](#backup-azure-database-for-postgresql-in-preview)
   - [ディスクの選択的なバックアップと復元](#selective-disk-backup-and-restore)
-  - [Azure VM 上の SQL Server データベースと SAP HANA データベースのリージョン間の復元](#cross-region-restore-for-sql-server-and-sap-hana)
-  - [最大 32 個のディスクを使用する VM のバックアップのサポート](#support-for-backup-of-vms-with-up-to-32-disks)
+  - [Azure VM 上の SQL Server データベースと SAP HANA データベースのリージョン間の復元 (プレビュー段階)](#cross-region-restore-for-sql-server-and-sap-hana-in-preview)
+  - [最大 32 個のディスクを使用する VM のバックアップのサポート (一般提供)](#support-for-backup-of-vms-with-up-to-32-disks)
   - [Azure VM での SQL のバックアップ構成エクスペリエンスの簡素化](#simpler-backup-configuration-for-sql-in-azure-vms)
-  - [RHEL の Azure 仮想マシンでの SAP HANA のバックアップ](#backup-sap-hana-in-rhel-azure-virtual-machines)
-  - [バックアップ データ用のゾーン冗長ストレージ (ZRS)](#zone-redundant-storage-zrs-for-backup-data)
+  - [RHEL の Azure 仮想マシンでの SAP HANA のバックアップ (プレビュー段階)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
+  - [バックアップ データ用のゾーン冗長ストレージ (ZRS) (プレビュー段階)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Azure VM での SQL Server および SAP HANA ワークロードの論理的な削除](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure ディスク バックアップ (プレビュー)
 
-Azure ディスク バックアップは、スナップショットの定期的な作成を自動化し、バックアップ ポリシーを使用して構成された期間にわたってそのスナップショットを保持することで [Azure マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)のスナップショット ライフサイクル管理を提供する、ターンキー ソリューションを提供します。 インフラストラクチャ コストなしでディスク スナップショットを管理でき、カスタム スクリプトも管理費用も必要ありません。 これは、1 日に複数回のバックアップをサポートする[増分スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots)を使用してマネージド ディスクの特定時点のバックアップを作成する、クラッシュ整合性バックアップ ソリューションです。 また、エージェントレスのソリューションでもあり、運用アプリケーションのパフォーマンスに影響しません。 実行中の Azure 仮想マシンに OS とデータ ディスク (共有ディスクを含む) が現在接続されているかどうかにかかわらず、この両方のバックアップと復元がサポートされます。
+Azure ディスク バックアップは、スナップショットの定期的な作成を自動化し、バックアップ ポリシーを使用して構成された期間にわたってそのスナップショットを保持することで [Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)のスナップショット ライフサイクル管理を提供する、ターンキー ソリューションを提供します。 インフラストラクチャ コストなしでディスク スナップショットを管理でき、カスタム スクリプトも管理費用も必要ありません。 これは、1 日に複数回のバックアップをサポートする[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md)を使用してマネージド ディスクの特定時点のバックアップを作成する、クラッシュ整合性バックアップ ソリューションです。 また、エージェントレスのソリューションでもあり、運用アプリケーションのパフォーマンスに影響しません。 実行中の Azure 仮想マシンに OS とデータ ディスク (共有ディスクを含む) が現在接続されているかどうかにかかわらず、この両方のバックアップと復元がサポートされます。
 
 詳細については、「[Azure ディスク バックアップ (プレビュー)](disk-backup-overview.md)」を参照してください。
 
@@ -53,13 +53,13 @@ Azure Backup では、Azure Resource Manager (ARM) テンプレートを使用�
 
 詳細については、「[Azure Backup 用 Azure Resource Manager テンプレート](backup-rm-template-samples.md)」を参照してください。
 
-## <a name="incremental-backups-for-sap-hana-databases"></a>SAP HANA データベースの増分バックアップ
+## <a name="incremental-backups-for-sap-hana-databases-in-preview"></a>SAP HANA データベースの増分バックアップ (プレビュー段階)
 
 Azure VM でホストされている SAP HANA データベースの増分バックアップが、Azure Backup でサポートされるようになりました。 これにより、SAP HANA データのバックアップを、いっそう高速に、コスト効率よく行うことができます。
 
 詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](sap-hana-faq-backup-azure-vm.md#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
 
-## <a name="backup-center"></a>バックアップ センター
+## <a name="backup-center-in-preview"></a>バックアップ センター (プレビュー段階)
 
 Azure Backup で、中央コンソールからバックアップ資産全体を管理するための新しいネイティブ管理機能を使用できるようになりました。 バックアップ センターを使用すると、Azure のネイティブ管理エクスペリエンスと一貫性のある統合された方法で、大規模なデータ保護を監視、操作、制御、最適化できます。
 
@@ -67,7 +67,7 @@ Azure Backup で、中央コンソールからバックアップ資産全体を�
 
 詳細については、「[バックアップ センターの概要](backup-center-overview.md)」を参照してください。
 
-## <a name="backup-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のバックアップ
+## <a name="backup-azure-database-for-postgresql-in-preview"></a>Azure Database for PostgreSQL のバックアップ (プレビュー段階)
 
 Azure Backup と Azure Database Services の連携により、Azure PostgreSQL 向けのエンタープライズ クラスのバックアップ ソリューションが構築されます (現在はプレビュー)。 お客様が管理するバックアップ ポリシーを使用して、データの保護とコンプライアンスのニーズを満たすことができるようになり、バックアップを最大 10 年間保持できます。 これにより、個々のデータベース レベルでバックアップと復元の操作の管理をきめ細かく制御できます。 同様に、PostgreSQL の異なるバージョン間で、または Blob Storage にも、簡単に復元できます。
 
@@ -79,7 +79,7 @@ Azure Backup では、仮想マシン バックアップ ソリューション�
 
 詳細については、「[Azure 仮想マシンの選択的なディスク バックアップと復元](selective-disk-backup-restore.md)」を参照してください。
 
-## <a name="cross-region-restore-for-sql-server-and-sap-hana"></a>SQL Server と SAP HANA のリージョン間の復元
+## <a name="cross-region-restore-for-sql-server-and-sap-hana-in-preview"></a>SQL Server と SAP HANA のリージョン間の復元 (プレビュー段階)
 
 リージョン間の復元の導入により、セカンダリ リージョンで復元を自由に開始できるようになり、環境のプライマリ リージョンでの実際のダウンタイムの問題が軽減されます。 これにより、お客様はセカンダリ リージョンでの復元を完全に制御できます。 そのような復元の場合、セカンダリ リージョンにレプリケートされたバックアップ データが Azure Backup によって使用されます。
 
@@ -99,13 +99,13 @@ Azure VM 内の SQL Server のバックアップの構成が、Azure portal の 
 
 詳細については、「[VM ウィンドウから SQL Server をバックアップする](backup-sql-server-vm-from-vm-pane.md)」を参照してください。
 
-## <a name="backup-sap-hana-in-rhel-azure-virtual-machines"></a>RHEL の Azure 仮想マシンでの SAP HANA のバックアップ
+## <a name="backup-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>RHEL の Azure 仮想マシンでの SAP HANA のバックアップ (プレビュー段階)
 
 Azure Backup は、Azure 用のネイティブ バックアップ ソリューションであり、SAP によって認定された BackInt です。 SAP HANA の実行に最も広く使用されている Linux オペレーティング システムの 1 つである Red Hat Enterprise Linux (RHEL) のサポートが、Azure Backup に追加されました。
 
 詳細については、[SAP HANA データベースのバックアップ シナリオのサポート マトリックス](sap-hana-backup-support-matrix.md#scenario-support)に関するページを参照してください。
 
-## <a name="zone-redundant-storage-zrs-for-backup-data"></a>バックアップ データ用のゾーン冗長ストレージ (ZRS)
+## <a name="zone-redundant-storage-zrs-for-backup-data-in-preview"></a>バックアップ データ用のゾーン冗長ストレージ (ZRS) (プレビュー段階)
 
 Azure Storage を使用すると、さまざまな冗長性オプションにより、ハイ パフォーマンス、高可用性、高データ回復性の優れたバランスが提供されます。 Azure Backup を使用すると、バックアップをローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) に格納するオプションにより、これらの利点をデータのバックアップまで拡張できます。 現在は、ゾーン冗長ストレージ (ZRS) のサポートの追加により、持続性オプションが追加されています。
 
@@ -121,6 +121,6 @@ Azure Storage を使用すると、さまざまな冗長性オプションによ
 
 詳細については、「[Azure VM での SQL Server の論理的な削除、および Azure VM ワークロードの SAP HANA の論理的な削除](soft-delete-sql-saphana-in-azure-vm.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Backup のガイダンスとベスト プラクティス](guidance-best-practices.md)

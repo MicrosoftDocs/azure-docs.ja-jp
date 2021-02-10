@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977954"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632607"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>監査ポリシー構成ポリシーの適用時に仮想マシンが応答しない
 
@@ -46,6 +46,9 @@ ms.locfileid: "91977954"
 
 ### <a name="process-overview"></a>プロセスの概要
 
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
+
 1. 修復 VM を作成してアクセスします。
 1. ポリシーを無効にする。
 1. シリアル コンソールとメモリ ダンプの収集を有効にします。
@@ -59,7 +62,7 @@ ms.locfileid: "91977954"
 
 ### <a name="disable-the-policy"></a>ポリシーを無効にする
 
-1. 修復 VM で、**レジストリ エディター**を開きます。
+1. 修復 VM で、**レジストリ エディター** を開きます。
 1. **HKEY_LOCAL_MACHINE** キーを見つけて、メニューから **[ファイル] > [ハイブの読み込み]** の順に選択します。
 
    ![ハイブを読み込むためのレジストリ エディター内でのナビゲーション。](./media/vm-unresponsive-applying-audit-configuration-policy/3.png)
@@ -105,7 +108,7 @@ ms.locfileid: "91977954"
       `bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum`
 
       - コマンドの `<LETTER OF THE EFI SYSTEM PARTITION>` を、EFI システム パーティションの文字に置き換えます。
-      - ディスクの管理コンソールを起動して、**EFI システム パーティション**というラベルが付いた適切なシステム パーティションを特定すると役立つ場合があります。
+      - ディスクの管理コンソールを起動して、**EFI システム パーティション** というラベルが付いた適切なシステム パーティションを特定すると役立つ場合があります。
       - 識別子は一意の GUID の場合もあれば、既定の **bootmgr** の場合もあります。
 
 1. 次のコマンドを実行します。

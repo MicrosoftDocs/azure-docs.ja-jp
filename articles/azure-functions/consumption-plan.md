@@ -3,12 +3,12 @@ title: Azure Functions の従量課金プラン ホスティング
 description: Azure Function の従量課金プラン ホスティングを使用して、動的にスケーリングされる環境でコードを実行しながら、実行中に使用されたリソースに対してのみ支払うようにできる方法について説明します。
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: c0619def4687935cd9e403563966b35b84f13c7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: d292a70a8dfaa4cebdb99f2bcb5420c8b8ab9cd8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937523"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760541"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Azure Functions の従量課金プラン ホスティング
 
@@ -33,10 +33,10 @@ Azure portal で関数アプリを作成する場合は、従量課金プラン�
 プログラムまたは Azure portal で、従量課金プランでサーバーレス関数アプリを作成する方法については、次のリンクを使用してください。
 
 + [Azure CLI](./scripts/functions-cli-create-serverless.md)
-+ [Azure Portal](functions-create-first-azure-function.md)
++ [Azure Portal](./functions-get-started.md)
 + [Azure Resource Manager テンプレート](functions-create-first-function-resource-manager.md)
 
-[Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) または [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure) から Functions プロジェクトを発行する場合も、従量課金プランで関数アプリを作成できます。
+[Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) または [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure) から Functions プロジェクトを発行する場合も、従量課金プランで関数アプリを作成できます。
 
 ## <a name="multiple-apps-in-the-same-plan"></a>同じプランでの複数のアプリ
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA Maker, 少量のコードのチャット ボット, マルチターン会話
-ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700717"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919563"
 ---
 # <a name="what-is-qna-maker"></a>QnA Maker とは
 
@@ -22,14 +22,14 @@ QnA Maker は、データに自然な会話レイヤーを作成できるクラ�
 
 ## <a name="when-to-use-qna-maker"></a>QnA Maker を使用する場合
 
-* **静的な情報がある場合** - 回答のナレッジ ベースに静的な情報がある場合に、QnA Maker を使用します。 このナレッジ ベースは、[PDF や URL](../index.yml) などのドキュメントで作成したニーズに合わせてカスタマイズされています。
+* **静的な情報がある場合** - 回答のナレッジ ベースに静的な情報がある場合に、QnA Maker を使用します。 このナレッジ ベースは、[PDF や URL](../Concepts/data-sources-and-content.md) などのドキュメントで作成したニーズに合わせてカスタマイズされています。
 * **要求、質問、またはコマンドに同じ回答を提供する場合** - 異なるユーザーが同じ質問を送信すると、同じ回答が返されます。
 * **メタ情報に基づいて静的情報をフィルター処理する場合** - [メタデータ](../how-to/metadata-generateanswer-usage.md) タグを追加して、クライアント アプリケーションのユーザーと情報に関連する追加のフィルター オプションを提供します。 一般的なメタデータ情報には、[chit-chat](../how-to/chit-chat-knowledge-base.md)、コンテンツの種類または形式、コンテンツの目的、コンテンツの鮮度が含まれます。
 * **静的な情報を含むボットの会話を管理する場合** - ご利用のナレッジ ベースは、ユーザーの会話テキストまたはコマンドを取得して、それに応答します。 回答が、ナレッジ ベースで[複数ターンのコンテキスト](../how-to/multiturn-conversation.md)で表される、事前に決定された会話フローの一部である場合、ボットはこのフローを簡単に提供できます。
 
 ## <a name="what-is-a-knowledge-base"></a>ナレッジ ベースとは
 
-QnA Maker では、質問と回答がペアになったナレッジ ベースに[コンテンツをインポート](../index.yml)します。 インポート プロセスでは、質問と回答のペア間のリレーションシップを意味する、構造化コンテンツと半構造化コンテンツのパーツ間のリレーションシップに関する情報を抽出します。 これらの質問と回答のペアを編集したり、新しいペアを追加したりできます。
+QnA Maker では、質問と回答がペアになったナレッジ ベースに[コンテンツをインポート](../Concepts/plan.md)します。 インポート プロセスでは、質問と回答のペア間のリレーションシップを意味する、構造化コンテンツと半構造化コンテンツのパーツ間のリレーションシップに関する情報を抽出します。 これらの質問と回答のペアを編集したり、新しいペアを追加したりできます。
 
 質問と回答のペアのコンテンツには、次のものが含まれます。
 * 質問のすべての代替形式

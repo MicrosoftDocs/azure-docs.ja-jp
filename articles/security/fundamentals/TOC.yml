@@ -138,7 +138,7 @@
       href: service-fabric-best-practices.md
 - name: 監視、監査、および操作
   items:
-    - name: 高度な脅威保護
+    - name: 脅威の防止
       href: threat-detection.md
     - name: Azure のログと監査
       href: log-audit.md

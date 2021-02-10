@@ -63,5 +63,5 @@
       href: 'https://packages.microsoft.com/ubuntu/18.04/prod/pool/main/a/az-dcap-client/'
     - name: 問題のトラブルシューティング
       href: troubleshoot-guide.md
-    - name: VBS 構成証明プロトコル
+    - name: TPM および VBS 構成証明プロトコル
       href: virtualization-based-security-protocol.md

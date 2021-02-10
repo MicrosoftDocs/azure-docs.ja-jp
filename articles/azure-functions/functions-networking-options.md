@@ -1,16 +1,16 @@
 ---
 title: Azure Functions のネットワーク オプション
 description: Azure Functions で利用可能なすべてのネットワーク オプションの概要。
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.author: jehollan
-ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936867"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806993"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -85,12 +85,9 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 
 詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」を参照してください。
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>ストレージ アカウントを仮想ネットワークに制限する (プレビュー)
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する 
 
-関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。  このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。  現在、このプレビュー機能は、西ヨーロッパの Windows Premium プランでのみ機能します。  プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
-
-> [!NOTE]
-> 現在、ストレージアカウントの制限は、西ヨーロッパで Windows を使用する Premium 関数に対してのみ機能します。
+関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。  このストレージ アカウントは、サービス エンドポイントまたはプライベート エンドポイントで保護されているものに置き換えることができます。  現在、この機能は、Windows Premium プランでのみ機能します。  プライベート ネットワークに制限されたストレージ アカウントを使用して関数を設定するには、次のようにします。
 
 1. サービス エンドポイントが有効になっていないストレージ アカウントを使用して関数を作成します。
 1. ご使用の仮想ネットワークに接続するように関数を構成します。

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cd41f740d3cdb8130199a5dda6e73209637d5142
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608784"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745936"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
@@ -54,7 +54,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - **データ コントローラーのユーザー名** - データ コントローラー管理者ユーザーの任意のユーザー名。
 - **データ コントローラーのパスワード** - データ コントローラー管理者ユーザーのパスワード。
 - **Kubernetes 名前空間の名前** - データ コントローラーを作成する Kubernetes 名前空間の名前。
-- **接続モード** - クラスターの [接続モード](./connectivity.md)。 現時点では、"間接" のみサポートされています。
+- **接続モード** - 接続モードによって、Azure Arc 対応データ サービス環境から Azure への接続の程度が決定されます。 現在、プレビューでは、間接接続モードと直接接続モードのみがサポートされています。  詳細については、[接続モード](./connectivity.md)に関するページを参照してください。 
 - **Azure サブスクリプション ID** - Azure 内のデータ コントローラー リソースを作成する場所の Azure サブスクリプション GUID。
 - **Azure リソース グループ名** - Azure 内のデータ コントローラー リソースを作成するリソース グループの名前。
 - **Azure の場所** - Azure でデータ コントローラー リソース メタデータが格納される Azure の場所。 利用可能なリージョンの一覧については、「[Azure グローバル インフラストラクチャ/リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)」を参照してください。

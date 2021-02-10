@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449232"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804897"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>kubectl を使用し、Azure Stack Edge Pro デバイスで PersistentVolume を使って Kubernetes ステートフル アプリケーションを実行する
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro では、Azure SQL Edge コンテナーの実行もサポ�
 
 ## <a name="prerequisites"></a>前提条件
 
-ステートフル アプリケーションを展開する前に、デバイスとデバイスにアクセスするために使用するクライアントで、次の前提条件が満たされていることを確認してください。
+ステートフル アプリケーションをデプロイする前に、デバイスとデバイスにアクセスするために使用するクライアントで、次の前提条件を完了してください。
 
 ### <a name="for-device"></a>デバイスでは
 
@@ -37,9 +37,9 @@ Azure Stack Edge Pro では、Azure SQL Edge コンテナーの実行もサポ�
 ### <a name="for-client-accessing-the-device"></a>デバイスにアクセスするクライアントでは
 
 - Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
-    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
+    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)」を参照してください。
     
-    - [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
+    - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
     - [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
       - `New-HcsKubernetesNamespace` コマンドを使用して `userns1` 名前空間を作成した。 
@@ -50,7 +50,7 @@ Azure Stack Edge Pro では、Azure SQL Edge コンテナーの実行もサポ�
     - `kubectl` クライアントのバージョンと、Azure Stack Edge Pro デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
         - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョン番号をメモしておきます。
         - お使いの Azure Stack Edge Pro デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
-        - サポートされている Kubernetes バージョンで提供されているマッピングで、これら 2 つのバージョンの互換性を確認します <!-- insert link-->. 
+        - サポートされている Kubernetes バージョンで提供されているマッピングで、これら 2 つのバージョンの互換性を確認します。<!-- insert link--> 
 
 
 Azure Stack Edge Pro デバイスにステートフル アプリケーションをデプロイする準備ができました。 
@@ -341,7 +341,7 @@ PVC を削除した場合の出力例を次に示します。
 C:\Users\user>kubectl delete pvc mysql-pv-claim -n userns1
 persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
-```                                                                                         
+```
 
 PVC が削除されると、PV が PVC にバインドされなくなります。 共有の作成時に PV がプロビジョニングされたため、共有を削除する必要があります。 次の手順に従います。
 

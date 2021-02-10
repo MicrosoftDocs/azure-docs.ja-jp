@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 12/09/2020
 ms.author: alkohli
-ms.openlocfilehash: 9ea5fb26a52c967c5296f1a83976e748c86c9e18
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ae7cb05aeda296ffb3aa9d7f6e2c88fe59364975
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763695"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475044"
 ---
-VM のサイズにより、CPU、GPU、メモリなど、VM で利用できる計算リソースの量が決定されます。 仮想マシンは、ワークロードに適した VM サイズを使用して作成する必要があります。 すべてのマシンが同じハードウェア上で実行される場合でも、マシンのサイズによってディスク アクセスの制限が異なります。これは、VM 間のディスク アクセス全体を管理するのに役立ちます。 ワークロードが増えた場合は、既存の仮想マシンのサイズを変更することもできます。
+VM のサイズにより、VM で利用できる計算リソース (CPU、GPU、メモリなど) の量が決定されます。 仮想マシンは、ワークロードに適した VM サイズを使用して作成する必要があります。 すべてのマシンが同じハードウェア上で実行される場合でも、マシンのサイズによってディスク アクセスの制限が異なります。 これは、VM 間のディスク アクセス全体を管理するのに役立ちます。 ワークロードが増えた場合は、既存の仮想マシンのサイズを変更することもできます。
 
 次の VM は、Azure Stack Edge デバイスでの作成でサポートされています。
 
@@ -40,7 +40,7 @@ VM のサイズにより、CPU、GPU、メモリなど、VM で利用できる�
 |**Standard_DS13_v2**|8   |56  |112|32000 |1000 |16 |8 |
 
 
-詳細については、[汎用 VM サイズ上の Dv2 シリーズ](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series)に関するページを参照してください。
+詳細については、「[Dv2 および DSv2 シリーズ](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series)」を参照してください。
 
 ### <a name="ncast4_v3-series-preview"></a>NCasT4_v3 シリーズ (プレビュー)
 
@@ -51,7 +51,7 @@ VM のサイズにより、CPU、GPU、メモリなど、VM で利用できる�
 |**Standard_NC4as_T4_v3** |4   |28  |180   |1000|1 |16   |4 |
 |**Standard_NC8as_T4_v3** |8   |56  |360   |1000|1 |16  |8 |
 
-詳細については、[GPU 最適化済み VM サイズでの NCasT4_v3 シリーズ](../articles/virtual-machines/nct4-v3-series.md)に関するページをご覧ください。
+詳細については、「[NCasT4_v3 シリーズ](../articles/virtual-machines/nct4-v3-series.md)」を参照してください。
 
 ### <a name="f-series"></a>F シリーズ
 
@@ -70,5 +70,5 @@ VM のサイズにより、CPU、GPU、メモリなど、VM で利用できる�
 | Standard_F8s | 8 | 16 |32 |1000| 32 |  8 |
 | Standard_F16s | 16 | 32 |64 |1000| 64 |  8 |
 
-詳細については、[コンピューティング最適化済み VM サイズでの Fsv2 シリーズ](../articles/virtual-machines/fsv2-series.md)に関するページをご覧ください。
+詳細については、「[Fsv2 シリーズ](../articles/virtual-machines/fsv2-series.md)」を参照してください。
 

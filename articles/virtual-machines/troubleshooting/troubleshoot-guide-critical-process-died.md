@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8279aee4a0df8155b23e6f984d259bf92555dc95
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509105"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632835"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows STOP エラー - #0x000000EF "Critical Process Died"
 
@@ -38,6 +38,9 @@ ms.locfileid: "86509105"
 ## <a name="solution"></a>解決策
 
 ### <a name="process-overview"></a>プロセスの概要:
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
 
 1. 修復 VM を作成してアクセスします。
 2. OS の破損がある場合は修正します。
@@ -76,14 +79,14 @@ SFC の実行後も問題が解決しない場合は、問題の原因を特定�
 ### <a name="locate-the-dump-file-and-submit-a-support-ticket"></a>ダンプ ファイルを探してサポート チケットを送信する
 
 3. 復旧 VM で、接続されている OS ディスクの Windows フォルダーに移動します。 接続されている OS ディスクに割り当てられているドライブ文字が *F* の場合は、*F:\Windows* に移動する必要があります。
-4. *memory.dmp* ファイルを探し、メモリ ダンプ ファイルと共に[サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
+4. *memory.dmp* ファイルを探し、メモリ ダンプ ファイルと共に [サポート チケットを送信](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)します。
 
    > [!NOTE]
    > ダンプ ファイルが見つからない場合は、以下の手順を実行してメモリ ダンプ収集とシリアル コンソールを有効にします。その後、このセクションに戻り、上記のタスクの手順を繰り返してメモリ ダンプ ファイルを収集します。
 
 ### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>推奨:VM を再構築する前に、シリアル コンソールとメモリ ダンプの収集を有効にする
 
-メモリ ダンプの収集とシリアル コンソールを有効にするには、次のスクリプトを実行します。
+メモリ ダンプ コレクションとシリアル コンソールを有効にするには、次のスクリプトを実行します。
 
 1. 管理者特権でコマンド プロンプト セッション (管理者として実行) を開きます。
 2. 次のコマンドを実行します。

@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779755"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755342"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -52,7 +52,7 @@ Azure AD でアプリケーションをマルチテナントにするには、�
 
 マルチテナント アプリケーションでは、アプリケーションがユーザーのサインイン元のテナントを事前に知ることができないため、テナントのエンドポイントに要求を送信できません。 このため、要求は、すべての Azure AD テナントと多重通信するエンドポイントに送信されます。`https://login.microsoftonline.com/common`
 
-Microsoft ID プラットフォームは、/common エンドポイントで要求を受信するとユーザーのサインインを行い、結果としてユーザーのサインイン元のテナントを特定します。 /common エンドポイントは、Azure AD でサポートされるすべての認証プロトコル (OpenID Connect、OAuth 2.0、SAML 2.0、WS-Federation) に対応しています。
+Microsoft ID プラットフォームは、/common エンドポイントで要求を受信すると、ユーザーのサインインを行い、結果としてユーザーのサインイン元のテナントを特定します。 /common エンドポイントは、Azure AD でサポートされるすべての認証プロトコル (OpenID Connect、OAuth 2.0、SAML 2.0、WS-Federation) に対応しています。
 
 その後のアプリケーションに対するサインイン応答には、ユーザーを表すトークンが含まれます。 アプリケーションは、トークンの issuer 値に基づいてユーザーのサインイン元のテナントを特定できます。 /common エンドポイントから応答が返された場合、トークン内の issuer 値はユーザーのテナントに対応しています。
 

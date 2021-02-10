@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での認証の問題
 description: Azure HDInsight での認証の問題
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/24/2020
-ms.openlocfilehash: 9f10597023314aed8640ee5a7499a77f952c3694
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b5a55b3b5f9affcd9f34e1c0d4c439a7ada8c0b9
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284438"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095126"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight での認証の問題
 
@@ -38,7 +35,7 @@ Azure AD エラー コード 50126 は、`AllowCloudPasswordValidation` ポリ�
 
 ### <a name="resolution"></a>解決策
 
-Azure AD テナントの社内管理者は、ADFS の管理対象ユーザーのパスワード ハッシュを Azure AD で使用できるようにする必要があります。  記事「`AllowCloudPasswordValidationPolicy`HDInsight で Enterprise セキュリティ パッケージを使用する[」で示されているように、](../domain-joined/apache-domain-joined-architecture.md) を適用します。
+Azure AD テナントの全体管理者は、ADFS の管理対象ユーザーのパスワード ハッシュを Azure AD で使用できるようにする必要があります。  記事「`AllowCloudPasswordValidationPolicy`HDInsight で Enterprise セキュリティ パッケージを使用する[」で示されているように、](../domain-joined/apache-domain-joined-architecture.md) を適用します。
 
 ---
 

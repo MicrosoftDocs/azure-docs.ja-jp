@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ae80ddd9efe8274a29a4b8dd91b7a3c391eefc3a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178689"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938234"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>クイックスタート: ユーザーのサインインを処理しその代理で Microsoft Graph を呼び出す ASP.NET Core Web アプリ
 
@@ -55,7 +55,7 @@ ms.locfileid: "98178689"
 > 1. **リダイレクト URI** として「`https://localhost:44321/signin-oidc`」と入力します。
 > 1. **[登録]** を選択します。
 > 1. **[管理]** で、 **[認証]** を選択します。
-> 1. **ログアウト URL** として「`https://localhost:44321/signout-oidc`」と入力します。
+> 1. **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** に「`https://localhost:44321/signout-oidc`」を入力します。
 > 1. **[保存]** を選択します。
 > 1. **[管理]** で、 **[Certificates & secrets]\(証明書およびシークレット\)**  >  **[新しいクライアント シークレット]** の順に選択します。
 > 1. **説明** を入力します (`clientsecret1` など)。
@@ -64,7 +64,7 @@ ms.locfileid: "98178689"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのサンプル コードを動作させるには、応答 URL として `https://localhost:44321/signin-oidc` を、ログアウト URL として `https://localhost:44321/signout-oidc` を追加する必要があります。
+> このクイックスタートのサンプル コードには、アプリの登録の **リダイレクト URI** (`https://localhost:44321/signin-oidc`) と **フロントチャネルのログアウト URL** (`https://localhost:44321/signout-oidc`) が必要です。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -166,7 +166,7 @@ ms.locfileid: "98178689"
 
 `AddAuthentication()` メソッドは、ブラウザーのシナリオで使用される Cookie ベースの認証を追加し、OpenID Connect へのチャレンジを設定するようにサービスを構成します。
 
-`.AddMicrosoftIdentityWebApp` を含む行によって、Microsoft ID プラットフォーム認証がアプリケーションに追加されます。 これは [Microsoft.Identity.Web](microsoft-identity-web.md) によって提供されます。 その後、*appsettings.json* 構成ファイルの `AzureAD` セクションの情報に基づいて、Microsoft ID プラットフォーム エンドポイントを使用してサインインするように構成されます。
+`.AddMicrosoftIdentityWebApp` を含む行によって、Microsoft ID プラットフォーム認証がアプリケーションに追加されます。 これは [Microsoft.Identity.Web](microsoft-identity-web.md) によって提供されます。 その後、*appsettings.json* 構成ファイルの `AzureAD` セクションの情報に基づいて、Microsoft ID プラットフォームを使用してサインインするように構成されます。
 
 | *appsettings.json* のキー | 説明                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

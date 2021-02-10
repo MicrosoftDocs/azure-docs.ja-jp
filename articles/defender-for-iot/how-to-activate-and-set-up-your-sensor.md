@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538568"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623591"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>センサーをアクティブ化してセットアップする
 
@@ -134,9 +134,9 @@ CA 署名証明書のアップロード後に、画面を更新する必要が�
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>初期セットアップと学習 (管理者向け)
 
-初めてサインインすると、Azure Defender for IoT センサーによってネットワークの監視が自動的に開始されます。 資産マップと資産インベントリのセクションにネットワーク資産が表示されます。 Azure Defender for IoT によって、ネットワークで発生するすべてのセキュリティと運用上のインシデントの検出とアラートが開始されます。 その後、検出された情報に基づいてレポートとクエリを作成できます。
+初めてサインインすると、Azure Defender for IoT センサーによってネットワークの監視が自動的に開始されます。 ネットワーク デバイスがデバイス マップとデバイス インベントリのセクションに表示されます。 Azure Defender for IoT によって、ネットワークで発生するすべてのセキュリティと運用上のインシデントの検出とアラートが開始されます。 その後、検出された情報に基づいてレポートとクエリを作成できます。
 
-最初、このアクティビティは学習モードで実行されます。これは、ネットワークの通常のアクティビティを学習するようセンサーに指示するものです。 たとえば、ネットワークで検出された資産、ネットワークで検出されたプロトコル、特定の資産間で発生するファイル転送がセンサーによって学習されます。 このアクティビティがネットワークのベースライン アクティビティになります。
+最初、このアクティビティは学習モードで実行されます。これは、ネットワークの通常のアクティビティを学習するようセンサーに指示するものです。 たとえば、ネットワークで検出されたデバイス、ネットワークで検出されたプロトコル、特定のデバイス間で発生するファイル転送がセンサーによって学習されます。 このアクティビティがネットワークのベースライン アクティビティになります。
 
 ### <a name="review-and-update-basic-system-settings"></a>基本システム設定を確認および更新する
 

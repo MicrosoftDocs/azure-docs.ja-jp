@@ -4,12 +4,12 @@ description: Trace、NLog、または Log4Net で生成されたログを検索�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920348"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937558"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core および Python のトレース ログを調べる
 
@@ -85,7 +85,7 @@ log4net または NLog を使う場合は、以下を使用します。
 ```
 
 ## <a name="use-eventsource-events"></a>EventSource イベントを使用する
-Application Insights にトレースとして送信する [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) イベントを構成できます。 まず、`Microsoft.ApplicationInsights.EventSourceListener` NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。
+Application Insights にトレースとして送信する [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) イベントを構成できます。 まず、`Microsoft.ApplicationInsights.EventSourceListener` NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -203,7 +203,7 @@ Java SDK を使用している場合は、[Java ログ アダプター](./java-t
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>構成ツールにログ アダプターのオプションがありません
 * まず、ログ記録フレームワークをインストールします。
-* System.Diagnostics.Trace を使用している場合は、[*web.config* で構成済み](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)であることを確認します。
+* System.Diagnostics.Trace を使用している場合は、[*web.config* で構成済み](/dotnet/api/system.diagnostics.eventlogtracelistener)であることを確認します。
 * 最新バージョンの Application Insights があることを確認します。 Visual Studio で、 **[ツール]**  >  **[拡張機能と更新プログラム]** の順に移動し、 **[更新]** タブを開きます。そこに **Developer Analytics Tools** がある場合は、それを選択して更新します。
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>"インストルメンテーション キーは空にできません" というエラーメッセージが表示されました

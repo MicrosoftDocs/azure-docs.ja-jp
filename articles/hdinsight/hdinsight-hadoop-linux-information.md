@@ -1,19 +1,16 @@
 ---
 title: Linux ベースの HDInsight で Hadoop を使用するためのヒント - Azure
 description: ここには、Azure クラウドで稼動する使い慣れた Linux 環境で、Linux ベースの HDInsight (Hadoop) クラスターを使用するための実装上のヒントを記載します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d2619c7bd7bc09eeab3845599758db7134b4134
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546111"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945651"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -24,13 +21,13 @@ Azure HDInsight クラスターは、Azure クラウドで実行される使い�
 このドキュメントの手順の多くでは次のユーティリティを使用するので、これらがシステムにインストールされている必要があります。
 
 * [cURL](https://curl.haxx.se/) - Web ベースのサービスとの通信に使用します。
-* **jq** 。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
+* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 * [Azure CLI](/cli/azure/install-azure-cli) - Azure サービスをリモート管理するために使用します。
-* **SSH クライアント** 。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 ## <a name="users"></a>ユーザー
 
-HDInsight は、 [ドメイン参加済み](./domain-joined/hdinsight-security-overview.md)でない限り **シングルユーザー** システムであるとみなされます。 このクラスターでは、管理者レベルのアクセス許可を持つ単一の SSH ユーザー アカウントを作成します。 追加の SSH アカウントを作成することもできますが、これらのアカウントもクラスターに対する管理者アクセスを持ちます。
+HDInsight は、[ドメイン参加済み](./domain-joined/hdinsight-security-overview.md)でない限り **シングルユーザー** システムであるとみなされます。 このクラスターでは、管理者レベルのアクセス許可を持つ単一の SSH ユーザー アカウントを作成します。 追加の SSH アカウントを作成することもできますが、これらのアカウントもクラスターに対する管理者アクセスを持ちます。
 
 ドメイン参加済みの HDInsight では、複数のユーザーがサポートされ、アクセス許可とロールの設定を詳細に行うことができます。 詳細については、[ドメイン参加済み HDInsight クラスターの管理](./domain-joined/apache-domain-joined-manage.md)に関するページを参照してください。
 
@@ -92,8 +89,8 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあります。 このディレクトリには、次のサブディレクトリが含まれます。
 
-* **2.6.5.3009-43** :そのディレクトリの名前は、HDInsight によって使用される Hadoop プラットフォームのバージョンです。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
-* **current** :このディレクトリには、 **2.6.5.3009-43** ディレクトリ下のサブディレクトリへのリンクが含まれています。 バージョン番号を記憶する必要がないのは、このディレクトリが存在するためです。
+* **2.6.5.3009-43**:そのディレクトリの名前は、HDInsight によって使用される Hadoop プラットフォームのバージョンです。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
+* **current**:このディレクトリには、**2.6.5.3009-43** ディレクトリ下のサブディレクトリへのリンクが含まれています。 バージョン番号を記憶する必要がないのは、このディレクトリが存在するためです。
 
 サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システムの `/example` と `/HdiSamples` にあります。
 

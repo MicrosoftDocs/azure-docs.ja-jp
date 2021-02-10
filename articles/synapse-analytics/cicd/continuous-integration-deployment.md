@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ba5286b16b6e640e968b50174e39a05328e750a4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223688"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797310"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -134,3 +134,13 @@ Synapse ワークスペースとの Git 統合を使用していて、変更を�
 -   **アーティファクトの移行前にプールを準備します**。 SQL スクリプトまたはノートブックが開発ワークスペース内のプールにアタッチされている場合は、別の環境にも同じ名前のプールが必要です。 
 -   **コードとしてのインフラストラクチャ (IaC)** 。 記述型モデルでのインフラストラクチャ (ネットワーク、仮想マシン、ロード バランサー、接続トポロジ) の管理であり、DevOps チームがソース コードに使用するものと同じバージョン管理を使用します。 
 -   **その他**。 [ADF アーティファクトのベスト プラクティス](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)に関するページを参照してください
+
+## <a name="troubleshooting-artifacts-deployment"></a>アーティファクト デプロイのトラブルシューティング 
+
+### <a name="use-the-synapse-workspace-deployment-task"></a>Synapse ワークスペース デプロイ タスクを使用する
+
+Synapse では、あらゆる種類のアーティファクトが、ADF の場合とは異なり、ARM リソースではありません。 ARM テンプレート デプロイ タスクを使用して Synapse アーティファクトをデプロイすることはできません
+ 
+### <a name="unexpected-token-error-in-release"></a>リリースにおける予期しないトークン エラー
+
+エスケープ処理されていないパラメーター値がパラメーター ファイルに含まれているとき、予期しないトークン エラーにより、リリース パイプラインでファイルを解析できないことがあります。 パラメーターまたは KeyVault をオーバーライドしてパラメーターを取得することをお勧めします。 回避策としてダブル エスケープすることもできます。

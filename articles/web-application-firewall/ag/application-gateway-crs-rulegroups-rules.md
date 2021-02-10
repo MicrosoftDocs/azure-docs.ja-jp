@@ -8,19 +8,16 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e2c88091072921f1ca674868e401c34d354418de
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608607"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746511"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
 Application Gateway Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性や悪用から Web アプリケーションを保護します。 これには、OWASP コア ルール セット 3.1、3.0、または 2.2.9 に基づいて定義されている規則が使用されます。 これらの規則は、個別に無効にすることができます。 この記事には、現在提供されている規則とルール セットが含まれています。
-
-> [!NOTE]
-> この記事には、Microsoft では使用されなくなった "*ブラックリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ## <a name="core-rule-sets"></a>コア ルール セット
 
@@ -262,7 +259,7 @@ WAF は、次の Web の脆弱性から保護します。
 |941150|XSS フィルター - カテゴリ 5 = 許可されていない HTML 属性|
 |941160|NoScript XSS InjectionChecker: HTML インジェクション|
 |941170|NoScript XSS InjectionChecker: 属性インジェクション|
-|941180|ノード検証コントロールのブラックリスト キーワード|
+|941180|ノード検証コントロールのブロックリスト キーワード|
 |941190|スタイル シートを使用する XSS|
 |941200|VML フレームを使用する XSS|
 |941210|難読化 Javascript を使用する XSS|
@@ -490,7 +487,7 @@ WAF は、次の Web の脆弱性から保護します。
 |941130|XSS フィルター - カテゴリ 3 = 属性ベクター|
 |941140|XSS フィルター - カテゴリ 4 = Javascript URI ベクター|
 |941150|XSS フィルター - カテゴリ 5 = 許可されていない HTML 属性|
-|941180|ノード検証コントロールのブラックリスト キーワード|
+|941180|ノード検証コントロールのブロックリスト キーワード|
 |941190|スタイル シートを使用する XSS|
 |941200|VML フレームを使用する XSS|
 |941210|難読化 Javascript を使用する XSS|

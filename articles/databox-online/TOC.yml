@@ -17,6 +17,7 @@
           href: azure-stack-edge-gpu-deploy-checklist.md
         - name: 1 - 注文、準備
           href: azure-stack-edge-gpu-deploy-prep.md
+          displayName: 'Azure CLI, az databoxedge device, az databoxedge order'
         - name: 2 - インストール
           href: azure-stack-edge-gpu-deploy-install.md
         - name: 3 - 接続
@@ -73,6 +74,7 @@
           href: azure-stack-edge-pro-r-deploy-checklist.md
         - name: 1 - 注文、準備
           href: azure-stack-edge-pro-r-deploy-prep.md
+          displayName: 'Azure CLI, az databoxedge device, az databoxedge order'
         - name: 2 - インストール
           href: azure-stack-edge-pro-r-deploy-install.md
         - name: 3 - 接続
@@ -119,6 +121,7 @@
           href: azure-stack-edge-mini-r-deploy-checklist.md
         - name: 1 - 注文、準備
           href: azure-stack-edge-mini-r-deploy-prep.md
+          displayName: 'Azure CLI, az databoxedge device, az databoxedge order'
         - name: 2 - インストール
           href: azure-stack-edge-mini-r-deploy-install.md
         - name: 3 - 接続
@@ -173,6 +176,10 @@
               href: azure-stack-edge-gpu-deploy-sample-module.md
             - name: Marketplace 経由の GPU モジュール
               href: azure-stack-edge-gpu-deploy-sample-module-marketplace.md
+            - name: FPGA デバイスからのモジュール
+              href: azure-stack-edge-gpu-modify-fpga-modules-gpu.md
+            - name: Azure portal 経由のモジュール
+              href: azure-stack-edge-gpu-deploy-compute-module-simple.md
         - name: Kubernetes ワークロードをデプロイする
           items:
             - name: kubectl を使用
@@ -275,6 +282,8 @@
           items:
             - name: メトリック グラフの使用
               href: azure-stack-edge-monitor.md
+            - name: デバイス イベント アラートの管理
+              href: azure-stack-edge-gpu-manage-device-event-alert-notifications.md
             - name: Kubernetes ダッシュボードの使用
               href: azure-stack-edge-gpu-monitor-kubernetes-dashboard.md
             - name: Azure Monitor の使用
@@ -315,6 +324,7 @@
       items:
         - name: 1 - 準備
           href: azure-stack-edge-deploy-prep.md
+          displayName: 'Azure CLI, az databoxedge device, az databoxedge order'
         - name: 2 - インストール
           href: azure-stack-edge-deploy-install.md
         - name: 3 - 接続、セットアップ、アクティブ化

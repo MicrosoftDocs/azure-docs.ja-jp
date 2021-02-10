@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight のエンタープライズ セキュリティの概要
 description: Azure HDInsight でエンタープライズ セキュリティを確保するためのさまざまな方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 08/24/2020
-ms.openlocfilehash: 7f450d54a0039f591178ae839fbb404f31d80671
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f4fa1e64e00f2ae027d80960072da7d73d3a89cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537271"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946829"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -21,7 +18,7 @@ Azure HDInsight には、エンタープライズ セキュリティ ニーズ�
 
 この記事では、セキュリティ ソリューションについて、境界セキュリティ、認証、承認、暗号化という従来からある 4 つの柱に分けて説明します。
 
-この記事では、 **Azure HDInsight Enterprise セキュリティ パッケージ (ESP)** についても説明します。ESP は、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御を HDInsight のクラスターに提供します。
+この記事では、**Azure HDInsight Enterprise セキュリティ パッケージ (ESP)** についても説明します。ESP は、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御を HDInsight のクラスターに提供します。
 
 ## <a name="enterprise-security-pillars"></a>エンタープライズ セキュリティの柱
 

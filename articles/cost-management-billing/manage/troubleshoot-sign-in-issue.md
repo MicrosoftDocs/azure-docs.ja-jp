@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 2e9b14fa264f3286134913e3c279c4400ce5bcc3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 915b4fb289b6af6f4aac84d8bfa4d491a7f77efe
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132331"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050472"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Azure サブスクリプションのサインインに関する問題のトラブルシューティング
 
@@ -32,7 +32,7 @@ ms.locfileid: "92132331"
 - 別のインターネット ブラウザーを使用します。
 - お使いのブラウザーで、プライベート ブラウズ モードを使用します。
 
-   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
+   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) に移動してサインインします。 
    - **Chrome の場合:** **Incognito** モードを選択します。
    - **Safari の場合:** **[ファイル]** を選択し、 **[新規プライベート ウィンドウ]** を選択します。
 
@@ -53,7 +53,7 @@ ms.locfileid: "92132331"
    - **Chrome の場合:** **[設定]** を選択し、 **[プライバシーとセキュリティ]** の **[閲覧データのクリア]** を選択します。
 - お使いのブラウザーの設定を既定にリセットします。
 - お使いのブラウザーのプライベート ブラウズ モードを使用します。 
-   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.azure.com/Subscriptions)に移動してサインインします。 
+   - **Edge の場合:** **設定** (ご自分のプロファイル画像近くの 3 つのドット) を開き、 **[新しい InPrivate ウィンドウ]** を選択し、[Azure portal](https://portal.azure.com/) に移動してサインインします。 
    - **Chrome の場合:** **Incognito** モードを選択します。
    - **Safari の場合:** **[ファイル]** を選択し、 **[新規プライベート ウィンドウ]** を選択します。
 

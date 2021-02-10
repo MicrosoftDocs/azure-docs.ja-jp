@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: quickstart
-ms.date: 09/17/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 200e7f191cb19588fa79ba685c91a75dabd0156a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 642ab348cd2bb5cd2cedd2b481b0d06fb6c4b425
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348205"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953939"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>クイックスタート: GPU 搭載の Azure Stack Edge Pro を使い始める 
 
@@ -71,7 +71,7 @@ ms.locfileid: "91348205"
     1. Azure portal で **Azure Stack Edge リソース > [概要] > [Device setup]\(デバイスのセットアップ\) > [アクティブ化] > [キーの生成]** に移動します。 キーをコピーします。 
     1. ローカル Web UI で、 **[作業の開始] > [アクティブ化]** に移動し、アクティブ化キーを指定します。 キーを適用してからデバイスがアクティブ化されるまで数分かかります。 メッセージが表示されたら `<device-serial-number>`.json ファイルをダウンロードし、将来の復旧に必要なデバイス キーを安全に保管します。 
 
-12. **コンピューティングの構成**: Azure portal で、 **[概要] > [デバイス]** に移動します。 デバイスが**オンライン**であることを確認します。 左側のペインで、 **[Edge コンピューティング] > [作業の開始] > [Edge コンピューティングの構成] > [コンピューティング]** に移動します。 既存または新規の IoT Hub サービスを指定し、コンピューティングが構成されるまで約 20 分待ちます。 詳細については、「[チュートリアル: Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)」を参照してください
+12. **コンピューティングの構成**: Azure portal で、 **[概要] > [デバイス]** に移動します。 デバイスが **オンライン** であることを確認します。 左側のペインで、 **[Edge コンピューティング] > [作業の開始] > [Edge コンピューティングの構成] > [コンピューティング]** に移動します。 既存または新規の IoT Hub サービスを指定し、コンピューティングが構成されるまで約 20 分待ちます。 詳細については、「[チュートリアル: Azure Stack Edge Pro GPU デバイスにコンピューティングを構成する](azure-stack-edge-gpu-deploy-configure-compute.md)」を参照してください
 
 これで、[IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md) を使用して、[`kubectl` を使用して](azure-stack-edge-gpu-create-kubernetes-cluster.md)、または [Azure Arc 対応 Kubernetes を使用して](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)、デバイスにコンピューティング ワークロードを展開できるようになりました。 セットアップの間に問題が発生する場合は、[デバイスの問題のトラブルシューティング]()、[注文の問題の](azure-stack-edge-gpu-troubleshoot.md)、[証明書の問題](azure-stack-edge-j-series-certificate-troubleshooting.md)、または Kubernetes の問題に関する記事を参照してください。 
 

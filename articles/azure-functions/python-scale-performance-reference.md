@@ -4,12 +4,12 @@ description: Python を使用して、負荷時に適切にスケーリングさ
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935871"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786108"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Azure Functions で Python アプリのスループット パフォーマンスを向上させる
 
@@ -22,10 +22,10 @@ Python を使用して Azure Functions 向けに開発する場合、関数が�
 
 ほとんどの Azure Functions アプリケーションの場合、既定の構成が適しています。 ただし、ワークロード プロファイルに基づく構成を採用することで、アプリケーションのスループットのパフォーマンスを向上させることができます。 最初の手順は、実行しているワークロードの種類を理解することです。
 
-|| I/O バウンド ワークロード | CPU バウンド ワークロード |
-|--| -- | -- |
-|関数アプリの特性| <ul><li>アプリで多くの同時呼び出しを処理する必要がある。</li> <li> アプリは、ネットワーク呼び出しやディスクの読み取り/書き込みなど、大量の I/O イベントを処理します。</li> </ul>| <ul><li>アプリでは、イメージのサイズ変更など、長時間実行される計算が行われます。</li> <li>アプリでは、データの変換が行われます。</li> </ul> |
-|例| <ul><li>Web API</li><ul> | <ul><li>データ処理</li><li> 機械学習推論</li><ul>|
+| ワークロードの種類 | 関数アプリの特性       | 例                                          |
+| ------------- | ---------------------------------- | ------------------------------------------------- |
+| **I/O バウンド**     | • アプリで多くの同時呼び出しを処理する必要がある。<br>• アプリは、ネットワーク呼び出しやディスクの読み取り/書き込みなど、大量の I/O イベントを処理します。 | • Web API                                          |
+| **CPU バウンド**     | • アプリでは、イメージのサイズ変更など、長時間実行される計算が行われます。<br>• アプリでは、データの変換が行われます。                                                | • データ処理<br>• 機械学習推論<br> |
 
  
 実際の関数ワークロードは、通常、I/O バインドと CPU バインドが混在しているため、運用環境の現実的な負荷の下でアプリをプロファイリングする必要があります。

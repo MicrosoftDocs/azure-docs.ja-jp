@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 8e83841031593d0d1af4499f3ef9a15400ce7794
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a34881901fd8642fff9ac37512cd2ef260ad9d1c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569614"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954220"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -157,7 +157,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 1. 前の手順で作成したセキュリティ グループを検索して選択します。 
    >[!div class="mx-imgBorder"]
-   >![セキュリティ グループの選択](./media/workday-inbound-tutorial/select-security-group-msft-wdad.png)
+   >![セキュリティ グループの選択](./media/workday-inbound-tutorial/select-security-group-workday.png)
 
 1. グループ名の横にある省略記号 (...) をクリックし、メニューから **[Security Group]\(セキュリティ グループ\) > [Maintain Domain Permissions for Security Group]\(セキュリティ グループのドメイン アクセス許可の管理\)** を選択します。
    >[!div class="mx-imgBorder"]
@@ -228,7 +228,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 ## <a name="provisioning-agent-installation-prerequisites"></a>プロビジョニング エージェントのインストールの前提条件
 
-[プロビジョニング エージェントのインストールの前提条件](../cloud-provisioning/how-to-prerequisites.md)を確認してから、次のセクションに進んでください。 
+[プロビジョニング エージェントのインストールの前提条件](../cloud-sync/how-to-prerequisites.md)を確認してから、次のセクションに進んでください。 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Workday から Active Directory へのユーザー プロビジョニングの構成
 
@@ -267,7 +267,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
 
 オンプレミスの Active Directory にプロビジョニングするには、目的の Active Directory ドメインへのネットワーク アクセスを備えたドメイン参加済みのサーバーに、プロビジョニング エージェントがインストールされている必要があります。
 
-ダウンロードしたエージェント インストーラーをサーバー ホストに転送し、[**エージェントのインストール** に関するセクション](../cloud-provisioning/how-to-install.md)の手順に従ってエージェントの構成を完了します。
+ダウンロードしたエージェント インストーラーをサーバー ホストに転送し、[**エージェントのインストール** に関するセクション](../cloud-sync/how-to-install.md)の手順に従ってエージェントの構成を完了します。
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>パート 3: プロビジョニング アプリで Workday と Active Directory への接続を構成する
 この手順では、Azure portal で Workday および Active Directory との接続を確立します。 
@@ -336,7 +336,7 @@ Workday から Active Directory へのユーザー プロビジョニングを�
       * 演算子:IS NOT NULL
 
    > [!TIP]
-   > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、Workday の少数のテスト ユーザーを使用してマッピングをテストするために **[ソース オブジェクト スコープ]** の下のスコープ フィルターを使用することをお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
+   > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、Workday の少数のテスト ユーザーを使用してマッピングをテストするために、[オンデマンド プロビジョニング](../app-provisioning/provision-on-demand.md)と **[ソース オブジェクト スコープ]** の[スコープ フィルター](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)を使用することをお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
 
    > [!CAUTION] 
    > プロビジョニング エンジンの既定の動作では、スコープ外に出るユーザーが無効化または削除されます。 これはご使用の Workday と AD の統合には望ましくない場合があります。 この既定の動作をオーバーライドするには、「[スコープ外に出るユーザー アカウントの削除をスキップする](../app-provisioning/skip-out-of-scope-deletions.md)」の記事を参照してください。
@@ -1065,7 +1065,8 @@ Azure AD プロビジョニング サービスは、GDPR 分類の **データ �
 
 ## <a name="next-steps"></a>次のステップ
 
+* [Azure AD と Workday の統合シナリオと Web サービス呼び出しについて](../app-provisioning/workday-integration-reference.md)
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 * [Workday と Azure Active Directory の間でシングル サインオンを構成する方法](workday-tutorial.md)
-* [他の SaaS アプリケーションを Azure Active Directory と統合する方法](tutorial-list.md)
+* [Workday Writeback の構成方法を確認する](workday-writeback-tutorial.md)
 * [Microsoft Graph API を使用してプロビジョニングの構成を管理する方法](/graph/api/resources/synchronization-overview)

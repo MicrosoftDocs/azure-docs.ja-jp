@@ -3,19 +3,19 @@ title: Translator の Languages メソッド
 titleSuffix: Azure Cognitive Services
 description: Languages メソッドでは、Translator の他の操作で現在サポートされている一連の言語が取得されます。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: d9abd1f305e47eca743dc9274e0ec1f0a950dd6a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 8471983d24cfed39e6521e19366f6023e519adaf
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021271"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895477"
 ---
 # <a name="translator-30-languages"></a>Translator 3.0:Languages
 

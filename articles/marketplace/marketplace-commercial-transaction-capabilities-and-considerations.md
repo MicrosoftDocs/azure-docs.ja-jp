@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b8c9af31243d8bb58a58fbc687cad68130f64f7e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 59768e4fc04613a5ecac6a76059382499b7aaa86
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880744"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986464"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -84,7 +84,7 @@ Microsoft では、Microsoft のコマーシャル マーケットプレース�
 
 オファーを収益化するためのオファーの種類と課金モデルを使用する以外にも、交渉済みの取引固有の価格またはカスタム構成を持つプライベート オファーを販売できます。 プライベート オファーは、3 つの取引の公開オプションのすべてによってサポートされています。
 
-このオプションにより、公開されているオファリングより高いか、または低い価格設定が可能になります。 プライベート オファーは、あるオファーに対する割引または特典を追加するために使用できます。 プライベート オファーは、オファー レベルで 1 人以上の顧客の Azure サブスクリプションをホワイトリストに追加することで、彼らが利用できるようにすることができます。
+このオプションにより、公開されているオファリングより高いか、または低い価格設定が可能になります。 プライベート オファーは、あるオファーに対する割引または特典を追加するために使用できます。 プライベート オファーは、オファー レベルで 1 人以上の顧客の Azure サブスクリプションを許可リストに追加することで、彼らが利用できるようにすることができます。
 
 ### <a name="commercial-marketplace-service-fees"></a>コマーシャル マーケットプレースのサービス料金
 

@@ -12,14 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/09/2020
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.custom: references_regions
+ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937476"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99220906"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
@@ -28,25 +29,31 @@ Azure NetApp Files レプリケーション機能を使用すると、リージ�
 > [!IMPORTANT]
 > リージョン間レプリケーションの機能は、現在パブリック プレビュー段階です。 [Azure NetApp Files のリージョン間レプリケーションの順番待ち送信ページ](https://aka.ms/anfcrrpreviewsignup)から、機能にアクセスするための順番待ちリクエストを送信する必要があります。 Azure NetApp Files チームからの正式な確認メールを待ってからリージョン間レプリケーション機能を使用してください。
 
-## <a name="supported-region-pairs"></a>サポートされているリージョン ペア
+## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>サポートされているリージョン間レプリケーション ペア
 
-Azure NetApp Files ボリューム レプリケーションは、現在、次の固定のリージョン ペアで使用できます。  
+Azure NetApp Files ボリューム レプリケーションは、さまざまな [Azure リージョン ペア](/azure/best-practices-availability-paired-regions#azure-regional-pairs)と非ペアの間でサポートされています。 Azure NetApp Files ボリューム レプリケーションは現在、次のリージョン間で使用できます。  
 
-* 米国西部および米国東部
-* 米国西部 2 および米国東部 
-* 米国中南部および米国中部 
-* 米国中南部および米国東部
-* 米国中南部および米国東部 2 
-* 米国東部 2 および米国中部 
+### <a name="azure-regional-pairs"></a>Azure リージョン ペア
+
+* 米国東部および米国西部
+* 米国東部 2 および米国中部
 * オーストラリア東部およびオーストラリア南東部
 * カナダ中部およびカナダ東部
-* インド中部およびインド南部
+* インド南部およびインド中部 
 * ドイツ中西部およびドイツ北部
 * 東日本および西日本
 * 北ヨーロッパおよび西ヨーロッパ
-* 東南アジアおよびオーストラリア東部
-* 英国南部およびドイツ中西部
 * 英国南部および英国西部
+
+### <a name="azure-regional-non-pairs"></a>Azure リージョン非ペア
+
+*   米国西部 2 および米国東部
+*   米国中南部および米国中部
+*   米国中南部および米国東部
+*   米国中南部および米国東部 2
+*   米国東部および米国東部 2
+*   オーストラリア東部および東南アジア 
+*   ドイツ中西部および英国南部
 
 ## <a name="service-level-objectives"></a>サービスレベルの目標
 

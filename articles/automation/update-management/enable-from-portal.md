@@ -2,15 +2,16 @@
 title: Azure portal から Azure Automation の Update Management を有効にする
 description: この記事では、Azure portal から Update Management を有効にする方法について説明します。
 services: automation
-ms.date: 04/11/2019
-ms.topic: article
+ms.subservice: update-management
+ms.date: 01/07/2021
+ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: ac402587c8346c14f34b683ba10832c7779b660b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 089c5fea6ac4a6fc4fb25af2d631335ef51cf4cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182769"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054908"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Azure portal から Update Management を有効にする
 
@@ -24,7 +25,7 @@ VM の管理に使用できるリソース グループの数は、[Resource Man
 ## <a name="prerequisites"></a>前提条件
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* マシンを管理する [Automation アカウント](../index.yml)。
+* マシンを管理する [Automation アカウント](../automation-security-overview.md)。
 * [仮想マシン](../../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン

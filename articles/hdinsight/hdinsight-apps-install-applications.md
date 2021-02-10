@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight にサードパーティ製アプリケーションをインストールする
 description: Azure HDInsight にサード パーティ製 Apache Hadoop アプリケーションをインストールする方法について説明します。
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.author: hrasheed
-ms.openlocfilehash: f275064bd4accd0ca12acf3e71713f39d3860be2
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: cfbbc1f11a24379561df26e2fb8d9da20b249317
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696457"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942743"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする
 

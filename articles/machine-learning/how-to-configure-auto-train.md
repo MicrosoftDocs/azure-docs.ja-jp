@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600065"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954717"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -203,15 +203,53 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 ### <a name="primary-metric"></a>主要メトリック
 `primary metric` パラメーターによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
 
+自動機械学習を最適化するための主要メトリックの選択は、多くの要因に基づきます。 最優先の考慮事項としてお勧めするのは、ビジネス ニーズを最も適切に表すメトリックを選択することです。 次に、メトリックがデータセット プロファイル (データのサイズ、範囲、クラスの分布など) に適しているかどうかを考慮します。
+
 これらのメトリックの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
 
 |分類 | 回帰 | 時系列予測
 |--|--|--
-|accuracy| spearman_correlation | spearman_correlation
-|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
-|average_precision_score_weighted | r2_score | r2_score
-|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
-|precision_score_weighted |
+|`accuracy`| `spearman_correlation` | `spearman_correlation`
+|`AUC_weighted` | `normalized_root_mean_squared_error` | `normalized_root_mean_squared_error`
+|`average_precision_score_weighted` | `r2_score` | `r2_score`
+|`norm_macro_recall` | `normalized_mean_absolute_error` | `normalized_mean_absolute_error`
+|`precision_score_weighted` |
+
+### <a name="primary-metrics-for-classification-scenarios"></a>分類シナリオの主要メトリック 
+
+`accuracy`、`average_precision_score_weighted`、`norm_macro_recall`、`precision_score_weighted` などのしきい値化された後のメトリックでは、非常に小さいデータセット、非常に大きいクラス傾斜 (クラスの不均衡) があるデータセットに対して、または予期されるメトリック値が 0.0 または 1.0 に非常に近い場合に、適切に最適化されない可能性があります。 このような場合、主要メトリックには `AUC_weighted` が適しています。 自動機械学習の完了後、ビジネス ニーズに最も適したメトリックに基づいて、優先されるモデルを選択できます。
+
+| メトリック | ユース ケースの例 |
+| ------ | ------- |
+| `accuracy` | 画像分類、感情分析、チャーン予測 |
+| `AUC_weighted` | 不正行為の検出、画像分類、異常検出/スパム検出 |
+| `average_precision_score_weighted` | センチメント分析 |
+| `norm_macro_recall` | チャーン予測 |
+| `precision_score_weighted` |  |
+
+### <a name="primary-metrics-for-regression-scenarios"></a>回帰シナリオの主要メトリック
+
+`r2_score` や `spearman_correlation` などのメトリックは、予測する値の規模が多くの桁数に及ぶ場合に、モデルの品質をより適切に表すことができます。 たとえば、給与の推定では、多くの人の給与は 20,000 ドルから 100,000 ドルですが、一部の給与は 100,000,000 ドルの範囲になり、非常に規模が大きくなります。 
+
+この場合、`normalized_mean_absolute_error` と `normalized_root_mean_squared_error` では、給与が 30,000 ドルの人と、給与が 20,000,000 ドルの人に対して、同じように 20,000 ドルの予測誤差が処理されます。 実際には、20000 ドルと隔たった 20000000 ドルの給与のみ予測することは非常に近く (相対差異は 0.1% で小さい)、一方 20000 ドルと隔たった 30000 ドルを予測することは近くありません (相対差異は 67% で大きい)。 `normalized_mean_absolute_error` と `normalized_root_mean_squared_error` は、予測する値が同じ規模になる場合に便利です。
+
+| メトリック | ユース ケースの例 |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | 価格の予測 (家/製品/チップ)、レビュー スコアの予測 |
+| `r2_score` | 飛行機の遅延、給与の見積もり、バグの解決時間 |
+| `normalized_mean_absolute_error` |  |
+
+### <a name="primary-metrics-for-time-series-forecasting-scenarios"></a>時系列予測シナリオの主要メトリック
+
+上記の回帰の説明を参照してください。
+
+| メトリック | ユース ケースの例 |
+| ------ | ------- |
+| `spearman_correlation` | |
+| `normalized_root_mean_squared_error` | 価格の予測 (予想)、在庫の最適化、需要の予測 |
+| `r2_score` | 価格の予測 (予想)、在庫の最適化、需要の予測 |
+| `normalized_mean_absolute_error` | |
 
 ### <a name="data-featurization"></a>データの特徴付け
 

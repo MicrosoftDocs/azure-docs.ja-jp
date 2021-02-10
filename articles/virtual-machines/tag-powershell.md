@@ -7,17 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 1efb512923caed97126bdb4ee6267c6a9b57f251
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bf13d5c0caeb0bf31a383cd23155a6856c81c53b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594869"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897393"
 ---
 # <a name="how-to-tag-a-virtual-machine-in-azure-using-powershell"></a>PowerShell を使用して Azure で仮想マシンにタグを付ける方法
 
 この記事では、PowerShell を使用して Azure の VM にタグを付ける方法について説明します。 タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。 現在、Azure では、1 つのリソースまたはリソース グループにつき最大 50 個のタグがサポートされます。 タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。 Azure CLI を使用して仮想マシンにタグを付ける場合は、[Azure CLI を使用して Azure で仮想マシンにタグを付ける方法](tag-cli.md)に関するページを参照してください。
-
 
 `Get-AzVM` コマンドレットを使用して、VM の現在のタグの一覧を表示します。
 
@@ -84,8 +83,7 @@ Environment   Production
 Location      MyLocation
 ```
 
-
-**次の手順**
+### <a name="next-steps"></a>次のステップ
 
 - Azure リソースへのタグ付けについて詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」と「[タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)」をご覧ください。
-- タグが Azure リソースの使用の管理にどのように役立つかを確認するには、[Azure の課金内容の確認](../cost-management-billing/understand/review-individual-bill.md)に関するページと「[Microsoft Azure リソースの消費を把握する](../cost-management-billing/manage/usage-rate-card-overview.md)」を参照してください。
+- Azure リソースの使用を管理するときにタグを役立てる方法については、「[Azure の課金内容の確認」](../cost-management-billing/understand/review-individual-bill.md)を参照してください。

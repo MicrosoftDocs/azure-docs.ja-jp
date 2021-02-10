@@ -1,15 +1,15 @@
 ---
 title: Azure portal の Azure Resource Graph エクスプローラーのキーボード ショートカット
 description: Azure portal の Azure Resource Graph エクスプローラーでは、アクションの実行と移動に役立つキーボード ショートカットがサポートされています。
-ms.date: 10/21/2020
+ms.date: 01/27/2021
 ms.topic: reference
 ms.custom: accessibility
-ms.openlocfilehash: fdb53e079adf2f65180c15ab93da4f8343e3bab5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 70777db630a654dc61aad697561583a02c0ccc25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340123"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919093"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Resource Graph エクスプローラーのキーボード ショートカット
 

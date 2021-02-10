@@ -3,12 +3,12 @@ title: バックアップ センターのサポート マトリックス
 description: この記事では、バックアップ センターがワークロードの種類ごとにサポートするシナリオを要約しています。
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 40582ddc1187082230e2887edcd24b3716811be2
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 672f0e127f173260f25978497198fd7b554aa390
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173998"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893594"
 ---
 # <a name="support-matrix-for-backup-center"></a>バックアップ センターのサポート マトリックス
 
@@ -18,16 +18,16 @@ ms.locfileid: "92173998"
 
 | **カテゴリ** | **シナリオ**  | **サポートされるワークロード**  | **制限** |
 | -------------| ------------- | ----------------------- |------------|
-| 監視   | すべてのジョブの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | <li> すぐに使用できるのは 7 日分のジョブ。 <br> <li> 各フィルター/ドロップダウンでは最大 1000 項目がサポートされます。 そのため、バックアップ センターを使用して、テナントにまたがる最大 1000 のサブスクリプションと 1000 のコンテナーを監視できます。 |
-| 監視 | すべてのバックアップ インスタンスの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | 同上 |
-| 監視 | すべてのバックアップ ポリシーの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | 同上 |
-| 監視 | すべてのコンテナーの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | 同上 |
-| アクション | バックアップの構成 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | [Azure VM バックアップ](./backup-support-matrix-iaas.md)および[Azure Database for PostgreSQL サーバーのバックアップ](backup-azure-database-postgresql.md#support-matrix)のサポート マトリックスを参照 |
-| アクション | バックアップ インスタンスの復元 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | [Azure VM バックアップ](./backup-support-matrix-iaas.md)および[Azure Database for PostgreSQL サーバーのバックアップ](backup-azure-database-postgresql.md#support-matrix)のサポート マトリックスを参照 |
-| アクション | [コンテナーの作成] | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | [Recovery Services コンテナー](./backup-support-matrix.md#vault-support)のサポート マトリックスを参照 |
-| アクション | バックアップ ポリシーを作成する | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | [Recovery Services コンテナー](./backup-support-matrix.md#vault-support)のサポート マトリックスを参照 |
-| アクション | バックアップ インスタンスのオンデマンド バックアップの実行 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | [Azure VM バックアップ](./backup-support-matrix-iaas.md)および[Azure Database for PostgreSQL サーバーのバックアップ](backup-azure-database-postgresql.md#support-matrix)のサポート マトリックスを参照 |
-| アクション | バックアップ インスタンスのバックアップを停止する | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | [Azure VM バックアップ](./backup-support-matrix-iaas.md)および[Azure Database for PostgreSQL サーバーのバックアップ](backup-azure-database-postgresql.md#support-matrix)のサポート マトリックスを参照 |
+| 監視   | すべてのジョブの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | <li> すぐに使用できるのは 7 日分のジョブ。 <br> <li> 各フィルター/ドロップダウンでは最大 1000 項目がサポートされます。 そのため、バックアップ センターを使用して、テナントにまたがる最大 1000 のサブスクリプションと 1000 のコンテナーを監視できます。 |
+| 監視 | すべてのバックアップ インスタンスの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | 同上 |
+| 監視 | すべてのバックアップ ポリシーの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | 同上 |
+| 監視 | すべてのコンテナーの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | 同上 |
+| アクション | バックアップの構成 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | [Azure VM バックアップ](./backup-support-matrix-iaas.md)および[Azure Database for PostgreSQL サーバーのバックアップ](backup-azure-database-postgresql.md#support-matrix)のサポート マトリックスを参照 |
+| アクション | バックアップ インスタンスの復元 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | [Azure VM バックアップ](./backup-support-matrix-iaas.md)および[Azure Database for PostgreSQL サーバーのバックアップ](backup-azure-database-postgresql.md#support-matrix)のサポート マトリックスを参照 |
+| アクション | [コンテナーの作成] | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | [Recovery Services コンテナー](./backup-support-matrix.md#vault-support)のサポート マトリックスを参照 |
+| アクション | バックアップ ポリシーを作成する | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | [Recovery Services コンテナー](./backup-support-matrix.md#vault-support)のサポート マトリックスを参照 |
+| アクション | バックアップ インスタンスのオンデマンド バックアップの実行 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | [Azure VM バックアップ](./backup-support-matrix-iaas.md)および[Azure Database for PostgreSQL サーバーのバックアップ](backup-azure-database-postgresql.md#support-matrix)のサポート マトリックスを参照 |
+| アクション | バックアップ インスタンスのバックアップを停止する | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー <br><br> <li> Azure VM 内の SQL <br><br> <li> Azure VM 内の SAP HANA <br><br> <li> Azure Files | [Azure VM バックアップ](./backup-support-matrix-iaas.md)および[Azure Database for PostgreSQL サーバーのバックアップ](backup-azure-database-postgresql.md#support-matrix)のサポート マトリックスを参照 |
 | 洞察 | View Backup Reports | <li> Azure Virtual Machine <br><br> <li> Azure 仮想マシンでの SQL <br><br> <li> Azure 仮想マシンでの SAP HANA <br><br> <li> Azure Files <br><br> <li> System Center Data Protection Manager <br><br> <li> Azure Backup エージェント (MARS) <br><br> <li> Azure Backup Server (MABS) | [バックアップ レポートのサポートされるシナリオ](./configure-reports.md#supported-scenarios)を参照 |
 | ガバナンス | カテゴリ [バックアップ] での組み込みとカスタムの Azure ポリシーの表示と割り当て | N/A | N/A |
 | ガバナンス | バックアップ用に構成されていないデータソースの表示 | <li> Azure Virtual Machine <br><br> <li> Azure Database for PostgreSQL サーバー | N/A |

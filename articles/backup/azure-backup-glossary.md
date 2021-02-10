@@ -3,12 +3,12 @@ title: Azure Backup 用語集
 description: この記事では、Azure Backup を使用する際に役立つ用語を定義します。
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5b575e0f56c9cf39987e9e77850ab1d9b2e80d93
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935072"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723916"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup 用語集
 
@@ -21,7 +21,7 @@ ms.locfileid: "97935072"
 
 ## <a name="afs-azure-file-shares"></a>AFS (Azure ファイル共有)
 
-[Azure Files のドキュメント](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)を参照してください。
+[Azure Files のドキュメント](../storage/files/storage-files-introduction.md)を参照してください。
 
 ## <a name="alternate-location-recovery"></a>別の場所の復旧
 
@@ -35,7 +35,7 @@ ms.locfileid: "97935072"
 
 ## <a name="azure-resource-manager-arm-templates"></a>Azure Resource Manager (ARM) テンプレート
 
-[ARM テンプレートのドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview)を参照してください。
+[ARM テンプレートのドキュメント](../azure-resource-manager/templates/overview.md)を参照してください。
 
 ## <a name="autoprotection-for-databases"></a>自動保護 (データベースの場合)
 
@@ -49,38 +49,38 @@ Azure Backup では、ストレージとデータの高可用性を維持する�
 
 ### <a name="lrs"></a>LRS
 
-[ローカル冗長ストレージ (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#locally-redundant-storage) では、データセンターのストレージ スケール ユニットにバックアップ データが 3 回レプリケートされます (バックアップ データのコピーが 3 つ作成されます)。 バックアップ データのすべてのコピーは、同じリージョン内に存在します。 LRS は、ローカル ハードウェアの障害からバックアップ データを保護するための低コストのオプションです。
+[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) では、データセンターのストレージ スケール ユニットにバックアップ データが 3 回レプリケートされます (バックアップ データのコピーが 3 つ作成されます)。 バックアップ データのすべてのコピーは、同じリージョン内に存在します。 LRS は、ローカル ハードウェアの障害からバックアップ データを保護するための低コストのオプションです。
 
 ### <a name="grs"></a>GRS
 
-[geo 冗長ストレージ (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) は、既定の推奨レプリケーション オプションです。 GRS では、セカンダリ リージョン (ソース データのプライマリの場所から数百マイル離れた場所) にバックアップ データがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、高いレベルの持続性がバックアップ データに提供されます。
+[geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) は、既定の推奨レプリケーション オプションです。 GRS では、セカンダリ リージョン (ソース データのプライマリの場所から数百マイル離れた場所) にバックアップ データがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、高いレベルの持続性がバックアップ データに提供されます。
 
 >[!NOTE]
 >リージョン間の復元機能が有効になっている GRS コンテナーの場合、バックアップ ストレージが GRS から RA-GRS (読み取りアクセス geo 冗長ストレージ) にアップグレードされます。
 
 ### <a name="zrs"></a>ZRS
 
-[ゾーン冗長ストレージ (ZRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy#zone-redundant-storage) は、[可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)内のバックアップ データをレプリケートし、同じリージョン内でバックアップ データ所在地と回復性を保証します。 そのため、[データ所在地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)を必要とするクリティカルなワークロードは、ZRS にバックアップすることができます。
+[ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](../availability-zones/az-overview.md#availability-zones)内のバックアップ データをレプリケートし、同じリージョン内でバックアップ データ所在地と回復性を保証します。 そのため、[データ所在地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)を必要とするクリティカルなワークロードは、ZRS にバックアップすることができます。
 
 ## <a name="azure-command-line-interface-cli"></a>Azure コマンド ライン インターフェイス (CLI)
 
-[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/what-is-azure-cli)を参照してください。
+[Azure CLI のドキュメント](/cli/azure/what-is-azure-cli)を参照してください。
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy のドキュメント](https://docs.microsoft.com/azure/governance/policy/overview)を参照してください。
+[Azure Policy のドキュメント](../governance/policy/overview.md)を参照してください。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/)を参照してください。
+[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
 ## <a name="azure-resource-manager-arm"></a>Azure Resource Manager (ARM)
 
-[Azure Resource Manager のドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)を参照してください。
+[Azure Resource Manager のドキュメント](../azure-resource-manager/management/overview.md)を参照してください。
 
 ## <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
-[Azure Disk Encryption のドキュメント](https://docs.microsoft.com/azure/security/fundamentals/azure-disk-encryption-vms-vmss)を参照してください。
+[Azure Disk Encryption のドキュメント](../security/fundamentals/azure-disk-encryption-vms-vmss.md)を参照してください。
 
 ## <a name="backend-storage--cloud-storage--backup-storage"></a>バックエンド ストレージ/クラウド ストレージ/バックアップ ストレージ
 
@@ -124,11 +124,11 @@ BCDR には、計画された、または計画外のサービスや Azure の�
 
 ## <a name="cross-region-restore-crr"></a>リージョンをまたがる復元 (CRR)
 
-[復元オプション](backup-azure-arm-restore-vms.md#restore-options)の 1 つである、リージョンをまたがる復元 (CRR) を使用すると、セカンダリ リージョン ([Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions)) でバックアップ項目を復元できます。
+[復元オプション](backup-azure-arm-restore-vms.md#restore-options)の 1 つである、リージョンをまたがる復元 (CRR) を使用すると、セカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md#what-are-paired-regions)) でバックアップ項目を復元できます。
 
 ## <a name="data-box"></a>Data Box
 
-[Data Box のドキュメント](https://docs.microsoft.com/azure/databox/data-box-overview)を参照してください。
+[Data Box のドキュメント](../databox/data-box-overview.md)を参照してください。
 
 ## <a name="datasource"></a>データソース
 
@@ -138,11 +138,11 @@ BCDR には、計画された、または計画外のサービスや Azure の�
 
 (ワークロード固有の用語)
 
-[DPM のドキュメント](https://docs.microsoft.com/system-center/dpm/dpm-overview)を参照してください。
+[DPM のドキュメント](/system-center/dpm/dpm-overview)を参照してください。
 
 ## <a name="expressroute"></a>ExpressRoute
 
-[ExpressRoute のドキュメント](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)を参照してください。
+[ExpressRoute のドキュメント](../expressroute/expressroute-introduction.md)を参照してください。
 
 ## <a name="file-system-consistent-backup"></a>ファイル システム整合性バックアップ
 
@@ -164,7 +164,7 @@ GFS (Grandfather-father-son) バックアップ ポリシーは、毎日のバ�
 
 ## <a name="iaas-vms--azure-vms"></a>IaaS VM/Azure VM
 
-[Azure VM のドキュメント](https://docs.microsoft.com/azure/virtual-machines/)を参照してください。
+[Azure VM のドキュメント](../virtual-machines/index.yml)を参照してください。
 
 ## <a name="incremental-backup"></a>増分バックアップ
 
@@ -196,7 +196,7 @@ Azure Backup Server を使用すると、単一のコンソールから Hyper-V 
 
 ## <a name="managed-disks"></a>マネージド ディスク
 
-[マネージド ディスクのドキュメント](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)を参照してください。
+[マネージド ディスクのドキュメント](../virtual-machines/managed-disks-overview.md)を参照してください。
 
 ## <a name="mars-agent"></a>MARS エージェント
 
@@ -206,7 +206,7 @@ MARS エージェントは、**Azure Backup エージェント** や **Recovery 
 
 ## <a name="nsg-network-security-group"></a>NSG (ネットワーク セキュリティ グループ)
 
-[NSG のドキュメント](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)を参照してください。
+[NSG のドキュメント](../virtual-network/network-security-groups-overview.md)を参照してください。
 
 ## <a name="offline-seeding"></a>オフライン シード処理
 
@@ -228,7 +228,7 @@ MARS エージェントは、**Azure Backup エージェント** や **Recovery 
 
 ## <a name="private-endpoint"></a>プライベート エンドポイント
 
-[プライベート エンドポイントのドキュメント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)を参照してください。
+[プライベート エンドポイントのドキュメント](../private-link/private-endpoint-overview.md)を参照してください。
 
 ## <a name="protected-instance"></a>保護されたインスタンス
 
@@ -236,7 +236,7 @@ MARS エージェントは、**Azure Backup エージェント** や **Recovery 
 
 ## <a name="rbac-role-based-access-control"></a>RBAC (ロールベースのアクセス制御)
 
-[RBAC のドキュメント](https://docs.microsoft.com/azure/role-based-access-control/overview)を参照してください。
+[RBAC のドキュメント](../role-based-access-control/overview.md)を参照してください。
 
 ## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>復旧ポイント/復元ポイント/保有ポイント/ポイントインタイム (PIT)
 
@@ -248,11 +248,11 @@ MARS エージェントは、**Azure Backup エージェント** や **Recovery 
 
 ## <a name="resource-group"></a>Resource group
 
-[Azure Resource Manager のドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal#what-is-a-resource-group)を参照してください。
+[Azure Resource Manager のドキュメント](../azure-resource-manager/management/manage-resource-groups-portal.md#what-is-a-resource-group)を参照してください。
 
 ## <a name="rest-api"></a>REST API
 
-[Azure REST API のドキュメント](https://docs.microsoft.com/rest/api/azure/)を参照してください。
+[Azure REST API のドキュメント](/rest/api/azure/)を参照してください。
 
 ## <a name="retention-rule"></a>保持規則
 
@@ -272,7 +272,7 @@ RTO は、データ損失シナリオの後、最後の使用可能な時点に�
 
 ## <a name="secondary-region--paired-region"></a>セカンダリ リージョン/ペアになっているリージョン
 
-リージョン ペアは、同じ地域内の 2 つのリージョンで構成されます。 1 つはプライマリ リージョンで、もう 1 つはセカンダリ リージョンです。 一部の Azure サービス (GRS 設定を使用した Azure Backup を含む) は、ビジネスの継続性を確保し、データの損失を防ぐために、ペアになっているリージョンを使用します。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+リージョン ペアは、同じ地域内の 2 つのリージョンで構成されます。 1 つはプライマリ リージョンで、もう 1 つはセカンダリ リージョンです。 一部の Azure サービス (GRS 設定を使用した Azure Backup を含む) は、ビジネスの継続性を確保し、データの損失を防ぐために、ペアになっているリージョンを使用します。 [詳細については、こちらを参照してください](../best-practices-availability-paired-regions.md)。
 
 ## <a name="soft-delete"></a>論理的な削除
 
@@ -280,11 +280,11 @@ RTO は、データ損失シナリオの後、最後の使用可能な時点に�
 
 ## <a name="snapshot"></a>スナップショット
 
-スナップショットは、仮想ハード ドライブ (VHD) または Azure ファイル共有の完全な読み取り専用コピーです。 [ディスク スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)および[ファイル スナップショット](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)に関する詳細情報を参照してください。
+スナップショットは、仮想ハード ドライブ (VHD) または Azure ファイル共有の完全な読み取り専用コピーです。 [ディスク スナップショット](../virtual-machines/windows/snapshot-copy-managed-disk.md)および[ファイル スナップショット](../storage/files/storage-snapshots-files.md)に関する詳細情報を参照してください。
 
 ## <a name="storage-account"></a>ストレージ アカウント
 
-[ストレージ アカウントのドキュメント](https://docs.microsoft.com/azure/storage/common/storage-account-overview)を参照してください。
+[ストレージ アカウントのドキュメント](../storage/common/storage-account-overview.md)を参照してください。
 
 ## <a name="subscription"></a>サブスクリプション
 
@@ -302,7 +302,7 @@ Azure サブスクリプションは、Azure でリソースをプロビジョ�
 
 ## <a name="unmanaged-disk"></a>アンマネージド ディスク
 
-[アンマネージド ディスクのドキュメント](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance#azure-unmanaged-disks)を参照してください。
+[アンマネージド ディスクのドキュメント](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks)を参照してください。
 
 ## <a name="vault"></a>コンテナー
 
@@ -314,11 +314,11 @@ Azure サブスクリプションは、Azure でリソースをプロビジョ�
 
 ## <a name="vnet-virtual-network"></a>VNET (Virtual Network)
 
-[VNET のドキュメント](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)を参照してください。
+[VNET のドキュメント](../virtual-network/virtual-networks-overview.md)を参照してください。
 
 ## <a name="vss-windows-volume-shadow-copy-service"></a>VSS (Windows ボリューム シャドウ コピー サービス)
 
-[VSS のドキュメント](https://docs.microsoft.com/windows-server/storage/file-server/volume-shadow-copy-service)を参照してください。
+[VSS のドキュメント](/windows-server/storage/file-server/volume-shadow-copy-service)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

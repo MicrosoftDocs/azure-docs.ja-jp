@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
-ms.openlocfilehash: eda920640667abc6620c5c90ee7d04a44789353e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993180"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878546"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>S2S VPN または VNet 対 VNet 接続用の IPsec/IKE ポリシーを構成する:Azure portal
 
@@ -28,10 +28,8 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 ### <a name="considerations"></a>考慮事項
 
 * IPsec/IKE ポリシーは、次のゲートウェイ SKU でのみ機能します。
-  * "***VpnGw1 から 5 および VpnGw1AZ から 5AZ***"
-  * "***Standard*** および ***HighPerformance***"
-* ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ***だけです。
-* IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
+  * ***VpnGw1 から 5 および VpnGw1AZ から 5AZ** _ _ ***Standard** _ および _*_HighPerformance_*_ _ 特定の接続に対して指定できるポリシーの組み合わせは ***1 つ** だけです。
+  IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
 * オンプレミスの VPN デバイスでポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。 ポリシーに対応していない場合、S2S または VNet-to-VNet 接続を確立することはできません。
 
 ## <a name="workflow"></a><a name ="workflow"></a>ワークフロー
@@ -116,27 +114,27 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 このセクションでは、IPsec/IKE ポリシーを使用してサイト間 VPN 接続を作成する手順について説明します。 以下の手順で、次の図に示す接続を作成します。
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="IPsec/IKE ポリシーの図" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="サイト間ポリシー" border="false":::
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>手順1 - 仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
 
-以下のリソースを次のスクリーンショットに示すように作成します。 手順については、[サイト間 VPN 接続の作成](vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関するページを参照してください。
+以下のリソースを次のスクリーンショットに示すように作成します。 手順については、[サイト間 VPN 接続の作成](./tutorial-site-to-site-portal.md)に関するページを参照してください。
 
 * **仮想ネットワーク:** TestVNet1
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="IPsec/IKE ポリシーの図":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="VNet":::
 
 * **VPN ゲートウェイ:** VNet1GW
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="IPsec/IKE ポリシーの図":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="ゲートウェイ":::
 
 * **[ローカル ネットワーク ゲートウェイ]:** Site6
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="IPsec/IKE ポリシーの図":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="サイト":::
 
 * **Connection:** VNet1 から Site6
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="IPsec/IKE ポリシーの図":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="接続":::
 
 ### <a name="step-2---configure-ipsecike-policy-on-the-s2s-vpn-connection"></a><a name="s2sconnection"></a>手順 2 - サイト間 VPN 接続で IPsec/IKE ポリシーを構成する
 
@@ -147,15 +145,15 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 
 1. Azure portal で、接続リソース **VNet1toSite6** に移動します。 **[構成]** ページを選択し、 **[カスタム]** の IPsec/IKE ポリシーを選択してすべての構成オプションを表示します。 次のスクリーンショットは、一覧に基づいた構成を示しています。
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="IPsec/IKE ポリシーの図":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="Site 6":::
 
 1. IPsec に GCMAES を使用する場合、IPsec 暗号化と整合性の両方で同じ GCMAES アルゴリズムとキーの長さを使用する必要があります。 たとえば、次のスクリーンショットでは、IPsec 暗号化と IPsec 整合性の両方に GCMAES128 を指定しています。
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="IPsec/IKE ポリシーの図":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="IPsec に GCMAES を指定":::
 
 1. 必要に応じて **[Use policy based traffic selectors]\(ポリシー ベースのトラフィック セレクターを使用する\)** オプションに **[有効化]** を選択して、Azure VPN ゲートウェイがオンプレミスのポリシーベースの VPN デバイスに接続できるようにすることができます (前述の説明を参照してください)。
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="IPsec/IKE ポリシーの図":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="ポリシー ベースのトラフィック セレクター":::
 
 1. すべてのオプションを選択したら、 **[保存]** を選択して、接続リソースの変更をコミットします。 ポリシーは約 1 分で適用されます。
 
@@ -163,20 +161,20 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 >
 > * 接続に IPsec/IKE ポリシーを指定すると、Azure VPN ゲートウェイは、その特定の接続に対して指定された暗号アルゴリズムとキーの強度を使用する IPsec/IKE 提案のみを送受信します。 接続するオンプレミスの VPN デバイスが、ポリシーの完全な組み合わせを使用するか受け入れることを確認する必要があります。それ以外の場合、S2S VPN トンネルは確立されません。
 >
-> * **ポリシーベースのトラフィック セレクター**と **DPD タイムアウト**のオプションは、カスタム IPsec/IKE ポリシーを使用せず、上記のスクリーンショットに示しているように、**既定**のポリシーを使用して指定できます。
+> * **ポリシーベースのトラフィック セレクター** と **DPD タイムアウト** のオプションは、カスタム IPsec/IKE ポリシーを使用せず、上記のスクリーンショットに示しているように、**既定** のポリシーを使用して指定できます。
 >
 
 ## <a name="vnet-to-vnet-with-ipsecike-policy"></a><a name ="vnet2vnet"></a>IPsec/IKE ポリシーを使用した VNet 間
 
 IPsec/IKE ポリシーを使用した VNet 間接続の作成手順は、サイト間 VPN 接続の作成手順に似ています。
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="IPsec/IKE ポリシーの図" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="VNet 間ポリシーの図" border="false":::
 
 1. [VNet 間接続の作成](vpn-gateway-vnet-vnet-rm-ps.md)に関する記事の手順を使用して、VNet 間接続を作成します。
 
 2. 手順を完了すると、次のスクリーンショットに示すように、VNet2GW リソースの 2 つの VNet 間接続が表示されます。
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="IPsec/IKE ポリシーの図":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="VNet 間接続":::
 
 3. 接続リソースにアクセスし、ポータルの **[構成]** ページに移動します。 **[IPsec/IKE policy]\(IPsec/IKE ポリシー\)** で **[カスタム]** を選択すると、カスタム ポリシーオプションが表示されます。 キーの長さが一致する暗号アルゴリズムを選択します。
 
@@ -184,7 +182,7 @@ IPsec/IKE ポリシーを使用した VNet 間接続の作成手順は、サイ�
    * IKE:AES128、SHA1、DHGroup14、DPD タイムアウト 45 秒
    * IPsec: GCMAES128、GCMAES128、PFS14、SA の有効期間 14,400 秒および 102,400,000 KB
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="IPsec/IKE ポリシーの図":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="接続ポリシー":::
 
 4. 接続リソースにポリシーの変更を適用するには、 **[保存]** を選択します。
 
@@ -203,7 +201,7 @@ IPsec/IKE ポリシーを使用した VNet 間接続の作成手順は、サイ�
 
 2. **[IPsec/IKE policy]\(IPsec/IKE ポリシー\)** オプションで **[既定]** を選択します。 これにより、この接続で以前に指定したすべてのカスタム ポリシーが削除され、接続に既定の IPsec/IKE 設定が復元されます。
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="IPsec/IKE ポリシーの図":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="ポリシーの削除":::
 
 3. **[保存]** を選択すると、カスタム ポリシーが削除され、接続の既定の IPsec/IKE 設定が復元されます。
 

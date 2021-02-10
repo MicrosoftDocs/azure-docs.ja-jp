@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 161b7fcf4660ddb9515f0b82887f416d83598bdc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754438"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225801"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>クイック スタート:Angular シングルページ アプリケーションでユーザーをサインインさせてアクセス トークンを取得する
 
@@ -49,11 +49,11 @@ ms.locfileid: "98754438"
 > 1. そのアカウントで複数のテナントにアクセスできる場合は、右上でアカウントを選択してから、ポータルのセッションを、使用したい Azure AD テナントに設定します。
 > 1. 手順に従って、Azure portal に[シングルページ アプリケーションを登録](./scenario-spa-app-registration.md)します。
 > 1. アプリの登録の **[認証]** ペインで新しいプラットフォームを追加し、リダイレクト URI (`http://localhost:4200/`) を登録します。
-> 1. このクイックスタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を使用します。 **[ID トークン]** と **[アクセス トークン]** で **[暗黙的な許可]** 設定を選択します。 このアプリはユーザーのサインインを実行して API を呼び出すため、ID トークンとアクセス トークンが必要です。
+> 1. このクイックスタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を使用します。 **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[ID トークン]** と **[アクセス トークン]** を選択します。 このアプリはユーザーのサインインを実行して API を呼び出すため、ID トークンとアクセス トークンが必要です。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、リダイレクト URI として **http://localhost:4200/** を追加し、 **[暗黙の付与]** を有効にします。
+> このクイックスタートのコード サンプルを動作させるには、リダイレクト URI として **http://localhost:4200/** を追加し、****[暗黙の付与]** を有効にします。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >

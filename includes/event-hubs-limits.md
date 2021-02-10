@@ -5,15 +5,15 @@ services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 02/01/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 262783e83bdb846a3ea7e3015212c01048a00125
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 45cc5120072f2a8c7742f79cfb79161042345505
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96152714"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99427238"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
@@ -30,7 +30,8 @@ ms.locfileid: "96152714"
 | コンシューマー グループあたりの非エポック受信者の数 |- |5 |
 | 名前空間ごとの承認規則の数 | 上限を超えると承認規則の作成要求が拒否されます。|12 |
 | GetRuntimeInformation メソッドの呼び出し数 |  - | 1 秒あたり 50 | 
-| 仮想ネットワーク (VNet) と IP 構成規則の数 | - | 128 | 
+| 仮想ネットワーク (VNet) の数 | - | 128 | 
+| IP 構成規則の数 | - | 128 | 
 
 
 ### <a name="basic-vs-standard-tiers"></a>Basic レベルと Standard レベル
@@ -56,7 +57,7 @@ Azure portal を使用して専用 Event Hubs クラスターを作成する方�
 | Event Hubs |  名前空間あたり 10 | 名前空間あたり 1,000 |
 | イングレス イベント | 100 万イベントごとの課金 | Included |
 | メッセージ サイズ | 100 万バイト | 100 万バイト |
-| [メジャー グループ] | イベント ハブあたり 32 | イベント ハブあたり 1024<br/>CU あたり 2,000 |
+| [メジャー グループ] | イベント ハブあたり 32 | イベント ハブあたり 1,024<br/>CU あたり 2,000 |
 | コンシューマー グループ | イベント ハブあたり 20 | CU あたりの制限なし、イベント ハブあたり 1,000 |
 | 仲介型接続 | 1,000 (付属)、最大 5,000 | 100,000 (付属、最大) |
 | メッセージのリテンション期間 | 7 日、TU あたり 84 GB を含む | 90 日、CU あたり 10 TB を含む |

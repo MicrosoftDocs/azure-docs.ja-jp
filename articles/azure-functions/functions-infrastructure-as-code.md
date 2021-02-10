@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 9df4c62a65fd133c6ea8dc84e33d7c7b02d94cbf
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050937"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494041"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -212,9 +212,11 @@ Azure Resource Manager テンプレートのサンプルについては、[従�
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
+従量課金プランで実行されている関数アプリに必要な設定は、Windows と Linux の間で異なります。 
+
 #### <a name="windows"></a>Windows
 
-Windows の場合、従量課金プランでは、サイト構成に `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` の 2 つの追加の設定が必要です。 このプロパティによって、関数アプリ コードと構成が格納されているストレージ アカウントとファイル パスが構成されます。
+Windows の場合、従量課金プランでは、サイト構成に追加の設定 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) が必要です。 このプロパティによって、関数アプリのコードと構成が格納されているストレージ アカウントが構成されます。
 
 ```json
 {
@@ -238,10 +240,6 @@ Windows の場合、従量課金プランでは、サイト構成に `WEBSITE_CO
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -259,9 +257,12 @@ Windows の場合、従量課金プランでは、サイト構成に `WEBSITE_CO
 }
 ```
 
+> [!IMPORTANT]
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定は、サイトが最初に作成されるときに生成されるため、設定しないでください。  
+
 #### <a name="linux"></a>Linux
 
-Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定され、`reserved` プロパティが `true` に設定されている必要があります。
+Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定され、`reserved` プロパティが `true` に設定されている必要があります。 
 
 ```json
 {
@@ -299,8 +300,9 @@ Linux の場合、関数アプリは `kind` が `functionapp,linux` に設定さ
 }
 ```
 
-<a name="premium"></a>
+[`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) および [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) の設定は、Linux ではサポートされていません。
 
+<a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>Premium プランでデプロイする
 
 Premium プランでは、従量課金プランと同じスケーリングが提供されますが、専用リソースと追加の機能が含まれています。 詳細については、「[Azure Functions の Premium プラン](./functions-premium-plan.md)」を参照してください。
@@ -332,7 +334,7 @@ Premium プランは、特殊なタイプの "serverfarm" リソースです。 
 
 ### <a name="create-a-function-app"></a>Function App を作成する
 
-Premium プランでの関数アプリは、`serverFarmId` プロパティが、前に作成されたプランのリソース ID に設定されている必要があります。 さらに、Premium プランでは、サイト構成に `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` と `WEBSITE_CONTENTSHARE` の 2 つの追加の設定が必要です。 このプロパティによって、関数アプリ コードと構成が格納されているストレージ アカウントとファイル パスが構成されます。
+Premium プランでの関数アプリは、`serverFarmId` プロパティが、前に作成されたプランのリソース ID に設定されている必要があります。 さらに、Premium プランでは、サイト構成に追加の設定 [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) が必要です。 このプロパティによって、関数アプリのコードと構成が格納されているストレージ アカウントが構成されます。
 
 ```json
 {
@@ -358,10 +360,6 @@ Premium プランでの関数アプリは、`serverFarmId` プロパティが、
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -378,6 +376,8 @@ Premium プランでの関数アプリは、`serverFarmId` プロパティが、
     }
 }
 ```
+> [!IMPORTANT]
+> [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) 設定は、サイトが最初に作成されるときに生成されるため、設定しないでください。  
 
 <a name="app-service-plan"></a>
 
@@ -473,7 +473,7 @@ Linux アプリでは、`siteConfig` の下に `linuxFxVersion` プロパティ�
 |------------------|-------------------------------------------------------|
 | Python           | `python|3.7`      |
 | JavaScript       | `node|12`          |
-| .NET             | `dotnet|3.0` |
+| .NET             | `dotnet|3.1` |
 
 ```json
 {
@@ -692,7 +692,7 @@ Azure Functions を開発および構成する方法について学習します�
 
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure 関数アプリの設定を構成する方法](functions-how-to-use-azure-function-app-settings.md)
-* [初めての Azure 関数の作成](functions-create-first-azure-function.md)
+* [初めての Azure 関数の作成](./functions-get-started.md)
 
 <!-- LINKS -->
 

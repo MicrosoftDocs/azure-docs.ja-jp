@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.custom: references_regions
+ms.openlocfilehash: 3cd7d2541cb980fc5ca6a1a9c42a430eac1ecb1b
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572818"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429281"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -30,9 +31,9 @@ ms.locfileid: "98572818"
 
 構成証明プロバイダーは、Microsoft.Attestation という名前の Azure リソース プロバイダーに属しています。 リソース プロバイダーは、Azure Attestation の REST コントラクトを提供するサービス エンドポイントであり、[Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用してデプロイされます。 構成証明プロバイダーはそれぞれ、検出可能な特定のポリシーに従います。 構成証明プロバイダーは、構成証明タイプごとに既定のポリシーを使用して作成されます (VBS エンクレーブには既定のポリシーがないことに注意してください)。 SGX の既定のポリシーについて詳しくは、「[構成証明ポリシーの例](policy-examples.md)」を参照してください。
 
-### <a name="regional-default-provider"></a>リージョンにおける既定のプロバイダー
+### <a name="regional-shared-provider"></a>リージョンの共有プロバイダー
 
-Azure Attestation には、リージョンごとに既定のプロバイダーが用意されています。 構成証明に既定のプロバイダーを使用するか、カスタム ポリシーを使用した独自のプロバイダーを作成するかは、お客様が選択できます。 既定のプロバイダーには、すべての Azure AD ユーザーがアクセスできます。また、既定のプロバイダーに関連付けられているポリシーは変更できません。
+Azure Attestation には、利用可能なリージョンごとにその共有プロバイダーが用意されています。 構成証明にリージョンの共有プロバイダーを使用するか、カスタム ポリシーを使用した独自のプロバイダーを作成するかは、お客様が選択できます。 共有プロバイダーには、すべての Azure AD ユーザーがアクセスでき、そこに関連付けられているポリシーは変更できません。
 
 | リージョン | 構成証明の URI | 
 |--|--|

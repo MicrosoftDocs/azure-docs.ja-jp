@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503796"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735777"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
@@ -79,7 +79,7 @@ Microsoft では、サブスクリプションが取り消された後、お客�
 
 ## <a name="reactivate-a-subscription"></a>サブスクリプションの再アクティブ化
 
-従量課金制のサブスクリプションを誤って取り消した場合は、[アカウント センターで再アクティブ化](subscription-disabled.md)することができます。
+従量課金制のサブスクリプションを誤って取り消した場合は、[Azure portal で再度有効](subscription-disabled.md)にすることができます。
 
 サブスクリプションが従量課金制のサブスクリプションでない場合は、取り消しから 90 日以内にサポートに問い合わせて、サブスクリプションの再アクティブ化を依頼してください。
 
@@ -101,4 +101,4 @@ Microsoft では、サブスクリプションが取り消された後、お客�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 必要に応じて、従量課金制サブスクリプションを[アカウント センター](subscription-disabled.md)で再度有効にすることができます。
+- 必要に応じて、従量課金制サブスクリプションを [Azure portal](subscription-disabled.md) で再度有効にすることができます。

@@ -1,5 +1,5 @@
 ---
-title: CLI を使用してメディア占有ユニット (MRU) をスケーリングする方法 - Azure | Microsoft Docs
+title: メディア占有ユニット (MRU) をスケーリングする - CLI
 description: このトピックでは、CLI を使用して、Azure Media Services でのメディア処理をスケーリングする方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: bcbe5fe71e5a4d4d39a29d4a6828c104f6891c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1c98bfa6b2cf45a59b70126001442ed80659668
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91617147"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955887"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>メディア占有ユニットをスケーリングする方法
 

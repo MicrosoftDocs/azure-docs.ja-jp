@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 0ecfd277f2cc86102d59b201e7b43fa8519bdd3a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567621"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937602"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect 同期 V2 エンドポイント API 
 Microsoft がデプロイした Azure AD Connect 用の新しいエンドポイント (API) では、Azure Active Directory に対する同期サービス操作のパフォーマンスが向上しています。 新しい V2 エンドポイントを利用すると、Azure AD に対するエクスポートとインポートのパフォーマンスが明らかに向上していることがわかるでしょう。 この新しいエンドポイントでは、次のものがサポートされています。
@@ -176,7 +176,7 @@ V2 エンドポイントを有効にしてあり、ロールバックを行う�
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問  
  
 **新しいエンドポイントがアップグレードと新規インストールの既定値になるのはいつですか?**   
-</br>2021 年 1 月に AADConnect の新しいリリースをダウンロード用として公開することを予定しています。 このリリースでは、V2 エンドポイントが既定で使用され、追加の構成なしで 50K を超えるグループの同期が可能になります。 このリリースは、その後、対象サーバーへの自動アップグレード用として公開されます。
+</br>2021 年 2 月に AADConnect の新しいリリースをダウンロード用として公開することを予定しています。 このリリースでは、V2 エンドポイントが既定で使用され、追加の構成なしで 50K を超えるグループの同期が可能になります。 このリリースは、その後、対象サーバーへの自動アップグレード用として公開されます。
  
 ## <a name="next-steps"></a>次のステップ
 

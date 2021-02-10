@@ -13,7 +13,7 @@ ms.locfileid: "98762968"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub アクションを構成してコンテナー インスタンスを作成する
 
-[GitHub Actions](https://docs.github.com/en/actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、プル要求や問題に対して共同作業を行ったりするために使用します。
+[GitHub Actions](https://docs.github.com/en/actions) は GitHub の一連の機能であり、コードを格納するのと同じ場所でソフトウェア開発ワークフローを自動化したり、 pull request や問題に対して共同作業を行ったりするために使用します。
 
 [[Deploy to Azure Container Instances]\(Azure Container Instances にデプロイ\)](https://github.com/azure/aci-deploy) GitHub アクションを使用して、Azure Container Instances への単一のコンテナーのデプロイを自動化します。 このアクションでは、[az container create][az-container-create] コマンドと同様にコンテナー インスタンスのプロパティを設定できます。
 
@@ -45,7 +45,7 @@ ms.locfileid: "98762968"
 
   ![GitHub の [フォーク] ボタン (マーク済み) のスクリーンショット](../container-registry/media/container-registry-tutorial-quick-build/quick-build-01-fork.png)
 
-* リポジトリに対して Actions が有効になっていることを確認します。 フォークされたリポジトリに移動し、 **[設定]**  >  **[Actions]\(アクション\)** を選択します。 **[Actions permissions]\(アクションのアクセス許可\)** で、 **[Enable local and third party Actions for this repository]\(このリポジトリに対してローカルおよびサード パーティのアクションを有効にする\)** が選択されていることを確認します。
+* リポジトリに対して Actions が有効になっていることを確認します。 フォークされたリポジトリに移動し、 **[Settings]**  >  **[Actions]\(アクション\)** を選択します。 **[Actions permissions]\(アクションのアクセス許可\)** で、 **[Enable local and third party Actions for this repository]\(このリポジトリに対してローカルおよびサード パーティのアクションを有効にする\)** が選択されていることを確認します。
 
 ## <a name="configure-github-workflow"></a>GitHub ワークフローを構成する
 

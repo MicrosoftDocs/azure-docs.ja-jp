@@ -4,6 +4,15 @@
   items:
     - name: Virtual WAN とは
       href: virtual-wan-about.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: ARM テンプレート
+      expanded: true
+      items:
+        - name: Any-to-Any ルーティング
+          displayName: Resource Manager Any-to-any routing
+          href: quickstart-any-to-any-template.md
 - name: チュートリアル
   expanded: true
   items:
@@ -27,7 +36,7 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: アーキテクチャ
+    - name: Architecture
       items:
         - name: Virtual WAN に移行する
           href: migrate-from-hub-spoke-topology.md
@@ -49,6 +58,8 @@
           href: scenario-isolate-vnets.md
         - name: VNet の分離 - カスタム
           href: scenario-isolate-vnets-custom.md
+        - name: 仮想ネットワークとブランチの分離
+          href: scenario-isolate-virtual-networks-branches.md
         - name: 共有サービスの VNet
           href: scenario-shared-services-vnet.md
         - name: NVA 経由のルーティング
@@ -106,23 +117,33 @@
         - name: Azure AD テナントを構成する
           href: openvpn-azure-ad-tenant.md
         - name: クライアント プロファイル
-          href: about-vpn-profile-download.md
-        - name: グローバルおよびハブベースのプロファイル
-          href: global-hub-profile.md
-        - name: Windows 10 向けに Azure VPN クライアントを構成する
-          href: openvpn-azure-ad-client.md
-        - name: OpenVPN クライアントを構成する
-          href: howto-openvpn-clients.md?
-        - name: Always-On VPN ユーザー トンネルを構成する
-          href: howto-always-on-user-tunnel.md
-        - name: Always-On VPN デバイス トンネルを構成する
-          href: howto-always-on-device-tunnel.md
-        - name: Multi-Factor Authentication (MFA) を有効にする
-          href: openvpn-azure-ad-mfa.md
-        - name: Azure AD 認証を構成する
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: マルチアプリケーション Azure AD 認証を構成する
-          href: openvpn-azure-ad-tenant-multi-app.md
+          items:
+            - name: グローバルおよびハブベースのプロファイルのダウンロード
+              href: global-hub-profile.md
+            - name: プロファイル情報の抽出と表示
+              href: about-vpn-profile-download.md
+            - name: Intune を使用したプロファイルのデプロイ
+              href: vpn-profile-intune.md
+        - name: VPN クライアント
+          items:
+            - name: Windows 10
+              href: openvpn-azure-ad-client.md
+            - name: OpenVPN
+              href: howto-openvpn-clients.md?
+        - name: Always-On トンネルを構成する
+          items:
+            - name: ユーザー トンネル
+              href: howto-always-on-user-tunnel.md
+            - name: デバイス トンネル
+              href: howto-always-on-device-tunnel.md
+        - name: 認証
+          items:
+            - name: 多要素認証 (MFA)
+              href: openvpn-azure-ad-mfa.md
+            - name: Azure AD 認証
+              href: virtual-wan-point-to-site-azure-ad.md
+            - name: マルチアプリケーション Azure AD 認証
+              href: openvpn-azure-ad-tenant-multi-app.md
     - name: ルーティング
       items:
         - name: 仮想ハブのルーティングを構成する方法
@@ -135,7 +156,7 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md

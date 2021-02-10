@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778718"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954650"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用のネットワークを構成する
 
@@ -132,7 +132,8 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 > [!IMPORTANT]
 > * Azure Stack Edge Pro デバイスでコンピューティングを有効にして IoT Edge モジュールを使用する場合は、Web プロキシ認証を **[なし]** に設定しておくことをお勧めします。 NTLM はサポートされていません。
->* プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。 プロキシの証明書は信頼されていないため、すべてのトラフィックをインターセプトして読み取る (その後、独自の証明書を使用してすべてに再署名する) プロキシは互換性がありません。 通常、透過プロキシは、Azure Stack Edge Pro で適切に動作します。 非透過の Web プロキシはサポートされていません。
+> * プロキシ自動構成 (PAC) ファイルはサポートされていません。 PAC ファイルは、Web ブラウザーやその他のユーザー エージェントが、特定の URL をフェッチするための適切なプロキシ サーバー (アクセス方法) を自動的に選択する方法を定義します。 
+> * 透過プロキシは、Azure Stack Edge Pro で適切に動作します。 プロキシ サーバーにインストールされている独自の証明書を通じて、すべてのトラフィックをインターセプトして読み取る非透過的プロキシの場合は、プロキシの証明書の公開キーを Azure Stack Edge Pro デバイスの署名チェーンとしてアップロードします。 その後、Azure Stack Edge デバイスのプロキシ サーバー設定を構成できます。 詳細については、[独自の証明書の持ち込みとローカル UI によるアップロード](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates)に関するセクションを参照してください。  
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
 2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.

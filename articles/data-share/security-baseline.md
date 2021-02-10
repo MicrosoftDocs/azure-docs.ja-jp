@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 22654d49d02809460adc4013c2c92ac857805cf7
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 345748380479d81f1ea0df9ecf327200482a6cd7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199803"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937175"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure Data Share 用の Azure セキュリティ ベースライン
 
@@ -108,7 +108,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**:Azure Data Share では、Azure Active Directory を使用した SSO 認証がサポートされています。 組織の既存の ID でサービスの SSO を有効にすることで、ユーザーが管理する必要がある ID と資格情報の数を減らします。
 
-- [Azure AD を使用した SSO の概要](/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure AD を使用した SSO の概要](../active-directory/manage-apps/what-is-single-sign-on.md)
 
 **Azure Security Center の監視**: 適用なし
 

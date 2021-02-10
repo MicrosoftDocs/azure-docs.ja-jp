@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 03f2ec7aef1faadcb72d6c7a5a058c7d06596539
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723968"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>チュートリアル: Azure Active Directory と Citrix ShareFile の統合
 
@@ -31,8 +31,8 @@ Citrix ShareFile と Azure AD の統合には、次の利点があります。
 
 Azure AD と Citrix ShareFile の統合を構成するには、次のものが必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Citrix ShareFile でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
+* Citrix ShareFile でのシングル サインオンが有効なサブスクリプション。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -126,7 +126,7 @@ Citrix ShareFile で Azure AD シングル サインオンを構成し、テス�
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-citrix-sharefile-sso"></a>Citrix ShareFile の SSO の構成
@@ -165,7 +165,9 @@ Citrix ShareFile で Azure AD シングル サインオンを構成し、テス�
     
     f. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-5. Citrix ShareFile 管理ポータルで [**Save**] をクリックします。
+    g. **[Optional Settings]\(オプション設定\)** の **[SP-Initiated Auth Context]\(SP Initiated 認証コンテキスト\)** で、 **[User Name and Password]\(ユーザー名とパスワード\)** および **[Exact]\(完全一致\)** を選択します。
+
+5. **[保存]** をクリックします。
 
 ## <a name="create-citrix-sharefile-test-user"></a>Citrix ShareFile テスト ユーザーの作成
 
@@ -198,7 +200,7 @@ Citrix ShareFile で Azure AD シングル サインオンを構成し、テス�
 
 * Citrix ShareFile のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Citrix ShareFile] タイルをクリックすると、Citrix ShareFile のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Citrix ShareFile] タイルをクリックすると、Citrix ShareFile のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

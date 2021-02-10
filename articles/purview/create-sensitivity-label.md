@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/19/2021
+ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196590"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630278"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Azure Purview でデータに自動的にラベルを付ける
 
@@ -32,10 +32,9 @@ Purview では、分類はサブジェクト タグに似ており、スキャ�
 
 Purview では、Microsoft 365 と同じ分類 (機密情報の種類とも呼ばれます) が使用されます。  MIP の秘密度ラベルは、Microsoft 365 セキュリティ/コンプライアンス センター (SCC) で作成されます。 これにより、Azure Purview の資産全体で既存の秘密度ラベルを拡張できます。
 
-> [!NOTE]
-> 分類は、直接照合されます。たとえば、社会保障番号には、**社会保障番号** の分類があります。 
->
-> これに対して、秘密度ラベルは、1 つ以上の分類と条件が一緒に検出された場合に適用されます。 このコンテキストにおける [条件](/microsoft-365/compliance/apply-sensitivity-label-automatically)とは、**別の分類との近さ** や **信頼度** など、非構造化データに対して定義できるすべてのパラメーターを指します。 
+**分類** は、直接照合されます。たとえば、社会保障番号には、**社会保障番号** の分類があります。 
+
+これに対して、**秘密度ラベル** は、1 つまたは複数の分類と条件が一緒に検出された場合に適用されます。 このコンテキストにおける [条件](/microsoft-365/compliance/apply-sensitivity-label-automatically)とは、*別の分類との近さ* や *信頼度* など、非構造化データに対して定義できるすべてのパラメーターを指します。 
 
 Azure Purview で秘密度ラベルを使用すると、ファイルおよびデータベースの列にラベルを自動的に適用できます。
 
@@ -44,6 +43,7 @@ Azure Purview で秘密度ラベルを使用すると、ファイルおよびデ
 - Microsoft 365 のドキュメントの「[秘密度ラベルの詳細](/microsoft-365/compliance/sensitivity-labels)」
 - [自動ラベル付け規則とは](#what-are-autolabeling-rules)
 - [Azure Purview の秘密度ラベルでサポートされるデータ型](#supported-data-types-for-sensitivity-labels-in-azure-purview)
+- [SQL データベースの列のラベル付け](#labeling-for-sql-database-columns)
 
 #### <a name="what-are-autolabeling-rules"></a>自動ラベル付け規則とは
 
@@ -54,7 +54,6 @@ Azure Purview で秘密度ラベルを使用すると、ファイルおよびデ
 ラベルを作成するときは、[ファイル](#define-autolabeling-rules-for-files)と[データベースの列](#define-autolabeling-rules-for-database-columns)の両方に対して自動ラベル付け規則を定義し、各データ スキャンでラベルが自動的に適用されるようにしてください。 
 
 Purview でデータをスキャンすると、自動的に適用されたラベルを Purview Catalog と分析情報レポートに表示できます。
-
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Azure Purview の秘密度ラベルでサポートされるデータ型
 
 Azure Purview では、次のデータ型に対して秘密度ラベルがサポートされます。
@@ -62,8 +61,16 @@ Azure Purview では、次のデータ型に対して秘密度ラベルがサポ
 |データ型  |変換元  |
 |---------|---------|
 |ファイルの自動ラベル付け     |      - Azure Blob ストレージ  </br>- Azure Data Lake Storage Gen 1 および Gen 2  |
-|データベースの列の自動ラベル付け     |  - SQL Server </br>- Azure SQL データベース </br>- Azure SQL Database Managed Instance   <br> - Azure Synapse  <br> - Azure Cosmos DB   |
+|データベースの列の自動ラベル付け     |  - SQL Server </br>- Azure SQL データベース </br>- Azure SQL Database Managed Instance   <br> - Azure Synapse  <br> - Azure Cosmos DB <br><br>詳細については、以下の「[SQL データベースの列のラベル付け](#labeling-for-sql-database-columns)」を参照してください。  |
 | | |
+
+#### <a name="labeling-for-sql-database-columns"></a>SQL データベースの列のラベル付け
+
+Microsoft では、データベースの列に対する Purview のラベル付けに加えて、[SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) の SQL データ分類を使用した SQL データベースの列のラベル付けもサポートされています。 Purview ではグローバルの [MIP 秘密度ラベル](/microsoft-365/compliance/sensitivity-labels)が使用されますが、SSMS ではローカルに定義されているラベルのみが使用されます。
+
+Purview でのラベル付けと SSMS でのラベル付けは、現在相互に連携していない別々のプロセスです。 したがって、SSMS で適用されるラベルは Purview には表示されず、その逆も同様です。 SQL データベースにラベルを付けるには、Azure Purview を使用することをお勧めします。これは、複数のプラットフォームに適用できるグローバルな MIP ラベルが使用されているからです。
+
+詳しくは、「[SQL データの検出と分類](/sql/relational-databases/security/sql-data-discovery-and-classification)」のドキュメントをご覧ください。
 
 ## <a name="how-to-create-sensitivity-labels-in-microsoft-365"></a>Microsoft 365 で秘密度ラベルを作成する方法
 

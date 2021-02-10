@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 11/12/2020
-ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/29/2021
+ms.openlocfilehash: e44a029c61db5a22513387772c2b0d7a3e4d1a40
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170618"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219232"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -31,6 +31,10 @@ Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサ
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
 この記事では、Azure Log Analytics ワークスペースにログを転送する方法について説明します。 そうすると、ダッシュボードを作成したり、Azure AD B2C ユーザーのアクティビティに基づいてアラートを作成したりできるようになります。
+
+> [!IMPORTANT]
+> Azure AD B2C のログを別の監視ソリューションまたはリポジトリに転送することを計画している場合は、次の点を考慮してください。 Azure AD B2C のログには個人データが含まれています。 そのようなデータは、未承認または違法な処理に対する保護など、個人データの適切なセキュリティを保証する方法で、適切な技術的または組織的手段を使用して処理する必要があります。
+
 
 ## <a name="deployment-overview"></a>デプロイの概要
 

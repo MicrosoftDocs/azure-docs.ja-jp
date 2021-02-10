@@ -6,16 +6,16 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 09/15/2020
-ms.openlocfilehash: 1f198d47191e7893e74b072ae8fd10546e3a6ee7
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 378a85ed77a6eedeb928dee541046db1909da553
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752211"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491993"
 ---
 # <a name="dependency-analysis"></a>依存関係の分析
 
-この記事では、Azure Migrate:Server Assessment での依存関係の分析について説明します。
+この記事では、Azure Migrate での依存関係の分析について説明します。Server Assessment を使用して作成する方法について説明します。
 
 
 依存関係の分析では、検出されたオンプレミス マシン間の依存関係を特定します。 これには以下のような利点があります。 

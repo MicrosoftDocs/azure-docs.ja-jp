@@ -1,19 +1,16 @@
 ---
 title: Ambari REST API を使用して Hadoop を監視および管理する - Azure HDInsight
 description: Ambari を使用して Azure HDInsight の Hadoop クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari REST API を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546077"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945588"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API を使用した HDInsight クラスターの管理
 
@@ -37,11 +34,11 @@ Apache Ambari は、[REST API](https://github.com/apache/ambari/blob/trunk/ambar
 
 ## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API のベース URI
 
- HDInsight の Ambari REST API のベース URI (Uniform Resource Identifier) は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` はお使いのクラスターの名前です。  URI のクラスター名では、 **大文字と小文字が区別** されます。  URI (`CLUSTERNAME.azurehdinsight.net`) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
+ HDInsight の Ambari REST API のベース URI (Uniform Resource Identifier) は、`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME` です。`CLUSTERNAME` はお使いのクラスターの名前です。  URI のクラスター名では、**大文字と小文字が区別** されます。  URI (`CLUSTERNAME.azurehdinsight.net`) の FQDN (完全修飾ドメイン名) 部分のクラスター名では大文字と小文字が区別されませんが、URI の他の部分で出現するときは大文字と小文字が区別されます。
 
 ## <a name="authentication"></a>認証
 
-HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成中に入力した管理者アカウント名 (既定値は **admin** ) とパスワードを使用します。
+HDInsight の Ambari に接続するには、HTTPS が必要です。 クラスターの作成中に入力した管理者アカウント名 (既定値は **admin**) とパスワードを使用します。
 
 Enterprise セキュリティ パッケージ クラスターの場合、`admin` ではなく、`username@domain.onmicrosoft.com` のように完全修飾ユーザー名を使用します。
 
@@ -335,7 +332,7 @@ $resp.Content
 
    * 新しい構成のルート ドキュメントが作成されます。
 
-   * `.items[]` 配列のコンテンツが取得され、 **desired_config** 要素の下に追加されます。
+   * `.items[]` 配列のコンテンツが取得され、**desired_config** 要素の下に追加されます。
 
    * 新しい構成の送信に必要ないため、`href`、`version`、`Config` の各要素が削除されます。
 
@@ -387,7 +384,7 @@ $resp.Content
     $resp.Content
     ```  
 
-    これらのコマンドは、 **newconfig.json** ファイルの内容を新たな構成としてクラスターに送信します。 要求から、JSON ドキュメントが返されます。 このドキュメントの **versionTag** 要素は、送信したバージョンに一致する必要があります。 **configs** オブジェクトには、要求した構成変更が含まれます。
+    これらのコマンドは、**newconfig.json** ファイルの内容を新たな構成としてクラスターに送信します。 要求から、JSON ドキュメントが返されます。 このドキュメントの **versionTag** 要素は、送信したバージョンに一致する必要があります。**configs** オブジェクトには、要求した構成変更が含まれます。
 
 ### <a name="restart-a-service-component"></a>サービス コンポーネントの再起動
 

@@ -1,19 +1,16 @@
 ---
 title: HDInsight で Apache Hadoop ジョブを送信する
 description: Microsoft .NET SDK、curl、または PowerShell を使用して Azure HDInsight で Apache Hadoop ジョブを送信する
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/16/2019
-ms.openlocfilehash: ce53e02c587086a34a9967bb09ba047858af52e8
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 52a5fcbc68d7efdce5724e39ee7bc25581ceb0ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628934"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944200"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブを送信する
 
@@ -21,20 +18,20 @@ Azure HDInsight で Apache Hadoop ジョブを送信するには、HDInsight、c
 
 ## <a name="resources"></a>リソース
 
-- **.NET SDK** :
+- **.NET SDK**:
 
   - [非対話型認証 .NET アプリケーションを作成する](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)
   - [HDInsight .NET SDK を使用して Apache Hive クエリを実行する](apache-hadoop-use-hive-dotnet-sdk.md)
   - [HDInsight で .NET SDK for Apache Hadoop を使用して Apache Sqoop ジョブを実行する](apache-hadoop-use-sqoop-dotnet-sdk.md)
   - [HDInsight .NET SDK を使用して MapReduce ジョブを実行する](apache-hadoop-use-mapreduce-dotnet-sdk.md)
 
-- **curl** :
+- **curl**:
 
   - [curl を使用して HDInsight 上の Apache Hadoop で Apache Hive クエリを実行する](apache-hadoop-use-hive-curl.md)
   - [curl を使用して HDInsight 上の Apache Hadoop で Apache Sqoop ジョブを実行する](apache-hadoop-use-sqoop-curl.md)
   - [curl を使用して HDInsight 上の Apache Hadoop で MapReduce ジョブを実行する](apache-hadoop-use-mapreduce-curl.md)
 
-- **PowerShell** :
+- **PowerShell**:
 
   - [PowerShell を使用して Apache Hive クエリを実行する](apache-hadoop-use-hive-powershell.md)
   - [HDInsight 上の Apache Hadoop で Apache Sqoop を使用する](apache-hadoop-use-sqoop-powershell.md)

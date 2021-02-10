@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 293a8d8b8add37f78e5a900b093ec89e95851aec
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178638"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225835"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート:ASP.NET Core Web アプリに Microsoft サインインを追加する
 
@@ -56,13 +56,13 @@ ms.locfileid: "98178638"
 > 1. **[登録]** を選択します。
 > 1. **[管理]** で、 **[認証]** を選択します。
 > 1. **[リダイレクト URI]** で **[URI の追加]** を選択し、「`https://localhost:44321/signin-oidc`」と入力します。
-> 1. **ログアウト URL** として「`https://localhost:44321/signout-oidc`」と入力します。
-> 1. **[暗黙的な許可]** の下の **[ID トークン]** を選択します。
+> 1. **[Front-channel logout URL]\(フロントチャネル ログアウト URL\)** に「`https://localhost:44321/signout-oidc`」を入力します。
+> 1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** で、 **[ID トークン]** を選択します。
 > 1. **[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイック スタートのコード サンプルを正常に動作させるためには、応答 URL として `https://localhost:44321/` および `https://localhost:44321/signin-oidc` を追加し、ログアウト URL として `https://localhost:44321/signout-oidc` を追加したうえで、承認エンドポイントによって発行される要求 ID トークンを追加する必要があります。
+> このクイックスタートのサンプル コードには、**リダイレクト URI** (`https://localhost:44321/` および `https://localhost:44321/signin-oidc`) と **フロントチャネルのログアウト URL** (`https://localhost:44321/signout-oidc`) が必要です。 要求の ID トークンは、承認エンドポイントによって発行されます。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -148,7 +148,7 @@ ms.locfileid: "98178638"
 
 `AddAuthentication()` メソッドは、ブラウザーのシナリオで使用される Cookie ベースの認証を追加し、OpenID Connect へのチャレンジを設定するようにサービスを構成します。
 
-`.AddMicrosoftIdentityWebApp` を含む行によって、Microsoft ID プラットフォーム認証がアプリケーションに追加されます。 その後、*appsettings.json* 構成ファイルの `AzureAD` セクションの情報に基づいて、Microsoft ID プラットフォーム エンドポイントを使用してサインインするように構成されます。
+`.AddMicrosoftIdentityWebApp` を含む行によって、Microsoft ID プラットフォーム認証がアプリケーションに追加されます。 その後、*appsettings.json* 構成ファイルの `AzureAD` セクションの情報に基づいて、Microsoft ID プラットフォームを使用してサインインするように構成されます。
 
 | *appsettings.json* のキー | 説明                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

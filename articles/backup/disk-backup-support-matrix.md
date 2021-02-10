@@ -4,12 +4,12 @@ description: Azure ディスク バックアップのサポート設定と制限
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 950651148237c7b9374c378e27ef5cd76697ae9e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: d6a8276de9674266415604e8654034f129da8f50
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556930"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430949"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure ディスク バックアップのサポート マトリックス (プレビュー)
 
@@ -18,11 +18,11 @@ ms.locfileid: "98556930"
 >
 >プレビューにサインアップするには、[このフォームに入力](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)してください。
 
-[Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) を使用して、Azure ディスクを保護できます。 この記事では、利用可能なリージョン、サポートされるシナリオ、および制限事項について説明します。
+[Azure Backup](./backup-overview.md) を使用して、Azure ディスクを保護できます。 この記事では、利用可能なリージョン、サポートされるシナリオ、および制限事項について説明します。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-次のリージョンでは、Azure ディスク バックアップをプレビューでご利用いただけます。米国中西部。 
+次のリージョンでは、Azure ディスク バックアップをプレビューでご利用いただけます。米国西部、米国中西部、米国東部 2、カナダ中部、英国西部、オーストラリア中部、韓国中部、韓国南部、西日本、東アジア、アラブ首長国連邦北部、ブラジル南部、インド中部。 
 
 他のリージョンについては、利用可能になったときに発表されます。
 
@@ -36,9 +36,9 @@ ms.locfileid: "98556930"
 
 - 現在、バックアップが作成された既存のソース ディスクを置き換えることによって復元する、元の場所への復旧 (OLR) オプションはサポートされていません。 復旧ポイントから復元して、バックアップが作成されたソース ディスクと同じリソース グループか、または他の任意のリソース グループに新しいディスクを作成できます。 これは別の場所への復旧 (ALR) と呼ばれています。
 
-- Managed Disks 用の Azure Backup では、ディスクあたりのスナップショット数が 200 に制限された増分スナップショットが使用されます。 スケジュールされたバックアップとは別にオンデマンド バックアップを作成するには、バックアップ ポリシーによって合計バックアップ数を 180 に制限します。 詳細については、マネージド ディスクの[増分スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions)に関するページをご覧ください。
+- Managed Disks 用の Azure Backup では、ディスクあたりのスナップショット数が 200 に制限された増分スナップショットが使用されます。 スケジュールされたバックアップとは別にオンデマンド バックアップを作成するには、バックアップ ポリシーによって合計バックアップ数を 180 に制限します。 詳細については、マネージド ディスクの[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md#restrictions)に関するページをご覧ください。
 
-- Azure の[サブスクリプションとサービスの制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-disk-limits)が、サブスクリプションあたりのリージョンごとのディスク スナップショットの合計数に適用されます。
+- Azure の[サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machine-disk-limits)が、サブスクリプションあたりのリージョンごとのディスク スナップショットの合計数に適用されます。
 
 - 仮想マシンに接続されている複数のディスクの特定の時点のスナップショットはサポートされていません。
 
@@ -56,13 +56,17 @@ ms.locfileid: "98556930"
 
 - 現時点では、Azure portal でのディスクのバックアップを構成する操作は、同じサブスクリプションの最大 20 個のディスクに制限されています。
 
-- バックアップを構成する場合は、バックアップ対象として選択されたディスクと、スナップショットが格納されるスナップショット リソース グループが同じサブスクリプションに含まれている必要があります。 特定のディスクの増分スナップショットを、そのディスクのサブスクリプションの外部で作成することはできません。 詳細については、マネージド ディスクの[増分スナップショット](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions)に関するページをご覧ください。 スナップショット リソース グループを選択する方法の詳細については、「[バックアップを構成する](backup-managed-disks.md#configure-backup)」を参照してください。
+- 現在 (プレビュー期間中)、ディスクのバックアップと復元を構成するための PowerShell と Azure CLI の使用はサポートされていません。
+
+- バックアップを構成する場合は、バックアップ対象として選択されたディスクと、スナップショットが格納されるスナップショット リソース グループが同じサブスクリプションに含まれている必要があります。 特定のディスクの増分スナップショットを、そのディスクのサブスクリプションの外部で作成することはできません。 詳細については、マネージド ディスクの[増分スナップショット](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions)に関するページをご覧ください。 スナップショット リソース グループを選択する方法の詳細については、「[バックアップを構成する](backup-managed-disks.md#configure-backup)」を参照してください。
 
 - バックアップと復元の操作を正常に実行するには、バックアップ コンテナーのマネージド ID によるロールの割り当てが必要です。 ドキュメントに記載されているロールの定義のみを使用してください。 所有者や共同作成者などの他のロールの使用はサポートされていません。 ロールの割り当て後すぐにバックアップまたは復元の操作の構成を開始すると、アクセス許可の問題が発生する可能性があります。 これは、ロールの割り当てが有効になるまでに数分かかるためです。
 
-- マネージド ディスクでは、デプロイ時またはその後にディスクのサイズを変更せずにパフォーマンス レベルを変更することができます。 Azure ディスク バックアップ ソリューションでは、バックアップ対象のソース ディスクに対するパフォーマンス レベルの変更がサポートされています。 復元中に、復元されるディスクのパフォーマンス レベルは、バックアップ時のソース ディスクのパフォーマンス レベルと同じになります。 復元操作後にディスクのパフォーマンス レベルを変更するには、[こちら](https://docs.microsoft.com/azure/virtual-machines/disks-performance-tiers-portal)のドキュメントに従ってください。
+- マネージド ディスクでは、デプロイ時またはその後にディスクのサイズを変更せずにパフォーマンス レベルを変更することができます。 Azure ディスク バックアップ ソリューションでは、バックアップ対象のソース ディスクに対するパフォーマンス レベルの変更がサポートされています。 復元中に、復元されるディスクのパフォーマンス レベルは、バックアップ時のソース ディスクのパフォーマンス レベルと同じになります。 復元操作後にディスクのパフォーマンス レベルを変更するには、[こちら](../virtual-machines/disks-performance-tiers-portal.md)のドキュメントに従ってください。
 
-- マネージド ディスクでの[プライベート リンク](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal)のサポートにより、マネージド ディスクのエクスポートとインポートを制限して、Azure 仮想ネットワーク内でのみ実行されるようにすることができます。 Azure ディスク バックアップでは、プライベート エンドポイントが有効になっているディスクのバックアップがサポートされています。 これには、プライベート エンドポイント経由でアクセスできるバックアップ データまたはスナップショットは含まれません。
+- マネージド ディスクでの[プライベート リンク](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)のサポートにより、マネージド ディスクのエクスポートとインポートを制限して、Azure 仮想ネットワーク内でのみ実行されるようにすることができます。 Azure ディスク バックアップでは、プライベート エンドポイントが有効になっているディスクのバックアップがサポートされています。 これには、プライベート エンドポイント経由でアクセスできるバックアップ データまたはスナップショットは含まれません。
+
+- プレビュー中は、バックアップを無効にすることはできません。そのため、**バックアップを停止し、バックアップ データを保持する** オプションはサポートされていません。 バックアップ インスタンスを削除することができます。これにより、バックアップが停止するだけでなく、すべてのバックアップ データも削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

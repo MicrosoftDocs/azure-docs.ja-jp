@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: 3a474228776c689dbbd6f15ddd926f29383400ce
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 69417945bcd5234a0e5e8d2d6aee42859bc95c20
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964713"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071054"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -81,7 +81,7 @@ Azure Red Hat OpenShift 3.11 クラスターでは、インフラストラクチ
 
 ### <a name="can-i-use-prometheus-to-monitor-my-applications"></a>Prometheus を使用して自分のアプリケーションを監視できますか?
 
-Prometheus は、プレインストールされ、Azure Red Hat OpenShift 4.x クラスター用に構成されています。 詳細については、[クラスターの監視](https://docs.openshift.com/container-platform/3.11/install_config/prometheus_cluster_monitoring.html)に関する記述を参照してください。
+Prometheus は、プレインストールされ、Azure Red Hat OpenShift 4.x クラスター用に構成されています。 詳細については、[クラスターの監視](https://docs.openshift.com/container-platform/4.6/operators/operator_sdk/osdk-monitoring-prometheus.html)に関する記述を参照してください。
 
 Azure Red Hat OpenShift 3.11 クラスターの場合は、Prometheus をご自分の名前空間にデプロイして、その名前空間内のアプリケーションを監視できます。 詳細については、[Azure Red Hat OpenShift クラスターに Prometheus インスタンスをデプロイする](howto-deploy-prometheus.md)方法に関するページを参照してください。
 
@@ -97,7 +97,7 @@ Azure Red Hat OpenShift 3.11:いいえ。
 
 ### <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-azure-red-hat-openshift-cluster"></a>顧客はどのようにしてノード レベルで CPU やメモリなどのメトリックにアクセスし、スケーリングや問題のデバッグなどを実行できますか? Azure Red Hat OpenShift クラスターで kubectl top を実行できないようです。
 
-Azure Red Hat OpenShift 4.x クラスターの場合、OpenShift Web コンソールには、ノード レベルのすべてのメトリックが含まれます。 詳しくは、[クラスター情報の表示](https://docs.openshift.com/aro/4/web_console/using-dashboard-to-get-cluster-information.html)に関する Red Hat のドキュメントを参照してください。
+Azure Red Hat OpenShift 4.x クラスターの場合、OpenShift Web コンソールには、ノード レベルのすべてのメトリックが含まれます。 詳しくは、[クラスター情報の表示](https://docs.openshift.com/container-platform/4.6/web_console/using-dashboard-to-get-cluster-information.html)に関する Red Hat のドキュメントを参照してください。
 
 Azure Red Hat OpenShift 3.11 クラスターの場合、顧客は顧客管理者クラスター ロールで `oc adm top nodes` または `kubectl top nodes` コマンドを使用することで、ノード レベルで CPU またはメモリ メトリックにアクセスできます。 また、`oc adm top pods` または `kubectl top pods` コマンドを使用して、`pods` の CPU またはメモリのメトリックにアクセスすることもできます。
 
@@ -116,14 +116,14 @@ Azure で仮想マシン スケール セットを使用すると、既定で 5 
 - ホスト名を使うことはできません。 ホスト名はアップグレードと更新によって頻繁にローテーションされるため、変更が保証されます。
 - 顧客に特定のラベルまたは配置戦略の要求がある場合は、これを実現できますが、エンジニアリングの作業が必要であり、現時点ではサポートされていません。
 
-詳細については、[ポッドの配置の制御](https://docs.openshift.com/aro/4/nodes/scheduling/nodes-scheduler-about.html)に関するページを参照してください。
+詳細については、[ポッドの配置の制御](https://docs.openshift.com/container-platform/4.6/nodes/scheduling/nodes-scheduler-about.html)に関するページを参照してください。
 
 ### <a name="is-the-image-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Jenkins などのツールを使用できるように、イメージ レジストリを外部で使用できますか?
 
 4\.x クラスターの場合は、セキュリティで保護されたレジストリを公開し、認証を構成する必要があります。 詳しくは、次の Red Hat のドキュメントをご覧ください。
 
-- [レジストリを公開する](https://docs.openshift.com/aro/4/registry/securing-exposing-registry.html)
-- [レジストリにアクセスする](https://docs.openshift.com/aro/4/registry/accessing-the-registry.html)
+- [レジストリを公開する](https://docs.openshift.com/container-platform/4.6/registry/securing-exposing-registry.html)
+- [レジストリにアクセスする](https://docs.openshift.com/container-platform/4.6/registry/accessing-the-registry.html)
 
 3\.11 クラスターの場合は、Docker イメージ レジストリを使用できます。 Docker レジストリは `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` から入手できます。 Azure Container Registry を使用することもできます。
 
@@ -181,24 +181,24 @@ oc adm policy \
 
 詳細については、ご使用のクラスター バージョンのセルフプロビジョニングの無効化に関する OpenShift のドキュメントを参照してください。
 
-- [4.3 クラスターでのセルフプロビジョニングの無効化](https://docs.openshift.com/aro/4/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+- [4.6 クラスターでのセルフプロビジョニングの無効化](https://docs.openshift.com/container-platform/4.6/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
 - [3.11 クラスターでのセルフプロビジョニングの無効化](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>マスター/インフラストラクチャ/アプリ ノードでは、どの UNIX 権限 (IaaS 内) を使用できますか?
 
-4\.x クラスターの場合、ノード アクセスはクラスター管理者ロールを介して利用できます。 詳細については、[Kubernetes RBAC の概要](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)に関するページを参照してください。
+4\.x クラスターの場合、ノード アクセスはクラスター管理者ロールを介して利用できます。 詳細については、[Kubernetes RBAC の概要](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html)に関するページを参照してください。
 
 3\.11 クラスターの場合、ノード アクセスは禁止されています。
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>私たちには、どの OCP 権限がありますか? クラスター管理者ですか? プロジェクト管理者ですか?
 
-4\.x クラスターの場合、クラスター管理者ロールを使用できます。 詳細については、[Kubernetes RBAC の概要](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html)に関するページを参照してください。
+4\.x クラスターの場合、クラスター管理者ロールを使用できます。 詳細については、[Kubernetes RBAC の概要](https://docs.openshift.com/container-platform/4.6/authentication/using-rbac.html)に関するページを参照してください。
 
 3\.11 クラスターの場合、詳細については[クラスター管理の概要](https://docs.openshift.com/aro/admin_guide/index.html)を参照してください。
 
 ### <a name="which-identity-providers-are-available"></a>使用可能な ID プロバイダーはどれですか?
 
-4\. x クラスターの場合は、独自の ID プロバイダーを構成します。 詳細については、[ID プロバイダーの構成](https://docs.openshift.com/aro/4/authentication/identity_providers/configuring-ldap-identity-provider.html)に関する Red Hat のドキュメントを参照してください。
+4\. x クラスターの場合は、独自の ID プロバイダーを構成します。 詳細については、[ID プロバイダーの構成](https://docs.openshift.com/container-platform/4.6/authentication/identity_providers/configuring-ldap-identity-provider.html)に関する Red Hat のドキュメントを参照してください。
 
 3\.11 クラスターの場合は、Azure AD 統合を使用できます。 
 
@@ -210,13 +210,13 @@ oc adm policy \
 
 ### <a name="is-data-stored-in-etcd-encrypted-on-azure-red-hat-openshift"></a>Azure Red Hat OpenShift では etcd に格納されるデータは暗号化されますか?
 
-Azure Red Hat OpenShift 4 クラスターの場合、データは既定では暗号化されませんが、暗号化を有効にするオプションがあります。 詳細については、[etcd の暗号化](https://docs.openshift.com/container-platform/4.3/authentication/encrypting-etcd.html)に関するガイドを参照してください。
+Azure Red Hat OpenShift 4 クラスターの場合、データは既定では暗号化されませんが、暗号化を有効にするオプションがあります。 詳細については、[etcd の暗号化](https://docs.openshift.com/container-platform/4.6/security/encrypting-etcd.html)に関するガイドを参照してください。
 
 3\.11 クラスターの場合、etcd レベルではデータは暗号化されません。 現在、暗号化をオンにするオプションはサポートされていません。 OpenShift ではこの機能がサポートされますが、これをロードマップに加えるには、エンジニアリングの作業が必要です。 データはディスク レベルで暗号化されます。 詳細については、「[データストア層でのデータの暗号化](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html)」を参照してください。
 
 ### <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>任意の永続ストレージ ソリューション (OCSなど) を選ぶことはできますか。 
 
-4\.x クラスターの場合、Azure Disk (Premium_LRS) は既定のストレージ クラスとして構成されます。 追加のストレージ プロバイダー、および構成の詳細 (Azure File を含む) については、[永続ストレージ](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html)に関する Red Hat のドキュメントを参照してください。
+4\.x クラスターの場合、Azure Disk (Premium_LRS) は既定のストレージ クラスとして構成されます。 追加のストレージ プロバイダー、および構成の詳細 (Azure File を含む) については、[永続ストレージ](https://docs.openshift.com/container-platform/4.6/storage/understanding-persistent-storage.html)に関する Red Hat のドキュメントを参照してください。
 
 3\.11 クラスターの場合、Azure Disk (Premium_LRS) と Azure File の 2 つのストレージ クラスが既定で提供されます。
 

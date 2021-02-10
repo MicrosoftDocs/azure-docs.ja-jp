@@ -4,12 +4,12 @@ description: このクイック スタートでは、ご自身のコンテナー
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: b4038bb232c14278e838f2c34706dcc103def7e4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694396"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919665"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>クイック スタート:プライベート コンテナー レジストリから Event Grid にイベントを送信する
 
@@ -144,7 +144,7 @@ az eventgrid event-subscription create \
 次の Azure CLI コマンドを実行して、GitHub リポジトリのコンテンツからコンテナー イメージを作成します。 既定では、正常に作成されたイメージは、ACR タスクによりご自身のレジストリに自動的にプッシュされ、これにより `ImagePushed` イベントが生成されます。
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
 ```
 
 ご自身のイメージが ACR タスクによって作成およびプッシュされている間は、次のような出力が表示されます。 簡潔にするため、次のサンプル出力は省略されています。

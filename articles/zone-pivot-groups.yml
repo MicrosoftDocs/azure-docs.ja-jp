@@ -832,6 +832,24 @@ groups:
     title: Python
   - id: programming-language-swift
     title: Swift
+- id: acs-web-ios-android
+  title: プラットフォーム
+  prompt: プラットフォームの選択
+  pivots:
+  - id: platform-web
+    title: Web
+  - id: platform-ios
+    title: iOS
+  - id: platform-android
+    title: Android
+- id: acs-web-ios
+  title: プラットフォーム
+  prompt: プラットフォームの選択
+  pivots:
+  - id: platform-web
+    title: Web
+  - id: platform-ios
+    title: iOS
 - id: acs-js-csharp-ios-android-python
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -894,6 +912,8 @@ groups:
   pivots:
   - id: platform-azp
     title: Azure portal
+  - id: platform-azcli
+    title: Azure CLI
   - id: platform-net
     title: .NET
 - id: acs-plat-azp-arm-net-python-go-powershell
@@ -989,9 +1009,9 @@ groups:
   - id: rest
     title: REST
 metadata:
-  ms.openlocfilehash: d0b0fc066111d3bd01ba5d810a5b1014981dfb1d
-  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.openlocfilehash: 79b9f9d871ffd5d410dd00b7dfbc1aca8fc98c4a
+  ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98704445"
+  ms.lasthandoff: 02/08/2021
+  ms.locfileid: "99820808"

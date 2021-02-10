@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 97f1f5d0f1f351164e05d18b9f80c7f26450f31b
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 951c52cdba191aa291061259e1c15b9190513770
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661597"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092722"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -120,7 +120,7 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
 3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create)を作成します。 規則の名前を指定します。
 
     ```azurecli-interactive
-        az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
+    az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
     ```
 
 ## <a name="configure-your-function"></a>関数を構成する
@@ -149,7 +149,7 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
     az eventhubs eventhub authorization-rule keys list --resource-group <resource group name> --namespace-name <Event Hubs namespace> --eventhub-name <TSI event hub name> --name <TSI auth rule>
     ```
 
-2. 関数アプリで、接続文字列が含まれるアプリ設定を作成します。
+2. その結果の *primaryConnectionString* 値を使用して、接続文字列が含まれるアプリ設定を関数アプリに作成します:
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EventHubAppSetting-TSI=<TSI event hub connection string>" -g <resource group> -n <your App Service (function app) name>
@@ -163,7 +163,9 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
     1. **Gen2 (L1)** 価格レベルを選択します。
     2. この環境に対する **時系列 ID** を選択する必要があります。 時系列 ID は、Time Series Insights でデータを検索するために使用し、最大 3 つの値を使用できます。 このチュートリアルでは、 **$dtId** を使用できます ID 値の選択について詳しくは、「[*時系列 ID の選択のベスト プラクティス*](../time-series-insights/how-to-select-tsid.md)」を参照してください。
     
-        :::image type="content" source="media/how-to-integrate-time-series-insights/create-twin-id.png" alt-text="Time Series Insights 環境用の作成ポータル UX。Gen2(L1) 価格レベルが選択されていて、時系列 ID プロパティの名前は $dtId である" lightbox="media/how-to-integrate-time-series-insights/create-twin-id.png":::
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png" alt-text="Time Series Insights 環境用の作成ポータル UX。サブスクリプション、リソース グループ、および場所をそれぞれのドロップダウンから選択し、環境の名前を選択します。" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-1.png":::
+        
+        :::image type="content" source="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png" alt-text="Time Series Insights 環境用の作成ポータル UX。Gen2(L1) 価格レベルが選択されていて、時系列 ID プロパティの名前は $dtId である" lightbox="media/how-to-integrate-time-series-insights/create-time-series-insights-environment-2.png":::
 
 2. **Next:イベント ソース** を選択し、前述の TSI イベント ハブ情報を選択します。 新しい Event Hubs コンシューマー グループを作成する必要もあります。
     

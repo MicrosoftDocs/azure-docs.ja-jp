@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: ae2cd72bfde3eb7fdc6b135cbb22d04535a2f251
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: ba61601ba345d554d4898292cb082f71b829b342
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97731916"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948368"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -68,19 +68,19 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 
 ## <a name="create-a-speech-configuration"></a>音声構成を作成する
 
-Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?preserve-view=true&view=azure-node-latest) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。
+Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成する必要があります。 このクラスには、キー、関連付けられたリージョン、エンドポイント、ホスト、または認証トークンなど、ご利用のサブスクリプションに関する情報が含まれています。
 
 > [!NOTE]
 > 音声認識、音声合成、翻訳、またはインテント認識のどれを実行するのかに関係なく、必ず構成を作成します。
 
-[`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?preserve-view=true&view=azure-node-latest) を初期化するには、次に示すようないくつかの方法があります。
+[`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を初期化するには、次に示すようないくつかの方法があります。
 
 * サブスクリプションの場合: キーと、それに関連付けられたリージョンを渡します。
 * エンドポイントの場合: Speech Service エンドポイントを渡します。 キーまたは認証トークンは省略可能です。
 * ホストの場合: ホスト アドレスを渡します。 キーまたは認証トークンは省略可能です。
 * 認証トークンの場合: 認証トークンと、それに関連付けられたリージョンを渡します。
 
-この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?preserve-view=true&view=azure-node-latest) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
+この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
 ```javascript
 function synthesizeSpeech() {
@@ -92,7 +92,7 @@ synthesizeSpeech();
 
 ## <a name="synthesize-speech-to-a-file"></a>音声をファイルに合成する
 
-次に、[`SpeechSynthesizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?preserve-view=true&view=azure-node-latest) オブジェクトを作成します。これにより、テキストから音声への変換と、スピーカー、ファイル、またはその他の出力ストリームへの出力が実行されます。 [`SpeechSynthesizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer?preserve-view=true&view=azure-node-latest) は、前の手順で作成された [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?preserve-view=true&view=azure-node-latest) オブジェクト、および出力結果の処理方法を指定する [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?preserve-view=true&view=azure-node-latest) オブジェクトをパラメーターとして受け取ります。
+次に、[`SpeechSynthesizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer) オブジェクトを作成します。これにより、テキストから音声への変換と、スピーカー、ファイル、またはその他の出力ストリームへの出力が実行されます。 [`SpeechSynthesizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesizer) は、前の手順で作成された [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) オブジェクト、および出力結果の処理方法を指定する [`AudioConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig) オブジェクトをパラメーターとして受け取ります。
 
 まず、`fromAudioFileOutput()` 静的関数を使用して `.wav` ファイルに出力を自動的に書き込む `AudioConfig` を作成します。
 
@@ -166,7 +166,7 @@ function synthesizeSpeech() {
 > [!NOTE]
 > 前述のスピーカー出力の例のように省略するのではなく、`AudioConfig` に `undefined` を渡した場合、既定ではオーディオは現在のアクティブな出力デバイスで再生されません。
 
-今回は、結果を [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult?preserve-view=true&view=azure-node-latest) 変数に保存します。 `SpeechSynthesisResult.audioData` プロパティは、出力データの `ArrayBuffer` を返します。 この `ArrayBuffer` は手動で操作できます。
+今回は、結果を [`SpeechSynthesisResult`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisresult) 変数に保存します。 `SpeechSynthesisResult.audioData` プロパティは、出力データの `ArrayBuffer` を返します。 この `ArrayBuffer` は手動で操作できます。
 
 ```javascript
 function synthesizeSpeech() {
@@ -199,7 +199,7 @@ function synthesizeSpeech() {
 * サンプルレート
 * ビット深度
 
-オーディオ形式を変更するには、`SpeechConfig` オブジェクトで `speechSynthesisOutputFormat` プロパティを使用します。 このプロパティには、[`SpeechSynthesisOutputFormat`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?preserve-view=true&view=azure-node-latest) 型の `enum` が必要です。これは、出力形式を選択するために使用します。 使用できる[オーディオ形式の一覧](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat?preserve-view=true&view=azure-node-latest)については、リファレンス ドキュメントを参照してください。
+オーディオ形式を変更するには、`SpeechConfig` オブジェクトで `speechSynthesisOutputFormat` プロパティを使用します。 このプロパティには、[`SpeechSynthesisOutputFormat`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat) 型の `enum` が必要です。これは、出力形式を選択するために使用します。 使用できる[オーディオ形式の一覧](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechsynthesisoutputformat)については、リファレンス ドキュメントを参照してください。
 
 要件に応じて、ファイルの種類ごとにさまざまなオプションがあります。 定義上、`Raw24Khz16BitMonoPcm` のような未加工の形式にはオーディオ ヘッダーが含まれないことに注意してください。 未加工の形式は、ダウンストリームの実装で未加工のビットストリームをデコードできることがわかっている場合か、ビット深度、サンプル レート、チャネル数などに基づいてヘッダーを手動で作成する場合にのみ使用してください。
 

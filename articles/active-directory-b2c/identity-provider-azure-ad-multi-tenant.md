@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/04/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9ac92f836e1d0c1210bb16b5c1d6e232fd5c22e
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 8c2b97d1848450ecda2e83d5ba12469d7c61d8f9
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858469"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952740"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用してマルチテナント Azure Active Directory を設定する
 
@@ -32,7 +32,7 @@ ms.locfileid: "97858469"
 
 ::: zone pivot="b2c-custom-policy"
 
-この記事では、Azure Active Directory (Azure AD) のマルチテナント エンドポイントによってユーザーのサインインを有効にする方法について説明します。 Azure AD テナントごとに ID プロバイダーを構成しなくても、複数のテナントのユーザーが Azure AD B2C を使用してサインインできるようになります。 ただし、これらのテナントのいずれのゲスト メンバーもサインインは **できません**。 そのため、[各テナントを個別に構成する](identity-provider-azure-ad-single-tenant.md)必要があります。
+この記事では、Azure Active Directory (Azure AD) のマルチテナント エンドポイントによってユーザーのサインインを有効にする方法について説明します。 Azure AD テナントごとに ID プロバイダーを構成せずに、複数のテナントのユーザーが Azure AD B2C を使用してサインインできるようにします。 ただし、これらのテナントのいずれのゲスト メンバーもサインインは **できません**。 そのため、[各テナントを個別に構成する](identity-provider-azure-ad-single-tenant.md)必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +40,8 @@ ms.locfileid: "97858469"
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
-特定の Azure AD 組織のユーザーのサインインを有効にするには、組織の Azure AD テナント内でアプリケーションを登録する必要があります。
+Azure Active Directory B2C (Azure AD B2C) で Azure AD アカウントを持つユーザーのサインインを有効にするには、[Azure portal](https://portal.azure.com) でアプリケーションを作成する必要があります。 詳細については、[Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)方法に関するページを参照してください。
+
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 組織の Azure AD テナント (contoso.com など) が含まれているディレクトリを使用していることを確認します。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
@@ -62,7 +63,7 @@ ms.locfileid: "97858469"
 
 ## <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
-Azure AD から `family_name` および `given_name` 要求を取得する場合は、ご利用のアプリケーションに対して省略可能な要求を Azure portal UI またはアプリケーション マニフェストで構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
+Azure AD から `family_name` および `given_name` 要求を取得する場合は、Azure portal UI またはアプリケーション マニフェストでアプリケーションの省略可能な要求を構成できます。 詳細については、[Azure AD アプリに省略可能な要求を提供する方法](../active-directory/develop/active-directory-optional-claims.md)に関するページを参照してください。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。 **Azure Active Directory** を検索して選択します。
 1. **[管理]** セクションで、 **[アプリの登録]** を選択します。
@@ -87,9 +88,9 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[キー使用法]** として [`Signature`] を選択します。
 1. **［作成］** を選択します
 
-## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
+## <a name="configure-azure-ad-as-an-identity-provider"></a>Azure AD を ID プロバイダーとして構成する
 
-ユーザーが Azure AD を使用してサインインできるようにするには、エンドポイント経由で Azure AD B2C が通信できるクレーム プロバイダーとして Azure AD を定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
+ユーザーが Azure AD アカウントを使用してサインインできるようにするには、エンドポイント経由で Azure AD B2C が通信できるクレーム プロバイダーとして Azure AD を定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 ポリシーの拡張ファイル内で Azure AD を **ClaimsProvider** 要素に追加することで、Azure AD をクレーム プロバイダーとして定義できます。
 
@@ -102,7 +103,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
       <Domain>commonaad</Domain>
       <DisplayName>Common AAD</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Common-AAD">
+        <TechnicalProfile Id="AADCommon-OpenIdConnect">
           <DisplayName>Multi-Tenant AAD</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
@@ -152,10 +153,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 ### <a name="restrict-access"></a>アクセスを制限する
 
-> [!NOTE]
-> **ValidTokenIssuerPrefixes** の値として `https://login.microsoftonline.com/` を使用すると、すべての Azure AD ユーザーがアプリケーションにサインインできるようになります。
-
-有効なトークン発行者の一覧を更新し、サインインできる Azure AD テナント ユーザーの特定の一覧へのアクセスを制限する必要があります。
+**ValidTokenIssuerPrefixes** の値として `https://login.microsoftonline.com/` を使用すると、すべての Azure AD ユーザーがアプリケーションにサインインできるようになります。 有効なトークン発行者の一覧を更新し、サインインできる Azure AD テナント ユーザーの特定の一覧へのアクセスを制限します。
 
 値を取得するには、サインインさせるユーザーの Azure AD テナントごとに、OpenID Connect Discovery のメタデータを調べます。 メタデータの URL の形式は、`https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration` のようになっています。`your-tenant` は Azure AD テナントの名前です。 次に例を示します。
 
@@ -166,67 +164,31 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. ブラウザーを開き、そのテナントに対応する OpenID Connect のメタデータ URL に移動します。 **発行者** オブジェクトを探し、その値を記録します。 `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/` のようになっていると思います。
 1. その値をコピーして **ValidTokenIssuerPrefixes** キーに貼り付けます。 複数の発行者は、コンマで区切ります。 前出の `ClaimsProvider` XML サンプルでは、発行者が 2 つ存在する例を確認できます。
 
-### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-ここまでで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
-2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
-3. **[アップロード]** を選択します。
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
+    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADCommonExchange" />
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="AzureADCommonExchange" TechnicalProfileReferenceId="AADCommon-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-この時点では、ID プロバイダーはセットアップされていますが、サインアップ/サインイン画面で使用することはできません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、Azure AD の ID プロバイダーも含まれるように変更します。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
-3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
-4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
-5. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInContoso` 」のように入力します。
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
-### <a name="display-the-button"></a>ボタンを表示する
-
-**ClaimsProviderSelection** 要素は、サインアップおよびサインイン画面の ID プロバイダー ボタンに類似しています。 Azure AD 用の **ClaimsProviderSelection** 要素を追加すると、ユーザーがページにアクセスしたときに新しいボタンが表示されます。
-
-1. *TrustFrameworkExtensions.xml* で、作成したユーザー体験内に `Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-1. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`AzureADExchange` など) に設定します。
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
-
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Azure AD と通信してトークンを受信します。 Azure AD 要求プロバイダーの技術プロファイルをリンクすることで、ボタンをアクションにリンクします。
-
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-2. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した **Id** と同じ値を必ずご使用ください。
-
-    ```xml
-    <ClaimsExchange Id="AzureADExchange" TechnicalProfileReferenceId="Common-AAD" />
-    ```
-
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `Common-AAD` 」のように入力します。
-
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
-
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
-
-作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
-
-1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、*SignUpSignContoso.xml* に名前を変更します。
-1. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInContoso` 」のように入力します。
-1. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、「 `http://contoso.com/B2C_1A_signup_signin_contoso` 」のように入力します。
-1. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、先ほど作成したユーザー体験の ID と一致するように更新します。 たとえば、*SignUpSignInContoso* とします。
-1. 変更内容を保存し、ファイルをアップロードします。
-1. アップロードされた **[カスタム ポリシー]** の一覧から、新しく作成したポリシーを選択します。
-1. **[アプリケーションの選択]** ボックスの一覧で、前の手順で作成した Azure AD B2C アプリケーションを選択します  (例: *testapp1*)。
-1. **[今すぐ実行のエンドポイント]** をコピーし、プライベート ブラウザー ウィンドウ (Google のシークレット モード、Microsoft Edge の InPrivate ウィンドウなど) で開きます。 プライベート ブラウザー ウィンドウで開くと、現在キャッシュされている Azure AD の資格情報を使用せずに、ユーザー体験を全体的にテストできます。
-1. Azure AD のサインイン ボタン (たとえば、*Contoso Employee*) を選択し、いずれかの Azure AD 組織テナントのユーザーの資格情報を入力します。 アプリケーションを承認するように求められたら、プロファイルの情報を入力します。
-
-サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
-
-マルチテナントのサインイン機能をテストするために、別の Azure AD テナントに存在するユーザーの資格情報を使用して、最後の 2 つの手順を実行してください。
+マルチテナントのサインイン機能をテストするために、別の Azure AD テナントに存在するユーザーの資格情報を使用して、最後の 2 つの手順を実行してください。 **[今すぐ実行のエンドポイント]** をコピーし、プライベート ブラウザー ウィンドウ (Google のシークレット モード、Microsoft Edge の InPrivate ウィンドウなど) で開きます。 プライベート ブラウザー ウィンドウで開くと、現在キャッシュされている Azure AD の資格情報を使用せずに、ユーザー体験を全体的にテストできます。
 
 ## <a name="next-steps"></a>次のステップ
 

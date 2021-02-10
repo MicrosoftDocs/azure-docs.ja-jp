@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e0fff67d6998e55854d4dc3c8db261bc4499f0be
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f949747649e351947ba65666fdb57c0beac3aa23
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936058"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492112"
 ---
 # <a name="calling-client-library-overview"></a>通話クライアント ライブラリの概要
 
@@ -96,7 +96,7 @@ Communication Services の通話クライアント ライブラリでは、次�
 
 |           |Web | Android、iOS|
 |-----------|----|------------|
-|**同時に送信できる発信ストリームの数** |1 つのビデオと 1 つの画面の共有 | 1 つのビデオと 1 つの画面の共有|
+|**同時に送信できる発信ストリームの数** |1 つのビデオと 1 つの画面の共有 | 1 つのビデオ |
 |**同時に表示できる着信ストリームの数** |1 つのビデオと 1 つの画面の共有| 6 つのビデオと 1 つの画面の共有 |
 
 

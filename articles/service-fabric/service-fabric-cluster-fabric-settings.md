@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095272"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919784"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -521,7 +521,7 @@ ms.locfileid: "97095272"
 |AutoDetectAvailableResources|ブール値、既定値は TRUE|静的|この構成は、ノードで使用可能なリソース (CPU およびメモリ) の自動検出をトリガーします。この構成が true に設定されている場合は、実際の容量を読み取り、ユーザーによって不適切なノード容量が指定されているとき、または容量が定義されていないときは、それを修正します。この構成が false の場合は、ユーザーによって不適切なノード容量が指定されているという警告をトレースしますが、修正しません。つまり、ユーザーは、実際のノードの容量よりも大きな値を指定しようとしています。容量が未定義の場合は、無制限の容量と見なされます |
 |BalancingDelayAfterNewNode | 時間 (秒単位)、既定値は 120 |動的|timespan を秒単位で指定します。 新しいノードの追加後、この期間内に均衡化アクティビティを開始しないでください。 |
 |BalancingDelayAfterNodeDown | 時間 (秒単位)、既定値は 120 |動的|timespan を秒単位で指定します。 ノード ダウン イベント後、この期間内に均衡化アクティビティを開始しないでください。 |
-|BlockNodeInUpgradeConstraintPriority | int、既定値は 0 |動的|容量の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:Ignore  |
+|BlockNodeInUpgradeConstraintPriority | int、既定値は -1 |動的|容量の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:Ignore  |
 |CapacityConstraintPriority | int、既定値は 0 | 動的|容量の制約の優先順位を指定します:0:ハード、1:ソフト、負の値:無視。 |
 |ConsecutiveDroppedMovementsHealthReportLimit | int、既定値は 20 | 動的|ResourceBalancer が発行した移動が連続して破棄された回数がここで定義した連続回数に達すると、診断が行われ、正常性の警告が出力されます。 負の値:この条件下では警告は出力されません。 |
 |ConstraintFixPartialDelayAfterNewNode | 時間 (秒単位)、既定値は 120 |動的| timespan を秒単位で指定します。 新しいノードの追加後、この期間内に FaultDomain および UpgradeDomain の制約違反を修正しないでください。 |

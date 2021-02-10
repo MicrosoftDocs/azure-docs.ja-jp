@@ -1,19 +1,16 @@
 ---
 title: HDInsight で ML Services クラスターを管理する - Azure
 description: Azure HDInsight で ML Services クラスターに対するさまざまなタスクを管理する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/19/2019
-ms.openlocfilehash: 898a02796d578d76f9b45d167f4e92a4bf9831ba
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e4c9124ebd0b61b8db1b1da964355a3c36b5bba5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536285"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930587"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -31,8 +28,8 @@ HDInsight で ML Services クラスターに対して複数の同時ユーザー
 
 ![HDI Azure portal のログイン パラメーター](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
-- **クラスター ログイン ユーザー名** : 作成した HDInsight クラスターを保護するために使用される、HDInsight ゲートウェイを介した認証用の HTTP ユーザー。 この HTTP ユーザーは、Apache Ambari UI、Apache Hadoop YARN UI、およびその他の UI コンポーネントにアクセスするために使用されます。
-- **Secure Shell (SSH) ユーザー名** : Secure Shell を介してクラスターにアクセスする SSH ユーザー。 このユーザーは、ヘッド ノード、ワーカー ノード、エッジ ノードすべてに対応する Linux システムのユーザーです。 そのため、Secure Shell を使用して、リモート クラスター内の任意のノードにアクセスできます。
+- **クラスター ログイン ユーザー名**: 作成した HDInsight クラスターを保護するために使用される、HDInsight ゲートウェイを介した認証用の HTTP ユーザー。 この HTTP ユーザーは、Apache Ambari UI、Apache Hadoop YARN UI、およびその他の UI コンポーネントにアクセスするために使用されます。
+- **Secure Shell (SSH) ユーザー名**: Secure Shell を介してクラスターにアクセスする SSH ユーザー。 このユーザーは、ヘッド ノード、ワーカー ノード、エッジ ノードすべてに対応する Linux システムのユーザーです。 そのため、Secure Shell を使用して、リモート クラスター内の任意のノードにアクセスできます。
 
 HDInsight の ML Services クラスターで使用されている R Studio Server Community バージョンでは、サインイン メカニズムとして Linux ユーザー名とパスワードのみを受け付けます。 トークンを渡すことはサポートされていません。 そのため、ML Services クラスターで R Studio にアクセスするのが初めての場合は、2 回サインインする必要があります。
 
@@ -74,7 +71,7 @@ sudo passwd <yournewusername>
 
 `https://CLUSTERNAME.azurehdinsight.net/rstudio/` から RStudio にアクセスします。 クラスターの作成後、初めてログインする場合は、クラスター管理者の資格情報を入力してから、作成した SSH ユーザーの資格情報を入力します。 初めてのログインではない場合は、作成した SSH ユーザーの資格情報だけを入力します。
 
-同時に、別のブラウザー ウィンドウから元の資格情報 (既定では *sshuser* ) を使用してサインインすることもできます。
+同時に、別のブラウザー ウィンドウから元の資格情報 (既定では *sshuser*) を使用してサインインすることもできます。
 
 また、新しく追加されたユーザーには Linux システムにおける root 権限はありませんが、リモートの HDFS および WASB ストレージ内のすべてのファイルに対して同じアクセス権があることにも注意してください。
 
@@ -205,7 +202,7 @@ rxSparkDisconnect(myHadoopCluster)
 
    * **worker** についてのみチェック ボックスをオンにします。
 
-   * **パラメーター** : インストールされる R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
+   * **パラメーター**: インストールされる R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
 
    * **このスクリプト操作を保持する** ためのチェック ボックスをオンにします。  
 

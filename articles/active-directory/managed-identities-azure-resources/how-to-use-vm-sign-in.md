@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/01/2017
+ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 08fe856fd43baad4189d81f7743396a71cd5de48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89266325"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090962"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Azure VM 上の Azure リソースのマネージド ID を使用してサインインする方法 
 
@@ -90,12 +90,7 @@ Azure AD をサポートするリソースで、Azure リソースのマネー�
 - PowerShell:*Invoke-WebRequest: リモート サーバーに接続できません*
 - CLI:*MSI: `http://localhost:50342/oauth2/token` からトークンを取得できませんでした。'HTTPConnectionPool(host='localhost', port=50342) エラーが発生しました* 
 
-これらのエラーが発生した場合、[Azure ポータル](https://portal.azure.com)で Azure VM に戻り、
-
-- **[ID]** ページに移動して、 させ **[システム割り当て]** が [はい] に設定されていることを確認します。
-- **[拡張機能]** ページに移動して、Azure リソースのマネージド ID 拡張機能 **(2019 年 1 月に非推奨となる予定)** が正常に展開されていることを確認します。
-
-いずれかが正しくない場合は、Azure リソースのマネージド ID をリソース上にもう一度展開するか、展開エラーのトラブルシューティングを行う必要があります。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して VM 上に Azure リソースのマネージド ID を構成する](qs-configure-portal-windows-vm.md)」をご覧ください。
+これらのいずれかのエラーが発生した場合は、[Azure portal](https://portal.azure.com) の Azure VM に戻り、 **[ID]** ページにアクセスし **[システム割り当て済み]** が [はい] に設定されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -2,15 +2,15 @@
 title: テンプレートをデプロイする - Azure portal
 description: Azure portal を使用して最初の Azure Resource Manager テンプレート (ARM テンプレート) を作成する方法とテンプレートをデプロイする方法を説明します。
 author: mumian
-ms.date: 06/29/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: bdbcecc247a4b5318ba44b92befa7e90ac47aa8c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 946156caa7252a89cab006d604eb6b441e09c643
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349624"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892502"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする
 
@@ -33,9 +33,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure portal メニューから [リソースの作成] を選択する](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. **[ストレージ]**  >  **[ストレージ アカウント]** を選択します。
+1. 検索ボックスに「**storage account**」と入力し、**Enter** キーを押します。
+1. **［作成］** を選択します
 
     ![Azure のストレージ アカウントの作成](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+
 1. 次の情報を入力します。
 
     |名前|値|

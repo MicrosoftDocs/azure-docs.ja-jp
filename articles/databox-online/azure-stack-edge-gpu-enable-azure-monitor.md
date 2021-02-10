@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 02/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 3485c6ca5c2672fa48b6118a78600b9745994ce1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 171b4dbfb2a5852e270c483a28cad31f97dcb42b
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465535"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493914"
 ---
 # <a name="enable-azure-monitor-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで Azure Monitor を有効にする
 
@@ -30,7 +30,7 @@ Azure Stack Edge Pro GPU デバイス上のコンテナーの監視は、複数�
 - **コンピューティングの構成** が完了している。コンピューティングの構成は、お使いのデバイスで、[チュートリアル: Azure Stack Edge Pro デバイスでのコンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事に従って構成します。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
 
 
-## <a name="create-log-analytics-workspace"></a>Log Analytics ワークスペースを作成する
+## <a name="create-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 
 Log Analytics ワークスペースを作成するには、次の手順を実行します。 Log Analytics ワークスペースは、ログ データが収集されて格納される論理ストレージ ユニットです。
 
@@ -241,3 +241,4 @@ Log Analytics ワークスペースを作成するには、次の手順を実行
 ## <a name="next-steps"></a>次の手順
 
 - [Kubernetes ダッシュボードを使用して Kubernetes ワークロードを監視する方法](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md)を確認します。
+- [デバイス イベントのアラート通知を管理する](azure-stack-edge-gpu-manage-device-event-alert-notifications.md)方法について説明します。 

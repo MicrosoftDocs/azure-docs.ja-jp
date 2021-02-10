@@ -7,16 +7,28 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510964"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631369"
 ---
 # <a name="common-errors"></a>一般的なエラー
 
 Azure Database for MySQL は、MySQL のコミュニティ バージョンを利用したフル マネージド サービスです。 マネージド サービス環境での MySQL エクスペリエンスは、独自の環境で MySQL を実行する場合と異なることがあります。 この記事では、初めて Azure Database for MySQL サービスへの移行や開発を行うときにユーザーが遭遇する可能性のある一般的なエラーについて説明します。
+
+## <a name="common-connection-errors"></a>一般的な接続エラー
+
+#### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (エラー 1184 (08S01): db への接続 22 を中止: 'db-name' ユーザー: 'user' ホスト: 'hostIP' (init_connect コマンドに失敗しました))
+上記のエラーは、ログインに成功後、セッションが確立されたとき、いずれかのコマンドを実行する前に発生します。 上記のメッセージは、init_connect server パラメーターに設定した値に誤りがあり、それが原因でセッションの初期化に失敗していることを示しています。
+
+セッション レベルではサポートされないサーバー パラメーター (require_secure_transport など) がいくつかあります。そのため、MySQL サーバーへの接続時に、init_connect を使用してそれらのパラメーターを値を変更しようとすると、エラー 1184 が発生します。以下にその例を示します。
+
+mysql> show databases; ERROR 2006 (HY000):MySQL server has gone away No connection. Trying to reconnect...Connection id:  64897 Current database: *** NONE **_ ERROR 1184 (08S01):Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed)
+
+_ *解決方法**: Azure portal の [サーバー パラメーター] タブで init_connect の値をリセットし、サポートされているサーバー パラメーターのみを init_connect パラメーターで設定する必要があります。 
+
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>SUPER 権限と DBA ロールの欠如によるエラー
 

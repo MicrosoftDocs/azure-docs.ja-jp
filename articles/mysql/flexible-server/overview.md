@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348289"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257459"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -132,20 +132,22 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 
 Azure でワークロードを実行する利点の 1 つは、グローバルに展開できることです。 Azure Database for MySQL フレキシブル サーバーは、現在、次の Azure リージョンで提供されています。
 
-- 西ヨーロッパ
-- 北ヨーロッパ
-- 英国南部
-- 米国東部 2
-- 米国西部 2
-- 米国中部
-- 米国東部
-- カナダ中部
-- 東南アジア
-- 韓国中部
-- 東日本
-- オーストラリア東部
+| Region | 可用性 | ゾーン冗長 HA | 
+| --- | --- | --- |
+| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| 英国南部 | :heavy_check_mark: | :x: | 
+| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 米国中部 | :heavy_check_mark: | :x: | 
+| 米国東部 | :heavy_check_mark: | :heavy_check_mark: |
+| カナダ中部 | :heavy_check_mark: | :x: | 
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| 韓国中部 | :heavy_check_mark: | :x: | 
+| Japan East | :heavy_check_mark: | :x: | 
+| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: |
 
-近日中に新しいサーバーを追加できるよう取り組んでいます。
+近日中に新しいリージョンを追加できるよう取り組んでいます。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for MySQL フレキシブル サーバーについてのご質問やご提案については、Azure Database for MySQL チームまでメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。

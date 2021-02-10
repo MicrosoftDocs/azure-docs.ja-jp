@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 532fcc7db849af192ceddb1c239e99f31a2a3088
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b2ae48c76ccba80d274e7463b31782b4fbc6a976
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178468"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225716"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>クイック スタート:JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -54,14 +54,15 @@ ms.locfileid: "98178468"
 > 1. アプリケーションの **[名前]** を入力します。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
 > 1. **[サポートされているアカウントの種類]** で、 **[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
 > 1. **[登録]** を選択します。 後で使用するために、アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を書き留めます。
-> 1. このクイック スタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 登録済みのアプリケーションの左側のウィンドウで、 **[認証]** を選択します。
-> 1. **[プラットフォーム構成]** で **[プラットフォームを追加]** を選択します。 左側のパネルが開きます。 そこで、**Web アプリケーション** のリージョンを選択します。
-> 1. 引き続き左側で、 **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 次に、 **[アクセス トークン]** と **[ID トークン]** を選択します。
+> 1. このクイック スタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 **[管理]** で、 **[認証]** を選択します。
+> 1. **[プラットフォーム構成]**  >  **[プラットフォームを追加]** を選択します。 **[Web]** を選択します。
+> 1. **[リダイレクト URI]** の値を `http://localhost:3000/` に設定します。 
+> 1. **[暗黙的な許可およびハイブリッド フロー]** で、 **[アクセス トークン]** と **[ID トークン]** を選択します。
 > 1. **[構成]** をクリックします。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、`redirectUri` を `http://localhost:3000/` として追加し、 **[暗黙の付与]** を有効にします。
+> このクイックスタートのサンプル コードは、**リダイレクト URI** を `http://localhost:3000/` とし、 **[暗黙的な許可]** を有効にする必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >
@@ -266,14 +267,14 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-ユーザーに Microsoft ID プラットフォーム エンドポイントとのやり取りを強制しなければならない場合があります。 次に例を示します。
+ユーザーに Microsoft ID プラットフォームとのやり取りを強制しなければならない場合があります。 次に例を示します。
 * パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある。
 * お使いのアプリケーションが、ユーザーによる同意が必要な追加のリソース スコープへのアクセスを要求している。
 * 2 要素認証が必須である。
 
 ほとんどのアプリケーションでお勧めしている通常のパターンは、最初に `acquireTokenSilent` を呼び出し、例外をキャッチしてから、`acquireTokenPopup` (または `acquireTokenRedirect`) を呼び出して、対話型要求を開始するというものです。
 
-`acquireTokenPopup` を呼び出すことで、サインインの際にポップアップ ウィンドウが表示されるようになります (または、`acquireTokenRedirect` によってユーザーが Microsoft ID プラットフォーム エンドポイントにリダイレクトされるようになります)。ユーザーはそのウィンドウ内で、自分の資格情報の確認、必要なリソースへの同意、2 要素認証の完了のいずれかの方法で操作を行う必要があります。
+`acquireTokenPopup` を呼び出すことで、サインインの際にポップアップ ウィンドウが表示されるようになります (または、`acquireTokenRedirect` によってユーザーが Microsoft ID プラットフォームにリダイレクトされるようになります)。 ユーザーはそのウィンドウ内で、自分の資格情報の確認、必要なリソースへの同意、2 要素認証の完了のいずれかの方法で操作を行う必要があります。
 
 ```javascript
 // Add here scopes for access token to be used at MS Graph API endpoints.

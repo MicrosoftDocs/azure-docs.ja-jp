@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: d375b860c6b23fd6033e985e23c6f12dfe9a3c68
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7673a42afa3b85a2aaf3f11f5e9b74fd46d48488
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223569"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945089"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Azure CLI を使用して VM 用にルーティング優先設定を構成する
 
@@ -58,7 +58,7 @@ VM をデプロイする前に、サポートするネットワーク リソー�
 
 ### <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-VNet での受信方向および送信方向の通信を管理する規則に対するネットワーク セキュリティ グループを、[az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) で作成します
+VNet での受信方向および送信方向の通信を管理する規則に対するネットワーク セキュリティ グループを、[az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) で作成します
 
 ```azurecli
 az network nsg create \
@@ -69,7 +69,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) を使用して仮想ネットワークを作成します。 次の例では、サブネット *mySubNet* を含む *myVNET* という名前の仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用して仮想ネットワークを作成します。 次の例では、サブネット *mySubNet* を含む *myVNET* という名前の仮想ネットワークを作成します。
 
 ```azurecli
 # Create a virtual network
@@ -89,7 +89,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>NIC を作成する
 
-VM 用の仮想 NIC を作成するには、[az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) を使用します。 次の例では、VM に接続される仮想 NIC を作成します。
+VM 用の仮想 NIC を作成するには、[az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用します。 次の例では、VM に接続される仮想 NIC を作成します。
 
 ```azurecli-interactive
 # Create a NIC
@@ -105,7 +105,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) を使用して VM を作成します。 次の例では、Windows Server 2019 VM と、必要な仮想ネットワーク コンポーネント (まだ存在しない場合) を作成します。
+[az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 次の例では、Windows Server 2019 VM と、必要な仮想ネットワーク コンポーネント (まだ存在しない場合) を作成します。
 
 ```azurecli
 az vm create \

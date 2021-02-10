@@ -11,21 +11,21 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: d480239c0eb99ed48c13ec2fdb5b052574acc318
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0dcffe6731c177d1d45c569361fcb200f23af86c
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092501"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095360"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL Database のサーバー用の仮想ネットワーク サービス エンドポイントと規則の使用
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-"*仮想ネットワーク規則*" はファイアウォール セキュリティ機能であり、[Azure SQL Database](sql-database-paas-overview.md) 内のデータベースおよびエラスティック プール用、または [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のサーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則が、場合によっては SQL Database および Azure Synapse Analytics のデータベースへの通信を安全に許可するための最適な選択肢となる理由について説明します。
+"*仮想ネットワーク規則*" はファイアウォール セキュリティ機能であり、[Azure SQL Database](sql-database-paas-overview.md) 内のデータベースおよびエラスティック プール用、または [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内の専用 SQL プール (旧称 SQL DW) データベース用のサーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。 この記事では、仮想ネットワーク規則が、場合によっては SQL Database および Azure Synapse Analytics のデータベースへの通信を安全に許可するための最適な選択肢となる理由について説明します。
 
 > [!NOTE]
-> この記事は、SQL Database と Azure Synapse Analytics の両方に適用されます。 簡潔にするために、"*データベース*" という用語で、SQL Database と Azure Synapse Analytics の両方のデータベースを表します。 同様に、"*サーバー*" という言葉は、SQL Database と Azure Synapse Analytics をホストする[論理 SQL サーバー](logical-servers.md)を表します。
+> この記事は、SQL Database と Azure Synapse Analytics の両方に適用されます。 簡潔にするために、"*データベース*" という用語で、SQL Database と Azure Synapse Analytics の両方のデータベースを表します。 同様に、"*サーバー*" という言葉は、SQL Database と Azure Synapse Analytics をホストする [論理 SQL サーバー](logical-servers.md)を表します。
 
 仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
 
@@ -202,7 +202,7 @@ PowerShell を使用して、**IgnoreMissingVNetServiceEndpoint** フラグを�
 
 **エラーの説明:** クライアントは、仮想ネットワーク サーバーのエンドポイントを持つサブネット内にあります。 しかし、サーバーには、データベースと通信する権限をサブネットに付与する仮想ネットワーク規則がありません。
 
-**エラーの解決策:** Azure portal の **[ファイアウォール]** ペインで、仮想ネットワーク規則コントロールを使用して、サブネットの[仮想ネットワーク規則を追加](#anchor-how-to-by-using-firewall-portal-59j)します。
+**エラーの解決策:** Azure portal の **[ファイアウォール]** ペインで、仮想ネットワーク規則コントロールを使用して、サブネットの [仮想ネットワーク規則を追加](#anchor-how-to-by-using-firewall-portal-59j)します。
 
 ### <a name="error-40615"></a>エラー 40615
 

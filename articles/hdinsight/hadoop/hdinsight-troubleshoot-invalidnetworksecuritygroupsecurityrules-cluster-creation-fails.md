@@ -3,16 +3,13 @@ title: InvalidNetworkSecurityGroupSecurityRules エラー - Azure HDInsight
 description: ErrorCode InvalidNetworkSecurityGroupSecurityRules でクラスターの作成が失敗する
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: b1423dc965a3169a5f615ccc371849cc177be244
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7e0b984b3ec4a203f8a1118c0e6a166c5a9e1125
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289104"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944369"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>シナリオ:InvalidNetworkSecurityGroupSecurityRules - Azure HDInsight でクラスターの作成が失敗する
 
@@ -28,7 +25,7 @@ ms.locfileid: "93289104"
 
 ## <a name="resolution"></a>解像度
 
-Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **受信セキュリティ規則** セクションで、 [ここ](../control-network-traffic.md)に記述されている IP アドレスについてポート 443 への受信アクセスがルールによって許可されていることを確認します。
+Azure portal に移動し、クラスターがデプロイされているサブネットに関連付けられている NSG を特定します。 **受信セキュリティ規則** セクションで、[ここ](../control-network-traffic.md)に記述されている IP アドレスについてポート 443 への受信アクセスがルールによって許可されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

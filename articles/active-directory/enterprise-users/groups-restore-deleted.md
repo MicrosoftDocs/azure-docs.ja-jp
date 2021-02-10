@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfdc96df548a4a3df2b789759889b85835e1382a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1eacba47e68310dd45976bcd9ddff052fa193436
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860730"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090139"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Azure Active Directory で削除された Microsoft 365 グループを復元する
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) で Microsoft 365 グループを削除する�
 Role | アクセス許可
 --------- | ---------
 グローバル管理者、グループ管理者、パートナー レベル 2 のサポート、Intune 管理者 | 削除されたすべての Microsoft 365 グループを復元できます。
-ユーザー管理者、パートナー レベル 1 のサポート | 会社の管理者ロールに割り当てられているグループを除き、削除されたすべての Microsoft 365 グループを復元できます。
+ユーザー管理者、パートナー レベル 1 のサポート | グローバル管理者ロールに割り当てられているグループを除き、削除されたすべての Microsoft 365 グループを復元できます。
 User | ユーザーが所有する、削除されたすべての Microsoft 365 グループを復元できます。
 
 ## <a name="view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore"></a>復元可能な削除済み Microsoft 365 グループの表示と管理を行う

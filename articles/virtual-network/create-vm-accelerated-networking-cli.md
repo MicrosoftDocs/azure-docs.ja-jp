@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 5b91d6e58f4ae93bbf020f202991f878e7773114
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 643a52c9be04fb325b8e1d088faeb68e473aa673
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222957"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919954"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI で、高速ネットワークを使用する Linux 仮想マシンを作成する
 
@@ -56,11 +56,9 @@ Azure ギャラリーでは次のディストリビューションが既定で�
 ## <a name="limitations-and-constraints"></a>制限と制約
 
 ### <a name="supported-vm-instances"></a>サポートされている VM インスタンス
-高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。  サポートされているシリーズは、D/DSv2 と F/Fs です。
+高速ネットワークは、2 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。 ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 
 
-ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされている系列は、D/Dsv3、D/Dsv4、Dd/Ddv4、Da/Dasv4、E/Esv3、E/Esv4、Ed/Edsv4、Ea/Easv4、Fsv2、Lsv2、Ms/Mms、Ms/Mmsv2 です。
-
-VM インスタンスの詳細については、「[Linux 仮想マシンのサイズ](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+高速ネットワークのサポートは、個々の[仮想マシンのサイズ](../virtual-machines/sizes.md)に関するドキュメントで確認できます。 
 
 ### <a name="custom-images"></a>カスタム イメージ
 カスタム イメージを使用し、イメージで高速ネットワークがサポートされている場合は、必要なドライバーが Azure 上の Mellanox ConnectX-3 および ConnectX-4 Lx NIC と連携して動作していることを確認してください。

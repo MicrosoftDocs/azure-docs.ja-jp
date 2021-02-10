@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 23a741e96807acdb7b162b65597c651a2a6c3235
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: eefc47e1308dc5b59d8b57d7481a5250a7d2af93
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92509252"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475745"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-travelperk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TravelPerk の統合
 
@@ -31,15 +31,15 @@ ms.locfileid: "92509252"
 開始するには、次が必要です。
 
 * Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
-* TravelPerk でのシングル サインオン (SSO) が有効なサブスクリプション。
+* Premium サブスクリプションのある TravelPerk アカウント。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* TravelPerk では、 **SP** Initiated SSO がサポートされます
+* TravelPerk では、**SP** Initiated SSO がサポートされます
 
-* TravelPerk では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* TravelPerk では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-travelperk-from-the-gallery"></a>ギャラリーから TravelPerk を追加する
 
@@ -49,7 +49,7 @@ Azure AD への TravelPerk の統合を構成するには、ギャラリーか�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **TravelPerk** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**TravelPerk**」と入力します。
 1. 結果のパネルから **[TravelPerk]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -85,9 +85,9 @@ TravelPerk に対して Azure AD SSO を構成してテストするには、次�
     c. **[応答 URL]** ボックスに、`https://<COMPANY>.travelperk.com/accounts/saml2/callback/<APPLICATION_ID>/?acs` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 これらの値を取得するには、[TravelPerk クライアント サポート チーム](mailto:trex@travelperk.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を実際のサインオン URL、応答 URL、識別子で更新してください。 この値は、TravelPerk アカウント内で、 **[Company Settings]\(会社の設定\)**  >  **[Integrations]\(統合\)**  >  **[Single Sign On]\(シングル サインオン\)** に移動して確認できます。 サポートについては、[TravelPerk ヘルプ センター](https://support.travelperk.com/hc/en-us/articles/360052450271-How-can-I-setup-SSO-for-Azure-SAML-)にアクセスしてください。
 
-1. TravelPerk アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **emailaddress** は **user.mail** にマップされています。 TravelPerk アプリケーションでは、 **emailaddress** が **user.userprincipalname** にマップされることが想定されているため、 **[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
+1. TravelPerk アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 既定のマッピングでは、**emailaddress** は **user. mail** にマップされます。 ただし、TravelPerk アプリケーションでは、**emailaddress** を **user.userprincipalname** にマップする必要があります。 TravelPerk の場合、属性マッピングを編集する必要があります。 **[Edit]\(編集\)** アイコンをクリックし、この属性マッピングを変更します。 属性を編集するには、属性をクリックして編集モードを開きます。
 
     ![image](common/default-attributes.png)
 

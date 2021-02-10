@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 423fd0f91de3e936e2920d57e5bc606bb86a2437
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74343b2f05bb4a59e475449c87524ff66cdd605d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786719"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919546"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -85,13 +85,15 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 
 1. [Elastic DB Tools for Azure SQL - Getting Started のサンプル](https://github.com/Azure/elastic-db-tools)をダウンロードします。 任意の場所にサンプルを解凍します。
 
-2. *ElasticScaleStarterKit.sln* ソリューションを *C#* ディレクトリから開いてプロジェクトを作成します。
+2. プロジェクトを作成するには、*elastic-db-tools-master* ディレクトリから *ElasticDatabaseTools.sln* ソリューションを開きます。 
 
-3. サンプル プロジェクトのソリューションで、 *app.config* ファイルを開きます。 ファイルの指示に従って、サーバー名とサインイン情報 (ユーザー名とパスワード) を追加します。
+3. *ElasticScaleStarterKit* プロジェクトをスタートアップ プロジェクトとして設定します。
 
-4. アプリケーションをビルドして実行します。 メッセージが表示されたら、Visual Studio によるソリューションの NuGet パッケージの復元を有効にします。 これにより、Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
+4. *ElasticScaleStarterKit* プロジェクトで、*App.config* ファイルを開きます。 ファイルの指示に従って、サーバー名とサインイン情報 (ユーザー名とパスワード) を追加します。
 
-5. クライアント ライブラリの機能をより深く知るには、さまざまなオプションを試してみてください。 アプリケーションで実行されたステップはコンソールに出力されるので、動作していたコードをじっくりと検討することができます。
+5. アプリケーションをビルドして実行します。 メッセージが表示されたら、Visual Studio によるソリューションの NuGet パッケージの復元を有効にします。 これにより、Elastic Database クライアント ライブラリの最新版が NuGet からダウンロードされます。
+
+6. クライアント ライブラリの機能をより深く知るには、さまざまなオプションを試してみてください。 アプリケーションで実行されたステップはコンソールに出力されるので、動作していたコードをじっくりと検討することができます。
 
    ![進行状況][4]
 
@@ -102,19 +104,19 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 
 ## <a name="key-pieces-of-the-code-sample"></a>コード サンプルの主要部
 
-* **シャードとシャード マップの管理** :このコードは、シャード、範囲、マッピングが *ShardManagementUtils.cs* ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。  
+* **シャードとシャード マップの管理**:このコードは、シャード、範囲、マッピングが *ShardManagementUtils.cs* ファイルでどのように機能するかを示します。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。  
 
-* **データ依存ルーティング** :トランザクションの適切なシャードへのルーティングは、 *DataDependentRoutingSample.cs* ファイルに示されます。 詳細については、「[データ依存ルーティング](https://go.microsoft.com/?linkid=9862596)」をご覧ください。
+* **データ依存ルーティング**:トランザクションの適切なシャードへのルーティングは、*DataDependentRoutingSample.cs* ファイルに示されます。 詳細については、「[データ依存ルーティング](https://go.microsoft.com/?linkid=9862596)」をご覧ください。
 
-* **複数のシャードにまたがるクエリ実行** :複数のシャードに対するクエリの実行は、 *MultiShardQuerySample.cs* ファイルに示されます。 詳細については、「[マルチシャード クエリ実行](https://go.microsoft.com/?linkid=9862597)」をご覧ください。
+* **複数のシャードにまたがるクエリ実行**:複数のシャードに対するクエリの実行は、*MultiShardQuerySample.cs* ファイルに示されます。 詳細については、「[マルチシャード クエリ実行](https://go.microsoft.com/?linkid=9862597)」をご覧ください。
 
-* **空のシャードの追加** :新しい空のシャードの反復追加は、 *CreateShardSample.cs* ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。
+* **空のシャードの追加**:新しい空のシャードの反復追加は、*CreateShardSample.cs* ファイルのコードによって実行されます。 詳細については、「[シャード マップ マネージャーでデータベースをスケールアウトする](https://go.microsoft.com/?linkid=9862595)」をご覧ください。
 
 ## <a name="other-elastic-scale-operations"></a>他の Elastic Scale の操作
 
-* **既存のシャードの分割** :シャードを分割する機能は、分割/マージ ツールで提供されます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](elastic-scale-overview-split-and-merge.md)」をご覧ください。
+* **既存のシャードの分割**:シャードを分割する機能は、分割/マージ ツールで提供されます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](elastic-scale-overview-split-and-merge.md)」をご覧ください。
 
-* **既存のシャードのマージ** :シャードのマージも分割/マージ ツールを使って行われます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](elastic-scale-overview-split-and-merge.md)」をご覧ください。
+* **既存のシャードのマージ**:シャードのマージも分割/マージ ツールを使って行われます。 詳細については、「[スケールアウトされたクラウド データベース間のデータ移動](elastic-scale-overview-split-and-merge.md)」をご覧ください。
 
 ## <a name="cost"></a>コスト
 

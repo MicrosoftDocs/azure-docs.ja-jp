@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5229175af618f897caeae7310338cbe51966a48d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 4b8292d99bd16f9b6f98f4ae8ca82edbfc02ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859614"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725756"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![Azure portal でのサンプル値が含まれているテナントの作成フォーム](media/tutorial-create-tenant/review-and-create-tenant.png)
 
 1. **[Review + create]\(レビュー + 作成\)** を選択します。
-1. ディレクトリの設定を確認します。 **[作成]** を選択します。
+1. ディレクトリの設定を確認します。 **[作成]** を選択します。 デプロイのエラーをトラブルシューティングする場合は、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/templates/common-deployment-errors)を参照してください。
 
 課金のために、複数の Azure AD B2C テナントを 1 つの Azure サブスクリプションにリンクすることができます。 テナントをリンクするユーザーは、Azure AD B2C テナントの管理者であること、また、Azure サブスクリプション内で共同作成者以上のロールが割り当てられていることが必要です。 「[Azure AD B2C テナントをサブスクリプションにリンクする](billing.md#link-an-azure-ad-b2c-tenant-to-a-subscription)」を参照してください。
 

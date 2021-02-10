@@ -3,12 +3,12 @@ title: リソースをリソース グループにデプロイする
 description: Azure Resource Manager テンプレートでリソースをデプロイする方法について説明します。 複数のリソース グループを対象にする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: c3401346f31d34d92da1f52ca79f691e94e7eb78
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186228"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491556"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>ARM テンプレートを使用したリソース グループへのデプロイ
 
@@ -128,9 +128,9 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 ### <a name="scope-to-tenant"></a>テナントへのスコープ
 
-`scope` を `/` に設定することで、テナントにリソースを作成できます。 テンプレートをデプロイするユーザーには、[テナントでデプロイするための必要なアクセス権が必要です](deploy-to-tenant.md#required-access)。
+テナントでリソースを作成するには、`scope` を `/` に設定します。 テンプレートをデプロイするユーザーには、[テナントでデプロイするための必要なアクセス権が必要です](deploy-to-tenant.md#required-access)。
 
-`scope` と `location` を設定した入れ子になったデプロイを使用できます。
+入れ子になったデプロイを使用するには、`scope` と `location` を設定します。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-to-tenant.json" highlight="9,10,14":::
 
@@ -142,7 +142,7 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 ## <a name="deploy-to-target-resource-group"></a>ターゲット リソース グループにデプロイする
 
-リソースをターゲット リソース グループにデプロイするには、テンプレートの **リソース** セクションにそれらのリソースを定義します。 次のテンプレートでは、デプロイ操作で指定されているリソース グループにストレージ アカウントが作成されます。
+リソースをターゲット リソース グループにデプロイするには、テンプレートの`resources` セクションにそれらのリソースを定義します。 次のテンプレートでは、デプロイ操作で指定されているリソース グループにストレージ アカウントが作成されます。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 

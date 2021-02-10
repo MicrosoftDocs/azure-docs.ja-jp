@@ -1,19 +1,16 @@
 ---
 title: Zeppelin Notebook と Apache Spark クラスター - Azure HDInsight
 description: Azure HDInsight の Apache Spark クラスターで Zeppelin Notebook を使用する手順を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 00b9568d03260a9d1ac0b6916e09f3d9ef4da34d
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: ba58c007dc0bc3776f429366651cb79404b137b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822167"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928487"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する
 

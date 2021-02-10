@@ -3,17 +3,17 @@ title: クイックスタート - Azure Resource Manager テンプレート (ARM
 description: Azure クイックスタート - Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure IoT Hub デバイス プロビジョニング サービス (DPS) を作成する方法について説明します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/03/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 73beed4e4262d911f68c2b4b33bc0c1ee24164f8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: cc55d1569c85dd0873d0132833acc99bd5d06136
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746210"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928943"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-dps-with-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して IoT Hub デバイス プロビジョニング サービス (DPS) を設定する
 
@@ -35,6 +35,9 @@ ms.locfileid: "96746210"
 ## <a name="review-the-template"></a>テンプレートを確認する
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-iothub-device-provisioning/)からのものです。
+
+> [!NOTE]
+> 現在、新しい DPS リソースで加入契約を作成するための ARM テンプレートのサポートはありません。 その機能を希望する声が多く寄せられていることから現在、実装を検討中です。
 
 :::code language="json" source="~/quickstart-templates/101-iothub-device-provisioning/azuredeploy.json":::
 
@@ -58,7 +61,7 @@ ms.locfileid: "96746210"
 
     以下で指定されている場合を除き、既定値を使用して IoT ハブと DPS リソースを作成します。
 
-    | フィールド | 説明 |
+    | フィールド | [説明] |
     | :---- | :---------- |
     | **サブスクリプション** | Azure サブスクリプションを選択します。 |
     | **リソース グループ** | **[新規作成]** をクリックし、リソース グループの一意の名前を入力して、 **[OK]** をクリックします。 |

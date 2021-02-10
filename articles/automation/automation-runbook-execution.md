@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ac7d99f4a47711f9974d30d877a3237eec15443
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 71273c456b14fa4ea289e2a48d441de99ce8a4b1
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078835"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053909"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -112,7 +112,7 @@ Log Analytics エージェントと **nxautomation** アカウント向けに提
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 
-Runbook には、資格情報を通じて Azure に対する認証を行うためのアクセス許可が必要です。 「[Azure Automation の実行アカウントを管理する](manage-runas-account.md)」を参照してください。
+Runbook には、資格情報を通じて Azure に対する認証を行うためのアクセス許可が必要です。 [Azure Automation の認証の概要](automation-security-overview.md)に関するページを参照してください。
 
 ## <a name="modules"></a>モジュール
 
@@ -139,6 +139,7 @@ Azure Automation では、同じ Automation アカウントから複数のジョ
 
 | Status | 説明 |
 |:--- |:--- |
+| アクティブ化中 |ジョブをアクティブ化しています。 |
 | 完了 |ジョブは正常に完了しました。 |
 | 失敗 |グラフィック Runbook または PowerShell ワークフロー Runbook のコンパイルが失敗しました。 PowerShell Runbook を開始できなかったか、ジョブで例外が発生しました。 「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。|
 | 失敗、リソースを待機中 |ジョブは [fair share](#fair-share) の限界に 3 回到達し、毎回、同じチェックポイントから、または Runbook の先頭から起動したために、失敗しました。 |

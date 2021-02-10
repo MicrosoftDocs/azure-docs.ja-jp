@@ -1,19 +1,16 @@
 ---
 title: データ分析パイプラインを運用化する - Azure
 description: 新しいデータによってトリガーされて簡潔な結果を生成するサンプル データ パイプラインを設定して実行します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/25/2019
-ms.openlocfilehash: 1e73c403a03eef9a47bc0550b37769db302a599c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a306890560497b0c7196f1286de3f73039821ea2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504420"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939523"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -97,7 +94,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
     `http://headnodehost:8080`
 
-1. Ambari 内から **Oozie Web コンソール**にアクセスするには **[Oozie]**  >  **[Quick Links]\(クイックリンク\)** > [Active server]\(アクティブ サーバー\) > **[Oozie Web UI]** に移動します。
+1. Ambari 内から **Oozie Web コンソール** にアクセスするには **[Oozie]**  >  **[Quick Links]\(クイックリンク\)** > [Active server]\(アクティブ サーバー\) > **[Oozie Web UI]** に移動します。
 
 ## <a name="configure-hive"></a>Hive を構成する
 

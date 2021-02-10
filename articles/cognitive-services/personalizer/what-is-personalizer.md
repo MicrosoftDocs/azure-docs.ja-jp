@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: Personalizer, Azure Personalizer, 機械学習
-ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 913b4d989865a50b23d58c5493368997248f8db8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028779"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928553"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
@@ -115,10 +115,10 @@ Personalizer サービスを使用する機会が得られたら、Web アプリ
 
 ## <a name="reference"></a>関連項目 
 
-* [Personalizer C#/.NET SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet)
+* [Personalizer C#/.NET SDK](/dotnet/api/overview/azure/cognitiveservices/client/personalizer)
 * [Personalizer Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview)
-* [Personalizer JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest)
-* [Personalizer Python SDK](/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
+* [Personalizer JavaScript SDK](/javascript/api/@azure/cognitiveservices-personalizer/)
+* [Personalizer Python SDK](/python/api/overview/azure/cognitiveservices/personalizer)
 * [REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
 ## <a name="next-steps"></a>次のステップ

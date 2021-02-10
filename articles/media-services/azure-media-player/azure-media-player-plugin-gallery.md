@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 6d592064729bbdd64e485e0bd0373b2d471597e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71fa79cb8847d16ac0890f9aba647cb8f5e2e444
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87282485"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089344"
 ---
 # <a name="azure-media-player-plugin-gallery"></a>Azure Media Player プラグイン ギャラリー #
 
@@ -21,7 +21,7 @@ ms.locfileid: "87282485"
 |-------------------------------------|-----------------------------|----------------------------|----------------|
 | 追加機能                 | | | |
 | **新しい情報!** AMP360Video                | [デモ](http://www.babylonjs.com/demos/amp360video/)                        | [GitHub](https://github.com/BabylonJS/Extensions/tree/master/Amp360Video)                     | このプラグインを使用すると、VR 対応デバイスまたはデスクトップの AMP で 360 ビデオを視覚化できます。 詳細なドキュメントは、[こちら](https://doc.babylonjs.com/extensions/amp360video)でご覧いただけます。 |
-|  Sprite Tip                         | [デモ](http://www.skymedia.tv/asset/sprite)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Services (AMS) Media Encoder Standard (MES) から生成されたビデオ サムネイル画像スプライトのタイムライン レンダリングに使用される Azure Media Player (AMP) プラグイン。 |
+|  Sprite Tip                         | [デモ](https://www.smwcentral.net/?p=section&a=details&id=10301)                        | [GitHub](https://github.com/RickShahid/SpriteTip)                    | Azure Media Services (AMS) Media Encoder Standard (MES) から生成されたビデオ サムネイル画像スプライトのタイムライン レンダリングに使用される Azure Media Player (AMP) プラグイン。 |
 | Diagnostics Overlay                 | [デモ](https://openidconnectweb.azurewebsites.net/Diagnoverlay.html)                        | [GitHub](https://github.com/willzhan/diagnoverlay)                     | このプラグインには、以下のものが表示されます。すべての主要パラメーター、ビデオの統計情報、ビデオ再生ライフサイクルのすべてのイベント、および保護されている場合は DRM 保護情報 (キー ID、ライセンスの取得 URL など)。                                                                                                                                                                      |
 | Frame rate and Timecode calculator | 使用可能なデモはありません | [GitHub](https://github.com/mconverti/media-services-javascript-azure-media-player-framerate-timecode-calculator-plugin)                     | このプラグインは、最初の MPEG-DASH ビデオ フラグメントの `tfhd`/`trun` MP4 ボックスに基づいてビデオのフレーム レートを計算し、MPEG-DASH クライアント マニフェストからタイム スケール値を解析します。また、プレーヤーから特定の絶対時間のタイムコードを生成する手段を備え、また、そのタイムコードからプレーヤーの絶対時間を得ることもできます。 |
 | <strike>Playback Speed</strike>                      | [デモ](https://azure-samples.github.io/media-services-javascript-Azure-Media-Player-playback-rate-plugin/)                        | [GitHub](https://github.com/Azure-Samples/media-services-javascript-azure-media-player-time-tip-plugin)                     | 閲覧者は、このプラグインを使用してビデオの速度を制御できます。 *バージョン v2.0.0 以上の AMP では、そのままでこの機能が利用できますが、既定では無効になっていることに注意してください。* 有効にする方法については、[こちら](https://github.com/Azure-Samples/azure-media-player-samples)のサンプルを参照してください。 |

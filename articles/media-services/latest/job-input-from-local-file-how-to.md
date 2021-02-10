@@ -1,5 +1,5 @@
 ---
-title: ローカル ファイルから Azure Media Services ジョブの入力を作成する | Microsoft Docs
+title: ローカル ファイルからジョブの入力を作成する
 description: この記事では、ローカル ファイルから Azure Media Services ジョブの入力を作成する手順を説明します。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 02aaae89f7544392765b46361b1617e0fd7dae8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75cd5922804eb1724eaca0157f2c242a86406aab
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296809"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951380"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>ローカル ファイルからジョブの入力を作成する
 

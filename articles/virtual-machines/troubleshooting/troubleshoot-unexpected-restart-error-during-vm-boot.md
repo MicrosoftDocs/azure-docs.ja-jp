@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8d2ab2bb3f24e1faa4791ebdc1ce3852f6a790e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512139"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632692"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>OS 起動時 - コンピューターが予期せず再起動したか、予期しないエラーが発生しました
 
@@ -52,6 +52,9 @@ Azure では、Unattend.xml ファイルではなく、**システム準備ツ�
 ## <a name="solution"></a>解決策
 
 ### <a name="do-not-use-unattendxml"></a>Unattend.xml を使用しない
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 この問題を解決するには、[イメージの準備やキャプチャに関する Azure のガイダンス](../windows/upload-generalized-managed.md)の記事に従い、一般化された新しいイメージを準備します。 sysprep の際に **`/unattend:<your file’s name>` フラグを使用しないでください**。 代わりに、以下のフラグのみを使用してください。
 

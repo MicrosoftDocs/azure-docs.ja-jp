@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705998"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755641"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft ID プラットフォーム開発者向け用語集
 
@@ -222,7 +222,7 @@ Web サーバーですべてのコードを実行する[クライアント ア�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Microsoft ID プラットフォーム開発者のガイド][AAD-Dev-Guide]は、[アプリケーション統合][AAD-How-To-Integrate]の概要や [Microsoft ID プラットフォーム認証の基礎とサポートされる認証シナリオ][AAD-Auth-Scenarios]など、Microsoft ID プラットフォーム開発に関連したあらゆるトピックに使用するためのランディング ページとなっています。 また、迅速に開始および実行する方法に関するコード サンプルやチュートリアルは、[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) で見つかります。
+[Microsoft ID プラットフォーム開発者のガイド][AAD-Dev-Guide]は、[アプリケーション統合][AAD-How-To-Integrate]の概要や [Microsoft ID プラットフォーム認証の基礎とサポートされる認証シナリオ][AAD-Auth-Scenarios]など、Microsoft ID プラットフォーム開発に関連したあらゆるトピックを扱うランディング ページです。 また、迅速に開始および実行する方法に関するコード サンプルやチュートリアルは、[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=) で見つかります。
 
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。新しい定義に関するリクエストのほか、既存の定義の更新のリクエストもお待ちしております。
 
@@ -235,7 +235,7 @@ Microsoft のコンテンツ改善のため、以下のコメント セクショ
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

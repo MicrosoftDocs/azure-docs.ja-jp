@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: 3d6e9d1d66425655f0db5751a28746b6a6a31c86
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 06837ab0f4685787f8d2615e81d0405fdb8ec711
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631785"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062562"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>チュートリアル:セキュリティで保護されたアプリからアプリとして Microsoft Graph にアクセスする
 
@@ -125,9 +125,9 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 
 このコードをサンプル アプリケーションの一部として見る場合は、[GitHub 上のサンプル](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity)を参照してください。
 
-### <a name="install-the-microsoftgraph-client-library-package"></a>Microsoft.Graph クライアント ライブラリ パッケージをインストールする
+### <a name="install-the-microsoftidentitywebmicrosoftgraph-client-library-package"></a>Microsoft.Identity.Web.MicrosoftGraph クライアント ライブラリ パッケージをインストールする
 
-.NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用して、[Microsoft.Graph NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Graph)をプロジェクトにインストールします。
+.NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用して、[Microsoft.Identity.Web.MicrosoftGraph NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph)をプロジェクトにインストールします。
 
 # <a name="command-line"></a>[コマンド ライン](#tab/command-line)
 
@@ -136,7 +136,7 @@ az rest --method post --uri $uri --body $body --headers "Content-Type=applicatio
 インストール コマンドを実行します。
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 # <a name="package-manager"></a>[パッケージ マネージャー](#tab/package-manager)
@@ -145,7 +145,7 @@ Visual Studio でプロジェクトまたはソリューションを開き、 **
 
 インストール コマンドを実行します。
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 ```
 
 ---

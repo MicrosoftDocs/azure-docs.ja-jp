@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003703"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895919"
 ---
 # <a name="manage-role-permissions-and-security"></a>ロールのアクセス許可とセキュリティの管理
 
@@ -319,7 +319,7 @@ Automation アカウントの管理に関与しないユーザーや既に退社
 
 Automation アカウントに対するロールベースのアクセスは、次の [Azure PowerShell コマンドレット](../role-based-access-control/role-assignments-powershell.md)を使用して構成することもできます。
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) を使用すると、Azure Active Directory で利用できるすべての Azure ロールの一覧が表示されます。 このコマンドレットを `Name` パラメーターと共に使用すると、特定のロールで実行できるすべての操作を一覧表示できます。
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition) を使用すると、Azure Active Directory で利用できるすべての Azure ロールの一覧が表示されます。 このコマンドレットを `Name` パラメーターと共に使用すると、特定のロールで実行できるすべての操作を一覧表示できます。
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) を使用すると、特定のスコープにおける Azure ロールの割り当ての一覧が表示されます。 このコマンドレットにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、`ExpandPrincipalGroups` パラメーターを使用します。
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) を使用すると、特定のスコープにおける Azure ロールの割り当ての一覧が表示されます。 このコマンドレットにパラメーターを指定しなかった場合、対象サブスクリプションで行われたすべてのロールの割り当てが返されます。 指定したユーザーと、そのユーザーが属するグループへのアクセス権の割り当てを一覧表示するには、`ExpandPrincipalGroups` パラメーターを使用します。
 
 **例:** Automation アカウント内のすべてのユーザーとそのロールを一覧表示するには、次のコマンドレットを使用します。
 
@@ -360,7 +360,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てるには、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0) を使用します。
+特定のスコープのユーザー、グループ、アプリケーションにアクセス権を割り当てるには、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) を使用します。
 
 **例:** Automation アカウント スコープのユーザーに対して "Automation オペレーター" ロールを割り当てるには、次のコマンドを使用します。
 
@@ -382,7 +382,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-[Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。
+[Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment): 特定のスコープの指定したユーザー、グループ、またはアプリケーションのアクセス権を削除します。
 
 **例:** Automation アカウント スコープの Automation オペレーター ロールからユーザーを削除するには、次のコマンドを使用します。
 

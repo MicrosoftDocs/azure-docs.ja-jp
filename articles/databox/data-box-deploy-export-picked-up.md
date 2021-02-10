@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 02/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 4b5bbe19ddeda7c6b313186b7e24532a294f7253
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 6c2eed9aac614b0765582d5cf373caf50323ef7a
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680838"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537359"
 ---
 # <a name="tutorial-return-azure-data-box"></a>チュートリアル:Azure Data Box を返送する
 
@@ -172,9 +172,27 @@ ms.locfileid: "97680838"
 
 問題が発生した場合は、Data Box Operations Asia ([adbo@microsoft.com](mailto:adbo@microsoft.com)) にメールで連絡します。件名ヘッダーにジョブ名を指定し、発生した問題を記載します。
 
+## <a name="united-arab-emirates"></a>[アラブ首長国連邦](#tab/in-uae)
+
+1. デバイスを返送する際に使用する元の箱を保管しておきます。
+2. デバイスへのデータ コピーが完了し、 **[発送準備]** の手順が正常に完了したことを確認します。
+3. デバイスのローカル Web UI の **[発送準備]** ページにある参照番号をメモしておきます。
+4. デバイスの電源をオフにし、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
+6. 返送するデバイスを元の箱に梱包します。
+7. [Azure Data Box Operations](mailto:adbops@microsoft.com) にメールを送って、荷物がデータセンターに届いたときに荷物の識別に使用する ID を入手します。
+8. 印刷された配送先住所ラベルの返送先住所の横に、はっきりと見えるようにこの ID を記載します。  
+9. [DHL Express UAE](https://mydhl.express.dhl/ae/en/home.html#/schedulePickupTab) > 「**Schedule a Pickup (集荷をスケジュールする)** 」にアクセスして、オンラインで集荷を予約します。
+   - デバイスのローカル Web UI の **[発送準備]** ページで確認した参照番号を貨物運送状番号フィールドに入力します。
+   - 予約は、週 6 日 (金曜日と祝日を除く)、午前 9 時から午後 2 時まで受け付けています。
+   - 集荷依頼は、お客様の終業時間の少なくとも 90 分前に行ってください。
+10. DHL 予約ツールで問題が発生した場合は、次のいずれかの方法を使用して DHL に連絡できます。
+    - 04-2924545 に電話します。
+    - 問題の詳細を記載したメールを [ecom.ae@dhl.com](mailto:ecom.ae@dhl.com) に送ります。件名には貨物運送状番号を含めます。
+    - DHL カスタマー サポート (600 567567) に電話します。
+
 ## <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
 
-日本、シンガポール、韓国、インド、南アフリカ、または西ヨーロッパで Data Box を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
+日本、シンガポール、韓国、インド、南アフリカ、英国、西ヨーロッパ、またはオーストラリアで Data Box を使用していて、注文の作成時に自己管理型の発送オプションを選択した場合は、次の手順に従います。
 
 1. この手順が正常に完了したら、Data Box のローカル Web UI の [発送準備] ページに表示される承認コードをメモしておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
@@ -209,5 +227,3 @@ ms.locfileid: "97680838"
 
 > [!div class="nextstepaction"]
 > [Azure portal で Data Box を管理する](./data-box-portal-admin.md)
-
-

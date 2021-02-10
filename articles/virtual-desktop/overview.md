@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0fe9b3ddaee41802ced30e1898b46cefa2566771
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023192"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730787"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
@@ -130,7 +130,7 @@ Windows Virtual Desktop は、次の x64 オペレーティング システム �
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、または Windows 10 Enterprise KN オペレーティング システム イメージがサポートされていません。 また、Windows 7 では、セクター サイズの制限により、マネージド Azure Storage でホストされている VHD または VHDX ベースのプロファイル ソリューションもサポートされていません。
+Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、Windows 10 Pro、または Windows 10 Enterprise KN オペレーティング システム イメージがサポートされていません。 また、Windows 7 では、セクター サイズの制限により、マネージド Azure Storage でホストされている VHD または VHDX ベースのプロファイル ソリューションもサポートされていません。
 
 利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。
 

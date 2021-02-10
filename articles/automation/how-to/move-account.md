@@ -2,19 +2,15 @@
 title: Azure Automation アカウントを別のサブスクリプションに移動する
 description: この記事では、Automation アカウントを別のサブスクリプションに移動する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/11/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a86d876a723c89eb8dcdf18c8318f2a9c740a229
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185553"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051026"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation アカウントを別のサブスクリプションに移動する
 
@@ -41,7 +37,7 @@ Automation アカウントからワークスペースのリンクを解除する
 
     ![Azure portal から機能リソースを削除しているスクリーンショット](../media/move-account/delete-solutions.png)
 
-必要に応じて、[Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) コマンドレットを使用して、次のようにリソースを削除できます。
+必要に応じて、[Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource) コマンドレットを使用して、次のようにリソースを削除できます。
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -80,7 +76,7 @@ Start/Stop VMs during off-hours の場合、機能によって作成されたア
 
     ![[アクション グループ] ページのスクリーンショット](../media/move-account/delete-action-group.png)
 
-必要に応じて、[Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) コマンドレットを使用して、次のようにアクション グループを削除できます。
+必要に応じて、[Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup) コマンドレットを使用して、次のようにアクション グループを削除できます。
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
@@ -108,7 +104,7 @@ Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Not
 
 ## <a name="re-create-run-as-accounts"></a>実行アカウントを再作成する
 
-[[実行アカウント]](../manage-runas-account.md) は、Azure リソースで認証するために、Azure Active Directory にサービス プリンシパルを作成します。 サブスクリプションを変更すると、Automation アカウントは既存の実行アカウントを使用しなくなります。 実行アカウントを再作成するには、次のようにします。
+[[実行アカウント]](../automation-security-overview.md#run-as-accounts) は、Azure リソースで認証するために、Azure Active Directory にサービス プリンシパルを作成します。 サブスクリプションを変更すると、Automation アカウントは既存の実行アカウントを使用しなくなります。 実行アカウントを再作成するには、次のようにします。
 
 1. 新しいサブスクリプションの Automation アカウントに移動し、 **[アカウント設定]** の下で **[実行アカウント]** を選択します。 実行アカウントが現在、不完全と表示されていることがわかります。
 
@@ -117,7 +113,7 @@ Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Not
 2. **[プロパティ]** ページの **[削除]** ボタンを選択して、実行アカウントを一度に 1 つずつ削除します。 
 
     > [!NOTE]
-    > 実行アカウントを作成または表示するアクセス許可がない場合は、次のメッセージが表示されます。`You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` 詳細については、[実行アカウントを構成するために必要なアクセス許可](../manage-runas-account.md#permissions)に関するセクションを参照してください。
+    > 実行アカウントを作成または表示するアクセス許可がない場合は、次のメッセージが表示されます。`You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` 詳細については、[実行アカウントを構成するために必要なアクセス許可](../automation-security-overview.md#permissions)に関するセクションを参照してください。
 
 3. 実行アカウントを削除したら、 **[Azure 実行アカウント]** の下で **[作成]** を選択します。 
 

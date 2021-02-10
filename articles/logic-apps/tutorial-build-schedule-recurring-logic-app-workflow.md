@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95275e68d0c7674caf4dd2b20f5586db5193fd03
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842565"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054062"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用して、スケジュールに基づいて定期的に実行される自動化ワークフローを作成する
 
@@ -43,6 +43,8 @@ ms.locfileid: "91842565"
 
 * ルートの移動時間を取得するために Bing Maps API のアクセス キーが必要となります。 このキーを取得するには、[Bing 地図のキーを取得する方法](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)に関するページの手順に従ってください。
 
+* ロジック アプリが特定の IP アドレスへのトラフィックを制限するファイアウォールを経由して通信する必要がある場合、そのファイアウォールは、Logic Apps サービスまたはロジック アプリが存在する Azure リージョンのランタイムが使用する [インバウンド](logic-apps-limits-and-config.md#inbound)と [アウトバウンド](logic-apps-limits-and-config.md#outbound)の IP アドレスの "*両方*" のアクセスを許可する必要があります。 また、ロジック アプリが Office 365 Outlook コネクタや SQL コネクタなどの [マネージド コネクタ](../connectors/apis-list.md#managed-api-connectors)を使用している場合、または [カスタム コネクタ](/connectors/custom-connectors/)を使用している場合、そのファイアウォールでは、ロジック アプリの Azure リージョン内の "*すべて*" の[マネージド コネクタ アウトバウンド IP アドレス](logic-apps-limits-and-config.md#outbound)へのアクセスを許可する必要もあります。
+
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。 Azure ホーム ページで、 **[リソースの作成]** を選択します。
@@ -55,13 +57,13 @@ ms.locfileid: "91842565"
 
    ![ロジック アプリの作成ペインと新しいロジック アプリに設定する情報を示すスクリーンショット。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | 値 | [説明] |
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプション名。 この例では、`Pay-As-You-Go` を使用します。 |
    | **リソース グループ** | LA-TravelTime-RG | [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。関連するリソースの整理に使用します。 この例では、`LA-TravelTime-RG` という名前の新しいリソース グループを作成します。 |
    | **名前** | LA-TravelTime | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、`LA-TravelTime` を使用します。 |
    | **場所** | 米国西部 | ロジック アプリの情報の保存先となるリージョン。 この例では、`West US` を使用します。 |
-   | **Log Analytics** | Off | 診断ログの場合は、この設定を**オフ**のままにしてください。 |
+   | **Log Analytics** | Off | 診断ログの場合は、この設定を **オフ** のままにしてください。 |
    ||||
 
 1. 完了したら、 **[確認および作成]** を選択します。 Azure によってロジック アプリに関する情報が検証されたら、 **[作成]** を選択します。
@@ -82,7 +84,7 @@ ms.locfileid: "91842565"
 
    ![Logic Apps デザイナーの検索ボックスに "recurrence" 検索用語が含まれ、[トリガー] 一覧で "Recurrence" トリガーが選択されているスクリーンショット。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-1. **[繰り返し]** シェイプの**省略記号** ( **...** ) ボタンを選択し、 **[名前の変更]** を選択します。 トリガーの名前をわかりやすく「`Check travel time every weekday morning`」に変更します。
+1. **[繰り返し]** シェイプの **省略記号** ( **...** ) ボタンを選択し、 **[名前の変更]** を選択します。 トリガーの名前をわかりやすく「`Check travel time every weekday morning`」に変更します。
 
    ![省略記号ボタンが選択され、[設定] 一覧が開き、[名前の変更] コマンドが選択されているスクリーンショット。](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -147,7 +149,7 @@ ms.locfileid: "91842565"
 
 1. アクションの名前を次の説明に変更します: `Get route and travel time with traffic`
 
-1. このアクションで **[新しいパラメーターの追加] の一覧**を開き、次のプロパティを選択します。
+1. このアクションで **[新しいパラメーターの追加] の一覧** を開き、次のプロパティを選択します。
 
    * **最適化**
    * **距離単位**

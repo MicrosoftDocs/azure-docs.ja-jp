@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight での Apache Kafka に関する FAQ
 description: 管理された Hadoop クラウド サービスである Azure HDInsight での Apache Kafka についての一般的な質問の回答を表示します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 851d7ceb44d2466ed31e26c1442fde9acea9fd22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532542"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939104"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight での Apache Kafka に関してよく寄せられる質問
 
@@ -42,7 +39,7 @@ HDInsight Kafka クラスターには、次のリソースが含まれていま�
 
 ## <a name="can-i-change-cluster-configurations"></a>クラスター構成を変更できますか?
 
-はい、Ambari ポータルを使用します。 ポータルの各コンポーネントには、 **構成** セクションがあり、コンポーネントの構成を変更するために使用できます。 一部の変更では、ブローカーの再起動が必要な場合があります。
+はい、Ambari ポータルを使用します。 ポータルの各コンポーネントには、**構成** セクションがあり、コンポーネントの構成を変更するために使用できます。 一部の変更では、ブローカーの再起動が必要な場合があります。
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>HDInsight で Apache Kafka に対してサポートされる認証の種類はどれですか?
 

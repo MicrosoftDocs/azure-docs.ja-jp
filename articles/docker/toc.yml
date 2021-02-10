@@ -1,10 +1,10 @@
 - name: Docker のドキュメント
   href: index.yml
 - name: クイック スタート
-  expanded: true
   items:
     - name: Docker を使用した Ubuntu VM のデプロイ
       href: 'https://azure.microsoft.com/resources/templates/docker-simple-on-ubuntu/'
+  expanded: true
 - name: チュートリアル
   items:
     - name: Docker と PostgreSQL を使用した Python Web アプリ
@@ -15,8 +15,6 @@
   items:
     - name: Docker VM 拡張機能
       href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
-    - name: Docker マシン
-      href: ../virtual-machines/linux/docker-machine.md
     - name: Docker コンテナー レジストリ
       href: ../container-registry/container-registry-get-started-portal.md
 - name: リソース

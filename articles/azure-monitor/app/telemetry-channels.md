@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564017"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937353"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Application Insights のテレメトリ チャネル
 
@@ -18,7 +18,7 @@ ms.locfileid: "90564017"
 
 ## <a name="what-are-telemetry-channels"></a>テレメトリ チャネルとは
 
-テレメトリ チャネルは、テレメトリ項目をバッファー処理し、Application Insights サービスに送信する役割を担うものです (テレメトリ項目は、クエリと解析のために Application Insights サービスに保存されます)。 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) インターフェイスを実装するクラスはいずれも、テレメトリ チャネルです。
+テレメトリ チャネルは、テレメトリ項目をバッファー処理し、Application Insights サービスに送信する役割を担うものです (テレメトリ項目は、クエリと解析のために Application Insights サービスに保存されます)。 [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel) インターフェイスを実装するクラスはいずれも、テレメトリ チャネルです。
 
 テレメトリ チャネルの `Send(ITelemetry item)` メソッドは、テレメトリ初期化子とテレメトリ プロセッサがすべて呼び出された後に呼び出されます。 つまり、テレメトリ プロセッサによって削除された項目はチャネルに到達しません。 通常であれば、`Send()` が項目をすぐにバックエンドに送信することはありません。 通常はメモリ内でバッファー処理されてから、バッチ単位で効率的に送信されます。
 

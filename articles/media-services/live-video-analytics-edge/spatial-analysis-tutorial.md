@@ -3,12 +3,12 @@ title: 空間分析用の Computer Vision でライブ ビデオを分析する 
 description: このチュートリアルでは、Live Video Analytics を Azure Cognitive Services の Computer Vision 空間分析 AI 機能と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: f8a828d27b69fedefe7ccbc2ad7290bf300afc16
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060182"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526791"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
 
@@ -23,7 +23,8 @@ ms.locfileid: "98060182"
 > * イベントを監視する。
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
+  > [!NOTE]
+  > サービス プリンシパルを作成するためのアクセス許可を与えられた Azure サブスクリプションが必要です (**owner role** には、そのアクセス許可があります)。 適切なアクセス許可がない場合は、適切なアクセス許可をアカウント管理者に申請してください。 
 ## <a name="suggested-pre-reading"></a>推奨される事前読み取り
 
 始める前に、以下の記事をお読みください。
@@ -109,8 +110,8 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
     AAD_TENANT_ID="<AAD Tenant ID>"  
     AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
     AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
-    OUTPUT_VIDEO_FOLDER_ON_DEVICE="/var/media"
+    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+    VIDEO_OUTPUT_FOLDER_ON_DEVICE="/var/media"
     APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
     CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
     CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry password>"   
@@ -136,10 +137,10 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
 1. lvaEdge の `IpcMode` と spatial analysis モジュールの createOptions は同じであり、host に設定されている必要があります。
 1. RTSP シミュレーターを機能させるには、ボリュームの境界が設定されていることを確認します。 詳細については、[Docker Volume マウントの設定](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts)に関するページを参照してください。
 
-    1. [SMB 共有に接続](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)し、[サンプル bulldozer ビデオ ファイル](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)をローカル共有にコピーします。
+    1. [SMB 共有に接続](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share)し、[サンプル bulldozer ビデオ ファイル](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv)をローカル共有にコピーします。  
+        > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Mesi]  
     1. rtspsim モジュールに次の構成が含まれていることを確認します。
-        
-        ```json
+        ```
         "createOptions": {
                             "HostConfig": {
                               "Mounts": [
@@ -159,6 +160,8 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
                             }
                           }
         ```
+        
+
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>配置マニフェストを生成してデプロイする
 
 エッジ デバイスにデプロイされるモジュールは、配置マニフェストによって定義されます。 また、これらのモジュールの構成設定も定義されます。
@@ -201,7 +204,7 @@ spatial-analysis コンテナーなど、すべての Cognitive Services のコ�
 それらのイベントを確認するには、次の手順に従います。
 
 1. Visual Studio Code で **[拡張機能]** タブを開き (または Ctrl + Shift + X キーを押し)、Azure IoT Hub を検索します。
-1. マウスの右ボタンをクリックし、 **[拡張機能の設定]** を選択します。
+1. 右クリックして、 **[拡張機能の設定]** を選択します。
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="拡張機能の設定":::

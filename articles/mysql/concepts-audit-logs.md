@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/24/2020
-ms.openlocfilehash: aac8e6e04b8bac7a1d27fefc780fb9fadb3122dc
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: fa845e7c402073a64f51d75b1da51f56142eee2e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534179"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630501"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL の監査ログ
 
@@ -43,7 +43,7 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 | `DCL` | "GRANT PERMISSION" のようなクエリ |
 | `ADMIN` | "SHOW STATUS" のようなクエリ |
 | `GENERAL` | DML_SELECT、DML_NONSELECT、DML、DDL、DCL、および ADMIN のすべて |
-| `TABLE_ACCESS` | - MySQL 5.7 でのみ利用可能 <br> テーブル読み取りステートメント。たとえば、SELECT、INSERT INTO ...SELECT <br> - テーブル削除ステートメント。たとえば、DELETE、TRUNCATE TABLE <br> - テーブル挿入ステートメント。たとえば、INSERT、REPLACE <br> - テーブル更新ステートメント。たとえば、UPDATE |
+| `TABLE_ACCESS` | - MySQL 5.7 と MySQL 8.0 で利用可能 <br> テーブル読み取りステートメント。たとえば、SELECT、INSERT INTO ...SELECT <br> - テーブル削除ステートメント。たとえば、DELETE、TRUNCATE TABLE <br> - テーブル挿入ステートメント。たとえば、INSERT、REPLACE <br> - テーブル更新ステートメント。たとえば、UPDATE |
 
 ## <a name="access-audit-logs"></a>監査ログにアクセスする
 

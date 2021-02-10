@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187835"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629405"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する (プレビュー)
 
@@ -118,7 +118,7 @@ IoT Edge をゲートウェイとして設定する手順は、IoT Edge をダ�
 
 セキュリティで保護された接続を有効にするには、ゲートウェイ シナリオ内のすべての IoT Edge デバイスを、一意のデバイス CA 証明書と、ゲートウェイ階層内のすべてのデバイスで共有されるルート CA 証明書のコピーを使用して構成する必要があります。
 
-IoT Edge は自分のデバイスに既にインストールされている必要があります。 そうでない場合は、手順に従って [Azure IoT Edge ランタイムをインストール](how-to-install-iot-edge.md)し、次に[対称キー認証](how-to-manual-provision-symmetric-key.md)または [X.509 証明書認証](how-to-manual-provision-x509.md)のいずれかを使用してデバイスをプロビジョニングします。
+IoT Edge は自分のデバイスに既にインストールされている必要があります。 そうでない場合は、[IoT Edge デバイスを IoT Hub に登録する](how-to-register-device.md)と[Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge.md)の手順に従ってください。
 
 このセクションの手順では、この記事の前半で説明した **ルート CA 証明書** および **デバイス CA 証明書と秘密キー** を参照しています。 それらの証明書を別のデバイスで作成した場合は、それらをこのデバイスで使用できるようにします。 USB ドライブを使用したり、[Azure Key Vault](../key-vault/general/overview.md) などのサービスを使用したり、[セキュア ファイル コピー](https://www.ssh.com/ssh/scp/)などの機能を使用して、ファイルを物理的に転送できます。
 

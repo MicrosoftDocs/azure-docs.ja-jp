@@ -7,12 +7,12 @@ ms.date: 01/07/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 52872175eb799785674c331ad4d687ff8ef427a4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e53bf377a7ef8f2293debd288ba25ef8f04ff4fc
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134281"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611000"
 ---
 # <a name="how-to-use-commands-in-an-azure-iot-central-solution"></a>Azure IoT Central ソリューションでコマンドを使用する方法
 
@@ -248,6 +248,9 @@ client.on('message', function (msg) {
 Body: {"StartTime":"2021-01-06T06:00:00.000Z","Bank":2}
 Properties: {"propertyList":[{"key":"iothub-ack","value":"none"},{"key":"method-name","value":"GenerateDiagnostics"}]}
 ```
+
+> [!NOTE]
+> オフライン コマンドの既定の有効期間は 24 時間であり、その後、メッセージは期限切れになります。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,29 +1,24 @@
 ---
-title: Media Services でのマネージド ID と信頼されたストレージ
-description: Media Services をマネージド ID と共に使用して、信頼されたストレージを有効にすることができます。
+title: マネージド ID
+description: Media Services を Azure マネージド ID と共に使用することができます。
+keywords: ''
 services: media-services
 author: IngridAtMicrosoft
 manager: femila
 ms.service: media-services
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 1/29/2020
 ms.author: inhenkel
-ms.openlocfilehash: d0811e8f9183ee334d413bcad69f2c7b32023be3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 71a2b8f0734de80f71dbb2372f8600b464d6c606
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499358"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258441"
 ---
-# <a name="managed-identities-and-trusted-storage-with-media-services"></a>Media Services でのマネージド ID と信頼されたストレージ
+# <a name="managed-identities"></a>マネージド ID
 
-Media Services を[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) と共に使用して、信頼されたストレージを有効にすることができます。 Media Services アカウントを作成するときは、それをストレージ アカウントに関連付ける必要があります。 Media Services は、システム認証を使用してそのストレージ アカウントにアクセスできます。 Media Services により、Media Services アカウントとストレージ アカウントが同じサブスクリプションに含まれていることが検証され、また、関連付けを追加するユーザーが Azure Resource Manager RBAC を使用してストレージ アカウントにアクセスしていることが検証されます。
-
-## <a name="trusted-storage"></a>信頼されたストレージ
-
-ただし、ストレージ アカウントをセキュリティで保護するためにファイアウォールを使用する場合は、マネージド ID 認証を使用する必要があります。 これにより、Media Services は、信頼されたストレージ アクセスによって、ファイアウォールまたは VNet 制限で構成されたストレージ アカウントにアクセスできるようになります。  信頼された Microsoft サービスの詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../../storage/common/storage-network-security.md#trusted-microsoft-services)」を参照してください。
-
-## <a name="media-services-managed-identity-scenarios"></a>Media Services のマネージド ID のシナリオ
+異なるサービス間でやり取りされる通信のセキュリティを確保するシークレットと資格情報の管理は、開発者に共通の課題です。 Azure のマネージド ID を使用すれば、開発者が資格情報を管理する必要がなくなります。Azure リソースの ID は Azure AD から提供され、その ID を使用して Azure Active Directory (Azure AD) トークンが取得されます。
 
 現在、Media Services でマネージド ID を使用できるシナリオは 2 つあります。
 
@@ -31,15 +26,15 @@ Media Services を[マネージド ID](../../active-directory/managed-identities
 
 - Media Services アカウントのマネージド ID を使用して Key Vault にアクセスし、顧客キーにアクセスする。
 
-次の 2 つのセクションでは、2 つのシナリオの違いについて説明します。
+次の 2 つのセクションでは、2 つのシナリオの手順について説明します。
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Media Services アカウントのマネージド ID を使用してストレージ アカウントにアクセスする
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-storage-accounts"></a>Media Services アカウントのマネージド ID を使用してストレージ アカウントにアクセスする
 
 1. マネージド ID が割り当てられた Media Services アカウントを作成します。
 1. 自分が所有しているストレージ アカウントに、マネージド ID プリンシパルのアクセス権を付与します。
-1. Media Services は、マネージド ID を使用して、ユーザーに代わってストレージ アカウントにアクセスできます。
+1. Media Services では、マネージド ID を使用して、ユーザーに代わってストレージ アカウントにアクセスできるようになります。
 
-### <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Media Services アカウントのマネージド ID を使用して Key Vault にアクセスし、顧客キーにアクセスする
+## <a name="use-the-managed-identity-of-the-media-services-account-to-access-key-vault-to-access-customer-keys"></a>Media Services アカウントのマネージド ID を使用して Key Vault にアクセスし、顧客キーにアクセスする
 
 1. マネージド ID が割り当てられた Media Services アカウントを作成します。
 1. 自分が所有している Key Vault に、マネージド ID プリンシパルのアクセス権を付与します。

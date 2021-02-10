@@ -3,16 +3,13 @@ title: Apache Hive での結合による OutOfMemory エラー - Azure HDInsight
 description: OutOfMemory エラー "GC オーバーヘッド制限超過エラー" の処理
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: c227758e31b3b17768b8140475872245b2f34e52
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0c396cde38d8cba8e1f3eaf8527429647868a0c8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532953"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935953"
 ---
 # <a name="scenario-joins-in-apache-hive-leads-to-an-outofmemory-error-in-azure-hdinsight"></a>シナリオ:Apache Hive での結合により Azure HDInsight で OutOfMemory エラーが発生する
 

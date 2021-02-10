@@ -3,7 +3,7 @@ title: Azure Active Directory を使用してオンデマンドでユーザー�
 description: 同期の強制
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629014"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255663"
 ---
 # <a name="on-demand-provisioning"></a>オンデマンド プロビジョニング
 数秒でユーザーをアプリケーションにプロビジョニングするには、オンデマンド プロビジョニングを使用します。 この機能を使用すると、特に以下のことが可能です。
@@ -82,7 +82,7 @@ ms.locfileid: "91629014"
 次に、プロビジョニング サービスにより、ユーザーがプロビジョニングの[スコープ](./how-provisioning-works.md#scoping)内にあるかどうかが確認されます。 サービスによって考慮されるのは以下のような側面です。
 
 * ユーザーがアプリケーションに割り当てられているかどうか。
-* スコープは、**割り当てられた同期**に設定されているか、**すべて同期**に設定されているか。
+* スコープは、**割り当てられた同期** に設定されているか、**すべて同期** に設定されているか。
 * プロビジョニング構成で定義されているスコープ フィルター。  
 
 #### <a name="view-details"></a>詳細を表示する
@@ -124,7 +124,7 @@ ms.locfileid: "91629014"
 
 次に、ユーザーのオンデマンド プロビジョニングが成功した後に表示される内容の例を示します。
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="ユーザーをオンデマンドでプロビジョニングするための Azure portal UI を示すスクリーンショット。":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="ユーザーのオンデマンド プロビジョニングが成功したことを示すスクリーンショット。":::
 
 #### <a name="view-details"></a>詳細を表示する
 

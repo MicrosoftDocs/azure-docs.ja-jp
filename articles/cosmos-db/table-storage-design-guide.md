@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 812d4976a0c6afe646c329ee483be20c33416381
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080007"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943894"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure Table storage のテーブル設計ガイド:スケーラビリティとパフォーマンスに優れたテーブル
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -1109,7 +1109,7 @@ foreach (var e in entities)
 クライアント アプリケーションでのコンカレンシーと更新操作の処理方法に設計が及ぼす影響についても考慮が必要です。  
 
 #### <a name="managing-concurrency"></a>コンカレンシーを管理する
-既定では、Table storage は個々のエンティティのレベルで挿入、マージ、削除の各操作に対してオプティミスティック コンカレンシー チェックを実装しますが、クライアントは、Table storage がこれらのチェックをバイパスするよう強制することもできます。 詳細については、「[Microsoft Azure Storage でのコンカレンシー制御の管理](../storage/common/storage-concurrency.md)」を参照してください。  
+既定では、Table storage は個々のエンティティのレベルで挿入、マージ、削除の各操作に対してオプティミスティック コンカレンシー チェックを実装しますが、クライアントは、Table storage がこれらのチェックをバイパスするよう強制することもできます。 詳細については、「[Microsoft Azure Storage でのコンカレンシー制御の管理](../storage/blobs/concurrency-manage.md)」を参照してください。  
 
 #### <a name="merge-or-replace"></a>マージまたは置換
 `TableOperation` クラスの `Replace` メソッドは、Table storage 内のエンティティ全体を常に置き換えます。 格納されたエンティティに存在するプロパティを要求に含めない場合、要求により、格納されたエンティティからそのプロパティが削除されます。 格納されたエンティティからプロパティを明示的に削除しない場合は、すべてのプロパティを要求に含める必要があります。  

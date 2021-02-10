@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: b67d75ac99f247659723ac0b5a90fd32ebf627e3
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 5a631d9ae7a7d1792e3c4e4a2cbf8281e1168283
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569880"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226019"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>チュートリアル:認証に Microsoft ID プラットフォームを使用する Blazor Server アプリを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "98569880"
 - **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 - **[リダイレクト URI]** ドロップ ダウンは **[Web]** に設定したままにして、「`https://localhost:5001/signin-oidc`」と入力します。 Kestrel で実行されているアプリの既定のポートは 5001 です。 アプリが別のポートで使用可能な場合は、`5001` ではなく、そのポート番号を指定します。
 
-**[認証]**  >  **[暗黙の付与]** で、 **[アクセス トークン]** および **[ID トークン]** のチェック ボックスをオンにし、 **[保存]** ボタンを選択します。
+**[管理]** で、 **[認証]**  >  **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** を選択します。 **[アクセス トークン]** と **[ID トークン]** を選択し、 **[保存]** を選択します。
 
 最後に、アプリが保護された API (この場合 Microsoft Graph) を呼び出すので、その API を呼び出すためのアクセス トークンを要求するときに、その ID を確認するためにクライアント シークレットが必要になります。
 

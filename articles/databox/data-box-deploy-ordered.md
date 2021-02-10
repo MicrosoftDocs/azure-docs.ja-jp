@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210343"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797612"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -231,7 +231,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     |ソースの国/地域    |    データが現在存在する国/地域を選択します。         |
     |宛先 Azure リージョン     |     データを転送する Azure リージョンを選択します。 <br> 詳細については、[利用可能なリージョン](data-box-overview.md#region-availability)に関する記事をご覧ください。            |
 
-    [![Azure Data Box インポート注文の開始](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
+    [ ![Azure Data Box インポート注文の開始](media/data-box-deploy-ordered/select-data-box-import-04-b.png) ](media/data-box-deploy-ordered/select-data-box-import-04-b.png#lightbox)
 
 5. **[Data Box]** を選択します。 1 つの注文での使用可能な最大容量は 80 TB です。 データ サイズがこれより大きい場合は、複数の注文を作成できます。
 
@@ -239,7 +239,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 6. **[注文]** で、 **[基本]** タブに移動します。次の情報を入力または選択し、 **[次へ: データの格納先 >]** を選択します。
 
-    |設定  |値  |
+    |設定  |Value  |
     |---------|---------|
     |サブスクリプション      | サブスクリプションは、前の選択に基づいて自動的に設定されます。|
     |Resource group    | 前に選択したリソース グループ。 |
@@ -338,9 +338,9 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 14. このリソースへのアクセスを管理するために使用するユーザー ID を選択します。 **[Select a user identity]\(ユーザー ID を選択する\)** を選択します。 右側のパネルで、使用するサブスクリプションとマネージド ID を選択します。 次に **[選択]** を選択します。
 
-    ユーザー割り当てマネージド ID は、複数のリソースを管理するために使用できるスタンドアロンの Azure リソースです。 詳細については、[マネージド ID の種類](/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。  
+    ユーザー割り当てマネージド ID は、複数のリソースを管理するために使用できるスタンドアロンの Azure リソースです。 詳細については、[マネージド ID の種類](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。  
 
-    新しいマネージド ID を作成する必要がある場合は、「[Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)」のガイダンスに従ってください。
+    新しいマネージド ID を作成する必要がある場合は、「[Azure portal を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除したり、それにロールを割り当てたりする](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)」のガイダンスに従ってください。
     
     ![[Select a user identity]\(ユーザー ID を選択する\)](./media/data-box-deploy-ordered/customer-managed-key-10.png)
 

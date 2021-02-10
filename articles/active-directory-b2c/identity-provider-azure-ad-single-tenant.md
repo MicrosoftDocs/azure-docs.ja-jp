@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 8a3cca7740adb6fa44b162e8c8740d1be1c7aa6b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654389"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953888"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -38,7 +38,7 @@ ms.locfileid: "97654389"
 
 ## <a name="register-an-azure-ad-app"></a>Azure AD アプリの登録
 
-特定の Azure AD 組織のユーザーのサインインを有効にするには、組織の Azure AD テナント内でアプリケーションを登録する必要があります。
+Azure Active Directory B2C (Azure AD B2C) で、特定の Azure AD 組織の Azure AD アカウントを持つユーザーのサインインを有効にするには、[Azure portal](https://portal.azure.com) でアプリケーションを作成する必要があります。 詳細については、[Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)方法に関するページを参照してください。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 組織の Azure AD テナント (contoso.com など) が含まれているディレクトリを使用していることを確認します。 上部のメニューで **[ディレクトリ + サブスクリプション] フィルター** を選択し、Azure AD テナントが含まれているディレクトリを選択します。
@@ -103,6 +103,16 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 1. **[保存]** を選択します。
 
+## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>ユーザー フローに Azure AD ID プロバイダーを追加する 
+
+1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
+1. Azure AD ID プロバイダーを追加するユーザー フローをクリックします。
+1. **[ソーシャル ID プロバイダー]** から、 **[Contoso Azure AD]** を選択します。
+1. **[保存]** を選択します。
+1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
+1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[ユーザー フローを実行します]** をクリックします
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -121,9 +131,9 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[キー使用法]** として [`Signature`] を選択します。
 1. **［作成］** を選択します
 
-## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
+## <a name="configure-azure-ad-as-an-identity-provider"></a>Azure AD を ID プロバイダーとして構成する
 
-ユーザーが Azure AD を使用してサインインできるようにするには、エンドポイント経由で Azure AD B2C が通信できるクレーム プロバイダーとして Azure AD を定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
+ユーザーが Azure AD アカウントを使用してサインインできるようにするには、エンドポイント経由で Azure AD B2C が通信できるクレーム プロバイダーとして Azure AD を定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 ポリシーの拡張ファイル内で Azure AD を **ClaimsProvider** 要素に追加することで、Azure AD をクレーム プロバイダーとして定義できます。
 
@@ -135,7 +145,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
       <Domain>Contoso</Domain>
       <DisplayName>Login using Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="OIDC-Contoso">
+        <TechnicalProfile Id="AADContoso-OpenIdConnect">
           <DisplayName>Contoso Employee</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
@@ -179,7 +189,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 Azure AD エンドポイントからトークンを取得するには、Azure AD B2C で Azure AD との通信に使用するプロトコルを定義する必要があります。 これは、**ClaimsProvider** の **TechnicalProfile** 要素の中で実行します。
 
-1. **TechnicalProfile** 要素の ID を更新します。 この ID は、`OIDC-Contoso` など、ポリシーの他の部分からこの技術プロファイルを参照するために使用します。
+1. **TechnicalProfile** 要素の ID を更新します。 この ID は、`AADContoso-OpenIdConnect` など、ポリシーの他の部分からこの技術プロファイルを参照するために使用します。
 1. **DisplayName** の値を更新します。 この値は、サインイン画面のサインイン ボタン上に表示されます。
 1. **Description** の値を更新します。
 1. Azure AD では OpenID Connect プロトコルを使用するため、**Protocol** の値が `OpenIdConnect` になっていることを確認してください。
@@ -187,84 +197,30 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 1. **client_id** を、アプリケーションの登録で取得したアプリケーション ID に設定します。
 1. **CryptographicKeys** で、**StorageReferenceId** の値を、前に作成したポリシー キーの名前に更新します。 たとえば、「 `B2C_1A_ContosoAppSecret` 」のように入力します。
 
-### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
 
-ここまでで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
-
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
-1. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
-1. **[アップロード]** をクリックします。
-
-## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
-
-この時点では、ID プロバイダーはセットアップされていますが、サインアップ/サインインのページではまだ使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、Azure AD の ID プロバイダーも含まれるように変更します。
-
-1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-1. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
-1. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
-1. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
-1. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInContoso` 」のように入力します。
-
-### <a name="display-the-button"></a>ボタンを表示する
-
-**ClaimsProviderSelection** 要素は、サインアップまたはサインインのページの ID プロバイダー ボタンに類似しています。 Azure AD 用の **ClaimsProviderSelection** 要素を追加すると、ユーザーがページにアクセスしたときに新しいボタンが表示されます。
-
-1. *TrustFrameworkExtensions.xml* で、作成したユーザー体験内に `Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-1. **ClaimsProviderSelections** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`ContosoExchange` など) に設定します。
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
-
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Azure AD と通信してトークンを受信します。 Azure AD 要求プロバイダーの技術プロファイルをリンクすることで、ボタンをアクションにリンクします。
-
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-1. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した **Id** と同じ値を必ずご使用ください。
-
-    ```xml
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
-    ```
-
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `OIDC-Contoso` 」のように入力します。
-
-1. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>ユーザー フローに Azure AD ID プロバイダーを追加する 
-
-1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
-1. Azure AD ID プロバイダーを追加するユーザー フローをクリックします。
-1. **[ソーシャル ID プロバイダー]** から、 **[Contoso Azure AD]** を選択します。
-1. **[保存]** を選択します。
-1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
-1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
 
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
+    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADContosoExchange" />
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="AzureADContosoExchange" TechnicalProfileReferenceId="AADContoso-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、*SignUpSignInContoso.xml* に名前を変更します。
-1. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInContoso` 」のように入力します。
-1. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、「 `http://contoso.com/B2C_1A_signup_signin_contoso` 」のように入力します。
-1. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、先ほど作成したユーザー体験の ID と一致するように更新します。 たとえば、*SignUpSignInContoso* とします。
-1. 変更内容を保存し、ファイルをアップロードします。
-1. **[カスタム ポリシー]** で、一覧から新しいポリシーを選択します。
-1. **[アプリケーションの選択]** ボックスの一覧で、前の手順で作成した Azure AD B2C アプリケーションを選択します  (例: *testapp1*)。
-1. **[今すぐ実行のエンドポイント]** をコピーし、プライベート ブラウザー ウィンドウ (Google のシークレット モード、Microsoft Edge の InPrivate ウィンドウなど) で開きます。 プライベート ブラウザー ウィンドウで開くと、現在キャッシュされている Azure AD の資格情報を使用せずに、ユーザー体験を全体的にテストできます。
-1. Azure AD のサインイン ボタン (たとえば、*Contoso Employee*) を選択し、Azure AD 組織テナントのユーザーの資格情報を入力します。 アプリケーションを承認するように求められたら、プロファイルの情報を入力します。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

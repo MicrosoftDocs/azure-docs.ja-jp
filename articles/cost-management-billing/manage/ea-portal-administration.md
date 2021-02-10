@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e25b2aeee46617bd62a72d204e1a4bdbc31d08ea
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3ce13a103b605ea7b6066e8b2868fa974f4e64e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030826"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050568"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -347,7 +347,7 @@ Azure エンタープライズ管理者は、組織のアカウント オーナ�
 
 新しいサブスクリプションがサブスクリプション リストに表示されるまで、最大 24 時間かかることがあります。 サブスクリプションを作成した後、次のことができます。
 
-- [サブスクリプションの詳細を編集する](https://account.azure.com/Subscriptions)
+- [サブスクリプションの詳細を編集する](https://portal.azure.com)
 - [サブスクリプション サービスを管理する](https://portal.azure.com/#home)
 
 ## <a name="delete-subscription"></a>サブスクリプションを削除する

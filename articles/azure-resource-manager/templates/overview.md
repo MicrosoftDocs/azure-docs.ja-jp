@@ -2,13 +2,13 @@
 title: テンプレートの概要
 description: リソースのデプロイに Azure Resource Manager テンプレート (ARM テンプレート) を使用する利点について説明します。
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/20/2021
+ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657313"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621841"
 ---
 # <a name="what-are-arm-templates"></a>ARM テンプレートとは
 
@@ -125,6 +125,12 @@ REQUEST BODY
 ![テンプレートの層](./media/overview/tier-templates.png)
 
 入れ子になったテンプレートについては、「[Azure Resource Manager でのリンクされたテンプレートの使用](linked-templates.md)」を参照してください。
+
+## <a name="share-templates"></a>テンプレートの共有
+
+テンプレートは、作成した後で組織内の他のユーザーと共有することができます。 [テンプレート スペック](template-specs.md)では、テンプレートをリソースの種類として保管することができます。 テンプレート スペックへのアクセス権を管理するには、ロールベースのアクセス制御を使用します。テンプレート スペックへの読み取りアクセス権を持つユーザーはテンプレートをデプロイできますが、変更することはできません。
+
+つまり、このアプローチでは組織の標準を満たすテンプレートを安全に共有できます。
 
 ## <a name="next-steps"></a>次のステップ
 

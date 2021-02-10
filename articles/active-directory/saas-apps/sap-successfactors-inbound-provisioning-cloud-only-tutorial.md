@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 6a73ecf18a4bd89567dc603758d9ff8501267a1f
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: a39f7701d0244eff7f914908a6708dfc14873b35
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570042"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954857"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Azure AD へのユーザー プロビジョニングの構成
 このチュートリアルでは、SuccessFactors Employee Central から Azure Active Directory に社員データをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 
@@ -223,9 +223,8 @@ SuccessFactors 管理チームまたは実装パートナーと協力して、OD
 
 1. **[属性マッピング]** セクションでは、個別の SuccessFactors 属性を Active Directory の属性にマッピングする方法を定義できます。
 
-  >[!NOTE]
-  >アプリケーションでサポートされている SuccessFactors 属性の完全な一覧については、[SuccessFactors 属性のリファレンス](../app-provisioning/sap-successfactors-attribute-reference.md)に関するページを参照してください。
-
+     >[!NOTE]
+     >アプリケーションでサポートされている SuccessFactors 属性の完全な一覧については、[SuccessFactors 属性のリファレンス](../app-provisioning/sap-successfactors-attribute-reference.md)に関するページを参照してください。
 
 1. 既存の属性マッピングをクリックして更新するか、または画面の下部にある **[新しいマッピングの追加]** をクリックして、新しいマッピングを追加します。 個々の属性マッピングは、次のプロパティをサポートしています。
 

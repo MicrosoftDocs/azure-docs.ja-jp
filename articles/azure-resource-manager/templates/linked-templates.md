@@ -2,13 +2,13 @@
 title: デプロイ用のテンプレートをリンクする
 description: Azure Resource Manager テンプレート (ARM テンプレート) でリンクされたテンプレートを使用して、モジュール式のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/26/2021
+ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760624"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880435"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -112,6 +112,10 @@ ms.locfileid: "97760624"
   ...
 ```
 
+> [!NOTE]
+>
+> スコープを `outer` に設定した場合は、入れ子になったテンプレートの outputs セクションで、入れ子になったテンプレートでデプロイしているリソースに対する `reference` 関数を使用することはできません。 入れ子になったテンプレートでデプロイされたリソースの値を返すには、`inner` スコープを使用するか、入れ子になったテンプレートをリンクされたテンプレートに変換します。
+
 次のテンプレートは、テンプレート式がスコープに従ってどのように解決されるかを示しています。 これには、親テンプレートと入れ子になったテンプレートの両方に定義されている `exampleVar` という名前の変数が含まれています。 それは、変数の値を返します。
 
 ```json
@@ -162,7 +166,7 @@ ms.locfileid: "97760624"
 
 `exampleVar` の値は、`expressionEvaluationOptions` の `scope` プロパティの値によって変わります。 次の表に、両方のスコープの結果を示します。
 
-| `expressionEvaluationOptions` のスコープ | 出力 |
+| 評価のスコープ | 出力 |
 | ----- | ------ |
 | inner | 入れ子になったテンプレートから |
 | outer (既定値) | 親テンプレートから |
@@ -277,9 +281,128 @@ ms.locfileid: "97760624"
 }
 ```
 
-> [!NOTE]
->
-> スコープを `outer` に設定した場合は、入れ子になったテンプレートの outputs セクションで、入れ子になったテンプレートでデプロイしているリソースに対する `reference` 関数を使用することはできません。 入れ子になったテンプレートでデプロイされたリソースの値を返すには、`inner` スコープを使用するか、入れ子になったテンプレートをリンクされたテンプレートに変換します。
+入れ子になったテンプレートで、セキュリティで保護されたパラメーター値を使用する場合は注意してください。 スコープを外部に設定した場合、セキュリティで保護された値は、デプロイ履歴にプレーン テキストとして保存されます。 デプロイ履歴でテンプレートを確認するユーザーは、セキュリティで保護された値を見ることができます。 代わりに、内部スコープを使用するか、セキュリティで保護された値を必要とするリソースを親テンプレートに追加してください。
+
+次の抜粋は、セキュリティで保護された値と、セキュリティで保護されていない値を示しています。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Username for the Virtual Machine."
+      }
+    },
+    "adminPasswordOrKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+      }
+    }
+  },
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2020-06-01",
+      "name": "mainTemplate",
+      "properties": {
+        ...
+        "osProfile": {
+          "computerName": "mainTemplate",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in parent template
+        }
+      }
+    },
+    {
+      "name": "outer",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "outer"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "outer",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "outer",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // No, not secure because resource is in nested template with outer scope
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "inner",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "adminPasswordOrKey": {
+              "value": "[parameters('adminPasswordOrKey')]"
+          },
+          "adminUsername": {
+              "value": "[parameters('adminUsername')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminUsername": {
+              "type": "string",
+              "metadata": {
+                "description": "Username for the Virtual Machine."
+              }
+            },
+            "adminPasswordOrKey": {
+              "type": "securestring",
+              "metadata": {
+                "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "inner",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "inner",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in nested template and scope is inner
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
 
 ## <a name="linked-template"></a>リンク済みテンプレート
 
@@ -372,6 +495,91 @@ GitHub のテンプレートにリンクしている場合は、生の URL を�
 ```
 
 インライン パラメーターとパラメーター ファイルへのリンクの両方を使用することはできません。 `parametersLink` と `parameters` の両方が指定された場合、デプロイは失敗します。
+
+### <a name="use-relative-path-for-linked-templates"></a>リンクされたテンプレートの相対パスを使用する
+
+`Microsoft.Resources/deployments` の `relativePath` プロパティを使用すると、リンクされたテンプレートを簡単に作成できます。 このプロパティを使用すると、リモートのリンクされたテンプレートを、親を基準とした相対的な場所にデプロイできます。 この機能を使用するには、すべてのテンプレート ファイルをステージングし、GitHub や Azure ストレージ アカウントなどのリモート URI で利用できるようにする必要があります。 Azure PowerShell または Azure CLI から URI を使用してメイン テンプレートを呼び出す場合、子のデプロイ URI は親と relativePath の組み合わせになります。
+
+> [!NOTE]
+> templateSpec を作成するとき、Azure PowerShell または Azure CLI を使用して、`relativePath` プロパティで参照されるテンプレートを templateSpec リソースにパッケージ化します。 ファイルをステージングする必要はありません。 詳細については、「[リンクされたテンプレートを使用してテンプレート スペックを作成する](./template-specs.md#create-a-template-spec-with-linked-templates)」を参照してください。
+
+次のようなフォルダー構造があるとします。
+
+![リソース マネージャーのリンクされたテンプレートの相対パス](./media/linked-templates/resource-manager-linked-templates-relative-path.png)
+
+次のテンプレートは、*mainTemplate.json* で、前の図で示された *nestedChild.json* をデプロイする方法を示しています。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "childLinked",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "children/nestedChild.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+次のデプロイでは、前のテンプレートのリンクされたテンプレートの URI は、 **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** です。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+---
+
+Azure ストレージ アカウントに保存されている相対パスを使用してリンクされたテンプレートをデプロイするには、TemplateUri パラメーターと共に `QueryString`/`query-string` パラメーターを使用して、使用する SAS トークンを指定します。 このパラメーターは、Azure CLI バージョン 2.18 以降および Azure PowerShell バージョン 5.4 以降でのみサポートされています。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+---
+
+QueryString の先頭に "?" がないことを確認してください。 デプロイの URI をアセンブルすると、これが 1 つ追加されます。
 
 ## <a name="template-specs"></a>テンプレート スペック
 

@@ -1,5 +1,6 @@
 ---
-title: サポートされるアカウントの種類別の検証の相違点 - Microsoft ID プラットフォーム | Azure
+title: サポートされているアカウントの種類別の検証の相違点 | Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームにアプリを登録する際にサポートされる、アカウントの種類のさまざまなプロパティの検証の違いについて説明します。
 author: SureshJa
 ms.author: sureshja
@@ -10,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: e794e277f6731c7b6e57a4710eea437f65be0340
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eea2e587a075d774a25f479ec61575a002b57f75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87336346"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937812"
 ---
 # <a name="validation-differences-by-supported-account-types-signinaudience"></a>サポートされているアカウントの種類別の検証の相違点 (signInAudience)
 
@@ -23,9 +24,9 @@ ms.locfileid: "87336346"
 
 方法には、次のようなものがあります。
 
-- *AzureADMyOrg*:アプリが登録されている組織のディレクトリ内のアカウントのみ (シングルテナント)
-- *AzureADMultipleOrgs*:任意の組織のディレクトリ内のアカウント (マルチテナント)
-- *AzureADandPersonalMicrosoftAccount*:任意の組織のディレクトリ内のアカウント (マルチテナント) と 個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)
+- **AzureADMyOrg**:アプリが登録されている組織のディレクトリ内のアカウントのみ (シングルテナント)。
+- **AzureADMultipleOrgs**:任意の組織のディレクトリ内のアカウント (マルチテナント)。
+- **AzureADandPersonalMicrosoftAccount**:任意の組織のディレクトリ内のアカウント (マルチテナント) と 個人用の Microsoft アカウント (例: Skype、Xbox、Outlook.com)。
 
 登録済みアプリケーションの場合は、アプリケーションの **[認証]** セクションで、サポートされているアカウントの種類の値を確認できます。 また、 **[マニフェスト]** の `signInAudience` プロパティの下にも表示されます。
 
@@ -43,11 +44,11 @@ ms.locfileid: "87336346"
 | この API で定義されるスコープ (`oauth2Permissions`) | スコープ名の最大長は 120 文字です <br><br> 定義されるスコープの数に制限なし* | スコープ名の最大長は 120 文字です <br><br> 定義されるスコープの数に制限なし* |  スコープ名の最大長は 40 文字です <br><br> 定義されるスコープの最大数は 100 スコープです | 
 | 承認されたクライアント アプリケーション (`preAuthorizedApplications`) | 制限なし* | 制限なし* | 合計の最大は 500 です <br><br> 定義されるクライアント アプリの最大数は 100 です <br><br> クライアントあたりの定義されるスコープは最大 30 です | 
 | appRoles | サポートされています <br> 制限なし* | サポートされています <br> 制限なし* | サポートされていません | 
-| ログアウト URL | http://localhost は許可 <br><br> 最大長は 255 文字です | http://localhost は許可 <br><br> 最大長は 255 文字です | <br><br> https://localhost は MSA では使用できますが、 http://localhost は使用できません <br><br> 最大長は 255 文字です <br><br> HTTP スキームは使用できません <br><br> ワイルドカードはサポートされていません | 
+| フロントチャネル ログアウト URL | https://localhost は許可 <br><br> `http` スキームは使用できません <br><br> 最大長は 255 文字です | https://localhost は許可 <br><br> `http` スキームは使用できません <br><br> 最大長は 255 文字です | <br><br> https://localhost は MSA では使用できますが、 http://localhost は使用できません <br><br> 最大長は 255 文字です <br><br> `http` スキームは使用できません <br><br> ワイルドカードはサポートされていません | 
 
-\* アプリ オブジェクトのすべてのコレクション プロパティで共通のグローバル制限は、約 1,000 項目です
+\* アプリ オブジェクトのすべてのコレクション プロパティで共通のグローバル制限は、約 1,000 項目です。
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アプリケーションの登録](app-objects-and-service-principals.md)について学習します。
-- [アプリケーション マニフェスト](reference-app-manifest.md)について学習する
+- [アプリケーションの登録](app-objects-and-service-principals.md)について学習する。
+- [アプリケーション マニフェスト](reference-app-manifest.md)について学習する。

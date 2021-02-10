@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 08/10/2020
+ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 1bc751ae293abbb7aa330a99a4b66a917d150906
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b13086e11e1181bba91a3255e68e9f8a32e78450
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994980"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797790"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>お使いのアプリに Video Indexer ウィジェットを埋め込む
 
@@ -303,6 +303,10 @@ Video Indexer プレーヤーを埋め込む場合は、iframe のサイズを�
 | `embed-both-widgets`              | VI プレーヤーと分析情報を埋め込んで、両者間の通信を行います。                      |
 | `url-generator`                   | ユーザー指定のオプションに基づいて、ウィジェットのカスタム埋め込み URL を生成します。             |
 | `html5-player`                    | 既定の HTML5 ビデオ プレーヤーを使用して VI 分析情報を埋め込みます。                           |
+
+## <a name="supported-browsers"></a>サポートされているブラウザー
+
+詳細については、「[サポートされているブラウザー](video-indexer-overview.md#supported-browsers)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

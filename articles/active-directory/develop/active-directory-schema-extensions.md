@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 8861e641f5ee6a10576425a7702ba02da297a0bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0127c8d796126d1e99b1fa38a9506df477c7eb49
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631275"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755730"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>要求でディレクトリ スキーマ拡張属性を使用する
 
@@ -41,7 +41,7 @@ ms.locfileid: "91631275"
 AD Connect を使用して作成および同期されるディレクトリ スキーマ拡張属性は、AD Connect によって使用されるアプリケーション ID と常に関連付けられます。 これらは、**Enterprise Applications** の Gallery または Gallery 以外のアプリケーション構成エクスペリエンスを使用して登録された SAML アプリケーションにある Portal UI の **Enterprise Applications** 構成でそれらを要求として構成するか、アプリケーションの登録エクスペリエンスを使用して登録されたアプリケーションの要求のマッピング ポリシー経由で、要求のソースとして使用することができます。  AD Connect を使用して作成されたディレクトリ拡張属性がディレクトリ内にあると、SAML SSO 要求の構成 UI に表示されます。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>Graph または PowerShell を使用してアプリケーション用に作成されたディレクトリ スキーマ拡張属性からのデータを使用して要求を出力する
-Microsoft Graph または PowerShell を使用してアプリケーションにディレクトリ スキーマ拡張属性が登録された場合 (たとえば、アプリケーションの初期セットアップまたはプロビジョニング手順を使用)、ユーザーがサインインしたときに、ユーザー オブジェクトからその属性のデータを要求で受信するように Azure Active Directory で同じアプリケーションを構成できます。  このアプリケーションは、[オプションの要求](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)を使用して同じアプリケーションに登録されているディレクトリ スキーマ拡張でデータを受信するように構成できます。  これらは、アプリケーション マニフェストで設定できます。  これにより、マルチテナント アプリケーションで、独自に使用するディレクトリ スキーマ拡張属性を登録できます。 アプリケーションがテナントにプロビジョニングされると、関連付けられているディレクトリ スキーマ拡張が、そのテナント内のユーザーに設定でき、使用できるようになります。  これがテナントで構成され、同意が付与されると、Graph を使用してデータの格納と取得を行ったり、Microsoft ID プラットフォームからアプリケーションに出力されるトークン内の要求にマッピングしたりすることができます。
+Microsoft Graph または PowerShell を使用してアプリケーションにディレクトリ スキーマ拡張属性が登録された場合 (たとえば、アプリケーションの初期セットアップまたはプロビジョニング手順を使用)、ユーザーがサインインしたときに、ユーザー オブジェクトからその属性のデータを要求で受信するように Azure Active Directory で同じアプリケーションを構成できます。  このアプリケーションは、[オプションの要求](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)を使用して同じアプリケーションに登録されているディレクトリ スキーマ拡張でデータを受信するように構成できます。  これらは、アプリケーション マニフェストで設定できます。  これにより、マルチテナント アプリケーションで、独自に使用するディレクトリ スキーマ拡張属性を登録できます。 アプリケーションがテナントにプロビジョニングされると、関連付けられているディレクトリ スキーマ拡張が、そのテナント内のユーザーに設定でき、使用できるようになります。  これがテナントで構成され、同意が付与されると、Graph を使用してデータの格納と取得を行うことや、Microsoft ID プラットフォームからアプリケーションに出力されるトークン内の要求にマッピングすることができます。
 
 ディレクトリ スキーマ拡張属性は、任意のアプリケーションに対して登録および設定できます。
 

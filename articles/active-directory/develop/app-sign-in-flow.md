@@ -1,7 +1,7 @@
 ---
 title: Microsoft ID プラットフォームを使用したアプリのサインイン フロー | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft ID プラットフォーム (v2.0) での Web アプリ、デスクトップ アプリ、およびモバイル アプリのサインイン フローの詳細について説明します。
+description: Microsoft ID プラットフォームでの Web、デスクトップ、およびモバイル アプリのサインイン フローについて説明します。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9f330ab140fa66b5a66a112c47ca2a68ba56bf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83772201"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755706"
 ---
-# <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>Microsoft ID プラットフォーム を使用したアプリのサインイン フロー
+# <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームを使用したアプリのサインイン フロー
 
 このトピックでは、Microsoft ID プラットフォームを使用した Web アプリ、デスクトップ アプリ、およびモバイル アプリの基本的なサインイン フローについて説明します。 Microsoft ID プラットフォームでサポートされるサインイン シナリオの詳細については、[認証フローとアプリ シナリオ](authentication-flows-app-scenarios.md)に関する記事を参照してください。
 
@@ -35,7 +35,7 @@ ms.locfileid: "83772201"
 ユーザーが正常に認証されると、次のことが起こります。
 
 * Microsoft ID プラットフォームから、Web アプリにトークンが送信されます。
-* Cookie が保存され、Azure AD のドメインに関連付けられ、ブラウザーの cookie jar にユーザーの ID が含まれます。 次回、アプリがブラウザーを使用して Microsoft ID プラットフォーム認証エンドポイントに移動するときに、ユーザーがもう一度サインインする必要がないように、ブラウザーから Cookie が提示されます。 これも SSO の実現方法です。 Cookie は Azure AD によって生成され、内容は Azure AD によってのみ理解されます。
+* Cookie が保存され、Azure AD のドメインに関連付けられ、ブラウザーの cookie jar にユーザーの ID が含まれます。 次回、アプリがブラウザーを使用して Microsoft ID プラットフォーム承認エンドポイントに移動するときに、ユーザーがもう一度サインインする必要がないように、ブラウザーから Cookie が提示されます。 これも SSO の実現方法です。 Cookie は Azure AD によって生成され、内容は Azure AD によってのみ理解されます。
 * その後、Web アプリにより、トークンが検証されます。 検証が成功した場合、Web アプリで、保護されたページが表示され、セッション Cookie がブラウザーの cookie jar に保存されます。 ユーザーが別のページに移動すると、Web アプリでは、そのユーザーがセッション Cookie に基づいて認証されていることを認識します。
 
 次のシーケンス図は、この相互作用をまとめたものです。
@@ -48,7 +48,7 @@ Web アプリの開発者は、すべてのページまたは特定のページ�
 
 この属性により、ASP.NET で、ユーザーの ID が含まれるセッション Cookie の存在が確認されます。 Cookie が存在しない場合、ASP.NET により、指定された ID プロバイダーに認証がリダイレクトされます。 ID プロバイダーが Azure AD 場合、Web アプリにより、`https://login.microsoftonline.com` に認証がリダイレクトされ、サインイン ダイアログが表示されます。
 
-### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Web アプリでサインインが Microsoft ID プラットフォームに委任され、トークンが取得されるしくみ
+### <a name="how-a-web-app-delegates-sign-in-to-the-microsoft-identity-platform-and-obtains-a-token"></a>Web アプリでサインインが Microsoft ID プラットフォームに委任され、トークンが取得されるしくみ
 
 ユーザー認証は、ブラウザーを介して行われます。 OpenID プロトコルで、標準の HTTP プロトコル メッセージが使用されます。
 

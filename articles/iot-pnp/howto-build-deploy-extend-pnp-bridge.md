@@ -1,27 +1,26 @@
 ---
-title: IoT プラグ アンド プレイ ブリッジをビルド、デプロイ、拡張する方法 | Microsoft Docs
-description: IoT プラグ アンド プレイ ブリッジのコンポーネントを識別します。 ブリッジを拡張する方法、ブリッジを IoT デバイス、ゲートウェイで実行する方法、および IoT Edge モジュールとして実行する方法について説明します。
+title: IoT プラグ アンド プレイ ブリッジをビルドおよびデプロイする方法 | Microsoft Docs
+description: IoT プラグ アンド プレイ ブリッジのコンポーネントを識別します。 それを IoT デバイスまたはゲートウェイで実行したり、IoT Edge モジュールとして実行したりする方法について説明します。
 author: usivagna
 ms.author: ugans
-ms.date: 12/11/2020
+ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ece9f62e64eb64b1f34af46b42d57ec583f8f214
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675740"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784899"
 ---
-# <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>IoT プラグ アンド プレイ ブリッジをビルド、デプロイ、拡張する
+# <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>IoT プラグ アンド プレイ ブリッジをビルドおよびデプロイする
 
-IoT プラグ アンド プレイ ブリッジを使用すると、ゲートウェイに接続されている既存のデバイスを IoT Hub に接続できます。 ブリッジを使用して、接続されているデバイスに IoT プラグ アンド プレイ インターフェイスをマップします。 IoT プラグ アンド プレイ インターフェイスでは、デバイスによって送信されるテレメトリ、デバイスとクラウド間で同期されるプロパティ、およびデバイスによって応答されるコマンドが定義されます。 オープンソースのブリッジ アプリケーションを Windows または Linux のゲートウェイにインストールして構成することができます。
+[IoT プラグ アンド プレイ ブリッジ](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture)を使用すると、ゲートウェイに接続されている既存のデバイスを IoT ハブに接続できます。 ブリッジを使用して、接続されているデバイスに IoT プラグ アンド プレイ インターフェイスをマップします。 IoT プラグ アンド プレイ インターフェイスでは、デバイスによって送信されるテレメトリ、デバイスとクラウド間で同期されるプロパティ、およびデバイスによって応答されるコマンドが定義されます。 オープンソースのブリッジ アプリケーションを Windows または Linux のゲートウェイにインストールして構成することができます。 さらに、ブリッジを Azure IoT Edge ランタイム モジュールとして実行できます。
 
 この記事では、以下の方法について説明します。
 
 - ブリッジを構成する。
-- 新しいアダプターを作成してブリッジを拡張する。
 - さまざまな環境でブリッジをビルドして実行する方法。
 
 ブリッジの使用方法を示す簡単な例については、「[Linux または Windows 上で実行されている IoT プラグ アンド プレイ ブリッジのサンプルを IoT Hub に接続する方法](howto-use-iot-pnp-bridge.md)」を参照してください。
@@ -78,97 +77,6 @@ IoT プラグ アンド プレイ ブリッジを使用すると、ゲートウ�
 
 ブリッジが IoT Edge ランタイムで IoT Edge モジュールとして実行される場合、構成ファイルは必要な `PnpBridgeConfig` プロパティへの更新としてクラウドから送信されます。 ブリッジは、アダプターとコンポーネントを構成する前に、このプロパティの更新を待機します。
 
-## <a name="extend-the-bridge"></a>ブリッジを拡張する
-
-ブリッジの機能を拡張するために、独自のブリッジ アダプターを作成することができます。
-
-ブリッジでは、アダプターを使用して次のことが行われます。
-
-- デバイスとクラウドの間の接続が確立されます。
-- デバイスとクラウドの間のデータ フローが有効にされます。
-- クラウドからのデバイス管理が有効になります。
-
-すべてのブリッジ アダプターでは次のことが行われる必要があります。
-
-- デジタル ツイン インターフェイスが作成されます。
-- そのインターフェイスを使用して、デバイス側の機能がクラウドベースの機能 (テレメトリ、プロパティ、コマンドなど) にバインドされます。
-- デバイスのハードウェアまたはファームウェアを使用して、コントロールとデータの通信が確立されます。
-
-各ブリッジ アダプターでは、アダプターがデバイスに接続され、デバイスと通信する方法に基づいて、特定の種類のデバイスとやり取りします。 デバイスとの通信でハンドシェイク プロトコルが使用されている場合でも、デバイスからのデータを解釈する方法がブリッジ アダプターに複数あることがあります。 このシナリオでは、ブリッジ アダプターによって構成ファイル内のアダプターの情報が使用され、アダプターでデータを解析するために使用される "*インターフェイスの構成*" が決定されます。
-
-デバイスとやり取りするために、ブリッジ アダプターでは、デバイスでサポートされる通信プロトコルと、基になるオペレーティング システムまたはデバイス ベンダーによって提供される API が使用されます。
-
-クラウドとやり取りするために、ブリッジ アダプターでは、Azure IoT Device C SDK によって提供される API が使用され、テレメトリの送信、デジタル ツイン インターフェイスの作成、プロパティの更新の送信、およびプロパティの更新とコマンドのコールバック関数の作成が行われます。
-
-### <a name="create-a-bridge-adapter"></a>ブリッジ アダプターを作成する
-
-ブリッジには、[_PNP_ADAPTER](https://github.com/Azure/iot-plug-and-play-bridge/blob/9964f7f9f77ecbf4db3b60960b69af57fd83a871/pnpbridge/src/pnpbridge/inc/pnpadapter_api.h#L296) インターフェイスに定義されている API を実装するブリッジ アダプターが必要です。
-
-```c
-typedef struct _PNP_ADAPTER {
-  // Identity of the IoT Plug and Play adapter that is retrieved from the config
-  const char* identity;
-
-  PNPBRIDGE_ADAPTER_CREATE createAdapter;
-  PNPBRIDGE_COMPONENT_CREATE createPnpComponent;
-  PNPBRIDGE_COMPONENT_START startPnpComponent;
-  PNPBRIDGE_COMPONENT_STOP stopPnpComponent;
-  PNPBRIDGE_COMPONENT_DESTROY destroyPnpComponent;
-  PNPBRIDGE_ADAPTER_DESTOY destroyAdapter;
-} PNP_ADAPTER, * PPNP_ADAPTER;
-```
-
-このインターフェイスでは:
-
-- `PNPBRIDGE_ADAPTER_CREATE` によってアダプターが作成され、インターフェイス管理リソースがセットアップされます。 アダプターでは、アダプターの作成にグローバル アダプター パラメーターを使用することもできます。 この関数は、1 つのアダプターに対して 1 回呼び出されます。
-- `PNPBRIDGE_COMPONENT_CREATE` によってデジタル ツイン クライアント インターフェイスが作成され、コールバック関数がバインドされます。 アダプターでは、デバイスへの通信チャネルが開始されます。 アダプターでは、テレメトリ フローを有効にするためにリソースがセットアップされることがありますが、`PNPBRIDGE_COMPONENT_START` が呼び出されるまでテレメトリの報告は開始されません。 この関数は、構成ファイル内のインターフェイス コンポーネントごとに 1 回呼び出されます。
-- ブリッジ アダプターでデバイスからデジタル ツイン クライアントへのテレメトリの転送を開始できるようにするために、`PNPBRIDGE_COMPONENT_START` が呼び出されます。 この関数は、構成ファイル内のインターフェイス コンポーネントごとに 1 回呼び出されます。
-- `PNPBRIDGE_COMPONENT_STOP` によってテレメトリ フローが停止されます。
-- `PNPBRIDGE_COMPONENT_DESTROY` によってデジタル ツイン クライアントおよび関連するインターフェイス リソースが破棄されます。 この関数は、ブリッジが破棄されたとき、または致命的なエラーが発生したときに、構成ファイル内のインターフェイス コンポーネントごとに 1 回呼び出されます。
-- `PNPBRIDGE_ADAPTER_DESTROY` によってブリッジ アダプターのリソースがクリーンアップされます。
-
-### <a name="bridge-core-interaction-with-bridge-adapters"></a>ブリッジ コアとブリッジ アダプターのやり取り
-
-ブリッジが開始されたときの動作の概要を次の一覧に示します。
-
-1. ブリッジが開始されると、ブリッジ アダプター マネージャーによって、構成ファイルで定義されている各インターフェイス コンポーネントが参照され、適切なアダプターで `PNPBRIDGE_ADAPTER_CREATE` が呼び出されます。 アダプターでは、グローバル アダプター構成パラメーターを使用して、さまざまな "*インターフェイス構成*" がサポートされるようにリソースを設定できます。
-1. 構成ファイル内のすべてのデバイスについて、ブリッジ マネージャーによって、適切なブリッジ アダプターで `PNPBRIDGE_COMPONENT_CREATE` が呼び出され、インターフェイスの作成が開始されます。
-1. アダプターで、インターフェイス コンポーネントのオプションのアダプター構成設定が受信され、この情報を使用してデバイスへの接続が設定されます。
-1. アダプターによって、デジタル ツイン クライアント インターフェイスが作成され、プロパティの更新とコマンドのコールバック関数がバインドされます。 デジタル ツイン インターフェイスの作成が成功した後に、デバイスの接続を確立することによってコールバックの戻り値をブロックしないようにしてください。 アクティブなデバイスの接続は、ブリッジによって作成されるアクティブなインターフェイス クライアントから独立しています。 接続に失敗した場合、アダプターではデバイスが非アクティブであると想定されます。 ブリッジ アダプターでは、この接続の再試行を選択できます。
-1. ブリッジ アダプター マネージャーでは、構成ファイルで指定されたすべてのインターフェイス コンポーネントを作成した後、すべてのインターフェイスが Azure IoT Hub に登録されます。 登録はブロックされた非同期呼び出しです。 この呼び出しが完了すると、ブリッジ アダプターでコールバックがトリガーされ、クラウドからのプロパティとコマンドのコールバックの処理を開始できるようになります。
-1. その後、ブリッジ アダプター マネージャーによって各コンポーネントで `PNPBRIDGE_INTERFACE_START` が呼び出され、ブリッジ アダプターでデジタル ツイン クライアントへのテレメトリの報告が開始されます。
-
-### <a name="design-guidelines"></a>設計ガイドライン
-
-新しいブリッジ アダプターを開発するときは、次のガイドラインに従うようにしてください。
-
-- サポートされるデバイスの機能と、このアダプターを使用するコンポーネントのインターフェイス定義の概要を決定します。
-- アダプターで構成ファイルに定義する必要のあるインターフェイスとグローバル パラメーターを決定します。
-- コンポーネントのプロパティとコマンドをサポートするために必要な低レベルのデバイス通信を識別します。
-- アダプターでデバイスからの生データが解析され、IoT プラグ アンド プレイ インターフェイスの定義によって指定されたテレメトリの種類に変換される方法を決定します。
-- 前に説明したブリッジ アダプター インターフェイスを実装します。
-- アダプター マニフェストに新しいアダプターを追加し、ブリッジをビルドします。
-
-### <a name="enable-a-new-bridge-adapter"></a>新しいブリッジ アダプターを有効にする
-
-[adapter_manifest.c](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/shared/adapter_manifest.c) に参照を追加して、ブリッジでアダプターを有効にします。
-
-```c
-  extern PNP_ADAPTER MyPnpAdapter;
-  PPNP_ADAPTER PNP_ADAPTER_MANIFEST[] = {
-    .
-    .
-    &MyPnpAdapter
-  }
-```
-
-> [!IMPORTANT]
-> ブリッジ アダプターのコールバックは順番に呼び出されます。 ブリッジ コアで処理を続行できなくなるため、アダプターでコールバックがブロックされないようにしてください。
-
-### <a name="sample-camera-adapter"></a>カメラ アダプターのサンプル
-
-[カメラ アダプターの readme](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/Camera/readme.md) では、有効にできるサンプルのカメラ アダプターについて説明しています。
-
 ## <a name="build-and-run-the-bridge-on-an-iot-device-or-gateway"></a>IoT デバイスまたはゲートウェイにブリッジをビルドして実行する
 
 | プラットフォーム | サポートされています |
@@ -188,7 +96,7 @@ typedef struct _PNP_ADAPTER {
 
 [IoT プラグアンドプレイ ブリッジ](https://github.com/Azure/iot-plug-and-play-bridge) リポジトリをローカル コンピューターにクローニングします。
 
-```cmd/sh
+```console
 git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 
 cd iot-plug-and-play-bridge
@@ -205,7 +113,7 @@ git submodule update --init --recursive
 
 **VS 2019 の開発者コマンド プロンプト** を開き、クローニングしたリポジトリが格納されているフォルダーに移動し、次のコマンドを実行します。
 
-```cmd
+```console
 cd pnpbridge\scripts\windows
 
 build.cmd
@@ -279,7 +187,7 @@ DPS を使用して IoT Hub または IoT Central アプリケーションに接
 
 コマンド プロンプトでブリッジを実行して開始します。
 
-```cmd
+```console
 cd iot-plug-and-play-bridge\pnpbridge\cmake\pnpbridge_x86\src\pnpbridge\samples\console
 
 Debug\pnpbridge_bin.exe
@@ -304,7 +212,7 @@ Debug\pnpbridge_bin.exe
 
 このセクションの手順では、Windows 10 コンピューターに次の開発環境があることを前提としています。 これらのツールを使用すると、IoT Edge モジュールをビルドして IoT Edge デバイスにデプロイできます。
 
-- Ubuntu 18.04 LTS が実行されている Windows Subsystem for Linux (WSL) 2。 詳細については、「[Windows 10 用 Windows Subsystem for Linux のインストール ガイド](https://docs.microsoft.com/windows/wsl/install-win10)」を参照してください。
+- Ubuntu 18.04 LTS が実行されている Windows Subsystem for Linux (WSL) 2。 詳細については、「[Windows 10 用 Windows Subsystem for Linux のインストール ガイド](/windows/wsl/install-win10)」を参照してください。
 - WSL 2 を使用するように構成された Docker Desktop for Windows。 詳細については、「[Docker Desktop WSL 2 バックエンド](https://docs.docker.com/docker-for-windows/wsl/)」を参照してください。
 - [Windows 環境にインストールされた Visual Studio Code](https://code.visualstudio.com/docs/setup/windows) (次の 3 つの拡張機能がインストールされていること)。
 
@@ -330,13 +238,13 @@ Debug\pnpbridge_bin.exe
 
 IoT Hub に IoT Edge デバイスの登録を作成するには、WSL 2 環境で次のコマンドを実行します。 `az login` コマンドを使用して、Azure サブスクリプションにサインインします。
 
-```bash
+```azurecli
 az iot hub device-identity create --device-id bridge-edge-device --edge-enabled true --hub-name {your IoT hub name}
 ```
 
 IoT Edge ランタイムがインストールされた Azure 仮想マシンを作成するには、次のコマンドを実行します。 プレースホルダーを適切な値で更新します。
 
-```bash
+```azurecli
 az group create --name bridge-edge-resources --location eastus
 az deployment group create \
 --resource-group bridge-edge-resources \
@@ -350,7 +258,7 @@ az deployment group create \
 
 これで、IoT Edge ランタイムが仮想マシンで実行されるようになりました。 次のコマンドを使用すると、デバイスで **$edgeAgent** と **$edgeHub** が実行されていることを確認できます。
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -378,7 +286,6 @@ VS Code を起動して、コマンド パレットを開き、「*Remote WSL:Op
 *pnpbridge\Dockerfile.amd64* ファイルを開きます。 環境変数の定義を次のように編集します。
 
 ```dockerfile
-ENV IOTHUB_DEVICE_CONNECTION_STRING="{Add your device connection string here}"
 ENV PNP_BRIDGE_ROOT_MODEL_ID="dtmi:com:example:RootPnpBridgeSampleDevice;1"
 ENV PNP_BRIDGE_HUB_TRACING_ENABLED="false"
 ENV IOTEDGE_WORKLOADURI="something"
@@ -405,7 +312,7 @@ IoT Edge デバイスによって、コンテナー レジストリからモジ�
 
 **bridge-edge-resources** リソース グループに Azure Container Registry を作成します。 次に、コンテナー レジストリへの管理者アクセスを有効にして、IoT Edge デバイスでモジュール イメージをダウンロードするために必要な資格情報を取得します。
 
-```bash
+```azurecli
 az acr create -g bridge-edge-resources --sku Basic -n {your container registry name}
 az acr update --admin-enabled true -n {your container registry name}
 az acr credential show -n {your container registry name}
@@ -517,7 +424,7 @@ VS Code の **[エクスプローラー]** ビューで *pnpbridge/config/deploy
 
 デバイス上のモジュールの状態を表示するには、次のコマンドを実行します。
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -527,7 +434,7 @@ az iot hub module-identity list --device-id bridge-edge-device -o table --hub-na
 
 仮想マシンとコンテナー レジストリを Azure サブスクリプションから削除するには、次のコマンドを実行します。
 
-```bash
+```azurecli
 az group delete -n bridge-edge-resources
 ```
 

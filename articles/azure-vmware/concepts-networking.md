@@ -3,12 +3,12 @@ title: 概念 - ネットワークの相互接続性
 description: Azure VMware Solution におけるネットワークと相互接続性の重要な側面とユース ケースについて説明します。
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: f8e9ed143d53afe2f7a24c832c69390c6ffcb36b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91575760"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475422"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Solution におけるネットワークと相互接続性の概念
 
@@ -53,15 +53,16 @@ Azure VMware Solution プライベート クラウドには、次のようなユ
 * ホット/コールド Cross-vCenter vMotion
 * オンプレミスから Azure VMware Solution プライベート クラウドへの管理アクセス
 
-:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="仮想ネットワークからプライベート クラウドへの基本的な接続" border="false":::
+:::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="仮想ネットワークおよびオンプレミスからプライベート クラウドへの完全な接続" border="false":::
 
 プライベート クラウドへの完全な相互接続性を実現するには、ExpressRoute Global Reach を有効にしてから、Azure portal で Global Reach の承認キーとプライベート ピアリング ID を要求します。 この承認キーとピアリング ID を使用して、サブスクリプション内の ExpressRoute 回線と新しいプライベート クラウド用の ExpressRoute 回線との間の Global Reach を確立します。 リンクされると、2 つの ExpressRoute 回線によって、オンプレミス環境からプライベート クラウドへとネットワーク トラフィックがルーティングされます。  承認キーとピアリング ID を要求して使用する手順については、[プライベート クラウドへの ExpressRoute Global Reach ピアリングの作成に関するチュートリアル](tutorial-expressroute-global-reach-private-cloud.md)を参照してください。
 
-
-
 ## <a name="next-steps"></a>次のステップ 
-[プライベート クラウド ストレージの概念](concepts-storage.md)について説明します。
 
+これらのネットワークと相互接続性の概念について理解したので、次のことについて学習します。
+
+- [Azure VMware Solution のストレージの概念](concepts-storage.md)。
+- [Azure VMware Solution の ID の概念](concepts-identity.md)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

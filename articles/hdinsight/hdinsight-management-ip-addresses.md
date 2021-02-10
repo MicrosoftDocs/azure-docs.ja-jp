@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight の管理 IP アドレス
 description: Azure HDInsight で仮想ネットワーク用のネットワーク セキュリティ グループとユーザー定義ルートを適切に構成するために、どの IP アドレスからの受信トラフィックを許可する必要があるかについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5f694dec6deffde9efb32fefbab91ae3b7a44a2c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549040"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490862"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
@@ -82,6 +79,7 @@ Azure で提供される DNS サービスを使用している場合は、TCP �
 | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | \*:443 | 受信 |
 | United States | 米国中部 | 13.89.171.122</br>13.89.171.124 | \*:443 | 受信 |
 | &nbsp; | 米国東部 | 13.82.225.233</br>40.71.175.99 | \*:443 | 受信 |
+| &nbsp; | 米国東部 2 | 20.44.16.8/29</br>20.49.102.48/29 | \*:443 | 受信 |
 | &nbsp; | 米国中北部 | 157.56.8.38</br>157.55.213.99 | \*:443 | 受信 |
 | &nbsp; | 米国中西部 | 52.161.23.15</br>52.161.10.167 | \*:443 | 受信 |
 | &nbsp; | 米国西部 | 13.64.254.98</br>23.101.196.19 | \*:443 | 受信 |

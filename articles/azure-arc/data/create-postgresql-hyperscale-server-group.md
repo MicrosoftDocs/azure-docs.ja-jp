@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 45bb045e7bad2d5f8a56b71787b3abb5921cb7d5
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97609056"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985888"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -78,9 +78,16 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 #azdata arc postgres server create -n postgres01 --workers 2
 ```
 
+> [!IMPORTANT]
+> - バックアップに使用するストレージ クラス ( _--storage-class-backups -scb_) は、データ コントローラーのデータ ストレージ クラスに既定で設定されます (設定されていない場合)。
+> - サーバー グループを個別のサーバー グループに復元するには (ポイントインタイム リストアなど)、ReadWriteMany アクセス モードで PVC を使用するようにサーバー グループを構成する必要があります。 この操作は、サーバー グループの作成時に行う必要があります。 作成後にそれを変更することはできません。 詳細については、以下を参照してください。
+>    - [バックアップと復元に関するこちらのセクション](https://docs.microsoft.com/azure/azure-arc/data/backup-restore-postgresql-hyperscale#create-a-server-group-that-is-ready-for-backups-and-restores)
+>    - [Azure Arc 対応 PostgreSQL Hyperscale の制限に関するこちらのセクション](https://docs.microsoft.com/azure/azure-arc/data/limitations-postgresql-hyperscale)
+
+
 > [!NOTE]
 > - **他のコマンドライン パラメーターも使用できます。`azdata arc postgres server create --help` を実行して、オプションの完全なリストを確認してください。**
-> - バックアップに使用するストレージ クラス ( _--storage-class-backups -scb_) は、データ コントローラーのデータ ストレージ クラスに既定で設定されます (設定されていない場合)。
+
 > - --volume-size-* パラメーターで使用できる単位は、Kubernetes リソースの数量 (後に SI サフィックス (T、G、M、K、M) または 2 のべき乗の同等物 (Ti、Gi、Mi、Ki) のいずれかが続く整数) です。
 > - 名前は、12 文字以下の長さで入力し、DNS 名前付け規則に準拠している必要があります。
 > - _postgres_ という標準管理ユーザーのパスワードを入力するように求められます。  create コマンドを実行する前に、`AZDATA_PASSWORD` セッション環境変数を設定すると、対話型プロンプトをスキップできます。

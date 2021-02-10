@@ -6,16 +6,16 @@ ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dc590593b9bff8f646ee6155d32a2ce3f9790f6e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020436"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625250"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics 地理空間関数の概要
 
-Azure Stream Analytics の地理空間関数は、地理空間データのストリーミングにおけるリアルタイム分析を可能にします。 数行のコードを使用するだけで、複雑なシナリオに対応した運用環境グレードのソリューションを開発できます。 
+Azure Stream Analytics の地理空間関数は、地理空間データのストリーミングにおけるリアルタイム分析を可能にします。 数行のコードを使用するだけで、複雑なシナリオに対応した運用環境グレードのソリューションを開発できます。 これらの関数では、すべての WKT の型と GeoJSON Point、Polygon、および LineString がサポートされています。
 
 地理空間関数のメリットが得られるシナリオの例は次のとおりです。
 
@@ -110,7 +110,7 @@ FROM input
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-`ST_DISTANCE` 関数は、2 つのポイント間の距離をメートル単位で返します。 
+`ST_DISTANCE` 関数では、2 つのジオメトリ間の距離がメートル単位で返されます。 
 
 次のクエリでは、`ST_DISTANCE` を使用して、自動車からガソリン スタンドまでの距離が 10 km 未満になったときにイベントを生成します。
 
@@ -123,7 +123,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 詳しくは、[ST_DISTANCE](/stream-analytics-query/st-distance) のリファレンスをご覧ください。
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-`ST_OVERLAPS` 関数は、2 つのポリゴンを比較します。 ポリゴンが重なっている場合、この関数は 1 を返します。 ポリゴンが重なっていない場合、この関数は 0 を返します。 
+`ST_OVERLAPS` 関数では、2 つのジオメトリが比較されます。 ジオメトリが重なっている場合、この関数では 1 が返されます。 ジオメトリが重なっていない場合、この関数では 0 が返されます。 
 
 次のクエリでは、`ST_OVERLAPS` を使用して、洪水の危険性がある地域にビルがある場合にイベントを生成します。
 
@@ -144,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 詳しくは、[ST_OVERLAPS](/stream-analytics-query/st-overlaps) のリファレンスをご覧ください。
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-`ST_INTERSECTS` 関数は、2 つの LineString を比較します。 LineString が交差する場合、この関数は 1 を返します。 LineString が交差しない場合、この関数は 0 を返します。
+`ST_INTERSECTS` 関数では、2 つのジオメトリが比較されます。 ジオメトリが交差する場合、この関数では 1 が返されます。 ジオメトリが互いに交差していない場合、この関数では 0 が返されます。
 
 次の例のクエリでは、`ST_INTERSECTS` を使用して、舗装道路が未舗装の道路と交差しているかどうかを判断します。
 
@@ -170,7 +170,7 @@ FROM input
 詳しくは、[ST_INTERSECTS](/stream-analytics-query/st-intersects) のリファレンスをご覧ください。
 
 ## <a name="st_within"></a>ST_WITHIN
-`ST_WITHIN` 関数は、ポイントまたはポリゴンが特定のポリゴン内にあるかどうかを判断します。 ポイントまたはポリゴンが特定のポリゴンに含まれている場合、この関数は 1 を返します。 ポイントまたはポリゴンが宣言されたポリゴン内にない場合、この関数は 0 を返します。
+`ST_WITHIN` 関数では、ジオメトリが別のジオメトリ内にあるかどうかが判断されます。 最初のものが最後のものに含まれている場合、この関数では 1 が返されます。 最初のジオメトリが最後のものの中にない場合、この関数では 0 が返されます。
 
 次の例のクエリでは、`ST_WITHIN` を使用して、配達先のポイントが指定された倉庫ポリゴン内にあるかどうかを判断します。
 

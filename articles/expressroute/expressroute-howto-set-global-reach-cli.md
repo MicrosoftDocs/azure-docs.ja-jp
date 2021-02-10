@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 55f1e4c030dc0e7c8d0011dcff0cc1c9f8fec06e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028065"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260233"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Azure CLI を使用して ExpressRoute Global Reach を構成する
 
@@ -56,7 +56,7 @@ ExpressRoute Global Reach は、任意の 2 つの ExpressRoute 回線間で有�
 
 * *peer-circuit* は、完全なリソース ID にする必要があります。 次に例を示します。
 
-  > /subscriptions/{自分のサブスクリプション ID}/resourceGroups/{自分のリソース グループ}/providers/Microsoft.Network/expressRouteCircuits/{自分の回線名}
+  > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}/peerings/AzurePrivatePeering
 
 * *address-prefix* は、"/29" IPv4 サブネット ("10.0.0.0/29" など) である必要があります。 このサブネット内の IP アドレスを使用して、2 つの ExpressRoute 回線間の接続を確立します。 Azure 仮想ネットワークまたはオンプレミス ネットワークでは、このサブネット内のアドレスを使用できません。
 

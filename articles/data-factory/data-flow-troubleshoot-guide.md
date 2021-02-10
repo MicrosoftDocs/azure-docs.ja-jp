@@ -8,12 +8,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/11/2020
-ms.openlocfilehash: 5f29474705919f402b1c114c3fd2df0df037cdae
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: cc87694686bd5143b03d690286bd3171cf8b0e18
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696066"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222151"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でマッピング データ フローをトラブルシューティングする
 
@@ -127,11 +127,144 @@ ms.locfileid: "94696066"
 - **原因**:マッピング データ フローでは、現在、複数行の CSV ソースが \r\n 行区切り記号として機能していません。 改行に余分な行があると、ソースの値が壊れる場合があります。 
 - **推奨事項**:行区切り記号として \r\n ではなく、\n を使用してソースでファイルを生成します。 または、コピー アクティビティを使用して、行区切り文字として \r\n が含まれる CSV ファイルを \n に変換します。
 
-## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス
+### <a name="error-code-df-executor-sourceinvalidpayload"></a>エラー コード:DF-Executor-SourceInvalidPayload
+- **メッセージ**:コンテナーが存在しないため、データ プレビュー、デバッグ、パイプライン データ フローの実行が失敗しました
+- **原因**:ストレージに存在しないコンテナーがデータセットに含まれている場合
+- **推奨事項**:データセットで参照されているコンテナーが存在するかアクセス可能であることを確認してください。
 
+
+ ### <a name="error-code-df-executor-systemimplicitcartesian"></a>エラー コード:DF-Executor-SystemImplicitCartesian
+- **メッセージ**:INNER join では暗黙的なデカルト積はサポートされていません。代わりに CROSS JOIN を使用してください。 結合で使用される列は、行に対して一意のキーを作成する必要があります。
+- **原因**:論理プラン間の INNER join では暗黙的なデカルト積はサポートされていません。 結合で使用される列が一意のキーを作成する場合
+- **推奨事項**:非等値ベースの結合では、CROSS JOIN を選択する必要があります。
+
+
+ ### <a name="error-code-df-executor-systeminvalidjson"></a>エラー コード:DF-Executor-SystemInvalidJson
+- **メッセージ**:JSON 解析エラー、サポートされていないエンコードまたは複数行が存在します
+- **原因**:JSON ファイルで、次のような問題が発生している可能性があります。サポートされていないエンコード、バイトの破損、または入れ子になった多数の行での単一ドキュメントとしての JSON ソースの使用
+- **推奨事項**:JSON ファイルのエンコードがサポートされているかどうか確認します。 JSON データセットを使用しているソース変換で [JSON 設定] を展開し、[単一のドキュメント] をオンにします。
+
+
+ ### <a name="error-code-df-executor-broadcasttimeout"></a>エラー コード:DF-Executor-BroadcastTimeout
+- **メッセージ**: ブロードキャスト結合のタイムアウト エラー。この問題を回避するには、結合/存在/参照変換でブロードキャスト オプションの [オフ] を選択します。 パフォーマンスを向上させるために結合オプションをブロードキャストする場合は、ブロードキャスト ストリームで、デバッグ実行では 60 秒以内に、ジョブ実行では 300 秒以内にデータを生成できることを確認します。
+- **原因**:ブロードキャストの既定のタイムアウトは、デバッグ実行では 60 秒、ジョブ実行では 300 秒です。 ブロードキャスト結合の場合、ブロードキャスト用に選択されたストリームは、この制限内にデータを生成するには大きすぎると考えられます。 ブロードキャスト結合が使用されていない場合、データフローによって実行される既定のブロードキャストが同じ制限に達することがあります。
+- **推奨事項**:ブロードキャスト オプションをオフにするか、処理に 60 秒を超える時間を要する可能性がある大規模なデータ ストリームのブロードキャストは避けてください。 代わりに、ブロードキャストするための小さいストリームを選択してください。 通常、大規模な SQL/DW テーブルとソース ファイルは適切な候補ではありません。 ブロードキャスト結合が存在しない場合、エラーが発生したときはより大きなクラスターを使用します。
+
+
+ ### <a name="error-code-df-executor-conversion"></a>エラー コード:DF-Executor-Conversion
+- **メッセージ**:無効な文字が原因で、日付または時刻への変換に失敗しました
+- **原因**:データの形式が正しくありません
+- **推奨事項**:正しいデータ型を使用してください
+
+
+ ### <a name="error-code-df-executor-invalidcolumn"></a>エラー コード:DF-Executor-InvalidColumn
+- **メッセージ**:クエリに列名を指定する必要があります。SQL 関数を使用している場合は別名を設定してください
+- **原因**:列名が指定されていませんでした。
+
+
+ ### <a name="error-code-df-executor-drivererror"></a>エラー コード:DF-Executor-DriverError
+- **メッセージ**:INT96 は、ADF データフローではサポートされていない従来のタイムスタンプ型です。 列の型を最新の型にアップグレードすることを検討してください。
+- **原因**:ドライバー エラーです。
+- **推奨事項**:INT96 は、ADF データフローではサポートされていない従来のタイムスタンプ型です。 列の型を最新の型にアップグレードすることを検討してください。
+
+
+ ### <a name="error-code-df-executor-blockcountexceedslimiterror"></a>エラー コード:DF-Executor-BlockCountExceedsLimitError
+- **メッセージ**:コミット前のブロック数は、ブロックの上限である 100,000 個を超えることはできません。 BLOB 構成を確認してください。
+- **原因**:1 つの BLOB でのコミット前のブロックが、上限の 100,000 個になっている可能性があります。
+- **推奨事項**:Microsoft 製品チームに、この問題についての詳細をお問い合わせください
+
+ ### <a name="error-code-df-executor-partitiondirectoryerror"></a>エラー コード:DF-Executor-PartitionDirectoryError
+- **メッセージ**: 指定されたソース パスに、複数のパーティション ディレクトリ (たとえば、<Source Path>/<パーティション ルート ディレクトリ 1>/a=10/b=20、<Source Path>/<パーティション ルート ディレクトリ 2>/c=10/d=30)、他のファイルを含むパーティション ディレクトリ、またはパーティション分割されていないディレクトリ (たとえば、<Source Path>/<パーティション ルート ディレクトリ 1>/a=10/b=20、<Source Path>/Directory 2/file1) のいずれかが含まれています。ソース パスからパーティション ルート ディレクトリを削除して、別個のソース変換を利用して読み取ってください。
+- **原因**:ソース パスに複数のパーティション ディレクトリ、他のファイルを含むパーティション ディレクトリ、またはパーティション分割されていないディレクトリのいずれかが含まれています。
+- **推奨事項**:パーティション ルート ディレクトリをソース パスから削除し、別個のソース変換を使用して読み取ってください。
+
+
+ ### <a name="error-code-df-executor-outofmemoryerror"></a>エラー コード:DF-Executor-OutOfMemoryError
+- **メッセージ**:実行中に、クラスターにメモリ不足の問題が発生しました。コア数がより大きく、メモリが最適化されたコンピューティングの種類で統合ランタイムを使用して、もう一度お試しください
+- **原因**:クラスターのメモリがメモリ不足しています。
+- **推奨事項**:デバッグ クラスターは、開発を目的とするものではありません。 データ サンプリング、適切なコンピューティングの種類、およびサイズを利用して、ペイロードを実行します。 最適なパフォーマンスを得るためにデータフローをチューニングするには、[データフロー パフォーマンスに関するガイド](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-performance)を参照してください。
+
+
+ ### <a name="error-code-df-executor-illegalargument"></a>エラー コード:DF-Executor-illegalArgument
+- **メッセージ**: リンクされたサービスのアクセス キーが正しいことを確認してください。
+- **原因**:アカウント名またはアクセス キーが正しくありません。
+- **推奨事項**:正しいアカウント名またはアクセス キーを指定してください。
+
+
+ ### <a name="error-code-df-executor-invalidtype"></a>エラー コード:DF-Executor-InvalidType
+- **メッセージ**:パラメーターの型が、渡された値の型と一致していることを確認してください。 パイプラインからの float パラメーターの引き渡しは現在、サポートされていません。
+- **原因**:宣言された型と実際のパラメーター値の間のデータ型に、互換性がありません
+- **推奨事項**:適切なデータ型を指定してください。
+
+
+ ### <a name="error-code-df-executor-columnunavailable"></a>エラー コード:DF-Executor-ColumnUnavailable
+- **メッセージ**: 式に使用されている列名が利用できないか、または無効です。
+- **原因**:式に使用されている列名が無効か、または利用できません。
+- **推奨事項**:式に使用されている列名を確認してください。
+
+
+ ### <a name="error-code-df-executor-parseerror"></a>エラー コード:DF-Executor-ParseError
+- **メッセージ**: 式を解析できません。
+- **原因**:書式設定が原因で、式の解析エラーが発生しています。
+- **推奨事項**:式の形式を確認してください。
+
+
+ ### <a name="error-code-df-executor-outofdiskspaceerror"></a>エラー コード:DF-Executor-OutOfDiskSpaceError
+- **メッセージ**: 内部サーバー エラー
+- **原因**:クラスターのディスク領域が不足しています。
+- **推奨事項**:パイプラインを再試行してください。 問題が解決しない場合は、カスタマー サポートにお問い合わせください。
+
+
+ ### <a name="error-code-df-executor-storeisnotdefined"></a>エラー コード:DF-Executor-StoreIsNotDefined
+- **メッセージ**: ストアの構成が定義されていません。 このエラーは、パイプラインでの無効なパラメーター割り当てが原因である可能性があります。
+- **原因**:[Undetermined]\(不明\)
+- **推奨事項**:パイプラインでパラメーター値の割り当てを確認してください。 パラメーター式に無効な文字が含まれている可能性があります。
+
+
+ ### <a name="error-code-df-excel-invalidconfiguration"></a>エラー コード:DF-Excel-InvalidConfiguration
+- **メッセージ**: Excel シートの名前またはインデックスが必要です。
+- **原因**:[Undetermined]\(不明\)
+- **推奨事項**:パラメーター値を確認し、Excel データを読み取るシート名またはインデックスを指定してください。
+
+
+ ### <a name="error-code-df-excel-invalidconfiguration"></a>エラー コード:DF-Excel-InvalidConfiguration
+- **メッセージ**: Excel シートの名前とインデックスが同時に存在することはできません。
+- **原因**:[Undetermined]\(不明\)
+- **推奨事項**:パラメーター値を確認し、Excel データを読み取るシート名またはインデックスを指定してください。
+
+
+ ### <a name="error-code-df-excel-invalidconfiguration"></a>エラー コード:DF-Excel-InvalidConfiguration
+- **メッセージ**: 無効な範囲が指定されています。
+- **原因**:[Undetermined]\(不明\)
+- **推奨事項**:パラメーター値を確認し、有効な範囲を参照渡しで指定してください。[Excel のプロパティ](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties)。
+
+
+ ### <a name="error-code-df-excel-invaliddata"></a>エラー コード:DF-Excel-InvalidData
+- **メッセージ**: Excel ワークシートが存在しません。
+- **原因**:[Undetermined]\(不明\)
+- **推奨事項**:パラメーター値を確認し、Excel データを読み取る有効なシート名またはインデックスを指定してください。
+
+ ### <a name="error-code-df-excel-invaliddata"></a>エラー コード:DF-Excel-InvalidData
+- **メッセージ**: スキーマが異なる Excel ファイルの読み取りは、現時点ではサポートされていません。
+- **原因**:[Undetermined]\(不明\)
+- **推奨事項**:正しい Excel ファイルを使用します。
+
+
+ ### <a name="error-code-df-excel-invaliddata"></a>エラー コード:DF-Excel-InvalidData
+- **メッセージ**: データ型はサポートされていません。
+- **原因**:[Undetermined]\(不明\)
+- **推奨事項**:Excel ファイルの適切なデータ型を使用します。
+
+ ### <a name="error-code-df-excel-invalidconfiguration"></a>エラー コード:DF-Excel-InvalidConfiguration
+- **メッセージ**: 無効な Excel ファイルが指定されていますが、.xlsx と .xls のみがサポートされています
+- **原因**:[Undetermined]\(不明\)
+- **推奨事項**:Excel ファイル拡張子が .xlsx または .xls であることを確認します。
+
+## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス
 1. データセット接続の状態を確認します。 ソース/シンクの変換ごとに、使用している各データベースのリンクされたサービスにアクセスし、接続をテストします。
-1. データ フロー デザイナーからファイルとテーブルの接続の状態を確認します。 デバッグをオンに切り替え、ソース変換のデータ プレビューをクリックし、データにアクセスできることを確認します。
-1. データ プレビューに問題がなければ、パイプライン デザイナーに進み、パイプライン アクティビティにデータ フローを配置します。 エンドツーエンド テストとしてパイプラインをデバッグします。
+2. データ フロー デザイナーからファイルとテーブルの接続の状態を確認します。 デバッグをオンに切り替え、ソース変換のデータ プレビューをクリックし、データにアクセスできることを確認します。
+3. データ プレビューに問題がなければ、パイプライン デザイナーに進み、パイプライン アクティビティにデータ フローを配置します。 エンドツーエンド テストとしてパイプラインをデバッグします。
+
 
 ## <a name="next-steps"></a>次のステップ
 

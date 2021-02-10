@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: a47f720344a16d0f77559d6aabfb2b0245e62976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ee4a09df0f95cb809db0e5c0e63d195ee5cfdff
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426335"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896937"
 ---
 # <a name="migrate-from-orchestrator-to-azure-automation-beta"></a>Orchestrator から Azure Automation (ベータ版) に移行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "89426335"
 
 ## <a name="import-the-standard-activities-module"></a>標準活動モジュールのインポート
 
-[標準活動モジュール](/system-center/orchestrator/standard-activities?view=sc-orch-2019)を Azure Automation にインポートします。 このモジュールには、変換後のグラフィカル Runbook で使用できる、変換されたバージョンの Orchestrator 標準活動が含まれます。
+[標準活動モジュール](/system-center/orchestrator/standard-activities)を Azure Automation にインポートします。 このモジュールには、変換後のグラフィカル Runbook で使用できる、変換されたバージョンの Orchestrator 標準活動が含まれます。
 
 ## <a name="import-orchestrator-integration-modules"></a>Orchestrator 統合モジュールのインポート
 
@@ -32,7 +32,7 @@ Microsoft は、System Center のコンポーネントと他の製品を自動�
 
 ## <a name="convert-integration-packs"></a>統合パックの変換
 
-[Orchestrator Integration Toolkit (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) を使用して作成された統合パックを、[統合パック コンバーター](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard?view=sc-orch-2019)を使用して PowerShell ベースの統合モジュールに変換します。この統合モジュールは、Azure Automation または Service Management Automation にインポートできます。 統合パック コンバーターを実行すると、ウィザードが表示され、統合パック (.oip) ファイルを選択できます。 次に、ウィザードに、その統合パックに含まれる活動が一覧表示され、移行する活動を選択できます。 ウィザードを完了すると、元の統合パックの各活動に対応するコマンドレットを含む統合モジュールが作成されます。
+[Orchestrator Integration Toolkit (OIT)](/previous-versions/system-center/developer/hh855853(v=msdn.10)) を使用して作成された統合パックを、[統合パック コンバーター](/system-center/orchestrator/orch-integration-toolkit/integration-pack-wizard)を使用して PowerShell ベースの統合モジュールに変換します。この統合モジュールは、Azure Automation または Service Management Automation にインポートできます。 統合パック コンバーターを実行すると、ウィザードが表示され、統合パック (.oip) ファイルを選択できます。 次に、ウィザードに、その統合パックに含まれる活動が一覧表示され、移行する活動を選択できます。 ウィザードを完了すると、元の統合パックの各活動に対応するコマンドレットを含む統合モジュールが作成されます。
 
 > [!NOTE]
 > OIT を使用して作成されていない統合パックは、統合パック コンバーターを使用して変換できません。 現在このツールを使用して変換できない、Microsoft が提供する統合パックもいくつかあります。 このような統合パックを変換したバージョンは、 ダウンロード用に提供されているため、Azure Automation または Service Management Automation でインストールできます。
@@ -118,7 +118,7 @@ Orchestrator の Runbook は、`Initialize Data` 活動で入力パラメータ�
 
 ### <a name="invoke-runbook-activity"></a>Runbook 活動の呼び出し
 
-Orchestrator の Runbook は、`Invoke Runbook` 活動を使用してその他の Runbook を開始します。 変換対象となる Runbook にこの活動が含まれていて、`Wait for completion` オプションが設定されている場合は、変換後の Runbook にこの活動用の Runbook 活動が作成されます。  `Wait for completion` オプションが設定されていない場合は、[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) を使用して Runbook を開始するワークフロー スクリプト活動が作成されます。 変換後の Runbook を Azure Automation にインポートした後、活動で指定された情報を使用して、この活動を変更する必要があります。
+Orchestrator の Runbook は、`Invoke Runbook` 活動を使用してその他の Runbook を開始します。 変換対象となる Runbook にこの活動が含まれていて、`Wait for completion` オプションが設定されている場合は、変換後の Runbook にこの活動用の Runbook 活動が作成されます。  `Wait for completion` オプションが設定されていない場合は、[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) を使用して Runbook を開始するワークフロー スクリプト活動が作成されます。 変換後の Runbook を Azure Automation にインポートした後、活動で指定された情報を使用して、この活動を変更する必要があります。
 
 ## <a name="create-orchestrator-assets"></a>Orchestrator アセットの作成
 

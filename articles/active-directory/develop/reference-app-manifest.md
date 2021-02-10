@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208891"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491301"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -450,7 +450,7 @@ OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求では�
 例:
 
 ```json
-    "publisherDomain": "https://www.contoso.com",
+    "publisherDomain": "{tenant}.onmicrosoft.com",
 ```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 980e830716b66b63c8f2dc6e641a88af26d44871
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027066"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918045"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーとアカウント制限
 
@@ -75,6 +75,7 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
   * パートナー レベル 1 のサポート
   * パートナー レベル 2 のサポート
   * Exchange 管理者
+  * メールボックス管理者
   * Skype for Business 管理者
   * ユーザー管理者
   * ディレクトリ ライター
@@ -85,10 +86,12 @@ Azure AD のパスワード ポリシーは、*EnforceCloudPasswordPolicyForPass
   * セキュリティ管理者
   * 特権ロール管理者
   * Intune 管理者
+  * Azure AD 参加済みデバイスのローカル管理者
   * アプリケーション プロキシ サービス管理者
   * Dynamics 365 管理者
   * Power BI サービス管理者
   * 認証管理者
+  * パスワード管理者
   * 特権認証管理者
 
 * 試用版サブスクリプションで 30 日が経過している、または

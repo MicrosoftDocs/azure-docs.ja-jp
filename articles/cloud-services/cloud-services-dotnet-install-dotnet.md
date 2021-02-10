@@ -1,24 +1,25 @@
 ---
-title: Azure Cloud Services のロールに .NET をインストールする | Microsoft Docs
+title: Azure Cloud Services (クラシック) のロールに .NET をインストールする | Microsoft Docs
 description: この記事では、クラウド サービスの Web ロールと worker ロールに .NET Framework を手動でインストールする方法について説明します。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-dotnet
 ms.topic: article
-ms.date: 06/22/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6de4b79560557fc86edb9e1a25e32a6a1983ceb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: aa05fc9f02c26192762ed34db54b60b4760bf3bf
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932238"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061853"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>Azure Cloud Services のロールに .NET をインストールする
+# <a name="install-net-on-azure-cloud-services-classic-roles"></a>Azure Cloud Services (クラシック) のロールに .NET をインストールする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 この記事では、Azure ゲスト OS に付属するバージョンとは異なるバージョンの .NET Framework をインストールする方法について説明します。 ゲスト OS にインストールした .NET を使用して、クラウド サービスの Web ロールおよび worker ロールを構成できます。
 
 たとえば、.NET Framework 4.6 のどのリリースも付属していないゲスト OS ファミリ 4 に .NET Framework 4.6.2 をインストールすることができます (ゲスト OS ファミリ 5 には .NET Framework 4.6 が付属しています)。Azure ゲスト OS のリリース版の最新情報については、[Azure ゲスト OS リリースに関するニュース](cloud-services-guestos-update-matrix.md)を参照してください。 
@@ -31,16 +32,16 @@ Web ロールと worker ロールに .NET をインストールするには、.N
 ## <a name="add-the-net-installer-to-your-project"></a>プロジェクトに .NET インストーラーを追加する
 .NET Framework の Web インストーラーをダウンロードするには、次のうち、インストールするバージョンを選択します。
 
-* [.NET Framework 4.8 の Web インストーラー](https://dotnet.microsoft.com/download/thank-you/net48)
+* [.NET Framework 4.8 の Web インストーラー](https://go.microsoft.com/fwlink/?LinkId=2150985)
 * [.NET Framework 4.7.2 の Web インストーラー](https://go.microsoft.com/fwlink/?LinkId=863262)
 * [.NET Framework 4.6.2 の Web インストーラー](https://www.microsoft.com/download/details.aspx?id=53345)
 
 *Web* ロールのインストールを追加するには、次の操作を実行します。
-  1. **ソリューション エクスプローラー**で、該当するクラウド サービス プロジェクトの **[ロール]** の下の *Web* ロールを右クリックし、 **[追加]**  >  **[新しいフォルダー]** の順に選択します。 **bin** という名前のフォルダーを作成します。
+  1. **ソリューション エクスプローラー** で、該当するクラウド サービス プロジェクトの **[ロール]** の下の *Web* ロールを右クリックし、**[追加]** > **[新しいフォルダー]** の順に選択します。 **bin** という名前のフォルダーを作成します。
   2. bin フォルダーを右クリックし、 **[追加]**  >  **[既存の項目]** の順に選択します。 .NET インストーラーを選択して bin フォルダーに追加します。
   
 *worker* ロールのインストールを追加するには、次の操作を実行します。
-* *worker* ロールを右クリックし、 **[追加]**  >  **[既存の項目]** の順に選択します。 .NET インストーラーを選択して、ロールに追加します。 
+* *worker* ロールを右クリックし、**[追加]** > **[既存の項目]** の順に選択します。 .NET インストーラーを選択して、ロールに追加します。 
 
 この方法でロールの Content フォルダーに追加したファイルは、クラウド サービス パッケージに自動的に追加されます。 その後、ファイルは、仮想マシン上の一貫性のある場所にデプロイされます。 クラウド サービス内の各 Web ロールおよび worker ロールについて、すべてのロールがインストーラーのコピーを保持するように、このプロセスを繰り返します。
 
@@ -198,7 +199,7 @@ Web ロールと worker ロールに .NET をインストールするには、.N
    EXIT /B 0
    ```
 
-3. このトピックで前述したように、**ソリューション エクスプローラー**で **[追加]**  >  **[既存の項目]** の順に選択して、各ロールに install.cmd ファイルを追加します。 
+3. このトピックで前述したように、**ソリューション エクスプローラー** で **[追加]**  >  **[既存の項目]** の順に選択して、各ロールに install.cmd ファイルを追加します。 
 
     この手順が完了したら、すべてのロールに .NET インストーラー ファイルと install.cmd ファイルが設定されます。
 

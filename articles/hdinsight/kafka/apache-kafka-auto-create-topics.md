@@ -1,19 +1,17 @@
 ---
 title: Apache Kafka での自動トピック作成を有効にする - Azure HDInsight
 description: トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法を説明します。 Ambari を使用して `auto.create.topics.enable` を true に設定することにより、Kafka を構成できます。 または、クラスターの作成中に PowerShell または Resource Manager テンプレートを使用します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 829f91452725615af4d444426e25ffad62d6ab6d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b416623d6637cfe8e2c1cd795dd62553f8c0aed4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087505"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933221"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
 
@@ -25,7 +23,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
 1. [Azure portal](https://portal.azure.com) 上で、ご自身の Kafka クラスターを選択します。
 
-1. **クラスター ダッシュボード**上で **[Ambari ホーム]** を選択します。
+1. **クラスター ダッシュボード** 上で **[Ambari ホーム]** を選択します。
 
     ![クラスター ダッシュボードが選ばれたポータルの画像](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 

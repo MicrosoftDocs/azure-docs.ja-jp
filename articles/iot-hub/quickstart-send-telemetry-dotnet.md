@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub への利用統計情報の送信に関するクイック スタート (C#) | Microsoft Docs
+title: クイックスタート - Azure IoT Hub への利用統計情報の送信に関するクイックスタート (C#) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行して、IoT Hub にシミュレートされた利用統計情報を送信し、クラウドで処理するために IoT Hub から利用統計情報を読み取ります。
 author: robinsh
 manager: philmea
@@ -14,20 +14,20 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/01/2020
-ms.openlocfilehash: b515274ef4bcf494c071ddb487590ff9cdccf4c0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 914df5b80dee7da041b268a3aaf25ac493d0cf5b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121485"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624441"
 ---
-# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>クイックスタート: デバイスから IoT ハブにテレメトリを送信してサービス アプリケーションで読み取る (.NET)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-service-application-net"></a>クイックスタート: デバイスから IoT Hub にテレメトリを送信してサービス アプリケーションで読み取る (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT Hub は、保管や処理のために IoT デバイスから大量のテレメトリをクラウドに取り込むことを可能にする Azure サービスです。 このクイックスタートでは、シミュレートされたデバイス アプリケーションから、IoT Hub を経由して、処理のためにサービス アプリケーションにテレメトリを送信します。
 
-このクイック スタートでは、あらかじめ作成されている 2 つの C# アプリケーションを使います。1 つは利用統計情報を送信し、もう 1 つはハブから利用統計情報を読み取ります。 これら 2 つのアプリケーションを実行する前に、IoT Hub を作成し、デバイスを Hub に登録します。
+このクイック スタートでは、あらかじめ作成されている 2 つの C# アプリケーションを使います。1 つは利用統計情報を送信し、もう 1 つはHub から利用統計情報を読み取ります。 これら 2 つのアプリケーションを実行する前に、IoT Hub を作成し、デバイスを Hub に登録します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -87,7 +87,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
     この値は、このクイックスタートの後の方で使用します。
 
-3. また、サービス アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、"_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
+3. また、サービス アプリケーションが IoT Hub に接続してメッセージを取得できるようにするには、IoT Hub の "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、"_サービス主キー_" も必要です。 次のコマンドは、お使いの IoT Hub に対するこれらの値を取得します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
@@ -125,7 +125,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Hub からテレメトリを読み取る
 
-サービス アプリケーションは、IoT ハブ上のサービス側 **Events** エンドポイントに接続します。 このアプリケーションは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub サービス アプリケーションはクラウドで実行され、device-to-cloud メッセージを受信して処理します。
+サービス アプリケーションは、IoT Hub 上のサービス側 **Events** エンドポイントに接続します。 このアプリケーションは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub サービス アプリケーションはクラウドで実行され、device-to-cloud メッセージを受信して処理します。
 
 1. 別のローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\ReadD2cMessages** フォルダーに移動します。
 
@@ -153,7 +153,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
     dotnet run -- -e {EventHubCompatibleEndpoint} -n {EventHubName} -s {SharedAccessKey}
     ```
 
-    次のスクリーンショットは、シミュレートされたデバイスからハブに送信されたテレメトリをサービス アプリケーションが受信したときの出力を示しています。
+    次のスクリーンショットは、シミュレートされたデバイスからHub に送信されたテレメトリをサービス アプリケーションが受信したときの出力を示しています。
 
     ![サービス アプリケーションの実行](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
@@ -163,9 +163,9 @@ IoT Hub は、保管や処理のために IoT デバイスから大量のテレ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、IoT ハブを設定し、デバイスを登録しました。C# アプリケーションを使用してシミュレートされたテレメトリをハブに送信し、単純なサービス アプリケーションを使用してハブからテレメトリを読み取りました。
+このクイックスタートでは、IoT Hub を設定し、デバイスを登録しました。C# アプリケーションを使用してシミュレートされたテレメトリをHub に送信し、単純なサービス アプリケーションを使用してHub からテレメトリを読み取りました。
 
 サービス アプリケーションからシミュレートされたデバイスを制御する方法については、次のクイックスタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート: IoT ハブに接続されたデバイスを制御する](quickstart-control-device-dotnet.md)
+> [クイック スタート: IoT Hub に接続されたデバイスを制御する](quickstart-control-device-dotnet.md)

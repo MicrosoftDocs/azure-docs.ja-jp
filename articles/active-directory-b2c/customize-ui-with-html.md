@@ -1,33 +1,33 @@
 ---
-title: ユーザー インターフェイスをカスタマイズする
+title: HTML テンプレートを使用したユーザー インターフェイスのカスタマイズ
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
+description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスを、HTML テンプレートを使用してカスタマイズする方法について説明します。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 01/28/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4a789574b736eb22bd8d13fcf1a9facec5e241c9
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 78ad2540029d78084485ae2004194f9f7c2d6052
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98058669"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050548"
 ---
-# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
+# <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で HTML テンプレートを使用してユーザー インターフェイスをカスタマイズする
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー インターフェイスを顧客に合わせてブランド化したりカスタマイズすることは、アプリケーション内でシームレスなユーザー エクスペリエンスを提供するのに役立ちます。 そのような操作性には、サインアップ、サインイン、プロファイル編集、パスワード リセットが含まれます。 この記事では、ユーザー インターフェイス (UI) のカスタマイズ方法について説明します。 
 
 > [!TIP]
-> ユーザー フロー ページのバナー ロゴ、背景画像、背景色のみを変更する場合は、[会社のブランド](company-branding.md)機能を試します。
+> ユーザー フロー ページのバナー ロゴ、背景画像、背景色のみを変更する場合は、[会社のブランド](customize-ui.md)機能を試します。
 
 ## <a name="custom-html-and-css-overview"></a>カスタム HTML および CSS の概要
 
@@ -387,7 +387,15 @@ git clone https://github.com/Azure-Samples/Azure-AD-B2C-page-templates
 1. ここで、前述のように、HTML ファイルを指すようにポリシーを変更します。
 1. 欠落しているフォント、イメージ、または CSS がある場合は、拡張ポリシーおよび \*.html ファイルでお使いの参照を確認してください。
 
+## <a name="use-company-branding-assets-in-custom-html"></a>カスタム HTML で会社のブランド資産を使用する
+
+カスタム HTML で[会社のブランド](customize-ui.md#configure-company-branding)資産を使用するには、`<div id="api">` タグの外側に次のタグを追加します。 画像ソースが背景画像とバナー ロゴの画像に置き換えられます。
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
 ## <a name="next-steps"></a>次のステップ
 
 [クライアント側の JavaScript コード](javascript-and-page-layout.md)を有効にする方法を確認します。
-

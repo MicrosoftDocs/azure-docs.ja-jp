@@ -261,7 +261,7 @@
         - name: Storage Explorer の概要
           href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: ストレージ エクスプローラーのリリース ノート
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+          href: 'https://github.com/microsoft/AzureStorageExplorer/releases'
         - name: ストレージ エクスプローラーのトラブルシューティング
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: ストレージ エクスプローラーのアクセシビリティ

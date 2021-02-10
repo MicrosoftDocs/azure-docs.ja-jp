@@ -13,18 +13,18 @@ ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
-ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fac66e8f82ea4c04e866b28fed5f8d0860ab81ef
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88115987"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755976"
 ---
 # <a name="accounts--tenant-profiles-android"></a>アカウントとテナント プロファイル (Android)
 
 この記事では、Microsoft ID プラットフォームにおける `account` の概要を示します。
 
-Microsoft Authentication Library (MSAL) API では、*ユーザー* という用語が*アカウント* という用語に置き換えられています。 1 つの理由は、ユーザー (人間またはソフトウェア エージェント) が複数のアカウントを持っている場合がある、あるいは使用できるためです。 これらのアカウントは、ユーザー自身の組織、またはユーザーがメンバーになっている他の組織に存在する場合があります。
+Microsoft Authentication Library (MSAL) API では、*ユーザー* という用語が *アカウント* という用語に置き換えられています。 1 つの理由は、ユーザー (人間またはソフトウェア エージェント) が複数のアカウントを持っている場合がある、あるいは使用できるためです。 これらのアカウントは、ユーザー自身の組織、またはユーザーがメンバーになっている他の組織に存在する場合があります。
 
 Microsoft ID プラットフォームのアカウントは、次のもので構成されます。
 
@@ -73,7 +73,7 @@ Microsoft ID プラットフォームのアカウントは、次のもので構�
 
 ## <a name="accounts-and-single-sign-on-sso"></a>アカウントとシングル サインオン (SSO)
 
-MSAL トークン キャッシュには、アカウントごとに*単一の更新トークン* が格納されます。 この更新トークンを使用して、複数の Microsoft ID プラットフォーム テナントからのアクセス トークンをサイレントに要求できます。 ブローカーがデバイス上にインストールされている場合、アカウントはブローカーによって管理され、デバイス全体のシングル サインオンが可能になります。
+MSAL トークン キャッシュには、アカウントごとに *単一の更新トークン* が格納されます。 この更新トークンを使用して、複数の Microsoft ID プラットフォーム テナントからのアクセス トークンをサイレントに要求できます。 ブローカーがデバイス上にインストールされている場合、アカウントはブローカーによって管理され、デバイス全体のシングル サインオンが可能になります。
 
 > [!IMPORTANT]
 > 企業-消費者間 (B2C) アカウントと更新トークンの動作は、Microsoft の他の ID プラットフォームとは異なります。 詳細については、「[B2C ポリシーとアカウント](#b2c-policies--accounts)」を参照してください。

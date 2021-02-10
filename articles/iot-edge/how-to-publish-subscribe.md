@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 13bfd7c602389ff286a80f625829da5924a73bdf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922588"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621897"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Aure IoT Edge を使用した発行とサブスクライブ
 
@@ -251,7 +251,7 @@ IoT Hub に 2 つの IoT デバイスを作成し、パスワードを取得し�
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>パブリッシャーとサブスクライバーのクライアントを承認する
 
-パブリッシャーとサブスクライバーを承認するには、Azure CLI、Visual Studio、または Visual Studio Code のいずれかを使用して IoT Edge ハブのツインを編集して、次の承認ポリシーを含めます。
+パブリッシャーとサブスクライバーを承認するには、Azure CLI、Visual Studio、または Visual Studio Code のいずれかで IoT Edge デプロイを作成することで IoT Edge ハブのツインを編集し、次の承認ポリシーを含めます。
 
 ```json
 {

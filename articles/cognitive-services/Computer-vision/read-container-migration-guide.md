@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 10/23/2020
+ms.date: 01/29/2021
 ms.author: aahi
-ms.openlocfilehash: 0ae7bb9acde3cc8552a23db12d208a82ba0fb2f3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: baa91e21979022064aaf13aca6079f8d092d673e
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95800876"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221155"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Read v3. x OCR コンテナーへの移行
 

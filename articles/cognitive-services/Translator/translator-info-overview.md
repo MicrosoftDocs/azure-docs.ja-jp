@@ -3,21 +3,21 @@ title: Microsoft Translator サービス
 titlesuffix: Azure Cognitive Services
 description: Translator をアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、多言語ユーザー エクスペリエンスを提供できます。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
 ms.date: 09/11/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Translator, テキスト翻訳, 機械翻訳, 翻訳サービス
-ms.openlocfilehash: 8016c79cbe7f78bdaa18274f8873548e3982df2f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37f0d64879493abcf3e5b9448068b86b7a36dccb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016475"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896699"
 ---
 # <a name="what-is-the-translator-service"></a>Translator サービスとは
 

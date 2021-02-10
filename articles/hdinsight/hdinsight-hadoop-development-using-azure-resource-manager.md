@@ -1,19 +1,16 @@
 ---
 title: HDInsight 用の Azure Resource Manager ツールに移行する
 description: HDInsight クラスター用の Azure Resource Manager 開発ツールに移行する方法
-ms.reviewer: jasonh
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 57dec799cbda03e20717a402a88f1d818d9acd92
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629478"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945767"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
 
@@ -83,7 +80,7 @@ Apache Hadoop MapReduce、Apache Hive、および Apache Pig を対話形式で�
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell から Azure Resource Manager に移行する
 Azure Resource Manager モードの Azure PowerShell の全般情報については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/management/manage-resources-powershell.md)」を参照してください。
 
-Azure PowerShell Resource Manager コマンドレットは、ASM コマンドと同時にインストールできます。 2 つのモードのコマンドレットは、名前で区別できます。  Resource Manager モードのコマンドレット名は *AzHDInsight* であり、以前の Azure Service Management モードのコマンドレット名は *AzureHDInsight* です。  たとえば、 *New-AzHDInsightCluster* と *New-AzureHDInsightCluster* などです。 Resource Manager では、一部のパラメーター名やスイッチ名が新しくなり、多数のパラメーターが追加されました。  たとえば、一部のコマンドレットでは、 *-ResourceGroupName* という新しいスイッチが必須になりました。
+Azure PowerShell Resource Manager コマンドレットは、ASM コマンドと同時にインストールできます。 2 つのモードのコマンドレットは、名前で区別できます。  Resource Manager モードのコマンドレット名は *AzHDInsight* であり、以前の Azure Service Management モードのコマンドレット名は *AzureHDInsight* です。  たとえば、*New-AzHDInsightCluster* と *New-AzureHDInsightCluster* などです。 Resource Manager では、一部のパラメーター名やスイッチ名が新しくなり、多数のパラメーターが追加されました。  たとえば、一部のコマンドレットでは、 *-ResourceGroupName* という新しいスイッチが必須になりました。
 
 HDInsight コマンドレットを使用する前に、Azure アカウントに接続し、新しいリソース グループを作成する必要があります。
 
@@ -134,17 +131,17 @@ Resource Manager モードでのみ使用できる新しいコマンドレット
 
 **スクリプト操作に関連するコマンドレット:**
 
-* **Get-AzHDInsightPersistedScriptAction** :クラスターの保存されたスクリプト操作を取得して古い順に一覧表示します。または、保存されたスクリプト操作のうち、指定した操作の詳細を取得します。 
-* **Get-AzHDInsightScriptActionHistory** :クラスターのスクリプト操作履歴を取得し、新しい順に一覧表示します。または、以前に実行されたスクリプト操作の詳細を取得します。 
-* **Remove-AzHDInsightPersistedScriptAction** :保存されたスクリプト操作を HDInsight クラスターから削除します。
-* **Set-AzHDInsightPersistedScriptAction** :以前に実行されたスクリプト操作を、保存されたスクリプト操作に設定します。
-* **Submit-AzHDInsightScriptAction** :新しいスクリプト操作を Azure HDInsight クラスターに送信します。 
+* **Get-AzHDInsightPersistedScriptAction**:クラスターの保存されたスクリプト操作を取得して古い順に一覧表示します。または、保存されたスクリプト操作のうち、指定した操作の詳細を取得します。 
+* **Get-AzHDInsightScriptActionHistory**:クラスターのスクリプト操作履歴を取得し、新しい順に一覧表示します。または、以前に実行されたスクリプト操作の詳細を取得します。 
+* **Remove-AzHDInsightPersistedScriptAction**:保存されたスクリプト操作を HDInsight クラスターから削除します。
+* **Set-AzHDInsightPersistedScriptAction**:以前に実行されたスクリプト操作を、保存されたスクリプト操作に設定します。
+* **Submit-AzHDInsightScriptAction**:新しいスクリプト操作を Azure HDInsight クラスターに送信します。 
 
 その他の使用方法について詳しくは、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
 **クラスター ID に関連するコマンドレット:**
 
-* **Add-AzHDInsightClusterIdentity** :クラスター ID をクラスター構成オブジェクトに追加して、HDInsight クラスターが Azure Data Lake Storage にアクセスできるようにします。 [Azure PowerShell を使用して、Data Lake Storage を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)方法に関するページを参照してください。
+* **Add-AzHDInsightClusterIdentity**:クラスター ID をクラスター構成オブジェクトに追加して、HDInsight クラスターが Azure Data Lake Storage にアクセスできるようにします。 [Azure PowerShell を使用して、Data Lake Storage を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)方法に関するページを参照してください。
 
 ### <a name="examples"></a>例
 **クラスターの作成**

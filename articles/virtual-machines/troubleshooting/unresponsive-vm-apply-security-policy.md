@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 6b50bffd1a44c0cf53f15650f5ff4d938f45df4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 047c8afbfe7b489e5c3ac0ccb677f6fc021443a8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84908063"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632641"
 ---
 # <a name="azure-vm-is-unresponsive-while-applying-security-policy-to-the-system"></a>セキュリティ ポリシーをシステムに適用しているときに Azure VM が応答しない
 
@@ -33,7 +33,7 @@ ms.locfileid: "84908063"
 
 :::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy.png" alt-text="Windows Server 2012 R2 スタートアップ画面が停止しているスクリーンショット。":::
 
-:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="Windows Server 2012 R2 スタートアップ画面が停止しているスクリーンショット。":::
+:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="OS スタートアップ画面のスクリーンショットが停止しているスクリーンショット。":::
 
 ## <a name="cause"></a>原因
 
@@ -42,6 +42,9 @@ ms.locfileid: "84908063"
 ## <a name="resolution"></a>解決方法
 
 ### <a name="process-overview"></a>プロセスの概要
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試行して、起動の問題を修正することができます。
 
 1. [修復 VM を作成してアクセスする](#create-and-access-a-repair-vm)
 2. [シリアル コンソールとメモリ ダンプの収集を有効にする](#enable-serial-console-and-memory-dump-collection)
@@ -68,7 +71,54 @@ ms.locfileid: "84908063"
 
         コマンドで、\<BOOT PARTITON> をブート フォルダーが格納されている接続ディスクのパーティションの文字に置き換えます。
 
-        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="Windows Server 2012 R2 スタートアップ画面が停止しているスクリーンショット。" /v NMICrashDump /t REG_DWORD /d 1 /f
+        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="図は、第 1 世代の VM に BCD ストアを一覧表示した出力を示しています。Windows ブートローダーに識別子番号を一覧表示しています。":::
+
+     2. 第 2 世代 VM の場合、次のコマンドを入力し、表示される識別子を書き留めます。
+
+        ```console
+        bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum
+        ```
+
+        - コマンドの \<LETTER OF THE EFI SYSTEM PARTITION> を、EFI システム パーティションの文字に置き換えます。
+        - ディスク管理コンソールを起動して、"EFI System Partition" というラベルが付いた適切なシステム パーティションを特定すると便利な場合があります。
+        - 識別子は一意の GUID の場合もあれば、既定の "bootmgr" の場合もあります。
+3. 次のコマンドを実行して、シリアル コンソールを有効にします。
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
+    ```
+
+    ```console
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
+    ```
+
+    - コマンドの \<VOLUME LETTER WHERE THE BCD FOLDER IS> を、BCD フォルダーの文字に置き換えます。
+    - コマンドの \<BOOT LOADER IDENTIFIER> を、前の手順で確認した識別子に置き換えます。
+4. OS ディスクの空き領域が、VM のメモリ サイズ (RAM) よりも大きいことを確認します。
+
+    1. OS ディスクに十分な領域がない場合は、メモリ ダンプ ファイルが作成される場所を変更する必要があります。 OS ディスク上にファイルを作成するのではなく、十分な空き領域がある VM に接続されている他のデータ ディスクを参照することができます。 場所を変更するには、"%SystemRoot%" を以下に記載のコマンドでデータ ディスクのドライブ文字 (たとえば、"F:") に置き換えます。
+    2. 次のコマンドを入力します (推奨されるダンプ構成)。
+
+        Load Broken OS Disk: (破損した OS ディスクを読み込む)
+
+        ```console
+        REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
+        ```
+
+        Enable on ControlSet001: (ControlSet001 で有効にする)
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+        ```
+
+        Enable on ControlSet002: (ControlSet002 で有効にする)
+
+        ```console
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
+        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
         ```
 
         破損した OS ディスクのアンロード:

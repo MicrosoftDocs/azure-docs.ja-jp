@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 09/22/2020
 ms.author: mbullwin
 ms.custom: devx-track-js
-ms.openlocfilehash: b970b099d87148d169b2be3b7e72d32c159f5046
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 36b8a6952a8dc0b34df7bf32a708c71547bf5b33
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371758"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948343"
 ---
 JavaScript 用 Anomaly Detector クライアント ライブラリを使ってみます。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データ内の異常を検出できます。
 
@@ -72,11 +72,11 @@ npm install @azure/ai-anomaly-detector @azure/ms-rest-js csv-parse
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Anomaly Detector クライアントは、キーを使用して Azure に対する認証を行う [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) オブジェクトです。 クライアントは、[entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--servicecallback-entiredetectresponse--) を使用してデータセット全体の異常検出を行うか、または [LastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) を使用して最新のデータ ポイントを対象にすることができます。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) メソッドは、傾向の変化を示すポイントを検出します。 
+Anomaly Detector クライアントは、キーを使用して Azure に対する認証を行う [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient) オブジェクトです。 クライアントは、[entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#entiredetect-request--servicecallback-entiredetectresponse--) を使用してデータセット全体の異常検出を行うか、または [LastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#lastdetect-request--msrest-requestoptionsbase-) を使用して最新のデータ ポイントを対象にすることができます。 [ChangePointDetectAsync](https://go.microsoft.com/fwlink/?linkid=2090788) メソッドは、傾向の変化を示すポイントを検出します。 
 
-時系列データは、[Request](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest) オブジェクト内の一連の [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ (たとえば、[細分性](/javascript/api/@azure/cognitiveservices-anomalydetector/request?view=azure-node-latest#granularity)など) と異常検出のパラメーターが含まれます。 
+時系列データは、[Request](/javascript/api/@azure/cognitiveservices-anomalydetector/request) オブジェクト内の一連の [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point) として送信されます。 `Request` オブジェクトには、データを説明するプロパティ (たとえば、[細分性](/javascript/api/@azure/cognitiveservices-anomalydetector/request#granularity)など) と異常検出のパラメーターが含まれます。 
 
-Anomaly Detector の応答は、使用するメソッドに応じて、[LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest)、[EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest)、または [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) オブジェクトになります。 
+Anomaly Detector の応答は、使用するメソッドに応じて、[LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse)、[EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse)、または [ChangePointDetectResponse](https://go.microsoft.com/fwlink/?linkid=2090788) オブジェクトになります。 
 
 ## <a name="code-examples"></a>コード例 
 
@@ -90,7 +90,7 @@ Anomaly Detector の応答は、使用するメソッドに応じて、[LastDete
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-ご利用のエンドポイントと資格情報を使用して [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest) オブジェクトをインスタンス化します。
+ご利用のエンドポイントと資格情報を使用して [AnomalyDetectorClient](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient) オブジェクトをインスタンス化します。
 
 [!code-javascript[Authentication](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=authentication)]
 
@@ -103,19 +103,19 @@ Anomaly Detector の応答は、使用するメソッドに応じて、[LastDete
 
 この時系列データは、.csv ファイル形式として書式設定され、Anomaly Detector API に送信されます。
 
-csv-parse ライブラリの `readFileSync()` メソッドでデータ ファイルを読み取り、`parse()` でファイルを解析します。 行ごとに、タイムスタンプと数値を含んだ [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point?view=azure-node-latest) オブジェクトをプッシュします。
+csv-parse ライブラリの `readFileSync()` メソッドでデータ ファイルを読み取り、`parse()` でファイルを解析します。 行ごとに、タイムスタンプと数値を含んだ [Point](/javascript/api/@azure/cognitiveservices-anomalydetector/point) オブジェクトをプッシュします。
 
 [!code-javascript[Read the data file](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=readFile)]
 
 ## <a name="detect-anomalies-in-the-entire-data-set"></a>データ セット全体で異常を検出する 
 
-クライアントの [entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#entiredetect-request--msrest-requestoptionsbase-) メソッドを使用して時系列全体で異常を検出する API をバッチとして呼び出します。 返された [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) オブジェクトを格納します。 応答の `isAnomaly` 一覧を反復処理して、すべての `true` 値のインデックスを出力します。 これらの値は、異常なデータ ポイントが見つかった場合、そのインデックスに対応します。
+クライアントの [entireDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#entiredetect-request--msrest-requestoptionsbase-) メソッドを使用して時系列全体で異常を検出する API をバッチとして呼び出します。 返された [EntireDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse) オブジェクトを格納します。 応答の `isAnomaly` 一覧を反復処理して、すべての `true` 値のインデックスを出力します。 これらの値は、異常なデータ ポイントが見つかった場合、そのインデックスに対応します。
 
 [!code-javascript[Batch detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=batchCall)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>最新のデータ ポイントの異常状態を検出する
 
-Anomaly Detector API を呼び出し、クライアントの [lastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient?view=azure-node-latest#lastdetect-request--msrest-requestoptionsbase-) メソッドを使用して最新のデータ ポイントが異常かどうかを判断し、返された [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) オブジェクトを格納します。 応答の `isAnomaly` の値は、そのポイントの異常状態を指定するブール値です。  
+Anomaly Detector API を呼び出し、クライアントの [lastDetect()](/javascript/api/@azure/cognitiveservices-anomalydetector/anomalydetectorclient#lastdetect-request--msrest-requestoptionsbase-) メソッドを使用して最新のデータ ポイントが異常かどうかを判断し、返された [LastDetectResponse](/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse) オブジェクトを格納します。 応答の `isAnomaly` の値は、そのポイントの異常状態を指定するブール値です。  
 
 [!code-javascript[Last point detection function](~/cognitive-services-quickstart-code/javascript/AnomalyDetector/anomaly_detector_quickstart.js?name=lastDetection)]
 

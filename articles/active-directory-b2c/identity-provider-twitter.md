@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 7779730b98630d08af046e7cb402caca1d0c2fe6
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 65d3badc02efbb02df50189885c28a8abe851415
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653658"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050449"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
 
@@ -35,29 +35,44 @@ ms.locfileid: "97653658"
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-Azure AD B2C で ID プロバイダーとして Twitter を使用するには、Twitter アプリケーションを作成する必要があります。 まだ Twitter アカウントを持っていない場合は、[https://twitter.com/signup](https://twitter.com/signup) でサインアップできます。
+Azure AD B2C で Twitter アカウントを持つユーザーのサインインを有効にするには、Twitter アプリケーションを作成する必要があります。 まだ Twitter アカウントを持っていない場合は、[https://twitter.com/signup](https://twitter.com/signup) でサインアップできます。 また、[開発者アカウントの申請](https://developer.twitter.com/en/apply/user.html)も必要です。 詳細については、[アクセスの申請](https://developer.twitter.com/en/apply-for-access)に関するページを参照してください。
 
-1. Twitter アカウント資格情報を使用して [Twitter Developers](https://developer.twitter.com/en/apps) Web サイトにサインインします。
-1. **[アプリの作成]** を選択します。
-1. **アプリ名** と **アプリケーションの説明** を入力します。
-1. **Web サイトの URL** で、`https://your-tenant.b2clogin.com`を入力します。 `your-tenant` をテナントの名前に置き換えます。 たとえば、「 `https://contosob2c.b2clogin.com` 」のように入力します。
-1. **[Callback URL]** に「`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`」と入力します。 `your-tenant` を自分のテナント名に置き換え、`your-user-flow-Id` を自分のユーザー フローの識別子に置き換えます。 たとえば、「 `b2c_1A_signup_signin_twitter` 」のように入力します。 テナント名とユーザー フロー ID が Azure AD B2C に大文字で定義されている場合でも、それらを入力するときに、すべて小文字を使用する必要があります。
-1. ページ下部の使用条件を確認して同意し、**[作成]** を選択します。
-1. **[アプリの詳細]** ページで、**[編集 > 詳細の編集]** を選択して、**[Twitter でサインインを有効にする]** のチェック ボックスにチェックを入れ、**[保存]** を選択します。
-1. **[キーとトークン]** を選択し、後で使用される **[コンシューマー API キー]** と **[コンシューマー API のシークレット キー]** の値を記録します。
+1. Twitter アカウント資格情報を使用して [Twitter の開発者ポータル](https://developer.twitter.com/portal/projects-and-apps)にサインインします。
+1. **[スタンドアロン アプリ]** で、 **[+ アプリの作成]** を選択します。
+1. **アプリの名前** を入力し、 **[完了]** を選択します。
+1. **[アプリ キー]** の値と、 **[API キー シークレット]** をコピーします。  テナントで ID プロバイダーとして Twitter を構成するには、この両方の値を使用します。 
+1. **[アプリのセットアップ]** で、 **[アプリ設定]** を選択します。
+1. **[認証設定]** で **[編集]** を選択します。
+    1. **[3-legged OAuth の有効化]** チェックボックスをオンにします。
+    1. **[ユーザーのメール アドレスを要求する]** チェックボックスをオンにします。
+    1. **[コールバック URL]** に「`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp`」と入力します。 `your-tenant` を自分のテナント名に置き換え、`your-user-flow-Id` を自分のユーザー フローの識別子に置き換えます。 たとえば、「 `b2c_1a_signup_signin_twitter` 」のように入力します。 テナント名とユーザー フロー ID が Azure AD B2C に大文字で定義されている場合でも、それらを入力するときに、すべて小文字を使用します。
+    1. **[Web サイトの URL]** には「`https://your-tenant.b2clogin.com`」と入力します。 `your-tenant` をテナントの名前に置き換えます。 たとえば、「 `https://contosob2c.b2clogin.com` 」のように入力します。
+    1. **[サービス利用規約]** に URL を入力します (例: `http://www.contoso.com/tos`)。 ポリシーの URL は、アプリケーションの利用規約を提供するために維持されるページです。
+    1. **[プライバシー ポリシー]** に URL (`http://www.contoso.com/privacy` など) を入力します。 ポリシーの URL は、アプリケーションのプライバシーに関する情報を提供するために維持されるページです。
+    1. **[保存]** を選択します。
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Twitter を構成する
+## <a name="configure-twitter-as-an-identity-provider"></a>ID プロバイダーとして Twitter を構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[ID プロバイダー]** を選択してから、**[Twitter]** を選択します。
 1. **[名前]** を入力します。 たとえば、「*Twitter*」とします。
-1. **[クライアント ID]** には、前に作成した Twitter アプリケーションのコンシューマー API キーを入力します。
-1. **[クライアント シークレット]** には、記録したコンシューマー API シークレット キーを入力します。
+1. **[クライアント ID]** には、前に作成した Twitter アプリケーションの *API キー* を入力します。
+1. **[クライアント シークレット]** には、記録した *API キー シークレット* を入力します。
 1. **[保存]** を選択します。
+
+## <a name="add-twitter-identity-provider-to-a-user-flow"></a>ユーザー フローに Twitter ID プロバイダーを追加する 
+
+1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
+1. Twitter ID プロバイダーを追加するユーザー フローを選択します。
+1. **[ソーシャル ID プロバイダー]** から、 **[Twitter]** を選択します。
+1. **[保存]** を選択します。
+1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
+1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[ユーザー フローを実行します]** をクリックします
 
 ::: zone-end
 
@@ -78,9 +93,9 @@ Azure AD B2C テナントで前に記録した秘密鍵を格納する必要が�
 9. **[キー使用法]** として [`Encryption`] を選択します。
 10. **Create** をクリックしてください。
 
-## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
+## <a name="configure-twitter-as-an-identity-provider"></a>ID プロバイダーとして Twitter を構成する
 
-ユーザーが Twitter アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
+ユーザーが Twitter アカウントを使用してサインインできるようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 Twitter アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
@@ -93,7 +108,7 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
       <Domain>twitter.com</Domain>
       <DisplayName>Twitter</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Twitter-OAUTH1">
+        <TechnicalProfile Id="Twitter-OAuth1">
           <DisplayName>Twitter</DisplayName>
           <Protocol Name="OAuth1" />
           <Metadata>
@@ -103,7 +118,7 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
             <Item Key="request_token_endpoint">https://api.twitter.com/oauth/request_token</Item>
             <Item Key="ClaimsEndpoint">https://api.twitter.com/1.1/account/verify_credentials.json?include_email=true</Item>
             <Item Key="ClaimsResponseFormat">json</Item>
-            <Item Key="client_id">Your Twitter application consumer key</Item>
+            <Item Key="client_id">Your Twitter application API key</Item>
           </Metadata>
           <CryptographicKeys>
             <Key Id="client_secret" StorageReferenceId="B2C_1A_TwitterSecret" />
@@ -127,80 +142,32 @@ Twitter アカウントをクレーム プロバイダーとして定義する�
     </ClaimsProvider>
     ```
 
-4. **client_id** の値を、前に記録したコンシューマー キーに置き換えます。
+4. **client_id** の値を前に記録した *API キー シークレット* に置き換えます。
 5. ファイルを保存します。
 
-### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-ここまでで、Azure AD B2C が Twitter アカウントと通信する方法を認識できるようにポリシーを構成しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
-2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
-3. **[アップロード]** をクリックします。
-
-## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
-
-この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、Twitter ID プロバイダーも含まれるようにそれを変更します。
-
-1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
-3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
-4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
-5. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInTwitter` 」のように入力します。
-
-### <a name="display-the-button"></a>ボタンを表示する
-
-**ClaimsProviderSelection** 要素は、サインアップまたはサインイン画面の ID プロバイダーのボタンに類似しています。 Twitter アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
-
-1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`TwitterExchange` など) に設定します。
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAuth1" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 ここでのアクションは、Azure AD B2C が Twitter アカウントと通信してトークンを受信するためのアクションです。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-2. 次の **ClaimsExchange** 要素を追加します。ID には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
-    ```xml
-    <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
-    ```
-
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの ID に更新します。 たとえば、「 `Twitter-OAUTH1` 」のように入力します。
-
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-twitter-identity-provider-to-a-user-flow"></a>ユーザー フローに Twitter ID プロバイダーを追加する 
-
-1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
-1. Twitter ID プロバイダーを追加するユーザー フローをクリックします。
-1. **[ソーシャル ID プロバイダー]** から、 **[Twitter]** を選択します。
-1. **[保存]** を選択します。
-1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
-1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
-
-作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
-
-1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、*SignUpSignInTwitter.xml* に名前を変更します。
-1. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInTwitter` 」のように入力します。
-1. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_twitter` にします。
-1. **DefaultUserJourney** の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignTwitter) と一致するように更新します。
-1. 変更を保存し、ファイルをアップロードし、一覧から新しいポリシーを選択します。
-1. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。
 
 ::: zone-end

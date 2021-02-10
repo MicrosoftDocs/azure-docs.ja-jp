@@ -1,19 +1,17 @@
 ---
 title: ストレージ:Azure HDInsight へのオンプレミスの Apache Hadoop の 移行
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのストレージのベスト プラクティスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 0594774533f306421f6f3d1260d074bd92b9c919
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8d87d2164a5131b71a2000243c37553610497750
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544870"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944854"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
@@ -98,15 +96,15 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 以前は、パフォーマンス、管理、およびセキュリティの領域では、クラウドベース分析は妥協する必要がありました。 Azure Data Lake Storage (ADLS) Gen2 の主要機能は次のとおりです。
 
-- **Hadoop と互換性のあるアクセス** :Azure Data Lake Storage Gen2 では、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 新しい [ABFS ドライバー](../../storage/blobs/data-lake-storage-abfs-driver.md)は、[Azure HDInsight](../index.yml) 内に含まれているすべての Apache Hadoop 環境内で使用できます。 このドライバーにより、Data Lake Storage Gen2 に格納されているデータにアクセスできます。
+- **Hadoop と互換性のあるアクセス**:Azure Data Lake Storage Gen2 では、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 新しい [ABFS ドライバー](../../storage/blobs/data-lake-storage-abfs-driver.md)は、[Azure HDInsight](../index.yml) 内に含まれているすべての Apache Hadoop 環境内で使用できます。 このドライバーにより、Data Lake Storage Gen2 に格納されているデータにアクセスできます。
 
-- **POSIX アクセス許可のスーパーセット** :Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定を完全サポートしています。 設定は、管理ツールを通じて構成することもできますし、Hive や Spark などのフレームワークを通じて構成することもできます。
+- **POSIX アクセス許可のスーパーセット**:Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定を完全サポートしています。 設定は、管理ツールを通じて構成することもできますし、Hive や Spark などのフレームワークを通じて構成することもできます。
 
-- **コスト効率** :Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通してデータが移行されるにつれて、[Azure Blob ストレージ ライフサイクル](../../storage/blobs/storage-lifecycle-management-concepts.md)などの組み込み機能を使用してコストを最小限に抑えるために課金レートが変化します。
+- **コスト効率**:Data Lake Storage Gen2 は、低コストのストレージ容量とトランザクションを備えています。 ライフサイクル全体を通してデータが移行されるにつれて、[Azure Blob ストレージ ライフサイクル](../../storage/blobs/storage-lifecycle-management-concepts.md)などの組み込み機能を使用してコストを最小限に抑えるために課金レートが変化します。
 
-- **BLOB ストレージ ツール、フレームワーク、およびアプリの操作** :Data Lake Storage Gen2 では、BLOB ストレージ用に今日存在するさまざまなツール、フレームワーク、およびアプリケーションを継続的に利用できます。
+- **BLOB ストレージ ツール、フレームワーク、およびアプリの操作**:Data Lake Storage Gen2 では、BLOB ストレージ用に今日存在するさまざまなツール、フレームワーク、およびアプリケーションを継続的に利用できます。
 
-- **最適化されたドライバー** :Azure Blob ファイル システム ドライバー (ABFS) は、ビッグ データ分析用に[特別に最適化されています](../../storage/blobs/data-lake-storage-abfs-driver.md)。 該当する REST API は、dfs エンドポイント、dfs.core.windows.net を介して表示されます。
+- **最適化されたドライバー**:Azure Blob ファイル システム ドライバー (ABFS) は、ビッグ データ分析用に [特別に最適化されています](../../storage/blobs/data-lake-storage-abfs-driver.md)。 該当する REST API は、dfs エンドポイント、dfs.core.windows.net を介して表示されます。
 
 次の形式の 1 つを使用して、ADLS Gen2 に格納されているデータにアクセスできます。
 - `abfs:///`:クラスターの既定の Data Lake Storage にアクセスします。

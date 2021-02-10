@@ -1,19 +1,16 @@
 ---
 title: HDInsight での Azure Data Lake Storage Gen1 の概要
 description: HDInsight での Data Lake Storage Gen1 の概要について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: b598494500124ca4a70e8e2d7bfef023fbf7d498
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4ac1a48733d104e7674acbc13bfbb1e7a4cf02b4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328778"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938872"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>HDInsight での Azure Data Lake Storage Gen1 の概要
 

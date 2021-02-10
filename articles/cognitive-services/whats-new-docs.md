@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 01/05/2021
-ms.openlocfilehash: 8833c27421dfbfd4799828bce79afcad7c377fd8
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 41acfb2465382e8de4751b54c5b93e77bd12daaf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197355"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937315"
 ---
 # <a name="cognitive-services-docs-whats-new-for-december-1-2020---december-31-2020"></a>Cognitive Services ドキュメント:2020 年 12 月 1 日から 2020 年 12 月 31 日までの更新情報
 
@@ -32,38 +32,38 @@ ms.locfileid: "98197355"
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Anomaly Detector REST API クイックスタート](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/quickstarts/client-libraries?tabs=windows&pivots=rest-api)
+- [Anomaly Detector REST API クイックスタート](./anomaly-detector/quickstarts/client-libraries.md?pivots=rest-api&tabs=windows)
 
 ## <a name="bing-visual-search"></a>Bing Visual Search
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [分析情報トークンを使用して画像についての分析情報を取得する](/azure/cognitive-services/bing-visual-search/use-insights-token)
+- [分析情報トークンを使用して画像についての分析情報を取得する](./bing-visual-search/use-insights-token.md)
 
 ## <a name="containers"></a>コンテナー
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Azure コンテナー インスタンスにコンテナーをデプロイして実行する](/azure/cognitive-services/containers/azure-container-instance-recipe)
+- [Azure コンテナー インスタンスにコンテナーをデプロイして実行する](./containers/azure-container-instance-recipe.md)
 
 ## <a name="form-recognizer"></a>Form Recognizer
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Form Recognizer のランディング ページ](/azure/cognitive-services/form-recognizer/)
-- [クイック スタート:Form Recognizer クライアント ライブラリを使用する](/azure/cognitive-services/form-recognizer/quickstarts/client-library)
+- [Form Recognizer のランディング ページ](./form-recognizer/index.yml)
+- [クイック スタート:Form Recognizer クライアント ライブラリを使用する](./form-recognizer/quickstarts/client-library.md)
 
 ## <a name="text-analytics"></a>Text Analytics
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [Text Analytics API v3 の言語のサポート](/azure/cognitive-services/text-analytics/language-support)
-- [Text Analytics REST API を呼び出す方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [Text Analytics API v3 の言語のサポート](./text-analytics/language-support.md)
+- [Text Analytics REST API を呼び出す方法](./text-analytics/how-tos/text-analytics-how-to-call-api.md)
 - [Text Analytics で固有表現抽出
-を使用する方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
-- [例:Text Analytics を使用してキー フレーズを抽出する方法](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction)
-- [Text Analytics API のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs](/azure/cognitive-services/text-analytics/)
-- [クイックスタート: Text Analytics クライアント ライブラリおよび REST API を使用する](/azure/cognitive-services/text-analytics/quickstarts/client-libraries-rest-api)
+を使用する方法](./text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
+- [例:Text Analytics を使用してキー フレーズを抽出する方法](./text-analytics/how-tos/text-analytics-how-to-keyword-extraction.md)
+- [Text Analytics API のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs](./text-analytics/index.yml)
+- [クイックスタート: Text Analytics クライアント ライブラリおよび REST API を使用する](./text-analytics/quickstarts/client-libraries-rest-api.md)
 
 ## <a name="community-contributors"></a>コミュニティの共同作成者
 

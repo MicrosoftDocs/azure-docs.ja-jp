@@ -1,19 +1,16 @@
 ---
 title: HDInsight の Hadoop において MapReduce で C# を使用する - Azure
 description: Azure HDInsight 上の Apache Hadoop で C# を使用して MapReduce ソリューションを作成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 4153b612b4b15883f28517d806acf6b340a94e49
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6948491091f558aa7f317d519b0f92c63cac4788
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543051"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946630"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
@@ -31,9 +28,9 @@ HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono
 
 このドキュメントでストリーミングに使用する基本的なプロセスは、次のとおりです。
 
-1. Hadoop は、STDIN のマッパー (この例では *mapper.exe* ) にデータを渡します。
+1. Hadoop は、STDIN のマッパー (この例では *mapper.exe*) にデータを渡します。
 2. マッパーはデータを処理し、タブ区切りのキー/値ペアを STDOUT に出力します。
-3. 出力は Hadoop によって読み取られ、STDIN のレジューサ (この例では *reducer.exe* ) に渡されます。
+3. 出力は Hadoop によって読み取られ、STDIN のレジューサ (この例では *reducer.exe*) に渡されます。
 4. レジューサは、タブ区切りのキー/値ペアを読み取り、データを処理した後、タブ区切りのキー/値ペアとして結果を STDOUT に出力します。
 5. 出力は Hadoop によって読み取られ、出力ディレクトリに書き込まれます。
 
@@ -55,7 +52,7 @@ HDInsight クラスターでは、[Mono (https://mono-project.com)](https://mono
 
 ## <a name="create-the-mapper"></a>マッパーの作成
 
-Visual Studio で、" *マッパー* " と呼ばれる新しい .NET Framework コンソール アプリケーションを作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、"*マッパー*" と呼ばれる新しい .NET Framework コンソール アプリケーションを作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -92,7 +89,7 @@ namespace mapper
 
 ## <a name="create-the-reducer"></a>レジューサの作成
 
-Visual Studio で、" *レジューサ* " と呼ばれる新しい .NET Framework コンソール アプリケーションを作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、"*レジューサ*" と呼ばれる新しい .NET Framework コンソール アプリケーションを作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -145,7 +142,7 @@ namespace reducer
 
 ## <a name="upload-to-storage"></a>ストレージにアップロードする
 
-次に、" *マッパー* " アプリケーションと " *レジューサ* " アプリケーションを HDInsight ストレージにアップロードする必要があります。
+次に、"*マッパー*" アプリケーションと "*レジューサ*" アプリケーションを HDInsight ストレージにアップロードする必要があります。
 
 1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** を選択します。
 
@@ -165,9 +162,9 @@ namespace reducer
 
         ![マッパーの HDInsight アップロード アイコン、Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-        **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、" *マッパー* " プロジェクトの *bin\debug* フォルダーに移動し、 *mapper.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。
+        **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、"*マッパー*" プロジェクトの *bin\debug* フォルダーに移動し、*mapper.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。
 
-    * **Azure Data Lake Storage** の場合は、ファイルの一覧の空の領域を右クリックし、 **[アップロード]** を選択します。 最後に、 *mapper.exe* ファイルを選択し、 **[開く]** を選択します。
+    * **Azure Data Lake Storage** の場合は、ファイルの一覧の空の領域を右クリックし、 **[アップロード]** を選択します。 最後に、*mapper.exe* ファイルを選択し、 **[開く]** を選択します。
 
     *mapper.exe* のアップロードが完了したら、 *reducer.exe* ファイルのアップロード プロセスを繰り返します。
 

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 953a9cfeed558291fba1cb517039f26860444904
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233663"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631323"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>構成オプション - Azure Monitor Application Insights for Java
 
@@ -39,14 +39,14 @@ ms.locfileid: "98233663"
 
 ## <a name="configuration-file-path"></a>構成ファイルのパス
 
-Application Insights Java 3.0 は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.0.1.jar` と同じディレクトリに配置されていることが想定されています。
+Application Insights Java 3.0 は、既定では構成ファイルが `applicationinsights.json` という名前で、`applicationinsights-agent-3.0.2.jar` と同じディレクトリに配置されていることが想定されています。
 
 独自の構成ファイルのパスを指定するには、以下のいずれかを使用します
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境変数、または
 * `applicationinsights.configuration.file` Java システム プロパティ
 
-相対パスを指定すると、`applicationinsights-agent-3.0.1.jar` が配置されているディレクトリからの相対でパスが解決されます。
+相対パスを指定すると、`applicationinsights-agent-3.0.2.jar` が配置されているディレクトリからの相対でパスが解決されます。
 
 ## <a name="connection-string"></a>接続文字列
 
@@ -170,7 +170,7 @@ Application Insights Java 3.0 は、既定では構成ファイルが `applicati
 `${...}` を使用すると、起動時に指定した環境変数から値を読み取ることができます。
 
 > [!NOTE]
-> バージョン 3.0.1 以降では、`service.version` という名前のカスタム ディメンションを追加した場合、値はカスタム ディメンションとしてではなく、Application Insights ログ テーブルの `application_Version` 列に格納されます。
+> バージョン 3.0.2 以降では、`service.version` という名前のカスタム ディメンションを追加した場合、値はカスタム ディメンションとしてではなく、Application Insights ログ テーブルの `application_Version` 列に格納されます。
 
 ## <a name="telemetry-processors-preview"></a>テレメトリ プロセッサ (プレビュー)
 
@@ -241,7 +241,7 @@ Micrometer メトリック (Spring Boot アクチュエータ メトリックを
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>特定の自動収集テレメトリの抑制
 
-バージョン 3.0.1 以降では、こちらの構成オプションを使用して、特定の自動収集テレメトリを抑制できます。
+バージョン 3.0.2 以降では、こちらの構成オプションを使用して、特定の自動収集テレメトリを抑制できます。
 
 ```json
 {
@@ -296,7 +296,9 @@ Application Insights Java 3.0 は、既定では 15 分ごとにハートビー�
 }
 ```
 
-[//]: # "注 0.9.0 からの大規模な破壊的変更を伴う 0.10.0 をサポートするまでは、OpenTelemetry のサポートを公表しません"
+グローバルの `-Dhttps.proxyHost` と `-Dhttps.proxyPort` が設定されている場合、Application Insights Java 3.0 によってそれらも考慮されます。
+
+[//]: # "注: OpenTelemetry API が 1.0 になるまで、OpenTelemetry のサポートはプライベート プレビュー段階です"
 
 [//]: # "## 1.0 より前の OpenTelemetry API リリースのサポート"
 
@@ -338,11 +340,13 @@ Application Insights Java 3.0 は、既定では `applicationinsights.log` フ�
 
 `level` には、`OFF`、`ERROR`、`WARN`、`INFO`、`DEBUG`、`TRACE` のいずれかを指定できます。
 
-`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.0.1.jar` があるディレクトリを基準にして解決されます。
+`path` には、絶対パスまたは相対パスを指定できます。 相対パスは、`applicationinsights-agent-3.0.2.jar` があるディレクトリを基準にして解決されます。
 
 `maxSizeMb` は、ロールオーバーされる前のログ ファイルの最大サイズです。
 
 `maxHistory` は、(現在のログ ファイルに加えて) 保持される、ロールオーバーされたログ ファイルの数です。
+
+バージョン 3.0.2 以降では、環境変数 `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` を使用して自己診断 `level` を設定することもできます。
 
 ## <a name="an-example"></a>使用例
 

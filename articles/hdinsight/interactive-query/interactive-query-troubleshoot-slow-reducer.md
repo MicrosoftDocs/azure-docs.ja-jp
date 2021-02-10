@@ -3,16 +3,13 @@ title: Azure HDInsight でレジューサーが遅い
 description: レジューサーは Azure HDInsight のデータ スキューが原因で遅くなる可能性があります
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 07/30/2019
-ms.openlocfilehash: 74e5214b304870b48e6c6f3ec34b7a5bae0e389a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f9b6e0d862d17badb1caa672852214cdd86abb49
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288863"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930809"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>シナリオ:Azure HDInsight でレジューサーが遅い
 

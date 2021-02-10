@@ -1,19 +1,16 @@
 ---
 title: Azure Kubernetes Service で HDInsight 上の Kafka を使用する
 description: Azure Kubernetes Service (AKS) でホストされているコンテナー イメージから、HDInsight 上の Kafka を使用する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: ab87f181f78158d2ea0dd6575a30e6087600f60c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485683"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933031"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -58,7 +55,7 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 * [Azure Kubernetes Service (AKS) クラスターのデプロイ - CLI](../../aks/kubernetes-walkthrough.md)
 
 > [!IMPORTANT]  
-> AKS では、 **追加の** リソース グループへのインストール時に仮想ネットワークが作成されます。 追加のリソース グループは、 **MC_resourceGroup_AKSclusterName_location** という名前付け規則に従います。  
+> AKS では、**追加の** リソース グループへのインストール時に仮想ネットワークが作成されます。 追加のリソース グループは、**MC_resourceGroup_AKSclusterName_location** という名前付け規則に従います。  
 > このネットワークは、次のセクションで HDInsight 用に作成するネットワークにピアリングされます。
 
 ## <a name="configure-virtual-network-peering"></a>仮想ネットワーク ピアリングを構成する
@@ -212,7 +209,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
     kubectl get service kafka-aks-test --watch
     ```
 
-    外部 IP アドレスが割り当てられたら、 __CTRL + C__ キーを使用してウォッチを終了します
+    外部 IP アドレスが割り当てられたら、__CTRL + C__ キーを使用してウォッチを終了します
 
 11. Web ブラウザーを開き、サービスの外部 IP アドレスを入力します。 次の画像のようなページが表示されます。
 

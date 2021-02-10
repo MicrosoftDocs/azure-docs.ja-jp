@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 7214a1eb41e4434818123ee26765ceb10ad551a5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573361"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094911"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -71,8 +71,8 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 | ストレージ アカウントの種類 | サポートされているリージョン | サポートされているサービス |
 |--|--|--|
 | 汎用 v2<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br />  西ヨーロッパ<br /> フランス中部<br /> 東日本<br /> 南アフリカ北部<br /> 英国南部<br /> 米国中部<br /> 米国東部<br /> 米国東部 2<br /> 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
-| BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> 東日本<br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2| Premium ブロック BLOB のみ |
-| FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> 東日本<br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2 | Premium ファイル共有のみ |
+| BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2| Premium ブロック BLOB のみ |
+| FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2 | Premium ファイル共有のみ |
 
 <sup>1</sup> アーカイブ層は、ZRS アカウントでは現在サポートされていません。<br />
 <sup>2</sup> 仮想マシン用の Azure マネージド ディスクを含むストレージ アカウントは、常に LRS を使用します。 Azure のアンマネージド ディスクでは、LRS も使用する必要があります。 GRS を使用する Azure アンマネージド ディスクのストレージ アカウントを作成することはできますが、非同期 geo レプリケーションの整合性に関する潜在的な問題のため、推奨されません。 マネージドとアンマネージド ディスクのどちらも ZRS または GZRS をサポートしていません。 マネージド ディスクの詳細については、[Azure マネージド ディスクの価格](https://azure.microsoft.com/pricing/details/managed-disks/)に関するページをご覧ください。
@@ -179,7 +179,7 @@ RA-GRS または RA-GZRS を有効にした後はセカンダリ リージョン
 
 | 障害のシナリオ | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| データ センター内のノードが使用できなくなる | はい | はい | はい | はい |
+| データ センター内のノードが使用できなくなる | はい | Yes | はい | はい |
 | データ センター全体 (ゾーンまたは非ゾーン) が使用できなくなる | いいえ | はい | 可<sup>1</sup> | はい |
 | プライマリ リージョンでリージョン全体の障害が発生する | いいえ | いいえ | 可<sup>1</sup> | 可<sup>1</sup> |
 | プライマリ リージョンが使用できなくなった場合、セカンダリ リージョンに対する読み取りアクセスが可能 | いいえ | いいえ | はい (RA-GRS を使用) | はい (RA-GZRS を使用) |

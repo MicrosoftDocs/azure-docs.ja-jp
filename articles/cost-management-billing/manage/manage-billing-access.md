@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/27/2021
 ms.locfileid: "98897427"
 ---
-# <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
+# <a name="manage-access-to-billing-information-for-azure"></a>Azure の課金情報へのアクセスの管理
 
 Azure portal では自分のアカウントの課金情報へのアクセス権を他のユーザーに付与できます。 課金ロールの種類と課金情報へのアクセス権を付与するための手順は、請求先アカウントの種類によって異なります。 請求先アカウントの種類を確認するには、「[請求先アカウントの種類を確認する](#check-the-type-of-your-billing-account)」を参照してください。
 

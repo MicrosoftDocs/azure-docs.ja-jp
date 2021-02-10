@@ -7,22 +7,26 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 86adac557c6de133e95e97bfedbd302cc6a2b27e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733939"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429159"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>クイックスタート: Azure portal を使用して Azure Attestation を設定する
 
+## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
 Azure portal を使用して構成証明プロバイダーを管理するには、以下の手順に従います。
 
-## <a name="attestation-provider"></a>構成証明プロバイダー
+## <a name="1-attestation-provider"></a>1. 構成証明プロバイダー
 
-### <a name="create-an-attestation-provider"></a>構成証明プロバイダーの作成
+### <a name="11-create-an-attestation-provider"></a>1.1 構成証明プロバイダーを作成する
 
-#### <a name="to-configure-the-provider-with-unsigned-policies"></a>署名されていないポリシーを使用してプロバイダーを構成するには
+#### <a name="111-to-configure-the-provider-with-unsigned-policies"></a>1.1.1 署名されていないポリシーを使用してプロバイダーを構成する
 
 1.  Azure portal メニューまたは [ホーム] ページで、 **[リソースの作成]** を選択します
 2.  検索ボックスに「**attestation**」と入力します
@@ -42,7 +46,7 @@ Azure portal を使用して構成証明プロバイダーを管理するには�
 6.  必要な情報を入力したら、 **[Review+Create]\(確認および作成\)** をクリックします
 7.  検証の問題がある場合は修正し、 **[作成]** をクリックします。
 
-#### <a name="to-configure-the-provider-with-signed-policies"></a>署名済みのポリシーを使用してプロバイダーを構成するには
+#### <a name="112-to-configure-the-provider-with-signed-policies"></a>1.1.2 署名済みのポリシーを使用してプロバイダーを構成するには
 
 1.  Azure portal メニューまたは [ホーム] ページで、 **[リソースの作成]** を選択します
 2.  検索ボックスに「**attestation**」と入力します
@@ -62,12 +66,12 @@ Azure portal を使用して構成証明プロバイダーを管理するには�
 6.  必要な情報を入力したら、 **[Review+Create]\(確認および作成\)** をクリックします
 7.  検証の問題がある場合は修正し、 **[作成]** をクリックします。
 
-### <a name="view-attestation-provider"></a>構成証明プロバイダーの表示
+### <a name="12-view-attestation-provider"></a>1.2 構成証明プロバイダーを表示する
 
 1.  Azure portal メニューまたは [ホーム] ページから、 **[すべてのリソース]** を選択します
 2.  フィルター ボックスに、構成証明プロバイダーの名前を入力し、それを選択します
 
-### <a name="delete-attestation-provider"></a>構成証明プロバイダーの削除
+### <a name="13-delete-attestation-provider"></a>1.3 構成証明プロバイダーを削除する
 
 1.  Azure portal メニューまたは [ホーム] ページから、 **[すべてのリソース]** を選択します
 2.  フィルター ボックスに、構成証明プロバイダーの名前を入力します
@@ -79,9 +83,9 @@ Azure portal を使用して構成証明プロバイダーを管理するには�
 4.  上部のメニューの **[削除]** をクリックし、 **[はい]** をクリックします
 
 
-## <a name="attestation-policy-signers"></a>構成証明ポリシーの署名者
+## <a name="2-attestation-policy-signers"></a>2. 構成証明ポリシーの署名者
 
-### <a name="view-policy-signer-certificates"></a>ポリシー署名者証明書の表示
+### <a name="21-view-policy-signer-certificates"></a>2.1 ポリシー署名者証明書を表示する
 
 1.  Azure portal メニューまたは [ホーム] ページから、 **[すべてのリソース]** を選択します
 2.  フィルター ボックスに、構成証明プロバイダーの名前を入力します
@@ -91,7 +95,7 @@ Azure portal を使用して構成証明プロバイダーを管理するには�
 6.  ダウンロードされるテキスト ファイルには、すべての証明書が JWS 形式で含まれます。
 a.  証明書の数とダウンロードされた証明書を確認します。
 
-### <a name="add-policy-signer-certificate"></a>ポリシー署名者証明書の追加
+### <a name="22-add-policy-signer-certificate"></a>2.2 ポリシー署名者証明書を追加する
 
 1.  Azure portal メニューまたは [ホーム] ページから、 **[すべてのリソース]** を選択します
 2.  フィルター ボックスに、構成証明プロバイダーの名前を入力します
@@ -100,7 +104,7 @@ a.  証明書の数とダウンロードされた証明書を確認します。
 5.  上部のメニューの **[追加]** をクリックします (このボタンは、ポリシー署名要件なしで作成された構成証明プロバイダーでは無効になります)
 6.  ポリシー署名者証明書ファイルをアップロードし、 **[追加]** をクリックします。 [こちら](./policy-signer-examples.md)の例を参照してください
 
-### <a name="delete-policy-signer-certificate"></a>ポリシー署名者証明書の削除
+### <a name="23-delete-policy-signer-certificate"></a>2.3 ポリシー署名者証明書を削除する
 
 1.  Azure portal メニューまたは [ホーム] ページから、 **[すべてのリソース]** を選択します
 2.  フィルター ボックスに、構成証明プロバイダーの名前を入力します
@@ -109,9 +113,9 @@ a.  証明書の数とダウンロードされた証明書を確認します。
 5.  上部のメニューの **[削除]** をクリックします (このボタンは、ポリシー署名要件なしで作成された構成証明プロバイダーでは無効になります)
 6.  ポリシー署名者証明書ファイルをアップロードし、 **[削除]** をクリックします。 [こちら](./policy-signer-examples.md)の例を参照してください 
 
-## <a name="attestation-policy"></a>構成証明ポリシー
+## <a name="3-attestation-policy"></a>3. 構成証明ポリシー
 
-### <a name="view-attestation-policy"></a>構成証明ポリシーの表示
+### <a name="31-view-attestation-policy"></a>3.1 構成証明ポリシーを表示する
 
 1.  Azure portal メニューまたは [ホーム] ページから、 **[すべてのリソース]** を選択します
 2.  フィルター ボックスに、構成証明プロバイダーの名前を入力します
@@ -119,9 +123,9 @@ a.  証明書の数とダウンロードされた証明書を確認します。
 4.  左側のリソース メニューまたは下部のペインで **[ポリシー]** をクリックします
 5.  目的の **[構成証明の種類]** を選択し、 **[現在のポリシー]** を表示します
 
-### <a name="configure-attestation-policy"></a>構成証明ポリシーの構成
+### <a name="32-configure-attestation-policy"></a>3.2 構成証明ポリシーを構成する
 
-#### <a name="when-attestation-provider-is-created-without-policy-signing-requirement"></a>構成証明プロバイダーがポリシー署名要件なしで作成されている場合
+#### <a name="321-when-attestation-provider-is-created-without-policy-signing-requirement"></a>3.2.1 構成証明プロバイダーがポリシー署名要件なしで作成されている場合
 
 ##### <a name="upload-policy-in-jwt-format"></a>JWT 形式でポリシーをアップロードする
 
@@ -153,7 +157,7 @@ a.  証明書の数とダウンロードされた証明書を確認します。
 
 8.  **[Refresh]\(最新の情報に更新\)** をクリックすると、構成済みのポリシーが表示されます
 
-#### <a name="when-attestation-provider-is-created-with-policy-signing-requirement"></a>構成証明プロバイダーがポリシー署名要件付きで作成されている場合
+#### <a name="322-when-attestation-provider-is-created-with-policy-signing-requirement"></a>3.2.2 構成証明プロバイダーがポリシー署名要件付きで作成されている場合
 
 ##### <a name="upload-policy-in-jwt-format"></a>JWT 形式でポリシーをアップロードする
 
@@ -168,4 +172,9 @@ a.  証明書の数とダウンロードされた証明書を確認します。
     ファイルのアップロード オプションには、ポリシーのプレビューがテキスト形式で表示されます。また、ポリシーのプレビューは編集できません。
     
 8.  **[Refresh]\(最新の情報に更新\)** をクリックすると、構成済みのポリシーが表示されます
+
+## <a name="next-steps"></a>次のステップ
+
+- [構成証明ポリシーを作成して署名する方法](author-sign-policy.md)
+- [コード サンプルを使用して SGX エンクレーブの構成証明を行う](/samples/browse/?expanded=azure&terms=attestation)
 

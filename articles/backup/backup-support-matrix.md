@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 9e20c21694678acf7be13ccbbe9cce9af38c32c5
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008369"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915711"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -150,8 +150,8 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | はい。   暗号化された VM と 4 TB 未満のディスクがある VM でのサポート | すべての Azure パブリック リージョン。  |
-| SQL/SAP HANA | はい                                                          | フランスを除くすべてのパブリック リージョン |
+| Azure VM               | マネージド ディスクとアンマネージド ディスク両方の Azure VM でサポートされています。 クラシックVM に関してはサポートされていません。 | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部を除くすべての Azure パブリック リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
+| SQL/SAP HANA | プレビュー段階                                                      | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部を除くすべての Azure パブリック リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
 | MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
 | AFS (Azure ファイル共有)                 | いいえ                                                           | 該当なし               |
 

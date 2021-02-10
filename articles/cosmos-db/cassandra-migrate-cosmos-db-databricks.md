@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3cbcb7eb3695e6f57daef741d4cd4b15577d8f58
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516554"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493276"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Azure Databricks を使用して Cassandra から Azure Cosmos DB Cassandra API アカウントにデータを移行する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -114,7 +114,28 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes` と `connections_per_executor_max` の構成は、[レート制限](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)を回避するために重要です。この制限は、Cosmos DB への要求が、プロビジョニングされたスループット ([要求ユニット](./request-units.md)) を超えると発生します。 Spark クラスター内の実行プログラム数に応じて、これらの設定値の調整が必要になることがあります。また、ターゲット テーブルに書き込まれる各レコードのサイズ (および RU のコスト) によっても、調整が必要になる場合があります。
+> `spark.cassandra.output.batch.size.rows`、`spark.cassandra.output.concurrent.writes`、`connections_per_executor_max` の構成は、[レート制限](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)を回避するために重要です。この制限は、Azure Cosmos DB への要求が、プロビジョニングされたスループット ([要求ユニット](./request-units.md)) を超えると発生します。 Spark クラスター内の実行プログラム数に応じて、これらの設定値の調整が必要になることがあります。また、ターゲット テーブルに書き込まれる各レコードのサイズ (および RU のコスト) によっても、調整が必要になる場合があります。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="rate-limiting-429-error"></a>レート制限 (429 エラー)
+上記の設定を最小値に減らしたにもかかわらず、エラー コード 429 または `request rate is large` エラー テキストが表示されることがあります。 そのようなシナリオをいくつか次に示します。
+
+- **テーブルに割り当てられたスループットが 6000 [要求ユニット](./request-units.md)未満**。 最小設定でも、Spark は約 6000 要求ユニット以上のレートで書き込みを実行できます。 共有スループットがプロビジョニングされたキースペースでテーブルをプロビジョニングした場合、このテーブルの実行時に使用できる RU が 6000 未満である可能性があります。 移行を実行するときに、移行先のテーブルで少なくとも 6000 RU が使用可能であることを確認し、必要に応じて、そのテーブルに専用の要求ユニットを割り当てます。 
+- **大規模なデータ ボリュームでの過度のデータ スキュー**。 特定のテーブルに移行するデータ (テーブル行) が大量にあるが、大きいデータ スキューがある場合 (つまり、同じパーティション キー値に対して大量のレコードが書き込まれている場合)、テーブルに大量の[要求ユニット](./request-units.md)がプロビジョニングされている場合でも、レート制限が発生する可能性があります。 これは、要求ユニットが物理パーティション間で均等に分割され、大量のデータ スキューによって 1 つのパーティションに対する要求のボトルネックが発生し、レート制限が発生するためです。 このシナリオでは、Spark の最小スループット設定を下げて、レート制限を回避し、移行の実行速度を強制的に低下させることをお勧めします。 このシナリオは、アクセスの頻度は低いが、スキューが大きくなる可能性がある参照または制御テーブルを移行する場合によく見られます。 ただし、その他の種類のテーブルに大きいスキューが存在する場合は、データ モデルを確認して、安定状態の操作中にワークロードのホット パーティションの問題を回避することをお勧めします。 
+- **大きいテーブルでカウントを取得できない**。 `select count(*) from table` の実行は、現在、大きいテーブルではサポートされていません。 カウントは Azure portal のメトリックから取得できます ([トラブルシューティングに関する記事](cassandra-troubleshoot.md)を参照してください)。ただし、Spark ジョブのコンテキスト内から大きいテーブルのカウントを確認する必要がある場合は、データを一時テーブルにコピーしてから、Spark SQL を使用してカウントを取得できます。次に例を示します (`<primary key>` を結果の一時テーブルのフィールドに置き換えます)。
+
+  ```scala
+  val ReadFromCosmosCassandra = sqlContext
+    .read
+    .format("org.apache.spark.sql.cassandra")
+    .options(cosmosCassandra)
+    .load
+
+  ReadFromCosmosCassandra.createOrReplaceTempView("CosmosCassandraResult")
+  %sql
+  select count(<primary key>) from CosmosCassandraResult
+  ```
 
 ## <a name="next-steps"></a>次のステップ
 

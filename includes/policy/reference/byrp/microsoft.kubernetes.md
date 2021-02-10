@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: bd8ac4a155a0ca71c4a0e7f95d75f8bd8737e768
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 96b22afcdc90e07d007276f52c967d1621bcc45e
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048210"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99215485"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -36,6 +36,7 @@ ms.locfileid: "98048210"
 |[Kubernetes クラスターのポッドとコンテナーでは、許可されている SELinux オプションのみを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe1e6c427-07d9-46ab-9689-bfa85431e636) |このポリシーによって、ポッドとコンテナーが Kubernetes クラスターで許可されている SELinux オプションのみを使用することが保証されます。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般公開されています。 このポリシーの使用方法については、[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) を参照してください。 |audit、deny、disabled |[3.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/SELinux.json) |
 |[Kubernetes クラスターのポッドでは、許可されているボリュームの種類のみを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F16697877-1118-4fb1-9b65-9898ec2509ec) |このポリシーによって、ポッドが Kubernetes クラスター内で許可されているボリュームの種類のみを使用できることが保証されます。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般公開されています。 このポリシーの使用方法については、[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) を参照してください。 |audit、deny、disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedVolumeTypes.json) |
 |[Kubernetes クラスターのポッドでは、承認されているホスト ネットワークとポート範囲のみを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F82985f06-dc18-4a48-bc1c-b9f4f0098cfe) |このポリシーによって、ポッドのアクセスが Kubernetes クラスターで許容されているホスト ネットワークとホスト ポート範囲へと制御されます。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般公開されています。 このポリシーの使用方法については、[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) を参照してください。 |audit、deny、disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/HostNetworkPorts.json) |
+|[Kubernetes クラスター サービスでは、許可された外部 IP のみ使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd46c275d-1680-448d-b2ec-e495a3b6cc89) |許可された外部 IP を使用して、Kubernetes クラスターで潜在的な攻撃 (CVE-2020-8554) を回避します。 詳細については、「[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc)」を参照してください。 |audit、deny、disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AllowedExternalIPs.json) |
 |[Kubernetes クラスターで API 資格情報の自動マウントを無効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F423dd1ba-798e-40e4-9c4d-b6902674b423) |侵害された可能性のある Pod リソースが Kubernetes クラスターに対して API コマンドを実行するのを防ぐために、API 資格情報の自動マウントを無効にします。 このポリシーの使用方法については、[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) を参照してください。 |audit、deny、disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/BlockAutomountToken.json) |
 |[Kubernetes クラスターでは、コンテナーの特権エスカレーションを許可してはいけない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c6e92c9-99f0-4e55-9cf2-0c234dc48f99) |このポリシーによって、Kubernetes クラスターのコンテナーでは特権エスカレーションを使用できなくなります。 このポリシーは、Kubernetes Service (AKS)、AKS Engine のプレビュー、および Azure Arc 対応 Kubernetes で一般提供されています。 このポリシーの使用方法については、[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) を参照してください。 |audit、deny、disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilegeEscalation.json) |
 |[Kubernetes クラスターでは特定のセキュリティ機能を使用しない](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa27c700f-8a22-44ec-961c-41625264370b) |Pod リソースに対する無許可の特権を防ぐために、Kubernetes クラスターの特定のセキュリティ機能を停止します。 このポリシーを使用する手順については、[https://aka.ms/kubepolicydoc](https://aka.ms/kubepolicydoc) を参照してください。 |audit、deny、disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerDisallowedCapabilities.json) |

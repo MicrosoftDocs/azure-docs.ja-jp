@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/11/2020
 ms.author: juliako
-ms.openlocfilehash: 6b5a228c12cfc874673dda854de6d4dcc25f28c1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 06f5e19718445f44dd2302faf280f083cce0774f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014537"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783803"
 ---
 # <a name="what-is-azure-media-services-video-indexer"></a>Azure Media Services Video Indexer とは
 
@@ -115,6 +115,21 @@ Video Indexer の機能には、次の 3 つの方法でアクセスできます
     詳細については、 [アプリケーションにビジュアル ウィジェットを埋め込む](video-indexer-embed-widgets.md)方法に関するページを参照してください。
 
 Web サイトを使用している場合は、分析情報がメタデータとして追加され、ポータルに表示されます。 API を使用している場合、分析情報は JSON ファイルとして入手できます。
+
+## <a name="supported-browsers"></a>サポートされているブラウザー
+
+次の一覧は、Video Indexer の Web サイト、およびウィジェットを埋め込むアプリに使用できる、サポートされているブラウザーを示しています。 この一覧には、サポートされているブラウザーの最小バージョンも示されています。
+
+- Edge、バージョン:16
+- Firefox、バージョン:54
+- Chrome、バージョン:58
+- Safari、バージョン:11
+- Opera、バージョン:44
+- Opera Mobile、バージョン:59
+- Android ブラウザー、バージョン:81
+- Samsung ブラウザー、バージョン:7
+- Android 用 Chrome、バージョン:87
+- Android 用 Firefox、バージョン:83
 
 ## <a name="next-steps"></a>次のステップ
 

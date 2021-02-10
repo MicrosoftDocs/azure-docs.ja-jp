@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 を使用してリモート ファイルとストリームをエンコードする
+title: Media Services を使用してリモート ファイルとストリームをエンコードする
 description: Azure Media Services で REST を使用して URL に基づいてファイルをエンコードし、コンテンツをストリーム配信します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: c1798ca74493ba22d29cd9ce819d469c29cd5ec3
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 21f7203af267f53d37e26390ea73c896ea9db76e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059572"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953990"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 

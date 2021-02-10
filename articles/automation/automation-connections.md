@@ -6,12 +6,12 @@ ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8deb249dc042701ec02c3e5e30f3603be132d0ec
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5f6494eb72084c683ddbb8b27a49acdb1fbc2bfc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733996"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054265"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Azure Automation の接続を管理する
 
@@ -35,7 +35,7 @@ Azure Automation によって、次の組み込みの接続の種類を使用で
 * `AzureServicePrincipal` - Azure 実行アカウントによって使用される接続を表します。
 * `AzureClassicCertificate` - クラシック Azure 実行アカウントによって使用される接続を表します。
 
-ほとんどの場合、[実行アカウント](manage-runas-account.md)の作成時に作成されるので、接続リソースを作成する必要はありません。
+ほとんどの場合、[実行アカウント](automation-security-overview.md)の作成時に作成されるので、接続リソースを作成する必要はありません。
 
 ## <a name="powershell-cmdlets-to-access-connections"></a>接続にアクセスするための PowerShell コマンドレット
 

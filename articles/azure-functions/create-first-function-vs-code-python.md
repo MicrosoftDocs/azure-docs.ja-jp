@@ -4,12 +4,12 @@ description: Visual Studio Code の Azure Functions 拡張機能を使用して 
 ms.topic: quickstart
 ms.date: 11/04/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 9e4ddc479b0adcb88e846b92e6603dfdf3c99baa
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: e022843f95e5d5b52a15eaab2d28b6b9eb923006
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967992"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493568"
 ---
 # <a name="quickstart-create-a-function-in-azure-with-python-using-visual-studio-code"></a>クイックスタート: Visual Studio Code と Python を使用して Azure に関数を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "97967992"
 
 + [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) バージョン 3.x。
 
-+ [Python 3.8](https://www.python.org/downloads/release/python-381/)、[Python 3.7](https://www.python.org/downloads/release/python-375/)、[Python 3.6](https://www.python.org/downloads/release/python-368/) が Azure Functions (x64) でサポートされます。
++ [Azure Functions でサポートされているバージョンの Python](supported-languages.md#languages-by-runtime-version)
 
 + [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかにインストールされた [Visual Studio Code](https://code.visualstudio.com/)。
 
@@ -54,7 +54,8 @@ ms.locfileid: "97967992"
 
     + **Select a language for your function project (関数プロジェクトの言語を選択してください)** : [`Python`] を選択します。
 
-    + **Select a Python alias to create a virtual environment (仮想環境を作成する Python エイリアスを選択してください)** : Python インタープリターの場所を選択します。 場所が表示されない場合は、Python バイナリの完全パスを入力してください。  
+    + **Select a Python alias to create a virtual environment (仮想環境を作成する Python エイリアスを選択してください)** : Python インタープリターの場所を選択します。  
+    場所が表示されない場合は、Python バイナリの完全パスを入力してください。  
 
     + **Select a template for your project's first function (プロジェクトの最初の関数のテンプレートを選択してください)** : [`HTTP trigger`] を選択します。
 
@@ -81,15 +82,18 @@ ms.locfileid: "97967992"
 
 1. アクティビティ バーの Azure アイコンを選択し、 **[Azure: Functions]** 領域で、 **[Deploy to function app]\(関数アプリにデプロイ\)** ボタンを選択します。
 
-    ![プロジェクトを Azure に発行する](./media/functions-create-first-function-vs-code/function-app-publish-project.png)
+    ![プロジェクトを Azure に発行する](../../includes/media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. プロンプトで、次の情報を入力します。
 
-    + **Select folder (フォルダーを選択してください)** : ワークスペースのフォルダーを選択するか、関数アプリが格納されているフォルダーを参照します。 既に有効な関数アプリが開いている場合には、このプロンプトは表示されません。
+    + **Select folder (フォルダーを選択してください)** : ワークスペースのフォルダーを選択するか、関数アプリが格納されているフォルダーを参照します。   
+    既に有効な関数アプリが開いている場合には、このプロンプトは表示されません。
 
-    + **Select subscription (サブスクリプションを選択してください)** : 使用するサブスクリプションを選択します。 サブスクリプションが 1 つのみの場合、このプロンプトは表示されません。
+    + **Select subscription (サブスクリプションを選択してください)** : 使用するサブスクリプションを選択します。  
+    サブスクリプションが 1 つのみの場合、このプロンプトは表示されません。
 
-    + **Select function app in Azure (Azure で関数アプリを選択してください)** : [`+ Create new Function App`] を選択します。 (`Advanced` オプションはこの記事では取り上げません。選択しないでください。)
+    + **Select function app in Azure (Azure で関数アプリを選択してください)** : [`+ Create new Function App`] を選択します。  
+    (`Advanced` オプションはこの記事では取り上げません。選択しないでください。)
 
     + **Enter a globally unique name for the function app (関数アプリのグローバルに一意の名前を入力します)** : URL パスに有効な名前を入力します。 入力した名前は、Azure Functions 内での一意性を確保するために検証されます。 
 
@@ -97,17 +101,19 @@ ms.locfileid: "97967992"
 
     + **Select a location for new resources (新しいリソースの場所を選択してください)** : パフォーマンスを向上させるために、お近くの [リージョン](https://azure.microsoft.com/regions/)を選択してください。
 
+    この拡張機能は、Azure に作成されている個々のリソースの状態を通知領域に表示します。
+
+    :::image type="content" source="../../includes/media/functions-publish-project-vscode/resource-notification.png" alt-text="Azure リソース作成の通知":::
+
 1. 完了すると、関数アプリ名に基づく名前を使用して、次の Azure リソースがサブスクリプションに作成されます。
 
-    + リソース グループ。関連リソースの論理コンテナーです。
-    + Standard Azure ストレージ アカウント。プロジェクトについての状態とその他の情報を保持します。
-    + 従量課金プラン。サーバーレス関数アプリの実行環境となるホストを定義します。 
-    + 関数アプリ。関数コードを実行するための環境となります。 関数アプリを使用すると、同じホスティング プランに含まれるリソースの管理、デプロイ、共有を容易にするための論理ユニットとして関数をグループ化できます。
-    + 関数アプリに接続された Application Insights インスタンス。サーバーレス関数の使用を追跡します。
+    [!INCLUDE [functions-vs-code-created-resources](../../includes/functions-vs-code-created-resources.md)]
 
     関数アプリが作成され、展開パッケージが適用されると、通知が表示されます。 
 
-1. この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。 通知を見逃した場合は、右下隅にあるベル アイコンを選択して、再度確認します。
+    [!INCLUDE [functions-vs-code-create-tip](../../includes/functions-vs-code-create-tip.md)]
+
+4. この通知の **[View Output]\(出力の表示\)** を選択すると、作成済みの Azure リソースなど、作成とデプロイの結果が表示されます。 通知を見逃した場合は、右下隅にあるベル アイコンを選択して、再度確認します。
 
     ![作成完了通知](./media/functions-create-first-function-vs-code/function-create-notifications.png)
 
@@ -117,7 +123,7 @@ ms.locfileid: "97967992"
 
 ## <a name="next-steps"></a>次のステップ
 
-Visual Studio Code を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、出力バインディングを追加してその関数を拡張します。 このバインディングでは、HTTP 要求の文字列が Azure Queue Storage キュー内のメッセージに書き込まれます。 
+[Visual Studio Code](functions-develop-vs-code.md?tabs=python) を使用して、HTTP によってトリガーされる単純な関数を含む関数アプリを作成しました。 次の記事では、Azure Storage に接続することによってその関数を拡張します。 他の Azure サービスへの接続について詳しくは、「[Azure Functions の既存の関数にバインドを追加する](add-bindings-existing-function.md?tabs=python)」を参照してください。 
 
 > [!div class="nextstepaction"]
 > [Azure Storage キューに接続する](functions-add-output-binding-storage-queue-vs-code.md?pivots=programming-language-python)

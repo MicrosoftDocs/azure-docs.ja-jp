@@ -1,25 +1,25 @@
 ---
 title: Azure Security Center 用の組み込みポリシー定義
 description: Azure Security Center 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 01/08/2021
+ms.date: 01/29/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c8d52f08cbf1d2c3ad0e910dbb2d7688abb6dea9
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5c1e5e1c659f001f247af1b34e46303d5ccb3ae0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051447"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096950"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Azure Security Center 用の Azure Policy 組み込み定義
 
 このページは、Azure Security Center に関連する [Azure Policy](../governance/policy/overview.md) 組み込みポリシー定義のインデックスです。 次のポリシー定義のグループを使用できます。
 
 - [initiatives](#azure-security-center-initiatives) グループは、"Security Center" カテゴリ内の Azure Policy イニシアチブ定義のリストです。
-- [default initiative](#azure-security-center-initiatives) グループは、[Azure Security Center](./index.yml) の既定のイニシアチブの一部であるすべての Azure Policy 定義のリストです。
+- [default initiative](#azure-security-center-initiatives) グループは、Security Center の既定のイニシアチブ ([Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)) の一部であるすべての Azure Policy 定義のリストです。 この Microsoft が作成し広く尊重されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
 - [category](#azure-security-center-category) グループは、"Security Center" カテゴリ内のすべての Azure Policy 定義のリストです。
 
 セキュリティ ポリシーの詳細については、「[セキュリティ ポリシーの操作](./tutorial-security-policy.md)」を参照してください。 他のサービス用の Azure Policy 組み込みについては、[Azure Policy 組み込み定義](../governance/policy/samples/built-in-policies.md)に関するページをご覧ください。

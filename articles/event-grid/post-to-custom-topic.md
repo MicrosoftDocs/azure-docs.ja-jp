@@ -3,12 +3,12 @@ title: Azure Event Grid のカスタム トピックにイベントを投稿す�
 description: この記事では、カスタム トピックにイベントを投稿する方法について説明します。 投稿とイベント データの形式を示します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed126487938e524264c94544903460854ffc4d41
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86108262"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681619"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Azure Event Grid のカスタム トピックに投稿する
 
@@ -71,10 +71,7 @@ PowerShell でカスタム トピックのキーを取得するには、次の�
 ]
 ```
 
-これらのプロパティについては、「[Azure Event Grid イベント スキーマ](event-schema.md)」をご覧ください。 Event Grid トピックへイベントを送信する際の、配列の合計サイズの上限は 1 MB です。 配列内の各イベントは 64 KB (一般提供) または 1 MB (プレビュー) に制限されます。
-
-> [!NOTE]
-> 一般提供 (GA) のサービス レベル アグリーメント (SLA) では、最大 64 KB のサイズのイベントが有効範囲に含まれます。 最大 1 MB のサイズのイベントのサポートは現在、プレビュー段階です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
+これらのプロパティについては、「[Azure Event Grid イベント スキーマ](event-schema.md)」をご覧ください。 Event Grid トピックへイベントを送信する際の、配列の合計サイズの上限は 1 MB です。 イベントの最大許容サイズも 1 MB です。 64 KB を超えるイベントは、64 KB の増分単位で課金されます。 
 
 たとえば、次に示すのは有効なイベント データ スキーマです。
 

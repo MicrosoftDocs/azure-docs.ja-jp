@@ -3,16 +3,16 @@ title: バックアップ センターの概要
 description: この記事では、Azure のバックアップ センターの概要を示します。
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: 7eab2e8f9694ca83d0e050f55bc6f6dd802a7331
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: b42fcc782eb50c061ab7617ea0ef1f3344fee4e9
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173734"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893611"
 ---
-# <a name="overview-of-backup-center"></a>バックアップ センターの概要
+# <a name="overview-of-backup-center-preview"></a>バックアップ センター (プレビュー) の概要
 
-バックアップ センターは、企業が Azure でバックアップを大規模に管理、監視、操作、分析するための **1 つに統合された管理エクスペリエンス**を提供します。 このため、Azure のネイティブ管理エクスペリエンスと一貫性があります。
+バックアップ センターは、企業が Azure でバックアップを大規模に管理、監視、操作、分析するための **1 つに統合された管理エクスペリエンス** を提供します。 このため、Azure のネイティブ管理エクスペリエンスと一貫性があります。
 
 バックアップ センターの主な利点は、次のとおりです。
 
@@ -22,12 +22,12 @@ ms.locfileid: "92173734"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-* バックアップ センターでは現在、Azure VM のバックアップと Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
+* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、および Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
 * サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 
 ## <a name="get-started"></a>作業開始
 
-バックアップ センターの使用を開始するには、Azure portal で**バックアップ センター**を検索し、 **[バックアップ センター (プレビュー)]** ダッシュボードに移動します。
+バックアップ センターの使用を開始するには、Azure portal で **バックアップ センター** を検索し、 **[バックアップ センター (プレビュー)]** ダッシュボードに移動します。
 
 ![バックアップ センターの検索](./media/backup-center-overview/backup-center-search.png)
 

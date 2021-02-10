@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 REST API 呼び出し用に Postman を構成する
+title: Azure Media Services v3 REST API 用に Postman を構成する
 description: この記事では、Azure Media Services (AMS) REST API を呼び出すために使用できるように Postman を構成する方法を示します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: aa10cb207011051c30866a3a3ed693e7113b5882
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b0a521ddeee6d93ce809e5e6e85eefa1f01a3f12
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297713"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953973"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API 呼び出し用に Postman を構成する
 

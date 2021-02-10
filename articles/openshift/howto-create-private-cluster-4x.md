@@ -4,16 +4,16 @@ description: OpenShift 4 を実行する Azure Red Hat OpenShift のプライベ
 ms.service: container-service
 ms.topic: article
 ms.date: 03/12/2020
-author: georgewallace
-ms.author: gwallace
+author: sakthi-vetrivel
+ms.author: suvetriv
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3864d48399f00d5cfbdfa0a94939be0d88a73322
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 6daeb617e7d1922427fe1889b41512a61c5067cf
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928061"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740926"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 のプライベート クラスターを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "92928061"
 > * 前提条件を設定し、必要な仮想ネットワークとサブネットを作成する
 > * プライベート API サーバー エンドポイントとプライベート イングレス コントローラーを使用してクラスターをデプロイする
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -235,7 +235,7 @@ az aro list-credentials \
 
 OpenShift Web コンソールにログインしたら、右上の **[?]** をクリックし、 **[Command Line Tools]\(コマンド ライン ツール\)** をクリックします。 お使いのマシンに適したリリースをダウンロードします。
 
-![Azure Red Hat OpenShift ログイン画面](media/aro4-download-cli.png)
+![Azure Red Hat OpenShift ログイン画面を示す画像](media/aro4-download-cli.png)
 
 また、<https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> からお使いのマシンに適した CLI の最新リリースをダウンロードすることもできます。
 

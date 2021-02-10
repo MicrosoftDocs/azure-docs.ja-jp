@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー違反やブループリント パラメーター関数などの、ブループリントを作成、割り当て、および削除するときの問題をトラブルシューティングする方法について説明します。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: a1689141f95aaac9183391af79edb0cabf5343b6
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058286"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918846"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -43,7 +43,7 @@ ms.locfileid: "92058286"
 - 作成されるリソースはポリシーの制約を受けます (一般的には SKU または場所の制約)
 - デプロイはポリシーによって構成される設定フィールドです (タグで一般的)
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 
 ブルー プリントを変更して、エラーの詳細に含まれているポリシーと競合しないようにします。 変更できない場合、代替として、ブループリントがポリシーと競合しないようにポリシー割り当てのスコープを変更するという選択肢があります。
 
@@ -57,7 +57,7 @@ ms.locfileid: "92058286"
 
 `[resourceGroup().tags.myTag]` などの関数を使用するブループリント パラメーターを成果物に渡すと、動的関数ではなく、成果物に対して関数が設定されます。
 
-#### <a name="resolution"></a>解像度
+#### <a name="resolution"></a>解決方法
 
 関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints サービスによって成果物に配置され、意図したとおりに動的になります。 詳細については、「[Azure Resource Manager テンプレートの構文と式](../../../azure-resource-manager/templates/template-expressions.md)」を参照してください。
 
@@ -75,7 +75,7 @@ ms.locfileid: "92058286"
 
 #### <a name="resolution"></a>解像度
 
-最終状態以外の状態のブループリント割り当ては、"_6 時間_" のタイムアウト後に**失敗**として自動的にマークされます。 タイムアウトによってブループリント割り当ての状態が調整されたら、削除を再試行できます。
+最終状態以外の状態のブループリント割り当ては、"_6 時間_" のタイムアウト後に **失敗** として自動的にマークされます。 タイムアウトによってブループリント割り当ての状態が調整されたら、削除を再試行できます。
 
 ## <a name="next-steps"></a>次のステップ
 

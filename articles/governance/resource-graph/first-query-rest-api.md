@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:自分の初めての REST API クエリ
 description: このクイックスタートでは、手順に従い、REST API 用に Resource Graph エンドポイントを呼び出し、ご自分の初めてのクエリを実行します。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eafbd0b408ab50f901d52e59efcfbd5f89b46fe5
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 670ceba95d937be278c44c34704cb844eead480d
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566080"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920073"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-rest-api"></a>クイック スタート:REST API を使用して自分の初めて Resource Graph クエリを実行する
 

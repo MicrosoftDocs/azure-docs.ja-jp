@@ -1,24 +1,24 @@
 ---
-title: Node.js Express アプリをビルドして Azure Cloud Services にデプロイする
-titleSuffix: Azure Cloud Services
+title: Node.js Express アプリをビルドして Azure Cloud Services (クラシック) にデプロイする
 description: このチュートリアルを使用し、Express モジュールを使用して新しいアプリケーションを作成します。Express モジュールは、Node.js Web アプリケーションを作成するための MVC フレームワークを提供します。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 7ecaccf36988e94d0cb1114bd04c5d571d4fe86d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071865"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743340"
 ---
-# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Express を使用して Node.js Web アプリケーションをビルドし、Azure Cloud Services にデプロイする
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>Express を使用して Node.js Web アプリケーションをビルドし、Azure Cloud Services (クラシック) にデプロイする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 node.js には、コア ランタイムの最小限の機能セットが含まれます。
 多くの場合、開発者は Node.js アプリケーションを開発するときに、サード パーティ モジュールを使用して追加機能を指定します。 このチュートリアルでは、[Express](https://github.com/expressjs/express) モジュールを使って新しいアプリケーションを作成します。Express モジュールは、Node.js Web アプリケーションを作成するための MVC フレームワークを提供します。
@@ -32,7 +32,7 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
 
 "expressapp" という名前の新しいクラウド サービス プロジェクトを作成するには、次の手順を実行します。
 
-1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、 **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
+1. **[スタート]** メニューまたは **スタート画面** で、**Windows PowerShell** を検索します。 最後に、 **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
 
     ![Azure PowerShell アイコン](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 2. **c:\\node** ディレクトリに移動し、次のコマンドを入力して **expressapp** という名前の新しいソリューションと **WebRole1** という名前の Web ロールを作成します。
@@ -114,7 +114,7 @@ node.js には、コア ランタイムの最小限の機能セットが含ま�
    ![index.jade ファイルの内容](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
 
    Jade は Express アプリケーションで使用される既定のビュー エンジンです。 Jade ビュー エンジンの詳細については、[http://jade-lang.com][http://jade-lang.com] を参照してください。
-2. テキストの最後の行に **in Azure**を追加します。
+2. テキストの最後の行に **in Azure** を追加します。
 
    ![index.jade ファイル。最後の行には "p Welcome to \#{title} in Azure" と記載されている](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. ファイルを保存して、メモ帳を終了します。

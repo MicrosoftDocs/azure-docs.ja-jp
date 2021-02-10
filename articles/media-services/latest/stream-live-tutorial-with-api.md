@@ -1,33 +1,17 @@
 ---
-title: Media Services v3 によるライブ ストリーム配信
-titleSuffix: Azure Media Services
-description: Azure Media Services v3 を使ってライブ ストリーム配信する方法について説明します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.custom: mvc, devx-track-csharp
-ms.date: 06/13/2019
-ms.author: inhenkel
-ms.openlocfilehash: b2e456474a9d052d9515c8169ce233e9577a5c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256567"
+title:Media Services v3 によるライブ ストリーム配信:Azure Media Services の説明:Azure Media Services v3 を使ってライブ ストリーム配信する方法について説明します。
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.custom: "mvc, devx-track-csharp" ms.date:06/13/2019 ms.author: inhenkel
+
 ---
-# <a name="tutorial-stream-live-with-media-services"></a>チュートリアル:Media Services によるライブ ストリーム配信
+
+# <a name="tutorial-stream-live-with-media-services"></a>チュートリアル:Media Services を使用したライブ ストリーム配信
 
 > [!NOTE]
 > このチュートリアルでは [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) の例を使用していますが、全体的な手順は [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest)、またはその他のサポートされている [SDK](media-services-apis-overview.md#sdks) で同じです。
 
-Azure Media Services では、[ライブ イベント](/rest/api/media/liveevents)がライブ ストリーミング コンテンツの処理を受け持ちます。 ライブ イベントは入力エンドポイントであり、その取り込み URL をライブ エンコーダーに対して指定します。 ライブ イベントは、ライブ エンコーダーからライブ入力ストリームを受け取り、1 つまたは複数の[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、ライブ イベントはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します。 このチュートリアルでは、.NET Core を使用してライブ イベントの**パススルー** タイプを作成、管理する方法について説明します。
+Azure Media Services では、[ライブ イベント](/rest/api/media/liveevents)がライブ ストリーミング コンテンツの処理を受け持ちます。 ライブ イベントは入力エンドポイントであり、その取り込み URL をライブ エンコーダーに対して指定します。 ライブ イベントは、ライブ エンコーダーからライブ入力ストリームを受け取り、1 つまたは複数の[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)を介してストリーミングできる状態にします。 また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、ライブ イベントはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します。 このチュートリアルでは、.NET Core を使用してライブ イベントの **パススルー** タイプを作成、管理する方法について説明します。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -65,7 +49,7 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
 ダウンロードしたプロジェクトに含まれる [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/appsettings.json) を開きます。 [API へのアクセス](./access-api-howto.md)に関するページで取得した資格情報の値に置き換えます。
 
 > [!IMPORTANT]
-> このサンプルでは、各リソースに一意のサフィックスを使用します。 デバッグをキャンセルした場合、または完全に実行せずにアプリを終了した場合、アカウントに複数のライブ イベントが作成されます。 <br/>実行中のライブ イベントを必ず停止してください。 そうしないと、**料金が発生**します。
+> このサンプルでは、各リソースに一意のサフィックスを使用します。 デバッグをキャンセルした場合、または完全に実行せずにアプリを終了した場合、アカウントに複数のライブ イベントが作成されます。 <br/>実行中のライブ イベントを必ず停止してください。 そうしないと、**料金が発生** します。
 
 ## <a name="examine-the-code-that-performs-live-streaming"></a>ライブ ストリーミングを実行するコードを確認する
 
@@ -75,7 +59,7 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
 
 > [!IMPORTANT]
 > このサンプルでは、各リソースに一意のサフィックスを使用します。 デバッグをキャンセルした場合、または完全に実行せずにアプリを終了した場合、アカウントに複数のライブ イベントが作成されます。 <br/>
-> 実行中のライブ イベントを必ず停止してください。 そうしないと、**料金が発生**します。
+> 実行中のライブ イベントを必ず停止してください。 そうしないと、**料金が発生** します。
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 
@@ -131,7 +115,7 @@ previewEndpoint を使用して、エンコーダーからの入力が実際に�
 #### <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 
 > [!NOTE]
-> Media Services アカウントの作成時に、**既定の**ストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。
+> Media Services アカウントの作成時に、**既定の** ストリーミング エンドポイントが **停止** 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。
 
 ストリーミング ロケーターを使用してライブ出力アセットを発行した場合、ライブ イベント (DVR ウィンドウの長さまで) は、ストリーミング ロケーターの有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
 
@@ -167,7 +151,7 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ## <a name="watch-the-event"></a>イベントの視聴
 
-イベントを監視するには、「ストリーミング ロケーターを作成する」で説明されているコードを実行したときに表示されたストリーミング URL をコピーします。 任意のメディア プレーヤーを使用できます。 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) は、 https://ampdemo.azureedge.net でのストリームをテストするために使用できます。
+イベントを監視するには、「ストリーミング ロケーターを作成する」で説明されているコードを実行したときに表示されたストリーミング URL をコピーします。 任意のメディア プレーヤーを使用できます。 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) は、https://ampdemo.azureedge.net でのストリームをテストするために使用できます。
 
 ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。 イベントを停止して削除した後でも、アセットを削除しない限り、ユーザーはアーカイブされたコンテンツをビデオ オン デマンドとしてストリーム配信できます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。
 

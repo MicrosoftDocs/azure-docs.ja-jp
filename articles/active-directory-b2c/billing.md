@@ -7,23 +7,23 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 09/01/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: edff5354d0565bd32cd0332b4aa0f215c2980d73
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a54ed9dc6557d9b613485bf28e74af0c59fc9e5e
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949787"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225210"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の課金モデル
 
 Azure Active Directory B2C (Azure AD B2C) の価格は、1 か月間に認証アクティビティを行った一意のユーザーの数である、月間アクティブ ユーザー数 (MAU) に基づいています。 この課金モデルは、Azure AD B2C テナントと [Azure AD ゲスト ユーザー コラボレーション (B2B)](../active-directory/external-identities/external-identities-pricing.md) の両方に適用されます。 MAU の課金は、無料レベルと柔軟で予測可能な価格を提供することによってコストを削減するのに役立ちます。 この記事では、MAU の課金、サブスクリプションへの Azure AD B2C テナントのリンク、および価格レベルの変更について説明します。
 
 > [!IMPORTANT]
-> この記事には価格の詳細は含まれていません。 使用量の課金と価格の最新情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」を参照してください。
+> この記事には価格の詳細は含まれていません。 使用量の課金と価格の最新情報については、「[Azure Active Directory B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)」を参照してください。 Azure AD B2C サービスが利用できる地域とユーザー データの格納場所に関する詳細については、[Azure AD B2C の利用可能なリージョンとデータの保存場所](data-residency.md)に関するページも参照してください。
 
 ## <a name="what-do-i-need-to-do"></a>何をする必要がありますか?
 

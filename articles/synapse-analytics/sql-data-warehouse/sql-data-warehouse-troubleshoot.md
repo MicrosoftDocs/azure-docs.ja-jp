@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9b2fc61054c40f52f7e638117109ec556cc63a78
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: de6c7e47af3019d034d457f43334aad1aeafabdc
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678459"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254276"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のトラブルシューティング
 
@@ -76,6 +76,7 @@ ms.locfileid: "98678459"
 | サポートされていない SQL Database のデータ型   | 「 [サポートされていないデータ型](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types)」をご覧ください。        |
 | ストアド プロシージャの制限事項          | ストアド プロシージャの制限事項のいくつかを理解するには、 [ストアド プロシージャの制限事項](sql-data-warehouse-develop-stored-procedures.md#limitations) に関するページをご覧ください。 |
 | UDF が SELECT ステートメントをサポートしていない | これは、UDF の現在の制限です。  サポートされている構文については、 [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関するページをご覧ください。 |
+| 列の sp_rename (プレビュー) が *dbo* 以外のスキーマでは機能しない | これは、Synapse の[列の sp_rename (プレビュー)](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) に関する現在の制限です。  *dbo* スキーマの一部ではないオブジェクトの列は、CTAS を使用して新しいテーブルに名前を変更できます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

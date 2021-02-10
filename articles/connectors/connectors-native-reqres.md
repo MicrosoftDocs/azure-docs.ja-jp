@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 83ffccb7bae4fabc10796c36e782e72c661bd346
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920813"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063014"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps で受信 HTTPS 要求を受信して応答する
 
@@ -216,7 +216,7 @@ Request トリガーを使用して受信要求を処理する場合は、応答
 > Response アクションにこれらのヘッダーが含まれている場合、Logic Apps は警告もエラーも表示せずに、生成された応答メッセージからこれらのヘッダーを削除します。
 >
 > * `Allow`
-> * `Content-*`ただし、`Content-Disposition`、`Content-Encoding`、および `Content-Type` は例外です。
+> * `Content-Disposition`、`Content-Encoding`、および `Content-Type` を除く `Content-*` ヘッダー (POST と PUT 操作を使用する場合。ただし GET 操作については含まれない)
 > * `Cookie`
 > * `Expires`
 > * `Last-Modified`

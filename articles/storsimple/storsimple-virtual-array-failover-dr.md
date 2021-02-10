@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005862"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096425"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure Portal を介した StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー
 
@@ -156,7 +156,7 @@ DR が正常に完了すると、ソース デバイスのクラウド データ
     1. フェールオーバー プロセスのターゲット デバイスとして使用された StorSimple デバイスを選択してクリックします。
     2. **[設定] > [管理] > [共有]** (iSCSI サーバーの場合は **[ボリューム]** ) に移動します。 **[共有]** ブレードでは、以前のデバイスの共有 (ボリューム) すべてを確認できます。
         ![[デバイス] ブレードのスクリーンショット。 ターゲット デバイスが [オンライン] の状態で一覧表示されています。](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. 接続しようとしているアプリケーションすべてが新しいデバイスにリダイレクトされるように、[DNS エイリアスを作成](https://support.microsoft.com/kb/168322)する必要があります。
+14. 接続しようとしているアプリケーションすべてが新しいデバイスにリダイレクトされるように、[DNS エイリアスを作成](https://web.archive.org/web/20150307000707/http://support.microsoft.com:80/kb/168322)する必要があります。
 
 ## <a name="errors-during-dr"></a>DR 時のエラー
 

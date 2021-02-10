@@ -1,21 +1,25 @@
 ---
-title: Cloud Services 共通のスタートアップ タスク | Microsoft Docs
+title: Cloud Services (クラシック) 共通のスタートアップ タスク | Microsoft Docs
 description: クラウド サービスの Web ロールや worker ロールで実行できる共通のスタートアップ タスクの例を示します。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f55b225e615a3e7a5fbcf56b405054883d3b5413
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075180"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741198"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
+# <a name="common-cloud-service-classic-startup-tasks"></a>Cloud Services (クラシック) 共通のスタートアップ タスク
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
 
 スタートアップ タスクの仕組み、特にスタートアップ タスクを定義するエントリを作成する方法については、 [こちらの記事](cloud-services-startup-tasks.md) をご覧ください。
@@ -52,13 +56,13 @@ ms.locfileid: "92075180"
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>AppCmd.exe を使用して IIS スタートアップを構成する
-[AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) コマンド ライン ツールを使用して、Azure のスタートアップ時の IIS 設定を管理できます。 *AppCmd.exe* には Azure のスタートアップ タスクで使用する構成設定へのコマンド ライン アクセスが用意されています。 *AppCmd.exe*を使用すると、アプリケーションやサイトの Web サイト設定を追加、変更、または削除できます。
+[AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) コマンド ライン ツールを使用して、Azure のスタートアップ時の IIS 設定を管理できます。 *AppCmd.exe* には Azure のスタートアップ タスクで使用する構成設定へのコマンド ライン アクセスが用意されています。 *AppCmd.exe* を使用すると、アプリケーションやサイトの Web サイト設定を追加、変更、または削除できます。
 
 ただし、 *AppCmd.exe* をスタートアップ タスクとして使用するにはいくつか注意する点があります。
 
 * スタートアップ タスクは、再起動の間に複数回実行されることがあります。 たとえば、ロールが再利用される場合です。
 * *AppCmd.exe* アクションは、複数回実行されるとエラーが発生することがあります。 たとえば、*Web.config* にセクションを 2 回追加しようとするとエラーが発生する可能性があります。
-* ゼロ以外の終了コードや **errorlevel**が返されると、スタートアップ タスクが失敗します。 たとえば、*AppCmd.exe* でエラーが発生した場合です。
+* ゼロ以外の終了コードや **errorlevel** が返されると、スタートアップ タスクが失敗します。 たとえば、*AppCmd.exe* でエラーが発生した場合です。
 
 *AppCmd.exe* を呼び出した後、**errorlevel** を確認することをお勧めします。これは、*AppCmd.exe* への呼び出しを *.cmd* ファイルでラップすると簡単に実行できます。 既知の **errorlevel** 応答が検出された場合は無視するか、その応答を返すことができます。
 
@@ -83,7 +87,7 @@ ms.locfileid: "92075180"
 *Startup.cmd* バッチ ファイルは *AppCmd.exe* を使用して *Web.config* ファイルに JSON 用の圧縮セクションと圧縮エントリを追加します。 予期される **errorlevel** 183 は、VERIFY.EXE コマンド ライン プログラムを使用してゼロに設定されます。 予期しない errorlevel は StartupErrorLog.txt に記録されます。
 
 ```cmd
-REM   *** Add a compression section to the Web.config file. ***
+REM   **_ Add a compression section to the Web.config file. _*_
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
@@ -98,7 +102,7 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Add compression for json. ***
+REM   _*_ Add compression for json. _*_
 %windir%\system32\inetsrv\appcmd set config  -section:system.webServer/httpCompression /+"dynamicTypes.[mimeType='application/json; charset=utf-8',enabled='True']" /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 IF %ERRORLEVEL% NEQ 0 (
@@ -106,10 +110,10 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Exit batch file. ***
+REM   _*_ Exit batch file. _*_
 EXIT /b 0
 
-REM   *** Log error and exit ***
+REM   _*_ Log error and exit _*_
 :ErrorExit
 REM   Report the date, time, and ERRORLEVEL of the error.
 DATE /T >> "%TEMP%\StartupLog.txt" 2>&1
@@ -125,7 +129,7 @@ Azure では、実質的に 2 つのファイアウォールがあります。 �
 
 Azure はお使いのロール内で開始されるプロセス用のファイアウォール規則を作成します。 たとえば、サービスやプログラムを開始すると、Azure はそのサービスがインターネットと通信するのに必要なファイアウォール規則を自動的に作成します。 ただし、お使いのロール外のプロセスによって開始されるサービス (COM + サービスや Windows によってスケジュール設定されるタスクなど) を作成する場合は、そのサービスへのアクセスを許可するファイアウォール規則を手動で作成する必要があります。 これらのファイアウォール規則はスタートアップ タスクを使用して作成できます。
 
-ファイアウォール規則を作成するスタートアップ タスクには、**elevated** の [executionContext][Task] が必要です。 次のスタートアップ タスクを [ServiceDefinition.csdef] ファイルに追加します。
+ファイアウォール規則を作成するスタートアップ タスクには、_*elevated** の [executionContext][Task] が必要です。 次のスタートアップ タスクを [ServiceDefinition.csdef] ファイルに追加します。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

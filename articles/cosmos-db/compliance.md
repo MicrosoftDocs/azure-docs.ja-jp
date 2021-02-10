@@ -75,7 +75,7 @@ Azure のコンプライアンス認証の詳細については、以下の記�
 
 * Azure Cosmos DB のデプロイのセキュリティ対策を向上させるための推奨事項については、[Azure Cosmos DB セキュリティ ベースライン](security-baseline.md)に関する記事を参照してください。 
 
-* マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
+* マイクロソフトが取得している認証の詳細については、[Azure トラスト センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
 
 * FedRAMP コンプライアンスの情報については、「[FedRAMP および DoD CC SRG 監査スコープ別の Azure サービス](../azure-government/compliance/azure-services-in-fedramp-auditscope.md)」を参照してください。
 

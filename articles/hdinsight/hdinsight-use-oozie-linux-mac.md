@@ -3,17 +3,16 @@ title: Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを
 description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 7b0d3ac4775ca057856c28ab42197bb734f149d6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 41c42009252169c141bec5d3dc2ea5c6308d6812
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534942"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931293"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -31,11 +30,11 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **HDInsight 上の Hadoop クラスター** 。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
+* **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* **SSH クライアント** 。 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+* **SSH クライアント**。 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-* **Azure SQL Database** 。  [Azure portal での Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。  この記事では、 **oozietest** という名前のデータベースを使用します。
+* **Azure SQL Database**。  [Azure portal での Azure SQL Database のデータベースの作成](../azure-sql/database/single-database-create-quickstart.md)に関するページを参照してください。  この記事では、**oozietest** という名前のデータベースを使用します。
 
 * クラスターのプライマリ ストレージの URI スキーム。 Azure Storage の場合は `wasb://`、Azure Data Lake Storage Gen2 の場合は `abfs://`、Azure Data Lake Storage Gen1 の場合は `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
@@ -130,7 +129,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozi
 
      ワークフロー定義ファイル (この記事では workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
 
-1. ファイルを保存するには、 **Ctrl+X** を選択し、 **Y** キーを押してから、 **Enter** キーを選択します。  
+1. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。  
 
 1. 次のコマンドを使用して、`useooziewf.hql` を `wasbs:///tutorials/useoozie/useooziewf.hql` にコピーします。
 
@@ -215,7 +214,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
      また、Sqoop セクションの `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` エントリにも注意してください。 このエントリは、このアクションの実行時にこのアーカイブを Sqoop で使用できるようにすることを Oozie に指示します。
 
-3. ファイルを保存するには、 **Ctrl+X** を選択し、 **Y** キーを押してから、 **Enter** キーを選択します。  
+3. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。  
 
 4. 次のコマンドを使用して、`workflow.xml` ファイルを `/tutorials/useoozie/workflow.xml` にコピーします。
 
@@ -382,7 +381,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
 4. nano エディターが開いたら、編集した XML をファイルの内容として貼り付けます。
 
-5. ファイルを保存するには、 **Ctrl+X** を選択し、 **Y** キーを押してから、 **Enter** キーを選択します。
+5. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。
 
 ## <a name="submit-and-manage-the-job"></a>ジョブの送信と管理
 
@@ -457,7 +456,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
     このコマンドの実行後に状態を確認すると、ジョブが実行中状態になり、ジョブのアクションに関する情報が返されます。  このジョブは完了までに数分かかります。
 
-6. 次のコードを編集して、`<serverName>` をご利用のサーバー名に置き換え、`<sqlLogin>` をサーバー ログインに置き換えます。  正常に " *タスクが完了したら* "、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
+6. 次のコードを編集して、`<serverName>` をご利用のサーバー名に置き換え、`<sqlLogin>` をサーバー ログインに置き換えます。  正常に "*タスクが完了したら*"、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -489,9 +488,9 @@ Oozie コマンドの詳細については、[Apache Oozie コマンドライン
 
 Oozie REST API を使うと、Oozie で動く独自のツールを作成できます。 Oozie REST API の使用に関する HDInsight 固有の情報は次のとおりです。
 
-* **URI** : `https://CLUSTERNAME.azurehdinsight.net/oozie` を使うと、クラスターの外部から REST API にアクセスできます。
+* **URI**: `https://CLUSTERNAME.azurehdinsight.net/oozie` を使うと、クラスターの外部から REST API にアクセスできます。
 
-* **認証** :認証を行うには、クラスターの HTTP アカウント (admin) とパスワードで API を使います。 次に例を示します。
+* **認証**:認証を行うには、クラスターの HTTP アカウント (admin) とパスワードで API を使います。 次に例を示します。
 
     ```bash
     curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/oozie/versions
@@ -539,7 +538,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
        ![`HDInsight Apache Oozie ジョブの DAG`](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
-7. **[Job Info]\(ジョブの情報\)** タブでアクションのいずれかを選択すると、そのアクションの情報が表示されます。 たとえば、 **RunHiveScript** アクションを選びます。
+7. **[Job Info]\(ジョブの情報\)** タブでアクションのいずれかを選択すると、そのアクションの情報が表示されます。 たとえば、**RunHiveScript** アクションを選びます。
 
     ![HDInsight oozie ジョブ アクション情報](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
@@ -549,7 +548,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 コーディネーターを使うと、ジョブの開始時刻、終了時刻、実行頻度を指定できます。 ワークフローのスケジュールを定義するには、次の手順のようにします。
 
-1. 次のコマンドを使って、 **coordinator.xml** という名前のファイルを作成します。
+1. 次のコマンドを使って、**coordinator.xml** という名前のファイルを作成します。
 
     ```bash
     nano coordinator.xml
@@ -573,10 +572,10 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
     > * `${coordFrequency}`:ジョブのインスタンスが実行される間隔。
     > * `${coordStart}`:ジョブの開始時刻。
     > * `${coordEnd}`:ジョブの終了時刻。
-    > * `${coordTimezone}`:コーディネーター ジョブでは、(通常は UTC を使用して表される) 夏時間なしの固定タイム ゾーンを使用します。 このタイム ゾーンを、" *Oozie 処理のタイムゾーン* " と呼びます。
+    > * `${coordTimezone}`:コーディネーター ジョブでは、(通常は UTC を使用して表される) 夏時間なしの固定タイム ゾーンを使用します。 このタイム ゾーンを、"*Oozie 処理のタイムゾーン*" と呼びます。
     > * `${wfPath}`:workflow.xml のパス。
 
-2. ファイルを保存するには、 **Ctrl+X** を選択し、 **Y** キーを押してから、 **Enter** キーを選択します。
+2. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。
 
 3. ファイルをこのジョブの作業ディレクトリにコピーするには、次のコマンドを使います。
 
@@ -631,7 +630,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
        これらの値によって、開始時刻が 2018 年 5 月 10 日 12:00 PM に、終了時刻が 2018 年 5 月 12 日 12:00 PM に設定されます。 このジョブの実行間隔は、毎日に設定されます。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
 
-5. ファイルを保存するには、 **Ctrl+X** を選択し、 **Y** キーを押してから、 **Enter** キーを選択します。
+5. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。
 
 6. ジョブを提出して開始するには、次のコマンドを使います。
 

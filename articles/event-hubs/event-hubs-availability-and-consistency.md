@@ -2,45 +2,38 @@
 title: 可用性と一貫性 - Azure Event Hubs | Microsoft Docs
 description: パーティションを使用して Azure Event Hubs で最大限の可用性と一貫性を実現する方法
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2fdb62e953230a38a26d22e136789fea52c8ee8c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902903"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882197"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
-
-## <a name="overview"></a>概要
-Azure Event Hubs は[パーティション分割モデル](event-hubs-scalability.md#partitions)を使用して、単一のイベント ハブで可用性と並列処理を向上させます。 たとえば、イベント ハブに 4 つのパーティションがあり、そのうちの 1 つが、負荷分散操作によってあるサーバーから別のサーバーに移動されても、残りの 3 つのパーティションで送受信ができます。 また、パーティションが増えると、より多くのリーダーがデータを同時に処理できるため、合計スループットが向上します。 分散システムでのパーティション分割と順序付けの意味合いを理解することは、ソリューション設計の重要な側面です。
-
-順序付けと可用性のトレードオフを理解するには、[CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)をご覧ください。これはブリュワーの定理とも呼ばれています。 この定理によると、一貫性、可用性、パーティション トレランスの中からの選択が考察されています。 ネットワークごとにパーティション分割されたシステムの場合、常に一貫性と可用性のトレードオフがあることが示されています。
-
-ブリュワー定理によると、一貫性と可用性は次のように定義されています。
-* パーティション トレランス - パーティション障害が発生した場合でも、データ処理システムがデータ処理を継続する能力。
-* 可用性 - 障害の発生しないノードが適切な応答を適切な時間内に (エラーやタイムアウトなく) 返すこと。
-* 一貫性 - 指定のクライアントで読み込みを実行したときに、必ず最新の書き込みデータが返ってくること。
-
-## <a name="partition-tolerance"></a>パーティション トレランス
-Event Hubs は、パーティション分割されたデータ モデルの上に構築されます。 Event Hub のパーティションの数はセットアップ時に構成できますが、後でこの値を変更することはできません。 Event Hubs でパーティションを使用する必要があるため、アプリケーションの可用性と一貫性について決定を行う必要があります。
+この記事では、Azure Event Hubs でサポートされる可用性と整合性に関する情報を提供します。 
 
 ## <a name="availability"></a>可用性
-Event Hubs の使用を開始する最も簡単な方法は、既定の動作を使用することです。 
+Azure Event Hubs により、データセンター内の複数の障害ドメインにまたがるクラスター間で、個々のマシン、さらにはラック全体の致命的な障害のリスクが分散されます。 透過的な障害検出およびフェールオーバー メカニズムが実装されるため、通常はそのような障害が発生したときに顕著な中断なしに、保証されたサービスレベル内でサービスが動作し続けます。 [可用性ゾーン](../availability-zones/az-overview.md)の有効化オプションを使用して Event Hubs 名前空間が作成されている場合、物理的に分離された 3 つの施設間で停止リスクがさらに分散されます。また、サービスには、施設全体の致命的な損失全体に瞬時に対処するための十分な容量が予約されています。 詳細については、「[Azure Event Hubs geo ディザスター リカバリー](event-hubs-geo-dr.md)」を参照してください。
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 以降)](#tab/latest)
-新しい **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** オブジェクトを作成し、 **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** メソッドを使用すると、イベントはイベント ハブ内のパーティション間で自動的に配信されます。 この動作により、アップ タイムを最大にすることができます。
-
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 以前)](#tab/old)
-新しい **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** オブジェクトを作成し、 **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** メソッドを使用すると、イベントはイベント ハブのパーティション間に自動的に分散されます。 この動作により、アップ タイムを最大にすることができます。
-
----
-
-最大のアップ タイムを必要とするユース ケースでは、このモデルが適しています。
+クライアント アプリケーションによってイベント ハブにイベントが送信されると、イベントはイベント ハブのパーティション間に自動的に分散されます。 何らかの理由でパーティションが使用できない場合、イベントは残りのパーティション間で分散されます。 この動作により、アップ タイムを最大にすることができます。 最大のアップ タイム時間を必要とするユース ケースでは、特定のパーティションにイベントを送信する代わりに、このモデルを使用することをお勧めします。 詳細については、「[パーティション](event-hubs-scalability.md#partitions)」をご覧ください。
 
 ## <a name="consistency"></a>一貫性
-シナリオによっては、イベントの順序付けが重要になる場合があります。 たとえば、バックエンド システムで、delete コマンドの前に update コマンドを処理したいとします。 この例では、イベントにパーティション キーを設定するか、または `PartitionSender` オブジェクトを使用して (古い Microsoft.Azure.Messaging ライブラリを使用している場合) イベントを特定のパーティションにのみ送信することができます。 これにより、これらのイベントがパーティションから読み取られる際に、読み取られる順番が保証されます。 
+シナリオによっては、イベントの順序付けが重要になる場合があります。 たとえば、バックエンド システムで、delete コマンドの前に update コマンドを処理したいとします。 このシナリオでは、順序が維持されるように、クライアント アプリケーションによって特定のパーティションにイベントが送信されます。 コンシューマー アプリケーションによってパーティションからこれらのイベントが使用されるときに、それらは順番どおりに読み取られます。 
+
+この構成では、送信先の特定のパーティションが使用できない場合は、エラー応答が受信される点に注意してください。 比較のポイントとして、1 つのパーティションにアフィニティがない場合は、Event Hubs サービスによって次の利用可能なパーティションにイベントが送信されます。
+
+順番を保証しつつ、アップ タイムも最大化するためのソリューションの 1 つは、イベント処理アプリケーションの一部としてイベントを集計することです。 それを実現する最も簡単な方法は、カスタム シーケンス番号プロパティを使用してイベントにスタンプを付けることです。
+
+このシナリオでは、プロデューサー クライアントによってイベント ハブ内の利用可能なパーティションのいずれかにイベントが送信され、アプリケーションの対応するシーケンス番号が設定されます。 このソリューションでは処理アプリケーションで状態を保持する必要がありますが、送信者には、使用できる可能性の高いエンドポイントが提示されます。
+
+## <a name="appendix"></a>付録
+
+### <a name="net-examples"></a>.NET の例
+
+#### <a name="send-events-to-a-specific-partition"></a>特定のパーティションにイベントを送信する
+イベントにパーティション キーを設定するか、`PartitionSender` オブジェクトを使用して (古い Microsoft.Azure.Messaging ライブラリを使用している場合) イベントを特定のパーティションにのみ送信します。 これにより、これらのイベントがパーティションから読み取られる際に、読み取られる順番が保証されます。 
 
 新しい **Azure.Messaging.EventHubs** ライブラリを使用している場合、[パーティションへのイベント発行のための PartitionSender から EventHubProducerClient へのコードの移行](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)に関するページを参照してください。
 
@@ -87,9 +80,8 @@ finally
 
 ---
 
-この構成では、送信先の特定のパーティションが使用できない場合は、エラー応答が受信される点に注意してください。 比較のポイントとして、1 つのパーティションにアフィニティがない場合、Event Hubs サービスは次の利用可能なパーティションにイベントを送信します。
-
-順番を保証しつつ、アップ タイムも最大化するためのソリューションの 1 つは、イベント処理アプリケーションの一部としてイベントを集計することです。 これを実現する最も簡単な方法は、カスタムのシーケンス番号のプロパティをイベントにスタンプすることです。 次に例を示します。
+### <a name="set-a-sequence-number"></a>シーケンス番号を設定する
+次の例では、カスタム シーケンス番号プロパティを使用してイベントにスタンプを付けます。 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 以降)](#tab/latest)
 

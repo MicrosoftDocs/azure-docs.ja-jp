@@ -3,12 +3,12 @@ title: Azure ディスク バックアップの概要
 description: Azure ディスク バックアップ ソリューションについて説明します。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: d73c431fdc2b2906dc1d3d9485bded9449b2f2ba
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733032"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915510"
 ---
 # <a name="overview-of-azure-disk-backup-in-preview"></a>Azure ディスク バックアップ (プレビュー) の概要
 
@@ -53,7 +53,7 @@ Azure ディスク バックアップ ソリューションは、次のような
 
 ## <a name="how-the-backup-and-restore-process-works"></a>バックアップと復元のプロセスのしくみ
 
-- Azure ファイル共有のバックアップを構成するための最初の手順は、[バックアップ コンテナー](backup-vault-overview.md)を作成することです。 このコンテナーは、さまざまなワークロードにわたって構成されているバックアップの統合ビューを提供します。
+- Azure マネージド ディスクのバックアップを構成するための最初の手順は、[バックアップ コンテナー](backup-vault-overview.md)を作成することです。 このコンテナーは、さまざまなワークロードにわたって構成されているバックアップの統合ビューを提供します。
 
 - 次に、バックアップの頻度と保有期間を構成できるバックアップ ポリシーを作成します。
 

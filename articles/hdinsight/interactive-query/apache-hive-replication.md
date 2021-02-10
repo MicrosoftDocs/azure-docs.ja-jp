@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight クラスターで Apache Hive レプリケーションを使用する方法
 description: HDInsight クラスターで Hive レプリケーションを使用して、Hive メタストアと Azure Data Lake Storage Gen 2 データ レイクをレプリケートする方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857743"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941343"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Apache Hive レプリケーションを使用する方法
 
@@ -140,7 +137,7 @@ repl dump tpcds_orc from 2925;
 
 レプリケーションは通常、プライマリとセカンダリの間で一方向に構成されます。ここで、プライマリは読み取りと書き込みの要求に対応します。 セカンダリ クラスターは、読み取り要求のみに対応します。 障害が発生した場合、セカンダリで書き込みが許可されますが、レプリケーションの反転をプライマリに構成し直す必要があります。
 
-:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive レプリケーションの図":::
+:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive レプリケーションのパターン":::
 
 プライマリ/セカンダリ、ハブおよびスポーク、リレーなど、Hive レプリケーションに適したパターンは多数あります。
 
@@ -224,7 +221,7 @@ Ranger ポリシーは、Ranger のインポート/エクスポート機能を�
 
 この記事で説明した項目の詳細については、次を参照してください。
 
-- [Azure HDInsight の事業継続性](../hdinsight-business-continuity.md)
-- [Azure HDInsight の事業継続性アーキテクチャ](../hdinsight-business-continuity-architecture.md)
+- [Azure HDInsight のビジネス継続性](../hdinsight-business-continuity.md)
+- [Azure HDInsight のビジネス継続性アーキテクチャ](../hdinsight-business-continuity-architecture.md)
 - [Azure HDInsight の高可用性ソリューション アーキテクチャのケース スタディ](../hdinsight-high-availability-case-study.md)
 - [Azure HDInsight における Apache Hive と HiveQL](../hadoop/hdinsight-use-hive.md)

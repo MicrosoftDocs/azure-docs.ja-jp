@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a8e08d0045d0520241341cc08fb800468ed6897
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928615"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661087"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -38,7 +38,7 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 - **[名前]** と **[ユーザー名]** - **[名前]** プロパティには、ユーザーの姓名が含まれます。 **[ユーザー名]** は、ユーザーがサインインするために入力する識別子です。 ユーザー名には、完全なドメインが含まれます。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 *your-domain.onmicrosoft.com*、または検証済みの非フェデレーション [カスタム ドメイン](../active-directory/fundamentals/add-custom-domain.md)名 (*contoso.com* など) のいずれかである必要があります。
 - **プロファイル** - アカウントは、ユーザー データのプロファイルを使用して設定されます。 姓、名、役職、および部署名を入力できます。 プロファイルは、アカウントの作成後に編集できます。
-- **グループ** - グループを使用して管理タスクを実行します。たとえば、複数のユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。 新しいアカウントを、テナントの既存の[グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)に配置できます。
+- **グループ** - グループを使用して管理タスクを実行します。たとえば、多くのユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。 新しいアカウントを、テナントの既存の[グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)に配置できます。
 - **ディレクトリ ロール** - ユーザー アカウントが所有する、テナントのリソースへのアクセス レベルを指定する必要があります。 次のアクセス許可レベルを使用できます。
 
     - **ユーザー** - ユーザーは、割り当てられたリソースにアクセスできますが、テナントのリソースの大半を管理できません。
@@ -70,7 +70,7 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 外部ユーザーをゲスト ユーザーとしてテナントに招待できます。 ゲスト ユーザーを Azure AD B2C テナントに招待する一般的なシナリオは、管理責任を共有することです。 ゲスト アカウントの使用例は、「[Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/external-identities/user-properties.md)」を参照してください。
 
-ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 ユーザーは招待リンクによって同意ページに移動します。そのページで、**[作業開始]** ボタンを選択し、アクセス許可を受け取ったことを確認します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
+ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 招待リンクによって、ユーザーは同意ページに移動します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
 
 ゲスト ユーザーは、[Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) を使用して招待することもできます。
 
@@ -78,7 +78,7 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 コンシューマー ユーザーは、Azure AD B2C によってセキュリティで保護されているアプリケーションにサインインできますが、Azure portal などの Azure リソースにはアクセスできません。 コンシューマー ユーザーは、ローカル アカウントまたは Facebook や Twitter などのフェデレーション アカウントを使用できます。 コンシューマー アカウントは、[サインアップ ユーザー フローまたはサインイン ユーザー フロー](user-flow-overview.md)を使用するか、Microsoft Graph API を使用するか、あるいは Azure portal を使用して作成されます。
 
-コンシューマー ユーザー アカウントを作成するときに、カスタム ユーザー属性を使用して、収集されるデータを指定できます。 詳細については、「[Azure Active Directory B2C でカスタム属性を定義する](user-flow-custom-attributes.md)」を参照してください。
+コンシューマー ユーザー アカウントを作成するときに収集されるデータを指定できます。 詳細については、[ユーザー属性の追加とユーザー入力のカスタマイズ](configure-user-input.md)に関する記事を参照してください。
 
 コンシューマー アカウントの管理の詳細については、「[Microsoft Graph での Azure AD B2C ユーザーアカウントの管理](manage-user-accounts-graph-api.md)」を参照してください。
 

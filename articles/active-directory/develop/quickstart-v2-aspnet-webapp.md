@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 420415cc3bc2228a104ccf054098543bf04847b0
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178587"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225767"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>クイック スタート:ASP.NET Web アプリに Microsoft ID プラットフォーム サインインを追加する
 
@@ -54,12 +54,13 @@ ms.locfileid: "98178587"
 > 1. アプリケーションの **名前** を入力します (例: `ASPNET-Quickstart`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
 > 1. **[リダイレクト URI]** に `https://localhost:44368/` を追加し、 **[登録]** を選択します。
 > 1. **[管理]** で、 **[認証]** を選択します。
-> 1. **[暗黙の付与]** サブセクションで、 **[ID トークン]** を選択します。
+> 1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[ID トークン]** を選択します。
 > 1. **[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイック スタートのサンプル コードを動作させるには、応答 URL として `https://localhost:44368/` を追加する必要があります。
+> このクイックスタートのサンプル コードには、`https://localhost:44368/` という **リダイレクト URI** が必要です。
+
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -169,7 +170,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID |
 > | `Authority`    | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は `https://login.microsoftonline.com/{tenant}/v2.0`。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |
-> | `RedirectUri`  | Microsoft ID プラットフォーム エンドポイントに対する認証後にユーザーが送られる URL |
+> | `RedirectUri`  | Microsoft ID プラットフォームに対する認証後にユーザーが送られる URL |
 > | `PostLogoutRedirectUri`     | サインオフ後にユーザーが送られる URL |
 > | `Scope`     | 要求されているスコープのスペース区切りリスト |
 > | `ResponseType`     | 認証からの応答に ID トークンが含まれていることを要求します |

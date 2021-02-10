@@ -7,12 +7,12 @@ author: aniket-ms
 ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
-ms.openlocfilehash: 626b061cc237f7238d47863a3e1ed88961d2f742
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 7df75077785c66215008e045ef0b1e451ba29f57
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680589"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931098"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Azure HDInsight Interactive Query クラスター (Hive LLAP) サイズ設定ガイド
 
@@ -216,7 +216,7 @@ LLAP のワークロード管理を有効にする場合は、ワークロード
  - ワークロード管理のキューの容量 = 20 GB
  - 既定のキューの容量 = 10 GB
 
-ワークロード管理のキューの容量が 20 GB の場合、リソース プランでは `QUERY_PARALLELISM` 値に 5 を指定できます。これは、コンテナー サイズが 4 GB の Tez AM をワークロード管理が 5 つ起動できることを意味します。 `QUERY_PARALLELISM` が容量を超えている場合は、一部の Tez AM が `ACCEPTED` 状態で停止している可能性があります。 Hiveserver2 Interactive は、`RUNNING` 状態ではない Tez AM にクエリ フラグメントを送信することはできません。
+ワークロード管理のキューの容量が 20 GB の場合、リソース プランでは `QUERY_PARALLELISM` 値に 5 を指定できます。これは、コンテナー サイズが 4 GB の Tez AM をワークロード管理が 5 つ起動できることを意味します。 `QUERY_PARALLELISM` が容量を超えている場合は、一部の Tez AM が `ACCEPTED` 状態で応答を停止している可能性があります。 Hiveserver2 Interactive は、`RUNNING` 状態ではない Tez AM にクエリ フラグメントを送信することはできません。
 
 
 #### <a name="next-steps"></a>**次の手順**

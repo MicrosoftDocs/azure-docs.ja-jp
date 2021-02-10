@@ -3,7 +3,7 @@ title: エンタイトルメント管理の委任とロール - Azure AD
 description: 部門マネージャーとプロジェクト マネージャーが自分でアクセスを管理できるよう、IT 管理者からアクセス ガバナンスを委任する方法について説明します。
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 12/23/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746679"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937675"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理の委任とロール
 
@@ -118,7 +118,7 @@ IT 管理者の Hana には、各部署に連絡先担当者がいます。マ�
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>カタログにリソースを追加するために必要なロール
 
-グローバル管理者は、カタログ内の任意のグループ (クラウドが作成したセキュリティ グループまたはクラウドが作成した Microsoft 365 グループ)、アプリケーション、または SharePoint Online サイトを追加または削除することができます。 ユーザー管理者は、ディレクトリ ロールに割り当て可能であるように構成されたグループを除き、カタログ内の任意のグループまたはアプリケーションを追加または削除することができます。
+グローバル管理者は、カタログ内の任意のグループ (クラウドが作成したセキュリティ グループまたはクラウドが作成した Microsoft 365 グループ)、アプリケーション、または SharePoint Online サイトを追加または削除することができます。 ユーザー管理者は、ディレクトリ ロールに割り当て可能であるように構成されたグループを除き、カタログ内の任意のグループまたはアプリケーションを追加または削除することができます。 ユーザー管理者は、ディレクトリ ロールに割り当て可能として構成されているグループを含むカタログ内のアクセス パッケージを管理できます。
 
 グローバル管理者でもユーザー管理者でもないユーザーがカタログにグループ、アプリケーション、または SharePoint Online サイトを追加する場合、そのユーザーは、必要な Azure AD ディレクトリ ロールとカタログ所有者のエンタイトルメント管理ロールの "*両方*" を持っている必要があります。 次の表は、カタログにリソースを追加するために必要なロールの組み合わせを示します。 カタログからリソースを削除するには、同じロールが必要です。
 

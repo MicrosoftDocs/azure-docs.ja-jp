@@ -1,19 +1,16 @@
 ---
 title: HDInsight の ML サービスの運用化 - Azure
 description: Azure HDInsight で ML Services を使用して、データ モデルを運用化し、予測を行う方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536268"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944007"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -54,11 +51,11 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
         sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
         ```
 
-1. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、 **ML Server を運用化のために構成** します。
+1. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**ML Server を運用化のために構成** します。
 
     ![R server の管理ユーティリティ (選択)](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-1. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「 **A** 」を入力します。
+1. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「**A**」を入力します。
 
     ![R server の管理ユーティリティ (運用化)](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -70,11 +67,11 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 1. 必要に応じて、次のように診断テストを実行することで、診断チェックを実行できます。
 
-    a. メイン メニューから、 **6** を選択して、診断テストを実行します。
+    a. メイン メニューから、**6** を選択して、診断テストを実行します。
 
     ![R server の管理ユーティリティ (診断)](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
-    b. Diagnostic Tests メニューから、 **A** を選択します。メッセージが表示されたら、ローカル管理者ユーザーに対して指定したパスワードを入力します。
+    b. Diagnostic Tests メニューから、**A** を選択します。メッセージが表示されたら、ローカル管理者ユーザーに対して指定したパスワードを入力します。
 
     ![R server の管理ユーティリティ (テスト)](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
@@ -82,11 +79,11 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
     ![R server の管理ユーティリティ (合格)](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
-    d. 表示されたメニュー オプションから「 **E** 」を入力して、メイン メニューに戻ります。次に、「 **8** 」を入力して、管理ユーティリティを終了します。
+    d. 表示されたメニュー オプションから「**E**」を入力して、メイン メニューに戻ります。次に、「**8**」を入力して、管理ユーティリティを終了します。
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Apache Spark で Web サービスを実行しているときの長い待ち時間
 
-mrsdeploy の機能を使って作成された Web サービスを Apache Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、" *rserve2* " というユーザーに属します。 この問題を回避するには、次のようにします。
+mrsdeploy の機能を使って作成された Web サービスを Apache Spark コンピューティング コンテキストで実行しようとしているときに長い待ち時間が生じた場合、いくつかの不足しているフォルダーを追加する必要があります。 Spark アプリケーションは、Web サービスから mrsdeploy の機能を使って呼び出された場合は常に、"*rserve2*" というユーザーに属します。 この問題を回避するには、次のようにします。
 
 ```r
 # Create these required folders for user 'rserve2' in local and hdfs:
@@ -177,9 +174,9 @@ ML サービス クラスターは [Apache Hadoop YARN](https://hadoop.apache.or
     dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
     ```
 
-1. 「 **1** 」を入力して、オプション **[Configure ML Server for Operationalization]** を選択します。
+1. 「**1**」を入力して、オプション **[Configure ML Server for Operationalization]** を選択します。
 
-1. 「 **C** 」を入力して、オプション `C. Compute node` を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
+1. 「**C**」を入力して、オプション `C. Compute node` を選択します。 これで、ワーカー ノードでコンピューティング ノードが構成されます。
 
 1. 管理ユーティリティを終了します。
 

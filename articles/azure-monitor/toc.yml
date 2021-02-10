@@ -159,7 +159,7 @@
         - name: Azure 仮想マシンの監視
           href: insights/monitor-vm-azure.md
           displayname: VM
-    - name: 配置
+    - name: デプロイ
       items:
         - name: Azure Monitor をデプロイする
           href: deploy.md
@@ -329,6 +329,8 @@
               href: platform/data-sources-linux-applications.md
             - name: IIS ログ
               href: platform/data-sources-iis-logs.md
+            - name: Windows データのイベント トレーシング
+              href: platform/data-sources-event-tracing-windows.md
             - name: カスタム ログ
               href: platform/data-sources-custom-logs.md
             - name: カスタム フィールド
@@ -1042,6 +1044,8 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: 既存の AKS クラスターでの有効化
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Azure Policy による AKS での有効化
+              href: containers/container-insights-enable-aks-policy.md
             - name: Arc 対応クラスターでの有効化
               href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: ハイブリッド クラスターでの有効化

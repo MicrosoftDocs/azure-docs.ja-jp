@@ -1,14 +1,14 @@
 ---
 title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
-ms.date: 10/14/2020
+ms.date: 01/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4ce265084662fb7a83f902e046d6e079abff9a48
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 33c7da1d7484056eb1bb2fd4b00d892137ed2b64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058099"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787370"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -33,7 +33,7 @@ ms.locfileid: "92058099"
 
 1. 名前を変更する管理グループを選択します。
 
-1. **詳細**を選択します。
+1. **詳細** を選択します。
 
 1. ページの上部にある **[グループ名の変更]** オプションを選択します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "92058099"
 
 1. メニューが開いたら、表示する新しい名前を入力します。
 
-   :::image type="content" source="./media/rename_context.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/rename_context.png" alt-text="[グループ名の変更] ウィンドウと、管理グループの名前を変更するためのオプションのスクリーンショット。" border="false":::
 
 1. **[保存]** を選択します。
 
@@ -78,18 +78,18 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 1. 削除する管理グループを選択します。
 
-1. **詳細**を選択します。
+1. **詳細** を選択します。
 
 1. **[削除]** を選択します
 
-   :::image type="content" source="./media/delete.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/delete.png" alt-text="[削除] ボタンが強調表示されている [管理グループ] ページのスクリーンショット。" border="false":::
 
    > [!TIP]
    > アイコンが無効になっている場合は、アイコンの上にマウス セレクターを置くと理由が表示されます。
 
 1. 管理グループを削除することを確認するウィンドウが開きます。
 
-   :::image type="content" source="./media/delete_confirm.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/delete_confirm.png" alt-text="管理グループを削除するための [グループの削除] 確認ダイアログのスクリーンショット。" border="false":::
 
 1. **[はい]** を選択します。
 
@@ -123,7 +123,7 @@ az account management-group delete --name 'Contoso'
 
 1. 管理グループの詳細を表示するには、管理グループのタイトルの横にある **[(詳細])** リンクを選択します。 このリンクを使用できない場合は、その管理グループを表示するアクセス許可がありません。
 
-   :::image type="content" source="./media/main.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="子管理グループとサブスクリプションが表示されている [管理グループ] ページのスクリーンショット。" border="false":::
 
 ### <a name="view-in-powershell"></a>PowerShell での表示
 
@@ -229,7 +229,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 一覧で、正しい ID を持つサブスクリプションを選択します。
 
-   :::image type="content" source="./media/add_context_sub.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/add_context_sub.png" alt-text="管理グループに追加する既存のサブスクリプションを選択するための [サブスクリプションの追加] オプションのスクリーンショット。" border="false":::
 
 1. [保存] を選択します。
 
@@ -243,13 +243,13 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 一覧内で移動するサブスクリプションの行末にある省略記号を選択します。
 
-   :::image type="content" source="./media/move_small.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/move_small.png" alt-text="[移動] オプションを選択するサブスクリプションの代替メニューのスクリーンショット。" border="false":::
 
 1. **[移動]** を選択します。
 
-1. 開かれたメニューで、**親管理グループ**を選択します。
+1. 開かれたメニューで、**親管理グループ** を選択します。
 
-   :::image type="content" source="./media/move_small_context.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/move_small_context.png" alt-text="[移動] ウィンドウと、サブスクリプションを別の管理グループに移動するためのオプションのスクリーンショット。" border="false":::
 
 1. **[保存]** を選択します。
 
@@ -281,6 +281,42 @@ az account management-group subscription add --name 'Contoso' --subscription '12
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
+### <a name="move-subscriptions-in-arm-template"></a>ARM テンプレートでのサブスクリプションの移動
+
+Azure Resource Manager テンプレート (ARM テンプレート) でサブスクリプションを移動するには、次のテンプレートを使用します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "targetMgId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the management group that you want to move the subscription to."
+            }
+        },
+        "subscriptionId": {
+            "type": "string",
+            "metadata": {
+                "description": "Provide the ID of the existing subscription to move."
+            }
+        }
+    },
+    "resources": [
+        {
+            "scope": "/", 
+            "type": "Microsoft.Management/managementGroups/subscriptions",
+            "apiVersion": "2020-05-01",
+            "name": "[concat(parameters('targetMgId'), '/', parameters('subscriptionId'))]",
+            "properties": {
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
 ## <a name="move-management-groups"></a>管理グループの移動 
 
 ### <a name="move-management-groups-in-the-portal"></a>ポータルでの管理グループの移動
@@ -298,7 +334,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - 新規作成を選んだ場合、新しい管理グループが作成されます。
    - 既存のものを使用することを選んだ場合は、この管理グループに移動できるすべての管理グループのドロップダウンが表示されます。  
 
-   :::image type="content" source="./media/add_context_MG.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/add_context_MG.png" alt-text="新しい管理グループを作成するための [管理グループの追加] オプションのスクリーンショット。" border="false":::
 
 1. **[保存]** を選択します。
 
@@ -323,7 +359,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 管理グループは、[Azure アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)内でサポートされます。 他の Azure リソースと同じ一元的な場所で、管理グループに発生するすべてのイベントのクエリを実行できます。 たとえば、特定の管理グループに対して行われた、ロールの割り当てまたはポリシーの割り当ての変更を、すべて確認できます。
 
-:::image type="content" source="./media/al-mg.png" alt-text="[管理グループ] ページの操作バーと [グループ名の変更] ボタンのスクリーンショット。" border="false":::
+:::image type="content" source="./media/al-mg.png" alt-text="選択した管理グループに関連するアクティビティ ログと操作のスクリーンショット。" border="false":::
 
 Azure portal の外部で管理グループに対するクエリを使用する場合、管理グループのターゲット スコープは、 **"/providers/Microsoft.Management/managementGroups/{yourMgID}"** のようになります。
 

@@ -129,7 +129,7 @@
             - name: 制限を理解する
               href: storsimple-8000-limits.md
             - name: ベスト プラクティス
-              href: 'https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_BestPractices_V1.1.pdf'
         - name: インストール
           items:
             - name: 安全性を確認する
@@ -262,11 +262,11 @@
             - name: Azure へのファイル サーバー DR を自動化する
               href: storsimple-disaster-recovery-using-azure-site-recovery.md
             - name: Express Route を使用した StorSimple
-              href: 'https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content'
-            - name: StorSimple と VMware
-              href: 'https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_ExpressRoute.pdf'
             - name: StorSimple と Hyper-V
-              href: 'https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6'
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_HyperVDeployment_v1.0.pdf'
+            - name: StorSimple と VMware
+              href: 'https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_VMware_v10.pdf'
             - name: 分散されたグローバル名前空間
               href: 'https://www.microsoft.com/download/details.aspx?id=45507'
         - name: モニター

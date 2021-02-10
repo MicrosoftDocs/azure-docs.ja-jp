@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub デバイス ストリームを使用して C# でデバイス アプリと通信する
+title: クイックスタート - Azure IoT Hub デバイス ストリームを使用して C# でデバイス アプリと通信する
 description: このクイックスタートでは、IoT Hub を通じて確立されたデバイス ストリームを介して通信する 2 つのサンプル C# アプリケーションを実行します。
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 8a8e6f12a8709935a6fa9551261c56fc8f2aabbd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3eb65db27e5b96f4b12973154bc860a2ab3df020
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832077"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624610"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C# でデバイス アプリケーションと通信する (プレビュー)
 
@@ -74,7 +74,7 @@ Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/su
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。

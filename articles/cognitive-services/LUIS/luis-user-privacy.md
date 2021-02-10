@@ -81,7 +81,7 @@ Australia Authoring (Programmatic API とも呼ばれる) のリソースは Azu
 
 ### <a name="united-states"></a>アメリカ合衆国
 
-United States Authoring (Programmatic API とも呼ばれる) のリソースは Azure の米国地域でホストされており、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
+米国 Authoring (Programmatic API とも呼ばれる) のリソースは Azure の米国地域でホストされており、次の Azure 地域へのエンドポイントのデプロイをサポートしています。
 
 * ヨーロッパまたはオーストラリアのオーサリング リージョンではサポートされていない Azure 地域
 

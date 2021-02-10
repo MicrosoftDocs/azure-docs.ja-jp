@@ -4,12 +4,12 @@ description: Azure Custom Vision を使用して、おもちゃのトラック�
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 0b5d011ac7832436edf1f5c898b1fe1e239d0aea
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060521"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055367"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>チュートリアル:Live Video Analytics on IoT Edge と Azure Custom Vision でライブ ビデオを分析する
 
@@ -51,7 +51,6 @@ ms.locfileid: "98060521"
 
 ## <a name="prerequisites"></a>前提条件
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/csharp/prerequisites.md)]
 ::: zone-end
@@ -59,6 +58,10 @@ ms.locfileid: "98060521"
 ::: zone pivot="programming-language-python"
 [!INCLUDE [prerequisites](includes/custom-vision-tutorial/python/prerequisites.md)]
 ::: zone-end
+
+> [!IMPORTANT]
+> この Custom Vision モジュールでは、**Intel x86 および amd64** アーキテクチャだけがサポートされています。 続行する前に、エッジ デバイスのアーキテクチャを確認してください。
+
 ## <a name="review-the-sample-video"></a>サンプル ビデオを確認する
 
 このチュートリアルでは、[おもちゃの車の推論ビデオ](https://lvamedia.blob.core.windows.net/public/t2.mkv) ファイルを使用してライブ ストリームをシミュレートします。 このビデオは、[VLC media player](https://www.videolan.org/vlc/) などのアプリケーションを使用して確認できます。 [Ctrl+N](https://lvamedia.blob.core.windows.net/public/t2.mkv) キーを押し、**おもちゃの車の推論ビデオ** へのリンクを貼り付けて、再生を開始します。 ビデオを見ると、36 秒の時点でおもちゃのトラックがビデオに出てくることがわかります。 このカスタム モデルは、この特定のおもちゃのトラックを検出するようにトレーニングされています。 
@@ -81,6 +84,9 @@ HTTP 拡張ノードは、プロキシの役割を果たします。  これは�
 Custom Vision という名前が示唆するように、これを使用して、独自のカスタム オブジェクト検出器または分類器をクラウドに構築できます。 これには、コンテナーを介してクラウドまたはエッジにデプロイできる Custom Vision モデルを構築するためのシンプルで使いやすい、直感的なインターフェイスが用意されています。
 
 おもちゃのトラックの検出器を構築するには、「[クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する](../../cognitive-services/custom-vision-service/get-started-build-detector.md)」を参照してください。
+
+> [!IMPORTANT]
+> この Custom Vision モジュールでは、**Intel x86 および amd64** アーキテクチャだけがサポートされています。 続行する前に、エッジ デバイスのアーキテクチャを確認してください。
 
 その他のメモ:
  

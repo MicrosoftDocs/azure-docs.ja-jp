@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 123b36ba854bec8b363d59bbed5e70f18da1e578
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6aa810cce144eb480eb5e9087b23c247626e4974
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653709"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953837"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Microsoft アカウントでのサインアップおよびサインインを設定する
 
@@ -36,7 +36,7 @@ ms.locfileid: "97653709"
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する
 
-Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](openid-connect.md)として Microsoft アカウントを使用するには、Azure AD テナントにアプリケーションを作成する必要があります。 Azure AD テナントは、Azure AD B2C テナントと同じものではありません。 まだ Microsoft アカウントを持っていない場合は、[https://www.live.com/](https://www.live.com/) で取得できます。
+Azure Active Directory B2C (Azure AD B2C) で Microsoft アカウントを持つユーザーのサインインを有効にするには、[Azure portal](https://portal.azure.com) でアプリケーションを作成する必要があります。 詳細については、[Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)方法に関するページを参照してください。 まだ Microsoft アカウントを持っていない場合は、[https://www.live.com/](https://www.live.com/) で取得できます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
@@ -48,15 +48,15 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](openid-con
    アカウントの種類のその他の選択肢の詳細については、「[クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](../active-directory/develop/quickstart-register-app.md)」を参照してください。
 1. **[リダイレクト URI (省略可能)]** で、 **[Web]** を選択し、テキスト ボックスに「`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp`」と入力します。 `<tenant-name>` を Azure AD B2C テナント名に置き換えます。
 1. **[登録]** を選択します
-1. アプリケーションの [概要] ページに表示されている **[アプリケーション (クライアント) ID]** を記録します。 これは、次のセクションで ID プロバイダーを構成するときに必要です。
+1. アプリケーションの [概要] ページに表示されている **[アプリケーション (クライアント) ID]** を記録します。 このクライアント ID は、次のセクションで ID プロバイダーを構成するときに必要です。
 1. **[証明書とシークレット]** を選択します。
 1. **[新しいクライアント シークレット]** をクリックします
 1. シークレットの **[説明]** を「*アプリケーション パスワード 1*」のように入力して、 **[追加]** をクリックします。
-1. **[値]** 列に示されているアプリケーション パスワードを記録します。 これは、次のセクションで ID プロバイダーを構成するときに必要です。
+1. **[値]** 列に示されているアプリケーション パスワードを記録します。 このクライアント シークレットは、次のセクションで ID プロバイダーを構成するときに必要です。
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>ID プロバイダーとして Microsoft account アカウントを構成する
+## <a name="configure-microsoft-as-an-identity-provider"></a>Microsoft を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
@@ -66,6 +66,16 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](openid-con
 1. **[クライアント ID]** には、前に作成した Azure AD アプリケーションのアプリ (クライアント) ID を入力します。
 1. **[クライアント シークレット]** には、記録したクライアント シークレットを入力します。
 1. **[保存]** を選択します。
+
+## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>ユーザー フローに Microsoft ID プロバイダーを追加する 
+
+1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
+1. Microsoft ID プロバイダーを追加するユーザー フローをクリックします。
+1. **[ソーシャル ID プロバイダー]** から、 **[Microsoft アカウント]** を選択します。
+1. **[保存]** を選択します。
+1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
+1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[ユーザー フローを実行します]** をクリックします
 
 ::: zone-end
 
@@ -99,9 +109,9 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[キー使用法]** として [`Signature`] を選択します。
 1. **Create** をクリックしてください。
 
-## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
+## <a name="configure-microsoft-as-an-identity-provider"></a>Microsoft を ID プロバイダーとして構成する
 
-ユーザーが Microsoft アカウントを使用してサインインできるようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
+ユーザーが Microsoft アカウントを使用してサインインできるようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できるクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 ポリシーの拡張ファイル内で **ClaimsProvider** 要素に追加することで、Azure AD をクレーム プロバイダーとして定義できます。
 
@@ -114,7 +124,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
       <Domain>live.com</Domain>
       <DisplayName>Microsoft Account</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="MSA-OIDC">
+        <TechnicalProfile Id="MSA-MicrosoftAccount-OpenIdConnect">
           <DisplayName>Microsoft Account</DisplayName>
           <Protocol Name="OpenIdConnect" />
           <Metadata>
@@ -156,81 +166,28 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 これで、Azure AD B2C で Azure AD 内の Microsoft アカウント アプリケーションと通信する方法を認識できるようにポリシーが構成されました。
 
-### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-続行する前に、変更したポリシーをアップロードして、ここまで問題がないことを確認します。
 
-1. Azure portal で Azure AD B2C テナントに移動し、 **[Identity Experience Framework]** を選択します。
-1. **[カスタム ポリシー]** ページで、 **[カスタムポリシーのアップロード]** を選択します。
-1. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
-1. **[アップロード]** をクリックします。
-
-ポータルにエラーが表示されなれば、次のセクションに進んでください。
-
-## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
-
-この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、Microsoft アカウント ID プロバイダーも含まれるようにそれを変更します。
-
-1. スターター パックから *TrustFrameworkBase.xml* ファイルを開きます。
-1. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
-1. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
-1. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
-1. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInMSA` 」のように入力します。
-
-### <a name="display-the-button"></a>ボタンを表示する
-
-**ClaimsProviderSelection** 要素は、サインアップまたはサインイン画面の ID プロバイダーのボタンに類似しています。 Microsoft アカウント用の **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
-
-1. *TrustFrameworkExtensions.xml* ファイルで、作成したユーザー体験内に `Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-1. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`MicrosoftAccountExchange` など) に設定します。
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MicrosoftAccount-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Microsoft アカウントと通信してトークンを受信します。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-1. 次の **ClaimsExchange** 要素を追加します。ID には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
-
-    ```xml
-    <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
-    ```
-
-    **TechnicalProfileReferenceId** の値を、先ほど追加したクレーム プロバイダーの **TechnicalProfile** 要素内の `Id` 値と一致するように更新します。 たとえば、「 `MSA-OIDC` 」のように入力します。
-
-1. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-microsoft-identity-provider-to-a-user-flow"></a>ユーザー フローに Microsoft ID プロバイダーを追加する 
-
-1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
-1. Microsoft ID プロバイダーを追加するユーザー フローをクリックします。
-1. **[ソーシャル ID プロバイダー]** から、 **[Microsoft アカウント]** を選択します。
-1. **[保存]** を選択します。
-1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
-1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
-
-作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
-
-1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、その名前を *SignUpSignInMSA.xml* に変更します。
-1. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInMSA` 」のように入力します。
-1. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_msa` にします。
-1. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、先ほど作成したユーザー体験の ID (SignUpSignInMSA) と一致するように更新します。
-1. 変更を保存し、ファイルをアップロードし、一覧から新しいポリシーを選択します。
-1. 前のセクションで作成した Azure AD B2C アプリケーション (または、前提条件の完了によるもの (*webapp1* や *testapp1* など)) が **[アプリケーションの選択]** フィールドで選択されていることを確認した後、 **[今すぐ実行]** をクリックしてそれをテストします。
-1. **[Microsoft アカウント]** ボタンを選択し、サインインします。
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ::: zone-end

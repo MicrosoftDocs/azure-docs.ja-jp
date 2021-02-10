@@ -3,12 +3,12 @@ title: 記録の再生 - Azure
 description: Live Video Analytics on IoT Edge を使用して、クラウドにビデオを数週間から数か月にわたって録画する継続的なビデオ記録を行うことができます。 また、イベントベースの録画を使用して、記録を必要なクリップに制限することもできます。 この記事では、記録を再生する方法について説明します。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0351f10d9fac3ad7e3b4fdd5fd549eb7c0023694
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84260385"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490897"
 ---
 # <a name="playback-of-recordings"></a>記録の再生 
 

@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511731"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790988"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>チュートリアル:Azure Sentinel でインシデントを調査する
 
 > [!IMPORTANT]
-> 調査グラフは、現在、**プレビュー** 段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
+> この調査グラフは、現在 **一般公開** されています。 
 
 このチュートリアルは、Azure Sentinel でインシデントを調査するためのものです。 Azure Sentinel にデータ ソースを接続した後で、不審な事態が起きたときに通知を受けるようにします。 これを実現するために、Azure Sentinel では、割り当てや調査が可能なインシデントを生成する高度なアラート ルールを作成できます。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: 6929c0110dcf9ff9f59c200243e886af1936c22f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6f6f98b39f693d2d15b77cdf6de6251e1c264c8a
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018833"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746089"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>汎用仮想マシンのサイズ
 
@@ -23,7 +23,7 @@ ms.locfileid: "92018833"
 - [Av2 シリーズ](av2-series.md) VM は多様なハードウェアの種類とプロセッサにデプロイできます。 A シリーズの VM は、開発とテストのような、エントリ レベルのワークロードに最適な CPU のパフォーマンスとメモリ構成を備えています。 デプロイされるハードウェアに関係なく、実行中のインスタンスに対して一貫したプロセッサ パフォーマンスを提供するため、ハードウェアに基づいてサイズが調整されます。 このサイズがデプロイされる物理ハードウェアを判断するには、仮想マシン内から仮想ハードウェアをクエリします。 ユース ケースの例には、開発とテスト用のサーバー、低トラフィックの Web サーバー、小規模から中規模のデータベース、概念実証、コード リポジトリがあります。
 
   > [!NOTE]
-  > A8 - A11 VM は、2021 年 3 月で廃止される予定です。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。
+  > A8、A9、A10、A11 VM は、2021 年 3 月に廃止される予定です。 詳細については、「[HPC マイグレーション ガイド](https://azure.microsoft.com/resources/hpc-migration-guide/)」を参照してください。 これらの VM サイズは "v2" ではなく、元の "A_v1" シリーズにあります。
 
 - Web サーバー、小規模なデータベース、開発とテスト環境など、CPU が常時最大限のパフォーマンスを発揮している必要のないワークロードでは、[B シリーズのバースト可能な](sizes-b-series-burstable.md) VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となります。 B シリーズでは、価格を重視するベースライン パフォーマンスが設定されている VM サイズを購入でき、VM インスタンスの使用量がベース パフォーマンスを下回る場合にはクレジットが蓄積されていきます。 VM にクレジットが蓄積されていると、アプリケーションでより高い CPU パフォーマンスが必要な場合に、VM のベースラインを上回り、CPU を 100% まで使用できます。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: aa3466456b99664b1b39bd415680a6a291f85acd
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049288"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050517"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -55,7 +55,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 * イベント ハブ
 * Service Bus
 
-エンドポイントを作成するには、Azure Digital Twins [**コントロール プレーン API**](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)、[**CLI コマンド**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)、または [**Azure portal**](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) を使用できます。 
+エンドポイントを作成するには、Azure Digital Twins [REST API、CLI コマンド](how-to-manage-routes-apis-cli.md#create-an-endpoint-for-azure-digital-twins)、または [Azure portal](how-to-manage-routes-portal.md#create-an-endpoint-for-azure-digital-twins) を使用できます。
 
 エンドポイントを定義するときは、次を指定する必要があります。
 * エンドポイントの名前
@@ -71,7 +71,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 ## <a name="create-an-event-route"></a>イベント ルートを作成する
  
-イベント ルートを作成するには、Azure Digital Twins [**コントロール プレーン API**](how-to-manage-routes-apis-cli.md#create-an-event-route)、[**CLI コマンド**](how-to-manage-routes-apis-cli.md#manage-endpoints-and-routes-with-cli)、または [**Azure portal**](how-to-manage-routes-portal.md#create-an-event-route) を使用できます。 
+イベント ルートを作成するには、Azure Digital Twins [REST API、CLI コマンド](how-to-manage-routes-apis-cli.md#create-an-event-route)、または [Azure portal](how-to-manage-routes-portal.md#create-an-event-route) を使用できます。
 
 次に示すのは、`CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
 
@@ -85,8 +85,6 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 > [!TIP]
 > すべての SDK 関数に同期バージョンと非同期バージョンがあります。
-
-ルートは、[Azure Digital Twins CLI](how-to-use-cli.md) を使用して作成することもできます。
 
 ## <a name="dead-letter-events"></a>配信不能イベント
 

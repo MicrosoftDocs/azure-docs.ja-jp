@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165860"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808001"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,13 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+## <a name="february-2021"></a>2021 年 2 月
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+
+- 米国中部:13.89.169.20
+
+2021 年 2 月 28 日に、これらの SQL ゲートウェイによって、お客様のトラフィックの受け入れが開始されます。
+
 ## <a name="january-2021"></a>2021 年 1 月
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
 
@@ -41,7 +48,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - 韓国中部:52.231.17.22、52.231.17.23
 - インド西部:104.211.144.4
 
-2021 年 1 月 31 日に、これらの SQL ゲートウェイによって、お客様のトラフィックの受け入れが開始されます
+2021 年 1 月 31 日に、これらの SQL ゲートウェイによって、お客様のトラフィックの受け入れが開始されます。
 
 # <a name="completed"></a>[完了](#tab/completed-ip)
 次のゲートウェイの移行が完了しました。 

@@ -1,25 +1,11 @@
 ---
-title: v3 API を使用して開発する
-titleSuffix: Azure Media Services
-description: Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 10/23/2020
-ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: 416fb9fc4ce0622a710f2c119942edc4986ddd06
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790578"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必須フィールドです。 詳細については、aka.ms/skyeye/meta を参照してください。
+title:v3 API を使用して開発する :Azure Media Services の説明:Media Services v3 を使用して開発を行うときにエンティティと API に適用される規則について説明します。 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: conceptual ms.date:10/23/2020 ms.author: inhenkel ms.custom: seodec18
+
 ---
+
 # <a name="develop-with-media-services-v3-apis"></a>Media Services v3 API を使用して開発する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -32,10 +18,10 @@ ms.locfileid: "92790578"
 
 Media Services リソースと Media Services API へのアクセスが承認されるには、まず認証を受ける必要があります。 Media Services では、[Azure Active Directory (Azure AD) ベース](../../active-directory/fundamentals/active-directory-whatis.md)の認証がサポートされています。 2 つの一般的な認証オプションがあります。
  
-* **サービス プリンシパル認証** : サービスの認証に使用されます (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス)。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリの場合、サービス プリンシパルで Media Services に接続する中間層が常にあるはずです。
-* **ユーザー認証** : Media Services リソースを操作するアプリを使用しているユーザーを認証するために使用されます。 対話型アプリでは、最初に、ユーザーにユーザー資格情報の入力を求める必要があります。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。
+* **サービス プリンシパル認証**: サービスの認証に使用されます (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス)。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリです。 たとえば、Web アプリの場合、サービス プリンシパルで Media Services に接続する中間層が常にあるはずです。
+* **ユーザー認証**: Media Services リソースを操作するアプリを使用しているユーザーを認証するために使用されます。 対話型アプリでは、最初に、ユーザーにユーザー資格情報の入力を求める必要があります。 例として、承認済みユーザーがエンコード ジョブまたはライブ ストリーミングを監視するために使用する管理コンソール アプリがあります。
 
-Media Services API では、REST API 要求を行うユーザーまたはアプリは、Media Services アカウント リソースへのアクセス権を持ち、 **共同作成者** または **所有者** のロールを使用することが必要です。 **閲覧者** ロールで API にアクセスすることはできますが、使用できる操作は **Get** または **List** だけです。 詳細については、「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](rbac-overview.md)」を参照してください。
+Media Services API では、REST API 要求を行うユーザーまたはアプリは、Media Services アカウント リソースへのアクセス権を持ち、**共同作成者** または **所有者** のロールを使用することが必要です。 **閲覧者** ロールで API にアクセスすることはできますが、使用できる操作は **Get** または **List** だけです。詳細については、「[Media Services アカウント用のロールベースのアクセス制御 (RBAC)](rbac-overview.md)」を参照してください。
 
 サービス プリンシパルを作成する代わりに、Azure リソースに対するマネージド ID を使い、Azure Resource Manager で Media Services API にアクセスすることを検討してください。 Azure リソースに対するマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 

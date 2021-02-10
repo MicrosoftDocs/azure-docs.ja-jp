@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2b6266f308fce75f136aa4a2482c5b1be6eedb8e
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c16eb2af5dfb103541c2eac207eb8ee5c303168f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063367"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754714"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
-Microsoft Authentication Library (MSAL) を使用すると、ユーザーを認証し、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォーム エンドポイントから[トークン](developer-glossary.md#security-token)を取得できます。 これは、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API へのセキュリティで保護されたアクセスを提供するために使用できます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS などの、さまざまなアプリケーション アーキテクチャとプラットフォームをサポートします。
+Microsoft Authentication Library (MSAL) を使用すると、ユーザーを認証し、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォームから[トークン](developer-glossary.md#security-token)を取得できます。 これは、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API へのセキュリティで保護されたアクセスを提供するために使用できます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS などの、さまざまなアプリケーション アーキテクチャとプラットフォームをサポートします。
 
 MSAL では、多くのプラットフォームで API に一貫性があり、さまざまな方法でトークンを取得できます。 MSAL の使用には次のような利点があります。
 
@@ -59,6 +59,6 @@ MSAL は次のような多くのアプリケーション シナリオで使用�
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL と MSAL の違い
 
-Active Directory Authentication Library (ADAL) は開発者向け Azure AD (v1.0) エンドポイントと統合されます。このエンドポイントでは、MSAL が Microsoft ID プラットフォーム (v2.0) エンドポイントと統合されます。 v1.0 エンドポイントでは職場アカウントがサポートされますが、個人アカウントはサポートされません。 v2.0 エンドポイントは、Microsoft の個人アカウントと職場アカウントを 1 つの認証システムに統合します。 また、MSAL を使用するとき、Azure AD B2C の認証も取得できます。
+Active Directory Authentication Library (ADAL) は開発者向け Azure AD (v1.0) エンドポイントと統合されます。そこでは、MSAL が Microsoft ID プラットフォームと統合されます。 v1.0 エンドポイントでは職場アカウントがサポートされますが、個人アカウントはサポートされません。 v2.0 エンドポイントは、Microsoft の個人アカウントと職場アカウントを 1 つの認証システムに統合します。 また、MSAL を使用するとき、Azure AD B2C の認証も取得できます。
 
 詳細については、「[migrating to MSAL.NET from ADAL.NET](msal-net-migration.md)」 (ADAL.NET から MSAL.NET に移行する) と「[migrating to MSAL.js from ADAL.js](msal-compare-msal-js-and-adal-js.md)」 (ADAL.js から MSAL.js に移行する) をお読みください。

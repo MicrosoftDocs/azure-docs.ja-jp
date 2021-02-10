@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9f798751065d4889569f4b798ac864342f3e54ef
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462932"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934397"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [使用量] ダッシュボード
 
@@ -135,7 +135,7 @@ _**表 1: データ用語の辞書**_
 | プラン名 | プラン名 | コマーシャル マーケットプレース オファリングの名前。 |
 | DeploymentMethod | 非推奨 | 非推奨 (オファーの種類と同じ定義)
  |
-| 顧客の会社名 | 顧客の会社名 | 顧客が指定した会社名。 名前は、顧客の Azure サブスクリプションの名前とは異なる場合があります。 |
+| 顧客の会社名 | 顧客の会社名 | 顧客が指定した会社名。 この名前は、顧客の Azure サブスクリプションの名前とは異なる場合があります。 |
 | 使用日 | 使用日 | 使用量に基づいた資産の使用イベントの生成日。 |
 | IsMultisolution | Multisolution | オファーが Multisolution オファーの種類であるかどうかを示します。 |
 | 新しい顧客 | 非推奨 | 非推奨 |

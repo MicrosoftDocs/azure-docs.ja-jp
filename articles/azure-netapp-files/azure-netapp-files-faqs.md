@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913500"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881420"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -258,6 +258,16 @@ Azure NetApp Files ボリュームを別の Azure リージョンにレプリケ
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Azure Import/Export サービスを使用した移行はサポートされていますか?
 
 いいえ。 Azure Import/Export サービスでは、現在のところ Azure NetApp Files はサポートされません。
+
+## <a name="product-faqs"></a>製品に関する FAQ
+
+### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Azure VMware Solution (AVS) で Azure NetApp Files NFS または SMB ボリュームを使用できますか?
+
+Azure NetApp Files NFS ボリュームは、AVS Windows VM または Linux VM にマウントできます。 AVS Windows VM 上で Azure NetApp Files SMB 共有をマップできます。 詳細については、「[Azure NetApp Files と Azure VMware Solution]( ../azure-vmware/netapp-files-with-azure-vmware-solution.md)」を参照してください。  
+
+### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Azure VMware Solution (AVS) で Azure NetApp Files NFS または SMB ボリュームを使用する場合、どのリージョンがサポートされますか?
+
+AVS での Azure NetApp Files NFS または SMB ボリュームの使用は、米国東部、米国西部、西ヨーロッパ、およびオーストラリア東部の各リージョンでサポートされます。
 
 ## <a name="next-steps"></a>次のステップ  
 

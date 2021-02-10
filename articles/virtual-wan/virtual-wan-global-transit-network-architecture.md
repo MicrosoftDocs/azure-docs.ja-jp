@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 59e60dadda7c0de37cfabadbc36ca53bc3c2b336
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cfb75b6383d8ca449b4bc54b9d21cb16b3a4ad40
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563734"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428185"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -133,9 +133,6 @@ Azure Virtual WAN ハブにより、ハイブリッド ネットワーク上の�
 
 **図 5:Azure Firewall によるセキュリティ保護付き仮想ハブ**
 
-> [!NOTE]
-> ハブ間のファイアウォールは現在サポートされていません。 ハブ間のトラフィックは、各ハブ内の Azure Firewall をバイパスして直接移動します。
-
 Virtual WAN に対する Azure Firewall では、次のグローバルなセキュリティ保護付きトランジット接続パスがサポートされています。 かっこ内の文字は図 5 に対応します。
 
 * VNet 対 VNet セキュリティ保護付きトランジット (e)
@@ -152,6 +149,23 @@ VNet 対インターネットを使うと、VNet を Virtual WAN ハブ内の Az
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>ブランチ対インターネットまたはサードパーティ セキュリティ サービス (i)
 ブランチ対インターネットを使用すると、ブランチはVirtual WAN ハブ内の Azure Firewall を介してインターネットに接続できます。 サポートされているサードパーティのセキュリティ サービスを介したインターネットへのトラフィックは、Azure Firewall を経由しません。 Azure Firewall Manager を使用して、サポートされているサードパーティのセキュリティ サービスを介してブランチ対インターネットのパスを構成できます。 
+
+### <a name="branch-to-branch-secured-transit-cross-region-f"></a>リージョン間のブランチ対ブランチのセキュリティ保護付きトランジット (f)
+
+ブランチは、ExpressRoute 回線またはサイト間 VPN 接続を使用して、Azure Firewall によるセキュリティ保護付き仮想ハブに接続できます。 ブランチに最も近いリージョンにある Virtual WAN ハブに、ブランチを接続できます。
+
+このオプションでは、企業は Azure バックボーンを利用してブランチを接続できます。 ただし、この機能を使用することはできますが、ブランチの接続に Azure Virtual WAN を使う場合とプライベート WAN を使う場合の利点を比較検討する必要があります。  
+
+> [!NOTE]
+> ファイアウォール経由のトラフィックのハブ間の処理は現在サポートされていません。 ハブ間のトラフィックは、セキュリティ保護付き仮想ハブ内の適切なブランチにルーティングされます。ただし、トラフィックは各ハブの Azure Firewall をバイパスします。
+
+### <a name="branch-to-vnet-secured-transit-g"></a>ブランチ対 VNet セキュリティ保護付きトランジット (g)
+
+ブランチ対 VNet セキュリティ保護付きトランジットを使用すると、ブランチは、仮想 WAN ハブと同じリージョン内の仮想ネットワーク、および別のリージョンの別の仮想 WAN ハブに接続されている別の仮想ネットワークと通信できます。
+
+> [!NOTE]
+> ハブ間のファイアウォールは現在サポートされていません。 ハブ間のトラフィックは、各ハブ内の Azure Firewall をバイパスして直接移動します。  同じリージョン内の仮想ネットワークへの接続経由のトラフィックは、セキュリティ保護付きハブの Azure Firewall によって処理されます。
+
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>セキュリティ保護付き仮想ハブで既定のルート (0.0.0.0/0) を有効にする方法
 

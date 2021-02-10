@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 84e2eaf71326f59102800428479768aeba9ef9ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73e4dbb24b4e7c0c651f7d082c75b0f4a17158b5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042158"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890883"
 ---
 # <a name="configure-runbook-input-parameters"></a>Runbook の入力パラメーターを構成する
 
@@ -75,7 +75,7 @@ PowerShell と PowerShell Workflow Runbook では、`Object` や `PSCredential` 
 グラフィカル Runbook では、次の主要な Runbook アクティビティが使用されます。
 
 * Azure で認証するための Azure 実行アカウントの構成。 
-* VM プロパティを取得する [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0) コマンドレットの定義。
+* VM プロパティを取得する [Get-AzVM](/powershell/module/az.compute/get-azvm) コマンドレットの定義。
 * [Write-Output](/powershell/module/microsoft.powershell.utility/write-output) アクティビティの使用による VM 名の出力。 
 
 `Get-AzVM` アクティビティでは、VM 名とリソース グループ名の 2 つの入力を定義します。 これらの名前は Runbook を開始するたびに異なる可能性があるため、これらの入力を受け入れるには、Runbook に入力パラメーターを追加する必要があります。 「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
@@ -140,7 +140,7 @@ Azure portal で [Runbook を起動する](start-runbooks.md#start-a-runbook-wit
 
 #### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>PowerShell コマンドレットを使用して公開済み Runbook を起動し、パラメーターを割り当てる
 
-* **Azure Resource Manager コマンドレット:** [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0) を使用して、リソース グループ内に作成された Automation Runbook を起動できます。
+* **Azure Resource Manager コマンドレット:** [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) を使用して、リソース グループ内に作成された Automation Runbook を起動できます。
 
    ```powershell
      $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
@@ -272,7 +272,7 @@ Webhook を使用して Runbook を実行すると、定義済みの入力パラ
 
 Runbook に渡すデータを JSON ファイルに格納すると便利な場合があります。 たとえば、Runbook に渡すすべてのパラメーターを含む JSON ファイルを作成できます。 これを行うには、JSON コードを文字列に変換し、その文字列を PowerShell オブジェクトに変換してから、それを Runbook に渡す必要があります。
 
-このセクションでは、 PowerShell スクリプトで [Start-AzAutomationRunbookk](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) を呼び出して PowerShell Runbook を起動し、JSON ファイルの内容を Runbook に渡す例を使用します。 PowerShell Runbook は、JSON オブジェクトから VM のパラメーターを取得することで、Azure VM を起動します。
+このセクションでは、 PowerShell スクリプトで [Start-AzAutomationRunbookk](/powershell/module/az.automation/start-azautomationrunbook) を呼び出して PowerShell Runbook を起動し、JSON ファイルの内容を Runbook に渡す例を使用します。 PowerShell Runbook は、JSON オブジェクトから VM のパラメーターを取得することで、Azure VM を起動します。
 
 ### <a name="create-the-json-file"></a>JSON ファイルの作成
 
@@ -327,7 +327,7 @@ Azure PowerShell を使用して、ローカル コンピューターから Runb
 1. 保存された JSON ファイルの内容を取得して文字列に変換します。 `JsonPath` は、JSON ファイルを保存した場所へのパスです。
 
    ```powershell
-   $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
+   $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
    ```
 
 1. `$json` の文字列の内容を PowerShell オブジェクトに変換します。

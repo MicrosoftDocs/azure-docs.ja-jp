@@ -1,32 +1,35 @@
 ---
-title: クラウド サービスのライフサイクル イベントの処理 | Microsoft Docs
+title: Cloud Services (クラシック) のライフサイクル イベントの処理 | Microsoft Docs
 description: ライフサイクル イベントに対応するメソッドを提供する RoleEntryPoint など、クラウド サービス ロールのライフサイクル メソッドを .NET で使用する方法について説明します。
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930062"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741334"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET で Web または Worker ロールのライフサイクルをカスタマイズする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 worker ロールを作成する際に、[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。 Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用する必要があります。
 
 ## <a name="extend-the-roleentrypoint-class"></a>RoleEntryPoint クラスを拡張する
-[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) クラスには、Web ロールやworker ロールを**開始**、**実行**、**停止**するときに Azure が呼び出すメソッドが含まれています。 必要に応じてこれらのメソッドをオーバーライドし、ロールの初期化、ロールのシャットダウン シーケンス、ロールの実行スレッドを管理できます。 
+[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) クラスには、Web ロールやworker ロールを **開始**、**実行**、**停止** するときに Azure が呼び出すメソッドが含まれています。 必要に応じてこれらのメソッドをオーバーライドし、ロールの初期化、ロールのシャットダウン シーケンス、ロールの実行スレッドを管理できます。 
 
-**RoleEntryPoint**を拡張した場合、メソッドの次のような動作に注意する必要があります。
+**RoleEntryPoint** を拡張した場合、メソッドの次のような動作に注意する必要があります。
 
 * [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) メソッドは、ブール値を返します。したがって、このメソッドから **false** を返すこともできます。
   
-   コードが **false**を返した場合、ロール プロセスは指定したシャットダウン シーケンスを実行せずに突然終了します。 一般的には、**OnStart** メソッドから **false** は返さないようにしてください。
+   コードが **false** を返した場合、ロール プロセスは指定したシャットダウン シーケンスを実行せずに突然終了します。 一般的には、**OnStart** メソッドから **false** は返さないようにしてください。
 * **RoleEntryPoint** メソッドのオーバーロード内でキャッチされなかった例外は、未処理の例外として扱われます。
   
    例外がライフサイクル メソッドの内部で発生すると、Azure で [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) イベントが発生し、プロセスが終了します。 ロールは、オフラインになった後、Azure によって再開されます。 未処理の例外が発生した場合、 [Stopping](/previous-versions/azure/reference/ee758136(v=azure.100)) イベントは発生せず、 **OnStop** メソッドは呼び出されません。

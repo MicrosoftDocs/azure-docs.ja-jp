@@ -3,16 +3,13 @@ title: BindException - アドレスが Azure HDInsight で既に使用されて�
 description: BindException - アドレスが Azure HDInsight で既に使用されている
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/16/2019
-ms.openlocfilehash: 60f95292d517277f607c968629c55641e0eecce1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c0a7bc7629b5c2a2e458ba94d62e341f578fdd25
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540263"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946396"
 ---
 # <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>シナリオ:BindException - アドレスが Azure HDInsight で既に使用されている
 

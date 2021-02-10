@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 9/28/2020
 ms.author: matjazl
-ms.openlocfilehash: bdbab0e032764d07119402686051d391376cb913
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60a2a41a8005e8bd0fbc313c9a177d54df6dac5e
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843659"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627165"
 ---
 # <a name="exporting-de-identified-data-preview"></a>匿名化データをエクスポートする (プレビュー)
 
@@ -23,9 +23,12 @@ $export コマンドを使用して、FHIR サーバーから匿名化データ�
 
  `https://<<FHIR service base URL>>/$export?_container=<<container_name>>&_anonymizationConfig=<<config file name>>&_anonymizationConfigEtag=<<ETag on storage>>`
 
+> [!Note] 
+> 現在、Azure API for FHIR では、システム レベルでの匿名化エクスポートのみがサポートされています ($export)。
+
 |Query parameter (クエリ パラメーター)            | 例 |選択肢| 説明|
 |---------------------------|---------|-----------|------------|
-| _\_anonymizationConfig_   |DemoConfig.json|匿名化エクスポートで必須 |構成ファイルの名前です。 構成ファイル形式については、[ここ](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)を参照してください。 このファイルは、エクスポート先として構成されている場所と同じ Azure ストレージ アカウント内の**匿名化**という名前のコンテナー内に保存する必要があります。 |
+| _\_anonymizationConfig_   |DemoConfig.json|匿名化エクスポートで必須 |構成ファイルの名前です。 構成ファイル形式については、[ここ](https://github.com/microsoft/FHIR-Tools-for-Anonymization#configuration-file-format)を参照してください。 このファイルは、エクスポート先として構成されている場所と同じ Azure ストレージ アカウント内の **匿名化** という名前のコンテナー内に保存する必要があります。 |
 | _\_anonymizationConfigEtag_|"0x8D8494A069489EC"|匿名化エクスポートで任意|これは構成ファイルの Etag です。 BLOB プロパティから Azure ストレージ エクスプローラーを使用して Etag を取得できます。|
 
 > [!IMPORTANT]

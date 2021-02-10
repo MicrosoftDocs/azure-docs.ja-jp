@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d5cfdca24193b899926bd30995063ed55b3dd3eb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532059"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943452"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB を監視する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -129,7 +129,7 @@ Azure Monitor のログのデータはテーブルに格納され、各テーブ
 
 Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)に関する記事をご覧ください。 Azure Cosmos DB 用に収集されるリソース ログの種類の一覧については、「[Azure Cosmos DB 監視データのリファレンス](monitor-cosmos-db-reference.md#resource-logs)」を参照してください。
 
-[アクティビティ ログ](/azure/azure-monitor/platform/activity-log)は、サブスクリプション レベルのイベントの分析情報を提供するプラットフォーム ログイン Azure です。 個別に表示できるほか、Azure Monitor ログにルーティングして、Log Analytics を使用してより複雑なクエリを実行することもできます。  
+[アクティビティ ログ](../azure-monitor/platform/activity-log.md)は、サブスクリプション レベルのイベントの分析情報を提供するプラットフォーム ログイン Azure です。 個別に表示できるほか、Azure Monitor ログにルーティングして、Log Analytics を使用してより複雑なクエリを実行することもできます。  
 
 Azure Cosmos DB は、次のテーブルにデータを格納します。
 

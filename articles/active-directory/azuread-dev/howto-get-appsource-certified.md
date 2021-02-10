@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 85c4488c4e8e1e2f9591b7d734c522c34ea4ba2d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15a4dd56b509571094ef202fbce781104bda9188
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116326"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052246"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 
@@ -34,7 +34,7 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
 
 ## <a name="multi-tenant-applications"></a>マルチテナント アプリケーション
 
-*マルチ テナント アプリケーション*とは、Azure AD を持つ会社または組織のユーザーのサインインを許可しているアプリケーションで、別のインスタンス、構成、またはデプロイを必要としないアプリケーションです。 AppSource では、アプリケーションにマルチテナント機能を実装し、*シングル クリック*の無料試用版のエクスペリエンスを有効にすることをお勧めしています。
+*マルチ テナント アプリケーション* とは、Azure AD を持つ会社または組織のユーザーのサインインを許可しているアプリケーションで、別のインスタンス、構成、またはデプロイを必要としないアプリケーションです。 AppSource では、アプリケーションにマルチテナント機能を実装し、*シングル クリック* の無料試用版のエクスペリエンスを有効にすることをお勧めしています。
 
 アプリケーションでマルチテナント機能を有効にするには、次の手順を実行します。
 1. [Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) のアプリケーション登録の情報で `Multi-Tenanted` プロパティを `Yes` に設定します。 既定で Azure portal で作成されたアプリケーションは、 *[シングル テナント](#single-tenant-applications)* として構成されます。
@@ -45,11 +45,11 @@ OpenID Connect を使用してアプリケーションを Azure AD と統合す�
 
 ### <a name="single-tenant-applications"></a>シングルテナント アプリケーション
 
-*シングル テナント アプリケーション*は、定義された Azure AD インスタンスのユーザーからのサインインのみを許可するアプリケーションです。 外部ユーザー (他の組織の職場または学校のアカウント、あるいは個人のアカウントを含む) は、アプリケーションが登録されている Azure AD インスタンスに各ユーザーをゲスト アカウントとして追加したあと、シングルテナント アプリケーションにサインインできるようになります。 
+*シングル テナント アプリケーション* は、定義された Azure AD インスタンスのユーザーからのサインインのみを許可するアプリケーションです。 外部ユーザー (他の組織の職場または学校のアカウント、あるいは個人のアカウントを含む) は、アプリケーションが登録されている Azure AD インスタンスに各ユーザーをゲスト アカウントとして追加したあと、シングルテナント アプリケーションにサインインできるようになります。 
 
 [Azure AD B2B コラボレーション](../external-identities/what-is-b2b.md)を使用して Azure AD にゲスト アカウントとしてユーザーを追加できます。また、この処理は[プログラム](../../active-directory-b2c/code-samples.md)で実行できます。 B2B を使用する場合、ユーザーは、サインインに招待が必要ないセルフサービス ポータルを作成できます。 詳細については、「[Azure AD B2B コラボレーションのサインアップ用のセルフ サービス ポータル](../external-identities/self-service-portal.md)」を参照してください。
 
-シングルテナント アプリケーションで*お問い合わせ*エクスペリエンスを有効にすることはできますが、AppSource でお勧めしているシングルクリック/無料試用版のエクスペリエンスを有効にする場合は、代わりにアプリケーションのマルチテナント機能を有効にします。
+シングルテナント アプリケーションで *お問い合わせ* エクスペリエンスを有効にすることはできますが、AppSource でお勧めしているシングルクリック/無料試用版のエクスペリエンスを有効にする場合は、代わりにアプリケーションのマルチテナント機能を有効にします。
 
 ## <a name="appsource-trial-experiences"></a>AppSource の試用エクスペリエンス
 
@@ -113,9 +113,9 @@ AppSource の試用エクスペリエンスの詳細については、[こちら
 
 ## <a name="get-support"></a>サポートを受ける
 
-Azure AD との統合について、Microsoft は [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) のコミュニティでサポートを提供しています。
+Azure AD との統合について、Microsoft は [Microsoft Q&A](https://docs.microsoft.com/answers/products/) のコミュニティでサポートを提供しています。
 
-ご質問は最初に Stack Overflow で挙げていただき、既知の問題を検索して過去に同じ質問が挙がっていないかどうか確認することを強くお勧めします。 ご質問またはコメントに [`[azure-active-directory]` タグと `[appsource]`](https://stackoverflow.com/questions/tagged/azure-active-directory+appsource) タグが付けられていることを確認してください。
+ご質問は最初に Microsoft Q&A で挙げていただき、既知の問題を検索して過去に同じ質問が挙がっていないかどうか確認することを強くお勧めします。 自分の質問またはコメントに [`[azure-active-directory]`](https://docs.microsoft.com/answers/topics/azure-active-directory.html) タグが付けられていることを確認してください。
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
 

@@ -3,20 +3,20 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 12/11/2020
+ms.date: 01/20/2021
 ms.author: aahi
-ms.openlocfilehash: 1f99eb203cf4124f3249ab1b74989708bea93c51
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 715b0d16e33412003820044ffa99fee9e2431a7b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97820571"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090757"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-[v3.1 リファレンス ドキュメント](/python/api/azure-ai-textanalytics/azure.ai.textanalytics?preserve-view=true&view=azure-python-preview) | [v3.1 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 パッケージ (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3.1 サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
+[v3.1 リファレンス ドキュメント](/python/api/azure-ai-textanalytics/azure.ai.textanalytics) | [v3.1 ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics) | [v3.1 パッケージ (PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3.1 サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 # <a name="version-30"></a>[バージョン 3.0](#tab/version-3)
 
@@ -943,8 +943,7 @@ Document ID: 4
 
 # <a name="version-31-preview"></a>[バージョン 3.1 プレビュー](#tab/version-3-1)
 
-> [!CAUTION]
-> 分析操作を使用するには、Standard (S) 価格レベルの Text Analytics リソースを使用する必要があります。  
+[!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
 クライアントを引数として受け取り、`begin_analyze()` 関数を呼び出す、`analyze_example()` という名前の新しい関数を作成します。 この操作の実行には時間がかかり、結果に対してポーリングされます。
 

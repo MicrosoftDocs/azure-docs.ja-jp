@@ -1,19 +1,17 @@
 ---
 title: セキュリティ:Azure HDInsight へのオンプレミスの Apache Hadoop の 移行
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのセキュリティおよび DevOps のベスト プラクティスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 6fd59a346a36a304f699894c493d8ba9800489b2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fa6a4a8686fe5a33a6f240a8e972a687e872732a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545261"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939736"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - セキュリティおよび DevOps のベスト プラクティス
 
@@ -116,9 +114,9 @@ ESP は、次のクラスターの種類で使用できます。Apache Hadoop、
 
 ## <a name="post-migration"></a>移行後
 
-1. **アプリケーションを修復** : ジョブ、プロセス、およびスクリプトに対して必要な変更を繰り返し加えます。
-2. **テストの実行** : 機能とパフォーマンスのテストを繰り返し実行します。
-3. **最適化** : 上記のテスト結果に基づいてパフォーマンスの問題に対処し、再テストを行ってパフォーマンスが改善されたかどうかを確認します。
+1. **アプリケーションを修復**: ジョブ、プロセス、およびスクリプトに対して必要な変更を繰り返し加えます。
+2. **テストの実行**: 機能とパフォーマンスのテストを繰り返し実行します。
+3. **最適化**: 上記のテスト結果に基づいてパフォーマンスの問題に対処し、再テストを行ってパフォーマンスが改善されたかどうかを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

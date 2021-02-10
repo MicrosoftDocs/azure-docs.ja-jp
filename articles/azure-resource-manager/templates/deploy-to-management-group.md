@@ -3,12 +3,12 @@ title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: a203dd2c52bdc889452a6755fb025c7ed5721a59
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184018"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491621"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>ARM テンプレートを使用した管理グループへのデプロイ
 
@@ -112,7 +112,7 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 管理グループ レベルのデプロイの場合、デプロイの場所を指定する必要があります。 デプロイの場所は、デプロイするリソースの場所とは異なります。 デプロイの場所では、デプロイ データを格納する場所を指定します。 [サブスクリプション](deploy-to-subscription.md)および[テナント](deploy-to-tenant.md)のデプロイにも場所が必要です。 [リソース グループ](deploy-to-resource-group.md)のデプロイの場合、リソース グループの場所を使用してデプロイ データを格納します。
 
-デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
+デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、_azuredeploy.json_ という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
 
 デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 たとえば、**centralus** で **deployment1** という名前の管理グループのデプロイを作成した場合、後で **deployment1** という名前の別のデプロイを **westus** の場所に作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
 
@@ -164,9 +164,9 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 ### <a name="scope-to-tenant"></a>テナントへのスコープ
 
-`scope` を `/` に設定することで、テナントにリソースを作成できます。 テンプレートをデプロイするユーザーには、[テナントでデプロイするための必要なアクセス権が必要です](deploy-to-tenant.md#required-access)。
+テナントでリソースを作成するには、`scope` を `/` に設定します。 テンプレートをデプロイするユーザーには、[テナントでデプロイするための必要なアクセス権が必要です](deploy-to-tenant.md#required-access)。
 
-`scope` と `location` を設定した入れ子になったデプロイを使用できます。
+入れ子になったデプロイを使用するには、`scope` と `location` を設定します。
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
@@ -222,7 +222,7 @@ ARM テンプレートをデプロイするためのデプロイ コマンドと
 
 ## <a name="azure-policy"></a>Azure Policy
 
-管理グループにデプロイされているカスタム ポリシー定義は、管理グループの拡張機能です。 カスタム ポリシー定義の ID を取得するには、[extensionResourceId()](template-functions-resource.md#extensionresourceid) 関数を使用します。 組み込みのポリシー定義は、テナント レベルのリソースです。 組み込みポリシー定義の ID を取得するには、[tenantResourceId](template-functions-resource.md#tenantresourceid) 関数を使用します。
+管理グループにデプロイされているカスタム ポリシー定義は、管理グループの拡張機能です。 カスタム ポリシー定義の ID を取得するには、[extensionResourceId()](template-functions-resource.md#extensionresourceid) 関数を使用します。 組み込みのポリシー定義は、テナント レベルのリソースです。 組み込みポリシー定義の ID を取得するには、[tenantResourceId()](template-functions-resource.md#tenantresourceid) 関数を使用します。
 
 次の例は、管理グループ レベルでポリシーを[定義](../../governance/policy/concepts/definition-structure.md)して割り当てる方法を示しています。
 

@@ -2,14 +2,14 @@
 title: 仮想マシンのコンピューティング ノードで Linux を実行する
 description: Azure Batch の Linux 仮想マシンのプールで並列コンピューティング ワークロードを処理する方法について説明します。
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 01/21/2021
 ms.custom: H1Hack27Feb2017, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 0a9c801a13af05f077b87f296992da7f50742e4b
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c711ec0d035b9b59ec7628a51fe3cff26de358bc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533499"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683702"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 
@@ -17,9 +17,7 @@ Azure Batch を使用すると、Linux と Windows の両方の仮想マシン�
 
 ## <a name="virtual-machine-configuration"></a>仮想マシンの構成
 
-Batch でコンピューティング ノードのプールを作成する場合は、Cloud Services 構成と仮想マシン構成という 2 つのオプションから、ノード サイズとオペレーティング システムを選択できます。 Windows コンピューティング ノードのプールの多くは、[Cloud Services 構成](nodes-and-pools.md#cloud-services-configuration)を使用します。これは、プールが Azure Cloud Services ノードで構成されることを指定します。これらのプールは、Windows コンピューティング ノードのみを提供します。
-
-これに対して、[仮想マシン構成](nodes-and-pools.md#virtual-machine-configuration)では、プールが Azure VM で構成されることを指定します。これは、Linux または Windows イメージから作成できます。 仮想マシン構成でプールを作成する場合は、[使用可能なコンピューティング ノードのサイズ](../virtual-machines/sizes.md)、仮想マシン イメージの参照、および Batch ノード エージェント SKU (各ノードで実行され、ノードと Batch サービスの間のインターフェイスを提供するプログラム) と、ノードにインストールする仮想マシン イメージの参照を指定する必要があります。
+Batch でコンピューティング ノードのプールを作成する場合は、Cloud Services 構成と仮想マシン構成という 2 つのオプションから、ノード サイズとオペレーティング システムを選択できます。 [仮想マシン構成](nodes-and-pools.md#virtual-machine-configuration)プールは、Azure VM で構成されます。これは、Linux イメージまたは Windows イメージから作成できます。 仮想マシン構成でプールを作成する場合は、[使用可能なコンピューティング ノードのサイズ](../virtual-machines/sizes.md)、ノードにインストールされる仮想マシン イメージの参照、および Batch ノード エージェント SKU (各ノードで実行され、ノードと Batch サービスの間のインターフェイスを提供するプログラム) を指定する必要があります。
 
 ### <a name="virtual-machine-image-reference"></a>仮想マシン イメージの参照
 
@@ -35,7 +33,11 @@ Batch サービスでは、[仮想マシン スケール セット](../virtual-m
 | Version |latest |
 
 > [!TIP]
-> これらのプロパティの詳細と、Marketplace のイメージを指定する方法については、「[Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける](../virtual-machines/linux/cli-ps-findimage.md)」を参照してください。 現時点では、すべての Marketplace イメージに Batch との互換性があるわけではありません。
+> これらのプロパティの詳細と、Marketplace のイメージを指定する方法については、「[Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける](../virtual-machines/linux/cli-ps-findimage.md)」を参照してください。 いくつかの Marketplace イメージには、現時点、Batch との互換性がないことにご注意ください。
+
+### <a name="list-of-virtual-machine-images"></a>仮想マシン イメージの一覧
+
+すべての Marketplace イメージが、現在使用可能な Batch ノード エージェントと互換性があるわけではありません。 Batch サービスでサポートされるすべての Marketplace 仮想マシン イメージと、それらに対応するノード エージェント SKU を一覧表示するには、[list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python)、[ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .NET)、他の言語 SDK で対応する API を使用してください。
 
 ### <a name="node-agent-sku"></a>ノード エージェント SKU
 
@@ -44,10 +46,6 @@ Batch サービスでは、[仮想マシン スケール セット](../virtual-m
 - batch.node.ubuntu 18.04
 - batch.node.centos 7
 - batch.node.windows amd64
-
-### <a name="list-of-virtual-machine-images"></a>仮想マシン イメージの一覧
-
-すべての Marketplace イメージが、現在使用可能な Batch ノード エージェントと互換性があるわけではありません。 Batch サービスでサポートされるすべての Marketplace 仮想マシン イメージと、それらに対応するノード エージェント SKU を一覧表示するには、[list_supported_images](/python/api/azure-batch/azure.batch.operations.AccountOperations#list-supported-images-account-list-supported-images-options-none--custom-headers-none--raw-false----operation-config-) (Python)、[ListSupportedImages](/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages) (Batch .NET)、他の言語 SDK で対応する API を使用してください。
 
 ## <a name="create-a-linux-pool-batch-python"></a>Linux プールの作成: Batch Python
 

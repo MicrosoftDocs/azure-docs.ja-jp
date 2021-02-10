@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 8261856598a155e97f90ea350cedcd4c10e6893c
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897503"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747308"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>手順 1:ログ フォワーダーをデプロイする
 
@@ -42,6 +42,11 @@ ms.locfileid: "97897503"
 
 - Log Analytics エージェントをインストールする前に Linux マシンを Azure ワークスペースに接続することは避けてください。
 
+- Linux マシンには、少なくとも **4 つの CPU コアと 8 GB の RAM** が必要です。
+
+    > [!NOTE]
+    > - **rsyslog** デーモンを使用している 1 つのログ フォワーダー マシンには、収集される **最大 8500 EPS (1 秒あたりのイベント数)** のサポートされる容量があります。
+
 - このプロセスのある時点で、ワークスペース ID とワークスペースの主キーが必要になる場合があります。 それらはワークスペース リソースの **[エージェント管理]** で確認できます。
 
 ## <a name="run-the-deployment-script"></a>展開スクリプトを実行する
@@ -51,7 +56,7 @@ ms.locfileid: "97897503"
 1. **[1.2 Linux マシンへの CEF コレクターのインストール]** で、 **[Run the following script to install and apply the CEF collector]\(CEF コレクターをインストールして適用するには、次のスクリプトを実行します\)** の下にあるリンクをコピーします。または、次のテキストからコピーしてください (プレースホルダーをワークスペース ID と主キーに置き換えます)。
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
+    sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. スクリプトの実行中に、エラーまたは警告メッセージが表示されないことを確認してください。
@@ -94,8 +99,8 @@ syslog デーモンを選択して、適切な説明を表示してください�
     - Log Analytics (OMS) Linux エージェントのインストール スクリプトをダウンロードします。
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Log Analytics エージェントをインストールします。
@@ -160,8 +165,8 @@ syslog デーモンを選択して、適切な説明を表示してください�
     - Log Analytics (OMS) Linux エージェントのインストール スクリプトをダウンロードします。
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Log Analytics エージェントをインストールします。

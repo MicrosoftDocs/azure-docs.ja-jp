@@ -4,20 +4,20 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: 8dcb58499113b0b7ae0814419f0a76965a0ed945
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 86bf4911026e46c997469b956f9e7c75c4f17164
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680906"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698120"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Premium ファイル共有レベルの追加の制限
 
 |領域  |移行先  |
 |---------|---------|
 |最小サイズ増減    |1 GiB      |
-|ベースライン IOPS    |GiB あたり 1 IOPS (最大 100,000)|
-|IOPS バースト    |GiB あたり 3x IOPS (最大 100,000)|
+|ベースライン IOPS    |400 + GiB あたり 1 IOPS (最大 100,000)|
+|IOPS バースト    |最大 (4000, 3 x GiB あたり IOPS) (最大 100,000)|
 |エグレス レート         |60 MiB/s + 0.06 * プロビジョニング済み GiB        |
 |イングレス レート| 40 MiB/s + 0.04 * プロビジョニング済み GiB |
 

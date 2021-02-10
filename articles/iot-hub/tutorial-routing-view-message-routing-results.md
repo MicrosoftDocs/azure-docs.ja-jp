@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub のメッセージ ルーティングの結果を表示する (.NET) | Microsoft Docs
-description: このチュートリアルのパート 1 を使用してすべてのリソースを設定した後、Azure Stream Analytics にメッセージをルーティングする機能を追加して、PowerBI で結果を表示します。
+title: チュートリアル - Azure IoT Hub のメッセージ ルーティングの結果を表示する (.NET) | Microsoft Docs
+description: チュートリアル - このチュートリアルのパート 1 を使用してすべてのリソースを設定した後、Azure Stream Analytics にメッセージをルーティングする機能を追加して、Power BI で結果を表示します。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149210"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734000"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>チュートリアル:パート 2 - ルーティングされたメッセージを表示する
 
@@ -48,7 +48,7 @@ Service Bus キューは、critical と指定されているメッセージを�
 
    **[場所]** :自分の場所を使用します。 このチュートリアルでは、 **[米国西部]** を使います。
 
-   **Log Analytics**:このトグルはオフにする必要があります。
+   **[Enable Log Analytics]\(Log Analytics の有効化\)** : このトグルはオフにする必要があります。
 
    ![[ロジック アプリの作成] 画面](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -152,6 +152,8 @@ Power BI の視覚エフェクトにデータを表示するには、最初に�
 
    **テーブル名**:Power BI で使用されるテーブルの名前。 このチュートリアルでは、**contosotable** を使います。
 
+  **認証モード**:使用するモードを選択します。
+
    その他のフィールドについては、既定値を指定できます。
 
 3. **[承認]** を選択して、自分の Power BI アカウントにサインインします。 再試行が必要になる場合があります。
@@ -232,7 +234,7 @@ Power BI レポートを設定するにはデータが必要なので、デバ�
 
 1. [Power BI](https://powerbi.microsoft.com/) アカウントにサインインします。
 
-2. **[ワークスペース]** に移動し、Stream Analytics ジョブの出力を作成するときに設定したワークスペースを選びます。 このチュートリアルでは、**マイ ワークスペース**を使います。 
+2. **[ワークスペース]** に移動し、Stream Analytics ジョブの出力を作成するときに設定したワークスペースを選びます。 このチュートリアルでは、**マイ ワークスペース** を使います。 
 
 3. **[データセット]** を選択します。 データセットがない場合は、数分待ってからもう一度確認してください。
 
@@ -276,11 +278,11 @@ Power BI ウィンドウの上部にある [最新の情報に更新] ボタン�
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Power BI の視覚エフェクトのリソースをクリーンアップする
 
-[Power BI](https://powerbi.microsoft.com/) アカウントにサインインします。 ワークスペースに移動します。 このチュートリアルでは、**マイ ワークスペース**を使います。 Power BI の視覚化を削除するには、[データセット] に移動し、ごみ箱アイコンを選択してデータセットを削除します。 このチュートリアルでは、**contosodataset** を使います。 データセットを削除すると、レポートも削除されます。
+[Power BI](https://powerbi.microsoft.com/) アカウントにサインインします。 ワークスペースに移動します。 このチュートリアルでは、**マイ ワークスペース** を使います。 Power BI の視覚化を削除するには、[データセット] に移動し、ごみ箱アイコンを選択してデータセットを削除します。 このチュートリアルでは、**contosodataset** を使います。 データセットを削除すると、レポートも削除されます。
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Azure CLI を使用してリソースをクリーンアップする
 
-リソース グループを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) コマンドを使います。 `$resourceGroup` は、このチュートリアルの開始時に **ContosoResources** に設定されました。
+リソース グループを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) コマンドを使います。 `$resourceGroup` は、このチュートリアルの開始時に **ContosoResources** に設定されました。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

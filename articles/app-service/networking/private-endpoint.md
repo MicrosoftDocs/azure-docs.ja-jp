@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bebc7dcbc18a25b0d6d0761a8ca3ac476e83e581
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183041"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763031"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Azure Web アプリでプライベート エンドポイントを使用する
 
@@ -68,7 +68,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 既定では、プライベート エンドポイントを使用しない場合、Web アプリのパブリック名がクラスターの正規の名前になります。
 たとえば、名前解決は次のようになります。
 
-|名前 |Type |値 |
+|名前 |型 |値 |
 |-----|-----|------|
 |mywebapp.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
 |clustername.azurewebsites.windows.net|CNAME|cloudservicename.cloudapp.net|
@@ -78,7 +78,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 プライベート エンドポイントをデプロイすると、DNS エントリは正規名 mywebapp.privatelink.azurewebsites.net を指すように更新されます。
 たとえば、名前解決は次のようになります。
 
-|名前 |Type |値 |注記 |
+|名前 |型 |値 |注記 |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|
 |mywebapp.privatelink.azurewebsites.net|CNAME|clustername.azurewebsites.windows.net|
@@ -89,7 +89,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 作成する必要がある DNS ゾーンは、**privatelink.azurewebsites.net** です。 A レコードとプライベート エンドポイント IP を使用して、Web アプリのレコードを登録します。
 たとえば、名前解決は次のようになります。
 
-|名前 |Type |値 |注記 |
+|名前 |型 |値 |注記 |
 |-----|-----|------|-------|
 |mywebapp.azurewebsites.net|CNAME|mywebapp.privatelink.azurewebsites.net|<-- Azure パブリック DNS にこのエントリが作成され、App Service がプライベートリンクを指すようになります。これは Microsoft によって管理されます|
 |mywebapp.privatelink.azurewebsites.net|A|10.10.10.8|<-- プライベート エンドポイントの IP アドレスを指すように、DNS システムでこのエントリを管理します|
@@ -101,7 +101,7 @@ Web アプリにプライベート エンドポイントを使用する場合は
 
 Kudu コンソールまたは Kudu REST API (Azure DevOps セルフホステッド エージェントを使用したデプロイなど) の場合は、Azure DNS プライベート ゾーンまたはカスタム DNS サーバーに 2 つのレコードを作成する必要があります。 
 
-| 名前 | Type | 値 |
+| 名前 | 型 | 値 |
 |-----|-----|-----|
 | mywebapp.privatelink.azurewebsites.net | A | PrivateEndpointIP | 
 | mywebapp.scm.privatelink.azurewebsites.net | A | PrivateEndpointIP | 

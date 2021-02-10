@@ -2,8 +2,8 @@
 title: ユーザーと管理者のアクセス許可を管理する - Azure Active Directory | Microsoft Docs
 description: Azure AD でアプリケーションのアクセス許可を確認および管理する方法について説明します。 たとえば、アプリケーションに付与されているすべてのアクセス許可を取り消します。
 services: active-directory
-author: mimart
-manager: CelesteDG
+author: msmimart
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 7/10/2020
 ms.author: mimart
 ms.reviewer: luleonpla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ff97d0a69efbe624e959f92f5320f921476a306
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cbd2bc7b9ccc9efe0c6fdf8de02665160667cb8f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658980"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256934"
 ---
 # <a name="take-action-on-overprivileged-or-suspicious-applications-in-azure-active-directory"></a>Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する
 
@@ -107,67 +107,67 @@ PowerShell スクリプトを使用すると、このアプリケーションに
 4. **[プロパティ]** を選択し、オブジェクト ID をコピーします。
 
 ```powershell
-    $sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
-    $sp.ObjectId
+$sp = Get-AzureADServicePrincipal -Filter "displayName eq '$app_name'"
+$sp.ObjectId
 ```
 アプリケーションに割り当てられているすべてのユーザーを削除します。
  ```powershell
-    Connect-AzureAD
+Connect-AzureAD
 
-    # Get Service Principal using objectId
-    $sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
+# Get Service Principal using objectId
+$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
 
-    # Get Azure AD App role assignments using objectId of the Service Principal
-    $assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true
+# Get Azure AD App role assignments using objectId of the Service Principal
+$assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true
 
-    # Remove all users and groups assigned to the application
-    $assignments | ForEach-Object {
-        if ($_.PrincipalType -eq "User") {
-            Remove-AzureADUserAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
-        } elseif ($_.PrincipalType -eq "Group") {
-            Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
-        }
+# Remove all users and groups assigned to the application
+$assignments | ForEach-Object {
+    if ($_.PrincipalType -eq "User") {
+        Remove-AzureADUserAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
+    } elseif ($_.PrincipalType -eq "Group") {
+        Remove-AzureADGroupAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.ObjectId
     }
+}
  ```
 
 アプリケーションに付与されているアクセス許可を取り消します。
 
 ```powershell
-    Connect-AzureAD
+Connect-AzureAD
 
-    # Get Service Principal using objectId
-    $sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
+# Get Service Principal using objectId
+$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
 
-    # Get all delegated permissions for the service principal
-    $spOAuth2PermissionsGrants = Get-AzureADOAuth2PermissionGrant -All $true| Where-Object { $_.clientId -eq $sp.ObjectId }
+# Get all delegated permissions for the service principal
+$spOAuth2PermissionsGrants = Get-AzureADOAuth2PermissionGrant -All $true| Where-Object { $_.clientId -eq $sp.ObjectId }
 
-    # Remove all delegated permissions
-    $spOAuth2PermissionsGrants | ForEach-Object {
-        Remove-AzureADOAuth2PermissionGrant -ObjectId $_.ObjectId
-    }
+# Remove all delegated permissions
+$spOAuth2PermissionsGrants | ForEach-Object {
+    Remove-AzureADOAuth2PermissionGrant -ObjectId $_.ObjectId
+}
 
-    # Get all application permissions for the service principal
-    $spApplicationPermissions = Get-AzureADServiceAppRoleAssignedTo -ObjectId $sp.ObjectId -All $true | Where-Object { $_.PrincipalType -eq "ServicePrincipal" }
+# Get all application permissions for the service principal
+$spApplicationPermissions = Get-AzureADServiceAppRoleAssignedTo -ObjectId $sp.ObjectId -All $true | Where-Object { $_.PrincipalType -eq "ServicePrincipal" }
 
-    # Remove all delegated permissions
-    $spApplicationPermissions | ForEach-Object {
-        Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
-    }
+# Remove all delegated permissions
+$spApplicationPermissions | ForEach-Object {
+    Remove-AzureADServiceAppRoleAssignment -ObjectId $_.PrincipalId -AppRoleAssignmentId $_.objectId
+}
 ```
 更新トークンを無効にします。
 ```powershell
-        Connect-AzureAD
+Connect-AzureAD
 
-        # Get Service Principal using objectId
-        $sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
+# Get Service Principal using objectId
+$sp = Get-AzureADServicePrincipal -ObjectId "<ServicePrincipal objectID>"
 
-        # Get Azure AD App role assignments using objectID of the Service Principal
-        $assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true | Where-Object {$_.PrincipalType -eq "User"}
+# Get Azure AD App role assignments using objectID of the Service Principal
+$assignments = Get-AzureADServiceAppRoleAssignment -ObjectId $sp.ObjectId -All $true | Where-Object {$_.PrincipalType -eq "User"}
 
-        # Revoke refresh token for all users assigned to the application
-        $assignments | ForEach-Object {
-            Revoke-AzureADUserAllRefreshToken -ObjectId $_.PrincipalId
-        }
+# Revoke refresh token for all users assigned to the application
+$assignments | ForEach-Object {
+    Revoke-AzureADUserAllRefreshToken -ObjectId $_.PrincipalId
+}
 ```
 ## <a name="next-steps"></a>次のステップ
 - [アプリケーションの同意の管理と同意要求の評価](manage-consent-requests.md)

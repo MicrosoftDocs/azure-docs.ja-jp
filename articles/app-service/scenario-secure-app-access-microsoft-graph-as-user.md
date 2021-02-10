@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/30/2020
+ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1
-ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 3413c1a3f27b48c60ae730ad230c653928702faa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435008"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063385"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>チュートリアル:セキュリティで保護されたアプリからユーザーとして Microsoft Graph にアクセスする
 
@@ -85,7 +85,7 @@ Web アプリに必要なアクセス許可が付与され、さらに Microsoft
 
 ### <a name="install-client-library-packages"></a>クライアント ライブラリ パッケージをインストールする
 
-.NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用して、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) および [Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph) NuGet パッケージをプロジェクトにインストールします。
+.NET Core コマンド ライン インターフェイスまたは Visual Studio のパッケージ マネージャー コンソールを使用して、[Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web/) および [Microsoft.Identity.Web.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Identity.Web.MicrosoftGraph) NuGet パッケージをプロジェクトにインストールします。
 
 # <a name="command-line"></a>[コマンド ライン](#tab/command-line)
 
@@ -94,7 +94,7 @@ Web アプリに必要なアクセス許可が付与され、さらに Microsoft
 インストール コマンドを実行します。
 
 ```dotnetcli
-dotnet add package Microsoft.Graph
+dotnet add package Microsoft.Identity.Web.MicrosoftGraph
 
 dotnet add package Microsoft.Identity.Web
 ```
@@ -105,7 +105,7 @@ Visual Studio でプロジェクトまたはソリューションを開き、 **
 
 インストール コマンドを実行します。
 ```powershell
-Install-Package Microsoft.Graph
+Install-Package Microsoft.Identity.Web.MicrosoftGraph
 
 Install-Package Microsoft.Identity.Web
 ```

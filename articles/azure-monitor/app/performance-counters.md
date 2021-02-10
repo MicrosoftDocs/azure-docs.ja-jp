@@ -4,12 +4,12 @@ description: Application Insights でシステムとカスタムの .NET パフ�
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4da8aef69b6a83c17fa8a20a80b2c485378e0aef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f772b129e20fbaaade7305d84064a713dd734199
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918521"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937389"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -41,7 +41,7 @@ ASP.NET/ASP.NET Core Web アプリケーションについて収集するよう�
 
     `Get-Counter -ListSet *`
 
-    (「[`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter?view=powershell-5.1)」をご覧ください)
+    (「[`Get-Counter`](/powershell/module/microsoft.powershell.diagnostics/get-counter)」をご覧ください)
 2. ApplicationInsights.config を開きます。
 
    * 開発中にアプリに Application Insights を追加した場合は、プロジェクトで ApplicationInsights.config を編集して、サーバーに再デプロイします。

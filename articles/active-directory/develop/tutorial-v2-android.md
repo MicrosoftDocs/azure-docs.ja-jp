@@ -13,16 +13,16 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: f3dee72180d0850ce6d920c7e3180cebcbe2f4b4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208541"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753032"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>チュートリアル:Android アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
-このチュートリアルでは、Microsoft ID プラットフォームと連携してユーザーのサインインを処理し、Microsoft Graph API を呼び出すためのアクセス トークンを取得する Android アプリを作成します。
+このチュートリアルでは、ユーザーのサインインを処理し、Microsoft Graph API を呼び出すアクセス トークンを取得するために Microsoft ID プラットフォームと連携する Android アプリを作成します。
 
 このチュートリアルを完了すると、アプリケーションは、個人用の Microsoft アカウント (outlook.com、live.com など) と、Azure Active Directory を使用する会社や組織の職場または学校アカウントのサインインを受け入れるようになります。
 

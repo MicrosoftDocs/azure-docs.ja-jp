@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: justinha
-ms.openlocfilehash: e4e7a64b9f9d7283de728216934854f4ef8f8fd1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 89671d0e69d4e526e30c80619b57d698d5a5acc5
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619735"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491167"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)
 
@@ -106,7 +106,7 @@ ms.locfileid: "96619735"
 いいえ。 マネージド ドメインの管理特権は付与されません。 "*ドメイン管理者*" 特権と "*エンタープライズ管理者*" 特権は、ドメイン内では使用できません。 また、オンプレミスの Active Directory 内のドメイン管理者グループまたはエンタープライズ管理者グループのメンバーにも、マネージド ドメインのドメイン/エンタープライズ管理者特権は付与されません。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>マネージド ドメインで LDAP または他の AD 管理ツールを使用してグループ メンバーシップを変更できますか。
-Azure Active Directory から Azure AD Domain Services に同期されるユーザーとグループは、元のソースが Azure Active Directory であるため変更できません。 マネージド ドメインがソースのユーザーまたはグループは変更できます。
+Azure Active Directory から Azure AD Domain Services に同期されるユーザーとグループは、元のソースが Azure Active Directory であるため変更できません。 これには、AADDC Users のマネージド組織単位からカスタム組織単位へのユーザーまたはグループの移動が含まれます。 マネージド ドメインがソースのユーザーまたはグループは変更できます。  
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD ディレクトリに対して行った変更がマネージド ドメインに反映されるまで、どのくらいの時間がかかりますか。
 Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、マネージド ドメインに自動的に同期されます。 この同期プロセスはバック グラウンドで実行されます。 この同期ですべてのオブジェクトの変更を完了するための期間は定義されていません。

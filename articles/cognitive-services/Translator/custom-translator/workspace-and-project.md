@@ -3,19 +3,19 @@ title: ワークスペースとプロジェクトとは - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: この記事では、ワークスペースとプロジェクトの違い、およびカスタム翻訳ツール サービスのプロジェクトのカテゴリとラベルについて説明します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 28bc07cadf9ffea56059755e243cb3e828077588
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 0abda0307e3cdbd0e73e131bee072172375198eb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368969"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898055"
 ---
 # <a name="what-is-a-custom-translator-workspace"></a>Custom Translator ワークスペースとは
 

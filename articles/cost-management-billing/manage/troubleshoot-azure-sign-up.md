@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
-ms.date: 08/20/2020
+ms.date: 01/28/2021
 ms.author: v-miegge
-ms.openlocfilehash: 85f6e64cb20a14b9cd03776d138872d6a4191535
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 015e6058236190a04df152573621f0e57030d23b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344489"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054163"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Azure portal または Azure アカウント センターで新しいアカウントをサインアップするときの問題をトラブルシューティングする
 
@@ -139,19 +139,18 @@ InPrivate ブラウズはどうですか。
 
 ## <a name="other-issues"></a>その他の問題
 
-### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>MSDN、BizSpark、BizSparkPlus、MPN などの Azure 特典プランをアクティブ化できません
+### <a name="cant-activate-azure-benefit-plan-like-visual-studio-bizspark-bizsparkplus-or-mpn"></a>Visual Studio、BizSpark、BizSparkPlus、MPN などの Azure 特典プランをアクティブ化できません
 
 サインイン資格情報が正しいことを確認します。 次に、特典プログラムを使用する資格があることを確認します。
-- MSDN
-  - [MSDN アカウント ページ](https://msdn.microsoft.com/subscriptions/manage/default.aspx)で資格の状態を確認します。
-  - 状態を確認できない場合は、[MSDN サブスクリプション カスタマー サービス センター](/previous-versions/mappoint/aa493452(v=msdn.10))にお問い合わせください。
+- Visual Studio
+  - [Visual Studio アカウント ページ](https://my.visualstudio.com/Benefits)で資格の状態を確認します。
+  - 状態を確認できない場合は、[Visual Studio Subscription のサポート](https://visualstudio.microsoft.com/subscriptions/support/)にお問い合わせください。
 - Microsoft for Startups
   - [Microsoft for Startups ポータル](https://startups.microsoft.com/#start-two)にサインインして、Microsoft for Startups の資格の状態を確認します。
   - 状態を確認できない場合は、[Microsoft for Startups フォーラム](https://www.microsoftpartnercommunity.com/t5/Microsoft-for-Startups/ct-p/Microsoft_Startups)で質問してください。
 - MPN
   - [MPN ポータル](https://mspartner.microsoft.com/Pages/Locale.aspx)にサインインし、資格の状態を確認します。 該当する [クラウド プラットフォーム コンピテンシー](https://mspartner.microsoft.com/pages/membership/cloud-platform-competency.aspx)をお持ちの場合、追加特典の資格を与えられることがあります。
   - 状態を確認できない場合は、[MPN サポート](https://mspartner.microsoft.com/Pages/Support/Premium/contact-support.aspx)にお問い合わせください。
-
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>新しい Azure イン オープン プラン サブスクリプションをアクティブ化できません
 

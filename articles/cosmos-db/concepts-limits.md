@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/19/2021
-ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 007bf845bab6f493fae91debefde27a4929d9f95
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598672"
+ms.locfileid: "98611034"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -236,7 +236,8 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 | リソース | 既定の制限 |
 | --- | --- |
 | MongoDB クエリの最大メモリ サイズ (この制限は 3.2 サーバー バージョンにのみ適用されます) | 40 MB |
-| MongoDB 操作の最大実行時間| 30 秒 |
+|MongoDB 操作の最大実行時間 (3.2 サーバー バージョンの場合)| 15 秒|
+|MongoDB 操作の最大実行時間 (3.6 サーバー バージョンの場合)| 60 秒|
 | サーバー側の接続を終了するためのアイドル状態の接続のタイムアウト* | 30 分 |
 
 \* クライアント アプリケーションではドライバー設定内のアイドル状態の接続のタイムアウトを 2 から 3 分に設定することをお勧めします。これは、[Azure LoadBalancer の既定のタイムアウトが 4 分である](../load-balancer/load-balancer-tcp-idle-timeout.md)ためです。  このタイムアウトにより、クライアント マシンと Azure Cosmos DB 間の中間ロード バランサーによってアイドル状態の接続が閉じられないようになります。

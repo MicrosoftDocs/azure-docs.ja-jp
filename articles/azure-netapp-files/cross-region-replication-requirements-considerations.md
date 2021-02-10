@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/16/2020
+ms.date: 01/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 7b664dcd1cb12808960ffacf91c6d02d58632c4e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 4a4fff18d21ccb0c729ecb1f79df17225c8086bc
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243139"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632675"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>リージョン間レプリケーションを使用するための要件と考慮事項 
 
@@ -31,6 +31,7 @@ Azure NetApp Files [ボリュームのリージョン間レプリケーション
 * Azure NetApp Files レプリケーションは、特定の固定されたリージョン ペアでのみ使用できます。 「[サポートされているリージョン ペア](cross-region-replication-introduction.md#supported-region-pairs)」を参照してください。 
 * SMB ボリュームは、NFS ボリュームと共にサポートされます。 SMB ボリュームのレプリケーションを行うには、ソースと宛先の NetApp アカウントに Active Directory 接続が必要です。 宛先の AD 接続には、宛先リージョン内の委任されたサブネットから到達可能な DNS サーバーまたは ADDS ドメイン コントローラーへのアクセス権が含まれている必要があります。 詳細については、「[Active Directory 接続の要件](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)」を参照してください。 
 * 宛先アカウントは、ソース ボリューム リージョンとは異なるリージョンにある必要があります。 別のリージョン内の既存の NetApp アカウントを選択することもできます。  
+* [宛先リージョンにフェールオーバー](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume)して、宛先ボリュームで読み取りと書き込みを有効にするまで、レプリケーションの宛先ボリュームは読み取り専用になります。 
 * 現在、Azure NetApp Files レプリケーションでは複数のサブスクリプションがサポートされていません。レプリケーションはすべて、1 つのサブスクリプションで実行する必要があります。
 * リージョン当たり 1 つのサブスクリプションで行うレプリケーションには最大 5 つのボリュームを設定できます。 サポート チケットを開くことで、5 つのレプリケーション宛先ボリューム (リージョン内のサブスクリプション当たり) という既定のクォータの増大を要求することができます。 
 * ソース ボリュームに新しく追加されたスナップショットがインターフェイスに反映されるまでに、最大 5 分の遅延が発生する場合があります。  

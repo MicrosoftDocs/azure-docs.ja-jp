@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 1/29/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: fb7540009fe0154766df91beda1cc962b1ec8096
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 10bb0364bf7c54cd07d6dfa5725b3a626622d390
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695102"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097794"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>検索トラフィック分析用のテレメトリ データを収集する
 
@@ -102,16 +102,30 @@ window.appInsights=appInsights;
 
 **C# を使用する (新しい v11 SDK)**
 
+最新の SDK では、この[サンプル](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Azure.Core/samples/Pipeline.md#implementing-a-syncronous-policy)で詳しく説明されているように、HTTP パイプラインを使用してヘッダーを設定する必要があります。
+
+```csharp
+// Create a custom policy to add the correct headers
+public class SearchIdPipelinePolicy : HttpPipelineSynchronousPolicy
+{
+    public override void OnSendingRequest(HttpMessage message)
+    {
+        message.Request.Headers.SetValue("x-ms-azs-return-searchid", "true");
+    }
+}
+```
+
 ```csharp
 // This sample uses the .NET SDK https://www.nuget.org/packages/Azure.Search.Documents
 
-var client = new SearchClient(<SearchServiceName>, <IndexName>, new AzureKeyCredentials(<QueryKey>));
+SearchClientOptions clientOptions = new SearchClientOptions();
+clientOptions.AddPolicy(new SearchIdPipelinePolicy(), HttpPipelinePosition.PerCall);
 
-// Use HTTP headers so that you can get the search ID from the response
-var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
-var response = await client.searchasync(searchText: searchText, searchOptions: options, customHeaders: headers);
+var client = new SearchClient("<SearchServiceName>", "<IndexName>", new AzureKeyCredential("<QueryKey>"), options: clientOptions);
+
+Response<SearchResults<SearchDocument>> response = await client.SearchAsync<SearchDocument>(searchText: searchText, searchOptions: options);
 string searchId = string.Empty;
-if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues))
+if (response.GetRawResponse().Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues))
 {
     searchId = headerValues.FirstOrDefault();
 }
@@ -251,7 +265,7 @@ appInsights.trackEvent("Click", {
 
 ![Azure Cognitive Search の Power BI ダッシュボード](./media/search-traffic-analytics/azuresearch-powerbi-dashboard.png "Azure Cognitive Search の Power BI ダッシュボード")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 検索アプリケーションをインストルメント化して、検索サービスに関する有益で洞察に富んだデータを取得します。
 

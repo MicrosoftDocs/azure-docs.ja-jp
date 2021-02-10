@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight で Grafana を使用する
 description: Azure HDInsight で Apache Hadoop クラスターを使用して Grafana ダッシュボードにアクセスする方法について学習します
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 7750544367044cab2a0243577c200025bb9ff693
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd2a09b6c3196302dcb74fd363481706021a4d4d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083034"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98940870"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 
@@ -42,7 +39,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. [Azure portal](https://portal.azure.com/) にサインインする
 
-1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
+1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 

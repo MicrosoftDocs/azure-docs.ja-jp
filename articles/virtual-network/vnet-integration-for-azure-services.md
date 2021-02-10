@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2c0c4bec93b8fa61275c376fbae2a3a063e72a6f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218656"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785534"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>ネットワーク分離のために Azure サービスと仮想ネットワークを統合する
 

@@ -8,17 +8,14 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c6b25fd3615fa76bc76e6d360f4c76a21a9ad02
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: a3ed7979584787627c97cfec3bb2e19c147f7152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918031"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872666"
 ---
 # <a name="discover-connect-and-explore-data-in-synapse-using-azure-purview"></a>Azure Purview を使用した Synapse でのデータの検出、接続、探索 
-
-> [!IMPORTANT]
-> Azure Synapse Analytics と Azure Purview の統合は、現在プレビュー段階にあります。 Synapse で Azure Purview を試してみたい場合は、Microsoft の営業担当者にお問い合わせください。 
 
 このドキュメントでは、Azure Purview アカウントを Synapse に登録するときに実行できる操作の種類について説明します。 
 
@@ -35,6 +32,8 @@ Synapse で Azure Purview を使用するには、その Purview アカウント
 ### <a name="data-discovery-search-datasets"></a>データ検出: データセットの検索 
 
 Azure Purview によって登録およびスキャンされたデータを検出するには、Synapse ワークスペースの上部中央にある検索バーを使用します。 すべての組織データを検索するために、必ず Azure Purview を選択してください。 
+
+[![Azure Purview の資産の検索](./media/purview-access.png)](./media/purview-access.png#lightbox)
 
 ## <a name="azure-purview-actions"></a>Azure Purview のアクション 
 

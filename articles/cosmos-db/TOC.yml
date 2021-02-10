@@ -110,8 +110,38 @@
       href: cosmosdb-jupyter-notebooks.md
     - name: サービス クォータ
       href: concepts-limits.md
-    - name: エンタープライズ対応 - コンプライアンス
-      href: compliance.md
+    - name: エンタープライズ対応
+      items:
+        - name: バックアップと復元の概要
+          href: online-backup-and-restore.md
+        - name: 継続的バックアップ
+          items:
+            - name: 継続的バックアップ - 概要
+              href: continuous-backup-restore-introduction.md
+            - name: 継続的バックアップ - FAQ
+              href: continuous-backup-restore-frequently-asked-questions.md
+            - name: 継続的バックアップ - リソース モデル
+              items:
+                - name: リソース モデルの概要
+                  href: continuous-backup-restore-resource-model.md
+                - name: 復元可能なアカウント - 一覧
+                  href: restorable-database-accounts-list.md
+                - name: 復元可能なアカウント - 場所別の一覧
+                  href: restorable-database-accounts-list-by-location.md
+                - name: 復元可能な SQL リソース - 一覧
+                  href: restorable-sql-resources-list.md
+                - name: 復元可能な SQL データベース - 一覧
+                  href: restorable-sql-databases-list.md
+                - name: 復元可能な SQL コンテナー - 一覧
+                  href: restorable-sql-containers-list.md
+                - name: 復元可能な MongoDB リソース - 一覧
+                  href: restorable-mongodb-resources-list.md
+                - name: 復元可能な MongoDB コレクション - 一覧
+                  href: restorable-mongodb-collections-list.md
+                - name: 復元可能な MongoDB データベース - 一覧
+                  href: restorable-mongodb-databases-list.md
+        - name: コンプライアンス
+          href: compliance.md
     - name: 自動の推奨事項
       href: automated-recommendations.md
 - name: SQL/Core API
@@ -966,8 +996,6 @@
               href: cassandra-migrate-cosmos-db-blitzz.md
             - name: 移行 - Databricks を使用して Apache Cassandra から Cassandra API へ
               href: cassandra-migrate-cosmos-db-databricks.md
-            - name: 移行 - Databricks を使用して Apache Cassandra から Cassandra API へ
-              href: cassandra-migrate-cosmos-db-databricks.md
             - name: 移行 - Apache Kafka を使用して PostgreSQL から Cassandra API へ
               href: postgres-migrate-cosmos-db-kafka.md
         - name: Change Feed
@@ -1367,8 +1395,20 @@
           href: how-to-setup-cmk.md
     - name: エンタープライズ対応
       items:
-        - name: オンラインのバックアップとオンデマンドの復元
-          href: online-backup-and-restore.md
+        - name: 継続的バックアップの管理
+          items:
+            - name: 継続的バックアップ - アクセス許可とロール
+              href: continuous-backup-restore-permissions.md
+            - name: 継続的バックアップ - ポータル
+              href: continuous-backup-restore-portal.md
+            - name: 継続的バックアップ - PowerShell
+              href: continuous-backup-restore-powershell.md
+            - name: 継続的バックアップ - CLI
+              href: continuous-backup-restore-command-line.md
+            - name: 継続的バックアップ - ARM
+              href: continuous-backup-restore-template.md
+        - name: 定期バックアップの管理
+          href: configure-periodic-backup-restore.md
         - name: クォータの増加を要求する
           href: create-support-request-quota-increase.md
     - name: モニター

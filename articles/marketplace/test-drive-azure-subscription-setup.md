@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/09/2020
-ms.openlocfilehash: 6f74f3b1f5aad153903ba5d290a290973203a875
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 60eeceac916a7f8c64214b7a74a8cf60fd1ec8ac
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489388"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986126"
 ---
 # <a name="set-up-an-azure-marketplace-subscription-for-hosted-test-drives"></a>ホストされた体験版用に Azure Marketplace サブスクリプションを設定する
 
@@ -70,7 +70,7 @@ ms.locfileid: "94489388"
 
             :::image type="content" source="./media/test-drive/add-client-secret.png" alt-text="クライアント シークレットの追加。":::
 
-5. 場合によっては、ユーザーを Azure AD から CRM インスタンスに同期するのに、予想以上の時間がかかることがあります。 これを支援するために、ユーザーの同期を強制するプロセスが追加されましたが、これには Azure AD アプリケーションがパートナー センターによってホワイトリストに登録されている必要があります。 これを行うには、[Customer Engagement インスタンスへのユーザー同期](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md)に関する記事を参照してください。
+5. 場合によっては、ユーザーを Azure AD から CRM インスタンスに同期するのに、予想以上の時間がかかることがあります。 これを支援するために、ユーザーの同期を強制するプロセスが追加されましたが、これには Azure AD アプリケーションがパートナー センターによって許可リストに登録されている必要があります。 これを行うには、[Customer Engagement インスタンスへのユーザー同期](https://github.com/microsoft/AppSource/blob/master/Microsoft%20Hosted%20Test%20Drive/CDS_Utility_to_ForceUserSync_in_CRM_Instance.md)に関する記事を参照してください。
 6. アプリケーションにサービス プリンシパルの役割を追加して、Azure AD アプリで Azure テナントからユーザーを削除できるようにします。
     1. 管理レベルの PowerShell コマンド プロンプトを開きます。
     2. Install-Module MSOnline (MSOnline がインストールされていない場合、このコマンドを実行します)。

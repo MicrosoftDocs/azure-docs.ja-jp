@@ -1,5 +1,5 @@
 ---
-title: OBS Studio を使用して Azure Media Services のライブ ストリームを作成する
+title: OBS Studio を使用してライブ ストリームを作成する
 description: ポータルと OBS Studio を使用して Azure Media Services のライブ ストリームを作成する方法について説明します
 services: media-services
 ms.service: media-services
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
-ms.openlocfilehash: 04b0ef0d6a480270b1f0a3546319b2608d638677
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 83f072b67f5aa162137a55d2b311dccf0daf7f53
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89265509"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956074"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>OBS を使用して Azure Media Services のライブ ストリームを作成する
 
@@ -83,7 +83,7 @@ OBS は既定のシーンで開始しますが、入力は選択されていま�
 
 ### <a name="add-a-video-source"></a>ビデオ ソースを追加する
 
-1. **[ソース]** パネルで**追加**アイコンをクリックして、新しいソース デバイスを選択します。 **[ソース]** メニューが開きます。
+1. **[ソース]** パネルで **追加** アイコンをクリックして、新しいソース デバイスを選択します。 **[ソース]** メニューが開きます。
 
 1. ソース デバイスのメニューから **[映像キャプチャ デバイス]** を選択します。 **[ソースを作成/選択]** メニューが開きます。
 
@@ -99,7 +99,7 @@ OBS は既定のシーンで開始しますが、入力は選択されていま�
 
 ### <a name="add-an-audio-source"></a>オーディオ ソースを追加する
 
-1. **[ソース]** パネルで**追加**アイコンをクリックして、新しいソース デバイスを選択します。 ソース デバイスのメニューが開きます。
+1. **[ソース]** パネルで **追加** アイコンをクリックして、新しいソース デバイスを選択します。 ソース デバイスのメニューが開きます。
 
 1. ソース デバイスのメニューから **[音声入力キャプチャ]** を選択します。 **[ソースを作成/選択]** メニューが開きます。
 
@@ -166,7 +166,7 @@ OBS は既定のシーンで開始しますが、入力は選択されていま�
 > [!NOTE]
 > この出力をストリーム配信するには、ストリーミング エンドポイントが実行されている必要があります。 この後の「[既定のストリーミング エンドポイントを実行する](#run-the-default-streaming-endpoint)」セクションを参照してください。
 
-1. **出力**ビデオ ビューアーの下にある **[Create outputs]\(出力の作成\)** リンクを選択します。
+1. **出力** ビデオ ビューアーの下にある **[Create outputs]\(出力の作成\)** リンクを選択します。
 1. 必要に応じて、 **[名前]** ボックスで出力の名前を編集して、後で見つけやすいよう、わかりやすい名前に変更します。
 
    ![[出力名] ボックス](media/live-events-wirecast-quickstart/output-name.png)
@@ -180,11 +180,11 @@ OBS は既定のシーンで開始しますが、入力は選択されていま�
 
 ## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>Azure Media Player を使用して出力配信を再生する
 
-1. **出力**ビデオ プレーヤーの下にあるストリーミング URL をコピーします。
+1. **出力** ビデオ プレーヤーの下にあるストリーミング URL をコピーします。
 1. Web ブラウザーで、[Azure Media Player のデモ](https://ampdemo.azureedge.net/azuremediaplayer.html)を開きます。
 1. Azure Media Player の **[URL]** ボックスにストリーミング URL を貼り付けます。
 1. **[Update Player]\(プレーヤーの更新\)** ボタンを選択します。
-1. ビデオの**再生**アイコンを選択すると、ライブ ストリームが表示されます。
+1. ビデオの **再生** アイコンを選択すると、ライブ ストリームが表示されます。
 
 ## <a name="stop-the-broadcast"></a>配信を停止する
 
@@ -203,7 +203,7 @@ OBS は既定のシーンで開始しますが、入力は選択されていま�
 1. 資産のビデオ プレーヤーの下にあるストリーミング URL をコピーします。
 1. ブラウザーで Azure Media Player に戻り、ストリーミング URL を [URL] ボックスに貼り付けます。
 1. **[Update Player]\(プレーヤーの更新\)** を選択します。
-1. ビデオの**再生**アイコンを選択すると、オンデマンド資産が表示されます。
+1. ビデオの **再生** アイコンを選択すると、オンデマンド資産が表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6c139398182ca9d875de0d3b21c58afe503bd8a5
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963127"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632276"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>既定のドメイン コントローラーのポリシーを適用中に VM が応答しない
 
@@ -37,6 +37,9 @@ ms.locfileid: "91963127"
 この問題は、既定のドメイン コントローラー ポリシーに加えられた最近の変更のためである可能性があります。 そうでない場合は、根本原因を特定するためにメモリ ダンプ ファイル分析を実行する必要があります。
 
 ## <a name="solution"></a>解決策
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
 
 最近、既定のドメイン コントローラー ポリシーを変更した場合は、問題を解決するために、これらの変更を元に戻すことをお勧めします。 何が問題の原因であるかがわからない場合は、メモリ ダンプを収集してから、サポート チケットを送信します。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3772988e9bf4f733323adae6c0527c8b811c4d04
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566352"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624458"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>チュートリアル:Event Grid および Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する
 
@@ -242,4 +242,7 @@ Azure CLI を使用して簡単にデバイスの接続をシミュレートし�
 * [デバイス接続イベントおよびデバイス切断イベントの順序を設定する方法を確認します](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * [Event Grid](overview.md) で他にできることについて確認します。
 
-サポートされている Logic App コネクタの完全な一覧については、[コネクタの概要](/connectors/)に関するページを参照してください。
+サポートされている Logic App コネクタの完全な一覧については、 
+
+> [!div class="nextstepaction"]
+> [コネクタの概要](/connectors/)に関するページを参照してください。

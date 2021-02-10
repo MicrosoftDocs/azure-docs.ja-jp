@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353172"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222867"
 ---
 # <a name="plan-your-qna-maker-app"></a>QnA Maker アプリの計画
 
@@ -94,13 +94,13 @@ QnA Maker リソースに作成された 1 つ目のナレッジ ベースによ
 
 ### <a name="ingest-data-sources"></a>データ ソースを取り込む
 
-取り込まれた次の[データ ソース](../index.yml)のいずれかを使用して、ナレッジ ベースを作成することができます。
+取り込まれた次の[データ ソース](../Concepts/data-sources-and-content.md)のいずれかを使用して、ナレッジ ベースを作成することができます。
 
 * パブリック URL
 * SharePoint のプライベート URL
 * ファイル
 
-インジェスト プロセスでは、[サポートされているコンテンツの種類](../index.yml)がマークダウンに変換されます。 *回答* のそれ以上の編集はすべて、マークダウンを使用して行われます。 ナレッジ ベースを作成した後は、[リッチ テキスト作成](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)を使用して、QnA Maker ポータルで [QnA ペア](question-answer-set.md)を編集できます。
+インジェスト プロセスでは、[サポートされているコンテンツの種類](../reference-document-format-guidelines.md)がマークダウンに変換されます。 *回答* のそれ以上の編集はすべて、マークダウンを使用して行われます。 ナレッジ ベースを作成した後は、[リッチ テキスト作成](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)を使用して、QnA Maker ポータルで [QnA ペア](question-answer-set.md)を編集できます。
 
 ### <a name="data-format-considerations"></a>データ形式に関する考慮事項
 
@@ -124,7 +124,7 @@ QnA ペアの最終的な形式はマークダウンであるため、[マーク
 
 コラボレーターは、ナレッジ ベース アプリケーションの完全な開発スタックを共有する他の開発者であることも、ナレッジ ベースの作成のみに制限されていることもあります。
 
-ナレッジ ベースの作成では、コラボレーターの機能の範囲を制限するために、Azure portal で適用するいくつかの[ロールベースのアクセス許可](../index.yml)をサポートしています。
+ナレッジ ベースの作成では、コラボレーターの機能の範囲を制限するために、Azure portal で適用するいくつかの[ロールベースのアクセス許可](../reference-role-based-access-control.md)をサポートしています。
 
 ## <a name="integration-with-client-applications"></a>クライアント アプリケーションとの統合
 

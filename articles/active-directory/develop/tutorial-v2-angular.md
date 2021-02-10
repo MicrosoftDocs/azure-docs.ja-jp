@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979931"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756147"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>チュートリアル:Angular シングルページ アプリケーションからユーザーをサインインさせて Microsoft Graph API を呼び出す
 
@@ -271,7 +271,7 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-場合によっては、ユーザーに Microsoft ID プラットフォーム エンドポイントと対話させる必要があります。 次に例を示します。
+場合によっては、ユーザーに Microsoft ID プラットフォームと対話させる必要があります。 次に例を示します。
 
 * パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある。
 * お使いのアプリケーションが、ユーザーによる同意が必要な追加のリソース スコープへのアクセスを要求している。
@@ -279,7 +279,7 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 ほとんどのアプリケーションでは、最初に `acquireTokenSilent` を呼び出し、例外をキャッチしてから、`acquireTokenPopup` (または `acquireTokenRedirect`) を呼び出して、対話型要求を開始するというパターンをお勧めしています。
 
-`acquireTokenPopup` を呼び出すと、サインインのポップアップ ウィンドウが表示されます。 または、`acquireTokenRedirect` によってユーザーが Microsoft ID プラットフォーム エンドポイントにリダイレクトされます。 そのウィンドウで、ユーザーは資格情報を確認するか、必要なリソースに同意するか、または 2 要素認証を完了する必要があります。
+`acquireTokenPopup` を呼び出すと、サインインのポップアップ ウィンドウが表示されます。 または、`acquireTokenRedirect` によってユーザーが Microsoft ID プラットフォームにリダイレクトされます。 そのウィンドウで、ユーザーは資格情報を確認するか、必要なリソースに同意するか、または 2 要素認証を完了する必要があります。
 
 ```javascript
   const requestObj = {

@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 72e79ff90422a6f055d5b883ba208555244687b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678114"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927816"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -1098,8 +1098,8 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [ASP.NET リファレンス](/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [Java リファレンス](/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET リファレンス](/dotnet/api/overview/azure/insights)
+* [Java リファレンス](/java/api/overview/azure/appinsights)
 * [JavaScript リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK コード

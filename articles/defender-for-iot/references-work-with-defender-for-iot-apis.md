@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/14/2020
 ms.topic: reference
 ms.service: azure
-ms.openlocfilehash: 44ea6e8343203a9cb18947f31f45aa0b023178b0
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 73c5d1f31d9e0651ee710593aa4e1b68fe972560
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624576"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222140"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
 
@@ -56,33 +56,31 @@ ms.locfileid: "98624576"
 
 このセクションでは、次の Sensor API について説明します。
 
-- /api/v1/devices
+- [デバイス情報を取得する - /api/v1/devices](#retrieve-device-information---apiv1devices)
 
-- /api/v1/devices/connections
+- [デバイスの接続情報を取得する - /api/v1/devices/connections](#retrieve-device-connection-information---apiv1devicesconnections)
 
-- /api/v1/devices/cves
+- [CVE に関する情報を取得する - /api/v1/devices/cves](#retrieve-information-on-cves---apiv1devicescves)
 
-- /api/v1/alerts
+- [アラート情報を取得する - /api/v1/alerts](#retrieve-alert-information---apiv1alerts)
 
-- /api/v1/events
+- [タイムライン イベントを取得する - /api/v1/events](#retrieve-timeline-events---apiv1events)
 
-- /api/v1/reports/vulnerabilities/devices
+- [脆弱性情報を取得する - /api/v1/reports/vulnerabilities/devices](#retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices)
 
-- /api/v1/reports/vulnerabilities/security
+- [セキュリティの脆弱性を取得する - /api/v1/reports/vulnerabilities/security](#retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity)
 
-- /api/v1/reports/vulnerabilities/operational
+- [動作の脆弱性を取得する - /api/v1/reports/vulnerabilities/operational](#retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational)
 
-- /api/external/authentication/validation
+- [ユーザーの資格情報を検証する - /api/external/authentication/validation](#validate-user-credentials---apiexternalauthenticationvalidation)
 
-- /external/authentication/set_password
+- [パスワードを変更する - /external/authentication/set_password](#change-password---externalauthenticationset_password)
 
-- /external/authentication/set_password_by_admin
+- [システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin](#user-password-update-by-system-admin---externalauthenticationset_password_by_admin)
 
-### <a name="retrieve-device-information"></a>デバイス情報を取得する
+### <a name="retrieve-device-information---apiv1devices"></a>デバイス情報を取得する - /api/v1/devices
 
 Defender for IoT センサーによって検出されたすべてのデバイスの一覧を要求するには、この API を使用します。
-
-#### <a name="apiv1devices"></a>/api/v1/devices
 
 #### <a name="method"></a>メソッド
 
@@ -279,11 +277,15 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 ]
 ```
 
-### <a name="retrieve-device-connection-information"></a>デバイスの接続情報を取得する
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:<span>//127<span>.0.0.1/api/v1/devices?authorized=true |
+
+### <a name="retrieve-device-connection-information---apiv1devicesconnections"></a>デバイスの接続情報を取得する - /api/v1/devices/connections
 
 デバイスごとのすべての接続の一覧を要求するには、この API を使用します。
-
-#### <a name="apiv1devicesconnections"></a>/api/v1/devices/connections
 
 #### <a name="method"></a>メソッド
 
@@ -447,11 +449,17 @@ Defender for IoT センサーによって検出されたすべてのデバイス
 ]
 ```
 
-### <a name="retrieve-information-on-cves"></a>CVE に関する情報を取得する
+#### <a name="curl-command"></a>Curl コマンド
+
+> [!div class="mx-tdBreakAll"]
+> | Type | API | 例 |
+> |--|--|--|
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/connections | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/connections |
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/devices/<deviceId>/connections?lastActiveInMinutes=&discoveredBefore=&discoveredAfter=' | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/devices/2/connections?lastActiveInMinutes=20&discoveredBefore=1594550986000&discoveredAfter=1594550986000' |
+
+### <a name="retrieve-information-on-cves---apiv1devicescves"></a>CVE に関する情報を取得する - /api/v1/devices/cves
 
 ネットワーク内のデバイスで検出されたすべての既知の CVE の一覧を要求するには、この API を使用します。
-
-#### <a name="apiv1devicescves"></a>/api/v1/devices/cves
 
 #### <a name="method"></a>メソッド
 
@@ -557,11 +565,16 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 ]
 ```
 
-### <a name="retrieve-alert-information"></a>アラート情報を取得する
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/cves | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/cves |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/<deviceIpAddress>/cves?top= | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/devices/10.10.10.15/cves?top=50 |
+
+### <a name="retrieve-alert-information---apiv1alerts"></a>アラート情報を取得する - /api/v1/alerts
 
 この API を使用して、Defender for IoT センサーによって検出されたすべてのアラートの一覧を要求します。
-
-#### <a name="apiv1alerts"></a>/api/v1/alerts
 
 #### <a name="method"></a>メソッド
 
@@ -685,11 +698,16 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 ```
 
-### <a name="retrieve-timeline-events"></a>タイムライン イベントを取得する
+#### <a name="curl-command"></a>Curl コマンド
+
+> [!div class="mx-tdBreakAll"]
+> | Type | API | 例 |
+> |--|--|--|
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/alerts?state=&fromTime=&toTime=&type=' | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/alerts?state=unhandled&fromTime=1594550986000&toTime=1594550986001&type=disconnections' |
+
+### <a name="retrieve-timeline-events---apiv1events"></a>タイムライン イベントを取得する - /api/v1/events
 
 イベント タイムラインに報告されたイベントの一覧を要求するには、この API を使用します。
-
-#### <a name="apiv1events"></a>/api/v1/events
 
 #### <a name="method"></a>メソッド
 
@@ -802,11 +820,15 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 ```
 
-### <a name="retrieve-vulnerability-information"></a>脆弱性情報を取得する
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/events?minutesTimeFrame=&type=' | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/api/v1/events?minutesTimeFrame=20&type=DEVICE_CONNECTION_CREATED' |
+
+### <a name="retrieve-vulnerability-information---apiv1reportsvulnerabilitiesdevices"></a>脆弱性情報を取得する - /api/v1/reports/vulnerabilities/devices
 
 各デバイスの脆弱性評価の結果を要求するには、この API を使用します。
-
-#### <a name="apiv1reportsvulnerabilitiesdevices"></a>/api/v1/reports/vulnerabilities/devices
 
 #### <a name="method"></a>メソッド
 
@@ -1052,13 +1074,17 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 ```
 
-### <a name="retrieve-security-vulnerabilities"></a>セキュリティの脆弱性を取得する
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/devices | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/devices |
+
+### <a name="retrieve-security-vulnerabilities---apiv1reportsvulnerabilitiessecurity"></a>セキュリティの脆弱性を取得する - /api/v1/reports/vulnerabilities/security
 
 一般的な脆弱性評価の結果を要求するには、この API を使用します。 この評価は、システムのセキュリティ レベルに関する分析情報を提供します。
 
 この評価は、特定のデバイスの評価ではなく、一般的なネットワーク情報とシステム情報に基づいて行われます。
-
-#### <a name="apiv1reportsvulnerabilitiessecurity"></a>/api/v1/reports/vulnerabilities/security
 
 #### <a name="method"></a>メソッド
 
@@ -1295,11 +1321,15 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 ```
 
-### <a name="retrieve-operational-vulnerabilities"></a>動作の脆弱性を取得する
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/security | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/security |
+
+### <a name="retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational"></a>動作の脆弱性を取得する - /api/v1/reports/vulnerabilities/operational
 
 一般的な脆弱性評価の結果を要求するには、この API を使用します。 この評価により、ネットワークの動作状態に関する分析情報が得られます。 これは、特定のデバイスの評価ではなく、一般的なネットワーク情報とシステム情報に基づいて行われます。
-
-#### <a name="apiv1reportsvulnerabilitiesoperational"></a>/api/v1/reports/vulnerabilities/operational
 
 #### <a name="method"></a>メソッド
 
@@ -1488,13 +1518,17 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 
 ```
 
-### <a name="validate-user-credentials"></a>ユーザーの資格情報を検証する
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/reports/vulnerabilities/operational | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/v1/reports/vulnerabilities/operational |
+
+### <a name="validate-user-credentials---apiexternalauthenticationvalidation"></a>ユーザーの資格情報を検証する - /api/external/authentication/validation
 
 Defender for IoT のユーザー名とパスワードを検証するには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。
 
 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="apiexternalauthenticationvalidation"></a>/api/external/authentication/validation
 
 #### <a name="method"></a>メソッド
 
@@ -1551,11 +1585,15 @@ response:
 
 ```
 
-### <a name="change-password"></a>パスワードの変更
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/external/authentication/validation | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/api/external/authentication/validation |
+
+### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
 
 ユーザーが自分のパスワードを変更できるようにするには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="externalauthenticationset_password"></a>/external/authentication/set_password
 
 #### <a name="method"></a>メソッド
 
@@ -1621,11 +1659,15 @@ response:
 | **password** | String | いいえ |
 | **new_password** | String | いいえ |
 
-### <a name="user-password-update-by-system-admin"></a>システム管理者によるユーザー パスワードの更新
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| POST | curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password | curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/api/external/authentication/set_password |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
 
 システム管理者が指定されたユーザーのパスワードを変更できるようにするには、この API を使用します。 Defender for IoT 管理者ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="externalauthenticationset_password_by_admin"></a>/external/authentication/set_password_by_admin
 
 #### <a name="method"></a>メソッド
 
@@ -1697,6 +1739,13 @@ response:
 | **username** | String | いいえ |
 | **new_password** | String | いいえ |
 
+#### <a name="curl-command"></a>Curl コマンド
+
+> [!div class="mx-tdBreakAll"]
+> | Type | API | 例 |
+> |--|--|--|
+> | POST | curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password_by_admin | curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/api/external/authentication/set_password_by_admin |
+
 ## <a name="on-premises-management-console-api-specifications"></a>オンプレミス管理コンソール API の仕様
 
 このセクションでは、次のオンプレミス管理コンソール API について説明します。
@@ -1726,23 +1775,17 @@ response:
 
 ```
 
-#### <a name="change-password"></a>パスワードの変更
+#### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
 
 ユーザーが自分のパスワードを変更できるようにするには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
 
-- **/external/authentication/set_password**
-
-#### <a name="user-password-update-by-system-admin"></a>システム管理者によるユーザー パスワードの更新
+#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
 
 システム管理者が特定のユーザーのパスワードを変更できるようにするには、この API を使用します。 Defender for IoT 管理者ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
 
-- **/external/authentication/set_password_by_admin**
-
-### <a name="retrieve-device-information"></a>デバイス情報を取得する
+### <a name="retrieve-device-information---externalv1devices"></a>デバイス情報を取得する - /external/v1/devices
 
 この API は、オンプレミスの管理コンソールに接続されている Defender for IoT sensors センサーによって検出されたすべてのデバイスの一覧を要求します。
-
-- **/external/v1/devices**
 
 #### <a name="method"></a>メソッド
 
@@ -1959,11 +2002,15 @@ response:
 ]
 ```
 
-### <a name="retrieve-alert-information"></a>アラート情報を取得する
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/devices?siteId=&zoneId=&sensorId=&authorized=' | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/devices?siteId=1&zoneId=2&sensorId=5&authorized=true' |
+
+### <a name="retrieve-alert-information---externalv1alerts"></a>アラート情報を取得する - /external/v1/alerts
 
 オンプレミスの管理コンソールからすべてまたはフィルター処理されたアラートを取得するには、この API を使用します。
-
-#### <a name="externalv1alerts"></a>/external/v1/alerts
 
 #### <a name="method"></a>メソッド
 
@@ -2116,6 +2163,13 @@ response:
 ]
 ```
 
+#### <a name="curl-command"></a>Curl コマンド
+
+> [!div class="mx-tdBreakAll"]
+> | Type | API | 例 |
+> |--|--|--|
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/alerts?state=&zoneId=&fromTime=&toTime=&siteId=&sensor=' | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/alerts?state=unhandled&zoneId=1&fromTime=0&toTime=1594551777000&siteId=1&sensor=1' |
+
 ### <a name="qradar-alerts"></a>QRadar アラート
 
 Defender for IoT への QRadar の統合は、Defender for IoT によって生成されたアラートを識別し、これらのアラートに対してアクションを実行する上で役立ちます。 データは Defender for IoT から QRadar へ送信された後、パブリック API のオンプレミス管理コンソール コンポーネントに接続されます。
@@ -2213,15 +2267,19 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 }
 ```
 
-### <a name="alert-exclusions-maintenance-window"></a>アラートの除外 (メンテナンス期間)
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| PUT | curl -k -X PUT -d '{"action": "<ACTION>"}' -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/external/v1/alerts/<UUID> | curl -k -X PUT -d '{"action": "handle"}' -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/alerts/1-1594550943000 |
+
+### <a name="alert-exclusions-maintenance-window---externalv1maintenancewindow"></a>アラートの除外 (メンテナンス期間) - /external/v1/maintenanceWindow
 
 アラートを送信しない条件を定義します。 たとえば、停止時刻と開始時刻、アラートをトリガーするときに除外するデバイスまたはサブネット、または除外する必要がある Defender for IoT エンジンを定義して更新します。 例としては、メンテナンス期間中は、重要なデバイスのマルウェア アラートを除き、すべてのアラートの配信を停止するなどです。
 
 ここで定義した API は、オンプレミスの管理コンソールの **[アラートの除外]** ウィンドウに読み取り専用の除外ルールとして表示されます。
 
 :::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="[アラートの除外] ウィンドウ。すべての除外ルールの一覧が表示されています。":::
-
-#### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
 #### <a name="method---post"></a>メソッド - POST
 
@@ -2367,11 +2425,18 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 | **ttl** | 数値 | - | はい |
 | **operationType** | String | 値は "OPEN"、"UPDATE"、および "CLOSE" です。 | no |
 
-### <a name="authenticate-user-credentials"></a>ユーザー資格情報の認証
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| POST | curl -k -X POST -d '{"ticketId": "<TICKET_ID>",ttl": <TIME_TO_LIVE>,"engines": [<ENGINE1, ENGINE2...ENGINEn>],"sensorIds": [<SENSOR_ID1, SENSOR_ID2...SENSOR_IDn>],"subnets": [<SUBNET1, SUBNET2....SUBNETn>]}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow | curl -k -X POST -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf","ttl":"20","engines": ["ANOMALY"],"sensorIds": ["5","3"],"subnets": ["10.0.0.3"]}' -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow |
+| PUT | curl -k -X PUT -d '{"ticketId": "<TICKET_ID>",ttl": "<TIME_TO_LIVE>"}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow | curl -k -X PUT -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf","ttl":"20"}' -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow |
+| DELETE | curl -k -X DELETE -d '{"ticketId": "<TICKET_ID>"}' -H "Authorization: <AUTH_TOKEN>" https:/<span>/127.0.0.1/external/v1/maintenanceWindow | curl -k -X DELETE -d '{"ticketId": "a5fe99c-d914-4bda-9332-307384fe40bf"}' -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" https:/<span>/127.0.0.1/external/v1/maintenanceWindow |
+| GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/external/v1/maintenanceWindow?fromDate=&toDate=&ticketId=&tokenName=' | curl -k -H "Authorization:1234b734a9244d54ab8d40aedddcabcd" 'https:/<span>/127.0.0.1/external/v1/maintenanceWindow?fromDate=2020-01-01&toDate=2020-07-14&ticketId=a5fe99c-d914-4bda-9332-307384fe40bf&tokenName=a' |
+
+### <a name="authenticate-user-credentials---externalauthenticationvalidation"></a>ユーザーの資格情報を認証する - /external/authentication/validation
 
 ユーザーの資格情報を検証するには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="externalauthenticationvalidation"></a>/external/authentication/validation
 
 #### <a name="method"></a>メソッド
 
@@ -2426,11 +2491,15 @@ response:
 }
 ```
 
-### <a name="change-password"></a>パスワードの変更
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| POST | curl -k -d '{"username":"<USER_NAME>","password":"PASSWORD"}' 'https://<IP_ADDRESS>/external/authentication/validation' | curl -k -d '{"username":"myUser","password":"1234@abcd"}' 'https:/<span>/127.0.0.1/external/authentication/validation' |
+
+### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
 
 ユーザーが自分のパスワードを変更できるようにするには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="externalauthenticationset_password"></a>/external/authentication/set_password
 
 #### <a name="method"></a>メソッド
 
@@ -2496,11 +2565,15 @@ response:
 | **password** | String | いいえ |
 | **new_password** | String | いいえ |
 
-### <a name="user-password-update-by-system-admin"></a>システム管理者によるユーザー パスワードの更新
+#### <a name="curl-command"></a>Curl コマンド
+
+| Type | API | 例 |
+|--|--|--|
+| POST | curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password | curl -k -d '{"username": "myUser","password": "1234@abcd","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/external/authentication/set_password |
+
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
 
 システム管理者が指定されたユーザーのパスワードを変更できるようにするには、この API を使用します。 Defender for IoT 管理者ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
-
-#### <a name="externalauthenticationset_password_by_admin"></a>/external/authentication/set_password_by_admin
 
 #### <a name="method"></a>メソッド
 
@@ -2572,6 +2645,15 @@ response:
 | **username** | String | いいえ |
 | **new_password** | String | いいえ |
 
-## <a name="see-also"></a>関連項目
-[デバイス インベントリでのセンサー検出を調査する](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-[デバイス インベントリのすべてのエンタープライズ センサー検出を調査する](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
+#### <a name="curl-command"></a>Curl コマンド
+
+> [!div class="mx-tdBreakAll"]
+> | Type | API | 例 |
+> |--|--|--|
+> | POST | curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/external/authentication/set_password_by_admin | curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/external/authentication/set_password_by_admin |
+
+## <a name="next-steps"></a>次のステップ
+
+- [デバイス インベントリのセンサー検出を調査する](how-to-investigate-sensor-detections-in-a-device-inventory.md)
+
+- [デバイス インベントリのすべてのエンタープライズ センサー検出を調査する](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)

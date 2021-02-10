@@ -3,16 +3,13 @@ title: Azure HDInsight のリージョン サーバーに関する問題
 description: Azure HDInsight のリージョン サーバーに関する問題
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/16/2019
-ms.openlocfilehash: 6225e51a7707a926df91e68fbb27bfb56f89a3ee
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 968a0c6e1717245171bf84821a58cad4e440046e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539923"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936614"
 ---
 # <a name="issues-with-region-servers-in-azure-hdinsight"></a>Azure HDInsight のリージョン サーバーに関する問題
 

@@ -11,30 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795990"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756820"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Security recommendations in Azure Security Center 
+
 このトピックでは、Azure セキュリティ センターで推奨事項を確認し、理解し、Azure リソースの保護に役立てる方法について説明します。
 
 
 ## <a name="what-are-security-recommendations"></a>セキュリティに関する推奨事項とは
 
-推奨事項とは、リソースを保護するために実行する操作です。
-
 Security Center では、Azure リソースのセキュリティの状態が定期的に分析されて、潜在的なセキュリティ脆弱性が特定されます。 その後、これらの脆弱性を修正する方法に関する推奨事項が提供されます。
+
+推奨事項とは、リソースをセキュリティで保護および強化するために実行する操作です。 
 
 それぞれの推奨事項の内容は次のとおりです。
 
 - 問題の簡単な説明
 - 推奨事項を実装するために実行する修復手順
 - 影響を受けるリソース
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Microsoft では、セキュリティ保護とセキュリティ強化が必要な対象はどのように決定されますか?
+
+Security Center の推奨事項は、Azure セキュリティ ベンチマークに基づいています。 
+
+Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
+
+詳細については、[Azure セキュリティ ベンチマーク](../security/benchmarks/introduction.md)に関する記事を参照してください。
 
 ## <a name="monitor-recommendations"></a>推奨事項の監視<a name="monitor-recommendations"></a>
 

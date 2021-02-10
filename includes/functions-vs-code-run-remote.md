@@ -2,27 +2,21 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 10/01/2020
+ms.date: 01/28/2021
 ms.author: glenga
-ms.openlocfilehash: 55a75651b724a4fe975f655958e36fbd40e35db7
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4b15fec0f22db740bbd7c24fcc0acf2ad1a2d1cd
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96748262"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493517"
 ---
 ## <a name="run-the-function-in-azure"></a>Azure で関数を実行する
 
-1. **[Azure: Functions]** 領域 (サイド バー内) に戻り、サブスクリプションの下にある新しい関数アプリを展開します。 **[Functions]** を展開し、 **[HttpExample]** を右クリック (Windows) または <kbd>Ctrl キーを押しながら</kbd>クリック (macOS) して、 **[Copy function URL]\(関数 URL のコピー\)** を選択します。
+1. **[Azure: Functions]** 領域に戻り、サイド バーの **[ローカル プロジェクト]**  >  **[Functions]** を展開します。 `HttpExample` 関数を右クリック (Windows) または <kbd>Ctrl</kbd> キーを押しながらクリック (macOS) して、 **[Execute Function Now]\(今すぐ関数を実行\)** を選択します。
 
-    ![新しい HTTP トリガーの関数 URL をコピーします](./media/functions-vs-code-run-remote/function-copy-endpoint-url.png)
+    :::image type="content" source="media/functions-vs-code-run-remote/execute-function-now.png" alt-text="Visual Studio Code から今すぐ Azure で関数を実行する":::
 
-1. HTTP 要求の URL をブラウザーのアドレス バーに貼り付け、この URL の最後に `name` クエリ文字列を `?name=Functions` として追加して、要求を実行します。 HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります。
+1. **[Enter request body]\(要求本文を入力してください\)** に、要求メッセージ本文の値として `{ "name": "Azure" }` が表示されます。 Enter キーを押して、この要求メッセージを関数に送信します。  
 
-    ```http
-    http://<FUNCTION_APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions
-    ```
-
-    関数によって返されたリモート GET 要求に対するブラウザーでの応答を次の例に示します。
-
-    ![ブラウザーでの関数の応答](./media/functions-vs-code-run-remote/functions-test-remote-browser.png)
+1. Azure で関数を実行し、応答が返されると、Visual Studio Code で通知が発生します。

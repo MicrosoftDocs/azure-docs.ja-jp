@@ -2,16 +2,16 @@
 title: Azure Service Bus のメッセージ セッション | Microsoft Docs
 description: この記事では、セッションを使用して、関連メッセージのバインドなしシーケンスの結合および順序指定処理を有効にする方法を説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/20/2021
+ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511298"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680755"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
-Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および**要求 - 応答**のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
+Microsoft Azure Service Bus セッションでは、関連メッセージのバインドなしシーケンスの結合および順序指定処理が可能です。 セッションは、**先入れ先出し (FIFO)** および **要求 - 応答** のパターンで使用できます。 この記事では、Service Bus の使用時に、セッションを使用してこれらのパターンを実装する方法について説明します。 
 
 > [!NOTE]
 > Service Bus の Basic レベルはセッションをサポートしていません。 Standard レベルと Premium レベルはセッションをサポートしています。 これらのレベルの違いについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
@@ -34,9 +34,9 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 ![[Enable sessions]\(セッションを有効にする\) オプションが選択されて赤枠で囲まれている [キューの作成] ダイアログ ボックスのスクリーンショット。][2]
 
 > [!NOTE]
-> キューまたはサブスクリプションでセッションが有効になっている場合、クライアント アプリケーションでは通常のメッセージを送受信***できなくなります***。 すべてのメッセージは、(セッション ID を設定することで) セッションの一部として送信し、セッションを受信することで受信する必要があります。
+> キューまたはサブスクリプションでセッションが有効になっている場合、クライアント アプリケーションでは通常のメッセージを送受信でき***なくなります** _。 すべてのメッセージは、(セッション ID を設定することで) セッションの一部として送信し、セッションを受信することで受信する必要があります。
 
-セッションに対応する API は、キューまたはサブスクリプション クライアントに存在します。 セッションとメッセージを受信するタイミングを制御する命令モデルと、受信ループを管理する複雑さを解消する *OnMessage* に類似したハンドラーベースのモデルがあります。
+セッションに対応する API は、キューまたはサブスクリプション クライアントに存在します。 セッションやメッセージをいつ受信するかを制御する命令モデルと、受信ループを管理する複雑さが見えないようにしている (_OnMessage* に似た) ハンドラー ベースのモデルがあります。
 
 ### <a name="session-features"></a>セッションの機能
 

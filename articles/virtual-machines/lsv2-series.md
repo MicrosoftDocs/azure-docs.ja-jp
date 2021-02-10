@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2416c0b4002f560e272393c95a86c543cb5f1009
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498423"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097844"
 ---
 # <a name="lsv2-series"></a>Lsv2 シリーズ
 
@@ -27,11 +27,13 @@ Lsv2 シリーズは、2.55 GHz の全コア ブーストと 3.0 GHz の最大�
 
 [ACU](acu.md):150 から 175<br>
 [Premium Storage](premium-storage-performance.md):サポートされています<br>
-[Premium Storage キャッシュ](premium-storage-performance.md):サポートされていません<br>
-[ライブ マイグレーション](maintenance-and-updates.md):サポートされていません<br>
-[メモリ保持更新](maintenance-and-updates.md):サポートされていません<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされていません<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
 [VM 世代サポート](generation-2.md):第 1 世代と第 2 世代<br>
 バースト:サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 
 | サイズ | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS/MBps) | キャッシュ不使用時のデータ ディスク スループット (IOPs/MBps)<sup>4</sup> | キャッシュ不使用時の最大バースト データ ディスク スループット (IOPs/MBps)<sup>5</sup>| 最大データ ディスク数 | 最大 NIC 数 | 必要なネットワーク帯域幅 (Mbps) |

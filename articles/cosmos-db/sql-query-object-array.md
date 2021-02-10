@@ -5,19 +5,43 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 02/02/2021
 ms.author: tisande
-ms.openlocfilehash: f959e4e230c1d9f89ad5141713b6a17a8cbb17a2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 1dccb8e51fbc578f8f218fe1582f95f7bcaf42d7
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018923"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493789"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB での配列とオブジェクトの操作
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Azure Cosmos DB SQL API の重要な機能は、配列とオブジェクトの作成です。
+Azure Cosmos DB SQL API の重要な機能は、配列とオブジェクトの作成です。 このドキュメントでは、[Family データセット](sql-query-getting-started.md#upload-sample-data)を使用して再作成できる例を使用します。
+
+このデータセットの項目の例を次に示します。
+
+```json
+{
+  "id": "AndersenFamily",
+  "lastName": "Andersen",
+  "parents": [
+     { "firstName": "Thomas" },
+     { "firstName": "Mary Kay"}
+  ],
+  "children": [
+     {
+         "firstName": "Henriette Thaulow",
+         "gender": "female",
+         "grade": 5,
+         "pets": [{ "givenName": "Fluffy" }]
+     }
+  ],
+  "address": { "state": "WA", "county": "King", "city": "Seattle" },
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
 
 ## <a name="arrays"></a>配列
 
@@ -177,6 +201,8 @@ FROM child IN Families.children
 
 > [!NOTE]
 > IN キーワードを使用して反復処理を行う場合、配列の外部にあるプロパティをフィルター処理したり射影したりすることはできません。 代わりに、[JOIN](sql-query-join.md) を使用する必要があります。
+
+その他の例については、[Azure Cosmos DB での配列の操作に関するブログ記事](https://devblogs.microsoft.com/cosmosdb/understanding-how-to-query-arrays-in-azure-cosmos-db/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,27 +1,25 @@
 ---
-title: クラウド サービス ロールがリサイクルされる一般的な原因 | Microsoft Docs
+title: クラウド サービス (クラシック) ロールのリサイクルの一般的な原因 | Microsoft Docs
 description: クラウド サービス ロールが突然リサイクルされることで、重大なダウンタイムが生じることがあります。 ロールのリサイクルを引き起こす一般的な問題とダウンタイムの改善策を取り上げました。
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075129"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741164"
 ---
-# <a name="common-issues-that-cause-roles-to-recycle"></a>ロールのリサイクルを引き起こす一般的な問題
+# <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>Azure クラウド サービス (クラシック) ロールがリサイクルされる一般的な問題
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 この記事では、デプロイメントに伴う問題の一般的な原因と問題解決に役立つトラブルシューティングのヒントを紹介します。 アプリケーションに存在する問題の兆候として、ロール インスタンスが起動に失敗したり、初期化、ビジー、停止という状態を繰り返したりすることが挙げられます。
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -60,7 +58,7 @@ DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
   Azure Tools for Microsoft Visual Studio をアプリケーションの開発に使用している場合、この値は、プロパティ ページを使用して設定できます。
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>エクスポートした証明書に秘密キーが含まれていない
-Web ロールを TLS で実行するには、エクスポートした管理証明書に秘密キーが含まれていることを確認する必要があります。 *Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、 **[Export the private key (秘密キーをエクスポートします)]** オプションに **[はい]** を選択してください。 証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
+Web ロールを TLS で実行するには、エクスポートした管理証明書に秘密キーが含まれていることを確認する必要があります。 *Windows 証明書マネージャー* を使用して証明書をエクスポートする場合は必ず、 **[Export the private key (秘密キーをエクスポートします)]** オプションに **[はい]** を選択してください。 証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
 
 ## <a name="next-steps"></a>次のステップ
 クラウド サービスの他の [トラブルシューティングに関する記事](../index.yml?product=cloud-services&tag=top-support-issue) を参照します。

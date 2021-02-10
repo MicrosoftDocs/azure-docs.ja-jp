@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v2 から v3 への移行に関する概要 | Microsoft Docs
+title: Media Services v2 から v3 への移行の概要
 description: この記事では、Media Services v2 から v3 への移行の概要について説明します。
 services: media-services
 author: IngridAtMicrosoft
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: fb9abd8f3186405edc31b4af48ee98482e080c68
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3514a7c809e939ea2c45afa5ab60539232b8781f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98689512"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98953293"
 ---
 # <a name="migrate-from-media-services-v2-to-v3-introduction"></a>Media Services v2 から v3 への移行の概要
 

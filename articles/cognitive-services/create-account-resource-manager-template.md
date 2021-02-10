@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842109"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928650"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Services リソースを作成する
 
@@ -75,7 +75,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 > [!NOTE]
 > `az deployment group` の作成には、Azure CLI バージョン 2.6 以降が必要です。 バージョンを表示するには、`az --version` と入力します。 詳細については、[ドキュメント](/cli/azure/deployment/group)を参照してください。
 
-[ローカル コンピューターで](/cli/azure/install-azure-cli?view=azure-cli-latest) Azure コマンド ライン インターフェイス (CLI) を使用するか、ブラウザーで **[使ってみる]** ボタンを使用して、次のスクリプトを実行します。 新しいリソース グループの名前と場所 (`centralus` など) を入力します。ARM テンプレートを使用して、その中に Cognitive Services リソースをデプロイします。 使用した名前を忘れないでください。 後でデプロイを検証するときに使用します。
+[ローカル コンピューターで](/cli/azure/install-azure-cli) Azure コマンド ライン インターフェイス (CLI) を使用するか、ブラウザーで **[使ってみる]** ボタンを使用して、次のスクリプトを実行します。 新しいリソース グループの名前と場所 (`centralus` など) を入力します。ARM テンプレートを使用して、その中に Cognitive Services リソースをデプロイします。 使用した名前を忘れないでください。 後でデプロイを検証するときに使用します。
 
 
 ```azurecli-interactive

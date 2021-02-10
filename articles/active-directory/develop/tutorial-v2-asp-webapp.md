@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178247"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226306"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>チュートリアル:ASP.NET Web アプリに Microsoft へのサインインを追加する
 
@@ -119,7 +119,7 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed of the Microsoft identity platform and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -383,7 +383,7 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 1. 手順 1. で Visual Studio からコピーした SSL URL (たとえば `https://localhost:44368/`) を **[応答 URI]** に追加します。
 1. **[登録]** を選択します。
 1. **[管理]** で、 **[認証]** を選択します。
-1. **[暗黙的な許可]** セクションで、 **[ID トークン]** を選択し、 **[保存]** を選択します。
+1. **[暗黙的な許可およびハイブリッド フロー]** セクションで **[ID トークン]** を選択し、 **[保存]** を選択します。
 1. `configuration\appSettings` セクションのルート フォルダーにある web.config ファイルに、次のコードを追加します。
 
     ```xml
@@ -406,9 +406,8 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 <br/><br/>
 ![Microsoft アカウントへのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
-
-Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする承認モデルに従います。 このアプリケーションにアクセスするために Microsoft ID プラットフォームで認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでのアクセス許可と同意
+Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする認可モデルに従います。 このアプリケーションにアクセスするために Microsoft ID プラットフォームで認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
 
 - アプリケーション開発者が、**管理者の同意** を必要とするその他の任意のアクセス許可を追加している。
 - または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services のストリーミング ポリシー | Microsoft Docs
+title: Azure Media Services のストリーミング ポリシー
 description: この記事では、ストリーミング ポリシーとは何か、および Azure Media Services でそれらを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: inhenkel
-ms.openlocfilehash: 9ecb4e0b8a74a163632967781c84d1a110ab3a9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2873486b95f0bb4a9a27e2e050cc6f6d5473a44e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297214"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898174"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
 
@@ -33,7 +33,7 @@ Azure Media Services v3 では、[ストリーミング ポリシー](/rest/api/
 次の "デシジョン ツリー" を使用して、自分のシナリオに適した定義済みのストリーミング ポリシーを選択できます。
 
 > [!IMPORTANT]
-> * Datetime 型の**ストリーミング ポリシー**のプロパティは、常に UTC 形式です。
+> * Datetime 型の **ストリーミング ポリシー** のプロパティは、常に UTC 形式です。
 > * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints.md)に関するトピックを参照してください。
 
 ## <a name="decision-tree"></a>デシジョン ツリー
@@ -42,7 +42,7 @@ Azure Media Services v3 では、[ストリーミング ポリシー](/rest/api/
 
 [![シナリオに対して定義済みのストリーミング ポリシーを選択できるように設計されたデシジョン ツリーを示す図。](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
-コンテンツを暗号化する場合、[コンテンツ キー ポリシー](content-key-policy-concept.md)を作成する必要がありますが、**コンテンツ キー ポリシー**はクリアなストリーミングまたはダウンロードには必要ありません。 
+コンテンツを暗号化する場合、[コンテンツ キー ポリシー](content-key-policy-concept.md)を作成する必要がありますが、**コンテンツ キー ポリシー** はクリアなストリーミングまたはダウンロードには必要ありません。 
 
 特別な要件がある (例: 異なるプロトコルを指定したい、カスタム キー配信サービスを使用する必要がある、クリアなオーディオ トラックを使用する必要がある) 場合は、カスタム ストリーミング ポリシーを[作成](/rest/api/media/streamingpolicies/create)できます。 
 

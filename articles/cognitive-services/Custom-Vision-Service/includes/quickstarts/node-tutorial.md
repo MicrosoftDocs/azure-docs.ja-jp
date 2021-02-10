@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2867fd3a777242218495f8759611178130ae0c17
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 1ba81c77ef0e31178b8acd88a84fa3363ee55c11
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98256249"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500203"
 ---
 このガイドでは、Node.js 用の Custom Vision クライアント ライブラリを使用して画像分類モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -25,7 +25,7 @@ ms.locfileid: "98256249"
 * 現在のイテレーションを公開する
 * 予測エンドポイントをテストする
 
-リファレンス ドキュメント [(トレーニング)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(予測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | ライブラリのソース コード [(トレーニング)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(予測)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | パッケージ (npm) [(トレーニング)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(予測)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [サンプル](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
+リファレンス ドキュメント [(トレーニング)](/javascript/api/@azure/cognitiveservices-customvision-training/) [(予測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/) | ライブラリのソース コード [(トレーニング)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(予測)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | パッケージ (npm) [(トレーニング)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(予測)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction) | [サンプル](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -88,9 +88,9 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 |名前|説明|
 |---|---|
-|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) | このクラスでは、モデルの作成、トレーニング、および公開を処理します。 |
-|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest)| このクラスでは、画像分類予測のために、モデルに対するクエリ実行を処理します。|
-|[予測](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction?view=azure-node-latest)| このインターフェイスでは、単一の画像に対して単一の予測を定義します。 これには、オブジェクト ID と名前、および信頼度スコアのプロパティが含まれます。|
+|[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) | このクラスでは、モデルの作成、トレーニング、および公開を処理します。 |
+|[PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient)| このクラスでは、画像分類予測のために、モデルに対するクエリ実行を処理します。|
+|[予測](/javascript/api/@azure/cognitiveservices-customvision-prediction/prediction)| このインターフェイスでは、単一の画像に対して単一の予測を定義します。 これには、オブジェクト ID と名前、および信頼度スコアのプロパティが含まれます。|
 
 ## <a name="code-examples"></a>コード例
 
@@ -106,7 +106,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-実際のエンドポイントとキーを使用して、クライアント オブジェクトをインスタンス化します。 自分のキーを使用して **ApiKeyCredentials** オブジェクトを作成し、それを自分のエンドポイントと共に使用して、[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient?view=azure-node-latest) および [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient?view=azure-node-latest) オブジェクトを作成します。
+実際のエンドポイントとキーを使用して、クライアント オブジェクトをインスタンス化します。 自分のキーを使用して **ApiKeyCredentials** オブジェクトを作成し、それを自分のエンドポイントと共に使用して、[TrainingAPIClient](/javascript/api/@azure/cognitiveservices-customvision-training/trainingapiclient) および [PredictionAPIClient](/javascript/api/@azure/cognitiveservices-customvision-prediction/predictionapiclient) オブジェクトを作成します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js?name=snippet_auth)]
 
@@ -131,7 +131,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 最初に、このプロジェクト用のサンプル画像をダウンロードします。 [サンプル画像フォルダー](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images)の内容をお使いのローカル デバイスに保存します。
 
 > [!NOTE]
-> Trove (Microsoft Garage プロジェクト) を使用すると、トレーニング目的で画像のセットを収集して購入することができます。 画像を収集したら、それらをダウンロードした後、通常の方法で Custom Vision プロジェクトにインポートできます。 詳細については、[Trove ページ](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)を参照してください。
+> トレーニングを完了するために、より広範なイメージのセットが必要ですか。 Trove (Microsoft Garage プロジェクト) を使用すると、トレーニング目的で画像のセットを収集して購入することができます。 画像を収集したら、それらをダウンロードした後、通常の方法で Custom Vision プロジェクトにインポートできます。 詳細については、[Trove ページ](https://www.microsoft.com/en-us/ai/trove?activetab=pivot1:primaryr3)を参照してください。
 
 サンプルの画像をプロジェクトに追加するには、タグ作成後、次のコードを挿入します。 このコードでは、それぞれの画像を対応するタグと共にアップロードします。
 
@@ -201,5 +201,5 @@ Results:
 
 * Custom Vision とは
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/CustomVision/ImageClassification/CustomVisionQuickstart.js) にあります。
-* [SDK のリファレンス ドキュメント (トレーニング)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest)
-* [SDK のリファレンス ドキュメント (予測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest)
+* [SDK のリファレンス ドキュメント (トレーニング)](/javascript/api/@azure/cognitiveservices-customvision-training/)
+* [SDK のリファレンス ドキュメント (予測)](/javascript/api/@azure/cognitiveservices-customvision-prediction/)

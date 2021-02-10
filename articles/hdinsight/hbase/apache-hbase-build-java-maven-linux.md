@@ -1,19 +1,16 @@
 ---
 title: Apache Maven を使用した Azure HDInsight 用 Java HBase クライアントの構築
 description: Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Azure HDInsight での HBase にデプロイする方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547913"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942961"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -48,7 +45,7 @@ cd C:\HDI
 
 ## <a name="create-a-maven-project"></a>Maven プロジェクトを作成する
 
-1. 次のコマンドを使用して、 **hbaseapp** という名前の Maven プロジェクトを作成します。
+1. 次のコマンドを使用して、**hbaseapp** という名前の Maven プロジェクトを作成します。
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -415,7 +412,7 @@ public class DeleteTable {
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
     ```
 
-    このコマンドは、 **people** という名前の HBase テーブルを作成してデータを設定します。
+    このコマンドは、**people** という名前の HBase テーブルを作成してデータを設定します。
 
 4. テーブルに格納されている電子メール アドレスを検索するには、次のコマンドを使用します。
 

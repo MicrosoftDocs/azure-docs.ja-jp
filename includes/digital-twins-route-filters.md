@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045319"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98859870"
 ---
 | フィルター名 | 説明 | フィルター テキスト スキーマ | サポート状況の値 | 
 | --- | --- | --- | --- |
@@ -22,10 +22,6 @@ ms.locfileid: "98045319"
 | Content type | データ値のコンテンツ タイプ | `datacontenttype = '<contentType>'` | コンテンツ タイプは`application/json` です。 |
 | 仕様バージョン | 使用しているイベント スキーマのバージョン | `specversion = '<version>'` | バージョンは `1.0` である必要があります。 これは、CloudEvents スキーマ バージョン 1.0 を示しています。 |
 | 通知本文 | 通知の `data` フィールドの任意のプロパティを参照します | `$body.<property>` | 「[*イベント データについて*](../articles/digital-twins/how-to-interpret-event-data.md)」で通知の例を参照してください。 `data` フィールドの任意のプロパティは、`$body` を使用して参照できます
-
-複数のフィルターは次のように要求に追加できます。 
-
-:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 上記のデータへの参照によって返される値としては、次のデータ型がサポートされています。
 

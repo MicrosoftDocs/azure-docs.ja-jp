@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: acf31af6d3ba3d78a6435210fa17562aaddac0a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 03814766d7bc873855df261a50a40b8d342fa69b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186607"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054248"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
-[Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) を使用して Azure のほとんどのサービスのベース レベルのメトリックとログを監視します。 [アクション グループ](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json)またはクラシック アラートから Azure Automation Runbook を呼び出して、アラートに基づくタスクを自動化することができます。 この記事では、アラートを使用して Runbook を構成および実行する方法を示します。
+[Azure Monitor](../azure-monitor/overview.md) を使用して Azure のほとんどのサービスのベース レベルのメトリックとログを監視します。 [アクション グループ](../azure-monitor/platform/action-groups.md)またはクラシック アラートから Azure Automation Runbook を呼び出して、アラートに基づくタスクを自動化することができます。 この記事では、アラートを使用して Runbook を構成および実行する方法を示します。
 
 ## <a name="alert-types"></a>アラートの種類
 
@@ -31,9 +31,9 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 |アラート:  |説明|ペイロード スキーマ  |
 |---------|---------|---------|
-|[共通アラート](../azure-monitor/platform/alerts-common-schema.md?toc=%2fazure%2fautomation%2ftoc.json)|今日の Azure でのアラート通知の使用エクスペリエンスを標準化する共通アラート スキーマ。|共通アラートのペイロード スキーマ|
-|[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Azure のアクティビティ ログ内の新しいイベントのいずれかが特定の条件と一致する場合に、通知が送信されます。 たとえば、`Delete VM` 操作が **myProductionResourceGroup** で発生した場合、または状態が [アクティブ] の新しい Azure Service Health イベントが表示されている場合などです。| [アクティビティ ログ アラートのペイロード スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
-|[ほぼリアルタイムのメトリック アラート](../azure-monitor/platform/alerts-metric-near-real-time.md?toc=%2fazure%2fautomation%2ftoc.json)    |1 つまたは複数のプラットフォーム レベルのメトリックが指定した条件を満たす場合に、メトリック アラートよりも速く通知が送信されます。 たとえば、過去 5 分間の VM の **CPU %** の値が 90 より大きく、 **[ネットワーク入力]** の値が 500 MB より大きい場合などです。| [ほぼリアルタイムのメトリック アラートのペイロード スキーマ](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
+|[共通アラート](../azure-monitor/platform/alerts-common-schema.md)|今日の Azure でのアラート通知の使用エクスペリエンスを標準化する共通アラート スキーマ。|共通アラートのペイロード スキーマ|
+|[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md)    |Azure のアクティビティ ログ内の新しいイベントのいずれかが特定の条件と一致する場合に、通知が送信されます。 たとえば、`Delete VM` 操作が **myProductionResourceGroup** で発生した場合、または状態が [アクティブ] の新しい Azure Service Health イベントが表示されている場合などです。| [アクティビティ ログ アラートのペイロード スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)        |
+|[ほぼリアルタイムのメトリック アラート](../azure-monitor/platform/alerts-metric-near-real-time.md)    |1 つまたは複数のプラットフォーム レベルのメトリックが指定した条件を満たす場合に、メトリック アラートよりも速く通知が送信されます。 たとえば、過去 5 分間の VM の **CPU %** の値が 90 より大きく、 **[ネットワーク入力]** の値が 500 MB より大きい場合などです。| [ほぼリアルタイムのメトリック アラートのペイロード スキーマ](../azure-monitor/platform/alerts-webhooks.md#payload-schema)          |
 
 種類ごとに提供されるデータは異なるため、アラートは種類ごとに異なる方法で処理されます。 次のセクションでは、さまざまな種類のアラートを処理する Runbook を作成する方法について説明します。
 
@@ -45,9 +45,9 @@ Automation Runbook は、次の 3 つの種類のアラートで使用できま�
 
 この例では、VM からのアラートを使用します。 ペイロードから VM のデータを取得し、その情報を使用して VM を停止します。 接続は、Runbook が実行される Automation アカウントで設定する必要があります。 アラートを使用して Runbook をトリガーする場合は、トリガーされる Runbook でアラートの状態を確認することが重要です。 アラートの状態が変化するたびに、Runbook がトリガーされます。 アラートには複数の状態があります。最も一般的な 2 つの状態は "アクティブ" と "解決済み" です。 Runbook が複数回実行されないことを確実にするために、Runbook ロジックの状態を確認します。 この記事の例では、状態がアクティブのアラートのみを検索する方法を示しています。
 
-Runbook では、VM に対する管理アクションを実行するために、接続資産の `AzureRunAsConnection` [実行アカウント](./manage-runas-account.md)を使用して Azure を認証します。
+Runbook では、VM に対する管理アクションを実行するために、接続資産の `AzureRunAsConnection` [実行アカウント](./automation-security-overview.md)を使用して Azure を認証します。
 
-この例を使用して**Stop-AzureVmInResponsetoVMAlert** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、多くのさまざまなリソースで使用することができます。
+この例を使用して **Stop-AzureVmInResponsetoVMAlert** と呼ばれる Runbook を作成します。 PowerShell スクリプトは変更して、多くのさまざまなリソースで使用することができます。
 
 1. Azure Automation アカウントに移動します。
 2. **[プロセス オートメーション]** の **[Runbook]** を選択します。
@@ -185,7 +185,7 @@ Runbook では、VM に対する管理アクションを実行するために、
 
     ![[アクション グループの追加] ページ](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 
-    このアクション グループは作成した[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)と[ほぼリアルタイムのアラート](../azure-monitor/platform/alerts-overview.md?toc=%2fazure%2fautomation%2ftoc.json)で使用することができます。
+    このアクション グループは作成した[アクティビティ ログ アラート](../azure-monitor/platform/activity-log-alerts.md)と[ほぼリアルタイムのアラート](../azure-monitor/platform/alerts-overview.md)で使用することができます。
 
 1. **[アラートの詳細]** で、アラート ルールの名前と説明を追加し、 **[アラート ルールの作成]** をクリックします。
 
@@ -193,6 +193,6 @@ Runbook では、VM に対する管理アクションを実行するために、
 
 * Webhook を使用して Runbook を開始するには、「[Webhook から Runbook を開始する](automation-webhooks.md)」を参照してください。
 * Runbook を開始するさまざまな方法については、[Runbook の開始](./start-runbooks.md)に関する記事をご覧ください。
-* アクティビティ ログ アラートの構成方法は、「[アクティビティ ログ アラートの作成](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)」をご覧ください。
+* アクティビティ ログ アラートの構成方法は、「[アクティビティ ログ アラートの作成](../azure-monitor/platform/activity-log-alerts.md)」をご覧ください。
 * ほぼリアルタイムのアラートの作成方法については、「[Azure Portal でアラート ルールを作成する](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)」をご覧ください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

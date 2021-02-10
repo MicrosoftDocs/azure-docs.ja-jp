@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: c65fddcc90b25f70759fb038a72dad0facfa99a9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 3a623a487dd31caf8c85b18771d90e3a6306df68
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359733"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954006"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>チュートリアル:Azure AD から Workday への属性の書き戻しを構成する
 このチュートリアルの目的は Azure AD から Workday に属性を書き戻すために必要な手順を説明することです。 Workday Writeback プロビジョニング アプリは、次の Workday 属性に対する値の割り当てをサポートします。
@@ -68,11 +68,11 @@ Workday 統合システム ユーザー アカウントとワーカー データ
 
 8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
-   * **管理者ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。 *username\@contoso4*
+   * **管理者ユーザー名** – Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。*username\@contoso4*
 
    * **管理者パスワード** - Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources` のようになります。 *contoso4* は適切なテナント名に置き換え、 *wd3-impl* は適切な環境文字列に置き換えます (必要な場合)。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 この値は `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources` のようになります。*contoso4* は適切なテナント名に置き換え、*wd3-impl* は適切な環境文字列に置き換えます (必要な場合)。
 
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェック ボックスをオンにします。
 
@@ -166,12 +166,13 @@ Workday プロビジョニング アプリの構成が完了したら、Azure po
 
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
-* Writeback アプリでは、 **Communication_Usage_Type_ID** および **Phone_Device_Type_ID** の各パラメーターに定義済みの値が使用されます。 Workday テナントで、これらの属性に別の値が使用されている場合、書き戻し操作は成功しません。 回避策として、Workday の Type_ID を更新することをお勧めします。 
+* Writeback アプリでは、**Communication_Usage_Type_ID** および **Phone_Device_Type_ID** の各パラメーターに定義済みの値が使用されます。 Workday テナントで、これらの属性に別の値が使用されている場合、書き戻し操作は成功しません。 回避策として、Workday の Type_ID を更新することをお勧めします。 
 * Writeback アプリがセカンダリ電話番号を更新するように構成されている場合、Workday の既存のセカンダリ電話番号は置き換えられません。 新しいセカンダリ電話番号が worker レコードに追加されます。 この動作に対する回避策はありません。 
 
 
 ## <a name="next-steps"></a>次のステップ
 
+* [Azure AD と Workday の統合シナリオと Web サービス呼び出しについて](../app-provisioning/workday-integration-reference.md)
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../app-provisioning/check-status-user-account-provisioning.md)
 * [Workday と Azure Active Directory の間でシングル サインオンを構成する方法](workday-tutorial.md)
 * [他の SaaS アプリケーションを Azure Active Directory と統合する方法](tutorial-list.md)

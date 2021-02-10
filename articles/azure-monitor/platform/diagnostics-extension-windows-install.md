@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e6ccba27fb599cb26da86e94d3500f4f806ecb76
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 14f37d0779f245301b3750329658a580dc3f9e42
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328872"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946201"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
 [Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。
@@ -78,7 +78,7 @@ Azure portal で、個々の仮想マシンに診断拡張機能をインスト�
 Azure Resource Manager テンプレートを使用した診断拡張機能のデプロイについては、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](../../virtual-machines/extensions/diagnostics-template.md)」を参照してください。 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
-次の例のように、Azure CLI を使用して、[az vm extension set](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-set) を使用して Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
+次の例のように、Azure CLI を使用して、[az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) を使用して Azure Diagnostics 拡張機能を既存の仮想マシンにデプロイできます。 
 
 ```azurecli
 az vm extension set \

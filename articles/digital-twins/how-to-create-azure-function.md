@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 01/22/2021
 ms.locfileid: "98701164"
 ---
-# <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure の関数アプリを接続する
+# <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
 データに基づくデジタル ツインの更新は、[Azure Functions](../azure-functions/functions-overview.md) を使用して作成された関数などのコンピューティング リソースを介し、[**イベント ルート**](concepts-route-events.md)を使用して処理されます。 関数を使用すると、以下に対応してデジタル ツインを更新することができます。
 * IoT Hub からのデバイス テレメトリ データ
@@ -164,13 +164,13 @@ _[はい]_ ボタンを選択します。
 
 また、次のセクションで使用するので、 _[ID]_ ページに表示される **オブジェクト ID** を記録しておきます。
 
-:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Azure portal のスクリーンショット:Azure 関数の ID ページの &quot;オブジェクト ID&quot; フィールドの周囲が強調表示されています。":::
+:::image type="content" source="media/how-to-create-azure-function/object-id.png" alt-text="Azure portal のスクリーンショット:Azure Functions の ID ページの &quot;オブジェクト ID&quot; フィールドの周囲が強調表示されています。":::
 
 ### <a name="assign-access-roles-using-azure-portal"></a>Azure portal を使用してアクセス ロールを割り当てる
 
 _[Azure ロールの割り当て]_ ボタンを選択し、 *[Azure ロールの割り当て]* ページを開きます。 次に、 _[+ ロールの割り当ての追加 (プレビュー)]_ を選択します。
 
-:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure portal のスクリーンショット:Azure 関数の ID ページの [アクセス許可] の下にある [Azure ロールの割り当て] ボタンの周囲が強調表示されています。":::
+:::image type="content" source="media/how-to-create-azure-function/add-role-assignments.png" alt-text="Azure portal のスクリーンショット:Azure Functions の ID ページの [アクセス許可] の下にある [Azure ロールの割り当て] ボタンの周囲が強調表示されています。":::
 
 _[ロールの割り当ての追加 (プレビュー)]_ ページが開かれたら、以下を選択します。
 

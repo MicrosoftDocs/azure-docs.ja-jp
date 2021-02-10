@@ -6,12 +6,12 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: bb5caafea944d21547a904b99f9043aef63a6ffa
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: df3ed451776f30e8b7c13b95618f1a7f0c7688db
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656468"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937533"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Azure Application Insights Java SDK で Micrometer を使用する方法 (非推奨)
 
@@ -281,4 +281,4 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 ## <a name="next-steps"></a>次のステップ
 
 * Micrometer の詳細については、公式の [Micrometer ドキュメント](https://micrometer.io/docs)を参照してください。
-* Azure での Spring については、公式の [Azure の Spring ドキュメント](/java/azure/spring-framework/?view=azure-java-stable)を参照してください。
+* Azure での Spring については、公式の [Azure の Spring ドキュメント](/java/azure/spring-framework/)を参照してください。

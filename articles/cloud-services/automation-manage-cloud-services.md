@@ -1,23 +1,24 @@
 ---
-title: Azure Automation を使用した Azure Cloud Services の管理 | Microsoft Docs
+title: Azure Automation を使用した Azure Cloud Services (クラシック) の管理 | Microsoft Docs
 description: Azure Automation サービスを使用して大規模に Azure クラウド サービスを管理する方法について説明します。
-services: cloud-services, automation
-author: jodoglevy
-manager: timlt
-editor: ''
-ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
-ms.service: cloud-services
 ms.topic: article
-ms.date: 06/20/2016
-ms.author: timlt
-ms.openlocfilehash: 67830f8c00d9f74f62883e0714ffe1c2bbbd6903
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 530efd09f3632637c6a12648495dcff0e7bf0e6d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075622"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743493"
 ---
-# <a name="managing-azure-cloud-services-using-azure-automation"></a>Azure Automation を使用した Azure Cloud Services の管理
+# <a name="managing-azure-cloud-services-classic-using-azure-automation"></a>Azure Automation を使用した Azure Cloud Services (クラシック) の管理
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure クラウド サービスの管理を簡略化する方法について紹介します。
 
 ## <a name="what-is-azure-automation"></a>Azure Automation とは
@@ -35,7 +36,7 @@ Azure Automation を使用して、次のような Azure Cloud Services を管�
 * [cscfg または cspkg が Azure BLOB ストレージで更新されるたびのクラウド サービスの継続的なデプロイ](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
 * [クラウド サービスの並列インスタンスの再起動 (一度に 1 つのアップグレード ドメイン)](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure クラウド サービスを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
 * [Azure Automation Overview (Azure Automation の概要)](../automation/automation-intro.md)

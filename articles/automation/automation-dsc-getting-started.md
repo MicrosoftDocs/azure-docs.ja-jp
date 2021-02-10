@@ -2,19 +2,15 @@
 title: Azure Automation State Configuration の使用を開始する
 description: この記事では、Azure Automation State Configuration で最も一般的なタスクの実行方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 0e98078fe2799d1c524190c8ced36588f35498b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95072970004ae53663f130a78af36a84a6fab685
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86186437"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051500"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用を開始する
 
@@ -26,12 +22,12 @@ ms.locfileid: "86186437"
 
 この記事の例を完了するには、次のものが必要です。
 
-- Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](./manage-runas-account.md)に関するページをご覧ください。
+- Azure Automation アカウント。 Automation アカウントとその要件の詳細については、「[Automation アカウントの認証の概要](./automation-security-overview.md)」を参照してください。
 - [サポートされているオペレーティング システム](automation-dsc-overview.md#operating-system-requirements)を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md)
 
 ## <a name="create-a-dsc-configuration"></a>DSC 構成を作成する
 
-ここでは、ノードの割り当て方法に応じて、[Web-Server](/powershell/scripting/dsc/configurations/configurations) Windows 機能 (IIS) が存在するかどうかを確認する、簡単な **DSC 構成**を作成します。
+ここでは、ノードの割り当て方法に応じて、[Web-Server](/powershell/scripting/dsc/configurations/configurations) Windows 機能 (IIS) が存在するかどうかを確認する、簡単な **DSC 構成** を作成します。
 
 1. [VSCode](https://code.visualstudio.com/docs) (または任意のテキスト エディター) を開始します。
 1. 次のテキストを入力します。
@@ -61,7 +57,7 @@ ms.locfileid: "86186437"
     ```
 1. ファイルを **TestConfig.ps1** として保存します。
 
-この構成では、各ノード ブロック内で 1 つのリソース ([WindowsFeature リソース](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)) が呼び出されます。 このリソースにより、**Web サーバー**機能の有無が確認されます。
+この構成では、各ノード ブロック内で 1 つのリソース ([WindowsFeature リソース](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)) が呼び出されます。 このリソースにより、**Web サーバー** 機能の有無が確認されます。
 
 ## <a name="import-a-configuration-into-azure-automation"></a>Azure Automation に構成をインポートする
 
@@ -237,4 +233,4 @@ State Configuration でマネージド ノードの整合性チェックが実�
 - 環境で VM の機能を有効にするには、「[Azure Automation State Configuration を有効にする](automation-dsc-onboarding.md)」を参照してください。
 - PowerShell DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
 - 料金情報については、[Azure Automation State Configuration の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
-- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation)」をご覧ください。
+- PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation)」をご覧ください。

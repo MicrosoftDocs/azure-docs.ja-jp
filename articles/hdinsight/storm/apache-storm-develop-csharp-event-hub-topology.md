@@ -1,19 +1,16 @@
 ---
 title: Storm を使用して Event Hubs のイベントを処理する - Azure HDInsight
 description: Visual Studio で HDInsight Tools for Visual Studio を使用して作成した C# Storm トポロジによって Azure Event Hubs のデータを処理する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dac56059455a75f4d64a698c416dc22793432bc8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4393c6797f5a164a063b55f8994d7d37d278f3c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545601"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929198"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
@@ -43,10 +40,10 @@ Microsoft では、Storm トポロジからの Event Hubs との通信に使用�
 
 この例では、次のコンポーネントを使用します。
 
-* __EventHubSpout__ : イベント ハブからデータを読み取ります。
-* __EventHubBolt__ : イベント ハブにデータを書き込みます。
-* __EventHubSpoutConfig__ : EventHubSpout の構成に使用します。
-* __EventHubBoltConfig__ : EventHubBolt の構成に使用します。
+* __EventHubSpout__: イベント ハブからデータを読み取ります。
+* __EventHubBolt__: イベント ハブにデータを書き込みます。
+* __EventHubSpoutConfig__: EventHubSpout の構成に使用します。
+* __EventHubBoltConfig__: EventHubBolt の構成に使用します。
 
 ### <a name="example-spout-usage"></a>スパウトの使用例
 
@@ -68,7 +65,7 @@ SCP.NET は、トポロジに EventHubSpout を追加するためのメソッド
 
 ### <a name="example-bolt-usage"></a>ボルトの使用例
 
-ボルトのインスタンスを作成するには、 **JavaComponmentConstructor** メソッドを使用します。 次の例では、 **EventHubBolt** の新しいインスタンスを作成および構成する方法を示します。
+ボルトのインスタンスを作成するには、**JavaComponmentConstructor** メソッドを使用します。 次の例では、**EventHubBolt** の新しいインスタンスを作成および構成する方法を示します。
 
 ```csharp
 // Java construcvtor for the Event Hub Bolt
@@ -91,7 +88,7 @@ topologyBuilder.SetJavaBolt(
 ```
 
 > [!NOTE]  
-> この例では、スパウトの例で行ったように、 **EventHubBoltConfig** を作成する **JavaComponentConstructor** を使用する代わりに、文字列として渡される Clojure 式を使用します。 どちらの方法でも動作します。 最適と思われる方法をお使いください。
+> この例では、スパウトの例で行ったように、**EventHubBoltConfig** を作成する **JavaComponentConstructor** を使用する代わりに、文字列として渡される Clojure 式を使用します。 どちらの方法でも動作します。 最適と思われる方法をお使いください。
 
 ## <a name="download-the-completed-project"></a>完成したプロジェクトをダウンロードする
 
@@ -139,11 +136,11 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 2. [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) からソリューションをダウンロードします。
 
-3. **EventHubExample.sln** を開きます。 **EventHubWriter** プロジェクトで、 **App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
+3. **EventHubExample.sln** を開きます。 **EventHubWriter** プロジェクトで、**App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
 
    | Key | 値 |
    | --- | --- |
-   | EventHubPolicyName |writer ( *Send* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
+   | EventHubPolicyName |writer (*Send* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
    | EventHubPolicyKey |writer ポリシーのキー。 |
    | EventHubNamespace |イベント ハブが含まれている名前空間。 |
    | EventHubName |イベント ハブ名。 |
@@ -159,7 +156,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
    | Key | 値 |
    | --- | --- |
-   | EventHubPolicyName |reader ( *listen* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
+   | EventHubPolicyName |reader (*listen* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
    | EventHubPolicyKey |reader ポリシーのキー。 |
    | EventHubNamespace |イベント ハブが含まれている名前空間。 |
    | EventHubName |イベント ハブ名。 |

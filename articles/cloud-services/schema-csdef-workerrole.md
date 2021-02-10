@@ -1,26 +1,25 @@
 ---
-title: 'Azure Cloud Services の定義: WorkerRole スキーマ | Microsoft Docs'
+title: Azure Cloud Services (クラシック) の定義WorkerRole スキーマ | Microsoft Docs
 description: Azure の worker ロールは、一般化された開発に使用され、Web ロールのバックグラウンド処理を実行できます。 Azure worker ロールのスキーマについて説明します。
-services: cloud-services
-ms.custom: ''
-ms.date: 04/14/2015
-ms.reviewer: ''
+ms.topic: article
 ms.service: cloud-services
-ms.suite: ''
-ms.tgt_pltfrm: ''
-ms.topic: reference
-ms.assetid: 41cd46bc-c479-43fa-96e5-d6c83e4e6d89
-caps.latest.revision: 55
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 26225442c72fb209bb1ac4cd2bf4777fb39542fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 0871527187a3d678cb2b94bd8dc342cf2abde1ba
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005165"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743136"
 ---
-# <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services の定義: WorkerRole スキーマ
+# <a name="azure-cloud-services-classic-definition-workerrole-schema"></a>Azure Cloud Services (クラシック) の定義: WorkerRole スキーマ
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 Azure の worker ロールは、一般化された開発に役立ち、Web ロールのバックグラウンド処理を実行できるロールです。
 
 サービス定義ファイルの既定の拡張子は .csdef です。
@@ -116,13 +115,13 @@ worker ロールが含まれるサービス定義ファイルの基本形式は�
 
 [[MSSQLSERVER のプロトコルのプロパティ]](#Certificate)
 
-[Imports](#Imports)
+[インポートする](#Imports)
 
 [[インポート]](#Import)
 
 [Runtime](#Runtime)
 
-[Environment](#Environment)
+[環境](#Environment)
 
 [EntryPoint](#EntryPoint)
 
@@ -130,7 +129,7 @@ worker ロールが含まれるサービス定義ファイルの基本形式は�
 
 [ProgramEntryPoint](#ProgramEntryPoint)
 
-[変数](#Variable)
+[Variable](#Variable)
 
 [RoleInstanceValue](#RoleInstanceValue)
 
@@ -152,13 +151,13 @@ worker ロールが含まれるサービス定義ファイルの基本形式は�
 | 属性 | Type | 説明 |
 | --------- | ---- | ----------- |
 |name|string|必須。 worker ロールの名前です。 ロールの名前は一意である必要があります。|
-|enableNativeCodeExecution|boolean|省略可能。 既定値は `true` であり、ネイティブ コード実行および完全な信頼は既定で有効になっています。 worker ロールでネイティブ コード実行を無効化し、代わりに Azure 部分信頼を使用するには、この属性を `false` に設定します。|
+|enableNativeCodeExecution|boolean|任意。 既定値は `true` であり、ネイティブ コード実行および完全な信頼は既定で有効になっています。 worker ロールでネイティブ コード実行を無効化し、代わりに Azure 部分信頼を使用するには、この属性を `false` に設定します。|
 |vmsize|string|省略可能。 このロールに割り当てる仮想マシンのサイズを変更するには、この値を設定します。 既定値は `Small` です。 指定できる仮想マシンのサイズと属性の一覧については、[Cloud Services の仮想マシンのサイズ](cloud-services-sizes-specs.md)に関するページをご覧ください。|
 
 ##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a> ConfigurationSettings
 `ConfigurationSettings` 要素では、worker ロールの構成設定のコレクションを指定します。 この要素は、`Setting` 要素の親です。
 
-##  <a name="setting"></a><a name="Setting"></a> Setting
+##  <a name="setting"></a><a name="Setting"></a> 設定
 `Setting` 要素では、ロールのインスタンスの構成設定を指定する名前と値のペアを指定します。
 
 以下の表に、`Setting` 要素の属性を示します。
@@ -183,7 +182,7 @@ worker ロールが含まれるサービス定義ファイルの基本形式は�
 | 属性 | Type | 説明 |
 | --------- | ---- | ----------- |
 |name|string|必須。 ローカル ストアの一意名です。|
-|cleanOnRoleRecycle|boolean|省略可能。 ロールの再起動時にローカル ストアをクリーンアップするかどうかを指定します。 既定値は `true` です。|
+|cleanOnRoleRecycle|boolean|任意。 ロールの再起動時にローカル ストアをクリーンアップするかどうかを指定します。 既定値は `true` です。|
 |sizeInMb|INT|省略可能。 ローカル ストアに割り当てるストレージ領域の容量 (MB 単位) です。 指定しない場合、既定の 100 MB のストレージ領域が割り当てられます。 割り当て可能なストレージ領域の最小量は 1 MB です。<br /><br /> ローカル リソースの最大サイズは、仮想マシンのサイズによって決まります。 詳しくは、[Microsoft Azure Cloud Services の仮想マシンのサイズ](cloud-services-sizes-specs.md)に関するページをご覧ください。|
 
 ローカル ストレージ リソースに割り当てられるディレクトリの名前は、name 属性で指定した値になります。
@@ -210,7 +209,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 |port|INT|必須。 外部エンドポイントのポートです。 任意のポート番号を指定できますが、サービス内の各ロールに対して指定するポート番号は一意である必要があります。<br /><br /> 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
 |証明書 (certificate)|string|HTTPS エンドポイントの場合は必須。 `Certificate` 要素で定義される証明書の名前です。|
 |localPort|INT|省略可能。 エンドポイントでの内部接続に使用するポートを指定します。 `localPort` 属性では、エンドポイントの外部ポートをロールの内部ポートにマッピングします。 これは、外部に公開しているポートとは異なるポート上にある内部コンポーネントとロールが通信する必要のあるシナリオで役立ちます。<br /><br /> 指定しない場合、`localPort` の値は `port` 属性と同じになります。 検出可能な未割り当てポートをランタイム API で自動的に割り当てるには、`localPort` の値を "*" に設定します。<br /><br /> 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。<br /><br /> `localPort` 属性は、Azure SDK バージョン 1.3 以上を使用している場合のみ利用可能です。|
-|ignoreRoleInstanceStatus|boolean|省略可能。 この属性の値を `true` に設定すると、サービスの状態が無視され、エンドポイントはロード バランサーにより削除されなくなります。 サービスのビジー状態のインスタンスをデバッグする場合、この値を `true` に設定すると便利です。 既定値は `false` です。 **注:** ロールが準備完了状態ではなくなっても、エンドポイントは引き続きトラフィックを受信できます。|
+|ignoreRoleInstanceStatus|boolean|任意。 この属性の値を `true` に設定すると、サービスの状態が無視され、エンドポイントはロード バランサーにより削除されなくなります。 サービスのビジー状態のインスタンスをデバッグする場合、この値を `true` に設定すると便利です。 既定値は `false` です。 **注:** ロールが準備完了状態ではなくなっても、エンドポイントは引き続きトラフィックを受信できます。|
 |loadBalancerProbe|string|省略可能。 入力エンドポイントに関連付けるロード バランサー プローブの名前です。 詳しくは、[LoadBalancerProbe スキーマ](schema-csdef-loadbalancerprobe.md)に関するページをご覧ください。|
 
 ##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a> InternalEndpoint
@@ -249,7 +248,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`FixedPort` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
 |port|INT|必須。 内部エンドポイントのポートです。 この属性の効果は、`FixedPortRange` の min と max を同じポートに設定した場合と同じです。<br /><br /> 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
 
@@ -263,12 +262,12 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`FixedPortRange` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
-|min|INT|必須。 範囲の最小ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
-|max|string|必須。 範囲の最大ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
+|分|INT|必須。 範囲の最小ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
+|最大|string|必須。 範囲の最大ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|
 
-##  <a name="certificates"></a><a name="Certificates"></a> Certificates
+##  <a name="certificates"></a><a name="Certificates"></a> 証明書
 `Certificates` 要素では、worker ロールの証明書のコレクションを指定します。 この要素は、`Certificate` 要素の親です。 ロールには、任意の数の証明書を関連付けることができます。 Certificates 要素の使用方法について詳しくは、[証明書を使用したサービス定義ファイルの変更](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files)に関するページをご覧ください。
 
 ##  <a name="certificate"></a><a name="Certificate"></a> Certificate
@@ -295,7 +294,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Import` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
 |moduleName|string|必須。 インポートするモジュールの名前です。 有効なインポート モジュールは次のとおりです。<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> RemoteAccess モジュールと RemoteForwarder モジュールを使用すると、ロール インスタンスをリモート デスクトップ接続用に構成できます。 詳しくは、[リモート デスクトップ接続の有効化](cloud-services-role-enable-remote-desktop-new-portal.md)に関するページをご覧ください。<br /><br /> Diagnostics モジュールを使用すると、ロール インスタンスの診断データを収集できます。|
 
@@ -306,7 +305,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Runtime` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
 |executionContext|string|省略可能。 ロール プロセスを起動するコンテキストを指定します。 既定のコンテキストは `limited` です。<br /><br /> -   `limited` – プロセスは管理者権限を使用せずに起動されます。<br />-   `elevated` – プロセスは管理者権限を使用して起動されます。|
 
@@ -330,7 +329,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`RoleInstanceValue` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
 |xpath|string|省略可能。 インスタンスのデプロイ設定の保存先のパスです。 詳しくは、[XPath を使用した構成変数](cloud-services-role-config-xpath.md)に関するページをご覧ください。<br /><br /> value 属性か `RoleInstanceValue` 要素のいずれかを指定する必要があります。|
 
@@ -347,7 +346,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`NetFxEntryPoint` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
 |assemblyName|string|必須。 エントリ ポイントが含まれるアセンブリのパスとファイル名です。 パスは、フォルダー **\\%ROLEROOT%\Approot** に対して相対的に指定します (`commandLine` で **\\%ROLEROOT%\Approot** を指定しないでください。これは仮定のものです)。 **%ROLEROOT%** は Azure で保持される環境変数であり、ロールのルート フォルダーの場所を表します。 **\\%ROLEROOT%\Approot** フォルダーは、ロールのアプリケーション フォルダーとなります。|
 |targetFrameworkVersion|string|必須。 アセンブリがビルドされた .NET Framework のバージョンです。 たとえば、「 `targetFrameworkVersion="v4.0"` 」のように入力します。|
@@ -360,9 +359,9 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`ProgramEntryPoint` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
-|commandLine|string|必須。 実行するプログラムのパス、ファイル名、およびコマンド ライン引数です。 パスは、フォルダー **%ROLEROOT%\Approot** に対して相対的に指定します (前提として、commandLine では **%ROLEROOT%\Approot** は指定しないでください)。 **%ROLEROOT%** は Azure で保持される環境変数であり、ロールのルート フォルダーの場所を表します。 **%ROLEROOT%\Approot** フォルダーは、ロールのアプリケーション フォルダーとなります。<br /><br /> プログラムが終了するとロールはリサイクルされるので、通常、起動して有限のタスクを実行するだけのプログラムではなく、実行を継続するようにプログラムを設定します。|
+|commandLine|string|必須。 実行するプログラムのパス、ファイル名、およびコマンド ライン引数です。 パスは **\%ROLEROOT%\Approot** フォルダーに対して相対的です。commandLine では **%ROLEROOT%\Approot** までが既定値であるため、この部分は指定しないでください。 **%ROLEROOT%** は Azure で保持される環境変数であり、ロールのルート フォルダーの場所を表します。 **%ROLEROOT%\Approot** フォルダーは、ロールのアプリケーション フォルダーを表します。<br /><br /> プログラムが終了するとロールはリサイクルされるので、通常、起動して有限のタスクを実行するだけのプログラムではなく、実行を継続するようにプログラムを設定します。|
 |setReadyOnProcessStart|boolean|必須。 コマンド ライン プログラムの開始通知をロール インスタンスが待機するかどうかを指定します。 現在、この値は `true` に設定する必要があります。 値を `false` に設定することは、将来の使用に予約されています。|
 
 ##  <a name="startup"></a><a name="Startup"></a> Startup
@@ -370,7 +369,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Startup` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
 |priority|INT|内部使用専用です。|
 
@@ -381,27 +380,27 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Task` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
 |commandLine|string|必須。 CMD ファイルなど、実行するコマンドが含まれるスクリプトです。 スタートアップ コマンドとバッチ ファイルは ANSI 形式で保存する必要があります。 ファイルの先頭にバイト順マーカーが設定されているファイル形式は、正常に処理されません。|
 |executionContext|string|スクリプトが実行されるコンテキストを指定します。<br /><br /> -   `limited` (既定) – プロセスをホストするロールと同じ権限で実行します。<br />-   `elevated` – 管理者特権で実行します。|
 |taskType|string|コマンドの実行動作を指定します。<br /><br /> -   `simple` (既定) – システムは、他のタスクが起動されるまでこのタスクの終了を待機します。<br />-   `background` – システムはタスクの終了を待機しません。<br />-   `foreground` – すべてのフォアグラウンド タスクが終了するまでロールが再起動されない点を除き、background と同様です。|
 
-##  <a name="contents"></a><a name="Contents"></a> Contents
+##  <a name="contents"></a><a name="Contents"></a> 目次
 `Contents` 要素では、worker ロールのコンテンツのコレクションを指定します。 この要素は、`Content` 要素の親です。
 
 `Contents` 要素は、Azure SDK バージョン 1.5 以上を使用している場合のみ利用可能です。
 
-##  <a name="content"></a><a name="Content"></a> Content
+##  <a name="content"></a><a name="Content"></a> コンテンツ
 `Content` 要素では、Azure 仮想マシンにコピーするコンテンツのソースの場所、およびそのコンテンツのコピー先のパスを定義します。
 
 `Content` 要素は、Azure SDK バージョン 1.5 以上を使用している場合のみ利用可能です。
 
 以下の表に、`Content` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
-|destination|string|必須。 コンテンツを配置する Azure 仮想マシン上の場所です。 この場所は、フォルダー **%ROLEROOT%\Approot** に対する相対パスとして指定します。|
+|destination|string|必須。 コンテンツを配置する Azure 仮想マシン上の場所です。 この場所は、フォルダー **%ROLEROOT%\Approot** に対して相対的です。|
 
 この要素は、`SourceDirectory` 要素の親要素です。
 
@@ -412,7 +411,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`SourceDirectory` 要素の属性を示します。
 
-| 属性 | Type | 説明 |
+| 属性 | Type | [説明] |
 | --------- | ---- | ----------- |
 |path|string|必須。 Azure 仮想マシンにコピーするコンテンツが含まれるローカル ディレクトリの相対パスまたは絶対パスです。 ディレクトリ パスでは環境変数の展開がサポートされます。|
 

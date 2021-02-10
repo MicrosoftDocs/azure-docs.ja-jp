@@ -1,6 +1,5 @@
 ---
-title: アセット
-titleSuffix: Azure Media Services
+title: Azure Media Services のアセット
 description: アセットとは何か、および Azure Media Services によってどのように使用されるかについて説明します。
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: f6f4cfcc07496179908c8349f4282a7633379cd3
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 5159432107e60f6c21bcf70e0bbc9a9e2123a728
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695825"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897698"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure Media Services v3 のアセット
 

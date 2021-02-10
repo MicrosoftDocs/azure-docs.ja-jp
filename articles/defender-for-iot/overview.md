@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845399"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621712"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>Azure Defender for IoT へようこそ
 
 運用テクノロジ (OT) ネットワークは、社会の最も重要な側面の多くを支えています。 しかし、これらのテクノロジの多くはセキュリティを考慮して設計されたものではなく、従来の IT セキュリティ制御では保護できません。 一方、モノのインターネット (IoT) により、接続された数十億のデバイスによるイノベーションの新しい波が実現されていますが、攻撃対象領域とリスクが増加しています。  
 
-Azure Defender for IoT は、IoT/OT 資産、脆弱性、脅威を特定するための統合セキュリティ ソリューションです。 これを使用すれば、既存の IoT/OT デバイスを保護する必要があるか、新しい IoT イノベーションにセキュリティを組み込む必要があるかにかかわらず、IoT/OT 環境全体をセキュリティで保護することができます。  
+Azure Defender for IoT は、IoT/OT デバイス、脆弱性、脅威を特定するための統合セキュリティ ソリューションです。 これを使用すれば、既存の IoT/OT デバイスを保護する必要があるか、新しい IoT イノベーションにセキュリティを組み込む必要があるかにかかわらず、IoT/OT 環境全体をセキュリティで保護することができます。  
 
 Azure Defender for IoT には、お使いの環境のニーズに適合するように、2 つの機能セットが用意されています。
 
@@ -47,7 +47,7 @@ Azure Defender for IoT のエージェントレス監視機能を使用すれば
 
 ### <a name="automatic-device-discovery"></a>自動デバイス検出  
 
-パッシブでエージェントレスのネットワーク監視を使用すると、IoT/OT ネットワークに影響を与えずに、すべての IoT/OT 資産の完全なインベントリ、詳細、および通信方法を取得できます。  
+パッシブでエージェントレスのネットワーク監視を使用すると、IoT/OT ネットワークに影響を与えずに、すべての IoT/OT デバイスの完全なインベントリ、詳細、および通信方法を取得できます。  
 
 ### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>リスクと脆弱性に対するプロアクティブな可視性
  

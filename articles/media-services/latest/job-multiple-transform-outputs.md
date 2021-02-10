@@ -1,5 +1,5 @@
 ---
-title: 複数の変換出力を含む Azure Media Services ジョブを作成する
+title: 複数の変換出力があるジョブを作成する
 description: このトピックでは、複数の変換出力がある Azure Media Services ジョブを作成する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e5fe12b02503aff625a1cc2c39a71abcdf3dab0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0396415593f2d0f41abc55433bb8f19c4913ac26
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296787"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954142"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>複数の変換出力があるジョブを作成する
 

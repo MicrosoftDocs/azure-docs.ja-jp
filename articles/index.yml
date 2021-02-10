@@ -10,15 +10,15 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 09/25/2020
+  ms.date: 01/29/2021
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e0ded8bfb6392da769b85dd1e785061b6c8ae73e
-  ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+  ms.openlocfilehash: 57d3607b2076b7a5990361278c8c1372fff1b711
+  ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/26/2021
-  ms.locfileid: "98785399"
+  ms.lasthandoff: 02/01/2021
+  ms.locfileid: "99225591"
 highlightedContent:
   items:
   - title: Azure 開発者向けファースト ステップ ガイド
@@ -456,6 +456,13 @@ productDirectory:
     - compute
     - containers
     url: aks/index.yml
+  - title: Azure Quantum (プレビュー)
+    summary: Azure で量子のインパクトを今すぐ体験
+    imageSrc: ./media/index/quantum.svg
+    azureCategories:
+    - compute
+    - featured
+    url: /azure/quantum/
   - title: Azure Spring Cloud
     summary: Pivotal で構築および運用する、フル マネージドの Spring Cloud サービス
     imageSrc: https://static.docs.com/ui/media/product/azure/spring-cloud.svg

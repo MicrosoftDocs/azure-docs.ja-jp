@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/03/2017
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 600934e2d46c1a84a83fa1290db13b3d0d1508f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bed1c8fd77e84c69571cfad7dd6b7eeb6607209f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995405"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808040"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>StorSimple デバイスのデプロイメントのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -33,7 +33,7 @@ ms.locfileid: "95995405"
 この記事ではまた、StorSimple のデプロイのトラブルシューティングのためのツールについて説明し、トラブルシューティングの手順の例を示します。
 
 ## <a name="first-time-deployment-issues"></a>初回デプロイメントの問題
-デバイスの初回デプロイ時に問題が発生した場合は、次の点を確認してください。
+デバイスの初回デプロイ時に問題が発生した場合は、次のガイダンスを確認してください。
 
 * 物理デバイスのトラブルシューティングを行う場合、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」または「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」の説明に従ってハードウェアが設置され構成されていることをご確認ください。
 * デプロイの前提条件を確認します。 [デプロイメント チェックリスト](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist)に記載されているすべての情報が揃っていることを確認します。
@@ -47,7 +47,7 @@ ms.locfileid: "95995405"
 次の手順は、セットアップ ウィザードのプロセスの概要を示します。 セットアップの詳細については、「 [オンプレミスの StorSimple デバイスのデプロイ](storsimple-8000-deployment-walkthrough-u2.md)」をご覧ください。
 
 1. [Invoke-HcsSetupWizard](/previous-versions/windows/powershell-scripting/dn688135(v=wps.630)) コマンドレットを実行してセットアップ ウィザードを起動し、画面の指示に従います。 
-2. ネットワークの構成: セットアップ ウィザードの指示に従って、StorSimple デバイスに対する DATA 0 ネットワーク インターフェイスのネットワーク設定を構成します。 これらの設定には、次の内容が含まれています。
+2. ネットワークの構成: セットアップ ウィザードの指示に従って、StorSimple デバイスに対する DATA 0 ネットワーク インターフェイスのネットワーク設定を構成します。 次の設定が含まれています。
    * 仮想 IP (VIP)、サブネット マスク、ゲートウェイ: [Set-HcsNetInterface](/previous-versions/windows/powershell-scripting/dn688161(v=wps.630)) コマンドレットがバックグラウンドで実行されます。 StorSimple デバイスの DATA 0 ネットワーク インターフェイスの IP アドレス、サブネット マスク、ゲートウェイが構成されます。
    * プライマリ DNS サーバー: [Set-HcsDnsClientServerAddress](/previous-versions/windows/powershell-scripting/dn688172(v=wps.630)) コマンドレットがバックグラウンドで実行されます。 StorSimple ソリューションの DNS 設定が構成されます。
    * NTP サーバー – [Set-HcsNtpClientServerAddress](/previous-versions/windows/powershell-scripting/dn688138(v=wps.630)) コマンドレットがバックグラウンドで実行されます。 StorSimple ソリューションの NTP サーバーの設定が構成されます。
@@ -61,7 +61,7 @@ ms.locfileid: "95995405"
 4. デバイスの登録: 最後に、Microsoft Azure 内で実行されている StorSimple Device Manager サービスにデバイスを登録します。 登録するには、Azure ポータルから[サービス登録キー](storsimple-8000-manage-service.md#get-the-service-registration-key)を取得し、セットアップ ウィザードにキーを入力する必要があります。 **デバイスが正常に登録されると、サービス データ暗号化キーが支給されます。この暗号化キーは以後、他のすべてのデバイスをサービスに登録する際に必要となります。安全な場所に保管しておいてください。**
 
 ## <a name="common-errors-during-device-deployment"></a>デバイスのデプロイ時に発生する一般的なエラー
-次の表は、以下の状況で発生することがある一般的なエラーの一覧です。
+以下の表は、次の場合に発生する可能性のある一般的なエラーを示しています。
 
 * 必要なネットワーク設定を構成する。
 * オプションの Web プロキシ設定を構成する。
@@ -94,7 +94,7 @@ ms.locfileid: "95995405"
 パスワードは次の要件を満たしている必要があります。
 
 * デバイス管理者のパスワードは 8 ～ 15 文字とする必要があります。
-* パスワードには、小文字、大文字、数字、および特殊文字の 4 つのうちの 3 つの組み合わせを含める必要があります。 
+* パスワードには、小文字、大文字、数字、および特殊文字のうちの 3 つの組み合わせを含める必要があります。 
 * 直近 24 個のパスワードは使用できません。
 
 パスワードは毎年更新する必要があります。パスワードは、デバイスの登録が成功した後でのみ変更されます。 何らかの理由で登録に失敗した場合、パスワードは変更されません。
@@ -135,11 +135,11 @@ Azure ポータルで StorSimple Device Manager サービスを使用してパ�
 | 5 |エラー 350031:デバイスは既に登録されています。 | |対処不要です。 |
 | 6 |エラー 350016:デバイスの登録に失敗しました。 | |登録キーが正しいことを確認してください。 |
 | 7 |Invoke-HcsSetupWizard:デバイスの登録中にエラーが発生しました。原因として、IP アドレスまたは DNS 名の誤りが考えられます。 原因として、IP アドレスまたは DNS 名の誤りが考えられます。 問題が解決しない場合は、 [contact Microsoft Support](storsimple-8000-contact-microsoft-support.md)に関するページを参照してください。 (エラー 350050)。 |デバイスから外部のネットワークに ping を実行できることを確認してください。 外部ネットワークに接続できない場合、このエラーが発生して登録に失敗することがあります。 このエラーは次の間違いが組み合わさって発生することがあります。<ul><li>不正確なIP</li><li>不正確なサブネット</li><li>不正確なゲートウェイ</li><li>不正確な DNS 設定</li></ul> |「 [ステップ バイ ステップのトラブルシューティングの例](#step-by-step-storsimple-troubleshooting-example)」で手順を参照してください。 |
-| 8 |Invoke-HcsSetupWizard:サービスの内部エラー [0x1FBE2] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作をやり直してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |これは、ユーザーからは見えないすべてのエラーについてサービスまたはエージェントからスローされる総称的なエラーです。 その最も一般的な原因として ACS 認証の失敗が挙げられます。 NTP サーバーの構成に問題があって、デバイス上の時刻が正しく設定されていない可能性があります。 |(問題がある場合は) 時刻を修正してから、登録操作を再試行してください。 Set-HcsSystem -Timezone コマンドを使用してタイム ゾーンを調整する場合、タイム ゾーンの各単語の先頭文字を大文字にします (例: "Pacific Standard Time")。  問題が解決しない場合は、 [Microsoft サポート](storsimple-8000-contact-microsoft-support.md) に対処法をお問い合わせください。 |
+| 8 |Invoke-HcsSetupWizard:サービスの内部エラー [0x1FBE2] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作を再試行してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |これは、ユーザーからは見えないすべてのエラーについてサービスまたはエージェントからスローされる総称的なエラーです。 その最も一般的な原因として ACS 認証の失敗が挙げられます。 NTP サーバーの構成に問題があって、デバイス上の時刻が正しく設定されていない可能性があります。 |(問題がある場合は) 時刻を修正してから、登録操作を再試行してください。 Set-HcsSystem -Timezone コマンドを使用してタイム ゾーンを調整する場合、タイム ゾーンの各単語の先頭文字を大文字にします (例: "Pacific Standard Time")。  問題が解決しない場合は、 [Microsoft サポート](storsimple-8000-contact-microsoft-support.md) に対処法をお問い合わせください。 |
 | 9 |警告:デバイスをアクティブ化できませんでした。 デバイス管理者のパスワードおよび StorSimple Snapshot Manager のパスワードが変更されていません。 |登録に失敗した場合、デバイス管理者のパスワードおよび StorSimple Snapshot Manager のパスワードは変更されません。 | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>StorSimple デプロイメントのトラブルシューティング用ツール
-StorSimple には、StorSimple ソリューションのトラブルシューティングに使用できるツールがいくつか含まれています。 これには以下が含まれます。
+StorSimple には、StorSimple ソリューションのトラブルシューティングに使用できるツールがいくつか含まれています。 これには以下のツールが含まれます。
 
 * サポート パッケージとデバイス ログ
 * トラブルシューティング用に設計されたコマンドレット
@@ -153,7 +153,7 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
 3. この [手順](storsimple-8000-create-manage-support-package.md#edit-a-support-package) に従い、このサポート パッケージを開いて暗号化を解除します。
 4. 暗号化が解除されたサポート パッケージのログは etw/etvx 形式です。 次の手順を実行すると、これらのファイルを Windows イベント ビューアーで表示できます。
    
-   1. Windows クライアントで **eventvwr** コマンドを実行します。 イベント ビューアーが起動します。
+   1. Windows クライアントで **eventvwr** コマンドを実行して、イベント ビューアーを起動します。
    2. **[操作]** ウィンドウで、 **[保存されたログを開く]** をクリックし、etvx/etw の形式のログ ファイル (サポート パッケージ) を参照します。 これで、ファイルを表示できます。 ファイルを開いた後、ファイルを右クリックし、テキストとして保存できます。
       
       > [!IMPORTANT]
@@ -189,7 +189,7 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
    * インターフェイスは正常な状態だが、有効になっていない場合、**ifIndex** の状態は **NotPresent** と表示されます。
    * インターフェイスが存在しない場合は、この一覧に表示されません。 StorSimple Device Manager サービスの UI では、このインターフェイスの状態は失敗として今までどおり表示されます。
 
-このコマンドレットを使用する方法の詳細については、Windows PowerShell コマンドレット リファレンスの「[Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps)」を参照してください。
+このコマンドレットを使用する方法の詳細については、Windows PowerShell コマンドレット リファレンスの「[Get-NetAdapter](/powershell/module/netadapter/get-netadapter?view=win10-ps&preserve-view=true)」を参照してください。
 
 次のセクションでは、 `Get-NetAdapter` コマンドレットの出力のサンプルを示します。
 
@@ -206,7 +206,7 @@ StorSimple には、StorSimple ソリューションのトラブルシューテ�
 
 **出力の例 – コントローラー 0**
 
-コントローラー 0 (パッシブ コントローラー) からの出力を次に示します。 DATA 1、DATA 2、および DATA 3 は接続されていません。 DATA 4 と DATA 5 は、デバイスに存在しないため、表示されません。
+次のサンプル データは、コントローラー 0 (パッシブ コントローラー) からの出力です。 DATA 1、DATA 2、および DATA 3 は接続されていません。 DATA 4 と DATA 5 は、デバイスに存在しないため、表示されません。
 
 ```output
 Controller0>Get-NetAdapter
@@ -222,7 +222,7 @@ DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
 
 **出力の例 – コントローラー 1**
 
-コントローラー 1 (アクティブ コントローラー) からの出力を次に示します。 デバイスでは、DATA 0 ネットワーク インターフェイスのみが構成され、動作しています。
+次のサンプル データは、コントローラー 1 (アクティブ コントローラー) からの出力です。 デバイスでは、DATA 0 ネットワーク インターフェイスのみが構成され、動作しています。
 
 ```output
 Controller1>Get-NetAdapter
@@ -241,7 +241,7 @@ DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPre
 ## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Test-Connection コマンドレットを使用したトラブルシューティング
 `Test-Connection` コマンドレットを使用すると、StorSimple デバイスを外部ネットワークに接続できるかどうかを確認できます。 セットアップ ウィザードですべてのネットワーク パラメーター (DNS など) が正しく構成されている場合は、 `Test-Connection` コマンドレットを使用して、outlook.com など、ネットワークの外部の既知のアドレスに ping を実行できます。
 
-このコマンドレットでの接続の問題のトラブルシューティングを行うには、ping を有効にする必要があります。
+ping コマンドレットが無効になっている場合は、接続の問題のトラブルシューティングで使用するために ping を有効にする必要があります。
 
 `Test-Connection` コマンドレットの次の出力サンプルをご覧ください。
 
@@ -250,7 +250,7 @@ DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPre
 
 **出力の例 – 正しくない DNS**
 
-次の例では、IPv4 と IPv6 のアドレスが出力されていません。これは、DNS が解決されていないことを示します。 つまり、外部ネットワークに接続されておらず、正しい DNS を指定する必要があることを意味します。
+次の例には、IPv4 と IPv6 のアドレスの出力が含まれていません。これは、DNS が解決されていないことを示します。 外部ネットワークに接続されていないため、正しい DNS を指定する必要があります。
 
 ```output
 Source        Destination     IPV4Address      IPV6Address
@@ -263,7 +263,7 @@ HCSNODE0      outlook.com
 
 **出力の例 – 正しい DNS**
 
-次の例では、DNS が IPv4 アドレスを返します。これは、DNS が正しく構成されていることを示します。 これは、外部ネットワークに接続されていることの確認になります。
+次の例では、DNS が IPv4 アドレスを返します。これは、DNS が正しく構成されていることを示します。 この出力は、外部ネットワークに接続されていることの確認になります。
 
 ```output
 Source        Destination     IPV4Address      IPV6Address
@@ -281,29 +281,29 @@ StorSimple Device Manager サービスに既に接続され、登録されてい
 1. デバイスが登録されていることを確認します。
 2. デバイスの状態を確認します。 デバイスが非アクティブ化されているか、メンテナンス モードまたはオフラインの場合、次のいずれかのエラーが発生します。
    
-   * ErrorCode.CiSDeviceDecommissioned – デバイスが非アクティブ化されていることを示します。
-   * ErrorCode.DeviceNotReady – デバイスがメンテナンス モードであることを示します。
-   * ErrorCode.DeviceNotReady – デバイスがオンラインでないことを示します。
+   * ErrorCode.CiSDeviceDecommissioned:デバイスが非アクティブ化されていることを示します。
+   * ErrorCode.DeviceNotReady:デバイスがメンテナンス モードになっていることを示します。
+   * ErrorCode.DeviceNotReady:デバイスがオンラインではないことを示します。
 3. ( [Get-ClusterResource](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee461004(v=technet.10)) コマンドレットを使用して) StorSimple Device Manager サービスが実行されていることを確認します。 サービスが実行されていない場合、次のエラーが表示されます。
    
    * ErrorCode.CiSApplianceAgentNotOnline
-   * ErrorCode.CisPowershellScriptHcsError – Get-ClusterResource を実行したときに例外が発生したことを示します。
+   * ErrorCode.CisPowershellScriptHcsError:Get-ClusterResource を実行したときに例外が発生したことを示します。
 4. Access Control Service (ACS) トークンを確認します。 Web の例外がスローされた場合は、ゲートウェイの問題が発生した、プロキシ認証が行われなかった、DNS が正しくない、認証に失敗した、などの原因が考えられます。 次のエラーが表示されることがあります。
    
-   * ErrorCode.CiSApplianceGateway – HttpStatusCode.BadGateway 例外を示します。名前解決サービスがホスト名を解決できませんでした。
-   * ErrorCode.CiSApplianceProxy – HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP 状態コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。
-   * ErrorCode.CiSApplianceDNSError – WebExceptionStatus.NameResolutionFailure 例外を示します。名前解決サービスがホスト名を解決できませんでした。
-   * ErrorCode.CiSApplianceACSError – サービスから認証エラーが返されたが、接続されていることを示します。
+   * ErrorCode.CiSApplianceGateway:HttpStatusCode.BadGateway 例外を示します。名前解決サービスがホスト名を解決できませんでした。
+   * ErrorCode.CiSApplianceProxy:HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP 状態コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。
+   * ErrorCode.CiSApplianceDNSError:WebExceptionStatus.NameResolutionFailure 例外を示します。名前解決サービスがホスト名を解決できませんでした。
+   * ErrorCode.CiSApplianceACSError:サービスから認証エラーが返されたが、接続されていることを示します。
      
-     Web の例外がスローされなかった場合は、ErrorCode.CiSApplianceFailure を確認します。 これは、アプライアンスが失敗したことを示します。
+     Web の例外がスローされなかった場合は、ErrorCode.CiSApplianceFailure を確認します。これは、アプライアンスが失敗したことを示します。
 5. クラウド サービスの接続を確認します。 サービスによって Web の例外がスローされた場合は、次のエラーが表示されることがあります。
    
-   * ErrorCode.CiSApplianceGateway – HttpStatusCode.BadGateway 例外を示します。中間プロキシ サーバーが別のプロキシまたは元のサーバーから正しくない要求を受け取りました。
-   * ErrorCode.CiSApplianceProxy – HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP 状態コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。
-   * ErrorCode.CiSApplianceDNSError – WebExceptionStatus.NameResolutionFailure 例外を示します。名前解決サービスがホスト名を解決できませんでした。
-   * ErrorCode.CiSApplianceACSError – サービスから認証エラーが返されたが、接続されていることを示します。
+   * ErrorCode.CiSApplianceGateway:HttpStatusCode.BadGateway 例外を示します。中間プロキシ サーバーが別のプロキシまたは元のサーバーから正しくない要求を受け取りました。
+   * ErrorCode.CiSApplianceProxy:HttpStatusCode.ProxyAuthenticationRequired 例外 (HTTP 状態コード 407) を示します。クライアントがプロキシ サーバーで認証できませんでした。
+   * ErrorCode.CiSApplianceDNSError:WebExceptionStatus.NameResolutionFailure 例外を示します。名前解決サービスがホスト名を解決できませんでした。
+   * ErrorCode.CiSApplianceACSError:サービスから認証エラーが返されたが、接続されていることを示します。
      
-     Web の例外がスローされなかった場合は、ErrorCode.CiSApplianceSaasServiceError を確認します。 これは、StorSimple Device Manager サービスの問題を示します。
+     Web の例外がスローされなかった場合は、ErrorCode.CiSApplianceSaasServiceError を確認します。これは、StorSimple デバイス マネージャー サービスに問題があることを示します。
 6. Azure Service Bus の接続を確認します。 ErrorCode.CiSApplianceServiceBusError は、デバイスが Service Bus に接続できないことを示します。
 
 ログ ファイルの CiSCommandletLog0Curr.errlog と CiSAgentsvc0Curr.errlog には、例外の詳細など、詳しい情報が含まれています。
@@ -357,7 +357,7 @@ Device is registered successfully
 Checking connectivity from device to SaaS.. Failure
 ```
 
-デバイスは現在の Web プロキシ構成では接続できませんでした。 原因としては、Web プロキシ構成またはネットワーク接続の問題が考えられます。 この場合は、Web プロキシの設定が正しく、Web プロキシ サーバーがオンラインになっており、アクセスできることを確認する必要があります。
+デバイスは現在の Web プロキシ構成では接続できませんでした。 Web プロキシ構成またはネットワーク接続の問題が考えられます。 この場合は、Web プロキシの設定が正しく、Web プロキシ サーバーがオンラインになっており、アクセスできることを確認する必要があります。
 
 ## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Sync-HcsTime コマンドレットを使用したトラブルシューティング
 デバイスの時刻を表示するには、このコマンドレットを使用します。 デバイスの時刻が NTP サーバーでオフセットになる場合、このコマンドレットを使用して時間を NTP サーバーと強制同期します。
@@ -423,7 +423,7 @@ StorSimple デバイスのルーティング テーブルを表示するには�
 
 たとえば、2 つのネットワーク インターフェイス、DATA 2、DATA 3 をインターネットに接続しているとします。 DATA 2 と DATA 3 のルーティング メトリックがそれぞれ 15 と 261 である場合、下位のルーティング メトリックの DATA 2 は、インターネットに接続するために使用される優先インターフェイスとなります。
 
-StorSimple デバイスで Update 1 を実行している場合は、DATA 0 のネットワーク インターフェイスがクラウド トラフィックで最優先されます。 これは、クラウド対応インターフェイスがほかにある場合でも、クラウド トラフィックは DATA 0 を経由してルーティングされることを意味します。
+StorSimple デバイスで Update 1 を実行している場合は、DATA 0 のネットワーク インターフェイスがクラウド トラフィックで最優先されます。 この構成では、クラウド対応インターフェイスがほかにある場合でも、ほとんどのクラウド トラフィックが DATA 0 を経由してルーティングされます。<!--This implies that even if there are other cloud-enabled interfaces, the cloud traffic would be routed through DATA 0. - Preceding sentence replaces this one. Use of "This implies" is a bit murky. DATA 0 will be the preferred network interface? Is my translation OK?-->
 
 パラメーターを指定しないで `Get-HcsRoutingTable` コマンドレットを実行する場合 (次の例を参照)、コマンドレットでは IPv4 と IPv6 両方のルーティング テーブルを出力します。 または `Get-HcsRoutingTable -IPv4` や `Get-HcsRoutingTable -IPv6` を指定して関連するルーティング テーブルを取得できます。
 
@@ -504,7 +504,7 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 +FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
 ```
 
-エラーの原因として、次のいずれかが考えられます。
+エラーの原因として、次のいずれかの問題が考えられます。
 
 * ハードウェアの設置が不適切
 * ネットワーク インターフェイスの不具合
@@ -526,9 +526,10 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
 3. ネットワーク インターフェイスの状態を確認します。
    
    * Get-NetAdapter コマンドレットを使用し、DATA 0 のネットワーク インターフェイスの状態を検出します。 
-   * リンクが正常に動作していない場合、インターフェイスがダウンしていることが **ifindex** ステータスによって示されます。 その場合は、ポートとアプライアンス間およびポートとスイッチ間のネットワーク接続を確認する必要があります。 ケーブルに不具合がないかも十分に確認してください。 
-   * アクティブ コントローラーの DATA 0 ポートの不具合が疑われる場合、コントローラー 1 の DATA 0 ポートに接続することで確認できます。 確認するには、デバイスの背面のコントローラー 0 からネットワーク ケーブルを取り外し、コントローラー 1 に接続してから再度、Get-NetAdapter コマンドレットを実行します。
-     コントローラーの DATA 0 ポートに不具合がある場合は、 [Microsoft サポート](storsimple-8000-contact-microsoft-support.md) に対処法をお問い合わせください。 場合によっては、ご使用のシステム上のコントローラーを交換する必要があります。
+   * リンクが正常に動作していない場合、インターフェイスがダウンしていることが `ifindex` ステータスによって示されます。 その場合は、ポートとアプライアンス間およびポートとスイッチ間のネットワーク接続を確認する必要があります。 ケーブルに不具合がないかも十分に確認してください。 
+   * アクティブ コントローラーの DATA 0 ポートの不具合が疑われる場合、コントローラー 1 の DATA 0 ポートに接続することで確認できます。 デバイスの背面のコントローラー 0 からネットワーク ケーブルを取り外し、コントローラー 1 に接続してから再度、Get-NetAdapter コマンドレットを実行します。
+   
+     コントローラーの DATA 0 ポートに不具合がある場合は、[Microsoft サポート](storsimple-8000-contact-microsoft-support.md)に対処法をお問い合わせください。 場合によっては、ご使用のシステム上のコントローラーを交換する必要があります。
 4. スイッチとの接続を確認します。
    
    * 主エンクロージャのコントローラー 0 の DATA 0 ネットワーク インターフェイスとコントローラー 1 の DATA 0 ネットワーク インターフェイスが同じサブネットに属していることを確認します。 
@@ -544,7 +545,7 @@ Invoke-HcsSetupWizard: An error has occurred while registering the device. This 
      > 
      > 
 6. Test-Connection コマンドレットを使用して、外部のネットワークとの接続を確認します。 詳細については、「 [Test-Connection コマンドレットを使用したトラブルシューティング](#troubleshoot-with-the-test-connection-cmdlet)」を参照してください。
-7. ファイアウォールによってブロックされている可能性がないか確認します。 仮想 IP (VIP)、サブネット、ゲートウェイ、DNS の設定がすべて正しいことを確認してもなお、接続の問題が解消しない場合、デバイスと外部ネットワーク間の通信がファイアウォールによってブロックされている可能性があります。 内側から外側への通信について、StorSimple デバイスのポート 80 とポート 443 を開放する必要があります。 詳細については、「 [StorSimple デバイスのネットワーク要件](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device)」をご覧ください。
+7. ファイアウォールによってブロックされている可能性がないか確認します。 仮想 IP (VIP)、サブネット、ゲートウェイ、DNS の設定がすべて正しいことを確認してもなお、接続の問題が解消しない場合、デバイスと外部ネットワーク間の通信がファイアウォールによってブロックされている可能性があります。 StorSimple デバイスでポート 80 と 443 が送信に使用できることを確認します。 詳細については、「 [StorSimple デバイスのネットワーク要件](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device)」をご覧ください。
 8. ログを確認します。 「 [トラブルシューティングに使用できるサポート パッケージとデバイス ログ](#support-packages-and-device-logs-available-for-troubleshooting)」をご覧ください。
 9. 以上の手順で問題を解決できない場合は、 [Microsoft サポートにお問い合わせ](storsimple-8000-contact-microsoft-support.md) ください。
 

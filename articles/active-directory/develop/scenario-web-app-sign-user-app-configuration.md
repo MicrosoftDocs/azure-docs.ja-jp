@@ -1,5 +1,6 @@
 ---
-title: ユーザーをサインインさせる Web アプリの構成 - Microsoft ID プラットフォーム | Azure
+title: ユーザーをサインインさせる Web アプリを構成する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーをサインインさせる Web アプリを構築する方法について説明します (コードの構成)
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443655"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753271"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>ユーザーをサインインさせる Web アプリ:コード構成
 
@@ -202,7 +203,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>初期化コード
 
-初期化コードは、プラットフォームによって異なります。 ASP.NET Core と ASP.NET の場合、ユーザーのサインインは OpenID Connect ミドルウェアに委任されます。 ASP.NET または ASP.NET Core テンプレートでは、Azure Active Directory (Azure AD) v1.0 エンドポイント用の Web アプリケーションが生成されます。 Microsoft ID プラットフォーム (v2.0) エンドポイントに適合させるには、いくつかの構成が必要です。 Java の場合は、アプリケーションとの連携で Spring によって処理されます。
+初期化コードは、プラットフォームによって異なります。 ASP.NET Core と ASP.NET の場合、ユーザーのサインインは OpenID Connect ミドルウェアに委任されます。 ASP.NET または ASP.NET Core テンプレートでは、Azure Active Directory (Azure AD) v1.0 エンドポイント用の Web アプリケーションが生成されます。 それを Microsoft ID プラットフォームに適合させるには、少し構成が必要です。 Java の場合は、アプリケーションとの連携で Spring によって処理されます。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -262,7 +263,7 @@ Microsoft ID プラットフォーム (旧称 Azure AD v2.0) を使用して認�
 - `AddMicrosoftIdentityWebAppAuthentication` 拡張メソッドは、**Microsoft.Identity.Web** に定義されています。 それでは次のことが行われます。
   - 認証サービスが追加されます。
   - 構成ファイルを読み取るためのオプションが構成されます (ここでは、"AzureAD" セクションから)。
-  - 機関が Microsoft ID プラットフォーム エンドポイントになるように OpenID Connect オプションが構成されます。
+  - 機関が Microsoft ID プラットフォームになるように OpenID Connect オプションが構成されます。
   - トークンの発行者が検証されます。
   - 名前に対応する要求が、ID トークンの `preferred_username` 要求からマップされるようにします。
 
@@ -291,7 +292,7 @@ ASP.NET Web アプリおよび Web API での認証に関連したコードは�
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/.
      ClientId = clientId,

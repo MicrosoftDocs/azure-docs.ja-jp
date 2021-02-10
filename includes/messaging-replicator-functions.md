@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 279a00a6146d756e6a518dbf86b88f471d170b3a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1ce983ee739a4a124a93c7913f092b23dfec3cbd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805657"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901039"
 ---
 ## <a name="what-is-a-replication-task"></a>レプリケーション タスクとは
 
@@ -22,30 +22,30 @@ ms.locfileid: "97805657"
 
 レプリケーション タスクは一般にステートレスであり、タスクの順次実行または並列実行の間に状態や他の副作用が共有されないことを意味します。 これは、バッチ処理とチェーン化にも当てはまり、どちらもストリームの既存の状態の上に実装できます。 
 
-これにより、レプリケーション タスクは、一般にステートフルであり [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction) のような分析フレームワークとサービスのドメインである集計タスクとは異なるものになります。
+これにより、レプリケーション タスクは、一般にステートフルであり [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) のような分析フレームワークとサービスのドメインである集計タスクとは異なるものになります。
 
 ## <a name="replication-applications-and-tasks-in-azure-functions"></a>Azure Functions でのレプリケーション アプリケーションとタスク
 
-Azure Functions でのレプリケーション タスクは、構成されているソースから 1 つ以上の入力メッセージを取得する[トリガー](/azure/azure-functions/functions-triggers-bindings)と、ソースからコピーされたメッセージを構成されているターゲットに転送する[出力バインド](/azure/azure-functions/functions-triggers-bindings#binding-direction)を使用して実装されます。 
+Azure Functions でのレプリケーション タスクは、構成されているソースから 1 つ以上の入力メッセージを取得する[トリガー](../articles/azure-functions/functions-triggers-bindings.md)と、ソースからコピーされたメッセージを構成されているターゲットに転送する[出力バインド](../articles/azure-functions/functions-triggers-bindings.md#binding-direction)を使用して実装されます。 
 
 | トリガー  | 出力 |
 |----------|--------|
-| [Azure Event Hubs トリガー](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-hubs-trigger?tabs=csharp) | [Azure Event Hubs 出力バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-hubs-output?tabs=csharp) |
-| [Azure Service Bus トリガー](https://docs.microsoft.com/azure/azure-functions/functions-bindings-service-bus-trigger?tabs=csharp) | [Azure Service Bus 出力バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-service-bus-output?tabs=csharp)
-| [Azure IoT Hub トリガー](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-iot-trigger?tabs=csharp) | [Azure IoT Hub 出力バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-iot-output?tabs=csharp)
-| [Azure Event Grid トリガー](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-trigger?tabs=csharp) | [Azure Event Grid 出力バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-event-grid-output?tabs=csharp)
-| [Azure Queue Storage トリガー](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp) | [Azure Queue Storage 出力バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-queue-output?tabs=csharp)
+| [Azure Event Hubs トリガー](../articles/azure-functions/functions-bindings-event-hubs-trigger.md?tabs=csharp) | [Azure Event Hubs 出力バインド](../articles/azure-functions/functions-bindings-event-hubs-output.md?tabs=csharp) |
+| [Azure Service Bus トリガー](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp) | [Azure Service Bus 出力バインド](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp)
+| [Azure IoT Hub トリガー](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=csharp) | [Azure IoT Hub 出力バインド](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=csharp)
+| [Azure Event Grid トリガー](../articles/azure-functions/functions-bindings-event-grid-trigger.md?tabs=csharp) | [Azure Event Grid 出力バインド](../articles/azure-functions/functions-bindings-event-grid-output.md?tabs=csharp)
+| [Azure Queue Storage トリガー](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp) | [Azure Queue Storage 出力バインド](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp)
 | [Apache Kafka トリガー](https://github.com/azure/azure-functions-kafka-extension) | [Apache Kafka 出力バインド](https://github.com/azure/azure-functions-kafka-extension)
 | [RabbitMQ トリガー](https://github.com/azure/azure-functions-rabbitmq-extension) | [RabbitMQ 出力バインド](https://github.com/azure/azure-functions-rabbitmq-extension) 
-| | [Azure Notification Hubs 出力バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-notification-hubs)
-||[Azure SignalR Service 出力バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-signalr-service-output?tabs=csharp)
-||[Twilio SendGrid 出力バインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid?tabs=csharp)
+| | [Azure Notification Hubs 出力バインド](../articles/azure-functions/functions-bindings-notification-hubs.md)
+||[Azure SignalR Service 出力バインド](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp)
+||[Twilio SendGrid 出力バインド](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp)
 
 レプリケーション タスクは、他の Azure Functions アプリケーションと同じデプロイ方法を使用して、レプリケーションアプリケーションにデプロイされます。 同じアプリケーションに複数のタスクを構成できます。 
 
 Azure Functions Premium を使用すると、複数のレプリケーション アプリケーションで基になる同じリソース プールを共有できます。これは App Service プランと呼ばれます。 つまり、たとえば、.NET で記述されたレプリケーション タスクを、Java で記述されたレプリケーション タスクと、簡単に併置することができます。 これは、Java でのみ使用できる Apache Camel などの特定のライブラリを利用する必要がある場合で、他のレプリケーション タスクには異なる言語とランタイムを使用するのが一般的には好ましくても、特定の統合パスにはこれが最適なオプションである場合に、重要になります。 
 
-可能な場合は常に、イベントやメッセージを個別に配信するトリガーよりバッチ指向のトリガーを優先する必要があり、Azure Functions の[パラメーター バインド式](https://docs.microsoft.com/azure/azure-functions/functions-bindings-expressions-patterns)に依存するのではなく、イベントまたはメッセージの完全な構造を常に取得する必要があります。
+可能な場合は常に、イベントやメッセージを個別に配信するトリガーよりバッチ指向のトリガーを優先する必要があり、Azure Functions の[パラメーター バインド式](../articles/azure-functions/functions-bindings-expressions-patterns.md)に依存するのではなく、イベントまたはメッセージの完全な構造を常に取得する必要があります。
 
 関数には、接続しているソースとターゲットのペアを反映した名前を付ける必要があり、アプリケーション構成ファイル内の接続文字列または他の構成要素への参照を、その名前の前に付ける必要があります。 
 
@@ -57,17 +57,17 @@ Event Hubs と Service Bus 間でメッセージをコピーする単純なレ�
 
 ### <a name="retry-policy"></a>再試行ポリシー
 
-レプリケーション関数のいずれかの側で可用性イベントが発生したときにデータが失われないようにするには、堅牢な再試行ポリシーを構成する必要があります。 再試行ポリシーを構成するには、[再試行に関する Azure Functions ドキュメント](/azure/azure-functions/functions-bindings-error-pages)を参照してください。 
+レプリケーション関数のいずれかの側で可用性イベントが発生したときにデータが失われないようにするには、堅牢な再試行ポリシーを構成する必要があります。 再試行ポリシーを構成するには、[再試行に関する Azure Functions ドキュメント](../articles/azure-functions/functions-bindings-error-pages.md)を参照してください。 
 
 [サンプル リポジトリ](https://github.com/Azure-Samples/azure-messaging-replication-dotnet)内のプロジェクト例で選択されているポリシー設定により、データ損失を回避するために、5 秒から 15 分の再試行間隔で再試行回数が無限であるエクスポネンシャル バックオフ戦略が構成されます。 
 
-Service Bus については、「[トリガーの回復性に加えて再試行サポートを使用する](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience)」セクションを参照して、トリガーの相互作用と、キューに対して定義されている最大配信回数を理解してください。
+Service Bus については、「[トリガーの回復性に加えて再試行サポートを使用する](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience)」セクションを参照して、トリガーの相互作用と、キューに対して定義されている最大配信回数を理解してください。
 
 ### <a name="setting-up-a-replication-application-host"></a>レプリケーション アプリケーション ホストの設定
 
 レプリケーション アプリケーションは、1 つまたは複数のレプリケーション タスクのための実行ホストです。 
 
-それは、従量課金プランまたは Azure Functions Premium プラン (推奨) で実行するように構成されている Azure Functions アプリケーションです。 すべてのレプリケーション アプリケーションは、[システムまたはユーザーによって割り当てられたマネージド ID](/azure/app-service/overview-managed-identity) で実行する必要があります。 
+それは、従量課金プランまたは Azure Functions Premium プラン (推奨) で実行するように構成されている Azure Functions アプリケーションです。 すべてのレプリケーション アプリケーションは、[システムまたはユーザーによって割り当てられたマネージド ID](../articles/app-service/overview-managed-identity.md) で実行する必要があります。 
 
 リンクされた Azure Resource Manager (ARM) テンプレートにより、以下のものを使用してレプリケーション アプリケーションが作成および構成されます。
 
@@ -129,15 +129,15 @@ public static Task JobsTransfer(
 
 ### <a name="monitoring"></a>監視
 
-レプリケーション アプリを監視する方法については、Azure Functions のドキュメントの[監視に関するセクション](https://docs.microsoft.com/azure/azure-functions/configure-monitoring)を参照してください。
+レプリケーション アプリを監視する方法については、Azure Functions のドキュメントの[監視に関するセクション](../articles/azure-functions/configure-monitoring.md)を参照してください。
 
-レプリケーション タスクの監視に特に役に立つビジュアル ツールは、Application Insights の[アプリケーション マップ](https://docs.microsoft.com/azure/azure-monitor/app/app-map)です。これは、キャプチャされた監視情報から自動的に生成され、レプリケーション タスクによるソースとターゲットの転送の信頼性とパフォーマンスを調べることができます。
+レプリケーション タスクの監視に特に役に立つビジュアル ツールは、Application Insights の[アプリケーション マップ](../articles/azure-monitor/app/app-map.md)です。これは、キャプチャされた監視情報から自動的に生成され、レプリケーション タスクによるソースとターゲットの転送の信頼性とパフォーマンスを調べることができます。
 
-すぐに診断情報を得るには、ログの詳細を低遅延で視覚化できる [Live Metrics](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) ポータル ツールを使用します。
+すぐに診断情報を得るには、ログの詳細を低遅延で視覚化できる [Live Metrics](../articles/azure-monitor/app/live-stream.md) ポータル ツールを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Functions のデプロイ](/azure/azure-functions/functions-deployment-technologies)
-* [Azure Functions の診断](/azure/azure-functions/functions-diagnostics)
-* [Azure Functions のネットワーク オプション](/azure/azure-functions/functions-networking-options)
-* [Azure Application Insights](/azure/azure-monitor/app/app-insights-overview)
+* [Azure Functions のデプロイ](../articles/azure-functions/functions-deployment-technologies.md)
+* [Azure Functions の診断](../articles/azure-functions/functions-diagnostics.md)
+* [Azure Functions のネットワーク オプション](../articles/azure-functions/functions-networking-options.md)
+* [Azure Application Insights](../articles/azure-monitor/app/app-insights-overview.md)

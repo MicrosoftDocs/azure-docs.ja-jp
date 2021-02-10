@@ -1,25 +1,47 @@
 ---
-title: Azure Files の課金の概要 | Microsoft Docs
+title: Azure Files の課金について | Microsoft Docs
 description: Azure ファイル共有のプロビジョニングおよび従量課金制モデルを解釈する方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/27/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 6bb608492327baae958c32be05d8f2a1bb4dbfbf
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831467"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226643"
 ---
-# <a name="understanding-azure-files-billing"></a>Azure Files の課金の概要
+# <a name="understand-azure-files-billing"></a>Azure Files の課金について
 Azure Files には、プロビジョニングと従量課金制という 2 つの異なる課金モデルが用意されています。 プロビジョニング モデルは Premium ファイル共有でのみ使用できます。これは、**FileStorage** ストレージ アカウントの種類でデプロイされたファイル共有です。 従量課金制モデルは Standard ファイル共有でのみ使用できます。Standard ファイル共有は、**汎用バージョン 2 (GPv2)** ストレージ アカウントの種類でデプロイされたファイル共有です。 この記事では、Azure Files の毎月の請求書を理解できるように、両方のモデルがどのように機能するかについて説明します。
 
-Azure Files の現在の価格については、[Azure Files の価格ページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
+Azure Files の価格については、[「Azure Files の料金」ページ](https://azure.microsoft.com/pricing/details/storage/files/)を参照してください。
 
-## <a name="provisioned-billing"></a>プロビジョニングの課金
+## <a name="storage-units"></a>ストレージ ユニット    
+Azure Files では、ストレージ容量を表すために基数 2 の測定単位が使用されます。KiB、MiB、GiB、TiB です。 お使いのオペレーティング システムでは、同じ測定単位またはカウント システムが使用されている場合もそうでない場合もあります。
+
+### <a name="windows"></a>Windows
+
+Windows オペレーティング システムと Azure Files ではどちらも基数 2 のカウント システムを使用してストレージ容量が測定されますが、単位のラベル付けの際には違いがあります。 Azure Files では、基数 2 の測定単位を使用してストレージ容量がラベル付けされますが、Windows では基数 10 の測定単位でストレージ容量がラベル付けされます。 Windows では、ストレージ容量の報告時に、ストレージ容量が基数 2 から基数 10 に変換されません。
+
+|頭字語  |定義  |ユニット  |Windows での表示  |
+|---------|---------|---------|---------|
+|KiB     |1,024 バイト         |キビバイト         |KB (キロバイト)         |
+|MiB     |1,024 KiB (1,048,576 バイト)         |メビバイト         |MB (メガバイト)         |
+|GiB     |1024 MiB (1,073,741,824 バイト)         |ギビバイト         |GB (ギガバイト)         |
+|TiB     |1024 GiB (1,099,511,627,776 バイト)         |テビバイト         |TB (テラバイト)         |
+
+### <a name="macos"></a>macOS
+
+使用されているカウント システムを確認するには、Apple の Web サイトで「[iOS および macOS でのストレージ容量の表示方法](https://support.apple.com/HT201402)」を参照してください。
+
+### <a name="linux"></a>Linux
+
+各オペレーティング システムまたは個々のソフトウェアで、それぞれ異なるカウント システムが使用されている可能性があります。 ストレージ容量がどのように報告されるかについては、それぞれのドキュメントを参照してください。
+
+## <a name="provisioned-model"></a>プロビジョニング モデル
 Azure Files では、Premium ファイル共有にプロビジョニング モデルが使用されます。 プロビジョニング ビジネス モデルでは、使用量に基づいて請求されるのではなく、Azure Files サービスにストレージ要件を事前に指定します。 これはオンプレミスでハードウェアを購入する場合と似ています。この場合、特定の量のストレージを使用する Azure ファイル共有をプロビジョニングするときに、使用するかどうかに関係なく、そのストレージの料金を支払います。オンプレミスの物理メディアにかかるコストを支払い始めるのが、領域を使い始めるときではないことと同じです。 オンプレミスの物理メディアを購入する場合とは異なり、プロビジョニング ファイル共有は、ストレージと IO のパフォーマンス特性に応じて動的にスケールアップまたはスケールダウンすることができます。
 
 Premium ファイル共有をプロビジョニングするときは、ワークロードに必要な GiB 数を指定します。 プロビジョニングする GiB ごとに、固定比率で追加の IOPS とスループットを使用できるようになります。 保証されているベースライン IOPS に加えて、各 Premium ファイル共有はベスト エフォート ベースでバーストをサポートしています。 IOPS とスループットの数式は次のとおりです。
@@ -63,7 +85,7 @@ Premium ファイル共有をプロビジョニングするときは、ワーク
 
 新しいファイル共有は、そのバースト バケットに全数のクレジットが含まれると開始されます。 サーバーによる調整のために共有 IOPS がベースライン IOPS を下回った場合、バースト クレジットは発生しません。
 
-## <a name="pay-as-you-go-billing"></a>従量課金制の課金
+## <a name="pay-as-you-go-model"></a>従量課金制モデル
 Azure Files には、Standard ファイル共有に従量課金制ビジネス モデルが使用されます。 従量課金制ビジネス モデルの場合、支払う金額は、プロビジョニングされた量ではなく、実際に使用する量によって決まります。 大まかに言えば、ディスクに格納されているデータの量と、そのデータの使用状況に基づいて追加のトランザクション セットに対してコストを支払います。 従量課金制モデルの方がコスト効率が高くなる可能性があります。なぜなら、ワークロードのデータ フットプリントが時間の経過と共に変化する場合、将来の成長、パフォーマンスの要件、またはプロビジョニング解除を考慮して、過剰なプロビジョニングを行う必要がないためです。 一方、従量課金制モデルはエンドユーザーの使用量によって決まるため、予算編成プロセスの一環として従量課金制モデルを計画することが困難な場合もあります。
 
 ### <a name="differences-in-standard-tiers"></a>Standard レベルの相違点

@@ -10,16 +10,31 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: c18cb1cef9b46b4b3cd2f614945f98abf9de7c58
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e078fb91b3279b6f4321cd51dfb094f82bbe5f14
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704352"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696381"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge のリリース ノート 
 
 この記事では、Azure SQL Edge の新しいビルドごとに、新機能と変更点について説明します。
+
+## <a name="azure-sql-edge-102"></a>Azure SQL Edge 1.0.2
+
+SQL エンジンのビルド 15.0.2000.1554
+
+### <a name="fixes"></a>修正
+
+- T-SQL ストリーミング  
+   - ストリーミング オブジェクトの所有権とアクセス許可の修正
+   - ログのローテーションとログのプレフィックスによるログ記録の改善
+   - Azure Stream Analytics:ログ記録の改善、アダプターのエラー コードおよびエラー メッセージの改善 
+
+- ONNX
+    - 並列クエリ シナリオおよびモデルのクリーンアップの失敗に対するバグ修正
+    - ONNX ランタイムの 1.5.1 へのアップグレード
 
 ## <a name="azure-sql-edge-101"></a>Azure SQL Edge 1.0.1
 

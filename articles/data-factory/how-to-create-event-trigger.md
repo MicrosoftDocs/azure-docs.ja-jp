@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: de416277de34e1c3717d581697f05c98c48d1959
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 495dda603a8ab8ce2983e010ea23856df5a094ef
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146009"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897124"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,12 +50,16 @@ ms.locfileid: "93146009"
 1. [Azure サブスクリプション] ドロップダウンからストレージ アカウントを選択するか、ストレージ アカウントのリソース ID を使用して手動で選択します。 イベントを発生させるコンテナーを選択します。 コンテナーの選択は省略可能ですが、すべてのコンテナーを選択すると、多数のイベントが発生する可能性があることに注意してください。
 
    > [!NOTE]
-   > 現在、イベント トリガーでサポートされているのは、Azure Data Lake Storage Gen2 と汎用バージョン 2 のストレージ アカウントのみです。 少なくとも、ストレージ アカウントに対する *所有者* のアクセス権が必要です。  Azure Event Grid の制限により、Azure Data Factory は、ストレージ アカウントあたり最大 500 のイベント トリガーのみをサポートします。
+   > 現在、イベント トリガーでサポートされているのは、Azure Data Lake Storage Gen2 と汎用バージョン 2 のストレージ アカウントのみです。 Azure Event Grid の制限により、Azure Data Factory は、ストレージ アカウントあたり最大 500 のイベント トリガーのみをサポートします。
+
+   > [!NOTE]
+   > 新しいイベント トリガーの作成や変更を行うには、Data Factory へのログインに使用する Azure アカウントに、少なくともストレージ アカウントに対する "*所有者*" 権限が必要です。 追加のアクセス許可は不要です。Azure Data Factory のサービス プリンシパルには、ストレージ アカウントまたは Event Grid に対する特別なアクセス許可は必要 "_ありません_"。
 
 1. **[Blob path begins with]** (次で始まる BLOB パス) と **[Blob path ends with]** (次で終わる BLOB パス) のプロパティでは、イベントを受け取るコンテナー、フォルダー、および BLOB の名前を指定できます。 イベント トリガーでは、これらのプロパティの少なくとも 1 つを定義する必要があります。 この記事で後述する例に示すように、 **[Blob path begins with]\(Blob パスの先頭\)** と **[Blob path ends with]\(Blob パスの末尾\)** のプロパティにはさまざまなパターンを使用できます。
 
     * **次で始まる BLOB パス:** BLOB パスはフォルダーパスで始める必要があります。 有効な値として、`2018/` および `2018/april/shoes.csv` があります。 コンテナーが選択されていない場合、このフィールドを選択することはできません。
     * **次で終わる BLOB パス:** BLOB パスは、ファイル名または拡張子で終わる必要があります。 有効な値として、`shoes.csv` および `.csv` があります。 コンテナーとフォルダー名は省略可能ですが、指定する場合は、`/blobs/` セグメントで区切る必要があります。 たとえば、'orders' という名前のコンテナーには、`/orders/blobs/2018/april/shoes.csv` の値を指定できます。 任意のコンテナー内のフォルダーを指定するには、先頭の '/' 文字を省略します。 たとえば、`april/shoes.csv` は、任意のコンテナーの 'april' というフォルダー内の `shoes.csv` という名前の任意のファイルでイベントをトリガーします。 
+    * 注:**次で始まる** と **次で終わる** の BLOB パスは、イベント トリガーで許可されている唯一のパターン マッチングです。 その他の種類のワイルドカードによるマッチングは、トリガーの種類ではサポートされていません。
 
 1. トリガーが **[Blob created]** (作成された BLOB) イベント、 **[Blob deleted]** (削除された BLOB) イベント、またはその両方に応答するかどうかを選択します。 指定されたストレージの場所で、各イベントは、トリガーに関連付けられている Data Factory パイプラインをトリガーします。
 

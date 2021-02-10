@@ -1,23 +1,24 @@
 ---
 title: Socket.io を使用する Node.js アプリケーション - Azure
 description: このチュートリアルを使用し、Azure で Socket.IO ベースのチャット アプリケーションをホストする方法について説明します。 Socket.IO は、node.js のサーバーとクライアントにリアルタイム通信を提供します。
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: ef7325b53f7d6450acdff4664f3e338c31be9612
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: abc02769d7d978e14975d90ae0f98547bdc4faf7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077220"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743323"
 ---
-# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
+# <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service-classic"></a>Azure Cloud Services (クラシック) で Socket.IO を使用する Node.js チャット アプリケーションをビルドする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 Socket.IO は、node.js サーバーとクライアントの間のリアルタイム通信を提供します。 このチュートリアルでは、Azure で socket.IO ベースのチャット アプリケーションをホストする手順を説明します。 Socket.IO の詳細については、[socket.io](https://socket.io) を参照してください。
 
@@ -35,7 +36,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
 ## <a name="create-a-cloud-service-project"></a>クラウド サービス プロジェクトの作成
 次の手順では、Socket.IO アプリケーションをストリーミングするクラウド サービス プロジェクトを作成します。
 
-1. **[スタート]** メニューまたは**スタート画面**で、**Windows PowerShell** を検索します。 最後に、**[Windows PowerShell]** を右クリックし、**[管理者として実行]** を選択します。
+1. **[スタート]** メニューまたは **スタート画面** で、**Windows PowerShell** を検索します。 最後に、 **[Windows PowerShell]** を右クリックし、 **[管理者として実行]** を選択します。
 
     ![Azure PowerShell アイコン][powershell-menu]
 2. **c:\\node** というディレクトリを作成します。
@@ -50,7 +51,7 @@ Socket.IO は、node.js サーバーとクライアントの間のリアルタ�
     PS C:\> cd node
     ```
 
-4. 次のコマンドを入力して、**chatapp** という名前の新しいソリューションと **WorkerRole1** という名前の worker ロールを作成します。
+4. 次のコマンドを入力して、`chatapp` という名前の新しいソリューションと `WorkerRole1` という名前の worker ロールを作成します。
 
     ```powershell
     PS C:\node> New-AzureServiceProject chatapp
@@ -92,14 +93,14 @@ Azure エミュレーターでアプリケーションをテストする前に�
 3. アプリケーションが適切なポートでリッスンするように、メモ帳などのエディターで server.js を開き、次の行の **3000** を **process.env.port** に変更します。
 
     ```js
-    //app.listen(3000, function () {            //Original
+    //app.listen(3000, function () {            //Original
     app.listen(process.env.port, function () {  //Updated
       var addr = app.address();
       console.log('   app listening on http://' + addr.address + ':' + addr.port);
     });
     ```
 
-**server.js**の変更内容を保存した後、次の手順に従って必要なモジュールをインストールし、Azure エミュレーターでアプリケーションをテストします。
+**server.js** の変更内容を保存した後、次の手順に従って必要なモジュールをインストールし、Azure エミュレーターでアプリケーションをテストします。
 
 1. **Azure PowerShell** を使用して、**C:\\node\\chatapp\\WorkerRole1** ディレクトリに移動し、次のコマンドを使用して、このアプリケーションで必要なモジュールをインストールします。
 

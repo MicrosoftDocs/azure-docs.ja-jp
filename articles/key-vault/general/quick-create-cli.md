@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: quickstart
-ms.date: 07/20/2020
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e29a692e3fdad1bea7132b3bed50444c7398ba46
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f7f6f5d82c5fda7101e80ddcb8b17dc6bdef6532
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936313"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070300"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してキー コンテナーを作成する
 
@@ -28,44 +28,15 @@ Azure Key Vault は、[キー](../keys/index.yml)、[シークレット](../secr
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*ContosoResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
-
-```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
-```
+[!INCLUDE [Create a resource group](../../../includes/key-vault-cli-rg-creation.md)]
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します
 
-前の手順のリソース グループにキー コンテナーを作成します。 いくつかの情報を指定する必要があります。
-
-- キー コンテナー名:数字 (0-9)、文字 (a-z、A-Z)、ハイフン (-) のみを含んだ 3 から 24 文字の文字列
-
-  > [!Important]
-  > 各キー コンテナーには一意の名前が必要です。 次の例では、<your-unique-keyvault-name> をお使いのキー コンテナーの名前に置き換えてください。
-
-- リソース グループ名: **myResourceGroup**
-- 場所: **EastUS**。
-
-```azurecli
-az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myResourceGroup" --location "EastUS"
-```
-
-このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
-
-- **Vault Name**:上の --name パラメーターに指定した名前です。
-- **Vault URI (コンテナー URI)** :この例では、これは https://&lt;your-unique-keyvault-name&gt;.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
-
-この時点で、自分の Azure アカウントが唯一、この新しいコンテナーで任意の操作を実行することを許可されています。
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-kv-creation.md)]
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
-
-必要がなくなったら、Azure CLI の [az group delete](/cli/azure/group) コマンドを使用して、リソース グループおよびすべての関連リソースを削除できます。
-
-```azurecli
-az group delete --name myResourceGroup
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-delete-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

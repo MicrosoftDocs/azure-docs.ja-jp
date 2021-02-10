@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 07b0dd38b616525728c264bd315c5cb8ddcaa79a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093521"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072054"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) のネットワークの概念
 
-このガイドでは、Azure Red Hat OpenShift on OpenShift 4 クラスターにおけるネットワークの概要と、重要なエンドポイントの図と一覧を示します。 主要な OpenShift ネットワークの概念の詳細については、[Azure Red Hat OpenShift 4 ネットワークのドキュメント](https://docs.openshift.com/aro/4/networking/understanding-networking.html)を参照してください。
+このガイドでは、Azure Red Hat OpenShift on OpenShift 4 クラスターにおけるネットワークの概要と、重要なエンドポイントの図と一覧を示します。 主要な OpenShift ネットワークの概念の詳細については、[Azure Red Hat OpenShift 4 ネットワークのドキュメント](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html)を参照してください。
 
 ![Azure Red Hat OpenShift 4 のネットワーク図](./media/concepts-networking/aro4-networking-diagram.png)
 
@@ -64,19 +64,22 @@ Azure Red Hat on OpenShift 4 をデプロイすると、クラスター全体が
 
 ## <a name="networking-basics-in-openshift"></a>OpenShift におけるネットワークの基礎
 
-OpenShift Software Defined Networking [(SDN)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) は、Open vSwitch [(OVS)](https://www.openvswitch.org/) を使用するオーバーレイ ネットワークを構成するために使用されます。OVS は、Container Network Interface (CNI) 仕様に基づく OpenFlow 実装です。 SDN ではさまざまなプラグインがサポートされており、ネットワーク ポリシーは Azure Red Hat on OpenShift 4 で使用されるプラグインです。 すべてのネットワーク通信は SDN によって管理されているため、ポッド間通信を実現するために、自分の仮想ネットワークにルートを追加する必要はありません。
+OpenShift Software Defined Networking [(SDN)](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/about-openshift-sdn.html) は、Open vSwitch [(OVS)](https://www.openvswitch.org/) を使用するオーバーレイ ネットワークを構成するために使用されます。OVS は、Container Network Interface (CNI) 仕様に基づく OpenFlow 実装です。 SDN ではさまざまなプラグインがサポートされており、ネットワーク ポリシーは Azure Red Hat on OpenShift 4 で使用されるプラグインです。 すべてのネットワーク通信は SDN によって管理されているため、ポッド間通信を実現するために、自分の仮想ネットワークにルートを追加する必要はありません。
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift のネットワーク
 
-以下のネットワーク機能は、Azure Red Hat OpenShift に固有です。
+以下のネットワーク機能は、Azure Red Hat OpenShift に固有です。  
 * ユーザーは、その ARO クラスターを既存の仮想ネットワークに作成するか、ARO クラスターの作成時に仮想ネットワークを作成することができます。
 * ポッドとサービス ネットワーク CIDR は構成可能です。
 * ノードとマスターが異なるサブネットにあります。
 * ノードとマスターの仮想ネットワーク サブネットは、最小でも /27 にする必要があります。
+* 既定のポッド CIDR は、10.128.0.0/14 です。
+* 既定のサービス CIDR は、172.30.0.0/16 です。
+* ポッドおよびサービスのネットワーク CIDR は、ネットワークで使用されている他のアドアレス範囲と重複しないようにする必要があります。また、クラスターの仮想ネットワーク IP アドレス範囲に含まれないようにする必要もあります。
 * ポッド CIDR は、最小でも /18 のサイズにする必要があります (ポッド ネットワークはルーティング不可能な IP であり、OpenShift SDN 内でのみ使用されます)。
 * 各ノードには、ポッド用に /23 サブネット (512 IP) が割り当てられています。 この値は変更できません。
 * ポッドを複数のネットワークに接続することはできません。
-* エグレス静的 IP を構成することはできません (これは OpenShift 機能です。 詳細については、[エグレス IP の構成](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html)に関するページを参照してください)。
+* エグレス静的 IP を構成することはできません (これは OpenShift 機能です。 詳細については、[エグレス IP の構成](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/assigning-egress-ips.html)に関するページを参照してください)。
 
 ## <a name="network-settings"></a>ネットワーク設定
 
@@ -95,7 +98,7 @@ Azure Red Hat OpenShift 4 クラスターでは、以下のネットワーク設
 公開されている API サーバーでは、ネットワーク セキュリティ グループを作成して NIC に割り当てることはできません。
 
 ## <a name="domain-forwarding"></a>ドメイン転送
-Azure Red Hat OpenShift では、CoreDNS が使用されます。 ドメイン転送を構成できます。 独自の DNS を仮想ネットワークに持ち込むことはできません。 詳細については、[DNS 転送の使用](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator)に関するドキュメントを参照してください。
+Azure Red Hat OpenShift では、CoreDNS が使用されます。 ドメイン転送を構成できます。 独自の DNS を仮想ネットワークに持ち込むことはできません。 詳細については、[DNS 転送の使用](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator)に関するドキュメントを参照してください。
 
 ## <a name="whats-new-in-openshift-45"></a>OpenShift 4.5 の最新情報
 

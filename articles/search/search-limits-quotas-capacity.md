@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 02/02/2021
+ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591346"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493043"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
@@ -139,7 +139,7 @@ QPS の見積もりは、すべての顧客ごとに個別に開発する必要�
 
 ## <a name="throttling-limits"></a>スロットルの制限
 
-システムがピーク時の容量に近づくにつれて、検索クエリとインデックス作成要求が調整されます。 スロットルの動作は API によって異なります。 クエリ API (検索/提案/オートコンプリート) とインデックス作成 API は、サービスの負荷に基づいて動的に調整されます。 インデックス API には、静的な要求レート制限があります。 
+システムがピーク時の容量に近づくにつれて、API 要求が調整されます。 スロットルの動作は API によって異なります。 クエリ API (検索/提案/オートコンプリート) とインデックス作成 API は、サービスの負荷に基づいて動的に調整されます。 インデックス API とサービス操作 API には、静的な要求レート制限があります。 
 
 インデックスに関連する操作の静的なレート要求の制限:
 
@@ -148,6 +148,10 @@ QPS の見積もりは、すべての顧客ごとに個別に開発する必要�
 + インデックスの作成 (POST /indexes):1 分あたり 12 件 (検索単位あたり)
 + インデックスの作成または更新 (PUT /indexes/myindex):1 秒あたり 6 件 (検索単位あたり)
 + インデックスの削除 (DELETE /indexes/myindex):1 分あたり 12 件 (検索単位あたり) 
+
+サービスに関連する操作の静的なレート要求の制限:
+
++ サービス統計情報 (GET /servicestats):1 秒あたり 4 件 (検索単位あたり)
 
 ## <a name="api-request-limits"></a>API 要求の制限
 * 要求あたりの最大値: 16 MB<sup>1</sup>

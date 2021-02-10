@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724018"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428675"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -363,14 +363,7 @@ Express Route 回線のピアリングおよびグローバル仮想ネットワ
 
 **DNS の更新はできますか?**
 
-現在、SQL Managed Instance の DNS サーバー構成を更新する機能は提供されていません。
-
-DNS 構成は、最終的に次の場合に更新されます。
-
-- DHCP リースが期限切れになったとき。
-- プラットフォームのアップグレード時。
-
-対処方法として、SQL Managed Instance を 4 仮想コアにダウングレードしてから、後でアップグレードし直します。 これには、DNS 構成の更新という副作用があります。
+はい。 「[SQL Managed Instance 仮想クラスター上で仮想ネットワーク DNS サーバーの設定を同期する](./synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)」を参照してください。
 
 ## <a name="change-time-zone"></a>タイムゾーンの変更
 

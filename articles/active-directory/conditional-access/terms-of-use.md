@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 12/02/2020
+ms.date: 01/27/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e64b0af455ab1f84653093b26654530ee3dfab
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 95fe70c774b933113c94125d227976e32a9e353f
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232779"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919631"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -26,7 +26,7 @@ Azure AD 利用規約ポリシーは、エンド ユーザーに情報を提示�
 
 ## <a name="overview-videos"></a>概要ビデオ
 
-次のビデオで、利用規約ポリシーの概要を簡単に説明します。
+次のビデオでは、ToU ポリシーの概要を簡単に説明します。
 
 >[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
 
@@ -183,7 +183,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>ユーザーに表示される利用規約の外観
 
-利用規約ポリシーを作成して適用すると、対象ユーザーにはサインイン時に次の画面が表示されます。
+ToU ポリシーを作成して適用すると、対象ユーザーにはサインイン時に次の画面が表示されます。
 
 ![ユーザーがサインインすると表示される使用条件の例](./media/terms-of-use/user-tou.png)
 
@@ -191,7 +191,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 
 ![ズーム ボタンを使用して使用条件を表示する](./media/terms-of-use/zoom-buttons.png)
 
-次の画面は、利用規約ポリシーがモバイル デバイス上でどのように表示されるかを示しています。
+次の画面は、ToU ポリシーがモバイル デバイス上でどのように表示されるかを示しています。
 
 ![ユーザーがモバイル デバイスにサインインすると表示される使用条件の例](./media/terms-of-use/mobile-tou.png)
 
@@ -226,7 +226,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
     - (プレビュー) **既存の使用条件ドキュメントを更新** できます。
     - 既存の使用条件に言語を追加できます。
 
-   PDF ドキュメント、各デバイスでユーザーによる同意が必要、期限切れの同意、再同意までの日数、条件付きアクセス ポリシーなど、その他の設定も変更したい場合は、新しい利用規約ポリシーを作成する必要があります。
+   PDF ドキュメント、各デバイスでユーザーによる同意が必要、期限切れの同意、再同意までの日数、条件付きアクセス ポリシーなど、その他の設定も変更したい場合は、新しい ToU ポリシーを作成する必要があります。
 
     ![さまざまな言語オプションが表示されている編集 ](./media/terms-of-use/edit-terms-use.png)
 
@@ -249,7 +249,7 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 7.  新しい PDF をアップロードして再同意を決定したら、ペインの下部にある [追加] をクリックします。
 8.  ドキュメント列に、最新のバージョンが表示されます。
 
-## <a name="view-previous-versions-of-a-terms-of-use"></a>以前のバージョンの使用条件を表示する
+## <a name="view-previous-versions-of-a-tou"></a>ToU の以前のバージョンを表示する
 
 1.  Azure にサインインし、https://aka.ms/catou から **[使用条件]** に移動します。
 2.  バージョン履歴を表示する利用規約ポリシーを選択します。
@@ -269,9 +269,9 @@ Azure AD 監査ログを使い始める手順は次のとおりです。
 5.  または、 **[バージョン]** ドロップダウンから特定のバージョンを選択して、その特定のバージョンに同意したユーザーを確認することもできます。
 
 
-## <a name="add-a-terms-of-use-language"></a>利用規約の言語を追加する
+## <a name="add-a-tou-language"></a>ToU 言語を追加する
 
-利用規約の言語を追加する方法を次の手順で説明します。
+ToU 言語を追加する方法を次の手順で説明します。
 
 1. Azure にサインインし、[https://aka.ms/catou](https://aka.ms/catou) から **[使用条件]** に移動します。
 1. 編集する利用規約ポリシーを選択します。
@@ -344,9 +344,13 @@ Chrome を使用している場合、[Windows 10 アカウント拡張機能](ht
 
    利用規約ポリシーが表示されなくなります。
 
-## <a name="deleted-users-and-active-terms-of-use"></a>削除されたユーザーとアクティブな利用規約
+## <a name="user-acceptance-record-deletion"></a>ユーザー受け入れレコードの削除
 
-既定では、削除されたユーザーは Azure AD に 30 日間、削除状態で維持されます。その間は、管理者が必要に応じて復元することができます。 30 日後、そのユーザーは完全に削除されます。 その期間に達していなくても、全体管理者は、Azure Active Directory ポータルを使用して明示的に、[最近削除したユーザーを完全に削除](../fundamentals/active-directory-users-restore.md)することができます。 ユーザーが完全に削除されると、以降そのユーザーに関するデータは、アクティブな利用規約ポリシーから削除されます。 監査ログには、削除済みユーザーに関する監査情報が維持されます。
+ユーザー受け入れレコードが削除されます。
+
+- 管理者が ToU を明示的に削除した場合。 この場合、その特定の ToU に関連付けられているすべての受け入れレコードも削除されます。
+- テナントの Azure Active Directory Premium ライセンスが失われた場合。
+- テナントが削除された場合。
 
 ## <a name="policy-changes"></a>ポリシーの変更
 

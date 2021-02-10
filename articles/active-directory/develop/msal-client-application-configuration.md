@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979989"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761368"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
@@ -147,8 +147,20 @@ Web アプリの場合、リダイレクト URI (または応答 URL) は、Azur
 このオプションでは、機密性の高いクライアント アプリ用のクライアント シークレットを指定します。 このシークレット (アプリ パスワード) は、アプリケーション登録ポータルによって提供されるか、PowerShell AzureAD、PowerShell AzureRM、Azure CLI のいずれかを使用したアプリの登録時に Azure AD に対して提供されます。
 
 ## <a name="logging"></a>ログ記録
+デバッグと認証エラーのトラブルシューティングのシナリオを支援するために、Microsoft Authentication Library は組み込みのログ記録をサポートしています。 各ライブラリでのログ記録については、次の記事で説明されています。
 
-その他の構成オプションを使用して、ログ記録とトラブルシューティングを有効にすることができます。 これらの使用方法の詳細については、「[ログの記録](msal-logging.md)」の記事を参照してください。
+:::row:::
+    :::column:::
+        - [MSAL.NET でのログ](msal-logging-dotnet.md)
+        - [Android 用の MSAL でのログ記録](msal-logging-android.md)
+        - [MSAL.js でのログ記録](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [iOS および macOS 用の MSAL でのログ記録](msal-logging-ios.md)
+        - [MSAL for Java でのログ記録](msal-logging-java.md)
+        - [Python 用の MSAL でのログ記録](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>次のステップ
 

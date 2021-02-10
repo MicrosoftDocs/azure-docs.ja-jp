@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953051"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918214"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C に Web アプリケーションを登録する
 
@@ -98,6 +98,14 @@ Web アプリケーションの場合は、アプリケーション シークレ
 1. **[保存]** を選択し、キーを参照します。 **アプリ キー** の値をメモしておきます。 アプリケーションのコード内で、この値をアプリケーション シークレットとして使用します。
 
 * * *
+
+## <a name="enable-id-token-implicit-grant"></a>ID トークンの暗黙的な許可の有効化
+
+暗黙的な許可には、トークン (ID トークンやアクセス トークンなど) が Azure AD B2C からアプリケーションに直接返されるという特徴があります。 ASP.NET Core Web アプリや [https://jwt.ms](https://jwt.ms) など、承認エンドポイントから直接 ID トークンを要求する Web アプリの場合、アプリの登録で暗黙的な許可フローを有効にします。
+
+1. 左側のメニューの **[管理]** セクションで、 **[認証]** を選択します。
+1. [暗黙的な許可] で、 **[アクセス トークン]** と **[ID トークン]** の両方のチェック ボックスをオンにします。
+1. **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 

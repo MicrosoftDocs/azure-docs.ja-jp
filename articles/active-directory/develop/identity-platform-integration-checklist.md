@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: a6a7bf24571660d8e728c1acba29af2504539a18
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063792"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219962"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft ID プラットフォームのベスト プラクティスと推奨事項
 
@@ -68,7 +68,7 @@ ms.locfileid: "98063792"
 
 ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) 最新の認証ソリューション (OAuth 2.0、[OpenID Connect](v2-protocols-oidc.md)) を使用して安全にユーザーのサインインを行います。
 
-![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) OAuth 2.0 や Open ID などのプロトコルに対する直接的なプログラミングは行いません。 代わりに、[Microsoft Authentication Library (MSAL)](msal-overview.md) を活用してください。 MSAL ライブラリでは、使いやすいライブラリ内に安全にセキュリティ プロトコルがラップされており、[条件付きアクセス](../conditional-access/overview.md)のシナリオに対する組み込みのサポート、デバイス全体の[シングル サインオン (SSO)](../manage-apps/what-is-single-sign-on.md)、および組み込みのトークン キャッシュ サポートを利用できます。 詳細については、Microsoft がサポートする[クライアント ライブラリ](reference-v2-libraries.md#microsoft-supported-client-libraries)および[ミドルウェア ライブラリ](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries)の一覧と、[互換性のあるサードパーティのクライアント ライブラリ](reference-v2-libraries.md#compatible-client-libraries)の一覧を参照してください。<br/><br/>認証プロトコル用に手作業でコーディングする必要がある場合は、[Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) などの手法に従う必要があります。 各プロトコルの標準仕様におけるセキュリティの考慮事項に十分注意してください。
+![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) OAuth 2.0 や Open ID などのプロトコルに対する直接的なプログラミングは行いません。 代わりに、[Microsoft Authentication Library (MSAL)](msal-overview.md) を活用してください。 MSAL ライブラリでは、使いやすいライブラリ内に安全にセキュリティ プロトコルがラップされており、[条件付きアクセス](../conditional-access/overview.md)のシナリオに対する組み込みのサポート、デバイス全体の[シングル サインオン (SSO)](../manage-apps/what-is-single-sign-on.md)、および組み込みのトークン キャッシュ サポートを利用できます。 詳細については、Microsoft でサポートされている[クライアント ライブラリ](reference-v2-libraries.md)の一覧を参照してください。 認証プロトコル用に手作業でコーディングする必要がある場合、[Microsoft SDL](https://www.microsoft.com/sdl/default.aspx) か同様の開発手法に従ってください。 各プロトコルの標準仕様におけるセキュリティの考慮事項に十分注意してください。
 
 ![チェックボックス](./media/active-directory-integration-checklist/checkbox-two.svg) [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) から [Microsoft Authentication Library](msal-overview.md) へ既存のアプリを移行します。 MSAL は、Microsoft の最新の ID プラットフォーム ソリューションであり、ADAL に適しています。 .NET、JavaScript、Android、iOS、macOS で利用可能であり、Python と Java についてはパブリック プレビュー段階です。 [ADAL.NET](msal-net-migration.md)、[ADAL.js](msal-compare-msal-js-and-adal-js.md)、および [ADAL.NET と iOS ブローカー](msal-net-migration-ios-broker.md)アプリの移行に関する詳細を確認してください。
 
@@ -104,7 +104,7 @@ ms.locfileid: "98063792"
 
 v2.0 についての詳細な情報:
 
-* [Microsoft ID プラットフォーム (v2.0 の概要)](v2-overview.md)
+* [Microsoft ID プラットフォーム (概要)](v2-overview.md)
 * [Microsoft ID プラットフォーム プロトコル リファレンス](active-directory-v2-protocols.md)
 * [アクセス トークン リファレンス](access-tokens.md)
 * [ID トークン リファレンス](id-tokens.md)

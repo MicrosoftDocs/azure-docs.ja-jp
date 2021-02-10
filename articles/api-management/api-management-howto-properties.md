@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 344500d5635f591b34a45130c7dd6b63659ad84d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504734"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491016"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーで名前付きの値を使用する
 
@@ -43,7 +43,7 @@ API Management のセキュリティ向上に役立つため、キー コンテ�
 
 * キー　コンテナーに格納されているシークレットは、サービス間で再利用できます
 * きめ細かい[アクセス ポリシー](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)をシークレットに適用できます
-* キー コンテナーで更新されたシークレットは、API Management で自動的にローテーションされます。 キー コンテナー内で更新が行われると、4 時間以内に API Management 内の名前付きの値が更新されます。 
+* キー コンテナーで更新されたシークレットは、API Management で自動的にローテーションされます。 キー コンテナー内で更新が行われると、4 時間以内に API Management 内の名前付きの値が更新されます。 また、Azure portal または管理 REST API を使用して、シークレットを手動で更新することもできます。
 
 ### <a name="prerequisites-for-key-vault-integration"></a>キー コンテナー統合の前提条件
 
@@ -58,25 +58,16 @@ API Management のセキュリティ向上に役立つため、キー コンテ�
 
 キー コンテナーのシークレットを使用するには、[名前付きの値を追加または編集](#add-or-edit-a-named-value)し、**キー コンテナー** の種類を指定します。 キー コンテナーからシークレットを選択します。
 
-> [!CAUTION]
-> API Management でキー コンテナーのシークレットを使用する場合は、シークレット、キー コンテナー、またはキー コンテナーにアクセスするために使用するマネージド ID を削除しないように注意してください。
-
-キー コンテナーで [Key Vault ファイアウォール](../key-vault/general/network-security.md)が有効になっている場合、キー コンテナーのシークレットを使用するための追加要件は次のとおりです。
-
-* キー コンテナーにアクセスするには、API Management インスタンスの **システムによって割り当てられた** マネージド ID を使用する必要があります。
-* Key Vault ファイアウォールで、 **[Allow Trusted Microsoft Services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\)** オプションを有効にします。
-
-API Management インスタンスが仮想ネットワークにデプロイされている場合は、次のネットワーク設定も構成してください。
-* API Management サブネットで Azure Key Vault への[サービス エンドポイント](../key-vault/general/overview-vnet-service-endpoints.md)を有効にします。
-* AzureKeyVault と AzureActiveDirectory の[サービス タグ](../virtual-network/service-tags-overview.md)への送信トラフィックを許可するネットワーク セキュリティ グループ (NSG) 規則を構成します。 
-
-詳細については、[仮想ネットワークへの接続](api-management-using-with-vnet.md#-common-network-configuration-issues)に関するページに含まれているネットワーク構成の詳細を参照してください。
+[!INCLUDE [api-management-key-vault-network](../../includes/api-management-key-vault-network.md)]
 
 ## <a name="add-or-edit-a-named-value"></a>名前付きの値を追加または編集する
 
 ### <a name="add-a-key-vault-secret"></a>キー コンテナーのシークレットを追加する
 
 「[キー コンテナー統合の前提条件](#prerequisites-for-key-vault-integration)」を参照してください。
+
+> [!CAUTION]
+> API Management でキー コンテナーのシークレットを使用する場合は、シークレット、キー コンテナー、またはキー コンテナーにアクセスするために使用するマネージド ID を削除しないように注意してください。
 
 1. [Azure portal](https://portal.azure.com) で、API Management インスタンスに移動します。
 1. **[API]** で、 **[名前付きの値]**  >  **[+追加]** を選択します。

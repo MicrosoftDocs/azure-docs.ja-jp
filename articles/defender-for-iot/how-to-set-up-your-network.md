@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573141"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621314"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender for IoT のネットワーク設定について
 
@@ -94,35 +94,36 @@ Azure Defender for IoT では、継続的な ICS 脅威の監視とデバイス�
 
 組織のセキュリティ ポリシーによって、以下へのアクセスが許可されていることを確認します。
 
-| **目的** | **プロトコル** | **トランスポート** | **インまたはアウト** | **[ポート]** | **カテゴリ** |
-| ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
-| **Web コンソールへのアクセス** | HTTPS | TCP | インまたはアウト | 443 | Defender for IoT プラットフォームのオンプレミスの管理コンソール |
-| **CLI へのアクセス** | SSH | TCP | インまたはアウト | 22 | CLI |
-| **Defender for IoT プラットフォームとオンプレミスの管理コンソール間の接続** | SSL | TCP | インまたはアウト | 443 | センサーおよびオンプレミスの管理コンソール|
-| **センサーへの NTP として使用されるオンプレミスの管理コンソール** | NTP | UDP| CM に対してイン | 123 | 時間同期 | 
-| **外部 NTP サーバーに接続されているセンサー (該当する場合)** | NTP | UDP | インまたはアウト| 123 | 時間同期 |
-| **Defender for IoT プラットフォームおよび管理プラットフォームとメール サーバー間の接続 (該当する場合)** | SMTP | TCP | センサーの管理対象外 | 25 | Email |
-| **オンプレミスの管理コンソールから Syslog サーバーに送信するログ (該当する場合)** | syslog | UDP | センサーの管理対象外| 514 | LEEF |
-| **DNS サーバー (該当する場合)** | DNS | 該当なし | インまたはアウト| 53 | DNS |
-| **Active Directory への Defender for IoT プラットフォームとオンプレミスの管理コンソール間の接続 (該当する場合)** | LDAPS | TCP | インまたはアウト | 636 <br />389 | Active Directory |
-| **リモート SNMP コレクター (該当する場合)** | SNMP | UDP | センサーの管理対象外| 161 | 監視 |
-| **Windows エンドポイント監視 (該当する場合)** | WMI | UDP | センサーの管理対象外| 135 | 監視 |
-| **Windows エンドポイント監視 (該当する場合)** | WMI | TCP | センサーの管理対象外| 1024 以上 | 監視 |
-| **トンネリング (該当する場合)** | トンネリング | TCP | CM に対して IN | 9000<br />さらに、ポート 443<br />エンド ユーザーからオンプレミスの管理コンソールへ <br />センサーからオンプレミスの管理コンソールへのポート 22 | 監視 |
-| **Defender for IoT ハブへの送信** | HTTPS | TCP | センサーの管理対象外| **URL**<br />*.azure-devices.net:443<br />または、ワイルドカードがサポートされていない場合は、<br />{IoT ハブ名}.azure-devices.net:443 |
+| プロトコル | トランスポート | /アウトの選択 | Port | 使用 | 目的 | source | 宛先 |
+|--|--|--|--|--|--|--|--|
+| HTTPS | TCP | 入出力 | 443 | センサー、オンプレミスの管理コンソール、Web コンソール | Web コンソールへのアクセス | Client | センサーおよびオンプレミスの管理コンソール |
+| SSH | TCP | 入出力 | 22 | CLI | CLI へのアクセス | Client | センサーおよびオンプレミスの管理コンソール |
+| SSL | TCP | 入出力 | 443 | センサーおよびオンプレミスの管理コンソール | CyberX プラットフォームと中央管理プラットフォームの間の接続 | センサー | オンプレミスの管理コンソール |
+| NTP | UDP | IN | 123 | 時間同期 | センサーへの NTP として使用されるオンプレミスの管理コンソール | センサー | オンプレミス管理コンソール |
+| NTP | UDP | 入出力 | 123 | 時間同期 | 外部 NTP サーバーに接続されているセンサー (オンプレミスの管理コンソールがインストールされていない場合) | センサー | NTP |
+| SMTP | TCP | OUT | 25 | Email | CyberX プラットフォーム、管理プラットフォーム、メール サーバーの間の接続 | センサーおよびオンプレミスの管理コンソール | 電子メール サーバー |
+| syslog | UDP | OUT | 514 | LEEF | オンプレミスの管理コンソールから Syslog サーバーに送信されるログ | オンプレミスの管理コンソールとセンサー | Syslog サーバー |
+| DNS |  | 入出力 | 53 | DNS | DNS サーバー ポート | オンプレミスの管理コンソールとセンサー | DNS サーバー |
+| LDAP | TCP | 入出力 | 389 | Active Directory | CyberX プラットフォームと、Active Directory への管理プラットフォームとの間の接続 | オンプレミスの管理コンソールとセンサー | LDAP サーバー |
+| LDAPS | TCP | 入出力 | 636 | Active Directory | CyberX プラットフォームと、Active Directory への管理プラットフォームとの間の接続 | オンプレミスの管理コンソールとセンサー | LDAPS サーバー |
+| SNMP | UDP | OUT | 161 | 監視 | リモート SNMP コレクター。 | オンプレミスの管理コンソールとセンサー | SNMP サーバー |
+| WMI | UDP | OUT | 135 | monitoring | Windows エンドポイント監視 | Sensor | 関連するネットワーク要素 |
+| トンネリング | TCP | IN | 9000 <br /><br />- ポート 443 に加えて <br /><br />エンド ユーザーからオンプレミスの管理コンソールへ。 <br /><br />- ポート 22 (センサーからオンプレミス管理コンソールへ)  | monitoring | トンネリング | Sensor | オンプレミスの管理コンソール |
 
 ### <a name="planning-rack-installation"></a>ラックの取り付け計画
 
 ラックの取り付けを計画するには、次の操作を行います。
 
 1. アプライアンスのネットワーク設定のためのモニターとキーボードを準備します。
-2. アプライアンス用のラック スペースを割り当てます。
-3. アプライアンスで AC 電源を使用できるようにします。
-4. ネットワーク スイッチに管理を接続するための LAN ケーブルを準備します。
-5. スイッチ SPAN (ミラー) ポートを接続するための LAN ケーブルと、Defender for IoT アプライアンスへのネットワーク タップを準備します。 
-6. アーキテクチャ レビュー セッションで説明されているように、ミラー化されたスイッチで SPAN ポートを構成、接続、および検証します。
-7. Wireshark を実行しているコンピューターに構成済みの SPAN ポートを接続し、ポートが正しく構成されていることを確認します。
-8. 関連するすべてのファイアウォール ポートを開きます。
+
+1. アプライアンス用のラック スペースを割り当てます。
+
+1. アプライアンスで AC 電源を使用できるようにします。
+1. ネットワーク スイッチに管理を接続するための LAN ケーブルを準備します。
+1. スイッチ SPAN (ミラー) ポートを接続するための LAN ケーブルと、Defender for IoT アプライアンスへのネットワーク タップを準備します。 
+1. アーキテクチャ レビュー セッションで説明されているように、ミラー化されたスイッチで SPAN ポートを構成、接続、および検証します。
+1. Wireshark を実行しているコンピューターに構成済みの SPAN ポートを接続し、ポートが正しく構成されていることを確認します。
+1. 関連するすべてのファイアウォール ポートを開きます。
 
 ## <a name="about-passive-network-monitoring"></a>パッシブ ネットワークの監視について
 
@@ -141,6 +142,7 @@ Azure Defender for IoT では、継続的な ICS 脅威の監視とデバイス�
 レベル 0 は、基本的な製造プロセスに関係するさまざまなセンサー、アクチュエータ、およびデバイスで構成されています。 これらのデバイスは、次のような、産業オートメーションおよび制御システムの基本的な機能を実行します。
 
 - モーターの駆動。
+
 - 変数の測定。
 - 出力の設定。
 - 塗装、溶接、曲げなどの主要な機能の実行。
@@ -364,10 +366,10 @@ TAP はさまざまな理由で便利です。 これらはハードウェアベ
 これらのモデルは互換性についてテスト済みです。 他の製造元やモデルにも互換性がある場合があります。
 
 | Image | モデル |
-| -- | -- |
-| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS のスクリーンショット。":::  | Garland P1GCCAS  |
-| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 のスクリーンショット。":::  | IXIA TPA2-CU3  |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="US Robotics USR 4503 のスクリーンショット。":::  | US Robotics USR 4503  |
+|--|--|
+| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Garland P1GCCAS のスクリーンショット。"::: | Garland P1GCCAS |
+| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="IXIA TPA2-CU3 のスクリーンショット。"::: | IXIA TPA2-CU3 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="US Robotics USR 4503 のスクリーンショット。"::: | US Robotics USR 4503 |
 
 ##### <a name="special-tap-configuration"></a>特殊な TAP 構成
 
@@ -425,7 +427,7 @@ OT および ICS ネットワーク図を確認することは、接続するの
 
 - Defender for IoT アプライアンスをそのスイッチに接続する必要がある場合、そのキャビネットには物理的に使用可能なラック スペースがありますか?
 
-#### <a name="additional-considerations"></a>その他の注意点
+#### <a name="other-considerations"></a>その他の考慮事項
 
 Defender for IoT アプライアンスの目的は、レイヤー 1 と 2 からのトラフィックを監視することです。
 
@@ -645,7 +647,7 @@ Wireshark アプリケーションを使用して、既に構成されている 
 |       項目          | アプライアンス 1 | アプライアンス 2 | アプライアンス 3 |
 | --------------- | ------------- | ------------- | ------------- |
 | アプライアンスの IP アドレス     |               |               |               |
-| サブネット          |               |               |               |
+| Subnet          |               |               |               |
 | デフォルト ゲートウェイ |               |               |               |
 | DNS             |               |               |               |
 
@@ -654,7 +656,7 @@ Wireshark アプリケーションを使用して、既に構成されている 
 |       項目          | アクティブ | パッシブ (HA を使用する場合) |
 | --------------- | ------ | ----------------------- |
 | IP アドレス             |        |                         |
-| サブネット          |        |                         |
+| Subnet          |        |                         |
 | デフォルト ゲートウェイ |        |                         |
 | DNS             |        |                         |
 
@@ -671,7 +673,7 @@ Wireshark アプリケーションを使用して、既に構成されている 
 | 秘密鍵 | |
 | SNMP v2 コミュニティ文字列 |
 
-### <a name="cm-ssl-certificate"></a>CM SSL 証明書
+### <a name="on-premises-management-console-ssl-certificate"></a>オンプレミスの管理コンソールの SSL 証明書
 
 VPN デバイスを使用する予定はありますか? はい、いいえ
 

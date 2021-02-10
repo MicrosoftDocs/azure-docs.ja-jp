@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 33233e8a6aa54e65094e0cc6130e804241d7201c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 869c4ac5cde7d1e50be0f2f738d8a0ce6de5e625
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044290"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98951718"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>チュートリアル:Azure Virtual Machines 上の SQL Server に可用性グループを作成するための前提条件
 
@@ -91,9 +91,9 @@ Azure portal で仮想ネットワークを作成するには:
    | **フィールド** | 値 |
    | --- | --- |
    | **名前** |autoHAVNET |
-   | **アドレス空間** |10.33.0.0/24 |
+   | **アドレス空間** |10.0.0.0/24 |
    | **サブネット名** |[Admin] |
-   | **サブネットのアドレス範囲** |10.33.0.0/29 |
+   | **サブネットのアドレス範囲** |10.0.0.0/29 |
    | **サブスクリプション** |使用するサブスクリプションを指定します。 ご利用のサブスクリプションが 1 つだけの場合、 **[サブスクリプション]** は空になります。 |
    | **リソース グループ** |**[既存のものを使用]** を選択し、リソース グループの名前を選択します。 |
    | **場所** |Azure の場所を指定します。 |

@@ -2,20 +2,20 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 01/27/2021
 ms.author: rogarana
-ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7da7c2fbb49a9dd936762b23f3c251d2142c52fd
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027056"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221790"
 ---
 | リソース | Standard ファイル共有\* | Premium ファイル共有 |
 |----------|---------------|------------------------------------------|
 | ファイル共有の最小サイズ | 最小サイズなし。従量課金制 | 100 GiB、プロビジョニング済み |
 | ファイル共有の最大サイズ | 100 TiB\*\*、5 TiB | 100 TiB |
-| ファイル共有内の最大ファイル サイズ | 1 TiB | 4 TiB |
+| ファイル共有内の最大ファイル サイズ | 4 TiB | 4 TiB |
 | ファイル共有内の最大ファイル数 | 制限なし | 制限なし |
 | 共有あたりの最大 IOPS | 10,000 IOPS\*\*、1,000 IOPS または 100 要求 (100 ミリ秒) | 100,000 IOPS |
 | ファイル共有あたりの保存されるアクセス ポリシーの最大数 | 5 | 5 |

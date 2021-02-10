@@ -3,19 +3,19 @@ title: 言語のサポート - Translator
 titleSuffix: Azure Cognitive Services
 description: Cognitive Services Translator では、Neural Machine Translation (NMT) を利用したテキスト対テキストの翻訳で、以下の言語をサポートしています。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
-ms.author: swmachan
-ms.openlocfilehash: a359c4f0de6dab70b334da7e7d29ad4b273385ab
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.author: lajanuar
+ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789281"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919920"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
@@ -68,6 +68,7 @@ ms.locfileid: "98789281"
 | ハンガリー語 | `hu` |
 | アイスランド語 | `is` |
 | インドネシア語 | `id` |
+| イヌクティトット語 | `iu` |
 | アイルランド語 | `ga` |
 | イタリア語 | `it` |
 | 日本語 | `ja` |

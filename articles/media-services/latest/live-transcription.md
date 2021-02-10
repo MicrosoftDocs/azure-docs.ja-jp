@@ -1,26 +1,9 @@
 ---
-title: ライブ文字起こし
-titleSuffix: Azure Media Services
-description: Azure Media Services のライブ文字起こしについて学習します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291417"
+title:ライブ文字起こし :Azure Media Services の説明:Azure Media Services のライブ文字起こしについて学習します。  
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: '' ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: ne ms.topic: how-to ms.date:08/31/2020 ms.author: inhenkel
+
 ---
+
 # <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

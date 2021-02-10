@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight のクラスターの容量計画
 description: Azure HDInsight クラスターの容量とパフォーマンスの計画に関する重要な質問を特定します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 8e76f767470b9052b25cd2b2958f3f9e9780881b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45cfa90f2156dba87cbec2b6313bc24e5d030572
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83714748"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933237"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 

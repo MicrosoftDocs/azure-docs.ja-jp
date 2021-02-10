@@ -16,21 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504391"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762250"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
 ## <a name="deploy-seamless-single-sign-on"></a>シームレス シングル サインオンのデプロイ
 
 Azure Active Directory (Azure AD) シームレス シングル サインオン (シームレス SSO) により、ユーザーは企業ネットワークにつながっている会社のデスクトップを使用するときに自動でサインインできます。 シームレス SSO により、オンプレミス コンポーネントの追加を必要とすることなく、ユーザーはクラウド ベースのアプリケーションに簡単にアクセスできるようになります。
-
-> [!NOTE]
-> この記事には、Microsoft が使用しなくなった "*ホワイトリスト*" という用語への言及があります。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 シームレス SSO をデプロイするには、以下の手順に従います。
 
@@ -40,7 +37,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 
 * **Azure AD Connect サーバーがセットアップされている**:サインイン方法として [パススルー認証](how-to-connect-pta.md)を使用する場合、他に確認すべき前提条件はありません。 サインイン方法として[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合や、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
    - Azure AD Connect バージョン 1.1.644.0 以降を使用している。 
-   - ファイアウォールまたはプロキシで許可している場合は、 **\*.msappproxy.net** の URL に対するポート 443 での許可リストへの接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
+   - ファイアウォールまたはプロキシで許可している場合は、 **\*.msappproxy.net** の URL に対するポート 443 での許可リストへの接続を追加します。 プロキシ構成でワイルドカードではなく特定の URL が必要な場合は、**tenantid.registration.msappproxy.net** を構成できます。ここで、tenantid は、機能を構成しているテナントの GUID です。 組織で URL ベースのプロキシの例外が許可されない場合は、代わりに [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可できます。これは毎週更新されます。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
 
     >[!NOTE]
     >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用 _しない_ 場合の詳細については、[Azure AD Connect のリリース ノート](./reference-connect-version-history.md)をご覧ください。

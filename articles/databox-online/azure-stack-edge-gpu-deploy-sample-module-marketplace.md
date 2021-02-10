@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2c46e8a7cae9ddba9606abf75ac022e804fde9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91760061"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062504"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>GPU 対応 IoT モジュールを Azure Marketplace から Microsoft Azure Stack Edge Pro GPU デバイスにデプロイする
 
@@ -53,7 +53,7 @@ ms.locfileid: "91760061"
 
     ![サンプル モジュールの入手](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/get-sample-module-1.png)
 
-4.  **[続行]** を選択して、プロバイダーの使用条件とプライバシー ポリシーを確認します。 
+4. **[続行]** を選択して、プロバイダーの使用条件とプライバシー ポリシーを確認します。 
 
     ![サンプル モジュールの入手 2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
@@ -63,13 +63,11 @@ ms.locfileid: "91760061"
 
 6. Microsoft Azure Stack Edge Pro デバイスを構成するときに作成した IoT Hub サービスの名前を入力します。 この IoT Hub サービス名を確認するには、Azure portal で、デバイスに関連付けられている Azure Stack Edge リソースにアクセスします。 
 
-    1. 左側のウィンドウのメニュー オプションで、 **[Edge コンピューティング]、[開始]** の順にアクセスします。 
-
-    1. **[Edge コンピューティングの構成]** タイルで、 **[構成の表示]** を選択します。 
+    1. 左側のペインのメニュー オプションで、 **[Edge サービス]、[IoT Edge]** の順にアクセスします。 
 
         ![コンピューティング構成の表示](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/view-config-1.png)
 
-    1. **[Edge コンピューティングの構成]** ブレードで、次のようにします。
+    1. **[プロパティ]** に移動します。 
 
         1. Microsoft Azure Stack Edge Pro デバイスでコンピューティングを構成するときに作成された IoT Hub サービスをメモします。
         2. コンピューティングを構成するときに作成された IoT Edge デバイスの名前をメモします。 この名前は後の手順で使用します。
@@ -78,16 +76,16 @@ ms.locfileid: "91760061"
 
 10. **[デバイスへのデプロイ]** を選択します。
 
-11. IoT Edge デバイスの名前を入力するか、 **[デバイスの検索]**   を選択してハブに登録されているデバイスを参照します。
+11. IoT Edge デバイスの名前を入力するか、または **[デバイスの検索]** を選択してハブに登録されているデバイスを参照します。
 
     ![デバイスの検索](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/find-device-1.png)
 
-12.  **[作成]**   を選択して、必要な場合の他のモジュールの追加など、配置マニフェストの構成の標準的な処理を続行します。 イメージの URI、作成オプション、必要なプロパティなどの新しいモジュールの詳細はあらかじめ定義されていますが、変更できます。
+12. **[作成]** を選択して、必要な場合の他のモジュールの追加など、デプロイ マニフェストの構成の標準的な処理を続行します。 イメージの URI、作成オプション、必要なプロパティなどの新しいモジュールの詳細はあらかじめ定義されていますが、変更できます。
 
     ![作成の選択](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/target-devices-iot-edge-module-1.png)
 
 
-13. モジュールが Azure portal の IoT Hub にデプロイされていることを確認します。 デバイスを選択し、  **[モジュールの設定]**   を選択します。モジュールは  **[IoT Edge モジュール]**   セクションに表示されます。
+13. モジュールが Azure portal の IoT Hub にデプロイされていることを確認します。 デバイスを選択し、 **[モジュールの設定]** を選択します。モジュールは **IoT Edge モジュール** セクションに表示されます。
 
     ![作成の選択 2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 
@@ -103,7 +101,7 @@ ms.locfileid: "91760061"
   
         ![監視の開始](media/azure-stack-edge-gpu-deploy-sample-module/monitor-builtin-event-endpoint-1.png)  
 
-    2. **[デバイス]、[モジュール]** の順にアクセスして、**GPU モジュール**が実行中であることを確認します。
+    2. **[デバイス]、[モジュール]** の順にアクセスして、**GPU モジュール** が実行中であることを確認します。
 
     3. VS Code ターミナルでも Azure Stack Edge Pro デバイスの監視出力に IoT Hub イベントが含まれていることを確認します。
 

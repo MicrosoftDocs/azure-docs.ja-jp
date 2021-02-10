@@ -7,61 +7,65 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 09a9ca2ad1b1f1e5578ecc5d35a85c81b32a5b1a
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.date: 01/27/2021
+ms.openlocfilehash: f83767813ea3923d85db2ca3f0164776c610525e
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511748"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955022"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure Cognitive Search の JavaScript コード サンプル
 
-Azure Cognitive Search の機能を示す JavaScript コード サンプルについて説明します。 主なリポジトリは次のとおりです。
+Azure Cognitive Search ソリューションの機能とワークフローを示す JavaScript コード サンプルについて説明します。 これらのサンプルでは、次のリンクを使用して調べることができる [**Azure SDK for JavaScript**](/azure/developer/javascript/)に対して、[**Azure Cognitive Search クライアント ライブラリ**](/javascript/api/overview/azure/search-documents-readme)を使用します。
 
-| リポジトリ | Description |
-|------------|-------------|
-| [azure-sdk-for-js/tree/master/sdk/search/search-documents](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents) | Azure SDK チームが作成したサンプル (SDK の Azure.Search.Documents クライアント ライブラリに付属)。 クライアント ライブラリの[単体テスト](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test)を調査して、さまざまな API がどのように呼び出されるかを確認することもできます。 |
-| [Azure-Samples/azure-search-javascript-samples](https://github.com/Azure-Samples/azure-search-javascript-samples) | ハウツー記事に付随するコード サンプル。"[クイック スタート:JavaScript で検索インデックスを作成する](search-get-started-javascript.md)" のような記事。|
+| 移行先 | Link |
+|--------|------|
+| パッケージのダウンロード | [www.npmjs.com/package/@azure/search-documents](https://www.npmjs.com/package/@azure/search-documents) |
+| API リファレンス | [@azure/search-documents](/javascript/api/@azure/search-documents/)  |
+| API テスト ケース | [github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test) |
+| ソース コード | [github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents)  |
 
-> [!Tip]
-> Github で製品、サービス、言語でフィルター処理された Microsoft コード サンプルを検索するために、[サンプル ブラウザー](/samples/browse/?languages=javascript&products=azure-cognitive-search)を試してください。
+## <a name="sdk-samples"></a>SDK のサンプル
 
-## <a name="javascript-sdk-samples"></a>JavaScript SDK サンプル
+Azure SDK 開発チームのコード サンプルは、API の使用方法を示します。 これらのサンプルは、GitHub の [**azure-sdk-for-js/tree/master/sdk/search/search-documents/samples**](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples) にあります。
 
-Azure SDK for Java には、パッケージのインストール、クライアントのセットアップ、トラブルシューティングを取り上げた多数のサンプルと[作業開始ページ](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/README.md#getting-started)が含まれています。 このページには、利便性のため、ここに一覧で示した以下のサンプル カテゴリについての説明もあります。
+### <a name="javascript-sdk-samples"></a>JavaScript SDK サンプル
 
 | サンプル | 説明 |
 |---------|-------------|
 | [インデックス](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | [検索インデックス](search-what-is-an-index.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 このサンプル カテゴリには、サービス統計のサンプルも含まれます。 |
 | [dataSourceConnections (インデクサー用)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | [サポートされている Azure データ ソース](search-indexer-overview.md#supported-data-sources)のインデクサーベースのインデックス作成に必要なインデクサー データ ソースを作成、更新、取得、一覧表示、削除する方法が示されています。 |
-| [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法が示されています。|
+| [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexers) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法を示します。|
 | [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/skillSets) |   アタッチされたインデクサーであり、インデックス作成中に AI ベースの強化を実行する[スキルセット](cognitive-search-working-with-skillsets.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/synonymMaps) | [シノニム マップ](search-synonyms.md)を作成、更新、取得、一覧表示、削除する方法が示されています。  |
 | [クエリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) | Microsoft によってホストされている、読み取り専用のパブリック インデックスに対するクエリの実行が示されています。  |
 
-## <a name="typescript-samples"></a>TypeScript のサンプル
-
-SDK では、利便性のため、ここに記載されている TypeScript の例も提供されています。
+### <a name="typescript-samples"></a>TypeScript のサンプル
 
 | サンプル | 説明 |
 |---------|-------------|
 | [インデックス](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | [検索インデックス](search-what-is-an-index.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 このサンプル カテゴリには、サービス統計のサンプルも含まれます。 |
 | [dataSourceConnections (インデクサー用)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | [サポートされている Azure データ ソース](search-indexer-overview.md#supported-data-sources)のインデクサーベースのインデックス作成に必要なインデクサー データ ソースを作成、更新、取得、一覧表示、削除する方法が示されています。 |
-| [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法が示されています。|
+| [インデクサー](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexers) |  [インデクサー](search-indexer-overview.md)を作成、更新、取得、一覧表示、リセット、削除する方法を示します。|
 | [skillSet](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/skillSets) |   アタッチされたインデクサーであり、インデックス作成中に AI ベースの強化を実行する[スキルセット](cognitive-search-working-with-skillsets.md)を作成、更新、取得、一覧表示、削除する方法が示されています。 |
 | [synonymMaps](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/synonymMaps) | [シノニム マップ](search-synonyms.md)を作成、更新、取得、一覧表示、削除する方法が示されています。  |
 | [クエリ](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/typescript/src/readonlyQuery.ts) | Microsoft によってホストされている、読み取り専用のパブリック インデックスに対するクエリの実行が示されています。  |
 
-## <a name="documentation-samples"></a>ドキュメントとサンプル
+## <a name="doc-samples"></a>ドキュメントのサンプル
 
-次のサンプルには、関連記事が 「[Azure Cognitive Search のドキュメント](./index.yml)」にあります。
+Cognitive Search チームのコード サンプルは、機能とワークフローを示します。 これらのサンプルの多くは、チュートリアル、クイックスタート、および操作方法に関する記事で言及されています。 これらのサンプルは、GitHub の [**Azure-Samples/azure-search-javascript-samples**](https://github.com/Azure-Samples/azure-search-javascript-samples) にあります。
 
-| サンプル | 説明 | 
-|---------|-------------|
-| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | 次の記事のソース コード。"[クイック スタート:JavaScript で検索インデックスを作成する](search-get-started-javascript.md)" のような記事。  |
+| サンプル | 記事 |
+|---------|---------|
+| [quickstart](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | 次の記事のソース コード。"[クイック スタート:JavaScript で検索インデックスを作成する](search-get-started-javascript.md)" のような記事。 この記事では、サンプル データを使用して検索インデックスを作成、読み込み、クエリするための基本的なワークフローについて説明します。 |
 
-## <a name="standalone-samples"></a>独立したサンプル
+> [!Tip]
+> [サンプル ブラウザー](/samples/browse/?languages=javascript&products=azure-cognitive-search)を試して、製品、サービス、言語でフィルター処理された Microsoft コード サンプルを Github 内で検索してください。
+
+## <a name="other-samples"></a>その他のサンプル
+
+次のサンプルも Cognitive Search チームによって公開されていますが、ドキュメントでは参照されていません。 関連する readme ファイルは、使用方法を説明します。
 
 | サンプル | 説明 |
 |---------|-------------|

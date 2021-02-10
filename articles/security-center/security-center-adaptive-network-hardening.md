@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341755"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916186"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
 Security Center でアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
@@ -60,9 +60,25 @@ Security Center でアダプティブ ネットワークのセキュリティ強
       * **使用できる十分なデータがない**:トラフィック強化に関する正確な推奨事項を生成するには、Security Center に少なくとも 30 日間のトラフィック データが必要です。
       * **VM が Azure Defender によって保護されていない**:この機能の対象となるのは、[Azure Defender for servers](defender-for-servers-introduction.md) で保護されている VM のみです。
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="アダプティブ ネットワーク セキュリティ強化ツールへのアクセス" ルールです。
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="推奨事項 [アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある] の詳細ページ":::
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="アダプティブ ネットワーク セキュリティ強化ツールへのアクセス":::
+1. **[異常なリソース]** タブから、そのアラートと適用する推奨されるセキュリティ強化ルールを表示する VM を選択します。
+
+    - **[ルール]** タブには、アダプティブ ネットワークのセキュリティ強化機能が推奨するルールがリストされます。
+    - **[アラート]** タブには、推奨されるルールで許可されている IP 範囲内ではないリソースを通過するトラフィックのために生成されたアラートが一覧表示されます。
+
+1. 必要に応じて、ルールを編集します。
+
+    - [ルールを変更する](#modify-rule)
+    - [規則を削除する](#delete-rule) 
+    - [ルールの追加](#add-rule)
+
+3. NSG を適用する VM を選択し、 **[適用]** をクリックします。
+
+    > [!TIP]
+    > 許可されているソース IP の範囲が "なし" である場合は、推奨されるルールが "*拒否*" ルールであることを意味します。それ以外の場合は、"*許可*" ルールです。
+
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="アダプティブ ネットワークのセキュリティ強化機能ルールの管理":::
 
       > [!NOTE]
       > 適用されるルールは、VM を保護する NSG に追加されます。 (VM は、その NIC に関連付けられている NSG、VM が置かれているサブネット、またはその両方によって保護されます)

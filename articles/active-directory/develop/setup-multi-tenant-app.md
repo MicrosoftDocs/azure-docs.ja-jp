@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: a075cfa921a17d47cbef84f1e7e8ec8e306c38d5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 9564727cfe59f243fd1096c93d7eadf1d830be9e
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063027"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052551"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>新しいマルチテナント アプリケーションを構成する方法
 
@@ -29,4 +29,4 @@ ms.locfileid: "98063027"
 - [マルチテナント アプリケーションがエンド ツー エンドでどのように構成されコードされているか](./howto-convert-app-to-be-multi-tenant.md)、つまり登録方法、 "一般的な " エンドポイントの使用、 "ユーザー " と "管理者 " の同意の実装、より詳しい多層シナリオの実装方法などについて詳しく学習する
 
 ## <a name="next-steps"></a>次のステップ
-[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

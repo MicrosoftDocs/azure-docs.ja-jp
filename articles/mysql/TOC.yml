@@ -1,43 +1,18 @@
 - name: Azure Database for MySQL のドキュメント
   href: index.yml
 - name: 概要
+  expanded: true
   items:
     - name: Azure DB for MySQL とは
       href: overview.md
     - name: 適切な MySQL オプションの選択
       href: select-right-deployment-type.md
-    - name: サービスの更新情報
-      items:
-        - name: SSL ルート証明書の期限切れ
-          href: concepts-certificate-rotation.md
-- name: 共有ドキュメント
-  items:
-    - name: データベースのデプロイ
-      items:
-        - name: GitHub のアクション
-          href: quickstart-mysql-github-actions.md
-    - name: 移行
-      items:
-        - name: mysqldump または phpmyadmin でデータを移行する
-          href: concepts-migrate-dump-restore.md
-          displayName: 'migrate, mysqldump'
-        - name: MySQL Workbench を使用してデータを移行する
-          href: concepts-migrate-import-export.md
-          displayName: 'import , migrate, export'
-        - name: DMS を使用した最小限のダウンタイムでの移行
-          href: howto-migrate-online.md
-          displayName: 'migrate, dms, database migration service'
-    - name: データベースとユーザーを作成する
-      href: howto-create-users.md
-      displayName: users
-    - name: データベースの破損を軽減する
-      href: how-to-fix-corrupt-database.md
-      displayName: corrupt data
+    - name: サポートされているバージョン
+      href: concepts-supported-versions.md
     - name: バージョン管理ポリシー
       href: concepts-version-policy.md
       displayName: version policy
 - name: シングル サーバー
-  expanded: true
   items:
     - name: シングル サーバーのドキュメント
       href: single-server/index.yml
@@ -46,6 +21,12 @@
       items:
         - name: シングル サーバーとは
           href: single-server-overview.md
+        - name: 価格レベル
+          items:
+            - name: 価格レベル
+              href: concepts-pricing-tiers.md
+            - name: 予約容量の前払い
+              href: concept-reserved-pricing.md
     - name: クイックスタート
       expanded: true
       items:
@@ -68,8 +49,14 @@
               displayName: deploy azure resource manager template
         - name: 接続とクエリ
           items:
+            - name: 接続とクエリのガイド
+              href: how-to-connect-overview-single-server.md
+              displayName: 'connect , query , libraries, TLS, runtime'
             - name: MySQL Workbench
               href: connect-workbench.md
+            - name: Azure App Service
+              href: howto-connect-webapp.md
+              displayName: 'azure web app, security, web app, app service'
             - name: PHP
               href: connect-php.md
             - name: Java
@@ -92,8 +79,46 @@
               href: connect-cpp.md
             - name: Go
               href: connect-go.md
-    - name: チュートリアル
+            - name: 接続エラーのトラブルシューティング
+              href: howto-troubleshoot-common-connection-issues.md
+              displayName: 'debug, connection issues, connectivity, cannot connect'
+        - name: SSL の構成
+          href: howto-configure-ssl.md
+          displayName: 'ssl, security, application'
+        - name: ファイアウォール規則の構成
+          items:
+            - name: 概念
+              href: concepts-firewall-rules.md
+            - name: Azure portal を使用したファイアウォール規則の構成
+              href: howto-manage-firewall-using-portal.md
+              displayName: firewall
+            - name: Azure CLI を使用したファイアウォール規則の構成
+              href: howto-manage-firewall-using-cli.md
+              displayName: firewall
+        - name: サーバー パラメーターの構成
+          items:
+            - name: Azure portal
+              href: howto-server-parameters.md
+              displayName: server parameters
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+              displayName: 'server parameters, cli'
+            - name: Azure PowerShell
+              href: howto-configure-server-parameters-using-powershell.md
+              displayName: 'server parameters, powershell'
+        - name: データベースとユーザーを作成する
+          href: howto-create-users.md
+          displayName: users
+        - name: 監視サーバー
+          items:
+            - name: メトリックに基づいたアラートの作成
+              href: howto-alert-on-metric.md
+              displayName: 'debug, monitor, alerts, metrics'
+    - name: アプリケーション開発
       items:
+        - name: ドライバーとツールの互換性
+          href: concepts-compatibility.md
+          displayName: 'drivers, tools'
         - name: データベースの設計
           items:
             - name: Azure portal
@@ -112,120 +137,130 @@
             - name: PHP と MySQL
               href: ../app-service/tutorial-php-mysql-app.md
               maintainContext: true
-    - name: サンプル
+        - name: 接続の復元性
+          items:
+            - name: 概念
+              href: concepts-connectivity.md
+              displayName: 'connection, resiliency'
+            - name: サンプル - Java での接続プールの構成
+              href: sample-scripts-java-connection-pooling.md
+            - name: リダイレクトによる接続
+              href: howto-redirection.md
+              displayName: 'development, redirection , php'
+        - name: データベースのデプロイ
+          items:
+            - name: GitHub のアクション
+              href: quickstart-mysql-github-actions.md
+    - name: ネットワーク
       items:
-        - name: Azure CLI
-          href: sample-scripts-azure-cli.md
-        - name: Java 接続プール
-          href: sample-scripts-java-connection-pooling.md
-    - name: 概念
+        - name: 仮想ネットワーク サービス エンドポイント
+          items:
+            - name: 概念
+              href: concepts-data-access-and-security-vnet.md
+            - name: Azure portal を使用した VNet サービス エンドポイントの構成
+              href: howto-manage-vnet-using-portal.md
+              displayName: 'vnet, virtual network, service endpoint'
+            - name: Azure CLI を使用した VNet サービス エンドポイントの構成
+              href: howto-manage-vnet-using-cli.md
+              displayName: 'vnet, virtual network, service endpoint'
+        - name: プライベート リンク
+          items:
+            - name: 概念
+              href: concepts-data-access-security-private-link.md
+            - name: Azure portal を使用した Private Link の構成
+              href: howto-configure-privatelink-portal.md
+              displayName: 'private link, private endpoint'
+            - name: Azure CLI を使用した Private Link の構成
+              href: howto-configure-privatelink-cli.md
+              displayName: 'private link, private endpoint'
+    - name: セキュリティ
+      items:
+        - name: セキュリティの概要
+          href: concepts-security.md
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
+        - name: 認証
+          items:
+            - name: Azure AD 認証
+              href: concepts-azure-ad-authentication.md
+            - name: Azure AD の統合の構成
+              href: howto-configure-sign-in-azure-ad-authentication.md
+              displayName: active directory
+            - name: マネージド ID を使用して接続する
+              href: howto-connect-with-managed-identity.md
+              displayName: 'managed identity, msi'
+        - name: ネットワークのセキュリティ (移動時の暗号化)
+          items:
+            - name: SSL の構成
+              href: concepts-ssl-connection-security.md
+            - name: TLS の構成
+              href: howto-tls-configurations.md
+              displayName: 'TLS, security, development'
+            - name: 高度な脅威保護
+              items:
+                - name: 概念
+                  href: concepts-data-access-and-security-threat-protection.md
+                - name: Azure portal を使用した Advanced Threat Protection の構成
+                  href: howto-database-threat-protection-portal.md
+                  displayName: 'atp, advanced thread, security'
+        - name: 保存時の暗号化
+          items:
+            - name: データの暗号化
+              items:
+                - name: 概念
+                  href: concepts-data-encryption-mysql.md
+                - name: Azure portal を使用したカスタマー マネージド キーによる暗号化の構成
+                  href: howto-data-encryption-portal.md
+                  displayName: 'encryption, security'
+                - name: Azure CLI を使用したカスタマー マネージド キーによる暗号化の構成
+                  href: howto-data-encryption-cli.md
+                  displayName: 'encryption, security'
+                - name: データ暗号化の検証
+                  href: howto-data-encryption-validation.md
+                  displayName: 'encryption, security'
+            - name: インフラストラクチャの二重暗号化
+              items:
+                - name: 概念
+                  href: concepts-infrastructure-double-encryption.md
+                - name: インフラストラクチャの二重暗号化を構成する
+                  href: howto-double-encryption.md
+                  displayName: 'infrastructure encryption, security'
+        - name: パブリック ネットワーク アクセスの拒否
+          items:
+            - name: Azure Portal の使用
+              href: howto-deny-public-network-access.md
+              displayName: 'security, public access'
+        - name: '[Server Audit]'
+          items:
+            - name: 概念
+              href: concepts-audit-logs.md
+              displayName: 'monitor, alerts, audit log'
+            - name: Azure portal を使用した監査ログの構成
+              href: howto-configure-audit-logs-portal.md
+              displayName: 'debug, audit log'
+            - name: Azure CLI を使用した監査ログの構成
+              href: howto-configure-audit-logs-cli.md
+              displayName: 'debug, audit log'
+        - name: コンプライアンス
+          href: ./security-controls-policy.md
+          displayName: 'regulatory, compliance, standards, domains'
+    - name: 高可用性
+      items:
+        - name: ビジネス継続性の概要
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
+          href: concepts-business-continuity.md
+        - name: 高可用性
+          href: concepts-high-availability.md
+          displayName: 'backup, restore,high availability'
+    - name: Server Management
       items:
         - name: サーバー
           href: concepts-servers.md
-        - name: サポートされているバージョン
-          href: concepts-supported-versions.md
-        - name: 制限事項
+        - name: サーバーの制限事項
           href: concepts-limits.md
-        - name: 運用上のベスト プラクティス
-          href: concept-operation-excellence-best-practices.md
-        - name: 価格レベル
-          items:
-            - name: 価格レベル
-              href: concepts-pricing-tiers.md
-            - name: 予約容量の前払い
-              href: concept-reserved-pricing.md
-        - name: ネットワーキング
-          items:
-            - name: Virtual Network (VNET) を使用する
-              href: concepts-data-access-and-security-vnet.md
-            - name: Private Link でプライベート アクセスを有効にする
-              href: concepts-data-access-security-private-link.md
-        - name: セキュリティ
-          items:
-            - name: セキュリティの概要
-              href: concepts-security.md
-            - name: SSL の構成
-              href: concepts-ssl-connection-security.md
-            - name: 接続のアーキテクチャ
-              href: concepts-connectivity-architecture.md
-            - name: ファイアウォール規則
-              href: concepts-firewall-rules.md
-            - name: Advanced Threat Protection
-              href: concepts-data-access-and-security-threat-protection.md
-            - name: データの暗号化
-              href: concepts-data-encryption-mysql.md
-            - name: Azure AD 認証
-              href: concepts-azure-ad-authentication.md
-            - name: インフラストラクチャの二重暗号化
-              href: concepts-infrastructure-double-encryption.md
-            - name: Azure Policy によるセキュリティ制御
-              displayName: 'regulatory, compliance, standards, domains'
-              href: ./security-controls-policy.md
-            - name: セキュリティ ベースライン
-              href: security-baseline.md
-        - name: Azure の計画メンテナンス
-          href: concepts-planned-maintenance-notification.md
-        - name: ビジネス継続性
-          items:
-            - name: ビジネス継続性の概要
-              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
-              href: concepts-business-continuity.md
-            - name: 高可用性
-              href: concepts-high-availability.md
-              displayName: 'backup, restore,high availability'
-            - name: バックアップと復元
-              href: concepts-backup.md
-              displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
-        - name: 監視と調整
-          items:
-            - name: 監視の概要
-              href: concepts-monitoring.md
-              displayName: 'monitor, alerts, audit log, slow query log'
-            - name: サーバー パラメーター
-              href: concepts-server-parameters.md
-              displayName: server parameters
-            - name: 低速クエリ ログ
-              href: concepts-server-logs.md
-              displayName: 'monitor, slow query log, alert'
-            - name: 監査ログ
-              href: concepts-audit-logs.md
-              displayName: 'monitor, alerts, audit log'
-            - name: クエリ ストア
-              href: concepts-query-store.md
-              displayName: 'performance, query store'
-            - name: クエリ パフォーマンスの分析情報
-              href: concepts-query-performance-insight.md
-              displayName: query performance insights
-            - name: パフォーマンスに関する推奨事項
-              href: concepts-performance-recommendations.md
-              displayName: recommendation
-            - name: 監視のベスト プラクティス
-              href: concept-monitoring-best-practices.md
-            - name: パフォーマンスのベスト プラクティス
-              href: concept-performance-best-practices.md
-        - name: アプリケーション開発
-          items:
-            - name: アプリケーション開発の概要
-              href: concepts-database-application-development.md
-            - name: ドライバーとツールの互換性
-              href: concepts-compatibility.md
-              displayName: 'drivers, tools'
-            - name: アプリケーションのベスト プラクティス
-              href: app-development-best-practices.md
-              displayName: application
-            - name: 接続の回復性
-              href: concepts-connectivity.md
-              displayName: 'connection, resiliency'
-        - name: レプリケーション
-          items:
-            - name: データイン レプリケーション
-              href: concepts-data-in-replication.md
-              displayName: 'replication, read replica'
-            - name: 読み取りレプリカ
-              href: concepts-read-replicas.md
-              displayName: 'replication, read replica'
-    - name: 操作方法ガイド
-      items:
+        - name: サーバー パラメーター
+          href: concepts-server-parameters.md
+          displayName: server parameters
         - name: サーバーの管理とスケーリング
           items:
             - name: Azure portal
@@ -234,196 +269,141 @@
             - name: Azure CLI
               href: how-to-manage-single-server-cli.md
               displayName: 'manage, reset password, scale'
-            - name: ファイアウォール規則
-              items:
-                - name: Azure portal
-                  href: howto-manage-firewall-using-portal.md
-                  displayName: firewall
-                - name: Azure CLI
-                  href: howto-manage-firewall-using-cli.md
-                  displayName: firewall
-        - name: 認証
-          items:
-            - name: Azure AD の統合の構成
-              href: howto-configure-sign-in-azure-ad-authentication.md
-              displayName: active directory
-            - name: マネージド ID を使用して接続する
-              href: howto-connect-with-managed-identity.md
-              displayName: 'managed identity, msi'
-        - name: サーバーの復元
-          items:
-            - name: Azure portal
-              href: howto-restore-server-portal.md
-              displayName: 'restore server,backup'
-            - name: Azure CLI
-              href: howto-restore-server-cli.md
-              displayName: 'restore server, backup'
-            - name: Azure PowerShell
-              href: howto-restore-server-powershell.md
-              displayName: 'restore server, backup, geo-restore powershell'
-            - name: 削除されたサーバーの復元
-              href: howto-restore-dropped-server.md
-              displayName: 'restore server,dropped, recover'
-        - name: アプリケーションの接続
-          items:
-            - name: SSL の構成
-              href: howto-configure-ssl.md
-              displayName: 'ssl, security, application'
-            - name: TLS の構成
-              href: howto-tls-configurations.md
-              displayName: 'TLS, security, developement'
-            - name: 接続とクエリのガイド
-              href: how-to-connect-overview-single-server.md
-              displayName: 'connect , query , libraries, TLS, runtime'
-            - name: Web Apps
-              href: howto-connect-webapp.md
-              displayName: 'azure web app, security, web app, app service'
-            - name: リダイレクトによる接続
-              href: howto-redirection.md
-              displayName: 'development, redirection , php'
-        - name: サーバー パラメーターの構成
-          items:
-            - name: Azure portal
-              href: howto-server-parameters.md
-              displayName: server parameters
-            - name: Azure CLI
-              href: howto-configure-server-parameters-using-cli.md
-              displayName: 'server parameters, cli'
-            - name: Azure PowerShell
-              href: howto-configure-server-parameters-using-powershell.md
-              displayName: 'server parameters, powershell'
         - name: サーバーを停止または起動する
           items:
             - name: MySQL サーバーを停止または起動する
               href: how-to-stop-start-server.md
         - name: メジャー バージョンのアップグレード
-          items:
-            - name: メジャー バージョンのアップグレード
-              href: how-to-major-version-upgrade.md
+          href: how-to-major-version-upgrade.md
         - name: ストレージの自動拡張
           items:
-            - name: Azure portal
+            - name: Azure Portal の使用
               href: howto-auto-grow-storage-portal.md
               displayName: 'storage, business continuity , downtime, portal'
-            - name: Azure CLI
+            - name: Azure CLI の使用
               href: howto-auto-grow-storage-cli.md
               displayName: 'storage, business continuity , downtime, cli'
-            - name: Azure PowerShell
+            - name: Azure PowerShell の使用
               href: howto-auto-grow-storage-powershell.md
               displayName: 'storage, business continuity , downtime, powershell'
-        - name: 低速クエリ ログ
+        - name: サーバーの再起動
           items:
-            - name: Azure portal
-              href: howto-configure-server-logs-in-portal.md
-              displayName: 'debug, slow query log , performance'
-            - name: Azure CLI
-              href: howto-configure-server-logs-in-cli.md
-              displayName: 'debug, slow query log , performance'
-        - name: 監査ログ
+            - name: Azure Portal の使用
+              href: howto-restart-server-portal.md
+              displayName: restart
+            - name: Azure CLI の使用
+              href: howto-restart-server-cli.md
+              displayName: restart
+            - name: Azure PowerShell の使用
+              href: howto-restart-server-powershell.md
+              displayName: restart
+        - name: リージョン間でのサーバーの移動
           items:
-            - name: Azure portal
-              href: howto-configure-audit-logs-portal.md
-              displayName: 'debug, audit log'
-            - name: Azure CLI
-              href: howto-configure-audit-logs-cli.md
-              displayName: 'debug, audit log'
-        - name: モニター
+            - name: Azure Portal の使用
+              href: howto-move-regions-portal.md
+              displayName: move servers across regions
+    - name: バックアップと復元
+      items:
+        - name: バックアップ
+          href: concepts-backup.md
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
+        - name: サーバーの復元
           items:
-            - name: メトリックに基づいたアラートの作成
-              href: howto-alert-on-metric.md
-              displayName: 'debug, monitor, alerts, metrics'
-        - name: レプリケーション
+            - name: Azure Portal の使用
+              href: howto-restore-server-portal.md
+              displayName: 'restore server,backup'
+            - name: Azure CLI の使用
+              href: howto-restore-server-cli.md
+              displayName: 'restore server, backup'
+            - name: Azure PowerShell の使用
+              href: howto-restore-server-powershell.md
+              displayName: 'restore server, backup, geo-restore powershell'
+        - name: 削除されたサーバーの復元
+          href: howto-restore-dropped-server.md
+          displayName: 'restore server,dropped, recover'
+    - name: レプリケーション
+      items:
+        - name: データイン レプリケーション
+          href: concepts-data-in-replication.md
+          displayName: 'replication, read replica'
+        - name: データイン レプリケーションの構成
+          href: howto-data-in-replication.md
+          displayName: 'data-in replication, replica, failover'
+        - name: 読み取りレプリカ
           items:
-            - name: データイン レプリケーションの構成
-              href: howto-data-in-replication.md
-              displayName: 'data-in replication, replica, failover'
+            - name: 概念
+              href: concepts-read-replicas.md
+              displayName: 'replication, read replica'
             - name: Azure portal を使用した読み取りレプリカの作成
               href: howto-read-replicas-portal.md
               displayName: 'data-in replication, replica, failover'
-            - name: 読み取りレプリカ Azure CLI の作成、REST API
+            - name: Azure CLI、REST API を使用した読み取りレプリカの作成
               href: howto-read-replicas-cli.md
               displayName: 'data-in replication, replica, failover'
             - name: Azure PowerShell を使用した読み取りレプリカの作成
               href: howto-read-replicas-powershell.md
               displayName: 'data-in replication, replica, failover'
-        - name: トラブルシューティング
+    - name: サービスのメンテナンス
+      items:
+        - name: Azure の計画メンテナンス
+          href: concepts-planned-maintenance-notification.md
+        - name: ゲートウェイのメンテナンス
+          href: concepts-connectivity-architecture.md
+        - name: SSL ルート証明書の期限切れ
+          href: concepts-certificate-rotation.md
+    - name: 監視と調整
+      items:
+        - name: 監視の概要
+          href: concepts-monitoring.md
+          displayName: 'monitor, alerts, audit log, slow query log'
+        - name: 低速クエリ ログ
           items:
-            - name: 接続エラーのトラブルシューティング
-              href: howto-troubleshoot-common-connection-issues.md
-              displayName: 'debug, connection issues, connectivity, cannot connect'
-            - name: 一般的なエラーのトラブルシューティング
-              href: howto-troubleshoot-common-errors.md
-              displayName: 'SUPER privilege, DBA role, Access is denied'
-            - name: クエリ パフォーマンスのトラブルシューティング
-              href: howto-troubleshoot-query-performance.md
-              displayName: 'debug, performance issues, query performance'
-            - name: sys スキーマでビューを使用する方法
-              href: howto-troubleshoot-sys-schema.md
-              displayName: 'sys schema, views'
-            - name: データ暗号化のトラブルシューティング
-              href: howto-data-encryption-troubleshoot.md
-              displayName: 'encryption, security'
-            - name: レプリケーションの待ち時間のトラブルシューティング
-              href: howto-troubleshoot-replication-latency.md
-              displayName: 'replication, latency, monitor'
-        - name: 高度な脅威保護
-          items:
-            - name: Azure portal
-              href: howto-database-threat-protection-portal.md
-              displayName: 'atp, advanced thread, security'
-            - name: Virtual Network
-              items:
-                - name: Azure portal
-                  href: howto-manage-vnet-using-portal.md
-                  displayName: 'vnet, virtual network, service endpoint'
-                - name: Azure CLI
-                  href: howto-manage-vnet-using-cli.md
-                  displayName: 'vnet, virtual network, service endpoint'
-        - name: プライベート リンク
-          items:
-            - name: Azure portal
-              href: howto-configure-privatelink-portal.md
-              displayName: 'private link, private endpoint'
-            - name: Azure CLI
-              href: howto-configure-privatelink-cli.md
-              displayName: 'private link, private endpoint'
-        - name: データの暗号化
-          items:
-            - name: Azure portal
-              href: howto-data-encryption-portal.md
-              displayName: 'encryption, security'
-            - name: Azure CLI
-              href: howto-data-encryption-cli.md
-              displayName: 'encryption, security'
-            - name: データ暗号化の検証
-              href: howto-data-encryption-validation.md
-              displayName: 'encryption, security'
-        - name: インフラストラクチャの二重暗号化
-          items:
-            - name: インフラストラクチャの二重暗号化を構成する
-              href: howto-double-encryption.md
-              displayName: 'infrastructure encryption, security'
-        - name: パブリック ネットワーク アクセスの拒否
-          items:
-            - name: Azure portal
-              href: howto-deny-public-network-access.md
-              displayName: 'security, public access'
-        - name: サーバーの再起動
-          items:
-            - name: Azure portal
-              href: howto-restart-server-portal.md
-              displayName: restart
-            - name: Azure CLI
-              href: howto-restart-server-cli.md
-              displayName: restart
-            - name: Azure PowerShell
-              href: howto-restart-server-powershell.md
-              displayName: restart
-        - name: リージョン間の移動
-          items:
-            - name: Azure portal
-              href: howto-move-regions-portal.md
-              displayName: move servers across regions
+            - name: 概念
+              href: concepts-server-logs.md
+              displayName: 'monitor, slow query log, alert'
+            - name: Azure portal を使用した低速クエリ ログの構成
+              href: howto-configure-server-logs-in-portal.md
+              displayName: 'debug, slow query log , performance'
+            - name: Azure CLI を使用した低速クエリ ログの構成
+              href: howto-configure-server-logs-in-cli.md
+              displayName: 'debug, slow query log , performance'
+        - name: クエリ ストア
+          href: concepts-query-store.md
+          displayName: 'performance, query store'
+        - name: クエリ パフォーマンスの分析情報
+          href: concepts-query-performance-insight.md
+          displayName: query performance insights
+        - name: パフォーマンスに関する推奨事項
+          href: concepts-performance-recommendations.md
+          displayName: recommendation
+    - name: 推奨する運用方法
+      items:
+        - name: 監視のベスト プラクティス
+          href: concept-monitoring-best-practices.md
+        - name: パフォーマンスのベスト プラクティス
+          href: concept-performance-best-practices.md
+        - name: アプリケーション開発のベスト プラクティス
+          href: app-development-best-practices.md
+          displayName: application
+        - name: 運用上のベスト プラクティス
+          href: concept-operation-excellence-best-practices.md
+    - name: トラブルシューティング
+      items:
+        - name: クエリ パフォーマンスのトラブルシューティング
+          href: howto-troubleshoot-query-performance.md
+          displayName: 'debug, performance issues, query performance'
+        - name: sys スキーマでビューを使用する方法
+          href: howto-troubleshoot-sys-schema.md
+          displayName: 'sys schema, views'
+        - name: データ暗号化のトラブルシューティング
+          href: howto-data-encryption-troubleshoot.md
+          displayName: 'encryption, security'
+        - name: レプリケーションの待ち時間のトラブルシューティング
+          href: howto-troubleshoot-replication-latency.md
+          displayName: 'replication, latency, monitor'
+        - name: データベースの破損を軽減する
+          href: how-to-fix-corrupt-database.md
+          displayName: corrupt data
 - name: フレキシブル サーバー (プレビュー)
   items:
     - name: フレキシブル サーバーのドキュメント
@@ -432,6 +412,10 @@
       items:
         - name: フレキシブル サーバーとは
           href: flexible-server/overview.md
+        - name: サポートされているバージョン
+          href: flexible-server/concepts-supported-versions.md
+        - name: コンピューティングとストレージ
+          href: flexible-server/concepts-compute-storage.md
     - name: クイックスタート
       expanded: true
       items:
@@ -457,93 +441,8 @@
               href: flexible-server/connect-java.md
             - name: .NET
               href: flexible-server/connect-csharp.md
-    - name: チュートリアル
-      items:
-        - name: Azure Kubernetes での WordPress
-          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
-        - name: データベースを使用した PHP (Laravel) アプリを作成する
-          href: flexible-server/tutorial-php-database-app.md
-        - name: プライベート Web アプリを使用して接続する
-          href: flexible-server/tutorial-webapp-server-vnet.md
-    - name: 概念
-      items:
-        - name: サーバー
-          href: flexible-server/concept-servers.md
-        - name: サポートされているバージョン
-          href: flexible-server/concepts-supported-versions.md
-        - name: 制限事項
-          href: flexible-server/concepts-limitations.md
-        - name: コンピューティングとストレージ
-          href: flexible-server/concepts-compute-storage.md
-        - name: ネットワーキング
-          href: flexible-server/concepts-networking.md
-          displayName: 'virtual network, IP address, public access'
-        - name: メンテナンス
-          href: flexible-server/concepts-maintenance.md
-        - name: ビジネス継続性
-          items:
-            - name: ビジネス継続性の概要
-              href: flexible-server/concepts-business-continuity.md
-            - name: バックアップと復元
-              href: flexible-server/concepts-backup-restore.md
-            - name: 高可用性
-              href: flexible-server/concepts-high-availability.md
-        - name: 監視とログ
-          items:
-            - name: サーバー パラメーター
-              href: flexible-server/concepts-server-parameters.md
-            - name: 低速クエリ ログ
-              href: flexible-server/concepts-slow-query-logs.md
-            - name: 監査ログ
-              href: flexible-server/concepts-audit-logs.md
-            - name: メトリック
-              href: flexible-server/concepts-monitoring.md
-        - name: レプリケーション
-          items:
-            - name: 読み取りレプリカ
-              href: flexible-server/concepts-read-replicas.md
-    - name: 操作方法ガイド
-      items:
-        - name: サーバーを管理する
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-manage-server-portal.md
-            - name: Azure CLI
-              href: flexible-server/how-to-manage-server-cli.md
-        - name: メンテナンス
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-maintenance-portal.md
-        - name: サーバーを停止または起動する
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-stop-start-server-portal.md
-        - name: サーバーの復元
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-restore-server-portal.md
-        - name: 高可用性
-          items:
-            - name: Azure portal
-              href: flexible-server/how-to-configure-high-availability.md
-        - name: ネットワーク
-          items:
-            - name: プライベート アクセス (VNet 統合)
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-manage-virtual-network-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-virtual-network-cli.md
-            - name: パブリック アクセス (許可された IP アドレス)
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-manage-firewall-portal.md
-                - name: Azure CLI
-                  href: flexible-server/how-to-manage-firewall-cli.md
-            - name: TLS/SSL
-              items:
-                - name: TLS/SSL を使用して接続する
-                  href: flexible-server/how-to-connect-tls-ssl.md
+        - name: TLS/SSL を使用して接続する
+          href: flexible-server/how-to-connect-tls-ssl.md
         - name: サーバー パラメーターの構成
           items:
             - name: Azure portal
@@ -552,32 +451,118 @@
             - name: Azure CLI
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
-        - name: 監視とログ
-          items:
-            - name: メトリックに基づいたアラートの作成
-              href: flexible-server/how-to-alert-on-metric.md
-            - name: 低速クエリ ログ
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-configure-slow-query-logs-portal.md
-            - name: 監査ログ
-              items:
-                - name: Azure portal
-                  href: flexible-server/how-to-configure-audit-logs-portal.md
-        - name: サーバーの再起動
+        - name: データベースとユーザーを作成する
+          href: howto-create-users.md
+          displayName: users
+        - name: 監視サーバー
+          href: flexible-server/how-to-alert-on-metric.md
+    - name: アプリケーション開発
+      items:
+        - name: Azure Kubernetes での WordPress
+          href: flexible-server/tutorial-deploy-wordpress-on-aks.md
+        - name: データベースを使用した PHP (Laravel) アプリを作成する
+          href: flexible-server/tutorial-php-database-app.md
+        - name: プライベート Web アプリを使用して接続する
+          href: flexible-server/tutorial-webapp-server-vnet.md
+    - name: Server Management
+      items:
+        - name: 概念
+          href: flexible-server/concept-servers.md
+        - name: サーバー パラメーター
+          href: flexible-server/concepts-server-parameters.md
+        - name: 制限事項
+          href: flexible-server/concepts-limitations.md
+        - name: サーバーを管理する
           items:
             - name: Azure portal
-              href: flexible-server/how-to-restart-server-portal.md
-        - name: レプリケーション
+              href: flexible-server/how-to-manage-server-portal.md
+            - name: Azure CLI
+              href: flexible-server/how-to-manage-server-cli.md
+        - name: Azure portal を使用してサーバーを停止または起動する
+          href: flexible-server/how-to-stop-start-server-portal.md
+        - name: Azure portal を使用してサーバーを再起動する
+          href: flexible-server/how-to-restart-server-portal.md
+    - name: ネットワーク
+      items:
+        - name: 概念
+          href: flexible-server/concepts-networking.md
+          displayName: 'virtual network, IP address, public access'
+        - name: プライベート アクセス (VNet 統合)
+          items:
+            - name: Azure portal を使用してプライベート アクセスを構成する
+              href: flexible-server/how-to-manage-virtual-network-portal.md
+            - name: Azure CLI を使用してプライベート アクセスを構成する
+              href: flexible-server/how-to-manage-virtual-network-cli.md
+        - name: パブリック アクセス (許可された IP アドレス)
+          items:
+            - name: Azure portal を使用してパブリック アクセスを構成する
+              href: flexible-server/how-to-manage-firewall-portal.md
+            - name: Azure CLI を使用してパブリック アクセスを構成する
+              href: flexible-server/how-to-manage-firewall-cli.md
+    - name: サービスのメンテナンス
+      items:
+        - name: 予定メンテナンス
+          href: flexible-server/concepts-maintenance.md
+        - name: Azure portal を使用して予定メンテナンスを構成する
+          href: flexible-server/how-to-maintenance-portal.md
+    - name: 高可用性
+      items:
+        - name: ビジネス継続性の概要
+          href: flexible-server/concepts-business-continuity.md
+        - name: 高可用性
+          href: flexible-server/concepts-high-availability.md
+        - name: Azure portal を使用して可用性を構成する
+          href: flexible-server/how-to-configure-high-availability.md
+    - name: 監視とログ
+      items:
+        - name: 概念
+          href: flexible-server/concepts-monitoring.md
+        - name: 低速クエリ ログ
+          items:
+            - name: 概念
+              href: flexible-server/concepts-slow-query-logs.md
+            - name: Azure portal を使用して低速クエリ ログを構成する
+              href: flexible-server/how-to-configure-slow-query-logs-portal.md
+        - name: 監査ログ
+          items:
+            - name: 概念
+              href: flexible-server/concepts-audit-logs.md
+            - name: 監査ログの構成
+              href: flexible-server/how-to-configure-audit-logs-portal.md
+    - name: レプリケーション
+      items:
+        - name: 読み取りレプリカ
+          href: flexible-server/concepts-read-replicas.md
+        - name: 読み取りレプリカの作成
           items:
             - name: Azure portal を使用した読み取りレプリカの作成
               href: flexible-server/how-to-read-replicas-portal.md
-            - name: 読み取りレプリカ Azure CLI の作成
+            - name: Azure CLI を使用した読み取りレプリカの作成
               href: flexible-server/how-to-read-replicas-cli.md
-        - name: トラブルシューティング
-          items:
-            - name: 接続エラー
-              href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+    - name: バックアップと復元
+      items:
+        - name: 概念
+          href: flexible-server/concepts-backup-restore.md
+        - name: Azure portal を使用してサーバーを復元する
+          href: flexible-server/how-to-restore-server-portal.md
+    - name: トラブルシューティング
+      items:
+        - name: 接続エラーのトラブルシューティング
+          href: flexible-server/how-to-troubleshoot-common-connection-issues.md
+- name: 移行
+  items:
+    - name: mysqldump または phpmyadmin でデータを移行する
+      href: concepts-migrate-dump-restore.md
+      displayName: 'migrate, mysqldump'
+    - name: MySQL Workbench を使用してデータを移行する
+      href: concepts-migrate-import-export.md
+      displayName: 'import , migrate, export'
+    - name: DMS を使用した最小限のダウンタイムでの移行
+      href: howto-migrate-online.md
+      displayName: 'migrate, dms, database migration service'
+    - name: 一般的なエラーのトラブルシューティング
+      href: howto-troubleshoot-common-errors.md
+      displayName: 'SUPER privilege, DBA role, Access is denied'
 - name: リファレンス
   items:
     - name: Azure CLI

@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4e9c84efe7b96cf61a69c54e3f5ecbc469ac7d8d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750715"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874144"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
@@ -146,40 +146,14 @@ Azure Spring Cloud でサポートされるのは、Spring Boot バージョン 
 
 Spring Boot のバージョン | Spring Cloud のバージョン
 ---|---
-2.1 | Greenwich.RELEASE
 2.2 | Hoxton.SR8
 2.3 | Hoxton.SR8
+2.4.1+ | 2020.0.0
 
 > [!NOTE]
-> Microsoft は、アプリと Eureka 間の TLS 認証に関する Spring Boot 2.4 の問題を特定しました。現在、Spring コミュニティと協力してその解決に取り組んでいます。 回避策については、[FAQ](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) を参照してください。
+> アプリと Eureka の間の TLS 認証で Spring Boot 2.4.0 に問題があることを確認しました。2.4.1 以降を使用してください。 2\.4.0 を使用する場合の回避策については、[FAQ](./spring-cloud-faq.md?pivots=programming-language-java#development) を参照してください。
 
-### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot バージョン 2.1 の依存関係
-
-Spring Boot バージョン 2.1 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
-
-```xml
-    <!-- Spring Boot dependencies -->
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
-    </parent>
-
-    <!-- Spring Cloud dependencies -->
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Greenwich.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-```
-
-### <a name="dependencies-for-spring-boot-version-22"></a>Spring Boot バージョン 2.2 の依存関係
+### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot バージョン 2.2/2.3 の依存関係
 
 Spring Boot バージョン 2.2 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
 
@@ -204,16 +178,17 @@ Spring Boot バージョン 2.2 の場合は、アプリケーションの POM �
         </dependencies>
     </dependencyManagement>
 ```
-### <a name="dependencies-for-spring-boot-version-23"></a>Spring Boot バージョン 2.3 の依存関係
 
-Spring Boot バージョン 2.3 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
+### <a name="dependencies-for-spring-boot-version-24"></a>Spring Boot バージョン 2.4 の依存関係
+
+Spring Boot バージョン 2.2 の場合は、アプリケーションの POM ファイルに次の依存関係を追加します。
 
 ```xml
     <!-- Spring Boot dependencies -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.0.RELEASE</version>
+        <version>2.4.1.RELEASE</version>
     </parent>
 
     <!-- Spring Cloud dependencies -->
@@ -222,34 +197,14 @@ Spring Boot バージョン 2.3 の場合は、アプリケーションの POM �
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR8</version>
+                <version>2020.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
 ```
-## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud クライアントの依存関係
 
-Spring Cloud のコンポーネントは、Azure Spring Cloud によってホストおよび管理されます。 たとえば、Spring Cloud Service Registry や Spring Cloud Config Server などのコンポーネントです。 Spring Boot 2.2 または 2.3 を使用することをお勧めします。 Spring Boot 2.1 の場合、自分の Azure Spring Cloud サービス インスタンスと通信できるよう、Azure Spring Cloud クライアント ライブラリを依存関係に含めることが必要になります。
-
-Spring Boot と Spring Cloud を使用するアプリの正しい Azure Spring Cloud バージョンを次の表に示します。
-
-Spring Boot のバージョン | Spring Cloud のバージョン | Azure Spring Cloud クライアント スターター バージョン
----|---|---
-2.1.x | Greenwich.RELEASE | 2.1.2
-2.2.x | Hoxton.SR8 | 不要
-2.3.x | Hoxton.SR8 | 不要
-
-Spring Boot 2.1 を使用している場合は、次の依存関係を pom.xml ファイルに含めます。
-
-```xml
-<dependency>
-        <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.2</version>
-</dependency>
-```
 > [!WARNING]
 > 構成に `server.port` を指定しないでください。 Azure Spring Cloud では、この設定が固定ポート番号にオーバーライドされます。 また、この設定を尊重するようにして、コードでサーバーのポートを指定しないでください。
 
@@ -329,6 +284,9 @@ public class GatewayApplication {
 
 ### <a name="distributed-tracing"></a>分散トレース
 
+さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Azure Spring Cloud と共に Application Insights を使用する方法については、[分散トレースに関するドキュメント](spring-cloud-tutorial-distributed-tracing.md)を参照してください。
+
+#### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
 pom.xml ファイルの依存関係セクションに次の `spring-cloud-starter-sleuth` および `spring-cloud-starter-zipkin` の依存関係を含めます。
 
 ```xml
@@ -342,7 +300,15 @@ pom.xml ファイルの依存関係セクションに次の `spring-cloud-starte
 </dependency>
 ```
 
- さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Azure Spring Cloud と共に Application Insights を使用する方法については、[分散トレースに関するドキュメント](spring-cloud-tutorial-distributed-tracing.md)を参照してください。
+#### <a name="spring-boot-24"></a>Spring Boot 2.4
+pom.xml ファイルの依存関係セクションに次の `spring-cloud-sleuth-zipkin` の依存関係を含めます。
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-sleuth-zipkin</artifactId>
+</dependency>
+```
 
 ## <a name="see-also"></a>関連項目
 * [アプリケーションのログとメトリックを分析する](./diagnostic-services.md)

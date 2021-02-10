@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842755"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747175"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
@@ -117,15 +117,18 @@ Identity Protection は、通知と推奨される修復を提供することで
 
 ## <a name="security-center"></a>Security Center
 
-Azure Security Center は、脅威の防御、検出、対応を可能にする機能です。 Security Center により、Azure リソースのセキュリティの可視化を向上させ、コントロールすることができます。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 Security Center は、見つけにくい脅威の検出を支援すると共に、さまざまなセキュリティ ソリューションをまとめた広範なエコシステムとして機能します。
+Azure Security Center は、脅威の防御、検出、対応を可能にする機能です。 Security Center により、Azure リソースやハイブリッド クラウド環境内のリソースのセキュリティの可視性が向上すると共に、そのきめ細かい制御が可能になります。 
+
+Security Center では、接続されているリソースの継続的なセキュリティ評価を実行し、それらの構成やデプロイを [Azure セキュリティ ベンチマーク](../benchmarks/introduction.md)と比較して、その環境向けに調整されたセキュリティに関する詳細な推奨事項を提供します。
 
 Security Center は、Azure リソースのセキュリティの最適化と監視に役立つ次の機能を備えています。
 
-* 以下に従って、Azure サブスクリプション リソースに対するポリシーを定義できるようにします。
-  * 会社のセキュリティ ニーズ。
-  * 各サブスクリプション内のアプリケーションの種類またはデータの機密度。
-* Azure 仮想マシン、ネットワーク、およびアプリケーションの状態を監視します。
-* 統合パートナー ソリューションからのアラートなど、優先度の高いセキュリティ アラートの一覧を提供します。 迅速に攻撃を調査するために必要な情報と、修復方法に関する推奨事項も提供します。
+- 以下に従って、Azure サブスクリプション リソースに対するポリシーを定義できるようにします。
+    - 組織のセキュリティ ニーズ。
+    - 各サブスクリプション内のアプリケーションの種類またはデータの機密度。
+    - サブスクリプションに適用する業界または規制の基準やベンチマーク。 
+- Azure 仮想マシン、ネットワーク、およびアプリケーションの状態を監視します。
+- 統合パートナー ソリューションからのアラートなど、優先度の高いセキュリティ アラートの一覧を提供します。 迅速に攻撃を調査するために必要な情報と、修復方法に関する推奨事項も提供します。
 
 詳細情報:
 

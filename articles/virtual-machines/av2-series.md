@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 65aab240dd0be97aafa370883aa953f8eb766cf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0972c9ed48f56a495804052c1ffc2b28e1db083
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91650750"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095326"
 ---
 # <a name="av2-series"></a>Av2 シリーズ
 
@@ -24,6 +24,8 @@ Av2 シリーズ VM は多様なハードウェアの種類とプロセッサに
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています <br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています <br>
 [VM 世代サポート](generation-2.md): 第 1 世代 <br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされていません<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 
 | サイズ | 仮想コア | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数 | 必要なネットワーク帯域幅 (Mbps)

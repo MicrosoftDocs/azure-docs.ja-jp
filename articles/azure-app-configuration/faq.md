@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alkemper
-ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 39ad20bd57e3da6345c63d4601f34b19e640c1d6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929567"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256477"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure App Configuration の FAQ
 
@@ -105,7 +105,7 @@ App Configuration のどちらのレベルにも、構成設定、機能フラ�
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>App Configuration に対する要求の数に制限はありますか?
 
-Free レベルの構成ストアでは、1 日あたりの要求数が 1000 件に制限されています。 Standard レベルの構成ストアでは、要求レートが 1 時間あたり 2 万要求を超えると、一時的な調整が発生する場合があります。
+App Configuration では、キー値の読み取り時にデータがページ分割され、各要求で最大 100 のキー値を読み取ることができます。 キー値の書き込み時は、各要求で 1 つのキー値を作成または更新できます。 これは、REST API、App Configuration SDK、および構成プロバイダーによってサポートされています。 Free レベルの構成ストアでは、1 日あたりの要求数が 1000 件に制限されています。 Standard レベルの構成ストアでは、要求レートが 1 時間あたり 2 万要求を超えると、一時的な調整が発生する場合があります。
 
 ストアの上限に達すると、期間が終了するまでに行われたすべての要求に対して HTTP 状態コード 429 が返されます。 応答の `retry-after-ms` ヘッダーは、要求を再試行するまでの推奨される待機時間 (ミリ秒) を示します。
 

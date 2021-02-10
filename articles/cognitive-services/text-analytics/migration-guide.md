@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 01/22/2021
 ms.author: aahi
-ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0faa7a6f5a3d2efc8bbef11308b308e3305a00d5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656956"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096323"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Text Analytics API のバージョン 3.x への移行
 
@@ -46,9 +46,6 @@ JSON 応答の例については、リファレンス ドキュメントを参�
 
 ### <a name="feature-changes"></a>機能の変更
 
-> [!NOTE] 
-> 現在、[v3 のエンティティ カテゴリ](named-entity-types.md)は、英語およびスペイン語のテキストの場合にのみ返されます。 この API は、他の言語の要求に対して、バージョン 2.1 でサポートされていれば、バージョン 2.1 の結果を返します。
-
 バージョン 2.1 の Text Analytics API では、固有表現認識 (NER) とエンティティ リンク設定に 1 つのエンドポイントが使用されます。 バージョン 3 では、名前付きエンティティの検出が拡張され、NER とエンティティ リンク設定に個別のエンドポイントが使用されます。 v3.1-preview.1 以降、NER はさらに個人 `pii` と医療 `phi` の情報を検出できます。 
 
 ### <a name="steps-to-migrate"></a>移行手順
@@ -73,6 +70,35 @@ JSON 応答の例については、リファレンス ドキュメントを参�
 #### <a name="client-libraries"></a>クライアント ライブラリ
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
+
+#### <a name="version-21-entity-categories"></a>バージョン 2.1 でのエンティティのカテゴリ
+
+次の表に、NER v2.1 で返されるエンティティのカテゴリを示します。
+
+| カテゴリ   | 説明                          |
+|------------|--------------------------------------|
+| Person   |   人の名前。  |
+|場所    | 自然および人工のランドマーク、構造、地物、地政学的実体 |
+|Organization | 企業、政治団体、音楽バンド、スポーツ クラブ、政府機関、および公的機関。 国籍と宗教は、このエンティティ型には含まれていません。 |
+| PhoneNumber | 電話番号 (米国および EU の電話番号のみ)。 |
+| Email | メール アドレス。 |
+| URL | Web サイトへの URL。 |
+| IP | ネットワーク IP アドレス。 |
+| DateTime | 日付と時刻。| 
+| Date | カレンダーの日付。 |
+| Time | 時間帯 |
+| DateRange | 日付の範囲。 |
+| TimeRange | 時間の範囲。 |
+| Duration | 期間。 |
+| オン | 設定された繰り返し時間。 |
+| Quantity | 数値と数量です。 |
+| Number | 数値 |
+| パーセント | パーセント。|
+| Ordinal | 序数。 |
+| Age | 年齢。 |
+| Currency | 通貨。 |
+| Dimension | ディメンションと測定。 |
+| 気温 | 気温。 |
 
 ## <a name="language-detection"></a>[言語検出](#tab/language-detection)
 

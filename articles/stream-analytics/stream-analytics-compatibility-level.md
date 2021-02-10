@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015982"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094087"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
 
@@ -43,7 +43,7 @@ Azure portal でジョブの互換性レベルを更新するには:
 4. 必要な互換性レベルの値を選択します。
 5. ページの下部にある **[保存]** を選択します。
 
-![Azure portal の Stream Analytics の互換性レベル](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Azure portal の Stream Analytics の互換性レベル](media/stream-analytics-compatibility-level/stream-analytics-compat-level-1-2.png)
 
 互換性レベルを更新すると、T コンパイラが、選択された互換性レベルに対応する構文を使用してジョブを検証します。
 

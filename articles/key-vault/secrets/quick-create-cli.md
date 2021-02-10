@@ -1,22 +1,21 @@
 ---
-title: クイック スタート:Azure Key Vault との間でシークレットの設定と取得を行う
+title: クイックスタート - Azure Key Vault との間でシークレットの設定と取得を行う
 description: Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う方法を紹介したクイック スタート
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
-ms.date: 09/03/2019
+ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 01741540d94d906fc6d41693392f48c17dbae5ce
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c2c6d106a198445fdbd08fbaeb7d03472b688b62
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934817"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071377"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -30,30 +29,11 @@ ms.locfileid: "97934817"
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*ContosoResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
+[!INCLUDE [Create a resource group](../../../includes/key-vault-cli-rg-creation.md)]
 
-```azurecli
-az group create --name "ContosoResourceGroup" --location eastus
-```
+## <a name="create-a-key-vault"></a>Key Vault を作成します
 
-## <a name="create-a-key-vault"></a>Key Vault の作成
-
-次に、前の手順で作成したリソース グループに Key Vault を作成します。 いくつかの情報を指定する必要があります。
-
-- このクイック スタートでは、**Contoso-vault2** を使用します。 テストでは一意の名前を指定する必要があります。
-- リソース グループ名: **ContosoResourceGroup**
-- 場所: **米国東部**
-
-```azurecli
-az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus
-```
-
-このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
-
-- **Vault Name**:この例では、これは **Contoso-Vault2** です。 この名前を他の Key Vault コマンドに使用できます。
-- **Vault URI (コンテナー URI)** :この例では、これは https://contoso-vault2.vault.azure.net/ です。 その REST API から資格情報コンテナーを使用するアプリケーションは、この URI を使用する必要があります。
-
-この時点で、自分の Azure アカウントが唯一、この新しいコンテナーで任意の操作を実行することを許可されています。
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-kv-creation.md)]
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
 
@@ -62,32 +42,27 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 次のコマンドを入力して、値 **hVFkk965BuUv** を保存する **ExamplePassword** という Key Vault にシークレットを作成します。
 
 ```azurecli
-az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
+az keyvault secret set --vault-name "<your-unique-keyvault-name>" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 **"https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword"** を使用して、現在のバージョンを取得します。 
+これで、Azure Key Vault に追加したパスワードは、その URI を使用すると参照できます。 現在のバージョンを取得するには、 **"https://<your-unique-keyvault-name>.vault.azure.net/secrets/ExamplePassword"** を使用します。
 
 シークレットに格納されている値をプレーンテキストとして表示するには:
 
 ```azurecli
-az keyvault secret show --name "ExamplePassword" --vault-name "Contoso-Vault2"
+az keyvault secret show --name "ExamplePassword" --vault-name "<your-unique-keyvault-name>"
 ```
 
 これで、キー コンテナーを作成し、シークレットを格納した後、取得しました。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
-必要がなくなったら、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループおよびすべての関連リソースを削除できます。 次のように、リソースを削除できます。
-
-```azurecli
-az group delete --name ContosoResourceGroup
-```
+[!INCLUDE [Create a key vault](../../../includes/key-vault-cli-delete-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
-- [Azure CLI az keyvault コマンド](/cli/azure/keyvault?view=azure-cli-latest)のリファレンスを参照する
+- [Azure CLI az keyvault コマンド](/cli/azure/keyvault)のリファレンスを参照する
 - [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する

@@ -3,7 +3,7 @@ title: SAML ベースのシングル サインオンで構成されたアプリ�
 description: Azure Active Directory での SAML ベースのフェデレーション シングル サインオン用に構成したアプリケーションにサインインするときに発生する特定のエラーに関するガイダンス
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,17 +12,17 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586348"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430413"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題
 以下のサインインに関する問題を解決する場合は、より優れた診断、および解決手順の自動化に向けて、次を行うことをお勧めします。
 
-- [My Apps Secure Browser Extension](./access-panel-deployment-plan.md) をインストールします。これをインストールすると、Azure portal でテスト体験を使用するとき、Azure Active Directory (Azure AD) からより良い診断と解決策が得られます。
+- [My Apps Secure Browser Extension](my-apps-deployment-plan.md) をインストールします。これをインストールすると、Azure portal でテスト体験を使用するとき、Azure Active Directory (Azure AD) からより良い診断と解決策が得られます。
 - Azure portal のアプリ構成ページにあるテスト体験を使用し、エラーを再現します。 [SAML ベースのシングル サインオン アプリケーションをデバッグする](./debug-saml-sso-issues.md)方法に関するページを参照してください。
 
 My Apps Secure Browser Extension を使用して、Azure portal で[テスト体験](./debug-saml-sso-issues.md)を使用する場合は、[SAML ベースのシングル サインオンの構成] ページを開くための次の手順を、手動で行う必要はありません。
@@ -54,7 +54,7 @@ SAML 要求内の `Issuer` 属性が Azure AD で構成された識別子の値�
 [SAML ベースのシングル サインオンの構成] ページの **[基本的な SAML 構成]** セクションで、[識別子] テキストボックスの値が、エラーに表示される識別子の値と一致していることを確認します。
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>応答アドレスが、アプリケーションに対して構成されている応答アドレスと一致しない。
-`Error AADSTS50011: The reply address 'https:\//contoso.com' does not match the reply addresses configured for the application.`
+`Error AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application: '{application identifier}'.`
 
 **考えられる原因**
 

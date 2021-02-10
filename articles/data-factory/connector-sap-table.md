@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/01/2020
-ms.openlocfilehash: 4505deaa4cc11c00c7283ef686827d6893c2742a
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.date: 02/01/2021
+ms.openlocfilehash: b796b9eb065a221904fe4487c900efa2db1955af
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280421"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429545"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -102,7 +102,7 @@ SAP BW オープン ハブのリンクされたサービスでは、次のプロ
 | `sncQop` | 適用する SNC の保護品質レベル。<br/>`sncMode` がオンのときに適用されます。 <br/>使用できる値は、`1` (認証)、`2` (整合性)、`3` (プライバシー)、`8` (既定)、`9` (最大) です。 | いいえ |
 | `connectVia` | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」で前述されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
-**例 1: SAP アプリケーション サーバーに接続する**
+### <a name="example-1-connect-to-an-sap-application-server"></a>例 1: SAP アプリケーション サーバーに接続する
 
 ```json
 {
@@ -294,6 +294,60 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
     }
 ]
 ```
+
+## <a name="join-sap-tables"></a>SAP テーブルを結合する
+
+現在、SAP テーブル コネクタでは、既定の関数モジュールを備えた単一のテーブルのみがサポートされます。 複数のテーブルの結合されたデータを取得するには、次の手順に従って、SAP テーブル コネクタの [customRfcReadTableFunctionModule](#copy-activity-properties) プロパティを利用してください。
+
+- クエリを OPTIONS として処理し、独自のロジックを適用してデータを取得できるようにする、[カスタム関数モジュールを記述します](#create-custom-function-module)。
+- [Custom function module]\(カスタム関数モジュール\) で、自分のカスタム関数モジュールの名前を入力します。
+- [RFC table options]\(RFC テーブル オプション) で、自分の関数モジュールに取り込まれるテーブル結合ステートメントを OPTIONS として指定します。たとえば、"`<TABLE1>` INNER JOIN `<TABLE2>` ON COLUMN0"。
+
+次に例を示します。
+
+![SAP テーブルの結合](./media/connector-sap-table/sap-table-join.png) 
+
+>[!TIP]
+>また、SAP テーブル コネクタでサポートされている VIEW で、結合されたデータを集計することも検討できます。
+>また、関連テーブルを抽出して Azure (Azure Storage、Azure SQL Database など) にオンボードしてみてから、Data Flow を使用して、さらに結合またはフィルター処理に進むことができます。
+
+## <a name="create-custom-function-module"></a>カスタム関数モジュールを作成する
+
+SAP テーブルについては、現在、[customRfcReadTableFunctionModule](#copy-activity-properties) プロパティをコピー ソースでサポートしています。これにより、独自のロジックを活用して、データを処理することができます。
+
+ここでは、"カスタム関数モジュール" の使用を開始するためのいくつかの要件について簡単に説明します。
+
+- 定義は次のとおりです。
+
+    ![定義](./media/connector-sap-table/custom-function-module-definition.png) 
+
+- 次のいずれかのテーブルにデータをエクスポートします。
+
+    ![エクスポート テーブル 1](./media/connector-sap-table/export-table-1.png) 
+
+    ![エクスポート テーブル 2](./media/connector-sap-table/export-table-2.png)
+ 
+SAP テーブル コネクタでカスタム関数モジュールがどのように使用されるのかを以下に示します。
+
+1. SAP NCO を経由する SAP サーバーとの接続を構築します。
+
+1. パラメーターを次のように設定して、"カスタム関数モジュール" を呼び出します。
+
+    - QUERY_TABLE: ADF SAP テーブル データセットで設定したテーブル名。 
+    - Delimiter: ADF SAP テーブル ソースで設定した区切り記号。 
+    - ROWCOUNT/Option/Fields: ADF テーブル ソースで設定した行数/集計オプション/フィールド。
+
+1. 次の方法で結果を取得してデータを解析します。
+
+    1. Fields テーブル内の値を解析して、スキーマを取得します。
+
+        ![Fields 内の値を解析する](./media/connector-sap-table/parse-values.png)
+
+    1. 出力テーブルの値を取得して、これらの値が含まれているテーブルを確認します。
+
+        ![出力テーブル内の値を取得する](./media/connector-sap-table/get-values.png)
+
+    1. OUT_TABLE 内の値を取得し、データを解析してから、シンクに書き込みます。
 
 ## <a name="data-type-mappings-for-an-sap-table"></a>SAP テーブルのデータ型マッピング
 

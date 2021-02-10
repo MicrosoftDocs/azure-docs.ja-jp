@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f83f4871d5cde23194ff51a90a22031b526cf91
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526541"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632565"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows ブート マネージャーが原因で Windows VM を起動できない
 
@@ -40,6 +40,9 @@ VM がユーザー プロンプトで待機していて、手動で指示しな�
 このエラーの原因は、Windows ブート マネージャーの BCD フラグ *displaybootmenu* です。 このフラグが有効になっている場合、Windows ブート マネージャーは、起動プロセス中に、実行するローダーを選択するように求めるプロンプトをユーザーに対して表示します。これにより起動が遅延します。 Azure では、この機能によって VM の起動にかかる時間が長くなる場合があります。
 
 ## <a name="solution"></a>解決策
+
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
 
 プロセスの概要:
 
@@ -109,7 +112,7 @@ VM がユーザー プロンプトで待機していて、手動で指示しな�
 
 ### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>推奨:VM を再構築する前に、シリアル コンソールとメモリ ダンプの収集を有効にする
 
-メモリ ダンプの収集とシリアル コンソールを有効にするには、次のスクリプトを実行します。
+メモリ ダンプ コレクションとシリアル コンソールを有効にするには、次のスクリプトを実行します。
 
 1. 管理者特権でコマンド プロンプト セッション (管理者として実行) を開きます。
 2. 次のコマンドを実行します。

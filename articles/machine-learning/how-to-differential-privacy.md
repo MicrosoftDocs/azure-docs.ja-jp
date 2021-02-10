@@ -1,7 +1,7 @@
 ---
-title: SmartNoise パッケージを使用してデータのプライバシーを維持する方法 (プレビュー)
+title: 差分プライバシーの方法 - SmartNoise (プレビュー)
 titleSuffix: Azure Machine Learning
-description: SmartNoise パッケージを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
+description: SmartNoise オープンソース ライブラリを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 12/21/2020
-ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221937"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681406"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning で差分プライバシーを使用する (プレビュー)
 
-SmartNoise Python パッケージを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
+SmartNoise Python オープンソース ライブラリを使用して、Azure Machine Learning モデルに差分プライバシーのベスト プラクティスを適用する方法について説明します。
 
-差分プライバシーは、ゴールド スタンダードなプライバシー定義です。 このプライバシー定義に準拠しているシステムでは、幅広いデータ再構成やデータ再識別攻撃 (補助情報を持つ敵対者からの攻撃など) への防御が強力に保証されます。 詳細については、[差分プライバシーのしくみ](./concept-differential-privacy.md)に関するページを参照してください。
+差分プライバシーは、ゴールド スタンダードなプライバシー定義です。 このプライバシー定義に準拠しているシステムでは、幅広いデータ再構成やデータ再識別攻撃 (補助情報を持つ敵対者からの攻撃など) への防御が強力に保証されます。 詳細については、「[差分プライバシーのしくみ](./concept-differential-privacy.md)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -30,7 +30,7 @@ SmartNoise Python パッケージを使用して、Azure Machine Learning モデ
 - Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-smartnoise-packages"></a>SmartNoise パッケージのインストール
+## <a name="install-smartnoise-python-libraries"></a>SmartNoise Python ライブラリをインストールする
 
 ### <a name="standalone-installation"></a>スタンドアロン インストール
 
@@ -51,7 +51,7 @@ import opendp.smartnoise.sql
 
 インポートが成功すると、ライブラリがインストールされて使用できる状態になります。
 
-### <a name="docker-image"></a>Docker イメージ
+### <a name="docker-image-installation"></a>Docker イメージのインストール
 
 SmartNoise パッケージを Docker と併用することもできます。
 

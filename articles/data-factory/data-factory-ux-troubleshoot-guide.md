@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
 ms.reviewer: daperlov
-ms.openlocfilehash: 0bd0421a74679ff0c9498540d722a74ebf3d58af
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8bb4ff3198764a35bebc124ee1ce99a93428693d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632569"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095957"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Azure Data Factory UX の問題のトラブルシューティング
 
@@ -64,7 +64,7 @@ ADF UX では、ブラウザーの Cookie を使用してユーザー セッシ�
 すべての Cookie を許可しない場合は、必要に応じて ADF UX のみを許可することもできます。
 
 1. **edge://settings/content/cookies** にアクセスします。
-1. **[許可]** セクションの **[追加]** を選択して、 **adf.azure.com** サイトを追加します。 
+1. **[許可]** セクションの **[追加]** を選択して、**adf.azure.com** サイトを追加します。 
 
     ![Edge の許可されたサイトに ADF UX を追加する](media/data-factory-ux-troubleshoot-guide/edge-allow-adf-cookies.png)
 1. ADF UX を最新の状態に更新して、もう一度やり直してください。
@@ -77,13 +77,13 @@ ADF UX では、ブラウザーの Cookie を使用してユーザー セッシ�
 
 この場合は、最初にお使いのブラウザーで InPrivate ブラウズ モードで同じ操作を試します。
 
-これでも動作しない場合は、ブラウザーで F12 キーを押し、 **開発者ツール** を開きます。 **[ネットワーク]** タブに移動し、 **[Disable Cache]\(キャッシュを無効にする\)** をオンにして、失敗した操作を再試行して、(赤の) 失敗した要求を探します。
+これでも動作しない場合は、ブラウザーで F12 キーを押し、**開発者ツール** を開きます。 **[ネットワーク]** タブに移動し、 **[Disable Cache]\(キャッシュを無効にする\)** をオンにして、失敗した操作を再試行して、(赤の) 失敗した要求を探します。
 
 ![失敗した要求](media/data-factory-ux-troubleshoot-guide/failed-request.png)
 
-次に、失敗した要求の **[要求 URL]** の **ホスト名** (この場合は **dpnortheurope.svc.datafactory.azure.com** ) を探します。
+次に、失敗した要求の **[要求 URL]** の **ホスト名** (この場合は **dpnortheurope.svc.datafactory.azure.com**) を探します。
 
-お使いのブラウザーのアドレス バーに、 **ホスト名** を直接入力します。 ブラウザーに 404 と表示される場合、これは通常、お使いのクライアント側には問題はなく、ADF サービス側に問題があることを意味します。 サポート チケットを、ADF UX のエラー メッセージの **アクティビティ ID** と共に提出します。
+お使いのブラウザーのアドレス バーに、**ホスト名** を直接入力します。 ブラウザーに 404 と表示される場合、これは通常、お使いのクライアント側には問題はなく、ADF サービス側に問題があることを意味します。 サポート チケットを、ADF UX のエラー メッセージの **アクティビティ ID** と共に提出します。
 
 ![リソースが見つかりません](media/data-factory-ux-troubleshoot-guide/status-code-404.png)
 
@@ -91,13 +91,13 @@ ADF UX では、ブラウザーの Cookie を使用してユーザー セッシ�
 
 ![クライアント側のエラー](media/data-factory-ux-troubleshoot-guide/client-side-error.png)
 
-**[コマンド プロンプト]** を開き、「 **nslookup dpnortheurope.svc.datafactory.azure.com** 」と入力します。 通常、次のような応答があります。
+**[コマンド プロンプト]** を開き、「**nslookup dpnortheurope.svc.datafactory.azure.com**」と入力します。 通常、次のような応答があります。
 
 ![コマンド応答 1](media/data-factory-ux-troubleshoot-guide/command-response-1.png)
 
 通常の DNS 応答が表示された場合は、このホスト名への HTTPS 接続がブロックされているかどうか、ファイアウォール設定を自分のローカルの IT サポートに問い合わせます。 問題を解決できない場合は、ADF UX のエラー メッセージの **アクティビティ ID** と共にサポート チケットを提出します。
 
-これ以外のものが表示される場合は、通常、お使いの DNS サーバーでの DNS 名の解決で問題があることを意味します。 通常、ISP (インターネット サービス プロバイダー) または DNS (たとえば、Google DNS 8.8.8.8) を変更してみると解決できます。 これでも問題が解決しない場合は、さらに「 **nslookup datafactory.azure.com** 」と「 **nslookup azure.com** 」を試して、自分の DNS 解決がどのレベルで失敗しているかを確認し、トラブルシューティングのためにこの全情報を、自分のローカルの IT サポートまたは自分の ISP に送信できます。 問題が Microsoft 側にあるとされた場合は、ADF UX のエラー メッセージの **アクティビティ ID** と共にサポート チケットを提出します。
+これ以外のものが表示される場合は、通常、お使いの DNS サーバーでの DNS 名の解決で問題があることを意味します。 通常、ISP (インターネット サービス プロバイダー) または DNS (たとえば、Google DNS 8.8.8.8) を変更してみると解決できます。 これでも問題が解決しない場合は、さらに「**nslookup datafactory.azure.com**」と「**nslookup azure.com**」を試して、自分の DNS 解決がどのレベルで失敗しているかを確認し、トラブルシューティングのためにこの全情報を、自分のローカルの IT サポートまたは自分の ISP に送信できます。 問題が Microsoft 側にあるとされた場合は、ADF UX のエラー メッセージの **アクティビティ ID** と共にサポート チケットを提出します。
 
 ![コマンド応答 2](media/data-factory-ux-troubleshoot-guide/command-response-2.png)
 

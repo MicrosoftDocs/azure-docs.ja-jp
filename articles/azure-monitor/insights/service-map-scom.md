@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 489b4bfee1eaa2c381b16e88dbcc0bcb7fd8555f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 288e3f0c048bddb3f3378226889dc519de27764b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441501"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927887"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能を統合する
 
@@ -139,7 +139,7 @@ Service Map フォルダーには 4 つのノードがあります。
 サービス プリンシパル作成に関する Azure の公式ドキュメントについては、次を参照してください。
 
 * [PowerShell を使用してサービス プリンシパルを作成する](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
-* [Azure CLI を使用してサービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)
+* [Azure CLI を使用してサービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)
 * [Azure Portal を使用してサービス プリンシパルを作成する](../../active-directory/develop/howto-create-service-principal-portal.md)
 
 ### <a name="suggestions"></a>検索候補

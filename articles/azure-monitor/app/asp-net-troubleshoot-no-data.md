@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904467"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092453"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -188,7 +188,7 @@ Application Insights をインストールしているとき、またはログ �
 * すべての Microsoft. ApplicationInsights DLL が Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll と一緒にサーバーにコピーされたことを確認します。
 * ファイアウォールで、[一部の TCP ポートを開く](./ip-addresses.md)ことが必要な場合があります。
 * プロキシを使用して社内ネットワークの外に送信しなければならない場合は、Web.config に [defaultProxy](/previous-versions/dotnet/netframework-1.1/aa903360(v=vs.71)) を設定します。
-* Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://support.microsoft.com/kb/2600217) がインストールされていることを確認します。
+* Windows Server 2008:更新プログラム [KB2468871](https://support.microsoft.com/kb/2468871)、[KB2533523](https://support.microsoft.com/kb/2533523)、[KB2600217](https://web.archive.org/web/20150129090641/http://support.microsoft.com/kb/2600217) がインストールされていることを確認します。
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
 * データ ポイントの月間クォータに達していませんか? [設定]、[クォータと価格] の順に開いてご確認ください。上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。

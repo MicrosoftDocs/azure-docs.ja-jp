@@ -2,18 +2,15 @@
 title: Azure Automation 共有リソースの問題のトラブルシューティング
 description: この記事では、Azure Automation 共有リソースに関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.subservice: ''
+ms.date: 01/27/2021
+ms.topic: troubleshooting
+ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187168"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053621"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>共有リソースの問題のトラブルシューティング
 
@@ -33,7 +30,7 @@ PowerShell モジュールのインポートは複雑なマルチステップ �
 
 #### <a name="resolution"></a>解像度
 
-この問題を解決するには、[Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用して、停止しているモジュールを削除する必要があります。 その後、モジュールのインポートを再試行できます。
+この問題を解決するには、[Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) コマンドレットを使用して、停止しているモジュールを削除する必要があります。 その後、モジュールのインポートを再試行できます。
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Automation アカウントで AzureRM モジュールを更新するには、英
 * その構造が、Automation で必要な構造と一致しません。
 * Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
 * モジュールのフォルダーにその依存関係がありません。
-* モジュールのアップロードに [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
+* モジュールのアップロードに [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
 
 #### <a name="resolution"></a>解像度
 
@@ -134,7 +131,7 @@ You do not have permissions to create…
 
 #### <a name="resolution"></a>解像度
 
-実行アカウントを作成または更新するには、実行アカウントで使用するさまざまなリソースに対する適切な[アクセス許可](../manage-runas-account.md#permissions)が必要です。 
+実行アカウントを作成または更新するには、実行アカウントで使用するさまざまなリソースに対する適切な[アクセス許可](../automation-security-overview.md#permissions)が必要です。
 
 問題の原因がロックである場合は、ロックを削除しても構わないか確認します。 次に、Azure portal でロックされているリソースに移動し、ロックを右クリックして、 **[削除]** を選択します。
 
@@ -150,7 +147,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>原因
 
-このエラーは、正しく構成されていない [[アカウントとして実行]](../manage-runas-account.md) によって発生する可能性があります。
+このエラーは、正しく構成されていない [[アカウントとして実行]](../automation-security-overview.md) によって発生する可能性があります。
 
 #### <a name="resolution"></a>解像度
 
@@ -169,4 +166,3 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 * [Azure フォーラム](https://azure.microsoft.com/support/forums/)を通じて Azure エキスパートから回答を得ることができます。
 * [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる。 これは、Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐための、Microsoft Azure の公式アカウントです。
 * Azure サポート インシデントを送信する。 [Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、 **[サポートを受ける]** を選択します。
-

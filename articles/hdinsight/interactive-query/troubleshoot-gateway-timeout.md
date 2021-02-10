@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight で Apache Ambari Hive ビューからクエリを実行するときの例外
 description: Azure HDInsight で Apache Ambari Hive ビューから Apache Hive クエリを実行するときのトラブルシューティング手順。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 12/23/2019
-ms.openlocfilehash: aeedda5c26a2e9dc0fa2b228285cfda45d880d29
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 40ef380cd2bd4743b92daf44a0a5b70ade1cbb35
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547386"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933003"
 ---
 # <a name="exception-when-running-queries-from-apache-ambari-hive-view-in-azure-hdinsight"></a>Azure HDInsight で Apache Ambari Hive ビューからクエリを実行するときの例外
 
@@ -54,7 +51,7 @@ HTTP ハンドラー スレッドは迅速にジョブを準備し、`queryid` �
 
 * 外部の Hive メタストアを使用している場合は、DB メトリックを確認し、データベースが過負荷になっていないことを確かめます。 メタストア データベース レイヤーをスケーリングすることを検討してください。
 
-* 並列操作が有効になっていることを確認します (これにより、HTTP ハンドラー スレッドを並列で実行できます)。 値を確認するには、 [Apache Ambari](../hdinsight-hadoop-manage-ambari.md) を起動し、 **[Hive]**  >  **[Configs]\(構成\)**  >  **[詳細設定]**  >  **[Custom hive-site]\(カスタム Hive サイト\)** の順に移動します。 `hive.server2.parallel.ops.in.session` の値は `true` にする必要があります。
+* 並列操作が有効になっていることを確認します (これにより、HTTP ハンドラー スレッドを並列で実行できます)。 値を確認するには、[Apache Ambari](../hdinsight-hadoop-manage-ambari.md) を起動し、 **[Hive]**  >  **[Configs]\(構成\)**  >  **[詳細設定]**  >  **[Custom hive-site]\(カスタム Hive サイト\)** の順に移動します。 `hive.server2.parallel.ops.in.session` の値は `true` にする必要があります。
 
 * クラスターの VM SKU が、負荷に対して小さくなりすぎないようにします。 複数のクラスターで作業を分割することを検討してください。 詳細については、「[クラスターの種類の選択](../hdinsight-capacity-planning.md#choose-a-cluster-type)」を参照してください。
 

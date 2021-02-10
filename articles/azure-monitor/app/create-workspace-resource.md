@@ -3,12 +3,12 @@ title: 新しい Azure Monitor Application Insights のワークスペース ベ
 description: 新しい Azure Monitor Application Insights のワークスペース ベースのリソースを有効にするために必要な手順について説明します。
 ms.topic: conceptual
 ms.date: 10/06/2020
-ms.openlocfilehash: ecbac02bcb4d9b4f0db36eab854a91366c774d6c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 23994190df89b47d9c7e90ed62a724545389b1fe
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536916"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063368"
 ---
 # <a name="workspace-based-application-insights-resources"></a>ワークスペース ベースの Application Insights リソース
 
@@ -33,7 +33,8 @@ ms.locfileid: "95536916"
 
 [Azure portal](https://portal.azure.com) にサインインし、Application Insights リソースを作成します。
 
-![ワークスペース ベースの Application Insights リソース](./media/create-workspace-resource/create-workspace-based.png)
+> [!div class="mx-imgBorder"]
+> ![ワークスペース ベースの Application Insights リソース](./media/create-workspace-resource/create-workspace-based.png)
 
 既存の Log Analytics ワークスペースをまだ持っていない場合は [Log Analytics ワークスペースの作成に関するドキュメント](../learn/quick-create-workspace.md)を参照してください。
 
@@ -112,7 +113,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location eastus --kind web -g my_resource_group --workspace "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test1234/providers/microsoft.operationalinsights/workspaces/test1234555"
 ```
 
-このコマンドについての完全な Azure CLI ドキュメントについては、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
+このコマンドについての完全な Azure CLI ドキュメントについては、[Azure CLI のドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 

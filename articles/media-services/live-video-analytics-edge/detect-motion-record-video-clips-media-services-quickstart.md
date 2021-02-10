@@ -3,12 +3,12 @@ title: モーションの検出、Azure Media Services へのビデオの記録
 description: このクイックスタートでは、Live Video Analytics on IoT Edge を使用して、ライブ ビデオ ストリーム内のモーションを検出し、ビデオ クリップを Azure Media Services に記録する方法を示します。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 15a9def78c7dddda7e63db66d2b21794506f6a92
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060420"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632726"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>クイック スタート:モーションの検出、Media Services へのビデオの記録
 
@@ -19,6 +19,8 @@ ms.locfileid: "98060420"
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+  > [!NOTE]
+  > サービス プリンシパルを作成するためのアクセス許可を与えられた Azure サブスクリプションが必要です (**owner role** には、そのアクセス許可があります)。 適切なアクセス許可がない場合は、適切なアクセス許可をアカウント管理者に申請してください。 
 * [Visual Studio Code](https://code.visualstudio.com/)。[Azure IoT Tools 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)と共にマシンにインストールされている必要があります。
 * [「はじめに」のクイックスタート](get-started-detect-motion-emit-events-quickstart.md)をまだ完了していない場合は、次の手順に従ってください。
     * [Azure リソースの設定](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)

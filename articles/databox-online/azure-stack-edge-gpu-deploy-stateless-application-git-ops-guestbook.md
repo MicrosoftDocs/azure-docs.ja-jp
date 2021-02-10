@@ -1,25 +1,25 @@
 ---
-title: Azure Stack Edge Pro GPU デバイス上の Arc 対応 Kubernetes で PHP ゲストブック アプリをデプロイする | Microsoft Docs
-description: Azure Stack Edge Pro デバイスの Arc 対応 Kubernetes クラスターで GitOps を使用して、Redis を使った PHP ゲストブック ステートレス アプリケーションをデプロイする方法について説明します。
+title: Azure Stack Edge Pro GPU デバイス上の Arc 対応 Kubernetes で`PHP Guestbook` アプリをデプロイする | Microsoft Docs
+description: Azure Stack Edge Pro デバイスの Arc 対応 Kubernetes クラスターで GitOps を使用して、Redis を使った PHP `Guestbook` ステートレス アプリケーションをデプロイする方法について説明します。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882961"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804872"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Arc 対応 Kubernetes クラスターで Redis を使用した PHP ゲストブック ステートレス アプリケーションをデプロイする
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 上の Arc 対応 Kubernetes クラスターで Redis を使用した PHP `Guestbook` ステートレス アプリケーションをデプロイする
 
 この記事では、Kubernetes と Azure Arc を使用してシンプルな多層 Web アプリケーションを構築してデプロイする方法について説明します。この例は、次のコンポーネントで構成されています。
 
-- ゲストブックのエントリを格納する単一インスタンスの Redis マスター
+- `guestbook`のエントリを格納する単一インスタンスの Redis マスター
 - 読み取りに対応する複数の複製された Redis インスタンス
 - 複数の Web フロントエンド インスタンス
 
@@ -49,18 +49,18 @@ ms.locfileid: "97882961"
 
 1. Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
   
-    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)」を参照してください。
+    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true)」を参照してください。
     
     - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
 1. [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
     
-    - クライアントに `kubectl` がインストールされている  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
+    - クライアントに `kubectl` がインストールされている。 <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
     - `kubectl` クライアントのバージョンと、Azure Stack Edge Pro デバイスで実行されている Kubernetes マスターのバージョンの差が 1 未満であることを確認する。 
       - クライアントで実行されている kubectl のバージョンを確認するには、`kubectl version` を使用します。 完全なバージョン番号をメモしておきます。
       - お使いの Azure Stack Edge Pro デバイスのローカル UI で、 **[概要]** に移動し、Kubernetes ソフトウェアの番号をメモします。 
-      - サポートされている Kubernetes バージョンで提供されているマッピングで、これら 2 つのバージョンの互換性を確認します <!--insert link-->.
+      - サポートされている Kubernetes バージョンで提供されているマッピングで、これら 2 つのバージョンの互換性を確認します。 <!--insert link-->
 
 1. [Azure Arc デプロイの実行に使用できる GitOps 構成](https://github.com/kagoyal/dbehaikudemo)がある。 この例では、次の `yaml` ファイルを使用して Azure Stack Edge Pro デバイスにデプロイします。
 
@@ -92,12 +92,12 @@ Azure portal で次の手順を実行して、GitOps 構成をデプロイする
     |---------|---------|
     |構成名     | 構成リソースの名前。        |
     |演算子のインスタンス名     |特定の構成を識別する演算子のインスタンス名。 名前は最大 253 文字の文字列で、使用できるのは小文字、英数字、ハイフン、およびピリオドのみです。         |
-    |演算子の名前空間     | **demotestguestbook** に設定します。これは、デプロイ `yaml` で指定されている名前空間と一致するためです。 <br> このフィールドでは、演算子がインストールされる名前空間を定義します。 名前は最大 253 文字の文字列で、使用できるのは小文字、英数字、ハイフン、およびピリオドのみです。         |
+    |演算子の名前空間     | **demotestguestbook** に設定して、デプロイ `yaml` で指定されている名前空間と一致させます。 <br> このフィールドでは、演算子がインストールされる名前空間を定義します。 名前は最大 253 文字の文字列で、使用できるのは小文字、英数字、ハイフン、およびピリオドのみです。         |
     |リポジトリの URL     |<br>GitOps 構成が配置されている Git リポジトリのパス (`http://github.com/username/repo` または `git://github.com/username/repo` 形式)。         |
-    |演算子のスコープ     | **[名前空間]** を選択します。 <br>ここでは、演算子がインストールされるスコープを定義します。 これを名前空間として選択します。 演算子は、デプロイ yaml ファイルで指定された名前空間にインストールされます。       |
-    |演算子の種類     | 既定のままにします。 <br>ここでは、演算子の種類を指定します (既定で flux として設定されます)。        |
-    |演算子のパラメーター     | 空白のままにします。 <br>このフィールドには、flux 演算子に渡すパラメーターが含まれます。        |
-    |Helm     | これを **[無効]** に設定します。 <br>グラフ ベースのデプロイを行う場合は、このオプションを有効にします。        |
+    |演算子のスコープ     | **[名前空間]** を選択します。 <br>このパラメーターは、演算子がインストールされるスコープを定義します。 デプロイ yaml ファイルで指定された名前空間に演算子をインストールするために [名前空間] を選択します。       |
+    |演算子の種類     | 既定のままにします。 <br>このパラメーターは、演算子の種類を指定します (既定で flux として設定されます)。        |
+    |演算子のパラメーター     | 空白のままにします。 <br>このパラメーターには、flux 演算子に渡すパラメーターが含まれます。        |
+    |Helm     | このパラメーターを **[無効]** に設定します。 <br>グラフ ベースのデプロイを行う場合は、このオプションを有効にします。        |
 
 
     ![構成を追加する](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
@@ -136,7 +136,7 @@ GitOps 構成を使用したデプロイにより、Git リポジトリにある
     [10.128.44.240]: PS>
     ```  
 
-1. この例では、フロントエンド サービスは type:LoadBalancer としてデプロイされています。 ゲストブックを表示するには、このサービスの IP アドレスを調べる必要があります。 次のコマンドを実行します。
+1. この例では、フロントエンド サービスは type:LoadBalancer としてデプロイされています。 `guestbook`を表示するには、このサービスの IP アドレスを調べる必要があります。 次のコマンドを実行します。
 
     `kubectl get service -n <your-namespace>`
     
@@ -149,13 +149,13 @@ GitOps 構成を使用したデプロイにより、Git リポジトリにある
     redis-slave    ClusterIP      10.104.215.146   <none>          6379/TCP       85m
     [10.128.44.240]: PS>
     ```
-1. `type:LoadBalancer` のフロントエンド サービスには、外部 IP アドレスがあります。 この IP は、デバイスでコンピューティング ネットワーク設定を構成するときに外部サービスに指定した IP アドレス範囲に含まれています。 この IP アドレスを使用して、`https://<external-IP-address>` という URL でゲストブックを表示します。
+1. `type:LoadBalancer` のフロントエンド サービスには、外部 IP アドレスがあります。 この IP は、デバイスでコンピューティング ネットワーク設定を構成するときに外部サービスに指定した IP アドレス範囲に含まれています。 この IP アドレスを使用して、`https://<external-IP-address>` という URL で`guestbook`を表示します。
 
     ![ゲストブックを表示する](media/azure-stack-edge-gpu-connect-powershell-interface/view-guestbook-1.png)
 
 ## <a name="delete-deployment"></a>展開の削除
 
-デプロイを削除するには、Azure portal から構成を削除できます。 これにより、デプロイとサービスを含む、作成されたオブジェクトが削除されます。
+デプロイを削除するには、Azure portal から構成を削除できます。 構成を削除すると、作成されたオブジェクトがデプロイとサービスを含めて削除されます。
 
 1. Azure portal で、Azure Arc リソース > [構成] に移動します。 
 1. 削除する構成を見つけます。 [...] を選択してコンテキスト メニューを呼び出し、 **[削除]** を選択します。

@@ -4,7 +4,7 @@ description: Azure AD と統合されたアプリケーション プロキシ �
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -15,19 +15,19 @@ ms.date: 05/21/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780847494da0ec5cd4eb8ab76f1e46125b8a7f8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b09e7b15427eb33e1e85edd89f4c8a37c4a3eb
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764419"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254656"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションでアプリケーション ページが正しく表示されない
 
 この記事は、ページに移動したときにページの一部が正しく表示されない場合に、Azure Active Directory アプリケーション プロキシ アプリケーションに関する問題をトラブルシューティングするのに役立ちます。
 
 ## <a name="overview"></a>概要
-アプリケーション プロキシ アプリを発行する場合、アプリケーションにアクセスするときに、ルートの下にあるページのみがアクセス可能です。 ページが正しく表示されない場合、アプリケーションで使用するルートの内部 URL で、ページ リソースの一部が見つからない可能性があります。 この問題を解決するには、ページの*すべて*のリソースがアプリケーションの一部として発行されていることを確認します。
+アプリケーション プロキシ アプリを発行する場合、アプリケーションにアクセスするときに、ルートの下にあるページのみがアクセス可能です。 ページが正しく表示されない場合、アプリケーションで使用するルートの内部 URL で、ページ リソースの一部が見つからない可能性があります。 この問題を解決するには、ページの *すべて* のリソースがアプリケーションの一部として発行されていることを確認します。
 
 ネットワーク トラッカー (Fiddler や Internet Explorer/Microsoft Edge で F12 キーを押すなどのツール) を開き、ページを読み込み、404 エラーを見つけることにより、リソースが見つからないことが問題かどうかを確認できます。 これは、現在見つけることができず、発行する必要があるページを示します。
 

@@ -1,24 +1,11 @@
 ---
-title: Media Services の Transform と Job
-titleSuffix: Azure Media Services
-description: Azure Media Services で Transform を作成してビデオの処理ルールを記述する方法について説明します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: inhenkel
-ms.openlocfilehash: 4cb4bcf5eb205d27cbca764d5ec16890a23be5c6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426782"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必須フィールドです。 詳細については、aka.ms/skyeye/meta を参照してください。
+title:Media Services の変換とジョブ :Azure Media Services の説明:Azure Media Services で Transform を作成してビデオの処理ルールを記述する方法について説明します。
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: conceptual ms.date:08/19/2019 ms.author: inhenkel
 ---
+
 # <a name="transforms-and-jobs-in-media-services"></a>Media Services の Transform と Job
 
 このトピックでは、[Transform](/rest/api/media/transforms) と [Job](/rest/api/media/jobs) に関する詳細を示し、これらのエンティティ間の関係について説明します。
@@ -58,7 +45,7 @@ ms.locfileid: "92426782"
 
 ### <a name="viewing-schema"></a>スキーマの表示
 
-Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 ( **StandardEncoderPreset** など) は、 [REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、 [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)、またはその他の Media Services v3 SDK のリファレンス ドキュメントでも確認できます。
+Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 (**StandardEncoderPreset** など) は、[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset?view=azure-dotnet)、またはその他の Media Services v3 SDK のリファレンス ドキュメントでも確認できます。
 
 ### <a name="creating-transforms"></a>変換の作成
 
@@ -66,11 +53,11 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 ### <a name="updating-transforms"></a>変換の更新
 
-[Transform](/rest/api/media/transforms) を更新する必要がある場合は、 **Update** 操作を使用します。 これは基になる TransformOutput の記述または優先度を変更することを目的としています。 このような更新は、進行中のすべてのジョブが完了したときに行うことをお勧めします。 レシピを書き直す場合は、新しい Transform を作成する必要があります。
+[Transform](/rest/api/media/transforms) を更新する必要がある場合は、**Update** 操作を使用します。 これは基になる TransformOutput の記述または優先度を変更することを目的としています。 このような更新は、進行中のすべてのジョブが完了したときに行うことをお勧めします。 レシピを書き直す場合は、新しい Transform を作成する必要があります。
 
 ### <a name="transform-object-diagram"></a>Transform オブジェクトの図
 
-次の図は、 **Transform** オブジェクトおよびそれが参照するオブジェクト (派生リレーションシップを含む) を示しています。 灰色の矢印は、Job が参照している型を示し、緑の矢印はクラスの派生リレーションシップを示しています。
+次の図は、**Transform** オブジェクトおよびそれが参照するオブジェクト (派生リレーションシップを含む) を示しています。 灰色の矢印は、Job が参照している型を示し、緑の矢印はクラスの派生リレーションシップを示しています。
 
 画像を選択すると、フル サイズで表示されます。  
 
@@ -94,11 +81,11 @@ Transform は、REST、CLI、または公開されている任意の SDK を使�
 
 ### <a name="updating-jobs"></a>ジョブの更新
 
-ジョブが送信された後、 [Job](/rest/api/media/jobs) エンティティの更新操作を使用して、 *description* および *priority* プロパティを変更できます。 *priority* プロパティの変更は、ジョブがキューに入っている状態の場合にのみ有効です。 ジョブの処理がすでに開始されているか､完了している場合､優先順位の変更は適用されません｡
+ジョブが送信された後、[Job](/rest/api/media/jobs) エンティティの更新操作を使用して、*description* および *priority* プロパティを変更できます。 *priority* プロパティの変更は、ジョブがキューに入っている状態の場合にのみ有効です。 ジョブの処理がすでに開始されているか､完了している場合､優先順位の変更は適用されません｡
 
 ### <a name="job-object-diagram"></a>ジョブ オブジェクトの図
 
-次の図は、 **Job** オブジェクトおよびそれが参照するオブジェクト (派生リレーションシップを含む) を示しています。
+次の図は、**Job** オブジェクトおよびそれが参照するオブジェクト (派生リレーションシップを含む) を示しています。
 
 画像をクリックすると、フル サイズで表示されます。  
 

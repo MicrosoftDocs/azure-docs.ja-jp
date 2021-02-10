@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2465cf74dbf4fbf074aed8f8e4097a236e628425
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 11c5c77623fcc693210d5a42bf94c968e884fec3
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660646"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920022"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -28,7 +28,7 @@ ms.locfileid: "94660646"
 
 この記事には、Azure Sentinel の操作の詳細を入手するのに役立つリソースをまとめています。
 
-Azure Logic Apps コネクタ: <https://docs.microsoft.com/connectors/>
+- **Azure Logic Apps コネクタ**: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
@@ -86,10 +86,25 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
 
 ## <a name="blogs-and-forums"></a>ブログとフォーラム
 
-ご質問は、Azure Sentinel の [TechCommunity スペース](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)に投稿してください。
+ユーザーの方のご意見をお待ちしています。
 
-[TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) と [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/) から Azure Sentinel のブログ投稿を表示します。
+- Azure Sentinel の [TechCommunity スペース](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)に **ご質問を投稿** してください。 
+
+- [User Voice](https://feedback.azure.com/forums/920458-azure-sentinel) プログラムを使用して、**改善のためのご提案を送信** してください。
+
+- Azure Sentinel のブログ投稿を **閲覧し、コメントをお寄せください**:
+
+    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
+    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
+
+Azure のセキュリティとコンプライアンスの詳細については、[Microsoft Azure のセキュリティとコンプライアンスに関するブログ](https://techcommunity.microsoft.com/t5/microsoft-security-and/bg-p/MicrosoftSecurityandCompliance)を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure Sentinel の使用時に役立つリソースの一覧を示します。 Azure のセキュリティとコンプライアンスに関する追加情報については、[Microsoft Azure Security とコンプライアンスに関するブログ](/archive/blogs/azuresecurity/)を参照してください。
+
+> [!div class="nextstepaction"]
+> [認定を受ける](/learn/paths/security-ops-sentinel/)
+
+> [!div class="nextstepaction"]
+> [お客様のユース ケース ストーリーを読む](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
+

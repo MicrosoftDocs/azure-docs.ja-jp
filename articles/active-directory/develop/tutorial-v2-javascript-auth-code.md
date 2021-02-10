@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064404"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756178"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、JavaScript シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -28,7 +28,7 @@ ms.locfileid: "98064404"
 > * PKCE を使用した、OAuth 2.0 認証コード フローの実行
 > * 個人用 Microsoft アカウントと職場または学校アカウントへのサインイン
 > * アクセス トークンの取得
-> * Microsoft ID プラットフォーム エンドポイントから取得したアクセス トークンを必要とする Microsoft Graph または独自 API の呼び出し
+> * Microsoft ID プラットフォームから取得したアクセス トークンを必要とする Microsoft Graph または独自 API の呼び出し
 
 MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく承認コード フローをサポートすることで、MSAL.js 1.0 よりも強化されています。 MSAL.js 2.0 では、暗黙的フローはサポートされて **いません**。
 
@@ -41,7 +41,7 @@ MSAL.js 2.0 は、ブラウザーで暗黙的な許可のフローではなく�
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="シングルページ アプリケーションでの認証コード フローを示す図":::
 
-このガイドで作成するアプリケーションにより、JavaScript SPA では、Microsoft ID プラットフォーム エンドポイントからセキュリティ トークンを取得して、Microsoft Graph API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、HTTP 要求の Authorization ヘッダーに追加されます。 トークンの取得と更新は、Microsoft Authentication Library for JavaScript (MSAL.js) によって処理されます。
+このガイドで作成するアプリケーションにより、JavaScript SPA では、Microsoft ID プラットフォームからセキュリティ トークンを取得して、Microsoft Graph API に対してクエリを実行できるようになります。 このシナリオでは、ユーザーのサインイン後に、アクセス トークンが要求され、HTTP 要求の Authorization ヘッダーに追加されます。 トークンの取得と更新は、Microsoft Authentication Library for JavaScript (MSAL.js) によって処理されます。
 
 このチュートリアルでは、次のライブラリを使用します。
 
@@ -558,13 +558,13 @@ ID トークンには、表示名など、ユーザーについての基本的�
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-最初のサインインの後は、保護されたリソースへのアクセスが必要になるたびに、アプリがユーザーに再認証を行うように要求する (つまり、トークンを要求する) べきではありません。 このような再認証要求を防ぐには、`acquireTokenSilent` を呼び出します。 ただし、ユーザーに Microsoft ID プラットフォーム エンドポイントとのやり取りを強制しなければならない場合があります。 次に例を示します。
+最初のサインインの後は、保護されたリソースへのアクセスが必要になるたびに、アプリがユーザーに再認証を行うように要求する (つまり、トークンを要求する) べきではありません。 このような再認証要求を防ぐには、`acquireTokenSilent` を呼び出します。 ただし、ユーザーに Microsoft ID プラットフォームとのやり取りを強制しなければならない場合があります。 次に例を示します。
 
 - パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある。
 - アプリケーションがリソースへのアクセスを要求し、ユーザーの同意が必要である。
 - 2 要素認証が必須である。
 
-`acquireTokenPopup` を呼び出すと、ポップアップ ウィンドウが表示されます (または、`acquireTokenRedirect` によってユーザーが Microsoft ID プラットフォーム エンドポイントにリダイレクトされます)。 ユーザーはそのウィンドウ内で、自分の資格情報の確認、必要なリソースへの同意、2 要素認証の完了のいずれかの方法で操作を行う必要があります。
+`acquireTokenPopup` を呼び出すと、ポップアップ ウィンドウが表示されます (または、`acquireTokenRedirect` によってユーザーが Microsoft ID プラットフォームにリダイレクトされます)。 ユーザーはそのウィンドウ内で、自分の資格情報の確認、必要なリソースへの同意、2 要素認証の完了のいずれかの方法で操作を行う必要があります。
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
@@ -618,7 +618,7 @@ function callMSGraph(endpoint, token, callback) {
 
 ### <a name="sign-in-to-the-application"></a>アプリケーションにサインインする
 
-ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォーム エンドポイントにサインインするように求められます。
+ブラウザーに *index.html* ファイルが読み込まれたら、 **[サインイン]** を選択します。 Microsoft ID プラットフォームにサインインするように求められます。
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="サインイン ダイアログを表示している Web ブラウザー":::
 

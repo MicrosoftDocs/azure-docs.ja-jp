@@ -7,12 +7,12 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171739"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682381"
 ---
 # <a name="event-grid-concepts"></a>Event Grid の概念
 
@@ -48,7 +48,7 @@ Event Grid でサブスクリプションを管理する方法については、
 
 ## <a name="event-handlers"></a>イベント ハンドラー
 
-Event Grid から考えると、イベント ハンドラーはイベントの送信先です。 ハンドラーは、さらにアクションを行ってイベントを処理します。 Event Grid は、複数の種類のハンドラーをサポートします。 サポートされている Azure サービスまたは独自の Web hook を、ハンドラーとして使用できます。 Event Grid は、ハンドラーの種類に応じたさまざまなメカニズムに従って、イベントの配信を保証します。 宛先イベント ハンドラーが HTTP Web hook である場合、ハンドラーによってステータス コード `200 – OK` が返されると、イベントが再試行されます。 Edge Hub の場合、イベントが例外なしで配信されると、そのイベントは成功と見なされます。
+Event Grid から考えると、イベント ハンドラーはイベントの送信先です。 ハンドラーは、さらにアクションを行ってイベントを処理します。 Event Grid は、複数の種類のハンドラーをサポートします。 サポートされている Azure サービスまたは独自の Web hook を、ハンドラーとして使用できます。 Event Grid は、ハンドラーの種類に応じたさまざまなメカニズムに従って、イベントの配信を保証します。 宛先イベント ハンドラーが HTTP Web hook である場合、ハンドラーによって状態コード `200 – OK` が返されるまで、イベントは再試行されます。 Edge Hub の場合、イベントが例外なしで配信されると、そのイベントは成功と見なされます。
 
 ## <a name="security"></a>セキュリティ
 

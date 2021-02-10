@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 01/12/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: db9a915749799ee366d645994bd0d18c53530f40
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 08a1965aadf8f50625e54d7c5e3b3f6a44c0bbd4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730906"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946175"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 用の SDK、REST、CLI 開発者向けリソース
 
@@ -25,7 +25,7 @@ Azure Cognitive Services 管理レイヤーを使用して、Language Understand
 
 * [Azure CLI](/cli/azure/cognitiveservices#az-cognitiveservices-list)
 
-* [Azure RM PowerShell](/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
+* [Azure RM PowerShell](/powershell/module/azurerm.cognitiveservices/#cognitive_services)
 
 
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Language Understanding の作成と予測要求
@@ -88,10 +88,10 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 |Language |リファレンス ドキュメント|Package|クイックスタート|
 |--|--|--|--|
-|C#|[作成](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[予測](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet の作成](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet の予測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[作成](./client-libraries-rest-api.md?pivots=rest-api)<br>[クエリ予測](./client-libraries-rest-api.md?pivots=rest-api)|
+|C#|[作成](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring)</br>[予測](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime)|[NuGet の作成](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet の予測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[作成](./client-libraries-rest-api.md?pivots=rest-api)<br>[クエリ予測](./client-libraries-rest-api.md?pivots=rest-api)|
 |Go|[作成と予測](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
-|Java|[作成と予測](/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven の作成](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven の予測](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[作成](/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[予測](/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM の作成](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM の予測](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[作成](./client-libraries-rest-api.md?pivots=rest-api)<br>[予測](./client-libraries-rest-api.md?pivots=rest-api)|
+|Java|[作成と予測](/java/api/overview/azure/cognitiveservices/client/languageunderstanding)|[Maven の作成](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven の予測](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
+|JavaScript|[作成](/javascript/api/@azure/cognitiveservices-luis-authoring/)<br>[予測](/javascript/api/@azure/cognitiveservices-luis-runtime/)|[NPM の作成](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM の予測](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[作成](./client-libraries-rest-api.md?pivots=rest-api)<br>[予測](./client-libraries-rest-api.md?pivots=rest-api)|
 |Python|[作成と予測](./client-libraries-rest-api.md?pivots=rest-api)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[作成](./client-libraries-rest-api.md?pivots=rest-api)<br>[予測](./client-libraries-rest-api.md?pivots=rest-api)|
 
 

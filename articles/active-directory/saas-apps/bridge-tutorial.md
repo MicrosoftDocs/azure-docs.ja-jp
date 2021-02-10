@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: c3221063469315b2324c5039a46db622109826aa
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 0b337225c5909563ef4aeb49cf0754e11075a6fb
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673619"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>チュートリアル: Azure Active Directory と Bridge の統合
 
@@ -106,7 +106,7 @@ Bridge で Azure AD シングル サインオンを構成するには、次の�
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<company name>.bridgeapp.com`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Bridge クライアント サポート チーム](https://community.bridgeapp.com/community/help)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Bridge クライアント サポート チーム](https://community.bridgeapp.com/hc/en-us/community/topics)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (未加工)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -124,7 +124,7 @@ Bridge で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-bridge-single-sign-on"></a>Bridge のシングル サインオンの構成
 
-**Bridge** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [Bridge サポート チーム](https://community.bridgeapp.com/community/help)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Bridge** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (未加工)** と Azure portal からコピーした適切な URL を [Bridge サポート チーム](https://community.bridgeapp.com/hc/en-us/community/topics)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -179,7 +179,7 @@ Bridge で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-bridge-test-user"></a>Bridge テスト ユーザーの作成
 
-このセクションでは、Bridge で Britta Simon というユーザーを作成します。 [Bridge サポート チーム](https://community.bridgeapp.com/community/help)と連携し、Bridge プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Bridge で Britta Simon というユーザーを作成します。 [Bridge サポート チーム](https://community.bridgeapp.com/hc/en-us/community/topics)と連携し、Bridge プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -3,14 +3,14 @@ title: レンダリングの機能
 description: Azure Batch の標準の機能は、レンダリングのワークロードとアプリの実行に使用されます。 Batch には、レンダリングのワークロードをサポートする特定の機能が含まれています。
 author: mscurrell
 ms.author: markscu
-ms.date: 01/14/2021
+ms.date: 02/01/2021
 ms.topic: how-to
-ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c748c51311a70cd3b4fc6d435e97a33d709467b9
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234275"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429804"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -32,7 +32,7 @@ Azure Batch の標準の機能は、レンダリングのワークロードと�
 
 VM イメージをレンダリングする Azure Marketplace は、事前インストールされたアプリケーションを使用する必要がある場合にのみ、プール構成で指定できます。
 
-Windows 2016 のイメージと CentOS のイメージがあります。  [Azure Marketplace](https://azuremarketplace.microsoft.com) で、VM イメージは「batch rendering」と検索することで見つかります。
+Windows のイメージと CentOS のイメージがあります。  [Azure Marketplace](https://azuremarketplace.microsoft.com) で、VM イメージは「batch rendering」と検索することで見つかります。
 
 プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](./tutorial-rendering-cli.md)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
 
@@ -70,13 +70,10 @@ Azure portal または Batch Explorer を使用してアプリケーションを
 
 |Application|アプリケーション実行可能ファイル|環境変数|
 |---------|---------|---------|
-|Autodesk 3ds Max 2018|3dsmaxcmdio.exe|3DSMAX_2018_EXEC|
-|Autodesk 3ds Max 2019|3dsmaxcmdio.exe|3DSMAX_2019_EXEC|
-|Autodesk Maya 2017|render.exe|MAYA_2017_EXEC|
-|Autodesk Maya 2018|render.exe|MAYA_2018_EXEC|
-|Chaos Group V-Ray Standalone|vray.exe|VRAY_3.60.4_EXEC|
-Arnold 2017 コマンド ライン|kick.exe|ARNOLD_2017_EXEC|
-|Arnold 2018 コマンド ライン|kick.exe|ARNOLD_2018_EXEC|
+|Autodesk 3ds Max 2021|3dsmaxcmdio.exe|3DSMAX_2021_EXEC|
+|Autodesk Maya 2020|render.exe|MAYA_2020_EXEC|
+|Chaos Group V-Ray Standalone|vray.exe|VRAY_4.10.03_EXEC|
+|Arnold 2020 コマンド ライン|kick.exe|ARNOLD_2020_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
 ## <a name="azure-vm-families"></a>Azure VM のファミリ

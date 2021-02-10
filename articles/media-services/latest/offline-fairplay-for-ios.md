@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
+title: Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
 description: このトピックでは、Azure Media Services v3 を使用して HTTP ライブ ストリーミング (HLS) コンテンツをオフライン モードの Apple FairPlay で動的に暗号化する方法の概要を説明します。
 services: media-services
 keywords: HLS, DRM, FairPlay Streaming (FPS), オフライン, iOS 10
@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 886a8aa1a6f062b5fe01476e387742f34efc0c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 399f9b0184217db8180fcec38e4f78917d5c9bc8
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532241"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955239"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
 

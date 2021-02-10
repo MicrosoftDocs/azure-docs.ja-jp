@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: fe2d444bbdc09ed5ab0205d4139591e3288e3358
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 3090b7b889d914fc0cdb598b8bf29a73c81f50cb
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734567"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632005"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM の起動が Windows Update で停止する
 
@@ -37,6 +37,8 @@ ms.locfileid: "94734567"
 
 
 ## <a name="solution"></a>解決策
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
 
 インストールまたはロールバックしている更新の数によっては、更新プロセスに時間がかかる場合があります。 VM を 8 時間この状態のままにします。 この期間の経過後も VM がこの状態の場合、Azure portal から VM を再起動し、正常に起動できるかどうかを確認します。 この手順でうまくいかない場合は、次の解決策をお試しください。
 

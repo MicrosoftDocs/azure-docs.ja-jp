@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913404"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624777"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
@@ -80,7 +80,7 @@ Storage Explorer を初めて起動すると、 **[Microsoft Azure Storage Explo
 
 コンテナーのルートにアクセス許可を設定することができます。 これを行うには、(接続文字列を使用するのではなく) その操作のアクセス権を持つ自分の個人アカウントで Azure Storage Explorer にログインする必要があります。 コンテナーを右クリックし、 **[アクセス許可の管理]** を選択し、 **[アクセス許可の管理]** ダイアログ ボックスを開きます。
 
-![Microsoft Azure Storage Explorer - ディレクトリ アクセスを管理する](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Microsoft Azure Storage Explorer - ディレクトリ アクセスを管理する](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
 
 **[アクセス許可の管理]** ダイアログ ボックスでは、所有者と所有者グループのアクセス許可を管理できます。 また、アクセス制御リストに新しいユーザーとグループを追加して、アクセス許可を管理することもできます。
 
@@ -105,6 +105,10 @@ Storage Explorer を初めて起動すると、 **[Microsoft Azure Storage Explo
 > ここで選択しても、ディレクトリ内に現在ある項目に対してアクセス許可は設定されません。 ファイルが既に存在する場合は、個々の項目に移動して、アクセス許可を手動で設定する必要があります。
 
 個々のディレクトリだけでなく、個々のファイルに対するアクセス許可を管理できるので、アクセス制御を微調整することができます。 ディレクトリとファイルの両方のアクセス許可を管理する場合のプロセスは、前述の方法と同じです。 アクセス許可を管理するファイルまたはディレクトリを右クリックし、同じプロセスに従います。
+
+## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のプライベート エンドポイント
+
+Storage Explorer では、Azure Data Lake Storage Gen2 を操作するときに BLOB (blob) と Data Lake Storage Gen2 (dfs) の[エンドポイント](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage)が使用されます。 Azure Data Lake Storage Gen2 へのアクセスがプライベート エンドポイントを使用して構成されている場合は、ストレージ アカウント用に 2 つのプライベート エンドポイント (1 つはターゲット サブリソース `blob` 用で、もう 1 つはターゲット サブリソース `dfs` 用) が作成されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 

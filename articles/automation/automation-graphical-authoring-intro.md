@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987334"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051583"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Automation でグラフィカル Runbook を作成する
 
@@ -95,7 +95,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 
 再試行の条件は、アクティビティが実行されるたびに評価される PowerShell 式です。 式が True に解決されると、アクティビティは再実行されます。 式が False に解決されると、アクティビティは再実行されず、Runbook は次のアクティビティに移ります。
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="再試行を有効にする機能の設定のスクリーンショット。":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="[次の条件が TRUE になるまで再試行を実行する] フィールドと、再試行条件で使用できる PowerShell 式の例のスクリーンショット。":::
 
 再試行の条件には、アクティビティの再試行に関する情報へのアクセスを提供する `RetryData` という名前の変数を使用できます。 この変数には、次の表のプロパティがあります。
 
@@ -236,7 +236,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 ### <a name="use-checkpoints"></a>チェックポイントを使用する
 
-任意のアクティビティで [[Checkpoint runbook]\(Runbook のチェックポイント\)](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) を選択することにより、グラフィカル PowerShell ワークフロー Runbook に**チェックポイント**を設定できます。 この場合、アクティビティの実行後にチェックポイントが設定されます。
+任意のアクティビティで [[Checkpoint runbook]\(Runbook のチェックポイント\)](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) を選択することにより、グラフィカル PowerShell ワークフロー Runbook に **チェックポイント** を設定できます。 この場合、アクティビティの実行後にチェックポイントが設定されます。
 
 ![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
@@ -373,7 +373,7 @@ $h
 
 ## <a name="authenticate-to-azure-resources"></a>Azure リソースに対して認証する
 
-Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。 [実行アカウント](./manage-runas-account.md) (サービス プリンシパルとも呼ばれる) は、サブスクリプション内の Azure Resource Manager リソースにアクセスするために Automation Runbook で使用される既定のメカニズムです。 この機能をグラフィカル Runbook に追加するには、PowerShell の [Get-AutomationConnection](/system-center/sma/manage-global-assets) コマンドレットを使用する `AzureRunAsConnection` 接続資産をキャンバスに追加します。 また、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを追加することもできます。 このシナリオを次の例で示します。
+Azure リソースを管理する、Azure Automation の Runbook は、Azure に対する認証が必要になります。 [実行アカウント](./automation-security-overview.md) (サービス プリンシパルとも呼ばれる) は、サブスクリプション内の Azure Resource Manager リソースにアクセスするために Automation Runbook で使用される既定のメカニズムです。 この機能をグラフィカル Runbook に追加するには、PowerShell の [Get-AutomationConnection](/system-center/sma/manage-global-assets) コマンドレットを使用する `AzureRunAsConnection` 接続資産をキャンバスに追加します。 また、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを追加することもできます。 このシナリオを次の例で示します。
 
 ![Run As Authentication アクティビティ](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

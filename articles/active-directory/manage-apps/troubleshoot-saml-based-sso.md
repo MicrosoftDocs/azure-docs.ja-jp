@@ -3,19 +3,19 @@ title: Azure Active Directory での SAML に基づいたシングル サイン�
 description: SAML に基づいたシングル サインオン用に構成された Azure AD アプリの問題をトラブルシューティングします。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658878"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257528"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Azure Active Directory での SAML に基づいたシングル サインオンをトラブルシューティングする
 アプリケーションを構成しているときに問題が発生する場合は、 アプリケーションのチュートリアルに記載されているすべての手順を実行したことを確認します。 アプリケーションの構成内に、アプリケーションの構成方法についてのインライン ドキュメントがあります。 また、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)にアクセスして、詳しいステップ バイ ステップ ガイダンスを参照することもできます。

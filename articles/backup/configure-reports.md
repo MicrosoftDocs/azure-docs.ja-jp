@@ -3,14 +3,14 @@ title: Azure Backup のレポートを構成する
 description: Log Analytics と Azure ブックを使用して Azure Backup のレポートを構成および表示する
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 39d1aa17c5e92eccd34013738937e49890109561
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325249"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897277"
 ---
-# <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
+# <a name="configure-azure-backup-reports-preview"></a>Azure Backup レポート (プレビュー) を構成する
 
 バックアップ管理者の一般的な要件は、長期間にわたるデータに基づいて、バックアップに関する分析情報を得ることです。 このようなソリューションのユース ケースには、次のようなものがあります。
 

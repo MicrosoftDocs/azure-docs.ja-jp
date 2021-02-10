@@ -3,14 +3,14 @@ title: バックアップ センターを使用してバックアップ資産を
 description: バックアップ センターを使用して、バックアップの観点からすべてのリソースが準拠していることを確認するために Azure 環境を管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: ebb4d72c3a3377072e185251bd642762f6876c03
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 67b0591c7d7146d162687018854365d338105d76
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173796"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98893848"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>バックアップ センターを使用してバックアップ資産を管理する
+# <a name="govern-your-backup-estate-using-backup-center-preview"></a>バックアップ センター (プレビュー) を使用してバックアップ資産を管理する
 
 バックアップ センターは、バックアップの観点からすべてのリソースが準拠していることを確認するために Azure 環境を管理するのに役立ちます。 バックアップ センターのガバナンス機能のいくつかを次に示します。
 
@@ -43,6 +43,11 @@ ms.locfileid: "92173796"
 **[保護可能なデータソース]** メニュー項目を選択すると、バックアップ用に構成されていないすべてのデータソースを表示できます。 この一覧は、データソースのサブスクリプション、リソース グループ、場所、種類、タグでフィルター処理できます。 バックアップする必要のあるデータソースを識別したら、対応するグリッド項目を右クリックし、 **[バックアップ]** を選択してそのリソースのバックアップを構成できます。
 
 ![[保護可能なデータソース] メニュー](./media/backup-center-govern-environment/protectable-datasources.png)
+
+> [!NOTE]
+> データソースの種類として **[Azure VM の SQL]** を選択した場合、 **[保護可能なデータソース]** ビューには、バックアップ用に構成されている SQL データベースがないすべてのギャラリー VM の一覧が表示されます。
+> データソースの種類として **[Azure Storage (Azure Files)]** を選択した場合、 **[保護可能なデータソース]** ビューには、バックアップ用に構成されているファイル共有がないすべての (ファイル共有がサポートされている) ストレージ アカウントの一覧が表示されます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

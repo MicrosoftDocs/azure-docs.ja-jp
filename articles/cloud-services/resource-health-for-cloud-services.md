@@ -1,20 +1,25 @@
 ---
 title: Cloud Services (クラシック) 用の Resource Health
 description: この記事では、Microsoft Azure Cloud Services (クラシック) 用のリソース正常性チェック (RHC) のサポートについて説明します
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 9/1/2020
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072715"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743510"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) 用のリソース正常性チェック (RHC) のサポート
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 この記事では、[Microsoft Azure Cloud Services (クラシック)](https://azure.microsoft.com/services/cloud-services) のリソース正常性チェック (RHC) のサポートについて説明します
 
 クラウド サービス用の [Azure Resource Health](../service-health/resource-health-overview.md) を使用すると、クラウド サービスのデプロイ、ロール、およびロール インスタンスに影響するサービスの問題を診断し、サポートを受けることができます。 デプロイ、ロール、およびロール インスタンス レベルで、クラウド サービスの現在と過去の正常性についてレポートされます。

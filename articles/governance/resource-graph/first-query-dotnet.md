@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:自分の初めての .NET Core クエリ
 description: このクイックスタートでは、手順に従い、.NET Core 用の Resource Graph NuGet パッケージを有効にし、自分の初めてのクエリを実行します。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f825b22712956c0b94531ddb163301167f30f00
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0135dfd499af48b3c60314679f4c9b635a5ce15a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057469"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917573"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>クイック スタート:.NET Core を使用して自分の初めての Resource Graph クエリを実行する
 
@@ -94,7 +94,7 @@ ms.locfileid: "92057469"
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-.NET Core コンソール アプリケーションをビルドして発行したので、単純な Resource Graph を試してみましょう。 このクエリでは、各リソースの**名前**と**リソースの種類**を使用して、最初の 5 つの Azure リソースが返されます。
+.NET Core コンソール アプリケーションをビルドして発行したので、単純な Resource Graph を試してみましょう。 このクエリでは、各リソースの **名前** と **リソースの種類** を使用して、最初の 5 つの Azure リソースが返されます。
 
 `argQuery` に対するそれぞれの呼び出しには、自分独自の値で置き換える必要のある変数があります。
 

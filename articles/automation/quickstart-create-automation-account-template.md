@@ -3,22 +3,18 @@ title: クイック スタート:Automation アカウントを作成する - Azu
 titleSuffix: Azure Automation
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して Automation アカウントを作成する方法について説明します。
 services: automation
-documentationcenter: na
-author: mgoedtel
 Customer intent: I want to create an Automation account by using an Azure Resource Manager template so that I can automate processes with runbooks.
-ms.service: automation
-ms.devlang: na
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 9315b898e290dc758c300f9b74006b4b08888e9e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d0582876a08b433a10106b97179ab603d4ec5762
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078954"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050670"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する
 
@@ -44,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * サンプルの Automation Runbook をアカウントに追加します。
 
 >[!NOTE]
->ARM テンプレートを使用する場合、Automation の実行アカウントの作成はサポートされません。 ポータルからまたは PowerShell を使用して実行アカウントを手動で作成するには、[実行アカウントの管理](manage-runas-account.md)に関するページを参照してください。
+>ARM テンプレートを使用する場合、Automation の実行アカウントの作成はサポートされません。 ポータルからまたは PowerShell を使用して実行アカウントを手動で作成するには、[実行アカウントの作成](create-run-as-account.md)に関するページを参照してください。
 
 これらの手順を完了したら、Runbook ジョブの状態とジョブ ストリームを、リンクされた Log Analytics ワークスペースに送信するために、Automation アカウントの[診断設定を構成する](automation-manage-send-joblogs-log-analytics.md)必要があります。
 

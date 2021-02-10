@@ -56,7 +56,7 @@ Azure Cosmos DB は、あらゆる規模に対応する、オープン API を�
 
 Azure Cloud Shell を使用して、Azure Cosmos アカウントを作成できます。 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできる対話形式の認証されたシェルです。 Bash または PowerShell どちらかのシェル エクスペリエンスを作業方法に合わせて柔軟に選択できます。 このクイックスタートでは、 **[Bash]** モードを選択します。 Azure Cloud Shell ではストレージ アカウントも必要です。これはプロンプトが表示されたら作成できます。
 
-次のコードの横にある **[試してみる]** ボタンを選択し、 **[Bash]** モードを選択します。 **[ストレージ アカウントを作成する]** を選択して Cloud Shell にログインします。 次に、次のコードをコピーして Azure Cloud Shell に貼り付けて実行します。 Azure Cosmos アカウント名はグローバルに一意である必要があります。必ず `mysqlapicosmosdb` 値を更新してからコマンドを実行してください。
+次のコードの横にある **[使ってみる]** ボタンを選択し、 **[Bash]** モードを選択します。 **[ストレージ アカウントを作成する]** を選択して Cloud Shell にログインします。 次に、次のコードをコピーして Azure Cloud Shell に貼り付けて実行します。 Azure Cosmos アカウント名はグローバルに一意である必要があります。必ず `mysqlapicosmosdb` 値を更新してからコマンドを実行してください。
 
 ```azurecli-interactive
 

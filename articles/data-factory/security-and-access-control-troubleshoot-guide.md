@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/05/2021
 ms.author: lle
 ms.reviewer: craigg
-ms.openlocfilehash: 3b7b405e34b6ca82da593507ad6103d360c5df1e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 70e4d0c1a9f26f83924c1343e4e8e51c5595b324
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968587"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944516"
 ---
 # <a name="troubleshoot-azure-data-factory-security-and-access-control-issues"></a>Azure Data Factory でのセキュリティとアクセス制御に関するイシューのトラブルシューティング
 
@@ -49,13 +49,13 @@ ms.locfileid: "97968587"
 
 * **セルフホステッド IR** を使用している場合は、プロキシ、ファイアウォール、およびネットワークの設定を確認してください。これは、Azure IR を使用している場合、同じデータストアへの接続が成功する可能性があるからです。 このシナリオのトラブルシューティングを行うには、次を参照してください。
 
-   * [セルフホステッド IR のポートとファイアウォール](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#ports-and-firewalls)
-   * [Azure Data Lake Storage コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store)
+   * [セルフホステッド IR のポートとファイアウォール](./create-self-hosted-integration-runtime.md#ports-and-firewalls)
+   * [Azure Data Lake Storage コネクタ](./connector-azure-data-lake-store.md)
   
 * **Azure IR** を使用している場合は、データストアのファイアウォール設定を無効にしてみてください。 この方法で、次の 2 つの状況における問題を解決できます。
   
-   * [Azure IR の IP アドレス](https://docs.microsoft.com/azure/data-factory/azure-integration-runtime-ip-addresses)が許可リストに含まれていない。
-   * *[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]* 機能が [Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#supported-capabilities) および [Azure Data Lake Storage Gen 2](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#supported-capabilities) に対してオフになっている。
+   * [Azure IR の IP アドレス](./azure-integration-runtime-ip-addresses.md)が許可リストに含まれていない。
+   * *[信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します]* 機能が [Azure Blob Storage](./connector-azure-blob-storage.md#supported-capabilities) および [Azure Data Lake Storage Gen 2](./connector-azure-data-lake-storage.md#supported-capabilities) に対してオフになっている。
    * *[Azure サービスへのアクセスを許可する]* 設定が Azure Data Lake Storage Gen1 に対してオンになっていない。
 
 前述のいずれの方法も機能しない場合は、Microsoft にお問い合わせください。
@@ -88,7 +88,7 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
 #### <a name="resolution"></a>解決方法
 
 この問題を解決するには、以下の手順を実行します。
-- 「[Azure Data Factory 用の Azure Private Link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link#dns-changes-for-private-endpoints)」という記事を参照してください。 この手順では、プライベート DNS ゾーンまたはサーバーを構成して、Data Factory の FQDN をプライベート IP アドレスに解決します。
+- 「[Azure Data Factory 用の Azure Private Link](./data-factory-private-link.md#dns-changes-for-private-endpoints)」という記事を参照してください。 この手順では、プライベート DNS ゾーンまたはサーバーを構成して、Data Factory の FQDN をプライベート IP アドレスに解決します。
 
 - 長期的なソリューションとして、カスタム DNS を使用することをお勧めします。 ただし、プライベート DNS ゾーンまたはサーバーを構成したくない場合は、次の一時的ソリューションを試してください。
 
@@ -120,7 +120,7 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
  
 この問題を解決するには、以下の手順を実行します。
 
-1. [ファクトリ - 更新](https://docs.microsoft.com/rest/api/datafactory/Factories/Update)に関するページにアクセスします。
+1. [ファクトリ - 更新](/rest/api/datafactory/Factories/Update)に関するページにアクセスします。
 
 1. 右上にある **[試してみる]** ボタンを選択します。
 1. **[パラメーター]** で、必要な情報を入力します。 
@@ -146,7 +146,7 @@ Data Factory の完全修飾ドメイン名 (FQDN) がパブリック IP アド�
 
 **解決策 2**
 
-この問題を解決するには、[Azure Data Factory 用の Azure Private Link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link) にアクセスします。
+この問題を解決するには、[Azure Data Factory 用の Azure Private Link](./data-factory-private-link.md) にアクセスします。
 
 次のスクリーンショットに示すように、ユーザー インターフェイスでパブリック ネットワーク アクセスを有効にします。
 

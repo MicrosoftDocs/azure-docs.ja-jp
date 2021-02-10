@@ -2,17 +2,19 @@
 title: レジストリ正常性チェックのエラー リファレンス
 description: Azure Container Registry で az acr check-health 診断コマンドを実行することによって検出された問題のエラー コードと考えられる解決策
 ms.topic: article
-ms.date: 07/02/2019
-ms.openlocfilehash: 9136d41097207bfb17776071e958308f36a9aadd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/25/2021
+ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91565600"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061870"
 ---
 # <a name="health-check-error-reference"></a>正常性チェックのエラー リファレンス
 
 以下は、[az acr check-health][az-acr-check-health] コマンドによって返されるエラー コードの詳細です。 各エラーについて、考えられる解決策が示されています。
+
+`az acr check-healh` の実行の詳細については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。
 
 ## <a name="docker_command_error"></a>DOCKER_COMMAND_ERROR
 
@@ -49,6 +51,12 @@ ms.locfileid: "91565600"
 このエラーは、インストールされている Helm のバージョンを CLI が特定できなかったことを意味します。 これは、使用されている Azure CLI のバージョン (または Helm のバージョン) が古い場合に発生する可能性があります。
 
 *考えられる解決策*: 最新の Azure CLI バージョンまたは推奨される Helm バージョンに更新します。コマンドを手動で実行し、エラー メッセージを調べます。
+
+## <a name="cmk_error"></a>CMK_ERROR
+
+このエラーは、カスタマー マネージド キーを使用したレジストリの暗号化を構成するために使用されるユーザー割り当てまたはシステム割り当てのマネージド ID に、レジストリがアクセスできないことを示します。 マネージド ID が削除されている可能性があります。  
+
+*考えられる解決策*: この問題を解決し、別のマネージド ID を使用してキーをローテーションするには、[ユーザー割り当て ID](container-registry-customer-managed-keys.md#troubleshoot) をトラブルシューティングするための手順を参照してください。
 
 ## <a name="connectivity_dns_error"></a>CONNECTIVITY_DNS_ERROR
 

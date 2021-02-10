@@ -1,38 +1,22 @@
 ---
-title: Azure Notebooks プレビューから Jupyter Notebook プロジェクトをエクスポートする
-description: Jupyter Notebook プロジェクトをすばやくエクスポートします。
+title: Microsoft 製品で Jupyter Notebook を使用する
+description: Microsoft 製品で Jupyter Notebook を使用する方法について説明します。
 ms.topic: quickstart
-ms.date: 06/29/2020
-ms.openlocfilehash: ea16bd61b542217fb6f2d5ba1d926a0bc19d4cce
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.date: 02/01/2021
+ms.openlocfilehash: 5679c28d9cc8a4f1893ffad72002b66ad59861e6
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98605966"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507379"
 ---
-# <a name="quickstart-export-a-jupyter-notebook-project-in-azure-notebooks-preview"></a>Azure Notebooks プレビューで Jupyter Notebook プロジェクトをエクスポートする
+# <a name="use-a-jupyter-notebook-with-microsoft-offerings"></a>Microsoft 製品で Jupyter Notebook を使用する
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-このクイックスタートでは、他の Jupyter Notebook ソリューションで使用するために Azure Notebooks のプロジェクトをダウンロードします。 
+このクイックスタートでは、Jupyter Notebook をインポートして Microsoft の各種製品で使用する方法について説明します。 
 
-## <a name="prerequisites"></a>前提条件
-
-既存の Azure Notebooks プロジェクト。
-
-## <a name="export-an-azure-notebooks-project"></a>Azure Notebooks プロジェクトをエクスポートする
-
-1. [Azure Notebooks](https://notebooks.azure.com) に移動してサインインします  詳細については、[Azure Notebooks へのサインインに関するクイックスタート](quickstart-sign-in-azure-notebooks.md)を参照してください。
-
-1. パブリック プロファイル ページから、ページの上部にある **[マイ プロジェクト]** を選択します。
-
-    ![ブラウザー ウィンドウの上部にある [マイ プロジェクト] リンク](media/quickstarts/my-projects-link.png)
-
-1. プロジェクトを選択します。
-1. [ダウンロード] ボタンをクリックして、ご自分のすべてのプロジェクト ファイルが含まれた zip ファイルのダウンロードをトリガーします。
-1. または、特定のプロジェクト ページから、[プロジェクトのダウンロード] ボタンをクリックして、特定のプロジェクトのすべてのファイルをダウンロードします。
-
-プロジェクト ファイルをダウンロードしたら、それらを他の Jupyter Notebook ソリューションと共に使用できます。 いくつかのオプションについて以下のセクションで説明します。 
+既に Jupyter Notebook をご利用の場合、または新しいプロジェクトを開始したいと考えている場合、Microsoft のさまざまな製品でそれらを使用することができます。 いくつかのオプションについて以下のセクションで説明します。 
 - [Visual Studio Code](#use-notebooks-in-visual-studio-code)
 - [GitHub Codespaces](#use-notebooks-in-github-codespaces)
 - [Azure Machine Learning](#use-notebooks-with-azure-machine-learning)
@@ -41,7 +25,7 @@ ms.locfileid: "98605966"
 
 ## <a name="create-an-environment-for-notebooks"></a>ノートブック用の環境を作成する
 
-Azure Notebooks プレビューの環境と一致する環境を作成する場合は、GitHub で提供されているスクリプト ファイルを使用できます。
+廃止された Azure Notebooks プレビューの環境と一致する環境を作成する場合は、GitHub で提供されているスクリプト ファイルを使用できます。
 
 1. Azure Notebooks の [GitHub リポジトリ](https://github.com/microsoft/AzureNotebooks)に移動するか、[環境フォルダーに直接アクセス](https://aka.ms/aznbrequirementstxt)します。
 1. コマンド プロンプトで、プロジェクトに使用するディレクトリに移動します。
@@ -54,14 +38,14 @@ Azure Notebooks プレビューの環境と一致する環境を作成する場�
 
 ![VS Code による Jupyter Notebook のサポート](media/vs-code-jupyter-notebook.png)
 
-ご自分のプロジェクト ファイルを[ダウンロード](#export-an-azure-notebooks-project)した後、VS Code でそれらを使用できます。 Jupyter Notebook と VS Code を使用する方法については、「[Visual Studio Code で Jupyter Notebook を使用する](https://code.visualstudio.com/docs/python/jupyter-support)」と「[Visual Studio Code でのデータ サイエンス](https://code.visualstudio.com/docs/python/data-science-tutorial)」のチュートリアルを参照してください。
+既にプロジェクト ファイルがある場合、または新しいノートブックを作成したい場合は、ぜひ VS Code をご利用ください。 Jupyter Notebook と VS Code を使用する方法については、「[Visual Studio Code で Jupyter Notebook を使用する](https://code.visualstudio.com/docs/python/jupyter-support)」と「[Visual Studio Code でのデータ サイエンス](https://code.visualstudio.com/docs/python/data-science-tutorial)」のチュートリアルを参照してください。
 
 また、Visual Studio Code で [Azure Notebooks 環境スクリプト](#create-an-environment-for-notebooks)を使用して、Azure Notebooks プレビューと一致する環境を作成することもできます。
 
 ## <a name="use-notebooks-in-github-codespaces"></a>GitHub Codespaces でノートブックを使用する
 
 GitHub Codespaces によって、Visual Studio Code または Web ブラウザーを使用してノートブックを編集できる、クラウドでホストされる環境が提供されます。 VS Code と同じ優れた Jupyter エクスペリエンスが提供されますが、使用するデバイスに何もインストールする必要はありません。 ローカル環境を設定せずに、クラウドベースのソリューションを希望される場合は、コードスペースを作成することをお勧めします。 作業を開始するには:
-1. ご自分のプロジェクト ファイルを[ダウンロード](#export-an-azure-notebooks-project)します。
+1. (省略可) GitHub Codespaces で使用するプロジェクト ファイルを収集します。
 1. ノートブックを格納するための [GitHub リポジトリを作成](https://help.github.com/github/getting-started-with-github/create-a-repo)します。   
 1. リポジトリに[ファイルを追加](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository)します。
 1. [GitHub Codespaces プレビューへのアクセスを要求します](https://github.com/features/codespaces)
@@ -70,14 +54,14 @@ GitHub Codespaces によって、Visual Studio Code または Web ブラウザ�
 
 Azure Machine Learning によってエンドツーエンドの機械学習プラットフォームが提供され、ユーザーはそれを使用して、Azure でモデルの構築とデプロイをより迅速に行うことができます。 Azure ML では、VM または共有クラスターのコンピューティング環境で Jupyter Notebook を実行できます。 実験の追跡やデータセット管理などを含むクラウドベースのソリューションが ML ワークロード用に必要な場合は、Azure Machine Learning をお勧めします。 Azure ML の使用を開始するには:
 
-1. ご自分のプロジェクト ファイルを[ダウンロード](#export-an-azure-notebooks-project)します。
+1. (省略可) Azure ML で使用するプロジェクト ファイルを収集します。
 1. Azure portal で[ワークスペースを作成](../machine-learning/how-to-manage-workspace.md)します。
 
    ![ワークスペースを作成する](../machine-learning/media/how-to-manage-workspace/create-workspace.gif)
  
 1. [Azure Studio (プレビュー)](https://ml.azure.com/) を開きます。
 1. 左側のナビゲーション バーを使用して、**[Notebooks]** を選択します。
-1. **[ファイルのアップロード]** ボタンをクリックし、Azure Notebooks からダウンロードしたプロジェクト ファイルをアップロードします。
+1. **[ファイルのアップロード]** ボタンをクリックし、プロジェクト ファイルをアップロードします。
 
 Azure ML および Jupyter Notebook の実行に関する追加情報については、[ドキュメント](../machine-learning/how-to-run-jupyter-notebooks.md)を参照するか、Microsoft Learn で [Machine Learning の概要](/learn/modules/intro-to-azure-machine-learning-service/)に関するモジュールをお試しください。
 
@@ -88,13 +72,13 @@ Azure ML および Jupyter Notebook の実行に関する追加情報につい�
 
 ![image](../lab-services/media/tutorial-setup-classroom-lab/new-lab-button.png)
 
- ご自分のプロジェクト ファイルを[ダウンロード](#export-an-azure-notebooks-project)した後、Azure Lab Services でそれらを使用できます。 ラボの設定に関するガイダンスについては、「[Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する](../lab-services/class-type-jupyter-notebook.md)」を参照してください。
+既にプロジェクト ファイルがある場合、または新しいノートブックを作成したい場合は、ぜひ Azure Lab Services をご利用ください。 ラボの設定に関するガイダンスについては、「[Python と Jupyter Notebook を使用してデータ サイエンスを教えるためのラボを設定する](../lab-services/class-type-jupyter-notebook.md)」を参照してください。
 
 ## <a name="use-github"></a>GitHub を使用する
 
 GitHub には、ノートブック (およびその他のファイル) を格納したり、ノートブックを他のユーザーと共有したり、共同作業したりするための、ソース管理に対応した無料の方法が用意されています。 プロジェクトを共有して他のユーザーと共同作業する方法を探している場合、GitHub は優れたオプションであり、優れた開発エクスペリエンスを実現するために [GitHub Codespaces](#use-notebooks-in-github-codespaces) と組み合わせることができます。 GitHub の使用を開始するには
 
-1. ご自分のプロジェクト ファイルを[ダウンロード](#export-an-azure-notebooks-project)します。
+1. (省略可) GitHub で使用するプロジェクト ファイルを収集します。
 1. ノートブックを格納するための [GitHub リポジトリを作成](https://help.github.com/github/getting-started-with-github/create-a-repo)します。 
 1. リポジトリに[ファイルを追加](https://help.github.com/github/managing-files-in-a-repository/adding-a-file-to-a-repository)します。
 

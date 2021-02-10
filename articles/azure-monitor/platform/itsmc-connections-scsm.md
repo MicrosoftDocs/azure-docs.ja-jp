@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 79706b66dba46253843b1f53a26481170d6ff723
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 907a78b15cca4718308f79bc6be2e6258bc04d19
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729565"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492673"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>System Center Service Manager を IT Service Management Connector に接続する
 
@@ -32,7 +32,7 @@ ms.locfileid: "97729565"
 
 > [!NOTE]
 > - ITSM Connector は、クラウドベースの ServiceNow インスタンスにのみ接続できます。 オンプレミスの ServiceNow インスタンスは現在サポートされていません。
-> - アクションの一部としてカスタム [テンプレート](./itsmc-definition.md#template-definitions)を使用するには、SCSM テンプレートのパラメーター "ProjectionType" を "IncidentManagement!System.WorkItem.Incident.ProjectionType" にマップする必要があります
+> - アクションの一部としてカスタム [テンプレート](./itsmc-definition.md#define-a-template)を使用するには、SCSM テンプレートのパラメーター "ProjectionType" を "IncidentManagement!System.WorkItem.Incident.ProjectionType" にマップする必要があります
 
 ## <a name="connection-procedure"></a>接続手順
 

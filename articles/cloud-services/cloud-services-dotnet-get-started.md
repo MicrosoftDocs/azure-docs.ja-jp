@@ -1,26 +1,27 @@
 ---
-title: Azure Cloud Services と ASP.NET を使ってみる | Microsoft Docs
+title: Azure Cloud Services (クラシック) と ASP.NET の使用を開始する | Microsoft Docs
 description: ASP.NET MVC と Azure を使用して多層アプリケーションを作成する方法について説明します。 ここで取り上げるアプリケーションは、クラウド サービス内で、Web ロールと worker ロールと連係して動作します。 Entity Framework、SQL Database、Azure Storage のキューと BLOB を使用しています。
-services: cloud-services, storage
-documentationcenter: .net
-author: tgore03
-manager: carmonm
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-csharp
-ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ae7fd5a7c9bc858cb18473374e7bd5589717eac6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562295"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742082"
 ---
-# <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
+# <a name="get-started-with-azure-cloud-services-classic-and-aspnet"></a>Azure Cloud Services (クラシック) と ASP.NET の使用を開始する
 
 ## <a name="overview"></a>概要
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 このチュートリアルでは、ASP.NET MVC フロントエンドを使用する多層 .NET アプリケーションを作成して [Azure クラウド サービス](cloud-services-choose-me.md)にデプロイする方法について説明します。 このアプリケーションでは、[Azure SQL Database](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob service](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)、および [Azure Queue サービス](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用します。 MSDN コード ギャラリーから、対象の [Visual Studio プロジェクトをダウンロード](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) できます。
 
 このチュートリアルでは、アプリケーションを作成してローカルで実行する方法、アプリケーションを Azure にデプロイしてクラウドで実行する方法、アプリケーションを最初から作成する方法について説明します。 アプリケーションを最初から作成する手順から始め、必要に応じて後でアプリケーションのテストとデプロイ手順に進んでください。
@@ -28,7 +29,7 @@ ms.locfileid: "97562295"
 ## <a name="contoso-ads-application"></a>Contoso Ads アプリケーション
 このアプリケーションは、広告の掲示板です。 ユーザーは、テキストを入力し、画像をアップロードして広告を作成します。 広告の一覧にはサムネイル画像が表示されます。広告を選択すると、フルサイズ画像と詳細が表示されます。
 
-![Ad list](./media/cloud-services-dotnet-get-started/list.png)
+![広告の一覧を示す画像](./media/cloud-services-dotnet-get-started/list.png)
 
 アプリケーションでは、 [キューを中心とした作業パターン](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。
 
@@ -60,7 +61,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 ## <a name="application-architecture"></a>アプリケーションのアーキテクチャ
 このアプリでは、広告を SQL データベースに格納します。その際、テーブルを作成してデータにアクセスするために Entity Framework Code First を使用します。 それぞれの広告に対し、フルサイズ画像用とサムネイル用の 2 つの URL がデータベースに格納されます。
 
-![広告表](./media/cloud-services-dotnet-get-started/adtable.png)
+![これは広告テーブルの画像です](./media/cloud-services-dotnet-get-started/adtable.png)
 
 ユーザーが画像をアップロードすると、Web ロールで実行されているフロントエンドによってその画像が [Azure BLOB](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)に格納され、広告情報がその BLOB を示す URL と共にデータベースに格納されます。 同時に、メッセージが Azure キューに書き込まれます。 worker ロールで実行されているバックエンド プロセスは、定期的にキューをポーリングして新しいメッセージの有無を確認します。 新しいメッセージが出現すると、worker ロールはその画像の縮小表示を作成し、その広告の縮小表示 URL データベース フィールドを更新します。 次の図に、アプリケーションの各パーツのやり取りを示します。
 
@@ -83,11 +84,11 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 
     クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。 エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 
-    ![Contoso Ads architecture](./media/cloud-services-dotnet-get-started/home.png)
+    ![Contoso Ads のアーキテクチャ 1](./media/cloud-services-dotnet-get-started/home.png)
 8. **[Create an Ad (広告を作成)]** をクリックします。
 9. 何らかのテスト データを入力し、アップロードする画像 ( *.jpg* ) を選択したら、 **[Create]** をクリックします。
 
-    ![作成ページ](./media/cloud-services-dotnet-get-started/create.png)
+    ![作成ページを示す画像](./media/cloud-services-dotnet-get-started/create.png)
 
     [Index] ページが表示されますが、新しい広告の処理が完了していないため、縮小表示はまだ表示されません。
 10. しばらく待ってから [Index] ページを更新すると、縮小表示が表示されます。
@@ -129,7 +130,7 @@ Azure クラウド サービスは、アプリケーションの実行環境で�
 
     次の画像では、クラウド サービスは CSvccontosoads.cloudapp.net という URL で作成されます。
 
-    ![新しいクラウド サービス](./media/cloud-services-dotnet-get-started/newcs.png)
+    ![新しいクラウド サービスを示す画像](./media/cloud-services-dotnet-get-started/newcs.png)
 
 ### <a name="create-a-database-in-azure-sql-database"></a>Azure SQL Database にデータベースを作成する
 アプリをクラウドで実行すると、クラウドベースのデータベースがアプリによって使用されます。
@@ -230,7 +231,7 @@ Web ロール プロジェクトと worker ロール プロジェクトの Azure
 
 1. **ソリューション エクスプローラー** で、 **[ContosoAdsCloudService]** プロジェクトの **[ロール]** の下にある **[ContosoAdsWeb]** を右クリックし、 **[プロパティ]** をクリックします。
 
-    ![ロール プロパティ](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![ロールのプロパティを示す画像](./media/cloud-services-dotnet-get-started/roleproperties.png)
 2. **[設定]** タブをクリックします。 **[サービス構成]** ボックスの一覧の **[クラウド]** を選択します。
 
     ![クラウドの構成](./media/cloud-services-dotnet-get-started/sccloud.png)
@@ -378,7 +379,8 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 2. 変更を保存します。
 3. ContosoAdsCloudService プロジェクトで、 **[ロール]** の下の [ContosoAdsWeb] を右クリックし、 **[プロパティ]** をクリックします。
 
-    ![[ロール] の下の [プロパティ] メニュー オプションが強調表示されているスクリーンショット。](./media/cloud-services-dotnet-get-started/roleproperties.png)
+    ![ロールのプロパティの画像](./media/cloud-services-dotnet-get-started/roleproperties.png)
+
 4. **[ContosoAdsWeb [ロール]]** プロパティ ウィンドウで、 **[設定]** タブをクリックし、 **[設定の追加]** をクリックします。
 
     **[サービス構成]** は **[すべての構成]** のままにしておきます。

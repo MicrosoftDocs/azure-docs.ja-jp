@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ee5ae7ca8b52d44f21c35df23ef92f61d38fc3c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878292"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051297"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Live Video Analytics on IoT Edge のトラブルシューティング
 
@@ -97,6 +97,18 @@ Live Video Analytics は、IoT Edge デバイスに IoT Edge モジュールと�
 
     > [!TIP]
     > お使いの環境で Azure IoT Edge モジュールを実行するときに問題が発生した場合は、トラブルシューティングと診断のガイドとして **[Azure IoT Edge の標準的な診断手順](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** に関する記事を参照してください。
+
+**[Live Video Analytics リソース設定スクリプト](https://github.com/Azure/live-video-analytics/tree/master/edge/setup)** の実行時に問題が発生する場合もあります。 一般的な問題としては、次のようなものがあります。
+
+* 所有者特権を持っていないサブスクリプションの使用。 この場合、**ForbiddenError** または **AuthorizationFailed** のエラーでスクリプトが失敗します。
+    * この問題を解決するには、使用する予定のサブスクリプションの **所有者** 特権が自身に付与されるようにします。 これを自分で行うことができない場合は、サブスクリプション管理者に連絡して、適切な特権を付与するよう依頼してください。
+* **ポリシー違反に起因してテンプレートのデプロイが失敗しました。**
+    * この問題を解決するには、IT 管理者と協力して、仮想マシンを作成するための呼び出しで、ssh 認証のブロックがバイパスされるようにしてください。 Azure リソースとの通信にはユーザー名とパスワードを必要とするセキュリティで保護された Bastion ネットワークを使用しているため、これは必要ありません。 これらの資格情報は、仮想マシンが正常に作成され、IoT Hub にデプロイされアタッチされた後、Cloud Shell の **~/clouddrive/lva-sample/vm-edge-device-credentials.txt** ファイルに保存されます。
+* セットアップ スクリプトで、サービス プリンシパル、Azure リソース、またはこの両方を作成できない。
+    * この問題を解決するには、サブスクリプションと Azure テナントがサービスの上限に達していないことを確認してください。 詳細については、「[Azure AD サービスの制限と制約](https://docs.microsoft.com/azure/active-directory/enterprise-users/directory-service-limits-restrictions)」と「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
+
+> [!TIP]
+> 支援が必要な追加の問題がある場合は、 **[ログを収集し、サポート チケットを送信](#collect-logs-for-submitting-a-support-ticket)** してください。 **[amshelp@microsoft.com](mailto:amshelp@microsoft.com)** 宛にメールで問い合わせることもできます。
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live Video Analytics による外部モジュールの操作
 
 メディア グラフ拡張プロセッサ経由の Live Video Analytics では、メディア グラフを拡張し、他の IoT Edge モジュールに対して HTTP または gRPC プロトコルを使用してデータを送受信することができます。 [具体的な例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)として、メディア グラフでは、Yolo v3 などの外部推論モジュールへビデオ フレームをイメージとして送信し、HTTP プロトコルを使用して JSON ベースの分析結果を受け取ることができます。 このようなトポロジでは、イベントの送信先は主に IoT ハブです。 ハブで推論イベントが表示されない場合は、次の点を確認します。

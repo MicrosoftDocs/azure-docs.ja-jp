@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: c0bc245a4be1ab7c326fa27cc1422878aca6331d
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664029"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071683"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins とは
 
@@ -94,10 +94,10 @@ Azure Digital Twins を使用した完全なソリューションには、次の
 
 ## <a name="service-limits"></a>サービスの制限
 
-Azure Digital Twins の制限の一覧については、[ *「リファレンス」のサービスの制限*](reference-service-limits.md)に関するページを参照してください。
+Azure Digital Twins の制限の一覧については、「[*Aure Digital Twins サービスの制限*](reference-service-limits.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Digital Twins の最初のプレビュー リリース (2018 年 10 月) を使用している場合は、変更内容を確認してください。"[*概要: 最初のリリースとの違い*](overview-differences.md)"。
+* クイックスタートを使用して、Azure Digital Twins の使用について詳しく確認します。[*クイック スタート:サンプル シナリオを精査する*](quickstart-adt-explorer.md)"。
 
-または、クイックスタートを使用して、Azure Digital Twins の使用について詳しく確認してください。[*クイック スタート:サンプル シナリオを精査する*](quickstart-adt-explorer.md)"。
+* または、Azure Digital Twins の概念についての [*概念: カスタム モデル*](concepts-models.md)に関するページを参照してください。

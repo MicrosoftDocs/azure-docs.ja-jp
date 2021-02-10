@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro device so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 04ba9777fe9e8470e6f02c83f3996d098023e05e
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: a48abb34a201928185130fbe8fdf9592e77492d9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763457"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944947"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-the-azure-portal"></a>Azure portal を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -22,6 +22,9 @@ Azure portal、テンプレート、Azure PowerShell コマンドレット、お
 
 この記事は、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、および Azure Stack Edge Mini R デバイスに適用されます。 
 
+> [!IMPORTANT] 
+> クラウドからデバイスにデプロイされた VM を管理するユーザーに対して、多要素認証を有効にすることをお勧めします。
+        
 ## <a name="vm-deployment-workflow"></a>VM デプロイのワークフロー
 
 デプロイの大まかなワークフローは次のとおりです。

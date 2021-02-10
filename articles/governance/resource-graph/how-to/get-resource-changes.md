@@ -1,14 +1,14 @@
 ---
 title: リソースの変更の取得
 description: リソースがいつ変更されたかを見つけ、変更されたプロパティの一覧を取得し、それらの差分を評価する方法について説明します。
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 70213caeaf71e1adc5a11ec0e9cbadfea032dca4
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 58dcb7256b0876d5e7fa9d7569db102538f92bab
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203468"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917423"
 ---
 # <a name="get-resource-changes"></a>リソースの変更の取得
 
@@ -21,7 +21,7 @@ ms.locfileid: "92203468"
 
 次のサンプル シナリオにとって、変更の検出と詳細は貴重です。
 
-- インシデント管理中に、_潜在的に_関連している変更を把握する。 特定の時間枠の間の変更イベントのクエリを実行し、変更の詳細を評価する。
+- インシデント管理中に、_潜在的に_ 関連している変更を把握する。 特定の時間枠の間の変更イベントのクエリを実行し、変更の詳細を評価する。
 - CMDB (Configuration Management Database) を最新状態に保つ。 スケジュールされた頻度ですべてのリソースとそれらの全プロパティ セットを更新する代わりに、変更されたものだけを取得します。
 - リソースがコンプライアンス状態を変更したときに他のどのプロパティが変更された可能性があるかを把握する。 これらの追加プロパティの評価により、Azure Policy 定義による管理が必要な可能性がある他のプロパティの分析情報を得ることができます。
 
@@ -281,7 +281,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 **beforeSnapshot** と **afterSnapshot** はそれぞれ、スナップショットが取られた時刻と、その時点のプロパティを提供ます。 変更は、これらのスナップショット間のある時点で発生しました。 前の例を見ると、変更されたプロパティは **supportsHttpsTrafficOnly** であったことが分かります。
 
-結果を比較するには、**resourceChanges** の **changes** プロパティを使用するか、**resourceChangeDetails** で各スナップショットの**コンテンツ**部分を評価して相違点を確認します。 スナップショットを比較すると、**timestamp**は、予期されているにもかかわらず、常に違いとして示されています。
+結果を比較するには、**resourceChanges** の **changes** プロパティを使用するか、**resourceChangeDetails** で各スナップショットの **コンテンツ** 部分を評価して相違点を確認します。 スナップショットを比較すると、**timestamp** は、予期されているにもかかわらず、常に違いとして示されています。
 
 ## <a name="next-steps"></a>次のステップ
 

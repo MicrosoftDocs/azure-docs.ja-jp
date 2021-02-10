@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307446"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704542"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Azure Machine Learning で実験を追跡してモデルをデプロイする
 
@@ -30,7 +30,7 @@ ms.locfileid: "93307446"
 
 ## <a name="create-a-new-notebook"></a>新しいノートブックを作成する
 
-Azure Machine Learning および MLFlow SDK は Data Science VM にプレインストールされており、* *azureml_py36_\** _ conda 環境でアクセスできます。 Jupyterlab でランチャーをクリックし、次のカーネルを選択します。
+Azure Machine Learning および MLFlow SDK は Data Science VM にプレインストールされており、**azureml_py36_\** _ conda 環境でアクセスできます。 JupyterLab でランチャーをクリックし、次のカーネルを選択します。
 
 ![カーネルの選択](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -159,7 +159,7 @@ _ コンピューティング名
 
 コードなしのデプロイとは、特定のスコアリング スクリプトを指定しなくても、モデル成果物から直接デプロイできることを意味します。
 
-糖尿病モデルをデプロイするには、 [Azure Machine Learning Studio](https://ml.azure.com) の左側のメニューに移動し、 __[モデル]__ を選択します。 次に、登録されている diabetes_model をクリックします。
+糖尿病モデルをデプロイするには、[Azure Machine Learning Studio](https://ml.azure.com) の左側のメニューに移動し、 __[モデル]__ を選択します。 次に、登録されている diabetes_model をクリックします。
 
 ![モデルの選択](./media/how-to-track-experiments/mlflow-experiments-3.png)
 

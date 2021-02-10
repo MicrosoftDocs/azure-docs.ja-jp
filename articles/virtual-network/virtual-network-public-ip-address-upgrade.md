@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 93d5d422709fad3d4f732b3b232f67d60d79b507
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222872"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493721"
 ---
 # <a name="upgrade-public-ip-addresses"></a>パブリック IP アドレスのアップグレード
 
-Azure パブリック IP アドレスは、SKU (Basic または Standard) を使用して作成され、SKU によって機能の側面 (割り当て方法、可用性ゾーン間の使用量、関連付けることができるリソースを含む) が決まります。 
+Azure パブリック IP アドレスは、SKU (Basic または Standard) を使用して作成され、SKU によって機能の側面 (割り当て方法、機能のサポート、関連付けることができるリソースを含む) が決まります。 
 
 この記事では、次のシナリオを確認します。
-* Basic SKU パブリック IP を Standard SKU パブリック IP にアップグレードする方法 (ポータル、PowerShell、または CLI を使用)
+* Basic SKU パブリック IP を Standard SKU パブリック IP にアップグレードする方法 (PowerShell または CLI を使用)
 * 従来の Azure 予約済み IP を Azure Resource Manager の Basic SKU パブリック IP に移行する方法
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>パブリック IP アドレスを Basic SKU から Standard SKU にアップグレードする

@@ -3,12 +3,12 @@ title: 概念 - ストレージ
 description: Azure VMware Solution プライベート クラウドの主なストレージ機能について説明します。
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.openlocfilehash: 394b755f5dc8fdbcaa6092419e9451ae1691aa67
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8ad1fc3ff2e514330a9ffc680494b5564b1184e4
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289259"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062797"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Azure VMware Solution のストレージの概念
 

@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/23/2021
+ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91399824"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745752"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>クイック スタート:ポータルでデモ アプリを作成する (Azure Cognitive Search)
 
-ブラウザーで動作する "localhost" スタイルのダウンロード可能な Web アプリを生成するには、Azure portal の**デモ アプリの作成**ウィザードを使用します。 その構成にもよりますが、生成されたアプリは、リモート インデックスへのライブ読み取り専用接続を備えており、そのままで実用性があります。 既定のアプリは、検索バーや結果領域、サイド バーのフィルターを備えているほか、先行入力をサポートします。
+ブラウザーで動作する "localhost" スタイルのダウンロード可能な Web アプリを生成するには、Azure portal の **デモ アプリの作成** ウィザードを使用します。 その構成にもよりますが、生成されたアプリは、リモート インデックスへのライブ読み取り専用接続を備えており、そのままで実用性があります。 既定のアプリは、検索バーや結果領域、サイド バーのフィルターを備えているほか、先行入力をサポートします。
 
 デモ アプリは、インデックスがクライアント アプリでどのように機能するかを視覚化するのに役立ちますが、運用環境のシナリオ向けではありません。 クライアント アプリには、生成された HTML ページでは提供されないセキュリティ、エラー処理、およびホスティング ロジックを含める必要があります。 クライアント アプリを作成する準備ができたら、次の手順について、「[.NET SDK を使用して最初の検索アプリを作成する](tutorial-csharp-create-first-app.md)」を参照してください。
 
@@ -61,7 +61,7 @@ ms.locfileid: "91399824"
 
 1. [説明] では、クリックしてその特定のドキュメントにアクセスするかどうかの判断に役立つような詳しい情報が格納されているフィールドを選択します。
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="サンプル データのデータ ソース ページ" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="サンプル データの結果を構成する" border="false":::
 
 ## <a name="add-a-sidebar"></a>サイド バーを追加する
 
@@ -72,8 +72,9 @@ Azure Cognitive Search のファセット ナビゲーションは、累積的�
 > [!TIP]
 > インデックス スキーマの全容はポータルで確認できます。 各インデックスの概要ページにある **[インデックス定義 (JSON)]** というリンクを探してください。 ファセット ナビゲーションの要件を満たしたフィールドには、"filterable: true" 属性と "facetable: true" 属性があります。
 
-現在選択されているファセットを受け入れて、次のページに進みます。
+1. ウィザードのページ上部にある **[サイド バー]** タブを選択します。 インデックスでフィルター可能とファセット可能の属性が付いたフィールドがすべて一覧表示されます。
 
+1. 現在選択されているファセット フィールドを受け入れて、次のページに進みます。
 
 ## <a name="add-typeahead"></a>先行入力を追加する
 
@@ -83,20 +84,44 @@ Azure Cognitive Search のファセット ナビゲーションは、累積的�
 
 次のスクリーンショットは、ウィザードのオプションとアプリでレンダリングされるページとを並べて示したものです。 選択フィールドの使い方や、[フィールド名を表示する] を使用して候補内のラベルを追加したり除外したりする方法が確認できます。
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="サンプル データのデータ ソース ページ":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="クエリ候補の構成":::
+
+## <a name="add-suggestions"></a>検索候補を追加する
+
+検索候補は、検索ボックスにアタッチされる自動化されたクエリ プロンプトです。 Cognitive Search では、2 つの検索候補がサポートされます。検索語句を補完する "*オートコンプリート*" と、一致する可能性のあるドキュメントの選択元のドロップダウン リストに使用される "*候補*" です。
+
+このウィザードでは候補がサポートされ、提示される結果の提供元フィールドが、インデックスの [`Suggesters`](index-add-suggesters.md) コンストラクトから得られます。
+
+```JSON
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "number",
+        "street",
+        "city",
+        "region",
+        "postCode",
+        "tags"
+      ]
+```
+
+1. ウィザードのページ上部にある **[Suggestions]\(候補\)** タブを選択します。 候補プロバイダーとしてインデックス スキーマに指定されたフィールドがすべて一覧表示されます。
+
+1. 現在選択されている項目を受け入れて、次のページに進みます。
 
 ## <a name="create-download-and-execute"></a>作成、ダウンロード、実行する
 
-1. **[Create demo app ]\(デモ アプリの作成\)** を選択して、HTML ファイルを生成します。
+1. ページ下部にある **[Create demo app ]\(デモ アプリの作成\)** を選択して、HTML ファイルを生成します。
 
 1. 確認を求められたら、 **[Download your app]\(アプリのダウンロード\)** を選択してファイルをダウンロードします。
 
-1. ファイル を開きます。 以下のスクリーンショットのようなページが表示されます。 結果を絞り込むには、何か語句を入力してからフィルターを使用します。 
+1. ファイルを開いて、[検索] ボタンをクリックします。 このアクションによってクエリが実行されます。空のクエリ (`*`) を指定して任意の結果セットを取得することもできます。 実際のページは次のスクリーンショットのようになります。 結果を絞り込むには、何か語句を入力してからフィルターを使用します。 
 
 基になるインデックスは、複数のドキュメントにまたがって複製された架空の生成データからできていて、説明と画像が一致しない場合があります。 独自のインデックスに基づいてアプリを作成すれば、両者の関連性を高めることができます。
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="サンプル データのデータ ソース ページ":::
-
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="アプリを実行する":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -108,7 +133,7 @@ Azure Cognitive Search のファセット ナビゲーションは、累積的�
 
 ## <a name="next-steps"></a>次のステップ
 
-既定のアプリは最初の探索や小規模なタスクに役立ちますが、API を早い段階で確認することは、概念とワークフローをより深いレベルで理解するのに役立ちます。
+デモ アプリはプロトタイプの作成に役立ちます。JavaScript やフロントエンド コードを書かなくてもエンドユーザーのエクスペリエンスをシミュレートすることができます。 フロントエンド機能について理解を深めるために、ファセット ナビゲーションに取り組んでみましょう。
 
 > [!div class="nextstepaction"]
-> [.NET SDK を使用してインデックスを作成する](./search-get-started-dotnet.md)
+> [ファセット フィルターを作成する方法](search-filters-facets.md)

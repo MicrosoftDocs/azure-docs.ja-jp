@@ -13,16 +13,16 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: ffd9b415d3b2a8e1aa716caa0e8289c6ae127b71
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 803f52666fb09a836eae3294410584ebbd71a1b6
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065084"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755889"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft ID プラットフォーム認証プロトコル
 
-Microsoft ID プラットフォームでは、最も広く使用されている認証および承認のプロトコルが複数サポートされています。 このセクションの各トピックでは、Microsoft ID プラットフォームでサポートされているプロトコルとその実装について説明します。 これらのトピックには、サポートされている要求の種類の確認、フェデレーション メタデータの使用の概要、OAuth 2.0 および SAML 2.0 プロトコルの詳細なリファレンス ドキュメント、トラブルシューティング セクションが含まれます。
+Microsoft ID プラットフォームでは、最も広く使用されている認証および認可のプロトコルが複数サポートされています。 このセクションの各トピックでは、Microsoft ID プラットフォームでサポートされているプロトコルとその実装について説明します。 これらのトピックには、サポートされている要求の種類の確認、フェデレーション メタデータの使用の概要、OAuth 2.0 および SAML 2.0 プロトコルの詳細なリファレンス ドキュメント、トラブルシューティング セクションが含まれます。
 
 ## <a name="authentication-protocols-articles-and-reference"></a>認証プロトコルの記事とリファレンス
 

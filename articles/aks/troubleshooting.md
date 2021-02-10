@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) を使用するときに発生する
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 7dfb9e34daeb92d57a61c570055695867c4a8107
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830940"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071869"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -20,11 +20,11 @@ Azure Kubernetes Service (AKS) クラスターを作成または管理すると�
 [Kubernetes クラスターのトラブルシューティングに関する公式ガイド](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)をご覧ください。
 Microsoft のエンジニアによって公開された、ポッド、ノード、クラスター、他の機能のトラブルシューティングに関する[トラブルシューティング ガイド](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)もあります。
 
-## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>作成またはアップグレード中に、"クォータ超過" エラーが発生します。 どうすればよいですか。 
+## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>作成時またはアップグレード中に `quota exceeded` エラーが発生します。 どうすればよいですか。 
 
  [さらに多くのコアを要求します](../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 
-## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークで AKS クラスターをデプロイしているときに、insufficientSubnetSize エラーが発生します。 どうすればよいですか。
+## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークを使用して AKS クラスターをデプロイしているときに `insufficientSubnetSize` エラーが発生します。 どうすればよいですか。
 
 このエラーは、クラスターに使用中のサブネットに、正常なリソース割り当てのためにその CIDR 内で使用可能な IP がもうないことを示しています。 Kubenet クラスターでは、クラスター内のノードごとに十分な IP 空間が必要です。 Azure CNI クラスターでは、クラスター内の各ノードとポッドに十分な IP 空間が必要です。
 [ポッドに IP を割り当てるための Azure CNI の設計](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)の詳細については、こちらを参照してください。

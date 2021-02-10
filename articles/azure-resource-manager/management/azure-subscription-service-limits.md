@@ -3,12 +3,12 @@ title: Azure サブスクリプションの制限とクォータ
 description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 この記事では、制限を引き上げる方法と、最大値に関する情報について説明します。
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 0a20d38d0f8d5be4a19dcdb8b6b846699bac6cc1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964195"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920471"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 
@@ -175,6 +175,10 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 ## <a name="azure-policy-limits"></a>Azure Policy の制限
 
 [!INCLUDE [policy-limits](../../../includes/azure-policy-limits.md)]
+
+## <a name="azure-quantum-limits"></a>Azure Quantum の制限
+
+[!INCLUDE [quantum-limits](../../../includes/azure-quantum-limits.md)]
 
 ## <a name="azure-role-based-access-control-limits"></a>Azure のロールベースのアクセス制御の制限
 
@@ -402,7 +406,7 @@ Standard ストレージ アカウントの制限について詳しくは、[Sta
 
 #### <a name="disk-encryption-sets"></a>ディスク暗号化セット
 
-リージョンごと、サブスクリプションごとに、50 のディスク暗号化セットという制限があります。 詳細については、[Linux](../../virtual-machines/disk-encryption.md#restrictions) または [Windows](../../virtual-machines/disk-encryption.md#restrictions) 仮想マシンの暗号化ドキュメントを参照してください。 クォータを増やす必要がある場合は、Azure サポートにお問い合わせください。
+リージョンごと、サブスクリプションごとに、1000 のディスク暗号化セットという制限があります。 詳細については、[Linux](../../virtual-machines/disk-encryption.md#restrictions) または [Windows](../../virtual-machines/disk-encryption.md#restrictions) 仮想マシンの暗号化ドキュメントを参照してください。 クォータを増やす必要がある場合は、Azure サポートにお問い合わせください。
 
 ### <a name="managed-virtual-machine-disks"></a>管理対象の仮想マシン ディスク
 

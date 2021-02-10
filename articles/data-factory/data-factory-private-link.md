@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a1b5ba56d30124bea7a814c2ffcf0cfff28903aa
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746371"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062190"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory 用の Azure Private Link
 
@@ -48,7 +48,7 @@ Azure Data Factory で Private Link がサポートされていると、次の�
 * 仮想ネットワーク内にプライベート エンドポイントを作成する。
 * 特定の Data Factory インスタンスへのプライベート接続を有効にする。 
 
-Azure Data Factory サービスへの通信は、Private Link を経由し、セキュリティで保護されたプライベート接続が提供されます。 また、ご利用のリソースをより安全に保護する方法を提供するために、前述の仮想ネットワーク内のドメインとポートまたは企業ファイアウォールを構成する必要はありません。  
+Azure Data Factory サービスへの通信は、Private Link を経由し、セキュリティで保護されたプライベート接続が提供されます。 
 
 ![Azure Data Factory アーキテクチャの Private Link の図。](./media/data-factory-private-link/private-link-architecture.png)
 
@@ -63,11 +63,14 @@ Azure Data Factory サービスへの通信は、Private Link を経由し、セ
    > [!NOTE]
    > 現在サポートされていない機能については、引き続き、前述の仮想ネットワーク内のドメインとポートまたは企業ファイアウォールを構成する必要があります。 
 
+   > [!NOTE]
+   > プライベート エンドポイント経由の Azure Data Factory への接続は、データ ファクトリのセルフホステッド統合ランタイムにのみ適用されます。 Synapse ではサポートされません。
+
 > [!WARNING]
 > リンクされたサービスを作成する場合は、必ず資格情報を Azure Key Vault 内に格納してください。 そうしないと、Azure Data Factory 内で Private Link サービスを有効にしても、資格情報が機能しません。
 
 ## <a name="dns-changes-for-private-endpoints"></a>プライベート エンドポイントの DNS の変更
-プライベート エンドポイントを作成すると、Data Factory の DNS CNAME リソース レコードは、プレフィックス "privatelink" を持つサブドメイン内のエイリアスに更新されます。 既定では、"privatelink" サブドメインに対応する[プライベート DNS ゾーン](https://docs.microsoft.com/azure/dns/private-dns-overview)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
+プライベート エンドポイントを作成すると、Data Factory の DNS CNAME リソース レコードは、プレフィックス "privatelink" を持つサブドメイン内のエイリアスに更新されます。 既定では、"privatelink" サブドメインに対応する[プライベート DNS ゾーン](../dns/private-dns-overview.md)も作成されます。これには、プライベート エンドポイントの DNS A リソース レコードが含まれます。
 
 プライベート エンドポイントを持つ VNet の外部からデータ ファクトリのエンドポイント URL を解決すると、データ ファクトリ サービスのパブリック エンドポイントに解決されます。 プライベート エンドポイントをホストしている VNet から解決されると、ストレージ エンドポイント URL はプライベート エンドポイントの IP アドレスに解決されます。
 
@@ -89,8 +92,8 @@ DataFactoryA の DNS リソース レコードは、プライベート エンド
 ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントが Data Factory エンドポイントの FQDN をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成するか、プライベート エンドポイントの IP アドレスを使用して "DataFactoryA.{region}.privatelink.datafactory.azure.net" の A レコードを構成する必要があります。
 
 プライベート エンドポイントをサポートするように独自の DNS サーバーを構成する方法の詳細については、次の記事を参照してください。
-- [Azure 仮想ネットワーク内のリソースの名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [プライベート エンドポイントの DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+- [Azure 仮想ネットワーク内のリソースの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)
+- [プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-overview.md#dns-configuration)
 
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Azure Data Factory 用の Private Link をセットアップする

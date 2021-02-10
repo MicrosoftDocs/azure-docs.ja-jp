@@ -13,18 +13,18 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: c6049bf55e379a2629e8cd4ef1427f91fc31d2cd
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: b437efcfa2b0bb2a725929ae0253f48d97d11552
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063605"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754816"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
 Azure AD エンティティを認証し、Azure AD からのトークンを要求する場合、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) の両方が使用されます。 これまで、ほとんどの開発者は、開発者プラットフォーム用の Azure AD (v1.0) で、Azure AD Authentication Library (ADAL) を使用してトークンを要求することで、Azure AD ID (職場と学校のアカウント) を認証していました。 MSAL を使用すると、次のようになります。
 
-- Microsoft ID プラットフォーム エンドポイントを使用するため、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、および Azure AD B2C 経由のソーシャル アカウントとローカル アカウント) を認証できます。
+- Microsoft ID プラットフォームを使用するため、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、Azure AD B2C 経由のソーシャルおよびローカル アカウント) を認証できます。
 - ユーザーの優れたシングルサインオン エクスペリエンスが実現します。
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 - イノベーションを活用できます。
@@ -35,9 +35,9 @@ Azure AD エンティティを認証し、Azure AD からのトークンを要�
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL アプリと MSAL アプリの違い
 
-ほとんどの場合、MSAL.NET と Microsoft ID プラットフォーム エンドポイント (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.NET を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。
+ほとんどの場合、MSAL.NET と Microsoft ID プラットフォーム (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.NET を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。
 
-開発者向け Azure AD (v1.0) エンドポイント (および ADAL.NET) を既に使い慣れている場合は、[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページをお読みください。
+開発者向け Azure AD (v1.0) エンドポイント (および ADAL.NET) について既によく理解している場合は、[Microsoft ID プラットフォームの違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページをお読みください。
 
 ただし、アプリケーションで以前のバージョンの [Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/active-directory-federation-services) を使用してユーザーをサインインさせる必要がある場合は、引き続き ADAL.NET を使用する必要があります。 詳細については、「[ADFS support](https://aka.ms/msal-net-adfs-support)」 (ADFS のサポート) を参照してください。
 
@@ -266,4 +266,4 @@ AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
 
 ## <a name="next-steps"></a>次のステップ
 
-スコープの詳細については、[Microsoft ID プラットフォーム エンドポイントでのスコープ、アクセス許可、および同意](v2-permissions-and-consent.md)に関するページを参照してください
+スコープの詳細については、[Microsoft ID プラットフォームでのスコープ、アクセス許可、同意](v2-permissions-and-consent.md)に関するページを参照してください

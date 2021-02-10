@@ -8,22 +8,18 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219744"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796969"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio でのソース管理
 
-既定では、Azure Synapse Studio は Synapse サービスに対して直接作成を行います。 ただし、このエクスペリエンスには次の制限があります。
+既定では、Azure Synapse Studio は Synapse サービスに対して直接作成を行います。 Synapse Studio では、ソース管理に Git を使用したコラボレーションが必要である場合、ワークスペースを Git リポジトリ、Azure DevOps、または GitHub に関連付けることができます。 
 
-- Synapse Studio には、変更を保存するための一時ストレージは含まれていません。 変更を保存して共有する唯一の方法は **[発行]** を使用することであり、変更内容はすべて、Synapse サービスに直接発行されます。
-
-- Synapse Studio は、コラボレーションおよびバージョン管理用に最適化されていません。
-
-Synapse Studio では、ソース管理機能を提供するために、ワークスペースを Git リポジトリ、Azure DevOps、または GitHub に関連付けることができます。 この記事では、Git リポジトリが有効になっている Synapse ワークスペースを構成し、それで作業する方法について説明します。 また、いくつかのベスト プラクティスとトラブルシューティング ガイドも提供します。
+この記事では、Git リポジトリが有効になっている Synapse ワークスペースを構成し、それで作業する方法について説明します。 また、いくつかのベスト プラクティスとトラブルシューティング ガイドも提供します。
 
 > [!NOTE]
 > Azure Synapse Studio Git 統合は、Azure Government クラウドでは利用できません。

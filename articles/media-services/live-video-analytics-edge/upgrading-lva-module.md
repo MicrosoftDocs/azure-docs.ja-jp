@@ -5,12 +5,12 @@ author: naiteeks
 ms.topic: how-to
 ms.author: naiteeks
 ms.date: 12/14/2020
-ms.openlocfilehash: aa8657550c6475afd9f893acf8985c50cec0f199
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 49c17946203bc6c3655b1aaf7b04a1ee3ea67388
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98119460"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955651"
 ---
 # <a name="upgrading-live-video-analytics-on-iot-edge-from-10-to-20"></a>Live Video Analytics on IoT Edge 1.0 から 2.0 へのアップグレード
 
@@ -37,7 +37,7 @@ IoT Edge モジュールで Live Video Analytics をアップグレードする�
 "image": "mcr.microsoft.com/media/live-video-analytics:2"
 ```
 > [!TIP]
-IoT Edge モジュールで Live Video Analytics の名前を変更していない場合は、モジュール ノードの下で `lvaEdge` を探します。
+> IoT Edge モジュールで Live Video Analytics の名前を変更していない場合は、モジュール ノードの下で `lvaEdge` を探します。
 
 ### <a name="topology-file-changes"></a>トポロジ ファイルの変更
 トポロジ ファイルで **`apiVersion`** が 2.0 に設定されていることを確認します
@@ -58,9 +58,9 @@ IoT Edge モジュールで Live Video Analytics の名前を変更していな�
 >**`outputSelectors`** は省略可能なプロパティです。 これが使用されていない場合、メディア グラフはオーディオ (有効な場合) とビデオを RTSP カメラから下流に渡します。 
 
 * `MediaGraphHttpExtension` と `MediaGraphGrpcExtension` のプロセッサでは、次の変更点に注意してください。  
-    * **イメージのプロパティ**
-        * `MediaGraphImageFormatEncoded` はサポート対象から除外されました。 
-        * 代わりに、 **`MediaGraphImageFormatBmp`** 、 **`MediaGraphImageFormatJpeg`** 、または **`MediaGraphImageFormatPng`** を使用してください。 たとえば、次のように入力します。
+    #### <a name="image-properties"></a>イメージのプロパティ
+    * `MediaGraphImageFormatEncoded` はサポート対象から除外されました。 
+      * 代わりに、 **`MediaGraphImageFormatBmp`** 、 **`MediaGraphImageFormatJpeg`** 、または **`MediaGraphImageFormatPng`** を使用してください。 たとえば、次のように入力します。
         ```
         "image": {
                 "scale": 
@@ -94,14 +94,14 @@ IoT Edge モジュールで Live Video Analytics の名前を変更していな�
         >[!NOTE]
         > pixelFormat の使用可能な値には、`yuv420p`、`rgb565be`、`rgb565le`、`rgb555be`、`rgb555le`、`rgb24`、`bgr24`、`argb`、`rgba`、`abgr`、`bgra` があります  
 
-    * **gRPC 拡張プロセッサの extensionConfiguration**  
-        * `MediaGraphGrpcExtension` プロセッサでは、 **`extensionConfiguration`** と呼ばれる新しいプロパティが使用でき、これは gRPC コントラクトの一部として使用できる省略可能な文字列です。 推論サーバーにデータを渡すためにこのフィールドを使用でき、推論サーバーでそのデータをどのように使用するかを定義できます。  
-        このプロパティのユース ケースの 1 つは、単一の推論サーバーにパッケージ化された複数の AI モデルがある場合です。 このプロパティを使用すると、AI モデルごとにノードを公開する必要はありません。 代わりに、グラフ インスタンスでは、拡張プロバイダーは、 **`extensionConfiguration`** プロパティを使用して、異なる AI モデルを選択する方法を定義でき、実行中に LVA は、推論サーバーにこの文字列を渡し、推論サーバーはこれを使用して目的の AI モデルを呼び出します。  
+    #### <a name="extensionconfiguration-for-grpc-extension-processor"></a>gRPC 拡張プロセッサの extensionConfiguration  
+    * `MediaGraphGrpcExtension` プロセッサでは、 **`extensionConfiguration`** と呼ばれる新しいプロパティが使用でき、これは gRPC コントラクトの一部として使用できる省略可能な文字列です。 推論サーバーにデータを渡すためにこのフィールドを使用でき、推論サーバーでそのデータをどのように使用するかを定義できます。  
+    このプロパティのユース ケースの 1 つは、単一の推論サーバーにパッケージ化された複数の AI モデルがある場合です。 このプロパティを使用すると、AI モデルごとにノードを公開する必要はありません。 代わりに、グラフ インスタンスでは、拡張プロバイダーは、 **`extensionConfiguration`** プロパティを使用して、異なる AI モデルを選択する方法を定義でき、実行中に LVA は、推論サーバーにこの文字列を渡し、推論サーバーはこれを使用して目的の AI モデルを呼び出します。  
 
-    * **AI 構成**
-        * Live Video Analytics 2.0 では、トポロジ内で複数のメディア グラフ拡張プロセッサの使用がサポートされるようになりました。 RTSP カメラのメディア フレームを別の AI モデルに順番にまたは同時にあるいは両方を組み合わせて渡すことができます。 2 つの AI モデルが順番に使用される場合を示すサンプル トポロジをご覧ください。
+    #### <a name="ai-composition"></a>AI 構成
+    * Live Video Analytics 2.0 では、トポロジ内で複数のメディア グラフ拡張プロセッサの使用がサポートされるようになりました。 RTSP カメラのメディア フレームを別の AI モデルに順番にまたは同時にあるいは両方を組み合わせて渡すことができます。 2 つの AI モデルが順番に使用される場合を示すサンプル トポロジをご覧ください。
 
-
+### <a name="disk-space-management-with-sink-nodes"></a>シンク ノードを使用したディスク領域の管理
 * **ファイル シンク** ノードで、IoT Edge モジュールの Live Video Analytics が、処理されたイメージの格納に使用できるディスク領域の大きさを指定できるようになりました。 これを行うには、 **`maximumSizeMiB`** フィールドを FileSink ノードに追加します。 サンプルのファイル シンク ノードは次のとおりです。
     ```
     "sinks": [
@@ -154,6 +154,7 @@ IoT Edge モジュールで Live Video Analytics の名前を変更していな�
     >[!NOTE]
     >  **ファイル シンク** パスは、ベース ディレクトリのパスとファイル名のパターンに分割されますが、**アセット シンク** パスには基本ディレクトリ パスが含まれます。  
 
+### <a name="frame-rate-management"></a>フレーム レートの管理
 * **`MediaGraphFrameRateFilterProcessor`** は **Live Video Analytics on IoT Edge 2.0** モジュールで非推奨になっています。
     * 処理のために着信ビデオをサンプリングするには、 **`samplingOptions`** プロパティを MediaGraph 拡張プロセッサ (`MediaGraphHttpExtension` または `MediaGraphGrpcExtension`) に追加します  
      ```
@@ -169,7 +170,7 @@ IoT Edge モジュールで Live Video Analytics の名前を変更していな�
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/telemetry-schema/telegraf.png" alt-text="イベントの分類":::
 
-Docker を使用して簡単にカスタム構成で Telegraf イメージを作成できます。 この詳細については、[監視とログ記録](monitoring-logging.md#azure-monitor-collection-via-telegraf)に関するページをご覧ください。
+Docker を使用して簡単にカスタム構成で Telegraf イメージを作成できます。 詳細については、「[監視とログ記録](monitoring-logging.md#azure-monitor-collection-via-telegraf)」のページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

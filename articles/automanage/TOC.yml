@@ -23,6 +23,8 @@
       href: common-errors.md
     - name: 切断された Automanage アカウントの修復
       href: repair-automanage-account.md
+    - name: 自動管理仮想マシンのリージョン間での移動
+      href: move-automanaged-vms.md
 - name: リソース
   expanded: true
   items:

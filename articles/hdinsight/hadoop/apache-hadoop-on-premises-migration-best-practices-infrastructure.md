@@ -1,19 +1,16 @@
 ---
 title: インフラストラクチャ:オンプレミスの Apache Hadoop から Azure HDInsight
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのインフラストラクチャのベスト プラクティスについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: e412b82be911f0b4ba2e5cda51495cdcd7826917
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f66e13046a34bddfd27912e23ce51f75006fd9fa
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542303"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932155"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - インフラストラクチャのベスト プラクティス
 
@@ -80,7 +77,7 @@ HDInsight の各バージョンは、一連の Hadoop エコシステム コン�
 
 ## <a name="customize-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使って HDInsight をカスタマイズする
 
-HDInsight には、 **スクリプト アクション** と呼ばれるクラスター構成のメソッドが提供されています。 スクリプト アクションは HDInsight クラスターのノードで実行される Bash スクリプトで、追加コンポーネントのインストールおよび構成設定を変更するために使用できます。
+HDInsight には、**スクリプト アクション** と呼ばれるクラスター構成のメソッドが提供されています。 スクリプト アクションは HDInsight クラスターのノードで実行される Bash スクリプトで、追加コンポーネントのインストールおよび構成設定を変更するために使用できます。
 
 スクリプト アクションは、HDInsight クラスターからアクセスできる URI に保存されている必要があります。 これらはクラスターの作成中または作成後に使用でき、特定のノード型でのみ実行するように制限することもできます。
 

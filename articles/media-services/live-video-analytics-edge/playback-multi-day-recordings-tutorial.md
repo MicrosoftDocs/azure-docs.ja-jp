@@ -3,12 +3,12 @@ title: 数日間の記録の再生 - Azure
 description: このチュートリアルでは、Azure Media Services API を使用して数日間の継続的なビデオ記録を再生する方法について説明します。
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 81a778b40649c1318b3738a289f0db37fd35376a
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803434"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492791"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>チュートリアル:数日間の記録の再生  
 
@@ -57,7 +57,7 @@ ms.locfileid: "91803434"
 }
 ```
 
-次に、Visual Studio Code で src/ams-asset-player を開きます。 このフォルダーには、このチュートリアルで必要なファイルが含まれています。 appsettings.json ファイルを開き、その内容を appsettings.development.json という新しいファイルにコピーします。 後者のファイルに次の編集を行います。
+次に、Visual Studio Code で src/ams-asset-player を開きます。 このフォルダーには、このチュートリアルで必要なファイルが含まれています。 appsettings.json ファイルを開き、その内容を appsettings.development.json という新しいファイルにコピーします。 新しく作成した appsettings.development.json に対して、次の編集を行います。
 
 ```
   "AMS" : {
@@ -78,7 +78,7 @@ ms.locfileid: "91803434"
 1. [Show Verbose Message]\(詳細メッセージの表示\) を検索して有効にします。
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="拡張機能の設定":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="詳細メッセージの表示":::
 1. <!--In Visual Studio Code, you can click-->左側の [実行] アイコンをクリックして (または Ctrl + Shift + D キーを押して)、実行可能なアプリケーションを表示します。
 
     ![[実行] 項目が選択された Visual Studio Code メニューのスクリーンショット。](./media/playback-multi-day-recordings-tutorial/run.png)

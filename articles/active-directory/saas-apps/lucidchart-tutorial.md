@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 3216718f076140cc9e7a5dec9048ee04adc5d96b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cc0eefd0b1e2f5d2f77761af92c8467348c5ab3a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458360"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625300"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucidchart"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Lucidchart の統合
 
@@ -25,8 +25,6 @@ ms.locfileid: "92458360"
 * Lucidchart にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Lucidchart に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
-
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,27 +37,26 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Lucidchart では、 **SP** によって開始される SSO がサポートされます
-* Lucidchart では、 **Just In Time** ユーザー プロビジョニングがサポートされます
-* Lucidchart を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Lucidchart では、**SP** によって開始される SSO がサポートされます
+* Lucidchart では、**Just In Time** ユーザー プロビジョニングがサポートされます
 
-## <a name="adding-lucidchart-from-the-gallery"></a>ギャラリーからの Lucidchart の追加
+## <a name="add-lucidchart-from-the-gallery"></a>ギャラリーからの Lucidchart の追加
 
 Azure AD への Lucidchart の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Lucidchart を追加する必要があります。
 
-1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **Lucidchart** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Lucidchart**」と入力します。
 1. 結果のパネルから **[Lucidchart]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-lucidchart"></a>Lucidchart の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-lucidchart"></a>Lucidchart の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Lucidchart に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Lucidchart の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-Lucidchart で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
+Lucidchart に対して Azure AD SSO を構成してテストするには、次の手順を行います。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
@@ -72,15 +69,15 @@ Lucidchart で Azure AD SSO を構成してテストするには、次の構成�
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-1. [Azure portal](https://portal.azure.com/) の **Lucidchart** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. Azure portal の **Lucidchart** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
+4. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-   **[サインオン URL]** テキスト ボックスに、「`https://chart2.office.lucidchart.com/saml/sso/azure`」と入力します。
+   **[サインオン URL]** ボックスに、URL として「`https://chart2.office.lucidchart.com/saml/sso/azure`」と入力します。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -90,12 +87,7 @@ Lucidchart で Azure AD SSO を構成してテストするには、次の構成�
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
-    a. ログイン URL
-
-    b. Azure AD 識別子
-
-    c. ログアウト URL
-
+    
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
@@ -115,22 +107,16 @@ Lucidchart で Azure AD SSO を構成してテストするには、次の構成�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で **[Lucidchart]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
-   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[ユーザーの追加] リンク](common/add-assign-user.png)
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
 ## <a name="configure-lucidchart-sso"></a>Lucidchart の SSO の構成
 
 1. 別の Web ブラウザー ウィンドウで、Lucidchart の企業サイトに管理者としてログインします。
 
-2. 上部のメニューで **[チーム]** をクリックします。
+2. 上部のメニューで、**[Team]** をクリックします。
 
     ![チーム](./media/lucidchart-tutorial/ic791190.png "チーム")
 
@@ -138,21 +124,21 @@ Lucidchart で Azure AD SSO を構成してテストするには、次の構成�
 
     ![SAML の管理](./media/lucidchart-tutorial/ic791191.png "SAML の管理")
 
-4. **[SAML Authentication Settings]** ダイアログ ページで、次の手順に従います。
+4. **[SAML 認証設定]** ダイアログ ページで、次の手順を実行します。
 
-    a. **[SAML 認証を有効にする]** を選んで、 **[オプション]** をクリックします。
+    a. **[SAML 認証]** を選択し、**[オプション]** をクリックします。
 
     ![[SAML Authentication Settings]](./media/lucidchart-tutorial/ic791192.png "SAML 認証設定")
 
-    b. **[ドメイン]** ボックスで、使用するドメインを入力して、 **[証明書の変更]** をクリックします。
+    b. **[ドメイン]** ボックスにドメインを入力して **[証明書を変更]** をクリックします。
 
     ![[証明書の変更]](./media/lucidchart-tutorial/ic791193.png "証明書の変更")
 
-    c. ダウンロードしたメタデータ ファイルを開いて内容をコピーし、 **[Upload Metadata (メタデータのアップロード)]** ボックスに貼り付けます。
+    c. ダウンロードしたメタデータ ファイルを開いて内容をコピーし、**[メタデータをアップロード]** ボックスに貼り付けます。
 
     ![[Upload Metadata (メタデータのアップロード)]](./media/lucidchart-tutorial/ic791194.png "メタデータのアップロード")
 
-    d. **[Automatically Add new users to the team]\(新しいユーザーを自動的にチームに追加する\)** を選んで、 **[Save changes]\(変更を保存\)** をクリックします。
+    d. **[Automatically Add new users to the team]\(新しいユーザーを自動的にチームに追加する\)** を選んで、**[Save changes]\(変更を保存\)** をクリックします。
 
     ![[変更の保存]](./media/lucidchart-tutorial/ic791195.png "[変更の保存]")
 
@@ -164,20 +150,14 @@ Lucidchart へのユーザー プロビジョニングの構成にあたって�
 
 ## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [Lucidchart] タイルをクリックすると、SSO を設定した Lucidchart に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる Lucidchart のサインオン URL にリダイレクトされます。 
 
-## <a name="additional-resources"></a>その他のリソース
+* Lucidchart のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Lucidchart] タイルをクリックすると、SSO を設定した Lucidchart に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
-
-- [Azure AD で Lucidchart を試す](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
-
-- [高度な可視性と制御によって Lucidchart を保護する方法](/cloud-app-security/proxy-intro-aad)
+ Lucidchart を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](/cloud-app-security/proxy-deployment-aad)をご覧ください。

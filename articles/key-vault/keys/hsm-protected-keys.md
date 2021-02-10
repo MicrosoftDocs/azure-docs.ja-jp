@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 7fa8590b4fb148b2a8969c4f474f6627cea263df
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 17ef0cb7efcd2a76b46a6bb0dbc82268895dae00
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935327"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222202"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする
 
@@ -40,6 +40,7 @@ HSM で保護されたキーの Key Vault への転送は、使用する HSM に
 |Cryptomathic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>詳細については、[Cryptomathic のサイト](https://www.cryptomathic.com/azurebyok)を参照してください|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
 |Securosys SA|製造元、サービスとしての HSM|Primus HSM ファミリ、Securosys Clouds HSM|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
 |StorMagic|ISV (エンタープライズ キー管理システム)|以下を含む複数の HSM ブランドおよびモデル<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>[詳細については、StorMagic のサイト](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)を参照してください|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
+|IBM|製造元|IBM 476x、CryptoExpress|新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
 |||||
 
 ## <a name="next-steps"></a>次のステップ

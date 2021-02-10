@@ -1,26 +1,22 @@
 ---
-title: Azure AD とアプリの統合の概要 | Microsoft Docs
+title: Azure AD とアプリの統合の概要
 description: この記事は、オンプレミスのアプリケーションおよびクラウド アプリケーションと Azure Active Directory (AD) を統合するための概要ガイドです。
 services: active-directory
-documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8b321acb00e6e9b4b6cca117afba8bf0c9432719
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659099"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258468"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 
@@ -77,9 +73,7 @@ ms.locfileid: "94659099"
 Microsoft Azure AD アプリケーション プロキシを使用すると、プライベート ネットワーク内に置かれたアプリケーションへの、任意の場所および任意のデバイスからのアクセスを安全に許可することができます。 アプリケーション プロキシ コネクタは、環境内にインストールすると、Azure AD で簡単に構成することができます。
 
 ### <a name="integrating-custom-applications"></a>カスタム アプリケーションの統合
-新しいアプリケーションの作成中に、開発者が Azure AD の機能を活用できるようにサポートする必要がある場合は、[開発者ガイド](./developer-guidance-for-integrating-applications.md)を参照してください。
-
-カスタム アプリケーションを Azure アプリケーション ギャラリーに追加する場合は、 [Azure AD のセルフ サービス SAML 構成を使用した "ユーザー独自のアプリケーションの持ち込み"](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に関するページを参照してください。
+カスタム アプリケーションを Azure アプリケーション ギャラリーに追加する場合は、「[アプリを Azure AD アプリ ギャラリーに公開する](../develop/v2-howto-app-gallery-listing.md)」を参照してください。
 
 ## <a name="managing-access-to-applications"></a>アプリケーションへのアクセスの管理
 次の記事では、Azure AD コネクタと Azure AD を使用して Azure AD と統合した後でアプリケーションへのアクセスを管理する方法について説明します。

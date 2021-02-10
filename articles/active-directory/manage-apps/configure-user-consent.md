@@ -3,7 +3,7 @@ title: Azure AD を使用してエンド ユーザーがアプリケーション
 description: 組織のデータにアクセスするアプリケーションにユーザーがいつどのように同意できるかについて管理する方法を説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c279b7f4ec2d70e7eb6a97abf02cfbf4f2ef87f0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: b6dd95dafbd079e79247110ee227121483dc372e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033614"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259306"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>エンド ユーザーがアプリケーションに同意する方法を構成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "97033614"
 
 Azure portal を使用してユーザーの同意設定を構成するには:
 
-1. [Azure portal](https://portal.azure.com) に[グローバル管理者](../roles/permissions-reference.md#global-administrator--company-administrator)としてサインインします。
+1. [Azure portal](https://portal.azure.com) に[グローバル管理者](../roles/permissions-reference.md#global-administrator)としてサインインします。
 1. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[同意とアクセス許可]**  >  **[ユーザーの同意設定]** を選択します。
 1. **[User consent for applications]\(アプリケーションに対するユーザーの同意\)** で、すべてのユーザーに対して構成する同意設定を選択します。
 1. **[Save]\(保存\)** を選択して設定を保存します。
@@ -185,4 +185,4 @@ Microsoft によってリスクが検出された場合に必要となる管理�
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
-* [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Microsoft Q&A の Azure AD。](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

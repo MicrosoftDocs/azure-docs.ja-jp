@@ -7,13 +7,13 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: 869009d7dd26685842da3c948fbdc058a38feb21
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.date: 01/27/2021
+ms.openlocfilehash: 4f6187ccb143f065fed236495128add7a2ab1ee4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89398428"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928537"
 ---
 # <a name="reservation-recommendations"></a>Reservation recommendations
 
@@ -37,11 +37,11 @@ Azure 予約インスタンス (RI) の購入に関する推奨事項は、Azure
 
 :::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" alt-text="予約購入の推奨事項を示す例" lightbox="./media/reserved-instance-purchase-recommendations/recommended-quantity.png" :::
 
-推奨事項に関するその他の情報は、 **[See details]\(詳細の表示\)** のリンクをクリックすると表示されます。 次の画像は、推奨事項の詳細を示しています。 推奨数量は、使用履歴に基づき、最も使用された場合を想定して計算されます。 使用状況が一貫していない場合、100% 使用された場合の推奨事項にならない可能性があります。 この例では、時間の経過と共に使用率が変動していることに注目してください。 予約のコスト、可能な節約、使用率が表示されます。
+推奨事項に関するその他の情報は、 **[See details]\(詳細の表示\)** を選択すると表示されます。 次の画像は、推奨事項の詳細を示しています。 推奨数量は、使用履歴に基づき、最も使用された場合を想定して計算されます。 使用状況が一貫していない場合、100% 使用された場合の推奨事項にならない可能性があります。 この例では、時間の経過と共に使用率が変動していることに注目してください。 予約のコスト、可能な節約、使用率が表示されます。
 
 :::image type="content" source="./media/reserved-instance-purchase-recommendations/recommended-quantity-details.png" alt-text="予約購入の推奨事項の詳細を示す例" :::
 
-推奨量を超えて予約の数量を増減すると、グラフと推定値が変化します。 予約数量を増やすことによって、最終的に予約使用率が削減されるため、節約が減少します。 つまり、完全に使用されていない予約に対して支払いを行うことになります。
+このグラフと推定値は、推奨数量を増やすと変化します。 予約数量を増やすことによって、最終的に予約使用率が削減されるため、節約が減少します。 つまり、完全に使用されていない予約に対して支払いを行うことになります。
 
 予約数量を減らすと、節約も減少します。 使用率が高くなりますが、予約が使用全体に適用されない期間が発生する場合があります。 予約数量を超える使用は、より高価な従量課金制リソースによって使用されます。 次の例の画像はこの点について示しています。 予約数量を 4 に手動で減らしました。 予約の使用量は増加していますが、従量課金制のコストがかかるため、全体的な節約は減少します。
 
@@ -53,7 +53,8 @@ Azure 予約インスタンス (RI) の購入に関する推奨事項は、Azure
 
 予約購入の推奨量は、Azure Advisor から入手できます。 以下の点に注意してください。
 
-- Advisor で提供されるのは、単一サブスクリプションのスコープでの推奨事項のみです。 課金スコープ全体 (課金アカウントまたは課金プロファイル) の推奨事項を表示するには、Azure portal に移動して [予約]、[追加] の順に進み、推奨事項を表示する種類を選択します。
+- Advisor で提供されるのは、単一サブスクリプションのスコープでの推奨事項のみです。 課金スコープ全体 (課金アカウントまたは課金プロファイル) の推奨事項を表示するには、次のようにします。
+  -  Azure portal の **[予約]**  >  **[追加]** に移動し、推奨事項を表示する種類を選択します。
 - 過去 30 日間の利用傾向を考慮した推奨事項を Advisor で利用できます。
 - 推奨量と節約額は、3 年間の予約 (可能な場合) を対象としています。 サービスに対して 3 年間の予約が販売されていない場合、推奨量は 1 年間の予約価格を使用して計算されます。
 - 推奨事項の算出には、オンデマンド使用率に対する特別な割引が含まれます。

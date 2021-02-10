@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 744be742d9f638df14f9d6720c9dad9678685af0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb33bd4fe70c51e1e2afffece10ba3b29dcb0450
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017871"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932438"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-kubernetes-service"></a>Text Analytics コンテナーを Azure Kubernetes Service にデプロイする
 
@@ -27,7 +27,7 @@ Azure Cognitive Services の [Text Analytics](./text-analytics-how-to-install-co
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services) を作成してください。
 * [Visual Studio Code](https://code.visualstudio.com/download) などのテキスト エディター。
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) がインストールされていること。
+* [Azure CLI](/cli/azure/install-azure-cli) がインストールされていること。
 * [Kubernetes CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/) がインストールされていること。
 * 適切な価格レベルの Azure リソース。 すべての価格レベルでこのコンテナーを使用するわけではありません。
     * F0 または Standard 価格レベルのみの **Azure Text Analytics** リソース。

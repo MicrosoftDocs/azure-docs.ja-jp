@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出すデスクトップ アプリを運用環境に移行する - Microsoft ID プラットフォーム | Azure
+title: デスクトップ アプリを呼び出す Web API を運用環境に移行する | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出すデスクトップ アプリを運用環境に移行する方法について説明します
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 325f95f2830ef021a4ac79de48695dda570f7817
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ddd676a1e0b3d8f554b007974b62eb8c0c2ca9c1
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629784"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226357"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Web API を呼び出すデスクトップ アプリ:運用環境に移行する
 
@@ -31,14 +32,14 @@ ms.locfileid: "97629784"
 > [!NOTE]
 > 複数のリソースにおける同意の事前取得は、Microsoft ID プラットフォームでは機能しますが、Azure Active Directory (Azure AD) B2C では機能しません。 Azure AD B2C では、管理者による承認のみがサポートされており、ユーザーによる承認はサポートされていません。
 
-Microsoft ID プラットフォーム (v2.0) のエンドポイントでは、複数のリソースのトークンを一度に取得することはできません。 `scopes` パラメーターには、1 つリソースのみのスコープを含めることができます。 `extraScopesToConsent` パラメーターを使用して、ユーザーが複数のリソースに事前に同意するようにできます。
+Microsoft ID プラットフォームでは、複数のリソースのトークンを一度に取得することはできません。 `scopes` パラメーターには、1 つリソースのみのスコープを含めることができます。 `extraScopesToConsent` パラメーターを使用して、ユーザーが複数のリソースに事前に同意するようにできます。
 
 たとえば、2 つのリソースがあり、それぞれに 2 つのスコープがあるとします。
 
 - `https://mytenant.onmicrosoft.com/customerapi` のスコープは `customer.read` と `customer.write` です
 - `https://mytenant.onmicrosoft.com/vendorapi` のスコープは `vendor.read` と `vendor.write` です
 
-この例では、`extraScopesToConsent` パラメーターを持つ `.WithAdditionalPromptToConsent` 修飾子を使用します。
+この例では、`extraScopesToConsent` パラメーターを持つ `.WithExtraScopesToConsent` 修飾子を使用します。
 
 次に例を示します。
 
@@ -105,6 +106,11 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 Microsoft 個人アカウントのユーザーの場合、承認のためのネイティブ クライアント (デスクトップまたはモバイル アプリ) の呼び出しごとに同意のプロンプトが再表示されますが、これは意図的な動作です。 ネイティブ クライアント ID は本質的に安全ではありません。これは、機密性の高いクライアント アプリケーション ID とは異なります。 機密性の高いクライアント アプリケーションは、その ID を証明するために、Microsoft ID プラットフォームとシークレットを交換します。 Microsoft ID プラットフォームは、アプリケーションが承認されるたびにユーザーに同意を求めることで、コンシューマー サービスにおけるこのような非安全性を軽減することを選択しました。
 
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+追加のサンプルを試すには、「[デスクトップおよびモバイルのパブリック クライアント アプリ](sample-v2-code.md#desktop-and-mobile-public-client-apps)」を参照してください。
+
+
+

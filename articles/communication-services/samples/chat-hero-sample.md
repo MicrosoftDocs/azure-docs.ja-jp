@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888574"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760791"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
 
@@ -100,7 +100,7 @@ chat.csproj で Visual Studio を開き、デバッグ モードで実行しま�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-Communication Services サブスクリプションをクリーンアップして解除したい場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
+Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。 詳細については、[リソースのクリーンアップ](../quickstarts/create-communication-resource.md#clean-up-resources)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -111,6 +111,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 - [チャットの概念](../concepts/chat/concepts.md)について学習する
 - [チャット クライアント ライブラリ](../concepts/chat/sdk-features.md)について理解する
+- [Contoso Med App](https://github.com/Azure-Samples/communication-services-contoso-med-app) サンプルを確認する
 
 ## <a name="additional-reading"></a>その他の情報
 

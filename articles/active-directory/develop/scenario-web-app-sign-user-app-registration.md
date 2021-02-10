@@ -1,5 +1,6 @@
 ---
-title: ユーザーがサインインするための Web アプリの登録 - Microsoft ID プラットフォーム | Azure
+title: ユーザーをサインインさせる Web アプリを登録する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーがサインインするための Web アプリを登録する方法について学習します
 services: active-directory
 author: jmprieur
@@ -11,20 +12,20 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7ca294d3d7764737d4e2be55aae25bc8ff08a8d1
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011528"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937879"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>ユーザーをサインインさせる Web アプリ:アプリの登録
 
-この記事では、ユーザーをサインインさせる Web アプリにおけるアプリの登録の特性について説明されています。
+この記事では、ユーザーをサインインさせる Web アプリにおけるアプリの登録の手順について説明しています。
 
 アプリケーションを登録するには、次を使用することができます。
 
-- [Web アプリ クイックスタート](#register-an-app-by-using-the-quickstarts)。 アプリケーションを初めて作成するすばらしい体験に加えて、Azure portal のクイックスタートには、 **[この変更を行う]** という名前のボタンが含まれます。 既存のアプリであっても、このボタンを使用して必要なプロパティを設定できます。 これらのプロパティの値を自分のケースに適応させる必要があります。 具体的には、自分のアプリ用の Web API URL は、提案された既定値とは異なる可能性があり、URI のサインアウトにも影響があります。
+- [Web アプリ クイックスタート](#register-an-app-by-using-the-quickstarts)。 アプリケーションを初めて作成するすばらしい体験に加えて、Azure portal のクイックスタートには、 **[この変更を行う]** という名前のボタンが含まれます。 既存のアプリであっても、このボタンを使用して必要なプロパティを設定できます。 これらのプロパティの値を自分のケースに適応させます。 具体的には、自分のアプリ用の Web API URL は、提案された既定値とは異なる可能性があり、URI のサインアウトにも影響があります。
 - [手動でアプリケーションを登録する](#register-an-app-by-using-the-azure-portal) Azure portal。
 - PowerShell とコマンドライン ツール。
 
@@ -55,8 +56,8 @@ ms.locfileid: "98011528"
    1. **[登録]** を選択します。
 1. **[管理]** の下で **[認証]** を選択し、次の情報を追加します。
    1. **[Web]** セクションで、**リダイレクト URI** として `https://localhost:44321/signin-oidc` を追加します。
-   1. **ログアウト URL** として `https://localhost:44321/signout-oidc` を追加します。
-   1. **[暗黙的な許可]** の下の **[ID トークン]** を選択します。
+   1. **[フロントチャネルのログアウト URL]** に「`https://localhost:44321/signout-oidc`」と入力します。
+   1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** で、 **[ID トークン]** を選択します。
    1. **[保存]** を選択します。
    
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
@@ -64,10 +65,10 @@ ms.locfileid: "98011528"
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
    1. アプリケーションの **名前** を入力します (例: `MailApp-openidconnect-v2`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
    1. 自分のアプリケーションでサポートされているアカウントの種類を選択します。 (「[サポートされているアカウントの種類](./v2-supported-account-types.md)」を参照してください。)
-   1. **[リダイレクト URI (省略可能)]** セクションで、コンボボックスの **[Web]** を選択し、次のリダイレクト URI **https://localhost:44326/** を入力します。
+   1. **[リダイレクト URI (省略可能)]** セクションで、コンボ ボックスの **[Web]** を選択し、 **[リダイレクト URI]** の「`https://localhost:44326/`」を入力します。
    1. **[登録]** を選択して、アプリケーションを作成します。
 1. **[管理]** で、 **[認証]** を選択します。
-1. **[暗黙の付与]** セクションで、 **[ID トークン]** を選択します。 このサンプルでは、ユーザーをサインインさせるには、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
+1. **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** セクションで、 **[ID トークン]** を選択します。 このサンプルでは、ユーザーをサインインさせるには、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。
 1. **[保存]** を選択します。
 
 # <a name="java"></a>[Java](#tab/java)
@@ -80,10 +81,10 @@ ms.locfileid: "98011528"
 1. **[Web]** を選択します。
 1. **[リダイレクト URI]** に、同じホストとポート番号、その後にサインイン ページとして「`/msal4jsample/secure/aad`」を入力します。 
 1. **[構成]** をクリックします。
-1. **[Web]** セクションで、ユーザー情報ページの **リダイレクト URI** として、ホストとポート番号、その後に **/msal4jsample/graph/me** を使用します。
+1. **[Web]** セクションで、ユーザー情報ページの **リダイレクト URI** として、ホストとポート番号、その後に `/msal4jsample/graph/me` を使用します。
 既定では、このサンプルでは次のものが使用されます。
-   - **http://localhost:8080/msal4jsample/secure/aad**
-   - **http://localhost:8080/msal4jsample/graph/me**
+   - `http://localhost:8080/msal4jsample/secure/aad`
+   - `http://localhost:8080/msal4jsample/graph/me`
 
 1. **[保存]** を選択します。
 1. **[管理]** で、 **[証明書とシークレット]** を選択します。
@@ -99,7 +100,7 @@ ms.locfileid: "98011528"
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
    1. アプリケーションの **名前** を入力します (例: `python-webapp`)。 この名前は、アプリのユーザーに表示される場合があります。また、後で変更することができます。
    1. **[サポートされているアカウントの種類]** を **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)]** に変更します。
-   1. **[リダイレクト URI (省略可能)]** セクションで、コンボボックスの **[Web]** を選択し、次のリダイレクト URI **http://localhost:5000/getAToken** を入力します。
+   1. **[リダイレクト URI (省略可能)]** セクションで、コンボボックスの **[Web]** を選択し、次のリダイレクト URI `http://localhost:5000/getAToken` を入力します。
    1. **[登録]** を選択して、アプリケーションを作成します。
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります。
 1. **[管理]** で、 **[証明書とシークレット]** を選択します。

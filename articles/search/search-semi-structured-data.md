@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 01/25/2021
+ms.openlocfilehash: a7a010e3c60d6b96947597878fcd870e9845b2b3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701281"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746139"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>チュートリアル:Azure Storage に格納されている JSON BLOB のインデックスを REST で作成する
 
@@ -98,13 +98,13 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
 
 1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="HTTP エンドポイントとアクセス キーを取得する" border="false":::
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
 ## <a name="2---set-up-postman"></a>2 - Postman を設定する
 
-Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[Azure Cognitive Search REST API を調べる方法](search-get-started-rest.md)に関するページを参照してください。
+Postman を開始し、HTTP 要求を設定します。 このツールに慣れていない場合は、[REST API を使用した検索インデックスの作成](search-get-started-rest.md)に関するページを参照してください。
 
 このチュートリアルで使用する各呼び出しの要求メソッドは **POST** と **GET** です。 検索サービスに対して 3 つの API 呼び出しを行い、データ ソース、インデックス、およびインデクサーを作成します。 データ ソースには、ストレージ アカウントと JSON データへのポインターが含まれています。 データを読み込むときに、検索サービスは接続を行います。
 
@@ -158,7 +158,7 @@ URI では API バージョンを指定する必要があり、各呼び出し�
     ```
 
 ## <a name="4---create-an-index"></a>4 - インデックスを作成する
-    
+
 2 つ目の呼び出しは[インデックスの作成 API](/rest/api/searchservice/create-index) であり、検索可能なすべてのデータを格納する Azure Cognitive Search インデックスを作成します。 インデックスでは、すべてのパラメーターとその属性を指定します。
 
 1. この呼び出しのエンドポイントを `https://[service name].search.windows.net/indexes?api-version=2020-06-30` に設定します。 `[service name]` を検索サービスの名前に置き換えます。

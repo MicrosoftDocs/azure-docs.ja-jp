@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: ed9d7aee5f677a5c278a985c3f8102364e94ab7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561496"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947635"
 ---
 .NET 用 Azure Content Moderator クライアント ライブラリの使用を開始します。 以下の手順に従って、NuGet パッケージをインストールし、基本タスクのコード例を試してみましょう。 
 
@@ -28,7 +28,7 @@ Content Moderator は、不快感を与える可能性がある内容、リス�
 * 画像のモデレート
 * レビューを作成する
 
-[リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [サンプル](../../samples-dotnet.md)
+[リファレンスのドキュメント](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [サンプル](../../samples-dotnet.md)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -118,10 +118,10 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 
 |名前|説明|
 |---|---|
-|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient?view=azure-dotnet)|このクラスは、すべての Content Moderator の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
-|[ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet)|このクラスでは、成人向けコンテンツ、個人情報、または人間の顔の画像を分析するための機能が提供されます。|
-|[TextModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation?view=azure-dotnet)|このクラスでは、言語、冒涜的表現、エラー、個人情報のテキストを分析するための機能が提供されます。|
-|[Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet)|このクラスでは、ジョブ、カスタム ワークフロー、人によるレビューを作成するためのメソッド含む、レビュー API の機能が提供されます。|
+|[ContentModeratorClient](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.contentmoderatorclient)|このクラスは、すべての Content Moderator の機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。|
+|[ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation)|このクラスでは、成人向けコンテンツ、個人情報、または人間の顔の画像を分析するための機能が提供されます。|
+|[TextModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.textmoderation)|このクラスでは、言語、冒涜的表現、エラー、個人情報のテキストを分析するための機能が提供されます。|
+|[Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews)|このクラスでは、ジョブ、カスタム ワークフロー、人によるレビューを作成するためのメソッド含む、レビュー API の機能が提供されます。|
 
 ## <a name="code-examples"></a>コード例
 
@@ -158,10 +158,10 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 
 ## <a name="moderate-images"></a>画像のモデレート
 
-次のコードでは、Content Moderator クライアントが [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation?view=azure-dotnet) オブジェクトとともに使用され、成人向けコンテンツやきわどい内容のリモート画像が分析されます。
+次のコードでは、Content Moderator クライアントが [ImageModeration](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation) オブジェクトとともに使用され、成人向けコンテンツやきわどい内容のリモート画像が分析されます。
 
 > [!NOTE]
-> ローカルの画像コンテンツを分析することもできます。 ローカル画像を操作するメソッドと操作については、[リファレンス ドキュメント](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)を参照してください。
+> ローカルの画像コンテンツを分析することもできます。 ローカル画像を操作するメソッドと操作については、[リファレンス ドキュメント](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.imagemoderation.evaluatefileinputwithhttpmessagesasync#Microsoft_Azure_CognitiveServices_ContentModerator_ImageModeration_EvaluateFileInputWithHttpMessagesAsync_System_IO_Stream_System_Nullable_System_Boolean__System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_Threading_CancellationToken_)を参照してください。
 
 ### <a name="get-sample-images"></a>サンプル イメージの取得
 
@@ -204,7 +204,7 @@ Content Moderator 画面に表示される画像の属性の詳細について�
 
 Content Moderator .NET クライアント ライブラリを使用して、人間のモデレーターがレビューできるように、[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)にコンテンツをフィードすることができます。 レビュー ツールの詳細については、[レビュー ツールの概念的なガイド](../../review-tool-user-guide/human-in-the-loop.md)に関するページを参照してください。
 
-このセクションのメソッドでは、[Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews?view=azure-dotnet) クラスを使用してレビューが作成され、その ID が取得されて、レビュー ツールの Web ポータルから人間による入力を受け取った後、その詳細が確認されます。 これらの情報は、すべて出力テキスト ファイルに記録されます。 
+このセクションのメソッドでは、[Reviews](/dotnet/api/microsoft.azure.cognitiveservices.contentmoderator.reviews) クラスを使用してレビューが作成され、その ID が取得されて、レビュー ツールの Web ポータルから人間による入力を受け取った後、その詳細が確認されます。 これらの情報は、すべて出力テキスト ファイルに記録されます。 
 
 ### <a name="get-sample-images"></a>サンプル イメージの取得
 

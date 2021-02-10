@@ -3,16 +3,16 @@ title: Azure Security Center への GCP アカウントの接続
 description: Azure Security Center から GCP リソースを監視します。
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1095222f332e7a66f684feddf1fdab17704ca658
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573546"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757612"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Azure Security Center への GCP アカウントの接続
 
@@ -36,7 +36,7 @@ GCP アカウントを Security Center にオンボードすると、GCP Securit
 
 |側面|詳細|
 |----|:----|
-|リリース状態:|プレビュー<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|リリース状態:|一般提供 (GA)|
 |価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
 |必要なロールとアクセス許可:|関連する Azure サブスクリプションの **所有者** または **共同作成者**|
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|

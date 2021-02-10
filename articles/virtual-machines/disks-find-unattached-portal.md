@@ -4,19 +4,19 @@ description: Azure portal を使用して、接続されていない Azure マ�
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 06/01/2020
+ms.date: 01/26/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d31ce4b6086c44de913afd1083bae25fa3d44cd
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87542740"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898157"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>接続されていない Azure マネージド ディスクとアンマネージド ディスクを見つけて削除する - Azure portal
 
-Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 これは、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを Azure portal で見つけて削除し、不要なコストを削減する方法を示します。
+Azure で仮想マシン (VM) を削除するとき、既定では、その VM に接続されているディスクはいずれも削除されません。 これは、意図せず VM を削除したことによるデータ損失を防ぐのに役立ちます。 VM が削除された後、接続されていないディスクに対する料金の支払いが続きます。 この記事では、接続されていないディスクを Azure portal で見つけて削除し、不要なコストを削減する方法を示します。 削除は永続的です。ディスクを削除すると、データを回復できなくなります。
 
 ## <a name="managed-disks-find-and-delete-unattached-disks"></a>マネージド ディスク:接続されていないディスクの検索と削除
 
@@ -45,13 +45,17 @@ VM に接続されていないアンマネージド ディスクがあり、そ�
 
     すべてのアンマネージド ディスクの一覧が表示されます。 **[接続先]** 列が " **-** " になっているディスクは、接続されていないディスクです。
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="個々のマネージド ディスク ブレードのスクリーンショット。ディスクが接続されていない場合、このブレードにディスクの状態が非接続と表示されます。データを保持する必要がなくなった場合は、このディスクを削除できます" になっていることで、ディスクが接続されていないことを確認できます。
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="アンマネージド ディスク ブレードのスクリーンショット。このブレードで [接続先] 列が - になっているディスクは接続されていません。":::
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="個々のマネージド ディスク ブレードのスクリーンショット。ディスクが接続されていない場合、このブレードにディスクの状態が非接続と表示されます。データを保持する必要がなくなった場合は、このディスクを削除できます":::
+1. 接続されていない削除するディスクを選択すると、ディスクのブレードが表示されます。
+
+1. ディスクのブレードでは、 **[接続先]** がまだ " **-** " になっていることで、ディスクが接続されていないことを確認できます。
+
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="個々のアンマネージド ディスク ブレードのスクリーンショット。接続されていない場合、[接続先] の値が - になります。このディスクのデータが必要ない場合は、ディスクを削除することができます。":::
 
 1. **[削除]** を選択します。
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="個々のマネージド ディスク ブレードのスクリーンショット。ディスクが接続されていない場合、このブレードにディスクの状態が非接続と表示されます。データを保持する必要がなくなった場合は、このディスクを削除できます":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="[削除] が強調して示されている、個々のアンマネージド ディスク ブレードのスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

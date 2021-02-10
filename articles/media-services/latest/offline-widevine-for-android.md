@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 を使用した Android 用の Widevine のオフライン ストリーミング
+title: Android での Widevine のオフライン ストリーミング
 description: このトピックでは、Widevine で保護されたコンテンツのオフライン ストリーミング用に Azure Media Services v3 アカウントを構成する方法を示します。
 services: media-services
 keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b8c4bed81a73957cc80318064f2aa2a58b3cfe11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597077"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955209"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Media Services v3 を使用した Android 用のオフラインの Widevine ストリーミング
 
@@ -97,7 +97,7 @@ Android デバイスに Widevine 用のオフライン DRM を実装する前に
 
 ## <a name="enable-offline-mode"></a>オフライン モードを有効にする
 
-Widevine ライセンスの**オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](widevine-license-template-overview.md)を構成する必要があります。 [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) に示すように、**policy_overrides** オブジェクトで **can_persist** プロパティを **true** に設定します (既定値は false)。 
+Widevine ライセンスの **オフライン** モードを有効にするには、[Widevine ライセンス テンプレート](widevine-license-template-overview.md)を構成する必要があります。 [ConfigureWidevineLicenseTempate](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563) に示すように、**policy_overrides** オブジェクトで **can_persist** プロパティを **true** に設定します (既定値は false)。 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#ConfigureWidevineLicenseTempate)]
 

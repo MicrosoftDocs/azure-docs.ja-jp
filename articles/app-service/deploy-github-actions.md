@@ -110,7 +110,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 # <a name="publish-profile"></a>[発行プロファイル](#tab/applevel)
 
-[GitHub](https://github.com/) で自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]\(新しいシークレットの追加\)** の順に選択します。
+[GitHub](https://github.com/) で自分のリポジトリを参照し、 **Settings > Secrets > Add a new secret\(新しいシークレットの追加\)** の順に選択します。
 
 [アプリ レベルの資格情報](#generate-deployment-credentials)を使用するには、ダウンロードした発行プロファイルのファイルの内容をシークレットの値フィールドに貼り付けます。 シークレットに `AZURE_WEBAPP_PUBLISH_PROFILE` という名前を付けます。
 
@@ -124,7 +124,7 @@ GitHub ワークフローを構成するときに、Azure Web アプリをデプ
 
 # <a name="service-principal"></a>[サービス プリンシパル](#tab/userlevel)
 
-[GitHub](https://github.com/) で自分のリポジトリを参照し、 **[設定]、[シークレット]、[Add a new secret]\(新しいシークレットの追加\)** の順に選択します。
+[GitHub](https://github.com/) で自分のリポジトリを参照し、 **Settings > Secrets > Add a new secret\(新しいシークレットの追加\)** の順に選択します。
 
 [ユーザー レベルの資格情報](#generate-deployment-credentials)を使用するには、Azure CLI コマンドからの JSON 出力全体をシークレットの値フィールドに貼り付けます。 シークレットに `AZURE_CREDENTIALS` と名前を付けます。
 

@@ -2,18 +2,18 @@
 title: 'チュートリアル: カスタム アナライザーを作成する'
 titleSuffix: Azure Cognitive Search
 description: カスタム アナライザーを作成して Azure Cognitive Search における検索結果の質を高める方法について説明します。
-manager: liamca
+manager: luisca
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: b83ed506c0aa6299e5308e9e0c7276a21b7d9abe
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/29/2021
+ms.openlocfilehash: f4bde98cfc772f5a80bb52c2e4bc2f5a9c28c78d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652349"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097659"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>チュートリアル:電話番号のカスタム アナライザーを作成する
 

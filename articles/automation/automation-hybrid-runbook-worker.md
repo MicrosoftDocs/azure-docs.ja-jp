@@ -3,14 +3,14 @@ title: Azure Automation Hybrid Runbook Worker の概要
 description: この記事では、ローカル データ センターまたはクラウド プロバイダー内のコンピューターで Runbook を実行できるようにする Hybrid Runbook Worker の概要について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/11/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: a23d30047a13b1d176b086a9923e140e7f8d3e45
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 7cf18b6b677daaf97d425c86a0cad91b3abcb225
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072141"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896954"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Hybrid Runbook Worker の概要
 
@@ -54,16 +54,7 @@ Windows マシンにおけるお勧めのインストール方法は、Azure Aut
 
 ## <a name="network-planning"></a><a name="network-planning"></a>ネットワークの計画
 
-システムとユーザー Hybrid Runbook Worker の両方が Azure Automation に接続して登録するには、このセクションで説明されているポート番号と URL へのアクセスが必要です。 worker は、Azure Monitor Log Analytics ワークスペースに接続するために [Log Analytics エージェントに必要なポートと URL](../azure-monitor/platform/agent-windows.md) へのアクセスも必要です。
-
-Hybrid Runbook Worker には、次のポートと URL が必要です。
-
-* ポート: 送信インターネット アクセスには TCP 443 のみが必要です
-* グローバル URL: `*.azure-automation.net`
-* US Gov バージニアのグローバル URL: `*.azure-automation.us`
-* エージェント サービス: `https://<workspaceId>.agentsvc.azure-automation.net`
-
-特定のリージョンに対して定義された Automation アカウントがある場合は、そのリージョン データセンターへの Hybrid Runbook Worker の通信を制限できます。 必要な DNS レコードについては、[Azure Automation によって使用される DNS レコード](how-to/automation-region-dns-records.md)に関するページを参照してください。
+Hybrid Runbook Worker に必要なポート、URL、およびその他のネットワークの詳細については、[Azure Automation のネットワーク構成](automation-network-configuration.md#network-planning-for-hybrid-runbook-worker)を確認してください。
 
 ### <a name="proxy-server-use"></a>プロキシ サーバーの使用
 
@@ -94,7 +85,7 @@ Azure Government で Azure Automation Hybrid Runbook Worker を使用すると�
 * [Azure Dedicated Hosts](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host) は、1 つの Azure サブスクリプションに対して専用の、1 つ以上の仮想マシンをホストできる物理サーバーを提供します。
 
 >[!NOTE]
->Hybrid Runbook Worker ロールを使用したコンピューティングの分離は、Azure 商用と米国政府のクラウドで利用できます。 
+>Hybrid Runbook Worker ロールを使用したコンピューティングの分離は、Azure 商用と米国政府のクラウドで利用できます。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Hybrid Runbook Worker の Update Management アドレス
 

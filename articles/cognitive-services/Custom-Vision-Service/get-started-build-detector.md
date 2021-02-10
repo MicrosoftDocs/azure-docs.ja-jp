@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 画像認識、画像認識アプリ、Custom Vision
-ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 5ecd5fee565a8d31e0ff05f3b234771446242d02
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132581"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221297"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>クイックスタート: クイックスタート: Custom Vision の Web サイトでオブジェクト検出器を構築する
 
@@ -70,7 +70,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 このセクションでは、検出器のトレーニングに役立つように、画像をアップロードして手動でタグ付けします。 
 
-1. 画像を追加するには、__画像の追加__ ボタンをクリックし、__ローカル画像の参照__ を選択します。 __[開く]__ を選択して、画像をアップロードします。
+1. 画像を追加するには、 __[画像の追加]__ を選択し、 __[ローカル ファイルの参照]__ を選択します。 __[開く]__ を選択して、画像をアップロードします。
 
     ![[Add Images]\(画像の追加) コントロールは左上に表示され、下部中央にもボタンとして表示されます。](./media/get-started-build-detector/add-images.png)
 
@@ -78,7 +78,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
     ![[タグなし] セクションのアップロードされたイメージ](./media/get-started-build-detector/images-untagged.png)
 
-1. 画像内のオブジェクトの周囲にある四角形をクリックしてドラッグします。 次に、 **[+]** ボタンを使用して新しいタグ名を入力するか、ドロップダウン リストで既存のタグを選択します。 検出するオブジェクトのすべてのインスタンスにタグ付けすることが非常に重要です。検出器では、タグなしの背景領域がトレーニングの否定的な例として使用されるためです。 タグ付けが終了したら、右側の矢印をクリックしてタグを保存し、次の画像に移動します。
+1. 画像内のオブジェクトの周囲にある四角形をクリックしてドラッグします。 次に、 **[+]** ボタンを使用して新しいタグ名を入力するか、ドロップダウン リストで既存のタグを選択します。 検出するオブジェクトのすべてのインスタンスにタグ付けすることが重要です。検出器では、タグなしの背景領域がトレーニングの否定的な例として使用されるためです。 タグ付けが終了したら、右側の矢印をクリックしてタグを保存し、次の画像に移動します。
 
     ![四角形の選択によるオブジェクトのタグ付け](./media/get-started-build-detector/image-tagging.png)
 
@@ -114,7 +114,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ## <a name="manage-training-iterations"></a>トレーニングのイテレーションを管理する
 
-検出器をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して、新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウにも **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
+検出器をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して、新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウには **[削除]** ボタンも表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
 
 トレーニング済みのモデルにプログラムでアクセスする方法については、「[Prediction API でモデルを使用する](./use-prediction-api.md)」を参照してください。
 

@@ -1,29 +1,31 @@
 ---
-title: サポートされている Microsoft Graph 操作
+title: Microsoft Graph を使用してリソースを管理する
 titleSuffix: Azure AD B2C
-description: ユーザー、ユーザーフロー、ID プロバイダー、カスタム ポリシー、ポリシー キーなど、Azure AD B2C リソースの管理に対してサポートされている Microsoft Graph 操作のインデックスです。
+description: Microsoft Graph API を呼び出し、アプリケーション ID を使用してプロセスを自動化して、Azure AD B2C テナントのリソースを管理する方法。
 services: B2C
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
+ms.topic: how-to
+ms.date: 01/28/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.custom: fasttrack-edit
-ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: a7e9e523d3aae7cf1444c048c023ca1d85fde41f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033610"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98952234"
 ---
-# <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C に使用可能な Microsoft Graph 操作
+# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
-次の Microsoft Graph API 操作は、ユーザー、ID プロバイダー、ユーザーフロー、カスタム ポリシー、およびポリシー キーなど、Azure AD B2C リソースの管理に対してサポートされています。
+Microsoft Graph では、お使いの Azure AD B2C ディレクトリ内のリソースを管理できます。 次の Microsoft Graph API 操作は、ユーザー、ID プロバイダー、ユーザーフロー、カスタム ポリシー、およびポリシー キーなど、Azure AD B2C リソースの管理に対してサポートされています。 次のセクションの各リンクは、その操作の Microsoft Graph API リファレンス内の対応するページを対象としています。 
 
-次のセクションの各リンクは、その操作の Microsoft Graph API リファレンス内の対応するページを対象としています。
+## <a name="prerequisites"></a>[前提条件]
+
+MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作するには、そのためのアクセス許可を付与するアプリケーション登録が必要になります。 「[Microsoft Graph を使用して Azure AD B2C を管理する](microsoft-graph-get-started.md)」という記事の手順に従って、管理アプリケーションで使用できるアプリケーション登録を作成します。 
 
 ## <a name="user-management"></a>[ユーザー管理]
 
@@ -33,20 +35,33 @@ ms.locfileid: "98033610"
 - [ユーザーの更新](/graph/api/user-update)
 - [ユーザーの削除](/graph/api/user-delete)
 
-Microsoft Graph API での Azure AD B2C ユーザー アカウントの管理の詳細については、「[Microsoft Graph での Azure AD B2C ユーザー アカウントの管理](manage-user-accounts-graph-api.md)」を参照してください。
+## <a name="user-phone-number-management-beta"></a>ユーザーの電話番号の管理 (ベータ)
 
-## <a name="user-phone-number-management"></a>ユーザーの電話番号の管理
+[SMS または音声通話](identity-provider-local.md#phone-sign-in-preview)あるいは[多要素認証](multi-factor-authentication.md)を使用してサインインするためにユーザーが使用できる電話番号。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/phoneauthenticationmethod) に関する記事を参照してください。
 
 - [追加](/graph/api/authentication-post-phonemethods)
-- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
-- [アップデート](/graph/api/b2cauthenticationmethodspolicy-update)
+- [リスト](/graph/api/authentication-list-phonemethods)
+- [Get](/graph/api/phoneauthenticationmethod-get)
+- [アップデート](/graph/api/phoneauthenticationmethod-update)
 - [削除](/graph/api/phoneauthenticationmethod-delete)
 
-Microsoft Graph API を使用したユーザーのサインイン電話番号の管理の詳細については、[B2C 認証方法](/graph/api/resources/b2cauthenticationmethodspolicy)に関する記事を参照してください。
+[リスト](/graph/api/authentication-list-phonemethods)操作では、有効な電話番号のみが返されます。 リスト操作で使用するためには、次の電話番号を有効にする必要があります。 
 
-## <a name="identity-providers-user-flow"></a>ID プロバイダー（ユーザーフロー）
+![電話によるサインインを有効にする](./media/microsoft-graph-operations/enable-phone-sign-in.png)
 
-Azure AD B2C テナントのユーザーフローで使用できる ID プロバイダーを管理します。
+## <a name="self-service-password-reset-email-address-beta"></a>セルフサービス パスワード リセットのメール アドレス (ベータ)
+
+パスワードをリセットするために[ユーザー名サインイン アカウント](identity-provider-local.md#username-sign-in)で使用できるメール アドレス。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/emailauthenticationmethod) に関する記事を参照してください。
+
+- [追加](/graph/api/emailauthenticationmethod-post)
+- [リスト](/graph/api/emailauthenticationmethod-list)
+- [Get](/graph/api/emailauthenticationmethod-get)
+- [アップデート](/graph/api/emailauthenticationmethod-update)
+- [削除](/graph/api/emailauthenticationmethod-delete)
+
+## <a name="identity-providers"></a>ID プロバイダー
+
+Azure AD B2C テナントのユーザー フローで使用できる [ID プロバイダー](add-identity-provider.md)を管理します。
 
 - [Azure AD B2C テナントに登録されている ID プロバイダーの一覧表示](/graph/api/identityprovider-list)
 - [ID プロバイダーの追加](/graph/api/identityprovider-post-identityproviders)
@@ -63,6 +78,13 @@ Azure AD B2C テナントのユーザーフローで使用できる ID プロバ
 - [ユーザー フローの取得](/graph/api/b2cidentityuserflow-get)
 - [ユーザー フローの削除](/graph/api/b2cidentityuserflow-delete)
 
+## <a name="user-flow-authentication-methods-beta"></a>ユーザー フローの認証方法 (ベータ)
+
+ローカル アカウントを使用してユーザーが登録を実行できるメカニズムを選択します。 ローカル アカウントは、Azure AD が ID アサーションを行うアカウントです。 詳細については、「[b2cAuthenticationMethodsPolicy リソースの種類](/graph/api/resources/b2cauthenticationmethodspolicy)」を参照してください。
+
+- [Get](/graph/api/b2cauthenticationmethodspolicy-get)
+- [アップデート](/graph/api/b2cauthenticationmethodspolicy-update)
+
 ## <a name="custom-policies"></a>カスタム ポリシー
 
 次の操作を使用すると、[カスタムポリシー](custom-policy-overview.md)と呼ばれる Azure AD B2C 信頼フレームワーク ポリシーを管理できます。
@@ -77,7 +99,7 @@ Azure AD B2C テナントのユーザーフローで使用できる ID プロバ
 
 Identity Experience Framework では、カスタムポリシーで参照されているシークレットを格納して、コンポーネント間の信頼を確立します。 これらのシークレットは、対称キー/値または非対称キー/値にすることができます。 Azure portal では、これらのエンティティは **ポリシーキー** として表示されます。
 
-Microsoft Graph API のポリシー キーの最上位レベルのリソースは、[Trusted Framework Keyset](/graph/api/resources/trustframeworkkeyset)です。 各 **キーセット** には、少なくとも1つの **キー** が含まれています。 キーを作成するには、最初に空のキーセットを作成してから、キーセットにキーを生成します。 手動シークレットを作成したり、証明書をアップロードしたり、または PKCS12 キーを使用したりすることができます。 キーには、生成されたシークレット、定義する文字列 (Facebook アプリケーション シークレットなど)、またはアップロードする証明書を指定できます。 キーセットに複数のキーがある場合、1つのキーのみがアクティブになります。
+Microsoft Graph API のポリシー キーの最上位レベルのリソースは、[Trusted Framework Keyset](/graph/api/resources/trustframeworkkeyset)です。 各 **キーセット** には、少なくとも1つの **キー** が含まれています。 キーを作成するには、最初に空のキーセットを作成してから、キーセットにキーを生成します。 手動シークレットを作成したり、証明書をアップロードしたり、または PKCS12 キーを使用したりすることができます。 キーには、生成されたシークレット、文字列 (Facebook アプリケーション シークレットなど)、またはアップロードする証明書を指定できます。 キーセットに複数のキーがある場合、1つのキーのみがアクティブになります。
 
 ### <a name="trust-framework-policy-keyset"></a>信頼フレームワーク ポリシー キーセット
 
@@ -114,4 +136,93 @@ Azure AD B2C で提供されているディレクトリには、ユーザーご�
 
 - [監査ログの一覧表示](/graph/api/directoryaudit-list)
 
-Microsoft Graph API を使用して Azure AD B2C 監査ログにアクセスする方法の詳細については、「[Azure AD B2C 監査ログにアクセスする](view-audit-logs.md)」を参照してください。
+Azure AD B2C 監査ログにアクセスする方法の詳細については、「[Azure AD B2C 監査ログにアクセスする](view-audit-logs.md)」を参照してください。
+
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>コード サンプル:プログラムによってユーザー アカウントを管理する方法
+
+このコード サンプルは、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用して Microsoft Graph API と対話する .NET Core コンソール アプリケーションです。 このコードは、API を呼び出して、Azure AD B2C テナント内のユーザーをプログラムで管理する方法を示しています。
+[サンプル アーカイブ (*.zip) をダウンロード](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip)するか、GitHub の[リポジトリを参照する](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management)か、リポジトリを複製することができます。
+
+```cmd
+git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
+```
+
+コード サンプルを入手したら、環境に合わせて構成し、プロジェクトをビルドします。
+
+1. [Visual Studio](https://visualstudio.microsoft.com) または [Visual Studio Code](https://code.visualstudio.com) でプロジェクトを開きます。
+1. `src/appsettings.json`を開きます。
+1. 「`appSettings`」セクションで、`your-b2c-tenant` をテナントの名前に、`Application (client) ID` と `Client secret` を管理アプリケーション登録の値に置き換えます。 詳しくは、「[Microsoft Graph アプリケーションを登録する](microsoft-graph-get-started.md)」をご覧ください。
+1. リポジトリのローカル複製内でコンソール ウィンドウを開き、`src` ディレクトリに切り替えてから、プロジェクトをビルドします。
+
+    ```console
+    cd src
+    dotnet build
+    ```
+    
+1. `dotnet` コマンドを使用してアプリケーションを実行します。
+
+    ```console
+    dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
+    ```
+
+アプリケーションで、実行可能なコマンドの一覧が表示されます。 たとえば、すべてのユーザーの取得、単一ユーザーの取得、ユーザーの削除、ユーザーのパスワードの更新、一括インポートなどです。
+
+### <a name="code-discussion"></a>コードの説明
+
+このサンプル コードでは、Microsoft Graph にアクセスする高品質かつ効率的で回復性があるアプリケーションを簡単に構築できるように設計されている、[Microsoft Graph SDK](/graph/sdks/sdks-overview) を使用します。
+
+Microsoft Graph API への要求には、認証のためのアクセス トークンが必要になります。 このソリューションでは、Microsoft Graph SDK で使用する Microsoft Authentication Library (MSAL) の認証シナリオベースのラッパーを提供する、 [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) NuGet パッケージを使用します。
+
+_Program.cs_ ファイル内の `RunAsync` メソッド:
+
+1. _appsettings.json_ ファイルからアプリケーション設定を読み取ります
+1. [OAuth 2.0 クライアント資格情報の付与](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)フローを使用して、認証プロバイダーを初期化します。 クライアント資格情報の付与フローを使用すると、アプリは Microsoft Graph API を呼び出すためのアクセス トークンを取得できます。
+1. 認証プロバイダーを使用して Microsoft Graph サービス クライアントを設定します。
+
+    ```csharp
+    // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
+    AppSettings config = AppSettingsFile.ReadFromJsonFile();
+
+    // Initialize the client credential auth provider
+    IConfidentialClientApplication confidentialClientApplication = ConfidentialClientApplicationBuilder
+        .Create(config.AppId)
+        .WithTenantId(config.TenantId)
+        .WithClientSecret(config.ClientSecret)
+        .Build();
+    ClientCredentialProvider authProvider = new ClientCredentialProvider(confidentialClientApplication);
+
+    // Set up the Microsoft Graph service client with client credentials
+    GraphServiceClient graphClient = new GraphServiceClient(authProvider);
+    ```
+
+次に、初期化された *GraphServiceClient* を _UserService.cs_ で使用して、ユーザー管理操作を実行します。 たとえば、次のようにしてテナント内のユーザー アカウントの一覧を取得します。
+
+```csharp
+public static async Task ListUsers(GraphServiceClient graphClient)
+{
+    Console.WriteLine("Getting list of users...");
+
+    // Get all users (one page)
+    var result = await graphClient.Users
+        .Request()
+        .Select(e => new
+        {
+            e.DisplayName,
+            e.Id,
+            e.Identities
+        })
+        .GetAsync();
+
+    foreach (var user in result.CurrentPage)
+    {
+        Console.WriteLine(JsonConvert.SerializeObject(user));
+    }
+}
+```
+
+[Microsoft Graph SDK を使用した API 呼び出し](/graph/sdks/create-requests)に関する記事には、Microsoft Graph から情報を読み書きする方法、`$select` を使用して返されるプロパティを制御する方法、カスタム クエリ パラメーターを指定する方法、`$filter` および `$orderBy` のクエリ パラメーターを使用する方法に関する情報が含まれています。
+
+<!-- LINK -->
+
+[graph-objectIdentity]: /graph/api/resources/objectidentity
+[graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 769460d5dab7311eb2940d101df6f4996a3ad355
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 09f98e3d6c7997d9cae2737b25f4323021e29bfb
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876581"
+ms.locfileid: "98892441"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
@@ -83,6 +83,7 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 1. **[Azure portal]**  >  **[Azure Active Directory]**  >  **[サインイン]** に移動します。
 1. [Client App] (クライアント アプリ) 列が表示されていない場合は、 **[列]**  >  **[Client App] (クライアント アプリ)** をクリックしてその列を追加します。
 1. **[フィルターの追加]** 、 **[クライアント アプリ]** の順に進み、すべてのレガシ認証プロトコルを選択します。 フィルター処理のダイアログ ボックスの外側を選択して選択を適用し、ダイアログ ボックスを閉じます。
+1. [新しいサインイン アクティビティ レポート - プレビュー](../reports-monitoring/concept-all-sign-ins.md)をアクティブにしている場合は、 **[ユーザーのサインイン (非対話型)]** タブでも上記の手順を繰り返します。
 
 フィルター処理によって、レガシ認証プロトコルによって行われたサインイン試行のみが表示されます。 個々のサインイン試行をクリックすると、追加の詳細が表示されます。 **[Basic Info] (基本情報)** タブの下の **[Client App] (クライアント アプリ)** フィールドには、どのレガシ認証プロトコルが使用されたかが表示されます。
 

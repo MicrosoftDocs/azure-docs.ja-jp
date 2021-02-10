@@ -2,18 +2,18 @@
 title: Azure でサポートされる FHIR 機能 - Azure API for FHIR
 description: この記事では、Azure API for FHIR で実装されている FHIR 仕様の機能について説明します。
 services: healthcare-apis
-author: matjazl
+author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e75cf8d6660bf6f2630b83e0c2c812fa7cf59057
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452911"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430244"
 ---
 # <a name="features"></a>特徴
 
@@ -41,8 +41,8 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | create                         | はい       | はい       | はい       | POST/PUT の両方をサポートします                               |
 | create (条件付き)           | はい       | はい       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | 検索                         | Partial   | 部分的   | 部分的   | 下記参照                                           |
-| chained search                 | いいえ        | はい       | いいえ        |                                           |
-| reverse chained search         | いいえ        | いいえ        | いいえ        |                                            |
+| chained search                 | いいえ        | はい       | いいえ        |                                                     |
+| reverse chained search         | いいえ        | はい       | いいえ        |                                                     |
 | capabilities                   | はい       | はい       | はい       |                                                     |
 | batch (バッチ)                          | はい       | はい       | はい       |                                                     |
 | transaction                    | いいえ        | はい       | いいえ        |                                                     |
@@ -72,39 +72,39 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 |`:exact`               | はい       | はい       | はい       |         |
 |`:contains`            | はい       | はい       | はい       |         |
 |`:text`                | はい       | はい       | はい       |         |
+|`:[type]` (参照)  | Yes       | Yes       | Yes       |         |
+|`:not`                 | Yes       | Yes       | Yes       |         |
+|`:below` (URI)         | はい       | Yes       | Yes       |         |
+|`:above` (URI)         | いいえ        | いいえ        | いいえ        | イシュー [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 |`:in` (トークン)          | いいえ        | いいえ        | いいえ        |         |
 |`:below` (トークン)       | いいえ        | いいえ        | いいえ        |         |
 |`:above` (トークン)       | いいえ        | いいえ        | いいえ        |         |
 |`:not-in` (トークン)      | いいえ        | いいえ        | いいえ        |         |
-|`:[type]` (参照)  | いいえ        | いいえ        | いいえ        |         |
-|`:below` (URI)         | はい       | はい       | はい       |         |
-|`:not`                 | いいえ        | いいえ        | いいえ        |         |
-|`:above` (URI)         | いいえ        | いいえ        | いいえ        | イシュー [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | 一般的な検索パラメーター | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |-------------------------| ----------| ----------| ----------|---------|
 | `_id`                   | はい       | はい       | はい       |         |
 | `_lastUpdated`          | はい       | はい       | はい       |         |
 | `_tag`                  | はい       | はい       | はい       |         |
-| `_profile`              | はい       | はい       | はい       |         |
-| `_security`             | はい       | はい       | はい       |         |
+| `_list`                 | Yes       | Yes       | Yes       |         |
+| `_type`                 | Yes       | はい       | はい       | イシュー [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
+| `_security`             | Yes       | Yes       | はい       |         |
+| `_profile`              | 部分的   | Partial   | 部分的   | STU3 でのみサポートされています。R4 ではサポートされていません |
 | `_text`                 | いいえ        | いいえ        | いいえ        |         |
 | `_content`              | いいえ        | いいえ        | いいえ        |         |
-| `_list`                 | はい       | はい       | はい       |         |
 | `_has`                  | いいえ        | いいえ        | いいえ        |         |
-| `_type`                 | はい       | はい       | はい       |         |
 | `_query`                | いいえ        | いいえ        | いいえ        |         |
 | `_filter`               | いいえ        | いいえ        | いいえ        |         |
 
 | 検索結果のパラメーター | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | Partial        | 部分的   | 部分的        |   `_sort=_lastUpdated` がサポートされています       |
+| `_elements`             | はい       | Yes       | Yes       | イシュー [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
 | `_count`                | はい       | はい       | はい       | `_count` の上限は 100 文字です。 100 より大きい値に設定すると、100 個だけが返され、バンドルで警告が返されます。 |
-| `_include`              | はい       | はい       | はい       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
-| `_revinclude`           | はい       | はい       | はい       | 含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
-| `_summary`              | Partial   | Partial   | Partial   | `_summary=count` がサポートされています |
-| `_total`                | Partial   | Partial   | Partial   | _total=non および _total=accurate      |
-| `_elements`             | はい       | はい       | はい       |         |
+| `_include`              | はい       | Yes       | Yes       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
+| `_revinclude`           | はい       | Yes       | Yes       | 含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても [:iterate のサポートは含まれません](https://github.com/microsoft/fhir-server/issues/1313)。 イシュー [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
+| `_summary`              | 部分的   | Partial   | Partial   | `_summary=count` がサポートされています |
+| `_total`                | Partial   | Partial   | Partial   | `_total=none` および `_total=accurate`      |
+| `_sort`                 | Partial   | Partial   | Partial   |   `_sort=_lastUpdated` がサポートされています       |
 | `_contained`            | いいえ        | いいえ        | いいえ        |         |
 | `containedType`         | いいえ        | いいえ        | いいえ        |         |
 | `_score`                | いいえ        | いいえ        | いいえ        |         |
@@ -117,7 +117,9 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 |------------------------|-----------|-----------|-----------|---------|
 | $export (システム全体) | はい       | はい       | はい       |         |
 | Patient/$export        | はい       | はい       | はい       |         |
-| Group/$export          | はい       | はい       | はい       |         |
+| Group/$export          | はい       | Yes       | Yes       |         |
+| $convert-data          | Yes       | Yes       | はい       |         |
+
 
 ## <a name="persistence"></a>永続化
 
@@ -135,7 +137,7 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 
 ## <a name="service-limits"></a>サービスの制限
 
-* [**要求ユニット (RU)** ](../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 RU か 10 RU/GB が必要になります (大きい方)。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
+* [**要求ユニット (RU)**](../cosmos-db/concepts-limits.md) - Azure API for FHIR のポータルで最大 10,000 RU を構成できます。 少なくとも 400 RU か 10 RU/GB が必要になります (大きい方)。 必要な単位が 10,000 RU を超える場合、サポート チケットを発行して増やすことができます。 利用できる最大値は 1,000,000 です。
 
 * **コンカレント接続** と **インスタンス** - 既定では、クラスター内の 2 つのインスタンス上で 5 つのコンカレント接続が用意されています (同時要求は合計で 10)。 同時要求がさらに必要であると思われる場合、サポート チケットを開き、ニーズの詳細を含めてください。
 
@@ -147,12 +149,14 @@ FHIR Server は、アクセス制御のために [Azure Active Directory](https:
 
 システムのパフォーマンスは、RU の数、コンカレント接続、実行している操作の種類 (Put や Post など) に依存します。 構成された RU に基づく期待値の一般的範囲は以下のようになります。 一般的に、RU を増やせば、パフォーマンスが直線的に上がります。
 
-| RU の数 | リソース/sec |
-|----------|---------------|
-| 400      | 5-10          |
-| 1,000    | 100-150       |
-| 10,000   | 225-400       |
-| 100,000  | 2,500-4,000   |
+| RU の数 | リソース/sec |    最大ストレージ (GB)*    |
+|----------|---------------|--------|                 
+| 400      | 5-10          |     40   |
+| 1,000    | 100-150       |      100  |
+| 10,000   | 225-400       |      1,000  |
+| 100,000  | 2,500-4,000   |      10,000  |
+
+注:Cosmos DB の要件ごとに、ストレージの GB あたり 10 RU/秒の最小スループットの要件があります。 詳細については、「[Azure Cosmos DB サービスのクォータ](../cosmos-db/concepts-limits.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

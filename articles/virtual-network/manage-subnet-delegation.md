@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: bc43dc7afb234d410eb17d20beb13cd5cb44bb18
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222532"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943664"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>サブネットの委任を追加または削除する
 
@@ -113,7 +113,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 
 このセクションでは、前のセクションで作成したサブネットを Azure サービスに委任します。 
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) を使用して、Azure サービスへの委任を行うように **mySubnet** という名前のサブネットを更新します。  この例では、委任の例として **Microsoft.DBforPostgreSQL/serversv2** を使用しています。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用して、Azure サービスへの委任を行うように **mySubnet** という名前のサブネットを更新します。  この例では、委任の例として **Microsoft.DBforPostgreSQL/serversv2** を使用しています。
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-委任が適用されたことを確認するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットに委任されていることを確認します。
+委任が適用されたことを確認するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットに委任されていることを確認します。
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -152,7 +152,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure サービスからサブネットの委任を削除する
 
-[az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) を使用して、**mySubnet** という名前のサブネットから委任を削除します。
+[az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) を使用して、**mySubnet** という名前のサブネットから委任を削除します。
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
   --vnet-name myVnet \
   --remove delegations
 ```
-委任が削除されたことを確認するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットから削除されていることを確認します。
+委任が削除されたことを確認するには、[az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットから削除されていることを確認します。
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -195,7 +195,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 ```
 ### <a name="create-virtual-network"></a>Create virtual network
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork?view=latest) を使用して **myVnet** という名前の仮想ネットワークを作成し、[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) を使用して、**myResourceGroup** 内に **mySubnet** という名前のサブネットを作成します。 この仮想ネットワークの IP アドレス空間は **10.0.0.0/16** です。 この仮想ネットワーク内のサブネットは **10.0.0.0/24** です。  
+[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) を使用して **myVnet** という名前の仮想ネットワークを作成し、[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) を使用して、**myResourceGroup** 内に **mySubnet** という名前のサブネットを作成します。 この仮想ネットワークの IP アドレス空間は **10.0.0.0/16** です。 この仮想ネットワーク内のサブネットは **10.0.0.0/24** です。  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -212,7 +212,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 
 このセクションでは、前のセクションで作成したサブネットを Azure サービスに委任します。 
 
-[Add-AzDelegation](/powershell/module/az.network/add-azdelegation?view=latest) を使用して、**mySubnet** という名前のサブネットを、**myDelegation** という名前で Azure サービスへの委任を行うように更新します。  この例では、委任の例として **Microsoft.DBforPostgreSQL/serversv2** を使用しています。
+[Add-AzDelegation](/powershell/module/az.network/add-azdelegation) を使用して、**mySubnet** という名前のサブネットを、**myDelegation** という名前で Azure サービスへの委任を行うように更新します。  この例では、委任の例として **Microsoft.DBforPostgreSQL/serversv2** を使用しています。
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -220,7 +220,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-[Get-AzDelegation](/powershell/module/az.network/get-azdelegation?view=latest) を使用して委任を確認します。
+[Get-AzDelegation](/powershell/module/az.network/get-azdelegation) を使用して委任を確認します。
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -236,7 +236,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 ```
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure サービスからサブネットの委任を削除する
 
-[Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation?view=latest) を使用して、**mySubnet** という名前のサブネットから委任を削除します。
+[Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation) を使用して、**mySubnet** という名前のサブネットから委任を削除します。
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -244,7 +244,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-[Get-AzDelegation](/powershell/module/az.network/get-azdelegation?view=latest) を使用して、委任が削除されたことを確認します。
+[Get-AzDelegation](/powershell/module/az.network/get-azdelegation) を使用して、委任が削除されたことを確認します。
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"

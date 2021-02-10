@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0e993cb1e53645f7081a20fc6a2785b8cfef1cce
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98723882"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954186"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory と Azure Purview を接続する方法
 
@@ -69,12 +69,22 @@ ms.locfileid: "98723882"
 >[!Note]
 >一度に 10 個までの Data Factory の追加がサポートされるようになりました。 一度に 10 個を超える Data Factory を追加する場合は、サポート チケットを提出してください。
 
+### <a name="how-does-the-authentication-work"></a>認証のしくみ
+
+Purview ユーザーがアクセス権を持つ Data Factory を登録すると、バックエンドで以下が実行されます。
+
+1. **Data Factory MSI** が次の Purview RBAC ロールに追加されます: **Purview データ キュレーター**。
+
+    :::image type="content" source="./media/how-to-link-azure-data-factory/adf-msi.png" alt-text="Azure Data Factory MSI を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/adf-msi.png":::
+     
+2. 系列メタデータを Purview にプッシュバックできるようにするために、Data Factory パイプラインを再実行する必要があります。
+3. 実行後に Data Factory メタデータが Purview にプッシュされます。
 
 ### <a name="remove-data-factory-connections"></a>Data Factory 接続を削除する
 Data Factory 接続を削除するには、次の操作を行います。
 
 1. **[Data Factory connection] (Data Factory 接続)** ページで、1 つ以上の Data Factory 接続の横にある **[削除]** ボタンを選択します。
-1. ポップアップの **[確認]** を選択して、選択されている Data Factory 接続を削除します。
+2. ポップアップの **[確認]** を選択して、選択されている Data Factory 接続を削除します。
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="接続を削除する Data Factory を選択する方法を示すスクリーンショット。" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 

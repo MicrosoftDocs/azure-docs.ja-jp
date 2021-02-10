@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: 4ebc363f29ed8956d10e91f41be1d257cbcc492f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562642"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703888"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>物理サーバーの移行のサポート マトリックス
 
@@ -81,7 +81,7 @@ Azure にレプリケートされたオンプレミス VM はすべて、この�
 オペレーティング システムのディスク サイズ | 最大 2,048 GB。 | サポートされていない場合、確認は失敗します。
 オペレーティング システムのディスク数 | 1 | サポートされていない場合、確認は失敗します。
 データ ディスク数 | 64 以下。 | サポートされていない場合、確認は失敗します。
-データ ディスク サイズ | 最大 4,095 GB | サポートされていない場合、確認は失敗します。
+データ ディスク サイズ | 最大 32 TB | サポートされていない場合、確認は失敗します。
 ネットワーク アダプター | 複数のアダプターがサポートされます。 |
 共有 VHD | サポートされていません。 | サポートされていない場合、確認は失敗します。
 FC ディスク | サポートされていません。 | サポートされていない場合、確認は失敗します。

@@ -122,7 +122,7 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 ## <a name="sending-the-request"></a>要求の送信
 
-この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、 **[試してみる]** ボタンをクリックして、[ブラウザー内ツール](/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
+この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、 **[使ってみる]** ボタンをクリックして、[ブラウザー内ツール](/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
 
 ### <a name="responses"></a>Responses
 

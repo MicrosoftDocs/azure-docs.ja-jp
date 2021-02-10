@@ -3,12 +3,12 @@ title: Azure 仮想マシン復元プロセスについて
 description: Azure Backup サービスで Azure Virtual Machines を復元する方法を説明します
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 67af1ed193c289358f929953bc3caa5d04ef7e09
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 436859bfb3cee37501e0605465d8e19856a846d6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171764"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806826"
 ---
 # <a name="about-azure-vm-restore"></a>Azure VM の復元について
 
@@ -16,12 +16,12 @@ ms.locfileid: "92171764"
 
 ## <a name="concepts"></a>概念
 
-- **復旧ポイント** (**復元ポイント**とも呼ばれます):復旧ポイントは、バックアップされている元のデータのコピーです。
+- **復旧ポイント** (**復元ポイント** とも呼ばれます):復旧ポイントは、バックアップされている元のデータのコピーです。
 
 - **階層 (スナップショットとコンテナー)** :Azure VM のバックアップは、2 つのフェーズで行われます。
 
-  - フェーズ 1 では、取得されたスナップショットがディスクと共に格納されます。 これは**スナップショット階層**と呼ばれます。 スナップショット階層の復元は (コンテナーからの復元よりも) 高速です。これは、復元をトリガーする前に、スナップショットがコンテナーにコピーされるまで待つ時間がないためです。 そのため、スナップショット階層からの復元は、[インスタント リストア](./backup-instant-restore-capability.md)とも呼ばれます。
-  - フェーズ 2 では、スナップショットが転送され、Azure Backup サービスによって管理されるコンテナーに格納されます。 これは **コンテナー階層**と呼ばれます。
+  - フェーズ 1 では、取得されたスナップショットがディスクと共に格納されます。 これは **スナップショット階層** と呼ばれます。 スナップショット階層の復元は (コンテナーからの復元よりも) 高速です。これは、復元をトリガーする前に、スナップショットがコンテナーにコピーされるまで待つ時間がないためです。 そのため、スナップショット階層からの復元は、[インスタント リストア](./backup-instant-restore-capability.md)とも呼ばれます。
+  - フェーズ 2 では、スナップショットが転送され、Azure Backup サービスによって管理されるコンテナーに格納されます。 これは **コンテナー階層** と呼ばれます。
 
 - **元の場所への復旧 (OLR)** :復元ポイントから、バックアップが作成されたソース Azure VM に対して実行される復旧。復旧ポイントに格納されている状態によって、それが置き換えられます。 これにより、ソース VM の OS ディスクとデータ ディスクが置き換えられます。
 
@@ -34,7 +34,7 @@ ms.locfileid: "92171764"
   - [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) は、既定の推奨レプリケーション オプションです。 GRS では、セカンダリ リージョン (ソース データのプライマリの場所から数百マイル離れた場所) にデータがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、より高いレベルのデータ持続性が確保されます。
   - [ゾーン冗長ストレージ (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) は、[可用性ゾーン](../availability-zones/az-overview.md#availability-zones)内のデータをレプリケートし、同じリージョン内でデータ所在地と回復性を保証します。 ZRS にダウンタイムはありません。 そのため、[データ所在地](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)を必要とし、なおかつダウンタイムが許されない重要なワークロードは、ZRS にバックアップすることができます。
 
-- **リージョンをまたがる復元 (CRR)** :[復元オプション](./backup-azure-arm-restore-vms.md#restore-options)の 1 つである、リージョンをまたがる復元 (CRR) を使用すると、セカンダリ リージョン ([Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md#what-are-paired-regions)) で Azure VM を復元できます。
+- **リージョンをまたがる復元 (CRR)** :[復元オプション](./backup-azure-arm-restore-vms.md#restore-options)の 1 つであるリージョンをまたがる復元 (CRR) では、[Azure のペア リージョン](../best-practices-availability-paired-regions.md#what-are-paired-regions)であるセカンダリ リージョンで Azure VM を復元できます。セカンダリ リージョンではいつでも (一部停止中でも、完全停止中でも、あるいは自分で選択したその他のタイミングで) データを復元できます。 
 
 ## <a name="restore-scenarios"></a>復元シナリオ
 
@@ -50,6 +50,6 @@ ms.locfileid: "92171764"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [VM の復元に関してよく寄せられる質問](./backup-azure-vm-backup-faq.md#restore)
+- [VM の復元に関してよく寄せられる質問](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#restore)
 - [サポートされる復元方法](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [復元の問題のトラブルシューティング](./backup-azure-vms-troubleshoot.md#restore)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762922"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808065"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLI と Python を使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
@@ -70,9 +70,9 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
 3. すべての証明書を作成し、Azure Stack Edge Pro デバイスと、お使いのクライアントの信頼されたストアにインストールします。 「[手順 2: 証明書を作成してインストールする](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)」で説明されている手順に従います。
 
-4. 自分の Azure Stack Edge Pro デバイス用に、Base-64 でエンコードされた *.cer* 証明書 (PEM 形式) を作成します。 これが署名チェーンとしてあらかじめデバイスにアップロードされ、クライアントの信頼されたルート ストアにインストールされている必要があります。 また、このクライアントで Python が正しく動作するためには、この証明書が *pem* 形式になっている必要があります。
+4. 自分の Azure Stack Edge Pro デバイス用に、Base-64 でエンコードされた *.cer* 証明書 (PEM 形式) を作成します。 この証明書が署名チェーンとしてあらかじめデバイスにアップロードされ、クライアントの信頼されたルート ストアにインストールされている必要があります。 また、このクライアントで Python が正しく動作するためには、この証明書が *pem* 形式になっている必要があります。
 
-    `certutil` コマンドを使用して、この証明書を pem 形式に変換してください。 このコマンドは、証明書が格納されているディレクトリで実行する必要があります。
+    `certutil` コマンドを使用して、この証明書を `pem` 形式に変換してください。 このコマンドは、証明書が格納されているディレクトリで実行する必要があります。
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
@@ -86,9 +86,9 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     CertUtil: -encode command completed successfully.
     PS C:\Certificates>
     ```    
-    さらに、後でこの pem を Python ストアに追加します。
+    さらに、後でこの `pem` を Python ストアに追加します。
 
-5. デバイスのローカル Web UI の **[ネットワーク]** ページで、デバイスに IP を割り当てます。 この IP を次の場所に追加する必要があります。
+5. デバイスのローカル Web UI の **[ネットワーク]** ページで、デバイスに IP を割り当てます。 この IP を次の場所に追加します。
 
     - クライアント上のホスト ファイル、または
     - DNS サーバーの構成
@@ -117,13 +117,13 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
 ### <a name="verify-profile-and-install-azure-cli"></a>プロファイルを確認して Azure CLI をインストールする
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
 1. お使いのクライアントに Azure CLI をインストールします。 この例では、Azure CLI 2.0.80 がインストールされています。 Azure CLI のバージョンを確認するには、`az --version` コマンドを実行します。
 
     次に示すのは、前述したコマンドのサンプル出力です。
 
-    ```powershell
+    ```output
     PS C:\windows\system32> az --version
     azure-cli                         2.0.80
     
@@ -147,9 +147,9 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     PS C:\windows\system32>
     ```
 
-    Azure CLI をお持ちでない場合は、[Windows に Azure CLI をダウンロードしてインストール](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)してください。 Azure CLI は、Windows コマンド プロンプトまたは Windows PowerShell を使用して実行できます。
+    Azure CLI をお持ちでない場合は、[Windows に Azure CLI をダウンロードしてインストール](/cli/azure/install-azure-cli-windows)してください。 Azure CLI は、Windows コマンド プロンプトまたは Windows PowerShell を使用して実行できます。
 
-2. CLI の Python の場所を書き留めておきます。 これは、Azure CLI の信頼されたルート証明書ストアの場所を特定するために必要です。
+2. CLI の Python の場所を書き留めておきます。 Azure CLI の信頼されたルート証明書ストアの場所を特定するためには Python の場所が必要です。
 
 3. この記事で使用されているサンプル スクリプトを実行するには、次のバージョンの Python ライブラリが必要となります。
 
@@ -171,7 +171,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
     次のサンプル出力は、haikunator のインストールを示しています。
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install haikunator
 
     Collecting haikunator
@@ -187,7 +187,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
     次のサンプル出力は、`msrestazure` の pip インストールを示しています。 
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install msrestazure==0.6.2
     Requirement already satisfied: msrestazure==0.6.2 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (0.6.2)
     Requirement already satisfied: msrest<2.0.0,>=0.6.0 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (from msrestazure==0.6.2) (0.6.10)
@@ -211,7 +211,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
     
     このコマンドレットから、次のように証明書の場所が返されます。  
         
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python -c "import certifi; print(certifi.where())"
     C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
@@ -323,7 +323,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
 
    パスワードの入力後にサインインに成功した場合のサンプル出力を次に示します。  
    
-   ```powershell
+   ```output
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az login -u EdgeARMuser
    Password:
    [
@@ -342,7 +342,7 @@ Azure CLI と Python を使用して、Azure Stack Edge Pro デバイスに VM �
    ]
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
    ```
-   `id` と `tenantId` の値をメモしておきます。これらはそれぞれ Azure Resource Manager サブスクリプション ID と Azure Resource Manager テナント ID に対応し、後の手順で使用されるためです。
+   `id` と `tenantId` の値をメモしておきます。これらの値はそれぞれ Azure Resource Manager サブスクリプション ID と Azure Resource Manager テナント ID に対応し、後の手順で使用されるためです。
        
    "*サービス プリンシパル*" として機能するためには、次の環境変数が設定されている必要があります。
 

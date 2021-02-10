@@ -3,20 +3,20 @@ title: アプリケーション プロキシ エージェント コネクタの�
 description: Azure Active Directory 用のアプリケーション プロキシ エージェント コネクタのインストール時に発生する可能性のある問題のトラブルシューティング方法。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 05/21/2018
+ms.date: 01/28/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 0b7fee330f93097b561714ecc938eaf3fee8f2b5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0f76f03883746b6f4b87bb817f8adde850ed28b3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657331"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253666"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>アプリケーション プロキシ エージェント コネクタのインストール時の問題
 
@@ -24,7 +24,7 @@ Microsoft Azure Active Directory アプリケーション プロキシ コネク
 
 ## <a name="general-problem-areas-with-connector-installation"></a>コネクタのインストールに関する一般的な問題領域
 
-コネクタのインストールに失敗する場合、根本原因は通常、次の領域のいずれかにあります。
+コネクタのインストールに失敗する場合、根本原因は通常、次の領域のいずれかにあります。 **トラブルシューティングの前段階として、コネクタを再起動してください。**
 
 1.  **接続** – インストールを正常に完了するには、新しいコネクタを登録し、将来の信頼プロパティを確立する必要があります。 これは、Azure Active Directory アプリケーション プロキシ クラウド サービスに接続することによって行います。
 

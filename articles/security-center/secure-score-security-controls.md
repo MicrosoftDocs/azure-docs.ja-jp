@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916373"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752228"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Security Center 内のセキュリティ スコア
 
@@ -54,7 +54,7 @@ Security Center は、セキュリティの問題について、リソース、�
 
 ### <a name="get-your-secure-score-from-the-portal"></a>ポータルからセキュリティ スコアを取得する
 
-ポータルで、Security Center にはスコアが目立つように表示されます。これは、Security Center の [概要] ページの最初の主なタイルです。 このタイルを選択すると、スコアがサブスクリプション別に分類されている専用のセキュリティ スコア ページに移動ます。 サブスクリプションを 1 つ選択すると、優先度が設定された推奨事項と、修復によるスコアへの影響を示す詳細な一覧が表示されます。
+ポータルで、Security Center にはスコアが目立つように表示されます。これは、Security Center の [概要] ページの最初の主なタイルです。 このタイルを選択すると、スコアがサブスクリプション別に分類されている専用のセキュリティ スコア ページに移動ます。 サブスクリプションを 1 つ選択すると、優先度が設定された推奨事項と、修復によるスコアへの影響を示す詳細な一覧が表示されます。 
 
 要約すると、Security Center のポータル ページの次の場所に、セキュリティ スコアが表示されます。
 
@@ -62,9 +62,14 @@ Security Center は、セキュリティの問題について、リソース、�
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Security Center のダッシュボード上のセキュリティ スコア":::
 
-- 専用の **セキュリティ スコア** ページ:
+- 専用の **[セキュリティ スコア]** ページで、サブスクリプションと管理グループのセキュリティ スコアを確認できます。
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Security Center の [セキュリティ スコア] ページのセキュリティ スコア":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Security Center の [セキュリティ スコア] ページのサブスクリプションのセキュリティ スコア":::
+
+    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Security Center の [セキュリティ スコア] ページの管理グループのセキュリティ スコア":::
+
+    > [!NOTE]
+    > 十分なアクセス許可を持っていない管理グループについては、スコアが "制限付き" として表示されます。 
 
 - **[推奨事項]** ページの上部:
 
@@ -125,7 +130,7 @@ Pro アカウントを使用している Power BI ユーザーの場合は、 **
 - **[リソースの概要]** - リソースの正常性に関する概要データが提供されます。
 - **[Secure Score Summary]\(セキュリティ スコアの概要\)** - スコアの進捗状況に関する集計データが提供されます。 スコアの変化を確認するには、[Secure score over time per subscription]\(サブスクリプションごとの経時的なセキュリティ スコア\) グラフを使用します。 スコアが大幅に変化した場合は、[detected changes that may affect your secure score]\(検出された変更の中でセキュリティ スコアに影響する可能性のあるもの\) の表を調べ、変更の原因となった可能性のある変更を確認します。 この表は、削除されたリソース、新しくデプロイされたリソース、または推奨事項のいずれかについてセキュリティの状態が変化したリソースを示しています。
 
-:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="経時的なセキュリティ スコアを追跡し、変更を調査するためのオプションの [Secure Score Over Time]\(経時的なセキュリティ スコア\) PowerBI ダッシュボード":::
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="経時的なセキュリティ スコアを追跡し、変更を調査するためのオプションの [Secure Score Over Time]\(経時的なセキュリティ スコア\) Power BI ダッシュボード":::
 
 
 

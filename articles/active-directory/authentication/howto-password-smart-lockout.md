@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8a57e77ea572f899bf540714e8ac9968988f028
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f501c19da3c2ddc06ad89fe5649789477af7ec
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741730"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255375"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Azure Active Directory スマート ロックアウトを使用してユーザー アカウントを攻撃から保護する
 
@@ -89,6 +89,8 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 スマート ロックアウトのしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
 
 *ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。*
+
+スマート ロックアウトをテストする際、Azure AD 認証サービスの地理的分散および負荷分散の性質により、サインイン要求はさまざまなデータセンターによって処理される可能性があります。 そのシナリオでは、ロックアウトはそれぞれの Azure AD データセンターによって個別に追跡されるため、ロックアウトを発生させるために、定義されたロックアウトしきい値よりも多くの試行回数が必要になる場合があります。 ロックアウトが発生する前にユーザーが各データ センターにアクセスする場合、そのユーザーの不正試行回数は (*threshold_limit * datacenter_count*) です。
 
 ## <a name="next-steps"></a>次のステップ
 

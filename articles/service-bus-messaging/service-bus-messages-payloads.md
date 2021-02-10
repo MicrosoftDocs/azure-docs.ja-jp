@@ -2,13 +2,13 @@
 title: Azure Service Bus のメッセージ、ペイロード、およびシリアル化 | Microsoft Docs
 description: この記事では、Azure Service Bus のメッセージ、ペイロード、メッセージ ルーティング、およびシリアル化について概要を説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/29/2021
+ms.openlocfilehash: db1989004e60c305341e54e62e42f31e40e47487
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341689"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219181"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 
@@ -70,8 +70,6 @@ Java または .NET Standard バージョンとは異なり、.NET Framework バ
 レガシ SBMP プロトコルを使用する場合、それらのオブジェクトは、既定のバイナリ シリアライザーまたは外部から提供されたシリアライザーを使用してシリアル化されます。 AMQP プロトコルを使用する場合、オブジェクトは AMQP オブジェクトにシリアル化されます。 受信側は、必要な型を指定して [GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドを実行することで、これらのオブジェクトを取得できます。 AMQP の場合、オブジェクトは **ArrayList** および **IDictionary<string,object>** の各オブジェクトの AMQP グラフにシリアル化され、どの AMQP クライアントでも復号化できます。 
 
 この見えないシリアル化のマジックは便利ですが、アプリケーションはオブジェクトのシリアル化を明示的に制御して、オブジェクト グラフをメッセージに含める前にストリームに変換し、受信側ではその逆の操作を行う必要があります。 これは相互運用可能な結果を生成します。 また、AMQP には強力なバイナリ エンコード モデルがありますが、このモデルは AMQP メッセージング エコシステムに関連付けられており、HTTP クライアントがそのようなペイロードをデコードすると問題が発生するという点にも注意してください。 
-
-一般的には、JSON および Apache Avro を構造化データのペイロードの形式としてお勧めします。
 
 .NET Standard および Java バージョンの API はバイト配列しか受け入れません。つまり、アプリケーションはオブジェクトのシリアル化制御を処理する必要があります。 
 

@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight でのスクリプト アクションのトラブルシューティング
 description: Azure HDInsight でのスクリプト アクションの一般的なトラブルシューティングの手順。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ef9322c17a20ab5bfcf348649a1272dd4f301c5c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7158e9f82ee01b320d448baeab51fcfd122be00d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000676"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944677"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Azure HDInsight でのスクリプト アクションのトラブルシューティング
 

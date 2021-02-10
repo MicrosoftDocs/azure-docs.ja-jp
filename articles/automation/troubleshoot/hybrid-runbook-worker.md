@@ -2,19 +2,15 @@
 title: Azure Automation Hybrid Runbook Worker の問題のトラブルシューティング
 description: この記事では、Azure Automation Hybrid Runbook Worker で発生する問題のトラブルシューティングと解決方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/25/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.topic: troubleshooting
+ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428402"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055333"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
 
@@ -58,7 +54,7 @@ Hybrid Runbook Worker の機能を実行するコンピューターがハード�
 
 #### <a name="issue"></a>問題
 
-Hybrid Runbook Worker で、クエリ結果が有効でないことを示すイベント 15011 が受信されます。 ワーカーで [SignalR サーバー](/aspnet/core/signalr/introduction?view=aspnetcore-3.1)との接続を開こうとするときに、次のエラーが表示されます。
+Hybrid Runbook Worker で、クエリ結果が有効でないことを示すイベント 15011 が受信されます。 ワーカーで [SignalR サーバー](/aspnet/core/signalr/introduction)との接続を開こうとするときに、次のエラーが表示されます。
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -110,11 +106,11 @@ At line:3 char:1
 ```
 #### <a name="cause"></a>原因
 
-このエラーは、Hybrid Runbook Worker 上で実行される Runbook 内で[実行アカウント](../manage-runas-account.md)を使用しようとしたが、その実行アカウントの証明書が存在しない場合に発生します。 Hybrid Runbook Workers には、既定では証明書資産はローカルにありません。 実行アカウントでは、この資産が適切に動作していることが要求されます。
+このエラーは、Hybrid Runbook Worker 上で実行される Runbook 内で[実行アカウント](../automation-security-overview.md#run-as-accounts)を使用しようとしたが、その実行アカウントの証明書が存在しない場合に発生します。 Hybrid Runbook Workers には、既定では証明書資産はローカルにありません。 実行アカウントでは、この資産が適切に動作していることが要求されます。
 
 #### <a name="resolution"></a>解決策
 
-お使いの Hybrid Runbook Worker が Azure VM である場合は、代わりに、[マネージド ID による Runbook 認証](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)を使用できます。 このシナリオでは、実行アカウントの代わりに Azure VM のマネージド ID を使用して Azure リソースへの認証を可能にすることで、認証を簡素化します。 Hybrid Runbook Worker がオンプレミスのコンピューターである場合は、実行アカウント証明書をコンピューターにインストールする必要があります。 証明書をインストールする方法については、「 [Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」で、PowerShell Runbook の **Export-RunAsCertificateToHybridWorker** を実行するための手順を参照してください。
+お使いの Hybrid Runbook Worker が Azure VM である場合は、代わりに、[マネージド ID による Runbook 認証](../automation-hrw-run-runbooks.md#runbook-auth-managed-identities)を使用できます。 このシナリオでは、実行アカウントの代わりに Azure VM のマネージド ID を使用して Azure リソースへの認証を可能にすることで、認証を簡素化します。 Hybrid Runbook Worker がオンプレミスのコンピューターである場合は、実行アカウント証明書をコンピューターにインストールする必要があります。 証明書をインストールする方法については、「[Hybrid Runbook Worker での Runbook の実行](../automation-hrw-run-runbooks.md)」で、PowerShell Runbook の **Export-RunAsCertificateToHybridWorker** を実行するための手順を参照してください。
 
 ### <a name="scenario-error-403-during-registration-of-a-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>シナリオ:Hybrid Runbook Worker の登録中にエラー 403 が発生した
 
@@ -156,7 +152,7 @@ Linux Hybrid Runbook Worker で `sudo` コマンドを実行すると、パス�
 
 #### <a name="cause"></a>原因
 
-Linux 用 Log Analytics エージェントの **nxautomationuser** アカウントが、 **sudoers** ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
+Linux 用 Log Analytics エージェントの **nxautomationuser** アカウントが、**sudoers** ファイルで正しく構成されていません。 Hybrid Runbook Worker では、Linux Runbook Worker で Runbook に署名できるように、アカウントのアクセス許可やその他のデータが適切に構成されている必要があります。
 
 #### <a name="resolution"></a>解決策
 
@@ -176,7 +172,7 @@ Linux 用 Log Analytics エージェントが実行されていません。
 
 #### <a name="resolution"></a>解決策
 
- `ps -ef | grep python` コマンドを入力して、このエージェントが実行されていることを確認します。 次のような出力が表示されます。 Python では、 **nxautomation** ユーザー アカウントを使用して処理が行われます。 Azure Automation 機能が有効になっていない場合、次のどのプロセスも実行されていません。
+ `ps -ef | grep python` コマンドを入力して、このエージェントが実行されていることを確認します。 次のような出力が表示されます。 Python では、**nxautomation** ユーザー アカウントを使用して処理が行われます。 Azure Automation 機能が有効になっていない場合、次のどのプロセスも実行されていません。
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -186,9 +182,9 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 次の一覧は、Linux Hybrid Runbook Worker のために開始されるプロセスを示します。 これらはすべて /var/opt/microsoft/omsagent/state/automationworker/ ディレクトリに配置されています。
 
-* **oms.conf** :worker マネージャー プロセスです。 これは、DSC から直接開始されます。
-* **worker.conf** :自動登録ハイブリッド worker プロセスです。 worker マネージャーによって開始されます。 このプロセスは Update Management によって使用され、ユーザーに透過的です。 マシンで Update Management が有効になっていない場合、このプロセスは存在しません。
-* **diy/worker.conf** :DIY ハイブリッド worker プロセスです。 DIY ハイブリッド ワーカー プロセスは、Hybrid Runbook Worker でユーザーの Runbook を実行するために使用されます。 キーの詳細での自動登録ハイブリッド ワーカー プロセスとの唯一の違いは、異なる構成を使用していることです。 Azure Automation が無効であり、DIY Linux ハイブリッド worker が登録されていない場合、このプロセスは存在しません。
+* **oms.conf**:worker マネージャー プロセスです。 これは、DSC から直接開始されます。
+* **worker.conf**:自動登録ハイブリッド worker プロセスです。 worker マネージャーによって開始されます。 このプロセスは Update Management によって使用され、ユーザーに透過的です。 マシンで Update Management が有効になっていない場合、このプロセスは存在しません。
+* **diy/worker.conf**:DIY ハイブリッド worker プロセスです。 DIY ハイブリッド ワーカー プロセスは、Hybrid Runbook Worker でユーザーの Runbook を実行するために使用されます。 キーの詳細での自動登録ハイブリッド ワーカー プロセスとの唯一の違いは、異なる構成を使用していることです。 Azure Automation が無効であり、DIY Linux ハイブリッド worker が登録されていない場合、このプロセスは存在しません。
 
 エージェントが実行されていない場合、次のコマンドを実行してサービスを開始します。`sudo /opt/microsoft/omsagent/bin/service_control restart`
 
@@ -230,7 +226,7 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 #### <a name="resolution"></a>解決策
 
-ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 警告やエラー イベントが、 **アプリケーションとサービス ログ\Microsoft-SMA\Operations** と **アプリケーションとサービス ログ\Operations Manager** イベント ログにあるかどうかを確認できます。 これらのログは、Azure Automation に対するロールの有効化に影響する接続や他の種類の問題、または通常の操作中に発生した問題を示しています。 Log Analytics エージェントに関する問題のトラブルシューティングの詳細については、[Log Analytics Windows エージェントの問題のトラブルシューティング](../../azure-monitor/platform/agent-windows-troubleshoot.md)に関するページを参照してください。
+ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。 警告やエラー イベントが、**アプリケーションとサービス ログ\Microsoft-SMA\Operations** と **アプリケーションとサービス ログ\Operations Manager** イベント ログにあるかどうかを確認できます。 これらのログは、Azure Automation に対するロールの有効化に影響する接続や他の種類の問題、または通常の操作中に発生した問題を示しています。 Log Analytics エージェントに関する問題のトラブルシューティングの詳細については、[Log Analytics Windows エージェントの問題のトラブルシューティング](../../azure-monitor/platform/agent-windows-troubleshoot.md)に関するページを参照してください。
 
 ハイブリッド worker により、クラウドで実行されている Runbook ジョブが出力とメッセージを送信するのと同じ方法で、[Runbook の出力とメッセージ](../automation-runbook-output-and-messages.md)が Azure Automation に送信されます。 詳細ストリームと進行状況ストリームは、Runbook の場合と同じように有効にすることができます。
 
@@ -238,19 +234,19 @@ PowerShell で次のコマンドを入力して、このエージェントが実
 
 #### <a name="issue"></a>問題
 
-Windows Hybrid Runbook Worker で実行されるスクリプトを、想定どおりに Orchestrator サンドボックスの Microsoft 365 に接続できません。 スクリプトでは、接続に [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) を使用しています。 
+Windows Hybrid Runbook Worker で実行されるスクリプトを、想定どおりに Orchestrator サンドボックスの Microsoft 365 に接続できません。 スクリプトでは、接続に [Connect-MsolService](/powershell/module/msonline/connect-msolservice) を使用しています。 
 
 **Orchestrator.Sandbox.exe.config** を調整してプロキシとバイパス リストを設定しても、サンドボックスに正常に接続されません。 プロキシとバイパス リストの設定が同じ **Powershell_ise.exe.config** ファイルは、想定したとおり機能しているようです。 Service Management Automation (SMA) ログと PowerShell ログでは、プロキシに関する情報が提供されません。
 
 #### <a name="cause"></a>原因
 
-サーバー上の Active Directory フェデレーション サービス (AD FS) への接続でプロキシをバイパスすることはできません。 PowerShell サンドボックスはログインしたユーザーとして実行されることに注意してください。 ただし、Orchestrator サンドボックスは大幅にカスタマイズされており、 **Orchestrator.Sandbox.exe.config** ファイルの設定は無視されることがあります。 それにはマシンまたは Log Analytics エージェントのプロキシ設定を処理するための特殊なコードが含まれていますが、それら以外のカスタム プロキシ設定は処理されません。 
+サーバー上の Active Directory フェデレーション サービス (AD FS) への接続でプロキシをバイパスすることはできません。 PowerShell サンドボックスはログインしたユーザーとして実行されることに注意してください。 ただし、Orchestrator サンドボックスは大幅にカスタマイズされており、**Orchestrator.Sandbox.exe.config** ファイルの設定は無視されることがあります。 それにはマシンまたは Log Analytics エージェントのプロキシ設定を処理するための特殊なコードが含まれていますが、それら以外のカスタム プロキシ設定は処理されません。 
 
 #### <a name="resolution"></a>解決策
 
 PowerShell コマンドレットのスクリプトを、MSOnline モジュールではなく Azure Active Directory モジュールを使用するように移行することで、Orchestrator サンドボックスの問題を解決できます。 詳細については、「[Orchestrator から Azure Automation (ベータ版) へ移行する](../automation-orchestrator-migration.md)」を参照してください。
 
-引き続き MSOnline モジュールのコマンドレットを使用する場合は、[Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) を使用するようにスクリプトを変更します。 `ComputerName` パラメーターと `Credential` パラメーターの値を指定します。 
+引き続き MSOnline モジュールのコマンドレットを使用する場合は、[Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command) を使用するようにスクリプトを変更します。 `ComputerName` パラメーターと `Credential` パラメーターの値を指定します。 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

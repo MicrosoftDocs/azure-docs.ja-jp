@@ -3,12 +3,12 @@ title: レジストリ ログインのトラブルシューティング
 description: Azure Container Registry にログインするときの一般的な問題の現象、原因、対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379504"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052080"
 ---
 # <a name="troubleshoot-registry-login"></a>レジストリ ログインのトラブルシューティング
 
@@ -39,6 +39,8 @@ Azure Container Registry にログインするときに発生する可能性の�
 [az acr check-health](/cli/azure/acr#az-acr-check-health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、Docker 構成エラーや Azure Active Directory ログインの問題を診断します。 
 
 コマンドの例については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。 エラーが報告された場合は、推奨される対処法について、[エラー リファレンス](container-registry-health-error-reference.md)と次のセクションを確認してください。
+
+Azure Kubernetes Service でレジストリを使用しているときに問題が発生した場合は、[az aks check-acr](/cli/azure/aks#az_aks_check_acr) コマンドを実行して、AKS クラスターからレジストリにアクセスできることを確認します。
 
 > [!NOTE]
 > また、一部の認証または承認エラーは、レジストリへのアクセスを妨げるファイアウォールまたはネットワーク構成がある場合に発生する可能性があります。 「[レジストリに関するネットワークの問題のトラブルシューティング](container-registry-troubleshoot-access.md)」を参照してください。
@@ -79,7 +81,7 @@ az acr login --name myregistry
 * Active Directory サービス プリンシパルを使用している場合は、Active Directory テナントで確実に正しい資格情報を使用します。
   * ユーザー名 - サービス プリンシパルのアプリケーション ID (*クライアント ID* とも呼ばれます)
   * パスワード - サービス プリンシパルのパスワード (*クライアント シークレット* とも呼ばれます)
-* Azure Kubernetes Service や Azure DevOps などの Azure サービスを使用してレジストリにアクセスする場合は、サービスのレジストリ構成を確認します。
+* Azure Kubernetes Service や Azure DevOps などの Azure サービスを使用してレジストリにアクセスする場合は、サービスのレジストリ構成を確認します。 
 * `--expose-token` オプションを指定して `az acr login` を実行し、Docker デーモンを使用せずにレジストリをログインできるようにする場合は、確実にユーザー名 `00000000-0000-0000-0000-000000000000` で認証します。
 * レジストリが[匿名プル アクセス](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)用に構成されている場合、以前の Docker ログインから格納されている既存の Docker 資格情報により匿名アクセスを防ぐことができます。 レジストリに対して匿名のプル操作を実行する前に、 `docker logout` を実行してください。
 

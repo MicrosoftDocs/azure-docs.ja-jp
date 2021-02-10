@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: fd55110bbfaed72051bfc388692421cd8209609d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763691"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806679"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスのカスタム VM イメージを作成する
 
@@ -23,7 +23,7 @@ Azure Stack Edge Pro デバイスで VM をデプロイするには、VM の作�
 
 ## <a name="vm-image-workflow"></a>VM イメージのワークフロー
 
-このワークフローでは、Azure に仮想マシンを作成して VM をカスタマイズし、その VM に対応する VHD を一般化してダウンロードする必要があります。 この一般化した VHD が Azure Stack Edge Pro にアップロードされ、その VHD からマネージド ディスクが作成されます。さらに、マネージド ディスクからイメージが作成されて、最終的にそのイメージから VM が作成されます。   
+このワークフローでは、Azure に仮想マシンを作成して VM をカスタマイズし、その VM に対応する VHD を一般化してダウンロードする必要があります。 この一般化された VHD は Azure Stack Edge Pro にアップロードされます。 その VHD からマネージド ディスクが作成されます。 マネージド ディスクからイメージが作成されます。 最後に、そのイメージから VM が作成されます。
 
 詳細については、[Azure PowerShell を使用して Azure Stack Edge Pro デバイスに VM をデプロイする方法](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)に関するページを参照してください。
 
@@ -76,7 +76,7 @@ Linux VM イメージを作成するには、次の手順に従います。
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server は、クラウド環境の世界で最も人気のある Linux です。|Canonical|
 |[Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux は最も人気のある Linux ディストリビューションの 1 つです。     |credativ|
 
-使用できる可能性のある Azure Marketplace イメージの完全な一覧 (現在テストは未実施) については、「[Azure Stack Hub で使用できる Azure Marketplace 項目](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)」を参照してください。
+使用できる可能性のある Azure Marketplace イメージの完全な一覧 (現在テストは未実施) については、「[Azure Stack Hub で使用できる Azure Marketplace 項目](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

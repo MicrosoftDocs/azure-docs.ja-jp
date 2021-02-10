@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2019
 ms.author: allensu
-ms.openlocfilehash: b171699a0c578b3761e58f6e0e977199369864a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0665cbd7aa21575337999fb5c59478955c764048
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84709965"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934199"
 ---
 # <a name="dissociate-a-public-ip-address-from-an-azure-vm"></a>パブリック IP アドレスの関連付けを Azure VM から解除する 
 
@@ -45,7 +45,7 @@ ms.locfileid: "84709965"
 [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json) をインストールするか、または Azure Cloud Shell を使用します。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次の CLI コマンドの **[使ってみる]** ボタンを選択します。 **[使ってみる]** を選択すると Cloud Shell が起動され、お使いの Azure アカウントにサインインできます。
 
 1. Bash でローカルに CLI を使用している場合は、`az login` を使って Azure にサインインします。
-2. パブリック IP アドレスが、VM にアタッチされているネットワーク インターフェイスの IP 構成に関連付けられます。 [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update) コマンドを使用して、IP 構成からパブリック IP アドレスの関連付け解除します。 次の例では、*myVMPublicIP* という名前のパブリックIPアドレスを、*myResourceGroup* という名前のリソースグループ内にある *myVM* という名前の VM に接続されている *myVMVMNic* という名前の既存のネットワークインターフェイスの *ipconfigmyVM* という名前の IP 構成との関連付けから解除します。
+2. パブリック IP アドレスが、VM にアタッチされているネットワーク インターフェイスの IP 構成に関連付けられます。 [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update) コマンドを使用して、IP 構成からパブリック IP アドレスの関連付け解除します。 次の例では、*myVMPublicIP* という名前のパブリックIPアドレスを、*myResourceGroup* という名前のリソースグループ内にある *myVM* という名前の VM に接続されている *myVMVMNic* という名前の既存のネットワークインターフェイスの *ipconfigmyVM* という名前の IP 構成との関連付けから解除します。
   
    ```azurecli-interactive
     az network nic ip-config update \
@@ -55,7 +55,7 @@ ms.locfileid: "84709965"
     --remove PublicIpAddress
    ```
 
-   VM にアタッチされているネットワーク インターフェイスの名前がわからない場合は、[az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list) コマンドを使用して表示します。 たとえば、次のコマンドは、*myResourceGroup* というリソース グループ内の *myVM* という VM にアタッチされているネットワーク インターフェイスの名前を一覧表示します。
+   VM にアタッチされているネットワーク インターフェイスの名前がわからない場合は、[az vm nic list](/cli/azure/vm/nic#az-vm-nic-list) コマンドを使用して表示します。 たとえば、次のコマンドは、*myResourceGroup* というリソース グループ内の *myVM* という VM にアタッチされているネットワーク インターフェイスの名前を一覧表示します。
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -69,13 +69,13 @@ ms.locfileid: "84709965"
 
      上記の例では、*myVMVMNic* がネットワーク インターフェイスの名前です。
 
-   - ネットワーク インターフェイスの IP 構成の名前がわからない場合は、[az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list) コマンドを使用して取得します。 たとえば、次のコマンドは、*myResourceGroup* という名前のリソースグループ内の *myVMVMNic* という名前のネットワークインターフェイスのパブリック IP 構成の名前を一覧表示します：
+   - ネットワーク インターフェイスの IP 構成の名前がわからない場合は、[az network nic ip-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list) コマンドを使用して取得します。 たとえば、次のコマンドは、*myResourceGroup* という名前のリソースグループ内の *myVMVMNic* という名前のネットワークインターフェイスのパブリック IP 構成の名前を一覧表示します：
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-   - ネットワーク インターフェイスのパブリック IP 構成の名前がわからない場合は、[az network nic ip-config show](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-show) コマンドを使用して取得します。 たとえば、次のコマンドは、*myResourceGroup* という名前のリソースグループ内の *myVMVMNic* という名前のネットワークインターフェイスのパブリック IP 構成の名前を一覧表示します：
+   - ネットワーク インターフェイスのパブリック IP 構成の名前がわからない場合は、[az network nic ip-config show](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-show) コマンドを使用して取得します。 たとえば、次のコマンドは、*myResourceGroup* という名前のリソースグループ内の *myVMVMNic* という名前のネットワークインターフェイスのパブリック IP 構成の名前を一覧表示します：
 
      ```azurecli-interactive
      az network nic ip-config show --name ipconfigmyVM --nic-name myVMVMNic --resource-group myResourceGroup --query publicIPAddress.id

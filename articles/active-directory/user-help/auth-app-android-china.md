@@ -9,20 +9,19 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 12/08/2020
+ms.date: 01/27/2021
 ms.author: curtand
-ms.openlocfilehash: 7b3af7c5bd55e748b1d1f4cf8f192797187da30a
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d499417414e560bdaa3fcd0a12255946aca413d9
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96901798"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054841"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>中国のパブリック クラウドでの Android の Microsoft Authenticator
 
 Android 用の Microsoft Authenticator アプリは、中国でダウンロードが可能です。 中国では Google Play ストアが利用できないため、アプリを他の中国のアプリ マーケットプレースからダウンロードする必要があります。 Android 用の Microsoft Authenticator アプリは、現在、中国の次のストアでご利用いただけます。
 
-- [Baidu](https://shouji.baidu.com/software/26638379.html)
 - [Lenovo](https://www.lenovomm.com/appdetail/com.azure.authenticator/20197724)
 - [Huawei](https://appgallery.cloud.huawei.com/uowap/index.html#/detailApp/C100262999?source=appshare&subsource=C100262999&shareTo=weixin&locale=zh_CN)
 - [Samsung Galaxy Store](http://apps.samsung.com/appquery/appDetail.as?appId=com.azure.authenticator)

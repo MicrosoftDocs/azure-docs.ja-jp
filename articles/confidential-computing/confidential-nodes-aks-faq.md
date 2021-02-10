@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e2095b0df8fdc965926c6c612c45f582c9b9d2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993525"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874486"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上の Confidential Computing ノードについてよく寄せられる質問
 
@@ -24,6 +24,10 @@ ms.locfileid: "90993525"
 ## <a name="what-is-attestation-and-how-can-we-do-attestation-of-apps-running-in-enclaves"></a>構成証明とは何ですか。エンクレーブで実行されているアプリの構成証明を実行するにはどうすればよいですか。 
 
 構成証明は、ソフトウェアの一部が特定のハードウェア プラットフォームで適切にインスタンス化されていることを実証および検証するプロセスです。 これにより、セキュリティで保護されたプラットフォームで実行されており、改ざんされていないことを保証する証拠が検証可能であることも確保されます。 エンクレーブ アプリの構成証明の実行方法の[詳細について参照してください](attestation.md)。
+
+## <a name="can-i-enable-accelerated-networking-with-azure-confidential-computing-aks-clusters"></a>Azure Confidential Computing AKS クラスターで高速ネットワークを有効にできますか。 
+
+いいえ。 AKS のコンフィデンシャル コンピューティング ノードでは、高速ネットワークはサポートされていません。 デプロイで高速ネットワークが無効になっていることを確認してください。 
 
 ## <a name="can-i-bring-my-existing-containerized-applications-and-run-it-on-aks-with-azure-confidential-computing"></a>既存のコンテナー化されたアプリケーションを持ち込み、Azure Confidential Computing を使用する AKS 上で実行できますか。 
 

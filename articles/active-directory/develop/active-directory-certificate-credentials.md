@@ -13,18 +13,18 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602208"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795621"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft ID プラットフォーム アプリケーションの認証証明書資格情報
 
 Microsoft ID プラットフォームでは、OAuth 2.0 [クライアント資格情報付与](v2-oauth2-client-creds-grant-flow.md)フローや [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) (OBO) フローなど、クライアント シークレットを使用できるあらゆる場所で、アプリケーションが認証用の独自の資格情報を使用することが許可されています。
 
-アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有する証明書を使用して署名された [JSON Web トークン](./security-tokens.md#json-web-tokens-jwts-and-claims) (JWT) アサーションです。
+アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有する証明書を使用して署名された [JSON Web トークン](./security-tokens.md#json-web-tokens-and-claims) (JWT) アサーションです。
 
 ## <a name="assertion-format"></a>アサーションの形式
 

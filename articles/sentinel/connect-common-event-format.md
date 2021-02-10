@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655852"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747493"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 
@@ -77,6 +77,12 @@ Syslog ソースと Syslog フォワーダーの間で TLS 通信を使用する
   - Syslog RFC 5424
  
 マシンが次の要件も満たしていることを確認します。 
+
+- 容量
+  - マシンには、少なくとも **4 つの CPU コアと 8 GB の RAM** が必要です。
+
+    > [!NOTE]
+    > - **rsyslog** デーモンを使用している 1 つのログ フォワーダー マシンには、収集される **最大 8500 EPS (1 秒あたりのイベント数)** のサポートされる容量があります。
 
 - アクセス許可
   - マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 

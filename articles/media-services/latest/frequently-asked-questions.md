@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services v3 のよく寄せられる質問 | Microsoft Docs
+title: Azure Media Services v3 のよく寄せられる質問
 description: この記事では、Azure Media Services v3 についてよく寄せられる質問に対する回答を提供します。
 services: media-services
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 50a0fe0fa5dece41ac9e343d5a8939e8d9dc634e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a452a056ff2bdbad5d2e461716ee1a56d36c8523
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426878"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897562"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -38,7 +38,7 @@ ms.locfileid: "92426878"
 
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Apple iOS デバイスにはどのようにしてストリーミングしますか?
 
-パスの終わり (URL の「 **/manifest** 」の部分の後) に **(format=m3u8-aapl)** が指定されていることを確認します。これは、Apple iOS ネイティブ デバイスで使用するために HTTP ライブ ストリーミング (HLS) コンテンツを返すようにストリーミング元のサーバーに指示します。 詳細については、「[コンテンツの配信](dynamic-packaging-overview.md)」を参照してください。
+パスの終わり (URL の「 **/manifest**」の部分の後) に **(format=m3u8-aapl)** が指定されていることを確認します。これは、Apple iOS ネイティブ デバイスで使用するために HTTP ライブ ストリーミング (HLS) コンテンツを返すようにストリーミング元のサーバーに指示します。 詳細については、「[コンテンツの配信](dynamic-packaging-overview.md)」を参照してください。
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>メディア占有ユニットの構成方法を教えてください。
 
@@ -60,7 +60,7 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 
 ### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure Media Services v3 では、どのような機能がまだ利用可能になっていますか。
 
-詳細については、「[v2 API に関する機能のギャップ](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)」を参照してください。
+詳細については、[移行ガイド](migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 ### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>サブスクリプション間での Media Services アカウントの移動のプロセスはどのようなものですか?  
 
@@ -113,7 +113,7 @@ Azure Active Directory (Azure AD) のような特定のトークン プロバイ
 
 プレーヤーは、ユーザーが認証された後、そのトークンの要求を STS に対して作成し、それをトークンの値として割り当てます。 [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使用できます。
 
-対称キーと非対称キーのどちらかを使用して STS を実行する例については、「[JWT ツール](https://aka.ms/jwt)」を参照してください。 このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、「[Azure メディア テスト ツール](https://aka.ms/amtest)」を参照してください。 ( **player_settings** リンクを展開するとトークンの入力が表示されます。)
+対称キーと非対称キーのどちらかを使用して STS を実行する例については、「[JWT ツール](https://aka.ms/jwt)」を参照してください。 このような JWT トークンを使用する Azure Media Player に基づくプレーヤーの例については、「[Azure メディア テスト ツール](https://aka.ms/amtest)」を参照してください。 (**player_settings** リンクを展開するとトークンの入力が表示されます。)
 
 ### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>AES 暗号化を使用してビデオをストリームする要求を承認する方法を教えてください。
 
@@ -169,7 +169,7 @@ ASP.NET のプレーヤー アプリケーションはベスト プラクティ�
 
 Storage SDK の依存関係から Media Services を切り離すために、`AssetFile` は Media Services API から削除されました。 現在、Media Services ではなく、Azure Storage で Storage SDK に属する情報が保持されます。 
 
-詳細については、「[Media Services v3 に移行する](media-services-v2-vs-v3.md)」を参照してください。
+詳細については、「[Media Services v3 に移行する](migrate-v-2-v-3-migration-introduction.md)」を参照してください。
 
 ### <a name="where-did-client-side-storage-encryption-go"></a>クライアント側でのストレージ暗号化は利用できなくなったのですか?
 
@@ -255,9 +255,9 @@ Google の「Widevine DRM Architecture Overview」 (Widevine DRM アーキテク
 
 | **Widevine アーキテクチャで定義されたセキュリティ レベル** |**Widevine API で使用されるセキュリティ レベル**|
 |---|---| 
-| **セキュリティ レベル 1** :すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5** :暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4** :コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
-**セキュリティ レベル 2** :暗号化は TEE 内で実行されます (ビデオ処理は実行されません)。 解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3** :キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
-| **セキュリティ レベル 3** :デバイスに TEE はありません。 ホスト オペレーティング システム上の暗号化情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 では、ハードウェア暗号化エンジンも実装に含まれる場合がありますが、セキュリティのためではなく、パフォーマンス向上のみを目的としています。 | **security_level=2** :ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1** :ソフトウェアベースのホワイトボックス暗号化が必須です。|
+| **セキュリティ レベル 1**:すべてのコンテンツの処理、暗号化、および管理は、信頼できる実行環境 (TEE) 内で実行されます。 一部の実装モデルでは、セキュリティ処理が異なるチップで実行される場合があります。|**security_level=5**:暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした TEE で実行する必要があります。<br/><br/>**security_level=4**:コンテンツの暗号化とデコードを、ハードウェアを基盤にした TEE で実行する必要があります。|
+**セキュリティ レベル 2**:暗号化は TEE 内で実行されます (ビデオ処理は実行されません)。 解読されたバッファーはアプリケーション ドメインに返され、別のビデオ ハードウェアまたはソフトウェアによって処理されます。 ただし、レベル 2 では、暗号化に関する情報はやはり TEE 内でのみ処理されます。| **security_level=3**:キー マテリアルと暗号化の操作を、ハードウェアを基盤にした TEE で実行する必要があります。 |
+| **セキュリティ レベル 3**:デバイスに TEE はありません。 ホスト オペレーティング システム上の暗号化情報と解読されたコンテンツを保護するため、適切な手段が実行される場合があります。 レベル 3 では、ハードウェア暗号化エンジンも実装に含まれる場合がありますが、セキュリティのためではなく、パフォーマンス向上のみを目的としています。 | **security_level=2**:ソフトウェア暗号化と難読化デコーダーが必須です。<br/><br/>**security_level=1**:ソフトウェアベースのホワイトボックス暗号化が必須です。|
 
 #### <a name="why-does-content-download-take-so-long"></a>コンテンツのダウンロードに時間がかかるのはなぜですか。
 

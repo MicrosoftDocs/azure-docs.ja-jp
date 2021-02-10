@@ -1,6 +1,5 @@
 ---
-title: Azure Media Services DRM の暗号化とライセンス配信サービス
-titleSuffix: Azure Media Services
+title: Media Services DRM の暗号化とライセンス配信
 description: Microsoft PlayReady、Google Widevine、または Apple FairPlay のライセンスで暗号化されたストリームを、DRM 動的暗号化とライセンス販売サービスを使用して配信する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -15,12 +14,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: abaa82d6f5f33a3dc29db50ae6d029dacd3f7c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289360"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955175"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用
 
@@ -104,7 +103,7 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 
 ## <a name="wait-for-the-job-to-complete"></a>ジョブが完了するのを待つ
 
-ジョブが完了するまでに、一定の時間がかかります。 完了したら通知を受け取りたいでしょう。 次のコード例では、**ジョブ**の状態をサービスに対してポーリングする方法を示します。 待機時間が発生する可能性があるため、ポーリングは運用アプリに推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。 [カスタム Web エンドポイントへのイベントのルーティング](job-state-events-cli-how-to.md)に関するページをご覧ください。
+ジョブが完了するまでに、一定の時間がかかります。 完了したら通知を受け取りたいでしょう。 次のコード例では、**ジョブ** の状態をサービスに対してポーリングする方法を示します。 待機時間が発生する可能性があるため、ポーリングは運用アプリに推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。 [カスタム Web エンドポイントへのイベントのルーティング](job-state-events-cli-how-to.md)に関するページをご覧ください。
 
 **Job** には通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態が返されます。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
 
@@ -114,7 +113,7 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 
 コンテンツ キーにより、アセットに安全にアクセスすることができます。 DRM を使用してコンテンツを暗号化するときは、[コンテンツ キーポリシー](content-key-policy-concept.md)を作成する必要があります。 このポリシーでは、コンテンツ キーをエンド クライアントに配信する方法を構成します。 コンテンツ キーは、ストリーミング ロケーターに関連付けられます。 Media Services には、承認されたユーザーに暗号化キーとライセンスを配信する、キー配信サービスも用意されています。
 
-指定された構成でキーを配信するにあたって満たす必要がある、**コンテンツ キー ポリシー**の要件 (制限) を設定する必要があります。 この例では、次の構成と要件を設定します。
+指定された構成でキーを配信するにあたって満たす必要がある、**コンテンツ キー ポリシー** の要件 (制限) を設定する必要があります。 この例では、次の構成と要件を設定します。
 
 * 構成
 
@@ -135,9 +134,9 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 1. [ストリーミング ロケーター](streaming-locators-concept.md)を作成します。
 2. クライアントが使用できるストリーミング URL を作成します。
 
-**ストリーミング ロケーター**を作成するプロセスは、発行と呼ばれます。 既定では、API 呼び出しを行った直後に**ストリーミング ロケーター**が有効になります。 オプションの開始時間と終了時間を構成しない限り、その状態は削除されるまで継続されます。
+**ストリーミング ロケーター** を作成するプロセスは、発行と呼ばれます。 既定では、API 呼び出しを行った直後に **ストリーミング ロケーター** が有効になります。 オプションの開始時間と終了時間を構成しない限り、その状態は削除されるまで継続されます。
 
-**ストリーミング ロケーター**を作成するときは、使用する `StreamingPolicyName` を指定する必要があります。 このチュートリアルでは、定義済みのストリーミング ポリシーの 1 つを使用しています。このポリシーは、ストリーミングのためにコンテンツを発行する方法を Azure Media Services に指示します。 この例では、"Predefined_MultiDrmCencStreaming" ポリシーに StreamingLocator.StreamingPolicyName を設定します。 PlayReady と Widevine の暗号化が適用され、キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます。 また、CBCS (FairPlay) でもストリームを暗号化する場合は、"Predefined_MultiDrmStreaming" を使用します。
+**ストリーミング ロケーター** を作成するときは、使用する `StreamingPolicyName` を指定する必要があります。 このチュートリアルでは、定義済みのストリーミング ポリシーの 1 つを使用しています。このポリシーは、ストリーミングのためにコンテンツを発行する方法を Azure Media Services に指示します。 この例では、"Predefined_MultiDrmCencStreaming" ポリシーに StreamingLocator.StreamingPolicyName を設定します。 PlayReady と Widevine の暗号化が適用され、キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます。 また、CBCS (FairPlay) でもストリームを暗号化する場合は、"Predefined_MultiDrmStreaming" を使用します。
 
 > [!IMPORTANT]
 > カスタム [ストリーミング ポリシー](streaming-policy-concept.md)を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 StreamingLocator ごとに新しい StreamingPolicy を作成しないでください。
@@ -154,7 +153,7 @@ ContentKeyIdentifierClaim は ContentKeyPolicy で使用されます。つまり
 
 ## <a name="build-a-streaming-url"></a>ストリーミング URL を作成する
 
-[StreamingLocator](/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](/rest/api/media/streamingendpoints) のホスト名と**ストリーミング ロケーター**のパスを連結する必要があります。 このサンプルでは、*既定の* **ストリーミング エンドポイント**を使っています。 最初に Media Service アカウントを作成したとき、この*既定の* **ストリーミング エンドポイント**は停止状態になっているので、**Start** を呼び出す必要があります。
+[StreamingLocator](/rest/api/media/streaminglocators) が作成されたので、ストリーミング URL を取得できます。 URL を作成するには、[StreamingEndpoint](/rest/api/media/streamingendpoints) のホスト名と **ストリーミング ロケーター** のパスを連結する必要があります。 このサンプルでは、*既定の* **ストリーミング エンドポイント** を使っています。 最初に Media Service アカウントを作成したとき、この *既定の* **ストリーミング エンドポイント** は停止状態になっているので、**Start** を呼び出す必要があります。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 

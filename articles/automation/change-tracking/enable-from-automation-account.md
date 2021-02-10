@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 50188ad5fea0ee34a6896f0045e3bbcbfb553aaa
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 64eace72b6ea203d4052c39404bcbd7ce4c4bfa0
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677300"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055163"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-automation-account"></a>Automation アカウントで変更履歴とインベントリを有効にする
 
@@ -22,7 +22,7 @@ ms.locfileid: "92677300"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure のサブスクリプション。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
-* マシンを管理する [Automation アカウント](../index.yml)。
+* マシンを管理する [Automation アカウント](../automation-security-overview.md)。
 * [仮想マシン](../../virtual-machines/windows/quick-create-portal.md)。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン

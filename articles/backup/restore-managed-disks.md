@@ -3,12 +3,12 @@ title: Azure マネージド ディスクを復元する
 description: Azure portal から Azure マネージド ディスクを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 043a10a7359c95529ff1c4dcc181ea4aba75cb5f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556911"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737378"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Azure マネージド ディスクを復元する (プレビュー段階)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98556911"
 >
 >プレビューにサインアップするには、[このフォームに記入](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)してください。
 
-この記事では、Azure Backup によって作成された復元ポイントから [Azure マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview)を復元する方法について説明します。
+この記事では、Azure Backup によって作成された復元ポイントから [Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)を復元する方法について説明します。
 
 現在、バックアップが作成された既存のソース ディスクを置き換えることによって復元する、元の場所への復旧 (OLR) オプションはサポートされていません。 復旧ポイントから復元して、バックアップが作成されたソース ディスクと同じリソース グループか、または他の任意のリソース グループに新しいディスクを作成できます。 これは、別の場所への復旧 (ALR) と呼ばれ、ソース ディスクと復元された (新しい) ディスクの両方を保持するのに役立ちます。
 
@@ -31,7 +31,7 @@ ms.locfileid: "98556911"
 
 バックアップ コンテナーでは、マネージド ID を使用して他の Azure リソースにアクセスします。 バックアップから復元するには、バックアップ コンテナーのマネージド ID に、ディスクを復元する先のリソース グループに対する一連のアクセス許可が必要になります。
 
-バックアップ コンテナーでは、リソースあたり 1 つに制限され、このリソースのライフサイクルに関連付けられているシステム割り当てマネージド ID を使用します。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる、特殊な種類のサービス プリンシパルです。 [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) の詳細を確認してください。
+バックアップ コンテナーでは、リソースあたり 1 つに制限され、このリソースのライフサイクルに関連付けられているシステム割り当てマネージド ID を使用します。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる、特殊な種類のサービス プリンシパルです。 [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。
 
 復元操作を実行するには、次の前提条件が必要です。
 
@@ -66,6 +66,8 @@ ms.locfileid: "98556911"
     >
     >スケジュールされたバックアップまたはオンデマンド バックアップ操作中に、Azure Backup ではディスクの増分スナップショットを、そのディスクのバックアップの構成時に指定されたスナップショット リソース グループに格納します。 Azure Backup では、復元操作中にこれらの増分スナップショットを使用します。 スナップショットがスナップショット リソース グループから削除または移動されている場合、またはバックアップ コンテナーのロールの割り当てがスナップショット リソース グループで取り消されている場合、復元操作は失敗します。
 
+1. 復元されるディスクが [カスタマー マネージド キー (CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) で暗号化されているか、[プラットフォーム マネージド キーとカスタマー マネージド キーによる二重暗号化](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal)を使用して暗号化されている場合は、バックアップ コンテナーのマネージド ID に、**ディスク暗号化セット** リソースに対する **リーダー** ロールを割り当てます。
+
 前提条件が満たされたら、次の手順に従って復元操作を実行します。
 
 1. [Azure portal](https://portal.azure.com/) で、**バックアップ センター** に移動します。 **[管理]** セクションで **[バックアップ インスタンス]** を選択します。 バックアップ インスタンスの一覧から、復元操作を実行するディスク バックアップ インスタンスを選択します。
@@ -87,7 +89,7 @@ ms.locfileid: "98556911"
     ![復元のパラメーター](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >ディスク バックアップ ソリューションを使用して Azure Backup でバックアップされるディスクは、Azure VM バックアップ ソリューションを Recovery Services コンテナーと共に使用して Azure Backup でバックアップすることもできます。 このディスクが接続されている Azure VM の保護を構成している場合は、Azure VM の復元操作を使用することもできます。 対応する Azure VM バックアップ インスタンスの復旧ポイントから VM、またはディスクとファイルまたはフォルダーを復元することを選択できます。 詳細については、[Azure VM のバックアップ](https://docs.microsoft.com/azure/backup/about-azure-vm-restore)に関するページを参照してください。
+    >ディスク バックアップ ソリューションを使用して Azure Backup でバックアップされるディスクは、Azure VM バックアップ ソリューションを Recovery Services コンテナーと共に使用して Azure Backup でバックアップすることもできます。 このディスクが接続されている Azure VM の保護を構成している場合は、Azure VM の復元操作を使用することもできます。 対応する Azure VM バックアップ インスタンスの復旧ポイントから VM、またはディスクとファイルまたはフォルダーを復元することを選択できます。 詳細については、[Azure VM のバックアップ](./about-azure-vm-restore.md)に関するページを参照してください。
 
 1. 検証が成功したたら、 **[復元]** を選択して復元操作を開始します。
 
@@ -107,9 +109,9 @@ ms.locfileid: "98556911"
 
     ![OS ディスクをスワップする](./media/restore-managed-disks/swap-os-disks.png)
 
-- Windows 仮想マシンでは、復元されたディスクがデータ ディスクである場合、仮想マシンから[元のデータ ディスクを切断する](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-the-portal)手順に従います。 その後、[復元されたディスクを仮想マシンに接続](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)します。 復元されたディスクを使用して、仮想マシンの [OS ディスクをスワップする](https://docs.microsoft.com/azure/virtual-machines/windows/os-disk-swap)手順に従います。
+- Windows 仮想マシンでは、復元されたディスクがデータ ディスクである場合、仮想マシンから[元のデータ ディスクを切断する](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal)手順に従います。 その後、[復元されたディスクを仮想マシンに接続](../virtual-machines/windows/attach-managed-disk-portal.md)します。 復元されたディスクを使用して、仮想マシンの [OS ディスクをスワップする](../virtual-machines/windows/os-disk-swap.md)手順に従います。
 
-- Linux 仮想マシンでは、復元されたディスクがデータ ディスクである場合、仮想マシンから[元のデータ ディスクを切断する](https://docs.microsoft.com/azure/virtual-machines/linux/detach-disk#detach-a-data-disk-using-the-portal)手順に従います。 その後、[復元されたディスクを仮想マシンに接続](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#attach-an-existing-disk)します。 復元されたディスクを使用して、仮想マシンの [OS ディスクをスワップする](https://docs.microsoft.com/azure/virtual-machines/linux/os-disk-swap)手順に従います。
+- Linux 仮想マシンでは、復元されたディスクがデータ ディスクである場合、仮想マシンから[元のデータ ディスクを切断する](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal)手順に従います。 その後、[復元されたディスクを仮想マシンに接続](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk)します。 復元されたディスクを使用して、仮想マシンの [OS ディスクをスワップする](../virtual-machines/linux/os-disk-swap.md)手順に従います。
 
 復元操作が正常に完了したら、**ターゲット リソース グループ** で、バックアップ コンテナーのマネージド ID から **[ディスク復元オペレーター]** ロールの割り当てを取り消すことをお勧めします。
 

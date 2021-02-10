@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 02/02/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9b40ff3a5c9ce2103cde00b26543711d4c05efb0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028378"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524994"
 ---
 ::: zone target="docs"
 
@@ -322,7 +322,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
 
-米国政府、日本、シンガポール、韓国、インド、南アフリカ、または西ヨーロッパで Data Box を使用しており、注文の作成時に自己管理の出荷を選択した場合は、次の手順に従います。
+米国政府、日本、シンガポール、韓国、インド、南アフリカ、イギリス、西ヨーロッパ、オーストラリアで Data Box を使用しており、注文の作成時に自己管理の出荷を選択した場合は、次の手順に従います。
 
 1. この手順が正常に完了したら、Data Box のローカル Web UI の **[発送準備]** ページに表示される承認コードをメモしておきます。
 2. デバイスの電源をオフにして、ケーブルを取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。

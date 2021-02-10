@@ -1,6 +1,6 @@
 ---
 title: Microsoft ID プラットフォームのコード サンプル
-description: シナリオ別に整理された、利用可能な Microsoft ID プラットフォーム (v2.0 エンドポイント) のコード サンプルのインデックスを提供します。
+description: シナリオ別に整理された、利用可能な Microsoft ID プラットフォーム コード サンプルのインデックスを提供します。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 368a1acdfda66c3714979d27037737a75bbada5a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064523"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756645"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)
 
@@ -26,9 +26,9 @@ Microsoft ID プラットフォームを使用して、次の操作を行うこ�
 - Web アプリケーション Web API に認証と承認を追加する。
 - 保護された Web API にアクセスするためにアクセス トークンを要求する。
 
-この記事では、Microsoft ID プラットフォーム エンドポイントについて簡単に説明し、サンプルへのリンクを提供します。 これらのサンプルでは、その実行方法を示し、アプリケーションで使用できるコード スニペットを提供します。 サンプル コードのページには、要件、インストール、設定に役立つ詳細な Readme のトピックが含まれています。 コード内のコメントは、重要なセクションを理解するのに役立ちます。
+この記事では、Microsoft ID プラットフォームのサンプルについて簡単に説明し、サンプルへのリンクを提供します。 これらのサンプルでは、その実行方法を示し、アプリケーションで使用できるコード スニペットを提供します。 サンプル コードのページには、要件、インストール、設定に役立つ詳細な Readme のトピックが含まれています。 コード内のコメントは、重要なセクションを理解するのに役立ちます。
 
-サンプルの種類ごとの基本的なシナリオを理解するために、[Microsoft ID プラットフォーム エンドポイントのアプリの種類](v2-app-types.md)に関するページを参照してください。
+サンプルの種類ごとの基本的なシナリオについては、[Microsoft ID プラットフォームのアプリの種類](v2-app-types.md)に関する記事をご覧ください。
 
 GitHub でサンプルに協力することもできます。 その方法については、[Microsoft Azure Active Directory のサンプルとドキュメント](https://github.com/Azure-Samples?page=3&query=active-directory)をご覧ください。
 
@@ -121,7 +121,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 ## <a name="web-apis"></a>Web API
 
-次のサンプルは、Microsoft ID プラットフォーム エンドポイントで Web API を保護する方法と、その Web API からダウンストリーム API を呼び出す方法を示しています。
+次のサンプルは、Microsoft ID プラットフォームで Web API を保護する方法と、その Web API からダウンストリーム API を呼び出す方法を示しています。
 
 | プラットフォーム | サンプル |
 | -------- | ------------------- |
@@ -133,7 +133,7 @@ GitHub でサンプルに協力することもできます。 その方法につ
 
 ## <a name="azure-functions-as-web-apis"></a>Web API としての Azure Functions
 
-次のサンプルは、HttpTrigger を使用し、Microsoft ID プラットフォーム エンドポイントで Web API を公開して Azure Function を保護する方法と、その Web API からダウンストリーム API を呼び出す方法を示しています。
+次のサンプルは、HttpTrigger を使用し、Microsoft ID プラットフォームで Web API を公開して Azure Function を保護する方法と、その Web API からダウンストリーム API を呼び出す方法を示しています。
 
 | プラットフォーム | サンプル |
 | -------- | ------------------- |

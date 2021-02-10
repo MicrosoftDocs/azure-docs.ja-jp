@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight の Power BI で対話型クエリの Hive データを参照する
 description: Microsoft Power BI を使用して、Azure HDInsight からの対話型クエリの Hive データを視覚化する方法
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/17/2019
-ms.openlocfilehash: 92e94c911acb701b1ccf8e39636d152cc5bfb575
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7f249bb0e81bf3a371b8743a304ef49baffaed7a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534806"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941379"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Apache Hive データを視覚化する
 
@@ -26,7 +23,7 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
-* **HDInsight クラスター** 。 このクラスターは、Apache Hive を含む HDInsight クラスターか、新しくリリースされた対話型クエリ クラスターのいずれかです。 クラスターの作成については、「[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)」を参照してください。
+* **HDInsight クラスター**。 このクラスターは、Apache Hive を含む HDInsight クラスターか、新しくリリースされた対話型クエリ クラスターのいずれかです。 クラスターの作成については、「[クラスターの作成](../hadoop/apache-hadoop-linux-tutorial-get-started.md)」を参照してください。
 * **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** 。 [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) からコピーをダウンロードできます。
 
 ## <a name="load-data-from-hdinsight"></a>HDInsight からデータを読み込む
@@ -39,7 +36,7 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
     ![HDInsight Power BI のその他のデータ取得](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 
-3. **[データの取得]** ウィンドウで、検索ボックスに「 **hdinsight** 」と入力します。  
+3. **[データの取得]** ウィンドウで、検索ボックスに「**hdinsight**」と入力します。  
 
 4. 検索結果から **[HDInsight 対話型クエリ]** を選択し、 **[接続]** を選択します。  **[HDInsight 対話型クエリ]** が表示されない場合、Power BI Desktop を最新バージョンに更新する必要があります。
 
@@ -49,7 +46,7 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
     |プロパティ | 値 |
     |---|---|
-    |サーバー |クラスターの名前 ( *myiqcluster.azurehdinsight.net* など) を入力します。|
+    |サーバー |クラスターの名前 (*myiqcluster.azurehdinsight.net* など) を入力します。|
     |データベース |この記事では **[既定]** を入力します。|
     |データ接続モード |この記事では、 **[DirectQuery]** を選択します。|
 
@@ -57,7 +54,7 @@ Power BI Desktop の汎用 ODBC コネクタを介してインポートするた
 
 7. HTTP 資格情報を入力して、 **[接続]** を選択します。 既定のユーザー名は **admin** です。
 
-8. 左側のウィンドウの **[ナビゲーター]** ウィンドウから、 **hivesampletale** を選択します。
+8. 左側のウィンドウの **[ナビゲーター]** ウィンドウから、**hivesampletale** を選択します。
 
 9. メイン ウィンドウで **[ロード]** を選択します。
 

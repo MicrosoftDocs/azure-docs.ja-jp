@@ -1,17 +1,17 @@
 ---
 title: コンピューティングとストレージのオプション - Azure Database for MySQL - フレキシブル サーバー
 description: この記事では、Azure Database for MySQL - フレキシブル サーバーのコンピューティングとストレージのオプションについて説明します。
-author: savjani
-ms.author: pariks
+author: Bashar-MSFT
+ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/20/2020
-ms.openlocfilehash: 36f31ee390a6a208b202698ec9bda59b644c9e30
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 1/28/2021
+ms.openlocfilehash: b1e8093a1991a97220060c2b6936368f9a4be796
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534672"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052348"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL のコンピューティングとストレージのオプション - フレキシブル サーバー (プレビュー)
 
@@ -70,6 +70,9 @@ Azure Database for MySQL フレキシブル サーバーは、次の 3 つのコ
 | Standard_E64ds_v4    | 64     | 504               |
 
 使用可能なコンピューティング シリーズの詳細については、 [バースト可能 (B シリーズ)](../../virtual-machines/sizes-b-series-burstable.md)、[汎用 (Ddsv4 シリーズ)](../../virtual-machines/ddv4-ddsv4-series.md)、[メモリ最適化 (Edsv4 シリーズ)](../../virtual-machines/edv4-edsv4-series.md) に関する Azure VM ドキュメントを参照して、ください。
+
+>[!NOTE]
+>[バースト可能 (B シリーズ) コンピューティング レベル](../../virtual-machines/sizes-b-series-burstable.md)では、VM が開始/停止または再起動すると、クレジットが失われる可能性があります。 詳細については、[バースト可能 (B シリーズ) の FAQ](https://docs.microsoft.com/azure/virtual-machines/sizes-b-series-burstable#q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart) に関する記事を参照してください。
 
 ## <a name="storage"></a>ストレージ
 

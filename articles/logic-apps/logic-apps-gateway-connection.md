@@ -3,15 +3,15 @@ title: オンプレミスのデータ ソースにアクセスする
 description: Azure でデータ ゲートウェイ リソースを作成することにより、Azure Logic Apps からオンプレミスのデータ ソースに接続します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: arthii, divswa, logicappspm
+ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 08/18/2020
-ms.openlocfilehash: 2dd086ccc45458299cf6b8a7ad83d023055c96ae
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 356e63bb0a749ad0f41d886e75971e9b05c7f9dc
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009257"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218996"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -48,7 +48,7 @@ Azure Logic Apps では、オンプレミス データ ゲートウェイで、�
 * SQL Server
 * Teradata
 
-REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ ソースに接続する[カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成することもできます。 ゲートウェイ自体では追加のコストは発生しませんが、これらのコネクタや Azure Logic Apps のその他の操作に [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)が適用されます。
+REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ ソースに接続する[カスタム コネクタ](../logic-apps/custom-connector-overview.md)を作成することもできます。 ゲートウェイ自体では追加コストは発生しませんが、これらのコネクタや Azure Logic Apps のその他の操作に [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)が適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,8 +57,11 @@ REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ
 * ゲートウェイのインストールに使用したものと[同じ Azure アカウントとサブスクリプション](../logic-apps/logic-apps-gateway-install.md#requirements)がある。 この Azure アカウントは、1 つの [Azure Active Directory (Azure AD) テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)にのみ属している必要があります。 Azure でゲートウェイ リソースを作成できるのはゲートウェイ管理者だけなので、同じ Azure アカウントとサブスクリプションを使用して Azure でゲートウェイ リソースを作成する必要があります。 現在、サービス プリンシパルはサポートされていません。
 
   * Azure でゲートウェイ リソースを作成するときは、そのゲートウェイ リソースだけにリンクする、ゲートウェイのインストールを選択します。 各ゲートウェイ インストールは、1 つのゲートウェイ インストールだけにリンクできます。 別のゲートウェイ リソースと既に関連付けられているゲートウェイ インストールを選択することはできません。
-  
-  * ロジック アプリとゲートウェイ リソースは、同じ Azure サブスクリプション内に存在する必要はありません。 サブスクリプションにアクセスできる場合は、オンプレミスのデータソースにアクセスできるトリガーとアクションにおいて、ゲートウェイ リソースがある他の Azure サブスクリプションを選択できます。
+
+  * ロジック アプリとゲートウェイ リソースは、同じ Azure サブスクリプション内に存在する必要はありません。 ゲートウェイ リソースを使用できるトリガーとアクションでは、ゲートウェイ リソースがある別の Azure サブスクリプションを選択できます。ただし、そのサブスクリプションがロジック アプリと同じ Azure AD テナントまたはディレクトリに存在する場合に限ります。 また、別の管理者が設定できるゲートウェイに対する管理者権限も必要です。 詳細については、[データ ゲートウェイ: PowerShell を使用した Automation - パート 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) および [PowerShell: データ ゲートウェイ - Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser) に関する記事を参照してください。
+
+    > [!NOTE]
+    > 現時点では、複数のサブスクリプション間でゲートウェイ リソースやインストールを共有することはできません。 製品のフィードバックを送信するには、[Microsoft Azure フィードバック フォーラム](https://feedback.azure.com/forums/34192--general-feedback)を参照してください。
 
 <a name="create-gateway-resource"></a>
 
@@ -105,8 +108,8 @@ REST または SOAP を使用すると、HTTP または HTTPS 経由でデータ
 
 1. **[ゲートウェイ]** の **[サブスクリプション]** の一覧から、目的のゲートウェイ リソースがある Azure サブスクリプションを選択します。
 
-   サブスクリプションにアクセスできる場合は、それぞれが異なるゲートウェイ リソースに関連付けられている異なる Azure サブスクリプションから選択できます。 ロジック アプリとゲートウェイ リソースは、同じ Azure サブスクリプション内に存在する必要はありません。
-
+   ロジック アプリとゲートウェイ リソースは、同じ Azure サブスクリプション内に存在する必要はありません。 それぞれにゲートウェイ リソースがある他の Azure サブスクリプションから選択できますが、これらのサブスクリプションがロジック アプリと同じ Azure AD テナントまたはディレクトリに存在し、ゲートウェイに対する管理者権限があり、別の管理者が設定できる場合に限ります。 詳細については、[データ ゲートウェイ: PowerShell を使用した Automation - パート 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) および [PowerShell: データ ゲートウェイ - Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser) に関する記事を参照してください。
+  
 1. 選択したサブスクリプションで使用可能なゲートウェイ リソースを示す **[接続ゲートウェイ]** の一覧から、目的のゲートウェイ リソースを選択します。 各ゲートウェイ リソースは、1 つのゲートウェイ インストールにリンクされています。
 
    > [!NOTE]

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 39385a3ea9dc06875806ac85c06c0df6d5db2698
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538529"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683795"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -32,28 +32,28 @@ ms.locfileid: "98538529"
 > | **全般** |  |  |
 > | [Contributor](#contributor) | すべてのリソースを管理するためのフル アクセスが付与されますが、Azure RBAC でロールを割り当てたり、Azure Blueprints で割り当てを管理したり、イメージ ギャラリーを共有したりすることはできません。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | [所有者](#owner) | Azure RBAC でロールを割り当てる権限を含め、すべてのリソースを管理するためのフル アクセスを付与します。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
-> | [閲覧者](#reader) | すべてのリソースを表示できますが、変更を加えることはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
-> | [ユーザー アクセス管理者](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
+> | [Reader](#reader) | すべてのリソースを表示しますが、変更を加えることはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [User Access Administrator](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Compute** |  |  |
 > | [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
-> | [仮想マシンの管理者ログイン](#virtual-machine-administrator-login) | ポータルで仮想マシンを表示し、管理者としてログインします | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
-> | [仮想マシン共同作成者](#virtual-machine-contributor) | 仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
-> | [仮想マシンのユーザー ログイン](#virtual-machine-user-login) | ポータルで仮想マシンを表示し、通常のユーザーとしてログインします。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
+> | [Virtual Machine Administrator Login](#virtual-machine-administrator-login) | ポータルで仮想マシンを表示し、管理者としてログインします | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
+> | [Virtual Machine Contributor](#virtual-machine-contributor) | 仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
+> | [Virtual Machine User Login](#virtual-machine-user-login) | ポータルで仮想マシンを表示し、通常のユーザーとしてログインします。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **ネットワーク** |  |  |
 > | [CDN Endpoint Contributor](#cdn-endpoint-contributor) | CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [CDN Endpoint Reader](#cdn-endpoint-reader) | CDN エンドポイントを表示できますが、変更はできません。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [CDN Profile Contributor](#cdn-profile-contributor) | CDN プロファイルとそのエンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
 > | [CDN Profile Reader](#cdn-profile-reader) | CDN プロファイルとそのエンドポイントを表示できますが、変更はできません。 | 8f96442b-4075-438f-813d-ad51ab4019af |
 > | [Classic Network Contributor](#classic-network-contributor) | 従来のネットワークを管理できます。ただし、それらへのアクセスは含まれません。 | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
-> | [DNS ゾーンの共同作成者](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 | befefa01-2a29-4197-83a8-272ff33ce314 |
-> | [ネットワーク共同作成者](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
+> | [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 | befefa01-2a29-4197-83a8-272ff33ce314 |
+> | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [プライベート DNS ゾーンの共同作成者](#private-dns-zone-contributor) | プライベート DNS ゾーンのリソースを管理できますが、リンク先の仮想ネットワークを管理することはできません。 | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
 > | [Traffic Manager Contributor](#traffic-manager-contributor) | Traffic Manager プロファイルを管理できますが、それにアクセスできるユーザーを制御することはできません。 | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | **ストレージ** |  |  |
+> | **Storage** |  |  |
 > | [Avere 共同作成者](#avere-contributor) | Avere vFXT クラスターを作成および管理できます。 | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere オペレーター](#avere-operator) | クラスターを管理するために Avere vFXT クラスターによって使用されます | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
-> | [バックアップ共同作成者](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません | 5e467623-bb1f-42f4-a55d-6e525e11384b |
-> | [バックアップ オペレーター](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) | 00c29273-979b-4161-815c-10b084fb9324 |
+> | [Backup Contributor](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません | 5e467623-bb1f-42f4-a55d-6e525e11384b |
+> | [Backup Operator](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) | 00c29273-979b-4161-815c-10b084fb9324 |
 > | [Backup Reader](#backup-reader) | バックアップ サービスを表示できますが、変更を行うことはできません | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | [Classic Storage Account Contributor](#classic-storage-account-contributor) | 従来のストレージ アカウントを管理できますが、アクセスすることはできません。 | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | [従来のストレージ アカウント キー オペレーターのサービス ロール](#classic-storage-account-key-operator-service-role) | 従来のストレージ アカウント キー オペレーターは、従来のストレージ アカウントでのキーの一覧表示と再生成を行うことができます | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
@@ -61,7 +61,7 @@ ms.locfileid: "98538529"
 > | [Data Box 閲覧者](#data-box-reader) | Data Box サービスを管理できます (注文の作成または注文の詳細の編集、および他のユーザーに対するアクセス権の付与を除く)。 | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | [Data Lake Analytics Developer](#data-lake-analytics-developer) | 独自のジョブを送信、監視、管理できますが、Data Lake Analytics アカウントを作成または削除することはできません。 | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 | c12c1c16-33a1-487b-954d-41c89c60f349 |
-> | [ストレージ アカウント共同作成者](#storage-account-contributor) | ストレージ アカウントの管理を許可します。 アカウント キーへのアクセスを提供します。これを使用して、共有キー認証を使用してデータにアクセスすることができます。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
+> | [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントの管理を許可します。 アカウント キーへのアクセスを提供します。これを使用して、共有キー認証を使用してデータにアクセスすることができます。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント アクセス キーを一覧表示および再生成できます。 | 81a9662b-bebf-436f-a333-f67b29880f12 |
 > | [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
@@ -85,7 +85,7 @@ ms.locfileid: "98538529"
 > | [SignalR Service 閲覧者 (プレビュー)](#signalr-service-reader-preview) | Azure SignalR Service REST API への読み取り専用アクセス | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
-> | **コンテナ** |  |  |
+> | **Containers** |  |  |
 > | [AcrDelete](#acrdelete) | acr の削除 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | [AcrPull](#acrpull) | acr のプル | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
@@ -226,7 +226,7 @@ ms.locfileid: "98538529"
 ## <a name="general"></a>全般
 
 
-### <a name="contributor"></a>共同作成者
+### <a name="contributor"></a>Contributor
 
 すべてのリソースを管理するためのフル アクセスが付与されますが、Azure RBAC でロールを割り当てたり、Azure Blueprints で割り当てを管理したり、イメージ ギャラリーを共有したりすることはできません。 [詳細情報](rbac-and-directory-admin-roles.md)
 
@@ -316,7 +316,7 @@ Azure RBAC でロールを割り当てる権限を含め、すべてのリソー
 }
 ```
 
-### <a name="reader"></a>閲覧者
+### <a name="reader"></a>Reader
 
 すべてのリソースを表示しますが、変更を加えることはできません。 [詳細情報](rbac-and-directory-admin-roles.md)
 
@@ -7413,7 +7413,7 @@ Security Center の表示および更新のアクセス許可。 セキュリテ
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | ポリシーの割り当ての作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | ポリシー定義の作成と管理 |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* | ポリシー適用除外の作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | ポリシー セットの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
@@ -9171,7 +9171,7 @@ New Relic Application Performance Management のアカウントとアプリケ�
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | ポリシーの割り当ての作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | ポリシー定義の作成と管理 |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* | ポリシー適用除外の作成と管理 |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | ポリシー セットの作成と管理 |
 > | [Microsoft.PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | サポート チケットの作成と更新 |

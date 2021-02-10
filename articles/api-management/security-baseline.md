@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201078"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258559"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -90,15 +90,11 @@ API Management がデプロイされるサブネットへの受信トラフィ�
 
 注:この機能は、API Management の Premium レベルと Developer レベルで使用できます。
 
-API Management のデプロイに関連付けられた VNet 上で Azure DDoS Protection Standard を有効にして、分散型サービス拒否 (DDoS) 攻撃から保護します。
-
 Azure Security Center の統合された脅威インテリジェンスを使用して、既知の悪意のある、または未使用のインターネット IP アドレスとの通信を拒否します。
 
 * [内部 VNet 内の API Management と Application Gateway を統合する方法](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [Azure Application Gateway について](../application-gateway/index.yml)
-
-* [Azure DDoS Protection Standard を構成する方法](../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
@@ -184,8 +180,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9:ネットワーク デバイスの標準的なセキュリティ構成を維持する
 
-**ガイダンス**: Azure API Management のデプロイに関連するネットワーク設定の標準的なセキュリティ構成を定義して、実装します。 Azure API Management のデプロイと関連リソースのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ApiManagement" および "Microsoft.Network" 名前空間内で Azure Policy エイリアスを使用します。 また、次のように、Azure Virtual Networks 用の組み込みのポリシー定義を使用することもできます。
-- DDoS Protection Standard を有効にする必要がある
+**ガイダンス**: Azure API Management のデプロイに関連するネットワーク設定の標準的なセキュリティ構成を定義して、実装します。 Azure API Management のデプロイと関連リソースのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ApiManagement" および "Microsoft.Network" 名前空間内で Azure Policy エイリアスを使用します。 
 
 また、Azure Blueprints を使用して、Azure Resource Manager テンプレート、Azure ロールベースのアクセス制御 (Azure RBAC)、ポリシーなどの主要な環境成果物を単一のブループリント定義にパッケージ化することによって大規模な Azure デプロイを簡略化することもできます。 ブループリントを新しいサブスクリプションと環境に簡単に適用し、バージョン管理によって制御と管理を微調整できます。
 

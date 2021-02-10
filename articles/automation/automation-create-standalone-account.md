@@ -3,14 +3,14 @@ title: スタンドアロン Azure Automation アカウントを作成する
 description: この記事では、スタンドアロンの Azure Automation アカウントとクラシック実行アカウントを作成する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 01/15/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: c78a65c3cc2d913ba0b836947d2184b3a061a648
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0855395a305624bb2df96d183dc2bcac45f8e6b3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714645"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051466"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "91714645"
 
 Automation アカウントを使うと、Azure Resource Manager またはクラシック デプロイ モデルでリソースを管理することで、Runbook を認証できます。 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。
 
-Azure portal で Automation アカウントを作成すると、**実行**アカウントが自動的に作成されます。 このアカウントは、次のタスクを実行します。
+Azure portal で Automation アカウントを作成すると、**実行** アカウントが自動的に作成されます。 このアカウントは、次のタスクを実行します。
 
 * Azure Active Directory (Azure AD) にサービス プリンシパルを作成します。
 * 証明書を作成します。
@@ -74,7 +74,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
    > [!NOTE]
    > **[Azure 実行アカウントの作成]** で **[いいえ]** を選択して、実行アカウントを作成しなかった場合、[Automation アカウントの追加] ウィンドウにメッセージが表示されます。 Azure Portal でアカウントが作成されますが、このアカウントは、クラシック デプロイ モデル内または Azure Resource Manager サブスクリプションのディレクトリ サービス内に対応する認証 ID を持ちません。 その結果、この Automation アカウントは、ご使用のサブスクリプションのリソースへのアクセス権を持ちません。 そのため、このアカウントを参照する Runbook は認証を通過できず、これらのデプロイメント モデルのリソースに対するタスクを実行することができません。
    >
-   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="&quot;Azure Active Directory に実行アカウントを作成するためのアクセス許可がありません&quot; というプロンプトのスクリーンショット":::
+   > :::image type="content" source="media/automation-create-standalone-account/create-account-decline-create-runas-msg.png" alt-text="&quot;実行アカウントを作成しないことを選択しました&quot; というメッセージを含むプロンプトのスクリーンショット":::
    >
    > サービス プリンシパルが作成されていない場合、共同作成者ロールは割り当てられません。
    >
@@ -93,7 +93,7 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 
 ## <a name="create-a-classic-run-as-account"></a>クラシック実行アカウントを作成する
 
-Azure Automation アカウントを作成するとき、クラシック実行アカウントは既定では作成されなくなりました。 クラシック実行アカウントが引き続き必要な場合:
+Azure Automation アカウントを作成するとき、クラシック実行アカウントは既定では作成されません。 Azure クラシック リソースを管理するためにクラシック実行アカウントが必要な場合は、次の手順を実行します。
 
 1. [Automation アカウント] で、 **[アカウントの設定]** の **[実行アカウント]** を選択します。
 2. **[Azure クラシック実行アカウント]** を選択します。
@@ -104,5 +104,5 @@ Azure Automation アカウントを作成するとき、クラシック実行ア
 * グラフィック作成の詳細については、[Azure Automation でのグラフィカル Runbook の作成](automation-graphical-authoring-intro.md)に関する記事を参照してください。
 * PowerShell Runbook の使用を開始するには、「[チュートリアル:PowerShell Runbook を作成する](learn/automation-tutorial-runbook-textual-powershell.md)」を参照してください。
 * PowerShell Workflow Runbook の使用を開始するには、「[チュートリアル:PowerShell Workflow Runbook を作成する](learn/automation-tutorial-runbook-textual.md)」を参照してください。
-* Python 2 runbook の使用を開始するには、「[チュートリアル:Python 2 Runbook を作成する](learn/automation-tutorial-runbook-textual-python2.md)」を作成します。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)」をご覧ください。
+* Python 3 Runbook の使用を開始するには、「[チュートリアル: Python 3 Runbook を作成する](learn/automation-tutorial-runbook-textual-python-3.md)」を参照してください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation&preserve-view=true#automation)」をご覧ください。

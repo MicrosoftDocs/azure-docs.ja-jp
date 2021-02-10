@@ -8,12 +8,12 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a082ccb62103ab5bd027bf49b9ee05bc48c63115
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979254"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630618"
 ---
 # <a name="powershell-scripts-for-iot-edge-on-windows"></a>Windows での IoT Edge 用 PowerShell スクリプト
 
@@ -41,7 +41,7 @@ Deploy-IoTEdge
 Get-AuthenticodeSignature "C:\<path>\IotEdgeSecurityDaemon.ps1"
 ```
 
-署名が検証されている場合、出力状態は**有効**になります。
+署名が検証されている場合、出力状態は **有効** になります。
 
 ## <a name="deploy-iotedge"></a>Deploy-IoTEdge
 
@@ -66,14 +66,14 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 | **DpsTpm** | なし | **スイッチ パラメーター**。 プロビジョニングの種類が指定されていない場合は、接続文字列を使用した手動プロビジョニングが既定値です。<br><br>Device Provisioning Service (DPS) 経由でプロビジョニングするために、DPS のスコープ ID とデバイスの登録 ID を指定することを宣言します。  |
 | **DpsSymmetricKey** | なし | **スイッチ パラメーター**。 プロビジョニングの種類が指定されていない場合は、接続文字列を使用した手動プロビジョニングが既定値です。<br><br>構成証明用の対称キーと一緒に Device Provisioning Service (DPS) のスコープ ID とデバイスの登録 ID を指定して、DPS を通してプロビジョニングすることを宣言します。 |
 | **DpsX509** | なし | **スイッチ パラメーター**。 プロビジョニングの種類が指定されていない場合は、接続文字列を使用した手動プロビジョニングが既定値です。<br><br>構成証明用の X.509 ID 証明書および秘密キーと一緒に、Device Provisioning Service (DPS) のスコープ ID とデバイスの登録 ID を指定して、DPS を通してプロビジョニングすることを宣言します。  |
-| **DeviceConnectionString** | 単一引用符で囲まれた、IoT Hub に登録されている IoT Edge デバイスからの接続文字列 | 接続文字列を使用した手動プロビジョニングには**必須**です。 スクリプト パラメーターに接続文字列を指定しなかった場合は、これを指定するよう促されます。 |
-| **IotHubHostName** | デバイスの接続先となる IoT ハブのホスト名。 | X.509 証明書を使用した手動プロビジョニングには**必須**です。 *{ハブ名}.azure-devices.net* の形式にします。 |
-| **DeviceId** | IoT Hub に登録されているデバイス ID からのデバイス ID。 | X.509 証明書を使用した手動プロビジョニングには**必須**です。 |
-| **ScopeId** | IoT Hub に関連付けられた Device Provisioning Service のインスタンスからのスコープ ID。 | DPS プロビジョニングの場合は**必須**です。 スクリプト パラメーターにスコープ ID を指定しなかった場合、これを指定するよう促されます。 |
-| **RegistrationId** | デバイスによって生成された登録 ID | DPS プロビジョニングの場合、TPM または対称キー構成証明を使用している場合は**必須**です。 X.509 証明書の構成証明を使用している場合は**省略可能**です。 |
-| **X509IdentityCertificate** | デバイス上の X.509 デバイス ID 証明書への URI パス。 | X.509 証明書の構成証明を使用している場合、手動または DPS のいずれかのプロビジョニングには**必須**です。 |
-| **X509IdentityPrivateKey** | デバイス上の X.509 デバイス ID 証明書キーへの URI パス。 | X.509 証明書の構成証明を使用している場合、手動または DPS のいずれかのプロビジョニングには**必須**です。 |
-| **SymmetricKey** | DPS の使用時に IoT Edge デバイス ID をプロビジョニングするために使用される対称キー | DPS プロビジョニングの場合、対称キー構成証明を使用している場合は**必須**です。 |
+| **DeviceConnectionString** | 単一引用符で囲まれた、IoT Hub に登録されている IoT Edge デバイスからの接続文字列 | 接続文字列を使用した手動プロビジョニングには **必須** です。 スクリプト パラメーターに接続文字列を指定しなかった場合は、これを指定するよう促されます。 |
+| **IotHubHostName** | デバイスの接続先となる IoT ハブのホスト名。 | X.509 証明書を使用した手動プロビジョニングには **必須** です。 *{ハブ名}.azure-devices.net* の形式にします。 |
+| **DeviceId** | IoT Hub に登録されているデバイス ID からのデバイス ID。 | X.509 証明書を使用した手動プロビジョニングには **必須** です。 |
+| **ScopeId** | IoT Hub に関連付けられた Device Provisioning Service のインスタンスからのスコープ ID。 | DPS プロビジョニングの場合は **必須** です。 スクリプト パラメーターにスコープ ID を指定しなかった場合、これを指定するよう促されます。 |
+| **RegistrationId** | デバイスによって生成された登録 ID | DPS プロビジョニングの場合、TPM または対称キー構成証明を使用している場合は **必須** です。 X.509 証明書の構成証明を使用している場合は **省略可能** です。 |
+| **X509IdentityCertificate** | デバイス上の X.509 デバイス ID 証明書への URI パス。 | X.509 証明書の構成証明を使用している場合、手動または DPS のいずれかのプロビジョニングには **必須** です。 |
+| **X509IdentityPrivateKey** | デバイス上の X.509 デバイス ID 証明書キーへの URI パス。 | X.509 証明書の構成証明を使用している場合、手動または DPS のいずれかのプロビジョニングには **必須** です。 |
+| **SymmetricKey** | DPS の使用時に IoT Edge デバイス ID をプロビジョニングするために使用される対称キー | DPS プロビジョニングの場合、対称キー構成証明を使用している場合は **必須** です。 |
 | **ContainerOs** | **Windows** または **Linux** | コンテナーのオペレーティング システムを指定しない場合は、Windows が既定値です。<br><br>Windows コンテナーの場合、IoT Edge ではインストールに含まれる Moby コンテナー エンジンが使用されます。 Linux コンテナーの場合、インストールを開始する前にコンテナー エンジンをインストールする必要があります。 |
 | **DeviceCACertificate** | デバイス上の X.509 デバイス CA 証明書への URI パス。 | `C:\ProgramData\iotedge\config.yaml` ファイル内で構成することもできます。 詳細については、「[IoT Edge デバイスで証明書を管理する](how-to-manage-device-certificates.md)」を参照してください。 |
 | **DeviceCAPrivateKey** | デバイス上の X.509 デバイス CA 秘密キーへの URI パス。 | `C:\ProgramData\iotedge\config.yaml` ファイル内で構成することもできます。 詳細については、「[IoT Edge デバイスで証明書を管理する](how-to-manage-device-certificates.md)」を参照してください。 |
@@ -103,6 +103,4 @@ Initialize-IoTEdge コマンドは、デバイスの接続文字列と運用の�
 
 以下の記事で、これらのコマンドの使用方法を学習します。
 
-* [Azure IoT Edge ランタイムをインストールまたはアンインストールする](how-to-install-iot-edge.md)
-* [対称キー認証を使用する Azure IoT Edge デバイスをプロビジョニングする](how-to-manual-provision-symmetric-key.md)
-* [X.509 証明書認証を使用する Azure IoT Edge デバイスをプロビジョニングする](how-to-manual-provision-x509.md)
+* [Azure IoT Edge for Windows をインストールまたはアンインストールする](how-to-install-iot-edge-windows-on-windows.md)

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b6e2ac9d80c1c3bf76b4a3d4c44f0654100670f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82247ae9817e5ff2e26d0862230654021876406b
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567420"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223298"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
@@ -144,7 +144,13 @@ Azure AD では、ユーザーにアクセス パッケージが割り当てら�
 
 1. **[リソースのロールをアクセス パッケージに追加する]** ページで、 **[SharePoint サイト]** をクリックして [Select SharePoint Online sites]\(SharePoint Online サイトの選択) ウィンドウを開きます。
 
-1. アクセス パッケージに含める SharePoint Online サイトを選択します。
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-portal.png" alt-text="アクセス パッケージ - リソース ロールの追加 - SharePoint サイトの選択 - ポータル ビュー":::
+
+1. SharePoint に対して [Multi-Geo](https://docs.microsoft.com/microsoft-365/enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-microsoft-365?view=o365-worldwide) が有効になっている場合、サイトの選択元の環境を選択します。
+    
+    :::image type="content" source="media/entitlement-management-access-package-resources/sharepoint-multigeo-select.png" alt-text="アクセス パッケージ - リソース ロールの追加 - SharePoint Multi-Geo サイトの選択":::
+
+1. Multi-Geo が有効でない場合、環境を選択する必要はありません。 アクセス パッケージに含める SharePoint Online サイトを選択します。
 
     ![アクセス パッケージ - リソース ロールの追加 - SharePoint Online サイトの選択](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 

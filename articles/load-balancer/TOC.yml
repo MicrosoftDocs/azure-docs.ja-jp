@@ -79,6 +79,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: フローティング IP 構成
       href: load-balancer-floating-ip.md
+    - name: 分散モード
+      href: distribution-mode-concepts.md
     - name: セキュリティ
       items:
         - name: セキュリティ ベースライン

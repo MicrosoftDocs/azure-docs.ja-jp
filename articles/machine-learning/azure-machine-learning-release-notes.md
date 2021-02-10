@@ -9,16 +9,60 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 09/10/2020
-ms.openlocfilehash: 4ba06af98714004e4429fe802a206acdfa8fb148
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: a01aab13b87398b7d27af02fa84dd7fadf7b8345
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127619"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430999"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) のリファレンス ページを参照してください。
+
+ ## <a name="2021-01-31"></a>2021-01-31
+### <a name="azure-machine-learning-studio-notebooks-experience-january-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (1 月の更新)
++ **新機能**
+  + AzureML のネイティブ Markdown エディター。 ユーザーは、AzureML Studio で Markdown ファイルをネイティブに表示および編集できるようになりました。
+  + [スクリプトの [実行] ボタン (.py、.R と .sh)](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#run-a-notebook-or-python-script)。 ユーザーは、AzureML で Python、R および Bash スクリプトを簡単に実行できるようになりました
+  + [変数エクスプローラー](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#explore-variables-in-the-notebook)。 ポップアップ パネルで変数とデータ フレームの内容を調べます。 ユーザーは、データ型、サイズ、および内容を簡単に確認できます。
+  + [目次](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#navigate-with-a-toc)。 Markdown のヘッダーで示されているノートブックのセクションに移動します。
+  + ノートブックを Latex/HTML/Py としてエクスポートします。 LaTex、HTML、または .py にエクスポートすることで、共有しやすいノートブック ファイルを作成します
+  + IntelliCode。 ML を利用した結果により、[インテリジェントなオート コンプリート エクスペリエンス](https://docs.microsoft.com/visualstudio/intellicode/overview)が強化されます。
+
++ **バグの修正と機能強化**
+  + ページ読み込み時間の短縮
+  + パフォーマンスの向上 
+  + 高速化およびカーネルの信頼性の向上
+  
+ ## <a name="2021-01-25"></a>2021-01-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1210"></a>Azure Machine Learning SDK for Python v1.21.0
++ **バグの修正と機能強化**
+  + **azure-cli-ml**
+    + UserAssigned ID で AmlCompute を使用しているときの CLI ヘルプ テキストが修正されました。
+  + **azureml-contrib-automl-dnn-vision**
+    + AutoML ビジョンの実行で [デプロイ] および [ダウンロード] ボタンが表示され、他の AutoML 実行と同様にモデルをデプロイまたはダウンロードできます。 推論を実行するスクリプトを含む 2 つの新しいファイル (scoring_file_v_1_0_0.py と conda_env_v_1_0_0.yml) と、conda 環境を再作成するための yml ファイルが存在します。 また、'model.pth' ファイルも '.pt' 拡張子を使用するように名前が変更されました。
+  + **azureml-core**
+    + MSI での azure-cli-ml のサポート
+    + ユーザー割り当てマネージド ID のサポート。
+    + この変更により、顧客は、保存時の暗号化のためにカスタマー キー コンテナーからキーをフェッチするために使用できるユーザー割り当て ID を指定できるようになります。
+    +  非常に大きなファイルのプロファイルでの row_count=0 の修正 - 空白のパディングを含む区切られた値に対する 2 段階の変換でのエラーの修正
+    + 出力データセット GA の試験的なフラグの削除
+    + 特定のバージョンのモデルをフェッチする方法に関するドキュメントの更新
+    + Private Link の場合の混合モード アクセスでのワークスペースの更新の許可
+    + 実行再開機能のためにデータストアでの追加の登録を削除するための修正
+    + ワークスペースのプライマリ ユーザー割り当て ID を更新するための CLI/SDK サポートの追加
+  + **azureml-interpret**
+    + azureml-interpret の interpret-community 0.16.0 への更新
+    + azureml-interpret での説明クライアントのためのメモリ最適化
+  + **azureml-train-automl-runtime**
+    + ADB 実行でのストリーミングの有効化
+  + **azureml-train-core**
+    + 実行再開機能のためにデータストアでの追加の登録を削除するための修正
+  + **azureml-widgets**
+    + 顧客は、このウィジェットを使用して既存の実行データ視覚化への変更を表示できませんが、オプションで条件付きハイパーパラメーターを使用する場合はサポートされるようになりました。
+    + ユーザー実行ウィジェットに、実行がキューに入った状態になっている理由を示す詳細な説明が含まれるようになりました。
 
 
  ## <a name="2021-01-11"></a>2021-01-11
@@ -36,6 +80,7 @@ ms.locfileid: "98127619"
     + ローカル デプロイで score.py に関する変更を取得するために、service.reload() での問題が修正されました。
     + `run.get_details()` には、この実行の作成者の名前を表示する "submittedBy" という名前の追加のフィールドがあります。
     + 実行から直接モデルを登録する方法を説明するために、Model.register メソッドのドキュメントが編集されました。
+    + IOT-Server の接続状態の変更処理に関する問題が修正されました。
    
 
 ## <a name="2020-12-31"></a>2020-12-31
@@ -117,7 +162,7 @@ ms.locfileid: "98127619"
 ## <a name="2020-11-30"></a>2020-11-30
 ### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (11 月の更新)
 + **新機能**
-   + ネイティブ ターミナル。 ユーザーは、統合ターミナル、およびその[統合ターミナル](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)を使用して Git 操作にもアクセスできるようになりました。
+   + ネイティブ ターミナル。 ユーザーは、統合ターミナル、およびその[統合ターミナル](./how-to-run-jupyter-notebooks.md#terminal)を使用して Git 操作にもアクセスできるようになりました。
   + フォルダーの複製 
   + [Costing for Compute]\(コンピューティングのコスト計算\) ドロップダウン 
   + オフライン コンピューティング Pylance 
@@ -149,7 +194,7 @@ ms.locfileid: "98127619"
     + 共通の環境変数と競合する可能性があるデータセットの入力と出力の名前を指定すると、警告が表示されるようになりました。
     + データストアの登録時に、`grant_workspace_access` パラメーターが再利用されるようにしました。 Machine Learning Studio から仮想ネットワークの背後にあるデータにアクセスするには、これを `True` に設定します。
       [詳細情報](./how-to-enable-studio-virtual-network.md)
-    + リンクされたサービス API は改善されています。 リソース ID を指定する代わりに、構成で定義されている sub_id、rg、name の 3 つの個別のパラメーターがあります。
+    + リンクされたサービス API は改善されています。 リソース ID を指定する代わりに、構成で定義されている 3 つの個別のパラメーター sub_id、rg、name があります。
     + 顧客がトークンの破損の問題を自己解決できるようにするために、ワークスペース トークンの同期をパブリック メソッドにできるようにします。
     + この変更により、空の文字列を script_param の値として使用できるようになります。
   + **azureml-train-automl-client**
@@ -492,8 +537,8 @@ ms.locfileid: "98127619"
     + ユーザーは、`freq` パラメーターを使用して、予測タスクの時系列の頻度を指定できるようになりました。
   + **azureml-train-automl-runtime**
     + 最適なモデルの説明が失敗したときのコンソール出力が向上しました。
-    + "backlist_models" 入力パラメーターの名前が "blocked_models" に変更されました。
-      + "whitelist_models" 入力パラメーターの名前が "allowed_models" に変更されました。
+    + 微妙な用語を削除するために、入力パラメーターの名前が "blocked_models" に変更されました。
+      + 微妙な用語を削除するために、入力パラメーターの名前が "allowed_models" に変更されました。
     + ユーザーは、`freq` パラメーターを使用して、予測タスクの時系列の頻度を指定できるようになりました。
 
   
@@ -1421,7 +1466,7 @@ Studio から、次の Web ベースの作成ツールにアクセスします�
 
 ### <a name="r-sdk"></a>R SDK 
  
-データ サイエンティストと AI 開発者は、[Azure Machine Learning SDK for R](tutorial-1st-r-experiment.md) を使用して、Azure Machine Learning で機械学習のワークフローをビルドして実行します。
+データ サイエンティストと AI 開発者は、[Azure Machine Learning SDK for R](https://github.com/Azure/azureml-sdk-for-r) を使用して、Azure Machine Learning で機械学習のワークフローをビルドして実行します。
 
 Azure Machine Learning SDK for R では、Python SDK にバインドする `reticulate` パッケージが使用されます。 Python に直接バインドすることにより、R 用の SDK では、選択した R 環境から、Python SDK で実装されているコア オブジェクトおよびメソッドにアクセスできます。
 
@@ -1597,13 +1642,13 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
   + **azureml-train-automl**
     + [実験](/python/api/azureml-core/azureml.core.experiment.experiment)オブジェクトを作成すると、実行履歴の追跡を行うための Azure Machine Learning ワークスペースで実験が取得または作成されます。 実験 ID およびアーカイブされた時間は、作成時に実験オブジェクトに設定されます。 例:
 
-        ```py
+        ```python
         experiment = Experiment(workspace, "New Experiment")
         experiment_id = experiment.id
         ```
         [archive()](/python/api/azureml-core/azureml.core.experiment.experiment#archive--) および [reactivate()](/python/api/azureml-core/azureml.core.experiment.experiment#reactivate-new-name-none-) は、実験を呼び出し、その実験を非表示にして UX での表示から復元するか、既定で返されて実験の一覧を表示できる関数です。 アーカイブされた実験と同じ名前の新しい実験を作成した場合は、新しい名前を渡すことで、再アクティブ化するときにアーカイブされた実験の名前を変更できます。 存在できる同じ名前のアクティブな実験は 1 つだけです。 例:
 
-        ```py
+        ```python
         experiment1 = Experiment(workspace, "Active Experiment")
         experiment1.archive()
         # Create new active experiment with the same name as the archived.
@@ -1612,7 +1657,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
         ```
         実験の静的メソッド [list()](/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-) は、名前フィルターと ViewType フィルターを受け取ることができます。 ViewType 値は、"ACTIVE_ONLY"、"ARCHIVED_ONLY"、"ALL" です。 例:
 
-        ```py
+        ```python
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
@@ -1768,7 +1813,7 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
     + Estimator の `environment_definition` パラメーターに dockerfile のサポートが追加されました。
     + Estimator での分散トレーニング パラメーターが簡略化されました。
 
-         ```py
+         ```python
         from azureml.train.dnn import TensorFlow, Mpi, ParameterServer
         ```
 
@@ -1820,14 +1865,14 @@ Azure Machine Learning が Event Grid 用のリソース プロバイダーに�
   + **azureml-core**
     + 登録名でキーが指定された `TabularDataset` と `FileDataset` のオブジェクトのディクショナリを返す Dataset.get_all(workspace) が導入されました。
 
-    ```py
+    ```python
     workspace = Workspace.from_config()
     all_datasets = Dataset.get_all(workspace)
     mydata = all_datasets['my-data']
     ```
 
     + `Dataset.Tabular.from_delimited_files` と `Dataset.Tabular.from_parquet.files` の引数として `parition_format` が導入されました。 各データ パスのパーティション情報は、指定された形式に基づいて列に抽出されます。 '{column_name}' では文字列の列、'{column_name:yyyy/MM/dd/HH/mm/ss}' では datetime の列が作成されます。ここで、'yyyy'、'MM'、'dd'、'HH'、'mm'、'ss' は datetime 型の年、月、日、時間、分、秒の抽出に使用されます。 partition_format は、最初のパーティション キーの位置から始まり、ファイル パスの末尾までになります。 たとえば、パーティションが国と時間のパス '../USA/2019/01/01/data.csv' の場合、partition_format='/{Country}/{PartitionDate:yyyy/MM/dd}/data.csv' では値が 'USA' の文字列の列 'Country' と、値が '2019-01-01' の datetime 列 'PartitionDate' が作成されます。
-        ```py
+        ```python
         workspace = Workspace.from_config()
         all_datasets = Dataset.get_all(workspace)
         mydata = all_datasets['my-data']

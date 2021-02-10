@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: f4aa1ef29ffb27efb29d969e48af4cf5288e08ae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18672d76c262f8919489ccf132532c117666abe4
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183914"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492180"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion とは
 
@@ -30,7 +30,7 @@ RDP および SSH は、Azure で実行されているワークロードに接�
 
 この図は、Azure Bastion のデプロイのアーキテクチャを示しています。 この図の内容は次のとおりです。
 
-* Azure Bastion ホストは仮想ネットワーク内にデプロイされています。
+* bastion ホストは、プレフィックスが /27 以上の AzureBastionSubnet サブネットを含む仮想ネットワーク内にデプロイされます。
 * ユーザーは任意の HTML5 ブラウザーを使用して Azure portal に接続します。
 * ユーザーは、接続先の仮想マシンを選択します。
 * 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。

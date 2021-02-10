@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 080b9dac8dad099f2901f2b820da58501310471b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371978"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947176"
 ---
 [Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 
@@ -42,7 +42,7 @@ Model-View-Controller が組み込まれた ASP.NET Core Web アプリケーシ�
 
 ### <a name="configure-authentication-values"></a>認証の値の構成
 
-_ソリューション エクスプローラー_ でプロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 これにより、 _secrets.json_ という名前のファイルが開きます。 このファイルはソース管理にチェックインされません。 [こちら](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1)をご覧ください。 _secrets.json_ の内容を以下のように置き換え、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
+_ソリューション エクスプローラー_ でプロジェクトを右クリックし、 **[ユーザー シークレットの管理]** を選択します。 これにより、_secrets.json_ という名前のファイルが開きます。 このファイルはソース管理にチェックインされません。 [こちら](/aspnet/core/security/app-secrets?tabs=windows)をご覧ください。 _secrets.json_ の内容を以下のように置き換え、イマーシブ リーダー リソースを作成したときに取得した値を指定します。
 
 ```json
 {
@@ -71,7 +71,7 @@ _Controllers\HomeController.cs_ を開き、ファイルの先頭の _using_ ス
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-ここで、 _secrets.json_ から Azure AD 値を取得するようにコントローラーを構成します。 _HomeController_ クラスの先頭で、```public class HomeController : Controller {``` の後に、次のコードを追加します。
+ここで、_secrets.json_ から Azure AD 値を取得するようにコントローラーを構成します。 _HomeController_ クラスの先頭で、```public class HomeController : Controller {``` の後に、次のコードを追加します。
 
 ```csharp
 private readonly string TenantId;     // Azure subscription TenantId
@@ -142,7 +142,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 ```
 
 ## <a name="add-sample-content"></a>サンプル コンテンツの追加
-まず、 _Views\Shared\Layout.cshtml_ を開きます。 ```</head>``` という行の前に、次のコードを追加します。
+まず、_Views\Shared\Layout.cshtml_ を開きます。 ```</head>``` という行の前に、次のコードを追加します。
 
 ```html
 @RenderSection("Styles", required: false)
@@ -292,7 +292,7 @@ _Views\Home\Index.cshtml_ の末尾に、次のコードを追加します。
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
-メニュー バーから **[デバッグ] > [デバッグの開始]** の順に選択するか、 **F5** キーを押して、アプリケーションを起動します。
+メニュー バーから **[デバッグ] > [デバッグの開始]** の順に選択するか、**F5** キーを押して、アプリケーションを起動します。
 
 ブラウザーの表示は次のようになります。
 

@@ -3,18 +3,20 @@ title: Azure VM のパフォーマンスを監視する - Azure Application Insi
 description: Azure VM および Azure 仮想マシン スケール セットに対するアプリケーション パフォーマンス監視。 チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: ed56bc88a9d2e8a9490331605cd4a72aef6930db
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 48441711c8c6209b25974108fd91d1023fd6e6be
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98677945"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493738"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure 仮想マシンと Azure 仮想マシン スケール セットに Azure Monitor Application Insights エージェントをデプロイする
 
-[Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/)と [Azure 仮想マシン スケール セット](../../virtual-machine-scale-sets/index.yml)上で実行されている .NET ベースの Web アプリケーションに対する監視を有効にすることが、従来より簡単になりました。 コードを変更することなく、Application Insights を使用する利点のすべてが得られます。
+[Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/)と [Azure 仮想マシン スケール セット](../../virtual-machine-scale-sets/index.yml)上で実行されている .NET または Java ベースの Web アプリケーションに対する監視を有効にすることが、従来より簡単になりました。 コードを変更することなく、Application Insights を使用する利点のすべてが得られます。
 
 この記事では、Application Insights エージェントを使用した Application Insights 監視の有効化について説明した後、大規模なデプロイのプロセスを自動化するための事前ガイダンスを提供します。
+> [!IMPORTANT]
+> Azure VM と VMSS で実行されている **Java** ベースのアプリケーションは、 **[Application Insights Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** (一般公開) で監視されます。
 
 > [!IMPORTANT]
 > **Azure VM と VMSS** で実行される ASP.NET アプリケーション用の Azure Application Insights エージェントは、現在パブリック プレビューの段階にあります。 **オンプレミス** で実行されている ASP.Net アプリケーションを監視するには、[オンプレミス サーバー用の Azure Application Insights エージェント](./status-monitor-v2-overview.md)を使用します。これは一般提供されていて完全にサポートされます。
@@ -25,23 +27,47 @@ ms.locfileid: "98677945"
 
 Azure 仮想マシンと Azure 仮想マシン スケール セットでホストされるアプリケーションに対するアプリケーション監視を有効にする方法には、次の 2 つがあります。
 
-* **コード不要** (Application Insights エージェントを使用)
-    * 有効にするにはこの方法が最も簡単であり、高度な構成は不要です。 多くの場合、これは "ランタイム" 監視と呼ばれます。
+### <a name="auto-instrumentation-via-application-insights-agent"></a>Application Insights エージェントを使用した自動インストルメンテーション
 
-    * Azure 仮想マシンと Azure 仮想マシン スケール セットの場合は、少なくともこのレベルの監視を有効にすることをお勧めします。 その後、特定のシナリオに基づいて、手動のインストルメンテーションが必要かどうかを評価できます。
+* 有効にするにはこの方法が最も簡単であり、高度な構成は不要です。 多くの場合、これは "ランタイム" 監視と呼ばれます。
 
-    * Application Insights エージェントでは、.NET SDK と同じ依存関係のシグナルを既定で自動的に収集します。 詳細については、「[依存関係の自動収集](./auto-collect-dependencies.md#net)」を参照してください。
-        > [!NOTE]
-        > 現在は、.Net IIS でホストされたアプリケーションのみがサポートされています。 SDK を使用して、Azure 仮想マシンと仮想マシン スケール セット上でホストされている ASP.NET Core、Java、Node.js アプリケーションをインストルメント化します。
-
-* **コードベース** (SDK を使用)
-
-    * このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](./asp-net.md)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
-
-    * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](./api-custom-events-metrics.md)を参照してください。
+* Azure 仮想マシンと Azure 仮想マシン スケール セットの場合は、少なくともこのレベルの監視を有効にすることをお勧めします。 その後、特定のシナリオに基づいて、手動のインストルメンテーションが必要かどうかを評価できます。
 
 > [!NOTE]
-> エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 このチェックアウトの詳細については、以下の「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
+> 自動インストルメンテーションは、現在、.NET IIS でホストされているアプリケーションと Java でのみ使用できます。 Azure 仮想マシンと仮想マシン スケール セット上でホストされている ASP.NET Core、Node.js、Python アプリケーションをインストルメント化するには、SDK を使用します。
+
+
+#### <a name="net"></a>.NET
+
+  * Application Insights エージェントでは、.NET SDK と同じ依存関係のシグナルを既定で自動的に収集します。 詳細については、「[依存関係の自動収集](./auto-collect-dependencies.md#net)」を参照してください。
+        
+#### <a name="java"></a>Java
+  * Java の場合、 **[Application Insights Java 3.0 エージェント](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)** を使用することをお勧めします。 最も一般的なライブラリとフレームワーク、およびログと依存関係は、[自動収集](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#auto-collected-requests-dependencies-logs-and-metrics)され、[追加の構成](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)が多数あります。
+
+### <a name="code-based-via-sdk"></a>コードベース (SDK を使用)
+    
+#### <a name="net"></a>.NET
+  * .NET アプリの場合、このアプローチはカスタマイズできる部分がはるかに多いのですが、[Application Insights SDK NuGet パッケージへの依存関係を追加](./asp-net.md)する必要があります。 また、この方法では、最新バージョンのパッケージへの更新を自分で管理する必要があります。
+
+  * エージェントベースの監視の既定ではキャプチャされないイベント/依存関係を追跡するためにカスタム API 呼び出しを行う必要がある場合は、この方法を使用する必要があります。 詳細については、[カスタムのイベントとメトリックのための API に関する記事](./api-custom-events-metrics.md)を参照してください。
+
+    > [!NOTE]
+    > .NET アプリの場合のみ - エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 このチェックアウトの詳細については、以下の「[トラブルシューティング](#troubleshooting)」セクションを参照してください。
+
+#### <a name="net-core"></a>.NET Core
+.NET Core アプリケーションを監視するには、[SDK](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) を使用します。 
+
+#### <a name="java"></a>Java 
+
+Java アプリケーションに対して追加のカスタム テレメトリが必要な場合は、[使用可能なもの](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#send-custom-telemetry-from-your-application)の確認、[カスタム ディメンション](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config#custom-dimensions)の追加、または[テレメトリ プロセッサ](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-telemetry-processors)の使用のいずれかを行います。 
+
+#### <a name="nodejs"></a>Node.js
+
+Node.js アプリケーションをインストルメント化するには、[SDK](https://docs.microsoft.com/azure/azure-monitor/app/nodejs) を使用します。
+
+#### <a name="python"></a>Python
+
+Python アプリを監視するには、[SDK](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python) を使用します。
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>PowerShell を使用して、Azure 仮想マシン上で .NET アプリケーションの Application Insights エージェントを管理する
 
@@ -49,7 +75,7 @@ Azure 仮想マシンと Azure 仮想マシン スケール セットでホス�
 > Application Insights エージェントをインストールする前に、接続文字列が必要になります。 [新しい Application Insights リソースを作成する](./create-new-resource.md)か、既存の Application Insights リソースから接続文字列をコピーします。
 
 > [!NOTE]
-> PowerShell の新機能については、 [使用開始ガイド](/powershell/azure/get-started-azureps?view=azps-2.5.0)を確認してください。
+> PowerShell の新機能 [使用開始ガイド](/powershell/azure/get-started-azureps)を確認してください。
 
 Application Insights エージェントを Azure 仮想マシンの拡張機能としてインストールまたは更新する
 ```powershell
@@ -168,7 +194,7 @@ Get-AzResource -ResourceId /subscriptions/<mySubscriptionId>/resourceGroups/<myR
 Azure 仮想マシンと仮想マシン スケール セット上で実行されている、.NET アプリケーション用の Application Insights 監視エージェント拡張機能のトラブルシューティングに関するヒントを見つけます。
 
 > [!NOTE]
-> .NET Core、Java、および Node.js アプリケーションは、手動の SDK ベースのインストルメンテーションを通して Azure 仮想マシンおよび Azure 仮想マシン スケール セット上でのみサポートされているため、下の手順はこれらのシナリオには適用されせん。
+> .NET Core、Node.js、および Python アプリケーションは、手動の SDK ベースのインストルメンテーションを通して Azure 仮想マシンおよび Azure 仮想マシン スケール セット上でのみサポートされているため、下の手順はこれらのシナリオには適用されせん。
 
 拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。
 ```Windows

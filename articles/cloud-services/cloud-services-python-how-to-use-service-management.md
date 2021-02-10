@@ -1,28 +1,25 @@
 ---
 title: Service Management API の使用 (Python) - 機能ガイド
 description: Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。
-services: cloud-services
-documentationcenter: python
-author: tanmaygore
-manager: vashan
-editor: ''
-ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: article
-ms.date: 05/30/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073990"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741402"
 ---
 # <a name="use-service-management-from-python"></a>Python からサービス管理を使用する
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能の多くへのプログラムによるアクセスをサポートしています。 この機能を使用して、クラウド サービス、デプロイ、データ管理サービス、および仮想マシンの作成、更新、および削除を行うことができます。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
 
 ## <a name="what-is-service-management"></a><a name="WhatIs"> </a>サービス管理とは
@@ -76,17 +73,17 @@ sms = ServiceManagementService(subscription_id, certificate_path)
 前の例では、 `sms` は **ServiceManagementService** オブジェクトです。 **ServiceManagementService** クラスは、Azure サービスを管理するときに使用する主要なクラスです。
 
 ### <a name="management-certificates-on-windows-makecert"></a>Windows での管理証明書 (MakeCert)
-`makecert.exe` を使用して、マシン上で自己署名管理証明書を作成できます。 **管理者**として **Visual Studio コマンド プロンプト**を開き、次のコマンドを使用して、*AzureCertificate* を、使用する証明書の名前に置き換えます。
+`makecert.exe` を使用して、マシン上で自己署名管理証明書を作成できます。 **管理者** として **Visual Studio コマンド プロンプト** を開き、次のコマンドを使用して、*AzureCertificate* を、使用する証明書の名前に置き換えます。
 
 ```console
 makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 ```
 
-このコマンドにより、`.cer` ファイルが作成され、**個人用**証明書ストアにインストールされます。 詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。
+このコマンドにより、`.cer` ファイルが作成され、**個人用** 証明書ストアにインストールされます。 詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。
 
 証明書を作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure portal][management-portal] の **[設定]** タブで、 **[アップロード]** を選択します。
 
-サブスクリプション ID を取得した後、証明書を作成し、`.cer` ファイルを Azure にアップロードして、Azure 管理エンドポイントに接続します。 サブスクリプション ID と**個人用**証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、接続します (再度、*AzureCertificate* を証明書の名前に置き換えます)。
+サブスクリプション ID を取得した後、証明書を作成し、`.cer` ファイルを Azure にアップロードして、Azure 管理エンドポイントに接続します。 サブスクリプション ID と **個人用** 証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、接続します (再度、*AzureCertificate* を証明書の名前に置き換えます)。
 
 ```python
 from azure import *
@@ -132,7 +129,7 @@ for location in result:
 * オーストラリア南東部
 
 ## <a name="create-a-cloud-service"></a><a name="CreateCloudService"> </a>クラウド サービスを作成する
-Azure でアプリケーションを作成して実行する場合、そのコードと構成は、総称して [Azure クラウド サービス][cloud service]と呼ばれます。 (以前の Azure リリースでは、*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。 サービスを作成するには、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
+Azure でアプリケーションを作成して実行する場合、そのコードと構成は、総称して [Azure クラウド サービス][cloud service]と呼ばれます。 (以前の Azure リリースでは、*ホステッド サービス* と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。 サービスを作成するには、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
 
 ```python
 from azure import *

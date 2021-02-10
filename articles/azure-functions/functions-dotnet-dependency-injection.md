@@ -4,15 +4,15 @@ description: .NET 関数にサービスを登録して使用するために、�
 author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 08/15/2020
+ms.date: 01/27/2021
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: 66e2cd22f4bcb95be65d6d04345dcac622436a04
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706934"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955090"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -256,6 +256,24 @@ public class HttpTrigger
 ```
 
 オプションの使用に関する詳細については、「[ASP.NET Core のオプション パターン](/aspnet/core/fundamentals/configuration/options)」を参照してください。
+
+## <a name="using-aspnet-core-user-secrets"></a>ASP.NET Core ユーザー シークレットの使用
+
+ローカルで開発する場合、ASP.NET Core にはプロジェクトのルートの外部にシークレット情報を格納できる[シークレット マネージャー ツール](/aspnet/core/security/app-secrets#secret-manager)が用意されています。 これにより、シークレットが誤ってソース管理にコミットされる可能性が低くなります。 ASP.NET Core シークレット マネージャーによって作成されたシークレットは、Azure Functions Core Tools (バージョン 3.0.3233 以降) によって自動的に読み取られます。
+
+ユーザー シークレットを使用するように .NET Azure Functions プロジェクトを構成するには、プロジェクトのルートで次のコマンドを実行します。
+
+```bash
+dotnet user-secrets init
+```
+
+次に、`dotnet user-secrets set` コマンドを使用して、シークレットを作成または更新します。
+
+```bash
+dotnet user-secrets set MySecret "my secret value"
+```
+
+関数アプリ コードでユーザー シークレット値にアクセスするには、`IConfiguration` または `IOptions` を使用します。
 
 ## <a name="customizing-configuration-sources"></a>構成ソースのカスタマイズ
 

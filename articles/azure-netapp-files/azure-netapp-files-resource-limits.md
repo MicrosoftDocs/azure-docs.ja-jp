@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 01/29/2021
 ms.author: b-juche
-ms.openlocfilehash: aaffc63690894f43329763064ae89a105274953c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c82e834c0af3737c1e5ef19c7aa789b94d87f6d8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511935"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095393"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -48,6 +48,8 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  手動 QoS ボリュームに割り当てられた最小スループット     |    1 MiB/秒   |    No    |    
 |  手動 QoS ボリュームに割り当てられた最大スループット     |    4,500 MiB/秒    |    No    |    
 |  リージョン間レプリケーション データ保護ボリュームの数 (宛先ボリューム)     |    5    |    はい    |     
+
+ディレクトリがディレクトリ メタデータのサイズ上限 (320 MB) に近づいているかどうかを確認するには、「[ディレクトリがサイズ制限に近づいているかどうかを確認するにはどうすればよいですか?](azure-netapp-files-faqs.md#how-do-i-determine-if-a-directory-is-approaching-the-limit-size)」を参照してください。   
 
 詳細については、「[容量管理に関する FAQ](azure-netapp-files-faqs.md#capacity-management-faqs)」を参照してください。
 

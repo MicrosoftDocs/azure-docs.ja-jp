@@ -1,19 +1,16 @@
 ---
 title: HDInsight .NET SDK を使用して Apache Hive クエリを実行する - Azure
 description: HDInsight .NET SDK を使用して、Azure HDInsight 上の Apache Hadoop に Apache Hadoop ジョブを送信する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/24/2019
-ms.openlocfilehash: 3f815754c099e1e085fb0692285b9e690d68194e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 17264fc2a7d0a51de545e329ccf12ad45ad49d46
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487672"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927236"
 ---
 # <a name="run-apache-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用して Apache Hive クエリを実行する
 

@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: b033fd9c0a7f752cf08d6e679facc9fa27b44037
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120208"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736307"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Azure Synapse の専用 SQL プールにおけるバックアップと復元
 
@@ -71,8 +71,16 @@ order by run_id desc
 
 [ペアのデータ センター](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)には、1 日に 1 回、geo バックアップが作成されます。 geo 復元の RPO は 24 時間です。 geo バックアップは、専用 SQL プールがサポートされているその他の任意のリージョン内のサーバーに復元することができます。 geo バックアップにより、プライマリ リージョンの復元ポイントにアクセスできない場合でも、データ ウェアハウスを復元できます。
 
+専用 SQL プールの geo バックアップが不要な場合は、それを無効にして、ディザスター リカバリー ストレージのコストを節約できます。 これを行うには、[方法ガイド:専用 SQL プール (以前の SQL DW) の geo バックアップの無効化](disable-geo-backup.md)に関する記事を参照してください。 geo バックアップを無効にすると、プライマリ Azure データ センターが使用できなくなった場合に、ペアになっている Azure リージョンに専用 SQL プールを復旧できなくなることに注意してください。 
+
 > [!NOTE]
 > geo バックアップ用にさらに短い RPO が必要な場合は、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを異なるリージョンの新しいデータ ウェアハウスに復元することもできます。 復元が済むと、データ ウェアハウスはオンラインになるので、無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 データ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
+
+## <a name="data-residency"></a>データの保存場所 
+
+ペアになっているデータ センターが地理的な境界の外側に配置されている場合は、geo 冗長ストレージを使用しないことで、データを地理的な境界内に確実にとどめておくことができます。 これは、専用 SQL プール (以前の SQL DW) の作成または復元時、geo 冗長ストレージ オプションを使用して専用 SQL プール (以前の SQL DW) をプロビジョニングするときに実行できます。 
+
+ペアになっているデータ センターが別の国にあることを確認するには、[Azure でペアになっているリージョン](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関する記事を参照してください。
 
 ## <a name="backup-and-restore-costs"></a>バックアップと復元のコスト
 
@@ -88,7 +96,7 @@ Azure Synapse の価格の詳細については、[Azure Synapse の価格](http
 
 各スナップショットでは、スナップショットの開始時刻を表す復元ポイントが作成されます。 データ ウェアハウスを復元するには、復元ポイントを選択して restore コマンドを実行します。  
 
-復元されたデータ ウェアハウスと現在のデータ ウェアハウスの両方を保持するか、いずれか 1 つを削除することができます。 現在のデータ ウェアハウスを、復元されたデータ ウェアハウスで置換する場合は、MODIFY NAME オプションを指定して [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) を使用し、名前を変更できます。
+復元されたデータ ウェアハウスと現在のデータ ウェアハウスの両方を保持するか、いずれか 1 つを削除することができます。 現在のデータ ウェアハウスを、復元されたデータ ウェアハウスで置換する場合は、MODIFY NAME オプションを指定して [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を使用し、名前を変更できます。
 
 データ ウェアハウスを復元するには、[専用 SQL プールの復元](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal)に関する記事をご覧ください。
 

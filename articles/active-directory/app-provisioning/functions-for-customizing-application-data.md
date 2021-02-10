@@ -3,7 +3,7 @@ title: Azure Active Directory で属性マッピングの式を記述するた�
 description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。 関数の参照一覧が含まれています。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 462f60bbae9fd7b61993a2ccccd40fa5ca4ccc28
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 8f5a4d3695722aae14b73bf6bba5f2e38593e08d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012969"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255799"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD で属性マッピングの式を記述するためのリファレンス
 
@@ -483,7 +483,7 @@ string に含まれる文字数が numChars で指定した数より少ない場
  - これは最上位の関数であり、入れ子にはできません。
  - この関数は、照合の優先順位を持つ属性には適用できません。   
  - この関数は、エントリの作成に使用されることだけを目的としたものです。 属性で使用するときは、 **[Apply Mapping]\(マッピングの適用\)** プロパティを **[オブジェクトの作成中のみ]** に設定します。
- - 現在、この関数は "Workday to Active Directory User Provisioning" でのみサポートされています。 他のプロビジョニング アプリでは使用できません。 
+ - この関数は現在、"Workday から Active Directory へのユーザー プロビジョニング" と "SuccessFactors から Active Directory へのユーザー プロビジョニング" でのみサポートされています。 他のプロビジョニング アプリでは使用できません。 
 
 
 **パラメーター:** 

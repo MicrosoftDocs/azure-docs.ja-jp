@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e7f4293955772697ddeea5fce9daac4b04755274
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682464"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937295"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>方法: Face サービスを使用するときの待機時間を軽減する
 
@@ -34,7 +34,7 @@ Face サービスを使用すると、待機時間が発生する可能性があ
 
 ### <a name="slow-connection-between-the-cognitive-service-and-a-remote-url"></a>Cognitive Services とリモート URL の間の低速の接続
 
-一部の Azure Cognitive Services には、指定したリモート URL からデータを取得するメソッドが用意されています。 たとえば、Face サービスの [DetectWithUrlAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_)を呼び出すときは、サービスで顔の検出を試みる画像の URL を指定できます。
+一部の Azure Cognitive Services には、指定したリモート URL からデータを取得するメソッドが用意されています。 たとえば、Face サービスの [DetectWithUrlAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithUrlAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_)を呼び出すときは、サービスで顔の検出を試みる画像の URL を指定できます。
 
 ```csharp
 var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.image/t_share/MTQ1MzAyNzYzOTgxNTE0NTEz/john-f-kennedy---mini-biography.jpg");
@@ -42,7 +42,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 その後、Face サービスでリモート サーバーから画像をダウンロードする必要があります。 Face サービスからリモート サーバーへの接続が低速である場合は、検出メソッドの応答時間に影響します。
 
-これを回避するには、[Azure Premium Blob Storage に画像を格納する](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)ことを検討します。 次に例を示します。
+これを回避するには、[Azure Premium Blob Storage に画像を格納する](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)ことを検討します。 例:
 
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
@@ -50,7 +50,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows
 
 ### <a name="large-upload-size"></a>サイズの大きいアップロード
 
-一部の Azure Cognitive Services には、アップロードしたファイルからデータを取得するメソッドが用意されています。 たとえば、Face サービスの [DetectWithStreamAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_)を呼び出すときは、サービスで顔の検出を試みる画像をアップロードできます。
+一部の Azure Cognitive Services には、アップロードしたファイルからデータを取得するメソッドが用意されています。 たとえば、Face サービスの [DetectWithStreamAsync メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync#Microsoft_Azure_CognitiveServices_Vision_Face_FaceOperationsExtensions_DetectWithStreamAsync_Microsoft_Azure_CognitiveServices_Vision_Face_IFaceOperations_System_IO_Stream_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Collections_Generic_IList_System_Nullable_Microsoft_Azure_CognitiveServices_Vision_Face_Models_FaceAttributeType___System_String_System_Nullable_System_Boolean__System_String_System_Threading_CancellationToken_)を呼び出すときは、サービスで顔の検出を試みる画像をアップロードできます。
 
 ```csharp
 using FileStream fs = File.OpenRead(@"C:\images\face.jpg");
@@ -62,7 +62,7 @@ System.Collections.Generic.IList<DetectedFace> faces = await client.Face.DetectW
 - ファイルのサイズに比例して、サービスによる処理時間が長くなります。
 
 軽減策:
-- [Azure Premium Blob Storage に画像を格納する](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)ことを検討します。 次に例を示します。
+- [Azure Premium Blob Storage に画像を格納する](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)ことを検討します。 例:
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```
@@ -97,4 +97,4 @@ IEnumerable<DetectedFace> results = faces_1.Result.Concat (faces_2.Result);
 ## <a name="related-topics"></a>関連トピック
 
 - [リファレンス ドキュメント (REST)](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
-- [リファレンス ドキュメント (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
+- [リファレンス ドキュメント (.NET SDK)](/dotnet/api/overview/azure/cognitiveservices/client/faceapi)

@@ -1,18 +1,18 @@
 ---
 title: カスタム設定の構成
 description: Azure App Service Environment 全体に適用する設定を構成します。 その作業を Azure Resource Manager テンプレートで行う方法について説明します。
-author: stefsch
+author: ccompy
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 10/03/2020
-ms.author: stefsch
+ms.date: 01/29/2021
+ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 88163c07d570df5e0ff343776c17c463010ce368
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5c1e81d02aa35a40a296f04e456be09eeed10331
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713290"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226391"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>App Service Environment のカスタム構成設定
 ## <a name="overview"></a>概要
@@ -61,7 +61,7 @@ App Service Environment は、 [Azure リソース エクスプローラー](htt
 
 ## <a name="enable-internal-encryption"></a>内部暗号化を有効にする
 
-App Service Environment は、内部コンポーネントまたはシステム内の通信を表示できないブラック ボックス システムとして動作します。 より高いスループットを実現するために、内部コンポーネント間の暗号化は既定では有効になっていません。 監視またはアクセスの対象としてトラフィックにアクセスすることはできないため、システムの安全性は確保されています。 それにもかかわらず、データ パスを端から端まで完全に暗号化する必要があるコンプライアンス要件が存在する場合は、clusterSetting を使用して、これを有効にする方法があります。  
+App Service Environment は、内部コンポーネントまたはシステム内の通信を表示できないブラック ボックス システムとして動作します。 より高いスループットを実現するために、内部コンポーネント間の暗号化は既定では有効になっていません。 監視またはアクセスの対象としてトラフィックにアクセスすることはできないため、システムの安全性は確保されています。 それにもかかわらず、データ パスを端から端まで完全に暗号化する必要があるコンプライアンス要件が存在する場合は、clusterSetting を使用して完全なデータ パスの暗号化を有効にする方法があります。  
 
 ```json
 "clusterSettings": [
@@ -71,7 +71,7 @@ App Service Environment は、内部コンポーネントまたはシステム�
     }
 ],
 ```
-これで、ASE のフロントエンドとワーカーとの間の内部ネットワーク トラフィックが暗号化され、ページ ファイルが暗号化されるほか、ワーカーのディスクも暗号化されます。 InternalEncryption clusterSetting を有効にすると、システムのパフォーマンスに影響する可能性があります。 InternalEncryption を有効にするように変更を加えると、変更が完全に反映されるまで ASE が不安定な状態になります。 ASE 上に存在するインスタンスの数によっては、変更の反映が完了するまで数時間かかる可能性があります。 ASE の使用中は、この機能を有効にしないことを強くお勧めします。 アクティブに使用されている ASE でこれを有効にする必要がある場合は、操作が完了するまで、トラフィックをバックアップ環境に転送することを強くお勧めします。 
+InternalEncryption を true に設定すると、ASE のフロントエンドとワーカーとの間の内部ネットワーク トラフィックが暗号化され、ページ ファイルが暗号化されるほか、ワーカーのディスクも暗号化されます。 InternalEncryption clusterSetting を有効にすると、システムのパフォーマンスに影響する可能性があります。 InternalEncryption を有効にするように変更を加えると、変更が完全に反映されるまで ASE が不安定な状態になります。 ASE 上に存在するインスタンスの数によっては、変更の反映が完了するまで数時間かかる可能性があります。 ASE の使用中は、ASE で InternalEncryption を有効にしないことを強くお勧めします。 アクティブに使用されている ASE で InternalEncryption を有効にする必要がある場合は、操作が完了するまで、トラフィックをバックアップ環境に転送することを強くお勧めします。 
 
 
 ## <a name="disable-tls-10-and-tls-11"></a>TLS 1.0 と TLS 1.1 の無効化
@@ -92,13 +92,13 @@ ASE のすべてのアプリについて、TLS 1.0 と TLS 1.1 のインバウ�
 設定の名前は 1.0 になっていますが、これを構成すると、TLS 1.0 と TLS 1.1 の両方が無効化されます。
 
 ## <a name="change-tls-cipher-suite-order"></a>TLS 暗号スイートの順序変更
-お客様から寄せられるもう 1 つの質問は、サーバーによってネゴシエートされた暗号のリストを変更できるかどうかということです。これは、以下に示したように **clusterSettings** を変更することで実行できます。 利用できる暗号スイートのリストは、[こちらの MSDN の記事](https://msdn.microsoft.com/library/windows/desktop/aa374757\(v=vs.85\).aspx) で確認できます。
+ASE では、既定の暗号スイートの変更がサポートされています。 既定の暗号セットは、マルチテナント サービスで使用されるものと同じセットです。 暗号スイートの変更は App Service デプロイ全体に影響します。これは、シングルテナント ASE でのみ可能です。 ASE には、TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 と TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 の 2 つの暗号スイートが必要です。 最も強力で最小限の暗号スイートのセットを使用して ASE を操作する場合は、必要な 2 つの暗号のみを使用します。 必要な暗号のみを使用するように ASE を構成するには、次に示すように **clusterSettings** を変更します。 
 
 ```json
 "clusterSettings": [
     {
         "name": "FrontEndSSLCipherSuiteOrder",
-        "value": "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256"
+        "value": "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
     }
 ],
 ```

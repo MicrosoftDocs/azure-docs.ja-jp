@@ -7,12 +7,12 @@ ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: 0ceee3c65e8c4df5d843bb441fb6426a0f4eb696
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1a5f665627da1b08ec57b04863a58f227c673af4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220254"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944897"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプライン オーケストレーションおよびトリガーのトラブルシューティング
 
@@ -60,7 +60,7 @@ Source=Microsoft.DataTransfer.Common,'
 Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are substantial concurrent MappingDataflow executions which is causing failures due to throttling under Integration Runtime 'AutoResolveIntegrationRuntime'.
 `
 
-**原因**:統合ランタイムの容量の上限に達しました。 同じ統合ランタイムを同時に使用して、大量のデータ フローを実行している可能性があります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#version-2)」を参照してください。
+**原因**:統合ランタイムの容量の上限に達しました。 同じ統合ランタイムを同時に使用して、大量のデータ フローを実行している可能性があります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#version-2)」を参照してください。
 
 **解決方法**:
  
@@ -76,13 +76,13 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 **解像度**
 
 1. [パイプラインの失敗とエラーの処理方法](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)に関するページに従って、アクティビティレベルのチェックを実装します。
-1. [Factory によるクエリ](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)に関するページに従って、Azure Logic Apps を使用して定期的な間隔でパイプラインを監視します。
+1. [Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページに従って、Azure Logic Apps を使用して定期的な間隔でパイプラインを監視します。
 
 ## <a name="monitor-pipeline-failures-in-regular-intervals"></a>定期的な間隔でパイプライン エラーを監視する
 
 障害が発生した Data Factory パイプラインを、特定の間隔 (5 分など) で監視する必要がある場合があります。 エンドポイントを使用して、データ ファクトリからパイプライン実行にクエリを実行し、フィルター処理することができます。 
 
-[Factory によるクエリ](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)に関するページで説明されているように、失敗したすべてのパイプラインのクエリを 5 分ごとに実行するように Azure ロジック アプリを設定します。 そうすると、インシデントをチケット システムに報告できるようになります。
+[Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページで説明されているように、失敗したすべてのパイプラインのクエリを 5 分ごとに実行するように Azure ロジック アプリを設定します。 そうすると、インシデントをチケット システムに報告できるようになります。
 
 詳細については、[Data Factory から通知を送信する、パート 2](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/) に関するページを参照してください。
 

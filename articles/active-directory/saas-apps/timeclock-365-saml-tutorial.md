@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/16/2020
+ms.date: 01/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 329e0fbfdea43f3933333744f89ed1c03ef0ed13
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d0c8364cc85cfce900021272d17456527919122b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98729325"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050806"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeclock-365-saml"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Timeclock 365 SAML の統合
 
@@ -70,7 +70,7 @@ Timeclock 365 SAML に対して Azure AD SSO を構成してテストするに�
 
 1. Azure portal の **Timeclock 365 SAML** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -109,7 +109,15 @@ Timeclock 365 SAML に対して Azure AD SSO を構成してテストするに�
 
 ## <a name="configure-timeclock-365-saml-sso"></a>Timeclock 365 SAML の SSO の構成
 
-1. ブラウザーで新しいタブを開き、Timeclock 365 SAML の会社のサイトに管理者としてサインインします。
+1. Timeclock 365 SAML 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+2. ブラウザーに拡張機能を追加した後、 **[Timeclock 365 SAML のセットアップ]** をクリックすると、Timeclock 365 SAML アプリケーションに移動します。 そこから、管理者資格情報を指定して Timeclock 365 SAML にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 4 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+3. Timeclock 365 SAML を手動でセットアップする場合は、別の Web ブラウザー ウィンドウで、Timeclock 365 SAML 企業サイトに管理者としてサインインします。
 
 1. 次の手順を実行します。
 

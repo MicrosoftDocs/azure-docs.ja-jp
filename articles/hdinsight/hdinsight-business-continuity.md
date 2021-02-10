@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight のビジネス継続性
 description: この記事では、Azure HDInsight のビジネス継続性計画のベスト プラクティス、単一リージョンの可用性、および最適化オプションの概要について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hadoop の高可用性
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546944"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933320"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Azure HDInsight のビジネス継続性
 
@@ -23,7 +20,7 @@ Azure HDInsight クラスターは、ストレージ、データベース、Acti
 
 このセクションでは、ビジネス継続性の計画時に考慮する必要があるベスト プラクティスについて説明します。
 
-* 障害が発生した場合に必要とする最小限のビジネス機能とその理由を決定します。 たとえば、データ変換層 (黄色で示されています) " *および* " データ サービス層 (青色で表示) にフェールオーバー機能が必要か、またはデータ サービス層にだけフェールオーバーが必要かを評価します。
+* 障害が発生した場合に必要とする最小限のビジネス機能とその理由を決定します。 たとえば、データ変換層 (黄色で示されています) "*および*" データ サービス層 (青色で表示) にフェールオーバー機能が必要か、またはデータ サービス層にだけフェールオーバーが必要かを評価します。
 
    :::image type="content" source="media/hdinsight-business-continuity/data-layers.png" alt-text="データ変換とデータ サービスの層":::
 
@@ -53,7 +50,7 @@ Azure HDInsight クラスターは、ストレージ、データベース、Acti
 
 Azure Key Vault や Azure Data Factory など、使用できるオプションのサービスが他にもあります。
 
-:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="データ変換とデータ サービスの層":::
+:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="HDInsight のコンポーネント":::
 
 ### <a name="azure-hdinsight-cluster-compute"></a>Azure HDInsight クラスター (コンピューティング)
 

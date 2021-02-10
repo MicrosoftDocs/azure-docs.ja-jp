@@ -1,23 +1,20 @@
 ---
 title: Azure HDInsight での ML Services の概要
 description: HDInsight 上の ML Services を使用してビッグ データ分析用のアプリケーションを作成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: b3a6fc2ff45d61d63118edc23f40f69f16db9131
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 87f4181e820b1c6ecdeb0fda85a88e80db248dd2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536149"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943919"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight での ML Services とは
 
-Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、 **ML Services** と呼ばれます。 この機能により、HDInsight での柔軟で分散型の分析方法にオンデマンドでアクセスできます。
+Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft Machine Learning Server を選択できるようになりました。 このオプションを提供するクラスターの種類は、**ML Services** と呼ばれます。 この機能により、HDInsight での柔軟で分散型の分析方法にオンデマンドでアクセスできます。
 
 HDInsight の ML Services は、ほぼすべてのサイズのデータセットで R ベースの分析を行うための最新の機能を備えています。 データセットは、Azure BLOB または Data Lake ストレージのいずれかに読み込むことができます。 R ベースのアプリケーションは、8000 個以上のオープンソースの R パッケージを使用できます。 また、ScaleR (Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。
 
@@ -27,7 +24,7 @@ HDInsight の ML Services は、ほぼすべてのサイズのデータセット
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight での ML Services の概要
 
-HDInsight で ML Services クラスターを作成するには、 **ML Services** クラスターの種類を選択します。 ML Services クラスターの種類には、データ ノード上の ML Server と、エッジ ノードが含まれます。 エッジ ノードは、ML Services ベースの分析のランディング ゾーンとして機能します。 クラスターの作成方法のチュートリアルについては、[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
+HDInsight で ML Services クラスターを作成するには、**ML Services** クラスターの種類を選択します。 ML Services クラスターの種類には、データ ノード上の ML Server と、エッジ ノードが含まれます。 エッジ ノードは、ML Services ベースの分析のランディング ゾーンとして機能します。 クラスターの作成方法のチュートリアルについては、[Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照してください。
 
 ## <a name="why-choose-ml-services-in-hdinsight"></a>HDInsight で ML Services を選ぶ理由
 
@@ -112,7 +109,7 @@ ScaleR ライブラリ ルーチンを使用しているだけの場合は、通
 
 ML Services で使用可能なメモリは、MapReduce ジョブを実行しているときに変更できます。 クラスターを変更するには、クラスターに Apache Ambari UI を使用します。 Ambari UI の説明については、「[Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」をご覧ください。
 
-ML Services で使用できるメモリは、 **RxHadoopMR** への呼び出しで Hadoop スイッチを使用して変更できます。
+ML Services で使用できるメモリは、**RxHadoopMR** への呼び出しで Hadoop スイッチを使用して変更できます。
 
 ```r
 hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"

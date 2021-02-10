@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 12/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a006dfd4f78f90ed323e5780b173cffb6daeac4a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9038d6bc9cd061200ef4553242889776f30d2dc1
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881739"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964560"
 ---
 # <a name="trigger-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインをトリガーする
 
@@ -27,7 +27,7 @@ ms.locfileid: "98881739"
 
 * Azure Machine Learning SDK for Python がインストールされた Python 開発環境。 詳細については、「[Azure Machine Learning を使用してトレーニングとデプロイのための再利用可能な環境を作成および管理します](how-to-use-environments.md)」を参照してください。
 
-* 公開されたパイプラインがある Machine Learning のワークスペース。 「[Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](./how-to-create-machine-learning-pipelines.md)」で組み込まれたものを使用できます。
+* 公開されたパイプラインがある Machine Learning のワークスペース。 「[Azure Machine Learning SDK で機械学習パイプラインを作成して管理する](how-to-create-your-first-pipeline.md)」で組み込まれたものを使用できます。
 
 ## <a name="initialize-the-workspace--get-data"></a>ワークスペースを初期化してデータを取得する
 
@@ -142,7 +142,7 @@ stop_by_schedule_id(ws, schedule_id)
 
 [Azure Logic App](../logic-apps/logic-apps-overview.md) を使用して、より複雑なトリガーのルールまたは動作を作成することができます。
 
-Azure Logic App を使用して Machine Learning パイプラインをトリガーするには、発行された Machine Learning パイプラインの REST エンドポイントが必要です。 [パイプラインを作成して発行します](./how-to-create-machine-learning-pipelines.md)。 次に、パイプライン ID を使用して、`PublishedPipeline` の REST エンドポイントを見つけます。
+Azure Logic App を使用して Machine Learning パイプラインをトリガーするには、発行された Machine Learning パイプラインの REST エンドポイントが必要です。 [パイプラインを作成して発行します](how-to-create-your-first-pipeline.md)。 次に、パイプライン ID を使用して、`PublishedPipeline` の REST エンドポイントを見つけます。
 
 ```python
 # You can find the pipeline ID in Azure Machine Learning studio
@@ -159,7 +159,7 @@ published_pipeline.endpoint
 
 1. [システム割り当てマネージド ID](../logic-apps/create-managed-service-identity.md) を作成し、アプリに Azure Machine Learning ワークスペースへのアクセス権を付与します。
 
-1. ロジック アプリ デザイナー ビューに移動し、[空のロジックアプリ] テンプレートを選択します。 
+1. ロジック アプリ デザイナー ビューに移動し、[空の Logic Apps] テンプレートを選択します。 
     > [!div class="mx-imgBorder"]
     > ![空のテンプレート](media/how-to-trigger-published-pipeline/blank-template.png)
 

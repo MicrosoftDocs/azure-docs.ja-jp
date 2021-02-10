@@ -1,5 +1,5 @@
 ---
-title: Media Services v3 REST を使用したカスタム変換のエンコード - Azure | Microsoft Docs
+title: カスタム変換をエンコードする - REST
 description: このトピックでは、Azure Media Services v3 で REST を使用してカスタム変換をエンコードする方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2656bf93cb9c29ded4b9dde49f0caba91c1654b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c0416e2787bc69465e18a71f6b9912f7571c24d
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295633"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956091"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>カスタム変換を使用してエンコードする方法 - REST
 
@@ -135,7 +135,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
 
 ## <a name="create-a-new-transform"></a>新しい変換を作成する  
 
-この例では、先ほど定義したカスタム プリセットに基づく**変換**を作成します。 変換を作成するときは、まず [Get](/rest/api/media/transforms/get) を使用して、変換がすでに存在しているかどうかを確認する必要があります。 変換が存在する場合はそれを再利用します。 
+この例では、先ほど定義したカスタム プリセットに基づく **変換** を作成します。 変換を作成するときは、まず [Get](/rest/api/media/transforms/get) を使用して、変換がすでに存在しているかどうかを確認する必要があります。 変換が存在する場合はそれを再利用します。 
 
 ダウンロードした Postman のコレクションで、 **[Transforms and Jobs]\(変換とジョブ\)** -> **[Create or Update Transform]\(変換の作成または更新\)** を選択します。
 
@@ -145,7 +145,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
 ```
 
-**[Body]\(本文\)** タブを選択し、本文を[先ほど定義した](#define-a-custom-preset) JSON コードに置き換えます。 Media Services が、指定されたビデオまたはオーディオに変換を適用するためには、その変換に基づいてジョブを送信する必要があります。
+**[Body]\(本文\)** タブを選択し、本文を [先ほど定義した](#define-a-custom-preset) JSON コードに置き換えます。 Media Services が、指定されたビデオまたはオーディオに変換を適用するためには、その変換に基づいてジョブを送信する必要があります。
 
 **[送信]** を選択します。 
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 01/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: b50c942d2e05d7f5234a17f1cf36137309c7ce97
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 24640254f32270b8c96c790dca7db31e285cc27f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973713"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895290"
 ---
 # <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
  
@@ -37,6 +37,7 @@ ms.locfileid: "95973713"
 1. **[クライアント アプリ]** でフィルター処理し、すべての **[Legacy Authentication Clients]\(レガシ認証クライアント\)** オプションが表示されることを確認します。
 1. **[状態]**  >  **[成功]** でフィルター処理します。 
 1. 必要に応じて **[日付]** フィルターを使用して、日付範囲を拡張します。
+1. [新しいサインイン アクティビティ レポート - プレビュー](../reports-monitoring/concept-all-sign-ins.md)をアクティブにしている場合は、 **[ユーザーのサインイン (非対話型)]** タブでも上記の手順を繰り返します。
 
 フィルター処理によって、選択したレガシ認証プロトコルによって行われた、成功したサインイン試行のみが表示されます。 個々のサインイン試行をクリックすると、追加の詳細が表示されます。 [基本情報] タブの下の [クライアント アプリ] 列または [クライアント アプリ] フィールドには、データの個々の行の選択後、どのレガシ認証プロトコルが使用されたかが示されます。 これらのログは、どのユーザーがまだレガシ認証に依存しているか、およびどのアプリケーションがレガシ プロトコルを使用して認証要求を行っているかを示しています。 これらのログに表示されず、レガシ認証を使用していないことが確認されたユーザーに対してのみ、条件付きアクセス ポリシーを実装するか、または [ベースライン ポリシー: レガシ認証をブロックする] を有効にします。
 

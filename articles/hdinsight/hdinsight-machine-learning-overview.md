@@ -1,19 +1,16 @@
 ---
 title: 機械学習の概要 - Azure HDInsight
 description: Azure HDInsight 内のクラスターのためのビッグ データの機械学習オプションの概要。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: a3c050b414e322f08fd45a569a22cea2db591b99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18be3fa8851c2dbaab622c770d02f4db252a231c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302691"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945258"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
@@ -41,7 +38,7 @@ Azure Machine Learning には、予測分析をモデル化するためのツー
 
 ![Microsoft Azure 機械学習の概要](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
-[Hive クエリ](../machine-learning/team-data-science-process/create-features-hive.md)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング*は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure Machine Learning Studio (クラシック) から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/classic/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
+[Hive クエリ](../machine-learning/team-data-science-process/create-features-hive.md)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング* は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure Machine Learning Studio (クラシック) から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/classic/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
 
 ## <a name="microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit
 

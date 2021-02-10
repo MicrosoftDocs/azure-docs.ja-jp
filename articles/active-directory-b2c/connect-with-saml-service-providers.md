@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 80e6dbdc02b68c279452127933532106b0f78ab8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 96a72dbc0e45ebd50a49000ae66e3713cb28aa9a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654661"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916925"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -71,28 +71,9 @@ SAML サービス プロバイダーと関連のメタデータ エンドポイ�
 
 公開証明機関によって発行された証明書、またはこのチュートリアルでは自己署名証明書を使用できます。
 
-### <a name="11-prepare-a-self-signed-certificate"></a>1.1 自己署名証明書を準備する
+### <a name="11-create-a-self-signed-certificate"></a>1.1 自己署名証明書を作成する
 
-証明書をまだ持っていない場合は、このチュートリアルでは自己署名証明書を使用できます。 Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成できます。
-
-1. この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
-
-    ```PowerShell
-    New-SelfSignedCertificate `
-        -KeyExportPolicy Exportable `
-        -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
-        -KeyAlgorithm RSA `
-        -KeyLength 2048 `
-        -KeyUsage DigitalSignature `
-        -NotAfter (Get-Date).AddMonths(12) `
-        -CertStoreLocation "Cert:\CurrentUser\My"
-    ```
-
-1. **[ユーザー証明書の管理]**  >  **[現在のユーザー]**  >  **[個人用]**  >  **[証明書]**  > *yourappname.yourtenant.onmicrosoft.com* を開きます
-1. 証明書 > **[アクション]**  >  **[すべてのタスク]**  >  **[エクスポート]** を選択します
-1. **[はい]**  >  **[次へ]**  >  **[はい、秘密キーをエクスポートします]**  >  **[次へ]** を選択します
-1. **[エクスポート ファイルの形式]** の既定値を受け入れます
-1. 証明書のパスワードを指定します
+[!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
 ### <a name="12-upload-the-certificate"></a>1.2 証明書をアップロードする
 

@@ -9,22 +9,21 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/05/2021
 ms.author: mbaldwin
-ms.openlocfilehash: c4e9f0cd6a7421f5be29200816bb00a56b141367
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: c7635fdc2012ab404709733d8f5849465c2ee82f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937515"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071569"
 ---
-# <a name="azure-key-vault-security-overview"></a>Azure Key Vault のセキュリティの概要
+# <a name="azure-key-vault-security"></a>Azure Key Vault セキュリティ
 
 クラウド内の暗号化キーやシークレット (証明書、接続文字列、パスワードなど) を保護するには、Azure Key Vault を使用します。 ビジネスに不可欠な機密データを格納する場合は、コンテナーとそこに格納されるデータのセキュリティを最大化するための手順を実行する必要があります。
 
-この記事では、Azure Key Vault のセキュリティ機能とベスト プラクティスの概要について説明します。 [Azure セキュリティ ベンチマーク](../../security/benchmarks/introduction.md)に基づく推奨事項の包括的な一覧については、[Azure Key Vault のセキュリティ ベースライン](security-baseline.md)に関する記事を参照してください。
+この記事では、Azure Key Vault のセキュリティ機能とベスト プラクティスの概要について説明します。 
 
-## <a name="general-guidance"></a>一般的なガイダンス
-
-環境 (開発、実稼働前、および実稼働) ごとにアプリケーションごとのコンテナーを使用することをお勧めします。 これにより複数の環境でシークレットを共有することがなくなり、セキュリティ違反が発生した際の脅威を軽減するのにも役立ちます。
+> [!NOTE]
+> Azure Key Vault のセキュリティに関する推奨事項の包括的な一覧については、「[Key Vault 用の Azure セキュリティ ベースライン](security-baseline.md)」を参照してください。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -109,20 +108,9 @@ Azure Key Vault の論理的な削除と消去保護を使用すると、削除�
 
 また、コンテナー内のオブジェクトの更新、削除、作成の際には、コンテナーの定期的バックアップを取る必要があります。  
 
-Azure PowerShell バックアップ コマンド
-
-* [証明書のバックアップ](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultCertificate)
-* [キーのバックアップ](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultKey)
-* [シークレットのバックアップ](/powershell/module/azurerm.keyvault/Backup-AzureKeyVaultSecret)
-
-Azure CLI バックアップ コマンド
-
-* [証明書のバックアップ](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [キーのバックアップ](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [シークレットのバックアップ](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
-
-
 ## <a name="next-steps"></a>次の手順
 
+- [Azure Key Vault 用の Azure セキュリティ ベースライン](security-baseline.md)
+- [Azure Key Vault のベスト プラクティス](security-baseline.md)
 - [Azure Key Vault の仮想ネットワーク サービス エンドポイント](overview-vnet-service-endpoints.md)
 - [Azure RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)に関するページを参照してください。

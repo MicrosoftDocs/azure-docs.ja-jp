@@ -8,17 +8,78 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/17/2020
+ms.date: 01/27/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 4393607d6714bc4c1b10ac89d5ac69c173f8fef4
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401153"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257323"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
+
+## <a name="speech-sdk-1150-2021-january-release"></a>Speech SDK 1.15.0: 2021 年 1 月のリリース
+
+**注**:Windows の音声 SDK は、Visual Studio 2015、2017、および 2019 の Microsoft Visual C++ 再配布可能パッケージに依存します。 [こちら](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)でダウンロードできます。
+
+**要点の概要**
+- メモリとディスクの占有領域を小さくすることによる SDK の効率向上。
+- カスタム ニューラル音声のプライベート プレビューで使用できる再現性の高い出力形式。
+- 意図認識エンジンで最上位の意図以外を返すことができるようになり、顧客の意図について個別の評価を行うことができます。
+- 音声アシスタントやボットのセットアップが簡単になり、すぐにリスニングを停止し、エラーへの対処方法をより細かく制御できます。
+- 圧縮をオプションにすることで向上したデバイスのパフォーマンス。
+- Windows ARM と ARM64 で Speech SDK を使用します。
+- 改善された低レベルのデバッグ。
+- 発音評価機能をより広く利用できるようになりました。
+- 重要なお客様が GitHub でフラグを設定した問題に対処するためのいくつかのバグ修正。 ご協力ありがとうございます。 ぜひフィードバックをお寄せください。
+
+**機能強化**
+- Speech SDK がより効率的で軽量になりました。 Speech SDK のメモリ使用量とディスク占有領域を削減するための複数のリリース作業が開始されました。 最初のステップとして、ほとんどのプラットフォームで共有ライブラリのファイル サイズを大幅に削減しました。 1\.14 リリースと比較すると次のようになります。
+  - 64 ビット UWP 互換 Windows ライブラリは、約 30% 小さくなります。
+  - 32 ビット Windows ライブラリは、まだサイズ改善が見られません。
+  - Linux ライブラリは、20 から 25% 小さくなります。
+  - Android ライブラリは、3 から 5% 小さくなります。
+
+**新機能**
+- **[すべて]** : TTS 音声合成 API により、カスタム ニューラル音声のプライベート プレビューで 48 KHz の出力形式を使用できます: Audio48Khz192KBitRateMonoMp3、audio-48khz-192kbitrate-mono-mp3、Audio48Khz96KBitRateMonoMp3、audio-48khz-96kbitrate-mono-mp3、Raw48Khz16BitMonoPcm、raw-48khz-16bit-mono-pcm、Riff48Khz16BitMonoPcm、riff-48khz-16bit-mono-pcm。
+- **[すべて]** : カスタム音声も使いやすくなっています。 `EndpointId` によるカスタム音声の設定のサポートが追加されました ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#setendpointid)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid?view=azure-java-stable#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_)、[JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#endpointId)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#endpoint-id))。 この変更の前は、カスタム音声ユーザーは `FromEndpoint` メソッドを使用してエンドポイント URL を設定する必要がありました。 現在は、お客様は、パブリック音声と同様に `FromSubscription` メソッドを使用でき、`EndpointId` を設定することによりデプロイ ID を指定できます。 これにより、カスタム音声の設定が簡単になります。 
+- **C++、C#、Java、Objective-C、Python**: `IntentRecognizer` から、最上位の意図以外のものを取得できます。 `LanguageUnderstandingModel FromEndpoint` メソッドで `verbose=true` URI パラメーターを使用することにより、トップ スコアの意図だけでなく、すべての意図が含まれる JSON 結果の構成がサポートされるようになりました。 これは、[GitHub イシュー #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880) に対応するものです。 [こちらで](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/intent-recognition/#add-a-languageunderstandingmodel-and-intents)更新されたドキュメントを参照してください。
+- **C++、C#、Java**: 音声アシスタントまたはボットのリスニングをすぐに停止します。 `DialogServiceConnector` ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)) に、`ListenOnceAsync()` に付随する `StopListeningAsync()` メソッドが用意されました。 これにより、オーディオ キャプチャが直ちに停止され、結果が適切に待機されるので、"今すぐ停止" ボタンがクリックされたときのシナリオに最適です。
+- **C++、C#、Java、JavaScript**: 音声アシスタントまたはボットによる基になるシステムのエラーへの対応が向上します。 `DialogServiceConnector` ([C++](https://docs.microsoft.com/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable)、[JavaScript](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector?view=azure-node-latest)) に、新しい `TurnStatusReceived` イベント ハンドラーが追加されました。 これらのオプション イベントは、ボットでのすべての [`ITurnContext`](https://docs.microsoft.com/dotnet/api/microsoft.bot.builder.iturncontext?view=botbuilder-dotnet-stable) の解決に対応し、ターン実行エラーが発生したときに報告されます。たとえば、ハンドルされない例外、タイムアウト、または Direct Line Speech とボットの間のネットワーク切断の結果などです。 `TurnStatusReceived` により、エラー状態への対応が簡単になります。 たとえば、ボットによるバックエンド データベース クエリ (製品の検索など) の時間が長すぎる場合、`TurnStatusReceived` を使用することにより、クライアントで "申し訳ありません、よく聞き取れませんでした。もう一度試していただけますか" といったメッセージを再表示できます。
+- **C++、C#** : Speech SDK を使用できるプラットフォームが増えます。 [Speech SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)で、Windows ARM および ARM64 デスクトップ ネイティブ バイナリがサポートされるようになり (UWP は既にサポートされています)、より多くのマシンの種類で Speech SDK を使用できるようになります。
+- **Java**: [`DialogServiceConnector`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector?view=azure-java-stable) に、以前に言語から意図せずに除外された `setSpeechActivityTemplate()` メソッドが含まれるようになりました。 これは、`Conversation_Speech_Activity_Template` プロパティを設定することと同じであり、Direct Line Speech サービスによって生成される将来のすべての Bot Framework アクティビティで、提供されたコンテンツを JSON ペイロードにマージするよう要求されます。
+- **Java**: 改善された低レベルのデバッグ。 [`Connection`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable) クラスに、他のプログラミング言語 (C++、C#) と同様の `MessageReceived` イベントが追加されました。 このイベントにより、サービスからの受信データへの低レベルのアクセスが提供され、診断やデバッグに役立ちます。
+- **JavaScript**:[`BotFrameworkConfig`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/botframeworkconfig) による音声アシスタントとボットのセットアップが簡単になりました。手動でのプロパティの設定と比べて、カスタム サービスの場所を簡単に使用できる `fromHost()` および `fromEndpoint()` ファクトリ メソッドが追加されました。 また、構成ファクトリ全体で既定以外のボットを使用するための、`botId` のオプションの指定が標準化されました。
+- **JavaScript**:WebSocket 圧縮のための文字列制御プロパティが追加されたことで、デバイスのパフォーマンスが向上しました。 パフォーマンス上の理由から、WebSocket の圧縮の既定値は無効になりました。 低帯域幅のシナリオでは、これを再び有効にすることができます。 詳細については、[こちら](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/propertyid)をご覧ください。 これは、[GitHub イシュー #242](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/242) に対応するものです。
+- **JavaScript**:音声の発音を評価できるように、発音評価のサポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment?pivots=programming-language-javascript)のクイックスタートを参照してください。
+
+**バグの修正**
+- **すべて** (JavaScript を除く): 認識エンジンによって割り当てられるメモリが多すぎる、バージョン 1.14 での回帰を修正しました。
+- **C++** :`DialogServiceConnector` でのガベージ コレクションの問題を修正し、[GitHub イシュー #794](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/794) に対処しました。
+- **C#** : オブジェクトが破棄されるときに約 1 秒間ブロックされる原因となったスレッドのシャットダウンに関する問題を修正しました。
+- **C++、C#、Java**: アプリケーションが `DialogServiceConnector` で音声認証トークンまたはアクティビティ テンプレートを複数回設定できない例外を修正しました。
+- **C++、C#、Java**: 破棄での競合状態による認識エンジンのクラッシュを修正しました。
+- **JavaScript**: 以前は、[`DialogServiceConnector`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector) により、`BotFrameworkConfig` のファクトリで指定されたオプションの `botId` パラメーターが適用されていませんでした。 このため、既定以外のボットを使用するには、`botId` クエリ文字列パラメーターを手動で設定する必要がありました。 このバグが修正され、`BotFrameworkConfig` のファクトリに提供された `botId` 値が適用され、新しい `fromHost()` と `fromEndpoint()` の追加が含まれるようになります。 これは、`CustomCommandsConfig` の `applicationId` パラメーターにも適用されます。
+- **JavaScript**:[GitHub のイシュー #881](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/881) が修正され、認識エンジンのオブジェクトを再利用できるようになります。
+- **JavaScript**:SKD により 1 つの TTS セッションで `speech.config` が複数回送信され、帯域幅が浪費されていた問題を、修正しました。
+- **JavaScript**:マイク認証でのエラー処理が簡略化され、ユーザーがブラウザーでマイク入力を許可されない場合に、よりわかりやすいメッセージが表示されるようになりました。
+- **JavaScript**:`ConversationTranslator` および `ConversationTranscriber` での型エラーのために TypeScript ユーザーでコンパイル エラーが発生していた [GitHub のイシュー #249](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/249) を修正しました。
+- **Objective-C**:Xcode 11.4 の iOS で GStreamer のビルドが失敗する問題を修正し、[GitHub のイシュー #911](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/911) に対処しました。
+- **Python**: [GitHub のイシュー #870](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/870) が修正され、"DeprecationWarning: the imp module is deprecated in favour of importlib" (DeprecationWarning: imp モジュールは非推奨であり、代わりに importlib を使用します) が削除されました。
+
+**サンプル**
+- [JavaScript ブラウザー用の From-file サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/quickstart/javascript/browser/from-file/index.html)で、音声認識にファイルが使用されるようになりました。 これは、[GitHub イシュー #884](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/884) に対応するものです。
+
+## <a name="speech-cli-also-known-as-spx-2021-january-release"></a>Speech CLI (別名 SPX): 2021 年 1 月のリリース
+
+**新機能**
+- Speech CLI が [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech.CLI/)として使用できるようになり、シェルやコマンド ラインから呼び出すことができる .Net グローバル ツールとして .Net CLI によりインストールできます。
+- [Custom Speech DevOps テンプレート リポジトリ](https://github.com/Azure-Samples/Speech-Service-DevOps-Template)が、Custom Speech ワークフローに Speech CLI を使用するように更新されました。
+
+**COVID-19 の影響によるテストの短縮**: パンデミックが続いており、エンジニアは自宅で作業する必要があるため、パンデミック前の手動検証スクリプトは大幅に削減されています。 テスト対象のデバイスと構成が少なくなっており、環境固有のバグが漏れる可能性が高くなる場合があります。 大きな自動化のセットを使用して、厳格な検証をまだ行っています。 しかし、もし仮に何らかの問題が発生した場合には、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) にてお知らせください。<br>
+皆様の健康をお祈りします！
 
 ## <a name="text-to-speech-2020-december-release"></a>テキスト読み上げの 2020 年 12 月のリリース
 
@@ -86,9 +147,9 @@ ms.locfileid: "97401153"
 - **Python、Objective-C**: `KeywordRecognizer` API のサポートを追加しました。 ドキュメントは[こちら](./custom-keyword-basics.md)です。
 - **C++、Java、C#** : `ServicePropertyChannel::HttpHeader` を使用して任意の `HttpHeader` のキーと値を設定するためのサポートを追加しました。
 - **JavaScript**:`ConversationTranscriber` API のサポートを追加しました。 [こちら](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript)のドキュメントを参照してください。 
-- **C++、C#** : 新しい `AudioDataStream FromWavFileInput` メソッド (.WAV ファイル読み取り用) を [こちら (C++)](/cpp/cognitive-services/speech/audiodatastream)と [こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) に追加しました。
--  **C++、C#、Java、Python、Objective-C、Swift**: テキスト読み上げを停止する `stopSpeakingAsync()` メソッドを追加しました。 [こちら (C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)、[こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet)、[こちら (Java)](/java/api/com.microsoft.cognitiveservices.speech)、[こちら (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)、および[こちら (Objective-C、Swift)](/objectivec/cognitive-services/speech/) のリファレンス ドキュメントを参照してください。
-- **C#、C++、Java**: `DialogServiceConnector` の接続および切断イベントを監視するために使用できる `FromDialogServiceConnector()` 関数を `Connection` クラスに追加しました。 [こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet)、[こちら (C++)](/cpp/cognitive-services/speech/connection)、および[こちら (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection) のリファレンス ドキュメントを参照してください。
+- **C++、C#** : 新しい `AudioDataStream FromWavFileInput` メソッド (.WAV ファイル読み取り用) を [こちら (C++)](/cpp/cognitive-services/speech/audiodatastream)と [こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream) に追加しました。
+-  **C++、C#、Java、Python、Objective-C、Swift**: テキスト読み上げを停止する `stopSpeakingAsync()` メソッドを追加しました。 [こちら (C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace)、[こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech)、[こちら (Java)](/java/api/com.microsoft.cognitiveservices.speech)、[こちら (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech)、および[こちら (Objective-C、Swift)](/objectivec/cognitive-services/speech/) のリファレンス ドキュメントを参照してください。
+- **C#、C++、Java**: `DialogServiceConnector` の接続および切断イベントを監視するために使用できる `FromDialogServiceConnector()` 関数を `Connection` クラスに追加しました。 [こちら (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection)、[こちら (C++)](/cpp/cognitive-services/speech/connection)、および[こちら (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection) のリファレンス ドキュメントを参照してください。
 - **C++、C#、Java、Python、Objective-C、Swift**: 発音評価のサポートが追加されました。これはスピーチの発音を評価し、話された音声の正確性と流暢性に関するフィードバックを話者に提供します。 [こちら](how-to-pronunciation-assessment.md)のドキュメントをお読みください。
 
 **重大な変更**
@@ -387,18 +448,18 @@ SPX は、コードを記述せずに Azure 音声サービスを使用するた
 **新機能**
 - Linux: Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 のサポートを追加しました。Speech SDK 向けのシステム構成方法の[インストラクション](./how-to-configure-rhel-centos-7.md)も付いています。
 - Linux: Linux ARM32 と ARM64 での C.NET Core C# のサポートを追加しました。 詳細については、[こちら](./speech-sdk.md?tabs=linux)をご覧ください。 
-- C# および C++:`ConversationTranscriptionResult` で `UtteranceId` を追加しました。これは、すべての中間および最終的な音声認識の結果にわたる一貫性のある ID です。 [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?preserve-view=true&view=azure-dotnet) および [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult) の詳細。
+- C# および C++:`ConversationTranscriptionResult` で `UtteranceId` を追加しました。これは、すべての中間および最終的な音声認識の結果にわたる一貫性のある ID です。 [C#](/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult) および [C++](/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult) の詳細。
 - Python: `Language ID` のサポートを追加しました。 [GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)の speech_sample.py を参照してください。
 - Windows: すべての win32 コンソール アプリケーション向けに、Windows プラットフォームでの圧縮されたオーディオ入力形式のサポートを追加しました。 詳細については、[こちら](./how-to-use-codec-compressed-audio-input-streams.md) を参照してください。 
 - JavaScript:NodeJS で音声合成 (テキスト読み上げ) をサポートします。 [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech)をご覧ください。 
 - JavaScript:新しい API を追加して、すべての送受信メッセージを検査できるようにします。 [こちら](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript)をご覧ください。 
         
 **バグの修正**
-- C# および C++:`SendMessageAsync` がバイナリ型としてバイナリ メッセージを送信するよう、問題を修正しました。 [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_) および [C++](/cpp/cognitive-services/speech/connection) の詳細。
-- C# および C++:`Connection` オブジェクトの前に `Recognizer` が破棄された場合に `Connection MessageReceived` イベントを使用するとクラッシュが発生する問題を修正しました。 [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?preserve-view=true&view=azure-dotnet) および [C++](/cpp/cognitive-services/speech/connection#messagereceived) の詳細。
+- C# および C++:`SendMessageAsync` がバイナリ型としてバイナリ メッセージを送信するよう、問題を修正しました。 [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_) および [C++](/cpp/cognitive-services/speech/connection) の詳細。
+- C# および C++:`Connection` オブジェクトの前に `Recognizer` が破棄された場合に `Connection MessageReceived` イベントを使用するとクラッシュが発生する問題を修正しました。 [C#](/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived) および [C++](/cpp/cognitive-services/speech/connection#messagereceived) の詳細。
 - Android:マイクからのオーディオ バッファーサイズが 800ms から 100ms に減少し、待機時間が短縮されます。
 - Android:Android Studio の x86 Android emulator に関する[問題](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563)を修正しました。
-- JavaScript:`fromSubscription` API の中国のリージョン向けのサポートが追加されました。 詳細については、[こちら](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?preserve-view=true&view=azure-node-latest#fromsubscription-string--string-) を参照してください。 
+- JavaScript:`fromSubscription` API の中国のリージョン向けのサポートが追加されました。 詳細については、[こちら](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#fromsubscription-string--string-) を参照してください。 
 - JavaScript:NodeJS からの接続失敗のエラー情報を追加します。
         
 **サンプル**

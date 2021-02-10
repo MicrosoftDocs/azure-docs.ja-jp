@@ -3,19 +3,19 @@ title: チュートリアル - Azure Active Directory 属性マッピングを�
 description: Azure Active Directory における SaaS アプリの属性マッピングとは何かと、この属性マッピングをビジネス ニーズに合わせて変更する方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/10/2020
+ms.date: 1/25/2021
 ms.author: kenwith
-ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 89b40ac68143c2af0d94434ddedec489a2208839
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936983"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256409"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -115,7 +115,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 
 
 > [!NOTE]
-> サポートされている属性一覧の編集は、アプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
+> サポートされている属性一覧の編集は、アプリケーションとシステムのスキーマをカスタマイズし、カスタム属性がどのように定義されたかを直接知っている管理者のみにお勧めします。 場合によっては、アプリケーションやシステムで提供される API および開発者ツールに慣れている必要があります。 サポートされている属性の一覧を編集する機能は既定ではロックダウンされていますが、 https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true という URL に移動して機能を有効にできます。 その後、アプリケーションに移動して、[上記](#editing-the-list-of-supported-attributes)の属性の一覧を表示できます。 
 
 サポートされている属性の一覧を編集するときは、次のプロパティが表示されます。
 
@@ -156,6 +156,7 @@ SCIM アプリケーションの場合は、次の例に示すパターンに従
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "formatted":"Ms. Barbara J Jensen III",

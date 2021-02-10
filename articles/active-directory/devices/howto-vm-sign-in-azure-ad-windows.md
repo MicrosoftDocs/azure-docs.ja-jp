@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef2c9d7e2388d2da7a807fbf6b579360115a8323
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629801"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761001"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -335,7 +335,7 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 VM に対して、仮想マシンの管理者ログインまたは仮想マシンのユーザー ログインのどちらかのロールをユーザーに付与する [Azure RBAC ポリシーが構成されている](../../virtual-machines/linux/login-using-aad.md)ことを確認してください。
 
 > [!NOTE]
-> Azure のロールの割り当てに関する問題が発生した場合は、「[Azure RBAC のトラブルシューティング](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit)」を参照してください。
+> Azure のロールの割り当てに関する問題が発生した場合は、「[Azure RBAC のトラブルシューティング](../../role-based-access-control/troubleshooting.md#azure-role-assignments-limit)」を参照してください。
  
 #### <a name="unauthorized-client"></a>承認されていないクライアント
 
@@ -350,7 +350,9 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 > [!NOTE]
 > Windows 10 ビルド 20H1 では、VM への RDP 接続を開始するために、Azure AD 登録済み PC のサポートが追加されました。 Azure AD 登録済み (Azure AD 参加済みまたはハイブリッド Azure AD 参加済みではない) PC を RDP クライアントとして使用して VM への接続を開始する場合は、AzureAD\UPN の形式 (例: AzureAD\john@contoso.com) で資格情報を入力する必要があります。
 
-さらに、Azure AD への参加が完了した後に AADLoginForWindows 拡張機能がアンインストールされていないことを確認します。
+Azure AD への参加が完了した後に AADLoginForWindows 拡張機能がアンインストールされていないことを確認します。
+
+また、サーバー "*と*" クライアントの両方で、セキュリティ ポリシー "Network security:Allow PKU2U authentication requests to this computer to use online identities (ネットワーク セキュリティ: このコンピューターに対する PKU2U 認証要求でオンライン ID を使用することを許可する)" が有効になっていることを確認します。
  
 #### <a name="mfa-sign-in-method-required"></a>MFA サインイン方法が必要
 

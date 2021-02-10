@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 01/28/2021
 ms.author: banders
-ms.openlocfilehash: 625c40ea17cf20449f1be241a1605a80bf6a73f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 464e129314a369c14dcc6bc6c16eadf5f8bcf01f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353002"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052991"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれないソフトウェアのコスト
 
@@ -61,7 +61,7 @@ ms.locfileid: "96353002"
 
 ## <a name="get-rates-for-azure-meters"></a>Azure メーターの料金を取得する
 
-これらのメーターごとのコストは、Azure RateCard API を使用して取得できます。 Azure メーターの料金を取得する方法については、「[Get price and metadata information for resources used in an Azure subscription (Azure サブスクリプションで使用されるリソースの料金とメタデータ情報を取得する)](/previous-versions/azure/reference/mt219004(v=azure.100))」を参照してください。
+Azure Retail Prices API を使用してメーターごとのコストを取得できます。 Azure メーターの料金を取得する方法については、「[Azure 小売価格の概要](/rest/api/cost-management/retail-prices/azure-retail-prices)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure の予約の詳細については、次の記事を参照してください。

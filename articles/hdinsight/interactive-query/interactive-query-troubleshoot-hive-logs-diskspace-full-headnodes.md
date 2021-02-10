@@ -5,14 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: nisgoel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.date: 10/05/2020
-ms.openlocfilehash: 107ec012bf2ff76ee1cbe4c5f8252566a5a16127
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: cd7e6a7f13f6cccb5be5d23d69c2a44fc655cf55
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288937"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930952"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>シナリオ:Apache Hive ログによって Azure HDInsight のヘッド ノードのディスク領域がいっぱいになる
 
@@ -23,7 +22,7 @@ ms.locfileid: "93288937"
 Apache Hive/LLAP クラスターで、不要なログによってヘッド ノードのディスク領域全体が占有されている。 この状態により、次の問題が発生する可能性があります。
 
 - ヘッド ノードに空き領域がないため、SSH アクセスが失敗する。
-- Ambari によってスローされた " *HTTP エラー: 503 サービス利用不可* " が返される。
+- Ambari によってスローされた "*HTTP エラー: 503 サービス利用不可*" が返される。
 - HiveServer2 Interactive が再起動に失敗する
 
 問題が発生すると、`ambari-agent` のログに次のエントリが含まれます。

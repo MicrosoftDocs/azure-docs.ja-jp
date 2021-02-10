@@ -10,19 +10,31 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: pafarley
-ms.openlocfilehash: 8a409d66065a7ccd2b34365bd565202f207ac0e8
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 5e537166352f242d54819477a4dc0051aad684b0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560748"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258084"
 ---
 # <a name="whats-new-in-face-service"></a>Face サービスの新機能
 
 Azure Face サービスは、継続的に更新されます。 この記事で、機能の強化、修正、ドキュメントの更新についての最新情報を入手してください。
 
+## <a name="january-2021"></a>2021 年 1 月
+* Face API を使用するときの待機時間を軽減する: Face チームは、サービス使用時の待機時間の潜在的な原因と、考えられる軽減戦略について詳しく説明されている、新しい記事を公開しました。 「[Face サービスを使用するときの待機時間を軽減する](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/how-to-mitigate-latency)」を参照してください。
+
+## <a name="december-2020"></a>2020 年 12 月
+* Face ID ストレージのお客様の構成: Face サービスにはお客様の画像は格納されませんが、抽出された顔の特徴がサーバーに格納されます。 Face ID は顔の特徴の識別子であり、[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)、[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)、[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237) で使用されます。 格納されている顔の特徴は、元の検出呼び出しから 24 時間後に有効期限が切れ、削除されます。 これらの Face ID がキャッシュされる時間の長さを、お客様が決定できるようになりました。 最大値は最大 24 時間で変わりませんが、最小値として 60 秒に設定できるようになりました。 Face ID がキャッシュされている新しい時間範囲は、60 秒から 24 時間までの任意の値です。 詳細については、[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API リファレンス (*faceIdTimeToLive* パラメーター) を参照してください。
+
 ## <a name="november-2020"></a>2020 年 11 月
-* サンプルの顔登録アプリを公開して、高品質の登録を通して意味のある同意を確立し、高精度の顔認識システムを作成するためのベストプラクティスを示しました。 オープンソースのサンプルを[登録アプリのビルド](build-enrollment-app.md)に関するガイドと [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample) に追加しました。開発者はすぐにデプロイまたはカスタマイズすることができます。  
+* サンプルの顔登録アプリを公開して、高品質の登録を通して意味のある同意を確立し、高精度の顔認識システムを作成するためのベストプラクティスを示しました。 オープンソースのサンプルを[登録アプリのビルド](build-enrollment-app.md)に関するガイドと [GitHub](https://github.com/Azure-Samples/cognitive-services-FaceAPIEnrollmentSample) に追加しました。開発者はすぐにデプロイまたはカスタマイズすることができます。 
+
+## <a name="august-2020"></a>2020 年 8 月
+* 保存データのカスタマー マネージド暗号化: Face サービスでは、クラウドに永続化されるときにデータが自動的に暗号化されます。 Face サービスの暗号化によってデータは保護され、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 カスタマー マネージド キー (CMK) と呼ばれるユーザー独自のキーを使用してサブスクリプションを管理する新しいオプションもあります。 詳細については、[カスタマー マネージド キー](https://docs.microsoft.com/azure/cognitive-services/face/face-encryption-of-data-at-rest)に関するページを参照してください。
+
+## <a name="april-2020"></a>2020 年 4 月
+* 新しい Face API 認識モデル: 新しい認識 03 モデルは、現在使用できる最も正確なモデルです。 新しいお客様の場合は、このモデルを使用することをお勧めします。 認識 03 を使用すると、類似性比較と人物照合比較の両方の精度が向上します。 詳細については、「[顔認識モデルを指定する](https://docs.microsoft.com/azure/cognitive-services/face/face-api-how-to-topics/specify-recognition-model)」を参照してください。
 
 ## <a name="june-2019"></a>2019 年 6 月
 

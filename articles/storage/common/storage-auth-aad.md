@@ -19,7 +19,7 @@ ms.locfileid: "94635400"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB とキューへのアクセスを承認する
 
-Azure Storage では、Azure Active Directory (Azure AD) を使用して Blob Storage および Queue storage への要求を承認することがサポートされています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 セキュリティ プリンシパルは、Azure AD によって認証されて、OAuth 2.0 トークンを返します。 その後、そのトークンを、Blob Storage または Queue storage に対する要求を承認するために使用できます。
+Azure Storage では、Azure Active Directory (Azure AD) を使用して Blob Storage および Queue storage への要求を承認することがサポートされています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 セキュリティ プリンシパルは、Azure AD によって認証されて、OAuth 2.0 トークンを返します。 その後、そのトークンを、Blob Storage または Queue storage に対する要求を承認するために使用できます。
 
 Azure AD を使用して Azure Storage に対する要求を承認すると、共有キー承認よりも優れたセキュリティと使いやすさが実現されます。 Microsoft では、共有キーに固有の潜在的なセキュリティの脆弱性を最小限に抑えるために、可能な場合は、BLOB アプリケーションとキュー アプリケーションで Azure AD での承認を使用することをお勧めします。
 

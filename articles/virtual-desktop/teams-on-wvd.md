@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217840"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743119"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
@@ -146,6 +146,7 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 - Windows Virtual Desktop 上の Teams は、一度に 1 つの着信ビデオ入力のみをサポートしています。 つまり、だれかが画面を共有しようとすると、そのたびに会議リーダーの画面に代わってそのユーザーの画面が表示されます。
 - WebRTC の制約により、ビデオ ストリームの解像度は着信、発信とも 720p となっています。
 - Teams アプリでは、HID ボタンや他のデバイスを使った LED コントロールはサポートされていません。
+- New Meeting Experience (NME) は、現在、VDI 環境ではサポートされていません。
 
 Teams の既知の問題のうち、仮想環境に関係のないものについては、[組織における Teams のサポート](/microsoftteams/known-issues)に関するページを参照してください。
 

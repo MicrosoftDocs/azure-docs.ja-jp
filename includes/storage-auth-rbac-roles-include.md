@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a4a2034d44d98de9696b435c68c97a8a54a1c351
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f014ce55dc40723faf1b60f908814f9fa0428b8e
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026293"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99215295"
 ---
 Azure では、BLOB とキューのデータへの Azure AD と OAuth を使ったアクセスを承認するために、次の Azure 組み込みロールが提供されています。
 
@@ -31,4 +31,4 @@ Azure では、BLOB とキューのデータへの Azure AD と OAuth を使っ�
 データ サービスと管理サービスの両方に対する Azure Storage 用の Azure 組み込みロールの詳細については、「[Azure RBAC の Azure 組み込みロール](../articles/role-based-access-control/built-in-roles.md#storage)」の「**ストレージ**」セクションを参照してください。 さらに、Azure でアクセス許可を提供するさまざまな種類のロールの詳細については、「[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD ロール](../articles/role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
 
 > [!IMPORTANT]
-> Azure ロールの割り当ての反映には最大で 5 分かかる可能性があります。
+> Azure ロールの割り当ての反映には最大で 30 分かかる可能性があります。

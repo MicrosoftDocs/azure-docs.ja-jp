@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/18/2021
+ms.date: 02/01/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b323268c625ed25236cf4a9f9faa17606bd967c
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 61adb72d043821dfaedca5e5da0b2f880d56811e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570067"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258921"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -48,7 +48,7 @@ Azure for SAP HANA の独自性は、Azure を一線を画すものにしてい�
 - Windows と Pacemaker でサポートされるもの以外に、サードパーティの HA フレームは動作するか。 [SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) の下部を確認してください
 - 自分のシナリオに最適な Azure ストレージ 「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を参照してください。
 - Oracle Enterprise Linux の Red Hat カーネルは SAP でサポートされているか。 SAP の [SAP サポート ノート #1565179](https://launchpad.support.sap.com/#/notes/1565179) をお読みください。
-- Azure [Da(s)v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series)/[Ea(s)](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) VM ファミリが SAP HANA で認定されていないのはなぜか。 Azure Das および Eas VM ファミリは、AMD プロセッサ駆動型ハードウェアに基づいています。 SAP HANA では、仮想化されたシナリオであっても AMD プロセッサはサポートされません
+- Azure [Da(s)v4](../../dav4-dasv4-series.md)/[Ea(s)](../../eav4-easv4-series.md) VM ファミリが SAP HANA で認定されていないのはなぜか。 Azure Das および Eas VM ファミリは、AMD プロセッサ駆動型ハードウェアに基づいています。 SAP HANA では、仮想化されたシナリオであっても AMD プロセッサはサポートされません
 - 最新の Linux カーネルを実行していても、SAP HANA で "RDTSCP 命令の cpu フラグまたは constant_tsc もしくは nonstop_tsc の cpu フラグが設定されていないか、current_clocksource と available_clocksource が正しく構成されていません" というメッセージが表示されるのはなぜか。 回答については、[SAP サポート ノート #2791572](https://launchpad.support.sap.com/#/notes/2791572) を確認してください
 - SAP Fiori を Azure にデプロイするためのアーキテクチャはどこで入手できるか。 ブログ「[SAP on Azure: Application Gateway Web Application Firewall (WAF) v2 Setup for Internet facing SAP Fiori Apps](https://blogs.sap.com/2020/12/03/sap-on-azure-application-gateway-web-application-firewall-waf-v2-setup-for-internet-facing-sap-fiori-apps/)」(SAP on Azure: インターネットに接続する SAP Fiori アプリ用の Application Gateway Web アプリケーション ファイアウォール (WAF)) を確認してください 
 
@@ -84,13 +84,15 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 ## <a name="change-log"></a>変更履歴
 
-- 2021 年 1 月 18 日: [SAP ワークロード用 Azure Virtual Machines Oracle DBMS のデプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_oracle)時の Oracle 向け Azure NetApp Files ベースの NFS のサポート追加、およびドキュメント「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-netapp)」の表内の小数の調整
+- 2021 年 2 月 1 日: [SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)へのリンクを追加するための [RHEL での ANF を使用した SAP HANA の高可用性のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)、[RHEL における Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md)、[SLES で ANF を使用した Azure VM のスタンバイ ノードでの SAP HANA スケールアウト](./sap-hana-scale-out-standby-netapp-files-suse.md)、[RHEL で ANF を使用した Azure VM のスタンバイ ノードでの SAP HANA スケールアウト](./sap-hana-scale-out-standby-netapp-files-rhel.md)の変更
+- 2021 年 1 月 23 日:記事「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」および「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1](./hana-vm-operations-netapp.md)」のディスク ボリューム マネージャーを使用せずに、異なる Azure ディスクまたは NFS 共有間で HANA データ ファイルに対する I/O 操作をストライピングする機能として、HANA データ ボリューム パーティション分割機能が導入されました。
+- 2021 年 1 月 18 日: [SAP ワークロード用 Azure Virtual Machines Oracle DBMS のデプロイ](./dbms_guide_oracle.md)時の Oracle 向け Azure NetApp Files ベースの NFS のサポート追加、およびドキュメント「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)」の表内の小数の調整
 - 2021年 1 月 11 日:RHEL8 と RHEL7 および ENSA1 と ENSA2 の両方で動作するようにコマンドを調整するための [RHEL for SAP アプリケーションでの Azure VM 上の HA for SAP NW](./high-availability-guide-rhel.md)、[ANF を使用する RHEL での Azure VM 上の HA for SAP NW](./high-availability-guide-rhel-netapp-files.md)、[RHEL マルチ SID ガイドでの Azure VM 上の HA for SAP NW](./high-availability-guide-rhel-multi-sid.md) のマイナーな変更
 - 2021 年 1 月 5 日: [SLES で ANF を使用した Azure VM のスタンバイ ノードでの SAP HANA スケールアウト](./sap-hana-scale-out-standby-netapp-files-suse.md)および [RHEL で ANF を使用した Azure VM のスタンバイ ノードでの SAP HANA スケールアウト](./sap-hana-scale-out-standby-netapp-files-rhel.md)に関するページに変更が加えられ、SAP Host Agent でローカル ポート範囲を管理できるように推奨される構成が修正されました  
-- 2021 年 1 月 4 日:「[SAP HANA on Azure (L インスタンス) とは](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)」に、HLI でサポートされる新しい Azure リージョンを追加しました
-- 2020 年 12 月 29 日: 「[Azure Availability Zones での SAP ワークロードの構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)」で、特定の Azure リージョンのアーキテクチャに関する推奨事項を追加しました
+- 2021 年 1 月 4 日:「[SAP HANA on Azure (L インスタンス) とは](./hana-overview-architecture.md)」に、HLI でサポートされる新しい Azure リージョンを追加しました
+- 2020 年 12 月 29 日: 「[Azure Availability Zones での SAP ワークロードの構成](./sap-ha-availability-zones.md)」で、特定の Azure リージョンのアーキテクチャに関する推奨事項を追加しました
 - 2020 年 12 月 21 日:「[HLI で利用可能な SKU](./hana-available-skus.md)」で、HANA Large Instances の SKU に新しい認定資格を追加しました
-- 2020 年 12 月 12 日: 「[Azure デプロイでサポートされている SAP ソフトウェア](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support)」に対して、SAP による Oracle Enterprise Linux のサポートに関する詳細を明確にする SAP ノートへのポインターを追加しました
+- 2020 年 12 月 12 日: 「[Azure デプロイでサポートされている SAP ソフトウェア](./sap-supported-product-on-azure.md#oracle-dbms-support)」に対して、SAP による Oracle Enterprise Linux のサポートに関する詳細を明確にする SAP ノートへのポインターを追加しました
 - 11/26/2020:[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)と [SAP ワークロード用の Azure Storage タイプ](./planning-guide-storage.md)を変更後のシングル [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) に合わせて調整する
 - 2020 年 11 月 5 日:[SAP HANA Azure 仮想マシン ストレージ構成](./hana-vm-operations-storage.md)での HANA でサポートされるファイル システムの種類に関する新しい SAP ノートへのリンクを変更 
 - 2020 年 10 月 26 日:「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」におけるプロビジョニング済みおよびバースト スループットを明確にするため、Azure Premium Storage 構成のテーブルをいくつか変更

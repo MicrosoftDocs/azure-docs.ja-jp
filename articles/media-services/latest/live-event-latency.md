@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services の LiveEvent の低待機時間設定 | Microsoft Docs
+title: Azure Media Services での LiveEvent の低待機時間設定
 description: このトピックでは、LiveEvent の低待機時間設定の概要について説明し、低待機時間の設定方法を示します。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 114efe668fba47e9d83741b8fa45e1f396725198
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023b0f4d7f0367882e0a5bb2be89c485c18bc03c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291519"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897834"
 ---
 # <a name="live-event-low-latency-settings"></a>ライブ イベントの低待機時間設定
 

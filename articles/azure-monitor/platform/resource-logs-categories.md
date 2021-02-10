@@ -3,13 +3,13 @@ title: Azure Monitor リソース ログでサポートされているサービ�
 description: Azure Monitor のリファレンス - Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.subservice: logs
 ms.topic: reference
-ms.date: 12/09/2020
-ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/29/2021
+ms.openlocfilehash: 02488e1a3ff26acf9ff318a2d5c09115aaba8df9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232249"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070748"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
 
@@ -23,7 +23,9 @@ ms.locfileid: "98232249"
 
 ## <a name="costs"></a>コスト
 
-Log Analytics、Azure Storage、またはイベント ハブにデータを送信し、格納することでコストが発生します。 これらの場所にデータを送り、そこに保管するために、場合によってはコストを支払う必要があります。  リソース ログは、これらの場所に送信できるデータの一種です。 これらの場所に[一部のカテゴリのリソース ログをエクスポートするとコスト](https://azure.microsoft.com/pricing/details/monitor/)が追加で発生します。それに該当しないカテゴリの場合、エクスポート費用は無料です。 エクスポート コストの詳細を下の表に示します。
+Log Analytics、Azure Storage、またはイベント ハブにデータを送信し、格納することでコストが発生します。 これらの場所にデータを送り、そこに保管するために、場合によってはコストを支払う必要があります。  リソース ログは、これらの場所に送信できるデータの一種です。 
+
+これらの場所に一部のカテゴリのリソース ログをエクスポートするとコストが追加で発生します。 そのようなログとエクスポート コストを下の表に示します。 この価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページの「プラットフォーム ログ」セクションを参照してください。
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
 
@@ -31,859 +33,950 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 一部のカテゴリは、特定の種類のリソースに対してのみサポートされています。 リソースが不足していると思われる場合は、リソース固有のドキュメントを参照してください。 たとえば、Microsoft.Sql/servers/databases カテゴリは、すべての種類のデータベースで使用できるわけではありません。 詳細については、[SQL Database の診断ログに関する情報](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)を参照してください。 
 
-まだ何かが不足している場合は、この記事の下部にある GitHub コメントを開くことができます。
+何かが不足していると考えられる場合は、この記事の下部にある GitHub コメントを開くことができます。
+## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/domainServices
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AccountLogon|AccountLogon|いいえ|
+|AccountManagement|AccountManagement|いいえ|
+|DetailTracking|DetailTracking|いいえ|
+|DirectoryServiceAccess|DirectoryServiceAccess|いいえ|
+|LogonLogoff|LogonLogoff|いいえ|
+|ObjectAccess|ObjectAccess|いいえ|
+|PolicyChange|PolicyChange|いいえ|
+|PrivilegeUse|PrivilegeUse|いいえ|
+|SystemSecurity|SystemSecurity|いいえ|
+
+
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|エンジン|エンジン|
-|サービス|サービス|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|エンジン|エンジン|いいえ|
+|サービス|サービス|いいえ|
 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|GatewayLogs|ApiManagement Gateway に関連するログ|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|GatewayLogs|ApiManagement Gateway に関連するログ|
+
+## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|HttpRequest|HTTP 要求|Yes|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ApplicationConsole|アプリケーション コンソール|いいえ|
+|SystemLogs|システム ログ|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ApplicationConsole|アプリケーション コンソール|
-|SystemLogs|システム ログ|
+
+## <a name="microsoftattestationattestationproviders"></a>Microsoft.Attestation/attestationProviders
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AuditEvent|AuditEvent メッセージ ログ カテゴリ。|いいえ|
+|ERR|エラー メッセージ ログ カテゴリ。|いいえ|
+|INF|情報メッセージ ログ カテゴリ。|いいえ|
+|WRN|警告メッセージ ログ カテゴリ。|いいえ|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|DscNodeStatus|DSC ノードの状態|
-|JobLogs|ジョブ ログ|
-|JobStreams|ジョブ ストリーム|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DscNodeStatus|DSC ノードの状態|いいえ|
+|JobLogs|ジョブ ログ|いいえ|
+|JobStreams|ジョブ ストリーム|いいえ|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ServiceLog|サービス ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ServiceLog|サービス ログ|いいえ|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|BaiClusterEvent|BaiClusterEvent|
-|BaiClusterNodeEvent|BaiClusterNodeEvent|
-|BaiJobEvent|BaiJobEvent|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|BaiClusterEvent|BaiClusterEvent|いいえ|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|いいえ|
+|BaiJobEvent|BaiJobEvent|いいえ|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|BlockchainApplication|ブロックチェーン アプリケーション|
-|FabricOrderer|Fabric Orderer|
-|FabricPeer|Fabric Peer|
-|プロキシ|プロキシ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|BlockchainApplication|ブロックチェーン アプリケーション|いいえ|
+|FabricOrderer|Fabric Orderer|いいえ|
+|FabricPeer|Fabric Peer|いいえ|
+|プロキシ|プロキシ|いいえ|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft.Blockchain/cordaMembers
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|BlockchainApplication|ブロックチェーン アプリケーション|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|BlockchainApplication|ブロックチェーン アプリケーション|
+
+## <a name="microsoftbotservicebotservices"></a>microsoft.botservice/botservices
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|BotRequest|チャネルからボットへの要求|いいえ|
+|DependencyRequest|依存関係への要求|いいえ|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|WebApplicationFirewallLogs|Web アプリケーション ファイアウォールのログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|WebApplicationFirewallLogs|Web アプリケーション ファイアウォールのログ|いいえ|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AzureCdnAccessLog|Azure Cdn アクセス ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AzureCdnAccessLog|Azure Cdn アクセス ログ|いいえ|
+|FrontDoorAccessLog|FrontDoor アクセス ログ|Yes|
+|FrontDoorHealthProbeLog|FrontDoor 正常性プローブ ログ|Yes|
+|FrontDoorWebApplicationFirewallLog|FrontDoor WebApplicationFirewall ログ|Yes|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft.Cdn/profiles/endpoints
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|CoreAnalytics|エンドポイントのメトリック (帯域幅、エグレスなど) を取得します。|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|CoreAnalytics|エンドポイントのメトリック (帯域幅、エグレスなど) を取得します。|いいえ|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft.ClassicNetwork/networksecuritygroups
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ネットワーク セキュリティ グループの規則フロー イベント|ネットワーク セキュリティ グループの規則フロー イベント|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ネットワーク セキュリティ グループの規則フロー イベント|ネットワーク セキュリティ グループの規則フロー イベント|いいえ|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|[監査ログ]|いいえ|
+|RequestResponse|要求と応答のログ|いいえ|
+|Trace|トレース ログ|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|Audit|[監査ログ]|
-|RequestResponse|要求と応答のログ|
-|Trace|トレース ログ|
+
+## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft.Communication/CommunicationServices
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ChatOperational|運用チャット ログ|いいえ|
+|SMSOperational|運用 SMS ログ|いいえ|
+|使用法|使用法レコード|いいえ|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ContainerRegistryLoginEvents|ログイン イベント|
-|ContainerRegistryRepositoryEvents|RepositoryEvent ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ContainerRegistryLoginEvents|ログイン イベント|いいえ|
+|ContainerRegistryRepositoryEvents|RepositoryEvent ログ|いいえ|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|cluster-autoscaler|Kubernetes クラスター オートスケーラー|
-|kube-apiserver|Kubernetes API サーバー|
-|kube-audit|Kubernetes の監査|
-|kube-controller-manager|Kubernetes コントローラー マネージャー|
-|kube-scheduler|Kubernetes スケジューラ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|cluster-autoscaler|Kubernetes クラスター オートスケーラー|いいえ|
+|guard|guard|いいえ|
+|kube-apiserver|Kubernetes API サーバー|いいえ|
+|kube-audit|Kubernetes の監査|いいえ|
+|kube-audit-admin|Kubernetes 監査管理ログ|いいえ|
+|kube-controller-manager|Kubernetes コントローラー マネージャー|いいえ|
+|kube-scheduler|Kubernetes スケジューラ|いいえ|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AuditLogs|MiniRP 呼び出しの監査ログ|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AuditLogs|MiniRP 呼び出しの監査ログ|
+
+## <a name="microsoftd365customerinsightsinstances"></a>Microsoft.D365CustomerInsights/instances
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|イベントを監査する|いいえ|
+|運用時|操作イベント|いいえ|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft.Databricks/workspaces
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|accounts|Databricks アカウント|いいえ|
+|clusters|Databricks クラスター|いいえ|
+|dbfs|Databricks ファイル システム|いいえ|
+|instancePools|インスタンス プール|いいえ|
+|jobs|Databricks ジョブ|いいえ|
+|ノートブック|Databricks Notebook|いいえ|
+|secrets|Databricks シークレット|いいえ|
+|sqlPermissions|Databricks SQLPermissions|いいえ|
+|ssh|Databricks SSH|いいえ|
+|ワークスペース|Databricks ワークスペース|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|accounts|Databricks アカウント|
-|clusters|Databricks クラスター|
-|dbfs|Databricks ファイル システム|
-|instancePools|インスタンス プール|
-|jobs|Databricks ジョブ|
-|ノートブック|Databricks Notebook|
-|secrets|Databricks シークレット|
-|sqlPermissions|Databricks SQLPermissions|
-|ssh|Databricks SSH|
-|ワークスペース|Databricks ワークスペース|
+
+## <a name="microsoftdatacollaborationworkspaces"></a>Microsoft.DataCollaboration/workspaces
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|CollaborationAudit|コラボレーションの監査|Yes|
+|DataAssets|データ資産|いいえ|
+|パイプライン|パイプライン|いいえ|
+|Proposals|Proposals|いいえ|
+|スクリプト|スクリプト|いいえ|
 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ActivityRuns|パイプライン アクティビティ実行ログ|いいえ|
+|PipelineRuns|パイプライン実行ログ|いいえ|
+|SSISIntegrationRuntimeLogs|SSIS 統合ランタイム ログ|いいえ|
+|SSISPackageEventMessageContext|SSIS パッケージ イベント メッセージ コンテキスト|いいえ|
+|SSISPackageEventMessages|SSIS パッケージ イベント メッセージ|いいえ|
+|SSISPackageExecutableStatistics|SSIS パッケージ実行可能ファイル統計|いいえ|
+|SSISPackageExecutionComponentPhases|SSIS パッケージ実行コンポーネント フェーズ|いいえ|
+|SSISPackageExecutionDataStatistics|SSIS パッケージ実行データ統計|いいえ|
+|TriggerRuns|トリガー実行ログ|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ActivityRuns|パイプライン アクティビティ実行ログ|
-|PipelineRuns|パイプライン実行ログ|
-|TriggerRuns|トリガー実行ログ|
+
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|[監査ログ]|いいえ|
+|Requests|要求ログ|いいえ|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|Audit|[監査ログ]|
-|Requests|要求ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|[監査ログ]|いいえ|
+|Requests|要求ログ|いいえ|
 
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ReceivedShareSnapshots|受信された共有スナップショット|
-|SentShareSnapshots|送信された共有スナップショット|
-|共有|共有|
-|ShareSubscriptions|共有サブスクリプション|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ReceivedShareSnapshots|受信された共有スナップショット|いいえ|
+|SentShareSnapshots|送信された共有スナップショット|いいえ|
+|共有|共有|いいえ|
+|ShareSubscriptions|共有サブスクリプション|いいえ|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|MySqlAuditLogs|MariaDB 監査ログ|
-|MySqlSlowLogs|MariaDB サーバー ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|MySqlAuditLogs|MariaDB 監査ログ|いいえ|
+|MySqlSlowLogs|MariaDB サーバー ログ|いいえ|
 
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft.DBforMySQL/flexibleServers
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|MySqlAuditLogs|MySQL 監査ログ|
-|MySqlSlowLogs|MySQL Slow ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|MySqlAuditLogs|MySQL 監査ログ|いいえ|
+|MySqlSlowLogs|MySQL Slow ログ|いいえ|
 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|MySqlAuditLogs|MySQL 監査ログ|
-|MySqlSlowLogs|MySQL サーバーのログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|MySqlAuditLogs|MySQL 監査ログ|いいえ|
+|MySqlSlowLogs|MySQL サーバーのログ|いいえ|
 
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|PostgreSQLLogs|PostgreSQL サーバー ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL サーバー ログ|いいえ|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|PostgreSQLLogs|PostgreSQL サーバー ログ|
-|QueryStoreRuntimeStatistics|PostgreSQL クエリ ストアのランタイム統計|
-|QueryStoreWaitStatistics|PostgreSQL クエリ ストアの待機統計|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL サーバー ログ|いいえ|
+|QueryStoreRuntimeStatistics|PostgreSQL クエリ ストアのランタイム統計|いいえ|
+|QueryStoreWaitStatistics|PostgreSQL クエリ ストアの待機統計|いいえ|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|PostgreSQLLogs|PostgreSQL サーバー ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL サーバー ログ|いいえ|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft.DesktopVirtualization/applicationgroups
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|Checkpoint|Checkpoint|
-|エラー|エラー|
-|管理|管理|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Checkpoint|Checkpoint|いいえ|
+|エラー|エラー|いいえ|
+|管理|管理|いいえ|
 
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft.DesktopVirtualization/hostpools
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|Checkpoint|Checkpoint|
-|Connection|Connection|
-|エラー|エラー|
-|HostRegistration|HostRegistration|
-|管理|管理|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AgentHealthStatus|AgentHealthStatus|いいえ|
+|Checkpoint|Checkpoint|いいえ|
+|Connection|Connection|いいえ|
+|エラー|エラー|いいえ|
+|HostRegistration|HostRegistration|いいえ|
+|管理|管理|いいえ|
 
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Checkpoint|Checkpoint|いいえ|
+|エラー|エラー|いいえ|
+|フィード|フィード|いいえ|
+|管理|管理|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|Checkpoint|Checkpoint|
-|エラー|エラー|
-|フィード|フィード|
-|管理|管理|
+
+## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft.Devices/ElasticPools/IotHubTenants
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|C2DCommands|C2D コマンド|いいえ|
+|C2DTwinOperations|C2D ツイン操作|いいえ|
+|構成|構成|いいえ|
+|接続|接続|いいえ|
+|D2CTwinOperations|D2CTwinOperations|いいえ|
+|DeviceIdentityOperations|デバイス ID の操作|いいえ|
+|DeviceStreams|デバイス ストリーム (プレビュー)|いいえ|
+|DeviceTelemetry|デバイス テレメトリ|いいえ|
+|DirectMethods|ダイレクト メソッド|いいえ|
+|DistributedTracing|分散トレース (プレビュー)|いいえ|
+|FileUploadOperations|ファイルのアップロード操作|いいえ|
+|JobsOperations|ジョブ操作|いいえ|
+|ルート|ルート|いいえ|
+|TwinQueries|ツイン クエリ|いいえ|
 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|C2DCommands|C2D コマンド|
-|C2DTwinOperations|C2D ツイン操作|
-|構成|構成|
-|接続|接続|
-|D2CTwinOperations|D2CTwinOperations|
-|DeviceIdentityOperations|デバイス ID の操作|
-|DeviceStreams|デバイス ストリーム (プレビュー)|
-|DeviceTelemetry|デバイス テレメトリ|
-|DirectMethods|ダイレクト メソッド|
-|DistributedTracing|分散トレース (プレビュー)|
-|FileUploadOperations|ファイルのアップロード操作|
-|JobsOperations|ジョブ操作|
-|ルート|ルート|
-|TwinQueries|ツイン クエリ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|C2DCommands|C2D コマンド|いいえ|
+|C2DTwinOperations|C2D ツイン操作|いいえ|
+|構成|構成|いいえ|
+|接続|接続|いいえ|
+|D2CTwinOperations|D2CTwinOperations|いいえ|
+|DeviceIdentityOperations|デバイス ID の操作|いいえ|
+|DeviceStreams|デバイス ストリーム (プレビュー)|いいえ|
+|DeviceTelemetry|デバイス テレメトリ|いいえ|
+|DirectMethods|ダイレクト メソッド|いいえ|
+|DistributedTracing|分散トレース (プレビュー)|いいえ|
+|FileUploadOperations|ファイルのアップロード操作|いいえ|
+|JobsOperations|ジョブ操作|いいえ|
+|ルート|ルート|いいえ|
+|TwinQueries|ツイン クエリ|いいえ|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DeviceOperations|デバイス操作|いいえ|
+|ServiceOperations|サービス操作|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|DeviceOperations|デバイス操作|
-|ServiceOperations|サービス操作|
+
+## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft.DigitalTwins/digitalTwinsInstances
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DigitalTwinsOperation|DigitalTwinsOperation|いいえ|
+|EventRoutesOperation|EventRoutesOperation|いいえ|
+|ModelsOperation|ModelsOperation|いいえ|
+|QueryOperation|QueryOperation|いいえ|
 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|CassandraRequests|CassandraRequests|
-|ControlPlaneRequests|ControlPlaneRequests|
-|DataPlaneRequests|DataPlaneRequests|
-|GremlinRequests|GremlinRequests|
-|MongoRequests|MongoRequests|
-|PartitionKeyRUConsumption|PartitionKeyRUConsumption|
-|PartitionKeyStatistics|PartitionKeyStatistics|
-|QueryRuntimeStatistics|QueryRuntimeStatistics|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|CassandraRequests|CassandraRequests|いいえ|
+|ControlPlaneRequests|ControlPlaneRequests|いいえ|
+|DataPlaneRequests|DataPlaneRequests|いいえ|
+|GremlinRequests|GremlinRequests|いいえ|
+|MongoRequests|MongoRequests|いいえ|
+|PartitionKeyRUConsumption|PartitionKeyRUConsumption|いいえ|
+|PartitionKeyStatistics|PartitionKeyStatistics|いいえ|
+|QueryRuntimeStatistics|QueryRuntimeStatistics|いいえ|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DeliveryFailures|配信エラーのログ|いいえ|
+|PublishFailures|発行エラーのログ|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|DeliveryFailures|配信エラーのログ|
-|PublishFailures|発行エラーのログ|
+
+## <a name="microsofteventgridpartnernamespaces"></a>Microsoft.EventGrid/partnerNamespaces
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DeliveryFailures|配信エラーのログ|いいえ|
+|PublishFailures|発行エラーのログ|いいえ|
+
+
+## <a name="microsofteventgridpartnertopics"></a>Microsoft.EventGrid/partnerTopics
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DeliveryFailures|配信エラーのログ|いいえ|
 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|DeliveryFailures|配信エラーのログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DeliveryFailures|配信エラーのログ|いいえ|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|DeliveryFailures|配信エラーのログ|
-|PublishFailures|発行エラーのログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DeliveryFailures|配信エラーのログ|いいえ|
+|PublishFailures|発行エラーのログ|いいえ|
 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ArchiveLogs|アーカイブ ログ|いいえ|
+|AutoScaleLogs|自動スケール ログ|いいえ|
+|CustomerManagedKeyUserLogs|顧客管理キーのログ|いいえ|
+|EventHubVNetConnectionEvent|VNet/IP フィルタリング接続ログ|いいえ|
+|KafkaCoordinatorLogs|Kafka コーディネーター ログ|いいえ|
+|KafkaUserErrorLogs|Kafka ユーザー エラー ログ|いいえ|
+|OperationalLogs|操作ログ|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ArchiveLogs|アーカイブ ログ|
-|AutoScaleLogs|自動スケール ログ|
-|CustomerManagedKeyUserLogs|顧客管理キーのログ|
-|EventHubVNetConnectionEvent|VNet/IP フィルタリング接続ログ|
-|KafkaCoordinatorLogs|Kafka コーディネーター ログ|
-|KafkaUserErrorLogs|Kafka ユーザー エラー ログ|
-|OperationalLogs|操作ログ|
+
+## <a name="microsoftexperimentationexperimentworkspaces"></a>microsoft.experimentation/experimentWorkspaces
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|要求|要求|いいえ|
 
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AuditLogs|監査ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AuditLogs|監査ログ|いいえ|
 
 
-## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
+## <a name="microsoftinsightsautoscalesettings"></a>microsoft.insights/autoscalesettings
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AutoscaleEvaluations|自動スケーリング検証|
-|AutoscaleScaleActions|自動スケーリングのスケーリング操作|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AutoscaleEvaluations|自動スケーリング検証|いいえ|
+|AutoscaleScaleActions|自動スケーリングのスケーリング操作|いいえ|
 
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AppAvailabilityResults|可用性の結果|いいえ|
+|AppBrowserTimings|ブラウザーのタイミング|いいえ|
+|AppDependencies|依存関係|いいえ|
+|AppEvents|events|いいえ|
+|AppExceptions|例外|いいえ|
+|AppMetrics|メトリック|いいえ|
+|AppPageViews|ページ ビュー|いいえ|
+|AppPerformanceCounters|パフォーマンス カウンター|いいえ|
+|AppRequests|Requests|いいえ|
+|AppSystemEvents|システム イベント|いいえ|
+|AppTraces|トレース|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AppAvailabilityResults|可用性の結果|
-|AppBrowserTimings|ブラウザーのタイミング|
-|AppDependencies|依存関係|
-|AppEvents|events|
-|AppExceptions|例外|
-|AppMetrics|メトリック|
-|AppPageViews|ページ ビュー|
-|AppPerformanceCounters|パフォーマンス カウンター|
-|AppRequests|Requests|
-|AppSystemEvents|システム イベント|
-|AppTraces|トレース|
+
+## <a name="microsoftiotspacesgraph"></a>Microsoft.IoTSpaces/Graph
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|Audit|いいえ|
+|エグレス|エグレス|いいえ|
+|イングレス|イングレス|いいえ|
+|運用時|運用時|いいえ|
+|Trace|Trace|いいえ|
+|UserDefinedFunction|UserDefinedFunction|いいえ|
+
+
+## <a name="microsoftkeyvaultmanagedhsms"></a>microsoft.keyvault/managedhsms
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AuditEvent|監査イベント|いいえ|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AuditEvent|[監査ログ]|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AuditEvent|[監査ログ]|いいえ|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|コマンド|コマンド|
-|FailedIngestion|失敗した取り込み操作|
-|IngestionBatching|インジェスト バッチ処理|
-|クエリ|クエリ|
-|SucceededIngestion|成功した取り込み操作|
-|TableDetails|テーブル詳細|
-|TableUsageStatistics|テーブルの使用状況に関する統計情報|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|コマンド|コマンド|いいえ|
+|FailedIngestion|失敗した取り込み操作|いいえ|
+|IngestionBatching|インジェスト バッチ処理|いいえ|
+|クエリ|クエリ|いいえ|
+|SucceededIngestion|成功した取り込み操作|いいえ|
+|TableDetails|テーブル詳細|いいえ|
+|TableUsageStatistics|テーブルの使用状況に関する統計情報|いいえ|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|IntegrationAccountTrackingEvents|統合アカウント追跡イベント|いいえ|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|WorkflowRuntime|ワークフロー ランタイムの診断イベント|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|WorkflowRuntime|ワークフロー ランタイムの診断イベント|いいえ|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AmlComputeClusterEvent|AmlComputeClusterEvent|
-|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
-|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|
-|AmlComputeJobEvent|AmlComputeJobEvent|
-|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AmlComputeClusterEvent|AmlComputeClusterEvent|いいえ|
+|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|いいえ|
+|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|いいえ|
+|AmlComputeJobEvent|AmlComputeJobEvent|いいえ|
+|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|いいえ|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|KeyDeliveryRequests|キー配信要求|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|KeyDeliveryRequests|キー配信要求|いいえ|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|
-|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|
-|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ApplicationGatewayAccessLog|アプリケーション ゲートウェイのアクセス ログ|いいえ|
+|ApplicationGatewayFirewallLog|アプリケーション ゲートウェイのファイアウォール ログ|いいえ|
+|ApplicationGatewayPerformanceLog|アプリケーション ゲートウェイのパフォーマンス ログ|いいえ|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AzureFirewallApplicationRule|Azure Firewall アプリケーション ルール|
-|AzureFirewallNetworkRule|Azure Firewall ネットワーク ルール|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AzureFirewallApplicationRule|Azure Firewall アプリケーション ルール|いいえ|
+|AzureFirewallDnsProxy|Azure Firewall DNS プロキシ|いいえ|
+|AzureFirewallNetworkRule|Azure Firewall ネットワーク ルール|いいえ|
 
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|BastionAuditLogs|Bastion 監査ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|BastionAuditLogs|Bastion 監査ログ|いいえ|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|PeeringRouteLog|ピアリングのルート テーブルのログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|PeeringRouteLog|ピアリングのルート テーブルのログ|いいえ|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|FrontdoorAccessLog|Frontdoor アクセス ログ|
-|FrontdoorWebApplicationFirewallLog|Frontdoor Web アプリケーション ファイアウォール ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|FrontdoorAccessLog|Frontdoor アクセス ログ|いいえ|
+|FrontdoorWebApplicationFirewallLog|Frontdoor Web アプリケーション ファイアウォール ログ|いいえ|
 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|
-|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|いいえ|
+|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|いいえ|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|いいえ|
+|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|いいえ|
+|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|NetworkSecurityGroupEvent|ネットワーク セキュリティ グループ イベント|
-|NetworkSecurityGroupFlowEvent|ネットワーク セキュリティ グループの規則フロー イベント|
-|NetworkSecurityGroupRuleCounter|ネットワーク セキュリティ グループの規則数|
+
+## <a name="microsoftnetworkp2svpngateways"></a>Microsoft.Network/p2sVpnGateways
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|GatewayDiagnosticLog|ゲートウェイ診断ログ|いいえ|
+|IKEDiagnosticLog|IKE 診断ログ|いいえ|
+|P2SDiagnosticLog|P2S 診断ログ|いいえ|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|DDoSMitigationFlowLogs|DDoS 軽減策に関する意思決定のフロー ログ|
-|DDoSMitigationReports|DDoS 軽減策のレポート|
-|DDoSProtectionNotifications|DDoS 保護通知|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DDoSMitigationFlowLogs|DDoS 軽減策に関する意思決定のフロー ログ|いいえ|
+|DDoSMitigationReports|DDoS 軽減策のレポート|いいえ|
+|DDoSProtectionNotifications|DDoS 保護通知|いいえ|
 
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ProbeHealthStatusEvents|Traffic Manager プローブの正常性結果イベント|いいえ|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|GatewayDiagnosticLog|ゲートウェイ診断ログ|
-|IKEDiagnosticLog|IKE 診断ログ|
-|P2SDiagnosticLog|P2S 診断ログ|
-|RouteDiagnosticLog|ルート診断ログ|
-|TunnelDiagnosticLog|トンネル診断ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|GatewayDiagnosticLog|ゲートウェイ診断ログ|いいえ|
+|IKEDiagnosticLog|IKE 診断ログ|いいえ|
+|P2SDiagnosticLog|P2S 診断ログ|いいえ|
+|RouteDiagnosticLog|ルート診断ログ|いいえ|
+|TunnelDiagnosticLog|トンネル診断ログ|いいえ|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|VMProtectionAlerts|VM 保護アラート|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|VMProtectionAlerts|VM 保護アラート|
+
+## <a name="microsoftnetworkvpngateways"></a>Microsoft.Network/vpnGateways
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|GatewayDiagnosticLog|ゲートウェイ診断ログ|いいえ|
+|IKEDiagnosticLog|IKE 診断ログ|いいえ|
+|RouteDiagnosticLog|ルート診断ログ|いいえ|
+|TunnelDiagnosticLog|トンネル診断ログ|いいえ|
+
+
+## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft.NotificationHubs/namespaces
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|OperationalLogs|操作ログ|いいえ|
+
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|[監査ログ]|いいえ|
+
+
+## <a name="microsoftpowerbitenants"></a>Microsoft.PowerBI/tenants
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|エンジン|エンジン|いいえ|
+
+
+## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft.PowerBI/tenants/workspaces
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|エンジン|エンジン|いいえ|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|エンジン|エンジン|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|エンジン|エンジン|
+
+## <a name="microsoftprojectbabylonaccounts"></a>Microsoft.ProjectBabylon/accounts
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ScanStatusLogEvent|ScanStatus|いいえ|
+
+
+## <a name="microsoftpurviewaccounts"></a>microsoft.purview/accounts
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|ScanStatusLogEvent|ScanStatus|いいえ|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AddonAzureBackupAlerts|アドオン Azure Backup アラート データ|
-|AddonAzureBackupJobs|アドオン Azure Backup ジョブ データ|
-|AddonAzureBackupPolicy|アドオン Azure Backup ポリシー データ|
-|AddonAzureBackupProtectedInstance|アドオン Azure Backup 保護されたインスタンス データ|
-|AddonAzureBackupStorage|アドオン Azure Backup ストレージ データ|
-|AzureBackupReport|Azure Backup レポート データ|
-|AzureSiteRecoveryEvents|Azure Site Recovery イベント|
-|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|
-|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery で保護されたディスクのデータ変更頻度|
-|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery 回復ポイント|
-|AzureSiteRecoveryReplicatedItems|Azure Site Recovery レプリケートされた項目|
-|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery のレプリケーション データ アップロード速度|
-|AzureSiteRecoveryReplicationStats|Azure Site Recovery レプリケーション状態|
-|CoreAzureBackup|コア Azure Backup データ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AddonAzureBackupAlerts|アドオン Azure Backup アラート データ|いいえ|
+|AddonAzureBackupJobs|アドオン Azure Backup ジョブ データ|いいえ|
+|AddonAzureBackupPolicy|アドオン Azure Backup ポリシー データ|いいえ|
+|AddonAzureBackupProtectedInstance|アドオン Azure Backup 保護されたインスタンス データ|いいえ|
+|AddonAzureBackupStorage|アドオン Azure Backup ストレージ データ|いいえ|
+|AzureBackupReport|Azure Backup レポート データ|いいえ|
+|AzureSiteRecoveryEvents|Azure Site Recovery イベント|いいえ|
+|AzureSiteRecoveryJobs|Azure Site Recovery ジョブ|いいえ|
+|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery で保護されたディスクのデータ変更頻度|いいえ|
+|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery 回復ポイント|いいえ|
+|AzureSiteRecoveryReplicatedItems|Azure Site Recovery レプリケートされた項目|いいえ|
+|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery のレプリケーション データ アップロード速度|いいえ|
+|AzureSiteRecoveryReplicationStats|Azure Site Recovery レプリケーション状態|いいえ|
+|CoreAzureBackup|コア Azure Backup データ|いいえ|
 
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|HybridConnectionsEvent|HybridConnections イベント|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|HybridConnectionsEvent|HybridConnections イベント|いいえ|
+|HybridConnectionsLogs|HybridConnectionsLogs|いいえ|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|OperationLogs|[操作ログ]|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|OperationLogs|[操作ログ]|いいえ|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|OperationalLogs|操作ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|OperationalLogs|操作ログ|いいえ|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AllLogs|Azure SignalR Service ログ。|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AllLogs|Azure SignalR Service ログ。|いいえ|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|DevOpsOperationsAudit|Devops 操作の監査ログ|
-|ResourceUsageStats|リソース使用統計|
-|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DevOpsOperationsAudit|Devops 操作の監査ログ|いいえ|
+|ResourceUsageStats|リソース使用統計|いいえ|
+|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|いいえ|
 
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.Sql/managedInstances/databases
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|エラー|エラー|
-|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
-|QueryStoreWaitStatistics|クエリ ストアの待機統計|
-|SQLInsights|SQL Insights|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|エラー|エラー|いいえ|
+|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|いいえ|
+|QueryStoreWaitStatistics|クエリ ストアの待機統計|いいえ|
+|SQLInsights|SQL Insights|いいえ|
 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AutomaticTuning|自動チューニング|
-|Blocks|Blocks|
-|DatabaseWaitStatistics|データベースの待機統計|
-|デッドロック|デッドロック|
-|DevOpsOperationsAudit|Devops 操作の監査ログ|
-|DmsWorkers|DMS worker|
-|エラー|エラー|
-|ExecRequests|実行要求|
-|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|
-|QueryStoreWaitStatistics|クエリ ストアの待機統計|
-|RequestSteps|要求ステップ|
-|SQLInsights|SQL Insights|
-|SqlRequests|SQL 要求|
-|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
-|Timeouts|Timeouts|
-|待機|待機|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AutomaticTuning|自動チューニング|いいえ|
+|Blocks|Blocks|いいえ|
+|DatabaseWaitStatistics|データベースの待機統計|いいえ|
+|デッドロック|デッドロック|いいえ|
+|DevOpsOperationsAudit|Devops 操作の監査ログ|いいえ|
+|DmsWorkers|DMS worker|いいえ|
+|エラー|エラー|いいえ|
+|ExecRequests|実行要求|いいえ|
+|QueryStoreRuntimeStatistics|クエリ ストアのランタイム統計|いいえ|
+|QueryStoreWaitStatistics|クエリ ストアの待機統計|いいえ|
+|RequestSteps|要求ステップ|いいえ|
+|SQLInsights|SQL Insights|いいえ|
+|SqlRequests|SQL 要求|いいえ|
+|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|いいえ|
+|Timeouts|Timeouts|いいえ|
+|待機|待機|いいえ|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-エクスポートのコスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|StorageDelete|StorageDelete|Yes|
+|StorageRead|StorageRead|Yes|
+|StorageWrite|StorageWrite|Yes|
 
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-エクスポートのコスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|StorageDelete|StorageDelete|Yes|
+|StorageRead|StorageRead|Yes|
+|StorageWrite|StorageWrite|Yes|
 
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-エクスポートのコスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
- 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|StorageDelete|StorageDelete|Yes|
+|StorageRead|StorageRead|Yes|
+|StorageWrite|StorageWrite|Yes|
 
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-エクスポートのコスト:有料。詳細は [Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)ページの「プラットフォーム ログ」セクションにあります。 
- 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|StorageDelete|StorageDelete|Yes|
+|StorageRead|StorageRead|Yes|
+|StorageWrite|StorageWrite|Yes|
 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|Authoring|Authoring|
-|実行|実行|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Authoring|Authoring|いいえ|
+|実行|実行|いいえ|
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse ワークスペース
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|BuiltinSqlReqsEnded|組み込みの SQL プール要求終了|
-|GatewayApiRequests|Synapse Gateway API 要求|
-|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
-|SynapseRbacOperations|Synapse RBAC 操作|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|BuiltinSqlReqsEnded|組み込みの SQL プール要求終了|いいえ|
+|GatewayApiRequests|Synapse Gateway API 要求|いいえ|
+|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|いいえ|
+|SynapseRbacOperations|Synapse RBAC 操作|いいえ|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|BigDataPoolAppsEnded|ビッグ データ プール アプリケーション終了|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|BigDataPoolAppsEnded|ビッグ データ プール アプリケーション終了|いいえ|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|DmsWorkers|DMS worker|いいえ|
+|ExecRequests|実行要求|いいえ|
+|RequestSteps|要求ステップ|いいえ|
+|SqlRequests|SQL 要求|いいえ|
+|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|いいえ|
+|待機|待機|いいえ|
 
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|DmsWorkers|DMS worker|
-|ExecRequests|実行要求|
-|RequestSteps|要求ステップ|
-|SqlRequests|SQL 要求|
-|SQLSecurityAuditEvents|SQL セキュリティ監査イベント|
-|待機|待機|
+
+## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|イングレス|イングレス|いいえ|
+|管理|管理|いいえ|
+
+
+## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|イングレス|イングレス|いいえ|
+|管理|管理|いいえ|
 
 
 ## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
 
-エクスポートのコスト:Free 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AppServiceEnvironmentPlatformLogs|Azure App Service Environment のプラットフォーム ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AppServiceEnvironmentPlatformLogs|Azure App Service Environment のプラットフォーム ログ|いいえ|
 
 
 ## <a name="microsoftwebsites"></a>microsoft.web/sites
 
-エクスポートのコスト:Free 
-
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AppServiceAppLogs|App Service アプリケーション ログ|
-|AppServiceAuditLogs|監査ログへのアクセス|
-|AppServiceConsoleLogs|App Service コンソール ログ|
-|AppServiceFileAuditLogs|サイト コンテンツの変更に関する監査ログ|
-|AppServiceHTTPLogs|HTTP ログ|
-|FunctionAppLogs|関数アプリケーション ログ|
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AppServiceAntivirusScanAuditLogs|ウイルス対策監査ログのレポート|いいえ|
+|AppServiceAppLogs|App Service アプリケーション ログ|いいえ|
+|AppServiceAuditLogs|監査ログへのアクセス|いいえ|
+|AppServiceConsoleLogs|App Service コンソール ログ|いいえ|
+|AppServiceFileAuditLogs|サイト コンテンツの変更に関する監査ログ|いいえ|
+|AppServiceHTTPLogs|HTTP ログ|いいえ|
+|AppServiceIPSecAuditLogs|IPSecurity 監査ログ|いいえ|
+|AppServicePlatformLogs|App Service プラットフォーム ログ|いいえ|
+|FunctionAppLogs|関数アプリケーション ログ|いいえ|
 
 
 ## <a name="microsoftwebsitesslots"></a>microsoft.web/sites/slots
 
-エクスポートのコスト:Free 
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AppServiceAntivirusScanAuditLogs|ウイルス対策監査ログのレポート|いいえ|
+|AppServiceAppLogs|App Service アプリケーション ログ|いいえ|
+|AppServiceAuditLogs|監査ログへのアクセス|いいえ|
+|AppServiceConsoleLogs|App Service コンソール ログ|いいえ|
+|AppServiceFileAuditLogs|サイト コンテンツの変更に関する監査ログ|いいえ|
+|AppServiceHTTPLogs|HTTP ログ|いいえ|
+|AppServiceIPSecAuditLogs|IPSecurity 監査ログ|いいえ|
+|AppServicePlatformLogs|App Service プラットフォーム ログ|いいえ|
+|FunctionAppLogs|関数アプリケーション ログ|いいえ|
 
-
-|カテゴリ |カテゴリの表示名|
-|---|---|
-|AppServiceAppLogs|App Service アプリケーション ログ|
-|AppServiceAuditLogs|監査ログへのアクセス|
-|AppServiceConsoleLogs|App Service コンソール ログ|
-|AppServiceFileAuditLogs|サイト コンテンツの変更に関する監査ログ|
-|AppServiceHTTPLogs|HTTP ログ|
-|FunctionAppLogs|関数アプリケーション ログ|
 
 
 ## <a name="next-steps"></a>次の手順

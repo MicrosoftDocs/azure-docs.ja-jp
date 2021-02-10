@@ -1,5 +1,5 @@
 ---
-title: Widevine ライセンス テンプレートを使用した Azure Media Services v3 の概要
+title: Widevine ライセンス テンプレートを使用した Media Services v3 の概要
 description: Widevine ライセンス テンプレートを使用した Azure Media Services と、それを使用して Widevine ライセンスを構成する方法について説明します。
 author: IngridAtMicrosoft
 manager: femila
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: abedbd60a82f280bcd983c05a43685524a3a24e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39cccd270a4947820640940ae43fa0feb3e52028
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91598142"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954481"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Widevine ライセンス テンプレートを使用した Media Services v3 の概要
 

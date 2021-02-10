@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2d079f2fa3e67f1ec915a02de3e195ccac538209
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448702"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063318"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes ストレージ管理
 
@@ -79,11 +79,11 @@ Kubernetes クラスター管理者は、ストレージを静的にプロビジ
 
 Azure Stack Edge Pro デバイスでは、デバイスのストレージ機能を使用して、静的にプロビジョニングされた `PersistentVolumes` が作成されます。 共有をプロビジョニングし、 **[Edge コンピューティングで共有を使用する]** オプションを有効にすると、このアクションによって Kubernetes クラスター内に PV リソースが自動的に作成されます。
 
-![静的プロビジョニングのための Azure portal でのローカル共有の作成](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
+![静的プロビジョニングのための Azure portal でのローカル共有の作成](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
 クラウドの階層化を使用するには、[Edge コンピューティングで共有を使用する] オプションを有効にした状態で、Edge クラウド共有を作成します。 この共有に対しても、PV が自動的に作成されます。 Edge 共有に書き込むアプリケーション データはすべて、クラウドに階層化されます。 
 
-![静的プロビジョニングのための Azure portal でのクラウド共有の作成](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
+![静的プロビジョニングのための Azure portal でのクラウド共有の作成](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
 SMB 共有と NFS 共有の両方を作成して、Azure Stack Edge Pro デバイスで PV を静的にプロビジョニングすることができます。 PV がプロビジョニングされたら、このストレージを要求する PVC を送信します。 ストレージを要求し、プロビジョニングした共有を使用する、PVC の展開 `yaml` の例を次に示します。
 

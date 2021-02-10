@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 1ab366cddbabf7e6d574189892e779ab49f6fad8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5882cc949d88e8c2a4102362cf5d2a3613e1d714
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403383"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475490"
 ---
 # <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
@@ -100,7 +100,7 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 最大実行時間は、レベルごとに異なります。Free レベルでは数分であり、請求対象のレベルでは 24 時間のインデックス作成です。 オンデマンド処理が 24 時間以内に完了しない場合は、スケジュールに切り替えて、インデクサーが処理を中断した箇所から開始するようにします。 
 
-スケジュールされたインデクサーは、スケジュールされた時間に、前回正常に処理されたドキュメントからインデックス作成を再開します。 定期的なスケジュールを使用することにより、インデクサーは数時間または数日にわたって、未処理の画像がすべて処理されるまで、画像のバックログに対する作業を続けることができます。 スケジュールの構文の詳細については、「[手順 3: インデクサーの作成](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer)」または [Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関するページを参照してください。
+スケジュールされたインデクサーは、スケジュールされた時間に、前回正常に処理されたドキュメントからインデックス作成を再開します。 定期的なスケジュールを使用することにより、インデクサーは数時間または数日にわたって、未処理の画像がすべて処理されるまで、画像のバックログに対する作業を続けることができます。 スケジュールの構文の詳細については、[インデクサーのスケジュール設定](search-howto-schedule-indexers.md)に関するページを参照してください。
 
 > [!NOTE]
 > インデクサーが特定のスケジュールに設定されているが実行のたびに同じドキュメントに対して繰り返し失敗する場合、進捗が再び正常化するまでの間、インデクサーは (最大で 24 時間に 1 回に) 間隔を開けて実行頻度を下げます。  インデクサーが特定の箇所で停止する原因になっていた問題をすべて修正したと思われる場合、インデクサーをオンデマンドで実行できます。それによって進捗が正常になったら、インデクサーは設定されていたスケジュール間隔に復帰します。
@@ -109,12 +109,12 @@ https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage
 
 ## <a name="tip-8-increase-indexing-throughput"></a>ヒント 8: インデックス作成のスループットを向上させる
 
-[並列インデックス作成](search-howto-large-index.md)の場合は、データを複数のコンテナーまたは同じコンテナー内の複数の仮想フォルダーに配置します。 次に、複数のデータソースとインデクサーのペアを作成します。 すべてのインデクサーは、同じスキルセットを使用して同じターゲット検索インデックスに書き込むことができるため、検索アプリはこのパーティション分割を意識する必要はありません。
+[並列インデックス作成](search-howto-large-index.md)の場合は、データを複数のコンテナーまたは同じコンテナー内の複数の仮想フォルダーに配置します。 次に、複数のデータ ソースとインデクサーのペアを作成します。 すべてのインデクサーは、同じスキルセットを使用して同じターゲット検索インデックスに書き込むことができるため、検索アプリはこのパーティション分割を意識する必要はありません。
 
 ## <a name="see-also"></a>関連項目
 
 + [クイック スタート: ポータルで AI エンリッチメント パイプラインを作成する](cognitive-search-quickstart-blob.md)
 + [チュートリアル:AI エンリッチメント REST API について学習する](cognitive-search-tutorial-blob.md)
-+ [データ ソースの資格情報の指定](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
++ [BLOB インデクサーを構成する方法](search-howto-indexing-azure-blob-storage.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [エンリッチされたフィールドをインデックスにマップする方法](cognitive-search-output-field-mapping.md)

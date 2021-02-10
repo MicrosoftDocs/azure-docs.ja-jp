@@ -1,19 +1,16 @@
 ---
 title: Apache Phoenix を使用して Azure HDInsight で Apache Base クエリを実行する
 description: Apache Zeppelin を使用して Phoenix で Apache Base クエリを実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: e85226e7a2544cda01f40a1c1be6be32f11d9dfc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542796"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944768"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Apache Zeppelin を使用して Azure HDInsight で Apache HBase に対して Apache Phoenix クエリを実行する
 
@@ -46,7 +43,7 @@ HDInsight 内の Apache HBase クラスター 「[Apache HBase の使用](./apac
 
     ![Zeppelin ノートブック のステータス](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Notebook のステータス")
 
-1. HBase テーブルを作成します。 次のコマンドを入力して、 **Shift + Enter** キーを押します。
+1. HBase テーブルを作成します。 次のコマンドを入力して、**Shift + Enter** キーを押します。
 
     ```sql
     %jdbc(phoenix)

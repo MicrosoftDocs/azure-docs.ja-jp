@@ -116,6 +116,8 @@
               href: use-dynamic-groups.md
             - name: B2B ユーザーについて
               href: user-properties.md
+            - name: 利用状態をリセットする
+              href: reset-redemption-status.md
             - name: Azure AD 統合アプリ向けの B2B
               href: configure-saas-apps.md
         - name: ハイブリッド組織でのゲスト アクセスの管理

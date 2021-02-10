@@ -1,10 +1,10 @@
 ---
-title: 緊急アクセス用管理者アカウントを管理する - Azure AD | Microsoft Docs
+title: 緊急アクセス用管理者アカウントを管理する - Azure AD
 description: この記事では、緊急アクセス用アカウントを使用して、Azure Active Directory (Azure AD) 組織から誤ってロックアウトされないようにする方法について説明します。
 services: active-directory
 author: markwahl-msft
 manager: daveba
-ms.author: curtand
+ms.author: rolyon
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834440"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740824"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する
 
@@ -60,7 +60,7 @@ ms.locfileid: "94834440"
 
 ## <a name="federation-guidance"></a>フェデレーション ガイド
 
-AD Domain Services および ADFS または同様の ID プロバイダーを使用している組織が Azure AD にフェデレーションするために、その ID プロバイダーが MFA 要求を提供できる緊急アクセス用アカウントを構成するオプションが追加されています。  たとえば、緊急アクセス用アカウントは、スマートカードなどに格納された証明書とキーのペアでバックアップできます。  そのユーザーが AD に対して認証されると、ADFS は Azure AD に要求を提供し、ユーザーが MFA 要件を満たしていることを示すことができます。  このアプローチを使ったときでも、フェデレーションを確立できない場合に備えて、組織には引き続きクラウドベースの緊急アクセス用アカウントが必要になります。 
+AD Domain Services と ADFS または類似の ID プロバイダーを使用して Azure AD にフェデレーションする組織もあります。 [これらは、管理特権を持つオンプレミス アカウントであってはなりません](../fundamentals/protect-m365-from-on-premises-attacks.md)。 Azure AD 外部の管理特権を持つアカウントに対する認証をマスタリングまたはソーシングすると、これらのシステムが停止または侵害された場合に不要なリスクが発生します。
 
 ## <a name="store-account-credentials-safely"></a>アカウントの資格情報を安全に保管する
 

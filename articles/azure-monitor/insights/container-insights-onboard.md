@@ -3,12 +3,12 @@ title: Azure Monitor for containers を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンス、および明らかになっているパフォーマンスに関する問題を把握できるように、Azure Monitor for containers を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 69022643e3346444eee95f4487eeed292c4ef139
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91994062"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943823"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする
 
@@ -21,7 +21,7 @@ ms.locfileid: "91994062"
 
 また、以下でホストされている自己管理型 Kubernetes クラスターにデプロイされているワークロードのパフォーマンスを監視することもできます。
 - Azure ([AKS エンジン](https://github.com/Azure/aks-engine)を使用)
-- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) またはオンプレミス (AKS エンジンを使用)。
+- [Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) またはオンプレミス (AKS エンジンを使用)。
 
 次のいずれかのサポートされている方法を使用して、Kubernetes の新しいデプロイまたは 1 つ以上の既存のデプロイに対して、Azure Monitor for containers を有効にできます。
 
@@ -49,7 +49,7 @@ ms.locfileid: "91994062"
    
    既定のワークスペースに使用する、サポートされているマッピング ペアの一覧については、[Azure Monitor for containers のリージョンのマッピング](container-insights-region-mapping.md)に関するページを参照してください。
 
-- コンテナーの監視を有効にする *Log Analytics 共同作成者ロール*のメンバーです。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../platform/manage-access.md)」を参照してください。
+- コンテナーの監視を有効にする *Log Analytics 共同作成者ロール* のメンバーです。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../platform/manage-access.md)」を参照してください。
 
 - AKS クラスター リソースに対する ["*所有者*" グループ](../../role-based-access-control/built-in-roles.md#owner)のメンバーです。
 
@@ -63,7 +63,7 @@ ms.locfileid: "91994062"
 
 Azure Monitor for containers では、以下の構成が公式にサポートされています。
 
-- 環境:Azure Red Hat OpenShift、オンプレミスの Kubernetes、Azure および Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください。
+- 環境:Azure Red Hat OpenShift、オンプレミスの Kubernetes、Azure および Azure Stack 上の AKS エンジン。 詳細については、[Azure Stack 上の AKS エンジン](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview)に関するページを参照してください。
 - Kubernetes のバージョンとサポート ポリシーは、[Azure Kubernetes Service (AKS) でサポートされている](../../aks/supported-kubernetes-versions.md)ものと同じです。 
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
@@ -117,7 +117,7 @@ Azure Monitor for containers を有効にするには、次の表で説明され
 | 新しい Kubernetes クラスター | [Azure CLI を使用して AKS クラスターを作成する](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLI を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Terraform を使用して AKS クラスターを作成する](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Azure Resource Manager テンプレートを使用して OpenShift クラスターを作成する](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 事前構成済みの Azure Resource Manager テンプレートを使用して作成した新しい OpenShift クラスターの監視を有効にできます。 |
-| | [Azure CLI を使用して OpenShift クラスターを作成する](/cli/azure/openshift?view=azure-cli-latest#az-openshift-create) | Azure CLI を使用して新しい OpenShift クラスターをデプロイするときに、監視を有効にすることができます。 |
+| | [Azure CLI を使用して OpenShift クラスターを作成する](/cli/azure/openshift#az-openshift-create) | Azure CLI を使用して新しい OpenShift クラスターをデプロイするときに、監視を有効にすることができます。 |
 | 既存の Kubernetes クラスター | [Azure CLI を使用して AKS クラスターの監視を有効にする](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLI を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
 | |[Terraform を使用して AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-using-terraform) | オープンソースのツールである Terraform を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
 | | [Azure Monitor から AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Monitor のマルチクラスター ページから、既にデプロイされている 1 つまたは複数の AKS クラスターの監視を有効にできます。 |

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443944"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756454"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 
@@ -27,7 +27,7 @@ ms.locfileid: "94443944"
 
 ## <a name="accepted-token-version"></a>承認済みトークンのバージョン
 
-Microsoft ID プラットフォームのエンドポイントでは、v1.0 トークンと v2.0 トークンを発行できます。 これらのトークンの詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
+Microsoft ID プラットフォームでは、v1.0 トークンと v2.0 トークンを発行できます。 これらのトークンの詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
 
 API で承認できるトークンのバージョンは、Azure portal で Web API アプリケーションの登録を作成するときの **[サポートされているアカウントの種類]** の選択によって異なります。
 
@@ -44,7 +44,7 @@ API で承認できるトークンのバージョンは、Azure portal で Web A
 1. トークンのバージョンを変更した場合は、 **[保存]** を選択します。
 
 > [!NOTE]
-> Web API で受け入れられるトークンのバージョンを指定します。 クライアントで、Microsoft ID プラットフォーム (v2.0) エンドポイントに Web API 用のトークンを要求すると、クライアントは Web API によって受け入れられるトークンのバージョンを示すトークンを受け取ります。
+> Web API で受け入れられるトークンのバージョンを指定します。 クライアントで、Microsoft ID プラットフォームに Web API 用のトークンを要求すると、クライアントは Web API が受け入れるトークンのバージョンを示すトークンを受け取ります。
 
 ## <a name="no-redirect-uri"></a>リダイレクト URI なし
 

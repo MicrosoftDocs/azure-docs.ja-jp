@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 author: linda33wj
 manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f22d4695a6324b0f0cde466e252b1a3a504f433
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509021"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632751"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する 
 
@@ -26,7 +25,7 @@ ms.locfileid: "97509021"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このクイックスタートでは、Azure Data Factory UI を使用してデータ ファクトリを作成および監視する方法について説明します。 このデータ ファクトリに作成したパイプラインは、データを Azure Blob Storage 内のあるフォルダーから別のフォルダーに "*コピー*" します。 Azure Data Factory を使用してデータを "*変換*" するには、[マッピング データ フロー](concepts-data-flow-overview.md)に関するページと [ラングリング データ フロー (プレビュー)](wrangling-data-flow-overview.md) に関するページを参照してください。
+このクイックスタートでは、Azure Data Factory UI を使用してデータ ファクトリを作成および監視する方法について説明します。 このデータ ファクトリに作成したパイプラインは、データを Azure Blob Storage 内のあるフォルダーから別のフォルダーに "*コピー*" します。 Azure Data Factory を使用してデータを "*変換*" するには、[マッピング データ フロー](concepts-data-flow-overview.md)に関するページを参照してください。
 
 > [!NOTE]
 > Azure Data Factory を初めて使用する場合は、このクイック スタートを実行する前に、「[Azure Data Factory の概要](introduction.md)」を参照してください。 
@@ -40,8 +39,8 @@ ms.locfileid: "97509021"
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
-1. Azure portal メニューから **[リソースの作成]** を選択します。
+1. [Azure Portal](https://portal.azure.com)にアクセスします。 
+1. Azure Portal メニューから **[リソースの作成]** を選択します。
 1. **[統合]** を選択し、 **[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,7 +79,7 @@ ms.locfileid: "97509021"
 ## <a name="create-a-linked-service"></a>リンクされたサービスを作成する
 この手順では、Azure Storage アカウントをデータ ファクトリにリンクするためのリンクされたサービスを作成します。 リンクされたサービスは、Data Factory サービスが実行時に接続するために使用する接続情報を持っています。
 
-1. Azure Data Factory UI ページで、左側のペインにある [ **[管理]** ](./author-management-hub.md) タブを開きます。
+1. Azure Data Factory UI ページで、左側のペインにある [ **[管理]**](./author-management-hub.md) タブを開きます。
 
 1. [リンクされたサービス] ページの **[+ 新規]** を選択して、リンクされたサービスを新規作成します。
 

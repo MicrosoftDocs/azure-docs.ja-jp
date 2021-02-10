@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/13/2020
 tags: connectors
-ms.openlocfilehash: 9caf69a7f78c7872f0a5f8a2ed07bdc749a29023
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 790879894c3b268fcd55aafc96507319b29fe1e5
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682997"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055078"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、Office 365 Outlook のメール、連絡先、カレンダーを管理する
 
@@ -92,13 +92,15 @@ ms.locfileid: "94682997"
 
 ## <a name="connect-using-other-accounts"></a>他のアカウントを使用して接続する
 
-Azure に現在サインインしているものとは別のアカウントを使用して Outlook に接続しようとすると、[シングル サインオン (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) のエラーが発生する可能性があります。 この問題は、あるアカウントを使用して Azure portal にサインインしたが、別のアカウントを使用して接続を作成した場合に発生します。 ロジック アプリ デザイナーでは、Azure にサインインしているアカウントを使用することが想定されています。 この問題を解決するには、次のオプションがあります。
+Azure に現在サインインしているものとは別のアカウントを使用して Outlook に接続しようとすると、[シングル サインオン (SSO)](../active-directory/manage-apps/what-is-single-sign-on.md) のエラーが発生する可能性があります。 この問題は、あるアカウントを使用して Azure portal にサインインしたが、別のアカウントを使用して接続を作成した場合に発生します。 デザイナーでは、Azure portal にサインインしているアカウントを使用することを前提としています。 この問題を解決するには、次のオプションがあります。
 
-* ロジック アプリのリソース グループの **共同作成者** として他のアカウントを設定します。
+* ロジック アプリのリソース グループで、**共同作成者** ロールを使用してもう一方のアカウントを設定します。
 
-  1. ロジック アプリのリソース グループ メニューで、 **[アクセス制御 (IAM)]** を選択します。 **共同作成者** ロールを使用して、他のアカウントを設定します。 詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
+  1. ロジック アプリのリソース グループ メニューで、 **[アクセス制御 (IAM)]** を選択します。 **共同作成者** ロールを使用して、他のアカウントを設定します。 
+  
+     詳細については、[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)方法に関するページを参照してください。
 
-  1. 職場または学校アカウントを使用して Azure portal にサインインしている場合は、サインアウトしてから、他のアカウントを使用してサインインし直します。 これで、他のアカウントを使用して Outlook への接続を作成できるようになります。
+  1. このロールを設定した後、共同作成者のアクセス許可を持つアカウントを使用して Azure portal にサインインします。 これで、このアカウントを使用して Outlook への接続を作成できるようになりました。
 
 * 職場または学校アカウントに "メールボックス所有者として送信する" アクセス許可が付与されるように、他のアカウントを設定します。
 

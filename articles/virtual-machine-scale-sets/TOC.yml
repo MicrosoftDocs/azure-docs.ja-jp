@@ -63,6 +63,8 @@
       items:
         - name: 仮想マシン スケール セットを作成する
           href: ./scripts/cli-sample-create-simple-scale-set.md
+        - name: 仮想マシン スケール セットの作成と管理
+          href: ./scripts/cli-sample-manage-scale-set.md
         - name: カスタム VM イメージからスケール セットを作成する
           href: ./scripts/cli-sample-create-scale-set-from-custom-image.md
         - name: スケール セットにアプリケーションをインストールする

@@ -16,7 +16,7 @@ ms.locfileid: "83848230"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub の IP アドレス
 
-IoT Hub パブリック エンドポイントの IP アドレス プレフィックスは、_AzureIoTHub_ [サービス タグ](../virtual-network/service-tags-overview.md)で定期的に発行されます。
+IoT Hub  パブリック エンドポイントの IP アドレス プレフィックスは、_AzureIoTHub_ [サービス タグ](../virtual-network/service-tags-overview.md)で定期的に発行されます。
 
 > [!NOTE]
 > オンプレミス ネットワーク内にデプロイされているデバイスの場合、Azure IoT Hub は、プライベート エンドポイントとの VNET 接続の統合をサポートします。 詳細については、[IoT Hub による VNet のサポート](./virtual-network-support.md)に関する記事を参照してください。

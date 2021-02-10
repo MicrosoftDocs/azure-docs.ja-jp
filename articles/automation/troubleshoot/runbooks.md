@@ -2,16 +2,16 @@
 title: Azure Automation Runbook に関する問題のトラブルシューティング
 description: この記事では、Azure Automation Runbook に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
+ms.subservice: ''
 ms.date: 11/03/2020
-ms.topic: conceptual
-ms.service: automation
+ms.topic: troubleshooting
 ms.custom: has-adal-ref
-ms.openlocfilehash: c7ab093f601ebcd33d184b9a9008f9de447534a1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e154284df8eaad798c5cfaf4de69c40601863cf4
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368085"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053671"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 
@@ -134,7 +134,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>原因
 
-このエラーは、実行アカウントを使用していないとき、または実行アカウントの有効期限が切れたときに発生することがあります。 詳細については、「[Azure Automation の実行アカウントを管理する](../manage-runas-account.md)」を参照してください。
+このエラーは、実行アカウントを使用していないとき、または実行アカウントの有効期限が切れたときに発生することがあります。 詳細については、[Azure Automation - 実行アカウントの概要](../automation-security-overview.md#run-as-accounts)に関する記事を参照してください。
 
 このエラーには、次の 2 つの主要な原因があります。
 
@@ -147,11 +147,11 @@ Run Login-AzureRMAccount to login.
 
 別のサブスクリプションのリソースにアクセスしようとしている場合は、次の手順に従ってアクセス許可を構成します。
 
-1. Automation 実行アカウントに移動し、 **アプリケーション ID** と **サムプリント** をコピーします。
+1. Automation 実行アカウントに移動し、**アプリケーション ID** と **サムプリント** をコピーします。
 
     ![アプリケーション ID とサムプリントをコピーする](../media/troubleshoot-runbooks/collect-app-id.png)
 
-1. Automation アカウントがホスト " *されていない* " サブスクリプションの **[アクセス制御]** に移動し、新しいロールの割り当てを追加します。
+1. Automation アカウントがホスト "*されていない*" サブスクリプションの **[アクセス制御]** に移動し、新しいロールの割り当てを追加します。
 
     ![アクセス制御](../media/troubleshoot-runbooks/access-control.png)
 

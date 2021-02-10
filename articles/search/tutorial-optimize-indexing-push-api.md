@@ -2,19 +2,19 @@
 title: 'C# チュートリアル: プッシュ API を使用してインデックス作成を最適化する'
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のプッシュ API を使用してデータのインデックスを効率的に作成する方法について説明します。 このチュートリアルとサンプル コードは C# で記述されています。
-manager: liamca
+manager: luisca
 author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/12/2020
+ms.date: 1/29/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d22ff5c863617a3feb2a08d4b1889d0a7c10cd3a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f97a99bf2d055805ee665ab51aff8cff12dc5a69
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693401"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094194"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>チュートリアル:プッシュ API を使用してインデックス作成を最適化する
 

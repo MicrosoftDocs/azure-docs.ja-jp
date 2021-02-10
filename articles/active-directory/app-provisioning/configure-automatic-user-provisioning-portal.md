@@ -4,7 +4,7 @@ description: Azure Active Directory を使用してエンタープライズ ア�
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee18043f0485ae6290b1b323648ba9b2b83258b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88234841"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255918"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 
@@ -85,4 +85,4 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 **[プロビジョニング状態]** を **[オフ]** に変更すると、プロビジョニング サービスが一時停止します。 この状態では、アプリのユーザーやグループ オブジェクトの作成、更新、削除が行われることはありません。 状態を **[オン]** に戻すと、サービスは中断したところから再開します。
 
-**現在の状態を消去して、同期を再開する**ことで、初期周期がトリガーされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。
+**現在の状態を消去して、同期を再開する** ことで、初期周期がトリガーされます。 このサービスでは、ソース システム内のすべてのユーザーを再度評価し、プロビジョニングの対象になっているかどうかを判断します。 これは、アプリケーションが現在検査中である場合や、属性マッピングを変更する必要がある場合に便利です。 初期サイクルは、評価が必要なオブジェクトの数が多いため、通常の増分サイクルよりも完了までに時間がかかることに注意してください。 初期サイクルと増分サイクルのパフォーマンスの詳細については、[こちら](application-provisioning-when-will-provisioning-finish-specific-user.md)を参照してください。

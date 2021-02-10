@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight でのエンタープライズ セキュリティの一般的なガイドライン
 description: Enterprise セキュリティ パッケージのデプロイと管理を容易にするためのいくつかのベスト プラクティス。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92ad8362f75cdf0613d4ee95f39c23aa6d4819bb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87530267"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933575"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Azure HDInsight でのエンタープライズ セキュリティの一般情報とガイドライン
 
@@ -39,7 +36,7 @@ ms.locfileid: "87530267"
 
 ### <a name="policies"></a>ポリシー
 
-* Ranger では、既定で、ポリシーとして**拒否**を使用します。
+* Ranger では、既定で、ポリシーとして **拒否** を使用します。
 
 * 承認が有効になっているサービスを介してデータ アクセスが行われる場合:
   * Ranger 承認プラグインが呼び出され、要求のコンテキストが与えられます。
@@ -62,7 +59,7 @@ ms.locfileid: "87530267"
 階層型名前空間が有効になっていない場合:
 
 * 継承されたアクセス許可はありません。
-* ファイル システムのアクセス許可のうち、唯一機能するのは**ストレージ データ XXXX** Azure ロールで、Azure portal でユーザーに直接割り当てられます。
+* ファイル システムのアクセス許可のうち、唯一機能するのは **ストレージ データ XXXX** Azure ロールで、Azure portal でユーザーに直接割り当てられます。
 
 ### <a name="default-hdfs-permissions"></a>既定の HDFS アクセス許可
 

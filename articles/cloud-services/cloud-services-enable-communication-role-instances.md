@@ -1,28 +1,31 @@
 ---
-title: Cloud Services でのロールの通信 | Microsoft Docs
+title: Cloud Services (クラシック) でのロールの通信 | Microsoft Docs
 description: Cloud Services のロール インスタンスには、外部または他のロール インスタンスとの通信用のエンドポイント (http、https、tcp、udp) を定義できます。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/14/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386342"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743034"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Azure におけるロール インスタンスの通信の有効化
-クラウド サービスのロールは、内部接続および外部接続で通信します。 外部接続は**入力エンドポイント**と呼ばれ、内部接続は**内部エンドポイント**と呼ばれます。 このトピックでは、 [サービス定義](cloud-services-model-and-package.md#csdef) を変更してエンドポイントを作成する方法を説明します。
+# <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>Azure Cloud Services (クラシック) でロール インスタンスの通信を有効にする
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
+クラウド サービスのロールは、内部接続および外部接続で通信します。 外部接続は **入力エンドポイント** と呼ばれ、内部接続は **内部エンドポイント** と呼ばれます。 このトピックでは、 [サービス定義](cloud-services-model-and-package.md#csdef) を変更してエンドポイントを作成する方法を説明します。
 
 ## <a name="input-endpoint"></a>入力エンドポイント
 入力エンドポイントは、ポートを外部に公開するときに使用します。 プロトコルの種類とエンドポイントのポートを指定してから、そのエンドポイントの内部ポートと外部ポートの両方に適用します。 必要に応じて、 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#inputendpoint) 属性を使用して、エンドポイントに異なる内部ポートを指定することができます。
 
-入力エンドポイントには、プロトコル **http、https、tcp、udp**を使用できます。
+入力エンドポイントには、プロトコル **http、https、tcp、udp** を使用できます。
 
 入力エンドポイントを作成するには、Web ロールまたは worker ロールの **Endpoints** 要素に **InputEndpoint** 子要素を追加します。
 
@@ -52,7 +55,7 @@ ms.locfileid: "75386342"
 ## <a name="internal-endpoint"></a>内部エンドポイント
 内部エンドポイントは、インスタンス間の通信で使用できます。 ポートは省略可能なので、省略した場合、動的なポートがエンドポイントに割り当てられます。 ポートの範囲も使用できます。 使用できる内部エンドポイントは、1 ロールあたり 5 つに制限されています。
 
-内部エンドポイントには、プロトコル **http、tcp、udp、any**を使用できます。
+内部エンドポイントには、プロトコル **http、tcp、udp、any** を使用できます。
 
 内部入力エンドポイントを作成するには、Web ロールまたは worker ロールの **Endpoints** 要素に **InternalEndpoint** 子要素を追加します。
 
@@ -106,7 +109,7 @@ int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].
 > 
 > 
 
-ロール インスタンスの内部エンドポイントのポート番号を判断するには、 [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) プロパティを使用すると、エンドポイント名と、それに対応する IP アドレスおよびポートを含む Dictionary オブジェクトが返されます。 [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) プロパティは、指定したエンドポイントのポートと IP アドレスを返します。 **PublicIPEndpoint** プロパティは、負荷分散エンドポイントのポートを返します。 **PublicIPEndpoint** プロパティの IP アドレス部分は使用されません。
+ロール インスタンスの内部エンドポイントのポート番号を確認するには、エンドポイント名および対応する IP アドレスとポートを含んだ Dictionary オブジェクトを返す [`InstanceEndpoints`](/previous-versions/azure/reference/ee741917(v=azure.100)) プロパティを使用できます。 [`IPEndpoint`](/previous-versions/azure/reference/ee741919(v=azure.100)) プロパティは、指定したエンドポイントの IP アドレスとポートを返します。 `PublicIPEndpoint` プロパティは、負荷分散エンドポイントのポートを返します。 `PublicIPEndpoint` プロパティの IP アドレス部分は使用されません。
 
 ロール インスタンスを反復処理する例を次に示します。
 

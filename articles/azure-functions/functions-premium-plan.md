@@ -9,16 +9,16 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: d944512e5f6126920ab4fba99fb70513b93177ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936823"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610269"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
-Azure Functions の Premium プラン (Elastic Premium プランとも呼ばれます) は、関数アプリのホスティング オプションです。 その他のホスティング プラン オプションについては、[ホスティング プランの記事](functions-scale.md)を参照してください。
+Azure Functions の Premium プラン (Elastic Premium プランとも呼ばれます) は、 Function App のホスティング オプションです。 その他のホスティング プラン オプションについては、[ホスティング プランの記事](functions-scale.md)を参照してください。
 
 Premium プランのホスティングでは、関数に次の利点があります。
 
@@ -27,19 +27,19 @@ Premium プランのホスティングでは、関数に次の利点がありま
 * 無制限の実行期間 (60 分保証)。
 * Premium インスタンス サイズ (1 コア、2 コア、4 コアのインスタンス)。
 * 従量課金プランと比較して、予測可能な料金。
-* 複数の関数アプリを含むプランでの高密度アプリ割り当て。
+* 複数の Function App を含むプランでの高密度アプリ割り当て。
 
-Premium プランを使用すると、[従量課金プラン](consumption-plan.md)と同じように、Azure Functions ホストのインスタンスが、受信イベントの数に基づいて追加および削除されます。 複数の関数アプリを同じ Premium プランにデプロイできます。プランでは、コンピューティング インスタンス サイズ、基本プラン サイズ、および最大プラン サイズを構成できます。 
+Premium プランを使用すると、[従量課金プラン](consumption-plan.md)と同じように、Azure Functions ホストのインスタンスが、受信イベントの数に基づいて追加および削除されます。 複数の Function App を同じ Premium プランにデプロイできます。プランでは、コンピューティング インスタンス サイズ、基本プラン サイズ、および最大プラン サイズを構成できます。 
 
 ## <a name="billing"></a>課金
 
-Premium プランの課金は、インスタンス全体にわたって割り当てられたコア秒数とメモリに基づいています。 この課金は、実行および消費されたメモリに応じて課金される従量課金プランとは異なります。 Premium プランの場合、実行料金は発生しません。 1 つのプランにつき、少なくとも 1 つのインスタンスが常に割り当てられている必要があります。 この課金の結果として、関数がアクティブかアイドル状態かに関係なく、アクティブなプラン別の月間コストが最も少なくなります。 Premium プランのすべての関数アプリで割り当てられたインスタンスが共有されることにご注意ください。 詳しくは、「[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)」ページをご覧ください。
+Premium プランの課金は、インスタンス全体にわたって割り当てられたコア秒数とメモリに基づいています。 この課金は、実行および消費されたメモリに応じて課金される従量課金プランとは異なります。 Premium プランの場合、実行料金は発生しません。 1 つのプランにつき、少なくとも 1 つのインスタンスが常に割り当てられている必要があります。 この課金の結果として、関数がアクティブかアイドル状態かに関係なく、アクティブなプラン別の月間コストが最も少なくなります。 Premium プランのすべての Function App で割り当てられたインスタンスが共有されることにご注意ください。 詳しくは、「[Azure Functions の価格](https://azure.microsoft.com/pricing/details/functions/)」ページをご覧ください。
 
 ## <a name="create-a-premium-plan"></a>Premium プランを作成する
 
-Azure portal で関数アプリを作成する場合は、従量課金プランが既定になります。 Premium プランで実行される関数アプリを作成するには、いずれかの "_エラスティック Premium_" SKU を使用して App Service プランを明示的に作成する必要があります。 作成した関数アプリは、このプランでホストされます。 Azure portal を使用すると、Premium プランと関数アプリの両方を同時に簡単に作成できます。 同じ Premium プランで複数の関数アプリを実行できますが、どちらも同じオペレーティング システム (Windows または Linux) で実行する必要があります。 
+Azure portal で Function App を作成する場合は、従量課金プランが既定になります。 Premium プランで実行される Function App を作成するには、いずれかの "_エラスティック Premium_" SKU を使用して App Service プランを明示的に作成する必要があります。 作成した Function App は、このプランでホストされます。 Azure portal を使用すると、Premium プランと Function App の両方を同時に簡単に作成できます。 同じ Premium プランで複数の Function App を実行できますが、どちらも同じオペレーティング システム (Windows または Linux) で実行する必要があります。 
 
-次の記事では、プログラムまたは Azure portal のいずれかを使用して、Premium プランで関数アプリを作成する方法について説明しています。
+次の記事では、プログラムまたは Azure portal のいずれかを使用して、Premium プランで Function App を作成する方法について説明しています。
 
 + [Azure Portal](create-premium-plan-function-app-portal.md)
 + [Azure CLI](scripts/functions-cli-create-premium-plan.md)
@@ -60,7 +60,7 @@ Premium プランでは、指定された数のインスタンスでアプリを
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-Azure portal で常時使用可能なインスタンスの数を構成するには、選択した **関数アプリ** から、 **[プラットフォーム機能]** タブへ移動して、 **[スケールアウト]** オプションを選択します。 関数アプリの編集ウィンドウでは、常時使用可能なインスタンスはそのアプリに固有のものです。
+Azure portal で常時使用可能なインスタンスの数を構成するには、選択した **Function App** から、 **[プラットフォーム機能]** タブへ移動して、 **[スケールアウト]** オプションを選択します。  Function App の編集ウィンドウでは、常時使用可能なインスタンスはそのアプリに固有のものです。
 
 ![エラスティック スケールの設定](./media/functions-premium-plan/scale-out.png)
 
@@ -79,7 +79,7 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 アプリが長時間のウォームアップ (カスタム コンテナー イメージなど) を行うとき、このバッファーを増やす必要がある場合があります。 事前ウォーミングされたインスタンスは、すべてのアクティブなインスタンスが十分に使用された後にのみ、アクティブになります。
 
-常時使用可能なインスタンスと事前ウォーミングされたインスタンスが連携して動作する例について考えてみましょう。 Premium 関数アプリに、5 つの常時使用可能なインスタンスが構成されており、事前ウォーミングされたインスタンスが既定で 1 つあります。 アプリがアイドル状態であり、トリガーしているイベントがない場合、このアプリは 5 つのインスタンスでプロビジョニングされ、実行されます。 現時点で、常時使用可能なインスタンスが使用されておらず、事前ウォーミングされたインスタンスが割り当てられていないため、事前ウォーミングされたインスタンスに対して課金されることはありません。
+常時使用可能なインスタンスと事前ウォーミングされたインスタンスが連携して動作する例について考えてみましょう。 Premium  Function App に、5 つの常時使用可能なインスタンスが構成されており、事前ウォーミングされたインスタンスが既定で 1 つあります。 アプリがアイドル状態であり、トリガーしているイベントがない場合、このアプリは 5 つのインスタンスでプロビジョニングされ、実行されます。 現時点で、常時使用可能なインスタンスが使用されておらず、事前ウォーミングされたインスタンスが割り当てられていないため、事前ウォーミングされたインスタンスに対して課金されることはありません。
 
 最初のトリガーが開始されるとすぐに、5 つの常時使用可能なインスタンスがアクティブになり、事前ウォーミングされたインスタンスが割り当てられます。 アプリは 6 つのプロビジョニングされたインスタンスを使用して実行されています。つまり、5 つの現在アクティブな常時使用可能なインスタンスと、6 番目の事前ウォーミングされた非アクティブなバッファーです。 実行率が増加し続けた場合は、最終的に 5 つのアクティブなインスタンスが使用されます。 5 つのインスタンスを超えて拡張することがプラットフォームによって決定された場合は、事前ウォーミングされたインスタンスに拡張されます。 その場合、6 つのアクティブなインスタンスが存在することになり、7 番目のインスタンスがすぐにプロビジョニングされ、事前ウォーミングされたバッファーに格納されます。 この一連のスケーリングと事前ウォーミングは、アプリの最大インスタンス数に達するまで続行されます。 最大値を超えてインスタンスが事前ウォーミングまたはアクティブ化されることはありません。
 
@@ -89,13 +89,13 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
 ```
 
-### <a name="maximum-function-app-instances"></a>関数アプリのインスタンスの最大数
+### <a name="maximum-function-app-instances"></a> Function App のインスタンスの最大数
 
 [プランの最大インスタンス数](#plan-and-sku-settings)に加えて、アプリごとの最大数を構成できます。 アプリの最大数は、[アプリのスケール制限](./event-driven-scaling.md#limit-scale-out)を使用して構成できます。
 
 ## <a name="private-network-connectivity"></a>プライベート ネットワーク接続
 
-Premium プランにデプロイされた関数アプリでは、[Web アプリ向けの VNet 統合](../app-service/web-sites-integrate-with-vnet.md)を利用できます。 構成すると、アプリを VNet 内のリソースと通信させる、またはサービス エンドポイントを介してセキュリティで保護することができます。 受信トラフィックを制限するための IP 制限もアプリで利用できます。
+Premium プランにデプロイされた Function App では、[Web アプリ向けの VNet 統合](../app-service/web-sites-integrate-with-vnet.md)を利用できます。 構成すると、アプリを VNet 内のリソースと通信させる、またはサービス エンドポイントを介してセキュリティで保護することができます。 受信トラフィックを制限するための IP 制限もアプリで利用できます。
 
 Premium プランで Function App にサブネットを割り当てるときは、個々の潜在的インスタンスのための十分な IP アドレスがあるサブネットが必要です。 使用可能なアドレスが 100 以上の IP ブロックが必要です。
 
@@ -109,7 +109,7 @@ Premium プランで Function App にサブネットを割り当てるときは�
 
 ## <a name="longer-run-duration"></a>実行継続時間の延長
 
-Azure Functions の従量課金プランでは、1 回の実行が 10 分までに制限されています。 Premium プランでは、実行中の暴走を防ぐために、実行継続時間の既定値が 30 分になっています。 ただし、[host.json 構成を変更](./functions-host-json.md#functiontimeout)して、Premium プランのアプリで継続期間を無制限にすることができます。 無制限の期間に設定すると、関数アプリは少なくとも 60 分間実行されることが保証されます。 
+Azure Functions の従量課金プランでは、1 回の実行が 10 分までに制限されています。 Premium プランでは、実行中の暴走を防ぐために、実行継続時間の既定値が 30 分になっています。 ただし、[host.json 構成を変更](./functions-host-json.md#functiontimeout)して、Premium プランのアプリで継続期間を無制限にすることができます。 無制限の期間に設定すると、 Function App は少なくとも 60 分間実行されることが保証されます。 
 
 ## <a name="plan-and-sku-settings"></a>プランと SKU の設定
 
@@ -150,9 +150,11 @@ az functionapp plan update -g <resource_group> -n <premium_plan_name> --min-inst
 
 ### <a name="memory-usage-considerations"></a>メモリ使用量に関する考慮事項
 
-メモリの多いコンピューターでお使いの関数アプリを実行しても、利用可能なすべてのメモリを使用できるとは限りません。
+メモリの多いコンピューターでお使いの Function App を実行しても、利用可能なすべてのメモリを使用できるとは限りません。
 
-たとえば、JavaScript Function App には、Node.js の既定のメモリ上限の制限があります。 この固定のメモリ制限を増やすには、値に `--max-old-space-size=<max memory in MB>` を使用して `languageWorkers:node:arguments` のアプリ設定を追加します。
+たとえば、JavaScript  Function App には、Node.js の既定のメモリ上限の制限があります。 この固定のメモリ制限を増やすには、値に `--max-old-space-size=<max memory in MB>` を使用して `languageWorkers:node:arguments` のアプリ設定を追加します。
+
+4 GB を超えるメモリの場合は、プラットフォームのビット設定が `64 Bit` に設定されていることを [[全般設定]](/azure/app-service/configure-common#configure-general-settings) で確認します。
 
 ## <a name="region-max-scale-out"></a>リージョン最大スケール アウト
 

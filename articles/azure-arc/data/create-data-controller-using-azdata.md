@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 50ab5a0d47292e36216a565a5bd39fbe7e850131
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955299"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494017"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] を使用した Azure Arc データ コントローラーの作成
 
@@ -59,7 +59,7 @@ kubectl config current-context
 
 ### <a name="connectivity-modes"></a>接続モード
 
-「[接続モードと要件](https://docs.microsoft.com/azure/azure-arc/data/connectivity)」で説明されているように、Azure Arc データ コントローラーは `direct` または `indirect` の接続モードのいずれかを使用してデプロイできます。 `direct` 接続モードを使用すると、使用状況データは自動的にかつ継続的に Azure に送信されます。 この記事の例では、次のように `direct` 接続モードを指定します。
+「[接続モードと要件](./connectivity.md)」で説明されているように、Azure Arc データ コントローラーは `direct` または `indirect` の接続モードのいずれかを使用してデプロイできます。 `direct` 接続モードを使用すると、使用状況データは自動的にかつ継続的に Azure に送信されます。 この記事の例では、次のように `direct` 接続モードを指定します。
 
    ```console
    --connectivity-mode direct
@@ -266,34 +266,13 @@ azdata arc dc create --profile-name azure-arc-aks-hci --namespace arc --name arc
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) に作成する
 
-#### <a name="apply-the-scc"></a>SCC を適用する
+Azure Red Hat OpenShift には、セキュリティ コンテキスト制約が必要です。
+
+#### <a name="apply-the-security-context"></a>セキュリティ コンテキストを適用する
 
 Azure Red Hat OpenShift でデータ コントローラーを作成する前に、特定のセキュリティ コンテキスト制約 (SCC) を適用する必要があります。 プレビュー リリースでは、これらによってセキュリティ制約が緩和されます。 今後のリリースで、更新された SCC が提供されます。
 
-1. カスタム セキュリティ コンテキスト制約 (SCC) をダウンロードします。 次のいずれかを使用します: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([未加工](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` 次のコマンドを実行すると、arc-data-scc.yaml がダウンロードされます。
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. SCC を作成します。
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. SCC をサービス アカウントに適用します。
-
-   > [!NOTE]
-   > ここで使用するものと同じ名前空間を、次の `azdata arc dc create` コマンドでも使用します。 たとえば `arc` とします。
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
-
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="create-custom-deployment-profile"></a>カスタム デプロイ プロファイルを作成する
 
@@ -324,33 +303,11 @@ azdata arc dc create --profile-name azure-arc-azure-openshift --namespace arc --
 > [!NOTE]
 > Azure で Red Hat OpenShift Container Platform を使用している場合は、利用できる中で最新のバージョンを使用することをお勧めします。
 
-#### <a name="apply-the-scc"></a>SCC を適用する
+Red Hat OCP でデータ コントローラーを作成する前に、特定のセキュリティ コンテキスト制約を適用する必要があります。 
 
-Red Hat OCP でデータ コントローラーを作成する前に、特定のセキュリティ コンテキスト制約 (SCC) を適用する必要があります。 プレビュー リリースでは、これらによってセキュリティ制約が緩和されます。 今後のリリースで、更新された SCC が提供されます。
+#### <a name="apply-the-security-context-constraint"></a>セキュリティ コンテキスト制約を適用する
 
-1. カスタム セキュリティ コンテキスト制約 (SCC) をダウンロードします。 次のいずれかを使用します: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([未加工](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` 次のコマンドを実行すると、arc-data-scc.yaml がダウンロードされます。
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. SCC を作成します。
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. SCC をサービス アカウントに適用します。
-
-   > [!NOTE]
-   > ここで使用するものと同じ名前空間を、次の `azdata arc dc create` コマンドでも使用します。 たとえば `arc` とします。
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="determine-storage-class"></a>ストレージ クラスを定義する
 

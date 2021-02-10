@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 2fbff2abeb454fe02aa4bd50615033b9a0b7f27b
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: ef2ab6511d80f7f1f836805055e7cc7f48a488e7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178604"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754306"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>クイック スタート:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す
 
@@ -181,7 +181,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 > |各値の説明: | 説明 |
 > |---------|---------|
 > | `clientId` | _portal.azure.com* に登録されているアプリケーションの Application ID |
-> | `authority` | Microsoft ID プラットフォーム エンドポイント。 ほとんどの場合、これは `https://login.microsoftonline.com/common` になります |
+> | `authority` | Microsoft ID プラットフォーム。 ほとんどの場合、これは `https://login.microsoftonline.com/common` になります |
 > | `redirectUri` | アプリケーションのリダイレクト URI。 'nil' を渡すと、既定値またはカスタムのリダイレクト URI を使用できます。 |
 
 ### <a name="for-ios-only-additional-app-requirements"></a>iOS のみ: アプリの追加要件

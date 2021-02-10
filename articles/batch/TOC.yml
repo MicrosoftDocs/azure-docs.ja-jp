@@ -118,9 +118,8 @@
         - name: Batch Management での Azure AD
           href: batch-aad-auth-management.md
         - name: Batch で Key Vault に安全にアクセスする
+          displayName: 'credential, certificate'
           href: credential-access-key-vault.md
-        - name: Batch での証明書の使用
-          href: batch-certificates.md
     - name: ファイルとアプリケーションをプール ノードにコピーする
       items:
         - name: プール ノードへのアプリケーションとデータのコピー

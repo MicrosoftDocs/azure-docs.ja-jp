@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight の Spark ストリーミング
 description: HDInsight Spark クラスターで Apache Spark ストリーミング アプリケーションを使用する方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086196"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929511"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark ストリーミングの概要
 
@@ -25,13 +22,13 @@ Spark Streaming アプリケーションでは、イベントの各 `micro-batch
 
 ## <a name="introducing-the-dstream"></a>DStream の概要
 
-Spark ストリーミングは、DStream と呼ばれる*分離されたストリーム*を使用して受信データの継続的なストリームを表します。 DStream は、Event Hubs や Kafka などの入力ソースから作成できます。 または、別の DStream を変換することによっても作成できます。
+Spark ストリーミングは、DStream と呼ばれる *分離されたストリーム* を使用して受信データの継続的なストリームを表します。 DStream は、Event Hubs や Kafka などの入力ソースから作成できます。 または、別の DStream を変換することによっても作成できます。
 
 DStream には、生イベント データの上に抽象化の層を備えています。
 
 1 つのイベント、たとえば、接続されたサーモスタットからの温度の読み取りから開始するとします。 このイベントが Spark ストリーミング アプリケーションに到達すると、イベントは確実な方法 (複数のノードにレプリケートされる) で格納されます。 このフォールト トレランスにより、単一ノードに障害が発生しても、イベントを損失することはありません。 Spark コアでは、クラスター内の複数のノードにデータを分散するデータ構造を使用しています。 このとき、一般に各ノードは独自のデータをメモリに保持してパフォーマンスを最適化します。 このデータ構造は、*Resilient Distributed Dataset* (RDD) と呼ばれます。
 
-各 RDD は、*バッチ間隔*と呼ばれるユーザー定義の期間の経過とともに収集されるイベントを表します。 各バッチ間隔の経過に伴って、その間隔のすべてのデータを含む新しい RDD が生成されます。 この継続的な一連の RDD が DStream に収集されます。 たとえば、バッチ間隔が 1 秒の場合、DStream はその 1 秒間に取り込まれるすべてのデータを含む 1 つの RDD を含む 1 つのバッチを毎秒出力します。 DStream の処理時に、温度のイベントがこれらのバッチのいずれかに出現します。 Spark ストリーミング アプリケーションはイベントを含むバッチを処理し、最終的に各 RDD に格納されているデータを処理します。
+各 RDD は、*バッチ間隔* と呼ばれるユーザー定義の期間の経過とともに収集されるイベントを表します。 各バッチ間隔の経過に伴って、その間隔のすべてのデータを含む新しい RDD が生成されます。 この継続的な一連の RDD が DStream に収集されます。 たとえば、バッチ間隔が 1 秒の場合、DStream はその 1 秒間に取り込まれるすべてのデータを含む 1 つの RDD を含む 1 つのバッチを毎秒出力します。 DStream の処理時に、温度のイベントがこれらのバッチのいずれかに出現します。 Spark ストリーミング アプリケーションはイベントを含むバッチを処理し、最終的に各 RDD に格納されているデータを処理します。
 
 ![温度イベントでのサンプル DStream](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 

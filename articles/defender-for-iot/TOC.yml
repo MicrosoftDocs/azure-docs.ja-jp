@@ -3,12 +3,15 @@
 - name: 概要
   href: overview.md
   items:
-    - name: ソリューションのアーキテクチャ
-      href: architecture.md
     - name: 新機能
       href: release-notes.md
-    - name: クイックスタート
-      expanded: true
+    - name: エージェントレス ソリューション アーキテクチャ
+      href: architecture.md
+    - name: エージェントベースのソリューション アーキテクチャ
+      href: architecture-agent-based.md
+- name: クイックスタート
+  expanded: true
+  items:
     - name: 組織向けのエージェントレス ソリューション
       items:
         - name: システムの前提条件
@@ -19,22 +22,22 @@
       items:
         - name: Azure RTOS 用のセキュリティ モジュールを構成する
           href: quickstart-azure-rtos-security-module.md
-        - name: IoT Hub
-          href: quickstart-iot-hub-integration.md
-        - name: Azure Defender for IoT を IoT Hub にオンボードする
+        - name: Defender for IoT エージェントベースのソリューションにオンボードする
           href: quickstart-onboard-iot-hub.md
-        - name: セキュリティ エージェント
-          href: security-agent-architecture.md
-        - name: ソリューションを構成する
+        - name: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
+          href: quickstart-create-micro-agent-module-twin.md
+        - name: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
+          href: quickstart-standalone-agent-binary-installation.md
+        - name: ソース コードから Defender for IoT マイクロ エージェントを構築する (プレビュー)
+          href: quickstart-building-the-defender-micro-agent-from-source.md
+        - name: IoT ソリューションへの Azure リソースの追加
           href: quickstart-configure-your-solution.md
-        - name: Azure Defender for IoT のモジュール ツインを作成する
-          href: quickstart-create-security-twin.md
-        - name: セキュリティに関する推奨事項の調査
-          href: quickstart-investigate-security-recommendations.md
-        - name: カスタムのセキュリティのアラートを作成する
-          href: quickstart-create-custom-alerts.md
-        - name: セキュリティ アラートについて調査する
-          href: quickstart-investigate-security-alerts.md
+        - name: クラシック
+          items:
+            - name: セキュリティ エージェントの概要
+              href: security-agent-architecture.md
+            - name: azureiotsecurity モジュール ツインを作成する
+              href: quickstart-create-security-twin.md
 - name: 概念
   items:
     - name: 組織向けのエージェントレス ソリューション
@@ -43,35 +46,38 @@
           href: concept-key-concepts.md
     - name: デバイス ビルダー向けのエージェントベースのソリューション
       items:
-        - name: Azure RTOS 用のセキュリティ モジュール
-          href: iot-security-azure-rtos.md
-          items:
-            - name: Azure RTOS 用のセキュリティ モジュールについて
-              href: concept-rtos-security-module.md
-            - name: Azure RTOS 用のセキュリティ モジュールのアラートと推奨事項
-              href: concept-rtos-security-alerts-recommendations.md
-        - name: Edge のセキュリティ モジュール
-          href: security-edge-architecture.md
-        - name: セキュリティ エージェント
-          href: overview-security-agents.md
-        - name: セキュリティ エージェントの認証
-          href: concept-security-agent-authentication-methods.md
-        - name: セキュリティ モジュール
-          href: concept-security-module.md
+        - name: エージェント ポートフォリオの概要と OS サポート (プレビュー)
+          href: concept-agent-portfolio-overview-os-support.md
+        - name: スタンドアロンのマイクロ エージェントの概要 (プレビュー)
+          href: concept-standalone-micro-agent-overview.md
+        - name: セキュリティ エージェントの認証 (プレビュー)
+          href: concept-security-agent-authentication.md
+        - name: セキュリティ体制 - CIS ベンチマーク
+          href: concept-security-posture.md
+        - name: イベントの集計 (プレビュー)
+          href: concept-event-aggregation.md
         - name: セキュリティのアラート
           href: concept-security-alerts.md
-        - name: カスタマイズ可能なセキュリティ アラート
+        - name: カスタム セキュリティ アラート
           href: concept-customizable-security-alerts.md
-        - name: セキュリティ
+        - name: セキュリティに関する推奨事項
+          href: concept-recommendations.md
+        - name: クラシック
           items:
-            - name: セキュリティに関する推奨事項
-              href: concept-recommendations.md
-            - name: セキュリティ ベースライン
+            - name: セキュリティ モジュール
+              href: concept-security-module.md
+            - name: Edge のセキュリティ モジュール
+              href: security-edge-architecture.md
+            - name: セキュリティ エージェント
+              href: overview-security-agents.md
+            - name: セキュリティ エージェントの認証
+              href: concept-security-agent-authentication-methods.md
+            - name: ベースライン
+              href: concept-baseline.md
+            - name: Azure Defender for IoT 用の Azure セキュリティ ベースライン
               href: security-baseline.md
-        - name: ベースライン
-          href: concept-baseline.md
-        - name: イベントの集計
-          href: event-aggregation.md
+            - name: セキュリティ モジュールの従来のイベントの集計
+              href: event-aggregation.md
 - name: 操作方法ガイド
   items:
     - name: 組織向けのエージェントレス ソリューション
@@ -147,8 +153,10 @@
               href: how-to-manage-the-alert-event.md
             - name: アラート インシデント対応を高速化する
               href: how-to-accelerate-alert-incident-response.md
+              displayName: 'custom, alerts, comments, groups'
             - name: アラート情報を転送する
               href: how-to-forward-alert-information-to-partners.md
+              displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
         - name: グローバル、地域、ローカルの脅威に関する分析情報を得る
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: オンプレミス管理コンソールをでアラートを操作する
@@ -176,11 +184,12 @@
               displayName: 'import, enrich'
         - name: センサー アクティビティを追跡する
           href: how-to-track-sensor-activity.md
-          displayName: 'timeline, time line, time-line, event'
+          displayName: 'timeline, time line, time-line, event, audit'
         - name: センサーとオンプレミスの管理コンソールのトラブルシューティング
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: SNMP MIB の監視を設定する
           href: how-to-set-up-snmp-mib-monitoring.md
+          displayName: health
         - name: パートナーとの統合
           items:
             - name: Cisco ISE pxGrid の統合
@@ -197,40 +206,65 @@
               href: integration-splunk.md
     - name: デバイス ビルダー向けのエージェントベースのソリューション
       items:
-        - name: Azure RTOS 用のセキュリティ モジュールを操作する
-          href: how-to-azure-rtos-security-module.md
-        - name: デプロイが推奨されるエージェント
+        - name: Azure RTOS 用のセキュリティ モジュール
+          href: iot-security-azure-rtos.md
           items:
-            - name: デプロイするエージェントを選択する
-              href: how-to-deploy-agent.md
-            - name: C# ベースのセキュリティ エージェントを Windows デバイスにデプロイする
-              href: how-to-deploy-windows-cs.md
-            - name: C# ベースのセキュリティ エージェントを Linux デバイスにデプロイする
-              href: how-to-deploy-linux-cs.md
-            - name: C ベースのセキュリティ エージェントを Linux デバイスにデプロイする
-              href: how-to-deploy-linux-c.md
-        - name: セキュリティ エージェントのトラブルシューティングを行う
-          items:
-            - name: Azure Defender for IoT の Linux セキュリティ エージェントのトラブルシューティングを行う
-              href: troubleshoot-agent.md
-            - name: ローカル構成 C
-              href: azure-iot-security-local-configuration-c.md
-            - name: ローカル構成 C#
-              href: azure-iot-security-local-configuration-csharp.md
-        - name: Edge のセキュリティ モジュールをデプロイする
-          href: how-to-deploy-edge.md
-        - name: セキュリティ エージェントを構成する
-          href: how-to-agent-configuration.md
-        - name: 独自のセキュリティ メッセージを送信する
-          href: how-to-send-security-messages.md
-        - name: 未加工のセキュリティ データにアクセスする
-          href: how-to-security-data-access.md
-        - name: デバイスを調査する
-          href: how-to-investigate-device.md
+            - name: Azure RTOS 用のセキュリティ モジュールを操作する
+              href: how-to-azure-rtos-security-module.md
+            - name: Azure RTOS 用のセキュリティ モジュールについて
+              href: concept-rtos-security-module.md
+            - name: Azure RTOS 用のセキュリティ モジュールのアラートと推奨事項
+              href: concept-rtos-security-alerts-recommendations.md
         - name: Azure Sentinel に接続する
           href: how-to-configure-with-sentinel.md
-        - name: エージェントをカスタマイズする
-          href: how-to-customize-solution.md
+        - name: Azure Defender for IoT エージェントベースのソリューションを構成する
+          href: how-to-configure-agent-based-solution.md
+        - name: CIS ベンチマークの推奨事項を調査する
+          href: how-to-investigate-cis-benchmark.md
+        - name: セキュリティに関する推奨事項の調査
+          href: quickstart-investigate-security-recommendations.md
+        - name: セキュリティ アラートについて調査する
+          href: quickstart-investigate-security-alerts.md
+        - name: カスタム アラートの作成
+          href: quickstart-create-custom-alerts.md
+        - name: クラシック
+          items:
+            - name: デプロイが推奨されるエージェント
+              items:
+                - name: デプロイするエージェントを選択する
+                  href: how-to-deploy-agent.md
+                - name: C# ベースのセキュリティ エージェントを Windows デバイスにデプロイする
+                  href: how-to-deploy-windows-cs.md
+                - name: C# ベースのセキュリティ エージェントを Linux デバイスにデプロイする
+                  href: how-to-deploy-linux-cs.md
+                - name: C ベースのセキュリティ エージェントを Linux デバイスにデプロイする
+                  href: how-to-deploy-linux-c.md
+            - name: セキュリティ エージェントのトラブルシューティングを行う
+              items:
+                - name: Azure Defender for IoT の Linux セキュリティ エージェントのトラブルシューティングを行う
+                  href: troubleshoot-agent.md
+                - name: ローカル構成 C
+                  href: azure-iot-security-local-configuration-c.md
+                - name: ローカル構成 C#
+                  href: azure-iot-security-local-configuration-csharp.md
+            - name: Edge のセキュリティ モジュールをデプロイする
+              href: how-to-deploy-edge.md
+            - name: セキュリティ エージェントを構成する
+              href: how-to-agent-configuration.md
+            - name: 独自のセキュリティ メッセージを送信する
+              href: how-to-send-security-messages.md
+            - name: 未加工のセキュリティ データにアクセスする
+              href: how-to-security-data-access.md
+            - name: デバイスを調査する
+              href: how-to-investigate-device.md
+- name: トラブルシューティング
+  items:
+    - name: Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
+      href: troubleshoot-defender-micro-agent.md
+- name: 機能のサポートと廃止
+  items:
+    - name: 機能のサポートと廃止
+      href: edge-security-module-deprecation.md
 - name: 関連項目
   items:
     - name: 組織向けのエージェントレス ソリューション

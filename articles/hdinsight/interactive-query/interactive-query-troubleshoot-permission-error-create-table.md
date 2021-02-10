@@ -3,16 +3,13 @@ title: Azure HDInsight の Apache Hive テーブル アクセス拒否エラー
 description: Azure HDInsight で Apache Hive テーブルを作成しようとしているときのアクセス拒否エラー
 ms.service: hdinsight
 ms.topic: troubleshooting
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.date: 08/09/2019
-ms.openlocfilehash: b6e71f5f2c389926a2e6267fadeedebdce1c51d9
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6d91ca747bb264b4c7262eec2bb0745b8a40b7a0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288887"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930916"
 ---
 # <a name="scenario-permission-denied-error-when-trying-to-create-an-apache-hive-table-in-azure-hdinsight"></a>シナリオ:Azure HDInsight で Apache Hive テーブルを作成しようとしているときのアクセス拒否エラー
 

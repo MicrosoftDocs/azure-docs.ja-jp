@@ -3,7 +3,7 @@ title: Azure AD を使用し、グループ データにアクセスするアプ
 description: グループまたはチームのデータにアクセスするアプリケーションにグループ所有者とチーム所有者が同意できるかどうかを管理する方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d14e4808d5bec03dff9406f37e63ee4c76e601f8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: cd1eb98fca9fe25b6672863c02b8a78e57063e5a
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033223"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259323"
 ---
 # <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>グループ データにアクセスするアプリに対するグループ所有者の同意を構成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "97033223"
 
 次の手順でグループ データにアクセスするアプリに対するグループ所有者の同意を管理します。
 
-1. [Azure portal](https://portal.azure.com) に[グローバル管理者](../roles/permissions-reference.md#global-administrator--company-administrator)としてサインインします。
+1. [Azure portal](https://portal.azure.com) に[グローバル管理者](../roles/permissions-reference.md#global-administrator)としてサインインします。
 2. **[Azure Active Directory]**  >  **[エンタープライズ アプリケーション]**  >  **[同意とアクセス許可]**  >  **[ユーザーの同意設定]** を選択します。
 3. **[アプリがデータにアクセスすることへのグループ所有者の同意]** で、有効にするオプションを選択します。
 4. **[Save]\(保存\)** を選択して設定を保存します。
@@ -124,4 +124,4 @@ Azure AD PowerShell プレビュー モジュールである [AzureADPreview](/p
 * [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
 ヘルプを表示したり、質問に対する回答を検索したりするには、以下を参照してください。
-* [StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+* [Microsoft Q&A の Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

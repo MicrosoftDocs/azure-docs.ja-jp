@@ -4,16 +4,16 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
-ms.openlocfilehash: 096764ce56e1812bc96be9a344a4d4ccb17a4db6
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1383f976e73fd9a59b87201cac8aeeb043f3c1cc
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555542"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901025"
 ---
 Azure IoT Hub を引き続き使用してみると共に、IoT DevKit を使用して他の IoT シナリオを調べるには、次を参照してください。
 
-- [IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)
+- [IoT DevKit を Azure IoT リモート監視ソリューション アクセラレータに接続する](/previous-versions/azure/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2)
 - [Azure Cognitive Services での音声メッセージの翻訳](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-translator.md)
 - [Azure Functions を使用して Twitter メッセージを取得する](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 - [Eclipse Paho API を使用して MQTT サーバーにメッセージを送信する](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)

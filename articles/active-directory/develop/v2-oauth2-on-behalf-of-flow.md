@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208850"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756082"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -201,7 +201,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 ### <a name="default-and-combined-consent"></a>/.default と組み合わせ同意
 
-中間層アプリケーションは、そのマニフェストの既知のクライアント アプリケーションの一覧にクライアントを追加します。その後、そのクライアントは、それ自体と中間層アプリケーションの両方に対して組み合わせ同意フローをトリガーできます。 Microsoft ID プラットフォームのエンドポイント上では、これは[`/.default`スコープ](v2-permissions-and-consent.md#the-default-scope)を使用して行われます。 既知のクライアント アプリケーションと `/.default` を使用して同意画面をトリガーすると、その同意画面には、クライアントと中間層 API の **両方** に対するアクセス許可が表示され、その中間層 API で必要となるすべてのアクセス許可が要求されます。 ユーザーが両方のアプリケーションに対して同意を行うと、OBO フローが動作します。
+中間層アプリケーションは、そのマニフェストの既知のクライアント アプリケーションの一覧にクライアントを追加します。その後、そのクライアントは、それ自体と中間層アプリケーションの両方に対して組み合わせ同意フローをトリガーできます。 Microsoft ID プラットフォームでは、これは [`/.default` スコープ](v2-permissions-and-consent.md#the-default-scope)を使用して行われます。 既知のクライアント アプリケーションと `/.default` を使用して同意画面をトリガーすると、その同意画面には、クライアントと中間層 API の **両方** に対するアクセス許可が表示され、その中間層 API で必要となるすべてのアクセス許可が要求されます。 ユーザーが両方のアプリケーションに対して同意を行うと、OBO フローが動作します。
 
 ### <a name="pre-authorized-applications"></a>事前承認済みアプリケーション
 

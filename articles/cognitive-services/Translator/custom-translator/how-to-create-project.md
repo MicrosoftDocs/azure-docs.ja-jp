@@ -2,19 +2,19 @@
 title: プロジェクトを作成する方法 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: この記事では、Azure Cognitive Services Custom Translator でプロジェクトを作成および管理する方法について説明します。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 3043ec0600f802a409387f0114aae5f56151da16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e3aa52323f44e6c1407fe2a542e40ee06370043
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88510985"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895800"
 ---
 # <a name="create-a-project"></a>プロジェクトの作成
 
@@ -40,7 +40,7 @@ ms.locfileid: "88510985"
 
     e.  カテゴリの説明:このフィールドを使用して、作業対象の特定の分野または業界について詳しく説明します。 たとえば、カテゴリが医薬の場合は、手術や小児科などの特定のドキュメントを追加することができます。 この説明は、Custom Translator または結果のカスタム システムの動作に影響はありません。
 
-    f.  プロジェクト ラベル:[プロジェクト ラベル](workspace-and-project.md#project-labels)で、言語ペアとカテゴリが同じプロジェクトを区別します。 同じ言語ペアと同じカテゴリの複数のプロジェクトを構築し、このようなプロジェクトに異なる CategoryID でアクセスする予定がある場合に*のみ*、ラベルを使用することをお勧めします。 カテゴリが 1 つのみのシステムを構築する場合は、このフィールドを使用しないでください。 プロジェクト ラベルは必須ではないため、言語ペアを区別するために役立ちません。 同じラベルを複数のプロジェクトに使用することができます。
+    f.  プロジェクト ラベル:[プロジェクト ラベル](workspace-and-project.md#project-labels)で、言語ペアとカテゴリが同じプロジェクトを区別します。 同じ言語ペアと同じカテゴリの複数のプロジェクトを構築し、このようなプロジェクトに異なる CategoryID でアクセスする予定がある場合に *のみ*、ラベルを使用することをお勧めします。 カテゴリが 1 つのみのシステムを構築する場合は、このフィールドを使用しないでください。 プロジェクト ラベルは必須ではないため、言語ペアを区別するために役立ちません。 同じラベルを複数のプロジェクトに使用することができます。
 
     ![[プロジェクトの作成] ダイアログ](media/how-to/how-to-create-project-dialog.png)
 

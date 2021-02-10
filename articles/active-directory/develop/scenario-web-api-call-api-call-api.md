@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出す Web API - Microsoft ID プラットフォ―ム | Azure
+title: Web API を呼び出す Web API | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出す Web API を構築する方法について説明します。
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443703"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753449"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API を呼び出す Web API: API を呼び出す
 

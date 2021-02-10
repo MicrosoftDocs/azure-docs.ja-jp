@@ -1,24 +1,36 @@
 ---
 title: Azure Active Directory アプリケーションのプロビジョニングの新機能
 description: Azure Active Directory アプリケーションのプロビジョニングの新規および更新されたドキュメント。
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+manager: daveba
+ms.openlocfilehash: a127552c47b9e1ee86d2164926971c8628367dc0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562210"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256003"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory アプリケーションのプロビジョニング新機能
 
 Azure Active Directory アプリケーションのプロビジョニングに関するドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 プロビジョニング サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="new-articles"></a>新しい記事
+- [Azure Active Directory のプロビジョニングと Workday の統合方法](workday-integration-reference.md)
+
+### <a name="updated-articles"></a>更新された記事
+- [チュートリアル: サンプル SCIM エンドポイントを開発する](use-scim-to-build-users-and-groups-endpoints.md)
+- [チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする](customize-application-attributes.md)
+- [Azure Active Directory のプロビジョニングと SAP SuccessFactors の統合方法](sap-successfactors-integration-reference.md)
+- [検疫状態のアプリケーションのプロビジョニング](application-provisioning-quarantine-status.md)
+
 
 ## <a name="december-2020"></a>2020 年 12 月
 

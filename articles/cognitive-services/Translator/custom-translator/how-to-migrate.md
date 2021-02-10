@@ -2,19 +2,19 @@
 title: Microsoft Translator Hub ワークスペースとプロジェクトの移行 - Custom Translator
 titleSuffix: Azure Cognitive Services
 description: この記事では、Hub ワークスペースとプロジェクトを Azure Cognitive Services Custom Translator に移行する方法について説明します。
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: 64c449bdefe6fb067a7c0e26b155b58b6f00c399
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 89658ce88b4f1ac9d5bacac7bd45511b4aa0a1be
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368288"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895713"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -136,7 +136,7 @@ Hub からワークスペースまたはプロジェクトの移行を要求す�
 | Text API バージョン    | V2     | V3  |
 | SMT のカスタマイズ    | はい    | いいえ |
 | NMT のカスタマイズ    | いいえ    | はい |
-| 新しい統合 Speech Services のカスタマイズ    | いいえ    | ○ |
+| 新しい統合 Speech Services のカスタマイズ    | いいえ    | はい |
 | トレースなし | はい | はい |
 
 ## <a name="new-languages"></a>新しい言語

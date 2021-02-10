@@ -3,15 +3,15 @@ title: Azure Event Grid でのシステム トピック
 description: Azure Event Grid でのシステム トピックについて説明します。
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b3a6e7528da2a11c2f91007425ab8beecaf920c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297285"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052967"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピック
-Event Grid でのシステム トピックは、Azure Storage や Azure Event Hubs などの Azure サービスによって発行された 1 つ以上のイベントを表します。 たとえば、システム トピックは**すべての BLOB イベント**、または**特定のストレージ アカウント**に対して発行された **BLOB 作成**および **BLOB 削除**イベントのみを表す可能性があります。 この例では、BLOB がストレージ アカウントにアップロードされると、Azure Storage サービスは Event Grid でのシステム トピックに **BLOB 作成**イベントを発行します。その後、そのイベントはそこから、イベントを受信して処理するトピックの[サブスクライバー](event-handlers.md)に転送されます。 
+Event Grid でのシステム トピックは、Azure Storage や Azure Event Hubs などの Azure サービスによって発行された 1 つ以上のイベントを表します。 たとえば、システム トピックは **すべての BLOB イベント**、または **特定のストレージ アカウント** に対して発行された **BLOB 作成** および **BLOB 削除** イベントのみを表す可能性があります。 この例では、BLOB がストレージ アカウントにアップロードされると、Azure Storage サービスは Event Grid でのシステム トピックに **BLOB 作成** イベントを発行します。その後、そのイベントはそこから、イベントを受信して処理するトピックの [サブスクライバー](event-handlers.md)に転送されます。 
 
 > [!NOTE] 
 > システム トピックにイベントを発行できるのは Azure サービスだけです。 そのため、カスタム トピックまたはドメインの場合とは異なり、イベントを発行するために使用できるエンドポイントまたはアクセス キーは取得しません。
@@ -34,6 +34,7 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure サブスクリプション](event-schema-subscriptions.md)
+- [Azure Cache for Redis](event-schema-azure-cache.md)
 
 ## <a name="system-topics-as-azure-resources"></a>Azure リソースとしてのシステム トピック
 以前は、システム トピックは暗黙的であり、簡潔にするために公開されていませんでした。 システム トピックは Azure リソースとして表示されるようになり、次の機能を提供します。
@@ -56,9 +57,9 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 Azure ポリシーを Event Grid サービスがシステム トピックを作成できないように設定している場合は、システム トピックの作成が失敗します。 たとえば、サブスクリプション内の特定の種類のリソース (Azure Storage や Azure Event Hubs など) の作成のみを許可するポリシーにしている場合があります。 
 
 ## <a name="location-and-resource-group-for-a-system-topic"></a>システム トピックのための場所とリソース グループ
-特定のリージョンまたは場所にある Azure イベント ソースの場合、システム トピックは Azure イベント ソースと同じ場所に作成されます。 たとえば、米国東部の Azure Blob Storage に対してイベント サブスクリプションを作成すると、米国東部にシステム トピックが作成されます。 Azure サブスクリプション、リソース グループ、Azure Maps などのグローバルな Azure イベント ソースの場合は、Event Grid によって**グローバル**な場所にシステム トピックが作成されます。 
+特定のリージョンまたは場所にある Azure イベント ソースの場合、システム トピックは Azure イベント ソースと同じ場所に作成されます。 たとえば、米国東部の Azure Blob Storage に対してイベント サブスクリプションを作成すると、米国東部にシステム トピックが作成されます。 Azure サブスクリプション、リソース グループ、Azure Maps などのグローバルな Azure イベント ソースの場合は、Event Grid によって **グローバル** な場所にシステム トピックが作成されます。 
 
-一般に、システム トピックは Azure イベント ソースと同じリソース グループに作成されます。 Azure サブスクリプションのスコープで作成されたイベント サブスクリプションの場合、システム トピックは**米国西部 2** リージョンの **Default-EventGrid** リソース グループに作成されます。 リソース グループが存在しない場合は、システム トピックが作成される前に、Azure Event Grid によってリソース グループが作成されます。 
+一般に、システム トピックは Azure イベント ソースと同じリソース グループに作成されます。 Azure サブスクリプションのスコープで作成されたイベント サブスクリプションの場合、システム トピックは **米国西部 2** リージョンの **Default-EventGrid** リソース グループに作成されます。 リソース グループが存在しない場合は、システム トピックが作成される前に、Azure Event Grid によってリソース グループが作成されます。 
 
 ## <a name="next-steps"></a>次のステップ
 次の記事をご覧ください。 

@@ -2,24 +2,23 @@
 title: モデルのハイパーパラメーター調整
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用して、ディープ ラーニングおよび機械学習モデルのハイパーパラメーター調整を自動化します。
-ms.author: swatig
-author: swatig007
+ms.author: anumamah
+author: Aniththa
 ms.reviewer: sgilley
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 03/30/2020
+ms.date: 01/29/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: e9f9f73a8e0dbc851efdba07bf1e103f58ae9e75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a4be95561c097191803f2faa271c5d6bba875869
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133863"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430367"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning を使用したモデルのハイパーパラメーター調整
-
 
 Azure Machine Learning の [HyperDrive パッケージ](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)を使用して、効率的なハイパーパラメーター調整を自動化します。 [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) を使用してハイパーパラメーターを調整するために必要な手順を実行する方法について説明します。
 
@@ -382,6 +381,30 @@ hd_config = HyperDriveConfig(run_config=src,
 
 ## <a name="visualize-hyperparameter-tuning-runs"></a>ハイパーパラメーター調整の実行を視覚化する
 
+Azure Machine Learning スタジオでハイパーパラメーター調整の実行を視覚化することも、ノートブック ウィジェットを使用することもできます。
+
+### <a name="studio"></a>スタジオ
+
+[Azure Machine Learning スタジオ](https://ml.azure.com)では、すべてのハイパーパラメーター調整の実行を視覚化できます。 ポータルで実験を表示する方法について詳しくは、「[Studio で実行レコードを表示する](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)」をご覧ください。
+
+- **メトリック グラフ**:この視覚化を使用すると、ハイパーパラメーター調整の期間中に実行された各ハイパードライブの子実行についてログに記録されたメトリックが追跡されます。 各行は 1 つの子実行を表し、各ポイントはランタイムのイテレーションで主要メトリックの値を測定します。  
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-metrics.png" alt-text="ハイパーパラメーター調整のメトリック グラフ":::
+
+- **並列座標グラフ**:この視覚化を使用すると、主要メトリックのパフォーマンスと個々のハイパーパラメーター値の相関関係が示されます。 グラフは、軸を移動する (軸ラベルをクリックしてドラッグする)、および 1 つの軸全体の値を強調表示する (1 つの軸をクリックし、軸に沿って垂直方向にドラッグして、目的の値の範囲を強調表示する) ことで、インタラクティブになります。
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png" alt-text="ハイパーパラメーター調整の並行座標グラフ":::
+
+- **2 次元散布図**:この視覚化を使用すると、2 つの個別のハイパーパラメーターの間の相関関係が、関連付けられている主要メトリック値と共に表示されます。
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-2-dimensional-scatter.png" alt-text="ハイパーパラメーター調整の 2 次元散布図":::
+
+- **3 次元散布図**:この視覚化は 2D と同じですが、主要メトリック値と相関関係にある 3 つのハイパーパラメーター ディメンションを使用できます。 グラフをクリックしてドラッグし、グラフの方向を変更し、3D 空間内のさまざまな相関関係を表示することもできます。
+
+    :::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-3-dimensional-scatter.png" alt-text="ハイパーパラメーター調整の 3 次元散布図":::
+
+### <a name="notebook-widget"></a>Notebook のウィジェット
+
 [Notebook ウイジェット](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py)を使用して、トレーニングの実行の進行状況を視覚化します。 次のスニペットを使用すると、すべてのハイパーパラメーター調整実行が Jupyter Notebook の 1 か所で視覚化されます。
 
 ```Python
@@ -391,17 +414,9 @@ RunDetails(hyperdrive_run).show()
 
 このコードにより、各ハイパーパラメーター構成のトレーニング実行に関する詳細情報が表に示されます。
 
-![ハイパーパラメーター調整表](./media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png)
+:::image type="content" source="media/how-to-tune-hyperparameters/hyperparameter-tuning-table.png" alt-text="ハイパーパラメーター調整表":::
 
-トレーニングの進行に合わせて、各実行のパフォーマンスを視覚化することもできます。 
-
-![ハイパーパラメーター調整プロット](./media/how-to-tune-hyperparameters/hyperparameter-tuning-plot.png)
-
-並行座標プロットを使用して、個々のハイパーパラメーターのパフォーマンスと値の間の相関関係を視覚的に特定できます。 
-
-[![ハイパーパラメーター調整の並行座標](./media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates.png)](media/how-to-tune-hyperparameters/hyperparameter-tuning-parallel-coordinates-expanded.png)
-
-Azure Web ポータルでもすべてのハイパーパラメーター調整実行を視覚化できます。 ポータルで実験を表示する方法について詳しくは、[実験の追跡方法](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)に関するページをご覧ください。
+トレーニングの進行に合わせて、各実行のパフォーマンスを視覚化することもできます。
 
 ## <a name="find-the-best-model"></a>最高のモデルを見つける
 

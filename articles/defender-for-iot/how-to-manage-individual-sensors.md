@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539564"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621216"
 ---
 # <a name="manage-individual-sensors"></a>個々のセンサーの管理
 
@@ -315,7 +315,7 @@ CLI コマンドを使用する場合:
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>管理コンソールへのセンサーの接続
 
-ここでは、センサーとオンプレミス管理コンソール間の接続を確認する方法について説明します。 この操作は、エアギャップ ネットワークで作業しているときに、センサーから管理コンソールに資産やアラートの情報を送信する場合に実行します。 この接続により、管理コンソールでセンサーにシステム設定をプッシュしたり、センサーに対して他の管理タスクを実行したりすることもできます。
+ここでは、センサーとオンプレミス管理コンソール間の接続を確認する方法について説明します。 この操作は、エアギャップ ネットワークで作業しているときに、センサーから管理コンソールにデバイスやアラートの情報を送信する場合に必要となります。 この接続により、管理コンソールでセンサーにシステム設定をプッシュしたり、センサーに対して他の管理タスクを実行したりすることもできます。
 
 接続するには:
 

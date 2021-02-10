@@ -3,12 +3,12 @@ title: テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレート (ARM テンプレート) を作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: c0b26c300a9474cc5db0b1a7b732c4416a9e6f5f
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 583a113df9cdb1951daf1002dd69531f050cfb54
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696348"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257999"
 ---
 # <a name="arm-template-best-practices"></a>ARM テンプレートのベスト プラクティス
 
@@ -276,6 +276,8 @@ API バージョンに対しては変数を使用しないでください。 特
 
    > [!NOTE]
    > シークレット情報を VM と拡張機能にパラメーターとして渡すときに暗号化されるように、関連する拡張機能の `protectedSettings` プロパティを使用する必要があります。
+
+* 時間の経過と共に変わる可能性のある既定値を持つプロパティに対して明示的な値を指定します。 たとえば、AKS クラスターをデプロイする場合、`kubernetesVersion` プロパティは指定することも省略することもできます。 これを指定しない場合、[クラスターは既定では N-1 マイナー バージョンと最新のパッチ](../../aks/supported-kubernetes-versions.md#azure-portal-and-cli-versions)に設定されます。 ARM テンプレートを使用してクラスターをデプロイする場合、この既定の動作は想定どおりにならないことがあります。 ご利用のテンプレートを再デプロイすると、クラスターが予期せずに新しい Kubernetes バージョンにアップグレードされる可能性があります。 このため、ご利用のクラスターをアップグレードする準備ができたら、明示的なバージョン番号を指定して、手動で変更することを検討してください。
 
 ## <a name="use-test-toolkit"></a>テスト ツールキットの使用
 

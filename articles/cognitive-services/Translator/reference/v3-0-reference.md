@@ -3,19 +3,19 @@ title: Translator V3.0 リファレンス
 titleSuffix: Azure Cognitive Services
 description: Translator V3.0 のリファレンス ドキュメント。 Translator のバージョン 3 には、最新の JSON ベースの Web API が用意されています。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
-ms.author: swmachan
-ms.openlocfilehash: c93b8254e1fc80865d9889072b33cbf3fc94326d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.author: lajanuar
+ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880778"
+ms.locfileid: "98895460"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 

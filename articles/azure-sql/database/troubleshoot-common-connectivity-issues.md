@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: f8c94e36a1a6d1f675e9d6a7dde456dbf6eb8897
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791360"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093759"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>SQL Database と SQL Managed Instance での一時的な接続エラーのトラブルシューティング
 
@@ -31,7 +31,7 @@ ms.locfileid: "92791360"
 
 一時エラーは、一過性の障害とも呼ばれ、基になる原因はすぐ自動的に解決されます。 一時エラーを起こす偶発的原因として、Azure システムが、各種ワークロードの負荷分散を行うために行うハードウェア リソースの瞬間的切り替えがあります。 この再構成イベントのほとんどは 60 秒以内に完了します。 この再構成の進行中、SQL Database のデータベースへの接続で問題が発生する場合があります。 データベースに接続するアプリケーションは、これらの一時エラーを想定して構築する必要があります。 これに対処するには、アプリケーション エラーとしてユーザーに表示するのではなく、コードに再試行ロジックを実装します。
 
-クライアント プログラムで ADO.NET を使用している場合、 **SqlException** のスローによって一時エラーが報告されます。
+クライアント プログラムで ADO.NET を使用している場合、**SqlException** のスローによって一時エラーが報告されます。
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -134,9 +134,9 @@ ADO.NET を使用するクライアントのブロック期間については、
 
 [接続文字列](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) を **SqlConnection** オブジェクト用に作成するときは、次のパラメーター間で値を調整します。
 
-- **ConnectRetryCount** :&nbsp;&nbsp;既定値は 1 です。 範囲は 0 ～ 255 です。
-- **ConnectRetryInterval** :&nbsp;&nbsp;既定値は 10 秒です。 範囲は 1 ～ 60 です。
-- **Connection Timeout** :&nbsp;&nbsp;既定値は 15 秒です。 範囲は 0 ～ 2147483647 です。
+- **ConnectRetryCount**:&nbsp;&nbsp;既定値は 1 です。 範囲は 0 ～ 255 です。
+- **ConnectRetryInterval**:&nbsp;&nbsp;既定値は 10 秒です。 範囲は 1 ～ 60 です。
+- **Connection Timeout**:&nbsp;&nbsp;既定値は 15 秒です。 範囲は 0 ～ 2147483647 です。
 
 具体的には、選択した値で次の等式が成り立つ必要があります。Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
 
@@ -146,12 +146,12 @@ ADO.NET を使用するクライアントのブロック期間については、
 
 ## <a name="connection-vs-command"></a>接続とコマンド
 
-**ConnectRetryCount** パラメーターと **ConnectRetryInterval** パラメーターを使用すると、プログラムに制御を返すなど、プログラムへの通知や介入なしに、 **SqlConnection** オブジェクトで接続操作を再試行できます。 再試行は次の状況で発生することがあります。
+**ConnectRetryCount** パラメーターと **ConnectRetryInterval** パラメーターを使用すると、プログラムに制御を返すなど、プログラムへの通知や介入なしに、**SqlConnection** オブジェクトで接続操作を再試行できます。 再試行は次の状況で発生することがあります。
 
 - SqlConnection.Open メソッド呼び出し
 - SqlConnection.Execute メソッド呼び出し
 
-これには注意が必要です。 " *クエリ* " の実行中に一時エラーが発生した場合、 **SqlConnection** オブジェクトで接続操作が再試行されません。 間違いなくクエリは再試行されません。 ただし、実行するクエリを送信する前に、 **SqlConnection** ですばやく接続が確認されます。 簡単なチェックで接続の問題が検出された場合、 **SqlConnection** で接続操作が再試行されます。 再試行に成功すると、実行するクエリが送信されます。
+これには注意が必要です。 "*クエリ*" の実行中に一時エラーが発生した場合、**SqlConnection** オブジェクトで接続操作が再試行されません。 間違いなくクエリは再試行されません。 ただし、実行するクエリを送信する前に、 **SqlConnection** ですばやく接続が確認されます。 簡単なチェックで接続の問題が検出された場合、 **SqlConnection** で接続操作が再試行されます。 再試行に成功すると、実行するクエリが送信されます。
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>ConnectRetryCount をアプリケーションの再試行ロジックと組み合わせて使用する必要があるかどうか
 
@@ -207,7 +207,7 @@ IP アドレスの構成を怠った場合、必要な IP アドレスを示し�
 
 #### <a name="starting-with-adonet-461"></a>ADO.NET 4.6.1 で開始する場合
 
-- SQL Database では、 **SqlConnection.Open** メソッドを使用して接続を開くと信頼性が向上します。 **Open** メソッドには、接続タイムアウト期間内の特定のエラーを対象に、一過性の障害に対応するベスト エフォート再試行メカニズムが組み込まれました。
+- SQL Database では、**SqlConnection.Open** メソッドを使用して接続を開くと信頼性が向上します。 **Open** メソッドには、接続タイムアウト期間内の特定のエラーを対象に、一過性の障害に対応するベスト エフォート再試行メカニズムが組み込まれました。
 - 接続プールがサポートされているため、プログラムに割り当てた接続オブジェクトが正常に動作しているかどうかを効率的に検証することが可能です。
 
 接続プールから取得した接続オブジェクトを使用するとき、すぐに使用しないのであれば、プログラムで一時的に接続を閉じることをお勧めします。 接続を再度開く処理負荷はわずかですが、新しい接続を作成する負荷は大きくなります。
@@ -278,8 +278,8 @@ Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET 
 
 | ログのクエリ | 説明 |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) ビューには、一時エラーや接続障害を引き起こす可能性のあるものを含む、個々のイベントに関する情報が表示されます。<br/><br/>理想的には、 **start_time** や **end_time** の値を、クライアント プログラムに問題が発生した時間の情報に関連付けます。<br/><br/>このクエリを実行するには、" *マスター* " データベースに接続する必要があります。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>このクエリを実行するには、" *マスター* " データベースに接続する必要があります。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) ビューには、一時エラーや接続障害を引き起こす可能性のあるものを含む、個々のイベントに関する情報が表示されます。<br/><br/>理想的には、**start_time** や **end_time** の値を、クライアント プログラムに問題が発生した時間の情報に関連付けます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -331,15 +331,15 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 一時エラーを処理するための再試行ロジックは、EntLib60 を利用できる 1 つの領域です。 詳細については、「[4 - Perseverance, Secret of All Triumphs:Use the Transient Fault Handling Application Block](/previous-versions/msp-n-p/dn440719(v=pandp.60))」をご覧ください。
 
 > [!NOTE]
-> EntLib60 のソース コードは、[ダウンロード センター](https://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。 EntLib に対して機能の更新や保守目的での更新を行う予定はありません。
+> EntLib60 のソース コードは、[ダウンロード センター](https://github.com/MicrosoftArchive/enterprise-library)から入手できます。 EntLib に対して機能の更新や保守目的での更新を行う予定はありません。
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
 ### <a name="entlib60-classes-for-transient-errors-and-retry"></a>一時エラーと再試行に関連した EntLib60 のクラス
 
-再試行ロジックで特に利用する機会の多い EntLib60 のクラスは次のとおりです。 これらのクラスはすべて、 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間に属しています。
+再試行ロジックで特に利用する機会の多い EntLib60 のクラスは次のとおりです。 これらのクラスはすべて、**Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** 名前空間に属しています。
 
-名前空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** :
+名前空間 **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**:
 
 - **RetryPolicy** クラス
   - **ExecuteAction** メソッド
@@ -375,7 +375,7 @@ EntLib60 に関する情報は以下のリンクから入手できます。
 
 ### <a name="entlib60-istransient-method-source-code"></a>EntLib60 IsTransient メソッドのソース コード
 
-以下に示したのは、 **SqlDatabaseTransientErrorDetectionStrategy** クラスの **IsTransient** メソッドの C# ソース コードです。 どのようなエラーが一過性で、再試行する価値があるかは、このソース コードを見るとはっきりわかります (2013 年 4 月時点)。
+以下に示したのは、**SqlDatabaseTransientErrorDetectionStrategy** クラスの **IsTransient** メソッドの C# ソース コードです。 どのようなエラーが一過性で、再試行する価値があるかは、このソース コードを見るとはっきりわかります (2013 年 4 月時点)。
 
 ```csharp
 public bool IsTransient(Exception ex)

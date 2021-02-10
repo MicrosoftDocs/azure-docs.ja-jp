@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 41aec98c2a8776ae128389679ad0acb324596ec4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546830"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947037"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -50,7 +50,7 @@ Profiler を有効にするために必要な設定は次のとおりです。
 |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 
-これらの値は、[Azure Resource Manager テンプレート](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](/powershell/module/az.websites/set-azwebapp) または [Azure CLI](/cli/azure/webapp/config/appsettings?view=azure-cli-latest) を使用して設定できます。
+これらの値は、[Azure Resource Manager テンプレート](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](/powershell/module/az.websites/set-azwebapp) または [Azure CLI](/cli/azure/webapp/config/appsettings) を使用して設定できます。
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>他のクラウドに対して Profiler を手動で有効にする
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0ed7e9619f0b789bf8949fe398aa27bc36b9e0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86500924"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629642"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Azure VM での Windows 再起動ループ
 この記事では、Microsoft Azure の Windows 仮想マシン (VM) で発生する可能性がある再起動ループについて説明します。
@@ -50,15 +50,18 @@ ms.locfileid: "86500924"
 
 ## <a name="solution"></a>解決策
 
+> [!TIP]
+> VM の最新のバックアップがある場合は、[そのバックアップから VM の復元](../../backup/backup-azure-arm-restore-vms.md)を試みて、起動の問題を修正できます。
+
 この問題を解決するには、[OS ディスクをバックアップ](../windows/snapshot-copy-managed-disk.md)し、[OS ディスクを復旧用の VM に接続](./troubleshoot-recovery-disks-portal-windows.md)してから、該当する解決方法に従うか、解決方法を 1 つずつ試してみます。
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-1. OS ディスクを稼働中の VM に接続したら、[ディスクの管理] コンソールでディスクが **[オンライン]** になっていることを確認して、 **\Windows** フォルダーを含むパーティションのドライブ名をメモします。
+1. OS ディスクを稼働中の VM に接続したら、[ディスクの管理] コンソールでディスクが **[オンライン]** になっていることを確認して、**\Windows** フォルダーを含むパーティションのドライブ名をメモします。
 
-2. ディスクが **[オフライン]** に設定されている場合は、 **[オンライン]** に設定します。
+2. ディスクが **[オフライン]** に設定されている場合は、**[オンライン]** に設定します。
 
-3. 変更のロールバックが必要なケースに備えて、 **\Windows\System32\config** フォルダーのコピーを作成します。
+3. 変更のロールバックが必要なケースに備えて、**\Windows\System32\config** フォルダーのコピーを作成します。
 
 4. 復旧用 VM で、Windows レジストリ エディター (regedit) を開きます。
 
@@ -86,7 +89,7 @@ ms.locfileid: "86500924"
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. **BROKENSYSTEM** キーを選択してから、 **[ファイル]**  >  **[Hive のアンロード]** をメニューから選択します。
+13. **BROKENSYSTEM** キーを選択してから、**[ファイル]** > **[Hive のアンロード]** をメニューから選択します。
 
 14. トラブルシューティング用 VM と OS ディスクの接続を切断します。
 
@@ -106,9 +109,9 @@ VM を前回正常起動時の構成に復元してから、「[Azure Windows VM
 
 1. ディスクをトラブルシューティング用 VM に接続したら、[ディスクの管理] コンソールでそのディスクが **[オンライン]** になっていることを確認します。
 
-2. 変更のロールバックが必要なケースに備えて、 **\Windows\System32\config** フォルダーのコピーを作成します。
+2. 変更のロールバックが必要なケースに備えて、**\Windows\System32\config** フォルダーのコピーを作成します。
 
-3. **\Windows\System32\config\regback** フォルダー内のファイルをコピーし、 **\Windows\System32\config** フォルダー内のファイルを置き換えます。
+3. **\Windows\System32\config\regback** フォルダー内のファイルをコピーし、**\Windows\System32\config** フォルダー内のファイルを置き換えます。
 
 4. トラブルシューティング用 VM からディスクを取り出し、Azure がこのディスクを解放するまで約 2 分待ちます。
 

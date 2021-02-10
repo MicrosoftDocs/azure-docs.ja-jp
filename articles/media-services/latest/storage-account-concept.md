@@ -1,24 +1,9 @@
 ---
-title: Azure ストレージ アカウント
-titleSuffix: Azure Media Services
-description: Azure Media Services で使用する Azure ストレージ アカウントを作成する方法について説明します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: conceptual
-ms.date: 01/05/2021
-ms.author: inhenkel
-ms.openlocfilehash: 55a49d48af95c103d2a28d5106af5f3166605514
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882248"
+# <a name="mandatory-fields-see-more-on-akamsskyeyemeta"></a>必須フィールドです。 詳細については、aka.ms/skyeye/meta を参照してください。
+title:Azure ストレージ アカウント: Azure Media Services の説明:Azure Media Services で使用する Azure ストレージ アカウントを作成する方法について説明します。
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: '' ms.service: media-services ms.workload: ms.topic: conceptual ms.date:01/29/2021 ms.author: inhenkel
 ---
+
 # <a name="azure-storage-accounts"></a>Azure Storage アカウント
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -34,7 +19,7 @@ Media Services アカウントおよび関連するすべてのストレージ �
 > [!NOTE]
 > Azure Media Services での使用をサポートされているのはホット アクセス層だけですが、他のアクセス層を使用してアクティブに使われていないコンテンツのストレージ コストを削減できます。
 
-ストレージ アカウント用に選択できる SKU はいくつかあります。 詳細については、[ストレージ アカウント](/cli/azure/storage/account?view=azure-cli-latest)に関するページを参照してください。 ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 ただし、実稼働用の SKU を選択する場合は、事業継続のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。
+ストレージ アカウント用に選択できる SKU はいくつかあります。 ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 ただし、実稼働用の SKU を選択する場合は、事業継続のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。
 
 ## <a name="assets-in-a-storage-account"></a>ストレージ アカウント内の資産
 
@@ -49,14 +34,15 @@ Media Services v3 では、Storage API シリーズを使用してファイル�
 
 |暗号化オプション|説明|Media Services v3|
 |---|---|---|
-|Media Services のストレージの暗号化| AES-256 暗号化、Media Services によって管理されるキー。 |サポートされていません。<sup>(1)</sup>|
+|Media Services のストレージの暗号化| AES-256 暗号化、Media Services によって管理されるキー。 |サポートされていません。<sup>1</sup>|
 |[保存データに対する Storage サービスの暗号化](../../storage/common/storage-service-encryption.md)|Azure Storage によって提供されるサーバー側暗号化、Azure またはお客様が管理するキー。|サポートされています。|
 |[Storage のクライアント側の暗号化](../../storage/common/storage-client-side-encryption.md)|Azure Storage によって提供されるクライアント側暗号化、お客様が Key Vault で管理するキー。|サポートされていません。|
 
 <sup>1</sup> Media Services v3 では、ストレージの暗号化 (AES-256 暗号化) は、Media Services v2 で資産を作成した場合の下位互換性のためにのみサポートされています。つまり、v3 は既存のストレージ暗号化済み資産で動作しますが、新規作成はできません。
 
-## <a name="double-encryption"></a>二重暗号化
-Media Services では、二重暗号化がサポートされています。  二重暗号化の詳細については、[Azure の二重暗号化](../../security/fundamentals/double-encryption.md)に関するページを参照してください。
+## <a name="storage-account-double-encryption"></a>ストレージ アカウントの二重暗号化
+
+ストレージ アカウントでは二重暗号化がサポートされています。ただし、2 番目のレイヤーを明示的に有効にする必要があります。 「[保存データに対する Azure Storage 暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#doubly-encrypt-data-with-infrastructure-encryption)」を参照してください。  
 
 ## <a name="storage-account-errors"></a>ストレージ アカウント エラー
 
@@ -68,10 +54,6 @@ Media Services アカウントの「切断」状態は、ストレージ アク�
 |---|---|
 |Media Services アカウントまたはアタッチされたストレージ アカウントが別々のサブスクリプションに移行された。 |ストレージ アカウントまたは Media Services アカウントは、それらがすべて同じサブスクリプション内に含まれるように移行してください。 |
 |Media Services アカウントは、これがサポートされていたのが初期の Media Services アカウントであったため、別のサブスクリプションのアタッチされたストレージ アカウントを使用している。 初期の Media Services アカウントはすべて最新の Azure Resources Manager ベースのアカウントに変換されたので、切断状態になります。 |ストレージ アカウントまたは Media Services アカウントは、それらがすべて同じサブスクリプション内に含まれるように移行してください。|
-
-## <a name="azure-storage-firewall"></a>Azure Storage ファイアウォール
-
-Azure Media Services では、Azure Storage ファイアウォールや[プライベート エンドポイント](../../storage/common/storage-network-security.md)が有効になっているストレージ アカウントはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831926"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492757"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -69,6 +69,8 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
     - [AKS クラスターでノードの数を手動でスケールする](../aks/scale-cluster.md)
     - [AKS でクラスター オートスケーラーを設定する](../aks/cluster-autoscaler.md)
+
+- __YAML 構成を使用してクラスターを直接更新しないでください__。 Azure Kubernetes Services では YAML 構成による更新がサポートされていますが、Azure Machine Learning のデプロイでは変更が上書きされます。 上書きされない YAML フィールドは、"__要求の制限__" と "__CPU とメモリ__" の 2 つだけです。
 
 ## <a name="azure-kubernetes-service-version"></a>Azure Kubernetes Service のバージョン
 
@@ -381,7 +383,6 @@ Azure Machine Learning スタジオで、 __[コンピューティング]__ 、 
 ---
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-
 ### <a name="update-the-cluster"></a>クラスターの更新
 
 Azure Kubernetes Service クラスターにインストールされている Azure Machine Learning コンポーネントの更新プログラムは、手動で適用する必要があります。 

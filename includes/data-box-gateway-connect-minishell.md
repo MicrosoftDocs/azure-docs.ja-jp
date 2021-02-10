@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 258f0137d630f95fb7dd5dd17072bb77c1388be9
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c0ba6aee0e23dc0c68348c59c8ca8acdcd606435
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581237"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98901030"
 ---
 デバイスにリモート接続する手順は、クライアントのオペレーティング システムによって異なります。
 
@@ -58,11 +58,11 @@ Windows クライアントからリモートで接続するには、次の手順
 
 接続に使用する Linux クライアントで以下を行います。
 
-- SSH リモート処理機能を取得するために、GitHub から [Linux 用の最新の PowerShell Core をインストールします](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6&preserve-view=true)。 
+- SSH リモート処理機能を取得するために、GitHub から [Linux 用の最新の PowerShell Core をインストールします](/powershell/scripting/install/installing-powershell-core-on-linux?preserve-view=true&view=powershell-6)。 
 - [NTLM モジュールから `gss-ntlmssp` パッケージのみをインストールします](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 Ubuntu クライアントでは、次のコマンドを実行します。
     - `sudo apt-get install gss-ntlmssp`
 
-詳細については、「[SSH 経由の PowerShell リモート処理](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6&preserve-view=true)」を参照してください。
+詳細については、「[SSH 経由の PowerShell リモート処理](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?preserve-view=true&view=powershell-6)」を参照してください。
 
 NFS クライアントからリモートで接続するには、次の手順に従います。
 

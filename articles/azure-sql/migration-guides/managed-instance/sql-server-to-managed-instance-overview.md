@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: d1360589fe2c2ec13c341dd14793db0ca8b809c4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 9afe50e419f9c180b0b5efcd6182eb693dc6622a
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358879"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093977"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>移行の概要: SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -172,7 +172,7 @@ SQL Managed Instance に含まれる高可用性アーキテクチャに加え�
 
 既定では Azure Database Migration Service でサポートされているのは、SQL ログインの移行のみです。 ただし、次の方法により Windows ログインを移行する機能を有効にすることができます。
 
-ターゲット SQL Managed Instance に Azure AD 読み取りアクセス権が付与されていることを確認します。これは、**会社の管理者** または **グローバル管理者** のロールを持つユーザーが Azure portal を介して構成できます。
+ターゲット SQL Managed Instance に Azure AD 読み取りアクセス権が付与されていることを確認します。これは、**全体管理者** のロールを持つユーザーが Azure portal を介して構成できます。
 Azure portal ([構成] ページ) を介して設定された Windows ユーザーまたはグループのログイン移行を有効にするように、ご利用の Azure Database Migration Service インスタンスを構成します。 この設定を有効にしたら、サービスを再起動して変更を有効にします。
 
 サービスを再起動すると、Windows ユーザーまたはグループのログインが、移行可能なログインの一覧に表示されます。 移行する Windows ユーザーまたはグループのログインについては、関連付けられているドメイン名を指定するように求められます。 サービス ユーザー アカウント (ドメイン名 NT AUTHORITY を含むアカウント) と仮想ユーザー アカウント (ドメイン名 NT SERVICE を含むアカウント名) はサポートされていません。

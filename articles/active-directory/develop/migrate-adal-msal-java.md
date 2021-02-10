@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063741"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754983"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java 用 ADAL から MSAL への移行ガイド
 
@@ -29,7 +29,7 @@ Microsoft Authentication Library for Java (MSAL4J) と Azure AD Authentication L
 
 MSAL には、次のような利点があります。
 
-- より新しい Microsoft ID プラットフォーム エンドポイントが使用されているため、より広範な Microsoft ID (Azure AD の ID、Microsoft アカウント、ソーシャル アカウントおよびローカル アカウントなど) を、Azure AD Business to Consumer (B2C) を通じて認証できます。
+- より新しい Microsoft ID プラットフォームが使用されているため、より広範な Microsoft ID (Azure AD の ID、Microsoft アカウント、ソーシャルおよびローカル アカウントなど) を、Azure AD Business to Consumer (B2C) を通じて認証できます。
 - ユーザーは、最高のシングル サインオン エクスペリエンスを得られます。
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 
@@ -37,13 +37,13 @@ MSAL for Java は、Microsoft ID プラットフォームで使用すること�
 
 ## <a name="differences"></a>相違点
 
-開発者向け Azure AD (v1.0) エンドポイント (および ADAL4J) を使用している場合は、「[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](../azuread-dev/azure-ad-endpoint-comparison.md)」に関するページを読むことをお勧めします。
+開発者向け Azure AD (v1.0) エンドポイント (および ADAL4J) を使用している場合は、[Microsoft ID プラットフォームの違い](../azuread-dev/azure-ad-endpoint-comparison.md)に関するページを読むことをお勧めします。
 
 ## <a name="scopes-not-resources"></a>リソースではなくスコープ
 
 ADAL4J はリソースのトークンを取得しますが、MSAL for Java はスコープのトークンを取得します。 多くの MSAL for Java クラスには、スコープ パラメーターが必要です。 このパラメーターは、要求された必要とするアクセス許可とリソースを宣言する文字列のリストです。 スコープの例については、「[Microsoft Graph のスコープ](/graph/permissions-reference)」に関するページを参照してください。
 
-`/.default` スコープ サフィックスをリソースに追加すると、アプリを v1.0 エンドポイント (ADAL) から Microsoft ID プラットフォーム エンドポイント (MSAL) するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
+リソースに `/.default` スコープ サフィックスを追加すると、ADAL から MSAL にアプリを移行するのに役立ちます。 たとえば、リソース値が `https://graph.microsoft.com`の場合、相当するスコープ値は `https://graph.microsoft.com/.default`になります。  リソースが URL 形式ではなく、リソース ID の形式が `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`である場合でも、スコープ値として `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` を使用できます。
 
 さまざまな種類のスコープの詳細については、[Microsoft ID プラットフォームでのアクセス許可と同意](./v2-permissions-and-consent.md)に関する記事および記事「[v1.0 トークンを受け入れる Web API のスコープ](./msal-v1-app-scopes.md)」を参照してください。
 

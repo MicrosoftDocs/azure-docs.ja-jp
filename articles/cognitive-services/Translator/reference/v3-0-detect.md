@@ -3,19 +3,19 @@ title: Translator Detect メソッド
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services Translator Detect メソッドを利用し、一節のテキストの言語を特定します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
-ms.author: swmachan
-ms.openlocfilehash: 12029d7a77eb7cbbb10cb5330eb18d6316520a2d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: cb6660585b5f2b9ab56eaf863f1ec431e5e85109
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021322"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895528"
 ---
 # <a name="translator-30-detect"></a>Translator 3.0:Detect
 

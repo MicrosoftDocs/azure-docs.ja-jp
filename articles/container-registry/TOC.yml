@@ -101,6 +101,8 @@
               href: container-registry-access-selected-networks.md
             - name: サービス エンドポイントを使用したアクセスの制限 (プレビュー)
               href: container-registry-vnet.md
+            - name: 信頼されたサービスによるアクセスを許可する
+              href: allow-access-trusted-services.md
             - name: カスタマー マネージド キーによる暗号化
               href: container-registry-customer-managed-keys.md
             - name: ファイアウォールの内側にアクセスする

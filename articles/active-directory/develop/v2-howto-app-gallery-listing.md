@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 8f5324e967c5a67ee77559087a02c3421611d8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399368"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752857"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>アプリを Azure AD アプリ ギャラリーで公開する
 
@@ -175,7 +175,7 @@ HTML のサインイン ページがある Web アプリケーションを作成
 お客様向けの SCIM 標準と特典の詳細については、[SCIM でのプロビジョニングの概要](https://aka.ms/scimoverview)に関するページを参照してください。
 
 ### <a name="understand-the-azure-ad-scim-implementation"></a>Azure AD SCIM の実装について
-Azure AD SCIM の実装の詳細については、「[SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)」を参照してください。
+Azure AD SCIM の実装の詳細については、「[SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成](../app-provisioning/use-scim-to-provision-users-and-groups.md)」を参照してください。
 
 ### <a name="implement-scim"></a>SCIM を実装する
 Azure AD には、SCIM エンドポイントを構築するのに役立つ[参照コード](https://aka.ms/scimoverview)が用意されています。 また、サード パーティ製のライブラリや参考資料も GitHub に多数あります。  
@@ -186,7 +186,7 @@ Azure AD には、SCIM エンドポイントを構築するのに役立つ[参�
 
 または、すべての Microsoft 365 サブスクリプションには、Azure AD テナントが付属しています。 無料の Microsoft 365 開発環境をセットアップするには、[Microsoft 365 開発者プログラムへの参加](/office/developer-program/microsoft-365-developer-program)に関するページを参照してください。
 
-テナントの用意ができたら、シングル サインオンと[プロビジョニング](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)をテストする必要があります。 
+テナントの用意ができたら、シングル サインオンと[プロビジョニング](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)をテストする必要があります。 
 
 **OIDC または Oath アプリケーション** の場合、マルチテナント アプリケーションとして [アプリケーションを登録](quickstart-register-app.md)します。 ‎[サポートされているアカウントの種類] で、[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント] オプションを選択します。
 
@@ -274,7 +274,7 @@ OpenID Connect を使用してギャラリー内の一覧にご利用のアプ�
 
 ![ギャラリーでのパスワード SSO アプリケーションの一覧表示](./media/howto-app-gallery-listing/passwordsso.png)
 
-ユーザー プロビジョニングのために [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 エンドポイントを実装している場合は、示されているようにオプションを選択します。 オンボード要求にスキーマを提供するときは、[こちら](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration)の指示に従ってスキーマをダウンロード してください。 ギャラリー以外のアプリケーションをテストする際にユーザーが構成したスキーマがギャラリー アプリケーションのビルドに使用されます。 
+ユーザー プロビジョニングのために [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0 エンドポイントを実装している場合は、示されているようにオプションを選択します。 オンボード要求にスキーマを提供するときは、[こちら](../app-provisioning/export-import-provisioning-configuration.md)の指示に従ってスキーマをダウンロード してください。 ギャラリー以外のアプリケーションをテストする際にユーザーが構成したスキーマがギャラリー アプリケーションのビルドに使用されます。 
 
    ![ユーザー プロビジョニングの要求](./media/howto-app-gallery-listing/user-provisioning.png)
 

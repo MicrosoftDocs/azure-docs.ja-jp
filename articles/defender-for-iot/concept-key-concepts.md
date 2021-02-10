@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 1ac87f98af555aae155a201cc20692c950fc7924
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 419e32a127947cde1d3761507f0df7a889528ff2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836534"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621930"
 ---
 # <a name="basic-concepts"></a>基本的な概念 
 
@@ -22,7 +22,7 @@ ms.locfileid: "97836534"
 
 Defender for IoT センサーを SPAN ポートまたはネットワーク TAP に接続すると、パッシブ (エージェントレス) 監視によって ICS ネットワーク トラフィックの収集が直ちに開始されます。 シリアルとイーサネット両方の制御ネットワーク装置からのトラフィックを詳しく分析するためにディープ パケット インスペクション (DPI) が使用されます。 Defender for IoT は、データ パスに配置されておらず、OT デバイスを積極的にスキャンすることはないため、OT ネットワークに影響しません。 
 
-詳細な資産情報のインスタント スナップショットを配信するために、Defender for IoT センサーは、オプションのアクティブ コンポーネントを使用してパッシブ監視を補足します。 このコンポーネントでは、安全でベンダーが承認したコマンドを使用して、Windows とコントローラーの両方のデバイスに対して必要な頻度で資産情報のクエリが実行されます。
+詳細なデバイス情報のインスタント スナップショットを配信するために、Defender for IoT センサーは、オプションのアクティブ コンポーネントを使用してパッシブ監視を補足します。 このコンポーネントでは、安全でベンダーが承認したコマンドを使用して、Windows とコントローラーの両方のデバイスに対して必要な頻度でデバイス情報のクエリが実行されます。
 
 ## <a name="embedded-knowledge-of-ics-protocols-devices-and-applications"></a>ICS プロトコル、デバイス、およびアプリケーションに関する組み込みのナレッジ
 
@@ -34,7 +34,7 @@ DPI だけでは、プロトコルの異常を特定し、詳細なレベルで�
 
 - **プロトコル違反検出**:ICS プロトコル仕様に違反するパケット構造とフィールド値の使用を識別します。
 
-- **ポリシー違反検出**:関数コードの無許可の使用、特定のオブジェクトへのアクセス、資産構成の変更などのポリシー違反を特定します。
+- **ポリシー違反検出**:関数コードの無許可の使用、特定のオブジェクトへのアクセス、デバイス構成の変更などのポリシー違反を特定します。
 
 - **産業用マルウェア検出**:Conficker、Black Energy、Havex、WannaCry、NotPetya などの既知のマルウェアが存在することを示す動作を識別します。
 

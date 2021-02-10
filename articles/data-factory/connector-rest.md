@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3fc567b7d4b2efab03e5d93adda62839d47f7522
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931306"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223098"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "96931306"
 この REST コネクタ、[REST コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
 - **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされています。 
-- **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
+- **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタの前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
 - **Web テーブル コネクタ** では、HTML Web ページからテーブルの内容を抽出します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能

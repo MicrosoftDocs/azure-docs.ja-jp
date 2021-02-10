@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: how-to
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 0f569c623deb8e6249323cf1925d2c754eac7d42
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: ad73ef03aa9623fb724f1397697fac18f659a90c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218843"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935000"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure ネットワーク セキュリティ グループ (NSG) を別のリージョンに移動する
 
@@ -43,19 +43,19 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>テンプレートをエクスポートし、スクリプトからデプロイする
 
-1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup?view=azps-2.6.0) を使用し、移動先リージョンに移動する NSG のリソース ID を取得し、変数に配置します。
+2. [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) を使用し、移動先リージョンに移動する NSG のリソース ID を取得し、変数に配置します。
 
     ```azurepowershell-interactive
     $sourceNSGID = (Get-AzNetworkSecurityGroup -Name <source-nsg-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) コマンドを実行するディレクトリの .json ファイルに NSG をエクスポートします。
+3. [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) コマンドを実行するディレクトリの .json ファイルに NSG をエクスポートします。
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceNSGID -IncludeParameterDefaultValue
@@ -99,7 +99,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
             }
     ```
   
-7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
+7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](/powershell/module/az.resources/get-azlocation) を使用できます。
 
     ```azurepowershell-interactive
 
@@ -173,13 +173,13 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 9. **\<resource-group-name>.json** ファイルを保存します。
 
-10. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイする移動先 NSG の移動先リージョンにリソース グループを作成します。
+10. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、デプロイする移動先 NSG の移動先リージョンにリソース グループを作成します。
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
+11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 
@@ -187,7 +187,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
     
     ```
 
-12. 移動先リージョンでリソースが作成されたことを確認するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) と [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup?view=azps-2.6.0) を使用します。
+12. 移動先リージョンでリソースが作成されたことを確認するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) と [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) を使用します。
     
     ```azurepowershell-interactive
 
@@ -203,7 +203,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 ## <a name="discard"></a>破棄 
 
-デプロイ後に、移動先で NSG を最初からやり直すか破棄する場合、移動先で作成されたリソース グループを削除します。それにより、移動した NSG が削除されます。  リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) を使用します。
+デプロイ後に、移動先で NSG を最初からやり直すか破棄する場合、移動先で作成されたリソース グループを削除します。それにより、移動した NSG が削除されます。  リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用します。
 
 ```azurepowershell-interactive
 
@@ -213,7 +213,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ## <a name="clean-up"></a>クリーンアップ
 
-変更をコミットし、NSG の移動を完了するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) または [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup?view=azps-2.6.0) を使用し、移動元 NSG またはリソース グループを削除します。
+変更をコミットし、NSG の移動を完了するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) または [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup) を使用し、移動元 NSG またはリソース グループを削除します。
 
 ```azurepowershell-interactive
 

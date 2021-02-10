@@ -1,20 +1,20 @@
 ---
-title: SSH および RDP 用の Azure IoT Hub デバイス ストリームの C# クイックスタート
+title: クイックスタート - SSH および RDP 用の Azure IoT Hub デバイス ストリームの C# クイックスタート
 description: このクイックスタートでは、IoT Hub デバイス ストリームを介した SSH および RDP シナリオを有効にする 2 つのサンプル C# アプリケーションを実行します。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: adf0f42b34a4bd7e5df2d2994408dbc175c5e01b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 12e26818f86fc4abdc1873d031182fd994c04687
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831924"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624373"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -25,25 +25,6 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
 [IoT Hub デバイス ストリーム](iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイックスタート ガイドには、IoT ハブを通じて確立されたデバイス ストリームを介してクライアント/サーバー アプリケーション トラフィック (Secure Shell (SSH)、リモート デスクトップ プロトコル (RDP) など) を送信できるようにする、2 つの C# アプリケーションが含まれています。 設定の概要については、[SSH または RDP 用のローカル プロキシ アプリケーションのサンプル](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)に関するページを参照してください。
 
 この記事では、まず SSH (ポート 22 を使用) の設定について説明し、次に設定のポートを RDP 用に変更する方法について説明します。 デバイス ストリームはアプリケーションやプロトコルに依存しないため、同じサンプルを他の種類のアプリケーション トラフィックに対応するように変更できます。 通常、この変更は、通信ポートを目的のアプリケーションで使用されるものに変更するだけで済みます。
-
-## <a name="how-it-works"></a>しくみ
-
-次の図は、この例でデバイスローカルおよびサービスローカルのプロキシ アプリケーションで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする設定を示しています。 ここでは、デーモンがデバイスローカルのプロキシ アプリケーションと同じデバイス上で実行されていると仮定します。
-
-![ローカルのプロキシ アプリケーションの設定](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
-
-1. サービスローカルのプロキシ アプリケーションが IoT ハブに接続し、ターゲット デバイスへのデバイス ストリームを開始します。
-
-1. デバイスローカルのプロキシ アプリケーションによって、ストリームの開始ハンドシェイクが完了され、サーバー側への IoT ハブのストリーミング エンドポイントを通じてエンドツーエンドのストリーミング トンネルが確立されます。
-
-1. デバイスローカルのプロキシ アプリケーションは、デバイス上のポート 22 をリッスンする SSH デーモンに接続されます。 「デバイスローカルのプロキシ アプリケーションの実行」セクションで説明されているように、この設定は構成可能です。
-
-1. サービスローカルのプロキシ アプリケーションは、指定されたポート (この場合はポート 2222) をリッスンして、ユーザーからの新しい SSH 接続を待機します。 「サービスローカルのプロキシ アプリケーションの実行」セクションで説明されているように、この設定は構成可能です。 ユーザーが SSH クライアントを介して接続すると、トンネルによって SSH アプリケーション トラフィックが SSH クライアントとサーバー アプリケーションの間で転送されるようになります。
-
-> [!NOTE]
-> デバイス ストリームを介して送信される SSH トラフィックは、サービスとデバイスの間で直接送信されるのではなく、IoT ハブのストリーミング エンドポイントを介してトンネリングされます。 詳細については、[IoT Hub デバイス ストリームを使用する利点](iot-hub-device-streams-overview.md#benefits)に関するページを参照してください。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -72,6 +53,25 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
+## <a name="how-it-works"></a>しくみ
+
+次の図は、この例でデバイスローカルおよびサービスローカルのプロキシ アプリケーションで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする設定を示しています。 ここでは、デーモンがデバイスローカルのプロキシ アプリケーションと同じデバイス上で実行されていると仮定します。
+
+![ローカルのプロキシ アプリケーションの設定](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
+
+1. サービスローカルのプロキシ アプリケーションが IoT ハブに接続し、ターゲット デバイスへのデバイス ストリームを開始します。
+
+1. デバイスローカルのプロキシ アプリケーションによって、ストリームの開始ハンドシェイクが完了され、サーバー側への IoT ハブのストリーミング エンドポイントを通じてエンドツーエンドのストリーミング トンネルが確立されます。
+
+1. デバイスローカルのプロキシ アプリケーションは、デバイス上のポート 22 をリッスンする SSH デーモンに接続されます。 「デバイスローカルのプロキシ アプリケーションの実行」セクションで説明されているように、この設定は構成可能です。
+
+1. サービスローカルのプロキシ アプリケーションは、指定されたポート (この場合はポート 2222) をリッスンして、ユーザーからの新しい SSH 接続を待機します。 「サービスローカルのプロキシ アプリケーションの実行」セクションで説明されているように、この設定は構成可能です。 ユーザーが SSH クライアントを介して接続すると、トンネルによって SSH アプリケーション トラフィックが SSH クライアントとサーバー アプリケーションの間で転送されるようになります。
+
+> [!NOTE]
+> デバイス ストリームを介して送信される SSH トラフィックは、サービスとデバイスの間で直接送信されるのではなく、IoT ハブのストリーミング エンドポイントを介してトンネリングされます。 詳細については、[IoT Hub デバイス ストリームを使用する利点](iot-hub-device-streams-overview.md#benefits)に関するページを参照してください。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
@@ -96,7 +96,7 @@ Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.micros
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。

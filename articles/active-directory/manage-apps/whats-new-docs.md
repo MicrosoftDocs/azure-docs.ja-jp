@@ -1,24 +1,51 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
 ms.author: kenwith
 author: kenwith
-manager: CelesteDG
-ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+manager: daveba
+ms.openlocfilehash: 53339623ee435362d248b794776681972000173e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563400"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258576"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="january-2021"></a>2021 年 1 月
+
+### <a name="new-articles"></a>新しい記事
+- [Azure Active Directory マイ アプリの構成を計画する](my-apps-deployment-plan.md)
+
+### <a name="updated-articles"></a>更新された記事
+- [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](application-proxy-connector-installation-problem.md)
+- [Azure AD でのパスワードベースのシングル サインオンのトラブルシューティング](troubleshoot-password-based-sso.md)
+- [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)
+- [Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド](plan-an-application-integration.md)
+- [アプリケーション管理とは](what-is-application-management.md)
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.md)
+- [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
+- [既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Azure Active Directory 用の基幹業務アプリをの開発する](developer-guidance-for-integrating-applications.md)
+- [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-connectors.md)
+- [リンクされたサインオンの概要](configure-linked-sign-on.md)
+- [パスワードベースのシングル サインオンについて理解する](configure-password-single-sign-on-non-gallery-applications.md)
+- [SAML ベースのシングル サインオンについて理解する](configure-saml-single-sign-on.md)
+- [Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング](troubleshoot-adding-apps.md)
+- [ID 管理用の Azure AD テナントを使用してアプリを表示する](application-types.md)
+- [Azure Active Directory でユーザーをアプリに割り当てる方法を理解する](ways-users-get-assigned-to-applications.md)
+- [クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する](delete-application-portal.md)
+- [Azure AD アプリケーション プロキシを使用したリモート デスクトップの公開](application-proxy-integrate-with-remote-desktop-services.md)
+- [Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する](manage-application-permissions.md)
+
 
 ## <a name="december-2020"></a>2020 年 12 月
 
@@ -90,7 +117,7 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [アプリケーションのセルフサービス アクセスの使用方法](access-panel-manage-self-service-access.md)
 - [Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング](application-sign-in-other-problem-access-panel.md)
 - [Azure AD でのパスワードベースのシングル サインオンのトラブルシューティング](troubleshoot-password-based-sso.md)
-- [Azure Active Directory マイ アプリのデプロイを計画する](access-panel-deployment-plan.md)
+- [Azure Active Directory マイ アプリのデプロイを計画する](my-apps-deployment-plan.md)
 - [シングル サインオン (SSO) とは](what-is-single-sign-on.md)
 - [Azure Active Directory で、過剰な特権が与えられているか、または疑わしいアプリケーションに対してアクションを実行する](manage-application-permissions.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する](add-application-portal-configure.md)

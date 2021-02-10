@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 01/21/2021
 ms.author: justinha
-ms.openlocfilehash: faa46178262777454d4d67d23bbd0bb013974ab5
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: e381c80dddc4484d541f5f81de6b5df712cff69b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208490"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673470"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>チュートリアル:Azure Active Directory Domain Services で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
-パスワード ハッシュを同期できない環境、またはスマート カードを使用して排他的にサインインするために自分でパスワードがわからないユーザーが含まれる環境では、Azure Active Directory Domain Services (Azure AD DS) でリソース フォレストを使用できます。 リソース フォレストでは、Azure AD DS から 1 つまたは複数のオンプレミスの AD DS 環境への一方向の送信の信頼が使用されます。 この信頼関係により、ユーザー、アプリケーション、およびコンピューターは、Azure AD DS マネージド ドメインから、オンプレミスのドメインに対して認証を行うことができます。 リソース フォレストでは、オンプレミスのパスワード ハッシュが同期されることはありません。
+パスワード ハッシュを同期できない環境、またはユーザーがスマート カードを使用して排他的にサインインし、パスワードを知らない環境では、Azure Active Directory Domain Services (Azure AD DS) でリソース フォレストを使用できます。 リソース フォレストでは、Azure AD DS から 1 つまたは複数のオンプレミスの AD DS 環境への一方向の送信の信頼が使用されます。 この信頼関係により、ユーザー、アプリケーション、およびコンピューターは、Azure AD DS マネージド ドメインから、オンプレミスのドメインに対して認証を行うことができます。 リソース フォレストでは、オンプレミスのパスワード ハッシュが同期されることはありません。
 
 ![Azure AD DS からオンプレミスの AD DS へのフォレストの信頼の図](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -84,7 +84,7 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 
 オンプレミスの AD DS ドメイン上で受信の信頼を構成するには、オンプレミスの AD DS ドメインに対して管理ワークステーションから次の手順を行います。
 
-1. **[スタート] | [管理ツール] | [Active Directory Active Directory ドメインと信頼関係]** の順に選択します。
+1. **[スタート]**  >  **[管理ツール]**  >  **[Active Directory ドメインと信頼関係]** の順に選択します。
 1. ドメイン (例: *onprem.contoso.com*) を右クリックし、 **[プロパティ]** を選択します。
 1. **[信頼]** タブ、 **[新しい信頼]** の順に選択します。
 1. Azure AD DS ドメインの名前 (例: *aaddscontoso.com*) を入力し、 **[次へ]** を選択します。
@@ -93,6 +93,14 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 1. **フォレスト全体の認証** を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
 1. 既定のオプションを使用して次のいくつかのウィンドウをステップ実行し、オプションの **[確認しない]** を選択します。
 1. **[完了]** を選択します。
+
+環境でフォレストの信頼が不要になった場合は、次の手順を実行して、オンプレミスのドメインから削除します。
+
+1. **[スタート]**  >  **[管理ツール]**  >  **[Active Directory ドメインと信頼関係]** の順に選択します。
+1. ドメイン (例: *onprem.contoso.com*) を右クリックし、 **[プロパティ]** を選択します。
+1. **[信頼]** タブ、 **[このドメインを信頼するドメイン (入力方向の信頼)]** の順に選択し、削除する信頼をクリックしてから **[削除]** をクリックします。
+1. [信頼] タブの **[このドメインに信頼されるドメイン (出力方向の信頼)]** で、削除する信頼をクリックしてから [削除] をクリックします。
+1. **[ローカル ドメインからのみ信頼を削除する]** をクリックします。
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Azure AD DS で送信フォレストの信頼を作成する
 
@@ -107,11 +115,17 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
    > **[信頼]** メニュー オプションが表示されない場合は、 **[プロパティ]** で *フォレストの種類* を確認してください。 信頼を作成できるのは、*リソース* フォレストだけです。 フォレストの種類が *ユーザー* 場合、信頼を作成することはできません。 現在、マネージド ドメインのフォレストの種類を変更する方法はありません。 マネージド ドメインを削除し、リソース フォレストとして作成し直す必要があります。
 
 1. 信頼を識別する表示名を入力し、オンプレミスの信頼されたフォレストの DNS 名 (例: *onprem.contoso.com*) を入力します。
-1. 前のセクションでオンプレミスの AD DS ドメインに対して受信フォレストの信頼を構成したときに使用したのと同じ信頼パスワードを指定します。
+1. 前のセクションでオンプレミスの AD DS ドメインに対する受信フォレストの信頼の構成に使用したのと同じ信頼パスワードを指定します。
 1. オンプレミスの AD DS ドメインに少なくとも 2 つの DNS サーバー (例: *10.1.1.4* と *10.1.1.5*) を指定します。
 1. 準備ができたら、送信フォレストの信頼を **保存** します。
 
     ![Azure portal で送信フォレストの信頼を作成する](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
+
+環境でフォレストの信頼が不要になった場合は、次の手順を実行して、Azure AD DS から削除します。
+
+1. Azure portal で **Azure AD Domain Services** を検索して選択し、マネージド ドメイン (例: *aaddscontoso.com*) を選択します。
+1. マネージド ドメインの左側にあるメニューで、 **[信頼]** を選択し、信頼を選択してから **[削除]** をクリックします。
+1. フォレストの信頼の構成に使用したのと同じ信頼パスワードを指定し、 **[OK]** をクリックします。
 
 ## <a name="validate-resource-authentication"></a>リソース認証を検証する
 

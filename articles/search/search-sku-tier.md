@@ -9,24 +9,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539597"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693453"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
-[検索サービスを作成](search-create-service-portal.md)するときに、サービスの有効期間にわたって固定される価格レベル (SKU) を選択します。 推定の月間コストは、ポータルの **[価格レベルの選択]** ページに表示されます。 PowerShell または Azure CLI でサービスを作成する場合は、 **`-Sku`** パラメーターを使用してレベルを指定します。
+[検索サービスの作成](search-create-service-portal.md)の部分は、サービスの有効期間にわたって固定される価格レベル (SKU) を選択することを意味 価格 (サービスの実行にかかる推定月間コスト) は、サービスの作成時にポータルの **[Select Pricing Tier]\(価格レベルの選択\)** ページに表示されます。 PowerShell または Azure CLI を使用してプロビジョニングする場合、レベルは **`-Sku`** パラメーターを使用して指定され、推定コストの詳細については、[サービスの価格](https://azure.microsoft.com/pricing/details/search/)に関するページを確認する必要があります。
 
 選択したレベルによって以下が決まります。
 
-+ サービスで作成できるインデックスおよびその他のオブジェクトの最大数
++ サービスで許可されるインデックスおよびその他のオブジェクトの最大数
 + パーティション (物理ストレージ) のサイズと速度
 + 月単位の固定コストとしての課金対象のレート (ただし、容量を追加した場合は増分のコスト)
 
 いくつかのインスタンスでは、選択したレベルによって[プレミアム機能](#premium-features)の使用の可否が決まります。
+
+> [!NOTE]
+> "Azure SKU" に関する情報をお探しですか? [[Azure の価格]](https://azure.microsoft.com/pricing/) から開始し、下にスクロールしてサービスごとの価格ページへのリンクを表示します。
 
 ## <a name="tier-descriptions"></a>サービス レベルの説明
 
@@ -67,7 +70,7 @@ ms.locfileid: "98539597"
 
 ## <a name="partition-size-and-speed"></a>パーティションのサイズと速度
 
-各レベルの価格には、パーティションごとのストレージの詳細 (Basic レベルの 2 GB からストレージ最適化 (L2) レベルの 2 TB まで) が含まれます。 その他のハードウェア特性 (動作速度、待機時間、転送速度など) は公開されませんが、特定のソリューション アーキテクチャ向けに設計されたレベルは、そのシナリオをサポートする機能を備えたハードウェア上に構築されます。
+各レベルの価格には、パーティションごとのストレージの詳細 (Basic レベルの 2 GB からストレージ最適化 (L2) レベルの 2 TB まで) が含まれます。 その他のハードウェア特性 (動作速度、待機時間、転送速度など) は公開されませんが、特定のソリューション アーキテクチャ向けに設計されたレベルは、そのシナリオをサポートする機能を備えたハードウェア上に構築されます。 パーティションの詳細については、[容量の見積もりと管理](search-capacity-planning.md)および[パフォーマンスのためのスケーリング](search-performance-optimization.md)に関する記事を参照してください。
 
 ## <a name="billing-rates"></a>課金レート
 

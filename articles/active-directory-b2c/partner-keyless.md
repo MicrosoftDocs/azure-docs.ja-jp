@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 1/17/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2ab1b5ae87cee6265c965c45b706c7fbf10dfe3f
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: c8a5666d373852da5ff79490f435b2d66d5cc6e0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702956"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090368"
 ---
 # <a name="tutorial-configure-keyless-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Keyless を構成する
 
@@ -86,7 +86,7 @@ ID プロバイダーを構成するには、次の手順を実行します。
    |プロパティ | 値 |
    |:-----| :-----------|
    | 名前   | Keyless |
-   | メタデータ URL | ホストされている Keyless Authentication アプリの URI を挿入し、その後に特定のパスを入力します (https://keyless.auth/.well-known/openid-configuration など)。 |
+   | メタデータ URL | ホストされている Keyless Authentication アプリの URI を挿入し、その後に特定のパスを入力します ('https://keyless.auth/.well-known/openid-configuration ' など)。 |
    | クライアント シークレット | Keyless Authentication インスタンスに関連付けられているシークレット。前に構成したものとは異なります。 任意の複雑な文字列を挿入します。 このシークレットは、後で Keyless Container 構成で使用します。|
    | クライアント ID | クライアントの ID。 この ID は、後で Keyless Container 構成で使用します。|
    | スコープ | openid |

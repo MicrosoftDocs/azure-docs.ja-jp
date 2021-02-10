@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 02/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d04075b415bace4104a58e8221d764355d3318d0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 3315500e0d8ce090b058cbe0cb11d9ab8e56e193
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744280"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475000"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Azure Active Directory の認証方法 - OATH トークン
 
@@ -46,16 +46,16 @@ OATH ハードウェア トークンはパブリック プレビュー段階で�
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
+```  
 
 > [!NOTE]
-> CSV ファイルにヘッダー行が含まれていることを確認します。
+> CSV ファイルにヘッダー行が含まれていることを確認します。 UPN に単一引用符が含まれている場合は、もう 1 つの単一引用符でエスケープします。 たとえば、UPN が my'user@domain.com である場合、ファイルをアップロードするときに my''user@domain.com に変更します。
 
 CSV ファイルとして適切な形式が整ったら、管理者は Azure portal にサインインして、 **[Azure Active Directory] > [セキュリティ] > [MFA] > [OATH トークン]** の順に移動し、作成した CSV ファイルをアップロードできます。
 
-CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンを選択して、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。 ダウンロードした CSV ファイル内のフィールド名は、アップロードされたバージョンとは異なります。
+CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンを選択して、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。 ダウンロードした CSV ファイル内のフィールド名は、アップロードされたバージョンとは異なります。  
 
-すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。トークンの **[アクティブ化]** を選択し、トークンに表示されている OTP を入力します。
+すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。トークンの **[アクティブ化]** を選択し、トークンに表示されている OTP を入力します。 5 分ごとに最大 200 の OATH トークンをアクティブにできます。 
 
 ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された認証アプリケーション (Microsoft Authenticator アプリなど) を組み合わせることもできます。
 

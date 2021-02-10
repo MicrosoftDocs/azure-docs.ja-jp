@@ -3,7 +3,7 @@ title: 管理者の同意ワークフローの構成 - Azure Active Directory | 
 description: 管理者の同意を必要とするアプリケーションへのアクセスをエンド ユーザーが要求できるように構成する方法について説明します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b38b8cf38d2d75493ef50c4f206758c6289be079
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997496"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259589"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>管理者の同意ワークフローの構成 (プレビュー)
 
@@ -159,4 +159,4 @@ ms.locfileid: "95997496"
 
 [Microsoft ID プラットフォームでのアクセス許可と同意](../develop/v2-permissions-and-consent.md)
 
-[StackOverflow での Azure AD](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Microsoft Q&A の Azure AD](https://docs.microsoft.com/answers/topics/azure-active-directory.html)

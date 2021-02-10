@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスター用の Azure Activ
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: b7f8060666612049026f2602ab7c8511aea22757
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614797"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475439"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -128,7 +128,7 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
 - 追加の AKS CLI コマンドでサービス プリンシパルを明示的に渡さない場合は、`~/.azure/aksServicePrincipal.json` にある既定のサービス プリンシパルが使用されます。  
 - 必要に応じて、aksServicePrincipal.json ファイルを削除することもできます。これにより、AKS は新しいサービス プリンシパルを作成します。
 - [az aks create][az-aks-create] によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。
-    - サービス プリンシパルを削除するには、まずクラスターの *servicePrincipalProfile.clientId* を照会し、[az ad app delete][az-ad-app-delete] で削除します。 次のリソース グループとクラスターの名前は、実際の値に置き換えてください。
+    - サービス プリンシパルを削除するには、まずクラスターの *servicePrincipalProfile.clientId* を照会し、[az ad sp delete][az-ad-sp-delete] で削除します。 次のリソース グループとクラスターの名前は、実際の値に置き換えてください。
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)

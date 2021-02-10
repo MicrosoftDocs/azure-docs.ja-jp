@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6b231b5af208a51cbe8f4370c2dc532be1ba3af9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9ee7116efe931d101a1505bc2d9d866d8ea5b92a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024927"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943430"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -234,7 +234,7 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
 
 ## <a name="create-a-channel-registration"></a>チャネル登録を作成する
 
-ボットをホストするための Azure App Service を作成したので、次の手順は **ボット チャネル登録** の作成です。 チャネル登録の作成は、ボットを Direct Line Speech チャネルなどの Bot Framework チャネルに登録するための前提条件です。 ボットがチャネルを使用する方法の詳細については、「[ボットをチャネルに接続する](/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0)」を参照してください。
+ボットをホストするための Azure App Service を作成したので、次の手順は **ボット チャネル登録** の作成です。 チャネル登録の作成は、ボットを Direct Line Speech チャネルなどの Bot Framework チャネルに登録するための前提条件です。 ボットがチャネルを使用する方法の詳細については、「[ボットをチャネルに接続する](/azure/bot-service/bot-service-manage-channels)」を参照してください。
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Azure ボット チャンネル登録を作成します <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. いくつかの情報を指定するよう求められます。
@@ -244,7 +244,7 @@ Web ソケットを使用してボットと Direct Line Speech チャネルが�
    * **[場所]** では **[米国西部]** を選択します。
      * **[価格レベル]** では **[F0]** を選択します。
      * **[Messaging endpoint]\(メッセージング エンドポイント\)** では、末尾に `/api/messages` パスを追加して Web アプリの URL を入力します。 たとえば、グローバルに一意のアプリ名が **EchoBot20190805125647** だった場合、メッセージング エンドポイントは `https://EchoBot20190805125647.azurewebsites.net/api/messages/` のようになります。
-     * **Application Insights** では、これを **[Off]** に設定できます。 詳細については、「[ボットの分析](/azure/bot-service/bot-service-manage-analytics?view=azure-bot-service-4.0)」をご覧ください。
+     * **Application Insights** では、これを **[Off]** に設定できます。 詳細については、「[ボットの分析](/azure/bot-service/bot-service-manage-analytics)」をご覧ください。
      * **[アプリ ID とパスワードの自動作成]** は無視します。
 5. **[ボット チャネル登録]** ブレードの下部にある **[作成]** をクリックします。
 
@@ -298,7 +298,7 @@ Azure ボット チャネル登録ページには、 **[ボット管理]** の�
    * **[保存]** をクリックします。
 
 > [!TIP]
-> 詳細については、「[ボットを Direct Line Speech に接続する](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)」をご覧ください。 このページには、追加情報と既知の問題が記載されています。
+> 詳細については、「[ボットを Direct Line Speech に接続する](/azure/bot-service/bot-service-channel-connect-directlinespeech)」をご覧ください。 このページには、追加情報と既知の問題が記載されています。
 
 ## <a name="run-the-windows-voice-assistant-client"></a>Windows 音声アシスタント クライアントを実行する
 
@@ -412,7 +412,7 @@ Speech SDK では、カスタム キーワードのアクティブ化がサポ�
 
 Windows 音声アシスタント クライアントのソース コード内で、これらのファイルを調べて、キーワード検出を有効にするために使用されているコードを確認します。
 
-1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel?preserve-view=true&view=azure-node-latest#fromfile-string-) の呼び出しが含まれています。
+1. [`VoiceAssistantClient\Models.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/Models.cs) には、ディスク上のローカル ファイルからモデルをインスタンス化するために使用される Speech SDK メソッド [`KeywordRecognitionModel.fromFile()`](/javascript/api/microsoft-cognitiveservices-speech-sdk/keywordrecognitionmodel#fromfile-string-) の呼び出しが含まれています。
 1. [`VoiceAssistantClient\MainWindow.xaml.cs`](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/VoiceAssistantClient/MainWindow.xaml.cs) には、継続的なキーワード検出をアクティブにする Speech SDK メソッド [`DialogServiceConnector.StartKeywordRecognitionAsync()`](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.startkeywordrecognitionasync) の呼び出しが含まれています。
 
 ## <a name="optional-change-the-language-and-bot-voice"></a>(省略可能) 言語とボットの音声を変更する
@@ -480,5 +480,5 @@ Windows 音声アシスタント クライアントのソース コード内で�
   * [Bot Service pricing](https://azure.microsoft.com/pricing/details/bot-service/)
   * [Speech サービス](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * 独自の音声対応ボットの構築とデプロイ:
-  * [Bot Framework ボット](https://dev.botframework.com/)を構築します。 [Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)に登録し、[音声用にボットをカスタマイズ](/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)します
+  * [Bot Framework ボット](https://dev.botframework.com/)を構築します。 [Direct Line Speech チャネル](/azure/bot-service/bot-service-channel-connect-directlinespeech)に登録し、[音声用にボットをカスタマイズ](/azure/bot-service/directline-speech-bot)します
   * 既存の [Bot Framework ソリューション](https://microsoft.github.io/botframework-solutions/index)を調べます。[仮想アシスタント](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/)を構築し、[それを Direct Line Speech に拡張します](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

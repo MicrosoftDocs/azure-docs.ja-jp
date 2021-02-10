@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/06/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968500"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761709"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro の配置を準備する  
 
-これは、Azure Stack Edge Pro を完全に配置するために必要な配置チュートリアル シリーズの最初のチュートリアルです。 このチュートリアルでは、Azure Stack Edge リソースをデプロイするために Azure portal を準備する方法を説明します。
+これは、Azure Stack Edge Pro を完全に配置するために必要な配置チュートリアル シリーズの最初のチュートリアルです。 このチュートリアルでは、Azure Stack Edge リソースを配置するために Azure portal を準備する方法を説明します。
 
 セットアップと構成のプロセスを完了するには、管理者特権が必要です。 ポータルの準備は 10 分ほどで完了します。
 
@@ -118,14 +118,14 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
     |設定  |値  |
     |---------|---------|
-    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
+    |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 から 50 文字で、英字、数字、ハイフンを含みます。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
 
     ![プロジェクトとインスタンスの詳細](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
 
 5. **配送先住所** を選択します。
 
-    - 既にデバイスがある場合は、 **[I have a Azure Stack Edge Pro device]\(Azure Stack Edge Pro デバイスを持っています\)** のコンボ ボックスを選択します。
+    - デバイスが既にある場合は、 **[I have an Azure Stack Edge device]\(Azure Stack Edge デバイスを持っています\)** のコンボ ボックスを選択します。
     - 新しいデバイスを注文する場合は、連絡先名、会社、デバイスの配送先住所、連絡先情報を入力します。
 
     ![新しいデバイスの配送先住所](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -138,19 +138,23 @@ Azure Stack Edge リソースを作成するには、Azure portal で次の手�
 
 8. **［作成］** を選択します
 
-リソースの作成には数分かかります。 リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
+   リソースの作成には数分かかります。 リソースが正常に作成されてデプロイされると通知が表示されます。 **[リソースに移動]** を選択します。
 
-![Azure Stack Edge リソースに移動する](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
+   ![Azure Stack Edge リソースに移動する](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
 
 Microsoft は受け取った注文を確認し、発送の詳細と共にお客様に (メールで) 連絡します。
 
 ![Azure Stack Edge Pro の注文確認通知](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
 
+
+> [!NOTE]
+> 一度に複数の注文を作成したい場合や既存の注文を複製したい場合は、[「Azure サンプル」のスクリプト](https://github.com/Azure-Samples/azure-stack-edge-order)をご利用ください。 詳細については、Readme ファイルを参照してください。
+
 ## <a name="get-the-activation-key"></a>アクティブ化キーの取得
 
 Azure Stack Edge リソースが起動して実行中になったら、アクティブ化キーを取得する必要があります。 このキーを使用して、Azure Stack Edge Pro デバイスのアクティブ化とリソースへの接続を行います。 このキーは Azure portal ですぐに入手できます。
 
-1. 自分が作成したリソースに移動して、 **[概要]** を選択します。 注文の処理結果に関する通知が表示されます。
+1. 作成したリソースに移動し、 **[概要]** を選択します。 注文の処理結果に関する通知が表示されます。
 
     ![[概要] を選択する](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 

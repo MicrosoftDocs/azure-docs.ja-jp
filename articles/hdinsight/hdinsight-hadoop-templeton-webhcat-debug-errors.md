@@ -1,19 +1,16 @@
 ---
 title: HDInsight の WebHCat エラーの説明と解決策 - Azure
 description: HDInsight で WebHCat から返される一般的なエラーの原因とその解決策について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 951dba6e64561301dc7dbb6ebd6fd6b641c90a47
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: ce7a21a2b5401c68c6b58bc934fb20b0225ba8ad
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285683"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945466"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight で WebHCat から受信したエラーの説明と解決策
 
@@ -39,7 +36,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="too-many-requests"></a>要求が多すぎます
 
-**HTTP 状態コード** :429
+**HTTP 状態コード**:429
 
 | 原因 | 解像度 |
 | --- | --- |
@@ -47,7 +44,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="server-unavailable"></a>Server unavailable
 
-**HTTP 状態コード** :503
+**HTTP 状態コード**:503
 
 | 原因 | 解像度 |
 | --- | --- |
@@ -55,7 +52,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="bad-request-content-could-not-find-job"></a>Bad request Content:Could not find job
 
-**HTTP 状態コード** :400
+**HTTP 状態コード**:400
 
 | 原因 | 解像度 |
 | --- | --- |
@@ -65,13 +62,13 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 ## <a name="bad-gateway"></a>Bad gateway
 
-**HTTP 状態コード** :502
+**HTTP 状態コード**:502
 
 | 原因 | 解像度 |
 | --- | --- |
 | WebHCat プロセス内で内部ガベージ コレクションが行われている。 |ガベージ コレクションが終了するまで待つか、または WebHCat サービスを再起動します。 |
 | ResourceManager サービスからの応答の待機中にタイムアウトが発生した。 このエラーは、アクティブなアプリケーションの数が構成された最大値 (既定値は 10,000) に達した場合に発生することがあります。 |現在実行中のジョブが完了するまで待つか、または `yarn.scheduler.capacity.maximum-applications`を変更して同時実行ジョブの制限値をより大きな値にします。 詳細については、「[構成の変更](#modifying-configuration)」セクションをご覧ください。 |
-| `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 |" *すべて* " のジョブの詳細を取得しないでください。 代わりに、`jobid` を使用して、特定のジョブ ID より大きいジョブの詳細のみを取得してください。 または、`Fields` を使用しないでください。 |
+| `Fields` が `*` に設定されているときに、[GET/jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) 呼び出しですべてのジョブを取得しようとした。 |"*すべて*" のジョブの詳細を取得しないでください。 代わりに、`jobid` を使用して、特定のジョブ ID より大きいジョブの詳細のみを取得してください。 または、`Fields` を使用しないでください。 |
 | ヘッドノードのフェールオーバー中に WebHCat サービスがダウンした。 |2 分待ってから操作をやり直してください。 |
 | WebHCat を通じて送信された 500 個を超えるジョブが保留中になっている。 |現在保留中のジョブが完了するのを待ってから、次のジョブを送信します。 |
 
