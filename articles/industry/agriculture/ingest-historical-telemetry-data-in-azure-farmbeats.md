@@ -344,19 +344,20 @@ Event Hubs クライアントとして接続を確立したら、メッセージ
 指定されたイベント ハブにクライアントとしてテレメトリを送信する Python コードの例を次に示します。
 
 ```python
-import azure
-from azure.eventhub import EventHubClient, Sender, EventData, Receiver, Offset
+from azure.eventhub import EventHubProducerClient, EventData
 EVENTHUBCONNECTIONSTRING = "<EventHub Connection String provided by customer>"
 EVENTHUBNAME = "<EventHub Name provided by customer>"
 
-write_client = EventHubClient.from_connection_string(EVENTHUBCONNECTIONSTRING, eventhub=EVENTHUBNAME, debug=False)
+write_client = EventHubProducerClient.from_connection_string(conn_str=EVENTHUBCONNECTIONSTRING, eventhub_name=EVENTHUBNAME, debug=False)
 sender = write_client.add_sender(partition="0")
 write_client.run()
 for i in range(5):
+    event_data_batch = write_client.create_batch()
     telemetry = "<Canonical Telemetry message>"
     print("Sending telemetry: " + telemetry)
-    sender.send(EventData(telemetry))
-write_client.stop()
+    event_data_batch.add(EventData(telemetry))
+    write_client.send_batch(event_data_batch)
+write_client.close()
 
 ```
 
