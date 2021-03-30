@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2021
 ms.locfileid: "90708208"
 ---
-# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>クイック スタート」を参照してください。Azure portal を使用して新しい Azure API Management サービス インスタンスを作成する
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>クイック スタート Azure portal を使用して新しい Azure API Management サービス インスタンスを作成する
 
 API Management (APIM) が組織にもたらす利点は、外部、パートナー、社内の開発者に API を公開することによって、社内のデータやサービスの可能性を広げられることです。 API Management は、開発者の取り組み、ビジネス インサイト、分析、セキュリティ、保護を通じて API プログラムの価値を高め、企業にコア コンピテンシーをもたらします。 APIM を使用すると、任意の場所でホストされている既存のバックエンド サービスの最新の API ゲートウェイを作成し、管理できます。 詳細については、[概要](api-management-key-concepts.md)に関するページを参照してください。
 
