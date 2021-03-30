@@ -63,5 +63,5 @@ Form Recognizer を使用すると、ユース ケースに関連するフォー
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、 **[Form Recognizer API リファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/5ed8c9843c2794cbb1a96291)** のドキュメントを参照してください。
+詳細については、 **[Form Recognizer API リファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-3/operations/AnalyzeWithCustomForm)** のドキュメントを参照してください。
 >
