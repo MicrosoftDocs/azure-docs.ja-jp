@@ -1,5 +1,5 @@
 ---
-title: GitHub から Azure Linux エージェントを更新する
+title: VM で Azure Linux エージェントを更新する方法
 description: Azure の Linux VM で使用する Azure Linux エージェントを更新する方法について説明します
 ms.topic: article
 ms.service: virtual-machines
